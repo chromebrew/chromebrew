@@ -3,25 +3,12 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.7'
+  @_ver = '21.3.8'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
   git_hashtag "mesa-#{@_ver}"
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_armv7l/mesa-21.3.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_armv7l/mesa-21.3.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_i686/mesa-21.3.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.7_x86_64/mesa-21.3.7-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '04d84c085f2be9415f95cf89d2601d6fb0f2cedade83933312082e669e4f1221',
-     armv7l: '04d84c085f2be9415f95cf89d2601d6fb0f2cedade83933312082e669e4f1221',
-       i686: '7ebbc2fd9a7af4712f634fb3ae9f9fa5c3d286fbe2632cacc5dc8dbbeb3ec03d',
-     x86_64: '05d91f448f095fd5bb89a1ddfb1284845ac20b7e4ee32b0201f1572eccf1f24c'
-  })
 
   depends_on 'glslang' => :build
   depends_on 'libdrm' # R
@@ -96,17 +83,20 @@ class Mesa < Package
       File.write('tegra.patch', @tegrapatch)
       system 'patch -Np1 -i tegra.patch'
     end
-    # llvm 13 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
+    # llvm 13/14 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
     # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
-    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch'
-    system 'patch -Np1 -i 13273.patch'
+    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.diff'
+    system 'patch -Np1 -i 13273.diff'
+    # mesa: Implement ANGLE_sync_control_rate (used by Chrome browser)
+    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff'
+    system 'patch -Np1 -i 15381.diff'
   end
 
   def self.build
     case ARCH
     when 'i686'
       @vk = 'intel,swrast'
-      @galliumdrivers = 'swrast,svga,virgl,swr,lima,zink'
+      @galliumdrivers = 'swrast,svga,virgl,zink'
       @lto = CREW_MESON_FNO_LTO_OPTIONS
       @osmesa = 'false'
     when 'aarch64', 'armv7l'
@@ -122,9 +112,9 @@ class Mesa < Package
     end
     system "meson #{@lto} \
     -Db_asneeded=false \
+    -Ddri-drivers=auto \
     -Dvulkan-drivers=#{@vk} \
     -Dgallium-drivers=#{@galliumdrivers} \
-    -Dprefer-crocus=true \
     -Dosmesa=#{@osmesa} \
     -Dglvnd=false \
      builddir"
