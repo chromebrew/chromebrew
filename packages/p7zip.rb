@@ -9,5 +9,5 @@ class P7zip < Package
 
   is_fake
 
-  depends_on '7_zip'
+  depends_on 'pkg_7_zip'
 end
