@@ -1113,7 +1113,7 @@ def strip_find_files(find_cmd, strip_option = "")
 end
 
 def strip_dir(dir)
-  unless CREW_NOT_STRIP
+  unless CREW_NOT_STRIP or @pkg.no_compile_needed?
     Dir.chdir dir do
       # Strip libraries with -S
       puts "Stripping libraries..."
