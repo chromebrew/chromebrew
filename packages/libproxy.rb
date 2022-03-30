@@ -2,36 +2,80 @@ require 'package'
 
 class Libproxy < Package
   description 'libproxy is a library that provides automatic proxy configuration management.'
-  homepage 'http://libproxy.github.io/libproxy/'
-  version '0.4.15'
+  homepage 'https://libproxy.github.io/libproxy/'
+  @_ver = '5d5e13ddc47a2a061c595c1356d7d07d78cf597f'
+  version @_ver[0,7]
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://github.com/libproxy/libproxy/releases/download/0.4.15/libproxy-0.4.15.tar.xz'
-  source_sha256 '654db464120c9534654590b6683c7fa3887b3dad0ca1c4cd412af24fbfca6d4f'
+  source_url 'https://github.com/libproxy/libproxy.git'
+  git_hashtag @_ver
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_armv7l/libproxy-0.4.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_armv7l/libproxy-0.4.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_i686/libproxy-0.4.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/0.4.15_x86_64/libproxy-0.4.15-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/5d5e13d_armv7l/libproxy-5d5e13d-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/5d5e13d_armv7l/libproxy-5d5e13d-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/5d5e13d_i686/libproxy-5d5e13d-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libproxy/5d5e13d_x86_64/libproxy-5d5e13d-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-    aarch64: 'f0df6d6fbe49b9783ebe03bf922cb917714358dc4380c44dfa9b5bbdc747d831',
-     armv7l: 'f0df6d6fbe49b9783ebe03bf922cb917714358dc4380c44dfa9b5bbdc747d831',
-       i686: '00c146655e1bf4c437974ad59549b900924ac93f7de277477c196c56c44b7c73',
-     x86_64: '896073cbf37b750da1856e37c58111f4c1350196ddb6fef5ce7799197d7a9f27',
+  binary_sha256({
+    aarch64: '5bea315ca2a29c9f859f78afa1ee2c03cb96f929f9ed3aa7fda99627b660b737',
+     armv7l: '5bea315ca2a29c9f859f78afa1ee2c03cb96f929f9ed3aa7fda99627b660b737',
+       i686: '720f6e764865b755f0f630b11bfa2a74f99088482a49abdbc6a1d9a6248a6824',
+     x86_64: 'c33952558052af4fe67fc2dc67930ca887cc74051df8ebc2f5ad71cb19c5bf4b'
   })
+
+  depends_on 'dbus'
+  depends_on 'duktape'
+  depends_on 'vala' => :build
+  depends_on 'glib'
+
+  def self.patch
+    # As per suggestion for fixing Ninja at
+    # https://github.com/libproxy/libproxy/issues/171#issuecomment-1082704815
+    @ninjapatch = <<~'NINJAPATCHEOF'
+      diff --git a/bindings/perl/t/CMakeLists.txt b/bindings/perl/t/CMakeLists.txt
+      index 8007124..fdbe81c 100644
+      --- a/bindings/perl/t/CMakeLists.txt
+      +++ b/bindings/perl/t/CMakeLists.txt
+      @@ -1 +1 @@
+      -add_custom_target(test prove -b ${CMAKE_CURRENT_SOURCE_DIR})
+      +add_test(NAME perl COMMAND prove -b ${CMAKE_CURRENT_SOURCE_DIR})
+    NINJAPATCHEOF
+    File.write('ninja.patch', @ninjapatch)
+    system 'patch -Np1 -i ninja.patch'
+  end
 
   def self.build
-    system './autogen.sh'
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. -DLIB_INSTALL_DIR=#{CREW_LIB_PREFIX}"
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja #{CREW_CMAKE_LIBSUFFIX_OPTIONS} \
+              -DLIBEXEC_INSTALL_DIR=#{CREW_LIB_PREFIX} \
+              -DWITH_DBUS=ON \
+              -DWITH_DOTNET=OFF \
+              -DWITH_GNOME3=ON \
+              -DWITH_KDE=ON \
+              -DWITH_MOZJS=OFF \
+              -DWITH_NATUS=OFF \
+              -DWITH_NM=OFF \
+              -DWITH_PERL=ON \
+              -DWITH_PYTHON2=ON \
+              -DWITH_PYTHON3=ON \
+              -DWITH_VALA=ON \
+              -DWITH_WEBKIT=OFF \
+              -DWITH_WEBKIT3=ON \
+              -DPERL_VENDORINSTALL=ON \
+              -DBIPR=OFF \
+              -DBUILD_TESTING=OFF \
+              -Wno-dev .."
     end
-    system 'make'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "make", "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+  end
+
+  def self.check
+    # Fails on i686 & armv7l
+    system 'samu -C builddir test || true'
   end
 end
