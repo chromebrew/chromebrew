@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.6.1'
+  @_ver = '4.6.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_armv7l/gtk4-4.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_armv7l/gtk4-4.6.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_i686/gtk4-4.6.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.1_x86_64/gtk4-4.6.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_armv7l/gtk4-4.6.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_armv7l/gtk4-4.6.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_i686/gtk4-4.6.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_x86_64/gtk4-4.6.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0822c46fdce44847664517eede126d7c4dde04f2a912c7ee395761e2a015365e',
-     armv7l: '0822c46fdce44847664517eede126d7c4dde04f2a912c7ee395761e2a015365e',
-       i686: '82c907d171ed166e98e420b10766ac85066f8f6154afc0c499b7bf2bd11cfbab',
-     x86_64: '348f052b349e1cecf1cb82396b8e999a43bc35f50ee2e2e48e8ec442175a955c'
+    aarch64: '7834ca5787a8b61b839724e52a5017202720dc088132ce8a4cf0a390b836e26a',
+     armv7l: '7834ca5787a8b61b839724e52a5017202720dc088132ce8a4cf0a390b836e26a',
+       i686: 'faea57d510593872a16349718ecbb8fd4304c23e7148bba8d13e6f8fa065d4e0',
+     x86_64: 'e13ab6fb21cc239a70a21d6101911673d0589512f40eec6438a03c876e51d85d'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
