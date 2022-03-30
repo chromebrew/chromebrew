@@ -11,14 +11,14 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.0.1_armv7l/mesa-22.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.0.1_armv7l/mesa-22.0.1-chromeos-armv7l.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_armv7l/mesa-21.3.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_armv7l/mesa-21.3.8-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_i686/mesa-21.3.8-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_x86_64/mesa-21.3.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '814a1bc4217b73c0a12d13a5d0631eebe478ce5f5daee25f5f708bbe0418c759',
-     armv7l: '814a1bc4217b73c0a12d13a5d0631eebe478ce5f5daee25f5f708bbe0418c759',
+    aarch64: '2ba3d26240c1f9b950416cf8cab50abbda041be52a57208e61749883f6099236',
+     armv7l: '2ba3d26240c1f9b950416cf8cab50abbda041be52a57208e61749883f6099236',
        i686: 'ca79bf6252a36b9cc7f8ba78e99e0385d9ad85559496b4df3bb2ebfddcc22f2e',
      x86_64: '6c8a9829d33aea1edb3f89d0a27ccda44142be19865cfdec1126a3ce25fc4ba8'
   })
