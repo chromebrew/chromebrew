@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.3'
+  @_ver = '3.10.4'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '596c72de998dc39205bc4f70ef0dbf7edec740a306d09b49a9bd0a77806730dc'
+  source_sha256 '80bf925f571da436b35210886cf79f6eb5fa5d6c571316b73568343451f77a19'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_armv7l/python3-3.10.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_armv7l/python3-3.10.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_i686/python3-3.10.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.3_x86_64/python3-3.10.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_armv7l/python3-3.10.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_armv7l/python3-3.10.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_i686/python3-3.10.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_x86_64/python3-3.10.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5b420fb5cf3fa3fb2bc4bc5abb15e212cf3b49d42bbea71997687af91aaaf597',
-     armv7l: '5b420fb5cf3fa3fb2bc4bc5abb15e212cf3b49d42bbea71997687af91aaaf597',
-       i686: '4d5d15fde337083bbdb2c1e00b89d22ab3c7de167f6e31af3882643b92f3bd8f',
-     x86_64: '0cbb6b71baff03210c0953f01671b5cfdf33bbcdbd5aeaa8fbf7bee74244a274'
+    aarch64: 'c262a915d8c818a353ef6038ad419318130158e642b9dce79c6bb74e59a16630',
+     armv7l: 'c262a915d8c818a353ef6038ad419318130158e642b9dce79c6bb74e59a16630',
+       i686: '265004b921160c95c9123e6699656160e224ef20749ffa18a34e1d02f88161f0',
+     x86_64: '36a4f9a325f8b28d73d3fb7adbbc06863531623f443ca94b011f8b940e1bf479'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -41,6 +41,7 @@ class Python3 < Package
   depends_on 'zlibpkg' # R
   # depends_on 'tcl' # Needed for tkinter support
   # depends_on 'tk'  # Needed for tkinter support
+  no_env_options
 
   def self.patch
     system "sed -i -e 's:#{CREW_LIB_PREFIX}:\$(get_libdir):g' \
@@ -63,26 +64,14 @@ class Python3 < Package
 
   def self.build
     @cppflags = "-I#{CREW_PREFIX}/include/ncursesw"
-    # python requires /usr/local/lib, so leave as is but specify -rpath
-    @ldflags = "-Wl,-rpath,-L#{CREW_LIB_PREFIX}"
-
-    # CREW_ENV_OPTIONS don't work so we have to make our own
-    @py_common_flags = "'-O2 -pipe -fuse-ld=gold -flto-partition=none -ffat-lto-objects -flto'"
-
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    system 'autoreconf -fiv'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env OPT='-g0' CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
-        CC='#{CREW_TGT}-gcc -pthread' \
-        CXX='#{CREW_TGT}-g++' \
-        CPPFLAGS='#{@cppflags}' \
-        LDFLAGS='#{@ldflags}' \
-      ../configure #{CREW_OPTIONS} \
+      system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
         --with-computed-gotos \
         --enable-loadable-sqlite-extensions \
         --without-ensurepip \
@@ -98,11 +87,11 @@ class Python3 < Package
   end
 
   def self.check
-    # Chromebook doesn't allow SIGHUP, so disable SIGHUP test
+    # Chromebooks do not allow SIGHUP, so disable SIGHUP test
     system 'sed', '-i', 'Lib/test/test_asyncio/test_events.py', '-e', "/Don't have SIGHUP/s/win32/linux/"
     system 'sed', '-i', 'Lib/test/test_asyncio/test_subprocess.py', '-e', "/Don't have SIGHUP/s/win32/linux/"
 
-    # Chromebook returns EINVAL for F_NOTIFY DN_MULTISHOT, so disable test_fcntl_64_bit
+    # Chromebooks return EINVAL for F_NOTIFY DN_MULTISHOT, so disable test_fcntl_64_bit
     system 'sed', '-i', 'Lib/test/test_fcntl.py', '-e', '/ARM Linux returns EINVAL for F_NOTIFY DN_MULTISHOT/s/$/\
     @unittest.skipIf(platform.system() == '"'Linux'"', "Chromeos returns EINVAL for F_NOTIFY DN_MULTISHOT")/'
 
