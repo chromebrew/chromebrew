@@ -1,5 +1,3 @@
-ENV['CREW_NOT_STRIP'] = 'true'
-
 require 'package'
 
 class Arduino_ide < Package
@@ -10,6 +8,8 @@ class Arduino_ide < Package
   compatibility 'all'
   source_url 'https://github.com/arduino/Arduino/releases/download/1.8.10/arduino-1.8.10.tar.xz'
   source_sha256 '862e4b100d5214ca51d501edcc095467d7a4e3dc39b306146001da8b0c63343e'
+
+  no_compile_needed
 
   binary_url ({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
@@ -67,5 +67,3 @@ class Arduino_ide < Package
     end
   end
 end
-
-ENV['CREW_NOT_STRIP'] = ''

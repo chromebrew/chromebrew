@@ -6,6 +6,7 @@ class Firefox < Package
   version '98.0.2'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
+
   source_url ({
       i686: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2",
     x86_64: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
@@ -14,6 +15,8 @@ class Firefox < Package
       i686: '888db6752eb5703af5fe5ab4b1575f2a35dbd204614552fbe3a276042a3509d5',
     x86_64: '07c5f3dad0850a92d5c609278fb1fe682b2562fa55e6733c09a6b4da7373bfcc'
   })
+
+  no_compile_needed
 
   depends_on 'atk'
   depends_on 'cairo'

@@ -9,6 +9,8 @@ class Natron < Package
   source_url 'https://github.com/NatronGitHub/Natron/releases/download/v2.4.0/Natron-2.4.0-Linux-64.tgz'
   source_sha256 '7e8f2ec343f553799f34dce89aa250c410024f17e2c9ccfb5e22544db3e46bb4'
 
+  no_compile_needed
+
   binary_url ({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/natron/2.4.0_x86_64/natron-2.4.0-chromeos-x86_64.tpxz'
   })
@@ -19,11 +21,6 @@ class Natron < Package
   depends_on 'desktop_file_utils'
   depends_on 'libglu'
   depends_on 'sommelier'
-
-  @strip = ENV['CREW_NOT_STRIP']
-  @shrink = ENV['CREW_NOT_SHRINK_ARCHIVE']
-  ENV['CREW_NOT_STRIP'] = '1'
-  ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
 
   def self.install
     # IMPORTANT BUILD/INSTALL FROM SOURCE INSTRUCTIONS BELOW:
@@ -51,7 +48,4 @@ class Natron < Package
       end
     end
   end
-
-  ENV['CREW_NOT_SHRINK_ARCHIVE'] = @shrink
-  ENV['CREW_NOT_STRIP'] = @strip
 end

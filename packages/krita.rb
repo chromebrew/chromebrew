@@ -9,6 +9,8 @@ class Krita < Package
   source_url 'https://download.kde.org/stable/krita/5.0.2/krita-5.0.2-x86_64.appimage'
   source_sha256 '139e621ec3a4ec1918e6046bdd7be4c0b392cdf2571ca83a065a3e2f00f585e8'
 
+  no_compile_needed
+
   depends_on 'gtk3'
   depends_on 'sommelier'
 
@@ -33,8 +35,6 @@ class Krita < Package
 
   def self.install
     conflicts_ok
-    ENV['CREW_NOT_STRIP'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r 'usr/share', CREW_DEST_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/krita"
