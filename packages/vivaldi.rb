@@ -7,6 +7,8 @@ class Vivaldi < Package
   compatibility 'aarch64,armv7l,x86_64'
   license 'Vivaldi'
 
+  no_compile_needed
+
   depends_on 'cras'
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'

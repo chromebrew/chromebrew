@@ -9,6 +9,8 @@ class Brave < Package
   source_url 'https://github.com/brave/brave-browser/releases/download/v1.36.122/brave-browser-1.36.122-linux-amd64.zip'
   source_sha256 '101c2814aed8d88ce085ca18e368473885d0e1ac110c819cbaf0bfbe17bb1768'
 
+  no_compile_needed
+
   depends_on 'gtk3'
   depends_on 'libcom_err'
   depends_on 'xdg_base'

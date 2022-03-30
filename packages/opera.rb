@@ -6,6 +6,9 @@ class Opera < Package
   version '85.0.4341.28'
   license 'OPERA-2018'
   compatibility 'x86_64'
+
+  # faster apt mirror, but only works when downloading latest version of opera
+  # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
   source_sha256 '2344d2e12342785cf5ad095811f2f142cb54f697251dab72bb347e9932c22cfc'
 
@@ -17,10 +20,9 @@ class Opera < Package
   depends_on 'libcom_err'
   depends_on 'sommelier'
 
-  def self.install
-    # llvm-strip doesn't works with opera
-    ENV['CREW_NOT_STRIP'] = '1'
+  no_compile_needed
 
+  def self.install
     # Since opera puts the executable in a location that is not in the path,
     # we need to link it to bin directory.
     FileUtils.ln_sf "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera", 'bin/opera'

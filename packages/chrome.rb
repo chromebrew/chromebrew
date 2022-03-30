@@ -16,6 +16,8 @@ class Chrome < Package
   depends_on 'cras'
   depends_on 'sommelier'
 
+  no_compile_needed
+
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
 
