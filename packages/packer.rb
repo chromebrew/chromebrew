@@ -19,9 +19,9 @@ class Packer < Package
      x86_64: '1c8c176dd30f3b9ec3b418f8cb37822261ccebdaf0b01d9b8abf60213d1205cb',
   })
 
+  no_compile_needed
+
   def self.install
-    ENV['CREW_NOT_STRIP'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'packer', "#{CREW_DEST_PREFIX}/bin/packer", mode: 0o755
   end
