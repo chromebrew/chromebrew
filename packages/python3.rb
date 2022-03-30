@@ -64,26 +64,14 @@ class Python3 < Package
 
   def self.build
     @cppflags = "-I#{CREW_PREFIX}/include/ncursesw"
-    # python requires /usr/local/lib, so leave as is but specify -rpath
-    @ldflags = "-Wl,-rpath,-L#{CREW_LIB_PREFIX}"
-
-    # CREW_ENV_OPTIONS don't work so we have to make our own
-    @py_common_flags = "'-O2 -pipe -fuse-ld=#{CREW_LINKER} -flto-partition=none -ffat-lto-objects -flto'"
-
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    system 'autoreconf -fiv'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env OPT='-g0' CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
-        CC='#{CREW_TGT}-gcc -pthread' \
-        CXX='#{CREW_TGT}-g++' \
-        CPPFLAGS='#{@cppflags}' \
-        LDFLAGS='#{@ldflags}' \
-      ../configure #{CREW_OPTIONS} \
+      system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
         --with-computed-gotos \
         --enable-loadable-sqlite-extensions \
         --without-ensurepip \
