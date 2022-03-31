@@ -10,9 +10,9 @@ class Smbclient < Package
   source_sha256 '97c47de35915d1637b254f02643c3230c3e73617851700edc7a2a8c958a3310c'
 
   depends_on 'avahi'
-  depends_on 'cmocka'
-  depends_on 'cups'
-  depends_on 'docbook_xsl'
+  depends_on 'cmocka' => :build
+  depends_on 'cups' => :build
+  depends_on 'docbook_xsl' => :build
   depends_on 'gpgme' => :build
   depends_on 'jansson'
   depends_on 'ldb'
@@ -25,8 +25,8 @@ class Smbclient < Package
   depends_on 'perl_parse_yapp' => :build
   depends_on 'perl_json' => :build
   depends_on 'popt'
-  depends_on 'py3_markdown'
-  depends_on 'py3_dnspython'
+  depends_on 'py3_markdown' => :build
+  depends_on 'py3_dnspython' => :build
   depends_on 'talloc'
   depends_on 'tdb'
   depends_on 'tevent'
