@@ -98,10 +98,12 @@ class Mesa < Package
     end
     # llvm 13/14 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
     # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
-    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.diff'
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.diff',
+               '76d2dd16532336837bccd4885c40efed0ab5f1de8e8fa114a7835dc269f221ac'
     system 'patch -Np1 -i 13273.diff'
     # mesa: Implement ANGLE_sync_control_rate (used by Chrome browser)
-    system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff'
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff',
+               '6d8531215e33f95c91ec54a0176d847eeb7d0b3b9543adb6bc5e58879e61ade7'
     system 'patch -Np1 -i 15381.diff'
   end
 
