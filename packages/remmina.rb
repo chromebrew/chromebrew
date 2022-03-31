@@ -10,15 +10,16 @@ class Remmina < Package
   source_sha256 'a730d5927232818d55c8e094dba69d504faacabab2288d0c5c0c30ee7e89be46'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/remmina-1.4.25-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/remmina-1.4.25-chromeos-armv7l.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/remmina-1.4.25-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_armv7l/remmina-1.4.25-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_armv7l/remmina-1.4.25-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_x86_64/remmina-1.4.25-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'c2a51556cb206a0a2d82daf8859b33e68c5141fa87b62ad3f700ec2a43cac6e3',
      armv7l: 'c2a51556cb206a0a2d82daf8859b33e68c5141fa87b62ad3f700ec2a43cac6e3',
      x86_64: '6b280475ba0d8778b5be2be2d697968ce893b12fbf78d448d7431770e8fb718c'
   })
+
 
   depends_on 'avahi'
   depends_on 'freerdp'
