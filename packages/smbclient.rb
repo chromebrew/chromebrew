@@ -27,9 +27,9 @@ class Smbclient < Package
   depends_on 'popt'
   depends_on 'py3_markdown' => :build
   depends_on 'py3_dnspython' => :build
-  depends_on 'talloc'
-  depends_on 'tdb'
-  depends_on 'tevent'
+  depends_on 'talloc' => :build
+  depends_on 'tdb' => :build
+  depends_on 'tevent' => :build
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
