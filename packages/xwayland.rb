@@ -3,25 +3,27 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '22.1.0'
-  version "#{@_ver}-1"
+  @_ver = '22.1.1'
+  version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_armv7l/xwayland-22.1.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_armv7l/xwayland-22.1.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_i686/xwayland-22.1.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.0-1_x86_64/xwayland-22.1.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_armv7l/xwayland-22.1.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_armv7l/xwayland-22.1.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_i686/xwayland-22.1.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_x86_64/xwayland-22.1.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a8a49db5e9c13e9e29209af6be9f18cd5ac2925cefe6e06181686883194db3de',
-     armv7l: 'a8a49db5e9c13e9e29209af6be9f18cd5ac2925cefe6e06181686883194db3de',
-       i686: '69d6c3462f3a16f9a46a0ac87e55fa68edcf5fcd9bb85101ab58c6c6833a32f6',
-     x86_64: 'cdb5e4540b3ab08fbb336561047d2b0b7b20eb32760f60fc703a403d1a296ee6'
+    aarch64: '6bb70f10aed0cd1c7eacdacf3fdf9f70671c36cbeb96edb4aaae36e04dfefd8b',
+     armv7l: '6bb70f10aed0cd1c7eacdacf3fdf9f70671c36cbeb96edb4aaae36e04dfefd8b',
+       i686: '4f573697a94513fa9adcae19994e3c6af215eae28180a486ded25b767947586a',
+     x86_64: '221b7702afee8d0d791947a16e4e1fdfc0f91df82a281d5c59edffaf42df0b74'
   })
+
+  no_env_options
 
   depends_on 'dbus'
   depends_on 'eudev'
@@ -51,7 +53,7 @@ class Xwayland < Package
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
+    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '').sub('mold', 'gold')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
