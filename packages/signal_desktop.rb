@@ -9,6 +9,8 @@ class Signal_desktop < Package
   source_url "http://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
   source_sha256 '867452ffb0993e4d5b6c18e91cb032c0a56edaeee3820de9e7fa7111d933309f'
 
+  no_compile_needed
+
   depends_on 'at_spi2_atk'
   depends_on 'gtk3'
   depends_on 'sommelier'
