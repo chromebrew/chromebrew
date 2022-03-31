@@ -9,27 +9,38 @@ class Smbclient < Package
   source_url 'https://download.samba.org/pub/samba/stable/samba-4.16.0.tar.gz'
   source_sha256 '97c47de35915d1637b254f02643c3230c3e73617851700edc7a2a8c958a3310c'
 
-  depends_on 'avahi'
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_x86_64/smbclient-4.16.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
+     armv7l: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
+     x86_64: 'cf2a5478cec8d024f85dc5fdf22bd802d0c99afbb231157fad47370bcc8d73e4'
+  })
+
+  depends_on 'avahi' # R
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
   depends_on 'docbook_xsl' => :build
   depends_on 'gpgme' => :build
-  depends_on 'jansson'
-  depends_on 'ldb'
-  depends_on 'libbsd'
-  depends_on 'libcap'
-  depends_on 'libunwind'
+  depends_on 'jansson' => :build
+  depends_on 'ldb' # R
+  depends_on 'libbsd' # R
+  depends_on 'libcap' # R
+  depends_on 'libunwind' # R
   depends_on 'liburing' => :build
-  depends_on 'linux_pam'
+  depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
-  depends_on 'perl_parse_yapp' => :build
   depends_on 'perl_json' => :build
-  depends_on 'popt'
-  depends_on 'py3_markdown' => :build
+  depends_on 'perl_parse_yapp' => :build
+  depends_on 'popt' => :build
   depends_on 'py3_dnspython' => :build
-  depends_on 'talloc' => :build
-  depends_on 'tdb' => :build
-  depends_on 'tevent' => :build
+  depends_on 'py3_markdown' => :build
+  depends_on 'talloc' # R
+  depends_on 'tdb' # R
+  depends_on 'tevent' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
