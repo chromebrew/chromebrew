@@ -23,6 +23,7 @@ class Smbclient < Package
   depends_on 'linux_pam'
   depends_on 'lmdb' => :build
   depends_on 'perl_parse_yapp' => :build
+  depends_on 'perl_json' => :build
   depends_on 'popt'
   depends_on 'py3_markdown'
   depends_on 'py3_dnspython'
@@ -49,8 +50,7 @@ class Smbclient < Package
 
   def self.build
     system './configure --help'
-    system "env #{CREW_ENV_OPTIONS}
-      ./configure --enable-fhs \
+    system "python_LDFLAGS='' ./configure --enable-fhs \
       #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc \
       --sbindir=#{CREW_PREFIX}/bin \
