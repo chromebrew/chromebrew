@@ -22,9 +22,9 @@ class Tdb < Package
      x86_64: 'd3e0bf820e71c2a0c6a8630eb215b41049a6595619b0bcc679e615581d6d9904'
   })
 
-  depends_on 'docbook_xsl'
+  depends_on 'docbook_xsl' => :build
   depends_on 'libbsd'
-  depends_on 'libxslt'
+  depends_on 'libxslt' => :build
 
   def self.build
     system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')}"
