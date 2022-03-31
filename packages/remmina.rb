@@ -3,22 +3,23 @@ require 'package'
 class Remmina < Package
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
-  version '1.4.19'
+  version '1.4.25'
   license 'GPL-2+-with-openssl-exception'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
   source_sha256 'a730d5927232818d55c8e094dba69d504faacabab2288d0c5c0c30ee7e89be46'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.19_armv7l/remmina-1.4.19-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.19_armv7l/remmina-1.4.19-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.19_x86_64/remmina-1.4.19-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_armv7l/remmina-1.4.25-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_armv7l/remmina-1.4.25-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_x86_64/remmina-1.4.25-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dab35fcbbc23c18cad70e6410f55add495cdae28056a5f32b135609918f4abf1',
-     armv7l: 'dab35fcbbc23c18cad70e6410f55add495cdae28056a5f32b135609918f4abf1',
-     x86_64: '5c0664d01de495b9e0a8c872d8f510c2523d19bcf9e4c7ae4f0c7c6ad4fcbb6d'
+    aarch64: 'c2a51556cb206a0a2d82daf8859b33e68c5141fa87b62ad3f700ec2a43cac6e3',
+     armv7l: 'c2a51556cb206a0a2d82daf8859b33e68c5141fa87b62ad3f700ec2a43cac6e3',
+     x86_64: '6b280475ba0d8778b5be2be2d697968ce893b12fbf78d448d7431770e8fb718c'
   })
+
 
   depends_on 'avahi'
   depends_on 'freerdp'
@@ -33,13 +34,6 @@ class Remmina < Package
   depends_on 'webkit2gtk_4'
   depends_on 'xdg_utils' => :build
   depends_on 'sommelier'
-
-  def self.patch
-    # https://gitlab.com/Remmina/Remmina/-/issues/2542
-    system "curl -Ls https://gitlab.com/Remmina/Remmina/-/merge_requests/2290.patch | \
-    hashpipe sha256 618b6f759a40293c71cb622bbd16ed673c0474e9238b339095a5957c929e26a9 | \
-    patch -Np1 --binary"
-  end
 
   def self.build
     Dir.mkdir 'builddir'
