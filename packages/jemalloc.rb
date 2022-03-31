@@ -22,7 +22,7 @@ class Jemalloc < Package
      x86_64: '5cd68973fac52dceefe6bd0cd50d1ecb43538206013c4e8c148c9581d1ec753e',
   })
 
-  depends_on 'libxslt'
+  depends_on 'libxslt' => :build
 
   def self.build
     system './configure',

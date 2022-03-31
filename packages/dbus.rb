@@ -22,10 +22,10 @@ class Dbus < Package
      x86_64: '3a459724ba6e7f14eacc089fb5500b20b7857aa3034cfc58edf2450ad8ac1c02'
   })
 
-  depends_on 'expat' # R
-  depends_on 'libice' # R
-  depends_on 'libsm' # R
-  depends_on 'libx11' # R
+  depends_on 'expat' => :build
+  depends_on 'libice' => :build
+  depends_on 'libsm' => :build
+  depends_on 'libx11' => :build
 
   def self.patch
     system 'filefix'

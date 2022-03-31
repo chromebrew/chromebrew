@@ -3,7 +3,7 @@ require 'package'
 class Libcap < Package
   description 'Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.'
   homepage 'https://directory.fsf.org/wiki/Libcap/'
-  @_ver = '2.62'
+  @_ver = '2.63'
   version @_ver
   license 'GPL-2 or BSD'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Libcap < Package
   git_hashtag "libcap-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_armv7l/libcap-2.62-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_armv7l/libcap-2.62-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_i686/libcap-2.62-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.62_x86_64/libcap-2.62-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.63_armv7l/libcap-2.63-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.63_armv7l/libcap-2.63-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.63_i686/libcap-2.63-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.63_x86_64/libcap-2.63-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ad1ba9eeb6311aa50cae4933861e6ef3c6660114f8f59fae8b38ec33cf52f4ba',
-     armv7l: 'ad1ba9eeb6311aa50cae4933861e6ef3c6660114f8f59fae8b38ec33cf52f4ba',
-       i686: 'fde7113445a251b6109911cbd5de39300ec2469091cdaea6bc6a57e726e0ef86',
-     x86_64: '3964a327f72a3323e1a192d5fbe4020f29e83ede75347e0d65582ace36f4f66b'
+    aarch64: 'b090422c28aa929a2a585c73739eda6c8c953379ecb0b90f1f596ad5e37706de',
+     armv7l: 'b090422c28aa929a2a585c73739eda6c8c953379ecb0b90f1f596ad5e37706de',
+       i686: '235e7deaec2896dd3db2af3b851699c1fd4dd680b6e2e02d91b895d54ca6d01b',
+     x86_64: '2e306e64bf4f170ad232ab0a64de65a5c4dbbb877ce6f5d7e7ebaa57c39acdde'
   })
 
   depends_on 'gperf' => :build
