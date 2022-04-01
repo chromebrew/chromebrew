@@ -22,7 +22,7 @@ class Gtk_vnc < Package
      x86_64: '5001d552bfa4155bf2c77a1e1a7ee4714125566db0b9ce1e3e3c5e88ace8057d'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'glib'
   depends_on 'gobject_introspection'
   depends_on 'gtk3'

@@ -23,7 +23,7 @@ class Ghostscript < Package
   })
 
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'cups'
   depends_on 'fontconfig'
   depends_on 'freetype'

@@ -25,7 +25,7 @@ class Gnome_autoar < Package
 
   depends_on 'atk'
   depends_on 'autoconf_archive' => :build
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build

@@ -25,7 +25,7 @@ class Yelp < Package
 
   depends_on 'appstream_glib'
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gtk3'

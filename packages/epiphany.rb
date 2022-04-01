@@ -24,7 +24,7 @@ class Epiphany < Package
   })
 
   depends_on 'atk' # R
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'docbook_xml' => :build
   depends_on 'freetype' => :build
   depends_on 'gcr' # R

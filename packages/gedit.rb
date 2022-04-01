@@ -24,7 +24,7 @@ class Gedit < Package
 
   depends_on 'amtk' # R
   depends_on 'atk' # R
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R

@@ -23,7 +23,7 @@ class Cairomm_1_0 < Package
      x86_64: '3ec47e52333e93b341c65d1af2d58bb51c6d60a9b4023b20b2b8c04fd5a42b5e'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'libsigcplusplus3'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'

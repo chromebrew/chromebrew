@@ -21,7 +21,7 @@ class Igt_gpu_tools < Package
 
   depends_on 'libdrm'
   depends_on 'libpciaccess'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'libxrandr'
   depends_on 'procps'
   depends_on 'libkmod'

@@ -23,7 +23,7 @@ class Py3_pycairo < Package
      x86_64: 'bdedb23f949e4bdcea77d3a1018d26bb1492b4498f383e6fc704e697b648e579'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'
   depends_on 'py3_setuptools' => :build

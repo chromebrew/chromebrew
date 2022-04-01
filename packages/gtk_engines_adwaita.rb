@@ -24,7 +24,7 @@ class Gtk_engines_adwaita < Package
   depends_on 'gtk2'
   depends_on 'librsvg'
   depends_on 'gdk_pixbuf'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
 
   def self.build
     system 'sh autogen.sh'

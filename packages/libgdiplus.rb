@@ -22,7 +22,7 @@ class Libgdiplus < Package
      x86_64: '9c4f2e47dc4f95c88a188838cef7a5424fd272177d8eb4a7d32dfbeb212fc0b6'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'giflib'

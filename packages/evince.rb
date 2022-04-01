@@ -26,7 +26,7 @@ class Evince < Package
   })
 
   depends_on 'atk' # R
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'djvulibre' # R
   depends_on 'docbook_xsl' => :build
   depends_on 'gdk_pixbuf' # R

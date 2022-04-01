@@ -24,7 +24,7 @@ class Pango < Package
   })
 
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'fribidi' # Gets built inside install automatically.

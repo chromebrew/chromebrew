@@ -22,7 +22,7 @@ class Gtksourceview_4 < Package
   })
 
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'fribidi'

@@ -16,7 +16,7 @@ class Darktable < Package
     x86_64: '793e78e4d9859fdbc72e7490b8a5395409dd5d941dcbfafefdd0a5317cb4b832',
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'colord'
   depends_on 'libcurl'
   depends_on 'dbus_glib'

@@ -22,7 +22,7 @@ class Libdazzle < Package
      x86_64: '38c0d450cd7aacacb4f556f328d87e3b110189914906fff6e814e6d4cc5cacec'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gtk3'

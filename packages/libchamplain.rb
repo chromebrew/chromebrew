@@ -26,7 +26,7 @@ class Libchamplain < Package
 
   depends_on 'clutter_gtk'
   depends_on 'libsoup'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'vala' => :build

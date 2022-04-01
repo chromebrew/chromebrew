@@ -24,7 +24,7 @@ class Ibus < Package
   })
 
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'dconf'
   depends_on 'fontconfig'
   depends_on 'freetype'

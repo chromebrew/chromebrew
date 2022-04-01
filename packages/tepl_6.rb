@@ -23,7 +23,7 @@ class Tepl_6 < Package
   })
 
   depends_on 'amtk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'glib'
   depends_on 'gtk3'
   depends_on 'gtksourceview'

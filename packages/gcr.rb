@@ -23,7 +23,7 @@ class Gcr < Package
      x86_64: 'a7a7c8ecd1472f17269e33624ba2e91ca4dd699613f833ce9b566889a81ab45f'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'desktop_file_utilities'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'

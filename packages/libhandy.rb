@@ -24,7 +24,7 @@ class Libhandy < Package
   })
 
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'fribidi'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'

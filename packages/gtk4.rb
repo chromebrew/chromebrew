@@ -43,7 +43,7 @@ class Gtk4 < Package
   depends_on 'hicolor_icon_theme' # L
   depends_on 'shared_mime_info' # L
   depends_on 'xdg_base' # L
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'cups' # R
   depends_on 'ffmpeg' # R
   depends_on 'fontconfig' # R

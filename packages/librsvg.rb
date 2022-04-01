@@ -22,7 +22,7 @@ class Librsvg < Package
      x86_64: 'dccf2e623cfb6da4c6995a3b0ad0fe8563a0126ed1e6fd4ecd8764ce15101245'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'harfbuzz' => :build

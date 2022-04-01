@@ -24,7 +24,7 @@ class Webkit2gtk_4 < Package
   })
 
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant'

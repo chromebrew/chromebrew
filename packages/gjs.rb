@@ -24,7 +24,7 @@ class Gjs < Package
      x86_64: '84cf5ab2dbe09170b7a60dc005988d97cbc573e064484935d91de910e3402d00'
   })
 
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'dbus' => :build
   depends_on 'dconf' => :build
   depends_on 'glib' # R

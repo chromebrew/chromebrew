@@ -19,7 +19,7 @@ class Firefox < Package
   no_compile_needed
 
   depends_on 'atk'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'dbus'
   depends_on 'dbus_glib'
   depends_on 'fontconfig'

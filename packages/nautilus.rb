@@ -28,7 +28,7 @@ class Nautilus < Package
 
   depends_on 'appstream_glib' => :build
   depends_on 'atk' # R
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'dconf'
   depends_on 'gdk_pixbuf' # R
   depends_on 'gexiv2' # R

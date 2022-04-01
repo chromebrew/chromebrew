@@ -21,7 +21,7 @@ class Codium < Package
   depends_on 'atk'
   depends_on 'at_spi2_atk'
   depends_on 'at_spi2_core'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'cups'
   depends_on 'dbus'
   depends_on 'gdk_pixbuf'

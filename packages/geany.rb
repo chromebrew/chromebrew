@@ -23,7 +23,7 @@ class Geany < Package
   })
 
   depends_on 'atk' # R
-  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'gtk3' # R

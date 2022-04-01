@@ -23,7 +23,7 @@ class Poppler < Package
      x86_64: 'f44903cd9abb9a0c58ef0f9554f5f877752cfbbc701620b1a81ef7c71e049b93'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'glib'

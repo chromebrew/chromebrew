@@ -22,7 +22,7 @@ class Appstream_glib < Package
      x86_64: 'bde94624a342e2db10151ec317e0d719a99638e76385be0b42f4b691f19949d5'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'docbook'
   depends_on 'fontconfig'
   depends_on 'freetype'

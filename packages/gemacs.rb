@@ -25,7 +25,7 @@ class Gemacs < Package
   })
 
   depends_on 'alsa_lib'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'freetype' => :build
   depends_on 'giflib'
   depends_on 'gpm'

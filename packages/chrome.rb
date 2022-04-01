@@ -10,7 +10,7 @@ class Chrome < Package
   source_sha256 '05ba6d17d2704ffff1e1d554b40aaddabca9256b7e63ff73e99c469393de8a1f'
 
   depends_on 'nspr'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gtk3'
   depends_on 'expat'
   depends_on 'cras'

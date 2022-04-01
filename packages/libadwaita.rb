@@ -23,7 +23,7 @@ class Libadwaita < Package
      x86_64: 'd828e672cbf543de90112d024cf2db87ac2d38f68ccbab2d970f01059189b057'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build

@@ -24,7 +24,7 @@ class Gegl < Package
 
   depends_on 'asciidoc'
   depends_on 'babl'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'enscript'
   depends_on 'ffmpeg'
   depends_on 'gdk_pixbuf'

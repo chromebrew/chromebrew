@@ -22,7 +22,7 @@ class Freerdp < Package
      x86_64: '46cf60d78f89cd9adab7d71a8d2d204a0633efef5362eacf8d1085f131bc0eac'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'cups'
   depends_on 'faac'
   depends_on 'faad2'

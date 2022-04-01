@@ -21,7 +21,7 @@ class Dia < Package
   })
 
   depends_on 'optipng' => :build
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'gtk2'
   depends_on 'libart'
   depends_on 'libpng'

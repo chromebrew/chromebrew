@@ -22,7 +22,7 @@ class A2png < Package
      x86_64: 'b468b226e28cf717c3f38435849bf737067a8b9ec3c1928c01fed5488bb31464',
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
 
   def self.build
     system "./configure \

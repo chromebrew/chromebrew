@@ -10,7 +10,7 @@ class Tcpflow < Package
   source_sha256 '20abe3353a49a13dcde17ad318d839df6312aa6e958203ea710b37bede33d988'
 
   depends_on 'boost'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'libpcap'
 
   binary_url ({

@@ -26,7 +26,7 @@ class Gimp < Package
   depends_on 'alsa_lib'
   depends_on 'atk'
   depends_on 'babl'
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'ffmpeg'
   depends_on 'fontconfig'
   depends_on 'freetype'

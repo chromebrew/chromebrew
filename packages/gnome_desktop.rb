@@ -22,7 +22,7 @@ class Gnome_desktop < Package
      x86_64: 'c9dc4e63cc3c1e16a957e37064fd2efed590b96b5bb58b8fe3004ea2dcf825f2'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'eudev'
   depends_on 'gdk_pixbuf'
   depends_on 'glib'

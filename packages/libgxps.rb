@@ -25,7 +25,7 @@ class Libgxps < Package
      x86_64: '87bf32455bded966594a39131bf79ad198e06617df4ccc0327932c413b3d78b6'
   })
 
-  depends_on 'cairo'
+  depends_on 'harfbuzz'
   depends_on 'cups'
   depends_on 'fontconfig'
   depends_on 'freetype'
