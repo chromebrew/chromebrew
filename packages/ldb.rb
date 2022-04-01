@@ -6,23 +6,23 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  version '2.3.0'
+  version '2.5.0'
   license 'GPLv3'
   compatibility 'all'
   source_url "https://samba.org/ftp/ldb/ldb-#{version}.tar.gz"
-  source_sha256 'a4d308b3d0922ef01f3661a69ebc373e772374defa76cf0979ad21b21f91922d'
+  source_sha256 '583ec548fc9cac4596dcd8b510408cdda2a8f85c02e672d0f9dce6a7364faa5e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_armv7l/ldb-2.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_i686/ldb-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.3.0_x86_64/ldb-2.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_armv7l/ldb-2.5.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_armv7l/ldb-2.5.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_i686/ldb-2.5.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_x86_64/ldb-2.5.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a21f075d2ecc39ccb53e97433c4cdbe3474054f773ea31735c9ef1227e05ae9e',
-     armv7l: 'a21f075d2ecc39ccb53e97433c4cdbe3474054f773ea31735c9ef1227e05ae9e',
-       i686: '4f4e782aa74c6ff93f20c0ab13858ea295094e547169336ec3d0cc34e6e1b3d2',
-     x86_64: '509439aae3a82f99825414bac49b704d6fec0f95c67e8b2532001e011ce2d288'
+    aarch64: 'c07b01c496e6ec532e654ca9d7f22aeca3d8ef79645ada44fd6457b4a64f4bb7',
+     armv7l: 'c07b01c496e6ec532e654ca9d7f22aeca3d8ef79645ada44fd6457b4a64f4bb7',
+       i686: 'd0de89fd2485e5963f9ee7f0626c2057fc8b52685003963ab75ce43f4c06d08b',
+     x86_64: '5e714041f50e093916d5ec22760b40342dee7340ddd75cf3f0952dcc3e6e03ad'
   })
 
   depends_on 'cmocka' => :build
@@ -36,10 +36,7 @@ class Ldb < Package
   depends_on 'tevent'
 
   def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
       --localstatedir=#{CREW_PREFIX}/var \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
