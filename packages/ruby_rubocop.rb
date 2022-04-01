@@ -11,7 +11,6 @@ class Ruby_rubocop < Package
   source_url 'https://github.com/rubocop/rubocop.git'
   git_hashtag "v#{version}"
 
-
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.26.1_armv7l/ruby_rubocop-1.26.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.26.1_armv7l/ruby_rubocop-1.26.1-chromeos-armv7l.tar.zst',
@@ -19,10 +18,10 @@ class Ruby_rubocop < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.26.1_x86_64/ruby_rubocop-1.26.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c81b0e5bee7f31d632c5e5a6159331eef36a839aa56d3cd98217161ea1ba1b6e',
-     armv7l: 'c81b0e5bee7f31d632c5e5a6159331eef36a839aa56d3cd98217161ea1ba1b6e',
-       i686: '61e75cfeaa580f4f78e94dfbee12186331b412721244cfc0d7660bd9338040d9',
-     x86_64: '66c9134d10ee390f53449edf863cdc1a58be3af8ed8fda6571aa4228244d45a3'
+    aarch64: '751d173e446bf5e478b5cf75d0d2bcf3ca67e8a0fbb602667c4e3d224e938c5c',
+     armv7l: '751d173e446bf5e478b5cf75d0d2bcf3ca67e8a0fbb602667c4e3d224e938c5c',
+       i686: '3ba763b890c2bb0a39cd07567bc248b7dc4b12242537e817ef1650b4fb2ce6bc',
+     x86_64: '43962c9f3309ab26545e693ee1bfa04af0198141305a73939428d86e30086397'
   })
 
   no_fhs
@@ -41,10 +40,10 @@ class Ruby_rubocop < Package
 
   def self.install
     system "gem install --build=#{CREW_DEST_DIR} pkg/rubocop-#{version}.gem"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocup"
-    system "curl -Ls https://github.com/satmandu/chromebrew/raw/rubocop_yaml/.rubocop.yml > #{CREW_DEST_PREFIX}/.config/rubocup/config.yml"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
+    system "curl -Ls https://github.com/satmandu/chromebrew/raw/rubocop_yaml/.rubocop.yml > #{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
     # Uncomment after merge
-    # system "curl -Ls https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml > #{CREW_DEST_PREFIX}/.config/rubocup/config.yml"
+    # system "curl -Ls https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml > #{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 
   def self.postinstall
