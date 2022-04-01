@@ -1,26 +1,26 @@
 require 'package'
 
 class Openconnect < Package
-  version '7.08-1'
+  version '8.20'
   description 'OpenConnect is an SSL VPN client initially created to support Cisco\'s AnyConnect SSL VPN.'
   homepage 'http://www.infradead.org/openconnect/'
   compatibility 'all'
   license 'LGPL-2.1 and GPL-2'
-  source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-7.08.tar.gz'
-  source_sha256 '1c44ec1f37a6a025d1ca726b9555649417f1d31a46f747922b84099ace628a03'
+  source_url 'ftp://ftp.infradead.org/pub/openconnect/openconnect-8.20.tar.gz'
+  source_sha256 'c1452384c6f796baee45d4e919ae1bfc281d6c88862e1f646a2cc513fc44e58b'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_armv7l/openconnect-7.08-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_armv7l/openconnect-7.08-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_i686/openconnect-7.08-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_x86_64/openconnect-7.08-1-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: 'ca2e5a3d1deaa91670d114f94afb6a20e155efe6fbbaf24c0c7ab998711236dc',
-     armv7l: 'ca2e5a3d1deaa91670d114f94afb6a20e155efe6fbbaf24c0c7ab998711236dc',
-       i686: 'bd5819451328a81e4a1e78db9964cabbb8e84c1d97679e7699c8b3dced4267cf',
-     x86_64: 'e76d8af2e66e08618b40ca788442dcd317dc334c145748332ce3fcd5f03ddf29',
-  })
+#  binary_url ({
+#    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_armv7l/openconnect-7.08-1-chromeos-armv7l.tar.xz',
+#     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_armv7l/openconnect-7.08-1-chromeos-armv7l.tar.xz',
+#       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_i686/openconnect-7.08-1-chromeos-i686.tar.xz',
+#     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/7.08-1_x86_64/openconnect-7.08-1-chromeos-x86_64.tar.xz',
+#  })
+#  binary_sha256 ({
+#    aarch64: 'ca2e5a3d1deaa91670d114f94afb6a20e155efe6fbbaf24c0c7ab998711236dc',
+#     armv7l: 'ca2e5a3d1deaa91670d114f94afb6a20e155efe6fbbaf24c0c7ab998711236dc',
+#       i686: 'bd5819451328a81e4a1e78db9964cabbb8e84c1d97679e7699c8b3dced4267cf',
+#     x86_64: 'e76d8af2e66e08618b40ca788442dcd317dc334c145748332ce3fcd5f03ddf29',
+#  })
 
   depends_on 'libproxy'
   depends_on 'libxml2'
