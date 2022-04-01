@@ -9,19 +9,6 @@ class Freetype < Package
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
   git_hashtag "VER-#{version.tr('.', '-')}"
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.1_armv7l/freetype-2.11.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.1_armv7l/freetype-2.11.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.1_i686/freetype-2.11.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.11.1_x86_64/freetype-2.11.1-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '5fb990e84010805de92eda4efac6b0cf183c8dee02eda7b2d1ed183028d0e857',
-     armv7l: '5fb990e84010805de92eda4efac6b0cf183c8dee02eda7b2d1ed183028d0e857',
-       i686: '2961cc77104f9a1eccd75905e957644ef1b21ef93fab368cbd1ed31c022dc43c',
-     x86_64: '3c2492c222856b9a45bc8eaec55398f59e49062f8b3c9e45edc8b129d38c641b'
-  })
-
   depends_on 'brotli'
   depends_on 'bz2'
   depends_on 'expat'

@@ -18,6 +18,7 @@ class Harfbuzz < Package
   depends_on 'gcc11'
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
+  depends_on 'fontconfig'
   depends_on 'graphite'
   depends_on 'icu4c'
   depends_on 'libffi'
@@ -26,6 +27,7 @@ class Harfbuzz < Package
   depends_on 'py3_six' => :build
   depends_on 'zlibpkg'
   no_env_options
+  conflicts_ok
 
   def self.patch
     # Update to new versions of freetype as they come out.
