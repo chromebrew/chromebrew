@@ -259,6 +259,11 @@ url: https://github.com/asciinema/asciinema/releases
 activity: medium
 ---
 kind: url
+name: asmc
+url: https://github.com/nidud/asmc
+activity: medium
+---
+kind: url
 name: aspell
 url: https://ftpmirror.gnu.org/aspell
 activity: medium
@@ -1479,6 +1484,11 @@ url: https://feh.finalrewind.org/
 activity: medium
 ---
 kind: url
+name: ferdi
+url: https://github.com/getferdi/ferdi/releases
+activity: high
+---
+kind: url
 name: fetch
 url: https://github.com/gruntwork-io/fetch/releases
 activity: low
@@ -1800,11 +1810,6 @@ activity: medium
 ---
 kind: url
 name: freetype
-url: http://download.savannah.gnu.org/releases/freetype
-activity: medium
----
-kind: url
-name: freetype_sub
 url: http://download.savannah.gnu.org/releases/freetype
 activity: medium
 ---
@@ -3134,6 +3139,11 @@ url: http://web.mit.edu/kerberos/dist/krb5
 activity: low
 ---
 kind: url
+name: krita
+url: https://download.kde.org/stable/krita/
+activity: medium
+---
+kind: url
 name: kubectl
 url: https://github.com/kubernetes/kubernetes/releases
 activity: high
@@ -4037,11 +4047,6 @@ kind: url
 name: libplist
 url: http://www.libimobiledevice.org/
 activity: none
----
-kind: url
-name: libpng
-url: https://sourceforge.net/projects/libpng/files/libpng16
-activity: low
 ---
 kind: url
 name: libportal
@@ -5579,11 +5584,6 @@ url: https://github.com/p11-glue/p11-kit/releases
 activity: medium
 ---
 kind: url
-name: p7zip
-url: https://sourceforge.net/projects/p7zip/files/p7zip/
-activity: none
----
-kind: url
 name: p7zip_gui
 url: https://sourceforge.net/projects/p7zip/files/p7zip/
 activity: none
@@ -5729,6 +5729,11 @@ url: https://gitlab.com/pdftk-java/pdftk/-/tags
 activity: low
 ---
 kind: url
+name: pdm
+url: https://github.com/pdm-project/pdm/releases
+activity: high
+---
+kind: url
 name: peazip
 url: https://github.com/peazip/PeaZip/releases/
 activity: high
@@ -5769,6 +5774,11 @@ url: http://www.cpan.org/src
 activity: medium
 ---
 kind: url
+name: perl_app_cpanminus
+url: https://metacpan.org/pod/App::cpanminus
+activity: low
+---
+kind: url
 name: perl_carp_clan
 url: https://metacpan.org/pod/Carp::Clan
 activity: low
@@ -5794,13 +5804,13 @@ url: https://metacpan.org/pod/File::Tail
 activity: low
 ---
 kind: url
-name: perl_gcstring_linebreak
-url: https://github.com/hatukanezumi/Unicode-LineBreak/releases
-activity: none
----
-kind: url
 name: perl_io_socket_ssl
 url: https://cpan.metacpan.org/authors/id/S/SU/SULLR/
+activity: low
+---
+kind: url
+name: perl_json
+url: https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/
 activity: low
 ---
 kind: url
@@ -5839,11 +5849,6 @@ url: https://metacpan.org/pod/Pod::Parser
 activity: none
 ---
 kind: url
-name: perl_read_key
-url: https://github.com/jonathanstowe/TermReadKey/releases
-activity: none
----
-kind: url
 name: perl_sgmls
 url: http://search.cpan.org/CPAN/authors/id/R/RA/RAAB/
 activity: none
@@ -5854,13 +5859,13 @@ url: https://ftp.gnu.org/gnu/stow
 activity: none
 ---
 kind: url
-name: perl_term_ansicolor
-url: https://github.com/rra/ansicolor/releases
+name: perl_term_readkey
+url: https://metacpan.org/pod/Term::ReadKey
 activity: none
 ---
 kind: url
-name: perl_term_readkey
-url: https://metacpan.org/pod/Term::ReadKey
+name: perl_test_output
+url: https://cpan.metacpan.org/authors/id/B/BD/BDFOY/
 activity: none
 ---
 kind: url
@@ -5879,13 +5884,18 @@ url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
 activity: none
 ---
 kind: url
-name: perl_time_hires
-url: https://cpan.metacpan.org/authors/id/J/JH/JHI/
+name: perl_unicode_eastasianwidth
+url: https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/
 activity: none
 ---
 kind: url
-name: perl_unicode_eastasianwidth
-url: https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/
+name: perl_unicode_linebreak
+url: https://github.com/hatukanezumi/Unicode-LineBreak/tags
+activity: none
+---
+kind: url
+name: perl_xml_namespacesupport
+url: https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/
 activity: none
 ---
 kind: url
@@ -5894,7 +5904,12 @@ url: https://cpan.metacpan.org/authors/id/T/TO/TODDR/
 activity: none
 ---
 kind: url
-name: perl_xml_sax_parserfactory
+name: perl_xml_sax
+url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
+activity: none
+---
+kind: url
+name: perl_xml_sax_base
 url: https://cpan.metacpan.org/authors/id/G/GR/GRANTM/
 activity: none
 ---
@@ -5972,6 +5987,11 @@ kind: url
 name: pixz
 url: https://github.com/vasi/pixz/releases
 activity: low
+---
+kind: url
+name: pkg_7_zip
+url: https://www.7-zip.org/download.html
+activity: medium
 ---
 kind: url
 name: pkgconf
@@ -6344,11 +6364,6 @@ url: https://github.com/radare/radare2/releases
 activity: medium
 ---
 kind: url
-name: ragel
-url: https://www.colm.net/files/ragel/
-activity: low
----
-kind: url
 name: ranger
 url: https://github.com/ranger/ranger/releases
 activity: low
@@ -6442,6 +6457,11 @@ kind: url
 name: rhino
 url: https://github.com/mozilla/rhino/releases
 activity: medium
+---
+kind: url
+name: rhythmbox
+url: https://download.gnome.org/sources/rhythmbox/
+activity: none
 ---
 kind: url
 name: ripgrep
@@ -6717,6 +6737,11 @@ kind: url
 name: siege
 url: http://download.joedog.org/siege/
 activity: low
+---
+kind: url
+name: signal_desktop
+url: https://signal.org/download/
+activity: medium
 ---
 kind: url
 name: skype
@@ -7271,6 +7296,11 @@ activity: high
 kind: url
 name: tpp
 url: http://www.ngolde.de/download/
+activity: none
+---
+kind: url
+name: totem_pl_parser
+url: https://download.gnome.org/sources/totem-pl-parser/
 activity: none
 ---
 kind: url
@@ -7976,6 +8006,11 @@ activity: low
 kind: url
 name: xprop
 url: https://www.x.org/archive/individual/app
+activity: low
+---
+kind: url
+name: xrdb
+url: https://gitlab.freedesktop.org/xorg/app/xrdb/-/tags
 activity: low
 ---
 kind: url
