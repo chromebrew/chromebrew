@@ -50,7 +50,7 @@ class Ruby_rubocop < Package
   end
 
   def self.postinstall
-    @gem_name = self.name.sub('ruby_','')
+    @gem_name = name.sub('ruby_', '')
     system "gem install -N #{@gem_name} --conservative"
 
     puts "Installing Chromebrew rubocop config file at #{@xdg_config_home}/rubocop/config.yml".lightblue
@@ -63,9 +63,12 @@ class Ruby_rubocop < Package
   end
 
   def self.remove
-    @gem_name = self.name.sub('ruby_','')
+    @gem_name = name.sub('ruby_', '')
     @gems_deps = `gem dependency ^#{@gem_name}\$ | awk '{print \$1}'`.chomp
-    @gems = @gems_deps.split("\n").drop(1).append("#{@gem_name}")
+    # Delete the first line and convert to an array.
+    @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
+    # bundler never gets uninstalled, though gem dependency lists it for
+    # every package, so delete it from the list.
     @gems.delete('bundler')
     @gems.each do |gem|
       system "gem uninstall -Dx --force --abort-on-dependent #{gem} || true"
