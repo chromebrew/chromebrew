@@ -16,10 +16,10 @@ class Openconnect < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/8.20_x86_64/openconnect-8.20-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bb45e718b9914acf5f1889b626a917dec49b0c8285e5eb58af65607e0edf621e',
-     armv7l: 'bb45e718b9914acf5f1889b626a917dec49b0c8285e5eb58af65607e0edf621e',
-       i686: '97f6762dc14e2c81a4a71f82d86088977f2a4480083dc6bb645c173b4f173d25',
-     x86_64: '582987c2bfd9b7339b82cb062b7d0cf2b0ded671215d11b248fd503442734681'
+    aarch64: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
+     armv7l: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
+       i686: 'db5f8d1cc5ec07af4ce4dccd22e319beaf100a1bea4dde73eacc36d73fb685cc',
+     x86_64: '6f25b14be33eca8f53eb142dbda5b6df2db7c6b1dd6e5d000740e69979c7df10'
   })
 
   depends_on 'libproxy'
@@ -43,7 +43,7 @@ class Openconnect < Package
       if test "$1"; then
         echo "Restarting ChromeOS shill process such that it does not kill the vpn network device."
         sudo stop shill
-        sudo start shill BLACKLISTED_DEVICES="tun0,br0"
+        sudo start shill BLOCKED_DEVICES="tun0,br0"
         timeout=10
         echo "Sleeping $timeout seconds to allow ChromeOS to reconnect to the network."
         while [ $timeout -gt 0 ]; do
