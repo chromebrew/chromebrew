@@ -44,9 +44,9 @@ class Ruby_rubocop < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
 
     # Remove following line after merge of this PR.
-    system "curl -Lsf https://github.com/satmandu/chromebrew/raw/rubocop_yaml/.rubocop.yml -o #{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
+    downloader 'https://github.com/satmandu/chromebrew/raw/rubocop_yaml/.rubocop.yml', 'SKIP', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
     # Uncomment after merge
-    # system "curl -Lsf https://github.com/skycocker/chromebrew/raw/master/.rubocop.yml -o #{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
+    # downloader 'https://github.com/skycocker/chromebrew/raw/master/.rubocop.yml', 'SKIP', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 
   def self.postinstall
@@ -57,9 +57,9 @@ class Ruby_rubocop < Package
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
     FileUtils.mkdir_p "#{@xdg_config_home}/rubocop"
     # Remove following line after merge of this PR.
-    system "curl -Lsf https://github.com/satmandu/chromebrew/raw/rubocop_yaml/.rubocop.yml -o #{@xdg_config_home}/rubocop/config.yml"
+    downloader 'https://github.com/satmandu/chromebrew/raw/rubocop_yaml/.rubocop.yml', 'SKIP', "#{@xdg_config_home}/rubocop/config.yml"
     # Uncomment after merge
-    # system "curl -Lsf https://github.com/skycocker/chromebrew/raw/master/.rubocop.yml -o #{@xdg_config_home}/rubocop/config.yml"
+    # downloader 'https://github.com/skycocker/chromebrew/raw/master/.rubocop.yml', 'SKIP', "#{@xdg_config_home}/rubocop/config.yml"
   end
 
   def self.remove
