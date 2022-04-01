@@ -10,13 +10,15 @@ class Smbclient < Package
   source_sha256 '97c47de35915d1637b254f02643c3230c3e73617851700edc7a2a8c958a3310c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.14.4_armv7l/smbclient-4.14.4-chromeos-armv7l.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_armv7l/smbclient-4.16.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_armv7l/smbclient-4.16.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_i686/smbclient-4.16.0-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_x86_64/smbclient-4.16.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
-     armv7l: '22d24a7a51efc97853ed1b7b110a84b099efd7b465dbf46194a406fc9af6b8d5',
+    aarch64: '984271933e93cff22899d51494abceccce92aa98b94d040ed7f8159ae890ef2a',
+     armv7l: '984271933e93cff22899d51494abceccce92aa98b94d040ed7f8159ae890ef2a',
+       i686: '050592f2bab1c417a23b1d6571330e97ac644d0dceadbbcffd0cca5c71b434db',
      x86_64: 'cf2a5478cec8d024f85dc5fdf22bd802d0c99afbb231157fad47370bcc8d73e4'
   })
 
