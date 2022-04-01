@@ -21,6 +21,7 @@ class Harfbuzz < Package
   depends_on 'graphite'
   depends_on 'icu4c'
   depends_on 'libffi'
+  depends_on 'pixman' # via cairo subproject
   depends_on 'pcre'
   depends_on 'py3_six' => :build
   depends_on 'zlibpkg'
