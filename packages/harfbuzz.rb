@@ -8,10 +8,22 @@ class Harfbuzz < Package
   license 'Old-MIT, ISC and icu'
   compatibility 'all'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.2.0_armv7l/harfbuzz-4.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.2.0_armv7l/harfbuzz-4.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.2.0_i686/harfbuzz-4.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.2.0_x86_64/harfbuzz-4.2.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '0e2f9f45e620ec75db77481292a90273ad79b5afeca3c07afb24568917cef9c9',
+     armv7l: '0e2f9f45e620ec75db77481292a90273ad79b5afeca3c07afb24568917cef9c9',
+       i686: '14c173bb67126e2b0a862dd61b1071a7e3520d3235b923c9c95dd33a0564ac2d',
+     x86_64: 'ae8e1ceb094880512c493f8a8559ec1162393a06756b8363517d39343086c684'
+  })
   git_hashtag @_ver
 
   # provides libpng, freetype (sans harfbuzz), ragel, and cairo
-  # depends_on 'cairo' => :build (cairo is only needed for tests and tools)
   depends_on 'brotli'
   depends_on 'bz2'
   depends_on 'chafa'
@@ -22,7 +34,7 @@ class Harfbuzz < Package
   depends_on 'graphite'
   depends_on 'icu4c'
   depends_on 'libffi'
-  depends_on 'pixman' # via cairo subproject
+  depends_on 'pixman' # Needed for cairo subproject
   depends_on 'pcre'
   depends_on 'py3_six' => :build
   depends_on 'zlibpkg'

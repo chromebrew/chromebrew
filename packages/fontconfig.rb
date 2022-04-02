@@ -10,12 +10,26 @@ class Fontconfig < Package
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_armv7l/fontconfig-2.14.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_armv7l/fontconfig-2.14.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_i686/fontconfig-2.14.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_x86_64/fontconfig-2.14.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '73da87e4645d2fb31682be0d4d58ba7dfab33bf5e7eebb3725b64dac9bbe0482',
+     armv7l: '73da87e4645d2fb31682be0d4d58ba7dfab33bf5e7eebb3725b64dac9bbe0482',
+       i686: '47f744211b28c0a5f44ec9f02a629310dc8952607d7481fb2c7a96374b16e4ad',
+     x86_64: 'bb28212f219e29c3bfd670189813e46f8d46ba79cd88259004dd4b6ad5f1f411'
+  })
+
+
+
   depends_on 'gperf'
   depends_on 'jsonc'
   depends_on 'util_linux'
   depends_on 'graphite'
   no_fhs
-  conflicts_ok # This will overwrite fontconfig built from harfbuzz
 
   # Remove fontconfig before rebuilding this package.
 
@@ -63,13 +77,9 @@ class Fontconfig < Package
       export FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts
     EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/fontconfig", @env)
-    #system "find #{CREW_DEST_DIR} -depth -name 'libpng*' -exec rm -r '{}' \\\;"
-    #system "find #{CREW_DEST_DIR} -depth -name '*freetype*' -exec rm -r '{}' \\\;"
   end
 
   def self.postinstall
-    # Need to remove conflicting files from harfbuzz filelist.
-
     # The following postinstall fails if graphite isn't installed when fontconfig
     # is being installed.
     system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"
