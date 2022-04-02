@@ -19,6 +19,7 @@ class Cairo < Package
   depends_on 'lzo'
   depends_on 'mesa'
   depends_on 'pixman'
+  conflicts_ok # because this overwrites the limited cairo from harfbuzz
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
