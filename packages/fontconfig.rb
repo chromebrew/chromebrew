@@ -3,7 +3,7 @@ require 'package'
 class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
-  @_ver = '2.13.96'
+  @_ver = '2.14.0'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,20 +11,21 @@ class Fontconfig < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.96_armv7l/fontconfig-2.13.96-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.96_armv7l/fontconfig-2.13.96-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.96_i686/fontconfig-2.13.96-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.13.96_x86_64/fontconfig-2.13.96-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_armv7l/fontconfig-2.14.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_armv7l/fontconfig-2.14.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_i686/fontconfig-2.14.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_x86_64/fontconfig-2.14.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ee7900160a576c6402191b39c4a1764691d1eb97f18c19e0117bf2fd9fc0435c',
-     armv7l: 'ee7900160a576c6402191b39c4a1764691d1eb97f18c19e0117bf2fd9fc0435c',
-       i686: '5dc551362bc72fdcbd7734812e62d5035a97fee9b733b6690cae2286e6d4d69d',
-     x86_64: '0c0f777ba5352f92851c70a010b25824fa269dab2b389b95f823e03d890f4b15'
+    aarch64: '73da87e4645d2fb31682be0d4d58ba7dfab33bf5e7eebb3725b64dac9bbe0482',
+     armv7l: '73da87e4645d2fb31682be0d4d58ba7dfab33bf5e7eebb3725b64dac9bbe0482',
+       i686: '47f744211b28c0a5f44ec9f02a629310dc8952607d7481fb2c7a96374b16e4ad',
+     x86_64: 'bb28212f219e29c3bfd670189813e46f8d46ba79cd88259004dd4b6ad5f1f411'
   })
 
+
+
   depends_on 'gperf'
-  depends_on 'harfbuzz' => :build
   depends_on 'jsonc'
   depends_on 'util_linux'
   depends_on 'graphite'
@@ -44,7 +45,7 @@ class Fontconfig < Package
     --localstatedir=#{CREW_PREFIX}/cache \
     --default-library=both \
     -Ddoc=disabled \
-    -Dfreetype2:harfbuzz=enabled \
+    -Dfreetype2:harfbuzz=disabled \
     -Dfreetype2:default_library=both \
     builddir"
     system 'meson configure builddir'
