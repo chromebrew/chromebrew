@@ -18,7 +18,9 @@ class Rkhunter < Package
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}"
     system './installer.sh --install'
+    system "sed -i 's,#{CREW_DEST_PREFIX},#{CREW_PREFIX},g' #{CREW_DEST_PREFIX}/etc/rkhunter.conf"
   end
 
   def self.postinstall
