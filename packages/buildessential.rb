@@ -27,10 +27,7 @@ class Buildessential < Package
   depends_on 'binutils'
 
   # Linkers
-  case ARCH
-  when 'i686', 'x86_64'
-    depends_on 'mold'
-  end
+  depends_on 'mold'
 
   # typically required libraries & tools to configure packages
   # e.g. using "./autogen.sh"
