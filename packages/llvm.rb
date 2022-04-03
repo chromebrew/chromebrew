@@ -3,25 +3,25 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '13.0.1-19b8'
+  @_ver = '14.0.1-23d0827'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_branch 'release/13.x'
-  git_hashtag '19b8368225dc9ec5a0da547eae48c10dae13522d'
+  git_branch 'release/14.x'
+  git_hashtag '23d08271a4b24f21a88bfe73a5ea31c1e2c6365c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_armv7l/llvm-13.0.1-19b8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_armv7l/llvm-13.0.1-19b8-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_i686/llvm-13.0.1-19b8-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_x86_64/llvm-13.0.1-19b8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_armv7l/llvm-14.0.1-23d0827-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_armv7l/llvm-14.0.1-23d0827-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_i686/llvm-14.0.1-23d0827-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_x86_64/llvm-14.0.1-23d0827-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '02c756bc93eb4e9754dad06734abca94abf0bec54ca76147c8e12650a32fb83e',
-     armv7l: '02c756bc93eb4e9754dad06734abca94abf0bec54ca76147c8e12650a32fb83e',
-       i686: 'fee0d7cb0d862fdccb4efd180f17d102a970d7308c69839097303745297b4b0a',
-     x86_64: '83d5df5b4b1febe0b4c6805ab346231e46083ab9b0f516a02dd5d7eea2990852'
+    aarch64: 'd523ae68e6bfe71fa283eb5a6848eeec0a29205d416e1e61dc5af95cb43e04b6',
+     armv7l: 'd523ae68e6bfe71fa283eb5a6848eeec0a29205d416e1e61dc5af95cb43e04b6',
+       i686: '3e5bf4465857eb1b0f9b69af1ba0c6a9c8350c07fb0f5a22312e661de64af38a',
+     x86_64: 'aac129d50dd73272cf4a832bed21a65fae9d8e5607fd817d63a65fba56449242'
   })
 
   depends_on 'ocaml' => :build
@@ -85,29 +85,6 @@ class Llvm < Package
     # system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
     # system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
     # system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
-
-    # Patch for i686 in llvm 13 via https://bugs.llvm.org/show_bug.cgi?id=51917
-    @llvm13_i686_patch = <<~LLVM_HEREDOC
-      --- a/lldb/source/Plugins/Process/Linux/IntelPTManager.cpp
-      +++ b/lldb/source/Plugins/Process/Linux/IntelPTManager.cpp
-      @@ -145,7 +145,11 @@ static Error CheckPsbPeriod(size_t psb_period) {
-       }
-
-       size_t IntelPTThreadTrace::GetTraceBufferSize() const {
-      +#ifndef PERF_ATTR_SIZE_VER5
-      +  llvm_unreachable("Intel PT Linux perf event not supported");
-      +#else
-         return m_mmap_meta->aux_size;
-      +#endif
-       }
-
-       static Expected<uint64_t>
-    LLVM_HEREDOC
-    case ARCH
-    when 'i686'
-      File.write('llvm13_i686.patch', @llvm13_i686_patch)
-      system 'patch -Np1 -i llvm13_i686.patch'
-    end
   end
 
   def self.build
@@ -203,9 +180,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.check
     Dir.chdir('builddir') do
-      # system "samu check-llvm || true"
-      # system "samu check-clang || true"
-      # system "samu check-lld || true"
+      system 'samu check-llvm || true'
+      system 'samu check-clang || true'
+      system 'samu check-lld || true'
     end
   end
 
