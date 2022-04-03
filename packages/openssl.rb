@@ -3,24 +3,24 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1m'
+  @_ver = '1.1.1n'
   version @_ver
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 'f89199be8b23ca45fc7cb9f1d8d3ee67312318286ad030f5316aca6462db6c96'
+  source_sha256 '40dceb51a4f6a5275bde0e6bf20ef4b91bfc32ed57c0552e2e8e15463372b17a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1m_armv7l/openssl-1.1.1m-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1m_armv7l/openssl-1.1.1m-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1m_i686/openssl-1.1.1m-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1m_x86_64/openssl-1.1.1m-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1n_armv7l/openssl-1.1.1n-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1n_armv7l/openssl-1.1.1n-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1n_i686/openssl-1.1.1n-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1n_x86_64/openssl-1.1.1n-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '43e77202d3b41ff91e76296c86f5940cf48f9b3bbc301c7695ae24930950bfd9',
-     armv7l: '43e77202d3b41ff91e76296c86f5940cf48f9b3bbc301c7695ae24930950bfd9',
-       i686: 'd944bb541df0b7b760064da7bc619dacdaa26609c38bf25b72b4b21245f83f67',
-     x86_64: '8063f52834c2edddd08440adc7aa22334d9a937e937308c4b03c785f8624e5bc'
+    aarch64: 'c3db5187b994eca5957af581c1390e57bf87a9cc72cfa5354aa71f9a500144b2',
+     armv7l: 'c3db5187b994eca5957af581c1390e57bf87a9cc72cfa5354aa71f9a500144b2',
+       i686: '8797c98e2f9116c71ac86df5d448d7aaaf9b291c85c7febb73e872caeb3dec6b',
+     x86_64: '529c2dd2f5f65ae4a55f56985aa96cbec6cd6f214987fbdadb49a53c0dbee815'
   })
 
   depends_on 'ccache' => :build
@@ -44,7 +44,6 @@ class Openssl < Package
   @ARCH_LDFLAGS = '-flto'
   @ARCH_C_LTO_FLAGS = "#{@arch_c_flags} -flto"
   @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto"
-
 
   def self.build
     # This gives you the list of OpenSSL configure targets
