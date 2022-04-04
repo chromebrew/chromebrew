@@ -68,7 +68,7 @@ class Sommelier < Package
           -Ddefault_library=both \
           -Dwith_tests=false \
           -Dgamepad=true \
-        builddir
+          builddir
       BUILD
 
       system 'meson configure builddir'
