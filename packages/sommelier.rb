@@ -112,9 +112,9 @@ class Sommelier < Package
       To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier
       Default values are in #{CREW_PREFIX}/etc/env.d/sommelier
 
-      Run `startsommelier` to start sommelier daemon.
-      Run `stopsommelier` to stop all sommelier daemon.
-      Run `restartsommelier` to restart sommelier daemon
+      Run 'startsommelier' to start sommelier daemon.
+      Run 'stopsommelier' to stop all sommelier daemon.
+      Run 'restartsommelier' to restart sommelier daemon
     ENV_ADJUSTMENT_EOT
 
     puts <<~GUI_WARNING_EOT.orange
