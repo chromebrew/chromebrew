@@ -68,6 +68,7 @@ class Sommelier < Package
           -Dxwayland_gl_driver_path=#{CREW_PREFIX}/#{ARCH_LIB}/dri \
           -Ddefault_library=both \
           -Dwith_tests=false \
+          -Dgamepad=true \
           builddir
       BUILD
 
