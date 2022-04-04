@@ -11,10 +11,10 @@ class Wayland < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/wayland-1.20.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/wayland-1.20.0-1-chromeos-armv7l.tar.zst',
-       i686: 'file:///usr/local/tmp/packages/wayland-1.20.0-1-chromeos-i686.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/wayland-1.20.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_armv7l/wayland-1.20.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_armv7l/wayland-1.20.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_i686/wayland-1.20.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_x86_64/wayland-1.20.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '62b00aaca85d9915fe016b8d12e0bb4dcfd5c96ed25284ce0a72eb3807149fb8',
