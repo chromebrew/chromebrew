@@ -49,7 +49,8 @@ class Sommelier < Package
 
     # this version of sommelier should not depends on libminigbm,
     # prebuilt binaries should links to mesa's gbm but not libminigbm
-    puts "libminigbm installed. Will build with libminigbm".yellow if File.exist?("#{CREW_META_PATH}/libminigbm.filelist")
+    @device = JSON.load_file("#{CREW_CONFIG_PATH}device.json", symbolize_names: true)
+    puts "libminigbm installed. Will build with libminigbm".yellow if @device[:installed_packages].any? { |elem| elem[:name] == 'libminigbm' }
   end
 
   def self.patch
