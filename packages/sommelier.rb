@@ -3,25 +3,13 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  @_ver = '20220207'
+  @_ver = '20220324'
   version @_ver
   license 'BSD-Google'
   compatibility 'all'
-  source_url 'https://github.com/chromebrew/crew-package-sommelier.git'
-  git_hashtag @_ver
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_armv7l/sommelier-20220207-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_armv7l/sommelier-20220207-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_i686/sommelier-20220207-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_x86_64/sommelier-20220207-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '74aa4a3bb9f2839426124d31fe947859903a9f076ac58fda6576aedb3a8295c4',
-     armv7l: '74aa4a3bb9f2839426124d31fe947859903a9f076ac58fda6576aedb3a8295c4',
-       i686: '158a719de95d18cb98ec842da1201c75803e5e16dbdc6e51ca467e1a104349f1',
-     x86_64: '94feec18f9c496f2ac0d6c6b77584d70492105425815224cafe59e9086b101fe'
-  })
+  source_url 'https://github.com/supechicken/crew-package-sommelier.git'
+  git_branch 'sommelier-20220324'
+  #git_hashtag @_ver
 
   depends_on 'libdrm'
   depends_on 'libxcb'
@@ -59,6 +47,10 @@ class Sommelier < Package
     unless File.socket?('/var/run/chrome/wayland-0') || @container_check
       abort 'This package is not compatible with your device :/'.lightred
     end
+
+    # this version of sommelier should not depends on libminigbm,
+    # prebuilt binaries should links to mesa's gbm but not libminigbm
+    puts "libminigbm installed. Will build with libminigbm".yellow if File.exist?("#{CREW_META_PATH}/libminigbm.filelist")
   end
 
   def self.patch
