@@ -65,11 +65,11 @@ class Sommelier < Package
           -Db_lto=true \
           -Db_lto_mode=thin \
           -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-          -Dxwayland_gl_driver_path=#{CREW_PREFIX}/#{ARCH_LIB}/dri \
+          -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
           -Ddefault_library=both \
           -Dwith_tests=false \
           -Dgamepad=true \
-          builddir
+        builddir
       BUILD
 
       system 'meson configure builddir'
