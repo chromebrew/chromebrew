@@ -125,6 +125,8 @@ class Sommelier < Package
       If the UI scale does not match the Chrome OS browser settings, execute the following:
 
         echo 'SOMMELIER_APPLY_DPI_FIX=1' >> #{CREW_PREFIX}/etc/env.d/sommelier
+        stopsommelier
+        source #{CREW_PREFIX}/etc/profile
     DPI_EOT
   end
 end
