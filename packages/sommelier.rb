@@ -7,9 +7,8 @@ class Sommelier < Package
   version @_ver
   license 'BSD-Google'
   compatibility 'all'
-  source_url 'https://github.com/supechicken/crew-package-sommelier.git'
-  git_branch 'sommelier-20220324'
-  #git_hashtag @_ver
+  source_url 'https://github.com/chromebrew/crew-package-sommelier.git'
+  git_hashtag @_ver
 
   depends_on 'libdrm'
   depends_on 'libxcb'
