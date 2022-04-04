@@ -124,7 +124,7 @@ class Sommelier < Package
     puts <<~DPI_EOT.lightcyan
       If the UI scale does not match the Chrome OS browser settings, execute the following:
 
-        echo 'SOMMELIER_APPLY_DPI_FIX=1' > #{CREW_PREFIX}/etc/env.d/sommelier
+        echo 'SOMMELIER_APPLY_DPI_FIX=1' >> #{CREW_PREFIX}/etc/env.d/sommelier
     DPI_EOT
   end
 end
