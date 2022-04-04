@@ -103,8 +103,9 @@ class Sommelier < Package
   def self.postinstall
     puts '', <<~RESTARTSOMMELIER_EOT.orange
       To complete the installation, execute the following:
-      source #{CREW_PREFIX}/etc/profile
-      restartsommelier
+
+        source #{CREW_PREFIX}/etc/profile
+        restartsommelier
     RESTARTSOMMELIER_EOT
 
     puts <<~ENV_ADJUSTMENT_EOT.lightblue
@@ -119,5 +120,11 @@ class Sommelier < Package
     puts <<~GUI_WARNING_EOT.orange
       Please be aware that GUI applications may not work without the sommelier daemon running.
     GUI_WARNING_EOT
+
+    puts <<~DPI_EOT.lightcyan
+      If the UI scale does not match the Chrome OS browser settings, execute the following:
+
+        echo 'SOMMELIER_APPLY_DPI_FIX=1' > #{CREW_PREFIX}/etc/env.d/sommelier
+    DPI_EOT
   end
 end
