@@ -9,17 +9,16 @@ class Package
                         is_static no_compile_needed no_env_options no_fhs 
                         no_patchelf no_zstd patchelf]
 
-  create_placeholder  :preflight,        # Function for checks to see if install should occur.
-                      :patch,            # Function to perform patch operations prior to build from source.
-                      :prebuild,         # Function to perform pre-build operations prior to build from source.
-                      :build,            # Function to perform build from source.
-                      :postbuild,        # Function to perform post-build for both source build and binary distribution.
-                      :check,            # Function to perform check from source build. (executes only during `crew build`)
-                      :preinstall,       # Function to perform pre-install operations prior to install.
-                      :install_multiple, # Function to perform multiple installs from source build.
-                      :install,          # Function to perform install from source build.
-                      :postinstall,      # Function to perform post-install for both source build and binary distribution.
-                      :remove            # Function to perform after package removal.
+  create_placeholder :preflight,   # Function for checks to see if install should occur.
+                     :patch,       # Function to perform patch operations prior to build from source.
+                     :prebuild,    # Function to perform pre-build operations prior to build from source.
+                     :build,       # Function to perform build from source.
+                     :postbuild,   # Function to perform post-build for both source build and binary distribution.
+                     :check,       # Function to perform check from source build. (executes only during `crew build`)
+                     :preinstall,  # Function to perform pre-install operations prior to install.
+                     :install,     # Function to perform install from source build.
+                     :postinstall, # Function to perform post-install for both source build and binary distribution.
+                     :remove       # Function to perform after package removal.
 
   class << self
     attr_accessor :name, :is_dep, :in_build, :build_from_source, :in_upgrade
