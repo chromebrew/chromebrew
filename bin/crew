@@ -1210,6 +1210,12 @@ def shrink_dir(dir)
   end
 end
 
+def install_multiple_package(pkgdir)
+  Dir.chdir pkgdir do
+    @pkg.install_multiple
+  end
+end
+
 def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
@@ -1406,6 +1412,9 @@ def install
   unless @pkg.is_fake?
     # perform pre-install process
     pre_install dest_dir
+
+    # perform install_multiple process
+    install_multiple_package dest_dir
 
     # perform install process
     install_package dest_dir
