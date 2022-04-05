@@ -23,6 +23,8 @@ class Libxdmcp < Package
      x86_64: '553304325808a09bc564a989a1e727046000b892ce75d1dec437df7d67ade648'
   })
 
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
   depends_on 'xorg_proto'
 
   def self.build
