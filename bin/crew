@@ -1252,29 +1252,53 @@ def install_package(pkgdir)
 
     rsync_available = true if File.exist?("#{CREW_PREFIX}/bin/rsync") and `#{CREW_PREFIX}/bin/rsync --version`.include? 'rsync  version'
     puts 'rsync is not working. Please (re)install it with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install rsync\''.lightred unless rsync_available or @pkg.name == 'rsync'
+    
+    # Create filelists for rsync and tar to use. Use standard paths since 
+    # builds always use these paths.
+    FileUtils.touch %w[
+      dflist.rsync.home dflist.rsync.usrlocal dflist.tar.home 
+      dflist.tar.usrlocal
+    ]
+    # Create filelists for rsync to use.
+    system "grep -s \"^/home/chronos/user\" #{CREW_META_PATH + @pkg.name + '.directorylist'} | cut -c 19- > dflist.rsync.home"
+    system "grep -s \"^/home/chronos/user\" #{CREW_META_PATH + @pkg.name + '.filelist'} | cut -c 19- >> dflist.rsync.home"
+    
+    system "grep -s \"^/usr/local\" #{CREW_META_PATH + @pkg.name + '.directorylist'} | cut -c 11- > dflist.rsync.usrlocal"
+    system "grep -s \"^/usr/local\" #{CREW_META_PATH + @pkg.name + '.filelist'} | cut -c 11- >> dflist.rsync.usrlocal"
+    # Create filelists for tar to use.
+    system "grep -s \"^/home/chronos/user\" #{CREW_META_PATH + @pkg.name + '.directorylist'} | cut -c 2- > dflist.tar.home"
+    system "grep -s \"^/home/chronos/user\" #{CREW_META_PATH + @pkg.name + '.filelist'} | cut -c 2- >> dflist.tar.home"
+    
+    system "grep -s \"^/usr/local\" #{CREW_META_PATH + @pkg.name + '.directorylist'} | cut -c 2- > dflist.tar.usrlocal"
+    system "grep -s \"^/usr/local\" #{CREW_META_PATH + @pkg.name + '.filelist'} | cut -c 2- >> dflist.tar.usrlocal"
+    
     if Dir.exist? "#{pkgdir}/#{HOME}" then
       if rsync_available
-        system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
+        system "rsync -ahHAXW#{@verbose} --remove-source-files --files-from=dflist.rsync.home ./home/chronos/user #{HOME}"
       else
-        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar -c#{@verbose}f --verbatim-files-from -T dflist.tar.home - | (cd /; tar xp --keep-directory-symlink -f -)"
       end
     end
     if Dir.exist? "#{pkgdir}/usr/local" then
       if rsync_available
         # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
-        system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
+        system "rsync -ahHAXWx#{@verbose} --remove-source-files --files-from=dflist.rsync.usrlocal ./usr/local #{CREW_PREFIX}"
       else
-        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
+        system "tar -c#{@verbose}f --verbatim-files-from -T dflist.tar.usrlocal - | (cd /; tar xp --keep-directory-symlink -f -)"
       end
     end
-    if Dir.exist? "#{pkgdir}/#{CREW_PREFIX}"
-      if rsync_available
-        # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
-        system "rsync -ahHAXWx --remove-source-files ./#{CREW_PREFIX}/ #{CREW_PREFIX}"
-      else
-        system "cp -a#{@verbose} ./#{CREW_PREFIX}/* #{CREW_PREFIX}"
-      end
-    end
+    # This section is redundant.
+    #if Dir.exist? "#{pkgdir}/#{CREW_PREFIX}"
+      #if rsync_available
+        ## Adjust "./usr/local" if the build CREW_PREFIX ever changes.
+        #system "rsync -ahHAXWx --remove-source-files --files-from=dlist ./#{CREW_PREFIX}/ #{CREW_PREFIX}"
+        #system "rsync -ahHAXWx --remove-source-files --files-from=filelist ./#{CREW_PREFIX}/ #{CREW_PREFIX}"
+      #else
+        ## system "cp -a#{@verbose} ./#{CREW_PREFIX}/* #{CREW_PREFIX}"
+        #system "xargs --arg-file=dlist cp --target-directory=#{CREW_PREFIX}"
+        #system "xargs --arg-file=filelist cp --target-directory=#{CREW_PREFIX}"
+      #end
+    #end
   end
 end
 

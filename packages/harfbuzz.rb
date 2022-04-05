@@ -67,4 +67,12 @@ class Harfbuzz < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja install -C builddir"
   end
+
+  def self.install_multiple
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    if @device[:installed_packages].any? { |elem| elem[:name] == 'freetype' }
+      system "sed -i '/*freetype*/d' filelist"
+      system "sed -i '/*freetype*/d' dlist"
+    end
+  end
 end
