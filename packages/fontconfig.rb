@@ -79,9 +79,15 @@ class Fontconfig < Package
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/fontconfig", @env)
   end
 
+  def self.preinstall
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    if @device[:installed_packages].any? { |elem| elem[:name] == 'freetype' }
+      system "sed -i '/freetype2/d;/libfreetype/d' filelist"
+      system "sed -i '/freetype2/d;/libfreetype/d' dlist"
+    end
+  end
+
   def self.postinstall
-    # The following postinstall fails if graphite isn't installed when fontconfig
-    # is being installed.
-    system "env FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"
+    system "FONTCONFIG_PATH=#{CREW_PREFIX}/etc/fonts fc-cache -fv || true"
   end
 end

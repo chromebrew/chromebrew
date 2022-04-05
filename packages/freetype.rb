@@ -56,5 +56,31 @@ class Freetype < Package
   def self.postinstall
     # make sure to delete downloaded files
     system "find #{CREW_BREW_DIR}/* -name freetype*.tar -exec rm -rf {} \+"
+    # This should become a function.
+    # check for conflicts with other installed files
+    @override_allowed = %w[fontconfig harfbuzz]
+    puts "Checking for conflicts with files from installed packages..."
+    conflicts = []
+    conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{self.name}.filelist -Fxf #{CREW_META_PATH}#{self.name}.filelist #{CREW_META_PATH}*.filelist]
+    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+    conflicts.reject!(&:empty?)
+    unless conflicts.empty?
+      if self.conflicts_ok?
+        puts "Warning: There is a conflict with the same file in another package.".orange
+      else
+        puts "Error: There is a conflict with the same file in another package.".lightred
+        @_errors = 1
+      end
+      conflicts.each do |conflict|
+        conflict.each do |thisconflict|
+          # puts "This conflict is " + thisconflict.inspect
+          singleconflict = thisconflict.split(':',-1)
+          puts singleconflict
+          if @override_allowed.include?(singleconflict[0])
+            system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
+          end
+        end
+      end
+    end
   end
 end

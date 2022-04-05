@@ -71,8 +71,37 @@ class Harfbuzz < Package
   def self.preinstall
     @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
     if @device[:installed_packages].any? { |elem| elem[:name] == 'freetype' }
-      system "sed -i '/*freetype*/d' filelist"
-      system "sed -i '/*freetype*/d' dlist"
+      system "sed -i '/freetype2/d;/libfreetype/d' filelist"
+      system "sed -i '/freetype2/d;/libfreetype/d' dlist"
+    end
+  end
+
+  def self.postinstall
+    # This should become a function.
+    # check for conflicts with other installed files
+    @override_allowed = %w[fontconfig cairo]
+    puts "Checking for conflicts with files from installed packages..."
+    conflicts = []
+    conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{self.name}.filelist -Fxf #{CREW_META_PATH}#{self.name}.filelist #{CREW_META_PATH}*.filelist]
+    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+    conflicts.reject!(&:empty?)
+    unless conflicts.empty?
+      if self.conflicts_ok?
+        puts "Warning: There is a conflict with the same file in another package.".orange
+      else
+        puts "Error: There is a conflict with the same file in another package.".lightred
+        @_errors = 1
+      end
+      conflicts.each do |conflict|
+        conflict.each do |thisconflict|
+          # puts "This conflict is " + thisconflict.inspect
+          singleconflict = thisconflict.split(':',-1)
+          puts singleconflict
+          if @override_allowed.include?(singleconflict[0])
+            system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
+          end
+        end
+      end
     end
   end
 end
