@@ -73,9 +73,7 @@ class Freetype < Package
       end
       conflicts.each do |conflict|
         conflict.each do |thisconflict|
-          # puts "This conflict is " + thisconflict.inspect
           singleconflict = thisconflict.split(':',-1)
-          puts singleconflict
           if @override_allowed.include?(singleconflict[0])
             system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
           end
