@@ -930,12 +930,23 @@ def pre_flight
   @pkg.preflight
 end
 
-def pre_install(dest_dir)
+def pre_install(dest_dir, provides)
   Dir.chdir dest_dir do
     puts 'Performing pre-install...'
-    @pkg.preinstall
+    @pkgProvidesDefault = if @pkg.provides&.nil?
+                            'default'
+                          else
+                            @pkg.provides.split(
+                              / /, -1
+                            )[0]
+                          end
+    abort('invalid provides!') if !@pkg.provides.includes?(provides) && !@pkgProvidesDefault&.includes?(provides)
+    provides = '' if (provides == 'default') && (@pkgProvidesDefault == 'default')
+    provides = @pkgProvidesDefault if provides.nil?
+    @pkg.preinstall(provides)
   end
 end
+
 
 def post_install
   # return unless the postinstall function was defined by the package recipe
@@ -1429,7 +1440,7 @@ def install
 
   unless @pkg.is_fake?
     # perform pre-install process
-    pre_install dest_dir
+    pre_install dest_dir @pkgProvides
 
     # perform install process
     install_package dest_dir
@@ -1789,7 +1800,14 @@ end
 
 def install_command(args)
   args["<name>"].each do |name|
-    @pkgName = name
+    if name.includes?(':')
+      @PkgArgs = name.split(/:/, 2)
+      @pkgName = @PkgArgs[0]
+      @pkgProvides = @pkgArgs[1]
+    else
+      @pkgName = name
+      @pkgProvides = 'default'
+    end
     search @pkgName
     print_current_package true
     @pkg.build_from_source = true if @opt_src or @opt_recursive or CREW_BUILD_FROM_SOURCE == '1'

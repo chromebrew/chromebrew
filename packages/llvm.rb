@@ -7,7 +7,7 @@ class Llvm < Package
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
-  provides 'libs'
+  provides 'libs all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_branch 'release/14.x'
   git_hashtag '23d08271a4b24f21a88bfe73a5ea31c1e2c6365c'
@@ -186,6 +186,14 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
       system 'samu check-lld || true'
     end
   end
+
+  def self.preinstall
+    case provides
+    when 'libs'
+      system "sed '/\.so/!d' filelist"
+    end
+  end
+
 
   def self.postinstall
     puts
