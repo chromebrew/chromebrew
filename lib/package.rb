@@ -3,7 +3,7 @@ require 'package_helpers'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag
+           :git_branch, :git_hashtag, :provides
 
   boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
                         is_static no_compile_needed no_env_options no_fhs 

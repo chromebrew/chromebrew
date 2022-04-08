@@ -7,6 +7,7 @@ class Llvm < Package
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
+  provides 'libs'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_branch 'release/14.x'
   git_hashtag '23d08271a4b24f21a88bfe73a5ea31c1e2c6365c'

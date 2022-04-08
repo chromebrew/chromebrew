@@ -66,7 +66,7 @@ class Freetype < Package
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
       if self.conflicts_ok?
-        puts "Warning: There is a conflict with the same file in another package.".orange
+        puts "Handling conflict with the same file in another package.".orange
       else
         puts "Error: There is a conflict with the same file in another package.".lightred
         @_errors = 1
