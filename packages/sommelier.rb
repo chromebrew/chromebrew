@@ -10,7 +10,22 @@ class Sommelier < Package
   source_url 'https://github.com/chromebrew/crew-package-sommelier.git'
   git_hashtag @_ver
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_armv7l/sommelier-20220324-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_armv7l/sommelier-20220324-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_i686/sommelier-20220207-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_x86_64/sommelier-20220324-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '8ea59a37b1f1df699f008b81e96e7074364cac4910f1bb3c31bbcbf647a087a8',
+     armv7l: '8ea59a37b1f1df699f008b81e96e7074364cac4910f1bb3c31bbcbf647a087a8',
+       i686: '158a719de95d18cb98ec842da1201c75803e5e16dbdc6e51ca467e1a104349f1',
+     x86_64: '134733b296032026a8d17906638b039c929b0ad6bd2dfc174150567ff7ccebb9'
+  })
+
+
   depends_on 'libdrm'
+  depends_on 'libevdev'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
@@ -50,7 +65,9 @@ class Sommelier < Package
     # this version of sommelier should not depends on libminigbm,
     # prebuilt binaries should links to mesa's gbm but not libminigbm
     @device = JSON.load_file("#{CREW_CONFIG_PATH}device.json", symbolize_names: true)
-    puts "libminigbm installed. Will build with libminigbm".yellow if @device[:installed_packages].any? { |elem| elem[:name] == 'libminigbm' }
+    puts 'libminigbm installed. Will build with libminigbm'.yellow if @device[:installed_packages].any? do |elem|
+                                                                        elem[:name] == 'libminigbm'
+                                                                      end
   end
 
   def self.patch
