@@ -13,16 +13,15 @@ class Sommelier < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_armv7l/sommelier-20220324-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_armv7l/sommelier-20220324-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220207_i686/sommelier-20220207-chromeos-i686.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_i686/sommelier-20220324-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20220324_x86_64/sommelier-20220324-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '8ea59a37b1f1df699f008b81e96e7074364cac4910f1bb3c31bbcbf647a087a8',
      armv7l: '8ea59a37b1f1df699f008b81e96e7074364cac4910f1bb3c31bbcbf647a087a8',
-       i686: '158a719de95d18cb98ec842da1201c75803e5e16dbdc6e51ca467e1a104349f1',
+       i686: 'c7111b976ede9766b8a12e2786e2dca6980a79058e297a4e54c3033c67da58b5',
      x86_64: '134733b296032026a8d17906638b039c929b0ad6bd2dfc174150567ff7ccebb9'
   })
-
 
   depends_on 'libdrm'
   depends_on 'libevdev'
@@ -75,6 +74,13 @@ class Sommelier < Package
   end
 
   def self.build
+    # Gamepad functionality requires newer kernel support for the
+    # Linux Gamepad Specification not available in older kernels on i686.
+    @gamepad = 'true'
+    case ARCH
+    when 'i686'
+      @gamepad = 'false'
+    end
     Dir.chdir('sommelier_src') do
       system CREW_ENV_OPTIONS_HASH.merge({ 'CC' => 'clang', 'CXX' => 'clang++' }), <<~BUILD
         meson #{CREW_MESON_OPTIONS} \
@@ -85,7 +91,7 @@ class Sommelier < Package
           -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
           -Ddefault_library=both \
           -Dwith_tests=false \
-          -Dgamepad=true \
+          -Dgamepad=#{@gamepad} \
           builddir
       BUILD
 
