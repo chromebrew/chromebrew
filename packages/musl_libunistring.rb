@@ -3,35 +3,37 @@ require 'package'
 class Musl_libunistring < Package
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10-1'
+  @_ver = '1.0'
+  version "#{@_ver}-1"
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-1.0.tar.xz'
+  source_sha256 '5bab55b49f75d77ed26b257997e919b693f29fd4a1bc22e0e6e024c246c72741'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10-1_armv7l/musl_libunistring-0.9.10-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10-1_armv7l/musl_libunistring-0.9.10-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10-1_i686/musl_libunistring-0.9.10-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/0.9.10-1_x86_64/musl_libunistring-0.9.10-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_armv7l/musl_libunistring-1.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_armv7l/musl_libunistring-1.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_i686/musl_libunistring-1.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_x86_64/musl_libunistring-1.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7993833f0c924bbe1cc0886181287cf52a74252660ccdf7de9db2ca0f58fbf17',
-     armv7l: '7993833f0c924bbe1cc0886181287cf52a74252660ccdf7de9db2ca0f58fbf17',
-       i686: '460681fc32028b10be1365826a902e3f24e707a6d3fa45f038554af41d3494bc',
-     x86_64: '2ab6bc568ddd929c7cab3bf14fc2ad44746cbb943e3cbf896c10f28220a8a4e8'
+    aarch64: '652ce2e2858bffb5a9561c444882c182b0970fa3efcedc815ed8c2fdbedb8ea2',
+     armv7l: '652ce2e2858bffb5a9561c444882c182b0970fa3efcedc815ed8c2fdbedb8ea2',
+       i686: '00ad64cfae2ef01ce183c65f56ab1753b6ff3db16c51ab4625f953c24fa5c005',
+     x86_64: 'e654273339a3cfff68899371dbbba287c5396184043b0dcdf249c10cff71fd6b'
   })
 
   depends_on 'musl_native_toolchain' => :build
   depends_on 'musl_zlib' => :build
 
+  is_musl
   is_static
+  patchelf
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
     system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \
         --enable-static \
-        --disable-shared"
+        --enable-shared"
     system 'make'
   end
 
