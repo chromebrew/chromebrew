@@ -938,6 +938,9 @@ def pre_install(dest_dir)
 end
 
 def post_install
+  # return unless the postinstall function was defined by the package recipe
+  return if @pkg.method(:postinstall).source_location[0].include?(@pkg.name)
+
   Dir.mktmpdir do |post_install_tempdir|
     Dir.chdir post_install_tempdir do
       puts "Performing post-install for #{@pkg.name}...".lightblue
@@ -1875,6 +1878,10 @@ end
 
 def is_command(name)
   return !!!name[/^[-<]/]
+end
+
+trap('INT') do
+  abort 'Interrupted.'.lightred
 end
 
 command_name = args.select { |k, v| v and is_command(k) } .keys[0]
