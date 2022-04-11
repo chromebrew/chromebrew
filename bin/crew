@@ -939,7 +939,7 @@ end
 
 def post_install
   # return unless the postinstall function was defined by the package recipe
-  return if @pkg.method(:postinstall).source_location[0].include?(@pkg.name)
+  return unless @pkg.method(:postinstall).source_location[0].include?(@pkg.name)
 
   Dir.mktmpdir do |post_install_tempdir|
     Dir.chdir post_install_tempdir do
