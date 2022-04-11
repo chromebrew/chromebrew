@@ -3,27 +3,28 @@ require 'package'
 class Musl_brotli < Package
   description 'Brotli compression format'
   homepage 'https://github.com/google/brotli'
-  version '1.0.9-1'
+  version '1.0.9-3'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/google/brotli/archive/v1.0.9.tar.gz'
   source_sha256 'f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-1_armv7l/musl_brotli-1.0.9-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-1_armv7l/musl_brotli-1.0.9-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-1_i686/musl_brotli-1.0.9-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-1_x86_64/musl_brotli-1.0.9-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_armv7l/musl_brotli-1.0.9-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_armv7l/musl_brotli-1.0.9-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_i686/musl_brotli-1.0.9-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_x86_64/musl_brotli-1.0.9-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cc9db48c4b961fe608a7ce3e1992c13e2972dc8779127c0edc8b3a95dd76097c',
-     armv7l: 'cc9db48c4b961fe608a7ce3e1992c13e2972dc8779127c0edc8b3a95dd76097c',
-       i686: '57ee94d94b6e0ea798feaf49f002e3781c0e9ab6daf2795dcc9d938e9901744e',
-     x86_64: '4e85283bc1ee9747495df8c37662d4e4cb9a714718509492f2317b5c08f0ee76'
+    aarch64: '2c4f045fc242e8cc58d461cd8b632c7e5748c0e26b0ab81e0509b94ba2636c9d',
+     armv7l: '2c4f045fc242e8cc58d461cd8b632c7e5748c0e26b0ab81e0509b94ba2636c9d',
+       i686: '3e855179333bdae4b95c6cf96406e055cbafa2919e364485ecc455aff791bde3',
+     x86_64: '9426b67a46d536d0910cb384f7880e17b892100affda1baab7175929e14d7bc8'
   })
 
   depends_on 'musl_native_toolchain' => :build
 
+  is_musl
   is_static
 
   def self.build

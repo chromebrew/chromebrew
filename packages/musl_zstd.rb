@@ -4,28 +4,27 @@ class Musl_zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
   @_ver = '1.5.2'
-  version @_ver
+  version "#{@_ver}-2"
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2_armv7l/musl_zstd-1.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2_armv7l/musl_zstd-1.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2_i686/musl_zstd-1.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2_x86_64/musl_zstd-1.5.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_armv7l/musl_zstd-1.5.2-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_armv7l/musl_zstd-1.5.2-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_i686/musl_zstd-1.5.2-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_x86_64/musl_zstd-1.5.2-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '926bd2feb65c37b05d220628368a01ae723c5062d4d9fef4838be7b6a55ace29',
-     armv7l: '926bd2feb65c37b05d220628368a01ae723c5062d4d9fef4838be7b6a55ace29',
-       i686: '3f0adecdbc55e1c2114ff1013d21da3c11c468a28e5a28dfb54620ba54ea4f36',
-     x86_64: '5a96064ca69ee5db65b6961f795a239f83ac5cbca16acea2b59a6f7472d54eb3'
+    aarch64: 'fc17f3e5f3456deed345eced630e6c7836e81525a494c365bc54277ad6ee0d77',
+     armv7l: 'fc17f3e5f3456deed345eced630e6c7836e81525a494c365bc54277ad6ee0d77',
+       i686: '6c695a6fe0933b98f4b6bde67af84017975894fcd476318fc9b53f6f7006fb30',
+     x86_64: '57510ec4dd8dd6846d11c6d426023fea918399dda184b748d9b508dd10f76696'
   })
 
   depends_on 'musl_native_toolchain' => :build
 
-  is_static
   is_musl
   no_zstd
   patchelf
@@ -37,7 +36,7 @@ class Musl_zstd < Package
       system "#{MUSL_CMAKE_OPTIONS.gsub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE',
                                         '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF')} \
       -DZSTD_BUILD_STATIC=ON \
-      -DZSTD_BUILD_SHARED=OFF \
+      -DZSTD_BUILD_SHARED=ON \
       -DZSTD_BUILD_PROGRAMS=ON \
       -DZSTD_PROGRAMS_LINK_SHARED=OFF \
       -DPROGRAMS_ZSTD_LINK_TARGET=libzstd_static \

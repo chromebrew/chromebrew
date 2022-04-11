@@ -3,24 +3,24 @@ require 'package'
 class Musl_curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.81.0'
-  version @_ver
+  @_ver = '7.82.0'
+  version @_ver.to_s
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
-  source_sha256 'a067b688d1645183febc31309ec1f3cdce9213d02136b6a6de3d50f69c95a7d3'
+  source_sha256 '0aaa12d7bd04b0966254f2703ce80dd5c38dbbd76af0297d3d690cdce58a583c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.81.0_armv7l/musl_curl-7.81.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.81.0_armv7l/musl_curl-7.81.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.81.0_i686/musl_curl-7.81.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.81.0_x86_64/musl_curl-7.81.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_armv7l/musl_curl-7.82.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_armv7l/musl_curl-7.82.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_i686/musl_curl-7.82.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_x86_64/musl_curl-7.82.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9acb67514a0db896686eaa834f3cf5c8818627521725d8b71325872ea1507259',
-     armv7l: '9acb67514a0db896686eaa834f3cf5c8818627521725d8b71325872ea1507259',
-       i686: 'bbff7492ea406c7150a4ff38420530035183269c58b6f4a73a0852e94172ab58',
-     x86_64: 'a9d041801aa654b4086988f905f41628beaeefdc2e8df4f134c505202636877f'
+    aarch64: 'c25654335e87ca6df017f9bdc7ab7d0b32fbb3a7a480f02a9bc89a4154f8838d',
+     armv7l: 'c25654335e87ca6df017f9bdc7ab7d0b32fbb3a7a480f02a9bc89a4154f8838d',
+       i686: '845e1165edd5c75c808a7a4bb4101482cb7acf10640588556303c0b9b685ae46',
+     x86_64: '1f62fda183e6d01100e017b7072c32bc363306c08d3aa365b5804de5ef56ffd1'
   })
 
   depends_on 'ca_certificates' => :build
@@ -36,88 +36,25 @@ class Musl_curl < Package
   depends_on 'rust' => :build
   depends_on 'valgrind' => :build
 
+  is_musl
   is_static
-
-  def self.patch
-    load "#{CREW_LIB_PATH}lib/musl.rb"
-    # Curl 7.78.0 needs a patch to enable static builds.
-    # See https://github.com/moparisthebest/static-curl/commit/0ab82474d449b7f2ea0d43451fd3951ebd49ddc3
-    @curl_778_static_patch = <<~'CURL_HEREDOC'
-      diff --git a/src/Makefile.am b/src/Makefile.am
-      index 734373187..37e3a1564 100644
-      --- a/src/Makefile.am
-      +++ b/src/Makefile.am
-      @@ -66,6 +66,9 @@ else
-       curl_LDADD = $(top_builddir)/lib/libcurl.la @NSS_LIBS@ @SSL_LIBS@ @ZLIB_LIBS@ @CURL_NETWORK_AND_TIME_LIBS@
-       endif
-
-      +curl_LDFLAGS = $(curl_LDFLAGS)
-      +curl_CPPFLAGS = $(AM_CPPFLAGS)
-      +
-       # if unit tests are enabled, build a static library to link them with
-       if BUILD_UNITTESTS
-       noinst_LTLIBRARIES = libcurltool.la
-    CURL_HEREDOC
-    File.write('curl_778_static.patch', @curl_778_static_patch)
-    system 'patch -Np1 -i curl_778_static.patch'
-    # Configure is broken in curl 7.81.0
-    # See https://github.com/curl/curl/pull/8230
-    @curl_781_configure_patch = <<~'CURL_CONFIGURE_HEREDOC'
-      --- a/m4/curl-functions.m4	2022-01-03 16:36:46.000000000 +0000
-      +++ b/m4/curl-functions.m4	2022-01-05 17:34:33.635107486 +0000
-      @@ -6515,16 +6515,21 @@ dnl changes contained within this macro.
-
-       AC_DEFUN([CURL_RUN_IFELSE], [
-          case $host_os in
-      -     darwin*) library_path_var=DYLD_LIBRARY_PATH ;;
-      -     *)       library_path_var=LD_LIBRARY_PATH ;;
-      +     darwin*)
-      +      old=$DYLD_LIBRARY_PATH
-      +      DYLD_LIBRARY_PATH=$CURL_LIBRARY_PATH:$old
-      +      export DYLD_LIBRARY_PATH
-      +      AC_RUN_IFELSE([AC_LANG_SOURCE([$1])], $2, $3, $4)
-      +      DYLD_LIBRARY_PATH=$old # restore
-      +     ;;
-      +     *)
-      +      old=$LD_LIBRARY_PATH
-      +      LD_LIBRARY_PATH=$CURL_LIBRARY_PATH:$old
-      +      export LD_LIBRARY_PATH
-      +      AC_RUN_IFELSE([AC_LANG_SOURCE([$1])], $2, $3, $4)
-      +      LD_LIBRARY_PATH=$old # restore
-      +     ;;
-          esac
-      -
-      -   eval "old=$$library_path_var"
-      -   eval "$library_path_var=\$CURL_LIBRARY_PATH:\$old"
-      -
-      -   eval "export $library_path_var"
-      -   AC_RUN_IFELSE([AC_LANG_SOURCE([$1])], $2, $3, $4)
-      -   eval "$library_path_var=\$old" # restore
-       ])
-
-       dnl CURL_COVERAGE
-    CURL_CONFIGURE_HEREDOC
-    File.write('curl_781_configure.patch', @curl_781_configure_patch)
-    system 'patch -Np1 -i curl_781_configure.patch'
-  end
+  patchelf
 
   def self.build
-    # Not sure how to avoid this hack.
-    # FileUtils.mv "#{CREW_PREFIX}/include", "#{CREW_PREFIX}/include.disabled"
-    @curl_lib_deps = "-l:libunbound.a \
-      -l:libresolv.a \
-      -l:libm.a \
-      -l:libbrotlicommon-static.a \
-      -l:libbrotlidec-static.a \
-      -l:libzstd.a \
-      -l:libz.a \
-      -l:libssl.a \
-      -l:libcrypto.a \
-      -l:libpthread.a \
-      -l:libncursesw.a \
-      -l:libtinfow.a \
-      -l:libunistring.a \
-      -l:libidn2.a"
+    @curl_lib_deps = "#{CREW_MUSL_PREFIX}/lib/libunbound.a \
+      #{CREW_MUSL_PREFIX}/lib/libresolv.a \
+      #{CREW_MUSL_PREFIX}/lib/libm.a \
+      #{CREW_MUSL_PREFIX}/lib/libbrotlicommon-static.a \
+      #{CREW_MUSL_PREFIX}/lib/libbrotlidec-static.a \
+      #{CREW_MUSL_PREFIX}/lib/libzstd.a \
+      #{CREW_MUSL_PREFIX}/lib/libz.a \
+      #{CREW_MUSL_PREFIX}/lib/libssl.a \
+      #{CREW_MUSL_PREFIX}/lib/libcrypto.a \
+      #{CREW_MUSL_PREFIX}/lib/libpthread.a \
+      #{CREW_MUSL_PREFIX}/lib/libncursesw.a \
+      #{CREW_MUSL_PREFIX}/lib/libtinfow.a \
+      #{CREW_MUSL_PREFIX}/lib/libidn2.a \
+      #{CREW_MUSL_PREFIX}/lib/libunistring.a"
 
     system 'autoreconf -fvi'
     system 'filefix'
@@ -150,14 +87,8 @@ class Musl_curl < Package
       --without-libpsl \
       --with-openssl=#{CREW_MUSL_PREFIX} \
       --with-zlib=#{CREW_MUSL_PREFIX}"
-    # begin
     system "#{MUSL_ENV_OPTIONS.gsub("CPPFLAGS='", "CPPFLAGS='-DCURL_STATICLIB ")} \
         make curl_LDFLAGS='-static -all-static -L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib'"
-    # rescue StandardError
-    # undoing prior hack...
-    # FileUtils.mv "#{CREW_PREFIX}/include.disabled", "#{CREW_PREFIX}/include"
-    # end
-    # FileUtils.mv "#{CREW_PREFIX}/include.disabled", "#{CREW_PREFIX}/include" unless Dir.exist?("#{CREW_PREFIX}/include")
   end
 
   def self.check
