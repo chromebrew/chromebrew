@@ -3,23 +3,23 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.1.1'
+  version '3.1.2'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
   git_hashtag "v#{version.tr('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.1_armv7l/ruby-3.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.1_armv7l/ruby-3.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.1_i686/ruby-3.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.1_x86_64/ruby-3.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_armv7l/ruby-3.1.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_armv7l/ruby-3.1.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_i686/ruby-3.1.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_x86_64/ruby-3.1.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3d929442ae74fbbeef4697c2fd16ce7b942847a91cfffada61d8cf42fe23b54c',
-     armv7l: '3d929442ae74fbbeef4697c2fd16ce7b942847a91cfffada61d8cf42fe23b54c',
-       i686: 'fe5e320182698789dcadf8afdf18c9e3e249e77e3717c1bb6a8cf82419247982',
-     x86_64: '6ffc2c0304526000b3ebefb1f653b27f1e449dd9dc5e0a6a2ed762aaca85398d'
+    aarch64: 'ecdc85c4e4e790de310c8fcc8550ea29f8c842e782e5fc6abb6ef516b89c066f',
+     armv7l: 'ecdc85c4e4e790de310c8fcc8550ea29f8c842e782e5fc6abb6ef516b89c066f',
+       i686: '60c190389e21bdffb689ddb62220dcc96a94c9200428124dd2e0303d09954252',
+     x86_64: 'b4b9564d4c67ad01096e401bf654535025cd9c274b0faeedc8a4d53906046f47'
   })
 
   depends_on 'ca_certificates'
