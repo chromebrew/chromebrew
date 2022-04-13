@@ -187,9 +187,8 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
     end
   end
 
-  def self.preinstall
-    case provides
-    when 'libs'
+  def self.preinstall(provide)
+    unless provide.include?('all')
       system "sed '/\.so/!d' filelist"
     end
   end

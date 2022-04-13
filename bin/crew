@@ -933,14 +933,15 @@ end
 def pre_install(dest_dir, provides)
   Dir.chdir dest_dir do
     puts 'Performing pre-install...'
-    @pkgProvidesDefault = if @pkg.provides&.nil?
+    puts @pkg.provides.inspect
+    @pkgProvidesDefault = if @pkg.provides&.nil? or @pkg.provides&.empty?
                             'default'
                           else
                             @pkg.provides.split(
                               / /, -1
                             )[0]
                           end
-    abort('invalid provides!') if !@pkg.provides.includes?(provides) && !@pkgProvidesDefault&.includes?(provides)
+    abort('invalid provides!') if !@pkg.provides.include?(provides) && !@pkgProvidesDefault&.include?(provides)
     provides = '' if (provides == 'default') && (@pkgProvidesDefault == 'default')
     provides = @pkgProvidesDefault if provides.nil?
     @pkg.preinstall(provides)
@@ -1440,7 +1441,7 @@ def install
 
   unless @pkg.is_fake?
     # perform pre-install process
-    pre_install dest_dir @pkgProvides
+    pre_install(dest_dir,@pkgProvides)
 
     # perform install process
     install_package dest_dir
@@ -1800,10 +1801,10 @@ end
 
 def install_command(args)
   args["<name>"].each do |name|
-    if name.includes?(':')
+    if name.include?(':')
       @PkgArgs = name.split(/:/, 2)
       @pkgName = @PkgArgs[0]
-      @pkgProvides = @pkgArgs[1]
+      @pkgProvides = @PkgArgs[1]
     else
       @pkgName = name
       @pkgProvides = 'default'
@@ -1841,7 +1842,14 @@ end
 
 def reinstall_command(args)
   args["<name>"].each do |name|
-    @pkgName = name
+    if name.include?(':')
+      @PkgArgs = name.split(/:/, 2)
+      @pkgName = @PkgArgs[0]
+      @pkgProvides = @PkgArgs[1]
+    else
+      @pkgName = name
+      @pkgProvides = 'default'
+    end
     search @pkgName
     print_current_package
     @pkg.build_from_source = true if @opt_src or @opt_recursive or CREW_BUILD_FROM_SOURCE == '1'
