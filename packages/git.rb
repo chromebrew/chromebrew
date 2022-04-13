@@ -3,24 +3,24 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.35.1'
-  version "#{@_ver}-1"
+  @_ver = '2.35.2'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.35.1.tar.gz'
-  source_sha256 '9845a37dd01f9faaa7d8aa2078399d3aea91b43819a5efea6e2877b0af09bd43'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.35.2.tar.xz'
+  source_sha256 'c73d0c4fa5dcebdb2ccc293900952351cc5fb89224bb133c116305f45ae600f3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.1-1_armv7l/git-2.35.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.1-1_armv7l/git-2.35.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.1-1_i686/git-2.35.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.1-1_x86_64/git-2.35.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.2_armv7l/git-2.35.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.2_armv7l/git-2.35.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.2_i686/git-2.35.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.35.2_x86_64/git-2.35.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4584bad8f4e9554e5aee917abd078c13d553d6a3d73e18de368114f2a7663979',
-     armv7l: '4584bad8f4e9554e5aee917abd078c13d553d6a3d73e18de368114f2a7663979',
-       i686: '8a1788fe50dedc57d8f23ff93104616e594aa370156c8ac5b91cadc759248bc5',
-     x86_64: 'daa9a1b37e337a5b28fb63abd115f219d5ea32bee73f06a3c0972686aa1c79cd'
+    aarch64: '0181109f2590546f6a21979acbbec1b97001567b5e37f7cf5df3a181cb8c7320',
+     armv7l: '0181109f2590546f6a21979acbbec1b97001567b5e37f7cf5df3a181cb8c7320',
+       i686: '2f03b9f5f0cdeeb8e14c403bafe5e3aab56f9df2ea8f45b4d7415a64728c8595',
+     x86_64: 'b12809698fd1b68d4621bce8e827c8d069c9d902aed7ac2b5e7eee6b310c699d'
   })
 
   depends_on 'ca_certificates' => :build
@@ -28,6 +28,7 @@ class Git < Package
   depends_on 'rust' => :build
   depends_on 'musl_brotli' => :build
   depends_on 'musl_libidn2' => :build
+  depends_on 'musl_libunbound' => :build
   depends_on 'musl_libunistring' => :build
   depends_on 'musl_native_toolchain' => :build
   depends_on 'musl_ncurses' => :build
@@ -36,10 +37,10 @@ class Git < Package
   depends_on 'musl_zstd' => :build
   depends_on 'musl_expat' => :build
 
+  is_musl
   is_static
 
   def self.patch
-    load "#{CREW_LIB_PATH}lib/musl.rb"
     # Patch to prevent error function conflict with libidn2
     # By replacing all calls to error with git_error.
     system "sed -i 's,^#undef error\$,#undef git_error,' usage.c"
