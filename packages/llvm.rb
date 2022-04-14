@@ -3,26 +3,25 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '14.0.1-23d0827'
+  @_ver = '14.0.1'
   version @_ver
-  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   provides 'libs all'
+  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_branch 'release/14.x'
-  git_hashtag '23d08271a4b24f21a88bfe73a5ea31c1e2c6365c'
+  git_hashtag 'llvmorg-14.0.1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_armv7l/llvm-14.0.1-23d0827-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_armv7l/llvm-14.0.1-23d0827-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_i686/llvm-14.0.1-23d0827-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1-23d0827_x86_64/llvm-14.0.1-23d0827-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_armv7l/llvm-14.0.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_armv7l/llvm-14.0.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_i686/llvm-14.0.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_x86_64/llvm-14.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd523ae68e6bfe71fa283eb5a6848eeec0a29205d416e1e61dc5af95cb43e04b6',
-     armv7l: 'd523ae68e6bfe71fa283eb5a6848eeec0a29205d416e1e61dc5af95cb43e04b6',
-       i686: '3e5bf4465857eb1b0f9b69af1ba0c6a9c8350c07fb0f5a22312e661de64af38a',
-     x86_64: 'aac129d50dd73272cf4a832bed21a65fae9d8e5607fd817d63a65fba56449242'
+    aarch64: '1fb330a76b8465c50786afc60a04f04ca2e57dfec5b02b1e18982311a26b4f95',
+     armv7l: '1fb330a76b8465c50786afc60a04f04ca2e57dfec5b02b1e18982311a26b4f95',
+       i686: '5ed6ca9e6cd709df0135b24dcb683b393294e18d861b43bdb4cad6f3084a483b',
+     x86_64: 'ce24efa733bfbd3fc826155b098e1bd7a3bab31ab81f7a53c62d0a41cfb8bd4f'
   })
 
   depends_on 'ocaml' => :build
@@ -30,12 +29,13 @@ class Llvm < Package
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc' # R
+  no_env_options
 
   case ARCH
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-ltinfow -fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
@@ -53,7 +53,7 @@ class Llvm < Package
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefined symbol: __atomic_store
     # Polly demands fPIC
-    @ARCH_C_FLAGS = '-ltinfow -latomic -fPIC'
+    @ARCH_C_FLAGS = '-latomic -fPIC'
     @ARCH_CXX_FLAGS = '-latomic -fPIC'
     # Because getting this error:
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
@@ -64,7 +64,7 @@ class Llvm < Package
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = '-ltinfow -fPIC'
+    @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
@@ -187,12 +187,11 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
     end
   end
 
-  def self.preinstall(provide)
-    unless provide.include?('all')
-      system "sed '/\.so/!d' filelist"
-    end
-  end
-
+  # def self.preinstall(provide)
+  #  unless provide.include?('all')
+  #    system "sed '/\.so/!d' filelist"
+  #  end
+  # end
 
   def self.postinstall
     puts
