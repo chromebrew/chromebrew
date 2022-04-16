@@ -44,7 +44,7 @@ class Util_linux < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # conflict with coreutila
+    # conflict with coreutils
     FileUtils.rm "#{CREW_DEST_PREFIX}/share/man/man1/kill.1"
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/kill"
   end
