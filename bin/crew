@@ -1051,10 +1051,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Use patchelf to set need paths for all binaries.
-    # Currently broken with glibc on armv7l, but musl is fine.
-    unless %w[aarch64 armv7l].include?(ARCH) and !@pkg.is_musl?
-      patchelf_set_need_paths destdir
-    end
+    patchelf_set_need_paths destdir
 
     # use upx on executables
     shrink_dir destdir
@@ -1083,6 +1080,10 @@ def patchelf_set_need_paths(dir)
 
       @neededlibs.each_line(chomp: true) do |neededlibspatch|
         next if neededlibspatch.include?(@patchelf_lib_prefix.to_s)
+        # Avoid segfaults from not using system libdl.so
+        next if !@pkg.is_musl? && neededlibspatch.include?('libdl.so')
+        # Avoid breakage on armv7l
+        next if !@pkg.is_musl? && neededlibspatch.include?('ld-linux-armhf.so.3')
 
         @neededlib_basename = File.basename(neededlibspatch)
         @neededlibspatchednamepath = "#{@patchelf_lib_prefix}/" + @neededlib_basename
