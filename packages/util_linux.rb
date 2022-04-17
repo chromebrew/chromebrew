@@ -3,27 +3,28 @@ require 'package'
 class Util_linux < Package
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version '2.38'
+  version '2.38-1'
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-2.38.tar.xz'
   source_sha256 '6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38_armv7l/util_linux-2.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38_armv7l/util_linux-2.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38_i686/util_linux-2.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38_x86_64/util_linux-2.38-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38-1_armv7l/util_linux-2.38-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38-1_armv7l/util_linux-2.38-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38-1_i686/util_linux-2.38-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.38-1_x86_64/util_linux-2.38-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bbf94a51e1728672294d33616f81d7047e0e1a95362e7a5b28ddb21e6fa573ad',
-     armv7l: 'bbf94a51e1728672294d33616f81d7047e0e1a95362e7a5b28ddb21e6fa573ad',
-       i686: '1ae9135cd1ab58f0850c8014fee85aab190cd5f2c5b836f845b1187dcda798f6',
-     x86_64: 'c73f881386e26993cac41782c241ed7ef24245bd83117868597aaf23d16c5a77'
+    aarch64: 'b8492be34581baf8ffec9de99bfcc00a95d3bc6f351ccefe77efe9b7556fe8cf',
+     armv7l: 'b8492be34581baf8ffec9de99bfcc00a95d3bc6f351ccefe77efe9b7556fe8cf',
+       i686: '711b11686f6f9a907bc495d8f453bf7e733ee07cb7db874e2fe7c80ed566a66b',
+     x86_64: 'c1f896ebee89f3155b8f4d4422b4bd9d9c16be77cac8587e86b3e3ab14f7fe8a'
   })
 
   depends_on 'libcap_ng'
   depends_on 'linux_pam'
+  depends_on 'ncurses'
   depends_on 'pcre2'
   depends_on 'libeconf'
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
