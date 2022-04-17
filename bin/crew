@@ -1080,10 +1080,16 @@ def patchelf_set_need_paths(dir)
 
       @neededlibs.each_line(chomp: true) do |neededlibspatch|
         next if neededlibspatch.include?(@patchelf_lib_prefix.to_s)
-        # Avoid segfaults from not using system libdl.so
-        next if !@pkg.is_musl? && neededlibspatch.include?('libdl.so')
-        # Avoid breakage on armv7l
-        next if !@pkg.is_musl? && neededlibspatch.include?('ld-linux-armhf.so.3')
+
+        # Avoid segfaults from not using system versions of these files.
+        patchelf_veto_files = %w[
+        libdl.so
+        ld-linux.so.2
+        ld-linux-x86-64.so.2
+        ld-linux-armhf.so.3
+        libc.so.6
+        ]
+        next if !@pkg.is_musl? && patchelf_veto_files.any? { |i| neededlibspatch.include? i }
 
         @neededlib_basename = File.basename(neededlibspatch)
         @neededlibspatchednamepath = "#{@patchelf_lib_prefix}/" + @neededlib_basename
