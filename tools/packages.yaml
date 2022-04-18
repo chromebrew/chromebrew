@@ -584,6 +584,11 @@ url: https://developer.gnome.org/gtk3/stable/gtk-broadway.html
 activity: none
 ---
 kind: url
+name: broot
+url: https://github.com/Canop/broot/releases
+activity: high
+---
+kind: url
 name: brotli
 url: https://github.com/google/brotli/releases
 activity: medium
@@ -2912,6 +2917,11 @@ kind: url
 name: iptraf
 url: ftp://iptraf.seul.org/pub/iptraf/
 activity: none
+---
+kind: url
+name: iputils
+url: https://github.com/iputils/iputils/releases
+activity: low
 ---
 kind: url
 name: irrlicht
