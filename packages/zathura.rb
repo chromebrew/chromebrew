@@ -10,9 +10,7 @@ class Zathura < Package
   source_sha256 'e012dbfe2b981b826553a9af8420d42a9c5d3387fbe14a5399ce94a2d374a1e7'
 
   depends_on 'appstream_glib'
-  depends_on 'bash_completion'
   depends_on 'desktop_file_utilities'
-  depends_on 'fish'
   depends_on 'girara'
   depends_on 'libseccomp'
   depends_on 'zathura_poppler_pdf'
