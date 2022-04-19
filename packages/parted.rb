@@ -3,38 +3,35 @@ require 'package'
 class Parted < Package
   description 'Create, destroy, resize, check, copy partitions and file systems.'
   homepage 'https://www.gnu.org/software/parted'
-  @_ver = '3.4'
+  @_ver = '3.5'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/parted/parted-#{@_ver}.tar.xz"
-  source_sha256 'e1298022472da5589b7f2be1d5ee3c1b66ec3d96dfbad03dc642afd009da5342'
+  source_sha256 '4938dd5c1c125f6c78b1f4b3e297526f18ee74aa43d45c248578b1d2470c05a2'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.4_armv7l/parted-3.4-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.4_armv7l/parted-3.4-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.4_i686/parted-3.4-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.4_x86_64/parted-3.4-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.5_armv7l/parted-3.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.5_armv7l/parted-3.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/parted/3.5_x86_64/parted-3.5-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-     aarch64: 'ede8edf189c6a15f7f73c5473230e183e658515392727cf263bcec6f6e7a3145',
-      armv7l: 'ede8edf189c6a15f7f73c5473230e183e658515392727cf263bcec6f6e7a3145',
-        i686: '4df150824d0b15cbbd57e3d053dfdb7ae636165e61082ec294981abf96dacf58',
-      x86_64: 'c5dbafb2ff514b1eec1f9cdb5cffae0659120151ecb6d3552230a2a5054c95dc',
+  binary_sha256({
+    aarch64: 'd5a0356c1b50d3b96d40816186f53b26230db7642cf2a8efc86e3388c35bdf34',
+     armv7l: 'd5a0356c1b50d3b96d40816186f53b26230db7642cf2a8efc86e3388c35bdf34',
+     x86_64: '7ff57d716c7c5c5e7a640c57b584bead70e4e853dc0937c501ba95e4a33cfe8a'
   })
 
   depends_on 'lvm2'
   depends_on 'ncurses'
   depends_on 'readline'
+  patchelf
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
-    system "make"
+    system "./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-
 end
