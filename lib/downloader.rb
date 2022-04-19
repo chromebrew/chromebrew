@@ -1,11 +1,23 @@
 require 'io/console'
 require 'digest/sha2'
-require 'net/http'
-require 'uri'
-require 'resolv-replace'
 require_relative 'const'
 require_relative 'color'
 require_relative 'convert_size'
+
+begin
+  require 'securerandom'
+  require 'net/http'
+  require 'uri'
+  require 'resolv-replace'
+rescue RuntimeError => e
+  # hide the error message and fallback to curl if securerandom raise an error
+  if e.message == 'failed to get urandom'
+    Object.send(:remove_const, :CREW_USE_CURL)
+    CREW_USE_CURL = true
+  else
+    abort e.full_message
+  end
+end
 
 def setTermSize
   # setTermSize: set progress bar size based on terminal width
