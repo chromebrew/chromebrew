@@ -3,7 +3,7 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  @_ver = '6.2.0'
+  @_ver = '7.0.0'
   version @_ver
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/qemu/qemu.git'
@@ -26,16 +26,23 @@ class Qemu < Package
   depends_on 'libaio'
   depends_on 'libcap_ng'
   depends_on 'libgcrypt'
+  depends_on 'fontconfig'
   depends_on 'libsdl2'
   depends_on 'libusb'
   depends_on 'lzo'
   depends_on 'pixman'
   depends_on 'hicolor_icon_theme'
+  patchelf
 
   def self.build
+    # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error
+    system "sed -i 's,<linux/usbdevice_fs.h>,\"linux/usbdevice_fs.h\",g' hw/usb/host-libusb.c"
+    FileUtils.mkdir_p 'linux'
+    FileUtils.cp "#{CREW_PREFIX}/include/linux/usbdevice_fs.h",'linux/usbdevice_fs.h'
+    system "sed -i 's,^\([[:blank:]]*\)u8,\1__u8,g' linux/usbdevice_fs.h"
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
-      system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
+      system "../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
         --disable-stack-protector \
         --enable-lto"
       system 'make'
