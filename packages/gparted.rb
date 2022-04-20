@@ -3,24 +3,24 @@ require 'package'
 class Gparted < Package
   description 'A Partition Magic clone, frontend to GNU Parted'
   homepage 'https://gparted.org/'
-  @_ver = '1.3.1'
+  @_ver = '1.4.0'
   version @_ver
   license 'GPL-2+ and FDL-1.2+'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{@_ver}/gparted-#{@_ver}.tar.gz"
-  source_sha256 '5eee2e6d74b15ef96b13b3a2310c868ed2298e03341021e7d12a5a98a1d1e109'
+  source_sha256 'e5293a792e53fdbeba29c4a834113cd9603d0d639330da931a468bf3687887be'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_armv7l/gparted-1.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_armv7l/gparted-1.3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_i686/gparted-1.3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.3.1_x86_64/gparted-1.3.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.4.0_armv7l/gparted-1.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.4.0_armv7l/gparted-1.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.4.0_i686/gparted-1.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.4.0_x86_64/gparted-1.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9036f953c9fa9d23d4a1214c853a3c16ca995f4b5b31b8850cf4c83ff346ce35',
-     armv7l: '9036f953c9fa9d23d4a1214c853a3c16ca995f4b5b31b8850cf4c83ff346ce35',
-       i686: '570508eb7d9f970540a0160cd616ee49ed5554c24e378d1b3f89ba8616a4ee04',
-     x86_64: 'ed4c39343af25733424d215b8eeb51674371afb34d627829ae627e89d35b4a34'
+    aarch64: '789aedda96b2cd62cc48460b638af8f94b3cb2773ca6bc0a7d009ad109d94f4f',
+     armv7l: '789aedda96b2cd62cc48460b638af8f94b3cb2773ca6bc0a7d009ad109d94f4f',
+       i686: '59716f3f302de5e7134c51a97329083a0f325c59f5e796a94f79825e2e0601de',
+     x86_64: '4d74f091eb9ce93c896f18784bbe715c0f300f2a15d04c9e7fb659651932a216'
   })
 
   depends_on 'parted'
@@ -37,6 +37,7 @@ class Gparted < Package
   depends_on 'librsvg'
   depends_on 'xhost'
   depends_on 'sommelier'
+  patchelf
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
