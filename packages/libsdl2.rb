@@ -3,7 +3,7 @@ require 'package'
 class Libsdl2 < Package
   description 'Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.'
   homepage 'http://www.libsdl.org'
-  @_ver = '2.0.18'
+  @_ver = '2.0.20'
   version @_ver
   license 'ZLIB'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Libsdl2 < Package
   git_hashtag "release-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_armv7l/libsdl2-2.0.18-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_armv7l/libsdl2-2.0.18-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_i686/libsdl2-2.0.18-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.18_x86_64/libsdl2-2.0.18-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.20_armv7l/libsdl2-2.0.20-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.20_armv7l/libsdl2-2.0.20-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.20_i686/libsdl2-2.0.20-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl2/2.0.20_x86_64/libsdl2-2.0.20-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5c40b35e64e22d0f394f0324ea93f77a06c9359aff1b620109ebb96e03b74880',
-     armv7l: '5c40b35e64e22d0f394f0324ea93f77a06c9359aff1b620109ebb96e03b74880',
-       i686: '3089c520dfce88e2c878bbc28135feb39af7fd05e681772011fd429137ff9d07',
-     x86_64: '8c3d271c3440af75ea3cbefa84508878808177090683acd1d07e38d54d56e987'
+    aarch64: 'd52290a1e8cc8c7922ca91a9d95df39b6ab65f4a0eca007347b7205203530337',
+     armv7l: 'd52290a1e8cc8c7922ca91a9d95df39b6ab65f4a0eca007347b7205203530337',
+       i686: '61782729b7ceec09e2239aabbdcde7ea1dc3d7f47332db3cdd20fca815cac2b0',
+     x86_64: '3ab3b5cd9beeb10b10e2216f937a5e31405599ff134ceffa6619a33fe9636c8e'
   })
 
   depends_on 'xorg_server'
@@ -28,14 +28,14 @@ class Libsdl2 < Package
   depends_on 'ibus'
   depends_on 'pulseaudio'
   depends_on 'nasm' => :build
+  patchelf
 
   def self.patch
     system 'filefix'
   end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS}"
     system 'make'
   end
