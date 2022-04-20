@@ -6,18 +6,22 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '1.1.1'
-  compatibility 'i686, x86_64'
+  version '1.2.0'
+  compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.1.1_i686/mold-1.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.1.1_x86_64/mold-1.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.2.0_armv7l/mold-1.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.2.0_armv7l/mold-1.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.2.0_i686/mold-1.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.2.0_x86_64/mold-1.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: '966053e7967f58f131d03d213f1e0f26d969a6d7296b90b78e245f471af5b34d',
-     x86_64: '622f44f74252163a17a418bdb7efe42c3a59d1956790260666268f462a3b8930'
+    aarch64: '1d006972a44a96820a1f75bf84cb48332380d607672b9d9ae4ae293811b615eb',
+     armv7l: '1d006972a44a96820a1f75bf84cb48332380d607672b9d9ae4ae293811b615eb',
+       i686: '766197f6e67e22f7bd7ae2d67cf5f54d13cbee85827a9cf67b41b3e72da02bef',
+     x86_64: 'c0969ca649aedd3a4f30a0a62263a40c3e6d0064eb6ced1539c0a9544babfc73'
   })
 
   depends_on 'xxhash' => :build
@@ -29,7 +33,7 @@ class Mold < Package
   end
 
   def self.build
-    system 'make LTO=1'
+    system "CXXFLAGS='-fuse-ld=mold' CFLAGS='-fuse-ld=mold' make LTO=1"
   end
 
   def self.install
