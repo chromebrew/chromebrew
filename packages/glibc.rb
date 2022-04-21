@@ -13,6 +13,7 @@ class Glibc < Package
 
   no_env_options
   conflicts_ok
+  no_patchelf
 
   @libc_version = LIBC_VERSION
   # Uncomment following line to build a version of glibc different
