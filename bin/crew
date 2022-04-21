@@ -1059,7 +1059,7 @@ def prepare_package(destdir)
 end
 
 def patchelf_set_need_paths(dir)
-  return if @pkg.no_patchelf? || !@pkg.patchelf?
+  return if @pkg.no_patchelf?
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
