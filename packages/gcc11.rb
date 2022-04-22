@@ -4,23 +4,23 @@ require 'open3'
 class Gcc11 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.2.1-20220305'
+  version '11.3'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/11-20220305/gcc-11-20220305.tar.xz'
-  source_sha256 '097a4369fb148044ee82fba5fa15f2224dee01218e0ca997ffcc99dd66eb71b6'
+  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-11.3.0/gcc-11.3.0.tar.xz'
+  source_sha256 'b47cf2818691f5b1e21df2bb38c795fac2cfbd640ede2d0a5e1c89e338a3ac39'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_armv7l/gcc11-11.2.1-20220305-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_armv7l/gcc11-11.2.1-20220305-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_i686/gcc11-11.2.1-20220305-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.2.1-20220305_x86_64/gcc11-11.2.1-20220305-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.3_armv7l/gcc11-11.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.3_armv7l/gcc11-11.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.3_i686/gcc11-11.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc11/11.3_x86_64/gcc11-11.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1bd3f9ff1a404c1af0dac747766a617d5110375e69f5e81661bb86743b42ac82',
-     armv7l: '1bd3f9ff1a404c1af0dac747766a617d5110375e69f5e81661bb86743b42ac82',
-       i686: '28c70e51a3c97078167f340df22ced293d752b8b166bbf5d914b9a5951d2f9e9',
-     x86_64: '5e8c934ccb5a4a18d7395904f81efbdc8376993f3b83228ebcaa373023ad561a'
+    aarch64: 'fe81d80adeb677f352531308e2ccc9b5bce8d7bffe827c136440b7cc03da57fd',
+     armv7l: 'fe81d80adeb677f352531308e2ccc9b5bce8d7bffe827c136440b7cc03da57fd',
+       i686: 'afab8f5dff70482762fbc77d6e663b2dfd20498f5eb68d3d0f3b96b45659df03',
+     x86_64: 'ed75e74c102547f84c73ae97e96604fedb06710a95390d1df0c74987caad9109'
   })
 
   depends_on 'ccache' => :build
@@ -33,6 +33,7 @@ class Gcc11 < Package
   depends_on 'libssp' # L
   depends_on 'zstd' # R
   no_env_options
+  no_patchelf
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
