@@ -3,25 +3,24 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '13.0.1-19b8'
+  @_ver = '14.0.1'
   version @_ver
-  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
+  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_branch 'release/13.x'
-  git_hashtag '19b8368225dc9ec5a0da547eae48c10dae13522d'
+  git_hashtag 'llvmorg-14.0.1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_armv7l/llvm-13.0.1-19b8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_armv7l/llvm-13.0.1-19b8-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_i686/llvm-13.0.1-19b8-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/13.0.1-19b8_x86_64/llvm-13.0.1-19b8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_armv7l/llvm-14.0.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_armv7l/llvm-14.0.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_i686/llvm-14.0.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.1_x86_64/llvm-14.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '02c756bc93eb4e9754dad06734abca94abf0bec54ca76147c8e12650a32fb83e',
-     armv7l: '02c756bc93eb4e9754dad06734abca94abf0bec54ca76147c8e12650a32fb83e',
-       i686: 'fee0d7cb0d862fdccb4efd180f17d102a970d7308c69839097303745297b4b0a',
-     x86_64: '83d5df5b4b1febe0b4c6805ab346231e46083ab9b0f516a02dd5d7eea2990852'
+    aarch64: '1fb330a76b8465c50786afc60a04f04ca2e57dfec5b02b1e18982311a26b4f95',
+     armv7l: '1fb330a76b8465c50786afc60a04f04ca2e57dfec5b02b1e18982311a26b4f95',
+       i686: '5ed6ca9e6cd709df0135b24dcb683b393294e18d861b43bdb4cad6f3084a483b',
+     x86_64: 'ce24efa733bfbd3fc826155b098e1bd7a3bab31ab81f7a53c62d0a41cfb8bd4f'
   })
 
   depends_on 'ocaml' => :build
@@ -29,12 +28,14 @@ class Llvm < Package
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc' # R
+  no_env_options
+  no_patchelf
 
   case ARCH
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-ltinfow -fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
@@ -52,7 +53,7 @@ class Llvm < Package
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefined symbol: __atomic_store
     # Polly demands fPIC
-    @ARCH_C_FLAGS = '-ltinfow -latomic -fPIC'
+    @ARCH_C_FLAGS = '-latomic -fPIC'
     @ARCH_CXX_FLAGS = '-latomic -fPIC'
     # Because getting this error:
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
@@ -63,7 +64,7 @@ class Llvm < Package
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = '-ltinfow -fPIC'
+    @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
@@ -85,29 +86,6 @@ class Llvm < Package
     # system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
     # system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
     # system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
-
-    # Patch for i686 in llvm 13 via https://bugs.llvm.org/show_bug.cgi?id=51917
-    @llvm13_i686_patch = <<~LLVM_HEREDOC
-      --- a/lldb/source/Plugins/Process/Linux/IntelPTManager.cpp
-      +++ b/lldb/source/Plugins/Process/Linux/IntelPTManager.cpp
-      @@ -145,7 +145,11 @@ static Error CheckPsbPeriod(size_t psb_period) {
-       }
-
-       size_t IntelPTThreadTrace::GetTraceBufferSize() const {
-      +#ifndef PERF_ATTR_SIZE_VER5
-      +  llvm_unreachable("Intel PT Linux perf event not supported");
-      +#else
-         return m_mmap_meta->aux_size;
-      +#endif
-       }
-
-       static Expected<uint64_t>
-    LLVM_HEREDOC
-    case ARCH
-    when 'i686'
-      File.write('llvm13_i686.patch', @llvm13_i686_patch)
-      system 'patch -Np1 -i llvm13_i686.patch'
-    end
   end
 
   def self.build
@@ -203,9 +181,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.check
     Dir.chdir('builddir') do
-      # system "samu check-llvm || true"
-      # system "samu check-clang || true"
-      # system "samu check-lld || true"
+      system 'samu check-llvm || true'
+      system 'samu check-clang || true'
+      system 'samu check-lld || true'
     end
   end
 

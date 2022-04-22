@@ -3,23 +3,23 @@ require 'package'
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '11.2.1-20220108'
+  version '11.3'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/snapshots/11-20220108/gcc-11-20220108.tar.xz'
-  source_sha256 'a433837a85087c2357a456145ae140bd588e75d44a90031ed57c29de66e46468'
+  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-11.3.0/gcc-11.3.0.tar.xz'
+  source_sha256 'b47cf2818691f5b1e21df2bb38c795fac2cfbd640ede2d0a5e1c89e338a3ac39'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_i686/libssp-11.2.1-20220108-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_armv7l/libssp-11.2.1-20220108-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_armv7l/libssp-11.2.1-20220108-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.1-20220108_x86_64/libssp-11.2.1-20220108-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.3_armv7l/libssp-11.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.3_armv7l/libssp-11.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.3_i686/libssp-11.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.3_x86_64/libssp-11.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: 'a8459db3bf278ca9cd120d3d7b166def4816fc112a42869968a2801eb4ceca81',
-    aarch64: 'b7bdc82eca1ade26a484837a9b544852b9c3e5e5f4cbe571213e35e9c417398d',
-     armv7l: 'b7bdc82eca1ade26a484837a9b544852b9c3e5e5f4cbe571213e35e9c417398d',
-     x86_64: 'b443fabf868ac235e2b7e621c9eeec34389e469a87f180a9aaccaa01256b8038'
+    aarch64: 'd8a38e46e54f5967b13a2f10fc64ed96ed97c24bc86fc7be6ca2e44a0978205a',
+     armv7l: 'd8a38e46e54f5967b13a2f10fc64ed96ed97c24bc86fc7be6ca2e44a0978205a',
+       i686: '0e3977ade0372d3884fbfcf2118cfcad9e978e7f728295f5fee27ffeec70a247',
+     x86_64: 'd741ef80b07f006decc798ffce3dbb8fb860e7ef46a3a9524f09f6d4649a5743'
   })
 
   depends_on 'ccache' => :build
