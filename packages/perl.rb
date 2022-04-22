@@ -4,26 +4,27 @@ class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
   @_ver = '5.34.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{@_ver}.tar.xz"
   source_sha256 '6d52cf833ff1af27bb5e986870a2c30cec73c044b41e3458cd991f94374039f7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_armv7l/perl-5.34.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_armv7l/perl-5.34.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_i686/perl-5.34.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1_x86_64/perl-5.34.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_armv7l/perl-5.34.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_armv7l/perl-5.34.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_i686/perl-5.34.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_x86_64/perl-5.34.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dfffdd358c4863f28a7865e7087f6a716478509b7ebeafab0b1200bc5e65fe3d',
-     armv7l: 'dfffdd358c4863f28a7865e7087f6a716478509b7ebeafab0b1200bc5e65fe3d',
-       i686: '49c0701b82abe192ec20a22f435df153689c7269f36da9ab38299496a6360233',
-     x86_64: '09abf3ae359466bb0451e9ed890b4d95bc7721de05fa65f8acba5ee131797b46'
+    aarch64: '6c8b5d157e1e2fd3ebd3ee55a8ef78a516339ddd55a4f6ebef2f1e4b5d9812a9',
+     armv7l: '6c8b5d157e1e2fd3ebd3ee55a8ef78a516339ddd55a4f6ebef2f1e4b5d9812a9',
+       i686: '71f484904c833ac564961903ee1d05b2f8a7d0df8358b9dde8b94bfd2df47cac',
+     x86_64: '4c0bc04df5a046bffe2e35b5fc6bfec8cfbe462c5cc4e9b2fb9e7e70c8373828'
   })
 
   depends_on 'patch' => :build
+  no_patchelf
 
   def self.build
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
@@ -52,9 +53,12 @@ class Perl < Package
   end
 
   def self.install
+    @perl_fullversion = @_ver.split('-')[0]
+    @perl_version = @_ver.rpartition('.')[0]
+
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Make libperl symlinks into standard locations
-    libperl_so = "#{CREW_PREFIX}/lib/perl5/#{@perl_fullversion}/#{ARCH}-linux-thread-multi/CORE/libperl.so"
+    libperl_so = "#{CREW_LIB_PREFIX}/perl5/#{@perl_fullversion}/core_perl/CORE/libperl.so"
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver}" # e.g., libperl.so.5.34.1
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver.sub(/\.\d$/, '')}" # e.g., libperl.so.5.34
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so#{@_ver.sub(/\.\d\.\d$/, '')}" # e.g., libperl.so.5
