@@ -37,7 +37,7 @@ class Wine < Package
   depends_on 'mpg123'
   depends_on 'openal'
   depends_on 'opencl_headers' => :build
-  dependS_on 'opencl_icd_loader'
+  depends_on 'opencl_icd_loader'
   depends_on 'pulseaudio'
   depends_on 'vkd3d'
   depends_on 'xdg_base'
