@@ -4,28 +4,29 @@ class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
   @_ver = '7.82.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
   source_sha256 '0aaa12d7bd04b0966254f2703ce80dd5c38dbbd76af0297d3d690cdce58a583c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0_armv7l/libcurl-7.82.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0_armv7l/libcurl-7.82.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0_i686/libcurl-7.82.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0_x86_64/libcurl-7.82.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0-1_armv7l/libcurl-7.82.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0-1_armv7l/libcurl-7.82.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0-1_i686/libcurl-7.82.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.82.0-1_x86_64/libcurl-7.82.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4c93987529a02ef14f2febd2554ad0f8720605a12d4d3ed76c904b2386b2cc5a',
-     armv7l: '4c93987529a02ef14f2febd2554ad0f8720605a12d4d3ed76c904b2386b2cc5a',
-       i686: '4bf55e9a5cfd3eaf2114198969a5a536f74dd348c4398968128b36c52153b588',
-     x86_64: 'b43580537b314e0aad5aa99de45928618b302c9879c89cd18d13165a22fd6c96'
+    aarch64: '99cb07b00694c2adce9a43517597c979bcad6cf7d6622d6cb8000a5da5ceee32',
+     armv7l: '99cb07b00694c2adce9a43517597c979bcad6cf7d6622d6cb8000a5da5ceee32',
+       i686: 'c1e5c9d7d7b2d8e22367c71de6ca7aef6ffd3e52d201c998488ca6c12b71ddae',
+     x86_64: '88504cec88c61e0a7c95a8fb370078848825fa2349436525f3d6b53c7f1eeede'
   })
 
-  depends_on 'brotli' => :build
+  depends_on 'brotli' # R
   depends_on 'ca_certificates' => :build
   depends_on 'c_ares' # R
+  depends_on 'glibc' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
@@ -39,6 +40,7 @@ class Libcurl < Package
   depends_on 'valgrind' => :build
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+
 
   def self.build
     @libssh = '--with-libssh'
