@@ -1325,8 +1325,9 @@ def resolve_dependencies
 
   # leave only not installed packages in dependencies
   @dependencies.select! {|name| @device[:installed_packages].none? {|pkg| pkg[:name] == name}}
-  ['jdk11','jdk15','jdk16','jdk17'].each do |jdk|
+  ['jdk11','jdk15','jdk16','jdk17','jdk18'].each do |jdk|
     @dependencies.delete('jdk8') if @dependencies.include?(jdk)
+    @dependencies.delete('jdk8') if @pkg.name == jdk
   end
 
   return if @dependencies.empty?

@@ -3,42 +3,45 @@ require 'package'
 class Jdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html'
-  version '8u321'
+  version '8u331'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_armv7l/jdk8-8u321-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_armv7l/jdk8-8u321-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_i686/jdk8-8u321-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u321_x86_64/jdk8-8u321-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u331_armv7l/jdk8-8u331-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u331_armv7l/jdk8-8u331-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u331_i686/jdk8-8u331-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk8/8u331_x86_64/jdk8-8u331-chromeos-x86_64.tar.zst',
   })
   binary_sha256 ({
-    aarch64: '640f0f71b00033c76ccdec780b5ea032b103686531aa086b4f1ebb591bff7e7b',
-     armv7l: '640f0f71b00033c76ccdec780b5ea032b103686531aa086b4f1ebb591bff7e7b',
-       i686: '5850c390ef62f26cbfaef342b237fd75cc90077eb45112f7b8f17e6aa348acdd',
-     x86_64: 'd631ac9f3b6f30ebab391a3585deff17161f0faf22538d15b74b39db639d0897',
+    aarch64: '1793fe2d3e4b8e0ebaefb8a3ea70c74e0c2ea60685c35658f5aa543487076d0d',
+     armv7l: '1793fe2d3e4b8e0ebaefb8a3ea70c74e0c2ea60685c35658f5aa543487076d0d',
+       i686: '6202cf6bd725a694af3ce170db4b03c97b7cb0d090f4304abbd639b9425cdbc9',
+     x86_64: 'e2afb6dcbbe6ae7154e2cd1c112dbbf6055fa4b6063daf560a597064b8511b5d',
   })
+
+  no_patchelf
 
   def self.preflight
     abort "JDK11 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk11"
     abort "JDK15 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk15"
     abort "JDK16 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk16"
     abort "JDK17 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk17"
+    abort "JDK18 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk18"
   end
 
   def self.install
     case ARCH
     when 'aarch64', 'armv7l'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-arm32-vfp-hflt.tar.gz"
-      jdk_sha256 = 'be6bc93a25292febe16c6c8705422db189042b2febb4b65c3d5cf695eee875ee'
+      jdk_sha256 = '83bcb32b3f52e57aab425e22e35e28b49a81477a21bf184ed0ef1bc74f1a3e16'
     when 'i686'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-i586.tar.gz"
-      jdk_sha256 = '7074cf727cfd0cc81f75c15b09c5a9abda23cfd88c3afd38bb0102427778a522'
+      jdk_sha256 = '525ef1c399b3a7f7255f9e1e9a3d1044b56a40d4d2cae2775e819c1173b8ec5d'
     when 'x86_64'
       jdk_bin = "#{HOME}/Downloads/jdk-#{version}-linux-x64.tar.gz"
-      jdk_sha256 = '7262e6c7cf8cc8f2a9a5982edc26fa3025aa60101902424619c3bb0cff9bd89f'
+      jdk_sha256 = '272a4ceb76bf286b40eb07d581a8d134f6be5fb5f646cb25c2212b1e7779bb91'
     end
     unless File.exist? jdk_bin
       puts
@@ -56,13 +59,14 @@ class Jdk8 < Package
     jdk8_dir = "#{CREW_DEST_PREFIX}/share/jdk8"
     FileUtils.mkdir_p "#{jdk8_dir}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd 'jdk1.8.0_321' do
+    FileUtils.cd 'jdk1.8.0_331' do
       FileUtils.rm_f 'src.zip'
       FileUtils.rm_f 'javafx-src.zip'
       FileUtils.cp_r Dir['*'], "#{jdk8_dir}/"
     end
-    FileUtils.cd "#{jdk8_dir}/bin" do
-      system "find -type f -exec ln -s #{jdk8_dir}/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
+    Dir["#{jdk8_dir}/bin/*"].each do |filename|
+      binary = File.basename(filename)
+      FileUtils.ln_s "#{CREW_PREFIX}/share/jdk8/bin/#{binary}", "#{CREW_DEST_PREFIX}/bin/#{binary}"
     end
     FileUtils.mv "#{jdk8_dir}/man/", "#{CREW_DEST_PREFIX}/share/"
   end

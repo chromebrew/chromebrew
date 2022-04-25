@@ -20,6 +20,7 @@ class Jdk15 < Package
     abort "JDK11 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk11"
     abort "JDK16 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk16"
     abort "JDK17 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk17"
+    abort "JDK18 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk18"
   end
 
   def self.install
@@ -46,12 +47,11 @@ class Jdk15 < Package
       FileUtils.rm_f 'lib/src.zip'
       FileUtils.mv Dir['*'], "#{jdk15_dir}/"
     end
-    FileUtils.cd "#{jdk15_dir}/bin" do
-      system "find -type f -exec ln -s #{jdk15_dir}/bin/{} #{CREW_DEST_PREFIX}/bin/{} \\;"
+    Dir["#{jdk15_dir}/bin/*"].each do |filename|
+      binary = File.basename(filename)
+      FileUtils.ln_s "#{CREW_PREFIX}/share/jdk15/bin/#{binary}", "#{CREW_DEST_PREFIX}/bin/#{binary}"
     end
-    system "compressdoc --gzip -9 #{jdk15_dir}/man/man1"
-    FileUtils.cd "#{jdk15_dir}/man/man1" do
-      system "find -type f -exec ln -s #{jdk15_dir}/man/man1/{} #{CREW_DEST_MAN_PREFIX}/man1/{} \\;"
-    end
+    FileUtils.rm ["#{jdk15_dir}/man/man1/kinit.1", "#{jdk15_dir}/man/man1/klist.1"] # conflicts with krb5 package
+    FileUtils.mv "#{jdk15_dir}/man/", "#{CREW_DEST_PREFIX}/share/"
   end
 end
