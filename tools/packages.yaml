@@ -3019,6 +3019,11 @@ url: https://www.oracle.com/java/technologies/downloads/
 activity: low
 ---
 kind: url
+name: jdk18
+url: https://www.oracle.com/java/technologies/downloads/
+activity: low
+---
+kind: url
 name: jdk8
 url: https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 activity: low
@@ -4087,6 +4092,11 @@ kind: url
 name: libpth
 url: https://ftpmirror.gnu.org/pth/
 activity: none
+---
+kind: url
+name: libptytty
+url: http://dist.schmorp.de/libptytty/
+activity: low
 ---
 kind: url
 name: libqmi
@@ -6552,6 +6562,11 @@ kind: url
 name: rust
 url: https://github.com/rust-lang/rust/releases
 activity: high
+---
+kind: url
+name: rxvt_unicode
+url: http://dist.schmorp.de/rxvt-unicode/
+activity: low
 ---
 kind: url
 name: s
