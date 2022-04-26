@@ -9,6 +9,7 @@ class Crew_profile_base < Package
   source_url 'SKIP'
 
   no_compile_needed
+  no_patchelf
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
