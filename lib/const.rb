@@ -83,9 +83,6 @@ end
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
 CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 
-# rsync is a lot slower than tar|tar in progressing large amount of files, so disable it by default
-CREW_USE_RSYNC = ENV['CREW_USE_RSYNC'] == '1'
-
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
 CREW_DOWNLOADER = ( ENV['CREW_DOWNLOADER'].to_s.empty? ) ? nil : ENV['CREW_DOWNLOADER']
