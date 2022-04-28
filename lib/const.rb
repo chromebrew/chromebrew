@@ -83,6 +83,9 @@ end
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
 CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
 
+# rsync is a lot slower than tar|tar in progressing large amount of files, so disable it by default
+CREW_USE_RSYNC = ENV['CREW_USE_RSYNC'] == '1'
+
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
 CREW_DOWNLOADER = ( ENV['CREW_DOWNLOADER'].to_s.empty? ) ? nil : ENV['CREW_DOWNLOADER']
@@ -243,7 +246,6 @@ PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
 PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
 
-CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
-                       `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten +
+CREW_ESSENTIAL_FILES = `[ -f #{CREW_PREFIX}/bin/ruby ] && LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        %w[libzstd.so.1 libstdc++.so.6]
 CREW_ESSENTIAL_FILES.uniq!

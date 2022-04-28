@@ -35,6 +35,9 @@ class Gcc11 < Package
   no_env_options
   no_patchelf
 
+  provides 'libs', 'GCC runtime libraries',
+           lambda {|f| File.fnmatch("#{CREW_LIB_PREFIX}/*.so*", f) }
+
   @gcc_version = version.split('-')[0].partition('.')[0]
 
   # Reimplement gcc preflight section during gcc12 release cycle.

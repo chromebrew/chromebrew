@@ -22,6 +22,8 @@ class Icu4c < Package
     x86_64: '868a783d335eb13ff06d29b5221448a50e68a728ee1c35f3dc4c16c816716d68'
   })
 
+  depends_on 'gcc11::libs'
+
   def self.build
     FileUtils.cd('source') do
       case ARCH
