@@ -3,24 +3,25 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.8'
+  @_ver = '21.3.8-45b4a99'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
+  git_branch 'staging/21.3'
+  git_hashtag '45b4a998d6667612bef930c3b6587c4ddbe1e370'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_armv7l/mesa-21.3.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_armv7l/mesa-21.3.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_i686/mesa-21.3.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8_x86_64/mesa-21.3.8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_armv7l/mesa-21.3.8-45b4a99-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_armv7l/mesa-21.3.8-45b4a99-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_i686/mesa-21.3.8-45b4a99-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_x86_64/mesa-21.3.8-45b4a99-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2ba3d26240c1f9b950416cf8cab50abbda041be52a57208e61749883f6099236',
-     armv7l: '2ba3d26240c1f9b950416cf8cab50abbda041be52a57208e61749883f6099236',
-       i686: 'ca79bf6252a36b9cc7f8ba78e99e0385d9ad85559496b4df3bb2ebfddcc22f2e',
-     x86_64: '6c8a9829d33aea1edb3f89d0a27ccda44142be19865cfdec1126a3ce25fc4ba8'
+    aarch64: '12d59efb30ebef576e8036a714c9fb66e0298ba8d6f7037ddef0e8de4df8a4ce',
+     armv7l: '12d59efb30ebef576e8036a714c9fb66e0298ba8d6f7037ddef0e8de4df8a4ce',
+       i686: '90ff721330de91ae7ed90f58540653660cbec342555e850991d33a04312cf5e5',
+     x86_64: '4e09a96f6cd381d9b7296877a4d1fd0f5640b1762cd24b30892e770efef3ac23'
   })
 
   depends_on 'glslang' => :build
@@ -103,7 +104,7 @@ class Mesa < Package
     system 'patch -Np1 -i 13273.diff'
     # mesa: Implement ANGLE_sync_control_rate (used by Chrome browser)
     downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff',
-               '6d8531215e33f95c91ec54a0176d847eeb7d0b3b9543adb6bc5e58879e61ade7'
+               '1391e189f5ad40a711a6f72a7d59aef1b943ec9dc408852f5f562699bf50ba6c'
     system 'patch -Np1 -i 15381.diff'
   end
 
@@ -118,7 +119,7 @@ class Mesa < Package
       @vk = 'auto'
       @galliumdrivers = 'auto'
       @lto = CREW_MESON_OPTIONS
-      @osmesa = 'false'
+      @osmesa = 'true'
     when 'x86_64'
       @vk = 'auto'
       @galliumdrivers = 'r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus'
