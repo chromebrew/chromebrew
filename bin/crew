@@ -180,7 +180,7 @@ def print_current_package(extra = false)
   end
 end
 
-def set_package(pkgName, componentName = 'all', slient: false)
+def set_package(pkgName, componentName = 'all', silent: false)
   # set_package: load package #{pkgName} and bind the package with variable @pkg
   #
   #   pkgName: name of the package
@@ -189,7 +189,7 @@ def set_package(pkgName, componentName = 'all', slient: false)
   pkgPath = "#{CREW_PACKAGES_PATH}/#{pkgName}.rb"
 
   unless File.exist?(pkgPath)
-    unless slient
+    unless silent
       abort "Package #{pkgName} not found :/".lightred
     else
       return false
@@ -213,7 +213,7 @@ def set_package(pkgName, componentName = 'all', slient: false)
   end
 
   unless @pkg.componentList.include?(componentName)
-    unless slient
+    unless silent
       abort "#{pkgName}: component #{componentName} not found :/".lightred
     else
       return false
@@ -365,7 +365,7 @@ def regexp_search(pattern)
   regex = Regexp.new(pattern, Regexp::IGNORECASE)
   any_matches = nil
 
-  Dir.glob("#{CREW_PACKAGES_PATH}/*.rb") do |pkgPath|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"] do |pkgPath|
     set_package( File.basename(pkgPath, '.rb') )
 
     # also check components under packages
@@ -382,7 +382,7 @@ def regexp_search(pattern)
 
   return if any_matches
 
-  Dir.glob("#{CREW_PACKAGES_PATH}/*.rb") do |pkgPath|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"] do |pkgPath|
     set_package( File.basename(pkgPath, '.rb') )
 
     @pkg.descriptionList.each_pair do |componentName, description|
