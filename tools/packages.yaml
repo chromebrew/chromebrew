@@ -7554,6 +7554,11 @@ url: https://github.com/jcnelson/vdev/releases
 activity: none
 ---
 kind: url
+name: veracrypt
+url: https://launchpad.net/veracrypt/+download
+activity: medium
+---
+kind: url
 name: vidstab
 url: https://github.com/georgmartius/vid.stab/releases
 activity: none
