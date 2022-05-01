@@ -4,30 +4,42 @@ class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
   @_ver = '3.0.5.1'
-  version @_ver + '-3'
+  version "#{@_ver}-4"
   license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-3_armv7l/wxwidgets-3.0.5.1-3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-3_armv7l/wxwidgets-3.0.5.1-3-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-3_x86_64/wxwidgets-3.0.5.1-3-chromeos-x86_64.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-4_armv7l/wxwidgets-3.0.5.1-4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-4_armv7l/wxwidgets-3.0.5.1-4-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-4_x86_64/wxwidgets-3.0.5.1-4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f2409c1a97f926a1fcb21ef7f5217a361c06389f9044a764cab20b5a8a721343',
-     armv7l: 'f2409c1a97f926a1fcb21ef7f5217a361c06389f9044a764cab20b5a8a721343',
-     x86_64: 'fef36327456b2b3fe3aa73af54a028aef85bbd9e312f5ddce5954a8eb3900a22',
+    aarch64: '18ea442358ab44fd12c3f48dc190d616aafea4284a95a1681edacf6ecb5a1e8b',
+     armv7l: '18ea442358ab44fd12c3f48dc190d616aafea4284a95a1681edacf6ecb5a1e8b',
+     x86_64: '13d720a56907dd10e11bdc39b84a8689da18f8f36fe6a1b27bcd1b4a988c7e7e'
   })
 
-  depends_on 'gstreamer'
-  depends_on 'libnotify'
+  depends_on 'atk' # R
+  depends_on 'fontconfig'
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'gstreamer' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libglu' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libnotify' # R
   depends_on 'libsdl'
   depends_on 'libsecret'
+  depends_on 'libsm' # R
   depends_on 'libsoup'
-  depends_on 'mesa'
-  depends_on 'gtk3'
+  depends_on 'libtiff' # R
+  depends_on 'libx11' # R
+  depends_on 'libxxf86vm' # R
+  depends_on 'mesa' # R
+  depends_on 'pango' # R
 
   def self.patch
     # Keeps an abicheck error from derailing compile on multiple versions of wxwidgets, including 3.1
@@ -48,7 +60,7 @@ class Wxwidgets < Package
            }
        #undef wxCMP
     PATCH_EOF
-    IO.write('make-abicheck-non-fatal.patch', @make_abicheck_non_fatal_patch)
+    File.write('make-abicheck-non-fatal.patch', @make_abicheck_non_fatal_patch)
     system 'patch -p1 -i make-abicheck-non-fatal.patch || true'
   end
 
@@ -61,7 +73,7 @@ class Wxwidgets < Package
       --enable-mediactrl \
       --enable-webview \
       --with-regex=builtin \
-      --with-libpng=sys \
+      --with-libpng=builtin \
       --with-libjpeg=sys \
       --with-libtiff=sys \
       --without-gnomevfs \
