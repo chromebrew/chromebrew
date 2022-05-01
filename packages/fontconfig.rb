@@ -4,26 +4,24 @@ class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/software/fontconfig/front.html'
   @_ver = '2.14.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_armv7l/fontconfig-2.14.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_armv7l/fontconfig-2.14.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_i686/fontconfig-2.14.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0_x86_64/fontconfig-2.14.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0-1_armv7l/fontconfig-2.14.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0-1_armv7l/fontconfig-2.14.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0-1_i686/fontconfig-2.14.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.0-1_x86_64/fontconfig-2.14.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '73da87e4645d2fb31682be0d4d58ba7dfab33bf5e7eebb3725b64dac9bbe0482',
-     armv7l: '73da87e4645d2fb31682be0d4d58ba7dfab33bf5e7eebb3725b64dac9bbe0482',
-       i686: '47f744211b28c0a5f44ec9f02a629310dc8952607d7481fb2c7a96374b16e4ad',
-     x86_64: 'bb28212f219e29c3bfd670189813e46f8d46ba79cd88259004dd4b6ad5f1f411'
+    aarch64: 'e84766cac7cbb4416041e49c9d668ee8b52a1689737f652be6b6eb5c17b652e3',
+     armv7l: 'e84766cac7cbb4416041e49c9d668ee8b52a1689737f652be6b6eb5c17b652e3',
+       i686: '4012be43038438529efd2ba423ce1a561c012d37fdc8c33bd03b6b702a5d86ad',
+     x86_64: 'b2a370a40b5fd70213555c598663be865ed67f263fa9bcaa9c910f5394c87200'
   })
-
-
 
   depends_on 'gperf'
   depends_on 'jsonc'
