@@ -365,7 +365,7 @@ def regexp_search(pattern)
   regex = Regexp.new(pattern, Regexp::IGNORECASE)
   any_matches = nil
 
-  Dir.glob("#{CREW_PACKAGES_PATH}/*.rb") do |pkgPath|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |pkgPath|
     set_package( File.basename(pkgPath, '.rb') )
 
     # also check components under packages
@@ -382,7 +382,7 @@ def regexp_search(pattern)
 
   return if any_matches
 
-  Dir.glob("#{CREW_PACKAGES_PATH}/*.rb") do |pkgPath|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |pkgPath|
     set_package( File.basename(pkgPath, '.rb') )
 
     @pkg.descriptionList.each_pair do |componentName, description|
