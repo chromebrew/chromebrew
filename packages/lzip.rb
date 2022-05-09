@@ -7,7 +7,20 @@ class Lzip < Package
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/lzip/lzip-1.23.tar.gz'
-  source_sha256 'c3342d42e67139c165b8b128d033b5c96893a13ac5f25933190315214e87a948'
+  source_sha256 '4792c047ddf15ef29d55ba8e68a1a21e0cb7692d87ecdf7204419864582f280d'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23_armv7l/lzip-1.23-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23_armv7l/lzip-1.23-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23_i686/lzip-1.23-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23_x86_64/lzip-1.23-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '97ce9598576c9d2dcdaa7c83561b11aa9d8cbff33506e066dd8b22b453eae382',
+     armv7l: '97ce9598576c9d2dcdaa7c83561b11aa9d8cbff33506e066dd8b22b453eae382',
+       i686: '7e4722a56e697db590ccf6cf403f06de9a5b2985c32e73539d10f977dff8eb85',
+     x86_64: '4c9019eab5a02dbaa1b68c6c0cb0f36d34ae9b7a4f9fac145fc61ea90d7eac4a'
+  })
 
   depends_on 'musl_native_toolchain' => :build
 
