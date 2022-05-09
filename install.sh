@@ -70,6 +70,21 @@ if [ "${EUID}" == "0" ]; then
   exit 1;
 fi
 
+case "${ARCH}" in
+"i686")
+  echo_info 'The support for legacy 32-bit userspace (i686) is dropped on 2022-05-10,'
+  echo_info 'Consider switching to a 64-bit Chromium OS.'
+  exit 1
+  ;;
+"x86_64"|"armv7l"|"aarch64")
+  LIB_SUFFIX=
+  [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
+  ;;
+*)
+  echo_error "Your device is not supported by Chromebrew yet :/"
+  exit 1;;
+esac
+
 echo_success "Welcome to Chromebrew!"
 
 # prompt user to enter the sudo password if it set
@@ -95,16 +110,6 @@ function curl () {
   echo_error "Download failed :/ Please check your network settings."
   return 1
 }
-
-case "${ARCH}" in
-"i686"|"x86_64"|"armv7l"|"aarch64")
-  LIB_SUFFIX=
-  [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
-  ;;
-*)
-  echo_error "Your device is not supported by Chromebrew yet :/"
-  exit 1;;
-esac
 
 echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
 echo_info "This may take a while if there are preexisting files in ${CREW_PREFIX}...\n"
