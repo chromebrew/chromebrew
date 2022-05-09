@@ -47,11 +47,11 @@ Supported Systems
 | Architecture | Supported? |
 |:---:|:---:|
 | x86_64 | Yes |
-| i686 | Yes<sup>*</sup> |
+| i686 | No<sup>*</sup> |
 | armv7l | Yes |
 | aarch64 | Yes |
 
-<sup>*</sup> <em>We can only provide limited support for i686 since Google has discontinued support.  Although we can no longer support GUI apps, we will try to continue to support CLI programs.</em>
+<sup>*</sup> <em>The support for legacy 32-bit userspace (i686) is dropped on 2022-05-10.</em>
 
 Installation
 ------------
