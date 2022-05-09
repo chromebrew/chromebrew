@@ -389,16 +389,20 @@ class Gcc12 < Package
   def self.postinstall
     # check for conflicts with other installed files
     @override_allowed = %w[gcc11 gcc10]
-    puts 'Checking for conflicts with files from installed packages...'
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    @override_allowed.each do |override|
+      @override_allowed.delete(override) unless @device[:installed_packages].any? { |elem| elem[:name] == override }
+    end
     conflicts = []
     conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
       if conflicts_ok?
-        puts 'Handling conflicts with identically named files in other packages. This may take some time...'.orange
+        puts "Handling conflicts with identically named files in #{@override_allowed.join(' ')}.".orange
+        puts 'This may take some time...'.orange
       else
-        puts 'Error: There is a conflict with the same file in another package.'.lightred
+        puts "Error: There conflicts with identically named files in #{@override_allowed.join(' ')}.".lightred
         @_errors = 1
       end
       conflicts.each do |conflict|
@@ -410,6 +414,7 @@ class Gcc12 < Package
           end
         end
       end
+      puts "You may now remove these packages: #{@override_allowed.join(' ')}".lightblue
     end
   end
 end

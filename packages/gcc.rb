@@ -4,7 +4,7 @@ require 'open3'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '12.1.0'
+  version '12.1'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
 
