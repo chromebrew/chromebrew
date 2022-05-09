@@ -4,7 +4,7 @@ require 'open3'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '11.2.0'
+  version '12.1'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
 
@@ -15,9 +15,9 @@ class Gcc < Package
   rescue StandardError
   end
   begin
-    depends_on status.exitstatus.zero? ? "gcc#{@gcc_ver.chomp}" : 'gcc11'
+    depends_on status.exitstatus.zero? ? "gcc#{@gcc_ver.chomp}" : 'gcc12'
   rescue
-    depends_on 'gcc11'
+    depends_on 'gcc12'
   end
 
   def self.postinstall
