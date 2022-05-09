@@ -12,9 +12,9 @@ class Lzip < Package
   depends_on 'musl_native_toolchain' => :build
 
   is_static
+  is_musl
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
     system "./configure --prefix=#{CREW_MUSL_PREFIX} \
       --datarootdir=#{CREW_PREFIX}/share \
       #{MUSL_ENV_OPTIONS}"
