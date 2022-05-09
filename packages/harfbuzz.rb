@@ -27,7 +27,7 @@ class Harfbuzz < Package
   depends_on 'brotli'
   depends_on 'bz2'
   depends_on 'chafa'
-  depends_on 'gcc11'
+  depends_on 'gcc'
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
   depends_on 'fontconfig'
