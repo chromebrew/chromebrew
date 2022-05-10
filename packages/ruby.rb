@@ -3,28 +3,38 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.1.2'
+  @_ver = '3.1.2'
+  version "#{@_ver}-1"
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.tr('.', '_')}"
+  git_hashtag "v#{@_ver.tr('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_armv7l/ruby-3.1.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_armv7l/ruby-3.1.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_i686/ruby-3.1.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2_x86_64/ruby-3.1.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_armv7l/ruby-3.1.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_armv7l/ruby-3.1.2-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_i686/ruby-3.1.2-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_x86_64/ruby-3.1.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ecdc85c4e4e790de310c8fcc8550ea29f8c842e782e5fc6abb6ef516b89c066f',
-     armv7l: 'ecdc85c4e4e790de310c8fcc8550ea29f8c842e782e5fc6abb6ef516b89c066f',
-       i686: '60c190389e21bdffb689ddb62220dcc96a94c9200428124dd2e0303d09954252',
-     x86_64: 'b4b9564d4c67ad01096e401bf654535025cd9c274b0faeedc8a4d53906046f47'
+    aarch64: '83fe8527ef252f66e831b2ac4941722076567e11d89245e0a128cac82d8e3e80',
+     armv7l: '83fe8527ef252f66e831b2ac4941722076567e11d89245e0a128cac82d8e3e80',
+       i686: 'b730c0bf7e18b8a37e23004a29f2cbd0e6f6aa01e368a5993cb93f0d26a49816',
+     x86_64: 'a54b69a20abf4608f6431b762d6ddb0c5cd4a4d0e91bdcb0aedb7dcc0e9175bd'
   })
 
+  depends_on 'zlibpkg' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gcc12' # R
+  depends_on 'libffi' # R
+  depends_on 'openssl' # R
+  depends_on 'libyaml' # R
+  depends_on 'readline' # R
   depends_on 'ca_certificates'
   depends_on 'libyaml' # This is needed to install gems
-  # at run-time, system's gmp, openssl, readline and zlibpkg are possible to use
+  # at run-time, system's gmp, openssl, readline and zlibpkg can be used
+
   no_env_options
 
   def self.build
