@@ -23,7 +23,7 @@ class Popt < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'gcc12' if ARCH == 'i686' # R
+  depends_on 'gcc12' unless ARCH == 'x86_64' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
