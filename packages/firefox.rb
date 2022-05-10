@@ -3,7 +3,7 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '99.0.1'
+  version '100.0'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
 
@@ -12,8 +12,8 @@ class Firefox < Package
     x86_64: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
   })
   source_sha256 ({
-      i686: 'da446e05101a645ebc51cb9fb60bb33e68b8570448072c56baea4561b638338a',
-    x86_64: '7bc57f06fc9c52e16815f1a4208c33bc5819423c68da441d001f7c2200591bcd'
+      i686: '5013a7a3d601c4f532becf4efad8090e73fab442a1bc8599f4195c65d5813dc0',
+    x86_64: '528845df1a15acf081fdc9e1e7276f0b4601acc9df3553324e02c9c6fb9b7d9d'
   })
 
   no_compile_needed

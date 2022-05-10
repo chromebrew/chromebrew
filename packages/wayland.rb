@@ -25,7 +25,7 @@ class Wayland < Package
 
   depends_on 'expat'
   depends_on 'libxml2'
-  depends_on 'gcc11'
+  depends_on 'gcc'
   depends_on 'icu4c'
   depends_on 'zlibpkg'
   depends_on 'libffi'
