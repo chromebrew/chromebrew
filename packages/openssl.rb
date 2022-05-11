@@ -4,26 +4,27 @@ class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
   @_ver = '1.1.1o'
-  version @_ver
+  version "#{@_ver}-1"
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
   source_sha256 '9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o_armv7l/openssl-1.1.1o-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o_armv7l/openssl-1.1.1o-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o_i686/openssl-1.1.1o-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o_x86_64/openssl-1.1.1o-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_armv7l/openssl-1.1.1o-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_armv7l/openssl-1.1.1o-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_i686/openssl-1.1.1o-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_x86_64/openssl-1.1.1o-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fd3e9dea038b65e611bc0668b4f2532525fdacee4146c57881efd9e64f87691f',
-     armv7l: 'fd3e9dea038b65e611bc0668b4f2532525fdacee4146c57881efd9e64f87691f',
-       i686: '7ba7e3a6071faa345a30755f5a9f836298964240fd9f6da75b24963426470fb1',
-     x86_64: '169a7333e640476541d9f11c7c49953942a0162272bd749a942f4a72326577fd'
+    aarch64: '8d3aebd58570d123e253ca53516012d907ae0ae908dd1c0dc45e65b782f2d927',
+     armv7l: '8d3aebd58570d123e253ca53516012d907ae0ae908dd1c0dc45e65b782f2d927',
+       i686: '43831e6753b8598462c6759b337d722c374632075de3e737f0a42231508167ec',
+     x86_64: '4d52d5fa7c5950d4bee7cde519346b267bfcd725b725d6ba8325b92a84cc551c'
   })
 
   depends_on 'ccache' => :build
+  no_patchelf
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -60,7 +61,8 @@ class Openssl < Package
   end
 
   def self.check
-    system 'make test'
+    # Don't run tests if we are just rebuilding the same version of openssl.
+    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == @_ver
   end
 
   def self.install
