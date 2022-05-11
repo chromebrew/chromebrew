@@ -23,6 +23,7 @@ class Popt < Package
   })
 
   depends_on 'glibc' # R
+  depends_on 'gcc12' unless ARCH == 'x86_64' # R
   no_patchelf
 
   def self.build

@@ -28,6 +28,7 @@ class Pixz < Package
   depends_on 'asciidoc' => :build
   depends_on 'libarchive'
   depends_on 'xzutils'
+  no_patchelf
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
