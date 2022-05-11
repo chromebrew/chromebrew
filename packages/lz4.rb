@@ -22,6 +22,8 @@ class Lz4 < Package
      x86_64: '6042be5675f4a8d7deb51f595bb97fcd4932be5ffcd8ffbc3d2e8c9de03d55ba',
   })
 
+  no_patchelf
+
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}"
   end

@@ -22,6 +22,8 @@ class Ncurses < Package
      x86_64: '567cf7a40682009b0b817795e62e248374e87896ab76e5bd5fc69f98d252bf31'
   })
 
+  no_patchelf
+
   def self.build
     # build libncurses
     Dir.mkdir 'ncurses_build'
