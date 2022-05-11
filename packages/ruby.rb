@@ -4,23 +4,23 @@ class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
   @_ver = '3.1.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
   git_hashtag "v#{@_ver.tr('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_armv7l/ruby-3.1.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_armv7l/ruby-3.1.2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_i686/ruby-3.1.2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-1_x86_64/ruby-3.1.2-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-2_armv7l/ruby-3.1.2-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-2_armv7l/ruby-3.1.2-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-2_i686/ruby-3.1.2-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.1.2-2_x86_64/ruby-3.1.2-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '83fe8527ef252f66e831b2ac4941722076567e11d89245e0a128cac82d8e3e80',
-     armv7l: '83fe8527ef252f66e831b2ac4941722076567e11d89245e0a128cac82d8e3e80',
-       i686: 'b730c0bf7e18b8a37e23004a29f2cbd0e6f6aa01e368a5993cb93f0d26a49816',
-     x86_64: 'a54b69a20abf4608f6431b762d6ddb0c5cd4a4d0e91bdcb0aedb7dcc0e9175bd'
+    aarch64: '6a7f6815e3c945afa520415d82caed3a277af294d323713ff3d3afb2e9201374',
+     armv7l: '6a7f6815e3c945afa520415d82caed3a277af294d323713ff3d3afb2e9201374',
+       i686: '8c1c82df986e4038b1c6e4a17d1807542e336c0517269f5398351dc896ab2343',
+     x86_64: '70bae7cde10fadde59f6b2ab5c2017fdfa390385820a4154df49533527b6e3ff'
   })
 
   depends_on 'zlibpkg' # R
@@ -35,27 +35,23 @@ class Ruby < Package
   depends_on 'libyaml' # This is needed to install gems
   # at run-time, system's gmp, openssl, readline and zlibpkg can be used
 
-  no_env_options
+  no_patchelf
 
   def self.build
-    # mold is not working with the ruby build for both i686 and x86_64
-    @crew_linker = 'gold'
     system '[ -x configure ] || autoreconf -fiv'
-    system "LD=ld.#{@crew_linker} \
-    RUBY_TRY_CFLAGS='stack_protector=no' \
-    RUBY_TRY_LDFLAGS='stack_protector=no' \
-    CFLAGS='-flto -fuse-ld=#{@crew_linker} #{CREW_LINKER_FLAGS}' \
-    CXXFLAGS='-flto -fuse-ld=#{@crew_linker} #{CREW_LINKER_FLAGS}' \
-    LDFLAGS='-flto' \
-    optflags='-flto' \
-    ./configure #{CREW_OPTIONS} \
-    --enable-shared \
-    --disable-fortify-source"
-    system "LD=ld.#{@crew_linker} make"
+    system "RUBY_TRY_CFLAGS='stack_protector=no' \
+      RUBY_TRY_LDFLAGS='stack_protector=no' \
+      optflags='-flto' \
+      ./configure #{CREW_OPTIONS} \
+      --enable-shared \
+      --disable-fortify-source"
+    system "make"
   end
 
   def self.check
-    system 'make check || true'
+    # Do not run checks if rebuilding current ruby version.
+    # RUBY_VERSION is a built-in ruby constant.
+    system 'make check || true' unless RUBY_VERSION == @_ver
   end
 
   def self.install
