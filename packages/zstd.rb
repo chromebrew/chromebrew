@@ -24,6 +24,7 @@ class Zstd < Package
   })
 
   depends_on 'musl_zstd'
+  no_patchelf
 
   def self.build
     Dir.chdir 'build/cmake' do

@@ -39,6 +39,7 @@ class Git < Package
 
   is_musl
   is_static
+  no_patchelf
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
