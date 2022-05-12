@@ -3,24 +3,24 @@ require 'package'
 class Musl_curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.82.0'
+  @_ver = '7.83.1'
   version @_ver.to_s
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
-  source_sha256 '0aaa12d7bd04b0966254f2703ce80dd5c38dbbd76af0297d3d690cdce58a583c'
+  source_sha256 '2cb9c2356e7263a1272fd1435ef7cdebf2cd21400ec287b068396deb705c22c4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_armv7l/musl_curl-7.82.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_armv7l/musl_curl-7.82.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_i686/musl_curl-7.82.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.82.0_x86_64/musl_curl-7.82.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.83.1_armv7l/musl_curl-7.83.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.83.1_armv7l/musl_curl-7.83.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.83.1_i686/musl_curl-7.83.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.83.1_x86_64/musl_curl-7.83.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c25654335e87ca6df017f9bdc7ab7d0b32fbb3a7a480f02a9bc89a4154f8838d',
-     armv7l: 'c25654335e87ca6df017f9bdc7ab7d0b32fbb3a7a480f02a9bc89a4154f8838d',
-       i686: '845e1165edd5c75c808a7a4bb4101482cb7acf10640588556303c0b9b685ae46',
-     x86_64: '1f62fda183e6d01100e017b7072c32bc363306c08d3aa365b5804de5ef56ffd1'
+    aarch64: 'e761eea6a6880d8553c13085cb7864ec7576571b38504bf0b5b63357290bbbd4',
+     armv7l: 'e761eea6a6880d8553c13085cb7864ec7576571b38504bf0b5b63357290bbbd4',
+       i686: '67a1d55db6b522fa2139ca5cba47717ea1ddc1ff611f80f946dbb2454a260299',
+     x86_64: 'd723d24bc53e0a083002c6ad409eef7be8c2eda5b16190061bf4e7faf39275f2'
   })
 
   depends_on 'ca_certificates' => :build
