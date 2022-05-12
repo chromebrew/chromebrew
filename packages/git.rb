@@ -3,24 +3,24 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.36.0'
+  @_ver = '2.36.1'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.36.0.tar.xz'
-  source_sha256 'af5ebfc1658464f5d0d45a2bfd884c935fb607a10cc021d95bc80778861cc1d3'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.36.1.tar.xz'
+  source_sha256 '405d4a0ff6e818d1f12b3e92e1ac060f612adcb454f6299f70583058cb508370'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.0_armv7l/git-2.36.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.0_armv7l/git-2.36.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.0_i686/git-2.36.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.0_x86_64/git-2.36.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_armv7l/git-2.36.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_armv7l/git-2.36.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_i686/git-2.36.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_x86_64/git-2.36.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1f24fd5028aa5771e6c492a4f13e58e972dc5983207d90f1b240e7e5916c5cf5',
-     armv7l: '1f24fd5028aa5771e6c492a4f13e58e972dc5983207d90f1b240e7e5916c5cf5',
-       i686: '5cfdc276515dc1bde17d0f02469c627479dd848d9b67695763c6abd314e97381',
-     x86_64: '4f2764fb98ba2b03469946c6ad3eee9cb6a34253e104fd0a3e230044e5405e43'
+    aarch64: '3604d08ece40aa20e8c6164bce16f07616f732392a5e46acc4de110f19f713d0',
+     armv7l: '3604d08ece40aa20e8c6164bce16f07616f732392a5e46acc4de110f19f713d0',
+       i686: '48ecfadf2d2b32eed81668a21a680ae62f22e038f813f48d47720909ade19dab',
+     x86_64: '7485285cca0f607c8be984a7295f0a9813e8e0ff44d74e75c85acea292a2b4f8'
   })
 
   depends_on 'ca_certificates' => :build
