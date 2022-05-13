@@ -4,23 +4,23 @@ class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
   @_ver = '2.36.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.36.1.tar.xz'
   source_sha256 '405d4a0ff6e818d1f12b3e92e1ac060f612adcb454f6299f70583058cb508370'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_armv7l/git-2.36.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_armv7l/git-2.36.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_i686/git-2.36.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1_x86_64/git-2.36.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1-1_armv7l/git-2.36.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1-1_armv7l/git-2.36.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1-1_i686/git-2.36.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.36.1-1_x86_64/git-2.36.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3604d08ece40aa20e8c6164bce16f07616f732392a5e46acc4de110f19f713d0',
-     armv7l: '3604d08ece40aa20e8c6164bce16f07616f732392a5e46acc4de110f19f713d0',
-       i686: '48ecfadf2d2b32eed81668a21a680ae62f22e038f813f48d47720909ade19dab',
-     x86_64: '7485285cca0f607c8be984a7295f0a9813e8e0ff44d74e75c85acea292a2b4f8'
+    aarch64: '1d95807cebb27dc40f9ae0aa6740cb944b9f54fa6b435bcd70a3fbecd1420d00',
+     armv7l: '1d95807cebb27dc40f9ae0aa6740cb944b9f54fa6b435bcd70a3fbecd1420d00',
+       i686: 'e963a67154ca6b70c8cdff85ba601cbfec8417708f44b22afc9964b93674a989',
+     x86_64: '89bb1db2cc774b8716e308db91e5c9a1a1712a9bf9da238ce36f308ef6308e39'
   })
 
   depends_on 'ca_certificates' => :build
