@@ -320,22 +320,25 @@ class Gcc < Package
 
     installed_gcc = @device[:installed_packages].select {|pkg| pkg[:name] =~ /^gcc\d+$/ }
 
-    installed_gcc.each do |gcc_pkgName|
-      puts "Removing older version of gcc (#{gcc_pkgName})...".yellow
+    installed_gcc.each do |gcc_pkg|
+      puts "Removing older version of gcc (#{gcc_pkg[:name]})...".yellow
 
-      File.foreach("#{CREW_META_PATH}/#{gcc_pkgName}.filelist", chomp: true) do |file|
+      # remove all files and directories installed by gcc#{ver}, delete filelist and directorylist
+      File.foreach("#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist", chomp: true) do |file|
         FileUtils.rm_f(file)
       end
-      FileUtils.rm_f("#{CREW_META_PATH}/#{gcc_pkgName}.filelist")
+      FileUtils.rm_f("#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist")
 
-      File.foreach("#{CREW_META_PATH}/#{gcc_pkgName}.directorylist", chomp: true) do |file|
+      File.foreach("#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist", chomp: true) do |dir|
         FileUtils.rmdir(dir) if Dir.empty?(dir)
       end
-      FileUtils.rm_f("#{CREW_META_PATH}/#{gcc_pkgName}.directorylist")
+      FileUtils.rm_f("#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist")
 
-      @device[:installed_packages].delete_if {|pkg| pkg[:name] == gcc_pkgName }
+      # delete gcc#{ver} from device.json
+      @device[:installed_packages].delete_if {|pkg| pkg[:name] == gcc_pkg[:name] }
     end
 
+    # update device.json
     File.write( "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(@device) )
   end
 end
