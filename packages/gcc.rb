@@ -321,7 +321,7 @@ class Gcc < Package
     installed_gcc = @device[:installed_packages].select {|pkg| pkg[:name] =~ /^gcc\d+$/ }
 
     installed_gcc.each do |gcc_pkg|
-      puts "Removing older version of gcc (#{gcc_pkg[:name]})...".yellow
+      puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
 
       # remove all files and directories installed by gcc#{ver}, delete filelist and directorylist
       File.foreach("#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist", chomp: true) do |file|
