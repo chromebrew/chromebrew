@@ -1244,6 +1244,11 @@ url: https://github.com/andreafabrizi/Dropbox-Uploader/releases
 activity: none
 ---
 kind: url
+name: dsq
+url: https://github.com/multiprocessio/dsq/releases
+activity: high
+---
+kind: url
 name: dstat
 url: https://github.com/dagwieers/dstat/releases
 activity: none
