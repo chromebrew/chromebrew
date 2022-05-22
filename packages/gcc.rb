@@ -1,5 +1,4 @@
 require 'package'
-require 'open3'
 
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
@@ -322,6 +321,8 @@ class Gcc < Package
     installed_gcc = @device[:installed_packages].select {|pkg| pkg[:name] =~ /^gcc\d+$/ }
 
     installed_gcc.each do |gcc_pkgName|
+      puts "Removing older version of gcc (#{gcc_pkgName})...".yellow
+
       File.foreach("#{CREW_META_PATH}/#{gcc_pkgName}.filelist", chomp: true) do |file|
         FileUtils.rm_f(file)
       end
