@@ -20,7 +20,6 @@ class Buildessential < Package
   depends_on 'mpc'
   depends_on 'isl'
   depends_on 'libyaml'
-  depends_on 'gcc_tools'
   depends_on 'linuxheaders'
   depends_on 'make'
   depends_on 'pkgconfig'
