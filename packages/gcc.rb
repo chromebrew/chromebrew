@@ -311,8 +311,8 @@ class Gcc < Package
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/", verbose: true
     end
 
-    File.write @C99, "#{CREW_DEST_PREFIX}/bin/c99", perm: 0o755
-    File.write @C89, "#{CREW_DEST_PREFIX}/bin/c89", perm: 0o755
+    File.write "#{CREW_DEST_PREFIX}/bin/c99", @C99, perm: 0o755
+    File.write "#{CREW_DEST_PREFIX}/bin/c89", @C89, perm: 0o755
   end
 
   def self.postinstall
@@ -335,6 +335,6 @@ class Gcc < Package
       @device[:installed_packages].delete_if {|pkg| pkg[:name] == gcc_pkgName }
     end
 
-    File.write( JSON.pretty_generate(@device), "#{CREW_CONFIG_PATH}/device.json" )
+    File.write( "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(@device) )
   end
 end
