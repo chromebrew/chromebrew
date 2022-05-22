@@ -306,7 +306,7 @@ class Gcc < Package
     FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/", verbose: true
 
     # binutils makes a symlink here, but just in case it isn't there.
-    if LIB_SUFFIX == '64'
+    if ARCH_LIB == 'lib64'
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/", verbose: true
     end
@@ -316,7 +316,7 @@ class Gcc < Package
   end
 
   def self.postinstall
-    # remove any installed gcc packages (except this package)
+    # remove any previous gcc packages
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
 
     installed_gcc = @device[:installed_packages].select {|pkg| pkg[:name] =~ /^gcc\d+$/ }
