@@ -729,6 +729,11 @@ url: https://github.com/hpjansson/chafa/releases
 activity: medium
 ---
 kind: url
+name: charm
+url: https://github.com/charmbracelet/charm/releases
+activity: high
+---
+kind: url
 name: check
 url: https://github.com/libcheck/check/releases
 activity: low
@@ -1242,6 +1247,11 @@ kind: url
 name: dropbox_uploader
 url: https://github.com/andreafabrizi/Dropbox-Uploader/releases
 activity: none
+---
+kind: url
+name: dsq
+url: https://github.com/multiprocessio/dsq/releases
+activity: high
 ---
 kind: url
 name: dstat
@@ -2164,6 +2174,11 @@ url: https://github.com/google/glog/releases
 activity: low
 ---
 kind: url
+name: glow
+url: https://github.com/charmbracelet/glow/releases
+activity: medium
+---
+kind: url
 name: glproto
 url: https://github.com/freedesktop/glproto/releases
 activity: none
@@ -2322,6 +2337,11 @@ kind: url
 name: gnucobol
 url: https://sourceforge.net/projects/open-cobol/files/gnu-cobol/
 activity: low
+---
+kind: url
+name: gnulib_git
+url: https://git.savannah.gnu.org/gitweb/?p=gnulib.git
+activity: high
 ---
 kind: url
 name: gnupg
@@ -7751,6 +7771,11 @@ activity: none
 kind: url
 name: wireshark
 url: https://github.com/wireshark/wireshark/tags
+activity: high
+---
+kind: url
+name: wishlist
+url: https://github.com/charmbracelet/wishlist/releases
 activity: high
 ---
 kind: url

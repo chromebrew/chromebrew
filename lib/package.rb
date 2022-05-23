@@ -276,7 +276,7 @@ class Package
     # See lib/const.rb for more details
 
     # add exception option to opt_args
-    opt_args.merge!(exception: true)
+    opt_args.merge!(exception: true) unless opt_args.has_key?(:exception)
 
     # extract env hash
     if args[0].is_a?(Hash)

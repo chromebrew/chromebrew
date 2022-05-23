@@ -3,7 +3,7 @@ require 'package'
 class Terminus < Package
   description 'The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform'
   homepage 'https://github.com/pantheon-systems/terminus'
-  version '3.0.6'
+  version '3.0.7'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -12,7 +12,7 @@ class Terminus < Package
 
   def self.install
     system "curl -#LO https://github.com/pantheon-systems/terminus/releases/download/#{version}/terminus.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('terminus.phar') ) == '1dc28cdd4104db3a41aa668c7f65d69b0ddc05e2d24c4c47c7cd98eb9ae64b85'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('terminus.phar') ) == 'f8fd66afb825ba2314a3c1d9a0b0e7e3dedbe687668613bd511ff6b41c4c6516'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'terminus.phar', "#{CREW_DEST_PREFIX}/bin/terminus", mode: 0o755
   end

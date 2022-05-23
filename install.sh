@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="musl_zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl zstd rsync ruby"
+BOOTSTRAP_PACKAGES="musl_zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl zstd gcc rsync ruby"
 
 # Add musl bin to path
 PATH=/usr/local/share/musl/bin:$PATH
