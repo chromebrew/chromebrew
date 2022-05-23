@@ -27,9 +27,12 @@ class Llvm < Package
   depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc::libs' # R
   no_env_options
   no_patchelf
+
+  provides 'libs', 'LLVM runtime libraries',
+           lambda {|f| File.fnmatch("#{LIB_SUFFIX}/*.so*", f) and f !~ /(clang|lldb)/ }
 
   case ARCH
   when 'aarch64', 'armv7l'
