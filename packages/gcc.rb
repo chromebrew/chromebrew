@@ -323,16 +323,8 @@ class Gcc < Package
     installed_gcc.each do |gcc_pkg|
       puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
 
-      # remove all files and directories installed by gcc#{ver}, delete filelist and directorylist
-      File.foreach("#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist", chomp: true) do |file|
-        FileUtils.rm_f(file)
-      end
-      FileUtils.rm_f("#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist")
-
-      File.foreach("#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist", chomp: true) do |dir|
-        FileUtils.rmdir(dir) if Dir.empty?(dir)
-      end
-      FileUtils.rm_f("#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist")
+      # remove filelist and directorylist
+      FileUtils.rm_f([ "#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist", "#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist" ])
 
       # delete gcc#{ver} from device.json
       @device[:installed_packages].delete_if {|pkg| pkg[:name] == gcc_pkg[:name] }
