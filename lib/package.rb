@@ -244,7 +244,13 @@ class Package
     #     description: Description of this component
     #      fileFilter: Used to specify file(s) that need to be installed/extracted from main package
     #
-    # available options:
+    # Accepted #{fileFilter} types:
+    #     glob: bash style file wildcard patterns
+    #    regex: regular expressions
+    #   lambda: a lambda function (act as a filter), determine if a file should be
+    #           installed based on the return value of the lambda function
+    #
+    # Available options:
     #   :run_postinstall      (default: false) run main package's postinstall or not
     #
     @componentList ||= [ 'all' ]
@@ -255,7 +261,24 @@ class Package
     @componentList << componentName
     @descriptionList[componentName] = description
 
-    @componentFileFilter[componentName] = fileFilter
+    # determine fileFilter type, convert them to lambda functions based on its type
+    if fileFilter.is_a?(Proc) and fileFilter.lambda?
+      # when a lambda block is passed as #{fileFilter}, store it
+      @componentFileFilter[componentName] = fileFilter
+    elsif fileFilter.is_a?(Regexp)
+      # when a regex object is passed as #{fileFilter},
+      # create a lambda block for comparing filenames with the passed regex
+      @componentFileFilter[componentName] = lambda {|file| file =~ fileFilter }
+    elsif fileFilter.is_a?(Array)
+      # when an array containing files is passed as #{fileFilter},
+      # create a lambda block for checking if the filename is included in the passed array
+      @componentFileFilter[componentName] = lambda {|file| fileFilter.include?(file) }
+    elsif fileFilter.is_a?(String)
+      # when a string (glob) is passed as #{fileFilter},
+      # create a lambda block for comparing filenames with the passed glob
+      @componentFileFilter[componentName] = lambda {|file| File.fnmatch(fileFilter, file) }
+    end
+
     @componentOption[componentName] = opts
   end
 
@@ -276,7 +299,7 @@ class Package
     # See lib/const.rb for more details
 
     # add exception option to opt_args
-    opt_args.merge!(exception: true)
+    opt_args.merge!(exception: true) unless opt_args.has_key?(:exception)
 
     # extract env hash
     if args[0].is_a?(Hash)

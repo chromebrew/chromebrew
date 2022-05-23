@@ -22,6 +22,8 @@ class Xxhash < Package
      x86_64: 'a6d0d300a1e11a255d545f759598c35b280083055954765c4f68e5c733e74ecc',
   })
 
+  no_patchelf
+
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}"
   end
