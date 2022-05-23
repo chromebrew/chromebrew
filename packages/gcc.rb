@@ -32,6 +32,8 @@ class Gcc < Package
   depends_on 'libssp' # L
   depends_on 'zstd' # R
 
+  provides 'libs', 'GCC runtime libraries', "#{LIB_SUFFIX}/*.so*"
+
   no_env_options
   no_patchelf
 
