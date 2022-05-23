@@ -244,7 +244,13 @@ class Package
     #     description: Description of this component
     #      fileFilter: Used to specify file(s) that need to be installed/extracted from main package
     #
-    # available options:
+    # Accepted #{fileFilter} types:
+    #     glob: bash style file wildcard patterns
+    #    regex: regular expressions
+    #   lambda: a lambda function (act as a filter), determine if a file should be
+    #           installed based on the return value of the lambda function
+    #
+    # Available options:
     #   :run_postinstall      (default: false) run main package's postinstall or not
     #
     @componentList ||= [ 'all' ]
