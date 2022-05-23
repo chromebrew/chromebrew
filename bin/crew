@@ -1335,7 +1335,8 @@ def install_package(pkgdir)
     unless @pkg.target_component == 'all'
       # only include specific files that match the component's file filter
       filelist = File.readlines('filelist', chomp: true).select do |f|
-        @pkg.componentFileFilter[@pkg.target_component].call(f)
+        # pass the modified filename (after deleting CREW_PREFIX) to the filter function
+        @pkg.componentFileFilter[@pkg.target_component].call( f.sub(/^#{CREW_PREFIX}\/?/, '') )
       end
 
       # generate filelist according to the filelist

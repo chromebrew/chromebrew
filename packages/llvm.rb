@@ -32,7 +32,7 @@ class Llvm < Package
   no_patchelf
 
   provides 'libs', 'LLVM runtime libraries',
-           lambda {|f| File.fnmatch("#{CREW_LIB_PREFIX}/*.so*", f) and f !~ /(clang|lldb)/ }
+           lambda {|f| File.fnmatch("#{LIB_SUFFIX}/*.so*", f) and f !~ /(clang|lldb)/ }
 
   case ARCH
   when 'aarch64', 'armv7l'
