@@ -255,7 +255,24 @@ class Package
     @componentList << componentName
     @descriptionList[componentName] = description
 
-    @componentFileFilter[componentName] = fileFilter
+    # determine fileFilter type, convert them to lambda functions based on its type
+    if fileFilter.is_a?(Proc) and fileFilter.lambda?
+      # when a lambda block is passed as #{fileFilter}, store it
+      @componentFileFilter[componentName] = fileFilter
+    elsif fileFilter.is_a?(Regexp)
+      # when a regex object is passed as #{fileFilter},
+      # create a lambda block for comparing filenames with the passed regex
+      @componentFileFilter[componentName] = lambda {|file| file =~ fileFilter }
+    elsif fileFilter.is_a?(Array)
+      # when an array containing files is passed as #{fileFilter},
+      # create a lambda block for checking if the filename is included in the passed array
+      @componentFileFilter[componentName] = lambda {|file| fileFilter.include?(file) }
+    elsif fileFilter.is_a?(String)
+      # when a string (glob) is passed as #{fileFilter},
+      # create a lambda block for comparing filenames with the passed glob
+      @componentFileFilter[componentName] = lambda {|file| File.fnmatch(fileFilter, file) }
+    end
+
     @componentOption[componentName] = opts
   end
 
