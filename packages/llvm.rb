@@ -27,7 +27,7 @@ class Llvm < Package
   depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
-  depends_on 'gcc11::libs' # R
+  depends_on 'gcc::libs' # R
   no_env_options
   no_patchelf
 
