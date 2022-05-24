@@ -38,4 +38,4 @@ Metrics/MethodLength:
   Enabled: false
 
 Layout/LineLength:
-  IgnoredPatterns: ['description']
+  AllowedPatterns: ['description']
