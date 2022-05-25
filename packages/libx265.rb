@@ -8,6 +8,7 @@ class Libx265 < Package
   compatibility 'all'
   source_url "https://github.com/videolan/x265/archive/#{version}.tar.gz"
   source_sha256 '544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx265/3.4_armv7l/libx265-3.4-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Bibutils < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/bibutils/bibutils_7.2_src.tgz'
   source_sha256 '6e028aef1e8a6b3e5acef098584a7bb68708f35cfe74011b341c11fea5e4b5c3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bibutils/7.2_armv7l/bibutils-7.2-chromeos-armv7l.tar.zst',

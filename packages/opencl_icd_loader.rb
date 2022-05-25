@@ -8,6 +8,7 @@ class Opencl_icd_loader < Package
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opencl_icd_loader/2022.09.30_armv7l/opencl_icd_loader-2022.09.30-chromeos-armv7l.tar.zst',

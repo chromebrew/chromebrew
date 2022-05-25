@@ -8,6 +8,7 @@ class Xorg_cf_files < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/util/xorg-cf-files-1.0.7.tar.gz'
   source_sha256 'a49478ba0c2138bc53de38979cd2dee073b6fd6728597c552d266a707747f472'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.7_armv7l/xorg_cf_files-1.0.7-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Hello < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/hello/hello-2.12.tar.gz'
   source_sha256 'cf04af86dc085268c5f4470fbae49b18afbc221b78096aab842d934a76bad0ab'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hello/2.12_armv7l/hello-2.12-chromeos-armv7l.tar.zst',

@@ -11,6 +11,7 @@ class Libimobiledevice < Package
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libimobiledevice/archive/refs/tags/#{version}.tar.gz"
   source_sha256 'acbfb73eabee162e64c0d9de207d71c0a5f47c40cd5ad32a5097f734328ce10a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libimobiledevice/1.3.0_armv7l/libimobiledevice-1.3.0-chromeos-armv7l.tar.xz',

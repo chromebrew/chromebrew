@@ -8,6 +8,7 @@ class Krb5 < Package
   compatibility 'all'
   source_url 'https://web.mit.edu/kerberos/dist/krb5/1.21/krb5-1.21.2.tar.gz'
   source_sha256 '9560941a9d843c0243a71b17a7ac6fe31c7cebb5bce3983db79e52ae7e850491'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/krb5/1.21.2_armv7l/krb5-1.21.2-chromeos-armv7l.tar.zst',

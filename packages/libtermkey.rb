@@ -11,6 +11,7 @@ class Libtermkey < Package
   compatibility 'all'
   source_url 'http://www.leonerd.org.uk/code/libtermkey/libtermkey-0.22.tar.gz'
   source_sha256 '6945bd3c4aaa83da83d80a045c5563da4edd7d0374c62c0d35aec09eb3014600'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtermkey/0.22_armv7l/libtermkey-0.22-chromeos-armv7l.tar.zst',

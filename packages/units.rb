@@ -8,6 +8,7 @@ class Units < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/units/units-2.19.tar.gz'
   source_sha256 '4262136bdfc152b63ff5a9b93a7d80ce18b5e8bebdcffddc932dda769e306556'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/units/2.19_armv7l/units-2.19-chromeos-armv7l.tar.xz',

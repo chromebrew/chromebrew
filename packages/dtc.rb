@@ -11,6 +11,7 @@ class Dtc < Package
   compatibility 'all'
   source_url 'https://www.kernel.org/pub/software/utils/dtc/dtc-1.6.1.tar.xz'
   source_sha256 '65cec529893659a49a89740bb362f507a3b94fc8cd791e76a8d6a2b6f3203473'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtc/1.6.1_armv7l/dtc-1.6.1-chromeos-armv7l.tar.zst',

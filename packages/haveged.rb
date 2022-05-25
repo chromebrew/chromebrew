@@ -8,6 +8,7 @@ class Haveged < Package
   compatibility 'all'
   source_url 'https://github.com/jirka-h/haveged/archive/v1.9.14.tar.gz'
   source_sha256 '938cb494bcad7e4f24e61eb50fab4aa0acbc3240c80f3ad5c6cf7e6e922618c3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haveged/1.9.14_armv7l/haveged-1.9.14-chromeos-armv7l.tar.xz',

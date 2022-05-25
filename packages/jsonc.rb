@@ -8,6 +8,7 @@ class Jsonc < CMake
   compatibility 'all'
   source_url 'https://github.com/json-c/json-c.git'
   git_hashtag "json-c-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonc/0.17-20230812_armv7l/jsonc-0.17-20230812-chromeos-armv7l.tar.zst',

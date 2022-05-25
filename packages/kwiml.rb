@@ -8,6 +8,7 @@ class Kwiml < Package
   compatibility 'all'
   source_url 'https://gitlab.kitware.com/utils/kwiml/-/archive/a079afc646f46b81686676bec91fb0a8e3799e4a/kwiml-a079afc646f46b81686676bec91fb0a8e3799e4a.tar.bz2'
   source_sha256 '09607a32224091cb6deb605382772c69a4f51d16a5ccf065688e6e7d80e6f822'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kwiml/a079af_armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',

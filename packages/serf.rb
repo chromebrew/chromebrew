@@ -8,6 +8,7 @@ class Serf < Package
   compatibility 'all'
   source_url 'https://www.apache.org/dist/serf/serf-1.3.9.tar.bz2'
   source_sha256 '549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serf/1.3.9-2_armv7l/serf-1.3.9-2-chromeos-armv7l.tar.xz',

@@ -9,6 +9,7 @@ class Clojure < Package
   compatibility 'all'
   source_url 'https://github.com/clojure/clojure/archive/clojure-1.11.1.tar.gz'
   source_sha256 'f2fc71a53186c92a45ecb9bb4f0a3467bedcd0f9ce8eafe3bded737036e7fcfa'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.11.1-1_armv7l/clojure-1.11.1-1-chromeos-armv7l.tar.zst',

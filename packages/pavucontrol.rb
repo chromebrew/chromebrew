@@ -8,6 +8,7 @@ class Pavucontrol < Package
   compatibility 'all'
   source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'
   source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pavucontrol/4.0-381b-1_armv7l/pavucontrol-4.0-381b-1-chromeos-armv7l.tar.xz',

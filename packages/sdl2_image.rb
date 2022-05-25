@@ -8,6 +8,7 @@ class Sdl2_image < Package
   compatibility 'all'
   source_url 'https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-2.6.2.tar.gz'
   source_sha256 '5d91ea72b449a161821ef51464d0767efb6fedf7a773f923c43e483dc137e362'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.6.2_armv7l/sdl2_image-2.6.2-chromeos-armv7l.tar.zst',

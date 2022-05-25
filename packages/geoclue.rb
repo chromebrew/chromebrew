@@ -9,6 +9,7 @@ class Geoclue < Package
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/#{@_ver}/geoclue-#{@_ver}.tar.bz2"
   source_sha256 '6cc7dbe4177b4e7f3532f7fe42262049789a3cd6c55afe60a3564d7394119c27'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',

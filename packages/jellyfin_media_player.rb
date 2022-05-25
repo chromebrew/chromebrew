@@ -12,6 +12,7 @@ class Jellyfin_media_player < Package
   min_glibc '2.35'
   source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',

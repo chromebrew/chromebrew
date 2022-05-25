@@ -8,6 +8,7 @@ class Perl_locale_gettext < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/gettext-1.07.tar.gz'
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38.2_armv7l/perl_locale_gettext-1.07-perl5.38.2-chromeos-armv7l.tar.zst',

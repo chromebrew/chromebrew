@@ -8,6 +8,7 @@ class Libpcap < Package
   compatibility 'all'
   source_url 'https://www.tcpdump.org/release/libpcap-1.10.0.tar.gz'
   source_sha256 '8d12b42623eeefee872f123bd0dc85d535b00df4d42e865f993c40f7bfc92b1e'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',

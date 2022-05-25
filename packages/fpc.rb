@@ -17,6 +17,7 @@ class Fpc < Package
     source_url 'https://downloads.sourceforge.net/project/freepascal/Linux/3.2.2/fpc-3.2.2.x86_64-linux.tar'
     source_sha256 '5adac308a5534b6a76446d8311fc340747cbb7edeaacfe6b651493ff3fe31e83'
   end
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fpc/3.2.2_armv7l/fpc-3.2.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Live555 < Package
   compatibility 'all'
   source_url 'http://www.live555.com/liveMedia/public/live.2019.08.28.tar.gz'
   source_sha256 'a3dcd157865186cf883c3a80b4bb09637e91fff96b234b2c780a7f7dcc7a35dc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/live555/2019.08.28_armv7l/live555-2019.08.28-chromeos-armv7l.tar.xz',

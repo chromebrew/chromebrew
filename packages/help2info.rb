@@ -8,6 +8,7 @@ class Help2info < Package
   compatibility 'all'
   source_url 'http://download.savannah.nongnu.org/releases/help2info/help2info-0.1.1.tar.bz2'
   source_sha256 '9964fa462fb3e0f0646c97d986b69b3365461e94365cd80c5ec57f03ca08a839'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2info/0.1.1_armv7l/help2info-0.1.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gettext < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gettext/gettext-0.22.4.tar.lz'
   source_sha256 'd2392ba0ad01961cff992da97f4b69fa5fe06bc20e33b5556c34d8aafde9cbe4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.22.4_armv7l/gettext-0.22.4-chromeos-armv7l.tar.zst',

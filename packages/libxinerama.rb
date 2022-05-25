@@ -8,6 +8,7 @@ class Libxinerama < Package
   version '1.1.4'
   source_url 'https://www.x.org/archive/individual/lib/libXinerama-1.1.4.tar.bz2'
   source_sha256 '0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxinerama/1.1.4_armv7l/libxinerama-1.1.4-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libxtst < Package
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/releases/individual/lib/libXtst-1.2.4.tar.xz'
   source_sha256 '84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.4_armv7l/libxtst-1.2.4-chromeos-armv7l.tar.zst',

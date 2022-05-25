@@ -8,6 +8,7 @@ class Cscope < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/cscope/cscope/v15.9/cscope-15.9.tar.gz'
   source_sha256 'c5505ae075a871a9cd8d9801859b0ff1c09782075df281c72c23e72115d9f159'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cscope/15.9_armv7l/cscope-15.9-chromeos-armv7l.tar.xz',

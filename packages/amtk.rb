@@ -8,6 +8,7 @@ class Amtk < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/amtk/archive/33ec171156ebc49d6dad568e6ba39470edb272e1.zip'
   source_sha256 'fc9bad18bbd5421da52e0548f9e91eda180539bb568d1e7116ca65f4f73f4b67'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/amtk/5.2.0-33ec-1_armv7l/amtk-5.2.0-33ec-1-chromeos-armv7l.tar.xz',

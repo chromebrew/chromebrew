@@ -8,6 +8,7 @@ class Musl_krb5 < Package
   license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
   source_url 'https://github.com/krb5/krb5.git'
   git_hashtag '5c394dc54c9196c300bd99a66a3257692f520920'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_krb5/1.20-149d_armv7l/musl_krb5-1.20-149d-chromeos-armv7l.tpxz',

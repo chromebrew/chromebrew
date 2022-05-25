@@ -8,6 +8,7 @@ class Libcanberra < Package
   compatibility 'all'
   source_url 'http://pkgs.fedoraproject.org/repo/pkgs/libcanberra/libcanberra-0.30.tar.xz/34cb7e4430afaf6f447c4ebdb9b42072/libcanberra-0.30.tar.xz'
   source_sha256 'c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcanberra/0.30-1_armv7l/libcanberra-0.30-1-chromeos-armv7l.tar.xz',

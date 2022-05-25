@@ -8,6 +8,7 @@ class M4 < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/m4/m4-1.4.19.tar.xz'
   source_sha256 '63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.19_armv7l/m4-1.4.19-chromeos-armv7l.tar.xz',

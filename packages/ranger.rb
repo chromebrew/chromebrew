@@ -8,6 +8,7 @@ class Ranger < Package
   compatibility 'all'
   source_url 'https://github.com/ranger/ranger/archive/v1.8.1.tar.gz'
   source_sha256 'ab0e32159cde196df4ff14e9c516aaf8ac2db79e3fdee17e59f327d677a96949'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ranger/1.8.1_armv7l/ranger-1.8.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Foliate < Package
   compatibility 'all'
   source_url 'https://github.com/johnfactotum/foliate/archive/2.6.4.tar.gz'
   source_sha256 '4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/foliate/2.6.4_armv7l/foliate-2.6.4-chromeos-armv7l.tar.zst',

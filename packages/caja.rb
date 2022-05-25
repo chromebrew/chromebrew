@@ -11,6 +11,7 @@ class Caja < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/caja-#{version}.tar.xz"
   source_sha256 '646ae6aa5174a765f2a4a6bc4ad4efd6b801f475f0aa7c2fd7e71bd84b5632bb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/caja/1.27.2_armv7l/caja-1.27.2-chromeos-armv7l.tar.zst',

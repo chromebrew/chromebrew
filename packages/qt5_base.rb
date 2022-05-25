@@ -8,6 +8,7 @@ class Qt5_base < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
   git_hashtag 'ea7a183732c17005f08ca14fd70cdd305c90396d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_base/5.15.11-ea7a183_armv7l/qt5_base-5.15.11-ea7a183-chromeos-armv7l.tar.zst',

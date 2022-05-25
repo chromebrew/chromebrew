@@ -8,6 +8,7 @@ class Geocode_glib < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/geocode-glib/archive/3.26.4.tar.gz'
   source_sha256 'cd4464f74add58584f04e6a7f16347f07caf271509e0b7ef067a4170b74518c9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geocode_glib/3.26.4_armv7l/geocode_glib-3.26.4-chromeos-armv7l.tar.zst',

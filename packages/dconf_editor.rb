@@ -8,6 +8,7 @@ class Dconf_editor < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/dconf-editor/-/archive/#{version}/dconf-editor-#{version}.tar.bz2"
   source_sha256 'e7b127b865f56c00b31759461d239af9f7b8098e715dcde3e06896cd84b544ad'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dconf_editor/43.0_armv7l/dconf_editor-43.0-chromeos-armv7l.tar.zst',

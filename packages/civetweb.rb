@@ -8,6 +8,7 @@ class Civetweb < Package
   compatibility 'all'
   source_url 'https://github.com/civetweb/civetweb/archive/v1.13.tar.gz'
   source_sha256 'a7ccc76c2f1b5f4e8d855eb328ed542f8fe3b882a6da868781799a98f4acdedc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/civetweb/1.13_armv7l/civetweb-1.13-chromeos-armv7l.tar.xz',

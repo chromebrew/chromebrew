@@ -8,6 +8,7 @@ class Freetds < Package
   compatibility 'all'
   source_url "ftp://ftp.freetds.org/pub/freetds/stable/freetds-#{version}.tar.gz"
   source_sha256 'a02c27802da15a3ade85bbaab6197713cd286f036409af9bba2ab4c63bdf57c3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetds/1.2.18_armv7l/freetds-1.2.18-chromeos-armv7l.tar.xz',

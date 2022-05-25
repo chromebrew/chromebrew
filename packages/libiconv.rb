@@ -8,6 +8,7 @@ class Libiconv < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libiconv/libiconv-1.17.tar.gz'
   source_sha256 '8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.17_armv7l/libiconv-1.17-chromeos-armv7l.tar.zst',

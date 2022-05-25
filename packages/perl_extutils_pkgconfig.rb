@@ -8,6 +8,7 @@ class Perl_extutils_pkgconfig < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/ExtUtils-PkgConfig-1.16.tar.gz'
   source_sha256 'bbeaced995d7d8d10cfc51a3a5a66da41ceb2bc04fedcab50e10e6300e801c6e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_pkgconfig/1.16-perl5.38_armv7l/perl_extutils_pkgconfig-1.16-perl5.38-chromeos-armv7l.tar.zst',

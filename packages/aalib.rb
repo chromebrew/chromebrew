@@ -8,6 +8,7 @@ class Aalib < Package
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/aalib.git'
   git_hashtag "debian/#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4p5-50_armv7l/aalib-1.4p5-50-chromeos-armv7l.tar.zst',

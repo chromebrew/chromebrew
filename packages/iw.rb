@@ -8,6 +8,7 @@ class Iw < Package
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.19_armv7l/iw-5.19-chromeos-armv7l.tar.zst',

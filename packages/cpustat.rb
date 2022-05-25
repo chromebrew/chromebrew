@@ -8,6 +8,7 @@ class Cpustat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/cpustat/cpustat-0.02.10.tar.xz'
   source_sha256 'ea9ab5a970ec657496c0127e3e5d58d49ce0fe07e750b4aafcfeb4896ccd74e9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpustat/0.02.10_armv7l/cpustat-0.02.10-chromeos-armv7l.tar.xz',

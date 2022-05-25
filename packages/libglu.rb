@@ -8,6 +8,7 @@ class Libglu < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/glu.git'
   git_hashtag "glu-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.2_i686/libglu-9.0.2-chromeos-i686.tar.zst',

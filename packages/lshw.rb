@@ -10,6 +10,7 @@ class Lshw < Package
   # not been updated for years.
   source_url 'https://salsa.debian.org/openstack-team/third-party/lshw.git'
   git_hashtag '5840f2049cdc66115b701cd5a1e332f166cc1743'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lshw/B.02.19.2-5840f20_armv7l/lshw-B.02.19.2-5840f20-chromeos-armv7l.tar.zst',

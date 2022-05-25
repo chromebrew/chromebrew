@@ -9,6 +9,7 @@ class Gdk_pixbuf < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-1_armv7l/gdk_pixbuf-2.42.10-1-chromeos-armv7l.tar.zst',

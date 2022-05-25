@@ -8,6 +8,7 @@ class Python3 < Package
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
   source_sha256 '8dfb8f426fcd226657f9e2bd5f1e96e53264965176fa17d32658e873591aeb21'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.1_armv7l/python3-3.12.1-chromeos-armv7l.tar.zst',

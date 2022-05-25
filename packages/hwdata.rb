@@ -11,6 +11,7 @@ class Hwdata < Package
   compatibility 'all'
   source_url 'https://github.com/vcrhonek/hwdata.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwdata/0.364_armv7l/hwdata-0.364-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libstemmer < Package
   compatibility 'all'
   source_url 'https://github.com/zvelo/libstemmer/archive/78c149a3a6f262a35c7f7351d3f77b725fc646cf.tar.gz'
   source_sha256 '9bbd1bd2b7829f6bdafba97667fc795b3a80785c2285a5b73c3006b0bf3db688'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstemmer/78c149_armv7l/libstemmer-78c149-chromeos-armv7l.tar.xz',

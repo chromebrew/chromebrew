@@ -8,6 +8,7 @@ class Libwapcaplet < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libwapcaplet-0.4.3-src.tar.gz'
   source_sha256 '9b2aa1dd6d6645f8e992b3697fdbd87f0c0e1da5721fa54ed29b484d13160c5c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwapcaplet/0.4.3_armv7l/libwapcaplet-0.4.3-chromeos-armv7l.tar.xz',

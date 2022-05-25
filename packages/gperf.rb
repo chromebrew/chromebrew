@@ -8,6 +8,7 @@ class Gperf < Autotools
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/gitweb/?p=gperf.git;a=snapshot;h=a02b4653ee52990b22ad887607dcb881e1625258;sf=tgz'
   source_sha256 '2a2634e8f04cd37f310eaa2c4736c18a21e06f435b91f66c9034a70e9d62fff9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.2-a02b465_armv7l/gperf-3.2-a02b465-chromeos-armv7l.tar.zst',

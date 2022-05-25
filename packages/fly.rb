@@ -8,6 +8,7 @@ class Fly < Package
   compatibility 'all'
   source_url 'http://www.w3perl.com/fly/dist/fly-1.6.5.tar.gz'
   source_sha256 '8411915a9acd9a3d86896db5a53ac6bd4e35b44106c0f180cc0f96a6f02a62c9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fly/1.6.5_armv7l/fly-1.6.5-chromeos-armv7l.tar.xz',

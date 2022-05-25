@@ -8,6 +8,7 @@ class Zziplib < Package
   compatibility 'all'
   source_url 'https://github.com/gdraheim/zziplib/archive/refs/tags/v0.13.72.tar.gz'
   source_sha256 '93ef44bf1f1ea24fc66080426a469df82fa631d13ca3b2e4abaeab89538518dc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zziplib/0.13.72_armv7l/zziplib-0.13.72-chromeos-armv7l.tar.xz',

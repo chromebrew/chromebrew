@@ -8,6 +8,7 @@ class Xkbcomp < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/app/xkbcomp-1.4.4.tar.bz2'
   source_sha256 '59cce603a607a17722a0a1cf99010f4894e7812beb5d695abbc08474d59af27e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xkbcomp/1.4.4_armv7l/xkbcomp-1.4.4-chromeos-armv7l.tar.xz',

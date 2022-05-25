@@ -11,6 +11,7 @@ class Libdbusmenu_gtk3 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'git://git.launchpad.net/ubuntu/+source/libdbusmenu'
   git_hashtag 'a3658f1208c31b1fb03b71af6e49c01119ba52fd'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdbusmenu_gtk3/16.04.0_armv7l/libdbusmenu_gtk3-16.04.0-chromeos-armv7l.tpxz',

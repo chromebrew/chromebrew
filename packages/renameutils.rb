@@ -8,6 +8,7 @@ class Renameutils < Package
   compatibility 'all'
   source_url 'http://download.savannah.gnu.org/releases/renameutils/renameutils-0.12.0.tar.gz'
   source_sha256 'cbd2f002027ccf5a923135c3f529c6d17fabbca7d85506a394ca37694a9eb4a3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/renameutils/0.12.0_armv7l/renameutils-0.12.0-chromeos-armv7l.tar.xz',

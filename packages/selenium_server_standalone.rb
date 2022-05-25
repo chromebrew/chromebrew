@@ -8,6 +8,7 @@ class Selenium_server_standalone < Package
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/SeleniumHQ/selenium/selenium-3.11.0/README.md'
   source_sha256 '662789e2508babe0be2d5b3b84630834b7727ed1960b66567be1c73eed08433b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/selenium_server_standalone/3.11.0_armv7l/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',

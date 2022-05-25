@@ -8,6 +8,7 @@ class Jobscheduler < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/jobscheduler/jobscheduler_unix_universal_agent.1.12.3.tar.gz'
   source_sha256 '079819463d1e64300fd4f2231e84a62d282b4319dd5585fcbf6ca6014484352b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jobscheduler/1.12.3_armv7l/jobscheduler-1.12.3-chromeos-armv7l.tar.xz',

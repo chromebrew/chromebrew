@@ -8,6 +8,7 @@ class Groff < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/groff/groff-1.22.4.tar.gz'
   source_sha256 'e78e7b4cb7dec310849004fa88847c44701e8d133b5d4c13057d876c1bad0293'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/groff/1.22.4_armv7l/groff-1.22.4-chromeos-armv7l.tar.xz',

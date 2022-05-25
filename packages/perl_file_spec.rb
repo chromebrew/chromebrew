@@ -8,6 +8,7 @@ class Perl_file_spec < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/PathTools-3.75.tar.gz'
   source_sha256 'a558503aa6b1f8c727c0073339081a77888606aa701ada1ad62dd9d8c3f945a2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_spec/3.75-perl5.38.2_armv7l/perl_file_spec-3.75-perl5.38.2-chromeos-armv7l.tar.zst',

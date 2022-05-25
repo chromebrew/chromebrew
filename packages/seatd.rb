@@ -11,6 +11,7 @@ class Seatd < Package
   compatibility 'x86_64 armv7l aarch64'
   source_url 'https://git.sr.ht/~kennylevinsen/seatd/archive/0.7.0.tar.gz'
   source_sha256 '210ddf8efa1149cde4dd35908bef8e9e63c2edaa0cdb5435f2e6db277fafff3c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/seatd/0.7.0_armv7l/seatd-0.7.0-chromeos-armv7l.tar.zst',

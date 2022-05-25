@@ -8,6 +8,7 @@ class Libaom < Package
   compatibility 'all'
   source_url 'https://aomedia.googlesource.com/aom.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.6.1_armv7l/libaom-3.6.1-chromeos-armv7l.tar.zst',

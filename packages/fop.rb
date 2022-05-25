@@ -8,6 +8,7 @@ class Fop < Package
   compatibility 'all'
   source_url 'https://downloads.apache.org/xmlgraphics/fop/binaries/fop-2.7-bin.tar.gz'
   source_sha256 'ec75d6135f55f57b275f8332e069f8817990fdc7f63b1f5c0cb9da5609aa3074'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fop/2.7-1_armv7l/fop-2.7-1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libvips < Package
   compatibility 'all'
   source_url "https://github.com/libvips/libvips/archive/v#{version}.tar.gz"
   source_sha256 'b2412f580ba83129d55e57a73c7c4fdb53e60a39c48910acc5f0d80518deb7a5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvips/8.10.6-beta2_armv7l/libvips-8.10.6-beta2-chromeos-armv7l.tar.xz',

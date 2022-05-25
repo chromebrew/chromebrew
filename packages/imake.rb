@@ -8,6 +8,7 @@ class Imake < Autotools
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/util/imake-1.0.10.tar.xz'
   source_sha256 '75decbcea8d7b354cf36adc9675e53c4790ee3de56a14bd87b42c8e8aad2ecf5'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imake/1.0.10_armv7l/imake-1.0.10-chromeos-armv7l.tar.zst',

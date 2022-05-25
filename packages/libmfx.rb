@@ -8,6 +8,7 @@ class Libmfx < Package
   compatibility 'i686'
   source_url 'https://github.com/lu-zero/mfx_dispatch/archive/1.35.1.tar.gz'
   source_sha256 '673636da98a4fd5c3e3dc5267da5429e986f53089ed6c33cdca5751f56d9416b'
+  binary_compression 'tar.zst'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmfx/1.35.1_i686/libmfx-1.35.1-chromeos-i686.tar.zst'

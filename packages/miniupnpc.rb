@@ -8,6 +8,7 @@ class Miniupnpc < Package
   compatibility 'all'
   source_url 'https://github.com/miniupnp/miniupnp/archive/miniupnpc_2_1.tar.gz'
   source_sha256 '19c5b6cf8f3fc31d5e641c797b36ecca585909c7f3685a5c1a64325340537c94'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniupnpc/2.1_armv7l/miniupnpc-2.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Smem < Package
   compatibility 'all'
   source_url 'https://www.selenic.com/smem/download/smem-1.4.tar.gz'
   source_sha256 '2ea9f878f4cf3c276774c3f7e2a41977a1f2d64f98d2dcb6a15f1f3d84df61ec'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smem/1.4_armv7l/smem-1.4-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Txt2man < Package
   compatibility 'all'
   source_url 'http://mvertes.free.fr/download/txt2man-1.5.6.tar.gz'
   source_sha256 '984825c5fd0cb3495160bf3277f327078081a8dc219dc466509e307ec9a2b52a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/txt2man/1.5.6-1_armv7l/txt2man-1.5.6-1-chromeos-armv7l.tar.xz',

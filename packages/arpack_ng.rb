@@ -8,6 +8,7 @@ class Arpack_ng < Package
   compatibility 'all'
   source_url 'https://github.com/opencollab/arpack-ng/archive/3.7.0.tar.gz'
   source_sha256 '972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_armv7l/arpack_ng-3.7.0-chromeos-armv7l.tar.xz',

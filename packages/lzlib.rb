@@ -8,6 +8,7 @@ class Lzlib < Package
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.lz'
   source_sha256 'dde6bd5b32535f17b28c9ac24b66607e0250506ac1432a4112ca3c73f5d662c3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzlib/1.13_armv7l/lzlib-1.13-chromeos-armv7l.tar.zst',

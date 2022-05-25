@@ -8,6 +8,7 @@ class Libsecret < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/libsecret/archive/0.20.5.tar.gz'
   source_sha256 'b33b9542222ea8866f6ff2d31c0ad373877c2277db546ca00cc7fdda9cbab1c3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.5_armv7l/libsecret-0.20.5-chromeos-armv7l.tar.zst',

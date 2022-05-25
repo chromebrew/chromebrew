@@ -8,6 +8,7 @@ class Scrot < Package
   compatibility 'all'
   source_url 'https://github.com/resurrecting-open-source-projects/scrot/releases/download/1.8.1/scrot-1.8.1.tar.bz2'
   source_sha256 '05f91be9a32eb912f8f2b9abdb3dca83166f77ed0a5a430b6766067ab13c3b18'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.8.1_armv7l/scrot-1.8.1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Enchant < Package
   compatibility 'all'
   source_url "https://github.com/AbiWord/enchant/archive/v#{version}.tar.gz"
   source_sha256 '85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enchant/2.2.15_armv7l/enchant-2.2.15-chromeos-armv7l.tar.xz',

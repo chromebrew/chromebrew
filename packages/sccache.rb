@@ -8,6 +8,7 @@ class Sccache < Package
   compatibility 'all'
   source_url "https://github.com/mozilla/sccache/archive/v#{version}.tar.gz"
   source_sha256 '7dbe71012f9b0b57d8475de6b36a9a3b4802e44a135e886f32c5ad1b0eb506e0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sccache/0.2.15_armv7l/sccache-0.2.15-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Neovim < Package
   compatibility 'all'
   source_url 'https://github.com/neovim/neovim.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.8.2_armv7l/neovim-0.8.2-chromeos-armv7l.tar.zst',

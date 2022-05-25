@@ -11,6 +11,7 @@ class Highway < Package
   compatibility 'all'
   source_url 'https://github.com/google/highway/archive/1.0.1/highway-1.0.1.tar.gz'
   source_sha256 '7ca6af7dc2e3e054de9e17b9dfd88609a7fd202812b1c216f43cc41647c97311'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/highway/1.0.1_armv7l/highway-1.0.1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Miscfiles < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/miscfiles/miscfiles-1.5.tar.gz'
   source_sha256 '6aaaa8898b0f6dac18bcaa5492874a6cd1243ffbe7a6dd347ca8f3ec3642a500'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miscfiles/1.5_armv7l/miscfiles-1.5-chromeos-armv7l.tar.xz',

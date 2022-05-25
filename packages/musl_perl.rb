@@ -8,6 +8,7 @@ class Musl_perl < Package
   compatibility 'all'
   source_url "http://www.cpan.org/src/5.0/perl-#{version}.tar.gz"
   source_sha256 '551efc818b968b05216024fb0b727ef2ad4c100f8cb6b43fab615fa78ae5be9a'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_armv7l/musl_perl-5.34.0-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Libnftnl < Package
   compatibility 'all'
   source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.2.6.tar.xz'
   source_sha256 'ceeaea2cd92147da19f13a35a7f1a4bc2767ff897e838e4b479cf54b59c777f4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.6_armv7l/libnftnl-1.2.6-chromeos-armv7l.tar.zst',

@@ -11,6 +11,7 @@ class Libcec < Package
   compatibility 'aarch64 armv7l x86_64' # Not kernel compatible w/ i686 kernel.
   source_url 'https://github.com/Pulse-Eight/libcec/archive/libcec-6.0.2.tar.gz'
   source_sha256 '090696d7a4fb772d7acebbb06f91ab92e025531c7c91824046b9e4e71ecb3377'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcec/6.0.2_armv7l/libcec-6.0.2-chromeos-armv7l.tar.zst',

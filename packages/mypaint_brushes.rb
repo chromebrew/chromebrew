@@ -8,6 +8,7 @@ class Mypaint_brushes < Package
   compatibility 'all'
   source_url 'https://github.com/mypaint/mypaint-brushes.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes/2.0.2_armv7l/mypaint_brushes-2.0.2-chromeos-armv7l.tpxz',

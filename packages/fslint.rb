@@ -8,6 +8,7 @@ class Fslint < Package
   compatibility 'all'
   source_url 'https://www.pixelbeat.org/fslint/fslint-2.46.tar.xz'
   source_sha256 'f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_armv7l/fslint-2.46-chromeos-armv7l.tar.xz',

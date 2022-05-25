@@ -8,6 +8,7 @@ class Hplip < Package
   compatibility 'i686,x86_64'
   source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.23.12/hplip-3.23.12.tar.gz'
   source_sha256 'a76c2ac8deb31ddb5f0da31398d25ac57440928a0692dcb060a48daa718e69ed'
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.23.12_x86_64/hplip-3.23.12-chromeos-x86_64.tar.zst',

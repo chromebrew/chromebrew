@@ -8,6 +8,7 @@ class Libva_utils < Package
   compatibility 'all'
   source_url "https://github.com/intel/libva-utils/archive/refs/tags/#{version}.tar.gz"
   source_sha256 '0c1eb7f717e391d00da74c53a9fe5caf3d6c510dcd35bac7f71a0e59ad1b8d26'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva_utils/2.11.1_armv7l/libva_utils-2.11.1-chromeos-armv7l.tar.xz',

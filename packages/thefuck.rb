@@ -8,6 +8,7 @@ class Thefuck < Package
   compatibility 'all'
   source_url 'https://github.com/nvbn/thefuck.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/thefuck/3.31_armv7l/thefuck-3.31-chromeos-armv7l.tpxz',

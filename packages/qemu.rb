@@ -9,6 +9,7 @@ class Qemu < Package
   min_glibc '2.35'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.2.0_armv7l/qemu-8.2.0-chromeos-armv7l.tar.zst',

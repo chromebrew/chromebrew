@@ -8,6 +8,7 @@ class Libssh2 < Autotools
   compatibility 'all'
   source_url 'https://www.libssh2.org/download/libssh2-1.11.0.tar.gz'
   source_sha256 '3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh2/1.11.0_armv7l/libssh2-1.11.0-chromeos-armv7l.tar.zst',

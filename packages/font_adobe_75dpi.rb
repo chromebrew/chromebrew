@@ -8,6 +8,7 @@ class Font_adobe_75dpi < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-adobe-75dpi-1.0.3.tar.bz2'
   source_sha256 'c6024a1e4a1e65f413f994dd08b734efd393ce0a502eb465deb77b9a36db4d09'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_75dpi/1.0.3_armv7l/font_adobe_75dpi-1.0.3-chromeos-armv7l.tar.xz',

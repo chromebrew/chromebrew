@@ -8,6 +8,7 @@ class Audacious < Package
   compatibility 'all'
   source_url 'https://distfiles.audacious-media-player.org/audacious-3.10.1.tar.bz2'
   source_sha256 '8366e840bb3c9448c2cf0cf9a0800155b0bd7cc212a28ba44990c3d2289c6b93'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious/3.10.1_armv7l/audacious-3.10.1-chromeos-armv7l.tar.xz',

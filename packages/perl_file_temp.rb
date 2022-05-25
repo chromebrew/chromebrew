@@ -8,6 +8,7 @@ class Perl_file_temp < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-0.2311.tar.gz'
   source_sha256 '2290d61bf5c39882fc3311da9ce1c7f42dbdf825ae169e552c59fe4598b36f4a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_temp/0.2311-perl5.38_armv7l/perl_file_temp-0.2311-perl5.38-chromeos-armv7l.tar.zst',

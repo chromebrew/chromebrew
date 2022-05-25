@@ -8,6 +8,7 @@ class Libspectre < Package
   compatibility 'all'
   source_url 'https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz'
   source_sha256 'cf60b2a80f6bfc9a6b110e18f08309040ceaa755210bf94c465a969da7524d07'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspectre/0.2.10_armv7l/libspectre-0.2.10-chromeos-armv7l.tar.zst',

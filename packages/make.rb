@@ -8,6 +8,7 @@ class Make < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/make/make-4.4.1.tar.lz'
   source_sha256 '8814ba072182b605d156d7589c19a43b89fc58ea479b9355146160946f8cf6e9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.4.1_armv7l/make-4.4.1-chromeos-armv7l.tar.zst',

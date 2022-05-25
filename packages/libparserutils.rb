@@ -8,6 +8,7 @@ class Libparserutils < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libparserutils-0.2.4-src.tar.gz'
   source_sha256 '322bae61b30ccede3e305bf6eae2414920649775bc5ff1d1b688012a3c4947d8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libparserutils/0.2.4_armv7l/libparserutils-0.2.4-chromeos-armv7l.tar.xz',

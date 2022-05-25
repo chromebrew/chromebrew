@@ -8,6 +8,7 @@ class Libchamplain < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libchamplain/-/archive/LIBCHAMPLAIN_#{version.gsub(/[.]/, '_')}/libchamplain-LIBCHAMPLAIN_#{version.gsub(/[.]/, '_')}.tar.bz2"
   source_sha256 'e2bfa2179a5ecbdde7fe18a0472e3b04137cb0873b4fe2de29da4c09f0b6e58d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libchamplain/0.12.20_armv7l/libchamplain-0.12.20-chromeos-armv7l.tar.xz',

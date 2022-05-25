@@ -8,6 +8,7 @@ class Nss_mdns < Package
   compatibility 'all'
   source_url 'http://http.debian.net/debian/pool/main/n/nss-mdns/nss-mdns_0.14.1.orig.tar.gz'
   source_sha256 'a2094101b735cade45048764ea594bdae2bfa9399837f3c852a5b264416e9c8c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss_mdns/0.14.1_armv7l/nss_mdns-0.14.1-chromeos-armv7l.tar.xz',

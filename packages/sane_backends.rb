@@ -8,6 +8,7 @@ class Sane_backends < Package
   compatibility 'all'
   source_url 'https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz'
   source_sha256 '3a28c237c0a72767086202379f6dc92dbb63ec08dfbab22312cba80e238bb114'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_backends/1.0.32_armv7l/sane_backends-1.0.32-chromeos-armv7l.tar.xz',

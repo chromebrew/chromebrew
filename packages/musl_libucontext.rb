@@ -8,6 +8,7 @@ class Musl_libucontext < Package
   compatibility 'all'
   source_url 'https://github.com/kaniini/libucontext.git'
   git_hashtag "libucontext-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_armv7l/musl_libucontext-1.1-chromeos-armv7l.tpxz',

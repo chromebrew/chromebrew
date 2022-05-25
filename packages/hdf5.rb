@@ -8,6 +8,7 @@ class Hdf5 < Package
   compatibility 'all'
   source_url 'https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5.tar.bz2'
   source_sha256 '68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdf5/1.10.5_armv7l/hdf5-1.10.5-chromeos-armv7l.tar.xz',

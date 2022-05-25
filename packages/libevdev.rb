@@ -8,6 +8,7 @@ class Libevdev < Package
   compatibility 'all'
   source_url 'https://www.freedesktop.org/software/libevdev/libevdev-1.12.1.tar.xz'
   source_sha256 '1dbba41bc516d3ca7abc0da5b862efe3ea8a7018fa6e9b97ce9d39401b22426c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevdev/1.12.1_armv7l/libevdev-1.12.1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Folks < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/folks/-/archive/#{version}/folks-#{version}.tar.bz2"
   source_sha256 'f79952f6b0c8f6c0fa2efefbcfc4d4875a2ee5e4518f7d4bf520b62b5c89568c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_armv7l/folks-0.15.5-chromeos-armv7l.tar.zst',

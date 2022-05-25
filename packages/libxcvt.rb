@@ -11,6 +11,7 @@ class Libxcvt < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxcvt.git'
   git_hashtag "libxcvt-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcvt/0.1.1_armv7l/libxcvt-0.1.1-chromeos-armv7l.tpxz',

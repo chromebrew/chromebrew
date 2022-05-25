@@ -8,6 +8,7 @@ class Libadwaita < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.2_armv7l/libadwaita-1.3.2-chromeos-armv7l.tar.zst',

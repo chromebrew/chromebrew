@@ -8,6 +8,7 @@ class Remind < Package
   compatibility 'all'
   source_url 'https://www.roaringpenguin.com/files/download/remind-03.01.15.tar.gz'
   source_sha256 '8adab4c0b30a556c34223094c5c74779164d5f3b8be66b8039f44b577e678ec1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remind/03.01.15_armv7l/remind-03.01.15-chromeos-armv7l.tar.xz',

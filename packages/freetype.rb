@@ -9,6 +9,7 @@ class Freetype < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
   git_hashtag "VER-#{version.tr('.', '-')}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.1_armv7l/freetype-2.13.1-chromeos-armv7l.tar.zst',

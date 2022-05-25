@@ -8,6 +8,7 @@ class Q < Package
   compatibility 'all'
   source_url 'https://github.com/harelba/q/archive/1.7.1.tar.gz'
   source_sha256 'cf0f2ca3ecb88fedf6232d5ce5931afc90eae1db8fdef78b17933d46e9f9f678'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/q/1.7.1_armv7l/q-1.7.1-chromeos-armv7l.tar.xz',

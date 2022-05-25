@@ -9,6 +9,7 @@ class Jq < Autotools
   compatibility 'all'
   source_url 'https://github.com/stedolan/jq.git'
   git_hashtag "jq-#{@_ver}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jq/1.7_armv7l/jq-1.7-chromeos-armv7l.tar.zst',

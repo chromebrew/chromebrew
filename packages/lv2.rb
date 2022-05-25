@@ -11,6 +11,7 @@ class Lv2 < Meson
   compatibility 'all'
   source_url 'https://github.com/lv2/lv2.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lv2/1.18.10_armv7l/lv2-1.18.10-chromeos-armv7l.tar.zst',

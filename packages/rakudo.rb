@@ -8,6 +8,7 @@ class Rakudo < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/rakudo/rakudo/releases/download/2023.12/rakudo-2023.12.tar.gz'
   source_sha256 '01a4131fb79a63a563b71a40f534d4f3db15cc71c72f8ae19f965b786e98baea'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rakudo/2023.12_armv7l/rakudo-2023.12-chromeos-armv7l.tar.zst',

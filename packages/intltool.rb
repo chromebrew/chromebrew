@@ -8,6 +8,7 @@ class Intltool < Package
   compatibility 'all'
   source_url 'https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz'
   source_sha256 '67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/intltool/0.51.0-1_armv7l/intltool-0.51.0-1-chromeos-armv7l.tar.xz',

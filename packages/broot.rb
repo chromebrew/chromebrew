@@ -8,6 +8,7 @@ class Broot < Package
   compatibility 'all'
   source_url 'https://github.com/Canop/broot/archive/v1.11.1.tar.gz'
   source_sha256 '0cc09d5bcc5c6b80d6161c2ba234df0332c1dabd6c3c9f2f6ebe2f82b8eef5c3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/broot/1.11.1_armv7l/broot-1.11.1-chromeos-armv7l.tar.zst',

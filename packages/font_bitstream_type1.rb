@@ -8,6 +8,7 @@ class Font_bitstream_type1 < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-bitstream-type1-1.0.3.tar.bz2'
   source_sha256 'c6ea0569adad2c577f140328dc3302e729cb1b1ea90cd0025caf380625f8a688'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_type1/1.0.3_armv7l/font_bitstream_type1-1.0.3-chromeos-armv7l.tar.xz',

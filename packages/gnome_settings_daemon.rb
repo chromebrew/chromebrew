@@ -8,6 +8,7 @@ class Gnome_settings_daemon < Package
   compatibility 'x86_64 aarch64 armv7l' # not compatible with i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/43.0_armv7l/gnome_settings_daemon-43.0-chromeos-armv7l.tar.zst',

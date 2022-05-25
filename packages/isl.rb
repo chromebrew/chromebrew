@@ -8,6 +8,7 @@ class Isl < Package
   compatibility 'all'
   source_url 'http://isl.gforge.inria.fr/isl-0.23.tar.xz'
   source_sha256 '5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/isl/0.23_armv7l/isl-0.23-chromeos-armv7l.tar.xz',

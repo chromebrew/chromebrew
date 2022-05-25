@@ -9,6 +9,7 @@ class Py2_setuptools < Package
   compatibility 'all'
   source_url "https://files.pythonhosted.org/packages/b2/40/4e00501c204b457f10fe410da0c97537214b2265247bc9a5bc6edd55b9e4/setuptools-#{version}.zip"
   source_sha256 'c67aa55db532a0dadc4d2e20ba9961cbd3ccc84d544e9029699822542b5a476b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_armv7l/py2_setuptools-44.1.1-chromeos-armv7l.tar.xz',

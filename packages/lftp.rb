@@ -8,6 +8,7 @@ class Lftp < Package
   compatibility 'all'
   source_url 'https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz'
   source_sha256 'c517c4f4f9c39bd415d7313088a2b1e313b2d386867fe40b7692b83a20f0670d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_armv7l/lftp-4.9.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Biew < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/beye/biew/6.1.0/biew-610-src.tar.bz2'
   source_sha256 '2e85f03c908dd6ec832461fbfbc79169a33f4caccf48c8fe60cbd29f5fb06d17'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_armv7l/biew-6.1.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Vagrant < Package
   compatibility 'all'
   source_url 'https://github.com/hashicorp/vagrant/archive/v2.0.1.tar.gz'
   source_sha256 '212b91c45f60a825fcfc656424021e2550833778a6d4ebe13458676201a04eba'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vagrant/2.0.1_armv7l/vagrant-2.0.1-chromeos-armv7l.tar.xz',

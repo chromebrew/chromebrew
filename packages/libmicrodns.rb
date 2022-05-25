@@ -8,6 +8,7 @@ class Libmicrodns < Package
   license 'LGPL-2.1'
   source_url 'https://github.com/videolabs/libmicrodns.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrodns/0.2.0_armv7l/libmicrodns-0.2.0-chromeos-armv7l.tpxz',

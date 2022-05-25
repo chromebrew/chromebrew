@@ -9,6 +9,7 @@ class Stressng < Package
   compatibility 'all'
   source_url "https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-#{version}.tar.xz"
   source_sha256 'af7779aee38e6d94726ed7d5cf36384a64d50c86e42fff89c141d8609913f425'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stressng/0.12.05_armv7l/stressng-0.12.05-chromeos-armv7l.tar.xz',

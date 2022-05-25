@@ -8,6 +8,7 @@ class Qqwing < Package
   compatibility 'all'
   source_url 'https://qqwing.com/qqwing-1.3.4.tar.gz'
   source_sha256 '1753736c31feea0085f5cfac33143743204f8a7e66b81ccd17e249ecafba802f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qqwing/1.3.4_armv7l/qqwing-1.3.4-chromeos-armv7l.tar.xz',

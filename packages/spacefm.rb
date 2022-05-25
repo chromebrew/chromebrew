@@ -8,6 +8,7 @@ class Spacefm < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz'
   source_sha256 'fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6-1_armv7l/spacefm-1.0.6-1-chromeos-armv7l.tar.zst',

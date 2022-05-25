@@ -8,6 +8,7 @@ class Epydoc < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/epydoc/epydoc/3.0.1/epydoc-3.0.1.tar.gz'
   source_sha256 'd4e5c8d90937d01b05170f592c1fa9b29e9ed0498dfe7f0eb2a3af61725b6ad1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',

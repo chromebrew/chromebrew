@@ -8,6 +8,7 @@ class Jbigkit < Package
   compatibility 'all'
   source_url 'https://github.com/nu774/jbigkit.git'
   git_hashtag '709282d1ddcb35ab17134ea8cdda43ec2d647d2f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_armv7l/jbigkit-2.1-709282d-chromeos-armv7l.tar.zst',

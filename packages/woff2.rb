@@ -8,6 +8,7 @@ class Woff2 < Package
   compatibility 'all'
   source_url 'https://github.com/google/woff2/archive/v1.0.2.tar.gz'
   source_sha256 'add272bb09e6384a4833ffca4896350fdb16e0ca22df68c0384773c67a175594'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/woff2/1.0.2_armv7l/woff2-1.0.2-chromeos-armv7l.tar.xz',

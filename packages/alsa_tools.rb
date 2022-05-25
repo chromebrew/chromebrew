@@ -8,6 +8,7 @@ class Alsa_tools < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/alsa-project/alsa-tools/archive/v1.2.5.tar.gz'
   source_sha256 'd38ef2a7582480eee31d7a7817810bc08969fd1cb045ef3b5443bda3e0df6e53'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.5_armv7l/alsa_tools-1.2.5-chromeos-armv7l.tar.zst',

@@ -7,6 +7,7 @@ class Xdg_base < Package
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_armv7l/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',

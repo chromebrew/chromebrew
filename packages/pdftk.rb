@@ -8,6 +8,7 @@ class Pdftk < Package
   compatibility 'all'
   source_url 'https://gitlab.com/pdftk-java/pdftk/-/archive/v3.3.3/pdftk-v3.3.3.tar.bz2'
   source_sha256 'c144e0dd388db2f5e8e0b412c0d9be6c54e4db99a4575b6058a209f3603a333d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.3.3_armv7l/pdftk-3.3.3-chromeos-armv7l.tar.zst',

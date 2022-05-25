@@ -8,6 +8,7 @@ class Libogg < Autotools
   compatibility 'all'
   source_url 'https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz'
   source_sha256 'c4d91be36fc8e54deae7575241e03f4211eb102afb3fc0775fbbc1b740016705'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libogg/1.3.5-1_armv7l/libogg-1.3.5-1-chromeos-armv7l.tar.zst',

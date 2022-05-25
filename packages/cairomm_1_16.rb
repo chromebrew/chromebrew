@@ -8,6 +8,7 @@ class Cairomm_1_16 < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/cairo/cairomm.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.2_armv7l/cairomm_1_16-1.16.2-chromeos-armv7l.tar.zst',

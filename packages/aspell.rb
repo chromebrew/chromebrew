@@ -8,6 +8,7 @@ class Aspell < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/aspell/aspell-0.60.8.tar.gz'
   source_sha256 'f9b77e515334a751b2e60daab5db23499e26c9209f5e7b7443b05235ad0226f2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell/0.60.8_armv7l/aspell-0.60.8-chromeos-armv7l.tar.xz',

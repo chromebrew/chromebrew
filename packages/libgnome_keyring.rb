@@ -8,6 +8,7 @@ class Libgnome_keyring < Package
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libgnome-keyring/3.12/libgnome-keyring-3.12.0.tar.xz'
   source_sha256 'c4c178fbb05f72acc484d22ddb0568f7532c409b0a13e06513ff54b91e947783'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgnome_keyring/3.12.0_armv7l/libgnome_keyring-3.12.0-chromeos-armv7l.tar.xz',

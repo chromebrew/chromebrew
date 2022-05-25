@@ -8,6 +8,7 @@ class Libxres < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxres.git'
   git_hashtag "libXres-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxres/1.2.2_armv7l/libxres-1.2.2-chromeos-armv7l.tar.zst',

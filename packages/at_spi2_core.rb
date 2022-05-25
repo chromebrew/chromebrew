@@ -8,6 +8,7 @@ class At_spi2_core < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
   git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.48.0_armv7l/at_spi2_core-2.48.0-chromeos-armv7l.tar.zst',

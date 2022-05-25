@@ -8,6 +8,7 @@ class Mtools < Package
   compatibility 'all'
   source_url "https://ftp.gnu.org/gnu/mtools/mtools-#{version}.tar.lz"
   source_sha256 'd09cff66d7277ad36a7573fc3e9803bfa558cdda83baabaafbf7761317462283'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtools/4.0.26_armv7l/mtools-4.0.26-chromeos-armv7l.tar.xz',

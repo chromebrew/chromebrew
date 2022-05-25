@@ -8,6 +8,7 @@ class Irrlicht < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.5.zip'
   source_sha256 'effb7beed3985099ce2315a959c639b4973aac8210f61e354475a84105944f3d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht/1.8.5_armv7l/irrlicht-1.8.5-chromeos-armv7l.tar.zst',

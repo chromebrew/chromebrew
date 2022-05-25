@@ -9,6 +9,7 @@ class Imagemagick7 < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',

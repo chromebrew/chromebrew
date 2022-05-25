@@ -8,6 +8,7 @@ class Makedepend < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/util/makedepend-1.0.6.tar.gz'
   source_sha256 '845f6708fc850bf53f5b1d0fb4352c4feab3949f140b26f71b22faba354c3365'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/makedepend/1.0.6_armv7l/makedepend-1.0.6-chromeos-armv7l.tar.xz',

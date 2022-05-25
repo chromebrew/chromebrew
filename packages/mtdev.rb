@@ -8,6 +8,7 @@ class Mtdev < Package
   compatibility 'all'
   source_url 'http://bitmath.org/code/mtdev/mtdev-1.1.5.tar.bz2'
   source_sha256 '6677d5708a7948840de734d8b4675d5980d4561171c5a8e89e54adf7a13eba7f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtdev/1.1.5-0_armv7l/mtdev-1.1.5-0-chromeos-armv7l.tar.xz',

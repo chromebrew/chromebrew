@@ -8,6 +8,7 @@ class Cryptsetup < Package
   compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.3.tar.xz'
   source_sha256 '4d6cca04c1f5ff4a68d045d190efb2623087eda0274ded92f92a4b6911e501d4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cryptsetup/2.0.3_armv7l/cryptsetup-2.0.3-chromeos-armv7l.tar.xz',

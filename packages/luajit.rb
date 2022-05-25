@@ -8,6 +8,7 @@ class Luajit < Package
   compatibility 'all'
   source_url 'https://github.com/LuaJIT/LuaJIT/archive/6c4826f12c4d33b8b978004bc681eb1eef2be977.zip'
   source_sha256 '4a384b218557e650e6fbbe2e0f14aa7a7d08a3e1f31eedbfc54de1cc62583496'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-6c4826f_armv7l/luajit-2.1-6c4826f-chromeos-armv7l.tar.zst',

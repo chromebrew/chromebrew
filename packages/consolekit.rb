@@ -8,6 +8,7 @@ class Consolekit < Package
   compatibility 'all'
   source_url "https://github.com/ConsoleKit2/ConsoleKit2/archive/#{version}.tar.gz"
   source_sha256 '104fd9f41c2d572ad62f4032de46c4c384c3522602b0ad953cf55759c6c64c1d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/consolekit/1.2.2_armv7l/consolekit-1.2.2-chromeos-armv7l.tar.xz',

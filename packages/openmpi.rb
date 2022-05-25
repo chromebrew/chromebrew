@@ -8,6 +8,7 @@ class Openmpi < Package
   compatibility 'all'
   source_url 'https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.bz2'
   source_sha256 'cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmpi/4.0.1_armv7l/openmpi-4.0.1-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Cmocka < Package
   compatibility 'all'
   source_url 'https://cmocka.org/files/1.1/cmocka-1.1.5.tar.xz'
   source_sha256 'f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmocka/1.1.5_armv7l/cmocka-1.1.5-chromeos-armv7l.tar.xz',

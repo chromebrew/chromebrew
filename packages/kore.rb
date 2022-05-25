@@ -8,6 +8,7 @@ class Kore < Package
   compatibility 'all'
   source_url 'https://github.com/jorisvink/kore/archive/2.0.0-release.tar.gz'
   source_sha256 'e9573a3bd986bc7d91ce3fb8898cb542523d6ed274761281cea72a81963549c1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kore/2.0.0_armv7l/kore-2.0.0-chromeos-armv7l.tar.xz',

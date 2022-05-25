@@ -8,6 +8,7 @@ class Clmystery < Package
   compatibility 'all'
   source_url 'https://github.com/veltman/clmystery/archive/6dd30f8762c9319a3613eadd05fdf783baa4d7d9.tar.gz'
   source_sha256 '911bc77225bcacc8fc1a7b17b21fbc4ede371513c729b4b663989ab627604d33'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clmystery/6dd30f_armv7l/clmystery-6dd30f-chromeos-armv7l.tar.xz',

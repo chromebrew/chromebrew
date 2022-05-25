@@ -8,6 +8,7 @@ class Hexedit < Package
   compatibility 'all'
   source_url 'http://rigaux.org/hexedit-1.2.13.src.tgz'
   source_sha256 '6a126da30a77f5c0b08038aa7a881d910e3b65d13767fb54c58c983963b88dd7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hexedit/1.2.13_armv7l/hexedit-1.2.13-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Giflib < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz'
   source_sha256 '31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_armv7l/giflib-5.2.1-1-chromeos-armv7l.tar.zst',

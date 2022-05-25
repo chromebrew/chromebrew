@@ -8,6 +8,7 @@ class Libnsutils < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libnsutils-0.1.0-src.tar.gz'
   source_sha256 '790c6516344abe82f6289d656392e9ccebe475b20cc7e1e2d843011385f7aef0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsutils/0.1.0_armv7l/libnsutils-0.1.0-chromeos-armv7l.tar.xz',

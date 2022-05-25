@@ -7,6 +7,7 @@ class Gn < Package
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_armv7l/gn-dca877f-chromeos-armv7l.tar.xz',

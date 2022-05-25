@@ -12,6 +12,7 @@ class Libssp < Package
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
   git_hashtag "releases/gcc-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_armv7l/libssp-13.2.0-chromeos-armv7l.tar.zst',

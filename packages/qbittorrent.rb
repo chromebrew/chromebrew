@@ -8,6 +8,7 @@ class Qbittorrent < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.6.3/qbittorrent-4.6.3.tar.xz'
   source_sha256 '5f9f3e0b89861e8bae1894656f8b8f76feddb3c92e228065c8173632af6e544e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.6.3_armv7l/qbittorrent-4.6.3-chromeos-armv7l.tar.zst',

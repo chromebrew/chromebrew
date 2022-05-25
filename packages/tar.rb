@@ -8,6 +8,7 @@ class Tar < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/tar/tar-1.35.tar.xz'
   source_sha256 '4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_armv7l/tar-1.35-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libutp < Package
   compatibility 'all'
   source_url 'https://github.com/bittorrent/libutp.git'
   git_hashtag '2b364cbb0650bdab64a5de2abb4518f9f228ec44'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libutp/2b364_armv7l/libutp-2b364-chromeos-armv7l.tar.zst',

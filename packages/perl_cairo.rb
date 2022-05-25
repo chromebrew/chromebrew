@@ -8,6 +8,7 @@ class Perl_cairo < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Cairo-1.109.tar.gz'
   source_sha256 '8219736e401c2311da5f515775de43fd87e6384b504da36a192f2b217643077f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_cairo/1.109-perl5.38_armv7l/perl_cairo-1.109-perl5.38-chromeos-armv7l.tar.zst',

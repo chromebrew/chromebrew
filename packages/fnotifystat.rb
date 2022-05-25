@@ -8,6 +8,7 @@ class Fnotifystat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/fnotifystat/fnotifystat-0.02.02.tar.gz'
   source_sha256 'a57034f8b8db3f43b28bfd2e15a27b599a5705809c59c3983b36276f6764a691'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fnotifystat/0.02.02_armv7l/fnotifystat-0.02.02-chromeos-armv7l.tar.xz',

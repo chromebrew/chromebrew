@@ -8,6 +8,7 @@ class Totem_pl_parser < Package
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://download.gnome.org/sources/totem-pl-parser/3.26/totem-pl-parser-3.26.6.tar.xz'
   source_sha256 'c0df0f68d5cf9d7da43c81c7f13f11158358368f98c22d47722f3bd04bd3ac1c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/totem_pl_parser/3.26.6_armv7l/totem_pl_parser-3.26.6-chromeos-armv7l.tar.zst',

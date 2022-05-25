@@ -8,6 +8,7 @@ class Feh < Package
   compatibility 'all'
   source_url "https://feh.finalrewind.org/feh-#{version}.tar.bz2"
   source_sha256 '437420f37f11614e008d066e2a3bdefcfc78144c8212998b2bacdd5d21ea23b4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/feh/3.6.3_armv7l/feh-3.6.3-chromeos-armv7l.tar.xz',

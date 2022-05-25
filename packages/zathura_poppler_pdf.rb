@@ -8,6 +8,7 @@ class Zathura_poppler_pdf < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-0.3.1.tar.xz'
   source_sha256 'ee8127532cc6f92bf32d48a6a0d4c61e33cd4df49a3159e57592877ba19e108b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.1_armv7l/zathura_poppler_pdf-0.3.1-chromeos-armv7l.tar.zst',

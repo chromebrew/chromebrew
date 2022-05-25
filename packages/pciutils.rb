@@ -8,6 +8,7 @@ class Pciutils < Package
   compatibility 'all'
   source_url 'https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.6.2.tar.xz'
   source_sha256 'db452ec986edefd88af0d222d22f6102f8030a8633fdfe846c3ae4bde9bb93f3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pciutils/3.6.2_armv7l/pciutils-3.6.2-chromeos-armv7l.tar.xz',

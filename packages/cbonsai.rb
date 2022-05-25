@@ -8,6 +8,7 @@ class Cbonsai < Package
   compatibility 'all'
   source_url 'https://gitlab.com/jallbrit/cbonsai.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbonsai/1.3.1_armv7l/cbonsai-1.3.1-chromeos-armv7l.tar.zst',

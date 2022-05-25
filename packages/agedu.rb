@@ -8,6 +8,7 @@ class Agedu < Package
   compatibility 'all'
   source_url 'https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20211129.8cd63c5.tar.gz'
   source_sha256 'ceaee592ef21b8cbb254aa7e9c5d22cefab24535e137618a4d0af591eba8339f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/agedu/20211129_armv7l/agedu-20211129-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Php82 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-8.2.14.tar.xz'
   source_sha256 '763ecd39fcf51c3815af6ef6e43fa9aa0d0bd8e5a615009e5f4780c92705f583'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.14_armv7l/php82-8.2.14-chromeos-armv7l.tar.zst',

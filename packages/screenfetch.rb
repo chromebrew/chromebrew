@@ -8,6 +8,7 @@ class Screenfetch < Package
   compatibility 'all'
   source_url 'https://github.com/KittyKatt/screenFetch/archive/v3.9.1.tar.gz'
   source_sha256 'aa97dcd2a8576ae18de6c16c19744aae1573a3da7541af4b98a91930a30a3178'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screenfetch/3.9.1_armv7l/screenfetch-3.9.1-chromeos-armv7l.tar.xz',

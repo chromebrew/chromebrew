@@ -12,6 +12,7 @@ class Ldb < Package
   compatibility 'all'
   source_url "https://samba.org/ftp/ldb/ldb-#{@_ver}.tar.gz"
   source_sha256 '358dca10fcd27207ac857a0d7f435a46dbc6cd1f7c10dbb840c1931bf1965f08'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.8.0-py3.12_armv7l/ldb-2.8.0-py3.12-chromeos-armv7l.tar.zst',

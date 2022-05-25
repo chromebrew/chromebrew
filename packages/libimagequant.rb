@@ -9,6 +9,7 @@ class Libimagequant < Package
   compatibility 'all'
   source_url "https://github.com/ImageOptim/libimagequant/archive/#{@_ver}/libimagequant-#{@_ver}.tar.gz"
   source_sha256 'b5fa27da1f3cf3e8255dd02778bb6a51dc71ce9f99a4fc930ea69b83200a7c74'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libimagequant/2.14.1-1_armv7l/libimagequant-2.14.1-1-chromeos-armv7l.tar.xz',

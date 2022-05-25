@@ -8,6 +8,7 @@ class Libusb < Package
   compatibility 'all'
   source_url "https://github.com/libusb/libusb/releases/download/v#{version}/libusb-#{version}.tar.bz2"
   source_sha256 '12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libusb/1.0.26_armv7l/libusb-1.0.26-chromeos-armv7l.tar.zst',

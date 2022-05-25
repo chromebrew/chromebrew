@@ -11,6 +11,7 @@ class Libmaxminddb < Package
   compatibility 'all'
   source_url 'https://github.com/maxmind/libmaxminddb.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmaxminddb/1.6.0_armv7l/libmaxminddb-1.6.0-chromeos-armv7l.tpxz',

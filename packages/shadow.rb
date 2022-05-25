@@ -8,6 +8,7 @@ class Shadow < Package
   compatibility 'all'
   source_url "https://github.com/shadow-maint/shadow/releases/download/#{version}/shadow-#{version}.tar.xz"
   source_sha256 '9afe245d79a2e7caac5f1ed62519b17416b057ec89df316df1c3935502f9dd2c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shadow/4.13_armv7l/shadow-4.13-chromeos-armv7l.tar.zst',

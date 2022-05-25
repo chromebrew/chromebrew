@@ -6,6 +6,7 @@ class Ccl < Package
   version '1.11.5'
   license 'Apache-2.0'
   compatibility 'all'
+  binary_compression 'tar.xz'
 
   # arm only has a 32-bit build in the archive
   # intel has both 32-bit and 64-bit in the archive

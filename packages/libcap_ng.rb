@@ -8,6 +8,7 @@ class Libcap_ng < Package
   compatibility 'all'
   source_url 'https://github.com/stevegrubb/libcap-ng.git'
   git_hashtag '5d3aea2d098ea222fb35a0be75adeed40e2e96d3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_armv7l/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Neon < Package
   compatibility 'all'
   source_url 'https://github.com/notroj/neon.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neon/0.32.5_armv7l/neon-0.32.5-chromeos-armv7l.tar.zst',

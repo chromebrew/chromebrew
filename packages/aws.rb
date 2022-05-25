@@ -7,6 +7,7 @@ class Aws < Package
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aws/1.19.53_armv7l/aws-1.19.53-chromeos-armv7l.tar.xz',

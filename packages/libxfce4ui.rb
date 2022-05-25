@@ -8,6 +8,7 @@ class Libxfce4ui < Package
   compatibility 'all'
   source_url 'https://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.0.tar.bz2'
   source_sha256 '8b06c9e94f4be88a9d87c47592411b6cbc32073e7af9cbd64c7b2924ec90ceaa'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4ui/4.16.0_armv7l/libxfce4ui-4.16.0-chromeos-armv7l.tar.xz',

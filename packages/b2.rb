@@ -8,6 +8,7 @@ class B2 < Package
   compatibility 'all'
   source_url 'https://github.com/boostorg/build/archive/refs/tags/4.4.1.tar.gz'
   source_sha256 '31a243b1eb26638500977a8386e56d44f86c18db70cf0a5dcdd2d7391afc1a61'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_armv7l/b2-4.4.1-chromeos-armv7l.tpxz',

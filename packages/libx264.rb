@@ -9,6 +9,7 @@ class Libx264 < Package
   compatibility 'all'
   source_url 'https://code.videolan.org/videolan/x264.git'
   git_hashtag @_commit
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx264/bfc87b7_armv7l/libx264-bfc87b7-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Sed < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/sed/sed-4.9.tar.xz'
   source_sha256 '6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_armv7l/sed-4.9-chromeos-armv7l.tar.zst',

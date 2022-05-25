@@ -8,6 +8,7 @@ class W3m < Package
   compatibility 'all'
   source_url 'https://github.com/tats/w3m/archive/v0.5.3+git20220429.tar.gz'
   source_sha256 '6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_armv7l/w3m-0.5.3-20220429-chromeos-armv7l.tar.zst',

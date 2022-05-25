@@ -8,6 +8,7 @@ class Vuze < Package
   compatibility 'x86_64'
   source_url 'https://downloads.sourceforge.net/project/azureus/vuze/Vuze_5760/Vuze_5760_linux.tar.bz2'
   source_sha256 '1c5995ed8a25bac4bf1cea012b583af92af04c15579ab686689bca13e6cad36c'
+  binary_compression 'tar.xz'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vuze/5.7.6.0_x86_64/vuze-5.7.6.0-chromeos-x86_64.tar.xz'

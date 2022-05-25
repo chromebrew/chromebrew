@@ -8,6 +8,7 @@ class Gifsicle < Package
   compatibility 'all'
   source_url 'https://github.com/kohler/gifsicle/archive/v1.89.tar.gz'
   source_sha256 '9b19ff8d50d88af5a5151eaf9e62beb1dd5b72002e7b7cc3aec9b385780e6b83'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gifsicle/1.89_armv7l/gifsicle-1.89-chromeos-armv7l.tar.xz',

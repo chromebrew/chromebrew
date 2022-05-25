@@ -8,6 +8,7 @@ class Clisp < Package
   compatibility 'i686,x86_64'
   source_url 'https://ftpmirror.gnu.org/clisp/release/2.49/clisp-2.49.tar.bz2'
   source_sha256 '8132ff353afaa70e6b19367a25ae3d5a43627279c25647c220641fed00f8e890'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clisp/2.49-3_i686/clisp-2.49-3-chromeos-i686.tar.xz',

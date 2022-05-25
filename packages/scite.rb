@@ -8,6 +8,7 @@ class Scite < Package
   compatibility 'all'
   source_url 'https://www.scintilla.org/scite420.tgz'
   source_sha256 '2e0b95842bbc875a9224416fad3a9179ec329b3af2ca1abdd8e64c008068bb99'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scite/4.2.0_armv7l/scite-4.2.0-chromeos-armv7l.tar.xz',

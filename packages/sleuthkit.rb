@@ -8,6 +8,7 @@ class Sleuthkit < Package
   compatibility 'all'
   source_url 'https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.6.0/sleuthkit-4.6.0.tar.gz'
   source_sha256 'f52a08ab0de078182c0f2d19d3e1b341424a9e0c1633a61c3b892fb38f9acb97'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sleuthkit/4.6.0_armv7l/sleuthkit-4.6.0-chromeos-armv7l.tar.xz',

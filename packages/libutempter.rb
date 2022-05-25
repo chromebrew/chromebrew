@@ -11,6 +11,7 @@ class Libutempter < Package
   compatibility 'all'
   source_url 'http://ftp.altlinux.org/pub/people/ldv/utempter/libutempter-1.2.1.tar.gz'
   source_sha256 '967fef372f391de501843ad87570c6cf5dabd9651f00f1783090fbc12b2a34cb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libutempter/1.2.1_armv7l/libutempter-1.2.1-chromeos-armv7l.tar.zst',

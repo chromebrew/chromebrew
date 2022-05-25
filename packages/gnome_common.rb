@@ -8,6 +8,7 @@ class Gnome_common < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/gnome-common/archive/3.18.0.tar.gz'
   source_sha256 '8407fd8786a44c9ce47987de0906d9266492195df9251a089afaa06cc65c72d8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_common/3.18.0_armv7l/gnome_common-3.18.0-chromeos-armv7l.tar.xz',

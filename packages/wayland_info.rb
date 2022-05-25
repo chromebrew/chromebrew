@@ -9,6 +9,7 @@ class Wayland_info < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland-utils.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_info/1.1-3fec240_armv7l/wayland_info-1.1-3fec240-chromeos-armv7l.tar.zst',

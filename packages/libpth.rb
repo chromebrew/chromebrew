@@ -8,6 +8,7 @@ class Libpth < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/pth/pth-2.0.7.tar.gz'
   source_sha256 '72353660c5a2caafd601b20e12e75d865fd88f6cf1a088b306a3963f0bc77232'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpth/2.0.7_armv7l/libpth-2.0.7-chromeos-armv7l.tar.xz',

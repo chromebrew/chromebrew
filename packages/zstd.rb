@@ -8,6 +8,7 @@ class Zstd < Package
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag version
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/3298a08076081dbfa8eba5b08c2167b06020c5ff_armv7l/zstd-3298a08076081dbfa8eba5b08c2167b06020c5ff-chromeos-armv7l.tar.xz',

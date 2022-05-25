@@ -8,6 +8,7 @@ class Tint2 < Package
   compatibility 'all'
   source_url 'https://gitlab.com/o9000/tint2/-/archive/v16.7/tint2-v16.7.tar.gz'
   source_sha256 '74962c1dd111be9955319a133a790b24fe5a8ef0315a1bcdabc58c1157c1fb26'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tint2/16.7_armv7l/tint2-16.7-chromeos-armv7l.tar.xz',

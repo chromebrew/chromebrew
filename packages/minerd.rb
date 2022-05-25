@@ -8,6 +8,7 @@ class Minerd < Package
   compatibility 'all'
   source_url 'https://github.com/pooler/cpuminer/releases/download/v2.5.0/pooler-cpuminer-2.5.0.tar.gz'
   source_sha256 'ea16761a952b8f0fbba22fd16d48bb5e20abc48a10af99a00c70c332b3cb54f5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minerd/2.5.0_armv7l/minerd-2.5.0-chromeos-armv7l.tar.xz',

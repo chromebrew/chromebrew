@@ -10,6 +10,7 @@ class Libefl < Package
   compatibility 'all'
   source_url 'https://download.enlightenment.org/rel/libs/efl/efl-1.26.3.tar.xz'
   source_sha256 'd9f83aa0fd9334f44deeb4e4952dc0e5144683afac786feebce6030951617d15'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.26.3_armv7l/libefl-1.26.3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Glm < Package
   compatibility 'all'
   source_url 'https://github.com/g-truc/glm/releases/download/0.9.9.3/glm-0.9.9.3.zip'
   source_sha256 '496e855590b8aa138347429b7fc745d66707303fb82c1545260d1888472e137b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glm/0.9.9.3_armv7l/glm-0.9.9.3-chromeos-armv7l.tar.xz',

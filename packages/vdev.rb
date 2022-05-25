@@ -8,6 +8,7 @@ class Vdev < Package
   compatibility 'all'
   source_url 'https://github.com/jcnelson/vdev/archive/ceb7a6c4f44dec542dc1c3c3d5abd27dec7f3e0e.tar.gz'
   source_sha256 'dbf561890aa70a8619506d166803a72d0c2a5b7590226feef784ec623bcb4739'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vdev/ceb7a6c_armv7l/vdev-ceb7a6c-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Xa < Package
   compatibility 'all'
   source_url 'https://www.floodgap.com/retrotech/xa/dists/xa-2.3.11.tar.gz'
   source_sha256 '32f2164c99e305218e992970856dd8e2309b5cb6ac4758d7b2afe3bfebc9012d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xa/2.3.11_armv7l/xa-2.3.11-chromeos-armv7l.tar.xz',

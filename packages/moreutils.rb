@@ -8,6 +8,7 @@ class Moreutils < Package
   compatibility 'all'
   source_url "http://http.debian.net/debian/pool/main/m/moreutils/moreutils_#{version}.orig.tar.xz"
   source_sha256 'ba0cfaa1ff6ead2b15c62a67292de66a366f9b815a09697b54677f7e15f5a2b2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',

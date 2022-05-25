@@ -8,6 +8,7 @@ class Pigz < Package
   compatibility 'all'
   source_url 'https://zlib.net/pigz/pigz-2.4.tar.gz'
   source_sha256 'a4f816222a7b4269bd232680590b579ccc72591f1bb5adafcd7208ca77e14f73'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pigz/2.4_armv7l/pigz-2.4-chromeos-armv7l.tar.xz',

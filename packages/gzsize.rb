@@ -8,6 +8,7 @@ class Gzsize < Package
   compatibility 'all'
   source_url 'https://github.com/bfontaine/gzsize/archive/0.1.1.tar.gz'
   source_sha256 'ffb9cc1e5ed10443b1bcf2f711787bc7f69eee27ed83b48f2ccf9d80e39554dd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzsize/0.1.1_armv7l/gzsize-0.1.1-chromeos-armv7l.tar.xz',

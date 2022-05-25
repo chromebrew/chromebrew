@@ -8,6 +8,7 @@ class Babl < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gimp.org/pub/babl/0.1/babl-0.1.106.tar.xz'
   source_sha256 'd325135d3304f088c134cc620013acf035de2e5d125a50a2d91054e7377c415f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/babl/0.1.106_armv7l/babl-0.1.106-chromeos-armv7l.tar.zst',

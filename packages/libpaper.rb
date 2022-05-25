@@ -8,6 +8,7 @@ class Libpaper < Package
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/libp/libpaper/libpaper_1.1.28.tar.gz'
   source_sha256 'c8bb946ec93d3c2c72bbb1d7257e90172a22a44a07a07fb6b802a5bb2c95fddc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_armv7l/libpaper-1.1.28-chromeos-armv7l.tar.xz',

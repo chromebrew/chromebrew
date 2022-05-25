@@ -8,6 +8,7 @@ class A2ps < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/a2ps/a2ps-4.14.tar.gz'
   source_sha256 'f3ae8d3d4564a41b6e2a21f237d2f2b104f48108591e8b83497500182a3ab3a4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/a2ps/4.14-1_armv7l/a2ps-4.14-1-chromeos-armv7l.tar.xz',

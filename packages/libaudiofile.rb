@@ -8,6 +8,7 @@ class Libaudiofile < Package
   compatibility 'all'
   source_url 'https://github.com/mpruett/audiofile/archive/b62c902dd258125cac86cd2df21fc898035a43d3.tar.gz'
   source_sha256 '808aff989a24ee3b60d3f08897d90ca45a031c95c42fe22d4fd913042c1ce307'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaudiofile/b62c90_armv7l/libaudiofile-b62c90-chromeos-armv7l.tar.xz',

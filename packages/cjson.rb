@@ -11,6 +11,7 @@ class Cjson < Package
   compatibility 'all'
   source_url 'https://github.com/DaveGamble/cJSON/archive/v1.7.15.tar.gz'
   source_sha256 '5308fd4bd90cef7aa060558514de6a1a4a0819974a26e6ed13973c5f624c24b2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cjson/1.7.15_armv7l/cjson-1.7.15-chromeos-armv7l.tar.zst',

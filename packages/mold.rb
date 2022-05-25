@@ -11,6 +11,7 @@ class Mold < Package
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',

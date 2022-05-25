@@ -8,6 +8,7 @@ class Libudev_stub < Package
   compatibility 'all'
   source_url 'https://github.com/therealkenc/libudev-stub/archive/v0.9.0.tar.gz'
   source_sha256 '4bc4479b8297bfd6449f245e09106600af1b3af657dd1472d9fd4c920b673660'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libudev_stub/0.9.0_armv7l/libudev_stub-0.9.0-chromeos-armv7l.tar.xz',

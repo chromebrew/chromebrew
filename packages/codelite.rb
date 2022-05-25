@@ -8,6 +8,7 @@ class Codelite < Package
   compatibility 'all'
   source_url 'https://github.com/eranif/codelite/archive/13.0.tar.gz'
   source_sha256 'f2653fa42d6214999718236998cb223e6de00a498c0cfde795e901be693fb9ac'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/codelite/13.0-1_armv7l/codelite-13.0-1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gusb < Package
   compatibility 'all'
   source_url "https://github.com/hughsie/libgusb/archive/#{version}.tar.gz"
   source_sha256 '188c7964422417d39b02a5c645e136b1389c80e38e7abfa911fc196b9c748f45'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gusb/0.3.5_armv7l/gusb-0.3.5-chromeos-armv7l.tar.xz',

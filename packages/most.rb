@@ -8,6 +8,7 @@ class Most < Package
   compatibility 'all'
   source_url "https://www.jedsoft.org/releases/most/most-#{version}.tar.gz"
   source_sha256 '9455aeb8f826fa8385c850dc22bf0f22cf9069b3c3423fba4bf2c6f6226d9903'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_armv7l/most-5.2.0-chromeos-armv7l.tar.zst',

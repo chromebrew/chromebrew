@@ -8,6 +8,7 @@ class Netsurf < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.10-src.tar.gz'
   source_sha256 '36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_armv7l/netsurf-3.10-chromeos-armv7l.tar.xz',

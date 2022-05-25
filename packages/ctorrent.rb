@@ -9,6 +9,7 @@ class Ctorrent < Package
   compatibility 'all'
   source_url 'http://www.rahul.net/dholmes/ctorrent/ctorrent-dnh3.3.2.tar.gz'
   source_sha256 'c87366c91475931f75b924119580abd06a7b3cb3f00fef47346552cab1e24863'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ctorrent/3.3.2-1_armv7l/ctorrent-3.3.2-1-chromeos-armv7l.tpxz',

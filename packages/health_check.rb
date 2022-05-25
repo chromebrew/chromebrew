@@ -8,6 +8,7 @@ class Health_check < Package
   compatibility 'all'
   source_url 'http://kernel.ubuntu.com/~cking/tarballs/health-check/health-check-0.02.08.tar.gz'
   source_sha256 'be4f14affaa80dc634cc4cf41efc0b3164e5b1758674762f0a2322d2ccbfbd52'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/health_check/0.02.08_armv7l/health_check-0.02.08-chromeos-armv7l.tar.xz',

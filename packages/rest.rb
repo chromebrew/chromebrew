@@ -8,6 +8,7 @@ class Rest < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/librest/-/archive/#{version}/librest-#{version}.tar.bz2"
   source_sha256 '5c39f6696b271194546880e0f360e21496b2882f72e4bb85433125de98fce03a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rest/0.9.1_armv7l/rest-0.9.1-chromeos-armv7l.tar.zst',

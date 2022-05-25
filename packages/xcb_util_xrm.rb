@@ -8,6 +8,7 @@ class Xcb_util_xrm < Package
   license 'MIT-with-advertising'
   source_url 'https://github.com/Airblader/xcb-util-xrm/releases/download/v1.3/xcb-util-xrm-1.3.tar.bz2'
   source_sha256 '301cf33701207ea8782d49f4cb6404abd8f2d64e16f242017fd720be7c900c85'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_xrm/1.3-1_armv7l/xcb_util_xrm-1.3-1-chromeos-armv7l.tpxz',

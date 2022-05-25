@@ -11,6 +11,7 @@ class Xorg_xeyes < Package
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xeyes-1.2.0.tar.bz2'
   source_sha256 'f8a17e23146bef1ab345a1e303c6749e42aaa7bcf4f25428afad41770721b6db'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xeyes/1.2.0_armv7l/xorg_xeyes-1.2.0-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Sane_frontends < Package
   compatibility 'all'
   source_url 'https://gitlab.com/sane-project/frontends/-/archive/572980c81586c114fd66fc473c634b4b2780cda2/frontends-572980c81586c114fd66fc473c634b4b2780cda2.tar.bz2'
   source_sha256 'c58a2066891428c6e6c6f625b595e3ada8b36dfe69250b1bbdaded91d76b094f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_frontends/5729_armv7l/sane_frontends-5729-chromeos-armv7l.tar.xz',

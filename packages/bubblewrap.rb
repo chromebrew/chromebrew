@@ -8,6 +8,7 @@ class Bubblewrap < Package
   compatibility 'all'
   source_url "https://github.com/containers/bubblewrap/releases/download/v#{version}/bubblewrap-#{version}.tar.xz"
   source_sha256 '957ad1149db9033db88e988b12bcebe349a445e1efc8a9b59ad2939a113d333a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.8.0_armv7l/bubblewrap-0.8.0-chromeos-armv7l.tar.zst',

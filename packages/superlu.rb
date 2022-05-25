@@ -8,6 +8,7 @@ class Superlu < Package
   compatibility 'all'
   source_url 'https://github.com/xiaoyeli/superlu/archive/v5.2.1.tar.gz'
   source_sha256 '77582501dedef295eb74e4dc9433e2816d2d8be211eae307379c13d93c65bc71'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/superlu/5.2.1_armv7l/superlu-5.2.1-chromeos-armv7l.tar.xz',

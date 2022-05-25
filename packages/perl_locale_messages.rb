@@ -8,6 +8,7 @@ class Perl_locale_messages < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.33.tar.gz'
   source_sha256 '5126eda9ccd0eeb10db82ddef63cbcaf7dbd771e78cc0fb110cc3b5a6b8679e7'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.33-perl5.38.2_armv7l/perl_locale_messages-1.33-perl5.38.2-chromeos-armv7l.tar.zst',

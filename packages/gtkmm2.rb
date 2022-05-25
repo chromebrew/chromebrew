@@ -8,6 +8,7 @@ class Gtkmm2 < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz'
   source_sha256 '0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm2/2.24.5_armv7l/gtkmm2-2.24.5-chromeos-armv7l.tar.xz',

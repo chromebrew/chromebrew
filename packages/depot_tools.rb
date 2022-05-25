@@ -7,6 +7,7 @@ class Depot_tools < Package
   license 'BSD-Google'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/depot_tools/da768751_armv7l/depot_tools-da768751-chromeos-armv7l.tar.xz',

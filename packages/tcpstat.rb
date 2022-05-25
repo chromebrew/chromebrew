@@ -8,6 +8,7 @@ class Tcpstat < Package
   compatibility 'all'
   source_url 'https://web.archive.org/web/20160504233625/http://www.frenchfries.net/paul/tcpstat/tcpstat-1.5.tar.gz'
   source_sha256 '46fde9458cc5678264b0c5f2197f84ada9101951197fdeec5f04b0801fcff0ba'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpstat/1.5_armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',

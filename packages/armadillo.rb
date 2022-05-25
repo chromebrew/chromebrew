@@ -8,6 +8,7 @@ class Armadillo < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/arma/armadillo-9.600.5.tar.xz'
   source_sha256 'dd9cd664282f2c3483af194ceedc2fba8559e0d20f8782c640fd6f3ac7cac2bf'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/armadillo/9.600.5_armv7l/armadillo-9.600.5-chromeos-armv7l.tar.xz',

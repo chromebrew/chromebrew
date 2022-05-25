@@ -8,6 +8,7 @@ class Cgroupfs_mount < Package
   compatibility 'all'
   source_url 'https://github.com/tianon/cgroupfs-mount/archive/1.4.tar.gz'
   source_sha256 'd6c8aff7af59c7d0082ee3018c97f73b0421e81a49bb28ad9f66a36da5cd6ec7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cgroupfs_mount/1.4_armv7l/cgroupfs_mount-1.4-chromeos-armv7l.tar.xz',

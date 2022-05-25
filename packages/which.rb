@@ -8,6 +8,7 @@ class Which < Package
   compatibility 'all'
   source_url 'https://carlowood.github.io/which/which-2.21.tar.gz'
   source_sha256 'f4a245b94124b377d8b49646bf421f9155d36aa7614b6ebf83705d3ffc76eaad'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/which/2.21_armv7l/which-2.21-chromeos-armv7l.tar.xz',

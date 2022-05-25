@@ -8,6 +8,7 @@ class Texinfo < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-7.1.tar.xz'
   source_sha256 'deeec9f19f159e046fdf8ad22231981806dac332cc372f1c763504ad82b30953'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.1-perl5.38_armv7l/texinfo-7.1-perl5.38-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Httpd < Package
   compatibility 'all'
   source_url 'https://www-us.apache.org/dist/httpd/httpd-2.4.39.tar.gz'
   source_sha256 '8b95fe249f3a6c50aad3ca125eef3e02d619116cde242e1bc3c266b7b5c37c30'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httpd/2.4.39_armv7l/httpd-2.4.39-chromeos-armv7l.tar.xz',

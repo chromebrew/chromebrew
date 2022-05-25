@@ -8,6 +8,7 @@ class Vmaf < Package
   compatibility 'all'
   source_url "https://github.com/Netflix/vmaf/archive/v#{version}.tar.gz"
   source_sha256 'e7fc00ae1322a7eccfcf6d4f1cdf9c67eec8058709887c8c6c3795c617326f77'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vmaf/2.1.1_armv7l/vmaf-2.1.1-chromeos-armv7l.tar.xz',

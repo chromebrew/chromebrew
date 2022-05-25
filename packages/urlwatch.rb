@@ -9,6 +9,7 @@ class Urlwatch < Package
   compatibility 'all'
   source_url 'https://github.com/thp/urlwatch.git'
   git_hashtag @_ver
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/urlwatch/2.23-2_armv7l/urlwatch-2.23-2-chromeos-armv7l.tpxz',

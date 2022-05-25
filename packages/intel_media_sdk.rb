@@ -8,6 +8,7 @@ class Intel_media_sdk < Package
   compatibility 'x86_64'
   source_url 'https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-20.5.1.tar.gz'
   source_sha256 '047986646f185313df2159fd44bccd870e173bb1cae9c2501ac6b9774bfd424b'
+  binary_compression 'tar.xz'
 
   depends_on 'intel_media_driver'
   depends_on 'libdrm'

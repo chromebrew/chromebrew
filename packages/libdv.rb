@@ -8,6 +8,7 @@ class Libdv < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz'
   source_sha256 'a305734033a9c25541a59e8dd1c254409953269ea7c710c39e540bd8853389ba'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdv/1.0.0-1_armv7l/libdv-1.0.0-1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Perl_extutils_makemaker < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.70.tar.gz'
   source_sha256 'f108bd46420d2f00d242825f865b0f68851084924924f92261d684c49e3e7a74'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_makemaker/7.70-perl5.38_armv7l/perl_extutils_makemaker-7.70-perl5.38-chromeos-armv7l.tar.zst',

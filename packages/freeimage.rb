@@ -8,6 +8,7 @@ class Freeimage < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/3.18.0/FreeImage3180.zip'
   source_sha256 'f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeimage/3.18.0_armv7l/freeimage-3.18.0-chromeos-armv7l.tar.xz',

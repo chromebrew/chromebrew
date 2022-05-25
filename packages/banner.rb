@@ -8,6 +8,7 @@ class Banner < Package
   compatibility 'all'
   source_url 'http://shh.thathost.com/pub-unix/files/banner-1.3.2.tar.gz'
   source_sha256 '0dc0ac0667b2e884a7f5ad3e467af68cd0fd5917f8c9aa19188e6452aa1fc6d5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/banner/1.3.2_armv7l/banner-1.3.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libxp < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libXp-1.0.4.tar.xz'
   source_sha256 '1f19e3b8e82a34a8fd9889a7d9af0abe8588cb03fb57c37c569634cf3b9df1a4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxp/1.0.4_armv7l/libxp-1.0.4-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Lzo < Package
   compatibility 'all'
   source_url 'https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz'
   source_sha256 'c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',

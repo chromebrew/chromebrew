@@ -9,6 +9,7 @@ class Libmpeg2 < Package
   license 'GPL-2'
   source_url 'https://salsa.debian.org/multimedia-team/mpeg2dec.git'
   git_hashtag "debian/#{@_ver}-9"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpeg2/0.5.1-1_armv7l/libmpeg2-0.5.1-1-chromeos-armv7l.tpxz',

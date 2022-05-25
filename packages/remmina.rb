@@ -8,6 +8,7 @@ class Remmina < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
   source_sha256 'cfe9d4a6f2951d35533e5b2235f76640573c91f1be3bd8118637fbf68234500a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_armv7l/remmina-1.4.31-chromeos-armv7l.tar.zst',

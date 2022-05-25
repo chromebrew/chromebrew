@@ -8,6 +8,7 @@ class Gnome_docking_library < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/gdl/archive/GDL_3_28_0.tar.gz'
   source_sha256 '14e4691026eb459ce1f65addce706eed1b2f61ef48fd6e59d72509337e87d14b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_docking_library/3.28.0-0_armv7l/gnome_docking_library-3.28.0-0-chromeos-armv7l.tar.xz',

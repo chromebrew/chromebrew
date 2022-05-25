@@ -8,6 +8,7 @@ class Sfk < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/1.8.7/sfk-1.8.7.tar.gz'
   source_sha256 '1c53d4d9d05af752546c8341a718bf64be99b62491ff91db02ef100e2f93bfc3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sfk/1.8.7_armv7l/sfk-1.8.7-chromeos-armv7l.tar.xz',

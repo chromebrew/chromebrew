@@ -9,6 +9,7 @@ class Liba52 < Package
   license 'GPL-2+'
   source_url 'https://salsa.debian.org/multimedia-team/a52dec.git'
   git_hashtag "debian/#{@_ver}-20"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liba52/0.7.4-2_armv7l/liba52-0.7.4-2-chromeos-armv7l.tar.zst',

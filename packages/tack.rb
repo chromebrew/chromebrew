@@ -8,6 +8,7 @@ class Tack < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/ncurses/tack-1.08.tar.gz'
   source_sha256 '60f8515eed87176e1f74ac81372645df14dcffbf200d778353e56f640d55b1f2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tack/1.08_armv7l/tack-1.08-chromeos-armv7l.tar.xz',

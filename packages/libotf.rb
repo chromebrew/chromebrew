@@ -8,6 +8,7 @@ class Libotf < Package
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/m17n/libotf-#{version}.tar.gz"
   source_sha256 '68db0ca3cda2d46a663a92ec26e6eb5adc392ea5191bcda74268f0aefa78066b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libotf/0.9.16_armv7l/libotf-0.9.16-chromeos-armv7l.tar.xz',

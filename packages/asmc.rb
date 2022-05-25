@@ -9,6 +9,7 @@ class Asmc < Package
   compatibility 'all'
   source_url "https://github.com/nidud/asmc/raw/#{@_commit}/bin/asmc"
   source_sha256 '90d227fa76ceba80da6aa63e90b945577daf7c13d93c3a08b76b9d488875d4a0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asmc/2.33.27-3663995_armv7l/asmc-2.33.27-3663995-chromeos-armv7l.tar.zst',

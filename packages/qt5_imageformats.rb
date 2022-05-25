@@ -8,6 +8,7 @@ class Qt5_imageformats < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtimageformats.git'
   git_hashtag 'b22bf4d0d77c7dafe8b4622f8bb45ac0b9cc9bdd' # from kde/5.15 branch
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_imageformats/5.15.11-b22bf4d_armv7l/qt5_imageformats-5.15.11-b22bf4d-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Perl_glib_object_introspection < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.050.tar.gz'
   source_sha256 'ecf3bbb824df5eed6a3a7fcfd61be9ef448519801badcc82a6e3c4daab0cd763'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib_object_introspection/0.050-perl5.38_armv7l/perl_glib_object_introspection-0.050-perl5.38-chromeos-armv7l.tar.zst',

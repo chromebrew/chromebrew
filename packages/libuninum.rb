@@ -8,6 +8,7 @@ class Libuninum < Package
   compatibility 'all'
   source_url 'https://billposer.org/Software/Downloads/libuninum-2.7.tar.bz2'
   source_sha256 'e704983c3c00e9b76bd836b8b83ce31bfe4eb1752eee8be123cf97c1275076ea'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuninum/2.7-0_armv7l/libuninum-2.7-0-chromeos-armv7l.tar.xz',

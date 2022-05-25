@@ -8,6 +8,7 @@ class Healthcheck < Package
   compatibility 'all'
   source_url 'https://github.com/SimplyLinuxFAQ/health-check-script/archive/1cace54e871c69cd4bbbaeeb3b9e314d7f575b06.tar.gz'
   source_sha256 '4f40995614da68da7422e2ba8e01815c569e3c1a268122a5e13a007899092630'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/healthcheck/1cace5_armv7l/healthcheck-1cace5-chromeos-armv7l.tar.xz',

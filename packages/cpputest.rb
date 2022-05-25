@@ -8,6 +8,7 @@ class Cpputest < Package
   compatibility 'all'
   source_url 'https://github.com/cpputest/cpputest/archive/v3.8.tar.gz'
   source_sha256 '2b95bb4a568f680cdcca678345a2c41c028275471c2ed7bf0b6f6f1f689c3b76'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpputest/3.8_armv7l/cpputest-3.8-chromeos-armv7l.tar.xz',

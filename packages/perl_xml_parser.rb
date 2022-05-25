@@ -8,6 +8,7 @@ class Perl_xml_parser < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz'
   source_sha256 'd331332491c51cccfb4cb94ffc44f9cd73378e618498d4a37df9e043661c515d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_parser/2.46-perl5.38.2_armv7l/perl_xml_parser-2.46-perl5.38.2-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Cros_adapta < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/cros-adapta.git'
   git_hashtag 'eb6d8c1832b9181926df107faf41a80887fd982c'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cros_adapta/20181204_armv7l/cros_adapta-20181204-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Libstrophe < Package
   compatibility 'all'
   source_url 'https://github.com/strophe/libstrophe/archive/0.9.2.tar.gz'
   source_sha256 '158145bc1565a5fd0bbd7f57e3e15d768e58b8a460897ab5918a5a689d67ae6f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_armv7l/libstrophe-0.9.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Musl_lz4 < Package
   compatibility 'all'
   source_url 'https://github.com/lz4/lz4/archive/v1.9.4.tar.gz'
   source_sha256 '0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.4_armv7l/musl_lz4-1.9.4-chromeos-armv7l.tar.zst',

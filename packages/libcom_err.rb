@@ -7,6 +7,7 @@ class Libcom_err < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcom_err/1.1_armv7l/libcom_err-1.1-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Autoconf_archive < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/autoconf-archive/autoconf-archive-2022.09.03.tar.xz'
   source_sha256 'e07454f00d8cae7907bed42d0747798927809947684d94c37207a4d63a32f423'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf_archive/2022.09.13_armv7l/autoconf_archive-2022.09.13-chromeos-armv7l.tar.zst',

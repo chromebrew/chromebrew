@@ -8,6 +8,7 @@ class Netcdf < Package
   compatibility 'all'
   source_url 'https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz'
   source_sha256 '0e476f00aeed95af8771ff2727b7a15b2de353fb7bb3074a0d340b55c2bd4ea8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcdf/4.7.4_armv7l/netcdf-4.7.4-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Xorg_xlsfonts < Package
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xlsfonts-1.0.7.tar.xz'
   source_sha256 '7b726945a967b44c35cddee5edd74802907a239ce2e2e515730b8a32c8e50465'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xlsfonts/1.0.7_armv7l/xorg_xlsfonts-1.0.7-chromeos-armv7l.tar.zst',

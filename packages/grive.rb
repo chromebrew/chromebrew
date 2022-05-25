@@ -8,6 +8,7 @@ class Grive < Package
   compatibility 'all'
   source_url 'https://github.com/vitalif/grive2.git'
   git_hashtag '648ff8eea1a3c7cac8bfba283f75717bf54c67eb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.3-648ff8e-1_armv7l/grive-0.5.3-648ff8e-1-chromeos-armv7l.tar.zst',

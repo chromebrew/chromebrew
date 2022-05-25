@@ -8,6 +8,7 @@ class Newlisp < Package
   compatibility 'all'
   source_url 'https://github.com/kosh04/newlisp/archive/10.7.5.tar.gz'
   source_sha256 'bc3272600510fe78d32a85b23e0793c16f9f9ee05605d28ca537bdc322c25dc2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/newlisp/10.7.5_armv7l/newlisp-10.7.5-chromeos-armv7l.tar.xz',

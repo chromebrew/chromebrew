@@ -8,6 +8,7 @@ class Libgweather < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgweather/-/archive/4.2.0/libgweather-4.2.0.tar.bz2'
   source_sha256 '028cdca5005a17d88e78461e72c6b5c519e2df33f2e456075aeea9dc455aca20'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/4.2.0_armv7l/libgweather-4.2.0-chromeos-armv7l.tar.zst',

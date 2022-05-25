@@ -8,6 +8,7 @@ class Glproto < Package
   compatibility 'all'
   source_url 'https://github.com/freedesktop/glproto/archive/glproto-1.4.17.tar.gz'
   source_sha256 'b419c969412ad5c02dd53a0169041766c151ef599bf58b8dad70686fa1001c58'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glproto/1.4.17_armv7l/glproto-1.4.17-chromeos-armv7l.tar.xz',

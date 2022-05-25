@@ -8,6 +8,7 @@ class Qrencode < Package
   compatibility 'all'
   source_url 'https://fukuchi.org/works/qrencode/qrencode-4.0.2.tar.gz'
   source_sha256 'dbabe79c07614625d1f74d8c0ae2ee5358c4e27eab8fd8fe31f9365f821a3b1d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qrencode/4.0.2_armv7l/qrencode-4.0.2-chromeos-armv7l.tar.xz',

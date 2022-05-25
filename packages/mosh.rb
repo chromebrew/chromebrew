@@ -8,6 +8,7 @@ class Mosh < Package
   compatibility 'all'
   source_url 'https://mosh.org/mosh-1.3.2.tar.gz'
   source_sha256 'da600573dfa827d88ce114e0fed30210689381bbdcff543c931e4d6a2e851216'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mosh/1.3.2-3_armv7l/mosh-1.3.2-3-chromeos-armv7l.tar.xz',

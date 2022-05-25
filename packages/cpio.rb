@@ -8,6 +8,7 @@ class Cpio < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/cpio/cpio-2.14.tar.bz2'
   source_sha256 'fcdc15d60f7267a6fc7efcd6b9db7b6c8966c4f2fbbb964c24d41336fd3f2c12'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpio/2.14_armv7l/cpio-2.14-chromeos-armv7l.tar.zst',

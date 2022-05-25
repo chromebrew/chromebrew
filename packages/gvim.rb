@@ -8,6 +8,7 @@ class Gvim < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.1.0_armv7l/gvim-9.1.0-chromeos-armv7l.tar.zst',

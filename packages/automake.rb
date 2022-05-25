@@ -8,6 +8,7 @@ class Automake < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/automake/automake-1.16.5.tar.xz'
   source_sha256 'f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/automake/1.16.5_armv7l/automake-1.16.5-chromeos-armv7l.tar.xz',

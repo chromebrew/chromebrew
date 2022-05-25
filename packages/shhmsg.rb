@@ -8,6 +8,7 @@ class Shhmsg < Package
   compatibility 'all'
   source_url 'http://shh.thathost.com/pub-unix/files/shhmsg-1.4.2.tar.gz'
   source_sha256 '88c69e3f0b920b1ef93f6c10f354786f171d7cb3ab170a463bb9ab8bbf13a02b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhmsg/1.4.2-2_armv7l/shhmsg-1.4.2-2-chromeos-armv7l.tar.xz',

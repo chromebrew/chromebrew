@@ -8,6 +8,7 @@ class Dnsmasq < Package
   compatibility 'all'
   source_url 'http://thekelleys.org.uk/dnsmasq/dnsmasq-2.89.tar.xz'
   source_sha256 '02bd230346cf0b9d5909f5e151df168b2707103785eb616b56685855adebb609'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.89_armv7l/dnsmasq-2.89-chromeos-armv7l.tar.zst',

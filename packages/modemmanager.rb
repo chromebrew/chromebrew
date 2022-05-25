@@ -8,6 +8,7 @@ class Modemmanager < Package
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/ModemManager/ModemManager-#{version}.tar.xz"
   source_sha256 'efa9a963499e0885f3f163096d433334143c4937545134ecd682e0157fa591e3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/modemmanager/1.16.2_armv7l/modemmanager-1.16.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Quakespasm < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.93.1.tgz'
   source_sha256 'ed3ee6ba7e3d9454c7620757cc166e13d892f1167c7b74bef4f067e350d835ae'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/quakespasm/0.93.1-1_armv7l/quakespasm-0.93.1-1-chromeos-armv7l.tar.xz',

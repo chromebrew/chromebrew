@@ -8,6 +8,7 @@ class Fasd < Package
   compatibility 'all'
   source_url 'https://github.com/clvv/fasd/archive/1.0.1.tar.gz'
   source_sha256 '88efdfbbed8df408699a14fa6c567450bf86480f5ff3dde42d0b3e1dee731f65'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fasd/1.0.1-1_armv7l/fasd-1.0.1-1-chromeos-armv7l.tar.xz',

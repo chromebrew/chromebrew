@@ -8,6 +8,7 @@ class Double_conversion < Package
   compatibility 'all'
   source_url 'https://github.com/google/double-conversion/archive/v3.1.5.tar.gz'
   source_sha256 'a63ecb93182134ba4293fd5f22d6e08ca417caafa244afaa751cbfddf6415b13'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/double_conversion/3.1.5_armv7l/double_conversion-3.1.5-chromeos-armv7l.tar.xz',

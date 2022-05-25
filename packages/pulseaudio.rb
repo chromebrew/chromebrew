@@ -9,6 +9,7 @@ class Pulseaudio < Meson
   min_glibc '2.34'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_armv7l/pulseaudio-17.0-chromeos-armv7l.tar.zst',

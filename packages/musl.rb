@@ -8,6 +8,7 @@ class Musl < Package
   compatibility 'all'
   source_url "https://musl.libc.org/releases/musl-#{version}.tar.gz"
   source_sha256 '9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_armv7l/musl-1.2.2-chromeos-armv7l.tar.xz',

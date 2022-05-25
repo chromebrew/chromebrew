@@ -8,6 +8,7 @@ class Glog < Package
   compatibility 'all'
   source_url 'https://github.com/google/glog/archive/v0.3.5.zip'
   source_sha256 '267103f8a1e9578978aa1dc256001e6529ef593e5aea38193d31c2872ee025e8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glog/0.3.5_armv7l/glog-0.3.5-chromeos-armv7l.tar.xz',

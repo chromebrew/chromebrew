@@ -11,6 +11,7 @@ class Luajit_lpeg < Package
   compatibility 'all'
   source_url 'http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.2.tar.gz'
   source_sha256 '48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_lpeg/1.0.2_armv7l/luajit_lpeg-1.0.2-chromeos-armv7l.tar.zst',

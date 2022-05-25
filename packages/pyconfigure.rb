@@ -8,6 +8,7 @@ class Pyconfigure < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/pyconfigure/pyconfigure-0.2.3.tar.gz'
   source_sha256 '37438ee1ae0aad7692188c7d01218cb407a1c89f3efdb5d360311b7ade4ab14f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyconfigure/0.2.3_armv7l/pyconfigure-0.2.3-chromeos-armv7l.tar.xz',

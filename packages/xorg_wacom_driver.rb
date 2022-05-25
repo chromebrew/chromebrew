@@ -8,6 +8,7 @@ class Xorg_wacom_driver < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/linuxwacom/xf86-input-wacom-0.36.0.tar.bz2'
   source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_wacom_driver/0.36.0_armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',

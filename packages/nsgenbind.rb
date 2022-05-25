@@ -8,6 +8,7 @@ class Nsgenbind < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/nsgenbind-0.8-src.tar.gz'
   source_sha256 '4d8d53ad000ada712772365e6a73eb8fc5ce97584af9c865ac5b26a2187f1cb3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nsgenbind/0.8_armv7l/nsgenbind-0.8-chromeos-armv7l.tar.xz',

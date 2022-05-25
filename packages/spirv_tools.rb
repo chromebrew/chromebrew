@@ -21,6 +21,7 @@ class Spirv_tools < CMake
      armv7l: 'd925a80ea99206946477c5c6223629c06bbad55981da677e2ab54bbee23d843b',
      x86_64: '26a772a1baadd956f875e2c9db1e371b068caf8e4546e7884965294882603974'
   })
+  binary_compression 'tar.zst'
 
   depends_on 'spirv_headers' => :build
   depends_on 'gcc_lib' # R

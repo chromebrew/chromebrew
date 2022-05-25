@@ -8,6 +8,7 @@ class Libepoxy < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/anholt/libepoxy.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.10_armv7l/libepoxy-1.5.10-chromeos-armv7l.tar.zst',

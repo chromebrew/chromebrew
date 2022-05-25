@@ -8,6 +8,7 @@ class Multitail < Package
   compatibility 'all'
   source_url 'https://www.vanheusden.com/multitail/multitail-6.4.2.tgz'
   source_sha256 'af1d5458a78ad3b747c5eeb135b19bdca281ce414cefdc6ea0cff6d913caa1fd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/multitail/6.4.2-1_armv7l/multitail-6.4.2-1-chromeos-armv7l.tar.xz',

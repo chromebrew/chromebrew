@@ -8,6 +8,7 @@ class Linux_pam < Package
   compatibility 'all'
   source_url 'https://github.com/linux-pam/linux-pam/releases/download/v1.5.3/Linux-PAM-1.5.3.tar.xz'
   source_sha256 '7ac4b50feee004a9fa88f1dfd2d2fa738a82896763050cd773b3c54b0a818283'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_pam/1.5.3_armv7l/linux_pam-1.5.3-chromeos-armv7l.tar.zst',

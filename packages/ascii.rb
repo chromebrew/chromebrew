@@ -8,6 +8,7 @@ class Ascii < Package
   compatibility 'all'
   source_url 'http://www.catb.org/~esr/ascii/ascii-3.18.tar.gz'
   source_sha256 '728422d5f4da61a37a17b4364d06708e543297de0a5f70305243236d80df072d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ascii/3.18_armv7l/ascii-3.18-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gitkraken < Package
   compatibility 'x86_64'
   source_url 'https://release.gitkraken.com/linux/gitkraken-amd64.tar.gz'
   source_sha256 '9b885d9668379693dc69ce589b3c7c4788695d03fea91f35433bfd3d29591d89'
+  binary_compression 'tar.xz'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gitkraken/6.5.4_x86_64/gitkraken-6.5.4-chromeos-x86_64.tar.xz'

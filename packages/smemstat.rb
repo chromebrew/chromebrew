@@ -8,6 +8,7 @@ class Smemstat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/smemstat/smemstat-0.02.07.tar.xz'
   source_sha256 'acc17fdd6da92571e73a58bf1512b398cb307b80f46dc196cbb8102e7fb02526'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smemstat/0.02.07_armv7l/smemstat-0.02.07-chromeos-armv7l.tar.xz',

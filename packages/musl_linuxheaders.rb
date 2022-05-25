@@ -8,6 +8,7 @@ class Musl_linuxheaders < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
+  binary_compression 'tar.zst'
 
   case CREW_KERNEL_VERSION
   when '3.8'

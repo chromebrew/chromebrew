@@ -8,6 +8,7 @@ class Libpipeline < Package
   compatibility 'all'
   source_url "https://mirror.csclub.uwaterloo.ca/nongnu/libpipeline/libpipeline-#{version}.tar.gz"
   source_sha256 '5dbf08faf50fad853754293e57fd4e6c69bb8e486f176596d682c67e02a0adb0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpipeline/1.5.3_armv7l/libpipeline-1.5.3-chromeos-armv7l.tar.xz',

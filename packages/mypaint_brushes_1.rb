@@ -8,6 +8,7 @@ class Mypaint_brushes_1 < Package
   compatibility 'all'
   source_url 'https://github.com/mypaint/mypaint-brushes.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes_1/1.3.1_armv7l/mypaint_brushes_1-1.3.1-chromeos-armv7l.tar.zst',

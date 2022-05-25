@@ -8,6 +8,7 @@ class Ltrace < Package
   compatibility 'all'
   source_url 'https://gitlab.com/cespedes/ltrace.git'
   git_hashtag 'ea8928dab8a0a1f549d0ed8ebc6ec563e9fa1159'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ltrace/0.7.91-ea8928_armv7l/ltrace-0.7.91-ea8928-chromeos-armv7l.tpxz',

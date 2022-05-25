@@ -9,6 +9,7 @@ class Antlr4 < Package
   compatibility 'all'
   source_url 'https://github.com/antlr/antlr4/archive/4.12.0.tar.gz'
   source_sha256 '8b6050a2111a6bb6405cc5e9e7bca80c136548ac930e4b2c27566d1eb32f8aed'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.12.0-1_armv7l/antlr4-4.12.0-1-chromeos-armv7l.tar.zst',

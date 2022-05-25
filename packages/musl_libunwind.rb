@@ -8,6 +8,7 @@ class Musl_libunwind < Package
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/libunwind/libunwind-1.5.0.tar.gz'
   source_sha256 '90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunwind/1.5.0_armv7l/musl_libunwind-1.5.0-chromeos-armv7l.tpxz',

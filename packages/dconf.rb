@@ -8,6 +8,7 @@ class Dconf < Package
   compatibility 'all'
   source_url 'https://download.gnome.org/core/40/40.rc/sources/dconf-0.40.0.tar.xz'
   source_sha256 'cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dconf/0.40.0_armv7l/dconf-0.40.0-chromeos-armv7l.tar.xz',

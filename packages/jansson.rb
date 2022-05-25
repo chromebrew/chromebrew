@@ -8,6 +8,7 @@ class Jansson < Package
   compatibility 'all'
   source_url "https://github.com/akheron/jansson/archive/v#{version}.tar.gz"
   source_sha256 'f22901582138e3203959c9257cf83eba9929ac41d7be4a42557213a22ebcc7a0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jansson/2.13.1_armv7l/jansson-2.13.1-chromeos-armv7l.tar.xz',

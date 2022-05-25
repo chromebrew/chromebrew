@@ -11,6 +11,7 @@ class Termcap < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/termcap/termcap-1.3.1.tar.gz'
   source_sha256 '91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/termcap/1.3.1-2_armv7l/termcap-1.3.1-2-chromeos-armv7l.tar.zst',

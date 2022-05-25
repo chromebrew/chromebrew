@@ -8,6 +8,7 @@ class Libdvbpsi < Package
   license 'LGPL-2.1'
   source_url 'https://download.videolan.org/pub/libdvbpsi/1.3.3/libdvbpsi-1.3.3.tar.bz2'
   source_sha256 '02b5998bcf289cdfbd8757bedd5987e681309b0a25b3ffe6cebae599f7a00112'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvbpsi/1.3.3_armv7l/libdvbpsi-1.3.3-chromeos-armv7l.tpxz',

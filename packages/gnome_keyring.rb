@@ -8,6 +8,7 @@ class Gnome_keyring < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/3.36/gnome-keyring-3.36.0.tar.xz'
   source_sha256 'a264b57a8d1a71fdf0d66e8cd6033d013fb828be279c35766545eb9bb3734f87'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_keyring/3.36.0-1_armv7l/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',

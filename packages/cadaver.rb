@@ -8,6 +8,7 @@ class Cadaver < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://notroj.github.io/cadaver/cadaver-0.24.tar.gz'
   source_sha256 '46cff2f3ebd32cd32836812ca47bcc75353fc2be757f093da88c0dd8f10fd5f6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cadaver/0.24_armv7l/cadaver-0.24-chromeos-armv7l.tar.zst',

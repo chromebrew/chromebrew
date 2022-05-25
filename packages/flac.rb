@@ -8,6 +8,7 @@ class Flac < Autotools
   compatibility 'all'
   source_url 'https://downloads.xiph.org/releases/flac/flac-1.4.3.tar.xz'
   source_sha256 '6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flac/1.4.3_armv7l/flac-1.4.3-chromeos-armv7l.tar.zst',

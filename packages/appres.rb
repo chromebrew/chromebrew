@@ -8,6 +8,7 @@ class Appres < Package
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/appres-1.0.5.tar.bz2'
   source_sha256 'ffad893712c81943b919e3cbfe46fc65259cc0d9eb96d5e658670e3fbb265928'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appres/1.0.5_armv7l/appres-1.0.5-chromeos-armv7l.tar.xz',

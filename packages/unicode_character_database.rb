@@ -8,6 +8,7 @@ class Unicode_character_database < Package
   compatibility 'all'
   source_url "https://www.unicode.org/Public/zipped/#{version}/UCD.zip"
   source_sha256 '2f76973b4d36ae45584f5a45ec65b47138932d777dd23a5669c89535ef3da951'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_armv7l/unicode_character_database-13.0.0-chromeos-armv7l.tar.xz',

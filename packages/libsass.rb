@@ -8,6 +8,7 @@ class Libsass < Package
   compatibility 'all'
   source_url 'https://github.com/sass/libsass.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.5_armv7l/libsass-3.6.5-chromeos-armv7l.tpxz',

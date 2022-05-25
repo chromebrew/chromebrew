@@ -8,6 +8,7 @@ class Xauth < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/xauth-1.1.2.tar.xz'
   source_sha256 '78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xauth/1.1.2_armv7l/xauth-1.1.2-chromeos-armv7l.tar.zst',

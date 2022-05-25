@@ -9,6 +9,7 @@ class Py3_pyte < Python
   compatibility 'all'
   source_url 'https://github.com/selectel/pyte.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyte/0.8.1-py3.12_armv7l/py3_pyte-0.8.1-py3.12-chromeos-armv7l.tar.zst',

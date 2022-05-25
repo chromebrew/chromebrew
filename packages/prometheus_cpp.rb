@@ -8,6 +8,7 @@ class Prometheus_cpp < Package
   compatibility 'i686,x86_64'
   source_url 'https://github.com/jupp0r/prometheus-cpp/releases/download/v0.12.1/prometheus-cpp-with-submodules.tar.gz'
   source_sha256 'f116cee772df7bf23fc89fb71c13ad4420601e304a382d77da725da0d0dc4cac'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/prometheus_cpp/0.12.1_i686/prometheus_cpp-0.12.1-chromeos-i686.tar.xz',

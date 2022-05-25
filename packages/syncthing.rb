@@ -8,6 +8,7 @@ class Syncthing < Package
   compatibility 'all'
   source_url 'https://github.com/syncthing/syncthing/archive/v0.14.41.tar.gz'
   source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/syncthing/0.14.41_armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',

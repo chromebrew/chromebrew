@@ -8,6 +8,7 @@ class Yajl < Package
   compatibility 'all'
   source_url 'https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz'
   source_sha256 '3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-4_armv7l/yajl-2.1.0-4-chromeos-armv7l.tar.zst',

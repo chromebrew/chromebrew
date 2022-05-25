@@ -8,6 +8,7 @@ class Libstfl < Package
   compatibility 'all'
   source_url 'http://www.clifford.at/stfl/stfl-0.23.tar.gz'
   source_sha256 'e75ed8427905ad50faf43ed5fefd0cf7b16ee0c1ca87e15d33e360bb92aedfde'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',

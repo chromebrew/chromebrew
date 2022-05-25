@@ -11,6 +11,7 @@ class Pixz < Package
   compatibility 'all'
   source_url 'https://github.com/vasi/pixz.git'
   git_hashtag 'f1b1b5f8af68d0ac782e5ff24f11785282382f40'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_armv7l/pixz-1.0.7-f1b1b5f-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libb64 < Package
   compatibility 'all'
   source_url 'https://github.com/libb64/libb64/archive/v2.0.0.1.tar.gz'
   source_sha256 'ce8e578a953a591bd4a6f157eec310b9a4c2e6f10ade2fdda6ae6bafaf798b98'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libb64/2.0.0.1_armv7l/libb64-2.0.0.1-chromeos-armv7l.tar.zst',

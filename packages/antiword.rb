@@ -8,6 +8,7 @@ class Antiword < Package
   compatibility 'all'
   source_url 'http://www.winfield.demon.nl/linux/antiword-0.37.tar.gz'
   source_sha256 '8e2c000fcbc6d641b0e6ff95e13c846da3ff31097801e86702124a206888f5ac'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antiword/0.37-2_armv7l/antiword-0.37-2-chromeos-armv7l.tar.xz',

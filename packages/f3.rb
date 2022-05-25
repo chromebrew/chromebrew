@@ -8,6 +8,7 @@ class F3 < Package
   compatibility 'all'
   source_url 'https://github.com/AltraMayor/f3/archive/v7.1.tar.gz'
   source_sha256 '1d9edf12d3f40c03a552dfc3ed36371c62933b9213483182f7a561e1a5b8e1cc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/f3/7.1_armv7l/f3-7.1-chromeos-armv7l.tar.xz',

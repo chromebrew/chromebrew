@@ -8,6 +8,7 @@ class Pygobject2 < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.7.tar.xz'
   source_sha256 'bb9d25a3442ca7511385a7c01b057492095c263784ef31231ffe589d83a96a5a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject2/2.28.7_armv7l/pygobject2-2.28.7-chromeos-armv7l.tar.xz',

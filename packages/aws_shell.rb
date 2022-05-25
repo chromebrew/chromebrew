@@ -8,6 +8,7 @@ class Aws_shell < Package
   compatibility 'all'
   source_url 'https://github.com/awslabs/aws-shell/archive/0.2.1.tar.gz'
   source_sha256 '84262f0ccba6757a318ce415d8a77026b43db958cfac9ef615e75c3515d78f78'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aws_shell/0.2.1_armv7l/aws_shell-0.2.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Alpine < Package
   compatibility 'all'
   source_url 'http://alpine.x10host.com/alpine/release/src/alpine-2.25.tar.xz'
   source_sha256 '658a150982f6740bb4128e6dd81188eaa1212ca0bf689b83c2093bb518ecf776'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alpine/2.25_armv7l/alpine-2.25-chromeos-armv7l.tar.zst',

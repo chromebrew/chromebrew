@@ -8,6 +8,7 @@ class Musl_cyrus_sasl < Package
   license 'custom'
   source_url 'https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz'
   source_sha256 '26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',

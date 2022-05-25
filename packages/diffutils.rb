@@ -8,6 +8,7 @@ class Diffutils < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/diffutils/diffutils-3.10.tar.xz'
   source_sha256 '90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffutils/3.10_armv7l/diffutils-3.10-chromeos-armv7l.tar.zst',

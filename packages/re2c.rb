@@ -8,6 +8,7 @@ class Re2c < CMake
   compatibility 'all'
   source_url 'https://github.com/skvadrik/re2c/releases/download/3.1/re2c-3.1.tar.lz'
   source_sha256 '1c499e89ffd9926d79374fa5101c27a4bc89355462d5217abdbe4c76312db2f1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/3.1_armv7l/re2c-3.1-chromeos-armv7l.tar.zst',

@@ -11,6 +11,7 @@ class Asunder < Package
   compatibility 'all'
   source_url 'https://littlesvr.ca/asunder/releases/asunder-2.9.7.tar.bz2'
   source_sha256 'c1c97cd34c04b8595e95df8a9a7dbc64a1e61f494b7a0cd2873802ad111874f4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asunder/2.9.7_armv7l/asunder-2.9.7-chromeos-armv7l.tar.zst',

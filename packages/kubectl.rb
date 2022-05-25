@@ -8,6 +8,7 @@ class Kubectl < Package
   compatibility 'all'
   source_url 'https://github.com/kubernetes/kubernetes/archive/v1.7.0.tar.gz'
   source_sha256 '0fe34180a4bb61384894616b1d348cc6350d1ebcbc071c67748864ffd2deb026'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kubectl/1.7.0_armv7l/kubectl-1.7.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Percona_boost < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.bz2'
   source_sha256 '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_boost/1.59.0_armv7l/percona_boost-1.59.0-chromeos-armv7l.tar.xz',

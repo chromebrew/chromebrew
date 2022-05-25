@@ -8,6 +8,7 @@ class Libid3tag < Package
   compatibility 'all'
   source_url 'ftp://ftp.mars.org/pub/mpeg/libid3tag-0.15.1b.tar.gz'
   source_sha256 '63da4f6e7997278f8a3fef4c6a372d342f705051d1eeb6a46a86b03610e26151'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libid3tag/0.15.1b_armv7l/libid3tag-0.15.1b-chromeos-armv7l.tar.xz',

@@ -10,6 +10,7 @@ class Libaio < Package
   compatibility 'all'
   source_url 'https://git.hadrons.org/cgit/sys/libaio.git'
   git_hashtag '932de6c91978639eee576ecdc1343b52e5a0a54a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.113-932de6c_armv7l/libaio-0.3.113-932de6c-chromeos-armv7l.tar.zst',

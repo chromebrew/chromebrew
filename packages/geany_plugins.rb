@@ -8,6 +8,7 @@ class Geany_plugins < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/geany/geany-plugins.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/2.0.0_armv7l/geany_plugins-2.0.0-chromeos-armv7l.tar.zst',

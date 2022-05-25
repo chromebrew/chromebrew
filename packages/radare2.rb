@@ -8,6 +8,7 @@ class Radare2 < Package
   compatibility 'all'
   source_url 'https://github.com/radare/radare2/archive/2.4.0.tar.gz'
   source_sha256 'e2edef4d70c7bbbb47d04002ce9d384eb2fc9c0cd4cbfde77cda8c10cae9ff24'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/radare2/2.4.0_armv7l/radare2-2.4.0-chromeos-armv7l.tar.xz',

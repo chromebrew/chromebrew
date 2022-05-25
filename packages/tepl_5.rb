@@ -9,6 +9,7 @@ class Tepl_5 < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/Archive/tepl.git'
   git_hashtag @_ver
+  binary_compression 'tpxz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_5/5.0.1_i686/tepl_5-5.0.1-chromeos-i686.tar.xz',

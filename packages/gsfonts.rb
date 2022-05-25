@@ -8,6 +8,7 @@ class Gsfonts < Package
   compatibility 'all'
   source_url 'https://managedway.dl.sourceforge.net/project/ghostscript/AFPL%20Ghostscript/8.14/ghostscript-fonts-std-8.11.tar.gz'
   source_sha256 '0eb6f356119f2e49b2563210852e17f57f9dcc5755f350a69a46a0d641a0c401'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsfonts/8.11_armv7l/gsfonts-8.11-chromeos-armv7l.tar.xz',

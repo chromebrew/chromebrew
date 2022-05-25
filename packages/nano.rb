@@ -8,6 +8,7 @@ class Nano < Package
   compatibility 'all'
   source_url 'https://nano-editor.org/dist/v7/nano-7.2.tar.xz'
   source_sha256 '86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',

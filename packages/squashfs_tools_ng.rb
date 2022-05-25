@@ -11,6 +11,7 @@ class Squashfs_tools_ng < Package
   compatibility 'all'
   source_url 'https://infraroot.at/pub/squashfs/squashfs-tools-ng-1.1.0.tar.xz'
   source_sha256 '110794124b268e92e28e6a95f0781d1338f48c338434ef746f5de68c64e19aeb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs_tools_ng/1.1.0_armv7l/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Roswell < Package
   compatibility 'all'
   source_url 'https://github.com/roswell/roswell/archive/v20.01.14.104.tar.gz'
   source_sha256 '798b96fdcb8c89445b36692b31570bb99882d83719d6310d969ccfcb2a35a1d4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/roswell/20.01.14.104_armv7l/roswell-20.01.14.104-chromeos-armv7l.tar.xz',

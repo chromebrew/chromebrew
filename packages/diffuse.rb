@@ -8,6 +8,7 @@ class Diffuse < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/diffuse/diffuse/0.4.8/diffuse-0.4.8.tar.bz2'
   source_sha256 'c1d3b79bba9352fcb9aa4003537d3fece248fb824781c5e21f3fcccafd42df2b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diffuse/0.4.8_armv7l/diffuse-0.4.8-chromeos-armv7l.tar.xz',

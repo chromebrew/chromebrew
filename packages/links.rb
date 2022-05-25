@@ -8,6 +8,7 @@ class Links < Package
   compatibility 'all'
   source_url 'http://links.twibright.com/download/links-2.28.tar.bz2'
   source_sha256 '2fd5499b13dee59457c132c167b8495c40deda75389489c6cccb683193f454b4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/2.28_armv7l/links-2.28-chromeos-armv7l.tar.zst',

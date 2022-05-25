@@ -8,6 +8,7 @@ class Bacon < Package
   compatibility 'all'
   source_url 'https://basic-converter.org/stable/bacon-3.9.3.tar.gz'
   source_sha256 '7f907f4ede68704eefd076733f617438c4baba98e9a1e8676ea1a00c4f8476ae'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacon/3.9.3_armv7l/bacon-3.9.3-chromeos-armv7l.tar.xz',

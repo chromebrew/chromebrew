@@ -8,6 +8,7 @@ class Libmatroska < Package
   license 'BSD'
   source_url 'https://github.com/Matroska-Org/libmatroska.git'
   git_hashtag "release-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmatroska/1.6.3_armv7l/libmatroska-1.6.3-chromeos-armv7l.tpxz',

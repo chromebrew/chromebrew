@@ -8,6 +8,7 @@ class Gdbm < Package
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gdbm/gdbm-#{version}.tar.gz"
   source_sha256 '74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdbm/1.23_armv7l/gdbm-1.23-chromeos-armv7l.tar.zst',

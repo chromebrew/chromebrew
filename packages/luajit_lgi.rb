@@ -11,6 +11,7 @@ class Luajit_lgi < Package
   compatibility 'all'
   source_url 'https://github.com/lgi-devs/lgi/archive/refs/tags/0.9.2.tar.gz'
   source_sha256 'cfc4105482b4730b3a40097c9d9e7e35c46df2fb255370bdeb2f45a886548c4f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_lgi/0.9.2_armv7l/luajit_lgi-0.9.2-chromeos-armv7l.tar.zst',

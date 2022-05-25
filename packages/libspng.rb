@@ -8,6 +8,7 @@ class Libspng < Package
   compatibility 'all'
   source_url 'https://gitlab.com/randy408/libspng/uploads/3d980bac86c51368f40af2f1ac79a057/libspng-0.5.0.tar.xz'
   source_sha256 '220a653802559943ae43fd48f03ba6ff3935a5243766d9ee5ff905240d4399a7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspng/0.5.0_armv7l/libspng-0.5.0-chromeos-armv7l.tar.xz',

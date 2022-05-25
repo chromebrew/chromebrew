@@ -8,6 +8,7 @@ class Apr_util < Autotools
   compatibility 'all'
   source_url 'https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.bz2'
   source_sha256 'a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_util/1.6.3_armv7l/apr_util-1.6.3-chromeos-armv7l.tar.zst',

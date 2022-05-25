@@ -11,6 +11,7 @@ class Cppdap < CMake
   compatibility 'all'
   source_url 'https://github.com/google/cppdap.git'
   git_hashtag '6a3cc9a804e83c40f4202fe6a34c8911d2c7c12b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppdap/1.58.0a-6a3cc9a_armv7l/cppdap-1.58.0a-6a3cc9a-chromeos-armv7l.tar.zst',

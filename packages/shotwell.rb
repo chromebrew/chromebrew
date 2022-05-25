@@ -8,6 +8,7 @@ class Shotwell < Meson
   compatibility 'x86_64'
   source_url 'https://download.gnome.org/sources/shotwell/0.32/shotwell-0.32.4.tar.xz'
   source_sha256 'de2a9450846d1cec14c6a1030375fd49e1af24dc920ad6480344124f9ccb856f'
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.4_x86_64/shotwell-0.32.4-chromeos-x86_64.tar.zst'

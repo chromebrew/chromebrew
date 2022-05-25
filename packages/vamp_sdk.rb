@@ -8,6 +8,7 @@ class Vamp_sdk < Package
   compatibility 'all'
   source_url 'https://code.soundsoftware.ac.uk/attachments/download/2588/vamp-plugin-sdk-2.9.0.tar.gz'
   source_sha256 'b72a78ef8ff8a927dc2ed7e66ecf4c62d23268a5d74d02da25be2b8d00341099'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vamp_sdk/2.9.0_armv7l/vamp_sdk-2.9.0-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Zlibpkg < CMake
   compatibility 'all'
   source_url 'https://www.zlib.net/zlib-1.3.1.tar.gz'
   source_sha256 '9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3.1_armv7l/zlibpkg-1.3.1-chromeos-armv7l.tar.zst',

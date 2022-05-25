@@ -8,6 +8,7 @@ class Js78 < Package
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js78/78.7.0_armv7l/js78-78.7.0-chromeos-armv7l.tar.xz',

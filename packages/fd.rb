@@ -9,6 +9,7 @@ class Fd < Package
   compatibility 'all'
   source_url 'https://github.com/sharkdp/fd.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fd/8.3.0-1_armv7l/fd-8.3.0-1-chromeos-armv7l.tpxz',

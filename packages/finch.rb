@@ -8,6 +8,7 @@ class Finch < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2'
   source_sha256 '8c3d3536d6d3c971bd433ff9946678af70a0f6aa4e6969cc2a83bb357015b7f8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/finch/2.12.0-1_armv7l/finch-2.12.0-1-chromeos-armv7l.tar.xz',

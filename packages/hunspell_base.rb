@@ -8,6 +8,7 @@ class Hunspell_base < Package
   compatibility 'all'
   source_url 'https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz'
   source_sha256 'bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hunspell_base/1.7.0-1_armv7l/hunspell_base-1.7.0-1-chromeos-armv7l.tar.xz',

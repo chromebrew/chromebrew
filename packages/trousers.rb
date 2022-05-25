@@ -9,6 +9,7 @@ class Trousers < Package
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/trousers/trousers/#{@_ver}/trousers-#{@_ver}.tar.gz"
   source_sha256 '1e5be93e518372acf1d92d2f567d01a46fdb0b730487e544e6fb896c59cac77f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/trousers/0.3.15-2_armv7l/trousers-0.3.15-2-chromeos-armv7l.tar.zst',

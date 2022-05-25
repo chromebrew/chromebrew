@@ -11,6 +11,7 @@ class Libwpg < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/libwpg/libwpg-0.3.3.tar.xz'
   source_sha256 '99b3f7f8832385748582ab8130fbb9e5607bd5179bebf9751ac1d51a53099d1c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpg/0.3.3_armv7l/libwpg-0.3.3-chromeos-armv7l.tar.zst',

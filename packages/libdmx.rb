@@ -8,6 +8,7 @@ class Libdmx < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libdmx-1.1.3.tar.gz'
   source_sha256 'c4b24d7e13e5a67ead7a18f0b4cc9b7b5363c9d04cd01b83b5122ff92b3b4996'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdmx/1.1.3-0_armv7l/libdmx-1.1.3-0-chromeos-armv7l.tar.xz',

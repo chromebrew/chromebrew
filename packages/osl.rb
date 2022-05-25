@@ -8,6 +8,7 @@ class Osl < Package
   compatibility 'all'
   source_url 'https://github.com/periscop/openscop/releases/download/0.9.2/osl-0.9.2.tar.gz'
   source_sha256 'eee5cd9bf5b3b8491f95f681cfaa987344f0fb3d7499f5d8e19e3ce75e0c5ed0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/osl/0.9.2_armv7l/osl-0.9.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libdsm < Package
   license 'LGPL-2.1+'
   source_url 'https://github.com/videolabs/libdsm.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.2_armv7l/libdsm-0.3.2-chromeos-armv7l.tpxz',

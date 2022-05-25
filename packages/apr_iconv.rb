@@ -8,6 +8,7 @@ class Apr_iconv < Package
   compatibility 'all'
   source_url 'https://dlcdn.apache.org/apr/apr-iconv-1.2.2.tar.bz2'
   source_sha256 '7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_armv7l/apr_iconv-1.2.2-chromeos-armv7l.tar.xz',

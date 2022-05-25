@@ -8,6 +8,7 @@ class Mediainfo < Package
   compatibility 'all'
   source_url 'https://mediaarea.net/download/binary/mediainfo/23.11/MediaInfo_CLI_23.11_GNU_FromSource.tar.xz'
   source_sha256 '2f126c3cb7d5d8c1eb45088a2ae327c5e60acc6891c7d842e05f733b4c189bf8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/23.11_armv7l/mediainfo-23.11-chromeos-armv7l.tar.zst',

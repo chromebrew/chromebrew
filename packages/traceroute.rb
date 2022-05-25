@@ -8,6 +8,7 @@ class Traceroute < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/traceroute/traceroute/traceroute%202.1.4/traceroute-2.1.4.tar.gz'
   source_sha256 'b2e39a1d04ea45a6a60c976a2637d1a16224edd2eaa19a5870af83edb2ffe3fa'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.4_armv7l/traceroute-2.1.4-chromeos-armv7l.tar.zst',

@@ -9,6 +9,7 @@ class Tk < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tk#{@_ver}-src.tar.gz"
   source_sha256 '2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13-1_armv7l/tk-8.6.13-1-chromeos-armv7l.tar.zst',

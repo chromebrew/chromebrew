@@ -8,6 +8,7 @@ class Enet < Package
   compatibility 'all'
   source_url 'https://github.com/lsalzman/enet.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enet/1.3.17_armv7l/enet-1.3.17-chromeos-armv7l.tar.zst',

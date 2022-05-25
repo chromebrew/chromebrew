@@ -9,6 +9,7 @@ class Gobject_introspection < Meson
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.78.1-py3.12_armv7l/gobject_introspection-1.78.1-py3.12-chromeos-armv7l.tar.zst',

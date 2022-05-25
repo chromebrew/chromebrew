@@ -8,6 +8,7 @@ class Aide < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/aide/aide/0.15.1/aide-0.15.1.tar.gz'
   source_sha256 '303e5c186257df8c86e418193199f4ea2183fc37d3d4a9098a614f61346059ef'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aide/0.15.1_armv7l/aide-0.15.1-chromeos-armv7l.tar.xz',

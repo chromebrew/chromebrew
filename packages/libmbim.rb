@@ -8,6 +8,7 @@ class Libmbim < Package
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libmbim/libmbim-#{version}.tar.xz"
   source_sha256 '760465caaa1ccd699c14290e9791da456d5300dd11ebf4c1486151033e875dfd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmbim/1.24.6_armv7l/libmbim-1.24.6-chromeos-armv7l.tar.xz',

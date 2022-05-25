@@ -8,6 +8,7 @@ class Openrtsp < Package
   compatibility 'all'
   source_url 'http://www.live555.com/liveMedia/public/live.2018.02.28.tar.gz'
   source_sha256 '2db4f05616bdd21a609baf82c836486c44820c16a006315e02abe2b0b53a247e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openrtsp/2018.02.28_armv7l/openrtsp-2018.02.28-chromeos-armv7l.tar.xz',

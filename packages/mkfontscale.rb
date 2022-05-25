@@ -8,6 +8,7 @@ class Mkfontscale < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/mkfontscale-1.2.1.tar.bz2'
   source_sha256 'ca0495eb974a179dd742bfa6199d561bda1c8da4a0c5a667f21fd82aaab6bac7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mkfontscale/1.2.1-1_armv7l/mkfontscale-1.2.1-1-chromeos-armv7l.tar.xz',

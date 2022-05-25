@@ -9,6 +9,7 @@ class Linuxheaders < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
+  binary_compression 'tar.zst'
 
   if CREW_KERNEL_VERSION == '3.8'
     binary_url({

@@ -8,6 +8,7 @@ class Usbutils < Package
   compatibility 'all'
   source_url "https://mirrors.kernel.org/pub/linux/utils/usb/usbutils/usbutils-#{version}.tar.xz"
   source_sha256 '9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbutils/013_armv7l/usbutils-013-chromeos-armv7l.tar.xz',

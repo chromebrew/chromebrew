@@ -8,6 +8,7 @@ class Vtable_dumper < Package
   compatibility 'all'
   source_url 'https://github.com/lvc/vtable-dumper/archive/1.2.tar.gz'
   source_sha256 '6993781b6a00936fc5f76dc0db4c410acb46b6d6e9836ddbe2e3c525c6dd1fd2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vtable_dumper/1.2_armv7l/vtable_dumper-1.2-chromeos-armv7l.tar.xz',

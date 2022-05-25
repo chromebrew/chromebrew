@@ -8,6 +8,7 @@ class Ncdc < Package
   compatibility 'all'
   source_url 'https://dev.yorhel.nl/download/ncdc-1.20.tar.gz'
   source_sha256 '8a998857df6289b6bd44287fc06f705b662098189f2a8fe95b1a5fbc703b9631'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncdc/1.20_armv7l/ncdc-1.20-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Nanomsg < Package
   compatibility 'all'
   source_url 'https://github.com/nanomsg/nanomsg/archive/1.1.5.tar.gz'
   source_sha256 '218b31ae1534ab897cb5c419973603de9ca1a5f54df2e724ab4a188eb416df5a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nanomsg/1.1.5_armv7l/nanomsg-1.1.5-chromeos-armv7l.tar.xz',

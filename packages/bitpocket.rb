@@ -8,6 +8,7 @@ class Bitpocket < Package
   compatibility 'all'
   source_url 'https://github.com/sickill/bitpocket/archive/v0.2.tar.gz'
   source_sha256 'f3952374a1139465700f9122d7a929227be5cdeb681679cbe00bb93658adbd1f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bitpocket/0.2_armv7l/bitpocket-0.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Pcre < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2'
   source_sha256 '4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.45_armv7l/pcre-8.45-chromeos-armv7l.tar.zst',

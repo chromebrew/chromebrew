@@ -8,6 +8,7 @@ class Axel < Package
   compatibility 'all'
   source_url 'https://github.com/axel-download-accelerator/axel/releases/download/v2.17.6/axel-2.17.6.tar.xz'
   source_sha256 '24ab549021bdfca01ad5e8e95b706869dd30fe9ab1043da4cbb9dff89edc267d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/axel/2.17.6_armv7l/axel-2.17.6-chromeos-armv7l.tar.xz',

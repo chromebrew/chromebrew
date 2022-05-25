@@ -8,6 +8,7 @@ class Difftastic < Package
   compatibility 'all'
   source_url 'https://github.com/Wilfred/difftastic.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/difftastic/0.52.0_armv7l/difftastic-0.52.0-chromeos-armv7l.tar.zst',

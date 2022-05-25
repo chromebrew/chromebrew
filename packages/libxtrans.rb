@@ -8,6 +8,7 @@ class Libxtrans < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/xtrans-1.4.0.tar.bz2'
   source_sha256 '377c4491593c417946efcd2c7600d1e62639f7a8bbca391887e2c4679807d773'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtrans/1.4.0_armv7l/libxtrans-1.4.0-chromeos-armv7l.tar.xz',

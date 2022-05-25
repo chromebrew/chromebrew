@@ -9,6 +9,7 @@ class Libarchive < Package
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
   source_sha256 '9e2c1b80d5fbe59b61308fdfab6c79b5021d7ff4ff2489fb12daf0a96a83551d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2-2_armv7l/libarchive-3.6.2-2-chromeos-armv7l.tar.zst',

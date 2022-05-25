@@ -11,6 +11,7 @@ class Libshumate < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libshumate/-/archive/1.0.1/libshumate-1.0.1.tar.bz2'
   source_sha256 '004188509189eab352b8f86701cec223c15c8fa52b1e0cf5379877725a1e9014'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libshumate/1.0.1_armv7l/libshumate-1.0.1-chromeos-armv7l.tar.zst',

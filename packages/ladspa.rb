@@ -8,6 +8,7 @@ class Ladspa < Package
   compatibility 'all'
   source_url 'https://www.ladspa.org/download/ladspa_sdk_1.17.tgz'
   source_sha256 '27d24f279e4b81bd17ecbdcc38e4c42991bb388826c0b200067ce0eb59d3da5b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_armv7l/ladspa-1.17-chromeos-armv7l.tar.zst',

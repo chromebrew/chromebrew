@@ -8,6 +8,7 @@ class Musl_libssh < Package
   license 'LGPL-2.1'
   source_url 'https://git.libssh.org/projects/libssh.git'
   git_hashtag "libssh-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Janet < Package
   compatibility 'all'
   source_url 'https://github.com/janet-lang/janet/archive/v1.7.0.tar.gz'
   source_sha256 '2a119f3a79b209a858864e73ca3efda57ac044df3c89762a31480bbea386d2a3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/janet/1.7.0_armv7l/janet-1.7.0-chromeos-armv7l.tar.xz',

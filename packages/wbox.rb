@@ -8,6 +8,7 @@ class Wbox < Package
   compatibility 'all'
   source_url 'http://www.hping.org/wbox/wbox-5.tar.gz'
   source_sha256 '1589d85e83c8ee78383a491d89e768ab9aab9f433c5f5e035cfb5eed17efaa19'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wbox/5_armv7l/wbox-5-chromeos-armv7l.tar.xz',

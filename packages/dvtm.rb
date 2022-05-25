@@ -8,6 +8,7 @@ class Dvtm < Package
   compatibility 'all'
   source_url 'https://github.com/martanne/dvtm/releases/download/v0.15/dvtm-0.15.tar.gz'
   source_sha256 '8f2015c05e2ad82f12ae4cf12b363d34f527a4bbc8c369667f239e4542e1e510'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dvtm/0.15_armv7l/dvtm-0.15-chromeos-armv7l.tar.zst',

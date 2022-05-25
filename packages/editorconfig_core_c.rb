@@ -11,6 +11,7 @@ class Editorconfig_core_c < Package
   compatibility 'all'
   source_url 'https://github.com/editorconfig/editorconfig-core-c/archive/v0.12.6/editorconfig-core-c-0.12.6.tar.gz'
   source_sha256 '36052a5371731d915b53d9c7a24a11c4032585ccacb392ec9d58656eef4c0edf'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editorconfig_core_c/0.12.6_armv7l/editorconfig_core_c-0.12.6-chromeos-armv7l.tar.zst',

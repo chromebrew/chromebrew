@@ -8,6 +8,7 @@ class Gparted < Package
   compatibility 'aarch64,armv7l,x86_64'
   source_url "https://downloads.sourceforge.net/project/gparted/gparted/gparted-#{version}/gparted-#{version}.tar.gz"
   source_sha256 '3c95ea26a944083ff1d9b17639b1e2ad9758df225dc751ff407b2a6aa092a8de'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gparted/1.5.0_armv7l/gparted-1.5.0-chromeos-armv7l.tar.zst',

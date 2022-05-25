@@ -8,6 +8,7 @@ class Obs < Package
   compatibility 'i686,x86_64'
   source_url 'https://github.com/obsproject/obs-studio/archive/24.0.5.tar.gz'
   source_sha256 'b3d65f36ad2bfcd6ffde1771be64662ce8e8771349fab82bb49f80dbb1f5f2e6'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/obs/24.0.5_i686/obs-24.0.5-chromeos-i686.tar.xz',

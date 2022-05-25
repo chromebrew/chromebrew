@@ -8,6 +8,7 @@ class Gcr_3 < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{version}/gcr-#{version}.tar.bz2"
   source_sha256 '7e06e86e12aadaac6a72f2ee7eeaaaa6228a0ba3b92cadd50b45c0f05f0d91c6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr_3/3.41.1_armv7l/gcr_3-3.41.1-chromeos-armv7l.tar.zst',

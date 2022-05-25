@@ -8,6 +8,7 @@ class Stellarium < Package
   compatibility 'x86_64'
   source_url 'https://github.com/Stellarium/stellarium/releases/download/v0.21.1/stellarium-0.21.1.tar.gz'
   source_sha256 '072309c6bc48233b39884ae558b23764d0e08eabd96b014b53d780be11a33211'
+  binary_compression 'tar.xz'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stellarium/0.21.1_x86_64/stellarium-0.21.1-chromeos-x86_64.tar.xz'

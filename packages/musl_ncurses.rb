@@ -8,6 +8,7 @@ class Musl_ncurses < Package
   compatibility 'all'
   source_url 'https://github.com/mirror/ncurses.git'
   git_hashtag '64eb5fae1961774e65e46953fa536d12c12f6d76'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_ncurses/6.3-20220402_armv7l/musl_ncurses-6.3-20220402-chromeos-armv7l.tar.zst',

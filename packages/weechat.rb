@@ -8,6 +8,7 @@ class Weechat < Package
   compatibility 'all'
   source_url 'https://weechat.org/files/src/weechat-2.1.tar.xz'
   source_sha256 'cda0f81ff8243fd25cca76c8e490e2fdb5b8fbb2554d7aa87cb3b0beda16ed38'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weechat/2.1_armv7l/weechat-2.1-chromeos-armv7l.tar.xz',

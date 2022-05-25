@@ -8,6 +8,7 @@ class Xprop < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xprop.git'
   git_hashtag "xprop-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xprop/1.2.6_armv7l/xprop-1.2.6-chromeos-armv7l.tar.zst',

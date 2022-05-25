@@ -8,6 +8,7 @@ class Gnuplot < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/gnuplot/gnuplot/5.2.6/gnuplot-5.2.6.tar.gz'
   source_sha256 '35dd8f013139e31b3028fac280ee12d4b1346d9bb5c501586d1b5a04ae7a94ee'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnuplot/5.2.6_armv7l/gnuplot-5.2.6-chromeos-armv7l.tar.xz',

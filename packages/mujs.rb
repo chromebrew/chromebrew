@@ -11,6 +11,7 @@ class Mujs < Package
   compatibility 'all'
   source_url "https://github.com/ccxvii/mujs/archive/refs/tags/#{version}.tar.gz"
   source_sha256 '8e43a38fdea75f036a9f3213e346a6c304206b4e3d00886564fb6bf70c1c2807'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mujs/1.1.0_armv7l/mujs-1.1.0-chromeos-armv7l.tar.xz',

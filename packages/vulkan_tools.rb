@@ -11,6 +11,7 @@ class Vulkan_tools < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.275_armv7l/vulkan_tools-1.3.275-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Gnome_icon_theme < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz'
   source_sha256 '359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_icon_theme/3.12.0-1_armv7l/gnome_icon_theme-3.12.0-1-chromeos-armv7l.tar.xz',

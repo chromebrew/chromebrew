@@ -8,6 +8,7 @@ class Libqmi < Package
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/libqmi/libqmi-#{version}.tar.xz"
   source_sha256 '8c8c3ee719874d2529bce9b35b028fe435b36f003979a360d3ad0938449db783'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libqmi/1.28.2_armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',

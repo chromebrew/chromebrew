@@ -8,6 +8,7 @@ class Gsm < Package
   compatibility 'all'
   source_url "http://www.quut.com/gsm/gsm-#{version}.tar.gz"
   source_sha256 '4903652f68a8c04d0041f0d19b1eb713ddcd2aa011c5e595b3b8bca2755270f6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsm/1.0.19_armv7l/gsm-1.0.19-chromeos-armv7l.tar.xz',

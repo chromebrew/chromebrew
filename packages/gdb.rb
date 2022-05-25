@@ -11,6 +11,7 @@ class Gdb < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gnu/gdb/gdb-14.1.tar.xz'
   source_sha256 'd66df51276143451fcbff464cc8723d68f1e9df45a6a2d5635a54e71643edb80'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_armv7l/gdb-14.1-py3.12-chromeos-armv7l.tar.zst',

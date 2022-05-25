@@ -8,6 +8,7 @@ class Libde265 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/strukturag/libde265/releases/download/v#{version}/libde265-#{version}.tar.gz"
   source_sha256 '2f8f12cabbdb15e53532b7c1eb964d4e15d444db1be802505e6ac97a25035bab'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libde265/1.0.11_armv7l/libde265-1.0.11-chromeos-armv7l.tar.zst',

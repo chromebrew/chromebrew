@@ -8,6 +8,7 @@ class Cdrkit < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/wodim/cdrkit/cdrkit_1.1.11.orig.tar.gz'
   source_sha256 'd1c030756ecc182defee9fe885638c1785d35a2c2a297b4604c0e0dcc78e47da'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdrkit/1.1.11_armv7l/cdrkit-1.1.11-chromeos-armv7l.tar.xz',

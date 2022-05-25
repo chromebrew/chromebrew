@@ -8,6 +8,7 @@ class Jfrog < Package
   compatibility 'all'
   source_url 'https://github.com/jfrog/jfrog-cli-go/archive/1.39.5.tar.gz'
   source_sha256 '75a0f9bfd3170d03c542b62442761822ff2e4a7a279406d9b2ee5eeee888813f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jfrog/1.39.5_armv7l/jfrog-1.39.5-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Desktop_file_utils < Package
   compatibility 'all'
   source_url 'https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.23.tar.xz'
   source_sha256 '6c094031bdec46c9f621708f919084e1cb5294e2c5b1e4c883b3e70cb8903385'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/desktop_file_utils/0.23_armv7l/desktop_file_utils-0.23-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gnome_text_editor < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-text-editor.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_text_editor/44.0_armv7l/gnome_text_editor-44.0-chromeos-armv7l.tar.zst',

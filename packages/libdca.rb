@@ -8,6 +8,7 @@ class Libdca < Package
   license 'GPL-2'
   source_url 'https://get.videolan.org/libdca/0.0.7/libdca-0.0.7.tar.bz2'
   source_sha256 '3a0b13815f582c661d2388ffcabc2f1ea82f471783c400f765f2ec6c81065f6a'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.7_armv7l/libdca-0.0.7-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Bash < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/bash/bash-5.2.tar.gz'
   source_sha256 'a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash/5.2-2_armv7l/bash-5.2-2-chromeos-armv7l.tar.zst',

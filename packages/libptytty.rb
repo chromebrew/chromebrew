@@ -8,6 +8,7 @@ class Libptytty < Package
   compatibility 'all'
   source_url 'http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz'
   source_sha256 '8033ed3aadf28759660d4f11f2d7b030acf2a6890cb0f7926fb0cfa6739d31f7'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libptytty/2.0_armv7l/libptytty-2.0-chromeos-armv7l.tar.zst',

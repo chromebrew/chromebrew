@@ -9,6 +9,7 @@ class Speedtest_cli < Package
   compatibility 'all'
   source_url 'https://github.com/sivel/speedtest-cli.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speedtest_cli/2.1.3-1_armv7l/speedtest_cli-2.1.3-1-chromeos-armv7l.tpxz',

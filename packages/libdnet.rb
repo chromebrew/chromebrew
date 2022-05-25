@@ -8,6 +8,7 @@ class Libdnet < Package
   compatibility 'all'
   source_url 'https://github.com/ofalk/libdnet/archive/libdnet-1.16.3.tar.gz'
   source_sha256 '83171a9f6e96d7a5047d6537fce4c376bdf6d867f8d49cf6ba434a0f3f7b45c1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdnet/1.16.3_armv7l/libdnet-1.16.3-chromeos-armv7l.tar.zst',

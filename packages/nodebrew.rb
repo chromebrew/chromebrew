@@ -9,6 +9,7 @@ class Nodebrew < Package
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
   source_sha256 '6d72e39c8acc5b22f4fc7a1734cd3bb8d00b61119ab7fea6cde376810ff2005e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_armv7l/nodebrew-1.2.0-1-chromeos-armv7l.tar.zst',

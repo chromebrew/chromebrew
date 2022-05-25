@@ -8,6 +8,7 @@ class Aview < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/aa-project/aview/1.3.0rc1/aview-1.3.0rc1.tar.gz'
   source_sha256 '42d61c4194e8b9b69a881fdde698c83cb27d7eda59e08b300e73aaa34474ec99'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aview/1.3.0rc1_armv7l/aview-1.3.0rc1-chromeos-armv7l.tar.xz',

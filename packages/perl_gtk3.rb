@@ -8,6 +8,7 @@ class Perl_gtk3 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gtk3-0.038.tar.gz'
   source_sha256 '70dc4bf2aa74981c79e15fd298d998e05a92eba4811f1ad5c9f1f4de37737acc'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gtk3/0.038-perl5.38_armv7l/perl_gtk3-0.038-perl5.38-chromeos-armv7l.tar.zst',

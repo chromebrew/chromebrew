@@ -8,6 +8,7 @@ class Dropbox_uploader < Package
   license 'GPL-3'
   source_url 'https://github.com/andreafabrizi/Dropbox-Uploader/archive/1.0.tar.gz'
   source_sha256 '8c9be8bd38fb3b0f0b4d1a863132ad38c8299ac62ecfbd1e818addf32b48d84c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox_uploader/1.0_armv7l/dropbox_uploader-1.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Rsync < Package
   compatibility 'all'
   source_url 'https://rsync.samba.org/ftp/rsync/src/rsync-3.2.7.tar.gz'
   source_sha256 '4e7d9d3f6ed10878c58c5fb724a67dacf4b6aac7340b13e488fb2dc41346f2bb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.7_armv7l/rsync-3.2.7-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Collectl < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz'
   source_sha256 '2187264d974b36a653c8a4b028ac6eeab23e1885f8b2563a33f06358f39889f1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/collectl/4.3.1_armv7l/collectl-4.3.1-chromeos-armv7l.tar.xz',

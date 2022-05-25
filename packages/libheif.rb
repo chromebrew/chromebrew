@@ -8,6 +8,7 @@ class Libheif < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/strukturag/libheif.git'
   git_hashtag 'c679a764761ef4056bb43d2e514a607174b45bd6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2-c679a76_armv7l/libheif-1.16.2-c679a76-chromeos-armv7l.tar.zst',

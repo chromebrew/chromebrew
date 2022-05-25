@@ -8,6 +8,7 @@ class Dfc < Package
   compatibility 'all'
   source_url 'https://projects.gw-computing.net/attachments/download/615/dfc-3.1.1.tar.gz'
   source_sha256 '962466e77407dd5be715a41ffc50a54fce758a78831546f03a6bb282e8692e54'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dfc/3.1.1_armv7l/dfc-3.1.1-chromeos-armv7l.tar.xz',

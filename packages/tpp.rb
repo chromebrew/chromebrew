@@ -8,6 +8,7 @@ class Tpp < Package
   compatibility 'all'
   source_url 'http://www.ngolde.de/download/tpp-1.3.1.tar.gz'
   source_sha256 '68e3de94fbfb62bd91a6d635581bcf8671a306fffe615d00294d388ad91e1b5f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tpp/1.3.1_armv7l/tpp-1.3.1-chromeos-armv7l.tar.xz',

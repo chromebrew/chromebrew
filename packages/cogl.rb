@@ -8,6 +8,7 @@ class Cogl < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/cogl/1.22/cogl-1.22.8.tar.xz'
   source_sha256 'a805b2b019184710ff53d0496f9f0ce6dcca420c141a0f4f6fcc02131581d759'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cogl/1.22.8_armv7l/cogl-1.22.8-chromeos-armv7l.tar.xz',

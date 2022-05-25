@@ -8,6 +8,7 @@ class Gnuchess < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/chess/gnuchess-6.2.9.tar.gz'
   source_sha256 'ddfcc20bdd756900a9ab6c42c7daf90a2893bf7f19ce347420ce36baebc41890'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnuchess/6.2.9_armv7l/gnuchess-6.2.9-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Wol < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/ahh/wol-0.7.1.tar.gz'
   source_sha256 'e0086c9b9811df2bdf763ec9016dfb1bcb7dba9fa6d7858725b0929069a12622'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wol/0.7.1-1_armv7l/wol-0.7.1-1-chromeos-armv7l.tar.zst',

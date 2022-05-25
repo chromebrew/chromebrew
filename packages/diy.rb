@@ -8,6 +8,7 @@ class Diy < Package
   compatibility 'all'
   source_url 'https://github.com/diatomic/diy/archive/3.5.0.tar.gz'
   source_sha256 'b3b5490441d521b6e9b33471c782948194bf95c7c3df3eb97bc5cf4530b91576'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/diy/3.5.0_armv7l/diy-3.5.0-chromeos-armv7l.tar.xz',

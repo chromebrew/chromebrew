@@ -8,6 +8,7 @@ class Xscreensaver < Package
   compatibility 'all'
   source_url 'https://www.jwz.org/xscreensaver/xscreensaver-5.44.tar.gz'
   source_sha256 '73d8089cfc7d7363b5dac99b5b01dffb3429d0a855e6af16ce9a4b7777017b95'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xscreensaver/5.44_armv7l/xscreensaver-5.44-chromeos-armv7l.tar.xz',

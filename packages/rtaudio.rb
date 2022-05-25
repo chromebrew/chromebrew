@@ -8,6 +8,7 @@ class Rtaudio < Package
   compatibility 'all'
   source_url 'http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.1.0.tar.gz'
   source_sha256 'ff138b2b6ed2b700b04b406be718df213052d4c952190280cf4e2fab4b61fe09'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtaudio/5.1.0_armv7l/rtaudio-5.1.0-chromeos-armv7l.tar.xz',

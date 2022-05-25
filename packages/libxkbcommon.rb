@@ -8,6 +8,7 @@ class Libxkbcommon < Package
   compatibility 'all'
   source_url "https://xkbcommon.org/download/libxkbcommon-#{version}.tar.xz"
   source_sha256 'a2202f851e072b84e64a395212cbd976ee18a8ee602008b0bad02a13247dbc52'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxkbcommon/1.0.3_armv7l/libxkbcommon-1.0.3-chromeos-armv7l.tar.xz',

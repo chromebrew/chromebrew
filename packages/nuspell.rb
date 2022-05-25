@@ -8,6 +8,7 @@ class Nuspell < CMake
   compatibility 'all'
   source_url 'https://github.com/nuspell/nuspell.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nuspell/5.1.3_armv7l/nuspell-5.1.3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Gexiv2 < Package
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gexiv2/#{version.rpartition('.')[0]}/gexiv2-#{version}.tar.xz"
   source_sha256 'e58279a6ff20b6f64fa499615da5e9b57cf65ba7850b72fafdf17221a9d6d69e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gexiv2/0.14.0_armv7l/gexiv2-0.14.0-chromeos-armv7l.tar.zst',

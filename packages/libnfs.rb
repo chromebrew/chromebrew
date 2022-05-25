@@ -9,6 +9,7 @@ class Libnfs < Package
   license 'GPL-3, LGPL-2.1 and BSD'
   source_url 'https://github.com/sahlberg/libnfs.git'
   git_hashtag "libnfs-#{@_ver}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0-1_armv7l/libnfs-4.0.0-1-chromeos-armv7l.tpxz',

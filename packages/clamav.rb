@@ -8,6 +8,7 @@ class Clamav < Package
   compatibility 'all'
   source_url 'https://www.clamav.net/downloads/production/clamav-1.1.1.tar.gz'
   source_sha256 'a26699704bb4ddf2684e4adc1f46d5f3de9a9a8959f147970f969cc32b2f0d9e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.2.1_armv7l/clamav-1.2.1-chromeos-armv7l.tar.zst',

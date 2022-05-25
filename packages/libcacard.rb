@@ -11,6 +11,7 @@ class Libcacard < Package
   compatibility 'all'
   source_url 'https://www.spice-space.org/download/libcacard/libcacard-2.7.0.tar.xz'
   source_sha256 '16b1a0847d5f9d2290e0785eca40f2e49d1ed80814bfc758c05c76b3c89cdb6f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcacard/2.7.0-2_armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',

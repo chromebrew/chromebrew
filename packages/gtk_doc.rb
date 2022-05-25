@@ -8,6 +8,7 @@ class Gtk_doc < Package
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk-doc/1.33/gtk-doc-1.33.2.tar.xz'
   source_sha256 'cc1b709a20eb030a278a1f9842a362e00402b7f834ae1df4c1998a723152bf43'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_armv7l/gtk_doc-1.33.2-1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Hicolor_icon_theme < Package
   compatibility 'all'
   source_url 'https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz'
   source_sha256 '317484352271d18cbbcfac3868eab798d67fff1b8402e740baa6ff41d588a9d8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hicolor_icon_theme/0.17_armv7l/hicolor_icon_theme-0.17-chromeos-armv7l.tar.xz',

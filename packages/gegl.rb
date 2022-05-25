@@ -8,6 +8,7 @@ class Gegl < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.46.tar.xz'
   source_sha256 'd0b3b2481bc8774c5f3d0a487611910166d18eef823a859fb91e781ab7b1e892'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46_armv7l/gegl-0.4.46-chromeos-armv7l.tar.zst',

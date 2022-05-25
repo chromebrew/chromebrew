@@ -8,6 +8,7 @@ class Fribidi < Package
   compatibility 'all'
   source_url 'https://github.com/fribidi/fribidi/archive/v1.0.12.tar.gz'
   source_sha256 '2e9e859876571f03567ac91e5ed3b5308791f31cda083408c2b60fa1fe00a39d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fribidi/1.0.12_armv7l/fribidi-1.0.12-chromeos-armv7l.tar.zst',

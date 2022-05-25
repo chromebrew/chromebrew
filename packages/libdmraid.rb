@@ -8,6 +8,7 @@ class Libdmraid < Package
   compatibility 'all'
   source_url 'http://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-1.0.0.rc16-3.tar.bz2'
   source_sha256 '93421bd169d71ff5e7d2db95b62b030bfa205a12010b6468dcdef80337d6fbd8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdmraid/1.0.0.rc16-3_armv7l/libdmraid-1.0.0.rc16-3-chromeos-armv7l.tar.zst',

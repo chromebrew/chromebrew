@@ -11,6 +11,7 @@ class Fcft < Package
   compatibility 'all'
   source_url 'https://codeberg.org/dnkl/fcft.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fcft/2.5.1_armv7l/fcft-2.5.1-chromeos-armv7l.tpxz',

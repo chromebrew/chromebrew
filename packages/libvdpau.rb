@@ -8,6 +8,7 @@ class Libvdpau < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.3/libvdpau-1.3.tar.bz2'
   source_sha256 'b5a52eeac9417edbc396f26c40591ba5df0cd18285f68d84614ef8f06196e50e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvdpau/1.3_armv7l/libvdpau-1.3-chromeos-armv7l.tar.xz',

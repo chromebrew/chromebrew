@@ -8,6 +8,7 @@ class Swi_prolog < Package
   compatibility 'i686,x86_64'
   source_url "https://www.swi-prolog.org/download/stable/src/swipl-#{version}.tar.gz"
   source_sha256 'f4bcc78437f9080ab089762e9e6afa7071df7f584c14999b92b9a90a4efbd7d8'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swi_prolog/8.2.4_i686/swi_prolog-8.2.4-chromeos-i686.tar.xz',

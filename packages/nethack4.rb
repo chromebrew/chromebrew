@@ -8,6 +8,7 @@ class Nethack4 < Package
   compatibility 'i686,x86_64'
   source_url 'http://nethack4.org/media/releases/nethack4-4.3-beta2.tar.gz'
   source_sha256 'b143a86b5e1baf55c663ae09c2663b169d265e95ac43154982296a1887d05f15'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethack4/4.3.0-beta2-1_i686/nethack4-4.3.0-beta2-1-chromeos-i686.tar.xz',

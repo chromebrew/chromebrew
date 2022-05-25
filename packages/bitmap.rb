@@ -8,6 +8,7 @@ class Bitmap < Package
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/bitmap-1.0.9.tar.bz2'
   source_sha256 'e0f3afad5272d796f54c33fa1b5bd1fb3f62843a54b28c87196d06a35123e5f5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bitmap/1.0.9_armv7l/bitmap-1.0.9-chromeos-armv7l.tar.xz',

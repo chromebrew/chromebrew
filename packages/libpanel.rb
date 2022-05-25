@@ -11,6 +11,7 @@ class Libpanel < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libpanel/-/archive/1.0.1/libpanel-1.0.1.tar.bz2'
   source_sha256 '67cc028dd235f41a87d3c2514e2f6c2de56db7eda1331d228b13e6299223948c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpanel/1.0.1_armv7l/libpanel-1.0.1-chromeos-armv7l.tar.zst',

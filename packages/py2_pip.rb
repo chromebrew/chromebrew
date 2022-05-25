@@ -8,6 +8,7 @@ class Py2_pip < Package
   compatibility 'all'
   source_url 'https://github.com/pypa/pip.git'
   git_hashtag version
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_pip/20.3.4_armv7l/py2_pip-20.3.4-chromeos-armv7l.tar.xzz',

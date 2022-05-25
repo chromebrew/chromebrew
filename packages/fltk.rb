@@ -8,6 +8,7 @@ class Fltk < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.fltk.org/pub/fltk/1.3.9/fltk-1.3.9-source.tar.bz2'
   source_sha256 '103441134915402808fd45424d4061778609437e804334434e946cfd26b196c2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fltk/1.3.9_armv7l/fltk-1.3.9-chromeos-armv7l.tar.zst',

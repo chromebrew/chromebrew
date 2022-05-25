@@ -8,6 +8,7 @@ class Cdargs < Package
   compatibility 'all'
   source_url 'https://www.skamphausen.de/downloads/cdargs/cdargs-1.35.tar.gz'
   source_sha256 'ee35a8887c2379c9664b277eaed9b353887d89480d5749c9ad957adf9c57ed2c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdargs/1.35_armv7l/cdargs-1.35-chromeos-armv7l.tar.xz',

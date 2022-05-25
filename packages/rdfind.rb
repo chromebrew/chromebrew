@@ -11,6 +11,7 @@ class Rdfind < Package
   compatibility 'all'
   source_url 'https://github.com/pauldreik/rdfind.git'
   git_hashtag "releases/#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rdfind/1.5.0_armv7l/rdfind-1.5.0-chromeos-armv7l.tpxz',

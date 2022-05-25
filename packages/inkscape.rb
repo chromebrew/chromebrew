@@ -8,6 +8,7 @@ class Inkscape < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://inkscape.org/gallery/item/44467/inkscape-1.3.1.tar.xz'
   source_sha256 '421e0035fe5b3b054a0865dc8235be3f9e6e2dea54190d926b880a4ce05b00d8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_armv7l/inkscape-1.3.1-chromeos-armv7l.tar.zst',

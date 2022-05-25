@@ -8,6 +8,7 @@ class Openexr < CMake
   compatibility 'all'
   source_url 'https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.2.1.tar.gz'
   source_sha256 '61e175aa2203399fb3c8c2288752fbea3c2637680d50b6e306ea5f8ffdd46a9b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_armv7l/openexr-3.2.1-chromeos-armv7l.tar.zst',

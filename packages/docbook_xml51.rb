@@ -9,6 +9,7 @@ class Docbook_xml51 < Package
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-v#{@_ver}-os.zip"
   source_sha256 'b3f3413654003c1e773360d7fc60ebb8abd0e8c9af8e7d6c4b55f124f34d1e7f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml51/5.1-3_armv7l/docbook_xml51-5.1-3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Fftw < Package
   compatibility 'all'
   source_url "http://www.fftw.org/fftw-#{version}.tar.gz"
   source_sha256 'bf2c7ce40b04ae811af714deb512510cc2c17b9ab9d6ddcf49fe4487eea7af3d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fftw/3.3.9_armv7l/fftw-3.3.9-chromeos-armv7l.tar.xz',

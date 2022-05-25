@@ -8,6 +8,7 @@ class Libbsd < Package
   compatibility 'all'
   source_url 'https://git.hadrons.org/git/libbsd.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.11.7_armv7l/libbsd-0.11.7-chromeos-armv7l.tar.zst',

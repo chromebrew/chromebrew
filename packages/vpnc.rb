@@ -8,6 +8,7 @@ class Vpnc < Package
   compatibility 'all'
   source_url 'https://www.unix-ag.uni-kl.de/~massar/vpnc/vpnc-0.5.3.tar.gz'
   source_sha256 '46cea3bd02f207c62c7c6f2f22133382602baeda1dc320747809e94881414884'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vpnc/0.5.3_armv7l/vpnc-0.5.3-chromeos-armv7l.tar.xz',

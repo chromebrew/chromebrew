@@ -8,6 +8,7 @@ class Libxft < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.7.tar.xz'
   source_sha256 '79f0b37c45007381c371a790c2754644ad955166dbf2a48e3625032e9bdd4f71'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.7_armv7l/libxft-2.3.7-chromeos-armv7l.tar.zst',

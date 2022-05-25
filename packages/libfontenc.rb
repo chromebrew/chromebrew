@@ -8,6 +8,7 @@ class Libfontenc < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libfontenc-1.1.7.tar.xz'
   source_sha256 'c0d36991faee06551ddbaf5d99266e97becdc05edfae87a833c3ff7bf73cfec2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.7_armv7l/libfontenc-1.1.7-chromeos-armv7l.tar.zst',

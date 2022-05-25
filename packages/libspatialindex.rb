@@ -8,6 +8,7 @@ class Libspatialindex < Package
   compatibility 'all'
   source_url 'https://github.com/libspatialindex/libspatialindex/archive/1.9.3.tar.gz'
   source_sha256 '7b44340a3edc55c11abfc453bb60f148b29f569cef9e1148583e76132e9c7379'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspatialindex/1.9.3_armv7l/libspatialindex-1.9.3-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libcheck < Package
   compatibility 'all'
   source_url 'https://github.com/libcheck/check/releases/download/0.13.0/check-0.13.0.tar.gz'
   source_sha256 'c4336b31447acc7e3266854f73ec188cdb15554d0edd44739631da174a569909'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcheck/0.13.0_armv7l/libcheck-0.13.0-chromeos-armv7l.tar.xz',

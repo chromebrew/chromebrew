@@ -8,6 +8,7 @@ class Perl_http_date < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Date-6.05.tar.gz'
   source_sha256 '365d6294dfbd37ebc51def8b65b81eb79b3934ecbc95a2ec2d4d827efe6a922b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_date/6.05-perl5.38_armv7l/perl_http_date-6.05-perl5.38-chromeos-armv7l.tar.zst',

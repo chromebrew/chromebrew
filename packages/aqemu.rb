@@ -8,6 +8,7 @@ class Aqemu < Package
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://downloads.sourceforge.net/project/aqemu/aqemu/0.9.2/aqemu-0.9.2.tar.gz'
   source_sha256 'e3d54de00ebdce3754f97f7e0e7cce8cebb588e8ce6bc249401cc909281b08de'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aqemu/0.9.2_armv7l/aqemu-0.9.2-chromeos-armv7l.tar.xz',

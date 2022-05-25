@@ -8,6 +8,7 @@ class Words < Package
   compatibility 'all'
   source_url 'https://github.com/saltedcoffii/words/releases/download/1.0.0/words-1.0.0.txz'
   source_sha256 '61168093e1ff4f88d838e09e40530cc0c192672ad0dbc01806534e9def296c3b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/words/1.0.0_armv7l/words-1.0.0-chromeos-armv7l.tar.xz',

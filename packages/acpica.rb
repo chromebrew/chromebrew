@@ -8,6 +8,7 @@ class Acpica < Package
   compatibility 'all'
   source_url 'https://acpica.org/sites/acpica/files/acpica-unix-20200925.tar.gz'
   source_sha256 'd44388e21e3d2e47c6d39e9c897935d3f775f04fec76271dcba072c74f834589'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/acpica/20200925_armv7l/acpica-20200925-chromeos-armv7l.tar.xz',

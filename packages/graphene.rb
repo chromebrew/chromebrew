@@ -8,6 +8,7 @@ class Graphene < Package
   compatibility 'all'
   source_url 'https://github.com/ebassi/graphene.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphene/1.10.8_armv7l/graphene-1.10.8-chromeos-armv7l.tar.zst',

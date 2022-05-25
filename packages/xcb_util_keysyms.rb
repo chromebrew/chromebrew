@@ -8,6 +8,7 @@ class Xcb_util_keysyms < Package
   license 'MIT-with-advertising'
   source_url 'https://xcb.freedesktop.org/dist/xcb-util-keysyms-0.4.0.tar.bz2'
   source_sha256 '0ef8490ff1dede52b7de533158547f8b454b241aa3e4dcca369507f66f216dd9'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_keysyms/0.4.0-1_armv7l/xcb_util_keysyms-0.4.0-1-chromeos-armv7l.tpxz',

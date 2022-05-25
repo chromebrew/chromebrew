@@ -8,6 +8,7 @@ class Ffmpegthumbnailer < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/dirkvdb/ffmpegthumbnailer.git'
   git_hashtag 'e0bf01d97e0261219b06d1e560e923354949b93e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d-1_armv7l/ffmpegthumbnailer-2.2.3-e0bf01d-1-chromeos-armv7l.tar.zst',

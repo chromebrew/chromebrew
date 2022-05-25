@@ -11,6 +11,7 @@ class Ucl < Package
   compatibility 'all'
   source_url 'https://www.oberhumer.com/opensource/ucl/download/ucl-1.03.tar.gz'
   source_sha256 'b865299ffd45d73412293369c9754b07637680e5c826915f097577cd27350348'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ucl/1.03_armv7l/ucl-1.03-chromeos-armv7l.tpxz',

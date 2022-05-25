@@ -8,6 +8,7 @@ class Perl_io_file < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.51.tar.gz'
   source_sha256 '5493ea55998728cd2b7ecb8234c58fb5d5df27098d0f07addca22444d7616ce0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.38.2_armv7l/perl_io_file-1.51-perl5.38.2-chromeos-armv7l.tar.zst',

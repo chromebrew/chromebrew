@@ -11,6 +11,7 @@ class Libwpd < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/sourceforge/libwpd/libwpd-0.10.3.tar.xz'
   source_sha256 '2465b0b662fdc5d4e3bebcdc9a79027713fb629ca2bff04a3c9251fdec42dd09'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpd/0.10.3_armv7l/libwpd-0.10.3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Alsa_utils < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/alsa-project/alsa-utils/archive/v#{version}.tar.gz"
   source_sha256 'fde581549326489e9acb2b2d9ddcb146ee85a1698b817f7f4891f49c9f6fc11f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.9_armv7l/alsa_utils-1.2.9-chromeos-armv7l.tar.zst',

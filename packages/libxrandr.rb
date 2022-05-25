@@ -9,6 +9,7 @@ class Libxrandr < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrandr.git'
   git_hashtag "libXrandr-#{@_ver}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-2_armv7l/libxrandr-1.5.2-2-chromeos-armv7l.tar.zst',

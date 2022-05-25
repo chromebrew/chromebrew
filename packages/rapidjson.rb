@@ -8,6 +8,7 @@ class Rapidjson < Package
   compatibility 'all'
   source_url 'https://github.com/Tencent/rapidjson.git'
   git_hashtag '949c771b03de448bdedea80c44a4a5f65284bfeb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rapidjson/949c771_armv7l/rapidjson-949c771-chromeos-armv7l.tar.zst',

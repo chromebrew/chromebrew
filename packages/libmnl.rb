@@ -8,6 +8,7 @@ class Libmnl < Package
   compatibility 'all'
   source_url 'https://www.netfilter.org/projects/libmnl/files/libmnl-1.0.5.tar.bz2'
   source_sha256 '274b9b919ef3152bfb3da3a13c950dd60d6e2bcd54230ffeca298d03b40d0525'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmnl/1.0.5_armv7l/libmnl-1.0.5-chromeos-armv7l.tar.zst',

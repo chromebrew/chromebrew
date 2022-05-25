@@ -8,6 +8,7 @@ class Libmediainfo < Package
   compatibility 'all'
   source_url 'https://mediaarea.net/download/binary/libmediainfo0/23.11/MediaInfo_DLL_23.11_GNU_FromSource.tar.xz'
   source_sha256 '7ffa6728840dd022af261b665dbf0c3cd8419b8001abcdc507801944bcaaa7a6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmediainfo/23.11_armv7l/libmediainfo-23.11-chromeos-armv7l.tar.zst',

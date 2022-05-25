@@ -8,6 +8,7 @@ class Pixman < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pixman/pixman.git'
   git_hashtag "pixman-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixman/0.42.2_armv7l/pixman-0.42.2-chromeos-armv7l.tar.zst',

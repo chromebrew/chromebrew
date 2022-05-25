@@ -8,6 +8,7 @@ class Motif < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/motif/Motif%202.3.8%20Source%20Code/motif-2.3.8.tar.gz'
   source_sha256 '859b723666eeac7df018209d66045c9853b50b4218cecadb794e2359619ebce7'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/motif/2.3.8-1_armv7l/motif-2.3.8-1-chromeos-armv7l.tar.zst',

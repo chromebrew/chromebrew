@@ -11,6 +11,7 @@ class Peg < Package
   compatibility 'all'
   source_url 'http://piumarta.com/software/peg/peg-0.1.18.tar.gz'
   source_sha256 '20193bdd673fc7487a38937e297fff08aa73751b633a086ac28c3b34890f9084'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peg/0.1.18-2_armv7l/peg-0.1.18-2-chromeos-armv7l.tar.xz',

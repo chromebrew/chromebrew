@@ -8,6 +8,7 @@ class Openjpeg < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/uclouvain/openjpeg/archive/v2.5.0.tar.gz'
   source_sha256 '0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openjpeg/2.5.0_armv7l/openjpeg-2.5.0-chromeos-armv7l.tar.zst',

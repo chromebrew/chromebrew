@@ -8,6 +8,7 @@ class Perl_net_http < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.22.tar.gz'
   source_sha256 '62faf9a5b84235443fe18f780e69cecf057dea3de271d7d8a0ba72724458a1a2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_http/6.22-perl5.38_armv7l/perl_net_http-6.22-perl5.38-chromeos-armv7l.tar.zst',

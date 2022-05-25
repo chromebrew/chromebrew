@@ -12,6 +12,7 @@ class Tevent < Package
   compatibility 'all'
   source_url "https://samba.org/ftp/tevent/tevent-#{@_ver}.tar.gz"
   source_sha256 '662a9f277281bcf506b6bc0a0baa03e44a62229516ee34bcc703a0b82aa46905'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.15.0-py3.12_armv7l/tevent-0.15.0-py3.12-chromeos-armv7l.tar.zst',

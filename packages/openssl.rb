@@ -8,6 +8,7 @@ class Openssl < Package
   compatibility 'all'
   source_url 'https://www.openssl.org/source/openssl-3.0.12.tar.gz'
   source_sha256 'f93c9e8edde5e9166119de31755fc87b4aa34863662f67ddfcba14d0b6b69b61'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.12_armv7l/openssl-3.0.12-chromeos-armv7l.tar.zst',

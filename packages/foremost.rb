@@ -8,6 +8,7 @@ class Foremost < Package
   compatibility 'all'
   source_url 'http://foremost.sourceforge.net/pkg/foremost-1.5.7.tar.gz'
   source_sha256 '502054ef212e3d90b292e99c7f7ac91f89f024720cd5a7e7680c3d1901ef5f34'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/foremost/1.5.7_armv7l/foremost-1.5.7-chromeos-armv7l.tar.xz',

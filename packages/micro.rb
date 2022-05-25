@@ -6,6 +6,7 @@ class Micro < Package
   version '1.4.1'
   license 'MIT'
   compatibility 'all'
+  binary_compression 'tar.xz'
 
   case ARCH
   when 'aarch64', 'armv7l'

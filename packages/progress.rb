@@ -8,6 +8,7 @@ class Progress < Package
   compatibility 'all'
   source_url 'https://github.com/Xfennec/progress/archive/v0.13.1.tar.gz'
   source_sha256 '064c95e8b93893dbf4b4b8152290cbb3b0c005eda0cae500353561048c9939a5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/progress/0.13.1_armv7l/progress-0.13.1-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Ncurses < Autotools
   compatibility 'all'
   source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6_4_20231125_armv7l/ncurses-6_4_20231125-chromeos-armv7l.tar.zst',

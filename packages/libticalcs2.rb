@@ -8,6 +8,7 @@ class Libticalcs2 < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libticalcs2-1.1.9.tar.bz2'
   source_sha256 '76780788bc309b647f97513d38dd5f01611c335a72855e0bd10c7bdbf2e38921'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libticalcs2/1.1.9_armv7l/libticalcs2-1.1.9-chromeos-armv7l.tar.xz',

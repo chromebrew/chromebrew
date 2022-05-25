@@ -8,6 +8,7 @@ class Libwmf < Package
   compatibility 'all'
   source_url 'https://github.com/caolanm/libwmf.git'
   git_hashtag 'ad365e1df356d6371daabf426bd39a5f9721160a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_armv7l/libwmf-0.2.12-ad365e1-chromeos-armv7l.tar.zst',

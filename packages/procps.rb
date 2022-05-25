@@ -8,6 +8,7 @@ class Procps < Package
   compatibility 'all'
   source_url 'https://gitlab.com/procps-ng/procps/-/archive/v3.3.16/procps-v3.3.16.tar.bz2'
   source_sha256 '720caf307ab5dfe6d1cf4fc3e6ce786d749c69baa088627dbe1b01828f2528b1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/procps/3.3.16_armv7l/procps-3.3.16-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Onevpl < Package
   compatibility 'x86_64'
   source_url 'https://github.com/oneapi-src/oneVPL/archive/refs/tags/v2023.1.0.tar.gz'
   source_sha256 '0a1991278c64849f471e4b307a7c01f465a308674f359054886c32352e887b60'
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/onevpl/2023.1.0_x86_64/onevpl-2023.1.0-chromeos-x86_64.tar.zst'

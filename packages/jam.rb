@@ -8,6 +8,7 @@ class Jam < Package
   compatibility 'all'
   source_url 'https://swarm.workshop.perforce.com/downloads/guest/perforce_software/jam/jam-2.6.zip'
   source_sha256 '7c510be24dc9d0912886c4364dc17a013e042408386f6b937e30bd9928d5223c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jam/2.6_armv7l/jam-2.6-chromeos-armv7l.tar.xz',

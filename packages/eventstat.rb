@@ -8,6 +8,7 @@ class Eventstat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/eventstat/eventstat-0.04.07.tar.gz'
   source_sha256 '492f9ff8b64f1e2d4d4d67607331b87e4bcf95a4acff60d674ff2a391fa9103d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eventstat/0.04.07_armv7l/eventstat-0.04.07-chromeos-armv7l.tar.xz',

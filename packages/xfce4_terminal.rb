@@ -8,6 +8,7 @@ class Xfce4_terminal < Package
   compatibility 'all'
   source_url "https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-#{version}.tar.bz2"
   source_sha256 '7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_terminal/0.8.10_armv7l/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',

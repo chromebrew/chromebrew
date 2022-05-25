@@ -8,6 +8,7 @@ class Fish < CMake
   compatibility 'all'
   source_url 'https://github.com/fish-shell/fish-shell.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_armv7l/fish-3.6.1-chromeos-armv7l.tar.zst',

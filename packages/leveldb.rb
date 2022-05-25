@@ -8,6 +8,7 @@ class Leveldb < Package
   compatibility 'all'
   source_url 'https://github.com/google/leveldb/archive/1.22.tar.gz'
   source_sha256 '55423cac9e3306f4a9502c738a001e4a339d1a38ffbee7572d4a07d5d63949b2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leveldb/1.22_armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',

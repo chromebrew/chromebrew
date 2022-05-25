@@ -8,6 +8,7 @@ class Giblib < Package
   compatibility 'all'
   source_url 'https://deb.debian.org/debian/pool/main/g/giblib/giblib_1.2.4.orig.tar.gz'
   source_sha256 'e437756ce3ded019946fb3d979991cda7604bc345dbb1338b17655caff65a3d3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giblib/1.2.4_armv7l/giblib-1.2.4-chromeos-armv7l.tar.xz',

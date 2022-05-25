@@ -8,6 +8,7 @@ class Cfitsio < Autotools
   compatibility 'all'
   source_url 'https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.3.0.tar.gz'
   source_sha256 '734ab0198714fe43eab94a67d6987085bde5573e6babde4d05799a8d04ebb04c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cfitsio/4.3.0_armv7l/cfitsio-4.3.0-chromeos-armv7l.tar.zst',

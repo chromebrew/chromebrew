@@ -8,6 +8,7 @@ class Libxrender < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrender.git'
   git_hashtag "libXrender-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.11_armv7l/libxrender-0.9.11-chromeos-armv7l.tar.zst',

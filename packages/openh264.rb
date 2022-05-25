@@ -11,6 +11,7 @@ class Openh264 < Package
   compatibility 'all'
   source_url 'https://github.com/cisco/openh264/archive/v2.3.1/openh264-2.3.1.tar.gz'
   source_sha256 '453afa66dacb560bc5fd0468aabee90c483741571bca820a39a1c07f0362dc32'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openh264/2.3.1_armv7l/openh264-2.3.1-chromeos-armv7l.tar.zst',

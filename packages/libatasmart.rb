@@ -9,6 +9,7 @@ class Libatasmart < Package
   source_url 'http://git.0pointer.net/libatasmart.git'
   git_hashtag "v#{version}"
   git_branch 'master'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatasmart/0.19_armv7l/libatasmart-0.19-chromeos-armv7l.tar.zst',

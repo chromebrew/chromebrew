@@ -8,6 +8,7 @@ class Pcre2 < Package
   compatibility 'all'
   source_url 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz'
   source_sha256 'c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre2/10.42_armv7l/pcre2-10.42-chromeos-armv7l.tar.zst',

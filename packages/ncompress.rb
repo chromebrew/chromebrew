@@ -11,6 +11,7 @@ class Ncompress < Package
   compatibility 'all'
   source_url 'https://github.com/vapier/ncompress/archive/v5.0.tar.gz'
   source_sha256 '96ec931d06ab827fccad377839bfb91955274568392ddecf809e443443aead46'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncompress/5.0_armv7l/ncompress-5.0-chromeos-armv7l.tar.zst',

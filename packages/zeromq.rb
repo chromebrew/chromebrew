@@ -8,6 +8,7 @@ class Zeromq < Package
   compatibility 'all'
   source_url 'https://github.com/zeromq/libzmq/releases/download/v4.3.2/zeromq-4.3.2.tar.gz'
   source_sha256 'ebd7b5c830d6428956b67a0454a7f8cbed1de74b3b01e5c33c5378e22740f763'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zeromq/4.3.2_armv7l/zeromq-4.3.2-chromeos-armv7l.tar.xz',

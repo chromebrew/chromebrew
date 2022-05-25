@@ -8,6 +8,7 @@ class Gimp < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.16.tar.xz'
   source_sha256 '6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_armv7l/gimp-2.99.16-chromeos-armv7l.tar.zst',

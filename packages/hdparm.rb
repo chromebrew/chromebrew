@@ -8,6 +8,7 @@ class Hdparm < Package
   compatibility 'all'
   source_url 'http://www.ibiblio.org/pub/Linux/system/hardware/hdparm-9.32.tar.gz'
   source_sha256 '90d80632695759ec12c8a9da94471f04bc88d5b73d34fc6a370775b534d09319'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdparm/9.32_armv7l/hdparm-9.32-chromeos-armv7l.tar.xz',

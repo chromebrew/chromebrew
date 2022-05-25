@@ -8,6 +8,7 @@ class Perl_xml_sax < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz'
   source_sha256 '4506c387043aa6a77b455f00f57409f3720aa7e553495ab2535263b4ed1ea12a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax/1.02-perl5.38_armv7l/perl_xml_sax-1.02-perl5.38-chromeos-armv7l.tar.zst',

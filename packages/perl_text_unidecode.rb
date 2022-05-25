@@ -8,6 +8,7 @@ class Perl_text_unidecode < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz'
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_armv7l/perl_text_unidecode-1.30-perl-5.36-chromeos-armv7l.tar.zst',

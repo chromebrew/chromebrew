@@ -8,6 +8,7 @@ class Gnome_online_accounts < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/archive/#{version}/gnome-online-accounts-#{version}.tar.bz2"
   source_sha256 '89e27c886c0266b8c84a56dbb0fb0baefa704dd4d0ec47dd154a26590554adc9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',

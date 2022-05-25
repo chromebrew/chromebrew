@@ -8,6 +8,7 @@ class Sassc < Package
   compatibility 'all'
   source_url 'https://github.com/sass/sassc.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.2_armv7l/sassc-3.6.2-chromeos-armv7l.tar.zst',

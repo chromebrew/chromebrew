@@ -8,6 +8,7 @@ class Clutter < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/clutter/1.26/clutter-1.26.4.tar.xz'
   source_sha256 '8b48fac159843f556d0a6be3dbfc6b083fc6d9c58a20a49a6b4919ab4263c4e6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clutter/1.26.4_armv7l/clutter-1.26.4-chromeos-armv7l.tar.xz',

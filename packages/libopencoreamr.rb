@@ -8,6 +8,7 @@ class Libopencoreamr < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.5.tar.gz'
   source_sha256 '2c006cb9d5f651bfb5e60156dbff6af3c9d35c7bbcc9015308c0aff1e14cd341'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libopencoreamr/0.1.5-0_armv7l/libopencoreamr-0.1.5-0-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Libjxl < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libjxl/libjxl.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjxl/0.8.2_armv7l/libjxl-0.8.2-chromeos-armv7l.tar.zst',

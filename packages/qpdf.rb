@@ -8,6 +8,7 @@ class Qpdf < Package
   compatibility 'all'
   source_url 'https://github.com/qpdf/qpdf/archive/refs/tags/v11.1.1.tar.gz'
   source_sha256 '785edab622a1bc7e25e1537ad2c325005d48c5c7957f7abedff405deb80fa59a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/11.1.1_armv7l/qpdf-11.1.1-chromeos-armv7l.tar.zst',

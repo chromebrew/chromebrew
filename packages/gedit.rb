@@ -8,6 +8,7 @@ class Gedit < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gedit.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gedit/40.1_armv7l/gedit-40.1-chromeos-armv7l.tpxz',

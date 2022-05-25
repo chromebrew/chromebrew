@@ -8,6 +8,7 @@ class Lnav < Autotools
   compatibility 'x86_64'
   source_url 'https://github.com/tstack/lnav.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lnav/0.11.2_x86_64/lnav-0.11.2-chromeos-x86_64.tar.zst'

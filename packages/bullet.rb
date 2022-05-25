@@ -8,6 +8,7 @@ class Bullet < Package
   compatibility 'all'
   source_url 'https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz'
   source_sha256 '621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bullet/2.89_armv7l/bullet-2.89-chromeos-armv7l.tar.xz',

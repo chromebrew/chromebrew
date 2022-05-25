@@ -8,6 +8,7 @@ class Scrollz < Package
   compatibility 'all'
   source_url 'http://www.scrollz.info/download/ScrollZ-2.3.tar.gz'
   source_sha256 '22535bcc54ad752107ab181775d90d9cf1b37648f500d627f428388a9d3710e6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrollz/2.3-1_armv7l/scrollz-2.3-1-chromeos-armv7l.tar.xz',

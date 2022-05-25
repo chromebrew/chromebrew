@@ -8,6 +8,7 @@ class Ant < Package
   compatibility 'all'
   source_url 'https://downloads.apache.org/ant/source/apache-ant-1.10.14-src.tar.xz'
   source_sha256 '9eea3cd8a793574a07fde2f87b203dc86339492baeb539367d5aa5be497aea24'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.14_armv7l/ant-1.10.14-chromeos-armv7l.tar.zst',

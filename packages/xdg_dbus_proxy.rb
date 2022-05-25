@@ -8,6 +8,7 @@ class Xdg_dbus_proxy < Package
   compatibility 'all'
   source_url 'https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz'
   source_sha256 '1749d6f9f46dcc9edc87725641cf56cf91dcad1b01707891ea0850c1000c520f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_dbus_proxy/0.1.2_armv7l/xdg_dbus_proxy-0.1.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Anagram < Package
   compatibility 'all'
   source_url 'https://www.fourmilab.ch/anagram/anagram-1.5.tar.gz'
   source_sha256 '62eca59318782e889118a0e130d454e1c397aedd99fc59b2194393bf0eff5348'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_armv7l/anagram-1.5-chromeos-armv7l.tar.zst',

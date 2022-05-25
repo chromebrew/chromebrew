@@ -8,6 +8,7 @@ class Libxslt < Package
   compatibility 'all'
   source_url 'http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz'
   source_sha256 '98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',

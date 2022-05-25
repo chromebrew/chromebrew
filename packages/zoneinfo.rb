@@ -8,6 +8,7 @@ class Zoneinfo < Package
   compatibility 'all'
   source_url 'https://data.iana.org/time-zones/releases/tzdb-2023c.tar.lz'
   source_sha256 '08fd090f1a16d522ae4e9247445056f4155002239e5be760b31ba0376d2e632c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zoneinfo/2023c_armv7l/zoneinfo-2023c-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Xterm < Package
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
   git_hashtag "xterm-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_armv7l/xterm-379-chromeos-armv7l.tar.zst',

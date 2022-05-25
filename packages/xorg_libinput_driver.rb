@@ -8,6 +8,7 @@ class Xorg_libinput_driver < Package
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-input-libinput-0.27.1.tar.bz2'
   source_sha256 'd4ad8dc5ad6f962a3f15f61ba9e9f8e37fa0b57eee9f484e2bd721d60ca72ee6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_libinput_driver/0.27.1_armv7l/xorg_libinput_driver-0.27.1-chromeos-armv7l.tar.xz',

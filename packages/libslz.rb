@@ -8,6 +8,7 @@ class Libslz < Package
   compatibility 'all'
   source_url 'http://git.1wt.eu/web?p=libslz.git;a=snapshot;h=f65544ca6a0d628b1db2d76069cc3be493543d38;sf=tbz2'
   source_sha256 '985cb527a4d1c7a93e9eb19d79f97513eb57cfe6e112b727976855c8144ffccc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libslz/1.1.0-2_armv7l/libslz-1.1.0-2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Rarian < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/rarian/0.8/rarian-0.8.1.tar.bz2'
   source_sha256 'aafe886d46e467eb3414e91fa9e42955bd4b618c3e19c42c773026b205a84577'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rarian/0.8.1_armv7l/rarian-0.8.1-chromeos-armv7l.tar.xz',

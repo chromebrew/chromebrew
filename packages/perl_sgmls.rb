@@ -8,6 +8,7 @@ class Perl_sgmls < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz'
   source_sha256 '550c9245291c8df2242f7e88f7921a0f636c7eec92c644418e7d89cfea70b2bd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_armv7l/perl_sgmls-1.1-perl-5.36-chromeos-armv7l.tar.zst',

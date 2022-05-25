@@ -8,6 +8,7 @@ class Manpages < Package
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-6.05.tar.xz'
   source_sha256 '89b1445cfe2e3de8bd139758c78f08b37813cff217b9fb1c8df55fd9407875a6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.05_armv7l/manpages-6.05-chromeos-armv7l.tar.zst',

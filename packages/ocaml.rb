@@ -8,6 +8,7 @@ class Ocaml < Package
   compatibility 'all'
   source_url 'https://caml.inria.fr/pub/distrib/ocaml-4.14/ocaml-4.14.1.tar.xz'
   source_sha256 'c127974d0242576cf47061b20aa9c86d17be0d6aa9687f6ec9835de67be7bb6f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ocaml/4.14.1_armv7l/ocaml-4.14.1-chromeos-armv7l.tar.zst',

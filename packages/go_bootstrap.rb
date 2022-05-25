@@ -8,6 +8,7 @@ class Go_bootstrap < Package
   compatibility 'all'
   source_url 'https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz'
   source_sha256 'f4ff5b5eb3a3cae1c993723f3eab519c5bae18866b5e5f96fe1102f0cb5c3e52'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_bootstrap/1.4-1_armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',

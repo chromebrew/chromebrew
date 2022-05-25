@@ -8,6 +8,7 @@ class Libxml2 < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.5/libxml2-v2.11.5.tar.bz2'
   source_sha256 'ab3699b697e917c7d5035e81d237a9bc895eb4bf70c0a2259c6d1f125c1b77b6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_armv7l/libxml2-2.11.5-chromeos-armv7l.tar.zst',

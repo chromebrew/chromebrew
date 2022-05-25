@@ -8,6 +8,7 @@ class Font_dec_misc < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-dec-misc-1.0.3.tar.bz2'
   source_sha256 'e19ddf8b5f8de914d81675358fdfe37762e9ce524887cc983adef34f2850ff7b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_dec_misc/1.0.3_armv7l/font_dec_misc-1.0.3-chromeos-armv7l.tar.xz',

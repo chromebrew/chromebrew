@@ -8,6 +8,7 @@ class Perl_pod_parser < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.66.tar.gz'
   source_sha256 '22928a7bffe61b452c05bbbb8f5216d4b9cf9fe2a849b776c25500d24d20df7c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.38_armv7l/perl_pod_parser-1.66-perl5.38-chromeos-armv7l.tar.zst',

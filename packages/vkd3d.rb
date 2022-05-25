@@ -8,6 +8,7 @@ class Vkd3d < Package
   compatibility 'all'
   source_url 'https://dl.winehq.org/vkd3d/source/vkd3d-1.6.tar.xz'
   source_sha256 '9dce98c32c48932370bd51f50e2f9316e7bdacaf69506ce5a1bf28a590926c87'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.6_armv7l/vkd3d-1.6-chromeos-armv7l.tar.zst',

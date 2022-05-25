@@ -8,6 +8,7 @@ class Fswatch < Package
   compatibility 'all'
   source_url 'https://github.com/emcrisostomo/fswatch/releases/download/1.17.1/fswatch-1.17.1.tar.gz'
   source_sha256 'c38e341c567f5f16bfa64b72fc48bba5e93873d8572522e670e6f320bbc2122f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fswatch/1.17.1_armv7l/fswatch-1.17.1-chromeos-armv7l.tar.zst',

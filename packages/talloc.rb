@@ -12,6 +12,7 @@ class Talloc < Package
   compatibility 'all'
   source_url "https://www.samba.org/ftp/talloc/talloc-#{@_ver}.tar.gz"
   source_sha256 '410a547f08557007be0e88194f218868358edc0ab98c98ba8c167930db3d33f9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/talloc/2.4.1-py3.12_armv7l/talloc-2.4.1-py3.12-chromeos-armv7l.tar.zst',

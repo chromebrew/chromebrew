@@ -8,6 +8,7 @@ class Libndp < Package
   compatibility 'all'
   source_url 'https://github.com/jpirko/libndp/archive/3fc2ed78edb5deae0381d022bedc22ffd00d50cb.zip'
   source_sha256 '53fd7da8fc840900238f1699e98a7e3e60cd6c68489015303e84b19c9dd2bb3a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libndp/1.7-3fc2_armv7l/libndp-1.7-3fc2-chromeos-armv7l.tar.xz',

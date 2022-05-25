@@ -9,6 +9,7 @@ class Docbook_xsl_nons < Package
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-nons-#{@_ver}.zip"
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_armv7l/docbook_xsl_nons-1.79.2-3-chromeos-armv7l.tar.zst',

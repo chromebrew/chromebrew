@@ -8,6 +8,7 @@ class Wdiff < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/wdiff/wdiff-1.2.2.tar.gz'
   source_sha256 '34ff698c870c87e6e47a838eeaaae729fa73349139fc8db12211d2a22b78af6b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wdiff/1.2.2_armv7l/wdiff-1.2.2-chromeos-armv7l.tar.xz',

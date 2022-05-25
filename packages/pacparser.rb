@@ -8,6 +8,7 @@ class Pacparser < Package
   compatibility 'all'
   source_url 'https://github.com/pacparser/pacparser/archive/1.3.7.tar.gz'
   source_sha256 '575c5d8096b4c842b2af852bbb8bcfde96170b28b49f33249dbe2057a8beea13'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacparser/1.3.7-1_armv7l/pacparser-1.3.7-1-chromeos-armv7l.tar.xz',

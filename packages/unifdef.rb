@@ -11,6 +11,7 @@ class Unifdef < Package
   compatibility 'all'
   source_url 'https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz'
   source_sha256 'fba564a24db7b97ebe9329713ac970627b902e5e9e8b14e19e024eb6e278d10b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unifdef/2.12_armv7l/unifdef-2.12-chromeos-armv7l.tar.zst',

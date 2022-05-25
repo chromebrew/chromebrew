@@ -8,6 +8,7 @@ class Libpng < Package
   compatibility 'all'
   source_url 'https://git.code.sf.net/p/libpng/code.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpng/1.6.39_armv7l/libpng-1.6.39-chromeos-armv7l.tar.zst',

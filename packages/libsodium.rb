@@ -8,6 +8,7 @@ class Libsodium < Package
   compatibility 'all'
   source_url 'https://github.com/jedisct1/libsodium/archive/refs/tags/1.0.18-RELEASE.tar.gz'
   source_sha256 'b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_armv7l/libsodium-1.0.18-RELEASE-chromeos-armv7l.tpxz',

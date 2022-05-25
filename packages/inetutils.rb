@@ -8,6 +8,7 @@ class Inetutils < Autotools
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{version}.tar.xz"
   source_sha256 '1789d6b1b1a57dfe2a7ab7b533ee9f5dfd9cbf5b59bb1bb3c2612ed08d0f68b2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.4_armv7l/inetutils-2.4-chromeos-armv7l.tar.zst',

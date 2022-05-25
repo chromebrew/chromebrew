@@ -8,6 +8,7 @@ class Xinit < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/app/xinit-1.4.2.tar.gz'
   source_sha256 '9121c9162f6dedab1229a8c4ed4021c4d605699cb0da580ac2ee1b0c96b3f60e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xinit/1.4.2_armv7l/xinit-1.4.2-chromeos-armv7l.tar.zst',

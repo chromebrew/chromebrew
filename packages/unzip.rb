@@ -8,6 +8,7 @@ class Unzip < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/infozip/UnZip%206.x%20%28latest%29/UnZip%206.0/unzip60.tar.gz'
   source_sha256 '036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unzip/6.0-2_armv7l/unzip-6.0-2-chromeos-armv7l.tar.xz',

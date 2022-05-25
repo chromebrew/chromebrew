@@ -8,6 +8,7 @@ class Fuse2 < Package
   compatibility 'all'
   source_url "https://github.com/libfuse/libfuse/releases/download/fuse-#{version}/fuse-#{version}.tar.gz"
   source_sha256 'd0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse2/2.9.9_armv7l/fuse2-2.9.9-chromeos-armv7l.tar.xz',

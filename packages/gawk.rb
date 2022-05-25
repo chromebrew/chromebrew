@@ -8,6 +8,7 @@ class Gawk < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.3.0.tar.xz'
   source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.3.0_armv7l/gawk-5.3.0-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Pv < Package
   compatibility 'all'
   source_url 'http://www.ivarch.com/programs/sources/pv-1.6.6.tar.gz'
   source_sha256 '94defb4183ae07c44219ba298d43c4991d6e203c29f74393d72ecad3b090508a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pv/1.6.6_armv7l/pv-1.6.6-chromeos-armv7l.tar.xz',

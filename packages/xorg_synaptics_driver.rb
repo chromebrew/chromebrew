@@ -8,6 +8,7 @@ class Xorg_synaptics_driver < Package
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-input-synaptics-1.9.0.tar.bz2'
   source_sha256 'afba3289d7a40217a19d90db98ce181772f9ca6d77e1898727b0afcf02073b5a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_synaptics_driver/1.9.0_armv7l/xorg_synaptics_driver-1.9.0-chromeos-armv7l.tar.xz',

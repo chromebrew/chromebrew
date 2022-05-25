@@ -8,6 +8,7 @@ class Testdisk < Package
   compatibility 'all'
   source_url 'https://www.cgsecurity.org/testdisk-7.2-WIP.tar.bz2'
   source_sha256 '501df617fe1541d66c34fc6337dfc8b76f3e862ce55e3d19ccb3e29ced430f57'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/testdisk/7.2-1_armv7l/testdisk-7.2-1-chromeos-armv7l.tar.zst',

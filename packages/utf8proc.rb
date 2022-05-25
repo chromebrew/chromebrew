@@ -8,6 +8,7 @@ class Utf8proc < Package
   compatibility 'all'
   source_url 'https://github.com/JuliaStrings/utf8proc.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/utf8proc/2.7.0_armv7l/utf8proc-2.7.0-chromeos-armv7l.tpxz',

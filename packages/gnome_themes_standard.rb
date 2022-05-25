@@ -8,6 +8,7 @@ class Gnome_themes_standard < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/gnome-themes-extra/archive/3.27.92.tar.gz'
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_themes_standard/3.27.92-0_armv7l/gnome_themes_standard-3.27.92-0-chromeos-armv7l.tar.xz',

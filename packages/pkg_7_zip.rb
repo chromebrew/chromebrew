@@ -8,6 +8,7 @@ class Pkg_7_zip < Package
   compatibility 'all'
   source_url 'https://www.7-zip.org/a/7z2107-src.tar.xz'
   source_sha256 '213d594407cb8efcba36610b152ca4921eda14163310b43903d13e68313e1e39'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkg_7_zip/21.07_armv7l/pkg_7_zip-21.07-chromeos-armv7l.tar.zst',

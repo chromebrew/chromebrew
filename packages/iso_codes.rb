@@ -8,6 +8,7 @@ class Iso_codes < Package
   compatibility 'all'
   source_url 'https://salsa.debian.org/iso-codes-team/iso-codes/uploads/049ce6aac94d842be809f4063950646c/iso-codes-4.1.tar.xz'
   source_sha256 '67117fb76f32c8fb5e37d2d60bce238f1f8e865cc7b569a57cbc3017ca15488a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iso_codes/4.1_armv7l/iso_codes-4.1-chromeos-armv7l.tar.xz',

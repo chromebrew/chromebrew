@@ -8,6 +8,7 @@ class Libdaemon < Package
   compatibility 'all'
   source_url 'http://0pointer.de/lennart/projects/libdaemon/libdaemon-0.14.tar.gz'
   source_sha256 'fd23eb5f6f986dcc7e708307355ba3289abe03cc381fc47a80bca4a50aa6b834'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdaemon/0.14_armv7l/libdaemon-0.14-chromeos-armv7l.tar.xz',

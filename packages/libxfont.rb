@@ -8,6 +8,7 @@ class Libxfont < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXfont2-2.0.1.tar.gz'
   source_sha256 '381b6b385a69343df48a082523c856aed9042fbbc8ee0a6342fb502e4321230a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfont/2.0.1_armv7l/libxfont-2.0.1-chromeos-armv7l.tar.xz',

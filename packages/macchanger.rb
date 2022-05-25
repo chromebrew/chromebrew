@@ -8,6 +8,7 @@ class Macchanger < Package
   compatibility 'all'
   source_url 'https://github.com/alobbs/macchanger/releases/download/1.7.0/macchanger-1.7.0.tar.gz'
   source_sha256 'dae2717c270fd5f62d790dbf80c19793c651b1b26b62c101b82d5fdf25a845bf'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/macchanger/1.7.0_armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',

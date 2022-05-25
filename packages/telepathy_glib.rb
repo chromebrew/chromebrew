@@ -8,6 +8,7 @@ class Telepathy_glib < Package
   compatibility 'all'
   source_url "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-#{version}.tar.gz"
   source_sha256 'b0a374d771cdd081125f38c3abd079657642301c71a543d555e2bf21919273f0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/telepathy_glib/0.24.2_armv7l/telepathy_glib-0.24.2-chromeos-armv7l.tar.xz',

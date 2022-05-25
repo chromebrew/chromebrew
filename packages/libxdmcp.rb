@@ -8,6 +8,7 @@ class Libxdmcp < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git'
   git_hashtag '4a71fdf6d34df67d3f1335590da6ae3050128fb2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdmcp/4a71fdf_armv7l/libxdmcp-4a71fdf-chromeos-armv7l.tar.zst',

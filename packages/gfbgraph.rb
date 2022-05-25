@@ -8,6 +8,7 @@ class Gfbgraph < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libgfbgraph/-/archive/v_#{version.gsub(/[.]/, '_')}/libgfbgraph-v_#{version.gsub(/[.]/, '_')}.tar.bz2"
   source_sha256 'e55bb497daabfcd7e68e216ac5c695f03319f660ff524d0b6659e42089853516'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gfbgraph/0.2.4_armv7l/gfbgraph-0.2.4-chromeos-armv7l.tar.xz',

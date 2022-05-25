@@ -8,6 +8,7 @@ class Toilet < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://caca.zoy.org/raw-attachment/wiki/toilet/toilet-0.3.tar.gz'
   source_sha256 '89d4b530c394313cc3f3a4e07a7394fa82a6091f44df44dfcd0ebcb3300a81de'
+  binary_compression 'tar.zst'
 
   depends_on 'libcaca'
 

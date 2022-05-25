@@ -8,6 +8,7 @@ class Editres < Package
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/editres-1.0.7.tar.bz2'
   source_sha256 '089ad34628e55a779b97e369f55fb12caefc96d684b508d9022eb9e12b775c11'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editres/1.0.7_armv7l/editres-1.0.7-chromeos-armv7l.tar.xz',

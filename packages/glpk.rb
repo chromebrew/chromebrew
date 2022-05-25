@@ -8,6 +8,7 @@ class Glpk < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/glpk/glpk-5.0.tar.gz'
   source_sha256 '4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glpk/5.0_armv7l/glpk-5.0-chromeos-armv7l.tar.zst',

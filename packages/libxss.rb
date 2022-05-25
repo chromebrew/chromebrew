@@ -8,6 +8,7 @@ class Libxss < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git'
   git_hashtag "libXScrnSaver-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.4_armv7l/libxss-1.2.4-chromeos-armv7l.tar.zst',

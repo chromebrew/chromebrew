@@ -8,6 +8,7 @@ class Ccache < Package
   compatibility 'all'
   source_url "https://github.com/ccache/ccache/releases/download/v#{version}/ccache-#{version}.tar.xz"
   source_sha256 'e47374c810b248cfca3665ee1d86c7c763ffd68d9944bc422d9c1872611f2b11'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_armv7l/ccache-4.8.3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Chromaprint < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/acoustid/chromaprint.git'
   git_hashtag 'aa67c95b9e486884a6d3ee8b0c91207d8c2b0551'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromaprint/1.5.1-aa67c95-1_armv7l/chromaprint-1.5.1-aa67c95-1-chromeos-armv7l.tar.zst',

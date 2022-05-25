@@ -8,6 +8,7 @@ class Gifgen < Package
   compatibility 'all'
   source_url 'https://github.com/lukechilds/gifgen/archive/1.1.2.tar.gz'
   source_sha256 '95f69c63158315ad869ff36611026cce1a7d03f8c84716b1c21a44e71e8d6aee'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gifgen/1.1.2_armv7l/gifgen-1.1.2-chromeos-armv7l.tar.xz',

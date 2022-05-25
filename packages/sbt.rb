@@ -8,6 +8,7 @@ class Sbt < Package
   compatibility 'all'
   source_url 'https://github.com/sbt/sbt/releases/download/v0.13.15/sbt-0.13.15.tgz'
   source_sha256 'b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbt/0.13.15_armv7l/sbt-0.13.15-chromeos-armv7l.tar.xz',

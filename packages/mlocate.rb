@@ -8,6 +8,7 @@ class Mlocate < Package
   compatibility 'all'
   source_url 'https://releases.pagure.org/mlocate/mlocate-0.26.tar.xz'
   source_sha256 '3063df79fe198fb9618e180c54baf3105b33d88fe602ff2d8570aaf944f1263e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mlocate/0.26-1_armv7l/mlocate-0.26-1-chromeos-armv7l.tar.xz',

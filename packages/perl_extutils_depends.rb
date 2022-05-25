@@ -8,6 +8,7 @@ class Perl_extutils_depends < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/ExtUtils-Depends-0.8001.tar.gz'
   source_sha256 '673c4387e7896c1a216099c1fbb3faaa7763d7f5f95a1a56a60a2a2906c131c5'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_depends/0.8001-perl5.38_armv7l/perl_extutils_depends-0.8001-perl5.38-chromeos-armv7l.tar.zst',

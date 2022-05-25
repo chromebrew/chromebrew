@@ -8,6 +8,7 @@ class Pocl < CMake
   compatibility 'x86_64 i686'
   source_url 'https://github.com/pocl/pocl.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pocl/5.0_x86_64/pocl-5.0-chromeos-x86_64.tar.zst',

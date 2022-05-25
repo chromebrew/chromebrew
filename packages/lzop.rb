@@ -8,6 +8,7 @@ class Lzop < Package
   compatibility 'all'
   source_url 'https://www.lzop.org/download/lzop-1.04.tar.gz'
   source_sha256 '7e72b62a8a60aff5200a047eea0773a8fb205caf7acbe1774d95147f305a2f41'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzop/1.04-1_armv7l/lzop-1.04-1-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Lmdb < Package
   compatibility 'all'
   source_url "https://git.openldap.org/openldap/openldap/-/archive/LMDB_#{version}/openldap-LMDB_#{version}.tar.gz"
   source_sha256 'd35d4f6f46313d62fd342c9dcbf574432919ce5e802d2b6cbe2ebd549821e5c4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.31_armv7l/lmdb-0.9.31-chromeos-armv7l.tar.zst',

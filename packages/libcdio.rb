@@ -8,6 +8,7 @@ class Libcdio < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libcdio/libcdio-2.1.0.tar.bz2'
   source_sha256 '8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0-1_armv7l/libcdio-2.1.0-1-chromeos-armv7l.tar.zst',

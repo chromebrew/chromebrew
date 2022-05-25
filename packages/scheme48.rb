@@ -8,6 +8,7 @@ class Scheme48 < Package
   compatibility 'all'
   source_url 'http://s48.org/1.9.2/scheme48-1.9.2.tgz'
   source_sha256 '9c4921a90e95daee067cd2e9cc0ffe09e118f4da01c0c0198e577c4f47759df4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scheme48/1.9.2_armv7l/scheme48-1.9.2-chromeos-armv7l.tar.xz',

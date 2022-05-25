@@ -8,6 +8,7 @@ class Libice < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libice.git'
   git_hashtag "libICE-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_armv7l/libice-1.1.0-chromeos-armv7l.tar.zst',

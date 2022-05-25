@@ -11,6 +11,7 @@ class Chafa < Package
   compatibility 'all'
   source_url 'https://github.com/hpjansson/chafa.git'
   git_hashtag 'cf15d59da7ccc6a79f8900e21d0926bea08074e9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_armv7l/chafa-cf15d59-chromeos-armv7l.tar.zst',

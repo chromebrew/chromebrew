@@ -8,6 +8,7 @@ class Nim < Package
   compatibility 'all'
   source_url 'https://nim-lang.org/download/nim-1.6.10.tar.xz'
   source_sha256 '13d7702f8b57087babe8cd051c13bc56a3171418ba867b49c6bbd09b29d24fea'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nim/1.6.10_armv7l/nim-1.6.10-chromeos-armv7l.tar.zst',

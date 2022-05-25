@@ -8,6 +8,7 @@ class Libunistring < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-1.1.tar.xz'
   source_sha256 '827c1eb9cb6e7c738b171745dac0888aa58c5924df2e59239318383de0729b98'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/1.1_armv7l/libunistring-1.1-chromeos-armv7l.tar.zst',

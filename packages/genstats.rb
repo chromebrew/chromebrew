@@ -8,6 +8,7 @@ class Genstats < Package
   compatibility 'all'
   source_url 'https://www.vanheusden.com/genstats/genstats-1.2.tgz'
   source_sha256 'f0fb9f29750cdaa85dba648709110c0bc80988dd6a98dd18a53169473aaa6ad3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/genstats/1.2_armv7l/genstats-1.2-chromeos-armv7l.tar.xz',

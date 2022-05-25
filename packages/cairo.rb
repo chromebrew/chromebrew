@@ -8,6 +8,7 @@ class Cairo < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.18.0_armv7l/cairo-1.18.0-chromeos-armv7l.tar.zst',

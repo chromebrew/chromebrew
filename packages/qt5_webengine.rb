@@ -15,6 +15,7 @@ class Qt5_webengine < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.15.tar.xz'
   source_sha256 '53b2f184c8b40bcac88b13f9f565a3d849f1ccfcc4f7344823ccc4265fb80445'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_armv7l/qt5_webengine-5.15.15-chromeos-armv7l.tar.zst',

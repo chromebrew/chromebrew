@@ -14,6 +14,7 @@ class Pipewire < Package
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
     binary_url({

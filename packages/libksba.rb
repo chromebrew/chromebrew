@@ -8,6 +8,7 @@ class Libksba < Package
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2'
   source_sha256 '3f72c68db30971ebbf14367527719423f0a4d5f8103fc9f4a1c01a9fa440de5c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_armv7l/libksba-1.6.3-chromeos-armv7l.tar.zst',

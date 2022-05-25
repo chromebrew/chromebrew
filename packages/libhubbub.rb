@@ -8,6 +8,7 @@ class Libhubbub < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/libhubbub-0.3.7-src.tar.gz'
   source_sha256 '9e7ae253e6c9069e757eb9ad4e4846f38b4db52c0ca0151446a9fa4a977735b6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhubbub/0.3.7_armv7l/libhubbub-0.3.7-chromeos-armv7l.tar.xz',

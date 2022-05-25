@@ -8,6 +8,7 @@ class Wayland_proxy_virtwl < Package
   compatibility 'all'
   source_url 'https://github.com/talex5/wayland-proxy-virtwl.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d7f58d405514dd031f2f12e402c8c6a58e62a885_armv7l/wayland_proxy_virtwl-d7f58d405514dd031f2f12e402c8c6a58e62a885-chromeos-armv7l.tpxz',

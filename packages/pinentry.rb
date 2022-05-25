@@ -8,6 +8,7 @@ class Pinentry < Package
   compatibility 'all'
   source_url 'https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2'
   source_sha256 '68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pinentry/1.1.0_armv7l/pinentry-1.1.0-chromeos-armv7l.tar.xz',

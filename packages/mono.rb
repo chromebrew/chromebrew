@@ -8,6 +8,7 @@ class Mono < Package
   compatibility 'all'
   source_url "https://download.mono-project.com/sources/mono/mono-#{version}.tar.xz"
   source_sha256 '29c277660fc5e7513107aee1cbf8c5057c9370a4cdfeda2fc781be6986d89d23'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mono/6.12.0.122_armv7l/mono-6.12.0.122-chromeos-armv7l.tar.xz',

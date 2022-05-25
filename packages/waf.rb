@@ -8,6 +8,7 @@ class Waf < Package
   compatibility 'all'
   source_url 'https://gitlab.com/ita1024/waf.git'
   git_hashtag "waf-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_armv7l/waf-2.0.24-chromeos-armv7l.tar.zst',

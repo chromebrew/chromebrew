@@ -8,6 +8,7 @@ class Ncrack < Package
   compatibility 'all'
   source_url 'https://nmap.org/ncrack/dist/ncrack-0.5.tar.gz'
   source_sha256 'dbad9440c861831836d47ece95aeb2bd40374a3eb03a14dea0fe1bfa73ecd4bc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncrack/0.5_armv7l/ncrack-0.5-chromeos-armv7l.tar.xz',

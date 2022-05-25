@@ -8,6 +8,7 @@ class Hyphen < Package
   compatibility 'all'
   source_url 'https://github.com/hunspell/hyphen/archive/73dd2967c8e1e4f6d7334ee9e539a323d6e66cbd.tar.gz'
   source_sha256 'd174ba8a2653e79ebd135fd2241fe87d511f9510a31e82bdf13ec21192852595'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hyphen/73dd29_armv7l/hyphen-73dd29-chromeos-armv7l.tar.xz',

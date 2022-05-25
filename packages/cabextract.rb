@@ -8,6 +8,7 @@ class Cabextract < Package
   compatibility 'all'
   source_url 'https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz'
   source_sha256 'afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cabextract/1.9.1_armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Nettle < Autotools
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/nettle/nettle-#{version}.tar.gz"
   source_sha256 '0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_armv7l/nettle-3.9-chromeos-armv7l.tar.zst',

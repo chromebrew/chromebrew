@@ -8,6 +8,7 @@ class Expect < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/expect/Expect/5.45.4/expect5.45.4.tar.gz'
   source_sha256 '49a7da83b0bdd9f46d04a04deec19c7767bb9a323e40c4781f89caf760b92c34'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expect/5.45.4_armv7l/expect-5.45.4-chromeos-armv7l.tar.xz',

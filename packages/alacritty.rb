@@ -11,6 +11,7 @@ class Alacritty < Package
   compatibility 'all'
   source_url 'https://github.com/alacritty/alacritty.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alacritty/0.11.0_armv7l/alacritty-0.11.0-chromeos-armv7l.tar.zst',

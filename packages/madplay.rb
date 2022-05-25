@@ -8,6 +8,7 @@ class Madplay < Package
   compatibility 'all'
   source_url 'ftp://ftp.mars.org/pub/mpeg/madplay-0.15.2b.tar.gz'
   source_sha256 '5a79c7516ff7560dffc6a14399a389432bc619c905b13d3b73da22fa65acede0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/madplay/0.15.2b_armv7l/madplay-0.15.2b-chromeos-armv7l.tar.xz',

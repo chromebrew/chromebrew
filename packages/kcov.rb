@@ -8,6 +8,7 @@ class Kcov < Package
   compatibility 'all'
   source_url 'https://github.com/SimonKagstrom/kcov/archive/v36.tar.gz'
   source_sha256 '29ccdde3bd44f14e0d7c88d709e1e5ff9b448e735538ae45ee08b73c19a2ea0b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kcov/v36_armv7l/kcov-v36-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Cmatrix < Package
   compatibility 'all'
   source_url 'https://github.com/abishekvashok/cmatrix/archive/1.2.tar.gz'
   source_sha256 '6b0b9aff4585147843c4cf8a8c9c6048500f66dc4887a38922197dfa326b57c8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmatrix/1.2_armv7l/cmatrix-1.2-chromeos-armv7l.tar.xz',

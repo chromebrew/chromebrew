@@ -8,6 +8,7 @@ class Netsurf_buildsystem < Package
   compatibility 'all'
   source_url 'https://download.netsurf-browser.org/libs/releases/buildsystem-1.9.tar.gz'
   source_sha256 '93841e314a688209a20b8745f065393f3a90f01be68f45e96bc8d2f4a2aa9a2a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf_buildsystem/1.9_armv7l/netsurf_buildsystem-1.9-chromeos-armv7l.tar.xz',

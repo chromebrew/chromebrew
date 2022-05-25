@@ -8,6 +8,7 @@ class Bdwgc < CMake
   compatibility 'all'
   source_url 'https://github.com/ivmai/bdwgc/releases/download/v8.2.4/gc-8.2.4.tar.gz'
   source_sha256 '3d0d3cdbe077403d3106bb40f0cbb563413d6efdbb2a7e1cd6886595dec48fc2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdwgc/8.2.4_armv7l/bdwgc-8.2.4-chromeos-armv7l.tar.zst',

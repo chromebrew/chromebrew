@@ -8,6 +8,7 @@ class Grabinfo < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/grabinfo/grabinfo/1.71/grabinfo-1.71.tar.gz'
   source_sha256 '3cf1e56aff10ef182065943a10ab815f2e8bf5ab77716dd97c2e91feb8db4278'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grabinfo/1.71-1_armv7l/grabinfo-1.71-1-chromeos-armv7l.tar.xz',

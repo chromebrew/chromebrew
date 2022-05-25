@@ -8,6 +8,7 @@ class Xcb_util_wm < Package
   license 'MIT-with-advertising'
   source_url 'https://xcb.freedesktop.org/dist/xcb-util-wm-0.4.1.tar.bz2'
   source_sha256 '28bf8179640eaa89276d2b0f1ce4285103d136be6c98262b6151aaee1d3c2a3f'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_wm/0.4.1-1_armv7l/xcb_util_wm-0.4.1-1-chromeos-armv7l.tpxz',

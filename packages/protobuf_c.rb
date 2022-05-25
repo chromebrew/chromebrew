@@ -11,6 +11,7 @@ class Protobuf_c < Package
   compatibility 'all'
   source_url 'https://github.com/protobuf-c/protobuf-c/releases/download/v1.4.1/protobuf-c-1.4.1.tar.gz'
   source_sha256 '4cc4facd508172f3e0a4d3a8736225d472418aee35b4ad053384b137b220339f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf_c/1.4.1_armv7l/protobuf_c-1.4.1-chromeos-armv7l.tar.zst',

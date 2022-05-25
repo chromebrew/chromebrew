@@ -8,6 +8,7 @@ class Lzip < Autotools
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/lzip/lzip-1.23.tar.gz'
   source_sha256 '4792c047ddf15ef29d55ba8e68a1a21e0cb7692d87ecdf7204419864582f280d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23-1_armv7l/lzip-1.23-1-chromeos-armv7l.tar.zst',

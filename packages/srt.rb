@@ -8,6 +8,7 @@ class Srt < Package
   compatibility 'all'
   source_url "https://github.com/Haivision/srt/archive/v#{version}.tar.gz"
   source_sha256 '50a05239602f2a402b4a96bc8b8e1ebf98808aa2966311c14f814ad477018a56'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/srt/1.4.3-rc.0_armv7l/srt-1.4.3-rc.0-chromeos-armv7l.tar.xz',

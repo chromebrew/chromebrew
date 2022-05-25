@@ -8,6 +8,7 @@ class Bats < Package
   compatibility 'all'
   source_url 'https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz'
   source_sha256 '480d8d64f1681eee78d1002527f3f06e1ac01e173b761bc73d0cf33f4dc1d8d7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bats/0.4.0_armv7l/bats-0.4.0-chromeos-armv7l.tar.xz',

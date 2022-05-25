@@ -8,6 +8,7 @@ class Libyaml < Package
   compatibility 'all'
   source_url 'https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz'
   source_sha256 'c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyaml/0.2.5_armv7l/libyaml-0.2.5-chromeos-armv7l.tar.xz',

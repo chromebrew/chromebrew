@@ -8,6 +8,7 @@ class Libxext < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libXext-1.3.4.tar.gz'
   source_sha256 '8ef0789f282826661ff40a8eef22430378516ac580167da35cc948be9041aac1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxext/1.3.4_armv7l/libxext-1.3.4-chromeos-armv7l.tar.xz',

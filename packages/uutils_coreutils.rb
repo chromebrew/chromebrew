@@ -11,6 +11,7 @@ class Uutils_coreutils < Package
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_armv7l/uutils_coreutils-0.0.23-chromeos-armv7l.tar.zst',

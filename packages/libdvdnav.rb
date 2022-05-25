@@ -8,6 +8,7 @@ class Libdvdnav < Package
   license 'GPL-2'
   source_url 'https://get.videolan.org/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2'
   source_sha256 'c191a7475947d323ff7680cf92c0fb1be8237701885f37656c64d04e98d18d48'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdnav/6.1.1_armv7l/libdvdnav-6.1.1-chromeos-armv7l.tpxz',

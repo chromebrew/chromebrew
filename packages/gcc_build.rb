@@ -8,6 +8,7 @@ class Gcc_build < Package
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
   git_hashtag 'releases/gcc-13.2.0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_build/13.2.0_armv7l/gcc_build-13.2.0-chromeos-armv7l.tar.zst',

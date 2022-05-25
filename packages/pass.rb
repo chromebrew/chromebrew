@@ -8,6 +8,7 @@ class Pass < Package
   compatibility 'all'
   source_url 'https://git.zx2c4.com/password-store/snapshot/password-store-1.7.1.tar.xz'
   source_sha256 'f6d2199593398aaefeaa55e21daddfb7f1073e9e096af6d887126141e99d9869'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pass/1.7.1-1_armv7l/pass-1.7.1-1-chromeos-armv7l.tar.xz',

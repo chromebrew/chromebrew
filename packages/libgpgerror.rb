@@ -8,6 +8,7 @@ class Libgpgerror < Package
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
   source_sha256 '9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.47_armv7l/libgpgerror-1.47-chromeos-armv7l.tar.zst',

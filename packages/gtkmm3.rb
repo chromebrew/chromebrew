@@ -8,6 +8,7 @@ class Gtkmm3 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/3.24/gtkmm-3.24.7.tar.xz'
   source_sha256 '1d7a35af9c5ceccacb244ee3c2deb9b245720d8510ac5c7e6f4b6f9947e6789c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_armv7l/gtkmm3-3.24.7-chromeos-armv7l.tar.zst',

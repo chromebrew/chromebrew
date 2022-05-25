@@ -8,6 +8,7 @@ class Sshfs < Package
   compatibility 'all'
   source_url 'https://github.com/libfuse/sshfs/releases/download/sshfs-2.10/sshfs-2.10.tar.gz'
   source_sha256 '70845dde2d70606aa207db5edfe878e266f9c193f1956dd10ba1b7e9a3c8d101'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshfs/2.10_armv7l/sshfs-2.10-chromeos-armv7l.tar.xz',

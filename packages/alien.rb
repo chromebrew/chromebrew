@@ -9,6 +9,7 @@ class Alien < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/alien-pkg-convert/release/alien_8.95.tar.xz'
   source_sha256 '37a22587c33810feab323474bdadbf969fda2eb4e720b2ca01b40d82d6f71a17'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alien/8.95-1_armv7l/alien-8.95-1-chromeos-armv7l.tar.zst',

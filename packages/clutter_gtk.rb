@@ -9,6 +9,7 @@ class Clutter_gtk < Package
   compatibility 'all'
   source_url "https://download.gnome.org/sources/clutter-gtk/#{@_ver.rpartition('.')[0]}/clutter-gtk-#{@_ver}.tar.xz"
   source_sha256 '521493ec038973c77edcb8bc5eac23eed41645117894aaee7300b2487cb42b06'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clutter_gtk/1.8.4-1_armv7l/clutter_gtk-1.8.4-1-chromeos-armv7l.tpxz',

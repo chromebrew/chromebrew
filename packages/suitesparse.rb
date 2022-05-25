@@ -8,6 +8,7 @@ class Suitesparse < Package
   compatibility 'all'
   source_url 'https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.7.2.tar.gz'
   source_sha256 'fe3bc7c3bd1efdfa5cffffb5cebf021ff024c83b5daf0ab445429d3d741bd3ad'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/suitesparse/5.7.2_armv7l/suitesparse-5.7.2-chromeos-armv7l.tar.xz',

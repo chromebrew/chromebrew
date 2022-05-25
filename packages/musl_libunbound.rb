@@ -8,6 +8,7 @@ class Musl_libunbound < Package
   compatibility 'all'
   source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
   source_sha256 'a480dc6c8937447b98d161fe911ffc76cfaffa2da18788781314e81339f1126f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunbound/1.15.0_armv7l/musl_libunbound-1.15.0-chromeos-armv7l.tar.zst',

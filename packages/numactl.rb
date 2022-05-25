@@ -8,6 +8,7 @@ class Numactl < Autotools
   compatibility 'all'
   source_url 'https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz'
   source_sha256 '1b242f893af977a1d31af6ce9d6b8dafdd2d8ec3dc9207f7c2dc0d3446e7c7c8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.16_armv7l/numactl-2.0.16-chromeos-armv7l.tar.zst',

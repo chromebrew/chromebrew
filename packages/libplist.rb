@@ -8,6 +8,7 @@ class Libplist < Package
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libplist/archive/#{version}.tar.gz"
   source_sha256 '7e654bdd5d8b96f03240227ed09057377f06ebad08e1c37d0cfa2abe6ba0cee2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libplist/2.2.0_armv7l/libplist-2.2.0-chromeos-armv7l.tar.xz',

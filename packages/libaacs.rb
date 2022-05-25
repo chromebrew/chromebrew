@@ -8,6 +8,7 @@ class Libaacs < Package
   compatibility 'all'
   source_url 'https://get.videolan.org/libaacs/0.9.0/libaacs-0.9.0.tar.bz2'
   source_sha256 '47e0bdc9c9f0f6146ed7b4cc78ed1527a04a537012cf540cf5211e06a248bace'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaacs/0.9.0_armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',

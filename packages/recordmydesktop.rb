@@ -8,6 +8,7 @@ class Recordmydesktop < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/recordmydesktop/recordmydesktop/0.3.8.1/recordmydesktop-0.3.8.1.tar.gz'
   source_sha256 '33a2e208186ae78e2db2a27b0f5047b50fb7819c47fe15483b0765200b9d738c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/recordmydesktop/0.3.8.1_armv7l/recordmydesktop-0.3.8.1-chromeos-armv7l.tar.xz',

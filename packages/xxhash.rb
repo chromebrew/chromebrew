@@ -8,6 +8,7 @@ class Xxhash < Package
   compatibility 'all'
   source_url 'https://github.com/Cyan4973/xxHash.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxhash/0.8.1_armv7l/xxhash-0.8.1-chromeos-armv7l.tar.xz',

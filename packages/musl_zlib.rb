@@ -9,6 +9,7 @@ class Musl_zlib < Package
   compatibility 'all'
   source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
   source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zlib/1.2.11-3_armv7l/musl_zlib-1.2.11-3-chromeos-armv7l.tar.zst',

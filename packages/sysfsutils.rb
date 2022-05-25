@@ -8,6 +8,7 @@ class Sysfsutils < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/linux-diag/files/sysfsutils/2.1.0/sysfsutils-2.1.0.tar.gz'
   source_sha256 'e865de2c1f559fff0d3fc936e660c0efaf7afe662064f2fb97ccad1ec28d208a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysfsutils/2.1.0_armv7l/sysfsutils-2.1.0-chromeos-armv7l.tar.xz',

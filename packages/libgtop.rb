@@ -11,6 +11,7 @@ class Libgtop < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgtop.git'
   git_hashtag '507809b648634c6251e9aeeb8ffae1d38c5be5f7'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_armv7l/libgtop-2.40.0-507809b-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Ticker < Package
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/t/ticker/ticker_1.13.tar.xz'
   source_sha256 '5d80787d4c27b3dc4f8ebec2868d52bcf365c1ef928e63dc6c3ac541efe40e98'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ticker/1.13_armv7l/ticker-1.13-chromeos-armv7l.tar.xz',

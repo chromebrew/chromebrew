@@ -8,6 +8,7 @@ class Crew_mvdir < Package
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
   git_hashtag '0.2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_armv7l/crew_mvdir-0.2-2-chromeos-armv7l.tar.zst',

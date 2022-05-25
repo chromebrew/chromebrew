@@ -8,6 +8,7 @@ class Xfsprogs < Package
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.5.0_armv7l/xfsprogs-6.5.0-chromeos-armv7l.tar.zst',

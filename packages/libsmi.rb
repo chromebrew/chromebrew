@@ -11,6 +11,7 @@ class Libsmi < Autotools
   compatibility 'all'
   source_url 'https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-0.5.0.tar.gz'
   source_sha256 'f21accdadb1bb328ea3f8a13fc34d715baac6e2db66065898346322c725754d3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsmi/0.5.0_armv7l/libsmi-0.5.0-chromeos-armv7l.tar.zst',

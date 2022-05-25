@@ -8,6 +8,7 @@ class Gzip < Autotools
   license 'GPL-3'
   source_url 'https://ftpmirror.gnu.org/gzip/gzip-1.13.tar.xz'
   source_sha256 '7454eb6935db17c6655576c2e1b0fabefd38b4d0936e0f87f48cd062ce91a057'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzip/1.13_armv7l/gzip-1.13-chromeos-armv7l.tar.zst',

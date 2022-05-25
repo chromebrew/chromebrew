@@ -8,6 +8,7 @@ class Rlottie < Package
   compatibility 'all'
   source_url "https://github.com/Samsung/rlottie/archive/v#{version}.tar.gz"
   source_sha256 '030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rlottie/0.2_armv7l/rlottie-0.2-chromeos-armv7l.tar.xz',

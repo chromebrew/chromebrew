@@ -8,6 +8,7 @@ class Graphicsmagick < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/1.3.40/GraphicsMagick-1.3.40.tar.zst'
   source_sha256 '1c86bc8cdcfb7daa6d34940e1bccf82c201a27ecdcc65e8bb1089a4da6f2cfcc'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphicsmagick/1.3.40_armv7l/graphicsmagick-1.3.40-chromeos-armv7l.tar.zst',

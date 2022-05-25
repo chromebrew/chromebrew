@@ -8,6 +8,7 @@ class Abcde < Package
   compatibility 'all'
   source_url 'https://abcde.einval.com/download/abcde-2.9.3.tar.gz'
   source_sha256 '046cd0bba78dd4bbdcbcf82fe625865c60df35a005482de13a6699c5a3b83124'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abcde/2.9.3_armv7l/abcde-2.9.3-chromeos-armv7l.tar.xz',

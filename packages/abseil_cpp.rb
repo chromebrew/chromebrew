@@ -8,6 +8,7 @@ class Abseil_cpp < CMake
   compatibility 'all'
   source_url "https://github.com/abseil/abseil-cpp/archive/#{version}.tar.gz"
   source_sha256 '987ce98f02eefbaf930d6e38ab16aa05737234d7afbab2d5c4ea7adbe50c28ed'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20230802.1_armv7l/abseil_cpp-20230802.1-chromeos-armv7l.tar.zst',

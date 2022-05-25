@@ -8,6 +8,7 @@ class Gtest < Package
   compatibility 'all'
   source_url 'https://github.com/google/googletest.git'
   git_hashtag "release-#{version}"
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_armv7l/gtest-1.11.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libeconf < Meson
   compatibility 'all'
   source_url 'https://github.com/openSUSE/libeconf/archive/v0.5.2.tar.gz'
   source_sha256 'c9aa04b7ef1c7312a6e045184d15465db1985abb4058cc4c562fd33c9876bb34'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_armv7l/libeconf-0.5.2-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Font_bh_75dpi < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-bh-75dpi-1.0.3.tar.bz2'
   source_sha256 '3486aa51ac92c646a448fe899c5c3dae0024b1fef724d5100d52640d1cac721c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_75dpi/1.0.3_armv7l/font_bh_75dpi-1.0.3-chromeos-armv7l.tar.xz',

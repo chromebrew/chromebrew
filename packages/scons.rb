@@ -8,6 +8,7 @@ class Scons < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/scons/scons-3.0.5.tar.gz'
   source_sha256 'df676f23dc6d4bfa384fc389d95dcd21ab907e6349d4c848958ba4befb73c73e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scons/3.0.5_armv7l/scons-3.0.5-chromeos-armv7l.tar.xz',

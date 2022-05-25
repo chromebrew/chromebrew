@@ -8,6 +8,7 @@ class Dosbox < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/dosbox/dosbox/0.74-3/dosbox-0.74-3.tar.gz'
   source_sha256 'c0d13dd7ed2ed363b68de615475781e891cd582e8162b5c3669137502222260a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dosbox/0.74-3_armv7l/dosbox-0.74-3-chromeos-armv7l.tar.xz',

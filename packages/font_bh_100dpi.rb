@@ -8,6 +8,7 @@ class Font_bh_100dpi < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-bh-100dpi-1.0.3.tar.bz2'
   source_sha256 '23c07162708e4b79eb33095c8bfa62c783717a9431254bbf44863734ea239481'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_100dpi/1.0.3_armv7l/font_bh_100dpi-1.0.3-chromeos-armv7l.tar.xz',

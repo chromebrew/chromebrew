@@ -8,6 +8,7 @@ class Mp4v2 < Package
   compatibility 'all'
   source_url 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2'
   source_sha256 '0319b9a60b667cf10ee0ec7505eb7bdc0a2e21ca7a93db96ec5bd758e3428338'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mp4v2/2.0.0_armv7l/mp4v2-2.0.0-chromeos-armv7l.tar.xz',

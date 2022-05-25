@@ -5,6 +5,7 @@ class Glibc_build223 < Package
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
+  binary_compression 'tar.zst'
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.

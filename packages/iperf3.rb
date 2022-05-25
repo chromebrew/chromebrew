@@ -8,6 +8,7 @@ class Iperf3 < Package
   compatibility 'all'
   source_url 'https://github.com/esnet/iperf/archive/3.7.tar.gz'
   source_sha256 'c349924a777e8f0a70612b765e26b8b94cc4a97cc21a80ed260f65e9823c8fc5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iperf3/3.7_armv7l/iperf3-3.7-chromeos-armv7l.tar.xz',

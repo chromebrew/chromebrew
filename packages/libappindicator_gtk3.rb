@@ -11,6 +11,7 @@ class Libappindicator_gtk3 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz'
   source_sha256 'd5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libappindicator_gtk3/12.10.0_armv7l/libappindicator_gtk3-12.10.0-chromeos-armv7l.tpxz',

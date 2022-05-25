@@ -11,6 +11,7 @@ class Glmark2 < Package
   compatibility 'all'
   source_url 'https://github.com/glmark2/glmark2/archive/9057c056b6e72d156c0bc7e4b52658e155760222.zip'
   source_sha256 'fd37e6360f03f8ffcd236eb39ee1cb42c487edd0418441c22e375ec5e499297d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2021.12-9057c05_armv7l/glmark2-2021.12-9057c05-chromeos-armv7l.tar.zst',

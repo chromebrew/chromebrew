@@ -8,6 +8,7 @@ class Gox < Package
   compatibility 'all'
   source_url 'https://github.com/mitchellh/gox/archive/v0.4.0.tar.gz'
   source_sha256 '2df7439e9901877685ff4e6377de863c3c2ec4cde43d0ca631ff65d1b64774ad'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gox/0.4.0_armv7l/gox-0.4.0-chromeos-armv7l.tar.xz',

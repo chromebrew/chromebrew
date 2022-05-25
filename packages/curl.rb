@@ -8,6 +8,7 @@ class Curl < Autotools
   compatibility 'all'
   source_url 'https://curl.se/download/curl-8.5.0.tar.xz'
   source_sha256 '42ab8db9e20d8290a3b633e7fbb3cec15db34df65fd1015ef8ac1e4723750eeb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.5.0_armv7l/curl-8.5.0-chromeos-armv7l.tar.zst',

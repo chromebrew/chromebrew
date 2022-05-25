@@ -8,6 +8,7 @@ class Libdvdread < Package
   license 'GPL-2'
   source_url 'https://get.videolan.org/libdvdread/6.1.2/libdvdread-6.1.2.tar.bz2'
   source_sha256 'cc190f553758ced7571859e301f802cb4821f164d02bfacfd320c14a4e0da763'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdread/6.1.2_armv7l/libdvdread-6.1.2-chromeos-armv7l.tpxz',

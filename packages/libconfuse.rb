@@ -8,6 +8,7 @@ class Libconfuse < Package
   compatibility 'all'
   source_url 'https://github.com/martinh/libconfuse/releases/download/v3.2.1/confuse-3.2.1.tar.xz'
   source_sha256 '23c63272baf2ef4e2cbbafad2cf57de7eb81f006ec347c00b954819824add25e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libconfuse/3.2.1_armv7l/libconfuse-3.2.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libtiff < Package
   compatibility 'all'
   source_url 'https://download.osgeo.org/libtiff/tiff-4.6.0.tar.xz'
   source_sha256 'e178649607d1e22b51cf361dd20a3753f244f022eefab1f2f218fc62ebaf87d2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.6.0_armv7l/libtiff-4.6.0-chromeos-armv7l.tar.zst',

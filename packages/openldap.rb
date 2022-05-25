@@ -8,6 +8,7 @@ class Openldap < Autotools
   compatibility 'all'
   source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{version}.tgz"
   source_sha256 '082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.6_armv7l/openldap-2.6.6-chromeos-armv7l.tar.zst',

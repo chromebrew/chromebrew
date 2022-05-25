@@ -8,6 +8,7 @@ class Qhull < Package
   compatibility 'all'
   source_url 'http://www.qhull.org/download/qhull-2019-src-7.3.2.tgz'
   source_sha256 '2b7990558c363076261564f61b74db4d0d73b71869755108a469038c07dc43fb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qhull/7.3.2_armv7l/qhull-7.3.2-chromeos-armv7l.tar.xz',

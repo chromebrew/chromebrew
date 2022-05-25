@@ -8,6 +8,7 @@ class Pagein < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/pagein/pagein-0.00.05.tar.gz'
   source_sha256 '3f81409f6227887212083c585abf5143a082dde2bbcab1d2ae8c74b6d294e8b3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagein/0.00.05_armv7l/pagein-0.00.05-chromeos-armv7l.tar.xz',

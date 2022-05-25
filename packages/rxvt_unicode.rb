@@ -8,6 +8,7 @@ class Rxvt_unicode < Package
   compatibility 'all'
   source_url 'http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.30.tar.bz2'
   source_sha256 'fe1c93d12f385876457a989fc3ae05c0915d2692efc59289d0f70fabe5b44d2d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rxvt_unicode/9.30_armv7l/rxvt_unicode-9.30-chromeos-armv7l.tar.zst',

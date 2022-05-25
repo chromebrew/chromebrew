@@ -10,6 +10,7 @@ class Musl_native_toolchain < Package
   compatibility 'all'
   source_url 'https://git.zv.io/toolchains/musl-cross-make.git'
   git_hashtag '53280e53a32202a0ee874911fc52005874db344b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_armv7l/musl_native_toolchain-1.2.3-chromeos-armv7l.tar.zst',

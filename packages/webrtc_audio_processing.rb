@@ -8,6 +8,7 @@ class Webrtc_audio_processing < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/archive/v0.3.1/webrtc-audio-processing-v0.3.1.tar.bz2'
   source_sha256 '70d56051f73e8e4ac95fb392ce15de6c633b2c3ae492359aecc72fc663c9bdda'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webrtc_audio_processing/0.3.1_armv7l/webrtc_audio_processing-0.3.1-chromeos-armv7l.tar.xz',

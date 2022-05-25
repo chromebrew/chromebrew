@@ -8,6 +8,7 @@ class Masscan < Package
   version '1.0.4'
   source_url 'https://github.com/robertdavidgraham/masscan/archive/1.0.4.tar.gz'
   source_sha256 '51de345f677f46595fc3bd747bfb61bc9ff130adcbec48f3401f8057c8702af9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/masscan/1.0.4_armv7l/masscan-1.0.4-chromeos-armv7l.tar.xz',

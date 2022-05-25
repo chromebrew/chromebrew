@@ -8,6 +8,7 @@ class Libxpresent < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libXpresent-1.0.1.tar.xz'
   source_sha256 'b964df9e5a066daa5e08d2dc82692c57ca27d00b8cc257e8e960c9f1cf26231b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpresent/1.0.1_armv7l/libxpresent-1.0.1-chromeos-armv7l.tar.zst',

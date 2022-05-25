@@ -8,6 +8,7 @@ class Opus < Package
   compatibility 'all'
   source_url 'https://github.com/xiph/opus/releases/download/v1.4/opus-1.4.tar.gz'
   source_sha256 'c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.4_armv7l/opus-1.4-chromeos-armv7l.tar.zst',

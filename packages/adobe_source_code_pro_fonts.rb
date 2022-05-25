@@ -11,6 +11,7 @@ class Adobe_source_code_pro_fonts < Package
   compatibility 'all'
   source_url 'https://github.com/adobe-fonts/source-code-pro.git'
   git_hashtag '2.038R-ro/1.058R-it/1.018R-VAR'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adobe_source_code_pro_fonts/20210115_armv7l/adobe_source_code_pro_fonts-20210115-chromeos-armv7l.tpxz',

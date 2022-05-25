@@ -8,6 +8,7 @@ class Symlinks < Package
   compatibility 'all'
   source_url "https://salsa.debian.org/debian/symlinks/-/archive/debian/#{version}/symlinks-debian-#{version}.tar.bz2"
   source_sha256 'f4469a9f366ccfaa7273b1f78bd540b8a6fa96f8b2b81a95d131944fb77efdd4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/symlinks/1.4-4_armv7l/symlinks-1.4-4-chromeos-armv7l.tar.xz',

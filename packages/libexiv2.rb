@@ -8,6 +8,7 @@ class Libexiv2 < Package
   compatibility 'all'
   source_url 'https://github.com/Exiv2/exiv2/archive/refs/tags/v0.27.5.tar.gz'
   source_sha256 '1da1721f84809e4d37b3f106adb18b70b1b0441c860746ce6812bb3df184ed6c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libexiv2/0.27.5_armv7l/libexiv2-0.27.5-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libticables2 < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libticables2-1.3.5.tar.bz2'
   source_sha256 '0c6fb6516e72ccab081ddb3aecceff694ed93aec689ddd2edba9c7c7406c4522'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libticables2/1.3.5_armv7l/libticables2-1.3.5-chromeos-armv7l.tar.xz',

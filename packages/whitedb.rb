@@ -8,6 +8,7 @@ class Whitedb < Package
   compatibility 'all'
   source_url 'https://whitedb.org/whitedb-0.7.3.tar.gz'
   source_sha256 '10c4ccd754ed2d53dbdef9ec16c88c732aa73d923fc0ee114e7e3a78a812849d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whitedb/0.7.3_armv7l/whitedb-0.7.3-chromeos-armv7l.tar.xz',

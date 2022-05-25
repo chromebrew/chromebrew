@@ -8,6 +8,7 @@ class Libyuv < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/libyuv/libyuv.git'
   git_hashtag 'd47031c0d42efa8f10842e36f7b8135b52bcd3d0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_armv7l/libyuv-d47031c-chromeos-armv7l.tar.zst',

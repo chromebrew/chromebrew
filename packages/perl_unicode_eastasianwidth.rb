@@ -8,6 +8,7 @@ class Perl_unicode_eastasianwidth < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-12.0.tar.gz'
   source_sha256 '2a5bfd926c4fe5f77e6137da2c31ac2545282ae5fec6e9af0fdd403555a90ff4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.38_armv7l/perl_unicode_eastasianwidth-12.0-perl5.38-chromeos-armv7l.tar.zst',

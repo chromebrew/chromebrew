@@ -8,6 +8,7 @@ class Libusbmuxd < Package
   compatibility 'all'
   source_url "https://github.com/libimobiledevice/libusbmuxd/archive/#{version}.tar.gz"
   source_sha256 '8ae3e1d9340177f8f3a785be276435869363de79f491d05d8a84a59efc8a8fdc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libusbmuxd/2.0.2_armv7l/libusbmuxd-2.0.2-chromeos-armv7l.tar.xz',

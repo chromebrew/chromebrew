@@ -8,6 +8,7 @@ class Xmlclitools < Package
   compatibility 'all'
   source_url 'ftp://ftp.nstu.ru/pub/sources/langs/xml/xmlclitools-1.61.tar.gz'
   source_sha256 '262ce2f119a278ee2f965722f4d23b6b67f8baaa594858b9a0124849726e5a63'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlclitools/1.61-1_armv7l/xmlclitools-1.61-1-chromeos-armv7l.tar.xz',

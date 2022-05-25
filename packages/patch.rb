@@ -8,6 +8,7 @@ class Patch < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/patch/patch-2.7.6.tar.xz'
   source_sha256 'ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patch/2.7.6_armv7l/patch-2.7.6-chromeos-armv7l.tar.xz',

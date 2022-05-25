@@ -8,6 +8,7 @@ class Bc < Package
   compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/bc/bc-1.07.1.tar.gz'
   source_sha256 '62adfca89b0a1c0164c2cdca59ca210c1d44c3ffc46daf9931cf4942664cb02a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bc/1.07.1_armv7l/bc-1.07.1-chromeos-armv7l.tar.xz',

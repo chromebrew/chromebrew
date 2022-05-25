@@ -8,6 +8,7 @@ class Cras < Package
   compatibility 'all'
   source_url "https://chromium.googlesource.com/chromiumos/third_party/adhd/+/refs/heads/#{version}/cras/README.md"
   source_sha256 '355514e78ba4d1736f53c427c329bdfad327afc052a1b78d543cb4840d199b4e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_armv7l/cras-stabilize-13654.B-chromeos-armv7l.tar.xz',

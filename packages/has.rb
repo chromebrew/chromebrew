@@ -8,6 +8,7 @@ class Has < Package
   compatibility 'all'
   source_url 'https://github.com/kdabir/has/archive/v1.1.0.tar.gz'
   source_sha256 'e06d9674bc1b9281c1d4391ad4366d2ef249768e7b0ada304695bf954786e9c4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/has/1.1.0_armv7l/has-1.1.0-chromeos-armv7l.tar.xz',

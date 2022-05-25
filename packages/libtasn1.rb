@@ -8,6 +8,7 @@ class Libtasn1 < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libtasn1/libtasn1-4.19.0.tar.gz'
   source_sha256 '1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtasn1/4.19_armv7l/libtasn1-4.19-chromeos-armv7l.tar.zst',

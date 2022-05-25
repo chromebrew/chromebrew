@@ -8,6 +8,7 @@ class Libgnomecanvas < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.30/libgnomecanvas-2.30.3.tar.bz2'
   source_sha256 '859b78e08489fce4d5c15c676fec1cd79782f115f516e8ad8bed6abcb8dedd40'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgnomecanvas/2.30.3_armv7l/libgnomecanvas-2.30.3-chromeos-armv7l.tar.xz',

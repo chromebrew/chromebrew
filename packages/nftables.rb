@@ -11,6 +11,7 @@ class Nftables < Autotools
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://netfilter.org/projects/nftables/files/nftables-1.0.9.tar.xz'
   source_sha256 'a3c304cd9ba061239ee0474f9afb938a9bb99d89b960246f66f0c3a0a85e14cd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.9_armv7l/nftables-1.0.9-chromeos-armv7l.tar.zst',

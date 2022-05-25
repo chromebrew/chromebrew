@@ -8,6 +8,7 @@ class Less < Autotools
   compatibility 'all'
   source_url 'https://greenwoodsoftware.com/less/less-643.tar.gz'
   source_sha256 '2911b5432c836fa084c8a2e68f6cd6312372c026a58faaa98862731c8b6052e8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/643_armv7l/less-643-chromeos-armv7l.tar.zst',

@@ -9,6 +9,7 @@ class Shotcut < Package
   min_glibc '2.30'
   source_url 'https://github.com/mltframework/shotcut/releases/download/v23.11.29/shotcut-linux-x86_64-231129.txz'
   source_sha256 'df34a68bf37ec3295745287f375b6ca82ec3f4f16eb09416a508d31c6b40fc77'
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotcut/23.11.29_x86_64/shotcut-23.11.29-chromeos-x86_64.tar.zst'

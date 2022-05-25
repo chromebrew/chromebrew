@@ -9,6 +9,7 @@ class Wmctrl < Package
   compatibility 'all'
   source_url "http://tripie.sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
   source_sha256 'd78a1efdb62f18674298ad039c5cbdb1edb6e8e149bb3a8e3a01a4750aa3cca9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_armv7l/wmctrl-1.07-1-chromeos-armv7l.tar.xz',

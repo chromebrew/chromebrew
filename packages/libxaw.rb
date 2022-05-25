@@ -8,6 +8,7 @@ class Libxaw < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXaw-1.0.13.tar.gz'
   source_sha256 '7e74ac3e5f67def549722ff0333d6e6276b8becd9d89615cda011e71238ab694'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxaw/1.0.13_armv7l/libxaw-1.0.13-chromeos-armv7l.tar.xz',

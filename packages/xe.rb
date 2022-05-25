@@ -8,6 +8,7 @@ class Xe < Package
   compatibility 'all'
   source_url 'https://github.com/chneukirchen/xe/archive/v0.11.tar.gz'
   source_sha256 '4087d40be2db3df81a836f797e1fed17d6ac1c788dcf0fd6a904f2d2178a6f1a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xe/0.11_armv7l/xe-0.11-chromeos-armv7l.tar.xz',

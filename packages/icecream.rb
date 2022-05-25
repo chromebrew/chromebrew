@@ -11,6 +11,7 @@ class Icecream < Package
   compatibility 'all'
   source_url 'https://github.com/icecc/icecream/archive/refs/tags/1.4.tar.gz'
   source_sha256 '249dcf74f0fc477ff9735ff0bdcdfaa4c257a864c4db5255d8b25c9f4fd20b6b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icecream/1.4_armv7l/icecream-1.4-chromeos-armv7l.tar.zst',

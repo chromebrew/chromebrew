@@ -8,6 +8,7 @@ class Perl_data_dumper < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/Data-Dumper-2.183.tar.gz'
   source_sha256 'e42736890b7dae1b37818d9c5efa1f1fdc52dec04f446a33a4819bf1d4ab5ad3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_data_dumper/2.183-perl5.38.2_armv7l/perl_data_dumper-2.183-perl5.38.2-chromeos-armv7l.tar.zst',

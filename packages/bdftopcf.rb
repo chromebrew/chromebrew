@@ -8,6 +8,7 @@ class Bdftopcf < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/bdftopcf-1.1.tar.bz2'
   source_sha256 '4b4df05fc53f1e98993638d6f7e178d95b31745c4568cee407e167491fd311a2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_armv7l/bdftopcf-1.1-chromeos-armv7l.tar.xz',

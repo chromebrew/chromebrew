@@ -10,6 +10,7 @@ class Llvm16_dev < Package
   license Llvm16_build.license
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_dev/16.0.6_armv7l/llvm16_dev-16.0.6-chromeos-armv7l.tar.zst',

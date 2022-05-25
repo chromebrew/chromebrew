@@ -8,6 +8,7 @@ class Gtk4 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.13.5_armv7l/gtk4-4.13.5-chromeos-armv7l.tar.zst',

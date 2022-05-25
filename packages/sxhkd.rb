@@ -8,6 +8,7 @@ class Sxhkd < Package
   compatibility 'all'
   source_url 'https://github.com/baskerville/sxhkd/archive/0.6.2.tar.gz'
   source_sha256 '1edc8b1a8b3631c10ba9cb9df1181830dacbbdf77adb558e31d5dd2029637386'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sxhkd/0.6.2_armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',

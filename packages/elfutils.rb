@@ -8,6 +8,7 @@ class Elfutils < Package
   compatibility 'all'
   source_url "https://sourceware.org/elfutils/ftp/#{version}/elfutils-#{version}.tar.bz2"
   source_sha256 'fb8b0e8d0802005b9a309c60c1d8de32dd2951b56f0c3a3cb56d21ce01595dff'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.188_armv7l/elfutils-0.188-chromeos-armv7l.tar.zst',

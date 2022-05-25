@@ -8,6 +8,7 @@ class Perl_app_cpanminus < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7046.tar.gz'
   source_sha256 '3e8c9d9b44a7348f9acc917163dbfc15bd5ea72501492cea3a35b346440ff862'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.38_armv7l/perl_app_cpanminus-1.7046-perl5.38-chromeos-armv7l.tar.zst',

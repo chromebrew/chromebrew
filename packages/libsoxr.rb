@@ -8,6 +8,7 @@ class Libsoxr < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/soxr/soxr-0.1.3-Source.tar.xz'
   source_sha256 'b111c15fdc8c029989330ff559184198c161100a59312f5dc19ddeb9b5a15889'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoxr/0.1.3-1_armv7l/libsoxr-0.1.3-1-chromeos-armv7l.tar.xz',

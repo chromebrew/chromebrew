@@ -8,6 +8,7 @@ class Imlib2 < Package
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/enlightenment/imlib2-#{version}.tar.xz"
   source_sha256 '4a224038bfffbe5d4d250c44e05f4ee5ae24dcfef8395b1677c715c58f764d43'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_armv7l/imlib2-1.9.1-chromeos-armv7l.tar.zst',

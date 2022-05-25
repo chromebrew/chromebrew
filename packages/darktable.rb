@@ -8,6 +8,7 @@ class Darktable < Package
   compatibility 'x86_64'
   source_url 'https://github.com/darktable-org/darktable/releases/download/release-3.4.1/darktable-3.4.1.1.tar.xz'
   source_sha256 '00d57a6c3b86f4eb1791128b612e762f69df4be2c110965afac1fdcca5678143'
+  binary_compression 'tar.xz'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/darktable/3.4.1.1_x86_64/darktable-3.4.1.1-chromeos-x86_64.tar.xz'

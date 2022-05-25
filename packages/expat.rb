@@ -8,6 +8,7 @@ class Expat < Package
   compatibility 'all'
   source_url 'https://github.com/libexpat/libexpat.git'
   git_hashtag "R_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',

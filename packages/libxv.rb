@@ -8,6 +8,7 @@ class Libxv < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxv.git'
   git_hashtag "libXv-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxv/1.0.12_armv7l/libxv-1.0.12-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Ck4up < Package
   compatibility 'all'
   source_url 'http://jue.li/crux/ck4up/ck4up-1.4.tar.gz'
   source_sha256 '37f2f981cfdb6811a906e5520cb27203cb5ecb725d2180aaac59d377c1ac9fbf'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ck4up/1.4_armv7l/ck4up-1.4-chromeos-armv7l.tar.xz',

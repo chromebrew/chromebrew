@@ -8,6 +8,7 @@ class Cryptopp < Package
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://cryptopp.com/cryptopp870.zip'
   source_sha256 'd0d3a28fcb5a1f6ed66b3adf57ecfaed234a7e194e42be465c2ba70c744538dd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cryptopp/8.7.0_armv7l/cryptopp-8.7.0-chromeos-armv7l.tar.zst',

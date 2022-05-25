@@ -8,6 +8,7 @@ class Zsync < Package
   compatibility 'all'
   source_url 'https://zsync.moria.org.uk/download/zsync-0.6.2.tar.bz2'
   source_sha256 '0b9d53433387aa4f04634a6c63a5efa8203070f2298af72a705f9be3dda65af2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsync/0.6.2_armv7l/zsync-0.6.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gl2ps < Package
   compatibility 'all'
   source_url 'http://geuz.org/gl2ps/src/gl2ps-1.4.2.tgz'
   source_sha256 '8d1c00c1018f96b4b97655482e57dcb0ce42ae2f1d349cd6d4191e7848d9ffe9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gl2ps/1.4.2_armv7l/gl2ps-1.4.2-chromeos-armv7l.tar.xz',

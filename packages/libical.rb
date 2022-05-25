@@ -8,6 +8,7 @@ class Libical < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libical/libical/releases/download/v3.0.10/libical-3.0.10.tar.gz'
   source_sha256 'f933b3e6cf9d56a35bb5625e8e4a9c3a50239a85aea05ed842932c1a1dc336b4'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_armv7l/libical-3.0.10-chromeos-armv7l.tpxz',

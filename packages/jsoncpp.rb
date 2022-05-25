@@ -8,6 +8,7 @@ class Jsoncpp < Package
   compatibility 'all'
   source_url 'https://github.com/open-source-parsers/jsoncpp.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsoncpp/1.9.4_armv7l/jsoncpp-1.9.4-chromeos-armv7l.tpxz',

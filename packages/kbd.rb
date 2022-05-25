@@ -8,6 +8,7 @@ class Kbd < Package
   compatibility 'all'
   source_url 'https://github.com/legionus/kbd/archive/2.0.4.tar.gz'
   source_sha256 '18f45ee8790ddb18363fcb98d60e715528b1c04aa4501bd69111609d43240d3e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kbd/2.0.4_armv7l/kbd-2.0.4-chromeos-armv7l.tar.xz',

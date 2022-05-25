@@ -8,6 +8,7 @@ class Libxau < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXau-1.0.10.tar.xz'
   source_sha256 '8be6f292334d2f87e5b919c001e149a9fdc27005d6b3e053862ac6ebbf1a0c0a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.10_armv7l/libxau-1.0.10-chromeos-armv7l.tar.zst',

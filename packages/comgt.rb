@@ -8,6 +8,7 @@ class Comgt < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/comgt/comgt/0.32/comgt.0.32.tgz'
   source_sha256 '0cedb2a5aa608510da66a99aab74df3db363df495032e57e791a2ff55f1d7913'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/comgt/0.32_armv7l/comgt-0.32-chromeos-armv7l.tar.xz',

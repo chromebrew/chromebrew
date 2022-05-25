@@ -8,6 +8,7 @@ class Gnupg < Package
   compatibility 'all'
   source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.3.tar.bz2'
   source_sha256 'a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.4.3_armv7l/gnupg-2.4.3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Arduino_ide < Package
   compatibility 'all'
   source_url 'https://github.com/arduino/Arduino/releases/download/1.8.19/arduino-1.8.19.tar.xz'
   source_sha256 '350c7e64a38d562c3c5b61e9b93d4d64455a2c71bd0773a5c593198b8efa578d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.19_armv7l/arduino_ide-1.8.19-chromeos-armv7l.tar.zst',

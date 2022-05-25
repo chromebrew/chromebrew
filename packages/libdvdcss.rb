@@ -11,6 +11,7 @@ class Libdvdcss < Package
   compatibility 'all'
   source_url 'https://download.videolan.org/pub/libdvdcss/1.4.3/libdvdcss-1.4.3.tar.bz2'
   source_sha256 '233cc92f5dc01c5d3a96f5b3582be7d5cee5a35a52d3a08158745d3d86070079'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdvdcss/1.4.3_armv7l/libdvdcss-1.4.3-chromeos-armv7l.tar.zst',

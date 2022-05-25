@@ -8,6 +8,7 @@ class Wput < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/wput/wput/0.6.2/wput-0.6.2.tgz'
   source_sha256 '229d8bb7d045ca1f54d68de23f1bc8016690dc0027a16586712594fbc7fad8c7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wput/0.6.2_armv7l/wput-0.6.2-chromeos-armv7l.tar.xz',

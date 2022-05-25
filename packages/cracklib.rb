@@ -8,6 +8,7 @@ class Cracklib < Package
   compatibility 'all'
   source_url 'https://github.com/cracklib/cracklib/archive/v2.9.7.tar.gz'
   source_sha256 'ff4e6c3f86494c93719f5e4186e2c3ea9e265f41972ec21f7b87852aced704e6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cracklib/2.9.7_armv7l/cracklib-2.9.7-chromeos-armv7l.tar.xz',

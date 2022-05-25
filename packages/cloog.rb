@@ -8,6 +8,7 @@ class Cloog < Package
   compatibility 'all'
   source_url 'https://github.com/periscop/cloog/releases/download/cloog-0.20.0/cloog-0.20.0.tar.gz'
   source_sha256 '835c49951ff57be71dcceb6234d19d2cc22a3a5df84aea0a9d9760d92166fc72'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloog/0.20.0_armv7l/cloog-0.20.0-chromeos-armv7l.tar.xz',

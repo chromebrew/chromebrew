@@ -8,6 +8,7 @@ class Libvoamrwbenc < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/opencore-amr/vo-amrwbenc/vo-amrwbenc-0.1.3.tar.gz'
   source_sha256 '5652b391e0f0e296417b841b02987d3fd33e6c0af342c69542cbb016a71d9d4e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvoamrwbenc/0.1.3-0_armv7l/libvoamrwbenc-0.1.3-0-chromeos-armv7l.tar.xz',

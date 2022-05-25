@@ -8,6 +8,7 @@ class Ibmonitor < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/ibmonitor/ibmonitor/v1.4/ibmonitor-1.4.tar.gz'
   source_sha256 '331dac4553b5c336d1db3d35176ecebeaf15b39ad0432372cba583324a222e28'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibmonitor/1.4_armv7l/ibmonitor-1.4-chromeos-armv7l.tar.xz',

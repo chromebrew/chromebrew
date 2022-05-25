@@ -8,6 +8,7 @@ class Icu4c < Package
   compatibility 'all'
   source_url 'https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz'
   source_sha256 '818a80712ed3caacd9b652305e01afc7fa167e6f2e94996da44b90c2ab604ce1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/73.2_armv7l/icu4c-73.2-chromeos-armv7l.tar.zst',

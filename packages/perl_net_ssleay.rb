@@ -8,6 +8,7 @@ class Perl_net_ssleay < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.92.tar.gz'
   source_sha256 '47c2f2b300f2e7162d71d699f633dd6a35b0625a00cbda8c50ac01144a9396a9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38.2_armv7l/perl_net_ssleay-1.92-perl5.38.2-chromeos-armv7l.tar.zst',

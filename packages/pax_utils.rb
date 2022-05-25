@@ -8,6 +8,7 @@ class Pax_utils < Package
   compatibility 'all'
   source_url 'https://anongit.gentoo.org/git/proj/pax-utils.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pax_utils/1.3.7_armv7l/pax_utils-1.3.7-chromeos-armv7l.tar.zst',

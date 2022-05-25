@@ -8,6 +8,7 @@ class Transmission < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/transmission/transmission/releases/download/4.0.3/transmission-4.0.3.tar.xz'
   source_sha256 'b6b01fd58e42bb14f7aba0253db932ced050fcd2bba5d9f8469d77ddd8ad545a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.3_armv7l/transmission-4.0.3-chromeos-armv7l.tar.zst',

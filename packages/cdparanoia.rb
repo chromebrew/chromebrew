@@ -11,6 +11,7 @@ class Cdparanoia < Package
   compatibility 'all'
   source_url 'https://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz'
   source_sha256 '005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdparanoia/10.2_armv7l/cdparanoia-10.2-chromeos-armv7l.tar.zst',

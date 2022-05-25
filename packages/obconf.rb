@@ -8,6 +8,7 @@ class Obconf < Package
   compatibility 'all'
   source_url 'http://openbox.org/dist/obconf/obconf-2.0.4.tar.gz'
   source_sha256 '71a3e5f4ee246a27421ba85044f09d449f8de22680944ece9c471cd46a9356b9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/obconf/2.0.4_armv7l/obconf-2.0.4-chromeos-armv7l.tar.xz',

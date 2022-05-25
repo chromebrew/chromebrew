@@ -8,6 +8,7 @@ class Gif2apng < Package
   compatibility 'all'
   source_url "https://sourceforge.net/projects/gif2apng/files/#{version}/gif2apng-#{version}-src.zip"
   source_sha256 '3b21308e935d799b3ffb4a86c6e00ffa4cb9b3f72f52d58d51c66eb0574ae7d2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gif2apng/1.9_armv7l/gif2apng-1.9-chromeos-armv7l.tar.xz',

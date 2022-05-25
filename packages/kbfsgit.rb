@@ -8,6 +8,7 @@ class Kbfsgit < Package
   compatibility 'all'
   source_url 'https://github.com/keybase/kbfs/archive/v1.0.40.tar.gz'
   source_sha256 '2bbbfd2eb7ed12295375a182656af6dcc509827f7ed83c2b1dd0f72f56853fa5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kbfsgit/1.0.40_armv7l/kbfsgit-1.0.40-chromeos-armv7l.tar.xz',

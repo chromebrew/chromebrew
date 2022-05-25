@@ -9,6 +9,7 @@ class Librsync < Package
   compatibility 'all'
   source_url 'https://github.com/librsync/librsync.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_armv7l/librsync-2.3.2-1-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Js91 < Package
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '75e98daf53c5aea19d711a625d5d5e6dfdc8335965d3a19567c62f9d2961fc75'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js91/91.4.1_armv7l/js91-91.4.1-chromeos-armv7l.tpxz',

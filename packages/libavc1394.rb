@@ -8,6 +8,7 @@ class Libavc1394 < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/libavc1394/libavc1394/libavc1394-0.5.4.tar.gz'
   source_sha256 '7cb1ff09506ae911ca9860bef4af08c2403f3e131f6c913a2cbd6ddca4215b53'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4-1_armv7l/libavc1394-0.5.4-1-chromeos-armv7l.tpxz',

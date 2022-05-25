@@ -8,6 +8,7 @@ class Imgur < Package
   compatibility 'all'
   source_url 'https://github.com/tremby/imgur.sh/archive/v9.tar.gz'
   source_sha256 '27283385658ea5223e6cb42de6a2486591c98d8adaeacf581b7f0a541d467645'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imgur/v9_armv7l/imgur-v9-chromeos-armv7l.tar.xz',

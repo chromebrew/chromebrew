@@ -11,6 +11,7 @@ class Msgpack_c < Package
   compatibility 'all'
   source_url 'https://github.com/msgpack/msgpack-c/releases/download/c-4.0.0/msgpack-c-4.0.0.tar.gz'
   source_sha256 '420fe35e7572f2a168d17e660ef981a589c9cbe77faa25eb34a520e1fcc032c8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msgpack_c/4.0.0_armv7l/msgpack_c-4.0.0-chromeos-armv7l.tar.zst',

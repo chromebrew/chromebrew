@@ -8,6 +8,7 @@ class Ddgr < Package
   compatibility 'all'
   source_url 'https://github.com/jarun/ddgr.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.1_armv7l/ddgr-2.1-chromeos-armv7l.tar.zst',

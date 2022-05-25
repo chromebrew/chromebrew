@@ -8,6 +8,7 @@ class Tcpdump < Package
   compatibility 'all'
   source_url 'https://www.tcpdump.org/release/tcpdump-4.99.4.tar.gz'
   source_sha256 '0232231bb2f29d6bf2426e70a08a7e0c63a0d59a9b44863b7f5e2357a6e49fea'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.99.4_armv7l/tcpdump-4.99.4-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libgsf < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
   git_hashtag "LIBGSF_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.50_armv7l/libgsf-1.14.50-chromeos-armv7l.tar.zst',

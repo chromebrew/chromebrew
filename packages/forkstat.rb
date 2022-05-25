@@ -8,6 +8,7 @@ class Forkstat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/forkstat/forkstat-0.02.10.tar.xz'
   source_sha256 'af039bcd9f11ee76721d96c2c65d7e9c8d5df0a3f688bcbe0a5add2dd5dbb6da'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/forkstat/0.02.10_armv7l/forkstat-0.02.10-chromeos-armv7l.tar.xz',

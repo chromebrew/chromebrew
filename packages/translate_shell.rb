@@ -8,6 +8,7 @@ class Translate_shell < Package
   compatibility 'all'
   source_url 'https://github.com/soimort/translate-shell/archive/v0.9.6.12.tar.gz'
   source_sha256 '4c4843a8c66276190535b8435775ecb5d9c8286083a33cdbe2db608eba93ca97'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/translate_shell/0.9.6.12_armv7l/translate_shell-0.9.6.12-chromeos-armv7l.tar.xz',

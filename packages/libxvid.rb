@@ -8,6 +8,7 @@ class Libxvid < Package
   compatibility 'all'
   source_url 'https://downloads.xvid.com/downloads/xvidcore-1.3.5.tar.bz2'
   source_sha256 '7c20f279f9d8e89042e85465d2bcb1b3130ceb1ecec33d5448c4589d78f010b4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxvid/1.3.5_armv7l/libxvid-1.3.5-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Gnu_time < Package
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/time.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnu_time/1.9_i686/gnu_time-1.9-chromeos-i686.tar.xz',

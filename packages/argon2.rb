@@ -8,6 +8,7 @@ class Argon2 < Package
   compatibility 'all'
   source_url 'https://github.com/P-H-C/phc-winner-argon2/archive/20190702.tar.gz'
   source_sha256 'daf972a89577f8772602bf2eb38b6a3dd3d922bf5724d45e7f9589b5e830442c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/argon2/20190702_armv7l/argon2-20190702-chromeos-armv7l.tar.xz',

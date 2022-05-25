@@ -8,6 +8,7 @@ class Halibut < Package
   compatibility 'all'
   source_url 'https://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-1.2/halibut-1.2.tar.gz'
   source_sha256 '1aedfb6240f27190c36a390fcac9ce732edbdbaa31c85ee675b994e2b083163f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/halibut/1.2_armv7l/halibut-1.2-chromeos-armv7l.tar.xz',

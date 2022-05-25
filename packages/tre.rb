@@ -8,6 +8,7 @@ class Tre < Autotools
   compatibility 'all'
   source_url 'https://github.com/laurikari/tre.git'
   git_hashtag '07e66d07b44ae95a7a89f79c7ce1090f0f4d64db'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/07e66d0_armv7l/tre-07e66d0-chromeos-armv7l.tar.zst',

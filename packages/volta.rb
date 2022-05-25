@@ -8,6 +8,7 @@ class Volta < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/volta-cli/volta/archive/v1.1.1.tar.gz'
   source_sha256 'f2289274538124984bebb09b0968c2821368d8a80d60b9615e4f999f6751366d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/volta/1.1.1_armv7l/volta-1.1.1-chromeos-armv7l.tar.zst',

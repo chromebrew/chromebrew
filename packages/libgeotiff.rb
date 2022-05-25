@@ -8,6 +8,7 @@ class Libgeotiff < Package
   compatibility 'all'
   source_url 'https://github.com/OSGeo/libgeotiff/releases/download/1.7.1/libgeotiff-1.7.1.tar.gz'
   source_sha256 '05ab1347aaa471fc97347d8d4269ff0c00f30fa666d956baba37948ec87e55d6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1-1_armv7l/libgeotiff-1.7.1-1-chromeos-armv7l.tar.zst',

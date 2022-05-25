@@ -8,6 +8,7 @@ class Libxvmc < Package
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/xorg/lib/libxvmc/-/archive/libXvMC-#{version}/libxvmc-libXvMC-#{version}.tar.gz"
   source_sha256 '58a1766176947ec41cf44c917d831db5d619fec11f99637d6deca45458e9829b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxvmc/1.0.13_armv7l/libxvmc-1.0.13-chromeos-armv7l.tar.zst',

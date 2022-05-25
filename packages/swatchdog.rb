@@ -8,6 +8,7 @@ class Swatchdog < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/swatch/swatchdog/swatchdog-3.2.4.tar.gz'
   source_sha256 '5bb644d3750ee89b9aecab797df66b28b9fd174a5f0f96cd62367af8975b4f63'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swatchdog/3.2.4-1_armv7l/swatchdog-3.2.4-1-chromeos-armv7l.tar.xz',

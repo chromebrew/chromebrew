@@ -8,6 +8,7 @@ class Graphite < Package
   compatibility 'all'
   source_url 'https://github.com/silnrsi/graphite.git'
   git_hashtag '27572742003b93dc53dc02c01c237b72c6c25f54'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_armv7l/graphite-2757274-chromeos-armv7l.tar.zst',

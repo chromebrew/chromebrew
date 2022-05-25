@@ -8,6 +8,7 @@ class Swig1 < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/swig/swig/swig-1.3.40/swig-1.3.40.tar.gz'
   source_sha256 '1945b3693bcda6777bd05fef1015a0ad1a4604cde4a4a0a368b61ccfd143ac09'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig1/1.3.40_armv7l/swig1-1.3.40-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Ugrep < Autotools
   compatibility 'x86_64'
   source_url 'https://github.com/Genivia/ugrep.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ugrep/4.4.1_x86_64/ugrep-4.4.1-chromeos-x86_64.tar.zst'

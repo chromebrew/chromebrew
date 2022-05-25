@@ -8,6 +8,7 @@ class Cups < Package
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_armv7l/cups-2.4.7-chromeos-armv7l.tar.zst',

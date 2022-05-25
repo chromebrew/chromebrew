@@ -8,6 +8,7 @@ class Detox < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/detox/detox/1.2.0/detox-1.2.0.tar.bz2'
   source_sha256 'abfad90ee7d3e0fc53ce3b9da3253f9a800cdd92e3f8cc12a19394a7b1dcdbf8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/detox/1.2.0_armv7l/detox-1.2.0-chromeos-armv7l.tar.xz',

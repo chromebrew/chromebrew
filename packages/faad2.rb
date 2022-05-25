@@ -8,6 +8,7 @@ class Faad2 < Package
   compatibility 'all'
   source_url 'https://github.com/knik0/faad2/archive/2.10.1.tar.gz'
   source_sha256 '4c16c71295ca0cbf7c3dfe98eb11d8fa8d0ac3042e41604cfd6cc11a408cf264'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_armv7l/faad2-2.10.1-chromeos-armv7l.tar.zst',

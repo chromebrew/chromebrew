@@ -8,6 +8,7 @@ class Gnome_autoar < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-autoar.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.4_armv7l/gnome_autoar-0.4.4-chromeos-armv7l.tar.zst',

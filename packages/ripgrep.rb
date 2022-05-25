@@ -8,6 +8,7 @@ class Ripgrep < Package
   compatibility 'all'
   source_url 'https://github.com/BurntSushi/ripgrep/archive/12.1.0.tar.gz'
   source_sha256 'ca2d11dd7b7346734d47ad8073468e9c409fbe85842a608d372b8d4fb36be291'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ripgrep/12.1.0_armv7l/ripgrep-12.1.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Dav1d < Package
   compatibility 'all'
   source_url 'https://code.videolan.org/videolan/dav1d.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/1.3.0_armv7l/dav1d-1.3.0-chromeos-armv7l.tar.zst',

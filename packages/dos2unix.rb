@@ -8,6 +8,7 @@ class Dos2unix < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/dos2unix/dos2unix/7.4.0/dos2unix-7.4.0.tar.gz'
   source_sha256 'bac765abdbd95cdd87a71989d4382c32cf3cbfeee2153f0086cb9cf18261048a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dos2unix/7.4.0_armv7l/dos2unix-7.4.0-chromeos-armv7l.tar.xz',

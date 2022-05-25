@@ -8,6 +8,7 @@ class Powerstat < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.24.tar.gz'
   source_sha256 '12781cb108be1fc3be5ec893e6d025bfb40ada060bdc5f7715b65397620f2c7b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerstat/0.02.24_armv7l/powerstat-0.02.24-chromeos-armv7l.tar.xz',

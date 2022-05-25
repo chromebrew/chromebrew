@@ -11,6 +11,7 @@ class Libmpack < Package
   compatibility 'all'
   source_url 'https://github.com/libmpack/libmpack/archive/1.0.5.tar.gz'
   source_sha256 '4ce91395d81ccea97d3ad4cb962f8540d166e59d3e2ddce8a22979b49f108956'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpack/1.0.5_armv7l/libmpack-1.0.5-chromeos-armv7l.tar.zst',

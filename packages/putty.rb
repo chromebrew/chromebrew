@@ -8,6 +8,7 @@ class Putty < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://the.earth.li/~sgtatham/putty/latest/putty-0.80.tar.gz'
   source_sha256 '2013c83a721b1753529e9090f7c3830e8fe4c80a070ccce764539badb3f67081'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_armv7l/putty-0.80-chromeos-armv7l.tar.zst',

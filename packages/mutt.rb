@@ -8,6 +8,7 @@ class Mutt < Autotools
   compatibility 'all'
   source_url 'ftp://ftp.mutt.org/pub/mutt/mutt-2.2.12.tar.gz'
   source_sha256 '043af312f64b8e56f7fd0bf77f84a205d4c498030bd9586457665c47bb18ce38'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutt/2.2.12_armv7l/mutt-2.2.12-chromeos-armv7l.tar.zst',

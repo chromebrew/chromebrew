@@ -8,6 +8,7 @@ class Twm < Package
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/app/twm-1.0.11.tar.xz'
   source_sha256 'f4e8a842dec410e79741f25ed4dfac09df080835d0bba2e3983b5914569b68c7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/twm/1.0.11_armv7l/twm-1.0.11-chromeos-armv7l.tar.xz',

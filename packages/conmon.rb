@@ -11,6 +11,7 @@ class Conmon < Package
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/conmon.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/conmon/2.1.5_armv7l/conmon-2.1.5-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Imagemagick6 < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick6.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.13-1_armv7l/imagemagick6-6.9.13-1-chromeos-armv7l.tar.zst',

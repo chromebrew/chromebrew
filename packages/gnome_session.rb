@@ -8,6 +8,7 @@ class Gnome_session < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-session/-/archive/#{version}/gnome-session-#{version}.tar.bz2"
   source_sha256 'a56b5a4179e4e567fb360e98ae1a1b8b8e3deed8fb0ff66d3f343e4623f59f3c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/43.0_armv7l/gnome_session-43.0-chromeos-armv7l.tar.zst',

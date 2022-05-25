@@ -9,6 +9,7 @@ class Musl_libidn2 < Package
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{@_ver}.tar.gz"
   source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libidn2/2.3.2-3_armv7l/musl_libidn2-2.3.2-3-chromeos-armv7l.tar.zst',

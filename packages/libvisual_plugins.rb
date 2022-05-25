@@ -8,6 +8,7 @@ class Libvisual_plugins < Package
   compatibility 'all'
   source_url 'https://github.com/Libvisual/libvisual/archive/libvisual-plugins-0.4.0.tar.gz'
   source_sha256 '862178e0f5c0c837f768b362c25eac613fc75ef91189cd929c635e23922b4c16'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisual_plugins/0.4.0_armv7l/libvisual_plugins-0.4.0-chromeos-armv7l.tar.xz',

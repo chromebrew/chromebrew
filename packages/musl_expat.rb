@@ -8,6 +8,7 @@ class Musl_expat < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.4.8/expat-2.4.8.tar.xz'
   source_sha256 'f79b8f904b749e3e0d20afeadecf8249c55b2e32d4ebb089ae378df479dcaf25'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.8_armv7l/musl_expat-2.4.8-chromeos-armv7l.tar.zst',

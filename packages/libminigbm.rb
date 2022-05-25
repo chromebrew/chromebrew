@@ -11,6 +11,7 @@ class Libminigbm < Package
   license 'custom'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform/minigbm.git'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libminigbm/407eb0e_armv7l/libminigbm-407eb0e-chromeos-armv7l.tar.zst',

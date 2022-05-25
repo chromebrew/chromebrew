@@ -11,6 +11,7 @@ class Shaderc < Package
   compatibility 'all'
   source_url 'https://github.com/google/shaderc.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_armv7l/shaderc-2023.8-chromeos-armv7l.tar.zst',

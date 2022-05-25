@@ -8,6 +8,7 @@ class Perl_uri < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz'
   source_sha256 '8fed5f819905c8a8e18f4447034322d042c3536b43c13ac1f09ba92e1a50a394'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.38_armv7l/perl_uri-5.19-perl5.38-chromeos-armv7l.tar.zst',

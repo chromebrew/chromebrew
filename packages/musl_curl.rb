@@ -8,6 +8,7 @@ class Musl_curl < Package
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{version}.tar.xz"
   source_sha256 '2d118b43f547bfe5bae806d8d47b4e596ea5b25a6c1f080aef49fbcd817c5db8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_curl/7.84.0_armv7l/musl_curl-7.84.0-chromeos-armv7l.tar.zst',

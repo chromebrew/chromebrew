@@ -8,6 +8,7 @@ class Xorg_vmmouse_driver < Package
   compatibility 'i686,x86_64'
   source_url 'https://www.x.org/pub/individual/driver/xf86-input-vmmouse-13.1.0.tar.bz2'
   source_sha256 '0af558957ac1be1b2863712c2475de8f4d7f14921fd01ded2e2fde4921b19319'
+  binary_compression 'tar.xz'
 
   depends_on 'xorg_server' => :build
 

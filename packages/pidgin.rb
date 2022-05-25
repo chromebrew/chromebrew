@@ -8,6 +8,7 @@ class Pidgin < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/pidgin/Pidgin/2.13.0/pidgin-2.13.0.tar.bz2'
   source_sha256 '2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pidgin/2.13.0_armv7l/pidgin-2.13.0-chromeos-armv7l.tar.xz',

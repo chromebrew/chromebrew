@@ -8,6 +8,7 @@ class Pkgconfig < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pkg-config/pkg-config/-/archive/d97db4fae4c1cd099b506970b285dc2afd818ea2/pkg-config-d97db4fae4c1cd099b506970b285dc2afd818ea2.tar.bz2'
   source_sha256 'beeeb23b4581241517e45e57d901459022376c3143f415fac1a1216d583b1796'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkgconfig/0.29.2-d97d_armv7l/pkgconfig-0.29.2-d97d-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Stack < Package
   compatibility 'all'
   source_url "https://github.com/commercialhaskell/stack/releases/download/v#{version}/stack-#{version}-linux-x86_64.tar.gz"
   source_sha256 '938f689dc45e2693ab1ca3ea215790b3786dfd531dcf6c0bf40842c24e579ae9'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',

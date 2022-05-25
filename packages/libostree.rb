@@ -8,6 +8,7 @@ class Libostree < Package
   compatibility 'all'
   source_url "https://github.com/ostreedev/ostree/releases/download/v#{version}/libostree-#{version}.tar.xz"
   source_sha256 'fdaa5992d0a6f62157152355449ac8476c50df6602be398e9ad10438cc1e679b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libostree/2020.8_armv7l/libostree-2020.8-chromeos-armv7l.tar.xz',

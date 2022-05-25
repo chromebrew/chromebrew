@@ -8,6 +8,7 @@ class Guile < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/guile/guile-3.0.9.tar.xz'
   source_sha256 '1a2625ac72b2366e95792f3fe758fd2df775b4044a90a4a9787326e66c0d750d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_armv7l/guile-3.0.9-chromeos-armv7l.tar.zst',

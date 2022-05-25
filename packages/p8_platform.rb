@@ -11,6 +11,7 @@ class P8_platform < Package
   compatibility 'all'
   source_url 'https://github.com/Pulse-Eight/platform/archive/p8-platform-2.1.0.1.tar.gz'
   source_sha256 '064f8d2c358895c7e0bea9ae956f8d46f3f057772cb97f2743a11d478a0f68a0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p8_platform/2.1.0.1_armv7l/p8_platform-2.1.0.1-chromeos-armv7l.tar.zst',

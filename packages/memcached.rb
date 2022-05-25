@@ -8,6 +8,7 @@ class Memcached < Package
   compatibility 'all'
   source_url 'https://memcached.org/files/memcached-1.5.16.tar.gz'
   source_sha256 '45a22c890dc1edb27db567fb4c9c25b91bfd578477c08c5fb10dca93cc62cc5a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/memcached/1.5.16_armv7l/memcached-1.5.16-chromeos-armv7l.tar.xz',

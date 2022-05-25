@@ -8,6 +8,7 @@ class Percona_server < Package
   compatibility 'all'
   source_url 'https://www.percona.com/downloads/Percona-Server-LATEST/Percona-Server-5.7.20-19/source/tarball/percona-server-5.7.20-19.tar.gz'
   source_sha256 '17f06c07165954e7eacc3ba2cac0e1d4ba65b0b568f2437298d3c17a6a0940fd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',

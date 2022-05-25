@@ -8,6 +8,7 @@ class Libsigsegv < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libsigsegv/libsigsegv-2.14.tar.gz'
   source_sha256 'cdac3941803364cf81a908499beb79c200ead60b6b5b40cad124fd1e06caa295'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigsegv/2.14_armv7l/libsigsegv-2.14-chromeos-armv7l.tpxz',

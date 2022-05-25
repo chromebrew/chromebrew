@@ -8,6 +8,7 @@ class Goaccess < Package
   compatibility 'all'
   source_url 'http://tar.goaccess.io/goaccess-1.2.tar.gz'
   source_sha256 '6ba9f66540ea58fc2c17f175265f9ed76d74a8432eeac1182b74ebf4f2cd3414'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/goaccess/1.2_armv7l/goaccess-1.2-chromeos-armv7l.tar.xz',

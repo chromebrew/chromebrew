@@ -8,6 +8,7 @@ class Musl_xz < Package
   compatibility 'all'
   source_url 'https://github.com/xz-mirror/xz.git'
   git_hashtag 'e7da44d5151e21f153925781ad29334ae0786101'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_xz/5.2.5-e7da-1_armv7l/musl_xz-5.2.5-e7da-1-chromeos-armv7l.tpxz',

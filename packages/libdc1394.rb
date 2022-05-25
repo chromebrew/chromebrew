@@ -8,6 +8,7 @@ class Libdc1394 < Package
   license 'LGPL-2.1'
   source_url 'https://sourceforge.net/projects/libdc1394/files/libdc1394-2/2.2.6/libdc1394-2.2.6.tar.gz'
   source_sha256 '2b905fc9aa4eec6bdcf6a2ae5f5ba021232739f5be047dec8fe8dd6049c10fed'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdc1394/2.2.6_armv7l/libdc1394-2.2.6-chromeos-armv7l.tpxz',

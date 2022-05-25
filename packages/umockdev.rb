@@ -8,6 +8,7 @@ class Umockdev < Package
   compatibility 'all'
   source_url 'https://github.com/martinpitt/umockdev/archive/0.9.4.tar.gz'
   source_sha256 '9f13e8a836ef36158e2cc2b679cb99639e1f68a430b04fbe4dd07d3cb2b32a75'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/umockdev/0.9.4_armv7l/umockdev-0.9.4-chromeos-armv7l.tar.xz',

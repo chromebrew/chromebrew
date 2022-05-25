@@ -8,6 +8,7 @@ class Libunbound < Autotools
   compatibility 'all'
   source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
   source_sha256 '3da95490a85cff6420f26fae0b84a49f5112df1bf1b7fc34f8724f02082cb712'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.18.0_armv7l/libunbound-1.18.0-chromeos-armv7l.tar.zst',

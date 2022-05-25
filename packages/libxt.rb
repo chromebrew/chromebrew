@@ -8,6 +8,7 @@ class Libxt < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXt-1.2.1.tar.gz'
   source_sha256 '6da1bfa9dd0ed87430a5ce95b129485086394df308998ebe34d98e378e3dfb33'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxt/1.2.1_armv7l/libxt-1.2.1-chromeos-armv7l.tar.zst',

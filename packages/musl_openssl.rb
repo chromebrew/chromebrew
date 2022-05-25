@@ -8,6 +8,7 @@ class Musl_openssl < Package
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{version}.tar.gz"
   source_sha256 '1761d4f5b13a1028b9b6f3d4b8e17feb0cedc9370f6afe61d7193d2cdce83323'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.10_armv7l/musl_openssl-3.0.10-chromeos-armv7l.tar.zst',

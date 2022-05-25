@@ -8,6 +8,7 @@ class Netcat < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/netcat/netcat/0.7.1/netcat-0.7.1.tar.gz'
   source_sha256 '30719c9a4ffbcf15676b8f528233ccc54ee6cba96cb4590975f5fd60c68a066f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcat/0.7.1_armv7l/netcat-0.7.1-chromeos-armv7l.tar.xz',

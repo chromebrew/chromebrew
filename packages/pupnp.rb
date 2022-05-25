@@ -8,6 +8,7 @@ class Pupnp < Package
   license 'BSD-3'
   source_url 'https://github.com/pupnp/pupnp.git'
   git_hashtag "release-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pupnp/1.14.12_armv7l/pupnp-1.14.12-chromeos-armv7l.tpxz',

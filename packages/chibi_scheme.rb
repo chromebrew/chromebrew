@@ -8,6 +8,7 @@ class Chibi_scheme < Package
   compatibility 'all'
   source_url 'https://github.com/ashinn/chibi-scheme/archive/0.8.tar.gz'
   source_sha256 '8a077859b123216c123c243db391b0fe4c0cf73978c7cdd7b8ea853a48192756'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chibi_scheme/0.8_armv7l/chibi_scheme-0.8-chromeos-armv7l.tar.xz',

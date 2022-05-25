@@ -8,6 +8,7 @@ class Libportal < Package
   compatibility 'all'
   source_url 'https://github.com/flatpak/libportal/archive/refs/tags/0.6.tar.gz'
   source_sha256 '8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libportal/0.6-1_armv7l/libportal-0.6-1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Perl_test_output < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Test-Output-1.033.tar.gz'
   source_sha256 'f6a8482740b075fad22aaf4d987d38ef927c6d2b452d4ae0d0bd8f779830556e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.38_armv7l/perl_test_output-1.033-perl5.38-chromeos-armv7l.tar.zst',

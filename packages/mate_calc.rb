@@ -8,6 +8,7 @@ class Mate_calc < Package
   compatibility 'all'
   source_url 'https://pub.mate-desktop.org/releases/1.21/mate-calc-1.21.0.tar.xz'
   source_sha256 'c6b2c4d832f67d5f3d1293cb143e428365077e3cdfe4fc4bb80b3fce5362b51e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_calc/1.21_armv7l/mate_calc-1.21-chromeos-armv7l.tar.xz',

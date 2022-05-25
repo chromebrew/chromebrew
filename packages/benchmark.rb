@@ -8,6 +8,7 @@ class Benchmark < Package
   compatibility 'all'
   source_url 'https://github.com/google/benchmark/archive/v1.5.2.tar.gz'
   source_sha256 'dccbdab796baa1043f04982147e67bb6e118fe610da2c65f88912d73987e700c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/benchmark/1.5.2_armv7l/benchmark-1.5.2-chromeos-armv7l.tar.xz',

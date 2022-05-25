@@ -8,6 +8,7 @@ class Premake < Package
   compatibility 'all'
   source_url 'https://github.com/premake/premake-core/releases/download/v5.0.0-alpha15/premake-5.0.0-alpha15-src.zip'
   source_sha256 '880f56e7cb9f4945d1cb879f059189462c1b7bf62ef43ac7d25842dfb177dd53'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/premake/5.0.0-alpha15_armv7l/premake-5.0.0-alpha15-chromeos-armv7l.tar.xz',

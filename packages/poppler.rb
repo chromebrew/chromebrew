@@ -8,6 +8,7 @@ class Poppler < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://poppler.freedesktop.org/poppler-#{version}.tar.xz"
   source_sha256 'f29b4b4bf47572611176454c8f21506d71d27eca5011a39aa44038b30b957db0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/23.07.0_armv7l/poppler-23.07.0-chromeos-armv7l.tar.zst',

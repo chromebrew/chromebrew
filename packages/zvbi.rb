@@ -8,6 +8,7 @@ class Zvbi < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/zapping/zvbi/0.2.35/zvbi-0.2.35.tar.bz2'
   source_sha256 'fc883c34111a487c4a783f91b1b2bb5610d8d8e58dcba80c7ab31e67e4765318'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',

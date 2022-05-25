@@ -8,6 +8,7 @@ class Libinstpatch < Package
   license 'LGPL-2.1'
   source_url 'https://github.com/swami/libinstpatch.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinstpatch/1.1.6_armv7l/libinstpatch-1.1.6-chromeos-armv7l.tpxz',

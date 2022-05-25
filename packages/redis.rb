@@ -8,6 +8,7 @@ class Redis < Package
   compatibility 'all'
   source_url 'http://download.redis.io/releases/redis-4.0.6.tar.gz'
   source_sha256 '769b5d69ec237c3e0481a262ff5306ce30db9b5c8ceb14d1023491ca7be5f6fa'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/redis/4.0.6_armv7l/redis-4.0.6-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Cbase < Package
   compatibility 'all'
   source_url 'https://www.hyperrealm.com/packages/cbase-1.3.7.tar.gz'
   source_sha256 'c4d155686ac2e9d1480319de311967fadad745a6ab6971d53d495d9a9e52dc47'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbase/1.3.7-3_armv7l/cbase-1.3.7-3-chromeos-armv7l.tar.xz',

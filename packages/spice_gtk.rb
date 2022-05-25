@@ -11,6 +11,7 @@ class Spice_gtk < Package
   compatibility 'all'
   source_url 'https://www.spice-space.org/download/gtk/spice-gtk-0.41.tar.xz'
   source_sha256 'd8f8b5cbea9184702eeb8cc276a67d72acdb6e36e7c73349fb8445e5bca0969f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.41_armv7l/spice_gtk-0.41-chromeos-armv7l.tar.zst',

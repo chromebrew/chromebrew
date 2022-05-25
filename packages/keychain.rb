@@ -8,6 +8,7 @@ class Keychain < Package
   compatibility 'all'
   source_url 'https://github.com/funtoo/keychain/archive/2.8.5.tar.gz'
   source_sha256 'dcce703e5001211c8ebc0528f45b523f84d2bceeb240600795b4d80cb8475a0b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keychain/2.8.5_armv7l/keychain-2.8.5-chromeos-armv7l.tar.xz',

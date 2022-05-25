@@ -8,6 +8,7 @@ class Tcsh < Package
   compatibility 'all'
   source_url 'https://astron.com/pub/tcsh/tcsh-6.22.03.tar.gz'
   source_sha256 'be2cfd653d2a0c7f506d2dd14c12324ba749bd484037be6df44a3973f52262b7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcsh/6.22.03_armv7l/tcsh-6.22.03-chromeos-armv7l.tar.xz',

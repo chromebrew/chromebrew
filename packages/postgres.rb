@@ -8,6 +8,7 @@ class Postgres < Package
   compatibility 'all'
   source_url 'https://ftp.postgresql.org/pub/source/v16.1/postgresql-16.1.tar.bz2'
   source_sha256 'ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.1_armv7l/postgres-16.1-chromeos-armv7l.tar.zst',

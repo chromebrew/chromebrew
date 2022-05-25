@@ -8,6 +8,7 @@ class Libgphoto < Package
   compatibility 'all'
   source_url "https://github.com/gphoto/libgphoto2/archive/libgphoto2-#{version.gsub(/[.]/, '_')}-release.tar.gz"
   source_sha256 '9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgphoto/2.5.27_armv7l/libgphoto-2.5.27-chromeos-armv7l.tar.xz',

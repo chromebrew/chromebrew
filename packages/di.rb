@@ -8,6 +8,7 @@ class Di < Package
   compatibility 'all'
   source_url 'https://gentoo.com/di/di-4.47.1.tar.gz'
   source_sha256 'eea8ad94197d9f11790afea0924d8bf29ec001c32eb6209e81c4e13766a2abad'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/di/4.47.1_armv7l/di-4.47.1-chromeos-armv7l.tar.xz',

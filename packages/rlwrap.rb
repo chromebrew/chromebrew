@@ -8,6 +8,7 @@ class Rlwrap < Package
   compatibility 'all'
   source_url 'https://github.com/hanslub42/rlwrap/archive/v0.43.tar.gz'
   source_sha256 '29e5a850fbe4753f353b0734e46ec0da043621bdcf7b52a89b77517f3941aade'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rlwrap/0.43_armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',

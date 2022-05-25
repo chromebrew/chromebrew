@@ -8,6 +8,7 @@ class Libofx < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/libofx/libofx/libofx-0.9.13.tar.gz'
   source_sha256 '57eaf97cddbaf82c24f26b8f5cf8b2fbfd4969c74500a2c9acc9082b83bcc0e4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libofx/0.9.13_armv7l/libofx-0.9.13-chromeos-armv7l.tar.xz',

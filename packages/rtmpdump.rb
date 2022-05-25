@@ -8,6 +8,7 @@ class Rtmpdump < Package
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/rtmpdump.git'
   git_hashtag 'f1b83c10d8beb43fcc70a6e88cf4325499f25857'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtmpdump/f1b83_armv7l/rtmpdump-f1b83-chromeos-armv7l.tpxz',

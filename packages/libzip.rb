@@ -8,6 +8,7 @@ class Libzip < Package
   compatibility 'all'
   source_url 'https://libzip.org/download/libzip-1.7.3.tar.xz'
   source_sha256 'a60473ffdb7b4260c08bfa19c2ccea0438edac11193c3afbbb1f17fbcf6c6132'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libzip/1.7.3-1_armv7l/libzip-1.7.3-1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Slang < Package
   compatibility 'all'
   source_url 'https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2'
   source_sha256 'f9145054ae131973c61208ea82486d5dd10e3c5cdad23b7c4a0617743c8f5a18'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/slang/2.3.3_armv7l/slang-2.3.3-chromeos-armv7l.tar.zst',

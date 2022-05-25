@@ -8,6 +8,7 @@ class Php73 < Package
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php73/7.3.33_armv7l/php73-7.3.33-chromeos-armv7l.tar.xz',

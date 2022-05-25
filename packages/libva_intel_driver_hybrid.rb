@@ -8,6 +8,7 @@ class Libva_intel_driver_hybrid < Package
   compatibility 'i686 x86_64'
   source_url 'https://github.com/intel/intel-vaapi-driver/archive/2.4.1.tar.gz'
   source_sha256 '03cd7e16acc94f828b6e7f3087863d8ca06e99ffa3385588005b1984bdd56157'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva_intel_driver_hybrid/2.4.1-1_i686/libva_intel_driver_hybrid-2.4.1-1-chromeos-i686.tar.xz',

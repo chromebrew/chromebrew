@@ -8,6 +8,7 @@ class Ffcall < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libffcall/libffcall-2.0.tar.gz'
   source_sha256 '41aad2b449d90a5308e72267829db006dc9f9cc8736807082e1f2daef680196c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffcall/2.0_armv7l/ffcall-2.0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libbytesize < Package
   compatibility 'all'
   source_url 'https://github.com/storaged-project/libbytesize/releases/download/2.6/libbytesize-2.6.tar.gz'
   source_sha256 'efaa2b35b2bb3b52bf7b4ff5d0ed2c5c61360a5196053808d615dd0aa2cf0741'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbytesize/2.6_armv7l/libbytesize-2.6-chromeos-armv7l.tar.zst',

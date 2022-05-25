@@ -11,6 +11,7 @@ class Fakeroot_ng < Package
     source_url 'https://sourceforge.net/projects/fakerootng/files/fakeroot-ng/fakeroot-ng-0.18.tar.gz'
     source_sha256 '189eacda630752980d40e34b2c01ce23d839daab3d691a4706bb9eac79f7e144'
   end
+  binary_compression 'tar.xz'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot_ng/0.18_x86_64/fakeroot_ng-0.18-chromeos-x86_64.tar.xz'

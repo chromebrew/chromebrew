@@ -9,6 +9,7 @@ class Ninja < CMake
   compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja.git'
   git_hashtag '885b4efb41c039789b81f0dc0d67c1ed0faea17c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.12.0-885b4ef_armv7l/ninja-1.12.0-885b4ef-chromeos-armv7l.tar.zst',

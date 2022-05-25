@@ -8,6 +8,7 @@ class Mjpegtools < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/mjpeg/files/mjpegtools/2.2.1/mjpegtools-2.2.1.tar.gz'
   source_sha256 'b180536d7d9960b05e0023a197b00dcb100929a49aab71d19d55f4a1b210f49a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.1_armv7l/mjpegtools-2.2.1-chromeos-armv7l.tar.zst',

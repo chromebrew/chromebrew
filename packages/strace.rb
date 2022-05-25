@@ -8,6 +8,7 @@ class Strace < Autotools
   compatibility 'all'
   source_url 'https://strace.io/files/6.6/strace-6.6.tar.xz'
   source_sha256 '421b4186c06b705163e64dc85f271ebdcf67660af8667283147d5e859fc8a96c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/6.6_armv7l/strace-6.6-chromeos-armv7l.tar.zst',

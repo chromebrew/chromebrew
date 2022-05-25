@@ -8,6 +8,7 @@ class Percona_toolkit < Package
   compatibility 'all'
   source_url 'https://www.percona.com/downloads/percona-toolkit/3.0.7/source/tarball/percona-toolkit-3.0.7.tar.gz'
   source_sha256 '40f1a2241fb3ac1049e43ea75056f02d8af48c1eb731b48a4b564a054f8227e3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_toolkit/3.0.7_armv7l/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',

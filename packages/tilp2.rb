@@ -8,6 +8,7 @@ class Tilp2 < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/tilp2-1.18.tar.bz2'
   source_sha256 '7b3ab363eeb52504d6ef5811c5d264f8016060bb7bd427be5a064c2ed7384e47'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tilp2/1.18_armv7l/tilp2-1.18-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Xcb_util_cursor < Package
   compatibility 'all'
   source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz'
   source_sha256 '28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_armv7l/xcb_util_cursor-0.1.4-chromeos-armv7l.tar.zst',

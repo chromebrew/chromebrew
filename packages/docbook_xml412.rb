@@ -9,6 +9,7 @@ class Docbook_xml412 < Package
   compatibility 'all'
   source_url 'https://docbook.org/xml/4.1.2/docbkx412.zip'
   source_sha256 '30f0644064e0ea71751438251940b1431f46acada814a062870f486c772e7772'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml412/4.1.2-1_armv7l/docbook_xml412-4.1.2-1-chromeos-armv7l.tar.xz',

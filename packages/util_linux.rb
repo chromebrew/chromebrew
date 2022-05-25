@@ -8,6 +8,7 @@ class Util_linux < Package
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz'
   source_sha256 '7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_armv7l/util_linux-2.39.3-py3.12-chromeos-armv7l.tar.zst',

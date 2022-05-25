@@ -8,6 +8,7 @@ class Yaru < Package
   compatibility 'all'
   source_url "https://github.com/ubuntu/yaru/archive/refs/tags/#{version}.tar.gz"
   source_sha256 '8cbbb1fcc7fa1e46e48d870cc1f941069e8213ac53200001aa9548ad79086836'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yaru/21.04.1_armv7l/yaru-21.04.1-chromeos-armv7l.tar.xz',

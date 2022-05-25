@@ -8,6 +8,7 @@ class Wcslib < Autotools
   compatibility 'all'
   source_url 'https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib-8.2.1.tar.bz2'
   source_sha256 'b666c79568fc0cf16b6d585ff3d560ae5e472c3b1125a90ccc8038f8e84aca19'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wcslib/8.2.1_armv7l/wcslib-8.2.1-chromeos-armv7l.tar.zst',

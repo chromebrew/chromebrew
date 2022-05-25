@@ -8,6 +8,7 @@ class Go_fetch < Package
   compatibility 'all'
   source_url 'https://github.com/gruntwork-io/fetch.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_fetch/0.4.2_armv7l/go_fetch-0.4.2-chromeos-armv7l.tar.xz',

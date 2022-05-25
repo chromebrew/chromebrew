@@ -11,6 +11,7 @@ class Qt5_quickcontrols < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtquickcontrols.git'
   git_hashtag 'dcc90558d9c0cba41eec7df290943994289b0e87' # from kde/5.15 branch
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_quickcontrols/5.15.11-dcc9055_armv7l/qt5_quickcontrols-5.15.11-dcc9055-chromeos-armv7l.tar.zst',

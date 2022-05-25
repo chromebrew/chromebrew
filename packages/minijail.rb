@@ -11,6 +11,7 @@ class Minijail < Package
   compatibility 'all'
   source_url 'https://android.googlesource.com/platform/external/minijail.git'
   git_hashtag '81e4b0e245f6fef9a82800d3f182e73127bfa2fe'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minijail/81e4b0e2_armv7l/minijail-81e4b0e2-chromeos-armv7l.tar.zst',

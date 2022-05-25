@@ -11,6 +11,7 @@ class Xorg_intel_driver < Package
   compatibility 'x86_64'
   source_url "https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/#{@_ver}/xf86-video-intel-#{@_ver}.tar.gz"
   source_sha256 '7936e8ddc2f09f272584cc9e9a2d265e9ab435f645ccd12085cd56291fa70653'
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_intel_driver/2.99.917+916+g31486f4_x86_64/xorg_intel_driver-2.99.917+916+g31486f4-chromeos-x86_64.tar.zst'

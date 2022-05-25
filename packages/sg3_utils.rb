@@ -8,6 +8,7 @@ class Sg3_utils < Package
   compatibility 'all'
   source_url 'http://sg.danny.cz/sg/p/sg3_utils-1.44.tar.xz'
   source_sha256 'ca94ac106510742cd8ff5ead4a7e5c89d410653291401daf4632d2bef2a35b05'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sg3_utils/1.44_armv7l/sg3_utils-1.44-chromeos-armv7l.tar.xz',

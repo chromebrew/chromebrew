@@ -8,6 +8,7 @@ class Gst_editing_services < Package
   compatibility 'all'
   source_url "https://gstreamer.freedesktop.org/src/gst-editing-services/gst-editing-services-#{version}.tar.xz"
   source_sha256 '4687b870a7de18aebf50f45ff572ad9e0138020e3479e02a6f056a0c4c7a1d04'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_editing_services/1.18.4_armv7l/gst_editing_services-1.18.4-chromeos-armv7l.tar.xz',

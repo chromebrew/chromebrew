@@ -8,6 +8,7 @@ class Xzutils < Autotools
   compatibility 'all'
   source_url 'https://tukaani.org/xz/xz-5.4.5.tar.gz'
   source_sha256 '135c90b934aee8fbc0d467de87a05cb70d627da36abe518c357a873709e5b7d6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.4.5_armv7l/xzutils-5.4.5-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Ncdu < Package
   compatibility 'all'
   source_url 'https://dev.yorhel.nl/download/ncdu-1.12.tar.gz'
   source_sha256 '820e4e4747a2a2ec7a2e9f06d2f5a353516362c22496a10a9834f871b877499a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncdu/1.12_armv7l/ncdu-1.12-chromeos-armv7l.tar.xz',

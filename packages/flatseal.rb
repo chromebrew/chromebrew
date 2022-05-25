@@ -8,6 +8,7 @@ class Flatseal < Package
   compatibility 'all'
   source_url 'https://github.com/tchx84/Flatseal.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.7.5_armv7l/flatseal-1.7.5-chromeos-armv7l.tpxz',

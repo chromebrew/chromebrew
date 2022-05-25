@@ -8,6 +8,7 @@ class Flatpak < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/flatpak/flatpak.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatpak/1.15.6_armv7l/flatpak-1.15.6-chromeos-armv7l.tar.zst',

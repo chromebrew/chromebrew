@@ -8,6 +8,7 @@ class Qt5_wayland < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwayland.git'
   git_hashtag '4de268cbaf6ff3b633429577f06d3d746a3b202a' # from kde/5.15 branch
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_wayland/5.15.11-4de268c_armv7l/qt5_wayland-5.15.11-4de268c-chromeos-armv7l.tar.zst',

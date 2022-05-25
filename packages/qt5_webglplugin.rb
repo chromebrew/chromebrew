@@ -8,6 +8,7 @@ class Qt5_webglplugin < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwebglplugin.git'
   git_hashtag 'ddcff45e8f2ca9f229017b3ded62327d2fb50af2' # from kde/5.15 branch
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webglplugin/5.15.11-ddcff45_armv7l/qt5_webglplugin-5.15.11-ddcff45-chromeos-armv7l.tar.zst',

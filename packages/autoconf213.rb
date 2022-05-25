@@ -8,6 +8,7 @@ class Autoconf213 < Package
   compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz'
   source_sha256 'f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13-1_armv7l/autoconf213-2.13-1-chromeos-armv7l.tpxz',

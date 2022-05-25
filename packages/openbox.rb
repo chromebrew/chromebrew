@@ -8,6 +8,7 @@ class Openbox < Package
   compatibility 'all'
   source_url 'http://openbox.org/dist/openbox/openbox-3.6.1.tar.xz'
   source_sha256 'abe75855cc5616554ffd47134ad15291fe37ebbebf1a80b69cbde9d670f0e26d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openbox/3.6.1_armv7l/openbox-3.6.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gpgme < Autotools
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
   source_sha256 'a0c316f7ab7d3bfb01a8753c3370dc906e5b61436021f3b54ff1483b513769bd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.23.1_armv7l/gpgme-1.23.1-chromeos-armv7l.tar.zst',

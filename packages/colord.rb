@@ -8,6 +8,7 @@ class Colord < Package
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/colord/releases/colord-#{version}.tar.xz"
   source_sha256 'b774ea443d239f4a2ee1853bd678426e669ddeda413dcb71cea1638c4d6c5e17'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/colord/1.4.5_armv7l/colord-1.4.5-chromeos-armv7l.tar.xz',

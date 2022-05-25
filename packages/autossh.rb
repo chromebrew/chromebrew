@@ -8,6 +8,7 @@ class Autossh < Package
   compatibility 'all'
   source_url 'https://www.harding.motd.ca/autossh/autossh-1.4g.tgz'
   source_sha256 '5fc3cee3361ca1615af862364c480593171d0c54ec156de79fc421e31ae21277'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autossh/1.4g_armv7l/autossh-1.4g-chromeos-armv7l.tar.xz',

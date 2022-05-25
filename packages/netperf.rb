@@ -8,6 +8,7 @@ class Netperf < Package
   compatibility 'all'
   source_url 'https://github.com/HewlettPackard/netperf/archive/netperf-2.7.0.tar.gz'
   source_sha256 '4569bafa4cca3d548eb96a486755af40bd9ceb6ab7c6abd81cc6aa4875007c4e'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netperf/2.7.0_armv7l/netperf-2.7.0-chromeos-armv7l.tar.xz',

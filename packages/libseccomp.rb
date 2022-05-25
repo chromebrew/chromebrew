@@ -8,6 +8,7 @@ class Libseccomp < Package
   compatibility 'all'
   source_url "https://github.com/seccomp/libseccomp/archive/v#{version}.tar.gz"
   source_sha256 '96bbadb4384716272a6d2be82801dc564f7aab345febfe9b698b70fc606e3f75'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libseccomp/2.5.4_armv7l/libseccomp-2.5.4-chromeos-armv7l.tar.zst',

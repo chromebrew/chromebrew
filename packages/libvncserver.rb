@@ -8,6 +8,7 @@ class Libvncserver < Package
   license 'GPL-2, GPL-2+, LGPL-2.1+, BSD and MIT'
   source_url "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-#{version}.tar.gz"
   source_sha256 '83104e4f7e28b02f8bf6b010d69b626fae591f887e949816305daebae527c9a5'
+  binary_compression 'tar.zst'
 
   binary_url({
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvncserver/0.9.14_x86_64/libvncserver-0.9.14-chromeos-x86_64.tar.zst',

@@ -8,6 +8,7 @@ class Libatomic_ops < Autotools
   compatibility 'all'
   source_url 'https://github.com/ivmai/libatomic_ops/releases/download/v7.8.0/libatomic_ops-7.8.0.tar.gz'
   source_sha256 '15676e7674e11bda5a7e50a73f4d9e7d60452271b8acf6fd39a71fefdf89fa31'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.8.0_armv7l/libatomic_ops-7.8.0-chromeos-armv7l.tar.zst',

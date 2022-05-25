@@ -8,6 +8,7 @@ class Perl_unicode_linebreak < PERL
   compatibility 'all'
   source_url 'https://github.com/hatukanezumi/Unicode-LineBreak.git'
   git_hashtag 'Unicode-LineBreak-2019.001'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.38.2_armv7l/perl_unicode_linebreak-2019.001-perl5.38.2-chromeos-armv7l.tar.zst',

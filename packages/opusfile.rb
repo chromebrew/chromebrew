@@ -11,6 +11,7 @@ class Opusfile < Package
   compatibility 'all'
   source_url 'https://github.com/xiph/opusfile.git'
   git_hashtag '9d718345ce03b2fad5d7d28e0bcd1cc69ab2b166'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opusfile/0.12-9d71834_armv7l/opusfile-0.12-9d71834-chromeos-armv7l.tar.zst',

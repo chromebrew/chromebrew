@@ -8,6 +8,7 @@ class Rendercheck < Package
   compatibility 'all'
   source_url 'https://x.org/archive/individual/app/rendercheck-1.5.tar.bz2'
   source_sha256 '00605679436d65ccf9a6f1f1cb206df7a2e8b28a7821e867922d2b14b009f1cc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rendercheck/1.5_armv7l/rendercheck-1.5-chromeos-armv7l.tar.xz',

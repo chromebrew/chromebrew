@@ -8,6 +8,7 @@ class Libev < Package
   compatibility 'all'
   source_url 'http://dist.schmorp.de/libev/libev-4.33.tar.gz'
   source_sha256 '507eb7b8d1015fbec5b935f34ebed15bf346bed04a11ab82b8eee848c4205aea'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libev/4.33_armv7l/libev-4.33-chromeos-armv7l.tar.xz',

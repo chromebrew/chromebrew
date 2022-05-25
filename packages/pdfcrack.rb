@@ -8,6 +8,7 @@ class Pdfcrack < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/pdfcrack/files/pdfcrack/pdfcrack-0.16/pdfcrack-0.16.tar.gz'
   source_sha256 '7865b203074ccfd5c612c8ce00c46ffcb4fabaa26154ce9304dfc668c7cb73ef'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfcrack/0.16_armv7l/pdfcrack-0.16-chromeos-armv7l.tar.xz',

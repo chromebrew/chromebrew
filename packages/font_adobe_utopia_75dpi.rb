@@ -8,6 +8,7 @@ class Font_adobe_utopia_75dpi < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2'
   source_sha256 '8732719c61f3661c8bad63804ebfd54fc7de21ab848e9a26a19b1778ef8b5c94'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_75dpi/1.0.4_armv7l/font_adobe_utopia_75dpi-1.0.4-chromeos-armv7l.tar.xz',

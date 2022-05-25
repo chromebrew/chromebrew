@@ -8,6 +8,7 @@ class Xorg_vmware_driver < Package
   compatibility 'all'
   source_url 'https://www.x.org/pub/individual/driver/xf86-video-vmware-13.2.1.tar.bz2'
   source_sha256 'e2f7f7101fba7f53b268e7a25908babbf155b3984fb5268b3d244eb6c11bf62b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_vmware_driver/13.2.1_armv7l/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',

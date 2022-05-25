@@ -8,6 +8,7 @@ class Xmltoman < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/xmltoman/xmltoman/xmltoman-0.4.tar.gz/xmltoman-0.4.tar.gz'
   source_sha256 '948794a316aaecd13add60e17e476beae86644d066cb60171fc6b779f2df14b0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmltoman/0.4_armv7l/xmltoman-0.4-chromeos-armv7l.tar.xz',

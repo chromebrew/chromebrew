@@ -8,6 +8,7 @@ class Libpciaccess < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libpciaccess-0.17.tar.xz'
   source_sha256 '74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.17_armv7l/libpciaccess-0.17-chromeos-armv7l.tar.zst',

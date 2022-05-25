@@ -8,6 +8,7 @@ class Pwgen < Package
   compatibility 'all'
   source_url 'https://pilotfiber.dl.sourceforge.net/project/pwgen/pwgen/2.07/pwgen-2.07.tar.gz'
   source_sha256 'eb74593f58296c21c71cd07933e070492e9222b79cedf81d1a02ce09c0e11556'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pwgen/2.07_armv7l/pwgen-2.07-chromeos-armv7l.tar.xz',

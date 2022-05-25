@@ -8,6 +8,7 @@ class Libxxf86vm < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive//individual/lib/libXxf86vm-1.1.5.tar.xz'
   source_sha256 '247fef48b3e0e7e67129e41f1e789e8d006ba47dba1c0cdce684b9b703f888e7'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.5_armv7l/libxxf86vm-1.1.5-chromeos-armv7l.tar.zst',

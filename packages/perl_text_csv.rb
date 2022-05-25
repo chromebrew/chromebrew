@@ -8,6 +8,7 @@ class Perl_text_csv < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-2.02.tar.gz'
   source_sha256 '84120de3e10489ea8fbbb96411a340c32cafbe5cdff7dd9576b207081baa9d24'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.38_armv7l/perl_text_csv-2.02-perl5.38-chromeos-armv7l.tar.zst',

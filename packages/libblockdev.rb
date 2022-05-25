@@ -8,6 +8,7 @@ class Libblockdev < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/storaged-project/libblockdev/releases/download/#{version}-1/libblockdev-#{version}.tar.gz"
   source_sha256 'c4c0e10b35ac632bda8ce6d200b5601184984dec387fe59185921eb42432e069'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libblockdev/2.26_armv7l/libblockdev-2.26-chromeos-armv7l.tar.zst',

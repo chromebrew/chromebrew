@@ -8,6 +8,7 @@ class Jemalloc < Autotools
   compatibility 'all'
   source_url 'https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2'
   source_sha256 '2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jemalloc/5.3.0_armv7l/jemalloc-5.3.0-chromeos-armv7l.tar.zst',

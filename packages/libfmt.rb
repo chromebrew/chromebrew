@@ -8,6 +8,7 @@ class Libfmt < Package
   compatibility 'all'
   source_url 'https://github.com/fmtlib/fmt.git'
   git_hashtag 'c48be439f1ae03f2726e30ac93fce3a667dc4be2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/9.0.0-c48be43_armv7l/libfmt-9.0.0-c48be43-chromeos-armv7l.tar.zst',

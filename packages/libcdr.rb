@@ -11,6 +11,7 @@ class Libcdr < Autotools
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.7.tar.xz'
   source_sha256 '5666249d613466b9aa1e987ea4109c04365866e9277d80f6cd9663e86b8ecdd4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_armv7l/libcdr-0.1.7-2-chromeos-armv7l.tar.zst',

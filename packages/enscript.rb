@@ -8,6 +8,7 @@ class Enscript < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/enscript/enscript-1.6.6.tar.gz'
   source_sha256 '6d56bada6934d055b34b6c90399aa85975e66457ac5bf513427ae7fc77f5c0bb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enscript/1.6.6_armv7l/enscript-1.6.6-chromeos-armv7l.tar.xz',

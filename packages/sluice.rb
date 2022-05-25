@@ -8,6 +8,7 @@ class Sluice < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/sluice/sluice-0.02.08.tar.gz'
   source_sha256 'c1fc8093f93bc376d494883f3302749fcf46a1041baab6c3304ef6185f9c1569'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sluice/0.02.08_armv7l/sluice-0.02.08-chromeos-armv7l.tar.xz',

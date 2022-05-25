@@ -8,6 +8,7 @@ class Libsamplerate < Package
   compatibility 'all'
   source_url 'http://www.mega-nerd.com/libsamplerate/libsamplerate-0.1.9.tar.gz'
   source_sha256 '0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsamplerate/0.1.9_armv7l/libsamplerate-0.1.9-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Nedit < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/nedit/nedit-source/nedit-5.7-src.tar.gz'
   source_sha256 'add9ac79ff973528ad36c86858238bac4f59896c27dbf285cbe6a4d425fca17a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nedit/5.7_armv7l/nedit-5.7-chromeos-armv7l.tar.xz',

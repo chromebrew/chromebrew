@@ -8,6 +8,7 @@ class Sqlitebrowser < Package
   compatibility 'all'
   source_url 'https://github.com/sqlitebrowser/sqlitebrowser/archive/v3.11.2.tar.gz'
   source_sha256 '298acb28878aa712277a1c35c185b07a5a1671cc3e2c6a21b323477b91d486fc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlitebrowser/3.11.2_armv7l/sqlitebrowser-3.11.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Mutter < Package
   compatibility 'aarch64,armv7l,x86_64' # No longer supported for i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/mutter.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_armv7l/mutter-41.0-chromeos-armv7l.tpxz',

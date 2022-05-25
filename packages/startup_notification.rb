@@ -9,6 +9,7 @@ class Startup_notification < Package
   compatibility 'all'
   source_url "https://www.freedesktop.org/software/startup-notification/releases/startup-notification-#{@_ver}.tar.gz"
   source_sha256 '3c391f7e930c583095045cd2d10eb73a64f085c7fde9d260f2652c7cb3cfbe4a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_armv7l/startup_notification-0.12-2-chromeos-armv7l.tar.xz',

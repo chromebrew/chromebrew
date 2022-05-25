@@ -8,6 +8,7 @@ class Natron < Package
   compatibility 'x86_64'
   source_url 'https://github.com/NatronGitHub/Natron/releases/download/v2.4.0/Natron-2.4.0-Linux-64.tgz'
   source_sha256 '7e8f2ec343f553799f34dce89aa250c410024f17e2c9ccfb5e22544db3e46bb4'
+  binary_compression 'tpxz'
 
   no_compile_needed
 

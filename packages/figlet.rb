@@ -8,6 +8,7 @@ class Figlet < Package
   compatibility 'all'
   source_url 'https://github.com/cmatsuoka/figlet.git'
   git_hashtag 'a565ae1e8f8254044219260dda2a6b51984930dc'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/figlet/2.2.5-a565ae1_armv7l/figlet-2.2.5-a565ae1-chromeos-armv7l.tar.zst',

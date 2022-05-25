@@ -8,6 +8,7 @@ class Lsscsi < Package
   compatibility 'all'
   source_url 'https://github.com/hreinecke/lsscsi/archive/v0.28.tar.gz'
   source_sha256 'eec0c2c10b30d58aa8d7c7703ccbca92215939632ce3fea599f280f8390553e6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lsscsi/0.28_armv7l/lsscsi-0.28-chromeos-armv7l.tar.xz',

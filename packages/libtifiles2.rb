@@ -8,6 +8,7 @@ class Libtifiles2 < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/libtifiles2-1.1.7.tar.bz2'
   source_sha256 '9ac63b49e97b09b30b37bbc84aeb15fa7967bceb944e56141c5cd5a528acc982'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtifiles2/1.1.7_armv7l/libtifiles2-1.1.7-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gtypist < Package
   compatibility 'all'
   source_url 'http://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.xz'
   source_sha256 'c13af40b12479f8219ffa6c66020618c0ce305ad305590fde02d2c20eb9cf977'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtypist/2.9.5_armv7l/gtypist-2.9.5-chromeos-armv7l.tar.xz',

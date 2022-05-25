@@ -8,6 +8,7 @@ class Libgconf < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-3.2.6.tar.xz'
   source_sha256 '1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgconf/3.2.6_armv7l/libgconf-3.2.6-chromeos-armv7l.tar.xz',

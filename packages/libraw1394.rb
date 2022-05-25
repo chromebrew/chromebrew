@@ -8,6 +8,7 @@ class Libraw1394 < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/libraw1394/libraw1394/libraw1394-2.0.5.tar.gz'
   source_sha256 '50e7b812f09ec8181fc060e7e25e260017c16c1b41a04c51e23446f26fa109d4'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw1394/2.0.5-1_armv7l/libraw1394-2.0.5-1-chromeos-armv7l.tpxz',

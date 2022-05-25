@@ -8,6 +8,7 @@ class Smbclient < Package
   compatibility 'all'
   source_url 'https://download.samba.org/pub/samba/stable/samba-4.19.0.tar.gz'
   source_sha256 '28f98ceab75a6a59432912fa110fc8c716abcab1ed6d8bdd4393d178acff3d20'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.19.0_armv7l/smbclient-4.19.0-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libnvme < Package
   compatibility 'all'
   source_url 'https://github.com/linux-nvme/libnvme/archive/refs/tags/v1.0-rc4.tar.gz'
   source_sha256 '82dc150c09e5e211d5200a37fabbbe25c69f5b0f22582956e51587a5a54463b5'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnvme/v1.0-rc4_armv7l/libnvme-v1.0-rc4-chromeos-armv7l.tar.zst',

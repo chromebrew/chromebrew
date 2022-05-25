@@ -8,6 +8,7 @@ class Mapserver < Package
   compatibility 'all'
   source_url 'http://download.osgeo.org/mapserver/mapserver-8.0.0.tar.gz'
   source_sha256 'bb7ee625eb6fdce9bd9851f83664442845d70d041e449449e88ac855e97d773c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_armv7l/mapserver-8.0.0-chromeos-armv7l.tar.zst',

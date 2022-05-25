@@ -8,6 +8,7 @@ class Virglrenderer < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/virgl/virglrenderer.git'
   git_hashtag '486d891a9242d978cef6bb5ae80d0d9b6aa420c8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/virglrenderer/0.9.1-486d891_armv7l/virglrenderer-0.9.1-486d891-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libmad < Package
   license 'GPL-2'
   source_url 'https://httpredir.debian.org/debian/pool/main/libm/libmad/libmad_0.15.1b.orig.tar.gz'
   source_sha256 'bbfac3ed6bfbc2823d3775ebb931087371e142bb0e9bb1bee51a76a6e0078690'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmad/0.15.1b-1_armv7l/libmad-0.15.1b-1-chromeos-armv7l.tpxz',

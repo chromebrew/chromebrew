@@ -8,6 +8,7 @@ class Avisynthplus < Package
   compatibility 'all'
   source_url 'https://github.com/AviSynth/AviSynthPlus/archive/v3.7.2/avisynthplus-3.7.2.tar.gz'
   source_sha256 '6159fd976dffa62d5db5277cbb0b3b7f7a4ee92fc8667edd32da9840a669ccc1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.2_armv7l/avisynthplus-3.7.2-chromeos-armv7l.tar.zst',

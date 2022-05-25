@@ -8,6 +8,7 @@ class Daq < Package
   compatibility 'all'
   source_url 'https://www.snort.org/downloads/snort/daq-2.0.7.tar.gz'
   source_sha256 'd1f6709bc5dbddee3fdf170cdc1e49fb926e2031d4869ecf367a8c47efc87279'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/daq/2.0.7_armv7l/daq-2.0.7-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Lha < Package
   compatibility 'all'
   source_url 'https://github.com/jca02266/lha.git'
   git_hashtag '26950220c9c7590fd603ecaa54a12a52371affed'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lha/2695022_armv7l/lha-2695022-chromeos-armv7l.tar.zst',

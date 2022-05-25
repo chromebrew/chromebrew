@@ -9,6 +9,7 @@ class Boost < Package
   compatibility 'all'
   source_url "https://boostorg.jfrog.io/artifactory/main/release/#{@_ver}/source/boost_#{@_ver.gsub('.', '_')}.tar.bz2"
   source_sha256 'cc4b893acf645c9d4b698e9a0f08ca8846aa5d6c68275c14c3e7949c24109454'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.84.0-py3.12_armv7l/boost-1.84.0-py3.12-chromeos-armv7l.tar.zst',

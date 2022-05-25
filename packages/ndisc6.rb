@@ -8,6 +8,7 @@ class Ndisc6 < Package
   compatibility 'all'
   source_url 'https://www.remlab.net/files/ndisc6/ndisc6-1.0.4.tar.bz2'
   source_sha256 'abb1da4a98d94e5abe1dd7b1c975de540306b0581cbbd36aff035118b2f25c1f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ndisc6/1.0.4_armv7l/ndisc6-1.0.4-chromeos-armv7l.tar.xz',

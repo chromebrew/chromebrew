@@ -8,6 +8,7 @@ class Vifm < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/vifm/vifm/vifm-0.9.tar.bz2'
   source_sha256 'ab10c99d1e4c24ff8a03c20be1c202cc15874750cc47a1614e6fe4f8d816a7fd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vifm/0.9_armv7l/vifm-0.9-chromeos-armv7l.tar.xz',

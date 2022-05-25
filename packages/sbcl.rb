@@ -8,6 +8,7 @@ class Sbcl < Package
   compatibility 'i686,x86_64'
   source_url 'https://downloads.sourceforge.net/project/sbcl/sbcl/2.0.3/sbcl-2.0.3-source.tar.bz2'
   source_sha256 'b5543f123214b2023ff5fc32dfd00b6cfeabd92c8edb33ad208842c4fd642f00'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbcl/2.0.3_i686/sbcl-2.0.3-chromeos-i686.tar.xz',

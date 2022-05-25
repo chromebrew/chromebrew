@@ -8,6 +8,7 @@ class Xhost < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/xhost-1.0.8.tar.bz2'
   source_sha256 'a2dc3c579e13674947395ef8ccc1b3763f89012a216c2cc6277096489aadc396'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xhost/1.0.8_armv7l/xhost-1.0.8-chromeos-armv7l.tar.zst',

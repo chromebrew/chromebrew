@@ -8,6 +8,7 @@ class Tldr < Package
   compatibility 'all'
   source_url 'https://github.com/raylee/tldr-sh-client/archive/93cfb278d2c56c3518a39ba3e01cbfc40423cc3b.tar.gz'
   source_sha256 'd565c6bdc594b87bf204fa35b3059011931a3cb59b935812c8a8a5fbe1fbd5e5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tldr/93cfb27_armv7l/tldr-93cfb27-chromeos-armv7l.tar.xz',

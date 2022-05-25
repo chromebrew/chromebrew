@@ -8,6 +8,7 @@ class Fossil < Package
   compatibility 'all'
   source_url 'https://www.fossil-scm.org/fossil/uv/fossil-src-2.6.tar.gz'
   source_sha256 '76a794555918be179850739a90f157de0edb8568ad552b4c40ce186c79ff6ed9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fossil/2.6_armv7l/fossil-2.6-chromeos-armv7l.tar.xz',

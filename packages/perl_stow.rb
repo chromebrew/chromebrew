@@ -8,6 +8,7 @@ class Perl_stow < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/stow/stow-2.3.1.tar.gz'
   source_sha256 '09d5d99671b78537fd9b2c0b39a5e9761a7a0e979f6fdb7eabfa58ee45f03d4b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_stow/2.3.1-perl5.38_armv7l/perl_stow-2.3.1-perl5.38-chromeos-armv7l.tar.zst',

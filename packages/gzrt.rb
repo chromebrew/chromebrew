@@ -8,6 +8,7 @@ class Gzrt < Package
   compatibility 'all'
   source_url 'https://www.urbanophile.com/arenn/hacking/gzrt/gzrt-0.8.tar.gz'
   source_sha256 'b0b7dc53dadd8309ad9f43d6d6be7ac502c68ef854f1f9a15bd7f543e4571fee'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzrt/0.8_armv7l/gzrt-0.8-chromeos-armv7l.tar.xz',

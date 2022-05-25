@@ -8,6 +8,7 @@ class Rubberband < Package
   compatibility 'all'
   source_url 'https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2'
   source_sha256 '86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',

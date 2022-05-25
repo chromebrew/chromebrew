@@ -8,6 +8,7 @@ class Proj4 < Package
   compatibility 'all'
   source_url 'https://download.osgeo.org/proj/proj-6.3.2.zip'
   source_sha256 '5ef90382d1d57e7185d13064fa46c1f6350a079f4f7ad67c862b6075ca7b88ec'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/proj4/6.3.2_armv7l/proj4-6.3.2-chromeos-armv7l.tar.xz',

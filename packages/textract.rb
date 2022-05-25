@@ -8,6 +8,7 @@ class Textract < Package
   compatibility 'all'
   source_url 'https://github.com/deanmalmgren/textract.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.4_armv7l/textract-1.6.4-chromeos-armv7l.tpxz',

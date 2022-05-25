@@ -8,6 +8,7 @@ class Byobu < Package
   compatibility 'all'
   source_url 'https://launchpad.net/byobu/trunk/5.125/+download/byobu_5.125.orig.tar.gz'
   source_sha256 '5022c82705a5d57f1d4e8dcb1819fd04628af2d4b4618b7d44fa27ebfcdda9db'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/byobu/5.125_armv7l/byobu-5.125-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libass < Package
   compatibility 'all'
   source_url 'https://github.com/libass/libass/releases/download/0.14.0/libass-0.14.0.tar.xz'
   source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libass/0.14.0_armv7l/libass-0.14.0-chromeos-armv7l.tar.xz',

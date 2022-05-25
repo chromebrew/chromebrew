@@ -8,6 +8,7 @@ class Glibmm_2_4 < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glibmm.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.5_armv7l/glibmm_2_4-2.66.5-chromeos-armv7l.tar.zst',

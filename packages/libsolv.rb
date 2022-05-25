@@ -8,6 +8,7 @@ class Libsolv < Package
   compatibility 'all'
   source_url 'https://github.com/openSUSE/libsolv/archive/0.7.14.tar.gz'
   source_sha256 '34a67c23cedd38a949607d8cdbd867aa4b07556f18a57e17162ac962bbdbbf54'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',

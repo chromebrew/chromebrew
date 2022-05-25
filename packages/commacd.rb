@@ -8,6 +8,7 @@ class Commacd < Package
   compatibility 'all'
   source_url 'https://github.com/shyiko/commacd/archive/v0.4.0.tar.gz'
   source_sha256 'e2db36c6c8dcd4e65cd8d2d90101d5b7aee78872ae29d2d47ab7fc3b263897cd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/commacd/0.4.0-1_armv7l/commacd-0.4.0-1-chromeos-armv7l.tar.xz',

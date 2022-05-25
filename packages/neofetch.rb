@@ -8,6 +8,7 @@ class Neofetch < Package
   compatibility 'all'
   source_url 'https://github.com/dylanaraps/neofetch.git'
   git_hashtag 'ccd5d9f52609bbdcd5d8fa78c4fdb0f12954125f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neofetch/7.1.0-ccd5-1_armv7l/neofetch-7.1.0-ccd5-1-chromeos-armv7l.tar.zst',

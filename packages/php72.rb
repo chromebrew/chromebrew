@@ -9,6 +9,7 @@ class Php72 < Package
   compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',

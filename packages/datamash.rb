@@ -8,6 +8,7 @@ class Datamash < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/datamash/datamash-1.8.tar.gz'
   source_sha256 '7ad97e8c7ef616dd03aa5bd67ae24c488272db3e7d1f5774161c18b75f29f6fd'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.zst',

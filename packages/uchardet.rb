@@ -8,6 +8,7 @@ class Uchardet < Package
   compatibility 'all'
   source_url 'https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.6.tar.xz'
   source_sha256 '8351328cdfbcb2432e63938721dd781eb8c11ebc56e3a89d0f84576b96002c61'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uchardet/0.0.6_armv7l/uchardet-0.0.6-chromeos-armv7l.tar.xz',

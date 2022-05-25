@@ -8,6 +8,7 @@ class Cvs < Package
   compatibility 'all'
   source_url 'https://ftp.gnu.org/non-gnu/cvs/source/stable/1.11.23/cvs-1.11.23.tar.bz2'
   source_sha256 '400f51b59d85116e79b844f2d5dbbad4759442a789b401a94aa5052c3d7a4aa9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cvs/1.11.23-1_armv7l/cvs-1.11.23-1-chromeos-armv7l.tar.xz',

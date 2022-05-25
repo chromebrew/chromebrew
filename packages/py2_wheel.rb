@@ -8,6 +8,7 @@ class Py2_wheel < Package
   compatibility 'all'
   source_url 'https://github.com/pypa/wheel.git'
   git_hashtag version
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_wheel/0.36.2_armv7l/py2_wheel-0.36.2-chromeos-armv7l.tar.xz',

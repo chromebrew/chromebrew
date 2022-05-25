@@ -11,6 +11,7 @@ class Exempi < Autotools
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{version}/exempi-#{version}.tar.bz2"
   source_sha256 '8d34b3860192f6d2ac017537884b099b13a492ed4884130c65da5173d5162590'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.4_armv7l/exempi-2.6.4-chromeos-armv7l.tar.zst',

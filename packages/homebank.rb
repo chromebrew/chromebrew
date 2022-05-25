@@ -8,6 +8,7 @@ class Homebank < Package
   compatibility 'all'
   source_url 'http://homebank.free.fr/public/homebank-5.4.3.tar.gz'
   source_sha256 '9222d7ed7cc44fcfff3f1fe20935a1b7fe91bb4d9f90003cb3c6f3b893298d0b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/homebank/5.4.3_armv7l/homebank-5.4.3-chromeos-armv7l.tar.xz',

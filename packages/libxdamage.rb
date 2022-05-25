@@ -8,6 +8,7 @@ class Libxdamage < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdamage.git'
   git_hashtag "libXdamage-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdamage/1.1.6_armv7l/libxdamage-1.1.6-chromeos-armv7l.tar.zst',

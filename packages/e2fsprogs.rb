@@ -8,6 +8,7 @@ class E2fsprogs < Package
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{version}/e2fsprogs-#{version}.tar.xz"
   source_sha256 '144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.47.0_armv7l/e2fsprogs-1.47.0-chromeos-armv7l.tar.zst',

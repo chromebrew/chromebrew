@@ -8,6 +8,7 @@ class Perl_xml_namespacesupport < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-1.12.tar.gz'
   source_sha256 '47e995859f8dd0413aa3f22d350c4a62da652e854267aa0586ae544ae2bae5ef'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_namespacesupport/1.12-perl5.38_armv7l/perl_xml_namespacesupport-1.12-perl5.38-chromeos-armv7l.tar.zst',

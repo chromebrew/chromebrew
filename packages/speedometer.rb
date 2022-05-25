@@ -8,6 +8,7 @@ class Speedometer < Package
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/s/speedometer/speedometer_2.8-3_all.deb'
   source_sha256 '63e676c96a9df953b4f7f631f1c1d21fedd71d23d159b53e60662c6bb4c19437'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speedometer/2.8-3_armv7l/speedometer-2.8-3-chromeos-armv7l.tar.xz',

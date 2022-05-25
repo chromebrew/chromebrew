@@ -8,6 +8,7 @@ class Bacula < Package
   compatibility 'all'
   source_url 'https://www.bacula.org/download/7471/bacula-9.4.2.tar.gz'
   source_sha256 'a40d04d2c48135972cecb6578405e835c4b9d798c0950017de0fad40ca94e8a0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacula/9.4.2_armv7l/bacula-9.4.2-chromeos-armv7l.tar.xz',

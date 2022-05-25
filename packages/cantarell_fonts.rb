@@ -8,6 +8,7 @@ class Cantarell_fonts < Package
   compatibility 'all'
   source_url 'https://download.gnome.org/core/43/43.0/sources/cantarell-fonts-0.303.1.tar.xz'
   source_sha256 'f9463a0659c63e57e381fdd753cf1929225395c5b49135989424761830530411'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cantarell_fonts/0.303.1_armv7l/cantarell_fonts-0.303.1-chromeos-armv7l.tar.zst',

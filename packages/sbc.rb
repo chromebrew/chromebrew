@@ -8,6 +8,7 @@ class Sbc < Autotools
   compatibility 'all'
   source_url 'https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz'
   source_sha256 '8f12368e1dbbf55e14536520473cfb338c84b392939cc9b64298360fd4a07992'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbc/2.0_armv7l/sbc-2.0-chromeos-armv7l.tar.zst',

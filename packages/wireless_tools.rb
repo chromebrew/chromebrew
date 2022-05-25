@@ -8,6 +8,7 @@ class Wireless_tools < Package
   compatibility 'all'
   source_url 'https://github.com/HewlettPackard/wireless-tools/archive/v29.tar.gz'
   source_sha256 '69c5face9ac9d3273042436408a9a057d3416a814253dedeaaef210fcbc42d40'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireless_tools/2.9_armv7l/wireless_tools-2.9-chromeos-armv7l.tar.xz',

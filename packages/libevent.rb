@@ -8,6 +8,7 @@ class Libevent < Package
   compatibility 'all'
   source_url "https://github.com/libevent/libevent/releases/download/release-#{version}-stable/libevent-#{version}-stable.tar.gz"
   source_sha256 '92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libevent/2.1.12_armv7l/libevent-2.1.12-chromeos-armv7l.tar.xz',

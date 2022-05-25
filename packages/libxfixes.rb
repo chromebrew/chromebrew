@@ -8,6 +8,7 @@ class Libxfixes < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXfixes-6.0.0.tar.bz2'
   source_sha256 'a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/6.0.0_armv7l/libxfixes-6.0.0-chromeos-armv7l.tar.zst',

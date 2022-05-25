@@ -8,6 +8,7 @@ class Misctools < Package
   compatibility 'i686,x86_64'
   source_url 'http://www.hyperrealm.com/packages/misctools-2.6.tar.bz2'
   source_sha256 'b1f13bb3af52ffffddf45efd8c10f942a8c1548352b7878668fbbf27ffa68e1a'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/misctools/2.6_i686/misctools-2.6-chromeos-i686.tar.xz',

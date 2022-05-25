@@ -8,6 +8,7 @@ class Ncftp < Package
   compatibility 'all'
   source_url 'ftp://ftp.ncftp.com/ncftp/ncftp-3.2.6-src.tar.gz'
   source_sha256 '129e5954850290da98af012559e6743de193de0012e972ff939df9b604f81c23'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncftp/3.2.6_armv7l/ncftp-3.2.6-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Mobile_broadband_provider_info < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/#{version}/mobile-broadband-provider-info-#{version}.tar.bz2"
   source_sha256 '0616b3d0580575741d4319ac71ca67c9a378879943d32a67ac0460615767bcdf'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mobile_broadband_provider_info/20201225_armv7l/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',

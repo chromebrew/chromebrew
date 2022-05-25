@@ -8,6 +8,7 @@ class Ansifilter < Package
   compatibility 'all'
   source_url 'http://www.andre-simon.de/zip/ansifilter-2.10.tar.bz2'
   source_sha256 '23d2cf439d4ed4fbec8050b2826d61c244694ce06aaf8ca7d0ec1016afebee3f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansifilter/2.10_armv7l/ansifilter-2.10-chromeos-armv7l.tar.xz',

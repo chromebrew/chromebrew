@@ -8,6 +8,7 @@ class Mtr < Package
   compatibility 'all'
   source_url 'ftp://ftp.bitwizard.nl/mtr/mtr-0.93.tar.gz'
   source_sha256 '229c673d637bd7dbb96471623785a47e85da0b1944978200c949994c1e6af10d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtr/0.93_armv7l/mtr-0.93-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Shtool < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/shtool/shtool-2.0.8.tar.gz'
   source_sha256 '1298a549416d12af239e9f4e787e6e6509210afb49d5cf28eb6ec4015046ae19'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shtool/2.0.8_armv7l/shtool-2.0.8-chromeos-armv7l.tar.xz',

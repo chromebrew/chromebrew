@@ -8,6 +8,7 @@ class Libtheora < Package
   compatibility 'all'
   source_url 'https://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2'
   source_sha256 'b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtheora/1.1.1-0_armv7l/libtheora-1.1.1-0-chromeos-armv7l.tar.xz',

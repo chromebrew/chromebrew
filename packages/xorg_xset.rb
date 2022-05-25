@@ -11,6 +11,7 @@ class Xorg_xset < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xset.git'
   git_hashtag "xset-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xset/1.2.5_armv7l/xorg_xset-1.2.5-chromeos-armv7l.tar.zst',

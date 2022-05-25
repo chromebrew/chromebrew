@@ -8,6 +8,7 @@ class Popt < Package
   compatibility 'all'
   source_url 'https://github.com/rpm-software-management/popt.git'
   git_hashtag '7182e4618ad5a0186145fc2aa4a98c2229afdfa8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/popt/1.18-7182e46-1_armv7l/popt-1.18-7182e46-1-chromeos-armv7l.tar.xz',

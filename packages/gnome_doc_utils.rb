@@ -8,6 +8,7 @@ class Gnome_doc_utils < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/gnome/sources/gnome-doc-utils/0.20/gnome-doc-utils-0.20.10.tar.xz'
   source_sha256 'cb0639ffa9550b6ddf3b62f3b1add92fb92ab4690d351f2353cffe668be8c4a6'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_doc_utils/0.20.10_armv7l/gnome_doc_utils-0.20.10-chromeos-armv7l.tar.xz',

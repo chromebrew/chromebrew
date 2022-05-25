@@ -8,6 +8,7 @@ class Llvm17_build < Package
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',

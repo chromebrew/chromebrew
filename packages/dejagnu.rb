@@ -8,6 +8,7 @@ class Dejagnu < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/dejagnu/dejagnu-1.6.1.tar.gz'
   source_sha256 'bf5b28bb797e0ace4cfc0766a996339c795d8223bef54158be7887046bc01692'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dejagnu/1.6.1_armv7l/dejagnu-1.6.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Log4cplus < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/log4cplus/log4cplus-stable/2.0.5/log4cplus-2.0.5.tar.xz'
   source_sha256 '6046f0867ce4734f298418c7b7db0d35c27403090bb751d98e6e76aa4935f1af'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/log4cplus/2.0.5_armv7l/log4cplus-2.0.5-chromeos-armv7l.tar.xz',

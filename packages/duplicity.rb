@@ -8,6 +8,7 @@ class Duplicity < Package
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/84/65/5ca97dade5527b6a93757e88455c53b0d7002322f9d47d848c35902ef431/duplicity-0.8.20.tar.gz'
   source_sha256 '488af2ecadb059214074f2b3ac51bf9d7de55a800e37ccc2f1075cd0a74940e3'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.8.20_armv7l/duplicity-0.8.20-chromeos-armv7l.tpxz',

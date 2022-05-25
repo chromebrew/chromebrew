@@ -24,6 +24,7 @@ class Binutils < Package
        i686: '606a990b5664dcb77037e2461f260621d8b9e79cdc7de4061d640bc280058f1e',
      x86_64: '4518d1cd954c98f6f30f98518fde9bf0e32fc0f31972a24fd5f0781973ef5adb'
   })
+  binary_compression 'tar.zst'
 
   depends_on 'elfutils' # R
   depends_on 'flex' # R

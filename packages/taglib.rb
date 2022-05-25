@@ -8,6 +8,7 @@ class Taglib < Package
   compatibility 'all'
   source_url 'https://taglib.org/releases/taglib-1.13.1.tar.gz'
   source_sha256 'c8da2b10f1bfec2cd7dbfcd33f4a2338db0765d851a50583d410bacf055cfd0b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.13.1_armv7l/taglib-1.13.1-chromeos-armv7l.tar.zst',

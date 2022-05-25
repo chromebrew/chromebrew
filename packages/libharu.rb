@@ -8,6 +8,7 @@ class Libharu < Package
   compatibility 'all'
   source_url 'https://github.com/libharu/libharu/archive/RELEASE_2_3_0.tar.gz'
   source_sha256 '8f9e68cc5d5f7d53d1bc61a1ed876add1faf4f91070dbc360d8b259f46d9a4d2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libharu/2.3.0_armv7l/libharu-2.3.0-chromeos-armv7l.tar.xz',

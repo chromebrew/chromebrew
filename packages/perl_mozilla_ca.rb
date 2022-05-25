@@ -8,6 +8,7 @@ class Perl_mozilla_ca < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/H/HA/HAARG/Mozilla-CA-20221114.tar.gz'
   source_sha256 '701bea67be670add5a102f9f8c879402b4983096b1cb0e20dd47d52d7a10666b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_mozilla_ca/20221114-perl5.38_armv7l/perl_mozilla_ca-20221114-perl5.38-chromeos-armv7l.tar.zst',

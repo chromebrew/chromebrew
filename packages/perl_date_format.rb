@@ -8,6 +8,7 @@ class Perl_date_format < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.33.tar.gz'
   source_sha256 'c0b69c4b039de6f501b0d9f13ec58c86b040c1f7e9b27ef249651c143d605eb2'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_format/2.33-perl5.38_armv7l/perl_date_format-2.33-perl5.38-chromeos-armv7l.tar.zst',

@@ -11,6 +11,7 @@ class Containers_common < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/containers/common.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.53.0_armv7l/containers_common-0.53.0-chromeos-armv7l.tar.zst',

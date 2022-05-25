@@ -8,6 +8,7 @@ class Php5 < Package
   compatibility 'all'
   source_url 'http://php.net/distributions/php-5.6.40.tar.xz'
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php5/5.6.40-2_armv7l/php5-5.6.40-2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Avahi < Package
   compatibility 'all'
   source_url 'https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz'
   source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-4_armv7l/avahi-0.8-4-chromeos-armv7l.tar.zst',

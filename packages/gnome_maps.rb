@@ -8,6 +8,7 @@ class Gnome_maps < Package
   compatibility 'armv7l aarch64 x86_64'
   source_url "https://gitlab.gnome.org/GNOME/gnome-maps/-/archive/v#{version}/gnome-maps-v#{version}.tar.bz2"
   source_sha256 '5e580c23a86f6b63d7c923aac7e6351e7b6765c74298f6a811d5a398a378db12'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_maps/43.0_armv7l/gnome_maps-43.0-chromeos-armv7l.tar.zst',

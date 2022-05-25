@@ -8,6 +8,7 @@ class Xfconf < Package
   compatibility 'all'
   source_url 'https://archive.xfce.org/src/xfce/xfconf/4.14/xfconf-4.14.3.tar.bz2'
   source_sha256 '589052a0efc6151c5fb5f438da463502a4fd91848cae7b9376d417be4c5a0c02'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfconf/4.14.3_armv7l/xfconf-4.14.3-chromeos-armv7l.tar.xz',

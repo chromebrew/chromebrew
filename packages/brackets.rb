@@ -8,6 +8,7 @@ class Brackets < Package
   compatibility 'i686,x86_64'
   source_url 'https://github.com/adobe/brackets/archive/release-1.14.1.tar.gz'
   source_sha256 '9a07fc80a155d2490be4eff77a2622539012325cef18e89305b8bc45c4c3833d'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/brackets/1.14.1_i686/brackets-1.14.1-chromeos-i686.tar.xz',

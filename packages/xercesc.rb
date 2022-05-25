@@ -8,6 +8,7 @@ class Xercesc < Package
   compatibility 'all'
   source_url 'https://downloads.apache.org/xerces/c/3/sources/xerces-c-3.2.3.tar.xz'
   source_sha256 '12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xercesc/3.2.3_armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',

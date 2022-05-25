@@ -8,6 +8,7 @@ class Libtirpc < Package
   compatibility 'all'
   source_url "http://downloads.sourceforge.net/project/libtirpc/libtirpc/#{version}/libtirpc-#{version}.tar.bz2"
   source_sha256 '6474e98851d9f6f33871957ddee9714fdcd9d8a5ee9abb5a98d63ea2e60e12f3'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.3_armv7l/libtirpc-1.3.3-chromeos-armv7l.tar.zst',

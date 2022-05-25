@@ -8,6 +8,7 @@ class Gengetopt < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gengetopt/gengetopt-2.23.tar.xz'
   source_sha256 'b941aec9011864978dd7fdeb052b1943535824169d2aa2b0e7eae9ab807584ac'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gengetopt/2.23_armv7l/gengetopt-2.23-chromeos-armv7l.tar.zst',

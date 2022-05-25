@@ -8,6 +8,7 @@ class Xcurses < Package
   compatibility 'all'
   source_url 'https://github.com/wmcbrine/PDCurses/archive/3.9.tar.gz'
   source_sha256 '590dbe0f5835f66992df096d3602d0271103f90cf8557a5d124f693c2b40d7ec'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcurses/3.9_armv7l/xcurses-3.9-chromeos-armv7l.tar.zst',

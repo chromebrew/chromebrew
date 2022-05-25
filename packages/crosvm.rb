@@ -11,6 +11,7 @@ class Crosvm < Package
   compatibility 'x86_64'
   source_url 'https://chromium.googlesource.com/crosvm/crosvm.git'
   git_hashtag '379dd2dfecf1a0c06adf0f6e257a5ebc75374cb8'
+  binary_compression 'tar.zst'
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crosvm/379dd2d_x86_64/crosvm-379dd2d-chromeos-x86_64.tar.zst'

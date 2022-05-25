@@ -8,6 +8,7 @@ class Mcelog < Package
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-165.tar.gz'
   source_sha256 'a18fdef9cfe2dfaefa09087c616c376a301dc87b1fa14a37476d97370962c668'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mcelog/165_armv7l/mcelog-165-chromeos-armv7l.tar.xz',

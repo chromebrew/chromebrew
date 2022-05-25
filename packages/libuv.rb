@@ -8,6 +8,7 @@ class Libuv < Package
   compatibility 'all'
   source_url "https://dist.libuv.org/dist/v#{version}/libuv-v#{version}.tar.gz"
   source_sha256 'ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.44.2_armv7l/libuv-1.44.2-chromeos-armv7l.tar.zst',

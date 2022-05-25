@@ -8,6 +8,7 @@ class Musl_bz2 < Package
   compatibility 'all'
   source_url 'https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz'
   source_sha256 'ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_bz2/1.0.8_armv7l/musl_bz2-1.0.8-chromeos-armv7l.tpxz',

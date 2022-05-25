@@ -8,6 +8,7 @@ class Pugixml < Package
   compatibility 'all'
   source_url 'https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz'
   source_sha256 '55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pugixml/1.10_armv7l/pugixml-1.10-chromeos-armv7l.tar.xz',

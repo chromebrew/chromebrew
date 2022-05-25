@@ -8,6 +8,7 @@ class Libnotify < Package
   compatibility 'all'
   source_url "https://github.com/GNOME/libnotify/archive/#{version}.tar.gz"
   source_sha256 '7c0b252edecbf08db50d775f9e720ecc03c742fb97c25f3966a8b7a4bedf8133'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnotify/0.8.1_armv7l/libnotify-0.8.1-chromeos-armv7l.tar.zst',

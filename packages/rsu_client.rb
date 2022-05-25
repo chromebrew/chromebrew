@@ -8,6 +8,7 @@ class Rsu_client < Package
   compatibility 'all'
   source_url 'https://github.com/rsu-client/rsu-client/archive/v4.3.8.tar.gz'
   source_sha256 'a84d27f2775ceef3bf0f715504ba41f3776c5374b61f9820993a26f350e4fa3d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsu_client/4.3.8_armv7l/rsu_client-4.3.8-chromeos-armv7l.tar.xz',

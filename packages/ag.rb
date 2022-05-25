@@ -8,6 +8,7 @@ class Ag < Package
   compatibility 'all'
   source_url 'https://github.com/ggreer/the_silver_searcher/archive/2.2.0.tar.gz'
   source_sha256 '6a0a19ca5e73b2bef9481c29a508d2413ca1a0a9a5a6b1bd9bbd695a7626cbf9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ag/2.2.0_armv7l/ag-2.2.0-chromeos-armv7l.tar.xz',

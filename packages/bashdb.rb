@@ -7,6 +7,7 @@ class Bashdb < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bashdb/5.0-1.1.2-abac_armv7l/bashdb-5.0-1.1.2-abac-chromeos-armv7l.tar.xz',

@@ -10,6 +10,7 @@ associated command-line tool, named volume_key.'
   compatibility 'all'
   source_url 'https://pagure.io/volume_key/archive/volume_key-0.3.12/volume_key-volume_key-0.3.12.tar.gz'
   source_sha256 '8b7941586b711859f568b01f44df87a23081a1c75f40c42b66af3fda10341180'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/volume_key/0.3.12_armv7l/volume_key-0.3.12-chromeos-armv7l.tar.zst',

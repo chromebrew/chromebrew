@@ -8,6 +8,7 @@ class Miniconda3 < Package
   compatibility 'i686,x86_64'
   source_url 'https://raw.githubusercontent.com/conda/conda/4.5.11/README.rst'
   source_sha256 '9a5d4e87325a5015bfc00167a0eb41d53e1e7a7f47f2078e50f5fb7ab3082b11'
+  binary_compression 'tar.xz'
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniconda3/4.5.11_i686/miniconda3-4.5.11-chromeos-i686.tar.xz',

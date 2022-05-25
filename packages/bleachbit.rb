@@ -8,6 +8,7 @@ class Bleachbit < Package
   compatibility 'all'
   source_url 'https://download.bleachbit.org/bleachbit-4.4.2.tar.lzma'
   source_sha256 '113686f537be4a9fcfeb99fd2e976a33fb8eeb208fb69c571ec7acd96d7fb21b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/4.4.2_armv7l/bleachbit-4.4.2-chromeos-armv7l.tar.zst',

@@ -11,6 +11,7 @@ class Sratom < Meson
   compatibility 'all'
   source_url 'https://github.com/lv2/sratom.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sratom/0.6.14_armv7l/sratom-0.6.14-chromeos-armv7l.tar.zst',

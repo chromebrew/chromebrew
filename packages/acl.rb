@@ -8,6 +8,7 @@ class Acl < Package
   compatibility 'all'
   source_url 'https://bigsearcher.com/mirrors/nongnu/acl/acl-2.3.1.tar.xz'
   source_sha256 'c0234042e17f11306c23c038b08e5e070edb7be44bef6697fb8734dcff1c66b1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/acl/2.3.1-1_armv7l/acl-2.3.1-1-chromeos-armv7l.tar.xz',

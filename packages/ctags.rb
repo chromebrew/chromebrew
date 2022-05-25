@@ -8,6 +8,7 @@ class Ctags < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/ctags/ctags/5.8/ctags-5.8.tar.gz'
   source_sha256 '0e44b45dcabe969e0bbbb11e30c246f81abe5d32012db37395eb57d66e9e99c7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ctags/5.8-1_armv7l/ctags-5.8-1-chromeos-armv7l.tar.xz',

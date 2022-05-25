@@ -8,6 +8,7 @@ class Libfrei0r < Package
   compatibility 'all'
   source_url 'https://github.com/dyne/frei0r/archive/v1.6.1.tar.gz'
   source_sha256 'dae0ca623c83173788ce4fc74cb67ac7e50cf33a4412ee3d33bed284da1a8437'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfrei0r/1.6.1_armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Exfatprogs < Package
   compatibility 'all'
   source_url 'https://github.com/exfatprogs/exfatprogs.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exfatprogs/1.2.0_armv7l/exfatprogs-1.2.0-chromeos-armv7l.tar.zst',

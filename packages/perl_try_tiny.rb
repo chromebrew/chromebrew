@@ -8,6 +8,7 @@ class Perl_try_tiny < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-0.31.tar.gz'
   source_sha256 '3300d31d8a4075b26d8f46ce864a1d913e0e8467ceeba6655d5d2b2e206c11be'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_try_tiny/0.31-perl5.38_armv7l/perl_try_tiny-0.31-perl5.38-chromeos-armv7l.tar.zst',

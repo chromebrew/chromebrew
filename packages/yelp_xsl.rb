@@ -8,6 +8,7 @@ class Yelp_xsl < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/yelp-xsl/-/archive/#{version}/yelp-xsl-#{version}.tar.bz2"
   source_sha256 '81b8d626a1481d542fb8c9cb890fa970ddc42b27f7779d52df31c4de0caac776'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/42.1_armv7l/yelp_xsl-42.1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Perl_date_calc < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/ST/STBEY/Date-Calc-6.4.tar.gz'
   source_sha256 '7ce137b2e797b7c0901f3adf1a05a19343356cd1f04676aa1c56a9f624f859ad'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_calc/6.4-perl5.38_armv7l/perl_date_calc-6.4-perl5.38-chromeos-armv7l.tar.zst',

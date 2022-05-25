@@ -11,6 +11,7 @@ class Py3_atspi < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pyatspi2.git'
   git_hashtag "PYATSPI_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_atspi/2.46.0_armv7l/py3_atspi-2.46.0-chromeos-armv7l.tar.zst',

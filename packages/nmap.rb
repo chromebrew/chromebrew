@@ -11,6 +11,7 @@ class Nmap < Package
   compatibility 'all'
   source_url 'https://nmap.org/dist/nmap-7.94.tar.bz2'
   source_sha256 'd71be189eec43d7e099bac8571509d316c4577ca79491832ac3e1217bc8f92cc'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmap/7.94_armv7l/nmap-7.94-chromeos-armv7l.tar.zst',

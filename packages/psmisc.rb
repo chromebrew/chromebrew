@@ -8,6 +8,7 @@ class Psmisc < Package
   compatibility 'all'
   source_url "https://gitlab.com/psmisc/psmisc/-/archive/v#{version}/psmisc-v#{version}.tar.bz2"
   source_sha256 '91573ca0a1a50bd491b7c3cbe400126b0dadef9a2e328030d6469bb2448e0794'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psmisc/23.6_armv7l/psmisc-23.6-chromeos-armv7l.tar.zst',

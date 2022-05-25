@@ -8,6 +8,7 @@ class Moonbuggy < Package
   compatibility 'all'
   source_url 'http://m.seehuhn.de/programs/moon-buggy-1.0.51.tar.gz'
   source_sha256 '352dc16ccae4c66f1e87ab071e6a4ebeb94ff4e4f744ce1b12a769d02fe5d23f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moonbuggy/1.0.51_armv7l/moonbuggy-1.0.51-chromeos-armv7l.tar.xz',

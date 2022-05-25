@@ -8,6 +8,7 @@ class Sysstat < Package
   compatibility 'all'
   source_url 'http://pagesperso-orange.fr/sebastien.godard/sysstat-12.1.5.tar.xz'
   source_sha256 'a496936bb3f5093d780a50735f00e39b0b7f3a688eb89051f2ef5f86739522c5'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',

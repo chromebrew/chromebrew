@@ -8,6 +8,7 @@ class Darkhttpd < Package
   compatibility 'all'
   source_url 'https://unix4lyfe.org/darkhttpd/darkhttpd-1.12.tar.bz2'
   source_sha256 'a50417b622b32b5f421b3132cb94ebeff04f02c5fb87fba2e31147d23de50505'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/darkhttpd/1.12_armv7l/darkhttpd-1.12-chromeos-armv7l.tar.xz',

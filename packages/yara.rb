@@ -8,6 +8,7 @@ class Yara < Package
   compatibility 'all'
   source_url 'https://github.com/VirusTotal/yara/archive/v4.2.3.tar.gz'
   source_sha256 '1cd84fc2db606e83084a648152eb35103c3e30350825cb7553448d5ccde02a0d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yara/4.2.3_armv7l/yara-4.2.3-chromeos-armv7l.tar.zst',

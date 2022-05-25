@@ -8,6 +8,7 @@ class Projectlibre < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.9.1/projectlibre-1.9.1.tar.gz'
   source_sha256 '65ca96728eb5a31c3e23eb43181dde367d785a86b82f330ca52bc7b51c74a5bb'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/projectlibre/1.9.1_armv7l/projectlibre-1.9.1-chromeos-armv7l.tar.xz',

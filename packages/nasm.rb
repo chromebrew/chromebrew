@@ -8,6 +8,7 @@ class Nasm < Package
   compatibility 'all'
   source_url 'https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.xz'
   source_sha256 '3caf6729c1073bf96629b57cee31eeb54f4f8129b01902c73428836550b30a3f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nasm/2.15.05_armv7l/nasm-2.15.05-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Siege < Package
   compatibility 'all'
   source_url 'http://download.joedog.org/siege/siege-4.0.5.tar.gz'
   source_sha256 '3b4b7001afa4d80f3f4939066a4932e198e9f949dcc0e3affecbedd922800231'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/siege/4.0.5_armv7l/siege-4.0.5-chromeos-armv7l.tar.xz',

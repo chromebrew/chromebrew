@@ -8,6 +8,7 @@ class Dbus_glib < Package
   compatibility 'all'
   source_url 'https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.112.tar.gz'
   source_sha256 '7d550dccdfcd286e33895501829ed971eeb65c614e73aadb4a08aeef719b143a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus_glib/0.112_armv7l/dbus_glib-0.112-chromeos-armv7l.tar.zst',

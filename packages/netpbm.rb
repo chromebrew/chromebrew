@@ -8,6 +8,7 @@ class Netpbm < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/netpbm/super_stable/10.73.28/netpbm-10.73.28.tgz'
   source_sha256 'c0d32d4b9a53fde47dd9a36f45653e0ef51f6c390517f10b0c5056d1a8a844bd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netpbm/10.73.28_armv7l/netpbm-10.73.28-chromeos-armv7l.tar.xz',

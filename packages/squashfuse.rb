@@ -11,6 +11,7 @@ class Squashfuse < Package
   compatibility 'all'
   source_url 'https://github.com/vasi/squashfuse/releases/download/0.1.104/squashfuse-0.1.104.tar.gz'
   source_sha256 'aa52460559e0d0b1753f6b1af5c68cfb777ca5a13913285e93f4f9b7aa894b3a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfuse/0.1.104_armv7l/squashfuse-0.1.104-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Xorg_server < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xorg-server-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.11_armv7l/xorg_server-21.1.11-chromeos-armv7l.tar.zst',

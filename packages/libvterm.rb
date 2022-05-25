@@ -11,6 +11,7 @@ class Libvterm < Package
   compatibility 'all'
   source_url 'https://www.leonerd.org.uk/code/libvterm/libvterm-0.3.tar.gz'
   source_sha256 '61eb0d6628c52bdf02900dfd4468aa86a1a7125228bab8a67328981887483358'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_armv7l/libvterm-0.3-chromeos-armv7l.tar.zst',

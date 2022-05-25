@@ -9,6 +9,7 @@ class Mesonbuild < Python
   compatibility 'all'
   source_url 'https://github.com/mesonbuild/meson.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesonbuild/1.3.0-py3.12_armv7l/mesonbuild-1.3.0-py3.12-chromeos-armv7l.tar.zst',

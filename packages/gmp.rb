@@ -8,6 +8,7 @@ class Gmp < Autotools
   compatibility 'all'
   source_url 'https://gmplib.org/download/gmp/gmp-6.3.0.tar.zst'
   source_sha256 '7f55d73f472c29cc14d7fa985f3654d48829415b649eaf61646b7b33f2a80e27'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmp/6.3.0_armv7l/gmp-6.3.0-chromeos-armv7l.tar.zst',

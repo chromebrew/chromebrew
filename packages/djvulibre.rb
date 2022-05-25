@@ -12,6 +12,7 @@ class Djvulibre < Package
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{@_ver}/djvulibre-#{@_ver}.tar.gz"
   source_sha256 'fcd009ea7654fde5a83600eb80757bd3a76998e47d13c66b54c8db849f8f2edc'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/djvulibre/3.5.28-1_armv7l/djvulibre-3.5.28-1-chromeos-armv7l.tar.zst',

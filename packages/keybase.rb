@@ -8,6 +8,7 @@ class Keybase < Package
   compatibility 'all'
   source_url 'https://github.com/keybase/client/archive/v5.5.1.tar.gz'
   source_sha256 'a65dc4b62fc1299dd17da52ddd2484fa1dc1e7d2a4776c3a6e112ee020980b12'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keybase/5.5.1_armv7l/keybase-5.5.1-chromeos-armv7l.tar.xz',

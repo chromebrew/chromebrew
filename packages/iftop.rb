@@ -8,6 +8,7 @@ class Iftop < Package
   compatibility 'all'
   source_url 'http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz'
   source_sha256 'd032547c708307159ff5fd0df23ebd3cfa7799c31536fa0aea1820318a8e0eac'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iftop/0.17_armv7l/iftop-0.17-chromeos-armv7l.tar.xz',

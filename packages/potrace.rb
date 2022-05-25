@@ -8,6 +8,7 @@ class Potrace < Package
   compatibility 'all'
   source_url 'https://potrace.sourceforge.net/download/1.16/potrace-1.16.tar.gz'
   source_sha256 'be8248a17dedd6ccbaab2fcc45835bb0502d062e40fbded3bc56028ce5eb7acc'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/potrace/1.16_armv7l/potrace-1.16-chromeos-armv7l.tar.zst',

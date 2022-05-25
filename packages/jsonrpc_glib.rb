@@ -11,6 +11,7 @@ class Jsonrpc_glib < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/jsonrpc-glib.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonrpc_glib/3.42.0_armv7l/jsonrpc_glib-3.42.0-chromeos-armv7l.tar.zst',

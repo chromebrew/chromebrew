@@ -8,6 +8,7 @@ class Aspell_en < Package
   compatibility 'all'
   source_url 'https://gnu.askapache.com/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2'
   source_sha256 '4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_en/2020.12.07-0_armv7l/aspell_en-2020.12.07-0-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Gtksourceview_3 < Package
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz'
   source_sha256 '691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_armv7l/gtksourceview_3-3.24.11-chromeos-armv7l.tar.xz',

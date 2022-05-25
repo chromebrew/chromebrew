@@ -9,6 +9,7 @@ class Wxwidgets31 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7-2_armv7l/wxwidgets31-3.1.7-2-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Perl_text_charwidth < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/Text-CharWidth-0.04.tar.gz'
   source_sha256 'abded5f4fdd9338e89fd2f1d8271c44989dae5bf50aece41b6179d8e230704f8'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_armv7l/perl_text_charwidth-0.04-perl-5.36-chromeos-armv7l.tar.zst',

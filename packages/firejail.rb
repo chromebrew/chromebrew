@@ -9,6 +9,7 @@ class Firejail < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.54.tar.xz'
   source_sha256 'ce996854278863f3e91ff185198c7cc1377fb70053d37a43e3b1ef1021c57756'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/firejail/0.9.54_armv7l/firejail-0.9.54-chromeos-armv7l.tar.xz',

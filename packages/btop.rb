@@ -8,6 +8,7 @@ class Btop < Package
   compatibility 'all'
   source_url 'https://github.com/aristocratos/btop.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btop/1.2.13_armv7l/btop-1.2.13-chromeos-armv7l.tar.zst',

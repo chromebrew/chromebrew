@@ -8,6 +8,7 @@ class Sass < Package
   compatibility 'all'
   source_url 'https://github.com/sass/dart-sass/archive/1.32.8.tar.gz'
   source_sha256 '1b7679f55bd621af878265ce8b07e3de404779b5f390b6f74ef76c9bacf292b2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sass/1.32.8_armv7l/sass-1.32.8-chromeos-armv7l.tar.xz',

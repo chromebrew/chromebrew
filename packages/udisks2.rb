@@ -8,6 +8,7 @@ class Udisks2 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/storaged-project/udisks/releases/download/udisks-2.9.4/udisks-2.9.4.tar.bz2'
   source_sha256 'b6b60ebab0d5e09624120c5d158882e87d8c2473db60783b63deeba74cb18d1c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/udisks2/2.9.4_armv7l/udisks2-2.9.4-chromeos-armv7l.tar.zst',

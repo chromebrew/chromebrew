@@ -8,6 +8,7 @@ class Openal < Package
   compatibility 'all'
   source_url 'https://github.com/kcat/openal-soft/archive/openal-soft-1.20.1.tar.gz'
   source_sha256 'c32d10473457a8b545aab50070fe84be2b5b041e1f2099012777ee6be0057c13'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openal/1.20.1_armv7l/openal-1.20.1-chromeos-armv7l.tar.xz',

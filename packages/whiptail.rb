@@ -8,6 +8,7 @@ class Whiptail < Package
   compatibility 'all'
   source_url 'https://releases.pagure.org/newt/newt-0.52.20.tar.gz'
   source_sha256 '8d66ba6beffc3f786d4ccfee9d2b43d93484680ef8db9397a4fb70b5adbb6dbc'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whiptail/0.52.20_armv7l/whiptail-0.52.20-chromeos-armv7l.tar.xz',

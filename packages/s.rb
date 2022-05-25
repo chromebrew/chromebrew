@@ -17,6 +17,7 @@ class S < Package
     source_url "https://github.com/zquestz/s/releases/download/v#{version}/s-linux_amd64.zip"
     source_sha256 '38c29001936f1758159cc935b3ab97d1dee75c35ceacd8bd5ada3837b306192f'
   end
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s/0.5.15_armv7l/s-0.5.15-chromeos-armv7l.tar.xz',

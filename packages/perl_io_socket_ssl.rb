@@ -8,6 +8,7 @@ class Perl_io_socket_ssl < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.083.tar.gz'
   source_sha256 '904ef28765440a97d8a9a0df597f8c3d7f3cb0a053d1b082c10bed03bc802069'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_socket_ssl/2.083-perl5.38_armv7l/perl_io_socket_ssl-2.083-perl5.38-chromeos-armv7l.tar.zst',

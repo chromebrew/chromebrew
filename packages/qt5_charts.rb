@@ -8,6 +8,7 @@ class Qt5_charts < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtcharts.git'
   git_hashtag 'e17308d5ce83a8b66aeeaaaf16ce16d4ee6b2826' # from kde/5.15 branch
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_charts/5.15.11-e17308d_armv7l/qt5_charts-5.15.11-e17308d-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Freeglut < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/freeglut/freeglut/3.2.1/freeglut-3.2.1.tar.gz'
   source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',

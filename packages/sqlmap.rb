@@ -8,6 +8,7 @@ class Sqlmap < Package
   compatibility 'all'
   source_url 'https://github.com/sqlmapproject/sqlmap/archive/1.4.2.tar.gz'
   source_sha256 '77faf85164eb17dce769ec830cbd146768644315bc1024613ad13155e09c2d11'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlmap/1.4.2_armv7l/sqlmap-1.4.2-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libsigcplusplus < Package
   compatibility 'all'
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/releases/download/#{version}/libsigc++-#{version}.tar.xz"
   source_sha256 '1c466d2e64b34f9b118976eb21b138c37ed124d0f61497df2a90ce6c3d9fa3b5'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.12.0_armv7l/libsigcplusplus-2.12.0-chromeos-armv7l.tar.zst',

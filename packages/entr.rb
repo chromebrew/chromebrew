@@ -8,6 +8,7 @@ class Entr < Package
   compatibility 'all'
   source_url 'http://entrproject.org/code/entr-4.0.tar.gz'
   source_sha256 '4ad4fe9108b179199951cfc78a581a8a69602b073dae59bcae4b810f6e1f6c8b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/entr/4.0_armv7l/entr-4.0-chromeos-armv7l.tar.xz',

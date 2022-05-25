@@ -8,6 +8,7 @@ class Perl_lwp_protocol_https < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.10.tar.gz'
   source_sha256 'cecfc31fe2d4fc854cac47fce13d3a502e8fdfe60c5bc1c09535743185f2a86c'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_protocol_https/6.10-perl5.38_armv7l/perl_lwp_protocol_https-6.10-perl5.38-chromeos-armv7l.tar.zst',

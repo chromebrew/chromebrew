@@ -11,6 +11,7 @@ class Mpdecimal < Package
   compatibility 'all'
   source_url 'https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-2.5.1.tar.gz'
   source_sha256 '9f9cd4c041f99b5c49ffb7b59d9f12d95b683d88585608aa56a6307667b2b21f'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpdecimal/2.5.1_armv7l/mpdecimal-2.5.1-chromeos-armv7l.tpxz',

@@ -8,6 +8,7 @@ class Font_misc_misc < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-misc-misc-1.1.2.tar.bz2'
   source_sha256 'b8e77940e4e1769dc47ef1805918d8c9be37c708735832a07204258bacc11794'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_misc_misc/1.1.2_armv7l/font_misc_misc-1.1.2-chromeos-armv7l.tar.xz',

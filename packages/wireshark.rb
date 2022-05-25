@@ -11,6 +11,7 @@ class Wireshark < CMake
   compatibility 'all'
   source_url 'https://github.com/wireshark/wireshark.git'
   git_hashtag "wireshark-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.2.0_armv7l/wireshark-4.2.0-chromeos-armv7l.tar.zst',

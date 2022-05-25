@@ -8,6 +8,7 @@ class Mesa_utils < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/demos.git'
   git_hashtag "mesa-demos-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa_utils/8.5.0_armv7l/mesa_utils-8.5.0-chromeos-armv7l.tar.zst',

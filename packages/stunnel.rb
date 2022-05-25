@@ -8,6 +8,7 @@ class Stunnel < Package
   compatibility 'all'
   source_url 'https://www.stunnel.org/downloads/stunnel-5.42.tar.gz' # 404 Not Found
   source_sha256 '1b6a7aea5ca223990bc8bd621fb0846baa4278e1b3e00ff6eee279cb8e540fab'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stunnel/5.42_armv7l/stunnel-5.42-chromeos-armv7l.tar.xz',

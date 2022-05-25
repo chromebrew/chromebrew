@@ -8,6 +8,7 @@ class Iptraf < Package
   compatibility 'all'
   source_url 'ftp://iptraf.seul.org/pub/iptraf/iptraf-3.0.0.tar.gz' # Unable to connect
   source_sha256 '9ee433d95573d612539da4b452e6cdcbca6ab6674a88bfbf6eaf12d4902b5163'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptraf/3.0.0_armv7l/iptraf-3.0.0-chromeos-armv7l.tar.xz',

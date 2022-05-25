@@ -8,6 +8,7 @@ class Rfkill < Package
   compatibility 'all'
   source_url 'https://www.kernel.org/pub/software/network/rfkill/rfkill-0.5.tar.xz'
   source_sha256 'e0ae3004215e39a6c5c36e0726558740728d16f67ebdb8bea621250f6091d86a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rfkill/0.5_armv7l/rfkill-0.5-chromeos-armv7l.tar.xz',

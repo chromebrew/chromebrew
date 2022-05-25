@@ -8,6 +8,7 @@ class Tcl < Package
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
   source_sha256 '43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_armv7l/tcl-8.6.13-chromeos-armv7l.tar.zst',

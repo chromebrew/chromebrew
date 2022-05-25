@@ -11,6 +11,7 @@ class Glslang < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/glslang.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/14.0.0_armv7l/glslang-14.0.0-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class F2fs_tools < Package
   compatibility 'all'
   source_url "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-#{version}.tar.gz"
   source_sha256 '619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/f2fs_tools/1.14.0_armv7l/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',

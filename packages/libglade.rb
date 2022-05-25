@@ -8,6 +8,7 @@ class Libglade < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libglade/2.6/libglade-2.6.4.tar.bz2'
   source_sha256 '64361e7647839d36ed8336d992fd210d3e8139882269bed47dc4674980165dec'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglade/2.6.4-1_armv7l/libglade-2.6.4-1-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libprelude < Package
   compatibility 'all'
   source_url 'https://www.prelude-siem.org/attachments/download/831/libprelude-4.1.0.tar.gz'
   source_sha256 '21ee5bee2fc4136903c606ad7891927b7b32a29e92ca7e418ac458823951562d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libprelude/4.1.0_armv7l/libprelude-4.1.0-chromeos-armv7l.tar.xz',

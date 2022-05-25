@@ -8,6 +8,7 @@ class Php83 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-8.3.1.tar.xz'
   source_sha256 '56445b1771b2ba5b7573453f9e8a9451e2d810b1741a352fa05259733b1e9758'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php83/8.3.1_armv7l/php83-8.3.1-chromeos-armv7l.tar.zst',

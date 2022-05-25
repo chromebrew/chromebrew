@@ -8,6 +8,7 @@ class Perl_module_build < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4234.tar.gz'
   source_sha256 '66aeac6127418be5e471ead3744648c766bd01482825c5b66652675f2bc86a8f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4234-perl5.38_armv7l/perl_module_build-0.4234-perl5.38-chromeos-armv7l.tar.zst',

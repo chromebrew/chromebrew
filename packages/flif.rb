@@ -8,6 +8,7 @@ class Flif < Package
   compatibility 'all'
   source_url 'https://github.com/FLIF-hub/FLIF/archive/v0.3.tar.gz'
   source_sha256 'aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flif/0.3_armv7l/flif-0.3-chromeos-armv7l.tar.xz',

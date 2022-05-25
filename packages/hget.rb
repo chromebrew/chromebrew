@@ -7,6 +7,7 @@ class Hget < Package
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hget/8cff5f7_armv7l/hget-8cff5f7-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Libebml < Package
   license 'BSD'
   source_url 'https://github.com/Matroska-Org/libebml.git'
   git_hashtag "release-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_armv7l/libebml-1.4.2-chromeos-armv7l.tpxz',

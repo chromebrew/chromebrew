@@ -8,6 +8,7 @@ class Libmicrohttpd < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-0.9.75.tar.gz'
   source_sha256 '9278907a6f571b391aab9644fd646a5108ed97311ec66f6359cebbedb0a4e3bb'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.75_armv7l/libmicrohttpd-0.9.75-chromeos-armv7l.tar.zst',

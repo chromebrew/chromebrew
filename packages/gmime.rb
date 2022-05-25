@@ -8,6 +8,7 @@ class Gmime < Package
   compatibility 'all'
   source_url 'https://github.com/jstedfast/gmime/archive/3.2.3.tar.gz'
   source_sha256 '5190dd45e297e2bdeca4b14b7055d37ec07b0fa1fe936159bdb69ddb7c91dd53'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmime/3.2.3_armv7l/gmime-3.2.3-chromeos-armv7l.tar.xz',

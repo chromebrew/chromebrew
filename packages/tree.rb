@@ -8,6 +8,7 @@ class Tree < Package
   compatibility 'all'
   source_url 'http://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz'
   source_sha256 '0160c535bff2b0dc6a830b9944e981e3427380f63e748da96ced7071faebabf6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree/2.1.0_armv7l/tree-2.1.0-chromeos-armv7l.tar.zst',

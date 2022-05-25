@@ -8,6 +8,7 @@ class Libnl3 < Package
   compatibility 'all'
   source_url 'https://github.com/thom311/libnl.git'
   git_hashtag "libnl#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.7.0_armv7l/libnl3-3.7.0-chromeos-armv7l.tar.zst',

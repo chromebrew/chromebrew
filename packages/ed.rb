@@ -8,6 +8,7 @@ class Ed < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/ed/ed-1.15.tar.lz'
   source_sha256 'ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ed/1.15_armv7l/ed-1.15-chromeos-armv7l.tar.xz',

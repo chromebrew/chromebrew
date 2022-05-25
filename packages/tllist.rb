@@ -11,6 +11,7 @@ class Tllist < Package
   compatibility 'all'
   source_url 'https://codeberg.org/dnkl/tllist.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tllist/1.0.5_armv7l/tllist-1.0.5-chromeos-armv7l.tpxz',

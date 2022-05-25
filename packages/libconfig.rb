@@ -8,6 +8,7 @@ class Libconfig < Package
   compatibility 'all'
   source_url 'https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz'
   source_sha256 '7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libconfig/1.7.2_armv7l/libconfig-1.7.2-chromeos-armv7l.tar.xz',

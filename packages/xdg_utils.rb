@@ -8,6 +8,7 @@ class Xdg_utils < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.1.3/xdg-utils-v1.1.3.tar.bz2'
   source_sha256 'deac55c48aa2902023c96a4bea2f1778441ce9c59e60ed52c6ce5d8b3e90ba64'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_utils/1.1.3-1_armv7l/xdg_utils-1.1.3-1-chromeos-armv7l.tar.xz',

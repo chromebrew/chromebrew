@@ -8,6 +8,7 @@ class Re2 < CMake
   compatibility 'all'
   source_url "https://github.com/google/re2/archive/#{version}.tar.gz"
   source_sha256 '5bb6875ae1cd1e9fedde98018c346db7260655f86fdb8837e3075103acd3649b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2023-09-01_armv7l/re2-2023-09-01-chromeos-armv7l.tar.zst',

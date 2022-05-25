@@ -8,6 +8,7 @@ class Whois < Package
   compatibility 'all'
   source_url 'https://github.com/rfc1036/whois/archive/v5.5.2.tar.gz'
   source_sha256 '9e007306bc0a5e0da4fe9abd52bc79aa8202af5ee6e852fb4f130cf362340b40'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whois/5.5.2_armv7l/whois-5.5.2-chromeos-armv7l.tar.xz',

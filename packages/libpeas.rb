@@ -8,6 +8,7 @@ class Libpeas < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/libpeas/archive/libpeas-1.34.0.tar.gz'
   source_sha256 '514b0576d9a56460915490bdb61dcb88634fdacfb2801e28dcbb9a730348858f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.34.0_armv7l/libpeas-1.34.0-chromeos-armv7l.tar.zst',

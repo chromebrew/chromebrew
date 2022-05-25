@@ -8,6 +8,7 @@ class Gsound < Package
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gsound/#{version.rpartition('.')[0]}/gsound-#{version}.tar.xz"
   source_sha256 'bba8ff30eea815037e53bee727bbd5f0b6a2e74d452a7711b819a7c444e78e53'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsound/1.0.2_armv7l/gsound-1.0.2-chromeos-armv7l.tar.xz',

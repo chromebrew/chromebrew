@@ -8,6 +8,7 @@ class Exo < Package
   compatibility 'all'
   source_url "https://archive.xfce.org/src/xfce/exo/#{version.rpartition('.')[0]}/exo-#{version}.tar.bz2"
   source_sha256 '4e89f5536afbf1cb9191cceb720fb2764df1a4fae3459512b7320841ab5a9e9d'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exo/4.16.2_armv7l/exo-4.16.2-chromeos-armv7l.tpxz',

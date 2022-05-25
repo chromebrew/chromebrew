@@ -8,6 +8,7 @@ class Regex_opt < Package
   compatibility 'all'
   source_url 'https://bisqwit.iki.fi/src/arch/regex-opt-1.2.4.tar.gz'
   source_sha256 '128c8ba9570b1fd8a6a660233de2f5a4022740bc5ee300300709c3894413883f'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/regex_opt/1.2.4_armv7l/regex_opt-1.2.4-chromeos-armv7l.tar.xz',

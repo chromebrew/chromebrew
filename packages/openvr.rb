@@ -8,6 +8,7 @@ class Openvr < Package
   compatibility 'all'
   source_url 'https://github.com/ValveSoftware/openvr/archive/v1.12.5.tar.gz'
   source_sha256 'f3cdbaa946688553638e6d65978f156311c9b08825316198d925f5eade6cfeb7'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvr/1.12.5_armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Xrdb < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xrdb.git'
   git_hashtag "xrdb-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xrdb/1.2.1_armv7l/xrdb-1.2.1-chromeos-armv7l.tar.zst',

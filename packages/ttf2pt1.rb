@@ -8,6 +8,7 @@ class Ttf2pt1 < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/ttf2pt1/ttf2pt1/3.4.4/ttf2pt1-3.4.4.tgz'
   source_sha256 'ae926288be910073883b5c8a3b8fc168fde52b91199fdf13e92d72328945e1d0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ttf2pt1/3.4.4_armv7l/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',

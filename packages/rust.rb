@@ -8,6 +8,7 @@ class Rust < Package
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
   git_hashtag '5162a98938a13276604c8d656a22f1cf34b36415'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_armv7l/rust-1.74.1-chromeos-armv7l.tar.zst',

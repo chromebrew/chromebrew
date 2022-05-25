@@ -8,6 +8,7 @@ class Libgcrypt < Autotools
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
   source_sha256 '8b0870897ac5ac67ded568dcfadf45969cfa8a6beb0fd60af2a9eadc2a3272aa'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.10.3_armv7l/libgcrypt-1.10.3-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Liburing < Package
   compatibility 'all'
   source_url "https://github.com/axboe/liburing/archive/refs/tags/liburing-#{version}.tar.gz"
   source_sha256 'ca069ecc4aa1baf1031bd772e4e97f7e26dfb6bb733d79f70159589b22ab4dc0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburing/2.0_armv7l/liburing-2.0-chromeos-armv7l.tar.xz',

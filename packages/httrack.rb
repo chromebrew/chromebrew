@@ -8,6 +8,7 @@ class Httrack < Package
   compatibility 'all'
   source_url 'https://mirror.httrack.com/httrack-3.49.2.tar.gz'
   source_sha256 '3477a0e5568e241c63c9899accbfcdb6aadef2812fcce0173688567b4c7d4025'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-2_armv7l/httrack-3.49.2-2-chromeos-armv7l.tar.zst',

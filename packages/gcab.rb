@@ -8,6 +8,7 @@ class Gcab < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gcab.git'
   git_hashtag 'ad0baea50359c1978a9224ee60bf98d97bfb991f'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcab/1.5-ad0baea_armv7l/gcab-1.5-ad0baea-chromeos-armv7l.tar.zst',

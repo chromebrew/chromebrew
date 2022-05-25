@@ -8,6 +8,7 @@ class Js102 < Package
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 'e79f0ddd4914dfbff61c5eea7ff28ad2dd12ecfbf3d63a41dab57d50171d904e'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_armv7l/js102-102.4.0-chromeos-armv7l.tar.zst',

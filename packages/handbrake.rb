@@ -8,6 +8,7 @@ class Handbrake < Package
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.7.0_x86_64/handbrake-1.7.0-chromeos-x86_64.tar.zst'

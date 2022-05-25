@@ -8,6 +8,7 @@ class Gdal < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.osgeo.org/gdal/3.7.3/gdal-3.7.3.tar.xz'
   source_sha256 'e0a6f0c453ea7eb7c09967f50ac49426808fcd8f259dbc9888140eb69d7ffee6'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.7.3_armv7l/gdal-3.7.3-chromeos-armv7l.tar.zst',

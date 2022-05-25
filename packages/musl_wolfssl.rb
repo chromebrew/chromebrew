@@ -11,6 +11,7 @@ class Musl_wolfssl < Package
   compatibility 'all'
   source_url 'https://github.com/wolfSSL/wolfssl/archive/v5.1.1-stable.tar.gz'
   source_sha256 'd3e0544dbe7e9587c0f6538cdc671b6492663bb7a4281819538abe6c99cdbd92'
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_wolfssl/5.1.1_armv7l/musl_wolfssl-5.1.1-chromeos-armv7l.tpxz',

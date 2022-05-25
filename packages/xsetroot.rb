@@ -8,6 +8,7 @@ class Xsetroot < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/app/xsetroot-1.1.2.tar.bz2'
   source_sha256 '10c442ba23591fb5470cea477a0aa5f679371f4f879c8387a1d9d05637ae417c'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xsetroot/1.1.2_armv7l/xsetroot-1.1.2-chromeos-armv7l.tar.xz',

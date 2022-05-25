@@ -11,6 +11,7 @@ class Cage < Package
   compatibility 'aarch64, armv7l, x86_64'
   source_url 'https://github.com/Hjdskes/cage.git'
   git_hashtag '46f0ec1b729cf2e4fb9c69bb8660e908d1311ea0'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cage/0.1.6-46f0ec1_armv7l/cage-0.1.6-46f0ec1-chromeos-armv7l.tar.zst',

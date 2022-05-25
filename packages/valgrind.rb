@@ -8,6 +8,7 @@ class Valgrind < Package
   compatibility 'all'
   source_url 'https://sourceware.org/pub/valgrind/valgrind-3.17.0.tar.bz2'
   source_sha256 'ad3aec668e813e40f238995f60796d9590eee64a16dff88421430630e69285a2'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/valgrind/3.17_armv7l/valgrind-3.17-chromeos-armv7l.tar.xz',

@@ -8,6 +8,7 @@ class Garcon < Package
   compatibility 'all'
   source_url 'https://archive.xfce.org/src/xfce/garcon/0.7/garcon-0.7.0.tar.bz2'
   source_sha256 '82c3b61b508011642b09e6fb01b1d3f22c4e4de0fc54a9244327d0ddb66b2423'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/garcon/0.7.0_armv7l/garcon-0.7.0-chromeos-armv7l.tar.xz',

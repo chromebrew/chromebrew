@@ -9,6 +9,7 @@ class Tdb < Package
   compatibility 'all'
   source_url "https://www.samba.org/ftp/tdb/tdb-#{@_ver}.tar.gz"
   source_sha256 '0ac226073e3a2db8648da7af744cb95f50766a52feeb001d558b2b321b74a765'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.9-py3.12_armv7l/tdb-1.4.9-py3.12-chromeos-armv7l.tar.zst',

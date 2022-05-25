@@ -8,6 +8,7 @@ class Pangomm_1_4 < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_armv7l/pangomm_1_4-2.46.3-chromeos-armv7l.tar.zst',

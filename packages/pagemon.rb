@@ -8,6 +8,7 @@ class Pagemon < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/pagemon/pagemon-0.01.10.tar.gz'
   source_sha256 '82c240b44b7000fc57355b366bfe28a47a4da857ddaea0ee0ade9d3eae037f54'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagemon/0.01.10_armv7l/pagemon-0.01.10-chromeos-armv7l.tar.xz',

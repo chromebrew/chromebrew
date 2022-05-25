@@ -8,6 +8,7 @@ class Gb < Package
   compatibility 'all'
   source_url 'https://github.com/constabulary/gb/archive/v0.4.4.tar.gz'
   source_sha256 'c7993ae1994ad85cbe35b833d36a137772599fe7ed720edec2d76ebf3fc4313b'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gb/0.4.4_armv7l/gb-0.4.4-chromeos-armv7l.tar.xz',

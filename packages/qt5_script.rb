@@ -8,6 +8,7 @@ class Qt5_script < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtscript.git'
   git_hashtag "v#{version}-lts"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_script/5.15.15_armv7l/qt5_script-5.15.15-chromeos-armv7l.tar.zst',

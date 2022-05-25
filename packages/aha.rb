@@ -8,6 +8,7 @@ class Aha < Package
   compatibility 'all'
   source_url 'https://github.com/theZiz/aha/archive/0.5.1.tar.gz'
   source_sha256 '6aea13487f6b5c3e453a447a67345f8095282f5acd97344466816b05ebd0b3b1'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aha/0.5.1_armv7l/aha-0.5.1-chromeos-armv7l.tar.xz',

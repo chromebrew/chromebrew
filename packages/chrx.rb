@@ -7,6 +7,7 @@ class Chrx < Package
   license 'unlicensed'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrx/3.0.2_armv7l/chrx-3.0.2-chromeos-armv7l.tar.xz',

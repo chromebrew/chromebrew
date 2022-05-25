@@ -11,6 +11,7 @@ class Luajit_mpack < Package
   compatibility 'all'
   source_url 'https://github.com/libmpack/libmpack-lua/archive/1.0.9.tar.gz'
   source_sha256 'e94d5cf95d7479dca00ff23755fe05a440f11f9d203635e862ad8842de95f40a'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_mpack/1.0.9_armv7l/luajit_mpack-1.0.9-chromeos-armv7l.tar.zst',

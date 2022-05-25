@@ -8,6 +8,7 @@ class Snappy < Package
   compatibility 'all'
   source_url 'https://github.com/google/snappy/archive/1.1.7.tar.gz'
   source_sha256 '3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snappy/1.1.7_armv7l/snappy-1.1.7-chromeos-armv7l.tar.xz',

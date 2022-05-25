@@ -8,6 +8,7 @@ class Libewf < Package
   compatibility 'all'
   source_url 'https://github.com/libyal/libewf/releases/download/20171104/libewf-experimental-20171104.tar.gz'
   source_sha256 'cf36d3baf3a96dbe566fde55ae7d79fc2e7b998806ab13e0f69915799f19e040'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libewf/20171104_armv7l/libewf-20171104-chromeos-armv7l.tar.xz',

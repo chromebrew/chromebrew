@@ -8,6 +8,7 @@ class Lvm2 < Autotools
   compatibility 'all'
   source_url 'https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.03.23.tgz'
   source_sha256 '74e794a9e9dee1bcf8a2065f65b9196c44fdf321e22d63b98ed7de8c9aa17a5d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.23_armv7l/lvm2-2.03.23-chromeos-armv7l.tar.zst',

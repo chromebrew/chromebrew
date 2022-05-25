@@ -8,6 +8,7 @@ class Jack < Package
   compatibility 'all'
   source_url "https://github.com/jackaudio/jack2/archive/v#{version}.tar.gz"
   source_sha256 '8b044a40ba5393b47605a920ba30744fdf8bf77d210eca90d39c8637fe6bc65d'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack/1.9.21_armv7l/jack-1.9.21-chromeos-armv7l.tar.zst',

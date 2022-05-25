@@ -8,6 +8,7 @@ class Cloudcross < Package
   compatibility 'all'
   source_url 'https://github.com/MasterSoft24/CloudCross/archive/v1.4.8.tar.gz'
   source_sha256 'fe8ddc608b4aa099b841f5f13fd3ba7296f56c3e24ec2a63537b160715e3fa1b'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloudcross/1.4.8_armv7l/cloudcross-1.4.8-chromeos-armv7l.tar.zst',

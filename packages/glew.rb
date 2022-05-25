@@ -8,6 +8,7 @@ class Glew < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/glew/files/glew/2.2.0/glew-2.2.0.tgz/download'
   source_sha256 'd4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glew/2.2.0_armv7l/glew-2.2.0-chromeos-armv7l.tar.zst',

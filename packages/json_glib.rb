@@ -8,6 +8,7 @@ class Json_glib < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/json_glib/1.6.6_armv7l/json_glib-1.6.6-chromeos-armv7l.tpxz',

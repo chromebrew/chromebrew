@@ -8,6 +8,7 @@ class Kupfer < Package
   compatibility 'x86_64'
   source_url 'https://github.com/kupferlauncher/kupfer.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
   depends_on 'desktop_file_utils'
   depends_on 'shared_mime_info'

@@ -8,6 +8,7 @@ class Libwacom < Package
   compatibility 'all'
   source_url 'https://github.com/linuxwacom/libwacom.git'
   git_hashtag "libwacom-#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.12_armv7l/libwacom-1.12-chromeos-armv7l.tpxz',

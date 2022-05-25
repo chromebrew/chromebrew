@@ -8,6 +8,7 @@ class I3 < Package
   compatibility 'all'
   source_url 'https://i3wm.org/downloads/i3-4.18.3.tar.bz2'
   source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/i3/4.18.3_armv7l/i3-4.18.3-chromeos-armv7l.tar.xz',

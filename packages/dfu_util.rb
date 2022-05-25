@@ -8,6 +8,7 @@ class Dfu_util < Package
   compatibility 'all'
   source_url 'http://dfu-util.sourceforge.net/releases/dfu-util-0.9.tar.gz'
   source_sha256 '36428c6a6cb3088cad5a3592933385253da5f29f2effa61518ee5991ea38f833'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dfu_util/0.9_armv7l/dfu_util-0.9-chromeos-armv7l.tar.xz',

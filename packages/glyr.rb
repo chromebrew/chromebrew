@@ -8,6 +8,7 @@ class Glyr < Package
   compatibility 'all'
   source_url 'https://github.com/sahib/glyr/archive/1.0.10.tar.gz'
   source_sha256 '77e8da60221c8d27612e4a36482069f26f8ed74a1b2768ebc373c8144ca806e8'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glyr/1.0.10_armv7l/glyr-1.0.10-chromeos-armv7l.tar.xz',

@@ -11,6 +11,7 @@ class Perl_json < Package
   compatibility 'all'
   source_url 'https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz'
   source_sha256 'df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.10-perl5.38_armv7l/perl_json-4.10-perl5.38-chromeos-armv7l.tar.zst',

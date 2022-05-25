@@ -8,6 +8,7 @@ class Ansible < Package
   compatibility 'all'
   source_url 'https://github.com/ansible/ansible.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_armv7l/ansible-2.11.6-chromeos-armv7l.tpxz',

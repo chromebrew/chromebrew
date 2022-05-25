@@ -8,6 +8,7 @@ class Colordiff < Package
   compatibility 'all'
   source_url 'https://www.colordiff.org/colordiff-1.0.18.tar.gz'
   source_sha256 '29cfecd8854d6e19c96182ee13706b84622d7b256077df19fbd6a5452c30d6e0'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/colordiff/1.0.18_armv7l/colordiff-1.0.18-chromeos-armv7l.tar.xz',

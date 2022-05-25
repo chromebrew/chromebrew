@@ -8,6 +8,7 @@ class Libnxml < Package
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/libnxml/-/archive/debian/0.18.3-8/libnxml-debian-0.18.3-8.tar.bz2'
   source_sha256 '2c3e910b591d8f2a4dde53874339ddf831cfcce4cfece429217b5a5b9f850a9d'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnxml/0.18.3-8_armv7l/libnxml-0.18.3-8-chromeos-armv7l.tar.xz',

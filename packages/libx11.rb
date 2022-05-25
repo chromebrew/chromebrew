@@ -8,6 +8,7 @@ class Libx11 < Autotools
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
   git_hashtag "libX11-#{version}"
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libx11/1.8.7_armv7l/libx11-1.8.7-chromeos-armv7l.tar.zst',

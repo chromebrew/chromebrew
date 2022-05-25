@@ -8,6 +8,7 @@ class Shared_mime_info < Package
   compatibility 'all'
   source_url 'http://freedesktop.org/~hadess/shared-mime-info-1.10.tar.xz'
   source_sha256 'c625a83b4838befc8cafcd54e3619946515d9e44d63d61c4adf7f5513ddfbebf'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shared_mime_info/1.10_armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',

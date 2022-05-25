@@ -8,6 +8,7 @@ class Perl_http_request < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.44.tar.gz'
   source_sha256 '398b647bf45aa972f432ec0111f6617742ba32fc773c6612d21f64ab4eacbca1'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.38_armv7l/perl_http_request-6.44-perl5.38-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Libwpe < Package
   compatibility 'all'
   source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{version}/libwpe-#{version}.tar.xz"
   source_sha256 'c073305bbac5f4402cc1c8a4753bfa3d63a408901f86182051eaa5a75dd89c00'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.14.0_armv7l/libwpe-1.14.0-chromeos-armv7l.tar.zst',

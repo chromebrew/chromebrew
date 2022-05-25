@@ -11,6 +11,7 @@ class Libcdio_paranoia < Package
   compatibility 'all'
   source_url 'https://github.com/rocky/libcdio-paranoia/archive/release-10.2+2.0.1.tar.gz'
   source_sha256 '7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95'
+  binary_compression 'tar.zst'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio_paranoia/10.2-2.0.1-1_armv7l/libcdio_paranoia-10.2-2.0.1-1-chromeos-armv7l.tar.zst',

@@ -8,6 +8,7 @@ class Fskit < Package
   compatibility 'all'
   source_url 'https://github.com/jcnelson/fskit/archive/dd9a8dc844b81afc63e5067397786a32ecb66008.tar.gz'
   source_sha256 'fe682890ebab9226d65fc6ebfb8b3619c0d5a93e3161787cea9d01ad23d3a83a'
+  binary_compression 'tar.xz'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fskit/dd9a8d_armv7l/fskit-dd9a8d-chromeos-armv7l.tar.xz',
