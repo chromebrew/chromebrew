@@ -77,8 +77,7 @@ class Buildessential < Package
   # Java
   #depends_on 'jdk'
 
-  # compilers
-  depends_on 'gcc'
+  # LLVM
   depends_on 'llvm'
 
   # Meson build system
@@ -127,6 +126,7 @@ class Buildessential < Package
 
   # Packages needed for shrinking package archives
   depends_on 'rdfind'
+  depends_on 'symlinks'
   depends_on 'upx'
 
   # Packages needed for compressing archives

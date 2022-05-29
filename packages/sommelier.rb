@@ -29,7 +29,7 @@ class Sommelier < Package
   depends_on 'libxcomposite' => :build
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon'
-  depends_on 'llvm::libs'
+  depends_on 'llvm'
   depends_on 'mesa'
   depends_on 'pixman'
   depends_on 'psmisc'

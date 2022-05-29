@@ -29,7 +29,9 @@ expat
 filecmd
 flex
 fop
-gcc::libs
+gcc
+gcc11
+gcc_tools
 gdbm
 gettext
 git
