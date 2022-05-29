@@ -22,6 +22,7 @@ class Libxml2 < Package
     x86_64: 'ebb3b81155231be702617246a78945a3698142f63b3138c5763b9813d57dbe19'
   })
 
+  depends_on 'gcc'
   depends_on 'icu4c'
   depends_on 'readline'
   depends_on 'zlibpkg'
