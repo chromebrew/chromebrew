@@ -1314,6 +1314,16 @@ end
 
 def install_package(pkgdir)
   def copy_to_rootfs(files)
+    files.map! do |file_path|
+      # if the path of the file is outside of writible directories (except $HOME and $CREW_PREFIX), install it to $CREW_PREFIX/$orig_file_path
+      unless file_path == Regexp.new("^/usr/local/") or file_path == Regexp.new("^#{CREW_PREFIX}") or file_path == Regexp.new("^#{HOME}")
+        warn "#{file_path}: located outside of #{CREW_PREFIX}, will install it to #{File.join(CREW_PREFIX, file_path)}".yellow
+        return File.join(CREW_PREFIX, file_path)
+      else
+        return file_path
+      end
+    end
+
     File.write 'tmplist', ( files.map {|f| f.sub(/^\//, './') } .join("\n") )
 
     # check if rsync available
