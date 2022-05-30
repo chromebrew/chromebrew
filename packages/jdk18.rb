@@ -3,40 +3,28 @@ require 'package'
 class Jdk18 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/downloads/#java18'
-  version '18.0.1'
+  version '18.0.1.1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
   source_url 'SKIP'
 
-  binary_url ({
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jdk18/18.0.1_x86_64/jdk18-18.0.1-chromeos-x86_64.tar.zst',
-  })
-  binary_sha256 ({
-     x86_64: '96af8a414a2b175eed412a32ac6dd478cf17f1231de53ecff2f8a329e8a30ab7',
-  })
-
+  no_compile_needed
   no_patchelf
 
   def self.preflight
-    abort "JDK8 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk8"
-    abort "JDK11 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk11"
-    abort "JDK15 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk15"
-    abort "JDK16 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk16"
-    abort "JDK17 installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/jdk17"
+    ['jdk8','jdk11','jdk15','jdk16','jdk17'].each do |jdk|
+      abort "#{jdk} installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/#{jdk}"
+    end
   end
 
   def self.install
     jdk_bin = "#{HOME}/Downloads/jdk-18_linux-x64_bin.tar.gz"
-    jdk_sha256 = '15f017ea76d7bb9da2e4c25097d515f1a6181f7e857f86919721fe760a19ff56'
+    jdk_sha256 = 'dbabd3f726775a63329254b001b4190c082206e38323950b2db478606f1d65fa'
     unless File.exist? jdk_bin then
-      puts
-      puts "Oracle now requires an account to download the JDK.".orange
-      puts
+      puts "\nOracle now requires an account to download the JDK.\n".orange
       puts "You must login at https://login.oracle.com/mysso/signon.jsp and then visit:".orange
       puts "https://www.oracle.com/java/technologies/downloads/#java18".orange
-      puts
-      puts "Download the JDK for your architecture to #{HOME}/Downloads to continue.".orange
-      puts
+      puts "\nDownload the JDK for your architecture to #{HOME}/Downloads to continue.\n".orange
       abort
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(jdk_bin) ) == jdk_sha256
