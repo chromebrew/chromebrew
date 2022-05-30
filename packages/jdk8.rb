@@ -41,7 +41,7 @@ class Jdk8 < Package
     jdk8_dir = "#{CREW_DEST_PREFIX}/share/jdk8"
     FileUtils.mkdir_p "#{jdk8_dir}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd 'jdk1.8.0_331' do
+    FileUtils.cd 'jdk1.8.0_333' do
       FileUtils.rm_f 'src.zip'
       FileUtils.rm_f 'javafx-src.zip'
       FileUtils.cp_r Dir['*'], "#{jdk8_dir}/"
