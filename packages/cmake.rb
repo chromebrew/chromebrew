@@ -3,7 +3,7 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.23.0'
+  @_ver = '3.23.2'
   version @_ver
   license 'CMake'
   compatibility 'all'
@@ -11,18 +11,17 @@ class Cmake < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.0_armv7l/cmake-3.23.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.0_armv7l/cmake-3.23.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.0_i686/cmake-3.23.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.0_x86_64/cmake-3.23.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_armv7l/cmake-3.23.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_armv7l/cmake-3.23.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_i686/cmake-3.23.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_x86_64/cmake-3.23.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1e31576926ad32bb574f57d06d26eaf1f49fe578802b8ba672aeaa731ed3dd9e',
-     armv7l: '1e31576926ad32bb574f57d06d26eaf1f49fe578802b8ba672aeaa731ed3dd9e',
-       i686: '0cdbc190fd23f9c35007ae83ebe4c3105aca907b646116ed5383eeb947c48945',
-     x86_64: 'fb97af30472cb4b23944b9c5d1247282edebc2a4debaaef25caf3ddc6cae58e7'
+    aarch64: '2dfe03152d856f05fd80bf4f8916c251acb97373644b9879866c67d297e53d12',
+     armv7l: '2dfe03152d856f05fd80bf4f8916c251acb97373644b9879866c67d297e53d12',
+       i686: 'ea70f7b463171f41ecca6d754c1bd865977ef509666b49b78c3f1de99bf4314d',
+     x86_64: '4e7e2eaf6e0f60dd1d9149181da5cd09b6c8d0cd66e89c24534004064099ffaa'
   })
-
 
   depends_on 'expat'
   depends_on 'jsoncpp'
