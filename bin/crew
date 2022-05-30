@@ -1350,19 +1350,19 @@ def install_package(pkgdir)
     filelist.map! do |file_path|
       unless file_path =~ Regexp.new("^/usr/local/") or file_path =~ Regexp.new("^#{CREW_PREFIX}") or file_path =~ Regexp.new("^#{HOME}")
         warn "#{file_path}: located outside of #{CREW_PREFIX}, will install it to #{File.join(CREW_PREFIX, file_path)}.".yellow
-        return File.join(CREW_PREFIX, file_path)
+        next File.join(CREW_PREFIX, file_path)
       else
-        return file_path
+        next file_path
       end
     end
 
     # if the path of the directory is outside of writible directories (except $HOME and $CREW_PREFIX), mkdir $CREW_PREFIX/$orig_dir_path instead
     directoryList.map! do |dir_path|
-      unless dir_path =~ Regexp.new("^/usr/local/") or dir_path =~ Regexp.new("^#{CREW_PREFIX}") or dir_path =~ Regexp.new("^#{HOME}")
+      unless dir_path =~ Regexp.new("^/usr(/local.*)?$") or dir_path =~ Regexp.new("^#{CREW_PREFIX}") or dir_path =~ Regexp.new("^#{HOME}")
         warn "#{dir_path}: located outside of #{CREW_PREFIX}, will create #{File.join(CREW_PREFIX, dir_path)} instead.".yellow
-        return File.join(CREW_PREFIX, dir_path)
+        next File.join(CREW_PREFIX, dir_path)
       else
-        return dir_path
+        next dir_path
       end
     end
 
