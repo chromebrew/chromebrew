@@ -1314,16 +1314,6 @@ end
 
 def install_package(pkgdir)
   def copy_to_rootfs(files)
-    files.map! do |file_path|
-      # if the path of the file is outside of writible directories (except $HOME and $CREW_PREFIX), install it to $CREW_PREFIX/$orig_file_path
-      unless file_path =~ Regexp.new("^/usr/local/") or file_path =~ Regexp.new("^#{CREW_PREFIX}") or file_path =~ Regexp.new("^#{HOME}")
-        warn "#{file_path}: located outside of #{CREW_PREFIX}, will install it to #{File.join(CREW_PREFIX, file_path)}".yellow
-        return File.join(CREW_PREFIX, file_path)
-      else
-        return file_path
-      end
-    end
-
     File.write 'tmplist', ( files.map {|f| f.sub(/^\//, './') } .join("\n") )
 
     # check if rsync available
@@ -1354,6 +1344,26 @@ def install_package(pkgdir)
     else
       filelist = File.readlines('filelist', chomp: true)
       directoryList = File.readlines('dlist', chomp: true)
+    end
+
+    # if the path of the file is outside of writible directories (except $HOME and $CREW_PREFIX), install it to $CREW_PREFIX/$orig_file_path
+    filelist.map! do |file_path|
+      unless file_path =~ Regexp.new("^/usr/local/") or file_path =~ Regexp.new("^#{CREW_PREFIX}") or file_path =~ Regexp.new("^#{HOME}")
+        warn "#{file_path}: located outside of #{CREW_PREFIX}, will install it to #{File.join(CREW_PREFIX, file_path)}.".yellow
+        return File.join(CREW_PREFIX, file_path)
+      else
+        return file_path
+      end
+    end
+
+    # if the path of the directory is outside of writible directories (except $HOME and $CREW_PREFIX), mkdir $CREW_PREFIX/$orig_dir_path instead
+    directoryList.map! do |dir_path|
+      unless dir_path =~ Regexp.new("^/usr/local/") or dir_path =~ Regexp.new("^#{CREW_PREFIX}") or dir_path =~ Regexp.new("^#{HOME}")
+        warn "#{dir_path}: located outside of #{CREW_PREFIX}, will create #{File.join(CREW_PREFIX, dir_path)} instead.".yellow
+        return File.join(CREW_PREFIX, dir_path)
+      else
+        return dir_path
+      end
     end
 
     File.write "#{CREW_META_PATH}/#{@pkg.name}::#{@pkg.target_component}.filelist", filelist.join("\n")
