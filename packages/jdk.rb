@@ -3,7 +3,7 @@ require 'package'
 class Jdk < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html'
-  version '8u331-18.0.1'
+  version '8u333-18.0.1.1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
 
@@ -19,19 +19,17 @@ class Jdk < Package
     end
     puts
     puts "Select version:"
-    puts " 8 = JDK 8u331"
+    puts " 8 = JDK 8u333"
     if ARCH == 'x86_64'
-      puts "11 = JDK 11.0.15"
-      puts "15 = JDK 15.0.2"
-      puts "16 = JDK 16.0.2"
-      puts "17 = JDK 17.0.3"
-      puts "18 = JDK 18.0.1"
+      puts "11 = JDK 11.0.15.1"
+      puts "17 = JDK 17.0.3.1"
+      puts "18 = JDK 18.0.1.1"
     end
     puts " 0 = Cancel"
 
     while version = STDIN.gets.chomp
       case version
-      when '8', '11', '15', '16', '17', '18'
+      when '8', '11', '17', '18'
         depends_on 'jdk' + version
         break
       when '0'
