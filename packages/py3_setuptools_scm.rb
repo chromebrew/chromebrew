@@ -9,6 +9,7 @@ class Py3_setuptools_scm < Package
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools_scm.git'
   git_hashtag "v#{@_ver}"
+  git_clone_deep
 
   depends_on 'py3_packaging'
   depends_on 'py3_tomli'

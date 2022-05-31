@@ -791,9 +791,14 @@ def download
           system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
           system 'git checkout FETCH_HEAD'
         end
-        system 'git submodule update --init --recursive'
+        unless @pkg.git_no_recursive?
+          system 'git submodule update --init --recursive'
+        end
         if @pkg.git_fetchtags?
           system 'git fetch --tags', exception: true
+        end
+        if @pkg.git_clone_deep?
+          system "git fetch origin #{@pkg.git_hashtag}", exception: true
         end
         puts 'Repository downloaded.'.lightgreen
       end

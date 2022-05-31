@@ -16,7 +16,7 @@ class Py3_setuptools_rust < Package
   depends_on 'py3_setuptools_scm'
 
   def self.build
-    system "python3 -m build #{PY3_BUILD_OPTIONS} -x"
+    system "python3 -m build #{PY3_BUILD_OPTIONS}"
   end
 
   def self.install
