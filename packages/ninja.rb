@@ -11,12 +11,16 @@ class Ninja < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_i686/ninja-1.11.0-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_x86_64/ninja-1.11.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_x86_64/ninja-1.11.0-chromeos-x86_64.tar.zst',
+   aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_armv7l/ninja-1.11.0-chromeos-armv7l.tar.zst',
+    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_armv7l/ninja-1.11.0-chromeos-armv7l.tar.zst',
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_i686/ninja-1.11.0-chromeos-i686.tar.zst'
   })
   binary_sha256({
-    i686: 'd6d082ec9df9d956812f82734ef7551d484a209487eef2f4fee8c96d7a37365c',
-  x86_64: '389f237b9bbf6869288131087a6a7b62ee3889ba173b2a9e0bd455ebef98f96c'
+    x86_64: '40ee7476d70e15874acb59b43e4e379c67cc65793ead2af6fbd67331f06193ff',
+   aarch64: '7b87e31690157dc58eb495a8e6daf2f334866a8f5aa0dda171cb6cad1f19cf4d',
+    armv7l: '7b87e31690157dc58eb495a8e6daf2f334866a8f5aa0dda171cb6cad1f19cf4d',
+      i686: 'c34abd516d109070b2c57976f5cb7821b67fe65d5dcd1a010b3e3f3d31f94178'
   })
 
   depends_on 're2c' => :build
