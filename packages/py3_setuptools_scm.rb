@@ -13,10 +13,9 @@ class Py3_setuptools_scm < Package
 
   depends_on 'py3_packaging'
   depends_on 'py3_tomli'
-  depends_on 'py3_packaging'
 
   def self.build
-    system "python3 -m build #{PY3_BUILD_OPTIONS}"
+    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
   end
 
   def self.install

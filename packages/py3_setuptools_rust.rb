@@ -13,10 +13,10 @@ class Py3_setuptools_rust < Package
   depends_on 'rust'
   depends_on 'py3_semantic_version'
   depends_on 'py3_setuptools'
-  depends_on 'py3_setuptools_scm'
+  depends_on 'py3_setuptools_scm' => :build
 
   def self.build
-    system "python3 -m build #{PY3_BUILD_OPTIONS}"
+    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
   end
 
   def self.install
