@@ -14,7 +14,7 @@ class Py3_cryptography < Package
   depends_on 'py3_six'
   depends_on 'py3_typing_extensions'
   depends_on 'py3_setuptools_rust' => :build
-  depends_on 'rust' => :build
+  depends_on 'py3_pycparser' => :build
 
   def self.build
     system "python3 -m build #{PY3_BUILD_OPTIONS}"
