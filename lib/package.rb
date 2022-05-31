@@ -8,7 +8,7 @@ class Package
   boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
                         is_static no_compile_needed no_env_options no_fhs
                         no_patchelf no_zstd patchelf git_clone_deep
-                        git_no_recursive]
+                        git_no_submodules]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
