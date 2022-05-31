@@ -16,8 +16,8 @@ class Cpio < Package
     downloader "#{_url}/CVE-2021-38185-2.patch", "2a2b3564d3910dfa7b0f595af6a69ed5a664443e786fc770a9a51d453b7af6d1"
     downloader "#{_url}/CVE-2021-38185-3.patch", "3b337b844cc37043cb49b115fcf0efa0bc6a042eee7ef7a074c74b56d3978156"
     downloader "#{_url}/gcc-10.patch", "68181f05736e9165493320f5213f76410c496a04ca03a3a7da3eb6f8d0c4e4c1"
-    Dir['*.patch'].each do |filename|
-      system "patch -Np1 -i #{filename} || true" # some patch hunks fail
+    Dir['CVE-2021-38185.patch', 'CVE-2021-38185-2.patch', 'CVE-2021-38185-3.patch', 'gcc-10.patch'].each do |filename|
+      system "patch -Np1 -i #{filename}"
     end
   end
 
