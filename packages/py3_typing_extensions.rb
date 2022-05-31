@@ -10,6 +10,15 @@ class Py3_typing_extensions < Package
   source_url 'https://github.com/python/typing.git'
   git_hashtag @_ver
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_typing_extensions/4.2.0_i686/py3_typing_extensions-4.2.0-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_typing_extensions/4.2.0_x86_64/py3_typing_extensions-4.2.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'b71a96ab82d2034598be84eaf0dc3b8f0e1b7215f454668766fa3aae847de6cf',
+  x86_64: '211c1c352eda292eef3783cb5de11f7d744ab94699f70625e8aecc2fc141f987'
+  })
+
   depends_on 'py3_setuptools' => :build
 
   def self.build

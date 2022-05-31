@@ -4,11 +4,20 @@ class Py3_flit < Package
   description 'Flit provides simplified packaging of Python modules.'
   homepage 'https://flit.pypa.io/'
   @_ver = '3.7.1'
-  version @_ver + '-1'
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/flit.git'
   git_hashtag @_ver
+
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-1_i686/py3_flit-3.7.1-1-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-1_x86_64/py3_flit-3.7.1-1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'a6b6a9ba748228b961f04537528a8383715de29937f25530d0066988f665caea',
+  x86_64: '27bcb645fc59ae1b026d4326bc11b243fa20d5ccdad5bba23d0a1d6dd713304a'
+  })
 
   depends_on 'py3_docutils'
   depends_on 'py3_flit_core'

@@ -4,11 +4,20 @@ class Py3_pep517 < Package
   description 'Python PEP517 is an API to call PEP 517 hooks for building Python packages '
   homepage 'https://pep517.readthedocs.io/'
   @_ver = '0.12.0'
-  version @_ver + '-1'
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/pep517.git'
   git_hashtag "v#{@_ver}"
+
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/0.12.0-1_i686/py3_pep517-0.12.0-1-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/0.12.0-1_x86_64/py3_pep517-0.12.0-1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '1ec47c6bbb612d920218dcdf0d9504599ddaeb7aafe8502c3662daed1dab1213',
+  x86_64: '55858ecb0039e660eefc6765b46a9c3c5a0ca835485b5a168d648c5718736362'
+  })
 
   depends_on 'py3_tomli'
 

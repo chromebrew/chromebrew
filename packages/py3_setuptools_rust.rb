@@ -10,6 +10,15 @@ class Py3_setuptools_rust < Package
   source_url 'https://github.com/PyO3/setuptools-rust.git'
   git_hashtag "v#{@_ver}"
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/1.3.0_i686/py3_setuptools_rust-1.3.0-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools_rust/1.3.0_x86_64/py3_setuptools_rust-1.3.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '6497b39eddb9e1bda26824354fc5b4cf120ad48d15e8575ce2b4c7697a375745',
+  x86_64: '8dea8ecbc82ae2cc55da4a3a0250f433bfbbb19391c69b870a3189fda10dbdf5'
+  })
+
   depends_on 'rust'
   depends_on 'py3_semantic_version'
   depends_on 'py3_setuptools'

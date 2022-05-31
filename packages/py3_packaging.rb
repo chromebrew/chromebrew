@@ -10,6 +10,15 @@ class Py3_packaging < Package
   source_url 'https://github.com/pypa/packaging.git'
   git_hashtag @_ver
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-2_i686/py3_packaging-21.3-2-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-2_x86_64/py3_packaging-21.3-2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'c30dc89d108fabb94855bc0bab22ffb4b9e39d6113f67b64de76cb717c55477a',
+  x86_64: '2df6b24cb4a867e840a1380bf0ce7d12b60f2a91de2a2c2df4ead79317233f12'
+  })
+
   depends_on 'py3_pyparsing'
 
   def self.build

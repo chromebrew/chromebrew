@@ -10,6 +10,15 @@ class Py3_cryptography < Package
   source_url 'https://github.com/pyca/cryptography.git'
   git_hashtag @_ver
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/37.0.2_i686/py3_cryptography-37.0.2-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/37.0.2_x86_64/py3_cryptography-37.0.2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'b748fd83659b4fd7f64d3791d2c1385df7e468b2910299c2010b2fdf9db904e1',
+  x86_64: 'fb0b79a2477bef16ac69968e61d8ee20238dceb979b0173e54f8f1f476c71477'
+  })
+
   depends_on 'py3_cffi'
   depends_on 'py3_six'
   depends_on 'py3_typing_extensions'
