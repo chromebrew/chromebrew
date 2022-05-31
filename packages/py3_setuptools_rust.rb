@@ -11,12 +11,12 @@ class Py3_setuptools_rust < Package
   git_hashtag "v#{@_ver}"
 
   depends_on 'rust'
-  depends_on 'py3_toml'
   depends_on 'py3_semantic_version'
   depends_on 'py3_setuptools'
+  depends_on 'py3_setuptools_scm'
 
   def self.build
-    system "python3 -m build #{PY3_BUILD_OPTIONS}"
+    system "python3 -m build #{PY3_BUILD_OPTIONS} -x"
   end
 
   def self.install
