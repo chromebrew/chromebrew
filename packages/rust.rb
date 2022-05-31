@@ -9,6 +9,15 @@ class Rust < Package
   compatibility 'all'
   source_url 'SKIP'
 
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_i686/rust-1.61.0-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_x86_64/rust-1.61.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: '0043f551b880bd733edc3436c96fa4c28fbbf585fe2959b6d2727e4001c26186',
+  x86_64: 'c66969e64773e553aa2b814b5afdf61d8477a83ea7aff6d03f6c303800288bbc'
+  })
+
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
@@ -60,7 +69,7 @@ class Rust < Package
 
   def self.remove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    print "#{config_dirs}"
+    print config_dirs.to_s
     print "\nWould you like to remove the config directories above? [y/N] "
     case $stdin.getc
     when 'y', 'Y'
