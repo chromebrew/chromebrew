@@ -8,7 +8,16 @@ class Ninja < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja.git'
-  git_hashtag 'v' + @_ver
+  git_hashtag "v#{@_ver}"
+
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_i686/ninja-1.11.0-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.0_x86_64/ninja-1.11.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    i686: 'd6d082ec9df9d956812f82734ef7551d484a209487eef2f4fee8c96d7a37365c',
+  x86_64: '389f237b9bbf6869288131087a6a7b62ee3889ba173b2a9e0bd455ebef98f96c'
+  })
 
   depends_on 're2c' => :build
   depends_on 'emacs' => :build
@@ -18,7 +27,7 @@ class Ninja < Package
   end
 
   def self.build
-    system "python3 configure.py --bootstrap"
+    system 'python3 configure.py --bootstrap'
     system 'emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el'
   end
 
