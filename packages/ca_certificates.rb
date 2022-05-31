@@ -3,14 +3,25 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  @_ver = '20211016'
-  version @_ver
+  @_ver = '20210119'
+  version "#{@_ver}-2"
   license 'MPL-1.1'
   compatibility 'all'
-  source_url "https://salsa.debian.org/debian/ca-certificates.git"
-  git_hashtag 'debian/20211016'
+  source_url "https://salsa.debian.org/debian/ca-certificates/-/archive/debian/#{@_ver}/ca-certificates-debian-#{@_ver}.tar.bz2"
+  source_sha256 'af30b4d9a2c58e42134067d29f0ba6120e5960fd140393d5574d4bdcf5b824d6'
 
-  depends_on 'py3_cryptography' => :build
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20210119-2_armv7l/ca_certificates-20210119-2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20210119-2_armv7l/ca_certificates-20210119-2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20210119-2_i686/ca_certificates-20210119-2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20210119-2_x86_64/ca_certificates-20210119-2-chromeos-x86_64.tar.xz'
+  })
+  binary_sha256({
+    aarch64: '84bb971e1d955d113b48013c694fd209f1627799f9c5a1e6123911c27d72ad4c',
+     armv7l: '84bb971e1d955d113b48013c694fd209f1627799f9c5a1e6123911c27d72ad4c',
+       i686: 'd8bdc641c52b7e551e2396f7276c09601b533211e1f43e21bffab55fba49eeab',
+     x86_64: '4f3ef9802940646facd1408b34b378ef866829d1c60b3b23560465afff5b97c3'
+  })
 
   no_patchelf
 
