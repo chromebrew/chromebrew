@@ -6,7 +6,7 @@ class Keepassxc < Package
   version '2.6.6'
   license 'GPL-2 or GPL-3'
   compatibility 'x86_64'
-  source_url 'https://github.com/keepassxreboot/keepassxc/releases/download/2.6.4/KeePassXC-2.6.6-x86_64.AppImage'
+  source_url 'https://github.com/keepassxreboot/keepassxc/releases/download/2.6.6/KeePassXC-2.6.6-x86_64.AppImage'
   source_sha256 '0928b4a748ab2a8c95931ffe1afc31c74ff47e3891ef8ff42b87acf014672f18'
 
   binary_url ({

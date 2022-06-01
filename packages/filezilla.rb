@@ -3,22 +3,22 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  @_ver = '3.55.0'
+  @_ver = '3.57.0'
   version @_ver
   license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
   source_url "https://download.filezilla-project.org/client/FileZilla_#{@_ver}_src.tar.bz2"
-  source_sha256 'ae70eb4180d136be29bbad6fcdd188e497e205fc416ea3e413dce7cd8cab9c82'
+  source_sha256 '82bf6c7077ca13012549356b463952f124ee04876f21e4ba720acc9811c899c7'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.55.0_armv7l/filezilla-3.55.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.55.0_armv7l/filezilla-3.55.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.55.0_x86_64/filezilla-3.55.0-chromeos-x86_64.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.57.0_armv7l/filezilla-3.57.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.57.0_armv7l/filezilla-3.57.0-chromeos-armv7l.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.57.0_x86_64/filezilla-3.57.0-chromeos-x86_64.tpxz',
   })
   binary_sha256 ({
-    aarch64: '7135323bf1f3bdb82f37610867c7ca8e8b6a22990cd464ccf021952cc73816b7',
-     armv7l: '7135323bf1f3bdb82f37610867c7ca8e8b6a22990cd464ccf021952cc73816b7',
-     x86_64: 'f0effe1033d2d3a5ab548077c0d3a71e24877f132520c08381bd5e23c9cf45f1',
+    aarch64: '9424564c24eb816a71355aba791b9e89292392b6978e53900a1ba28c3883b385',
+     armv7l: '9424564c24eb816a71355aba791b9e89292392b6978e53900a1ba28c3883b385',
+     x86_64: '1df2e247ff0260b949dd182ff6151ac4a6e7db16b898bbb904303a79eda87c66',
   })
 
   depends_on 'dbus'

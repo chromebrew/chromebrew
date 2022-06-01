@@ -3,13 +3,12 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/skycocker/chromebrew'
-  version '1.3'
+  version '1.5'
   license 'GPL-3+'
   compatibility 'all'
 
   is_fake
 
-  depends_on 'binutils'
   depends_on 'brotli'
   depends_on 'bz2'
   depends_on 'c_ares'
@@ -60,6 +59,7 @@ class Core < Package
   depends_on 'nettle'
   depends_on 'openldap'
   depends_on 'openssl'
+  depends_on 'patchelf'
   depends_on 'p11kit'
   depends_on 'pcre'
   depends_on 'pcre2'
@@ -71,6 +71,7 @@ class Core < Package
   depends_on 'python2'
   depends_on 'python3'
   depends_on 'readline'
+  depends_on 'rsync'
   depends_on 'rtmpdump'
   depends_on 'ruby'
   depends_on 'slang'

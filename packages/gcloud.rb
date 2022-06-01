@@ -3,17 +3,17 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '362.0.0'
+  version '374.0.0'
   license 'Apache-2.0'
   compatibility 'i686,x86_64'
-  case ARCH
-  when 'i686'
-    source_url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz"
-    source_sha256 '8c5af5891258fd313ac074abc552217df278d47fb88b901f9d68c42af9bc259e'
-  when 'x86_64'
-    source_url "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz"
-    source_sha256 '15cb05b2b3a63d657b7303343e46980b37041a94048055009328ee24e3ae3efc'
-  end
+  source_url ({
+      i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz",
+    x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz",
+  })
+  source_sha256 ({
+      i686: '4fdd248b2235a82e829a7929822d15a94b8a652ecf9b231a4f7061bb98c9bbd6',
+    x86_64: 'ceaa3eb7147ed061280e30322f7c78f61749b953c9450a2df2035a145f016b7e',
+  })
 
   depends_on 'xdg_base'
 
@@ -29,11 +29,8 @@ class Gcloud < Package
   end
 
   def self.install
-    ENV['CREW_SHRINK_ARCHIVE'] = '0'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gcloud"
     FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/gcloud"
@@ -64,7 +61,7 @@ class Gcloud < Package
     response = STDIN.getc
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]
     config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
+      if Dir.exist? config_dir
         case response
         when "y", "Y"
           FileUtils.rm_rf config_dir

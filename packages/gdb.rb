@@ -6,23 +6,23 @@ require 'package'
 class Gdb < Package
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '11.1'
+  version '11.2'
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz'
-  source_sha256 'cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94'
+  source_url 'https://ftp.gnu.org/gnu/gdb/gdb-11.2.tar.xz'
+  source_sha256 '1497c36a71881b8671a9a84a0ee40faab788ca30d7ba19d8463c3cc787152e32'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_i686/gdb-11.1-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_armv7l/gdb-11.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_armv7l/gdb-11.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.1_x86_64/gdb-11.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.2_armv7l/gdb-11.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.2_armv7l/gdb-11.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.2_i686/gdb-11.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/11.2_x86_64/gdb-11.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: '5ed42d4d144048f46d888079719431d5031f39f60f392dd690d72fe52233e19f',
-    aarch64: 'd790322bdc75abf93546a0845c55562e9ef358edd5f80883c4847b630bda6c27',
-     armv7l: 'd790322bdc75abf93546a0845c55562e9ef358edd5f80883c4847b630bda6c27',
-     x86_64: 'f3d0bb232d38629b0c25e12d29a5098a7d6fb01abcc65e914401b313b5d0bd68'
+    aarch64: 'bf7bd97110ed30b47bc700f70dd8d1624bb22ba95e7e7a28899aa39bc1a9c188',
+     armv7l: 'bf7bd97110ed30b47bc700f70dd8d1624bb22ba95e7e7a28899aa39bc1a9c188',
+       i686: '788f7fc7eab81ba4b662465dcd4ee597b85d6fb62aa4c2b2abd3bb493db02a9f',
+     x86_64: 'a331fad82a11e38f0387831b301621c98e3cdd8e7d2ecf55254f1bc67e1418e9'
   })
 
   depends_on 'mpfr' # R
@@ -33,8 +33,7 @@ class Gdb < Package
   def self.build
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
-      system "env #{CREW_ENV_OPTIONS} \
-        CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw  -lncursesw' \
+      system "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw  -lncursesw' \
         ../configure \
         #{CREW_OPTIONS} \
         --disable-nls \
@@ -66,7 +65,7 @@ class Gdb < Package
     FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/bfd.info" if File.exist?("#{CREW_DEST_PREFIX}/share/info/bfd.info")
     conflict_packages = %w[binutils]
     conflict_packages.each do |package|
-      file = File.open("#{CREW_META_PATH}#{package}.filelist").read
+      file = File.read("#{CREW_META_PATH}#{package}.filelist")
       file.each_line do |line|
         if File.exist?("#{CREW_DEST_DIR}#{line}")
           FileUtils.rm_f "#{CREW_DEST_DIR}#{line}"

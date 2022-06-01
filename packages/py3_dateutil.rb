@@ -3,7 +3,7 @@ require 'package'
 class Py3_dateutil < Package
   description 'Dateutil provides extensions to the standard Python datetime module.'
   homepage 'https://dateutil.readthedocs.io/'
-  @_ver = '2.8.1'
+  @_ver = '2.8.2'
   version @_ver
   license 'BSD-3 and Apache-2.0 or BSD-3'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_dateutil < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.1_armv7l/py3_dateutil-2.8.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.1_armv7l/py3_dateutil-2.8.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.1_x86_64/py3_dateutil-2.8.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.2_armv7l/py3_dateutil-2.8.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.2_armv7l/py3_dateutil-2.8.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.2_i686/py3_dateutil-2.8.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dateutil/2.8.2_x86_64/py3_dateutil-2.8.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '69b12966a2d83315df429beb76465ac13a32ff82749c86afe3eb71e0213ff873',
-     armv7l: '69b12966a2d83315df429beb76465ac13a32ff82749c86afe3eb71e0213ff873',
-     x86_64: '626496d05853a5734262d7a2f44289effeaa3573b9a44dfc9e32ca5a7c624131'
+    aarch64: '3e0b6fccb5e0a5392dd966ef5c5e4064a8e5c1d5c37f5a5437a14a5cb947df09',
+     armv7l: '3e0b6fccb5e0a5392dd966ef5c5e4064a8e5c1d5c37f5a5437a14a5cb947df09',
+       i686: 'cee2ce8239781a92571442a900c96904830ef997cd80986719fb403c59a27256',
+     x86_64: '7543e7f881e5673223024757febd5a35aa59664946ef249368e1fb85164c4053'
   })
 
   depends_on 'py3_setuptools' => :build

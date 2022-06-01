@@ -3,24 +3,24 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '12.0.1'
-  version "#{@_ver}-2"
+  @_ver = '14.0.3'
+  version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/archive/llvmorg-#{@_ver}.tar.gz"
-  source_sha256 '66b64aa301244975a4aea489f402f205cde2f53dd722dad9e7b77a0459b4c8df'
+  source_url 'https://github.com/llvm/llvm-project.git'
+  git_hashtag 'llvmorg-14.0.3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_armv7l/llvm-12.0.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_armv7l/llvm-12.0.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-2_i686/llvm-12.0.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/12.0.1-1_x86_64/llvm-12.0.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.3_armv7l/llvm-14.0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.3_armv7l/llvm-14.0.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.3_i686/llvm-14.0.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.3_x86_64/llvm-14.0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '324cb80793345bcca65f986c659cafae25dc64b2e546acffb7c441d6f771127d',
-     armv7l: '324cb80793345bcca65f986c659cafae25dc64b2e546acffb7c441d6f771127d',
-       i686: 'bccf809bf9b0a90aad96643c957dc18bff2c132a3206c7429df3db4780204a2c',
-     x86_64: 'fc83b1d1a1b98d0579003f0b212a8eeae3716c78b70e765180415472676ac4ef'
+    aarch64: 'ab6904a07f8c1bf4d010eb9bd72ca47df38d3eea549ec6a37d379239738c9702',
+     armv7l: 'ab6904a07f8c1bf4d010eb9bd72ca47df38d3eea549ec6a37d379239738c9702',
+       i686: '5a8d8988b8c2c580f1c3b1f9a92de00717d06075c9868ae6032955e1bdaa8aac',
+     x86_64: 'a875e7621a026904bf20b25d119bc7f4eea075e2e930a4ad9056222895100638'
   })
 
   depends_on 'ocaml' => :build
@@ -28,12 +28,14 @@ class Llvm < Package
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc' # R
+  no_env_options
+  no_patchelf
 
   case ARCH
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-ltinfow -fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
@@ -46,30 +48,30 @@ class Llvm < Package
     # _Unwind_VRS_Result res = _Unwind_VRS_Get(ctx, _UVRSC_CORE,
     # ^~~~~~~~~~~~~~~~~~
     # _Unwind_Resume
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;lld;polly;openmp'.freeze
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;lld;polly'.freeze
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
     # Because ld.lld: error: undefined symbol: __atomic_store
     # Polly demands fPIC
-    @ARCH_C_FLAGS = '-ltinfow -latomic -fPIC'
+    @ARCH_C_FLAGS = '-latomic -fPIC'
     @ARCH_CXX_FLAGS = '-latomic -fPIC'
     # Because getting this error:
     # ld.lld: error: relocation R_386_PC32 cannot be used against symbol isl_map_fix_si; recompile with -fPIC
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
     @ARCH_LDFLAGS = '-Wl,-znotext'
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'.freeze
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'.freeze
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = '-ltinfow -fPIC'
+    @ARCH_C_FLAGS = '-fPIC'
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'.freeze
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'.freeze
   end
-  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin -fuse-ld=lld"
-  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin -fuse-ld=lld"
+  @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
+  @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
   # LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp'.freeze
 
   # Using Targets 'all' for non-i686 because otherwise mesa complains.
@@ -119,50 +121,53 @@ gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
       system "env LLVM_IAS=1 PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
             cmake -G Ninja \
-            -DLLVM_ENABLE_LTO=Thin \
-            -DCMAKE_C_COMPILER=$(which clang) \
-            -DCMAKE_CXX_COMPILER=$(which clang++) \
-            -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
-            -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
-            -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
             -DCMAKE_BUILD_TYPE=Release \
-            -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
-            -DCMAKE_LINKER=$(which ld.lld) \
-            -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
-            -DLLVM_BUILD_LLVM_DYLIB=ON \
-            -DLLVM_LINK_LLVM_DYLIB=ON \
-            -DLLVM_CCACHE_BUILD=ON \
-            -DLLVM_ENABLE_FFI=ON \
-            -DLLVM_ENABLE_RTTI=ON \
+            -DCMAKE_C_COMPILER=$(which clang) \
+            -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
+            -DCMAKE_CXX_COMPILER=$(which clang++) \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
-            -DLLVM_PARALLEL_LINK_JOBS=1 \
-            -DPYTHON_EXECUTABLE=$(which python3) \
-            -DLLVM_INSTALL_UTILS=ON \
-            -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
-            -DLLVM_OPTIMIZED_TABLEGEN=ON \
-            -DLLVM_ENABLE_TERMINFO=ON \
-            -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
+            -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
+            -DCMAKE_LINKER=$(which ld.lld) \
+            -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
+            -DCOMPILER_RT_BUILD_BUILTINS=ON \
+            -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
+            -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
+            -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
+            -DLIBOMP_ENABLE_SHARED=ON \
+            -DLIBOMP_INSTALL_ALIASES=OFF \
             -DLIBUNWIND_C_FLAGS='-fno-exceptions -funwind-tables' \
             -DLIBUNWIND_CXX_FLAGS='-fno-exceptions -funwind-tables' \
-            -DLIBUNWIND_SUPPORTS_FUNWIND_TABLES_FLAG=ON \
             -DLIBUNWIND_SUPPORTS_FNO_EXCEPTIONS_FLAG=ON \
-            -DCOMPILER_RT_BUILD_SANITIZERS=OFF \
-            -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
-            -DCOMPILER_RT_BUILD_BUILTINS=ON \
-            -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
+            -DLIBUNWIND_SUPPORTS_FUNWIND_TABLES_FLAG=ON \
+            -DLLVM_BINUTILS_INCDIR='#{CREW_PREFIX}/include' \
+            -DLLVM_BUILD_LLVM_DYLIB=ON \
+            -DLLVM_CCACHE_BUILD=ON \
+            -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
+            -DLLVM_ENABLE_FFI=ON \
+            -DLLVM_ENABLE_LTO=Thin \
+            -DLLVM_ENABLE_PROJECTS='#{LLVM_PROJECTS_TO_BUILD}' \
+            -DLLVM_ENABLE_RTTI=ON \
+            -DLLVM_ENABLE_RUNTIME=openmp \
+            -DLLVM_ENABLE_TERMINFO=ON \
+            -DLLVM_INSTALL_UTILS=ON \
+            -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
+            -DLLVM_LINK_LLVM_DYLIB=ON \
+            -DLLVM_OPTIMIZED_TABLEGEN=ON \
+            -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
+            -DOPENMP_ENABLE_LIBOMPTARGET=OFF \
+            -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev \
             ../llvm"
-      system 'ninja'
+      system 'samu'
     end
   end
 
   def self.install
     Dir.chdir('builddir') do
-      system "DESTDIR=#{CREW_DEST_DIR} ninja install"
+      system "DESTDIR=#{CREW_DEST_DIR} samu install"
       FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0o755
       FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0o755
       FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins"
@@ -176,9 +181,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
 
   def self.check
     Dir.chdir('builddir') do
-      # system "ninja check-llvm || true"
-      # system "ninja check-clang || true"
-      # system "ninja check-lld || true"
+      system 'samu check-llvm || true'
+      system 'samu check-clang || true'
+      system 'samu check-lld || true'
     end
   end
 

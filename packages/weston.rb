@@ -3,24 +3,24 @@ require 'package'
 class Weston < Package
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'http://wayland.freedesktop.org'
-  @_ver = '9.0.0'
-  version "#{@_ver}-1"
+  @_ver = '10.0.0'
+  version @_ver
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'all'
-  source_url "https://github.com/wayland-project/weston/archive/#{@_ver}.tar.gz"
-  source_sha256 '82b17ab1766f13557fc620c21e3c89165342d3a3ead79ba01181b4f7d2144487'
+  source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_armv7l/weston-9.0.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_i686/weston-9.0.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/9.0.0-1_x86_64/weston-9.0.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_armv7l/weston-10.0.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_armv7l/weston-10.0.0-chromeos-armv7l.tpxz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_i686/weston-10.0.0-chromeos-i686.tpxz',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/10.0.0_x86_64/weston-10.0.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '9f5f48dfa122850c5a1041ae59c8358d76eb08adb84be474dba2cfdf430074ea',
-     armv7l: '9f5f48dfa122850c5a1041ae59c8358d76eb08adb84be474dba2cfdf430074ea',
-       i686: '1a3cfca6a5b69500859b5af32fb22b3c9539804df6d0995564a21bb6a4f89f37',
-     x86_64: '4c729aa9b4c39a9016bc3a69bd9e41c0ab3dd12466128a1f04c3e735b2206d12'
+    aarch64: 'cd733a24b9f957d1ee7fc3295ad39fa71d3af7088f89c487cb377cc5bc7bd09c',
+     armv7l: 'cd733a24b9f957d1ee7fc3295ad39fa71d3af7088f89c487cb377cc5bc7bd09c',
+    i686: 'c2e647df4ea31290175675df85549b8d1e44598a77e6938346b25fd2de7c04af',
+  x86_64: 'bc09f27481eb8da5f81d1f8dc9d522f747f2890d24d9d81ca672e26a756badbe'
   })
 
   depends_on 'harfbuzz'
@@ -39,7 +39,6 @@ class Weston < Package
   depends_on 'libwebp'
   depends_on 'libva'
   depends_on 'gstreamer'
-  depends_on 'gst_plugins_base'
   depends_on 'libwacom'
 
   def self.build
@@ -53,7 +52,7 @@ class Weston < Package
         -Dcolor-management-lcms=false \
         -Dbackend-rdp=false \
         -Dlauncher-logind=false \
-        -Dweston-launch=false \
+        -Ddeprecated-weston-launch=true \
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland \
         builddir"

@@ -3,11 +3,14 @@ require 'package'
 class Opera < Package
   description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
   homepage 'https://www.opera.com/'
-  version '81.0.4196.31'
+  version '87.0.4390.36'
   license 'OPERA-2018'
   compatibility 'x86_64'
+
+  # faster apt mirror, but only works when downloading latest version of opera
+  # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 '2c7a07f650a5e0f48b413ff3c887fccddb878e61670c2b2e2ec7b3b6249c60c2'
+  source_sha256 'adda67abef9dfd4afbc76d927b45dd1749f588199112a6fbcf996527af408e73'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -17,10 +20,9 @@ class Opera < Package
   depends_on 'libcom_err'
   depends_on 'sommelier'
 
-  def self.install
-    # llvm-strip doesn't works with opera
-    ENV['CREW_NOT_STRIP'] = '1'
+  no_compile_needed
 
+  def self.install
     # Since opera puts the executable in a location that is not in the path,
     # we need to link it to bin directory.
     FileUtils.ln_sf "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera", 'bin/opera'

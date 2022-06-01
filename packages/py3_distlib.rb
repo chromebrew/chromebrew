@@ -3,7 +3,7 @@ require 'package'
 class Py3_distlib < Package
   description 'Distlib provides distribution utilities for Python packages.'
   homepage 'https://bitbucket.org/pypa/distlib/'
-  @_ver = '0.3.1'
+  @_ver = '0.3.2'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_distlib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.1_armv7l/py3_distlib-0.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.1_armv7l/py3_distlib-0.3.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.1_x86_64/py3_distlib-0.3.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.2_armv7l/py3_distlib-0.3.2-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.2_armv7l/py3_distlib-0.3.2-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.2_i686/py3_distlib-0.3.2-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_distlib/0.3.2_x86_64/py3_distlib-0.3.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '65978b1ac26d1fbed2e6d52b206556b5c73d97eb3b1df265ae0c697fa85b7987',
-     armv7l: '65978b1ac26d1fbed2e6d52b206556b5c73d97eb3b1df265ae0c697fa85b7987',
-     x86_64: '58c20fa460e47d16141c1e33482443e98b479c080cb2460df950a5d74b9e152f'
+    aarch64: 'e68ff5d19d0e91e128b40feaba73ee092a2b086f06583b8f2a9c4604b5e31790',
+     armv7l: 'e68ff5d19d0e91e128b40feaba73ee092a2b086f06583b8f2a9c4604b5e31790',
+       i686: '526956a79711bda6a25e86cf0a387cf8e2c9f52ba3ff9a10536f52c85c4ab489',
+     x86_64: '174bad9d25111143d4a67fd6979dbef6a3395b4cff41c7e09a83402563b80137'
   })
 
   depends_on 'py3_setuptools' => :build

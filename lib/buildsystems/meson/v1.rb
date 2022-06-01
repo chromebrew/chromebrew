@@ -10,7 +10,7 @@ class Meson_v1 < Package
     return @meson_options
   end
 
-  def self.check? (bool = false)
+  def self.check? (bool = true)
     @check = bool
     return @check
   end
@@ -18,16 +18,16 @@ class Meson_v1 < Package
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
             #{@meson_options} builddir"
-    system 'samu -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   if @check
     def self.check
-      system 'samu -C builddir test'
+      system "#{CREW_NINJA} -C builddir test"
     end
   end
 end

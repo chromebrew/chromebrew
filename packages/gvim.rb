@@ -3,24 +3,22 @@ require 'package'
 class Gvim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2783'
+  @_ver = '8.2.4594'
   version @_ver
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_armv7l/gvim-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_armv7l/gvim-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_i686/gvim-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.2783_x86_64/gvim-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.4594_armv7l/gvim-8.2.4594-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.4594_armv7l/gvim-8.2.4594-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/8.2.4594_x86_64/gvim-8.2.4594-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bb178b2d66d9a84237b4f4dfacd78befa7a5b88baffe0f49f8bacee045dda6bd',
-     armv7l: 'bb178b2d66d9a84237b4f4dfacd78befa7a5b88baffe0f49f8bacee045dda6bd',
-       i686: 'a0ad2d39ab72c9d5f827fdb0bdaeb39ca6cd64114f4520f3979f43852dcf9458',
-     x86_64: '979a27bf60ed3af9e08d61c159d51d39dade3f32818d57e50fd846f9a840935d'
+    aarch64: 'a778b458c9111ccedf0c84b2cdd472c52bf80c9e52e40f6c22f22f2ccf27d50a',
+     armv7l: 'a778b458c9111ccedf0c84b2cdd472c52bf80c9e52e40f6c22f22f2ccf27d50a',
+     x86_64: '0b238d45425755746cf68dd398f33ca5e22345a3fcab50dfb472bf7fe574f402'
   })
 
   depends_on 'vim_runtime'

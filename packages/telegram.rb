@@ -3,11 +3,11 @@ require 'package'
 class Telegram < Package
   description "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free."
   homepage 'https://telegram.org/'
-  version '3.1.8'
+  version '3.7.3'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
-  source_url 'https://updates.tdesktop.com/tlinux/tsetup.3.1.8.tar.xz'
-  source_sha256 '19eeeb931b401afd8da8811be8d56b993662833f67035114489447544871e5cd'
+  source_url 'https://github.com/telegramdesktop/tdesktop/releases/download/v3.7.3/tsetup.3.7.3.tar.xz'
+  source_sha256 '3d1b44902f2e3d3b8393bb9c35cc21100934f342438014ea3d201afd692ff4e8'
 
   def self.build
     telegram = <<~EOF
@@ -24,8 +24,6 @@ class Telegram < Package
   end
 
   def self.postinstall
-    puts
-    puts "Type 'telegram' to get started.".lightblue
-    puts
+    puts "\nType 'telegram' to get started.\n".lightblue
   end
 end

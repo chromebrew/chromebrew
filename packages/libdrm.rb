@@ -3,22 +3,24 @@ require 'package'
 class Libdrm < Package
   description 'Cross-driver middleware for DRI protocol.'
   homepage 'https://dri.freedesktop.org'
-  @_ver = '2.4.107'
+  @_ver = '2.4.110'
   version @_ver
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://dri.freedesktop.org/libdrm/libdrm-#{@_ver}.tar.xz"
-  source_sha256 'c554cef03b033636a975543eab363cc19081cb464595d3da1ec129f87370f888'
+  compatibility 'all'
+  source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
+  git_hashtag "libdrm-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.107_armv7l/libdrm-2.4.107-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.107_armv7l/libdrm-2.4.107-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.107_x86_64/libdrm-2.4.107-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.110_armv7l/libdrm-2.4.110-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.110_armv7l/libdrm-2.4.110-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.110_i686/libdrm-2.4.110-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.110_x86_64/libdrm-2.4.110-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7610b79d04ea3bd1a74a56fc947fd226bf902d8ff4ca41f62ee61acf95982bcd',
-     armv7l: '7610b79d04ea3bd1a74a56fc947fd226bf902d8ff4ca41f62ee61acf95982bcd',
-     x86_64: 'acad6807fb51761065d53d118f5b6676a9f643af18f87e6ad6dd68c15a734fbe'
+    aarch64: '17358ed1f87950f483410a3079757d77c7d62f8893571b61e4b93a24e0f50b9a',
+     armv7l: '17358ed1f87950f483410a3079757d77c7d62f8893571b61e4b93a24e0f50b9a',
+       i686: 'b9dff811d3f6a7fc04e2abb259d1e3f1f5486b1609d21e2cd11f5d31435f472e',
+     x86_64: '64ff40876627b172d3d3a92d641e38bffebb4363a52cb1dbc281f09afa0863a1'
   })
 
   depends_on 'libpciaccess' # R

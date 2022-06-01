@@ -16,5 +16,4 @@ class M4 < Autotools_v1
                     --with-packager='Chromebrew' \
                     --with-packager-version='#{CREW_VERSION}' \
                     --with-packager-bug-reports='https://github.com/skycocker/chromebrew/issues'"
-  check? true
 end

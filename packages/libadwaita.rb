@@ -3,23 +3,24 @@ require 'package'
 class Libadwaita < Package
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  version '1.0.0-alpha.2'
+  @_ver = '1.0.3'
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.1.0-aab6_i686/libadwaita-1.1.0-aab6-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.0-alpha.2_armv7l/libadwaita-1.0.0-alpha.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.0-alpha.2_armv7l/libadwaita-1.0.0-alpha.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.0-alpha.2_x86_64/libadwaita-1.0.0-alpha.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.3_armv7l/libadwaita-1.0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.3_armv7l/libadwaita-1.0.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.3_i686/libadwaita-1.0.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.0.3_x86_64/libadwaita-1.0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: 'd68dd1fb68393dbeed3f7537a81d5812cc3cdff659dc74dfd07592a1cacad297',
-    aarch64: '64fa0c4373eb849fbb139e8fd1fcd2f9f6b64f4ccf373ef17c58a0130a77ae54',
-     armv7l: '64fa0c4373eb849fbb139e8fd1fcd2f9f6b64f4ccf373ef17c58a0130a77ae54',
-     x86_64: '39da23ece24e4872fc0519d499e9f6306d6dbb6e5de11a7220f18e8f9b7c95e3'
+    aarch64: '009e5ef5d3adcfde46a4b7e671f707680c46d9817c031732eec13aee1c0d170f',
+     armv7l: '009e5ef5d3adcfde46a4b7e671f707680c46d9817c031732eec13aee1c0d170f',
+       i686: '3e7139dea2d70fbc714594070bfa6316024413200815bafb1d860b5d99c3c291',
+     x86_64: 'd828e672cbf543de90112d024cf2db87ac2d38f68ccbab2d970f01059189b057'
   })
 
   depends_on 'cairo'
@@ -31,17 +32,22 @@ class Libadwaita < Package
   depends_on 'libjpeg'
   depends_on 'pango'
   depends_on 'vala' => :build
+  depends_on 'vulkan_headers' => :build
+  gnome
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
-      -Drequire_all_tests=false \
-      -Duser_documentation=false \
-      builddir"
+            -Dintrospection=enabled \
+            -Dgtk_doc=false builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+  end
+
+  def self.check
+    system 'samu -C builddir test || true'
   end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Py3_pytest < Package
   description 'Pytest is simple powerful testing with Python.'
   homepage 'https://pytest.org/'
-  @_ver = '6.2.4'
+  @_ver = '6.2.5'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_pytest < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.4_armv7l/py3_pytest-6.2.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.4_armv7l/py3_pytest-6.2.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.4_i686/py3_pytest-6.2.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.4_x86_64/py3_pytest-6.2.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_armv7l/py3_pytest-6.2.5-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_armv7l/py3_pytest-6.2.5-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_i686/py3_pytest-6.2.5-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pytest/6.2.5_x86_64/py3_pytest-6.2.5-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'd853fbff044481b9f34b630b7e44677a1f2dd3f0a8649eaf52209b9d484db4a3',
-     armv7l: 'd853fbff044481b9f34b630b7e44677a1f2dd3f0a8649eaf52209b9d484db4a3',
-       i686: '36d1774ffe2a919e0249ddf0df4c02f6ce6550851e738afb0a86b46a0acee799',
-     x86_64: '30fe0a993bc2c666f7bbc1555fde84e4a2f0c1e1199e5fabd94e25902ab6a71a'
+    aarch64: 'e07eb2dc508c1710332cdf74a023c30d6c1805166ed8c4aea52e56e7b8afbe45',
+     armv7l: 'e07eb2dc508c1710332cdf74a023c30d6c1805166ed8c4aea52e56e7b8afbe45',
+       i686: 'c2f645998e899eab99998914fe74a65c83f16f4f688fdcb1ded0c5345a0891e6',
+     x86_64: '090b9bea45cafcc0b83fd11024a5fa149758c94b355e213c1c18f8bff5fad5f3'
   })
 
   depends_on 'py3_py'

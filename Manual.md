@@ -86,7 +86,7 @@ Optional functions are as follows:
 - `def self.preinstall` - Can be used to define functions<sup>(Or commands)</sup> that should happen `pre`-install.
 - `def self.check` - Can be used to define functions<sup>(Or commands)</sup> that should be used to check the compile binary.
 - `def self.postinstall` - Can be used to define functions<sup>(Or commands)</sup> that should happen `post`-install.
-- `is_fake` - Cane be used to label package as meta.
+- `is_fake` - Can be used to label package as meta.
 ***
 # Rundown
 

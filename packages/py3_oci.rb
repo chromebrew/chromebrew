@@ -3,7 +3,7 @@ require 'package'
 class Py3_oci < Package
   description 'Oracle Cloud Infrastructure Python SDK'
   homepage 'https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/'
-  @_ver = '2.38.1'
+  @_ver = '2.47.1'
   version @_ver
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_oci < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.38.1_armv7l/py3_oci-2.38.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.38.1_armv7l/py3_oci-2.38.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.38.1_x86_64/py3_oci-2.38.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_armv7l/py3_oci-2.47.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_armv7l/py3_oci-2.47.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_i686/py3_oci-2.47.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_oci/2.47.1_x86_64/py3_oci-2.47.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0412d58af1bf04b702d03c3121ffd53eaf3b2143c88d4ba40336c2f340a210da',
-     armv7l: '0412d58af1bf04b702d03c3121ffd53eaf3b2143c88d4ba40336c2f340a210da',
-     x86_64: 'd8405fcf598555bd2e060fd2549ac055b09d086a6d4f96abda982a9b0d48697e'
+    aarch64: '5d86993783651e32978610bf6ef35bc5f7204b982d9c97569faf6e46efd25471',
+     armv7l: '5d86993783651e32978610bf6ef35bc5f7204b982d9c97569faf6e46efd25471',
+       i686: 'aae5523e9d97e038cf5dc4763597e37940f0b057e17083c3d85d5080411109f4',
+     x86_64: '99649cc221142e93cca0bb6473c7300799792f1c2fa9e49862f4bc61cffc19fb'
   })
 
   depends_on 'py3_dateutil'

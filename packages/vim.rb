@@ -3,7 +3,7 @@ require 'package'
 class Vim < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2783'
+  @_ver = '8.2.4594'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Vim < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_armv7l/vim-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_i686/vim-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.2783_x86_64/vim-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.4594_armv7l/vim-8.2.4594-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.4594_armv7l/vim-8.2.4594-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.4594_i686/vim-8.2.4594-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/8.2.4594_x86_64/vim-8.2.4594-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
-     armv7l: '3051888f588842fe3001ab6bd014d28c094cbb45096078295dd82f2640e2557f',
-       i686: 'e20d87a9a0bfaa0470ef317f51f5786076b0fc15ef55a2b12daf044f731fb5ff',
-     x86_64: '53c2887e570759765ae43abeedd7857b6fafb531f94aac2dbc48901c85110fbd'
+    aarch64: '67807f3bb5fa193a8997e484b01f7e187a183e6060e602240a26065b4f96f623',
+     armv7l: '67807f3bb5fa193a8997e484b01f7e187a183e6060e602240a26065b4f96f623',
+       i686: '156f8c4cc69a4cdf79ef6fc2d2abaad0bcbf76241d9a16a3f60a3a2340be3d2f',
+     x86_64: '69ea16d8dbdb6f2ea932d766c3222b1a870e0344e5d44dbd84fb16dbbb5f78cb'
   })
 
   depends_on 'vim_runtime'

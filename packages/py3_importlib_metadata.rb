@@ -3,7 +3,7 @@ require 'package'
 class Py3_importlib_metadata < Package
   description 'Importlib metadata reads metadata from Python packages.'
   homepage 'https://github.com/python/importlib_metadata/'
-  @_ver = '4.6.1'
+  @_ver = '4.8.1'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_importlib_metadata < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.6.1_armv7l/py3_importlib_metadata-4.6.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.6.1_armv7l/py3_importlib_metadata-4.6.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.6.1_x86_64/py3_importlib_metadata-4.6.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.8.1_armv7l/py3_importlib_metadata-4.8.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.8.1_armv7l/py3_importlib_metadata-4.8.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.8.1_i686/py3_importlib_metadata-4.8.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_importlib_metadata/4.8.1_x86_64/py3_importlib_metadata-4.8.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '5568b64c5d7d8b967a739a3f21fb2a718daedb34a41f15290649e32ecbacbe74',
-     armv7l: '5568b64c5d7d8b967a739a3f21fb2a718daedb34a41f15290649e32ecbacbe74',
-     x86_64: '55de7326823289d71254bc10fb31b58578072b27c09abc203f604fb9005ac27a'
+    aarch64: '6139b68179532986690383b18389c8c6932f754a002ad90ce58aa9c58231c065',
+     armv7l: '6139b68179532986690383b18389c8c6932f754a002ad90ce58aa9c58231c065',
+       i686: '046c2d8c3ffdae2a222630661c4f05eb7973b33ecffcdc990b24d4be573943c5',
+     x86_64: 'c9c98c8676017c9d141aec4c1ce97cfa83704f6f68bfdcf964d599daa1210825'
   })
 
   depends_on 'py3_zipp'

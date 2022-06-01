@@ -3,27 +3,28 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1l'
-  version @_ver
+  @_ver = '1.1.1o'
+  version "#{@_ver}-1"
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 '0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1'
+  source_sha256 '9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_armv7l/openssl-1.1.1l-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_armv7l/openssl-1.1.1l-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_i686/openssl-1.1.1l-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1l_x86_64/openssl-1.1.1l-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_armv7l/openssl-1.1.1o-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_armv7l/openssl-1.1.1o-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_i686/openssl-1.1.1o-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1o-1_x86_64/openssl-1.1.1o-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bc847247e12d2f68874dfd56408b51839e56cfeb00db431134e4dda6004ebb5a',
-     armv7l: 'bc847247e12d2f68874dfd56408b51839e56cfeb00db431134e4dda6004ebb5a',
-       i686: '4b9296c9bce595849bf4f7ebd11f9303ab8089c422f13338f0d74b5bf3b8eb88',
-     x86_64: 'b99e603aadccb0544dc51026ce065bff345b63a0e5defcd254316a67bad541fc'
+    aarch64: '8d3aebd58570d123e253ca53516012d907ae0ae908dd1c0dc45e65b782f2d927',
+     armv7l: '8d3aebd58570d123e253ca53516012d907ae0ae908dd1c0dc45e65b782f2d927',
+       i686: '43831e6753b8598462c6759b337d722c374632075de3e737f0a42231508167ec',
+     x86_64: '4d52d5fa7c5950d4bee7cde519346b267bfcd725b725d6ba8325b92a84cc551c'
   })
 
   depends_on 'ccache' => :build
+  no_patchelf
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -42,11 +43,8 @@ class Openssl < Package
     @openssl_configure_target = 'linux-x86_64'
   end
   @ARCH_LDFLAGS = '-flto'
-  # @ARCH_LDFLAGS = '-flto=auto'
   @ARCH_C_LTO_FLAGS = "#{@arch_c_flags} -flto"
   @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto"
-  # @ARCH_C_LTO_FLAGS = "#{@arch_c_flags}  -ffat-lto-objects -flto=auto"
-  # @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags}  -ffat-lto-objects -flto=auto"
 
   def self.build
     # This gives you the list of OpenSSL configure targets
@@ -63,13 +61,11 @@ class Openssl < Package
   end
 
   def self.check
-    system 'make test'
+    # Don't run tests if we are just rebuilding the same version of openssl.
+    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == @_ver
   end
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install_sw install_ssldirs"
-    # For Libressl Compatibility
-    # FileUtils.ln_s "#{CREW_LIB_PREFIX}/libssl.so", "#{CREW_DEST_LIB_PREFIX}/libssl.so.48"
-    # FileUtils.ln_s "#{CREW_LIB_PREFIX}/libcrypto.so", "#{CREW_DEST_LIB_PREFIX}/libcrypto.so.46"
   end
 end

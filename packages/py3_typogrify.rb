@@ -17,10 +17,10 @@ class Py3_typogrify < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_typogrify/2.0.7_x86_64/py3_typogrify-2.0.7-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '50f562c28e356a34e6f4bd8146353b6aff50035abe0a123962b08fb7e39090db',
-     armv7l: '50f562c28e356a34e6f4bd8146353b6aff50035abe0a123962b08fb7e39090db',
-       i686: 'af3b2e1f11a14751d660534c590f7b907992222391a06cd6a1b39eab5ae7d59a',
-     x86_64: 'c0681f49f3318b7fb6d40e6a54ef970cac3389accaf2bcd9cd0ccef1de70d81a'
+    aarch64: '13737d5f686a40036af5ef16fc69765afe40b3d7035c92cd45685889b5b58ed6',
+     armv7l: '13737d5f686a40036af5ef16fc69765afe40b3d7035c92cd45685889b5b58ed6',
+       i686: '5b35cafb95bcc54edca7424f5f997349eb93255b37e2b7acdf19056a8fbbafd1',
+     x86_64: '6e2b05123214d735e3440a8c6927af84fe16eefc8d19bc76585e6bc549add623'
   })
 
   depends_on 'py3_setuptools' => :build

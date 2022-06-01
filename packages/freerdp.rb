@@ -28,7 +28,7 @@ class Freerdp < Package
   depends_on 'faad2'
   depends_on 'ffmpeg'
   depends_on 'gsm'
-  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
   depends_on 'libfdk_aac'
   depends_on 'linux_pam'
   depends_on 'pulseaudio'

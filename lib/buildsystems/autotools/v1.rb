@@ -10,7 +10,7 @@ class Autotools_v1 < Package
     return @configure_options
   end
 
-  def self.check? (bool = false)
+  def self.check? (bool = true)
     @check = bool
     return @check
   end
@@ -26,7 +26,7 @@ class Autotools_v1 < Package
         system 'autoreconf -fiv'
       end
     end
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
               #{@configure_options}"
     system 'make'
   end

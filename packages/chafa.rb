@@ -6,38 +6,36 @@ require 'package'
 class Chafa < Package
   description 'Image-to-text converter supporting a wide range of symbols and palettes, transparency, animations, etc.'
   homepage 'https://hpjansson.org/chafa/'
-  version '1.8.0'
+  version 'cf15d59'
   license 'LGPL'
   compatibility 'all'
-  source_url 'https://github.com/hpjansson/chafa/releases/download/1.8.0/chafa-1.8.0.tar.xz'
-  source_sha256 '21ff652d836ba207098c40c459652b2f1de6c8a64fbffc62e7c6319ced32286b'
+  source_url 'https://github.com/hpjansson/chafa.git'
+  git_hashtag 'cf15d59da7ccc6a79f8900e21d0926bea08074e9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_armv7l/chafa-1.8.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_armv7l/chafa-1.8.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_i686/chafa-1.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/1.8.0_x86_64/chafa-1.8.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_armv7l/chafa-cf15d59-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_armv7l/chafa-cf15d59-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_i686/chafa-cf15d59-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_x86_64/chafa-cf15d59-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8e4a30680cb863f3735e8e21f33332dae55aa894648719ac8f26028d99cc178e',
-     armv7l: '8e4a30680cb863f3735e8e21f33332dae55aa894648719ac8f26028d99cc178e',
-       i686: '7a5d976bd6c4790a9bf3612ce18ff2160103d1fac5fbda282f8655ae9e443715',
-     x86_64: '0a7c5213a65a6058a766022ec58867f6c435a0759ee27d69727c43f2f9db2c9b'
+    aarch64: 'd53beb7ca506c4df22a1722a4de31c9f08d9726ea73af281c4dfe59019961512',
+     armv7l: 'd53beb7ca506c4df22a1722a4de31c9f08d9726ea73af281c4dfe59019961512',
+       i686: 'f75740d4e7863e7e7c8ef7bfa8270232a62456eadc3881ef67102791458bed48',
+     x86_64: '5aec91cd2979e938db4da44cdf3251338e7f7d81e38939f19f680e2a11dea21b'
   })
 
-  depends_on 'imagemagick7' => :build
-  depends_on 'freetype_sub' => :build
+  depends_on 'glib'
   depends_on 'libxslt'
-  depends_on 'gtk_doc' => ':build'
-
-  def self.patch
-    system 'filefix'
-  end
 
   def self.build
+    system 'autoreconf -fiv'
+    system 'filefix'
     system "#{CREW_ENV_OPTIONS} \
       ./configure \
-      #{CREW_OPTIONS}"
+      #{CREW_OPTIONS} \
+      --without-tools \
+      --enable-gtk-doc=no"
     system 'make'
   end
 

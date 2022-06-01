@@ -13,12 +13,14 @@ class Py3_dnspython < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_armv7l/py3_dnspython-2.1.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_armv7l/py3_dnspython-2.1.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_i686/py3_dnspython-2.1.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dnspython/2.1.0_x86_64/py3_dnspython-2.1.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f8b99763641f16ac27a7083e8cf1b2a541b9c3f552c216ceef0cba314637e889',
-     armv7l: 'f8b99763641f16ac27a7083e8cf1b2a541b9c3f552c216ceef0cba314637e889',
-     x86_64: '7dace66ee94e5ad3332ce8c24879df9958b9bd141a022580db5a31298cb2d843'
+    aarch64: '88bb279608f84d8db142bc0011d7c33910ff4d67046a433d2967c9232b065902',
+     armv7l: '88bb279608f84d8db142bc0011d7c33910ff4d67046a433d2967c9232b065902',
+       i686: '880fd78e0e2c772bdaf2661b362b5f2ed32615535a49a1ea1a1a65f3052775bd',
+     x86_64: '52c717cb5ad0943c6067ea0e09a69e47c7b15e8d9ec6d1ab7a109d149530781a'
   })
 
   depends_on 'py3_setuptools' => :build

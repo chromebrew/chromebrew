@@ -3,23 +3,23 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.56.0'
+  @_ver = '1.61.0'
   version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_armv7l/rust-1.56.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_i686/rust-1.56.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.56.0_x86_64/rust-1.56.0-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_i686/rust-1.61.0-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_x86_64/rust-1.61.0-chromeos-x86_64.tar.zst',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst'
   })
   binary_sha256({
-    aarch64: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
-     armv7l: '8fc5495bb218e43fc8f45c4ef4769da674a9235b08e474f754eb5f054710c0c9',
-       i686: 'e893e42a51e9283f84785bd7e00e7d742314e122056e612a756ab071c4cdc4fb',
-     x86_64: 'b264a4ddb67628da00cb07441f7497200e9a4aa26dc90cacd7ca03f0785f06d3'
+    i686: 'dda0048df85b2d29885216dd5b715ea0cd1bbcdc10960d51de8919d0e7709ab8',
+  x86_64: '91963df0606c683bead339d9b52cad631bdf1a99e6345a0d8fac31387bf87f1e',
+ aarch64: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
+  armv7l: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa'
   })
 
   def self.install
@@ -27,10 +27,7 @@ class Rust < Package
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
     default_host = ARCH == 'aarch64' || ARCH == 'armv7l' ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
-    system 'curl -Lf https://sh.rustup.rs -o rustup.sh'
-    unless Digest::SHA256.hexdigest(File.read('rustup.sh')) == 'a3cb081f88a6789d104518b30d4aa410009cd08c3822a1226991d6cf0442a0f8'
-      abort 'Checksum mismatch. :/ Try again.'.lightred
-    end
+    downloader 'https://sh.rustup.rs', 'a3cb081f88a6789d104518b30d4aa410009cd08c3822a1226991d6cf0442a0f8', 'rustup.sh'
     system "sed -i 's,\$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup.sh"
     FileUtils.mkdir_p(CREW_DEST_HOME)
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")
@@ -76,12 +73,12 @@ class Rust < Package
 
   def self.remove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    system "echo #{config_dirs}"
+    print config_dirs.to_s
     print "\nWould you like to remove the config directories above? [y/N] "
     case $stdin.getc
     when 'y', 'Y'
       FileUtils.rm_rf config_dirs
-      puts "#{config_dirs} removed.".lightred
+      puts "#{config_dirs} removed.".lightgreen
     else
       puts "#{config_dirs} saved.".lightgreen
     end

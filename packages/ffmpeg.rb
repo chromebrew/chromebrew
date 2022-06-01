@@ -3,23 +3,24 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '4.4'
-  version @_ver
+  @_ver = '5.0'
+  version "#{@_ver}-1"
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://git.ffmpeg.org/ffmpeg.git'
+  git_hashtag "n#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_armv7l/ffmpeg-4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_armv7l/ffmpeg-4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_i686/ffmpeg-4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/4.4_x86_64/ffmpeg-4.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_armv7l/ffmpeg-5.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_armv7l/ffmpeg-5.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_i686/ffmpeg-5.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_x86_64/ffmpeg-5.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '745e2246e2e0dbe5b4484484d3f2cd5a1c018c998286b3947f0ca90c576da79a',
-     armv7l: '745e2246e2e0dbe5b4484484d3f2cd5a1c018c998286b3947f0ca90c576da79a',
-       i686: 'c09e49cd35e4a08120cb41f2c0731276e2fdf370939d87d69825705474e0c29d',
-     x86_64: '5b5fcfc511a47302007f5408d876ee25bfcde9c63d4c4afb08b48059e0ea8ef1'
+    aarch64: 'b55ea0c0549d576e0c946180d0b0a3c560aae01d9074ad8b0c5bee2045a3955e',
+     armv7l: 'b55ea0c0549d576e0c946180d0b0a3c560aae01d9074ad8b0c5bee2045a3955e',
+       i686: '91e328f13cdaa3e433ed1a3ebe862b2b81e1c689ba5babc6e7787ba688bfb1b6',
+     x86_64: '7eeca38e7677f959d8516faf79019b2502e578b9aee41ad075d2157aae55c667'
   })
 
   depends_on 'avisynthplus' # ?
@@ -28,6 +29,7 @@ class Ffmpeg < Package
   depends_on 'wavpack' # ?
   depends_on 'zvbi' # ?
   depends_on 'ccache' => :build
+  depends_on 'harfbuzz'
   depends_on 'libdc1394' => :build
   depends_on 'libfdk_aac' => :build
   depends_on 'libfrei0r' => :build
@@ -43,9 +45,12 @@ class Ffmpeg < Package
   depends_on 'jack' # R
   depends_on 'libaom' # R
   depends_on 'libass' # R
+  depends_on 'lilv' # R
+  depends_on 'leptonica' # R
   depends_on 'libavc1394' # R
   depends_on 'libbluray' # R
   depends_on 'libdrm' # R
+  depends_on 'libfdk_aac' # R
   depends_on 'libiec61883' # R
   depends_on 'libmfx' if ARCH == 'i686' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # R
   depends_on 'libmodplug' # R
@@ -70,13 +75,18 @@ class Ffmpeg < Package
   depends_on 'libxv' # R
   depends_on 'openal' # ?
   depends_on 'openjpeg' # R
+  depends_on 'openmp' # R
+  depends_on 'openssl' # R
   depends_on 'opus' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'rav1e' # R
   depends_on 'rubberband' # R
+  depends_on 'serd' # R
   depends_on 'snappy' # R
+  depends_on 'sord' # R
   depends_on 'speex' # R
+  depends_on 'sratom' # R
   depends_on 'srt' # R
   depends_on 'tesseract' # R
   depends_on 'v4l_utils' # R
@@ -84,6 +94,7 @@ class Ffmpeg < Package
   depends_on 'vmaf' # R
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
+  depends_on 'zvbi' # R
 
   def self.build
     case ARCH
@@ -101,32 +112,23 @@ class Ffmpeg < Package
       @enablelto = '--enable-lto'
     end
 
-    @git_dir = 'ffmpeg_git'
-    @git_hash = "n#{@_ver}"
-    @git_url = 'https://git.ffmpeg.org/ffmpeg.git'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    system "git clone #{@git_url} #{@git_dir}"
-    Dir.chdir @git_dir do
-      system "git checkout #{@git_hash}"
-      system 'git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315' # fix build against libsrt 1.4.2
-      # ChromeOS awk employs sandbox redirection protections which screw
-      # up configure script generation, so use mawk.
-      system "sed -i 's/awk/mawk/g' configure"
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
-        CC=clang CXX=clang++ \
+    # ChromeOS awk employs sandbox redirection protections which screw
+    # up configure script generation, so use mawk.
+    system "sed -i 's/awk/mawk/g' configure"
+    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
+        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
+        LDFLAGS='-U_FORTIFY_SOURCE #{@lto}' \
         ./configure \
         --arch=#{ARCH} \
-        #{CREW_OPTIONS.sub(/--build=.*/, '')} \
         --disable-debug \
+        --disable-doc \
+        --disable-iconv \
+        --enable-avfilter \
         --enable-avisynth \
         --enable-ffplay \
         --enable-fontconfig \
         --enable-frei0r \
         --enable-gmp \
-        --enable-gnutls \
         --enable-gpl \
         --enable-ladspa \
         --enable-libaom \
@@ -134,13 +136,13 @@ class Ffmpeg < Package
         --enable-libbluray \
         --enable-libdav1d \
         --enable-libdrm \
+        --enable-libfdk-aac \
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
-        #{@mfx}  \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
@@ -169,29 +171,32 @@ class Ffmpeg < Package
         --enable-libxcb \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-libzmq \
         --enable-libzimg \
+        --enable-libzmq \
+        --enable-libzvbi \
         #{@enablelto} \
+        --enable-lv2 \
         --enable-lzma \
         --enable-nonfree \
+        --enable-opengl \
+        --enable-openssl \
         --enable-pthreads \
         --enable-shared \
         --enable-version3 \
-        --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=gold' \
-        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}'"
+        #{@mfx}  \
+        --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
+        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
+        #{CREW_OPTIONS.sub(/--build=.*/, '')}"
 
-      system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
-        make"
-      system 'make tools/qt-faststart'
-      system 'make doc/ffmpeg.1'
-      system 'make doc/ffplay.1'
-    end
+    system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
+        make -j#{CREW_NPROC}"
+    system 'make tools/qt-faststart'
+    system 'make doc/ffmpeg.1'
+    system 'make doc/ffplay.1'
   end
 
   def self.install
-    Dir.chdir @git_dir do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
-    end
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
   end
 end

@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.9.7'
+  @_ver = '3.10.4'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 'f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57'
+  source_sha256 '80bf925f571da436b35210886cf79f6eb5fa5d6c571316b73568343451f77a19'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.7_armv7l/python3-3.9.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.7_armv7l/python3-3.9.7-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.7_i686/python3-3.9.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.9.7_x86_64/python3-3.9.7-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_armv7l/python3-3.10.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_armv7l/python3-3.10.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_i686/python3-3.10.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_x86_64/python3-3.10.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7c0e20f9fd73300052c3b267dac8717a67e61bd5d82c9c55345948e3f18d99d9',
-     armv7l: '7c0e20f9fd73300052c3b267dac8717a67e61bd5d82c9c55345948e3f18d99d9',
-       i686: 'ac791613a84ee15ee70248671b91b548cec15f3fd69e11313e2037b880c2c42c',
-     x86_64: '53433704eddfa9f05fe60f9cc03df1a2154dcfb23f01979c74b1d6a16e1ecbf3'
+    aarch64: 'c262a915d8c818a353ef6038ad419318130158e642b9dce79c6bb74e59a16630',
+     armv7l: 'c262a915d8c818a353ef6038ad419318130158e642b9dce79c6bb74e59a16630',
+       i686: '265004b921160c95c9123e6699656160e224ef20749ffa18a34e1d02f88161f0',
+     x86_64: '36a4f9a325f8b28d73d3fb7adbbc06863531623f443ca94b011f8b940e1bf479'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -32,6 +32,7 @@ class Python3 < Package
   depends_on 'glibc' # R
   depends_on 'libdb' # R
   depends_on 'libffi' # R
+  depends_on 'mpdecimal' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
@@ -40,6 +41,7 @@ class Python3 < Package
   depends_on 'zlibpkg' # R
   # depends_on 'tcl' # Needed for tkinter support
   # depends_on 'tk'  # Needed for tkinter support
+  no_env_options
 
   def self.patch
     system "sed -i -e 's:#{CREW_LIB_PREFIX}:\$(get_libdir):g' \
@@ -62,46 +64,34 @@ class Python3 < Package
 
   def self.build
     @cppflags = "-I#{CREW_PREFIX}/include/ncursesw"
-    # python requires /usr/local/lib, so leave as is but specify -rpath
-    @ldflags = "-Wl,-rpath,-L#{CREW_LIB_PREFIX}"
-
-    # CREW_ENV_OPTIONS don't work so we have to make our own
-    @py_common_flags = "'-Os -pipe -fuse-ld=gold'"
-
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    system 'autoreconf -fiv'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
-        CC='#{CREW_TGT}-gcc -pthread' \
-        CXX='#{CREW_TGT}-g++' \
-        CPPFLAGS='#{@cppflags}' \
-        LDFLAGS='#{@ldflags} -lpthread' \
-      ../configure #{CREW_OPTIONS} \
+      system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
         --with-computed-gotos \
-        --with-loadable-sqlite-extensions \
+        --enable-loadable-sqlite-extensions \
         --without-ensurepip \
         --enable-optimizations \
-        --with-lto \
         --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
         --with-system-ffi \
         --with-system-expat \
-        --with-system-libmpdev \
+        --with-system-libmpdec \
+        --with-libc= \
         --enable-shared"
       system 'make'
     end
   end
 
   def self.check
-    # Chromebook doesn't allow SIGHUP, so disable SIGHUP test
+    # Chromebooks do not allow SIGHUP, so disable SIGHUP test
     system 'sed', '-i', 'Lib/test/test_asyncio/test_events.py', '-e', "/Don't have SIGHUP/s/win32/linux/"
     system 'sed', '-i', 'Lib/test/test_asyncio/test_subprocess.py', '-e', "/Don't have SIGHUP/s/win32/linux/"
 
-    # Chromebook returns EINVAL for F_NOTIFY DN_MULTISHOT, so disable test_fcntl_64_bit
+    # Chromebooks return EINVAL for F_NOTIFY DN_MULTISHOT, so disable test_fcntl_64_bit
     system 'sed', '-i', 'Lib/test/test_fcntl.py', '-e', '/ARM Linux returns EINVAL for F_NOTIFY DN_MULTISHOT/s/$/\
     @unittest.skipIf(platform.system() == '"'Linux'"', "Chromeos returns EINVAL for F_NOTIFY DN_MULTISHOT")/'
 
@@ -125,16 +115,6 @@ class Python3 < Package
     Dir.chdir 'builddir' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
-
-    # remove static libraries
-    # system "find #{CREW_DEST_PREFIX} -name 'libpython*.a' -print | xargs -r rm"
-
-    # create symbolic links in lib64 for other applications which use libpython
-    # Not needed as --libdir is passed to ./configure
-    # unless Dir.exist? CREW_DEST_LIB_PREFIX
-    #  FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    #  system "cd #{CREW_DEST_LIB_PREFIX} && ln -s ../lib/libpython*.so* ."
-    # end
 
     # Remove conflicting binaries
     FileUtils.rm "#{CREW_DEST_PREFIX}/bin/wheel" if File.exist? "#{CREW_DEST_PREFIX}/bin/wheel"

@@ -1,26 +1,28 @@
+# NOTE: Archived upstream
+
 require 'package'
 
 class Py3_terminaltables < Package
   description 'Terminaltables generates simple tables in terminals from a nested list of strings.'
   homepage 'https://robpol86.github.io/terminaltables/'
   @_ver = '3.1.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Robpol86/terminaltables.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_armv7l/py3_terminaltables-3.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_armv7l/py3_terminaltables-3.1.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_i686/py3_terminaltables-3.1.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0_x86_64/py3_terminaltables-3.1.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0-1_armv7l/py3_terminaltables-3.1.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0-1_armv7l/py3_terminaltables-3.1.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0-1_i686/py3_terminaltables-3.1.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_terminaltables/3.1.0-1_x86_64/py3_terminaltables-3.1.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '28a47e04b0adeaa207368d2ff7783778a3cac4901422908cbafce54f2b608921',
-     armv7l: '28a47e04b0adeaa207368d2ff7783778a3cac4901422908cbafce54f2b608921',
-       i686: '69c81fceac6edb3f2c2bbb94dd95ddc6f666f46ed852fa36f0cd89703ce8a14a',
-     x86_64: 'e47536692ca04ff487ff0619ba71ed592e5dcf2cc0583b9a0b523f9da5487a88'
+    aarch64: '3402327fe2fb47c263923556f80c9610dd1f40ef3ad400cfc26a200d752f76c7',
+     armv7l: '3402327fe2fb47c263923556f80c9610dd1f40ef3ad400cfc26a200d752f76c7',
+       i686: '4bf3e71943804f649d8311de4bb3fcba4c7ccd0183da0bdf05ca0752f47bc962',
+     x86_64: '881307f80761cf65fb01f7e5d349e7d2dde3ec04b48b9cde2865a03449107aa0'
   })
 
   depends_on 'py3_dateutil'

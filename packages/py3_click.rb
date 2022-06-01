@@ -3,7 +3,7 @@ require 'package'
 class Py3_click < Package
   description 'Click is a simple wrapper around optparse for powerful command line utilities.'
   homepage 'https://click.palletsprojects.com'
-  @_ver = '7.1.2'
+  @_ver = '8.0.3'
   version @_ver
   license 'BSD-3'
   compatibility 'all'
@@ -11,14 +11,16 @@ class Py3_click < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/7.1.2_armv7l/py3_click-7.1.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/7.1.2_armv7l/py3_click-7.1.2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/7.1.2_x86_64/py3_click-7.1.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/8.0.3_armv7l/py3_click-8.0.3-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/8.0.3_armv7l/py3_click-8.0.3-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/8.0.3_i686/py3_click-8.0.3-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_click/8.0.3_x86_64/py3_click-8.0.3-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '601e3274f08e2308083fc312aa4614b5eedb4272f611d344f77f72248abcd89f',
-     armv7l: '601e3274f08e2308083fc312aa4614b5eedb4272f611d344f77f72248abcd89f',
-     x86_64: 'baca766a2e97aeb8c6999fff28bc9b6f76493f544abd8e335ab502420e0544b0'
+    aarch64: '34f17a880636d0b48866f88c0683881bb0187812b1e61c7c8672681baadef560',
+     armv7l: '34f17a880636d0b48866f88c0683881bb0187812b1e61c7c8672681baadef560',
+       i686: 'f4e058e264f6d9531307f6afb507ad12bcaeb1bf892d1cff1bb2161f843e38b7',
+     x86_64: '8ee1716bbec539ae57cc6fa25491f29979166bbc37882b6cb1bd8a473159e028'
   })
 
   depends_on 'py3_setuptools' => :build

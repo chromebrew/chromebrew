@@ -3,24 +3,24 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.37'
-  version "#{@_ver}-1"
+  @_ver = '2.38'
+  version @_ver.to_s
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
-  source_sha256 '820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
+  source_sha256 'e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_i686/binutils-2.37-1-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_armv7l/binutils-2.37-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_armv7l/binutils-2.37-1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.37-1_x86_64/binutils-2.37-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.38_armv7l/binutils-2.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.38_armv7l/binutils-2.38-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.38_i686/binutils-2.38-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.38_x86_64/binutils-2.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: '9bd786abf5e42b06e3ecd51ffdd63348fbf54f18fd6aeec8aafcebc20f231404',
-    aarch64: '2b0dccac7104572bd7e050ba191fc5eb355019351cba9d07293bb53450b4ff84',
-     armv7l: '2b0dccac7104572bd7e050ba191fc5eb355019351cba9d07293bb53450b4ff84',
-     x86_64: 'd9e0347631803d94648495ba9f2b16836f6f637046ac4c757a725c47f57a2c7a'
+    aarch64: '650576bdad8a9c92b1042778ba0ff39b014a8843c034117f8fcaa0e21c6d482d',
+     armv7l: '650576bdad8a9c92b1042778ba0ff39b014a8843c034117f8fcaa0e21c6d482d',
+       i686: '380788b1c83444a3d399f96a74aa87ea74f7198d81d9828e3ef566b2521b84f1',
+     x86_64: '551130879ce51ae3e5fe7a2695d48279b5de0b317fa2ea3a76077e71c5e52228'
   })
 
   def self.prebuild
@@ -51,8 +51,10 @@ class Binutils < Package
         --enable-shared \
         --enable-threads \
         --enable-vtable-verify \
-        --with-pic \
+        --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
         --with-lib-path=#{CREW_LIB_PREFIX} \
+        --with-pic \
+        --with-pkgversion=Chromebrew \
         --with-system-zlib"
       system 'make configure-host'
       system "make tooldir=#{CREW_PREFIX}"

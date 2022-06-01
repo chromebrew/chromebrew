@@ -3,7 +3,7 @@ require 'package'
 class Lsb_release < Package
   description 'Linux Standard Base'
   homepage 'https://wiki.linuxfoundation.org/lsb/start'
-  version '1.4-1'
+  version '1.4-2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/lsb/lsb_release/1.4/lsb-release-1.4.tar.gz'
@@ -36,8 +36,13 @@ class Lsb_release < Package
   end
 
   def self.install
-    system "install -Dm755 lsb_release #{CREW_DEST_PREFIX}/bin/lsb_release"
-    system "install -Dm644 /tmp/lsb-release #{CREW_DEST_PREFIX}/etc/lsb-release"
-    system "install -Dm644 lsb_release.1.gz #{CREW_DEST_PREFIX}/man/man1/lsb_release.1.gz"
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    reload_constants
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
+    FileUtils.install 'lsb_release', "#{CREW_DEST_PREFIX}/bin/lsb_release", mode: 0o755
+    FileUtils.install '/tmp/lsb-release', "#{CREW_DEST_PREFIX}/etc/lsb-release", mode: 0o644
+    FileUtils.install 'lsb_release.1.gz', "#{CREW_DEST_MAN_PREFIX}/man1/lsb_release.1.gz", mode: 0o644
   end
 end

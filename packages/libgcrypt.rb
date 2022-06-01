@@ -3,23 +3,23 @@ require 'package'
 class Libgcrypt < Package
   description 'Libgcrypt is a general purpose cryptographic library originally based on code from GnuPG.'
   homepage 'https://www.gnupg.org/related_software/libgcrypt/index.html'
-  version '1.9.3'
+  version '1.9.4'
   license 'LGPL-2.1 and MIT'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.9.3.tar.bz2'
-  source_sha256 '97ebe4f94e2f7e35b752194ce15a0f3c66324e0ff6af26659bbfb5ff2ec328fd'
+  source_url "https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-#{version}.tar.bz2"
+  source_sha256 'ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_armv7l/libgcrypt-1.9.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_armv7l/libgcrypt-1.9.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_i686/libgcrypt-1.9.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.3_x86_64/libgcrypt-1.9.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_armv7l/libgcrypt-1.9.4-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_armv7l/libgcrypt-1.9.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_i686/libgcrypt-1.9.4-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.9.4_x86_64/libgcrypt-1.9.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '1e2b42394624c35f94278ee7f9c70aa544c7c40dedd49b396e3e2a72d2e6e6bc',
-     armv7l: '1e2b42394624c35f94278ee7f9c70aa544c7c40dedd49b396e3e2a72d2e6e6bc',
-       i686: 'c072efaef5595c6f3ef7c57ce9573a8c9d79f2e7fa937425f4bb3a4098e12cd5',
-     x86_64: '3945f3464bd06d41db1be4ad4f59242490bfa897856c9e395f25b5d9f1f1bc75'
+    aarch64: 'c9b2becd32471b6d23c65b513685bf58bd1e5f453b6ab49dd5ebe33959fb2354',
+     armv7l: 'c9b2becd32471b6d23c65b513685bf58bd1e5f453b6ab49dd5ebe33959fb2354',
+       i686: '9d9dea2c93f63e7ab36f6423c873ece51ce2cd3558da61e266e463cda38413c5',
+     x86_64: '83e047dd1591ec41c67d707517f5fd0b31492e15b282345e31ca563689ec8df9'
   })
 
   depends_on 'libgpgerror'

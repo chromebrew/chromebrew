@@ -3,7 +3,7 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '2.5.3'
+  version '2.10.2'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/flutter/flutter.git'
@@ -36,7 +36,7 @@ class Flutter < Package
     response = STDIN.getc
     config_dirs = ["#{HOME}/.flutter", "#{CREW_PREFIX}/share/flutter"]
     config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
+      if Dir.exist? config_dir
         case response
         when "y", "Y"
           FileUtils.rm_rf config_dir

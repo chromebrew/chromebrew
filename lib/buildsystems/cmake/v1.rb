@@ -10,7 +10,7 @@ class Cmake_v1 < Package
     return @cmake_options
   end
 
-  def self.check? (bool = false)
+  def self.check? (bool = true)
     @check = bool
     return @check
   end
@@ -21,16 +21,16 @@ class Cmake_v1 < Package
       system "#{CREW_ENV_OPTIONS} cmake -G Ninja #{CREW_CMAKE_OPTIONS} \
             #{@cmake_options} .."
     end
-    system 'samu -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   if @check
     def self.check
-      system 'samu -C builddir test'
+      system "#{CREW_NINJA} -C builddir test"
     end
   end
 end

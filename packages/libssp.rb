@@ -3,28 +3,29 @@ require 'package'
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '11.2.0'
+  version '12.1'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz'
-  source_sha256 'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-12.1.0/gcc-12.1.0.tar.xz'
+  source_sha256 '62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_armv7l/libssp-11.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_armv7l/libssp-11.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_i686/libssp-11.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/11.2.0_x86_64/libssp-11.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_armv7l/libssp-12.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_armv7l/libssp-12.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_i686/libssp-12.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_x86_64/libssp-12.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5ff8842611c3cb8a2d72eb3fa591299354ae2021c2b1927259df407910645f19',
-     armv7l: '5ff8842611c3cb8a2d72eb3fa591299354ae2021c2b1927259df407910645f19',
-       i686: 'dcf1f3951a9f44e8a5aba0f4db7c675684b747a8cb66efdc2340e513913e79fe',
-     x86_64: 'c753248ee6996448fc14d02fe43f79f41974adff30101856a467be70b2b41b7d'
+    aarch64: '065f8dd669e4caef511f947239c045a2c95a3fecf445deb7d96eda51d3386aa0',
+     armv7l: '065f8dd669e4caef511f947239c045a2c95a3fecf445deb7d96eda51d3386aa0',
+       i686: '50e28f45d8f31bedc6b39696135e25e50200bf706ce6d63598ddfc60b5b764cb',
+     x86_64: '86846d918f1bfb80b414c3e0074aed9316930b924ea3e6e278d35c8d1b160081'
   })
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
+  patchelf
 
   @gcc_name = 'libssp'
 
@@ -61,7 +62,7 @@ class Libssp < Package
   @languages = 'c,c++,jit,objc,fortran,go'
   case ARCH
   when 'armv7l', 'aarch64'
-    @archflags = '--with-arch=armv7-a --with-float=hard --with-fpu=neon'
+    @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
   when 'x86_64'
     @archflags = '--with-arch-64=x86-64'
   when 'i686'

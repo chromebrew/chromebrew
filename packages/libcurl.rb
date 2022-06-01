@@ -3,29 +3,30 @@ require 'package'
 class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.79.1'
-  version @_ver
+  @_ver = '7.83.1'
+  version "#{@_ver}-1"
   license 'curl'
   compatibility 'all'
-  source_url "https://github.com/curl/curl/releases/download/curl-#{@_ver.gsub('.', '_')}/curl-#{@_ver}.tar.xz"
-  source_sha256 '0606f74b1182ab732a17c11613cbbaf7084f2e6cca432642d0e3ad7c224c3689'
+  source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
+  source_sha256 '2cb9c2356e7263a1272fd1435ef7cdebf2cd21400ec287b068396deb705c22c4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_armv7l/libcurl-7.79.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_i686/libcurl-7.79.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.79.1_x86_64/libcurl-7.79.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.83.1-1_armv7l/libcurl-7.83.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.83.1-1_armv7l/libcurl-7.83.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.83.1-1_i686/libcurl-7.83.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.83.1-1_x86_64/libcurl-7.83.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '497ca2518256983a3a011fa83de67f20202a1aa5cc6fdf88424b96df4cbe19ba',
-     armv7l: '497ca2518256983a3a011fa83de67f20202a1aa5cc6fdf88424b96df4cbe19ba',
-       i686: 'ab58dc20c50f2ad6dc00afc5b30c3eac2e4c8d5286efa70613821e46a6654d61',
-     x86_64: 'e16d3d120bf089178f35f05636c9b79b5f5343d1e6b9a5a8edcc3c717213f26f'
+    aarch64: '0d429af3793082e7de32b9c97d757ae06f95471068d3ad97feefa4d94f604fec',
+     armv7l: '0d429af3793082e7de32b9c97d757ae06f95471068d3ad97feefa4d94f604fec',
+       i686: '981d06377897832d8dc880e53c2e7cab1d33c3440730c2483bb166dc1b44f5c7',
+     x86_64: 'e7b175aeeb4e47f1652e47e11feb56f2d049a44550ff53ce43779b6ad75a368e'
   })
 
-  depends_on 'brotli' => :build
+  depends_on 'brotli' # R
   depends_on 'ca_certificates' => :build
   depends_on 'c_ares' # R
+  depends_on 'glibc' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
@@ -41,7 +42,6 @@ class Libcurl < Package
   depends_on 'zstd' # R
 
   def self.build
-
     @libssh = '--with-libssh'
     case ARCH
     when 'i686'
@@ -68,6 +68,5 @@ class Libcurl < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/curl", "#{CREW_DEST_PREFIX}/bin/curl.nonstatic"
   end
 end

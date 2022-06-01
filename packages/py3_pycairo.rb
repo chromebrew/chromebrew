@@ -3,7 +3,7 @@ require 'package'
 class Py3_pycairo < Package
   description 'Pycairo is a provides bindings for the cairo graphics library.'
   homepage 'https://cairographics.org/pycairo/'
-  @_ver = '1.20.0'
+  @_ver = '1.20.1'
   version @_ver
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Py3_pycairo < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.0_armv7l/py3_pycairo-1.20.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.0_armv7l/py3_pycairo-1.20.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.0_i686/py3_pycairo-1.20.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.0_x86_64/py3_pycairo-1.20.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_armv7l/py3_pycairo-1.20.1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_armv7l/py3_pycairo-1.20.1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_i686/py3_pycairo-1.20.1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.20.1_x86_64/py3_pycairo-1.20.1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '845603cc75602939a723553988c809dd33a6d8993385384f2be639625844cf2f',
-     armv7l: '845603cc75602939a723553988c809dd33a6d8993385384f2be639625844cf2f',
-       i686: '41a7a6dd34f3add72b663965f178a64f6a4b254740dde9d5fdf08afea3f827d5',
-     x86_64: '8b422b09d245634bf5257c408ccf78245c0d9555627800882f4856a30bf03d81'
+    aarch64: '89bb391cdd02287f7f22bea97b93b3fc839a1894d0de10463a39e45de6cdd785',
+     armv7l: '89bb391cdd02287f7f22bea97b93b3fc839a1894d0de10463a39e45de6cdd785',
+       i686: 'fc49b20882389682515c5658c6152c171e24c16a8b822e8be92448a8167e3d1c',
+     x86_64: 'bdedb23f949e4bdcea77d3a1018d26bb1492b4498f383e6fc704e697b648e579'
   })
 
   depends_on 'cairo'

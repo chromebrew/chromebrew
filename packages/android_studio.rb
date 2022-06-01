@@ -3,11 +3,11 @@ require 'package'
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
-  version '2020.3.1.25'
+  version '2021.1.1.21'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url 'https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.25/android-studio-2020.3.1.25-linux.tar.gz'
-  source_sha256 'cfc96e4981ad17e27ba91681fada06553fb118960c95f49232f72f30c2e2f781'
+  source_url 'https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.1.1.21/android-studio-2021.1.1.21-linux.tar.gz'
+  source_sha256 '3de3092082df6ae9d3969478115efaa909539590dc5a829eb3ad6a7bd5bda2a4'
 
   depends_on 'jdk11'
   depends_on 'xdg_base'
@@ -40,7 +40,7 @@ class Android_studio < Package
     response = STDIN.getc
     config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]
     config_dirs.each { |config_dir|
-      if Dir.exists? config_dir
+      if Dir.exist? config_dir
         case response
         when "y", "Y"
           FileUtils.rm_rf config_dir

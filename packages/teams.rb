@@ -3,12 +3,12 @@ require 'package'
 class Teams < Package
   description 'Microsoft Teams - Meet, chat, call, and collaborate in just one place.'
   homepage 'https://www.microsoft.com/en-us/microsoft-teams/group-chat-software'
-  @_ver = '1.4.00.13653'
+  @_ver = '1.4.00.26453'
   version @_ver
   license 'Freeware'
   compatibility 'x86_64'
   source_url "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_#{@_ver}_amd64.deb"
-  source_sha256 '5b4217fab3df145b1a37c53d138d87713786f290805a90fc276434770692a4cf'
+  source_sha256 'ee15b57793aa6b79ccda744d5232da670335abd931bae2a020f5043a129ab859'
 
   depends_on 'libsecret'
   depends_on 'xdg_base'
@@ -25,11 +25,8 @@ class Teams < Package
   end
 
   def self.install
-    ENV['CREW_SHRINK_ARCHIVE'] = '0'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mv 'share', CREW_DEST_PREFIX
     FileUtils.install 'teams.sh', "#{CREW_DEST_PREFIX}/bin/teams", mode: 0o755

@@ -3,11 +3,11 @@ require 'package'
 class Mysql < Package
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '8.0.24'
+  version '8.0.28'
   license 'GPL-2'
   compatibility 'x86_64'
-  source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.24-linux-glibc2.17-x86_64-minimal.tar.xz'
-  source_sha256 'ea7e67582b2a6816f9d74c162416cf3b97b539d39aef77e3e251e834ce6c06d5'
+  source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.28-linux-glibc2.17-x86_64-minimal.tar.xz'
+  source_sha256 '39d58319a2d34b27dc229eb32c07f3902863fb5dfe25d25b5d537cc7299b4fed'
 
   binary_url ({
   })
@@ -17,11 +17,13 @@ class Mysql < Package
   depends_on 'numactl'
 
   def self.install
+    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/mysql"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.mv 'man/', "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/mysql"
+    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/mysql"
     Dir["#{CREW_DEST_PREFIX}/mysql/bin/*"].map do |f|
       f.sub!("#{CREW_DEST_DIR}", '')
       FileUtils.ln_s f, "#{CREW_DEST_PREFIX}/bin/"
@@ -31,7 +33,7 @@ class Mysql < Package
   end
 
   def self.postinstall
-    unless Dir.exists? "#{CREW_PREFIX}/mysql/data"
+    unless Dir.exist? "#{CREW_PREFIX}/mysql/data"
       system "mysqld --initialize-insecure --user=#{USER}"
     end
     puts
@@ -43,8 +45,8 @@ class Mysql < Package
     puts "To reset the root password, see https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html#resetting-permissions-unix".lightblue
     puts
     puts "To start/stop mysqld, execute the following:".lightblue
-    puts "mysql.server start - to start mysqld".lightblue
-    puts "mysql.server stop - to stop mysqld".lightblue
+    puts "mysql.server start".lightblue
+    puts "mysql.server stop".lightblue
     puts
     puts "To start mysqld on login, execute the following:".lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/mysql.server ]; then' >> ~/.bashrc".lightblue

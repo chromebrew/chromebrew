@@ -35,8 +35,6 @@ class Pulseaudio < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' # L
-  depends_on 'gst_plugins_base' # R
-  depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'jsonc' => :build
   depends_on 'libcap' # R
@@ -49,7 +47,7 @@ class Pulseaudio < Package
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxtst' # R
-  depends_on 'orc' # R
+  depends_on 'gstreamer' # R
   depends_on 'pipewire' # R
   depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' => :build

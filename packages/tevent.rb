@@ -6,35 +6,32 @@ require 'package'
 class Tevent < Package
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version '0.10.2'
+  version '0.11.0'
   license 'LGPL'
   compatibility 'all'
   source_url "https://samba.org/ftp/tevent/tevent-#{version}.tar.gz"
-  source_sha256 'f8427822e5b2878fb8b28d6f50d96848734f3f3130612fb574fdd2d2148a6696'
+  source_sha256 'ee9a86c8e808aac2fe1e924eaa139ff7f0269d0e8e4fafa850ae5c7489bc82ba'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.10.2_armv7l/tevent-0.10.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.10.2_armv7l/tevent-0.10.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.10.2_i686/tevent-0.10.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.10.2_x86_64/tevent-0.10.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.11.0_armv7l/tevent-0.11.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.11.0_armv7l/tevent-0.11.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.11.0_i686/tevent-0.11.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.11.0_x86_64/tevent-0.11.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2a34abbf8f8619fec618d0f08e692d61065c8fcc5ef37cf7a1bf64415709ea4f',
-     armv7l: '2a34abbf8f8619fec618d0f08e692d61065c8fcc5ef37cf7a1bf64415709ea4f',
-       i686: '112a2a38a8be799e12f6de9691607f4de08e2a6da39359dd37470fb0456d8788',
-     x86_64: 'd7a762d732c98a074eabfc1367e7ce0330511a8713a4cea36c262d62c31c89f0'
+    aarch64: '9a72a1bbba9fdb0d298b91b687f2457b216d4b961649d1f8dbacd75a5b1e96ab',
+     armv7l: '9a72a1bbba9fdb0d298b91b687f2457b216d4b961649d1f8dbacd75a5b1e96ab',
+       i686: 'd1d1947c895da8b5aad1fe8241de4e20d7d5f176adc0b9803151eb426615ed4f',
+     x86_64: '3939c1757d7eded3e66c70ba63a00c6cd37390bd1e1ac02da00a33916f13f0af'
   })
 
   depends_on 'libbsd'
   depends_on 'libxcrypt'
   depends_on 'talloc'
+  depends_on 'cmocka' => :build
 
   def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
+    system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
       --sysconfdir=#{CREW_PREFIX}/etc/samba \
       --localstatedir=#{CREW_PREFIX}/var \
       --bundled-libraries=NONE \

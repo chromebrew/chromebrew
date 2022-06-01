@@ -3,32 +3,36 @@ require 'package'
 class Zvbi < Package
   description 'The Zapping VBI library, in short ZVBI, provides functions to capture and decode VBI data.'
   homepage 'http://zapping.sourceforge.net/ZVBI/'
-  version '0.2.35'
+  version '0.2.35-2'
   license 'GPL-2 and LGPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/zapping/zvbi/0.2.35/zvbi-0.2.35.tar.bz2'
   source_sha256 'fc883c34111a487c4a783f91b1b2bb5610d8d8e58dcba80c7ab31e67e4765318'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_armv7l/zvbi-0.2.35-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_armv7l/zvbi-0.2.35-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_i686/zvbi-0.2.35-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35_x86_64/zvbi-0.2.35-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_i686/zvbi-0.2.35-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_x86_64/zvbi-0.2.35-2-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-    aarch64: '78f0e7cac98dcee9617256ff1ce5fff4e71c83b9fcf986edb6128020de950ccf',
-     armv7l: '78f0e7cac98dcee9617256ff1ce5fff4e71c83b9fcf986edb6128020de950ccf',
-       i686: 'bdb25d86773c2dfe642b254be5bd567da509ac4546e3ffa2cb15bea24ddbd985',
-     x86_64: 'df144f5bf127aad35537b7874fbeddf60847e2d8e956bea44fdd4d6b1ab4eece',
+  binary_sha256({
+    aarch64: '8540c8bf13aa2b9e8df2e1652d11d54c3eee1cc94aa8f282d9f1fa9d72fbf61f',
+     armv7l: '8540c8bf13aa2b9e8df2e1652d11d54c3eee1cc94aa8f282d9f1fa9d72fbf61f',
+       i686: 'bc08d5d03f44f8db298e76fa5dd25328d06e6d88914ea1944092d4dfdc1eb2c2',
+     x86_64: '1646789cf7bae04f328d2000d5a40829798f9aa6a0955cd2b7ce41aa84a56a1d'
   })
 
-  depends_on 'libpng'
+  depends_on 'harfbuzz'
+
+  def self.patch
+    system 'filefix'
+    # png.h path isn't found for build properly
+    @png_h_path = `crew whatprovides png.h | grep "png.h$" | awk '{print $2}'`.chomp.gsub("#{CREW_PREFIX}/include/", '')
+    system "sed -i 's,png.h,#{@png_h_path},g' src/exp-gfx.c"
+  end
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

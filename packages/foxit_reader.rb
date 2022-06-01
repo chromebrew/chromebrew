@@ -26,7 +26,7 @@ class Foxit_reader < Package
       foxit_sha256 = '6b579bd4ecdf86f7e70a009886c511da0b5085b831b0d6afc42442cabc249b90'
       platform = 'Linux-64-bit'
     end
-    unless File.exists? foxit_bin
+    unless File.exist? foxit_bin
       puts "\nCopy and paste into your browser address bar the url below and download to #{HOME}/Downloads.".orange
       puts "\nhttps://www.foxit.com/downloads/latest.html?product=Foxit-Reader&platform=#{platform}&version=&package_type=&language=English&distID=".orange
       puts "\nAfter the download is complete, restart and install to #{CREW_DEST_PREFIX}/share/foxitreader.\n".orange

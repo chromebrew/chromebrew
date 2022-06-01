@@ -2,34 +2,30 @@ require 'package'
 
 class Libffi < Package
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
-  homepage 'https://sourceware.org/libffi/'
-  version '3.3-1'
+  homepage 'https://github.com/libffi/libffi/'
+  @_ver = '3.4.2'
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://sourceware.org/pub/libffi/libffi-3.3.tar.gz'
-  source_sha256 '72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056'
+  source_url 'https://github.com/libffi/libffi.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.3-1_armv7l/libffi-3.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.3-1_armv7l/libffi-3.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.3-1_i686/libffi-3.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.3-1_x86_64/libffi-3.3-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.4.2-1_armv7l/libffi-3.4.2-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.4.2-1_armv7l/libffi-3.4.2-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.4.2-1_i686/libffi-3.4.2-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.4.2-1_x86_64/libffi-3.4.2-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'feed096aa4b48a2ccaa2be5f8998f775eeeab873fc2d582b06c15acd1a380d74',
-     armv7l: 'feed096aa4b48a2ccaa2be5f8998f775eeeab873fc2d582b06c15acd1a380d74',
-       i686: 'd76faf5d8917ad57be1414cdbd915a70f978494aac09fcdd73f80c3db8fb21e4',
-     x86_64: 'acd8ad06dbc7a6f83b8bdce10aa53b72817ab5468548bb4d09a715ab1b1b9b68'
+    aarch64: 'd975c1b4764f7108d1c3ede80a34d1cfaddf6a293ca0a6a4348c071d6a8ed22a',
+     armv7l: 'd975c1b4764f7108d1c3ede80a34d1cfaddf6a293ca0a6a4348c071d6a8ed22a',
+       i686: '5558c0372d20b5cb54bc75aa7fbc2ca24be8166e1515f4b91cffb26032a4a071',
+     x86_64: 'fec954fcb51b1186ab2d084e29edf05773cf31b0543ad947bf9f325186022ab5'
   })
 
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --enable-shared \
-      --with-pic \
-      --disable-debug \
-      --disable-dependency-tracking"
+    system 'autoreconf -fiv'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

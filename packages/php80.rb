@@ -3,24 +3,24 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.12'
+  @_ver = '8.0.16'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'a501017b3b0fd3023223ea25d98e87369b782f8a82310c4033d7ea6a989fea0a'
+  source_sha256 'f27a2f25259e8c51e42dfd74e24a546ee521438ad7d9f6c6e794aa91f38bab0a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.12_armv7l/php80-8.0.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.12_armv7l/php80-8.0.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.12_i686/php80-8.0.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.12_x86_64/php80-8.0.12-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_armv7l/php80-8.0.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_armv7l/php80-8.0.16-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_i686/php80-8.0.16-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_x86_64/php80-8.0.16-chromeos-x86_64.tar.zst',
   })
   binary_sha256({
-    aarch64: 'bc239d96a4bf40b2148bc2a0c2be8e5f019459b82169f54cea26a8c03e71b5a9',
-     armv7l: 'bc239d96a4bf40b2148bc2a0c2be8e5f019459b82169f54cea26a8c03e71b5a9',
-       i686: 'ed8783596e9dc50e5cda357411650c27ecd1fb1ff4cb26b4ccfa86b05415cf12',
-     x86_64: '90853a739baee44b9530e76496b9aeec8a1fa4be08f96703c586ce9203339f2e',
+    aarch64: '2d583ebe7a7e83b76cac7a1dcea29315250e236de17ca88046ace6a065531fe3',
+     armv7l: '2d583ebe7a7e83b76cac7a1dcea29315250e236de17ca88046ace6a065531fe3',
+       i686: '6f997f85ad338b035dd2a3bcc47d799d747e93e3a69680a76d7a7643cb8fa054',
+     x86_64: 'e80178a6323529db17f8d2d6cdfdc37d21125e21847571de21578b219586e65a',
   })
 
   depends_on 'aspell_en'
@@ -71,8 +71,7 @@ class Php80 < Package
   end
 
   def self.build
-    system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} CFLAGS='-pipe' \
-      ./configure \
+    system "#{CREW_ENV_OPTIONS} CFLAGS='-pipe' ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -135,10 +134,7 @@ class Php80 < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"

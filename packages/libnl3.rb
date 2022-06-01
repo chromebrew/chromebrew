@@ -1,42 +1,43 @@
 require 'package'
 
 class Libnl3 < Package
-  description 'Library for applications dealing with netlink sockets.'
+  description 'libnl is a library for applications dealing with netlink sockets.'
   homepage 'http://www.infradead.org/~tgr/libnl/'
-  version '3.2.25-0'
-  license 'LGPL-2.1 and GPL-2'
+  @_ver = '3.5.0'
+  version @_ver
+  license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://www.infradead.org/~tgr/libnl/files/libnl-3.2.25.tar.gz'
-  source_sha256 '8beb7590674957b931de6b7f81c530b85dc7c1ad8fbda015398bc1e8d1ce8ec5'
+  source_url 'https://github.com/thom311/libnl.git'
+  git_hashtag "libnl#{@_ver.gsub('.', '_')}"
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_armv7l/libnl3-3.2.25-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_armv7l/libnl3-3.2.25-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_i686/libnl3-3.2.25-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.2.25-0_x86_64/libnl3-3.2.25-0-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.5.0_armv7l/libnl3-3.5.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.5.0_armv7l/libnl3-3.5.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.5.0_i686/libnl3-3.5.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.5.0_x86_64/libnl3-3.5.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    aarch64: 'fdce1a46f9a89772ef9b51dd5bf738a24966908027299f5c3dc049c95b8f2a7b',
-     armv7l: 'fdce1a46f9a89772ef9b51dd5bf738a24966908027299f5c3dc049c95b8f2a7b',
-       i686: '1efa9cd106f16ff347d82bb3cb0734d8393d53edf51db2d294e9788a20036bb4',
-     x86_64: '4494bd6d1919090838d86f75d6cc1ea86becc467400d58dffc4e905d27a373da',
+  binary_sha256({
+    aarch64: '265fb9c115d3d00aaa06c88d01a817467aa70cc0d4fd3e8ea62d08d22f3870cd',
+     armv7l: '265fb9c115d3d00aaa06c88d01a817467aa70cc0d4fd3e8ea62d08d22f3870cd',
+       i686: '9fe4afdea1bac12e037d95c904e9992ee07d05fdeebff33d1a0b995863611d01',
+     x86_64: '56ac30c301373e04884d53be9fcbdca2370868724dc870282ac15d11dfca1c93'
   })
 
   def self.build
-	system "./configure \
-		--prefix=#{CREW_PREFIX} \
-		--libdir=#{CREW_LIB_PREFIX} \
-                --sysconfdir=#{CREW_PREFIX}/etc \
-                --sbindir=#{CREW_PREFIX}/sbin \
-                --disable-static"
-    system "make"
+    system 'autoupdate'
+    system './autogen.sh'
+    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+              --enable-cli \
+              --enable-pthreads \
+              --disable-debug"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    system "make", "check"
+    system 'make', 'check'
   end
 end

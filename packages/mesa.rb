@@ -3,24 +3,25 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.2.2'
+  @_ver = '21.3.8-45b4a99'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
+  git_branch 'staging/21.3'
+  git_hashtag '45b4a998d6667612bef930c3b6587c4ddbe1e370'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_armv7l/mesa-21.2.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_i686/mesa-21.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.2.2_x86_64/mesa-21.2.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_armv7l/mesa-21.3.8-45b4a99-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_armv7l/mesa-21.3.8-45b4a99-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_i686/mesa-21.3.8-45b4a99-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_x86_64/mesa-21.3.8-45b4a99-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-     armv7l: '0cbce907c2515100c624643c1243876c3c0cc47c6c531ca253e6d97b3d13f438',
-       i686: '7d28e75839baed8ceb15e677eba566b6501819c03cbe9f8067857d79a0bb9a7e',
-     x86_64: '82f5de3eb10852a5fdd40ac38b85ed3c4c17c9f7a67199417a9ebe8021552d2e'
+    aarch64: '12d59efb30ebef576e8036a714c9fb66e0298ba8d6f7037ddef0e8de4df8a4ce',
+     armv7l: '12d59efb30ebef576e8036a714c9fb66e0298ba8d6f7037ddef0e8de4df8a4ce',
+       i686: '90ff721330de91ae7ed90f58540653660cbec342555e850991d33a04312cf5e5',
+     x86_64: '4e09a96f6cd381d9b7296877a4d1fd0f5640b1762cd24b30892e770efef3ac23'
   })
 
   depends_on 'glslang' => :build
@@ -31,6 +32,7 @@ class Mesa < Package
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxdamage' => :build
+  depends_on 'libxdmcp' => :build
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
   depends_on 'libxrandr' # R
@@ -73,7 +75,7 @@ class Mesa < Package
                  extern "C" {
                  #endif
       FREEDRENOPATCHEOF
-      IO.write('freedreno.patch', @freedrenopatch)
+      File.write('freedreno.patch', @freedrenopatch)
       system 'patch -Np1 -i freedreno.patch'
       # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505
       @tegrapatch = <<~TEGRAPATCHEOF
@@ -92,31 +94,45 @@ class Mesa < Package
                           assert(!fb->zsbuf);
                        }
       TEGRAPATCHEOF
-      IO.write('tegra.patch', @tegrapatch)
+      File.write('tegra.patch', @tegrapatch)
       system 'patch -Np1 -i tegra.patch'
     end
+    # llvm 13/14 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
+    # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.diff',
+               '76d2dd16532336837bccd4885c40efed0ab5f1de8e8fa114a7835dc269f221ac'
+    system 'patch -Np1 -i 13273.diff'
+    # mesa: Implement ANGLE_sync_control_rate (used by Chrome browser)
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff',
+               '1391e189f5ad40a711a6f72a7d59aef1b943ec9dc408852f5f562699bf50ba6c'
+    system 'patch -Np1 -i 15381.diff'
   end
 
   def self.build
     case ARCH
     when 'i686'
       @vk = 'intel,swrast'
-      @galliumdrivers = 'swrast,svga,virgl,swr,lima,zink'
+      @galliumdrivers = 'swrast,svga,virgl,zink'
       @lto = CREW_MESON_FNO_LTO_OPTIONS
+      @osmesa = 'false'
     when 'aarch64', 'armv7l'
       @vk = 'auto'
       @galliumdrivers = 'auto'
       @lto = CREW_MESON_OPTIONS
+      @osmesa = 'true'
     when 'x86_64'
       @vk = 'auto'
       @galliumdrivers = 'r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus'
       @lto = CREW_MESON_OPTIONS
+      @osmesa = 'true'
     end
     system "meson #{@lto} \
     -Db_asneeded=false \
+    -Ddri-drivers=auto \
     -Dvulkan-drivers=#{@vk} \
     -Dgallium-drivers=#{@galliumdrivers} \
-    -Dprefer-crocus=true \
+    -Dosmesa=#{@osmesa} \
+    -Dglvnd=false \
      builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'
@@ -124,5 +140,15 @@ class Mesa < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    # The following are hacks to keep sommelier from complaining.
+    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
+      FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
+    end
+    if ARCH == 'x86_64'
+      FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+      end
+    end
   end
 end

@@ -13,12 +13,14 @@ class Py3_isodate < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_isodate/0.6.0_armv7l/py3_isodate-0.6.0-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_isodate/0.6.0_armv7l/py3_isodate-0.6.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_isodate/0.6.0_i686/py3_isodate-0.6.0-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_isodate/0.6.0_x86_64/py3_isodate-0.6.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '0b45d4ecab2b2ca8706e1de22e8918c8d6cf100bab2e8085fb8976cb3a7d0015',
-     armv7l: '0b45d4ecab2b2ca8706e1de22e8918c8d6cf100bab2e8085fb8976cb3a7d0015',
-     x86_64: '3d204a492c1b418a2fa77d810d4756a1c78aafc6eb87113e17d4ff04b70aa190'
+    aarch64: '809a8a813a10a021e39c4f859a676950a374f95df05b67bda85a4c75ea4d185c',
+     armv7l: '809a8a813a10a021e39c4f859a676950a374f95df05b67bda85a4c75ea4d185c',
+       i686: '08043df182880abae97926fc4d172d1b20d0ed160967acb52a9d7d156f717710',
+     x86_64: 'ee26e380cd8779368404be244d8d6388a49ca131436975c457eea7b107cde869'
   })
 
   depends_on 'py3_six'

@@ -3,7 +3,7 @@ require 'package'
 class Gyp_next < Package
   description 'GYP is a fork of the GYP build system for use in the Node.js projects.'
   homepage 'https://github.com/nodejs/gyp-next/'
-  @_ver = '0.8.1'
+  @_ver = '0.10.0'
   version @_ver
   license 'BSD-3'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Gyp_next < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.8.1_armv7l/gyp_next-0.8.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.8.1_armv7l/gyp_next-0.8.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.8.1_i686/gyp_next-0.8.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.8.1_x86_64/gyp_next-0.8.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.10.0_armv7l/gyp_next-0.10.0-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.10.0_armv7l/gyp_next-0.10.0-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.10.0_i686/gyp_next-0.10.0-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.10.0_x86_64/gyp_next-0.10.0-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '95b8ca7502843d7af0e2ed1ad85b27e426b2f7a72b345e73c3e67e4cde5b0674',
-     armv7l: '95b8ca7502843d7af0e2ed1ad85b27e426b2f7a72b345e73c3e67e4cde5b0674',
-       i686: 'ebd77d1c33236013adbaefed35bf7dedd576483dca65b78f028e28b4f4eb2729',
-     x86_64: 'f0d7e59aee2f08b5b0a9b40b7daef3b8a85c850d46dc73fcc33ad1a6eacd11e5'
+    aarch64: '4718cbdf9622ca6ad9e6015cd7f7415113d76162ffbb602ee44ecc53c804ea84',
+     armv7l: '4718cbdf9622ca6ad9e6015cd7f7415113d76162ffbb602ee44ecc53c804ea84',
+       i686: 'd0a603478fed55166f0516a4f8a4d688717556c198963ef066109650c646a13a',
+     x86_64: 'a7c4e1a5c46b7d72fc35023a04110cb4cd76709b0ba8fcabb2af8a10362830a1'
   })
 
   depends_on 'py3_setuptools' => :build

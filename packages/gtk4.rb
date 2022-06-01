@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.4.0'
+  @_ver = '4.6.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_armv7l/gtk4-4.4.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_i686/gtk4-4.4.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.4.0_x86_64/gtk4-4.4.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_armv7l/gtk4-4.6.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_armv7l/gtk4-4.6.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_i686/gtk4-4.6.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_x86_64/gtk4-4.6.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
-     armv7l: 'c53e4cf32c7422501e5ba25e40d6d2c54f34722e4013d3b6f49825d66f251a02',
-       i686: '5e06944bbcf839838a4bd2bba713b6c3ca724b08f9a0dd8eba92c0418446974b',
-     x86_64: '1604014f5f7188b5a974ca8cc06b62e1fc14e8553806541abbcb173694fc2547'
+    aarch64: '7834ca5787a8b61b839724e52a5017202720dc088132ce8a4cf0a390b836e26a',
+     armv7l: '7834ca5787a8b61b839724e52a5017202720dc088132ce8a4cf0a390b836e26a',
+       i686: 'faea57d510593872a16349718ecbb8fd4304c23e7148bba8d13e6f8fa065d4e0',
+     x86_64: 'e13ab6fb21cc239a70a21d6101911673d0589512f40eec6438a03c876e51d85d'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -30,6 +30,7 @@ class Gtk4 < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
   depends_on 'iso_codes' => :build
+  depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
   depends_on 'valgrind' => :build
@@ -50,8 +51,6 @@ class Gtk4 < Package
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'graphene' # R
-  depends_on 'gst_plugins_bad' # R
-  depends_on 'gst_plugins_base' # R
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
   depends_on 'json_glib' # R
@@ -72,6 +71,7 @@ class Gtk4 < Package
   depends_on 'rest' # R
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
+  gnome
 
   def self.patch
     case ARCH
@@ -96,8 +96,7 @@ class Gtk4 < Package
       -Dgraphene:default_library=both \
       -Dlibsass:default_library=both \
       -Dmutest:default_library=both \
-      -Dsassc:default_library=both \
-      -Dsassc=enabled \
+      -Dvulkan=enabled \
       build"
     system 'meson configure build'
     system 'ninja -C build'
@@ -113,17 +112,5 @@ class Gtk4 < Package
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-4.0"
     File.write("#{CREW_DEST_PREFIX}/etc/gtk-4.0/settings.ini", @gtk4settings)
-  end
-
-  def self.postinstall
-    # generate schemas
-    system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    # update mime database
-    system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime"
-    # update icon cache, but only if gdk_pixbuf is already installed.
-    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    return unless @device[:installed_packages].any? 'gdk_pixbuf'
-
-    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*"
   end
 end

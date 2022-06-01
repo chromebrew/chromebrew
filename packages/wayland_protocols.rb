@@ -3,33 +3,36 @@ require 'package'
 class Wayland_protocols < Package
   description 'Wayland is a protocol for a compositor to talk to its clients.'
   homepage 'https://wayland.freedesktop.org/'
-  version '1.21'
+  version '1.25'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://wayland.freedesktop.org/releases/wayland-protocols-1.21.tar.xz'
-  source_sha256 'b99945842d8be18817c26ee77dafa157883af89268e15f4a5a1a1ff3ffa4cde5'
+  source_url 'https://gitlab.freedesktop.org/wayland/wayland-protocols.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.21_armv7l/wayland_protocols-1.21-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.21_armv7l/wayland_protocols-1.21-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.21_i686/wayland_protocols-1.21-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.21_x86_64/wayland_protocols-1.21-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.25_armv7l/wayland_protocols-1.25-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.25_armv7l/wayland_protocols-1.25-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.25_i686/wayland_protocols-1.25-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_protocols/1.25_x86_64/wayland_protocols-1.25-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '487266d1e54fd7094f0b75184bbea84044304dbbe4d64c9214069ff6cfee4472',
-     armv7l: '487266d1e54fd7094f0b75184bbea84044304dbbe4d64c9214069ff6cfee4472',
-       i686: '79e0dc6d2724fdc3ca0724a5d04649adf2e88136e3fc1b5a4ee2f4001117cac2',
-     x86_64: 'fd5283cabe38f85f245a5dcbb6b946594fefa64a5d0777a5554ee534f985ee56'
+    aarch64: '2b7f7735462285555096b5200b63323318b6da02ebf36e1da32320bba202b72f',
+     armv7l: '2b7f7735462285555096b5200b63323318b6da02ebf36e1da32320bba202b72f',
+       i686: '48758272211b03ee657e4cafaf7e71301da90623723cb02676fe5313e810f6c4',
+     x86_64: '5d21d13aa6c092e9287091071411f732cac0353175bab2ba4f5f8b8999762be6'
   })
 
   depends_on 'wayland'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
+    system "meson #{CREW_MESON_OPTIONS} \
+    -Dtests=false \
+     builddir"
+    system 'meson configure builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

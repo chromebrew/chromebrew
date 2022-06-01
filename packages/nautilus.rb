@@ -36,7 +36,6 @@ class Nautilus < Package
   depends_on 'gnome_autoar' # R
   depends_on 'gnome_desktop' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gst_plugins_base' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build

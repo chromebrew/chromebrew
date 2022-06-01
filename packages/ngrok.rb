@@ -3,27 +3,24 @@ require 'package'
 class Ngrok < Package
   description 'ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.'
   homepage 'https://ngrok.com/'
-  version '2.3.35'
-  license '' # Can't find license
+  version '2.3.40'
+  license 'Copyright (c) 2015 by Alan Shreve' # Source code not available
   compatibility 'all'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://bin.equinox.io/a/dFJfzZziYxC/ngrok-2.3.35-linux-arm.tar.gz'
-    source_sha256 '2721e6d74f7d26f061c96df3b5676f32cf4b94a5b43d44d9a535f777dc0b863e'
-  when 'i686'
-    source_url 'https://bin.equinox.io/a/3BwMsheYHot/ngrok-2.3.35-linux-386.tar.gz'
-    source_sha256 '12c79750c1d5d78c9924d56e448ae5ceb78fe06bfc3d724ed9028b02b0cda56b'
-  when 'x86_64'
-    source_url 'https://bin.equinox.io/a/jAq5uX8wfS8/ngrok-2.3.35-linux-amd64.tar.gz'
-    source_sha256 '55df9c479b41a3b9b488458b5fb758df63001d14196a4126e3f669542c8727e9'
-  end
-
-  binary_url ({
+  source_url ({
+    aarch64: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-arm.tgz',
+     armv7l: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-arm.tgz',
+       i686: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-386.tgz',
+     x86_64: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-amd64.tar.gz',
   })
-  binary_sha256 ({
+  source_sha256 ({
+    aarch64: '8eea42d11453961c4c4bd74b5839f3c448f085c62e526eed16bc7db366591007',
+     armv7l: '8eea42d11453961c4c4bd74b5839f3c448f085c62e526eed16bc7db366591007',
+       i686: '24da165d1f204786cc006d9ef1b7e919c8ebc40c57d1d95e2d07c4d43a5083cd',
+     x86_64: '6d095e7a411fc8bd9a82cfa32bb7d7bddebda510f629c76fa099cb4445815a43',
   })
 
   def self.install
-    system "install -Dm755 ngrok #{CREW_DEST_PREFIX}/bin/ngrok"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'ngrok', "#{CREW_DEST_PREFIX}/bin/ngrok", mode: 0o755
   end
 end

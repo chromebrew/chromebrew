@@ -3,16 +3,16 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.1.11'
+  version '2.3.5'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
 
   def self.preinstall
-    if Dir.exists?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
+    if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
       # Save any existing configuration
       FileUtils.cp_r "#{HOME}/.config", "#{CREW_PREFIX}", remove_destination: true unless Dir.empty? "#{HOME}/.config"
     else
@@ -23,7 +23,7 @@ class Composer < Package
 
   def self.install
     system "curl -Ls -o composer https://github.com/composer/composer/releases/download/#{version}/composer.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == 'fdb587131f8a11fcd475c9949ca340cc58a4b50cce6833caa8118b759a4ad1a3'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == '3b3b5a899c06a46aec280727bdf50aad14334f6bc40436ea76b07b650870d8f4'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
   end

@@ -13,11 +13,13 @@ class Webkit2gtk_5 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_armv7l/webkit2gtk_5-2.32.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_armv7l/webkit2gtk_5-2.32.4-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_i686/webkit2gtk_5-2.32.4-chromeos-i686.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_x86_64/webkit2gtk_5-2.32.4-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: '5a4da2ee8bc5889ccf768da845a33f94bf988e626c3af16a3c30f6dcb3584a85',
      armv7l: '5a4da2ee8bc5889ccf768da845a33f94bf988e626c3af16a3c30f6dcb3584a85',
+       i686: 'ebdc44d20e7977456adc85c0ac33c1ab32f3e39b4ddc22346ef0879585f1a4c5',
      x86_64: 'f33da6311321d201b334f1b720ac0980497c6c57d0c928464f749d5b99cd8699'
   })
 
@@ -31,7 +33,6 @@ class Webkit2gtk_5 < Package
   depends_on 'glib'
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene'
-  depends_on 'gst_plugins_base'
   depends_on 'gstreamer'
   depends_on 'gtk4'
   depends_on 'gtk_doc' => :build
@@ -94,10 +95,7 @@ class Webkit2gtk_5 < Package
 
   def self.install
     ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    warn_level = $VERBOSE
-    $VERBOSE = nil
-    load "#{CREW_LIB_PATH}lib/const.rb"
-    $VERBOSE = warn_level
+    reload_constants
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir5 install"
   end
 end

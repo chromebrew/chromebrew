@@ -27,7 +27,7 @@ class Cogl < Package
   depends_on 'mesa'
   depends_on 'pango'
   depends_on 'gdk_pixbuf'
-  depends_on 'gst_plugins_base'
+  depends_on 'gstreamer'
   depends_on 'wayland'
   depends_on 'glib'
   depends_on 'gobject_introspection'

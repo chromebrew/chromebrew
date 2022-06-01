@@ -3,19 +3,19 @@ require 'package'
 class Zig < Package
   description 'Programming language designed for robustness, optimality, and clarity'
   homepage 'https://ziglang.org/'
-  version '0.8.1'
+  version '0.9.1'
   license 'MIT'
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-    source_url 'https://ziglang.org/download/0.8.1/zig-linux-armv7a-0.8.1.tar.xz'
-    source_sha256 '5ba58141805e2519f38cf8e715933cbf059f4f3dade92c71838cce341045de05'
+    source_url 'https://ziglang.org/download/0.9.1/zig-linux-armv7a-0.9.1.tar.xz'
+    source_sha256 '6de64456cb4757a555816611ea697f86fba7681d8da3e1863fa726a417de49be'
   when 'i686'
-    source_url 'https://ziglang.org/download/0.8.1/zig-linux-i386-0.8.1.tar.xz'
-    source_sha256 '2f3e84f30492b5f1c5f97cecc0166f07a8a8d50c5f85dbb3a6ef2a4ee6f915e6'
+    source_url 'https://ziglang.org/download/0.9.1/zig-linux-i386-0.9.1.tar.xz'
+    source_sha256 'e776844fecd2e62fc40d94718891057a1dbca1816ff6013369e9a38c874374ca'
   when 'x86_64'
-    source_url 'https://ziglang.org/download/0.8.1/zig-linux-x86_64-0.8.1.tar.xz'
-    source_sha256 '6c032fc61b5d77a3f3cf781730fa549f8f059ffdb3b3f6ad1c2994d2b2d87983'
+    source_url 'https://ziglang.org/download/0.9.1/zig-linux-x86_64-0.9.1.tar.xz'
+    source_sha256 'be8da632c1d3273f766b69244d80669fe4f5e27798654681d77c992f17c237d7'
   end
 
   def self.install

@@ -3,7 +3,7 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.2783'
+  @_ver = '8.2.4594'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
@@ -11,19 +11,20 @@ class Vim_runtime < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_armv7l/vim_runtime-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_i686/vim_runtime-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.2783_x86_64/vim_runtime-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_armv7l/vim_runtime-8.2.4594-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_armv7l/vim_runtime-8.2.4594-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_i686/vim_runtime-8.2.4594-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_x86_64/vim_runtime-8.2.4594-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
-     armv7l: '5ebaa13f220c72794f065f4173a0f669a6334ee36cce70f70ac191fcd218ff1a',
-       i686: 'fe0bed8bc2aaa80db2748876c746cfce7f6c1004a30f3293f9497bdbdf6ca04e',
-     x86_64: 'f1e37f9c9ad6cf1fea25581634abc0a67ec51f4c64bfc0936b9a9544a958095b'
+    aarch64: '1e163860d1e33df29dc2298c8916b79eb10e093ee7aa93aa45649b2f24b8717b',
+     armv7l: '1e163860d1e33df29dc2298c8916b79eb10e093ee7aa93aa45649b2f24b8717b',
+       i686: '8dbf821e3b74d5e881a6939cf711f08e0375cd24be12bdc08fc240beed72ed69',
+     x86_64: '20d6505461857fb25901b3c18ed8a7f20f95111c1cfe8d6dc3306d314bf78264'
   })
 
   depends_on 'gpm'
+  depends_on 'libsodium'
 
   def self.patch
     abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")

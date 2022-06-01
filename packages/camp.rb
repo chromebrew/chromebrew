@@ -11,5 +11,5 @@ class Camp < Package
 
   depends_on 'httpd'
   depends_on 'percona_server'
-  depends_on 'php74' unless File.exists? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
 end

@@ -3,11 +3,11 @@ require 'package'
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome'
-  version '95.0.4638.54-1'
+  version '101.0.4951.64-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  source_url 'https://dl.google.com/linux/chrome/deb//pool/main/g/google-chrome-stable/google-chrome-stable_95.0.4638.54-1_amd64.deb'
-  source_sha256 '2a90957a8104649bda067b62d87380ad6e5d5ff8cd52f47cf8d39acfbf93c955'
+  source_url 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_101.0.4951.64-1_amd64.deb'
+  source_sha256 '1b6dfea8fc0232ad88a02c997facb28b06c000d9d27cedfdbde278018fcc3292'
 
   depends_on 'nspr'
   depends_on 'cairo'
@@ -15,6 +15,8 @@ class Chrome < Package
   depends_on 'expat'
   depends_on 'cras'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

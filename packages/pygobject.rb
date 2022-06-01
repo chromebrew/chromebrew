@@ -4,26 +4,27 @@ class Pygobject < Package
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.readthedocs.io/'
   @_ver = '3.42.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0_armv7l/pygobject-3.42.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0_armv7l/pygobject-3.42.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0_i686/pygobject-3.42.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0_x86_64/pygobject-3.42.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0-1_armv7l/pygobject-3.42.0-1-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0-1_armv7l/pygobject-3.42.0-1-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0-1_i686/pygobject-3.42.0-1-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.42.0-1_x86_64/pygobject-3.42.0-1-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: '3078465f299ca21b754eddacf8f3d10e5674cb93773288539010803a7024c339',
-     armv7l: '3078465f299ca21b754eddacf8f3d10e5674cb93773288539010803a7024c339',
-       i686: 'b4a3f0c1db1c86bcba8f36a213af0031ec749218d7facf8c77f20c76f1cf9fb2',
-     x86_64: '119c35a1e20179f9e1010e6b713209539e060d3fbd8c0f560aaa6e8d55499b00'
+    aarch64: '8d3c72f92d272438ada7781dc3c7e2830e92c5567b37000770a6a567398e4aee',
+     armv7l: '8d3c72f92d272438ada7781dc3c7e2830e92c5567b37000770a6a567398e4aee',
+       i686: '3a24ec575fc98956236aa0ade2ace4eb7cee0c62b78c1abe4bd3924c4a12f16d',
+     x86_64: '301494929ef6856b8278cbedaf77a2d6b73746826576671708dfbb4c866e84fd'
   })
 
   depends_on 'glib'
+  depends_on 'wayland'
   depends_on 'gobject_introspection'
   depends_on 'py3_pycairo'
   depends_on 'py3_setuptools' => :build

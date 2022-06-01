@@ -3,24 +3,24 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  @_ver = '2.3.3op2'
+  @_ver = '2.4.2'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
-  source_url "https://github.com/OpenPrinting/cups/releases/download/v#{@_ver}/cups-#{@_ver}-source.tar.gz"
-  source_sha256 'deb3575bbe79c0ae963402787f265bfcf8d804a71fc2c94318a74efec86f96df'
+  source_url 'https://github.com/OpenPrinting/cups.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_armv7l/cups-2.3.3op2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_i686/cups-2.3.3op2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.3.3op2_x86_64/cups-2.3.3op2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.2_armv7l/cups-2.4.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.2_armv7l/cups-2.4.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.2_i686/cups-2.4.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.2_x86_64/cups-2.4.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',
-     armv7l: 'cf7fb54c659bb5f01c3097274864c3e0bf1669f0d6a8a1e6df82e6c403ad5264',
-       i686: '74e029c12bf5af1545ca74ffddf0f70fda68bebaaab22c264d7541c2c7b570aa',
-     x86_64: '993136847f961e31b04906a36334278df723c12c5e55c7d7cf9ee797fad2ed88'
+    aarch64: '4122b205373155bf4b4e66d6ac43676e1d3fd71809719f869bfc4413e8366d76',
+     armv7l: '4122b205373155bf4b4e66d6ac43676e1d3fd71809719f869bfc4413e8366d76',
+       i686: '69c5785cd4f409abe649ced3629640e0ae5421f7ded9783918be284905c23923',
+     x86_64: 'b031e0dbf4bb329a60bac4db64bcd29dc561ce01c270b701afcf6582285e205e'
   })
 
   depends_on 'libusb'
@@ -28,12 +28,7 @@ class Cups < Package
   depends_on 'psmisc'
 
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
-      --disable-launchd \
-      --disable-systemd \
+    system "./configure #{CREW_OPTIONS} \
       --enable-libusb"
     system 'make'
     system "echo '#!/bin/bash' > startcupsd"
@@ -80,8 +75,9 @@ class Cups < Package
            "CACHEDIR=#{CREW_DEST_PREFIX}/var/cache/cups",
            "LOCALEDIR=#{CREW_DEST_PREFIX}/share/locale",
            'install'
-    system "install -Dm755 startcupsd #{CREW_DEST_PREFIX}/bin/startcupsd"
-    system "install -Dm755 stopcupsd #{CREW_DEST_PREFIX}/bin/stopcupsd"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'startcupsd', "#{CREW_DEST_PREFIX}/bin/startcupsd", mode: 0o755
+    FileUtils.install 'stopcupsd', "#{CREW_DEST_PREFIX}/bin/stopcupsd", mode: 0o755
     if File.exist?("#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf")
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
       FileUtils.mv "#{CREW_DEST_DIR}/etc/dbus-1/system.d/cups.conf", "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/"
@@ -97,7 +93,7 @@ class Cups < Package
     puts "To start the cups daemon, run 'startcupsd'".lightblue
     puts "To stop the cups daemon, run 'stopcupsd'".lightblue
     puts
-    puts 'For more information, see https://docs.oracle.com/cd/E23824_01/html/821-1451/gllgm.html'.lightblue
+    puts 'For more information, see https://www.cups.org/doc/admin.html'.lightblue
     puts
   end
 end

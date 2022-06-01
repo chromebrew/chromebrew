@@ -3,22 +3,24 @@ require 'package'
 class Ibus < Package
   description 'Next Generation Input Bus for Linux'
   homepage 'https://github.com/ibus/ibus/wiki'
-  @_ver = '1.5.24'
-  version "#{@_ver}-1"
+  @_ver = '1.5.25'
+  version @_ver
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://github.com/ibus/ibus/releases/download/#{@_ver}/ibus-#{@_ver}.tar.gz"
-  source_sha256 'abf33a965063629d3bbdab8a5948736ce3a9523cc3d6331e5ea0ec5e8ea7421f'
+  compatibility 'all'
+  source_url 'https://github.com/ibus/ibus.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_armv7l/ibus-1.5.24-1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.24-1_x86_64/ibus-1.5.24-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_armv7l/ibus-1.5.25-chromeos-armv7l.tpxz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_armv7l/ibus-1.5.25-chromeos-armv7l.tpxz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_i686/ibus-1.5.25-chromeos-i686.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_x86_64/ibus-1.5.25-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-    aarch64: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
-     armv7l: 'f12163d784b45e68bbc6c5f844fe3082db1f3c2b3dc621464cc4ac4d81ba2024',
-     x86_64: 'baeca79b3d8750e062e46dcee2114f3425a8abed1a104db540df542ea098814f'
+    aarch64: '422f1a98bd9d3f8cae040fceaf56725b0493996f8a9768dfc6b517b695af9d45',
+     armv7l: '422f1a98bd9d3f8cae040fceaf56725b0493996f8a9768dfc6b517b695af9d45',
+       i686: 'cef3949b6b3dce1feeab92375135894070585d1aaeb107701c6c2b5e4755795b',
+     x86_64: 'ddc0ce92ae7723c87ef3527e47a69684e3ac65b3adb0b2c7fe4cdbf6e9580235'
   })
 
   depends_on 'atk'
@@ -58,9 +60,7 @@ class Ibus < Package
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
-    system "env CFLAGS='-flto=auto' \
-    CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-    ./configure \
+    system "#{CREW_ENV_OPTIONS} ./configure \
     #{CREW_OPTIONS} \
     --libexecdir=#{CREW_LIB_PREFIX}/ibus \
     --sysconfdir=#{CREW_PREFIX}/etc \

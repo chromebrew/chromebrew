@@ -3,23 +3,23 @@ require 'package'
 class Grive < Package
   description 'Google Drive client with support for new Drive REST API and partial sync'
   homepage 'https://github.com/vitalif/grive2'
-  version '0.5.0-1'
+  version '0.5.2-e6fcc63'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/vitalif/grive2/archive/v0.5.0.tar.gz'
-  source_sha256 '24641ef4802eb93bb55e7069bca55c4fb8aa17fd88833b9c89a1b2ee7d266567'
+  source_url 'https://github.com/vitalif/grive2.git'
+  git_hashtag 'e6fcc637f8d51126312f12d0c0a568046c4f95de'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.0-1_armv7l/grive-0.5.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.0-1_armv7l/grive-0.5.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.0-1_i686/grive-0.5.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.0-1_x86_64/grive-0.5.0-1-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.2-e6fcc63_armv7l/grive-0.5.2-e6fcc63-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.2-e6fcc63_armv7l/grive-0.5.2-e6fcc63-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.2-e6fcc63_i686/grive-0.5.2-e6fcc63-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.2-e6fcc63_x86_64/grive-0.5.2-e6fcc63-chromeos-x86_64.tar.xz',
   })
   binary_sha256 ({
-    aarch64: 'e42ae9643925d4500328fecc1149f24c7dbaa1ccc6c8ec4129b408ad6cbaeb02',
-     armv7l: 'e42ae9643925d4500328fecc1149f24c7dbaa1ccc6c8ec4129b408ad6cbaeb02',
-       i686: 'b037829746c3ead4eb3e344a09c7feaf2c0f252264d157269175d7103d85b740',
-     x86_64: '294e6a0dbe20fd737982d99014d688a3fe648e18a3703324faefd0daffe3d524',
+    aarch64: '2a2c5dae9efd74c5b0497813c895f5bac5c91df8b1b7a9a31ac196ccaf09dd13',
+     armv7l: '2a2c5dae9efd74c5b0497813c895f5bac5c91df8b1b7a9a31ac196ccaf09dd13',
+       i686: '35301f6fe1a3d097341c1ef9b881b2f5dab461b3fd24c5859ddacb4a79b69b0a',
+     x86_64: '6aecea77e9fd0150ac18f2df6444b12cc95e411897800d462d89a1a5f6c8aeae',
   })
 
   depends_on 'yajl'
@@ -31,16 +31,14 @@ class Grive < Package
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      system "cmake .. -DPREFIX=#{CREW_PREFIX}"
-      system "make"
+      system "cmake #{CREW_CMAKE_OPTIONS} .."
+      system 'make'
     end
   end
 
   def self.install
     Dir.chdir 'build' do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-      system "mkdir -p #{CREW_DEST_LIB_PREFIX}"
-      system "ln -s #{CREW_LIB_PREFIX}/libbfd.so #{CREW_DEST_LIB_PREFIX}/libbfd-2.25.51.20141117.so"
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
 end
