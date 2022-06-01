@@ -22,6 +22,7 @@ class Libtool < Package
   end
 
   def self.check
+    puts 'Notice: Libtool checks take a very long time.'.yellow
     system 'make', 'check'
   end
 end
