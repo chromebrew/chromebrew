@@ -133,7 +133,7 @@ def http_downloader (url, filename = File.basename(url), verbose = false)
       # read file chunks from server, write it to filesystem
       File.open(filename, 'wb') do |io|
         response.read_body do |chunk|
-          if CREW_DOWNLOADER_SHOW_PROGBAR
+          unless CREW_HIDE_PROGBAR
             downloaded_size += chunk.size # record downloaded size, used for showing progress bar
             if file_size.positive?
               # calculate downloading progress percentage with the given file size
