@@ -588,6 +588,7 @@ class Glibc < Package
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
       @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+      puts "Package glibc version is #{@crew_libc_version}.".lightblue
     else
       @crew_libc_version = LIBC_VERSION
     end
@@ -596,7 +597,6 @@ class Glibc < Package
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libresolv librlv librt libthread_db-1.0 libutil]
     Dir.chdir CREW_LIB_PREFIX do
-      puts "Package glibc version is #{@crew_libc_version}.".lightblue
       puts "System glibc version is #{LIBC_VERSION}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       @libraries.each do |lib|
