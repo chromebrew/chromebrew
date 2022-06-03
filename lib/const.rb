@@ -89,6 +89,8 @@ CREW_DOWNLOADER = ( ENV['CREW_DOWNLOADER'].to_s.empty? ) ? nil : ENV['CREW_DOWNL
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ( ENV['CREW_DOWNLOADER_RETRY'].to_s.empty? ) ? 3 : ENV['CREW_DOWNLOADER_RETRY'].to_i
+# Downloader show progress bar or not
+CREW_DOWNLOADER_SHOW_PROGBAR = ENV.fetch('CREW_DOWNLOADER_SHOW_PROGBAR', '1').eql?('1')
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
