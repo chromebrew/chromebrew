@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.18'
+  version '1.19'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -111,6 +111,10 @@ class Buildessential < Package
   # Python
   depends_on 'python2'
   depends_on 'python3'
+  depends_on 'py3_setuptools'
+  depends_on 'py3_build'
+  depends_on 'py3_installer'
+  depends_on 'py3_flit_core'
 
   # Qt
   #depends_on 'qtcreator'
