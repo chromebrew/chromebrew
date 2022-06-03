@@ -3,62 +3,35 @@ require 'package'
 class Gtk_doc < Package
   description 'Documentation tool for public library API'
   homepage 'https://www.gtk.org/gtk-doc/'
-  version '1.33.2'
+  version '1.33.2-1'
   license 'GPL-2 and FDL-1.1'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk-doc/1.33/gtk-doc-1.33.2.tar.xz'
   source_sha256 'cc1b709a20eb030a278a1f9842a362e00402b7f834ae1df4c1998a723152bf43'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2_armv7l/gtk_doc-1.33.2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2_armv7l/gtk_doc-1.33.2-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2_i686/gtk_doc-1.33.2-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2_x86_64/gtk_doc-1.33.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_armv7l/gtk_doc-1.33.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_armv7l/gtk_doc-1.33.2-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_i686/gtk_doc-1.33.2-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_x86_64/gtk_doc-1.33.2-1-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-     aarch64: 'ba73551a108866ced64b4eeb9604aa611516f425332f3783f92c74019a690e4e',
-      armv7l: 'ba73551a108866ced64b4eeb9604aa611516f425332f3783f92c74019a690e4e',
-        i686: '1c3b409bc74cfa802f2ac07431637a6442a2177f9502b921ef627e7a22218142',
-      x86_64: 'd3bbd486349bf83fbf9103e219fa0abb533968c8753b6c278ceb14c6d61e1258',
+  binary_sha256({
+    aarch64: '24057b08390fd7e509aa289cca5f34abb4aaee144597d628861e01aaec6fec7e',
+     armv7l: '24057b08390fd7e509aa289cca5f34abb4aaee144597d628861e01aaec6fec7e',
+       i686: 'ab074f841989d0f98f6bb7d32ee1ccc64c700e787da40f9af27c98a68b374fd2',
+     x86_64: 'cbddae4808f786228f3456b8f633fa1a2b7435e8bf1c1dffa24cc640166ff765'
   })
 
   depends_on 'docbook_xml'
-  depends_on 'fop'
+  depends_on 'glib'
   depends_on 'itstool'
   depends_on 'libxslt'
   depends_on 'py3_pygments' => :build
 
-  #def self.patch
-    # There are a lot of patches to grab here ~ They've all come from Void-Packages (xbps-src)
-    #puts
-    #puts 'Grabbing patches'.lightblue
-    #system 'curl --ssl -L -o "output-reproducible.patch" "https://git.io/JUlWD" --progress-bar'
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('output-reproducible.patch') ) == '701fe4124a94b124e943e9220f4ea42de7fe191379f41c349cc2f69ece37af24'
-    #system 'curl --ssl -L -o "tree-structure-without-using-anytree.patch" "https://git.io/JUlOD" --progress-bar'
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('tree-structure-without-using-anytree.patch') ) == '8423045330d66f119d1a1caab6d08b1121230d3103de405840be1743af71c8b3'
-    #system 'curl --ssl -L -o "support-deprecated-struct-members.patch" "https://git.io/JUl3O" --progress-bar'
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('support-deprecated-struct-members.patch') ) == '3f9c3c68640c76c10d9262e0678828374d8dbbb9cd9d30b64f2aed7a78277d1f'
-    #system 'curl --ssl -L -o "typedef-can-be-followed-by-decorator.patch" "https://git.io/JUl3C" --progress-bar'
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('typedef-can-be-followed-by-decorator.patch') ) == '16c4d633ddf0e72a7146cf6427b15c9a3780d5b6e36185baaead2e529741da2c'
-    #system 'curl --ssl -L -o "IGNORE_DEPRECATIONS-lines.patch" "https://git.io/JUl3o" --progress-bar'
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('IGNORE_DEPRECATIONS-lines.patch') ) == '7b4703006fa03a58faa72287e043f31893f8bbb2ea69ee15a2c5b29e5ff56534'
-    #system 'curl --ssl -L -o  "revert_fix_build.patch" "https://git.io/JUl3H" --progress-bar'
-    #abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('revert_fix_build.patch') ) == 'e1520094c3cc110767f840f7a710ce56cdaae4650316a5407337425dd37969c4'
-    #puts
-    #puts 'Applying patches'.lightblue
-    #system 'patch -Np1 -i revert_fix_build.patch'
-    #system 'patch -Np1 -i IGNORE_DEPRECATIONS-lines.patch'
-    #system 'patch -Np1 -i typedef-can-be-followed-by-decorator.patch'
-    #system 'patch -Np1 -i support-deprecated-struct-members.patch'
-    #system 'patch -Np1 -i tree-structure-without-using-anytree.patch'
-    #system 'patch -Np1 -i output-reproducible.patch'
-    #puts
-  #end
-
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
