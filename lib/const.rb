@@ -81,7 +81,7 @@ else
 end
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = ENV['CREW_USE_CURL'] == '1'
+CREW_USE_CURL = ENV['CREW_USE_CURL'].eql?('1')
 
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
@@ -89,8 +89,8 @@ CREW_DOWNLOADER = ( ENV['CREW_DOWNLOADER'].to_s.empty? ) ? nil : ENV['CREW_DOWNL
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ( ENV['CREW_DOWNLOADER_RETRY'].to_s.empty? ) ? 3 : ENV['CREW_DOWNLOADER_RETRY'].to_i
-# Downloader show progress bar or not
-CREW_DOWNLOADER_SHOW_PROGBAR = ENV.fetch('CREW_DOWNLOADER_SHOW_PROGBAR', '1').eql?('1')
+# show download progress bar or not (only applied when using the default ruby downloader)
+CREW_HIDE_PROGBAR = ENV['CREW_HIDE_PROGBAR'].eql?('1')
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV['SSL_CERT_FILE'])
