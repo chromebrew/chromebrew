@@ -10,6 +10,11 @@ class Youtube_dl < Package
   source_url 'https://github.com/ytdl-org/youtube-dl.git'
   git_hashtag @_ver
 
+  binary_url({
+  })
+  binary_sha256({
+  })
+
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
