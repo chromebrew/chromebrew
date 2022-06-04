@@ -133,15 +133,17 @@ def http_downloader (url, filename = File.basename(url), verbose = false)
       # read file chunks from server, write it to filesystem
       File.open(filename, 'wb') do |io|
         response.read_body do |chunk|
-          downloaded_size += chunk.size # record downloaded size, used for showing progress bar
-          if file_size.positive?
-            # calculate downloading progress percentage with the given file size
-            percentage = (downloaded_size / file_size) * 100
-            # show progress bar, file size and progress percentage
-            printf "\r""[%-#{@progBarW}.#{@progBarW}s] %9.9s %3d%%",
-                   '#' * ( @progBarW * (percentage / 100) ),
-                   human_size(file_size),
-                   percentage
+          unless CREW_HIDE_PROGBAR
+            downloaded_size += chunk.size # record downloaded size, used for showing progress bar
+            if file_size.positive?
+              # calculate downloading progress percentage with the given file size
+              percentage = (downloaded_size / file_size) * 100
+              # show progress bar, file size and progress percentage
+              printf "\r""[%-#{@progBarW}.#{@progBarW}s] %9.9s %3d%%",
+                     '#' * ( @progBarW * (percentage / 100) ),
+                     human_size(file_size),
+                     percentage
+            end
           end
           io.write(chunk) # write to file
         end

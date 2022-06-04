@@ -263,8 +263,8 @@ class Glibc < Package
         @googlesource_branch = 'release-R91-13904.B'
         system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
         Dir.glob("googlesource/sys-libs/glibc/files/local/glibc-2.27/glibc-#{@libc_version}*.patch").each do |patch|
-        puts "patch -Np1 -i #{patch}" if @opt_verbose
-        system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch} || true)"
+          puts "patch -Np1 -i #{patch}" if @opt_verbose
+          system "patch -Np1 -i #{patch} || (echo 'Retrying #{patch}' && patch -Np0 -i #{patch} || true)"
         end
         # Fix multiple definitions of __nss_*_database (bug 22918) in Glibc 2.27
         system 'curl -Ls "https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=eaf6753f8aac33a36deb98c1031d1bad7b593d2d;hp=4dc23804a220f917f400e2404bc4803cd60491c7" \
@@ -331,7 +331,7 @@ class Glibc < Package
     Dir.chdir 'glibc_build' do
       # gold linker does not work for glibc 2.23, and maybe others.
       FileUtils.mkdir_p 'binutils'
-      @binutils = IO.readlines("#{CREW_META_PATH}binutils.filelist")
+      @binutils = File.readlines("#{CREW_META_PATH}binutils.filelist")
       @binutils.each do |bin|
         FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}" if bin['/bin/']
       end
@@ -354,7 +354,7 @@ class Glibc < Package
       when '2.27'
         case ARCH
         when 'armv7l', 'aarch64'
-          IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
+          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           # enable-obsolete-rpc will cause a conflict with libtirpc
           system "SYSROOT=''  CFLAGS='-O2 -fno-strict-aliasing -fno-stack-protector -march=armv7-a+fp' \
                   LD=ld ../configure \
@@ -378,7 +378,7 @@ class Glibc < Package
                   --without-cvs \
                   --without-selinux"
         when 'x86_64'
-          IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
+          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "CFLAGS='-O2 -pipe -fno-stack-protector' ../configure \
                    #{CREW_OPTIONS} \
                    --with-headers=#{CREW_PREFIX}/include \
@@ -443,7 +443,7 @@ class Glibc < Package
           system "sed -i 's,install-symbolic-link,/bin/true,g' ../Makefile"
           system "sed -i 's,symbolic-link-prog := \$(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
-          IO.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
+          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "env \
           CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
             ../configure \
@@ -585,14 +585,18 @@ class Glibc < Package
   end
 
   def self.postinstall
-    @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
-    @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+    if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
+      @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
+      @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+      puts "Package glibc version is #{@crew_libc_version}.".lightblue
+    else
+      @crew_libc_version = LIBC_VERSION
+    end
     @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libresolv librlv librt libthread_db-1.0 libutil]
     Dir.chdir CREW_LIB_PREFIX do
-      puts "Package glibc version is #{@crew_libc_version}.".lightblue
       puts "System glibc version is #{LIBC_VERSION}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       @libraries.each do |lib|
@@ -622,7 +626,7 @@ class Glibc < Package
       # This is the array of locales to save:
       @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
       @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-      @filelist = IO.readlines("#{CREW_META_PATH}#{to_s.downcase}.filelist")
+      @filelist = File.readlines("#{CREW_META_PATH}#{to_s.downcase}.filelist")
       @localedirs.each do |localedir|
         Dir.chdir localedir do
           Dir.glob('*').each do |f|
