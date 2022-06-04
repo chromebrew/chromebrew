@@ -11,12 +11,16 @@ class Py3_flit_core < Package
   git_hashtag @_ver
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_i686/py3_flit_core-3.7.1-1-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_x86_64/py3_flit_core-3.7.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_armv7l/py3_flit_core-3.7.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_armv7l/py3_flit_core-3.7.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_i686/py3_flit_core-3.7.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_x86_64/py3_flit_core-3.7.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '8f8f77092250172966e361e3471962836bb7d8dc00d8f2bcd4257c890309ca44',
-  x86_64: 'e20eb9cd5a7dec671b74c6f2096544aa311a2340fbf34c5b86879441816da233'
+    aarch64: '891eef9b18bbba389d8c075dc7f465d52bcb37ed13f25260ded8e77efc928031',
+     armv7l: '891eef9b18bbba389d8c075dc7f465d52bcb37ed13f25260ded8e77efc928031',
+       i686: '8f8f77092250172966e361e3471962836bb7d8dc00d8f2bcd4257c890309ca44',
+     x86_64: 'e20eb9cd5a7dec671b74c6f2096544aa311a2340fbf34c5b86879441816da233'
   })
 
   def self.build
