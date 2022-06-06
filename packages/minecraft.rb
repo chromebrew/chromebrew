@@ -13,6 +13,7 @@ class Minecraft < Package
 
   depends_on 'libx11'
   depends_on 'jdk8'
+  depends_on 'jdk17'
   depends_on 'gtk3'
   depends_on 'libcom_err'
   depends_on 'libsecret'
