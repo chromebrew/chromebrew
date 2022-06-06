@@ -111,10 +111,10 @@ class Buildessential < Package
   # Python
   depends_on 'python2'
   depends_on 'python3'
-  depends_on 'py3_setuptools'
   depends_on 'py3_build'
   depends_on 'py3_installer'
   depends_on 'py3_flit_core'
+  depends_on 'py3_setuptools'
 
   # Qt
   #depends_on 'qtcreator'

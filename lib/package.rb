@@ -6,8 +6,9 @@ class Package
            :git_branch, :git_hashtag
 
   boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
-                        is_static no_compile_needed no_env_options no_fhs 
-                        no_patchelf no_zstd patchelf]
+                        is_static no_compile_needed no_env_options no_fhs
+                        no_patchelf no_zstd patchelf git_clone_deep
+                        no_git_submodules]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -51,7 +52,7 @@ class Package
     #   highlight_build_deps: include corresponding symbols in return value, you can convert it to actual ascii color codes later
     # exclude_buildessential: do not insert `buildessential` dependency automatically
     #
-    #              top_level: if set to true, return satisfied dependencies 
+    #              top_level: if set to true, return satisfied dependencies
     #                         (dependencies that might be a sub-dependency of a dependency that checked before),
     #                         always set to false if this function is called in recursive loop (see `expandedDeps` below)
     #
