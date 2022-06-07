@@ -15,11 +15,111 @@ AllCops:
   Exclude:
   - 'lib/docopt.rb'
 
+# These cops have been temporarily disabled and should be reenabled asap
+Security/Eval:
+  Enabled: false
+
+Naming/ClassAndModuleCamelCase:
+  # Disable this cop for every file in packages/
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Naming/MethodName:
+  Enabled: false
+
+Naming/VariableName:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+Layout/LineContinuationLeadingSpace:
+  Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
+
+Lint/ImplicitStringConcatenation:
+  Enabled: false
+
+Lint/UnreachableCode:
+  Enabled: false
+
+Lint/DuplicateBranch:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Lint/LiteralAsCondition:
+  Enabled: false
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/EmptyWhen:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Lint/SuppressedException:
+  Enabled: false
+
+Layout/LineLength:
+  AllowedPatterns:
+    - '#'
+    - 'description'
+  # When this is reenabled, keep the AllowedPatterns configuration
+  Enabled: false
+
 Layout/HashAlignment:
   EnforcedHashRocketStyle:
     - separator
   EnforcedColonStyle:
     - separator
+  # When this is reenabled, keep the EnforcedHashRocketStyle and EnforcedColonStyle configuration
+  Enabled: false
+
+# End temporarily disabled cops
 
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
@@ -72,11 +172,5 @@ Naming/BlockParameterName:
 Naming/VariableNumber:
   Enabled: false
 
-Naming/ClassAndModuleCamelCase:
+Naming/HeredocDelimiterNaming:
   Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Layout/LineLength:
-  AllowedPatterns: ['description']
