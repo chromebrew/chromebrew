@@ -3,24 +3,24 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '5.0'
-  version "#{@_ver}-1"
+  @_ver = '5.0.1'
+  version @_ver.to_s
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
   git_hashtag "n#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_armv7l/ffmpeg-5.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_armv7l/ffmpeg-5.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_i686/ffmpeg-5.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_x86_64/ffmpeg-5.0-1-chromeos-x86_64.tar.zst'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0-1_i686/ffmpeg-5.0-1-chromeos-i686.tar.zst',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0.1_armv7l/ffmpeg-5.0.1-chromeos-armv7l.tar.zst',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0.1_armv7l/ffmpeg-5.0.1-chromeos-armv7l.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.0.1_x86_64/ffmpeg-5.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b55ea0c0549d576e0c946180d0b0a3c560aae01d9074ad8b0c5bee2045a3955e',
-     armv7l: 'b55ea0c0549d576e0c946180d0b0a3c560aae01d9074ad8b0c5bee2045a3955e',
-       i686: '91e328f13cdaa3e433ed1a3ebe862b2b81e1c689ba5babc6e7787ba688bfb1b6',
-     x86_64: '7eeca38e7677f959d8516faf79019b2502e578b9aee41ad075d2157aae55c667'
+    i686: '91e328f13cdaa3e433ed1a3ebe862b2b81e1c689ba5babc6e7787ba688bfb1b6',
+ aarch64: '94ab8e4974898ccfbc1cc59104de69014faee16e7b42777f20466fe43c2ece33',
+  armv7l: '94ab8e4974898ccfbc1cc59104de69014faee16e7b42777f20466fe43c2ece33',
+  x86_64: 'bc52e2af52e1158a2b9c86efc992bbd098745b7ab7b34bd9136dcb6a16fab26c'
   })
 
   depends_on 'avisynthplus' # ?
