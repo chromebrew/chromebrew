@@ -3,24 +3,24 @@ require 'package'
 class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
-  @_ver = '1.19.2'
-  version "#{@_ver}-1"
+  @_ver = '1.21.0'
+  version @_ver.to_s
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_armv7l/libinput-1.19.2-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_armv7l/libinput-1.19.2-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_i686/libinput-1.19.2-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.19.2-1_x86_64/libinput-1.19.2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_armv7l/libinput-1.21.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_armv7l/libinput-1.21.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_i686/libinput-1.21.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_x86_64/libinput-1.21.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e05b75fc7ce64fb075f80c166f040e44f93348ed9a1498edf62eca9bf6a63453',
-     armv7l: 'e05b75fc7ce64fb075f80c166f040e44f93348ed9a1498edf62eca9bf6a63453',
-       i686: '6abab518091907420a19b90b858dacf2179f70b9c75b66c2727fa13d0143430e',
-     x86_64: 'b0c906ccc338b8b675d75d9c9845f569c3a1735fbe35e602c6a669a997f4f950'
+    aarch64: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
+     armv7l: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
+       i686: '23210fa0f78aef18c64121f7a2ee0c764877a5602743ce614ee6f9f07998cd61',
+     x86_64: 'c7961df2596c843e5822b2ac94c0d88ffc126bf9fdf3a3a6c985b8997a3fa789'
   })
 
   depends_on 'mtdev'
