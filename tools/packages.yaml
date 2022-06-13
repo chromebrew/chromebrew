@@ -734,6 +734,11 @@ url: https://github.com/charmbracelet/charm/releases
 activity: high
 ---
 kind: url
+name: cheat
+url: https://github.com/cheat/cheat/releases
+activity: low
+---
+kind: url
 name: check
 url: https://github.com/libcheck/check/releases
 activity: low
