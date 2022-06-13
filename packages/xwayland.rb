@@ -31,6 +31,7 @@ class Xwayland < Package
   depends_on 'glproto'
   depends_on 'graphite'
   depends_on 'libbsd' # R
+  depends_on 'libxcvt' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libtirpc' => :build
