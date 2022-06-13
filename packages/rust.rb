@@ -10,16 +10,16 @@ class Rust < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_i686/rust-1.61.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_x86_64/rust-1.61.0-chromeos-x86_64.tar.zst',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_i686/rust-1.61.0-chromeos-i686.tar.zst',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_x86_64/rust-1.61.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
-     armv7l: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
-       i686: '0043f551b880bd733edc3436c96fa4c28fbbf585fe2959b6d2727e4001c26186',
-     x86_64: '91963df0606c683bead339d9b52cad631bdf1a99e6345a0d8fac31387bf87f1e',
+    i686: '0043f551b880bd733edc3436c96fa4c28fbbf585fe2959b6d2727e4001c26186',
+ aarch64: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
+  armv7l: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
+  x86_64: '5ab62570fbc0c2a44296766dd9d0166ab30ca201e950043a61d83e1ecd95edc8'
   })
 
   def self.install
