@@ -1089,6 +1089,11 @@ url: https://download.gnome.org/sources/dconf-editor/
 activity: medium
 ---
 kind: url
+name: ddgr
+url: https://github.com/jarun/ddgr/releases
+activity: low
+---
+kind: url
 name: ddrescue
 url: https://ftpmirror.gnu.org/ddrescue/
 activity: low
