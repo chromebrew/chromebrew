@@ -82,14 +82,9 @@ for package in ${packages}; do
       echo
       continue
     fi
-    new_sha256file="$(ls -t ../release/${arch}/${package}-*-chromeos-${arch}.@(tar.xz|tpxz|tar.zst).sha256 2> /dev/null | head -1)"
-    if [ -z "${new_sha256file}" ]; then
-      echo "${new_tarfile}.sha256 not found. Generating sha256sum ..."
-      new_sha256=$(sha256sum ${new_tarfile} | cut -d' ' -f1)
-      echo
-    else
-      new_sha256=$(cut -d' ' -f1 ${new_sha256file})
-    fi
+    echo "Generating sha256sum ..."
+    new_sha256=$(sha256sum ${new_tarfile} | cut -d' ' -f1)
+    echo
     noname="${new_tarfile#*-}"
     new_version="${noname%-chromeos*}"
     new_url=$(echo "${BASE_URL}/${package}/${new_version}_${arch}/${new_tarfile}" | sed "s,../release/${arch}/,,")
