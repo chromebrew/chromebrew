@@ -4,7 +4,7 @@
 set -e
 
 #chromebrew directories
-: "${OWNER:=skycocker}"
+: "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}"
 : "${BRANCH:=master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
@@ -261,7 +261,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   update_device_json "${name}" "${version}"
 done
 
-## workaround https://github.com/skycocker/chromebrew/issues/3305
+## workaround https://github.com/chromebrew/chromebrew/issues/3305
 sudo ldconfig &> /dev/null || true
 echo_info "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 echo -e "${GRAY}"

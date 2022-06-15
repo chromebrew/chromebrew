@@ -6,7 +6,7 @@
 #   github-release  (https://github.com/aktau/github-release)
 #   golang
 
-owner=skycocker
+owner=chromebrew
 repo=chromebrew
 
 case x$1 in

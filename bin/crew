@@ -19,7 +19,7 @@ require_relative '../lib/deb_utils'
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 DOC = <<DOCOPT
-Chromebrew - Package manager for Chrome OS http://skycocker.github.io/chromebrew/
+Chromebrew - Package manager for Chrome OS http://chromebrew.github.io/chromebrew/
 
 Usage:
   crew autoremove [options]
