@@ -3,31 +3,31 @@ require 'package'
 class Help2man < Package
   description "help2man produces simple manual pages from the '--help' and '--version' output of other commands."
   homepage 'https://www.gnu.org/software/help2man/'
-  version '1.47.4'
+  version '1.49.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/help2man/help2man-1.47.4.tar.xz'
-  source_sha256 'd4ecf697d13f14dd1a78c5995f06459bff706fd1ce593d1c02d81667c0207753'
+  source_url 'https://ftpmirror.gnu.org/help2man/help2man-1.49.2.tar.xz'
+  source_sha256 '9e2e0e213a7e0a36244eed6204d902b6504602a578b6ecd15268b1454deadd36'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.47.4_armv7l/help2man-1.47.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.47.4_armv7l/help2man-1.47.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.47.4_i686/help2man-1.47.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.47.4_x86_64/help2man-1.47.4-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.49.2_armv7l/help2man-1.49.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.49.2_armv7l/help2man-1.49.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.49.2_i686/help2man-1.49.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2man/1.49.2_x86_64/help2man-1.49.2-chromeos-x86_64.tar.zst',
   })
   binary_sha256 ({
-    aarch64: 'cc7d19aaa9ecb015b68f54d1d58308bf8c280a2a0248d0b1b27b6e6ae282fb5d',
-     armv7l: 'cc7d19aaa9ecb015b68f54d1d58308bf8c280a2a0248d0b1b27b6e6ae282fb5d',
-       i686: '05026d7d242bb60cc357cbdb91bcf0cb701240ed748952cecb088a7b8902b89e',
-     x86_64: '2b80d202e591f249ff3760a33d4e8457dd78cc260549d2fc7a24b84a37b7c168',
+    aarch64: '5a452f26ce39181b52ca51fd3fcf0515b79fce7d70ddd51a980cd037a9e8337d',
+     armv7l: '5a452f26ce39181b52ca51fd3fcf0515b79fce7d70ddd51a980cd037a9e8337d',
+       i686: '198a0bfc1445dad68c2daf9fd877abc9944eabb29b8de91dff2eff475ef6e9fe',
+     x86_64: '67d0aebdbc7fc6bb09aa346b95ce40838be4b3a5907870c66ba12ba0c681f5e1',
   })
 
   def self.build
-    system './configure'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
