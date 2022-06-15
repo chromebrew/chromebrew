@@ -2,7 +2,7 @@ require 'package'
 
 class Core < Package
   description 'Core Chromebrew Packages.'
-  homepage 'https://github.com/skycocker/chromebrew'
+  homepage 'https://github.com/chromebrew/chromebrew'
   version '1.5'
   license 'GPL-3+'
   compatibility 'all'

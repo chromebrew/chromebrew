@@ -2,7 +2,7 @@ require 'package'
 
 class Chromebeer < Package
   description 'An opinionated bundle of "essential" Chromebrew packages.'
-  homepage 'https://github.com/skycocker/chromebrew'
+  homepage 'https://github.com/chromebrew/chromebrew'
   version '1.1'
   license 'GPL-3+'
   compatibility 'all'

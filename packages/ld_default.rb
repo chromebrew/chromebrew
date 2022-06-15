@@ -2,7 +2,7 @@ require 'package'
 
 class Ld_default < Package
   description 'Select the default ld executable and check for libraries in #{CREW_LIB_PREFIX} first'
-  homepage 'https://github.com/skycocker/chromebrew/wiki/FAQ'
+  homepage 'https://github.com/chromebrew/chromebrew/wiki/FAQ'
   version '1.2'
   license 'GPL-3+'
   compatibility 'all'

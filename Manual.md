@@ -92,7 +92,7 @@ Optional functions are as follows:
 
 The rundown of what each function and variable are/(can be) used for follows.
 
-A simple example ruby script can be found on the [Wiki](https://github.com/skycocker/chromebrew/wiki/Creating-a-package).
+A simple example ruby script can be found on the [Wiki](https://github.com/chromebrew/chromebrew/wiki/Creating-a-package).
 ```ruby
 require 'package' # must occur within each `.rb`
 			      # Notice the newline
@@ -155,9 +155,9 @@ NOTE: All rules can have exceptions, if ***REQUIRED***, exceptions to the rules 
 
 <a name="eq">`CREW_OPTIONS`</a>: Equal to `--prefix=/usr/local --libdir=/usr/local/lib --mandir=/usr/local/share/man --build=armv7l-cros-linux-gnueabihf --host=armv7l-cros-linux-gnueabihf --target=#{CREW_BUILD}`
 
-Any additionally required resources for ChromeOS or ChromeBooks can be found [here](https://github.com/skycocker/chromebrew/wiki/Links)
+Any additionally required resources for ChromeOS or ChromeBooks can be found [here](https://github.com/chromebrew/chromebrew/wiki/Links)
 
-Still can't find something? Have a look in [`Issues`](https://github.com/skycocker/chromebrew/issues)<sup>Or post a issue</sup>
+Still can't find something? Have a look in [`Issues`](https://github.com/chromebrew/chromebrew/issues)<sup>Or post a issue</sup>
 
 This Manual is heavily based off <a hrel="https://github.com/void-linux/void-packages/blob/master/Manual.md"><code>void-packages/Manual.md</code></a>
 
