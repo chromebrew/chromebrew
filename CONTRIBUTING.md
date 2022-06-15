@@ -54,7 +54,7 @@ $ git push origin update-cool-package
 1. Open the PR of interest.
 2. Next to the green _**Open**_ badge, you should see something similar to:
 ```
-contributor-name wants to merge 1 commit into skycocker:master from contributor-name:update-cool-package
+contributor-name wants to merge 1 commit into chromebrew:master from contributor-name:update-cool-package
 ```
 3. On the far right, take note of _**contributor-name:update-cool-package**_.  This is the PR contributor along with the branch they want to merge.
 4. Open a terminal, change to your cloned chromebrew directory and execute:
@@ -101,4 +101,4 @@ If the package is a dependency for another package, test commands of the other p
 
 ## Learn more
 
-- Visit the [wiki](https://github.com/skycocker/chromebrew/wiki)
+- Visit the [wiki](https://github.com/chromebrew/chromebrew/wiki)

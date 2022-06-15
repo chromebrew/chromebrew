@@ -27,7 +27,7 @@ class Crew_launcher < Package
     end
     FileUtils.ln_s '../share/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
     
-    system "curl -L https://github.com/skycocker/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
+    system "curl -L https://github.com/chromebrew/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
 
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/crew_launcher", <<~EOF
       crew-launcher start-server

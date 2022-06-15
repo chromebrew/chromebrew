@@ -2,7 +2,7 @@ require 'package'
 
 class Clear_cache < Package
   description 'Script to remove system cache files'
-  homepage 'https://github.com/skycocker/chromebrew/wiki/FAQ'
+  homepage 'https://github.com/chromebrew/chromebrew/wiki/FAQ'
   version '1.0'
   license 'GPL-3+'
   compatibility 'all'

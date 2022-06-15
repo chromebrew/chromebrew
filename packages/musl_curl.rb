@@ -95,7 +95,7 @@ class Musl_curl < Package
     # Fail if built curl is not statically built.
     system 'readelf -d src/curl | grep "Shared library" && exit 1 || true'
     # Fail if built curl unable to download files
-    system 'src/curl -Lf https://github.com/skycocker/chromebrew/raw/master/install.sh -o /dev/null || exit 1'
+    system 'src/curl -Lf https://github.com/chromebrew/chromebrew/raw/master/install.sh -o /dev/null || exit 1'
   end
 
   def self.install
