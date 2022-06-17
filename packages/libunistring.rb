@@ -22,12 +22,12 @@ class Libunistring < Package
      x86_64: '3073ee4151dd8c96b87c21cb1f1e183c29c0da7c5a8e51f45641387c237b316c'
   })
 
-  depends_on 'glibc'
-
   def self.build
-    system "./configure #{CREW_ENV_OPTIONS} #{CREW_OPTIONS} \
-      --enable-static \
-      --enable-shared"
+    system <<~BUILD
+      ./configure #{CREW_OPTIONS} \
+        --enable-static \
+        --enable-shared
+    BUILD
     system 'make'
   end
 

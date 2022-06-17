@@ -29,7 +29,6 @@ class Python3 < Package
   depends_on 'bz2' # R
   depends_on 'expat' # R
   depends_on 'gdbm' # R
-  depends_on 'glibc' # R
   depends_on 'libdb' # R
   depends_on 'libffi' # R
   depends_on 'mpdecimal' # R

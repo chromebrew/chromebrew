@@ -22,16 +22,16 @@ class Pkgconf < Package
      x86_64: '014ca1e27dae6c162677a12ed73138631bb81f3749cfe093987208f84eaebcf1',
   })
 
-  depends_on 'glibc'
+  # Can be enabled for packages by setting
+  # ENV['PKG_CONFIG'] = "#{CREW_PREFIX}/bin/pkgconf"
 
-# Can be enabled for packages by setting
-# ENV['PKG_CONFIG'] = "#{CREW_PREFIX}/bin/pkgconf"
-
-def self.build
+  def self.build
     system "./autogen.sh"
-    system "./configure #{CREW_OPTIONS} \
-    --with-system-libdir=#{CREW_LIB_PREFIX} \
-    --with-system-includedir=#{CREW_PREFIX}/include"
+    system <<~BUILD
+      ./configure #{CREW_OPTIONS} \
+        --with-system-libdir=#{CREW_LIB_PREFIX} \
+        --with-system-includedir=#{CREW_PREFIX}/include
+    BUILD
     system "make"
   end
 

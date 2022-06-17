@@ -23,7 +23,6 @@ class Py3_pyelftools < Package
      x86_64: 'a43b98cb137c5c8093a497a39ae63d79d9c2ad0ef4ec08391392e099a962f5a4'
   })
 
-  depends_on 'glibc' # R
   depends_on 'python3' # R
   depends_on 'py3_setuptools' => :build
 

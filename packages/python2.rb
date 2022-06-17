@@ -24,7 +24,6 @@ class Python2 < Package
 
   depends_on 'bz2' # R
   depends_on 'expat' # R
-  depends_on 'glibc' # R
   depends_on 'libdb' # R
   depends_on 'libffi' # R
   depends_on 'ncurses' # R

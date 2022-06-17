@@ -25,15 +25,13 @@ class Gnu_time < Package
      x86_64: 'f042a1fe4d36029d2cc90a79bdc4014c0b6324008bbc971d35fb0001216a2562'
   })
 
-  depends_on 'glibc'
-
   def self.patch
     system "sed -i 's,/build-aux,,' .gitignore"
   end
 
   def self.build
     system './bootstrap --no-git --gnulib-srcdir=./gnulib'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} --infodir=#{CREW_PREFIX}/share/info"
+    system "./configure #{CREW_OPTIONS} --infodir=#{CREW_PREFIX}/share/info"
     system 'make'
   end
 

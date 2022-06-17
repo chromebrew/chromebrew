@@ -24,7 +24,6 @@ class Zsh < Package
   })
 
   depends_on 'gdbm' # R
-  depends_on 'glibc' # R
   depends_on 'ncurses' # R
   depends_on 'gcc' # R
   depends_on 'libcap' # R

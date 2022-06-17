@@ -25,12 +25,9 @@ class Faac < Package
      x86_64: 'fdea955a9dfd5732dc22a40ec8ff8aef47c153b5f34b7cff7f2aa9d6e0e3f05a'
   })
 
-  depends_on 'glibc'
-
   def self.build
     system 'autoreconf -vfi'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

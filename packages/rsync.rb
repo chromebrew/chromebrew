@@ -25,7 +25,6 @@ class Rsync < Package
 
   depends_on 'acl' # R
   depends_on 'attr' # R
-  depends_on 'glibc' # R
   depends_on 'lz4' # R
   depends_on 'openssl' # R
   depends_on 'popt' # R

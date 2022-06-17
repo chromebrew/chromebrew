@@ -24,7 +24,6 @@ class Libssp < Package
 
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'glibc' # R
   patchelf
 
   @gcc_name = 'libssp'

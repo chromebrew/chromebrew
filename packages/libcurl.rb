@@ -26,7 +26,6 @@ class Libcurl < Package
   depends_on 'brotli' # R
   depends_on 'ca_certificates' => :build
   depends_on 'c_ares' # R
-  depends_on 'glibc' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libidn2' # R
   depends_on 'libnghttp2' # R
@@ -42,27 +41,27 @@ class Libcurl < Package
   depends_on 'zstd' # R
 
   def self.build
-    @libssh = '--with-libssh'
-    case ARCH
-    when 'i686'
-      @libssh = '--without-libssh'
-    end
+    libssh = (ARCH == 'i686') ? '--without-libssh' : '--with-libssh'
 
     system '[ -x configure ] || autoreconf -fvi'
     system 'filefix'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-      --disable-maintainer-mode \
-      --enable-ares \
-      --enable-ipv6 \
-      --enable-ldap \
-      --enable-unix-sockets \
-      --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
-      --with-ca-fallback \
-      --with-ca-path=#{CREW_PREFIX}/etc/ssl/certs \
-      #{@libssh} \
-      --with-openssl \
-      --without-gnutls \
-      --without-librtmp"
+
+    system <<~BUILD
+      ./configure #{CREW_OPTIONS} \
+        --disable-maintainer-mode \
+        --enable-ares \
+        --enable-ipv6 \
+        --enable-ldap \
+        --enable-unix-sockets \
+        --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
+        --with-ca-fallback \
+        --with-ca-path=#{CREW_PREFIX}/etc/ssl/certs \
+        #{libssh_opt} \
+        --with-openssl \
+        --without-gnutls \
+        --without-librtmp
+    BUILD
+
     system 'make'
   end
 

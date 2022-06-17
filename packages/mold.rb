@@ -26,7 +26,6 @@ class Mold < Package
   })
 
   depends_on 'zlibpkg' # R
-  depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'gcc' # R
   depends_on 'xxhash' => :build

@@ -23,7 +23,6 @@ class Openldap < Package
      x86_64: '4549a1d764ad469b8bffaba66bb291d68ba7bd20deeb8b8b286bc65f825d71a9'
   })
 
-  depends_on 'glibc' # R
   depends_on 'libcyrussasl' # R
   depends_on 'krb5' # R
   depends_on 'e2fsprogs' # R

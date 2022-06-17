@@ -24,7 +24,6 @@ class Pax_utils < Package
   # The following two are only needed for build with autogen.sh
   # depends_on 'gnulib_git' => :build
   # depends_on 'xmlto' => :build
-  depends_on 'glibc' # R
   depends_on 'py3_pyelftools'
   depends_on 'libcap' => :build
   depends_on 'libseccomp' => :build

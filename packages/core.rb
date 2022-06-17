@@ -23,7 +23,6 @@ class Core < Package
   depends_on 'gdbm'
   depends_on 'gettext'
   depends_on 'git'
-  depends_on 'glibc'
   depends_on 'gnutls'
   depends_on 'groff'
   depends_on 'icu4c'

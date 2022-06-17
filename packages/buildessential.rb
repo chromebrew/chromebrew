@@ -12,8 +12,10 @@ class Buildessential < Package
   # Make sure core is installed
   depends_on 'core'
 
-  # install first to get ldconfig
+  # install libc header
   depends_on 'glibc'
+
+  # install first to get ldconfig
   depends_on 'gcc'
   depends_on 'gmp'
   depends_on 'mpfr'

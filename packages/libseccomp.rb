@@ -23,13 +23,11 @@ class Libseccomp < Package
      x86_64: '1097b0549a2f0210fa15ca54f7916b9927363534913dbc3030270c39c2559d3d'
   })
 
-  depends_on 'glibc' # R
   depends_on 'gperf' => :build
 
   def self.build
     system './autogen.sh'
-    system "./configure \
-      #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

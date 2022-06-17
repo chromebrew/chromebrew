@@ -22,7 +22,6 @@ class Popt < Package
      x86_64: 'f97c13e9e22bda93cc219dd899947f2269c2a2e997e713810e9603ad8ba69d6b'
   })
 
-  depends_on 'glibc' # R
   depends_on 'gcc' unless ARCH == 'x86_64' # R
   no_patchelf
 

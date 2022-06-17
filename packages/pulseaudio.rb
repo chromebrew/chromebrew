@@ -32,7 +32,6 @@ class Pulseaudio < Package
   depends_on 'elogind' => :build
   depends_on 'eudev' # R
   depends_on 'gcc' # R
-  depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' # L
   depends_on 'jack' # R

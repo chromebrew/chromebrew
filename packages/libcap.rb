@@ -23,7 +23,6 @@ class Libcap < Package
      x86_64: 'cc6593f845dfc3adc63cfd5dadaf23117c646ae5d37442961380fe0f82295fe3'
   })
 
-  depends_on 'glibc' # R
   depends_on 'gperf' => :build
   depends_on 'linux_pam'
 

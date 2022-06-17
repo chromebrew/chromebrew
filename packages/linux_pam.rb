@@ -22,7 +22,6 @@ class Linux_pam < Package
      x86_64: '81a43a40a39d742a56fc74716e91098f4497c5f1b1f702de0791bdf6fe5e95aa'
   })
 
-  depends_on 'glibc' # R
   depends_on 'libdb' # libdb needs to be built with "--enable-dbm"
 
   def self.build
