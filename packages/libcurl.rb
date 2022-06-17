@@ -41,7 +41,7 @@ class Libcurl < Package
   depends_on 'zstd' # R
 
   def self.build
-    libssh = (ARCH == 'i686') ? '--without-libssh' : '--with-libssh'
+    libssh_opt = (ARCH == 'i686') ? '--without-libssh' : '--with-libssh'
 
     system '[ -x configure ] || autoreconf -fvi'
     system 'filefix'
