@@ -3,24 +3,27 @@ require 'package'
 class Adwaita_icon_theme < Package
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
-  version '40.1.1'
+  version '42.0'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
-  source_url 'https://download.gnome.org/core/41/41.rc/sources/adwaita-icon-theme-40.1.1.tar.xz'
-  source_sha256 '0b6c436ed6ad9887a88ada1f72a0197b1eb73b020d8d344abab4c7fa7250f8f6'
+  source_url 'https://download.gnome.org/core/42/42.2/sources/adwaita-icon-theme-42.0.tar.xz'
+  source_sha256 '5e85b5adc8dee666900fcaf271ba717f7dcb9d0a03d96dae08f9cbd27e18b1e0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_armv7l/adwaita_icon_theme-40.1.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_armv7l/adwaita_icon_theme-40.1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_i686/adwaita_icon_theme-40.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/40.1.1_x86_64/adwaita_icon_theme-40.1.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_armv7l/adwaita_icon_theme-42.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_armv7l/adwaita_icon_theme-42.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_i686/adwaita_icon_theme-42.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_x86_64/adwaita_icon_theme-42.0-chromeos-x86_64.tar.zst',
   })
   binary_sha256({
-    aarch64: 'adc3108c3520dedd11949bbcc1b39a573944d3f084166b385c93297f77c5aabe',
-     armv7l: 'adc3108c3520dedd11949bbcc1b39a573944d3f084166b385c93297f77c5aabe',
-       i686: 'c4f97fc424e02d37498be3e27237acd41f0051c101dec307c5635c07969461a9',
-     x86_64: 'a900ebcf4874828df3891c23921154aa1681ba6690f951fbf75358f88f0ad458'
+    aarch64: 'c6dd539659f98a4f83247943715aef136002aa590c4e6e558c89762c60fafefc',
+     armv7l: 'c6dd539659f98a4f83247943715aef136002aa590c4e6e558c89762c60fafefc',
+       i686: 'f13d05ff2696a2fd7488a7dc4e4e78ad98fe8d7bcf1d63c314e533610a071b6d',
+     x86_64: '862aa3d398d4891c8f6923d6c9c2283ebfa9438647a1a25e9172532433db52fb',
   })
+
+  gnome
+  no_patchelf
 
   depends_on 'cantarell_fonts'
   depends_on 'gtk3'
@@ -34,6 +37,8 @@ class Adwaita_icon_theme < Package
     system "env GDK_PIXBUF_MODULEDIR='#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders' \
     GDK_PIXBUF_MODULE_FILE='#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache' \
     gdk-pixbuf-query-loaders > #{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache"
+    # Update mime database.
+    system "update-mime-database #{CREW_PREFIX}/share/mime"
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
