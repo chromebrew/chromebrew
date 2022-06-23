@@ -1024,6 +1024,11 @@ url: https://github.com/apple/cups/releases
 activity: medium
 ---
 kind: url
+name: curtail
+url: https://github.com/Huluti/Curtail/releases
+activity: low
+---
+kind: url
 name: cvs
 url: https://ftp.gnu.org/non-gnu/cvs/source/stable
 activity: none
@@ -3076,6 +3081,11 @@ activity: medium
 kind: url
 name: jp2a
 url: https://github.com/Talinx/jp2a/releases
+activity: low
+---
+kind: url
+name: jpegoptim
+url: https://github.com/tjko/jpegoptim/releases
 activity: low
 ---
 kind: url
@@ -6082,6 +6092,11 @@ kind: url
 name: pngcheck
 url: https://sourceforge.net/projects/png-mng/files/pngcheck/
 activity: none
+---
+kind: url
+name: pngquant
+url: https://github.com/kornelski/pngquant/tags
+activity: low
 ---
 kind: url
 name: podofo
