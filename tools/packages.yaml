@@ -2399,6 +2399,11 @@ url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
 activity: medium
 ---
 kind: url
+name: gosu
+url: https://github.com/tianon/gosu/releases
+activity: low
+---
+kind: url
 name: gox
 url: https://github.com/mitchellh/gox/releases
 activity: low
