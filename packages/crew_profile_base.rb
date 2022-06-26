@@ -18,7 +18,7 @@ class Crew_profile_base < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
 
     # dbus file moved to dbus package, so remove it.
-    FileUtils.rm_f './src/env.d/03-dbus'
+    FileUtils.rm_f './src/env.d/04-dbus'
 
     # Don't overwrite custom changes
     [ '01-locale', '02-editor', '03-pager', '99-custom' ].each do |custom_files|
