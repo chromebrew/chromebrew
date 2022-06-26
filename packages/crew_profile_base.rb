@@ -20,7 +20,7 @@ class Crew_profile_base < Package
     FileUtils.rm_f './src/env.d/03-dbus'
 
     # Don't overwrite custom changes
-    [ '00-locale', '01-editor', '02-pager', '99-custom' ].each do |custom_files|
+    [ '01-locale', '02-editor', '03-pager', '99-custom' ].each do |custom_files|
       FileUtils.rm "./src/env.d/#{custom_files}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{custom_files}")
     end
 
