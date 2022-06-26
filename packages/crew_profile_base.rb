@@ -17,25 +17,17 @@ class Crew_profile_base < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
 
     # dbus file moved to dbus package, so remove it.
-    FileUtils.rm_f './src/env.d/env.d/03-dbus'
-    FileUtils.rm_f "#{CREW_PREFIX}/etc/env.d/03-dbus"
+    FileUtils.rm_f './src/env.d/03-dbus'
 
     # Don't overwrite custom changes
-    FileUtils.rm [ './src/env.d/99-custom', './src/profile.d/99-custom' ]
-
-    [ '00-locale', '01-editor', '02-pager' ].each do |custom_env|
-      # do not override the file if the current one exists
-      FileUtils.rm "./src/env.d/#{custom_env}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{custom_env}")
+    [ '00-locale', '01-editor', '02-pager', '99-custom' ].each do |custom_files|
+      FileUtils.rm "./src/env.d/#{custom_files}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{custom_files}")
     end
 
     FileUtils.cp_r Dir['./src/*'], "#{CREW_PREFIX}/etc/"
   end
 
   def self.postinstall
-    # create custom files if not exist
-    FileUtils.touch "#{CREW_PREFIX}/etc/env.d/99-custom"
-    FileUtils.touch "#{CREW_PREFIX}/etc/profile.d/99-custom"
-
     # Write our rc files
     crew_rcfile = <<~CREW_PROFILE_EOF
       # DO NOT DELETE THIS LINE
