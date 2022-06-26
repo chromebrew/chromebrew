@@ -12,6 +12,13 @@ class Crew_profile_base < Package
   no_compile_needed
   no_patchelf
 
+  def self.patch
+    # TODO: fix this bug
+    # stat: cannot statx '': No such file or directory
+    # bash: [: : integer expression expected
+    system 'sed', '-i', 's,${TMPDIR},${TMPDIR:-/usr/local/tmp},g', './src/env.d/00-path'
+  end
+
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
