@@ -10,6 +10,7 @@ class Crew_profile_base < Package
   git_hashtag version
 
   no_compile_needed
+  no_patchelf
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
