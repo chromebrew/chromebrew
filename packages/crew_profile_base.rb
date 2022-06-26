@@ -46,7 +46,6 @@ class Crew_profile_base < Package
 
     CREW_PROFILE_EOF
 
-
     # append our #{crew_rcfile} to shell rc file
     [ '.bashrc', '.zshrc' ].select {|rc| File.exist?(rc) } .each do |rc|
       if File.readlines(rc, chomp: true).any? {|line| line == "source #{CREW_PREFIX}/etc/profile" }
