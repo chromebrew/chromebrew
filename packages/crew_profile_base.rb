@@ -60,7 +60,7 @@ class Crew_profile_base < Package
 
       # remove duplicated `source` lines (if any)
       if rc_file.count(crew_rc_source_line) > 1
-        puts "Removing duplicated `source` line in #{rc_path}...".yellow
+        puts "Removing duplicated `source` lines in #{rc_path}...".yellow
         first_source_line_index = rc_file.find_index(crew_rc_source_line)
 
         # delete all `source` lines
