@@ -50,9 +50,12 @@ class Crew_profile_base < Package
 
     CREW_PROFILE_EOF
 
-    # append our #{crew_rcfile} to shell rc file
-    [ '.bashrc', '.zshrc' ].select {|rc| File.exist?(rc) } .each do |rc|
+    # append our #{crew_rcfile} to shell rc files (if exist)
+    [ '.bashrc', '.zshrc' ].each do |rc|
       rc_path = File.join(HOME, rc)
+
+      next unless File.exist?(rc_path)
+
       rc_file = File.readlines(rc_path, chomp: true)
 
       # remove duplicated `source` lines (if any)
@@ -64,7 +67,7 @@ class Crew_profile_base < Package
         rc_file.delete(crew_rc_source_line)
 
         # re-add the first `source` line
-        rc_file.append(first_source_line_index, crew_rc_source_line)
+        rc_file.insert(first_source_line_index, crew_rc_source_line)
       end
 
       # append our rc string to the beginning of the rc file (if not exist)
