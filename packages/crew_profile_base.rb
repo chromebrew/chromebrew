@@ -57,6 +57,7 @@ class Crew_profile_base < Package
 
       # remove duplicated `source` lines (if any)
       if rc_file.count(crew_rc_source_line) > 1
+        puts "Removing duplicated `source` line in #{rc_path}...".yellow
         first_source_line_index = rc_file.find_index(crew_rc_source_line)
 
         # delete all `source` lines
@@ -68,6 +69,7 @@ class Crew_profile_base < Package
 
       # append our rc string to the beginning of the rc file (if not exist)
       if rc_file.none? {|line| line == "source #{CREW_PREFIX}/etc/profile" }
+        puts "Appending `#{crew_rc_source_line}` to the beginning of #{rc_path}...".yellow
         rc_file.unshift( crew_rcfile.lines(chomp: true) )
       end
 
