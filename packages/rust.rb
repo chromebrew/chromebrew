@@ -3,23 +3,23 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.61.0'
+  @_ver = '1.62.0'
   version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_i686/rust-1.61.0-chromeos-i686.tar.zst',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_x86_64/rust-1.61.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.62.0_armv7l/rust-1.62.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.62.0_armv7l/rust-1.62.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.62.0_i686/rust-1.62.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.62.0_x86_64/rust-1.62.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '0043f551b880bd733edc3436c96fa4c28fbbf585fe2959b6d2727e4001c26186',
- aarch64: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
-  armv7l: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
-  x86_64: '5ab62570fbc0c2a44296766dd9d0166ab30ca201e950043a61d83e1ecd95edc8'
+    aarch64: '21d46c4f893c5cefced0270d0b367968dbb448b8c31c6d8cf832b2b3a72f303d',
+     armv7l: '21d46c4f893c5cefced0270d0b367968dbb448b8c31c6d8cf832b2b3a72f303d',
+       i686: 'e04a05d20eb6746e254da39b740b8bb0e7866ca5a216f8294765f021fada108f',
+     x86_64: 'f46971a19f5d0e5640d328f1f664eb0d93dc6ba23fa0c0b4358fdbff6205dc8a'
   })
 
   def self.install
