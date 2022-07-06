@@ -3,24 +3,24 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.28'
+  @_ver = '7.4.30'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '9cc3b6f6217b60582f78566b3814532c4b71d517876c25013ae51811e65d8fce'
+  source_sha256 'ea72a34f32c67e79ac2da7dfe96177f3c451c3eefae5810ba13312ed398ba70d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.28_armv7l/php74-7.4.28-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.28_armv7l/php74-7.4.28-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.28_i686/php74-7.4.28-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.28_x86_64/php74-7.4.28-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_x86_64/php74-7.4.30-chromeos-x86_64.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_armv7l/php74-7.4.30-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_armv7l/php74-7.4.30-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_i686/php74-7.4.30-chromeos-i686.tar.zst',
   })
   binary_sha256({
-    aarch64: '0fb5cf810c248782c55080c66d539dccc72473d403244e8d8e2e7a84eef793c1',
-     armv7l: '0fb5cf810c248782c55080c66d539dccc72473d403244e8d8e2e7a84eef793c1',
-       i686: '7563566d1b07f578207de0b06617b3ecbebe74e41126f25d8daba666d385aaa5',
-     x86_64: '2770e55c2554e3af001b5d71de5c596c59cdd7bec38e0e2ded45dd7b5d3623ac',
+     x86_64: '47d530ddccc7133b42a44ff19a53456c422e3abaedb431a8a1e3d7ef5096e133',
+    aarch64: '563bfe1e589750afece45f28335cb1de7e95a5c5ce9b5225eb9e4fe90f7fdea3',
+     armv7l: '563bfe1e589750afece45f28335cb1de7e95a5c5ce9b5225eb9e4fe90f7fdea3',
+       i686: '85fcdaed12530484b7ba91b4113baced893ffabf72c8c3e20743369b5168438a',
   })
 
   depends_on 'aspell_en'

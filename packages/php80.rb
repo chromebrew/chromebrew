@@ -3,24 +3,24 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.16'
+  @_ver = '8.0.20'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'f27a2f25259e8c51e42dfd74e24a546ee521438ad7d9f6c6e794aa91f38bab0a'
+  source_sha256 '973fec765336ee01f47536a5db1c2eee98df9d34a41522b7b6c760159bf0a77b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_armv7l/php80-8.0.16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_armv7l/php80-8.0.16-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_i686/php80-8.0.16-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.16_x86_64/php80-8.0.16-chromeos-x86_64.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.20_armv7l/php80-8.0.20-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.20_armv7l/php80-8.0.20-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.20_x86_64/php80-8.0.20-chromeos-x86_64.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.20_i686/php80-8.0.20-chromeos-i686.tar.zst',
   })
   binary_sha256({
-    aarch64: '2d583ebe7a7e83b76cac7a1dcea29315250e236de17ca88046ace6a065531fe3',
-     armv7l: '2d583ebe7a7e83b76cac7a1dcea29315250e236de17ca88046ace6a065531fe3',
-       i686: '6f997f85ad338b035dd2a3bcc47d799d747e93e3a69680a76d7a7643cb8fa054',
-     x86_64: 'e80178a6323529db17f8d2d6cdfdc37d21125e21847571de21578b219586e65a',
+    aarch64: '06bd95d80d0d6b2633beb17892800b5df3606be87b795026dd6115f4881556e7',
+     armv7l: '06bd95d80d0d6b2633beb17892800b5df3606be87b795026dd6115f4881556e7',
+     x86_64: '9880f5aaa43b8c2916672a349bcd75ed1ee80acedfd6c1c06b1b45117689bec0',
+       i686: '06c7381949312073437294045204552ae7148bca2c2074768c2b043e9103a339',
   })
 
   depends_on 'aspell_en'
