@@ -287,9 +287,8 @@ cd "${CREW_LIB_PATH}"
 [[ "$BRANCH" != "master" ]] && git fetch --all
 git checkout "${BRANCH}"
 
-# Set sparse-checkout folders and include install.sh for use in reinstalls
-# or to fix problems.
-git sparse-checkout set packages lib bin crew tools install.sh
+# Set sparse-checkout folders
+git sparse-checkout set packages lib bin crew tools
 git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
 
