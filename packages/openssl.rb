@@ -3,24 +3,24 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1p'
-  version @_ver.to_s
+  @_ver = '1.1.1q'
+  version @_ver
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 'bf61b62aaa66c7c7639942a94de4c9ae8280c08f17d4eac2e44644d9fc8ace6f'
+  source_sha256 'd7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1p_armv7l/openssl-1.1.1p-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1p_armv7l/openssl-1.1.1p-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1p_i686/openssl-1.1.1p-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1p_x86_64/openssl-1.1.1p-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_armv7l/openssl-1.1.1q-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_armv7l/openssl-1.1.1q-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_i686/openssl-1.1.1q-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_x86_64/openssl-1.1.1q-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '738d788a6a681e4509735f7fdc7b7639047228875573e2ef8c707f9250235d52',
-     armv7l: '738d788a6a681e4509735f7fdc7b7639047228875573e2ef8c707f9250235d52',
-       i686: 'b44fa7593a7ef2886b593eeeac9dd703945ea350dbe467cfb528f846bccf0602',
-     x86_64: '5e85227ee00f2cc8d0ed63c63c085490bae00b9ad43ece3f805f64215b3a8119'
+    aarch64: '8b8f0c8ac1ec7600555987adad2ac475d7fb57184613249ada2ec12ea45d8b1f',
+     armv7l: '8b8f0c8ac1ec7600555987adad2ac475d7fb57184613249ada2ec12ea45d8b1f',
+       i686: '205055f11a4d9a9349f8d7327cc90e0ef5dc15e3e6bce02688d1788a2a68c928',
+     x86_64: 'afd2b5294d3e4a16895e7bacf831c9e396e2533ed1b8bd939daca7a2e13d02a0'
   })
 
   depends_on 'ccache' => :build
