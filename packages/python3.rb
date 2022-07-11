@@ -117,7 +117,7 @@ class Python3 < Package
     end
 
     # Remove conflicting binaries
-    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/bin/wheel"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wheel"
 
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
