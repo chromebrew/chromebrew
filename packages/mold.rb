@@ -6,22 +6,22 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '1.3.0'
+  version '1.3.1'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.0_armv7l/mold-1.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.0_armv7l/mold-1.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.0_i686/mold-1.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.0_x86_64/mold-1.3.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_armv7l/mold-1.3.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_armv7l/mold-1.3.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_i686/mold-1.3.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_x86_64/mold-1.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3258e2b7137f5f5abd65a65c468684d2031d54ba9528f28300b4eae4762e43d8',
-     armv7l: '3258e2b7137f5f5abd65a65c468684d2031d54ba9528f28300b4eae4762e43d8',
-       i686: '2c4979b2b78dc26174d67abce50de41d229c301397ee0f4ca05f23548f1fe15e',
-     x86_64: '78e055e34e2872acba9cb85f1d9d59c9e165c861cae78593b933dfa6616aa182'
+    aarch64: 'afa9fd04d9904f655570cc4b4647c00fdaf2ddb9376bd976bdc794d25dff07c0',
+     armv7l: 'afa9fd04d9904f655570cc4b4647c00fdaf2ddb9376bd976bdc794d25dff07c0',
+       i686: '94932dc5409ce8c1bc066df0d84fcb0b45a830490a037c2c2fd0bcd120175ce1',
+     x86_64: '3f9fc41d8d4a97eabb1b07d21805014bd297e2a1acd302893cec1696d8c5aace'
   })
 
   depends_on 'zlibpkg' # R
