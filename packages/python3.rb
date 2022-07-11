@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.4'
+  @_ver = '3.10.5'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '80bf925f571da436b35210886cf79f6eb5fa5d6c571316b73568343451f77a19'
+  source_sha256 '8437efd5b106ef0a75aabfbf23d880625120a73a86a22ade4d2e2e68d7b74486'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_armv7l/python3-3.10.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_armv7l/python3-3.10.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_i686/python3-3.10.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.4_x86_64/python3-3.10.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.5_armv7l/python3-3.10.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.5_armv7l/python3-3.10.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.5_i686/python3-3.10.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.5_x86_64/python3-3.10.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c262a915d8c818a353ef6038ad419318130158e642b9dce79c6bb74e59a16630',
-     armv7l: 'c262a915d8c818a353ef6038ad419318130158e642b9dce79c6bb74e59a16630',
-       i686: '265004b921160c95c9123e6699656160e224ef20749ffa18a34e1d02f88161f0',
-     x86_64: '36a4f9a325f8b28d73d3fb7adbbc06863531623f443ca94b011f8b940e1bf479'
+    aarch64: '9d809303d66cb8305c700fdd6577134c884403be3acac4cacecf248c51187f83',
+     armv7l: '9d809303d66cb8305c700fdd6577134c884403be3acac4cacecf248c51187f83',
+       i686: 'f0c7b89c8292e311d85498bdafd780ec8490e98e6df2ad73b1c46005a290708e',
+     x86_64: 'b930f1ccd9e6febefaec6c4d7dd16161965965b4356a938e35cddb5d5b968b81'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -117,7 +117,7 @@ class Python3 < Package
     end
 
     # Remove conflicting binaries
-    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/wheel" if File.exist? "#{CREW_DEST_PREFIX}/bin/wheel"
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/bin/wheel"
 
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
