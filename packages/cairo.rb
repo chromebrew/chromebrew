@@ -3,23 +3,23 @@ require 'package'
 class Cairo < Package
   description 'Cairo is a 2D graphics library with support for multiple output devices.'
   homepage 'https://www.cairographics.org'
-  version '1.17.5-521a3a7'
+  version '1.17.6'
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/cairo/cairo.git'
-  git_hashtag '521a3a7bdb9299d511dcb1e4f243670141e53847'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-521a3a7_armv7l/cairo-1.17.5-521a3a7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-521a3a7_armv7l/cairo-1.17.5-521a3a7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-521a3a7_i686/cairo-1.17.5-521a3a7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.5-521a3a7_x86_64/cairo-1.17.5-521a3a7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.6_armv7l/cairo-1.17.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.6_armv7l/cairo-1.17.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.6_i686/cairo-1.17.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.17.6_x86_64/cairo-1.17.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b25dd9988c79c6aec537112453482669e16cf3d213d3570cc74c5c36699e7bcc',
-     armv7l: 'b25dd9988c79c6aec537112453482669e16cf3d213d3570cc74c5c36699e7bcc',
-       i686: '22ae49c94736cb58b748a7808b61a3e76c6b759fba2cf0e4af5520a57fe18a62',
-     x86_64: '9d185159bee32c5600571ee922ce105558700c5c1c0c6057e19ea724fd9f3573'
+    aarch64: '198bf86fac13ac40cd02b4775bd74cd62bf95c47f4f7e83ac13fe3cf60ad52c4',
+     armv7l: '198bf86fac13ac40cd02b4775bd74cd62bf95c47f4f7e83ac13fe3cf60ad52c4',
+       i686: '12e9a7fe07745cbcb83d4297888517594b1b96fee4af0711ba903fb6186231f4',
+     x86_64: '8d3e0763cc7cd309846fb54f15a3003b6a01efa6fcc5843005e1d6b8137371dd'
   })
 
   depends_on 'fontconfig'
