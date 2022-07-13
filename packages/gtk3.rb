@@ -3,7 +3,7 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.33'
+  @_ver = '3.24.34'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk3 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_armv7l/gtk3-3.24.33-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_armv7l/gtk3-3.24.33-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_i686/gtk3-3.24.33-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.33_x86_64/gtk3-3.24.33-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34_armv7l/gtk3-3.24.34-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34_armv7l/gtk3-3.24.34-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34_i686/gtk3-3.24.34-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34_x86_64/gtk3-3.24.34-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '651888d424ed031a023d9d7473bb2cb8f3996e4aeac262fa6bbad4c6643ddf22',
-     armv7l: '651888d424ed031a023d9d7473bb2cb8f3996e4aeac262fa6bbad4c6643ddf22',
-       i686: '6c62f793c25f0bbae8b1d7df68f1f187a315aaf2791a49ee74265d91fcbc7590',
-     x86_64: '433d3ec60a0582d31cc70f9b041ca309b7bc3182cafe2abc2ff759f3a1e2bb23'
+    aarch64: '40ec61e2bbde4b2bcb86726ab33d839f5210d345e60e0e493e990e5a32913093',
+     armv7l: '40ec61e2bbde4b2bcb86726ab33d839f5210d345e60e0e493e990e5a32913093',
+       i686: 'db54cbdcca99bb45075583ee50ca9b1cf9513490f5dd99bf504ac168e0947bdf',
+     x86_64: '1790362977831f3d2879d92b6a50db35b2a3155e757e3a27c1a70df750881930'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -75,8 +75,8 @@ class Gtk3 < Package
     # Use locally build subprojects
     @deps = %w[cairo librsvg]
     @deps.each do |dep|
-      FileUtils.rm_rf "subprojects/#{dep}" if Dir.exist?("subprojects/#{dep}")
-      FileUtils.rm_rf "subprojects/#{dep}.wrap" if File.exist?("subprojects/#{dep}.wrap")
+      FileUtils.rm_rf "subprojects/#{dep}"
+      FileUtils.rm_rf "subprojects/#{dep}.wrap"
     end
   end
 
