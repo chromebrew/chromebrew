@@ -75,8 +75,7 @@ class Gtk3 < Package
     # Use locally build subprojects
     @deps = %w[cairo librsvg]
     @deps.each do |dep|
-      FileUtils.rm_rf "subprojects/#{dep}"
-      FileUtils.rm_rf "subprojects/#{dep}.wrap"
+      FileUtils.rm_rf ["subprojects/#{dep}", "subprojects/#{dep}.wrap"]
     end
   end
 
