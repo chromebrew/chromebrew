@@ -6,6 +6,8 @@ require_relative 'convert_size'
 
 begin
   require 'securerandom'
+  require 'uri'
+  require 'resolv-replace'
 rescue RuntimeError => e
   # hide the error message and fallback to curl if securerandom raise an error
   if e.message == 'failed to get urandom'
@@ -16,9 +18,7 @@ rescue RuntimeError => e
   end
 end
 
-require 'net/http'
 require 'uri'
-require 'resolv-replace'
 
 def setTermSize
   # setTermSize: set progress bar size based on terminal width
