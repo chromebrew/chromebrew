@@ -3,11 +3,15 @@ require 'package'
 class Telegram < Package
   description "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free."
   homepage 'https://telegram.org/'
-  version '3.7.3'
+  version '4.0.2'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
-  source_url 'https://github.com/telegramdesktop/tdesktop/releases/download/v3.7.3/tsetup.3.7.3.tar.xz'
-  source_sha256 '3d1b44902f2e3d3b8393bb9c35cc21100934f342438014ea3d201afd692ff4e8'
+  source_url 'https://github.com/telegramdesktop/tdesktop/releases/download/v4.0.2/tsetup.4.0.2.tar.xz'
+  source_sha256 '29311a634cad85f7c04cd959b87315c6a7122ac67abac5da522cd07e0bb7069c'
+
+  depends_on 'mesa'
+
+  no_compile_needed
 
   def self.build
     telegram = <<~EOF
