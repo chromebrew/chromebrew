@@ -84,11 +84,11 @@ for package in ${packages}; do
     fi
     echo "Generating sha256sum ..."
     new_sha256=$(sha256sum ${new_tarfile} | cut -d' ' -f1)
-    echo
     noname="${new_tarfile#*-}"
+    echo "Uploading ${package}/${noname} ..."
     new_version="${noname%-chromeos*}"
     new_url=$(echo "${BASE_URL}/${package}/${new_version}_${arch}/${new_tarfile}" | sed "s,../release/${arch}/,,")
-    curl --header "DEPLOY-TOKEN: ${GITLAB_TOKEN}" --upload-file "${new_tarfile}" "${new_url}"
+    curl -# --header "DEPLOY-TOKEN: ${GITLAB_TOKEN}" --upload-file "${new_tarfile}" "${new_url}" | cat
     if [ -n "${old_url}" ]; then
       if [[ ${old_url} != ${new_url} ]]; then
         echo "Updating binary_url in ${pkgfile}..."
