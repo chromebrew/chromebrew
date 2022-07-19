@@ -5,6 +5,7 @@ require_relative 'color'
 require_relative 'convert_size'
 
 begin
+  require 'net/http'
   require 'securerandom'
   require 'uri'
   require 'resolv-replace'
