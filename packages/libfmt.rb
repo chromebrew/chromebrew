@@ -3,23 +3,23 @@ require 'package'
 class Libfmt < Package
   description 'A modern formatting library'
   homepage 'https://fmt.dev'
-  version '8.1.1'
+  version '9.0.0-c48be43'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/fmtlib/fmt/releases/download/8.1.1/fmt-8.1.1.zip'
-  source_sha256 '23778bad8edba12d76e4075da06db591f3b0e3c6c04928ced4a7282ca3400e5d'
+  source_url 'https://github.com/fmtlib/fmt.git'
+  git_hashtag 'c48be439f1ae03f2726e30ac93fce3a667dc4be2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/8.1.1_armv7l/libfmt-8.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/8.1.1_armv7l/libfmt-8.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/8.1.1_i686/libfmt-8.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/8.1.1_x86_64/libfmt-8.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/9.0.0-c48be43_armv7l/libfmt-9.0.0-c48be43-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/9.0.0-c48be43_armv7l/libfmt-9.0.0-c48be43-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/9.0.0-c48be43_i686/libfmt-9.0.0-c48be43-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfmt/9.0.0-c48be43_x86_64/libfmt-9.0.0-c48be43-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a1580b9b29d179ac82030a7590d53fc12e986c355a650bf2f11481ca7948971e',
-     armv7l: 'a1580b9b29d179ac82030a7590d53fc12e986c355a650bf2f11481ca7948971e',
-       i686: 'e2f30b8f2a2de5f62fbc4d7f1289cd1740f1738c357d0aaee298f146566510e4',
-     x86_64: '7ad502f9ffe1781f22ccaf4fdef738de743568e8017cf38fbec8fbcf6a2c4043'
+    aarch64: '46077930c6984ac1da70868a6fda98f3a1eb6cf0e45e6ca5b0c3be1b39b18c9a',
+     armv7l: '46077930c6984ac1da70868a6fda98f3a1eb6cf0e45e6ca5b0c3be1b39b18c9a',
+       i686: '21aa870bf1073526eb30e2e3f4268a2dc150a92aee33a912a2caed73c485c2fd',
+     x86_64: '4728da91e5b944a97df30e5ee8c91816a1bb1dc2854f49846584fc90d5c1812b'
   })
 
   def self.build
