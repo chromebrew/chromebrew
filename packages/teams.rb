@@ -3,12 +3,14 @@ require 'package'
 class Teams < Package
   description 'Microsoft Teams - Meet, chat, call, and collaborate in just one place.'
   homepage 'https://www.microsoft.com/en-us/microsoft-teams/group-chat-software'
-  @_ver = '1.4.00.26453'
+  @_ver = '1.5.00.10453'
   version @_ver
   license 'Freeware'
   compatibility 'x86_64'
   source_url "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_#{@_ver}_amd64.deb"
-  source_sha256 'ee15b57793aa6b79ccda744d5232da670335abd931bae2a020f5043a129ab859'
+  source_sha256 '7cb570d9ac5231eb6e6a84738e0fb1e0345863c58fe5341b2fb2db7c5e8b15f0'
+
+  no_compile_needed
 
   depends_on 'libsecret'
   depends_on 'xdg_base'
