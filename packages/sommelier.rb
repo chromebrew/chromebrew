@@ -25,6 +25,7 @@ class Sommelier < Package
   depends_on 'libdrm'
   depends_on 'libxcb'
   depends_on 'libxcomposite' => :build
+  depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon'
   depends_on 'mesa'
