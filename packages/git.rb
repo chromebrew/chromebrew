@@ -3,24 +3,24 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.37.0'
+  @_ver = '2.37.1'
   version @_ver.to_s
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.0.tar.xz'
-  source_sha256 '9f7fa1711bd00c4ec3dde2fe44407dc13f12e4772b5e3c72a58db4c07495411f'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.1.tar.xz'
+  source_sha256 'c8162c6b8b8f1c5db706ab01b4ee29e31061182135dc27c4860224aaec1b3500'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_armv7l/git-2.37.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_armv7l/git-2.37.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_i686/git-2.37.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_x86_64/git-2.37.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.1_armv7l/git-2.37.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.1_armv7l/git-2.37.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.1_i686/git-2.37.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.1_x86_64/git-2.37.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1d64dadd0952be8dc00b9185f7dc541df11af2913e662a2ee648e6a8836c791c',
-     armv7l: '1d64dadd0952be8dc00b9185f7dc541df11af2913e662a2ee648e6a8836c791c',
-       i686: '39c3a1f68d43b5f82e0f06e2678767ebae10148ff2f6613a4fe7185ffd31ecd4',
-     x86_64: '3fcc72c65c3ba91c0e6b363b318208553935445961b8942dc7ad28c1535f57fd'
+    aarch64: 'c0659a65a08f6b2984e0f42552ea5322555943be5134755166ba89d4dff443b8',
+     armv7l: 'c0659a65a08f6b2984e0f42552ea5322555943be5134755166ba89d4dff443b8',
+       i686: 'eed855105e832f4457b436a01379947e903a8247a8c3de3015569e861a133589',
+     x86_64: '23d6ea214bb5d7009b645f93a6a3ba476e81a50334cdc97ce895000c71c022bf'
   })
 
   depends_on 'ca_certificates' => :build
@@ -92,7 +92,7 @@ class Git < Package
       system "#{MUSL_CMAKE_OPTIONS.gsub('LDFLAGS=\'',
                                         "LDFLAGS=\' #{@git_libs} -L#{CREW_MUSL_PREFIX}/lib \
          -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib").gsub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE',
-                                                   '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF')} \
+                                                   '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF').gsub('-O2', '-ggdb3 -Og')} \
           -DCMAKE_C_STANDARD_LIBRARIES='#{@git_libs}' \
           -DCMAKE_CXX_STANDARD_LIBRARIES='#{@git_libs}' \
           -DNO_VCPKG=TRUE \
@@ -105,6 +105,7 @@ class Git < Package
   end
 
   def self.install
+    ENV['CREW_NOT_STRIP'] = '1'
     system "DESTDIR=#{CREW_DEST_DIR} samu -C contrib/buildsystems/builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
