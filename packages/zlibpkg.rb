@@ -4,24 +4,24 @@ class Zlibpkg < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'https://www.zlib.net/'
   # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
-  @_ver = '1.2.11'
-  version "#{@_ver}-7"
+  @_ver = '1.2.12'
+  version @_ver.to_s
   license 'zlib'
   compatibility 'all'
   source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
-  source_sha256 'c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1'
+  source_sha256 '91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-7_armv7l/zlibpkg-1.2.11-7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-7_armv7l/zlibpkg-1.2.11-7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-7_i686/zlibpkg-1.2.11-7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.11-7_x86_64/zlibpkg-1.2.11-7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.12_armv7l/zlibpkg-1.2.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.12_armv7l/zlibpkg-1.2.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.12_i686/zlibpkg-1.2.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.12_x86_64/zlibpkg-1.2.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '929afe8f670183e7719d06bb1fc83fc115bd74c7c41f1ac7bb86450c8c5d3c7f',
-     armv7l: '929afe8f670183e7719d06bb1fc83fc115bd74c7c41f1ac7bb86450c8c5d3c7f',
-       i686: 'a55c4ddd77260fb7c043d23e9dbfd822cec2cdb8c71e7690856e5305c5b3ba52',
-     x86_64: '887c6ffde269a62eb3c7b995f8488bdb2795faa8777b00ec76fca7258862fe25'
+    aarch64: 'de52ec010a7decfd04e10a29bf33d4f77d4eceed9df9b07bf4b4df9db4116c56',
+     armv7l: 'de52ec010a7decfd04e10a29bf33d4f77d4eceed9df9b07bf4b4df9db4116c56',
+       i686: '0e829ac458b3f6e3fcb5314b775e869ed7a6a7225dde7a40c07e66e4240db266',
+     x86_64: '8d7c564fa93fd091ac36d0923acc8802a8d46f82b593e9be56b0a9252ad45fbe'
   })
 
   def self.patch
