@@ -219,7 +219,7 @@ function extract_install () {
     echo_intra "Extracting ${1} ..."
     if [[ "$2" == *".zst" ]];then
       if [[ -e /usr/bin/zstd ]]; then
-        tar -Izstd -xpf ../"${2}"
+        PATH=/usr/bin:/usr/local/share/musl/bin:$PATH tar -Izstd -xpf ../"${2}"
       else
         if (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/bin/zstd --version &> /dev/null) || \
            (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/share/musl/bin/zstd --version &> /dev/null); then
