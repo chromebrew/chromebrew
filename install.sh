@@ -225,7 +225,7 @@ function extract_install () {
            (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/share/musl/bin/zstd --version &> /dev/null); then
           LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
         else
-          echo "zstd is broken or nonfunctional, and packages can not be extracted properly."
+          echo "Zstd is broken or nonfunctional, and packages can not be extracted properly."
           exit 1
         fi
       fi
