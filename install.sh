@@ -218,7 +218,17 @@ function extract_install () {
     #extract and install
     echo_intra "Extracting ${1} ..."
     if [[ "$2" == *".zst" ]];then
-      LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
+      if [[ -e /usr/bin/zstd ]]; then
+        tar -Izstd -xpf ../"${2}"
+      else
+        if (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/bin/zstd --version &> /dev/null) || \
+           (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/share/musl/bin/zstd --version &> /dev/null); then
+          LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
+        else
+          echo "zstd is broken or nonfunctional, and packages can not be extracted properly."
+          exit 1
+        fi
+      fi
     elif [[ "$2" == *".tpxz" ]];then
       if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then
         tar xpf ../"${2}"
