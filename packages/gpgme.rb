@@ -3,24 +3,24 @@ require 'package'
 class Gpgme < Package
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  @_ver = '1.17.0'
+  @_ver = '1.17.1'
   version @_ver
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{@_ver}.tar.bz2"
-  source_sha256 '4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5'
+  source_sha256 '711eabf5dd661b9b04be9edc9ace2a7bc031f6bd9d37a768d02d0efdef108f5f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_armv7l/gpgme-1.17.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_armv7l/gpgme-1.17.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_i686/gpgme-1.17.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.0_x86_64/gpgme-1.17.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_armv7l/gpgme-1.17.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_armv7l/gpgme-1.17.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_i686/gpgme-1.17.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.17.1_x86_64/gpgme-1.17.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '37a3825a92c97935d1ec0aec7551ec0daae0c314db0428c6bba752ffd66e7c4c',
-     armv7l: '37a3825a92c97935d1ec0aec7551ec0daae0c314db0428c6bba752ffd66e7c4c',
-       i686: '6331885eac641a14e0bc47b9d01cc75a093b67acce0291e143e91345952ea486',
-     x86_64: 'dbe4671b83a5bae3696abc15f50ee6cb8226c11379d7f8a444a2d23aa8e754a4'
+    aarch64: '7f18875986e440ba0a1d6c6fef977f4235efcbad9f390772b9d2f292f3b20700',
+     armv7l: '7f18875986e440ba0a1d6c6fef977f4235efcbad9f390772b9d2f292f3b20700',
+       i686: '6c54ea2784966e5ad972c53b53d63b1514036013fc698f75f36195b3d77fc434',
+     x86_64: '324529721ce4dbe10d971629bfa9f6a25c1a9040645b38b664c4f805987d2524'
   })
 
   depends_on 'gnupg'
