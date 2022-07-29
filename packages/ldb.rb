@@ -6,23 +6,23 @@ require 'package'
 class Ldb < Package
   description 'Schema-less, ldap like, API and database'
   homepage 'https://ldb.samba.org/'
-  version '2.5.0'
+  version '2.5.2'
   license 'GPLv3'
   compatibility 'all'
   source_url "https://samba.org/ftp/ldb/ldb-#{version}.tar.gz"
-  source_sha256 '583ec548fc9cac4596dcd8b510408cdda2a8f85c02e672d0f9dce6a7364faa5e'
+  source_sha256 '6fada72274b648799d33f851d9edbbb1b31389910c207e111b597f97bf83a0e4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_armv7l/ldb-2.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_armv7l/ldb-2.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_i686/ldb-2.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.0_x86_64/ldb-2.5.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.2_armv7l/ldb-2.5.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.2_armv7l/ldb-2.5.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.2_i686/ldb-2.5.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ldb/2.5.2_x86_64/ldb-2.5.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c07b01c496e6ec532e654ca9d7f22aeca3d8ef79645ada44fd6457b4a64f4bb7',
-     armv7l: 'c07b01c496e6ec532e654ca9d7f22aeca3d8ef79645ada44fd6457b4a64f4bb7',
-       i686: 'd0de89fd2485e5963f9ee7f0626c2057fc8b52685003963ab75ce43f4c06d08b',
-     x86_64: '5e714041f50e093916d5ec22760b40342dee7340ddd75cf3f0952dcc3e6e03ad'
+    aarch64: '57f2e721b730b444473d6ccb66e4d5c15a472f59f0c717febae4a70770844472',
+     armv7l: '57f2e721b730b444473d6ccb66e4d5c15a472f59f0c717febae4a70770844472',
+       i686: '5a66f1dda57ea412737b74801d9f169a164d5247c9a0baca64a15dc52a0ee0f0',
+     x86_64: '8bb8be2f0274e8938cd30a27d7faae28cc00819cec978ae4ee1ced75026972ac'
   })
 
   depends_on 'cmocka' => :build
