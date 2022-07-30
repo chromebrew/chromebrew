@@ -24,6 +24,9 @@ Layout/HashAlignment:
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
+Layout/IndentationStyle:
+  EnforcedStyle: spaces
+
 Style/RedundantReturn:
   Enabled: false
 
