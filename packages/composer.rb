@@ -3,13 +3,15 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.3.5'
+  version '2.3.10'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 
   depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
+
+  no_compile_needed
 
   def self.preinstall
     if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
@@ -22,8 +24,8 @@ class Composer < Package
   end
 
   def self.install
-    system "curl -Ls -o composer https://github.com/composer/composer/releases/download/#{version}/composer.phar"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('composer') ) == '3b3b5a899c06a46aec280727bdf50aad14334f6bc40436ea76b07b650870d8f4'
+    downloader "https://github.com/composer/composer/releases/download/#{version}/composer.phar",
+               'd808272f284fa8e0f8b470703e1438ac8f362030bbc9d12e29530277d767aff0', 'composer'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
   end
