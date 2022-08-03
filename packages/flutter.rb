@@ -3,13 +3,15 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '2.10.2'
+  version '3.0.5'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/flutter/flutter.git'
   git_hashtag version
 
   depends_on 'libglu'
+
+  no_compile_needed
 
   def self.build
     system 'bin/flutter'
