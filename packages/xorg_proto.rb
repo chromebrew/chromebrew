@@ -3,23 +3,23 @@ require 'package'
 class Xorg_proto < Package
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
-  version '2021.5'
+  version '2022.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
   git_hashtag "xorgproto-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_armv7l/xorg_proto-2021.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_armv7l/xorg_proto-2021.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_i686/xorg_proto-2021.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2021.5_x86_64/xorg_proto-2021.5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_armv7l/xorg_proto-2022.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_armv7l/xorg_proto-2022.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_i686/xorg_proto-2022.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_x86_64/xorg_proto-2022.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1bc453ccee0bc6e0e4709502c09b0e6c86d72c50d9e1b16e00799e7ee7ab2e3d',
-     armv7l: '1bc453ccee0bc6e0e4709502c09b0e6c86d72c50d9e1b16e00799e7ee7ab2e3d',
-       i686: 'ddca69d7d028a8696f175ecae67dcff30e3139cc664b24b7977a20f482acb280',
-     x86_64: '20dd21738b3e2c1521f34a6993071ff797f99d81e4b5c154c560e9cf2f6062a8'
+    aarch64: '4f29c3f12e684e8e3de289a0ca8810e763ddb96c3bf3a686baf0392d4d8ced66',
+     armv7l: '4f29c3f12e684e8e3de289a0ca8810e763ddb96c3bf3a686baf0392d4d8ced66',
+       i686: '0592845ac3053d91b8158bd186c629d2a0b372a95b5d0e30c06b71a5fffe4e95',
+     x86_64: '21802c99d382be50f69e613dee68e25821b6a09ba4b6833309899c76dce9789f'
   })
 
   def self.build
