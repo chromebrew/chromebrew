@@ -71,7 +71,7 @@ class ProgressBar
       print "\e[?25l" # hide cursor to prevent cursor flickering
 
       while @progress_bar_showing
-        sleep 0.2 # update progress bar after each 0.2 seconds
+        sleep 0.15 # update progress bar after each 0.15 seconds
 
         completed_length = ( @bar_width * (@percentage / 100) ).to_i
         uncompleted_length = @bar_width - completed_length
