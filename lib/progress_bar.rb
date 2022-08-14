@@ -91,7 +91,7 @@ class ProgressBar
 
         # stop when 100%
         if @percentage >= 100
-          print "\e[2K" # clear previous line (progress bar)
+          print "\e[2K\r" # clear previous line (progress bar)
           break
         else
           print "\r"
