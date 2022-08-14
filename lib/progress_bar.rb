@@ -1,0 +1,105 @@
+require 'io/console'
+require_relative 'color'
+require_relative 'convert_size'
+
+class ProgressBar
+  attr_accessor :progress_bar_showing
+
+  def initialize (total_size)
+    # character used to fill the progress bar, one of the box-drawing character in unicode
+    @bar_char = "\u2501"
+
+    # color scheme of progress bar, can be changed
+    # see color.rb for more available colors
+    @bar_front_color = :lightcyan
+    @bar_bg_color = :gray
+
+    # all info blocks with space taken
+    @info_before_bar = { downloaded_size_in_str: 20 }
+    @info_after_bar = { percentage_in_str: 4, elapsed_time_in_str: 8 }
+
+    @percentage = @downloaded = 0
+    @total_size = total_size.to_f
+
+    @total_size_in_str = human_size(@total_size)
+
+    trap('WINCH') do
+      # reset width settings after terminal resized
+      # get terminal size, calculate the width of progress bar based on it
+      @terminal_h, @terminal_w = IO.console.winsize
+
+      @bar_width = @terminal_w -
+                   @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
+                   ( @info_before_bar.merge(@info_after_bar).length * 2 ) # space for separator (whitespaces) between each info
+
+    rescue NoMethodError => e
+      # fallback for non-interactive terminals
+      unless $non_interactive_term_warned
+        warn 'Non-interactive terminals may not be able to be queried for size.'
+        $non_interactive_term_warned = true
+      end
+
+      @terminal_h, @terminal_w = [ 25, 80 ]
+    end
+
+    Process.kill('WINCH', 0) # trigger the trap above
+  end
+
+  def set_downloaded_size (downloaded_size)
+    if @start_time
+      @elapsed_time = (Time.now - @start_time).to_i
+    else
+      # record start time, used for calculating elapsed time
+      @start_time = Time.now
+      @elapsed_time = 0
+    end
+
+    @elapsed_time_in_str = Time.at(@elapsed_time).utc.strftime('%H:%M:%S')
+
+    # calculate progress percentage, round to nearest 0.1
+    @percentage = ( ( downloaded_size / @total_size ) * 100 ).round(1)
+    @percentage_in_str = "#{@percentage.to_i}%"
+
+    # {downloaded size}/{total size}
+    @downloaded_size_in_str = "#{human_size(downloaded_size)}/#{@total_size_in_str}"
+  end
+
+  def show
+    return Thread.new do
+      @progress_bar_showing = true
+
+      print "\e[?25l" # hide cursor to prevent cursor flickering
+
+      while @progress_bar_showing
+        sleep 0.2 # update progress bar after each 0.2 seconds
+
+        completed_length = ( @bar_width * (@percentage / 100) ).to_i
+        uncompleted_length = @bar_width - completed_length
+
+        # print info and progress bar
+        @info_before_bar.each_pair do |varName, width|
+          printf "%*.*s  ", width, width, instance_variable_get("@#{varName}")
+        end
+
+        # print progress bar with color code
+        print ( @bar_char * completed_length ).send(@bar_front_color),
+              ( @bar_char * uncompleted_length ).send(@bar_bg_color)
+
+        @info_after_bar.each_pair do |varName, width|
+          printf "  %*.*s", width, width, instance_variable_get("@#{varName}")
+        end
+
+        # stop when 100%
+        if @percentage >= 100
+          print "\n"
+          break
+        else
+          print "\r"
+        end
+      end
+    ensure
+      print "\e[?25h",   # restore cursor mode since we hide it before
+            "\e[1A\e[2K" # clear previous line (progress bar)
+    end
+  end
+end
