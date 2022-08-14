@@ -3,6 +3,8 @@ require_relative 'color'
 require_relative 'convert_size'
 
 class ProgressBar
+  class InvalidSizeError < StandardError; end
+
   attr_accessor :progress_bar_showing
 
   def initialize (total_size)
@@ -45,7 +47,27 @@ class ProgressBar
     Process.kill('WINCH', 0) # trigger the trap above
   end
 
-  def set_downloaded_size (downloaded_size)
+  def set_downloaded_size (downloaded_size, invalid_size_error: true)
+    if downloaded_size > @total_size
+      # when the given downloaded size is invalid (> total size given),
+      # set all info to unknown (except downloaded size)
+      @elapsed_time = @total_size = 0
+      @elapsed_time_in_str = '--:--:--'
+
+      @percentage = 100
+      @percentage_in_str = '---'
+
+      @total_size_in_str = ''
+      @downloaded_size_in_str = human_size(downloaded_size)
+
+      # raise error unless #{invalid_size_error} is set to false
+      if invalid_size_error
+        raise InvalidSizeError, 'The given downloaded size is larger than the total size'
+      else
+        return false
+      end
+    end
+ 
     if @start_time
       @elapsed_time = (Time.now - @start_time).to_i
     else
