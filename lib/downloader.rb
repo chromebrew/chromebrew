@@ -6,6 +6,8 @@ require_relative 'progress_bar'
 
 begin
   require 'securerandom'
+  require 'resolv-replace'
+  require 'net/http'
 rescue RuntimeError => e
   # hide the error message and fallback to curl if securerandom raise an error
   if e.message == 'failed to get urandom'
@@ -16,9 +18,7 @@ rescue RuntimeError => e
   end
 end
 
-require 'net/http'
 require 'uri'
-require 'resolv-replace'
 
 def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
