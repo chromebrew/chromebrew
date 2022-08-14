@@ -91,15 +91,14 @@ class ProgressBar
 
         # stop when 100%
         if @percentage >= 100
-          print "\n"
+          print "\e[2K" # clear previous line (progress bar)
           break
         else
           print "\r"
         end
       end
     ensure
-      print "\e[?25h",   # restore cursor mode since we hide it before
-            "\e[1A\e[2K" # clear previous line (progress bar)
+      print "\e[?25h" # restore cursor mode since we hide it before
     end
   end
 end
