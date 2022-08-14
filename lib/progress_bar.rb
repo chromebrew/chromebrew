@@ -49,7 +49,7 @@ class ProgressBar
 
   def set_downloaded_size (downloaded_size, invalid_size_error: true)
     if downloaded_size > @total_size
-      # when the given downloaded size is invalid (> total size given),
+      # when the given downloaded size/total size is invalid (downloaded size > total size given),
       # set all info to unknown (except downloaded size)
       @elapsed_time = @total_size = 0
       @elapsed_time_in_str = '--:--:--'
