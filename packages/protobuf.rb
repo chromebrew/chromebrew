@@ -1,41 +1,47 @@
+# Adapted from Arch Linux protobuf PKGBUILD at:
+# https://github.com/archlinux/svntogit-packages/raw/packages/protobuf/trunk/PKGBUILD
+
 require 'package'
 
 class Protobuf < Package
-  description 'Protocol buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data.'
+  description 'Protocol Buffers - Googles data interchange format'
   homepage 'https://developers.google.com/protocol-buffers/'
-  version '3.9.2'
+  @_ver = '21.5'
+  version @_ver
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/protocolbuffers/protobuf/archive/v3.9.2.tar.gz'
-  source_sha256 '1fbf1c2962af287607232b2eddeaec9b4f4a7a6f5934e1a9276e9af76952f7e0'
+  source_url "https://github.com/protocolbuffers/protobuf/archive/v#{@_ver}/protobuf-#{@_ver}.tar.gz"
+  source_sha256 '4a7e87e4166c358c63342dddcde6312faee06ea9d5bb4e2fa87d3478076f6639'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_armv7l/protobuf-3.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_armv7l/protobuf-3.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_i686/protobuf-3.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/3.9.2_x86_64/protobuf-3.9.2-chromeos-x86_64.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.5_armv7l/protobuf-21.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.5_armv7l/protobuf-21.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.5_i686/protobuf-21.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.5_x86_64/protobuf-21.5-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-    aarch64: '7b3f225eebd40ce365b40d98ea7eaef74705a2801f50c83a4bc84cdd7f0a5cf6',
-     armv7l: '7b3f225eebd40ce365b40d98ea7eaef74705a2801f50c83a4bc84cdd7f0a5cf6',
-       i686: '11088f5231b60bddcb902bfc9b72363d67c668384063f31e24a37244cc34cf60',
-     x86_64: '7e6016f3c4b2c50db0e7b285a3f4fbc384b80f9cf367a68fda8de15d4fb8fcc3',
+  binary_sha256({
+    aarch64: '385f997ea44f29e57e3f09ac287e5c0916bc00bbcb37ec72c7546acbfcdaebec',
+     armv7l: '385f997ea44f29e57e3f09ac287e5c0916bc00bbcb37ec72c7546acbfcdaebec',
+       i686: '1381f344f2d10146615dc8d9344841c3df814ba6bf1701c5edcc37d5d53c840b',
+     x86_64: 'b5f2199cdf7ed7232475c6b745abc0a3df6e8e3a042bf19ed79fd50feaf535c3'
   })
+
+  depends_on 'zlibpkg'
+  depends_on 'python3' => :build
+  depends_on 'cmake' => :build
 
   def self.build
-    system './autogen.sh'
-    system "./configure",
-           "--disable-static",
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
+    FileUtils.mkdir('builddir')
+    Dir.chdir('builddir') do
+      system "cmake #{CREW_CMAKE_OPTIONS} \
+      -Dprotobuf_BUILD_SHARED_LIBS=ON \
+      -Dprotobuf_BUILD_TESTS=OFF \
+      ../ -G Ninja"
+    end
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
-
-  def self.check
-    #system 'make check'
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
