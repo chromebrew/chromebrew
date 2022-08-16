@@ -28,20 +28,10 @@ class ProgressBar
     trap('WINCH') do
       # reset width settings after terminal resized
       # get terminal size, calculate the width of progress bar based on it
-      @terminal_h, @terminal_w = IO.console.winsize
-
+      @terminal_h, @terminal_w = IO.console&.winsize || [ 25, 80 ]
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    ( @info_before_bar.merge(@info_after_bar).length * 2 ) # space for separator (whitespaces) between each info
-
-    rescue NoMethodError => e
-      # fallback for non-interactive terminals
-      unless $non_interactive_term_warned
-        warn 'Non-interactive terminals may not be able to be queried for size.'
-        $non_interactive_term_warned = true
-      end
-
-      @terminal_h, @terminal_w = [ 25, 80 ]
     end
 
     Process.kill('WINCH', 0) # trigger the trap above
