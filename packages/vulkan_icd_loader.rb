@@ -8,6 +8,7 @@ class Vulkan_icd_loader < Package
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.224_armv7l/vulkan_icd_loader-1.3.224-chromeos-armv7l.tar.zst',
@@ -21,8 +22,6 @@ class Vulkan_icd_loader < Package
        i686: 'c0c0c5a6fed09d2515de58c8f2af31081133fe8bc292d445b7bf5ce8676a4239',
      x86_64: '53fdaa92fb1e31410c6ebd50f1661f8b99b3a62a2f1bc33be123b2fff7a3f2da'
   })
-
-  git_hashtag "v#{@_ver}"
 
   depends_on 'libx11'
   depends_on 'libxrandr'
