@@ -20,9 +20,10 @@ A simple example of a test script called `my_test` is below:
 #!/usr/bin/env ruby
 
 # Makes sure buildessential package depends on gcc
+require_relative "../lib/package"
 
-require_relative("../packages/buildessential")
-pkg = Object.const_get('Buildessential')
+pkg = Package.load_package('../package/buildessential.rb')
+
 if pkg.dependencies and pkg.dependencies.has_key?('gcc') then
 	puts "Everything works properly.".lightgreen
 else
