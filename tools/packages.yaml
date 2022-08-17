@@ -989,6 +989,11 @@ url: https://github.com/crossmob/CrossMobile/releases/
 activity: medium
 ---
 kind: url
+name: crosvm
+url: https://chromium.googlesource.com/crosvm/crosvm
+activity: high
+---
+kind: url
 name: cryptsetup
 url: https://www.kernel.org/pub/linux/utils/cryptsetup/
 activity: low
@@ -5022,6 +5027,11 @@ kind: url
 name: miniconda3
 url: https://github.com/Anaconda-Platform/anaconda-project/releases
 activity: low
+---
+kind: url
+name: minijail
+url: https://google.github.io/minijail/
+activity: medium
 ---
 kind: url
 name: miniupnpc
