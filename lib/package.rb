@@ -32,7 +32,7 @@ class Package
     class_eval( File.read(pkgFile) )
 
     pkgObj = const_get(pkgName.capitalize)
-    pkgObj.name = name
+    pkgObj.name = pkgName
 
     return pkgObj
   end
