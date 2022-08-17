@@ -8,6 +8,7 @@ class Virglrenderer < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/virgl/virglrenderer.git'
+  git_hashtag '486d891a9242d978cef6bb5ae80d0d9b6aa420c8'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/virglrenderer/0.9.1-486d891_armv7l/virglrenderer-0.9.1-486d891-chromeos-armv7l.tar.zst',
@@ -19,7 +20,6 @@ class Virglrenderer < Package
      armv7l: '662b56e9402ba14b88877a5d05ee968f7912236115fc489228da21bf79802495',
      x86_64: 'b50b3677447bd9385bdc2eeab64a5c88cbaa9d2e63a1266826d170dcce2e1bd1'
   })
-  git_hashtag '486d891a9242d978cef6bb5ae80d0d9b6aa420c8'
 
   depends_on 'libva'
   depends_on 'mesa'
