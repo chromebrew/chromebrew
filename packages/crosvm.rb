@@ -28,7 +28,7 @@ class Crosvm < Package
   def self.build
     @pwd = `pwd`.chomp
     FileUtils.mkdir 'build_bin'
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc",'build_bin/arm-linux-gnueabihf-gcc' if ARCH == 'armv7l'
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc", 'build_bin/arm-linux-gnueabihf-gcc' if ARCH == 'armv7l'
     system "PATH=#{@pwd}/build_bin:$PATH cargo build --release"
   end
 
