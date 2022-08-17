@@ -3,25 +3,26 @@ require 'package'
 class Vulkan_headers < Package
   description 'Vulkan header files'
   homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
-  @_ver = '1.2.200'
+  @_ver = '1.3.224'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
-  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.200_armv7l/vulkan_headers-1.2.200-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.200_armv7l/vulkan_headers-1.2.200-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.200_i686/vulkan_headers-1.2.200-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.200_x86_64/vulkan_headers-1.2.200-chromeos-x86_64.tpxz'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.2.200_i686/vulkan_headers-1.2.200-chromeos-i686.tpxz',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.224_armv7l/vulkan_headers-1.3.224-chromeos-armv7l.tar.zst',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.224_armv7l/vulkan_headers-1.3.224-chromeos-armv7l.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.224_x86_64/vulkan_headers-1.3.224-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5a5667d6e87c10b44ce1f8b753ab1b262c3f9080f54ce7813bb0073e8b84bcd1',
-     armv7l: '5a5667d6e87c10b44ce1f8b753ab1b262c3f9080f54ce7813bb0073e8b84bcd1',
-       i686: 'c2013362fec23d3c98168f15eb333819e7dc4e2d5727514231a6698765c99e4f',
-     x86_64: 'a08323b44455380865c5d034bba4f9ebaffa4731612ec9c15f1ed2241b9de402'
+    i686: 'c2013362fec23d3c98168f15eb333819e7dc4e2d5727514231a6698765c99e4f',
+ aarch64: '07d06412605ad77da5eb584ff0004ca8bd375facdec7f208cc8507d87574770a',
+  armv7l: '07d06412605ad77da5eb584ff0004ca8bd375facdec7f208cc8507d87574770a',
+  x86_64: '20e3b90d93447e620d730bfe3f0f55d97cfd19134ed275b5672f5d962863118a'
   })
+
+  git_hashtag "v#{@_ver}"
 
   def self.build
     Dir.mkdir 'builddir'
