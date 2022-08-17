@@ -1,4 +1,4 @@
-require 'package_helpers'
+require_relative 'package_helpers'
 
 class Package
   property :description, :homepage, :version, :license, :compatibility,
@@ -6,7 +6,7 @@ class Package
            :git_branch, :git_hashtag
 
   boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
-                        is_static no_compile_needed no_env_options no_fhs
+                        is_static no_compile_needed no_env_options no_fhs 
                         no_patchelf no_zstd patchelf git_clone_deep
                         no_git_submodules]
 
@@ -23,6 +23,20 @@ class Package
 
   class << self
     attr_accessor :name, :is_dep, :in_build, :build_from_source, :in_upgrade
+  end
+
+  def self.load_package ( pkgFile, pkgName = File.basename(pkgFile, '.rb') )
+    # self.load_package: load a package under 'Package' class scope
+    #
+    className = pkgName.capitalize
+
+    # read and eval package script under 'Package' class
+    class_eval( File.read(pkgFile), pkgFile ) unless const_defined?("Package::#{className}")
+
+    pkgObj = const_get(className)
+    pkgObj.name = pkgName
+
+    return pkgObj
   end
 
   def self.dependencies
@@ -47,7 +61,7 @@ class Package
     #   highlight_build_deps: include corresponding symbols in return value, you can convert it to actual ascii color codes later
     # exclude_buildessential: do not insert `buildessential` dependency automatically
     #
-    #              top_level: if set to true, return satisfied dependencies
+    #              top_level: if set to true, return satisfied dependencies 
     #                         (dependencies that might be a sub-dependency of a dependency that checked before),
     #                         always set to false if this function is called in recursive loop (see `expandedDeps` below)
     #
@@ -56,7 +70,7 @@ class Package
     # add current package to @checked_list for preventing extra checks
     @checked_list.merge!({ pkgName => pkgTags })
 
-    pkgObj = Object.const_get(pkgName.capitalize)
+    pkgObj = load_package("#{CREW_PACKAGES_PATH}/#{pkgName}.rb")
     is_source = pkgObj.is_source?(ARCH.to_sym) or pkgObj.build_from_source
     deps = pkgObj.dependencies
 
@@ -81,7 +95,6 @@ class Package
                        tags = (pkgTags.include?(:build)) ? pkgTags : depTags
 
                        if @checked_list.keys.none?(dep)
-                         require_relative "#{CREW_PACKAGES_PATH}/#{dep}.rb"
                          # check dependency by calling this function recursively
                          next send(__method__, dep,
                                                      hash: hash,
