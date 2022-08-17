@@ -989,6 +989,11 @@ url: https://github.com/crossmob/CrossMobile/releases/
 activity: medium
 ---
 kind: url
+name: crosvm
+url: https://chromium.googlesource.com/crosvm/crosvm.
+activity: high
+---
+kind: url
 name: cryptsetup
 url: https://www.kernel.org/pub/linux/utils/cryptsetup/
 activity: low
