@@ -990,7 +990,7 @@ activity: medium
 ---
 kind: url
 name: crosvm
-url: https://chromium.googlesource.com/crosvm/crosvm.
+url: https://chromium.googlesource.com/crosvm/crosvm
 activity: high
 ---
 kind: url
