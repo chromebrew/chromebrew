@@ -1274,6 +1274,11 @@ url: https://github.com/dagwieers/dstat/releases
 activity: none
 ---
 kind: url
+name: dtc
+url: https://www.devicetree.org/
+activity: low
+---
+kind: url
 name: dtrx
 url: https://brettcsmith.org/2007/dtrx
 activity: none
