@@ -1,4 +1,4 @@
-require 'package_helpers'
+require_relative 'package_helpers'
 
 class Package
   property :description, :homepage, :version, :license, :compatibility,
