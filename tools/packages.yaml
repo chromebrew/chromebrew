@@ -5029,6 +5029,11 @@ url: https://github.com/Anaconda-Platform/anaconda-project/releases
 activity: low
 ---
 kind: url
+name: minijail
+url: https://google.github.io/minijail/
+activity: medium
+---
+kind: url
 name: miniupnpc
 url: https://github.com/miniupnp/miniupnp/releases
 activity: high
