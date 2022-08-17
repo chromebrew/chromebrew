@@ -28,10 +28,12 @@ class Package
   def self.load_package ( pkgFile, pkgName = File.basename(pkgFile, '.rb') )
     # self.load_package: load a package under 'Package' class scope
     #
-    # read and eval package script under 'Package' class
-    class_eval( File.read(pkgFile) )
+    className = pkgName.capitalize
 
-    pkgObj = const_get(pkgName.capitalize)
+    # read and eval package script under 'Package' class
+    class_eval( File.read(pkgFile), pkgFile ) unless const_defined?("Package::#{className}")
+
+    pkgObj = const_get(className)
     pkgObj.name = pkgName
 
     return pkgObj
