@@ -26,7 +26,7 @@ class Crosvm < Package
   depends_on 'wayland_protocols' => :build
 
   def self.build
-    @pwd = `pwd`.chomp
+    @pwd = Dir.pwd
     FileUtils.mkdir 'build_bin'
     FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc", 'build_bin/arm-linux-gnueabihf-gcc' if ARCH == 'armv7l'
     system "PATH=#{@pwd}/build_bin:$PATH cargo build --release"
