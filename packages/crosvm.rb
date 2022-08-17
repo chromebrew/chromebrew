@@ -30,7 +30,7 @@ class Crosvm < Package
   def self.build
     @pwd = Dir.pwd
     FileUtils.mkdir 'build_bin'
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc", 'build_bin/arm-linux-gnueabihf-gcc' if ARCH == 'armv7l'
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/gcc", 'build_bin/arm-linux-gnueabihf-gcc' if (ARCH == 'aarch64') || (ARCH == 'armv7l')
     system "PATH=#{@pwd}/build_bin:$PATH cargo build --release --features=virgl_renderer"
   end
 
