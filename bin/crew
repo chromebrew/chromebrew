@@ -14,6 +14,7 @@ require_relative '../lib/util'
 require_relative '../lib/convert_size'
 require_relative '../lib/downloader'
 require_relative '../lib/deb_utils'
+require_relative '../lib/package'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -185,21 +186,12 @@ end
 
 def set_package(pkgName, pkgPath)
   begin
-    require_relative pkgPath
+    @pkg = Package.load_package(pkgPath, pkgName)
   rescue SyntaxError => e
-    puts "#{e.class}: #{e.message}".red
+    warn "#{e.class}: #{e.message}".red
   end
 
-  # add `PKG_` to the beginning of class name if it starts with a digit
-  if pkgName =~ /^[0-9]/
-    className = 'PKG_' + pkgName
-  else
-    className = pkgName.capitalize
-  end
-
-  @pkg = Object.const_get(className)
   @pkg.build_from_source = true if @opt_recursive
-  @pkg.name = pkgName
 end
 
 def list_packages
