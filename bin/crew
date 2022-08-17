@@ -1853,6 +1853,8 @@ def sysinfo_command(args)
     lsb_release = ENV
   end
 
+  git_commit_message_format = '%C(yellow)%h%C(reset)  %s  %C(brightcyan)(%cr)%C(reset)'
+
   puts <<~MD
     - Architecture: `#{ARCH_ACTUAL}` (`#{ARCH}`)
     - Kernel version: `#{`uname -r`.chomp}`
@@ -1861,7 +1863,7 @@ def sysinfo_command(args)
     - Chromebrew prefix: `#{CREW_PREFIX}`
     - Chromebrew libdir: `#{CREW_LIB_PREFIX}`
 
-    - Last update in local repository: `#{`git show --color=always -s --format='%C(yellow)%h%C(reset)  %s  %C(brightcyan)(%cr)%C(reset)'`}`
+    - Last update in local repository: `#{`git show --color=always -s --format='#{git_commit_message_format}'`.chomp}`
 
     - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
     - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
