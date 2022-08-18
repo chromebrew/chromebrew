@@ -131,8 +131,9 @@ else
 end
 CREW_LINKER_FLAGS = ENV['CREW_LINKER_FLAGS']
 
-CREW_COMMON_FLAGS = "-O2 -pipe -flto -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
-CREW_COMMON_FNO_LTO_FLAGS = "-O2 -pipe -fno-lto -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS= "-O2 -pipe -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto"
+CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
@@ -179,8 +180,8 @@ CREW_MESON_OPTIONS = <<~OPT.chomp
   -Db_lto=true \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='#{CREW_COMMON_FNO_LTO_FLAGS}' \
-  -Dc_args='#{CREW_COMMON_FNO_LTO_FLAGS}'
+  -Dcpp_args='#{CREW_CORE_FLAGS}' \
+  -Dc_args='#{CREW_CORE_FLAGS}'
 OPT
 
 CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
@@ -191,8 +192,8 @@ CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
   -Db_lto=false \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='#{CREW_COMMON_FNO_LTO_FLAGS} \
-  -Dc_args='#{CREW_COMMON_FNO_LTO_FLAGS}
+  -Dcpp_args='#{CREW_CORE_FLAGS}' \
+  -Dc_args='#{CREW_CORE_FLAGS}'
 OPT
 
 # Use ninja or samurai
