@@ -36,6 +36,36 @@ Style/MutableConstant:
 Style/Documentation:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/BlockParameterName:
+  Enabled: false
+
 Naming/VariableNumber:
   Enabled: false
 
