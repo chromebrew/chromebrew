@@ -179,8 +179,8 @@ CREW_MESON_OPTIONS = <<~OPT.chomp
   -Db_lto=true \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}' \
-  -Dc_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}'
+  -Dcpp_args='#{CREW_COMMON_FNO_LTO_FLAGS}' \
+  -Dc_args='#{CREW_COMMON_FNO_LTO_FLAGS}'
 OPT
 
 CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
@@ -191,8 +191,8 @@ CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
   -Db_lto=false \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}' \
-  -Dc_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}'
+  -Dcpp_args='#{CREW_COMMON_FNO_LTO_FLAGS} \
+  -Dc_args='#{CREW_COMMON_FNO_LTO_FLAGS}
 OPT
 
 # Use ninja or samurai
