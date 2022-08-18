@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.25.1'
+CREW_VERSION = '1.24.1'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -179,8 +179,8 @@ CREW_MESON_OPTIONS = <<~OPT.chomp
   -Db_lto=true \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='-O2' \
-  -Dc_args='-O2'
+  -Dcpp_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}' \
+  -Dc_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}'
 OPT
 
 CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
@@ -191,8 +191,8 @@ CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
   -Db_lto=false \
   -Dstrip=true \
   -Db_pie=true \
-  -Dcpp_args='-O2' \
-  -Dc_args='-O2'
+  -Dcpp_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}' \
+  -Dc_args='-O2 -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}'
 OPT
 
 # Use ninja or samurai
