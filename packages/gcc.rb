@@ -3,23 +3,23 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '12.1-1'
+  version '12.2'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-12.1.0/gcc-12.1.0.tar.xz'
-  source_sha256 '62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
+  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz'
+  source_sha256 'e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc12/12.1_armv7l/gcc12-12.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc12/12.1_armv7l/gcc12-12.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc12/12.1_i686/gcc12-12.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc12/12.1_x86_64/gcc12-12.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_i686/gcc-12.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_x86_64/gcc-12.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c3507c61d1f9e245ca66ea11f3091785287697eed1a0deba9c769ac443426494',
-     armv7l: 'c3507c61d1f9e245ca66ea11f3091785287697eed1a0deba9c769ac443426494',
-       i686: 'bd0a415636e7602320b0daca9ef545fac326396ddf52baa2fe385af752f47452',
-     x86_64: 'e48ecf0106f6a6a01cb3d80327e14ca302f96d7b5c79f44c781a483d2f5ad066'
+    aarch64: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
+     armv7l: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
+       i686: 'b0aa419d91b7088400c7a365e3c416cbba5081413a624acf4f2e0c962cda7359',
+     x86_64: '01efdcdab6bebc32fd5608f6a061c7ceebd69e9f96084293a903f5af9c3576f3'
   })
 
   depends_on 'ccache' => :build
@@ -137,14 +137,14 @@ class Gcc < Package
 
     Dir.chdir('objdir') do
       configure_env = {
-                  NM: 'gcc-nm',
-                  AR: 'gcc-ar',
-              RANLIB: 'gcc-ranlib',
-              CFLAGS: @cflags, 
-            CXXFLAGS: @cxxflags,
-             LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
-        LIBRARY_PATH: CREW_LIB_PREFIX,
-                PATH: @path
+          NM: 'gcc-nm',
+          AR: 'gcc-ar',
+      RANLIB: 'gcc-ranlib',
+      CFLAGS: @cflags,
+    CXXFLAGS: @cxxflags,
+     LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
+LIBRARY_PATH: CREW_LIB_PREFIX,
+        PATH: @path
       }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
@@ -177,9 +177,9 @@ class Gcc < Package
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
     make_env = {
-      LIBRARY_PATH: CREW_LIB_PREFIX,
-      PATH: @path,
-      DESTDIR: CREW_DEST_DIR
+LIBRARY_PATH: CREW_LIB_PREFIX,
+        PATH: @path,
+     DESTDIR: CREW_DEST_DIR
     }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
@@ -214,7 +214,7 @@ class Gcc < Package
       end
 
       FileUtils.mkdir_p gcc_libdir
-  
+
       %w[cc1 cc1plus collect2 lto1].each do |lib|
         FileUtils.install "gcc/#{lib}", "#{gcc_libdir}/", mode: 0o755
       end
@@ -239,17 +239,26 @@ class Gcc < Package
 
       system make_env, "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
 
-      system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS", exception: false
-      system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
-      system make_env, "make -C #{CREW_TGT}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
-      system make_env, "make -C #{CREW_TGT}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS", exception: false
-      system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS", exception: false
-      system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
-      system make_env, "make -C #{CREW_TGT}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+      system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
+exception: false
+      system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+exception: false
+      system make_env, "make -C #{CREW_TGT}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+exception: false
+      system make_env, "make -C #{CREW_TGT}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
+exception: false
+      system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
+exception: false
+      system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
+exception: false
+      system make_env,
+"make -C #{CREW_TGT}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This failed on i686
-      system make_env, "make -C #{CREW_TGT}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+      system make_env,
+"make -C #{CREW_TGT}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This might fail on i686
-      system make_env, "make -C #{CREW_TGT}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+      system make_env,
+"make -C #{CREW_TGT}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
 
       # libiberty is installed from binutils
       # system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
@@ -282,12 +291,12 @@ class Gcc < Package
         basefile_nover = f.delete_suffix("-#{@gcc_version}")
 
         basefile_noarch = f.delete_prefix("#{gcc_arch}-")
-        FileUtils.ln_sf f, basefile_noarch, verbose: true 
+        FileUtils.ln_sf f, basefile_noarch, verbose: true
 
         basefile_noarch_nover = basefile_nover.delete_prefix("#{gcc_arch}-")
-        FileUtils.ln_sf f, basefile_noarch_nover, verbose: true 
+        FileUtils.ln_sf f, basefile_noarch_nover, verbose: true
 
-        basefile_noarch_nover_nogcc = basefile_noarch_nover.delete_prefix("gcc-")
+        basefile_noarch_nover_nogcc = basefile_noarch_nover.delete_prefix('gcc-')
         FileUtils.ln_sf f, "#{gcc_arch}-#{basefile_noarch_nover_nogcc}", verbose: true
       end
 
@@ -297,17 +306,19 @@ class Gcc < Package
       end
 
       # many packages expect this symlink
-      FileUtils.ln_sf "gcc-#{@gcc_version}", 'cc', verbose: true 
+      FileUtils.ln_sf "gcc-#{@gcc_version}", 'cc', verbose: true
     end
 
     # make sure current version of gcc LTO plugin for Gold linker is installed.
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-    FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/", verbose: true
+    FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/",
+verbose: true
 
     # binutils makes a symlink here, but just in case it isn't there.
     if ARCH_LIB == 'lib64'
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
-      FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/", verbose: true
+      FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/",
+verbose: true
     end
 
     File.write "#{CREW_DEST_PREFIX}/bin/c99", @C99, perm: 0o755
@@ -318,19 +329,20 @@ class Gcc < Package
     # remove any previous gcc packages
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
 
-    installed_gcc = @device[:installed_packages].select {|pkg| pkg[:name] =~ /^gcc\d+$/ }
+    installed_gcc = @device[:installed_packages].select { |pkg| pkg[:name] =~ /^gcc\d+$/ }
 
     installed_gcc.each do |gcc_pkg|
       puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
 
       # remove filelist and directorylist
-      FileUtils.rm_f([ "#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist", "#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist" ])
+      FileUtils.rm_f(["#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist",
+                      "#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist"])
 
       # delete gcc#{ver} from device.json
-      @device[:installed_packages].delete_if {|pkg| pkg[:name] == gcc_pkg[:name] }
+      @device[:installed_packages].delete_if { |pkg| pkg[:name] == gcc_pkg[:name] }
     end
 
     # update device.json
-    File.write( "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(@device) )
+    File.write("#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(@device))
   end
 end
