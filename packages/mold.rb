@@ -6,22 +6,22 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '1.3.1'
+  version '1.4.1'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_armv7l/mold-1.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_armv7l/mold-1.3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_i686/mold-1.3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.3.1_x86_64/mold-1.3.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.4.1_armv7l/mold-1.4.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.4.1_armv7l/mold-1.4.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.4.1_i686/mold-1.4.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.4.1_x86_64/mold-1.4.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'afa9fd04d9904f655570cc4b4647c00fdaf2ddb9376bd976bdc794d25dff07c0',
-     armv7l: 'afa9fd04d9904f655570cc4b4647c00fdaf2ddb9376bd976bdc794d25dff07c0',
-       i686: '94932dc5409ce8c1bc066df0d84fcb0b45a830490a037c2c2fd0bcd120175ce1',
-     x86_64: '3f9fc41d8d4a97eabb1b07d21805014bd297e2a1acd302893cec1696d8c5aace'
+    aarch64: 'c0a7e8aef0e1819104f611c083aae26e0eb5d5905cad61c0043d7db85e85c695',
+     armv7l: 'c0a7e8aef0e1819104f611c083aae26e0eb5d5905cad61c0043d7db85e85c695',
+       i686: '5b9f9ba38052b8486c9890b6276315e1ba9ef7785f4434b3b5da4723bec7453a',
+     x86_64: '15f7b7f2b3fc95213d28bdf301d32cff22ff77becb3ca60e9e0c21dc1f547dca'
   })
 
   depends_on 'zlibpkg' # R
@@ -33,6 +33,7 @@ class Mold < Package
 
   def self.patch
     system "sed -i 's,PREFIX = /usr/local,PREFIX = #{CREW_PREFIX},g' Makefile"
+    system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,g' update-git-hash.py"
     system "sed -i 's,LIBDIR = \$(PREFIX)/lib,LIBDIR = #{CREW_LIB_PREFIX},g' Makefile"
   end
 
