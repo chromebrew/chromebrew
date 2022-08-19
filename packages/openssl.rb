@@ -4,23 +4,23 @@ class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
   @_ver = '1.1.1q'
-  version @_ver
+  version "#{@_ver}-1"
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
   source_sha256 'd7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_armv7l/openssl-1.1.1q-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_armv7l/openssl-1.1.1q-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_i686/openssl-1.1.1q-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q_x86_64/openssl-1.1.1q-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-1_armv7l/openssl-1.1.1q-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-1_armv7l/openssl-1.1.1q-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-1_i686/openssl-1.1.1q-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-1_x86_64/openssl-1.1.1q-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8b8f0c8ac1ec7600555987adad2ac475d7fb57184613249ada2ec12ea45d8b1f',
-     armv7l: '8b8f0c8ac1ec7600555987adad2ac475d7fb57184613249ada2ec12ea45d8b1f',
-       i686: '205055f11a4d9a9349f8d7327cc90e0ef5dc15e3e6bce02688d1788a2a68c928',
-     x86_64: 'afd2b5294d3e4a16895e7bacf831c9e396e2533ed1b8bd939daca7a2e13d02a0'
+    aarch64: '8f9592bac4167da9829dcac529e98cded31c8d6824d691efff68220917d1bce7',
+     armv7l: '8f9592bac4167da9829dcac529e98cded31c8d6824d691efff68220917d1bce7',
+       i686: '2eabf1ab141f5873407cda3507456e9ab758fd69f44e8b76808cefa0dfe4a82a',
+     x86_64: '78029b1bc2e02065713748a6dc649c8cde34e28df6f7347a9916b4121782f43d'
   })
 
   depends_on 'ccache' => :build
@@ -28,10 +28,8 @@ class Openssl < Package
 
   case ARCH
   when 'aarch64', 'armv7l'
-    # See https://sourceware.org/bugzilla/show_bug.cgi?id=27659
-    # BFD (GNU Binutils) 2.36.1 internal error, aborting at ../../bfd/elfcode.h:224 in bfd_elf32_swap_symbol_out
-    @arch_c_flags = '-fPIC -march=armv7-a -mfloat-abi=hard -fuse-ld=lld'
-    @arch_cxx_flags = '-fPIC -march=armv7-a -mfloat-abi=hard -fuse-ld=lld'
+    @arch_c_flags = '-fPIC -march=armv7-a -mfloat-abi=hard -fuse-ld=mold'
+    @arch_cxx_flags = '-fPIC -march=armv7-a -mfloat-abi=hard -fuse-ld=mold'
     @openssl_configure_target = 'linux-generic32'
   when 'i686'
     @arch_c_flags = '-fPIC'
@@ -49,8 +47,7 @@ class Openssl < Package
   def self.build
     # This gives you the list of OpenSSL configure targets
     system './Configure LIST'
-    system "env CC=clang CXX=clang++ LD=ld.lld AR=llvm-ar RANLIB=llvm-ranlib \
-    PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
+    system "PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
       CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
       LDFLAGS=\"#{@ARCH_LDFLAGS}\" \
       ./Configure --prefix=#{CREW_PREFIX} \
