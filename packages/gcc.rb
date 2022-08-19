@@ -137,14 +137,14 @@ class Gcc < Package
 
     Dir.chdir('objdir') do
       configure_env = {
-        NM: 'gcc-nm',
-        AR: 'gcc-ar',
-    RANLIB: 'gcc-ranlib',
-    CFLAGS: @cflags,
-  CXXFLAGS: @cxxflags,
-   LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
+          NM: 'gcc-nm',
+          AR: 'gcc-ar',
+      RANLIB: 'gcc-ranlib',
+      CFLAGS: @cflags,
+    CXXFLAGS: @cxxflags,
+     LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
 LIBRARY_PATH: CREW_LIB_PREFIX,
-      PATH: @path
+        PATH: @path
       }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
@@ -177,9 +177,9 @@ LIBRARY_PATH: CREW_LIB_PREFIX,
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
     make_env = {
-      LIBRARY_PATH: CREW_LIB_PREFIX,
-              PATH: @path,
-           DESTDIR: CREW_DEST_DIR
+LIBRARY_PATH: CREW_LIB_PREFIX,
+        PATH: @path,
+     DESTDIR: CREW_DEST_DIR
     }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
