@@ -3,7 +3,7 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.3.10'
+  version '2.4.0'
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
@@ -25,7 +25,7 @@ class Composer < Package
 
   def self.install
     downloader "https://github.com/composer/composer/releases/download/#{version}/composer.phar",
-               'd808272f284fa8e0f8b470703e1438ac8f362030bbc9d12e29530277d767aff0', 'composer'
+               '1cdc74f74965908d0e98d00feeca37c23b86da51170a3a11a1538d89ff44d4dd', 'composer'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
   end
