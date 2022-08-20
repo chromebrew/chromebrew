@@ -1855,7 +1855,7 @@ def sysinfo_command(args)
     - Chromebrew prefix: `#{CREW_PREFIX}`
     - Chromebrew libdir: `#{CREW_LIB_PREFIX}`
 
-    - Last update in local repository: #{`git show -s --format='#{git_commit_message_format}' '#{CREW_LIB_PATH}'`.chomp}
+    - Last update in local repository: #{`cd '#{CREW_LIB_PATH}'; git show -s --format='#{git_commit_message_format}' '#{CREW_LIB_PATH}'`.chomp}
 
     - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
     - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
