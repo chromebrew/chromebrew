@@ -3,8 +3,8 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  @_ver = '0.0.4'
-  version @_ver + '-1'
+  @_ver = '0.0.5'
+  version @_ver
   license 'GPL-3+'
   compatibility 'all'
 
@@ -13,13 +13,6 @@ class Crew_profile_base < Package
 
   no_compile_needed
   no_patchelf
-
-  def self.patch
-    # TODO: fix this bug
-    # stat: cannot statx '': No such file or directory
-    # bash: [: : integer expression expected
-    system 'sed', '-i', 's,${TMPDIR},${TMPDIR:-/usr/local/tmp},g', './src/env.d/00-path'
-  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
