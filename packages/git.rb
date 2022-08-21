@@ -3,24 +3,24 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.37.0'
+  @_ver = '2.37.2'
   version @_ver.to_s
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.0.tar.xz'
-  source_sha256 '9f7fa1711bd00c4ec3dde2fe44407dc13f12e4772b5e3c72a58db4c07495411f'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.2.tar.xz'
+  source_sha256 '1c3d9c821c4538e7a6dac30a4af8bd8dcfe4f651f95474c526b52f83406db003'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_armv7l/git-2.37.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_armv7l/git-2.37.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_i686/git-2.37.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.0_x86_64/git-2.37.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.2_armv7l/git-2.37.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.2_armv7l/git-2.37.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.2_i686/git-2.37.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.2_x86_64/git-2.37.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '1d64dadd0952be8dc00b9185f7dc541df11af2913e662a2ee648e6a8836c791c',
-     armv7l: '1d64dadd0952be8dc00b9185f7dc541df11af2913e662a2ee648e6a8836c791c',
-       i686: '39c3a1f68d43b5f82e0f06e2678767ebae10148ff2f6613a4fe7185ffd31ecd4',
-     x86_64: '3fcc72c65c3ba91c0e6b363b318208553935445961b8942dc7ad28c1535f57fd'
+    aarch64: '70220afef4ed6b3a3d1efefce28ab02a118e09e206c1e6f7411959855839085e',
+     armv7l: '70220afef4ed6b3a3d1efefce28ab02a118e09e206c1e6f7411959855839085e',
+       i686: 'f1d49a1f9cab20818b67a654af0ce6f073c68bf972643426fbd122ecd58293ef',
+     x86_64: '1c683f85c63ab3eb205b3f023c85b3422b940da4e958c7445928d0e9c94b5903'
   })
 
   depends_on 'ca_certificates' => :build
@@ -40,6 +40,7 @@ class Git < Package
   is_musl
   is_static
   no_patchelf
+  no_zstd
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
