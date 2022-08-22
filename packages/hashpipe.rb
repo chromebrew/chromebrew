@@ -196,7 +196,7 @@ class Hashpipe < Package
        
        all: hashpipe
     HASHPIPE_PATCHEOF
-    IO.write('hashpipe.patch', @hashpipe_patch, perm: 0o644)
+    File.write('hashpipe.patch', @hashpipe_patch, perm: 0o644)
     system 'patch -Np1 -i hashpipe.patch'
   end
 

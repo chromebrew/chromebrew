@@ -9,17 +9,17 @@ class Fslint < Package
   source_url 'https://www.pixelbeat.org/fslint/fslint-2.46.tar.xz'
   source_sha256 'f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_i686/fslint-2.46-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_x86_64/fslint-2.46-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_x86_64/fslint-2.46-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '2eb0a037b1b395589ad00bf857eb9eba17e9c30f1d1683417d7f00ef0854e50c',
      armv7l: '2eb0a037b1b395589ad00bf857eb9eba17e9c30f1d1683417d7f00ef0854e50c',
        i686: 'b0a8192b7ca71e2412533ea0c1e81db0532b15324472a9bf24125e023aee2ba3',
-     x86_64: '5e3798a1ecaadb78deeaf1ac17bcafe842e72aac70247b9f95ccd915a5925460',
+     x86_64: '5e3798a1ecaadb78deeaf1ac17bcafe842e72aac70247b9f95ccd915a5925460'
   })
 
   depends_on 'help2man'

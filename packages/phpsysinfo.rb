@@ -20,7 +20,7 @@ class Phpsysinfo < Package
   def self.postinstall
     puts "\nTo get started, execute the following:".lightblue
     puts "cd #{CREW_PREFIX}/share/phpsysinfo".lightblue
-    puts "php -S localhost:9000".lightblue
+    puts 'php -S localhost:9000'.lightblue
     puts "Visit localhost:9000 in your browser.\n".lightblue
   end
 end

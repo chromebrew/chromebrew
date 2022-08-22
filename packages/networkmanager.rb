@@ -54,7 +54,7 @@ class Networkmanager < Package
          ],
          c_args: [
     ORDER_PATCH_EOF
-    IO.write('order.patch', @order_patch)
+    File.write('order.patch', @order_patch)
     # This should not be needed in versions newer than 1.30.0 as it is patched
     # in the main branch.
     system 'patch -p1 -i order.patch' unless Gem::Version.new(@_ver) > Gem::Version.new('1.30.0')
@@ -110,7 +110,7 @@ class Networkmanager < Package
         IFLA_BR_VLAN_STATS_PER_PORT,
         };
       KERNEL_MISSING_EOF
-      IO.write('kernel_missing_defs.txt', @kernel_missing)
+      File.write('kernel_missing_defs.txt', @kernel_missing)
       system "sed -i '/nm-udev-utils.h/ r kernel_missing_defs.txt' src/core/platform/nm-linux-platform.c"
     end
   end

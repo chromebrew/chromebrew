@@ -12,17 +12,17 @@ class Glmark2 < Package
   source_url 'https://github.com/glmark2/glmark2/archive/2020.04.tar.gz'
   source_sha256 '0fa7723111c928a73c04d4fa4adfc15a9dea6d335fe189f59c74ae5af26f99a2'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_armv7l/glmark2-2020.04-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_armv7l/glmark2-2020.04-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_i686/glmark2-2020.04-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_x86_64/glmark2-2020.04-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2020.04_x86_64/glmark2-2020.04-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e4a59d48fdb44be2e3a8cbec3c0b9cd5c10a1dae8d07121010fd73b6986015d2',
      armv7l: 'e4a59d48fdb44be2e3a8cbec3c0b9cd5c10a1dae8d07121010fd73b6986015d2',
        i686: '49227b2fdedf881b927ca755404164587daf56ed1968854f2bb03071724d52a5',
-     x86_64: '32ed34762096df02768643f7781c7e1a587ce95e6cfd0a5ddbf6c4720b87d923',
+     x86_64: '32ed34762096df02768643f7781c7e1a587ce95e6cfd0a5ddbf6c4720b87d923'
   })
 
   depends_on 'libjpeg_turbo'
@@ -32,7 +32,7 @@ class Glmark2 < Package
 
   def self.build
     system "python2 ./waf configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-flavors x11-gl,x11-glesv2"
-    system "python2 ./waf"
+    system 'python2 ./waf'
   end
 
   def self.install

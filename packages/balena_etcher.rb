@@ -8,12 +8,12 @@ class Balena_etcher < Package
   license 'Apache-2.0'
   compatibility 'x86_64, i686'
 
-  source_url ({
+  source_url({
     x86_64: "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-x64.AppImage",
       i686: "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-ia32.AppImage"
   })
 
-  source_sha256 ({
+  source_sha256({
     x86_64: 'b2432729ad79e6aa1d6292465db065b078b627c5ec6ddedea8580434088cb74f',
       i686: 'c9a2c976f0edff0521c71b9e4e948dc6f133749cd7e60ffc3796a6743d17e841'
   })
@@ -40,13 +40,13 @@ class Balena_etcher < Package
       cd #{CREW_PREFIX}/share/balena-etcher
       sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ./AppRun "$@"
     EOF
-    IO.write('etcher.sh', etcher)
+    File.write('etcher.sh', etcher)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/balena-etcher"
-    FileUtils.install 'etcher.sh', "#{CREW_DEST_PREFIX}/bin/etcher", mode: 0755
+    FileUtils.install 'etcher.sh', "#{CREW_DEST_PREFIX}/bin/etcher", mode: 0o755
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/balena-etcher"
   end
 

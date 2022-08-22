@@ -9,17 +9,17 @@ class Libxft < Package
   source_url 'https://www.x.org/archive/individual/lib/libXft-2.3.3.tar.bz2'
   source_sha256 '225c68e616dd29dbb27809e45e9eadf18e4d74c50be43020ef20015274529216'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_armv7l/libxft-2.3.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_armv7l/libxft-2.3.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_i686/libxft-2.3.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_x86_64/libxft-2.3.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxft/2.3.3_x86_64/libxft-2.3.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '609b249aaa1dcd93cac3d16996dc8c0141c0150d288ff2bf9fe004e7cc5396ab',
      armv7l: '609b249aaa1dcd93cac3d16996dc8c0141c0150d288ff2bf9fe004e7cc5396ab',
        i686: 'c8c994cc8ae2d890e4c9410b84f8987c7f993a161bb1986ba547448bcd7de732',
-     x86_64: 'cfe26131953575e93d3254fbc87a314379e66ed6c33445435b77bcf9236ed7cc',
+     x86_64: 'cfe26131953575e93d3254fbc87a314379e66ed6c33445435b77bcf9236ed7cc'
   })
 
   depends_on 'libxrender'

@@ -9,17 +9,17 @@ class Alsa_plugins < Package
   source_url 'ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.2.2.tar.bz2'
   source_sha256 '1c0f06450c928d711719686c9dbece2d480184f36fab11b8f0534cb7b41e337d'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_i686/alsa_plugins-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_x86_64/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_x86_64/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
      armv7l: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
        i686: '2e363fbae56a4dc05af716316f6465b36655663a5953437af4c996e22eece8bc',
-     x86_64: '2c0108843697c8711160defebbf6db421a2b6fe1aa582b9567e8cbb9b124bf02',
+     x86_64: '2c0108843697c8711160defebbf6db421a2b6fe1aa582b9567e8cbb9b124bf02'
   })
 
   depends_on 'alsa_lib' # R

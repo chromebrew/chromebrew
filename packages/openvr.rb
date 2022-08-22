@@ -9,17 +9,17 @@ class Openvr < Package
   source_url 'https://github.com/ValveSoftware/openvr/archive/v1.12.5.tar.gz'
   source_sha256 'f3cdbaa946688553638e6d65978f156311c9b08825316198d925f5eade6cfeb7'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvr/1.12.5_armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvr/1.12.5_armv7l/openvr-1.12.5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvr/1.12.5_i686/openvr-1.12.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvr/1.12.5_x86_64/openvr-1.12.5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvr/1.12.5_x86_64/openvr-1.12.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a76d1856f054658c6e2d6bc1eb32ee15331e7d2a06c136341d33262b1bce0930',
      armv7l: 'a76d1856f054658c6e2d6bc1eb32ee15331e7d2a06c136341d33262b1bce0930',
        i686: '91d3f788580791cdb59522621f37227b69974fad3a2ad52c72b2f956a36f06de',
-     x86_64: '5cdd33423050168ac1704e498aa52fad652ca71c1060de4b7b8243b56807896f',
+     x86_64: '5cdd33423050168ac1704e498aa52fad652ca71c1060de4b7b8243b56807896f'
   })
 
   def self.build

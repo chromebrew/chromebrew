@@ -10,5 +10,4 @@ class Desktop_file_utilities < Package
   is_fake
 
   depends_on 'desktop_file_utils'
-
 end

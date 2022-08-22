@@ -20,14 +20,14 @@ class V2ray < Package
   end
 
   def self.install
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/share/v2ray')
-    FileUtils.cp_r('.', CREW_DEST_PREFIX + '/share/v2ray')
-    FileUtils.chmod('u=x', CREW_DEST_PREFIX + '/share/v2ray/v2ray')
-    FileUtils.chmod('u=x', CREW_DEST_PREFIX + '/share/v2ray/v2ctl')
-    FileUtils.mkdir_p(CREW_DEST_PREFIX + '/bin')
-    FileUtils.cd(CREW_DEST_PREFIX + '/bin') do
-      FileUtils.ln_s(CREW_PREFIX + '/share/v2ray/v2ray', 'v2ray')
-      FileUtils.ln_s(CREW_PREFIX + '/share/v2ray/v2ctl', 'v2ctl')
+    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/v2ray")
+    FileUtils.cp_r('.', "#{CREW_DEST_PREFIX}/share/v2ray")
+    FileUtils.chmod('u=x', "#{CREW_DEST_PREFIX}/share/v2ray/v2ray")
+    FileUtils.chmod('u=x', "#{CREW_DEST_PREFIX}/share/v2ray/v2ctl")
+    FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")
+    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
+      FileUtils.ln_s("#{CREW_PREFIX}/share/v2ray/v2ray", 'v2ray')
+      FileUtils.ln_s("#{CREW_PREFIX}/share/v2ray/v2ctl", 'v2ctl')
     end
   end
 

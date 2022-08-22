@@ -9,17 +9,17 @@ class Rtaudio < Package
   source_url 'http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.1.0.tar.gz'
   source_sha256 'ff138b2b6ed2b700b04b406be718df213052d4c952190280cf4e2fab4b61fe09'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtaudio/5.1.0_armv7l/rtaudio-5.1.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtaudio/5.1.0_armv7l/rtaudio-5.1.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtaudio/5.1.0_i686/rtaudio-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtaudio/5.1.0_x86_64/rtaudio-5.1.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rtaudio/5.1.0_x86_64/rtaudio-5.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '41cb81dbff61759c229705a92299c6e53329c8958d4d6381ea9d450750896e5d',
      armv7l: '41cb81dbff61759c229705a92299c6e53329c8958d4d6381ea9d450750896e5d',
        i686: '2ac3063104abbe1c0bfe2e38a437dfddb506b2e2ef40f3707606a5a899492c06',
-     x86_64: '78bd93817203d87bfe03d8d203b8f0ac792339b5214b08bc1ccbcc842499793b',
+     x86_64: '78bd93817203d87bfe03d8d203b8f0ac792339b5214b08bc1ccbcc842499793b'
   })
 
   depends_on 'alsa_lib'
@@ -37,9 +37,9 @@ class Rtaudio < Package
     system 'make'
   end
 
-  #def self.check
+  # def self.check
   #  system 'make', 'check'
-  #end
+  # end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

@@ -47,7 +47,7 @@ class Xdg_base < Package
       export XDG_DATA_HOME=#{CREW_PREFIX}/.config/.local/share
       export XDG_RUNTIME_DIR=/var/run/chrome
     XDGBASEEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @xdgbaseenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/xdg_base", @xdgbaseenv)
   end
 
   def self.postinstall

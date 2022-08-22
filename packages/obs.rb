@@ -9,13 +9,13 @@ class Obs < Package
   source_url 'https://github.com/obsproject/obs-studio/archive/24.0.5.tar.gz'
   source_sha256 'b3d65f36ad2bfcd6ffde1771be64662ce8e8771349fab82bb49f80dbb1f5f2e6'
 
-  binary_url ({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/obs/24.0.5_i686/obs-24.0.5-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/obs/24.0.5_x86_64/obs-24.0.5-chromeos-x86_64.tar.xz',
+  binary_url({
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/obs/24.0.5_i686/obs-24.0.5-chromeos-i686.tar.xz',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/obs/24.0.5_x86_64/obs-24.0.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-      i686: 'b27299c233995f0c03a4dc2a8563bec7a2f00582a2554d62829d216769f42d5c',
-    x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea',
+  binary_sha256({
+    i686: 'b27299c233995f0c03a4dc2a8563bec7a2f00582a2554d62829d216769f42d5c',
+    x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
   })
 
   depends_on 'libcurl'
@@ -42,7 +42,7 @@ class Obs < Package
       system 'make'
     end
     # Restore the original linker.
-    system 'ld_default', "#{old_ld}"
+    system 'ld_default', old_ld.to_s
   end
 
   def self.install
@@ -61,9 +61,9 @@ class Obs < Package
     puts
     puts "To get started, type 'obs'.".lightblue
     puts
-    puts "To completely remove, execute the following:".lightblue
-    puts "crew remove obs".lightblue
-    puts "rm -rf ~/.config/obs-studio/".lightblue
+    puts 'To completely remove, execute the following:'.lightblue
+    puts 'crew remove obs'.lightblue
+    puts 'rm -rf ~/.config/obs-studio/'.lightblue
     puts
   end
 end

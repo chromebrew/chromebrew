@@ -13,21 +13,21 @@ class Tcpflow < Package
   depends_on 'cairo'
   depends_on 'libpcap'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpflow/1.5.0_armv7l/tcpflow-1.5.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpflow/1.5.0_armv7l/tcpflow-1.5.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpflow/1.5.0_x86_64/tcpflow-1.5.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpflow/1.5.0_x86_64/tcpflow-1.5.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '080ce34873a9d15239a61117c58124946187278d39f0c432928e5dd70a919d59',
      armv7l: '080ce34873a9d15239a61117c58124946187278d39f0c432928e5dd70a919d59',
-     x86_64: 'c30c853d77b7111d2f03af13b605e430d24f16fa4ea4349288ebe63488fd4fc6',
+     x86_64: 'c30c853d77b7111d2f03af13b605e430d24f16fa4ea4349288ebe63488fd4fc6'
   })
 
   def self.build
     system './configure',
-             "--prefix=#{CREW_PREFIX}",
-             "--libdir=#{CREW_LIB_PREFIX}"
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 

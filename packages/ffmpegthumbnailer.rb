@@ -9,17 +9,17 @@ class Ffmpegthumbnailer < Package
   source_url 'https://github.com/dirkvdb/ffmpegthumbnailer/releases/download/2.2.0/ffmpegthumbnailer-2.2.0.tar.bz2'
   source_sha256 'e5c31299d064968198cd378f7488e52cd5e738fac998eea780bc77d7f32238c2'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_armv7l/ffmpegthumbnailer-2.2.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_armv7l/ffmpegthumbnailer-2.2.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_i686/ffmpegthumbnailer-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_x86_64/ffmpegthumbnailer-2.2.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_x86_64/ffmpegthumbnailer-2.2.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
      armv7l: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
        i686: 'e47f302bf25775143bd1e7b0a62af36dfe734d7f9766c5e9a13c4eee54b69701',
-     x86_64: '1ca2b6e0d414f56c48952814a8470e01c012d11434ab3c26fa28dfbb39b13890',
+     x86_64: '1ca2b6e0d414f56c48952814a8470e01c012d11434ab3c26fa28dfbb39b13890'
   })
 
   depends_on 'ffmpeg'
@@ -38,7 +38,7 @@ class Ffmpegthumbnailer < Package
 
   def self.install
     Dir.chdir 'build' do
-      system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
   end
 end

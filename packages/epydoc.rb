@@ -9,17 +9,17 @@ class Epydoc < Package
   source_url 'https://downloads.sourceforge.net/project/epydoc/epydoc/3.0.1/epydoc-3.0.1.tar.gz'
   source_sha256 'd4e5c8d90937d01b05170f592c1fa9b29e9ed0498dfe7f0eb2a3af61725b6ad1'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_armv7l/epydoc-3.0.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_i686/epydoc-3.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_x86_64/epydoc-3.0.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epydoc/3.0.1_x86_64/epydoc-3.0.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '8991ce352c0c8d49e7947ed3d99194dc3d8b3c6277c21ee47f44925b9377dccf',
      armv7l: '8991ce352c0c8d49e7947ed3d99194dc3d8b3c6277c21ee47f44925b9377dccf',
        i686: 'cff7e6d737b259381d1538acf184b7f209d857c297264fa91483c6b01033356b',
-     x86_64: '5978478fb0eadb8a0a48b76b3c96bf0baa6b6c8d31ecd97c121a4cbaeb0941dd',
+     x86_64: '5978478fb0eadb8a0a48b76b3c96bf0baa6b6c8d31ecd97c121a4cbaeb0941dd'
   })
 
   depends_on 'python2'

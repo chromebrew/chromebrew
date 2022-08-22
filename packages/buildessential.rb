@@ -51,31 +51,31 @@ class Buildessential < Package
   depends_on 'texinfo' # This contains makeinfo
 
   # Assembler
-  #depends_on 'nasm'
-  #depends_on 'yasm'
+  # depends_on 'nasm'
+  # depends_on 'yasm'
 
   # BASIC
-  #depends_on 'freebasic'
-  #depends_on 'qb64'
+  # depends_on 'freebasic'
+  # depends_on 'qb64'
 
   # CMake
   depends_on 'cmake'
 
   # COBOL
-  #depends_on 'gnucobol'
+  # depends_on 'gnucobol'
 
   # Google
-  #depends_on 'dart'
-  #depends_on 'flutter'
-  #depends_on 'go'
-  #depends_on 'gox'
-  #depends_on 'gyp'
+  # depends_on 'dart'
+  # depends_on 'flutter'
+  # depends_on 'go'
+  # depends_on 'gox'
+  # depends_on 'gyp'
 
   # Haskell
-  #depends_on 'ghc'
+  # depends_on 'ghc'
 
   # Java
-  #depends_on 'jdk'
+  # depends_on 'jdk'
 
   # LLVM
   depends_on 'llvm'
@@ -84,12 +84,12 @@ class Buildessential < Package
   depends_on 'meson'
 
   # Node.js
-  #depends_on 'nodebrew'
-  #depends_on 'nvm'
-  #depends_on 'yarn'
+  # depends_on 'nodebrew'
+  # depends_on 'nvm'
+  # depends_on 'yarn'
 
   # Pascal
-  #depends_on 'fpc'
+  # depends_on 'fpc'
 
   # Patchelf
   # for setting library paths in packages
@@ -101,11 +101,11 @@ class Buildessential < Package
   depends_on 'pcre2'
 
   # Perl module build?
-  #depends_on 'perl_module_build'
+  # depends_on 'perl_module_build'
 
   # PHP
-  #depends_on 'php'
-  #depends_on 'composer'
+  # depends_on 'php'
+  # depends_on 'composer'
 
   # Python
   depends_on 'python2'
@@ -116,17 +116,17 @@ class Buildessential < Package
   depends_on 'py3_setuptools'
 
   # Qt
-  #depends_on 'qtcreator'
-  #depends_on 'qttools'
+  # depends_on 'qtcreator'
+  # depends_on 'qttools'
 
   # Rust
-  #depends_on 'rust'
+  # depends_on 'rust'
 
   # Samurai
-  #depends_on 'samurai'
+  # depends_on 'samurai'
 
   # xorg protocol headers
-  #depends_on 'xorg_proto'
+  # depends_on 'xorg_proto'
 
   # Packages needed for shrinking package archives
   depends_on 'rdfind'
@@ -135,5 +135,4 @@ class Buildessential < Package
 
   # Packages needed for compressing archives
   depends_on 'zstd'
-
 end

@@ -27,17 +27,17 @@ class Xorg_intel_driver < Package
             --libexecdir=#{CREW_LIB_PREFIX} \
             --with-default-dri=3"
 
-    #system "env LDFLAGS='-lXv' \
+    # system "env LDFLAGS='-lXv' \
     #        meson #{CREW_MESON_OPTIONS} \
     #        -Dwith-default-dri=3 \
     #        builddir"
     #
-    #system 'meson configure builddir'
-    #system "ninja -l #{CREW_NPROC.to_i/2} -C builddir"
+    # system 'meson configure builddir'
+    # system "ninja -l #{CREW_NPROC.to_i/2} -C builddir"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    #system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    # system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

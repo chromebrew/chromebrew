@@ -9,17 +9,17 @@ class Mate_calc < Package
   source_url 'https://pub.mate-desktop.org/releases/1.21/mate-calc-1.21.0.tar.xz'
   source_sha256 'c6b2c4d832f67d5f3d1293cb143e428365077e3cdfe4fc4bb80b3fce5362b51e'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_calc/1.21_armv7l/mate_calc-1.21-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_calc/1.21_armv7l/mate_calc-1.21-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_calc/1.21_i686/mate_calc-1.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_calc/1.21_x86_64/mate_calc-1.21-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_calc/1.21_x86_64/mate_calc-1.21-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '311ade356f6259ca68ebf2318b7dfec9053e51899c3bb033b91e091479d587f6',
      armv7l: '311ade356f6259ca68ebf2318b7dfec9053e51899c3bb033b91e091479d587f6',
        i686: '1e3ce84febcc23812533a02f4d49b3ed4bb7b4a9a97f50cd220313ee9d701884',
-     x86_64: 'c5848a45335a4bcbb9e4066c3e90875a82b3ebc1486fe1279ded5babbddd3148',
+     x86_64: 'c5848a45335a4bcbb9e4066c3e90875a82b3ebc1486fe1279ded5babbddd3148'
   })
 
   depends_on 'gtk3'
@@ -27,13 +27,12 @@ class Mate_calc < Package
   depends_on 'yelp_tools'
 
   def self.build
-    system "sh autogen.sh"
+    system 'sh autogen.sh'
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install' # the steps required to install the package
   end
-
 end

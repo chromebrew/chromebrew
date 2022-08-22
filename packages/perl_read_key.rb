@@ -10,5 +10,4 @@ class Perl_read_key < Package
   is_fake
 
   depends_on 'perl_term_readkey'
-
 end

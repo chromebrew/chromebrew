@@ -9,17 +9,17 @@ class Rng_tools < Package
   source_url 'https://github.com/nhorman/rng-tools/archive/v6.5.tar.gz'
   source_sha256 '5fecd904f7d01262b3209ff78dd3b9594aac8daa41badd5a1e6438658e80c36e'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_i686/rng_tools-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_x86_64/rng_tools-6.5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_x86_64/rng_tools-6.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'd24c4b10672a24a8fee318a3eabe9f6124da04ffc8099243c88f30dddf29eb90',
      armv7l: 'd24c4b10672a24a8fee318a3eabe9f6124da04ffc8099243c88f30dddf29eb90',
        i686: '645bf08eaa22ffc84d9603bad4a22ef754d81b95cc44fa1cbc3ebe951e8b1fcf',
-     x86_64: 'df9504bf42632204e92fb4b97ac0b863c7e8cbb7d5592ec9ab7c4224071b711b',
+     x86_64: 'df9504bf42632204e92fb4b97ac0b863c7e8cbb7d5592ec9ab7c4224071b711b'
   })
 
   depends_on 'libcurl'
@@ -29,7 +29,7 @@ class Rng_tools < Package
 
   def self.build
     system './autogen.sh'
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
     system "echo '#!/bin/bash' > startrngd"
     system "echo 'RNGD=#{CREW_PREFIX}/sbin/rngd' >> startrngd"
@@ -62,24 +62,24 @@ class Rng_tools < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
-    system "install", "-Dm755", "startrngd", "stoprngd", "#{CREW_DEST_PREFIX}/bin/"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'install', '-Dm755', 'startrngd', 'stoprngd', "#{CREW_DEST_PREFIX}/bin/"
   end
 
   def self.postinstall
     puts
-    puts "To start the rngd daemon, execute the following:".lightblue
-    puts "startrngd".lightblue
+    puts 'To start the rngd daemon, execute the following:'.lightblue
+    puts 'startrngd'.lightblue
     puts
-    puts "To stop the rngd daemon, execute the following:".lightblue
-    puts "stoprngd".lightblue
+    puts 'To stop the rngd daemon, execute the following:'.lightblue
+    puts 'stoprngd'.lightblue
     puts
-    puts "To start the rngd daemon at login, execute the following:".lightblue
+    puts 'To start the rngd daemon at login, execute the following:'.lightblue
     puts "echo '# start the rngd daemon' >> ~/.bashrc".lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startrngd ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startrngd' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
     puts
   end
 end

@@ -23,7 +23,6 @@ class Pango < Package
      x86_64: '23e71f4700068b9123fdcc7fe5d6750602a077c4c7d0d9954c72411050bf6778'
   })
 
-
   depends_on 'cairo'
   depends_on 'fontconfig'
   depends_on 'freetype'

@@ -11,17 +11,17 @@ class Arduino_ide < Package
 
   no_compile_needed
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_armv7l/arduino_ide-1.8.10-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_i686/arduino_ide-1.8.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_x86_64/arduino_ide-1.8.10-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.10_x86_64/arduino_ide-1.8.10-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'cf323df5db4b7b3d225199539f185cdd66bb7d86705b8eec5125d1538508bf9b',
      armv7l: 'cf323df5db4b7b3d225199539f185cdd66bb7d86705b8eec5125d1538508bf9b',
        i686: '9755e405993c3608fa7ff631eab47b0ab25af9b043f369ebf96d512e4a0b0375',
-     x86_64: 'f3a6d2ae75065565c1891d09b4e5556647be4dd6e5a04d8345b5a3b0d1183792',
+     x86_64: 'f3a6d2ae75065565c1891d09b4e5556647be4dd6e5a04d8345b5a3b0d1183792'
   })
 
   depends_on 'xzutils'
@@ -39,7 +39,7 @@ class Arduino_ide < Package
   end
 
   def self.build
-    Dir.chdir("build") do
+    Dir.chdir('build') do
       system 'env',
              "JAVA_HOME=#{CREW_PREFIX}/share/jdk8",
              'ant',
@@ -49,7 +49,7 @@ class Arduino_ide < Package
              'clean',
              'dist'
       system "echo '#!/bin/bash' > arduino"
-      system "echo >> arduino"
+      system 'echo >> arduino'
       system "echo 'echo \"Enabling Arduino write access...\"' >> arduino"
       system "echo 'sudo chmod o+rw /dev/ttyACM*' >> arduino"
       system "echo '#{CREW_PREFIX}/share/arduino-#{version}/arduino \"$@\"' >> arduino"
@@ -59,7 +59,7 @@ class Arduino_ide < Package
   end
 
   def self.install
-    Dir.chdir("build") do
+    Dir.chdir('build') do
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
       system "tar xpf linux/arduino-#{version}-#{@platform}.tar.xz -C #{CREW_DEST_PREFIX}/share/"
       system "install -Dm755 arduino #{CREW_DEST_PREFIX}/bin/arduino"

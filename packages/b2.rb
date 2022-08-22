@@ -9,17 +9,17 @@ class B2 < Package
   source_url 'https://github.com/boostorg/build/archive/refs/tags/4.4.1.tar.gz'
   source_sha256 '31a243b1eb26638500977a8386e56d44f86c18db70cf0a5dcdd2d7391afc1a61'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_armv7l/b2-4.4.1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_armv7l/b2-4.4.1-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_i686/b2-4.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_x86_64/b2-4.4.1-chromeos-x86_64.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/b2/4.4.1_x86_64/b2-4.4.1-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e569052575f2ea9cca33f7fc6b1bfd95a8fb3a6366da44142f51c99a71b377ed',
      armv7l: 'e569052575f2ea9cca33f7fc6b1bfd95a8fb3a6366da44142f51c99a71b377ed',
        i686: '108b05f8acd6c4f5b0b9748fe274a7d439dfd2bf52ea1a37bee8eca936a542c5',
-     x86_64: '545ab9a0d26e0abe5296a7913ea7d0ded9caea6592f1cf7cd623d290e7f96343',
+     x86_64: '545ab9a0d26e0abe5296a7913ea7d0ded9caea6592f1cf7cd623d290e7f96343'
   })
 
   def self.build

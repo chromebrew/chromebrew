@@ -8,11 +8,11 @@ class Snowflake < Package
   compatibility 'x86_64'
   source_url 'SKIP'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snowflake/1.0.4_x86_64/snowflake-1.0.4-chromeos-x86_64.tpxz',
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snowflake/1.0.4_x86_64/snowflake-1.0.4-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-    x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f',
+  binary_sha256({
+    x86_64: '4e524ad28ef440ded64cb667b188ced01d662fc8240d85be39cc7319a306e99f'
   })
 
   depends_on 'jdk11'
@@ -29,7 +29,7 @@ class Snowflake < Package
 
   def self.install
     system "curl -L#o snowflake.jar https://github.com/subhra74/snowflake/releases/download/v#{version}/snowflake.jar"
-    abort 'Checksum mismatch. 😔 Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('snowflake.jar') ) == 'cc1768e5ce7038d26a893e00066e4d8bed2f42c1ba75b960b324471c5eab74c1'
+    abort 'Checksum mismatch. 😔 Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('snowflake.jar')) == 'cc1768e5ce7038d26a893e00066e4d8bed2f42c1ba75b960b324471c5eab74c1'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/snowflake"
     FileUtils.mv 'snowflake.jar', "#{CREW_DEST_PREFIX}/share/snowflake"
@@ -43,10 +43,10 @@ class Snowflake < Package
   def self.remove
     config_dir = "#{HOME}/snowflake-ssh"
     if Dir.exist? config_dir
-      puts "WARNING: This will remove all saved ssh sessions!".orange
+      puts 'WARNING: This will remove all saved ssh sessions!'.orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.getc
+      when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

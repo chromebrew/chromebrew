@@ -9,17 +9,17 @@ class Arping < Package
   source_url 'https://github.com/ThomasHabets/arping/archive/arping-2.21.tar.gz'
   source_sha256 '7bf550571aa1d4a2b00878bb2f6fb857a09d30bf65411c90d62afcd86755bd81'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_armv7l/arping-2.21-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_armv7l/arping-2.21-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_i686/arping-2.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_x86_64/arping-2.21-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_x86_64/arping-2.21-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e85f871e84dce5360c1b50eccaa3ae5a1beaea9f89120cf0da19ffcabcf19fa1',
      armv7l: 'e85f871e84dce5360c1b50eccaa3ae5a1beaea9f89120cf0da19ffcabcf19fa1',
        i686: 'b808583d44c865ac023986b02e4c1ad8d9fbdbd12540775f620953b01a810e50',
-     x86_64: '46c5c7e174bb800bb317e09df6f77448040c7aeda137a23e2b8ed85ecb852fcb',
+     x86_64: '46c5c7e174bb800bb317e09df6f77448040c7aeda137a23e2b8ed85ecb852fcb'
   })
 
   depends_on 'libpcap'

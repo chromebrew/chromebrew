@@ -9,17 +9,17 @@ class Lapack < Package
   source_url 'https://www.netlib.org/lapack/lapack-3.8.0.tar.gz'
   source_sha256 'deb22cc4a6120bff72621155a9917f485f96ef8319ac074a7afbc68aab88bcf6'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_armv7l/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_armv7l/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_i686/lapack-3.8.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_x86_64/lapack-3.8.0-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_x86_64/lapack-3.8.0-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'f93b9afdd088faa48b11735b7467a2056f13efc98d0edc158166364f1edd795d',
      armv7l: 'f93b9afdd088faa48b11735b7467a2056f13efc98d0edc158166364f1edd795d',
        i686: '3f3d266856c00034b1f3a1efad00a4a8d838ecbc3682cc7a3788fbb209ff0da7',
-     x86_64: '45aec7ef9a9c37e098be7fd80b88c580bef29181b398e6e4c8d15cee9ddf7456',
+     x86_64: '45aec7ef9a9c37e098be7fd80b88c580bef29181b398e6e4c8d15cee9ddf7456'
   })
 
   depends_on 'python2'

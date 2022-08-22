@@ -9,17 +9,17 @@ class Words < Package
   source_url 'https://github.com/saltedcoffii/words/releases/download/1.0.0/words-1.0.0.txz'
   source_sha256 '61168093e1ff4f88d838e09e40530cc0c192672ad0dbc01806534e9def296c3b'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/words/1.0.0_armv7l/words-1.0.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/words/1.0.0_armv7l/words-1.0.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/words/1.0.0_i686/words-1.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/words/1.0.0_x86_64/words-1.0.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/words/1.0.0_x86_64/words-1.0.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '42309c5ae83987a15d29c6458db87eaa4402c068dedb8f01258cec29c4672eeb',
      armv7l: '42309c5ae83987a15d29c6458db87eaa4402c068dedb8f01258cec29c4672eeb',
        i686: '3b31ade23762c2e604890643ba5d7d3b579af215a7ec6049cb2b21c4e269990a',
-     x86_64: '7f05c55148da13219f63f09588465197f9417c6a950464ffec42eea6626ef2b2',
+     x86_64: '7f05c55148da13219f63f09588465197f9417c6a950464ffec42eea6626ef2b2'
   })
 
   def self.install

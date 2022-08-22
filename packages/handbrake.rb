@@ -9,11 +9,11 @@ class Handbrake < Package
   source_url 'https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrake-1.3.3-source.tar.bz2'
   source_sha256 '218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.3.3-1_x86_64/handbrake-1.3.3-1-chromeos-x86_64.tar.xz',
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.3.3-1_x86_64/handbrake-1.3.3-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    x86_64: '13e06c6458fe918ab1a46deeadcea9415c00be877a333b9bfbe5969c1ca1ba2a',
+  binary_sha256({
+    x86_64: '13e06c6458fe918ab1a46deeadcea9415c00be877a333b9bfbe5969c1ca1ba2a'
   })
 
   depends_on 'gtk3'
@@ -50,7 +50,7 @@ class Handbrake < Package
     puts
     puts "Type 'HandBrakeCLI' for the command line.".lightblue
     puts
-    puts "To complete the installation, execute the following:".lightblue
+    puts 'To complete the installation, execute the following:'.lightblue
     puts "echo 'alias ghb=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland ghb\"' >> ~/.bashrc".lightblue
     puts
   end

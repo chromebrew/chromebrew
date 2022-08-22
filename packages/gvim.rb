@@ -80,7 +80,7 @@ class Gvim < Package
     # these are provided by 'xxd_standalone'
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/xxd #{CREW_DEST_MAN_PREFIX}/man1/xxd.1]
     @deletefiles.each do |f|
-      FileUtils.rm f if  File.exist?(f)
+      FileUtils.rm_f f 
     end
   end
 

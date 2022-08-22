@@ -20,11 +20,11 @@ class Udeler < Package
 
   def self.build
     udeler = <<~EOF
-    #!/bin/bash
-    cd #{CREW_PREFIX}/share/udeler
-    GDK_BACKEND=x11 ./AppRun "$@"
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/udeler
+      GDK_BACKEND=x11 ./AppRun "$@"
     EOF
-    IO.write('udeler.sh', udeler)
+    File.write('udeler.sh', udeler)
   end
 
   def self.install
@@ -33,7 +33,7 @@ class Udeler < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/udeler"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.mv 'udeler.desktop', "#{CREW_DEST_PREFIX}/share/applications"
-    FileUtils.install 'udeler.sh', "#{CREW_DEST_PREFIX}/bin/udeler", mode: 0755
+    FileUtils.install 'udeler.sh', "#{CREW_DEST_PREFIX}/bin/udeler", mode: 0o755
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/udeler"
   end
 

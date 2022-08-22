@@ -9,9 +9,9 @@ class Freecad < Package
   source_url 'https://github.com/FreeCAD/FreeCAD/releases/download/0.19.2/FreeCAD_0.19-24291-Linux-Conda_glibc2.12-x86_64.AppImage'
   source_sha256 'c196a6e59349ed452cc9b9af2c6a0d983a698831630aa5c7077565ed8570c9ad'
 
-  binary_url ({
+  binary_url({
   })
-  binary_sha256 ({
+  binary_sha256({
   })
 
   depends_on 'sommelier'
@@ -27,17 +27,17 @@ class Freecad < Package
 
   def self.build
     @freecad = <<~EOF
-    #!/bin/bash
-    cd #{CREW_PREFIX}/share/freecad
-    ./AppRun "$@"
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/freecad
+      ./AppRun "$@"
     EOF
-    IO.write('freecad.sh', @freecad)
+    File.write('freecad.sh', @freecad)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/freecad"
-    FileUtils.install 'freecad.sh', "#{CREW_DEST_PREFIX}/bin/freecad", mode: 0755
+    FileUtils.install 'freecad.sh', "#{CREW_DEST_PREFIX}/bin/freecad", mode: 0o755
     FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/freecad"
   end
 
@@ -47,11 +47,11 @@ class Freecad < Package
 
   def self.remove
     config_dir = "#{HOME}/.FreeCAD"
-    if Dir.exist? "#{config_dir}"
+    if Dir.exist? config_dir.to_s
       print "\nWould you like to remove #{config_dir}? [y/N] "
       case $stdin.getc
       when 'y', 'Y'
-        FileUtils.rm_rf "#{config_dir}"
+        FileUtils.rm_rf config_dir.to_s
         puts "#{config_dir} removed.".lightred
       else
         puts "#{config_dir} saved.".lightgreen

@@ -13,13 +13,13 @@ class Ksh < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_armv7l/ksh-2020.0.0-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_armv7l/ksh-2020.0.0-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_i686/ksh-2020.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_x86_64/ksh-2020.0.0-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ksh/2020.0.0_x86_64/ksh-2020.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '2df5c324eef4a6233cc73bbe9621a06b6934c8414a0e5bd6884d4a17bd62188e',
      armv7l: '2df5c324eef4a6233cc73bbe9621a06b6934c8414a0e5bd6884d4a17bd62188e',
        i686: '91d5f8aab79614349997dd020e7e61218d83ed9070bf13e846128cfe6705c482',
-     x86_64: 'ea5a610024ae1e3ab11ac49453f283e67da4dd3b52dd04e9cff8a75ab8559d2c',
+     x86_64: 'ea5a610024ae1e3ab11ac49453f283e67da4dd3b52dd04e9cff8a75ab8559d2c'
   })
 
   def self.build

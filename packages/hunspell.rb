@@ -13,25 +13,25 @@ class Hunspell < Package
 
   if ARGV[0] == 'install'
     puts
-    puts "Enter your preferred language:"
-    puts "1 = American English"
-    puts "2 = Français"
-    puts "3 = Español"
-    puts "0 = Cancel"
+    puts 'Enter your preferred language:'
+    puts '1 = American English'
+    puts '2 = Français'
+    puts '3 = Español'
+    puts '0 = Cancel'
 
-    while version = STDIN.gets.chomp
+    while version = $stdin.gets.chomp
       case version
-        when '1'
-          depends_on 'hunspell_en_us'
-          break
-        when '2'
-          depends_on 'hunspell_fr_fr'
-          break
-        when '3'
-          depends_on 'hunspell_es_any'
-          break
-        when '0'
-          abort
+      when '1'
+        depends_on 'hunspell_en_us'
+        break
+      when '2'
+        depends_on 'hunspell_fr_fr'
+        break
+      when '3'
+        depends_on 'hunspell_es_any'
+        break
+      when '0'
+        abort
       end
     end
   end

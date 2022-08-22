@@ -82,8 +82,8 @@ class Gtk4 < Package
     # Don't rebuild packaged subprojects
     @deps = %w[cairo librsvg]
     @deps.each do |dep|
-      FileUtils.rm_rf "subprojects/#{dep}" if Dir.exist?("subprojects/#{dep}")
-      FileUtils.rm_rf "subprojects/#{dep}.wrap" if File.exist?("subprojects/#{dep}.wrap")
+      FileUtils.rm_rf "subprojects/#{dep}" 
+      FileUtils.rm_rf "subprojects/#{dep}.wrap" 
     end
   end
 

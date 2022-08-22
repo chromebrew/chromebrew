@@ -9,5 +9,4 @@ class Freetype_sub < Package
 
   depends_on 'freetype'
   is_fake
-
 end

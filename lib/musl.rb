@@ -18,15 +18,15 @@ end
 MUSL_CFLAGS = "-isysroot=#{CREW_MUSL_PREFIX} -B#{CREW_MUSL_PREFIX}/include -flto -pipe -O2 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{MUSL_ARCH_C_FLAGS} #{MUSL_ARCH_SSP_CFLAGS} -fcommon -fPIC -ffunction-sections -fdata-sections"
 MUSL_CXXFLAGS = "-isysroot=#{CREW_MUSL_PREFIX} -B#{CREW_MUSL_PREFIX}/include -flto -pipe -O2 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans #{MUSL_ARCH_CXX_FLAGS} #{MUSL_ARCH_SSP_CFLAGS} -fcommon -fPIC -ffunction-sections -fdata-sections"
 # Setting -static & -flto in CMAKE LDFLAGS breaks builds
-MUSL_CMAKE_LDFLAGS = "-flto"
-unless @pkg.is_static?
-  MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--dynamic-linker,#{CREW_MUSL_PREFIX}/lib/libc.so -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} "
-  MUSL_PKG_CONFIG = 'pkg-config'
-else
+MUSL_CMAKE_LDFLAGS = '-flto'
+if @pkg.is_static?
   MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} -static --static"
   MUSL_PKG_CONFIG = 'pkg-config --static'
+else
+  MUSL_LDFLAGS = "-L#{CREW_MUSL_PREFIX}/lib -Wl,-rpath=#{CREW_MUSL_PREFIX}/lib -Wl,--enable-new-dtags -Wl,--dynamic-linker,#{CREW_MUSL_PREFIX}/lib/libc.so -Wl,--gc-sections -flto -isysroot=#{CREW_MUSL_PREFIX} "
+  MUSL_PKG_CONFIG = 'pkg-config'
 end
-MUSL_ENV_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{ENV['PATH']} \
+MUSL_ENV_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{ENV.fetch('PATH', nil)} \
     CC='#{CREW_MUSL_PREFIX}/bin/#{ARCH}-linux-musl#{MUSL_ABI}-gcc' \
     CXX='#{CREW_MUSL_PREFIX}/bin/#{ARCH}-linux-musl#{MUSL_ABI}-g++' \
     LD='#{CREW_MUSL_PREFIX}/bin/#{ARCH}-linux-musl#{MUSL_ABI}-ld.gold -L#{CREW_MUSL_PREFIX}/lib' \
@@ -38,7 +38,7 @@ MUSL_ENV_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{ENV['PATH']} \
     CXXFLAGS='#{MUSL_CXXFLAGS}' \
     CPPFLAGS='-I#{CREW_MUSL_PREFIX}/include -fcommon -idirafter#{CREW_PREFIX}/include' \
     LDFLAGS='#{MUSL_LDFLAGS}'"
-MUSL_CMAKE_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-linux-musl#{MUSL_ABI}/bin:#{ENV['PATH']} \
+MUSL_CMAKE_OPTIONS = "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-linux-musl#{MUSL_ABI}/bin:#{ENV.fetch('PATH', nil)} \
       CC='#{CREW_MUSL_PREFIX}/bin/#{ARCH}-linux-musl#{MUSL_ABI}-gcc' \
       CXX='#{CREW_MUSL_PREFIX}/bin/#{ARCH}-linux-musl#{MUSL_ABI}-g++' \
       LD=#{CREW_MUSL_PREFIX}/bin/#{ARCH}-linux-musl#{MUSL_ABI}-ld.gold \

@@ -51,6 +51,6 @@ class Bubblewrap < Package
       #{CREW_PREFIX}/bin/bwrap.elf "\$@"
       sudo chown chronos "#{CREW_PREFIX}/bin/bwrap.elf"
     BWRAP_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/bin/bwrap", @bwrap_sh, perm: 0o755)
+    File.write("#{CREW_DEST_PREFIX}/bin/bwrap", @bwrap_sh, perm: 0o755)
   end
 end

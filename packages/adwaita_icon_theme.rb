@@ -13,13 +13,13 @@ class Adwaita_icon_theme < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_armv7l/adwaita_icon_theme-42.0-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_armv7l/adwaita_icon_theme-42.0-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_i686/adwaita_icon_theme-42.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_x86_64/adwaita_icon_theme-42.0-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_x86_64/adwaita_icon_theme-42.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'c6dd539659f98a4f83247943715aef136002aa590c4e6e558c89762c60fafefc',
      armv7l: 'c6dd539659f98a4f83247943715aef136002aa590c4e6e558c89762c60fafefc',
        i686: 'f13d05ff2696a2fd7488a7dc4e4e78ad98fe8d7bcf1d63c314e533610a071b6d',
-     x86_64: '862aa3d398d4891c8f6923d6c9c2283ebfa9438647a1a25e9172532433db52fb',
+     x86_64: '862aa3d398d4891c8f6923d6c9c2283ebfa9438647a1a25e9172532433db52fb'
   })
 
   gnome

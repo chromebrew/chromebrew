@@ -6,15 +6,15 @@ class Powershell < Package
   version '7.2.1'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url ({
+  source_url({
     aarch64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-7.2.1-linux-arm32.tar.gz',
      armv7l: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-7.2.1-linux-arm32.tar.gz',
-     x86_64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-7.2.1-linux-x64.tar.gz',
+     x86_64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.2.1/powershell-7.2.1-linux-x64.tar.gz'
   })
-  source_sha256 ({
+  source_sha256({
     aarch64: 'd40ca2c8e05dd8b6169d7f35683432c671a3c58f35e46deaf1d776d9a78b38fe',
      armv7l: 'd40ca2c8e05dd8b6169d7f35683432c671a3c58f35e46deaf1d776d9a78b38fe',
-     x86_64: '337d9864799ad09b46d261071b9f835f69f078814409bc2681f4cc2857b6bda5',
+     x86_64: '337d9864799ad09b46d261071b9f835f69f078814409bc2681f4cc2857b6bda5'
   })
 
   depends_on 'xdg_base'

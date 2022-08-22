@@ -9,17 +9,17 @@ class Clojure < Package
   source_url 'https://github.com/clojure/clojure/archive/clojure-1.11.1.tar.gz'
   source_sha256 'f2fc71a53186c92a45ecb9bb4f0a3467bedcd0f9ce8eafe3bded737036e7fcfa'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.11.1_armv7l/clojure-1.11.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.11.1_armv7l/clojure-1.11.1-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.11.1_i686/clojure-1.11.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.11.1_x86_64/clojure-1.11.1-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clojure/1.11.1_x86_64/clojure-1.11.1-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e1b089bd6e37a29749574358619ce6ca4edc6e432d85113f9ad2983295b8a5a6',
      armv7l: 'e1b089bd6e37a29749574358619ce6ca4edc6e432d85113f9ad2983295b8a5a6',
        i686: '6001c0a388d44060b7274fb0f2e50e3304c6f065d7fa783bc0a0e7ee8c1e978a',
-     x86_64: '33ee033279564388ce20a037463f8f4070fe3dc83011f42a221fe49c05b0110d',
+     x86_64: '33ee033279564388ce20a037463f8f4070fe3dc83011f42a221fe49c05b0110d'
   })
 
   depends_on 'jdk8'

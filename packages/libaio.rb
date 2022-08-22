@@ -10,19 +10,18 @@ class Libaio < Package
   source_url "https://pagure.io/libaio/archive/libaio-#{@_ver}/libaio-libaio-#{@_ver}.tar.gz"
   source_sha256 'b7cf93b29bbfb354213a0e8c0e82dfcf4e776157940d894750528714a0af2272'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_armv7l/libaio-0.3.112-chromeos-armv7l.tar.xz',
         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_i686/libaio-0.3.112-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_x86_64/libaio-0.3.112-chromeos-x86_64.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.112_x86_64/libaio-0.3.112-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'f7fc535e5d72f059e97f5b18a41b3cac20b63930d773bdc21438e170bb395e26',
+  binary_sha256({
+    aarch64: 'f7fc535e5d72f059e97f5b18a41b3cac20b63930d773bdc21438e170bb395e26',
       armv7l: 'f7fc535e5d72f059e97f5b18a41b3cac20b63930d773bdc21438e170bb395e26',
         i686: '95ec694e17e2c13ea263fd39711daf68d9f5e7b5e17c596e4aa52a1ce001398f',
-      x86_64: '17335130827e4eb1cc2202e5dcbc8651e61f8ba32fc8264c59bf26b78a0a5545',
+      x86_64: '17335130827e4eb1cc2202e5dcbc8651e61f8ba32fc8264c59bf26b78a0a5545'
   })
-
 
   def self.build
     system "sed -i 's,prefix=/usr,prefix=#{CREW_PREFIX},' Makefile"
@@ -31,6 +30,6 @@ class Libaio < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

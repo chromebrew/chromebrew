@@ -9,17 +9,17 @@ class Wxformbuilder < Package
   source_url 'https://github.com/wxFormBuilder/wxFormBuilder/archive/v3.9.0.tar.gz'
   source_sha256 'e63532e71828d5e168388380fe627225f997267495da4bf6c55ef592738bdc88'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxformbuilder/3.9.0_armv7l/wxformbuilder-3.9.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxformbuilder/3.9.0_armv7l/wxformbuilder-3.9.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxformbuilder/3.9.0_i686/wxformbuilder-3.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxformbuilder/3.9.0_x86_64/wxformbuilder-3.9.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxformbuilder/3.9.0_x86_64/wxformbuilder-3.9.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',
      armv7l: '72919b2bd017609c541cdd137375e4f5b77ebbc575b64bf4c36f800ff9063acb',
        i686: '401bfac8ccbad94011998a2e8f1b30605fbae2c11e11469516b171d0fe96e334',
-     x86_64: 'f812d32fda14a1a379be8d8c98c291da84f0353bd7cefc6f07bad3f8ad89b4ad',
+     x86_64: 'f812d32fda14a1a379be8d8c98c291da84f0353bd7cefc6f07bad3f8ad89b4ad'
   })
 
   depends_on 'wxwidgets'

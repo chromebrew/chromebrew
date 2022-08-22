@@ -9,17 +9,17 @@ class Pexec < Package
   source_url 'https://ftpmirror.gnu.org/pexec/pexec-1.0rc8.tar.gz'
   source_sha256 'a968e4774eef80b8b1de3c10e6c0ad2ebeeb732b10e438596f110aa6aaf94a64'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pexec/1.0rc8-1_armv7l/pexec-1.0rc8-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pexec/1.0rc8-1_armv7l/pexec-1.0rc8-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pexec/1.0rc8-1_i686/pexec-1.0rc8-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pexec/1.0rc8-1_x86_64/pexec-1.0rc8-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pexec/1.0rc8-1_x86_64/pexec-1.0rc8-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c98687da9126fcdc2a4ff0f3712ab5bc78929122216cc050650ad48d01fb3899',
      armv7l: 'c98687da9126fcdc2a4ff0f3712ab5bc78929122216cc050650ad48d01fb3899',
        i686: '9910eb0b3b202b3b1a591aedfa6df770c2a50686c73f951f57862e7a8e0856fd',
-     x86_64: '15696468ef1b797e0c77cd0a1ec91766d3890072739514772cdf355124f3a1d3',
+     x86_64: '15696468ef1b797e0c77cd0a1ec91766d3890072739514772cdf355124f3a1d3'
   })
 
   depends_on 'groff'

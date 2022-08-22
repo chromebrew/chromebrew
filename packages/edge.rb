@@ -35,8 +35,8 @@ class Edge < Package
                'ae7b1378a5d9d84314b459b6a16c3ec14aae0b88eeb78040f7bc28156cf2d753', 'microsoft-edge.png'
 
     icon_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor/128x128/apps"
-    FileUtils.mkdir_p "#{icon_path}"
-    FileUtils.mv 'microsoft-edge.png', "#{icon_path}"
+    FileUtils.mkdir_p icon_path.to_s
+    FileUtils.mv 'microsoft-edge.png', icon_path.to_s
   end
 
   def self.postinstall

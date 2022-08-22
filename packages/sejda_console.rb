@@ -9,17 +9,17 @@ class Sejda_console < Package
   source_url 'https://github.com/torakiki/sejda/releases/download/v3.2.46/sejda-console-3.2.46-bin.zip'
   source_sha256 '11654d11f15f41d9f3c54ee90efd8477687193c1cb7b1f40db69d901e9cbde2f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sejda_console/3.2.46_armv7l/sejda_console-3.2.46-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sejda_console/3.2.46_armv7l/sejda_console-3.2.46-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sejda_console/3.2.46_i686/sejda_console-3.2.46-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sejda_console/3.2.46_x86_64/sejda_console-3.2.46-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sejda_console/3.2.46_x86_64/sejda_console-3.2.46-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '965091442b3eac498452b3df15cfc7ce84b144a13e83a460272a52a271751105',
      armv7l: '965091442b3eac498452b3df15cfc7ce84b144a13e83a460272a52a271751105',
        i686: '377228a512d3f78a487f34843169fe5f9e829ee64d24f4f87e795de3221e2966',
-     x86_64: 'd59742c678df678145d00a86e82dca8ffa180299f099eafbc674d76641ea9506',
+     x86_64: 'd59742c678df678145d00a86e82dca8ffa180299f099eafbc674d76641ea9506'
   })
 
   depends_on 'help2man' => :build
@@ -37,7 +37,7 @@ class Sejda_console < Package
       system "echo 'cd #{CREW_PREFIX}/share/sejda_console' >> sejda-console"
       system "echo 'bin/sejda-console \"\$@\"' >> sejda-console"
       system "echo 'cd $PWD' >> sejda-console"
-      system "chmod +x sejda-console"
+      system 'chmod +x sejda-console'
     end
     system "cp #{CREW_DEST_PREFIX}/bin/sejda-console #{CREW_PREFIX}/bin"
     system "help2man -N --no-discard-stderr sejda-console > #{CREW_DEST_PREFIX}/man/man1/sejda-console.1"

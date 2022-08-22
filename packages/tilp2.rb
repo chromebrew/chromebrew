@@ -9,17 +9,17 @@ class Tilp2 < Package
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/tilp2-1.18.tar.bz2'
   source_sha256 '7b3ab363eeb52504d6ef5811c5d264f8016060bb7bd427be5a064c2ed7384e47'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tilp2/1.18_armv7l/tilp2-1.18-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tilp2/1.18_armv7l/tilp2-1.18-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tilp2/1.18_i686/tilp2-1.18-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tilp2/1.18_x86_64/tilp2-1.18-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tilp2/1.18_x86_64/tilp2-1.18-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '201dc44208b9be80c48f7c490db5278734451890fbeb2d2a5d14453edd1fbf38',
      armv7l: '201dc44208b9be80c48f7c490db5278734451890fbeb2d2a5d14453edd1fbf38',
        i686: 'ab237640a29d6b6f5270958be66a85bc149c1e33b3bdffac6cc10e33e5de39b1',
-     x86_64: '6299305628afe6455a951234e91a1ee6dc501b48d0f47b1739963080be416536',
+     x86_64: '6299305628afe6455a951234e91a1ee6dc501b48d0f47b1739963080be416536'
   })
 
   depends_on 'libticalcs2'
@@ -61,17 +61,17 @@ diff -ur a/src/Makefile.am b/src/Makefile.am
  	tilp_calcs.c tilp_cmdline.c tilp_config.c tilp_error.c \
  	tilp_files.c tilp_gif.c tilp_main.c \
 _EOF'
-    system "patch -Np1 -i tilp2.patch"
+    system 'patch -Np1 -i tilp2.patch'
   end
 
   def self.build
     system 'autoreconf -i'
-    system "/usr/bin/env",
-           "CC=clc -fuse-ld=lld",
-           "CXX=clc++ -fuse-ld=lld",
-           "./configure",
+    system '/usr/bin/env',
+           'CC=clc -fuse-ld=lld',
+           'CXX=clc++ -fuse-ld=lld',
+           './configure',
            "--prefix=#{CREW_PREFIX}",
-           "--without-kde",
+           '--without-kde',
            "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end

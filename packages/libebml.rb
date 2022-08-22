@@ -10,17 +10,17 @@ class Libebml < Package
   source_url 'https://github.com/Matroska-Org/libebml.git'
   git_hashtag "release-#{@_ver}"
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_armv7l/libebml-1.4.2-chromeos-armv7l.tpxz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_armv7l/libebml-1.4.2-chromeos-armv7l.tpxz',
       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_armv7l/libebml-1.4.2-chromeos-armv7l.tpxz',
         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_i686/libebml-1.4.2-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_x86_64/libebml-1.4.2-chromeos-x86_64.tpxz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_x86_64/libebml-1.4.2-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
-     aarch64: '4adbc9698b598878d1ca9fdc21c76361bfb9e3f08adeb8ff50570a866e14b0ba',
+  binary_sha256({
+    aarch64: '4adbc9698b598878d1ca9fdc21c76361bfb9e3f08adeb8ff50570a866e14b0ba',
       armv7l: '4adbc9698b598878d1ca9fdc21c76361bfb9e3f08adeb8ff50570a866e14b0ba',
         i686: 'f2cd127f93560c8e8bc699078c9536ce11f8cf7fe5c6e38636356918c218eb6f',
-      x86_64: '81b8fa3d73076c92aa862b74e9d1cc90203dde5cce9c6f26831cce6d8290da2b',
+      x86_64: '81b8fa3d73076c92aa862b74e9d1cc90203dde5cce9c6f26831cce6d8290da2b'
   })
 
   def self.patch

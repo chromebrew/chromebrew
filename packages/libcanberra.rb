@@ -90,7 +90,7 @@ class Libcanberra < Package
                                             gdk_x11_get_xatom_by_name_for_display(d, "_NET_WM_DESKTOP"),
                                             0, G_MAXLONG, False, XA_CARDINAL, &type_return,
     LIBCANBERRA_WAYLAND_PATCH_HEREDOC
-    IO.write('libcanberra-wayland-crash.patch', @libcanberra_wayland_crash_patch, perm: 0o555)
+    File.write('libcanberra-wayland-crash.patch', @libcanberra_wayland_crash_patch, perm: 0o555)
     system 'patch -p0 < libcanberra-wayland-crash.patch'
   end
 

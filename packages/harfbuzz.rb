@@ -14,13 +14,13 @@ class Harfbuzz < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_armv7l/harfbuzz-4.4.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_armv7l/harfbuzz-4.4.1-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_i686/harfbuzz-4.4.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_x86_64/harfbuzz-4.4.1-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_x86_64/harfbuzz-4.4.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '556b8124f7d4181f15111dd841cce4fdb9ab39914fa0fbd0516fda5e7d929a94',
      armv7l: '556b8124f7d4181f15111dd841cce4fdb9ab39914fa0fbd0516fda5e7d929a94',
        i686: '8acbf2871d86e2b8a91e85f4ab9945b435b5a1e2ac854ebac770544d3f4adbb4',
-     x86_64: '2a03c4db970323bd94a886d3350d6aacde20f415a1f553342400443075c06588',
+     x86_64: '2a03c4db970323bd94a886d3350d6aacde20f415a1f553342400443075c06588'
   })
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
@@ -86,24 +86,22 @@ class Harfbuzz < Package
     # This should become a function.
     # check for conflicts with other installed files
     @override_allowed = %w[fontconfig cairo]
-    puts "Checking for conflicts with files from installed packages..."
+    puts 'Checking for conflicts with files from installed packages...'
     conflicts = []
-    conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{self.name}.filelist -Fxf #{CREW_META_PATH}#{self.name}.filelist #{CREW_META_PATH}*.filelist]
+    conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      if self.conflicts_ok?
-        puts "Warning: There is a conflict with the same file in another package.".orange
+      if conflicts_ok?
+        puts 'Warning: There is a conflict with the same file in another package.'.orange
       else
-        puts "Error: There is a conflict with the same file in another package.".lightred
+        puts 'Error: There is a conflict with the same file in another package.'.lightred
         @_errors = 1
       end
       conflicts.each do |conflict|
         conflict.each do |thisconflict|
-          singleconflict = thisconflict.split(':',-1)
-          if @override_allowed.include?(singleconflict[0])
-            system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
-          end
+          singleconflict = thisconflict.split(':', -1)
+          system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
         end
       end
     end

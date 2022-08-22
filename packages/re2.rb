@@ -11,13 +11,13 @@ class Re2 < Package
   source_url "https://github.com/google/re2/archive/#{@_ver}.tar.gz"
   source_sha256 '1396ab50c06c1a8885fb68bf49a5ecfd989163015fd96699a180d6414937f33f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_armv7l/re2-2021-02-02-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_armv7l/re2-2021-02-02-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_i686/re2-2021-02-02-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2021-02-02_x86_64/re2-2021-02-02-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ae5d5606c670ae8b7a1d6faae048683e2a68a49594e3955ba422924d0e236b6a',
      armv7l: 'ae5d5606c670ae8b7a1d6faae048683e2a68a49594e3955ba422924d0e236b6a',
        i686: '0405d43ceba95bc74cd1d301d7fc32441599f22686fcf05850376fb32044bfff',

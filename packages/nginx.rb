@@ -9,24 +9,24 @@ class Nginx < Package
   source_url 'https://nginx.org/download/nginx-1.19.6.tar.gz'
   source_sha256 'b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_armv7l/nginx-1.19.6-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_armv7l/nginx-1.19.6-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_i686/nginx-1.19.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_x86_64/nginx-1.19.6-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_x86_64/nginx-1.19.6-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '12c999e173d529e09e73651be3da52e10c330292bb77b5f1091754470622f32c',
      armv7l: '12c999e173d529e09e73651be3da52e10c330292bb77b5f1091754470622f32c',
        i686: '5655869f1c9bc543734be534fa1528957a031a2946c0a01847fdf582a680001e',
-     x86_64: '82fd389650190b29f398b9430e34d92441c0071d39be8a5fa327b8035aa8e7a2',
+     x86_64: '82fd389650190b29f398b9430e34d92441c0071d39be8a5fa327b8035aa8e7a2'
   })
 
   depends_on 'pcre'
 
   def self.build
     system './configure',
-      "--prefix=#{CREW_PREFIX}/share/nginx"
+           "--prefix=#{CREW_PREFIX}/share/nginx"
     system 'make'
   end
 
@@ -59,7 +59,7 @@ class Nginx < Package
       system "echo '  echo \"nginx process \$NGINX is running\"' >> stopnginx"
       system "echo '  exit 1' >> stopnginx"
       system "echo 'fi' >> stopnginx"
-      system "chmod +x st*nginx"
+      system 'chmod +x st*nginx'
     end
   end
 
@@ -69,15 +69,15 @@ class Nginx < Package
     puts
     puts "Pages are stored in #{CREW_PREFIX}/share/nginx/html.".lightblue
     puts
-    puts "To start/stop nginx, execute the following:".lightblue
-    puts "startnginx - starts nginx".lightblue
-    puts "stopnginx - stops nginx".lightblue
+    puts 'To start/stop nginx, execute the following:'.lightblue
+    puts 'startnginx - starts nginx'.lightblue
+    puts 'stopnginx - stops nginx'.lightblue
     puts
-    puts "To start nginx on login, execute the following:".lightblue
+    puts 'To start nginx on login, execute the following:'.lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startnginx ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startnginx' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
     puts
   end
 
@@ -85,9 +85,9 @@ class Nginx < Package
     if Dir.exist? "#{CREW_PREFIX}/share/nginx"
       puts
       print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "
-      response = STDIN.getc
+      response = $stdin.getc
       case response
-      when "y", "Y"
+      when 'y', 'Y'
         FileUtils.rm_rf "#{CREW_PREFIX}/share/nginx"
         puts "#{CREW_PREFIX}/share/nginx removed.".lightred
       else

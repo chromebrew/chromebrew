@@ -9,17 +9,17 @@ class Dbus_glib < Package
   source_url 'https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.112.tar.gz'
   source_sha256 '7d550dccdfcd286e33895501829ed971eeb65c614e73aadb4a08aeef719b143a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus_glib/0.112_armv7l/dbus_glib-0.112-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus_glib/0.112_armv7l/dbus_glib-0.112-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus_glib/0.112_i686/dbus_glib-0.112-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus_glib/0.112_x86_64/dbus_glib-0.112-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus_glib/0.112_x86_64/dbus_glib-0.112-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'dc2cea782f496613cd24b9f27afc015f5a02ebc73f63221f581c6bb5248bf8c9',
      armv7l: 'dc2cea782f496613cd24b9f27afc015f5a02ebc73f63221f581c6bb5248bf8c9',
        i686: 'c900b3a6e588fdea4219e52544e5c96718d0e3fcc3d862350efe9f71e3298fec',
-     x86_64: 'a1258d16b859c3ff11591871e97b8ad4ddb33ac45951931b196368a613451d76',
+     x86_64: 'a1258d16b859c3ff11591871e97b8ad4ddb33ac45951931b196368a613451d76'
   })
 
   depends_on 'dbus'
@@ -27,7 +27,7 @@ class Dbus_glib < Package
 
   def self.build
     system "./configure #{CREW_OPTIONS}"
-    system "make"
+    system 'make'
   end
 
   def self.install

@@ -26,9 +26,7 @@ class Texlive < Package
     system 'curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512'
     system "cat install-tl-unx.tar.gz.sha512 | xargs | cut -d' ' -f1 > sha512"
     sha512 = open('sha512').read.chomp
-    unless Digest::SHA512.hexdigest(File.read('install-tl-unx.tar.gz')) == sha512
-      abort 'Checksum mismatch. :/ Try again.'.lightred
-    end
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA512.hexdigest(File.read('install-tl-unx.tar.gz')) == sha512
     system 'tar xvf install-tl-unx.tar.gz'
     system 'mv install-tl-20*/* .'
     system 'rm -rf install-tl-20*/'
@@ -61,7 +59,7 @@ class Texlive < Package
       export PATH="$PATH:#{path}/bin/#{@archpath}"
       export MANPATH="$MANPATH:#{path}/bin/texmf-dist/doc/man"
     TEXLIVEEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/texlive", @texliveenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/texlive", @texliveenv)
   end
 
   def self.postinstall

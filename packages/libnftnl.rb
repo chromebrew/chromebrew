@@ -9,17 +9,17 @@ class Libnftnl < Package
   source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.1.7.tar.bz2'
   source_sha256 '20dbc13f11004aea2c9e479cfb90359cb11fe3446c3140811c18e4ec1648ed8f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_armv7l/libnftnl-1.1.7-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_armv7l/libnftnl-1.1.7-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_i686/libnftnl-1.1.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_x86_64/libnftnl-1.1.7-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_x86_64/libnftnl-1.1.7-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '6cc802f2d8a84367d34fc91c32aa8f06715a0cac91d4c6ea774fe2905be1255a',
      armv7l: '6cc802f2d8a84367d34fc91c32aa8f06715a0cac91d4c6ea774fe2905be1255a',
        i686: '510a3ca438c83f53457707bc89e6ddab8332fb7e5343721def87cbc9a86c34da',
-     x86_64: '7e72516f66aab3d3ed6d554e72c0b198ec82ee8e061a7c3941d607890de100f2',
+     x86_64: '7e72516f66aab3d3ed6d554e72c0b198ec82ee8e061a7c3941d607890de100f2'
   })
 
   depends_on 'libmnl'

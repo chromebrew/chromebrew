@@ -9,17 +9,17 @@ class Miscfiles < Package
   source_url 'https://ftpmirror.gnu.org/miscfiles/miscfiles-1.5.tar.gz'
   source_sha256 '6aaaa8898b0f6dac18bcaa5492874a6cd1243ffbe7a6dd347ca8f3ec3642a500'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miscfiles/1.5_armv7l/miscfiles-1.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miscfiles/1.5_armv7l/miscfiles-1.5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miscfiles/1.5_i686/miscfiles-1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miscfiles/1.5_x86_64/miscfiles-1.5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miscfiles/1.5_x86_64/miscfiles-1.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '83434d1f24d47b5e86b7ab649f186ab02530ac3a11c2f3cbf77481a95e3e2e0b',
      armv7l: '83434d1f24d47b5e86b7ab649f186ab02530ac3a11c2f3cbf77481a95e3e2e0b',
        i686: 'b9907e7bb95ca4501697ca6b376eba5001d1ac5f384f424fa54ae3da6491255f',
-     x86_64: 'dbf2dfd4a5ee2268712620c434e3d97a4165d5ab2ab3170a467850cb5ddba59b',
+     x86_64: 'dbf2dfd4a5ee2268712620c434e3d97a4165d5ab2ab3170a467850cb5ddba59b'
   })
 
   def self.build
@@ -27,6 +27,6 @@ class Miscfiles < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

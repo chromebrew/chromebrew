@@ -32,7 +32,7 @@ class Torbrowser < Package
 
   def self.postinstall
     print "\nSet Tor as your default browser? [Y/n]: "
-    case STDIN.getc
+    case $stdin.getc
     when "\n", 'Y', 'y'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'tor', 'x-www-browser'
@@ -46,8 +46,8 @@ class Torbrowser < Package
 
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') and File.symlink?('x-www-browser') \
-        and File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') \
+        && (File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor")
         FileUtils.rm 'x-www-browser'
       end
     end

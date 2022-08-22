@@ -56,9 +56,7 @@ class Sommelier < Package
     when 'i686', 'x86_64'
       @container_check = `/usr/bin/crossystem inside_vm` == '1'
     end
-    unless File.socket?('/var/run/chrome/wayland-0') || @container_check
-      abort 'This package is not compatible with your device :/'.lightred
-    end
+    abort 'This package is not compatible with your device :/'.lightred unless File.socket?('/var/run/chrome/wayland-0') || @container_check
   end
 
   def self.patch

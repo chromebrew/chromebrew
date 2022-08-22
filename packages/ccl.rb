@@ -18,17 +18,17 @@ class Ccl < Package
     source_sha256 'b80850d8d6ca8662499975f1cd76bf51affdd29e2025796ddcff6576fe704143'
   end
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_armv7l/ccl-1.11.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_armv7l/ccl-1.11.5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_i686/ccl-1.11.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_x86_64/ccl-1.11.5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccl/1.11.5_x86_64/ccl-1.11.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',
      armv7l: 'c76d7ef3a190d6f5df52b00de5b520e96c63e07d1703bc5325a8f692dc85342c',
        i686: '57617fc472305b926781c61248fb10e6732454eaf89022e0583d7f1cea42a87f',
-     x86_64: '3d2632f8390c449f3ecee54d9101e4779590b676533d2b17b759e37db815a275',
+     x86_64: '3d2632f8390c449f3ecee54d9101e4779590b676533d2b17b759e37db815a275'
   })
 
   def self.install

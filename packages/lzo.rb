@@ -9,31 +9,31 @@ class Lzo < Package
   source_url 'https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz'
   source_sha256 'c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_i686/lzo-2.10-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_x86_64/lzo-2.10-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_x86_64/lzo-2.10-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',
      armv7l: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',
        i686: 'cec4de5d184f57d18660b4ea8a8ca5f69a8d80cc620e79dedc617f9fab04d63f',
-     x86_64: '04c5e6c4405569793a8681869376ee5144258ced7c39eb06742f891fed741ff7',
+     x86_64: '04c5e6c4405569793a8681869376ee5144258ced7c39eb06742f891fed741ff7'
   })
 
   def self.build
-    system "./configure",
+    system './configure',
            '--enable-shared',
            '--disable-static',
            "--prefix=#{CREW_PREFIX}",
            '--disable-maintainer-mode',
            "--libdir=#{CREW_LIB_PREFIX}",
            '--disable-dependency-tracking'
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

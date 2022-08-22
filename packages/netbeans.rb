@@ -28,7 +28,7 @@ class Netbeans < Package
     config_dir = "#{HOME}/.netbeans"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case STDIN.getc
+      case $stdin.getc
       when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred

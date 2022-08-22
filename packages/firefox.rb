@@ -7,12 +7,12 @@ class Firefox < Package
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
 
-  source_url ({
-      i686: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2",
+  source_url({
+    i686: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2",
     x86_64: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
   })
-  source_sha256 ({
-      i686: '99852e7b204be9821a40c42283d819a367f12adbafed906d22f12fd53b3fa8ba',
+  source_sha256({
+    i686: '99852e7b204be9821a40c42283d819a367f12adbafed906d22f12fd53b3fa8ba',
     x86_64: '7869a2d95e02d34b105b37baa669cf29e0fd075fd883eaf4b2bd4e0ced77f6ca'
   })
 
@@ -79,8 +79,8 @@ class Firefox < Package
     FileUtils.mkdir_p "#{icon_base_path}/128x128/apps"
     FileUtils.mkdir_p "#{icon_base_path}/256x256/apps"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/firefox"
-    IO.write("#{CREW_DEST_PREFIX}/bin/firefox", @firefox_sh, perm: 0o755)
-    IO.write("#{CREW_DEST_PREFIX}/share/applications/firefox.desktop", @firefox_desktop, perm: 0o644)
+    File.write("#{CREW_DEST_PREFIX}/bin/firefox", @firefox_sh, perm: 0o755)
+    File.write("#{CREW_DEST_PREFIX}/share/applications/firefox.desktop", @firefox_desktop, perm: 0o644)
     Dir.chdir 'browser/chrome/icons/default' do
       FileUtils.mv 'default16.png', "#{icon_base_path}/16x16/apps/firefox.png"
       FileUtils.mv 'default32.png', "#{icon_base_path}/32x32/apps/firefox.png"
@@ -96,8 +96,8 @@ class Firefox < Package
 
   def self.postinstall
     print "\nSet Firefox as your default browser? [Y/n]: "
-    case STDIN.getc
-    when "\n", "Y", "y"
+    case $stdin.getc
+    when "\n", 'Y', 'y'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'firefox', 'x-www-browser'
       end

@@ -10,5 +10,4 @@ class Tilp < Package
   is_fake
 
   depends_on 'tilp2'
-
 end

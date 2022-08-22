@@ -9,17 +9,17 @@ class Comgt < Package
   source_url 'https://downloads.sourceforge.net/project/comgt/comgt/0.32/comgt.0.32.tgz'
   source_sha256 '0cedb2a5aa608510da66a99aab74df3db363df495032e57e791a2ff55f1d7913'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/comgt/0.32_armv7l/comgt-0.32-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/comgt/0.32_armv7l/comgt-0.32-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/comgt/0.32_i686/comgt-0.32-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/comgt/0.32_x86_64/comgt-0.32-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/comgt/0.32_x86_64/comgt-0.32-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '845637e6a37fa17dbeafcd62244ed3b4cbfb275c31a23dffe8b0b87527ba59d6',
      armv7l: '845637e6a37fa17dbeafcd62244ed3b4cbfb275c31a23dffe8b0b87527ba59d6',
        i686: 'c0a0bab50a6621dd56c16b8947917477408583624816beea71ff115b26241196',
-     x86_64: '8f6b77dc36fcd3404a0b03f9e69722dea28cad970ad0593b03670bbe0077ec0b',
+     x86_64: '8f6b77dc36fcd3404a0b03f9e69722dea28cad970ad0593b03670bbe0077ec0b'
   })
 
   def self.build

@@ -27,12 +27,12 @@ class Js78 < Package
   depends_on 'llvm' => :build
   depends_on 'nspr'
 
-  case ARCH
-  when 'aarch64', 'armv7l'
-    @rust_default_host = 'armv7-unknown-linux-gnueabihf'
-  else
-    @rust_default_host = "#{ARCH}-unknown-linux-gnu"
-  end
+  @rust_default_host = case ARCH
+                       when 'aarch64', 'armv7l'
+                         'armv7-unknown-linux-gnueabihf'
+                       else
+                         "#{ARCH}-unknown-linux-gnu"
+                       end
 
   def self.patch
     # Ubuntu patches
@@ -41,9 +41,7 @@ class Js78 < Package
     patch_sha256 = 'dcf2eec86c275448656cf18b3c142c3a2067dc8fdeff029211b66182b9179d21'
 
     system('curl -#L', patch_url, '-o', 'unzippatches.tar.xz')
-    unless Digest::SHA256.hexdigest(File.read('./unzippatches.tar.xz')) == patch_sha256
-      abort 'Checksum mismatch :/ try again'
-    end
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('./unzippatches.tar.xz')) == patch_sha256
     system('tar', '-xf', 'unzippatches.tar.xz')
 
     system('for i in `cat debian/patches/series`; do  patch -p 1 < debian/patches/$i; done')
@@ -52,9 +50,7 @@ class Js78 < Package
     patch2_url = 'https://github.com/archlinux/svntogit-packages/raw/packages/js78/trunk/0002-Bug-1667736-Update-packed_simd-to-compile-on-Rust-1..patch'
     patch2_sha256 = 'ad3dd149651d76c1c3de2dc71d3fb3361181a1add75ff095df7bfba88a4e4ad6'
     system('curl', '-Lf', patch2_url, '-o', '0002-Bug-1667736-Update-packed_simd-to-compile-on-Rust-1..patch')
-    unless Digest::SHA256.hexdigest(File.read('./0002-Bug-1667736-Update-packed_simd-to-compile-on-Rust-1..patch')) == patch2_sha256
-      abort 'Checksum mismatch :/ try again'
-    end
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('./0002-Bug-1667736-Update-packed_simd-to-compile-on-Rust-1..patch')) == patch2_sha256
     system('patch -p 1 < ./0002-Bug-1667736-Update-packed_simd-to-compile-on-Rust-1..patch')
   end
 

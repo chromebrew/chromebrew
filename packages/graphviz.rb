@@ -95,7 +95,7 @@ class Graphviz < Package
 
        execute_process(
     CMAKE_PATCH_EOF
-    IO.write('graphviz_cmake.patch', @graphviz_cmake_patch)
+    File.write('graphviz_cmake.patch', @graphviz_cmake_patch)
     system 'patch -p0 -i graphviz_cmake.patch'
   end
 

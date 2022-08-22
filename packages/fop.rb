@@ -41,6 +41,6 @@ class Fop < Package
       # Fop configuration
       export JAVA_HOME=#{CREW_LIB_PREFIX}/jdk8
     FOPEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/fop", @fopenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/fop", @fopenv)
   end
 end

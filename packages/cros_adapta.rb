@@ -32,7 +32,7 @@ class Cros_adapta < Package
 
   def self.install
     @_dest_dir = "#{CREW_DEST_PREFIX}/share/themes/CrosAdapta/"
-    FileUtils.mkdir_p [ @_dest_dir, "#{CREW_DEST_PREFIX}/etc/env.d/" ]
+    FileUtils.mkdir_p [@_dest_dir, "#{CREW_DEST_PREFIX}/etc/env.d/"]
     FileUtils.mv Dir['gtk*/'], @_dest_dir
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/cros_adapta", @_env
   end

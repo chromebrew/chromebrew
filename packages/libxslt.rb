@@ -9,17 +9,17 @@ class Libxslt < Package
   source_url 'http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz'
   source_sha256 '98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_i686/libxslt-1.1.34-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_x86_64/libxslt-1.1.34-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_x86_64/libxslt-1.1.34-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
      armv7l: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
        i686: 'd201b063ce46e40d354c3e89472aafd54fa524bd57e70b6ab03219e4f165bd93',
-     x86_64: '2ead1e30cb028f2f299056f8eea5bfb318f7346c6a65cfa4a891672560ed26bc',
+     x86_64: '2ead1e30cb028f2f299056f8eea5bfb318f7346c6a65cfa4a891672560ed26bc'
   })
 
   depends_on 'py3_libxml2'
@@ -28,9 +28,9 @@ class Libxslt < Package
 
   def self.build
     system './configure',
-      "--prefix=#{CREW_PREFIX}",
-      "--libdir=#{CREW_LIB_PREFIX}",
-      '--disable-static'
+           "--prefix=#{CREW_PREFIX}",
+           "--libdir=#{CREW_LIB_PREFIX}",
+           '--disable-static'
     system 'make'
   end
 

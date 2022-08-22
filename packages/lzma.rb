@@ -10,5 +10,4 @@ class Lzma < Package
   is_fake
 
   depends_on 'xzutils'
-
 end

@@ -9,17 +9,17 @@ class Tig < Package
   source_url 'https://github.com/jonas/tig/releases/download/tig-2.4.1/tig-2.4.1.tar.gz'
   source_sha256 'b6b6aa183e571224d0e1fab3ec482542c1a97fa7a85b26352dc31dbafe8558b8'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_armv7l/tig-2.4.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_armv7l/tig-2.4.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_i686/tig-2.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_x86_64/tig-2.4.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tig/2.4.1_x86_64/tig-2.4.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '712274329587938cdb648fba374338f12f78145a0a69e2285f30a3ac0f2b0eb2',
      armv7l: '712274329587938cdb648fba374338f12f78145a0a69e2285f30a3ac0f2b0eb2',
        i686: '70ed711fb304a329f256e5802983110587e9f3e7c6378a12b73d5a0a6d5f5d36',
-     x86_64: '16aa53a2087362bfacb86aada31eccd4614b347b7b3202849c0ce790efc0cfcb',
+     x86_64: '16aa53a2087362bfacb86aada31eccd4614b347b7b3202849c0ce790efc0cfcb'
   })
 
   def self.build

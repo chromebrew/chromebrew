@@ -9,17 +9,17 @@ class Help2info < Package
   source_url 'http://download.savannah.nongnu.org/releases/help2info/help2info-0.1.1.tar.bz2'
   source_sha256 '9964fa462fb3e0f0646c97d986b69b3365461e94365cd80c5ec57f03ca08a839'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2info/0.1.1_armv7l/help2info-0.1.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2info/0.1.1_armv7l/help2info-0.1.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2info/0.1.1_i686/help2info-0.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2info/0.1.1_x86_64/help2info-0.1.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/help2info/0.1.1_x86_64/help2info-0.1.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'f0d160d979279945e7c48f383a3caad240857432bc289f1e419d72ca210db4fe',
      armv7l: 'f0d160d979279945e7c48f383a3caad240857432bc289f1e419d72ca210db4fe',
        i686: '82cafd759e044aa98a96f712d7797ed3ce8c215fd45b2e996e2cb60e69dc3c90',
-     x86_64: '792983412f4b466c4a3c8f98cc16442701f2a7a26c6063e8335589dde5d0970a',
+     x86_64: '792983412f4b466c4a3c8f98cc16442701f2a7a26c6063e8335589dde5d0970a'
   })
 
   def self.build
@@ -28,6 +28,6 @@ class Help2info < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

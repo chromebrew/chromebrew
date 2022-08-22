@@ -10,11 +10,11 @@ class Azure_cli < Package
   source_sha256 'bbe4a1f85418d239444717f2c9706a87f81fd2515bb0bb4b4e48548fd3e08caa'
 
   binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/azure_cli/2.21.0_i686/azure_cli-2.21.0-chromeos-i686.tar.xz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/azure_cli/2.21.0_i686/azure_cli-2.21.0-chromeos-i686.tar.xz',
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/azure_cli/2.21.0_x86_64/azure_cli-2.21.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-      i686: '222e74caa74df6ab129f33f90aea86e65d000ebc4f5d78cb7f3ec2f98421ed3c',
+    i686: '222e74caa74df6ab129f33f90aea86e65d000ebc4f5d78cb7f3ec2f98421ed3c',
     x86_64: '073b64f7104e298205afe623588c95f2e0cb17e664e53ff46042c9bd4076d2c8'
   })
 
@@ -27,6 +27,6 @@ class Azure_cli < Package
       # Microsoft Azure CLI bash completion
       source #{CREW_PREFIX}/share/azure-cli/az.completion
     AZUREEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
   end
 end
