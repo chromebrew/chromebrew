@@ -9,26 +9,27 @@ class Bdftopcf < Package
   source_url 'https://www.x.org/releases/individual/app/bdftopcf-1.1.tar.bz2'
   source_sha256 '4b4df05fc53f1e98993638d6f7e178d95b31745c4568cee407e167491fd311a2'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_armv7l/bdftopcf-1.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_armv7l/bdftopcf-1.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_i686/bdftopcf-1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_x86_64/bdftopcf-1.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_x86_64/bdftopcf-1.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'cb194dc01e182cdb430c3672d2ac0c7dc83f6091cf2b29e7765ad5b75511074a',
      armv7l: 'cb194dc01e182cdb430c3672d2ac0c7dc83f6091cf2b29e7765ad5b75511074a',
        i686: '25b92f357e56380778d12cc2dcf25585ad99f01c8bedd1fc7b2d81ef089e70ee',
-     x86_64: 'b01c0ae817a810ddc1523a2b9fe97c0efcc45b6301aa84c1cf3618020cbdb80b',
+     x86_64: 'b01c0ae817a810ddc1523a2b9fe97c0efcc45b6301aa84c1cf3618020cbdb80b'
   })
 
   depends_on 'libxfont'
 
   def self.build
-      system "./configure #{CREW_OPTIONS} "
-      system "make -j#{CREW_NPROC}"
+    system "./configure #{CREW_OPTIONS} "
+    system "make -j#{CREW_NPROC}"
   end
+
   def self.install
-      system "make install DESTDIR=#{CREW_DEST_DIR}"
+    system "make install DESTDIR=#{CREW_DEST_DIR}"
   end
 end

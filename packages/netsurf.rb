@@ -9,17 +9,17 @@ class Netsurf < Package
   source_url 'https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.10-src.tar.gz'
   source_sha256 '36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_armv7l/netsurf-3.10-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_armv7l/netsurf-3.10-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_i686/netsurf-3.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_x86_64/netsurf-3.10-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_x86_64/netsurf-3.10-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '6227ff3b0f01bfc07874340c33c598dfda687be81c0475f067a93c10ae0d14e4',
      armv7l: '6227ff3b0f01bfc07874340c33c598dfda687be81c0475f067a93c10ae0d14e4',
        i686: '571980948ef25797181f67dd7cf1977c0fd2d201a9ec7575c518082f3cb8fb6a',
-     x86_64: '638661094c24e60ffbbd836af6e6c434c01c6e5aaa5c4003d59ace69e30edf99',
+     x86_64: '638661094c24e60ffbbd836af6e6c434c01c6e5aaa5c4003d59ace69e30edf99'
   })
 
   depends_on 'netsurf_buildsystem' => :build

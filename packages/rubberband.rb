@@ -9,17 +9,17 @@ class Rubberband < Package
   source_url 'https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2'
   source_sha256 '86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_armv7l/rubberband-1.8.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_i686/rubberband-1.8.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_x86_64/rubberband-1.8.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rubberband/1.8.2_x86_64/rubberband-1.8.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'b684aa86b3ef03b2be91f518c5b88d536d9d3152eeab5670fd7117186742be8b',
      armv7l: 'b684aa86b3ef03b2be91f518c5b88d536d9d3152eeab5670fd7117186742be8b',
        i686: 'deb5b36f7b7b2da1390baf2330b533ab82598a46eeb7073d9f334cb905d006f8',
-     x86_64: '909761fb62e174eaf6b788afc0c1390a38083d7ac7571260f1e294b560dffdbf',
+     x86_64: '909761fb62e174eaf6b788afc0c1390a38083d7ac7571260f1e294b560dffdbf'
   })
 
   depends_on 'ladspa'
@@ -39,7 +39,7 @@ class Rubberband < Package
     system "sed -i '186d' Makefile"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     if ARCH == 'x86_64'
-      Dir.chdir "#{CREW_DEST_PREFIX}" do
+      Dir.chdir CREW_DEST_PREFIX.to_s do
         FileUtils.mv 'lib/', 'lib64/'
       end
     end

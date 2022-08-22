@@ -3,8 +3,8 @@ require 'package'
 class Aws2 < Package
   description 'This package makes it easy to start, stop and save AWS spot instances; and to manage EC2 resources.'
   homepage 'https://github.com/simonm3/aws2'
-  @_ver='0.2.7'
-  version @_ver + '-1'
+  @_ver = '0.2.7'
+  version "#{@_ver}-1"
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'

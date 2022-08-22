@@ -79,7 +79,7 @@ class Ca_certificates < Package
                fi
                # Add trailing newline to certificate, if it is missing (#635570)
     GENTOO_CA_CERT_HEREDOC
-    IO.write('ca-certificates-20150426-root.patch', @gentoo_patch)
+    File.write('ca-certificates-20150426-root.patch', @gentoo_patch)
     system 'patch -p 3 < ca-certificates-20150426-root.patch'
 
     system "sed -i 's,/usr/share/ca-certificates,#{CREW_PREFIX}/share/ca-certificates,g' \
@@ -112,7 +112,7 @@ class Ca_certificates < Package
       # #{@date_temp}
       # Do not edit.
     CA_CERT_CONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/ca-certificates.conf", @ca_cert_conf)
+    File.write("#{CREW_DEST_PREFIX}/etc/ca-certificates.conf", @ca_cert_conf)
     Dir.chdir "#{CREW_DEST_PREFIX}/share/ca-certificates" do
       system "find * -name '*.crt' | LC_ALL=C sort | sed '/examples/d' >> #{CREW_DEST_PREFIX}/etc/ca-certificates.conf"
     end

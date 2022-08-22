@@ -9,29 +9,28 @@ class Libstrophe < Package
   source_url 'https://github.com/strophe/libstrophe/archive/0.9.2.tar.gz'
   source_sha256 '158145bc1565a5fd0bbd7f57e3e15d768e58b8a460897ab5918a5a689d67ae6f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_armv7l/libstrophe-0.9.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_armv7l/libstrophe-0.9.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_i686/libstrophe-0.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_x86_64/libstrophe-0.9.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_x86_64/libstrophe-0.9.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '35c2806eb3e47f25c7e249a601df8149112210344653f20e5eff4093a5dbbf95',
      armv7l: '35c2806eb3e47f25c7e249a601df8149112210344653f20e5eff4093a5dbbf95',
        i686: 'bea33dadf5dcd62377d20f51bb7189c2fb6c66c67cbddea3b78f435daf012833',
-     x86_64: '8ef0cf5a6b74ca87b487577142918f0fff321613441e7c585a7460ea193e3abe',
+     x86_64: '8ef0cf5a6b74ca87b487577142918f0fff321613441e7c585a7460ea193e3abe'
   })
 
   depends_on 'libxml2'
 
   def self.build
     system './bootstrap.sh'
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
-
 end

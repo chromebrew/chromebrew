@@ -44,6 +44,6 @@ class Ant < Package
       export JAVA_HOME=#{CREW_PREFIX}/share/jdk8
       export ANT_HOME=\$JAVA_HOME
     ANTEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/ant", @antenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/ant", @antenv)
   end
 end

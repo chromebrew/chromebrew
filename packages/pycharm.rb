@@ -15,7 +15,7 @@ class Pycharm < Package
 
   def self.patch
     # Fix java.io.IOException: Cannot run program "/home/chronos/user/.PyCharmCE2019.3/system/tmp/ij1055598732.tmp": error=13, Permission denied
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}"
+    FileUtils.mkdir_p CREW_DEST_HOME.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.PyCharmCE2022.2"
     system "touch #{CREW_DEST_PREFIX}/.config/.PyCharmCE2022.2/test"
@@ -35,10 +35,10 @@ class Pycharm < Package
   def self.remove
     config_dir = "#{CREW_PREFIX}/.config/.PyCharmCE2022.2"
     if Dir.exist? config_dir
-      puts "WARNING: This will remove all PyCharm config!".orange
+      puts 'WARNING: This will remove all PyCharm config!'.orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.getc
+      when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

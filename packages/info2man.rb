@@ -16,7 +16,7 @@ class Info2man < Package
   end
 
   def self.install
-    @_perl_version = %x[echo "printf '%vd', $^V;" | perl].to_s
+    @_perl_version = `echo "printf '%vd', $^V;" | perl`.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/perl5/site_perl/#{@_perl_version}/"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"

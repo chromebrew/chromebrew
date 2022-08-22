@@ -18,17 +18,17 @@ class Fpc < Package
     source_sha256 '5adac308a5534b6a76446d8311fc340747cbb7edeaacfe6b651493ff3fe31e83'
   end
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fpc/3.2.2_armv7l/fpc-3.2.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fpc/3.2.2_armv7l/fpc-3.2.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fpc/3.2.2_i686/fpc-3.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fpc/3.2.2_x86_64/fpc-3.2.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fpc/3.2.2_x86_64/fpc-3.2.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '84701dedbee28a6db2386366318a8c2e27c389a758ea8033502d40fa2f4ec588',
      armv7l: '84701dedbee28a6db2386366318a8c2e27c389a758ea8033502d40fa2f4ec588',
        i686: '20062e277f6432b76115a74b6b46a38888ef696f15bbf79efce8546a1aff9a46',
-     x86_64: 'b5b9152ce23f5e7f33ab8b788ef80ca440d2d26ef300321f1e944c24051f9b45',
+     x86_64: 'b5b9152ce23f5e7f33ab8b788ef80ca440d2d26ef300321f1e944c24051f9b45'
   })
 
   def self.patch
@@ -47,17 +47,17 @@ class Fpc < Package
   end
 
   def self.remove
-    print "Would you like to remove the config directories? [y/N] "
-    response = STDIN.getc
+    print 'Would you like to remove the config directories? [y/N] '
+    response = $stdin.getc
     config_dirs = ["#{HOME}/.fpc.cfg", "#{HOME}/.config/fppkg.cfg", "#{HOME}/.fppkg"]
-    config_dirs.each { |config_dir|
+    config_dirs.each do |config_dir|
       case response
-      when "y", "Y"
+      when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else
         puts "#{config_dir} saved.".lightgreen
       end
-    }
+    end
   end
 end

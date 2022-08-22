@@ -20,7 +20,6 @@ class Remmina < Package
      x86_64: '6b280475ba0d8778b5be2be2d697968ce893b12fbf78d448d7431770e8fb718c'
   })
 
-
   depends_on 'avahi'
   depends_on 'freerdp'
   depends_on 'hashpipe' => :build

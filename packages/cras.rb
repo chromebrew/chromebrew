@@ -9,17 +9,17 @@ class Cras < Package
   source_url "https://chromium.googlesource.com/chromiumos/third_party/adhd/+/refs/heads/#{version}/cras/README.md"
   source_sha256 '355514e78ba4d1736f53c427c329bdfad327afc052a1b78d543cb4840d199b4e'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_armv7l/cras-stabilize-13654.B-chromeos-armv7l.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_armv7l/cras-stabilize-13654.B-chromeos-armv7l.tar.xz',
       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_armv7l/cras-stabilize-13654.B-chromeos-armv7l.tar.xz',
         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_i686/cras-stabilize-13654.B-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_x86_64/cras-stabilize-13654.B-chromeos-x86_64.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_x86_64/cras-stabilize-13654.B-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
+  binary_sha256({
+    aarch64: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
       armv7l: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
         i686: '4f488c0a8ca5115995c2d9530442c7ad58da8bb19684d75815c6b60d9ae8ed18',
-      x86_64: '1f53ed96948e29f71d42f1b437e7e4637f6e08a4e573966ec139bb3437ed0d21',
+      x86_64: '1f53ed96948e29f71d42f1b437e7e4637f6e08a4e573966ec139bb3437ed0d21'
   })
 
   depends_on 'alsa_lib' # R
@@ -77,15 +77,15 @@ _EOF_'
           --enable-avx2 \
           --enable-fma"
       end
-      system "make"
+      system 'make'
     end
   end
 
   def self.install
     Dir.chdir('cras') do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", "install"
-      FileUtils.mkdir_p CREW_DEST_PREFIX + '/share/alsa/alsa.conf.d/'
-      FileUtils.install '10-cras.conf', CREW_DEST_PREFIX + '/share/alsa/alsa.conf.d/'
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/alsa/alsa.conf.d/"
+      FileUtils.install '10-cras.conf', "#{CREW_DEST_PREFIX}/share/alsa/alsa.conf.d/"
     end
   end
 end

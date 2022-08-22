@@ -9,15 +9,15 @@ class Heroku < Package
   source_url 'https://github.com/heroku/cli/archive/v7.44.0.tar.gz'
   source_sha256 '565e2a42a5095da43466465f29455ea646b235742f16b667d58da0a312c0fe8a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_armv7l/heroku-7.44.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_armv7l/heroku-7.44.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_x86_64/heroku-7.44.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_x86_64/heroku-7.44.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c97d289b8e06b35552f49c2da468a883292a8bd29f40d5bf110b0e3632cfc102',
      armv7l: 'c97d289b8e06b35552f49c2da468a883292a8bd29f40d5bf110b0e3632cfc102',
-     x86_64: '2e98fdebcbe61a6819e7066da0152a1da1cabaa456d4d6f869d4ec582b5e8555',
+     x86_64: '2e98fdebcbe61a6819e7066da0152a1da1cabaa456d4d6f869d4ec582b5e8555'
   })
 
   depends_on 'yarn' => :build

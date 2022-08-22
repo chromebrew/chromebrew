@@ -136,7 +136,7 @@ class Flatpak < Package
       unset FONTCONFIG_PATH
       #{CREW_PREFIX}/libexec/flatpak/flatpak \$FLATPAK_FLAGS  "\$@"
     FLATPAK_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
+    File.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf",
                  "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/org.freedesktop.Flatpak.SystemHelper.conf"
@@ -146,7 +146,7 @@ class Flatpak < Package
       # Flatpak configuration
       export XDG_DATA_DIRS='#{CREW_PREFIX}/share:#{CREW_PREFIX}/.config/.local/share/flatpak/exports/share:#{CREW_PREFIX}/var/lib/flatpak/exports/share'
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/flatpak", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/flatpak", @env)
   end
 
   def self.postinstall

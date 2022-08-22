@@ -18,8 +18,8 @@ class Monero_gui < Package
 
   def self.build
     monero = <<~EOF
-    #!/bin/bash
-    GDK_BACKEND=x11 #{CREW_PREFIX}/bin/monero-wallet-gui "$@"
+      #!/bin/bash
+      GDK_BACKEND=x11 #{CREW_PREFIX}/bin/monero-wallet-gui "$@"
     EOF
     File.write('monero.sh', monero)
   end

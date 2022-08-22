@@ -10,7 +10,7 @@ class Git_prompt < Package
 
   def self.build
     system "curl -#LO https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('git-prompt.sh') ) == '1fbced3fe345ec14f828ffb876e191d69457cccc807c70f54c9ba48cb2a6620e'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('git-prompt.sh')) == '1fbced3fe345ec14f828ffb876e191d69457cccc807c70f54c9ba48cb2a6620e'
     git_env = <<~EOF
 
       GIT_PS1_SHOWDIRTYSTATE=yes
@@ -22,7 +22,7 @@ class Git_prompt < Package
 
       PS1='\\[\\033[1;34m\\]\\u@\\h \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
     EOF
-    IO.write('git-prompt.sh', git_env, mode: 'a')
+    File.write('git-prompt.sh', git_env, mode: 'a')
   end
 
   def self.install
@@ -32,7 +32,7 @@ class Git_prompt < Package
 
   def self.postinstall
     puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
     puts "\ncd /path/to/git/repo and you should see the branch displayed in the prompt\n".lightblue
   end
 end

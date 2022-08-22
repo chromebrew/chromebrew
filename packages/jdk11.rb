@@ -12,7 +12,7 @@ class Jdk11 < Package
   no_patchelf
 
   def self.preflight
-    ['jdk8','jdk15','jdk16','jdk17','jdk18'].each do |jdk|
+    %w[jdk8 jdk15 jdk16 jdk17 jdk18].each do |jdk|
       abort "#{jdk} installed.".lightgreen if Dir.exist? "#{CREW_PREFIX}/share/#{jdk}"
     end
   end
@@ -20,17 +20,17 @@ class Jdk11 < Package
   def self.install
     jdk_bin = "#{HOME}/Downloads/jdk-#{version}_linux-x64_bin.tar.gz"
     jdk_sha256 = 'a40ad9342646ec14196deaf28c64f697fef4c698296f0e7d39b638f360780d27'
-    unless File.exist? jdk_bin then
+    unless File.exist? jdk_bin
       puts "\nOracle now requires an account to download the JDK.\n".orange
-      puts "You must login at https://login.oracle.com/mysso/signon.jsp and then visit:".orange
-      puts "https://www.oracle.com/java/technologies/downloads/#java11".orange
+      puts 'You must login at https://login.oracle.com/mysso/signon.jsp and then visit:'.orange
+      puts 'https://www.oracle.com/java/technologies/downloads/#java11'.orange
       puts "\nDownload the JDK for your architecture to #{HOME}/Downloads to continue.\n".orange
       abort
     end
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(jdk_bin) ) == jdk_sha256
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read(jdk_bin)) == jdk_sha256
     system "tar xvf #{jdk_bin}"
     jdk11_dir = "#{CREW_DEST_PREFIX}/share/jdk11"
-    FileUtils.mkdir_p "#{jdk11_dir}"
+    FileUtils.mkdir_p jdk11_dir.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cd "jdk-#{version}" do
       FileUtils.rm_f 'lib/src.zip'

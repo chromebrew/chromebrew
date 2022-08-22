@@ -30,6 +30,6 @@ class Cowsay < Package
       # Set COWPATH for cowsay
       export COWPATH=#{CREW_PREFIX}/share/cows
     COWSAYEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/cowsay", @cowsayenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/cowsay", @cowsayenv)
   end
 end

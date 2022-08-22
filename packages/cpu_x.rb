@@ -16,17 +16,17 @@ class Cpu_x < Package
 
   def self.build
     @cpu = <<~EOF
-    #!/bin/bash
-    cd #{CREW_PREFIX}/share/cpu-x
-    ./AppRun "$@"
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/cpu-x
+      ./AppRun "$@"
     EOF
-    IO.write('cpu-x.sh', @cpu)
+    File.write('cpu-x.sh', @cpu)
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/cpu-x"
-    FileUtils.install 'cpu-x.sh', "#{CREW_DEST_PREFIX}/bin/cpu-x", mode: 0755
+    FileUtils.install 'cpu-x.sh', "#{CREW_DEST_PREFIX}/bin/cpu-x", mode: 0o755
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/cpu-x"
   end
 

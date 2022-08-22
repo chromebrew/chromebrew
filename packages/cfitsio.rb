@@ -23,7 +23,7 @@ class Cfitsio < Package
   })
 
   def self.patch
-     system "sed -e 's|LDFLAGS=.*|LDFLAGS=$LDFLAGS|g' -i configure.in # Fix LDFLAGS"
+    system "sed -e 's|LDFLAGS=.*|LDFLAGS=$LDFLAGS|g' -i configure.in # Fix LDFLAGS"
   end
 
   def self.build

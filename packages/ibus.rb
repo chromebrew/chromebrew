@@ -74,9 +74,7 @@ class Ibus < Package
     --with-emoji-annotation-dir=#{CREW_PREFIX}/share/unicode/cldr/common/annotations \
     --with-python=python3 \
     --with-ucd-dir=#{CREW_PREFIX}/share/unicode"
-    unless File.exist?('engine/denylist.txt')
-      system "curl -Lf https://github.com/ibus/ibus/raw/#{@_ver}/engine/denylist.txt -o engine/denylist.txt"
-    end
+    system "curl -Lf https://github.com/ibus/ibus/raw/#{@_ver}/engine/denylist.txt -o engine/denylist.txt" unless File.exist?('engine/denylist.txt')
     system 'make'
   end
 

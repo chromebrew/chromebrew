@@ -9,17 +9,17 @@ class Yajl < Package
   source_url 'https://github.com/lloyd/yajl/archive/2.1.0.tar.gz'
   source_sha256 '3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_armv7l/yajl-2.1.0-2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_armv7l/yajl-2.1.0-2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_i686/yajl-2.1.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_x86_64/yajl-2.1.0-2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_x86_64/yajl-2.1.0-2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '4afb152584a025239161684888378662bc1305adccd63b5b5246581a914b74c8',
      armv7l: '4afb152584a025239161684888378662bc1305adccd63b5b5246581a914b74c8',
        i686: 'fab84163e9ddd02ec0286ccbad845005d376352f392e68bd57955b003c788d89',
-     x86_64: 'f702d50a8e81b5fcfed7229a782aae5f03e45d85b0a386a24d152e3fac5ed595',
+     x86_64: 'f702d50a8e81b5fcfed7229a782aae5f03e45d85b0a386a24d152e3fac5ed595'
   })
 
   def self.build
@@ -35,7 +35,7 @@ class Yajl < Package
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       case ARCH
       when 'x86_64'
-        Dir.chdir "#{CREW_DEST_PREFIX}" do
+        Dir.chdir CREW_DEST_PREFIX.to_s do
           FileUtils.mkdir 'lib64'
           FileUtils.mv Dir.glob('lib/*'), 'lib64/'
         end

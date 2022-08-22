@@ -10,5 +10,4 @@ class Nspr < Package
   is_fake
 
   depends_on 'nss'
-
 end

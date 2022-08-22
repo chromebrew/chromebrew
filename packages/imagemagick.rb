@@ -11,14 +11,14 @@ class Imagemagick < Package
 
   if ARGV[0] == 'install'
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
-    abort "ImageMagick version #{imver} already installed.".lightgreen unless "#{imver}" == ""
+    abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
     puts
-    puts "  Select the version to install:"
-    puts "  6 = ImageMagick 6.9.11-29"
-    puts "  7 = ImageMagick 7.0.11-2"
-    puts "  0 = Cancel"
+    puts '  Select the version to install:'
+    puts '  6 = ImageMagick 6.9.11-29'
+    puts '  7 = ImageMagick 7.0.11-2'
+    puts '  0 = Cancel'
 
-    while version = STDIN.gets.chomp
+    while version = $stdin.gets.chomp
       case version
       when '6'
         depends_on 'imagemagick6'
@@ -30,7 +30,7 @@ class Imagemagick < Package
         abort
         break
       else
-        puts "  Please select from one of the options or enter 0 to cancel."
+        puts '  Please select from one of the options or enter 0 to cancel.'
       end
     end
   end

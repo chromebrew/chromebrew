@@ -9,17 +9,17 @@ class Zsync < Package
   source_url 'https://zsync.moria.org.uk/download/zsync-0.6.2.tar.bz2'
   source_sha256 '0b9d53433387aa4f04634a6c63a5efa8203070f2298af72a705f9be3dda65af2'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsync/0.6.2_armv7l/zsync-0.6.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsync/0.6.2_armv7l/zsync-0.6.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsync/0.6.2_i686/zsync-0.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsync/0.6.2_x86_64/zsync-0.6.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zsync/0.6.2_x86_64/zsync-0.6.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ec99187285ee26098f60a08e075e61fe7ea2b66b153052c3be9aac8866c39d77',
      armv7l: 'ec99187285ee26098f60a08e075e61fe7ea2b66b153052c3be9aac8866c39d77',
        i686: 'fd3630d2edcdac1730de54d82674505a1b98c2430e3fb04224147348175bbc69',
-     x86_64: 'ce5a3c89fec4f13638ade49db7c2c45ca169e86b34687b3c55710f534789aba6',
+     x86_64: 'ce5a3c89fec4f13638ade49db7c2c45ca169e86b34687b3c55710f534789aba6'
   })
 
   def self.patch

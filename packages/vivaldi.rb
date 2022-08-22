@@ -32,7 +32,7 @@ class Vivaldi < Package
     # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/vivaldi'
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/update-ffmpeg'
-    system 'sed', '-i', "s:/usr/bin/::g", './usr/share/applications/vivaldi-stable.desktop'
+    system 'sed', '-i', 's:/usr/bin/::g', './usr/share/applications/vivaldi-stable.desktop'
   end
 
   def self.install
@@ -50,7 +50,7 @@ class Vivaldi < Package
     FileUtils.mkdir_p icon_base_path
     Dir["#{CREW_DEST_PREFIX}/share/vivaldi/product_logo_*.png"].each do |filename|
       logo = File.basename(filename)
-      size = File.basename(logo[13,7], '.png')
+      size = File.basename(logo[13, 7], '.png')
       dims = "#{size}x#{size}"
       FileUtils.mkdir_p "#{icon_base_path}/#{dims}/apps"
       FileUtils.mv filename, "#{icon_base_path}/#{dims}/apps/vivaldi.png"

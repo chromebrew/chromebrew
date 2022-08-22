@@ -9,9 +9,9 @@ class Far < Package
   source_url 'https://downloads.sourceforge.net/project/findandreplace/findandreplace/2.0.3/FAR-2.0.3-x.tar.gz'
   source_sha256 'd0e8406b08833be398476e3482a657998cd89e429025989f87cd35added5bedf'
 
-  binary_url ({
+  binary_url({
   })
-  binary_sha256 ({
+  binary_sha256({
   })
 
   depends_on 'jdk8'

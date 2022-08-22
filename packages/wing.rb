@@ -11,11 +11,11 @@ class Wing < Package
 
   depends_on 'sommelier'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wing/7.2.1.0_x86_64/wing-7.2.1.0-chromeos-x86_64.tar.xz',
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wing/7.2.1.0_x86_64/wing-7.2.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3',
+  binary_sha256({
+    x86_64: '8be03ea9bcfa884c4f4a324190ecf6cbefd7b82389e264b6a35e318f30ec7ed3'
   })
 
   def self.patch
@@ -38,9 +38,9 @@ class Wing < Package
     puts
     puts "Type 'wing' to get started.".lightblue
     puts
-    puts "To completely remove including all preferences, execute the following:".lightblue
-    puts "crew remove wing".lightblue
-    puts "rm -rf ~/.wingpersonal7".lightblue
+    puts 'To completely remove including all preferences, execute the following:'.lightblue
+    puts 'crew remove wing'.lightblue
+    puts 'rm -rf ~/.wingpersonal7'.lightblue
     puts
   end
 end

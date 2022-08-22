@@ -9,17 +9,17 @@ class Libuninum < Package
   source_url 'https://billposer.org/Software/Downloads/libuninum-2.7.tar.bz2'
   source_sha256 'e704983c3c00e9b76bd836b8b83ce31bfe4eb1752eee8be123cf97c1275076ea'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuninum/2.7-0_armv7l/libuninum-2.7-0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuninum/2.7-0_armv7l/libuninum-2.7-0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuninum/2.7-0_i686/libuninum-2.7-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuninum/2.7-0_x86_64/libuninum-2.7-0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuninum/2.7-0_x86_64/libuninum-2.7-0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '8cca34b8e60fed8fd5f8506f4b91ababb6343fb89a268a03fb590ebf44f29cef',
      armv7l: '8cca34b8e60fed8fd5f8506f4b91ababb6343fb89a268a03fb590ebf44f29cef',
        i686: '36aad93b00c85623884776b89dab2dde5c7e8ef393b13b9faf4b175ea2787704',
-     x86_64: 'f2119fada66d21f242a33068c46267c1f05cdcb517dcbe76ab9476ca556e22cc',
+     x86_64: 'f2119fada66d21f242a33068c46267c1f05cdcb517dcbe76ab9476ca556e22cc'
   })
 
   def self.build
@@ -28,6 +28,6 @@ class Libuninum < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

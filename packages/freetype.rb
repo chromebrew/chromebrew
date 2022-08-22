@@ -59,24 +59,22 @@ class Freetype < Package
     # This should become a function.
     # check for conflicts with other installed files
     @override_allowed = %w[fontconfig harfbuzz]
-    puts "Checking for conflicts with files from installed packages..."
+    puts 'Checking for conflicts with files from installed packages...'
     conflicts = []
-    conflictscmd = %x[grep --exclude #{CREW_META_PATH}#{self.name}.filelist -Fxf #{CREW_META_PATH}#{self.name}.filelist #{CREW_META_PATH}*.filelist]
+    conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
-      if self.conflicts_ok?
-        puts "Handling conflict with the same file in another package.".orange
+      if conflicts_ok?
+        puts 'Handling conflict with the same file in another package.'.orange
       else
-        puts "Error: There is a conflict with the same file in another package.".lightred
+        puts 'Error: There is a conflict with the same file in another package.'.lightred
         @_errors = 1
       end
       conflicts.each do |conflict|
         conflict.each do |thisconflict|
-          singleconflict = thisconflict.split(':',-1)
-          if @override_allowed.include?(singleconflict[0])
-            system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
-          end
+          singleconflict = thisconflict.split(':', -1)
+          system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
         end
       end
     end

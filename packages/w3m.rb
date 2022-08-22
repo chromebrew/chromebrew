@@ -13,13 +13,13 @@ class W3m < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_armv7l/w3m-0.5.3-20210102-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_armv7l/w3m-0.5.3-20210102-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_i686/w3m-0.5.3-20210102-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_x86_64/w3m-0.5.3-20210102-chromeos-x86_64.tpxz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_x86_64/w3m-0.5.3-20210102-chromeos-x86_64.tpxz'
   })
   binary_sha256({
     aarch64: 'bf03da42e618055be022f5f0939e6a7326524a5abb9ead031c5acdbb4ad7ce41',
      armv7l: 'bf03da42e618055be022f5f0939e6a7326524a5abb9ead031c5acdbb4ad7ce41',
        i686: '5586b147ec8037ccfc2d3b8fc433bd2b8b9d2d89f1bc15a478c1c084a34b1f03',
-     x86_64: '25cc290c3023077bcfb1bd40c84905f366561d7574dcfd8e890a1eea4c41e565',
+     x86_64: '25cc290c3023077bcfb1bd40c84905f366561d7574dcfd8e890a1eea4c41e565'
   })
 
   depends_on 'bdwgc'

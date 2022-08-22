@@ -9,17 +9,17 @@ class Percona_server < Package
   source_url 'https://www.percona.com/downloads/Percona-Server-LATEST/Percona-Server-5.7.20-19/source/tarball/percona-server-5.7.20-19.tar.gz'
   source_sha256 '17f06c07165954e7eacc3ba2cac0e1d4ba65b0b568f2437298d3c17a6a0940fd'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_i686/percona_server-5.7.20-19-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_x86_64/percona_server-5.7.20-19-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_x86_64/percona_server-5.7.20-19-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
      armv7l: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
        i686: '757706998388bf559a70f53567af4518c523f1236a500e228210ce023ef41a5c',
-     x86_64: '47431d59582a5be3361cbfd571de3da9a557b76cea40a01f4b58347988e7aa2c',
+     x86_64: '47431d59582a5be3361cbfd571de3da9a557b76cea40a01f4b58347988e7aa2c'
   })
 
   depends_on 'cmake' => :build
@@ -69,38 +69,38 @@ class Percona_server < Package
       system "echo '  echo \"mysqld process \$MYSQL is running\"' >> stopmysql"
       system "echo '  exit 1' >> stopmysql"
       system "echo 'fi' >> stopmysql"
-      system "chmod +x st*mysql"
+      system 'chmod +x st*mysql'
     end
   end
 
   def self.postinstall
     unless Dir.exist? "#{CREW_PREFIX}/data"
       system "mysqld --initialize-insecure --user=#{USER}"
-      system "mysql_ssl_rsa_setup"
+      system 'mysql_ssl_rsa_setup'
     end
     puts
     puts "Databases are stored in #{CREW_PREFIX}/data.".lightblue
     puts
-    puts "To reset the root password, see https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html#resetting-permissions-unix".lightblue
+    puts 'To reset the root password, see https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html#resetting-permissions-unix'.lightblue
     puts
-    puts "To lockdown permissions, execute the following:".lightblue
-    puts "mysql_secure_installation".lightblue
+    puts 'To lockdown permissions, execute the following:'.lightblue
+    puts 'mysql_secure_installation'.lightblue
     puts
-    puts "To start/stop mysqld, execute the following:".lightblue
-    puts "startmysql - starts mysqld".lightblue
-    puts "stopmysql - stops mysqld".lightblue
+    puts 'To start/stop mysqld, execute the following:'.lightblue
+    puts 'startmysql - starts mysqld'.lightblue
+    puts 'stopmysql - stops mysqld'.lightblue
     puts
-    puts "To start mysqld on login, execute the following:".lightblue
+    puts 'To start mysqld on login, execute the following:'.lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startmysql ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startmysql' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
     puts
-    puts "To completely remove MySQL and all databases, perform the following:".lightblue
-    puts "crew remove percona_server".lightblue
+    puts 'To completely remove MySQL and all databases, perform the following:'.lightblue
+    puts 'crew remove percona_server'.lightblue
     puts "rm -rf #{CREW_PREFIX}/data".lightblue
     puts
-    puts "Percona Server documentation: https://www.percona.com/doc/percona-server/5.7/index.html".lightblue
+    puts 'Percona Server documentation: https://www.percona.com/doc/percona-server/5.7/index.html'.lightblue
     puts
   end
 end

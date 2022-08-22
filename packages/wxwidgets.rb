@@ -14,13 +14,13 @@ class Wxwidgets < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_armv7l/wxwidgets-3.2.0-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_armv7l/wxwidgets-3.2.0-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_i686/wxwidgets-3.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_x86_64/wxwidgets-3.2.0-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_x86_64/wxwidgets-3.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'e448296c06b7f6711524daa6c6990e2895ff9a53ebd4924ac0b85a16af7a80ba',
      armv7l: 'e448296c06b7f6711524daa6c6990e2895ff9a53ebd4924ac0b85a16af7a80ba',
        i686: '71c93bf3f0d01f6bc6b3ce2a67c9500be19b842aff0b062b09bde02365c6a27c',
-     x86_64: '21119b43b7ad1c6620c04569981d83a97d367baf85c630983351849b9aef9949',
+     x86_64: '21119b43b7ad1c6620c04569981d83a97d367baf85c630983351849b9aef9949'
   })
 
   depends_on 'atk' # R

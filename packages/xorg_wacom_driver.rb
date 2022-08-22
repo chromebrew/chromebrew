@@ -9,17 +9,17 @@ class Xorg_wacom_driver < Package
   source_url 'https://downloads.sourceforge.net/linuxwacom/xf86-input-wacom-0.36.0.tar.bz2'
   source_sha256 'eae7c5d2872b1433c8d679bb42b00213403eb2a0544c514f4df2b586284c23f6'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_wacom_driver/0.36.0_armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_wacom_driver/0.36.0_armv7l/xorg_wacom_driver-0.36.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_wacom_driver/0.36.0_i686/xorg_wacom_driver-0.36.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_wacom_driver/0.36.0_x86_64/xorg_wacom_driver-0.36.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_wacom_driver/0.36.0_x86_64/xorg_wacom_driver-0.36.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ee29a6cace73be6ba1a7d219ad1b177a27329b60bd54ac535bcf542810e49f17',
      armv7l: 'ee29a6cace73be6ba1a7d219ad1b177a27329b60bd54ac535bcf542810e49f17',
        i686: 'b626188aa89986e4440c8a549bfd3b96805c97b7bd7e243a129ebe86eddb17c1',
-     x86_64: 'bb728fe3c71174876921f48677d5c796a44789d42f919f4169bc64ad08757258',
+     x86_64: 'bb728fe3c71174876921f48677d5c796a44789d42f919f4169bc64ad08757258'
   })
 
   depends_on 'xorg_server' => :build

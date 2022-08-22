@@ -9,17 +9,17 @@ class Wput < Package
   source_url 'https://downloads.sourceforge.net/project/wput/wput/0.6.2/wput-0.6.2.tgz'
   source_sha256 '229d8bb7d045ca1f54d68de23f1bc8016690dc0027a16586712594fbc7fad8c7'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wput/0.6.2_armv7l/wput-0.6.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wput/0.6.2_armv7l/wput-0.6.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wput/0.6.2_i686/wput-0.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wput/0.6.2_x86_64/wput-0.6.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wput/0.6.2_x86_64/wput-0.6.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '14f657d436a0d8268ae072b157efcf4270542f44ef859b859c633ba1632e3c20',
      armv7l: '14f657d436a0d8268ae072b157efcf4270542f44ef859b859c633ba1632e3c20',
        i686: '81097c507c097a7de95ceb400240fa676ab399cb177cf95db4f6c982ae1a7f9e',
-     x86_64: 'f2b7ed34899a4d0ea18cc553d0028d16683fcebe0915eed11098911aa663c40b',
+     x86_64: 'f2b7ed34899a4d0ea18cc553d0028d16683fcebe0915eed11098911aa663c40b'
   })
 
   depends_on 'gnutls'

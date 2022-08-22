@@ -4,7 +4,7 @@ class Libproxy < Package
   description 'libproxy is a library that provides automatic proxy configuration management.'
   homepage 'https://libproxy.github.io/libproxy/'
   @_ver = '5d5e13ddc47a2a061c595c1356d7d07d78cf597f'
-  version @_ver[0,7]
+  version @_ver[0, 7]
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/libproxy/libproxy.git'

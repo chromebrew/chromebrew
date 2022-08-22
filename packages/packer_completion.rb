@@ -31,6 +31,6 @@ class Packer_completion < Package
       # Packer bash completion
       source #{CREW_PREFIX}/share/packer-bash-completion/packer
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/packer_completion", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/packer_completion", @env)
   end
 end

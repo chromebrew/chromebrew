@@ -11,10 +11,10 @@ class Natron < Package
 
   no_compile_needed
 
-  binary_url ({
+  binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/natron/2.4.0_x86_64/natron-2.4.0-chromeos-x86_64.tpxz'
   })
-  binary_sha256 ({
+  binary_sha256({
     x86_64: '35b3c22b67f74d285e71f619179cf36a3a475d0df37dd7dcb104d22a318edce4'
   })
 
@@ -39,8 +39,8 @@ class Natron < Package
     config_dir = "#{HOME}/.Natron"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.getc
+      when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

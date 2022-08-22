@@ -63,23 +63,23 @@ class Icu4c < Package
 
   def self.postinstall
     # Check for packages that expect an older icu library.
-    #Dir.chdir CREW_LIB_PREFIX do
-      #@oldicuver.each do |oldver|
-        #puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
-        #@fileArray = []
-        #@libArray = []
-        #@nmresults = %x[nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}].chop.split(/$/).map(&:strip)
-        #@nmresults.each { |fileLine| @libArray.push(fileLine.partition(":").first) }
-        #@libArray.each do |f|
-          #@grepresults =  %x[grep "#{f}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').partition(":").first.gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
-          #@grepresults.each { |fileLine| @fileArray.push(fileLine) }
-        #end
-        #unless @fileArray.empty?
-          #@fileArray.uniq.sort.each do |item|
-            #puts item.lightred
-          #end
-        #end
-      #end
-    #end
+    # Dir.chdir CREW_LIB_PREFIX do
+    # @oldicuver.each do |oldver|
+    # puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
+    # @fileArray = []
+    # @libArray = []
+    # @nmresults = %x[nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}].chop.split(/$/).map(&:strip)
+    # @nmresults.each { |fileLine| @libArray.push(fileLine.partition(":").first) }
+    # @libArray.each do |f|
+    # @grepresults =  %x[grep "#{f}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').partition(":").first.gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
+    # @grepresults.each { |fileLine| @fileArray.push(fileLine) }
+    # end
+    # unless @fileArray.empty?
+    # @fileArray.uniq.sort.each do |item|
+    # puts item.lightred
+    # end
+    # end
+    # end
+    # end
   end
 end

@@ -9,17 +9,17 @@ class Dosfstools < Package
   source_url 'https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz'
   source_sha256 'e6b2aca70ccc3fe3687365009dd94a2e18e82b688ed4e260e04b7412471cc173'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dosfstools/4.1_armv7l/dosfstools-4.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dosfstools/4.1_armv7l/dosfstools-4.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dosfstools/4.1_i686/dosfstools-4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dosfstools/4.1_x86_64/dosfstools-4.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dosfstools/4.1_x86_64/dosfstools-4.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a2fa41c25a7aee9ae85cd1b7759d3de0f89c6e3863ab26b7959d0b7f7c4acae6',
      armv7l: 'a2fa41c25a7aee9ae85cd1b7759d3de0f89c6e3863ab26b7959d0b7f7c4acae6',
        i686: '5e71d1e528360ce349a3a609ffad1d5723a91fc2687a76b8fe5f2a8c8437665c',
-     x86_64: '430a5579234dd68276ecb94cd24c0e5b894b26f04e76b09d2268aeaef7467046',
+     x86_64: '430a5579234dd68276ecb94cd24c0e5b894b26f04e76b09d2268aeaef7467046'
   })
 
   def self.build

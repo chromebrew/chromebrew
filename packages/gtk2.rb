@@ -13,13 +13,13 @@ class Gtk2 < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_armv7l/gtk2-2.24.33-2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_armv7l/gtk2-2.24.33-2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_i686/gtk2-2.24.33-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_x86_64/gtk2-2.24.33-2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-2_x86_64/gtk2-2.24.33-2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '3e4c4c44a9713a5e37770718e7951062ea9b986bb1a9a99d45f4fd79a9fdf747',
      armv7l: '3e4c4c44a9713a5e37770718e7951062ea9b986bb1a9a99d45f4fd79a9fdf747',
        i686: 'aaa52bb7041e4d459314b8a27d1564a9aac73a6464c055ce78a6860bc169de0a',
-     x86_64: 'c2696e86d1b93611ff3f0d6c5931cdb2666afb0f90324a25214db3e6c2a51df3',
+     x86_64: 'c2696e86d1b93611ff3f0d6c5931cdb2666afb0f90324a25214db3e6c2a51df3'
   })
 
   depends_on 'atk'
@@ -67,8 +67,6 @@ class Gtk2 < Package
   end
 
   def self.remove
-    if File.symlink? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
-      FileUtils.rm "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
-    end
+    FileUtils.rm "#{CREW_PREFIX}/bin/gtk-update-icon-cache" if File.symlink? "#{CREW_PREFIX}/bin/gtk-update-icon-cache"
   end
 end

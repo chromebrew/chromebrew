@@ -9,15 +9,15 @@ class Veracrypt < Package
   source_url 'https://www.veracrypt.fr/code/VeraCrypt/snapshot/VeraCrypt_1.25.9.tar.gz'
   source_sha256 '66f2195f126df53f1037cc4b81ea4b9eaa5cd6aaa351f5cfe324760fdefab0d0'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/veracrypt/1.25.9_armv7l/veracrypt-1.25.9-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/veracrypt/1.25.9_armv7l/veracrypt-1.25.9-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/veracrypt/1.25.9_x86_64/veracrypt-1.25.9-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/veracrypt/1.25.9_x86_64/veracrypt-1.25.9-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '110caf9f2d53edb107d94ab8a45d08014f6fd93f54e3f4f8f5fef6bebb809229',
      armv7l: '110caf9f2d53edb107d94ab8a45d08014f6fd93f54e3f4f8f5fef6bebb809229',
-     x86_64: '6ffd9a70f7161d662a2db6427ed52753836e780386f3171bd8b308ba2b7f72f1',
+     x86_64: '6ffd9a70f7161d662a2db6427ed52753836e780386f3171bd8b308ba2b7f72f1'
   })
 
   depends_on 'yasm' => :build

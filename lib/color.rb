@@ -1,6 +1,6 @@
 # Colorization for strings
 class String
-  @use_color = STDOUT.isatty
+  @use_color = $stdout.isatty
 
   class << self
     attr_accessor :use_color

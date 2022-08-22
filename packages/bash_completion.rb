@@ -36,6 +36,6 @@ class Bash_completion < Package
       # Bash completion configuration
       source #{CREW_PREFIX}/share/bash-completion/bash_completion
     BASHCOMPLETIONEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash_completion", @bashcompletionenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash_completion", @bashcompletionenv)
   end
 end

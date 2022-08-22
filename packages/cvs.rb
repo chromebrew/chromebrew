@@ -1,25 +1,25 @@
 require 'package'
 
 class Cvs < Package
-  description "CVS is a version control system, an important component of Source Configuration Management (SCM). Using it, you can record the history of sources files, and documents. It fills a similar role to the free software RCS, PRCS, and Aegis packages."
-  homepage "http://www.nongnu.org/cvs/"
-  version "1.11.23-1"
+  description 'CVS is a version control system, an important component of Source Configuration Management (SCM). Using it, you can record the history of sources files, and documents. It fills a similar role to the free software RCS, PRCS, and Aegis packages.'
+  homepage 'http://www.nongnu.org/cvs/'
+  version '1.11.23-1'
   license 'GPL-2 LGPL-2'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/non-gnu/cvs/source/stable/1.11.23/cvs-1.11.23.tar.bz2"
-  source_sha256 "400f51b59d85116e79b844f2d5dbbad4759442a789b401a94aa5052c3d7a4aa9"
+  source_url 'https://ftp.gnu.org/non-gnu/cvs/source/stable/1.11.23/cvs-1.11.23.tar.bz2'
+  source_sha256 '400f51b59d85116e79b844f2d5dbbad4759442a789b401a94aa5052c3d7a4aa9'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cvs/1.11.23-1_armv7l/cvs-1.11.23-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cvs/1.11.23-1_armv7l/cvs-1.11.23-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cvs/1.11.23-1_i686/cvs-1.11.23-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cvs/1.11.23-1_x86_64/cvs-1.11.23-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cvs/1.11.23-1_x86_64/cvs-1.11.23-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '89026095bdd1ce7a832e717d04dbf82dd4edeee4234d66da5a42b7c540fbda20',
      armv7l: '89026095bdd1ce7a832e717d04dbf82dd4edeee4234d66da5a42b7c540fbda20',
        i686: '34354bff1e1f899793c430458e5aa4ac9d0268af14bace13d1ba1371677f7080',
-     x86_64: '15b3d7119405f6703d20f8b566ae4c4f3ff72bd6d5223bb3aa919250f0456349',
+     x86_64: '15b3d7119405f6703d20f8b566ae4c4f3ff72bd6d5223bb3aa919250f0456349'
   })
 
   depends_on 'krb5' # Works in krb4 compatibility mode.
@@ -34,14 +34,14 @@ class Cvs < Package
   end
 
   def self.build
-    system "./configure",
+    system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--with-krb4=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

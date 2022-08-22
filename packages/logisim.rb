@@ -22,7 +22,7 @@ class Logisim < Package
 
   def self.install
     system "curl -L#O https://downloads.sourceforge.net/project/circuit/2.7.x/#{version}/logisim-generic-#{version}.jar"
-    abort 'Checksum mismatch :/ try again'.lightred unless Digest::SHA256.hexdigest( File.read("logisim-generic-#{version}.jar") ) == '362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
+    abort 'Checksum mismatch :/ try again'.lightred unless Digest::SHA256.hexdigest(File.read("logisim-generic-#{version}.jar")) == '362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/logisim"
     FileUtils.cp "logisim-generic-#{version}.jar", "#{CREW_DEST_PREFIX}/share/logisim"

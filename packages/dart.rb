@@ -7,13 +7,13 @@ class Dart < Package
   version @_ver
   license 'BSD-3'
   compatibility 'all'
-  source_url ({
+  source_url({
     aarch64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-arm-release.zip",
      armv7l: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-arm-release.zip",
        i686: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-ia32-release.zip",
      x86_64: "https://storage.googleapis.com/dart-archive/channels/stable/release/#{@_ver}/sdk/dartsdk-linux-x64-release.zip"
   })
-  source_sha256 ({
+  source_sha256({
     aarch64: '3eae7ed5773c125165d123a235bac9956981cfdf164059806ed69a6feefc1eda',
      armv7l: '3eae7ed5773c125165d123a235bac9956981cfdf164059806ed69a6feefc1eda',
        i686: '339133593726375213fca6156288fbdcb4c0644d725f8531910449edca2315fa',

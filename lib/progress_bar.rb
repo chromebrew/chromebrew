@@ -7,7 +7,7 @@ class ProgressBar
 
   attr_accessor :progress_bar_showing
 
-  def initialize (total_size)
+  def initialize(total_size)
     # character used to fill the progress bar, one of the box-drawing character in unicode
     @bar_char = "\u2501"
 
@@ -28,16 +28,16 @@ class ProgressBar
     trap('WINCH') do
       # reset width settings after terminal resized
       # get terminal size, calculate the width of progress bar based on it
-      @terminal_h, @terminal_w = IO.console&.winsize || [ 25, 80 ]
+      @terminal_h, @terminal_w = IO.console&.winsize || [25, 80]
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
-                   ( @info_before_bar.merge(@info_after_bar).length * 2 ) # space for separator (whitespaces) between each info
+                   (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
     end
 
     Process.kill('WINCH', 0) # trigger the trap above
   end
 
-  def set_downloaded_size (downloaded_size, invalid_size_error: true)
+  def set_downloaded_size(downloaded_size, invalid_size_error: true)
     if downloaded_size > @total_size
       # when the given downloaded size/total size is invalid (given downloaded size > given total size),
       # set all info to unknown (except downloaded size)
@@ -69,7 +69,7 @@ class ProgressBar
     @elapsed_time_in_str = Time.at(@elapsed_time).utc.strftime('%H:%M:%S')
 
     # calculate progress percentage, round to nearest 0.1
-    @percentage = ( ( downloaded_size / @total_size ) * 100 ).round(1)
+    @percentage = ((downloaded_size / @total_size) * 100).round(1)
     @percentage_in_str = "#{@percentage.to_i}%"
 
     # {downloaded size}/{total size}
@@ -85,20 +85,20 @@ class ProgressBar
       while @progress_bar_showing
         sleep 0.15 # update progress bar after each 0.15 seconds
 
-        completed_length = ( @bar_width * (@percentage / 100) ).to_i
+        completed_length = (@bar_width * (@percentage / 100)).to_i
         uncompleted_length = @bar_width - completed_length
 
         # print info and progress bar
         @info_before_bar.each_pair do |varName, width|
-          printf "%*.*s  ", width, width, instance_variable_get("@#{varName}")
+          printf '%*.*s  ', width, width, instance_variable_get("@#{varName}")
         end
 
         # print progress bar with color code
-        print ( @bar_char * completed_length ).send(@bar_front_color),
-              ( @bar_char * uncompleted_length ).send(@bar_bg_color)
+        print ( @bar_char * completed_length).send(@bar_front_color),
+              (@bar_char * uncompleted_length).send(@bar_bg_color)
 
         @info_after_bar.each_pair do |varName, width|
-          printf "  %*.*s", width, width, instance_variable_get("@#{varName}")
+          printf '  %*.*s', width, width, instance_variable_get("@#{varName}")
         end
 
         # stop when 100%

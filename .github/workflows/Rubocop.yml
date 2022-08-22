@@ -1,0 +1,15 @@
+name: Rubocop
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: rubocop
+      uses: Freshly/Octocop@v0.0.2
+      with:
+        github_token: ${{ secrets.github_token }}
+        reporter: github-pr-check
+        rubocop_flags: "-c .rubocop.yml"

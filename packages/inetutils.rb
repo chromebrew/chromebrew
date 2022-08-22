@@ -11,13 +11,13 @@ class Inetutils < Package
   source_sha256 'd547f69172df73afef691a0f7886280fd781acea28def4ff4b4b212086a89d80'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_i686/inetutils-2.2-chromeos-i686.tar.xz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_i686/inetutils-2.2-chromeos-i686.tar.xz',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_armv7l/inetutils-2.2-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_armv7l/inetutils-2.2-chromeos-armv7l.tpxz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.2_x86_64/inetutils-2.2-chromeos-x86_64.tpxz'
   })
   binary_sha256({
-       i686: 'ee0f7e82efe8fee69a27bda30a6d42d2a616bcd5d9be1682cec43136f70f9b71',
+    i686: 'ee0f7e82efe8fee69a27bda30a6d42d2a616bcd5d9be1682cec43136f70f9b71',
     aarch64: '413181b35983017b30a53f08de729ffb7f4dd54a2fdbb6b6d0d4dc7fa4333c76',
      armv7l: '413181b35983017b30a53f08de729ffb7f4dd54a2fdbb6b6d0d4dc7fa4333c76',
      x86_64: '4b6d96a0e618da13d6225d3f14f22739e6c199e944820dacbf99175ec88982df'
@@ -59,20 +59,20 @@ class Inetutils < Package
           --keep=1 --user=nobody --addamb=cap_net_raw -- \\
           -c "#{CREW_PREFIX}/bin/ping.elf \$@"
     PING_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/bin/ping", @PING_SH, perm: 0o755)
+    File.write("#{CREW_DEST_PREFIX}/bin/ping", @PING_SH, perm: 0o755)
     @PING6_SH = <<~PING6_HEREDOC
       #!/bin/bash
       sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
           --keep=1 --user=nobody --addamb=cap_net_raw -- \\
           -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
     PING6_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/bin/ping6", @PING6_SH, perm: 0o755)
+    File.write("#{CREW_DEST_PREFIX}/bin/ping6", @PING6_SH, perm: 0o755)
     @TRACEROUTE_SH = <<~TRACEROUTE_HEREDOC
       #!/bin/bash
       sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
           --keep=1 --user=nobody --addamb=cap_net_raw -- \\
           -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
     TRACEROUTE_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/bin/traceroute", @TRACEROUTE_SH, perm: 0o755)
+    File.write("#{CREW_DEST_PREFIX}/bin/traceroute", @TRACEROUTE_SH, perm: 0o755)
   end
 end

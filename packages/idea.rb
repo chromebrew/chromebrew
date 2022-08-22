@@ -15,7 +15,7 @@ class Idea < Package
 
   def self.install
     # Fix java.io.IOException: Cannot run program "/home/chronos/user/.IdeaIC2022.2/system/tmp/ij1055598732.tmp": error=13, Permission denied
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}"
+    FileUtils.mkdir_p CREW_DEST_HOME.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.IdeaIC2022.2"
     system "touch #{CREW_DEST_PREFIX}/.config/.IdeaIC2022.2/test"
@@ -30,19 +30,19 @@ class Idea < Package
   end
 
   def self.remove
-    print "Would you like to remove the config directories? [y/N] "
-    response = STDIN.getc
+    print 'Would you like to remove the config directories? [y/N] '
+    response = $stdin.getc
     config_dirs = ["#{CREW_PREFIX}/.config/.IdeaIC2022.2", "#{HOME}/.IdeaIC2022.2"]
-    config_dirs.each { |config_dir|
-      if Dir.exist? config_dir
-        case response
-        when 'y', 'Y'
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightred
-        else
-          puts "#{config_dir} saved.".lightgreen
-        end
+    config_dirs.each do |config_dir|
+      next unless Dir.exist? config_dir
+
+      case response
+      when 'y', 'Y'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} saved.".lightgreen
       end
-    }
+    end
   end
 end

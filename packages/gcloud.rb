@@ -6,13 +6,13 @@ class Gcloud < Package
   version '374.0.0'
   license 'Apache-2.0'
   compatibility 'i686,x86_64'
-  source_url ({
-      i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz",
-    x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz",
+  source_url({
+    i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz",
+    x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz"
   })
-  source_sha256 ({
-      i686: '4fdd248b2235a82e829a7929822d15a94b8a652ecf9b231a4f7061bb98c9bbd6',
-    x86_64: 'ceaa3eb7147ed061280e30322f7c78f61749b953c9450a2df2035a145f016b7e',
+  source_sha256({
+    i686: '4fdd248b2235a82e829a7929822d15a94b8a652ecf9b231a4f7061bb98c9bbd6',
+    x86_64: 'ceaa3eb7147ed061280e30322f7c78f61749b953c9450a2df2035a145f016b7e'
   })
 
   depends_on 'xdg_base'
@@ -46,30 +46,30 @@ class Gcloud < Package
     end
     FileUtils.mv "#{HOME}/.bashrc.backup", "#{HOME}/.bashrc"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    IO.write "#{CREW_DEST_PREFIX}/etc/env.d/gcloud", @gcloudenv
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/gcloud", @gcloudenv
   end
 
   def self.postinstall
     puts
-    puts "To finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc && gcloud init".lightblue
+    puts 'To finish the installation, execute the following:'.lightblue
+    puts 'source ~/.bashrc && gcloud init'.lightblue
     puts
   end
 
   def self.remove
-    print "Would you like to remove the config directories? [y/N] "
-    response = STDIN.getc
+    print 'Would you like to remove the config directories? [y/N] '
+    response = $stdin.getc
     config_dirs = ["#{HOME}/.config/gcloud", "#{CREW_PREFIX}/share/gcloud"]
-    config_dirs.each { |config_dir|
-      if Dir.exist? config_dir
-        case response
-        when "y", "Y"
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightred
-        else
-          puts "#{config_dir} saved.".lightgreen
-        end
+    config_dirs.each do |config_dir|
+      next unless Dir.exist? config_dir
+
+      case response
+      when 'y', 'Y'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} saved.".lightgreen
       end
-    }
+    end
   end
 end

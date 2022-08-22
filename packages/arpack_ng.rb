@@ -9,17 +9,17 @@ class Arpack_ng < Package
   source_url 'https://github.com/opencollab/arpack-ng/archive/3.7.0.tar.gz'
   source_sha256 '972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_armv7l/arpack_ng-3.7.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_armv7l/arpack_ng-3.7.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_i686/arpack_ng-3.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_x86_64/arpack_ng-3.7.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_x86_64/arpack_ng-3.7.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '8ac867cd31ef8c507039105de1e6467807c30a75f1752ab43650d82348b558d0',
      armv7l: '8ac867cd31ef8c507039105de1e6467807c30a75f1752ab43650d82348b558d0',
        i686: '8c2096851e7868c456220480b315d8ba84b5c188d8bf193cf8ce8abea6b20eb4',
-     x86_64: '83b1d11cbc66d977dc2287f8273a39527bd33c302b81baaa84172c110b6aeed1',
+     x86_64: '83b1d11cbc66d977dc2287f8273a39527bd33c302b81baaa84172c110b6aeed1'
   })
 
   depends_on 'lapack'
@@ -56,7 +56,7 @@ class Arpack_ng < Package
              '-DMPI=ON',
              '..'
       system 'make'
-      system 'ld_default', "#{old_ld}"
+      system 'ld_default', old_ld.to_s
     end
   end
 

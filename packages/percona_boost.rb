@@ -9,17 +9,17 @@ class Percona_boost < Package
   source_url 'http://downloads.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.bz2'
   source_sha256 '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_boost/1.59.0_armv7l/percona_boost-1.59.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_boost/1.59.0_armv7l/percona_boost-1.59.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_boost/1.59.0_i686/percona_boost-1.59.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_boost/1.59.0_x86_64/percona_boost-1.59.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_boost/1.59.0_x86_64/percona_boost-1.59.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a8ae7d1682a5801169991b3d824402059ea7b527ca1b118dca240d9a91201fd1',
      armv7l: 'a8ae7d1682a5801169991b3d824402059ea7b527ca1b118dca240d9a91201fd1',
        i686: '92bf850fafa7e11eee4040faf615ac97f31e8e561016d4fcbfa97d9ef6931452',
-     x86_64: '4cfcf14440dae594c3ad0c8fa3086f08c0e90787785d82e1b54454bcf0941ed9',
+     x86_64: '4cfcf14440dae594c3ad0c8fa3086f08c0e90787785d82e1b54454bcf0941ed9'
   })
 
   depends_on 'python2' unless File.exist? "#{CREW_PREFIX}/bin/python"

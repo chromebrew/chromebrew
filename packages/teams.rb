@@ -18,12 +18,12 @@ class Teams < Package
 
   def self.build
     teams = <<~EOF
-    #!/bin/bash
-    GDK_BACKEND=x11
-    cd #{CREW_PREFIX}/share/teams
-    ./teams "$@"
+      #!/bin/bash
+      GDK_BACKEND=x11
+      cd #{CREW_PREFIX}/share/teams
+      ./teams "$@"
     EOF
-    IO.write('teams.sh', teams)
+    File.write('teams.sh', teams)
   end
 
   def self.install
@@ -42,6 +42,7 @@ class Teams < Package
     config_dirs = ["#{CREW_PREFIX}/.config/Microsoft\ Teams\ -\ Preview", "#{CREW_PREFIX}/.config/Microsoft/Microsoft\ Teams"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir
+
       system "echo '#{config_dir}'; ls '#{config_dir}'"
     end
     print "\nWould you like to remove the config directories above? [y/N] "
@@ -49,11 +50,12 @@ class Teams < Package
     when 'y', 'Y'
       config_dirs.each do |config_dir|
         next unless Dir.exist? config_dir
+
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       end
     else
-      puts "Configuration saved.".lightgreen
+      puts 'Configuration saved.'.lightgreen
     end
   end
 end

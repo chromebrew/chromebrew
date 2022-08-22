@@ -9,17 +9,17 @@ class Wbox < Package
   source_url 'http://www.hping.org/wbox/wbox-5.tar.gz'
   source_sha256 '1589d85e83c8ee78383a491d89e768ab9aab9f433c5f5e035cfb5eed17efaa19'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wbox/5_armv7l/wbox-5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wbox/5_armv7l/wbox-5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wbox/5_i686/wbox-5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wbox/5_x86_64/wbox-5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wbox/5_x86_64/wbox-5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '3494092bd7e35a74a42844ea5be0a91832e3368c8ecb23088fda343acf811efc',
      armv7l: '3494092bd7e35a74a42844ea5be0a91832e3368c8ecb23088fda343acf811efc',
        i686: 'b131b6a44ac7c1884f5a337d5f40615b6e0b23ca1f23f552d132bf091eb86878',
-     x86_64: 'f976840c5973ad940ef5451847395f85ae5927ab14893b15fda9e8f8c4345282',
+     x86_64: 'f976840c5973ad940ef5451847395f85ae5927ab14893b15fda9e8f8c4345282'
   })
 
   def self.build

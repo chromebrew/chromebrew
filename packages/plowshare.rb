@@ -32,6 +32,6 @@ class Plowshare < Package
       # plowshare bash completion
       source #{CREW_PREFIX}/share/bash-completion/completions/plowdown
     PLOWSHAREEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/plowshare", @plowshareenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/plowshare", @plowshareenv)
   end
 end

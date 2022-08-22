@@ -11,17 +11,17 @@ class Libefl < Package
   source_url 'https://download.enlightenment.org/rel/libs/efl/efl-1.24.3.tar.xz'
   source_sha256 'de95c6e673c170c1e21382918b122417c091c643e7dcaced89aa785529625c2a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_armv7l/libefl-1.24.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_armv7l/libefl-1.24.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_i686/libefl-1.24.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_x86_64/libefl-1.24.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libefl/1.24.3_x86_64/libefl-1.24.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a8711a86825b0186ce5749455cf1763c9a338a2dffdad78cdbf1eab185b6a879',
      armv7l: 'a8711a86825b0186ce5749455cf1763c9a338a2dffdad78cdbf1eab185b6a879',
        i686: 'e5f5bba5bdb07c1abaa60229fee05f97b6a617c60af647734a839340e38a8429',
-     x86_64: 'be56db051dee123ac67bb9938acc09a930ba5a58e785b9a818d2ac74fbba97aa',
+     x86_64: 'be56db051dee123ac67bb9938acc09a930ba5a58e785b9a818d2ac74fbba97aa'
   })
 
   depends_on 'lz4'

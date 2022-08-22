@@ -42,7 +42,7 @@ class Musl_libnghttp2 < Package
       -DENABLE_LIB_ONLY=ON \
       ../ -G Ninja"
     end
-    system "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-linux-musl#{MUSL_ABI}/bin:#{ENV['PATH']} \
+    system "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-linux-musl#{MUSL_ABI}/bin:#{ENV.fetch('PATH', nil)} \
       samu -C builddir -j#{CREW_NPROC}"
   end
 

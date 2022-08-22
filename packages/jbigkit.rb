@@ -9,17 +9,17 @@ class Jbigkit < Package
   source_url 'https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-2.1.tar.gz'
   source_sha256 'de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_i686/jbigkit-2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_x86_64/jbigkit-2.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_x86_64/jbigkit-2.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '04f05a1e9d64fd440828b26dbab92e332e14cf8877f89dd3a3184ccb394f28ae',
      armv7l: '04f05a1e9d64fd440828b26dbab92e332e14cf8877f89dd3a3184ccb394f28ae',
        i686: '4f5af8e7dcf0d1bb3901be4454bf6fcd1808ce1aac9eeeed339664836328d48a',
-     x86_64: 'e9c62cc25c29df8254d6e48e1ac31d4ae801e55f0f7edef4753daa80fbfdeee8',
+     x86_64: 'e9c62cc25c29df8254d6e48e1ac31d4ae801e55f0f7edef4753daa80fbfdeee8'
   })
 
   def self.patch

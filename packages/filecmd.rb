@@ -32,7 +32,7 @@ class Filecmd < Package
         sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' ${f}
       done
     EOF
-    IO.write('./filefix', @filefix)
+    File.write('./filefix', @filefix)
     # Optimization flags from https://github.com/InBetweenNames/gentooLTO
     # Build static for use in case needed with glibc brokenness.
     system "env  CFLAGS='-flto=auto -pipe -O3 -ffat-lto-objects -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \

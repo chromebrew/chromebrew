@@ -16,11 +16,11 @@ class Cf < Package
   end
 
   binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_i686/cf-6.53.0-chromeos-i686.tar.xz',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_i686/cf-6.53.0-chromeos-i686.tar.xz',
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_x86_64/cf-6.53.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-      i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',
+    i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',
     x86_64: '1607f02390272191a8a0c393a9a5a9cf5389df774e158bd2cb669b0edd5c3570'
   })
 
@@ -30,14 +30,12 @@ class Cf < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/cf/bash-completion/"
     FileUtils.install 'cf', "#{CREW_DEST_PREFIX}/bin/cf", mode: 0o755
     system 'curl -#Lo cf.bash https://raw.githubusercontent.com/cloudfoundry/cli/v6.36.1/ci/installers/completion/cf'
-    unless Digest::SHA256.hexdigest(File.read('cf.bash')) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
-      abort 'Checksum mismatch. :/ Try again.'.lightred
-    end
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('cf.bash')) == 'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e'
     FileUtils.install 'cf.bash', "#{CREW_DEST_PREFIX}/share/cf/bash-completion/cf.bash", mode: 0o644
     @env = <<~EOF
       # Cloud Foundry CLI configuration
       source #{CREW_PREFIX}/share/cf/bash-completion/cf.bash
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/cf", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/cf", @env)
   end
 end

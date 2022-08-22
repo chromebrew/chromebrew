@@ -9,17 +9,17 @@ class Xmltoman < Package
   source_url 'https://downloads.sourceforge.net/project/xmltoman/xmltoman/xmltoman-0.4.tar.gz/xmltoman-0.4.tar.gz'
   source_sha256 '948794a316aaecd13add60e17e476beae86644d066cb60171fc6b779f2df14b0'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmltoman/0.4_armv7l/xmltoman-0.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmltoman/0.4_armv7l/xmltoman-0.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmltoman/0.4_i686/xmltoman-0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmltoman/0.4_x86_64/xmltoman-0.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmltoman/0.4_x86_64/xmltoman-0.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a0b2caaf0eee70d7a48fc6d0b3f069e867f5cd4b608231ef2578ba7db653b2bb',
      armv7l: 'a0b2caaf0eee70d7a48fc6d0b3f069e867f5cd4b608231ef2578ba7db653b2bb',
        i686: '850d213a2441ba643dc5d3dae8cb41a7204b7354e47b2332282b45f37198e0d5',
-     x86_64: 'e5c6a17fd6d1a2550d15a9e93fe272e1802a503ca8e9dde849da2bffa1bd5b7d',
+     x86_64: 'e5c6a17fd6d1a2550d15a9e93fe272e1802a503ca8e9dde849da2bffa1bd5b7d'
   })
 
   def self.patch

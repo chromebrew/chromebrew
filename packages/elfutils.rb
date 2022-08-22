@@ -14,13 +14,13 @@ class Elfutils < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.186_armv7l/elfutils-0.186-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.186_armv7l/elfutils-0.186-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.186_i686/elfutils-0.186-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.186_x86_64/elfutils-0.186-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.186_x86_64/elfutils-0.186-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '25fd7d99e5e97024974439900d992919808a7a2cf611f958281a2f1c415e3046',
      armv7l: '25fd7d99e5e97024974439900d992919808a7a2cf611f958281a2f1c415e3046',
        i686: '40c9c1f6ec7ce7d632779d117ab4f704b6125224c8916c6e53150b807cf21520',
-     x86_64: 'be351d1f3faacaf7fec9390486cf0b6cda2b96b9881470bc0c211a262c51717c',
+     x86_64: 'be351d1f3faacaf7fec9390486cf0b6cda2b96b9881470bc0c211a262c51717c'
   })
 
   depends_on 'libcurl'

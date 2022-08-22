@@ -11,16 +11,16 @@ class Php74 < Package
   source_sha256 'ea72a34f32c67e79ac2da7dfe96177f3c451c3eefae5810ba13312ed398ba70d'
 
   binary_url({
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_x86_64/php74-7.4.30-chromeos-x86_64.tar.zst',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_x86_64/php74-7.4.30-chromeos-x86_64.tar.zst',
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_armv7l/php74-7.4.30-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_armv7l/php74-7.4.30-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_i686/php74-7.4.30-chromeos-i686.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_i686/php74-7.4.30-chromeos-i686.tar.zst'
   })
   binary_sha256({
-     x86_64: '47d530ddccc7133b42a44ff19a53456c422e3abaedb431a8a1e3d7ef5096e133',
+    x86_64: '47d530ddccc7133b42a44ff19a53456c422e3abaedb431a8a1e3d7ef5096e133',
     aarch64: '563bfe1e589750afece45f28335cb1de7e95a5c5ce9b5225eb9e4fe90f7fdea3',
      armv7l: '563bfe1e589750afece45f28335cb1de7e95a5c5ce9b5225eb9e4fe90f7fdea3',
-       i686: '85fcdaed12530484b7ba91b4113baced893ffabf72c8c3e20743369b5168438a',
+       i686: '85fcdaed12530484b7ba91b4113baced893ffabf72c8c3e20743369b5168438a'
   })
 
   depends_on 'aspell_en'
@@ -44,9 +44,7 @@ class Php74 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    unless ARGV[0] == 'reinstall' and @_ver == phpver
-      abort "PHP version #{phpver} already installed.".lightgreen unless phpver.empty?
-    end
+    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
   end
 
   def self.patch
@@ -139,10 +137,10 @@ class Php74 < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
-    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0644
-    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0755
-    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0755
-    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode:0644
+    FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0o644
+    FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0o755
+    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o755
+    FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0o644
     FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php7-fpm"
 
     # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details

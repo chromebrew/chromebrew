@@ -10,5 +10,4 @@ class Curl < Package
   is_fake
 
   depends_on 'libcurl'
-
 end

@@ -9,17 +9,17 @@ class Netcdf < Package
   source_url 'https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz'
   source_sha256 '0e476f00aeed95af8771ff2727b7a15b2de353fb7bb3074a0d340b55c2bd4ea8'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcdf/4.7.4_armv7l/netcdf-4.7.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcdf/4.7.4_armv7l/netcdf-4.7.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcdf/4.7.4_i686/netcdf-4.7.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcdf/4.7.4_x86_64/netcdf-4.7.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcdf/4.7.4_x86_64/netcdf-4.7.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '0023e30b23e00619fdfef8d497d6b9804b64ef79c328dd6839b1bc2ef762b275',
      armv7l: '0023e30b23e00619fdfef8d497d6b9804b64ef79c328dd6839b1bc2ef762b275',
        i686: 'ec6dedcabe255f6ae1b476002bf072fb01b04503d133da6a76978fed386e3e8b',
-     x86_64: 'ff3aaee614a276bcbde78d0afb4339ca7312b76e16f9811bb97a621cb6f8874c',
+     x86_64: 'ff3aaee614a276bcbde78d0afb4339ca7312b76e16f9811bb97a621cb6f8874c'
   })
 
   depends_on 'libcurl'

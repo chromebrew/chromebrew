@@ -9,17 +9,17 @@ class Alsa_lib < Package
   source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
   source_sha256 '0c6ab052d7ea980a01d0208da5e5e10849bd16c4c9961bbd5d2665083b74a6c0'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_armv7l/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_armv7l/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_armv7l/alsa_lib-1.2.4-chromeos-armv7l.tar.xz',
         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_i686/alsa_lib-1.2.4-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_x86_64/alsa_lib-1.2.4-chromeos-x86_64.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.4_x86_64/alsa_lib-1.2.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
+  binary_sha256({
+    aarch64: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
       armv7l: '07cb624cc829dc5f17dcc5d6a9f0a7ea67798bdbc4c27a7a4e075149be91143f',
         i686: '3baa9db99ab259ba52b8769fd5720da076620a30981133b4143b9e5907698227',
-      x86_64: '20132936d9c3ba6fa0126aad6926996f47886ace79548be152cb8aa6975c626d',
+      x86_64: '20132936d9c3ba6fa0126aad6926996f47886ace79548be152cb8aa6975c626d'
   })
 
   depends_on 'python3'

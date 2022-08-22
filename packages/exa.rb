@@ -1,7 +1,7 @@
 require 'package'
 
 class Exa < Package
-  description "Exa is a modern replacement for ls"
+  description 'Exa is a modern replacement for ls'
   homepage 'https://the.exa.website/'
   @_ver = '0.10.1'
   version @_ver
