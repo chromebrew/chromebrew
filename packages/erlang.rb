@@ -2,31 +2,32 @@ require 'package'
 
 class Erlang < Package
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
-  homepage 'http://www.erlang.org/'
-  version '24.0'
+  homepage 'https://www.erlang.org/'
+  version '25.0'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'http://erlang.org/download/otp_src_24.0.tar.gz'
-  source_sha256 '27cb5d62f82778793f96b67dbc0c67aa490267274e2f06efee8111ef11c4755c'
+  source_url 'https://erlang.org/download/otp_src_25.0.tar.gz'
+  source_sha256 '3e1e2e55409e9484e69b316fcd00ff7e2ed606bcfb2c7cac514f9b9aeb9651e8'
 
   binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_armv7l/erlang-24.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_armv7l/erlang-24.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_i686/erlang-24.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/24.0_x86_64/erlang-24.0-chromeos-x86_64.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.0_armv7l/erlang-25.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.0_armv7l/erlang-25.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.0_i686/erlang-25.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.0_x86_64/erlang-25.0-chromeos-x86_64.tar.zst',
   })
   binary_sha256 ({
-    aarch64: '1049d788c19d7a187a09e4e80c5128e9173213ed453be9c789d3d7cadc5cee1f',
-     armv7l: '1049d788c19d7a187a09e4e80c5128e9173213ed453be9c789d3d7cadc5cee1f',
-       i686: 'e0fb17559d68b7ade5fc66fad22ed88eaee3ef3b34277ecd5416ed14d6f7c33b',
-     x86_64: 'd6b25b877e2217536d6cca2bd6464d95f97c43df4b73546e150e0cd04ed6bf38',
+    aarch64: '05dab34ca35b1cc29e31114ad88382b40477985927f93e4f6514e60a66f8d7f8',
+     armv7l: '05dab34ca35b1cc29e31114ad88382b40477985927f93e4f6514e60a66f8d7f8',
+       i686: '5218ffcd054d29bf5754aedec73777a62b061785358d8bf021a36434deb89b60',
+     x86_64: '4d34f06850d5a5e6bdd6fc778eab27cdb72501086cd2d130d5ff4e663943ccbf',
   })
 
   depends_on 'jdk8'
   depends_on 'wxwidgets'
 
   def self.build
-    system "export ERL_OTP=`pwd` && ./configure #{CREW_OPTIONS} && make"
+    ENV['ERL_OTP'] = Dir.pwd
+    system "./configure #{CREW_OPTIONS} && make"
   end
 
   def self.install

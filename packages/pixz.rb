@@ -6,29 +6,30 @@ require 'package'
 class Pixz < Package
   description 'Parallel, indexed xz compressor'
   homepage 'https://github.com/vasi/pixz'
-  version '1.0.7-0829-2'
+  version '1.0.7-f1b1b5f'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/vasi/pixz.git'
-  git_hashtag '0829c7315c804a4e40abd63a9d624194dc1e4f0a'
+  git_hashtag 'f1b1b5f8af68d0ac782e5ff24f11785282382f40'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-0829-2_armv7l/pixz-1.0.7-0829-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-0829-2_armv7l/pixz-1.0.7-0829-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-0829-2_i686/pixz-1.0.7-0829-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-0829-2_x86_64/pixz-1.0.7-0829-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_armv7l/pixz-1.0.7-f1b1b5f-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_armv7l/pixz-1.0.7-f1b1b5f-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_i686/pixz-1.0.7-f1b1b5f-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pixz/1.0.7-f1b1b5f_x86_64/pixz-1.0.7-f1b1b5f-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '5da3b2e16b0708721ddb223729255c566ee673c970a8114fda18e1d647c226ba',
-     armv7l: '5da3b2e16b0708721ddb223729255c566ee673c970a8114fda18e1d647c226ba',
-       i686: '52467f9b204170592fec0abd34a54a67b0fcf2b25f850c1548da1c7ed1762e0e',
-     x86_64: '40f515777f3285e3cc37b4c5f91a68d857eb3c46707e916cb1248c15180f8da0'
+    aarch64: 'e4155b71de92416f5e3be2e6fdb142e789bdabc8d6a631ae8f5e1e185bfbab5e',
+     armv7l: 'e4155b71de92416f5e3be2e6fdb142e789bdabc8d6a631ae8f5e1e185bfbab5e',
+       i686: '4a99c8ad086d11276fc6d74d14c83cd9fed9ad64601b0ac6fa8ad2b4a80e967f',
+     x86_64: 'aa0c005b74a688982f0282833846879d6fbac02a28dadf69ebb0ded6924f096c'
   })
 
   depends_on 'asciidoc' => :build
   depends_on 'libarchive'
   depends_on 'xzutils'
   no_patchelf
+  no_zstd
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

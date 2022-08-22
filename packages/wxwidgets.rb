@@ -3,22 +3,24 @@ require 'package'
 class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  @_ver = '3.0.5.1'
-  version "#{@_ver}-4"
+  @_ver = '3.2.0'
+  version @_ver
   license 'GPL-2'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-4_armv7l/wxwidgets-3.0.5.1-4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-4_armv7l/wxwidgets-3.0.5.1-4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.0.5.1-4_x86_64/wxwidgets-3.0.5.1-4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_armv7l/wxwidgets-3.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_armv7l/wxwidgets-3.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_i686/wxwidgets-3.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_x86_64/wxwidgets-3.2.0-chromeos-x86_64.tar.zst',
   })
   binary_sha256({
-    aarch64: '18ea442358ab44fd12c3f48dc190d616aafea4284a95a1681edacf6ecb5a1e8b',
-     armv7l: '18ea442358ab44fd12c3f48dc190d616aafea4284a95a1681edacf6ecb5a1e8b',
-     x86_64: '13d720a56907dd10e11bdc39b84a8689da18f8f36fe6a1b27bcd1b4a988c7e7e'
+    aarch64: 'e448296c06b7f6711524daa6c6990e2895ff9a53ebd4924ac0b85a16af7a80ba',
+     armv7l: 'e448296c06b7f6711524daa6c6990e2895ff9a53ebd4924ac0b85a16af7a80ba',
+       i686: '71c93bf3f0d01f6bc6b3ce2a67c9500be19b842aff0b062b09bde02365c6a27c',
+     x86_64: '21119b43b7ad1c6620c04569981d83a97d367baf85c630983351849b9aef9949',
   })
 
   depends_on 'atk' # R
@@ -40,29 +42,6 @@ class Wxwidgets < Package
   depends_on 'libxxf86vm' # R
   depends_on 'mesa' # R
   depends_on 'pango' # R
-
-  def self.patch
-    # Keeps an abicheck error from derailing compile on multiple versions of wxwidgets, including 3.1
-    # This may be useful when moving to the next 3.1 based stable version, so keep it in.
-    @make_abicheck_non_fatal_patch = <<~'PATCH_EOF'
-      diff -up wxGTK-2.8.12/src/common/appbase.cpp.abicheck wxGTK-2.8.12/src/common/appbase.cpp
-      --- wxGTK-2.8.12/src/common/appbase.cpp.abicheck	2015-03-12 17:15:18.000000000 +0100
-      +++ wxGTK-2.8.12/src/common/appbase.cpp	2015-03-12 17:15:57.000000000 +0100
-      @@ -424,10 +424,7 @@ bool wxAppConsole::CheckBuildOptions(con
-               msg.Printf(_T("Mismatch between the program and library build versions detected.\nThe library used %s,\nand %s used %s."),
-                          lib.c_str(), progName.c_str(), prog.c_str());
-
-      -        wxLogFatalError(msg.c_str());
-      -
-      -        // normally wxLogFatalError doesn't return
-      -        return false;
-      +        wxLogWarning(msg.c_str());
-           }
-       #undef wxCMP
-    PATCH_EOF
-    File.write('make-abicheck-non-fatal.patch', @make_abicheck_non_fatal_patch)
-    system 'patch -p1 -i make-abicheck-non-fatal.patch || true'
-  end
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
