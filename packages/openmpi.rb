@@ -9,17 +9,17 @@ class Openmpi < Package
   source_url 'https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.bz2'
   source_sha256 'cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmpi/4.0.1_armv7l/openmpi-4.0.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmpi/4.0.1_armv7l/openmpi-4.0.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmpi/4.0.1_i686/openmpi-4.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmpi/4.0.1_x86_64/openmpi-4.0.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmpi/4.0.1_x86_64/openmpi-4.0.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '6ebfd586e6e8efcbdda5ec1c69356bf29adc2c15844405fc9fd6b595330cebff',
      armv7l: '6ebfd586e6e8efcbdda5ec1c69356bf29adc2c15844405fc9fd6b595330cebff',
        i686: '7b95e3be4d88619c4abdbe3df69534b023955699ec7633f310cb77bf320514d0',
-     x86_64: '3985ef364b793db8053ae6a3640549a635bdda668134100e3017b17634e82eed',
+     x86_64: '3985ef364b793db8053ae6a3640549a635bdda668134100e3017b17634e82eed'
   })
 
   def self.build
@@ -31,6 +31,6 @@ class Openmpi < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

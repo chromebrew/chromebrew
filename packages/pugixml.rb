@@ -9,17 +9,17 @@ class Pugixml < Package
   source_url 'https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz'
   source_sha256 '55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pugixml/1.10_armv7l/pugixml-1.10-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pugixml/1.10_armv7l/pugixml-1.10-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pugixml/1.10_i686/pugixml-1.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pugixml/1.10_x86_64/pugixml-1.10-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pugixml/1.10_x86_64/pugixml-1.10-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c948a90abf61186a25c71ed9434e9bea9ac7f6a88578c05fe40ba006ede7d561',
      armv7l: 'c948a90abf61186a25c71ed9434e9bea9ac7f6a88578c05fe40ba006ede7d561',
        i686: '98434a99ee0c01a9b571939e206d2a0c62205abacd3cbc06a9226147837762ef',
-     x86_64: 'a3c3a28cad9b0e278c5d3e863d73b5ad4ec9498bb5d2f21804946d786af18234',
+     x86_64: 'a3c3a28cad9b0e278c5d3e863d73b5ad4ec9498bb5d2f21804946d786af18234'
   })
 
   def self.build

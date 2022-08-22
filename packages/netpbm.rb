@@ -9,17 +9,17 @@ class Netpbm < Package
   source_url 'https://downloads.sourceforge.net/project/netpbm/super_stable/10.73.28/netpbm-10.73.28.tgz'
   source_sha256 'c0d32d4b9a53fde47dd9a36f45653e0ef51f6c390517f10b0c5056d1a8a844bd'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netpbm/10.73.28_armv7l/netpbm-10.73.28-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netpbm/10.73.28_armv7l/netpbm-10.73.28-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netpbm/10.73.28_i686/netpbm-10.73.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netpbm/10.73.28_x86_64/netpbm-10.73.28-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netpbm/10.73.28_x86_64/netpbm-10.73.28-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '2f4dd0de3f9af1423121ba6e82ddc268863fadaf50222a51dc2026652e99fefb',
      armv7l: '2f4dd0de3f9af1423121ba6e82ddc268863fadaf50222a51dc2026652e99fefb',
        i686: '3a900cd5917c750a09f5d9e5f5845c2cfe1a02539c3ad8ef63d0a291ea0f1c64',
-     x86_64: '06375d9b711b7a03a26e8d00d84c3a13f3d1c2bc3cff16442c39b29c7ca2a58f',
+     x86_64: '06375d9b711b7a03a26e8d00d84c3a13f3d1c2bc3cff16442c39b29c7ca2a58f'
   })
 
   depends_on 'libtiff'
@@ -46,7 +46,7 @@ class Netpbm < Package
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' #{CREW_DEST_PREFIX}/bin/manweb"
     system "sed -i 's,/etc/manweb.conf,#{CREW_PREFIX}/etc/manweb.conf,' #{CREW_DEST_PREFIX}/bin/manweb"
     FileUtils.mv "#{CREW_DEST_PREFIX}/man", "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", "#{CREW_DEST_LIB_PREFIX}" if ARCH == 'x86_64'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX.to_s if ARCH == 'x86_64'
     FileUtils.rm_f '/tmp/netpbm'
   end
 end

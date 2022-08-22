@@ -9,15 +9,15 @@ class Gtk_engines_adwaita < Package
   source_url 'https://github.com/GNOME/gnome-themes-extra/archive/3.27.92.tar.gz'
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_engines_adwaita/3.27.92_armv7l/gtk_engines_adwaita-3.27.92-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_engines_adwaita/3.27.92_armv7l/gtk_engines_adwaita-3.27.92-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_engines_adwaita/3.27.92_x86_64/gtk_engines_adwaita-3.27.92-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_engines_adwaita/3.27.92_x86_64/gtk_engines_adwaita-3.27.92-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e5b8a68fcf3d91a95867f727e788b51575cf919b794877cca8e34b5e582ebfee',
      armv7l: 'e5b8a68fcf3d91a95867f727e788b51575cf919b794877cca8e34b5e582ebfee',
-     x86_64: '403ef26ed4d75165d0e5133af688555f6d076ed662f4ccab8ec301b7dd1de60f',
+     x86_64: '403ef26ed4d75165d0e5133af688555f6d076ed662f4ccab8ec301b7dd1de60f'
   })
 
   depends_on 'gtk3'

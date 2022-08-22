@@ -9,17 +9,17 @@ class Libspng < Package
   source_url 'https://gitlab.com/randy408/libspng/uploads/3d980bac86c51368f40af2f1ac79a057/libspng-0.5.0.tar.xz'
   source_sha256 '220a653802559943ae43fd48f03ba6ff3935a5243766d9ee5ff905240d4399a7'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspng/0.5.0_armv7l/libspng-0.5.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspng/0.5.0_armv7l/libspng-0.5.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspng/0.5.0_i686/libspng-0.5.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspng/0.5.0_x86_64/libspng-0.5.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libspng/0.5.0_x86_64/libspng-0.5.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '269f399358a4f7f3d9f8756f3e437b1c9c055d3b3632e802a28a3b0673553e39',
      armv7l: '269f399358a4f7f3d9f8756f3e437b1c9c055d3b3632e802a28a3b0673553e39',
        i686: '0abff0a70f0ae1e4b66185248857aa2485b6d29ec2265d53a2df5cfbacab2b22',
-     x86_64: '4ffaad2bcca5bfca6034670ddbbc6bf6cea078bb587488e511225e75d9901067',
+     x86_64: '4ffaad2bcca5bfca6034670ddbbc6bf6cea078bb587488e511225e75d9901067'
   })
 
   def self.build

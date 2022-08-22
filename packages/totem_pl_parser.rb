@@ -12,12 +12,12 @@ class Totem_pl_parser < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/totem_pl_parser/3.26.6_armv7l/totem_pl_parser-3.26.6-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/totem_pl_parser/3.26.6_armv7l/totem_pl_parser-3.26.6-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/totem_pl_parser/3.26.6_x86_64/totem_pl_parser-3.26.6-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/totem_pl_parser/3.26.6_x86_64/totem_pl_parser-3.26.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '0b5ddaa9e3078bf36f0f6c86047ac03c23df75cc31bf098191a269e9c978c1c9',
      armv7l: '0b5ddaa9e3078bf36f0f6c86047ac03c23df75cc31bf098191a269e9c978c1c9',
-     x86_64: 'd940b25706611415e4fe0d8e7d090d55b3b7b44d02a6884f9b5386a0a3555175',
+     x86_64: 'd940b25706611415e4fe0d8e7d090d55b3b7b44d02a6884f9b5386a0a3555175'
   })
 
   depends_on 'gobject_introspection'

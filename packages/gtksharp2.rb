@@ -45,7 +45,7 @@ class Gtksharp2 < Package
       #{' '}
               public class TestRange
     PATCH_EOF
-    IO.write('ambiguousrange.patch', @ambiguousrange)
+    File.write('ambiguousrange.patch', @ambiguousrange)
     system 'patch -p 1 -i ambiguousrange.patch'
     system 'filefix'
   end

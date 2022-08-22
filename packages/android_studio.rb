@@ -19,13 +19,13 @@ class Android_studio < Package
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX + '/bin'
-    FileUtils.mkdir_p CREW_DEST_PREFIX + '/share/android-studio'
-    FileUtils.mv 'bin', CREW_DEST_PREFIX + '/share/android-studio'
-    FileUtils.mv 'lib', CREW_DEST_PREFIX + '/share/android-studio'
-    FileUtils.mv 'plugins', CREW_DEST_PREFIX + '/share/android-studio'
-    FileUtils.cd CREW_DEST_PREFIX + '/bin' do
-      FileUtils.ln_s CREW_PREFIX + '/share/android-studio/bin/studio.sh', 'studio'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/android-studio"
+    FileUtils.mv 'bin', "#{CREW_DEST_PREFIX}/share/android-studio"
+    FileUtils.mv 'lib', "#{CREW_DEST_PREFIX}/share/android-studio"
+    FileUtils.mv 'plugins', "#{CREW_DEST_PREFIX}/share/android-studio"
+    FileUtils.cd "#{CREW_DEST_PREFIX}/bin" do
+      FileUtils.ln_s "#{CREW_PREFIX}/share/android-studio/bin/studio.sh", 'studio'
     end
   end
 
@@ -36,19 +36,19 @@ class Android_studio < Package
   end
 
   def self.remove
-    print "Would you like to remove the config directories? [y/N] "
-    response = STDIN.getc
+    print 'Would you like to remove the config directories? [y/N] '
+    response = $stdin.getc
     config_dirs = ["#{HOME}/.android", "#{HOME}/Android"]
-    config_dirs.each { |config_dir|
-      if Dir.exist? config_dir
-        case response
-        when "y", "Y"
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightred
-        else
-          puts "#{config_dir} saved.".lightgreen
-        end
+    config_dirs.each do |config_dir|
+      next unless Dir.exist? config_dir
+
+      case response
+      when 'y', 'Y'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} saved.".lightgreen
       end
-    }
+    end
   end
 end

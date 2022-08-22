@@ -66,6 +66,6 @@ class Bash < Package
         exec #{CREW_PREFIX}/bin/bash
       fi
     BASHEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash", @bashenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash", @bashenv)
   end
 end

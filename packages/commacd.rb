@@ -30,6 +30,6 @@ class Commacd < Package
       # Commacd configuration
       source #{CREW_PREFIX}/share/commacd/commacd.bash
     COMMACDEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/commacd", @commacdenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/commacd", @commacdenv)
   end
 end

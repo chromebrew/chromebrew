@@ -1,4 +1,4 @@
-def human_size (bytes)
+def human_size(bytes)
   kilobyte = 1024.0
   megabyte = kilobyte * kilobyte
   gigabyte = megabyte * kilobyte
@@ -6,11 +6,11 @@ def human_size (bytes)
     units = 'B'
     size = bytes
   end
-  if bytes >= kilobyte and bytes < megabyte
+  if (bytes >= kilobyte) && (bytes < megabyte)
     units = 'KB'
     size = bytes / kilobyte
   end
-  if bytes >= megabyte and bytes < gigabyte
+  if (bytes >= megabyte) && (bytes < gigabyte)
     units = 'MB'
     size = bytes / megabyte
   end
@@ -18,5 +18,5 @@ def human_size (bytes)
     units = 'GB'
     size = bytes / gigabyte
   end
-  return sprintf('%.2f %s', size, units)
+  return format('%.2f %s', size, units)
 end

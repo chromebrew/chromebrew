@@ -9,5 +9,4 @@ class Ragel < Package
 
   depends_on 'harfbuzz'
   is_fake
-
 end

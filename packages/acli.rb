@@ -13,9 +13,7 @@ class Acli < Package
   def self.preflight
     major = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f1`
     minor = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f2`
-    unless major.empty? or minor.empty? or (major.to_i >= 8 and minor.to_i >= 0)
-      abort "acli requires php >= 8.0. php #{major.chomp}.#{minor.chomp} does not meet the minimum requirement.".lightred
-    end
+    abort "acli requires php >= 8.0. php #{major.chomp}.#{minor.chomp} does not meet the minimum requirement.".lightred unless major.empty? || minor.empty? || ((major.to_i >= 8) && (minor.to_i >= 0))
   end
 
   def self.install

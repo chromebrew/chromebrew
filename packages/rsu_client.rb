@@ -9,17 +9,17 @@ class Rsu_client < Package
   source_url 'https://github.com/rsu-client/rsu-client/archive/v4.3.8.tar.gz'
   source_sha256 'a84d27f2775ceef3bf0f715504ba41f3776c5374b61f9820993a26f350e4fa3d'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsu_client/4.3.8_armv7l/rsu_client-4.3.8-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsu_client/4.3.8_armv7l/rsu_client-4.3.8-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsu_client/4.3.8_i686/rsu_client-4.3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsu_client/4.3.8_x86_64/rsu_client-4.3.8-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsu_client/4.3.8_x86_64/rsu_client-4.3.8-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '740174a97f6f60b8fde6cc6458934ecb1605fa66d40c4ee04b095316b8fa4e7e',
      armv7l: '740174a97f6f60b8fde6cc6458934ecb1605fa66d40c4ee04b095316b8fa4e7e',
        i686: '17999feafa2539689e57454b9825d9f436baca894125383405f5c5e93421d70e',
-     x86_64: '535a8a5339b57fe5929b6b1ff4fc40c8c93039ecf43006c2323c0d65502ed899',
+     x86_64: '535a8a5339b57fe5929b6b1ff4fc40c8c93039ecf43006c2323c0d65502ed899'
   })
 
   depends_on 'jdk8'

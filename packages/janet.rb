@@ -9,17 +9,17 @@ class Janet < Package
   source_url 'https://github.com/janet-lang/janet/archive/v1.7.0.tar.gz'
   source_sha256 '2a119f3a79b209a858864e73ca3efda57ac044df3c89762a31480bbea386d2a3'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/janet/1.7.0_armv7l/janet-1.7.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/janet/1.7.0_armv7l/janet-1.7.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/janet/1.7.0_i686/janet-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/janet/1.7.0_x86_64/janet-1.7.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/janet/1.7.0_x86_64/janet-1.7.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '6fbc239bc6374e516ca5e63e988e50a62f5396b83cc1b5ffcc37c484f436ea07',
      armv7l: '6fbc239bc6374e516ca5e63e988e50a62f5396b83cc1b5ffcc37c484f436ea07',
        i686: '5037e0285af569a4a660094599bb251695387fe84936bc53315a107d2d258b61',
-     x86_64: 'db58991ce4aef8d19e17abf5e944f39bb94bbb5e7b750c217de36fae71fce1b3',
+     x86_64: 'db58991ce4aef8d19e17abf5e944f39bb94bbb5e7b750c217de36fae71fce1b3'
   })
 
   def self.build

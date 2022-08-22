@@ -9,17 +9,17 @@ class Editres < Package
   source_url 'https://x.org/archive/individual/app/editres-1.0.7.tar.bz2'
   source_sha256 '089ad34628e55a779b97e369f55fb12caefc96d684b508d9022eb9e12b775c11'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editres/1.0.7_armv7l/editres-1.0.7-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editres/1.0.7_armv7l/editres-1.0.7-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editres/1.0.7_i686/editres-1.0.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editres/1.0.7_x86_64/editres-1.0.7-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editres/1.0.7_x86_64/editres-1.0.7-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a0d58ce9b3c97f216a4f44b41b0597d434609db993f623ad2679f83eda9647e5',
      armv7l: 'a0d58ce9b3c97f216a4f44b41b0597d434609db993f623ad2679f83eda9647e5',
        i686: 'e631c24169d134eb2a467c0a435223512120c3c9aa9ebf770e3a33cfd4cb2232',
-     x86_64: '33bc1a315e539c110dcaf04b0b89eb1da83dc14b3c568d2fac25982e248f1869',
+     x86_64: '33bc1a315e539c110dcaf04b0b89eb1da83dc14b3c568d2fac25982e248f1869'
   })
 
   def self.build

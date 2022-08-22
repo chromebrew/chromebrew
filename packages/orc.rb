@@ -11,5 +11,4 @@ class Orc < Package
   is_fake
 
   depends_on 'gstreamer'
-
 end

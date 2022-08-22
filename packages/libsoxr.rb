@@ -9,42 +9,42 @@ class Libsoxr < Package
   source_url 'http://downloads.sourceforge.net/project/soxr/soxr-0.1.3-Source.tar.xz'
   source_sha256 'b111c15fdc8c029989330ff559184198c161100a59312f5dc19ddeb9b5a15889'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoxr/0.1.3-1_armv7l/libsoxr-0.1.3-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoxr/0.1.3-1_armv7l/libsoxr-0.1.3-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoxr/0.1.3-1_i686/libsoxr-0.1.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoxr/0.1.3-1_x86_64/libsoxr-0.1.3-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoxr/0.1.3-1_x86_64/libsoxr-0.1.3-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e4f9d134c15ee05ceb89a70f0b660dca0425ea4365d5c1f1fb288f55e314064c',
      armv7l: 'e4f9d134c15ee05ceb89a70f0b660dca0425ea4365d5c1f1fb288f55e314064c',
        i686: '37088510fc2195e185475bcaa0ffa778feae8e8157188047328d93164b446fce',
-     x86_64: '4a850aee3eedd80b601cb1d5bb06b6b06844a3a09423a22f264b7437fbf5eee1',
+     x86_64: '4a850aee3eedd80b601cb1d5bb06b6b06844a3a09423a22f264b7437fbf5eee1'
   })
 
   def self.build
-    if ARCH == "x86_64"
-      system "cmake",
+    if ARCH == 'x86_64'
+      system 'cmake',
              "-DPREFIX=#{CREW_PREFIX}",
-             "-DLIB_SUFFIX=64",
-             "-DBUILD_SHARED_LIBS=ON",
-             "-DCMAKE_C_FLAGS=-g -O2 -fPIC",
-             "."
+             '-DLIB_SUFFIX=64',
+             '-DBUILD_SHARED_LIBS=ON',
+             '-DCMAKE_C_FLAGS=-g -O2 -fPIC',
+             '.'
     else
-      system "cmake",
+      system 'cmake',
              "-DPREFIX=#{CREW_PREFIX}",
-             "-DBUILD_SHARED_LIBS=ON",
-             "-DCMAKE_C_FLAGS=-g -O2 -fPIC",
-             "."
+             '-DBUILD_SHARED_LIBS=ON',
+             '-DCMAKE_C_FLAGS=-g -O2 -fPIC',
+             '.'
     end
-    system "make"
+    system 'make'
   end
 
   def self.check
-    system "make check"
+    system 'make check'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

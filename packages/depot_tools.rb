@@ -49,7 +49,7 @@ class Depot_tools < Package
       # Add depot-tools to path
       PATH="$PATH:#{CREW_PREFIX}/share/depot_tools"
     DEPOT_TOOLS_EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/depot_tools", @depot_tools_env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/depot_tools", @depot_tools_env)
   end
 
   def self.remove

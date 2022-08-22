@@ -10,5 +10,4 @@ class Avocado < Package
   is_fake
 
   depends_on 'avocado_framework'
-
 end

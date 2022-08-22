@@ -59,7 +59,7 @@ class Dbus < Package
       fi
       dbus-update-activation-environment --all
     DBUSCONFIGEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/dbus", @dbusconfigenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/dbus", @dbusconfigenv)
   end
 
   def self.postinstall

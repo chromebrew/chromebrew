@@ -11,5 +11,4 @@ class Gst_plugins_base < Package
   is_fake
 
   depends_on 'gstreamer'
-
 end

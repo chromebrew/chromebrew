@@ -9,17 +9,17 @@ class Percona_toolkit < Package
   source_url 'https://www.percona.com/downloads/percona-toolkit/3.0.7/source/tarball/percona-toolkit-3.0.7.tar.gz'
   source_sha256 '40f1a2241fb3ac1049e43ea75056f02d8af48c1eb731b48a4b564a054f8227e3'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_toolkit/3.0.7_armv7l/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_toolkit/3.0.7_armv7l/percona_toolkit-3.0.7-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_toolkit/3.0.7_i686/percona_toolkit-3.0.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_toolkit/3.0.7_x86_64/percona_toolkit-3.0.7-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_toolkit/3.0.7_x86_64/percona_toolkit-3.0.7-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c805533b7b9ba184e17d070574c30c453a73a2dde3258787b50c6ac77e319495',
      armv7l: 'c805533b7b9ba184e17d070574c30c453a73a2dde3258787b50c6ac77e319495',
        i686: 'd71e086d9283cf638e461ec2d5917ddeeeda4ac0fb130a55cd86d436df5eb465',
-     x86_64: 'b3820dd0791160369b84a66017c6938ee6850074b9e3efefa2a1b4c64380727b',
+     x86_64: 'b3820dd0791160369b84a66017c6938ee6850074b9e3efefa2a1b4c64380727b'
   })
 
   depends_on 'percona_server'

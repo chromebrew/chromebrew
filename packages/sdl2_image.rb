@@ -9,17 +9,17 @@ class Sdl2_image < Package
   source_url 'https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.4.tar.gz'
   source_sha256 'e74ec49c2402eb242fbfa16f2f43a19582a74c2eabfbfb873f00d4250038ceac'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_armv7l/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_armv7l/sdl2_image-2.0.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_i686/sdl2_image-2.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_x86_64/sdl2_image-2.0.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sdl2_image/2.0.4_x86_64/sdl2_image-2.0.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'fa555b57c402a9dd9ff3b2cca24b173f443114b43c077b299ff1a6355bf8eb05',
      armv7l: 'fa555b57c402a9dd9ff3b2cca24b173f443114b43c077b299ff1a6355bf8eb05',
        i686: 'da49934960375538108cde608f94e2dee00e05438757ef9b8fb02e50f225a689',
-     x86_64: '6e665aa5ddcff39d0d46e1b35cb698da8bbf2fb0a5523cec2028e67bd691c7a1',
+     x86_64: '6e665aa5ddcff39d0d46e1b35cb698da8bbf2fb0a5523cec2028e67bd691c7a1'
   })
 
   depends_on 'libsdl2'
@@ -36,6 +36,6 @@ class Sdl2_image < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

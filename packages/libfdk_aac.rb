@@ -9,17 +9,17 @@ class Libfdk_aac < Package
   source_url 'https://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-2.0.1.tar.gz'
   source_sha256 '840133aa9412153894af03b27b03dde1188772442c316a4ce2a24ed70093f271'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfdk_aac/2.0.1_armv7l/libfdk_aac-2.0.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfdk_aac/2.0.1_armv7l/libfdk_aac-2.0.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfdk_aac/2.0.1_i686/libfdk_aac-2.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfdk_aac/2.0.1_x86_64/libfdk_aac-2.0.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfdk_aac/2.0.1_x86_64/libfdk_aac-2.0.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '08f675d0b53219ef822e7eee420c80b92ef017e15e198bee44554cbe7e77b6e0',
      armv7l: '08f675d0b53219ef822e7eee420c80b92ef017e15e198bee44554cbe7e77b6e0',
        i686: 'bb0205bc24b0e5700e3d267d3de6b0cf546089a369ed0813cffa31f101da32a5',
-     x86_64: '9a254d4f55e4cc653aa1168b23eac55e2182b8131dcf1b94c7ea4cc3f85d4897',
+     x86_64: '9a254d4f55e4cc653aa1168b23eac55e2182b8131dcf1b94c7ea4cc3f85d4897'
   })
 
   def self.build

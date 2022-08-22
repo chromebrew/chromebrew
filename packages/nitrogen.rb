@@ -14,16 +14,15 @@ class Nitrogen < Package
   depends_on 'gtk2'
   depends_on 'gtk3'
 
-  ENV['CFLAGS'] = "-lX11 -lXau"
-
+  ENV['CFLAGS'] = '-lX11 -lXau'
 
   def self.build
-    system "autoreconf -fi"
+    system 'autoreconf -fi'
     system "./configure #{CREW_OPTIONS}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

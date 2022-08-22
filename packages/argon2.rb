@@ -9,17 +9,17 @@ class Argon2 < Package
   source_url 'https://github.com/P-H-C/phc-winner-argon2/archive/20190702.tar.gz'
   source_sha256 'daf972a89577f8772602bf2eb38b6a3dd3d922bf5724d45e7f9589b5e830442c'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/argon2/20190702_armv7l/argon2-20190702-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/argon2/20190702_armv7l/argon2-20190702-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/argon2/20190702_i686/argon2-20190702-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/argon2/20190702_x86_64/argon2-20190702-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/argon2/20190702_x86_64/argon2-20190702-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '62fb0dbf5a2840752a4715da92c0ac97bac285e9d36f37c1a9ee37e92bb78756',
      armv7l: '62fb0dbf5a2840752a4715da92c0ac97bac285e9d36f37c1a9ee37e92bb78756',
        i686: 'f2774c5515e86d5dc959fc4479d33ff4a9d58a5b779a5fbab8c219d5d5fa5fe9',
-     x86_64: 'dfe3a1d783c9b219c3905efc52ba26d7b7d6e9efc57b86ba1898792a0c8dffa2',
+     x86_64: 'dfe3a1d783c9b219c3905efc52ba26d7b7d6e9efc57b86ba1898792a0c8dffa2'
   })
 
   def self.build

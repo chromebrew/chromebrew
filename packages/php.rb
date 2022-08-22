@@ -12,22 +12,22 @@ class Php < Package
   def self.preflight
     major = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f1`.chomp
     minor = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f2`.chomp
-    unless major.empty? and minor.empty?
+    unless major.empty? && minor.empty?
       puts "Php#{major}#{minor} already installed.".lightgreen
       abort "Enter `crew remove php#{major}#{minor} && crew install php` to install a different version."
     end
     puts
-    puts "Select version:"
-    puts "5.6 = PHP 5.6.40"
-    puts "7.1 = PHP 7.1.33"
-    puts "7.2 = PHP 7.2.34"
-    puts "7.3 = PHP 7.3.33"
-    puts "7.4 = PHP 7.4.30"
-    puts "8.0 = PHP 8.0.20"
-    puts "8.1 = PHP 8.1.7"
-    puts "  0 = Cancel"
+    puts 'Select version:'
+    puts '5.6 = PHP 5.6.40'
+    puts '7.1 = PHP 7.1.33'
+    puts '7.2 = PHP 7.2.34'
+    puts '7.3 = PHP 7.3.33'
+    puts '7.4 = PHP 7.4.30'
+    puts '8.0 = PHP 8.0.20'
+    puts '8.1 = PHP 8.1.7'
+    puts '  0 = Cancel'
 
-    while version = STDIN.gets.chomp
+    while version = $stdin.gets.chomp
       case version
       when '5.6'
         depends_on 'php5'

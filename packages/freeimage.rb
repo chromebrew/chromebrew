@@ -9,17 +9,17 @@ class Freeimage < Package
   source_url 'https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/3.18.0/FreeImage3180.zip'
   source_sha256 'f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeimage/3.18.0_armv7l/freeimage-3.18.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeimage/3.18.0_armv7l/freeimage-3.18.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeimage/3.18.0_i686/freeimage-3.18.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeimage/3.18.0_x86_64/freeimage-3.18.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeimage/3.18.0_x86_64/freeimage-3.18.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '87b9d5423bc6efbcaa15cd5bc8789d7d9d155c146b09297a72c5a5b7e0a27be6',
      armv7l: '87b9d5423bc6efbcaa15cd5bc8789d7d9d155c146b09297a72c5a5b7e0a27be6',
        i686: '06dd2952fbd84f64ed7699de9140c5611f4de59ee9d98c6dc008b55671229254',
-     x86_64: 'f5f67c7d57c23cd3220f439d7088a7ddd18776ce7a9f1987d2b9a1d20275d9ea',
+     x86_64: 'f5f67c7d57c23cd3220f439d7088a7ddd18776ce7a9f1987d2b9a1d20275d9ea'
   })
 
   depends_on 'dos2unix' => :build

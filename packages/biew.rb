@@ -9,17 +9,17 @@ class Biew < Package
   source_url 'https://downloads.sourceforge.net/project/beye/biew/6.1.0/biew-610-src.tar.bz2'
   source_sha256 '2e85f03c908dd6ec832461fbfbc79169a33f4caccf48c8fe60cbd29f5fb06d17'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_armv7l/biew-6.1.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_armv7l/biew-6.1.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_i686/biew-6.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_x86_64/biew-6.1.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_x86_64/biew-6.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'f5e456e2d4f9336f151a485e37bcbf1287e33b106cb69ec2e775eaa04e20a006',
      armv7l: 'f5e456e2d4f9336f151a485e37bcbf1287e33b106cb69ec2e775eaa04e20a006',
        i686: '06540fc0a2ec15ae08b8f8cca69e8915ec3e9bdd92dbeecef974a85762d97029',
-     x86_64: '140bc619e0495b7bbec4b3ca934ddb0e12cb46b793b27197dd677b73d4819ddd',
+     x86_64: '140bc619e0495b7bbec4b3ca934ddb0e12cb46b793b27197dd677b73d4819ddd'
   })
 
   depends_on 'apriconv'
@@ -27,12 +27,12 @@ class Biew < Package
   depends_on 'slang'
 
   def self.build
-    system "cp -r ./biewlib/sysdep/generic ./biewlib/sysdep/arm" # add arm support
+    system 'cp -r ./biewlib/sysdep/generic ./biewlib/sysdep/arm' # add arm support
     system "./configure --prefix=#{CREW_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

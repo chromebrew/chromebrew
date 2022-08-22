@@ -8,8 +8,8 @@ class Monero < Package
   compatibility 'all'
   case ARCH
   when 'aarch64', 'armv7l'
-   source_url 'https://downloads.getmonero.org/cli/monero-linux-armv7-v0.17.3.0.tar.bz2'
-   source_sha256 'da49d85ce2d52fc07846c58d0c58d6412f454f9d389bfa31eab9c1d49a1a13ed'
+    source_url 'https://downloads.getmonero.org/cli/monero-linux-armv7-v0.17.3.0.tar.bz2'
+    source_sha256 'da49d85ce2d52fc07846c58d0c58d6412f454f9d389bfa31eab9c1d49a1a13ed'
   when 'i686'
     source_url 'https://downloads.getmonero.org/cli/monero-linux-x86-v0.17.3.0.tar.bz2'
     source_sha256 '586b9967d848eb31dd66bdb6d828bd3a640098434595a5933374d129b76958eb'

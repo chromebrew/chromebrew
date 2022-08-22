@@ -82,7 +82,7 @@ class Codelite < Package
              #endif
              }
     PATCH_EOF
-    IO.write('codelite_gtk3.patch', @gtk3patch)
+    File.write('codelite_gtk3.patch', @gtk3patch)
     system 'patch -p 1 -i codelite_gtk3.patch'
   end
 

@@ -24,7 +24,7 @@ class Chrome < Package
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'opt/google/chrome', "#{CREW_DEST_PREFIX}/share"
 
-    FileUtils.ln_s "../share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome-stable"
-    FileUtils.ln_s "../share/chrome/google-chrome", "#{CREW_DEST_PREFIX}/bin/google-chrome"
+    FileUtils.ln_s '../share/chrome/google-chrome', "#{CREW_DEST_PREFIX}/bin/google-chrome-stable"
+    FileUtils.ln_s '../share/chrome/google-chrome', "#{CREW_DEST_PREFIX}/bin/google-chrome"
   end
 end

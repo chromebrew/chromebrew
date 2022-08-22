@@ -10,17 +10,17 @@ class Libsigcplusplus < Package
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/archive/#{@_ver}.tar.gz"
   source_sha256 '3458b027f44204571a3a7091ebb94e5b1b5ecc7fbab89ce2bada25543645993f'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_i686/libsigcplusplus-2.10.6-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_x86_64/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_x86_64/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
+  binary_sha256({
+    aarch64: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
       armv7l: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
         i686: '4fa4524d137e1d7a78b166808923fb1470664fd0523ea23320d951859f0bc5c4',
-      x86_64: '5fca09ea7258aa2edfba573da8366f40ab5aae476b3df248fb556cfe4bcdd8a0',
+      x86_64: '5fca09ea7258aa2edfba573da8366f40ab5aae476b3df248fb556cfe4bcdd8a0'
   })
 
   def self.build
@@ -29,8 +29,8 @@ class Libsigcplusplus < Package
     -Dbuild-deprecated-api=true \
     -Dbuild-examples=false \
     builddir"
-    system "meson configure builddir"
-    system "ninja -C builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install

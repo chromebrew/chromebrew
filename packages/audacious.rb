@@ -9,17 +9,17 @@ class Audacious < Package
   source_url 'https://distfiles.audacious-media-player.org/audacious-3.10.1.tar.bz2'
   source_sha256 '8366e840bb3c9448c2cf0cf9a0800155b0bd7cc212a28ba44990c3d2289c6b93'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious/3.10.1_armv7l/audacious-3.10.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious/3.10.1_armv7l/audacious-3.10.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious/3.10.1_i686/audacious-3.10.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious/3.10.1_x86_64/audacious-3.10.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious/3.10.1_x86_64/audacious-3.10.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '6597ca2c03a630bc4da5ff6f0543e2dc5a4d7621b9bcdb2828fe49fc3889df9d',
      armv7l: '6597ca2c03a630bc4da5ff6f0543e2dc5a4d7621b9bcdb2828fe49fc3889df9d',
        i686: '7176161f5e71887d35338b7e18bc5524b907d9c334454ea6409e043eb5527806',
-     x86_64: '5660d4bbee7230c4b2698973b2a82a45e20461dba246fb22fcdbf91be74b9793',
+     x86_64: '5660d4bbee7230c4b2698973b2a82a45e20461dba246fb22fcdbf91be74b9793'
   })
 
   depends_on 'audacious_plugins' => :runtime
@@ -40,12 +40,12 @@ class Audacious < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.postinstall
     puts
-    puts "To configure, execute the following:".lightblue
+    puts 'To configure, execute the following:'.lightblue
     puts "Type 'audacious' to launch the music player.".lightblue
     puts "From the menu, select 'Output' > 'Audio Settings'.".lightblue
     puts "Select 'ALSA Output' for the 'Output plugin'.".lightblue
@@ -53,9 +53,9 @@ class Audacious < Package
     puts "Select 'sysdefault - Default control device' for 'Mixer device'.".lightblue
     puts "Click 'Close' and 'Close' again to save.".lightblue
     puts
-    puts "To completely remove, execute the following:".lightblue
-    puts "crew remove audacious audacious_plugins".lightblue
-    puts "rm -rf ~/.config/audacious".lightblue
+    puts 'To completely remove, execute the following:'.lightblue
+    puts 'crew remove audacious audacious_plugins'.lightblue
+    puts 'rm -rf ~/.config/audacious'.lightblue
     puts
   end
 end

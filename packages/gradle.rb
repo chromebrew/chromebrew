@@ -9,17 +9,17 @@ class Gradle < Package
   source_url 'https://services.gradle.org/distributions/gradle-6.5-bin.zip'
   source_sha256 '23e7d37e9bb4f8dabb8a3ea7fdee9dd0428b9b1a71d298aefd65b11dccea220f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gradle/6.5_armv7l/gradle-6.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gradle/6.5_armv7l/gradle-6.5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gradle/6.5_i686/gradle-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gradle/6.5_x86_64/gradle-6.5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gradle/6.5_x86_64/gradle-6.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'b490a6fb163a63945fc2a883ae0a3d05e9a11165ea454e01be578367e505ba30',
      armv7l: 'b490a6fb163a63945fc2a883ae0a3d05e9a11165ea454e01be578367e505ba30',
        i686: '42a931993440cd3d0f94611fec4260e050214751c50274448a4ca2c8d922f322',
-     x86_64: '597496258ce7516703f2879740b7b491a2f2329876d589c5d4fdd44a823d619d',
+     x86_64: '597496258ce7516703f2879740b7b491a2f2329876d589c5d4fdd44a823d619d'
   })
 
   depends_on 'jdk8'

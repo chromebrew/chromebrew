@@ -9,15 +9,15 @@ class Librespot < Package
   source_url 'https://github.com/librespot-org/librespot/archive/v0.1.3.tar.gz'
   source_sha256 '2d28a63c6dda08ecbc1245c7cfe34c9b3b29e8c5304f4aa8b65aedb899056b25'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librespot/0.1.3_armv7l/librespot-0.1.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librespot/0.1.3_armv7l/librespot-0.1.3-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librespot/0.1.3_x86_64/librespot-0.1.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librespot/0.1.3_x86_64/librespot-0.1.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ecfcbfaf8f71b1a4442535a0dc97e2d3db4dd5c67c7200deb040da74db56c099',
      armv7l: 'ecfcbfaf8f71b1a4442535a0dc97e2d3db4dd5c67c7200deb040da74db56c099',
-     x86_64: '0ba9038b2e38df1d684328050885b050959ae10df0028dc390c442da647d4228',
+     x86_64: '0ba9038b2e38df1d684328050885b050959ae10df0028dc390c442da647d4228'
   })
 
   depends_on 'rust' => :build

@@ -9,17 +9,17 @@ class Roswell < Package
   source_url 'https://github.com/roswell/roswell/archive/v20.01.14.104.tar.gz'
   source_sha256 '798b96fdcb8c89445b36692b31570bb99882d83719d6310d969ccfcb2a35a1d4'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/roswell/20.01.14.104_armv7l/roswell-20.01.14.104-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/roswell/20.01.14.104_armv7l/roswell-20.01.14.104-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/roswell/20.01.14.104_i686/roswell-20.01.14.104-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/roswell/20.01.14.104_x86_64/roswell-20.01.14.104-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/roswell/20.01.14.104_x86_64/roswell-20.01.14.104-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '3c3a54706ecb418ded5e27b9672a6a11e29eaf778e0c6bb44b18ab16050ff463',
      armv7l: '3c3a54706ecb418ded5e27b9672a6a11e29eaf778e0c6bb44b18ab16050ff463',
        i686: '221ba9a7cadf7354584c53a200f9154b09e4cda6193a9bfa93fce1afed3a5369',
-     x86_64: '4df5fe6db244b10c432cf45a5db394e7ccc2f25be37724a0e0ca436051bc0bbb',
+     x86_64: '4df5fe6db244b10c432cf45a5db394e7ccc2f25be37724a0e0ca436051bc0bbb'
   })
 
   depends_on 'brotli'
@@ -47,8 +47,8 @@ class Roswell < Package
     puts
     puts "To finish the installation, type 'ros'.".lightblue
     puts
-    puts "To completely remove, execute the following:".lightblue
-    puts "crew remove roswell".lightblue
+    puts 'To completely remove, execute the following:'.lightblue
+    puts 'crew remove roswell'.lightblue
     puts "rm -rf #{CREW_PREFIX}/.config/.roswell".lightblue
     puts
   end

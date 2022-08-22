@@ -34,6 +34,6 @@ class Chruby < Package
       # chruby configuration
       source #{CREW_PREFIX}/share/chruby/chruby.sh
     CHRUBYEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/chruby", @chrubyenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/chruby", @chrubyenv)
   end
 end

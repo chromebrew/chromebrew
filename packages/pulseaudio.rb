@@ -75,7 +75,7 @@ class Pulseaudio < Package
   end
 
   def self.check
-b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
+    b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
     # 39/50 thread-test                                                                                                   FAIL             4.02s   exit status 1
     # >>> MALLOC_PERTURB_=232 MAKE_CHECK=1 /usr/local/tmp/crew/pulseaudio-14.2.tar.xz.dir/pulseaudio-14.2/builddir/src/tests/thread-test
     # ――――――――――――――――――――――――――――――――――――― ✀  ―――――――――――――――――――――――――――――――――――――
@@ -96,7 +96,7 @@ b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
       exit-idle-time = 10 # Exit as soon as unneeded
       flat-volumes = yes # Prevent messing with the master volume
     PAUDIO_DAEMON_CONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/daemon.conf", @pulseaudio_daemon_conf, perm: 0o666)
+    File.write("#{CREW_DEST_PREFIX}/etc/pulse/daemon.conf", @pulseaudio_daemon_conf, perm: 0o666)
     @pulseaudio_client_conf = <<~PAUDIO_CLIENT_CONF_HEREDOC
       # Replace these with the proper values
 
@@ -105,7 +105,7 @@ b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
       # exit-idle-time setting in daemon.conf
       autospawn = yes
     PAUDIO_CLIENT_CONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/client.conf", @pulseaudio_client_conf, perm: 0o666)
+    File.write("#{CREW_DEST_PREFIX}/etc/pulse/client.conf", @pulseaudio_client_conf, perm: 0o666)
     @pulseaudio_default_pa = <<~PAUDIO_DEFAULT_PA_HEREDOC
       # Replace the *entire* content of this file with these few lines and
       # read the comments
@@ -133,7 +133,7 @@ b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
           load-module module-x11-publish
       .endif
     PAUDIO_DEFAULT_PA_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o666)
+    File.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o666)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/pulseaudio-system.conf",
                  "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/pulseaudio-system.conf"

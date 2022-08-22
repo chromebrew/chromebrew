@@ -9,17 +9,17 @@ class Geoip < Package
   source_url 'https://github.com/maxmind/geoip-api-c/releases/download/v1.6.12/GeoIP-1.6.12.tar.gz'
   source_sha256 '1dfb748003c5e4b7fd56ba8c4cd786633d5d6f409547584f6910398389636f80'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_armv7l/geoip-1.6.12-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_armv7l/geoip-1.6.12-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_i686/geoip-1.6.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_x86_64/geoip-1.6.12-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_x86_64/geoip-1.6.12-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'fb107ce557d6fe3b876f7f19578e434b6387d23dd46e4b1718ba5039eddd1106',
      armv7l: 'fb107ce557d6fe3b876f7f19578e434b6387d23dd46e4b1718ba5039eddd1106',
        i686: '8909827726c7496d79cd73da7a0ff59f91568d017848953e7c53565f51608bd5',
-     x86_64: '11776aa232c6a14d2e1d0409dfdaa2eaa917320f2ebdf02a0e14fbd86447ae9c',
+     x86_64: '11776aa232c6a14d2e1d0409dfdaa2eaa917320f2ebdf02a0e14fbd86447ae9c'
   })
 
   def self.build
@@ -30,7 +30,7 @@ class Geoip < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/GeoIP"
     # Version 1 - GeoLite Legacy (see https://dev.maxmind.com/geoip/legacy/geolite/)
     system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz'
@@ -42,12 +42,12 @@ class Geoip < Package
     system 'gunzip Geo*.gz'
     system "cp Geo*.dat #{CREW_DEST_PREFIX}/share/GeoIP/"
     # Version 2 - GeoLite2 for future use (see https://dev.maxmind.com/geoip/geoip2/geolite2/)
-    #system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz'
-    #system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz'
-    #system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN.tar.gz'
-    #system 'tar xvf GeoLite2-City.tar.gz'
-    #system 'tar xvf GeoLite2-Country.tar.gz'
-    #system 'tar xvf GeoLite2-ASN.tar.gz'
-    #system "cp GeoLite2-*/GeoLite2-*.mmdb #{CREW_DEST_PREFIX}/share/GeoIP/"
+    # system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz'
+    # system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz'
+    # system 'curl -#LO http://geolite.maxmind.com/download/geoip/database/GeoLite2-ASN.tar.gz'
+    # system 'tar xvf GeoLite2-City.tar.gz'
+    # system 'tar xvf GeoLite2-Country.tar.gz'
+    # system 'tar xvf GeoLite2-ASN.tar.gz'
+    # system "cp GeoLite2-*/GeoLite2-*.mmdb #{CREW_DEST_PREFIX}/share/GeoIP/"
   end
 end

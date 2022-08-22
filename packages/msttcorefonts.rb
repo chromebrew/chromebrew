@@ -9,17 +9,17 @@ class Msttcorefonts < Package
   source_url 'https://httpredir.debian.org/debian/pool/contrib/m/msttcorefonts/msttcorefonts_3.6.tar.gz'
   source_sha256 'c23a2c519acad44fb65dfdd5b6f7de7b351ec15394df52cc744e3c6deb51d42f'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_armv7l/msttcorefonts-3.6-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_armv7l/msttcorefonts-3.6-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_i686/msttcorefonts-3.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_x86_64/msttcorefonts-3.6-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_x86_64/msttcorefonts-3.6-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'f6c8457c11a02cd39c89a35af70038de861610c75dcb6304d7baf0f283306370',
      armv7l: 'f6c8457c11a02cd39c89a35af70038de861610c75dcb6304d7baf0f283306370',
        i686: 'ff4943e48567b37bfb3c871aa458351572016f9f501c789c5d7f8cd4b5db49a7',
-     x86_64: 'ce135a84d46fa69fbc29638d389d4ac6cf4fef4b1921f4f9a1497d17d6f4fed7',
+     x86_64: 'ce135a84d46fa69fbc29638d389d4ac6cf4fef4b1921f4f9a1497d17d6f4fed7'
   })
 
   depends_on 'cabextract'
@@ -33,7 +33,7 @@ class Msttcorefonts < Package
   end
 
   def self.install
-    system "./update-ms-fonts"
+    system './update-ms-fonts'
   end
 
   def self.postinstall

@@ -34,7 +34,7 @@ class Hunspell_fr_fr < Package
       # Configuración de hunspell
       export DICTIONARY=fr_FR
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/hunspell_fr_fr", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/hunspell_fr_fr", @env)
   end
 
   def self.postinstall

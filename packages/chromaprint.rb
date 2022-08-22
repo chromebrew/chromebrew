@@ -9,17 +9,17 @@ class Chromaprint < Package
   source_url 'https://github.com/acoustid/chromaprint/releases/download/v1.4.3/chromaprint-1.4.3.tar.gz'
   source_sha256 'ea18608b76fb88e0203b7d3e1833fb125ce9bb61efe22c6e169a50c52c457f82'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromaprint/1.4.3_armv7l/chromaprint-1.4.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromaprint/1.4.3_armv7l/chromaprint-1.4.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromaprint/1.4.3_i686/chromaprint-1.4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromaprint/1.4.3_x86_64/chromaprint-1.4.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromaprint/1.4.3_x86_64/chromaprint-1.4.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c0ea0bbcd43d6211cb11e85f54425d8a0bbea65e31dbf2662358599b1bce256e',
      armv7l: 'c0ea0bbcd43d6211cb11e85f54425d8a0bbea65e31dbf2662358599b1bce256e',
        i686: 'c42f53ac4e2639b6bf5ba55723df112fe95bd1c3dca264383dc681c05e0f3dd6',
-     x86_64: '6ed504a7975b1d7dc30eba8d7cf9203ea95c7970948ec5a061a8fc85c691673f',
+     x86_64: '6ed504a7975b1d7dc30eba8d7cf9203ea95c7970948ec5a061a8fc85c691673f'
   })
 
   depends_on 'ffmpeg'

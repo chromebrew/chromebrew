@@ -45,6 +45,6 @@ class Mutt < Package
       # Mutt configuration
       export SASL_PATH=#{CREW_PREFIX}/lib/sasl2
     MUTTEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/mutt", @muttenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/mutt", @muttenv)
   end
 end

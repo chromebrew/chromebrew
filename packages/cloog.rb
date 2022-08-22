@@ -9,17 +9,17 @@ class Cloog < Package
   source_url 'https://github.com/periscop/cloog/releases/download/cloog-0.20.0/cloog-0.20.0.tar.gz'
   source_sha256 '835c49951ff57be71dcceb6234d19d2cc22a3a5df84aea0a9d9760d92166fc72'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloog/0.20.0_armv7l/cloog-0.20.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloog/0.20.0_armv7l/cloog-0.20.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloog/0.20.0_i686/cloog-0.20.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloog/0.20.0_x86_64/cloog-0.20.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cloog/0.20.0_x86_64/cloog-0.20.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'b776360d2fcfcd9eaf177250f7ad3ec4c128ef62b883f0f3234d696ef45335ca',
      armv7l: 'b776360d2fcfcd9eaf177250f7ad3ec4c128ef62b883f0f3234d696ef45335ca',
        i686: '5c6413aa59c93f8c25c86f4642b6311ed697e7305daeef9a35a6656b5a6e0694',
-     x86_64: 'd31e2c02736dfa446b5058b4f947e2f6ed9a2aff0268adb616fedae1c716f012',
+     x86_64: 'd31e2c02736dfa446b5058b4f947e2f6ed9a2aff0268adb616fedae1c716f012'
   })
 
   depends_on 'isl'
@@ -35,16 +35,16 @@ class Cloog < Package
     system 'mkdir', '-p', 'isl', 'osl'
     system 'rm', '-f', 'autoconf/ltmain.sh', 'm4/ltversion.m4'
     system 'autoreconf', '-i'
-    system "./configure",
+    system './configure',
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
-           "--with-isl=system",
-           "--with-osl=system"
+           '--with-isl=system',
+           '--with-osl=system'
     system 'make'
   end
 
   def self.install
-    system "make", "install", "DESTDIR=#{CREW_DEST_DIR}"
+    system 'make', 'install', "DESTDIR=#{CREW_DEST_DIR}"
   end
 
   def self.check

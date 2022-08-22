@@ -49,6 +49,6 @@ class Stressng < Package
       # stressng bash completion
       source #{CREW_PREFIX}/share/bash-completion/completions/stress-ng
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/stressng", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/stressng", @env)
   end
 end

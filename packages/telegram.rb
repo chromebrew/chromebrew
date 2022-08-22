@@ -15,10 +15,10 @@ class Telegram < Package
 
   def self.build
     telegram = <<~EOF
-    #!/bin/bash
-    QT_QPA_PLATFORM=wayland-egl DISPLAY= WAYLAND_DISPLAY=wayland-0 Telegram "$@"
+      #!/bin/bash
+      QT_QPA_PLATFORM=wayland-egl DISPLAY= WAYLAND_DISPLAY=wayland-0 Telegram "$@"
     EOF
-    IO.write('telegram', telegram)
+    File.write('telegram', telegram)
   end
 
   def self.install

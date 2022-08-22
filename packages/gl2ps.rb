@@ -9,17 +9,17 @@ class Gl2ps < Package
   source_url 'http://geuz.org/gl2ps/src/gl2ps-1.4.2.tgz'
   source_sha256 '8d1c00c1018f96b4b97655482e57dcb0ce42ae2f1d349cd6d4191e7848d9ffe9'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gl2ps/1.4.2_armv7l/gl2ps-1.4.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gl2ps/1.4.2_armv7l/gl2ps-1.4.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gl2ps/1.4.2_i686/gl2ps-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gl2ps/1.4.2_x86_64/gl2ps-1.4.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gl2ps/1.4.2_x86_64/gl2ps-1.4.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ce3401bfc43e361043c923abb4678cc430549a2268e0b167e2e07e147885fabb',
      armv7l: 'ce3401bfc43e361043c923abb4678cc430549a2268e0b167e2e07e147885fabb',
        i686: '57b21122bbdfe8dcc971705e5b90696fbea8b97420e90c5c86b26ece1c47ceb9',
-     x86_64: 'dba42db2af724a91462fd720ac3f5b910aa270a91b7813e9478927924de836a8',
+     x86_64: 'dba42db2af724a91462fd720ac3f5b910aa270a91b7813e9478927924de836a8'
   })
 
   def self.build
@@ -37,8 +37,8 @@ class Gl2ps < Package
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       if ARCH == 'x86_64'
-        FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}"
-        FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), "#{CREW_DEST_LIB_PREFIX}"
+        FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+        FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), CREW_DEST_LIB_PREFIX.to_s
       end
     end
   end

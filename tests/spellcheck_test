@@ -5,9 +5,7 @@
 require_relative '../lib/const'
 require_relative '../lib/color'
 
-unless File.exist? "#{CREW_PREFIX}/bin/codespell"
-  puts "This test requires codespell.  Install with 'pip install codespell'.".lightred
-end
+puts "This test requires codespell.  Install with 'pip install codespell'.".lightred unless File.exist? "#{CREW_PREFIX}/bin/codespell"
 
 # Check for spelling errors.
 Dir.chdir '../' do

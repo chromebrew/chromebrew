@@ -9,17 +9,17 @@ class Gdal < Package
   source_url 'https://download.osgeo.org/gdal/3.1.3/gdal-3.1.3.tar.xz'
   source_sha256 '161cf55371a143826f1d76ce566db1f0a666496eeb4371aed78b1642f219d51d'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_armv7l/gdal-3.1.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_armv7l/gdal-3.1.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_i686/gdal-3.1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_x86_64/gdal-3.1.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.1.3_x86_64/gdal-3.1.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '4e650503583cdb958c514a681ef5ed4791dee197eadcdb9bf58ca574e6a7f034',
      armv7l: '4e650503583cdb958c514a681ef5ed4791dee197eadcdb9bf58ca574e6a7f034',
        i686: '6e168a4d3daadb0661241a56edbbba8d6ab2d54460c3079c2554420601b6a920',
-     x86_64: '984599cb21608ba4ba15be1512981406b6c1e0c581c4e29ccb3d36452778b51e',
+     x86_64: '984599cb21608ba4ba15be1512981406b6c1e0c581c4e29ccb3d36452778b51e'
   })
 
   depends_on 'openjpeg'

@@ -10,5 +10,4 @@ class Google_cloud_sdk < Package
   depends_on 'gcloud'
 
   is_fake
-
 end

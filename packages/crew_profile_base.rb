@@ -23,7 +23,7 @@ class Crew_profile_base < Package
     FileUtils.rm_f './src/env.d/04-dbus'
 
     # Don't overwrite custom changes
-    [ '01-locale', '02-editor', '03-pager', '99-custom' ].each do |custom_files|
+    %w[01-locale 02-editor 03-pager 99-custom].each do |custom_files|
       FileUtils.rm "./src/env.d/#{custom_files}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{custom_files}")
     end
 
@@ -43,7 +43,7 @@ class Crew_profile_base < Package
     CREW_PROFILE_EOF
 
     # append our #{crew_rcfile} to shell rc files (if exist)
-    [ '.bashrc', '.zshrc' ].each do |rc|
+    ['.bashrc', '.zshrc'].each do |rc|
       rc_path = File.join(HOME, rc)
 
       next unless File.exist?(rc_path)
@@ -63,9 +63,9 @@ class Crew_profile_base < Package
       end
 
       # append our rc string to the beginning of the rc file (if not exist)
-      if rc_file.none? {|line| line == "source #{CREW_PREFIX}/etc/profile" }
+      if rc_file.none? { |line| line == "source #{CREW_PREFIX}/etc/profile" }
         puts "Appending `#{crew_rc_source_line}` to the beginning of #{rc_path}...".yellow
-        rc_file.unshift( crew_rcfile.lines(chomp: true) )
+        rc_file.unshift(crew_rcfile.lines(chomp: true))
       end
 
       # save changes

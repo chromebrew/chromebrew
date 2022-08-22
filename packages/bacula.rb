@@ -9,17 +9,17 @@ class Bacula < Package
   source_url 'https://www.bacula.org/download/7471/bacula-9.4.2.tar.gz'
   source_sha256 'a40d04d2c48135972cecb6578405e835c4b9d798c0950017de0fad40ca94e8a0'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacula/9.4.2_armv7l/bacula-9.4.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacula/9.4.2_armv7l/bacula-9.4.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacula/9.4.2_i686/bacula-9.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacula/9.4.2_x86_64/bacula-9.4.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bacula/9.4.2_x86_64/bacula-9.4.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '1a0a0c032e40a648e9e9492aa428e9c674b1baa7ee76f5254f070f385be31263',
      armv7l: '1a0a0c032e40a648e9e9492aa428e9c674b1baa7ee76f5254f070f385be31263',
        i686: 'adf9481e8804d07ae4dfa80dab24bd6646feda2465dbf773fd21fa30a75d46bb',
-     x86_64: '1fccff1952a812660fa134102e8afe8b3faae7d61aa12f587dca9d00d14a4b53',
+     x86_64: '1fccff1952a812660fa134102e8afe8b3faae7d61aa12f587dca9d00d14a4b53'
   })
 
   depends_on 'lzo'
@@ -55,6 +55,6 @@ class Bacula < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

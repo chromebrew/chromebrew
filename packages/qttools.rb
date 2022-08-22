@@ -26,7 +26,7 @@ class Qttools < Package
   depends_on 'libtinfo'
 
   def self.build
-    # Note: This MAY NOT COMPILE with llvm installed on x86. Install dependencies,
+    # NOTE: This MAY NOT COMPILE with llvm installed on x86. Install dependencies,
     # disable depends, and uninstall llvm before attempting compile.
     system 'qmake -Wall -early QMAKE_CFLAGS=-flto -early QMAKE_CXXFLAGS=-flto && make'
   end

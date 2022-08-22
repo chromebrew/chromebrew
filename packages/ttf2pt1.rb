@@ -9,17 +9,17 @@ class Ttf2pt1 < Package
   source_url 'https://downloads.sourceforge.net/project/ttf2pt1/ttf2pt1/3.4.4/ttf2pt1-3.4.4.tgz'
   source_sha256 'ae926288be910073883b5c8a3b8fc168fde52b91199fdf13e92d72328945e1d0'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ttf2pt1/3.4.4_armv7l/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ttf2pt1/3.4.4_armv7l/ttf2pt1-3.4.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ttf2pt1/3.4.4_i686/ttf2pt1-3.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ttf2pt1/3.4.4_x86_64/ttf2pt1-3.4.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ttf2pt1/3.4.4_x86_64/ttf2pt1-3.4.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '2ec84f7e4625661c6566c5252ca8fb6034d854a87593856c187a9587f10e286c',
      armv7l: '2ec84f7e4625661c6566c5252ca8fb6034d854a87593856c187a9587f10e286c',
        i686: 'eb43e1cee6093de979abdcfd11409149bba328f0e4ac73e77305d5e3baea322f',
-     x86_64: 'e8faecc72638a7df553126f461d87b278ed0cb064a19bad8d9d1f28240ee8e76',
+     x86_64: 'e8faecc72638a7df553126f461d87b278ed0cb064a19bad8d9d1f28240ee8e76'
   })
 
   depends_on 'help2man' => :build
@@ -33,7 +33,7 @@ class Ttf2pt1 < Package
   def self.build
     system 'make veryclean'
     system 'make all'
-    system "help2man -N --no-discard-stderr -o t1asm.1 ./t1asm"
+    system 'help2man -N --no-discard-stderr -o t1asm.1 ./t1asm'
     system "sed -i 's,This is t1asm .,t1asm,g' t1asm.1"
     system "sed -i 's,This \\\\- m,M,' t1asm.1"
     system "sed -i 's,THIS,T1ASM,' t1asm.1"

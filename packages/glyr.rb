@@ -9,17 +9,17 @@ class Glyr < Package
   source_url 'https://github.com/sahib/glyr/archive/1.0.10.tar.gz'
   source_sha256 '77e8da60221c8d27612e4a36482069f26f8ed74a1b2768ebc373c8144ca806e8'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glyr/1.0.10_armv7l/glyr-1.0.10-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glyr/1.0.10_armv7l/glyr-1.0.10-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glyr/1.0.10_i686/glyr-1.0.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glyr/1.0.10_x86_64/glyr-1.0.10-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glyr/1.0.10_x86_64/glyr-1.0.10-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'e9b5746c110bc3e87a3bab7a56060e95e1fe066371b78c43afdd0fcc9fcb11d2',
      armv7l: 'e9b5746c110bc3e87a3bab7a56060e95e1fe066371b78c43afdd0fcc9fcb11d2',
        i686: 'abbd00b032fcf540c2b6d46562242272d7be300ba88baa991d8ad9db8463d8e2',
-     x86_64: 'c9ade91fe3da5da7cd53d53ff9e17a072fc60dd540f2e812ebfccdfe041aed50',
+     x86_64: 'c9ade91fe3da5da7cd53d53ff9e17a072fc60dd540f2e812ebfccdfe041aed50'
   })
 
   depends_on 'libcurl'
@@ -35,6 +35,6 @@ class Glyr < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

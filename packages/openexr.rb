@@ -9,17 +9,17 @@ class Openexr < Package
   source_url 'https://github.com/openexr/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz'
   source_sha256 'fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_armv7l/openexr-2.3.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_armv7l/openexr-2.3.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_i686/openexr-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_x86_64/openexr-2.3.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_x86_64/openexr-2.3.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'd2c0cda2100a6928c13ee79bd605be4c0457f11b289fe7970ac4fdee18d4653b',
      armv7l: 'd2c0cda2100a6928c13ee79bd605be4c0457f11b289fe7970ac4fdee18d4653b',
        i686: '71fb7e679140b71ada434125e1d3f2d475806fa1bb08d476f196b5999ec04c4c',
-     x86_64: '4db94a6aa538bdfb6ab6b41f24d03afab0b81c827d64b2b4bf44d004a8c72d15',
+     x86_64: '4db94a6aa538bdfb6ab6b41f24d03afab0b81c827d64b2b4bf44d004a8c72d15'
   })
 
   depends_on 'ilmbase'
@@ -33,6 +33,6 @@ class Openexr < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

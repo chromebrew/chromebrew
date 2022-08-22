@@ -1,4 +1,4 @@
-require "package"
+require 'package'
 
 class Sysstat < Package
   description 'The sysstat utilities are a collection of performance monitoring tools for Linux. These include sar, sadf, mpstat, iostat, tapestat, pidstat, cifsiostat and sa tools.'
@@ -9,24 +9,24 @@ class Sysstat < Package
   source_url 'http://pagesperso-orange.fr/sebastien.godard/sysstat-12.1.5.tar.xz'
   source_sha256 'a496936bb3f5093d780a50735f00e39b0b7f3a688eb89051f2ef5f86739522c5'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_armv7l/sysstat-12.1.5-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_i686/sysstat-12.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_x86_64/sysstat-12.1.5-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sysstat/12.1.5_x86_64/sysstat-12.1.5-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',
      armv7l: '88f64d75bf8be7fe4cb8136ec188631a6e504c44951d8f2003f1998167be2df7',
        i686: 'c33bc10c60d55e2649e62a13b2f666e63035538103d8a81740de1ab0f170685e',
-     x86_64: '5aac1bfb1bdf0a8d3dbeb010f179bbddeac24134768755d9dc3ccad01fb26f24',
+     x86_64: '5aac1bfb1bdf0a8d3dbeb010f179bbddeac24134768755d9dc3ccad01fb26f24'
   })
 
   def self.patch
     system "sed -i 's/GRP=root/GRP=$(whoami)/' configure"
     system "sed -i 's/\"root\"/\"$(whoami)\"/g' configure"
     system "sed -i 's/root/$(whoami)/g' configure.in"
-    system "sed -i 's/root/$(whoami)/g' sysstat-#{self.version}.spec"
+    system "sed -i 's/root/$(whoami)/g' sysstat-#{version}.spec"
   end
 
   def self.build

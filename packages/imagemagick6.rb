@@ -9,15 +9,15 @@ class Imagemagick6 < Package
   source_url 'https://github.com/ImageMagick/ImageMagick6/archive/6.9.11-29.tar.gz'
   source_sha256 'f425e31f64cb481a1416a037d88d04eb44236bef83334e55b7ad692f71c61270'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_x86_64/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_x86_64/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
      armv7l: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
-     x86_64: '5a247589c82be8fde96ee189ffbe12f5b72bb7398d341b80245222bab568af07',
+     x86_64: '5a247589c82be8fde96ee189ffbe12f5b72bb7398d341b80245222bab568af07'
   })
 
   depends_on 'flif'
@@ -42,7 +42,7 @@ class Imagemagick6 < Package
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
-    abort "ImageMagick version #{imver} already installed.".lightgreen unless "#{imver}" == ""
+    abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
   end
 
   def self.patch

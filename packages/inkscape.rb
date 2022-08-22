@@ -9,17 +9,17 @@ class Inkscape < Package
   source_url 'https://inkscape.org/gallery/item/12187/inkscape-0.92.3.tar.bz2'
   source_sha256 '063296c05a65d7a92a0f627485b66221487acfc64a24f712eb5237c4bd7816b2'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/0.92.3_armv7l/inkscape-0.92.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/0.92.3_armv7l/inkscape-0.92.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/0.92.3_i686/inkscape-0.92.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/0.92.3_x86_64/inkscape-0.92.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/0.92.3_x86_64/inkscape-0.92.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '99b2d2527b668282d0107327b76dc2f44f5f0cee3b5cc2a4e8259d8d3aae5676',
      armv7l: '99b2d2527b668282d0107327b76dc2f44f5f0cee3b5cc2a4e8259d8d3aae5676',
        i686: 'c070cbd4692cea127b45360c7a935ee7e926204cf3fa6eb457d418a80092ae03',
-     x86_64: '82456ad92d50e2167e8e79f8072d1a13fcaf51d8837ab6bec942034ae80ba09d',
+     x86_64: '82456ad92d50e2167e8e79f8072d1a13fcaf51d8837ab6bec942034ae80ba09d'
   })
 
   depends_on 'bdwgc'
@@ -44,6 +44,6 @@ class Inkscape < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

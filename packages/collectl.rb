@@ -9,17 +9,17 @@ class Collectl < Package
   source_url 'https://downloads.sourceforge.net/project/collectl/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz'
   source_sha256 '2187264d974b36a653c8a4b028ac6eeab23e1885f8b2563a33f06358f39889f1'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/collectl/4.3.1_armv7l/collectl-4.3.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/collectl/4.3.1_armv7l/collectl-4.3.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/collectl/4.3.1_i686/collectl-4.3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/collectl/4.3.1_x86_64/collectl-4.3.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/collectl/4.3.1_x86_64/collectl-4.3.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'c7dfcb941c97ae272b888d9c6257f931285ce51d453c08bc53cfcfb419b02486',
      armv7l: 'c7dfcb941c97ae272b888d9c6257f931285ce51d453c08bc53cfcfb419b02486',
        i686: '9df81b18774e4f086d53b646da72a3fb3c2dd0abc574b2d71728d77857dc80b2',
-     x86_64: '3726cff22c73deab81018a66b27e75696db94ab3de9a40239407077f07a885b3',
+     x86_64: '3726cff22c73deab81018a66b27e75696db94ab3de9a40239407077f07a885b3'
   })
 
   def self.build

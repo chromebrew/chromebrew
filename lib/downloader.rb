@@ -20,7 +20,7 @@ end
 
 require 'uri'
 
-def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
+def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
   # Usage: downloader <url>, <sha256sum>, <filename::optional>, <verbose::optional>
   #
@@ -31,7 +31,10 @@ def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
   #
   uri = URI(url)
 
-  unless CREW_USE_CURL or !ENV['CREW_DOWNLOADER'].to_s.empty?
+  if CREW_USE_CURL || !ENV['CREW_DOWNLOADER'].to_s.empty?
+    # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
+    external_downloader(uri, filename, verbose)
+  else
     case uri.scheme
     when 'http', 'https'
       # use net/http if the url protocol is http(s)://
@@ -47,15 +50,12 @@ def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
       # use external downloader (curl by default) if the url protocol is not http(s):// or file://
       external_downloader(uri, filename, verbose)
     end
-  else
-    # force using external downloader if either CREW_USE_CURL or ENV['CREW_DOWNLOADER'] is set
-    external_downloader(uri, filename, verbose)
   end
 
   # verify with given checksum
-  calc_sha256sum = Digest::SHA256.hexdigest( File.read(filename) )
+  calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
 
-  unless sha256sum =~ /^SKIP$/i or calc_sha256sum == sha256sum
+  unless sha256sum =~ (/^SKIP$/i) || (calc_sha256sum == sha256sum)
     FileUtils.rm_f filename
 
     warn 'Checksum mismatch :/ Try again?'.lightred, <<~EOT
@@ -69,17 +69,17 @@ def downloader (url, sha256sum, filename = File.basename(url), verbose = false)
   end
 end
 
-def http_downloader (uri, filename = File.basename(url), verbose = false)
+def http_downloader(uri, filename = File.basename(url), verbose = false)
   # http_downloader: Downloader based on net/http library
 
   # open http connection
   Net::HTTP.start(uri.host, uri.port, {
-      max_retries: CREW_DOWNLOADER_RETRY,
+    max_retries: CREW_DOWNLOADER_RETRY,
       use_ssl: uri.scheme.eql?('https'),
       ca_file: SSL_CERT_FILE,
       ca_path: SSL_CERT_DIR
   }) do |http|
-    http.request( Net::HTTP::Get.new(uri) ) do |response|
+    http.request(Net::HTTP::Get.new(uri)) do |response|
       case
       when response.is_a?(Net::HTTPSuccess)
       when response.is_a?(Net::HTTPRedirection) # follow HTTP redirection
@@ -114,7 +114,7 @@ def http_downloader (uri, filename = File.basename(url), verbose = false)
         EOT
 
         # parse response's header to readable format
-        response.to_hash.each_pair {|k, v| warn "> #{k}: #{v}" }
+        response.to_hash.each_pair { |k, v| warn "> #{k}: #{v}" }
 
         warn "\n"
       end
@@ -138,7 +138,7 @@ def http_downloader (uri, filename = File.basename(url), verbose = false)
   end
 end
 
-def external_downloader (uri, filename = File.basename(url), verbose = false)
+def external_downloader(uri, filename = File.basename(url), verbose = false)
   # external_downloader: wrapper for external downloaders in CREW_DOWNLOADER (curl by default)
 
   # default curl cmdline, CREW_DOWNLOADER should be in this format also
@@ -153,12 +153,11 @@ def external_downloader (uri, filename = File.basename(url), verbose = false)
 
   return system(
     format(downloader_cmdline,
-      {
-        verbose: verbose ? '--verbose' : '',
-        retry: CREW_DOWNLOADER_RETRY,
-        url: uri.to_s,
-        output: filename
-      }
-    ), exception: true
+           {
+             verbose: verbose ? '--verbose' : '',
+             retry: CREW_DOWNLOADER_RETRY,
+             url: uri.to_s,
+             output: filename
+           }), exception: true
   )
 end

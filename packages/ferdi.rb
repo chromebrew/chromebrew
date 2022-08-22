@@ -19,11 +19,11 @@ class Ferdi < Package
 
   def self.build
     ferdi = <<~EOF
-    #!/bin/bash
-    cd #{CREW_PREFIX}/share/ferdi
-    GDK_BACKEND=x11 ./AppRun "$@"
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/ferdi
+      GDK_BACKEND=x11 ./AppRun "$@"
     EOF
-    IO.write('ferdi.sh', ferdi)
+    File.write('ferdi.sh', ferdi)
   end
 
   def self.install
@@ -32,7 +32,7 @@ class Ferdi < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/ferdi"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.mv 'ferdi.desktop', "#{CREW_DEST_PREFIX}/share/applications"
-    FileUtils.install 'ferdi.sh', "#{CREW_DEST_PREFIX}/bin/ferdi", mode: 0755
+    FileUtils.install 'ferdi.sh', "#{CREW_DEST_PREFIX}/bin/ferdi", mode: 0o755
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/ferdi"
   end
 
@@ -44,8 +44,8 @@ class Ferdi < Package
     config_dir = "#{HOME}/.config/autostart"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.getc
+      when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

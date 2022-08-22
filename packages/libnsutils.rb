@@ -9,17 +9,17 @@ class Libnsutils < Package
   source_url 'https://download.netsurf-browser.org/libs/releases/libnsutils-0.1.0-src.tar.gz'
   source_sha256 '790c6516344abe82f6289d656392e9ccebe475b20cc7e1e2d843011385f7aef0'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsutils/0.1.0_armv7l/libnsutils-0.1.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsutils/0.1.0_armv7l/libnsutils-0.1.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsutils/0.1.0_i686/libnsutils-0.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsutils/0.1.0_x86_64/libnsutils-0.1.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnsutils/0.1.0_x86_64/libnsutils-0.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ef293ef4867289c24fee1e31a382d6d0091f5a69e3a1f7c02c1d3dba8cf09d5c',
      armv7l: 'ef293ef4867289c24fee1e31a382d6d0091f5a69e3a1f7c02c1d3dba8cf09d5c',
        i686: 'f02f7469190685bb06d1c0aed2378195363183db3a62cd6c3cb37d7f032364d6',
-     x86_64: '503ce72a465a355da07ebdd96d6e3b6116d80e79e1cb4bd9fc9c0c928951c124',
+     x86_64: '503ce72a465a355da07ebdd96d6e3b6116d80e79e1cb4bd9fc9c0c928951c124'
   })
 
   def self.build

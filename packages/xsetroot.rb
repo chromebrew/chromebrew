@@ -9,17 +9,17 @@ class Xsetroot < Package
   source_url 'https://www.x.org/releases/individual/app/xsetroot-1.1.2.tar.bz2'
   source_sha256 '10c442ba23591fb5470cea477a0aa5f679371f4f879c8387a1d9d05637ae417c'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xsetroot/1.1.2_armv7l/xsetroot-1.1.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xsetroot/1.1.2_armv7l/xsetroot-1.1.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xsetroot/1.1.2_i686/xsetroot-1.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xsetroot/1.1.2_x86_64/xsetroot-1.1.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xsetroot/1.1.2_x86_64/xsetroot-1.1.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '370530cc44d12e66cf83faa17fbac1aec5e44abddcf09802d3ec83cd6863832c',
      armv7l: '370530cc44d12e66cf83faa17fbac1aec5e44abddcf09802d3ec83cd6863832c',
        i686: '861082f1b69cd7cd54925d84d7bbdd152ccce378e80dac0171fba0c27f9e871a',
-     x86_64: 'ebd15859bebe9ecfcf8bc954c1ae5072ff8d184b96398991478a70b3d38cd1e7',
+     x86_64: 'ebd15859bebe9ecfcf8bc954c1ae5072ff8d184b96398991478a70b3d38cd1e7'
   })
 
   depends_on 'xbitmaps'
@@ -27,7 +27,7 @@ class Xsetroot < Package
   depends_on 'libxmu'
 
   def self.build
-    system "./configure", "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
+    system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
     system 'make'
   end
 

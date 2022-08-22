@@ -34,9 +34,7 @@ class Libnewt < Package
     patch_sha256 = '163f2f58bf4d0ac8a0907a1c2530a02d7c178b88c53fb98ee69d4b33bc86187d'
 
     system('curl', '-Lf', patch_url, '-o', 'zippatches.tar.xz')
-    unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
-      abort 'Checksum mismatch :/ try again'
-    end
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('./zippatches.tar.xz')) == patch_sha256
     system('tar', '-xf', 'zippatches.tar.xz')
 
     system('for i in `cat debian/patches/series`; do patch -p 1 < debian/patches/$i; done')

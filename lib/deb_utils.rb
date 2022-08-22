@@ -19,12 +19,12 @@ module DebUtils
     abort 'Malformed archive :/'.lightred unless signature == "!<arch>\n"
 
     # process each file in archive
-    while (line = src_fileIO.gets) do
-      if line.chomp.empty? and file_size == src_fileIO.tell
+    while (line = src_fileIO.gets)
+      if line.chomp.empty? && (file_size == src_fileIO.tell)
         # early return if trailing newline is detected
         break
       elsif line.chomp.empty?
-        STDERR.puts "Unexpected newline in offset #{src_fileIO.tell}, ignoring...".yellow
+        warn "Unexpected newline in offset #{src_fileIO.tell}, ignoring...".yellow
         next
       end
 
@@ -34,7 +34,7 @@ module DebUtils
 
       # remove slash suffix from filename (if any)
       # (a `.deb` ar archive does not support any directories, so we can confirm that all entries are normal files)
-      name&.sub!(/\/$/, '')
+      name&.sub!(%r{/$}, '')
 
       # check ending byte
       abort 'Malformed archive :/'.lightred unless end_char == '`'
@@ -43,11 +43,11 @@ module DebUtils
       fileContent = src_fileIO.read(size.to_i)
 
       # filter filename if a target file is specified
-      if target.is_a?(String) and name == target
+      if target.is_a?(String) && (name == target)
         # if target is passed as string, write matched file to filesyetem and exit function
         # write to filesystem
         return File.binwrite(name, fileContent, perm: mode.to_i(8))
-      elsif target.is_a?(Regexp) and name =~ target
+      elsif target.is_a?(Regexp) && name =~ (target)
         # if target is passed as regex, write matched file to filesyetem and continue
         # searching for another matched file until EOF
         # write to filesystem

@@ -9,17 +9,17 @@ class Eigen < Package
   source_url 'https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2'
   source_sha256 '685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_armv7l/eigen-3.3.7-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_armv7l/eigen-3.3.7-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_i686/eigen-3.3.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_x86_64/eigen-3.3.7-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eigen/3.3.7_x86_64/eigen-3.3.7-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'd5cf4005c822890e8d6a3a57fd186151dfd36d0fef513200a2e81fa767ddb64e',
      armv7l: 'd5cf4005c822890e8d6a3a57fd186151dfd36d0fef513200a2e81fa767ddb64e',
        i686: '11f717b454e479d2f91ad0410aa403fa68c904fab37a8f30499254f3e780964a',
-     x86_64: '4ae4ecb6aed2407f0e4adf84116b91b40e830eaed6d2ef028825a26e89d8bc72',
+     x86_64: '4ae4ecb6aed2407f0e4adf84116b91b40e830eaed6d2ef028825a26e89d8bc72'
   })
 
   depends_on 'boost'

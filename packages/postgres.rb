@@ -13,13 +13,13 @@ class Postgres < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_armv7l/postgres-10.17-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_armv7l/postgres-10.17-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_i686/postgres-10.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_x86_64/postgres-10.17-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_x86_64/postgres-10.17-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '67ec0a8d3aa3fa72a86a6041d74cf17ba16919e373127f19c50b88518d830a08',
      armv7l: '67ec0a8d3aa3fa72a86a6041d74cf17ba16919e373127f19c50b88518d830a08',
        i686: '0e6b22d4eaab62bfd4eac9586569d8d28b842e2386af2a03374887a6edf8d384',
-     x86_64: '60acfd4374380012bce2cda3d6e2df788f340c180fb725f5166a46c48932a17f',
+     x86_64: '60acfd4374380012bce2cda3d6e2df788f340c180fb725f5166a46c48932a17f'
   })
 
   # Feel free to change this directory prior to compiling.
@@ -50,15 +50,13 @@ class Postgres < Package
       #  pg_ctl -l #{CREW_PREFIX}/tmp/pgsql.log start
       #fi
     POSTGRESEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/postgres", @postgresenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/postgres", @postgresenv)
   end
 
   def self.postinstall
     # This conditional is needed for installation only.  If this package is updated in the future,
     # there is no need to initialize the data directory and display messages again.
-    unless File.exist? "#{PGDATA}/PG_VERSION"
-      system "initdb -D #{PGDATA}"
-    end
+    system "initdb -D #{PGDATA}" unless File.exist? "#{PGDATA}/PG_VERSION"
     puts
     puts 'To complete the installation, execute the following:'.lightblue
     puts 'source ~/.bashrc'.lightblue
@@ -75,14 +73,12 @@ class Postgres < Package
 
   def self.remove
     if Dir.exist? PGDATA
-      puts "WARNING: This will delete all databases!".orange
+      puts 'WARNING: This will delete all databases!'.orange
       print "Would you like to remove #{PGDATA}? [y/N] "
-      case STDIN.getc
+      case $stdin.getc
       when 'y', 'Y'
         FileUtils.rm_rf PGDATA
-        if Dir.exist? "#{CREW_PREFIX}/pgsql"
-          FileUtils.rm_rf "#{CREW_PREFIX}/pgsql"
-        end
+        FileUtils.rm_rf "#{CREW_PREFIX}/pgsql" 
         puts "#{PGDATA} removed.".lightred
       else
         puts "#{PGDATA} saved.".lightgreen

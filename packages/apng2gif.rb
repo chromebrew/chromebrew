@@ -10,17 +10,17 @@ class Apng2gif < Package
   source_url "https://sourceforge.net/projects/apng2gif/files/#{@_ver}/apng2gif-#{@_ver}-src.zip"
   source_sha256 '9a07e386017dc696573cd7bc7b46b2575c06da0bc68c3c4f1c24a4b39cdedd4d'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_armv7l/apng2gif-1.8-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_armv7l/apng2gif-1.8-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_i686/apng2gif-1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_x86_64/apng2gif-1.8-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_x86_64/apng2gif-1.8-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'f0d57f404b10ce2dc14a3ce61baa7be9d7bbefc8e0bb77e6b943bf7c07191578',
      armv7l: 'f0d57f404b10ce2dc14a3ce61baa7be9d7bbefc8e0bb77e6b943bf7c07191578',
        i686: '851c65719e952dc8b00c74457002f0f905f75b6bbc64e18a23e2b25b55e0d881',
-     x86_64: '921598e9de5c2ac2d22de713bdc4bdeb9d2cd436b4e166f69773c561a2ff53da',
+     x86_64: '921598e9de5c2ac2d22de713bdc4bdeb9d2cd436b4e166f69773c561a2ff53da'
   })
 
   depends_on 'libpng'
@@ -38,7 +38,7 @@ class Apng2gif < Package
   def self.build
     system 'make'
     system "help2man -s 1 -N -h '' \
-            -n '#{self.description.downcase.delete! '.'}' \
+            -n '#{description.downcase.delete! '.'}' \
             --version-string='#{@_ver}' \
             ./apng2gif -o apng2gif.1"
   end
@@ -46,7 +46,7 @@ class Apng2gif < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
-    FileUtils.install 'apng2gif', "#{CREW_DEST_PREFIX}/bin/apng2gif", mode: 0755
-    FileUtils.install 'apng2gif.1', "#{CREW_DEST_MAN_PREFIX}/man1/apng2gif.1", mode: 0644
+    FileUtils.install 'apng2gif', "#{CREW_DEST_PREFIX}/bin/apng2gif", mode: 0o755
+    FileUtils.install 'apng2gif.1', "#{CREW_DEST_MAN_PREFIX}/man1/apng2gif.1", mode: 0o644
   end
 end

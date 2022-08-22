@@ -9,17 +9,17 @@ class Xorg_fbdev_driver < Package
   source_url 'https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.4.4.tar.bz2'
   source_sha256 '9dd4b326498223abbfdf786089a46ea3db4fa6bbd341308eb48a9e00bc3fd51b'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_fbdev_driver/0.4.4_armv7l/xorg_fbdev_driver-0.4.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_fbdev_driver/0.4.4_armv7l/xorg_fbdev_driver-0.4.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_fbdev_driver/0.4.4_i686/xorg_fbdev_driver-0.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_fbdev_driver/0.4.4_x86_64/xorg_fbdev_driver-0.4.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_fbdev_driver/0.4.4_x86_64/xorg_fbdev_driver-0.4.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '430546814a47a8471548d568adda055a85ac52b2b5c86a399d23dc2b1b887ee2',
      armv7l: '430546814a47a8471548d568adda055a85ac52b2b5c86a399d23dc2b1b887ee2',
        i686: '645cc4317fc56a716324224cbd9e20e2b42865e4c3bbeccb7cc113739b52b1b7',
-     x86_64: '3dbeadf9bf8753c28c9950a9ce6d45583e52e8ad0e629caf422ba62968985137',
+     x86_64: '3dbeadf9bf8753c28c9950a9ce6d45583e52e8ad0e629caf422ba62968985137'
   })
 
   depends_on 'xorg_server' => :build

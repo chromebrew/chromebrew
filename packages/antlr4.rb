@@ -26,9 +26,7 @@ class Antlr4 < Package
 
   def self.install
     system 'curl -#LO https://www.antlr.org/download/antlr-4.7.1-complete.jar'
-    unless Digest::SHA256.hexdigest(File.read('antlr-4.7.1-complete.jar')) == 'f41dce7441d523baf9769cb7756a00f27a4b67e55aacab44525541f62d7f6688'
-      abort 'Checksum mismatch. :/ Try again.'.lightred
-    end
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('antlr-4.7.1-complete.jar')) == 'f41dce7441d523baf9769cb7756a00f27a4b67e55aacab44525541f62d7f6688'
     system "install -Dm644 antlr-4.7.1-complete.jar #{CREW_DEST_LIB_PREFIX}/antlr-4.7.1-complete.jar"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
@@ -38,6 +36,6 @@ class Antlr4 < Package
       alias antlr4=\"java -jar #{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar\"
       alias grun=\"java org.antlr.v4.gui.TestRig\"
     ANTLR_EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/antlr4", @antlrenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/antlr4", @antlrenv)
   end
 end

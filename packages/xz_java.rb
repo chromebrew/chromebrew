@@ -13,14 +13,14 @@ class Xz_java < Package
   depends_on 'ant' => :build
 
   def self.build
-    system "env", "JAVA_HOME=#{CREW_PREFIX}/share/jdk8", "ant"
-    system "env", "JAVA_HOME=#{CREW_PREFIX}/share/jdk8", "ant", "doc"
+    system 'env', "JAVA_HOME=#{CREW_PREFIX}/share/jdk8", 'ant'
+    system 'env', "JAVA_HOME=#{CREW_PREFIX}/share/jdk8", 'ant', 'doc'
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/doc/xz-java-1.8/"
-    FileUtils.cp_r "build/doc/.", "#{CREW_DEST_PREFIX}/share/doc/xz-java-1.8/"
+    FileUtils.cp_r 'build/doc/.', "#{CREW_DEST_PREFIX}/share/doc/xz-java-1.8/"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/jdk8/"
-    FileUtils.cp_r "build/jar/.", "#{CREW_DEST_PREFIX}/share/jdk8/lib/"
+    FileUtils.cp_r 'build/jar/.', "#{CREW_DEST_PREFIX}/share/jdk8/lib/"
   end
 end

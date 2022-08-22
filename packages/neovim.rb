@@ -9,15 +9,15 @@ class Neovim < Package
   source_url 'https://github.com/neovim/neovim/archive/v0.4.4.tar.gz'
   source_sha256 '2f76aac59363677f37592e853ab2c06151cca8830d4b3fe4675b4a52d41fc42c'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_armv7l/neovim-0.4.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_armv7l/neovim-0.4.4-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_x86_64/neovim-0.4.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.4.4_x86_64/neovim-0.4.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '4f070268cb5386ad3cff2c3a5e7f332a79ce28335ec13f17763d2cb0c5a6083b',
      armv7l: '4f070268cb5386ad3cff2c3a5e7f332a79ce28335ec13f17763d2cb0c5a6083b',
-     x86_64: '013241fb25fa27c2247ade5cffdc3694dcd58e4783c7b7a4bf339b92332804d5',
+     x86_64: '013241fb25fa27c2247ade5cffdc3694dcd58e4783c7b7a4bf339b92332804d5'
   })
 
   depends_on 'xdg_base'

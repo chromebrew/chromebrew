@@ -40,7 +40,7 @@ class Wine < Package
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
-  @xdg_config_home = ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
@@ -89,7 +89,7 @@ class Wine < Package
       # Wine configuration
       WINEPREFIX="${XDG_CONFIG_HOME}"/.wine
     WINE_CONFIG_EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/wine", @wine_config_env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/wine", @wine_config_env)
   end
 
   def self.postinstall
