@@ -4,27 +4,28 @@ class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
   @_ver = '1.5.2'
-  version @_ver
+  version "#{@_ver}-1"
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2_armv7l/zstd-1.5.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2_armv7l/zstd-1.5.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2_i686/zstd-1.5.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2_x86_64/zstd-1.5.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2-1_armv7l/zstd-1.5.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2-1_armv7l/zstd-1.5.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2-1_i686/zstd-1.5.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.2-1_x86_64/zstd-1.5.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'dcf0cc629f47f5e7ce23ef73948a859bdc8383b542ed6f6eb7689ced2541280a',
-     armv7l: 'dcf0cc629f47f5e7ce23ef73948a859bdc8383b542ed6f6eb7689ced2541280a',
-       i686: 'f2f95e2d6855b4591c8defe17f2e738d2cb6140af0245f005aa7889addba055f',
-     x86_64: '6829742f7ba7362ad22539c914ec114acfd52d78f755f5c057902e2924dbef1f'
+    aarch64: 'd8b71760987ab2836e98fd2d8819cbaa95402e88cd9718f0de23f777140c4d7e',
+     armv7l: 'd8b71760987ab2836e98fd2d8819cbaa95402e88cd9718f0de23f777140c4d7e',
+       i686: '6e159bb381c0b5595714d875e486348a05166332056ce2bc4c3f997a2652a93d',
+     x86_64: 'b04d97b3d328f8c0805e2fcee0526b1e955255ca21ceaed6f6e1fb8e6941b312'
   })
 
   depends_on 'musl_zstd'
   no_patchelf
+  no_zstd
 
   def self.build
     Dir.chdir 'build/cmake' do
