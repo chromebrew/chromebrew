@@ -23,14 +23,14 @@ class Rsync < Package
      x86_64: 'ad8c1503ed103c594390ac3497c4dc982ef2906a3290de2783a0ee6f10b764cb'
   })
 
-  depends_on 'acl' # R
-  depends_on 'attr' # R
-  depends_on 'glibc' # R
-  depends_on 'lz4' # R
-  depends_on 'openssl' # R
-  depends_on 'popt' # R
-  depends_on 'xxhash' # R
-  depends_on 'zstd' # R
+  depends_on 'acl' => :build
+  depends_on 'attr' => :build
+  depends_on 'glibc' => :build
+  depends_on 'lz4' => :build
+  depends_on 'openssl' => :build
+  depends_on 'popt' => :build
+  depends_on 'xxhash' => :build
+  depends_on 'zstd' => :build
   no_env_options
   no_patchelf
   no_zstd
