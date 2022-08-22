@@ -5,8 +5,8 @@ class Libsdl2 < Package
   homepage 'http://www.libsdl.org'
   @_ver = '2.24.0'
   version @_ver
-  compatibility 'all'
   license 'ZLIB'
+  compatibility 'all'
   source_url 'https://github.com/libsdl-org/SDL.git'
   git_hashtag "release-#{@_ver}"
 
