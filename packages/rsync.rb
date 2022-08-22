@@ -3,23 +3,24 @@ require 'package'
 class Rsync < Package
   description 'rsync is an open source utility that provides fast incremental file transfer.'
   homepage 'https://rsync.samba.org/'
-  version '3.2.5'
+  @_ver = '3.2.5'
+  version '3.2.5-1'
   license 'GPL-3'
   compatibility 'all'
   source_url "http://rsync.samba.org/ftp/rsync/src/rsync-#{@_ver}.tar.gz"
   source_sha256 '2ac4d21635cdf791867bc377c35ca6dda7f50d919a58be45057fd51600c69aba'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5_armv7l/rsync-3.2.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5_armv7l/rsync-3.2.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5_i686/rsync-3.2.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5_x86_64/rsync-3.2.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5-1_armv7l/rsync-3.2.5-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5-1_armv7l/rsync-3.2.5-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5-1_i686/rsync-3.2.5-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rsync/3.2.5-1_x86_64/rsync-3.2.5-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'a2b1a6ed4614b1fd9bb41914669bb30783d70ad5719c13760ed0fbce9be0aae3',
-     armv7l: 'a2b1a6ed4614b1fd9bb41914669bb30783d70ad5719c13760ed0fbce9be0aae3',
-       i686: 'f026e547aeeb952b75df5e710f64e6cb54a7ad6a845f3443dc601d93b1bed31e',
-     x86_64: '02db82ac18ab11be2e081cb1c909d93694eeb78e7b5d198287b1b872095912c0'
+    aarch64: 'ccab29052cafb1d0e315b9a2b6e48ee48300a761c3a980ae97f657dae6455679',
+     armv7l: 'ccab29052cafb1d0e315b9a2b6e48ee48300a761c3a980ae97f657dae6455679',
+       i686: '89cdf0532d7761809f87339aa762357c8777b87a43960db15028183f004c9c07',
+     x86_64: 'ad8c1503ed103c594390ac3497c4dc982ef2906a3290de2783a0ee6f10b764cb'
   })
 
   depends_on 'acl' # R
@@ -30,11 +31,15 @@ class Rsync < Package
   depends_on 'popt' # R
   depends_on 'xxhash' # R
   depends_on 'zstd' # R
+  no_env_options
   no_patchelf
   no_zstd
 
   def self.build
-    system "./configure #{CREW_OPTIONS} --disable-maintainer-mode"
+    @rsync_env_options = CREW_ENV_OPTIONS.gsub('CFLAGS="',
+                                                'CFLAGS="-static ').gsub('LDFLAGS="',
+                                                'LDFLAGS="-Wl,--whole-archive -lpthread -Wl,--no-whole-archive ')
+    system "#{@rsync_env_options} ./configure #{CREW_OPTIONS} --disable-maintainer-mode"
     system 'make'
   end
 
