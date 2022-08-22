@@ -32,7 +32,7 @@ class Package
     className = pkgName.capitalize
 
     # read and eval package script under 'Package' class
-    class_eval(File.read(pkgFile), pkgFile) unless const_defined?("Package::#{className}")
+    class_eval( File.read(pkgFile, encoding: Encoding::UTF_8), pkgFile ) unless const_defined?("Package::#{className}")
 
     pkgObj = const_get(className)
     pkgObj.name = pkgName
