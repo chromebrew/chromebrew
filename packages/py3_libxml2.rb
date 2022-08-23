@@ -3,24 +3,23 @@ require 'package'
 class Py3_libxml2 < Package
   description 'Libxml2-python provides access to libxml2 and libxslt in Python.'
   homepage 'https://gitlab.gnome.org/GNOME/libxml2/'
-  @_ver = '2.9.12'
-  version "#{@_ver}-1"
+  version '2.10.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.0/libxml2-v2.10.0.tar.bz2'
+  source_sha256 'c44124d025162767a1d3fe35b556c5855e6be7240e3dc3159490e91d5cadbba3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_armv7l/py3_libxml2-2.9.12-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_armv7l/py3_libxml2-2.9.12-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_i686/py3_libxml2-2.9.12-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.9.12-1_x86_64/py3_libxml2-2.9.12-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.10.0_armv7l/py3_libxml2-2.10.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.10.0_armv7l/py3_libxml2-2.10.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.10.0_i686/py3_libxml2-2.10.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.10.0_x86_64/py3_libxml2-2.10.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2bee7439421a391a1f43595d9d840d90b5ca88d0c863655b5e6cff1b9888c616',
-     armv7l: '2bee7439421a391a1f43595d9d840d90b5ca88d0c863655b5e6cff1b9888c616',
-       i686: '04a9be201cb9309b0718663f6988aa412cf97c0f7c672332f53031aab5d310d9',
-     x86_64: '4e428d28cb7445a6955f09fc3d7bf8995764f073278dd9d507cdd7f1bedcf0d4'
+    aarch64: 'f8a22b53605a67930373f64af313ffe448ccd6596f276b5af257057280f8b445',
+     armv7l: 'f8a22b53605a67930373f64af313ffe448ccd6596f276b5af257057280f8b445',
+       i686: 'de352c024364b3dc0ca187df68e6e2c397c1886aa13a886938aace1b1e7556ec',
+     x86_64: '34f173dbe2b29e9eb1e72e96b6629f92ae0d5cd5da795f3d9915054425f80dff'
   })
 
   depends_on 'libxml2'
