@@ -28,6 +28,7 @@ class Rsync < Package
   depends_on 'lz4' # R
   depends_on 'openssl' # R
   depends_on 'popt' # R
+  depends_on 'py3_cmarkgfm' => :build
   depends_on 'xxhash' # R
   depends_on 'zstd' # R
   no_patchelf
@@ -36,6 +37,10 @@ class Rsync < Package
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-maintainer-mode"
     system 'make'
+  end
+
+  def self.check
+        system 'make check'
   end
 
   def self.install
