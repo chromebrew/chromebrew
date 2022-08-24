@@ -6,20 +6,18 @@ class Gnome_terminal < Package
   @_ver = '3.45.90'
   version @_ver
   license 'GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 armv7l aarch64'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
   git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.45.90_armv7l/gnome_terminal-3.45.90-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.45.90_armv7l/gnome_terminal-3.45.90-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.45.90_i686/gnome_terminal-3.45.90-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.45.90_x86_64/gnome_terminal-3.45.90-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '88f445c929da22ee4ae71dae62c0ac1ee7fbe6ad226f4b29271612e6afbec5c2',
      armv7l: '88f445c929da22ee4ae71dae62c0ac1ee7fbe6ad226f4b29271612e6afbec5c2',
-       i686: '390c8cb3ba1a5b306320368f6dd45db21e6ad43b576cc9fe16c8cd7a28b82914',
      x86_64: 'a94bc8f5bf868dbb1134e02a9af01e1b188a97f786cfeeb656d00401e467552a'
   })
 
@@ -31,7 +29,6 @@ class Gnome_terminal < Package
   depends_on 'adobe_source_code_pro_fonts' # (Needed for monospace fonts)
   depends_on 'yelp_tools'
   depends_on 'gtk_doc'
-  depends_on 'sommelier' unless ARCH == 'i686'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
