@@ -3,7 +3,7 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.23.2'
+  @_ver = '3.24.1'
   version @_ver
   license 'CMake'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Cmake < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_armv7l/cmake-3.23.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_armv7l/cmake-3.23.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_i686/cmake-3.23.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.23.2_x86_64/cmake-3.23.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.1_armv7l/cmake-3.24.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.1_armv7l/cmake-3.24.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.1_i686/cmake-3.24.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.1_x86_64/cmake-3.24.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2dfe03152d856f05fd80bf4f8916c251acb97373644b9879866c67d297e53d12',
-     armv7l: '2dfe03152d856f05fd80bf4f8916c251acb97373644b9879866c67d297e53d12',
-       i686: 'ea70f7b463171f41ecca6d754c1bd865977ef509666b49b78c3f1de99bf4314d',
-     x86_64: '4e7e2eaf6e0f60dd1d9149181da5cd09b6c8d0cd66e89c24534004064099ffaa'
+    aarch64: 'da3d25ea366b19967544870b483c76f6a903ab9678ac844ef77c6d3302a5ea4b',
+     armv7l: 'da3d25ea366b19967544870b483c76f6a903ab9678ac844ef77c6d3302a5ea4b',
+       i686: 'e8cbc2ee57556d44bf6857bf2bf039a139563407e352843edcf83568abf2285d',
+     x86_64: '39c47fa7e44241983b3dc86e876abd5ae7c9d17cd46f1ce9fa7a4e277a0a191c'
   })
 
   depends_on 'expat'
@@ -52,13 +52,13 @@ class Cmake < Package
   end
 
   # Failed tests:
-  # BundleUtilities
-  # GeneratorExpression
-  # RunCMake.CMakeRelease
-  # RunCMake.file-GET_RUNTIME_DEPENDENCIES
-  # def self.check
-  #   system 'ninja -C builddir test || true'
-  # end
+  # BundleUtilities (armv7l,x86_64)
+  # CTest.UpdateGIT (x86_64)
+  # CustomCommand (armv7l,x86_64)
+  # RunCMake.CMakeRelease (armv7l,i686,x86_64)
+  def self.check
+    system 'ninja -C builddir test || true'
+  end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
