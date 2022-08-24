@@ -3219,6 +3219,11 @@ url: https://github.com/kubernetes/kubernetes/releases
 activity: high
 ---
 kind: url
+name: kupfer
+url: https://github.com/kupferlauncher/kupfer/releases
+activity: low
+---
+kind: url
 name: kwiml
 url: https://gitlab.kitware.com/utils/kwiml/
 activity: low
@@ -4116,6 +4121,11 @@ activity: low
 kind: url
 name: libplist
 url: http://www.libimobiledevice.org/
+activity: none
+---
+kind: url
+name: libpng
+url: https://downloads.sourceforge.net/project/libpng/libpng16
 activity: none
 ---
 kind: url
@@ -5207,6 +5217,11 @@ kind: url
 name: muparser
 url: https://github.com/beltoforion/muparser/releases
 activity: low
+---
+kind: url
+name: mupdf
+url: https://mupdf.com/downloads/archive/
+activity: medium
 ---
 kind: url
 name: musl
@@ -7875,6 +7890,11 @@ activity: none
 ---
 kind: url
 name: wxwidgets
+url: https://github.com/wxWidgets/wxWidgets/releases/
+activity: low
+---
+kind: url
+name: wxwidgets31
 url: https://github.com/wxWidgets/wxWidgets/releases/
 activity: low
 ---
