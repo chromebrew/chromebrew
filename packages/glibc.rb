@@ -624,20 +624,20 @@ class Glibc < Package
       # This is the array of locales to save:
       @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
       @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-      @filelist = File.readlines("#{CREW_META_PATH}#{to_s.downcase}.filelist")
+      @filelist = File.readlines("#{CREW_META_PATH}/glibc.filelist")
       @localedirs.each do |localedir|
         Dir.chdir localedir do
-          Dir.glob('*').each do |f|
+          Dir['*'].each do |f|
             next if @locales.any? { |s| File.basename(f).include?(s) }
 
             FileUtils.rm_f f
             @fpath = "#{localedir}/#{f}"
-            @filelist.reject! { |e| e =~ /#{@fpath}/ }
+            @filelist.reject! { |e| e.include?(@fpath) }
           end
         end
       end
-      puts "Updating #{to_s.downcase} package filelist...".lightblue
-      File.open("#{CREW_META_PATH}#{to_s.downcase}.filelist", 'w+') do |f|
+      puts "Updating glibc package filelist...".lightblue
+      File.open("#{CREW_META_PATH}/glibc.filelist", 'w+') do |f|
         f.puts(@filelist)
       end
     end
