@@ -646,7 +646,7 @@ class Glibc < Package
           end
         end
       end
-      puts "Updating glibc package filelist...".lightblue
+      puts 'Updating glibc package filelist...'.lightblue
       File.open("#{CREW_META_PATH}/glibc.filelist", 'w+') do |f|
         f.puts(@filelist)
       end

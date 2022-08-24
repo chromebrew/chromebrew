@@ -3,8 +3,8 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  @_ver = '20210119'
-  version "#{@_ver}-2"
+  version '20210119-2'
+  @_ver = "#{version}[0..-3]"
   license 'MPL-1.1'
   compatibility 'all'
   source_url "https://salsa.debian.org/debian/ca-certificates/-/archive/debian/#{@_ver}/ca-certificates-debian-#{@_ver}.tar.bz2"
