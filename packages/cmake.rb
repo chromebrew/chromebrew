@@ -52,10 +52,10 @@ class Cmake < Package
   end
 
   # Failed tests:
-  # BundleUtilities
-  # GeneratorExpression
-  # RunCMake.CMakeRelease
-  # RunCMake.file-GET_RUNTIME_DEPENDENCIES
+  # BundleUtilities (armv7l,x86_64)
+  # CTest.UpdateGIT (x86_64)
+  # CustomCommand (armv7l,x86_64)
+  # RunCMake.CMakeRelease (armv7l,i686,x86_64)
   def self.check
     system 'ninja -C builddir test || true'
   end
