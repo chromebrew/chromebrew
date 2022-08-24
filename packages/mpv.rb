@@ -11,14 +11,14 @@ class Mpv < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_armv7l/mpv-0.34.1-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_armv7l/mpv-0.34.1-chromeos-armv7l.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_x86_64/mpv-0.34.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_armv7l/mpv-0.34.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_armv7l/mpv-0.34.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_x86_64/mpv-0.34.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
- aarch64: '60207de3ae34a2e50eb2ffe7202f9ae55ae3edcb156fe9119ad654c67bc7b381',
-  armv7l: '60207de3ae34a2e50eb2ffe7202f9ae55ae3edcb156fe9119ad654c67bc7b381',
-  x86_64: 'f82aed1ae1ed85e1650776bfb738f4948d4c6d8ae38d7d1495d837c5f82675b0'
+    aarch64: '60207de3ae34a2e50eb2ffe7202f9ae55ae3edcb156fe9119ad654c67bc7b381',
+     armv7l: '60207de3ae34a2e50eb2ffe7202f9ae55ae3edcb156fe9119ad654c67bc7b381',
+     x86_64: 'f82aed1ae1ed85e1650776bfb738f4948d4c6d8ae38d7d1495d837c5f82675b0'
   })
 
   depends_on 'py3_docutils' => :build
