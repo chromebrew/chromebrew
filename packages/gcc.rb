@@ -12,13 +12,13 @@ class Gcc < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_i686/gcc-12.2-chromeos-i686.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_i686/gcc-12.2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_x86_64/gcc-12.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
      armv7l: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
-       i686: 'b0aa419d91b7088400c7a365e3c416cbba5081413a624acf4f2e0c962cda7359',
+       i686: '0b1bc48a8c63dfc3f104a74030243a1c74870f523a661e6ea0a8934b832a6ef5',
      x86_64: '01efdcdab6bebc32fd5608f6a061c7ceebd69e9f96084293a903f5af9c3576f3'
   })
 
@@ -34,6 +34,7 @@ class Gcc < Package
 
   no_env_options
   no_patchelf
+  no_zstd if ARCH == 'i686'
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
@@ -137,7 +138,7 @@ class Gcc < Package
 
     Dir.chdir('objdir') do
       configure_env = {
-        NM: 'gcc-nm',
+          NM: 'gcc-nm',
           AR: 'gcc-ar',
       RANLIB: 'gcc-ranlib',
       CFLAGS: @cflags,
@@ -177,7 +178,7 @@ LIBRARY_PATH: CREW_LIB_PREFIX,
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
     make_env = {
-      LIBRARY_PATH: CREW_LIB_PREFIX,
+LIBRARY_PATH: CREW_LIB_PREFIX,
         PATH: @path,
      DESTDIR: CREW_DEST_DIR
     }.transform_keys(&:to_s)
@@ -240,25 +241,25 @@ LIBRARY_PATH: CREW_LIB_PREFIX,
       system make_env, "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
 
       system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
-             exception: false
+exception: false
       system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
-             exception: false
+exception: false
       system make_env, "make -C #{CREW_TGT}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
-             exception: false
+exception: false
       system make_env, "make -C #{CREW_TGT}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
-             exception: false
+exception: false
       system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
-             exception: false
+exception: false
       system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
-             exception: false
+exception: false
       system make_env,
-             "make -C #{CREW_TGT}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+"make -C #{CREW_TGT}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This failed on i686
       system make_env,
-             "make -C #{CREW_TGT}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+"make -C #{CREW_TGT}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
       # This might fail on i686
       system make_env,
-             "make -C #{CREW_TGT}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
+"make -C #{CREW_TGT}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
 
       # libiberty is installed from binutils
       # system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
@@ -312,13 +313,13 @@ LIBRARY_PATH: CREW_LIB_PREFIX,
     # make sure current version of gcc LTO plugin for Gold linker is installed.
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
     FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/",
-                    verbose: true
+verbose: true
 
     # binutils makes a symlink here, but just in case it isn't there.
     if ARCH_LIB == 'lib64'
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
       FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/",
-                      verbose: true
+verbose: true
     end
 
     File.write "#{CREW_DEST_PREFIX}/bin/c99", @C99, perm: 0o755
