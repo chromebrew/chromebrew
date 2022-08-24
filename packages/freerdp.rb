@@ -3,23 +3,21 @@ require 'package'
 class Freerdp < Package
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version '2.3.2'
+  version '2.8.0'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 armv7l aarch64'
   source_url "https://github.com/FreeRDP/FreeRDP/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 'a1f52f0d9569b418a555ffe4d15a3782712198be47308e9514d20ca5af41a1b1'
+  source_sha256 '86f1ce8ef71aff73881a48b40d31dda2fc2a94bdbe37e1c1af8447a0e4fa5cc8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_armv7l/freerdp-2.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_i686/freerdp-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.3.2_x86_64/freerdp-2.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.0_armv7l/freerdp-2.8.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.0_armv7l/freerdp-2.8.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.0_x86_64/freerdp-2.8.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dd2db88bb1442ed6d8d37d064ed5701087e339008b91314916b69b0f0f127ca6',
-     armv7l: 'dd2db88bb1442ed6d8d37d064ed5701087e339008b91314916b69b0f0f127ca6',
-       i686: 'fd935d4def75b22e6ad98c2435c2ccae461c689be480dfe9b7afd49a6fef3798',
-     x86_64: '46cf60d78f89cd9adab7d71a8d2d204a0633efef5362eacf8d1085f131bc0eac'
+    aarch64: '9395c3882984fc0155cd2489546b1717d04483583cd517ddddc7ea9bd04f710a',
+     armv7l: '9395c3882984fc0155cd2489546b1717d04483583cd517ddddc7ea9bd04f710a',
+     x86_64: '87dcb6d9b28405fe2879dd2862de3c06d1c4981cfede0aaec760a14005d25bc0'
   })
 
   depends_on 'cairo'
