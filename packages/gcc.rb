@@ -12,13 +12,13 @@ class Gcc < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_i686/gcc-12.2-chromeos-i686.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_i686/gcc-12.2-chromeos-i686.tar.xz',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_x86_64/gcc-12.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
      armv7l: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
-       i686: 'b0aa419d91b7088400c7a365e3c416cbba5081413a624acf4f2e0c962cda7359',
+       i686: '80d91fa11b291a5e89f7f14a31149c96ebcb26ed2a34560a216d8f184ee788a6',
      x86_64: '01efdcdab6bebc32fd5608f6a061c7ceebd69e9f96084293a903f5af9c3576f3'
   })
 
@@ -34,6 +34,7 @@ class Gcc < Package
 
   no_env_options
   no_patchelf
+  no_zstd if ARCH == 'i686'
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
@@ -136,16 +137,17 @@ class Gcc < Package
     FileUtils.mkdir_p 'objdir/gcc/.deps'
 
     Dir.chdir('objdir') do
-      configure_env = {
-        NM: 'gcc-nm',
-          AR: 'gcc-ar',
-      RANLIB: 'gcc-ranlib',
-      CFLAGS: @cflags,
-    CXXFLAGS: @cxxflags,
-     LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
-LIBRARY_PATH: CREW_LIB_PREFIX,
-        PATH: @path
-      }.transform_keys(&:to_s)
+      configure_env =
+        {
+          LIBRARY_PATH: CREW_LIB_PREFIX,
+                    NM: 'gcc-nm',
+                    AR: 'gcc-ar',
+                RANLIB: 'gcc-ranlib',
+                CFLAGS: @cflags,
+              CXXFLAGS: @cxxflags,
+               LDFLAGS: "-L#{CREW_LIB_PREFIX}/lib -Wl,-rpath=#{CREW_LIB_PREFIX}",
+                  PATH: @path
+        }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
         ../configure #{CREW_OPTIONS} \
@@ -176,11 +178,12 @@ LIBRARY_PATH: CREW_LIB_PREFIX,
     gcc_dir = "gcc/#{gcc_arch}/#{@gcc_version}"
     gcc_libdir = "#{CREW_DEST_LIB_PREFIX}/#{gcc_dir}"
 
-    make_env = {
-      LIBRARY_PATH: CREW_LIB_PREFIX,
-        PATH: @path,
-     DESTDIR: CREW_DEST_DIR
-    }.transform_keys(&:to_s)
+    make_env =
+      {
+        LIBRARY_PATH: CREW_LIB_PREFIX,
+                PATH: @path,
+             DESTDIR: CREW_DEST_DIR
+      }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
       # gcc-libs install
