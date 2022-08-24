@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.6.2'
+  @_ver = '4.7.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_armv7l/gtk4-4.6.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_armv7l/gtk4-4.6.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_i686/gtk4-4.6.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.6.2_x86_64/gtk4-4.6.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_armv7l/gtk4-4.7.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_armv7l/gtk4-4.7.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_i686/gtk4-4.7.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_x86_64/gtk4-4.7.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7834ca5787a8b61b839724e52a5017202720dc088132ce8a4cf0a390b836e26a',
-     armv7l: '7834ca5787a8b61b839724e52a5017202720dc088132ce8a4cf0a390b836e26a',
-       i686: 'faea57d510593872a16349718ecbb8fd4304c23e7148bba8d13e6f8fa065d4e0',
-     x86_64: 'e13ab6fb21cc239a70a21d6101911673d0589512f40eec6438a03c876e51d85d'
+    aarch64: '44707b210266ff3b5cceefc12f9eabf1478a9e59502dcb14759b80a70b950a05',
+     armv7l: '44707b210266ff3b5cceefc12f9eabf1478a9e59502dcb14759b80a70b950a05',
+       i686: '712572f265f17b4df169a0f4a425d775596cf82325cba8b5c6038f52c007ff36',
+     x86_64: 'f9e4381b2451904fe970f10da3a072997f1f59a8af902cd4ac4ced1685bad122'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -82,8 +82,8 @@ class Gtk4 < Package
     # Don't rebuild packaged subprojects
     @deps = %w[cairo librsvg]
     @deps.each do |dep|
-      FileUtils.rm_rf "subprojects/#{dep}" 
-      FileUtils.rm_rf "subprojects/#{dep}.wrap" 
+      FileUtils.rm_rf "subprojects/#{dep}"
+      FileUtils.rm_rf "subprojects/#{dep}.wrap"
     end
   end
 
