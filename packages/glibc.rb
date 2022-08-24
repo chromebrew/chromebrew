@@ -606,10 +606,11 @@ class Glibc < Package
           end
         end
         # Reject entries which aren't libraries ending in .so, and which aren't files.
+        # Reject libc.so because it points to libc_nonshared.a, which isn't provided by ChromeOS
         Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
           if `file #{f} | grep "shared object"`
             g = File.basename(f)
-            FileUtils.ln_sf f.to_s, g.to_s
+            FileUtils.ln_sf f.to_s, g.to_s unless g == 'libc.so'
           end
         end
       end
