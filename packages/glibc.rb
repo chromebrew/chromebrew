@@ -598,7 +598,15 @@ class Glibc < Package
       puts "System glibc version is #{LIBC_VERSION}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       @libraries.each do |lib|
-        Dir.glob("/#{ARCH_LIB}/#{lib}*").each do |f|
+        # Reject entries which aren't libraries ending in .so, and which aren't files.
+        Dir.glob("/#{ARCH_LIB}/#{lib}.so*").reject { |f| File.directory?(f) }.each do |f|
+          if `file #{f} | grep "shared object"`
+            g = File.basename(f)
+            FileUtils.ln_sf f.to_s, g.to_s
+          end
+        end
+        # Reject entries which aren't libraries ending in .so, and which aren't files.
+        Dir.glob("/usr/#{ARCH_LIB}/#{lib}.so*").reject { |f| File.directory?(f) }.each do |f|
           if `file #{f} | grep "shared object"`
             g = File.basename(f)
             FileUtils.ln_sf f.to_s, g.to_s
