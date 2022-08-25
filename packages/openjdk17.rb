@@ -28,7 +28,7 @@ class Openjdk17 < Package
       majver = `java -version 2>&1 | head -1 | cut -d'"' -f2 | cut -d'.' -f1`.chomp
       majver = '17' if majver == '1'
       puts "Package jdk#{majver} already installed.".lightgreen
-      abort "Enter `crew remove jdk#{majver} && crew install openjdk8` to install this version."
+      abort "Enter `crew remove jdk#{majver} && crew install openjdk17` to install this version."
     end
   end
 
