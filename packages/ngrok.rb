@@ -3,14 +3,14 @@ require 'package'
 class Ngrok < Package
   description 'ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.'
   homepage 'https://ngrok.com/'
-  version '2.3.40'
+  version '3.0.7'
   license 'Copyright (c) 2015 by Alan Shreve' # Source code not available
   compatibility 'all'
   source_url({
-    aarch64: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-arm.tgz',
-     armv7l: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-arm.tgz',
-       i686: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-386.tgz',
-     x86_64: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-2.3.40-linux-amd64.tar.gz'
+    aarch64: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-3.0.7-linux-arm.tgz',
+     armv7l: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-3.0.7-linux-arm.tgz',
+       i686: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-3.0.7-linux-386.tgz',
+     x86_64: 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-3.0.7-linux-amd64.tar.gz'
   })
   source_sha256({
     aarch64: '8eea42d11453961c4c4bd74b5839f3c448f085c62e526eed16bc7db366591007',
