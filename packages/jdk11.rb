@@ -24,7 +24,7 @@ class Jdk11 < Package
       puts "\nOracle now requires an account to download the JDK.\n".orange
       puts 'You must login at https://login.oracle.com/mysso/signon.jsp and then visit:'.orange
       puts 'https://www.oracle.com/java/technologies/downloads/#java11'.orange
-      puts "\nDownload the JDK version version 11.0.16 for your architecture to #{HOME}/Downloads to continue.\n".orange
+      puts "\nDownload the JDK version #{version} for your architecture to #{HOME}/Downloads to continue.\n".orange
       abort
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read(jdk_bin)) == jdk_sha256
