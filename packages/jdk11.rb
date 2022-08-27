@@ -3,7 +3,7 @@ require 'package'
 class Jdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/javase-jdk11-downloads.html'
-  version '11.0.15.1'
+  version '11.0.16.1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
   source_url 'SKIP'
@@ -19,12 +19,12 @@ class Jdk11 < Package
 
   def self.install
     jdk_bin = "#{HOME}/Downloads/jdk-#{version}_linux-x64_bin.tar.gz"
-    jdk_sha256 = 'a40ad9342646ec14196deaf28c64f697fef4c698296f0e7d39b638f360780d27'
+    jdk_sha256 = 'da9297fa500517e82e575c88886ca2311018d86cf374177a8e12b8ea8c49e79e'
     unless File.exist? jdk_bin
       puts "\nOracle now requires an account to download the JDK.\n".orange
       puts 'You must login at https://login.oracle.com/mysso/signon.jsp and then visit:'.orange
       puts 'https://www.oracle.com/java/technologies/downloads/#java11'.orange
-      puts "\nDownload the JDK for your architecture to #{HOME}/Downloads to continue.\n".orange
+      puts "\nDownload the JDK version version 11.0.16 for your architecture to #{HOME}/Downloads to continue.\n".orange
       abort
     end
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read(jdk_bin)) == jdk_sha256
