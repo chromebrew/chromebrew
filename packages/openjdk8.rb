@@ -3,7 +3,7 @@ require 'package'
 class Openjdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '1.8.0_342'
+  version '1.8.0_342-1'
   license 'GPL-2'
   compatibility 'all'
   source_url({
@@ -23,21 +23,25 @@ class Openjdk8 < Package
   no_fhs
 
   def self.preflight
-    jdkver = `java -version 2>&1 | head -1 | cut -d'"' -f2`.chomp
+    jdkver = `java -version 2>&1`[/version "(.*?)"/, 1].to_s
     unless jdkver.empty? || jdkver.include?('No such file or directory') || jdkver.include?('not found')
-      majver = `java -version 2>&1 | head -1 | cut -d'"' -f2 | cut -d'.' -f1`.chomp
+      jdkname = `java -version 2>&1`[/(.*?)\s/, 1].to_s
+      jdkname = 'jdk' if jdkname == 'java'
+      majver = jdkver[/(\d+)\./, 1].to_s
       majver = '8' if majver == '1'
-      puts "Package jdk#{majver} already installed.".lightgreen
-      abort "Enter `crew remove jdk#{majver} && crew install openjdk8` to install this version."
+      unless jdkname == 'openjdk' && majver == '8'
+        puts "Package #{jdkname}#{majver} already installed.".lightgreen
+        abort "Enter `crew remove #{jdkname}#{majver} && crew install openjdk8` to install this version."
+      end
     end
   end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    FileUtils.cp_r 'bin/', CREW_DEST_PREFIX
-    FileUtils.cp_r 'include/', CREW_DEST_PREFIX
-    FileUtils.cp_r 'jre/', CREW_DEST_PREFIX
-    FileUtils.cp_r 'lib/', CREW_DEST_PREFIX
-    FileUtils.cp_r Dir['man/*'], CREW_DEST_MAN_PREFIX
+    FileUtils.mv 'bin/', CREW_DEST_PREFIX
+    FileUtils.mv 'include/', CREW_DEST_PREFIX
+    FileUtils.mv 'jre/', CREW_DEST_PREFIX
+    FileUtils.mv 'lib/', CREW_DEST_PREFIX
+    FileUtils.mv Dir['man/*'], CREW_DEST_MAN_PREFIX
   end
 end
