@@ -13,10 +13,16 @@ class Luajit_bitop < Package
   source_sha256 '1207c9293dcd52eb9dca6538d1b87352bd510f4e760938f5048433f7f272ce99'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_x86_64/luajit_bitop-1.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_armv7l/luajit_bitop-1.0.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_armv7l/luajit_bitop-1.0.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_i686/luajit_bitop-1.0.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_bitop/1.0.2_x86_64/luajit_bitop-1.0.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '1a28bc3fee7fe66bc29ac30f9a2d124e9955a5cd13d316a62aba5faa442969f8'
+    aarch64: '63df810db9bf29d11a124d7b7097c41602009a79be424ac1aa7bc435d0332eee',
+     armv7l: '63df810db9bf29d11a124d7b7097c41602009a79be424ac1aa7bc435d0332eee',
+       i686: '537c01093f1ae3389d732123af0dd75fe2e41d46bcaa2707afe1fc9dabc89526',
+     x86_64: '381bc79e24437a48a253e5227ab757775fcc18b36d591955a5b4d867e6b60bea'
   })
 
   depends_on 'luajit'
@@ -109,6 +115,9 @@ class Luajit_bitop < Package
     PATCH_EOF
     File.write('lua53.patch', @lua53patch)
     system 'patch -p 1 -i lua53.patch'
+    system "sed -i 's,LUA= lua,LUA= luajit,g' Makefile"
+    @lua_cflags = `pkg-config --cflags luajit`.chomp
+    system "sed -i 's,-I/usr/local/include,#{@lua_cflags},g' Makefile"
   end
 
   def self.build

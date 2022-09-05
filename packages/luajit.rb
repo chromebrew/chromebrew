@@ -7,6 +7,7 @@ class Luajit < Package
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/openresty/luajit2.git'
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-20220411_armv7l/luajit-2.1-20220411-chromeos-armv7l.tar.zst',
@@ -20,8 +21,6 @@ class Luajit < Package
        i686: '747299199b1011f83b77c0e142052811bb0f4736a1ec834062ff6f1c36338951',
      x86_64: 'ad76e59f1079539a74159d81563ed7d23f5e333661d63a46cc3f6508d8fd8c5e'
   })
-
-  git_hashtag "v#{version}"
 
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}"

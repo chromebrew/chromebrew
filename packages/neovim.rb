@@ -16,10 +16,10 @@ class Neovim < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/neovim/0.7.2_x86_64/neovim-0.7.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ad6d1e50831c384c0095da78f856c9e12e9afc7b19207a81a43f6fd77603cbdb',
-     armv7l: 'ad6d1e50831c384c0095da78f856c9e12e9afc7b19207a81a43f6fd77603cbdb',
-       i686: '65ee63d50c1a3be1ba44b16e688cec5189f2da3667322040521ca7b0f6a870c5',
-     x86_64: 'eca57df7d7ae7376b17d783edd4a1e3bc21ad567263acee44710f3e98c9d4e1b'
+    aarch64: 'e0667ab9931ffeac77dd85ebacdf6075a69dd5c13ff553826f0d028ffb6e69bd',
+     armv7l: 'e0667ab9931ffeac77dd85ebacdf6075a69dd5c13ff553826f0d028ffb6e69bd',
+       i686: 'fd140ef5fdfbb6a7253acadf7d43ff659c70e92edf4bc8c66029dea1533399db',
+     x86_64: '28c53fa96db6ad95782cb0c75f36e7ef2ae34e934d9ed5d10e73363487764b3f'
   })
 
   depends_on 'msgpack_c'
