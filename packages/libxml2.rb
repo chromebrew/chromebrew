@@ -36,7 +36,7 @@ class Libxml2 < Package
     # libxml2-python built in another package (py3_libxml2)
     system "./autogen.sh \
       #{CREW_OPTIONS} \
-      #{CREW_ENV_OPTIONS.gsub('-fuse-ld=mold', '-fuse-ld=gold')} \
+      #{CREW_ENV_OPTIONS} \
       --enable-shared \
       --enable-static \
       --with-pic \
