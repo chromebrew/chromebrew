@@ -25,9 +25,9 @@ class Msgpack_c < Package
      x86_64: 'c4ce44f936fa4f393446b3193aca6cf911d23fc95c409a5d02ba500afe36706c'
   })
 
-  depends_on 'cmake' => ':build'
-  depends_on 'doxygen' => ':build'
-  depends_on 'graphviz' => ':build'
+  depends_on 'cmake' => :build
+  depends_on 'doxygen' => :build
+  depends_on 'graphviz' => :build
 
   def self.patch
     system "sed -i 's,exec_prefix}/lib,exec_prefix}/#{ARCH_LIB},g' CMakeLists.txt"
