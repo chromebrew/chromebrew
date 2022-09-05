@@ -26,7 +26,7 @@ class Luajit_mpack < Package
   })
 
   depends_on 'libmpack'
-  depends_on 'luajit' => ':build'
+  depends_on 'luajit' => :build
 
   def self.build
     system "#{CREW_ENV_OPTIONS} make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} LUA=#{CREW_PREFIX}/bin/luajit USE_SYSTEM_LUA=yes LUA_INCLUDE=`pkg-config --cflags luajit`"
