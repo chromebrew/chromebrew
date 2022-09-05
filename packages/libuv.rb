@@ -3,24 +3,24 @@ require 'package'
 class Libuv < Package
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
   homepage 'https://libuv.org/'
-  @_ver = '1.42.0'
+  @_ver = '1.44.2'
   version @_ver
   license 'BSD, BSD-2, ISC and MIT'
   compatibility 'all'
   source_url "https://dist.libuv.org/dist/v#{@_ver}/libuv-v#{@_ver}.tar.gz"
-  source_sha256 '43129625155a8aed796ebe90b8d4c990a73985ec717de2b2d5d3a23cfe4deb72'
+  source_sha256 'ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_armv7l/libuv-1.42.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_armv7l/libuv-1.42.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_i686/libuv-1.42.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.42.0_x86_64/libuv-1.42.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.44.2_armv7l/libuv-1.44.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.44.2_armv7l/libuv-1.44.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.44.2_i686/libuv-1.44.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libuv/1.44.2_x86_64/libuv-1.44.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2d9e73560c0285b089bca9c16285a54d550427ed63beeccc67b8e342298af8b6',
-     armv7l: '2d9e73560c0285b089bca9c16285a54d550427ed63beeccc67b8e342298af8b6',
-       i686: 'f050af38e8f6a434b062126afc279c74f83b91f553cc631c9712fbc3275d0847',
-     x86_64: '2e7162ae796316fac9bb5f2fe1cbcb0e13f4da6d35d5b89cc2f7f402aa17fbfd'
+    aarch64: 'b323b1255d8f8bb03b218cf3c271b16f0e70e2e9d8d7eb350ad7a099785b3552',
+     armv7l: 'b323b1255d8f8bb03b218cf3c271b16f0e70e2e9d8d7eb350ad7a099785b3552',
+       i686: '7735507974c9e44dd4d92285e62de13917bd8fedaeb4ea3eede2880e25328e75',
+     x86_64: '5e2a57c818451af267468a254de305595c86003f1f9160fd13205282cc1ab400'
   })
 
   def self.build
@@ -35,9 +35,9 @@ class Libuv < Package
   end
 
   # udp_multicast_join and udp_multicast_join6 tests fail
-  # def self.check
-  #   system "samu -C builddir test"
-  # end
+  def self.check
+    system 'samu -C builddir test || true'
+  end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"

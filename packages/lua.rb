@@ -3,23 +3,23 @@ require 'package'
 class Lua < Package
   description 'Lua is a powerful, efficient, lightweight, embeddable scripting language.'
   homepage 'https://www.lua.org/'
-  version '5.4.3'
+  version '5.4.4'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.lua.org/ftp/lua-5.4.3.tar.gz'
-  source_sha256 'f8612276169e3bfcbcfb8f226195bfc6e466fe13042f1076cbde92b7ec96bbfb'
+  source_url 'https://www.lua.org/ftp/lua-5.4.4.tar.gz'
+  source_sha256 '164c7849653b80ae67bec4b7473b884bf5cc8d2dca05653475ec2ed27b9ebf61'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_armv7l/lua-5.4.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_armv7l/lua-5.4.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_i686/lua-5.4.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.3_x86_64/lua-5.4.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.4_armv7l/lua-5.4.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.4_armv7l/lua-5.4.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.4_i686/lua-5.4.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.4_x86_64/lua-5.4.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2cbf9670bd0a9388537d70d5559ff0505d31b6be36e85ccec0077ddb4f3fd3e3',
-     armv7l: '2cbf9670bd0a9388537d70d5559ff0505d31b6be36e85ccec0077ddb4f3fd3e3',
-       i686: '828d08293bb955aa2daa222fb6295a3c8f002c6ddd147d4d067129bed6b6e706',
-     x86_64: 'a1e7d87857e5ea2be3988975750e4af3cb881643bd751beb316b19f9305f5b88'
+    aarch64: 'dbf346d9ed69edd4e33914a98eae83badbdf2c6c3470b24118844d76154426bf',
+     armv7l: 'dbf346d9ed69edd4e33914a98eae83badbdf2c6c3470b24118844d76154426bf',
+       i686: 'a45a506c23fc52d59a6e888dddaffa9089668d080cc5d274963ecd634db3aa09',
+     x86_64: '88a629ca4d1efb18452ff8481bb1113e6d53115a713faebc508586a1f6f09b59'
   })
 
   def self.build
@@ -28,7 +28,8 @@ class Lua < Package
 
   def self.install
     system "make PREFIX=#{CREW_PREFIX} \
-            LIBDIR=#{CREW_LIB_PREFIX} \
+            INSTALL_LIB=#{CREW_DEST_LIB_PREFIX} \
+            INSTALL_MAN=#{CREW_DEST_MAN_PREFIX}/man1 \
             INSTALL_TOP=#{CREW_DEST_PREFIX} \
             install"
   end
