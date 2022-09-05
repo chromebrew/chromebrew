@@ -5599,6 +5599,11 @@ url: https://www.azul.com/downloads/?version=java-8-lts&os=linux&package=jdk
 activity: medium
 ---
 kind: url
+name: openjdk11
+url: https://www.azul.com/downloads/?version=java-11-lts&os=linux&package=jdk
+activity: medium
+---
+kind: url
 name: openjdk17
 url: https://www.azul.com/downloads/?version=java-17-lts&os=linux&package=jdk
 activity: medium
