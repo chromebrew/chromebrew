@@ -3879,6 +3879,11 @@ url: https://www.gnupg.org/ftp/gcrypt/libksba
 activity: none
 ---
 kind: url
+name: libluv
+url: https://github.com/luvit/luv/releases
+activity: low
+---
+kind: url
 name: libmad
 url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
@@ -3956,6 +3961,11 @@ activity: none
 kind: url
 name: libmp3lame
 url: https://sourceforge.net/projects/lame/files/lame/
+activity: low
+---
+kind: url
+name: libmpack
+url: https://github.com/libmpack/libmpack/tags
 activity: low
 ---
 kind: url
@@ -4344,6 +4354,11 @@ url: https://ftpmirror.gnu.org/libtasn1
 activity: none
 ---
 kind: url
+name: libtermkey
+url: http://www.leonerd.org.uk/code/libtermkey
+activity: none
+---
+kind: url
 name: libticables2
 url: https://sourceforge.net/projects/tilp/files/tilp2-linux/
 activity: none
@@ -4486,6 +4501,11 @@ activity: low
 kind: url
 name: libvpx
 url: https://github.com/webmproject/libvpx/releases
+activity: low
+---
+kind: url
+name: libvterm
+url: https://bazaar.launchpad.net/~libvterm/libvterm/trunk/changes
 activity: low
 ---
 kind: url
@@ -4832,6 +4852,21 @@ kind: url
 name: luajit
 url: https://luajit.org/download.html
 activity: none
+---
+kind: url
+namw: luajit_bitop
+url: https://bitop.luajit.org/download.html
+activity: none
+---
+kind: url
+name: luajit_lpeg
+url: http://www.inf.puc-rio.br/~roberto/lpeg
+activity: low
+---
+kind: url
+name: luajit_mpack
+url: https://github.com/libmpack/libmpack-lua/releases
+activity: low
 ---
 kind: url
 name: lv2
@@ -5182,6 +5217,11 @@ kind: url
 name: mpv
 url: https://github.com/mpv-player/mpv/releases
 activity: high
+---
+kind: url
+name: msgpack_c
+url: https://msgpack.org/
+activity: low
 ---
 kind: url
 name: msttcorefonts
