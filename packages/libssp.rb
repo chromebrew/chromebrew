@@ -3,23 +3,23 @@ require 'package'
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '12.1'
+  version '12.2'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-12.1.0/gcc-12.1.0.tar.xz'
-  source_sha256 '62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
+  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz'
+  source_sha256 'e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_armv7l/libssp-12.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_armv7l/libssp-12.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_i686/libssp-12.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.1_x86_64/libssp-12.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2_armv7l/libssp-12.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2_armv7l/libssp-12.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2_i686/libssp-12.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/12.2_x86_64/libssp-12.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '065f8dd669e4caef511f947239c045a2c95a3fecf445deb7d96eda51d3386aa0',
-     armv7l: '065f8dd669e4caef511f947239c045a2c95a3fecf445deb7d96eda51d3386aa0',
-       i686: '50e28f45d8f31bedc6b39696135e25e50200bf706ce6d63598ddfc60b5b764cb',
-     x86_64: '86846d918f1bfb80b414c3e0074aed9316930b924ea3e6e278d35c8d1b160081'
+    aarch64: '12e848c7b5dc490fc1d50de44af5f225791b3cb267aef211b8d5d3cf5402b177',
+     armv7l: '12e848c7b5dc490fc1d50de44af5f225791b3cb267aef211b8d5d3cf5402b177',
+       i686: '77ea4f910386890351fe165865a20befc0b341564a3af20b277e6b1009f0748b',
+     x86_64: 'cee79cece69c1b35aaa1551bb1e581d3b8c4176fc08aefdfe4fe1999fcf5f78b'
   })
 
   depends_on 'ccache' => :build
