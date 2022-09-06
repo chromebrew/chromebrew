@@ -3880,7 +3880,7 @@ activity: none
 ---
 kind: url
 name: libluv
-url: https://github.com/luvit/luv
+url: https://github.com/luvit/luv/releases
 activity: low
 ---
 kind: url
@@ -3965,7 +3965,7 @@ activity: low
 ---
 kind: url
 name: libmpack
-url: https://github.com/libmpack/libmpack
+url: https://github.com/libmpack/libmpack/tags
 activity: low
 ---
 kind: url
@@ -4356,7 +4356,7 @@ activity: none
 kind: url
 name: libtermkey
 url: http://www.leonerd.org.uk/code/libtermkey
-activity: low
+activity: none
 ---
 kind: url
 name: libticables2
@@ -4505,7 +4505,7 @@ activity: low
 ---
 kind: url
 name: libvterm
-url: https://www.leonerd.org.uk/code/libvterm/
+url: https://bazaar.launchpad.net/~libvterm/libvterm/trunk/changes
 activity: low
 ---
 kind: url
@@ -4855,8 +4855,8 @@ activity: none
 ---
 kind: url
 namw: luajit_bitop
-url: https://bitop.luajit.org/
-activity: low
+url: https://bitop.luajit.org/download.html
+activity: none
 ---
 kind: url
 name: luajit_lpeg
@@ -4865,7 +4865,7 @@ activity: low
 ---
 kind: url
 name: luajit_mpack
-url: https://github.com/libmpack/libmpack-lua
+url: https://github.com/libmpack/libmpack-lua/releases
 activity: low
 ---
 kind: url
