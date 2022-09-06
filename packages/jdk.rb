@@ -21,7 +21,7 @@ class Jdk < Package
     puts 'Select version:'
     puts ' 8 = JDK 8u333'
     if ARCH == 'x86_64'
-      puts '11 = JDK 11.0.15.1'
+      puts '11 = JDK 11.0.16.1'
       puts '17 = JDK 17.0.3.1'
       puts '18 = JDK 18.0.1.1'
     end
