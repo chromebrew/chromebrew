@@ -23,6 +23,8 @@ class Coreutils < Package
      x86_64: '905824619128baca70687e6d998debca143b8cac871e2874490dfff8d3c4e127'
   })
 
+  depends_on 'libcap' #R
+
   def self.build
     system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
     system 'make'
