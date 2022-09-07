@@ -20,15 +20,15 @@ class Glibc < Package
   # from the one ChromeOS ships with.
   # @libc_version = '2.33'
   if @libc_version == '2.23'.freeze
-    version '2.23-4'
+    version '2.23-5'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
     binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-3_i686/glibc-2.23-3-chromeos-i686.tar.xz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-5_i686/glibc-2.23-5-chromeos-i686.tar.zst'
     })
     binary_sha256({
-      i686: '3ee19cbb907eb219a2c1b02df6de1ca13b09b0d375101657d54a2485aacdc445'
+      i686: 'b45e064513cb415f6975b0bab14d130f75e17ac0940105e3ceb478b8c9d02a0e'
     })
   elsif @libc_version == '2.27'
     version '2.27-1'
@@ -488,7 +488,7 @@ class Glibc < Package
             "
         end
       end
-      system 'make -k'
+      system "make -k -j #{CREW_NPROC}"
       if @libc_version.to_f >= 2.32
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
@@ -555,13 +555,6 @@ class Glibc < Package
     FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/libnsl.so*")
     # Remove libmount.so since it conflicts with the one from util_linux.
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
-    # threads.h was introduced in glibc 2.28. This is a workaround for
-    # pre-M92 systems.
-    return unless @libc_version < '2.28'
-
-    system 'curl -Lf https://github.com/jtsiomb/c11threads/raw/19abeee43272002301ddece2f7d5df37394bb54f/c11threads.h -o threads.h'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('threads.h')) == 'c945fd352449174d3b6107c715b622206ebb81694ac23239637439d78e33ee5a'
-    FileUtils.cp 'threads.h', "#{CREW_DEST_PREFIX}/include/"
   end
 
   def self.check
