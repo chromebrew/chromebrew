@@ -3,24 +3,24 @@ require 'package'
 class Ccache < Package
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.samba.org/'
-  @_ver = '4.4.1'
+  @_ver = '4.6.3'
   version @_ver
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url "https://github.com/ccache/ccache/releases/download/v#{@_ver}/ccache-#{@_ver}.tar.xz"
-  source_sha256 'ebd6dfb5b15dfe39310e1f5834bafbe6ab526c71df8ad08a508e8a242bad8159'
+  source_sha256 '1e3a251bb112632553b8255a78661fe526c3a16598496d51128c32b218fd8b22'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_i686/ccache-4.4.1-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_armv7l/ccache-4.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_armv7l/ccache-4.4.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.4.1_x86_64/ccache-4.4.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_armv7l/ccache-4.6.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_armv7l/ccache-4.6.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_i686/ccache-4.6.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.6.3_x86_64/ccache-4.6.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '6a1585edc95b2aa73bea3c44aa8ac7a9c9a51f5b4ada9b082678aebd2a6f3aa8',
-    aarch64: '87280c39170a39a8eb1e0af251d464d99820db4d034f5fd262aa2e5d1ba5c08e',
-     armv7l: '87280c39170a39a8eb1e0af251d464d99820db4d034f5fd262aa2e5d1ba5c08e',
-     x86_64: 'ca97449d2ffb651915de4c0f1472e5f0db3dc2d85dd009b3c241ba67fc93febd'
+    aarch64: '81425bb2430cf6c88dd4b5a7cc391768ee340d388c290c66bad4e6bb8cdee6d9',
+     armv7l: '81425bb2430cf6c88dd4b5a7cc391768ee340d388c290c66bad4e6bb8cdee6d9',
+       i686: '7d80c4ca1cc5210219e55819b5a8c505c1b6c2ec1868b0c7f844c0ca158870ac',
+     x86_64: 'c1db0bb70b6af2544d4026200a93fdf40080b007a6324d75c06455aad2efaef8'
   })
 
   depends_on 'xdg_base'
@@ -36,7 +36,7 @@ class Ccache < Package
       -DZSTD_FROM_INTERNET=ON \
       -DHIREDIS_FROM_INTERNET=ON \
       .."
-      system 'ninja'
+      system 'mold -run ninja'
     end
   end
 
