@@ -37,6 +37,11 @@ class Bluefish < Package
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    @bluefish = <<~BLUEFISHEOF
+      alias bluefish="WAYLAND_DISPLAY=wayland-0 DISPLAY= GDK_BACKEND=wayland bluefish"
+    BLUEFISHEOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/bluefish", @bluefish)
   end
 
   def self.install
@@ -44,10 +49,6 @@ class Bluefish < Package
   end
 
   def self.postinstall
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "update-mime-database #{CREW_PREFIX}/share/mime".lightblue
-    puts "echo 'alias bluefish=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland bluefish\"' >> ~/.bashrc".lightblue
-    puts
+    system "update-mime-database #{CREW_PREFIX}/share/mime"
   end
 end

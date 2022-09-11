@@ -91,10 +91,10 @@ class Percona_server < Package
     puts 'stopmysql - stops mysqld'.lightblue
     puts
     puts 'To start mysqld on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/startmysql ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/startmysql' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/startmysql ]; then' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/startmysql' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts
     puts 'To completely remove MySQL and all databases, perform the following:'.lightblue
     puts 'crew remove percona_server'.lightblue

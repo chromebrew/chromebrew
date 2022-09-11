@@ -166,9 +166,9 @@ class Php80 < Package
     puts 'php8-fpm restart'.lightblue
     puts
     puts 'To start php-fpm on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php8-fpm ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/php8-fpm start' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php8-fpm ]; then' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/php8-fpm start' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
   end
 end

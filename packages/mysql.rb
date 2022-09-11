@@ -47,10 +47,10 @@ class Mysql < Package
     puts 'mysql.server stop'.lightblue
     puts
     puts 'To start mysqld on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/mysql.server ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/mysql.server start' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/mysql.server ]; then' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/mysql.server start' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts
     puts "Databases are stored in #{CREW_PREFIX}/mysql/data.".lightblue
     puts

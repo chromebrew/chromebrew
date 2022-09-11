@@ -28,11 +28,14 @@ class Composer < Package
                '1cdc74f74965908d0e98d00feeca37c23b86da51170a3a11a1538d89ff44d4dd', 'composer'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    @composer = <<~COMPOSEREOF
+      PATH=$HOME/.config/composer/vendor/bin:$PATH
+    COMPOSEREOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/composer", @composer)
   end
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/.config", "#{HOME}/.config"
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' >> ~/.bashrc && . ~/.bashrc\n".lightblue
   end
 end

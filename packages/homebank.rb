@@ -33,15 +33,13 @@ class Homebank < Package
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'
+    @homebank = <<~HOMEBANKEOF
+      alias homebank="WAYLAND_DISPLAY=wayland-0 DISPLAY= GDK_BACKEND=wayland homebank"
+    HOMEBANKEOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/homebank", @homebank)
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.postinstall
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "echo 'alias homebank=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland homebank\"' >> ~/.bashrc".lightblue
   end
 end

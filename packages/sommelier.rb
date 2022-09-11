@@ -305,10 +305,10 @@ class Sommelier < Package
   def self.postinstall
     # all tasks are done by sommelier.env now
     puts
-    puts 'Removing old sommelier env variable loading code in ~/.bashrc'.lightblue
-    system 'sed -i "/[sS]ommelier/d" -i.backup ~/.bashrc'
+    puts "Removing old sommelier env variable loading code in #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    system %(sed -i "/[sS]ommelier/d" -i.backup #{CREW_PREFIX}/etc/env.d/profile)
     puts 'To complete the installation, execute the following:'.orange
-    puts 'source ~/.bashrc'.orange
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".orange
 
     puts
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"

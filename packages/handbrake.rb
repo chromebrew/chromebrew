@@ -36,6 +36,10 @@ class Handbrake < Package
     Dir.chdir 'build' do
       system 'make'
     end
+    @handbrake = <<~HANDBRAKEEOF
+      alias ghb="WAYLAND_DISPLAY=wayland-0 DISPLAY= GDK_BACKEND=wayland ghb"
+    HANDBRAKEEOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/handbrake", @handbrake)
   end
 
   def self.install
@@ -49,9 +53,6 @@ class Handbrake < Package
     puts "To get started, type 'ghb'.".lightblue
     puts
     puts "Type 'HandBrakeCLI' for the command line.".lightblue
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "echo 'alias ghb=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland ghb\"' >> ~/.bashrc".lightblue
     puts
   end
 end

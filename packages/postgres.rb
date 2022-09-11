@@ -59,7 +59,7 @@ class Postgres < Package
     system "initdb -D #{PGDATA}" unless File.exist? "#{PGDATA}/PG_VERSION"
     puts
     puts 'To complete the installation, execute the following:'.lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts
     puts 'To start postgres: pg_ctl -l logfile start'.lightblue
     puts 'To stop postgres: pg_ctl stop'.lightblue
@@ -67,7 +67,7 @@ class Postgres < Package
     puts 'Connect to database: psql <dbname>'.lightblue
     puts
     puts "To configure, edit #{CREW_DEST_PREFIX}/etc/env.d/postgres".lightblue
-    puts "Remember to 'source ~/.bashrc' after changes".lightblue
+    puts "Remember to 'source #{CREW_PREFIX}/etc/env.d/profile' after changes".lightblue
     puts
   end
 

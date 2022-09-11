@@ -46,6 +46,17 @@ class Fish < Package
   end
 
   def self.postinstall
+    puts 'Installing Oh My Fish...'.lightgrey
+    system 'curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/v7/bin/install | fish'
+    puts 'Setting up profile...'.lightgrey
+    system 'omf install foreign-env'
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/fish/config.fish"
+    @fishconfig = <<~FISHCONFIGEOF
+      # Source variables written to #{CREW_PREFIX}/etc/env.d/profile
+      fenv source #{CREW_PREFIX}/etc/env.d/profile
+    FISHCONFIGEOF
+    File.write("#{CREW_DEST_HOME}/.config/fish/config.fish", @fishconfig)
+
     puts
     puts 'To run fish, type `fish` in your terminal.'.lightblue
     puts 'Even if you are already in fish, you should now start a new fish session.'.lightblue

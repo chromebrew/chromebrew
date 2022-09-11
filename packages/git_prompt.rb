@@ -32,7 +32,7 @@ class Git_prompt < Package
 
   def self.postinstall
     puts "\nTo finish the installation, execute the following:".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts "\ncd /path/to/git/repo and you should see the branch displayed in the prompt\n".lightblue
   end
 end

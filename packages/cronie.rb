@@ -30,34 +30,42 @@ class Cronie < Package
            '--without-selinux',
            '--without-pam'
     system 'make'
-    system "echo '#!/bin/bash' > startcrond"
-    system "echo 'CROND=#{CREW_PREFIX}/sbin/crond' >> startcrond"
-    system "echo 'CRON=\$(pidof \$CROND 2> /dev/null)' >> startcrond"
-    system "echo 'if [ -z \"\$CRON\" ]; then' >> startcrond"
-    system "echo '  sudo \$CROND' >> startcrond"
-    system "echo '  sleep 3' >> startcrond"
-    system "echo 'fi' >> startcrond"
-    system "echo 'CRON=\$(pidof \$CROND 2> /dev/null)' >> startcrond"
-    system "echo 'if [ ! -z \"\$CRON\" ]; then' >> startcrond"
-    system "echo '  echo \"crond process \$CRON is running\"' >> startcrond"
-    system "echo 'else' >> startcrond"
-    system "echo '  echo \"crond failed to start\"' >> startcrond"
-    system "echo '  exit 1' >> startcrond"
-    system "echo 'fi' >> startcrond"
-    system "echo '#!/bin/bash' > stopcrond"
-    system "echo 'CROND=#{CREW_PREFIX}/sbin/crond' >> stopcrond"
-    system "echo 'CRON=\$(pidof \$CROND 2> /dev/null)' >> stopcrond"
-    system "echo 'if [ ! -z \"\$CRON\" ]; then' >> stopcrond"
-    system "echo '  sudo killall \$CROND' >> stopcrond"
-    system "echo '  sleep 3' >> stopcrond"
-    system "echo 'fi' >> stopcrond"
-    system "echo 'CRON=\$(pidof \$CROND 2> /dev/null)' >> stopcrond"
-    system "echo 'if [ -z \"\$CRON\" ]; then' >> stopcrond"
-    system "echo '  echo \"crond process stopped\"' >> stopcrond"
-    system "echo 'else' >> stopcrond"
-    system "echo '  echo \"crond process \$CRON is running\"' >> stopcrond"
-    system "echo '  exit 1' >> stopcrond"
-    system "echo 'fi' >> stopcrond"
+    @startcrond = <<~STARTCRONDEOF
+      #!/bin/bash
+      XDG_RUNTIME_DIR=/var/run/chrome
+      BROADWAY_DISPLAY=:5
+      CROND=$CREW_PREFIX/sbin/crond
+      CRON=$(pidof $CROND 2> /dev/null)
+      if [ -z "$CRON" ]; then
+        sudo $CROND
+        sleep 3
+      fi
+      CRON=$(pidof $CROND 2> /dev/null)
+      if [ ! -z "$CRON" ]; then
+        echo "crond process $CRON is running"
+      else
+        echo "crond failed to start"
+        exit 1
+      fi
+    STARTCRONDEOF
+    File.write('startcrond', @startcrond)
+    @stopcrond = <<~STOPCRONDEOF
+      #!/bin/bash
+      CROND=$CREW_PREFIX/sbin/crond
+      CRON=$(pidof $CROND 2> /dev/null)
+      if [ ! -z "$CRON" ]; then
+        sudo killall $CROND
+        sleep 3
+      fi
+      CRON=$(pidof $CROND 2> /dev/null)
+      if [ -z "$CRON" ]; then
+        echo "crond process stopped"
+      else
+        echo "crond process $CRON is running"
+        exit 1
+      fi
+    STOPCRONDEOF
+    File.write('stopcrond', @stopcrond)
   end
 
   def self.install
@@ -83,11 +91,11 @@ class Cronie < Package
     puts 'sudo crontab -l'.lightblue
     puts
     puts 'To start the crond daemon at login, execute the following:'.lightblue
-    puts "echo '# start the crond daemon' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/startcrond ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/startcrond' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo '# start the crond daemon' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/startcrond ]; then' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/startcrond' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts
   end
 end

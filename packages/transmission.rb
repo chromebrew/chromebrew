@@ -101,11 +101,11 @@ class Transmission < Package
     puts 'To stop the daemon, execute `stoptransmission`'.lightblue
     puts
     puts 'To start the daemon on login, execute the following:'.lightblue
-    puts "echo '# Start the transmission daemon' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/starttransmission ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/starttransmission' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo '# Start the transmission daemon' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/starttransmission ]; then' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/starttransmission' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts
     puts 'Configuration files are stored in `~/.config/transmission-daemon`'.lightblue
     puts

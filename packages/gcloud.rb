@@ -52,7 +52,7 @@ class Gcloud < Package
   def self.postinstall
     puts
     puts 'To finish the installation, execute the following:'.lightblue
-    puts 'source ~/.bashrc && gcloud init'.lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile && gcloud init".lightblue
     puts
   end
 

@@ -75,11 +75,11 @@ class Rng_tools < Package
     puts 'stoprngd'.lightblue
     puts
     puts 'To start the rngd daemon at login, execute the following:'.lightblue
-    puts "echo '# start the rngd daemon' >> ~/.bashrc".lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/startrngd ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/startrngd' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo '# start the rngd daemon' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/startrngd ]; then' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo '  #{CREW_PREFIX}/bin/startrngd' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profile".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profile".lightblue
     puts
   end
 end

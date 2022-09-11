@@ -47,7 +47,7 @@ class Zoneinfo < Package
     # Do not run tzselect if shell is non-interactive.
     system('tty -s || tzselect ;;')
     puts
-    puts "Add `TZ='<timezone>'` to your ~/.bashrc file".lightblue
+    puts "Add `TZ='<timezone>'` to your #{CREW_PREFIX}/etc/env.d/profile file".lightblue
     puts 'Where <timezone> is the timezone displayed above'.lightblue
     puts 'e.g. `TZ=America/New_York` or `TZ=Etc/UTC`'.lightblue
     puts "This won't affect the timezone of non-chromebrew ChromeOS apps.".lightblue

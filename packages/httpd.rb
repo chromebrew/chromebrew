@@ -52,16 +52,15 @@ class Httpd < Package
     puts 'To start/stop httpd, execute the following:'.lightblue
     puts 'sudo apachectl start - starts httpd'.lightblue
     puts 'sudo apachectl stop - stops httpd'.lightblue
-    puts
     puts 'To start httpd on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/apachectl ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  sudo #{CREW_PREFIX}/bin/apachectl start' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "echo 'if [ -f #{CREW_PREFIX}/bin/apachectl ]; then' >> #{CREW_PREFIX}/etc/env.d/profil".lightblue
+    puts "echo '  sudo #{CREW_PREFIX}/bin/apachectl start' >> #{CREW_PREFIX}/etc/env.d/profil".lightblue
+    puts "echo 'fi' >> #{CREW_PREFIX}/etc/env.d/profil".lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/profil".lightblue
     puts
-    puts 'To completely remove httpd, perform the following:'.lightblue
-    puts 'crew remove httpd'.lightblue
-    puts "sudo rm -rf #{CREW_PREFIX}/share/httpd".lightblue
-    puts
+  end
+
+  def self.remove
+    FileUtils.rm_rf "#{CREW_PREFIX}/share/httpd".to_s
   end
 end

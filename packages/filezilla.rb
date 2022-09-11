@@ -43,15 +43,13 @@ class Filezilla < Package
     system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
       ./configure #{CREW_OPTIONS} --disable-maintainer-mode --with-pugixml=builtin"
     system 'make'
+    @filezilla = <<~FILEZILLAEOF
+      alias filezilla="WAYLAND_DISPLAY=wayland-0 DISPLAY= GDK_BACKEND=wayland filezilla"
+    FILEZILLAEOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/filezilla", @filezilla)
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.postinstall
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "echo 'alias filezilla=\"WAYLAND_DISPLAY=wayland-0 DISPLAY=\'\' GDK_BACKEND=wayland filezilla\"' >> ~/.bashrc".lightblue
   end
 end

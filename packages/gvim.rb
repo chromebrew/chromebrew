@@ -89,7 +89,7 @@ class Gvim < Package
     puts "The config files are located in #{CREW_PREFIX}/etc".lightblue
     puts 'User-specific configuration should go in ~/.gvimrc'.lightblue
     puts
-    puts 'If you are upgrading from an earlier version, edit ~/.bashrc'.orange
+    puts "If you are upgrading from an earlier version, edit #{CREW_PREFIX}/etc/env.d/profile".orange
     puts "and remove the 'export VIMRUNTIME' and 'export LC_ALL=C' lines.".orange
     puts
   end
