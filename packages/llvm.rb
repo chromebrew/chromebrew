@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '14.0.6'
+  @_ver = '15.0.0'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.6_armv7l/llvm-14.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.6_armv7l/llvm-14.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.6_i686/llvm-14.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/14.0.6_x86_64/llvm-14.0.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.0_armv7l/llvm-15.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.0_armv7l/llvm-15.0.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.0_i686/llvm-15.0.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.0_x86_64/llvm-15.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '90faee01cfe19379d6e09d141e2642a8d5a29e7533825f2d57599eaaabd30fb3',
-     armv7l: '90faee01cfe19379d6e09d141e2642a8d5a29e7533825f2d57599eaaabd30fb3',
-       i686: '6a643be6102560ff95170f24ea1eafadb607ca4018101aed1e9e4be5091d3063',
-     x86_64: '1ff95cc7c26cce77e05cf1be0009c3c6d175dab75e4715ee866d1a82561cc967'
+    aarch64: 'fae3064d56da5951024d004156ddf18bb83246718548cfa823575934f55ac783',
+     armv7l: 'fae3064d56da5951024d004156ddf18bb83246718548cfa823575934f55ac783',
+       i686: '843e7a8a433150f8b7f97d2b0181dbe03d9e0abcf5452a27cd19cb9ee50a5a29',
+     x86_64: '8aa50c9c5d900dfb848a4585a9c94a580ddf027b4f0a1005d53a5a197fd1fa24'
   })
 
   depends_on 'ocaml' => :build
@@ -60,7 +60,9 @@ class Llvm < Package
     # So as per https://github.com/openssl/openssl/issues/11305#issuecomment-602003528
     @ARCH_LDFLAGS = '-Wl,-znotext'
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly'.freeze
+    # lldb fails on i686 due to requirement for a kernel > 4.1.
+    # See https://github.com/llvm/llvm-project/issues/57594
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;libcxx;libcxxabi;libunwind;compiler-rt;lld;polly'.freeze
   when 'x86_64'
     # LLVM_TARGETS_TO_BUILD = 'X86;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
@@ -78,15 +80,6 @@ class Llvm < Package
   # This may be patched upstream as per
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
-
-  def self.patch
-    # This keeps system libraries from being linked in as dependencies on a build host image, such as in docker.
-    # Uncomment the rest of this section if you need to.
-    # system "sudo rm /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
-    # system "sudo rm /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
-    # system "sudo ln -s #{CREW_LIB_PREFIX}/libncurses.so.6 /lib#{CREW_LIB_SUFFIX}/libncurses.so.5 || true"
-    # system "sudo ln -s #{CREW_LIB_PREFIX}/libform.so /usr/lib#{CREW_LIB_SUFFIX}/libform.so || true"
-  end
 
   def self.build
     ############################################################
@@ -119,7 +112,7 @@ cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
 cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
 gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
-      system "env LLVM_IAS=1 PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
+      system "LLVM_IAS=1 PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
             cmake -G Ninja \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_BUILD_TYPE=Release \
@@ -161,7 +154,7 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev \
             ../llvm"
-      system 'samu'
+      system 'mold -run samu'
     end
   end
 
