@@ -3,25 +3,24 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '21.3.8-45b4a99'
+  @_ver = '21.3.9'
   version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_branch 'staging/21.3'
-  git_hashtag '45b4a998d6667612bef930c3b6587c4ddbe1e370'
+  git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_armv7l/mesa-21.3.8-45b4a99-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_armv7l/mesa-21.3.8-45b4a99-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_i686/mesa-21.3.8-45b4a99-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.8-45b4a99_x86_64/mesa-21.3.8-45b4a99-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9_armv7l/mesa-21.3.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9_armv7l/mesa-21.3.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9_i686/mesa-21.3.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9_x86_64/mesa-21.3.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '12d59efb30ebef576e8036a714c9fb66e0298ba8d6f7037ddef0e8de4df8a4ce',
-     armv7l: '12d59efb30ebef576e8036a714c9fb66e0298ba8d6f7037ddef0e8de4df8a4ce',
-       i686: '90ff721330de91ae7ed90f58540653660cbec342555e850991d33a04312cf5e5',
-     x86_64: '4e09a96f6cd381d9b7296877a4d1fd0f5640b1762cd24b30892e770efef3ac23'
+    aarch64: '82dc00e1a2ada502a8eb4a2e29298c74f0ff86a39b548dab770cf00664080b7e',
+     armv7l: '82dc00e1a2ada502a8eb4a2e29298c74f0ff86a39b548dab770cf00664080b7e',
+       i686: '181353683d09203978c391e84348b287788c9c30f18b11fa85c1b91ce186b994',
+     x86_64: 'fa0127418c2be0a32ba48518cdc7f3b042f659c6fd7904b81fad2eb1c78f51b1'
   })
 
   depends_on 'glslang' => :build
@@ -106,6 +105,159 @@ class Mesa < Package
     downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff',
                '1391e189f5ad40a711a6f72a7d59aef1b943ec9dc408852f5f562699bf50ba6c'
     system 'patch -Np1 -i 15381.diff'
+    # llvm 15 patch
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15091.diff',
+               'c53387c9fce1f34b6d7c0272ebef148dda59dea35fd83df2f3f4a0033732ebbd'
+    system 'patch -Np1 -i 15091.diff'
+    # another llvm 15 patch
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15232.diff',
+               'c66b6b03a59ad43a89bc7ab4e04f8c311631d27c3ea6769217c09beef707d6c3'
+    system 'patch -Np1 -i 15232.diff'
+    # another llvm 15 patch
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16129.diff',
+               '88e5d7f6b4e6dd4ac7220cf194aab6e86d748a8cb99a86515eb4c6bdf9b20959'
+    system 'patch -Np1 -i 16129.diff'
+    # another llvm 15 patch
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff',
+               '56725f4238d8bb60d813db1724e37bf149345ff456c0c2792f0982d237c18cf1'
+    system 'patch -Np1 -F 10  -i 16289.diff'
+    # another llvm 15 patch
+    downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff',
+               'b769f0eb2db0b71723f8ad6f20c03a166a54eab74bfd292cf5b9c8ea86d2c73b'
+    system 'patch -Np1 -i 17514.diff'
+    # another llvm 15 patch
+    # Refreshed patch from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17518.diff
+    @mesa_patch = <<~'PATCH_EOF'
+      diff -Npaur a/lp_bld_arit.c b/lp_bld_arit.c
+      --- a/src/gallium/auxiliary/gallivm/lp_bld_arit.c
+      +++ b/src/gallium/auxiliary/gallivm/lp_bld_arit.c
+      @@ -391,16 +391,10 @@ lp_build_comp(struct lp_build_context *b
+                return LLVMBuildNot(builder, a, "");
+          }
+       
+      -   if(LLVMIsConstant(a))
+      -      if (type.floating)
+      -          return LLVMConstFSub(bld->one, a);
+      -      else
+      -          return LLVMConstSub(bld->one, a);
+      +   if (type.floating)
+      +      return LLVMBuildFSub(builder, bld->one, a, "");
+          else
+      -      if (type.floating)
+      -         return LLVMBuildFSub(builder, bld->one, a, "");
+      -      else
+      -         return LLVMBuildSub(builder, bld->one, a, "");
+      +      return LLVMBuildSub(builder, bld->one, a, "");
+       }
+       
+       
+      @@ -479,16 +473,10 @@ lp_build_add(struct lp_build_context *bl
+             }
+          }
+       
+      -   if(LLVMIsConstant(a) && LLVMIsConstant(b))
+      -      if (type.floating)
+      -         res = LLVMConstFAdd(a, b);
+      -      else
+      -         res = LLVMConstAdd(a, b);
+      +   if (type.floating)
+      +      res = LLVMBuildFAdd(builder, a, b, "");
+          else
+      -      if (type.floating)
+      -         res = LLVMBuildFAdd(builder, a, b, "");
+      -      else
+      -         res = LLVMBuildAdd(builder, a, b, "");
+      +      res = LLVMBuildAdd(builder, a, b, "");
+       
+          /* clamp to ceiling of 1.0 */
+          if(bld->type.norm && (bld->type.floating || bld->type.fixed))
+      @@ -815,16 +803,10 @@ lp_build_sub(struct lp_build_context *bl
+             }
+          }
+       
+      -   if(LLVMIsConstant(a) && LLVMIsConstant(b))
+      -      if (type.floating)
+      -         res = LLVMConstFSub(a, b);
+      -      else
+      -         res = LLVMConstSub(a, b);
+      +   if (type.floating)
+      +      res = LLVMBuildFSub(builder, a, b, "");
+          else
+      -      if (type.floating)
+      -         res = LLVMBuildFSub(builder, a, b, "");
+      -      else
+      -         res = LLVMBuildSub(builder, a, b, "");
+      +      res = LLVMBuildSub(builder, a, b, "");
+       
+          if(bld->type.norm && (bld->type.floating || bld->type.fixed))
+             res = lp_build_max_simple(bld, res, bld->zero, GALLIVM_NAN_RETURN_OTHER_SECOND_NONNAN);
+      @@ -980,29 +962,15 @@ lp_build_mul(struct lp_build_context *bl
+          else
+             shift = NULL;
+       
+      -   if(LLVMIsConstant(a) && LLVMIsConstant(b)) {
+      -      if (type.floating)
+      -         res = LLVMConstFMul(a, b);
+      -      else
+      -         res = LLVMConstMul(a, b);
+      -      if(shift) {
+      -         if(type.sign)
+      -            res = LLVMConstAShr(res, shift);
+      -         else
+      -            res = LLVMConstLShr(res, shift);
+      -      }
+      -   }
+      -   else {
+      -      if (type.floating)
+      -         res = LLVMBuildFMul(builder, a, b, "");
+      +   if (type.floating)
+      +       res = LLVMBuildFMul(builder, a, b, "");
+      +    else
+      +       res = LLVMBuildMul(builder, a, b, "");
+      +    if (shift) {
+      +       if (type.sign)
+      +          res = LLVMBuildAShr(builder, res, shift, "");
+             else
+      -         res = LLVMBuildMul(builder, a, b, "");
+      -      if(shift) {
+      -         if(type.sign)
+      -            res = LLVMBuildAShr(builder, res, shift, "");
+      -         else
+      -            res = LLVMBuildLShr(builder, res, shift, "");
+      -      }
+      +          res = LLVMBuildLShr(builder, res, shift, "");
+          }
+       
+          return res;
+      @@ -1288,15 +1256,6 @@ lp_build_div(struct lp_build_context *bl
+          if(a == bld->undef || b == bld->undef)
+             return bld->undef;
+       
+      -   if(LLVMIsConstant(a) && LLVMIsConstant(b)) {
+      -      if (type.floating)
+      -         return LLVMConstFDiv(a, b);
+      -      else if (type.sign)
+      -         return LLVMConstSDiv(a, b);
+      -      else
+      -         return LLVMConstUDiv(a, b);
+      -   }
+      -
+          /* fast rcp is disabled (just uses div), so makes no sense to try that */
+          if(FALSE &&
+             ((util_get_cpu_caps()->has_sse && type.width == 32 && type.length == 4) ||
+      @@ -2643,7 +2602,7 @@ lp_build_rcp(struct lp_build_context *bl
+          assert(type.floating);
+       
+          if(LLVMIsConstant(a))
+      -      return LLVMConstFDiv(bld->one, a);
+      +      return LLVMBuildFDiv(builder, bld->one, a, "");
+       
+          /*
+           * We don't use RCPPS because:
+
+    PATCH_EOF
+    File.write('mesa.patch', @mesa_patch)
+    system 'patch -p1 -i mesa.patch'
   end
 
   def self.build
@@ -135,7 +287,7 @@ class Mesa < Package
     -Dglvnd=false \
      builddir"
     system 'meson configure builddir'
-    system 'samu -C builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
