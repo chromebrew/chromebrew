@@ -22,6 +22,7 @@ class Gcc < Package
      x86_64: '01efdcdab6bebc32fd5608f6a061c7ceebd69e9f96084293a903f5af9c3576f3'
   })
 
+  depends_on 'binutils'
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' => :build
