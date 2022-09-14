@@ -23,6 +23,8 @@ class Binutils < Package
      x86_64: '441b6efece778075bf55b36b70a42379d2bd3ae056bf8a6edef5ea6989cdc95d'
   })
 
+  depends_on 'flex'
+
   def self.prebuild
     FileUtils.rm_f "#{CREW_LIB_PREFIX}/libiberty.a"
   end
