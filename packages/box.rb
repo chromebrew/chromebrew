@@ -3,15 +3,17 @@ require 'package'
 class Box < Package
   description 'Fast, zero config application bundler with PHARs.'
   homepage 'https://github.com/box-project/box'
-  version '3.16.0'
+  version '4.0.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url "https://github.com/box-project/box/releases/download/#{version}/box.phar"
+  source_sha256 'ddb2ddb694ba07e5fcd0dc681e204f7a94844409a26f7b74bb1fe2748908fd9e'
 
   depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
+  no_compile_needed
+
   def self.install
-    downloader 'https://github.com/box-project/box/releases/download/3.16.0/box.phar', 'f508e28f309d7e95a319bdcd5f13dcfbb18eb91cb7a6cac9b69bc7799d78bdf9'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'box.phar', "#{CREW_DEST_PREFIX}/bin/box", mode: 0o755
   end
