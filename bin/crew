@@ -1550,11 +1550,9 @@ def remove(pkgName)
 
       # remove all directories installed by the package
       File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
-
         puts "Removing directory #{line}#{''.lightred}" if @opt_verbose
         Dir.rmdir line
       rescue StandardError => e # swallow exception
-
       end
 
       # remove the file and directory list
