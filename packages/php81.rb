@@ -3,24 +3,24 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.1.7'
+  @_ver = '8.1.10'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'f042322f1b5a9f7c2decb84b7086ef676896c2f7178739b9672afafa964ed0e5'
+  source_sha256 '90e7120c77ee83630e6ac928d23bc6396603d62d83a3cf5df8a450d2e3070162'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.7_armv7l/php81-8.1.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.7_armv7l/php81-8.1.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.7_i686/php81-8.1.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.7_x86_64/php81-8.1.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.10_armv7l/php81-8.1.10-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.10_armv7l/php81-8.1.10-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.10_i686/php81-8.1.10-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.10_x86_64/php81-8.1.10-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2433c51421eb5aba8236c44bcc0a27fb5f0abd71c5fccde53102988cd4abf861',
-     armv7l: '2433c51421eb5aba8236c44bcc0a27fb5f0abd71c5fccde53102988cd4abf861',
-       i686: 'c4ab58d9becc67ba41d78f99caccffd66195e2582389a84b2f020505b4aa726b',
-     x86_64: 'e4d134b62e06dcf8cff0429681e3daaad2b6c9823f7eb8bdbb9c19e7074afbb8'
+    aarch64: 'ab7c71307e1dfc474134d0f51ccbb3d8a1884b98ebadda8a56fbe70f1b485389',
+     armv7l: 'ab7c71307e1dfc474134d0f51ccbb3d8a1884b98ebadda8a56fbe70f1b485389',
+       i686: '11b01ca71c2ec6341294ea4380c9f037c9e4518238c5088e9021653f9c5f88a7',
+     x86_64: '76647b8209bf0947733c6c92215cae2712732302ffb51232b66b92e6a2f3e53f'
   })
 
   depends_on 'aspell_en'
@@ -41,6 +41,8 @@ class Php81 < Package
   depends_on 'unixodbc'
   depends_on 'oniguruma'
   depends_on 'py3_pygments'
+
+  no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -131,8 +133,6 @@ class Php81 < Package
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
