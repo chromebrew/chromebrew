@@ -21,7 +21,7 @@ $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
 
 DOC = <<~DOCOPT
   Chromebrew - Package manager for Chrome OS https://chromebrew.github.io
-  
+
   Usage:
     crew autoremove [options]
     crew build [options] [-k|--keep] <name> ...
@@ -40,7 +40,7 @@ DOC = <<~DOCOPT
     crew update [options] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
     crew whatprovides [options] <pattern> ...
-  
+
     -b --include-build-deps  Include build dependencies in output.
     -t --tree                Print dependencies in a tree-structure format.
     -c --color               Use colors even if standard out is not a tty.
@@ -52,7 +52,7 @@ DOC = <<~DOCOPT
     -v --verbose             Show extra information.
     -V --version             Display the crew version.
     -h --help                Show this screen.
-  
+
   version #{CREW_VERSION}
 DOCOPT
 
@@ -948,7 +948,7 @@ end
 
 def compress_doc(dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
@@ -964,7 +964,7 @@ def prepare_package(destdir)
     # readers. This file must not be included in packages other
     # than install-info.
     # https://www.debian.org/doc/debian-policy/ch-docs.html#info-documents
-    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/info/dir" 
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/info/dir"
 
     # Remove all perl module files which will conflict
     if @pkg.name =~ /^perl_/
@@ -1098,7 +1098,7 @@ end
 
 def strip_find_files(find_cmd, strip_option = '')
   # check whether crew should strip
-  return if CREW_NOT_STRIP || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
+  return if CREW_NOT_STRIP || @pkg.no_strip? || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
@@ -1106,7 +1106,7 @@ def strip_find_files(find_cmd, strip_option = '')
 end
 
 def strip_dir(dir)
-  unless CREW_NOT_STRIP || @pkg.no_compile_needed?
+  unless CREW_NOT_STRIP || @pkg.no_strip? || @pkg.no_compile_needed?
     Dir.chdir dir do
       # Strip libraries with -S
       puts 'Stripping libraries...'
@@ -1122,7 +1122,7 @@ def strip_dir(dir)
 end
 
 def shrink_dir(dir)
-  unless CREW_NOT_SHRINK_ARCHIVE
+  unless CREW_NOT_SHRINK_ARCHIVE || @pkg.no_shrink?
     Dir.chdir dir do
       if File.exist?("#{CREW_PREFIX}/bin/rdfind")
         puts 'Using rdfind to convert duplicate files to hard links.'
@@ -1187,7 +1187,7 @@ def shrink_dir(dir)
                   FileUtils.rm_f "#{execfile}-crewupxtmp"
                 end
               end
-              FileUtils.rm_f "#{execfile}-crewupxtmp" 
+              FileUtils.rm_f "#{execfile}-crewupxtmp"
             end
           end
           pool.shutdown
@@ -1550,11 +1550,11 @@ def remove(pkgName)
 
       # remove all directories installed by the package
       File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
-        
+
         puts "Removing directory #{line}#{''.lightred}" if @opt_verbose
         Dir.rmdir line
       rescue StandardError => e # swallow exception
-        
+
       end
 
       # remove the file and directory list
