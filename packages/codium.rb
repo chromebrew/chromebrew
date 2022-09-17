@@ -3,17 +3,17 @@ require 'package'
 class Codium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.71.0.22245'
+  version '1.71.2.22258'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 '89c48728c17538a439dac76b8988a083ebf9886f89e632a74b74329b5804181f'
+    source_sha256 'f45dcde88de5c0bc3dca84396b65a84f37e5d831bd909b00572b8c3986087fe3'
     @arch = 'arm'
   when 'x86_64'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 'a5867dce57995ffd396215044dbd87665b7e9b18e6e7a6e6ef50e6af06758b0e'
+    source_sha256 '5b6d3ad55e8e3f798618645888f506469af3a5824ed8c69bb72c6f1cc3d054aa'
     @arch = 'x64'
   end
 
@@ -44,10 +44,10 @@ class Codium < Package
   depends_on 'pango'
   depends_on 'sommelier'
 
+  no_fhs
+  no_shrink
+
   def self.install
-    ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/VSCodium-linux-#{@arch}"
@@ -55,10 +55,8 @@ class Codium < Package
   end
 
   def self.postinstall
-    puts
-    puts 'Congratulations! You have installed VSCodium on Chrome OS!'.lightgreen
-    puts 'Type \'codium\' to get started.'.lightgreen
-    puts 'Happy coding!'.lightgreen
-    puts
+    puts "\nCongratulations! You have installed VSCodium!".lightgreen
+    puts "Type 'codium' to get started.".lightgreen
+    puts "Happy coding!\n".lightgreen
   end
 end
