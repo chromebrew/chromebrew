@@ -23,6 +23,8 @@ class Gzip < Package
   })
 
   def self.patch
+    return unless ARCH == 'i686'
+
     # Patch from https://git.savannah.gnu.org/cgit/gnulib.git/diff/?id=84863a1c4dc8cca8fb0f6f670f67779cdd2d543b
     @gnulibpatch = <<~'PATCH_EOF'
       diff --git a/lib/string.in.h b/lib/string.in.h
@@ -49,7 +51,7 @@ class Gzip < Package
                          (char const *__s, size_t __n)
     PATCH_EOF
     File.write('gnulib.patch', @gnulibpatch)
-    system 'patch -p 1 -i gnulib.patch' if ARCH == 'i686'
+    system 'patch -p 1 -i gnulib.patch'
   end
 
   def self.build
