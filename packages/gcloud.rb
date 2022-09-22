@@ -3,19 +3,21 @@ require 'package'
 class Gcloud < Package
   description 'Command-line interface for Google Cloud Platform products and services'
   homepage 'https://cloud.google.com/sdk/gcloud/'
-  version '374.0.0'
+  version '402.0.0'
   license 'Apache-2.0'
   compatibility 'i686,x86_64'
   source_url({
-    i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz",
-    x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz"
+    x86_64: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86_64.tar.gz",
+      i686: "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-#{version}-linux-x86.tar.gz"
   })
   source_sha256({
-    i686: '4fdd248b2235a82e829a7929822d15a94b8a652ecf9b231a4f7061bb98c9bbd6',
-    x86_64: 'ceaa3eb7147ed061280e30322f7c78f61749b953c9450a2df2035a145f016b7e'
+    x86_64: 'cc1da7f6774621ffbbe10a0a4fa51e42c4cddef2868d78830fd4f7d43a9d2e7a',
+      i686: '21a7da6cad5885390a1a878451aabba3b1d3a2d72688e9052ecac69020922344'
   })
 
   depends_on 'xdg_base'
+
+  no_shrink
 
   def self.build
     @gcloudenv = <<~EOF
@@ -29,8 +31,6 @@ class Gcloud < Package
   end
 
   def self.install
-    ENV['CREW_NOT_SHRINK_ARCHIVE'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gcloud"
     FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/gcloud"
@@ -50,10 +50,8 @@ class Gcloud < Package
   end
 
   def self.postinstall
-    puts
-    puts 'To finish the installation, execute the following:'.lightblue
-    puts 'source ~/.bashrc && gcloud init'.lightblue
-    puts
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts "source ~/.bashrc && gcloud init\n".lightblue
   end
 
   def self.remove

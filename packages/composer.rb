@@ -3,10 +3,11 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.4.0'
+  version '2.4.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url "https://github.com/composer/composer/releases/download/#{version}/composer.phar"
+  source_sha256 'ea8cf6308ec76ff9645c3818841a7588096b9dc2767345fbd4bd492dd8a6dca6'
 
   depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
@@ -24,15 +25,15 @@ class Composer < Package
   end
 
   def self.install
-    downloader "https://github.com/composer/composer/releases/download/#{version}/composer.phar",
-               '1cdc74f74965908d0e98d00feeca37c23b86da51170a3a11a1538d89ff44d4dd', 'composer'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.install 'composer', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    FileUtils.install 'composer.phar', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
+    system "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' > #{CREW_DEST_PREFIX}/etc/env.d/composer"
   end
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/.config", "#{HOME}/.config"
     puts "\nTo finish the installation, execute the following:".lightblue
-    puts "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' >> ~/.bashrc && . ~/.bashrc\n".lightblue
+    puts "source ~/.bashrc\n".lightblue
   end
 end

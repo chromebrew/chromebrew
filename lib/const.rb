@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.25.3'
+CREW_VERSION = '1.25.4'
 
 ARCH_ACTUAL = `uname -m`.chomp
 # This helps with virtualized builds on aarch64 machines
@@ -50,7 +50,7 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                    File.join(ENV.fetch('CREW_CACHE_DIR', nil), '')
                  end
 
-FileUtils.mkdir_p CREW_CACHE_DIR 
+FileUtils.mkdir_p CREW_CACHE_DIR
 
 # Set CREW_NPROC from environment variable or `nproc`
 CREW_NPROC = ENV['CREW_NPROC'].to_s.empty? ? `nproc`.chomp : ENV.fetch('CREW_NPROC', nil)
@@ -61,9 +61,9 @@ CREW_CONFLICTS_ONLY_ADVISORY = !ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? 
 CREW_DISABLE_ENV_OPTIONS = !ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? # or use no_env_options
 CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? # or use no_fhs
 CREW_LA_RENAME_ENABLED = !ENV['CREW_LA_RENAME_ENABLED'].to_s.empty?
-CREW_NOT_COMPRESS = !ENV['CREW_NOT_COMPRESS'].to_s.empty?
-CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty?
-CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty?
+CREW_NOT_COMPRESS = !ENV['CREW_NOT_COMPRESS'].to_s.empty? # or use no_compress
+CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
+CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
 # Set testing constants from environment variables
 CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
