@@ -3,11 +3,11 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '5.59.0'
+  version '5.60.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   source_url "https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 'ea29bc387d49f98956099e5e78925b5e89103ece906c8cd82289c6cbdbdb5af1'
+  source_sha256 '7ca6c1ac0a216ff5fba5e8567cfdc55707ead06ada9ddd8795f39ae9113667ac'
 
   no_compile_needed
 
@@ -16,7 +16,12 @@ class Signal_desktop < Package
   depends_on 'sommelier'
 
   def self.patch
-    system "sed -i 's,/opt,#{CREW_PREFIX}/share,' usr/share/applications/signal-desktop.desktop"
+    Dir.chdir 'usr/share/applications' do
+      system "sed -i 's,/opt,#{CREW_PREFIX}/share,' signal-desktop.desktop"
+      # See https://github.com/signalapp/Signal-Desktop/issues/6122.
+      system "sed -i 's,StartupWMClass=Signal,StartupWMClass=signal,' signal-desktop.desktop"
+      system "sed -i 's,%U,--enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --use-tray-icon %U,' signal-desktop.desktop"
+    end
   end
 
   def self.install
