@@ -3,7 +3,7 @@ require 'package'
 class Gobject_introspection < Package
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  @_ver = '1.73.0'
+  @_ver = '1.74.0'
   version @_ver.to_s
   license 'LGPL-2+ and GPL-2+'
   compatibility 'all'
@@ -11,25 +11,26 @@ class Gobject_introspection < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_armv7l/gobject_introspection-1.73.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_armv7l/gobject_introspection-1.73.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_i686/gobject_introspection-1.73.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.73.0_x86_64/gobject_introspection-1.73.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.74.0_armv7l/gobject_introspection-1.74.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.74.0_armv7l/gobject_introspection-1.74.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.74.0_i686/gobject_introspection-1.74.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.74.0_x86_64/gobject_introspection-1.74.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7314c1f2b339c804ae2a2f6d6796bdc0e7dcc100ef6996e0da1f1543dc95c008',
-     armv7l: '7314c1f2b339c804ae2a2f6d6796bdc0e7dcc100ef6996e0da1f1543dc95c008',
-       i686: '51d59a3021eebc098d69cbff7e895743bf66c0f04b180fa78af3273e418b8249',
-     x86_64: '8ae83a1eee02a8f95c6d95be86ac44420eb4008a03df1bcce3fd13677d103cda'
+    aarch64: 'e73d05327bde784c6ce36fd07fb25add2add359d536a41d33b5f5c3ec7e10ef2',
+     armv7l: 'e73d05327bde784c6ce36fd07fb25add2add359d536a41d33b5f5c3ec7e10ef2',
+       i686: '65c36e3f95172f94640649a086862d596addaae078dc1f870b1f4f234fc23b99',
+     x86_64: '93f359dc31635cc0516f50595f2f33304d80d01e7d1d118708e4eced734cea3c'
   })
 
   depends_on 'glib'
+  gnome
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
