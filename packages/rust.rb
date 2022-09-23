@@ -10,10 +10,10 @@ class Rust < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/rust-1.64.0-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/rust-1.64.0-chromeos-armv7l.tar.zst',
-       i686: 'file:///usr/local/tmp/packages/rust-1.64.0-chromeos-i686.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/rust-1.64.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_armv7l/rust-1.64.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_armv7l/rust-1.64.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_i686/rust-1.64.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_x86_64/rust-1.64.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '9fc0e726a145c57fccfd627d24d70c6afb774c2e5dd6e1fd0fd5dddea1a99469',
