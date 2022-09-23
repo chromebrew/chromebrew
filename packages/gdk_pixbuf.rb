@@ -4,23 +4,23 @@ class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
   @_ver = '2.42.9'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-1_armv7l/gdk_pixbuf-2.42.9-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-1_armv7l/gdk_pixbuf-2.42.9-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-1_i686/gdk_pixbuf-2.42.9-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-1_x86_64/gdk_pixbuf-2.42.9-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_armv7l/gdk_pixbuf-2.42.9-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_armv7l/gdk_pixbuf-2.42.9-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_i686/gdk_pixbuf-2.42.9-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_x86_64/gdk_pixbuf-2.42.9-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e52abe3bc1922618fda217215f5defef83f40b6cbe21737f50ed653ee9001d4a',
-     armv7l: 'e52abe3bc1922618fda217215f5defef83f40b6cbe21737f50ed653ee9001d4a',
-       i686: '47693eb2d34477b97ccb6cd29ab50890dcb383d19bd30b4ac60a606a0ddc77d2',
-     x86_64: '72f1a9e8c7f3e3c44aed7b21a07ad7f200207c1f0c759be2622e999c92b4b1df'
+    aarch64: '9055926dd77a47b1dfc264e23665e4fa973624b6b166591f54ea818eaf2d4917',
+     armv7l: '9055926dd77a47b1dfc264e23665e4fa973624b6b166591f54ea818eaf2d4917',
+       i686: '1de48090fccb65b72dfa0ed824d6f32868c84f9aee87b904d79a4245538813df',
+     x86_64: 'd8b9c259f0ce2d03f8951ce237bf3057b2ccf141d66a35cb71778f9570001546'
   })
 
   depends_on 'glib' # R
@@ -37,6 +37,7 @@ class Gdk_pixbuf < Package
   depends_on 'py3_six' => :build
   depends_on 'py3_toml' => :build
   depends_on 'py3_typogrify' => :build
+  gnome
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
@@ -47,7 +48,7 @@ class Gdk_pixbuf < Package
       -Dgtk_doc=false \
       -Dman=true \
       builddir"
-    system 'samu -C builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
