@@ -3,7 +3,7 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.20.0'
+  @_ver = '1.20.3'
   version @_ver
   license 'LGPL-2+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Gstreamer < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.0_armv7l/gstreamer-1.20.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.0_armv7l/gstreamer-1.20.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.0_i686/gstreamer-1.20.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.0_x86_64/gstreamer-1.20.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3_armv7l/gstreamer-1.20.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3_armv7l/gstreamer-1.20.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3_i686/gstreamer-1.20.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3_x86_64/gstreamer-1.20.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9a4806b7ec63fefdc4b5b6383b7b6be98b3b0099fb98cced7ba9e17243955583',
-     armv7l: '9a4806b7ec63fefdc4b5b6383b7b6be98b3b0099fb98cced7ba9e17243955583',
-       i686: '8cb9f9a360d5da37127c0117c413e85726f9479504919432f166527cea935d3b',
-     x86_64: '3fa6ddf28c4fd03777040377d482f224261b859b176fe2a803dc7433edd6dab0'
+    aarch64: 'a2c884c6f7db53d0a56d0483e10026181d0a8fdd6e1fcd9aa03ab03dca95b28a',
+     armv7l: 'a2c884c6f7db53d0a56d0483e10026181d0a8fdd6e1fcd9aa03ab03dca95b28a',
+       i686: '98748c1022ef0945d4b270975cd4ad42c12754d83beacbae8e6badd041d60e37',
+     x86_64: 'ed5e8eb2d867cb0426ee2d8d9d54ad3cfd7dcc832dedae0845833f2b68fb5cfe'
   })
 
   depends_on 'elfutils'
@@ -42,7 +42,7 @@ class Gstreamer < Package
     -Dtests=disabled #{@plugins}\
     builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
