@@ -117,4 +117,8 @@ class Graphviz < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
+
+  def self.postinstall
+    system "dot -c"
+  end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Gtksourceview_5 < Package
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  @_ver = '5.2.0'
+  @_ver = '5.6.1'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Gtksourceview_5 < Package
   git_hashtag @_ver
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.0.0_i686/gtksourceview_5-5.0.0-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.2.0_armv7l/gtksourceview_5-5.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.2.0_armv7l/gtksourceview_5-5.2.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.2.0_x86_64/gtksourceview_5-5.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_armv7l/gtksourceview_5-5.6.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_armv7l/gtksourceview_5-5.6.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_i686/gtksourceview_5-5.6.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_x86_64/gtksourceview_5-5.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'd27b36e8275ba473c3758ae708eebd1aa80a34a346db5a44593d196f9f2f96a7',
-    aarch64: '96884f9ce28885b53432644059de5acc5bc251b7f6a8d6d5c27d1a1df32c18d8',
-     armv7l: '96884f9ce28885b53432644059de5acc5bc251b7f6a8d6d5c27d1a1df32c18d8',
-     x86_64: '00986e7083640e3771e854efcbeb3ae5f3fbd3393743722ddd417b4604bf25af'
+    aarch64: '0f8d59796235811fe0293bc1b812a4bb65a717c4ba05a6accd7cd850d1b55208',
+     armv7l: '0f8d59796235811fe0293bc1b812a4bb65a717c4ba05a6accd7cd850d1b55208',
+       i686: '3a73f4077faa01955a55027b4161def3775b7e3eeb8e11b79fa33d44be8f8b1e',
+     x86_64: '025bfd8d5b98858324e8590e0f3fb813b5f7464e63bfe2e346f9925fe153ef69'
   })
 
   depends_on 'atk'
@@ -37,6 +37,7 @@ class Gtksourceview_5 < Package
   depends_on 'libsoup'
   depends_on 'pango'
   depends_on 'vala'
+  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
 
   def self.patch
@@ -48,10 +49,10 @@ class Gtksourceview_5 < Package
     -Db_asneeded=false \
     builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
