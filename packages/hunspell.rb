@@ -23,7 +23,7 @@ class Hunspell < Package
         puts '2 = Français'
         puts '3 = Español'
         puts '0 = Cancel'
-        $stdin.gets.chomp
+        $stdin.getc.chomp.to_i
       end
     rescue Timeout::Error
       @user_input = 1
