@@ -1,4 +1,5 @@
 require 'package'
+require 'timeout'
 
 class Hunspell < Package
   description 'Hunspell is a spell checker and morphological analyzer library'
@@ -12,27 +13,24 @@ class Hunspell < Package
   is_fake
 
   if ARGV[0] == 'install'
-    puts
-    puts 'Enter your preferred language:'
-    puts '1 = American English'
-    puts '2 = Français'
-    puts '3 = Español'
-    puts '0 = Cancel'
-
-    while version = $stdin.gets.chomp
-      case version
-      when '1'
-        depends_on 'hunspell_en_us'
-        break
-      when '2'
-        depends_on 'hunspell_fr_fr'
-        break
-      when '3'
-        depends_on 'hunspell_es_any'
-        break
-      when '0'
-        abort
+    begin
+      @timeout = 10
+      @user_input = Timeout.timeout(@timeout) do
+        puts
+        puts 'Enter your preferred language:'
+        puts "(The default, American English, will be selected in #{@timeout} seconds if there is no input.)"
+        puts '1 = American English'
+        puts '2 = Français'
+        puts '3 = Español'
+        puts '0 = Cancel'
+        $stdin.gets.chomp
       end
+    rescue Timeout::Error
+      @user_input = 1
     end
+    depends_on 'hunspell_en_us' if @user_input == 1
+    depends_on 'hunspell_fr_fr' if @user_input == 2
+    depends_on 'hunspell_es_any' if @user_input == 3
+    abort if @user_input == 0
   end
 end
