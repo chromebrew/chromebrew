@@ -31,6 +31,6 @@ class Hunspell < Package
     depends_on 'hunspell_en_us' if @user_input == 1
     depends_on 'hunspell_fr_fr' if @user_input == 2
     depends_on 'hunspell_es_any' if @user_input == 3
-    abort if @user_input == 0
+    abort if @user_input.zero?
   end
 end
