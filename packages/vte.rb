@@ -3,7 +3,7 @@ require 'package'
 class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  @_ver = '0.69.92'
+  @_ver = '0.70.0'
   version @_ver
   license 'LGPL-2+ and GPL-3+'
   compatibility 'all'
@@ -11,21 +11,22 @@ class Vte < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.69.92_armv7l/vte-0.69.92-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.69.92_armv7l/vte-0.69.92-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.69.92_i686/vte-0.69.92-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.69.92_x86_64/vte-0.69.92-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0_armv7l/vte-0.70.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0_armv7l/vte-0.70.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0_i686/vte-0.70.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0_x86_64/vte-0.70.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c7b015afc564f5ca0f50328ca1ae8f1e27bbc8d9f5d389feb783f9d36986e9d7',
-     armv7l: 'c7b015afc564f5ca0f50328ca1ae8f1e27bbc8d9f5d389feb783f9d36986e9d7',
-       i686: '9f6840aeb382b7bfcdf089f2f50aa3edfe9993c6c657bc6e9c87b9256f0d27f8',
-     x86_64: 'e3958e79e715ca4b03fbb25c03bb728db4c0c7f92e97b57dba62410c18979546'
+    aarch64: 'aebd8b58c96ce5d224d9a6933d70de94ee62efdd25c9a4862f9f8915431ca930',
+     armv7l: 'aebd8b58c96ce5d224d9a6933d70de94ee62efdd25c9a4862f9f8915431ca930',
+       i686: '1a6eae251fb5ee84951c448ff8d4b6f2c73f209b70077f1b4cfb07997c4c69be',
+     x86_64: 'e75b91643a5550d62f5f3437416d4c8f6702c9b4bbb4276eeee355c1c8b4055d'
   })
 
   depends_on 'gobject_introspection' => :build
   depends_on 'fribidi'
   depends_on 'gtk3'
+  gnome
 
   def self.build
     system <<~CONFIGURE
