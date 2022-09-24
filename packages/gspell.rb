@@ -3,21 +3,23 @@ require 'package'
 class Gspell < Package
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version '1.9.1-2'
+  version '1.11.1'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gspell/1.9/gspell-1.9.1.tar.xz'
-  source_sha256 'dcbb769dfdde8e3c0a8ed3102ce7e661abbf7ddf85df08b29915e92cd723abdd'
+  source_url 'https://download.gnome.org/sources/gspell/1.11/gspell-1.11.1.tar.xz'
+  source_sha256 'ef6aa4e3f711775158a7e241a5f809cf2426bc0e02c23a7d2b5c71fc3de00292'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-2_armv7l/gspell-1.9.1-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-2_armv7l/gspell-1.9.1-2-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.9.1-2_x86_64/gspell-1.9.1-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.11.1_armv7l/gspell-1.11.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.11.1_armv7l/gspell-1.11.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.11.1_i686/gspell-1.11.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.11.1_x86_64/gspell-1.11.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b3d710b9a07b831b1d7b771bd563367e5ebf40adb880238824c4a906ba3118bb',
-     armv7l: 'b3d710b9a07b831b1d7b771bd563367e5ebf40adb880238824c4a906ba3118bb',
-     x86_64: 'e5f3df2f932455279ab3cd4ac3828684644524e39e4a53c6b54de62c30e2ad2b'
+    aarch64: '999fe1c06d6e8e31c81b2ee2888ff8bafe16f7d53788ca89e392eea3e603265a',
+     armv7l: '999fe1c06d6e8e31c81b2ee2888ff8bafe16f7d53788ca89e392eea3e603265a',
+       i686: 'cdc82e95dc15437ace47c4a5c0495faf42b509fab2c9c3d8b69ba2f6903dafc0',
+     x86_64: '02635107c3109e0cf091272c9e1acf7b98ea1640a90e711c0d52561e0d75cae5'
   })
 
   depends_on 'gtk3'
