@@ -119,6 +119,7 @@ class Graphviz < Package
   end
 
   def self.postinstall
+    # Without this, builds of rest fail.
     system "dot -c"
   end
 end
