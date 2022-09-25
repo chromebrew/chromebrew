@@ -12,8 +12,8 @@ class Firefox < Package
       i686: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
   })
   source_sha256({
-    x86_64: '3d0f6e629d42abb9b8b976456b6fb754a0bc5981ac33c2c46f0cd05abab5b16d',
-      i686: '189473f2e83aff5a6f07a51dfbbf9ffac26fb4e2e632a980e13b4309275a9290'
+    x86_64: '99d277ca46e0f6f79a8b7f7b77d05a0f4d2aa63b6c582ff6f248984d87fb2c4b',
+      i686: '69d823ec54825b1965280c454dbc7a63757080a4e5de72c6e567e72531ed895b'
   })
 
   no_compile_needed
