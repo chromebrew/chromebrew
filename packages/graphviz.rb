@@ -120,6 +120,6 @@ class Graphviz < Package
 
   def self.postinstall
     # Without this, builds of rest fail.
-    system "dot -c"
+    system 'dot -c'
   end
 end

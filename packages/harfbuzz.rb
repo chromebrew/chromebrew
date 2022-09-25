@@ -101,9 +101,7 @@ class Harfbuzz < Package
       conflicts.each do |conflict|
         conflict.each do |thisconflict|
           singleconflict = thisconflict.split(':', -1)
-          if @override_allowed.include?(singleconflict[0])
-            system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
-          end
+          system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
         end
       end
     end
