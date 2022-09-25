@@ -24,9 +24,9 @@ class Hunspell < Package
 
     EOT
 
-    if STDIN.isatty # check if stdin is a terminal
+    if $stdin.isatty # check if stdin is a terminal
       @stdin_thread = Thread.new do
-        @user_input = STDIN.getc.to_i
+        @user_input = $stdin.getc.to_i
 
         Thread.kill(@countdown_thread) # stop countdown when user input
       end
