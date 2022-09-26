@@ -14,10 +14,10 @@ class Hunspell < Package
 
     puts <<~EOT
 
-        1 = American English (default)
-        2 = Français
-        3 = Español
-        0 = Cancel
+      1 = American English (default)
+      2 = Français
+      3 = Español
+      0 = Cancel
 
     EOT
 
@@ -59,3 +59,5 @@ class Hunspell < Package
       warn "\nSelected 'American English' by default.".yellow
       depends_on 'hunspell_en_us'
     end
+  end
+end
