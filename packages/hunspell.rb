@@ -14,10 +14,7 @@ class Hunspell < Package
 
     puts <<~EOT
 
-      Enter your preferred language:
-      (The default, American English, will be selected if there is no input.)
-
-        1 = American English
+        1 = American English (default)
         2 = Français
         3 = Español
         0 = Cancel
@@ -26,7 +23,8 @@ class Hunspell < Package
 
     if $stdin.isatty # check if stdin is a terminal
       @stdin_thread = Thread.new do
-        @user_input = $stdin.getc.to_i
+        @user_input = $stdin.getc
+        @user_input = 1 if @user_input == "\n"
 
         Thread.kill(@countdown_thread) # stop countdown when user input
       end
@@ -34,7 +32,7 @@ class Hunspell < Package
       @countdown_thread = Thread.new do
         (0..@timeout).each do |i|
           remaining_time = @timeout - i
-          print "\r#{remaining_time} second(s) left: "
+          print "\rDefault selected in #{remaining_time} second(s).  Enter your preferred language [1 = American English]: "
 
           if remaining_time.zero?
             Thread.kill(@stdin_thread) # stop reading from terminal if timeout
@@ -49,17 +47,15 @@ class Hunspell < Package
     end
 
     case @user_input
-    when 0
+    when '0'
       abort "\nCancelled.".lightred
-    when 1
+    when '1'
       depends_on 'hunspell_en_us'
-    when 2
+    when '2'
       depends_on 'hunspell_fr_fr'
-    when 3
+    when '3'
       depends_on 'hunspell_es_any'
     else
       warn "\nSelected 'American English' by default.".yellow
       depends_on 'hunspell_en_us'
     end
-  end
-end
