@@ -15,7 +15,7 @@ class Hunspell < Package
     puts <<~EOT
 
       Enter your preferred language:
-      (The default, American English, will be selected in #{@timeout} seconds if there is no input.)
+      (The default, American English, will be selected if there is no input.)
 
         1 = American English
         2 = Français
