@@ -8,9 +8,9 @@ class Template < Package
   description ''
   homepage ''
   version ''
-  license '' # Package license
-  compatibility '' # Package compatibility
-  source_url '*.tar.{gz,bz2,lz,etc}'
+  license ''       # Package license (eg. GPL-3, MIT, etc.)
+  compatibility '' # Package architecture compatibility (eg. aarch64, armv7l, i686, x86_64 or all)
+  source_url ''    # The url to the source code (eg. https://ftpmirror.gnu.org/sed/sed-4.8.tar.xz)
   source_sha256 ''
 
   # Optional: Prebuilt binary
