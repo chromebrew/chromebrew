@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby <- This line is not necessary, just for GitHub's language detection
 # It is recommended that you investigate other files in the 'packages/' directory
 # to help get an idea of how existing packages are being installed through Chromebrew.
 
@@ -38,12 +38,6 @@ class Template < Package
 
   end
 
-  # Function to perform pre-install operations prior to install for both source build and binary distribution.
-  def self.preinstall
-
-  end
-
-
   # Function to perform patch operations prior to build from source.
   def self.patch
 
@@ -59,7 +53,13 @@ class Template < Package
 
   end
 
-  # Function to perform pre-install operations prior to install.
+  # Function to perform check from source build.
+  # This is execute if and only if `crew build`.
+  def self.check
+
+  end
+
+  # Function to perform pre-install operations prior to install for both source build and binary distribution.
   def self.preinstall
 
   end
@@ -72,13 +72,6 @@ class Template < Package
 
   # Function to perform post-install for both source build and binary distribution
   def self.postinstall
-
-  end
-
-
-  # Function to perform check from source build.
-  # This is execute if and only if `crew build`.
-  def self.check
 
   end
 end
