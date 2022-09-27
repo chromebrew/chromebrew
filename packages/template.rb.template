@@ -54,7 +54,7 @@ class Template < Package
   end
 
   # Function to perform check from source build.
-  # This is execute if and only if `crew build`.
+  # This is executed if and only if `crew build`.
   def self.check
 
   end
