@@ -3,7 +3,7 @@ require 'package'
 class Libhandy < Package
   description 'The aim of the handy library is to help with developing UI for mobile devices using GTK/GNOME.'
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
-  @_ver = '1.4.0'
+  @_ver = '1.8.0'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Libhandy < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_armv7l/libhandy-1.4.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_armv7l/libhandy-1.4.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_i686/libhandy-1.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.4.0_x86_64/libhandy-1.4.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.8.0_armv7l/libhandy-1.8.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.8.0_armv7l/libhandy-1.8.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.8.0_i686/libhandy-1.8.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.8.0_x86_64/libhandy-1.8.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '518a1687d6bfb8497e19a50f2a64810dc7e466ffc03bd29a63c93a2039730dc7',
-     armv7l: '518a1687d6bfb8497e19a50f2a64810dc7e466ffc03bd29a63c93a2039730dc7',
-       i686: 'a928efd9fd5014687b207cc734ece25eec6c87d43c63c28160ed3578747cf8f2',
-     x86_64: '4d4ac622317b61751eff09e267e05b7998a2d5ca210b95126b3a82ab7a388caa'
+    aarch64: '570f7011b52c4599c7cf7021d8aff15b0a93621d381030d5e04640498239565e',
+     armv7l: '570f7011b52c4599c7cf7021d8aff15b0a93621d381030d5e04640498239565e',
+       i686: '5a12c0b53e78054068d93d68428106ba0d15a2b9a93ee411d2cb666cffeabffb',
+     x86_64: '5bb6704da3f64fb2a1259fc79dae2680804d007316c552c23a8eefb506ca53f2'
   })
 
   depends_on 'atk'
