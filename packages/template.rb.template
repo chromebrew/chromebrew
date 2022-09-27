@@ -33,7 +33,7 @@ class Template < Package
   # depends_on '*'
   #
 
-  # Function for checks to see if install should occur.
+  # Function to check if install should occur.
   def self.preflight
 
   end
