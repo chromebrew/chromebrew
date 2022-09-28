@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl gcc rsync ruby c_ares libnghttp2 libidn2 libssh libpsl openldap brotli zlibpkg krb5 e2fsprogs libunistring pcre2 libcyrussasl libcurl"
+BOOTSTRAP_PACKAGES="zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl gcc rsync ruby c_ares libnghttp2 libidn2 libssh libpsl openldap brotli zlibpkg krb5 e2fsprogs libunistring pcre2 libcyrussasl libcurl glibc"
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
 GREEN='\e[1;32m';  # Use Green for success messages.
