@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="musl_zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl zstd gcc rsync ruby"
+BOOTSTRAP_PACKAGES="musl_zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl zstd gcc rsync ruby libcurl c_ares libnghttp2 libidn2 libssh libpsl openldap brotli zlibpkg krb5 e2fsprogs libunistring pcre2 libcyrussasl"
 
 # Add musl bin to path
 PATH=/usr/local/share/musl/bin:$PATH
@@ -218,7 +218,15 @@ function extract_install () {
     #extract and install
     echo_intra "Extracting ${1} ..."
     if [[ "$2" == *".zst" ]];then
-      LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
+      if [[ -e /usr/bin/zstd ]]; then
+        PATH=/usr/bin:/usr/local/share/musl/bin:$PATH tar -Izstd -xpf ../"${2}"
+      elif (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/bin/zstd --version &> /dev/null) || \
+           (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/share/musl/bin/zstd --version &> /dev/null); then
+        LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
+      else
+        echo "Zstd is broken or nonfunctional, and packages can not be extracted properly."
+        exit 1
+      fi
     elif [[ "$2" == *".tpxz" ]];then
       if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then
         tar xpf ../"${2}"
