@@ -215,11 +215,11 @@ function extract_install () {
     echo_intra "Extracting ${1} ..."
     if [[ "$2" == *".zst" ]];then
       if [[ -e /usr/bin/zstd ]]; then
-        PATH=/usr/bin:$PATH tar -Izstd -xpf ../"${2}"
+        tar -I /usr/bin/zstd -xpf ../"${2}"
       elif (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/bin/zstd --version &> /dev/null); then
-        LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
+        LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
       else
-        echo "Zstd is broken or nonfunctional, and packages can not be extracted properly."
+        echo_error "Zstd is broken or nonfunctional, and packages can not be extracted properly."
         exit 1
       fi
     elif [[ "$2" == *".tpxz" ]];then
@@ -298,7 +298,7 @@ echo -e "${RESET}"
 echo_info "Updating crew package information...\n"
 # Without setting LD_LIBRARY_PATH, the mandb postinstall fails
 # from not being able to find the gdbm library.
-export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH=/usr/local/lib$LIB_SUFFIX:/usr/lib$LIB_SUFFIX:/lib$LIB_SUFFIX crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=::g')
+export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH=/usr/local/lib${LIB_SUFFIX}:/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=::g')
 # Since we just ran git, just update package compatibility information.
 crew update compatible
 
