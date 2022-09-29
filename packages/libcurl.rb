@@ -3,23 +3,24 @@ require 'package'
 class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '7.85.0'
+  @_ver = '7.85.0'
+  version "#{@_ver}-1"
   license 'curl'
   compatibility 'all'
-  source_url "https://curl.se/download/curl-#{version}.tar.xz"
+  source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
   source_sha256 '88b54a6d4b9a48cb4d873c7056dcba997ddd5b7be5a2d537a4acb55c20b04be6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0_armv7l/libcurl-7.85.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0_armv7l/libcurl-7.85.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0_i686/libcurl-7.85.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0_x86_64/libcurl-7.85.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0-1_armv7l/libcurl-7.85.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0-1_armv7l/libcurl-7.85.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0-1_i686/libcurl-7.85.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.85.0-1_x86_64/libcurl-7.85.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'de7bc349114fa62ec50ddd14d72da7958947945277d3160f574be585843e15ac',
-     armv7l: 'de7bc349114fa62ec50ddd14d72da7958947945277d3160f574be585843e15ac',
-       i686: '0480804129d701ac23e881b72ee2eb2773080dab5271d8728277c082feab4470',
-     x86_64: '5c0680f92f85482e3ce4b9f03703e679289e8256afb7d0d9ef35aa116c731bb6'
+    aarch64: 'c6ca70a9231cd47ade098c3df35562f022279829154cf47eaf03784a738d8f82',
+     armv7l: 'c6ca70a9231cd47ade098c3df35562f022279829154cf47eaf03784a738d8f82',
+       i686: '02da81f62fea5a9d04634a71ce5b1915ed8c87facdf63651481ff3237d00a9fa',
+     x86_64: 'ff40e40bac00768c989d1193459fd512d46401a0427b095fe9b21d6892402a28'
   })
 
   depends_on 'brotli' # R
@@ -31,7 +32,6 @@ class Libcurl < Package
   depends_on 'libnghttp2' # R
   depends_on 'libpsl' # R
   depends_on 'libssh' # R
-  depends_on 'libunbound' # ?
   depends_on 'openldap' # R
   depends_on 'openssl' # R
   depends_on 'py3_pip' => :build
@@ -39,17 +39,12 @@ class Libcurl < Package
   depends_on 'valgrind' => :build
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  no_patchelf
 
   def self.build
-    @libssh = '--with-libssh'
-    case ARCH
-    when 'i686'
-      @libssh = '--without-libssh'
-    end
-
     system '[ -x configure ] || autoreconf -fvi'
     system 'filefix'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "mold -run ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode \
       --enable-ares \
       --enable-ipv6 \
@@ -58,11 +53,11 @@ class Libcurl < Package
       --with-ca-bundle=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt \
       --with-ca-fallback \
       --with-ca-path=#{CREW_PREFIX}/etc/ssl/certs \
-      #{@libssh} \
+      --with-libssh \
       --with-openssl \
       --without-gnutls \
       --without-librtmp"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.install
