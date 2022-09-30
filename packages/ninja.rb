@@ -7,6 +7,7 @@ class Ninja < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja.git'
+  git_hashtag 'v1.11.1'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.1-1_armv7l/ninja-1.11.1-1-chromeos-armv7l.tar.zst',
@@ -21,9 +22,8 @@ class Ninja < Package
      x86_64: '6ed13fed4d9f7332ce42b48e1da9411f0b9928ec9effb1d30817e342f5ef45d8'
   })
 
-  git_hashtag 'v1.11.1'
-
   depends_on 're2c' => :build
+  depends_on 'samurai' => :build
 
   def self.build
     Dir.mkdir 'builddir'
