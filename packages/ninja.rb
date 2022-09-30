@@ -3,11 +3,12 @@ require 'package'
 class Ninja < Package
   description 'a small build system with a focus on speed'
   homepage 'https://ninja-build.org'
-  version '1.11.1-1'
+  @_ver = '1.11.1'
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/ninja-build/ninja.git'
-  git_hashtag 'v1.11.1'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.11.1-1_armv7l/ninja-1.11.1-1-chromeos-armv7l.tar.zst',
