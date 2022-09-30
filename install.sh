@@ -216,17 +216,18 @@ function extract_install () {
     if [[ "$2" == *".zst" ]];then
       if [[ -e /usr/bin/zstd ]]; then
         tar -I /usr/bin/zstd -xpf ../"${2}"
-      elif (LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} "${CREW_PREFIX}"/bin/zstd --version &> /dev/null); then
-        LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
+      elif ("${CREW_PREFIX}"/bin/zstd --version &> /dev/null); then
+        tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
       else
-        echo_error "Zstd is broken or nonfunctional, and packages can not be extracted properly."
+        echo "Zstd is broken or nonfunctional, and some packages can not be extracted properly."
         exit 1
       fi
     elif [[ "$2" == *".tpxz" ]];then
-      if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then
-        tar xpf ../"${2}"
+      if "${CREW_PREFIX}"/bin/pixz -h &> /dev/null; then
+        tar -I "${CREW_PREFIX}"/bin/pixz -xpf ../"${2}"
       else
-        LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
+        echo "Pixz is broken or nonfunctional, and some packages can not be extracted properly."
+        exit 1
       fi
     else
       tar xpf ../"${2}"
