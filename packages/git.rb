@@ -3,23 +3,24 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.37.3'
+  @_ver = '2.37.3'
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.3.tar.xz'
   source_sha256 '814641d7f61659cfbc17825d0462499ca1403e39ff53d76a8512050e6483e87a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3_armv7l/git-2.37.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3_armv7l/git-2.37.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3_i686/git-2.37.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3_x86_64/git-2.37.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_armv7l/git-2.37.3-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_armv7l/git-2.37.3-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_i686/git-2.37.3-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_x86_64/git-2.37.3-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'be6fb72e5cf642a53189c5b6e5824a1b385d15fce7e24e0912453ea2c943a294',
-     armv7l: 'be6fb72e5cf642a53189c5b6e5824a1b385d15fce7e24e0912453ea2c943a294',
-       i686: 'cf8e7975671265971ab7ae85fce53bcbe75db40928818e0d2c22579d01211b17',
-     x86_64: '520dea35d982722854f7674b44c1054363c6a7a3d295534597bbb210b9109b9b'
+    aarch64: '1073a00bb8d4394cf27e8f3d3afb14820af8893c27cb42d6977147a5f0e03f83',
+     armv7l: '1073a00bb8d4394cf27e8f3d3afb14820af8893c27cb42d6977147a5f0e03f83',
+       i686: 'e58fad11a7df3ed569a5adef9ed9971fd94d8c5b9caa347fa6f90423b49af94d',
+     x86_64: '1d2d944493da0243891a65713e6f838f7a0fb0f228b9ed0a12905a904f1b7761'
   })
 
   depends_on 'ca_certificates' => :build
