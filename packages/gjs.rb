@@ -6,19 +6,21 @@ class Gjs < Package
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
-  compatibility 'armv7l aarch64 x86_64'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gjs.git'
   git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_armv7l/gjs-1.74.0-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_armv7l/gjs-1.74.0-chromeos-armv7l.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_x86_64/gjs-1.74.0-chromeos-x86_64.tar.zst'
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_armv7l/gjs-1.74.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_i686/gjs-1.74.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_x86_64/gjs-1.74.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
-  armv7l: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
-  x86_64: 'decdaf546dac3ccee260617d756619892cd443f6b42c19b56318feae913cc31e'
+     armv7l: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
+       i686: 'c1b996c78fd6ab6ca1419101d1e63cff1726c458275bac1e2084ae40f3a7dfad',
+     x86_64: 'decdaf546dac3ccee260617d756619892cd443f6b42c19b56318feae913cc31e'
   })
 
   depends_on 'cairo' # R
@@ -34,6 +36,8 @@ class Gjs < Package
     system "meson #{CREW_MESON_OPTIONS} \
     -Dinstalled_tests=false \
     -Dskip_dbus_tests=true \
+    -Dskip_gtk_tests=true \
+    -Dprofiler=disabled \
     -Dreadline=disabled \
     builddir"
     system 'meson configure builddir'
