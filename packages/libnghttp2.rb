@@ -4,23 +4,23 @@ class Libnghttp2 < Package
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
   @_ver = '1.50.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0_armv7l/libnghttp2-1.50.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0_armv7l/libnghttp2-1.50.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0_i686/libnghttp2-1.50.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0_x86_64/libnghttp2-1.50.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0-1_armv7l/libnghttp2-1.50.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0-1_armv7l/libnghttp2-1.50.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0-1_i686/libnghttp2-1.50.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.50.0-1_x86_64/libnghttp2-1.50.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6a791dffcb9fe605f95f2e822b7aa3b111009895b6bc5280c871243c2ef9a93f',
-     armv7l: '6a791dffcb9fe605f95f2e822b7aa3b111009895b6bc5280c871243c2ef9a93f',
-       i686: 'e07cd661c9896e5397124e826e2f6aae4f422e8ffc9a7c4080f80533d66fdc15',
-     x86_64: '0c28ae576d708afd41c95df79283b7b26f1eecd022acd3ee4143e52a230b6bd6'
+    aarch64: '9e5436c76f6ebdaaae493c95d2e2c12e61444a93b03d13927e5429c40451df3b',
+     armv7l: '9e5436c76f6ebdaaae493c95d2e2c12e61444a93b03d13927e5429c40451df3b',
+       i686: '55cc3719629bb2086909b9d8542c1c2524039028da0e18c49b8ebfb44fdec0b8',
+     x86_64: '1c2011cfb262d79a8a280d6a914a37a362e119ea7c95efa3882063cd160babe2'
   })
 
   depends_on 'jansson'

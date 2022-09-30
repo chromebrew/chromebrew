@@ -4,7 +4,7 @@ class Libssh < Package
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
   @_ver = '0.10.3'
-  version @_ver
+  version "#{@_ver}-1"
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   license 'LGPL-2.1'
   compatibility 'all'
@@ -12,19 +12,20 @@ class Libssh < Package
   source_sha256 '6e889dbe4f3eecd13a452ca868ec85525ab9c39d778519a9c141b83da738c8aa'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3_armv7l/libssh-0.10.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3_armv7l/libssh-0.10.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3_i686/libssh-0.10.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3_x86_64/libssh-0.10.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3-1_armv7l/libssh-0.10.3-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3-1_armv7l/libssh-0.10.3-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3-1_i686/libssh-0.10.3-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.3-1_x86_64/libssh-0.10.3-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6d9677de1be1914cbfa478c80b25101304ead4f467d5e8970644a53be7e287d1',
-     armv7l: '6d9677de1be1914cbfa478c80b25101304ead4f467d5e8970644a53be7e287d1',
-       i686: 'fe25cd27845a0b9c1699ffc1c9cd118744d839801ab36152e492e074f58ee6e0',
-     x86_64: 'bfed4aeabbf90f40f8a369bba7a208e89c726f991af787d4c54ed51a593685e1'
+    aarch64: 'd99b1ce240d1bd5b6bb01ffd779a0d3d25981afe1417110a8f7e86f425269aa7',
+     armv7l: 'd99b1ce240d1bd5b6bb01ffd779a0d3d25981afe1417110a8f7e86f425269aa7',
+       i686: '135303c2fbb04e1ef746326c2cd4fa82c707c52471033357deeef089dce8e770',
+     x86_64: 'e30f47fa94fd694f0d6947f597c9195923d7509096f3a9a51ce099970501c913'
   })
 
   depends_on 'libgcrypt'
+  depends_on 'py3_abimap' => :build
 
   def self.build
     FileUtils.mkdir('builddir')
