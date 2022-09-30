@@ -17,10 +17,10 @@ class Gdk_pixbuf < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_x86_64/gdk_pixbuf-2.42.10-6550872-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f7e70188b5ffe678e28bf498e1f05f30225e2dc78e8eb0c5c78aa3565e5edce2',
-     armv7l: 'f7e70188b5ffe678e28bf498e1f05f30225e2dc78e8eb0c5c78aa3565e5edce2',
-       i686: '1e4af626512cd2715dffdd00c8f360387840a934e8f23342bb625f4548d0eb4b',
-     x86_64: '28f9e280a5e253e0f00d154efdcb6891aad58d967f327dc972da20af2123dfc1'
+    aarch64: 'c67990aabbb3576a6101822df693e67afaf8103e9f1088c0d40298834f8cc496',
+     armv7l: 'c67990aabbb3576a6101822df693e67afaf8103e9f1088c0d40298834f8cc496',
+       i686: 'c128a2bf1322a737a4dc3598020e1601eab3a6e6c2cb1164b69ddb7bbd004db7',
+     x86_64: '704985704e0c6ba5b3aad0cecf1fe7525df9cd5bb9791088ee4b313b9afff4e3'
   })
 
   depends_on 'glib' # R

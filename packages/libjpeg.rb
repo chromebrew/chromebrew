@@ -7,6 +7,7 @@ class Libjpeg < Package
   version @_ver
   compatibility 'all'
   source_url 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
+  git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.4_armv7l/libjpeg-2.1.4-chromeos-armv7l.tar.zst',
@@ -15,13 +16,11 @@ class Libjpeg < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.4_x86_64/libjpeg-2.1.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1fba7f42a0d3c92531f19c7c53ca9a959ce8de00a967a62ab408a1712726978a',
-     armv7l: '1fba7f42a0d3c92531f19c7c53ca9a959ce8de00a967a62ab408a1712726978a',
-       i686: '709ae3ba9e425a48a9b964b844a2fa3b18d4187eb17174501b77286565226bdd',
-     x86_64: '70f57ca8937bfeb6d48be10fcd8cf70dc64a8aa1266d9a8793d1759aa1e76ead'
+    aarch64: '1de3b99b8a2ce0618e2538ad517d62b29a85f1938dca07c0570933b7f1f58313',
+     armv7l: '1de3b99b8a2ce0618e2538ad517d62b29a85f1938dca07c0570933b7f1f58313',
+       i686: 'e5b1f49cd89009289ebabb9cd2e76c3b000e49e8b752e376a8ef68e8b3c81b0d',
+     x86_64: 'fec9fd92a2b02df0a9811ca75b64e1ee4ff34897ad8db83093506ea9f86bdae1'
   })
-
-  git_hashtag @_ver
 
   depends_on 'yasm' => :build
 
@@ -31,9 +30,8 @@ class Libjpeg < Package
       system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
-        -DWITH_JPEG8=1 \
         -DWITH_JAVA=OFF \
-        -DWITH_12BIT=ON \
+        -DWITH_12BIT=OFF \
         -W no-dev \
         .."
     end
@@ -41,7 +39,6 @@ class Libjpeg < Package
   end
 
   def self.check
-    # This fails on i686.
     system 'ninja -C builddir test'
   end
 
