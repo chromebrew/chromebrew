@@ -3,24 +3,24 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  @_ver = '2.42.9'
-  version "#{@_ver}-2"
+  @_ver = '2.42.10-6550872'
+  version @_ver.to_s
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
-  git_hashtag @_ver
+  git_hashtag '6550872a2b89a09b1b2e811206a38475fbe7cec9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_armv7l/gdk_pixbuf-2.42.9-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_armv7l/gdk_pixbuf-2.42.9-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_i686/gdk_pixbuf-2.42.9-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.9-2_x86_64/gdk_pixbuf-2.42.9-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_armv7l/gdk_pixbuf-2.42.10-6550872-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_armv7l/gdk_pixbuf-2.42.10-6550872-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_i686/gdk_pixbuf-2.42.10-6550872-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_x86_64/gdk_pixbuf-2.42.10-6550872-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9055926dd77a47b1dfc264e23665e4fa973624b6b166591f54ea818eaf2d4917',
-     armv7l: '9055926dd77a47b1dfc264e23665e4fa973624b6b166591f54ea818eaf2d4917',
-       i686: '1de48090fccb65b72dfa0ed824d6f32868c84f9aee87b904d79a4245538813df',
-     x86_64: 'd8b9c259f0ce2d03f8951ce237bf3057b2ccf141d66a35cb71778f9570001546'
+    aarch64: 'f7e70188b5ffe678e28bf498e1f05f30225e2dc78e8eb0c5c78aa3565e5edce2',
+     armv7l: 'f7e70188b5ffe678e28bf498e1f05f30225e2dc78e8eb0c5c78aa3565e5edce2',
+       i686: '1e4af626512cd2715dffdd00c8f360387840a934e8f23342bb625f4548d0eb4b',
+     x86_64: '28f9e280a5e253e0f00d154efdcb6891aad58d967f327dc972da20af2123dfc1'
   })
 
   depends_on 'glib' # R
@@ -31,6 +31,7 @@ class Gdk_pixbuf < Package
   # depends_on 'libwebp' => :build This drags gtk3 into the deps.
   depends_on 'pango' => :build
   depends_on 'py3_docutils' => :build
+  depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_jinja2' => :build
   depends_on 'py3_markdown' => :build
   depends_on 'py3_pygments' => :build
