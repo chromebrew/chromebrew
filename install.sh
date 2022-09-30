@@ -296,9 +296,10 @@ git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
 
 echo_info "Updating crew package information...\n"
-# Without setting LD_LIBRARY_PATH, the mandb postinstall fails
-# from not being able to find the gdbm library.
-export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH=/usr/local/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}:/usr/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}:/lib:/usr/lib:/usr/local/lib crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=::g'):$LD_LIBRARY_PATH
+# set LD_LIBRARY_PATH so crew doesn't break on i686 and the mandb 
+# install doesn't fail
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
+
 # Since we just ran git, just update package compatibility information.
 crew update compatible
 
