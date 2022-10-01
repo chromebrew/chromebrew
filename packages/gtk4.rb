@@ -5,23 +5,23 @@ class Gtk4 < Package
   homepage 'https://developer.gnome.org/gtk4/'
   @_ver = '4.8.1'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1_armv7l/gtk4-4.8.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1_armv7l/gtk4-4.8.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1_i686/gtk4-4.8.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1_x86_64/gtk4-4.8.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_armv7l/gtk4-4.8.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_armv7l/gtk4-4.8.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_i686/gtk4-4.8.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_x86_64/gtk4-4.8.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b054275361979e87c9c45f67d0278b6a8a5365be219ac3804dde7a1ecd798685',
-     armv7l: 'b054275361979e87c9c45f67d0278b6a8a5365be219ac3804dde7a1ecd798685',
-       i686: '3ca6927b8d5ef12b62dfcbe0053391695d254232ba63fb7078c7433853be884f',
-     x86_64: '1f561f2b591f0d8a673677b5827eb38920e307ff870422172dd661d36f94b575'
+    aarch64: '07081fc821be22af8b3eea625923cafa6c906b868972c539ce5ee27a4b7b99d5',
+     armv7l: '07081fc821be22af8b3eea625923cafa6c906b868972c539ce5ee27a4b7b99d5',
+       i686: '5a496bb4dc3b9c406efd674a32559652c3bace4eac19a8b8b36588a5b0abe1b7',
+     x86_64: '59d373eed4ab87eaf20c6bbeb39f5679e00cb80b3fe7727f04c455e4ba93a4f7'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
