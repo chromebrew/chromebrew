@@ -20,7 +20,7 @@ class Hplip < Package
 
   depends_on 'cups'
   depends_on 'dbus'
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'sane_backends'
 
   def self.patch
