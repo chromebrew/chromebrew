@@ -3,24 +3,24 @@ require 'package'
 class Libavif < Package
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  @_ver = '0.9.0'
-  version "#{@_ver}-1"
+  @_ver = '0.10.1'
+  version @_ver.to_s
   license 'BSD-2'
   compatibility 'all'
-  source_url "https://github.com/AOMediaCodec/libavif/archive/v#{@_ver}.tar.gz"
-  source_sha256 'ea1603fc18e7dd20cf01f0b405156576886ecb5df84db8c0e87187cd2f8a00f4'
+  source_url 'https://github.com/AOMediaCodec/libavif.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_armv7l/libavif-0.9.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_armv7l/libavif-0.9.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_i686/libavif-0.9.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.9.0-1_x86_64/libavif-0.9.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1_armv7l/libavif-0.10.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1_armv7l/libavif-0.10.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1_i686/libavif-0.10.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1_x86_64/libavif-0.10.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a8da55cfc5b76744c0925508e0824f861a6846d87960ebefbfdcf09c4d36a9c9',
-     armv7l: 'a8da55cfc5b76744c0925508e0824f861a6846d87960ebefbfdcf09c4d36a9c9',
-       i686: '2b0ff587fc88d91ea8142d6eec6e5aba0c00a6ca0a9c63d83551c66c97a44e36',
-     x86_64: 'd35b961e2c797c54aedbf2e7addac2c0f8e8a1419d51d85fd62c27c66fd53975'
+    aarch64: 'e85bb24abfff2cf9e3b0bf522a13db970f1bb79ffdf3687d27692a126ea0268d',
+     armv7l: 'e85bb24abfff2cf9e3b0bf522a13db970f1bb79ffdf3687d27692a126ea0268d',
+       i686: '19cb5215cbdfc6a7228d88cc6c2fcc2efd5f773a6ffe4ef92746a687c955c612',
+     x86_64: 'f1bc86c59311063422da675683f701e25614414cde2fd8fdb52337865bf93f8b'
   })
 
   depends_on 'libaom'
@@ -39,10 +39,10 @@ class Libavif < Package
 
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -I#{CREW_PREFIX}/include/harfbuzz' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+      # system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -I#{CREW_PREFIX}/include/harfbuzz' \
+      # CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      # LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
+      system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         -DAVIF_BUILD_APPS=ON \
