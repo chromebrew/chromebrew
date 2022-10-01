@@ -25,7 +25,7 @@ class Glmark2 < Package
      x86_64: '32ed34762096df02768643f7781c7e1a587ce95e6cfd0a5ddbf6c4720b87d923'
   })
 
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libx11'
   depends_on 'libxcb'

@@ -24,7 +24,7 @@ class Testdisk < Package
 
   depends_on 'apriconv'
   depends_on 'compressdoc' => :build
-  depends_on 'libjpeg_turbo'
+  depends_on 'libjpeg'
   depends_on 'ncurses'
   depends_on 'zlibpkg'
 
