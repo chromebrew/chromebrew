@@ -3,23 +3,23 @@ require 'package'
 class Libtiff < Package
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
-  version '4.2.0-1'
+  version '4.4.0'
   license 'libtiff'
   compatibility 'all'
-  source_url 'https://download.osgeo.org/libtiff/tiff-4.2.0.tar.gz'
-  source_sha256 'eb0484e568ead8fa23b513e9b0041df7e327f4ee2d22db5a533929dfc19633cb'
+  source_url 'https://download.osgeo.org/libtiff/tiff-4.4.0.tar.xz'
+  source_sha256 '49307b510048ccc7bc40f2cba6e8439182fe6e654057c1a1683139bf2ecb1dc1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_armv7l/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_armv7l/libtiff-4.2.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_i686/libtiff-4.2.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.2.0-1_x86_64/libtiff-4.2.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_armv7l/libtiff-4.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_armv7l/libtiff-4.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_i686/libtiff-4.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_x86_64/libtiff-4.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a0cbdf73940274a9f34ac362e989226ad7ddbef2b6a43fdbdbd05f81eb948a3a',
-     armv7l: 'a0cbdf73940274a9f34ac362e989226ad7ddbef2b6a43fdbdbd05f81eb948a3a',
-       i686: '2cfebbbe502beb99cf0dd12ee49efa99cca1ef90420103f39b873828fd1b43f6',
-     x86_64: '3a30356473a84f4c024c3dc399487782c6f585896a18c641b866ecad6cf528a8'
+    aarch64: 'a971b42ca81eaf5375b09c69b34e14d367a8c0b86802d25dc1c8f0b89ed6ab76',
+     armv7l: 'a971b42ca81eaf5375b09c69b34e14d367a8c0b86802d25dc1c8f0b89ed6ab76',
+       i686: '2eaf5efe70745023e0f70670247338eebc7b75df8df85ec72980056954d7a924',
+     x86_64: '33129073011fd853518e91376a84fa0ddbc61605c041297c0d130294a113f389'
   })
 
   depends_on 'freeglut'
@@ -33,13 +33,12 @@ class Libtiff < Package
   depends_on 'libx11'
   depends_on 'libxi'
   depends_on 'mesa'
+  depends_on 'wget' => :build
+  depends_on 'zstd'
 
   def self.build
-    system 'env NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS} \
       --with-x \
       --enable-zlib \
       --enable-mdi \
@@ -55,5 +54,12 @@ class Libtiff < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  end
+
+  def self.postinstall
+    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
+
+    system 'gdk-pixbuf-query-loaders',
+           '--update-cache'
   end
 end

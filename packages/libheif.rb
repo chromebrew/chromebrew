@@ -19,7 +19,7 @@ class Libheif < Package
   binary_sha256({
     aarch64: '54aac0957aeddde47d7a2b85c9bab3930314203cdc9d5fcfa8adbcc09d0e2eee',
      armv7l: '54aac0957aeddde47d7a2b85c9bab3930314203cdc9d5fcfa8adbcc09d0e2eee',
-       i686: 'e9ef19612c0c6fd85fe169c97b994ec31f1604e3ebdb9b2547fb18ac1adde6e5',
+       i686: 'c18a1d2960a9e67047f23389fc53c22a18fe13fc56b61a1bad1eba6970d24c48',
      x86_64: '626d99ad78adb2e959bc0cf812ce53da110d79d3917378b110b914f545137660'
   })
 
