@@ -58,9 +58,9 @@ class Librsvg < Package
   end
 
   def self.postinstall
-    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-      system 'gdk-pixbuf-query-loaders',
-             '--update-cache'
-    end
+    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
+
+    system 'gdk-pixbuf-query-loaders',
+           '--update-cache'
   end
 end
