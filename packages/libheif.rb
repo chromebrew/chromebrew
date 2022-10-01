@@ -20,7 +20,7 @@ class Libheif < Package
     aarch64: '54aac0957aeddde47d7a2b85c9bab3930314203cdc9d5fcfa8adbcc09d0e2eee',
      armv7l: '54aac0957aeddde47d7a2b85c9bab3930314203cdc9d5fcfa8adbcc09d0e2eee',
        i686: 'e9ef19612c0c6fd85fe169c97b994ec31f1604e3ebdb9b2547fb18ac1adde6e5',
-     x86_64: '65f4fda223012e0ed5ead49c7b4cf36662bbe7f0745fc34b68124dd87a54fdeb'
+     x86_64: '626d99ad78adb2e959bc0cf812ce53da110d79d3917378b110b914f545137660'
   })
 
   depends_on 'dav1d'

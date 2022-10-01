@@ -20,7 +20,7 @@ class Libavif < Package
     aarch64: 'd39d4cd84f6f74d8ba924abe75cb3e06ea1320dc5ba3a2f589cb901fdd6ee512',
      armv7l: 'd39d4cd84f6f74d8ba924abe75cb3e06ea1320dc5ba3a2f589cb901fdd6ee512',
        i686: '66680c86bd795d5b1f9a20507488de6a50864bb38cbe254041df05bd00e8734e',
-     x86_64: '0eb3ac754a8de4a60cbd030d81d93255eae501f0e03360b56cc2af00818659a7'
+     x86_64: '95de040f680af568aeff01ba48464d02b9efcabebe13eb4b981c47b8ab648596'
   })
 
   depends_on 'libaom'
