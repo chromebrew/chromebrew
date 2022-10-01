@@ -6,30 +6,29 @@ require 'package'
 class Libvterm < Package
   description 'Abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator'
   homepage 'https://www.leonerd.org.uk/code/libvterm/'
-  version '0.2'
+  version '0.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://www.leonerd.org.uk/code/libvterm/libvterm-0.2.tar.gz'
-  source_sha256 '4c5150655438cfb8c57e7bd133041140857eb04defd0e544521c0e469258e105'
+  source_url 'https://www.leonerd.org.uk/code/libvterm/libvterm-0.3.tar.gz'
+  source_sha256 '61eb0d6628c52bdf02900dfd4468aa86a1a7125228bab8a67328981887483358'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.2_armv7l/libvterm-0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.2_armv7l/libvterm-0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.2_i686/libvterm-0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.2_x86_64/libvterm-0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_armv7l/libvterm-0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_armv7l/libvterm-0.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_i686/libvterm-0.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_x86_64/libvterm-0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd6657b597dcd4cbe25c765ac04acdaa3962809921bcdb1d439f794481d112374',
-     armv7l: 'd6657b597dcd4cbe25c765ac04acdaa3962809921bcdb1d439f794481d112374',
-       i686: '043f3366932dff21028fc1042b6d3f0506160645413a311079284df9356939ec',
-     x86_64: '51a0aa91d1c4ca302c621afae3b379d40a2c66fd82ad9b64327177af9e016956'
+    aarch64: '63bd50be7529cb4ae529474030be223abce26c0edc1c38f64f57adc7c9b0eacd',
+     armv7l: '63bd50be7529cb4ae529474030be223abce26c0edc1c38f64f57adc7c9b0eacd',
+       i686: '33de59b348d3bfe9b10980378daa205b604c49a07a39089beefa34ba909cea63',
+     x86_64: 'fb1046fabd96fb9f241b4ae4dc5e2b04e9aeb04efd0a873cdd0fff2e9601af24'
   })
 
   depends_on 'glibc'
-  depends_on 'git' => :build
 
   def self.build
-    system "make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
+    system "mold -run make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
   end
 
   def self.install
