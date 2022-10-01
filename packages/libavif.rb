@@ -39,9 +39,6 @@ class Libavif < Package
 
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      # system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -I#{CREW_PREFIX}/include/harfbuzz' \
-      # CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      # LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
