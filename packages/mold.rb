@@ -9,6 +9,7 @@ class Mold < Package
   version '1.5.1'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.5.1_armv7l/mold-1.5.1-chromeos-armv7l.tar.zst',
@@ -23,8 +24,6 @@ class Mold < Package
      x86_64: 'b5c722ab76e66be8d940aa35e3d78904948c5db767e9457fc88f230c2bdeec2a'
   })
 
-  git_hashtag "v#{version}"
-
   depends_on 'zlibpkg' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R
@@ -38,6 +37,7 @@ class Mold < Package
       system "cmake #{CREW_CMAKE_OPTIONS} \
         -DBUILD_TESTING=OFF \
         -DMOLD_LTO=ON \
+        -DMOLD_USE_MOLD=ON \
         -Wno-dev \
         ../ -G Ninja"
     end
