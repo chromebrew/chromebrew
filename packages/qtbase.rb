@@ -7,7 +7,8 @@ class Qtbase < Package
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_branch 'kde/5.15'                                                                                               git_hashtag 'e44097b63d17ba3178a637df7fac51ddc51cb48b'
+  git_branch 'kde/5.15'
+  git_hashtag 'e44097b63d17ba3178a637df7fac51ddc51cb48b'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.6-e44097b_armv7l/qtbase-5.15.6-e44097b-chromeos-armv7l.tar.zst',
