@@ -3,23 +3,23 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version '5.15.3'
+  version '5.15.6-e44097b'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'all'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag 'kde/5.15'
+  git_branch 'kde/5.15'                                                                                               git_hashtag 'e44097b63d17ba3178a637df7fac51ddc51cb48b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_armv7l/qtbase-5.15.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_armv7l/qtbase-5.15.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_i686/qtbase-5.15.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.3_x86_64/qtbase-5.15.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.6-e44097b_armv7l/qtbase-5.15.6-e44097b-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.6-e44097b_armv7l/qtbase-5.15.6-e44097b-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.6-e44097b_i686/qtbase-5.15.6-e44097b-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.6-e44097b_x86_64/qtbase-5.15.6-e44097b-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
-     armv7l: '8554431fc8f552380aa8822d440559c9fd2bbe00314d96ed5939637ef3a329e6',
-       i686: 'ae0ecf607b4f2742b7a6bde14f77c9aace3ad28511cfdec4e4db5e2a5ad54b6d',
-     x86_64: '9b58c01ad6d16498b1cd8a35ac97026f75dc5d19b586a0a3759362757ddd8bf7'
+    aarch64: 'ca02b27e74c4eb9837952b67e27a850cdbc14232c0f52d7aeaef1adfb536003d',
+     armv7l: 'ca02b27e74c4eb9837952b67e27a850cdbc14232c0f52d7aeaef1adfb536003d',
+       i686: '6accea3943da14a48fc599a06b952d92e37169a3ebd7841fb170d1d3a9010d5c',
+     x86_64: 'f87df14b7431d95d09ac742d0789e30a786016107fca1b3cc842763f32548f1e'
   })
 
   depends_on 'alsa_plugins'
