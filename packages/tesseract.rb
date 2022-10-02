@@ -4,23 +4,23 @@ class Tesseract < Package
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
   @_ver = '5.2.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0_armv7l/tesseract-5.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0_armv7l/tesseract-5.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0_i686/tesseract-5.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0_x86_64/tesseract-5.2.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0-1_armv7l/tesseract-5.2.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0-1_armv7l/tesseract-5.2.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0-1_i686/tesseract-5.2.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.2.0-1_x86_64/tesseract-5.2.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '90a31af33fa1feafd1b6cf00a305b0784c68ec85c31198de07504e13875a98d0',
-     armv7l: '90a31af33fa1feafd1b6cf00a305b0784c68ec85c31198de07504e13875a98d0',
-       i686: 'b3b505c0cd92bbf38b630d9cbb09f76bf9840652990c9ecc1cf8435df129967f',
-     x86_64: '91ae4ed96c145f57ebf565b9f7d26d2498f30aac2102d4668b47915f39cc9da7'
+    aarch64: '350272935abbf6bfab1cc3b018243d2e9fa08677d27c2f2feeaac4d57bd75145',
+     armv7l: '350272935abbf6bfab1cc3b018243d2e9fa08677d27c2f2feeaac4d57bd75145',
+       i686: 'b40e7e19174f21b38abc0695cd1821d31d1819f4d044d76d716ad724f22f0783',
+     x86_64: 'd5fe0ec1764be79709c7ee4103a0084c313fbaa433f2a0b2a2ad98a8c30527c6'
   })
 
   depends_on 'asciidoc' => :build

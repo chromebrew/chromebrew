@@ -10,14 +10,14 @@ class Ghostscript < Package
   source_sha256 '8f2b7941f60df694b4f5c029b739007f7c4e0d43858471ae481e319a967d5d8b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/9.54_armv7l/ghostscript-9.54-chromeos-armv7l.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_armv7l/ghostscript-10.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_armv7l/ghostscript-10.0.0-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_i686/ghostscript-10.0.0-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_x86_64/ghostscript-10.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',
-     armv7l: 'a2fee20357654918f2deac0d7af356c84898e282d008906ede6b424fd95fd549',
+    aarch64: '82c15db8a46f73fcf467fd36bdc1d9713bfe35e1fd269408a75232967400ebf4',
+     armv7l: '82c15db8a46f73fcf467fd36bdc1d9713bfe35e1fd269408a75232967400ebf4',
        i686: '91dfb5bab16d31c3418c57cae464f0b2377f0e19d0057cec751ef8b14f50b9aa',
      x86_64: 'f2652c512f3ea6c1d484cb3ce7d72879570cce5fd52c95f679d2e449b4084dc5'
   })
@@ -43,13 +43,6 @@ class Ghostscript < Package
   depends_on 'libxt'
   depends_on 'openjpeg'
   depends_on 'pango'
-
-  # case ARCH
-  # when 'armv7l', 'aarch64'
-  # @ltoflags = ''
-  # when 'x86_64', 'i686'
-  # @ltoflags = '-flto'
-  # end
 
   def self.patch
     system 'rm -r cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib'
