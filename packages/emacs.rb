@@ -6,20 +6,20 @@ class Emacs < Package
   version '27.1'
   license 'GPL-3+, FPL-1.3+, BSD, HPND, MIT, W3C, unicode and PSF-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-27.1.tar.xz'
-  source_sha256 '4a4c128f915fc937d61edfc273c98106711b540c9be3cd5d2e2b9b5b2f172e41'
+  source_url 'https://ftpmirror.gnu.org/emacs/emacs-28.2.tar.xz'
+  source_sha256 'ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_armv7l/emacs-27.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_armv7l/emacs-27.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_i686/emacs-27.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_x86_64/emacs-27.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_armv7l/emacs-27.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_armv7l/emacs-27.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_i686/emacs-27.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/emacs/27.1_x86_64/emacs-27.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2a4c0e724b6d5d05ae99418cad0557dc6e72c04e66dbccc041971bd3d954f408',
-     armv7l: '2a4c0e724b6d5d05ae99418cad0557dc6e72c04e66dbccc041971bd3d954f408',
-       i686: 'e428b1bcf011ce6a81a057b7b757436385ad11c5e3b34d5508d2ed3411b27047',
-     x86_64: 'ee87e75116c30bdfcab5c92dff5f7413c6b7bdc1fe813727dce16f21f2b0ec61'
+    aarch64: '9f30048fd5b6c8f3b2f05614a3df6fca3baee32b4493315d4792a5fee8d2005d',
+     armv7l: '9f30048fd5b6c8f3b2f05614a3df6fca3baee32b4493315d4792a5fee8d2005d',
+       i686: 'bab7151b034cf1bc21ae57ac9a3d21194d7422d4e4114bdd4948e0e7684c69af',
+     x86_64: '091c0563f460d180c7c7c5229395c7ea036dab2dac0b11027a600bb7ecdaff5e'
   })
 
   depends_on 'lcms'
