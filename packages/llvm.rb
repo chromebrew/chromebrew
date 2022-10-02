@@ -11,10 +11,10 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/llvm-15.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/llvm-15.0.1-chromeos-armv7l.tar.zst',
-       i686: 'file:///usr/local/tmp/packages/llvm-15.0.1-chromeos-i686.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/llvm-15.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_armv7l/llvm-15.0.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_armv7l/llvm-15.0.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_i686/llvm-15.0.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_x86_64/llvm-15.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'af77b81a172156105f5a8f3f97bb096a304bea87570acc491ea9d8d46ffdf5e6',
