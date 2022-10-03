@@ -11,7 +11,7 @@ class Gmmlib < Package
   git_hashtag "intel-gmmlib-#{@_ver}"
 
   binary_url({
-    x86_64: 'file:///usr/local/tmp/packages/gmmlib-22.2.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmmlib/22.2.0_x86_64/gmmlib-22.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     x86_64: 'b9e65594d3579bd7a3a72c477c7ccdc21a83bcdfa24f2e49336df1e3d22a32f8'
