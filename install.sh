@@ -275,9 +275,6 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   update_device_json "${name}" "${version}"
 done
 
-## Workaround https://github.com/chromebrew/chromebrew/issues/3305
-# Maybe this isn't needed.
-# sudo ldconfig &> /dev/null || true
 echo_info "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 echo -e "${GRAY}"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
