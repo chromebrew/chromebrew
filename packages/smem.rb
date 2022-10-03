@@ -23,7 +23,7 @@ class Smem < Package
   })
 
   depends_on 'buildessential' => :build
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.build
     system 'make smemcap'
