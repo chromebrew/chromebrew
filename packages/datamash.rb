@@ -10,16 +10,16 @@ class Datamash < Package
   source_sha256 '7ad97e8c7ef616dd03aa5bd67ae24c488272db3e7d1f5774161c18b75f29f6fd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_i686/datamash-1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_x86_64/datamash-1.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_i686/datamash-1.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_x86_64/datamash-1.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a5c3eccb59d8a85d3b6f171b7c1df2b153676dbbda431426660716a9ebf96db5',
-     armv7l: 'a5c3eccb59d8a85d3b6f171b7c1df2b153676dbbda431426660716a9ebf96db5',
-       i686: '460e8b86133b5813a38b9f83b6fc205979eae456954d2a0228a3ac4e252c2282',
-     x86_64: '488eaf7f76c84ca7632aacf55e87293a2602129d68bfe9f7780ac51f0af56f52'
+    aarch64: '0ccf1a94c18095f1b5c84725da2eed415b10d307b1c5f15bbef764d81df336e8',
+     armv7l: '0ccf1a94c18095f1b5c84725da2eed415b10d307b1c5f15bbef764d81df336e8',
+       i686: 'fc99683d9d77b22ae45485acf94c8bc51f85cae2177f052f96b625bdbaacb7ba',
+     x86_64: '2ef1f4edaa2a041b70fc20c5e3f46576e9bd4b9ac6418d6a4702c756a5d6e088'
   })
 
   def self.build
