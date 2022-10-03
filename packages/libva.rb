@@ -11,10 +11,10 @@ class Libva < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/libva-2.16.0-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/libva-2.16.0-chromeos-armv7l.tar.zst',
-       i686: 'file:///usr/local/tmp/packages/libva-2.16.0-chromeos-i686.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/libva-2.16.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_armv7l/libva-2.16.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_armv7l/libva-2.16.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_i686/libva-2.16.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_x86_64/libva-2.16.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'ac2a55f303a50fc14f80f0308cdef28cee672d08a435e806b27f4845b4a16402',
