@@ -25,6 +25,7 @@ class Git < Package
 
   depends_on 'ca_certificates' => :build
   depends_on 'libcurl'
+  depends_on 'libunistring'
   depends_on 'zlibpkg'
 
   no_patchelf

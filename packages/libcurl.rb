@@ -32,6 +32,7 @@ class Libcurl < Package
   depends_on 'libnghttp2' # R
   depends_on 'libpsl' # R
   depends_on 'libssh' # R
+  depends_on 'libunistring' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
   depends_on 'py3_pip' => :build
