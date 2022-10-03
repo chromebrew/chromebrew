@@ -1,19 +1,19 @@
 require 'package'
 
 class Datamash < Package
-  description 'GNU Datamash is a command-line program which performs basic numeric,textual and statistical operations on input textual data files.'
-  homepage 'http://savannah.gnu.org/projects/datamash'
-  version '1.3'
+  description 'GNU Datamash is a command-line program which performs basic numeric, textual and statistical operations on input textual data files.'
+  homepage 'https://www.gnu.org/software/datamash'
+  version '1.8'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/datamash/datamash-1.3.tar.gz'
-  source_sha256 'eebb52171a4353aaad01921384098cf54eb96ebfaf99660e017f6d9fc96657a6'
+  source_url 'https://ftpmirror.gnu.org/datamash/datamash-1.8.tar.gz'
+  source_sha256 '7ad97e8c7ef616dd03aa5bd67ae24c488272db3e7d1f5774161c18b75f29f6fd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.3_armv7l/datamash-1.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.3_armv7l/datamash-1.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.3_i686/datamash-1.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.3_x86_64/datamash-1.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_armv7l/datamash-1.8-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_i686/datamash-1.8-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/datamash/1.8_x86_64/datamash-1.8-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'a5c3eccb59d8a85d3b6f171b7c1df2b153676dbbda431426660716a9ebf96db5',
@@ -23,7 +23,7 @@ class Datamash < Package
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
