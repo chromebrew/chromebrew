@@ -22,7 +22,7 @@ class Q < Package
      x86_64: 'd1c9c44e976208687c4f0a52e631cce825fefa737b5aedf19c252db9bd99019c'
   })
 
-  depends_on 'python27'
+  depends_on 'python2'
   depends_on 'sqlite'
 
   def self.install
