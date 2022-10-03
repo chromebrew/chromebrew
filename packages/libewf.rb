@@ -31,7 +31,6 @@ class Libewf < Package
            "--prefix=#{CREW_PREFIX}",
            "--libdir=#{CREW_LIB_PREFIX}",
            '--enable-python',
-           '--enable-python2',
            '--enable-python3',
            '--enable-wide-character-type'
     system 'make'

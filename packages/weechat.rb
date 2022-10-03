@@ -26,6 +26,7 @@ class Weechat < Package
   depends_on 'aspell' => :build
   depends_on 'libcurl' => :build
   depends_on 'lua' => :build
+  depends_on 'python2'
   depends_on 'tcl' => :build
 
   def self.build

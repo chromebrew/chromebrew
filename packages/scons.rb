@@ -22,7 +22,7 @@ class Scons < Package
      x86_64: 'f4cff9a4f35e2feeff5aac3dc49605b645a8362f53a335f37dd49b1dd6f8092c'
   })
 
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.build
     nil

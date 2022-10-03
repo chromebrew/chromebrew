@@ -24,7 +24,7 @@ class Ranger < Package
 
   depends_on 'less'
   depends_on 'ncurses'
-  depends_on 'python27'
+  depends_on 'python2'
 
   def self.build
     system 'make'
