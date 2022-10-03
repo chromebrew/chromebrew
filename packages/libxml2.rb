@@ -24,6 +24,7 @@ class Libxml2 < Package
 
   depends_on 'gcc'
   depends_on 'icu4c'
+  depends_on 'ncurses'
   depends_on 'readline'
   depends_on 'zlibpkg'
   no_patchelf
