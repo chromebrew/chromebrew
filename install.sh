@@ -24,7 +24,11 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl gcc rsync ruby c_ares libnghttp2 libidn2 libssh libpsl openldap brotli zlibpkg krb5 e2fsprogs libunistring pcre2 libcyrussasl libcurl glibc"
+# rsync requires openssl xxhash lz4 popt
+BOOTSTRAP_PACKAGES="zstd pixz ca_certificates ruby rsync openssl xxhash lz4 popt"
+# i686 requires gcc and openssl
+[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc"
+
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
 GREEN='\e[1;32m';  # Use Green for success messages.
@@ -276,6 +280,25 @@ echo_info "Setup and synchronize local package repo..."
 echo -e "${GRAY}"
 
 # Remove old git config directories if they exist
+rm -rf "${CREW_LIB_PATH}" && mkdir "${CREW_LIB_PATH}"
+
+cd "${CREW_LIB_PATH}" && curl -L https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1
+
+# Set LD_LIBRARY_PATH so crew doesn't break on i686 and
+# the mandb install doesn't fail
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
+
+# Since we just downloaded the package repo, just update package compatibility information.
+crew update compatible
+
+echo_info "Installing core Chromebrew packages...\n"
+yes | crew install core
+
+echo_info "\nRunning Bootstrap package postinstall scripts...\n"
+crew postinstall $BOOTSTRAP_PACKAGES
+
+echo_info "Synchronizng local package repo..."
+cd "${CREW_LIB_PATH}"/..
 rm -rf "${CREW_LIB_PATH}"
 
 # Do a minimal clone, which also sets origin to the master/main branch
@@ -295,20 +318,6 @@ git checkout "${BRANCH}"
 git sparse-checkout set packages lib bin crew tools
 git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
-
-echo_info "Updating crew package information...\n"
-# set LD_LIBRARY_PATH so crew doesn't break on i686 and the mandb 
-# install doesn't fail
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
-
-# Since we just ran git, just update package compatibility information.
-crew update compatible
-
-echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
-
-echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall $BOOTSTRAP_PACKAGES
 
 echo "                       . .
                    ..,:;;;::'..
