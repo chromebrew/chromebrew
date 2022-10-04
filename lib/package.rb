@@ -159,7 +159,12 @@ exclude_buildessential: exclude_buildessential,
   end
 
   def self.compatible?
-    return (@compatibility.casecmp?('all') or @compatibility.include?(ARCH))
+    if @compatibility
+      return (@compatibility.casecmp?('all') or @compatibility.include?(ARCH))
+    else
+      warn "#{name}: Missing `compatibility` field.".yellow
+      return true
+    end
   end
 
   def self.depends_on(dependency = nil)
