@@ -1156,6 +1156,8 @@ def shrink_dir(dir)
             next if execfilecp.chomp.empty?
 
             execfilecp = dir + execfilecp.chomp
+            next unless File.exist?(execfilecp)
+
             FileUtils.cp execfilecp.to_s, "#{execfilecp}-crewupxtmp"
           end
           begin
