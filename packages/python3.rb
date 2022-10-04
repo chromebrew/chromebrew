@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.6'
+  @_ver = '3.10.7'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 'f795ff87d11d4b0c7c33bc8851b0c28648d8a4583aa2100a98c22b4326b6d3f3'
+  source_sha256 '6eed8415b7516fb2f260906db5d48dd4c06acc0cb24a7d6cc15296a604dcdc48'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.6_armv7l/python3-3.10.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.6_armv7l/python3-3.10.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.6_i686/python3-3.10.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.6_x86_64/python3-3.10.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_armv7l/python3-3.10.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_armv7l/python3-3.10.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_i686/python3-3.10.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_x86_64/python3-3.10.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '61224d5e83f1c4e7dc39bc513ec287dd3c9fe55f933c8a4ae51681791527575b',
-     armv7l: '61224d5e83f1c4e7dc39bc513ec287dd3c9fe55f933c8a4ae51681791527575b',
-       i686: 'f35d3cf0eeeb66b1f679a276d07f308e607a877cea2272f23b3c4ac1acd1e9d8',
-     x86_64: '680f73ceaaf53acbfc789dff6a45c89c9ba62b82ac93438a52111b27ba71ca31'
+    aarch64: '06125281bd34f5dfecb0c23526dfbba3123800d166e5f2d970f8f7000171e86e',
+     armv7l: '06125281bd34f5dfecb0c23526dfbba3123800d166e5f2d970f8f7000171e86e',
+       i686: '904934e5244ef1ad15ad3795f24831e783acc4978019b172fce7f74708de0a62',
+     x86_64: '68a85118f276be1a311eb0ba6cb76fe825aed3a34d6999f261c06e9de8f5feae'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -82,7 +82,7 @@ class Python3 < Package
         --with-system-libmpdec \
         --with-libc= \
         --enable-shared"
-      system 'make'
+      system 'mold -run make'
     end
   end
 

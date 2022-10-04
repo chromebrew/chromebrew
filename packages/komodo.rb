@@ -10,6 +10,7 @@ class Komodo < Package
   source_sha256 '5c2735e9a323ffe290425e5066dd6f72f11e5d58d732411e6648a685725e055a'
 
   depends_on 'gtk2'
+  depends_on 'python2'
   depends_on 'sommelier'
 
   def self.build

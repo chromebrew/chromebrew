@@ -23,6 +23,7 @@ class Py2_six < Package
      x86_64: '360cfb9534fe9c0e4efe450c2267519b60acecac2429a90b7b2fabbe7da77c24'
   })
 
+  depends_on 'python2'
   depends_on 'py2_setuptools' => :build
 
   def self.build
