@@ -3,30 +3,30 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.37.3'
-  version "#{@_ver}-1"
+  @_ver = '2.38.0'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.37.3.tar.xz'
-  source_sha256 '814641d7f61659cfbc17825d0462499ca1403e39ff53d76a8512050e6483e87a'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.38.0.tar.xz'
+  source_sha256 '923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_armv7l/git-2.37.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_armv7l/git-2.37.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_i686/git-2.37.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.37.3-1_x86_64/git-2.37.3-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_armv7l/git-2.38.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_armv7l/git-2.38.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_i686/git-2.38.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_x86_64/git-2.38.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '1073a00bb8d4394cf27e8f3d3afb14820af8893c27cb42d6977147a5f0e03f83',
-     armv7l: '1073a00bb8d4394cf27e8f3d3afb14820af8893c27cb42d6977147a5f0e03f83',
-       i686: 'e58fad11a7df3ed569a5adef9ed9971fd94d8c5b9caa347fa6f90423b49af94d',
-     x86_64: '1d2d944493da0243891a65713e6f838f7a0fb0f228b9ed0a12905a904f1b7761'
+    aarch64: '14c5aa369d3bbea0122c17228cc2123d8fcd055c2f4e03c3bf164fd177380f00',
+     armv7l: '14c5aa369d3bbea0122c17228cc2123d8fcd055c2f4e03c3bf164fd177380f00',
+       i686: '98eb7a1935c8d3af328be87ccc023fc4e08fbf7ddbfdafb3957c529d1b2c5be1',
+     x86_64: '5292a96fbd2c230395535311b696a9f87a3f337f104927b1ce39a31713da0653'
   })
 
   depends_on 'ca_certificates' => :build
   depends_on 'libcurl'
-  depends_on 'pcre2'
   depends_on 'libunistring'
+  depends_on 'pcre2'
   depends_on 'zlibpkg'
 
   no_patchelf
