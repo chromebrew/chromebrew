@@ -158,7 +158,7 @@ exclude_buildessential: exclude_buildessential,
     end
   end
 
-  def compatible?
+  def self.compatible?
     return (@compatibility.casecmp?('all') or @compatibility.include?(ARCH))
   end
 
