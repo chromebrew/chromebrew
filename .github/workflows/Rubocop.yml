@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: rubocop
+    - name: Rubocop
       uses: Freshly/Octocop@v0.0.2
       with:
         github_token: ${{ secrets.github_token }}
