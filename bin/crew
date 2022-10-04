@@ -154,7 +154,7 @@ end
   end
 end
 
-def is_compatible? (pkgName)
+def is_compatible?(pkgName)
   pkgPath = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
   pkg     = Package.load_package(pkgPath, pkgName)
 
@@ -172,10 +172,9 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
-  status = case
-           when @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
+  status = if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
              :installed
-           when !@pkg.compatible?
+           elsif !@pkg.compatible?
              :incompatible
            else
              :available
