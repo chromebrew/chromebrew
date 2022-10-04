@@ -19,7 +19,7 @@ class Ghostscript < Package
     aarch64: '82c15db8a46f73fcf467fd36bdc1d9713bfe35e1fd269408a75232967400ebf4',
      armv7l: '82c15db8a46f73fcf467fd36bdc1d9713bfe35e1fd269408a75232967400ebf4',
        i686: '91dfb5bab16d31c3418c57cae464f0b2377f0e19d0057cec751ef8b14f50b9aa',
-     x86_64: 'f2652c512f3ea6c1d484cb3ce7d72879570cce5fd52c95f679d2e449b4084dc5'
+     x86_64: 'c3c1f1ac1c31ea6a465367504156c18d47bae8b1ecbaee3b118e3bbc3b25a5a9'
   })
 
   depends_on 'atk'
