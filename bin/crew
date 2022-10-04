@@ -1317,7 +1317,7 @@ def resolve_dependencies
 
   # run preflight check for dependencies
   @dependencies.each do |depName|
-    dep_pkgPath = File.join(CREW_PACKAGES_PATH, depName)
+    dep_pkgPath = File.join(CREW_PACKAGES_PATH, "#{depName}.rb")
     Package.load_package(dep_pkgPath, depName).preflight
   end
 
