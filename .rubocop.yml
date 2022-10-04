@@ -62,9 +62,6 @@ Metrics/BlockNesting:
 Metrics/ParameterLists:
   Enabled: false
 
-Layout/TrailingWhitespace:
-  Enabled: false
-
 Layout/LineContinuationLeadingSpace:
   Enabled: false
 
@@ -126,6 +123,9 @@ Layout/FirstHashElementIndentation:
 
 Layout/IndentationStyle:
   EnforcedStyle: spaces
+
+Style/AndOr:
+  Enabled: false
 
 Style/RedundantReturn:
   Enabled: false
