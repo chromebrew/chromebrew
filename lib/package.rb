@@ -1,4 +1,5 @@
 require 'English'
+require_relative 'const'
 require_relative 'package_helpers'
 
 class Package
@@ -23,7 +24,7 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :is_dep, :in_build, :build_from_source, :in_upgrade
+    attr_accessor :name, :in_build, :build_from_source, :in_upgrade
   end
 
   def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
@@ -155,6 +156,10 @@ exclude_buildessential: exclude_buildessential,
       @prop = instance_variable_get("@#{prop}")
       !!@prop
     end
+  end
+
+  def compatible?
+    return (@compatibility.casecmp?('all') or @compatibility.include?(ARCH))
   end
 
   def self.depends_on(dependency = nil)
