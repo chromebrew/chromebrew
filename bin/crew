@@ -154,13 +154,6 @@ end
   end
 end
 
-def is_compatible?(pkgName)
-  pkgPath = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
-  pkg     = Package.load_package(pkgPath, pkgName)
-
-  return pkg.compatible?
-end
-
 def print_package(pkgPath, extra = false)
   pkgName = File.basename pkgPath, '.rb'
   begin
