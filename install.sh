@@ -304,8 +304,10 @@ echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 crew postinstall $BOOTSTRAP_PACKAGES
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
-  echo_other "\nGit is broken on your system. Please report this here:"
+  echo_other "\nGit is broken on your system, and crew update will not work properly."
+  echo_other "Please report this here:"
   echo_other "https://github.com/chromebrew/chromebrew/issues\n"
+  echo
 else
   echo_info "Synchronizng local package repo..."
   # First clear out temporary package repo so we can replace it with the 
