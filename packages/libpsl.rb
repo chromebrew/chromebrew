@@ -23,6 +23,8 @@ class Libpsl < Package
      x86_64: '65be38748baca2f4bf9cf689b9894ce62dc37d909e2545a27a9612ec9fb8d419'
   })
 
+  depends_on 'libidn2'
+
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
     builddir"

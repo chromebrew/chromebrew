@@ -24,10 +24,10 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="musl_zstd pixz ca_certificates git gmp ncurses xxhash lz4 popt libyaml openssl zstd gcc rsync ruby"
-
-# Add musl bin to path
-PATH=/usr/local/share/musl/bin:$PATH
+# rsync requires openssl xxhash lz4 popt
+BOOTSTRAP_PACKAGES="zstd pixz ca_certificates ruby rsync openssl xxhash lz4 popt"
+# i686 requires gcc and openssl
+[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc"
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
@@ -37,24 +37,24 @@ GRAY='\e[0;37m';   # Use Gray for program output.
 MAGENTA='\e[1;35m';
 RESET='\e[0m'
 
-# simplify colors and print errors to stderr (2)
+# Simplify colors and print errors to stderr (2).
 echo_error() { echo -e "${RED}${*}${RESET}" >&2; }
 echo_info() { echo -e "${YELLOW}${*}${RESET}" >&1; }
 echo_success() { echo -e "${GREEN}${*}${RESET}" >&1; }
 echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
 echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
 
-# skip all checks if running on a docker container
+# Skip all checks if running on a docker container.
 [[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
 
-# reject crostini
+# Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
   echo_error "Crostini containers are not supported by Chromebrew :/"
   echo_info "Run 'curl -Ls git.io/vddgY | CREW_FORCE_INSTALL=1 bash' to perform install anyway"
   exit 1
 fi
 
-# disallow non-stable channels Chrome OS
+# Disallow non-stable channels Chrome OS.
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
     echo_error "The beta, dev, and canary channel are unsupported by Chromebrew"
@@ -72,26 +72,27 @@ fi
 
 echo_success "Welcome to Chromebrew!"
 
-# prompt user to enter the sudo password if it set
-# if the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set
+# Prompt user to enter the sudo password if it set.
+# If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
 if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
   echo_intra "Please enter the developer mode password"
-  # reset sudo timeout
+  # Reset sudo timeout.
   sudo -k
   sudo /bin/true
 fi
 
-# force curl to use system libraries
+# Force curl to use system libraries.
 function curl () {
-  # retry if download failed
-  # the --retry/--retry-all-errors parameter in curl will not work with the 'curl: (7) Couldn't connect to server'
-  # error, a for loop is used here
+  # Retry if download failed.
+  # The --retry/--retry-all-errors parameter in curl will not work with 
+  # the 'curl: (7) Couldn't connect to server' error, a for loop is used
+  # here.
   for (( i = 0; i < 4; i++ )); do
     env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && \
       return 0 || \
       echo_info "Retrying, $((3-$i)) retries left."
   done
-  # the download failed if we're still here
+  # The download failed if we're still here.
   echo_error "Download failed :/ Please check your network settings."
   return 1
 }
@@ -109,7 +110,7 @@ esac
 echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
 echo_info "This may take a while if there are preexisting files in ${CREW_PREFIX}...\n"
 
-# This will allow things to work without sudo
+# This will allow things to work without sudo.
 crew_folders="bin cache doc docbook etc include lib lib$LIB_SUFFIX libexec man sbin share tmp var"
 for folder in $crew_folders
 do
@@ -120,11 +121,12 @@ do
 done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
-# Delete ${CREW_PREFIX}/{var,local} symlink on some Chromium OS distro if exist
+# Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro 
+# if they exist.
 [ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
 [ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
 
-# prepare directories
+# Prepare directories.
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
   if [ ! -d "${dir}" ]; then
     mkdir -p "${dir}"
@@ -133,7 +135,7 @@ done
 
 echo_info "\nDownloading information for Bootstrap packages..."
 echo -en "${GRAY}"
-# use parallel mode if available
+# Use parallel mode if available.
 if [[ "$(curl --help curl)" =~ --parallel ]]; then
   (cd "${CREW_LIB_PATH}"/packages && curl -OLZ "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
 else
@@ -141,7 +143,7 @@ else
 fi
 echo -e "${RESET}"
 
-# prepare url and sha256
+# Prepare url and sha256.
 urls=()
 sha256s=()
 
@@ -154,7 +156,7 @@ case "${ARCH}" in
   ;;
 esac
 
-# create the device.json file if it doesn't exist
+# Create the device.json file if it doesn't exist.
 cd "${CREW_CONFIG_PATH}"
 if [ ! -f device.json ]; then
   echo_info "\nCreating new device.json."
@@ -173,10 +175,10 @@ for package in $BOOTSTRAP_PACKAGES; do
     urls+=("${BASH_REMATCH[1]}")
 done
 
-# functions to maintain packages
+# These functions are for handling packages.
 function download_check () {
     cd "$CREW_BREW_DIR"
-    # use cached file if available and caching enabled
+    # Use cached file if available and caching enabled.
     if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
       echo_intra "Verifying cached ${1}..."
       echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
@@ -210,24 +212,36 @@ function download_check () {
 }
 
 function extract_install () {
-    # Start with a clean slate
+    # Start with a clean slate.
     rm -rf "${CREW_DEST_DIR}"
     mkdir "${CREW_DEST_DIR}"
     cd "${CREW_DEST_DIR}"
 
-    #extract and install
+    #Extract and install.
     echo_intra "Extracting ${1} ..."
-    if [[ "$2" == *".zst" ]];then
-      LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Izstd -xpf ../"${2}"
-    elif [[ "$2" == *".tpxz" ]];then
-      if ! LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} pixz -h &> /dev/null; then
-        tar xpf ../"${2}"
+    case "${2}" in
+    *.zst)
+      if [[ -e /usr/bin/zstd ]]; then
+        tar -I /usr/bin/zstd -xpf ../"${2}"
+      elif ("${CREW_PREFIX}"/bin/zstd --version &> /dev/null); then
+        tar -I "${CREW_PREFIX}"/bin/zstd -xpf ../"${2}"
       else
-        LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX} tar -Ipixz -xpf ../"${2}"
+        echo "Zstd is broken or nonfunctional, and some packages can not be extracted properly."
+        exit 1
       fi
-    else
+    ;;
+    *.tpxz)
+      if "${CREW_PREFIX}"/bin/pixz -h &> /dev/null; then
+        tar -I "${CREW_PREFIX}"/bin/pixz -xpf ../"${2}"
+      else
+        echo "Pixz is broken or nonfunctional, and some packages can not be extracted properly."
+        exit 1
+      fi
+    ;;
+    *)
       tar xpf ../"${2}"
-    fi
+    ;;
+    esac
     echo_intra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -f -)
     mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
@@ -246,7 +260,7 @@ function update_device_json () {
   fi
 }
 echo_info "Downloading Bootstrap packages...\n"
-# extract, install and register packages
+# Extract, install and register packages.
 for i in $(seq 0 $((${#urls[@]} - 1))); do
   url="${urls["${i}"]}"
   sha256="${sha256s["${i}"]}"
@@ -261,8 +275,6 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
   update_device_json "${name}" "${version}"
 done
 
-## workaround https://github.com/chromebrew/chromebrew/issues/3305
-sudo ldconfig &> /dev/null || true
 echo_info "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 echo -e "${GRAY}"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
@@ -271,13 +283,34 @@ echo -e "${RESET}"
 echo_info "Setup and synchronize local package repo..."
 echo -e "${GRAY}"
 
-# Remove old git config directories if they exist
-rm -rf "${CREW_LIB_PATH}"
+# Remove old git config directories if they exist.
+find "${CREW_LIB_PATH}" -mindepth 1 -delete
+
+curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+
+# Set LD_LIBRARY_PATH so crew doesn't break on i686 and
+# the mandb install doesn't fail.
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
+
+# Since we just downloaded the package repo, just update package 
+# compatibility information.
+crew update compatible
+
+echo_info "Installing core Chromebrew packages...\n"
+yes | crew install core
+
+echo_info "\nRunning Bootstrap package postinstall scripts...\n"
+crew postinstall $BOOTSTRAP_PACKAGES
+
+echo_info "Synchronizng local package repo..."
+# First clear out temporary package repo so we can replace it with the 
+# repo downloaded via git.
+find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
 # Do a minimal clone, which also sets origin to the master/main branch
 # by default. For more on why this setup might be useful see:
 # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
-# If using alternate branch don't use depth=1
+# If using alternate branch don't use depth=1 .
 [[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
 git clone $GIT_DEPTH --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
@@ -287,23 +320,10 @@ cd "${CREW_LIB_PATH}"
 [[ "$BRANCH" != "master" ]] && git fetch --all
 git checkout "${BRANCH}"
 
-# Set sparse-checkout folders
+# Set sparse-checkout folders.
 git sparse-checkout set packages lib bin crew tools
 git reset --hard origin/"${BRANCH}"
 echo -e "${RESET}"
-
-echo_info "Updating crew package information...\n"
-# Without setting LD_LIBRARY_PATH, the mandb postinstall fails
-# from not being able to find the gdbm library.
-export LD_LIBRARY_PATH=$(crew const CREW_LIB_PREFIX | sed -e 's:CREW_LIB_PREFIX=::g')
-# Since we just ran git, just update package compatibility information.
-crew update compatible
-
-echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
-
-echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall $BOOTSTRAP_PACKAGES
 
 echo "                       . .
                    ..,:;;;::'..

@@ -24,8 +24,11 @@ class Libssh < Package
      x86_64: 'e30f47fa94fd694f0d6947f597c9195923d7509096f3a9a51ce099970501c913'
   })
 
+  depends_on 'e2fsprogs'
+  depends_on 'krb5'
   depends_on 'libgcrypt'
   depends_on 'py3_abimap' => :build
+  depends_on 'zlibpkg'
 
   def self.build
     FileUtils.mkdir('builddir')
