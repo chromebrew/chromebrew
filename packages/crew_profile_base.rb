@@ -7,7 +7,7 @@ class Crew_profile_base < Package
   version @_ver
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{@_ver}.tar.gz"
+  source_url "https://github.com/chromebrew/crew-profile-base/archive/#{@_ver}.tar.gz"
   source_sha256 '93dc200df351a1f6e1faf458108bee87fff65f45e044d2b08b6c20ea8e064ab9'
 
   no_compile_needed
