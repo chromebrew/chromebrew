@@ -7,7 +7,7 @@ class Webkit2gtk < Package
   version @_ver
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
-  
+
   is_fake
 
   depends_on 'webkit2gtk_4'

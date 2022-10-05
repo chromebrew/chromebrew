@@ -57,7 +57,7 @@ class ProgressBar
         return false
       end
     end
- 
+
     if @start_time
       @elapsed_time = (Time.now - @start_time).to_i
     else

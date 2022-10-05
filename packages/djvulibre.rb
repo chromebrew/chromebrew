@@ -24,7 +24,7 @@ class Djvulibre < Package
        i686: 'a0cf591f8e04fc89a0c2f45f0ad67c7c907971dcf85371a2184c3ea54e605da4',
      x86_64: 'd17ec121e01aea869ea74b421aebcf4b8f019e8b32268859256aadd32019aab5'
   })
- 
+
   depends_on 'libjpeg'
   depends_on 'libtiff'
   depends_on 'librsvg' => :build
