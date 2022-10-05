@@ -43,6 +43,7 @@ echo_info() { echo -e "${YELLOW}${*}${RESET}" >&1; }
 echo_success() { echo -e "${GREEN}${*}${RESET}" >&1; }
 echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
 echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
+echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
 
 # Skip all checks if running on a docker container.
 [[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
@@ -302,27 +303,33 @@ yes | crew install core
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 crew postinstall $BOOTSTRAP_PACKAGES
 
-echo_info "Synchronizng local package repo..."
-# First clear out temporary package repo so we can replace it with the 
-# repo downloaded via git.
-find "${CREW_LIB_PATH}" -mindepth 1 -delete
+if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
+  echo_error "\nGit is broken on your system, and crew update will not work properly."
+  echo_error "Please report this here:"
+  echo_error "https://github.com/chromebrew/chromebrew/issues\n\n"
+else
+  echo_info "Synchronizng local package repo..."
+  # First clear out temporary package repo so we can replace it with the 
+  # repo downloaded via git.
+  find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
-# Do a minimal clone, which also sets origin to the master/main branch
-# by default. For more on why this setup might be useful see:
-# https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
-# If using alternate branch don't use depth=1 .
-[[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
-git clone $GIT_DEPTH --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+  # Do a minimal clone, which also sets origin to the master/main branch
+  # by default. For more on why this setup might be useful see:
+  # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
+  # If using alternate branch don't use depth=1 .
+  [[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
+  git clone $GIT_DEPTH --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
-cd "${CREW_LIB_PATH}"
+  cd "${CREW_LIB_PATH}"
 
-# Checkout, overwriting local files.
-[[ "$BRANCH" != "master" ]] && git fetch --all
-git checkout "${BRANCH}"
+  # Checkout, overwriting local files.
+  [[ "$BRANCH" != "master" ]] && git fetch --all
+  git checkout "${BRANCH}"
 
-# Set sparse-checkout folders.
-git sparse-checkout set packages lib bin crew tools
-git reset --hard origin/"${BRANCH}"
+  # Set sparse-checkout folders.
+  git sparse-checkout set packages lib bin crew tools
+  git reset --hard origin/"${BRANCH}"
+fi
 echo -e "${RESET}"
 
 echo "                       . .
