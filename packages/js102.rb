@@ -55,14 +55,14 @@ class Js102 < Package
       @@ -30,7 +30,11 @@
         * Adapted from https://github.com/freebsd/freebsd-src/search?q=__double_t
         */
-       
+
       +#if defined __FLT_EVAL_METHOD__ && (__FLT_EVAL_METHOD__ == 2)
       +typedef long double      __double_t;
       +#else
        typedef double      __double_t;
       +#endif
        typedef __double_t  double_t;
-       
+
        /*
     PATCH_EOF
     File.write('math_x86.patch', @math_x86_patch)
