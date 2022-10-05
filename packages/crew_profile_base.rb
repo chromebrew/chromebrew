@@ -11,6 +11,7 @@ class Crew_profile_base < Package
   source_url 'https://github.com/chromebrew/crew-profile-base.git'
   git_hashtag @_ver
 
+  depends_on 'git'
   no_compile_needed
   no_patchelf
 
