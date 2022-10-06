@@ -163,8 +163,7 @@ exclude_buildessential: exclude_buildessential,
     if @compatibility
       return (@compatibility.casecmp?('all') or @compatibility.include?(ARCH))
     else
-      warn "#{name}: Missing `compatibility` field.".yellow
-      return true
+      abort "#{name}: Missing `compatibility` field.".lightred
     end
   end
 
