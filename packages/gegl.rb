@@ -3,11 +3,11 @@ require 'package'
 class Gegl < Package
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'http://gegl.org/'
-  version '0.4.30'
+  version '0.4.38'
   license 'GPL-3+ and LGPL-3'
   compatibility 'all'
-  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.30.tar.xz'
-  source_sha256 'c112782cf4096969e23217ccdfabe42284e35d5435ff0c43d40e4c70faeca8dd'
+  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.38.tar.xz'
+  source_sha256 'e4a33c8430a5042fba8439b595348e71870f0d95fbf885ff553f9020c1bed750'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.30_armv7l/gegl-0.4.30-chromeos-armv7l.tar.xz',
