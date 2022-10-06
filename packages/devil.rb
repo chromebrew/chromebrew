@@ -10,10 +10,10 @@ class Devil < Package
   git_hashtag '6f3d5e9bc5d173f56060fc8e14bed35c8edcfdcc'
 
   binary_url({
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_x86_64/devil-1.8.0-6f3d5e9-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_x86_64/devil-1.8.0-6f3d5e9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
+    x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
   })
 
   depends_on 'freeglut'
@@ -40,7 +40,7 @@ class Devil < Package
       +set(CMAKE_CXX_STANDARD 11)
       +set(CMAKE_CXX_STANDARD_REQUIRED ON)
       +set(CMAKE_CXX_EXTENSIONS OFF)
-       
+
        project(ImageLib)
        # include our custom modules
       diff -NPaur a/DevIL/src-IL/src/il_jp2.cpp b/DevIL/src-IL/src/il_jp2.cpp
@@ -62,7 +62,7 @@ class Devil < Package
        	obj;
        	return iread(buf, 1, cnt);
        }
-       
+
        #if defined(JAS_INCLUDE_JP2_CODEC)
       +#if JAS_VERSION_MAJOR >= 3
       +static long int iJp2_file_write(jas_stream_obj_t *obj, const char *buf, long unsigned int cnt)
