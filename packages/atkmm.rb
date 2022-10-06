@@ -16,10 +16,10 @@ class Atkmm < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.28.3_x86_64/atkmm-2.28.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f0e1d2d64a82204014132c2218ca8909d940d89929eb538ea18d530433d27883',
-     armv7l: 'f0e1d2d64a82204014132c2218ca8909d940d89929eb538ea18d530433d27883',
-       i686: 'aac296de2f47c8fd9dc3cd1bfcf3e1d059ff5665549802e603664862d54d8f77',
-     x86_64: 'ceee59dcefe0aa9fe7eac7a6af0b4057d9301661aceb87a62741e6a097b11b32'
+    aarch64: 'bdf1a9c594244ba93b4ea98b38064cc67bfc6364d8edddf5135aaf53891fcc48',
+     armv7l: 'bdf1a9c594244ba93b4ea98b38064cc67bfc6364d8edddf5135aaf53891fcc48',
+       i686: '411689a402104d3b0e91cc7edb4781ffa247fb2ec361bae6ab97d3c39398ff6e',
+     x86_64: '86017c202ce153168975d2bac00d6777961dc9af26ded6d058e8a70537400a8e'
   })
 
   depends_on 'atk'
