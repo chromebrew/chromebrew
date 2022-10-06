@@ -8,7 +8,7 @@ class Crew_launcher < Package
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-launcher.git'
   git_hashtag '1.1'
-  
+
   depends_on 'llvm'
   depends_on 'graphicsmagick'
 
@@ -26,7 +26,7 @@ class Crew_launcher < Package
       FileUtils.ln_s '../../../lib/crew/lib/color.rb', 'color.rb'
     end
     FileUtils.ln_s '../share/crew-launcher/main.rb', "#{CREW_DEST_PREFIX}/bin/crew-launcher"
-    
+
     system "curl -L https://github.com/chromebrew/chromebrew/raw/gh-pages/images/brew-title.png -o #{CREW_DEST_PREFIX}/share/crew-launcher/icon/brew.png"
 
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/crew_launcher", <<~EOF

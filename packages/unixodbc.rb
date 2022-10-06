@@ -21,7 +21,7 @@ class Unixodbc < Package
        i686: '590762ad9a2cd402ae52da0382c652d8e08a6b049f875ae99ec792f228331cd8',
      x86_64: '705488db5fc32fe2062da25e4650ac090983404525c9d06f32646058a76cfb2a'
   })
-  
+
   def self.build
     system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
       CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \

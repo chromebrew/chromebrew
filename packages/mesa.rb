@@ -134,7 +134,7 @@ class Mesa < Package
       @@ -391,16 +391,10 @@ lp_build_comp(struct lp_build_context *b
                 return LLVMBuildNot(builder, a, "");
           }
-       
+
       -   if(LLVMIsConstant(a))
       -      if (type.floating)
       -          return LLVMConstFSub(bld->one, a);
@@ -149,12 +149,12 @@ class Mesa < Package
       -         return LLVMBuildSub(builder, bld->one, a, "");
       +      return LLVMBuildSub(builder, bld->one, a, "");
        }
-       
-       
+
+
       @@ -479,16 +473,10 @@ lp_build_add(struct lp_build_context *bl
              }
           }
-       
+
       -   if(LLVMIsConstant(a) && LLVMIsConstant(b))
       -      if (type.floating)
       -         res = LLVMConstFAdd(a, b);
@@ -168,13 +168,13 @@ class Mesa < Package
       -      else
       -         res = LLVMBuildAdd(builder, a, b, "");
       +      res = LLVMBuildAdd(builder, a, b, "");
-       
+
           /* clamp to ceiling of 1.0 */
           if(bld->type.norm && (bld->type.floating || bld->type.fixed))
       @@ -815,16 +803,10 @@ lp_build_sub(struct lp_build_context *bl
              }
           }
-       
+
       -   if(LLVMIsConstant(a) && LLVMIsConstant(b))
       -      if (type.floating)
       -         res = LLVMConstFSub(a, b);
@@ -188,13 +188,13 @@ class Mesa < Package
       -      else
       -         res = LLVMBuildSub(builder, a, b, "");
       +      res = LLVMBuildSub(builder, a, b, "");
-       
+
           if(bld->type.norm && (bld->type.floating || bld->type.fixed))
              res = lp_build_max_simple(bld, res, bld->zero, GALLIVM_NAN_RETURN_OTHER_SECOND_NONNAN);
       @@ -980,29 +962,15 @@ lp_build_mul(struct lp_build_context *bl
           else
              shift = NULL;
-       
+
       -   if(LLVMIsConstant(a) && LLVMIsConstant(b)) {
       -      if (type.floating)
       -         res = LLVMConstFMul(a, b);
@@ -227,12 +227,12 @@ class Mesa < Package
       -      }
       +          res = LLVMBuildLShr(builder, res, shift, "");
           }
-       
+
           return res;
       @@ -1288,15 +1256,6 @@ lp_build_div(struct lp_build_context *bl
           if(a == bld->undef || b == bld->undef)
              return bld->undef;
-       
+
       -   if(LLVMIsConstant(a) && LLVMIsConstant(b)) {
       -      if (type.floating)
       -         return LLVMConstFDiv(a, b);
@@ -247,11 +247,11 @@ class Mesa < Package
              ((util_get_cpu_caps()->has_sse && type.width == 32 && type.length == 4) ||
       @@ -2643,7 +2602,7 @@ lp_build_rcp(struct lp_build_context *bl
           assert(type.floating);
-       
+
           if(LLVMIsConstant(a))
       -      return LLVMConstFDiv(bld->one, a);
       +      return LLVMBuildFDiv(builder, bld->one, a, "");
-       
+
           /*
            * We don't use RCPPS because:
 

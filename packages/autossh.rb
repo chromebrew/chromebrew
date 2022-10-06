@@ -23,13 +23,13 @@ class Autossh < Package
   })
 
   depends_on 'openssh'
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
             --with-ssh=$(which ssh)"
     system 'make'
   end
-  
+
   def self.install
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "mkdir -p #{CREW_DEST_PREFIX}/share/doc/autossh"

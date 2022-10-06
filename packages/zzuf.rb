@@ -21,7 +21,7 @@ class Zzuf < Package
        i686: 'fc620b537e809bfcd5a7c598ba25c60ab8ce5a8091d2ba0330cbce19ecd466dc',
      x86_64: '013eef3b0e2c088071352d6a29e60c9b1562db09a5371e427a6d9cc387ec1092'
   })
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'
@@ -30,7 +30,7 @@ class Zzuf < Package
   def self.check
     system 'make check'
   end
-  
+
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end

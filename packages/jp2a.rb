@@ -21,11 +21,11 @@ class Jp2a < Package
        i686: '7ce07d9769cfe508d021f1fb17d7969c8f986c577a1f903de764890165824f18',
      x86_64: '981baefcffa4d9cc67758003cd068235b074b7200e1ffed05d0f5ce76116f089'
   })
-  
+
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'termcap'
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
             --enable-curl"
@@ -35,7 +35,7 @@ class Jp2a < Package
   def self.check
     system 'make check || true'
   end
-  
+
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end

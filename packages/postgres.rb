@@ -78,7 +78,7 @@ class Postgres < Package
       case $stdin.getc
       when 'y', 'Y'
         FileUtils.rm_rf PGDATA
-        FileUtils.rm_rf "#{CREW_PREFIX}/pgsql" 
+        FileUtils.rm_rf "#{CREW_PREFIX}/pgsql"
         puts "#{PGDATA} removed.".lightred
       else
         puts "#{PGDATA} saved.".lightgreen

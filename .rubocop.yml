@@ -124,9 +124,6 @@ Layout/FirstHashElementIndentation:
 Layout/IndentationStyle:
   EnforcedStyle: spaces
 
-Style/AndOr:
-  Enabled: false
-
 Style/RedundantReturn:
   Enabled: false
 

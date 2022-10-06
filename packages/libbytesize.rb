@@ -3,7 +3,7 @@ require 'package'
 class Libbytesize < Package
   description 'A tiny library providing a C "class" for working with arbitrary big sizes in bytes'
   homepage 'https://github.com/storaged-project/libbytesize'
-  version '2.6'    
+  version '2.6'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/storaged-project/libbytesize/releases/download/2.6/libbytesize-2.6.tar.gz'
@@ -23,7 +23,7 @@ class Libbytesize < Package
   })
 
   depends_on 'gawk' => :build
-  
+
   def self.build
     system "./configure #{CREW_OPTIONS} --with-gtk-doc=no"
     system 'make'
