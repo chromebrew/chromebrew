@@ -6,23 +6,24 @@ require 'package'
 class Libgxps < Package
   description 'XPS Documents library'
   homepage 'https://wiki.gnome.org/Projects/libgxps'
-  version '0.3.2'
+  @_ver = '0.3.2'
+  version "#{@_ver}-1"
   license 'GPL2'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/libgxps/-/archive/#{version}/libgxps-#{version}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/libgxps/-/archive/#{@_ver}/libgxps-#{@_ver}.tar.bz2"
   source_sha256 'ffbc656e801233a64ea5b6ab5532691e8b91f72cce3ea957615fe8523696d42a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_armv7l/libgxps-0.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_armv7l/libgxps-0.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_i686/libgxps-0.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2_x86_64/libgxps-0.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-1_armv7l/libgxps-0.3.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-1_armv7l/libgxps-0.3.2-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-1_i686/libgxps-0.3.2-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-1_x86_64/libgxps-0.3.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '47a8cac375a3ea3dace3d0498c79511d3973b2e39b6fd8d8593804e6de84dfeb',
-     armv7l: '47a8cac375a3ea3dace3d0498c79511d3973b2e39b6fd8d8593804e6de84dfeb',
-       i686: '7b6f550b505c2453841539b0ce36b5d8404ab098bdc2fa8f8c5f7f27cdda6ac8',
-     x86_64: '87bf32455bded966594a39131bf79ad198e06617df4ccc0327932c413b3d78b6'
+    aarch64: 'b66e2b7334eec0ddc7061deaeb7d36b48a24bd2b2cb8f9343cacc7788bc7dc3d',
+     armv7l: 'b66e2b7334eec0ddc7061deaeb7d36b48a24bd2b2cb8f9343cacc7788bc7dc3d',
+       i686: '6c1cac1aaa4f0eec41867f335c93b6a5fe39aaa009b318bec14c6c7a8d2592a4',
+     x86_64: '9cbdfadd27b0fad97bbf2c9dd76a0788e738733cc789ca94b74087b1d1fa97df'
   })
 
   depends_on 'cairo'
