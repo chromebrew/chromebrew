@@ -3,23 +3,23 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '71.1'
+  version '72rc'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz'
-  source_sha256 '67a7e6e51f61faf1306b6935333e13b2c48abd8da6d2f46ce6adca24b1e21ebf'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-72-rc/icu4c-72rc-src.tgz'
+  source_sha256 'e94cfb91fc0d1934449eadb28c68967b5b29d0c0916490ccd50098972a420a2d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/71.1_armv7l/icu4c-71.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/71.1_armv7l/icu4c-71.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/71.1_i686/icu4c-71.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/71.1_x86_64/icu4c-71.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc_armv7l/icu4c-72rc-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc_armv7l/icu4c-72rc-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc_i686/icu4c-72rc-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc_x86_64/icu4c-72rc-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fdb2d1bc662a046b39aca817ae29a037d873f441af547954bdcdb6f81d8b21af',
-     armv7l: 'fdb2d1bc662a046b39aca817ae29a037d873f441af547954bdcdb6f81d8b21af',
-       i686: 'ab4a37ba005e0016947cee529fedcc7d32426b9c2f85d05c45b5231973e18dc4',
-     x86_64: 'd1b994945906ffae1ebb07e6e4dffd648ab8bde3555b2cb8ae093623438112b1'
+    aarch64: 'efb5bbf3f5bc2dbe9179f49d516d6fb101c58216a959901632606c551b53e16a',
+     armv7l: 'efb5bbf3f5bc2dbe9179f49d516d6fb101c58216a959901632606c551b53e16a',
+       i686: 'ea0b61a1552b4d67f8ebc857cf3e4701ecfd36d6b93eabd1a085dfd110c01bec',
+     x86_64: '7c1d1b70f09f0bfd6df9038172c5eed6322e119ad5f582f1330d69472678dcca'
   })
 
   depends_on 'gcc' # R
@@ -44,8 +44,8 @@ class Icu4c < Package
     end
   end
 
-  @icuver = '71'
-  @oldicuver = %w[67 68 69]
+  @icuver = '72'
+  @oldicuver = %w[67 68 69 71]
 
   def self.install
     FileUtils.cd('source') do
