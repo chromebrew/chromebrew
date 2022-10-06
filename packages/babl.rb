@@ -16,18 +16,20 @@ class Babl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/babl/0.1.96_x86_64/babl-0.1.96-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '59fad520378a0e5e8598f557a5c0204267d77ff3beb889d7d4e17ce3b60f9d07',
-     armv7l: '59fad520378a0e5e8598f557a5c0204267d77ff3beb889d7d4e17ce3b60f9d07',
-       i686: '8bb99310cc05274c19a49a9329f45fcbf52c4c461448ac9485d081c0e9d2d63a',
+    aarch64: '6b65d71f86b224ac122d23aa119b80564671f90e939fb7fb115eb846c72c68cc',
+     armv7l: '6b65d71f86b224ac122d23aa119b80564671f90e939fb7fb115eb846c72c68cc',
+       i686: '968658467e7d1d60e13fca412edff461a2416c2b33ffd800965b87fe687f281f',
      x86_64: '8bdfd586755b13ab480530bfe8170c4e59ee73eefef798c29cea8a9fd1da30ff'
   })
 
+  depends_on 'gobject_introspection' => :build
   depends_on 'lcms'
   depends_on 'pango'
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
-    builddir"
+      -Denable-gir=true \
+      builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end
