@@ -40,7 +40,7 @@ class Dconf_editor < Package
   def self.check
     system 'ninja -C builddir test'
   end
-  
+
   def self.postinstall
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end

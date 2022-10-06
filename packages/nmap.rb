@@ -32,7 +32,7 @@ class Nmap < Package
     # ensure we build devendored deps"
     @deps = %w[libpcap libpcre macosx mwin32 libssh2 libz]
     @deps.each do |dep|
-      FileUtils.rm_rf dep 
+      FileUtils.rm_rf dep
     end
     system 'autoreconf -fiv'
     system 'filefix'

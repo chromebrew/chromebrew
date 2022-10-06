@@ -9,7 +9,7 @@ class Funny_manpages < Package
   compatibility 'all'
   source_url 'https:///github.com/ltworf/funny-manpages.git'
   git_hashtag @_ver
-  
+
   depends_on 'mandb'
 
   def self.install
