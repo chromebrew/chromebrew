@@ -16,10 +16,10 @@ class Libxml2 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2-1_x86_64/libxml2-2.10.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '58527c62eeca79fcfa17bf40d12d804bf0b75f1e79bfe4a521ca0d88afb0c299',
-     armv7l: '58527c62eeca79fcfa17bf40d12d804bf0b75f1e79bfe4a521ca0d88afb0c299',
-       i686: 'db3d66a527f7168b6f04ad7a73ac47088edc3b5fd276dac785bbed2bbf8e3ff2',
-     x86_64: '5e0ebfa70fe16eca1ac279d0fc46c1ea7b69ff5c1c7e8faa7b482166f3fef6d1'
+    aarch64: '69c9c14c155c554bb8a093f65537233c6844fc2e8bb4c4700942091a3e1bb8db',
+     armv7l: '69c9c14c155c554bb8a093f65537233c6844fc2e8bb4c4700942091a3e1bb8db',
+       i686: 'f416b5a9c84e55e249cfb8249bb5b67f67d5d2b32ce28a8b80678f22a1516fac',
+     x86_64: '14cc527ce6f0f9622974069459a1d931910de6df810fecb91e806d813a34ad93'
   })
 
   depends_on 'gcc' # R
