@@ -1318,7 +1318,7 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.exist?("#{CREW_PACKAGES_PATH}/#{dep}.rb")
+    abort "Dependency #{dep} was not found.".lightred unless File.exist?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
   end
 
   puts @dependencies.join(' ')
