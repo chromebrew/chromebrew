@@ -3,23 +3,29 @@ require 'package'
 class Wxwidgets31 < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.1.7'
+  @_ver = '3.1.7'
+  version @_ver
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_armv7l/wxwidgets31-3.1.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_armv7l/wxwidgets31-3.1.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_i686/wxwidgets31-3.1.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7-1_armv7l/wxwidgets31-3.1.7-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7-1_armv7l/wxwidgets31-3.1.7-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7-1_i686/wxwidgets31-3.1.7-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7-1_x86_64/wxwidgets31-3.1.7-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ce03b99f4b8ff0ddf623ab3063f239835730c15e4eb7a96d8d0da34215ea8f0c',
-     armv7l: 'ce03b99f4b8ff0ddf623ab3063f239835730c15e4eb7a96d8d0da34215ea8f0c',
-       i686: '9146feac96e97f3ae4438ae608b567ba85792f169d27b921c42aafe350b80da0',
-     x86_64: '297db664625538bdae60759b35cd6e57e6424a902b8ddacab3375eeda189b547'
+    aarch64: '06ce4511fa4644cca7ffddc2126861a29721bdc6a080d44af0be9b2e9219011f',
+     armv7l: '06ce4511fa4644cca7ffddc2126861a29721bdc6a080d44af0be9b2e9219011f',
+       i686: 'beaef0599b9941bc7b5d386d02cc054e4e819be8f8a10520877409d0593adf12',
+     x86_64: 'fdca340f406313487d192c9c843abec698035fecb48484fe63f072527cb2a3b7'
   })
+
+  # cmake builds are broken on this versiondue due to an OpenGL
+  # detection error in cmake
+  # https://gitlab.kitware.com/cmake/cmake/-/issues/24019
+  # https://github.com/wxWidgets/wxWidgets/issues/22841
 
   depends_on 'atk' # R
   depends_on 'gdk_pixbuf' # R
@@ -40,6 +46,7 @@ class Wxwidgets31 < Package
   depends_on 'libxxf86vm' # R
   depends_on 'mesa'
   depends_on 'pango' # R
+  depends_on 'webkit2gtk_4'
 
   def self.preflight
     %w[wxwidgets wxwidgets30].each do |wxw|
@@ -64,7 +71,6 @@ class Wxwidgets31 < Package
       --with-libjpeg=sys \
       --with-libtiff=sys \
       --without-gnomevfs \
-      --disable-universal \
       --disable-precomp-headers"
     system 'make'
   end
