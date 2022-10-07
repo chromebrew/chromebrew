@@ -3,24 +3,12 @@ require 'package'
 class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.2.1'
+  @_ver = '3.2.1'
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{version}"
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_i686/wxwidgets-3.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_x86_64/wxwidgets-3.2.1-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
-     armv7l: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
-       i686: 'f752f8d0ba3fb2385f42d5f8476857845a44fbb528cf5838e6b307516c9fe3fa',
-     x86_64: 'beae22a38ef0479491e2c563e7e9d317d14d643e4ffa5499579b3fe53176df1c'
-  })
+  git_hashtag "v#{@_ver}"
 
   depends_on 'atk' # R
   depends_on 'fontconfig'
@@ -41,6 +29,7 @@ class Wxwidgets < Package
   depends_on 'libxxf86vm' # R
   depends_on 'mesa' # R
   depends_on 'pango' # R
+  depends_on 'webkit2gtk_4'
 
   def self.preflight
     %w[wxwidgets30 wxwidgets31].each do |wxw|
@@ -53,25 +42,17 @@ class Wxwidgets < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --with-gtk=3 \
-      --with-opengl \
-      --enable-unicode \
-      --enable-graphics_ctx \
-      --enable-mediactrl \
-      --enable-webview \
-      --with-regex=builtin \
-      --with-libpng=builtin \
-      --with-libjpeg=sys \
-      --with-libtiff=sys \
-      --without-gnomevfs \
-      --disable-universal \
-      --disable-precomp-headers"
-    system 'make'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        .."
+    end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.2", 'wx-config'
     end
