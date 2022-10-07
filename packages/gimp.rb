@@ -65,6 +65,7 @@ class Gimp < Package
   depends_on 'libxmu'
   depends_on 'libxpm'
   depends_on 'libxt'
+  depends_on 'lua_lgi'
   depends_on 'mypaint_brushes_1'
   depends_on 'openexr'
   depends_on 'openjpeg'
