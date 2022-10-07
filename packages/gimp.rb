@@ -10,10 +10,16 @@ class Gimp < Package
   source_sha256 '7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.12_x86_64/gimp-2.99.12-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.12_armv7l/gimp-2.99.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.12_armv7l/gimp-2.99.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.12_i686/gimp-2.99.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.12_x86_64/gimp-2.99.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'ec0ae1894433edb9184989aaccee21474e1cf6bde43eb1d5fbe24f077682881f'
+    aarch64: '5c1931f8777aae220461de92f9b7b78df10d4bdbd014b424743d822ccffdddc4',
+     armv7l: '5c1931f8777aae220461de92f9b7b78df10d4bdbd014b424743d822ccffdddc4',
+       i686: '806cc6a0a7c88951a14bb950be00fe223a667626f3e521561ee7e96286bb9d0b',
+     x86_64: 'ec0ae1894433edb9184989aaccee21474e1cf6bde43eb1d5fbe24f077682881f'
   })
 
   depends_on 'aalib'
