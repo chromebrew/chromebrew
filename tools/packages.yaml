@@ -7750,12 +7750,17 @@ activity: medium
 ---
 kind: url
 name: vulkan_headers
-url: https://github.com/KhronosGroup/Vulkan-Headers/releases
+url: https://github.com/KhronosGroup/Vulkan-Headers/tags
 activity: high
 ---
 kind: url
 name: vulkan_icd_loader
-url: https://github.com/KhronosGroup/Vulkan-Loader/releases
+url: https://github.com/KhronosGroup/Vulkan-Loader/tags
+activity: high
+---
+kind: url
+name: vulkan_tools
+url: https://github.com/KhronosGroup/Vulkan-Tools/tags
 activity: high
 ---
 kind: url
