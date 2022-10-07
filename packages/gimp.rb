@@ -3,23 +3,17 @@ require 'package'
 class Gimp < Package
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '2.10.24'
+  version '2.99.12'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url 'https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.24.tar.bz2'
-  source_sha256 'bd1bb762368c0dd3175cf05006812dd676949c3707e21f4e6857435cb435989e'
+  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.12.tar.xz'
+  source_sha256 '7ba1b032ea520d540e4acad3da16d8637fe693743fdb36e0121775eea569f6a3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_armv7l/gimp-2.10.24-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_i686/gimp-2.10.24-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.24_x86_64/gimp-2.10.24-chromeos-x86_64.tar.xz'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.12_x86_64/gimp-2.99.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6867db24428a1509ac14459f29944a2fbb0a81e8a509b39cd2b7c837fd48fd00',
-     armv7l: '6867db24428a1509ac14459f29944a2fbb0a81e8a509b39cd2b7c837fd48fd00',
-       i686: '6e8faf363dca5a4ae3e1f9eedf05c771016c24256ee67df5a39c586fe565ff0d',
-     x86_64: 'a930aebb265c21d07c8ed0d3e754ca60fe98232335089647d49b294832cdd3d4'
+    x86_64: 'ec0ae1894433edb9184989aaccee21474e1cf6bde43eb1d5fbe24f077682881f'
   })
 
   depends_on 'aalib'
@@ -65,31 +59,28 @@ class Gimp < Package
   depends_on 'libxmu'
   depends_on 'libxpm'
   depends_on 'libxt'
-  depends_on 'mypaint_brushes'
+  depends_on 'mypaint_brushes_1'
   depends_on 'openexr'
   depends_on 'openjpeg'
   depends_on 'pango'
   depends_on 'poppler'
   depends_on 'poppler_data'
+  depends_on 'py3_pycairo'
   depends_on 'pygtk'
   depends_on 'shared_mime_info'
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      CXXFLAGS='-pipe -flto=auto -fuse-ld=gold' \
-      LDFLAGS='-flto' \
-      LIBS='-lm' \
-      datarootdir=#{CREW_PREFIX}/share \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --with-icc-directory=#{CREW_PREFIX}/share/color/icc \
-      --disable-maintainer-mode"
-    system 'make'
+    system "meson \
+      #{CREW_MESON_OPTIONS} \
+      -Dbug-report-url=https://github.com/chromebrew/chromebrew/issues \
+      builddir"
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end
