@@ -77,6 +77,7 @@ class Gimp < Package
   depends_on 'shared_mime_info'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+  gnome
 
   def self.build
     system "meson \
