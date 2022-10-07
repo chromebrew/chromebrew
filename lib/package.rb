@@ -161,9 +161,10 @@ exclude_buildessential: exclude_buildessential,
 
   def self.compatible?
     if @compatibility
-      return (@compatibility.casecmp?('all') or @compatibility.include?(ARCH))
+      return (@compatibility.casecmp?('all') || @compatibility.include?(ARCH))
     else
-      abort "#{name}: Missing `compatibility` field.".lightred
+      warn "#{name}: Missing `compatibility` field.".lightred
+      return false
     end
   end
 
