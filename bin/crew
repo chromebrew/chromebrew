@@ -1340,7 +1340,7 @@ def resolve_dependencies
     print_current_package
     install
   end
-  if @resolve_dependencies_and_install.eql?(1) or @resolve_dependencies_and_build.eql?(1)
+  if @resolve_dependencies_and_install.eql?(1) || @resolve_dependencies_and_build.eql?(1)
     @to_postinstall = @dependencies
   else
     @dependencies.each do |dep|
