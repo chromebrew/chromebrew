@@ -48,8 +48,7 @@ class Luajit_lgi < Package
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     return unless ARCH == 'x86_64'
 
-      FileUtils.mv "#{CREW_DEST_LIB_PREFIX}/lua/#{@lua_version}/lgi/corelgilua51.so",
-"#{CREW_DEST_PREFIX}/lib/lua/#{@lua_version}/lgi/corelgilua51.s"
-    end
+    FileUtils.mv "#{CREW_DEST_LIB_PREFIX}/lua/#{@lua_version}/lgi/corelgilua51.so",
+                 "#{CREW_DEST_PREFIX}/lib/lua/#{@lua_version}/lgi/corelgilua51.s"
   end
 end
