@@ -22,7 +22,7 @@ class Luajit_lgi < Package
     aarch64: '257910d6e04313969e6a3ed192315cab7d09b352e37087d8725b39c8e39c462c',
      armv7l: '257910d6e04313969e6a3ed192315cab7d09b352e37087d8725b39c8e39c462c',
        i686: '66687ca27b47102b971210aed62597e6934d407a1c7ca7745ba54b13a8341d91',
-     x86_64: '1ca9516bb6f0fbc7ce35c093f4e952a74d50b4374b20890ac8705002637d3df7'
+     x86_64: 'da314b08086b585d7275e306a34489d459a112c4ff5e42bb329a21e9d5ee319e'
   })
 
   depends_on 'cairo'
@@ -49,6 +49,6 @@ class Luajit_lgi < Package
     return unless ARCH == 'x86_64'
 
     FileUtils.mv "#{CREW_DEST_LIB_PREFIX}/lua/#{@lua_version}/lgi/corelgilua51.so",
-                 "#{CREW_DEST_PREFIX}/lib/lua/#{@lua_version}/lgi/corelgilua51.s"
+                 "#{CREW_DEST_PREFIX}/lib/lua/#{@lua_version}/lgi/corelgilua51.so"
   end
 end
