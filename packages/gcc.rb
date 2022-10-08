@@ -31,6 +31,7 @@ class Gcc < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'libssp' # L
+  depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
   no_env_options
