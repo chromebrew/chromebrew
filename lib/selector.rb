@@ -40,7 +40,7 @@ class Selector
       end
     end
 
-    if @io_read.nil?, @io_read[:input].to_s.chomp.empty?
+    if @io_read.nil? || @io_read[:input].to_s.chomp.empty?
       # empty input or timeout
       warn "Selected \"#{@options[0][:value]}\" by default.".yellow
       choice = 1
