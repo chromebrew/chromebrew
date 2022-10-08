@@ -11,8 +11,8 @@ class Hunspell < Package
 
   def self.preflight
     options = [
-      { value: 'hunspell_en_us' , description: 'American English' },
-      { value: 'hunspell_fr_fr' , description: 'Français'         },
+      { value: 'hunspell_en_us',  description: 'American English' },
+      { value: 'hunspell_fr_fr',  description: 'Français'         },
       { value: 'hunspell_es_any', description: 'Español'          }
     ]
 

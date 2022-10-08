@@ -4,44 +4,16 @@ require_relative 'color'
 
 class Selector
   @@default_prompt = {
-      heading: "There are %{total_opts} provider(s) for this package: ",
-    countdown: "Default selected in %%2.2i second(s). Enter your choice [1 = %{default}]: "
+      heading: 'There are %{total_opts} provider(s) for this package: ',
+    countdown: 'Default selected in %%2.2i second(s). Enter your choice [1 = %{default}]: '
   }
 
-  def initialize (options, prompt = @@default_prompt, timeout = 10)
-    @options = options 
+  def initialize(options, prompt = @@default_prompt, timeout = 10)
+    @options = options
     @timeout = timeout
 
     # substitute expressions in the message ("%{variable}")
-    @prompt = prompt.transform_values {|p| p % { total_opts: @options.size, default: @options[0][:value] } }
-  end
-
-  private def fire_timer (&when_timeout)
-    # fire_timer(): start a timer in separate thread
-    @countdown = Thread.new do
-      @timeout.downto(0).each do |remaining_time|
-        # print current countdown
-        $stderr.print "\r#{@prompt[:countdown] % remaining_time}"
-
-        if remaining_time == 0
-          warn "\nTime expired.\n".yellow
-          when_timeout.call
-        else
-          sleep 1
-        end
-      end
-    end
-  end
-
-  private def start_reading
-    # start_reading(): read from terminal in separate thread
-    @io_read = Thread.new do
-      # discard any input in the input buffer
-      $stdin.read_nonblock(1024)
-    rescue IO::WaitReadable
-    ensure
-      Thread.current[:input] = $stdin.getc
-    end
+    @prompt = prompt.transform_values {|p| format(p, { total_opts: @options.size, default: @options[0][:value] }) }
   end
 
   def show_prompt
@@ -68,12 +40,11 @@ class Selector
       end
     end
 
-    case
-    when @io_read.nil?, @io_read[:input].to_s.chomp.empty?
+    if @io_read.nil?, @io_read[:input].to_s.chomp.empty?
       # empty input or timeout
       warn "Selected \"#{@options[0][:value]}\" by default.".yellow
       choice = 1
-    when Integer(@io_read[:input], exception: false)&.between?(1, @options.size)
+    elsif Integer(@io_read[:input], exception: false)&.between?(1, @options.size)
       # when input is valid (is an integer and in range)
       choice = @io_read[:input].to_i
     else
@@ -88,5 +59,35 @@ class Selector
 
     # return result
     return @options[choice - 1][:value]
+  end
+
+  private
+
+  def fire_timer(&when_timeout)
+    # fire_timer(): start a timer in separate thread
+    @countdown = Thread.new do
+                   @timeout.downto(0).each do |remaining_time|
+                     # print current countdown
+                     $stderr.print "\r#{format(@prompt[:countdown], remaining_time)}"
+
+                     if remaining_time.zero?
+                       warn "\nTime expired.\n".yellow
+                       when_timeout.call
+                     else
+                       sleep 1
+                     end
+                   end
+                 end
+  end
+
+  def start_reading
+    # start_reading(): read from terminal in separate thread
+    @io_read = Thread.new do
+                 # discard any input in the input buffer
+                 $stdin.read_nonblock(1024)
+               rescue IO::WaitReadable
+               ensure
+                 Thread.current[:input] = $stdin.getc
+               end
   end
 end

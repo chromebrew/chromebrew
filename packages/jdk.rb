@@ -17,24 +17,24 @@ class Jdk < Package
         jdkver     = jdkver_str[/version "(.+?)"/, 1]
         majver     = jdkver.split('.')[0]
         majver     = '8' if majver == '1'
-        pkg_suffix = (is_openjdk) ? 'openjdk' : 'jdk'
+        pkg_suffix = is_openjdk ? 'openjdk' : 'jdk'
 
         puts "Package #{pkg_suffix}#{majver} already installed.".lightgreen
         warn "Run `crew remove #{pkg_suffix}#{majver} && crew install jdk` to install a different version.".yellow
         return false
       end
 
-      jdk_latest_ver = %w[8 11 17 18].map do |jdk_majver|
+      jdk_latest_ver = %w[8 11 17 18].to_h do |jdk_majver|
         pkg = Package.load_package("#{CREW_PACKAGES_PATH}/jdk#{jdk_majver}.rb")
 
         [jdk_majver, pkg.version]
-      end.to_h
+      end
 
       options = [
-        { value: 'jdk8' , description: "Oracle JDK 8"  },
-        { value: 'jdk11', description: "Oracle JDK 11" }, 
-        { value: 'jdk17', description: "Oracle JDK 17" },
-        { value: 'jdk18', description: "Oracle JDK 18" }
+        { value: 'jdk8',  description: 'Oracle JDK 8'  },
+        { value: 'jdk11', description: 'Oracle JDK 11' },
+        { value: 'jdk17', description: 'Oracle JDK 17' },
+        { value: 'jdk18', description: 'Oracle JDK 18' }
       ]
 
       depends_on Selector.new(options).show_prompt
