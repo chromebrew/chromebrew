@@ -23,7 +23,6 @@ DOC = <<~DOCOPT
   Chromebrew - Package manager for Chrome OS https://chromebrew.github.io
 
   Usage:
-    crew autoremove [options]
     crew build [options] [-k|--keep] <name> ...
     crew const [options] [<name> ...]
     crew deps [options] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <name> ...
@@ -79,7 +78,6 @@ LICENSESTRING
 
 # All available crew commands.
 @cmds = %w[
-  autoremove
   build
   const
   deps
@@ -167,17 +165,23 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
-  status = ''
-  status = 'installed' if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
-  status = 'incompatible' unless @device[:compatible_packages].any? { |elem| elem[:name] == @pkg.name }
+  status = if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
+             :installed
+           elsif !@pkg.compatible?
+             :incompatible
+           else
+             :available
+           end
+
   case status
-  when 'installed'
+  when :installed
     print @pkg.name.lightgreen
-  when 'incompatible'
+  when :incompatible
     print @pkg.name.lightred
-  else
+  when :available
     print @pkg.name.lightblue
   end
+
   print ": #{@pkg.description}".lightblue if @pkg.description
   if extra
     puts ''
@@ -216,7 +220,7 @@ def list_available
     rescue StandardError => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
-    puts pkgName if (@pkg.compatibility&.include? 'all') || (@pkg.compatibility&.include? ARCH)
+    puts pkgName if @pkg.compatible?
   end
 end
 
@@ -286,7 +290,7 @@ def generate_compatible
         puts "#{pkgName} compatibility is #{@compatibility}" if @opt_verbose
       end
     end
-    if ((@pkg.compatibility&.include? 'all') || (@pkg.compatibility&.include? ARCH) || @pkg.compatibility.nil?) && @compatibility
+    if @pkg.compatible? && @compatibility
       # add to compatible packages
       puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
@@ -339,11 +343,6 @@ end
 
 def help(pkgName)
   case pkgName
-  when 'autoremove'
-    puts <<~EOT
-      Remove unused dependencies installed by removed packages
-      Usage: crew autoremove
-    EOT
   when 'build'
     puts <<~EOT
       Build package(s).
@@ -1264,12 +1263,13 @@ end
 
 def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 1
-  preflight_fake_packages = %w[hunspell imagemagick jdk php]
-  unless @pkg.is_fake? && !preflight_fake_packages.include?(@pkg.name)
-    # Process preflight block to see if package should even
-    # be downloaded or installed.
-    pre_flight
-  end
+
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
+
+  # Process preflight block to see if package should even
+  # be downloaded or installed.
+  pre_flight
+
   begin
     origin = @pkg.name
 
@@ -1301,16 +1301,16 @@ def expand_dependencies
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @device[:compatible_packages].any? { |elem| elem[:name] == @pkg.name }
-
   @dependencies = []
   expand_dependencies
 
   # leave only not installed packages in dependencies
-  @dependencies.select! { |name| @device[:installed_packages].none? { |pkg| pkg[:name] == name } }
-  %w[jdk11 jdk15 jdk16 jdk17 jdk18].each do |jdk|
-    @dependencies.delete('jdk8') if @dependencies.include?(jdk)
-    @dependencies.delete('jdk8') if @pkg.name == jdk
+  @dependencies.reject! { |name| @device[:installed_packages].any? { |pkg| pkg[:name] == name } }
+
+  # run preflight check for dependencies
+  @dependencies.each do |depName|
+    dep_pkgPath = File.join(CREW_PACKAGES_PATH, "#{depName}.rb")
+    Package.load_package(dep_pkgPath, depName).preflight
   end
 
   return if @dependencies.empty?
@@ -1318,7 +1318,7 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.exist?("#{CREW_PACKAGES_PATH}#{dep}.rb")
+    abort "Dependency #{dep} was not found.".lightred unless File.exist?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
   end
 
   puts @dependencies.join(' ')
@@ -1330,26 +1330,22 @@ def resolve_dependencies
     abort 'No changes made.'
   when "\n", 'y', 'Y'
     puts 'Proceeding...'
-    proceed = true
   else
     puts "I don't understand `#{response}`. :(".lightred
     abort 'No changes made.'
   end
 
-  if proceed
+  @dependencies.each do |dep|
+    search dep
+    print_current_package
+    install
+  end
+  if @resolve_dependencies_and_install.eql?(1) || @resolve_dependencies_and_build.eql?(1)
+    @to_postinstall = @dependencies
+  else
     @dependencies.each do |dep|
       search dep
-      print_current_package
-      @pkg.is_dep = true
-      install
-    end
-    if (@resolve_dependencies_and_install == 1) || (@resolve_dependencies_and_build == 1)
-      @to_postinstall = @dependencies
-    else
-      @dependencies.each do |dep|
-        search dep
-        post_install
-      end
+      post_install
     end
   end
 end
@@ -1406,7 +1402,7 @@ def install
   end
 
   # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, is_dep: @pkg.is_dep)
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
   File.open("#{CREW_CONFIG_PATH}device.json.tmp", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
@@ -1647,41 +1643,6 @@ def print_deps_tree(args)
   end
 
   puts treeView
-end
-
-def autoremove_command(_args)
-  deps_of_installed_pkgs = @device[:installed_packages].map do |pkg|
-    # ignore deleted/non-exist package recipes
-    next unless File.exist?("#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb")
-
-    set_package pkg[:name], "#{CREW_PACKAGES_PATH}/#{pkg[:name]}.rb"
-    next @pkg.dependencies
-  end.flatten
-
-  remove_pkg = @device[:installed_packages].select do |pkg|
-    pkg[:is_dep] and !deps_of_installed_pkgs.include?(pkg[:name])
-  end.map { |pkg| pkg[:name] }
-
-  return if remove_pkg.empty?
-
-  puts 'The following packages also need to be REMOVED: '
-  remove_pkg.each do |pkg|
-    print "#{pkg} "
-  end
-  print "\nDo you agree? [Y/n] "
-
-  response = $stdin.getc
-  case response
-  when 'n'
-    abort 'No changes made.'
-  when "\n", 'y', 'Y'
-    puts 'Proceeding...'
-  else
-    puts "I don't understand `#{response}`. :(".lightred
-    abort 'No changes made.'
-  end
-
-  remove_pkg.each { |pkg| remove(pkg) }
 end
 
 def build_command(args)

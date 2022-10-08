@@ -1,4 +1,6 @@
 require 'English'
+require_relative 'const'
+require_relative 'color'
 require_relative 'package_helpers'
 
 class Package
@@ -23,7 +25,7 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :is_dep, :in_build, :build_from_source, :in_upgrade
+    attr_accessor :name, :in_build, :build_from_source, :in_upgrade
   end
 
   def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
@@ -154,6 +156,15 @@ exclude_buildessential: exclude_buildessential,
     define_singleton_method("#{prop}?") do
       @prop = instance_variable_get("@#{prop}")
       !!@prop
+    end
+  end
+
+  def self.compatible?
+    if @compatibility
+      return (@compatibility.casecmp?('all') || @compatibility.include?(ARCH))
+    else
+      warn "#{name}: Missing `compatibility` field.".lightred
+      return false
     end
   end
 
