@@ -16,8 +16,8 @@ class Js102 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.3.0_x86_64/js102-102.3.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b3d7ccd37c95bc3b55f540287b79404159536f7ccd3d1eaf773e6a915216ce1c',
-     armv7l: 'b3d7ccd37c95bc3b55f540287b79404159536f7ccd3d1eaf773e6a915216ce1c',
+    aarch64: 'c8639443001be339fd99715e509e39d2904ad5d37b88a7e7b70e4b60ac533756',
+     armv7l: 'c8639443001be339fd99715e509e39d2904ad5d37b88a7e7b70e4b60ac533756',
        i686: '4af582a2e2411624e8b1b1805c8ae5a15c293262879df1a911fd829ef1e5604f',
      x86_64: '75edf8939dd16f044df8fbe6724e777ed6932875c7bede85c69ed588daf28ea3'
   })
