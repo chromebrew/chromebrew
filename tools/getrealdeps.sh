@@ -3,6 +3,23 @@
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # set -x
 pkg="${1}"
+
+RED='\e[1;91m';    # Use Light Red for errors.
+YELLOW='\e[1;33m'; # Use Yellow for informational messages.
+GREEN='\e[1;32m';  # Use Green for success messages.
+BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
+GRAY='\e[0;37m';   # Use Gray for program output.
+MAGENTA='\e[1;35m';
+RESET='\e[0m'
+
+# Simplify colors and print errors to stderr (2).
+echo_error() { echo -e "${RED}${*}${RESET}" >&2; }
+echo_info() { echo -e "${YELLOW}${*}${RESET}" >&1; }
+echo_success() { echo -e "${GREEN}${*}${RESET}" >&1; }
+echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
+echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
+echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
+
 [[ ! -e '/usr/local/bin/grep' ]] && crew install grep
 GREP=/usr/local/bin/grep
 CREW_LIB_PREFIX=$(crew const | $GREP CREW_LIB_PREFIX | awk -F = '{print $2}')
@@ -64,17 +81,21 @@ do
   $GREP -q "depends_on '$i'" /usr/local/lib/crew/packages/"${1}".rb || echo "$i"
 done
 )
-
+echo_info "\nPackage ${1} has these runtime dependencies:"
+echo -e "${RESET}"
 for i in $pkgdeps
 do
-echo "  depends_on '$i' # R"
+echo_intra "  depends_on '$i' # R"
 done
+echo -e "${RESET}"
 
 # If there are no missing deps, no warning is needed.
 if [ -n "${missingpkgdeps}" ]; then
-  echo "There are missing dependencies in the package:"
+  echo_error "\nPackage file ${1}.rb is missing these dependencies:"
+  echo -e "${RESET}"
   for i in $missingpkgdeps
   do
-    echo "  depends_on '$i' # R"
+    echo_other "  depends_on '$i' # R"
   done
 fi
+echo -e "${RESET}"
