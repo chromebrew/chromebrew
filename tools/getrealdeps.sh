@@ -20,15 +20,21 @@ echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
 echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
 echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
 
-[[ ! -e '/usr/local/bin/grep' ]] && crew install grep
-GREP=/usr/local/bin/grep
-CREW_LIB_PREFIX=$(crew const | $GREP CREW_LIB_PREFIX | awk -F = '{print $2}')
+# Install grep if a functional local copy does not exist.
+if grep --version &> /dev/null; then
+  GREP=grep
+else
+  crew install grep
+  GREP=/usr/local/bin/grep
+fi
+
+: "${CREW_LIB_PREFIX:=$(crew const | $GREP CREW_LIB_PREFIX | awk -F = '{print $2}')}"
 
 # Which packages have a needed library in CREW_LIB_PREFIX
 # This is a subset of what crew whatprovides gives
 whatprovidesfxn() {
   pkgdepslcl="${1}"
-  filelcl=$(cd /usr/local/etc/crew/meta/ ; $GREP --exclude "${pkg}.filelist" "$pkgdepslcl" *.filelist | $GREP "$CREW_LIB_PREFIX")
+  filelcl=$($GREP --exclude "${pkg}.filelist" "$pkgdepslcl" /usr/local/etc/crew/meta/*.filelist | $GREP "$CREW_LIB_PREFIX")
   packagelcl=$(echo "$filelcl" | \
   sed 's/.filelist.*//g' | sed 's:.*/::' | awk '!x[$0]++' | sed s/://g)
   echo "$packagelcl"
@@ -37,25 +43,18 @@ whatprovidesfxn() {
 # What files does a package provide
 crewfilesfxn() {
  pkgname="${1}"
- files=$(cat /usr/local/etc/crew/meta/"${pkgname}".filelist)
+ files=$(< /usr/local/etc/crew/meta/"${pkgname}".filelist)
  echo "$files"
 }
 
 pkgfiles=$(crewfilesfxn "${pkg}")
-# Use readelf to determine library dependencie, as
+# Use readelf to determine library dependencies, as
 # this doesn't almost run a program like using ldd would.
 rm -rf /tmp/deps/"${pkg}"
 pkgdeps=$(unset lines ; for i in $pkgfiles ; \
 do \
-[[ $i = *.c ]] && continue
-[[ $i = *.gz ]] && continue
-[[ $i = *.h ]] && continue
-[[ $i = *.json ]] && continue
-[[ $i = *.py* ]] && continue
+[[ "$(head -c 4 "${i}")" == $'\x7FELF' ]] || continue
 [[ $i = *_tkinter* ]] && continue # Carveout for Python3
-[[ $i = *.txt ]] && continue
-[[ $i = *.xml ]] && continue
-[[ $i = *.zip ]] && continue
 mkdir -p /tmp/deps/"${pkg}"/
 lines+=$(echo ; readelf -d "$i" 2>/dev/null | $GREP NEEDED | awk '{print $5}' \
 | sed 's/\[//g' | sed 's/\]//g' | awk '!x[$0]++' | tee /tmp/deps/"${pkg}"/$(basename "$i") ; echo ) ; \
@@ -72,7 +71,7 @@ do lines+=$(echo ; whatprovidesfxn "$j"); done ; \
 echo "$lines" | tr " " "\n" | awk '!x[$0]++')
 
 # Remove original package from list.
-pkgdeps=$(echo "$pkgdeps" | tr " " "\n" | sed "/${1}/d" | sort -u )
+pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${1}/d" | sort -u )
 
 # Note which dependencies are missing.
 missingpkgdeps=$(
