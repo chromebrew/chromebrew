@@ -77,11 +77,11 @@ class Webkit2gtk_5 < Package
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
-    #return unless ARCH == 'armv7l' || ARCH == 'aarch64'
+    # return unless ARCH == 'armv7l' || ARCH == 'aarch64'
 
-    #downloader 'https://github.com/Igalia/meta-webkit/raw/main/recipes-browser/wpewebkit/wpewebkit/0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch',
+    # downloader 'https://github.com/Igalia/meta-webkit/raw/main/recipes-browser/wpewebkit/wpewebkit/0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch',
     #           '85996f657ab01d83424fd74a060c9439c0c1b44bdcfe05772b4c5949eff24fc4'
-    #system 'patch -Np1 -i 0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch'
+    # system 'patch -Np1 -i 0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch'
   end
 
   def self.build
