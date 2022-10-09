@@ -3,24 +3,24 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.30'
+  @_ver = '7.4.32'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'ea72a34f32c67e79ac2da7dfe96177f3c451c3eefae5810ba13312ed398ba70d'
+  source_sha256 '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_x86_64/php74-7.4.30-chromeos-x86_64.tar.zst',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_armv7l/php74-7.4.30-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_armv7l/php74-7.4.30-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.30_i686/php74-7.4.30-chromeos-i686.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_armv7l/php74-7.4.32-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_armv7l/php74-7.4.32-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_i686/php74-7.4.32-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_x86_64/php74-7.4.32-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '47d530ddccc7133b42a44ff19a53456c422e3abaedb431a8a1e3d7ef5096e133',
-    aarch64: '563bfe1e589750afece45f28335cb1de7e95a5c5ce9b5225eb9e4fe90f7fdea3',
-     armv7l: '563bfe1e589750afece45f28335cb1de7e95a5c5ce9b5225eb9e4fe90f7fdea3',
-       i686: '85fcdaed12530484b7ba91b4113baced893ffabf72c8c3e20743369b5168438a'
+    aarch64: '30df54ecef19cc23a05d24159d60c71efaabd7e1b2ab82011bbb2ffe58163249',
+     armv7l: '30df54ecef19cc23a05d24159d60c71efaabd7e1b2ab82011bbb2ffe58163249',
+       i686: '0da9d7ed1939f894b33d0fcf84e8acc302286cd27019e35d2a05746006a6d4f0',
+     x86_64: '65877f0049ca34c2087a98c44740febc61418021aa7cfbf7e60fa5563243c476'
   })
 
   depends_on 'aspell_en'
@@ -41,6 +41,8 @@ class Php74 < Package
   depends_on 'unixodbc'
   depends_on 'oniguruma'
   depends_on 'py3_pygments'
+
+  no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
@@ -69,8 +71,7 @@ class Php74 < Package
   end
 
   def self.build
-    system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} CFLAGS='-pipe' \
-      ./configure \
+    system "CFLAGS='-pipe' ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -130,8 +131,6 @@ class Php74 < Package
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
