@@ -17,8 +17,8 @@ class Webkit2gtk_5 < Package
   binary_sha256({
     aarch64: '5a4da2ee8bc5889ccf768da845a33f94bf988e626c3af16a3c30f6dcb3584a85',
      armv7l: '5a4da2ee8bc5889ccf768da845a33f94bf988e626c3af16a3c30f6dcb3584a85',
-       i686: '7da7b26bd49d7d73e6af836b6e03997c4c6843568c82f83479680b4d8827504d',
-     x86_64: '4227af6146dad13d5fc3a3c98dbf556a40220bdcc3c2a0ef527085bc1fcff8ca'
+       i686: 'a58c67697d485faa397cf7949a4f188fe92f64d954404683d25cf9ff694c12a5',
+     x86_64: '00dfad25dd4195cebf42489122887b197137e17adee3b6b60532d46add743a6c'
   })
 
   depends_on 'atk'
@@ -28,15 +28,22 @@ class Webkit2gtk_5 < Package
   depends_on 'enchant'
   depends_on 'fontconfig'
   depends_on 'freetype'
+  depends_on 'gcc' # R
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
   depends_on 'gstreamer'
   depends_on 'gtk4'
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz'
   depends_on 'hyphen'
+  depends_on 'icu4c' # R
+  depends_on 'lcms' # R
+  depends_on 'libavif' # R
   depends_on 'libgcrypt'
+  depends_on 'libgpgerror' # R
   depends_on 'libjpeg'
   depends_on 'libjxl'
   depends_on 'libnotify'
@@ -44,11 +51,13 @@ class Webkit2gtk_5 < Package
   depends_on 'libsecret'
   depends_on 'libsoup'
   depends_on 'libsoup2'
+  depends_on 'libtasn1' # R
   depends_on 'libwebp'
   depends_on 'libwpe'
   depends_on 'libx11'
   depends_on 'libxcomposite'
   depends_on 'libxdamage'
+  depends_on 'libxml2' # R
   depends_on 'libxrender'
   depends_on 'libxslt'
   depends_on 'libxt'
@@ -57,15 +66,22 @@ class Webkit2gtk_5 < Package
   depends_on 'pango'
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
+  depends_on 'sqlite' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
   depends_on 'woff2'
   depends_on 'wpebackend_fdo'
+  depends_on 'zlibpkg' # R
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
+    #return unless ARCH == 'armv7l' || ARCH == 'aarch64'
+
+    #downloader 'https://github.com/Igalia/meta-webkit/raw/main/recipes-browser/wpewebkit/wpewebkit/0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch',
+    #           '85996f657ab01d83424fd74a060c9439c0c1b44bdcfe05772b4c5949eff24fc4'
+    #system 'patch -Np1 -i 0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch'
   end
 
   def self.build
@@ -76,7 +92,7 @@ class Webkit2gtk_5 < Package
       # bwrap: Can't make symlink at /var/run: File exists
       # case ARCH
       # when 'x86_64'
-      system "cmake \
+      system "mold -run cmake \
           -G Ninja \
           #{CREW_CMAKE_OPTIONS} \
           -DCMAKE_SKIP_RPATH=ON \
@@ -93,7 +109,7 @@ class Webkit2gtk_5 < Package
           -DUSE_JPEGXL=ON \
           -DPORT=GTK \
           -DUSE_GTK4=ON \
-          -DUSE_SOUP3=ON \
+          -DUSE_SOUP2=OFF \
           -DUSE_AVIF=ON \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew' \

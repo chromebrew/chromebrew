@@ -3,8 +3,8 @@ class Webkit2gtk_4 < Package
   homepage 'https://webkitgtk.org'
   @_ver = '2.38.0'
   version @_ver
-  compatibility 'all'
   license 'LGPL-2+ and BSD-2'
+  compatibility 'all'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
   source_sha256 'f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
 
@@ -17,7 +17,7 @@ class Webkit2gtk_4 < Package
   binary_sha256({
     aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
      armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: 'c78df8137e56af8a7e5aa78314fadedca0e3e9b846a6090809b29f2481f1484e',
+       i686: '95b99b624cc0388b9fc31634ad7c72eb95520cd1075026d55d59b304084e1970',
      x86_64: '870d34f82323b6508c5ef77fa0d44f3b1cd0d16fbb76f8e8b8c2ae0c803323c5'
   })
 
@@ -28,15 +28,21 @@ class Webkit2gtk_4 < Package
   depends_on 'enchant'
   depends_on 'fontconfig'
   depends_on 'freetype'
+  depends_on 'gcc' # R
   depends_on 'gdk_pixbuf'
   depends_on 'glib'
+  depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gstreamer'
   depends_on 'gtk3'
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz'
   depends_on 'hyphen'
+  depends_on 'icu4c' # R
+  depends_on 'lcms' # R
+  depends_on 'libavif' # R
   depends_on 'libgcrypt'
+  depends_on 'libgpgerror' # R
   depends_on 'libjpeg'
   depends_on 'libjxl'
   depends_on 'libnotify'
@@ -44,11 +50,13 @@ class Webkit2gtk_4 < Package
   depends_on 'libsecret'
   depends_on 'libsoup'
   depends_on 'libsoup2'
+  depends_on 'libtasn1' # R
   depends_on 'libwebp'
   depends_on 'libwpe'
   depends_on 'libx11'
   depends_on 'libxcomposite'
   depends_on 'libxdamage'
+  depends_on 'libxml2' # R
   depends_on 'libxrender'
   depends_on 'libxslt'
   depends_on 'libxt'
@@ -57,12 +65,14 @@ class Webkit2gtk_4 < Package
   depends_on 'pango'
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
+  depends_on 'sqlite' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
   depends_on 'woff2'
   depends_on 'wpebackend_fdo'
+  depends_on 'zlibpkg' # R
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
