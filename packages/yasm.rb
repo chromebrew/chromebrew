@@ -22,6 +22,8 @@ class Yasm < Package
      x86_64: '8ec504db1d9c91adb6680f17e328daf6114758cbf2106fc4eb2e8028834b3737'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system "env CFLAGS='-pipe -flto=auto' CPPFLAGS='-pipe -flto=auto' \
       LDFLAGS='-flto=auto' \
