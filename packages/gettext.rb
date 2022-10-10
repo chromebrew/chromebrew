@@ -31,7 +31,6 @@ class Gettext < Package
   depends_on 'libxml2' # R
   depends_on 'openmp'
 
-
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
