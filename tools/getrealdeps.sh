@@ -4,13 +4,23 @@
 # set -x
 pkg="${1}"
 
-RED='\e[1;91m';    # Use Light Red for errors.
-YELLOW='\e[1;33m'; # Use Yellow for informational messages.
-GREEN='\e[1;32m';  # Use Green for success messages.
-BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
-GRAY='\e[0;37m';   # Use Gray for program output.
-MAGENTA='\e[1;35m';
-RESET='\e[0m'
+if [ -z "${NOCOLORS}" ]; then
+  RED='\e[1;91m';    # Use Light Red for errors.
+  YELLOW='\e[1;33m'; # Use Yellow for informational messages.
+  GREEN='\e[1;32m';  # Use Green for success messages.
+  BLUE='\e[1;34m';   # Use Blue for intrafunction messages.
+  GRAY='\e[0;37m';   # Use Gray for program output.
+  MAGENTA='\e[1;35m';
+  RESET='\e[0m'
+else
+  RED='';
+  YELLOW='';
+  GREEN='';
+  BLUE='';
+  GRAY='';
+  MAGENTA='';
+  RESET=''
+fi
 
 # Simplify colors and print errors to stderr (2).
 echo_error() { echo -e "${RED}${*}${RESET}" >&2; }
