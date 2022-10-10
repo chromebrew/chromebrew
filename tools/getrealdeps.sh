@@ -90,7 +90,7 @@ echo -e "${RESET}"
 
 # If there are no missing deps, no warning is needed.
 if [ -n "${missingpkgdeps}" ]; then
-  echo_error "\nPackage file ${1}.rb is missing these dependencies:"
+  echo_error "\nPackage file ${1}.rb is missing these runtime dependencies:"
   echo -e "${RESET}"
   for i in $missingpkgdeps
   do
