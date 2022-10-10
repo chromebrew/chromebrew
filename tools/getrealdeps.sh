@@ -30,6 +30,11 @@ echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
 echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
 echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
 
+if ! [[ -f "/usr/local/etc/crew/meta/${pkg}.filelist" ]]; then
+  echo_error "Package $pkg either does not exist or does not contain any files."
+  exit 1
+fi
+
 # Install grep if a functional local copy does not exist.
 if grep --version &> /dev/null; then
   GREP=grep
