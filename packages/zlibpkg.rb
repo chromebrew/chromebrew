@@ -46,3 +46,4 @@ class Zlibpkg < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
+end
