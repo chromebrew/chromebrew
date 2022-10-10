@@ -10,16 +10,16 @@ class Anagram < Package
   source_sha256 'd046fd5accd3c62267c0ef81b56cd05c59ec92b37cdb73f69d031879dba308bd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_armv7l/anagram-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_i686/anagram-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.4_x86_64/anagram-1.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_armv7l/anagram-1.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_armv7l/anagram-1.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_i686/anagram-1.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_x86_64/anagram-1.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5d5e2fa0868d99ed24623a1fd98bf9a00a07c50e5a8c931cf2d43ab3dfbf1a42',
-     armv7l: '5d5e2fa0868d99ed24623a1fd98bf9a00a07c50e5a8c931cf2d43ab3dfbf1a42',
-       i686: '33dbe4fd1116e429e1b927f63de8361b3ba888f24712ae692bee0ac152bc41b7',
-     x86_64: '2d162c9d06d59ee1dab520deccfed04e3c27f7a5584346dfdc2e267bc46d310c'
+    aarch64: 'bd706becd9f34cd71f52f2b646daf1e460d9e8a4d685a7d0673492e3c64dec65',
+     armv7l: 'bd706becd9f34cd71f52f2b646daf1e460d9e8a4d685a7d0673492e3c64dec65',
+       i686: 'd4d2c9d78995d454e72879e07485c3e69f127c0a9571def97a469b9e9a6a9b55',
+     x86_64: '2e7f200199054471c7512c1c667f0d52459a1ffda17497b6d531f87b2680df36'
   })
 
   def self.build
