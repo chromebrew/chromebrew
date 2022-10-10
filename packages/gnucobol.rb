@@ -22,7 +22,10 @@ class Gnucobol < Package
      x86_64: '00e04366fab756136bba0bcb07a285c1bda4d218b5f6555e0bc67583fb051963'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'libdb'
+  epends_on 'ncurses' # R
 
   def self.build
     system './configure',
