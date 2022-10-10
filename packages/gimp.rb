@@ -19,7 +19,7 @@ class Gimp < Package
     aarch64: '5c1931f8777aae220461de92f9b7b78df10d4bdbd014b424743d822ccffdddc4',
      armv7l: '5c1931f8777aae220461de92f9b7b78df10d4bdbd014b424743d822ccffdddc4',
        i686: '806cc6a0a7c88951a14bb950be00fe223a667626f3e521561ee7e96286bb9d0b',
-     x86_64: 'ec0ae1894433edb9184989aaccee21474e1cf6bde43eb1d5fbe24f077682881f'
+     x86_64: '79d97b23ae1263e4dfd42bc557d18a8e232954fedb630987383f7ed9cbed76be'
   })
 
   depends_on 'aalib'
@@ -65,6 +65,7 @@ class Gimp < Package
   depends_on 'libxmu'
   depends_on 'libxpm'
   depends_on 'libxt'
+  depends_on 'luajit'
   depends_on 'luajit_lgi'
   depends_on 'mypaint_brushes_1'
   depends_on 'openexr'
