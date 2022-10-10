@@ -6,14 +6,12 @@ class Libfilezilla < Package
   version '0.39.1'
   license 'GPL-2+'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'file:///home/chronos/user/chromebrew/release/x86_64/libfilezilla-0.39.1.tar.bz2'
+  source_url 'https://download.filezilla-project.org/libfilezilla/libfilezilla-0.39.1.tar.bz2'
   source_sha256 'f3d6c0df28f33f52cf253cb03fc51579752ae4daef2aac7345a6bd7de623a6c5'
 
   binary_url({
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/libfilezilla-0.39.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '16cb148d8865f337480e3cffe4e8244a3a3f09aae6aa42e374fb2d97f2ba144e'
   })
 
   depends_on 'openmp'
