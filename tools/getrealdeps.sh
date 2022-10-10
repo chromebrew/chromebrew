@@ -115,7 +115,7 @@ do
   $GREP -q "depends_on '$i'" /usr/local/lib/crew/packages/"${pkg}".rb || echo "$i"
 done
 )
-echo_info "\nPackage ${pkg} has these runtime dependencies:"
+echo_info "\nPackage ${pkg} has runtime library dependencies on these packages:"
 echo -e "${RESET}"
 for i in $pkgdeps
 do
@@ -125,7 +125,7 @@ echo -e "${RESET}"
 
 # If there are no missing deps, no warning is needed.
 if [ -n "${missingpkgdeps}" ]; then
-  echo_error "\nPackage file ${pkg}.rb is missing these runtime dependencies:"
+  echo_error "\nPackage file ${pkg}.rb is missing these runtime library dependencies:"
   echo -e "${RESET}"
   for i in $missingpkgdeps
   do
