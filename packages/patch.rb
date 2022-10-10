@@ -22,6 +22,9 @@ class Patch < Package
      x86_64: '2c756988d1ed11102e6bc33146d43349e303bac645ec8d16ef7ec521f3d0b5d9'
   })
 
+  depends_on 'attr' # R
+  depends_on 'glibc' # R
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",
