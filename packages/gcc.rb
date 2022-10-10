@@ -22,17 +22,18 @@ class Gcc < Package
      x86_64: '01efdcdab6bebc32fd5608f6a061c7ceebd69e9f96084293a903f5af9c3576f3'
   })
 
-  depends_on 'binutils'
+  depends_on 'binutils' => :build
   depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
-  depends_on 'glibc' => :build
+  depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'isl' # R
+  depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'libssp' # L
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+
 
   no_env_options
   no_patchelf
