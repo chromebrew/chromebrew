@@ -22,6 +22,9 @@ class Isl < Package
      x86_64: '870574b61938cd278848864fd861a6d25ce27723375af17c3c3108fdc1197766'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+
   def self.build
     system "./configure #{CREW_OPTIONS}"
     system 'make'

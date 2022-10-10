@@ -24,6 +24,7 @@ class Openssl < Package
   })
 
   depends_on 'ccache' => :build
+  depends_on 'glibc' # R
   no_patchelf
   no_zstd
 

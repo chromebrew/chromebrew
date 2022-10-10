@@ -23,6 +23,7 @@ class Libnghttp2 < Package
      x86_64: '1c2011cfb262d79a8a280d6a914a37a362e119ea7c95efa3882063cd160babe2'
   })
 
+  depends_on 'glibc' # R
   depends_on 'jansson'
   depends_on 'jemalloc'
   depends_on 'libev' => :build

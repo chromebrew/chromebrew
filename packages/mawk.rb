@@ -22,11 +22,10 @@ class Mawk < Package
      x86_64: '5cfce5981ae0c1d388f6d716cc6205485877c593bee96ff44005ed0fba0c6fc3'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

@@ -22,6 +22,8 @@ class Libedit < Package
      x86_64: '41ec1b9f504bc593668bf88cde1eb85fcfd621397d7ec17c29ec686bc2238b5b'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
             CPPFLAGS=\"-I#{CREW_PREFIX}/include/ncursesw\""

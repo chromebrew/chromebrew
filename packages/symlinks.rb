@@ -23,6 +23,8 @@ class Symlinks < Package
      x86_64: '39fe5a53a1c557aa71cfd6d7760e069c0421931e3e5345c57696e1cf79bf8e39'
   })
 
+  depends_on 'glibc' # R
+
   def self.patch
     system('for i in `cat debian/patches/series`; do patch -p 1 < debian/patches/$i; done')
     system "sed -i 's,/usr/local,#{CREW_DEST_PREFIX},g' Makefile"

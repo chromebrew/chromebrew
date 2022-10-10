@@ -22,6 +22,10 @@ class Rust < Package
      x86_64: 'cc282c03048bc2b9204569f92beee2fb5242745a1d9b3c859e72990bf4a3b253'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
+
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"

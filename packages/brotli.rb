@@ -22,6 +22,8 @@ class Brotli < Package
     x86_64: '04cabaaf97a633c2ffe1de7ebc74dd4227f60e1dc1e69bd6094fe69e38020cb4'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     FileUtils.mkdir('builddir')
     Dir.chdir('builddir') do

@@ -23,10 +23,10 @@ class Libpipeline < Package
      x86_64: 'bcdc10711b7697fd61d50f996a5df4467702914d36823d7fbc62590b1f0a5ece'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --enable-shared \
       --with-pic"
