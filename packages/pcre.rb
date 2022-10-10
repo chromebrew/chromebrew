@@ -23,10 +23,12 @@ class Pcre < Package
      x86_64: '4c62ce6b8ae532c7b0885973b50363034c2a84b281baa5542149226a38016cbe'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'readline' # R
+
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --enable-shared \
       --with-pic \
       --enable-unicode-properties \

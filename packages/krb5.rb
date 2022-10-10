@@ -23,7 +23,9 @@ class Krb5 < Package
   })
 
   depends_on 'ccache' => :build
-  depends_on 'e2fsprogs'
+  depends_on 'e2fsprogs' # R
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
 
   @k5libs = %w[libgssapi_krb5.a libgssrpc.a libk5crypto.a
                libkadm5clnt_mit.a libkadm5clnt.a libkadm5srv_mit.a libkadm5srv.a

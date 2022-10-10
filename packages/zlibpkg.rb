@@ -24,22 +24,25 @@ class Zlibpkg < Package
      x86_64: '8d7c564fa93fd091ac36d0923acc8802a8d46f82b593e9be56b0a9252ad45fbe'
   })
 
+  depends_on 'glibc' # R
+
   def self.patch
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/lib,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB},g' CMakeLists.txt"
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/share/pkgconfig,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB}/pkgconfig,g' CMakeLists.txt"
   end
 
   def self.build
-    # Build zlib proper
-    FileUtils.mkdir 'builddir'
+    Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "cmake -G Ninja #{CREW_CMAKE_OPTIONS} .."
+      system "cmake \
+        -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -Wno-dev \
+        .."
     end
     system 'samu -C builddir'
   end
 
   def self.install
-    # Install zlib
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
-end

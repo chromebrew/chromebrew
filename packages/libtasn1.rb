@@ -25,6 +25,7 @@ class Libtasn1 < Package
   # bison, diff, cmp are required at compile-time
   depends_on 'bison' => :build
   depends_on 'diffutils' => :build
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} \

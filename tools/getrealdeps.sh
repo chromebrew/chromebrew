@@ -2,7 +2,7 @@
 # getrealdeps for Chromebrew
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # set -x
-pkg="${1}"
+pkg="${1%.rb}"
 
 # Exit quickly if an invalid package name is given.
 [[ ( -z "$pkg" ) || ( "$pkg" == *"#"* ) ]] && exit 1
@@ -91,16 +91,16 @@ do lines+=$(echo ; whatprovidesfxn "$j"); done ; \
 echo "$lines" | tr " " "\n" | awk '!x[$0]++')
 
 # Remove original package from list.
-pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${1}/d" | sort -u )
+pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${pkg}/d" | sort -u )
 
 # Note which dependencies are missing.
 missingpkgdeps=$(
 for i in $pkgdeps
 do
-  $GREP -q "depends_on '$i'" /usr/local/lib/crew/packages/"${1}".rb || echo "$i"
+  $GREP -q "depends_on '$i'" /usr/local/lib/crew/packages/"${pkg}".rb || echo "$i"
 done
 )
-echo_info "\nPackage ${1} has these runtime dependencies:"
+echo_info "\nPackage ${pkg} has these runtime dependencies:"
 echo -e "${RESET}"
 for i in $pkgdeps
 do
@@ -110,7 +110,7 @@ echo -e "${RESET}"
 
 # If there are no missing deps, no warning is needed.
 if [ -n "${missingpkgdeps}" ]; then
-  echo_error "\nPackage file ${1}.rb is missing these runtime dependencies:"
+  echo_error "\nPackage file ${pkg}.rb is missing these runtime dependencies:"
   echo -e "${RESET}"
   for i in $missingpkgdeps
   do

@@ -23,11 +23,11 @@ class Readline < Package
      x86_64: '3d60b7fd04b57c4b57b34d8af12ab7b7dbf368842fc8b19b09df7698e9623292'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+
   def self.build
-    system "env CFLAGS='-flto=auto -g0' \
-      CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --with-curses \
       --enable-multibyte"

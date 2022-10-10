@@ -22,16 +22,18 @@ class Gnutls < Package
      x86_64: '607851025aec31be1628da21af43c29307024cf5169bed7f34707504d0099824'
   })
 
-  depends_on 'zlibpkg'
-  depends_on 'libunistring'
-  depends_on 'gmp'
-  depends_on 'nettle'
-  depends_on 'libtasn1'
-  depends_on 'trousers'
-  depends_on 'p11kit' # This package cannot be built statically.
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'libffi'
-  depends_on 'libunbound'
-  depends_on 'libidn2'
+  depends_on 'libidn2' # R
+  depends_on 'libtasn1' # R
+  depends_on 'libunbound' # R
+  depends_on 'libunistring' # R
+  depends_on 'nettle' # R
+  depends_on 'p11kit' # R This package cannot be built statically.
+  depends_on 'trousers'
+  depends_on 'zlibpkg'
 
   def self.prebuild
     # Use IPv4 fallback if default connection fails.

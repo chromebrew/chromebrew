@@ -23,9 +23,11 @@ class E2fsprogs < Package
      x86_64: 'aa77be21096e0f8f749cc4fc4f2e35d794ba70694a9e4d6b58c49353b5fe9138'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'util_linux' # R
+
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}\
+    system "./configure #{CREW_OPTIONS}\
       --enable-elf-shlibs \
       --enable-lto \
       --disable-libblkid \

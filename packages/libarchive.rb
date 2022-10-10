@@ -23,8 +23,14 @@ class Libarchive < Package
     x86_64: 'd21778e1bca3015e53dfe253eedae0b0f497c21554563d41eed6233b37a15762'
   })
 
-  depends_on 'lz4'
-  depends_on 'xzutils' => :build
+  depends_on 'acl' # R
+  depends_on 'bz2' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'lz4' # R
+  depends_on 'openssl' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")

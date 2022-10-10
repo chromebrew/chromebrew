@@ -22,10 +22,11 @@ class Less < Package
      x86_64: 'fe15b66e0ad8e0be7c3695ad601019ac5abd610e8680ab5b07b7f289510b87c2'
   })
 
-  depends_on 'ncurses'
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} --with-regex=posix"
+    system "./configure #{CREW_OPTIONS} --with-regex=posix"
     system 'make'
   end
 

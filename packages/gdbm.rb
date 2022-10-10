@@ -23,10 +23,11 @@ class Gdbm < Package
      x86_64: '79ffa73dfefefdec13bfd9ccaac27f24e6bd6b86da4efd6b0544f45a6828ad51'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'readline' # R
+
   def self.build
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS}"
     system 'make'
   end
