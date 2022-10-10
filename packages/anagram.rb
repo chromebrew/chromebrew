@@ -16,11 +16,13 @@ class Anagram < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_x86_64/anagram-1.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bd706becd9f34cd71f52f2b646daf1e460d9e8a4d685a7d0673492e3c64dec65',
-     armv7l: 'bd706becd9f34cd71f52f2b646daf1e460d9e8a4d685a7d0673492e3c64dec65',
-       i686: 'd4d2c9d78995d454e72879e07485c3e69f127c0a9571def97a469b9e9a6a9b55',
-     x86_64: '2e7f200199054471c7512c1c667f0d52459a1ffda17497b6d531f87b2680df36'
+    aarch64: '86cba09c62c088c62405e95f844312efeb9b376ea05af25c54b8bae33834405d',
+     armv7l: '86cba09c62c088c62405e95f844312efeb9b376ea05af25c54b8bae33834405d',
+       i686: 'd71541b068c8a1348c6982cf4a25695789f8c97102b9a97962cc1c6573f9d294',
+     x86_64: '261cccedc4ccfd4dfb5351bed6444ab2183800bfe5bd3f34f5332fe966e42c43'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"
