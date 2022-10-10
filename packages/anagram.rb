@@ -2,12 +2,12 @@ require 'package'
 
 class Anagram < Package
   description 'finds anagrams or permutations of words in the target phrase'
-  homepage 'http://www.fourmilab.ch/anagram/'
-  version '1.4'
+  homepage 'https://www.fourmilab.ch/anagram/'
+  version '1.5'
   license 'public-domain'
   compatibility 'all'
-  source_url 'http://www.fourmilab.ch/anagram/anagram-1.4.tar.gz'
-  source_sha256 'd046fd5accd3c62267c0ef81b56cd05c59ec92b37cdb73f69d031879dba308bd'
+  source_url 'https://www.fourmilab.ch/anagram/anagram-1.5.tar.gz'
+  source_sha256 '62eca59318782e889118a0e130d454e1c397aedd99fc59b2194393bf0eff5348'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/anagram/1.5_armv7l/anagram-1.5-chromeos-armv7l.tar.zst',
@@ -23,24 +23,31 @@ class Anagram < Package
   })
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
-    system 'mkdir build'
-    Dir.chdir 'build' do
-      system "echo '#!/bin/bash' > anagram"
-      system "echo '#{CREW_PREFIX}/share/anagram/bin/anagram --dictionary #{CREW_PREFIX}/share/anagram/crossword.txt --bindict #{CREW_PREFIX}/share/anagram/wordlist.bin $@' >> anagram"
-    end
+
+    @_anagram_wrapper = <<~EOF
+      #!/bin/bash -e
+
+      exec #{CREW_PREFIX}/share/anagram/bin/anagram \
+        --dictionary #{CREW_PREFIX}/share/anagram/crossword.txt \
+        --bindict #{CREW_PREFIX}/share/anagram/wordlist.bin "${@}"
+    EOF
   end
 
   def self.install
-    system 'gzip -9 anagram.1'
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/anagram/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/man/man1"
-    system "install -Dm755 build/anagram #{CREW_DEST_PREFIX}/bin"
-    system "install -Dm755 anagram #{CREW_DEST_PREFIX}/share/anagram/bin"
-    system "install -Dm644 crossword.txt #{CREW_DEST_PREFIX}/share/anagram"
-    system "install -Dm644 wordlist.bin #{CREW_DEST_PREFIX}/share/anagram"
-    system "install -Dm644 anagram.1.gz #{CREW_DEST_PREFIX}/share/man/man1"
+    FileUtils.mkdir_p %W[
+      #{CREW_DEST_PREFIX}/bin
+      #{CREW_DEST_PREFIX}/share/anagram/bin
+      #{CREW_DEST_MAN_PREFIX}/man1
+    ]
+
+    system "gzip -c -9 anagram.1 > #{CREW_DEST_MAN_PREFIX}/man1/anagram.1.gz"
+
+    File.write "#{CREW_DEST_PREFIX}/bin/anagram", @_anagram_wrapper, perm: 0o755
+
+    FileUtils.install 'anagram', "#{CREW_DEST_PREFIX}/share/anagram/bin", mode: 0o755
+    FileUtils.install 'crossword.txt', "#{CREW_DEST_PREFIX}/share/anagram", mode: 0o644
+    FileUtils.install 'wordlist.bin', "#{CREW_DEST_PREFIX}/share/anagram", mode: 0o644
   end
 end
