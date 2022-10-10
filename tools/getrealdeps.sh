@@ -63,7 +63,9 @@ pkgfiles=$(crewfilesfxn "${pkg}")
 rm -rf /tmp/deps/"${pkg}"
 pkgdeps=$(unset lines ; for i in $pkgfiles ; \
 do \
-[[ "$(head -c 4 "${i}")" == $'\x7FELF' ]] || continue
+[[ -f "${i}" ]] || continue
+read -r -n 4 exec_header_bytes < "${i}"
+[[ "$exec_header_bytes" == $'\x7FELF' ]] || continue
 [[ $i = *_tkinter* ]] && continue # Carveout for Python3
 mkdir -p /tmp/deps/"${pkg}"/
 lines+=$(echo ; readelf -d "$i" 2>/dev/null | $GREP NEEDED | awk '{print $5}' \
