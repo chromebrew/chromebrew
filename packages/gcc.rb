@@ -34,7 +34,6 @@ class Gcc < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-
   no_env_options
   no_patchelf
   no_zstd if ARCH == 'i686'
