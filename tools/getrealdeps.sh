@@ -34,7 +34,7 @@ fi
 # This is a subset of what crew whatprovides gives
 whatprovidesfxn() {
   pkgdepslcl="${1}"
-  filelcl=$($GREP --exclude "${pkg}.filelist" "$pkgdepslcl" /usr/local/etc/crew/meta/*.filelist | $GREP "$CREW_LIB_PREFIX")
+  filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
   packagelcl=$(echo "$filelcl" | \
   sed 's/.filelist.*//g' | sed 's:.*/::' | awk '!x[$0]++' | sed s/://g)
   echo "$packagelcl"
@@ -63,7 +63,7 @@ echo "$lines" | tr " " "\n" \
 | awk 'NF' | awk '!x[$0]++')
 
 # Remove duplicates.
-pkgdeps=$(echo "$pkgdeps" | tr " " "\n" |  awk '!x[$0]++')
+pkgdeps="$(awk 'NF' <<< "${pkgdeps}" | awk '!x[$0]++')"
 
 # Figure out which Chromebrew packages provide the relevant deps.
 pkgdeps=$(unset lines; for j in $pkgdeps ; \
