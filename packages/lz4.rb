@@ -22,6 +22,7 @@ class Lz4 < Package
      x86_64: '76a2f4eccf84e78f32bbd2f8e6042f3ed4cda506ca74706fbbc4d60488b54a2a'
   })
 
+  depends_on 'glibc' # R
   no_patchelf
 
   def self.build

@@ -24,6 +24,7 @@ class Mpfr < Package
 
   depends_on 'autoconf_archive' => :build
   depends_on 'hashpipe' => :build
+  depends_on 'glibc' # R
   depends_on 'gmp' # R
 
   def self.patch

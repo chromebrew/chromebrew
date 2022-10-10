@@ -22,11 +22,12 @@ class Libsigsegv < Package
      x86_64: 'efc24c18a85c611994d3e516994ab71a0a1f79780d47af8267940d68ae7f8716'
   })
 
+  depends_on 'glibc' # R
+  no_env_options
+
   def self.build
     system 'autoreconf -fiv'
     # libsigsegv fails to build with LTO.
-    ENV['CREW_DISABLE_ENV_OPTIONS'] = '1'
-    reload_constants
     system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} \
     --enable-shared \
     --enable-static \

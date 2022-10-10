@@ -22,6 +22,11 @@ class Slang < Package
      x86_64: '6d7968b8a251a184c06d96e0466c9c7fabae9033c7be9ad9fc4b2b60816eaa37'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libpng' # R
+  depends_on 'pcre' # R
+  depends_on 'zlibpkg' # R
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",

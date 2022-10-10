@@ -23,6 +23,7 @@ class Libidn2 < Package
      x86_64: 'ea4b9348c401c8655f0a77fc92149887b26fb7cad7f6ce5628488fa72d8223d6'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libunistring'
 
   def self.build

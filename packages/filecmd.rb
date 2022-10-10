@@ -23,6 +23,11 @@ class Filecmd < Package
     x86_64: '4d0da2febbb0f5a9e5d08dfe2026a9816aa2b1fb603d2c9328082e740a96c8a2'
   })
 
+  depends_on 'bz2' # R
+  depends_on 'glibc' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+
   def self.build
     # The filefix command changes the full path of the file command in configure scripts.
     # Execute this command from your source code root directory.

@@ -22,6 +22,7 @@ class Xxhash < Package
      x86_64: 'c1f0005397d8433a33ab6195f82d7f17e6271530599ad52538c6550360b97afc'
   })
 
+  depends_on 'glibc' # R
   no_patchelf
   no_zstd
 

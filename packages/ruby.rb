@@ -24,6 +24,7 @@ class Ruby < Package
 
   depends_on 'zlibpkg' # R
   depends_on 'glibc' # R
+  depends_on 'filecmd' # L (This is to enable file command use in package files.)
   depends_on 'gmp' # R
   depends_on 'gcc' # R
   depends_on 'libffi' # R

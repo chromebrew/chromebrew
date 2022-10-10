@@ -23,15 +23,19 @@ class Gettext < Package
      x86_64: '4ada2428329f3fc4098b4fab8cc81d816028a7ac283c359c86fdc1d569a52af3'
   })
 
+  depends_on 'acl' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
   depends_on 'jdk8' => :build
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
   depends_on 'openmp'
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
     system 'filefix'
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --disable-static \
       --enable-shared \
       --with-pic \

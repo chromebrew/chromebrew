@@ -22,6 +22,7 @@ class Diffutils < Package
      x86_64: 'edddafc3090b7b146594d3b3d80c3c4cb8730c662b68eaaf2d90b42824368eb3'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libsigsegv'
 
   def self.build

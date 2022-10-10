@@ -22,6 +22,8 @@ class Gmp < Package
      x86_64: '50847bd14c11de841c7c74696e2ff4503253bbaacd38e9ffb31814d6ccfb76f3'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
   no_patchelf
 
   def self.build
