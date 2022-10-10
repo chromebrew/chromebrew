@@ -33,6 +33,16 @@ echo_intra() { echo -e "${BLUE}${*}${RESET}" >&1; }
 echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
 echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
 
+# Install jq if a functional local copy does not exist.
+if ! jq --version &> /dev/null; then
+  crew install jq
+fi
+
+# Package needs to be installed for package filelist to be populated.
+if ! [[ $(jq --arg key "${pkg}" -e '.installed_packages[] | select(.name == $key )' /usr/local/etc/crew/device.json) ]]; then
+  crew install "${pkg}"
+fi
+
 if ! [[ -f "/usr/local/etc/crew/meta/${pkg}.filelist" ]]; then
   echo_error "Package $pkg either does not exist or does not contain any libraries."
   exit 1
@@ -44,6 +54,11 @@ if grep --version &> /dev/null; then
 else
   crew install grep
   GREP=/usr/local/bin/grep
+fi
+
+# Install mawk if a functional local copy of awk does not exist.
+if ! awk -W version &> /dev/null; then
+  crew install mawk
 fi
 
 : "${CREW_LIB_PREFIX:=$(crew const | $GREP CREW_LIB_PREFIX | awk -F = '{print $2}')}"
