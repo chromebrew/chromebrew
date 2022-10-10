@@ -4,6 +4,9 @@
 # set -x
 pkg="${1}"
 
+# Exit quickly if an invalid package name is given.
+[[ ( -z "$pkg" ) || ( "$pkg" == *"#"* ) ]] && exit 1
+
 if [ -z "${NOCOLORS}" ]; then
   RED='\e[1;91m';    # Use Light Red for errors.
   YELLOW='\e[1;33m'; # Use Yellow for informational messages.
@@ -31,7 +34,7 @@ echo_out() { echo -e "${GRAY}${*}${RESET}" >&1; }
 echo_other() { echo -e "${MAGENTA}${*}${RESET}" >&2; }
 
 if ! [[ -f "/usr/local/etc/crew/meta/${pkg}.filelist" ]]; then
-  echo_error "Package $pkg either does not exist or does not contain any files."
+  echo_error "Package $pkg either does not exist or does not contain any libraries."
   exit 1
 fi
 
