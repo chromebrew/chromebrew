@@ -40,7 +40,7 @@ class Harfbuzz < Package
   depends_on 'py3_six' => :build
   depends_on 'zlibpkg'
   depends_on 'expat' # R
-  depends_on 'freetype' # R
+  # depends_on 'freetype' # R harfbuzz provides this.
   depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
