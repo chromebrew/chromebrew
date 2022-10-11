@@ -44,7 +44,7 @@ class Gstreamer < Package
   depends_on 'graphene' # R
   depends_on 'gsm' # R
   depends_on 'harfbuzz' # R
-  depends_on 'intel_media_sdk' # R
+  depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
   depends_on 'jack' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
