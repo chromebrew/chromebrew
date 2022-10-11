@@ -3,23 +3,23 @@ require 'package'
 class Libgdiplus < Package
   description 'The mono library that provides a GDI+-compatible API on non-windows operating systems.'
   homepage 'https://www.mono-project.com/docs/gui/libgdiplus/'
-  version '6.0.5-4'
+  version '6.1'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://download.mono-project.com/sources/libgdiplus/libgdiplus-6.0.5.tar.gz'
-  source_sha256 'b81e4e5cc3e4831b2945de08bef26eb1bdcd795aeaf8f971b221c51213a025ef'
+  source_url 'https://github.com/mono/libgdiplus.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.0.5-4_armv7l/libgdiplus-6.0.5-4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.0.5-4_armv7l/libgdiplus-6.0.5-4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.0.5-4_i686/libgdiplus-6.0.5-4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.0.5-4_x86_64/libgdiplus-6.0.5-4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.1_armv7l/libgdiplus-6.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.1_armv7l/libgdiplus-6.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.1_i686/libgdiplus-6.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgdiplus/6.1_x86_64/libgdiplus-6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '52ec24e838ea7137710feb6b4c19c52fbd3780d7e1bfb64fe21586166673acab',
-     armv7l: '52ec24e838ea7137710feb6b4c19c52fbd3780d7e1bfb64fe21586166673acab',
-       i686: '5813d86e616f4ffc74be033c0c470013d335f63aef599f9cb5dd26d36eb99b02',
-     x86_64: 'db34904552014d5c0bf6d0fbef79cc253934d4bc5044b85fa780ead0ead7e61d'
+    aarch64: '23101c669d315dc3bfd3b7cbc95791ff47920a906a77f4f7004d0402175cc12a',
+     armv7l: '23101c669d315dc3bfd3b7cbc95791ff47920a906a77f4f7004d0402175cc12a',
+       i686: 'ebb81e6a1da9c4ec60d892782807a028e2502f638ee8f66a6bc3460d1360f931',
+     x86_64: '944f8319acc34f45ad2aa718a343cc4b9481784424fa7e529eec930d663167c4'
   })
 
   depends_on 'cairo'
@@ -27,6 +27,7 @@ class Libgdiplus < Package
   depends_on 'freetype'
   depends_on 'giflib'
   depends_on 'glib'
+  depends_on 'glibc' # R
   depends_on 'graphite'
   depends_on 'imake' => :build
   depends_on 'libexif'
@@ -36,7 +37,13 @@ class Libgdiplus < Package
   depends_on 'libwebp'
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS} \
+      --with-libexif \
+      --with-libtiff \
+      --with-jpeg \
+      --with-libgif \
+      --with-x11"
     system 'make'
   end
 
