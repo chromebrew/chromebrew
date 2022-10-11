@@ -36,6 +36,15 @@ class Wxwidgets < Package
   depends_on 'mesa' # R
   depends_on 'pango' # R
 
+  def self.preflight
+    %w[wxwidgets30 wxwidgets31].each do |wxw|
+      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.0"
+      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.1"
+      puts "To install this version, execute the following:".lightblue
+      abort "crew remove #{wxw} && crew install wxwidgets".lightblue
+    end
+  end
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
       --with-gtk=3 \
