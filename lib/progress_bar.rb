@@ -12,8 +12,8 @@ class ProgressBar
     @bar_char = "\u2501"
 
     # color scheme of progress bar (in ANSI color codes), can be changed
-    @bar_front_color = [ 96, 0 ]
-    @bar_bg_color = [ 90, 0 ]
+    @bar_front_color = [96, 0]
+    @bar_bg_color = [90, 0]
 
     # all info blocks with space taken
     @info_before_bar = { downloaded_size_in_str: 20 }
