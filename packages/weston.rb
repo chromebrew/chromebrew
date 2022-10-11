@@ -23,36 +23,37 @@ class Weston < Package
   x86_64: 'e7573ade9cf4dfd6f944dc1a0c467afc7b5abe26ba443a6e1cd832e79f2e45e2'
   })
 
-  depends_on 'harfbuzz'
-  depends_on 'graphite'
-  depends_on 'libxcursor'
-  depends_on 'libinput'
-  depends_on 'libxkbcommon'
-  depends_on 'wayland_protocols'
-  depends_on 'libjpeg'
-  depends_on 'libunwind'
-  depends_on 'pango'
   depends_on 'dbus'
-  depends_on 'libxxf86vm'
-  depends_on 'llvm' => :build
-  depends_on 'seatd'
-  depends_on 'xdg_base'
-  depends_on 'libwebp'
-  depends_on 'libva'
-  depends_on 'gstreamer'
-  depends_on 'libwacom'
   depends_on 'eudev' # R
   depends_on 'gcc' # R
-  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphite'
+  depends_on 'gstreamer' # R
+  depends_on 'harfbuzz' # R
   depends_on 'libdrm' # R
   depends_on 'libevdev' # R
+  depends_on 'libinput' # R
+  depends_on 'libjpeg' # R
   depends_on 'libpng' # R
+  depends_on 'libunwind'
+  depends_on 'libva' # R
+  depends_on 'libwacom'
+  depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
+  depends_on 'libxcursor'
+  depends_on 'libxcursor' # R
+  depends_on 'libxkbcommon'
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxxf86vm'
+  depends_on 'llvm' => :build
   depends_on 'mesa' # R
+  depends_on 'pango' # R
   depends_on 'pixman' # R
-  depends_on 'wayland' # R
+  depends_on 'seatd' # R
+  depends_on 'wayland_protocols'
+  depends_on 'xdg_base'
 
   def self.build
     system "LIBRARY_PATH=#{CREW_LIB_PREFIX} meson #{CREW_MESON_OPTIONS} \
