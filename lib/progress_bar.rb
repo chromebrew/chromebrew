@@ -11,10 +11,9 @@ class ProgressBar
     # character used to fill the progress bar, one of the box-drawing character in unicode
     @bar_char = "\u2501"
 
-    # color scheme of progress bar, can be changed
-    # see color.rb for more available colors
-    @bar_front_color = :lightcyan
-    @bar_bg_color = :gray
+    # color scheme of progress bar (in ANSI color codes), can be changed
+    @bar_front_color = [ 96, 0 ]
+    @bar_bg_color = [ 90, 0 ]
 
     # all info blocks with space taken
     @info_before_bar = { downloaded_size_in_str: 20 }
@@ -94,8 +93,8 @@ class ProgressBar
         end
 
         # print progress bar with color code
-        print ( @bar_char * completed_length).send(@bar_front_color),
-              (@bar_char * uncompleted_length).send(@bar_bg_color)
+        print ( @bar_char * completed_length).send(:colorize, *@bar_front_color),
+              (@bar_char * uncompleted_length).send(:colorize, *@bar_bg_color)
 
         @info_after_bar.each_pair do |varName, width|
           printf '  %*.*s', width, width, instance_variable_get("@#{varName}")
