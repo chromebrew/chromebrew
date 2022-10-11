@@ -61,6 +61,7 @@ if ! awk -W version &> /dev/null; then
   crew install mawk
 fi
 
+: "${CREW_PREFIX:=$(crew const | $GREP CREW_PREFIX | awk -F = '{print $2}')}"
 : "${CREW_LIB_PREFIX:=$(crew const | $GREP CREW_LIB_PREFIX | awk -F = '{print $2}')}"
 
 # Which packages have a needed library in CREW_LIB_PREFIX
@@ -69,9 +70,9 @@ whatprovidesfxn() {
   pkgdepslcl="${1}"
   # Handle patchelf inserted full library paths.
   if [[ "${pkgdepslcl}" == *"${CREW_LIB_PREFIX}"* ]]; then
-    filelcl=$($GREP --exclude "${pkg}.filelist" "${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
+    filelcl=$($GREP --exclude "${pkg}.filelist" "${pkgdepslcl}$" ${CREW_PREFIX}/etc/crew/meta/*.filelist)
   else
-    filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
+    filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" ${CREW_PREFIX}/etc/crew/meta/*.filelist)
   fi
   packagelcl=$(echo "$filelcl" | \
   sed 's/.filelist.*//g' | sed 's:.*/::' | awk '!x[$0]++' | sed s/://g)
