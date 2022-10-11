@@ -25,7 +25,7 @@ class Gnucobol < Package
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'libdb'
-  epends_on 'ncurses' # R
+  depends_on 'ncurses' # R
 
   def self.build
     system './configure',
