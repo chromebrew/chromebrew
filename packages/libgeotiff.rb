@@ -3,38 +3,48 @@ require 'package'
 class Libgeotiff < Package
   description 'GeoTIFF is based on the TIFF format and is used as an interchange format for georeferenced raster imagery.'
   homepage 'https://github.com/OSGeo/libgeotiff'
-  version '1.6.0'
+  version '1.7.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/OSGeo/libgeotiff/releases/download/1.6.0/libgeotiff-1.6.0.tar.gz'
-  source_sha256 '9311017e5284cffb86f2c7b7a9df1fb5ebcdc61c30468fb2e6bca36e4272ebca'
+  source_url 'https://github.com/OSGeo/libgeotiff/releases/download/1.7.1/libgeotiff-1.7.1.tar.gz'
+  source_sha256 '05ab1347aaa471fc97347d8d4269ff0c00f30fa666d956baba37948ec87e55d6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_armv7l/libgeotiff-1.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_armv7l/libgeotiff-1.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_i686/libgeotiff-1.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.6.0_x86_64/libgeotiff-1.6.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1_armv7l/libgeotiff-1.7.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1_armv7l/libgeotiff-1.7.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1_i686/libgeotiff-1.7.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1_x86_64/libgeotiff-1.7.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5c83c9df55eb3c906814e64b05131b53b5bfc9ee6a47b08a1fd36a7973c1c765',
-     armv7l: '5c83c9df55eb3c906814e64b05131b53b5bfc9ee6a47b08a1fd36a7973c1c765',
-       i686: '6ed77cd71bf90cc71b2b27ebe174f2e0c3ed220432934dc5690e0440a1aa4ddb',
-     x86_64: 'cae4083f50f50092b52b2a3856889a8698339f25b1b12aecd4a7f5b09572afca'
+    aarch64: 'ca3b82c76afdc8f1b296ee5db782aceb947b78f6ccfd19093a881291bb7239af',
+     armv7l: 'ca3b82c76afdc8f1b296ee5db782aceb947b78f6ccfd19093a881291bb7239af',
+       i686: '1ba477f5bd5dec79dd0da7be7ce5ab11f09dcb7aa1e4d4f65ebd234a8b744017',
+     x86_64: 'c570d1d56a1255e569be9052135ad46b24e7f68886a8a98c7365a25a1ca664fe'
   })
 
-  depends_on 'libjpeg'
-  depends_on 'proj4'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libtiff' # R
+  depends_on 'proj4' # R
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_BUILD_TYPE=Release .. && make"
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -DCMAKE_INSTALL_DOCDIR=#{CREW_PREFIX}/share/doc \
+        -DBUILD_SHARED_LIBS=true \
+        .."
     end
+    system 'ninja -C builddir'
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/doc", "#{CREW_DEST_PREFIX}/share/"
+    return unless ARCH == 'x86_64'
+
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", "#{CREW_DEST_PREFIX}/lib64"
   end
 end
