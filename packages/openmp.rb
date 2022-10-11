@@ -26,6 +26,8 @@ class Openmp < Package
 
   depends_on 'libffi'
   depends_on 'llvm' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
   no_env_options
 
   def self.patch

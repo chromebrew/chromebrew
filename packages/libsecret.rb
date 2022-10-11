@@ -25,6 +25,8 @@ class Libsecret < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'libgcrypt' => :build
   depends_on 'vala' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
   gnome
 
   def self.build

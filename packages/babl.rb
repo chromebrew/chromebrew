@@ -25,6 +25,7 @@ class Babl < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'lcms'
   depends_on 'pango'
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

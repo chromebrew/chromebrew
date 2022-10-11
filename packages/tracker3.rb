@@ -37,6 +37,9 @@ class Tracker3 < Package
   depends_on 'libstemmer'
   depends_on 'util_linux'
   depends_on 'vala' => :build
+  depends_on 'icu4c' # R
+  depends_on 'libxml2' # R
+  depends_on 'sqlite' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

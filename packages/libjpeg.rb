@@ -23,6 +23,7 @@ class Libjpeg < Package
   })
 
   depends_on 'yasm' => :build
+  depends_on 'glibc' # R
 
   def self.build
     Dir.mkdir 'builddir'

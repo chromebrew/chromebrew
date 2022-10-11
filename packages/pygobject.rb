@@ -28,6 +28,9 @@ class Pygobject < Package
   depends_on 'gobject_introspection'
   depends_on 'py3_pycairo'
   depends_on 'py3_setuptools' => :build
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libffi' # R
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

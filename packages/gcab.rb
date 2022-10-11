@@ -23,6 +23,9 @@ class Gcab < Package
   })
 
   depends_on 'gobject_introspection'
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.prebuild
     system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"

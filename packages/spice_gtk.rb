@@ -37,6 +37,21 @@ class Spice_gtk < Package
   depends_on 'spice_protocol' => :build
   depends_on 'usbutils' => :build
   depends_on 'vala' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libusb' # R
+  depends_on 'libva' # R
+  depends_on 'libx11' # R
+  depends_on 'lz4' # R
+  depends_on 'openssl' # R
+  depends_on 'pixman' # R
+  depends_on 'wayland' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "meson \

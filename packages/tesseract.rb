@@ -37,6 +37,34 @@ class Tesseract < Package
   depends_on 'harfbuzz'
   depends_on 'libtiff'
   depends_on 'pango'
+  depends_on 'acl' # R
+  depends_on 'attr' # R
+  depends_on 'brotli' # R
+  depends_on 'bz2' # R
+  depends_on 'c_ares' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'expat' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libidn2' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng' # R
+  depends_on 'libpsl' # R
+  depends_on 'libssh' # R
+  depends_on 'libunistring' # R
+  depends_on 'libwebp' # R
+  depends_on 'libxml2' # R
+  depends_on 'lz4' # R
+  depends_on 'openjpeg' # R
+  depends_on 'openssl' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
   git_fetchtags
 
   def self.build

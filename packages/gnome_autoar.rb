@@ -36,6 +36,8 @@ class Gnome_autoar < Package
   depends_on 'libjpeg'
   depends_on 'pango'
   depends_on 'vala' => :build
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

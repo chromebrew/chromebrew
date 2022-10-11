@@ -36,6 +36,10 @@ class Libadwaita < Package
   depends_on 'sassc' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
+  depends_on 'fribidi' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'vulkan_icd_loader' # R
   gnome
 
   def self.build

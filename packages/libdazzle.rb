@@ -28,6 +28,8 @@ class Libdazzle < Package
   depends_on 'gtk3'
   depends_on 'pango'
   depends_on 'vala' => :build
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

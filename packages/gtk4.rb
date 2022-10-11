@@ -67,6 +67,11 @@ class Gtk4 < Package
   depends_on 'sassc' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # R
   gnome
 
   def self.patch

@@ -29,6 +29,8 @@ class Djvulibre < Package
   depends_on 'libjpeg'
   depends_on 'libtiff'
   depends_on 'librsvg' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} \

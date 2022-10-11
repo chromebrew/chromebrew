@@ -23,6 +23,7 @@ class Libaom < Package
   })
 
   depends_on 'nasm' => :build
+  depends_on 'glibc' # R
 
   def self.build
     Dir.mkdir 'builddir'

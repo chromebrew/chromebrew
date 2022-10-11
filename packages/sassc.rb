@@ -23,6 +23,8 @@ class Sassc < Package
   })
 
   depends_on 'libsass'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     system 'autoreconf -i'

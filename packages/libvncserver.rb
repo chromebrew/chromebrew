@@ -26,6 +26,14 @@ class Libvncserver < Package
   depends_on 'ffmpeg'
   depends_on 'gtk2'
   depends_on 'libjpeg'
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libpng' # R
+  depends_on 'lzo' # R
+  depends_on 'openssl' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     Dir.mkdir 'builddir'

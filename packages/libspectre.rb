@@ -24,6 +24,8 @@ class Libspectre < Package
 
   depends_on 'ghostscript' # = libgs
   depends_on 'libjpeg'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

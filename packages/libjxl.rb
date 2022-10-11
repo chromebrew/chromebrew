@@ -32,6 +32,21 @@ class Libjxl < Package
   depends_on 'gimp' => :build
   depends_on 'libjpeg' # This needs to be turbo.
   depends_on 'xdg_utils' => :build
+  depends_on 'atk' # R
+  depends_on 'babl' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc' # R
+  depends_on 'gegl' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gtk2' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'ilmbase' # R
+  depends_on 'json_glib' # R
+  depends_on 'libpng' # R
+  depends_on 'openexr' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     Dir.mkdir 'builddir'

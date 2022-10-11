@@ -43,6 +43,11 @@ class Ghostscript < Package
   depends_on 'libxt'
   depends_on 'openjpeg'
   depends_on 'pango'
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libarchive' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
     system 'rm -r cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib'

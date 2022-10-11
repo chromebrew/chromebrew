@@ -68,6 +68,7 @@ class Gtk3 < Package
   depends_on 'valgrind' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
+  depends_on 'glibc' # R
   gnome
 
   def self.patch

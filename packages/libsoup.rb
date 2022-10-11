@@ -28,6 +28,15 @@ class Libsoup < Package
   depends_on 'vala'
   depends_on 'libsoup2' # This way we make sure packages which need the older libsoup-2.4 library get it too.
   depends_on 'py3_smartypants' => :build
+  depends_on 'brotli' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'krb5' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpsl' # R
+  depends_on 'sqlite' # R
+  depends_on 'zlibpkg' # R
   gnome
 
   def self.build

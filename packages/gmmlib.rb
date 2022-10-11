@@ -18,6 +18,8 @@ class Gmmlib < Package
   })
 
   depends_on 'libva'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     FileUtils.mkdir('builddir')

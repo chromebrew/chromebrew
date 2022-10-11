@@ -31,6 +31,23 @@ class Gdal < Package
   depends_on 'libgeotiff'
   depends_on 'libxml2'
   depends_on 'xercesc'
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
+  depends_on 'giflib' # R
+  depends_on 'glibc' # R
+  depends_on 'jsonc' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
+  depends_on 'lz4' # R
+  depends_on 'openssl' # R
+  depends_on 'pcre2' # R
+  depends_on 'sqlite' # R
+  depends_on 'unixodbc' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     system 'filefix'

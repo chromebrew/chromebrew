@@ -74,6 +74,7 @@ class Webkit2gtk_5 < Package
   depends_on 'woff2'
   depends_on 'wpebackend_fdo'
   depends_on 'zlibpkg' # R
+  depends_on 'libglvnd' # R
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"

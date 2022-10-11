@@ -33,6 +33,10 @@ class Libavif < Package
   depends_on 'nasm' => :build
   depends_on 'pkgconf' => :build
   depends_on 'gdk_pixbuf' => :build
+  depends_on 'gcc' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     Dir.mkdir 'builddir'

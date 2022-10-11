@@ -45,6 +45,7 @@ class Tracker3_miners < Package
   depends_on 'libxml2' # R
   depends_on 'tracker3' # R
   depends_on 'vala' => :build
+  depends_on 'util_linux' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

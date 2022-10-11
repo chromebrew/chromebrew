@@ -13,14 +13,14 @@ class Weston < Package
   git_hashtag @_ver
 
   binary_url({
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/11.0.0_armv7l/weston-11.0.0-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/11.0.0_armv7l/weston-11.0.0-chromeos-armv7l.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/11.0.0_x86_64/weston-11.0.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/11.0.0_armv7l/weston-11.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/11.0.0_armv7l/weston-11.0.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/11.0.0_x86_64/weston-11.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
- aarch64: 'cd09b1e0ea468162fc3f4f41befc8b5c01bb22861071e5943011a4fdbf93fb23',
-  armv7l: 'cd09b1e0ea468162fc3f4f41befc8b5c01bb22861071e5943011a4fdbf93fb23',
-  x86_64: 'e7573ade9cf4dfd6f944dc1a0c467afc7b5abe26ba443a6e1cd832e79f2e45e2'
+    aarch64: 'cd09b1e0ea468162fc3f4f41befc8b5c01bb22861071e5943011a4fdbf93fb23',
+     armv7l: 'cd09b1e0ea468162fc3f4f41befc8b5c01bb22861071e5943011a4fdbf93fb23',
+     x86_64: 'e7573ade9cf4dfd6f944dc1a0c467afc7b5abe26ba443a6e1cd832e79f2e45e2'
   })
 
   depends_on 'dbus'
@@ -54,6 +54,8 @@ class Weston < Package
   depends_on 'seatd' # R
   depends_on 'wayland_protocols'
   depends_on 'xdg_base'
+  depends_on 'libglvnd' # R
+  depends_on 'wayland' # R
 
   def self.build
     system "LIBRARY_PATH=#{CREW_LIB_PREFIX} meson #{CREW_MESON_OPTIONS} \

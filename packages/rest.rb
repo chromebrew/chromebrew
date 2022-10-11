@@ -35,6 +35,15 @@ class Rest < Package
   depends_on 'py3_smartypants' => :build
   depends_on 'py3_typogrify' => :build
   depends_on 'vulkan_headers' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'graphene' # R
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libxml2' # R
+  depends_on 'pango' # R
+  depends_on 'vulkan_icd_loader' # R
   gnome
 
   def self.build

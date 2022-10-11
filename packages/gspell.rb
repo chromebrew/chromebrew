@@ -33,6 +33,16 @@ class Gspell < Package
   depends_on 'harfbuzz' => :build
   depends_on 'llvm' => :build
   depends_on 'hunspell'
+  depends_on 'aspell' # R
+  depends_on 'atk' # R
+  depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'ncurses' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
   ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
 

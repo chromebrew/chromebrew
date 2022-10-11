@@ -28,6 +28,11 @@ class Irrlicht < Package
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
+  depends_on 'bz2' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'mesa' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
     system 'curl -#LO https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2'

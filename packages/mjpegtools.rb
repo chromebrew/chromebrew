@@ -30,6 +30,23 @@ class Mjpegtools < Package
   depends_on 'libsdl2'
   depends_on 'libx11'
   depends_on 'v4l_utils' => :build
+  depends_on 'atk' # R
+  depends_on 'expat' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gstreamer' # R
+  depends_on 'gtk2' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'

@@ -24,6 +24,8 @@ class Libmng < Package
 
   depends_on 'lcms'
   depends_on 'libjpeg'
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system './configure',

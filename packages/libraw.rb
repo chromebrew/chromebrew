@@ -25,6 +25,10 @@ class Libraw < Package
   depends_on 'jasper'
   depends_on 'lcms'
   depends_on 'openmp'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libjpeg' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system 'autoreconf -fiv'

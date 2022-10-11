@@ -22,6 +22,9 @@ class Luajit < Package
      x86_64: 'c4bfd99b5d7098acf0cd890b409a4b2a444c3f90b34bdfc0d356a4bcaf3c50e6'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}"
   end

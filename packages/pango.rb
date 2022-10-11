@@ -36,6 +36,7 @@ class Pango < Package
   depends_on 'libxrender'
   depends_on 'py3_six'
   depends_on 'xorg_proto' => :build
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

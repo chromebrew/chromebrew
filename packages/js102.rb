@@ -27,6 +27,12 @@ class Js102 < Package
   depends_on 'rust' => :build
   depends_on 'llvm' => :build
   depends_on 'nspr'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'nss' # R
+  depends_on 'readline' # R
+  depends_on 'zlibpkg' # R
 
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'

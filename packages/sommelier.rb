@@ -39,6 +39,8 @@ class Sommelier < Package
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xwayland'
   depends_on 'xxd_standalone' # for xxd in wrapper script
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   case ARCH
   when 'armv7l', 'aarch64'
@@ -56,7 +58,9 @@ class Sommelier < Package
     when 'i686', 'x86_64'
       @container_check = `/usr/bin/crossystem inside_vm` == '1'
     end
-    abort 'This package is not compatible with your device :/'.lightred unless File.socket?('/var/run/chrome/wayland-0') || @container_check
+    unless File.socket?('/var/run/chrome/wayland-0') || @container_check
+      abort 'This package is not compatible with your device :/'.lightred
+    end
   end
 
   def self.patch

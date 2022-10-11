@@ -30,6 +30,8 @@ class V4l_utils < Package
   depends_on 'mesa'
   depends_on 'qtbase'
   depends_on 'sdl2_image'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.patch
     system "find . -name '*.pl' -exec sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' {} +"

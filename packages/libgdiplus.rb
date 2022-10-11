@@ -35,6 +35,13 @@ class Libgdiplus < Package
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libwebp'
+  depends_on 'expat' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libdeflate' # R
+  depends_on 'pango' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

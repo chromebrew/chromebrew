@@ -38,6 +38,13 @@ class Librsvg < Package
   depends_on 'rust' => :build
   depends_on 'py3_six' => :build
   depends_on 'vala' => :build
+  depends_on 'expat' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libpng' # R
+  depends_on 'libxml2' # R
+  depends_on 'zlibpkg' # R
   gnome
 
   def self.build

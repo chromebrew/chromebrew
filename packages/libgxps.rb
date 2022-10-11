@@ -40,6 +40,8 @@ class Libgxps < Package
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'openjpeg'
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

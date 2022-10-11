@@ -50,6 +50,18 @@ class Qemu < Package
   depends_on 'pulseaudio' # R
   depends_on 'sdl2_image' # R
   depends_on 'snappy' # R
+  depends_on 'bz2' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'libcurl' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libpng' # R
+  depends_on 'libseccomp' # R
+  depends_on 'libssh' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.patch
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error

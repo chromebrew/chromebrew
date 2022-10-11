@@ -62,6 +62,26 @@ class Libefl < Package
   depends_on 'xcb_util_wm'
   depends_on 'xorg_proto'
   depends_on 'gnutls'
+  depends_on 'dbus' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'lcms' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libinput' # R
+  depends_on 'libunwind' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxtst' # R
+  depends_on 'util_linux' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

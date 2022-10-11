@@ -96,6 +96,13 @@ class Ffmpeg < Package
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
   depends_on 'zvbi' # R
+  depends_on 'bz2' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'mesa' # R
+  depends_on 'rtmpdump' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     case ARCH

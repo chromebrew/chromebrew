@@ -26,6 +26,14 @@ class Libsoup2 < Package
   depends_on 'libevent'
   depends_on 'qtbase'
   depends_on 'vala'
+  depends_on 'brotli' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'krb5' # R
+  depends_on 'libpsl' # R
+  depends_on 'libxml2' # R
+  depends_on 'sqlite' # R
+  depends_on 'zlibpkg' # R
   gnome
 
   def self.build

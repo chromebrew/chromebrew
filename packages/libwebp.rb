@@ -28,6 +28,12 @@ class Libwebp < Package
   depends_on 'libsdl'
   depends_on 'giflib'
   depends_on 'mesa'
+  depends_on 'freeglut' # R
+  depends_on 'glibc' # R
+  depends_on 'libdeflate' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'

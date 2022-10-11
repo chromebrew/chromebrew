@@ -26,6 +26,9 @@ class Glibmm_2_68 < Package
 
   depends_on 'libsigcplusplus3'
   depends_on 'mm_common' => :build
+  depends_on 'gcc' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

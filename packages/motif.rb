@@ -27,6 +27,24 @@ class Motif < Package
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'sommelier'
+  depends_on 'expat' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libbsd' # R
+  depends_on 'libice' # R
+  depends_on 'libmd' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxft' # R
+  depends_on 'libxmu' # R
+  depends_on 'libxrender' # R
+  depends_on 'libxt' # R
+  depends_on 'util_linux' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} \

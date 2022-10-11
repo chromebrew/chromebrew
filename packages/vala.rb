@@ -28,6 +28,7 @@ class Vala < Package
   depends_on 'libxslt'
   depends_on 'glib'
   depends_on 'dbus'
+  depends_on 'glibc' # R
   git_fetchtags
   gnome
 

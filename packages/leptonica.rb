@@ -29,6 +29,12 @@ class Leptonica < Package
   depends_on 'libtiff'
   depends_on 'libwebp'
   depends_on 'openjpeg'
+  depends_on 'glibc' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libpng' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     system '[ -x configure ] || ./autogen.sh'

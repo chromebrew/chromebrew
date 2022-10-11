@@ -62,6 +62,10 @@ class Mpv < Package
   depends_on 'xdg_base' # L
   depends_on 'vulkan_icd_loader' # L
   depends_on 'sommelier' # L
+  depends_on 'glibc' # R
+  depends_on 'libglvnd' # R
+  depends_on 'uchardet' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system './bootstrap.py'

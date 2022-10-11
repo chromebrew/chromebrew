@@ -27,6 +27,9 @@ class Jasper < Package
   depends_on 'libjpeg'
   depends_on 'mesa'
   depends_on 'shared_mime_info'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libheif' # R
 
   def self.build
     Dir.mkdir 'builddir'

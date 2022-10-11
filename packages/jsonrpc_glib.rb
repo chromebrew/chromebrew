@@ -29,6 +29,8 @@ class Jsonrpc_glib < Package
   depends_on 'vala' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'py3_gi_docgen' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

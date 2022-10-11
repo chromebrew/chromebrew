@@ -39,6 +39,14 @@ class Harfbuzz < Package
   depends_on 'pcre'
   depends_on 'py3_six' => :build
   depends_on 'zlibpkg'
+  depends_on 'expat' # R
+  depends_on 'freetype' # R
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrender' # R
+  depends_on 'lzo' # R
 
   no_env_options
   conflicts_ok
@@ -101,7 +109,9 @@ class Harfbuzz < Package
       conflicts.each do |conflict|
         conflict.each do |thisconflict|
           singleconflict = thisconflict.split(':', -1)
-          system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
+          if @override_allowed.include?(singleconflict[0])
+            system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist"
+          end
         end
       end
     end

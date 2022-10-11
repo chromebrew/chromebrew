@@ -24,6 +24,11 @@ class Atkmm < Package
 
   depends_on 'atk'
   depends_on 'glibmm'
+  depends_on 'gcc' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'glibmm_2_4' # R
+  depends_on 'libsigcplusplus' # R
   gnome
 
   def self.build

@@ -26,6 +26,17 @@ class Vte < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'fribidi'
   depends_on 'gtk3'
+  depends_on 'atk' # R
+  depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'pango' # R
+  depends_on 'pcre2' # R
+  depends_on 'zlibpkg' # R
   gnome
 
   def self.build

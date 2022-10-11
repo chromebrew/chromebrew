@@ -35,6 +35,10 @@ class Libtiff < Package
   depends_on 'mesa'
   depends_on 'wget' => :build
   depends_on 'zstd'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

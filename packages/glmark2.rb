@@ -30,6 +30,9 @@ class Glmark2 < Package
   depends_on 'libx11'
   depends_on 'libxcb'
   depends_on 'python2'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "python2 ./waf configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --with-flavors x11-gl,x11-glesv2"

@@ -38,6 +38,8 @@ class Gcr < Package
   depends_on 'pango'
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
+  depends_on 'glibc' # R
+  depends_on 'p11kit' # R
   gnome
 
   def self.build

@@ -32,6 +32,7 @@ class Glib < Package
   depends_on 'shared_mime_info' # L
   depends_on 'util_linux' # R
   depends_on 'zlibpkg' # R
+  depends_on 'pcre2' # R
   no_env_options
   patchelf
   gnome

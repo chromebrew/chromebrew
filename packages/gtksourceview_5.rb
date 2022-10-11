@@ -39,6 +39,9 @@ class Gtksourceview_5 < Package
   depends_on 'vala'
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'pcre2' # R
 
   def self.patch
     system "sed -i 's/-fstack-protector-strong/-flto/g' meson.build"

@@ -30,6 +30,19 @@ class Wxwidgets < Package
   depends_on 'mesa' # R
   depends_on 'pango' # R
   depends_on 'webkit2gtk_4'
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libcurl' # R
+  depends_on 'libice' # R
+  depends_on 'libpng' # R
+  depends_on 'libsdl2' # R
+  depends_on 'libsoup2' # R
+  depends_on 'libxext' # R
+  depends_on 'libxtst' # R
+  depends_on 'pcre2' # R
+  depends_on 'wayland' # R
+  depends_on 'zlibpkg' # R
 
   def self.preflight
     %w[wxwidgets30 wxwidgets31].each do |wxw|

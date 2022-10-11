@@ -24,6 +24,7 @@ class Dav1d < Package
   })
 
   depends_on 'nasm' => :build
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

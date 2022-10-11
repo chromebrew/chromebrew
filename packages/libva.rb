@@ -29,6 +29,7 @@ class Libva < Package
   depends_on 'libxfixes'
   depends_on 'mesa'
   depends_on 'wayland'
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

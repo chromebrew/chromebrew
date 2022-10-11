@@ -45,6 +45,9 @@ class Gegl < Package
   depends_on 'pango'
   depends_on 'poppler'
   depends_on 'vala'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

@@ -24,6 +24,14 @@ class Emacs < Package
 
   depends_on 'lcms'
   depends_on 'libjpeg'
+  depends_on 'acl' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gnutls' # R
+  depends_on 'jansson' # R
+  depends_on 'libxml2' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "./configure \

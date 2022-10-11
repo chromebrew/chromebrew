@@ -33,6 +33,26 @@ class Wireshark < Package
   depends_on 'qttools' unless ARCH == 'i686'
   depends_on 'qtmultimedia' unless ARCH == 'i686'
   depends_on 'qtsvg' unless ARCH == 'i686'
+  depends_on 'brotli' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'krb5' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libnl3' # R
+  depends_on 'libxml2' # R
+  depends_on 'lz4' # R
+  depends_on 'opus' # R
+  depends_on 'pcre2' # R
+  depends_on 'qtbase' # R
+  depends_on 'sbc' # R
+  depends_on 'snappy' # R
+  depends_on 'speexdsp' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   @gui = 'true'
   case ARCH

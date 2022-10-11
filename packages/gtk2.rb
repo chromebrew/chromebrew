@@ -44,6 +44,13 @@ class Gtk2 < Package
   depends_on 'pango'
   depends_on 'shared_mime_info'
   depends_on 'py3_six' => :build
+  depends_on 'expat' # R
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
     system "#{CREW_ENV_OPTIONS} \

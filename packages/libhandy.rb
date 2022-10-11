@@ -32,6 +32,8 @@ class Libhandy < Package
   depends_on 'libjpeg'
   depends_on 'pango'
   depends_on 'vala'
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"

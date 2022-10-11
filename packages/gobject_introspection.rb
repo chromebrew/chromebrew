@@ -24,6 +24,8 @@ class Gobject_introspection < Package
   })
 
   depends_on 'glib'
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
   gnome
 
   def self.build

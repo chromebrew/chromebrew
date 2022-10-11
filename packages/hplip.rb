@@ -11,17 +11,21 @@ class Hplip < Package
 
   binary_url({
     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.20.2_i686/hplip-3.20.2-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.20.2_x86_64/hplip-3.20.2-chromeos-x86_64.tar.xz'
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.20.2_x86_64/hplip-3.20.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     i686: '3665d159fe1684d280689e09546a9f6cb0ab7be68d4e670f40c4111ae015d8b7',
-    x86_64: '05b80f04ea8ac68ffad990ed86140932f6353d25f7fd116df5190e8484385f09'
+  x86_64: '05b80f04ea8ac68ffad990ed86140932f6353d25f7fd116df5190e8484385f09'
   })
 
   depends_on 'cups'
   depends_on 'dbus'
   depends_on 'libjpeg'
   depends_on 'sane_backends'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libusb' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
     system "curl -Ls -o config.guess 'https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'"

@@ -37,6 +37,33 @@ class Gemacs < Package
   depends_on 'libtiff'
   depends_on 'texinfo'
   depends_on 'webkit2gtk'
+  depends_on 'acl' # R
+  depends_on 'atk' # R
+  depends_on 'dbus' # R
+  depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gnutls' # R
+  depends_on 'lcms' # R
+  depends_on 'libice' # R
+  depends_on 'libsm' # R
+  depends_on 'libsoup2' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm' # R
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'ncurses' # R
+  depends_on 'pango' # R
+  depends_on 'webkit2gtk_4' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

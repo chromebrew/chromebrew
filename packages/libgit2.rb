@@ -25,6 +25,10 @@ class Libgit2 < Package
 
   depends_on 'python3'
   depends_on 'libssh2'
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
+  depends_on 'pcre' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     Dir.mkdir 'builddir'
