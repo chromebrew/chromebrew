@@ -67,7 +67,12 @@ fi
 # This is a subset of what crew whatprovides gives
 whatprovidesfxn() {
   pkgdepslcl="${1}"
-  filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
+  # Handle patchelf inserted full library paths.
+  if [[ "${pkgdepslcl}" == *"${CREW_LIB_PREFIX}"* ]]; then
+    filelcl=$($GREP --exclude "${pkg}.filelist" "${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
+  else
+    filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
+  fi
   packagelcl=$(echo "$filelcl" | \
   sed 's/.filelist.*//g' | sed 's:.*/::' | awk '!x[$0]++' | sed s/://g)
   echo "$packagelcl"
