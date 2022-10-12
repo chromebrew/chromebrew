@@ -127,7 +127,13 @@ rescue Docopt::Exit => e
   exit 1
 end
 
-String.use_color = args['--color'] || !args['--no-color']
+# override default color options if specified
+if args.has_key?('--color')
+  String.use_color = true
+elsif args.has_key?('--no-color')
+  String.use_color = false
+end
+
 @opt_keep = args['--keep']
 @opt_verbose = args['--verbose']
 
