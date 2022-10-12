@@ -38,10 +38,11 @@ class Wxwidgets < Package
 
   def self.preflight
     %w[wxwidgets30 wxwidgets31].each do |wxw|
-      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.0"
-      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.1"
-      puts "To install this version, execute the following:".lightblue
-      abort "crew remove #{wxw} && crew install wxwidgets".lightblue
+      if File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
+        puts "#{wxw} installed and conflicts with this version.".orange
+        puts "To install this version, execute the following:".lightblue
+        abort "crew remove #{wxw} && crew install wxwidgets".lightblue
+      end
     end
   end
 

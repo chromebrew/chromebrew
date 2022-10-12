@@ -9,8 +9,10 @@ class Wxwidgets31 < Package
   git_hashtag "v#{version}"
 
   binary_url({
+    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
+    x86_64: '297db664625538bdae60759b35cd6e57e6424a902b8ddacab3375eeda189b547'
   })
 
   depends_on 'atk' # R
@@ -35,10 +37,11 @@ class Wxwidgets31 < Package
 
   def self.preflight
     %w[wxwidgets wxwidgets30].each do |wxw|
-      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.0"
-      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.2"
-      puts "To install this version, execute the following:".lightblue
-      abort "crew remove #{wxw} && crew install wxwidgets31".lightblue
+      if File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
+        puts "#{wxw} installed and conficts with this version.".orange
+        puts "To install this version, execute the following:".lightblue
+        abort "crew remove #{wxw} && crew install wxwidgets31".lightblue
+      end
     end
   end
 

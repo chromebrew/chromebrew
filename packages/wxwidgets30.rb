@@ -13,7 +13,7 @@ class Wxwidgets30 < Package
     x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/wxwidgets30-3.0.5.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '82118651479c7dfa97cae937b70c36d946dbfa47844043058d606f2510700591'
+    x86_64: '152777e14b5faa3256f04fd5df463887c3d348b537ab9bbfa10b8e92ec0a040d'
   })
 
   depends_on 'atk' # R
@@ -38,10 +38,11 @@ class Wxwidgets30 < Package
 
   def self.preflight
     %w[wxwidgets wxwidgets31].each do |wxw|
-      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.1"
-      puts "#{wxw} installed.".lightgreen if File.exist? "#{CREW_PREFIX}/wx/config/gtk3-unicode-3.2"
-      puts "To install this version, execute the following:".lightblue
-      abort "crew remove #{wxw} && crew install wxwidgets30".lightblue
+      if File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
+        puts "#{wxw} installed and conflicts with this version.".orange
+        puts "To install this version, execute the following:".lightblue
+        abort "crew remove #{wxw} && crew install wxwidgets30".lightblue
+      end
     end
   end
 
