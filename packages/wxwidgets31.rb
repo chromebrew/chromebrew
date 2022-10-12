@@ -9,7 +9,7 @@ class Wxwidgets31 < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     x86_64: '297db664625538bdae60759b35cd6e57e6424a902b8ddacab3375eeda189b547'
