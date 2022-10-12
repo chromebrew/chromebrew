@@ -13,7 +13,7 @@ class String
     :cyan      => 36,
     :lightgray => 37,
 
-    # colors with bold form available
+    # colors with bold varient available
     :gray        => { normal: 90, bold: 30 },
     :lightred    => { normal: 91, bold: 31 },
     :lightgreen  => { normal: 92, bold: 32 },
@@ -46,8 +46,8 @@ class String
       bold_avail = code.is_a?(Hash)
 
       if bold_avail
-        # use bold form by default (if available),
-        # specify :no_bold to use normal form
+        # use bold varient by default (if available),
+        # specify :no_bold to use normal varient
         use_bold   = !opts.include?(:no_bold)
         color_code = code[use_bold ? :bold : :normal]
       else
