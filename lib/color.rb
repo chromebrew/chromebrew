@@ -40,7 +40,7 @@ class String
     return @@use_color ? "\e[#{shade};#{color_code}m#{self}\e[0m" : self
   end
 
-  # create function for each color
+  # create method for each color
   @@color_codes.each_pair do |name, code|
     define_method(name) do |*opts|
       bold_avail = code.is_a?(Hash)
