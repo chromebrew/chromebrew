@@ -4,24 +4,24 @@ class String
 
   # ANSI color codes
   @@color_codes = {
-    :black     => 30,
-    :red       => 31,
-    :green     => 32,
-    :orange    => 33,
-    :blue      => 34,
-    :purple    => 35,
-    :cyan      => 36,
-    :lightgray => 37,
+        black: 30,
+          red: 31,
+        green: 32,
+       orange: 33,
+         blue: 34,
+       purple: 35,
+         cyan: 36,
+    lightgray: 37,
 
     # colors with bold varient available
-    :gray        => { normal: 90, bold: 30 },
-    :lightred    => { normal: 91, bold: 31 },
-    :lightgreen  => { normal: 92, bold: 32 },
-    :yellow      => { normal: 93, bold: 33 },
-    :lightblue   => { normal: 94, bold: 34 },
-    :lightpurple => { normal: 95, bold: 35 },
-    :lightcyan   => { normal: 96, bold: 36 },
-    :white       => { normal: 97, bold: 37 }
+           gray: { normal: 90, bold: 30 },
+       lightred: { normal: 91, bold: 31 },
+     lightgreen: { normal: 92, bold: 32 },
+         yellow: { normal: 93, bold: 33 },
+      lightblue: { normal: 94, bold: 34 },
+    lightpurple: { normal: 95, bold: 35 },
+      lightcyan: { normal: 96, bold: 36 },
+          white: { normal: 97, bold: 37 }
   }
 
   class << self
