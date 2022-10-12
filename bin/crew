@@ -128,9 +128,9 @@ rescue Docopt::Exit => e
 end
 
 # override default color options if specified
-if args.has_key?('--color')
+if args['--color']
   String.use_color = true
-elsif args.has_key?('--no-color')
+elsif args['--no-color']
   String.use_color = false
 end
 
