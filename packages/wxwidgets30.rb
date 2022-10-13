@@ -44,11 +44,11 @@ class Wxwidgets30 < Package
 
   def self.preflight
     %w[wxwidgets wxwidgets31].each do |wxw|
-      if File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
-        puts "#{wxw} installed and conflicts with this version.".orange
-        puts "To install this version, execute the following:".lightblue
-        abort "crew remove #{wxw} && crew install wxwidgets30".lightblue
-      end
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
+
+      puts "#{wxw} installed and conflicts with this version.".orange
+      puts 'To install this version, execute the following:'.lightblue
+      abort "crew remove #{wxw} && crew install wxwidgets30".lightblue
     end
   end
 
