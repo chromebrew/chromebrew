@@ -134,4 +134,8 @@ class Buildessential < Package
 
   # Packages needed for compressing archives
   depends_on 'zstd'
+
+  # Add rubocop for linting packages. (This also installs the
+  # rubocop config file.)
+  depends_on 'ruby_rubocop'
 end
