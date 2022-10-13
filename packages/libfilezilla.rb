@@ -10,8 +10,10 @@ class Libfilezilla < Package
   source_sha256 'f3d6c0df28f33f52cf253cb03fc51579752ae4daef2aac7345a6bd7de623a6c5'
 
   binary_url({
+    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfilezilla/0.39.1_armv7l/libfilezilla-0.39.1-chromeos-armv7l.tar.zst'
   })
   binary_sha256({
+    armv7l: '250d912aef70be101d50da5d50240dc6f7064f6e6898248fccd51776fad6807e'
   })
 
   depends_on 'openmp'

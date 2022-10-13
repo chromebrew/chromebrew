@@ -10,10 +10,10 @@ class Wxwidgets30 < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/wxwidgets30-3.0.5.1-chromeos-x86_64.tar.zst'
+    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_armv7l/wxwidgets30-3.0.5.1-chromeos-armv7l.tar.zst'
   })
   binary_sha256({
-    x86_64: '152777e14b5faa3256f04fd5df463887c3d348b537ab9bbfa10b8e92ec0a040d'
+    armv7l: '2b26bceb3a39c6d9daa06e9d255e85827459c24d767226714337130c4cfd57ce'
   })
 
   depends_on 'atk' # R
