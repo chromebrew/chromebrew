@@ -3,24 +3,23 @@ require 'package'
 class Wxwidgets < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  @_ver = '3.2.0'
-  version @_ver
+  version '3.2.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_armv7l/wxwidgets-3.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_armv7l/wxwidgets-3.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_i686/wxwidgets-3.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.0_x86_64/wxwidgets-3.2.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_i686/wxwidgets-3.2.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_x86_64/wxwidgets-3.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e448296c06b7f6711524daa6c6990e2895ff9a53ebd4924ac0b85a16af7a80ba',
-     armv7l: 'e448296c06b7f6711524daa6c6990e2895ff9a53ebd4924ac0b85a16af7a80ba',
-       i686: '71c93bf3f0d01f6bc6b3ce2a67c9500be19b842aff0b062b09bde02365c6a27c',
-     x86_64: '21119b43b7ad1c6620c04569981d83a97d367baf85c630983351849b9aef9949'
+    aarch64: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
+     armv7l: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
+       i686: 'f752f8d0ba3fb2385f42d5f8476857845a44fbb528cf5838e6b307516c9fe3fa',
+     x86_64: 'beae22a38ef0479491e2c563e7e9d317d14d643e4ffa5499579b3fe53176df1c'
   })
 
   depends_on 'atk' # R
@@ -43,6 +42,16 @@ class Wxwidgets < Package
   depends_on 'mesa' # R
   depends_on 'pango' # R
 
+  def self.preflight
+    %w[wxwidgets30 wxwidgets31].each do |wxw|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
+
+      puts "#{wxw} installed and conflicts with this version.".orange
+      puts 'To install this version, execute the following:'.lightblue
+      abort "crew remove #{wxw} && crew install wxwidgets".lightblue
+    end
+  end
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
       --with-gtk=3 \
@@ -56,6 +65,7 @@ class Wxwidgets < Package
       --with-libjpeg=sys \
       --with-libtiff=sys \
       --without-gnomevfs \
+      --disable-universal \
       --disable-precomp-headers"
     system 'make'
   end
@@ -63,7 +73,7 @@ class Wxwidgets < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.0", 'wx-config'
+      FileUtils.ln_sf "#{CREW_LIB_PREFIX}/wx/config/gtk3-unicode-3.2", 'wx-config'
     end
   end
 end
