@@ -7649,6 +7649,11 @@ url: https://www.x.org/pub/individual/util/
 activity: low
 ---
 kind: url
+name: uutils_coreutils
+url: https://github.com/uutils/coreutils/releases
+activity: medium
+---
+kind: url
 name: uwsgi
 url: https://github.com/unbit/uwsgi/releases
 activity: medium
