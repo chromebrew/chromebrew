@@ -4,19 +4,19 @@ class Wxwidgets31 < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
   version '3.1.7'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_armv7l/wxwidgets31-3.1.7-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_armv7l/wxwidgets31-3.1.7-chromeos-armv7l.tar.zst',
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'ce03b99f4b8ff0ddf623ab3063f239835730c15e4eb7a96d8d0da34215ea8f0c',
      armv7l: 'ce03b99f4b8ff0ddf623ab3063f239835730c15e4eb7a96d8d0da34215ea8f0c',
-    x86_64: '297db664625538bdae60759b35cd6e57e6424a902b8ddacab3375eeda189b547'
+     x86_64: '297db664625538bdae60759b35cd6e57e6424a902b8ddacab3375eeda189b547'
   })
 
   depends_on 'atk' # R

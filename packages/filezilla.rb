@@ -11,10 +11,14 @@ class Filezilla < Package
   source_sha256 '0afef0e4da25202687b32ed6b1ffcd8442d5b35bdcd16df4f02bb2ea92e299f7'
 
   binary_url({
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_armv7l/filezilla-3.61.0-chromeos-armv7l.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_armv7l/filezilla-3.61.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_armv7l/filezilla-3.61.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_x86_64/filezilla-3.61.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    armv7l: 'b46be3e5056a153fa2f7ca8812209493a8e0cf54dcb4bffb4f097cac1ef5d9a8'
+    aarch64: 'b46be3e5056a153fa2f7ca8812209493a8e0cf54dcb4bffb4f097cac1ef5d9a8',
+     armv7l: 'b46be3e5056a153fa2f7ca8812209493a8e0cf54dcb4bffb4f097cac1ef5d9a8',
+     x86_64: '2c8d7a8cc38acace81cf12a2fee9be663f88028e690d70efddc1a1374d55d8fe'
   })
 
   depends_on 'dbus'

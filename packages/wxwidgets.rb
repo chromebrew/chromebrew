@@ -12,12 +12,12 @@ class Wxwidgets < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_armv7l/wxwidgets-3.2.1-chromeos-armv7l.tar.zst',
-    x86_64: 'file:///home/chronos/user/chromebrew/release/x86_64/wxwidgets-3.2.1-chromeos-x86_64.tar.zst'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1_x86_64/wxwidgets-3.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
      armv7l: '10c71058ec6cfdd15fbb5df6d806b8cac45a4c76660c3e241784a50a7025ea19',
-    x86_64: '2825b89943760f92223aa52353b2456c3eeaf573024b248af6561d5fb6eea9fd'
+     x86_64: 'beae22a38ef0479491e2c563e7e9d317d14d643e4ffa5499579b3fe53176df1c'
   })
 
   depends_on 'atk' # R
