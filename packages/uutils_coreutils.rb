@@ -31,6 +31,16 @@ class Uutils_coreutils < Package
   depends_on 'glibc' # R
   conflicts_ok # conflicts with coreutils
 
+  def self.preflight
+    %w[coreutils].each do |cutils|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{cutils}.filelist"
+
+      puts "#{cutils} installed and conflicts with this version.".orange
+      puts 'To install this version, execute the following:'.lightblue
+      abort "crew remove #{cutils} && crew install uutils_coreutils".lightblue
+    end
+  end
+ 
   def self.build
     system 'make PROFILE=release MULTICALL=y'
   end
