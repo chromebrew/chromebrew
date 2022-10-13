@@ -7954,6 +7954,11 @@ url: https://github.com/wxWidgets/wxWidgets/releases/
 activity: low
 ---
 kind: url
+name: wxwidgets30
+url: https://github.com/wxWidgets/wxWidgets/releases/
+activity: low
+---
+kind: url
 name: wxwidgets31
 url: https://github.com/wxWidgets/wxWidgets/releases/
 activity: low
