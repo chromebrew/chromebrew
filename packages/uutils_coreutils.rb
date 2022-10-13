@@ -40,7 +40,7 @@ class Uutils_coreutils < Package
       abort "crew remove #{cutils} && crew install uutils_coreutils".lightblue
     end
   end
- 
+
   def self.build
     system 'make PROFILE=release MULTICALL=y'
   end
