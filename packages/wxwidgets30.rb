@@ -12,11 +12,13 @@ class Wxwidgets30 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_armv7l/wxwidgets30-3.0.5.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_armv7l/wxwidgets30-3.0.5.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_i686/wxwidgets30-3.0.5.1-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_x86_64/wxwidgets30-3.0.5.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '2b26bceb3a39c6d9daa06e9d255e85827459c24d767226714337130c4cfd57ce',
      armv7l: '2b26bceb3a39c6d9daa06e9d255e85827459c24d767226714337130c4cfd57ce',
+       i686: 'a426f85c7f630184ac433d4b8a91eced0dbbab2a9dd9cd3d9a82e23c0f29adaf',
      x86_64: '152777e14b5faa3256f04fd5df463887c3d348b537ab9bbfa10b8e92ec0a040d'
   })
 

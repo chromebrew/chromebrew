@@ -7,7 +7,7 @@ class Filezilla < Package
   version @_ver
   license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url "file:///home/chronos/user/chromebrew/release/armv7l/FileZilla_#{@_ver}_src.tar.bz2"
+  source_url "https://download.filezilla-project.org/client/FileZilla_#{@_ver}_src.tar.bz2"
   source_sha256 '0afef0e4da25202687b32ed6b1ffcd8442d5b35bdcd16df4f02bb2ea92e299f7'
 
   binary_url({
