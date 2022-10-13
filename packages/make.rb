@@ -22,6 +22,8 @@ class Make < Package
      x86_64: '26dee9755f910ebbc5e8742fc40937dc4b5900ded4a415b26aa282def3821d9d'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system './configure',
            "--prefix=#{CREW_PREFIX}",

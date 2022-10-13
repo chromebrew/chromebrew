@@ -22,6 +22,12 @@ class Rtmpdump < Package
      x86_64: '7e76a4f0a4f359f5ab8283ac175c4dc85f2d54aad1413840240627e810d5c6c0'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'gnutls' # R
+  depends_on 'nettle' # R
+  depends_on 'zlibpkg' # R
+
   @make_common_opts = ['SYS=posix', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}",
                        "mandir=#{CREW_PREFIX}/share/man", 'CRYPTO=GNUTLS']
 

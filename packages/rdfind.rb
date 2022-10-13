@@ -26,6 +26,9 @@ class Rdfind < Package
   })
 
   depends_on 'autoconf_archive' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'nettle' # R
 
   def self.patch
     system "sed -i '/<vector>/a #include <limits>' rdfind.cc"

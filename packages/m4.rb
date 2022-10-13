@@ -22,10 +22,11 @@ class M4 < Package
      x86_64: '6a5c76203b00d2058e27e4a65aafb737b30bf1d2225fa6be0c30738d19a1e782'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libsigsegv'
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

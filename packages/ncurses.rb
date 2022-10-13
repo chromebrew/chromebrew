@@ -22,13 +22,14 @@ class Ncurses < Package
      x86_64: '567cf7a40682009b0b817795e62e248374e87896ab76e5bd5fc69f98d252bf31'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
   no_patchelf
 
   def self.build
     # build libncurses
     Dir.mkdir 'ncurses_build'
     Dir.chdir 'ncurses_build' do
-      # system "env #{CREW_ENV_OPTIONS} \
       system "../configure #{CREW_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
@@ -46,7 +47,6 @@ class Ncurses < Package
     # build libncursesw
     Dir.mkdir 'ncursesw_build'
     Dir.chdir 'ncursesw_build' do
-      # system "env #{CREW_ENV_OPTIONS} \
       system "../configure #{CREW_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \

@@ -23,6 +23,8 @@ class Nettle < Package
      x86_64: '8f3f8f16263b2a1ccef1c078ee9443bcbe4f7a08fc9bb66ab1e5cf0715e7df0f'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'm4'
   depends_on 'openssl'
 

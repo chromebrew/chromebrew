@@ -23,7 +23,9 @@ class Libtirpc < Package
      x86_64: '8fffa00840f66ff4b6bb9c8d66a36d15208829fe2ff00dd0c46b435fcbc2201b'
   })
 
-  depends_on 'e2fsprogs'
+  depends_on 'e2fsprogs' # R
+  depends_on 'glibc' # R
+  depends_on 'krb5' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS}"
