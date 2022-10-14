@@ -1,10 +1,7 @@
-# Adapted from Arch Linux ruby-rubocop PKGBUILD at:
-# https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ruby-rubocop
-
 require 'package'
 
 class Ruby_debug < Package
-  description 'Ruby debug.rb'
+  description 'Debugging functionality for Ruby. This is completely rewritten debug.rb which was contained by the ancient Ruby versions.'
   homepage 'https://github.com/ruby/debug'
   version '1.6.2'
   compatibility 'all'
@@ -33,31 +30,28 @@ class Ruby_debug < Package
   # @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
-    # system 'bundle install'
-    # system 'rake build'
   end
 
   def self.install
-    # system "gem install --build=#{CREW_DEST_DIR} pkg/rubocop-#{version}.gem"
     FileUtils.mkdir_p CREW_DEST_PREFIX
   end
 
   def self.postinstall
-    @gem_name = name.sub('ruby_', '')
-    system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name} || true"
+    @gem_name = name.delete('ruby_')
+    system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
     system "gem install -N #{@gem_name} --conservative"
   end
 
   def self.remove
-    @gem_name = name.sub('ruby_', '')
-    @gems_deps = `gem dependency ^#{@gem_name}\$ | awk '{print \$1}'`.chomp
+    @gem_name = name.delete('ruby_')
+    @gems_deps = `gem dependency ^#{@gem_name}\$`.scan(/^([^\s]+?)/).flatten
     # Delete the first line and convert to an array.
     @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
     # bundler never gets uninstalled, though gem dependency lists it for
     # every package, so delete it from the list.
     @gems.delete('bundler')
     @gems.each do |gem|
-      system "gem uninstall -Dx --force --abort-on-dependent #{gem} || true"
+      system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
     end
   end
 end
