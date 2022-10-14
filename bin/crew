@@ -588,67 +588,63 @@ def update
   end
 end
 
-def upgrade
-  if @pkgName
-    currentVersion = nil
-    @device[:installed_packages].each do |package|
-      currentVersion = package[:version] if package[:name] == @pkg.name
+def upgrade(*pkgs, build_from_source: false)
+  check_update_avail = lambda do |pkgFile|
+    pkgName = File.basename(pkgFile, '.rb')
+
+    unless File.exist?(pkgFile)
+      warn "Package file for installed package #{pkgName} is missing.".lightred
+      return false
     end
 
-    if currentVersion == @pkg.version
-      puts "#{@pkg.name} is already up to date.".lightgreen
-    else
-      puts "Updating #{@pkg.name}..."
-      @pkg.in_upgrade = true
-      resolve_dependencies_and_install
-      @pkg.in_upgrade = false
+    pkgVer_latest    = Package.load_package(pkgFile, pkgName).version
+    pkgVer_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:version]
+
+    return pkgVer_latest != pkgVer_installed
+  end
+
+  to_be_upgraded = []
+
+  if pkgs.any?
+    # check for specific package(s)
+    pkgs.each do |pkgName|
+      pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
+      to_be_upgraded << pkgName if check_update_avail.call(pkgFile)
     end
   else
-    # Make an installed packages list belong to the dependency order
-    dependencies = []
-    @device[:installed_packages].each do |package|
-      unless File.exist?("#{CREW_PACKAGES_PATH}#{package[:name]}.rb")
-        puts "Package file for installed package #{package[:name]} is missing.".lightred
-        next
-      end
-      # skip package if it is dependent other packages previously checked
-      next if dependencies.include? package[:name]
-
-      # add package itself
-      dependencies = [package[:name]].concat(dependencies)
-      # expand dependencies and add it to the dependencies list
-      search package[:name], true
-      @dependencies = []
-      exp_dep = expand_dependencies
-      dependencies = exp_dep.concat(dependencies)
-    end
-    dependencies.uniq!
-
-    # Check version number of installed package and make a target list
-    toBeUpdated = []
-    dependencies.each do |dep|
-      package = @device[:installed_packages].select { |pkg| pkg[:name] == dep } [0]
-      next unless package
-
-      search package[:name], true
-      toBeUpdated.push(package[:name]) if package[:version] != @pkg.version
-    end
-
-    if toBeUpdated.empty?
-      puts 'Your software is already up to date.'.lightgreen
-    else
-      puts 'Updating packages...'
-      toBeUpdated.each do |package|
-        search package
-        print_current_package
-        puts "Updating #{@pkg.name}..." if @opt_verbose
-        @pkg.in_upgrade = true
-        resolve_dependencies_and_install
-        @pkg.in_upgrade = false
-      end
-      puts 'Packages have been updated.'.lightgreen
+    # check for all packages if no package name provided
+    @device[:installed_packages].each do |pkg|
+      pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkg[:name]}.rb")
+      to_be_upgraded << pkg[:name] if check_update_avail.call(pkgFile)
     end
   end
+
+  if to_be_upgraded.empty?
+    puts 'Your software is already up to date.'.lightgreen
+    return true
+  end
+
+  # install new dependencies (if any)
+  to_be_upgraded.each do |pkgName|
+    search(pkgName)
+    resolve_dependencies
+  end
+
+  puts 'Updating packages...'
+
+  # upgrade packages
+  to_be_upgraded.each do |pkgName|
+    search(pkgName)
+    print_current_package
+    @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
+
+    puts "Updating #{@pkg.name}..." if @opt_verbose
+
+    @pkg.in_upgrade = true
+    resolve_dependencies_and_install
+  end
+
+  puts 'Packages have been updated.'.lightgreen
 end
 
 def download
@@ -1804,15 +1800,7 @@ def update_command(args)
 end
 
 def upgrade_command(args)
-  args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
-    print_current_package
-    @pkg.build_from_source = true if @opt_src || (CREW_BUILD_FROM_SOURCE == '1')
-    upgrade
-  end.empty? and begin
-    upgrade
-  end
+  upgrade(*args['<name>'], build_from_source: @opt_src)
 end
 
 def whatprovides_command(args)
