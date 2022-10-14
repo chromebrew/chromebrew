@@ -3,33 +3,33 @@ require 'package'
 class Libva < Package
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  @_ver = '2.16.0'
+  @_ver = '2.17.0-65c67dd'
   version @_ver.to_s
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/intel/libva.git'
-  git_hashtag @_ver
+  git_hashtag '65c67dd2bd6b68afa5d86a8f9bdba6aa592e686f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_armv7l/libva-2.16.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_armv7l/libva-2.16.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_i686/libva-2.16.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.16.0_x86_64/libva-2.16.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0-65c67dd_armv7l/libva-2.17.0-65c67dd-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0-65c67dd_armv7l/libva-2.17.0-65c67dd-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0-65c67dd_i686/libva-2.17.0-65c67dd-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0-65c67dd_x86_64/libva-2.17.0-65c67dd-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ac2a55f303a50fc14f80f0308cdef28cee672d08a435e806b27f4845b4a16402',
-     armv7l: 'ac2a55f303a50fc14f80f0308cdef28cee672d08a435e806b27f4845b4a16402',
-       i686: '080be345a0938b687dea51acae964e89f3b5b34169283a6bd6a9f55d9b839356',
-     x86_64: '320022e94dc9beac537279085f66d4caa270e8af9fe4eb0455fbaa11b48c5258'
+    aarch64: 'efd4503cce64adac7d896910a91d4810f3a9f4a7aaa5a151f1a4f7eb2bfcf809',
+     armv7l: 'efd4503cce64adac7d896910a91d4810f3a9f4a7aaa5a151f1a4f7eb2bfcf809',
+       i686: '451310b158efdc080fe14516c394f6345ba9ec17a3946cc391fa8096b6aeffaa',
+     x86_64: '7836a07d6c3f7c951687b0e5a779536e30d3668d3fa211beb547b97bb4d3094c'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libdrm'
   depends_on 'libx11'
   depends_on 'libxext'
   depends_on 'libxfixes'
   depends_on 'mesa'
   depends_on 'wayland'
-  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
