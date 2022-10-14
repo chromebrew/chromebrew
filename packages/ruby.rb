@@ -62,7 +62,7 @@ class Ruby < Package
 
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
-    unless Kernel.system("grep -q \"--no-document\" #{HOME}/.gemrc")
+    unless Kernel.system("grep -q \"no-document\" #{HOME}/.gemrc")
       File.write("#{HOME}/.gemrc", "gem: --no-document\n",
                    mode: 'a')
     end
