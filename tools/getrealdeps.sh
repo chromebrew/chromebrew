@@ -38,22 +38,25 @@ if ! jq --version &> /dev/null; then
   crew install jq
 fi
 
+: "${CREW_PREFIX:=$(crew const CREW_PREFIX | cut -d= -f2)}"
+: "${CREW_LIB_PREFIX:=$(crew const CREW_LIB_PREFIX | cut -d= -f2)}"
+
 # Package needs to be installed for package filelist to be populated.
-if ! [[ $(jq --arg key "${pkg}" -e '.installed_packages[] | select(.name == $key )' /usr/local/etc/crew/device.json) ]]; then
+if ! [[ $(jq --arg key "${pkg}" -e '.installed_packages[] | select(.name == $key )' "${CREW_PREFIX}"/etc/crew/device.json) ]]; then
   crew install "${pkg}"
 fi
 
-if ! [[ -f "/usr/local/etc/crew/meta/${pkg}.filelist" ]]; then
+if ! [[ -f "${CREW_PREFIX}/etc/crew/meta/${pkg}.filelist" ]]; then
   echo_error "Package $pkg either does not exist or does not contain any libraries."
   exit 1
 fi
 
 # Install grep if a functional local copy does not exist.
 if grep --version &> /dev/null; then
-  GREP=grep
+  GREP="grep"
 else
   crew install grep
-  GREP=/usr/local/bin/grep
+  GREP="${CREW_PREFIX}/bin/grep"
 fi
 
 # Install mawk if a functional local copy of awk does not exist.
@@ -61,13 +64,16 @@ if ! awk -W version &> /dev/null; then
   crew install mawk
 fi
 
-: "${CREW_LIB_PREFIX:=$(crew const | $GREP CREW_LIB_PREFIX | awk -F = '{print $2}')}"
-
 # Which packages have a needed library in CREW_LIB_PREFIX
 # This is a subset of what crew whatprovides gives
 whatprovidesfxn() {
   pkgdepslcl="${1}"
-  filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" /usr/local/etc/crew/meta/*.filelist)
+  # Handle patchelf inserted full library paths.
+  if [[ "${pkgdepslcl}" == *"${CREW_LIB_PREFIX}"* ]]; then
+    filelcl=$($GREP --exclude "${pkg}.filelist" "${pkgdepslcl}$" "${CREW_PREFIX}"/etc/crew/meta/*.filelist)
+  else
+    filelcl=$($GREP --exclude "${pkg}.filelist" "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" "${CREW_PREFIX}"/etc/crew/meta/*.filelist)
+  fi
   packagelcl=$(echo "$filelcl" | \
   sed 's/.filelist.*//g' | sed 's:.*/::' | awk '!x[$0]++' | sed s/://g)
   echo "$packagelcl"
@@ -76,7 +82,7 @@ whatprovidesfxn() {
 # What files does a package provide
 crewfilesfxn() {
  pkgname="${1}"
- files=$(< /usr/local/etc/crew/meta/"${pkgname}".filelist)
+ files=$(< "${CREW_PREFIX}"/etc/crew/meta/"${pkgname}".filelist)
  echo "$files"
 }
 
@@ -112,7 +118,7 @@ pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${pkg}/d" | sort -u )
 missingpkgdeps=$(
 for i in $pkgdeps
 do
-  $GREP -q "depends_on '$i'" /usr/local/lib/crew/packages/"${pkg}".rb || echo "$i"
+  $GREP -q "depends_on '$i'" "${CREW_PREFIX}"/lib/crew/packages/"${pkg}".rb || echo "$i"
 done
 )
 echo_info "\nPackage ${pkg} has runtime library dependencies on these packages:"
