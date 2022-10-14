@@ -26,6 +26,16 @@ class Coreutils < Package
   depends_on 'libcap' # R
   no_patchelf
 
+  def self.preflight
+    %w[uutils_coreutils].each do |cutils|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{cutils}.filelist"
+
+      puts "#{cutils} installed and conflicts with this version.".orange
+      puts 'To install this version, execute the following:'.lightblue
+      abort "crew remove #{cutils} && crew install coreutils".lightblue
+    end
+  end
+
   def self.patch
     # Patch from https://git.savannah.gnu.org/cgit/gnulib.git/diff/?id=84863a1c4dc8cca8fb0f6f670f67779cdd2d543b
     @gnulibpatch = <<~'PATCH_EOF'
