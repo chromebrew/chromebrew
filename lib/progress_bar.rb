@@ -94,7 +94,7 @@ class ProgressBar
         end
 
         # print progress bar with color code
-        print ( @bar_char * completed_length).send(*@bar_front_color),
+        print (@bar_char * completed_length).send(*@bar_front_color),
               (@bar_char * uncompleted_length).send(*@bar_bg_color)
 
         @info_after_bar.each_pair do |varName, width|
