@@ -11,7 +11,7 @@
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.1
   Exclude:
   - 'lib/docopt.rb'
 
@@ -118,8 +118,12 @@ Layout/HashAlignment:
 
 # End temporarily disabled cops
 
+Layout/CommentIndentation:
+  Enabled: false
+
 Layout/FirstHashElementIndentation:
-  EnforcedStyle: consistent
+  Enabled: false
+# EnforcedStyle: consistent
 
 Layout/IndentationStyle:
   EnforcedStyle: spaces
