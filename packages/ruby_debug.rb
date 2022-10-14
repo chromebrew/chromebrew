@@ -37,13 +37,13 @@ class Ruby_debug < Package
   end
 
   def self.postinstall
-    @gem_name = name.delete('ruby_')
+    @gem_name = name.sub('ruby_','')
     system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
     system "gem install -N #{@gem_name} --conservative"
   end
 
   def self.remove
-    @gem_name = name.delete('ruby_')
+    @gem_name = name.sub('ruby_','')
     @gems_deps = `gem dependency ^#{@gem_name}\$`.scan(/^([^\s]+?)/).flatten
     # Delete the first line and convert to an array.
     @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
