@@ -43,7 +43,7 @@ class Ruby < Package
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
-      optflags='-flto -fuse-ld=mold' \
+      optflags='-flto -fuse-ld=#{CREW_LINKER}' \
       ./configure #{CREW_OPTIONS} \
       --enable-shared \
       --disable-fortify-source"
@@ -62,9 +62,13 @@ class Ruby < Package
 
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
-    if (File.exist?("#{HOME}/.gemrc") && !Kernel.system("grep -q \"gem: --no-document\" #{HOME}/.gemrc")) || !File.exist?("#{HOME}/.gemrc")
+    unless Kernel.system("grep -q \"--no-document\" #{HOME}/.gemrc")
       File.write("#{HOME}/.gemrc", "gem: --no-document\n",
-mode: 'a')
+                   mode: 'a')
+    end
+    unless Kernel.system("grep -q \"gempath\" #{HOME}/.gemrc")
+      File.write("#{HOME}/.gemrc", "gempath: #{CREW_LIB_PREFIX}/ruby/gems/3.1.0\n",
+                   mode: 'a')
     end
     silent = @opt_verbose ? '' : '--silent'
     system "gem update #{silent} -N --system"
