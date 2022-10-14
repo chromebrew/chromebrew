@@ -14,7 +14,7 @@ class ProgressBar
     # color scheme of progress bar, can be changed
     # see color.rb for more available colors
     @bar_front_color = %i[lightblue no_bold]
-    @bar_bg_color = %i[grey no_bold]
+    @bar_bg_color    = %i[grey no_bold]
 
     # all info blocks with space taken
     @info_before_bar = { downloaded_size_in_str: 20 }
