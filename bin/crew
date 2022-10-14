@@ -614,8 +614,8 @@ def upgrade(*pkgs, build_from_source: false)
   else
     # check for all packages if no package name provided
     @device[:installed_packages].each do |pkg|
-      pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkg.name}.rb")
-      to_be_upgraded << pkg.name if check_update_avail.call(pkgFile)
+      pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkg[:name]}.rb")
+      to_be_upgraded << pkg[:name] if check_update_avail.call(pkgFile)
     end
   end
 
