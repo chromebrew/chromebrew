@@ -38,7 +38,7 @@ class Ruby_debug < Package
 
   def self.postinstall
     @gem_name = name.delete('ruby_')
-    system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
+    system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
     system "gem install -N #{@gem_name} --conservative"
   end
 
