@@ -75,6 +75,7 @@ class Core < Package
   depends_on 'rsync'
   depends_on 'rtmpdump'
   depends_on 'ruby'
+  depends_on 'ruby_debug'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'
