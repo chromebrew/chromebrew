@@ -64,11 +64,11 @@ class Ruby < Package
     puts 'Updating ruby gems. This may take a while...'
     unless Kernel.system("grep -q \"no-document\" #{HOME}/.gemrc")
       File.write("#{HOME}/.gemrc", "gem: --no-document\n",
-                   mode: 'a')
+                 mode: 'a')
     end
     unless Kernel.system("grep -q \"gempath\" #{HOME}/.gemrc")
       File.write("#{HOME}/.gemrc", "gempath: #{CREW_LIB_PREFIX}/ruby/gems/3.1.0\n",
-                   mode: 'a')
+                 mode: 'a')
     end
     silent = @opt_verbose ? '' : '--silent'
     system "gem update #{silent} -N --system"

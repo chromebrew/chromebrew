@@ -29,21 +29,20 @@ class Ruby_debug < Package
   # @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   # @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
-  def self.build
-  end
+  def self.build; end
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
   end
 
   def self.postinstall
-    @gem_name = name.sub('ruby_','')
+    @gem_name = name.sub('ruby_', '')
     system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
     system "gem install -N #{@gem_name} --conservative"
   end
 
   def self.remove
-    @gem_name = name.sub('ruby_','')
+    @gem_name = name.sub('ruby_', '')
     @gems_deps = `gem dependency ^#{@gem_name}\$`.scan(/^([^\s]+?)/).flatten
     # Delete the first line and convert to an array.
     @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
