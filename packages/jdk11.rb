@@ -34,7 +34,7 @@ class Jdk11 < Package
       EOT
     end
 
-    unless File.exist?( URI( get_source_url(:x86_64) ).path )
+    unless File.exist?( URI(source_url).path )
       # check if we should prompt user to the archive page or download page based on #{version}
       # download page only contains latest version while archive page only contains older versions
 
@@ -80,6 +80,6 @@ class Jdk11 < Package
 
   def self.postinstall
     # remove jdk archive after installed
-    FileUtils.rm_f URI( get_source_url(:x86_64) ).path
+    FileUtils.rm_f URI(source_url).path
   end
 end

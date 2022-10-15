@@ -34,7 +34,7 @@ class Jdk18 < Package
       EOT
     end
 
-    unless File.exist?( URI( get_source_url(:x86_64) ).path )
+    unless File.exist?( URI(source_url).path )
       abort <<~EOT.orange
 
         Oracle now requires an account to download the JDK.
@@ -67,6 +67,6 @@ class Jdk18 < Package
 
   def self.postinstall
     # remove jdk archive after installed
-    FileUtils.rm_f URI( get_source_url(:x86_64) ).path
+    FileUtils.rm_f URI(source_url).path
   end
 end
