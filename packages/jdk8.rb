@@ -3,15 +3,22 @@ require 'uri'
 
 class Jdk8 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
-  homepage 'https://www.oracle.com/java/technologies/downloads/#java8'
+  homepage 'https://www.oracle.com/java'
   version '8u341'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
 
   @jdk_arch = {
-     armv7l: 'arm32-vfp-hflt',
-       i686: 'i586',
-     x86_64: 'x64'
+    armv7l: 'arm32-vfp-hflt',
+      i686: 'i586',
+    x86_64: 'x64'
+  }
+
+  @jdk_description = {
+    aarch64: 'ARM 32 Hard Float ABI',
+     armv7l: 'ARM 32 Hard Float ABI',
+       i686: 'x86 Compressed Archive',
+     x86_64: 'x64 Compressed Archive'
   }
 
   source_url({
@@ -72,7 +79,7 @@ class Jdk8 < Package
         You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
         #{jdk_download_url}
 
-        Download "jdk-#{version}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" to Chrome OS download folder to continue.
+        Download "jdk-#{version}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" (#{@jdk_description[ARCH.to_sym]}) to Chrome OS download folder to continue.
       EOT
     end
   end

@@ -3,24 +3,13 @@ require 'uri'
 
 class Jdk11 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
-  homepage 'https://www.oracle.com/java/technologies/downloads/#java11'
+  homepage 'https://www.oracle.com/java'
   version '11.0.16.1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
 
-  @jdk_arch = {
-     armv7l: 'arm32-vfp-hflt',
-       i686: 'i586',
-     x86_64: 'x64'
-  }
-
-  source_url({
-     x86_64: File.join('file://', HOME, 'Downloads', "jdk-#{version}_linux-#{@jdk_arch[:x86_64]}_bin.tar.gz")
-  })
-
-  source_sha256({
-     x86_64: '4edc62ebb4359b276ea33abfd9a54bacb218b8f972603c20be9e415b8a59012c'
-  })
+  source_url File.join('file://', HOME, 'Downloads', "jdk-#{version}_linux-x64_bin.tar.gz")
+  source_sha256 '4edc62ebb4359b276ea33abfd9a54bacb218b8f972603c20be9e415b8a59012c'
 
   no_compile_needed
   no_patchelf
@@ -45,7 +34,7 @@ class Jdk11 < Package
       EOT
     end
 
-    unless File.exist?( URI( get_source_url(ARCH.to_sym) ).path )
+    unless File.exist?( URI( get_source_url(:x86_64) ).path )
       # check if we should prompt user to the archive page or download page based on #{version}
       # download page only contains latest version while archive page only contains older versions
 
@@ -66,7 +55,7 @@ class Jdk11 < Package
         You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
         #{jdk_download_url}
 
-        Download "jdk-#{version}_linux-#{@jdk_arch[ARCH.to_sym]}_bin.tar.gz" to Chrome OS download folder to continue.
+        Download "jdk-#{version}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
       EOT
     end
   end
@@ -91,6 +80,6 @@ class Jdk11 < Package
 
   def self.postinstall
     # remove jdk archive after installed
-    FileUtils.rm_f URI( get_source_url(ARCH.to_sym) ).path
+    FileUtils.rm_f URI( get_source_url(:x86_64) ).path
   end
 end
