@@ -2,7 +2,7 @@ require 'package'
 require 'uri'
 
 class Jdk8 < Package
-  description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
+  description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java/technologies/downloads/#java8'
   version '8u341'
   license 'Oracle-BCLA-JavaSE'
@@ -57,9 +57,9 @@ class Jdk8 < Package
 
       # get latest available version
       latest_jdk_page = 'https://www.oracle.com/java/technologies/downloads/#java8'
-      latest_jdk_ver  = `curl -LSs '#{latest_jdk_page}'`[/8u\d{3}/]
+        is_latest_jdk = `curl -LSs '#{latest_jdk_page}'`.include?(version)
 
-      if latest_jdk_ver == version
+      if is_latest_jdk
         jdk_download_url = latest_jdk_page
       else
         jdk_download_url = 'https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#JDK'
