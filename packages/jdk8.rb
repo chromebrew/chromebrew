@@ -43,7 +43,7 @@ class Jdk8 < Package
       pkg_branding = is_openjdk ? 'OpenJDK' : 'Oracle JDK'
         pkg_prefix = is_openjdk ? 'openjdk' : 'jdk'
 
-      abort <<~EOT.yellow
+      abort <<~EOT.yellow unless jdk_major_ver == '8'
 
         #{pkg_branding} #{jdk_ver} installed.
 
