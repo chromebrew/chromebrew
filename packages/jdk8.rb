@@ -34,7 +34,7 @@ class Jdk8 < Package
     jdk_exec = File.join(CREW_PREFIX, 'bin', 'java')
 
     if File.exist?(jdk_exec)
-        jdk_ver_str = `#{jdk_exec} -version`
+        jdk_ver_str = `#{jdk_exec} -version 2>&1`
             jdk_ver = jdk_ver_str[/version "(.+?)"/, 1]
       jdk_major_ver = (jdk_ver =~ /^1.8/) ? '8' : jdk_ver.partition('.')[0]
 
