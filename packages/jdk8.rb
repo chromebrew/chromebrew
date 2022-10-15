@@ -72,7 +72,7 @@ class Jdk8 < Package
         You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
         #{jdk_download_url}
 
-        Download JDK version #{version.lightcyan(:no_bold)} for your architecture (#{@jdk_arch.lightcyan(:no_bold)}) to Chrome OS download folder to continue.
+        Download JDK version #{version.cyan} for your architecture (#{@jdk_arch[ARCH.to_sym].cyan}) to Chrome OS download folder to continue.
       EOT
     end
   end
