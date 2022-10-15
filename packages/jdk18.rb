@@ -18,13 +18,13 @@ class Jdk18 < Package
     jdk_exec = File.join(CREW_PREFIX, 'bin', 'java')
 
     if File.exist?(jdk_exec)
-        jdk_ver_str = `#{jdk_exec} -version 2>&1`
-            jdk_ver = jdk_ver_str[/version "(.+?)"/, 1]
+      jdk_ver_str   = `#{jdk_exec} -version 2>&1`
+      jdk_ver       = jdk_ver_str[/version "(.+?)"/, 1]
       jdk_major_ver = (jdk_ver =~ /^1.8/) ? '8' : jdk_ver.partition('.')[0]
 
-        is_openjdk = jdk_ver_str.include?('openjdk')
+      is_openjdk   = jdk_ver_str.include?('openjdk')
       pkg_branding = is_openjdk ? 'OpenJDK' : 'Oracle JDK'
-        pkg_prefix = is_openjdk ? 'openjdk' : 'jdk'
+      pkg_prefix   = is_openjdk ? 'openjdk' : 'jdk'
 
       abort <<~EOT.yellow unless jdk_major_ver == name.delete_prefix('jdk')
 
@@ -54,15 +54,15 @@ class Jdk18 < Package
     FileUtils.rm_f 'lib/src.zip'
     FileUtils.cp_r Dir['*'], jdk_dir
 
-    Dir[ File.join(jdk_dir, 'bin', '*') ].each do |path|
+    Dir[File.join(jdk_dir, 'bin', '*')].each do |path|
       filename = File.basename(path)
-       symlink = File.join(CREW_DEST_PREFIX, 'bin', filename)
+      symlink  = File.join(CREW_DEST_PREFIX, 'bin', filename)
 
       FileUtils.ln_s path.sub(CREW_DEST_PREFIX, CREW_PREFIX), symlink
     end
 
-    FileUtils.rm Dir[ File.join(jdk_dir, 'man/man1/k{init,list}.1') ] # conflicts with krb5 package
-    FileUtils.mv Dir[ File.join(jdk_dir, 'man', '*') ], CREW_DEST_MAN_PREFIX
+    FileUtils.rm Dir[File.join(jdk_dir, 'man/man1/k{init,list}.1')] # conflicts with krb5 package
+    FileUtils.mv Dir[File.join(jdk_dir, 'man', '*')], CREW_DEST_MAN_PREFIX
   end
 
   def self.postinstall

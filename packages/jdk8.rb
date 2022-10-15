@@ -42,13 +42,13 @@ class Jdk8 < Package
     jdk_exec = File.join(CREW_PREFIX, 'bin', 'java')
 
     if File.exist?(jdk_exec)
-        jdk_ver_str = `#{jdk_exec} -version 2>&1`
-            jdk_ver = jdk_ver_str[/version "(.+?)"/, 1]
+      jdk_ver_str   = `#{jdk_exec} -version 2>&1`
+      jdk_ver       = jdk_ver_str[/version "(.+?)"/, 1]
       jdk_major_ver = (jdk_ver =~ /^1.8/) ? '8' : jdk_ver.partition('.')[0]
 
-        is_openjdk = jdk_ver_str.include?('openjdk')
+      is_openjdk   = jdk_ver_str.include?('openjdk')
       pkg_branding = is_openjdk ? 'OpenJDK' : 'Oracle JDK'
-        pkg_prefix = is_openjdk ? 'openjdk' : 'jdk'
+      pkg_prefix   = is_openjdk ? 'openjdk' : 'jdk'
 
       abort <<~EOT.yellow unless jdk_major_ver == name.delete_prefix('jdk')
 
@@ -64,7 +64,7 @@ class Jdk8 < Package
 
       # get latest available version
       latest_jdk_page = 'https://www.oracle.com/java/technologies/downloads/#java8'
-        is_latest_jdk = `curl -LSs '#{latest_jdk_page}'`.include?(version)
+      is_latest_jdk   = `curl -LSs '#{latest_jdk_page}'`.include?(version)
 
       if is_latest_jdk
         jdk_download_url = latest_jdk_page
@@ -91,14 +91,14 @@ class Jdk8 < Package
     FileUtils.rm_f ['src.zip', 'javafx-src.zip']
     FileUtils.cp_r Dir['*'], jdk_dir
 
-    Dir[ File.join(jdk_dir, 'bin', '*') ].each do |path|
+    Dir[File.join(jdk_dir, 'bin', '*')].each do |path|
       filename = File.basename(path)
-       symlink = File.join(CREW_DEST_PREFIX, 'bin', filename)
+      symlink  = File.join(CREW_DEST_PREFIX, 'bin', filename)
 
       FileUtils.ln_s path.sub(CREW_DEST_PREFIX, CREW_PREFIX), symlink
     end
 
-    FileUtils.mv Dir[ File.join(jdk_dir, 'man', '*') ], CREW_DEST_MAN_PREFIX
+    FileUtils.mv Dir[File.join(jdk_dir, 'man', '*')], CREW_DEST_MAN_PREFIX
   end
 
   def self.postinstall
