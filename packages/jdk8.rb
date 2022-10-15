@@ -72,7 +72,7 @@ class Jdk8 < Package
         You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
         #{jdk_download_url}
 
-        Download the "jdk-#{version}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" archive to Chrome OS download folder to continue.
+        Download "jdk-#{version}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" to Chrome OS download folder to continue.
       EOT
     end
   end
@@ -81,10 +81,8 @@ class Jdk8 < Package
     jdk_dir = File.join(CREW_DEST_PREFIX, 'share', name)
     FileUtils.mkdir_p [jdk_dir, File.join(CREW_DEST_PREFIX, 'bin'), CREW_DEST_MAN_PREFIX]
 
-    Dir.chdir( Dir['jdk1.8.0_*'][0] ) do
-      FileUtils.rm_f ['src.zip', 'javafx-src.zip']
-      FileUtils.cp_r Dir['*'], jdk_dir
-    end
+    FileUtils.rm_f ['src.zip', 'javafx-src.zip']
+    FileUtils.cp_r Dir['*'], jdk_dir
 
     Dir[ File.join(jdk_dir, 'bin', '*') ].each do |path|
       filename = File.basename(path)
@@ -93,6 +91,6 @@ class Jdk8 < Package
       FileUtils.ln_s path.sub(CREW_DEST_PREFIX, CREW_PREFIX), symlink
     end
 
-    FileUtils.mv Dir[ File.join(jdk8_dir, 'man', '*') ], CREW_DEST_MAN_PREFIX
+    FileUtils.mv Dir[ File.join(jdk_dir, 'man', '*') ], CREW_DEST_MAN_PREFIX
   end
 end
