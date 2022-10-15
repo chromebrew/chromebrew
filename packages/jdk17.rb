@@ -32,7 +32,7 @@ class Jdk17 < Package
       pkg_branding = is_openjdk ? 'OpenJDK' : 'Oracle JDK'
       pkg_prefix   = is_openjdk ? 'openjdk' : 'jdk'
 
-      abort <<~EOT.yellow unless jdk_major_ver == name.delete_prefix('jdk')
+      abort <<~EOT.yellow unless jdk_major_ver == name.delete_prefix('jdk') and !is_openjdk
 
         #{pkg_branding} #{jdk_ver} installed.
 
