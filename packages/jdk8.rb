@@ -1,4 +1,5 @@
 require 'package'
+require 'uri'
 
 class Jdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
@@ -43,13 +44,14 @@ class Jdk8 < Package
         pkg_prefix = is_openjdk ? 'openjdk' : 'jdk'
 
       abort <<~EOT.yellow
+
         #{pkg_branding} #{jdk_ver} installed.
 
         Run "crew remove #{pkg_prefix}#{jdk_major_ver}; crew install #{name}" to install this version of JDK
       EOT
     end
 
-    unless File.exist?(jdk_bin)
+    unless File.exist?( URI( get_source_url(ARCH.to_sym) ).path )
       # check if we should prompt user to the archive page or download page based on #{version}
       # download page only contains latest version while archive page only contains older versions
 
@@ -64,6 +66,7 @@ class Jdk8 < Package
       end
 
       abort <<~EOT.orange
+
         Oracle now requires an account to download the JDK.
 
         You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
