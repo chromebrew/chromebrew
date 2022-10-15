@@ -4,7 +4,7 @@ class Wxwidgets31 < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
   @_ver = '3.1.7'
-  version @_ver
+  version "#{@_ver}-1"
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"
@@ -16,10 +16,10 @@ class Wxwidgets31 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7-1_x86_64/wxwidgets31-3.1.7-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '06ce4511fa4644cca7ffddc2126861a29721bdc6a080d44af0be9b2e9219011f',
-     armv7l: '06ce4511fa4644cca7ffddc2126861a29721bdc6a080d44af0be9b2e9219011f',
-       i686: 'beaef0599b9941bc7b5d386d02cc054e4e819be8f8a10520877409d0593adf12',
-     x86_64: 'fdca340f406313487d192c9c843abec698035fecb48484fe63f072527cb2a3b7'
+    aarch64: 'ab20f36ca48a789468da5e057b8d6c7a72a410455a9ba8523886da8584418264',
+     armv7l: 'ab20f36ca48a789468da5e057b8d6c7a72a410455a9ba8523886da8584418264',
+       i686: '11c21cc91f944e2e8f6d992fac73f73e5f82147f2df0989bb54b816486ff9d96',
+     x86_64: '44cdbd590d71ec070a9959b6e9bf96e65baeb951e68717002aacbcf57e159728'
   })
 
   # cmake builds are broken on this versiondue due to an OpenGL

@@ -10,6 +10,19 @@ class Wxwidgets < Package
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1-1_armv7l/wxwidgets-3.2.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1-1_armv7l/wxwidgets-3.2.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1-1_i686/wxwidgets-3.2.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.1-1_x86_64/wxwidgets-3.2.1-1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '684eb3f8a80033f482a8be1944bd2b2d0c62864a42ab7f7d1971bffc0b4e5a28',
+     armv7l: '684eb3f8a80033f482a8be1944bd2b2d0c62864a42ab7f7d1971bffc0b4e5a28',
+       i686: 'ca1f091b42ef10049c00b938d497a220a2891ab606ca695c449289a7705a2d87',
+     x86_64: 'e486f35a49cbb077ecc4b0718b52f0473208fb4edb75de7f35e204db7b9aa23a'
+  })
+
   depends_on 'atk' # R
   depends_on 'fontconfig'
   depends_on 'gdk_pixbuf' # R
@@ -34,6 +47,7 @@ class Wxwidgets < Package
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libcurl' # R
+  depends_on 'libglvnd' # R
   depends_on 'libice' # R
   depends_on 'libpng' # R
   depends_on 'libsdl2' # R
