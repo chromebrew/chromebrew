@@ -93,4 +93,9 @@ class Jdk8 < Package
 
     FileUtils.mv Dir[ File.join(jdk_dir, 'man', '*') ], CREW_DEST_MAN_PREFIX
   end
+
+  def self.postinstall
+    # remove jdk archive after installed
+    FileUtils.rm_f URI( get_source_url(ARCH.to_sym) ).path
+  end
 end
