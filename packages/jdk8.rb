@@ -79,7 +79,7 @@ class Jdk8 < Package
 
   def self.install
     jdk_dir = File.join(CREW_DEST_PREFIX, 'share', name)
-    FileUtils.mkdir_p [jdk8_dir, File.join(CREW_DEST_PREFIX, 'bin'), CREW_DEST_MAN_PREFIX]
+    FileUtils.mkdir_p [jdk_dir, File.join(CREW_DEST_PREFIX, 'bin'), CREW_DEST_MAN_PREFIX]
 
     Dir.chdir( Dir['jdk1.8.0_*'][0] ) do
       FileUtils.rm_f ['src.zip', 'javafx-src.zip']
