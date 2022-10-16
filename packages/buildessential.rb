@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.21'
+  version '1.22'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -95,6 +95,9 @@ class Buildessential < Package
   # for setting library paths in packages
   depends_on 'patchelf'
 
+  # Add pax_utils (gives us lddtree)
+  depends_on 'pax_utils'
+
   # Perl
   depends_on 'perl'
   depends_on 'pcre'
@@ -113,6 +116,8 @@ class Buildessential < Package
   depends_on 'py3_installer'
   depends_on 'py3_flit_core'
   depends_on 'py3_setuptools'
+  # Pax_utils needs this.
+  depends_on 'py3_pyelftools'
 
   # Qt
   # depends_on 'qtcreator'
@@ -123,6 +128,9 @@ class Buildessential < Package
 
   # Samurai
   # depends_on 'samurai'
+
+  # Add Gnu_time to get time binary
+  depends_on 'gnu_time'
 
   # xorg protocol headers
   # depends_on 'xorg_proto'
@@ -135,9 +143,12 @@ class Buildessential < Package
   # Packages needed for compressing archives
   depends_on 'zstd'
 
+  # Ruby gems
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
   # Add ruby_debug
   depends_on 'ruby_debug'
+  # Add ruby_concurrent_ruby
+  depends_on 'ruby_concurrent_ruby'
 end
