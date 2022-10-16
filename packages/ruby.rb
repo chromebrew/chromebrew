@@ -70,6 +70,6 @@ class Ruby < Package
   def self.postinstall
     puts 'Updating ruby gems. This may take a while...'
     silent = @opt_verbose ? '' : '--silent'
-    system "gem update #{silent} -N --system"
+    system "gem update #{silent} -N --system", exception: false
   end
 end
