@@ -4,23 +4,23 @@ class Gnome_autoar < Package
   description 'Automatic archives creating and extracting library'
   homepage 'https://wiki.gnome.org/TingweiLan/GSoC2013Final'
   @_ver = '0.4.3'
-  version @_ver.to_s
+  version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-autoar/-/archive/#{@_ver}/gnome-autoar-#{@_ver}.tar.bz2"
   source_sha256 'c1331da864affe666ccaf70788380665d1636f9d3e414ee74e072462a69a6f33'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3_armv7l/gnome_autoar-0.4.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3_armv7l/gnome_autoar-0.4.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3_i686/gnome_autoar-0.4.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3_x86_64/gnome_autoar-0.4.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_armv7l/gnome_autoar-0.4.3-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_armv7l/gnome_autoar-0.4.3-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_i686/gnome_autoar-0.4.3-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_x86_64/gnome_autoar-0.4.3-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2e815d2b4b8705de7158f6606ed1bdca38086c86d4a9c5ff7481a845c9443d2f',
-     armv7l: '2e815d2b4b8705de7158f6606ed1bdca38086c86d4a9c5ff7481a845c9443d2f',
-       i686: '7c3022e0ab07ad9f31339737f51958c2895cf70707fe1c45efad9aadb1a83717',
-     x86_64: 'f9500ad0e497a667e625edad533581d1fa731dc56d94bf91f9cceaac65ae64cd'
+    aarch64: '46c212fe9d8d07407f9a6e584ca59aec9203fb5f7da916eaf9ac2524eba5398c',
+     armv7l: '46c212fe9d8d07407f9a6e584ca59aec9203fb5f7da916eaf9ac2524eba5398c',
+       i686: 'd84704ef7a74328c5936126742b27546a2bf65a7952475fe86a32e44fad7eccb',
+     x86_64: 'f5171c23c19d2f72ad51152def99143cb502b99c41d1ec850e1cdb6e741dd349'
   })
 
   depends_on 'atk'
