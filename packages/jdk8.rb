@@ -4,7 +4,8 @@ require 'uri'
 class Jdk8 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  version (@_ver = '8u341')
+  @_ver = '8u341'
+  version @_ver
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
 
@@ -58,30 +59,30 @@ class Jdk8 < Package
       EOT
     end
 
-    unless File.exist?( URI( get_source_url(ARCH.to_sym) ).path )
-      # check if we should prompt user to the archive page or download page based on #{@_ver}
-      # download page only contains latest version while archive page only contains older versions
+    return if File.exist?( URI( get_source_url(ARCH.to_sym) ).path )
 
-      # get latest available version
-      latest_jdk_page = 'https://www.oracle.com/java/technologies/downloads/#java8'
-      is_latest_jdk   = `curl -LSs '#{latest_jdk_page}'`.include?(version)
+    # check if we should prompt user to the archive page or download page based on #{@_ver}
+    # download page only contains latest version while archive page only contains older versions
 
-      if is_latest_jdk
-        jdk_download_url = latest_jdk_page
-      else
-        jdk_download_url = 'https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#JDK'
-      end
+    # get latest available version
+    latest_jdk_page = 'https://www.oracle.com/java/technologies/downloads/#java8'
+    is_latest_jdk   = `curl -LSs '#{latest_jdk_page}'`.include?(version)
 
-      abort <<~EOT.orange
-
-        Oracle now requires an account to download the JDK.
-
-        You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
-        #{jdk_download_url}
-
-        Download "jdk-#{@_ver}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" (#{@jdk_description[ARCH.to_sym]}) to Chrome OS download folder to continue.
-      EOT
+    if is_latest_jdk
+      jdk_download_url = latest_jdk_page
+    else
+      jdk_download_url = 'https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#JDK'
     end
+
+    abort <<~EOT.orange
+
+      Oracle now requires an account to download the JDK.
+
+      You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
+      #{jdk_download_url}
+
+      Download "jdk-#{@_ver}-linux-#{@jdk_arch[ARCH.to_sym]}.tar.gz" (#{@jdk_description[ARCH.to_sym]}) to Chrome OS download folder to continue.
+    EOT
   end
 
   def self.install

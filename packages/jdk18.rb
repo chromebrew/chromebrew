@@ -4,7 +4,8 @@ require 'uri'
 class Jdk18 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  version (@_ver = '18.0.2.1')
+  @_ver = '18.0.2.1'
+  version @_ver
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
 
@@ -34,17 +35,17 @@ class Jdk18 < Package
       EOT
     end
 
-    unless File.exist?( URI(source_url).path )
-      abort <<~EOT.orange
+    return if File.exist?( URI(source_url).path )
 
-        Oracle now requires an account to download the JDK.
+    abort <<~EOT.orange
 
-        You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
-        https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html
+      Oracle now requires an account to download the JDK.
 
-        Download "jdk-#{@_ver}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
-      EOT
-    end
+      You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
+      https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html
+
+      Download "jdk-#{@_ver}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
+    EOT
   end
 
   def self.install
