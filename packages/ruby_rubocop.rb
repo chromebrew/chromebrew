@@ -47,7 +47,7 @@ class Ruby_rubocop < Package
 
   def self.postinstall
     @gem_name = name.sub('ruby_', '')
-    system "gem install -N #{@gem_name} --conservative"
+    system "gem install -N #{@gem_name} --conservative", exception: false
 
     puts "Installing Chromebrew rubocop config file at #{@xdg_config_home}/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
@@ -64,7 +64,7 @@ class Ruby_rubocop < Package
     # every package, so delete it from the list.
     @gems.delete('bundler')
     @gems.each do |gem|
-      system "gem uninstall -Dx --force --abort-on-dependent #{gem} || true"
+      system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
     end
 
     FileUtils.rm_f "#{@xdg_config_home}/rubocop/config.yml"
