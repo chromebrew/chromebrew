@@ -7,7 +7,7 @@ class Jdk < Package
   compatibility 'all'
 
   # full version number extracted from jdk*.rb recipes
-  @avail_jdk_ver = %i[8 11 17 18].to_h do |jdk_majver|
+  @avail_jdk_ver = [8, 11, 17, 18].to_h do |jdk_majver|
     pkg = Package.load_package("#{CREW_PACKAGES_PATH}/jdk#{jdk_majver}.rb")
 
     [jdk_majver, pkg.version]
@@ -39,10 +39,10 @@ class Jdk < Package
       end
 
       options = [
-        { value: 'jdk8',  description: "Oracle JDK #{@avail_jdk_ver[:8]}"  },
-        { value: 'jdk11', description: "Oracle JDK #{@avail_jdk_ver[:11]}" },
-        { value: 'jdk17', description: "Oracle JDK #{@avail_jdk_ver[:17]}" },
-        { value: 'jdk18', description: "Oracle JDK #{@avail_jdk_ver[:18]}" }
+        { value: 'jdk8',  description: "Oracle JDK #{@avail_jdk_ver[8]}"  },
+        { value: 'jdk11', description: "Oracle JDK #{@avail_jdk_ver[11]}" },
+        { value: 'jdk17', description: "Oracle JDK #{@avail_jdk_ver[17]}" },
+        { value: 'jdk18', description: "Oracle JDK #{@avail_jdk_ver[18]}" }
       ]
 
       depends_on Selector.new(options).show_prompt
