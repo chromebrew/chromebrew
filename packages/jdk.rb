@@ -39,13 +39,7 @@ class Jdk < Package
         EOT
       end
 
-      options = [
-        { value: 'jdk8',  description: "Oracle JDK #{@avail_jdk_ver[8]}"  },
-        { value: 'jdk11', description: "Oracle JDK #{@avail_jdk_ver[11]}" },
-        { value: 'jdk17', description: "Oracle JDK #{@avail_jdk_ver[17]}" },
-        { value: 'jdk18', description: "Oracle JDK #{@avail_jdk_ver[18]}" }
-      ]
-
+      options = @avail_jdk_ver.map {|majver, ver| { value: "jdk#{majver}", description: "Oracle JDK #{ver}" } }
       depends_on Selector.new(options).show_prompt
     end
   end
