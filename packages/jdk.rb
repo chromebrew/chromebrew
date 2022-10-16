@@ -3,9 +3,17 @@ require 'package'
 class Jdk < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  version 'LATEST'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'all'
+
+  # full version number extracted from jdk*.rb recipes
+  @avail_jdk_ver = %i[8 11 17 18].to_h do |jdk_majver|
+    pkg = Package.load_package("#{CREW_PACKAGES_PATH}/jdk#{jdk_majver}.rb")
+
+    [jdk_majver, pkg.version]
+  end
+
+  version "#{@avail_jdk_ver.to_a[0][1]}-#{@avail_jdk_ver.to_a[-1][1]}"
 
   is_fake
 
@@ -30,18 +38,11 @@ class Jdk < Package
         EOT
       end
 
-      # full version number extracted from jdk*.rb recipes
-      jdk_ver = %i[8 11 17 18].to_h do |jdk_majver|
-        pkg = Package.load_package("#{CREW_PACKAGES_PATH}/jdk#{jdk_majver}.rb")
-
-        [jdk_majver, pkg.version]
-      end
-
       options = [
-        { value: 'jdk8',  description: "Oracle JDK #{jdk_ver[:8]}"  },
-        { value: 'jdk11', description: "Oracle JDK #{jdk_ver[:11]}" },
-        { value: 'jdk17', description: "Oracle JDK #{jdk_ver[:17]}" },
-        { value: 'jdk18', description: "Oracle JDK #{jdk_ver[:18]}" }
+        { value: 'jdk8',  description: "Oracle JDK #{@avail_jdk_ver[:8]}"  },
+        { value: 'jdk11', description: "Oracle JDK #{@avail_jdk_ver[:11]}" },
+        { value: 'jdk17', description: "Oracle JDK #{@avail_jdk_ver[:17]}" },
+        { value: 'jdk18', description: "Oracle JDK #{@avail_jdk_ver[:18]}" }
       ]
 
       depends_on Selector.new(options).show_prompt
