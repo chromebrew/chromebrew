@@ -7,12 +7,12 @@ class Jdk < Package
   compatibility 'all'
 
   # full version number extracted from jdk*.rb recipes
-  @avail_jdk_ver = Dir["#{CREW_PACKAGES_PATH}/jdk?*.rb"].to_h do |pkgFile|
+  @avail_jdk_ver = Dir["#{CREW_PACKAGES_PATH}/jdk?*.rb"].map do |pkgFile|
     jdk_majver = pkgFile[/jdk(\d+).rb/, 1].to_i
     pkg        = Package.load_package(pkgFile)
 
     [jdk_majver, pkg.version]
-  end
+  end.sort_by {|(jdk_majver, pkg_ver)| jdk_majver } .to_h
 
   version "#{@avail_jdk_ver.values[0]}-#{@avail_jdk_ver.values[-1]}"
 
