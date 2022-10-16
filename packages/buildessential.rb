@@ -138,6 +138,8 @@ class Buildessential < Package
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
-  # Add ruby_debug
+  # Add ruby_debug gem.
   depends_on 'ruby_debug'
+  # Add ruby_concurrent_ruby gem.
+  depends_on 'ruby_concurrent_ruby'
 end
