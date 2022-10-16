@@ -18,7 +18,7 @@ class Selector
 
   def show_prompt
     # show_prompt(): Show prompt based on given options
-    warn @prompt[:heading] + "\n\n"
+    warn "#{@prompt[:heading]}\n\n"
 
     @options.each_with_index do |opt, i|
       $stderr.print "  #{i + 1}: #{opt[:value]}"
@@ -66,28 +66,28 @@ class Selector
   def fire_timer(&when_timeout)
     # fire_timer(): start a timer in separate thread
     @countdown = Thread.new do
-                   @timeout.downto(0).each do |remaining_time|
-                     # print current countdown
-                     $stderr.print "\r#{format(@prompt[:countdown], remaining_time)}"
+      @timeout.downto(0).each do |remaining_time|
+        # print current countdown
+        $stderr.print "\r#{format(@prompt[:countdown], remaining_time)}"
 
-                     if remaining_time.zero?
-                       warn "\nTime expired.\n".yellow
-                       when_timeout.call
-                     else
-                       sleep 1
-                     end
-                   end
-                 end
+        if remaining_time.zero?
+          warn "\nTime expired.\n".yellow
+          when_timeout.call
+        else
+          sleep 1
+        end
+      end
+    end
   end
 
   def start_reading
     # start_reading(): read from terminal in separate thread
     @io_read = Thread.new do
-                 # discard any input in the input buffer
-                 $stdin.read_nonblock(1024)
-               rescue IO::WaitReadable
-               ensure
-                 Thread.current[:input] = $stdin.getc
-               end
+      # discard any input in the input buffer
+      $stdin.read_nonblock(1024)
+    rescue IO::WaitReadable
+    ensure
+      Thread.current[:input] = $stdin.getc
+    end
   end
 end
