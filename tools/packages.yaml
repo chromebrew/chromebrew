@@ -6679,9 +6679,24 @@ url: http://www.ruby-lang.org/en/downloads/
 activity: medium
 ---
 kind: url
+name: ruby_concurrent_ruby
+url: https://github.com/ruby-concurrency/concurrent-ruby/releases
+activity: medium
+---
+kind: url
+name: ruby_debug
+url: https://github.com/ruby/debug/releases
+activity: medium
+---
+kind: url
 name: ruby_docopt
 url: https://github.com/docopt/docopt/releases
 activity: none
+---
+kind: url
+name: ruby_rubocop
+url: https://github.com/rubocop/rubocop/releases
+activity: medium
 ---
 kind: url
 name: ruby_webrick
