@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.20'
+  version '1.21'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -138,4 +138,6 @@ class Buildessential < Package
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
+  # Add ruby_debug
+  depends_on 'ruby_debug'
 end
