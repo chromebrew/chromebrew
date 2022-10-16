@@ -65,14 +65,9 @@ class Jdk8 < Package
     # download page only contains latest version while archive page only contains older versions
 
     # get latest available version
-    latest_jdk_page = 'https://www.oracle.com/java/technologies/downloads/#java8'
-    is_latest_jdk   = `curl -LSs '#{latest_jdk_page}'`.include?(version)
-
-    if is_latest_jdk
-      jdk_download_url = latest_jdk_page
-    else
-      jdk_download_url = 'https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#JDK'
-    end
+    latest_jdk_page  = 'https://www.oracle.com/java/technologies/downloads/#java8'
+    is_latest_jdk    = `curl -LSs '#{latest_jdk_page}'`.include?(version)
+    jdk_download_url = is_latest_jdk ? latest_jdk_page : 'https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#JDK'
 
     abort <<~EOT.orange
 
