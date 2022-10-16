@@ -8,13 +8,13 @@ class Jdk < Package
 
   # full version number extracted from jdk*.rb recipes
   @avail_jdk_ver = Dir["#{CREW_PACKAGES_PATH}/jdk?*.rb"].to_h do |pkgFile|
-    jdk_majver = pkgFile[/jdk(\d+)$/, 1]
+    jdk_majver = pkgFile[/jdk(\d+).rb/, 1].to_i
     pkg        = Package.load_package(pkgFile)
 
     [jdk_majver, pkg.version]
   end
 
-  version "#{@avail_jdk_ver.to_a[0][1]}-#{@avail_jdk_ver.to_a[-1][1]}"
+  version "#{@avail_jdk_ver.values[0]}-#{@avail_jdk_ver.values[-1]}"
 
   is_fake
 
