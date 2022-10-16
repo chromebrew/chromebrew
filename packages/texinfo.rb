@@ -22,6 +22,7 @@ class Texinfo < Package
      x86_64: '6a6c3c50dfbd0fbc32552308d45ba48cf44e55fd7c29563aabbaefa9b3726bfe'
   })
 
+  depends_on 'glibc' # R
   depends_on 'perl'
   depends_on 'perl_locale_messages'
   depends_on 'perl_text_unidecode'

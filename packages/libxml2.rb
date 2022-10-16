@@ -22,11 +22,12 @@ class Libxml2 < Package
      x86_64: '0d463712429ba8c0d01f58ac772db9e5e1e88d47ae57f88c7e9a06e87dc8788b'
   })
 
-  depends_on 'gcc'
-  depends_on 'icu4c'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
   depends_on 'ncurses'
-  depends_on 'readline'
-  depends_on 'zlibpkg'
+  depends_on 'readline' # R
+  depends_on 'zlibpkg' # R
   no_patchelf
 
   def self.patch

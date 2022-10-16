@@ -23,14 +23,20 @@ class Libcyrussasl < Package
   })
 
   depends_on 'diffutils' => :build
+  depends_on 'e2fsprogs' # R
+  depends_on 'glibc' # R
+  depends_on 'krb5' # R
+  depends_on 'libdb' # R
+  depends_on 'linux_pam' # R
+  depends_on 'openssl' # R
+
 
   def self.patch
     system 'filefix'
   end
 
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --enable-static \
       --enable-shared \

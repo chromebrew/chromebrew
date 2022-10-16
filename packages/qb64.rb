@@ -22,10 +22,14 @@ class Qb64 < Package
      x86_64: 'f93227d12bceb6248131ceecd2d542c995a4476185c6bb1f00095135879acf49'
   })
 
-  depends_on 'libglu'
-  depends_on 'freeglut'
   depends_on 'alsa_lib'
   depends_on 'alsa_plugins'
+  depends_on 'freeglut'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libglu'
+  depends_on 'libx11' # R
+  depends_on 'mesa' # R
   depends_on 'sommelier'
 
   def self.patch

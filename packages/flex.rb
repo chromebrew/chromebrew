@@ -22,6 +22,7 @@ class Flex < Package
      x86_64: '805be1fdbf4d9d2ce81a652a064c6972eaf91824bb866867eb57c407dd9c2313'
   })
 
+  depends_on 'glibc' # R
   depends_on 'm4'
   depends_on 'bison' => :build
 

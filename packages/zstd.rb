@@ -23,6 +23,7 @@ class Zstd < Package
      x86_64: 'b04d97b3d328f8c0805e2fcee0526b1e955255ca21ceaed6f6e1fb8e6941b312'
   })
 
+  depends_on 'glibc' # R
   depends_on 'musl_zstd'
   no_patchelf
   no_zstd

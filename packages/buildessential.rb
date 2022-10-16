@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.19'
+  version '1.20'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -134,4 +134,8 @@ class Buildessential < Package
 
   # Packages needed for compressing archives
   depends_on 'zstd'
+
+  # Add rubocop for linting packages. (This also installs the
+  # rubocop config file.)
+  depends_on 'ruby_rubocop'
 end

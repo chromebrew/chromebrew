@@ -22,7 +22,8 @@ class Most < Package
      x86_64: '3fcf532ef15440abe83413ae0c422e480096a6b4997890eca2825ef288ed13ed'
   })
 
-  depends_on 'slang'
+  depends_on 'glibc' # R
+  depends_on 'slang' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

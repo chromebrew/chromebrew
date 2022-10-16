@@ -22,6 +22,7 @@ class Libyaml < Package
      x86_64: '157e3e7c7dad0cea905a78944270b7b1fdd58bd363eeb167784a6d90a8c362b8'
   })
 
+  depends_on 'glibc' # R
   no_patchelf
 
   def self.build

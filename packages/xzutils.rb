@@ -23,6 +23,7 @@ class Xzutils < Package
   })
 
   depends_on 'autoconf_archive' => :build
+  depends_on 'glibc' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh --no-po4a'

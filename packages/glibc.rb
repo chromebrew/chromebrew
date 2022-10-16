@@ -7,7 +7,6 @@ class Glibc < Package
   compatibility 'all'
 
   depends_on 'gawk' => :build
-  depends_on 'filecmd'
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build

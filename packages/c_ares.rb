@@ -22,6 +22,8 @@ class C_ares < Package
      x86_64: '9b7be17a55637cdcb7b956147b15269e0513ca954e298e679afd08ad8b4b17b3'
   })
 
+  depends_on 'glibc' # R
+
   def self.patch
     system "sed -i 's/1.18.0/#{version}/g' CMakeLists.txt"
   end

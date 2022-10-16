@@ -22,8 +22,9 @@ class P11kit < Package
      x86_64: '8259e4144eea281d3da641b7973e807518f521db62c552691a2e8d65f879ee87'
   })
 
-  depends_on 'libffi'
-  depends_on 'libtasn1'
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
+  depends_on 'libtasn1' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

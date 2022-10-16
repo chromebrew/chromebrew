@@ -22,6 +22,8 @@ class Libdb < Package
      x86_64: '0e51467868c7ea8fdf9916bf2ee1b3500b8ea7f0f5cd8f9ec4c9f3a3aafc2213'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     Dir.chdir 'build_unix' do
       system "../dist/configure #{CREW_OPTIONS} --enable-dbm"

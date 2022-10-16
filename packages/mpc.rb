@@ -22,6 +22,7 @@ class Mpc < Package
      x86_64: '57276bec912dabfed4d65d5edb3e18788c168056727057ee0c91aa8484eebdba'
   })
 
+  depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'mpfr' # R
 

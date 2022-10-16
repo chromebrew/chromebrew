@@ -23,6 +23,8 @@ class Libffi < Package
      x86_64: 'fec954fcb51b1186ab2d084e29edf05773cf31b0543ad947bf9f325186022ab5'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system 'autoreconf -fiv'
     system "./configure #{CREW_OPTIONS}"

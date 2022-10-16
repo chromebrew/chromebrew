@@ -22,6 +22,8 @@ class Expat < Package
      x86_64: 'e5f8529e86f68486309d884676fdd72186a6ece1864d72ac97151a2d907690d4'
   })
 
+  depends_on 'glibc' # R
+
   def self.patch
     system 'filefix'
   end

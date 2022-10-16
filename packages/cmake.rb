@@ -24,6 +24,7 @@ class Cmake < Package
   })
 
   depends_on 'expat'
+  depends_on 'glibc' # R
   depends_on 'jsoncpp'
   depends_on 'zlibpkg'
   depends_on 'bz2'
