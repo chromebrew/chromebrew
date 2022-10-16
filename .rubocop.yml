@@ -173,6 +173,9 @@ Style/MultilineBlockChain:
 Style/NumericLiterals:
   Enabled: false
 
+Style/RedundantCapitalW:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 
