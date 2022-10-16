@@ -16,10 +16,10 @@ class Yelp_xsl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/42.1_x86_64/yelp_xsl-42.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e810c6a62d3cf9c4f8c6c84db68bf11dc7ac365f1cde52fc7b8d008555b98f0b',
-     armv7l: 'e810c6a62d3cf9c4f8c6c84db68bf11dc7ac365f1cde52fc7b8d008555b98f0b',
-       i686: 'c58481f38cda9854f946d770b777ec7e689c2da76013c5d3ee57fa980ac92f08',
-     x86_64: '1defdb536455b497cd8c761a0ce1872bb9f6f1560a9d0846796337b8d2045d66'
+    aarch64: '2155ec95428055623c569db0dabe9fc91349aa011f83ce61acec26df2deb27e3',
+     armv7l: '2155ec95428055623c569db0dabe9fc91349aa011f83ce61acec26df2deb27e3',
+       i686: 'ff4a7cf7247e6a477bbac643b4e446d4ce45a32da1014673236e9764acc8d46c',
+     x86_64: '03e70d4b552cb539c1799f1709bf22c20ddcb281b508c462aa146db023f9801c'
   })
 
   depends_on 'itstool'
