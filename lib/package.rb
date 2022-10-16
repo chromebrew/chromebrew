@@ -2,6 +2,7 @@ require 'English'
 require_relative 'const'
 require_relative 'color'
 require_relative 'package_helpers'
+require_relative 'selector'
 
 class Package
   property :description, :homepage, :version, :license, :compatibility,
