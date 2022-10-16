@@ -4,11 +4,11 @@ require 'uri'
 class Jdk11 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  version '11.0.16.1'
+  version "#{@_ver = '11.0.16.1'}-1"
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
 
-  source_url File.join('file://', HOME, 'Downloads', "jdk-#{version}_linux-x64_bin.tar.gz")
+  source_url File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}_linux-x64_bin.tar.gz")
   source_sha256 '4edc62ebb4359b276ea33abfd9a54bacb218b8f972603c20be9e415b8a59012c'
 
   no_compile_needed
@@ -20,7 +20,7 @@ class Jdk11 < Package
     if File.exist?(jdk_exec)
       jdk_ver_str   = `#{jdk_exec} -version 2>&1`
       jdk_ver       = jdk_ver_str[/version "(.+?)"/, 1]
-      jdk_major_ver = (jdk_ver =~ /^1.8/) ? '8' : jdk_ver.partition('.')[0]
+      jdk_major_ver = jdk_ver.match?(/^1.8/) ? '8' : jdk_ver.partition('.')[0]
 
       is_openjdk   = jdk_ver_str.include?('openjdk')
       pkg_branding = is_openjdk ? 'OpenJDK' : 'Oracle JDK'
@@ -35,7 +35,7 @@ class Jdk11 < Package
     end
 
     unless File.exist?( URI(source_url).path )
-      # check if we should prompt user to the archive page or download page based on #{version}
+      # check if we should prompt user to the archive page or download page based on #{@_ver}
       # download page only contains latest version while archive page only contains older versions
 
       # get latest available version
@@ -55,7 +55,7 @@ class Jdk11 < Package
         You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
         #{jdk_download_url}
 
-        Download "jdk-#{version}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
+        Download "jdk-#{@_ver}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
       EOT
     end
   end
