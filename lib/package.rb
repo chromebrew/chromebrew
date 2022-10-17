@@ -86,7 +86,7 @@ class Package
 
       deps = { 'buildessential' => [:build] }.merge(deps)
     end
-
+    dependencies
     # parse dependencies recursively
     expandedDeps = deps.uniq.map do |dep, depTags|
       # check build dependencies only if building from source is needed/specified

@@ -1,31 +1,62 @@
 require 'package'
 
-# This file holds functions common to all Python buildsystems
-class Pycommon < Package
-  # Python version defaults to 3, 2 is still an option
-  def self.pyversion(pyversion = '3')
-    case pyversion
-    when !'3', !'2'
-      abort "Python version specified in #{@pkg.name} is neither Python 2 nor Python 3.".lightred
-    end
-    return (@pyversion = pyversion)
+class Python_v1 < Package
+  @_buildsystems_python_setup_py_version = '1.0.0'
+
+  def self.svem?(bool = true)
+    return (@svem = bool)
   end
 
-  # In case we ever implement another python implementation, like PyPy
-  def self.pyimplementation(pyimplementation = 'python')
-    return ($python = "#{pyimplementation}#{pyversion}")
+  def self.pyver(string = '3')
+    return (@pyver = string)
   end
 
-  def self.minipython(python = @python, pyversion = @pyversion)
-    case python
+  def self.python_imp(str = 'python')
+    return (@python_imp = str)
+  end
+
+  def self.python
+    return (@python = @python_imp + @pyver)
+  end
+
+  def self.minipython
+    case @python
     when /^python/
-      minipython = "py#{pyversion}"
+      minipython = "py#{@pyver}"
     when /^pypy/
-      minipython = "pypy#{pyversion}"
+      minipython = "pypy#{@pyver}"
     when /^jython/
-      minipython = "jpy#{pyversion}"
+      minipython = "jpy#{@pyver}"
     end
-    return ($minipython = minipython)
+    return (@minipython = minipython)
+  end
+
+  depends_on "#{@python}"
+  depends_on "#{@minipython}_setuptools" => :build
+  depends_on "#{@minipython}_wheel" => :build
+
+  def self.preflight
+    if File.exist?('pyproject.toml')
+      puts 'WARNING: Found pyproject.toml, and you are attempting to set up with setup.py.'.lightred
+      puts 'It is STRONGLY recommended to use pyproject.toml if possible.'.lightred
+      puts 'If you are not a Chromebrew developer, you may safely avoid this message.'.lightred
+    end
+  end
+
+  def self.build
+    pyver
+    python_imp
+    python
+    system "#{@python} setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+  end
+
+  def self.install
+    @py_setup_install_options = if @svem
+                                  PY_SETUP_INSTALL_OPTIONS
+                                else
+                                  PY_SETUP_INSTALL_OPTIONS_NO_SVEM
+                                end
+    system "#{@python} setup.py install #{@py_setup_install_options}"
   end
 
   # Massive amounts of check logic
@@ -60,18 +91,18 @@ class Pycommon < Package
 
   def guess_action
     guess_action = if File.exist? 'tasks.py'
-                     "#{$python} -m invoke"
+                     "#{@python} -m invoke"
                    elsif File.exist? 'pytest.ini'
-                     "#{$python} -m pytest"
+                     "#{@python} -m pytest"
                    elsif File.exist? 'tox.ini'
-                     "#{$python} -m tox"
+                     "#{@python} -m tox"
                    elsif File.exist? 'noxfile.py'
-                     "#{$python} -m nox"
+                     "#{@python} -m nox"
                    elsif File.exist? '.ptrconfig'
-                     "#{$python} -m ptr"
+                     "#{@python} -m ptr"
     # Default to pytest, as it is the most common
                    else
-                     "#{$python} -m pytest"
+                     "#{@python} -m pytest"
                    end
     return (@guess_action = guess_action)
   end
@@ -80,9 +111,9 @@ class Pycommon < Package
   def check_action(check_action = nil)
     case @check_type
     when 'pytest', 'ptr', 'nose', 'unittest', 'invoke', 'nox', 'tox'
-      check_action = "#{$python} -m #{@check_type} #{@additional_arguments}"
+      check_action = "#{@python} -m #{@check_type} #{@additional_arguments}"
     when 'setup.py test'
-      check_action = "#{$python} setup.py test #{@additional_arguments}"
+      check_action = "#{@python} setup.py test #{@additional_arguments}"
     when 'other'
       check_action = "#{check_action} #{@additional_arguments}"
     when nil # Guess what type of test to use (beta)
