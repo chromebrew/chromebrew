@@ -30,7 +30,6 @@ class Libcyrussasl < Package
   depends_on 'linux_pam' # R
   depends_on 'openssl' # R
 
-
   def self.patch
     system 'filefix'
   end

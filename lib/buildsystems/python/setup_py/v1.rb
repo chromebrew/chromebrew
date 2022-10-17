@@ -4,12 +4,12 @@ require 'buildsystems/python/common'
 class Setup_py_v1 < Python_common
   @_buildsystems_python_setup_py_version = '1.0.0'
 
-  def self.svem? (bool = true)
+  def self.svem?(bool = true)
     @svem = bool
     return @svem
   end
 
-  depends_on "#{@python}"
+  depends_on @python
   depends_on "#{@minipython}_setuptools" => :build
   depends_on "#{@minipython}_wheel" => :build
 
@@ -26,11 +26,11 @@ class Setup_py_v1 < Python_common
   end
 
   def self.install
-    unless @svem
-      @py_setup_install_options = PY_SETUP_INSTALL_OPTIONS_NO_SVEM
-    else
-      @py_setup_install_options = PY_SETUP_INSTALL_OPTIONS
-    end
+    @py_setup_install_options = if @svem
+                                  PY_SETUP_INSTALL_OPTIONS
+                                else
+                                  PY_SETUP_INSTALL_OPTIONS_NO_SVEM
+                                end
     system "#{@python} setup.py install #{@py_setup_install_options}"
   end
 end

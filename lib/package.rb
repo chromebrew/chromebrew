@@ -101,11 +101,11 @@ class Package
       if @checked_list.keys.none?(dep)
         # check dependency by calling this function recursively
         next send(__method__, dep,
-                  hash: hash,
+                  hash:,
                pkgTags: tags,
-    include_build_deps: include_build_deps,
-  highlight_build_deps: highlight_build_deps,
-exclude_buildessential: exclude_buildessential,
+    include_build_deps:,
+  highlight_build_deps:,
+exclude_buildessential:,
           include_self: true,
              top_level: false)
 

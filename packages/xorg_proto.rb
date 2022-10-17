@@ -6,7 +6,6 @@ class Xorg_proto < Meson_v1
   version '2022.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
-  git_hashtag "xorgproto-#{version}"
-
+  source_url 'https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz'
+  git_hashtag '5d13dbf2be08f95323985de53352c4f352713860457b95ccaf894a647ac06b9e'
 end

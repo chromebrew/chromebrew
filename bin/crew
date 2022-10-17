@@ -697,7 +697,7 @@ def download
               puts 'Archive copied from cache'.green if @opt_verbose
             end
             puts 'Archive found in cache'.lightgreen
-            return { source: source, filename: filename }
+            return { source:, filename: }
           else
             puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
             cachefile = ''
@@ -724,7 +724,7 @@ def download
           puts 'Archive copied to cache'.green if @opt_verbose
         end
       end
-      return { source: source, filename: filename }
+      return { source:, filename: }
 
     when /^SKIP$/i
       Dir.mkdir @extract_dir
@@ -760,7 +760,7 @@ def download
           if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir @extract_dir
             system "tar x#{@verbose}f #{cachefile} -C #{@extract_dir}"
-            return { source: source, filename: filename }
+            return { source:, filename: }
           else
             puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
           end
@@ -804,7 +804,7 @@ def download
       end
     end
   end
-  return { source: source, filename: filename }
+  return { source:, filename: }
 end
 
 def unpack(meta)

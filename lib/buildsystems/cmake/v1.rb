@@ -3,14 +3,12 @@ require 'package'
 class Cmake_v1 < Package
   @_buildsystems_cmake_version = '1.0.0'
 
-  def self.cmake_options (options = '')
-    if options
-      @cmake_options = options
-    end
+  def self.cmake_options(options = '')
+    @cmake_options = options if options
     return @cmake_options
   end
 
-  def self.check? (bool = true)
+  def self.check?(bool = true)
     @check = bool
     return @check
   end
