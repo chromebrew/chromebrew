@@ -1,4 +1,4 @@
-require 'buildsystems/setup_py/v1'
+require 'buildsystems/python/setup_py/v1'
 
 class Py3_magic < Setup_py_v1
   description 'Magic is a python wrapper for libmagic.'
