@@ -6305,6 +6305,11 @@ url: https://github.com/google/protobuf/releases
 activity: medium
 ---
 kind: url
+name: protobuf_c
+url: https://github.com/protobuf-c/protobuf-c/releases
+activity: medium
+---
+kind: url
 name: proxychains
 url: https://github.com/haad/proxychains/releases
 activity: none
