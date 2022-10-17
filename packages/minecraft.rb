@@ -12,7 +12,6 @@ class Minecraft < Package
   source_sha256 'SKIP'
 
   depends_on 'libx11'
-  depends_on 'openjdk8'
   depends_on 'openjdk17'
   depends_on 'gtk3'
   depends_on 'libcom_err'
