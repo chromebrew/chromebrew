@@ -43,7 +43,7 @@ class Ruby_concurrent_ruby < Package
 
   def self.remove
     @gem_name = name.sub('ruby_', '').sub('_', '-')
-    @gems_deps = `gem dependency ^#{@gem_name}\$`.scan(/^([^\s]+?)/).flatten
+    @gems_deps = `gem dependency ^#{@gem_name}\$ | awk '{print \$1}'`.chomp
     # Delete the first line and convert to an array.
     @gems = @gems_deps.split("\n").drop(1).append(@gem_name)
     # bundler never gets uninstalled, though gem dependency lists it for
