@@ -29,7 +29,7 @@ class Vulkan_tools < Package
   depends_on 'wayland'
   depends_on 'python3' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'vulkan_icd_loader'
   depends_on 'wayland_protocols' => :build
   depends_on 'glslang' => :build
   depends_on 'spirv_tools' => :build
