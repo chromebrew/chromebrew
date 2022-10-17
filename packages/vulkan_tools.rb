@@ -19,24 +19,25 @@ class Vulkan_tools < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.231_x86_64/vulkan_tools-1.3.231-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '13f37edccb74c776e39097bfb9bf67793a47a0c2c930c8ff5528d45100e84c6f',
-     armv7l: '13f37edccb74c776e39097bfb9bf67793a47a0c2c930c8ff5528d45100e84c6f',
-       i686: 'd2421e5c49e7fe100dba833ee308d3be28cad42a9be06cf4dca6beb7dbc47f99',
-     x86_64: '1578cd4a950863964659b1935232fc46ca98ab17b8559cfb4cd4488991f6cb86'
+    aarch64: '51bb8acd2988d6b166d02aef12deca99f2043a9cfa14b7fc1d482c5423ff6e58',
+     armv7l: '51bb8acd2988d6b166d02aef12deca99f2043a9cfa14b7fc1d482c5423ff6e58',
+       i686: 'e6b5506c8a5e21c9d6acef7ef2fcd9044531d3e09a5c7e957d9c258bc2076ac2',
+     x86_64: 'aefe2651e6d31b6b1acd5e7604ffaad046e3a391e538ae4bbf79b6e9394cd236'
   })
 
-  depends_on 'libx11'
-  depends_on 'wayland'
-  depends_on 'python3' => :build
-  depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
-  depends_on 'wayland_protocols' => :build
-  depends_on 'glslang' => :build
-  depends_on 'spirv_tools' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'glslang' => :build
+  depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxext' # R
+  depends_on 'libxrandr' => :build
+  depends_on 'python3' => :build
+  depends_on 'spirv_tools' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'wayland_protocols' => :build
+  depends_on 'wayland' # R
 
   def self.build
     system 'scripts/update_deps.py'

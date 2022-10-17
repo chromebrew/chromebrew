@@ -17,8 +17,8 @@ class Vulkan_headers < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.231_x86_64/vulkan_headers-1.3.231-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8800391b595397138093b962f096ba4e85669325c8307338039417949425ad58',
-     armv7l: '8800391b595397138093b962f096ba4e85669325c8307338039417949425ad58',
+    aarch64: 'b19c5a426f01cf251c5660abccae19f6ab5082bdd12c7b6470856579664e0897',
+     armv7l: 'b19c5a426f01cf251c5660abccae19f6ab5082bdd12c7b6470856579664e0897',
        i686: '12f2ae15bff517cbefbbe61e59b408431235f60b78d6adef55740d5eb3ca83b2',
      x86_64: 'b627b23a35c7f934e7eed6227091dd897e8c4554102cc387fbf75379dd3de1d5'
   })

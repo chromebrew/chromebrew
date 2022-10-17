@@ -17,8 +17,8 @@ class Vulkan_icd_loader < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.231_x86_64/vulkan_icd_loader-1.3.231-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '704fdad903debb631c5039a433c335d61664d5e181f2bb0e3c2b4bbb8c1f8e1b',
-     armv7l: '704fdad903debb631c5039a433c335d61664d5e181f2bb0e3c2b4bbb8c1f8e1b',
+    aarch64: 'd48edf42f7c448182905ddeeb9651f2db0dfdbb331b19f3b67ac1f97d3e34b0a',
+     armv7l: 'd48edf42f7c448182905ddeeb9651f2db0dfdbb331b19f3b67ac1f97d3e34b0a',
        i686: '9d546f058735fc9ae488e8cbc7adf064a2b5ff4649cc732ad066dc359475d662',
      x86_64: 'bb1c74e5a6dc3ecde467665561d59992b22a577e8fa3b03613d2b32ef162f1d9'
   })
