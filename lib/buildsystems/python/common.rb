@@ -1,7 +1,7 @@
 require 'package'
 
 # This file holds functions common to all Python buildsystems
-class Python_common < Package
+class Pycommon < Package
   # Python version defaults to 3, 2 is still an option
   def self.pyversion(pyversion = '3')
     case pyversion
@@ -13,7 +13,7 @@ class Python_common < Package
 
   # In case we ever implement another python implementation, like PyPy
   def self.pyimplementation(pyimplementation = 'python')
-    return (@python = "#{pyimplementation}#{pyversion}")
+    return ($python = "#{pyimplementation}#{pyversion}")
   end
 
   def self.minipython(python = @python, pyversion = @pyversion)
@@ -25,7 +25,7 @@ class Python_common < Package
     when /^jython/
       minipython = "jpy#{pyversion}"
     end
-    return (@minipython = minipython)
+    return ($minipython = minipython)
   end
 
   # Massive amounts of check logic
@@ -60,18 +60,18 @@ class Python_common < Package
 
   def guess_action
     guess_action = if File.exist? 'tasks.py'
-                     "#{@python} -m invoke"
+                     "#{$python} -m invoke"
                    elsif File.exist? 'pytest.ini'
-                     "#{@python} -m pytest"
+                     "#{$python} -m pytest"
                    elsif File.exist? 'tox.ini'
-                     "#{@python} -m tox"
+                     "#{$python} -m tox"
                    elsif File.exist? 'noxfile.py'
-                     "#{@python} -m nox"
+                     "#{$python} -m nox"
                    elsif File.exist? '.ptrconfig'
-                     "#{@python} -m ptr"
+                     "#{$python} -m ptr"
     # Default to pytest, as it is the most common
                    else
-                     "#{@python} -m pytest"
+                     "#{$python} -m pytest"
                    end
     return (@guess_action = guess_action)
   end
@@ -80,9 +80,9 @@ class Python_common < Package
   def check_action(check_action = nil)
     case @check_type
     when 'pytest', 'ptr', 'nose', 'unittest', 'invoke', 'nox', 'tox'
-      check_action = "#{@python} -m #{@check_type} #{@additional_arguments}"
+      check_action = "#{$python} -m #{@check_type} #{@additional_arguments}"
     when 'setup.py test'
-      check_action = "#{@python} setup.py test #{@additional_arguments}"
+      check_action = "#{$python} setup.py test #{@additional_arguments}"
     when 'other'
       check_action = "#{check_action} #{@additional_arguments}"
     when nil # Guess what type of test to use (beta)

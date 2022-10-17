@@ -1,15 +1,15 @@
 require 'buildsystems/python/common'
 
-class Setup_py_v1 < Python_common
+class Setup_py_v1 < Pycommon
   @_buildsystems_python_setup_py_version = '1.0.0'
 
   def self.svem?(bool = true)
     return (@svem = bool)
   end
 
-  depends_on @python
-  depends_on "#{@minipython}_setuptools" => :build
-  depends_on "#{@minipython}_wheel" => :build
+  depends_on $python
+  depends_on "#{$minipython}_setuptools" => :build
+  depends_on "#{$minipython}_wheel" => :build
 
   def self.preflight
     if File.exist?('pyproject.toml')
@@ -20,8 +20,7 @@ class Setup_py_v1 < Python_common
   end
 
   def self.build
-    puts "! #{@python} !".yellow
-    system "#{@python} setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
+    system "#{$python} setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
   def self.install
@@ -30,6 +29,6 @@ class Setup_py_v1 < Python_common
                                 else
                                   PY_SETUP_INSTALL_OPTIONS_NO_SVEM
                                 end
-    system "#{@python} setup.py install #{@py_setup_install_options}"
+    system "#{$python} setup.py install #{@py_setup_install_options}"
   end
 end

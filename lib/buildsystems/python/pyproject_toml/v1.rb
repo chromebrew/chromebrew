@@ -1,13 +1,13 @@
 require 'buildsystems/python/common'
 
-class Pyproject_toml_v1 < Python_common
+class Pyproject_toml_v1 < Pycommon
   @_buildsystems_python_pyproject_toml_version = '1.0.0'
 
-  depends_on @python
-  depends_on "#{@minipython}_build" => :build
-  depends_on "#{@minipython}_compile" => :build
-  depends_on "#{@minipython}_installer" => :build
-  depends_on "#{@minipython}_wheel" => :build
+  depends_on $python
+  depends_on "#{$minipython}_build" => :build
+  depends_on "#{$minipython}_compile" => :build
+  depends_on "#{$minipython}_installer" => :build
+  depends_on "#{$minipython}_wheel" => :build
 
   if @_ver
     @pretend_version = @_ver
@@ -19,11 +19,11 @@ class Pyproject_toml_v1 < Python_common
   BUILD_ENV_OPTIONS = "SETUPTOOLS_SCM_PRETEND_VERSION=#{@pretend_version}"
 
   def self.build
-    system "#{BUILD_ENV_OPTIONS} #{@python} -m build #{PY3_BUILD_OPTIONS}"
-    system "#{@python} -m compile #{PY3_COMPILE_OPTIONS}"
+    system "#{BUILD_ENV_OPTIONS} #{$python} -m build #{PY3_BUILD_OPTIONS}"
+    system "#{$python} -m compile #{PY3_COMPILE_OPTIONS}"
   end
 
   def self.install
-    system "#{@python} -m installer #{PY3_INSTALLER_OPTIONS}"
+    system "#{$python} -m installer #{PY3_INSTALLER_OPTIONS}"
   end
 end
