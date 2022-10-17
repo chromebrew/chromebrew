@@ -6,7 +6,7 @@ require 'package'
 class Ruby_rubocop < Package
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version '1.26.1'
+  version '1.36'
   compatibility 'all'
   source_url 'SKIP'
   # source_url 'https://github.com/rubocop/rubocop.git'
@@ -47,7 +47,7 @@ class Ruby_rubocop < Package
 
   def self.postinstall
     @gem_name = name.sub('ruby_', '')
-    system "gem install -N #{@gem_name} --conservative", exception: false
+    system "gem install -N #{@gem_name}", exception: false
 
     puts "Installing Chromebrew rubocop config file at #{@xdg_config_home}/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
