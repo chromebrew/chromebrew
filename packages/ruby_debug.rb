@@ -3,7 +3,7 @@ require 'package'
 class Ruby_debug < Package
   description 'Debugging functionality for Ruby. This is completely rewritten debug.rb which was contained by the ancient Ruby versions.'
   homepage 'https://github.com/ruby/debug'
-  version '1.6.2'
+  version '1.6.2-1'
   compatibility 'all'
   source_url 'SKIP'
 
@@ -38,7 +38,7 @@ class Ruby_debug < Package
   def self.postinstall
     @gem_name = name.sub('ruby_', '')
     system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
-    system "gem install -N #{@gem_name} --conservative", exception: false
+    system "gem install -N #{@gem_name}", exception: false
   end
 
   def self.remove

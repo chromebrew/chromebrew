@@ -3,7 +3,7 @@ require 'package'
 class Ruby_concurrent_ruby < Package
   description 'Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.'
   homepage 'https://github.com/ruby-concurrency/concurrent-ruby'
-  version '1.1.10'
+  version '1.1.10-1'
   compatibility 'all'
   source_url 'SKIP'
 
@@ -38,7 +38,7 @@ class Ruby_concurrent_ruby < Package
   def self.postinstall
     @gem_name = name.sub('ruby_', '').sub('_', '-')
     system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
-    system "gem install -N #{@gem_name} --conservative", exception: false
+    system "gem install -N #{@gem_name}", exception: false
   end
 
   def self.remove
