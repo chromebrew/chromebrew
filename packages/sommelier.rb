@@ -49,9 +49,13 @@ class Sommelier < Package
     when 'i686', 'x86_64'
       @container_check = `/usr/bin/crossystem inside_vm` == '1'
     end
+<<<<<<< HEAD
     return if File.socket?('/var/run/chrome/wayland-0') || @container_check
 
     abort 'This package is not compatible with your device :/'.lightred
+=======
+    abort 'This package is not compatible with your device :/'.lightred unless File.socket?('/var/run/chrome/wayland-0') || @container_check
+>>>>>>> b267a748 (fix lint error)
   end
 
   def self.patch
