@@ -1,4 +1,3 @@
-require 'package'
 require 'buildsystems/python/common'
 
 class Setup_py_v1 < Python_common

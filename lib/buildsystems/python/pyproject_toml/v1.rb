@@ -1,4 +1,3 @@
-require 'package'
 require 'buildsystems/python/common'
 
 class Python_build_v1 < Python_common

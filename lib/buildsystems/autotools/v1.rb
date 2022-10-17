@@ -4,13 +4,11 @@ class Autotools_v1 < Package
   @_buildsystems_autotools_version = '1.0.0'
 
   def self.configure_options(options = '')
-    @configure_options = options if options
-    return @configure_options
+    return (@configure_options = options if options)
   end
 
   def self.check?(bool = true)
-    @check = bool
-    return @check
+    return (@check = bool)
   end
 
   def self.build

@@ -15,7 +15,6 @@ class Libgit2 < Cmake_v1
 
   cmake_options "-DBUILD_CLI=ON \
                  -DBUILD_EXAMPLE=ON \
-                 -DBUILD_FUZZERS=ON \
                  -DBUILD_TESTS=ON \
                  -DUSE_BUNDLED_ZLIB=OFF \
                  -DUSE_SSH=ON"

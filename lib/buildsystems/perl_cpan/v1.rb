@@ -4,8 +4,7 @@ class Perl_cpan_v1 < Package
   @_buildsystems_perl_cpan_version = '1.0.0'
 
   def self.check?(bool = true)
-    @check = bool
-    return @check
+    return (@check = bool)
   end
 
   depends_on 'perl'
