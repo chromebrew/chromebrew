@@ -47,9 +47,7 @@ class Js91 < Package
 
     # Fixes https://bugs.gentoo.org/816975
     system "curl -Lf 'https://816975.bugs.gentoo.org/attachment.cgi?id=745218&action=diff&format=raw&headers=1' -o i686_math.patch"
-    unless Digest::SHA256.hexdigest(File.read('i686_math.patch')) == 'fcba8ce061545e893d9eebd3057cee150362fa23d7f3de4b249ec595789a0688'
-      abort 'Checksum mismatch :/ try again'
-    end
+    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('i686_math.patch')) == 'fcba8ce061545e893d9eebd3057cee150362fa23d7f3de4b249ec595789a0688'
     system('patch -Np1 -i i686_math.patch')
   end
 

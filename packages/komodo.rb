@@ -10,6 +10,7 @@ class Komodo < Package
   source_sha256 '5c2735e9a323ffe290425e5066dd6f72f11e5d58d732411e6648a685725e055a'
 
   depends_on 'gtk2'
+  depends_on 'python2'
   depends_on 'sommelier'
 
   def self.build
@@ -23,19 +24,19 @@ class Komodo < Package
   end
 
   def self.remove
-    print "Would you like to remove the config directories? [y/N] "
-    response = STDIN.getc
+    print 'Would you like to remove the config directories? [y/N] '
+    response = $stdin.getc
     config_dirs = ["#{HOME}/.komodoide", "#{HOME}/.activestate"]
-    config_dirs.each { |config_dir|
-      if Dir.exist? config_dir
-        case response
-        when "y", "Y"
-          FileUtils.rm_rf config_dir
-          puts "#{config_dir} removed.".lightred
-        else
-          puts "#{config_dir} saved.".lightgreen
-        end
+    config_dirs.each do |config_dir|
+      next unless Dir.exist? config_dir
+
+      case response
+      when 'y', 'Y'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} saved.".lightgreen
       end
-    }
+    end
   end
 end

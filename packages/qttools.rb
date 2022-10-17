@@ -22,11 +22,14 @@ class Qttools < Package
      x86_64: '4fe6c1fcd3b4bdfbdface915f9c7d71b6c73deadbb5bb20cb5d89af8d6d9d2d2'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'mesa' # R
   depends_on 'qtbase'
   depends_on 'libtinfo'
 
   def self.build
-    # Note: This MAY NOT COMPILE with llvm installed on x86. Install dependencies,
+    # NOTE: This MAY NOT COMPILE with llvm installed on x86. Install dependencies,
     # disable depends, and uninstall llvm before attempting compile.
     system 'qmake -Wall -early QMAKE_CFLAGS=-flto -early QMAKE_CXXFLAGS=-flto && make'
   end

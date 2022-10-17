@@ -3,24 +3,24 @@ require 'package'
 class Wayland < Package
   description 'Wayland is intended as a simpler replacement for X, easier to develop and maintain.'
   homepage 'https://wayland.freedesktop.org'
-  @_ver = '1.20.0'
-  version "#{@_ver}-1"
+  @_ver = '1.21.0'
+  version @_ver.to_s
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_armv7l/wayland-1.20.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_armv7l/wayland-1.20.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_i686/wayland-1.20.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.20.0-1_x86_64/wayland-1.20.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.21.0_armv7l/wayland-1.21.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.21.0_armv7l/wayland-1.21.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.21.0_i686/wayland-1.21.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.21.0_x86_64/wayland-1.21.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '62b00aaca85d9915fe016b8d12e0bb4dcfd5c96ed25284ce0a72eb3807149fb8',
-     armv7l: '62b00aaca85d9915fe016b8d12e0bb4dcfd5c96ed25284ce0a72eb3807149fb8',
-       i686: 'b4996e1d41e80fce12418356ed63a5b4090eabd71a5edf1aab014a75f023f422',
-     x86_64: '1123fd65e1ec4d681d0f6e19cbcecbc121b65888f75e1fbdcc70263b5fcc22ed'
+    aarch64: '22d6cee271f0f480d15abcb2c6a8da1c827028c0a0ed7769c203bfccf4d6b19f',
+     armv7l: '22d6cee271f0f480d15abcb2c6a8da1c827028c0a0ed7769c203bfccf4d6b19f',
+       i686: 'b67a09052c16255f20eca0229c35fbc72a82249b4ecb7c2d3f5782a9048e66e0',
+     x86_64: '3581887e7e979738b82a9c4aecc8677797bed0b7702192e65f508d7ba487c637'
   })
 
   depends_on 'expat'

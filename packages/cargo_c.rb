@@ -6,23 +6,23 @@ require 'package'
 class Cargo_c < Package
   description 'A cargo subcommand to build and install C-ABI compatible dynamic and static libraries'
   homepage 'https://github.com/lu-zero/cargo-c/'
-  version '0.7.3'
+  version '0.9.13'
   license 'LGPL-2.1 and MPL-1.1'
   compatibility 'all'
-  source_url 'https://github.com/lu-zero/cargo-c/archive/v0.7.3/cargo-c-0.7.3.tar.gz'
-  source_sha256 '533c65d555330e86b91415753efc140ffdb900abd59b5b6403352c4264941a99'
+  source_url 'https://github.com/lu-zero/cargo-c.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_armv7l/cargo_c-0.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_i686/cargo_c-0.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.7.3_x86_64/cargo_c-0.7.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_armv7l/cargo_c-0.9.13-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_armv7l/cargo_c-0.9.13-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_i686/cargo_c-0.9.13-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cargo_c/0.9.13_x86_64/cargo_c-0.9.13-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9063b96616c64d564f99cd16611ca86f8b8a72a88f5afd03582aaba51941acea',
-     armv7l: '9063b96616c64d564f99cd16611ca86f8b8a72a88f5afd03582aaba51941acea',
-       i686: '3618f6dc7d77a526c22ed2dd05ea46af032b812d01c5f93c1f8546192d41acbf',
-     x86_64: 'de92ff24a09ed7d26f0b8490e174c83ff9941ab33b417a8d20243d0f85d18ef3'
+    aarch64: '21825714180d7032b34e2c74582f4002d55dccc781bbbd3ba6bce1af88d1cade',
+     armv7l: '21825714180d7032b34e2c74582f4002d55dccc781bbbd3ba6bce1af88d1cade',
+       i686: 'f350e961fd5a16fb080adf24288e41559f037db3cab5b07f2ff74407d4370bac',
+     x86_64: 'a45adb265c13605339cfc04548f3c33d13887307b20639abc7d4b385804768a0'
   })
 
   depends_on 'rust' => :build

@@ -9,17 +9,17 @@ class Nedit < Package
   source_url 'https://downloads.sourceforge.net/project/nedit/nedit-source/nedit-5.7-src.tar.gz'
   source_sha256 'add9ac79ff973528ad36c86858238bac4f59896c27dbf285cbe6a4d425fca17a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nedit/5.7_armv7l/nedit-5.7-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nedit/5.7_armv7l/nedit-5.7-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nedit/5.7_i686/nedit-5.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nedit/5.7_x86_64/nedit-5.7-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nedit/5.7_x86_64/nedit-5.7-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '4fba5943ef167821c201b21a09dece98b6d81cbcb79527c64e95000f4479c3d8',
      armv7l: '4fba5943ef167821c201b21a09dece98b6d81cbcb79527c64e95000f4479c3d8',
        i686: 'a51c662322d42a5a9a040f0c5eda0535c1f03fbc3bb15cb4652a5c7fb5ede8b2',
-     x86_64: 'c2db0f40ee914ab92f65814953542ec9e5634415ea155076cf9e67f50e9428ed',
+     x86_64: 'c2db0f40ee914ab92f65814953542ec9e5634415ea155076cf9e67f50e9428ed'
   })
 
   depends_on 'motif'

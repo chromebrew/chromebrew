@@ -9,17 +9,17 @@ class Shmux < Package
   source_url 'https://github.com/shmux/shmux/archive/v1.0.2.tar.gz'
   source_sha256 '4b84dc3e0d72d054ed4730d130a509f43441fb61561c11a444d6ee65cbff9c04'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_armv7l/shmux-1.0.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_armv7l/shmux-1.0.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_i686/shmux-1.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_x86_64/shmux-1.0.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shmux/1.0.2_x86_64/shmux-1.0.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',
      armv7l: 'a8e89a4d6d087c646c5a0050fb09527a15b655838277fda2bcfd4ed37a1c10c5',
        i686: '9ae22a86f07497589e2414eee3a8bead32868bef93b4fdd619245c807e9baa82',
-     x86_64: 'b29380a06c522510e36119614187713594a03c39d280b16015a42af336bc126a',
+     x86_64: 'b29380a06c522510e36119614187713594a03c39d280b16015a42af336bc126a'
   })
 
   depends_on 'pcre'
@@ -30,6 +30,6 @@ class Shmux < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

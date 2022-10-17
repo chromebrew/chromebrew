@@ -11,31 +11,179 @@
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.1
+  Exclude:
+  - 'lib/docopt.rb'
+
+# These cops have been temporarily disabled and should be reenabled asap
+Security/Eval:
+  Enabled: false
+
+Naming/ClassAndModuleCamelCase:
+  # Disable this cop for every file in packages/
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Naming/MethodName:
+  Enabled: false
+
+Naming/VariableName:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Layout/LineContinuationLeadingSpace:
+  Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
+
+Lint/ImplicitStringConcatenation:
+  Enabled: false
+
+Lint/UnreachableCode:
+  Enabled: false
+
+Lint/DuplicateBranch:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Lint/LiteralAsCondition:
+  Enabled: false
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/EmptyWhen:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Lint/SuppressedException:
+  Enabled: false
+
+Layout/LineLength:
+  AllowedPatterns:
+    - '#'
+    - 'description'
+  # When this is reenabled, keep the AllowedPatterns configuration
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedHashRocketStyle:
     - separator
   EnforcedColonStyle:
     - separator
+  # When this is reenabled, keep the EnforcedHashRocketStyle and EnforcedColonStyle configuration
+  Enabled: false
+
+# End temporarily disabled cops
+
+Layout/CommentIndentation:
+  Enabled: false
 
 Layout/FirstHashElementIndentation:
-  EnforcedStyle: consistent
+  Enabled: false
+# EnforcedStyle: consistent
+
+Layout/IndentationStyle:
+  EnforcedStyle: spaces
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: false
+
+Layout/SpaceInsideParens:
+  Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MutableConstant:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RedundantCapitalW:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/BlockParameterName:
+  Enabled: false
+
 Naming/VariableNumber:
   Enabled: false
 
-Naming/ClassAndModuleCamelCase:
+Naming/HeredocDelimiterNaming:
   Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Layout/LineLength:
-  IgnoredPatterns: ['description']

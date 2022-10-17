@@ -41,14 +41,14 @@ class Nodebrew < Package
       # nodebrew bash completion
       source #{CREW_PREFIX}/share/nodebrew/completions/bash/nodebrew-completion
     NODEBREWCOMPLETIONEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @bashd)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @bashd)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~'NODEBREWENVEOF'
       # nodebrew configuration
       export PATH="$PATH:$HOME/.nodebrew/current/bin"
     NODEBREWENVEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/nodebrew", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/nodebrew", @env)
   end
 
   def self.postinstall

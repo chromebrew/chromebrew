@@ -28,7 +28,7 @@ class P7zip_gui < Package
   def self.patch
     aur_github_url = 'https://raw.githubusercontent.com/archlinux/svntogit-packages'
     patches = {
-            'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch' => 'a923c8876f36201064b0efabbc2121e47cf7a78a0700d3974ef24ab3a05bd88a',
+      'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch' => 'a923c8876f36201064b0efabbc2121e47cf7a78a0700d3974ef24ab3a05bd88a',
        "#{aur_github_url}/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2016-9296.patch" => 'f9bcbf21d4aa8938861a6cba992df13dec19538286e9ed747ccec6d9a4e8f983',
       "#{aur_github_url}/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2017-17969.patch" => 'c6af5ba588b8932a5e99f3741fcf1011b7c94b533de903176c7d1d4c02a9ebef',
        "#{aur_github_url}/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-5996.patch" => '9c92b9060fb0ecc3e754e6440d7773d04bc324d0f998ebcebc263264e5a520df',
@@ -51,7 +51,7 @@ class P7zip_gui < Package
   end
 
   def self.build
-    @_desktop_entry = <<~EOF.gsub(/(?<=;)[ ]*/, '')
+    @_desktop_entry = <<~EOF.gsub(/(?<=;) */, '')
       [Desktop Entry]
       Encoding=UTF-8
       Name=7-Zip File Manager
@@ -103,15 +103,15 @@ class P7zip_gui < Package
   end
 
   def self.install
-    FileUtils.mkdir_p [ "#{CREW_DEST_PREFIX}/share/icons/hicolor/32x32/apps", "#{CREW_DEST_PREFIX}/share/applications" ]
+    FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/share/icons/hicolor/32x32/apps", "#{CREW_DEST_PREFIX}/share/applications"]
 
-    system "make", "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}",
+    system 'make', "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}",
            "DEST_DIR=#{CREW_DEST_DIR}", "DEST_MAN=#{CREW_MAN_PREFIX}", 'install'
 
     File.write "#{CREW_DEST_PREFIX}/share/applications/7zFM.desktop", @_desktop_entry
 
-    FileUtils.chmod 0755, "#{CREW_DEST_PREFIX}/share/applications/7zFM.desktop"
-    FileUtils.chmod 0755, "#{CREW_DEST_PREFIX}/bin/p7zipForFilemanager"
+    FileUtils.chmod 0o755, "#{CREW_DEST_PREFIX}/share/applications/7zFM.desktop"
+    FileUtils.chmod 0o755, "#{CREW_DEST_PREFIX}/bin/p7zipForFilemanager"
 
     # use 7z.so provided by package 7_zip
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/7z.so", "#{CREW_DEST_PREFIX}/lib/p7zip/7z.so"

@@ -13,13 +13,13 @@ class Libsodium < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_armv7l/libsodium-1.0.18-RELEASE-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_armv7l/libsodium-1.0.18-RELEASE-chromeos-armv7l.tpxz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_i686/libsodium-1.0.18-RELEASE-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_x86_64/libsodium-1.0.18-RELEASE-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsodium/1.0.18-RELEASE_x86_64/libsodium-1.0.18-RELEASE-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
      armv7l: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
        i686: 'd1a7c85be6511c084b6830e9e0786e07efbc79a415e9bddc8961486bf355a41f',
-     x86_64: '46856f8d0724b7c52dc8c2b657e9f49da97bd2eaee423c3055eb426b29a200a5',
+     x86_64: '46856f8d0724b7c52dc8c2b657e9f49da97bd2eaee423c3055eb426b29a200a5'
   })
 
   def self.build

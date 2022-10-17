@@ -9,11 +9,11 @@ class Shotcut < Package
   source_url 'https://github.com/mltframework/shotcut/releases/download/v20.11.25/shotcut-linux-x86_64-201125.txz'
   source_sha256 'fa45d26a1e1e6af82e4f600a7a98b020e1af14f9c176595567aacbb3c9f21093'
 
-  binary_url ({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotcut/20.11.25_x86_64/shotcut-20.11.25-chromeos-x86_64.tar.xz',
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotcut/20.11.25_x86_64/shotcut-20.11.25-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-    x86_64: 'c252f03d9b50f5533d86640734d2327ee6e364df79d3505e890da587d1b32efc',
+  binary_sha256({
+    x86_64: 'c252f03d9b50f5533d86640734d2327ee6e364df79d3505e890da587d1b32efc'
   })
 
   depends_on 'gtk3'

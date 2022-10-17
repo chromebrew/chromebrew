@@ -11,22 +11,22 @@ class Sgml_common < Package
   source_url 'https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz'
   source_sha256 '7dc418c1d361123ffc5e45d61f1b97257940a8eb35d0bfbbc493381cc5b1f959'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_armv7l/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_armv7l/sgml_common-0.6.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_i686/sgml_common-0.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_x86_64/sgml_common-0.6.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sgml_common/0.6.3_x86_64/sgml_common-0.6.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '18ff17ac8af52e6e6790564c49155d5c2e8e05583d514744af1e30502d4a79b8',
      armv7l: '18ff17ac8af52e6e6790564c49155d5c2e8e05583d514744af1e30502d4a79b8',
        i686: '8bae935790db5a8b6aa63cc76e9c8c568681a7bf66e505f3c2be872f5e713338',
-     x86_64: '48fcb41950ca59883d56b7285608121150c6a2c4969579847467606610d7c0a8',
+     x86_64: '48fcb41950ca59883d56b7285608121150c6a2c4969579847467606610d7c0a8'
   })
 
   def self.patch
     system 'curl -#LO http://www.linuxfromscratch.org/patches/blfs/svn/sgml-common-0.6.3-manpage-1.patch'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('sgml-common-0.6.3-manpage-1.patch') ) == '50d93af704a0869faf8fedf5d23b1a9f90fff6499f4c11cf4addb5e460b7b58b'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('sgml-common-0.6.3-manpage-1.patch')) == '50d93af704a0869faf8fedf5d23b1a9f90fff6499f4c11cf4addb5e460b7b58b'
     system 'patch -Np1 -i sgml-common-0.6.3-manpage-1.patch && autoreconf -f -i'
   end
 
@@ -38,7 +38,7 @@ class Sgml_common < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/sgml"
     system "touch #{CREW_DEST_PREFIX}/etc/sgml/sgml-ent.cat"
     system "touch #{CREW_DEST_PREFIX}/etc/sgml/sgml-docbook.cat"

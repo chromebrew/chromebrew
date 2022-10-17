@@ -32,7 +32,7 @@ class Nmap < Package
     # ensure we build devendored deps"
     @deps = %w[libpcap libpcre macosx mwin32 libssh2 libz]
     @deps.each do |dep|
-      FileUtils.rm_rf dep if Dir.exist?(dep)
+      FileUtils.rm_rf dep
     end
     system 'autoreconf -fiv'
     system 'filefix'
@@ -51,7 +51,7 @@ class Nmap < Package
       xhost si:localuser:root
       sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} zenmap.elf
     ZENMAP_EOF
-    IO.write('zenmap_', @zenmap_)
+    File.write('zenmap_', @zenmap_)
   end
 
   def self.install

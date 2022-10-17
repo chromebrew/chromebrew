@@ -9,18 +9,20 @@ class Make < Package
   source_url 'https://ftpmirror.gnu.org/make/make-4.3.tar.lz'
   source_sha256 'de1a441c4edf952521db30bfca80baae86a0ff1acd0a00402999344f04c45e82'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_armv7l/make-4.3-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_armv7l/make-4.3-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_i686/make-4.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_x86_64/make-4.3-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/make/4.3_x86_64/make-4.3-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '88a00eb5088f6a6b15c510f75040f7932b467e3f8306166052f24b56b4cd9405',
      armv7l: '88a00eb5088f6a6b15c510f75040f7932b467e3f8306166052f24b56b4cd9405',
        i686: '1138cb670502f23d7e0acf189b59982f045715693c143c982f96f4c77eca365b',
-     x86_64: '26dee9755f910ebbc5e8742fc40937dc4b5900ded4a415b26aa282def3821d9d',
+     x86_64: '26dee9755f910ebbc5e8742fc40937dc4b5900ded4a415b26aa282def3821d9d'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     system './configure',

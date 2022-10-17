@@ -22,12 +22,15 @@ class Libmetalink < Package
      x86_64: '62986bd07f7fd2ade3114e8600e1a920b8614447acdd34164b77181ceb3a6687'
   })
 
-  depends_on 'hashpipe' => :build
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'libxml2' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
-    system 'curl -Ls https://launchpadlibrarian.net/380798344/0001-fix-covscan-issues.patch | \
-      hashpipe sha256 d236dfa0d4a1938a40ff2ce4dd348c42b74ad68807df0f1b6ea69c11725fd9cf | \
-      patch -Np1 --binary'
+    downloader 'https://launchpadlibrarian.net/380798344/0001-fix-covscan-issues.patch',
+               'd236dfa0d4a1938a40ff2ce4dd348c42b74ad68807df0f1b6ea69c11725fd9cf'
+    system 'patch -Np1 -i 0001-fix-covscan-issues.patch'
     system 'filefix'
   end
 

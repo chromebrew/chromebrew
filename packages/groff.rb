@@ -9,19 +9,27 @@ class Groff < Package
   source_url 'https://ftpmirror.gnu.org/groff/groff-1.22.4.tar.gz'
   source_sha256 'e78e7b4cb7dec310849004fa88847c44701e8d133b5d4c13057d876c1bad0293'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/groff/1.22.4_armv7l/groff-1.22.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/groff/1.22.4_armv7l/groff-1.22.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/groff/1.22.4_i686/groff-1.22.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/groff/1.22.4_x86_64/groff-1.22.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/groff/1.22.4_x86_64/groff-1.22.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '7e64b76b272bc182c6525c7eef2c46515a34a8a5f4c5baa98232e5a89fcf01b1',
      armv7l: '7e64b76b272bc182c6525c7eef2c46515a34a8a5f4c5baa98232e5a89fcf01b1',
        i686: '6e0ff314086dfd363f162cc1f397eda4777391de0052566a1494aac62be23aa7',
-     x86_64: '3f3bf23656ec19567fab24646361569c2e42f8273e473b229eb5800ea53d1d30',
+     x86_64: '3f3bf23656ec19567fab24646361569c2e42f8273e473b229eb5800ea53d1d30'
   })
 
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  # depends_on 'libice' # R (Not needed for groff binary)
+  # depends_on 'libsm' # R (Not needed for groff binary)
+  # depends_on 'libx11' # R (Not needed for groff binary)
+  # depends_on 'libxaw' # R (Not needed for groff binary)
+  # depends_on 'libxmu' # R (Not needed for groff binary)
+  # depends_on 'libxt' # R (Not needed for groff binary)
   depends_on 'uchardet'
 
   def self.build
@@ -32,10 +40,10 @@ class Groff < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
-    #system "make", "check"
+    # system "make", "check"
   end
 end

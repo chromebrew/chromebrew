@@ -1,16 +1,16 @@
 require 'package'
 
 class Opera < Package
-  description "Opera is a multi-platform web browser based on Chromium and developed by Opera Software."
+  description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '87.0.4390.36'
+  version '91.0.4516.77'
   license 'OPERA-2018'
   compatibility 'x86_64'
 
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 'adda67abef9dfd4afbc76d927b45dd1749f588199112a6fbcf996527af408e73'
+  source_sha256 '1b5ca86f0d77478014883cf22ec07a0855307e55be1ba822b0223496c5b3d3a6'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -38,7 +38,7 @@ class Opera < Package
   def self.postinstall
     puts
     print 'Set Opera as your default browser? [Y/n]: '
-    case STDIN.getc
+    case $stdin.getc
     when "\n", 'Y', 'y'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'x-www-browser'
@@ -52,8 +52,8 @@ class Opera < Package
 
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') and File.symlink?('x-www-browser') and \
-        File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera"
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') && \
+         (File.realpath('x-www-browser') == "#{CREW_PREFIX}/share/x86_64-linux-gnu/opera/opera")
         FileUtils.rm 'x-www-browser'
       end
     end

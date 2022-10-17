@@ -9,20 +9,21 @@ class Most < Package
   source_url 'https://www.jedsoft.org/releases/most/most-5.1.0.tar.gz'
   source_sha256 'db805d1ffad3e85890802061ac8c90e3c89e25afb184a794e03715a3ed190501'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_i686/most-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_x86_64/most-5.1.0-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_x86_64/most-5.1.0-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '333fee656f76d9a8d5343edf9d2e1c29c48d73b4c21992a76439644c7edf7f70',
      armv7l: '333fee656f76d9a8d5343edf9d2e1c29c48d73b4c21992a76439644c7edf7f70',
        i686: '5e3463ae4c793fcc7ee528c0b722bfe665792f831e87e7d6b88c0a1bda124825',
-     x86_64: '3fcf532ef15440abe83413ae0c422e480096a6b4997890eca2825ef288ed13ed',
+     x86_64: '3fcf532ef15440abe83413ae0c422e480096a6b4997890eca2825ef288ed13ed'
   })
 
-  depends_on 'slang'
+  depends_on 'glibc' # R
+  depends_on 'slang' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

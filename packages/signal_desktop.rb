@@ -3,11 +3,11 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '5.43.0'
+  version '5.60.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
   source_url "https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_#{version}_amd64.deb"
-  source_sha256 '0d82775996da6a52a141785540edea8498868fdd8273ea70443c7f601222ea08'
+  source_sha256 '7ca6c1ac0a216ff5fba5e8567cfdc55707ead06ada9ddd8795f39ae9113667ac'
 
   no_compile_needed
 
@@ -16,12 +16,17 @@ class Signal_desktop < Package
   depends_on 'sommelier'
 
   def self.patch
-    system "sed -i 's,/opt,#{CREW_PREFIX}/share,' usr/share/applications/signal-desktop.desktop"
+    Dir.chdir 'usr/share/applications' do
+      system "sed -i 's,/opt,#{CREW_PREFIX}/share,' signal-desktop.desktop"
+      # See https://github.com/signalapp/Signal-Desktop/issues/6122.
+      system "sed -i 's,StartupWMClass=Signal,StartupWMClass=signal,' signal-desktop.desktop"
+      system "sed -i 's,%U,--enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --use-tray-icon %U,' signal-desktop.desktop"
+    end
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mv 'usr/share', "#{CREW_DEST_PREFIX}"
+    FileUtils.mv 'usr/share', CREW_DEST_PREFIX.to_s
     FileUtils.mv 'opt/Signal', "#{CREW_DEST_PREFIX}/share"
     FileUtils.ln_s "#{CREW_PREFIX}/share/Signal/signal-desktop", "#{CREW_DEST_PREFIX}/bin/signal-desktop"
   end

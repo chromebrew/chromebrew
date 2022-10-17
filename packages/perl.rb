@@ -23,6 +23,9 @@ class Perl < Package
      x86_64: '4c0bc04df5a046bffe2e35b5fc6bfec8cfbe462c5cc4e9b2fb9e7e70c8373828'
   })
 
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'libdb' # R
   depends_on 'patch' => :build
   no_patchelf
 

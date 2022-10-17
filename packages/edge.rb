@@ -3,12 +3,11 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  @_ver = '101.0.1210.53'
-  version @_ver
+  version '106.0.1370.37-1'
   compatibility 'x86_64'
   license 'MIT'
-  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_101.0.1210.53-1_amd64.deb'
-  source_sha256 '8c9370c66c408986c9a69a5ca85d2eb42821babf3590d6bc3d516d5e31b5ba6f'
+  source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
+  source_sha256 '5c168b483ee24210bff3dfb6f4ef0ee6f15a5010e0fcd5acf6f0ec8ec2ea5c59'
 
   no_compile_needed
 
@@ -36,8 +35,8 @@ class Edge < Package
                'ae7b1378a5d9d84314b459b6a16c3ec14aae0b88eeb78040f7bc28156cf2d753', 'microsoft-edge.png'
 
     icon_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor/128x128/apps"
-    FileUtils.mkdir_p "#{icon_path}"
-    FileUtils.mv 'microsoft-edge.png', "#{icon_path}"
+    FileUtils.mkdir_p icon_path.to_s
+    FileUtils.mv 'microsoft-edge.png', icon_path.to_s
   end
 
   def self.postinstall

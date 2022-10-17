@@ -12,12 +12,12 @@ class Rhythmbox < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rhythmbox/3.4.4_armv7l/rhythmbox-3.4.4-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rhythmbox/3.4.4_armv7l/rhythmbox-3.4.4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rhythmbox/3.4.4_x86_64/rhythmbox-3.4.4-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rhythmbox/3.4.4_x86_64/rhythmbox-3.4.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '678900ce7386040ee771131b633252a873c78f3e65d028a0bc89e52ab25960b3',
      armv7l: '678900ce7386040ee771131b633252a873c78f3e65d028a0bc89e52ab25960b3',
-     x86_64: '36c0657e604a4692c3a5a672e4f45b64ce3b275a58116e72269f68cb68677b63',
+     x86_64: '36c0657e604a4692c3a5a672e4f45b64ce3b275a58116e72269f68cb68677b63'
   })
 
   depends_on 'gtk3'

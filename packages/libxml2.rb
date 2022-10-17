@@ -3,29 +3,32 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.9.12'
+  version '2.10.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.9.12/libxml2-v2.9.12.tar.bz2'
-  source_sha256 'bb5ea084617e2bc706cd1f0c9b36328950c9d802a16ff52795e5f13bae900ca8'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.2/libxml2-v2.10.2.tar.bz2'
+  source_sha256 'd50e8a55b2797501929d3411b81d5d37ec44e9a4aa58eae9052572977c632d7a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.9.12_armv7l/libxml2-2.9.12-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.9.12_armv7l/libxml2-2.9.12-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.9.12_i686/libxml2-2.9.12-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.9.12_x86_64/libxml2-2.9.12-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_armv7l/libxml2-2.10.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_armv7l/libxml2-2.10.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_i686/libxml2-2.10.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_x86_64/libxml2-2.10.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a6315954148a4ec7f7867031c282c967b198ea494f81d28f1eef8cd2e3c65e36',
-    armv7l: 'a6315954148a4ec7f7867031c282c967b198ea494f81d28f1eef8cd2e3c65e36',
-    i686: '52be8e1e0497dafbb0f92847342353ce22e104a388a30d075b1de32129089686',
-    x86_64: 'ebb3b81155231be702617246a78945a3698142f63b3138c5763b9813d57dbe19'
+    aarch64: 'd71f1920d9c2db027f1dabf735038ef8bbcfca33d714773ae6d1049879ac9889',
+     armv7l: 'd71f1920d9c2db027f1dabf735038ef8bbcfca33d714773ae6d1049879ac9889',
+       i686: 'e1c1c121adb611590f66062919e5a15cfdd62a9da89b37105af5789660db416a',
+     x86_64: '0d463712429ba8c0d01f58ac772db9e5e1e88d47ae57f88c7e9a06e87dc8788b'
   })
 
-  depends_on 'gcc'
-  depends_on 'icu4c'
-  depends_on 'readline'
-  depends_on 'zlibpkg'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'ncurses'
+  depends_on 'readline' # R
+  depends_on 'zlibpkg' # R
+  no_patchelf
 
   def self.patch
     # Fix encoding.c:1961:31: error: ‘TRUE’ undeclared (first use in this function)

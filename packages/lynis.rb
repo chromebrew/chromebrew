@@ -9,24 +9,24 @@ class Lynis < Package
   source_url 'https://downloads.cisofy.com/lynis/lynis-3.0.1.tar.gz'
   source_sha256 '8381b62e11a5e0ead417bcfd92845adab7dc3b9d06271c852a1166cb65a61aff'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_armv7l/lynis-3.0.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_armv7l/lynis-3.0.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_i686/lynis-3.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_x86_64/lynis-3.0.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_x86_64/lynis-3.0.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '4172f481e0e7fec75b0c5e7552a3cd6f22a4f6aed883bf8c08d3670216617f6b',
      armv7l: '4172f481e0e7fec75b0c5e7552a3cd6f22a4f6aed883bf8c08d3670216617f6b',
        i686: '9e3335b473b1b978c5c237a5866471220bf7024287c44735249be7a2d9f2094d',
-     x86_64: '73aa5996210bb14aca743a9a58bb8169fb377c1e9b19ac1e542484b11a86f260',
+     x86_64: '73aa5996210bb14aca743a9a58bb8169fb377c1e9b19ac1e542484b11a86f260'
   })
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/man/man8"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/lynis"
-    system "gzip -9 lynis.8"
+    system 'gzip -9 lynis.8'
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/lynis"
     system "echo '#!/bin/bash' > lynis"
     system "echo 'PWD=\$(pwd)' >> lynis"

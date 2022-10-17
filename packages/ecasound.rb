@@ -9,17 +9,17 @@ class Ecasound < Package
   source_url 'https://nosignal.fi/download/ecasound-2.9.3.tar.gz'
   source_sha256 '468bec44566571043c655c808ddeb49ae4f660e49ab0072970589fd5a493f6d4'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_armv7l/ecasound-1.0.21-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_armv7l/ecasound-1.0.21-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_i686/ecasound-1.0.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_x86_64/ecasound-1.0.21-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ecasound/1.0.21_x86_64/ecasound-1.0.21-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '8bbf7d4b25da6f034a519a8bbb213acd9e4d328c8be0ffcb1ef7973faf1932ea',
      armv7l: '8bbf7d4b25da6f034a519a8bbb213acd9e4d328c8be0ffcb1ef7973faf1932ea',
        i686: '1cce14a38401659698c2500e9d09aaf732c46343438601745d46cbf162fcd5cf',
-     x86_64: 'f8242a29cdc5a9a3abcabb1455a457c39ed08d195b7aa17df859f0ad845ca6d4',
+     x86_64: 'f8242a29cdc5a9a3abcabb1455a457c39ed08d195b7aa17df859f0ad845ca6d4'
   })
 
   depends_on 'libaudiofile'

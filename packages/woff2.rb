@@ -9,17 +9,17 @@ class Woff2 < Package
   source_url 'https://github.com/google/woff2/archive/v1.0.2.tar.gz'
   source_sha256 'add272bb09e6384a4833ffca4896350fdb16e0ca22df68c0384773c67a175594'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/woff2/1.0.2_armv7l/woff2-1.0.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/woff2/1.0.2_armv7l/woff2-1.0.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/woff2/1.0.2_i686/woff2-1.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/woff2/1.0.2_x86_64/woff2-1.0.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/woff2/1.0.2_x86_64/woff2-1.0.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '192c84faead6c5c71ee8e38def88f239b46b8897ad731e2c2bbee03654d8c794',
      armv7l: '192c84faead6c5c71ee8e38def88f239b46b8897ad731e2c2bbee03654d8c794',
        i686: '34294d13e3ceaa8341e9292652ca81184de7967cc63024c60560e66c8830f5c8',
-     x86_64: 'b27803367b73048b733a28e639b6ebcfaaf889b813eefcb43def1af79653ba04',
+     x86_64: 'b27803367b73048b733a28e639b6ebcfaaf889b813eefcb43def1af79653ba04'
   })
 
   depends_on 'brotli'

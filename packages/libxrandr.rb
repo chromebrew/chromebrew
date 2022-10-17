@@ -9,17 +9,17 @@ class Libxrandr < Package
   source_url 'https://www.x.org/archive/individual/lib/libXrandr-1.5.2.tar.gz'
   source_sha256 '3f10813ab355e7a09f17e147d61b0ce090d898a5ea5b5519acd0ef68675dcf8e'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_armv7l/libxrandr-1.5.2-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_armv7l/libxrandr-1.5.2-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_i686/libxrandr-1.5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_x86_64/libxrandr-1.5.2-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrandr/1.5.2-1_x86_64/libxrandr-1.5.2-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '795885bddb9431b2522f1d78ced0bcf06dcbbb988b1aec402223a8d5c42ad4ba',
      armv7l: '795885bddb9431b2522f1d78ced0bcf06dcbbb988b1aec402223a8d5c42ad4ba',
        i686: 'c744ec234f8362ce658f5acccfd978287e73f7a41d64ca2a0593de096b6ec41d',
-     x86_64: 'c4d10ac43c01b0e857536b939775597ffe0adf533925c1a2146695213f10f7c9',
+     x86_64: 'c4d10ac43c01b0e857536b939775597ffe0adf533925c1a2146695213f10f7c9'
   })
 
   depends_on 'libx11'
@@ -28,8 +28,8 @@ class Libxrandr < Package
   depends_on 'llvm' => :build
 
   def self.build
-    ENV['CFLAGS'] = "-fuse-ld=lld"
-    ENV['CXXFLAGS'] = "-fuse-ld=lld"
+    ENV['CFLAGS'] = '-fuse-ld=lld'
+    ENV['CXXFLAGS'] = '-fuse-ld=lld'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end

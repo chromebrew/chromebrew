@@ -19,9 +19,9 @@ class Tinycore < Package
     source_sha256 'cbc2f97c8b8dada90ec3cf99b328ec73c1b0fa9cc2cb594d273fd7b118610d49'
   end
 
-  binary_url ({
+  binary_url({
   })
-  binary_sha256 ({
+  binary_sha256({
   })
 
   def self.build
@@ -44,7 +44,7 @@ else
 fi
 ' > tinycore"
     else
-    system "echo '#!/bin/bash
+      system "echo '#!/bin/bash
 
 set -e
 
@@ -57,8 +57,8 @@ export OPT=`shift; echo $@`
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/lib #{CREW_PREFIX}/share/tinycore/$PKG/usr/local/bin/$BIN $OPT
 ' > tinycore"
     end
-    system "chmod a+x tinycore"
-    system "cp ../bash.tcz ."
+    system 'chmod a+x tinycore'
+    system 'cp ../bash.tcz .'
   end
 
   def self.install
@@ -72,18 +72,18 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:#{CREW_PREFIX}/share/tinycore/$PKG/usr/local/li
   def self.postinstall
     puts
     puts "Examples are located at #{CREW_PREFIX}/share/tinycore/examples/".lightblue
-    puts "To try TinyCore Bash, please execute:".lightblue
+    puts 'To try TinyCore Bash, please execute:'.lightblue
     puts "sudo mount -o loop #{CREW_PREFIX}/share/tinycore/examples/bash.tcz #{CREW_PREFIX}/share/tinycore/bash/".lightblue
-    puts "tinycore bash.bash".lightblue
+    puts 'tinycore bash.bash'.lightblue
     puts "sudo umount #{CREW_PREFIX}/share/tinycore/bash/".lightblue
     puts
-    puts "The executable names are in the format of Snap executable names.".lightblue
-    puts "This is imperative to be able to run TinyCore programs.".lightblue
+    puts 'The executable names are in the format of Snap executable names.'.lightblue
+    puts 'This is imperative to be able to run TinyCore programs.'.lightblue
     puts "For example, to run the 'bashbug' program in the TinyCore 'bash' package, please execute:".lightblue
-    puts "tinycore bash.bashbug".lightblue
+    puts 'tinycore bash.bashbug'.lightblue
     puts
     puts "To run a binary that has a dot in its name, such as 'ld.gold', use the full name:".lightblue
-    puts "tinycore binutils.ld.gold".lightblue
+    puts 'tinycore binutils.ld.gold'.lightblue
     puts
   end
 end

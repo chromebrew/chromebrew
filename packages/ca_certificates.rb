@@ -3,8 +3,8 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  @_ver = '20210119'
-  version "#{@_ver}-2"
+  version '20210119-2'
+  @_ver = "#{version}[0..-3]"
   license 'MPL-1.1'
   compatibility 'all'
   source_url "https://salsa.debian.org/debian/ca-certificates/-/archive/debian/#{@_ver}/ca-certificates-debian-#{@_ver}.tar.bz2"
@@ -79,7 +79,7 @@ class Ca_certificates < Package
                fi
                # Add trailing newline to certificate, if it is missing (#635570)
     GENTOO_CA_CERT_HEREDOC
-    IO.write('ca-certificates-20150426-root.patch', @gentoo_patch)
+    File.write('ca-certificates-20150426-root.patch', @gentoo_patch)
     system 'patch -p 3 < ca-certificates-20150426-root.patch'
 
     system "sed -i 's,/usr/share/ca-certificates,#{CREW_PREFIX}/share/ca-certificates,g' \
@@ -112,7 +112,7 @@ class Ca_certificates < Package
       # #{@date_temp}
       # Do not edit.
     CA_CERT_CONF_HEREDOC
-    IO.write("#{CREW_DEST_PREFIX}/etc/ca-certificates.conf", @ca_cert_conf)
+    File.write("#{CREW_DEST_PREFIX}/etc/ca-certificates.conf", @ca_cert_conf)
     Dir.chdir "#{CREW_DEST_PREFIX}/share/ca-certificates" do
       system "find * -name '*.crt' | LC_ALL=C sort | sed '/examples/d' >> #{CREW_DEST_PREFIX}/etc/ca-certificates.conf"
     end

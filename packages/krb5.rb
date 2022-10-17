@@ -23,7 +23,9 @@ class Krb5 < Package
   })
 
   depends_on 'ccache' => :build
-  depends_on 'e2fsprogs'
+  depends_on 'e2fsprogs' # R
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
 
   @k5libs = %w[libgssapi_krb5.a libgssrpc.a libk5crypto.a
                libkadm5clnt_mit.a libkadm5clnt.a libkadm5srv_mit.a libkadm5srv.a
@@ -35,7 +37,7 @@ class Krb5 < Package
       # krb5 built with gcc10 or newer needs -fcommon
       # See https://github.com/ripple/rippled/pull/3813
       @cppflags = "#{CREW_COMMON_FLAGS} -I#{CREW_PREFIX}/include/et -fcommon"
-      @path = "#{CREW_PREFIX}/bin:" + ENV['PATH']
+      @path = "#{CREW_PREFIX}/bin:" + ENV.fetch('PATH', nil)
       system "env CC='ccache gcc' #{CREW_ENV_OPTIONS} \
       CPPFLAGS='#{@cppflags}' \
       PATH=#{@path} \

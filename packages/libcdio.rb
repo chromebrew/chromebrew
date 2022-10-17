@@ -3,23 +3,23 @@ require 'package'
 class Libcdio < Package
   description 'The GNU Compact Disc Input and Control library (libcdio) contains a library for CD-ROM and CD image access.'
   homepage 'http://www.gnu.org/software/libcdio/'
-  version '2.1.0'
-  compatibility 'all'
+  version '2.1.0-1'
   license 'GPL-3'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libcdio/libcdio-2.1.0.tar.bz2'
   source_sha256 '8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0_armv7l/libcdio-2.1.0-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0_armv7l/libcdio-2.1.0-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0_i686/libcdio-2.1.0-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0_x86_64/libcdio-2.1.0-chromeos-x86_64.tpxz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0-1_armv7l/libcdio-2.1.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0-1_armv7l/libcdio-2.1.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0-1_i686/libcdio-2.1.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio/2.1.0-1_x86_64/libcdio-2.1.0-1-chromeos-x86_64.tar.zst'
   })
-  binary_sha256 ({
-     aarch64: 'd501f42889d4d997b535180436445b914dd5646991a24b8bfbce0bab3233a5a0',
-      armv7l: 'd501f42889d4d997b535180436445b914dd5646991a24b8bfbce0bab3233a5a0',
-        i686: '023e53fb398b4c9429ff136aefb6b9c5341e4ff4bb0b7eb78072d1a141141d16',
-      x86_64: 'ba61ed6f31f29fe3d477004d36d2b119f1d67db1d084109a96dff59f98b23bd1',
+  binary_sha256({
+    aarch64: '037febd86116cf613cb862ed3cdcfa1d1e3eb4c927f829a4787c8fc4b6f6ae9f',
+     armv7l: '037febd86116cf613cb862ed3cdcfa1d1e3eb4c927f829a4787c8fc4b6f6ae9f',
+       i686: 'cea93fa26bf23e425f8a1d4f14347c6a21c9c5e02887e6d8bf2761126ad022d2',
+     x86_64: '1988c60ace1972669716ef55db1445708b1692cd44692edc269fbb759fbd1f6e'
   })
 
   depends_on 'libcddb'

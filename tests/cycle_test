@@ -5,6 +5,7 @@
 require 'find'
 require_relative '../lib/const'
 require_relative '../lib/color'
+require_relative '../lib/package'
 
 @all_pkgs = {}
 
@@ -13,11 +14,9 @@ $LOAD_PATH.unshift '../lib'
 puts "Running dependency cycle tests...\n".yellow
 
 # Loads all packages
-Dir.glob('../packages/*.rb').each do |filename|
+Dir['../packages/*.rb'].each do |filename|
   name = File.basename(filename, '.rb')
-  require_relative("../packages/#{name}")
-  pkg = Object.const_get(name.capitalize)
-  pkg.name = name
+  pkg = Package.load_package(filename, name)
   @all_pkgs[name] = pkg
 end
 
@@ -31,22 +30,17 @@ end
 @uniq_path = []
 def dfs(pkg)
   @path.push(pkg.name)
-  if @state[pkg] == :on_path
-    while @path.first != @path.last
-      @path.shift
-    end
-    if not @uniq_path.include? @path.to_s and @path.to_s.include? ','
+  case @state[pkg]
+  when :on_path
+    @path.shift while @path.first != @path.last
+    if (!@uniq_path.include? @path.to_s) && @path.to_s.include?(',')
       @uniq_path.push(@path.to_s)
       @failed += 1
     end
-  elsif @state[pkg] == nil
+  when nil
     @state[pkg] = :on_path
-    if pkg.dependencies
-      pkg.dependencies.each do |name, v|
-        if name != pkg.name
-          dfs(@all_pkgs[name])
-        end
-      end
+    pkg.dependencies&.each do |name, _v|
+      dfs(@all_pkgs[name]) if name != pkg.name
     end
     @state[pkg] = :visited
   end
@@ -54,7 +48,7 @@ def dfs(pkg)
 end
 
 # Calls dfs for every path
-@all_pkgs.each do |name, pkg|
+@all_pkgs.each do |_name, pkg|
   dfs(pkg)
 end
 
@@ -63,10 +57,10 @@ end
   puts path.lightred
 end
 
-@cycles = "cycles"
-@cycles = "cycle" if @failed == 1
+@cycles = 'cycles'
+@cycles = 'cycle' if @failed == 1
 
-if @failed > 0
+if @failed.positive?
   abort "\n#{@failed} dependency #{@cycles} found.".lightred
 else
   puts "\nNo dependency cycles found.".lightgreen

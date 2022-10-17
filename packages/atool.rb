@@ -9,28 +9,27 @@ class Atool < Package
   source_url 'http://download.savannah.gnu.org/releases/atool/atool-0.39.0.tar.gz'
   source_sha256 'aaf60095884abb872e25f8e919a8a63d0dabaeca46faeba87d12812d6efc703b'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_armv7l/atool-0.39-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_armv7l/atool-0.39-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_i686/atool-0.39-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_x86_64/atool-0.39-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_x86_64/atool-0.39-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '10d316dddae76dbb595c8ab0f5cf1486d40f18f6c20c151b46c614313a6fc822',
      armv7l: '10d316dddae76dbb595c8ab0f5cf1486d40f18f6c20c151b46c614313a6fc822',
        i686: '690926e3c631340d2e3f0a91390d4a0c4c8ab1dd9001dc0aaf8eff019eaeb3d7',
-     x86_64: 'e8e9a3db6efd80ad3b5b18725c4c5c4816e56fc101ca273de072af489f8c0d1e',
+     x86_64: 'e8e9a3db6efd80ad3b5b18725c4c5c4816e56fc101ca273de072af489f8c0d1e'
   })
 
   depends_on 'perl'
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system "make"
+    system 'make'
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install" # the steps required to install the package
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install' # the steps required to install the package
   end
-
 end

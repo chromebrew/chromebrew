@@ -3,7 +3,7 @@ require 'package'
 class Vivaldi < Package
   description 'Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.'
   homepage 'https://vivaldi.com/'
-  version '5.2.2623.48'
+  version '5.5.2805.38-1'
   compatibility 'aarch64,armv7l,x86_64'
   license 'Vivaldi'
 
@@ -20,19 +20,19 @@ class Vivaldi < Package
   case ARCH
   when 'aarch64', 'armv7l'
     arch = 'armhf'
-    source_sha256 '3daf1501cdb0c5981ee3f464975970b6222ecefccd699439dcfba2dc0feb7ff9'
+    source_sha256 '33eeaba6497db5d8d938d2a4fccb124d034d00af8dec669f8f0fe62a22d25b6c'
   when 'x86_64'
     arch = 'amd64'
-    source_sha256 '5cff82459614c980d48266c6c354f5f5f846500b2a96e27cb08a0bb480273b69'
+    source_sha256 '0c30824f41fcaf1d02540bf37dca839cf6bacf713d8950526ede670bfcb6c734'
   end
 
-  source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}-1_#{arch}.deb"
+  source_url "https://downloads.vivaldi.com/stable/vivaldi-stable_#{version}_#{arch}.deb"
 
   def self.patch
     # ERROR: ld.so: object '/home/chronos/user/.local/lib/vivaldi/media-codecs-89.0.4389.82/libffmpeg.so' from LD_PRELOAD cannot be preloaded
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/vivaldi'
     system 'sed', '-i', "s:$HOME/.local/lib/vivaldi/:#{CREW_PREFIX}/share/vivaldi/:g", './opt/vivaldi/update-ffmpeg'
-    system 'sed', '-i', "s:/usr/bin/::g", './usr/share/applications/vivaldi-stable.desktop'
+    system 'sed', '-i', 's:/usr/bin/::g', './usr/share/applications/vivaldi-stable.desktop'
   end
 
   def self.install
@@ -50,7 +50,7 @@ class Vivaldi < Package
     FileUtils.mkdir_p icon_base_path
     Dir["#{CREW_DEST_PREFIX}/share/vivaldi/product_logo_*.png"].each do |filename|
       logo = File.basename(filename)
-      size = File.basename(logo[13,7], '.png')
+      size = File.basename(logo[13, 7], '.png')
       dims = "#{size}x#{size}"
       FileUtils.mkdir_p "#{icon_base_path}/#{dims}/apps"
       FileUtils.mv filename, "#{icon_base_path}/#{dims}/apps/vivaldi.png"

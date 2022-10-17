@@ -9,17 +9,17 @@ class Gucharmap < Package
   source_url 'https://download.gnome.org/sources/gucharmap/10.0/gucharmap-10.0.4.tar.xz'
   source_sha256 'bb266899266b2f2dcdbaf9f45cafd74c6f4e540132d3f0b068d37343291df001'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_armv7l/gucharmap-10.0.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_armv7l/gucharmap-10.0.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_i686/gucharmap-10.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_x86_64/gucharmap-10.0.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_x86_64/gucharmap-10.0.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '074dfb52ebdf428a1f88b12d45902ec1622222ee834eb301858728e06bf36bec',
      armv7l: '074dfb52ebdf428a1f88b12d45902ec1622222ee834eb301858728e06bf36bec',
        i686: '7fb24b94a6c2c7ea4c91ffbe4e1d52124102bb8131932c7a085de9cd1458e35f',
-     x86_64: 'ea67e70f52dd53fc6ab9e04c019ae60519a334eb89e077efff201a29d872ca3f',
+     x86_64: 'ea67e70f52dd53fc6ab9e04c019ae60519a334eb89e077efff201a29d872ca3f'
   })
 
   depends_on 'desktop_file_utilities'
@@ -36,6 +36,6 @@ class Gucharmap < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

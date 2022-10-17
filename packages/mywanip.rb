@@ -1,4 +1,4 @@
-require "package"
+require 'package'
 
 class Mywanip < Package
   description 'Script to grab your WAN IP address using various means.'
@@ -10,7 +10,7 @@ class Mywanip < Package
   source_sha256 '789d22cfa60a40cf60d59e561500cd27e39ac03ecff2e948111a2a07f830fd67'
 
   def self.install
-    system "chmod +x mywanip"
+    system 'chmod +x mywanip'
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     system "cp mywanip #{CREW_DEST_PREFIX}/bin"
   end

@@ -9,17 +9,17 @@ class Ckermit < Package
   source_url 'https://fossies.org/linux/privat/old/cku211.tar.gz'
   source_sha256 '0503518ef8f225d06749f7923ae84521bc358daf353222c75c009cd040dc5e26'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ckermit/8.0.211-1_armv7l/ckermit-8.0.211-1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ckermit/8.0.211-1_armv7l/ckermit-8.0.211-1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ckermit/8.0.211-1_i686/ckermit-8.0.211-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ckermit/8.0.211-1_x86_64/ckermit-8.0.211-1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ckermit/8.0.211-1_x86_64/ckermit-8.0.211-1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '5779bf0c226ec6ef42ad40c3e4a739524eb2a5d6cf4949404fc536529e3932d6',
      armv7l: '5779bf0c226ec6ef42ad40c3e4a739524eb2a5d6cf4949404fc536529e3932d6',
        i686: 'f2aadf15b263d81a760e48a7fc23f674a4833bb1af387bfce57396f772efdc84',
-     x86_64: '4740c149d172a854b916912da26d7afdaf61a91a20642fc8aa568cf734cde194',
+     x86_64: '4740c149d172a854b916912da26d7afdaf61a91a20642fc8aa568cf734cde194'
   })
 
   depends_on 'ncurses'

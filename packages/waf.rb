@@ -3,23 +3,23 @@ require 'package'
 class Waf < Package
   description 'The Waf build system'
   homepage 'https://waf.io/'
-  version '2.0.23'
+  version '2.0.24'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://gitlab.com/ita1024/waf.git'
   git_hashtag "waf-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_armv7l/waf-2.0.23-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_armv7l/waf-2.0.23-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_i686/waf-2.0.23-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.23_x86_64/waf-2.0.23-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_armv7l/waf-2.0.24-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_armv7l/waf-2.0.24-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_i686/waf-2.0.24-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_x86_64/waf-2.0.24-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '147ffce125636a9b1f2929a20169e07545211b7b80d4ac6bd757587b04a10697',
-     armv7l: '147ffce125636a9b1f2929a20169e07545211b7b80d4ac6bd757587b04a10697',
-       i686: 'd5d5f0efaa3e9fd0dd6d60bc9f5c0df71447b7cd498900a26defb75f0413a2d3',
-     x86_64: 'c415edd52cb5fa0de773b6ae6d6a4975742eee186e86171dc8899973a5e0a541'
+    aarch64: 'f1bab4de03c7f6aebcbce73460a06d4d4c1eefa22889230a866729ff8cdd3f8b',
+     armv7l: 'f1bab4de03c7f6aebcbce73460a06d4d4c1eefa22889230a866729ff8cdd3f8b',
+       i686: '99ce239ddf42677e615597fefe308e29b55b9f8967d0fd3a83e2595a3e17bc3f',
+     x86_64: 'f05712b984add199554d6b32df0b2bf677a8e88a92385712496255b005d784ad'
   })
 
   depends_on 'help2man'
@@ -28,10 +28,7 @@ class Waf < Package
     system './waf-light configure build'
     system "./waf-light --tools=compat15 --prelude=\$'\tfrom waflib.extras import compat15\n'"
     system 'help2man -N ./waf > waf.1'
-    case ARCH
-    when 'x86_64'
-      system "sed -i 's,/lib/,/lib64/,' waf"
-    end
+    system "sed -i 's,/lib/,/lib64/,' waf" if ARCH == 'x86_64'
   end
 
   def self.install

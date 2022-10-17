@@ -8,17 +8,17 @@ class Perf < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_armv7l/perf-4.14-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_armv7l/perf-4.14-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_i686/perf-4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_x86_64/perf-4.14-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perf/4.14_x86_64/perf-4.14-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '87c533c2b45a9beec0ef975b4a3f110e42a6d03def1820dfd3190fb3f767e710',
      armv7l: '87c533c2b45a9beec0ef975b4a3f110e42a6d03def1820dfd3190fb3f767e710',
        i686: '9786bce0863320385c3dd96534c681e5eae26d593851bde4278d30aa4dedec22',
-     x86_64: '95e550bc751bd655a0d885104ec0f88aad533b8450af35438802f0a848b768be',
+     x86_64: '95e550bc751bd655a0d885104ec0f88aad533b8450af35438802f0a848b768be'
   })
 
   # Reuse linux sources if they're already installed

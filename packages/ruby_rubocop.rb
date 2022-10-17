@@ -6,7 +6,7 @@ require 'package'
 class Ruby_rubocop < Package
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version '1.26.1'
+  version '1.36'
   compatibility 'all'
   source_url 'SKIP'
   # source_url 'https://github.com/rubocop/rubocop.git'
@@ -31,7 +31,7 @@ class Ruby_rubocop < Package
   depends_on 'ruby'
   depends_on 'xdg_base'
 
-  @xdg_config_home = ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
@@ -42,17 +42,17 @@ class Ruby_rubocop < Package
   def self.install
     # system "gem install --build=#{CREW_DEST_DIR} pkg/rubocop-#{version}.gem"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
-    downloader 'https://github.com/skycocker/chromebrew/raw/master/.rubocop.yml', 'SKIP', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
+    downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 
   def self.postinstall
     @gem_name = name.sub('ruby_', '')
-    system "gem install -N #{@gem_name} --conservative"
+    system "gem install -N #{@gem_name}", exception: false
 
     puts "Installing Chromebrew rubocop config file at #{@xdg_config_home}/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
     FileUtils.mkdir_p "#{@xdg_config_home}/rubocop"
-    downloader 'https://github.com/skycocker/chromebrew/raw/master/.rubocop.yml', 'SKIP', "#{@xdg_config_home}/rubocop/config.yml"
+    downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP', "#{@xdg_config_home}/rubocop/config.yml"
   end
 
   def self.remove
@@ -64,7 +64,7 @@ class Ruby_rubocop < Package
     # every package, so delete it from the list.
     @gems.delete('bundler')
     @gems.each do |gem|
-      system "gem uninstall -Dx --force --abort-on-dependent #{gem} || true"
+      system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
     end
 
     FileUtils.rm_f "#{@xdg_config_home}/rubocop/config.yml"

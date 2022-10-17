@@ -4,7 +4,7 @@ class Gnome_mines < Package
   description 'GNOME Mines (formerly known as Gnomine) is minesweeper clone for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Mines'
   @_ver = '3.36.1'
-  version @_ver + '-1'
+  version "#{@_ver}-1"
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gnome-mines/#{@_ver.rpartition('.')[0]}/gnome-mines-#{@_ver}.tar.xz"

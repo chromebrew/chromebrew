@@ -3,24 +3,23 @@ require 'package'
 class Acli < Package
   description 'Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.'
   homepage 'https://github.com/acquia/cli'
-  version '1.30.1'
+  version '2.3.1'
   license 'GPL-2.0'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url "https://github.com/acquia/cli/releases/download/#{version}/acli.phar"
+  source_sha256 'a18e85fab6d0c6c40a66a9ffd8527ef1cc3c4cedcf725d4e1bad980e7bb88715'
 
-  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
+
+  no_compile_needed
 
   def self.preflight
     major = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f1`
     minor = `php -v 2> /dev/null | head -1 | cut -d' ' -f2 | cut -d'.' -f2`
-    unless major.empty? or minor.empty? or (major.to_i >= 7 and minor.to_i >= 3)
-      abort "acli requires php >= 7.3. php #{major.chomp}.#{minor.chomp} does not meet the minimum requirement.".lightred
-    end
+    abort "acli requires php >= 8.0. php #{major.chomp}.#{minor.chomp} does not meet the minimum requirement.".lightred unless major.empty? || minor.empty? || ((major.to_i >= 8) && (minor.to_i >= 0))
   end
 
   def self.install
-    downloader "https://github.com/acquia/cli/releases/download/#{version}/acli.phar",
-               'f6286b12bca73aee6e835557123c33acc816e4a99b994dd2faa47a52505d757f'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'acli.phar', "#{CREW_DEST_PREFIX}/bin/acli", mode: 0o755
   end

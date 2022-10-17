@@ -58,7 +58,7 @@ Installation
 
 The beta, dev, and Canary channels are ***not*** supported and should ***not*** be used with Chromebrew.
 Failure to take notice of this will cause major issues with your Chromebrew installation.
-See issue [#2890](https://github.com/skycocker/chromebrew/issues/2890) and the [FAQ](https://github.com/skycocker/chromebrew/wiki/FAQ) for more details.
+See issue [#2890](https://github.com/chromebrew/chromebrew/issues/2890) and the [FAQ](https://github.com/chromebrew/chromebrew/wiki/FAQ) for more details.
 
 Open the terminal with Ctrl+Alt+T and type `shell`.
 
@@ -81,7 +81,7 @@ On a rooted Google OnHub, the command needs to be run with the "chronos" user. I
 Help
 ----
 
-Please check out the [wiki](https://github.com/skycocker/chromebrew/wiki) to find out more information about Chromebrew including helpful tips, resource links and frequently asked questions. Also please check existing [issues](https://github.com/skycocker/chromebrew/issues) before submitting a new one.
+Please check out the [wiki](https://github.com/chromebrew/chromebrew/wiki) to find out more information about Chromebrew including helpful tips, resource links and frequently asked questions. Also please check existing [issues](https://github.com/chromebrew/chromebrew/issues) before submitting a new one.
 
 Usage
 -----
@@ -92,7 +92,6 @@ Where available commands are:
 
 | Command | Description |
 |:---|:---|
-| autoremove | remove unused dependencies installed by removed packages |
 | build | build package(s) from source and store the archive and checksum in the current working directory |
 | const | display constant(s) |
 | deps | display dependencies of package(s) |
@@ -110,7 +109,7 @@ Where available commands are:
 | upgrade | update all or specific package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
 
-Available packages are listed in the [packages directory](https://github.com/skycocker/chromebrew/tree/master/packages).
+Available packages are listed in the [packages directory](https://github.com/chromebrew/chromebrew/tree/master/packages).
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
@@ -151,6 +150,11 @@ Latest Packages
 License
 -------
 
-Copyright 2013-2022 Michal Siwek and [all the awesome contributors](https://github.com/skycocker/chromebrew/graphs/contributors).
+Copyright 2013-2022 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors).
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt).
+
+This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](https://github.com/chromebrew/chromebrew/blob/master/lib/docopt.LICENSE).
+
+<a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GNU General Public License" style="border-width:0" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" /></a>
+<a rel="license-docopt" href="https://mit-license.org/"><img alt="MIT License" style="border-width:0" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="31" /></a>

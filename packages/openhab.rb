@@ -19,11 +19,11 @@ class Openhab < Package
 
   def self.build
     openhab = <<~EOF
-    #!/bin/bash
-    cd #{CREW_PREFIX}/share/openhab
-    ./start.sh
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/openhab
+      ./start.sh
     EOF
-    IO.write('openhab.sh', openhab)
+    File.write('openhab.sh', openhab)
   end
 
   def self.install

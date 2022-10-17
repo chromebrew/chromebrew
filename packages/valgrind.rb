@@ -22,6 +22,8 @@ class Valgrind < Package
      x86_64: 'ac13fa3ae34fdcd2284fbc866b2959c89e9287e60b6704e3dd8d73a165a54956'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
     system 'autoreconf -fvi'
     system "env #{CREW_ENV_OPTIONS}

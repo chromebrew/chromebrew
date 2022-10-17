@@ -48,24 +48,24 @@ class Gpm < Package
       [Path]
       PathExists=/dev/input/mice
     GPM_PATH_EOF
-    IO.write("#{CREW_DEST_PREFIX}/systemd/system/gpm.path", @gpm_path)
+    File.write("#{CREW_DEST_PREFIX}/systemd/system/gpm.path", @gpm_path)
     FileUtils.chmod 0o644, "#{CREW_DEST_PREFIX}/systemd/system/gpm.path"
     @gpm_service = <<~GPM_SERVICE_EOF
-            [Unit]
-            Description=Virtual console mouse server
-            Requires=systemd-udevd.service
-            After=systemd-udevd.service
-            Wants=gpm.path
-            ConditionPathExists=/dev/input/mice
+      [Unit]
+      Description=Virtual console mouse server
+      Requires=systemd-udevd.service
+      After=systemd-udevd.service
+      Wants=gpm.path
+      ConditionPathExists=/dev/input/mice
 
-            [Service]
-            Type=forking
-            ExecStart=#{CREW_PREFIX}/bin/gpm -m /dev/input/mice -t imps2
+      [Service]
+      Type=forking
+      ExecStart=#{CREW_PREFIX}/bin/gpm -m /dev/input/mice -t imps2
 
-            [Install]
-            WantedBy=multi-user.target
+      [Install]
+      WantedBy=multi-user.target
     GPM_SERVICE_EOF
-    IO.write("#{CREW_DEST_PREFIX}/systemd/system/gpm.service", @gpm_service)
+    File.write("#{CREW_DEST_PREFIX}/systemd/system/gpm.service", @gpm_service)
     FileUtils.chmod 0o644, "#{CREW_DEST_PREFIX}/systemd/system/gpm.service"
     Dir.chdir CREW_DEST_LIB_PREFIX do
       system 'ln -sfr libgpm.so.2.* libgpm.so'

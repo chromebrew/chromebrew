@@ -36,7 +36,7 @@ class Musl_brotli < Package
       -DWITH_STATIC_LIB=ON \
         ../ -G Ninja"
     end
-    system "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-linux-musl#{@abi}/bin:#{ENV['PATH']} \
+    system "PATH=#{CREW_MUSL_PREFIX}/bin:#{CREW_MUSL_PREFIX}/#{ARCH}-linux-musl#{@abi}/bin:#{ENV.fetch('PATH', nil)} \
       samu -C builddir -j#{CREW_NPROC}"
   end
 

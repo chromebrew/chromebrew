@@ -3,28 +3,71 @@ require 'package'
 class Coreutils < Package
   description 'The GNU Core Utilities are the basic file, shell and text manipulation utilities of the GNU operating system.'
   homepage 'https://www.gnu.org/software/coreutils/coreutils.html'
-  @_ver = '9.0'
+  @_ver = '9.1'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/coreutils/coreutils-#{@_ver}.tar.xz"
-  source_sha256 'ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce'
+  source_sha256 '61a1f410d78ba7e7f37a5a4f50e6d1320aca33375484a3255eddf17a38580423'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_i686/coreutils-9.0-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_armv7l/coreutils-9.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_armv7l/coreutils-9.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.0_x86_64/coreutils-9.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.1_armv7l/coreutils-9.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.1_armv7l/coreutils-9.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.1_i686/coreutils-9.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.1_x86_64/coreutils-9.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: 'a4d1a88a16e68ca55aa4c2daa9dac4dfe202c20a0c91ff4caee7ba3062e81f2f',
-    aarch64: '5d94db6870ae7f5d62af972eb7640b53ba96199e387e707bd39ba9aaee67cd06',
-     armv7l: '5d94db6870ae7f5d62af972eb7640b53ba96199e387e707bd39ba9aaee67cd06',
-     x86_64: '905824619128baca70687e6d998debca143b8cac871e2874490dfff8d3c4e127'
+    aarch64: '384491c5353bab5d14d731699c5d262947d20dfaa6485eeccb610e566b831b0c',
+     armv7l: '384491c5353bab5d14d731699c5d262947d20dfaa6485eeccb610e566b831b0c',
+       i686: 'd65d86505f3cb596e9ff3190caace4d6f1d8e01a8aa8424e15a398d47b1e275b',
+     x86_64: '0857a1e3af002c5cf70e5ed1d3f6af033c7fcd4e37fbebb6ce01c6730151686d'
   })
 
+  depends_on 'libcap' # R
+  no_patchelf
+
+  def self.preflight
+    %w[uutils_coreutils].each do |cutils|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{cutils}.filelist"
+
+      puts "#{cutils} installed and conflicts with this version.".orange
+      puts 'To install this version, execute the following:'.lightblue
+      abort "crew remove #{cutils} && crew install coreutils".lightblue
+    end
+  end
+
+  def self.patch
+    # Patch from https://git.savannah.gnu.org/cgit/gnulib.git/diff/?id=84863a1c4dc8cca8fb0f6f670f67779cdd2d543b
+    @gnulibpatch = <<~'PATCH_EOF'
+      diff --git a/lib/string.in.h b/lib/string.in.h
+      index b6840fa..33160b2 100644
+      --- a/lib/string.in.h
+      +++ b/lib/string.in.h
+      @@ -583,7 +583,7 @@ _GL_FUNCDECL_RPL (strndup, char *,
+                         _GL_ATTRIBUTE_MALLOC _GL_ATTRIBUTE_DEALLOC_FREE);
+       _GL_CXXALIAS_RPL (strndup, char *, (char const *__s, size_t __n));
+       # else
+      -#  if !@HAVE_DECL_STRNDUP@ || __GNUC__ >= 11
+      +#  if !@HAVE_DECL_STRNDUP@ || (__GNUC__ >= 11 && !defined strndup)
+       _GL_FUNCDECL_SYS (strndup, char *,
+                         (char const *__s, size_t __n)
+                         _GL_ARG_NONNULL ((1))
+      @@ -593,7 +593,7 @@ _GL_CXXALIAS_SYS (strndup, char *, (char const *__s, size_t __n));
+       # endif
+       _GL_CXXALIASWARN (strndup);
+       #else
+      -# if __GNUC__ >= 11
+      +# if __GNUC__ >= 11 && !defined strndup
+       /* For -Wmismatched-dealloc: Associate strndup with free or rpl_free.  */
+       _GL_FUNCDECL_SYS (strndup, char *,
+                         (char const *__s, size_t __n)
+    PATCH_EOF
+    File.write('gnulib.patch', @gnulibpatch)
+    system 'patch -p 1 -i gnulib.patch' if ARCH == 'i686'
+  end
+
   def self.build
-    system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

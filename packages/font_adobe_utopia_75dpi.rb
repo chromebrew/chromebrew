@@ -9,17 +9,17 @@ class Font_adobe_utopia_75dpi < Package
   source_url 'https://www.x.org/releases/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2'
   source_sha256 '8732719c61f3661c8bad63804ebfd54fc7de21ab848e9a26a19b1778ef8b5c94'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_75dpi/1.0.4_armv7l/font_adobe_utopia_75dpi-1.0.4-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_75dpi/1.0.4_armv7l/font_adobe_utopia_75dpi-1.0.4-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_75dpi/1.0.4_i686/font_adobe_utopia_75dpi-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_75dpi/1.0.4_x86_64/font_adobe_utopia_75dpi-1.0.4-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_adobe_utopia_75dpi/1.0.4_x86_64/font_adobe_utopia_75dpi-1.0.4-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'ee884c5a84f8ac67386a692ea8b67066d89474c11f856332c8d35b7a82d7a237',
      armv7l: 'ee884c5a84f8ac67386a692ea8b67066d89474c11f856332c8d35b7a82d7a237',
        i686: '0c5cd71a68340ed2adc6632c36f5b856ca83b71a818f67495142da39abd1c84a',
-     x86_64: '8a3b3ac148eb5ebb421602ac50532db7969de14969cf0bd30c0714f30bcc0213',
+     x86_64: '8a3b3ac148eb5ebb421602ac50532db7969de14969cf0bd30c0714f30bcc0213'
   })
 
   depends_on 'bdftopcf'

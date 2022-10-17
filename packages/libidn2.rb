@@ -3,29 +3,32 @@ require 'package'
 class Libidn2 < Package
   description 'GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA 2003 specifications.'
   homepage 'https://www.gnu.org/software/libidn/'
-  @_ver = '2.3.2'
-  version @_ver
+  @_ver = '2.3.3'
+  version "#{@_ver}-1"
   license 'GPL-2+ and LGPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{@_ver}.tar.gz"
-  source_sha256 '76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91'
+  source_sha256 'f3ac987522c00d33d44b323cae424e2cffcb4c63c6aa6cd1376edacbf1c36eb0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_armv7l/libidn2-2.3.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_armv7l/libidn2-2.3.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_i686/libidn2-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.2_x86_64/libidn2-2.3.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.3-1_armv7l/libidn2-2.3.3-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.3-1_armv7l/libidn2-2.3.3-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.3-1_i686/libidn2-2.3.3-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.3-1_x86_64/libidn2-2.3.3-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6c335d7c611cc1d054c22d2b658aaa060a7bfd682528bac46dc404ffff14c818',
-     armv7l: '6c335d7c611cc1d054c22d2b658aaa060a7bfd682528bac46dc404ffff14c818',
-       i686: '7ce581270eeba81b5f3ec0d7f0e7826b95248a54e960608cc72777beb9f31098',
-     x86_64: '740ae2266e95b4d1974b80165967ec15efd0a7810a649fd7408bdb2964f06de7'
+    aarch64: '1f1a4300e5141ff670b61c24ce33eea2455801af61916fa325866acd47648a2f',
+     armv7l: '1f1a4300e5141ff670b61c24ce33eea2455801af61916fa325866acd47648a2f',
+       i686: '4cb850ff4d430533d513e5811b8af44c4081161c9d5c5714e7c1fe7b2f1434d7',
+     x86_64: 'ea4b9348c401c8655f0a77fc92149887b26fb7cad7f6ce5628488fa72d8223d6'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libunistring'
+
   def self.build
-    system "env #{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
+    system "mold -run ./configure #{CREW_OPTIONS}"
+    system 'mold -run make'
   end
 
   def self.install

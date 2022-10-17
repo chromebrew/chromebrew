@@ -8,9 +8,9 @@ class Foxit_reader < Package
   compatibility 'i686,x86_64'
   source_url 'SKIP'
 
-  binary_url ({
+  binary_url({
   })
-  binary_sha256 ({
+  binary_sha256({
   })
 
   depends_on 'sommelier'
@@ -32,7 +32,7 @@ class Foxit_reader < Package
       puts "\nAfter the download is complete, restart and install to #{CREW_DEST_PREFIX}/share/foxitreader.\n".orange
       abort
     end
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read(foxit_bin) ) == foxit_sha256
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read(foxit_bin)) == foxit_sha256
     system "tar xvf #{foxit_bin}"
     case ARCH
     when 'i686'
@@ -52,7 +52,7 @@ class Foxit_reader < Package
     system "sed -i 's,#{CREW_DEST_PREFIX}/share/foxitreader/FoxitReader.sh,#{CREW_PREFIX}/share/foxitreader/FoxitReader,' #{CREW_DEST_PREFIX}/share/foxitreader/FoxitReader.desktop"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     icon_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor/64x64/apps"
-    FileUtils.mkdir_p "#{icon_path}"
+    FileUtils.mkdir_p icon_path.to_s
     FileUtils.mv "#{CREW_DEST_PREFIX}/share/foxitreader/FoxitReader.desktop", "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.mv "#{CREW_DEST_PREFIX}/share/foxitreader/images/FoxitReader-64x64.ico", "#{icon_path}/FoxitReader.ico"
   end

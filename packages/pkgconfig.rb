@@ -22,6 +22,9 @@ class Pkgconfig < Package
      x86_64: 'f17babbbfcf112c2bff4844545e401fe0c705062c1f354ac446da5e8021b7f1b'
   })
 
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 

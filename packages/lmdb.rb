@@ -54,6 +54,6 @@ class Lmdb < Package
       system "make DESTDIR=#{CREW_DEST_DIR} install"
     end
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/pkgconfig/"
-    IO.write("#{CREW_DEST_LIB_PREFIX}/pkgconfig/lmdb.pc", @lmdb_pc)
+    File.write("#{CREW_DEST_LIB_PREFIX}/pkgconfig/lmdb.pc", @lmdb_pc)
   end
 end

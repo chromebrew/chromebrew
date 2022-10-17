@@ -35,6 +35,6 @@ class Py2_pip < Package
     system "python2 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
 
     # Don't make pip2 the default pip
-    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/pip" if File.exist? "#{CREW_DEST_PREFIX}/bin/pip"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/pip"
   end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.72.1'
+  @_ver = '2.73.3'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.72.1_armv7l/glib-2.72.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.72.1_armv7l/glib-2.72.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.72.1_i686/glib-2.72.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.72.1_x86_64/glib-2.72.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.73.3_armv7l/glib-2.73.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.73.3_armv7l/glib-2.73.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.73.3_i686/glib-2.73.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.73.3_x86_64/glib-2.73.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2c56eed09d770f2dcf68f47bdd26923ae00306cb3b8c0cbed41f0f819d582d35',
-     armv7l: '2c56eed09d770f2dcf68f47bdd26923ae00306cb3b8c0cbed41f0f819d582d35',
-       i686: '8b73a5befbfc7b7c2e2e88a18f684ae9c5005182aff3f19ec05e1cc491a7f65e',
-     x86_64: 'e26b9b49b5bfcbfc0188fd32c69d02ed9345633011b3ed56fa803d55ea5a65b1'
+    aarch64: 'e9f48baa0b5b5a7e26c66222c4ad2755dbc2c3ebd0c0a289bcf18692c6db66ce',
+     armv7l: 'e9f48baa0b5b5a7e26c66222c4ad2755dbc2c3ebd0c0a289bcf18692c6db66ce',
+       i686: '42375aaa9269c03b17cbb4be28e731e8715fdad2bcf8bbaa1d5173b735c2494a',
+     x86_64: 'a6371052a98f6b20a9f00fb0ebe082d36d1933a18c258a4004f94d5052ec0284'
   })
 
   depends_on 'elfutils' # R

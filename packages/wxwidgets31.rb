@@ -3,21 +3,22 @@ require 'package'
 class Wxwidgets31 < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  @_ver = '3.1.6'
-  version @_ver
-  compatibility 'aarch64,armv7l,x86_64'
+  version '3.1.7'
+  compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.6_armv7l/wxwidgets31-3.1.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.6_armv7l/wxwidgets31-3.1.6-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.6_x86_64/wxwidgets31-3.1.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_armv7l/wxwidgets31-3.1.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_armv7l/wxwidgets31-3.1.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_i686/wxwidgets31-3.1.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets31/3.1.7_x86_64/wxwidgets31-3.1.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ec00c1f8cefea8fe50d8926bf1f4a077b2adebc35005aa929c0a2c5bb6334cf7',
-     armv7l: 'ec00c1f8cefea8fe50d8926bf1f4a077b2adebc35005aa929c0a2c5bb6334cf7',
-     x86_64: 'e1b739eb3e7253fa5741226fae1d1fb9de9fcd7f75e3fd93f7bedfb0f17ed4eb'
+    aarch64: 'ce03b99f4b8ff0ddf623ab3063f239835730c15e4eb7a96d8d0da34215ea8f0c',
+     armv7l: 'ce03b99f4b8ff0ddf623ab3063f239835730c15e4eb7a96d8d0da34215ea8f0c',
+       i686: '9146feac96e97f3ae4438ae608b567ba85792f169d27b921c42aafe350b80da0',
+     x86_64: '297db664625538bdae60759b35cd6e57e6424a902b8ddacab3375eeda189b547'
   })
 
   depends_on 'atk' # R
@@ -40,10 +41,18 @@ class Wxwidgets31 < Package
   depends_on 'mesa'
   depends_on 'pango' # R
 
+  def self.preflight
+    %w[wxwidgets wxwidgets30].each do |wxw|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
+
+      puts "#{wxw} installed and conficts with this version.".orange
+      puts 'To install this version, execute the following:'.lightblue
+      abort "crew remove #{wxw} && crew install wxwidgets31".lightblue
+    end
+  end
+
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --with-gtk=3 \
       --with-opengl \
       --enable-unicode \
@@ -55,6 +64,7 @@ class Wxwidgets31 < Package
       --with-libjpeg=sys \
       --with-libtiff=sys \
       --without-gnomevfs \
+      --disable-universal \
       --disable-precomp-headers"
     system 'make'
   end

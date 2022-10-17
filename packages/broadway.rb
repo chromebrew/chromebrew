@@ -8,9 +8,9 @@ class Broadway < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url ({
+  binary_url({
   })
-  binary_sha256 ({
+  binary_sha256({
   })
 
   depends_on 'gtk3'
@@ -34,7 +34,7 @@ class Broadway < Package
     system "echo '  exit 1' >> initbroadway"
     system "echo 'fi' >> initbroadway"
     system "echo '#!/bin/bash' > stopbroadway"
-    system "echo >> stopbroadway"
+    system 'echo >> stopbroadway'
     system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> stopbroadway"
     system "echo 'if [ ! -z \"\${BROADWAYD}\" ]; then' >> stopbroadway"
     system "echo '  pkill broadwayd' >> stopbroadway"
@@ -57,22 +57,22 @@ class Broadway < Package
 
   def self.postinstall
     puts
-    puts "To complete the installation, execute the following:".lightblue
+    puts 'To complete the installation, execute the following:'.lightblue
     puts "echo '# Broadway environment variables + daemon' >> ~/.bashrc".lightblue
     puts "echo '# See https://developer.gnome.org/gtk3/stable/gtk-broadway.html' >> ~/.bashrc".lightblue
     puts "echo 'alias startbroadway=\"set -a && source ~/.broadway.env && set +a && initbroadway\"' >> ~/.bashrc".lightblue
     puts "echo 'startbroadway' >> ~/.bashrc".lightblue
-    puts "source ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
     puts
     puts "To start the broadwayd daemon, run 'startbroadway'".lightblue
     puts "To stop the broadwayd daemon, run 'stopbroadway'".lightblue
     puts
-    puts "To adjust environment variables, edit ~/.broadway.env".lightblue
+    puts 'To adjust environment variables, edit ~/.broadway.env'.lightblue
     puts
-    puts "Navigate your browser to http://127.0.0.1:8085 while the broadwayd".lightblue
-    puts "daemon is running to run GTK applications in the browser window.".lightblue
+    puts 'Navigate your browser to http://127.0.0.1:8085 while the broadwayd'.lightblue
+    puts 'daemon is running to run GTK applications in the browser window.'.lightblue
     puts
-    puts "Please be aware that gtk applications may not work without the broadwayd daemon running.".orange
+    puts 'Please be aware that gtk applications may not work without the broadwayd daemon running.'.orange
     puts
   end
 end

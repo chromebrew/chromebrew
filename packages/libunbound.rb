@@ -23,7 +23,8 @@ class Libunbound < Package
      x86_64: '5c4125bce66bb83fc775a5fe236718dee958b9724d5b6adf55d3b682c2b05401'
   })
 
-  depends_on 'openssl' # On i686 openssl needs to be installed before libunbound.
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.
 
   def self.patch
     system 'filefix'

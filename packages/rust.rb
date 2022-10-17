@@ -3,31 +3,35 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.61.0'
+  @_ver = '1.64.0'
   version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_i686/rust-1.61.0-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_x86_64/rust-1.61.0-chromeos-x86_64.tar.zst',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.61.0_armv7l/rust-1.61.0-chromeos-armv7l.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_armv7l/rust-1.64.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_armv7l/rust-1.64.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_i686/rust-1.64.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.64.0_x86_64/rust-1.64.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'dda0048df85b2d29885216dd5b715ea0cd1bbcdc10960d51de8919d0e7709ab8',
-  x86_64: '91963df0606c683bead339d9b52cad631bdf1a99e6345a0d8fac31387bf87f1e',
- aarch64: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa',
-  armv7l: '103b9bf3315ff66176898cfde03d06efd668b9c181ee8308c86c69558f00f3aa'
+    aarch64: '9fc0e726a145c57fccfd627d24d70c6afb774c2e5dd6e1fd0fd5dddea1a99469',
+     armv7l: '9fc0e726a145c57fccfd627d24d70c6afb774c2e5dd6e1fd0fd5dddea1a99469',
+       i686: '1c898609dd3a89dc86749e7e498772bea27c3409dd23c9193518cc40e84740ca',
+     x86_64: 'cc282c03048bc2b9204569f92beee2fb5242745a1d9b3c859e72990bf4a3b253'
   })
+
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.install
     ENV['RUST_BACKTRACE'] = 'full'
     ENV['CARGO_HOME'] = "#{CREW_DEST_PREFIX}/share/cargo"
     ENV['RUSTUP_HOME'] = "#{CREW_DEST_PREFIX}/share/rustup"
     default_host = ARCH == 'aarch64' || ARCH == 'armv7l' ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"
-    downloader 'https://sh.rustup.rs', 'a3cb081f88a6789d104518b30d4aa410009cd08c3822a1226991d6cf0442a0f8', 'rustup.sh'
+    downloader 'https://sh.rustup.rs', '173f4881e2de99ba9ad1acb59e65be01b2a44979d83b6ec648d0d22f8654cbce', 'rustup.sh'
     system "sed -i 's,\$(mktemp -d 2>/dev/null || ensure mktemp -d -t rustup),#{CREW_PREFIX}/tmp,' rustup.sh"
     FileUtils.mkdir_p(CREW_DEST_HOME)
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")

@@ -54,7 +54,7 @@ class Sl < Package
            curs_set(0);
            nodelay(stdscr, TRUE);
     EOF
-    IO.write('add_-e_option.patch', @addeoption)
+    File.write('add_-e_option.patch', @addeoption)
     system 'patch -Np1 -i add_-e_option.patch'
 
     system "sed -i 's:#include <curses.h>:#include <ncursesw/curses.h>:' sl.c"

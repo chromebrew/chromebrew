@@ -9,17 +9,17 @@ class Dtrx < Package
   source_url 'https://brettcsmith.org/2007/dtrx/dtrx-7.1.tar.gz' # 404 Not Found
   source_sha256 '1c9afe48e9d9d4a1caa4c9b0c50593c6fe427942716ce717d81bae7f8425ce97'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_armv7l/dtrx-7.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_armv7l/dtrx-7.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_i686/dtrx-7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_x86_64/dtrx-7.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dtrx/7.1_x86_64/dtrx-7.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a607b05853dfa122ebdb852f28ac59b6142c99f7ee156a631b75bc5d82f797fa',
      armv7l: 'a607b05853dfa122ebdb852f28ac59b6142c99f7ee156a631b75bc5d82f797fa',
        i686: 'cdd735f6be940b2535b89226bfdeba5b65e92cbdfe0a828bceb7fc5787d872d7',
-     x86_64: '4817af93d2c30c4ced5c8fb5a4e0ebc7ebb51fb6fbfb2300380b27221b6b5c49',
+     x86_64: '4817af93d2c30c4ced5c8fb5a4e0ebc7ebb51fb6fbfb2300380b27221b6b5c49'
   })
 
   depends_on 'binutils'

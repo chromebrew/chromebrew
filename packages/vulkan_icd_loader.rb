@@ -3,25 +3,26 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  @_ver = '1.2.199'
+  @_ver = '1.3.230'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
-  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.199_armv7l/vulkan_icd_loader-1.2.199-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.199_armv7l/vulkan_icd_loader-1.2.199-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.199_i686/vulkan_icd_loader-1.2.199-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.2.199_x86_64/vulkan_icd_loader-1.2.199-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_armv7l/vulkan_icd_loader-1.3.230-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_armv7l/vulkan_icd_loader-1.3.230-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_i686/vulkan_icd_loader-1.3.230-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_x86_64/vulkan_icd_loader-1.3.230-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '61ff085298ade5bb89bdddd79f62f1fbcccba4642af0dd93925de1fc5afba005',
-     armv7l: '61ff085298ade5bb89bdddd79f62f1fbcccba4642af0dd93925de1fc5afba005',
-       i686: 'c1d9c5e78dd8d0898257babaa5914583e57fc764b0a18d5bc9f94e96bfb4cbcc',
-     x86_64: 'cb836195b0cd06b554db8e426665f980ac0757b1a3ae682a90fec215188dd5dc'
+    aarch64: '15f8878ef502ebe90ed22535d2e99e6da804e02aae41f0a4c7403c4ae512b26f',
+     armv7l: '15f8878ef502ebe90ed22535d2e99e6da804e02aae41f0a4c7403c4ae512b26f',
+       i686: 'f36cd322d98a6c6874e9c450cf5bbde693b297cd8315f6e01d7cc94f6ff2d982',
+     x86_64: 'fdfb0631b3069712a4aa0095cd0055d5425d842a76bfa5e979fdba04a6a49f7e'
   })
+
+  git_hashtag "v#{@_ver}"
 
   depends_on 'libx11'
   depends_on 'libxrandr'

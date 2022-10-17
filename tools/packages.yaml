@@ -734,6 +734,11 @@ url: https://github.com/charmbracelet/charm/releases
 activity: high
 ---
 kind: url
+name: cheat
+url: https://github.com/cheat/cheat/releases
+activity: low
+---
+kind: url
 name: check
 url: https://github.com/libcheck/check/releases
 activity: low
@@ -984,6 +989,11 @@ url: https://github.com/crossmob/CrossMobile/releases/
 activity: medium
 ---
 kind: url
+name: crosvm
+url: https://chromium.googlesource.com/crosvm/crosvm
+activity: high
+---
+kind: url
 name: cryptsetup
 url: https://www.kernel.org/pub/linux/utils/cryptsetup/
 activity: low
@@ -1017,6 +1027,11 @@ kind: url
 name: cups
 url: https://github.com/apple/cups/releases
 activity: medium
+---
+kind: url
+name: curtail
+url: https://github.com/Huluti/Curtail/releases
+activity: low
 ---
 kind: url
 name: cvs
@@ -1082,6 +1097,11 @@ kind: url
 name: dconf_editor
 url: https://download.gnome.org/sources/dconf-editor/
 activity: medium
+---
+kind: url
+name: ddgr
+url: https://github.com/jarun/ddgr/releases
+activity: low
 ---
 kind: url
 name: ddrescue
@@ -1257,6 +1277,11 @@ kind: url
 name: dstat
 url: https://github.com/dagwieers/dstat/releases
 activity: none
+---
+kind: url
+name: dtc
+url: https://www.devicetree.org/
+activity: low
 ---
 kind: url
 name: dtrx
@@ -3069,6 +3094,11 @@ url: https://github.com/Talinx/jp2a/releases
 activity: low
 ---
 kind: url
+name: jpegoptim
+url: https://github.com/tjko/jpegoptim/releases
+activity: low
+---
+kind: url
 name: jq
 url: https://github.com/stedolan/jq/releases
 activity: none
@@ -3179,9 +3209,19 @@ url: https://download.kde.org/stable/krita/
 activity: medium
 ---
 kind: url
+name: ksh
+url: https://github.com/att/ast/releases
+activity: none
+---
+kind: url
 name: kubectl
 url: https://github.com/kubernetes/kubernetes/releases
 activity: high
+---
+kind: url
+name: kupfer
+url: https://github.com/kupferlauncher/kupfer/releases
+activity: low
 ---
 kind: url
 name: kwiml
@@ -3839,6 +3879,11 @@ url: https://www.gnupg.org/ftp/gcrypt/libksba
 activity: none
 ---
 kind: url
+name: libluv
+url: https://github.com/luvit/luv/releases
+activity: low
+---
+kind: url
 name: libmad
 url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
@@ -3916,6 +3961,11 @@ activity: none
 kind: url
 name: libmp3lame
 url: https://sourceforge.net/projects/lame/files/lame/
+activity: low
+---
+kind: url
+name: libmpack
+url: https://github.com/libmpack/libmpack/tags
 activity: low
 ---
 kind: url
@@ -4081,6 +4131,11 @@ activity: low
 kind: url
 name: libplist
 url: http://www.libimobiledevice.org/
+activity: none
+---
+kind: url
+name: libpng
+url: https://downloads.sourceforge.net/project/libpng/libpng16
 activity: none
 ---
 kind: url
@@ -4299,6 +4354,11 @@ url: https://ftpmirror.gnu.org/libtasn1
 activity: none
 ---
 kind: url
+name: libtermkey
+url: http://www.leonerd.org.uk/code/libtermkey
+activity: none
+---
+kind: url
 name: libticables2
 url: https://sourceforge.net/projects/tilp/files/tilp2-linux/
 activity: none
@@ -4441,6 +4501,11 @@ activity: low
 kind: url
 name: libvpx
 url: https://github.com/webmproject/libvpx/releases
+activity: low
+---
+kind: url
+name: libvterm
+url: https://bazaar.launchpad.net/~libvterm/libvterm/trunk/changes
 activity: low
 ---
 kind: url
@@ -4789,6 +4854,21 @@ url: https://luajit.org/download.html
 activity: none
 ---
 kind: url
+namw: luajit_bitop
+url: https://bitop.luajit.org/download.html
+activity: none
+---
+kind: url
+name: luajit_lpeg
+url: http://www.inf.puc-rio.br/~roberto/lpeg
+activity: low
+---
+kind: url
+name: luajit_mpack
+url: https://github.com/libmpack/libmpack-lua/releases
+activity: low
+---
+kind: url
 name: lv2
 url: https://github.com/lv2/lv2/tags
 activity: none
@@ -4994,6 +5074,11 @@ url: https://github.com/Anaconda-Platform/anaconda-project/releases
 activity: low
 ---
 kind: url
+name: minijail
+url: https://google.github.io/minijail/
+activity: medium
+---
+kind: url
 name: miniupnpc
 url: https://github.com/miniupnp/miniupnp/releases
 activity: high
@@ -5134,6 +5219,11 @@ url: https://github.com/mpv-player/mpv/releases
 activity: high
 ---
 kind: url
+name: msgpack_c
+url: https://msgpack.org/
+activity: low
+---
+kind: url
 name: msttcorefonts
 url: http://http.debian.net/debian/pool/contrib/m/msttcorefonts
 activity: low
@@ -5167,6 +5257,11 @@ kind: url
 name: muparser
 url: https://github.com/beltoforion/muparser/releases
 activity: low
+---
+kind: url
+name: mupdf
+url: https://mupdf.com/downloads/archive/
+activity: medium
 ---
 kind: url
 name: musl
@@ -5537,6 +5632,21 @@ kind: url
 name: openhab
 url: https://www.openhab.org/download/
 activity: high
+---
+kind: url
+name: openjdk8
+url: https://www.azul.com/downloads/?version=java-8-lts&os=linux&package=jdk
+activity: medium
+---
+kind: url
+name: openjdk11
+url: https://www.azul.com/downloads/?version=java-11-lts&os=linux&package=jdk
+activity: medium
+---
+kind: url
+name: openjdk17
+url: https://www.azul.com/downloads/?version=java-17-lts&os=linux&package=jdk
+activity: medium
 ---
 kind: url
 name: openjpeg
@@ -6074,6 +6184,11 @@ url: https://sourceforge.net/projects/png-mng/files/pngcheck/
 activity: none
 ---
 kind: url
+name: pngquant
+url: https://github.com/kornelski/pngquant/tags
+activity: low
+---
+kind: url
 name: podofo
 url: https://sourceforge.net/projects/podofo/files/
 activity: low
@@ -6564,9 +6679,24 @@ url: http://www.ruby-lang.org/en/downloads/
 activity: medium
 ---
 kind: url
+name: ruby_concurrent_ruby
+url: https://github.com/ruby-concurrency/concurrent-ruby/releases
+activity: medium
+---
+kind: url
+name: ruby_debug
+url: https://github.com/ruby/debug/releases
+activity: medium
+---
+kind: url
 name: ruby_docopt
 url: https://github.com/docopt/docopt/releases
 activity: none
+---
+kind: url
+name: ruby_rubocop
+url: https://github.com/rubocop/rubocop/releases
+activity: medium
 ---
 kind: url
 name: ruby_webrick
@@ -7534,6 +7664,11 @@ url: https://www.x.org/pub/individual/util/
 activity: low
 ---
 kind: url
+name: uutils_coreutils
+url: https://github.com/uutils/coreutils/releases
+activity: medium
+---
+kind: url
 name: uwsgi
 url: https://github.com/unbit/uwsgi/releases
 activity: medium
@@ -7635,12 +7770,17 @@ activity: medium
 ---
 kind: url
 name: vulkan_headers
-url: https://github.com/KhronosGroup/Vulkan-Headers/releases
+url: https://github.com/KhronosGroup/Vulkan-Headers/tags
 activity: high
 ---
 kind: url
 name: vulkan_icd_loader
-url: https://github.com/KhronosGroup/Vulkan-Loader/releases
+url: https://github.com/KhronosGroup/Vulkan-Loader/tags
+activity: high
+---
+kind: url
+name: vulkan_tools
+url: https://github.com/KhronosGroup/Vulkan-Tools/tags
 activity: high
 ---
 kind: url
@@ -7830,6 +7970,16 @@ activity: none
 ---
 kind: url
 name: wxwidgets
+url: https://github.com/wxWidgets/wxWidgets/releases/
+activity: low
+---
+kind: url
+name: wxwidgets30
+url: https://github.com/wxWidgets/wxWidgets/releases/
+activity: low
+---
+kind: url
+name: wxwidgets31
 url: https://github.com/wxWidgets/wxWidgets/releases/
 activity: low
 ---

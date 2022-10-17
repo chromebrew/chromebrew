@@ -3,23 +3,22 @@ require 'package'
 class Remmina < Package
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
-  version '1.4.25'
+  version '1.4.27'
   license 'GPL-2+-with-openssl-exception'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64 armv7l aarch64'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
-  source_sha256 'a730d5927232818d55c8e094dba69d504faacabab2288d0c5c0c30ee7e89be46'
+  source_sha256 '6e93f18a4930ca194d3651a7a0cedf1cf92e761884952d5651fc1e985daa9c5a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_armv7l/remmina-1.4.25-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_armv7l/remmina-1.4.25-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.25_x86_64/remmina-1.4.25-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.27_armv7l/remmina-1.4.27-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.27_armv7l/remmina-1.4.27-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.27_x86_64/remmina-1.4.27-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c2a51556cb206a0a2d82daf8859b33e68c5141fa87b62ad3f700ec2a43cac6e3',
-     armv7l: 'c2a51556cb206a0a2d82daf8859b33e68c5141fa87b62ad3f700ec2a43cac6e3',
-     x86_64: '6b280475ba0d8778b5be2be2d697968ce893b12fbf78d448d7431770e8fb718c'
+    aarch64: '8604a9830b7dca6eb39e4dbe456c80a95f6be267afb649960591b13afccc367d',
+     armv7l: '8604a9830b7dca6eb39e4dbe456c80a95f6be267afb649960591b13afccc367d',
+     x86_64: 'ef7a269e329ef4793cb61e2e7e0fc3e7453ba7d3dcddd353398611965a2c9597'
   })
-
 
   depends_on 'avahi'
   depends_on 'freerdp'

@@ -47,6 +47,6 @@ class Intel_media_driver < Package
       # intel_media_driver configuration
       export LIBVA_DRIVER_NAME=iHD
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/intel_media_driver", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/intel_media_driver", @env)
   end
 end

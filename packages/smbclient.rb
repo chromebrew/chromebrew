@@ -3,23 +3,23 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.16.0'
+  version '4.16.4'
   license 'GPLv3'
   compatibility 'all'
-  source_url 'https://download.samba.org/pub/samba/stable/samba-4.16.0.tar.gz'
-  source_sha256 '97c47de35915d1637b254f02643c3230c3e73617851700edc7a2a8c958a3310c'
+  source_url 'https://download.samba.org/pub/samba/stable/samba-4.16.4.tar.gz'
+  source_sha256 '9532f848fb125a17e4e5d98e1ae8b42f210ed4433835e815b97c5dde6dc4702f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_armv7l/smbclient-4.16.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_armv7l/smbclient-4.16.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_i686/smbclient-4.16.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.0_x86_64/smbclient-4.16.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_armv7l/smbclient-4.16.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_armv7l/smbclient-4.16.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_i686/smbclient-4.16.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_x86_64/smbclient-4.16.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '984271933e93cff22899d51494abceccce92aa98b94d040ed7f8159ae890ef2a',
-     armv7l: '984271933e93cff22899d51494abceccce92aa98b94d040ed7f8159ae890ef2a',
-       i686: '050592f2bab1c417a23b1d6571330e97ac644d0dceadbbcffd0cca5c71b434db',
-     x86_64: 'cf2a5478cec8d024f85dc5fdf22bd802d0c99afbb231157fad47370bcc8d73e4'
+    aarch64: '13db8144966947e8a3d308021c397d4a43f080d812e30c773ef6013eb28d50ce',
+     armv7l: '13db8144966947e8a3d308021c397d4a43f080d812e30c773ef6013eb28d50ce',
+       i686: '2a3238c55a2727d837d99afbded7ea7a54edf9eb15e951fff48a421d9a27c6cc',
+     x86_64: '00d317e6601217874a2b7f5947ded2191c703b1469455031f554d1e53b95908d'
   })
 
   depends_on 'avahi' # R
@@ -35,6 +35,7 @@ class Smbclient < Package
   depends_on 'liburing' => :build
   depends_on 'linux_pam' # R
   depends_on 'lmdb' => :build
+  depends_on 'openldap' # R
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
   depends_on 'popt' => :build
@@ -52,7 +53,7 @@ class Smbclient < Package
                        smbcquotas smbget net nmblookup smbtar]
   @smbclient_pkgconfig = %w[smbclient netapi wbclient]
 
-  @xml_catalog_files = ENV['XML_CATALOG_FILES']
+  @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', nil)
 
   def self.patch
     system "sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \

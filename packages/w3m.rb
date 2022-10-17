@@ -3,23 +3,23 @@ require 'package'
 class W3m < Package
   description 'w3m is a text-based browser, pager and HTML typesetter'
   homepage 'http://w3m.sourceforge.net/'
-  version '0.5.3-20210102'
+  version '0.5.3-20220429'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/tats/w3m/archive/v0.5.3+git20210102+deb11u0.5.tar.gz'
-  source_sha256 'd428741e8657805a401667674c144a50084d47d20ef4bf00d92f695a93a7d33a'
+  source_url 'https://github.com/tats/w3m/archive/v0.5.3+git20220429.tar.gz'
+  source_sha256 '6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_armv7l/w3m-0.5.3-20210102-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_armv7l/w3m-0.5.3-20210102-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_i686/w3m-0.5.3-20210102-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20210102_x86_64/w3m-0.5.3-20210102-chromeos-x86_64.tpxz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_armv7l/w3m-0.5.3-20220429-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_armv7l/w3m-0.5.3-20220429-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_i686/w3m-0.5.3-20220429-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_x86_64/w3m-0.5.3-20220429-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bf03da42e618055be022f5f0939e6a7326524a5abb9ead031c5acdbb4ad7ce41',
-     armv7l: 'bf03da42e618055be022f5f0939e6a7326524a5abb9ead031c5acdbb4ad7ce41',
-       i686: '5586b147ec8037ccfc2d3b8fc433bd2b8b9d2d89f1bc15a478c1c084a34b1f03',
-     x86_64: '25cc290c3023077bcfb1bd40c84905f366561d7574dcfd8e890a1eea4c41e565',
+    aarch64: 'a0af0f7d06a26072f5af6a5dd16431b226caaa7aeec7b3af89b7f0a602ff987a',
+     armv7l: 'a0af0f7d06a26072f5af6a5dd16431b226caaa7aeec7b3af89b7f0a602ff987a',
+       i686: '0c974bf73bac0731ddffa04259fb0d87caf8a8d0cef364d3fe070a6a6be46122',
+     x86_64: 'c54c80e2253c9026ee038bc46dc3e36ea59d1899a8b4f4d3c7ec93349fd90cc1'
   })
 
   depends_on 'bdwgc'
@@ -29,7 +29,7 @@ class W3m < Package
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
-            --with-imagelib='gdk-pixbuf imlib2' \
+            --with-imagelib='gdk-pixbuf-2.0 imlib2' \
             --with-editor=$(which vi) \
             --with-mailer=$(which mail) \
             --with-ssl=#{CREW_PREFIX}/include/openssl \

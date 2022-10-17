@@ -31,6 +31,6 @@ class Fasd < Package
       # Fasd shell configuration
       eval \"\$(fasd --init auto)\"
     FASDEOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/env.d/fasd", @fasdenv)
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/fasd", @fasdenv)
   end
 end

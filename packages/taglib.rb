@@ -9,17 +9,17 @@ class Taglib < Package
   source_url 'https://taglib.org/releases/taglib-1.11.1.tar.gz'
   source_sha256 'b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_armv7l/taglib-1.11.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_armv7l/taglib-1.11.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_i686/taglib-1.11.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_x86_64/taglib-1.11.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.11.1_x86_64/taglib-1.11.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '2bb4922da1de20136cdbc0375a716975aed496ccb3e26a08d7585c80f5364de7',
      armv7l: '2bb4922da1de20136cdbc0375a716975aed496ccb3e26a08d7585c80f5364de7',
        i686: 'b7e4b512b4772cdee6f94d61281a36b225af1d0a801867578808ae51f045479b',
-     x86_64: '685aa57d3822a4b92310a839cb76dee74b507991a5053dd976108f718c108698',
+     x86_64: '685aa57d3822a4b92310a839cb76dee74b507991a5053dd976108f718c108698'
   })
 
   depends_on 'boost'

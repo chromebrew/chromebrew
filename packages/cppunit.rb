@@ -9,17 +9,17 @@ class Cppunit < Package
   source_url 'http://downloads.sourceforge.net/project/cppunit/cppunit/1.12.1/cppunit-1.12.1.tar.gz'
   source_sha256 'ac28a04c8e6c9217d910b0ae7122832d28d9917fa668bcc9e0b8b09acb4ea44a'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_armv7l/cppunit-1.12.1-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_armv7l/cppunit-1.12.1-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_i686/cppunit-1.12.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_x86_64/cppunit-1.12.1-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_x86_64/cppunit-1.12.1-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '5629277d1bb357eb5a1f0cf6a0febe1078b67c63030ecf9c51cf885704c76107',
      armv7l: '5629277d1bb357eb5a1f0cf6a0febe1078b67c63030ecf9c51cf885704c76107',
        i686: '3c6ccb427841faf098fc43520f1f288c23c34aadce01f5aa843e35a19100f54a',
-     x86_64: 'e5f432ecd193119cb7201eec9881f3e89dd7bccbb78f3ba4cc8374471acbe236',
+     x86_64: 'e5f432ecd193119cb7201eec9881f3e89dd7bccbb78f3ba4cc8374471acbe236'
   })
 
   depends_on 'doxygen' => :build
@@ -31,6 +31,6 @@ class Cppunit < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

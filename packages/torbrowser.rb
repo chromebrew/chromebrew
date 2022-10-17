@@ -3,12 +3,12 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  @_ver = '11.0.11'
+  @_ver = '11.5.1'
   version @_ver
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
   source_url "https://dist.torproject.org/torbrowser/#{@_ver}/tor-browser-linux64-#{@_ver}_en-US.tar.xz"
-  source_sha256 '6df94735440f608cb80c5b45c777a25a9aeaa5b5f0137dab28fce86d9b14a9b7'
+  source_sha256 '2e0cefa6d4284c71a7816e310d935f9b9b5e4a3a408dc53330a0db0474489e8a'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
@@ -32,7 +32,7 @@ class Torbrowser < Package
 
   def self.postinstall
     print "\nSet Tor as your default browser? [Y/n]: "
-    case STDIN.getc
+    case $stdin.getc
     when "\n", 'Y', 'y'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'tor', 'x-www-browser'
@@ -46,8 +46,8 @@ class Torbrowser < Package
 
   def self.remove
     Dir.chdir("#{CREW_PREFIX}/bin") do
-      if File.exist?('x-www-browser') and File.symlink?('x-www-browser') \
-        and File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor"
+      if File.exist?('x-www-browser') && File.symlink?('x-www-browser') \
+        && (File.realpath('x-www-browser') == "#{CREW_PREFIX}/bin/tor")
         FileUtils.rm 'x-www-browser'
       end
     end

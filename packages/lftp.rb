@@ -9,17 +9,17 @@ class Lftp < Package
   source_url 'https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz'
   source_sha256 'c517c4f4f9c39bd415d7313088a2b1e313b2d386867fe40b7692b83a20f0670d'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_armv7l/lftp-4.9.2-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_armv7l/lftp-4.9.2-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_i686/lftp-4.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_x86_64/lftp-4.9.2-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_x86_64/lftp-4.9.2-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '370398386c9df785c8f13dce8f1d25313bfb5a5f0a472e4abd14664abcae51aa',
      armv7l: '370398386c9df785c8f13dce8f1d25313bfb5a5f0a472e4abd14664abcae51aa',
        i686: '07e9ced116f2c5cec2f1a05b866493ba8df967cc7af2d7703a50224e3242e85a',
-     x86_64: 'd8df0155b54627beb280cc208d40c6f702a1aa970e9863ac17c154d9f478d9db',
+     x86_64: 'd8df0155b54627beb280cc208d40c6f702a1aa970e9863ac17c154d9f478d9db'
   })
 
   def self.build

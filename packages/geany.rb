@@ -33,7 +33,7 @@ class Geany < Package
   depends_on 'vte'
   depends_on 'xdg_base'
 
-  @xdg_config_home = ENV['XDG_CONFIG_HOME']
+  @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build

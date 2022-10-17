@@ -9,17 +9,17 @@ class Spacefm < Package
   source_url 'https://github.com/IgnorantGuru/spacefm/archive/1.0.6.tar.gz'
   source_sha256 'fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6_armv7l/spacefm-1.0.6-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6_armv7l/spacefm-1.0.6-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6_i686/spacefm-1.0.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6_x86_64/spacefm-1.0.6-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6_x86_64/spacefm-1.0.6-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a761365160878900f94ad9c964631d2ad29ba0afc3f8d237313f97b9baf60fe0',
      armv7l: 'a761365160878900f94ad9c964631d2ad29ba0afc3f8d237313f97b9baf60fe0',
        i686: '555b7b3a04b73d4aa46ed0551cb6d9577b7e9a1bbe98b0d6ef04b0dedcb94c4a',
-     x86_64: '9a347033bb9eb459beddbc793b86f9462f523a28e45250072def822e91adcdf7',
+     x86_64: '9a347033bb9eb459beddbc793b86f9462f523a28e45250072def822e91adcdf7'
   })
 
   depends_on 'gtk2'
@@ -39,6 +39,6 @@ class Spacefm < Package
   end
 
   def self.install
-    system "make", "DESTDIR=#{CREW_DEST_DIR}", "install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

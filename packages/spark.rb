@@ -11,7 +11,7 @@ class Spark < Package
 
   def self.install
     system 'curl -#LO https://raw.githubusercontent.com/holman/spark/ab88ac6f8f33698f39ece2f109b1117ef39a68eb/spark'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('spark') ) == '1fa0ef384309239f27f8c98c843639cac2c59e4fe51413cca9836ea64f73329d'
+    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('spark')) == '1fa0ef384309239f27f8c98c843639cac2c59e4fe51413cca9836ea64f73329d'
     system "install -Dm755 spark #{CREW_DEST_PREFIX}/bin/spark"
   end
 end

@@ -10,5 +10,4 @@ class Stow < Package
   depends_on 'perl_stow'
 
   is_fake
-
 end

@@ -9,17 +9,17 @@ class Jack1 < Package
   source_url 'https://github.com/jackaudio/jack1/archive/b04083761496410a52126cdbcd35c557ee82f2e5.tar.gz'
   source_sha256 '376f2cd292ec285e53dbd5fe30a151d8a45dd7be5034a5b05dbb7e8a4735d7b1'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack1/b04083_armv7l/jack1-b04083-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack1/b04083_armv7l/jack1-b04083-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack1/b04083_i686/jack1-b04083-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack1/b04083_x86_64/jack1-b04083-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jack1/b04083_x86_64/jack1-b04083-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: 'a14ae812ae5d89c0ca4a3922d7706fdc3ef1c5f2898a230aebd84246a2988464',
      armv7l: 'a14ae812ae5d89c0ca4a3922d7706fdc3ef1c5f2898a230aebd84246a2988464',
        i686: '475b1a17382257853fe753b27f3a7cfd6fd0d53bbf1b3a8f6d0cb0cdf7edff32',
-     x86_64: 'e212d48b752a9d3e73ba430e5c1275ca8208f9bd2452f1b1024f4198f163e623',
+     x86_64: 'e212d48b752a9d3e73ba430e5c1275ca8208f9bd2452f1b1024f4198f163e623'
   })
 
   depends_on 'alsa_plugins'

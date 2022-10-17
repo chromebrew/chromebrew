@@ -10,17 +10,17 @@ class Moreutils < Package
   source_url "http://http.debian.net/debian/pool/main/m/moreutils/moreutils_#{@_ver}.orig.tar.xz"
   source_sha256 'ba0cfaa1ff6ead2b15c62a67292de66a366f9b815a09697b54677f7e15f5a2b2'
 
-  binary_url ({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_armv7l/moreutils-0.65-chromeos-armv7l.tar.xz',
         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_i686/moreutils-0.65-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_x86_64/moreutils-0.65-chromeos-x86_64.tar.xz',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moreutils/0.65_x86_64/moreutils-0.65-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
-     aarch64: 'af2d40444fb74ae8e2151b76d61417ddee993b69b8e6b6b30a65218612a8f523',
+  binary_sha256({
+    aarch64: 'af2d40444fb74ae8e2151b76d61417ddee993b69b8e6b6b30a65218612a8f523',
       armv7l: 'af2d40444fb74ae8e2151b76d61417ddee993b69b8e6b6b30a65218612a8f523',
         i686: '5bb54745aa76aa985f0cc0a6dd2a7c6efdcd314774df9d535183b657247c9540',
-      x86_64: '55222b8e4293e548f812542fa7447e5420c1b7098c0ae481e1f0a0357dd84ed9',
+      x86_64: '55222b8e4293e548f812542fa7447e5420c1b7098c0ae481e1f0a0357dd84ed9'
   })
 
   depends_on 'docbook_xml' => :build

@@ -22,12 +22,13 @@ class Sqlite < Package
      x86_64: '7ea92b093047843e47d9a383ecb05831774824913b562c245c9460875773cdb3'
   })
 
+  depends_on 'glibc' # R
   depends_on 'libedit'
   depends_on 'readline'
-  depends_on 'zlibpkg'
+  depends_on 'zlibpkg' # R
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --enable-shared \
       --enable-editline \
       --enable-readline \

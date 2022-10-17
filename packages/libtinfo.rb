@@ -9,17 +9,17 @@ class Libtinfo < Package
   source_url 'https://github.com/mirror/ncurses.git'
   git_hashtag "v#{version}"
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_armv7l/libtinfo-5.9-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_armv7l/libtinfo-5.9-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_i686/libtinfo-5.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_x86_64/libtinfo-5.9-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtinfo/5.9_x86_64/libtinfo-5.9-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '2e94b9a42682306f5c05eae9a9b28fb797a79b7f782ed4e291c66224fb2a09b4',
      armv7l: '2e94b9a42682306f5c05eae9a9b28fb797a79b7f782ed4e291c66224fb2a09b4',
        i686: 'c884149bf8c6dea3fc3d16ba1ac316c811d318fbfa18ef35171e2bf2c81f4bd9',
-     x86_64: '6ff14ec1bdcdbf55e145b4a8c450b09526803c1450fb3a06fc233a9e85e4ea3e',
+     x86_64: '6ff14ec1bdcdbf55e145b4a8c450b09526803c1450fb3a06fc233a9e85e4ea3e'
   })
 
   def self.build
@@ -29,7 +29,7 @@ class Libtinfo < Package
     # build libncurses
     Dir.mkdir 'ncurses_build'
     Dir.chdir 'ncurses_build' do
-      #system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
+      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
       system "../configure #{CREW_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \
@@ -47,7 +47,7 @@ class Libtinfo < Package
     # build libncursesw
     Dir.mkdir 'ncursesw_build'
     Dir.chdir 'ncursesw_build' do
-      #system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
+      # system "#{CREW_ENV_OPTIONS} ../configure #{CREW_OPTIONS} \
       system "../configure #{CREW_OPTIONS} \
           --program-prefix='' \
           --program-suffix='' \

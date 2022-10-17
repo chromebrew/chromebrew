@@ -9,17 +9,17 @@ class Libsolv < Package
   source_url 'https://github.com/openSUSE/libsolv/archive/0.7.14.tar.gz'
   source_sha256 '34a67c23cedd38a949607d8cdbd867aa4b07556f18a57e17162ac962bbdbbf54'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_i686/libsolv-0.7.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_x86_64/libsolv-0.7.14-chromeos-x86_64.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_x86_64/libsolv-0.7.14-chromeos-x86_64.tar.xz'
   })
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '4a559dd64cbc0a45f291bb3b7b500bcb04119559987830df0066176fc48867a9',
      armv7l: '4a559dd64cbc0a45f291bb3b7b500bcb04119559987830df0066176fc48867a9',
        i686: '35f045613c622b24224117ef8e203fe37c6bdf36dff4b701ca8263214e1a4122',
-     x86_64: '1c9062a1b1cc87345941eedb01d7aacd9f942c7924d81db8c52d77cde19a32ed',
+     x86_64: '1c9062a1b1cc87345941eedb01d7aacd9f942c7924d81db8c52d77cde19a32ed'
   })
 
   depends_on 'xzutils'

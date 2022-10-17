@@ -59,13 +59,13 @@ class Qtcreator < Package
     case ARCH
     when 'i686'
       system 'curl -#LO http://qtmirror.ics.com/pub/qtproject/archive/online_installers/2.0/qt-unified-linux-x86-2.0.5-2-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x86-2.0.5-2-online.run') ) == 'b9dfef211d3122ab2f1b1e96aa7e2357ebdeb068c750eeb423b9396a3f55d619'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('qt-unified-linux-x86-2.0.5-2-online.run')) == 'b9dfef211d3122ab2f1b1e96aa7e2357ebdeb068c750eeb423b9396a3f55d619'
       system "install -Dm755 qt-unified-linux-x86-2.0.5-2-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run"
       system "#{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run --script qt-installer-script.qs"
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x86-2.0.5-2-online.run"
     when 'x86_64'
       system 'curl -#LO http://qt.mirror.constant.com/archive/online_installers/3.2/qt-unified-linux-x64-3.2.3-online.run'
-      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest( File.read('qt-unified-linux-x64-3.2.3-online.run') ) == 'b724dabc0e7bfde1e078de3edcdd87c94b60031f9896d7119099a66191d75eec'
+      abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('qt-unified-linux-x64-3.2.3-online.run')) == 'b724dabc0e7bfde1e078de3edcdd87c94b60031f9896d7119099a66191d75eec'
       system "install -Dm755 qt-unified-linux-x64-3.2.3-online.run #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run"
       system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run --script qt-installer-script.qs"
       system "rm -f #{CREW_PREFIX}/tmp/qt-unified-linux-x64-3.2.3-online.run"

@@ -3,32 +3,18 @@ require 'package'
 class Phive < Package
   description 'The PHAR Installation and Verification Environment (PHIVE)'
   homepage 'https://phar.io/'
-  version '0.9.0'
+  version '0.15.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/phar-io/phive/archive/0.9.0.tar.gz'
-  source_sha256 '711659b2293015c1bc81755bb56746fc86f1c6c6c3b87eaaddaa56d29c86c0ad'
+  source_url "https://github.com/phar-io/phive/releases/download/#{version}/phive-#{version}.phar"
+  source_sha256 '2bb076753ec5d672f5e2f96a97a0fe7e8e9ec24a439eed00fd29ef942c7905f9'
 
-  binary_url ({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/phive/0.9.0_armv7l/phive-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/phive/0.9.0_armv7l/phive-0.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/phive/0.9.0_i686/phive-0.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/phive/0.9.0_x86_64/phive-0.9.0-chromeos-x86_64.tar.xz',
-  })
-  binary_sha256 ({
-    aarch64: '3cc4a5b1b583a3fdda8df1ec7772a1982a9566fabbd1cfa2cfeb4797676a5d22',
-     armv7l: '3cc4a5b1b583a3fdda8df1ec7772a1982a9566fabbd1cfa2cfeb4797676a5d22',
-       i686: '696d5c1d32ae643088989767e333aa735d5b059734f7771d8c6ae87625bea314',
-     x86_64: '49b75dfccdf0f14a516c67dc923603d579ea4bd9dcac49892eb483e578aaaf49',
-  })
+  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
-  depends_on 'composer'
+  no_compile_needed
 
   def self.install
-    system "composer install"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/share/phive"
-    system "cp -r . #{CREW_DEST_PREFIX}/share/phive"
-    system "ln -s #{CREW_PREFIX}/share/phive/phive #{CREW_DEST_PREFIX}/bin/phive"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install "phive-#{version}.phar", "#{CREW_DEST_PREFIX}/bin/phive", mode: 0o755
   end
 end

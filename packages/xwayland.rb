@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '22.1.1'
+  @_ver = '22.1.3'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_armv7l/xwayland-22.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_armv7l/xwayland-22.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_i686/xwayland-22.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.1_x86_64/xwayland-22.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_armv7l/xwayland-22.1.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_armv7l/xwayland-22.1.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_i686/xwayland-22.1.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_x86_64/xwayland-22.1.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6bb70f10aed0cd1c7eacdacf3fdf9f70671c36cbeb96edb4aaae36e04dfefd8b',
-     armv7l: '6bb70f10aed0cd1c7eacdacf3fdf9f70671c36cbeb96edb4aaae36e04dfefd8b',
-       i686: '4f573697a94513fa9adcae19994e3c6af215eae28180a486ded25b767947586a',
-     x86_64: '221b7702afee8d0d791947a16e4e1fdfc0f91df82a281d5c59edffaf42df0b74'
+    aarch64: '88d2b2a530e5c41a3c5e94c247ff189a472d4ca998fe78f3beeafe256f4f5e17',
+     armv7l: '88d2b2a530e5c41a3c5e94c247ff189a472d4ca998fe78f3beeafe256f4f5e17',
+       i686: '78f652ff3a1dcec7e2bf6a07ef2693e0a98c554446e935a669becb16da652cec',
+     x86_64: 'c11d28840e9f7d4cb74ef568c356fc38499ca95921f439d588140d727d341bee'
   })
 
   no_env_options
@@ -31,6 +31,7 @@ class Xwayland < Package
   depends_on 'glproto'
   depends_on 'graphite'
   depends_on 'libbsd' # R
+  depends_on 'libxcvt' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libtirpc' => :build
@@ -53,7 +54,7 @@ class Xwayland < Package
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '').sub('mold', 'gold')} \
+    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
@@ -69,7 +70,7 @@ class Xwayland < Package
     # Get these from xorg_server package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
     @deletefiles.each do |f|
-      FileUtils.rm f if  File.exist?(f)
+      FileUtils.rm_f f
     end
   end
 end

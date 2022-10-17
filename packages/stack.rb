@@ -32,7 +32,7 @@ class Stack < Package
       # Haskell stack bash completion
       eval "$(stack --bash-completion-script stack)"
     EOF
-    IO.write("#{CREW_DEST_PREFIX}/etc/bash.d/stack", @env)
+    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/stack", @env)
   end
 
   def self.remove

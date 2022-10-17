@@ -62,7 +62,7 @@ class Gdb < Package
       system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
     end
     # Remove files conflicting with binutils
-    FileUtils.rm "#{CREW_DEST_PREFIX}/share/info/bfd.info" if File.exist?("#{CREW_DEST_PREFIX}/share/info/bfd.info")
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/info/bfd.info"
     conflict_packages = %w[binutils]
     conflict_packages.each do |package|
       file = File.read("#{CREW_META_PATH}#{package}.filelist")
@@ -73,6 +73,6 @@ class Gdb < Package
         end
       end
     end
-    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so" if File.exist?("#{CREW_DEST_LIB_PREFIX}/libinproctrace.so")
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so"
   end
 end

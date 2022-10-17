@@ -24,8 +24,8 @@ class Leiningen < Package
     config_dir = "#{HOME}/.lein"
     if Dir.exist? config_dir
       print "Would you like to remove the #{config_dir} directory? [y/N] "
-      case STDIN.getc
-      when "y", "Y"
+      case $stdin.getc
+      when 'y', 'Y'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else
