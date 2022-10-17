@@ -6,23 +6,23 @@ require 'package'
 class Vulkan_tools < Package
   description 'Vulkan Utilities and Tools'
   homepage 'https://www.khronos.org/vulkan/'
-  version '1.3.230'
+  version '1.3.231'
   license 'custom'
   compatibility 'all'
-  source_url "https://github.com/KhronosGroup/Vulkan-Tools/archive/v#{version}.tar.gz"
-  source_sha256 '5bb190d20ee8ae4e8dd157b686bd2d3162dc3a814b3d0625d90b1d84dd177dbb'
+  source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.230_armv7l/vulkan_tools-1.3.230-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.230_armv7l/vulkan_tools-1.3.230-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.230_i686/vulkan_tools-1.3.230-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.230_x86_64/vulkan_tools-1.3.230-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.231_armv7l/vulkan_tools-1.3.231-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.231_armv7l/vulkan_tools-1.3.231-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.231_i686/vulkan_tools-1.3.231-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.231_x86_64/vulkan_tools-1.3.231-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'be40fe9684ff980a1e4624ec112eba844b6a58e219cf71bb6bb4f1a75667693e',
-     armv7l: 'be40fe9684ff980a1e4624ec112eba844b6a58e219cf71bb6bb4f1a75667693e',
-       i686: '428aadff66735013c5dfc3b392cf54055b6d9dba0f710492fe4efd1c077e3674',
-     x86_64: 'fbe30a5c9296eaaaab392540792bbf729166979cc5313b2d306923fe3ec3c437'
+    aarch64: '13f37edccb74c776e39097bfb9bf67793a47a0c2c930c8ff5528d45100e84c6f',
+     armv7l: '13f37edccb74c776e39097bfb9bf67793a47a0c2c930c8ff5528d45100e84c6f',
+       i686: 'd2421e5c49e7fe100dba833ee308d3be28cad42a9be06cf4dca6beb7dbc47f99',
+     x86_64: '1578cd4a950863964659b1935232fc46ca98ab17b8559cfb4cd4488991f6cb86'
   })
 
   depends_on 'libx11'
@@ -33,8 +33,13 @@ class Vulkan_tools < Package
   depends_on 'wayland_protocols' => :build
   depends_on 'glslang' => :build
   depends_on 'spirv_tools' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
 
   def self.build
+    system 'scripts/update_deps.py'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "env #{CREW_ENV_OPTIONS} \
