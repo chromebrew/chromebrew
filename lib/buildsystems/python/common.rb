@@ -2,6 +2,7 @@ require 'package'
 
 # This file holds functions common to all Python buildsystems
 class Python_common < Package
+
   # Python version defaults to 3, 2 is still an option
   def self.python_version(pyversion = '3')
     return (@pyversion = pyversion)
@@ -9,7 +10,7 @@ class Python_common < Package
 
   # In case we ever implement another python implementation, like PyPy
   def self.python_implementation(pyimplementation = 'python')
-    return (@python = pyimplementation + pyversion)
+    return (@python = "#{pyimplementation}#{pyversion}")
   end
 
   def self.minipython

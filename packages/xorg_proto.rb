@@ -7,5 +7,5 @@ class Xorg_proto < Meson_v1
   license 'MIT'
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz'
-  git_hashtag '5d13dbf2be08f95323985de53352c4f352713860457b95ccaf894a647ac06b9e'
+  source_sha256 '5d13dbf2be08f95323985de53352c4f352713860457b95ccaf894a647ac06b9e'
 end

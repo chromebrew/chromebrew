@@ -4,8 +4,7 @@ class Setup_py_v1 < Python_common
   @_buildsystems_python_setup_py_version = '1.0.0'
 
   def self.svem?(bool = true)
-    @svem = bool
-    return @svem
+    return (@svem = bool)
   end
 
   depends_on @python
