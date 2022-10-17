@@ -19,9 +19,9 @@ class Autotools_v1 < Package
     # Run autoreconf if necessary
     unless File.executable? './configure'
       if File.executable? './autogen.sh'
-        system 'NOCONFIGURE=1 ./autogen.sh'
+        system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
       elsif File.executable? './bootstrap'
-        system 'NOCONFIGURE=1 ./bootstrap'
+        system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
       else
         system 'autoreconf -fiv'
       end
