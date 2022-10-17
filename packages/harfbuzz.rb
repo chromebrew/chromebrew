@@ -3,7 +3,7 @@ require 'package'
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  @_ver = '4.4.1'
+  @_ver = '5.2.0'
   version @_ver
   license 'Old-MIT, ISC and icu'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Harfbuzz < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_armv7l/harfbuzz-4.4.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_armv7l/harfbuzz-4.4.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_i686/harfbuzz-4.4.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/4.4.1_x86_64/harfbuzz-4.4.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/5.2.0_armv7l/harfbuzz-5.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/5.2.0_armv7l/harfbuzz-5.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/5.2.0_i686/harfbuzz-5.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/5.2.0_x86_64/harfbuzz-5.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '556b8124f7d4181f15111dd841cce4fdb9ab39914fa0fbd0516fda5e7d929a94',
-     armv7l: '556b8124f7d4181f15111dd841cce4fdb9ab39914fa0fbd0516fda5e7d929a94',
-       i686: '8acbf2871d86e2b8a91e85f4ab9945b435b5a1e2ac854ebac770544d3f4adbb4',
-     x86_64: '2a03c4db970323bd94a886d3350d6aacde20f415a1f553342400443075c06588'
+    aarch64: 'c9e3fb9162a5976f57f42ff1c7985697192597d5080064d3b1da7133eaa5b1b1',
+     armv7l: 'c9e3fb9162a5976f57f42ff1c7985697192597d5080064d3b1da7133eaa5b1b1',
+       i686: 'ac49731b4a83fd3683b9961a5811cc100e1cf109773f8966dd398adc5f2e3f9c',
+     x86_64: '1e8922ae353da616f936e495779e7777acafa2166d010b4f3b1fc2e8ebb4ea5c'
   })
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
@@ -39,6 +39,14 @@ class Harfbuzz < Package
   depends_on 'pcre'
   depends_on 'py3_six' => :build
   depends_on 'zlibpkg'
+  depends_on 'expat' # R
+  # depends_on 'freetype' # R harfbuzz provides this.
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrender' # R
+  depends_on 'lzo' # R
 
   no_env_options
   conflicts_ok
@@ -63,7 +71,7 @@ class Harfbuzz < Package
       -Dtests=disabled \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'mold -run ninja -C builddir'
   end
 
   def self.install

@@ -3,23 +3,23 @@ require 'package'
 class Vala < Package
   description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers.'
   homepage 'https://wiki.gnome.org/Projects/Vala'
-  version '0.53.2'
+  version '0.56.3'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_armv7l/vala-0.53.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_armv7l/vala-0.53.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_i686/vala-0.53.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.53.2_x86_64/vala-0.53.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.3_armv7l/vala-0.56.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.3_armv7l/vala-0.56.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.3_i686/vala-0.56.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.3_x86_64/vala-0.56.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '03a6379a478dd6103049a993a0e0ad04e62e2c71fa42bef139b322c914059ee1',
-     armv7l: '03a6379a478dd6103049a993a0e0ad04e62e2c71fa42bef139b322c914059ee1',
-       i686: 'c19d63faa1e2cc935990af274233412f69591998593f18be13c1e0e7d9fcef2f',
-     x86_64: '5c503b417af46f6f5ab79dc3d2cf63336e46cea9e73c6c56d0b80fc831e8d0ff'
+    aarch64: '80704831036697f5d42a8e2a9127d19ced5c093d63ac22cf491a7f34f6cd6b1c',
+     armv7l: '80704831036697f5d42a8e2a9127d19ced5c093d63ac22cf491a7f34f6cd6b1c',
+       i686: 'e813314e321e7f2b4cfe01aa058e9d9f554581af0c4ace8487a3082127b939da',
+     x86_64: '7aa8e4200d9a8553d0055ecb4bcbc1621bb1d0ae9e16b4cd456233e1360d7058'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -28,10 +28,11 @@ class Vala < Package
   depends_on 'libxslt'
   depends_on 'glib'
   depends_on 'dbus'
+  depends_on 'glibc' # R
+  git_fetchtags
+  gnome
 
   def self.build
-    # Required for building vala from git.
-    system 'git fetch --tags'
     # Bootstrap vala
     FileUtils.mkdir_p 'bootstrap_install'
     system 'git clone https://gitlab.gnome.org/Archive/vala-bootstrap.git'
@@ -40,7 +41,7 @@ class Vala < Package
       system 'touch */*.stamp'
       system 'autoreconf -fi'
       system 'VALAC=/no-valac ./configure --prefix=`pwd`/../bootstrap_install'
-      system 'make'
+      system 'mold -run make'
       system 'make install'
     end
 
@@ -48,7 +49,7 @@ class Vala < Package
       #{CREW_OPTIONS} \
       --disable-maintainer-mode \
       --disable-valadoc"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.install

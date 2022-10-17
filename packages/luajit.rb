@@ -3,24 +3,27 @@ require 'package'
 class Luajit < Package
   description 'LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language.'
   homepage 'https://github.com/openresty/luajit2'
-  version '2.1-20220411'
+  version '2.1-6c4826f'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/openresty/luajit2.git'
-  git_hashtag "v#{version}"
+  source_url 'https://github.com/LuaJIT/LuaJIT/archive/6c4826f12c4d33b8b978004bc681eb1eef2be977.zip'
+  source_sha256 '4a384b218557e650e6fbbe2e0f14aa7a7d08a3e1f31eedbfc54de1cc62583496'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-20220411_armv7l/luajit-2.1-20220411-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-20220411_armv7l/luajit-2.1-20220411-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-20220411_i686/luajit-2.1-20220411-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-20220411_x86_64/luajit-2.1-20220411-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-6c4826f_armv7l/luajit-2.1-6c4826f-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-6c4826f_armv7l/luajit-2.1-6c4826f-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-6c4826f_i686/luajit-2.1-6c4826f-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit/2.1-6c4826f_x86_64/luajit-2.1-6c4826f-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '18fbd6916f9f75db3b5939997af0ef447102f49439941852c044e079d82bb611',
-     armv7l: '18fbd6916f9f75db3b5939997af0ef447102f49439941852c044e079d82bb611',
-       i686: '747299199b1011f83b77c0e142052811bb0f4736a1ec834062ff6f1c36338951',
-     x86_64: 'ad76e59f1079539a74159d81563ed7d23f5e333661d63a46cc3f6508d8fd8c5e'
+    aarch64: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
+     armv7l: 'af723c53d04e905531d9f3497017bc0d65be32be3c6613f518e72ed7f53de0b6',
+       i686: 'ead1b0c1e413199a63d2b729daede0242188e1bb951408cad050483723ac459e',
+     x86_64: 'c4bfd99b5d7098acf0cd890b409a4b2a444c3f90b34bdfc0d356a4bcaf3c50e6'
   })
+
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}"
@@ -28,5 +31,8 @@ class Luajit < Package
 
   def self.install
     system 'make', "PREFIX=#{CREW_PREFIX}", "MULTILIB=#{ARCH_LIB}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    Dir.chdir("#{CREW_DEST_PREFIX}/bin") do
+      FileUtils.ln_s 'luajit-2.1.0-beta3', 'luajit'
+    end
   end
 end

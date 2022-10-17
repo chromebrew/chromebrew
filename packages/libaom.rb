@@ -3,47 +3,32 @@ require 'package'
 class Libaom < Package
   description 'AV1 video codec from Alliance for Open Media'
   homepage 'https://aomedia.org/'
-  version '3.0.0'
+  version '3.5.0'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://aomedia.googlesource.com/aom.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.0.0_armv7l/libaom-3.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.0.0_armv7l/libaom-3.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.0.0_i686/libaom-3.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.0.0_x86_64/libaom-3.0.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.5.0_armv7l/libaom-3.5.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.5.0_armv7l/libaom-3.5.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.5.0_i686/libaom-3.5.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.5.0_x86_64/libaom-3.5.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '72f877cc765100e7fcde222405861a42c9193d715fb2c068854ad4caf9d2d48c',
-     armv7l: '72f877cc765100e7fcde222405861a42c9193d715fb2c068854ad4caf9d2d48c',
-       i686: 'a73111242ed76bf16ec0c638095ef304437e1330ae489108153e43eec5fc3a85',
-     x86_64: 'aae749ceebb4a126c85f80c2864253d8377893d225d26045e6838f7cb35a1cbe'
+    aarch64: 'de52b8db47bade9cc3862f66e9b925d7b402f277eba3dde4cc947b170387518a',
+     armv7l: 'de52b8db47bade9cc3862f66e9b925d7b402f277eba3dde4cc947b170387518a',
+       i686: '8883ff0962eb09fc19361b650ce19eb42d6f3c3a8bab1935bf74ca4552bf9772',
+     x86_64: '9d0a836a2ea213123c07ebee709473673b2451e77e69a7b2652bcdbf0eaa7208'
   })
 
-  depends_on 'yasm' => :build
-
-  def self.prebuild
-    @git_dir = 'aom_git'
-    @git_hash = '307ce06ed82d93885ee8ed53e152c9268ac0d98d'
-    @git_url = 'https://aomedia.googlesource.com/aom'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
-  end
+  depends_on 'nasm' => :build
+  depends_on 'glibc' # R
 
   def self.build
-    Dir.mkdir 'aom_git/builddir'
-    Dir.chdir 'aom_git/builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
@@ -63,10 +48,10 @@ class Libaom < Package
         -Wno-dev \
         .."
     end
-    system 'ninja -C aom_git/builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C aom_git/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

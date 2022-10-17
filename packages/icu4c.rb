@@ -3,30 +3,30 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '69.1'
+  version '72rc-b3'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz'
-  source_sha256 '4cba7b7acd1d3c42c44bb0c14be6637098c7faf2b330ce876bc5f3b915d09745'
+  source_url 'https://github.com/unicode-org/icu/archive/refs/tags/release-72-rc-cldr-beta3.tar.gz'
+  source_sha256 '4d89f270dafc4ff39d1acab795bf4d471ba1f78a1704aef28a5ba75fae3d6c3c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_armv7l/icu4c-69.1-chromeos-armv7l.tpxz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_armv7l/icu4c-69.1-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_i686/icu4c-69.1-chromeos-i686.tpxz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/69.1_x86_64/icu4c-69.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_armv7l/icu4c-72rc-b3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_armv7l/icu4c-72rc-b3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_i686/icu4c-72rc-b3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_x86_64/icu4c-72rc-b3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '31aaafa8b65f82f0bd77e403c4cf3819b20ddfd8abd775996bbf740251244aeb',
-    armv7l: '31aaafa8b65f82f0bd77e403c4cf3819b20ddfd8abd775996bbf740251244aeb',
-    i686: 'bbb7320a1aac37f09c7f8eb96ed1fefc5f01bc7a85ed0ad1cc9dac2a781472ea',
-    x86_64: '868a783d335eb13ff06d29b5221448a50e68a728ee1c35f3dc4c16c816716d68'
+    aarch64: '940f01954eb6424b03103c2e80d1a103580f1a8c180272eae3fac528933dcb91',
+     armv7l: '940f01954eb6424b03103c2e80d1a103580f1a8c180272eae3fac528933dcb91',
+       i686: '9683cc636aa88239ae4ab1e20f2d3346f9a163551cf01a8a2eec81ddecf82ab4',
+     x86_64: 'fb4ab173a2a6cbe17345f3154f96617f3b3215546e75ee99d49086d683812259'
   })
 
   depends_on 'gcc' # R
   depends_on 'glibc' # R
 
   def self.build
-    FileUtils.cd('source') do
+    FileUtils.cd('icu4c/source') do
       case ARCH
       when 'aarch64', 'armv7l'
         # Armhf requires sane ELF headers rather than other architectures as
@@ -38,17 +38,17 @@ class Icu4c < Package
         #{CREW_ENV_OPTIONS} \
         --enable-static \
         --enable-shared \
-        --without-samples \
-        --without-tests"
-      system 'make'
+        --disable-samples \
+        --disable-tests"
+      system 'mold -run make'
     end
   end
 
-  @icuver = '69'
-  @oldicuver = %w[67 68]
+  @icuver = '72'
+  @oldicuver = %w[67 68 69 71]
 
   def self.install
-    FileUtils.cd('source') do
+    FileUtils.cd('icu4c/source') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir CREW_DEST_LIB_PREFIX do
@@ -66,23 +66,25 @@ class Icu4c < Package
 
   def self.postinstall
     # Check for packages that expect an older icu library.
-    # Dir.chdir CREW_LIB_PREFIX do
-    # @oldicuver.each do |oldver|
-    # puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
-    # @fileArray = []
-    # @libArray = []
-    # @nmresults = %x[nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}].chop.split(/$/).map(&:strip)
-    # @nmresults.each { |fileLine| @libArray.push(fileLine.partition(":").first) }
-    # @libArray.each do |f|
-    # @grepresults =  %x[grep "#{f}" #{CREW_META_PATH}*.filelist].chomp.gsub('.filelist','').partition(":").first.gsub(CREW_META_PATH,'').split(/$/).map(&:strip)
-    # @grepresults.each { |fileLine| @fileArray.push(fileLine) }
-    # end
-    # unless @fileArray.empty?
-    # @fileArray.uniq.sort.each do |item|
-    # puts item.lightred
-    # end
-    # end
-    # end
-    # end
+    Dir.chdir CREW_LIB_PREFIX do
+      @oldicuver.each do |oldver|
+        puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
+        @fileArray = []
+        @libArray = []
+        @nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
+        @nmresults.each { |fileLine| @libArray.push(fileLine.partition(':').first) }
+        @libArray.each do |f|
+          @grepresults = `grep "#{f}" #{CREW_META_PATH}*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
+            CREW_META_PATH, ''
+          ).split(/$/).map(&:strip)
+          @grepresults.each { |fileLine| @fileArray.push(fileLine) }
+        end
+        next if @fileArray.empty?
+
+        @fileArray.uniq.sort.each do |item|
+          puts item.lightred
+        end
+      end
+    end
   end
 end

@@ -3,23 +3,23 @@ require 'package'
 class Jasper < Package
   description 'The JasPer Project is an open-source initiative to provide a free software-based reference implementation of the codec specified in the JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1).'
   homepage 'https://www.ece.uvic.ca/~frodo/jasper/'
-  version '2.0.28'
+  version '3.0.6'
   license 'JasPer-2.0'
   compatibility 'all'
-  source_url 'https://github.com/jasper-software/jasper/archive/refs/tags/version-2.0.28.tar.gz'
-  source_sha256 '6b4e5f682be0ab1a5acb0eeb6bf41d6ce17a658bb8e2dbda95de40100939cc88'
+  source_url 'https://github.com/jasper-software/jasper.git'
+  git_hashtag "version-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_armv7l/jasper-2.0.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_armv7l/jasper-2.0.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_i686/jasper-2.0.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/2.0.28_x86_64/jasper-2.0.28-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_armv7l/jasper-3.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_armv7l/jasper-3.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_i686/jasper-3.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_x86_64/jasper-3.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '050b02a407702dc301f3f5992a57872d0073e76d1d0a22172990d07ffeb7b52f',
-     armv7l: '050b02a407702dc301f3f5992a57872d0073e76d1d0a22172990d07ffeb7b52f',
-       i686: 'a017337c865a83e694faa0d009cef7ae2c507cfa7b5563def488423eb05ee6a4',
-     x86_64: 'e6ac7bc7b46baabf165f6afedf70fc509022626c52e483632533670ff2a78ed3'
+    aarch64: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
+     armv7l: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
+       i686: '99b928de2e3b4132d8c5a28dc80fd10db79fe32d3710a013e2b504238b39a10a',
+     x86_64: 'f7037e21cbcabd82eca2c8382fff9af133db731de5e31b8739eddae727fbfa89'
   })
 
   depends_on 'freeglut'
@@ -27,14 +27,14 @@ class Jasper < Package
   depends_on 'libjpeg'
   depends_on 'mesa'
   depends_on 'shared_mime_info'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libheif' # R
 
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+      system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         -DJAS_ENABLE_DOC=FALSE \

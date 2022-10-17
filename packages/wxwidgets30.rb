@@ -3,23 +3,24 @@ require 'package'
 class Wxwidgets30 < Package
   description 'wxWidgets is a C++ library that lets developers create applications for Windows, macOS, Linux and other platforms with a single code base.'
   homepage 'https://www.wxwidgets.org/'
-  version '3.0.5.1'
+  @_ver = '3.0.5.1'
+  version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_armv7l/wxwidgets30-3.0.5.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_armv7l/wxwidgets30-3.0.5.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_i686/wxwidgets30-3.0.5.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1_x86_64/wxwidgets30-3.0.5.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1-1_armv7l/wxwidgets30-3.0.5.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1-1_armv7l/wxwidgets30-3.0.5.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1-1_i686/wxwidgets30-3.0.5.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets30/3.0.5.1-1_x86_64/wxwidgets30-3.0.5.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2b26bceb3a39c6d9daa06e9d255e85827459c24d767226714337130c4cfd57ce',
-     armv7l: '2b26bceb3a39c6d9daa06e9d255e85827459c24d767226714337130c4cfd57ce',
-       i686: 'a426f85c7f630184ac433d4b8a91eced0dbbab2a9dd9cd3d9a82e23c0f29adaf',
-     x86_64: '152777e14b5faa3256f04fd5df463887c3d348b537ab9bbfa10b8e92ec0a040d'
+    aarch64: '8068d9a249b50137533460cc3526617c277cf0e4fbce2ab405266146f4129031',
+     armv7l: '8068d9a249b50137533460cc3526617c277cf0e4fbce2ab405266146f4129031',
+       i686: 'df2a33b55203e2aaac28edf186f557a25225f0da4496f5922bb0de6d45526619',
+     x86_64: '0eb2ecba4109d960ab9c23a51161964b26864aad475f7d2a2bfc63b3b4a1a8da'
   })
 
   depends_on 'atk' # R
@@ -41,6 +42,12 @@ class Wxwidgets30 < Package
   depends_on 'libxxf86vm' # R
   depends_on 'mesa' # R
   depends_on 'pango' # R
+  depends_on 'webkit2gtk_4'
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libsoup2' # R
+  depends_on 'zlibpkg' # R
 
   def self.preflight
     %w[wxwidgets wxwidgets31].each do |wxw|
