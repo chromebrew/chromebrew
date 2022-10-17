@@ -38,7 +38,10 @@ class Filecmd < Package
                         --enable-bzlib \
                         --enable-xzlib \
                         --enable-fsect-man5 \
-                        --enable-libseccomp"
+                        --disable-libseccomp" # libseccomp is disabled because
+                        # it causes file to return "Bad system call" errors when
+                        # not run with root
+    
   
   def self.build
     # Build a static file binary for use in case needed with glibc brokenness.
