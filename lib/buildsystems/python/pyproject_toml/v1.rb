@@ -1,6 +1,6 @@
 require 'buildsystems/python/common'
 
-class Python_build_v1 < Python_common
+class Pyproject_toml_v1 < Python_common
   @_buildsystems_python_pyproject_toml_version = '1.0.0'
 
   depends_on @python

@@ -20,6 +20,7 @@ class Setup_py_v1 < Python_common
   end
 
   def self.build
+    puts "! #{@python} !".yellow
     system "#{@python} setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 

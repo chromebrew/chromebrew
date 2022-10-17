@@ -2,27 +2,30 @@ require 'package'
 
 # This file holds functions common to all Python buildsystems
 class Python_common < Package
-
   # Python version defaults to 3, 2 is still an option
-  def self.python_version(pyversion = '3')
+  def self.pyversion(pyversion = '3')
+    case pyversion
+    when !'3', !'2'
+      abort "Python version specified in #{@pkg.name} is neither Python 2 nor Python 3.".lightred
+    end
     return (@pyversion = pyversion)
   end
 
   # In case we ever implement another python implementation, like PyPy
-  def self.python_implementation(pyimplementation = 'python')
+  def self.pyimplementation(pyimplementation = 'python')
     return (@python = "#{pyimplementation}#{pyversion}")
   end
 
-  def self.minipython
-    case @python
+  def self.minipython(python = @python, pyversion = @pyversion)
+    case python
     when /^python/
-      @minipython = "py#{@pyversion}"
+      minipython = "py#{pyversion}"
     when /^pypy/
-      @minipython = "pypy#{@pyversion}"
+      minipython = "pypy#{pyversion}"
     when /^jython/
-      @minipython = "jpy#{@pyversion}"
+      minipython = "jpy#{pyversion}"
     end
-    return @minipython
+    return (@minipython = minipython)
   end
 
   # Massive amounts of check logic

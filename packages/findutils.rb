@@ -12,4 +12,10 @@ class Findutils < Autotools_v1
   depends_on 'python3'
 
   configure_options '--without-selinux'
+
+  def self.install
+    # Remove these as they conflict with mlocate
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/locate"
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/updatedb"
+  end
 end
