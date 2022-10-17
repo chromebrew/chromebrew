@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools/v1'
 
-class Util_macros < Package
+class Util_macros < Autotools_v1
   description 'The util-macros package contains the m4 macros used by all of the Xorg packages'
   homepage 'https://www.linuxfromscratch.org/blfs/view/svn/util-macros.html'
   @_ver = '1.19.3'
