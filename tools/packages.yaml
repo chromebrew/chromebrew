@@ -3465,6 +3465,11 @@ url: https://github.com/libcheck/check/releases
 activity: low
 ---
 kind: url
+name: libcloudproviders
+url: https://gitlab.gnome.org/World/libcloudproviders/-/tags
+activity: low
+---
+kind: url
 name: libcom_err
 url: https://sourceforge.net/projects/e2fsprogs/files/e2fsprogs/
 activity: medium
