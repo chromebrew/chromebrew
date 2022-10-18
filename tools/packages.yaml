@@ -2260,6 +2260,11 @@ url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
 activity: high
 ---
 kind: url
+name: gnome_console
+url: https://gitlab.gnome.org/GNOME/console/-/tags
+activity: medium
+---
+kind: url
 name: gnome_common
 url: https://github.com/GNOME/gnome-common/releases/
 activity: low
@@ -3778,6 +3783,11 @@ kind: url
 name: libgsf
 url: https://ftp.gnome.org/pub/gnome/sources/libgsf/
 activity: medium
+---
+kind: url
+name: libgtop
+url: https://gitlab.gnome.org/GNOME/libgtop/-/tags
+activity: low
 ---
 kind: url
 name: libgudev
