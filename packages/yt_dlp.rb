@@ -10,7 +10,7 @@ class Yt_dlp < Package
   source_url 'https://github.com/yt-dlp/yt-dlp.git'
   git_hashtag @_ver
 
-  depends_on 'py3_britlicffi'
+  depends_on 'py3_brotlicffi'
   depends_on 'py3_certifi'
   depends_on 'py3_mutagen'
   depends_on 'py3_pycryptodomex'
