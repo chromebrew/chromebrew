@@ -5024,6 +5024,11 @@ url: https://megatools.megous.com/builds
 activity: low
 ---
 kind: url
+name: meld
+url: https://gitlab.gnome.org/GNOME/meld/-/tags
+activity: medium
+---
+kind: url
 name: memcached
 url: https://memcached.org/downloads
 activity: high
