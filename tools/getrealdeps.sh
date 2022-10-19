@@ -96,6 +96,9 @@ do \
 read -r -n 4 exec_header_bytes < "${i}"
 [[ "$exec_header_bytes" == $'\x7FELF' ]] || continue
 [[ $i = *_tkinter* ]] && continue # Carveout for Python3
+# Expand upx compressed binaries if in a container environment
+# since otherwise we cannot figure out their dependencies.
+[[ -f "/.dockerenv" ]] &&  upx -d "${i}" &> /dev/null
 mkdir -p /tmp/deps/"${pkg}"/
 lines+=$(echo ; readelf -d "$i" 2>/dev/null | $GREP NEEDED | awk '{print $5}' \
 | sed 's/\[//g' | sed 's/\]//g' | awk '!x[$0]++' | tee /tmp/deps/"${pkg}"/$(basename "$i") ; echo ) ; \
@@ -114,11 +117,12 @@ echo "$lines" | tr " " "\n" | awk '!x[$0]++')
 # Remove original package from list.
 pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${pkg}/d" | sort -u )
 
-# Note which dependencies are missing.
+# Note which dependencies are missing, but ignore :build lines, since
+# build depenencies may still be runtime dependencies.
 missingpkgdeps=$(
 for i in $pkgdeps
 do
-  $GREP -q "depends_on '$i'" "${CREW_PREFIX}"/lib/crew/packages/"${pkg}".rb || echo "$i"
+  $GREP -v ":build" "${CREW_PREFIX}"/lib/crew/packages/"${pkg}".rb | $GREP -q "depends_on '$i'" || echo "$i"
 done
 )
 echo_info "\nPackage ${pkg} has runtime library dependencies on these packages:"
