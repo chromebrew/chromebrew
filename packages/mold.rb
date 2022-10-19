@@ -8,7 +8,7 @@ class Mold < Package
   homepage 'https://github.com/rui314/mold'
   version '1.6.0'
   compatibility 'all'
-  source_url 'https://github.com/rui314/mold/archive/refs/tags/v1.6.0.tar.gz'
+  source_url 'https://github.com/rui314/mold/archive/v1.6.0.tar.gz'
   source_sha256 '59cd3ea1a2a5fb50d0d97faddd8bff4c7e71054a576c00a87b17f56ecbd88729'
 
   binary_url({
