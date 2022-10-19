@@ -4,8 +4,8 @@ class Atk < Package
   description 'ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications'
   homepage 'https://developer.gnome.org/atk'
   version '2.38.0'
-  license 'LGPL-2+'
   compatibility 'all'
+  license 'LGPL-2+'
   source_url 'https://gitlab.gnome.org/GNOME/atk.git'
   git_hashtag version
 

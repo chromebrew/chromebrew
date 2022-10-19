@@ -1,0 +1,43 @@
+# Adapted from Arch Linux libgtop PKGBUILD at:
+# https://github.com/archlinux/svntogit-packages/raw/packages/libgtop/trunk/PKGBUILD
+
+require 'package'
+
+class Libgtop < Package
+  description 'A library for collecting system monitoring data'
+  homepage 'https://gitlab.gnome.org/GNOME/libgtop'
+  version '2.40.0-507809b'
+  license 'LGPL'
+  compatibility 'all'
+  source_url 'https://gitlab.gnome.org/GNOME/libgtop.git'
+  git_hashtag '507809b648634c6251e9aeeb8ffae1d38c5be5f7'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_armv7l/libgtop-2.40.0-507809b-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_armv7l/libgtop-2.40.0-507809b-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_i686/libgtop-2.40.0-507809b-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_x86_64/libgtop-2.40.0-507809b-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '162e38569618da3e070b43c13efb2a097ca66e4e1bc2b22cfc81f8c64166332f',
+     armv7l: '162e38569618da3e070b43c13efb2a097ca66e4e1bc2b22cfc81f8c64166332f',
+       i686: '7b37bd68ff372e474fabdce60b6b635e69291b7d6866457c268aa053ecb207da',
+     x86_64: '259446e4819d162fd7963535ae7a52ba2bc868e4b8939fe00dc27baf54e69a23'
+  })
+
+  depends_on 'libxau'
+  depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+
+  def self.build
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS}"
+    system 'make'
+  end
+
+  def self.install
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
+  end
+end
