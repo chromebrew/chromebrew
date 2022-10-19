@@ -25,9 +25,6 @@ class Gawk < Package
   end
 
   def self.build
-    system './bootstrap.sh'
-    # ./bootstrap.sh doesn't call autoconf, this is intentional
-    #system 'autoreconf -fiv'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
