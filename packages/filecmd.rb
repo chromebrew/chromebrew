@@ -32,7 +32,7 @@ class Filecmd < Package
     File.write('filefix', @filefix)
   end
 
-  @filecmd_config_opts="--enable-static \
+  @filecmd_config_opts = "--enable-static \
                         --enable-shared \
                         --enable-zlib \
                         --enable-bzlib \
@@ -41,32 +41,31 @@ class Filecmd < Package
                         --disable-libseccomp" # libseccomp is disabled because
                         # it causes file to return "Bad system call" errors when
                         # not run with root
-    
-  
+
   def self.build
     # Build a static file binary for use in case needed with glibc brokenness.
-    Dir.mkdir "builddir-static"
-    Dir.chdir "builddir-static" do
+    Dir.mkdir 'builddir-static'
+    Dir.chdir 'builddir-static' do
       system "env LDFLAGS+=' -static' \
       ../configure \
         #{CREW_OPTIONS} \
         #{@filecmd_config_opts}"
-      system "make"
+      system 'make'
     end
 
     # Build libmagic and everything else (dynamically linked)
-    Dir.mkdir "builddir-dynamic"
-    Dir.chdir "builddir-dynamic" do
+    Dir.mkdir 'builddir-dynamic'
+    Dir.chdir 'builddir-dynamic' do
       system "../configure \
         #{CREW_OPTIONS} \
         #{@filecmd_config_opts}"
-      system "make"
+      system 'make'
     end
   end
 
   def self.check
-    system "make -C builddir-static check"
-    system "make -C builddir-dynamic check"
+    system 'make -C builddir-static check'
+    system 'make -C builddir-dynamic check'
   end
 
   def self.install
