@@ -17,7 +17,7 @@ class Bz3 < Package
     system "sed -i 's:^autoreconf:#autoreconf:g' bootstrap.sh"
 
     # Replace /bin/sh shebangs with /usr/bin/env sh ones
-    ["bz3cat", "bz3grep", "bz3less", "bz3more", "unbzip3"].each do |file|
+    %w[bz3cat bz3grep bz3less bz3more unbzip3].each do |file|
       system "sed -i 's:^#!/bin/sh:#!/usr/bin/env sh:' #{file}"
     end
 
@@ -30,7 +30,6 @@ class Bz3 < Package
     system "sed -i 's:less:most:g' bz3most.1"
     system "sed -i 's: bz3less.1 : bz3less.1 bz3most.1 :g' Makefile.am"
   end
-
 
   def self.build
     system './bootstrap.sh'
