@@ -16,6 +16,7 @@ class Yt_dlp < Package
   depends_on 'py3_pycryptodomex'
   depends_on 'py3_websockets'
   depends_on 'py3_setuptools' => :build
+  depends_on 'pandoc' => :build
 
   def self.build
     system 'make'
