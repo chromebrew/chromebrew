@@ -42,6 +42,9 @@ class Filecmd < Package
                         # not run with root
 
   def self.build
+    # This tarball was built with a buggy version of libtool. This shouldn't be the case for file 5.44
+    system 'filefix'
+
     # Build a static file binary for use in case needed with glibc brokenness.
     Dir.mkdir 'builddir-static'
     Dir.chdir 'builddir-static' do
