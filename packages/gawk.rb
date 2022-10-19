@@ -7,8 +7,8 @@ class Gawk < Package
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://git.savannah.gnu.org/git/gawk.git'
-  git_hashtag "gawk-#{@_ver}"
+  source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.2.0.tar.xz'
+  source_sha256 'e4ddbad1c2ef10e8e815ca80208d0162d4c983e6cca16f925e8418632d639018'
 
   depends_on 'readline' => :build
   depends_on 'ncurses'
@@ -26,8 +26,8 @@ class Gawk < Package
 
   def self.build
     system './bootstrap.sh'
-    # For some reason, ./bootstrap.sh doesn't call autoconf at all
-    system 'autoreconf -fiv'
+    # ./bootstrap.sh doesn't call autoconf, this is intentional
+    #system 'autoreconf -fiv'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
