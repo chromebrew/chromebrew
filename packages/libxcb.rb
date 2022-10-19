@@ -18,8 +18,8 @@ class Libxcb < Package
   binary_sha256({
     aarch64: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
      armv7l: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
-       i686: 'abe30bdd99805f01b4752ca533a21f2a83b2ca5ae378fbb3922aa7f9e57ffcf5',
-     x86_64: '4dcc5e0a5da5e6bda64a42bc4419c90fa293a9703e2c1705b30865bcaa474435'
+       i686: 'cc9c9c2c023c4aa478f0b256f5e4aa3b3fa51b36d8f94627342c4f2f6ca1bbbf',
+     x86_64: 'd1e81462049e32ba54bedf4a3d6ce39cb8610fa3d9b451618a78446b625fd564'
   })
 
   depends_on 'xcb_proto'
