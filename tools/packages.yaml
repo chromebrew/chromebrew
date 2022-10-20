@@ -999,6 +999,11 @@ url: https://www.kernel.org/pub/linux/utils/cryptsetup/
 activity: low
 ---
 kind: url
+name: crystal
+url: https://github.com/crystal-lang/crystal/releases
+activity: medium
+---
+kind: url
 name: cscope
 url: https://sourceforge.net/projects/cscope/files/cscope/
 activity: low
@@ -1371,6 +1376,11 @@ activity: high
 kind: url
 name: encodings
 url: https://www.x.org/releases/individual/font
+activity: none
+---
+kind: url
+name: enet
+url: https://github.com/lsalzman/enet/tags
 activity: none
 ---
 kind: url
@@ -5014,6 +5024,11 @@ url: https://megatools.megous.com/builds
 activity: low
 ---
 kind: url
+name: meld
+url: https://gitlab.gnome.org/GNOME/meld/-/tags
+activity: medium
+---
+kind: url
 name: memcached
 url: https://memcached.org/downloads
 activity: high
@@ -6534,6 +6549,11 @@ url: https://github.com/xiph/rav1e/releases
 activity: medium
 ---
 kind: url
+name: rclone
+url: https://github.com/rclone/rclone/releases
+activity: medium
+---
+kind: url
 name: rdfind
 url: https://github.com/pauldreik/rdfind/releases/
 activity: none
@@ -7514,6 +7534,11 @@ url: http://mama.indstate.edu/users/ice/tree/src
 activity: none
 ---
 kind: url
+name: tree_sitter
+url: https://github.com/tree-sitter/tree-sitter/releases
+activity: low
+---
+kind: url
 name: trousers
 url: https://sourceforge.net/projects/trousers/files/trousers/
 activity: none
@@ -7567,6 +7592,11 @@ kind: url
 name: umockdev
 url: https://github.com/martinpitt/umockdev/releases
 activity: medium
+---
+kind: url
+name: unibilium
+url: https://github.com/neovim/unibilium/releases
+activity: none
 ---
 kind: url
 name: unicode_character_database
@@ -8042,6 +8072,11 @@ kind: url
 name: xclock
 url: https://www.x.org/pub/individual/app/
 activity: low
+---
+kind: url
+name: xcurses
+url: https://github.com/wmcbrine/PDCurses/releases
+activity: none
 ---
 kind: url
 name: xdg_dbus_proxy
