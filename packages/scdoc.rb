@@ -7,8 +7,10 @@ class Scdoc < Package
   version @_ver
   license 'MIT'
   compatibility 'all'
-  source_url 'https://git.sr.ht/~sircmpwn/scdoc.git'
-  git_hashtag @_ver
+  # source_url 'https://git.sr.ht/~sircmpwn/scdoc.git' # Git url with .git at the end returns 403 Forbidden
+  # git_hashtag @_ver
+  source_url "https://git.sr.ht/~sircmpwn/scdoc/archive/#{@_ver}.tar.gz"
+  source_sha256 "e9ff9981b5854301789a6778ee64ef1f6d1e5f4829a9dd3e58a9a63eacc2e6f0"  
 
   def self.patch
     # Use correct gcc compiler
