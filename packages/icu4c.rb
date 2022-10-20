@@ -3,30 +3,30 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '72rc-b3'
+  version '72.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/archive/refs/tags/release-72-rc-cldr-beta3.tar.gz'
-  source_sha256 '4d89f270dafc4ff39d1acab795bf4d471ba1f78a1704aef28a5ba75fae3d6c3c'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz'
+  source_sha256 'a2d2d38217092a7ed56635e34467f92f976b370e20182ad325edea6681a71d68'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_armv7l/icu4c-72rc-b3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_armv7l/icu4c-72rc-b3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_i686/icu4c-72rc-b3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72rc-b3_x86_64/icu4c-72rc-b3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_armv7l/icu4c-72.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_armv7l/icu4c-72.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_i686/icu4c-72.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_x86_64/icu4c-72.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '940f01954eb6424b03103c2e80d1a103580f1a8c180272eae3fac528933dcb91',
-     armv7l: '940f01954eb6424b03103c2e80d1a103580f1a8c180272eae3fac528933dcb91',
-       i686: '9683cc636aa88239ae4ab1e20f2d3346f9a163551cf01a8a2eec81ddecf82ab4',
-     x86_64: 'fb4ab173a2a6cbe17345f3154f96617f3b3215546e75ee99d49086d683812259'
+    aarch64: 'c48a08ef474cf15375659a1a4e95db3cca08416c7943492ac539aa3d1d17ac64',
+     armv7l: 'c48a08ef474cf15375659a1a4e95db3cca08416c7943492ac539aa3d1d17ac64',
+       i686: '1572cb682daab3c6e65b4407c7c6f74d5f72f394cd08a9784f4e3f8e4d0c445f',
+     x86_64: 'fd6fdebe976e837378174b6923067491c2d965cdf1b9f252c6728cf98c32b932'
   })
 
   depends_on 'gcc' # R
   depends_on 'glibc' # R
 
   def self.build
-    FileUtils.cd('icu4c/source') do
+    FileUtils.cd('source') do
       case ARCH
       when 'aarch64', 'armv7l'
         # Armhf requires sane ELF headers rather than other architectures as
@@ -48,7 +48,7 @@ class Icu4c < Package
   @oldicuver = %w[67 68 69 71]
 
   def self.install
-    FileUtils.cd('icu4c/source') do
+    FileUtils.cd('source') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir CREW_DEST_LIB_PREFIX do

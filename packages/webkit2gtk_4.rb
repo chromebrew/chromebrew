@@ -23,6 +23,7 @@ class Webkit2gtk_4 < Package
   })
 
   depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'ccache' => :build
   depends_on 'dav1d'
@@ -50,7 +51,6 @@ class Webkit2gtk_4 < Package
   depends_on 'libpng'
   depends_on 'libsecret'
   depends_on 'libsoup'
-  depends_on 'libsoup2'
   depends_on 'libtasn1' # R
   depends_on 'libwebp'
   depends_on 'libwpe'
@@ -146,37 +146,12 @@ class Webkit2gtk_4 < Package
           -DUSE_JPEGXL=ON \
           -DPORT=GTK \
           -DUSE_GTK4=OFF \
-          -DUSE_SOUP2=ON \
+          -DUSE_SOUP2=OFF \
           -DUSE_AVIF=ON \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew' \
           -DFORCE_32BIT=#{@force_32bit} \
           .."
-      # when 'i686', 'armv7l', 'aarch64'
-      # system "cmake \
-      #-G Ninja \
-      # #{CREW_CMAKE_OPTIONS} \
-      #-DCMAKE_SKIP_RPATH=ON \
-      #-DENABLE_BUBBLEWRAP_SANDBOX=OFF \
-      #-DENABLE_JOURNALD_LOG=OFF \
-      #-DENABLE_GAMEPAD=OFF \
-      #-DENABLE_GLES2=ON \
-      #-DENABLE_INTROSPECTION=ON \
-      #-DENABLE_MINIBROWSER=ON \
-      #-DENABLE_VIDEO=ON \
-      #-DENABLE_WAYLAND_TARGET=ON \
-      #-DENABLE_WEB_AUDIO=OFF \
-      #-DUSE_WPE_RENDERER=ON \
-      #-DUSE_JPEGXL=ON \
-      #-DPORT=GTK \
-      #-DUSE_GTK4=OFF \
-      #-DUSE_SOUP2=ON \
-      #-DUSE_AVIF=ON \
-      #-DPYTHON_EXECUTABLE=`which python` \
-      #-DUSER_AGENT_BRANDING='Chromebrew' \
-      #-DFORCE_32BIT=ON \
-      # .."
-      # end
     end
     system 'ninja -C builddir'
   end
