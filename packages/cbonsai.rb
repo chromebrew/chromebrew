@@ -21,7 +21,7 @@ class Cbonsai < Package
     # Move the manpage from section 1 to section 6
     # (See https://gitlab.com/jallbrit/cbonsai/-/merge_requests/21 for reasoning)
     downloader 'https://gitlab.com/jallbrit/cbonsai/-/merge_requests/21.patch', 'd56f84041e7db05437812d3cfee51766210247ccbcbb0dface72b0a0f5407599'
-    system 'patch -Np1 21.patch'
+    system 'patch -Np1 -i 21.patch'
   end
 
   def self.build
