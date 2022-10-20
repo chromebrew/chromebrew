@@ -7,19 +7,19 @@ class Libpeas < Package
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/GNOME/libpeas/archive/libpeas-1.34.0.tar.gz'
-  source_sha256 '93d2826330a5e943dcfe8d059c5885a808494ee44c0b04f72f2bb2283b4d515b'
+  source_sha256 '514b0576d9a56460915490bdb61dcb88634fdacfb2801e28dcbb9a730348858f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_armv7l/libpeas-1.28.0-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_i686/libpeas-1.28.0-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.28.0_x86_64/libpeas-1.28.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.34.0_armv7l/libpeas-1.34.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.34.0_armv7l/libpeas-1.34.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.34.0_i686/libpeas-1.34.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpeas/1.34.0_x86_64/libpeas-1.34.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',
-      armv7l: '1e304a55ad539257c0ff2e1caa48671ee0c8749eb438d344d27025bc8b48c435',
-        i686: '2fb94c73ed674c002632cc4dfd4d32ade44ed5798e13c2cb01a8ff63966169dd',
-      x86_64: '1333e5f9ba1e4b516a81dfbd41cc4bf0502d4d735b250a61ef95c7c0f60073c0'
+    aarch64: '78ceca9000c59442db18d1b1702822f479296bff42b047019dea40fae8e314d0',
+     armv7l: '78ceca9000c59442db18d1b1702822f479296bff42b047019dea40fae8e314d0',
+       i686: '06afcd1793b448959dbb5e8e60fa66c84ac0078da216267acc12b522f41d8af7',
+     x86_64: '44fbfaef5fdbc51964688bc0971ce65aa5424db58615a1a688b872f0f4755625'
   })
 
   depends_on 'gtk3'
@@ -29,6 +29,13 @@ class Libpeas < Package
   depends_on 'glade' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'vala' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'luajit' # R
+  depends_on 'py3_gi_docgen' # R
+  depends_on 'python3' # R
+
+  gnome
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} builddir"
