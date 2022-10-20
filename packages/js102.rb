@@ -2,36 +2,37 @@ require 'package'
 
 class Js102 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 102'
-  @_ver = '102.3.0'
+  @_ver = '102.4.0'
   version @_ver
   license 'MPL-2.0'
   compatibility 'all'
   source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
-  source_sha256 '308e23b6dcf964e342cf95fd0c8a386127371b620a489ae26e537d728341b55a'
+  source_sha256 'e79f0ddd4914dfbff61c5eea7ff28ad2dd12ecfbf3d63a41dab57d50171d904e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.3.0_armv7l/js102-102.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.3.0_armv7l/js102-102.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.3.0_i686/js102-102.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.3.0_x86_64/js102-102.3.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_armv7l/js102-102.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_armv7l/js102-102.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_i686/js102-102.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/js102/102.4.0_x86_64/js102-102.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c8639443001be339fd99715e509e39d2904ad5d37b88a7e7b70e4b60ac533756',
-     armv7l: 'c8639443001be339fd99715e509e39d2904ad5d37b88a7e7b70e4b60ac533756',
-       i686: '4af582a2e2411624e8b1b1805c8ae5a15c293262879df1a911fd829ef1e5604f',
-     x86_64: '75edf8939dd16f044df8fbe6724e777ed6932875c7bede85c69ed588daf28ea3'
+    aarch64: 'cdebffea9ebee4e43ae1c1b3e69f8fa1f573fef22fb16a138da9ebb590c23f45',
+     armv7l: 'cdebffea9ebee4e43ae1c1b3e69f8fa1f573fef22fb16a138da9ebb590c23f45',
+       i686: 'c1b727f99b1fc175bda9e5e2f5059712f01e5b190d3528c838a3887861b38c58',
+     x86_64: '3eab263b390fe708d484866d91faf01d389abf394f35f9e8b358fff2a334f478'
   })
 
   depends_on 'autoconf213' => :build
-  depends_on 'libnotify' => :build
-  depends_on 'rust' => :build
-  depends_on 'llvm' => :build
-  depends_on 'nspr'
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'libnotify' => :build
+  depends_on 'llvm' => :build
   depends_on 'ncurses' # R
+  depends_on 'nspr'
   depends_on 'nss' # R
   depends_on 'readline' # R
+  depends_on 'rust' => :build
   depends_on 'zlibpkg' # R
 
   @rust_default_host = case ARCH
@@ -119,7 +120,7 @@ class Js102 < Package
             RUSTUP_HOME='#{CREW_PREFIX}/share/rustup' \
             CARGO_HOME='#{CREW_PREFIX}/share/cargo' \
             LDFLAGS='-lreadline -ltinfo' \
-            MACH_USE_SYSTEM_PYTHON=1 \
+            MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system \
             MOZCONFIG=../.mozconfig \
             mold -run ../mach build"
     end
