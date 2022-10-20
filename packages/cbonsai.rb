@@ -20,8 +20,9 @@ class Cbonsai < Package
 
     # Move the manpage from section 1 to section 6
     # (See https://gitlab.com/jallbrit/cbonsai/-/merge_requests/21 for reasoning)
-    downloader 'https://gitlab.com/jallbrit/cbonsai/-/merge_requests/21.patch', 'd56f84041e7db05437812d3cfee51766210247ccbcbb0dface72b0a0f5407599'
-    system 'patch -Np1 -i 21.patch'
+    system "sed -i 's:man1:man6:g' Makefile"
+    system "sed -i 's:cbonsai.1:cbonsai.6:g' Makefile"
+    system "sed -i 's:cbonsai(1):cbonsai(6):' cbonsai.scd"
   end
 
   def self.build
