@@ -1,29 +1,30 @@
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.36.8'
-  version @_ver
-  license 'LGPL-2+ and BSD-2'
+  # @_ver = '2.38.0'
+  # version @_ver
+  version = ARCH == 'x86_64' || ARCH == 'i686' ? '2.38.0' : '2.32.4'
   compatibility 'all'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.36.8.tar.xz'
-  source_sha256 '0ad9fb6bf28308fe3889faf184bd179d13ac1b46835d2136edbab2c133d00437'
+  license 'LGPL-2+ and BSD-2'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
+  source_sha256 'f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.36.8_i686/webkit2gtk_4-2.36.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.36.8_x86_64/webkit2gtk_4-2.36.8-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_i686/webkit2gtk_4-2.38.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_x86_64/webkit2gtk_4-2.38.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
      armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: 'd40ff5b6f346fbab7178f355b649c49548453d1c9fd56dee9f1cba84825646e9',
-     x86_64: '9501da66dcc415a799dff35cdc25f9fe7149a8d08f662e1f9fe680e2ddfcf11d'
+       i686: 'c78df8137e56af8a7e5aa78314fadedca0e3e9b846a6090809b29f2481f1484e',
+     x86_64: '870d34f82323b6508c5ef77fa0d44f3b1cd0d16fbb76f8e8b8c2ae0c803323c5'
   })
 
   depends_on 'atk'
   depends_on 'cairo'
-  # depends_on 'ccache' => :build
+  depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant'
   depends_on 'fontconfig'
@@ -106,12 +107,12 @@ class Webkit2gtk_4 < Package
     File.write('gcc.patch', @gcc_patch)
     system 'patch -Np1 -F 10 -i gcc.patch'
     # Patch from https://github.com/WebKit/WebKit/pull/1233
-    downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
-               '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
-    system 'patch -Np1 -F 10 -i 1233.diff'
+    # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
+    #           '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
+    # system 'patch -Np1 -F 10 -i 1233.diff'
     ## Maybe ARM_NEON isn't being detected properly in containers.
-    system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/software/FELightingSoftwareApplier.h",
-exception: false
+    # system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/software/FELightingSoftwareApplier.h",
+    # exception: false
     # system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/FELighting.h",
     # exception: false
     # system "sed -i 's,data.pixels->bytes(),data.pixels->data(),g' Source/WebCore/platform/graphics/cpu/arm/filters/FELightingNEON.h",
@@ -130,7 +131,7 @@ exception: false
       # when 'x86_64'
       system "mold -run cmake \
           -G Ninja \
-          #{CREW_CMAKE_OPTIONS} \
+          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error')} \
           -DCMAKE_SKIP_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
