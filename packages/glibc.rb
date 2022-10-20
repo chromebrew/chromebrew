@@ -20,15 +20,15 @@ class Glibc < Package
   # from the one ChromeOS ships with.
   # @libc_version = '2.33'
   if @libc_version == '2.23'.freeze
-    version '2.23-5'
+    version '2.23-6'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
     binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-5_i686/glibc-2.23-5-chromeos-i686.tar.zst'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-6_i686/glibc-2.23-6-chromeos-i686.tar.zst'
     })
     binary_sha256({
-      i686: 'b45e064513cb415f6975b0bab14d130f75e17ac0940105e3ceb478b8c9d02a0e'
+      i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
     })
   elsif @libc_version == '2.27'
     version '2.27-1'
