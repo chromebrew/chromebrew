@@ -10,6 +10,19 @@ class Filecmd < Package
   source_url "http://ftp.astron.com/pub/file/file-#{@_ver}.tar.gz"
   source_sha256 '8c8015e91ae0e8d0321d94c78239892ef9dbc70c4ade0008c0e95894abfb1991'
 
+  binary_url({
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.43_armv7l/filecmd-5.43-chromeos-armv7l.tar.zst',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.43_armv7l/filecmd-5.43-chromeos-armv7l.tar.zst',
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.43_i686/filecmd-5.43-chromeos-i686.tar.zst',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.43_x86_64/filecmd-5.43-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+     aarch64: '634ba594f8b8a78b7c3ba134f179539ca0d87b5c7355a5a5c069a10d02e387de',
+      armv7l: '634ba594f8b8a78b7c3ba134f179539ca0d87b5c7355a5a5c069a10d02e387de',
+        i686: '53bf9164ab73378121cebc675e5ea33e8926280a8a995f1e11b8690aa4952273',
+      x86_64: '87e990a2889f889b9e3f5c77b28b6d80b3b9b79b824d8c4d2ffab0c63caf9c15'
+  })
+
   depends_on 'bz2' # R
   depends_on 'glibc' # R
   depends_on 'xzutils' # R
