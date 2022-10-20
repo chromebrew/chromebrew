@@ -3,7 +3,12 @@ class Webkit2gtk_4 < Package
   homepage 'https://webkitgtk.org'
   # @_ver = '2.38.0'
   # version @_ver
-  version = ARCH == 'x86_64' || ARCH == 'i686' ? '2.38.0' : '2.32.4'
+  case ARCH
+  when 'x86_64', 'i686'
+    version '2.38.0'
+  when 'aarch64', 'armv7l'
+    version '2.32.4'
+  end
   compatibility 'all'
   license 'LGPL-2+ and BSD-2'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
@@ -127,8 +132,6 @@ class Webkit2gtk_4 < Package
     Dir.chdir 'builddir' do
       # Bubblewrap sandbox breaks on epiphany with
       # bwrap: Can't make symlink at /var/run: File exists
-      # case ARCH
-      # when 'x86_64'
       system "mold -run cmake \
           -G Ninja \
           #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error')} \

@@ -1,8 +1,14 @@
 class Webkit2gtk_5 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.38.0'
-  version @_ver
+  # @_ver = '2.38.0'
+  # version @_ver
+  case ARCH
+  when 'x86_64', 'i686'
+    version '2.38.0'
+  when 'aarch64', 'armv7l'
+    version '2.32.4'
+  end
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
@@ -22,67 +28,93 @@ class Webkit2gtk_5 < Package
   })
 
   depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'ccache' => :build
   depends_on 'dav1d'
-  depends_on 'enchant'
+  depends_on 'enchant' # R
   depends_on 'fontconfig'
-  depends_on 'freetype'
+  depends_on 'freetype' # R
   depends_on 'gcc' # R
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  depends_on 'gstreamer'
-  depends_on 'gtk4'
+  depends_on 'gstreamer' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz'
-  depends_on 'hyphen'
+  depends_on 'harfbuzz' # R
+  depends_on 'hyphen' # R
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
   depends_on 'libavif' # R
-  depends_on 'libgcrypt'
+  depends_on 'libgcrypt' # R
+  depends_on 'libglvnd' # R
   depends_on 'libgpgerror' # R
-  depends_on 'libjpeg'
-  depends_on 'libjxl'
+  depends_on 'libjpeg' # R
+  depends_on 'libjxl' # R
   depends_on 'libnotify'
-  depends_on 'libpng'
-  depends_on 'libsecret'
-  depends_on 'libsoup'
-  depends_on 'libsoup2'
+  depends_on 'libpng' # R
+  depends_on 'libsecret' # R
+  depends_on 'libsoup' # R
   depends_on 'libtasn1' # R
-  depends_on 'libwebp'
-  depends_on 'libwpe'
-  depends_on 'libx11'
-  depends_on 'libxcomposite'
-  depends_on 'libxdamage'
+  depends_on 'libwebp' # R
+  depends_on 'libwpe' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxdamage' # R
   depends_on 'libxml2' # R
-  depends_on 'libxrender'
-  depends_on 'libxslt'
-  depends_on 'libxt'
-  depends_on 'mesa'
-  depends_on 'openjpeg'
-  depends_on 'pango'
+  depends_on 'libxrender' # R
+  depends_on 'libxslt' # R
+  depends_on 'libxt' # R
+  depends_on 'mesa' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'sqlite' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
-  depends_on 'wayland'
-  depends_on 'woff2'
-  depends_on 'wpebackend_fdo'
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'wayland' # R
+  depends_on 'woff2' # R
+  depends_on 'wpebackend_fdo' # R
   depends_on 'zlibpkg' # R
-  depends_on 'libglvnd' # R
+  no_env_options
 
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
-    # return unless ARCH == 'armv7l' || ARCH == 'aarch64'
+    return unless ARCH == 'armv7l' || ARCH == 'aarch64'
 
-    # downloader 'https://github.com/Igalia/meta-webkit/raw/main/recipes-browser/wpewebkit/wpewebkit/0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch',
-    #           '85996f657ab01d83424fd74a060c9439c0c1b44bdcfe05772b4c5949eff24fc4'
-    # system 'patch -Np1 -i 0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch'
+    # Patch from https://bugs.webkit.org/show_bug.cgi?id=226557#c27 to
+    # handle issue with gcc > 11.
+    @gcc_patch = <<~'GCCEOF'
+      diff --git a/Source/cmake/WebKitCompilerFlags.cmake b/Source/cmake/WebKitCompilerFlags.cmake
+      index 77ebb802ebb03450b5e96629a47b6819a68672c6..d49d6e43d7eeb6673c624e00eadf3edfca0674eb 100644
+      --- a/Source/cmake/WebKitCompilerFlags.cmake
+      +++ b/Source/cmake/WebKitCompilerFlags.cmake
+      @@ -143,6 +143,13 @@ if (COMPILER_IS_GCC_OR_CLANG)
+               WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
+           endif ()
+
+      +    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
+      +    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
+      +    # https://bugs.webkit.org/show_bug.cgi?id=226557
+      +    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
+      +        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
+      +    endif ()
+      +
+           # -Wexpansion-to-defined produces false positives with GCC but not Clang
+           # https://bugs.webkit.org/show_bug.cgi?id=167643#c13
+           if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    GCCEOF
+    File.write('gcc.patch', @gcc_patch)
+    system 'patch -Np1 -F 10 -i gcc.patch'
+    # Patch from https://github.com/WebKit/WebKit/pull/1233
+    # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
+    #            '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
+    # system 'patch -Np1 -F 10 -i 1233.diff'
   end
 
   def self.build
@@ -91,8 +123,6 @@ class Webkit2gtk_5 < Package
     Dir.chdir 'builddir' do
       # Bubblewrap sandbox breaks on epiphany with
       # bwrap: Can't make symlink at /var/run: File exists
-      # case ARCH
-      # when 'x86_64'
       system "mold -run cmake \
           -G Ninja \
           #{CREW_CMAKE_OPTIONS} \
@@ -115,31 +145,6 @@ class Webkit2gtk_5 < Package
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew' \
           .."
-      # when 'i686', 'armv7l', 'aarch64'
-      # system "cmake \
-      #-G Ninja \
-      # #{CREW_CMAKE_OPTIONS} \
-      #-DCMAKE_SKIP_RPATH=ON \
-      #-DENABLE_BUBBLEWRAP_SANDBOX=OFF \
-      #-DENABLE_JOURNALD_LOG=OFF \
-      #-DENABLE_GAMEPAD=OFF \
-      #-DENABLE_GLES2=ON \
-      #-DENABLE_INTROSPECTION=ON \
-      #-DENABLE_MINIBROWSER=ON \
-      #-DENABLE_VIDEO=ON \
-      #-DENABLE_WAYLAND_TARGET=ON \
-      #-DENABLE_WEB_AUDIO=OFF \
-      #-DUSE_WPE_RENDERER=ON \
-      #-DUSE_JPEGXL=ON \
-      #-DPORT=GTK \
-      #-DUSE_GTK4=OFF \
-      #-DUSE_SOUP2=ON \
-      #-DUSE_AVIF=ON \
-      #-DPYTHON_EXECUTABLE=`which python` \
-      #-DUSER_AGENT_BRANDING='Chromebrew' \
-      #-DFORCE_32BIT=ON \
-      # .."
-      # end
     end
     system 'ninja -C builddir'
   end
