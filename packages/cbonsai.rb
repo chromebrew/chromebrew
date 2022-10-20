@@ -31,7 +31,7 @@ class Cbonsai < Package
 
   def self.check
     # At the time of writing (20 Oct 2022), cbonsai has no checks
-    system 'make', 'check'
+    # system 'make', 'check'
   end
 
   def self.install
