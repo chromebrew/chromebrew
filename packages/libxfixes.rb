@@ -22,7 +22,7 @@ class Libxfixes < Package
      x86_64: 'f6d7949392afb2defb0231a28011ecac138d8f3dd744bd2f2c2fcc27e5bcb2a4'
   })
 
-  depends_on 'libx11'
+  depends_on 'libx11' # R
   depends_on 'glibc' # R
 
   def self.build
