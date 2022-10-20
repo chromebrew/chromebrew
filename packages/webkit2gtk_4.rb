@@ -1,29 +1,29 @@
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  @_ver = '2.38.0'
+  @_ver = '2.36.8'
   version @_ver
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
-  source_sha256 'f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.36.8.tar.xz'
+  source_sha256 '0ad9fb6bf28308fe3889faf184bd179d13ac1b46835d2136edbab2c133d00437'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_i686/webkit2gtk_4-2.38.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_x86_64/webkit2gtk_4-2.38.0-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.36.8_i686/webkit2gtk_4-2.36.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.36.8_x86_64/webkit2gtk_4-2.36.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
      armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: '95b99b624cc0388b9fc31634ad7c72eb95520cd1075026d55d59b304084e1970',
-     x86_64: '870d34f82323b6508c5ef77fa0d44f3b1cd0d16fbb76f8e8b8c2ae0c803323c5'
+       i686: 'd40ff5b6f346fbab7178f355b649c49548453d1c9fd56dee9f1cba84825646e9',
+     x86_64: '9501da66dcc415a799dff35cdc25f9fe7149a8d08f662e1f9fe680e2ddfcf11d'
   })
 
   depends_on 'atk'
   depends_on 'cairo'
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant'
   depends_on 'fontconfig'
@@ -75,16 +75,52 @@ class Webkit2gtk_4 < Package
   depends_on 'zlibpkg' # R
   depends_on 'libglvnd' # R
 
+  no_env_options
+
   def self.patch
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
     return unless ARCH == 'armv7l' || ARCH == 'aarch64'
 
-    downloader 'https://github.com/Igalia/meta-webkit/raw/main/recipes-browser/wpewebkit/wpewebkit/0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch',
-               '85996f657ab01d83424fd74a060c9439c0c1b44bdcfe05772b4c5949eff24fc4'
-    system 'patch -Np1 -i 0001-FELightningNEON.cpp-fails-to-build-NEON-fast-path-se.patch'
+    # Patch from https://bugs.webkit.org/show_bug.cgi?id=226557#c27 to
+    # handle issue with gcc > 11.
+    @gcc_patch = <<~'GCCEOF'
+      diff --git a/Source/cmake/WebKitCompilerFlags.cmake b/Source/cmake/WebKitCompilerFlags.cmake
+      index 77ebb802ebb03450b5e96629a47b6819a68672c6..d49d6e43d7eeb6673c624e00eadf3edfca0674eb 100644
+      --- a/Source/cmake/WebKitCompilerFlags.cmake
+      +++ b/Source/cmake/WebKitCompilerFlags.cmake
+      @@ -143,6 +143,13 @@ if (COMPILER_IS_GCC_OR_CLANG)
+               WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
+           endif ()
+
+      +    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
+      +    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
+      +    # https://bugs.webkit.org/show_bug.cgi?id=226557
+      +    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
+      +        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
+      +    endif ()
+      +
+           # -Wexpansion-to-defined produces false positives with GCC but not Clang
+           # https://bugs.webkit.org/show_bug.cgi?id=167643#c13
+           if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    GCCEOF
+    File.write('gcc.patch', @gcc_patch)
+    system 'patch -Np1 -F 10 -i gcc.patch'
+    # Patch from https://github.com/WebKit/WebKit/pull/1233
+    downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
+               '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
+    system 'patch -Np1 -F 10 -i 1233.diff'
+    ## Maybe ARM_NEON isn't being detected properly in containers.
+    system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/software/FELightingSoftwareApplier.h",
+exception: false
+    # system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/FELighting.h",
+    # exception: false
+    # system "sed -i 's,data.pixels->bytes(),data.pixels->data(),g' Source/WebCore/platform/graphics/cpu/arm/filters/FELightingNEON.h",
+    # exception: false
+    # system 'grep GCC_COMPATIBLE Source/WebCore/platform/graphics/filters/FELighting.h'
   end
 
   def self.build
+    @force_32bit = ARCH == 'x86_64' ? 'OFF' : 'ON'
     # This builds webkit2gtk4 (which uses gtk3)
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
@@ -113,6 +149,7 @@ class Webkit2gtk_4 < Package
           -DUSE_AVIF=ON \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew' \
+          -DFORCE_32BIT=#{@force_32bit} \
           .."
       # when 'i686', 'armv7l', 'aarch64'
       # system "cmake \
@@ -140,7 +177,7 @@ class Webkit2gtk_4 < Package
       # .."
       # end
     end
-    system 'mold -run ninja -C builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
