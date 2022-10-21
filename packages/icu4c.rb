@@ -79,6 +79,9 @@ class Icu4c < Package
           ).split(/$/).map(&:strip)
           @grepresults.each { |fileLine| @fileArray.push(fileLine) }
         end
+        # Mozjs contains an internal icu which will not match this version.
+        # Update the following when there is a new version of mozjs.
+        @fileArray.delete_if{|item| item == 'js102'}
         next if @fileArray.empty?
 
         @fileArray.uniq.sort.each do |item|
