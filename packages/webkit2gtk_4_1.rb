@@ -1,30 +1,19 @@
-class Webkit2gtk_4 < Package
+class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  # @_ver = '2.38.0'
-  # version @_ver
-  case ARCH
-  when 'x86_64', 'i686'
-    version '2.38.0'
-  when 'aarch64', 'armv7l'
-    version '2.32.4'
-  end
+  version '2.38.0'
   compatibility 'all'
   license 'LGPL-2+ and BSD-2'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
   source_sha256 'f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_i686/webkit2gtk_4-2.38.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_x86_64/webkit2gtk_4-2.38.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.0_x86_64/webkit2gtk_4_1-2.38.0-chromeos-x86_64.tar.zst',
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.0_i686/webkit2gtk_4_1-2.38.0-chromeos-i686.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-     armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: '95b99b624cc0388b9fc31634ad7c72eb95520cd1075026d55d59b304084e1970',
-     x86_64: '870d34f82323b6508c5ef77fa0d44f3b1cd0d16fbb76f8e8b8c2ae0c803323c5'
+    x86_64: 'f2257d44deabad8866fe43a7e7ebc3b44af28e9fe1cd8df9353a04b3dd2ff07e',
+      i686: 'aad673c3561f317633ab7e1910cc65d9df4b6f32cf1ff43e5930328fc96bb142'
   })
 
   depends_on 'atk' # R
@@ -112,22 +101,9 @@ class Webkit2gtk_4 < Package
     GCCEOF
     File.write('gcc.patch', @gcc_patch)
     system 'patch -Np1 -F 10 -i gcc.patch'
-    # Patch from https://github.com/WebKit/WebKit/pull/1233
-    # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
-    #           '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
-    # system 'patch -Np1 -F 10 -i 1233.diff'
-    ## Maybe ARM_NEON isn't being detected properly in containers.
-    # system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/software/FELightingSoftwareApplier.h",
-    # exception: false
-    # system "sed -i 's,#if CPU(ARM_NEON) && CPU(ARM_TRADITIONAL) && COMPILER(GCC_COMPATIBLE),#if COMPILER(GCC_COMPATIBLE),g' Source/WebCore/platform/graphics/filters/FELighting.h",
-    # exception: false
-    # system "sed -i 's,data.pixels->bytes(),data.pixels->data(),g' Source/WebCore/platform/graphics/cpu/arm/filters/FELightingNEON.h",
-    # exception: false
-    # system 'grep GCC_COMPATIBLE Source/WebCore/platform/graphics/filters/FELighting.h'
   end
 
   def self.build
-    @force_32bit = ARCH == 'x86_64' ? 'OFF' : 'ON'
     # This builds webkit2gtk4 (which uses gtk3)
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
@@ -135,7 +111,7 @@ class Webkit2gtk_4 < Package
       # bwrap: Can't make symlink at /var/run: File exists
       system "mold -run cmake \
           -G Ninja \
-          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error')} \
+          #{CREW_CMAKE_FNO_LTO_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
           -DCMAKE_SKIP_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_JOURNALD_LOG=OFF \
@@ -150,11 +126,10 @@ class Webkit2gtk_4 < Package
           -DUSE_JPEGXL=ON \
           -DPORT=GTK \
           -DUSE_GTK4=OFF \
-          -DUSE_SOUP2=ON \
+          -DUSE_SOUP2=OFF \
           -DUSE_AVIF=ON \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew' \
-          -DFORCE_32BIT=#{@force_32bit} \
           .."
     end
     system 'ninja -C builddir'
