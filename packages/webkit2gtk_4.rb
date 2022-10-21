@@ -5,7 +5,7 @@ class Webkit2gtk_4 < Package
   # version @_ver
   case ARCH
   when 'x86_64', 'i686'
-    version '2.38.0'
+    version '2.38.0-1'
   when 'aarch64', 'armv7l'
     version '2.32.4'
   end
@@ -17,69 +17,70 @@ class Webkit2gtk_4 < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_i686/webkit2gtk_4-2.38.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_x86_64/webkit2gtk_4-2.38.0-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0-1_i686/webkit2gtk_4-2.38.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0-1_x86_64/webkit2gtk_4-2.38.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
      armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: 'c78df8137e56af8a7e5aa78314fadedca0e3e9b846a6090809b29f2481f1484e',
-     x86_64: '870d34f82323b6508c5ef77fa0d44f3b1cd0d16fbb76f8e8b8c2ae0c803323c5'
+       i686: 'aad673c3561f317633ab7e1910cc65d9df4b6f32cf1ff43e5930328fc96bb142',
+     x86_64: 'f2257d44deabad8866fe43a7e7ebc3b44af28e9fe1cd8df9353a04b3dd2ff07e'
   })
 
-  depends_on 'atk'
-  depends_on 'at_spi2_core'
+  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'cairo'
   depends_on 'ccache' => :build
   depends_on 'dav1d'
-  depends_on 'enchant'
+  depends_on 'enchant' # R
   depends_on 'fontconfig'
-  depends_on 'freetype'
+  depends_on 'freetype' # R
   depends_on 'gcc' # R
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gstreamer'
-  depends_on 'gtk3'
+  depends_on 'gstreamer' # R
+  depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'harfbuzz'
-  depends_on 'hyphen'
+  depends_on 'harfbuzz' # R
+  depends_on 'hyphen' # R
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
   depends_on 'libavif' # R
-  depends_on 'libgcrypt'
+  depends_on 'libgcrypt' # R
+  depends_on 'libglvnd' # R
   depends_on 'libgpgerror' # R
-  depends_on 'libjpeg'
-  depends_on 'libjxl'
+  depends_on 'libjpeg' # R
+  depends_on 'libjxl' # R
   depends_on 'libnotify'
-  depends_on 'libpng'
-  depends_on 'libsecret'
+  depends_on 'libpng' # R
+  depends_on 'libsecret' # R
   depends_on 'libsoup'
+  depends_on 'libsoup2' # R
   depends_on 'libtasn1' # R
-  depends_on 'libwebp'
-  depends_on 'libwpe'
-  depends_on 'libx11'
-  depends_on 'libxcomposite'
-  depends_on 'libxdamage'
+  depends_on 'libwebp' # R
+  depends_on 'libwpe' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxdamage' # R
   depends_on 'libxml2' # R
-  depends_on 'libxrender'
-  depends_on 'libxslt'
-  depends_on 'libxt'
-  depends_on 'mesa'
-  depends_on 'openjpeg'
-  depends_on 'pango'
+  depends_on 'libxrender' # R
+  depends_on 'libxslt' # R
+  depends_on 'libxt' # R
+  depends_on 'mesa' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'sqlite' # R
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
-  depends_on 'wayland'
-  depends_on 'woff2'
-  depends_on 'wpebackend_fdo'
+  depends_on 'wayland' # R
+  depends_on 'woff2' # R
+  depends_on 'wpebackend_fdo' # R
   depends_on 'zlibpkg' # R
-  depends_on 'libglvnd' # R
 
   no_env_options
 
