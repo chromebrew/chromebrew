@@ -127,7 +127,6 @@ class Webkit2gtk_4 < Package
   end
 
   def self.build
-    @force_32bit = ARCH == 'x86_64' ? 'OFF' : 'ON'
     # This builds webkit2gtk4 (which uses gtk3)
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
@@ -154,7 +153,6 @@ class Webkit2gtk_4 < Package
           -DUSE_AVIF=ON \
           -DPYTHON_EXECUTABLE=`which python` \
           -DUSER_AGENT_BRANDING='Chromebrew' \
-          -DFORCE_32BIT=#{@force_32bit} \
           .."
     end
     system 'ninja -C builddir'

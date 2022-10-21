@@ -81,7 +81,7 @@ class Icu4c < Package
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @fileArray.delete_if{|item| item == 'js102'}
+        @fileArray.delete_if {|item| item == 'js102'}
         next if @fileArray.empty?
 
         @fileArray.uniq.sort.each do |item|
