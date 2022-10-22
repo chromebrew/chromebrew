@@ -1,17 +1,47 @@
+---
 name: Rubocop
-
-on:
+on: # yamllint disable-line rule:truthy
   pull_request:
-    branches: [ master ]
-
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Rubocop
-      uses: Freshly/Octocop@v0.0.2
-      with:
-        github_token: ${{ secrets.github_token }}
-        reporter: github-pr-check
-        rubocop_flags: "-c .rubocop.yml"
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+      - name: Install yamllint
+        run: |
+          sudo apt install yamllint -y
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v33
+      - name: Syntax check
+        run: |
+          ruby=
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ext="${file##*.}"
+            type="$(file -b $file | cut -d' ' -f1)"
+            [[ "$type" == "Ruby" ]] && ext="rb"
+            case $ext in
+              yml|yaml)
+                yamllint $file;;
+              rb)
+                ruby=true
+                ruby -wcWlevel=2 $file;;
+              *)
+                echo "Unable to check syntax of $file.";;
+            esac
+          done
+          echo "ruby=$ruby" >> $GITHUB_ENV
+      - name: Rubocop
+        if: env.ruby
+        uses: Freshly/Octocop@v0.0.2
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          rubocop_flags: "-c .rubocop.yml"
