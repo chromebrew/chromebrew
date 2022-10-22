@@ -6104,6 +6104,11 @@ url: https://php.net/distributions
 activity: high
 ---
 kind: url
+name: php_malware_finder
+url: https://github.com/nbs-system/php-malware-finder
+activity: low
+---
+kind: url
 name: phpsysinfo
 url: https://sourceforge.net/projects/phpsysinfo/files/phpsysinfo/
 activity: low
@@ -8302,6 +8307,11 @@ kind: url
 name: yajl
 url: https://github.com/lloyd/yajl/releases
 activity: none
+---
+kind: url
+name: yara
+url: https://github.com/VirusTotal/yara/releases
+activity: medium
 ---
 kind: url
 name: yarn
