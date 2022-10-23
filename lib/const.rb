@@ -2,14 +2,45 @@
 
 CREW_VERSION = '1.26.2'
 
-ARCH_ACTUAL = `uname -m`.chomp
+# kernel architecture
+KERN_ARCH = `uname -m`.chomp
+
+# read and parse processor infomation from /proc/cpuinfo
+CPUINFO = File.read('/proc/cpuinfo') \
+            .partition("\n\n")[0] \
+            .scan(/^(.+?)\t*(.+)$/) \
+            .to_h { |k, v| k.downcase, v.split(' ') }
+
+# get architectures supported by the processor natively
+if CPUINFO.has_key?('flags') # x86-based processor stores supported instructions in 'flags' field
+  if CPUINFO['flags'].include?('lm')
+    # if the processor supports long mode, then it is 64-bit
+    CPU_SUPPORTED_ARCH = ['i686', 'x86_64']
+  else
+    # legacy x86 processor
+    CPU_SUPPORTED_ARCH = ['i686']
+  end
+elsif CPUINFO.has_key?('features') # ARM-based processor stores supported instructions in 'features' field
+  if CPUINFO['cpu architecture'].to_i >= 8
+    # if the processor is ARMv8+, than it is 64-bit
+    CPU_SUPPORTED_ARCH = ['aarch64', 'armv7l', 'armv8l']
+  else
+    # ARMv7 processor
+    CPU_SUPPORTED_ARCH = ['armv7l']
+  end
+end
+
+# we are running under user-mode qemu if the processor
+# does not compatible with the kernel architecture natively
+QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
+
 # This helps with virtualized builds on aarch64 machines
 # which report armv8l when linux32 is run.
-ARCH = ARCH_ACTUAL == 'armv8l' ? 'armv7l' : ARCH_ACTUAL
+ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
-ARCH_LIB = (ARCH == 'x86_64') && Dir.exist?('/lib64') ? 'lib64' : 'lib'
+ARCH_LIB = (ARCH.eql?('x86_64') && Dir.exist?('/lib64')) ? 'lib64' : 'lib'
 
 # Glibc version can be found from the output of libc.so.6
 LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
