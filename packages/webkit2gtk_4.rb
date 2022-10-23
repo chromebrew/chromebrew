@@ -162,4 +162,10 @@ class Webkit2gtk_4 < Package
     system 'DESTDIR=/usr/local/tmp/crew/dest ninja -C builddir install'
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.0"
   end
+
+  def self.postinstall
+    return if File.exist?("#{CREW_PREFIX}/bin/WebKitWebDriver")
+
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/WebKitWebDriver_4.0", "#{CREW_PREFIX}/bin/WebKitWebDriver"
+  end
 end
