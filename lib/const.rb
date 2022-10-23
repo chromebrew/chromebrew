@@ -8,12 +8,12 @@ KERN_ARCH = `uname -m`.chomp
 # read and parse processor infomation from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
             .partition("\n\n")[0] \
-            .scan(/^(.+?)\t*(.+)$/) \
-            .to_h { |k, v| [k.downcase, v.split(' ')] }
+            .scan(/^(.+?)\t*: (.+)$/) \
+            .to_h { |k, v| [k.downcase, v] }
 
 # get architectures supported by the processor natively
 if CPUINFO.has_key?('flags') # x86-based processor stores supported instructions in 'flags' field
-  if CPUINFO['flags'].include?('lm')
+  if CPUINFO['flags'].include?(' lm ')
     # if the processor supports long mode, then it is 64-bit
     CPU_SUPPORTED_ARCH = ['i686', 'x86_64']
   else
