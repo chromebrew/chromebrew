@@ -9,7 +9,7 @@ KERN_ARCH = `uname -m`.chomp
 CPUINFO = File.read('/proc/cpuinfo') \
             .partition("\n\n")[0] \
             .scan(/^(.+?)\t*(.+)$/) \
-            .to_h { |k, v| k.downcase, v.split(' ') }
+            .to_h { |k, v| [k.downcase, v.split(' ')] }
 
 # get architectures supported by the processor natively
 if CPUINFO.has_key?('flags') # x86-based processor stores supported instructions in 'flags' field
