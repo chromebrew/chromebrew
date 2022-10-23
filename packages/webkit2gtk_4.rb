@@ -1,30 +1,30 @@
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  # @_ver = '2.38.0'
-  # version @_ver
+  # @_ver = '2.38.0'                                                                                               -  # version @_ver
   case ARCH
   when 'x86_64', 'i686'
-    version '2.38.0'
+    version '2.38.0-1'
   when 'aarch64', 'armv7l'
     version '2.32.4'
   end
   compatibility 'all'
   license 'LGPL-2+ and BSD-2'
+  compatibility 'all'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.0.tar.xz'
   source_sha256 'f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_i686/webkit2gtk_4-2.38.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0_x86_64/webkit2gtk_4-2.38.0-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0-1_i686/webkit2gtk_4-2.38.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0-1_x86_64/webkit2gtk_4-2.38.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
      armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: '95b99b624cc0388b9fc31634ad7c72eb95520cd1075026d55d59b304084e1970',
-     x86_64: '870d34f82323b6508c5ef77fa0d44f3b1cd0d16fbb76f8e8b8c2ae0c803323c5'
+       i686: '5c7acadd5fdf295f2590418c09a87cd9ca305b1af34f982fb5a3e03adc78db88',
+     x86_64: '47b10fc25c0d5826565c85a8d154b7267dec79056fcc6adbe0f99c52d891ad88'
   })
 
   depends_on 'atk' # R
@@ -160,5 +160,6 @@ class Webkit2gtk_4 < Package
 
   def self.install
     system 'DESTDIR=/usr/local/tmp/crew/dest ninja -C builddir install'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.0"
   end
 end
