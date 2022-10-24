@@ -17,7 +17,7 @@ jobs:
       - name: Install linters
         run: |
           gem install mdl yaml-lint
-          sudo apt install codespell shellcheck -y
+          sudo apt install shellcheck -y
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v33
@@ -56,7 +56,6 @@ jobs:
                 echo "Unable to check syntax of $file."
                 ;;
             esac
-            codespell $file
           done
           echo "ruby=$ruby" >> $GITHUB_ENV
       - name: Rubocop
