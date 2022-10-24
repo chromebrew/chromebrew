@@ -901,7 +901,6 @@ def unpack(meta)
     # Remove tarball to save space.
     FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
   end
-  puts "target_dir is #{target_dir}"
   return CREW_BREW_DIR + target_dir
 end
 
