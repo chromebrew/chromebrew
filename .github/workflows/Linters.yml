@@ -29,24 +29,32 @@ jobs:
             type="$(file -b $file | cut -d' ' -f1)"
             case $type in
               Bourne-Again)
-                ext="sh";;
+                ext="sh"
+                ;;
               HTML)
-                ext="md";;
+                ext="md"
+                ;;
               Ruby)
-                ext="rb";;
+                ext="rb"
+                ;;
             esac
             case $ext in
               md)
-                mdl $file;;
+                mdl $file
+                ;;
               rb)
                 ruby=true
-                ruby -wcWlevel=2 $file;;
+                ruby -wcWlevel=2 $file
+                ;;
               sh)
-                shellcheck $file;;
+                shellcheck $file
+                ;;
               yml|yaml)
-                yaml-lint $file;;
+                yaml-lint $file
+                ;;
               *)
-                echo "Unable to check syntax of $file.";;
+                echo "Unable to check syntax of $file."
+                ;;
             esac
             codespell $file
           done
