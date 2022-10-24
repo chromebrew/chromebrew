@@ -20,7 +20,6 @@ class Yt_dlp < Package
 
   def self.build
     system 'make'
-    system 'make', 'completions'
   end
 
   def self.install
