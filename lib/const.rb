@@ -13,24 +13,24 @@ CPUINFO = File.read('/proc/cpuinfo') \
 
 # get architectures supported by the processor natively
 CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
-  # x86-based processor stores supported instructions in 'flags' field
-  if CPUINFO['flags'].include?(' lm ')
-    # if the processor supports long mode, then it is 64-bit
-    %w[i686 x86_64]
-  else
-    # legacy x86 processor
-    %w[i686]
-  end
-elsif CPUINFO.key?('features')
-  # ARM-based processor stores supported instructions in 'features' field
-  if CPUINFO['cpu architecture'].to_i >= 8
-    # if the processor is ARMv8+, than it is 64-bit
-    %w[aarch64 armv7l armv8l]
-  else
-    # ARMv7 processor
-    %[armv7l]
-  end
-end
+                       # x86-based processor stores supported instructions in 'flags' field
+                       if CPUINFO['flags'].include?(' lm ')
+                         # if the processor supports long mode, then it is 64-bit
+                         %w[i686 x86_64]
+                       else
+                         # legacy x86 processor
+                         %w[i686]
+                       end
+                     elsif CPUINFO.key?('features')
+                       # ARM-based processor stores supported instructions in 'features' field
+                       if CPUINFO['cpu architecture'].to_i >= 8
+                         # if the processor is ARMv8+, than it is 64-bit
+                         %w[aarch64 armv7l armv8l]
+                       else
+                         # ARMv7 processor
+                         %w[armv7l]
+                       end
+                     end
 
 # we are running under user-mode qemu if the processor
 # does not compatible with the kernel architecture natively
@@ -42,7 +42,7 @@ ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
-ARCH_LIB = (ARCH.eql?('x86_64') && Dir.exist?('/lib64')) ? 'lib64' : 'lib'
+ARCH_LIB = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? 'lib64' : 'lib'
 
 # Glibc version can be found from the output of libc.so.6
 LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
