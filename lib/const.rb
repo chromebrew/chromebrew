@@ -7,26 +7,28 @@ KERN_ARCH = `uname -m`.chomp
 
 # read and parse processor infomation from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
-            .partition("\n\n")[0] \
-            .scan(/^(.+?)\t*: (.+)$/) \
-            .to_h { |k, v| [k.downcase, v] }
+              .partition("\n\n")[0] \
+              .scan(/^(.+?)\t*: (.+)$/) \
+              .transform_keys(&:downcase)
 
 # get architectures supported by the processor natively
-if CPUINFO.has_key?('flags') # x86-based processor stores supported instructions in 'flags' field
+CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
+  # x86-based processor stores supported instructions in 'flags' field
   if CPUINFO['flags'].include?(' lm ')
     # if the processor supports long mode, then it is 64-bit
-    CPU_SUPPORTED_ARCH = ['i686', 'x86_64']
+    %w[i686 x86_64]
   else
     # legacy x86 processor
-    CPU_SUPPORTED_ARCH = ['i686']
+    %w[i686]
   end
-elsif CPUINFO.has_key?('features') # ARM-based processor stores supported instructions in 'features' field
+elsif CPUINFO.key?('features')
+  # ARM-based processor stores supported instructions in 'features' field
   if CPUINFO['cpu architecture'].to_i >= 8
     # if the processor is ARMv8+, than it is 64-bit
-    CPU_SUPPORTED_ARCH = ['aarch64', 'armv7l', 'armv8l']
+    %w[aarch64 armv7l armv8l]
   else
     # ARMv7 processor
-    CPU_SUPPORTED_ARCH = ['armv7l']
+    %[armv7l]
   end
 end
 
