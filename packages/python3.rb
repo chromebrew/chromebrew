@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.7'
+  @_ver = '3.10.8'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '6eed8415b7516fb2f260906db5d48dd4c06acc0cb24a7d6cc15296a604dcdc48'
+  source_sha256 '6a30ecde59c47048013eb5a658c9b5dec277203d2793667f578df7671f7f03f3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_armv7l/python3-3.10.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_armv7l/python3-3.10.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_i686/python3-3.10.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.7_x86_64/python3-3.10.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_armv7l/python3-3.10.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_armv7l/python3-3.10.8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_i686/python3-3.10.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_x86_64/python3-3.10.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '06125281bd34f5dfecb0c23526dfbba3123800d166e5f2d970f8f7000171e86e',
-     armv7l: '06125281bd34f5dfecb0c23526dfbba3123800d166e5f2d970f8f7000171e86e',
-       i686: '904934e5244ef1ad15ad3795f24831e783acc4978019b172fce7f74708de0a62',
-     x86_64: '68a85118f276be1a311eb0ba6cb76fe825aed3a34d6999f261c06e9de8f5feae'
+    aarch64: 'bf1dae49145360157092f9843c43da8223a47cd5a7ca1b87a3c01e189a4eb288',
+     armv7l: 'bf1dae49145360157092f9843c43da8223a47cd5a7ca1b87a3c01e189a4eb288',
+       i686: '41a9de83c568c1c624964fcd588971cbfa1edcbaf4055a18830ab010e450d2b6',
+     x86_64: '4f168cd30e620ca2bbc12493130a564d678623938694a133e9bfa9b165a211b5'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -41,6 +41,7 @@ class Python3 < Package
   depends_on 'zlibpkg' # R
   # depends_on 'tcl' # Needed for tkinter support
   # depends_on 'tk'  # Needed for tkinter support
+  depends_on 'util_linux' # R
   no_env_options
 
   def self.patch
