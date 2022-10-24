@@ -1,3 +1,4 @@
+---
 kind: url
 name: a2png
 url: https://sourceforge.net/projects/a2png/files/a2png
@@ -6719,6 +6720,11 @@ url: https://github.com/docopt/docopt/releases
 activity: none
 ---
 kind: url
+name: ruby_mdl
+url: https://github.com/markdownlint/markdownlint/tags
+activity: low
+---
+kind: url
 name: ruby_rubocop
 url: https://github.com/rubocop/rubocop/releases
 activity: medium
@@ -6727,6 +6733,11 @@ kind: url
 name: ruby_webrick
 url: https://github.com/ruby/webrick/releases
 activity: medium
+---
+kind: url
+name: ruby_yaml_lint
+url: https://github.com/Pryz/yaml-lint/releases
+activity: none
 ---
 kind: url
 name: rush
@@ -6896,6 +6907,11 @@ activity: low
 kind: url
 name: shared_mime_info
 url: http://freedesktop.org/~hadess/
+activity: low
+---
+kind: url
+name: shellcheck
+url: https://github.com/koalaman/shellcheck/releases
 activity: low
 ---
 kind: url
