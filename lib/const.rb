@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.26.2'
+CREW_VERSION = '1.26.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -57,6 +57,8 @@ else
   HOME = CREW_PREFIX + Dir.home
 end
 
+CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
+CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
 CREW_MAN_PREFIX = "#{CREW_PREFIX}/share/man"
 CREW_LIB_PATH = "#{CREW_PREFIX}/lib/crew/"
