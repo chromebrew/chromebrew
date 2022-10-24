@@ -26,9 +26,8 @@ class Yt_dlp < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Makefile is screwy
-    Dir.glob("#{CREW_DEST_PREFIX}/man/man*").each manfolder do
-      FileUtils.mv manfolder.to_s CREW_DEST_MAN_PREFIX
-    end
+    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
+    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], CREW_DEST_MAN_PREFIX
     FileUtils.rm_r "#{CREW_DEST_PREFIX}/man"
   end
 end
