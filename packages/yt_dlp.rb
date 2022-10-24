@@ -1,8 +1,8 @@
 require 'package'
 
 class Yt_dlp < Package
-  description 'Python bindings to the Brotli compression library'
-  homepage 'https://github.com/python-hyper/brotlicffi/'
+  description 'A fork of youtube-dl with additional features and patches'
+  homepage 'https://github.com/yt-dlp/yt-dlp'
   @_ver = '2022.10.04'
   version @_ver
   license 'MIT'
