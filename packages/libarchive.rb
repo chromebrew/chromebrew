@@ -10,6 +10,15 @@ class Libarchive < Package
   source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
   source_sha256 '5a411aceb978f43e626f0c2d1812ddd8807b645ed892453acabd532376c148e6'
 
+  binary_url({
+        i686: 'file:///usr/local/tmp/packages/libarchive-3.6.1-chromeos-i686.tar.zst',
+      x86_64: 'file:///usr/local/tmp/packages/libarchive-3.6.1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+        i686: '8ac07aaccabd5eacc1702e63879fc1c2cd2640e30028738996944644af3a4a8d',
+      x86_64: '5dfe44a35baa0065e86d06e3cc6a0c721d8b2abef4f28d0cc561a0bc9e36af19'
+  })
+
   depends_on 'acl' # R
   depends_on 'bz2' # R
   depends_on 'glibc' # R
