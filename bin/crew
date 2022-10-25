@@ -478,9 +478,10 @@ def cache_build
     @pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
     @pkg_build_dirname = File.basename(@pkg_build_dirname_absolute)
     Dir.chdir @pkg_build_dirname_absolute do
-      # Do not use --exclude-vcs to exclude .git
+      # Do not use --exclude-vcs w/ tar to exclude .git
       # because some builds will use that information.
-      puts "pkg_build_dirname is #{@pkg_build_dirname}"
+      # Backup build cachefile it if exists.
+      FileUtils.mv @build_cachefile, "#{@build_cachefile}.bak", force: true if File.file?(@build_cachefile)
       system "cd #{CREW_BREW_DIR} ; tar c#{@verbose} \
       #{@pkg_build_dirname} \
       | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{@build_cachefile} -"
