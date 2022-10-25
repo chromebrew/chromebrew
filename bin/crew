@@ -919,12 +919,13 @@ def build_and_preconfigure(target_dir)
       @pkg.patch
       @pkg.prebuild
     end
+
     begin
       @pkg.build
     rescue StandardError => e
       if CREW_CACHE_FAILED_BUILD
         cache_build
-        abort 'There was a build error, caching build dir.'.lightred
+        abort 'There was a build error, caching build directory.'.lightred
       end
       abort 'There was a build error.'.lightred
     end
@@ -1849,7 +1850,12 @@ def is_command(name)
   return !!!name[/^[-<]/]
 end
 
-trap('INT') do
+# trap('INT') do
+Signal.trap('INT') do
+  if CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED && @pkg.in_build
+    cache_build
+    abort 'The build was interrupted. The build directory was cached.'.lightred
+  end
   abort 'Interrupted.'.lightred
 end
 
