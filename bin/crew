@@ -475,11 +475,13 @@ def cache_build
   @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
   if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
-    Dir.chdir "#{CREW_BREW_DIR}#{@extract_dir}" do
+    Dir.chdir File.join(CREW_BREW_DIR, @extract_dir) do
       # Do not use --exclude-vcs to exclude .git
       # because some builds will use that information.
-      system "tar c#{@verbose} \
-      $(find -mindepth 1 -maxdepth 1 -printf '%P\n') \
+      @pkg_build_dirname = File.expand_path('..', Dir.pwd)
+      puts "pkg_build_dirname is #{@pkg_build_dirname}"
+      system "cd #{CREW_BREW_DIR} ; tar c#{@verbose} \
+      #{@pkg_build_dirname} \
       | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{@build_cachefile} -"
     end
     system "sha256sum #{@build_cachefile} > #{@build_cachefile}.sha256"
@@ -835,7 +837,9 @@ def unpack(meta)
     if CREW_CACHE_BUILD && File.file?(@build_cachefile) && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
-      system "tar -Izstd -x#{@verbose}f #{@build_cachefile} -C #{@extract_dir}", exception: true
+      system "tar -Izstd -x#{@verbose}f #{@build_cachefile} -C #{CREW_BREW_DIR}", exception: true
+      # Need to reset @extract_dir to the cached build directory.
+      @extract_dir = CREW_BREW_DIR + `tar --exclude='./*/*' -tf #{@build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
     else
       @pkg.cached_build = false
       case File.basename meta[:filename]

@@ -57,8 +57,6 @@ else
   HOME = CREW_PREFIX + Dir.home
 end
 
-CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
-CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
 CREW_MAN_PREFIX = "#{CREW_PREFIX}/share/man"
 CREW_LIB_PATH = "#{CREW_PREFIX}/lib/crew/"
@@ -86,6 +84,8 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                  end
 
 FileUtils.mkdir_p CREW_CACHE_DIR
+CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
+CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
 # Set CREW_NPROC from environment variable or `nproc`
 CREW_NPROC = ENV['CREW_NPROC'].to_s.empty? ? `nproc`.chomp : ENV.fetch('CREW_NPROC', nil)
