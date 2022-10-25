@@ -778,8 +778,8 @@ def download
           # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
         end
-        puts "cachefile is #{cachefile}".orange if @opt_verbose
-        if File.file?(cachefile)
+        puts "Git cachefile is #{cachefile}".orange if @opt_verbose
+        if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
           if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir @extract_dir
             system "tar x#{@verbose}f #{cachefile} -C #{@extract_dir}"
@@ -836,7 +836,7 @@ def unpack(meta)
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
     @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
-    if CREW_CACHE_BUILD && File.file?(@build_cachefile) && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
+    if CREW_CACHE_BUILD && File.file?(@build_cachefile) && File.file?("#{@build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{@build_cachefile} -C #{CREW_BREW_DIR}", exception: true
