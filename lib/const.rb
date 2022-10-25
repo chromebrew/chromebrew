@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.26.2'
+CREW_VERSION = '1.27.0'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -84,6 +84,8 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                  end
 
 FileUtils.mkdir_p CREW_CACHE_DIR
+CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
+CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
 # Set CREW_NPROC from environment variable or `nproc`
 CREW_NPROC = ENV['CREW_NPROC'].to_s.empty? ? `nproc`.chomp : ENV.fetch('CREW_NPROC', nil)

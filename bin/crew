@@ -218,7 +218,7 @@ def list_available
   Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     notInstalled = true
     pkgName = File.basename filename, '.rb'
-    notInstalled = false if File.exist? "#{CREW_META_PATH}#{pkgName}.filelist"
+    notInstalled = false if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
     next unless notInstalled
 
     begin
@@ -257,7 +257,7 @@ def list_compatible(compat = true)
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
       if compat
-        if File.exist? "#{CREW_META_PATH}#{pkgName}.filelist"
+        if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
           puts pkgName.lightgreen
         else
           puts pkgName
@@ -314,11 +314,11 @@ end
 def search(pkgName, silent = false)
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
   begin
-    return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
+    return set_package(pkgName, pkgPath) if File.file?(pkgPath)
   rescue StandardError => e
     puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
-  unless File.exist?(pkgPath) && silent
+  unless File.file?(pkgPath) && silent
     @pkg = nil
     abort "Package #{pkgName} not found. 😞".lightred unless silent
     return
@@ -471,6 +471,30 @@ def help(pkgName)
   end
 end
 
+def cache_build
+  @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+  if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
+    puts 'Caching build dir...'
+    @pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
+    @pkg_build_dirname = File.basename(@pkg_build_dirname_absolute)
+    Dir.chdir @pkg_build_dirname_absolute do
+      # Do not use --exclude-vcs w/ tar to exclude .git
+      # because some builds will use that information.
+      # Backup build cachefile it if exists.
+      FileUtils.mv @build_cachefile, "#{@build_cachefile}.bak", force: true if File.file?(@build_cachefile)
+      Dir.chdir(CREW_BREW_DIR) do
+        system "tar c#{@verbose} #{@pkg_build_dirname} \
+        | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{@build_cachefile} -"
+      end
+    end
+    system "sha256sum #{@build_cachefile} > #{@build_cachefile}.sha256"
+    puts "Build directory cached at #{@build_cachefile}".lightgreen
+  else
+    puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
+    puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
+  end
+end
+
 def const(var)
   if var
     value = eval(var)
@@ -521,12 +545,12 @@ end
 
 def files(pkgName)
   filelist = "#{CREW_META_PATH}#{pkgName}.filelist"
-  if File.exist? filelist
+  if File.file? filelist
     system "sort #{filelist}"
     lines = File.readlines(filelist).size
     size = 0
     File.readlines(filelist).each do |filename|
-      size += File.size(filename.chomp) if File.exist? filename.chomp
+      size += File.size(filename.chomp) if File.file? filename.chomp
     end
     humansize = human_size(size)
     puts "Total found: #{lines}".lightgreen
@@ -598,7 +622,7 @@ def upgrade(*pkgs, build_from_source: false)
   check_update_avail = lambda do |pkgFile|
     pkgName = File.basename(pkgFile, '.rb')
 
-    unless File.exist?(pkgFile)
+    unless File.file?(pkgFile)
       warn "Package file for installed package #{pkgName} is missing.".lightred
       return false
     end
@@ -662,6 +686,9 @@ def download
   sha256sum = @pkg.get_sha256(@device[:architecture])
   @extract_dir = @pkg.get_extract_dir
 
+  @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+  return { source:, filename: } if CREW_CACHE_BUILD && File.file?(@build_cachefile)
+
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
   elsif !source
@@ -684,7 +711,7 @@ def download
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
         cachefile = CREW_CACHE_DIR + filename
-        if File.exist?(cachefile)
+        if File.file?(cachefile)
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
           if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i
             begin
@@ -697,7 +724,7 @@ def download
               puts 'Archive copied from cache'.green if @opt_verbose
             end
             puts 'Archive found in cache'.lightgreen
-            return { source: source, filename: filename }
+            return { source:, filename: }
           else
             puts 'Cached archive checksum mismatch. 😔 Will download.'.lightred
             cachefile = ''
@@ -724,7 +751,7 @@ def download
           puts 'Archive copied to cache'.green if @opt_verbose
         end
       end
-      return { source: source, filename: filename }
+      return { source:, filename: }
 
     when /^SKIP$/i
       Dir.mkdir @extract_dir
@@ -755,12 +782,12 @@ def download
           # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
         end
-        puts "cachefile is #{cachefile}".orange if @opt_verbose
-        if File.file?(cachefile)
+        puts "Git cachefile is #{cachefile}".orange if @opt_verbose
+        if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
           if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir @extract_dir
             system "tar x#{@verbose}f #{cachefile} -C #{@extract_dir}"
-            return { source: source, filename: filename }
+            return { source:, filename: }
           else
             puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
           end
@@ -804,54 +831,50 @@ def download
       end
     end
   end
-  return { source: source, filename: filename }
+  return { source:, filename: }
 end
 
 def unpack(meta)
   target_dir = nil
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
-    case File.basename meta[:filename]
-    when /\.zip$/i
-      puts "Unpacking archive using 'unzip', this may take a while..."
-      _verbopt = @opt_verbose ? '-v' : '-qq'
-      system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
-    when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz)$/i
-      puts "Unpacking archive using 'tar', this may take a while..."
-      system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
-    when /\.tar\.zst$/i
-      # Check to see that there is a working zstd
-      if File.exist?("#{CREW_PREFIX}/bin/zstd")
-        @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
-      end
-      if File.exist?("#{CREW_MUSL_PREFIX}/bin/zstd")
-        @crew_musl_prefix_zstd_available = `#{CREW_MUSL_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
-      end
-      abort 'zstd is needed for this install. Please (re)install it first with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install zstd\''.lightred unless @crew_prefix_zstd_available || @crew_musl_prefix_zstd_available
-      puts "Unpacking archive using 'tar', this may take a while..."
-      # Use the zstd found to be working. This should correct for
-      # situations where the libzstd library is unavailable.
-      if @crew_prefix_zstd_available
-        puts 'Using standard zstd'.lightblue if @opt_verbose
+
+    @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    if CREW_CACHE_BUILD && File.file?(@build_cachefile) && File.file?("#{@build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
+      @pkg.cached_build = true
+      puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
+      system "tar -Izstd -x#{@verbose}f #{@build_cachefile} -C #{CREW_BREW_DIR}", exception: true
+      # Need to reset @extract_dir to the extracted cached build
+      # directory.
+      @extract_dir = `tar --exclude='./*/*' -tf #{@build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
+    else
+      @pkg.cached_build = false
+      case File.basename meta[:filename]
+      when /\.zip$/i
+        puts "Unpacking archive using 'unzip', this may take a while..."
+        _verbopt = @opt_verbose ? '-v' : '-qq'
+        system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
+      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz)$/i
+        puts "Unpacking archive using 'tar', this may take a while..."
+        system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+      when /\.tar\.zst$/i
+        puts "Unpacking archive using 'tar', this may take a while..."
         system "tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
-      elsif @crew_musl_prefix_zstd_available
-        puts 'Using musl zstd'.lightblue if @opt_verbose
-        system "PATH=#{CREW_MUSL_PREFIX}/bin:\$PATH tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+      when /\.deb$/i
+        puts "Unpacking '.deb' archive, this may take a while..."
+        DebUtils.extract_deb(meta[:filename], /data\..*/)
+        system "tar x#{@verbose}f data.* -C #{@extract_dir}", exception: true
+      when /\.AppImage$/i
+        puts "Unpacking 'AppImage' archive, this may take a while..."
+        FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
+        Dir.chdir @extract_dir do
+          system "../#{meta[:filename]} --appimage-extract", exception: true
+        end
+      when /\.tpxz$/i
+        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred unless File.file?("#{CREW_PREFIX}/bin/pixz")
+        puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
+        system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
       end
-    when /\.deb$/i
-      puts "Unpacking '.deb' archive, this may take a while..."
-      DebUtils.extract_deb(meta[:filename], /data\..*/)
-      system "tar x#{@verbose}f data.* -C #{@extract_dir}", exception: true
-    when /\.AppImage$/i
-      puts "Unpacking 'AppImage' archive, this may take a while..."
-      FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
-      Dir.chdir @extract_dir do
-        system "../#{meta[:filename]} --appimage-extract", exception: true
-      end
-    when /\.tpxz$/i
-      abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred unless File.exist?("#{CREW_PREFIX}/bin/pixz")
-      puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
-      system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
     end
     if meta[:source] == true
       # Check the number of directories in the archive
@@ -873,7 +896,7 @@ def unpack(meta)
     # Remove tarball to save space.
     FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
   end
-  return CREW_BREW_DIR + target_dir
+  return File.join(CREW_BREW_DIR, target_dir)
 end
 
 def build_and_preconfigure(target_dir)
@@ -896,13 +919,25 @@ def build_and_preconfigure(target_dir)
     end
 
     @pkg.in_build = true
-    @pkg.patch
-    @pkg.prebuild
-    @pkg.build
+    unless @pkg.cached_build
+      @pkg.patch
+      @pkg.prebuild
+    end
+
+    begin
+      @pkg.build
+    rescue StandardError => e
+      if CREW_CACHE_FAILED_BUILD
+        cache_build
+        abort 'There was a build error, caching build directory.'.lightred
+      end
+      abort 'There was a build error.'.lightred
+    end
     @pkg.in_build = false
     # wipe crew destdir
     FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
+    cache_build if CREW_CACHE_BUILD
     @pkg.install
 
     unless @pkg.no_compile_needed? && !CREW_LA_RENAME_ENABLED
@@ -949,7 +984,7 @@ end
 
 def compress_doc(dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.file?("#{CREW_PREFIX}/bin/compressdoc")
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
@@ -1047,7 +1082,7 @@ def patchelf_set_need_paths(dir)
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
-    abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
+    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec head -c4 {} 2>/dev/null \\; -printf ' %i %p\\n'| grep ^.ELF | sort -u -n -s -k2,2 | awk '{print $3}'`.chomp
     return if @execfiles.to_s.empty?
 
@@ -1080,7 +1115,7 @@ def patchelf_set_need_paths(dir)
         # The first check here can be changed to just check the dest_dir
         # hierarchy for @neededlib_basename if the intent is to allow
         # using a different CREW_PREFIX during package installs.
-        if File.exist?(@neededlibspatchednamepath) || File.exist?(Dir.pwd + @neededlibspatchednamepath)
+        if File.file?(@neededlibspatchednamepath) || File.file?(Dir.pwd + @neededlibspatchednamepath)
           puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}" if @opt_verbose
           system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         else
@@ -1099,7 +1134,7 @@ end
 
 def strip_find_files(find_cmd, strip_option = '')
   # check whether crew should strip
-  return if CREW_NOT_STRIP || @pkg.no_strip? || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
+  return if CREW_NOT_STRIP || @pkg.no_strip? || !File.file?("#{CREW_PREFIX}/bin/llvm-strip")
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
@@ -1125,7 +1160,7 @@ end
 def shrink_dir(dir)
   unless CREW_NOT_SHRINK_ARCHIVE || @pkg.no_shrink?
     Dir.chdir dir do
-      if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+      if File.file?("#{CREW_PREFIX}/bin/rdfind")
         puts 'Using rdfind to convert duplicate files to hard links.'
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
       end
@@ -1134,7 +1169,7 @@ def shrink_dir(dir)
       # compressed file to use ldd.
       # sommelier also isn't happy when sommelier and xwayland are compressed
       # so don't compress those packages.
-      if File.exist?("#{CREW_PREFIX}/bin/upx")
+      if File.file?("#{CREW_PREFIX}/bin/upx")
         # 1. Find executable binaries but also check for hard linked
         # files by making sure we have a unique set of
         # inodes for the binaries found.
@@ -1180,7 +1215,7 @@ def shrink_dir(dir)
                 puts "Compression of #{execfile} failed...".orange if @opt_verbose
                 FileUtils.rm_f "#{execfile}-crewupxtmp"
               end
-              if File.exist?("#{execfile}-crewupxtmp")
+              if File.file?("#{execfile}-crewupxtmp")
                 puts "Testing compressed #{execfile}...".lightblue if @opt_verbose
                 if system "upx -t #{execfile}-crewupxtmp && cp #{execfile}-crewupxtmp #{execfile}"
                   puts "#{execfile} successfully compressed...".lightgreen
@@ -1228,14 +1263,14 @@ def install_package(pkgdir)
         end
       end
     end
-    if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+    if File.file?("#{CREW_PREFIX}/bin/rdfind")
       puts 'Using rdfind to convert duplicate files to hard links.'
       system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
     end
 
     # check if the available rsync command support ACLs
 
-    rsync_available = true if File.exist?("#{CREW_PREFIX}/bin/rsync") && `#{CREW_PREFIX}/bin/rsync --version`.include?('rsync  version')
+    rsync_available = true if File.file?("#{CREW_PREFIX}/bin/rsync") && `#{CREW_PREFIX}/bin/rsync --version`.include?('rsync  version')
     puts 'rsync is not working. Please (re)install it with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install rsync\''.lightred unless rsync_available || (@pkg.name == 'rsync')
     if Dir.exist? "#{pkgdir}/#{HOME}"
       if rsync_available
@@ -1320,7 +1355,7 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.exist?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
+    abort "Dependency #{dep} was not found.".lightred unless File.file?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
   end
 
   puts @dependencies.join(' ')
@@ -1475,10 +1510,10 @@ end
 
 def archive_package(pwd)
   # Check to see that there is a working zstd
-  if File.exist?("#{CREW_PREFIX}/bin/zstd")
+  if File.file?("#{CREW_PREFIX}/bin/zstd")
     @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
   end
-  if File.exist?("#{CREW_MUSL_PREFIX}/bin/zstd")
+  if File.file?("#{CREW_MUSL_PREFIX}/bin/zstd")
     @crew_musl_prefix_zstd_available = `#{CREW_MUSL_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
   end
   if @pkg.no_zstd? || (!@crew_prefix_zstd_available && !@crew_musl_prefix_zstd_available)
@@ -1509,7 +1544,7 @@ end
 
 def remove(pkgName)
   # make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.exist?("#{CREW_META_PATH}#{pkgName}.filelist")
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
@@ -1521,7 +1556,7 @@ def remove(pkgName)
     next unless File.symlink?("#{CREW_LIB_PREFIX}/#{file}")
 
     @canonicalized_file = `readlink -m #{CREW_LIB_PREFIX}/#{file}`.chomp
-    if File.exist?(@canonicalized_file) && @canonicalized_file.include?(CREW_PREFIX)
+    if File.file?(@canonicalized_file) && @canonicalized_file.include?(CREW_PREFIX)
       puts "Replacing symlinked essential #{file} with hard link to #{@canonicalized_file} to avoid breakage.".lightblue if @opt_verbose
       FileUtils.ln(@canonicalized_file, "#{CREW_LIB_PREFIX}/#{file}", force: true)
     end
@@ -1772,7 +1807,7 @@ end
 
 def sysinfo_command(_args)
   # newer version of Chrome OS exports info to env by default
-  lsb_release = if File.exist?('/etc/lsb-release')
+  lsb_release = if File.file?('/etc/lsb-release')
                   File.read('/etc/lsb-release').scan(/^(.+?)=(.+)$/).to_h
                 else
                   # newer version of Chrome OS exports info to env by default
@@ -1819,7 +1854,11 @@ def is_command(name)
   return !!!name[/^[-<]/]
 end
 
-trap('INT') do
+Signal.trap('INT') do
+  if CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED && @pkg.in_build
+    cache_build
+    abort 'The build was interrupted. The build directory was cached.'.lightred
+  end
   abort 'Interrupted.'.lightred
 end
 
