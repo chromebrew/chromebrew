@@ -218,7 +218,7 @@ def list_available
   Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     notInstalled = true
     pkgName = File.basename filename, '.rb'
-    notInstalled = false if File.exist? "#{CREW_META_PATH}#{pkgName}.filelist"
+    notInstalled = false if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
     next unless notInstalled
 
     begin
@@ -257,7 +257,7 @@ def list_compatible(compat = true)
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
       if compat
-        if File.exist? "#{CREW_META_PATH}#{pkgName}.filelist"
+        if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
           puts pkgName.lightgreen
         else
           puts pkgName
@@ -314,11 +314,11 @@ end
 def search(pkgName, silent = false)
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
   begin
-    return set_package(pkgName, pkgPath) if File.exist?(pkgPath)
+    return set_package(pkgName, pkgPath) if File.file?(pkgPath)
   rescue StandardError => e
     puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
-  unless File.exist?(pkgPath) && silent
+  unless File.file?(pkgPath) && silent
     @pkg = nil
     abort "Package #{pkgName} not found. 😞".lightred unless silent
     return
@@ -482,12 +482,16 @@ def cache_build
       # because some builds will use that information.
       # Backup build cachefile it if exists.
       FileUtils.mv @build_cachefile, "#{@build_cachefile}.bak", force: true if File.file?(@build_cachefile)
-      system "cd #{CREW_BREW_DIR} ; tar c#{@verbose} \
-      #{@pkg_build_dirname} \
-      | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{@build_cachefile} -"
+      Dir.chdir(CREW_BREW_DIR) do
+        system "tar c#{@verbose} #{@pkg_build_dirname} \
+        | nice -n 20 #{CREW_PREFIX}/bin/zstd -c  --ultra --fast -f -o #{@build_cachefile} -"
+      end
     end
     system "sha256sum #{@build_cachefile} > #{@build_cachefile}.sha256"
     puts "Build directory cached at #{@build_cachefile}".lightgreen
+  else
+    puts 'CREW_CACHE_ENABLED is not set.'.lightred unless CREW_CACHE_ENABLED
+    puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
   end
 end
 
@@ -541,12 +545,12 @@ end
 
 def files(pkgName)
   filelist = "#{CREW_META_PATH}#{pkgName}.filelist"
-  if File.exist? filelist
+  if File.file? filelist
     system "sort #{filelist}"
     lines = File.readlines(filelist).size
     size = 0
     File.readlines(filelist).each do |filename|
-      size += File.size(filename.chomp) if File.exist? filename.chomp
+      size += File.size(filename.chomp) if File.file? filename.chomp
     end
     humansize = human_size(size)
     puts "Total found: #{lines}".lightgreen
@@ -618,7 +622,7 @@ def upgrade(*pkgs, build_from_source: false)
   check_update_avail = lambda do |pkgFile|
     pkgName = File.basename(pkgFile, '.rb')
 
-    unless File.exist?(pkgFile)
+    unless File.file?(pkgFile)
       warn "Package file for installed package #{pkgName} is missing.".lightred
       return false
     end
@@ -707,7 +711,7 @@ def download
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
         cachefile = CREW_CACHE_DIR + filename
-        if File.exist?(cachefile)
+        if File.file?(cachefile)
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
           if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i
             begin
@@ -867,7 +871,7 @@ def unpack(meta)
           system "../#{meta[:filename]} --appimage-extract", exception: true
         end
       when /\.tpxz$/i
-        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred unless File.exist?("#{CREW_PREFIX}/bin/pixz")
+        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred unless File.file?("#{CREW_PREFIX}/bin/pixz")
         puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
         system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
       end
@@ -980,7 +984,7 @@ end
 
 def compress_doc(dir)
   # check whether crew should compress
-  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.exist?("#{CREW_PREFIX}/bin/compressdoc")
+  return if CREW_NOT_COMPRESS || @pkg.no_compress? || !File.file?("#{CREW_PREFIX}/bin/compressdoc")
 
   if Dir.exist? dir
     system "find #{dir} -type f ! -perm -200 | xargs -r chmod u+w"
@@ -1078,7 +1082,7 @@ def patchelf_set_need_paths(dir)
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
-    abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
+    abort('No Patchelf found!').lightred unless File.file?("#{CREW_PREFIX}/bin/patchelf")
     @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec head -c4 {} 2>/dev/null \\; -printf ' %i %p\\n'| grep ^.ELF | sort -u -n -s -k2,2 | awk '{print $3}'`.chomp
     return if @execfiles.to_s.empty?
 
@@ -1111,7 +1115,7 @@ def patchelf_set_need_paths(dir)
         # The first check here can be changed to just check the dest_dir
         # hierarchy for @neededlib_basename if the intent is to allow
         # using a different CREW_PREFIX during package installs.
-        if File.exist?(@neededlibspatchednamepath) || File.exist?(Dir.pwd + @neededlibspatchednamepath)
+        if File.file?(@neededlibspatchednamepath) || File.file?(Dir.pwd + @neededlibspatchednamepath)
           puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}" if @opt_verbose
           system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
         else
@@ -1130,7 +1134,7 @@ end
 
 def strip_find_files(find_cmd, strip_option = '')
   # check whether crew should strip
-  return if CREW_NOT_STRIP || @pkg.no_strip? || !File.exist?("#{CREW_PREFIX}/bin/llvm-strip")
+  return if CREW_NOT_STRIP || @pkg.no_strip? || !File.file?("#{CREW_PREFIX}/bin/llvm-strip")
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
@@ -1156,7 +1160,7 @@ end
 def shrink_dir(dir)
   unless CREW_NOT_SHRINK_ARCHIVE || @pkg.no_shrink?
     Dir.chdir dir do
-      if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+      if File.file?("#{CREW_PREFIX}/bin/rdfind")
         puts 'Using rdfind to convert duplicate files to hard links.'
         system "#{CREW_PREFIX}/bin/rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false ."
       end
@@ -1165,7 +1169,7 @@ def shrink_dir(dir)
       # compressed file to use ldd.
       # sommelier also isn't happy when sommelier and xwayland are compressed
       # so don't compress those packages.
-      if File.exist?("#{CREW_PREFIX}/bin/upx")
+      if File.file?("#{CREW_PREFIX}/bin/upx")
         # 1. Find executable binaries but also check for hard linked
         # files by making sure we have a unique set of
         # inodes for the binaries found.
@@ -1211,7 +1215,7 @@ def shrink_dir(dir)
                 puts "Compression of #{execfile} failed...".orange if @opt_verbose
                 FileUtils.rm_f "#{execfile}-crewupxtmp"
               end
-              if File.exist?("#{execfile}-crewupxtmp")
+              if File.file?("#{execfile}-crewupxtmp")
                 puts "Testing compressed #{execfile}...".lightblue if @opt_verbose
                 if system "upx -t #{execfile}-crewupxtmp && cp #{execfile}-crewupxtmp #{execfile}"
                   puts "#{execfile} successfully compressed...".lightgreen
@@ -1259,14 +1263,14 @@ def install_package(pkgdir)
         end
       end
     end
-    if File.exist?("#{CREW_PREFIX}/bin/rdfind")
+    if File.file?("#{CREW_PREFIX}/bin/rdfind")
       puts 'Using rdfind to convert duplicate files to hard links.'
       system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
     end
 
     # check if the available rsync command support ACLs
 
-    rsync_available = true if File.exist?("#{CREW_PREFIX}/bin/rsync") && `#{CREW_PREFIX}/bin/rsync --version`.include?('rsync  version')
+    rsync_available = true if File.file?("#{CREW_PREFIX}/bin/rsync") && `#{CREW_PREFIX}/bin/rsync --version`.include?('rsync  version')
     puts 'rsync is not working. Please (re)install it with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install rsync\''.lightred unless rsync_available || (@pkg.name == 'rsync')
     if Dir.exist? "#{pkgdir}/#{HOME}"
       if rsync_available
@@ -1351,7 +1355,7 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.exist?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
+    abort "Dependency #{dep} was not found.".lightred unless File.file?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
   end
 
   puts @dependencies.join(' ')
@@ -1506,10 +1510,10 @@ end
 
 def archive_package(pwd)
   # Check to see that there is a working zstd
-  if File.exist?("#{CREW_PREFIX}/bin/zstd")
+  if File.file?("#{CREW_PREFIX}/bin/zstd")
     @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
   end
-  if File.exist?("#{CREW_MUSL_PREFIX}/bin/zstd")
+  if File.file?("#{CREW_MUSL_PREFIX}/bin/zstd")
     @crew_musl_prefix_zstd_available = `#{CREW_MUSL_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
   end
   if @pkg.no_zstd? || (!@crew_prefix_zstd_available && !@crew_musl_prefix_zstd_available)
@@ -1540,7 +1544,7 @@ end
 
 def remove(pkgName)
   # make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.exist?("#{CREW_META_PATH}#{pkgName}.filelist")
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
@@ -1552,7 +1556,7 @@ def remove(pkgName)
     next unless File.symlink?("#{CREW_LIB_PREFIX}/#{file}")
 
     @canonicalized_file = `readlink -m #{CREW_LIB_PREFIX}/#{file}`.chomp
-    if File.exist?(@canonicalized_file) && @canonicalized_file.include?(CREW_PREFIX)
+    if File.file?(@canonicalized_file) && @canonicalized_file.include?(CREW_PREFIX)
       puts "Replacing symlinked essential #{file} with hard link to #{@canonicalized_file} to avoid breakage.".lightblue if @opt_verbose
       FileUtils.ln(@canonicalized_file, "#{CREW_LIB_PREFIX}/#{file}", force: true)
     end
@@ -1803,7 +1807,7 @@ end
 
 def sysinfo_command(_args)
   # newer version of Chrome OS exports info to env by default
-  lsb_release = if File.exist?('/etc/lsb-release')
+  lsb_release = if File.file?('/etc/lsb-release')
                   File.read('/etc/lsb-release').scan(/^(.+?)=(.+)$/).to_h
                 else
                   # newer version of Chrome OS exports info to env by default
