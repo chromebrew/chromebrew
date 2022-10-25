@@ -8,7 +8,7 @@ KERN_ARCH = `uname -m`.chomp
 # read and parse processor infomation from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
               .partition("\n\n")[0] \
-              .scan(/^(.+?)\t*: (.+)$/) \
+              .scan(/^(.+?)\t*: (.+)$/).to_h \
               .transform_keys(&:downcase)
 
 # get architectures supported by the processor natively
