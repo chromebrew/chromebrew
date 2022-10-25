@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.22'
+  version '1.23'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -57,6 +57,7 @@ class Buildessential < Package
   # BASIC
   # depends_on 'freebasic'
   # depends_on 'qb64'
+  # depends_on 'smallbasic'
 
   # CMake
   depends_on 'cmake'
@@ -67,6 +68,7 @@ class Buildessential < Package
   # Google
   # depends_on 'dart'
   # depends_on 'flutter'
+  # depends_on 'gb'
   # depends_on 'go'
   # depends_on 'gox'
   # depends_on 'gyp'
@@ -76,6 +78,20 @@ class Buildessential < Package
 
   # Java
   # depends_on 'jdk'
+  # depends_on 'openjdk8'
+  # depends_on 'openjdk11'
+  # depends_on 'openjdk17'
+
+  # Linter
+  depends_on 'linter'
+
+  # Lisp
+  # depends_on 'ccl'
+  # depends_on 'clisp'
+  # depends_on 'newlisp'
+  # depends_on 'owl'
+  # depends_on 'roswell'
+  # depends_on 'sbcl'
 
   # LLVM
   depends_on 'llvm'
