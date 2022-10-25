@@ -490,7 +490,7 @@ def cache_build
     system "sha256sum #{@build_cachefile} > #{@build_cachefile}.sha256"
     puts "Build directory cached at #{@build_cachefile}".lightgreen
   else
-    puts 'CREW_CACHE_ENABLED is not set.'.lightred unless CREW_CACHE_ENABLED
+    puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
     puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
   end
 end
