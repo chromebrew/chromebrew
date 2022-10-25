@@ -17,10 +17,10 @@ class Libavif < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1-1_x86_64/libavif-0.10.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd39d4cd84f6f74d8ba924abe75cb3e06ea1320dc5ba3a2f589cb901fdd6ee512',
-     armv7l: 'd39d4cd84f6f74d8ba924abe75cb3e06ea1320dc5ba3a2f589cb901fdd6ee512',
-       i686: '66680c86bd795d5b1f9a20507488de6a50864bb38cbe254041df05bd00e8734e',
-     x86_64: '95de040f680af568aeff01ba48464d02b9efcabebe13eb4b981c47b8ab648596'
+    aarch64: '6742660c503f4e1ac5f39e8b5e3c5ef04b064d5d01ab9b36ebf6c8d0d912db64',
+     armv7l: '6742660c503f4e1ac5f39e8b5e3c5ef04b064d5d01ab9b36ebf6c8d0d912db64',
+       i686: '88f3295861a9005e0dda42b4ffe1f7b9a5950fd5d024498aa009387fa4991639',
+     x86_64: '5913a00db3f91eb5c64e95aa844ea6d7be2605b9e6244bb1dc640644ca1df634'
   })
 
   depends_on 'libaom'
@@ -32,8 +32,8 @@ class Libavif < Package
   depends_on 'libyuv'
   depends_on 'nasm' => :build
   depends_on 'pkgconf' => :build
-  depends_on 'gdk_pixbuf' => :build
   depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
