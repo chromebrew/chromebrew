@@ -30,9 +30,7 @@ class Svt_av1 < Package
 
   def self.build
     @arch_flags = ''
-    if ARCH == 'armv7l' || ARCH == 'aarch64'
-      @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
-    end
+    @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd' if ARCH == 'armv7l' || ARCH == 'aarch64'
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
       unless File.file?('build.ninja')
