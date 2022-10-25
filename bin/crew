@@ -1850,7 +1850,6 @@ def is_command(name)
   return !!!name[/^[-<]/]
 end
 
-# trap('INT') do
 Signal.trap('INT') do
   if CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED && @pkg.in_build
     cache_build
