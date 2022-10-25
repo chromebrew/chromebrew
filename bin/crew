@@ -475,10 +475,11 @@ def cache_build
   @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
   if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
-    Dir.chdir File.join(CREW_BREW_DIR, @extract_dir) do
+    @pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
+    @pkg_build_dirname = File.basename(@pkg_build_dirname_absolute)
+    Dir.chdir @pkg_build_dirname_absolute do
       # Do not use --exclude-vcs to exclude .git
       # because some builds will use that information.
-      @pkg_build_dirname = File.expand_path('..', Dir.pwd)
       puts "pkg_build_dirname is #{@pkg_build_dirname}"
       system "cd #{CREW_BREW_DIR} ; tar c#{@verbose} \
       #{@pkg_build_dirname} \
@@ -838,8 +839,9 @@ def unpack(meta)
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{@build_cachefile} -C #{CREW_BREW_DIR}", exception: true
-      # Need to reset @extract_dir to the cached build directory.
-      @extract_dir = CREW_BREW_DIR + `tar --exclude='./*/*' -tf #{@build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
+      # Need to reset @extract_dir to the extracted cached build
+      # directory.
+      @extract_dir = `tar --exclude='./*/*' -tf #{@build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
     else
       @pkg.cached_build = false
       case File.basename meta[:filename]
@@ -889,7 +891,7 @@ def unpack(meta)
     # Remove tarball to save space.
     FileUtils.rm_f meta[:filename], verbose: @fileutils_verbose
   end
-  return CREW_BREW_DIR + target_dir
+  return File.join(CREW_BREW_DIR, target_dir)
 end
 
 def build_and_preconfigure(target_dir)
