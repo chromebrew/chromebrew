@@ -3,7 +3,7 @@ require 'package'
 class Bz3 < Package
   description 'bzip3 is a better and stronger spiritual successor to bzip2.'
   homepage 'https://github.com/kspalaiologos/bzip3'
-  @_ver = '1.1.6'
+  @_ver = '1.1.8'
   version @_ver
   license 'LGPL-3'
   compatibility 'all'
@@ -17,7 +17,7 @@ class Bz3 < Package
     system "sed -i 's:^autoreconf:#autoreconf:g' bootstrap.sh"
 
     # Replace /bin/sh shebangs with /usr/bin/env sh ones
-    %w[bz3cat bz3grep bz3less bz3more unbzip3].each do |file|
+    %w[bz3cat bz3grep bz3less bz3more bunzip3].each do |file|
       system "sed -i 's:^#!/bin/sh:#!/usr/bin/env sh:' #{file}"
     end
 
