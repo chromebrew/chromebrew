@@ -4,37 +4,35 @@ class Exa < Package
   description 'Exa is a modern replacement for ls'
   homepage 'https://the.exa.website/'
   @_ver = '0.10.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'Apache-2.0, MIT and Unlicense'
   compatibility 'all'
   source_url 'https://github.com/ogham/exa.git'
   git_hashtag "v#{@_ver}"
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_armv7l/exa-0.10.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_armv7l/exa-0.10.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_i686/exa-0.10.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1_x86_64/exa-0.10.1-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: 'e565a30749d5137ea0d74b55022518d062fdbe61b0ec628acd934a9302139060',
-     armv7l: 'e565a30749d5137ea0d74b55022518d062fdbe61b0ec628acd934a9302139060',
-       i686: '588f32e51731a5dd6b6b0009a35ac23b11c2ab54ef52dbb653892fd719d18521',
-     x86_64: '30085328379c821d79a317d75a8425c25938961335c15be9e3b3a16652f9a873'
-  })
-
+  depends_on 'libgit2'
+  depends_on 'moreutils' => :build # for the sponge command
   depends_on 'rust' => :build
   depends_on 'pandoc' => :build
-  depends_on 'libgit2'
+
+  def self.patch
+    # Cargo.lock is outdated
+    system "sed -i 's:version = \"0.11.0-pre\":version = \"0.10.1\":' Cargo.lock"
+  end
+
+  def self.prebuild
+    system "cargo fetch --locked"
+  end
 
   def self.build
-    system 'cargo build --release -v'
-    system 'pandoc --standalone -f markdown -t man man/exa.1.md | tee exa.1 1> /dev/null'
-    system 'pandoc --standalone -f markdown -t man man/exa_colors.5.md | tee exa_colors.5 1> /dev/null'
+    system 'cargo build --frozen --release -v'
+    %w['exa.1' 'exa_colors.5'].each do 'manpage'
+      system "pandoc --standalone -f markdown -t man man/#{manpage}.md | sponge #{manpage}"
+    end
   end
 
   def self.check
-    system 'cargo test --all -v'
+    system 'cargo test --frozen --all -v'
   end
 
   def self.install
