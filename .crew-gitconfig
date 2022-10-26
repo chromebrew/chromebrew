@@ -11,4 +11,4 @@
 
 [init]
     # avoid initial branch name warning
-    defaultBranch = master
+    defaultBranch = main
