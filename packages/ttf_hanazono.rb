@@ -13,12 +13,6 @@ class Ttf_hanazono < Package
 
   no_compile_needed
 
-  binary_url({
-  })
-
-  binary_sha256({
-  })
-
   def self.install
     @_ttf_fonts_dir = "#{CREW_DEST_PREFIX}/share/fonts/TTF"
     FileUtils.mkdir_p @_ttf_fonts_dir
