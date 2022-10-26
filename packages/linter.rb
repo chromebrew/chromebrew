@@ -3,7 +3,7 @@ require 'package'
 class Linter < Package
   description 'Comprehensive linter and code analysis for various file types.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.0'
+  version '1.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
@@ -20,15 +20,15 @@ class Linter < Package
     linter = <<~EOF
       #!/bin/bash
       export PATH=#{CREW_PREFIX}/bin:$PATH
-      if test $1; then
-        files="$@"
+      if test "$1"; then
+        files="$*"
       else
         files="$(git ls-files -om | xargs)"
       fi
       for file in $files; do
         ext="${file##*.}"
-        type="$(file -b $file | cut -d' ' -f1)"
-        case $type in
+        type=$(file -b "$file" | cut -d' ' -f1)
+        case "$type" in
           Bourne-Again)
             ext="sh"
             ;;
@@ -39,25 +39,25 @@ class Linter < Package
             ext="rb"
             ;;
         esac
-        case $ext in
+        case "$ext" in
           md)
-            mdl $file
+            mdl "$file"
             ;;
           rb)
-            ruby -wcWlevel=2 $file
-            rubocop $file
+            ruby -wcWlevel=2 "$file"
+            rubocop "$file"
             ;;
           sh)
-            shellcheck $file
+            shellcheck "$file"
             ;;
           yml|yaml)
-            yaml-lint $file
+            yaml-lint "$file"
             ;;
           *)
             echo "Unable to check syntax of $file."
             ;;
         esac
-        codespell $file
+        codespell "$file"
       done
     EOF
     File.write('linter', linter)
