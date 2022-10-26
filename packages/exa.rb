@@ -21,12 +21,12 @@ class Exa < Package
   end
 
   def self.prebuild
-    system "cargo fetch --locked"
+    system 'cargo fetch --locked'
   end
 
   def self.build
     system 'cargo build --frozen --release -v'
-    %w['exa.1' 'exa_colors.5'].each do 'manpage'
+    %w[exa.1 exa_colors.5].each do |manpage|
       system "pandoc --standalone -f markdown -t man man/#{manpage}.md | sponge #{manpage}"
     end
   end
