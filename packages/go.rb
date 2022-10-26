@@ -3,29 +3,17 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  @_ver = '1.18'
+  @_ver = '1.19.2'
   version @_ver
   license 'BSD'
   compatibility 'all'
   source_url "https://dl.google.com/go/go#{@_ver}.src.tar.gz"
-  source_sha256 '38f423db4cc834883f2b52344282fa7a39fbb93650dc62a11fdf0be6409bdad6'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.18_armv7l/go-1.18-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.18_armv7l/go-1.18-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.18_i686/go-1.18-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go/1.18_x86_64/go-1.18-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: 'e40d0a744c4b924175d48ddb2d8b1346a72576d2ed06bafadc31a3029182a122',
-     armv7l: 'e40d0a744c4b924175d48ddb2d8b1346a72576d2ed06bafadc31a3029182a122',
-       i686: '2e106197009bd8284cd36d857292cef06ef137563335f31ec1435d12f9086496',
-     x86_64: '060e2348d07b437d0d99d38169215157fafb5f180edcfdc74199b6909243c1b7'
-  })
+  source_sha256 '2ce930d70a931de660fdaf271d70192793b1b240272645bf0275779f6704df6b'
 
   @env ||= ''
 
-  # Tests require perl
+  depends_on 'perl' => :build # Tests require perl
+
   # go is required to build versions of go > 1.4
   case ARCH
   when 'x86_64'
