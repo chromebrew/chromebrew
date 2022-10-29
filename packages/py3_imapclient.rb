@@ -4,7 +4,7 @@ class Py3_imapclient < Package
   description 'IMAPclient is an easy-to-use, complete IMAP client library.'
   homepage 'https://imapclient.readthedocs.io/'
   @_ver = '2.2.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/mjs/imapclient.git'

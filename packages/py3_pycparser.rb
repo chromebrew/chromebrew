@@ -4,7 +4,7 @@ class Py3_pycparser < Package
   description 'PyCParser is a complete C99 parser in pure Python.'
   homepage 'https://github.com/eliben/pycparser/'
   @_ver = '2.21'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/eliben/pycparser.git'

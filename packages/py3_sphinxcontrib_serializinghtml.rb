@@ -4,7 +4,7 @@ class Py3_sphinxcontrib_serializinghtml < Package
   description 'sphinxcontrib-serializinghtml is a sphinx extension which outputs "serialized" HTML files (json and pickle).'
   homepage 'https://www.sphinx-doc.org/'
   @_ver = '1.1.5'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinxcontrib-serializinghtml.git'

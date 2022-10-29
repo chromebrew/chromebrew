@@ -4,7 +4,7 @@ class Py3_flit_core < Package
   description 'Flit provides simplified packaging of Python modules—core portions.'
   homepage 'https://flit.pypa.io/'
   @_ver = '3.7.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/flit.git'

@@ -4,7 +4,7 @@ class Py3_py < Package
   description 'Py is a library with cross-python path, ini-parsing, io, code, log facilities.'
   homepage 'https://py.readthedocs.io/'
   @_ver = '1.11.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pytest-dev/py.git'

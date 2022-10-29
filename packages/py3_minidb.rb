@@ -4,7 +4,7 @@ class Py3_minidb < Package
   description 'Minidb is a simple SQLite3-based store for Python objects.'
   homepage 'http://thp.io/2010/minidb/'
   @_ver = '2.0.5'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/thp/minidb.git'

@@ -4,7 +4,7 @@ class Py3_smartypants < Package
   description 'Smartypants translates plain ASCII punctuation characters into "smart" typographic punctuation HTML entities.'
   homepage 'https://github.com/leohemsted/smartypants.py/'
   @_ver = '2.0.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/leohemsted/smartypants.py.git'

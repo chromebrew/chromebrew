@@ -4,7 +4,7 @@ class Py3_dnspython < Package
   description 'DNSPython is a DNS toolkit.'
   homepage 'https://www.dnspython.org/'
   @_ver = '2.1.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/rthalley/dnspython.git'

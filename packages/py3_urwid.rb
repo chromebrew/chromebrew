@@ -4,7 +4,7 @@ class Py3_urwid < Package
   description 'Urwid is a full-featured console user interface library.'
   homepage 'http://urwid.org/'
   @_ver = '2.1.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/urwid/urwid.git'

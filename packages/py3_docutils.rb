@@ -4,7 +4,7 @@ class Py3_docutils < Package
   description 'Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.'
   homepage 'http://docutils.sourceforge.net/'
   @_ver = '0.19'
-  version @_ver.to_s
+  version "#{@_ver}-py3.11".to_s
   license 'BSD-2, GPL-3 and public-domain'
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/6b/5c/330ea8d383eb2ce973df34d1239b3b21e91cd8c865d21ff82902d952f91f/docutils-0.19.tar.gz'

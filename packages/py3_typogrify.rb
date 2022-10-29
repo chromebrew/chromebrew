@@ -4,7 +4,7 @@ class Py3_typogrify < Package
   description 'Typogrify provides filters to enhance web typography.'
   homepage 'https://python-markdown.github.io/'
   @_ver = '2.0.7'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/mintchaos/typogrify.git'

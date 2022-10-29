@@ -4,7 +4,7 @@ class Py3_jinja2 < Package
   description 'Jinja2 is a very fast and expressive template engine.'
   homepage 'https://jinja.palletsprojects.com/'
   @_ver = '3.0.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/pallets/jinja.git'

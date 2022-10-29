@@ -4,7 +4,7 @@ class Py3_pptx < Package
   description 'Python PPTX generates and manipulates Open XML PowerPoint files.'
   homepage 'https://github.com/scanny/python-pptx/'
   @_ver = '0.6.21'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/scanny/python-pptx.git'

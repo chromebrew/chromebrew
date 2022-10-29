@@ -4,7 +4,7 @@ class Py3_six < Package
   description 'Six is a Python 2 and 3 compatibility library.'
   homepage 'https://six.readthedocs.io/'
   @_ver = '1.16.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/benjaminp/six.git'

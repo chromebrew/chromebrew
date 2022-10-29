@@ -4,7 +4,7 @@ class Py3_leather < Package
   description 'Leather is a fast, approximate chart generator in Python.'
   homepage 'https://leather.readthedocs.io/'
   @_ver = '0.3.4'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/leather.git'

@@ -4,7 +4,7 @@ class Py3_pytz < Package
   description 'pytz brings the Olson tz database into Python.'
   homepage 'https://pythonhosted.org/pytz/'
   @_ver = '2021.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/e3/8e/1cde9d002f48a940b9d9d38820aaf444b229450c0854bdf15305ce4a3d1a/pytz-2021.3.tar.gz'

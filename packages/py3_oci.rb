@@ -4,7 +4,7 @@ class Py3_oci < Package
   description 'Oracle Cloud Infrastructure Python SDK'
   homepage 'https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/'
   @_ver = '2.47.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'UPL-1.0 or Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/oracle/oci-python-sdk.git'

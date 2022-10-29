@@ -4,7 +4,7 @@ class Py3_pdfminer_six < Package
   description 'PDFminer.six is a community maintained fork of PDFminer.'
   homepage 'https://pdfminersix.readthedocs.io/'
   @_ver = '20201018'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pdfminer/pdfminer.six.git'

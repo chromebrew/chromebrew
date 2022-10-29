@@ -4,7 +4,7 @@ class Py3_configparser < Package
   description 'Configparser backports newer configparser modules to earlier python versions.'
   homepage 'https://github.com/jaraco/configparser/'
   @_ver = '5.0.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/jaraco/configparser.git'

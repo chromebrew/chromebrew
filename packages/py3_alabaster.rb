@@ -4,7 +4,7 @@ class Py3_alabaster < Package
   description 'Alabaster is a configurable sidebar-enabled Sphinx theme.'
   homepage 'https://alabaster.readthedocs.io/'
   @_ver = '0.7.12'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD' # License is BSD-style, might be BSD-3?
   compatibility 'all'
   source_url 'https://github.com/bitprophet/alabaster.git'

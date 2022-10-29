@@ -4,7 +4,7 @@ class Py3_idna < Package
   description 'IDNA provides internationalized domain names for Python.'
   homepage 'https://github.com/kjd/idna/'
   @_ver = '3.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/kjd/idna.git'

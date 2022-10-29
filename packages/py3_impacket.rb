@@ -4,7 +4,7 @@ class Py3_impacket < Package
   description 'Impacket provides network protocols constructors and dissectors.'
   homepage 'https://www.secureauth.com/labs/open-source-tools/impacket/'
   @_ver = '0.9.23'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0-with-impacket-modifications'
   compatibility 'all'
   source_url 'https://github.com/SecureAuthCorp/impacket.git'

@@ -4,7 +4,7 @@ class Py3_wheel < Package
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
   @_ver = '0.37.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/wheel.git'

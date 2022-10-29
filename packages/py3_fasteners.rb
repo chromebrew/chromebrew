@@ -4,7 +4,7 @@ class Py3_fasteners < Package
   description 'Fasteners provides useful locks for python programs.'
   homepage 'https://github.com/harlowja/fasteners/'
   @_ver = '0.16.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/harlowja/fasteners.git'

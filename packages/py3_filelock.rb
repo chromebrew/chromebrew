@@ -4,7 +4,7 @@ class Py3_filelock < Package
   description 'FileLock implements a platform independent file lock in Python.'
   homepage 'https://github.com/benediktschmitt/py-filelock/'
   @_ver = '3.3.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Unlicense'
   compatibility 'all'
   source_url 'https://github.com/benediktschmitt/py-filelock.git'

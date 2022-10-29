@@ -4,7 +4,7 @@ class Py3_pathspec < Package
   description 'Path specification is a utility library for gitignore style pattern matching of file paths.'
   homepage 'https://github.com/cpburnz/python-path-specification/'
   @_ver = '0.9.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/cpburnz/python-path-specification.git'

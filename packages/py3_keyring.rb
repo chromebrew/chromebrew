@@ -4,7 +4,7 @@ class Py3_keyring < Package
   description 'Keyring stores and accesses your passwords safely.'
   homepage 'https://github.com/jaraco/keyring/'
   @_ver = '23.2.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/jaraco/keyring.git'

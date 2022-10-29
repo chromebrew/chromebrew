@@ -4,7 +4,7 @@ class Py3_cssselect < Package
   description 'CSSselect parses CSS3 Selectors and translates them to XPath 1.0.'
   homepage 'https://cssselect.readthedocs.io/'
   @_ver = '1.1.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/scrapy/cssselect.git'

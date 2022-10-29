@@ -4,7 +4,7 @@ class Py3_pygments < Package
   description 'Python Syntax Highlighter'
   homepage 'https://pygments.org/'
   @_ver = '2.10.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/pygments/pygments.git'

@@ -4,7 +4,7 @@ class Py3_extract_msg < Package
   description 'Extract-msg extracts emails and attachments saved in Microsoft Outlook\'s .msg files.'
   homepage 'https://github.com/mattgwwalker/msg-extractor/'
   @_ver = '0.28.7'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/67/fb/ed86f4fa53e58e90598f635bba9b4140a20992bd968aaaf8ae1fbacd6e57/extract_msg-0.28.7.tar.gz'

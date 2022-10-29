@@ -4,7 +4,7 @@ class Py3_click < Package
   description 'Click is a simple wrapper around optparse for powerful command line utilities.'
   homepage 'https://click.palletsprojects.com'
   @_ver = '8.0.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/pallets/click.git'

@@ -4,7 +4,7 @@ class Py3_dicttoxml < Package
   description 'DicttoXML converts Python dictionaries into XML strings.'
   homepage 'https://github.com/quandyfactory/dicttoxml/'
   @_ver = '1.3.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/quandyfactory/dicttoxml.git'

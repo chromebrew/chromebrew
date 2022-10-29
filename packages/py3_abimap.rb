@@ -4,7 +4,7 @@ class Py3_abimap < Package
   description 'A helper for library maintainers to use symbol versioning'
   homepage 'https://github.com/ansasaki/abimap'
   @_ver = '0.3.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ansasaki/abimap.git'

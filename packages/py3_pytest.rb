@@ -4,7 +4,7 @@ class Py3_pytest < Package
   description 'Pytest is simple powerful testing with Python.'
   homepage 'https://pytest.org/'
   @_ver = '6.2.5'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pytest-dev/pytest.git'

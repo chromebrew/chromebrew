@@ -4,7 +4,7 @@ class Py3_tzlocal < Package
   description 'Tzlocal provides tzinfo object for the local timezone.'
   homepage 'https://github.com/regebro/tzlocal/'
   @_ver = '4.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/regebro/tzlocal.git'

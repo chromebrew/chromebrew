@@ -4,7 +4,7 @@ class Py3_dateutil < Package
   description 'Dateutil provides extensions to the standard Python datetime module.'
   homepage 'https://dateutil.readthedocs.io/'
   @_ver = '2.8.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3 and Apache-2.0 or BSD-3'
   compatibility 'all'
   source_url 'https://github.com/dateutil/dateutil.git'

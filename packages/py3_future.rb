@@ -4,7 +4,7 @@ class Py3_future < Package
   description 'Future provides clean single-source support for Python 3 and 2.'
   homepage 'https://python-future.org/'
   @_ver = '0.18.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/PythonCharmers/python-future.git'

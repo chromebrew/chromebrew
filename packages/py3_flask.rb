@@ -4,7 +4,7 @@ class Py3_flask < Package
   description 'Flask is a simple framework for building complex web applications.'
   homepage 'https://palletsprojects.com/p/flask/'
   @_ver = '2.0.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/pallets/flask.git'

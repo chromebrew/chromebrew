@@ -4,7 +4,7 @@ class Py3_agate_sql < Package
   description 'Agate-sql adds SQL read/write support to agate.'
   homepage 'https://agate-sql.readthedocs.org/'
   @_ver = '0.5.8'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/agate-sql.git'

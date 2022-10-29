@@ -4,7 +4,7 @@ class Py3_sphinxcontrib_devhelp < Package
   description 'Sphinxcontrib-devhelp is a sphinx extension which outputs a Devhelp document.'
   homepage 'https://www.sphinx-doc.org/'
   @_ver = '1.0.2-883c'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinxcontrib-devhelp.git'

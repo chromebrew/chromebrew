@@ -4,7 +4,7 @@ class Py3_pyicu < Package
   description 'PyICU is a Python extension wrapping the ICU C++ API.'
   homepage 'https://pyicu.org/'
   @_ver = '2.7.4'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.pyicu.org/main/pyicu.git'

@@ -4,7 +4,7 @@ class Py3_wcwidth < Package
   description 'WCWidth measures the displayed width of unicode strings in a terminal.'
   homepage 'https://github.com/jquast/wcwidth/'
   @_ver = '0.2.5'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/jquast/wcwidth.git'

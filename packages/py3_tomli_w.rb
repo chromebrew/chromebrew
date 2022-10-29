@@ -4,7 +4,7 @@ class Py3_tomli_w < Package
   description "Tomli-w is a lil' TOML writer."
   homepage 'https://github.com/hukkin/tomli-w/'
   @_ver = '1.0.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/hukkin/tomli-w.git'

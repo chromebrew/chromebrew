@@ -4,7 +4,7 @@ class Py3_pipdeptree < Package
   description 'Displays a dependency tree of the installed Python packages.'
   homepage 'https://github.com/naiquevin/pipdeptree/'
   @_ver = '2.2.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/naiquevin/pipdeptree.git'

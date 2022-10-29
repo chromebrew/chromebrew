@@ -4,7 +4,7 @@ class Py3_text_unidecode < Package
   description 'Text-unicode is the most basic Text::Unidecode port.'
   homepage 'https://github.com/kmike/text-unidecode/'
   @_ver = '1.3'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/kmike/text-unidecode.git'

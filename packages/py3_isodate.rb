@@ -4,7 +4,7 @@ class Py3_isodate < Package
   description 'ISOdate is an ISO 8601 date/time/duration parser and formatter.'
   homepage 'https://github.com/gweis/isodate/'
   @_ver = '0.6.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/gweis/isodate.git'

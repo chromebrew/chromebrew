@@ -4,7 +4,7 @@ class Py3_dbfread < Package
   description 'DBFread reads DBF Files with Python.'
   homepage 'https://dbfread.readthedocs.io/'
   @_ver = '2.0.7'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/olemb/dbfread.git'
