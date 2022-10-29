@@ -1,26 +1,28 @@
 require 'package'
-require 'open3'
 
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
   version '10.4.0'
-  compatibility 'all'
   license 'GPL-3'
+  compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.4.0/gcc-10.4.0.tar.xz'
   source_sha256 'c9297d5bcd7cb43f3dfc2fed5389e948c9312fd962ef6a4ce455cff963ebe4f1'
 
   binary_url({
-   aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_armv7l/gcc10-10.4.0-chromeos-armv7l.tar.zst',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_armv7l/gcc10-10.4.0-chromeos-armv7l.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_armv7l/gcc10-10.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_armv7l/gcc10-10.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_i686/gcc10-10.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_x86_64/gcc10-10.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-   aarch64: 'b6c6a28cb3942b25d283b77420f850883e9d32aded05d2de079d4f8436e23e28',
-    armv7l: 'b6c6a28cb3942b25d283b77420f850883e9d32aded05d2de079d4f8436e23e28'
+    aarch64: 'b6c6a28cb3942b25d283b77420f850883e9d32aded05d2de079d4f8436e23e28',
+     armv7l: 'b6c6a28cb3942b25d283b77420f850883e9d32aded05d2de079d4f8436e23e28',
+       i686: 'f1cd1b358a700b07400af645a324a26a6895cf8f2bc93d2b1c21782e2eb9b750',
+     x86_64: 'd0f1cb59380cf1bf7806372752f8b3f9d472058cef7b63a33df3bfc18e9fb985'
   })
 
   depends_on 'binutils' => :build
-  depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
   depends_on 'gmp' # R
@@ -48,34 +50,6 @@ class Gcc10 < Package
       system "sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp"
       system "sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp"
     end
-  end
-
-  def self.prebuild
-    @C99 = <<~EOF
-      #!/usr/bin/env sh
-      fl="-std=c99"
-      for opt; do
-        case "$opt" in
-          -std=c99|-std=iso9899:1999) fl="";;
-          -std=*) echo "`basename $0` called with non ISO C99 option $opt" >&2
-              exit 1;;
-        esac
-      done
-      exec gcc $fl ${1+"$@"}
-    EOF
-
-    @C89 = <<~EOF
-      #!/usr/bin/env sh
-      fl="-std=c89"
-      for opt; do
-        case "$opt" in
-          -ansi|-std=c89|-std=iso9899:1990) fl="";;
-          -std=*) echo "`basename $0` called with non ANSI/ISO C option $opt" >&2
-                exit 1;;
-        esac
-      done
-      exec gcc $fl ${1+"$@"}
-    EOF
   end
 
   def self.build
@@ -122,12 +96,6 @@ class Gcc10 < Package
     when 'i686'
       @archflags = '--with-arch-32=i686'
     end
-
-    # Set ccache sloppiness as per
-    # https://wiki.archlinux.org/index.php/Ccache#Sloppiness
-    system 'ccache --set-config=sloppiness=file_macro,locale,time_macros'
-    # Prefix ccache to path.
-    @path = "#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin"
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
@@ -187,25 +155,6 @@ class Gcc10 < Package
       }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
-      ## gcc-libs install
-      # system make_env, "make -C #{CREW_TGT}/libgcc DESTDIR=#{CREW_DEST_DIR} install-shared"
-
-      # @gcc_libs = %w[libatomic libgfortran libgo libgomp libitm
-      # libquadmath libsanitizer/asan libsanitizer/lsan libsanitizer/ubsan
-      # libsanitizer/tsan libstdc++-v3/src libvtv]
-      # @gcc_libs.each do |lib|
-      # system make_env, "make -C #{CREW_TGT}/#{lib} \
-      # DESTDIR=#{CREW_DEST_DIR} install-toolexeclibLTLIBRARIES", exception: false
-      # end
-
-      # system make_env, "make -C #{CREW_TGT}/libobjc DESTDIR=#{CREW_DEST_DIR} install-libs", exception: false
-      # system make_env, "make -C #{CREW_TGT}/libstdc++-v3/po DESTDIR=#{CREW_DEST_DIR} install", exception: false
-      # system make_env, "make -C #{CREW_TGT}/libphobos DESTDIR=#{CREW_DEST_DIR} install", exception: false
-
-      # gcc_libs_info
-      # %w[libgomp libitm libquadmath].each do |lib|
-      # system make_env, "make -C #{CREW_TGT}/#{lib} DESTDIR=#{CREW_DEST_DIR} install-info", exception: false
-      # end
 
       system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-strip"
 
@@ -223,110 +172,11 @@ class Gcc10 < Package
         FileUtils.install "gcc/#{lib}", "#{gcc_libdir}/", mode: 0o755
       end
 
-      # system make_env, "make -C #{CREW_TGT}/libgcc DESTDIR=#{CREW_DEST_DIR} install"
-
-      # %w[src include libsupc++ python].each do |lib|
-      #   system make_env, "make -C #{CREW_TGT}/libstdc++-v3/#{lib} DESTDIR=#{CREW_DEST_DIR} install"
-      # end
-
-      # system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-libcc1"
-
-      # http://www.linuxfromscratch.org/lfs/view/development/chapter06/gcc.html#contents-gcc
-      # move a misplaced file
-      # The installation stage puts some files used by gdb under the /usr/local/lib(64) directory.
-      # This generates spurious error messages when performing ldconfig. This command moves the files to another location.
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
-      # FileUtils.mv Dir["#{CREW_DEST_LIB_PREFIX}/*gdb.py"], "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib/"
-
       system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
       system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"
-
-      # system make_env, "make -C lto-plugin DESTDIR=#{CREW_DEST_DIR} install"
-
-      # system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
-      # exception: false
-      # system make_env, "make -C #{CREW_TGT}/libgomp DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
-      # exception: false
-      # system make_env, "make -C #{CREW_TGT}/libitm DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
-      # exception: false
-      # system make_env, "make -C #{CREW_TGT}/libquadmath DESTDIR=#{CREW_DEST_DIR} install-nodist_libsubincludeHEADERS",
-      # exception: false
-      # system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_sanincludeHEADERS",
-      # exception: false
-      # system make_env, "make -C #{CREW_TGT}/libsanitizer DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS",
-      # exception: false
-      # system make_env,
-      # "make -C #{CREW_TGT}/libsanitizer/asan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
-      ## This failed on i686
-      # system make_env,
-      # "make -C #{CREW_TGT}/libsanitizer/tsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
-      ## This might fail on i686
-      # system make_env,
-      # "make -C #{CREW_TGT}/libsanitizer/lsan DESTDIR=#{CREW_DEST_DIR} install-nodist_toolexeclibHEADERS", exception: false
-
-      # libiberty is installed from binutils
-      # system "env LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-      #      LIBRARY_PATH=#{CREW_LIB_PREFIX} PATH=#{@path} \
-      #      make -C libiberty DESTDIR=#{CREW_DEST_DIR} install"
-      # install -m644 libiberty/pic/libiberty.a "#{CREW_DEST_PREFIX}/lib"
-
-      # system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-man install-info"
-
-      # system make_env, "make -C libcpp DESTDIR=#{CREW_DEST_DIR} install"
-      # system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
-
-      # install the libstdc++ man pages
-      # system make_env, "make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
-
-      # byte-compile python libraries
-      # system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
-      # system "python -O -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}"
-      # end
-
-      # Dir.chdir "#{CREW_DEST_MAN_PREFIX}/man1" do
-      # Dir["*-#{@gcc_version}.1*"].each do |f|
-      # basefile = f.gsub("-#{@gcc_version}", '')
-      # FileUtils.ln_sf f, basefile
-      # end
     end
 
-    # Dir.chdir "#{CREW_DEST_PREFIX}/bin/" do
-    # Dir["#{gcc_arch}-*-#{@gcc_version}"].each do |f|
-    # basefile_nover = f.delete_suffix("-#{@gcc_version}")
-
-    # basefile_noarch = f.delete_prefix("#{gcc_arch}-")
-    # FileUtils.ln_sf f, basefile_noarch, verbose: true
-
-    # basefile_noarch_nover = basefile_nover.delete_prefix("#{gcc_arch}-")
-    # FileUtils.ln_sf f, basefile_noarch_nover, verbose: true
-
-    # basefile_noarch_nover_nogcc = basefile_noarch_nover.delete_prefix('gcc-')
-    # FileUtils.ln_sf f, "#{gcc_arch}-#{basefile_noarch_nover_nogcc}", verbose: true
-    # end
-
-    # Dir["*-#{@gcc_version}"].each do |f|
-    # basefile_nover = f.delete_suffix("-#{@gcc_version}")
-    # FileUtils.ln_sf f, basefile_nover, verbose: true
-    # end
-
-    # many packages expect this symlink
-    # FileUtils.ln_sf "gcc-#{@gcc_version}", 'cc', verbose: true
-    # end
-
-    ## make sure current version of gcc LTO plugin for Gold linker is installed.
-    # FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/"
-    # FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_LIB_PREFIX}/bfd-plugins/",
-    # verbose: true
-
-    ## binutils makes a symlink here, but just in case it isn't there.
-    # if ARCH_LIB == 'lib64'
-    # FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/lib/bfd-plugins/"
-    # FileUtils.ln_sf "#{CREW_PREFIX}/libexec/#{gcc_dir}/liblto_plugin.so", "#{CREW_DEST_PREFIX}/lib/bfd-plugins/",
-    # verbose: true
-    # end
-
-    # File.write "#{CREW_DEST_PREFIX}/bin/c99", @C99, perm: 0o755
-    # File.write "#{CREW_DEST_PREFIX}/bin/c89", @C89, perm: 0o755
+    # Remove files which would conflict with the current version of gcc.
     FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/*")
     FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/include/libgccjit*.h")
     FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/armv7l-cros-linux-gnueabihf-gcc-tmp"
@@ -335,24 +185,4 @@ class Gcc10 < Package
     FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/share/info/*")
   end
 
-  # def self.postinstall
-  ## remove any previous gcc packages
-  # @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
-
-  # installed_gcc = @device[:installed_packages].select { |pkg| pkg[:name] =~ /^gcc\d+$/ }
-
-  # installed_gcc.each do |gcc_pkg|
-  # puts "Removing previous version of gcc (#{gcc_pkg[:name]})...".yellow
-
-  ## remove filelist and directorylist
-  # FileUtils.rm_f(["#{CREW_META_PATH}/#{gcc_pkg[:name]}.filelist",
-  # "#{CREW_META_PATH}/#{gcc_pkg[:name]}.directorylist"])
-
-  ## delete gcc#{ver} from device.json
-  # @device[:installed_packages].delete_if { |pkg| pkg[:name] == gcc_pkg[:name] }
-  # end
-
-  ## update device.json
-  # File.write("#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(@device))
-  # end
 end
