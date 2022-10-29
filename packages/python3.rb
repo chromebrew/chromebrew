@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.10.8'
+  @_ver = '3.11.0'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '6a30ecde59c47048013eb5a658c9b5dec277203d2793667f578df7671f7f03f3'
+  source_sha256 'a57dc82d77358617ba65b9841cee1e3b441f386c3789ddc0676eca077f2951c3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_armv7l/python3-3.10.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_armv7l/python3-3.10.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_i686/python3-3.10.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.10.8_x86_64/python3-3.10.8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.0_armv7l/python3-3.11.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.0_armv7l/python3-3.11.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.0_i686/python3-3.11.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.0_x86_64/python3-3.11.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bf1dae49145360157092f9843c43da8223a47cd5a7ca1b87a3c01e189a4eb288',
-     armv7l: 'bf1dae49145360157092f9843c43da8223a47cd5a7ca1b87a3c01e189a4eb288',
-       i686: '41a9de83c568c1c624964fcd588971cbfa1edcbaf4055a18830ab010e450d2b6',
-     x86_64: '4f168cd30e620ca2bbc12493130a564d678623938694a133e9bfa9b165a211b5'
+    aarch64: '21c646c26ed95774c38a5f44938763e9236cd57a775f7b9dbbd925c4c0b90e32',
+     armv7l: '21c646c26ed95774c38a5f44938763e9236cd57a775f7b9dbbd925c4c0b90e32',
+       i686: 'c273e518eb11ac79f45fbd3c3028b6e352e42779b7572782b50af4d8b28e2dee',
+     x86_64: '21961eba126c03723e77da34dc5415a43b7d92a4402179b6f786aa1e0f672e07'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -42,10 +42,11 @@ class Python3 < Package
   # depends_on 'tcl' # Needed for tkinter support
   # depends_on 'tk'  # Needed for tkinter support
   depends_on 'util_linux' # R
+
   no_env_options
 
   def self.patch
-    system "sed -i -e 's:#{CREW_LIB_PREFIX}:\$(get_libdir):g' \
+    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
 		Lib/distutils/command/install.py \
 		Lib/distutils/sysconfig.py \
 		Lib/site.py \
