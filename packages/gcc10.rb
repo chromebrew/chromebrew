@@ -155,7 +155,6 @@ class Gcc10 < Package
       }.transform_keys(&:to_s)
 
     Dir.chdir('objdir') do
-
       system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-strip"
 
       # gcc-non-lib install
@@ -184,5 +183,4 @@ class Gcc10 < Package
     FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/share/man/man7/*")
     FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/share/info/*")
   end
-
 end
