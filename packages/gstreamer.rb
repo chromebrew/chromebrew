@@ -4,7 +4,7 @@ class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
   @_ver = '1.20.3'
-  version "#{@_ver}-1"
+  version @_ver
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
