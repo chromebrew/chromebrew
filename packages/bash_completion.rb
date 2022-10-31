@@ -3,23 +3,23 @@ require 'package'
 class Bash_completion < Package
   description 'Programmable completion functions for bash'
   homepage 'https://github.com/scop/bash-completion'
-  version '2.11'
+  version '2.11-1'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/scop/bash-completion/archive/refs/tags/2.11.tar.gz'
   source_sha256 '16adefabf43ec8ffb473704f5724d775c2f47e9f750d7d608f0251ec21fe8813'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11_armv7l/bash_completion-2.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11_armv7l/bash_completion-2.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11_i686/bash_completion-2.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11_x86_64/bash_completion-2.11-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_armv7l/bash_completion-2.11-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_armv7l/bash_completion-2.11-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_i686/bash_completion-2.11-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_x86_64/bash_completion-2.11-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dc426ff82ec4b0feb70d9a8b271269873127f95a5f8b8cde27c4aa38468afd27',
-     armv7l: 'dc426ff82ec4b0feb70d9a8b271269873127f95a5f8b8cde27c4aa38468afd27',
-       i686: '35c16db77e47df16451bfd3ecc9759c6debe9e74523a3644cf47fbc3b211fa3e',
-     x86_64: '75f84fe83ae7e4c308dc62ea26a1dffd886f1efe486f0ed9ba8587ee3e7f42bc'
+    aarch64: 'f08fa79964a1f0077f8c523ab3f72afcf287bab069aae3c475ef49a515689508',
+     armv7l: 'f08fa79964a1f0077f8c523ab3f72afcf287bab069aae3c475ef49a515689508',
+       i686: '3a8cd80d863f72a2f88fa27e4cdce054c9133361cfcea693c8fa23ddd3b692d1',
+     x86_64: 'ff8dce6b4da22853b8e558cbf814ed86fd1793b39a0123f64569cd09f80af27f'
   })
 
   def self.build
@@ -30,12 +30,5 @@ class Bash_completion < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @bashcompletionenv = <<~BASHCOMPLETIONEOF
-      # Bash completion configuration
-      source #{CREW_PREFIX}/share/bash-completion/bash_completion
-    BASHCOMPLETIONEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash_completion", @bashcompletionenv)
   end
 end
