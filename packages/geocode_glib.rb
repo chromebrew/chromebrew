@@ -24,7 +24,6 @@ class Geocode_glib < Package
 
   depends_on 'json_glib'
   depends_on 'libsoup'
-  depends_on 'libsoup'
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'py3_pygments' => :build

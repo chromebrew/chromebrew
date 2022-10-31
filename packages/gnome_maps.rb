@@ -22,6 +22,7 @@ class Gnome_maps < Package
   })
 
   depends_on 'geocode_glib'
+  depends_on 'geocode_glib2'
   depends_on 'geoclue'
   depends_on 'gjs'
   depends_on 'gtk3'
