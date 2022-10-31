@@ -59,14 +59,9 @@ class Bash < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.ln_s "#{CREW_PREFIX}/bin/bash", "#{CREW_DEST_PREFIX}/bin/sh"
+  end
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @bashenv = <<~BASHEOF
-      # Make Chromebrew's version of bash start automatically
-      if [[ "$(coreutils --coreutils-prog=readlink "/proc/$$/exe")" != '#{CREW_PREFIX}/bin/bash' ]]; then
-        exec #{CREW_PREFIX}/bin/bash
-      fi
-    BASHEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/bash", @bashenv)
+  def self.postinstall
+    FileUtils.rm_f "#{CREW_PREFIX}/etc/bash.d/bash" if File.file?("#{CREW_PREFIX}/etc/bash.d/bash")
   end
 end
