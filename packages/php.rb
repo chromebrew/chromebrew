@@ -23,8 +23,8 @@ class Php < Package
     puts '7.2 = PHP 7.2.34'
     puts '7.3 = PHP 7.3.33'
     puts '7.4 = PHP 7.4.32'
-    puts '8.0 = PHP 8.0.24'
-    puts '8.1 = PHP 8.1.11'
+    puts '8.0 = PHP 8.0.25'
+    puts '8.1 = PHP 8.1.12'
     puts '  0 = Cancel'
 
     while version = $stdin.gets.chomp
