@@ -1,14 +1,7 @@
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  case ARCH
-  when 'x86_64'
-    version '2.38.1'
-  when 'i686'
-    version '2.38.0-1'
-  when 'aarch64', 'armv7l'
-    version '2.32.4'
-  end
+  version '2.38.1'
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.1.tar.xz'

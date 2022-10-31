@@ -1,29 +1,16 @@
 class Webkit2gtk_5 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  case ARCH
-  when 'x86_64'
-    version '2.38.1'
-  when 'i686'
-    version '2.38.0'
-  when 'aarch64', 'armv7l'
-    version '2.32.4'
-  end
+  version '2.38.1'
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.1.tar.xz'
   source_sha256 '02e195b3fb9e057743b3364ee7f1eec13f71614226849544c07c32a73b8f1848'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_armv7l/webkit2gtk_5-2.32.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.32.4_armv7l/webkit2gtk_5-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.0_i686/webkit2gtk_5-2.38.0-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_x86_64/webkit2gtk_5-2.38.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5a4da2ee8bc5889ccf768da845a33f94bf988e626c3af16a3c30f6dcb3584a85',
-     armv7l: '5a4da2ee8bc5889ccf768da845a33f94bf988e626c3af16a3c30f6dcb3584a85',
-       i686: 'a58c67697d485faa397cf7949a4f188fe92f64d954404683d25cf9ff694c12a5',
      x86_64: 'c0793dfc8aa4b9935a43af6bc0ee302a004cd4ca83b751d073563adfb1ebfe65'
   })
 

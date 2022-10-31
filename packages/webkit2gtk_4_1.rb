@@ -1,25 +1,16 @@
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  case ARCH
-  when 'x86_64'
-    version '2.38.1'
-  when 'i686'
-    version '2.38.0'
-  when 'aarch64', 'armv7l'
-    version '2.38.1'
-  end
+  version '2.38.1'
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.1.tar.xz'
   source_sha256 '02e195b3fb9e057743b3364ee7f1eec13f71614226849544c07c32a73b8f1848'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.0_i686/webkit2gtk_4_1-2.38.0-chromeos-i686.tar.zst',
   x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.1_x86_64/webkit2gtk_4_1-2.38.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'aad673c3561f317633ab7e1910cc65d9df4b6f32cf1ff43e5930328fc96bb142',
   x86_64: '6bbadb05897a4a8566eecd6ff7cba5b68d59fe852f1748001cb34b8f726c123d'
   })
 
