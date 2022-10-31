@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-6'
+  version '20210109-7'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_armv7l/sommelier-20210109-6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_armv7l/sommelier-20210109-6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_i686/sommelier-20210109-6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_x86_64/sommelier-20210109-6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_armv7l/sommelier-20210109-7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_armv7l/sommelier-20210109-7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_i686/sommelier-20210109-7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_x86_64/sommelier-20210109-7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
-     armv7l: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
-       i686: 'b370bc7c96b6018b3c348ee37262eee7981af0b32520649c3e6d2f8680d6e753',
-     x86_64: '32ad19aba00b96889c936c8efec6e09c7eb739a5863742f4537d4bed91e306bc'
+    aarch64: '2ff364d2993e3f8ea0f8947ca944e279436eed595c9ebce19161d3284922b36a',
+     armv7l: '2ff364d2993e3f8ea0f8947ca944e279436eed595c9ebce19161d3284922b36a',
+       i686: '93fe643b688e2f6625a26210451ddd336593fb384ff290ad176d766c0a9c0674',
+     x86_64: '31af23b7f7f794607a7f2cdbe198126453eb3fd05bfdcbd82883244ff294c12c'
   })
 
   depends_on 'libdrm'
@@ -39,15 +39,8 @@ class Sommelier < Package
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xwayland'
   depends_on 'xxd_standalone' # for xxd in wrapper script
-
-  case ARCH
-  when 'armv7l', 'aarch64'
-    @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
-  when 'i686'
-    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
-  when 'x86_64'
-    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
-  end
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.preflight
     case ARCH
@@ -56,7 +49,9 @@ class Sommelier < Package
     when 'i686', 'x86_64'
       @container_check = `/usr/bin/crossystem inside_vm` == '1'
     end
-    abort 'This package is not compatible with your device :/'.lightred unless File.socket?('/var/run/chrome/wayland-0') || @container_check
+    return if File.socket?('/var/run/chrome/wayland-0') || @container_check
+
+    abort 'This package is not compatible with your device :/'.lightred
   end
 
   def self.patch
@@ -67,6 +62,14 @@ class Sommelier < Package
   end
 
   def self.build
+    case ARCH
+    when 'armv7l', 'aarch64'
+      @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
+    when 'i686'
+      @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
+    when 'x86_64'
+      @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
+    end
     Dir.chdir('vm_tools/sommelier') do
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
@@ -89,7 +92,7 @@ class Sommelier < Package
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
 
-        @sommelierenv = <<~EOF
+        @sommelierenv = <<~SOMMELIERENVEOF
           set -a
           CLUTTER_BACKEND=wayland
           DISPLAY=:0
@@ -113,7 +116,7 @@ class Sommelier < Package
           fi
 
           set +a
-        EOF
+        SOMMELIERENVEOF
 
         # Create local startup and shutdown scripts
 
@@ -121,7 +124,7 @@ class Sommelier < Package
         # This file via:
         # crostini: /opt/google/cros-containers/bin/sommelier
         # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
-        File.write 'sommelier_sh', <<~EOF
+        File.write 'sommelier_sh', <<~SOMMELIERSHEOF
           #!/bin/bash
           function readlink(){
             coreutils --coreutils-prog=readlink "$@"
@@ -146,10 +149,10 @@ class Sommelier < Package
               --inhibit-rpath '' \
               "${base}.elf" \
               "$@"
-        EOF
+        SOMMELIERSHEOF
 
         # sommelierd
-        File.write 'sommelierd', <<~EOF
+        File.write 'sommelierd', <<~SOMMELIERDEOF
           #!/bin/bash -a
 
           source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
@@ -200,10 +203,10 @@ class Sommelier < Package
             echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             xhost +si:localuser:root &>/dev/null
           fi
-        EOF
+        SOMMELIERDEOF
 
         # startsommelier
-        File.write 'startsommelier', <<~EOF
+        File.write 'startsommelier', <<~STARTSOMMELIEREOF
           #!/bin/bash -a
 
           source ~/.sommelier-default.env &>/dev/null
@@ -244,12 +247,12 @@ class Sommelier < Package
           else
             echo "some sommelier processes failed to start"
             echo -e "sommelier processes running: ${SOMMWPROCS} \\n ${SOMMXPROCS}"
-            exit 1
+            return 1
           fi
-        EOF
+        STARTSOMMELIEREOF
 
         # stopsommelier
-        File.write 'stopsommelier', <<~EOF
+        File.write 'stopsommelier', <<~STOPSOMMELIEREOF
           #!/bin/bash
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
@@ -265,18 +268,18 @@ class Sommelier < Package
           else
             echo "sommelier stopped"
           fi
-        EOF
+        STOPSOMMELIEREOF
 
         # restartsommelier
-        File.write 'restartsommelier', <<~EOF
+        File.write 'restartsommelier', <<~RESTARTSOMMELIEREOF
           #!/bin/bash
           stopsommelier && startsommelier
-        EOF
+        RESTARTSOMMELIEREOF
 
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-        @bashd_sommelier = <<~EOF
-          startsommelier
-        EOF
+        @bashd_sommelier = <<~BASHDEOF
+          source #{CREW_PREFIX}/bin/startsommelier
+        BASHDEOF
       end
     end
   end
@@ -312,7 +315,7 @@ class Sommelier < Package
 
     puts
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"
-    puts <<~EOT.lightblue
+    puts <<~EOT1.lightblue
       To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier
       Default values are in #{CREW_PREFIX}/etc/env.d/sommelier
 
@@ -320,8 +323,8 @@ class Sommelier < Package
       To stop the sommelier daemon, run 'stopsommelier'
       To restart the sommelier daemon, run 'restartsommelier'
 
-    EOT
-    puts <<~EOT.orange
+    EOT1
+    puts <<~EOT2.orange
       Please be aware that gui applications may not work without the
       sommelier daemon running.
 
@@ -330,6 +333,6 @@ class Sommelier < Package
 
       (If you are upgrading from an earlier version of sommelier,
       also run 'restartsommelier'.)
-    EOT
+    EOT2
   end
 end
