@@ -5,7 +5,7 @@ class Zlibpkg < Package
   homepage 'https://www.zlib.net/'
   # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
   @_ver = '1.2.12'
-  version @_ver.to_s
+  version @_ver
   license 'zlib'
   compatibility 'all'
   source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"

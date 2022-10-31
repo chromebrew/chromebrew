@@ -4,7 +4,7 @@ class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
   @_ver = '2.42.10-6550872'
-  version @_ver.to_s
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'

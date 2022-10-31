@@ -4,7 +4,7 @@ class Gobject_introspection < Package
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
   @_ver = '1.74.0'
-  version @_ver.to_s
+  version @_ver
   license 'LGPL-2+ and GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'

@@ -4,7 +4,7 @@ class V4l_utils < Package
   description 'The v4l-utils are a series of packages for handling media devices.'
   homepage 'https://www.linuxtv.org/wiki/index.php/V4l-utils'
   @_ver = '1.22.1'
-  version @_ver.to_s
+  version @_ver
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
   source_url "https://linuxtv.org/downloads/v4l-utils/v4l-utils-#{@_ver}.tar.bz2"

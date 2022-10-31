@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.8.1'
+  @_ver = '4.8.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version "#{@_ver}-1"
   license 'LGPL-2.1'

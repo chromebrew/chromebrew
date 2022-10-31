@@ -4,7 +4,7 @@ class Libva < Package
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
   @_ver = '2.17.0-65c67dd'
-  version @_ver.to_s
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/intel/libva.git'
