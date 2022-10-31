@@ -5,23 +5,23 @@ class Gtk4 < Package
   homepage 'https://developer.gnome.org/gtk4/'
   @_ver = '4.8.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_armv7l/gtk4-4.8.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_armv7l/gtk4-4.8.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_i686/gtk4-4.8.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.1-1_x86_64/gtk4-4.8.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_armv7l/gtk4-4.8.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_armv7l/gtk4-4.8.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_i686/gtk4-4.8.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_x86_64/gtk4-4.8.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '07081fc821be22af8b3eea625923cafa6c906b868972c539ce5ee27a4b7b99d5',
-     armv7l: '07081fc821be22af8b3eea625923cafa6c906b868972c539ce5ee27a4b7b99d5',
-       i686: '5a496bb4dc3b9c406efd674a32559652c3bace4eac19a8b8b36588a5b0abe1b7',
-     x86_64: '59d373eed4ab87eaf20c6bbeb39f5679e00cb80b3fe7727f04c455e4ba93a4f7'
+    aarch64: '32277a3d530cf76f0f77568679818eed8bbaf86e28395524f19686066244fab2',
+     armv7l: '32277a3d530cf76f0f77568679818eed8bbaf86e28395524f19686066244fab2',
+       i686: '9916b4c01138e0a6f23ebe894229241715d24e1bb5b6c220d4eb712e4c5b7b61',
+     x86_64: '55b12fef43364a630b7bddfd833067c12024204581f6c0057e6bb615afdefe36'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -72,6 +72,7 @@ class Gtk4 < Package
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
+  depends_on 'libcloudproviders' # R
   gnome
 
   def self.patch
@@ -97,6 +98,7 @@ class Gtk4 < Package
       -Dgraphene:default_library=both \
       -Dlibsass:default_library=both \
       -Dmutest:default_library=both \
+      -Dcloudproviders=enabled \
       -Dvulkan=enabled \
       build"
     system 'meson configure build'
