@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-7'
+  version '20210109-8'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_armv7l/sommelier-20210109-7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_armv7l/sommelier-20210109-7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_i686/sommelier-20210109-7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-7_x86_64/sommelier-20210109-7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_armv7l/sommelier-20210109-8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_armv7l/sommelier-20210109-8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_i686/sommelier-20210109-8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_x86_64/sommelier-20210109-8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2ff364d2993e3f8ea0f8947ca944e279436eed595c9ebce19161d3284922b36a',
-     armv7l: '2ff364d2993e3f8ea0f8947ca944e279436eed595c9ebce19161d3284922b36a',
-       i686: '93fe643b688e2f6625a26210451ddd336593fb384ff290ad176d766c0a9c0674',
-     x86_64: '31af23b7f7f794607a7f2cdbe198126453eb3fd05bfdcbd82883244ff294c12c'
+    aarch64: 'ca036c280df41469239b3b7dd16d7c9bba6f0a5f2cbcc8c311dd46c0dd663054',
+     armv7l: 'ca036c280df41469239b3b7dd16d7c9bba6f0a5f2cbcc8c311dd46c0dd663054',
+       i686: '8d84714a692a10946baf8b2e0a9aa862f1d6c2f0343cd51076eae94ed8a9482e',
+     x86_64: '6973bfecac7bc42fb71c50ef07f9cb13d63e3bf7bfd1a58dddb4b0e1857c1aea'
   })
 
   depends_on 'libdrm'
@@ -221,7 +221,8 @@ class Sommelier < Package
             #else
             #  return 1
             #fi
-            return 0
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
           }
           checksommelierxwayland () {
             xdpyinfo -display "${DISPLAY}" &>/dev/null
@@ -247,7 +248,8 @@ class Sommelier < Package
           else
             echo "some sommelier processes failed to start"
             echo -e "sommelier processes running: ${SOMMWPROCS} \\n ${SOMMXPROCS}"
-            return 1
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 1 || exit 1
           fi
         STARTSOMMELIEREOF
 
@@ -260,11 +262,13 @@ class Sommelier < Package
             pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
             pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
           else
-            exit 0
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
           fi
           if [[ "$(pgrep -fc sommelier.elf 2> /dev/null)" -gt "0" ]]; then
             echo "sommelier failed to stop"
-            exit 1
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 1 || exit 1
           else
             echo "sommelier stopped"
           fi
