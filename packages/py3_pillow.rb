@@ -4,7 +4,7 @@ class Py3_pillow < Package
   description 'Pillow is a Python Imaging Library (PIL).'
   homepage 'https://python-pillow.org/'
   @_ver = '9.2.0'
-  "#{@_ver}-py3.11"
+  version "#{@_ver}-py3.11"
   license 'HPND'
   compatibility 'all'
   source_url 'https://github.com/python-pillow/Pillow.git'
