@@ -2,22 +2,18 @@ class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
   version '2.38.1'
-  license 'LGPL-2+ and BSD-2'
   compatibility 'all'
+  license 'LGPL-2+ and BSD-2'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.1.tar.xz'
   source_sha256 '02e195b3fb9e057743b3364ee7f1eec13f71614226849544c07c32a73b8f1848'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.32.4_armv7l/webkit2gtk_4-2.32.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.0-1_i686/webkit2gtk_4-2.38.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_x86_64/webkit2gtk_4-2.38.1-chromeos-x86_64.tar.zst'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_x86_64/webkit2gtk_4-2.38.1-chromeos-x86_64.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_i686/webkit2gtk_4-2.38.1-chromeos-i686.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-     armv7l: 'd25a0be821cbf2c710539e685268d47bdcde109ed5a18b2202c132b31b341219',
-       i686: '5c7acadd5fdf295f2590418c09a87cd9ca305b1af34f982fb5a3e03adc78db88',
-     x86_64: '117945f103fe1af58638451841fff222d5b8c699eb65c05215cce6613f765a65'
+     x86_64: '117945f103fe1af58638451841fff222d5b8c699eb65c05215cce6613f765a65',
+       i686: '82925fa9774bddd1385b6deb2eef4738cba73aeff6e18df92294c446ca2752fc'
   })
 
   depends_on 'atk' # R
@@ -29,7 +25,7 @@ class Webkit2gtk_4 < Package
   depends_on 'fontconfig'
   depends_on 'freetype' # R
   depends_on 'gcc' # R
-  depends_on 'gcc10' if ARCH == 'armv7l' || ARCH == 'aarch64'
+  depends_on 'gcc10' if ARCH == 'armv7l' || ARCH == 'aarch64' || ARCH == 'i686'
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
@@ -120,6 +116,7 @@ class Webkit2gtk_4 < Package
       @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
       @gcc_ver = '-10'
     end
+    @gcc_ver = '-10' if ARCH == 'i686'
     @new_gcc = <<~NEW_GCCEOF
       #!/bin/bash
       gcc#{@gcc_ver} #{@arch_flags} $@
@@ -144,8 +141,8 @@ class Webkit2gtk_4 < Package
       # bwrap: Can't make symlink at /var/run: File exists
       # LDFLAGS from debian: -Wl,--no-keep-memory
       unless File.file?('build.ninja')
-        @arch_linker_flags = ARCH == 'x86_64' || ARCH == 'i686' ? '' : '-Wl,--no-keep-memory'
-        system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' mold -run cmake \
+        @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
+        system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' cmake \
             -G Ninja \
             #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
             -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
@@ -162,7 +159,7 @@ class Webkit2gtk_4 < Package
             -DUSER_AGENT_BRANDING='Chromebrew' \
             .."
       end
-      system "ninja -j #{CREW_NPROC} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil}"
+      system "ninja -j #{CREW_NPROC} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(3).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(4).ceil}"
     end
   end
 
