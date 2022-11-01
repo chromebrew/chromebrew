@@ -3,24 +3,24 @@ require 'package'
 class Poppler < Package
   description 'Poppler is a PDF rendering library based on the xpdf-3.0 code base.'
   homepage 'https://poppler.freedesktop.org/'
-  @_ver = '21.04.0'
-  version "#{@_ver}-1"
+  @_ver = '22.10.0'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
   source_url "https://poppler.freedesktop.org/poppler-#{@_ver}.tar.xz"
-  source_sha256 '5e2219656c6bbd36154133fef2e12b7d0938464518827098b29a10b1697ea79c'
+  source_sha256 '04e40fad924a6de62e63017a6fd4c04696c1f526dedc2ba5ef275cedf646292a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_armv7l/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_armv7l/poppler-21.04.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_i686/poppler-21.04.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/21.04.0-1_x86_64/poppler-21.04.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/22.10.0_armv7l/poppler-22.10.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/22.10.0_armv7l/poppler-22.10.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/22.10.0_i686/poppler-22.10.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler/22.10.0_x86_64/poppler-22.10.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4ee2c4b1b30d7a39d18dd6b3b5b45f284c730cf83d7f46cabd6ba4a64e518f4f',
-     armv7l: '4ee2c4b1b30d7a39d18dd6b3b5b45f284c730cf83d7f46cabd6ba4a64e518f4f',
-       i686: '3921cca2f9d5da0d24263bb6297f77027230fa36dd434e216d4d6fef3b2c14cc',
-     x86_64: 'f44903cd9abb9a0c58ef0f9554f5f877752cfbbc701620b1a81ef7c71e049b93'
+    aarch64: 'b758ee920b110c2a659f9edb9cc493dc2795e9288e4d96824875814ff060bb61',
+     armv7l: 'b758ee920b110c2a659f9edb9cc493dc2795e9288e4d96824875814ff060bb61',
+       i686: '894e8803e3f856befe5c4a804c7a5ee337211cb265907389bd8a600f6d49df8b',
+     x86_64: '34ba3efee02bdb16f58e848d500b36ae4083f97c30cd6474107db5aa6730ecd0'
   })
 
   depends_on 'cairo'
@@ -35,18 +35,19 @@ class Poppler < Package
   depends_on 'nss'
   depends_on 'openjpeg'
   depends_on 'qtbase'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libcurl' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
-      system "env LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-      CFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto -L#{CREW_LIB_PREFIX}' \
-      cmake #{CREW_CMAKE_OPTIONS} .. -G Ninja \
-      -DCMAKE_CXX_FLAGS='-pipe -flto=auto -std=c++11 \
-      -I#{CREW_PREFIX}/include/GL -I#{CREW_PREFIX}/include/openjpeg-2.4 \
-      -I#{CREW_PREFIX}/include' \
-      -DENABLE_UNSTABLE_API_ABI_HEADERS=on"
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -DENABLE_UNSTABLE_API_ABI_HEADERS=on \
+        .."
     end
     system 'ninja -C builddir'
   end

@@ -4,21 +4,23 @@ class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
   @_ver = '0.34.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
-  compatibility 'x86_64 armv7l aarch64'
+  compatibility 'all'
   source_url 'https://github.com/mpv-player/mpv.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_armv7l/mpv-0.34.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_armv7l/mpv-0.34.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1_x86_64/mpv-0.34.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_armv7l/mpv-0.34.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_armv7l/mpv-0.34.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_i686/mpv-0.34.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_x86_64/mpv-0.34.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '60207de3ae34a2e50eb2ffe7202f9ae55ae3edcb156fe9119ad654c67bc7b381',
-     armv7l: '60207de3ae34a2e50eb2ffe7202f9ae55ae3edcb156fe9119ad654c67bc7b381',
-     x86_64: 'f82aed1ae1ed85e1650776bfb738f4948d4c6d8ae38d7d1495d837c5f82675b0'
+    aarch64: '38725711d4f9281cd22c8435b90f7ced26619ceff3a3c6e202931d4f0d2716e3',
+     armv7l: '38725711d4f9281cd22c8435b90f7ced26619ceff3a3c6e202931d4f0d2716e3',
+       i686: 'ffdc4b1704eb05ccb15be4925910c77f7c64e37616622b501cf856870c0589c9',
+     x86_64: 'b002cdc8921c278fe4ebe0684cc7fb24de7d8d039081e919f8cf85f652a28a7c'
   })
 
   depends_on 'py3_docutils' => :build
@@ -60,6 +62,11 @@ class Mpv < Package
   depends_on 'xdg_base' # L
   depends_on 'vulkan_icd_loader' # L
   depends_on 'sommelier' # L
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libglvnd' # R
+  depends_on 'uchardet' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system './bootstrap.py'

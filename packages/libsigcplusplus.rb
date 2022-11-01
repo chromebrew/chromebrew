@@ -3,25 +3,30 @@ require 'package'
 class Libsigcplusplus < Package
   description 'libsigc++ implements a typesafe callback system for standard C++.'
   homepage 'https://github.com/libsigcplusplus/libsigcplusplus/'
-  @_ver = '2.10.6'
+  @_ver = '2.10.8'
   version @_ver
   license 'LGPL-3'
   compatibility 'all'
   source_url "https://github.com/libsigcplusplus/libsigcplusplus/archive/#{@_ver}.tar.gz"
-  source_sha256 '3458b027f44204571a3a7091ebb94e5b1b5ecc7fbab89ce2bada25543645993f'
+  source_sha256 '3a66dfb699cf5301f5e141895c9db728006c2e09f006af62d847e3808609e418'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_armv7l/libsigcplusplus-2.10.6-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_i686/libsigcplusplus-2.10.6-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.6_x86_64/libsigcplusplus-2.10.6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.8_armv7l/libsigcplusplus-2.10.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.8_armv7l/libsigcplusplus-2.10.8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.8_i686/libsigcplusplus-2.10.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsigcplusplus/2.10.8_x86_64/libsigcplusplus-2.10.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
-      armv7l: 'e94e9f2da752623773a8b832204ab57e814bfb3c9132942b079e87f84f3c0ba3',
-        i686: '4fa4524d137e1d7a78b166808923fb1470664fd0523ea23320d951859f0bc5c4',
-      x86_64: '5fca09ea7258aa2edfba573da8366f40ab5aae476b3df248fb556cfe4bcdd8a0'
+    aarch64: '6263e9ad88da5830a36c59513aa77f7f8d72e1b5fe4ea45a2da9d94debc50475',
+     armv7l: '6263e9ad88da5830a36c59513aa77f7f8d72e1b5fe4ea45a2da9d94debc50475',
+       i686: 'a97d4d50525a1f371650e08bc298882065fbd679eb81fe6d646953043045d46a',
+     x86_64: 'c658c6682a62e95b18b67dcacdad51b7a724f7a69143271e03a8f82852fb904f'
   })
+
+  depends_on 'mm_common'
+  depends_on 'graphviz' => :build # needed for dot
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \

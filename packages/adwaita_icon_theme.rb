@@ -3,27 +3,24 @@ require 'package'
 class Adwaita_icon_theme < Package
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
-  version '42.0'
+  version '43'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'all'
-  source_url 'https://download.gnome.org/core/42/42.2/sources/adwaita-icon-theme-42.0.tar.xz'
-  source_sha256 '5e85b5adc8dee666900fcaf271ba717f7dcb9d0a03d96dae08f9cbd27e18b1e0'
+  source_url 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_armv7l/adwaita_icon_theme-42.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_armv7l/adwaita_icon_theme-42.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_i686/adwaita_icon_theme-42.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/42.0_x86_64/adwaita_icon_theme-42.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/43_armv7l/adwaita_icon_theme-43-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/43_armv7l/adwaita_icon_theme-43-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/43_i686/adwaita_icon_theme-43-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/43_x86_64/adwaita_icon_theme-43-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c6dd539659f98a4f83247943715aef136002aa590c4e6e558c89762c60fafefc',
-     armv7l: 'c6dd539659f98a4f83247943715aef136002aa590c4e6e558c89762c60fafefc',
-       i686: 'f13d05ff2696a2fd7488a7dc4e4e78ad98fe8d7bcf1d63c314e533610a071b6d',
-     x86_64: '862aa3d398d4891c8f6923d6c9c2283ebfa9438647a1a25e9172532433db52fb'
+    aarch64: '4173326c11e0dcd6aa69623d5610fe10bb3dcfc40c689c62d0a4d85d7ede1aa7',
+     armv7l: '4173326c11e0dcd6aa69623d5610fe10bb3dcfc40c689c62d0a4d85d7ede1aa7',
+       i686: '25345da36faad61524618f74072558be4c6d136ba79ba18fa53844a50d37323d',
+     x86_64: '31047bf3ad759302707bede40ce53a91ee970be0acbad94e39870fbef2342ab4'
   })
-
-  gnome
-  no_patchelf
 
   depends_on 'cantarell_fonts'
   depends_on 'gtk3'
@@ -31,6 +28,8 @@ class Adwaita_icon_theme < Package
   depends_on 'gdk_pixbuf'
   depends_on 'vala' => :build
   depends_on 'xdg_base'
+  gnome
+  no_patchelf
 
   def self.build
     # Need to make sure svg support is properly loaded otherwise build fails.

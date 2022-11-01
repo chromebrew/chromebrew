@@ -2260,6 +2260,11 @@ url: https://gitlab.gnome.org/GNOME/gnome-calculator/-/tags
 activity: high
 ---
 kind: url
+name: gnome_console
+url: https://gitlab.gnome.org/GNOME/console/-/tags
+activity: medium
+---
+kind: url
 name: gnome_common
 url: https://github.com/GNOME/gnome-common/releases/
 activity: low
@@ -2775,6 +2780,11 @@ url: https://icon-theme.freedesktop.org/releases/
 activity: low
 ---
 kind: url
+name: highway
+url: https://github.com/google/highway/releases
+activity: medium
+---
+kind: url
 name: hollywood
 url: https://httpredir.debian.org/debian/pool/main/h/hollywood/
 activity: none
@@ -3125,6 +3135,11 @@ url: https://archive.mozilla.org/pub/firefox/releases/
 activity: high
 ---
 kind: url
+name: js102
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
 name: json_glib
 url: https://download.gnome.org/sources/json-glib/
 activity: low
@@ -3138,6 +3153,11 @@ kind: url
 name: jsoncpp
 url: https://github.com/open-source-parsers/jsoncpp/releases
 activity: medium
+---
+kind: url
+name: jsonrpc_glib
+url: https://gitlab.gnome.org/GNOME/jsonrpc-glib/-/tags
+activity: low
 ---
 kind: url
 name: julia
@@ -3457,6 +3477,11 @@ activity: low
 kind: url
 name: libcheck
 url: https://github.com/libcheck/check/releases
+activity: low
+---
+kind: url
+name: libcloudproviders
+url: https://gitlab.gnome.org/World/libcloudproviders/-/tags
 activity: low
 ---
 kind: url
@@ -3780,6 +3805,11 @@ url: https://ftp.gnome.org/pub/gnome/sources/libgsf/
 activity: medium
 ---
 kind: url
+name: libgtop
+url: https://gitlab.gnome.org/GNOME/libgtop/-/tags
+activity: low
+---
+kind: url
 name: libgudev
 url: https://download.gnome.org/sources/libgudev/
 activity: low
@@ -3880,6 +3910,11 @@ url: http://www.ijg.org/files
 activity: none
 ---
 kind: url
+name: libjxl
+url: https://github.com/libjxl/libjxl/releases
+activity: high
+---
+kind: url
 name: libkmod
 url: https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod
 activity: low
@@ -3922,6 +3957,11 @@ activity: low
 kind: url
 name: libmd
 url: https://git.hadrons.org/git/libmd.git
+activity: low
+---
+kind: url
+name: libmediaart
+url: https://gitlab.gnome.org/GNOME/libmediaart/-/tags
 activity: low
 ---
 kind: url
@@ -4110,6 +4150,11 @@ url: https://otr.im/dist/libotr/
 activity: none
 ---
 kind: url
+name: libpanel
+url: https://gitlab.gnome.org/GNOME/libpanel/-/tags
+activity: medium
+---
+kind: url
 name: libpaper
 url: http://ftp.debian.org/debian/pool/main/libp/libpaper/
 activity: none
@@ -4253,6 +4298,11 @@ kind: url
 name: libshine
 url: https://github.com/toots/shine/releases
 activity: none
+---
+kind: url
+name: libshumate
+url: https://gitlab.gnome.org/GNOME/libshumate/-/tags
+activity: medium
 ---
 kind: url
 name: libsigcplusplus
@@ -4870,6 +4920,11 @@ url: https://bitop.luajit.org/download.html
 activity: none
 ---
 kind: url
+namw: luajit_lgi
+url: https://github.com/lgi-devs/lgi/tags
+activity: none
+---
+kind: url
 name: luajit_lpeg
 url: http://www.inf.puc-rio.br/~roberto/lpeg
 activity: low
@@ -5307,6 +5362,11 @@ activity: none
 kind: url
 name: mypaint_brushes
 url: https://github.com/Jehan/mypaint-brushes/releases
+activity: low
+---
+kind: url
+name: mypaint_brushes_1
+url: https://github.com/mypaint/mypaint-brushes/releases
 activity: low
 ---
 kind: url
@@ -6305,6 +6365,11 @@ url: https://github.com/google/protobuf/releases
 activity: medium
 ---
 kind: url
+name: protobuf_c
+url: https://github.com/protobuf-c/protobuf-c/releases
+activity: medium
+---
+kind: url
 name: proxychains
 url: https://github.com/haad/proxychains/releases
 activity: none
@@ -6368,6 +6433,16 @@ kind: url
 name: py2_wheel
 url: https://github.com/pypa/wheel/releases
 activity: low
+---
+kind: url
+name: py3_atspi
+url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
+activity: low
+---
+kind: url
+name: py3_gi_docgen
+url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
+activity: medium
 ---
 kind: url
 name: py3_pip
@@ -6847,6 +6922,11 @@ activity: medium
 kind: url
 name: sdl2_image
 url: https://www.libsdl.org/projects/SDL_image/release/
+activity: medium
+---
+kind: url
+name: seatd
+url: hhttps://git.sr.ht/~kennylevinsen/seatd/refs
 activity: medium
 ---
 kind: url

@@ -1188,7 +1188,11 @@ def shrink_dir(dir)
           # Copying in the ThreadPoolExecutor loop fails non-deterministically
           @execfiles.each_line do |execfilecp|
             execfilecp.slice! '.'
+            next if execfilecp.chomp.empty?
+
             execfilecp = dir + execfilecp.chomp
+            next unless File.exist?(execfilecp)
+
             FileUtils.cp execfilecp.to_s, "#{execfilecp}-crewupxtmp"
           end
           begin

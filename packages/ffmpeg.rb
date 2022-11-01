@@ -3,24 +3,24 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '5.1'
-  version @_ver.to_s
+  @_ver = '5.1.2'
+  version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
   git_hashtag "n#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1_armv7l/ffmpeg-5.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1_armv7l/ffmpeg-5.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1_i686/ffmpeg-5.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1_x86_64/ffmpeg-5.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_armv7l/ffmpeg-5.1.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_armv7l/ffmpeg-5.1.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_i686/ffmpeg-5.1.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_x86_64/ffmpeg-5.1.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '413dc87eaee7d62f18b0f0b49881a2f2077300180a1e0a0b0114c77b7f362797',
-     armv7l: '413dc87eaee7d62f18b0f0b49881a2f2077300180a1e0a0b0114c77b7f362797',
-       i686: '27939661f0e7007f86b6776f3095d82faf620e4522bef990995da1b0317b95d1',
-     x86_64: '5379186833678f5de1b0ec673d3389176ff5b90b8ab2903abe102e1ae8e455b6'
+    aarch64: '16b08e1560d9faf95601b2b8d73031b1a02316b45c142717ae55dc382c95adc9',
+     armv7l: '16b08e1560d9faf95601b2b8d73031b1a02316b45c142717ae55dc382c95adc9',
+       i686: '0e14b4810a2e4b46ee066ec90d8f6a89131fad4cd2440e3629d23beb0a1d118a',
+     x86_64: '542015ac2020bf52e633b5abbb90c4c6af73bc8c73f41fd3ad83ff1adde70d0d'
   })
 
   depends_on 'avisynthplus' # ?
@@ -52,6 +52,7 @@ class Ffmpeg < Package
   depends_on 'libdrm' # R
   depends_on 'libfdk_aac' # R
   depends_on 'libiec61883' # R
+  depends_on 'libjpeg' # R
   depends_on 'libmfx' if ARCH == 'i686' && `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive? # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -95,6 +96,13 @@ class Ffmpeg < Package
   depends_on 'zeromq' # R
   depends_on 'zimg' # R
   depends_on 'zvbi' # R
+  depends_on 'bz2' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'mesa' # R
+  depends_on 'rtmpdump' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     case ARCH

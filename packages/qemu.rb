@@ -3,21 +3,21 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  @_ver = '7.0.0'
+  @_ver = '7.1.0'
   version @_ver
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/qemu/qemu.git'
-  git_hashtag "v#{@_ver}"
+  compatibility 'armv7l aarch64 x86_64'
+  source_url "https://download.qemu.org/qemu-#{@_ver}.tar.xz"
+  source_sha256 'a0634e536bded57cf38ec8a751adb124b89c776fe0846f21ab6c6728f1cbbbe6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/7.0.0_armv7l/qemu-7.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/7.0.0_armv7l/qemu-7.0.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/7.0.0_x86_64/qemu-7.0.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/7.1.0_armv7l/qemu-7.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/7.1.0_armv7l/qemu-7.1.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/7.1.0_x86_64/qemu-7.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5c628a3b1106b46ce76bc46bfe31b929210dc4ace9b343582d331b7191cf9281',
-     armv7l: '5c628a3b1106b46ce76bc46bfe31b929210dc4ace9b343582d331b7191cf9281',
-     x86_64: 'a0130ee4038e2c28eff096a362dcb4d33413c7d06be4fb613d56e3f6a5500089'
+    aarch64: 'c9e03b09775ade72b65341ae26365258935abd463fa64d1d22a4942b18bccd10',
+     armv7l: 'c9e03b09775ade72b65341ae26365258935abd463fa64d1d22a4942b18bccd10',
+     x86_64: '8fdece512eb79eb1426df761cd594be642f109b34ed8fc38336503eef5133104'
   })
 
   depends_on 'alsa_lib' # R
@@ -50,7 +50,18 @@ class Qemu < Package
   depends_on 'pulseaudio' # R
   depends_on 'sdl2_image' # R
   depends_on 'snappy' # R
-  patchelf
+  depends_on 'bz2' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'libcurl' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libpng' # R
+  depends_on 'libseccomp' # R
+  depends_on 'libssh' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.patch
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error
@@ -64,7 +75,6 @@ class Qemu < Package
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
       system "../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
-        --disable-stack-protector \
         --enable-lto"
       system 'make || make -j1'
     end

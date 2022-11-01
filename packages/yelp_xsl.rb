@@ -3,34 +3,31 @@ require 'package'
 class Yelp_xsl < Package
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
-  version '40.0'
+  version '42.1'
   license 'GPL-2+, LGPL-2.1+, MIT and FDL-1.1+'
-  license 'GPL-2+ or freedist and GPL-2+'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/yelp-xsl/-/archive/#{version}/yelp-xsl-#{version}.tar.bz2"
-  source_sha256 '3938ae88880cdcc3bbd20db25a05bac03cd1324d60c2940ed85e56259725e7f7'
+  source_sha256 '81b8d626a1481d542fb8c9cb890fa970ddc42b27f7779d52df31c4de0caac776'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/40.0_armv7l/yelp_xsl-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/40.0_armv7l/yelp_xsl-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/40.0_i686/yelp_xsl-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/40.0_x86_64/yelp_xsl-40.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/42.1_armv7l/yelp_xsl-42.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/42.1_armv7l/yelp_xsl-42.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/42.1_i686/yelp_xsl-42.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yelp_xsl/42.1_x86_64/yelp_xsl-42.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd98fe7c598a54bee90907294bca5ab24732ecbe3f2badc0953693e88007e49ba',
-     armv7l: 'd98fe7c598a54bee90907294bca5ab24732ecbe3f2badc0953693e88007e49ba',
-       i686: 'abe1c586c597739747c831fbf5a7ee7fe6658d519250d0404ce3bbfda2509c1f',
-     x86_64: 'b23d398de5907823b21dc15f0eba4ec6d6da33d9e42c399c48d8e36de4188d2d'
+    aarch64: '2155ec95428055623c569db0dabe9fc91349aa011f83ce61acec26df2deb27e3',
+     armv7l: '2155ec95428055623c569db0dabe9fc91349aa011f83ce61acec26df2deb27e3',
+       i686: 'ff4a7cf7247e6a477bbac643b4e446d4ce45a32da1014673236e9764acc8d46c',
+     x86_64: '03e70d4b552cb539c1799f1709bf22c20ddcb281b508c462aa146db023f9801c'
   })
 
   depends_on 'itstool'
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
+    system "./configure #{CREW_OPTIONS}"
+    system 'mold -run make'
   end
 
   def self.install

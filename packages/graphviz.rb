@@ -25,6 +25,12 @@ class Graphviz < Package
 
   depends_on 'libgd'
   depends_on 'pango'
+  depends_on 'expat' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libtool' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
     # The patch below derives from these steps.
@@ -116,5 +122,10 @@ class Graphviz < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    # Without this, builds of rest fail.
+    system 'dot -c'
   end
 end

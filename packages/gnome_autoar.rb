@@ -3,24 +3,24 @@ require 'package'
 class Gnome_autoar < Package
   description 'Automatic archives creating and extracting library'
   homepage 'https://wiki.gnome.org/TingweiLan/GSoC2013Final'
-  @_ver = '0.3.1'
+  @_ver = '0.4.3'
   version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-autoar/-/archive/#{@_ver}/gnome-autoar-#{@_ver}.tar.bz2"
-  source_sha256 '22a69b610697386a2c0edaa7aa64cc3b45e655d7fd5fe14f71d4d196c5747eab'
+  source_sha256 'c1331da864affe666ccaf70788380665d1636f9d3e414ee74e072462a69a6f33'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_armv7l/gnome_autoar-0.3.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_i686/gnome_autoar-0.3.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.3.1-1_x86_64/gnome_autoar-0.3.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_armv7l/gnome_autoar-0.4.3-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_armv7l/gnome_autoar-0.4.3-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_i686/gnome_autoar-0.4.3-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.3-1_x86_64/gnome_autoar-0.4.3-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd39da19ad4e07e32fdd631512d9be881b1b3d35169db87c681b20ae56ba027af',
-     armv7l: 'd39da19ad4e07e32fdd631512d9be881b1b3d35169db87c681b20ae56ba027af',
-       i686: 'b688460904880b84c9ccecab6f2affe9ee07674110ce92d5f66c2c44fa0f766c',
-     x86_64: '4908f3bbfd1ab6145428752bbb69d67a7b4921810d52a73e09732423e2c52ddd'
+    aarch64: '46c212fe9d8d07407f9a6e584ca59aec9203fb5f7da916eaf9ac2524eba5398c',
+     armv7l: '46c212fe9d8d07407f9a6e584ca59aec9203fb5f7da916eaf9ac2524eba5398c',
+       i686: 'd84704ef7a74328c5936126742b27546a2bf65a7952475fe86a32e44fad7eccb',
+     x86_64: 'f5171c23c19d2f72ad51152def99143cb502b99c41d1ec850e1cdb6e741dd349'
   })
 
   depends_on 'atk'
@@ -36,18 +36,17 @@ class Gnome_autoar < Package
   depends_on 'libjpeg'
   depends_on 'pango'
   depends_on 'vala' => :build
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto' \
-    CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-    ./configure \
-    #{CREW_OPTIONS} \
-    --enable-gtk-doc"
-    system 'make'
+    system "meson #{CREW_MESON_OPTIONS} \
+    builddir"
+    system 'meson configure builddir'
+    system 'mold -run samu -C builddir'
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
