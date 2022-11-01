@@ -4,7 +4,7 @@ class Py3_xlsxwriter < Package
   description 'XlsxWriter is a Python module for creating Excel XLSX files.'
   homepage 'https://xlsxwriter.readthedocs.io/'
   @_ver = '3.0.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/jmcnamara/XlsxWriter.git'

@@ -4,7 +4,7 @@ class Py3_lxml < Package
   description 'LXML is a Python library for processing XML and HTML.'
   homepage 'https://lxml.de/'
   @_ver = '4.6.3'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   # source_url 'https://github.com/lxml/lxml.git'
   # git_hashtag "lxml-#{@_ver}"

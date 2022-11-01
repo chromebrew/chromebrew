@@ -4,7 +4,7 @@ class Py3_appdirs < Package
   description 'Appdirs is a small Python module for determining appropriate platform-specific directories.'
   homepage 'https://github.com/ActiveState/appdirs/'
   @_ver = '1.4.4'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ActiveState/appdirs.git'

@@ -4,7 +4,7 @@ class Py3_markdown < Package
   description 'Markdown is a Python implementation of Markdown.'
   homepage 'https://python-markdown.github.io/'
   @_ver = '3.3.4'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/Python-Markdown/markdown.git'

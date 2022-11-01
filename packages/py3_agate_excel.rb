@@ -4,7 +4,7 @@ class Py3_agate_excel < Package
   description 'Agate-excel read support for Excel files (xls and xlsx) to agate.'
   homepage 'https://agate-excel.readthedocs.io/'
   @_ver = '0.2.5'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/agate-excel.git'

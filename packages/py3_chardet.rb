@@ -4,7 +4,7 @@ class Py3_chardet < Package
   description 'Chardet is a universal encoding detector.'
   homepage 'https://github.com/chardet/chardet/'
   @_ver = '4.0.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/chardet/chardet.git'

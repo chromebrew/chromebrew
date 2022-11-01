@@ -4,7 +4,7 @@ class Py3_json2xml < Package
   description 'json to xml converter'
   homepage 'https://json2xml.readthedocs.io/'
   @_ver = '3.8.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/vinitkumar/json2xml.git'

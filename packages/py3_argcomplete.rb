@@ -4,7 +4,7 @@ class Py3_argcomplete < Package
   description 'Argcomplete provides bash completion for argparse.'
   homepage 'https://kislyuk.github.io/argcomplete/'
   @_ver = '1.12.3'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/kislyuk/argcomplete.git'

@@ -4,7 +4,7 @@ class Py3_sqlalchemy < Package
   description 'SQLalchemy is a database toolkit for Python.'
   homepage 'https://sqlalchemy.org'
   @_ver = '1.4.25'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sqlalchemy/sqlalchemy.git'

@@ -4,7 +4,7 @@ class Py3_cryptography < Package
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
   @_ver = '37.0.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pyca/cryptography.git'

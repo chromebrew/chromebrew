@@ -4,7 +4,7 @@ class Py3_certifi < Package
   description 'Certifi provides Mozilla\'s CA Bundle.'
   homepage 'https://certifi.io/' # 403 Forbidden on 2021.05.08, still 403 Forbidden on 2021.10.13
   @_ver = '2021.10.08'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/certifi/python-certifi.git'

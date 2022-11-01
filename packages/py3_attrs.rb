@@ -4,7 +4,7 @@ class Py3_attrs < Package
   description 'Attrs removes the need to implement object protocols in classes.'
   homepage 'https://www.attrs.org/'
   @_ver = '21.2.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/python-attrs/attrs.git'

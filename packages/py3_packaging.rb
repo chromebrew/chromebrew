@@ -4,7 +4,7 @@ class Py3_packaging < Package
   description 'Packaging provides core utilities for Python packages'
   homepage 'https://packaging.pypa.io/'
   @_ver = '21.3'
-  version "#{@_ver}-2"
+  version "#{@_ver}-py3.11"
   license 'BSD-2 or Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/pypa/packaging.git'

@@ -4,7 +4,7 @@ class Py3_snowballstemmer < Package
   description 'Snowball stemming library collection for Python'
   homepage 'https://snowballstem.org'
   @_ver = '2.1.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://pypi.python.org/packages/source/s/snowballstemmer/snowballstemmer-2.1.0.tar.gz'

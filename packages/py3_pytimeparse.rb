@@ -4,7 +4,7 @@ class Py3_pytimeparse < Package
   description 'Pytimeparse is a small Python module to parse various kinds of time expressions. '
   homepage 'https://github.com/wroberts/pytimeparse/'
   @_ver = '1.1.8'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wroberts/pytimeparse.git'

@@ -4,7 +4,7 @@ class Py3_sphinxcontrib_htmlhelp < Package
   description 'sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files.'
   homepage 'https://www.sphinx-doc.org/'
   @_ver = '2.0.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinxcontrib-htmlhelp.git'

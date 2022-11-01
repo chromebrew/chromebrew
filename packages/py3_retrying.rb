@@ -4,7 +4,7 @@ class Py3_retrying < Package
   description 'Retrying simplifies the task of adding retry behavior to just about anything.'
   homepage 'https://github.com/rholder/retrying/'
   @_ver = '1.3.3'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/rholder/retrying.git'

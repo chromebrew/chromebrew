@@ -4,7 +4,7 @@ class Py3_pycryptodome < Package
   description 'Pycryptodome is a cryptographic library for Python.'
   homepage 'https://www.pycryptodome.org/'
   @_ver = '3.11.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD and public-domain'
   compatibility 'all'
   source_url 'https://github.com/Legrandin/pycryptodome.git'

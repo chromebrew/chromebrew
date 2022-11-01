@@ -4,7 +4,7 @@ class Py3_numpy < Package
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
   @_ver = '1.21.4'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/numpy/numpy.git'

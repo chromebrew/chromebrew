@@ -4,7 +4,7 @@ class Py3_iniconfig < Package
   description 'Iniconfig provides simple config-ini parsing.'
   homepage 'https://github.com/pytest-dev/iniconfig/'
   @_ver = '1.1.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pytest-dev/iniconfig.git'

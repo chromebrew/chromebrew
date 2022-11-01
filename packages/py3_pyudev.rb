@@ -4,7 +4,7 @@ class Py3_pyudev < Package
   description 'Pyudev provides Python bindings for udev.'
   homepage 'https://pyudev.readthedocs.io/'
   @_ver = '0.22'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://github.com/pyudev/pyudev.git'

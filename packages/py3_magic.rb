@@ -4,7 +4,7 @@ class Py3_magic < Package
   description 'Magic is a python wrapper for libmagic.'
   homepage 'https://github.com/ahupp/python-magic/'
   @_ver = '0.4.24'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ahupp/python-magic.git'

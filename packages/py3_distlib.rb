@@ -4,7 +4,7 @@ class Py3_distlib < Package
   description 'Distlib provides distribution utilities for Python packages.'
   homepage 'https://bitbucket.org/pypa/distlib/'
   @_ver = '0.3.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://bitbucket.org/pypa/distlib.git'

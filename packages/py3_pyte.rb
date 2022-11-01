@@ -4,7 +4,7 @@ class Py3_pyte < Package
   description 'PyTE is a Simple VTXXX-compatible terminal emulator.'
   homepage 'https://github.com/selectel/pyte/'
   @_ver = '0.8.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/selectel/pyte.git'

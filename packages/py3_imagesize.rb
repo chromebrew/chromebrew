@@ -4,7 +4,7 @@ class Py3_imagesize < Package
   description 'Imagesize gets image size from png/jpeg/jpeg2000/gif file.'
   homepage 'https://github.com/shibukawa/imagesize_py/'
   @_ver = '1.1.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/shibukawa/imagesize_py.git'

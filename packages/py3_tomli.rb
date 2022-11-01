@@ -4,7 +4,7 @@ class Py3_tomli < Package
   description "Tomli is a lil' TOML parser."
   homepage 'https://github.com/hukkin/tomli/'
   @_ver = '2.0.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/hukkin/tomli.git'

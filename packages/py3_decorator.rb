@@ -4,7 +4,7 @@ class Py3_decorator < Package
   description 'define signature-preserving function decorators and decorator factories'
   homepage 'https://github.com/micheles/decorator/'
   @_ver = '4.4.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/micheles/decorator.git'

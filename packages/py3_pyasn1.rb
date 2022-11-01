@@ -4,7 +4,7 @@ class Py3_pyasn1 < Package
   description 'PyASN.1 is a generic ASN.1 library for Python'
   homepage 'https://github.com/etingof/pyasn1/'
   @_ver = '0.4.8'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/etingof/pyasn1.git'

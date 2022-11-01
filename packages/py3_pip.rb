@@ -4,7 +4,7 @@ class Py3_pip < Package
   description 'Pip is the python package manager from the Python Packaging Authority.'
   homepage 'https://pip.pypa.io/'
   @_ver = '21.3.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/pip.git'

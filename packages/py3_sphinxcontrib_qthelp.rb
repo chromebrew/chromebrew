@@ -4,7 +4,7 @@ class Py3_sphinxcontrib_qthelp < Package
   description 'sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document.'
   homepage 'https://www.sphinx-doc.org/'
   @_ver = '1.0.3'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinxcontrib-qthelp.git'

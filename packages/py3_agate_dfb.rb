@@ -4,7 +4,7 @@ class Py3_agate_dfb < Package
   description 'Agate-dbf adds read support for DBF files to agate.'
   homepage 'https://agate-dbf.readthedocs.org/'
   @_ver = '0.2.2'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/agate-dbf.git'

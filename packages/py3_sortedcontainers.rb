@@ -4,7 +4,7 @@ class Py3_sortedcontainers < Package
   description 'Python Sorted Container Types: Sorted List, Sorted Dict, and Sorted Set'
   homepage 'http://www.grantjenks.com/docs/sortedcontainers/'
   @_ver = '2.4.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/grantjenks/python-sortedcontainers.git'

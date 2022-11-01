@@ -4,7 +4,7 @@ class Py3_mock < Package
   description 'Mock is a testing library in Python.'
   homepage 'https://mock.readthedocs.org/'
   @_ver = '4.0.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/testing-cabal/mock.git'

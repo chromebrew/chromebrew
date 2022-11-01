@@ -4,7 +4,7 @@ class Py3_pystemmer < Package
   description 'Snowball stemming algorithms, for information retrieval'
   homepage 'http://snowball.tartarus.org'
   @_ver = '2.0.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD MIT'
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/55/b2/c3aeebfe4a60256ddb72257e750a94c26c3085f017b7e58c860d5aa91432/PyStemmer-2.0.1.tar.gz'

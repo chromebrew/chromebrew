@@ -4,7 +4,7 @@ class Py3_pyyaml < Package
   description 'PyYAML is a YAML parser and emitter for Python.'
   homepage 'https://pyyaml.org/'
   @_ver = '6.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/yaml/pyyaml.git'

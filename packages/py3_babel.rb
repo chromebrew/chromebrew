@@ -4,7 +4,7 @@ class Py3_babel < Package
   description 'Babel is an integrated collection of utilities that assist in internationalizing and localizing Python applications.'
   homepage 'https://babel.pocoo.org/'
   @_ver = '2.9.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/python-babel/babel.git'

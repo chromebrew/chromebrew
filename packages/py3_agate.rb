@@ -4,7 +4,7 @@ class Py3_agate < Package
   description 'Agate is a data analysis library that is optimized for humans instead of machines.'
   homepage 'https://agate.readthedocs.io/'
   @_ver = '1.6.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/agate.git'

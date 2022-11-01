@@ -4,7 +4,7 @@ class Py3_codespell < Package
   description 'Fix common misspellings in text files.'
   homepage 'https://github.com/codespell-project/codespell'
   @_ver = '2.2.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'https://github.com/codespell-project/codespell.git'

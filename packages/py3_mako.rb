@@ -4,7 +4,7 @@ class Py3_mako < Package
   description 'Mako is a super fast templating language.'
   homepage 'https://www.makotemplates.org/'
   @_ver = '1.1.5'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/sqlalchemy/mako.git'

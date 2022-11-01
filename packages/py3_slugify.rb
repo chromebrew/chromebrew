@@ -4,7 +4,7 @@ class Py3_slugify < Package
   description 'Python-slugify returns unicode slugs.'
   homepage 'https://github.com/un33k/python-slugify/'
   @_ver = '5.0.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/un33k/python-slugify.git'

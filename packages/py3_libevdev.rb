@@ -4,7 +4,7 @@ class Py3_libevdev < Package
   description 'Libevdev is a Python wrapper around the libevdev C library.'
   homepage 'https://python-libevdev.readthedocs.io/'
   @_ver = '0.9'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libevdev/python-libevdev.git'

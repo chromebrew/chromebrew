@@ -4,7 +4,7 @@ class Py3_secretstorage < Package
   description 'Python bindings to Freedesktop.org Secret Service API'
   homepage 'https://secretstorage.readthedocs.io/'
   @_ver = '3.3.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/mitya57/secretstorage.git'

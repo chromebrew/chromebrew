@@ -4,7 +4,7 @@ class Py3_virtualenv < Package
   description 'Virtualenv is a Virtual Environment builder for Python.'
   homepage 'https://virtualenv.pypa.io/'
   @_ver = '20.8.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/virtualenv.git'

@@ -4,7 +4,7 @@ class Py3_greenlet < Package
   description 'Greenlet provides lightweight in-process concurrent programming.'
   homepage 'https://greenlet.readthedocs.io/'
   @_ver = '1.1.2'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/python-greenlet/greenlet.git'

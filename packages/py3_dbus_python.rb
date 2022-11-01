@@ -4,7 +4,7 @@ class Py3_dbus_python < Package
   description 'libdbus language binding (wrapper) for CPython'
   homepage 'https://gitlab.freedesktop.org/dbus/dbus-python'
   @_ver = '1.2.18'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus-python.git'

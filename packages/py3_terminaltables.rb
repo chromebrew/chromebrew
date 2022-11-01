@@ -6,7 +6,7 @@ class Py3_terminaltables < Package
   description 'Terminaltables generates simple tables in terminals from a nested list of strings.'
   homepage 'https://robpol86.github.io/terminaltables/'
   @_ver = '3.1.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/Robpol86/terminaltables.git'

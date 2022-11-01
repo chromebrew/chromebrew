@@ -4,7 +4,7 @@ class Py3_setuptools_rust < Package
   description 'Setuptools-rust provides rust support for setuptools.'
   homepage 'https://github.com/PyO3/setuptools-rust/'
   @_ver = '1.3.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/PyO3/setuptools-rust.git'

@@ -4,7 +4,7 @@ class Py3_ldapdomaindump < Package
   description 'LDAPDomainDump uses LDAP to dump active directory information.'
   homepage 'https://github.com/dirkjanm/ldapdomaindump/'
   @_ver = '0.9.3'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/dirkjanm/ldapdomaindump.git'

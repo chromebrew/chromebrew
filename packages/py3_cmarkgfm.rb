@@ -3,7 +3,8 @@ require 'package'
 class Py3_cmarkgfm < Package
   description 'Python bindings to GitHub\'s cmark.'
   homepage 'https://github.com/theacodes/cmarkgfm'
-  version '2022.3.4'
+  @_ver = '2022.3.4'
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/theacodes/cmarkgfm.git'

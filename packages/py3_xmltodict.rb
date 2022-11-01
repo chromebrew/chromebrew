@@ -4,7 +4,7 @@ class Py3_xmltodict < Package
   description 'XMLtoDict makes working with XML feel like you are working with JSON.'
   homepage 'https://github.com/martinblech/xmltodict/'
   @_ver = '0.12.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/martinblech/xmltodict.git'

@@ -4,7 +4,7 @@ class Py3_urllib3 < Package
   description 'URLlib3 is an HTTP library with thread-safe connection pooling, file post, and more.'
   homepage 'https://urllib3.readthedocs.io/'
   @_ver = '1.26.7'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/urllib3/urllib3.git'

@@ -4,7 +4,7 @@ class Py3_arrow < Package
   description 'Arrow is a Python library that offers a sensible and human-friendly approach to creating, manipulating, formatting and converting dates, times and timestamps.'
   homepage 'https://arrow.readthedocs.io/'
   @_ver = '1.1.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/arrow-py/arrow.git'

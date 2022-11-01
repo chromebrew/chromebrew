@@ -4,7 +4,7 @@ class Py3_pycairo < Package
   description 'Pycairo is a provides bindings for the cairo graphics library.'
   homepage 'https://cairographics.org/pycairo/'
   @_ver = '1.21.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'LGPL-2.1 or MPL-1.1'
   compatibility 'all'
   source_url 'https://github.com/pygobject/pycairo.git'

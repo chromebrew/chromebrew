@@ -4,7 +4,7 @@ class Py3_requests < Package
   description 'Requests is a simple, yet elegant, HTTP library.'
   homepage 'https://docs.python-requests.org/'
   @_ver = '2.26.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/psf/requests.git'

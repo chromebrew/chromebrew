@@ -4,7 +4,7 @@ class Py3_yamllint < Package
   description 'YAMLlint is a linter for YAML files.'
   homepage 'https://github.com/adrienverge/yamllint/'
   @_ver = '1.26.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/adrienverge/yamllint.git'
