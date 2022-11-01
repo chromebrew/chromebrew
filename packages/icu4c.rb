@@ -3,27 +3,29 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '72.1'
+  version '72.1-1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz'
   source_sha256 'a2d2d38217092a7ed56635e34467f92f976b370e20182ad325edea6681a71d68'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_armv7l/icu4c-72.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_armv7l/icu4c-72.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_i686/icu4c-72.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1_x86_64/icu4c-72.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1-1_armv7l/icu4c-72.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1-1_armv7l/icu4c-72.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1-1_i686/icu4c-72.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/72.1-1_x86_64/icu4c-72.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c48a08ef474cf15375659a1a4e95db3cca08416c7943492ac539aa3d1d17ac64',
-     armv7l: 'c48a08ef474cf15375659a1a4e95db3cca08416c7943492ac539aa3d1d17ac64',
-       i686: '1572cb682daab3c6e65b4407c7c6f74d5f72f394cd08a9784f4e3f8e4d0c445f',
-     x86_64: 'fd6fdebe976e837378174b6923067491c2d965cdf1b9f252c6728cf98c32b932'
+    aarch64: '9ad0f6474bb946741894b8617b98e8fbf32425c63180fa423976030528a68fec',
+     armv7l: '9ad0f6474bb946741894b8617b98e8fbf32425c63180fa423976030528a68fec',
+       i686: 'e5615e175709b26a73c1721816fa68a704de2580fddb1ab76c58d89d721693af',
+     x86_64: '7b759ad277ee961d76520a430cd50f2245758490110933d8af326fb3345c8691'
   })
 
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+
+  no_patchelf
 
   def self.build
     FileUtils.cd('source') do
@@ -84,7 +86,7 @@ class Icu4c < Package
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @fileArray.delete_if {|item| item == 'js102'}
+        @fileArray.delete_if { |item| item == 'js102' }
         next if @fileArray.empty?
 
         @fileArray.uniq.sort.each do |item|

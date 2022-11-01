@@ -3,23 +3,23 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.4.0'
-  license 'GPL-3'
+  version '10.4.0-1'
   compatibility 'all'
+  license 'GPL-3'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.4.0/gcc-10.4.0.tar.xz'
   source_sha256 'c9297d5bcd7cb43f3dfc2fed5389e948c9312fd962ef6a4ce455cff963ebe4f1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_armv7l/gcc10-10.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_armv7l/gcc10-10.4.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_i686/gcc10-10.4.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0_x86_64/gcc10-10.4.0-chromeos-x86_64.tar.zst'
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_i686/gcc10-10.4.0-1-chromeos-i686.tar.zst',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_x86_64/gcc10-10.4.0-1-chromeos-x86_64.tar.zst',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b6c6a28cb3942b25d283b77420f850883e9d32aded05d2de079d4f8436e23e28',
-     armv7l: 'b6c6a28cb3942b25d283b77420f850883e9d32aded05d2de079d4f8436e23e28',
-       i686: 'f1cd1b358a700b07400af645a324a26a6895cf8f2bc93d2b1c21782e2eb9b750',
-     x86_64: 'd0f1cb59380cf1bf7806372752f8b3f9d472058cef7b63a33df3bfc18e9fb985'
+        i686: 'f1cd1b358a700b07400af645a324a26a6895cf8f2bc93d2b1c21782e2eb9b750',
+      x86_64: 'd0f1cb59380cf1bf7806372752f8b3f9d472058cef7b63a33df3bfc18e9fb985',
+     aarch64: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4',
+      armv7l: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4'
   })
 
   depends_on 'binutils' => :build
@@ -32,6 +32,7 @@ class Gcc10 < Package
   depends_on 'mpfr' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'gcc' # R
 
   conflicts_ok
   no_env_options
@@ -90,12 +91,14 @@ class Gcc10 < Package
     @languages = 'c,c++,jit,objc,fortran'
     case ARCH
     when 'armv7l', 'aarch64'
-      @archflags = '--with-arch=armv8-a+crc+simd --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
+      @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15'
     when 'x86_64'
       @archflags = '--with-arch-64=x86-64'
     when 'i686'
       @archflags = '--with-arch-32=i686'
     end
+
+    @path = "#{CREW_PREFIX}/bin:/usr/bin:/bin"
 
     # Install prereqs using the standard gcc method so they can be
     # linked statically.
