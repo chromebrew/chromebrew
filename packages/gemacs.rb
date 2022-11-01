@@ -5,7 +5,7 @@ class Gemacs < Package
   homepage 'https://www.gnu.org/software/emacs/'
   version '28.2'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
-  compatibility 'all'
+  compatibility 'x86_64 i686'
   source_url 'https://ftpmirror.gnu.org/emacs/emacs-28.2.tar.xz'
   source_sha256 'ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
 
