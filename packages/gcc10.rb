@@ -10,16 +10,16 @@ class Gcc10 < Package
   source_sha256 'c9297d5bcd7cb43f3dfc2fed5389e948c9312fd962ef6a4ce455cff963ebe4f1'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_i686/gcc10-10.4.0-1-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_x86_64/gcc10-10.4.0-1-chromeos-x86_64.tar.zst',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst'
+        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_i686/gcc10-10.4.0-1-chromeos-i686.tar.zst',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_x86_64/gcc10-10.4.0-1-chromeos-x86_64.tar.zst',
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst'
   })
   binary_sha256({
-    i686: 'f1cd1b358a700b07400af645a324a26a6895cf8f2bc93d2b1c21782e2eb9b750',
-  x86_64: 'd0f1cb59380cf1bf7806372752f8b3f9d472058cef7b63a33df3bfc18e9fb985',
- aarch64: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4',
-  armv7l: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4'
+        i686: 'f1cd1b358a700b07400af645a324a26a6895cf8f2bc93d2b1c21782e2eb9b750',
+      x86_64: 'd0f1cb59380cf1bf7806372752f8b3f9d472058cef7b63a33df3bfc18e9fb985',
+     aarch64: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4',
+      armv7l: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4'
   })
 
   depends_on 'binutils' => :build
