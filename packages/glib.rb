@@ -34,7 +34,7 @@ class Glib < Package
   depends_on 'zlibpkg' # R
   depends_on 'pcre2' # R
 
-  no_strip if ARCH.include['aarch64', 'armv7l']
+  no_strip if %w[aarch64 armv7l].include? ARCH
   patchelf
   gnome
 
