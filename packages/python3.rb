@@ -17,10 +17,10 @@ class Python3 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.0_x86_64/python3-3.11.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '21c646c26ed95774c38a5f44938763e9236cd57a775f7b9dbbd925c4c0b90e32',
-     armv7l: '21c646c26ed95774c38a5f44938763e9236cd57a775f7b9dbbd925c4c0b90e32',
-       i686: 'c273e518eb11ac79f45fbd3c3028b6e352e42779b7572782b50af4d8b28e2dee',
-     x86_64: '21961eba126c03723e77da34dc5415a43b7d92a4402179b6f786aa1e0f672e07'
+    aarch64: '45af8d33fe7d419c83a1cb829e318cc97f6de6a78d522845f52829ee9642ea41',
+     armv7l: '45af8d33fe7d419c83a1cb829e318cc97f6de6a78d522845f52829ee9642ea41',
+       i686: '2d07bfb72df0a579b0854c02ba1d9a32264ad2e149e4a0f5a1b26622010cb2b7',
+     x86_64: '87cab9510346a3061cab055f6b071931ff79f5479c75d7875530a124e9004ede'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -44,6 +44,7 @@ class Python3 < Package
   depends_on 'util_linux' # R
 
   no_env_options
+  conflicts_ok
 
   def self.patch
     system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
@@ -71,12 +72,12 @@ class Python3 < Package
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    Dir.mkdir 'builddir'
+    FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
       system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
         --with-computed-gotos \
         --enable-loadable-sqlite-extensions \
-        --without-ensurepip \
+        --with-ensurepip \
         --enable-optimizations \
         --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
         --with-system-ffi \
@@ -119,7 +120,7 @@ class Python3 < Package
     end
 
     # Remove conflicting binaries
-    FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wheel"
+    # FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wheel"
 
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
