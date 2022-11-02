@@ -12,16 +12,16 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-     aarch64: 'file:///usr/local/tmp/packages/glib-2.74.1-chromeos-armv7l.tar.zst',
-      armv7l: 'file:///usr/local/tmp/packages/glib-2.74.1-chromeos-armv7l.tar.zst',
-        i686: 'file:///usr/local/tmp/packages/glib-2.74.1-chromeos-i686.tar.zst',
-      x86_64: 'file:///usr/local/tmp/packages/glib-2.74.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.74.1_armv7l/glib-2.74.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.74.1_armv7l/glib-2.74.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.74.1_i686/glib-2.74.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.74.1_x86_64/glib-2.74.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     aarch64: '4793afd0f2cd2d168d52a112f18de001d7e308383937e18ec177b3751a7da3ab',
-      armv7l: '4793afd0f2cd2d168d52a112f18de001d7e308383937e18ec177b3751a7da3ab',
-        i686: 'c7a5a227d4744079333d6597297acab9fa4ce30cbb4341744b49a805a4655ae5',
-      x86_64: '67515679d697eb29fdff6ffff1392569636adcb6d51c542f56ddf02ce02c62d5'
+    aarch64: '4793afd0f2cd2d168d52a112f18de001d7e308383937e18ec177b3751a7da3ab',
+     armv7l: '4793afd0f2cd2d168d52a112f18de001d7e308383937e18ec177b3751a7da3ab',
+       i686: 'c7a5a227d4744079333d6597297acab9fa4ce30cbb4341744b49a805a4655ae5',
+     x86_64: '67515679d697eb29fdff6ffff1392569636adcb6d51c542f56ddf02ce02c62d5'
   })
 
   depends_on 'elfutils' # R
