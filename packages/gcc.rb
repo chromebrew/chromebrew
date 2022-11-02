@@ -10,16 +10,16 @@ class Gcc < Package
   git_hashtag 'b80a690673272919896ee5939250e50d882f2418'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_i686/gcc-12.2.1-b80a690-chromeos-i686.tar.xz',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_x86_64/gcc-12.2.1-b80a690-chromeos-x86_64.tar.zst'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_i686/gcc-12.2.1-b80a690-chromeos-i686.tar.xz',
+   aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
+    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_x86_64/gcc-12.2.1-b80a690-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '14de19fc4bf6d97c936541593e79638b4661855d1b3bfe3f14d3d520870951de',
- aarch64: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
-  armv7l: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
-  x86_64: '62a41fb9a13969fe9ecca02f4f8db153abd15ae66874154735aeee22009e7c8e'
+      i686: '14de19fc4bf6d97c936541593e79638b4661855d1b3bfe3f14d3d520870951de',
+   aarch64: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
+    armv7l: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
+    x86_64: '62a41fb9a13969fe9ecca02f4f8db153abd15ae66874154735aeee22009e7c8e'
   })
 
   depends_on 'binutils' => :build
