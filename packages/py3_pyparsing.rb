@@ -23,6 +23,8 @@ class Py3_pyparsing < Package
      x86_64: '0570ed48a42e9a30e2587f3384ab3468a9280e06433658d00f0cdd9578326633'
   })
 
+  depends_on 'py3_flit_core'
+
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
   end
