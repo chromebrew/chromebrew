@@ -8,14 +8,18 @@ class Epiphany < Package
   homepage 'https://wiki.gnome.org/Apps/Web'
   version '43.0'
   license 'GPL'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
   git_hashtag version
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/43.0_armv7l/epiphany-43.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/43.0_armv7l/epiphany-43.0-chromeos-armv7l.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/43.0_x86_64/epiphany-43.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
+    aarch64: 'd494c6e107ea6fb881b5d28ff67fa3e6ec2f6091ce4b8e00e3c6253d4d3de7cb',
+     armv7l: 'd494c6e107ea6fb881b5d28ff67fa3e6ec2f6091ce4b8e00e3c6253d4d3de7cb',
      x86_64: '143a6f9be5dbd4df49fee28c43ae4eabfc7820cffacf186e9d729f7eb6572ae2'
   })
 
@@ -51,6 +55,7 @@ class Epiphany < Package
   depends_on 'libxml2' # R
   depends_on 'nettle' # R
   depends_on 'sqlite' # R
+  depends_on 'gcc' # R
   gnome
 
   def self.build
