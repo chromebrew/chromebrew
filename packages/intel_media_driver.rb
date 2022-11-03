@@ -23,7 +23,7 @@ class Intel_media_driver < Package
   depends_on 'libva'
 
   #  def self.preflight
-  #    abort 'Not an Intel processor, aborting.'.lightred unless `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
+  #    abort 'Not an Intel processor, aborting.'.lightred unless CREW_IS_INTEL
   #  end
 
   def self.build
