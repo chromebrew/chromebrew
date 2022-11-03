@@ -43,13 +43,7 @@ class Sommelier < Package
   depends_on 'glibc' # R
 
   def self.preflight
-    case ARCH
-    when 'armv7l', 'aarch64'
-      @container_check = File.exist?('/.dockerenv')
-    when 'i686', 'x86_64'
-      @container_check = `/usr/bin/crossystem inside_vm` == '1'
-    end
-    return if File.socket?('/var/run/chrome/wayland-0') || @container_check
+    return if File.socket?('/var/run/chrome/wayland-0') || CREW_IN_CONTAINER
 
     abort 'This package is not compatible with your device :/'.lightred
   end

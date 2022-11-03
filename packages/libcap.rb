@@ -53,7 +53,7 @@ class Libcap < Package
 
   def self.check
     # Tests do not work in a Docker container.
-    return if File.exist?('/.dockerenv')
+    return if CREW_IN_CONTAINER
 
     system 'make', 'test'
   end

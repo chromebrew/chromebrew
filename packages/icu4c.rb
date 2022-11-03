@@ -69,7 +69,7 @@ class Icu4c < Package
   def self.postinstall
     # Check for packages that expect an older icu library, but not in a container, since we have already
     # checked all obvious packages there.
-    return if File.exist?('/.dockerenv')
+    return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
       @oldicuver.each do |oldver|
