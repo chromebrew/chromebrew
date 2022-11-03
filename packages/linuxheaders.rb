@@ -4,12 +4,12 @@ class Linuxheaders < Package
   description 'Linux headers for Chrome OS.'
   homepage 'https://kernel.org/'
   puts "CREW_KERNEL_VERSION is #{CREW_KERNEL_VERSION}"
-  case CREW_KERNEL_VERSION
-  when '4.14'
-    version = "#{CREW_KERNEL_VERSION}-1"
-  else
-    version = CREW_KERNEL_VERSION
-  end
+  version = case CREW_KERNEL_VERSION
+            when '4.14'
+              "#{CREW_KERNEL_VERSION}-1"
+            else
+              CREW_KERNEL_VERSION
+            end
   # version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
   license 'GPL-2'
   compatibility 'all'
