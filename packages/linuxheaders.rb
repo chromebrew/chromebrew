@@ -3,17 +3,17 @@ require 'package'
 class Linuxheaders < Package
   description 'Linux headers for Chrome OS.'
   homepage 'https://kernel.org/'
-  @_ver = if CREW_KERNEL_VERSION == '4.14'
-              "#{CREW_KERNEL_VERSION}-1"
-            else
-              CREW_KERNEL_VERSION
-            end
+  case CREW_KERNEL_VERSION
+  when '4.14'
+    version = "#{CREW_KERNEL_VERSION}-1"
+  else
+    version = CREW_KERNEL_VERSION
+  end
   # version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
-  version @_ver
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
-
+  puts "version is #{version}"
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_armv7l/linuxheaders-4.14-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_armv7l/linuxheaders-4.14-1-chromeos-armv7l.tpxz',
