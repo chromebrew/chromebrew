@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.28.0'
+CREW_VERSION = '1.28.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -31,6 +31,20 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
                          %w[armv7l]
                        end
                      end
+
+CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', nil)
+unless File.exist?('/.dockerenv') && CREW_KERNEL_VERSION.to_s.empty?
+  CREW_KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
+else if CREW_KERNEL_VERSION.to_s.empty?
+  case ARCH
+  when 'i686'
+    CREW_KERNEL_VERSION = '3.8'
+  when 'aarch64', 'armv7l'
+    CREW_KERNEL_VERSION = '4.14'
+  when 'x86_64'
+    CREW_KERNEL_VERSION = '4.14'
+  end
+end
 
 # we are running under user-mode qemu if the processor
 # does not compatible with the kernel architecture natively
@@ -151,12 +165,17 @@ case ARCH
 when 'aarch64', 'armv7l'
   CREW_TGT = 'armv7l-cros-linux-gnueabihf'
   CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
+  # These settings have been selected to match debian armhf.
+  # Using -mfpu=neon breaks builds such as webkit2gtk.
+  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
   CREW_BUILD = 'i686-cros-linux-gnu'
+  CREW_ARCH_FLAGS = ''
 when 'x86_64'
   CREW_TGT = 'x86_64-cros-linux-gnu'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
+  CREW_ARCH_FLAGS = ''
 end
 
 CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
@@ -166,7 +185,7 @@ CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
               end
 CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', nil)
 
-CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"
