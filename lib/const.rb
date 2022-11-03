@@ -33,9 +33,7 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
                      end
 
 CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', nil)
-unless File.exist?('/.dockerenv') && CREW_KERNEL_VERSION.to_s.empty?
-  CREW_KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
-else if CREW_KERNEL_VERSION.to_s.empty?
+if File.exist?('/.dockerenv') || CREW_KERNEL_VERSION.to_s.empty?
   case ARCH
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
@@ -44,6 +42,8 @@ else if CREW_KERNEL_VERSION.to_s.empty?
   when 'x86_64'
     CREW_KERNEL_VERSION = '4.14'
   end
+elsif CREW_KERNEL_VERSION.to_s.empty?
+  CREW_KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
 end
 
 # we are running under user-mode qemu if the processor
