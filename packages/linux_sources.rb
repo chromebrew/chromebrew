@@ -3,24 +3,11 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  case ARCH
-  when 'aarch64', 'armv7l', 'x86_64'
-    @_ver = '4.14'
-    version "#{@_ver}-1"
-  when 'i686'
-    @_ver = '3.8'
-    version @_ver
-  end
-  # Only check for kernel version if not in container.
-  unless File.exist?('/.dockerenv')
-    @KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
-    @ver = @KERNEL_VERSION.between?(@KERNEL_VERSION, '5.15') ? @ver : @KERNEL_VERSION
-    version @ver
-  end
+  version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
-  git_hashtag "chromeos-#{@_ver}"
+  git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_armv7l/linux_sources-4.14-1-chromeos-armv7l.tpxz',
