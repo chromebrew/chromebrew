@@ -8,7 +8,7 @@ class Epiphany < Package
   homepage 'https://wiki.gnome.org/Apps/Web'
   version '43.0'
   license 'GPL'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
   git_hashtag version
 
