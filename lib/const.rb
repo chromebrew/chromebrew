@@ -57,8 +57,10 @@ else
   HOME = CREW_PREFIX + Dir.home
 end
 
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
+
 # Use sane minimal defaults if in container and no override specified.
-if File.exist?('/.dockerenv') && ENV['CREW_KERNEL_VERSION'].to_s.empty?
+if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
   case ARCH
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
