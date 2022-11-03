@@ -59,6 +59,7 @@ end
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
+CREW_CPU_VENDOR = CPUINFO[:vendor_id] || 'unknown'
 CREW_IS_AMD = `grep -c 'AuthenticAMD' /proc/cpuinfo`.to_i.positive?
 CREW_IS_INTEL = `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
 
@@ -72,10 +73,8 @@ if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
   when 'x86_64'
     CREW_KERNEL_VERSION = '4.14'
   end
-elsif ENV['CREW_KERNEL_VERSION'].to_s.empty?
-  CREW_KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
 else
-  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', nil)
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
 end
 
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
