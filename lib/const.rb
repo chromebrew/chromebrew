@@ -32,20 +32,6 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
                        end
                      end
 
-CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', nil)
-if File.exist?('/.dockerenv') || CREW_KERNEL_VERSION.to_s.empty?
-  case ARCH
-  when 'i686'
-    CREW_KERNEL_VERSION = '3.8'
-  when 'aarch64', 'armv7l'
-    CREW_KERNEL_VERSION = '4.14'
-  when 'x86_64'
-    CREW_KERNEL_VERSION = '4.14'
-  end
-elsif CREW_KERNEL_VERSION.to_s.empty?
-  CREW_KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
-end
-
 # we are running under user-mode qemu if the processor
 # does not compatible with the kernel architecture natively
 QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
@@ -69,6 +55,22 @@ else
   CREW_BUILD_FROM_SOURCE = 1
   CREW_PREFIX = ENV.fetch('CREW_PREFIX', nil)
   HOME = CREW_PREFIX + Dir.home
+end
+
+# Use sane minimal defaults if in container and no override specified.
+if File.exist?('/.dockerenv') && ENV['CREW_KERNEL_VERSION'].to_s.empty?
+  case ARCH
+  when 'i686'
+    CREW_KERNEL_VERSION = '3.8'
+  when 'aarch64', 'armv7l'
+    CREW_KERNEL_VERSION = '4.14'
+  when 'x86_64'
+    CREW_KERNEL_VERSION = '4.14'
+  end
+elsif ENV['CREW_KERNEL_VERSION'].to_s.empty?
+  CREW_KERNEL_VERSION = `uname -r`.chomp.reverse.split('.', 2).collect(&:reverse)[1]
+else
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', nil)
 end
 
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
