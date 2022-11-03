@@ -61,8 +61,6 @@ CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s
 
 CREW_IS_AMD = File.foreach('/proc/cpuinfo').grep(/AuthenticAMD/).any?
 CREW_IS_INTEL = File.foreach('/proc/cpuinfo').grep(/GenuineIntel/).any?
-# CREW_IS_AMD = `grep -c 'AuthenticAMD' /proc/cpuinfo`.to_i.positive?
-# CREW_IS_INTEL = `grep -c 'GenuineIntel' /proc/cpuinfo`.to_i.positive?
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
