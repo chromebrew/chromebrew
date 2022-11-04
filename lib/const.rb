@@ -59,9 +59,9 @@ end
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
-CREW_CPU_VENDOR = CPUINFO[:vendor_id] || 'unknown'
-CREW_IS_AMD = File.foreach('/proc/cpuinfo').grep(/AuthenticAMD/).any?
-CREW_IS_INTEL = File.foreach('/proc/cpuinfo').grep(/GenuineIntel/).any?
+CREW_CPU_VENDOR = CPUINFO["vendor_id"] || 'unknown'
+CREW_IS_AMD = CPUINFO["vendor_id"].include?('AuthenticAMD')
+CREW_IS_INTEL = CPUINFO["vendor_id"].include?('GenuineIntel')
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
