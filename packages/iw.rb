@@ -11,14 +11,14 @@ class Iw < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.16_armv7l/iw-5.16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.16_armv7l/iw-5.16-chromeos-armv7l.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.19_armv7l/iw-5.19-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.19_armv7l/iw-5.19-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.19_i686/iw-5.19-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.19_x86_64/iw-5.19-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '16a110e306afbf71153e8f0253bf703f8ee8152dec8210db4f3693c85718491e',
-     armv7l: '16a110e306afbf71153e8f0253bf703f8ee8152dec8210db4f3693c85718491e',
+    aarch64: '12c0478d9fcfd42d93960600ebbd31bbc332246956728b7e9cba807e9926116a',
+     armv7l: '12c0478d9fcfd42d93960600ebbd31bbc332246956728b7e9cba807e9926116a',
        i686: 'f6265a053c1ae13fd0e985ebd29684a0b74d7d0165856be5c7abc68d8105b327',
      x86_64: 'c6cfb6572a7dfa450e1d9c6bc163321b04b39abca907a82e9ad7ea4eb90ac323'
   })
