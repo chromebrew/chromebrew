@@ -59,6 +59,7 @@ end
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
+CREW_CPU_VENDOR = CPUINFO[:vendor_id] || 'unknown'
 CREW_IS_AMD = File.foreach('/proc/cpuinfo').grep(/AuthenticAMD/).any?
 CREW_IS_INTEL = File.foreach('/proc/cpuinfo').grep(/GenuineIntel/).any?
 
