@@ -10,10 +10,14 @@ class Evolution_data_server < Package
   git_hashtag @_ver
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.46.0_armv7l/evolution_data_server-3.46.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.46.0_armv7l/evolution_data_server-3.46.0-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.46.0_i686/evolution_data_server-3.46.0-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.46.0_x86_64/evolution_data_server-3.46.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
+    aarch64: '856ab38434b324eecacdfdb2981dcbc2e67769680621370e3da09c1d0979d8b4',
+     armv7l: '856ab38434b324eecacdfdb2981dcbc2e67769680621370e3da09c1d0979d8b4',
        i686: '303248f7eb4e050cbf846caaf9f23b04c19df4fa624ee90db6c799f891175271',
      x86_64: '57189bbc3c4fa355db5d3e64dc89521f91e7366eadb251b993bd963ec573d1d3'
   })
@@ -42,8 +46,14 @@ class Evolution_data_server < Package
   depends_on 'pango' # R
   depends_on 'sqlite' # R
   depends_on 'vala' => :build
-  depends_on 'webkit2gtk'
   depends_on 'zlibpkg' # R
+  depends_on 'e2fsprogs' # R
+  depends_on 'graphene' # R
+  depends_on 'gtk4' # R
+  depends_on 'json_glib' # R
+  depends_on 'vulkan_icd_loader' # R
+  depends_on 'webkit2gtk_4_1' # R
+  depends_on 'webkit2gtk_5' # R
 
   def self.build
     Dir.mkdir 'builddir'
