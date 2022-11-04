@@ -8,9 +8,15 @@ class Webkit2gtk_5 < Package
   source_sha256 '02e195b3fb9e057743b3364ee7f1eec13f71614226849544c07c32a73b8f1848'
 
   binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_armv7l/webkit2gtk_5-2.38.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_armv7l/webkit2gtk_5-2.38.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_i686/webkit2gtk_5-2.38.1-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_x86_64/webkit2gtk_5-2.38.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
+    aarch64: '8bc9fab99da8fce312734596450c376f77e322920b1aeb98e62bcddd5b45dcab',
+     armv7l: '8bc9fab99da8fce312734596450c376f77e322920b1aeb98e62bcddd5b45dcab',
+       i686: 'c75f3386e0c7665f19c62d3afaf6acfefc5a82db8037f2cc5fec40b6b0ef6b86',
      x86_64: 'c0793dfc8aa4b9935a43af6bc0ee302a004cd4ca83b751d073563adfb1ebfe65'
   })
 
@@ -23,13 +29,14 @@ class Webkit2gtk_5 < Package
   depends_on 'fontconfig'
   depends_on 'freetype' # R
   depends_on 'gcc' # R
-  depends_on 'gcc10' if ARCH == 'armv7l' || ARCH == 'aarch64'
+  depends_on 'gcc10' if %w[aarch64 armv7l i686].include? ARCH
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hyphen' # R
@@ -69,6 +76,7 @@ class Webkit2gtk_5 < Package
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
   depends_on 'zlibpkg' # R
+  depends_on 'graphene' # R
 
   no_env_options
 
@@ -77,43 +85,44 @@ class Webkit2gtk_5 < Package
     @arch_flags = ''
     @gcc_ver = ''
     if ARCH == 'armv7l' || ARCH == 'aarch64'
-      # Patch from https://bugs.webkit.org/show_bug.cgi?id=226557#c27 to
-      # handle issue with gcc > 11.
-      @gcc_patch = <<~'GCCEOF'
-        diff --git a/Source/cmake/WebKitCompilerFlags.cmake b/Source/cmake/WebKitCompilerFlags.cmake
-        index 77ebb802ebb03450b5e96629a47b6819a68672c6..d49d6e43d7eeb6673c624e00eadf3edfca0674eb 100644
-        --- a/Source/cmake/WebKitCompilerFlags.cmake
-        +++ b/Source/cmake/WebKitCompilerFlags.cmake
-        @@ -143,6 +143,13 @@ if (COMPILER_IS_GCC_OR_CLANG)
-                 WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
-             endif ()
+      ## Patch from https://bugs.webkit.org/show_bug.cgi?id=226557#c27 to
+      ## handle issue with gcc > 11.
+      # @gcc_patch = <<~'GCCEOF'
+      # diff --git a/Source/cmake/WebKitCompilerFlags.cmake b/Source/cmake/WebKitCompilerFlags.cmake
+      # index 77ebb802ebb03450b5e96629a47b6819a68672c6..d49d6e43d7eeb6673c624e00eadf3edfca0674eb 100644
+      #--- a/Source/cmake/WebKitCompilerFlags.cmake
+      #+++ b/Source/cmake/WebKitCompilerFlags.cmake
+      # @@ -143,6 +143,13 @@ if (COMPILER_IS_GCC_OR_CLANG)
+      # WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
+      # endif ()
 
-        +    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
-        +    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
-        +    # https://bugs.webkit.org/show_bug.cgi?id=226557
-        +    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
-        +        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
-        +    endif ()
-        +
-             # -Wexpansion-to-defined produces false positives with GCC but not Clang
-             # https://bugs.webkit.org/show_bug.cgi?id=167643#c13
-             if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-      GCCEOF
-      File.write('gcc.patch', @gcc_patch)
-      system 'patch -Np1 -F 10 -i gcc.patch'
+      #+    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
+      #+    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
+      #+    # https://bugs.webkit.org/show_bug.cgi?id=226557
+      #+    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
+      #+        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
+      #+    endif ()
+      #+
+      ## -Wexpansion-to-defined produces false positives with GCC but not Clang
+      ## https://bugs.webkit.org/show_bug.cgi?id=167643#c13
+      # if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+      # GCCEOF
+      # File.write('gcc.patch', @gcc_patch)
+      # system 'patch -Np1 -F 10 -i gcc.patch'
       # Patch from https://github.com/WebKit/WebKit/pull/1233
-      downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
-                 '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
-      system "sed -i 's,data.pixels->bytes(),data.pixels->data(),' 1233.diff"
-      system 'patch -Np1 -F 10 -i 1233.diff'
+      # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/1233.diff',
+      #           '70c990ced72c5551b01c9d7c72da7900d609d0f7891e7b99ab132ac1b4aa33ea'
+      # system "sed -i 's,data.pixels->bytes(),data.pixels->data(),' 1233.diff"
+      # system 'patch -Np1 -F 10 -i 1233.diff'
       # Patch from https://github.com/WebKit/WebKit/pull/2926
       # downloader 'https://patch-diff.githubusercontent.com/raw/WebKit/WebKit/pull/2926.diff',
       # '26a8d5a9dd9d61865645158681b766e13cf05b3ed07f30bebb79ff73259d0664'
       # system "sed -i '22,63d' 2926.diff"
       # system 'patch -Np1 -F 10 -i 2926.diff'
-      @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
-      @gcc_ver = '-10'
+      # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
+      @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
     end
+    @gcc_ver = '-10' if %w[aarch64 armv7l i686].include? ARCH
     @new_gcc = <<~NEW_GCCEOF
       #!/bin/bash
       gcc#{@gcc_ver} #{@arch_flags} $@
@@ -138,8 +147,8 @@ class Webkit2gtk_5 < Package
       # bwrap: Can't make symlink at /var/run: File exists
       # LDFLAGS from debian: -Wl,--no-keep-memory
       unless File.file?('build.ninja')
-        @arch_linker_flags = ARCH == 'x86_64' || ARCH == 'i686' ? '' : '-Wl,--no-keep-memory'
-        system "CREW_LINKER=gold CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' cmake \
+        @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
+        system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' cmake \
             -G Ninja \
             #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
             -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
@@ -156,7 +165,7 @@ class Webkit2gtk_5 < Package
             -DUSER_AGENT_BRANDING='Chromebrew' \
             .."
       end
-      system "ninja -j #{CREW_NPROC} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil}"
+      system "ninja -j #{CREW_NPROC} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(3).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(4).ceil}"
     end
   end
 
