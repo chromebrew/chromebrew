@@ -3,12 +3,8 @@ require 'package'
 class Musl_linuxheaders < Package
   description 'Linux headers for Chrome OS, installed into MUSL_PREFIX.'
   homepage 'https://kernel.org/'
-  version = if CREW_KERNEL_VERSION == '4.14'
-              "#{CREW_KERNEL_VERSION}-1"
-            else
-              CREW_KERNEL_VERSION
-            end
-  # version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
+  @version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
+  self.set_property('version', @version)
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'

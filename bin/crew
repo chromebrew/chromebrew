@@ -298,7 +298,7 @@ def generate_compatible
     end
     if @pkg.compatible? && @compatibility
       # add to compatible packages
-      puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
+      puts "Adding #{pkgName} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
     elsif @opt_verbose
       puts "#{pkgName} is not a compatible package.".lightred

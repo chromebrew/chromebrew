@@ -3,12 +3,8 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  version = if CREW_KERNEL_VERSION == '4.14'
-              "#{CREW_KERNEL_VERSION}-1"
-            else
-              CREW_KERNEL_VERSION
-            end
-  # version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
+  @version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
+  self.set_property('version', @version)
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
