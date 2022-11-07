@@ -1821,6 +1821,7 @@ def sysinfo_command(_args)
   git_commit_message_format = '%h `%s (%cr)`'
 
   puts <<~MD
+    <details><summary>Expand</summary>
     - Architecture: `#{KERN_ARCH}` (`#{ARCH}`)
     - Processor vendor: `#{CPUINFO['vendor_id'] || 'ARM'}`
     - User space: `#{Dir.exist?('/lib64') ? '64' : '32'}-bit`
@@ -1835,6 +1836,7 @@ def sysinfo_command(_args)
     - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
     - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
     - OS channel: `#{lsb_release['CHROMEOS_RELEASE_TRACK']}`
+    </details>
   MD
 end
 
