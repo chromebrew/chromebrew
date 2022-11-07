@@ -31,7 +31,7 @@ class Package
     # Via https://stackoverflow.com/questions/7849521/set-attribute-dynamically-of-ruby-object/39063481#39063481
     def set_property(name, value)
       prop_name = "@#{name}".to_sym # you need the property name, prefixed with a '@', as a symbol
-      self.instance_variable_set(prop_name, value)
+      instance_variable_set(prop_name, value)
     end
   end
 

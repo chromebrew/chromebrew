@@ -4,7 +4,7 @@ class Linuxheaders < Package
   description 'Linux headers for Chrome OS.'
   homepage 'https://kernel.org/'
   @version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
-  self.set_property('version', @version)
+  set_property('version', @version)
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
