@@ -1821,14 +1821,16 @@ def sysinfo_command(_args)
   git_commit_message_format = '%h `%s (%cr)`'
 
   puts <<~MD
-    - Architecture: `#{ARCH_ACTUAL}` (`#{ARCH}`)
+    - Architecture: `#{KERN_ARCH}` (`#{ARCH}`)
+    - Processor vendor: `#{CPUINFO['vendor_id'] || 'ARM'}`
+    - User space: `#{Dir.exist?('/lib64') ? '64' : '32'}-bit`
     - Kernel version: `#{`uname -r`.chomp}`
 
     - Chromebrew version: `#{CREW_VERSION}`
     - Chromebrew prefix: `#{CREW_PREFIX}`
     - Chromebrew libdir: `#{CREW_LIB_PREFIX}`
 
-    - Last update in local repository: #{`cd '#{CREW_LIB_PATH}'; git show -s --format='#{git_commit_message_format}' '#{CREW_LIB_PATH}'`.chomp}
+    - Last update in local repository: #{`git -C '#{CREW_LIB_PATH}' show -s --format='#{git_commit_message_format}'`.chomp}
 
     - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
     - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
