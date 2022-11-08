@@ -27,24 +27,26 @@ class Linter < Package
       fi
       for file in $files; do
         ext="${file##*.}"
-        type=$(file -b "$file" | cut -d' ' -f1)
-        case "$type" in
-          Bourne-Again)
-            ext="sh"
-            ;;
-          HTML)
-            ext="md"
-            ;;
-          Ruby)
-            ext="rb"
-            ;;
-        esac
-        case "$ext" in
+        if ! [[ "$ext" =~ ^(md|rb|sh|yml|yaml)$ ]]; then
+          type="$(file -b "$file" | cut -d' ' -f1)"
+          case $type in
+            Bourne-Again)
+              ext="sh"
+              ;;
+            HTML)
+              ext="md"
+              ;;
+            Ruby)
+              ext="rb"
+              ;;
+          esac
+        fi
+        case $ext in
           md)
             mdl "$file"
             ;;
           rb)
-            ruby -wcWlevel=2 "$file"
+            ruby=true
             rubocop "$file"
             ;;
           sh)

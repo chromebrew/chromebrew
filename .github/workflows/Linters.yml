@@ -27,7 +27,7 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ext="${file##*.}"
             if ! [[ "$ext" =~ ^(md|rb|sh|yml|yaml)$ ]]; then
-              type="$(file -b $file | cut -d' ' -f1)"
+              type="$(file -b "$file" | cut -d' ' -f1)"
               case $type in
                 Bourne-Again)
                   ext="sh"
@@ -42,17 +42,17 @@ jobs:
             fi
             case $ext in
               md)
-                mdl $file
+                mdl "$file"
                 ;;
               rb)
                 ruby=true
-                ruby -wcWlevel=2 $file
+                ruby -wcWlevel=2 "$file"
                 ;;
               sh)
-                shellcheck $file
+                shellcheck "$file"
                 ;;
               yml|yaml)
-                yaml-lint $file
+                yaml-lint "$file"
                 ;;
               *)
                 echo "Unable to check syntax of $file."
