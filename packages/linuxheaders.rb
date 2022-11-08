@@ -45,7 +45,7 @@ class Linuxheaders < Package
     # make fails if it detects gold linker.
     FileUtils.mkdir_p('crew_bin')
     @workdir = `pwd`.chomp
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd","#{@workdir}/crew_bin/ld"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd", "#{@workdir}/crew_bin/ld"
     system "PATH=#{@workdir}/crew_bin:$PATH make defconfig"
     system "PATH=#{@workdir}/crew_bin:$PATH make headers_install INSTALL_HDR_PATH=#{CREW_DEST_PREFIX}"
     Dir.chdir("#{CREW_DEST_PREFIX}/include") do

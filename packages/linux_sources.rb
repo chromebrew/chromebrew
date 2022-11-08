@@ -31,7 +31,7 @@ class Linux_sources < Package
     FileUtils.mkdir_p(linux_src_dir)
     # make fails if it detects gold linker.
     FileUtils.mkdir_p("#{linux_src_dir}/crew_bin")
-    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd","#{linux_src_dir}/crew_bin/ld"
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd", "#{linux_src_dir}/crew_bin/ld"
     FileUtils.rm_rf('.git')
     FileUtils.cp_r('.', linux_src_dir)
     Dir.chdir(linux_src_dir) do
