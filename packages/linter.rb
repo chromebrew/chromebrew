@@ -3,7 +3,7 @@ require 'package'
 class Linter < Package
   description 'Comprehensive linter and code analysis for various file types.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.1'
+  version '1.2'
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
