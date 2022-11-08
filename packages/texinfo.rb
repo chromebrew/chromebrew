@@ -6,7 +6,7 @@ class Texinfo < Package
   version '7.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'http://ftpmirror.gnu.org/texinfo/texinfo-7.0.tar.xz'
+  source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-7.0.tar.xz'
   source_sha256 '20744b82531ce7a04d8cee34b07143ad59777612c3695d5855f29fba40fbe3e0'
 
   binary_url({
