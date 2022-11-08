@@ -27,7 +27,7 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Enviironment: Paste the output of `crew sysinfo -v` between two `***` below**
+**Environment: Paste the output of `crew sysinfo -v` between the two `***` below**
 
 ***
 *** 
