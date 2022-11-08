@@ -26,31 +26,33 @@ jobs:
           ruby=
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ext="${file##*.}"
-            type="$(file -b $file | cut -d' ' -f1)"
-            case $type in
-              Bourne-Again)
-                ext="sh"
-                ;;
-              HTML)
-                ext="md"
-                ;;
-              Ruby)
-                ext="rb"
-                ;;
-            esac
+            if ! [[ "$ext" =~ ^(md|rb|sh|yml|yaml)$ ]]; then
+              type="$(file -b "$file" | cut -d' ' -f1)"
+              case $type in
+                Bourne-Again)
+                  ext="sh"
+                  ;;
+                HTML)
+                  ext="md"
+                  ;;
+                Ruby)
+                  ext="rb"
+                  ;;
+              esac
+            fi
             case $ext in
               md)
-                mdl $file
+                mdl "$file"
                 ;;
               rb)
                 ruby=true
-                ruby -wcWlevel=2 $file
+                ruby -wcWlevel=2 "$file"
                 ;;
               sh)
-                shellcheck $file
+                shellcheck "$file"
                 ;;
               yml|yaml)
-                yaml-lint $file
+                yaml-lint "$file"
                 ;;
               *)
                 echo "Unable to check syntax of $file."

@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.28.0'
+CREW_VERSION = '1.28.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -55,6 +55,27 @@ else
   CREW_BUILD_FROM_SOURCE = 1
   CREW_PREFIX = ENV.fetch('CREW_PREFIX', nil)
   HOME = CREW_PREFIX + Dir.home
+end
+
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
+
+CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
+# vendor_id may not exist on non-x86 platforms.
+CREW_IS_AMD = ARCH == 'x86_64' ? CPUINFO['vendor_id'].include?('AuthenticAMD') : false
+CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? CPUINFO['vendor_id'].include?('GenuineIntel') : false
+
+# Use sane minimal defaults if in container and no override specified.
+if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
+  case ARCH
+  when 'i686'
+    CREW_KERNEL_VERSION = '3.8'
+  when 'aarch64', 'armv7l'
+    CREW_KERNEL_VERSION = '4.14'
+  when 'x86_64'
+    CREW_KERNEL_VERSION = '4.14'
+  end
+else
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
 end
 
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
@@ -151,12 +172,17 @@ case ARCH
 when 'aarch64', 'armv7l'
   CREW_TGT = 'armv7l-cros-linux-gnueabihf'
   CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
+  # These settings have been selected to match debian armhf.
+  # Using -mfpu=neon breaks builds such as webkit2gtk.
+  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
   CREW_BUILD = 'i686-cros-linux-gnu'
+  CREW_ARCH_FLAGS = ''
 when 'x86_64'
   CREW_TGT = 'x86_64-cros-linux-gnu'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
+  CREW_ARCH_FLAGS = ''
 end
 
 CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
@@ -166,7 +192,7 @@ CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
               end
 CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', nil)
 
-CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"

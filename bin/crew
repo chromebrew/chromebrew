@@ -298,7 +298,7 @@ def generate_compatible
     end
     if @pkg.compatible? && @compatibility
       # add to compatible packages
-      puts "Adding #{pkgName} to compatible packages.".lightgreen if @opt_verbose
+      puts "Adding #{pkgName} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
     elsif @opt_verbose
       puts "#{pkgName} is not a compatible package.".lightred
@@ -439,7 +439,8 @@ def help(pkgName)
     EOT
   when 'sysinfo'
     puts <<~EOT
-      Show system infomation in Markdown style.
+      Show system infomation.
+      If `-v` or `--verbose` is present, show system infomation with raw Markdown.
 
       Usage: crew sysinfo
     EOT
@@ -1820,13 +1821,16 @@ def sysinfo_command(_args)
 
   git_commit_message_format = '%h `%s (%cr)`'
 
-  puts <<~MD
+  @sysinfo_markdown_header = <<~MDHEADER
     <details><summary>Expand</summary>
 
+  MDHEADER
+  @sysinfo_markdown_body = <<~MDBODY
     - Architecture: `#{KERN_ARCH}` (`#{ARCH}`)
     - Processor vendor: `#{CPUINFO['vendor_id'] || 'ARM'}`
     - User space: `#{Dir.exist?('/lib64') ? '64' : '32'}-bit`
-    - Kernel version: `#{`uname -r`.chomp}`
+    - Chromebrew Kernel version: `#{CREW_KERNEL_VERSION}`
+    - Chromebrew Running in Container: `#{CREW_IN_CONTAINER}`
 
     - Chromebrew version: `#{CREW_VERSION}`
     - Chromebrew prefix: `#{CREW_PREFIX}`
@@ -1837,9 +1841,18 @@ def sysinfo_command(_args)
     - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
     - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
     - OS channel: `#{lsb_release['CHROMEOS_RELEASE_TRACK']}`
+  MDBODY
+  @sysinfo_markdown_footer = <<~MDFOOTER
 
     </details>
-  MD
+  MDFOOTER
+  if @opt_verbose
+    puts @sysinfo_markdown_header
+    puts @sysinfo_markdown_body
+    puts @sysinfo_markdown_footer
+  else
+    puts @sysinfo_markdown_body.gsub('`', '')
+  end
 end
 
 def update_command(args)
