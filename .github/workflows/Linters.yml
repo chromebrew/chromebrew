@@ -26,18 +26,20 @@ jobs:
           ruby=
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ext="${file##*.}"
-            type="$(file -b $file | cut -d' ' -f1)"
-            case $type in
-              Bourne-Again)
-                ext="sh"
-                ;;
-              HTML)
-                ext="md"
-                ;;
-              Ruby)
-                ext="rb"
-                ;;
-            esac
+            if ! [[ "$ext" =~ ^(md|rb|sh|yml|yaml)$ ]]; then
+              type="$(file -b $file | cut -d' ' -f1)"
+              case $type in
+                Bourne-Again)
+                  ext="sh"
+                  ;;
+                HTML)
+                  ext="md"
+                  ;;
+                Ruby)
+                  ext="rb"
+                  ;;
+              esac
+            fi
             case $ext in
               md)
                 mdl $file
