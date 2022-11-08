@@ -13,10 +13,10 @@ class Linuxheaders < Package
   case CREW_KERNEL_VERSION
   when '3.8'
     binary_url({
-         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/3.8_i686/linuxheaders-3.8-chromeos-i686.tpxz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/3.8_i686/linuxheaders-3.8-chromeos-i686.tpxz'
     })
     binary_sha256({
-         i686: 'c16afcd95ebcffac67a026b724da19f498003ea80c13c87aeb613f09d412bb91'
+      i686: 'c16afcd95ebcffac67a026b724da19f498003ea80c13c87aeb613f09d412bb91'
     })
   when '4.14'
     binary_url({
@@ -31,10 +31,10 @@ class Linuxheaders < Package
     })
   when '5.10'
     binary_url({
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.10_x86_64/linuxheaders-5.10-chromeos-x86_64.tar.zst'
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.10_x86_64/linuxheaders-5.10-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-       x86_64: '797e7a8369f613b50b049b2352f82d5842a2c9ae766d6d5b1165b90a528ac139'
+      x86_64: '797e7a8369f613b50b049b2352f82d5842a2c9ae766d6d5b1165b90a528ac139'
     })
   end
 
@@ -44,7 +44,7 @@ class Linuxheaders < Package
   def self.install
     # make fails if it detects gold linker.
     FileUtils.mkdir_p('crew_bin')
-    @workdir = `pwd`.chomp
+    @workdir = Dir.pwd
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd", "#{@workdir}/crew_bin/ld"
     system "PATH=#{@workdir}/crew_bin:$PATH make defconfig"
     system "PATH=#{@workdir}/crew_bin:$PATH make headers_install INSTALL_HDR_PATH=#{CREW_DEST_PREFIX}"
