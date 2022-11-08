@@ -1851,7 +1851,7 @@ def sysinfo_command(_args)
     puts @sysinfo_markdown_body
     puts @sysinfo_markdown_footer
   else
-    puts @sysinfo_markdown_body.gsub('`','')
+    puts @sysinfo_markdown_body.gsub('`', '')
   end
 end
 
