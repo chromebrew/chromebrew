@@ -439,7 +439,8 @@ def help(pkgName)
     EOT
   when 'sysinfo'
     puts <<~EOT
-      Show system infomation in Markdown style.
+      Show system infomation.
+      If `-v` or `--verbose` is present, show system infomation with raw Markdown.
 
       Usage: crew sysinfo
     EOT
@@ -1820,7 +1821,7 @@ def sysinfo_command(_args)
 
   git_commit_message_format = '%h `%s (%cr)`'
 
-  puts <<~MD
+  @sysinfo = <<~MD
     <details><summary>Expand</summary>
 
     - Architecture: `#{KERN_ARCH}` (`#{ARCH}`)
@@ -1841,6 +1842,20 @@ def sysinfo_command(_args)
 
     </details>
   MD
+  if @opt_verbose
+    puts @sysinfo
+  else
+    begin
+      gem 'tty-markdown'
+    rescue Gem::LoadError
+      puts ' -> install gem tty-markdown'
+      Gem.install('tty-markdown')
+      gem 'tty-markdown'
+    end
+    require 'tty-markdown'
+    @parsed_sysinfo = TTY::Markdown.parse(@sysinfo)
+    puts @parsed_sysinfo
+  end
 end
 
 def update_command(args)
