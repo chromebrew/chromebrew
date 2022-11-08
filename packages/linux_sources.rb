@@ -23,15 +23,20 @@ class Linux_sources < Package
      x86_64: '5dc236576f40cbf6926b4b5f9241ed7e9e3e7db8f2b26643316a2ce1f08a4a02'
   })
 
+  no_env_options
+  no_fhs
+
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
     linux_src_dir = "#{CREW_DEST_PREFIX}/src/linux"
     FileUtils.mkdir_p(linux_src_dir)
+    # make fails if it detects gold linker.
+    FileUtils.mkdir_p("#{linux_src_dir}/crew_bin")
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd","#{linux_src_dir}/crew_bin/ld"
     FileUtils.rm_rf('.git')
     FileUtils.cp_r('.', linux_src_dir)
     Dir.chdir(linux_src_dir) do
-      system 'make', 'defconfig'
+      system "PATH=#{linux_src_dir}/crew_bin:$PATH make defconfig"
     end
+    FileUtils.rm_f "#{linux_src_dir}/crew_bin"
   end
 end

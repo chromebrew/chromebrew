@@ -7,7 +7,9 @@ class Linuxheaders < Package
   set_property('version', @version)
   license 'GPL-2'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
+  git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
+
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_armv7l/linuxheaders-4.14-1-chromeos-armv7l.tpxz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_armv7l/linuxheaders-4.14-1-chromeos-armv7l.tpxz',
@@ -21,17 +23,16 @@ class Linuxheaders < Package
      x86_64: '5d58b327ca9bab5630f0df387a3036125e1f367e6c43cd551f4734ee3e634073'
   })
 
-  depends_on 'linux_sources' => :build
+  no_env_options
+  no_fhs
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
-    linux_src_dir = "#{CREW_PREFIX}/src/linux"
-    Dir.chdir(linux_src_dir) do
-      system 'make',
-             'headers_install',
-             "INSTALL_HDR_PATH=#{CREW_DEST_PREFIX}"
-    end
+    # make fails if it detects gold linker.
+    FileUtils.mkdir_p('crew_bin')
+    @workdir = `pwd`.chomp
+    FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd","#{@workdir}/crew_bin/ld"
+    system "PATH=#{@workdir}/crew_bin:$PATH make defconfig"
+    system "PATH=#{@workdir}/crew_bin:$PATH make headers_install INSTALL_HDR_PATH=#{CREW_DEST_PREFIX}"
     Dir.chdir("#{CREW_DEST_PREFIX}/include") do
       system "for file in \$(find . -not -type d -name '.*'); do
                 rm \${file};

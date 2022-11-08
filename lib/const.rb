@@ -60,8 +60,9 @@ end
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
-CREW_IS_AMD = CPUINFO['vendor_id'].include?('AuthenticAMD')
-CREW_IS_INTEL = CPUINFO['vendor_id'].include?('GenuineIntel')
+# vendor_id may not exist on non-x86 platforms.
+CREW_IS_AMD = ARCH == 'x86_64' ? CPUINFO['vendor_id'].include?('AuthenticAMD') : false
+CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? CPUINFO['vendor_id'].include?('GenuineIntel') : false
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
