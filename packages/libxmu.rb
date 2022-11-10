@@ -22,19 +22,19 @@ class Libxmu < Package
      x86_64: '7d13dd2d816dc5b42f2db6868eda520ed9b1f9fb8d6cc393fa62959f79d0aec4'
   })
 
-  depends_on 'libxt'
-  depends_on 'libxext'
-  depends_on 'util_macros'
-  depends_on 'libx11'
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libice' # R
   depends_on 'libmd' # R
   depends_on 'libsm' # R
+  depends_on 'libx11' # R
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxt' # R
   depends_on 'util_linux' # R
+  depends_on 'util_macros' => :build
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
