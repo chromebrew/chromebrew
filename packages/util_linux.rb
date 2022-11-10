@@ -22,12 +22,19 @@ class Util_linux < Package
      x86_64: 'c1f896ebee89f3155b8f4d4422b4bd9d9c16be77cac8587e86b3e3ab14f7fe8a'
   })
 
-  depends_on 'libcap_ng'
-  depends_on 'linux_pam'
-  depends_on 'ncurses'
-  depends_on 'pcre2'
-  depends_on 'libeconf'
+  depends_on 'bz2' # R
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
+  depends_on 'filecmd' # R
+  depends_on 'glibc' # R
+  depends_on 'libcap_ng' # R
+  depends_on 'libeconf' # R
+  depends_on 'linux_pam' # R
+  depends_on 'ncurses' # R
+  depends_on 'pcre2' => :build
+  depends_on 'readline' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+
   patchelf
   no_env_options
 
