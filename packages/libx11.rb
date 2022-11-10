@@ -22,15 +22,15 @@ class Libx11 < Package
      x86_64: 'ec9093b929bfdd0ea92e7c87eaa169f528a8da2480d231fe52bf53befc0f8354'
   })
 
-  depends_on 'llvm' => :build
-  depends_on 'xorg_proto'
-  depends_on 'libxcb'
-  depends_on 'libxdmcp'
-  depends_on 'libxtrans'
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libmd' # R
   depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxtrans' => :build
+  depends_on 'llvm' => :build
+  depends_on 'xorg_proto' => :build
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
