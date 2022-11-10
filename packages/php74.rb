@@ -3,24 +3,24 @@ require 'package'
 class Php74 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.4.32'
+  @_ver = '7.4.33'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '323332c991e8ef30b1d219cb10f5e30f11b5f319ce4c6642a5470d75ade7864a'
+  source_sha256 '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_armv7l/php74-7.4.32-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_armv7l/php74-7.4.32-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_i686/php74-7.4.32-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.32_x86_64/php74-7.4.32-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_armv7l/php74-7.4.33-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_armv7l/php74-7.4.33-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_i686/php74-7.4.33-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_x86_64/php74-7.4.33-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '30df54ecef19cc23a05d24159d60c71efaabd7e1b2ab82011bbb2ffe58163249',
-     armv7l: '30df54ecef19cc23a05d24159d60c71efaabd7e1b2ab82011bbb2ffe58163249',
-       i686: '0da9d7ed1939f894b33d0fcf84e8acc302286cd27019e35d2a05746006a6d4f0',
-     x86_64: '65877f0049ca34c2087a98c44740febc61418021aa7cfbf7e60fa5563243c476'
+    aarch64: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
+     armv7l: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
+       i686: '23befbba1e8bd4f9c1474800e0c86e374d1a064499bce3fb8f411e7a12e9043e',
+     x86_64: 'c2b9090e7bf7db7de90134333597283974b52ec400e642224fec64e081d35813'
   })
 
   depends_on 'aspell_en'
@@ -71,7 +71,7 @@ class Php74 < Package
   end
 
   def self.build
-    system "CFLAGS='-pipe' ./configure \
+    system "CFLAGS='-pipe' mold -run ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -123,7 +123,7 @@ class Php74 < Package
        --with-xmlrpc \
        --with-xsl \
        --with-zip"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.check
