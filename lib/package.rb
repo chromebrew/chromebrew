@@ -28,11 +28,6 @@ class Package
   class << self
     attr_accessor :name, :cached_build, :in_build, :build_from_source,
                   :in_upgrade
-    # Via https://stackoverflow.com/questions/7849521/set-attribute-dynamically-of-ruby-object/39063481#39063481
-    def set_property(name, value)
-      prop_name = "@#{name}".to_sym # you need the property name, prefixed with a '@', as a symbol
-      instance_variable_set(prop_name, value)
-    end
   end
 
   def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
