@@ -3,13 +3,15 @@ require 'package'
 class Sublime_merge < Package
   description 'A snappy UI, three-way merge tool,side-by-side diffs, syntax highlighting, and more.'
   homepage 'https://www.sublimemerge.com/'
-  version 'Build 2068'
+  version 'Build 2077'
   license 'Copyright Sublime HQ Pty Ltd' # Shareware for evaluation purposes only.  Source code is not available.
   compatibility 'x86_64'
-  source_url 'https://download.sublimetext.com/sublime_merge_build_2068_x64.tar.xz'
-  source_sha256 '0ac7994208eaafc07ae9295fff215966c9d115cdf3a8218a140cd274c45074d2'
+  source_url 'https://download.sublimetext.com/sublime_merge_build_2077_x64.tar.xz'
+  source_sha256 'eb1821fe849ab536070a74045e2640a07b37c88d628a62ccb730a8b01281569f'
 
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
