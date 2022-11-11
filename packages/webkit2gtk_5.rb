@@ -29,7 +29,7 @@ class Webkit2gtk_5 < Package
   depends_on 'fontconfig'
   depends_on 'freetype' # R
   depends_on 'gcc' # R
-  depends_on 'gcc10' if %w[aarch64 armv7l i686].include? ARCH
+  depends_on 'gcc10' => :build if %w[aarch64 armv7l i686].include? ARCH
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
