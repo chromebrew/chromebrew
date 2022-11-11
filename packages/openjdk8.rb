@@ -3,20 +3,20 @@ require 'package'
 class Openjdk8 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '1.8.0_342-1'
+  version '1.8.0_352'
   license 'GPL-2'
   compatibility 'all'
   source_url({
-    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.64.0.15-ca-jdk8.0.342-linux_aarch32hf.tar.gz',
-     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.64.0.15-ca-jdk8.0.342-linux_aarch32hf.tar.gz',
-       i686: 'https://cdn.azul.com/zulu/bin/zulu8.64.0.19-ca-jdk8.0.345-linux_i686.tar.gz',
-     x86_64: 'https://cdn.azul.com/zulu/bin/zulu8.64.0.19-ca-jdk8.0.345-linux_x64.tar.gz'
+    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.66.0.15-ca-jdk8.0.352-linux_aarch32hf.tar.gz',
+     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu8.66.0.15-ca-jdk8.0.352-linux_aarch32hf.tar.gz',
+       i686: 'https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-fx-jdk8.0.352-linux_i686.tar.gz',
+     x86_64: 'https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-fx-jdk8.0.352-linux_x64.tar.gz'
   })
   source_sha256({
-    aarch64: 'ef9b8e9592fce03170af6ba536a7c48c3f81276fa28ec7aa25c476829a11a473',
-     armv7l: 'ef9b8e9592fce03170af6ba536a7c48c3f81276fa28ec7aa25c476829a11a473',
-       i686: '87ee29b0dd1d16e98b12ec55f5351d4001ba30d686fa5fccb67ca04f6db94496',
-     x86_64: '1f99233f6e9cc92567316f2757c48b1bf4bb5624d40afa56ec263cfebdd887f9'
+    aarch64: '326d1a2d1fe79e3589e68e9af299a00cfe528006c2de89a1ed8a63cc1aeadbd7',
+     armv7l: '326d1a2d1fe79e3589e68e9af299a00cfe528006c2de89a1ed8a63cc1aeadbd7',
+       i686: 'dfa385575c649c5e7603f68c4eb08c97cd8be26c3e060668814665b556c07120',
+     x86_64: '5e18c7fb108a14e5cba70354908d3ded7e7e741554fb7ddc5f8d9d297f8c9307'
   })
 
   no_compile_needed
@@ -43,5 +43,19 @@ class Openjdk8 < Package
     FileUtils.mv 'jre/', CREW_DEST_PREFIX
     FileUtils.mv 'lib/', CREW_DEST_PREFIX
     FileUtils.mv Dir['man/*'], CREW_DEST_MAN_PREFIX
+
+    # Make sure symlinks to all binaries exist.
+    Dir["#{CREW_DEST_PREFIX}/bin/*"].each do |bin|
+      bin = File.basename(bin)
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/#{bin}", "#{CREW_DEST_PREFIX}/jre/bin/#{bin}" unless File.exist? "#{CREW_DEST_PREFIX}/jre/bin/#{bin}"
+    end
+
+    # Add environment variable.
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    javaenv = <<~EOF
+      # Java configuration
+      export JAVA_HOME=#{CREW_PREFIX}/jre
+    EOF
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk8", javaenv)
   end
 end
