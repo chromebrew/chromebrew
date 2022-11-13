@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.28.2'
+CREW_VERSION = '1.28.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -174,7 +174,7 @@ when 'aarch64', 'armv7l'
   CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
   # These settings have been selected to match debian armhf.
   # Using -mfpu=neon breaks builds such as webkit2gtk.
-  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
+  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp'
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
   CREW_BUILD = 'i686-cros-linux-gnu'
