@@ -8344,10 +8344,14 @@ name: xorg_wacom_driver
 url: https://www.x.org/pub/individual/driver/
 activity: low
 ---
----
 kind: url
 name: xorg_xeyes
 url: https://gitlab.freedesktop.org/xorg/app/xeyes/-/tags
+activity: low
+---
+kind: url
+name: xorg_xset
+url: https://gitlab.freedesktop.org/xorg/app/xset/-/tags
 activity: low
 ---
 kind: url
