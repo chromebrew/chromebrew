@@ -25,8 +25,8 @@ class Linuxheaders < Package
        x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_x86_64/linuxheaders-4.14-1-chromeos-x86_64.tpxz'
     })
     binary_sha256({
-      aarch64: 'cc9227b5b3af3abdaba4c1eb6b5df066af6c5f20629cee3a4e351b3e40521760',
-       armv7l: 'cc9227b5b3af3abdaba4c1eb6b5df066af6c5f20629cee3a4e351b3e40521760',
+      aarch64: '75f253ac2cf0dd785ea8d9cdf9430d23d601ccc372e9f7afa95523a28273a340',
+       armv7l: '75f253ac2cf0dd785ea8d9cdf9430d23d601ccc372e9f7afa95523a28273a340',
        x86_64: '5d58b327ca9bab5630f0df387a3036125e1f367e6c43cd551f4734ee3e634073'
     })
   when '4.19'
