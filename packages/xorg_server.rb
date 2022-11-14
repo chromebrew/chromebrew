@@ -3,7 +3,7 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.4'
+  @_ver = '21.1.5'
   version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
@@ -23,36 +23,47 @@ class Xorg_server < Package
      x86_64: '9f0a81171130931ab006419baa15e9822121c5bcdc0bb615d5461fd57d5fccc9'
   })
 
-  depends_on 'libepoxy'
-  depends_on 'libxtrans'
-  depends_on 'libxkbfile'
-  depends_on 'wayland'
-  depends_on 'eudev'
-  depends_on 'libxfont'
-  depends_on 'libbsd'
-  depends_on 'pixman'
-  depends_on 'graphite'
-  depends_on 'libxkbcommon'
-  depends_on 'libunwind'
-  depends_on 'font_util'
-  depends_on 'xorg_lib'
-  depends_on 'font_util'
-  depends_on 'libbsd'
-  depends_on 'dbus'
+  depends_on 'dbus' # R
+  depends_on 'eudev' # R
+  depends_on 'font_util' => :build
+  depends_on 'glibc' # R
+  depends_on 'glproto' => :build
+  depends_on 'graphite' => :build
+  depends_on 'libbsd' # R
+  depends_on 'libdrm' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libinput' => :build
+  depends_on 'libmd' # R
+  depends_on 'libpciaccess' # R
+  depends_on 'libtirpc' # R
+  depends_on 'libunwind' => :build
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcvt' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfont' => :build
+  depends_on 'libxfont2' # R
+  depends_on 'libxfont' # R
+  depends_on 'libxkbcommon' => :build
+  depends_on 'libxkbfile' # R
+  depends_on 'libxshmfence' # R
+  depends_on 'libxtrans' => :build
   depends_on 'lzma' => :build
-  depends_on 'xkbcomp'
-  depends_on 'glproto'
-  depends_on 'xcb_util_renderutil' => :build
+  depends_on 'mesa' # R
+  depends_on 'pixman' # R
+  # depends_on 'wayland'
+  depends_on 'xcb_util_cursor' => :build
   depends_on 'xcb_util_image' => :build
   depends_on 'xcb_util_keysyms' => :build
+  depends_on 'xcb_util' # R
+  depends_on 'xcb_util_renderutil' => :build
   depends_on 'xcb_util_wm' => :build
   depends_on 'xcb_util_xrm' => :build
-  depends_on 'xcb_util_cursor' => :build
-  depends_on 'libxcvt'
-  depends_on 'libinput'
-  depends_on 'libxdmcp'
-  depends_on 'xorg_proto'
-  depends_on 'mesa'
+  depends_on 'xkbcomp' => :build
+  depends_on 'xorg_proto' => :build
 
   case ARCH
   when 'armv7l', 'aarch64'
@@ -65,7 +76,7 @@ class Xorg_server < Package
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
+    system "meson configure #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
@@ -80,7 +91,6 @@ class Xorg_server < Package
               -Dint10=auto \
               -Dlog_dir=#{CREW_PREFIX}/var/log \
               build"
-    system 'meson configure build'
     system 'ninja -C build'
   end
 

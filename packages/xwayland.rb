@@ -63,7 +63,6 @@ class Xwayland < Package
               -Dxcsecurity=true \
               -Dglamor=true \
               build"
-    system 'meson configure build'
     system 'ninja -C build'
   end
 
