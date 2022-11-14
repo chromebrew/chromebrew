@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '22.1.3'
+  @_ver = '22.1.5'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
@@ -25,43 +25,43 @@ class Xwayland < Package
 
   no_env_options
 
-  depends_on 'dbus'
-  depends_on 'eudev'
-  depends_on 'font_util'
+  depends_on 'dbus' => :build
+  depends_on 'eudev' => :build
+  depends_on 'font_util' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
   depends_on 'glproto'
   depends_on 'graphite'
   depends_on 'libbsd' # R
-  depends_on 'libxcvt' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
-  depends_on 'libtirpc' => :build
+  depends_on 'libmd' # R
+  depends_on 'libtirpc' # R
   depends_on 'libunwind' # Runtime dependency for sommelier
   depends_on 'libxau' # R
-  depends_on 'libxcvt' => :build
+  depends_on 'libxcvt' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxfont2' # R
   depends_on 'libxfont' # R
   depends_on 'libxkbcommon'
   depends_on 'libxkbfile' # R
   depends_on 'libxshmfence' # R
-  depends_on 'libxtrans'
+  depends_on 'libxtrans' => :build
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'rendercheck' # R
   depends_on 'wayland' # R
-  depends_on 'xkbcomp'
-  depends_on 'xorg_lib'
+  depends_on 'xkbcomp' => :build
 
   def self.build
     system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS.sub("-Dcpp_args='-O2'", '')} \
+    system "meson configure #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxcsecurity=true \
               -Dglamor=true \
               build"
-    system 'meson configure build'
     system 'ninja -C build'
   end
 

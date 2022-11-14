@@ -3,29 +3,36 @@ require 'package'
 class Libxrender < Package
   description 'X Rendering Extension client library.'
   homepage 'https://www.x.org'
-  version '0.9.10-0'
+  version '0.9.11'
   license 'custom'
   compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/lib/libXrender-0.9.10.tar.gz'
-  source_sha256 '770527cce42500790433df84ec3521e8bf095dfe5079454a92236494ab296adf'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxrender.git'
+  git_hashtag "libXrender-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_armv7l/libxrender-0.9.10-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_armv7l/libxrender-0.9.10-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_i686/libxrender-0.9.10-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.10-0_x86_64/libxrender-0.9.10-0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.11_armv7l/libxrender-0.9.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.11_armv7l/libxrender-0.9.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.11_i686/libxrender-0.9.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.11_x86_64/libxrender-0.9.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f6a33f234184d2dae8646449940234d749deefffb7148a141ac09a402a054e22',
-     armv7l: 'f6a33f234184d2dae8646449940234d749deefffb7148a141ac09a402a054e22',
-       i686: '883bce06a7813a3640258c2d1f9f81bac128330a34726691d8c5e76959525e40',
-     x86_64: '561c5a0e8f4b0cd4d9b7e1f7c2b53901e687d3be91e0dfdcb93f3c2184f61dbc'
+    aarch64: '95daf081a8f482d01668fec433ce1c9d23ababe98a5aa69c77c8da9c4ad9d96e',
+     armv7l: '95daf081a8f482d01668fec433ce1c9d23ababe98a5aa69c77c8da9c4ad9d96e',
+       i686: '27e29d29acf1d850c8c3d79a11edf1d52d7a939e03f93a66e97f0e817503ad36',
+     x86_64: 'c673fc3b85467f65f556491bea8ef9e00abca6dd3a665959c6046dd3827520f1'
   })
 
   depends_on 'libx11'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
