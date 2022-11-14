@@ -16,10 +16,10 @@ class Libxrender < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxrender/0.9.11_x86_64/libxrender-0.9.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '95daf081a8f482d01668fec433ce1c9d23ababe98a5aa69c77c8da9c4ad9d96e',
-     armv7l: '95daf081a8f482d01668fec433ce1c9d23ababe98a5aa69c77c8da9c4ad9d96e',
-       i686: '27e29d29acf1d850c8c3d79a11edf1d52d7a939e03f93a66e97f0e817503ad36',
-     x86_64: 'c673fc3b85467f65f556491bea8ef9e00abca6dd3a665959c6046dd3827520f1'
+    aarch64: '859bf33ee1c94216071d6ef524e3f7ccb977cede86ab483b8936d6ef02ad802f',
+     armv7l: '859bf33ee1c94216071d6ef524e3f7ccb977cede86ab483b8936d6ef02ad802f',
+       i686: '73b44d73f9b0075adb1eb8413ed2e029bef828d0841f92061833e103e0b14110',
+     x86_64: '247dda42e157a2eb78da0f9408e0cd8281787df630f6bba62e428d02dd31f217'
   })
 
   depends_on 'libx11'
