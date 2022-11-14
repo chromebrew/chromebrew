@@ -26,8 +26,6 @@ class Xhost < Package
   depends_on 'libx11' # R
   depends_on 'libxmu' # R
 
-  patchelf
-
   def self.build
     system "./configure \
            --enable-ipv6 \
