@@ -35,7 +35,6 @@ class Pulseaudio < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   # depends_on 'gsettings_desktop_schemas' # L
-  depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'jsonc' => :build
   depends_on 'libcap' # R
@@ -63,7 +62,7 @@ class Pulseaudio < Package
     -Daccess_group=cras \
     -Dbluez5=false \
     -Dalsa=enabled \
-    -Dgstreamer=enabled \
+    -Dgstreamer=disabled \
     -Delogind=enabled \
     -Dtests=false \
     -Dudevrulesdir=#{CREW_PREFIX}/libexec/rules.d \
