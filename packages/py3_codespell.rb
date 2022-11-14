@@ -26,9 +26,7 @@ class Py3_codespell < Package
   depends_on 'py3_setuptools' => :build
 
   def self.preflight
-    python_major = `python3 -V | cut -d' ' -f2 | cut -d'.' -f1`.chomp
-    python_minor = `python3 -V | cut -d' ' -f2 | cut -d'.' -f2`.chomp
-    @python_ver = "python#{python_major}.#{python_minor}"
+    @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
   end
 
   def self.build
