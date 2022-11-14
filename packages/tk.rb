@@ -9,7 +9,7 @@ class Tk < Package
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tk#{@_ver}-src.tar.gz"
-  source_sha256 '5228a8187a7f70fa0791ef0f975270f068ba9557f57456f51eb02d9d4ea31282'
+  source_sha256 '12395c1f3fcb6bed2938689f797ea3cdf41ed5cb6c4766eec8ac949560310630'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.11-1_armv7l/tk-8.6.11-1-chromeos-armv7l.tar.xz',
