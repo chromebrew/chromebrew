@@ -23,10 +23,10 @@ class Gsettings_desktop_schemas < Package
      x86_64: '6df95b4f1cea0c2ffcb39a606ddb87686a15f682f7777bc35ae68793cea1e371'
   })
 
-  depends_on 'gnome_common'
-  depends_on 'glib'
-  depends_on 'gobject_introspection'
-  depends_on 'gtk4'
+  # depends_on 'gnome_common'
+  depends_on 'glib' => :build
+  depends_on 'gobject_introspection' => :build
+  # depends_on 'gtk4'
 
   gnome
 
