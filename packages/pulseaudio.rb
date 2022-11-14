@@ -55,7 +55,6 @@ class Pulseaudio < Package
   depends_on 'valgrind' => :build
   depends_on 'webrtc_audio_processing' # R
 
-
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
     --default-library=both \

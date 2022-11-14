@@ -3,20 +3,18 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  case
-  when CREW_KERNEL_VERSION.to_f < 3.9
-    @_ver = '0.3.29'
-  else
-    @_ver = '0.3.60'
-  end
+  @_ver = if CREW_KERNEL_VERSION.to_f < 3.9
+            '0.3.29'
+          else
+            '0.3.60'
+          end
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.freedesktop.org/pipewire/pipewire.git"
+  source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
   git_hashtag @_ver
 
-  case
-  when CREW_KERNEL_VERSION.to_f < 3.9
+  if CREW_KERNEL_VERSION.to_f < 3.9
     binary_url({
          i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_i686/pipewire-0.3.29-chromeos-i686.tpxz'
     })
