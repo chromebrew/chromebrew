@@ -11,20 +11,20 @@ class Pulseaudio < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/14.2-2_armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/14.2-2_armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/14.2-2_i686/pulseaudio-14.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/14.2-2_x86_64/pulseaudio-14.2-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_armv7l/pulseaudio-16.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_armv7l/pulseaudio-16.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_i686/pulseaudio-16.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_x86_64/pulseaudio-16.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2',
-     armv7l: 'b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2',
-       i686: '557c79d8841fbdb52c8289e8e174a4f68a1db477a8a1ec7e1a352de8f60ecd95',
-     x86_64: 'cbb4cd934818825e7bc006a82c02e67179d17c25922a04574853374c4760a095'
+    aarch64: 'e8edeba8f44d27128c2679d249b8199894574c195bab7ac0950e49fe037a2036',
+     armv7l: 'e8edeba8f44d27128c2679d249b8199894574c195bab7ac0950e49fe037a2036',
+       i686: 'd72a2bcb9e1185aa1d528217ba4ac58e6c6fba6ae109ab7bba3366f1969ffcdb',
+     x86_64: 'ad53a21305519ea3d25aeb3e3905035e94ecb25890355063eaaf26e5a6620d42'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'alsa_plugins' => :build
+  # depends_on 'alsa_plugins' => :build
   depends_on 'avahi' # R
   depends_on 'check' => :build
   depends_on 'cras' # L
@@ -45,6 +45,7 @@ class Pulseaudio < Package
   depends_on 'libsoxr' # R
   depends_on 'libtool' # R
   depends_on 'libx11' # R
+  depends_on 'libxfixes' => :build
   depends_on 'libxcb' # R
   depends_on 'libxtst' # R
   depends_on 'openssl' # R
@@ -53,14 +54,17 @@ class Pulseaudio < Package
   depends_on 'tdb' # R
   depends_on 'valgrind' => :build
   depends_on 'webrtc_audio_processing' # R
+  depends_on 'elogind' # R
+  depends_on 'tcpwrappers' # R
+
+  git_fetchtags
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
-    --default-library=both \
     -Dsystem_user=chronos \
     -Dsystem_group=cras \
     -Daccess_group=cras \
-    -Dbluez5=false \
+    -Dbluez5=disabled \
     -Dalsa=enabled \
     -Dgstreamer=disabled \
     -Delogind=enabled \
