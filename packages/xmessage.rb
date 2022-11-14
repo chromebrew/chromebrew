@@ -3,11 +3,11 @@ require 'package'
 class Xmessage < Package
   description 'Xmessage displays a message or query in a window.'
   homepage 'https://www.x.org/'
-  version '1.0.5'
+  version '1.0.6'
   license 'MIT-with-advertising'
   compatibility 'all'
-  source_url 'https://www.x.org/releases/individual/app/xmessage-1.0.5.tar.bz2'
-  source_sha256 '373dfb81e7a6f06d3d22485a12fcde6e255d58c6dee1bbaeb00c7d0caa9b2029'
+  source_url 'https://gitlab.freedesktop.org/xorg/app/xmessage.git'
+  git_hashtag "xmessage-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.5_armv7l/xmessage-1.0.5-chromeos-armv7l.tar.xz',
@@ -22,12 +22,14 @@ class Xmessage < Package
      x86_64: '1ccd1102b9debf4c9a7b7ca877b2010622ac013cc551fb0d7d9b3a772355ac80'
   })
 
-  depends_on 'xorg_lib'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
+  depends_on 'libxaw' # R
+  depends_on 'libxt' # R
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
