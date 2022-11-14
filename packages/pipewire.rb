@@ -4,7 +4,7 @@ class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
   case
-  when CREW_KERNEL_VERSION.to_f < '3.9'
+  when CREW_KERNEL_VERSION.to_f < 3.9
     @_ver = '0.3.29'
   else
     @_ver = '0.3.60'
@@ -16,7 +16,7 @@ class Pipewire < Package
   git_hashtag @_ver
 
   case
-  when CREW_KERNEL_VERSION.to_f < '3.9'
+  when CREW_KERNEL_VERSION.to_f < 3.9
     binary_url({
          i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_i686/pipewire-0.3.29-chromeos-i686.tpxz'
     })
