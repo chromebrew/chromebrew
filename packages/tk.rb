@@ -3,9 +3,9 @@ require 'package'
 class Tk < Package
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'http://www.tcl.tk/'
-  @_ver = '8.6.11'
+  @_ver = '8.6.12'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version @_ver
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tk#{@_ver}-src.tar.gz"
@@ -24,30 +24,24 @@ class Tk < Package
      x86_64: '05b1753d45c1820ec8f51e28fe523376efaf04589b93bcefd38fc83752587390'
   })
 
-  depends_on 'xorg_lib'
-  depends_on 'tcl'
+  depends_on 'freetype' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxft' # R
+  depends_on 'libxss' # R
+  depends_on 'tcl' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     FileUtils.chdir('unix') do
-      if ARCH == 'x86_64'
-        system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-          ./configure \
+      @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
+      system "./configure \
           #{CREW_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
-          --enable-64bit"
-      else
-        system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-          ./configure \
-          #{CREW_OPTIONS} \
-          --with-tcl=#{CREW_LIB_PREFIX} \
-          --enable-threads \
-          --disable-64bit"
-      end
+          --#{@bit64}-64bit"
       system 'make'
     end
   end
