@@ -11,16 +11,16 @@ class Xorg_server < Package
   git_hashtag "xorg-server-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4_armv7l/xorg_server-21.1.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4_armv7l/xorg_server-21.1.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4_i686/xorg_server-21.1.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4_x86_64/xorg_server-21.1.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_armv7l/xorg_server-21.1.4-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_armv7l/xorg_server-21.1.4-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_i686/xorg_server-21.1.4-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_x86_64/xorg_server-21.1.4-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '91416891d077c48cd4f1f4091d3f5517b5f00c02835632742671f257cc3ebb6e',
-     armv7l: '91416891d077c48cd4f1f4091d3f5517b5f00c02835632742671f257cc3ebb6e',
-       i686: '43f95cb97da63890363d4db67806cd15033f83b7a7b25ba705552019e35f868e',
-     x86_64: '9f0a81171130931ab006419baa15e9822121c5bcdc0bb615d5461fd57d5fccc9'
+    aarch64: 'a9d526be5c144b29b17ee2bb149b186e362c1d88ab9865c4139d90349cee5f5c',
+     armv7l: 'a9d526be5c144b29b17ee2bb149b186e362c1d88ab9865c4139d90349cee5f5c',
+       i686: '923a9fdfcef675ff34b919709ee50e821b50f15d99b2c0eda76f5079faf734f4',
+     x86_64: '3b8d3fc545bdd8e802b3d0466963aceb435c6b393c940525dc021f5568b899ba'
   })
 
   depends_on 'dbus' # R
@@ -54,16 +54,15 @@ class Xorg_server < Package
   depends_on 'lzma' => :build
   depends_on 'mesa' # R
   depends_on 'pixman' # R
-  # depends_on 'wayland'
   depends_on 'xcb_util_cursor' => :build
-  depends_on 'xcb_util_image' => :build
-  depends_on 'xcb_util_keysyms' => :build
   depends_on 'xcb_util' # R
-  depends_on 'xcb_util_renderutil' => :build
-  depends_on 'xcb_util_wm' => :build
   depends_on 'xcb_util_xrm' => :build
   depends_on 'xkbcomp' => :build
   depends_on 'xorg_proto' => :build
+  depends_on 'xcb_util_image' # R
+  depends_on 'xcb_util_keysyms' # R
+  depends_on 'xcb_util_renderutil' # R
+  depends_on 'xcb_util_wm' # R
 
   case ARCH
   when 'armv7l', 'aarch64'
