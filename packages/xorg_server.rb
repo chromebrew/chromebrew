@@ -3,8 +3,8 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.5'
-  version @_ver
+  @_ver = '21.1.4'
+  version "#{@_ver}-1"
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
