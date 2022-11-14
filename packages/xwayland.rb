@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_armv7l/xwayland-22.1.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_armv7l/xwayland-22.1.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_i686/xwayland-22.1.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.3_x86_64/xwayland-22.1.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.5_armv7l/xwayland-22.1.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.5_armv7l/xwayland-22.1.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.5_i686/xwayland-22.1.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.5_x86_64/xwayland-22.1.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '88d2b2a530e5c41a3c5e94c247ff189a472d4ca998fe78f3beeafe256f4f5e17',
-     armv7l: '88d2b2a530e5c41a3c5e94c247ff189a472d4ca998fe78f3beeafe256f4f5e17',
-       i686: '78f652ff3a1dcec7e2bf6a07ef2693e0a98c554446e935a669becb16da652cec',
-     x86_64: 'c11d28840e9f7d4cb74ef568c356fc38499ca95921f439d588140d727d341bee'
+    aarch64: '3babcd5261d4adb1a45d22e88c7d2fdbc5790d7ea08b38a0a56521eb5a6872aa',
+     armv7l: '3babcd5261d4adb1a45d22e88c7d2fdbc5790d7ea08b38a0a56521eb5a6872aa',
+       i686: 'a3bd580d6d60cbed86a53ea4dad7535c443bf1df8d0eccfb420631e44f3eab4f',
+     x86_64: '268548204f57320b78a000d62f55a726a306a4b0137f77e2159b9e5fe64b5adf'
   })
 
   no_env_options
@@ -52,6 +52,7 @@ class Xwayland < Package
   depends_on 'rendercheck' # R
   depends_on 'wayland' # R
   depends_on 'xkbcomp' => :build
+  depends_on 'libglvnd' # R
 
   def self.build
     system 'meson setup build'
@@ -62,6 +63,7 @@ class Xwayland < Package
               -Dxcsecurity=true \
               -Dglamor=true \
               build"
+    system 'meson configure build'
     system 'ninja -C build'
   end
 
