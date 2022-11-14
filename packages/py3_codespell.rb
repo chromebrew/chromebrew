@@ -25,9 +25,11 @@ class Py3_codespell < Package
 
   depends_on 'py3_setuptools' => :build
 
-  python_major = `python3 -V | cut -d' ' -f2 | cut -d'.' -f1`.chomp
-  python_minor = `python3 -V | cut -d' ' -f2 | cut -d'.' -f2`.chomp
-  @python_ver = "python#{python_major}.#{python_minor}"
+  def self.preflight
+    python_major = `python3 -V | cut -d' ' -f2 | cut -d'.' -f1`.chomp
+    python_minor = `python3 -V | cut -d' ' -f2 | cut -d'.' -f2`.chomp
+    @python_ver = "python#{python_major}.#{python_minor}"
+  end
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
