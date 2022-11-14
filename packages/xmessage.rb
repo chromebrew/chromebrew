@@ -10,16 +10,16 @@ class Xmessage < Package
   git_hashtag "xmessage-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.5_armv7l/xmessage-1.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.5_armv7l/xmessage-1.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.5_i686/xmessage-1.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.5_x86_64/xmessage-1.0.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.6_armv7l/xmessage-1.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.6_armv7l/xmessage-1.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.6_i686/xmessage-1.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmessage/1.0.6_x86_64/xmessage-1.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6df6c32406b06cc78f207c28b3a8cec0c41fe98a7566bf7d73e53553c55a4ccc',
-     armv7l: '6df6c32406b06cc78f207c28b3a8cec0c41fe98a7566bf7d73e53553c55a4ccc',
-       i686: '9af874eed48fcad769c3eea3382448c26958b101af58f0708eefab8454d3eeed',
-     x86_64: '1ccd1102b9debf4c9a7b7ca877b2010622ac013cc551fb0d7d9b3a772355ac80'
+    aarch64: 'ea8d6e673d1f82e0aa006ee2bc504c6d8704490133e11740fe817cbc2bbe5ecc',
+     armv7l: 'ea8d6e673d1f82e0aa006ee2bc504c6d8704490133e11740fe817cbc2bbe5ecc',
+       i686: 'edf5fa4b86fa2a7b854d8cda28f85b31d9334e47e285366b23464ede7f06a88a',
+     x86_64: '97a8472c63527ae07a93370511899898d7b727669ad27b52a1123f5dc8fadc73'
   })
 
   depends_on 'glibc' # R
