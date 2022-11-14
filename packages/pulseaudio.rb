@@ -3,12 +3,12 @@ require 'package'
 class Pulseaudio < Package
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
-  @_ver = '14.2'
-  version "#{@_ver}-2"
+  @_ver = '16.1'
+  version @_ver
   license 'LGPL-2.1 and GPL-2'
   compatibility 'all'
-  source_url "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-#{@_ver}.tar.xz"
-  source_sha256 '75d3f7742c1ae449049a4c88900e454b8b350ecaa8c544f3488a2562a9ff66f1'
+  source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/14.2-2_armv7l/pulseaudio-14.2-2-chromeos-armv7l.tar.xz',
@@ -35,6 +35,7 @@ class Pulseaudio < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' # L
+  depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'jsonc' => :build
   depends_on 'libcap' # R
@@ -47,14 +48,13 @@ class Pulseaudio < Package
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxtst' # R
-  depends_on 'gstreamer' # R
-  depends_on 'pipewire' # R
+  depends_on 'openssl' # R
   depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' => :build
   depends_on 'tdb' # R
   depends_on 'valgrind' => :build
   depends_on 'webrtc_audio_processing' # R
-  depends_on 'xorg_lib' => :build
+
 
   def self.build
     system "meson #{CREW_MESON_OPTIONS} \
@@ -66,7 +66,7 @@ class Pulseaudio < Package
     -Dalsa=enabled \
     -Dgstreamer=enabled \
     -Delogind=enabled \
-    -Dtests=true \
+    -Dtests=false \
     -Dudevrulesdir=#{CREW_PREFIX}/libexec/rules.d \
     -Dalsadatadir=#{CREW_PREFIX}/share/alsa-card-profile \
     builddir"
@@ -75,7 +75,6 @@ class Pulseaudio < Package
   end
 
   def self.check
-    b63bb927efd3f315ebe04781e5a1173acbd01ee58bd384b43f7e97e3006e14a2
     # 39/50 thread-test                                                                                                   FAIL             4.02s   exit status 1
     # >>> MALLOC_PERTURB_=232 MAKE_CHECK=1 /usr/local/tmp/crew/pulseaudio-14.2.tar.xz.dir/pulseaudio-14.2/builddir/src/tests/thread-test
     # ――――――――――――――――――――――――――――――――――――― ✀  ―――――――――――――――――――――――――――――――――――――
