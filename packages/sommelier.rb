@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-8'
+  version '20210109-9'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_armv7l/sommelier-20210109-8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_armv7l/sommelier-20210109-8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_i686/sommelier-20210109-8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-8_x86_64/sommelier-20210109-8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_armv7l/sommelier-20210109-9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_armv7l/sommelier-20210109-9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_i686/sommelier-20210109-9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_x86_64/sommelier-20210109-9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ca036c280df41469239b3b7dd16d7c9bba6f0a5f2cbcc8c311dd46c0dd663054',
-     armv7l: 'ca036c280df41469239b3b7dd16d7c9bba6f0a5f2cbcc8c311dd46c0dd663054',
-       i686: '8d84714a692a10946baf8b2e0a9aa862f1d6c2f0343cd51076eae94ed8a9482e',
-     x86_64: '6973bfecac7bc42fb71c50ef07f9cb13d63e3bf7bfd1a58dddb4b0e1857c1aea'
+    aarch64: '74359bcc06aed87aa0b4172f4ef5a620962fbaa476d57db430206390031f2f29',
+     armv7l: '74359bcc06aed87aa0b4172f4ef5a620962fbaa476d57db430206390031f2f29',
+       i686: '0bf67633fa9b4cf68c4feb8f1c8f92493b303e9f86e83a2977295d12e3156853',
+     x86_64: '81559f65c2db3aa8846fe1b99ce1b16e53aafaabc20a8fcdf5dce4137a7c11da'
   })
 
   depends_on 'libdrm'
@@ -96,14 +96,33 @@ class Sommelier < Package
           WAYLAND_DISPLAY=wayland-0
           XDG_RUNTIME_DIR=/var/run/chrome
 
-          case "$(uname -m)" in
-          x86_64|i686)
-            sort_result="$(sort -V <<< "$(uname -r)"$'\\n'"4.16.0" | tail -n1)"
-            if [[ "${sort_result}" == "4.16.0" ]]; then
-              MESA_LOADER_DRIVER_OVERRIDE=i965
-            fi
-          ;;
-          esac
+          if grep -q GenuineIntel /proc/cpuinfo ;then
+            check_linux_version() {
+                maj_ver=$1
+                min_ver=$2
+                version_good=$(uname -r | awk 'BEGIN{ FS="."};
+                { if ($1 < '"${maj_ver}"') { print "N"; }
+                  else if ($1 == '"${maj_ver}"') {
+                      if ($2 < '"${min_ver}"') { print "N"; }
+                      else { print "Y"; }
+                  }
+                  else { print "Y"; }
+                }')
+
+                if [ "$version_good" = "N" ]; then
+                    return 1
+                fi
+            }
+            case "$(uname -m)" in
+            x86_64|i686)
+              if ! check_linux_version 4 16; then
+                MESA_LOADER_DRIVER_OVERRIDE=i965
+              elif check_linux_version 5 10; then
+                MESA_LOADER_DRIVER_OVERRIDE=iris
+              fi
+            ;;
+            esac
+          fi
 
           if [ -f "~/.sommelier.env" ]; then
             source ~/.sommelier.env
