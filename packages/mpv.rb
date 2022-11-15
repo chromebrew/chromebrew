@@ -3,30 +3,30 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  @_ver = '0.34.1'
-  version "#{@_ver}-1"
+  @_ver = '0.35.0'
+  version @_ver
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/mpv-player/mpv.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_armv7l/mpv-0.34.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_armv7l/mpv-0.34.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_i686/mpv-0.34.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.34.1-1_x86_64/mpv-0.34.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_armv7l/mpv-0.35.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_armv7l/mpv-0.35.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_i686/mpv-0.35.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_x86_64/mpv-0.35.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '38725711d4f9281cd22c8435b90f7ced26619ceff3a3c6e202931d4f0d2716e3',
-     armv7l: '38725711d4f9281cd22c8435b90f7ced26619ceff3a3c6e202931d4f0d2716e3',
-       i686: 'ffdc4b1704eb05ccb15be4925910c77f7c64e37616622b501cf856870c0589c9',
-     x86_64: 'b002cdc8921c278fe4ebe0684cc7fb24de7d8d039081e919f8cf85f652a28a7c'
+    aarch64: '184895e4391246001fbe6b1a945880440ae591401db014de9914f80397527215',
+     armv7l: '184895e4391246001fbe6b1a945880440ae591401db014de9914f80397527215',
+       i686: '1649db6f99162855051d4823b9e24fe265bfe24d55f1c13f820fd9ec328f16f4',
+     x86_64: 'a5cad18396c8a8d3e8be1add95c457bda0eb71c6c78fa635aa594f5c04970b19'
   })
 
-  depends_on 'py3_docutils' => :build
-  depends_on 'vulkan_headers' => :build
   depends_on 'alsa_lib' # R
   depends_on 'ffmpeg' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
   depends_on 'jack' # R
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
@@ -38,6 +38,7 @@ class Mpv < Package
   depends_on 'libdrm' # R
   depends_on 'libdvdnav' # R
   depends_on 'libdvdread' # R
+  depends_on 'libglvnd' # R
   depends_on 'libjpeg' # R
   depends_on 'libsdl2' # R
   depends_on 'libva' # R
@@ -49,52 +50,48 @@ class Mpv < Package
   depends_on 'libxrandr' # R
   depends_on 'libxss' # R
   depends_on 'libxv' # R
-  depends_on 'openmp' # R
   depends_on 'luajit' # R
   depends_on 'mesa' # R
   depends_on 'mujs' # R
+  depends_on 'openmp' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
+  depends_on 'py3_docutils' => :build
   depends_on 'rubberband' # R
   depends_on 'shaderc' # R
-  depends_on 'wayland' # R
-  depends_on 'zimg' # R
-  depends_on 'xdg_base' # L
-  depends_on 'vulkan_icd_loader' # L
   depends_on 'sommelier' # L
-  depends_on 'gcc' # R
-  depends_on 'glibc' # R
-  depends_on 'libglvnd' # R
   depends_on 'uchardet' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # L
+  depends_on 'wayland' # R
+  depends_on 'xdg_base' # L
+  depends_on 'zimg' # R
   depends_on 'zlibpkg' # R
+  depends_on 'libxpresent' # R
 
   def self.build
-    system './bootstrap.py'
-    system "#{CREW_ENV_OPTIONS} \
-      ./waf \
-      configure \
-      --confdir=#{CREW_PREFIX}/etc/mpv \
-      --enable-cdda \
-      --enable-dvdnav \
-      --enable-gl-x11 \
-      --enable-libarchive \
-      --enable-libmpv-shared \
-      --enable-sdl2 \
-      #{CREW_OPTIONS.sub(/--build=.*/, '')}"
-    system "./waf -j#{CREW_NPROC}"
+    # Wayland is disabled because mpv has moved to
+    # wl_compositor 4, while ChromeOS still uses
+    # the ancient wl_compositor 3.
+    system "meson \
+      #{CREW_MESON_OPTIONS} \
+      -Dwayland=disabled \
+      -Dgl-x11=enabled \
+      builddir"
     # mpv conf file
     File.write 'mpv.conf', <<~MPVCONF
       hwdec=auto-safe
       hwdec-codecs=all
       fs=yes
     MPVCONF
+    system 'meson configure builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    system './waf', "--destdir=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/mpv"
-    FileUtils.install 'mpv.conf', "#{CREW_DEST_PREFIX}/etc/mpv/mpv.conf", mode: 0o644
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.mpv"
+    FileUtils.install 'mpv.conf', "#{CREW_DEST_HOME}/.mpv/mpv.conf", mode: 0o644
   end
 
   def self.postinstall

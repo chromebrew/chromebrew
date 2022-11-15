@@ -22,18 +22,19 @@ class Libsoup2 < Package
      x86_64: 'f5ed2100923109b22f46b8eefeffa429b4b98d1cb8a27d6fe3ac39fb3d38603c'
   })
 
-  depends_on 'glib_networking'
-  depends_on 'libevent'
-  depends_on 'qtbase'
-  depends_on 'vala'
   depends_on 'brotli' # R
-  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glib_networking'
+  depends_on 'glib' # R
   depends_on 'krb5' # R
+  depends_on 'libevent'
   depends_on 'libpsl' # R
   depends_on 'libxml2' # R
+  # depends_on 'qtbase' => :build
   depends_on 'sqlite' # R
+  depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
+
   gnome
 
   def self.build

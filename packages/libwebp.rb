@@ -22,15 +22,15 @@ class Libwebp < Package
      x86_64: '1abbb91a453ce229b295d6a1383799bc7a1898140d711b866f13a69ea9d318da'
   })
 
-  depends_on 'libpng'
-  depends_on 'libtiff'
-  depends_on 'libjpeg'
-  depends_on 'libsdl'
-  depends_on 'giflib'
-  depends_on 'mesa'
   depends_on 'freeglut' # R
+  depends_on 'giflib' # R
   depends_on 'glibc' # R
   depends_on 'libdeflate' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libsdl' => :build
+  depends_on 'libtiff' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R

@@ -22,7 +22,9 @@ class Chromaprint < Package
      x86_64: '6ed504a7975b1d7dc30eba8d7cf9203ea95c7970948ec5a061a8fc85c691673f'
   })
 
-  depends_on 'ffmpeg'
+  # depends_on 'ffmpeg' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     suffix = ''

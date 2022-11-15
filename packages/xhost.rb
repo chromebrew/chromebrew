@@ -22,11 +22,9 @@ class Xhost < Package
      x86_64: '8e108d51711153c01c45343af91d6b1c7bd493e4da823ebe85209eb5278ee25a'
   })
 
-  depends_on 'xorg_lib'
+  depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxmu' # R
-
-  patchelf
 
   def self.build
     system "./configure \

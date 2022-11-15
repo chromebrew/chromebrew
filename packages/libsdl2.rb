@@ -23,12 +23,13 @@ class Libsdl2 < Package
   armv7l: '359f785c46faa39300fcdca8a52f9b35a3cbc143cf02d88d0a7aacb0b7df068e'
   })
 
-  depends_on 'xorg_server'
+  # depends_on 'xorg_server'
+  # depends_on 'xwayland'
+  depends_on 'glibc' # R
   depends_on 'alsa_lib'
   depends_on 'ibus'
   depends_on 'pulseaudio'
   depends_on 'nasm' => :build
-  patchelf
 
   def self.patch
     system 'filefix'

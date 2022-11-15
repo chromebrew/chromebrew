@@ -23,26 +23,25 @@ class Gstreamer < Package
      x86_64: '23752e3b1a1cb4feb2c3c0a7286833ef2d49598ab615ef93f0874b535e4d1e06'
   })
 
-  depends_on 'elfutils'
-  depends_on 'glib'
-  depends_on 'gsl'
-  depends_on 'gtk3'
-  depends_on 'libcap'
-  depends_on 'libjpeg'
-  depends_on 'libunwind'
   depends_on 'alsa_lib' # R
   depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'bz2' # R
+  depends_on 'cairo' # R
   depends_on 'chromaprint' # R
+  depends_on 'elfutils'
   depends_on 'ffmpeg' # R
   depends_on 'flac' # R
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glib'
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'gnutls' # R
   depends_on 'graphene' # R
+  depends_on 'gsl'
   depends_on 'gsm' # R
+  depends_on 'gtk3'
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
   depends_on 'jack' # R
@@ -51,6 +50,7 @@ class Gstreamer < Package
   depends_on 'libaom' # R
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
+  depends_on 'libcap'
   depends_on 'libcurl' # R
   depends_on 'libde265' # R
   depends_on 'libdrm' # R
@@ -59,6 +59,7 @@ class Gstreamer < Package
   depends_on 'libglvnd' # R
   depends_on 'libgudev' # R
   depends_on 'libiec61883' # R
+  depends_on 'libjpeg'
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
   depends_on 'libogg' # R
@@ -68,6 +69,7 @@ class Gstreamer < Package
   depends_on 'librsvg' # R
   depends_on 'libsndfile' # R
   depends_on 'libtheora' # R
+  depends_on 'libunwind'
   depends_on 'libusb' # R
   depends_on 'libva' # R
   depends_on 'libvorbis' # R
