@@ -35,7 +35,6 @@ class Libwebp < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'
     system "./configure #{CREW_OPTIONS} \
