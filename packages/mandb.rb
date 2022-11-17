@@ -3,34 +3,35 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  @_ver = '2.11.0'
-  version "#{@_ver}-1"
+  @_ver = '2.11.1'
+  version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://download.savannah.gnu.org/releases/man-db/man-db-#{@_ver}.tar.xz"
-  source_sha256 '4130e1a6241280359ef5e25daec685533c0a1930674916202ab0579e5a232c51'
+  source_sha256 '2eabaa5251349847de9c9e43c634d986cbcc6f87642d1d9cb8608ec18487b6cc'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.0-1_armv7l/mandb-2.11.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.0-1_armv7l/mandb-2.11.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.0-1_i686/mandb-2.11.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.0-1_x86_64/mandb-2.11.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1_armv7l/mandb-2.11.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1_armv7l/mandb-2.11.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1_i686/mandb-2.11.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1_x86_64/mandb-2.11.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'be4b1bebf8de1b0350a3e2d0cb4354e1c8450276eac6bcd14944ca6740643c71',
-     armv7l: 'be4b1bebf8de1b0350a3e2d0cb4354e1c8450276eac6bcd14944ca6740643c71',
-       i686: '9c95b0112d52452714f0668dc4097a0976fad38580634069d423550b00455e6f',
-     x86_64: 'a1fc68aade500a3d4945912c91f9a01882cb1ffc23c3f4b1741725f25b2c4540'
+    aarch64: '7b2a35f0f53fd7a6c39106dde9e9dec1979c3c8c0e89feb827e05d14f9cd01d0',
+     armv7l: '7b2a35f0f53fd7a6c39106dde9e9dec1979c3c8c0e89feb827e05d14f9cd01d0',
+       i686: 'e00a108075955e9d82d4e59d48e263e1dc1758fef2d589e35953de86d1b4b0f6',
+     x86_64: 'a5ea2cfbb94675f5216f07c7f2e558513c7536a8b15ea23ff7ac50014e65d77d'
   })
 
   no_fhs
 
-  depends_on 'gdbm'
-  depends_on 'glibc'
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
   depends_on 'groff'
-  depends_on 'libpipeline'
-  depends_on 'libseccomp'
-  depends_on 'zlibpkg'
+  depends_on 'libpipeline' # R
+  depends_on 'libseccomp' # R
+  depends_on 'zlibpkg' # R
+
 
   def self.patch
     system "for f in $(grep -lr '/usr/local' | xargs); do sed -i 's,/usr/local,#{CREW_PREFIX},g' $f; done"
@@ -40,8 +41,6 @@ class Mandb < Package
   end
 
   def self.build
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
-
     # we can't write to /usr/lib/tmpfiles.d
     # we can't create the user 'man'
     # the pager is not at the default location
@@ -62,6 +61,7 @@ class Mandb < Package
   end
 
   def self.postinstall
-    system "env MANPATH=#{CREW_MAN_PREFIX} mandb -psc"
+    puts 'Creating mandb cache...'
+    system "unset MANPATH && mandb -C #{CREW_PREFIX}/etc/man_db.conf -psc --quiet"
   end
 end
