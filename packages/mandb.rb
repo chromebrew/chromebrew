@@ -11,16 +11,16 @@ class Mandb < Package
   source_sha256 '2eabaa5251349847de9c9e43c634d986cbcc6f87642d1d9cb8608ec18487b6cc'
 
   binary_url({
-     aarch64: 'file:///usr/local/tmp/packages/mandb-2.11.1-1-chromeos-armv7l.tar.zst',
-      armv7l: 'file:///usr/local/tmp/packages/mandb-2.11.1-1-chromeos-armv7l.tar.zst',
-        i686: 'file:///usr/local/tmp/packages/mandb-2.11.1-1-chromeos-i686.tar.zst',
-      x86_64: 'file:///usr/local/tmp/packages/mandb-2.11.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1-1_armv7l/mandb-2.11.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1-1_armv7l/mandb-2.11.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1-1_i686/mandb-2.11.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.1-1_x86_64/mandb-2.11.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     aarch64: '7ffa35d04f002f98ad6e0e8348a17ff1835b8228cd0b40b26394cb6529febc12',
-      armv7l: '7ffa35d04f002f98ad6e0e8348a17ff1835b8228cd0b40b26394cb6529febc12',
-        i686: 'c78adc6559cbaab1133095413d24d215223e119d238bb2b5f9c78fee2a188c39',
-      x86_64: '51fb382f653fcbfd7c5d57e78e02cb73115bd2f67751114a5faff811ba3e1fe4'
+    aarch64: '7ffa35d04f002f98ad6e0e8348a17ff1835b8228cd0b40b26394cb6529febc12',
+     armv7l: '7ffa35d04f002f98ad6e0e8348a17ff1835b8228cd0b40b26394cb6529febc12',
+       i686: 'c78adc6559cbaab1133095413d24d215223e119d238bb2b5f9c78fee2a188c39',
+     x86_64: '51fb382f653fcbfd7c5d57e78e02cb73115bd2f67751114a5faff811ba3e1fe4'
   })
 
   no_fhs
