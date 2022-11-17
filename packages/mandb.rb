@@ -32,7 +32,6 @@ class Mandb < Package
   depends_on 'libseccomp' # R
   depends_on 'zlibpkg' # R
 
-
   def self.patch
     system "for f in $(grep -lr '/usr/local' | xargs); do sed -i 's,/usr/local,#{CREW_PREFIX},g' $f; done"
     system "for f in $(grep -lr '/usr/man' | xargs); do sed -i 's,/usr/man,#{CREW_PREFIX}/share/man,g' $f; done"
