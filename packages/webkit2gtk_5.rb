@@ -1,23 +1,23 @@
 class Webkit2gtk_5 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.38.1'
+  version '2.38.2'
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.1.tar.xz'
-  source_sha256 '02e195b3fb9e057743b3364ee7f1eec13f71614226849544c07c32a73b8f1848'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.2.tar.xz'
+  source_sha256 'f3eb82899651f583b4d99cacd16af784a1a7710fce9e7b6807bd6ccde909fe3e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_armv7l/webkit2gtk_5-2.38.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_armv7l/webkit2gtk_5-2.38.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_i686/webkit2gtk_5-2.38.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.1_x86_64/webkit2gtk_5-2.38.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.2_armv7l/webkit2gtk_5-2.38.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.2_armv7l/webkit2gtk_5-2.38.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.2_i686/webkit2gtk_5-2.38.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.38.2_x86_64/webkit2gtk_5-2.38.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8bc9fab99da8fce312734596450c376f77e322920b1aeb98e62bcddd5b45dcab',
-     armv7l: '8bc9fab99da8fce312734596450c376f77e322920b1aeb98e62bcddd5b45dcab',
-       i686: 'c75f3386e0c7665f19c62d3afaf6acfefc5a82db8037f2cc5fec40b6b0ef6b86',
-     x86_64: 'c0793dfc8aa4b9935a43af6bc0ee302a004cd4ca83b751d073563adfb1ebfe65'
+    aarch64: '5d5d7cb676e24d8cf4cdbdfc97f8ee1d06831fc510ec8449084cc3b8e1ed1777',
+     armv7l: '5d5d7cb676e24d8cf4cdbdfc97f8ee1d06831fc510ec8449084cc3b8e1ed1777',
+       i686: '525f193d40ea9a0f62acc3caa14c34b712761f74be081ba3b7d58650879fddaf',
+     x86_64: '4996dd6bdb03f1cd4622a2e679f43b8b856b2fbdcfad5fd1cf9b3cd48a57ebdb'
   })
 
   depends_on 'atk' # R
@@ -28,12 +28,13 @@ class Webkit2gtk_5 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
   depends_on 'gcc10' => :build if %w[aarch64 armv7l i686].include? ARCH
+  depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
   depends_on 'gtk4' # R
@@ -76,7 +77,6 @@ class Webkit2gtk_5 < Package
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
   depends_on 'zlibpkg' # R
-  depends_on 'graphene' # R
 
   no_env_options
 
