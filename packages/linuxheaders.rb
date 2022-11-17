@@ -40,6 +40,17 @@ class Linuxheaders < Package
        armv7l: 'cc9227b5b3af3abdaba4c1eb6b5df066af6c5f20629cee3a4e351b3e40521760',
        x86_64: 'ea112d55cb33823a473791d146d124ae5d2cce7fb72ebe0b047d5937957ee994'
     })
+  when '5.4'
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.4_armv7l/linuxheaders-5.4-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.4_armv7l/linuxheaders-5.4-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.4_x86_64/linuxheaders-5.4-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      aarch64: 'b790edcfe5bcad8fc7e7b873a6ba8f9ad147b00849db2afead5f51e19f699df7',
+       armv7l: 'b790edcfe5bcad8fc7e7b873a6ba8f9ad147b00849db2afead5f51e19f699df7',
+       x86_64: 'e6ea539149f4333518787eb1e0fa436d0914990fd2899011c277ab418a9b78ba'
+    })
   when '5.10'
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.10_armv7l/linuxheaders-5.10-chromeos-armv7l.tar.zst',
