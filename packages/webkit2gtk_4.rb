@@ -1,23 +1,23 @@
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.38.1'
-  compatibility 'all'
+  version '2.38.2'
   license 'LGPL-2+ and BSD-2'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.1.tar.xz'
-  source_sha256 '02e195b3fb9e057743b3364ee7f1eec13f71614226849544c07c32a73b8f1848'
+  compatibility 'all'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.2.tar.xz'
+  source_sha256 'f3eb82899651f583b4d99cacd16af784a1a7710fce9e7b6807bd6ccde909fe3e'
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_i686/webkit2gtk_4-2.38.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_x86_64/webkit2gtk_4-2.38.1-chromeos-x86_64.tar.zst',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_armv7l/webkit2gtk_4-2.38.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.1_armv7l/webkit2gtk_4-2.38.1-chromeos-armv7l.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_armv7l/webkit2gtk_4-2.38.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_armv7l/webkit2gtk_4-2.38.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_i686/webkit2gtk_4-2.38.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_x86_64/webkit2gtk_4-2.38.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: '82925fa9774bddd1385b6deb2eef4738cba73aeff6e18df92294c446ca2752fc',
-     x86_64: '117945f103fe1af58638451841fff222d5b8c699eb65c05215cce6613f765a65',
-    aarch64: 'e3f889dc849f2f2038dbe702c128e8e111707e35d4e719eff07d7e58ab2c9fc2',
-     armv7l: 'e3f889dc849f2f2038dbe702c128e8e111707e35d4e719eff07d7e58ab2c9fc2'
+    aarch64: '2f8dd6bd1d070fae699d56efbe844c3b02ff1f7efe8f314ce9f3f17075813e60',
+     armv7l: '2f8dd6bd1d070fae699d56efbe844c3b02ff1f7efe8f314ce9f3f17075813e60',
+       i686: '480b6c18c735be76735e5fe7acc386c01171300132e025779df022d2cbca0141',
+     x86_64: '66d3ecaa53fbde5917eb6b7d1ee0e5883e736fbe461650fbff7140635d26a685'
   })
 
   depends_on 'atk' # R
@@ -28,8 +28,8 @@ class Webkit2gtk_4 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
   depends_on 'gcc10' => :build if %w[aarch64 armv7l i686].include? ARCH
+  depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
