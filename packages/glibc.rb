@@ -61,7 +61,7 @@ class Glibc < Package
        x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
     })
   elsif @libc_version.to_f >= 2.33 # All architectures with updates past M97.
-    version '2.33-1'
+    version '2.33-2'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
 
@@ -590,6 +590,14 @@ class Glibc < Package
     Dir.chdir CREW_LIB_PREFIX do
       puts "System glibc version is #{LIBC_VERSION}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
+      case ARCH
+      when 'aarch64', 'armv7l'
+        FileUtils.ln_sf "/lib/ld-#{LIBC_VERSION}.so", 'ld-linux-armhf.so.3'
+      when 'i686'
+        FileUtils.ln_sf "/lib/ld-#{LIBC_VERSION}.so", 'ld-linux-i686.so.2'
+      when 'x86_64'
+        FileUtils.ln_sf "/lib64/ld-#{LIBC_VERSION}.so", 'ld-linux-x86-64.so.2'
+      end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
         Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
