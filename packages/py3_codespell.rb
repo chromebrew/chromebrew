@@ -23,6 +23,7 @@ class Py3_codespell < Package
      x86_64: '1f2e5d809b529d6934686e7e2af476dd066f224896f2b5f0efde061e2e5fba37'
   })
 
+  depends_on 'python3'
   depends_on 'py3_setuptools' => :build
 
   def self.build
