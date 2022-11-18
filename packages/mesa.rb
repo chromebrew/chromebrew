@@ -351,11 +351,37 @@ class Mesa < Package
     Dir.chdir("#{CREW_DEST_LIB_PREFIX}/dri") do
       FileUtils.ln_s '.', 'tls' unless File.exist?('tls')
     end
-    return unless ARCH == 'x86_64'
-
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
-    Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
-      FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+    case ARCH
+    when 'x86_64'
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        # For Intel CPUs
+        FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
+        # For AMD CPUs
+        FileUtils.ln_s '../../libgbm.so', 'amdgpu_gbm.so'
+      end
+    when 'armv7l', 'aarch64'
+      Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
+        FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
+      end
+    end
+  end
+
+  def self.postinstall
+    # Make sure symlinks for sommelier exist.
+    FileUtils.mkdir_p "#{CREW_LIB_PREFIX}/gbm/tls"
+    case ARCH
+    when 'x86_64'
+      Dir.chdir("#{CREW_LIB_PREFIX}/gbm/tls") do
+        # For Intel CPUs
+        FileUtils.ln_sf '../../libgbm.so', 'i915_gbm.so'
+        # For AMD CPUs
+        FileUtils.ln_sf '../../libgbm.so', 'amdgpu_gbm.so'
+      end
+    when 'armv7l', 'aarch64'
+      Dir.chdir("#{CREW_LIB_PREFIX}/gbm/tls") do
+        FileUtils.ln_sf '../../libgbm.so', 'pvr_gbm.so'
+      end
     end
   end
 end
