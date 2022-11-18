@@ -25,15 +25,12 @@ class Py3_codespell < Package
 
   depends_on 'py3_setuptools' => :build
 
-  def self.preflight
-    @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
-  end
-
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
   def self.install
+    @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
     system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
     # Fixes ModuleNotFoundError: No module named 'codespell_lib._version'
     _version_tuple = "(#{@_ver.gsub('.', ', ')})"
@@ -49,6 +46,7 @@ class Py3_codespell < Package
   end
 
   def self.remove
+    @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
     # Remove data, __pycache__ and tests directories.
     FileUtils.rm_rf "#{CREW_PREFIX}/lib/#{@python_ver}/site-packages/codespell_lib"
   end
