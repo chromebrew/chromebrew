@@ -28,12 +28,14 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon'
+  depends_on 'llvm' # R
   depends_on 'mesa'
   depends_on 'pixman'
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc'
   depends_on 'wayland'
   depends_on 'xauth'
+  depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
   depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
   depends_on 'xsetroot' # for xsetroot in sommelierrc script
   depends_on 'xhost' # for xhost in sommelierd script
