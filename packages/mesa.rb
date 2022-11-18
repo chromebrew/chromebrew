@@ -3,12 +3,12 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  # We use mesa amber (derived from the 21.3 series) for older kernels 
+  # We use mesa amber (derived from the 21.3 series) for older kernels
   # and current mesa versions for newer kernels.
   if CREW_KERNEL_VERSION.to_f < 5.10
     # Built off of the mesa amber branch
     git_hashtag 'acfef002a081f36e6eebc6e8ab908a36ab18f68c'
-    @_ver = (git_hashtag[0, 7])
+    @_ver = git_hashtag[0, 7]
     version "amber-#{@_ver}"
   else
     @_ver = '22.3.0-rc3'
@@ -27,16 +27,16 @@ class Mesa < Package
        x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_x86_64/mesa-amber-acfef00-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '3551d426b877be55dd2f1b9819e017cb7e7ae11e09c427b27af40f883006b60e',
-       armv7l: '3551d426b877be55dd2f1b9819e017cb7e7ae11e09c427b27af40f883006b60e',
+      aarch64: 'e9ef6ce22956bdae6f75a44e953cc189f08a3c7e7cf9235a24dbe77f94dc39dd',
+       armv7l: 'e9ef6ce22956bdae6f75a44e953cc189f08a3c7e7cf9235a24dbe77f94dc39dd',
          i686: '596ce6a08d3b63ba990058acdf876e4b815882e3d0e0c61bfcd079fdfeb6fb9f',
-       x86_64: '8ade2ad7da701c927ce63ba60057a7c35b8d7fbbb145a0c4cf5f5a419aaf376d'
+       x86_64: '9fe6dfd910312956da149dd5cd95f2fd58f7ca4bd8a4dbc646ec11ac3864a683'
     })
   else
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_armv7l/mesa-22.3.0-rc3-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_armv7l/mesa-22.3.0-rc3-chromeos-armv7l.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_x86_64/mesa-22.3.0-rc3-chromeos-x86_64.tar.zst'
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_armv7l/mesa-22.3.0-rc3-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_x86_64/mesa-22.3.0-rc3-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
       aarch64: '2b509913bc66eb87b4794edb7739d3f57b00a0ea68b61f6d7e97ce8268c11465',
