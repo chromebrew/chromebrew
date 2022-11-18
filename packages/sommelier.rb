@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-9'
+  version '20221117'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
+  git_hashtag 'b63df163ab11f07b63d0e7a866f044aa07c7e0b2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_armv7l/sommelier-20210109-9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_armv7l/sommelier-20210109-9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_i686/sommelier-20210109-9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-9_x86_64/sommelier-20210109-9-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_armv7l/sommelier-20221117-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_armv7l/sommelier-20221117-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_i686/sommelier-20221117-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_x86_64/sommelier-20221117-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '74359bcc06aed87aa0b4172f4ef5a620962fbaa476d57db430206390031f2f29',
-     armv7l: '74359bcc06aed87aa0b4172f4ef5a620962fbaa476d57db430206390031f2f29',
-       i686: '0bf67633fa9b4cf68c4feb8f1c8f92493b303e9f86e83a2977295d12e3156853',
-     x86_64: '81559f65c2db3aa8846fe1b99ce1b16e53aafaabc20a8fcdf5dce4137a7c11da'
+    aarch64: '33836582ecb28b3922bc6ae65c9fe4c1f50fe7ecbae947b01b5a6211c1698cfa',
+     armv7l: '33836582ecb28b3922bc6ae65c9fe4c1f50fe7ecbae947b01b5a6211c1698cfa',
+       i686: 'd16a5ff12595632910bc41c3dc737a05ddfedfecc9c9481f7eb834ffad8bc278',
+     x86_64: '8f71356314b68cbe4ebdff2fcec77f9ed281ead1ee441d227e2680d32edea8c6'
   })
 
   depends_on 'libdrm'
@@ -75,10 +75,9 @@ class Sommelier < Package
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
+          -Dwith_tests=false \
           -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
           -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
-          -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-          -Dpeer_cmd_prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
           builddir
       BUILD
 
@@ -200,15 +199,17 @@ class Sommelier < Package
             DISPLAY="${DISPLAY:0:3}"
 
             sommelier -X \
-              --x-display=${DISPLAY}  \
-              --scale=${SCALE} --glamor \
-              --drm-device=/dev/dri/renderD128 \
-              --virtwl-device=/dev/null \
-              --shm-driver=noop --data-driver=noop \
+              --x-display=${DISPLAY} \
+              --scale=${SCALE} \
+              --direct-scale \
+              --glamor \
+              --force-drm-device=/dev/dri/renderD128 \
               --display=wayland-0 \
               --xwayland-path=/usr/local/bin/Xwayland \
               --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri \
               --peer-cmd-prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
+              --enable-xshape \
+              --noop-driver \
               --no-exit-with-child \
               /bin/sh -c "touch ~/.Xauthority
                 xauth -f ~/.Xauthority add ${DISPLAY} . $(xxd -l 16 -p /dev/urandom)
