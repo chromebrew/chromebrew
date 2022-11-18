@@ -3,41 +3,45 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
+  # We use mesa amber (derived from the 21.3 series) for older kernels 
+  # and current mesa versions for newer kernels.
   if CREW_KERNEL_VERSION.to_f < 5.10
-    @_ver = '21.3.9'
-    version "#{@_ver}-1"
+    # Built off of the mesa amber branch
+    git_hashtag 'acfef002a081f36e6eebc6e8ab908a36ab18f68c'
+    @_ver = (git_hashtag[0, 7])
+    version "amber-#{@_ver}"
   else
-    @_ver = '22.3.0-rc2'
+    @_ver = '22.3.0-rc3'
     version @_ver
+    git_hashtag "mesa-#{@_ver}"
   end
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
 
   if CREW_KERNEL_VERSION.to_f < 5.10
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-1_armv7l/mesa-21.3.9-1-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-1_armv7l/mesa-21.3.9-1-chromeos-armv7l.tar.zst',
-         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-1_i686/mesa-21.3.9-1-chromeos-i686.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-1_x86_64/mesa-21.3.9-1-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_armv7l/mesa-amber-acfef00-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_armv7l/mesa-amber-acfef00-chromeos-armv7l.tar.zst',
+         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_i686/mesa-amber-acfef00-chromeos-i686.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_x86_64/mesa-amber-acfef00-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
       aarch64: '3551d426b877be55dd2f1b9819e017cb7e7ae11e09c427b27af40f883006b60e',
        armv7l: '3551d426b877be55dd2f1b9819e017cb7e7ae11e09c427b27af40f883006b60e',
-         i686: '115dd712b7f93ddffa8aaa8b3c3d97eaaec91f5554ed10e575dae33f1e062a50',
+         i686: '596ce6a08d3b63ba990058acdf876e4b815882e3d0e0c61bfcd079fdfeb6fb9f',
        x86_64: '8ade2ad7da701c927ce63ba60057a7c35b8d7fbbb145a0c4cf5f5a419aaf376d'
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc2_armv7l/mesa-22.3.0-rc2-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc2_armv7l/mesa-22.3.0-rc2-chromeos-armv7l.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc2_x86_64/mesa-22.3.0-rc2-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_armv7l/mesa-22.3.0-rc3-chromeos-armv7l.tar.zst',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_armv7l/mesa-22.3.0-rc3-chromeos-armv7l.tar.zst',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0-rc3_x86_64/mesa-22.3.0-rc3-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '5726ac5cd71ac69fdde03f308c6c0d57a698583f7ff15f8d82f65d6761103027',
-       armv7l: '5726ac5cd71ac69fdde03f308c6c0d57a698583f7ff15f8d82f65d6761103027',
-       x86_64: '8450e1dd41f3130aef69839b56c0c011ca36b4a3c0b9984dc0529a569fe2951a'
+      aarch64: '2b509913bc66eb87b4794edb7739d3f57b00a0ea68b61f6d7e97ce8268c11465',
+       armv7l: '2b509913bc66eb87b4794edb7739d3f57b00a0ea68b61f6d7e97ce8268c11465',
+       x86_64: '02e83dff70b8b81f8c0d44659e6a63dfacb17faf4ebccde66c3c2bdaaff39473'
     })
   end
 
@@ -353,34 +357,16 @@ class Mesa < Package
     end
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/gbm/tls"
     case ARCH
-    when 'x86_64'
+    when 'x86_64', 'i686'
       Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
-        # For Intel CPUs
+        # For Intel GPUs
         FileUtils.ln_s '../../libgbm.so', 'i915_gbm.so'
-        # For AMD CPUs
+        # For AMD GPUs
         FileUtils.ln_s '../../libgbm.so', 'amdgpu_gbm.so'
       end
     when 'armv7l', 'aarch64'
       Dir.chdir("#{CREW_DEST_LIB_PREFIX}/gbm/tls") do
         FileUtils.ln_s '../../libgbm.so', 'pvr_gbm.so'
-      end
-    end
-  end
-
-  def self.postinstall
-    # Make sure symlinks for sommelier exist.
-    FileUtils.mkdir_p "#{CREW_LIB_PREFIX}/gbm/tls"
-    case ARCH
-    when 'x86_64'
-      Dir.chdir("#{CREW_LIB_PREFIX}/gbm/tls") do
-        # For Intel CPUs
-        FileUtils.ln_sf '../../libgbm.so', 'i915_gbm.so'
-        # For AMD CPUs
-        FileUtils.ln_sf '../../libgbm.so', 'amdgpu_gbm.so'
-      end
-    when 'armv7l', 'aarch64'
-      Dir.chdir("#{CREW_LIB_PREFIX}/gbm/tls") do
-        FileUtils.ln_sf '../../libgbm.so', 'pvr_gbm.so'
       end
     end
   end
