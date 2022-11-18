@@ -66,14 +66,14 @@ class Glibc < Package
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_armv7l/glibc-2.33-chromeos-armv7l.tpxz',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_armv7l/glibc-2.33-chromeos-armv7l.tpxz',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_x86_64/glibc-2.33-chromeos-x86_64.tpxz'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-2_armv7l/glibc-2.33-2-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-2_armv7l/glibc-2.33-2-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-2_x86_64/glibc-2.33-2-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '13aeaaa63cc2124e776a992f7f56453f9cae9c7fb21d30c38cd5958bd17d004e',
-       armv7l: '13aeaaa63cc2124e776a992f7f56453f9cae9c7fb21d30c38cd5958bd17d004e',
-       x86_64: 'bbdd07d1a4a962aebf365786db48d1da41a84a6bef8b78eef86f051ad01a9980'
+      aarch64: '66dbf19881b7aec1890b9d8a99e08f36e1da902bf548b02e5a4b43ba43f3cfe3',
+       armv7l: '66dbf19881b7aec1890b9d8a99e08f36e1da902bf548b02e5a4b43ba43f3cfe3',
+       x86_64: 'e2c30bfd366367481020f36345f3e11e3d9bfa6b9f6351e65183e10755e982fb'
     })
   end
 
@@ -553,6 +553,7 @@ class Glibc < Package
       Dir.chdir CREW_DEST_LIB_PREFIX do
         puts "System glibc version is #{LIBC_VERSION}.".lightblue
         puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
+        @crew_libc_version = @libc_version
         case ARCH
         when 'aarch64', 'armv7l'
           FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
