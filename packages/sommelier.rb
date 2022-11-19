@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20221117'
+  version '20221117-1'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'b63df163ab11f07b63d0e7a866f044aa07c7e0b2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_armv7l/sommelier-20221117-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_armv7l/sommelier-20221117-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_i686/sommelier-20221117-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117_x86_64/sommelier-20221117-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_armv7l/sommelier-20221117-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_armv7l/sommelier-20221117-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_i686/sommelier-20221117-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_x86_64/sommelier-20221117-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '33836582ecb28b3922bc6ae65c9fe4c1f50fe7ecbae947b01b5a6211c1698cfa',
-     armv7l: '33836582ecb28b3922bc6ae65c9fe4c1f50fe7ecbae947b01b5a6211c1698cfa',
-       i686: 'd16a5ff12595632910bc41c3dc737a05ddfedfecc9c9481f7eb834ffad8bc278',
-     x86_64: '8f71356314b68cbe4ebdff2fcec77f9ed281ead1ee441d227e2680d32edea8c6'
+    aarch64: '1fb5a9e16a0a73de60c6e2206e3acfefb7221e9d29b642099233009b816d310a',
+     armv7l: '1fb5a9e16a0a73de60c6e2206e3acfefb7221e9d29b642099233009b816d310a',
+       i686: '0693b7c842ff3a1299aeb8f9e3155692bead556abf5e63473f387195f5d15aa2',
+     x86_64: 'cbd10439ab1a8ba662c1bd13c1eca5936e5ef2a94ad4be5b324e5bed92fe174e'
   })
 
   depends_on 'libdrm'
@@ -36,8 +36,9 @@ class Sommelier < Package
   depends_on 'wayland'
   depends_on 'xauth'
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
-  depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
-  depends_on 'xsetroot' # for xsetroot in sommelierrc script
+  # depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
+  depends_on 'xorg_xset' # for xset in wrapper script
+  # depends_on 'xsetroot' # for xsetroot in sommelierrc script
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xwayland'
   depends_on 'xxd_standalone' # for xxd in wrapper script
@@ -55,6 +56,24 @@ class Sommelier < Package
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
     Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc",
                   chdir: 'vm_tools/sommelier'
+    return unless ARCH == 'armv7l' || 'aarch64'
+
+    # See https://github.com/chromebrew/chromebrew/pull/7653#issuecomment-1320804418
+    File.write 'vm_tools/sommelier/arm.patch', <<~'ARM_PATCH_EOF'
+      diff -Nur a/sommelier.cc b/sommelier.cc
+      --- a/sommelier.cc	2022-11-06 19:29:16.580361574 +0800
+      +++ b/sommelier.cc	2022-11-06 19:37:28.830367176 +0800
+      @@ -616,7 +616,7 @@
+             data_device_manager->host_global =
+                 sl_data_device_manager_global_create(ctx);
+           }
+      -  } else if (strcmp(interface, "xdg_wm_base") == 0) {
+      +  } else if ((strcmp(interface, "xdg_wm_base") == 0) || (strcmp(interface, "zxdg_shell_v6") == 0)) {
+           struct sl_xdg_shell* xdg_shell =
+               static_cast<sl_xdg_shell*>(malloc(sizeof(struct sl_xdg_shell)));
+           assert(xdg_shell);
+    ARM_PATCH_EOF
+    Kernel.system 'patch -Np1 -i arm.patch', chdir: 'vm_tools/sommelier'
   end
 
   def self.build
@@ -77,7 +96,8 @@ class Sommelier < Package
           -Db_lto_mode=thin \
           -Dwith_tests=false \
           -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-          -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
+          -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
+          -Ddefault_library=both \
           builddir
       BUILD
 
@@ -96,6 +116,26 @@ class Sommelier < Package
           SOMMELIER_ACCELERATORS='Super_L,<Alt>bracketleft,<Alt>bracketright'
           WAYLAND_DISPLAY=wayland-0
           XDG_RUNTIME_DIR=/var/run/chrome
+
+          # get a list of all available DRM render nodes
+          DRM_DEVICES_LIST=( /sys/class/drm/renderD* )
+
+          # if two or more render nodes available, choose one based on the corresponding render device path:
+          #   devices/platform/vegm/...: virtual GEM device provided by Chrome OS, hardware acceleration may not available on this node. (should be avoided)
+          #   devices/pci*/...: linked to the actual graphics card device path, provided by graphics card driver. (preferred)
+          #
+          if [[ "${#DRM_DEVICES_LIST[@]}" > 1 ]]; then
+            for dev in ${DRM_DEVICES_LIST[@]}; do
+              if [[ "$(coreutils --coreutils-prog=readlink -f "${dev}")" =~ devices/pci ]]; then
+                SOMMELIER_DRM_DEVICE="/dev/dri/${dev##*/}"
+                echo -e "\e[1;33m""${#DRM_DEVICES_LIST[@]} DRM render nodes available, ${SOMMELIER_DRM_DEVICE} will be used.""\e[0m"
+                break
+              fi
+            done
+          else
+            # if only one node available, use it directly
+            SOMMELIER_DRM_DEVICE="/dev/dri/${DRM_DEVICES_LIST[0]##*/}"
+          fi
 
           if grep -q GenuineIntel /proc/cpuinfo ;then
             check_linux_version() {
@@ -177,7 +217,8 @@ class Sommelier < Package
             /sbin/ss --unix -a -p | grep "\b$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)" | grep wayland &>/dev/null
           }
           checksommelierxwayland () {
-            xdpyinfo -display "${DISPLAY}" &>/dev/null
+            # xdpyinfo -display "${DISPLAY}" &>/dev/null
+            DISPLAY="${DISPLAY}" timeout 1s xset q &>/dev/null
           }
 
           ## As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
@@ -203,7 +244,7 @@ class Sommelier < Package
               --scale=${SCALE} \
               --direct-scale \
               --glamor \
-              --force-drm-device=/dev/dri/renderD128 \
+              --force-drm-device=${SOMMELIER_DRM_DEVICE} \
               --display=wayland-0 \
               --xwayland-path=/usr/local/bin/Xwayland \
               --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri \
