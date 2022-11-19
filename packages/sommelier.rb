@@ -10,8 +10,8 @@ class Sommelier < Package
   git_hashtag 'b63df163ab11f07b63d0e7a866f044aa07c7e0b2'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/sommelier-20221117-3-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/sommelier-20221117-3-chromeos-armv7l.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_armv7l/sommelier-20221117-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_armv7l/sommelier-20221117-3-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_i686/sommelier-20221117-3-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_x86_64/sommelier-20221117-3-chromeos-x86_64.tar.zst'
   })
