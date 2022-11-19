@@ -3,7 +3,7 @@ require 'package'
 class Compressdoc < Package
   description 'Compress all man pages in a hierarchy and update symlinks. Supports a variety of compression algorithms.'
   homepage 'https://github.com/saltedcoffii/compressdoc/'
-  @_ver = '20211031'
+  @_ver = '20221119'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Compressdoc < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20211031_armv7l/compressdoc-20211031-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20211031_armv7l/compressdoc-20211031-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20211031_i686/compressdoc-20211031-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20211031_x86_64/compressdoc-20211031-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20221119_armv7l/compressdoc-20221119-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20221119_armv7l/compressdoc-20221119-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20221119_i686/compressdoc-20221119-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20221119_x86_64/compressdoc-20221119-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4540356220ea749beb260e45d25dcb3a6874691d723d3ba619213caae2b8c2a8',
-     armv7l: '4540356220ea749beb260e45d25dcb3a6874691d723d3ba619213caae2b8c2a8',
-       i686: 'ad99eb9bd25eaecbdcf2eef77bbe29b3326a31a984de27609c8f4a833c244aec',
-     x86_64: '7ced0fd4fc946a5cfc1ea22821be18e23572228436736b7787cb1e86e9e202a0'
+    aarch64: '880427162c3107c72346778eeaee0d965321bd3f0cea87b6e496cc541aa76f5a',
+     armv7l: '880427162c3107c72346778eeaee0d965321bd3f0cea87b6e496cc541aa76f5a',
+       i686: '3712fc941fa77066d2ce378e2bafe67555ac5da2827a6f32338bd48b8a3bde8d',
+     x86_64: '67cc750a7c59c35eaea3ddea7ff5c103d61c2c6f154b35416b0f85c7b3319674'
   })
 
   depends_on 'help2man' => :build
