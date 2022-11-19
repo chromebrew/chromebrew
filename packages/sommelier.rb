@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20221117-1'
+  version '20221117-2'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'b63df163ab11f07b63d0e7a866f044aa07c7e0b2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_armv7l/sommelier-20221117-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_armv7l/sommelier-20221117-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_i686/sommelier-20221117-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_x86_64/sommelier-20221117-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_armv7l/sommelier-20221117-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_armv7l/sommelier-20221117-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_i686/sommelier-20221117-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_x86_64/sommelier-20221117-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '131485e6c60091254347fd906d729b1a3280cec40c40341459cad38caa574b1e',
-     armv7l: '131485e6c60091254347fd906d729b1a3280cec40c40341459cad38caa574b1e',
-       i686: '541474d7ab640e71990a6ac3dfe35fa28774b47af337e38757a7913c619be3b4',
-     x86_64: '5e553206ed88581d3948dd6920ab42331e80100976016d59b37bc5a66c444a9c'
+    aarch64: '832e36890c7c18bfce16511d65199591994fdc1b8524f20eeef7aa6fdde734cd',
+     armv7l: '832e36890c7c18bfce16511d65199591994fdc1b8524f20eeef7aa6fdde734cd',
+       i686: 'dc64bf8903d8d3451c37b176a8a57372c384ba8da64e84ed84cc8abb62233159',
+     x86_64: '5d903a6f99d4212236bff8979febf71d50a2763ac2c357f600451ac8c67730c0'
   })
 
   depends_on 'libdrm'
@@ -187,26 +187,6 @@ class Sommelier < Package
         File.write 'sommelierd', <<~SOMMELIERDEOF
           #!/bin/bash -a
 
-          # get a list of all available DRM render nodes
-          DRM_DEVICES_LIST=( /sys/class/drm/renderD* )
-
-          # if two or more render nodes available, choose one based on the corresponding render device path:
-          #   devices/platform/vegm/...: virtual GEM device provided by Chrome OS, hardware acceleration may not available on this node. (should be avoided)
-          #   devices/pci*/...: linked to the actual graphics card device path, provided by graphics card driver. (preferred)
-          #
-          if [[ "${#DRM_DEVICES_LIST[@]}" > 1 ]]; then
-            for dev in ${DRM_DEVICES_LIST[@]}; do
-              if [[ "$(coreutils --coreutils-prog=readlink -f "${dev}")" =~ devices/pci ]]; then
-                SOMMELIER_DRM_DEVICE="/dev/dri/${dev##*/}"
-                echo -e "\e[1;33m""${#DRM_DEVICES_LIST[@]} DRM render nodes available, ${SOMMELIER_DRM_DEVICE} will be used.""\e[0m"
-                break
-              fi
-            done
-          else
-            # if only one node available, use it directly
-            SOMMELIER_DRM_DEVICE="/dev/dri/${DRM_DEVICES_LIST[0]##*/}"
-          fi
-
           source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
           set +a
           mkdir -p #{CREW_PREFIX}/var/{log,run}
@@ -239,7 +219,7 @@ class Sommelier < Package
             sommelier -X \
               --x-display=${DISPLAY} \
               --scale=${SCALE} \
-              --direct-scale \
+              ${SOMMELIER_DIRECT_SCALE} \
               --glamor \
               --force-drm-device=${SOMMELIER_DRM_DEVICE} \
               --display=wayland-0 \
@@ -263,8 +243,53 @@ class Sommelier < Package
         File.write 'startsommelier', <<~STARTSOMMELIEREOF
           #!/bin/bash -a
 
+          # Set DRM device here so output is visible, but don't run
+          # some of these checks in an env.d file since we don't need
+          # them run every time a shell is opened.
+          # Get a list of all available DRM render nodes.
+          DRM_DEVICES_LIST=( /sys/class/drm/renderD* )
+
+          # if two or more render nodes available, choose one based on the corresponding render device path:
+          #   devices/platform/vegm/...: virtual GEM device provided by Chrome OS, hardware acceleration may not available on this node. (should be avoided)
+          #   devices/pci*/...: linked to the actual graphics card device path, provided by graphics card driver. (preferred)
+          #
+          if [[ "${#DRM_DEVICES_LIST[@]}" > 1 ]]; then
+            for dev in ${DRM_DEVICES_LIST[@]}; do
+              if [[ "$(coreutils --coreutils-prog=readlink -f "${dev}")" =~ devices/pci ]]; then
+                SOMMELIER_DRM_DEVICE="/dev/dri/${dev##*/}"
+                echo -e "\e[1;33m""${#DRM_DEVICES_LIST[@]} DRM render nodes available, ${SOMMELIER_DRM_DEVICE} will be used.""\e[0m"
+                break
+              fi
+            done
+          else
+            # if only one node available, use it directly
+            SOMMELIER_DRM_DEVICE="/dev/dri/${DRM_DEVICES_LIST[0]##*/}"
+          fi
+          check_chromeos_milestone() {
+            # Check is passed milestone is greater than the current
+            # ChromeOS milestone.
+            milestone=$1
+            version_good=$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release | awk 'BEGIN{ FS="="};
+            { if ($2 < '"${milestone}"') { print "N"; }
+              else { print "Y"; }
+            }')
+
+            if [ "$version_good" = "N" ]; then
+                return 1
+            fi
+          }
+          # Not sure which milestone enables direct scale, so be
+          # conservative.
+          if ! check_chromeos_milestone 106; then
+            SOMMELIER_DIRECT_SCALE=
+          else
+            echo -e "\e[1;33m""Sommelier can use direct scaling.""\e[0m"
+            SOMMELIER_DIRECT_SCALE='--direct-scale'
+          fi
+
           source ~/.sommelier-default.env &>/dev/null
           source ~/.sommelier.env &>/dev/null
+
           set +a
 
           checksommelierwayland () {
@@ -283,7 +308,7 @@ class Sommelier < Package
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
-            #{CREW_PREFIX}/sbin/sommelierd &
+            #{CREW_PREFIX}/sbin/sommelierd &>/dev/null
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
@@ -301,7 +326,7 @@ class Sommelier < Package
             echo -e "sommelier processes running: ${SOMMWPIDS} ${SOMMXPIDS}"
           else
             echo "some sommelier processes failed to start"
-            echo -e "sommelier processes running: ${SOMMWPROCS} \\n ${SOMMXPROCS}"
+            [[ -n ${SOMMWPROCS} || -n ${SOMMXPROCS} ]] && echo -e "sommelier processes running: ${SOMMWPROCS} \\n ${SOMMXPROCS}"
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 1 || exit 1
           fi
