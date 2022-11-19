@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20221117-2'
+  version '20221117-3'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'b63df163ab11f07b63d0e7a866f044aa07c7e0b2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_armv7l/sommelier-20221117-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_armv7l/sommelier-20221117-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_i686/sommelier-20221117-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_x86_64/sommelier-20221117-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_armv7l/sommelier-20221117-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_armv7l/sommelier-20221117-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_i686/sommelier-20221117-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_x86_64/sommelier-20221117-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2e066165bf94ed26d18773f08ad67250a43e1bd0413df5d6232dfbce7d1a9eeb',
-     armv7l: '2e066165bf94ed26d18773f08ad67250a43e1bd0413df5d6232dfbce7d1a9eeb',
-       i686: '1f08e04a4ad45c56fb772dbd29e17029a0fa45fb004b4e32d23ffdc857cbee79',
-     x86_64: '26345fb7b9b3ac1466600532003b7d28dd929b3fc707f6486e9ebe3b0b561855'
+    aarch64: 'bb810cb6c79ea4d3767a2f1e7f55f49318aec27b661646aabb3d6b805999a13b',
+     armv7l: 'bb810cb6c79ea4d3767a2f1e7f55f49318aec27b661646aabb3d6b805999a13b',
+       i686: '3b132883f20f85eca779a8ba91d51af5f28224ade48d3e4abfb30da8014552ff',
+     x86_64: '271109dc9bd10e8feded352b5bdaaf2e109082c478f7a766f24ca3ee9fb33279'
   })
 
   depends_on 'libdrm'
@@ -309,7 +309,7 @@ class Sommelier < Package
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
-            #{CREW_PREFIX}/sbin/sommelierd &>/dev/null
+            #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
