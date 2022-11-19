@@ -16,10 +16,10 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-1_x86_64/sommelier-20221117-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bebd8e71c33b4ad5e75addcf27c29c38ebf8c232c2ef0698c701a7984930d944',
-     armv7l: 'bebd8e71c33b4ad5e75addcf27c29c38ebf8c232c2ef0698c701a7984930d944',
-       i686: 'cc65f33b8cb9369dea7ef4aec0230e668fabe5ea0fa2daa032a49af8725696de',
-     x86_64: 'c8b0e73e7cfbe631dead10678204950e7f4f163985b8a3f5ca60c314ca48a6ca'
+    aarch64: '131485e6c60091254347fd906d729b1a3280cec40c40341459cad38caa574b1e',
+     armv7l: '131485e6c60091254347fd906d729b1a3280cec40c40341459cad38caa574b1e',
+       i686: '541474d7ab640e71990a6ac3dfe35fa28774b47af337e38757a7913c619be3b4',
+     x86_64: '5e553206ed88581d3948dd6920ab42331e80100976016d59b37bc5a66c444a9c'
   })
 
   depends_on 'libdrm'
@@ -187,17 +187,6 @@ class Sommelier < Package
         File.write 'sommelierd', <<~SOMMELIERDEOF
           #!/bin/bash -a
 
-          source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
-          set +a
-          mkdir -p #{CREW_PREFIX}/var/{log,run}
-          checksommelierwayland () {
-            [[ -f "#{CREW_PREFIX}/var/run/sommelier-wayland.pid" ]] || return 1
-            /sbin/ss --unix -a -p | grep "\b$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)" | grep wayland &>/dev/null
-          }
-          checksommelierxwayland () {
-            DISPLAY="${DISPLAY}" timeout 1s xset q &>/dev/null
-          }
-
           # get a list of all available DRM render nodes
           DRM_DEVICES_LIST=( /sys/class/drm/renderD* )
 
@@ -217,6 +206,17 @@ class Sommelier < Package
             # if only one node available, use it directly
             SOMMELIER_DRM_DEVICE="/dev/dri/${DRM_DEVICES_LIST[0]##*/}"
           fi
+
+          source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
+          set +a
+          mkdir -p #{CREW_PREFIX}/var/{log,run}
+          checksommelierwayland () {
+            [[ -f "#{CREW_PREFIX}/var/run/sommelier-wayland.pid" ]] || return 1
+            /sbin/ss --unix -a -p | grep "\b$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)" | grep wayland &>/dev/null
+          }
+          checksommelierxwayland () {
+            DISPLAY="${DISPLAY}" timeout 1s xset q &>/dev/null
+          }
 
           ## As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
           ## One needs a second sommelier instance for wayland clients since at some point wl-drm was not implemented
@@ -283,7 +283,7 @@ class Sommelier < Package
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
-            #{CREW_PREFIX}/sbin/sommelierd &> /dev/null &
+            #{CREW_PREFIX}/sbin/sommelierd &
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
