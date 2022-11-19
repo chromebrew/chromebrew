@@ -16,10 +16,10 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-2_x86_64/sommelier-20221117-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '832e36890c7c18bfce16511d65199591994fdc1b8524f20eeef7aa6fdde734cd',
-     armv7l: '832e36890c7c18bfce16511d65199591994fdc1b8524f20eeef7aa6fdde734cd',
-       i686: 'dc64bf8903d8d3451c37b176a8a57372c384ba8da64e84ed84cc8abb62233159',
-     x86_64: '5d903a6f99d4212236bff8979febf71d50a2763ac2c357f600451ac8c67730c0'
+    aarch64: '2e066165bf94ed26d18773f08ad67250a43e1bd0413df5d6232dfbce7d1a9eeb',
+     armv7l: '2e066165bf94ed26d18773f08ad67250a43e1bd0413df5d6232dfbce7d1a9eeb',
+       i686: '1f08e04a4ad45c56fb772dbd29e17029a0fa45fb004b4e32d23ffdc857cbee79',
+     x86_64: '26345fb7b9b3ac1466600532003b7d28dd929b3fc707f6486e9ebe3b0b561855'
   })
 
   depends_on 'libdrm'
@@ -38,6 +38,7 @@ class Sommelier < Package
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
   depends_on 'xorg_xset' # for xset in wrapper script
   depends_on 'xhost' # for xhost in sommelierd script
+  depends_on 'xsetroot' # for xsetroot in /usr/local/etc/sommelierrc script
   depends_on 'xwayland'
   depends_on 'xxd_standalone' # for xxd in wrapper script
   depends_on 'gcc' # R
@@ -242,7 +243,7 @@ class Sommelier < Package
         # startsommelier
         File.write 'startsommelier', <<~STARTSOMMELIEREOF
           #!/bin/bash -a
-
+          set -a
           # Set DRM device here so output is visible, but don't run
           # some of these checks in an env.d file since we don't need
           # them run every time a shell is opened.
