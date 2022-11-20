@@ -26,7 +26,7 @@ class Libwmf < Package
   depends_on 'gtk2'
   depends_on 'libgd'
   depends_on 'libjpeg'
-  depends_on 'xorg_server'
+  depends_on 'xorg_server' => :build
   depends_on 'gdk_pixbuf'
   depends_on 'expat' # R
   depends_on 'glib' # R
