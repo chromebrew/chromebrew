@@ -805,6 +805,11 @@ url: https://www.clamav.net/downloads/
 activity: medium
 ---
 kind: url
+name: clamtk
+url: https://gitlab.com/dave_m/clamtk/-/tags
+activity: none
+---
+kind: url
 name: clean
 url: https://sourceforge.net/projects/clean/files/clean/
 activity: none
@@ -6005,8 +6010,28 @@ url: https://metacpan.org/pod/App::cpanminus
 activity: low
 ---
 kind: url
+name: perl_cairo
+url: https://metacpan.org/pod/Cairo
+activity: low
+---
+kind: url
+name: perl_cairo_gobject
+url: https://metacpan.org/pod/Cairo::GObject
+activity: low
+---
+kind: url
 name: perl_carp_clan
 url: https://metacpan.org/pod/Carp::Clan
+activity: low
+---
+kind: url
+name: perl_clone
+url: https://metacpan.org/pod/Clone
+activity: low
+---
+kind: url
+name: perl_data_dumper
+url: https://metacpan.org/pod/Data::Dumper
 activity: low
 ---
 kind: url
@@ -6025,8 +6050,63 @@ url: https://metacpan.org/pod/Date::Manip
 activity: low
 ---
 kind: url
+name: perl_extutils_depends
+url: https://metacpan.org/pod/ExtUtils::Depends
+activity: low
+---
+kind: url
+name: perl_extutils_makemaker
+url: https://metacpan.org/pod/ExtUtils::MakeMaker
+activity: low
+---
+kind: url
+name: perl_extutils_pkgconfig
+url: https://metacpan.org/pod/ExtUtils::PkgConfig
+activity: low
+---
+kind: url
+name: perl_file_spec
+url: https://metacpan.org/pod/File::Spec
+activity: low
+---
+kind: url
 name: perl_file_tail
 url: https://metacpan.org/pod/File::Tail
+activity: low
+---
+kind: url
+name: perl_file_temp
+url: https://metacpan.org/pod/File::Temp
+activity: low
+---
+kind: url
+name: perl_glib
+url: https://metacpan.org/pod/Glib
+activity: low
+---
+kind: url
+name: perl_glib_object_introspection
+url: https://metacpan.org/pod/Glib::Object::Introspection
+activity: low
+---
+kind: url
+name: perl_gtk3
+url: https://metacpan.org/pod/Gtk3
+activity: low
+---
+kind: url
+name: perl_http_date
+url: https://metacpan.org/pod/HTTP::Date
+activity: low
+---
+kind: url
+name: perl_http_request
+url: https://metacpan.org/pod/HTTP::Request
+activity: low
+---
+kind: url
+name: perl_io_file
+url: https://metacpan.org/pod/IO::File
 activity: low
 ---
 kind: url
@@ -6050,6 +6130,16 @@ url: https://cpan.metacpan.org/authors/id/G/GU/GUIDO/
 activity: none
 ---
 kind: url
+name: perl_lwp_protocol_https
+url: https://metacpan.org/pod/LWP::Protocol::https
+activity: none
+---
+kind: url
+name: perl_lwp_useragent
+url: https://metacpan.org/pod/LWP::UserAgent
+activity: none
+---
+kind: url
 name: perl_module_build
 url: https://cpan.metacpan.org/authors/id/L/LE/LEONT/
 activity: none
@@ -6058,6 +6148,11 @@ kind: url
 name: perl_mozilla_ca
 url: https://search.cpan.org/CPAN/authors/id/A/AB/ABH/
 activity: low
+---
+kind: url
+name: perl_net_http
+url: https://metacpan.org/pod/Net::HTTP
+activity: medium
 ---
 kind: url
 name: perl_net_ssleay
@@ -6100,6 +6195,11 @@ url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
 activity: none
 ---
 kind: url
+name: perl_text_csv
+url: https://metacpan.org/pod/Text::CSV
+activity: none
+---
+kind: url
 name: perl_text_unidecode
 url: https://cpan.metacpan.org/authors/id/S/SB/SBURKE/
 activity: none
@@ -6110,6 +6210,11 @@ url: https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/
 activity: none
 ---
 kind: url
+name: perl_try_tiny
+url: https://metacpan.org/pod/Try::Tiny
+activity: none
+---
+kind: url
 name: perl_unicode_eastasianwidth
 url: https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/
 activity: none
@@ -6117,6 +6222,11 @@ activity: none
 kind: url
 name: perl_unicode_linebreak
 url: https://github.com/hatukanezumi/Unicode-LineBreak/tags
+activity: none
+---
+kind: url
+name: perl_uri
+url: https://metacpan.org/pod/URI
 activity: none
 ---
 kind: url
