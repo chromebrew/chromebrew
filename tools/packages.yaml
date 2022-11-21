@@ -2845,6 +2845,11 @@ url: https://github.com/hunspell/hunspell/releases
 activity: low
 ---
 kind: url
+name: hwdata
+url: https://github.com/vcrhonek/hwdata/releases
+activity: high
+---
+kind: url
 name: hwloc
 url: https://github.com/open-mpi/hwloc/tags
 activity: medium
