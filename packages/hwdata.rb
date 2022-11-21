@@ -19,21 +19,24 @@ class Hwdata < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwdata/0.364_x86_64/hwdata-0.364-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '83a4154f919d109742b2dda111ce6ef08afc5f43c5d839a093db10d30ba55b97',
-     armv7l: '83a4154f919d109742b2dda111ce6ef08afc5f43c5d839a093db10d30ba55b97',
-       i686: 'ead76070d35543ebbe770e8d69671cdb069483010e2f798d94fc8f840baa9cca',
-     x86_64: 'f3d6e7550fdff0bb6ef8341d93cc5cb377d1134568e12a1e3c42cb1aee36d6c1'
+    aarch64: '2c7eda3e087119c16dadfaaacb8114b8876b62f65af3a32da36450fb165b0a26',
+     armv7l: '2c7eda3e087119c16dadfaaacb8114b8876b62f65af3a32da36450fb165b0a26',
+       i686: 'e95f8441e9d608df1b1a1be0e82796a0d02fff3be81ca12fbf9709d6201a68fa',
+     x86_64: 'c22a385eb2e767af12082d2334a49af8aafa5796b1174b869d5cfc2e0a8cec83'
   })
+
+  def self.patch
+    system "sed -i 's,$(DESTDIR)$(datadir)/pkgconfig,$(DESTDIR)$(libdir)/pkgconfig,g' Makefile"
+  end
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
-      --datadir=#{CREW_PREFIX}/share"
+      --datadir=#{CREW_PREFIX}/share \
+      --disable-blacklist"
     system 'make'
   end
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
-    # Do not package blacklist of kernel modules
-    FileUtils.rm_rf CREW_DEST_LIB_PREFIX
   end
 end
