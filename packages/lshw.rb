@@ -1,6 +1,3 @@
-# Adapted from Arch Linux lshw PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/lshw/trunk/PKGBUILD
-
 require 'package'
 
 class Lshw < Package
