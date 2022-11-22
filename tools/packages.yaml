@@ -8455,6 +8455,11 @@ url: https://github.com/GNOME/yelp-xsl/releases
 activity: low
 ---
 kind: url
+name: yggdrasil
+url: https://github.com/yggdrasil-network/yggdrasil-go/releases
+activity: high
+---
+kind: url
 name: youtube_dl
 url: https://github.com/rg3/youtube-dl/releases
 activity: high
