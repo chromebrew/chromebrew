@@ -6710,6 +6710,11 @@ url: http://download.qt.io/official_releases/qt/
 activity: medium
 ---
 kind: url
+name: qtquickcontrols
+url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
+activity: medium
+---
+kind: url
 name: qtscript
 url: http://download.qt.io/official_releases/qt/
 activity: medium
