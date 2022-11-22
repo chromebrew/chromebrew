@@ -25,7 +25,7 @@ class Libsdl2 < Package
 
   depends_on 'xwayland' => :build
   depends_on 'glibc' # R
-  depends_on 'alsa_lib'=> :build
+  depends_on 'alsa_lib' => :build
   depends_on 'ibus' => :build
   depends_on 'pulseaudio' => :build
   depends_on 'nasm' => :build
