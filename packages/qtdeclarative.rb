@@ -22,7 +22,7 @@ class Qtdeclarative < Package
      x86_64: '7ce9e821601c926a00f7fa85e7590e8a5fc925df530daa8dd99781cf10d41be2'
   })
 
-  depends_on 'qtbase'
+  depends_on 'qtbase' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R

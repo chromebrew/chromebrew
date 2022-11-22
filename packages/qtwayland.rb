@@ -22,20 +22,19 @@ class Qtwayland < Package
      x86_64: '4cd2a3d72e5a1c0c532db053f8de60250db1ac9f01b48436b7df8917f2945190'
   })
 
-  depends_on 'qtbase' => :build
-  depends_on 'libxkbcommon'
-  depends_on 'wayland'
   depends_on 'freetype' # R
   depends_on 'gcc' # R
-  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'harfbuzz' # R
   depends_on 'libdrm' # R
   depends_on 'libglvnd' # R
   depends_on 'libx11' # R
   depends_on 'libxcomposite' # R
   depends_on 'libxext' # R
+  depends_on 'libxkbcommon' # R
   depends_on 'qtbase' # R
+  depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
 
   def self.build

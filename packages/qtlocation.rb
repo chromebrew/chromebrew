@@ -22,7 +22,7 @@ class Qtlocation < Package
      x86_64: '43fb59928d9ddea0cc558407395a5c25611555867bfe42e3101573c8df2c6d43'
   })
 
-  depends_on 'qtbase' => :build
+  depends_on 'qtbase' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'qtbase' # R

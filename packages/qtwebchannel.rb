@@ -25,11 +25,11 @@ class Qtwebchannel < Package
      x86_64: '7f4a52e802c25ee71479b5fcf841a58e01bb992363948f1c189679bf9a797343'
   })
 
-  depends_on 'qtdeclarative'
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qtbase' # R
+  depends_on 'qtdeclarative' # R
 
   def self.build
     system 'qmake'
