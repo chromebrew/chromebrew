@@ -3,35 +3,36 @@ require 'package'
 class Qtdeclarative < Package
   description 'Provides QML and Quick declaratives.'
   homepage 'https://www.qt.io/'
-  version '5.15.1'
+  version '5.15.7-959b1ac'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtdeclarative-everywhere-src-5.15.1.tar.xz'
-  source_sha256 '7e30f0ccba61f9d71720b91d7f7523c23677f23cd96065cb71df1b0df329d768'
+  compatibility 'all'
+  source_url 'https://invent.kde.org/qt/qt/qtdeclarative.git'
+  git_hashtag '959b1ac3b7c699ef67ec81155e6e1e579d4e1df7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.1_armv7l/qtdeclarative-5.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.1_armv7l/qtdeclarative-5.15.1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.1_x86_64/qtdeclarative-5.15.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.7-959b1ac_armv7l/qtdeclarative-5.15.7-959b1ac-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.7-959b1ac_armv7l/qtdeclarative-5.15.7-959b1ac-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.7-959b1ac_i686/qtdeclarative-5.15.7-959b1ac-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtdeclarative/5.15.7-959b1ac_x86_64/qtdeclarative-5.15.7-959b1ac-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e95739560c1a124ddc52362945327cb60a1fc0bda568ca15011848750b8554d9',
-     armv7l: 'e95739560c1a124ddc52362945327cb60a1fc0bda568ca15011848750b8554d9',
-     x86_64: '44824e25081beff3552b35a09de7ae0948d8040199e6acadcfeb765e2451a68a'
+    aarch64: 'b241e41b7a33a30dc716ccb48e579304914a4b5c5e6ced59a10d038153cb8ed0',
+     armv7l: 'b241e41b7a33a30dc716ccb48e579304914a4b5c5e6ced59a10d038153cb8ed0',
+       i686: '5c2360441a9f83f58167fcf9e4bd79cbaeda9b4e55bf24e7d5cabcf96f25d850',
+     x86_64: '7ce9e821601c926a00f7fa85e7590e8a5fc925df530daa8dd99781cf10d41be2'
   })
 
-  depends_on 'python27'
   depends_on 'qtbase'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libglvnd' # R
 
   def self.build
-    system 'qmake && make'
+    system 'qmake'
+    system 'make || make'
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Qt-5"
-    FileUtils.cp_r Dir.glob('lib/*'), CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.cp_r 'include', "#{CREW_DEST_PREFIX}/share/Qt-5"
-    FileUtils.cp_r 'mkspecs', "#{CREW_DEST_PREFIX}/share/Qt-5"
+    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
   end
 end

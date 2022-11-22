@@ -6735,6 +6735,11 @@ url: http://download.qt.io/official_releases/qt/
 activity: medium
 ---
 kind: url
+name: qtwebchannel
+url: https://invent.kde.org/qt/qt/qtwebchannel/-/tags
+activity: medium
+---
+kind: url
 name: qtx11extras
 url: http://download.qt.io/official_releases/qt/
 activity: high
