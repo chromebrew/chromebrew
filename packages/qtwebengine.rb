@@ -38,21 +38,21 @@ class Qtwebengine < Package
     Dir.chdir('src/3rdparty') do
       system 'git checkout 87-based'
       downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-chromium-python3.patch',
-'fda4ff16790799fb285847918a677f4f3f7c0f513d4751f846ffc5aa5d873932'
+                 'fda4ff16790799fb285847918a677f4f3f7c0f513d4751f846ffc5aa5d873932'
       system 'patch -Np1 -i qt5-webengine-chromium-python3.patch'
       system "sed -i 's,#!/usr/bin/python,#!#{CREW_PREFIX}/python,g' chromium/build/print_python_deps.py"
       downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-ffmpeg5.patch',
-'c50d3019626183e753c53a997dc8a55938847543aa3178d4c51f377be741c693'
+                 'c50d3019626183e753c53a997dc8a55938847543aa3178d4c51f377be741c693'
       system 'patch -Np1 -i qt5-webengine-ffmpeg5.patch'
       downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-gcc12.patch',
-'cf9be3ffcc3b3cd9450b1ff13535ff7d76284f73173412d097a6ab487463a379'
+                 'cf9be3ffcc3b3cd9450b1ff13535ff7d76284f73173412d097a6ab487463a379'
       system 'patch -Np1 -i qt5-webengine-gcc12.patch'
       downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-pipewire-0.3.patch',
-'5e3a3c4711d964d5152a04059a2b5c1d14bb13dd29bce370120f60e85b476b6f'
+                 '5e3a3c4711d964d5152a04059a2b5c1d14bb13dd29bce370120f60e85b476b6f'
       system 'patch -Np1 -i qt5-webengine-pipewire-0.3.patch'
     end
     downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-python3.patch',
-'398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
+               '398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
     system 'patch -Np1 -i qt5-webengine-python3.patch'
     Dir.chdir('src/3rdparty/chromium/third_party') do
       FileUtils.rm_rf 'catapult'
