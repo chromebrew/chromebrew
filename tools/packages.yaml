@@ -6760,6 +6760,11 @@ url: https://invent.kde.org/qt/qt/qtwebchannel/-/tags
 activity: medium
 ---
 kind: url
+name: qtwebengine
+url: https://invent.kde.org/qt/qt/qtwebengine/-/tags
+activity: medium
+---
+kind: url
 name: qtx11extras
 url: http://download.qt.io/official_releases/qt/
 activity: high

@@ -8,7 +8,7 @@ class Libcec < Package
   homepage 'http://libcec.pulse-eight.com/'
   version '6.0.2'
   license 'GPL'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64' # Not kernel compatible w/ i686 kernel.
   source_url 'https://github.com/Pulse-Eight/libcec/archive/libcec-6.0.2.tar.gz'
   source_sha256 '090696d7a4fb772d7acebbb06f91ab92e025531c7c91824046b9e4e71ecb3377'
 
