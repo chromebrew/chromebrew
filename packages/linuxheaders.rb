@@ -10,15 +10,14 @@ class Linuxheaders < Package
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
 
-  case CREW_KERNEL_VERSION
-  when '3.8'
+  if CREW_KERNEL_VERSION == '3.8'
     binary_url({
       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/3.8_i686/linuxheaders-3.8-chromeos-i686.tpxz'
     })
     binary_sha256({
       i686: 'c16afcd95ebcffac67a026b724da19f498003ea80c13c87aeb613f09d412bb91'
     })
-  when '4.14'
+  elsif CREW_KERNEL_VERSION == '4.14'
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_armv7l/linuxheaders-4.14-1-chromeos-armv7l.tpxz',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.14-1_armv7l/linuxheaders-4.14-1-chromeos-armv7l.tpxz',
@@ -29,7 +28,7 @@ class Linuxheaders < Package
        armv7l: '75f253ac2cf0dd785ea8d9cdf9430d23d601ccc372e9f7afa95523a28273a340',
        x86_64: '5d58b327ca9bab5630f0df387a3036125e1f367e6c43cd551f4734ee3e634073'
     })
-  when '4.19'
+  elsif CREW_KERNEL_VERSION == '4.19'
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.19_armv7l/linuxheaders-4.19-chromeos-armv7l.tar.zst',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/4.19_armv7l/linuxheaders-4.19-chromeos-armv7l.tar.zst',
@@ -40,7 +39,7 @@ class Linuxheaders < Package
        armv7l: 'cc9227b5b3af3abdaba4c1eb6b5df066af6c5f20629cee3a4e351b3e40521760',
        x86_64: 'ea112d55cb33823a473791d146d124ae5d2cce7fb72ebe0b047d5937957ee994'
     })
-  when '5.4'
+  elsif CREW_KERNEL_VERSION == '5.4'
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.4_armv7l/linuxheaders-5.4-chromeos-armv7l.tar.zst',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.4_armv7l/linuxheaders-5.4-chromeos-armv7l.tar.zst',
@@ -51,7 +50,14 @@ class Linuxheaders < Package
        armv7l: 'b790edcfe5bcad8fc7e7b873a6ba8f9ad147b00849db2afead5f51e19f699df7',
        x86_64: 'e6ea539149f4333518787eb1e0fa436d0914990fd2899011c277ab418a9b78ba'
     })
-  when '5.10'
+  elsif CREW_KERNEL_VERSION == '5.15' && ARCH == 'x86_64'
+    binary_url({
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.15_x86_64/linuxheaders-5.15-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      x86_64: '5b0fa3daf6ac8f2cd1028bd326a6c64f0cac052ba225845ba314e06d12a3de76'
+    })
+  else
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.10_armv7l/linuxheaders-5.10-chromeos-armv7l.tar.zst',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linuxheaders/5.10_armv7l/linuxheaders-5.10-chromeos-armv7l.tar.zst',
@@ -79,5 +85,13 @@ class Linuxheaders < Package
                 rm ${file};
               done"
     end
+  end
+
+  def self.postinstall
+    return unless %w[3.8 4.14 5.4 5.10 5.15].include? CREW_KERNEL_VERSION
+
+    puts "The installed kernel headers do NOT match the current kernel version.".orange
+    puts "Please build and install the appropriate kernel headers with:".orange
+    puts "crew reinstall -s linuxheaders".lightblue
   end
 end
