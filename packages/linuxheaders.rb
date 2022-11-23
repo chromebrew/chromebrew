@@ -90,8 +90,8 @@ class Linuxheaders < Package
   def self.postinstall
     return unless %w[3.8 4.14 5.4 5.10 5.15].include? CREW_KERNEL_VERSION
 
-    puts "The installed kernel headers do NOT match the current kernel version.".orange
-    puts "Please build and install the appropriate kernel headers with:".orange
-    puts "crew reinstall -s linuxheaders".lightblue
+    puts 'The installed kernel headers do NOT match the current kernel version.'.orange
+    puts 'Please build and install the appropriate kernel headers with:'.orange
+    puts 'crew reinstall -s linuxheaders'.lightblue
   end
 end
