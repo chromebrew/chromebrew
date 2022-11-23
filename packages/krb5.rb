@@ -22,7 +22,7 @@ class Krb5 < Package
      x86_64: 'dde095df31c2a2b8925d0d9323a9e447b07238cec09ae0e5a43191d0a7b2c94d'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R

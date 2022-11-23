@@ -23,7 +23,7 @@ class Openssl < Package
      x86_64: '69e980b70b331ca265ff22c5e649fc31195586fbb61a59f274320610e68a6263'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'glibc' # R
 
   no_patchelf

@@ -23,7 +23,7 @@ class Llvm < Package
      x86_64: 'e70d89a80486f4afa911df7624510f465a75658b40df8db21a0ef41770fdc83a'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R

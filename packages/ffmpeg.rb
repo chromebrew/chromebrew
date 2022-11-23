@@ -28,7 +28,7 @@ class Ffmpeg < Package
   depends_on 'ladspa' # ?
   depends_on 'wavpack' # ?
   depends_on 'zvbi' # ?
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'harfbuzz'
   depends_on 'libdc1394' => :build
   depends_on 'libfdk_aac' => :build
