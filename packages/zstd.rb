@@ -24,7 +24,7 @@ class Zstd < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'musl_zstd'
+  # depends_on 'musl_zstd'
   no_patchelf
   no_zstd
 
