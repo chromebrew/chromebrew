@@ -17,8 +17,8 @@ class Nodebrew < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_x86_64/nodebrew-1.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '520e576481c9b6ca5935868de3e8bbb2d463e2653e8d6c7cf2a17f2c2ebf3d67',
-     armv7l: '520e576481c9b6ca5935868de3e8bbb2d463e2653e8d6c7cf2a17f2c2ebf3d67',
+    aarch64: '319000f56a7e608647a19ed95fa7a555a815cf3b64990cf11ceddd3d5ba658e9',
+     armv7l: '319000f56a7e608647a19ed95fa7a555a815cf3b64990cf11ceddd3d5ba658e9',
        i686: 'f5cfdff134b421478106612cc2c4ee2d6a7135fac4cf0bec06a7d10653903572',
      x86_64: '0bb4d2d805938635bff351f4154c95b177ddc87a21d7a86ad63fd49a2524b34a'
   })
@@ -29,7 +29,7 @@ class Nodebrew < Package
     case ARCH
     when 'aarch64', 'armv7l'
       # Handle being in a container on an aarch64 machine which exposes armv8l support.
-      system "sed -i 's,elsif ($machine =~ m/armv7l/),elsif ($machine =~ m/armv7l/ or $machine =~ m/armv8l/),' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
+      system "sed -i 's@m/armv7l/@m/armv[7,8]l/@g' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
     when 'i686'
       # Handle x86 binaries no longer showing up on the official build server.
       system "sed -i 's,nodejs.org/dist,unofficial-builds.nodejs.org/download/release,g' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
