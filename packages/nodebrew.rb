@@ -3,29 +3,37 @@ require 'package'
 class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
-  @_ver = '1.0.1'
-  version "#{@_ver}-2"
+  @_ver = '1.2.0'
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
-  source_sha256 'c34e7186d4fd493c5417ad5563ad39fd493a42695bd9a7758c3df10380e43399'
+  source_sha256 '6d72e39c8acc5b22f4fc7a1734cd3bb8d00b61119ab7fea6cde376810ff2005e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_armv7l/nodebrew-1.0.1-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_i686/nodebrew-1.0.1-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.0.1-2_x86_64/nodebrew-1.0.1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_armv7l/nodebrew-1.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_armv7l/nodebrew-1.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_i686/nodebrew-1.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_x86_64/nodebrew-1.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ea1dc71bbdb987b742474128b4836e643beec4abcd48c7a2bc695092f8b19d39',
-     armv7l: 'ea1dc71bbdb987b742474128b4836e643beec4abcd48c7a2bc695092f8b19d39',
-       i686: 'b07ef1989b2f09f340eee6901d00652639f6e4dfb7c47d958bfebfe267fd5285',
-     x86_64: 'f564dade9448caa2763eddb292060e0dab2c17740f0b898c71432dc8e2ce3d48'
+    aarch64: '520e576481c9b6ca5935868de3e8bbb2d463e2653e8d6c7cf2a17f2c2ebf3d67',
+     armv7l: '520e576481c9b6ca5935868de3e8bbb2d463e2653e8d6c7cf2a17f2c2ebf3d67',
+       i686: 'f5cfdff134b421478106612cc2c4ee2d6a7135fac4cf0bec06a7d10653903572',
+     x86_64: '0bb4d2d805938635bff351f4154c95b177ddc87a21d7a86ad63fd49a2524b34a'
   })
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/nodebrew/default"
     system "NODEBREW_ROOT=#{CREW_DEST_PREFIX}/share/nodebrew perl nodebrew setup > /dev/null"
+    case ARCH
+    when 'aarch64', 'armv7l'
+      # Handle being in a container on an aarch64 machine which exposes armv8l support.
+      system "sed -i 's,elsif ($machine =~ m/armv7l/),elsif ($machine =~ m/armv7l/ or $machine =~ m/armv8l/),' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
+    when 'i686'
+      # Handle x86 binaries no longer showing up on the official build server.
+      system "sed -i 's,nodejs.org/dist,unofficial-builds.nodejs.org/download/release,g' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
+    end
     FileUtils.mkdir_p CREW_DEST_HOME
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/nodebrew", "#{CREW_DEST_PREFIX}/bin/"
@@ -54,8 +62,18 @@ class Nodebrew < Package
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew/default", "#{CREW_PREFIX}/share/nodebrew/current"
     puts
-    puts 'To install the latest node, execute:'.lightblue
-    puts 'nodebrew install-binary latest'.lightblue
+    if ARCH == 'i686'
+      puts 'FYI: v17.9.1 is the last version compatible with i686.'.orange
+      puts 'To install the latest node, execute:'.lightblue
+      puts 'nodebrew install-binary v17.9.1'.lightblue
+    elsif LIBC_VERSION.to_f <= 2.27
+      puts 'FYI: v16.18.1 is the last version compatible with GLIBC 2.27'.orange
+      puts 'To install the latest node, execute:'.lightblue
+      puts 'nodebrew install-binary v16.18.1'.lightblue
+    else
+      puts 'To install the latest node, execute:'.lightblue
+      puts 'nodebrew install-binary latest'.lightblue
+    end
     puts 'nodebrew use latest'.lightblue
     puts
   end
