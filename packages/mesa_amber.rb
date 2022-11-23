@@ -49,9 +49,7 @@ class Mesa_amber < Package
   depends_on 'zstd' # R
 
   def self.preflight
-    if File.exist?("#{CREW_META_PATH}/mesa.filelist")
-      abort 'Please remove "mesa" before installing "mesa_amber".'.yellow
-    end
+    abort 'Please remove "mesa" before installing "mesa_amber".'.yellow if File.exist?("#{CREW_META_PATH}/mesa.filelist")
   end
 
   def self.patch
@@ -255,7 +253,7 @@ class Mesa_amber < Package
     end
 
     device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
-    device[:installed_packages] << { name: 'mesa', version: version }
+    device[:installed_packages] << { name:, version: }
     File.write( "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(device) )
   end
 
