@@ -5695,6 +5695,11 @@ url: https://httpredir.debian.org/debian/pool/main/o/oneko/
 activity: low
 ---
 kind: url
+name: onevpl
+url: https://github.com/oneapi-src/oneVPL/releases
+activity: medium
+---
+kind: url
 name: oniguruma
 url: https://github.com/kkos/oniguruma/releases
 activity: medium
