@@ -1,6 +1,3 @@
-# Adapted from Arch Linux qt5-webengine PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/PKGBUILD
-
 require 'package'
 
 class Qtwebengine < Package
@@ -12,6 +9,7 @@ class Qtwebengine < Package
   source_url 'https://invent.kde.org/qt/qt/qtwebengine.git'
   git_hashtag '3d23b379a7c0a87922f9f5d9600fde8c4e58f1fd'
 
+  depends_on 'ffmpeg' # R (This has to be patched for chromium.)
   depends_on 'freetype' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
@@ -35,6 +33,7 @@ class Qtwebengine < Package
   depends_on 'zlibpkg' # R
 
   def self.patch
+    # Build & patches track Arch PKGBUILD at https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/PKGBUILD
     Dir.chdir('src/3rdparty') do
       system 'git checkout 87-based'
       downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-chromium-python3.patch',
@@ -66,9 +65,6 @@ class Qtwebengine < Package
   def self.build
     # Nodebrew need to be used to have node installed, otherwise quit.
     abort if `nodebrew ls`.include?('not installed')
-    # "# Update catapult for python3 compatibility"
-    # "rm -r src/3rdparty/chromium/third_party/catapult"
-    # "mv $srcdir/catapult src/3rdparty/chromium/third_party"
     system "qmake CONFIG+=force_debug_info -- \
     -proprietary-codecs \
     -system-ffmpeg \
@@ -77,7 +73,8 @@ class Qtwebengine < Package
     -webengine-icu \
     -webengine-kerberos \
     -webengine-webrtc-pipewire"
-    system 'make -j1'
+    # This build keeps dying... and dying... and dying...
+    system 'make -j1 || make -j1 || make -j1 || make -j1 || make -j1'
   end
 
   def self.install
