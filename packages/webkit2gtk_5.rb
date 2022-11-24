@@ -23,7 +23,7 @@ class Webkit2gtk_5 < Package
   depends_on 'atk' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo'
-  # # depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dav1d'
   depends_on 'enchant' # R
   depends_on 'fontconfig'

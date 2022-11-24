@@ -36,9 +36,10 @@ class Jellyfin_media_player < Package
   depends_on 'qtdeclarative' # R
   depends_on 'qtlocation' # R
   depends_on 'qtquickcontrols'
+  depends_on 'qtwayland' # R
   depends_on 'qtwebchannel' # R
-  depends_on 'qtwebengine' => :build
-  depends_on 'qtx11extras' => :build
+  depends_on 'qtwebengine' # R
+  depends_on 'qtx11extras' # R
 
   def self.build
     system './download_webclient.sh'

@@ -60,7 +60,6 @@ class Qtwebengine < Package
 
   def self.patch
     # Build & patches track Arch PKGBUILD at https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/PKGBUILD
-    system "git submodule set-url src/3rdparty https://invent.kde.org/qt/qt/qtwebengine-chromium.git"
     Dir.chdir('src/3rdparty') do
       system 'git checkout 87-based'
       downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/qt5-webengine-chromium-python3.patch',
@@ -107,6 +106,6 @@ class Qtwebengine < Package
     system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
     # This is needed because this is a frankenstein build of 5.15.11 and 5.15.7,
     # which is the version of the other QT files.
-    system "sed -e 's|5.15.11\ |5.15.7 |' -i #{CREW_DEST_LIB_PREFIX}/cmake/*/*Config.cmake"
+    system "sed -e 's|5.15.11 |5.15.7 |' -i #{CREW_DEST_LIB_PREFIX}/cmake/*/*Config.cmake"
   end
 end
