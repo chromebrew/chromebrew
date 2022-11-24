@@ -3,12 +3,12 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  @_ver = '0.35.0'
+  @_ver = '0.35.0-ead8469'
   version @_ver
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/mpv-player/mpv.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag 'ead8469454afa63e6e1fdd9e978af765f89379ce'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_armv7l/mpv-0.35.0-chromeos-armv7l.tar.zst',
@@ -76,7 +76,9 @@ class Mpv < Package
     system "meson \
       #{CREW_MESON_OPTIONS} \
       -Dwayland=disabled \
+      -Dlibmpv=true \
       -Dgl-x11=enabled \
+      -Dsdl2=enabled \
       builddir"
     # mpv conf file
     File.write 'mpv.conf', <<~MPVCONF
