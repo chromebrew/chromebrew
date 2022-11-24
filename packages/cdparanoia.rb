@@ -19,10 +19,10 @@ class Cdparanoia < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdparanoia/10.2_x86_64/cdparanoia-10.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '30175dd7636d51bbcc7c0feb194c7671ac80607abc8e2934d204279a2a5eda16',
-     armv7l: '30175dd7636d51bbcc7c0feb194c7671ac80607abc8e2934d204279a2a5eda16',
-       i686: 'eb06f87aaf715e636efcc5a2411c619c4fb8581e2d59bddfae37300ab1c23859',
-     x86_64: '14c5f3136ce27847166d7947c22a3b31440113f8d21b8f3d9b29176df8e89bbf'
+    aarch64: '355295c34b89f75440bcd3aa003d1c4132dce8bf68b11bc164031f25086ae573',
+     armv7l: '355295c34b89f75440bcd3aa003d1c4132dce8bf68b11bc164031f25086ae573',
+       i686: '74db8c9126b6dc858120def2a959205c5189e85a01232a18f31a90c8423c80b7',
+     x86_64: '1cc714af1c8617cc10a6bc893e17beece810f851057a444e1813d79f495ceafe'
   })
 
   depends_on 'glibc'
@@ -37,10 +37,13 @@ class Cdparanoia < Package
 
   def self.build
     system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
+    system 'make -j1'
   end
 
   def self.install
-    system "make prefix=#{CREW_DEST_PREFIX} MANDIR=#{CREW_DEST_MAN_PREFIX} install"
+    system "make prefix=#{CREW_DEST_PREFIX} \
+      MANDIR=#{CREW_DEST_MAN_PREFIX} \
+      LIBDIR=#{CREW_DEST_LIB_PREFIX} \
+      install"
   end
 end
