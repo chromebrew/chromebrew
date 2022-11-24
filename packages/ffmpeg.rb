@@ -3,24 +3,24 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '5.1.2'
+  @_ver = '5.1.2-a6e2605'
   version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
-  git_hashtag "n#{@_ver}"
+  git_hashtag 'a6e26053c21362bb882932f3cfd1f1dfa2551f1d'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_armv7l/ffmpeg-5.1.2-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_armv7l/ffmpeg-5.1.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_i686/ffmpeg-5.1.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2_x86_64/ffmpeg-5.1.2-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_i686/ffmpeg-5.1.2-a6e2605-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_x86_64/ffmpeg-5.1.2-a6e2605-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '16b08e1560d9faf95601b2b8d73031b1a02316b45c142717ae55dc382c95adc9',
      armv7l: '16b08e1560d9faf95601b2b8d73031b1a02316b45c142717ae55dc382c95adc9',
-       i686: '0e14b4810a2e4b46ee066ec90d8f6a89131fad4cd2440e3629d23beb0a1d118a',
-     x86_64: '542015ac2020bf52e633b5abbb90c4c6af73bc8c73f41fd3ad83ff1adde70d0d'
+       i686: '772400a972aba55c397d1b3d31eb22177591ed511b6b84fe6ab8cc8b03da8d3e',
+     x86_64: '078cad1e60401f681af51926fff6b358da907ccc4aaf13750dd7732d792a243d'
   })
 
   depends_on 'avisynthplus' # ?
@@ -103,6 +103,15 @@ class Ffmpeg < Package
   depends_on 'rtmpdump' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
+  depends_on 'libglvnd' # R
+  no_env_options if ARCH == 'aarch64' || ARCH == 'armv7l'
+
+  def self.patch
+    # Needed for qtwebengine compatibility.
+    downloader 'https://github.com/archlinux/svntogit-packages/raw/packages/ffmpeg/trunk/add-av_stream_get_first_dts-for-chromium.patch',
+               '57e26caced5a1382cb639235f9555fc50e45e7bf8333f7c9ae3d49b3241d3f77'
+    system 'patch -Np1 -i add-av_stream_get_first_dts-for-chromium.patch'
+  end
 
   def self.build
     case ARCH
@@ -110,21 +119,24 @@ class Ffmpeg < Package
       @mfx = '--enable-libmfx'
       @lto = ''
       @enablelto = ''
+      @arch_cflags = ''
     when 'x86_64'
       @mfx = '--enable-libmfx'
       @lto = '-flto'
       @enablelto = '--enable-lto'
+      @arch_cflags = ''
     when 'aarch64', 'armv7l'
       @mfx = ''
       @lto = '-flto'
       @enablelto = '--enable-lto'
+      @arch_cflags = '-mfloat-abi=hard -mthumb -mfpu=neon -march=armv7-a+fp'
     end
 
     # ChromeOS awk employs sandbox redirection protections which screw
     # up configure script generation, so use mawk.
     system "sed -i 's/awk/mawk/g' configure"
-    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
-        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
+    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
         LDFLAGS='-U_FORTIFY_SOURCE #{@lto}' \
         ./configure \
         --arch=#{ARCH} \
@@ -192,9 +204,9 @@ class Ffmpeg < Package
         --enable-shared \
         --enable-version3 \
         #{@mfx}  \
-        --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER}' \
-        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto}' \
-        #{CREW_OPTIONS.sub(/--build=.*/, '')}"
+        --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto} #{@arch_cflags}' \
+        #{CREW_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon')}"
 
     system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
         make -j#{CREW_NPROC}"
