@@ -280,6 +280,11 @@ url: https://ftpmirror.gnu.org/aspell/dict/fr/
 activity: none
 ---
 kind: url
+name: asunder
+url: https://littlesvr.ca/asunder/releases
+activity: low
+---
+kind: url
 name: aspell_es
 url: https://ftpmirror.gnu.org/aspell/dict/es/
 activity: none
@@ -702,6 +707,11 @@ activity: low
 kind: url
 name: cdargs
 url: http://www.skamphausen.de/downloads/cdargs
+activity: none
+---
+kind: url
+name: cdparanoia
+url: https://downloads.xiph.org/releases/cdparanoia
 activity: none
 ---
 kind: url
