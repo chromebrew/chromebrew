@@ -3625,6 +3625,11 @@ url: https://download.videolan.org/pub/libdvbpsi/
 activity: none
 ---
 kind: url
+name: libdvdcss
+url: http://get.videolan.org/libdvdcss/
+activity: low
+---
+kind: url
 name: libdvdnav
 url: http://get.videolan.org/libdvdnav/
 activity: medium
