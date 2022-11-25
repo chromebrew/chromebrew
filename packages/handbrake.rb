@@ -5,7 +5,7 @@ class Handbrake < Package
   homepage 'https://handbrake.fr/'
   version '1.6-d260dde'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
   git_hashtag 'd260ddeb569330500baddc8433491842fb954861'
 
