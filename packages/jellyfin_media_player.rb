@@ -16,7 +16,7 @@ class Jellyfin_media_player < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.7.1_x86_64/jellyfin_media_player-1.7.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '90634aa0f7fef255af311c1371909a69e086d7bc3d067a584375bf20ba5e4041'
+    x86_64: '65d2758b98c6f9131bbad5244d135523d5265b78b6cdff1458e3e4a7e1bca718'
   })
 
   depends_on 'gcc' # R
@@ -40,6 +40,7 @@ class Jellyfin_media_player < Package
   depends_on 'qtwebchannel' # R
   depends_on 'qtwebengine' # R
   depends_on 'qtx11extras' # R
+  depends_on 'sommelier' # L
 
   def self.build
     system './download_webclient.sh'
@@ -58,13 +59,16 @@ class Jellyfin_media_player < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    File.write "#{CREW_PREFIX}/etc/env.d/10-jellyfinmediaplayer", <<~'JELLYFIN_ENVD_EOF'
+      # QT_QPA_PLATFORM=wayland is unaccelerated and unusable.
+      alias jellyfinmediaplayer="QT_QPA_PLATFORM=eglfs jellyfinmediaplayer"
+    JELLYFIN_ENVD_EOF
   end
 
   def self.postinstall
     puts
     puts 'Please run the following to finish the install:'.orange
-    puts "echo -e '\\nalias jellyfinmediaplayer=\"QT_QPA_PLATFORM=eglfs jellyfinmediaplayer\"' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts "source #{CREW_PREFIX}/etc/env.d/10-jellyfinmediaplayer".lightblue
     puts
   end
 end
