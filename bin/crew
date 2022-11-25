@@ -706,7 +706,7 @@ def download
 
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
-    # Sources that download with curl
+    # Sources that download with our internal downloader
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
