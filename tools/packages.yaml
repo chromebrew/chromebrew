@@ -1325,6 +1325,11 @@ url: https://launchpad.net/duplicity/+download
 activity: medium
 ---
 kind: url
+name: dvtm
+url: https://github.com/martanne/dvtm/releases
+activity: none
+---
+kind: url
 name: e2fsprogs
 url: https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs
 activity: medium
