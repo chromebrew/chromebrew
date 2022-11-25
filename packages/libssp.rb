@@ -22,7 +22,7 @@ class Libssp < Package
      x86_64: 'f9889ae9a6f85730a203793f891c7152cf6e548d0fd012929bd719230157ee97'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
 

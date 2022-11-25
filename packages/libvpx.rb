@@ -24,7 +24,7 @@ class Libvpx < Package
   })
 
   depends_on 'yasm' => :build
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'libyuv'
 
   def self.build

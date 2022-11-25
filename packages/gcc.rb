@@ -23,7 +23,7 @@ class Gcc < Package
   })
 
   depends_on 'binutils' => :build
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
   depends_on 'gmp' # R

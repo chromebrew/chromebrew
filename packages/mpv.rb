@@ -3,24 +3,24 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  @_ver = '0.35.0'
+  @_ver = '0.35.0-ead8469'
   version @_ver
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/mpv-player/mpv.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag 'ead8469454afa63e6e1fdd9e978af765f89379ce'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_armv7l/mpv-0.35.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_armv7l/mpv-0.35.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_i686/mpv-0.35.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0_x86_64/mpv-0.35.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_armv7l/mpv-0.35.0-ead8469-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_armv7l/mpv-0.35.0-ead8469-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_i686/mpv-0.35.0-ead8469-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_x86_64/mpv-0.35.0-ead8469-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '184895e4391246001fbe6b1a945880440ae591401db014de9914f80397527215',
-     armv7l: '184895e4391246001fbe6b1a945880440ae591401db014de9914f80397527215',
-       i686: '1649db6f99162855051d4823b9e24fe265bfe24d55f1c13f820fd9ec328f16f4',
-     x86_64: 'a5cad18396c8a8d3e8be1add95c457bda0eb71c6c78fa635aa594f5c04970b19'
+    aarch64: '37ad11ac5ea437938829c4f59b01e7e254f5fad021b734c79a684865ce5fde86',
+     armv7l: '37ad11ac5ea437938829c4f59b01e7e254f5fad021b734c79a684865ce5fde86',
+       i686: '04ea3976c5e8a0b89a71cbd3706f37653866f5e8d20e3ca3c74396d84ffc21a7',
+     x86_64: '0bc54f5f6e50c8c9e3912cffedfe1ea61b35f8abd293e56742f2a31c19529c23'
   })
 
   depends_on 'alsa_lib' # R
@@ -76,7 +76,9 @@ class Mpv < Package
     system "meson \
       #{CREW_MESON_OPTIONS} \
       -Dwayland=disabled \
+      -Dlibmpv=true \
       -Dgl-x11=enabled \
+      -Dsdl2=enabled \
       builddir"
     # mpv conf file
     File.write 'mpv.conf', <<~MPVCONF

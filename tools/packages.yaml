@@ -3120,6 +3120,11 @@ url: https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 activity: low
 ---
 kind: url
+name: jellyfin_media_player
+url: https://github.com/jellyfin/jellyfin-media-player/releases
+activity: medium
+---
+kind: url
 name: jemalloc
 url: https://github.com/jemalloc/jemalloc/releases
 activity: low
@@ -3488,6 +3493,11 @@ kind: url
 name: libcdio_paranoia
 url: https://github.com/rocky/libcdio-paranoia/releases
 activity: none
+---
+kind: url
+name: libcec
+url: https://github.com/Pulse-Eight/libcec/releases
+activity: low
 ---
 kind: url
 name: libcerf
@@ -5850,6 +5860,11 @@ url: https://sourceforge.net/projects/p7zip/files/p7zip/
 activity: none
 ---
 kind: url
+name: p8_platform
+url: https://github.com/Pulse-Eight/platform/tags
+activity: low
+---
+kind: url
 name: packer
 url: https://releases.hashicorp.com/packer/
 activity: medium
@@ -6710,6 +6725,11 @@ url: http://download.qt.io/official_releases/qt/
 activity: medium
 ---
 kind: url
+name: qtquickcontrols
+url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
+activity: medium
+---
+kind: url
 name: qtscript
 url: http://download.qt.io/official_releases/qt/
 activity: medium
@@ -6732,6 +6752,16 @@ activity: high
 kind: url
 name: qtwayland
 url: http://download.qt.io/official_releases/qt/
+activity: medium
+---
+kind: url
+name: qtwebchannel
+url: https://invent.kde.org/qt/qt/qtwebchannel/-/tags
+activity: medium
+---
+kind: url
+name: qtwebengine
+url: https://invent.kde.org/qt/qt/qtwebengine/-/tags
 activity: medium
 ---
 kind: url
