@@ -8,7 +8,7 @@ class Qtwebengine < Package
   homepage 'https://www.qt.io'
   version '5.15.7-3d23b37'
   license 'LGPL3 LGPL2.1 BSD'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtwebengine.git'
   git_hashtag '3d23b379a7c0a87922f9f5d9600fde8c4e58f1fd'
 
@@ -86,12 +86,16 @@ class Qtwebengine < Package
         system 'git checkout 5eedfe23148a234211ba477f76fc2ea2e8529189'
       end
     end
+    # From https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html
+    system "sed -i 's/NINJAJOBS/NINJA_JOBS/' src/core/gn_run.pro", exception: false
   end
 
   def self.build
     # Nodebrew need to be used to have node installed, otherwise quit.
     abort if `nodebrew ls`.include?('not installed')
+    @jumbo_build = ARCH == 'x86_64' ? '1' : '0'
     system "qmake CONFIG+=force_debug_info -- \
+    -webengine-jumbo-build #{@jumbo_build} \
     -proprietary-codecs \
     -system-ffmpeg \
     -webp \
@@ -101,7 +105,7 @@ class Qtwebengine < Package
     -webengine-webrtc-pipewire"
     # This eventually succeeds on x86_64. Maybe a for loop here might be
     # a better choice to keep restarting make?
-    system 'make -j1 || make -j1 || make -j1 || make -j1 || make -j1'
+    system 'NINJAJOBS=4 make || NINJAJOBS=3 make || NINJAJOBS=2 make || NINJAJOBS=1 make'
   end
 
   def self.install
