@@ -104,7 +104,7 @@ class Ffmpeg < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'libglvnd' # R
-  no_env_options if ARCH == 'aarch64' || ARCH == 'armv7l'
+  no_env_options if %w[aarch64 armv7l].include? ARCH
 
   def self.patch
     # Needed for qtwebengine compatibility.

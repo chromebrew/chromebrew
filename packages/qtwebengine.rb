@@ -44,7 +44,7 @@ class Qtwebengine < Package
   depends_on 'libxrandr' => :build
   depends_on 'libxslt' # R
   depends_on 'libxss' => :build
-  depends_on 'node' => :build
+  depends_on 'nodebrew' => :build
   depends_on 'nss' # R
   depends_on 'opus' # R
   depends_on 'pciutils' # R
