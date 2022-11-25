@@ -26,7 +26,7 @@ class Gettext < Package
   depends_on 'acl' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  depends_on 'jdk8' => :build
+  # depends_on 'jdk8' => :build
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
   depends_on 'openmp'
