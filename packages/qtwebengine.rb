@@ -91,8 +91,13 @@ class Qtwebengine < Package
   end
 
   def self.build
-    # Nodebrew need to be used to have node installed, otherwise quit.
-    abort if `nodebrew ls`.include?('not installed')
+    # Nodejs is needed for this install, and nodejs is installed by
+    # nodebrew.
+    if `nodebrew ls`.include?('not installed')
+      puts 'nodejs is not configured!'.lightred
+      puts "Please run 'crew postinstall nodebrew' for more info.".orange
+      abort
+    end
     @jumbo_build = ARCH == 'x86_64' ? '1' : '0'
     system "qmake CONFIG+=force_debug_info -- \
     -webengine-jumbo-build #{@jumbo_build} \
