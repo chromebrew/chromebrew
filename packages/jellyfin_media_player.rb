@@ -62,8 +62,9 @@ class Jellyfin_media_player < Package
 
   def self.postinstall
     puts
-    puts 'Please run this to finish the install:'.lightblue
-    puts "echo 'alias jellyfinmediaplayer=\"QT_QPA_PLATFORM=eglfs jellyfinmediaplayer\"' >> ~/.bashrc".lightblue
+    puts 'Please run the following to finish the install:'.orange
+    puts "echo -e '\\nalias jellyfinmediaplayer=\"QT_QPA_PLATFORM=eglfs jellyfinmediaplayer\"' >> ~/.bashrc".lightblue
+    puts 'source ~/.bashrc'.lightblue
     puts
   end
 end
