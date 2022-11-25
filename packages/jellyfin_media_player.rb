@@ -59,4 +59,11 @@ class Jellyfin_media_player < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
+
+  def self.postinstall
+    puts
+    puts 'Please run this to finish the install:'.lightblue
+    puts "echo 'alias jellyfinmediaplayer=\"QT_QPA_PLATFORM=eglfs jellyfinmediaplayer\"' >> ~/.bashrc".lightblue
+    puts
+  end
 end
