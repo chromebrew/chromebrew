@@ -16,7 +16,7 @@ class Jellyfin_media_player < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.7.1_x86_64/jellyfin_media_player-1.7.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'cc9b3a3d9e518c5c85aca4d4f6b4dbbcb6edf7e648f946f83cb59e5517279b15'
+    x86_64: '90634aa0f7fef255af311c1371909a69e086d7bc3d067a584375bf20ba5e4041'
   })
 
   depends_on 'gcc' # R
@@ -24,12 +24,12 @@ class Jellyfin_media_player < Package
   depends_on 'libcec' unless ARCH == 'i686'
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'libsdl2' => :build
+  depends_on 'libsdl2' # R
   depends_on 'libsm' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrandr' # R
-  depends_on 'mpv' => :build
+  depends_on 'mpv' # R
   depends_on 'p8_platform' unless ARCH == 'i686'
   depends_on 'protobuf' => :build
   depends_on 'qtbase' # R

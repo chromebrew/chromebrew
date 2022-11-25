@@ -13,10 +13,10 @@ class Qtwebengine < Package
   git_hashtag '3d23b379a7c0a87922f9f5d9600fde8c4e58f1fd'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.11-3d23b37_x86_64/qtwebengine-5.15.11-3d23b37-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.7-3d23b37_x86_64/qtwebengine-5.15.7-3d23b37-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'cff5c52594bd2b4fe929bcf675b52d51c206dfc519b755e457421df222ccb925'
+    x86_64: '734f050156e52a6fee7666a9601c70e6ddc0df87fbd9ee178ccae5faf51b7f5b'
   })
 
   depends_on 'alsa_lib' # R
@@ -99,6 +99,8 @@ class Qtwebengine < Package
     -webengine-icu \
     -webengine-kerberos \
     -webengine-webrtc-pipewire"
+    # This eventually succeeds on x86_64. Maybe a for loop here might be
+    # a better choice to keep restarting make?
     system 'make -j1 || make -j1 || make -j1 || make -j1 || make -j1'
   end
 
