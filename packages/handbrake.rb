@@ -13,7 +13,7 @@ class Handbrake < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.6-d260dde_x86_64/handbrake-1.6-d260dde-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'f23adc25cb67306f9c02b074e923a12b26d490dd1432dbb22a7649d7daa176f1'
+    x86_64: '95ffecf8fe9eba20ef4f85e1091330930ca9742ec467b64d047684b734b8998c'
   })
 
   depends_on 'atk' # R
@@ -85,16 +85,20 @@ class Handbrake < Package
     Dir.chdir 'x86_64-cros-linux-gnu' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-handbrake", <<~'HANDBRAKE_ENVD_EOF'
+      alias ghb="GDK_BACKEND=wayland ghb"
+    HANDBRAKE_ENVD_EOF
   end
+end
 
-  def self.postinstall
-    puts
-    puts "To get started, type 'ghb'.".lightblue
-    puts
-    puts "Type 'HandBrakeCLI' for the command line.".lightblue
-    puts
-    puts 'To complete the installation, execute the following:'.lightblue
-    puts "echo 'alias ghb=\"GDK_BACKEND=wayland ghb\"' >> ~/.bashrc".lightblue
-    puts
-  end
+def self.postinstall
+  puts
+  puts "To get started, type 'ghb'.".lightblue
+  puts
+  puts "Type 'HandBrakeCLI' for the command line.".lightblue
+  puts
+  puts 'Please run the following to finish the install:'.orange
+  puts "source #{CREW_PREFIX}/etc/env.d/10-handbrake".lightblue
+  puts
 end
