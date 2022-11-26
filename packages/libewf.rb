@@ -23,7 +23,6 @@ class Libewf < Package
   })
 
   depends_on 'bz2'
-  depends_on 'py3_six'
   depends_on 'util_linux'
 
   def self.build

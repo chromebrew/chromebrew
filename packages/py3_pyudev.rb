@@ -23,7 +23,6 @@ class Py3_pyudev < Package
      x86_64: '40f85661d9dbfac8a0f9a356b346b86ab9251af10821f24b72fd831b95da7cc6'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

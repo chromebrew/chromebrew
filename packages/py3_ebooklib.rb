@@ -24,7 +24,6 @@ class Py3_ebooklib < Package
   })
 
   depends_on 'py3_lxml'
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

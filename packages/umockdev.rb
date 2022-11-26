@@ -25,7 +25,6 @@ class Umockdev < Package
   depends_on 'glib'
   depends_on 'libgudev'
   depends_on 'vala' => :build
-  depends_on 'py3_six' => :build
 
   def self.build
     system './autogen.sh'

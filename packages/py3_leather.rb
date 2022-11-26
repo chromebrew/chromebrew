@@ -23,7 +23,6 @@ class Py3_leather < Package
      x86_64: 'e2af8d01d60392799ee3a8bf4624b4df30b4644288da9df8226e3386d9cc1313'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

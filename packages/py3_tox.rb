@@ -25,7 +25,6 @@ class Py3_tox < Package
 
   depends_on 'py3_py'
   depends_on 'py3_filelock'
-  depends_on 'py3_six'
   depends_on 'py3_packaging'
   depends_on 'py3_virtualenv'
   depends_on 'py3_pluggy'

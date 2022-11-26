@@ -33,7 +33,6 @@ class Textract < Package
   depends_on 'py3_speechrecognition'
   depends_on 'py3_chardet'
   depends_on 'py3_beautifulsoup4'
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

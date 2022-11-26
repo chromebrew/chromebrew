@@ -25,7 +25,6 @@ class Py3_virtualenv < Package
 
   depends_on 'py3_appdirs'
   depends_on 'py3_distlib'
-  depends_on 'py3_six'
   depends_on 'py3_pip'
   depends_on 'py3_setuptools' => :build
 

@@ -24,7 +24,6 @@ class Py3_agate < Package
   })
 
   depends_on 'py3_babel'
-  depends_on 'py3_six'
   depends_on 'py3_pyicu'
   depends_on 'py3_pytimeparse'
   depends_on 'py3_slugify'

@@ -25,7 +25,6 @@ class Py3_pyopenssl < Package
 
   depends_on 'openssl'
   depends_on 'py3_cryptography'
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

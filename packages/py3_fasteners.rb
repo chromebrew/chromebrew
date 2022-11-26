@@ -23,7 +23,6 @@ class Py3_fasteners < Package
      x86_64: '98bfe6cd0c785de714d712d0f878334feb0356a5d55e18c4a6f81bd60268857e'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

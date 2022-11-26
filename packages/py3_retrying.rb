@@ -23,7 +23,6 @@ class Py3_retrying < Package
      x86_64: 'e2959eed9284e9e306e1168b47bf81c242041359ca33311fc1c30c34b4a94b3b'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

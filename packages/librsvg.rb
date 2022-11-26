@@ -26,7 +26,7 @@ class Librsvg < Package
   depends_on 'fontconfig'
   depends_on 'harfbuzz'
   depends_on 'fribidi'
-  depends_on 'gdk_pixbuf'
+  # depends_on 'gdk_pixbuf'
   depends_on 'glib'
   depends_on 'gobject_introspection'
   depends_on 'harfbuzz'
@@ -36,7 +36,6 @@ class Librsvg < Package
   depends_on 'pango'
   depends_on 'py3_smartypants' => :build
   depends_on 'rust' => :build
-  depends_on 'py3_six' => :build
   depends_on 'vala' => :build
   depends_on 'expat' # R
   depends_on 'freetype' # R

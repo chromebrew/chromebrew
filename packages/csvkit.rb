@@ -23,7 +23,6 @@ class Csvkit < Package
      x86_64: 'fe7412b386c56fd7db0dac7b7b60dcd342f84419324630775d3a841d32a90365'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_agate_dfb'
   depends_on 'py3_agate'
   depends_on 'py3_agate_excel'

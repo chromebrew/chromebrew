@@ -23,7 +23,6 @@ class Py3_isodate < Package
      x86_64: 'ee26e380cd8779368404be244d8d6388a49ca131436975c457eea7b107cde869'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

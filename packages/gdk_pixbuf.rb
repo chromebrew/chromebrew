@@ -35,7 +35,6 @@ class Gdk_pixbuf < Package
   depends_on 'py3_jinja2' => :build
   depends_on 'py3_markdown' => :build
   depends_on 'py3_pygments' => :build
-  depends_on 'py3_six' => :build
   depends_on 'py3_toml' => :build
   depends_on 'py3_typogrify' => :build
   depends_on 'glibc' # R

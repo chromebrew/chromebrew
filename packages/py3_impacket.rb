@@ -27,7 +27,6 @@ class Py3_impacket < Package
   depends_on 'py3_flask'
   depends_on 'py3_pyasn1'
   depends_on 'py3_pyopenssl'
-  depends_on 'py3_six'
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
   depends_on 'py3_setuptools' => :build

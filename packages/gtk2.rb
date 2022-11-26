@@ -43,7 +43,6 @@ class Gtk2 < Package
   depends_on 'libxrender'
   depends_on 'pango'
   depends_on 'shared_mime_info'
-  depends_on 'py3_six' => :build
   depends_on 'expat' # R
   depends_on 'glibc' # R
   depends_on 'libbsd' # R

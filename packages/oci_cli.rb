@@ -24,7 +24,6 @@ class Oci_cli < Package
   })
 
   depends_on 'py3_arrow'
-  depends_on 'py3_six'
   depends_on 'py3_terminaltables'
   depends_on 'py3_certifi'
   depends_on 'py3_dateutil'

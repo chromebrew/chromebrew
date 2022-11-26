@@ -37,7 +37,6 @@ class Harfbuzz < Package
   depends_on 'libpng'
   depends_on 'pixman' # Needed for cairo subproject
   depends_on 'pcre'
-  depends_on 'py3_six' => :build
   depends_on 'zlibpkg'
   depends_on 'expat' # R
   # depends_on 'freetype' # R harfbuzz provides this.

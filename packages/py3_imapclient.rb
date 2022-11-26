@@ -23,7 +23,6 @@ class Py3_imapclient < Package
      x86_64: 'be9e0af74cbc09d92effd663429657582ea794644091a26d6938446cbe1e02d9'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_setuptools' => :build
 
   def self.build

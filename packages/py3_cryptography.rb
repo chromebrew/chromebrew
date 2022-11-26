@@ -24,7 +24,6 @@ class Py3_cryptography < Package
   })
 
   depends_on 'py3_cffi'
-  depends_on 'py3_six'
   depends_on 'py3_typing_extensions'
   depends_on 'py3_setuptools_rust' => :build
   depends_on 'py3_pycparser' => :build

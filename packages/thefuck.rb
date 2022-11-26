@@ -23,7 +23,6 @@ class Thefuck < Package
      x86_64: 'f51e73b3c59d1052923d4b6dd72af0767c6ad0a9ba05911cf1954d3dcd02f436'
   })
 
-  depends_on 'py3_six'
   depends_on 'py3_colorama'
   depends_on 'py3_psutil'
   depends_on 'py3_pyte'

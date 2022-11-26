@@ -9,5 +9,4 @@ class Six < Package
 
   is_fake
 
-  depends_on 'py3_six'
 end

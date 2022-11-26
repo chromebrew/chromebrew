@@ -23,7 +23,6 @@ class Speedometer < Package
   })
 
   depends_on 'py3_psutil'
-  depends_on 'py3_six'
   depends_on 'py3_nuitka' => :build
 
   def self.patch
