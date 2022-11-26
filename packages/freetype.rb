@@ -3,24 +3,11 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.12.0' # Update freetype in harfbuzz when updating freetype
+  version '2.12.1' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
   git_hashtag "VER-#{version.tr('.', '-')}"
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.0_armv7l/freetype-2.12.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.0_armv7l/freetype-2.12.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.0_i686/freetype-2.12.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.0_x86_64/freetype-2.12.0-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '7ff2e02d08ead4e7b5fb1a16d4e8f5551a4420a51a8b0dae8f12d33d308d469a',
-     armv7l: '7ff2e02d08ead4e7b5fb1a16d4e8f5551a4420a51a8b0dae8f12d33d308d469a',
-       i686: 'b2c34d291f9324105f712434274c4d360c3e98b8b567162d44b54ff74b22b3ba',
-     x86_64: 'a49bad49bfc204855936a8124229f1e8b21cb11e719981dd925c76edfecea0de'
-  })
 
   depends_on 'brotli'
   depends_on 'bz2'
@@ -32,6 +19,8 @@ class Freetype < Package
   depends_on 'librsvg'
   depends_on 'pcre'
   depends_on 'zlibpkg'
+  depends_on 'glibc' # R
+  depends_on 'libpng' # R
   # to avoid resetting mold usage
   no_env_options
   # This overwrites the freetype in harfbuzz, which have
@@ -113,7 +102,7 @@ class Freetype < Package
 
   def self.postinstall
     # make sure to delete downloaded files
-    system "find #{CREW_BREW_DIR}/* -name freetype*.tar -exec rm -rf {} \+"
+    system "find #{CREW_BREW_DIR}/* -name freetype*.tar -exec rm -rf {} +"
     # This should become a function.
     # check for conflicts with other installed files
     @override_allowed = %w[fontconfig harfbuzz]
@@ -132,11 +121,11 @@ class Freetype < Package
       conflicts.each do |conflict|
         conflict.each do |thisconflict|
           singleconflict = thisconflict.split(':', -1)
-          system "sed -i '\\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
+          system "sed -i '\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
         end
       end
     end
-      return if File.file?("#{CREW_LIB_PREFIX}/#{@libname}.la")
+    return if File.file?("#{CREW_LIB_PREFIX}/#{@libname}.la")
 
     # Create libtool file. Needed by
     @libname = name.to_s.start_with?('lib') ? name.downcase : "lib#{name.downcase}"

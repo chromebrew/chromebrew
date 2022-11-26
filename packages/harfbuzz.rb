@@ -3,7 +3,7 @@ require 'package'
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  @_ver = '5.2.0'
+  @_ver = '5.3.1'
   version @_ver
   license 'Old-MIT, ISC and icu'
   compatibility 'all'
@@ -79,40 +79,7 @@ class Harfbuzz < Package
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/libpng*"]
     FileUtils.rm Dir["#{CREW_DEST_PREFIX}/include/libpng16/png*"]
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/pkgconfig/libpng*"]
-  end
-
-  def self.preinstall
-    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
-    if @device[:installed_packages].any? { |elem| elem[:name] == 'freetype' }
-      system "sed -i '/freetype2/d;/libfreetype/d' filelist"
-      system "sed -i '/freetype2/d;/libfreetype/d' dlist"
-    end
-  end
-
-  def self.postinstall
-    # This should become a function.
-    # check for conflicts with other installed files
-    @override_allowed = %w[fontconfig cairo]
-    puts 'Checking for conflicts with files from installed packages...'
-    conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
-    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-    conflicts.reject!(&:empty?)
-    unless conflicts.empty?
-      if conflicts_ok?
-        puts 'Warning: There is a conflict with the same file in another package.'.orange
-      else
-        puts 'Error: There is a conflict with the same file in another package.'.lightred
-        @_errors = 1
-      end
-      conflicts.each do |conflict|
-        conflict.each do |thisconflict|
-          singleconflict = thisconflict.split(':', -1)
-          system "sed -i '\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
-        end
-      end
-    end
-      # Create libtool file. Needed by handbrake build
+        # Create libtool file. Needed by handbrake build
     return if File.file?("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la")
 
     @libname = name.to_s.start_with?('lib') ? name.downcase : "lib#{name.downcase}"
@@ -170,5 +137,38 @@ class Harfbuzz < Package
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
     File.write("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la", @libtool_file)
+  end
+
+  def self.preinstall
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    if @device[:installed_packages].any? { |elem| elem[:name] == 'freetype' }
+      system "sed -i '/freetype2/d;/libfreetype/d' filelist"
+      system "sed -i '/freetype2/d;/libfreetype/d' dlist"
+    end
+  end
+
+  def self.postinstall
+    # This should become a function.
+    # check for conflicts with other installed files
+    @override_allowed = %w[fontconfig cairo]
+    puts 'Checking for conflicts with files from installed packages...'
+    conflicts = []
+    conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
+    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+    conflicts.reject!(&:empty?)
+    unless conflicts.empty?
+      if conflicts_ok?
+        puts 'Warning: There is a conflict with the same file in another package.'.orange
+      else
+        puts 'Error: There is a conflict with the same file in another package.'.lightred
+        @_errors = 1
+      end
+      conflicts.each do |conflict|
+        conflict.each do |thisconflict|
+          singleconflict = thisconflict.split(':', -1)
+          system "sed -i '\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
+        end
+      end
+    end
   end
 end
