@@ -3,24 +3,24 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.1.12'
+  @_ver = '8.1.13'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '08243359e2204d842082269eedc15f08d2eca726d0e65b93fb11f4bfc51bbbab'
+  source_sha256 'b15ef0ccdd6760825604b3c4e3e73558dcf87c75ef1d68ef4289d8fd261ac856'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.12_armv7l/php81-8.1.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.12_armv7l/php81-8.1.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.12_i686/php81-8.1.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.12_x86_64/php81-8.1.12-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.13_armv7l/php81-8.1.13-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.13_armv7l/php81-8.1.13-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.13_i686/php81-8.1.13-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.13_x86_64/php81-8.1.13-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2669254f9e1b60e599977c1880a183dcb8eeb8d4c16ee91b93c7d5c905891908',
-     armv7l: '2669254f9e1b60e599977c1880a183dcb8eeb8d4c16ee91b93c7d5c905891908',
-       i686: '723fbb0181cabf4e80132e35e9d044100542fd9a220c8aa1539fbd76633606d4',
-     x86_64: '122a9774aaa75d640ddd5c84207fc4908b3b57413c858c59d4ea034e1e4cc3bb'
+    aarch64: '22a596a25e699784f63541db5a96917384dd134adaa0c1708a45f41db1eac300',
+     armv7l: '22a596a25e699784f63541db5a96917384dd134adaa0c1708a45f41db1eac300',
+       i686: 'b42191c2bf4d71460a773a0af668502bba76ed18409ffc7d51cb795e87a2187c',
+     x86_64: '5b59b6fc9032e651d9ec00454e62a446d6d2793a0482a1a344c1d8fa8d737220'
   })
 
   depends_on 'aspell_en'
