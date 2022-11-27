@@ -1675,6 +1675,11 @@ url: http://kernel.ubuntu.com/~cking/tarballs/fnotifystat/
 activity: medium
 ---
 kind: url
+name: foliate
+url: https://github.com/johnfactotum/foliate/releases
+activity: low
+---
+kind: url
 name: folks
 url: https://gitlab.gnome.org/GNOME/folks/-/tags
 activity: low
