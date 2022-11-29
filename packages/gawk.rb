@@ -3,55 +3,46 @@ require 'package'
 class Gawk < Package
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  @_ver = '5.1.1'
-  version "#{@_ver}-1"
+  @_ver = '5.2.1'
+  version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://git.savannah.gnu.org/git/gawk.git'
-  git_hashtag "gawk-#{@_ver}"
+  source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.2.1.tar.xz'
+  source_sha256 '673553b91f9e18cc5792ed51075df8d510c9040f550a6f74e09c9add243a7e4f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_armv7l/gawk-5.1.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_armv7l/gawk-5.1.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_i686/gawk-5.1.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.1.1-1_x86_64/gawk-5.1.1-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.2.1_armv7l/gawk-5.2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.2.1_armv7l/gawk-5.2.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.2.1_i686/gawk-5.2.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.2.1_x86_64/gawk-5.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0963d6d7067653da8039fc4182235d7b8b75bb4adc8e2448e122a85d00cb3d93',
-     armv7l: '0963d6d7067653da8039fc4182235d7b8b75bb4adc8e2448e122a85d00cb3d93',
-       i686: '9c6609595c2fa11e1a5e9ddda7e6a592b4040549a37915ebae929ba12fa41fea',
-     x86_64: '2734c6270be8ee586007e4389c762b956f993d7503e9cb7d863c2b675bde9e2b'
+    aarch64: '863fcd2f1e6a601803aba0c43045ccaef706c3d1ceae301cee0f998daf300d8a',
+     armv7l: '863fcd2f1e6a601803aba0c43045ccaef706c3d1ceae301cee0f998daf300d8a',
+       i686: 'd8630d6aec58188e3eb1e333b0a3dc7193e083a4389b1f3ab0f7cc5e6ec060fb',
+     x86_64: '411fe8d629fbd4b95a419ec41a03dbab52a753f28333b394d8aa89691c85cae9'
   })
 
-  depends_on 'readline' => :build
-  depends_on 'ncurses'
-  depends_on 'mpfr'
-  depends_on 'gmp'
-
-  def self.patch
-    # Ironically libsigsegv causes crashes on i686
-    return unless ARCH == 'i686'
-
-    system "sed -i 's,\$(top_srcdir)/m4/libsigsegv.m4,,g' Makefile.in"
-    FileUtils.rm 'm4/libsigsegv.m4'
-  end
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'libsigsegv' # R
+  depends_on 'mpfr' # R
+  depends_on 'ncurses' => :build
+  depends_on 'readline' # R
 
   def self.build
-    system 'autoreconf -fvi'
-    system 'filefix'
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS} \
+      --without-libsigsegv-prefix"
     system 'make'
   end
 
   def self.check
-    # Still has failing issues on i686.
-    system 'make check || true'
+    system 'make', 'check'
   end
 
   def self.install
-    # Conflict with /usr/local/bin/awk from mawk package.
-    ENV['CREW_CONFLICTS_ONLY_ADVISORY'] = '1'
-    reload_constants
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # Remove conflict with #{CREW_PREFIX}/bin/awk from mawk package
+    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/awk"
   end
 end
