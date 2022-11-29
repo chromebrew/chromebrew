@@ -32,7 +32,7 @@ class Containers_common < Package
     @shortnames_version = 'v2022.02.08'
     @skopeo_version = 'v1.6.1'
     @storage_version = 'v1.38.2'
-    
+
     Dir.glob('docs/*.md') do |_man_page|
       system "go-md2man -in #{_man_page} -out #{File.basename(_man_page, '.md')}"
     end

@@ -26,11 +26,11 @@ class Containerd < Package
   depends_on 'docker_systemctl_replacement'
   depends_on 'fuse_overlayfs'
   depends_on 'runc'
-  depends_on 'go' => ':build'
-  depends_on 'btrfsprogs' => ':build'
-  depends_on 'libseccomp' => ':build'
-  depends_on 'containers_common' => ':build'
-  depends_on 'go_md2man' => ':build'
+  depends_on 'go' => :build
+  depends_on 'btrfsprogs' => :build
+  depends_on 'libseccomp' => :build
+  depends_on 'containers_common' => :build
+  depends_on 'go_md2man' => :build
   no_fhs
 
   def self.patch

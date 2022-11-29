@@ -25,8 +25,8 @@ class Netavark < Package
      x86_64: '78b18d0e1c2271b376b9ed5173185b39e109dd50140d5f8ba71177d4b8f46410'
   })
 
-  depends_on 'libgit2' => ':build'
-  depends_on 'mandown' => ':build'
+  depends_on 'libgit2' => :build
+  depends_on 'mandown' => :build
 
   def self.build
     @carch = ARCH == 'aarch64' || ARCH == 'armv7l' ? 'armv7-unknown-linux-gnueabihf' : "#{ARCH}-unknown-linux-gnu"

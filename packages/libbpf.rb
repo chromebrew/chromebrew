@@ -24,7 +24,7 @@ class Libbpf < Package
   })
 
   depends_on 'elfutils'
-  depends_on 'rsync' => ':build'
+  depends_on 'rsync' => :build
 
   def self.patch
     system "sed -i 's,PREFIX ?= /usr,PREFIX ?= #{CREW_PREFIX},g' src/Makefile"

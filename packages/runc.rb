@@ -24,8 +24,8 @@ class Runc < Package
   })
 
   depends_on 'libseccomp'
-  depends_on 'go' => ':build'
-  depends_on 'go_md2man' => ':build'
+  depends_on 'go' => :build
+  depends_on 'go_md2man' => :build
 
   def self.build
     system "BUILDTAGS='seccomp apparmor' \

@@ -31,10 +31,10 @@ class Docker < Package
   depends_on 'iproute2'
   depends_on 'lvm2'
   depends_on 'sqlite'
-  depends_on 'btrfsprogs' => ':build'
-  depends_on 'elogind' => ':build'
-  depends_on 'go' => ':build'
-  depends_on 'go_md2man' => ':build'
+  depends_on 'btrfsprogs' => :build
+  depends_on 'elogind' => :build
+  depends_on 'go' => :build
+  depends_on 'go_md2man' => :build
   no_env_options
   no_fhs
 

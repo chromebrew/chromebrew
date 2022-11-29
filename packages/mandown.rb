@@ -25,7 +25,7 @@ class Mandown < Package
      x86_64: '921636c6aefbba2ab7a1fcc0e27f577b02b40ffbe841f6e837ff676a11b9d52e'
   })
 
-  depends_on 'rust' => ':build'
+  depends_on 'rust' => :build
 
   def self.build
     system 'cargo build --release --all-features --target-dir=target'
