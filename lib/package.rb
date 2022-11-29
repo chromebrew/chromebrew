@@ -91,7 +91,7 @@ class Package
     # parse dependencies recursively
     expandedDeps = deps.uniq.map do |dep, depTags|
       # check build dependencies only if building from source is needed/specified
-      next unless !depTags.include?(:build)
+      next if (depTags.include?(:build) && pkgName != pkgObj.name)
 
       # overwrite tags if parent dependency is a build dependency
       # (for build dependencies highlighting)
