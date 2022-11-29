@@ -23,7 +23,7 @@ class Go_md2man < Package
      x86_64: 'e1980595f9ff429ed47c7d8a2f57e5bf8a20e1d83277c0331d330d98b8558e97'
   })
 
-  depends_on 'go'
+  depends_on 'go' => :build
 
   def self.build
     system "GOFLAGS='-buildmode=pie -mod=vendor -trimpath' CGO_LDFLAGS=$LDFLAGS go build -o go-md2man ."
