@@ -2,10 +2,6 @@
 
 CREW_VERSION = '1.28.5'
 
-# This is not a constant, but may be set once on every crew run from
-# package.rb, based upon which package is first being operated upon.
-@crew_current_package = nil
-
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
 

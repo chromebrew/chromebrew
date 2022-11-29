@@ -41,7 +41,6 @@ class Package
     pkgObj = const_get(className)
     pkgObj.name = pkgName
 
-    # This is set to nil in const.rb
     @crew_current_package = @crew_current_package.nil? ? pkgObj.name : @crew_current_package
 
     return pkgObj
