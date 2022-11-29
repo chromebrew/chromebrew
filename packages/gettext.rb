@@ -3,30 +3,29 @@ require 'package'
 class Gettext < Package
   description 'GNU gettext utilities are a set of tools that provides a framework to help other GNU packages produce multi-lingual messages.'
   homepage 'https://www.gnu.org/software/gettext/'
-  @_ver = '0.21'
-  version "#{@_ver}-2"
+  version '0.21.1'
   license 'GPL-3+ and LGPL-2.1+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/gettext/gettext-#{@_ver}.tar.lz"
-  source_sha256 '435b546e3880ab767c967c0731b20629a0cb0ba620e6bac2f590f401c10ebb45'
+  source_url 'https://ftpmirror.gnu.org/gettext/gettext-0.21.1.tar.lz'
+  source_sha256 '53ae95b7ac8b6f6996a85076cf4f7c8b32c8c4027387b7b989dd0796333c8c8f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-2_armv7l/gettext-0.21-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-2_armv7l/gettext-0.21-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-2_i686/gettext-0.21-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21-2_x86_64/gettext-0.21-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21.1_armv7l/gettext-0.21.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21.1_armv7l/gettext-0.21.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21.1_i686/gettext-0.21.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.21.1_x86_64/gettext-0.21.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0c4ba6f36d8c248903ab10ab34859ef7894ed943b5b75f0f7f989cafa3b3396f',
-     armv7l: '0c4ba6f36d8c248903ab10ab34859ef7894ed943b5b75f0f7f989cafa3b3396f',
-       i686: '1b8b246ad1bc3b4fd463e91b93b82e4f69479642f1bf27332d82be2809617f39',
-     x86_64: '4ada2428329f3fc4098b4fab8cc81d816028a7ac283c359c86fdc1d569a52af3'
+    aarch64: '351a7a13f1f1a788d544bab4805d7b6100cd5db44f39ec99c1872d1a459d05d8',
+     armv7l: '351a7a13f1f1a788d544bab4805d7b6100cd5db44f39ec99c1872d1a459d05d8',
+       i686: '95ca3c205f9bb33a5ab362cf2095b159807e094a9357040f05c9211b01104af0',
+     x86_64: '9f3d76554b800278b04718bec4e792848d4af052aa732c85beeafcedd58f8201'
   })
 
   depends_on 'acl' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  depends_on 'jdk8' => :build
+  depends_on 'openjdk8' => :build
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
   depends_on 'openmp'
