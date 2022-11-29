@@ -25,7 +25,7 @@ class Wayland_protocols < Package
   depends_on 'wayland' # L
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dtests=false \
      builddir"
     system 'meson configure builddir'
