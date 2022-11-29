@@ -95,7 +95,9 @@ class Package
     expandedDeps = deps.uniq.map do |dep, depTags|
       # check build dependencies only if building from source is needed/specified
       # Do not recursively find :build based build dependencies.
-      next if (depTags.include?(:build) && @crew_current_package != pkgObj.name)
+      next unless (include_build_deps == true && @crew_current_package == pkgObj.name) || \
+                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkgObj.name) || \
+                  !depTags.include?(:build)
 
       # overwrite tags if parent dependency is a build dependency
       # (for build dependencies highlighting)
