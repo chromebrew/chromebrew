@@ -3,38 +3,40 @@ require 'package'
 class Gawk < Package
   description 'The gawk utility interprets a special-purpose programming language that makes it possible to handle simple data-reformatting jobs with just a few lines of code.'
   homepage 'https://www.gnu.org/software/gawk/'
-  @_ver = '5.2.0'
+  @_ver = '5.2.1'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.2.0.tar.xz'
-  source_sha256 'e4ddbad1c2ef10e8e815ca80208d0162d4c983e6cca16f925e8418632d639018'
+  source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.2.1.tar.xz'
+  source_sha256 '673553b91f9e18cc5792ed51075df8d510c9040f550a6f74e09c9add243a7e4f'
 
-  depends_on 'readline' => :build
-  depends_on 'ncurses'
-  depends_on 'mpfr'
-  depends_on 'gmp'
-  depends_on 'libsigsegv' unless ARCH == 'i686'
+  binary_url({
+     aarch64: 'file:///usr/local/tmp/packages/gawk-5.2.1-chromeos-armv7l.tar.zst',
+      armv7l: 'file:///usr/local/tmp/packages/gawk-5.2.1-chromeos-armv7l.tar.zst',
+        i686: 'file:///usr/local/tmp/packages/gawk-5.2.1-chromeos-i686.tar.zst',
+      x86_64: 'file:///usr/local/tmp/packages/gawk-5.2.1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+     aarch64: '863fcd2f1e6a601803aba0c43045ccaef706c3d1ceae301cee0f998daf300d8a',
+      armv7l: '863fcd2f1e6a601803aba0c43045ccaef706c3d1ceae301cee0f998daf300d8a',
+        i686: 'd8630d6aec58188e3eb1e333b0a3dc7193e083a4389b1f3ab0f7cc5e6ec060fb',
+      x86_64: '411fe8d629fbd4b95a419ec41a03dbab52a753f28333b394d8aa89691c85cae9'
+  })
 
-  def self.patch
-    # Ironically libsigsegv causes crashes on i686
-    return unless ARCH == 'i686'
-
-    system "sed -i 's,\$(top_srcdir)/m4/libsigsegv.m4,,g' Makefile.in"
-    FileUtils.rm 'm4/libsigsegv.m4'
-  end
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'libsigsegv' # R
+  depends_on 'mpfr' # R
+  depends_on 'ncurses' => :build
+  depends_on 'readline' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS} \
+      --without-libsigsegv-prefix"
     system 'make'
   end
 
   def self.check
-    # Still has failing issues on i686.
-    case ARCH
-    when 'i686'
-      system 'make check || true'
-    else
       system 'make', 'check'
     end
   end
