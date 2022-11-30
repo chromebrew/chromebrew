@@ -90,15 +90,17 @@ class Handbrake < Package
       alias ghb="GDK_BACKEND=wayland ghb"
     HANDBRAKE_ENVD_EOF
   end
+ 
+  def self.postinstall
+    puts
+    puts "To get started, type 'ghb'.".lightblue
+    puts
+    puts "Type 'HandBrakeCLI' for the command line.".lightblue
+    puts
+    puts 'Please run the following to finish the install:'.orange
+    puts "source #{CREW_PREFIX}/etc/env.d/10-handbrake".lightblue
+    puts
+  end
 end
 
-def self.postinstall
-  puts
-  puts "To get started, type 'ghb'.".lightblue
-  puts
-  puts "Type 'HandBrakeCLI' for the command line.".lightblue
-  puts
-  puts 'Please run the following to finish the install:'.orange
-  puts "source #{CREW_PREFIX}/etc/env.d/10-handbrake".lightblue
-  puts
-end
+
