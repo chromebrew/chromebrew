@@ -22,8 +22,11 @@ class Libgconf < Package
      x86_64: 'be97ae6807ad929e22b58e5ce3b561d0b0b49532b9980024aa854ffd762a1ec5'
   })
 
-  depends_on 'dbus_glib'
-  depends_on 'gtk3'
+  depends_on 'dbus' # R
+  depends_on 'dbus_glib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-orbit"

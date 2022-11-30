@@ -3,28 +3,29 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1q'
-  version "#{@_ver}-2"
+  @_ver = '1.1.1s'
+  version @_ver
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
-  source_sha256 'd7939ce614029cdff0b6c20f0e2e5703158a489a72b2507b8bd51bf8c8fd10ca'
+  source_sha256 'c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-2_armv7l/openssl-1.1.1q-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-2_armv7l/openssl-1.1.1q-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-2_i686/openssl-1.1.1q-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1q-2_x86_64/openssl-1.1.1q-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1s_armv7l/openssl-1.1.1s-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1s_armv7l/openssl-1.1.1s-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1s_i686/openssl-1.1.1s-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1s_x86_64/openssl-1.1.1s-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'ce7b09378b0604b14a6f66f09d7b797001be0a2037ab73c0acd7614f6844dffc',
-     armv7l: 'ce7b09378b0604b14a6f66f09d7b797001be0a2037ab73c0acd7614f6844dffc',
-       i686: '9490d940c0eb928a70b2043932d41d2fd5f486b86067616ed76cb591cb6e4c3b',
-     x86_64: 'b408d3943acd24811104f30f4de07ef64df56a8a44467e113418fcf86906a4ee'
+    aarch64: '6befd72e7eac1d745316502b52ad14f72b24cee3bc810920886fe4ae85f1ec41',
+     armv7l: '6befd72e7eac1d745316502b52ad14f72b24cee3bc810920886fe4ae85f1ec41',
+       i686: '690f62d599ec878d59e237aead76631407a48e1b070729a44f00d4e8a6a59193',
+     x86_64: '69e980b70b331ca265ff22c5e649fc31195586fbb61a59f274320610e68a6263'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'glibc' # R
+
   no_patchelf
   no_zstd
 

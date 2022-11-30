@@ -3,32 +3,39 @@ require 'package'
 class Xcb_util_cursor < Package
   description 'The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.'
   homepage 'http://xcb.freedesktop.org'
-  version '0.1.3-1'
-  compatibility 'all'
+  version '0.1.4'
   license 'MIT-with-advertising'
-  source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.3.tar.bz2'
-  source_sha256 '05a10a0706a1a789a078be297b5fb663f66a71fb7f7f1b99658264c35926394f'
+  compatibility 'all'
+  source_url 'https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz'
+  source_sha256 '28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3-1_armv7l/xcb_util_cursor-0.1.3-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3-1_armv7l/xcb_util_cursor-0.1.3-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3-1_i686/xcb_util_cursor-0.1.3-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.3-1_x86_64/xcb_util_cursor-0.1.3-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_armv7l/xcb_util_cursor-0.1.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_armv7l/xcb_util_cursor-0.1.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_i686/xcb_util_cursor-0.1.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_x86_64/xcb_util_cursor-0.1.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bb398e1d06d8a3abcdce6464e012876d1dae75a97497b13cf735222d83a3d97c',
-     armv7l: 'bb398e1d06d8a3abcdce6464e012876d1dae75a97497b13cf735222d83a3d97c',
-       i686: '4194bf613da98147959648bb97edc71c9a1b0cda5be38b73a97b65dbe384bd71',
-     x86_64: '28d724010ae0b1a6c93bcff89f78bfc594d10813d280d79f12384fd09c11fb82'
+    aarch64: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
+     armv7l: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
+       i686: '2e8232bf927297a009da0171ed1a456294c74f1104f99b8fe71aae2bcb904529',
+     x86_64: '0b93d9946e1c41c3fc77c638a76d17d314593ccaa938b0898f57c02076b8c6c5'
   })
 
   depends_on 'xcb_util'
   depends_on 'm4'
   depends_on 'xcb_util_renderutil'
   depends_on 'xcb_util_image'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

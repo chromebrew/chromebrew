@@ -4,7 +4,7 @@ class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
   @_ver = '2.39'
-  version @_ver.to_s
+  version @_ver
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"

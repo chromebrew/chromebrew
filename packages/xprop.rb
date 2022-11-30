@@ -22,7 +22,8 @@ class Xprop < Package
      x86_64: '47d22d5a8bd02ce77b7ccc1955cf821e39c865e637598746a9ca7a38297f1c6f'
   })
 
-  depends_on 'xorg_lib'
+  depends_on 'glibc' # R
+  depends_on 'libx11' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

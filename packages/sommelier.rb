@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20210109-6'
+  version '20221117-3'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag 'f3b2e2b6a8327baa2e62ef61036658c258ab4a09'
+  git_hashtag 'b63df163ab11f07b63d0e7a866f044aa07c7e0b2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_armv7l/sommelier-20210109-6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_armv7l/sommelier-20210109-6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_i686/sommelier-20210109-6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20210109-6_x86_64/sommelier-20210109-6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_armv7l/sommelier-20221117-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_armv7l/sommelier-20221117-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_i686/sommelier-20221117-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20221117-3_x86_64/sommelier-20221117-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
-     armv7l: 'f3cc665556ebd157487b98ab2daefadf067fea0c43971e0c2dcc15628d9c8061',
-       i686: 'b370bc7c96b6018b3c348ee37262eee7981af0b32520649c3e6d2f8680d6e753',
-     x86_64: '32ad19aba00b96889c936c8efec6e09c7eb739a5863742f4537d4bed91e306bc'
+    aarch64: 'bb810cb6c79ea4d3767a2f1e7f55f49318aec27b661646aabb3d6b805999a13b',
+     armv7l: 'bb810cb6c79ea4d3767a2f1e7f55f49318aec27b661646aabb3d6b805999a13b',
+       i686: '3b132883f20f85eca779a8ba91d51af5f28224ade48d3e4abfb30da8014552ff',
+     x86_64: '271109dc9bd10e8feded352b5bdaaf2e109082c478f7a766f24ca3ee9fb33279'
   })
 
   depends_on 'libdrm'
@@ -28,35 +28,26 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon'
+  depends_on 'llvm' # R
   depends_on 'mesa'
   depends_on 'pixman'
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc'
   depends_on 'wayland'
   depends_on 'xauth'
-  depends_on 'xdpyinfo' # for xdpyinfo in wrapper script
-  depends_on 'xsetroot' # for xsetroot in sommelierrc script
+  depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
+  depends_on 'xorg_xset' # for xset in wrapper script
   depends_on 'xhost' # for xhost in sommelierd script
+  depends_on 'xsetroot' # for xsetroot in /usr/local/etc/sommelierrc script
   depends_on 'xwayland'
   depends_on 'xxd_standalone' # for xxd in wrapper script
-
-  case ARCH
-  when 'armv7l', 'aarch64'
-    @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
-  when 'i686'
-    @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
-  when 'x86_64'
-    @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
-  end
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.preflight
-    case ARCH
-    when 'armv7l', 'aarch64'
-      @container_check = File.exist?('/.dockerenv')
-    when 'i686', 'x86_64'
-      @container_check = `/usr/bin/crossystem inside_vm` == '1'
-    end
-    abort 'This package is not compatible with your device :/'.lightred unless File.socket?('/var/run/chrome/wayland-0') || @container_check
+    return if File.socket?('/var/run/chrome/wayland-0') || CREW_IN_CONTAINER
+
+    abort 'This package is not compatible with your device :/'.lightred
   end
 
   def self.patch
@@ -64,9 +55,35 @@ class Sommelier < Package
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
     Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc",
                   chdir: 'vm_tools/sommelier'
+    return unless ARCH == 'armv7l' || ARCH == 'aarch64'
+
+    # See https://github.com/chromebrew/chromebrew/pull/7653#issuecomment-1320804418
+    File.write 'vm_tools/sommelier/arm.patch', <<~'ARM_PATCH_EOF'
+      diff -Nur a/sommelier.cc b/sommelier.cc
+      --- a/sommelier.cc	2022-11-06 19:29:16.580361574 +0800
+      +++ b/sommelier.cc	2022-11-06 19:37:28.830367176 +0800
+      @@ -616,7 +616,7 @@
+             data_device_manager->host_global =
+                 sl_data_device_manager_global_create(ctx);
+           }
+      -  } else if (strcmp(interface, "xdg_wm_base") == 0) {
+      +  } else if ((strcmp(interface, "xdg_wm_base") == 0) || (strcmp(interface, "zxdg_shell_v6") == 0)) {
+           struct sl_xdg_shell* xdg_shell =
+               static_cast<sl_xdg_shell*>(malloc(sizeof(struct sl_xdg_shell)));
+           assert(xdg_shell);
+    ARM_PATCH_EOF
+    Kernel.system 'patch -Np1 -i arm.patch', chdir: 'vm_tools/sommelier'
   end
 
   def self.build
+    case ARCH
+    when 'armv7l', 'aarch64'
+      @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
+    when 'i686'
+      @peer_cmd_prefix = '/lib/ld-linux-i686.so.2'
+    when 'x86_64'
+      @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
+    end
     Dir.chdir('vm_tools/sommelier') do
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
@@ -76,10 +93,10 @@ class Sommelier < Package
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
+          -Dwith_tests=false \
           -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-          -Dxwayland_gl_driver_path=/usr/#{ARCH_LIB}/dri -Ddefault_library=both \
-          -Dxwayland_shm_driver=noop -Dshm_driver=noop -Dvirtwl_device=/dev/null \
-          -Dpeer_cmd_prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
+          -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
+          -Ddefault_library=both \
           builddir
       BUILD
 
@@ -89,7 +106,7 @@ class Sommelier < Package
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
 
-        @sommelierenv = <<~EOF
+        @sommelierenv = <<~SOMMELIERENVEOF
           set -a
           CLUTTER_BACKEND=wayland
           DISPLAY=:0
@@ -99,21 +116,40 @@ class Sommelier < Package
           WAYLAND_DISPLAY=wayland-0
           XDG_RUNTIME_DIR=/var/run/chrome
 
-          case "$(uname -m)" in
-          x86_64|i686)
-            sort_result="$(sort -V <<< "$(uname -r)"$'\\n'"4.16.0" | tail -n1)"
-            if [[ "${sort_result}" == "4.16.0" ]]; then
-              MESA_LOADER_DRIVER_OVERRIDE=i965
-            fi
-          ;;
-          esac
+          if grep -q GenuineIntel /proc/cpuinfo ;then
+            check_linux_version() {
+                maj_ver=$1
+                min_ver=$2
+                version_good=$(uname -r | awk 'BEGIN{ FS="."};
+                { if ($1 < '"${maj_ver}"') { print "N"; }
+                  else if ($1 == '"${maj_ver}"') {
+                      if ($2 < '"${min_ver}"') { print "N"; }
+                      else { print "Y"; }
+                  }
+                  else { print "Y"; }
+                }')
+
+                if [ "$version_good" = "N" ]; then
+                    return 1
+                fi
+            }
+            case "$(uname -m)" in
+            x86_64|i686)
+              if ! check_linux_version 4 16; then
+                MESA_LOADER_DRIVER_OVERRIDE=i965
+              elif check_linux_version 5 10; then
+                MESA_LOADER_DRIVER_OVERRIDE=iris
+              fi
+            ;;
+            esac
+          fi
 
           if [ -f "~/.sommelier.env" ]; then
             source ~/.sommelier.env
           fi
 
           set +a
-        EOF
+        SOMMELIERENVEOF
 
         # Create local startup and shutdown scripts
 
@@ -121,7 +157,7 @@ class Sommelier < Package
         # This file via:
         # crostini: /opt/google/cros-containers/bin/sommelier
         # https://source.chromium.org/chromium/chromium/src/+/master:third_party/chromite/third_party/lddtree.py;drc=46da9a8dfce28c96765dc7d061f0c6d7a52e7352;l=146
-        File.write 'sommelier_sh', <<~EOF
+        File.write 'sommelier_sh', <<~SOMMELIERSHEOF
           #!/bin/bash
           function readlink(){
             coreutils --coreutils-prog=readlink "$@"
@@ -146,10 +182,10 @@ class Sommelier < Package
               --inhibit-rpath '' \
               "${base}.elf" \
               "$@"
-        EOF
+        SOMMELIERSHEOF
 
         # sommelierd
-        File.write 'sommelierd', <<~EOF
+        File.write 'sommelierd', <<~SOMMELIERDEOF
           #!/bin/bash -a
 
           source ${CREW_PREFIX}/etc/env.d/sommelier.env &>/dev/null
@@ -160,7 +196,7 @@ class Sommelier < Package
             /sbin/ss --unix -a -p | grep "\b$(cat #{CREW_PREFIX}/var/run/sommelier-wayland.pid)" | grep wayland &>/dev/null
           }
           checksommelierxwayland () {
-            xdpyinfo -display "${DISPLAY}" &>/dev/null
+            DISPLAY="${DISPLAY}" timeout 1s xset q &>/dev/null
           }
 
           ## As per https://www.reddit.com/r/chromeos/comments/8r5pvh/crouton_sommelier_openjdk_and_oracle_sql/e0pfknx/
@@ -182,15 +218,17 @@ class Sommelier < Package
             DISPLAY="${DISPLAY:0:3}"
 
             sommelier -X \
-              --x-display=${DISPLAY}  \
-              --scale=${SCALE} --glamor \
-              --drm-device=/dev/dri/renderD128 \
-              --virtwl-device=/dev/null \
-              --shm-driver=noop --data-driver=noop \
+              --x-display=${DISPLAY} \
+              --scale=${SCALE} \
+              ${SOMMELIER_DIRECT_SCALE} \
+              --glamor \
+              --force-drm-device=${SOMMELIER_DRM_DEVICE} \
               --display=wayland-0 \
               --xwayland-path=/usr/local/bin/Xwayland \
               --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri \
               --peer-cmd-prefix="#{CREW_PREFIX}#{@peer_cmd_prefix}" \
+              --enable-xshape \
+              --noop-driver \
               --no-exit-with-child \
               /bin/sh -c "touch ~/.Xauthority
                 xauth -f ~/.Xauthority add ${DISPLAY} . $(xxd -l 16 -p /dev/urandom)
@@ -200,14 +238,59 @@ class Sommelier < Package
             echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             xhost +si:localuser:root &>/dev/null
           fi
-        EOF
+        SOMMELIERDEOF
 
         # startsommelier
-        File.write 'startsommelier', <<~EOF
+        File.write 'startsommelier', <<~STARTSOMMELIEREOF
           #!/bin/bash -a
+          set -a
+          # Set DRM device here so output is visible, but don't run
+          # some of these checks in an env.d file since we don't need
+          # them run every time a shell is opened.
+          # Get a list of all available DRM render nodes.
+          DRM_DEVICES_LIST=( /sys/class/drm/renderD* )
+
+          # if two or more render nodes available, choose one based on the corresponding render device path:
+          #   devices/platform/vegm/...: virtual GEM device provided by Chrome OS, hardware acceleration may not available on this node. (should be avoided)
+          #   devices/pci*/...: linked to the actual graphics card device path, provided by graphics card driver. (preferred)
+          #
+          if [[ "${#DRM_DEVICES_LIST[@]}" > 1 ]]; then
+            for dev in ${DRM_DEVICES_LIST[@]}; do
+              if [[ "$(coreutils --coreutils-prog=readlink -f "${dev}")" =~ devices/pci ]]; then
+                SOMMELIER_DRM_DEVICE="/dev/dri/${dev##*/}"
+                echo -e "\e[1;33m""${#DRM_DEVICES_LIST[@]} DRM render nodes available, ${SOMMELIER_DRM_DEVICE} will be used.""\e[0m"
+                break
+              fi
+            done
+          else
+            # if only one node available, use it directly
+            SOMMELIER_DRM_DEVICE="/dev/dri/${DRM_DEVICES_LIST[0]##*/}"
+          fi
+          check_chromeos_milestone() {
+            # Check is passed milestone is greater than the current
+            # ChromeOS milestone.
+            milestone=$1
+            version_good=$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release | awk 'BEGIN{ FS="="};
+            { if ($2 < '"${milestone}"') { print "N"; }
+              else { print "Y"; }
+            }')
+
+            if [ "$version_good" = "N" ]; then
+                return 1
+            fi
+          }
+          # Not sure which milestone enables direct scale, so be
+          # conservative.
+          if ! check_chromeos_milestone 106; then
+            SOMMELIER_DIRECT_SCALE=
+          else
+            echo -e "\e[1;33m""Sommelier can use direct scaling.""\e[0m"
+            SOMMELIER_DIRECT_SCALE='--direct-scale'
+          fi
 
           source ~/.sommelier-default.env &>/dev/null
           source ~/.sommelier.env &>/dev/null
+
           set +a
 
           checksommelierwayland () {
@@ -218,14 +301,15 @@ class Sommelier < Package
             #else
             #  return 1
             #fi
-            return 0
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
           }
           checksommelierxwayland () {
-            xdpyinfo -display "${DISPLAY}" &>/dev/null
+            DISPLAY="${DISPLAY}" timeout 1s xset q &>/dev/null
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
-            #{CREW_PREFIX}/sbin/sommelierd &> /dev/null &
+            #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
@@ -243,13 +327,14 @@ class Sommelier < Package
             echo -e "sommelier processes running: ${SOMMWPIDS} ${SOMMXPIDS}"
           else
             echo "some sommelier processes failed to start"
-            echo -e "sommelier processes running: ${SOMMWPROCS} \\n ${SOMMXPROCS}"
-            exit 1
+            [[ -n ${SOMMWPROCS} || -n ${SOMMXPROCS} ]] && echo -e "sommelier processes running: ${SOMMWPROCS} \\n ${SOMMXPROCS}"
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 1 || exit 1
           fi
-        EOF
+        STARTSOMMELIEREOF
 
         # stopsommelier
-        File.write 'stopsommelier', <<~EOF
+        File.write 'stopsommelier', <<~STOPSOMMELIEREOF
           #!/bin/bash
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
@@ -257,26 +342,28 @@ class Sommelier < Package
             pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
             pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
           else
-            exit 0
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
           fi
           if [[ "$(pgrep -fc sommelier.elf 2> /dev/null)" -gt "0" ]]; then
             echo "sommelier failed to stop"
-            exit 1
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 1 || exit 1
           else
             echo "sommelier stopped"
           fi
-        EOF
+        STOPSOMMELIEREOF
 
         # restartsommelier
-        File.write 'restartsommelier', <<~EOF
+        File.write 'restartsommelier', <<~RESTARTSOMMELIEREOF
           #!/bin/bash
           stopsommelier && startsommelier
-        EOF
+        RESTARTSOMMELIEREOF
 
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-        @bashd_sommelier = <<~EOF
-          startsommelier
-        EOF
+        @bashd_sommelier = <<~BASHDEOF
+          source #{CREW_PREFIX}/bin/startsommelier
+        BASHDEOF
       end
     end
   end
@@ -312,7 +399,7 @@ class Sommelier < Package
 
     puts
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"
-    puts <<~EOT.lightblue
+    puts <<~EOT1.lightblue
       To adjust sommelier environment variables, edit #{CREW_PREFIX}/etc/env.d/sommelier
       Default values are in #{CREW_PREFIX}/etc/env.d/sommelier
 
@@ -320,8 +407,8 @@ class Sommelier < Package
       To stop the sommelier daemon, run 'stopsommelier'
       To restart the sommelier daemon, run 'restartsommelier'
 
-    EOT
-    puts <<~EOT.orange
+    EOT1
+    puts <<~EOT2.orange
       Please be aware that gui applications may not work without the
       sommelier daemon running.
 
@@ -330,6 +417,6 @@ class Sommelier < Package
 
       (If you are upgrading from an earlier version of sommelier,
       also run 'restartsommelier'.)
-    EOT
+    EOT2
   end
 end

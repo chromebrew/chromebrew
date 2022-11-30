@@ -3,7 +3,7 @@ require 'package'
 class Linter < Package
   description 'Comprehensive linter and code analysis for various file types.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.1'
+  version '1.2'
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
@@ -27,24 +27,26 @@ class Linter < Package
       fi
       for file in $files; do
         ext="${file##*.}"
-        type=$(file -b "$file" | cut -d' ' -f1)
-        case "$type" in
-          Bourne-Again)
-            ext="sh"
-            ;;
-          HTML)
-            ext="md"
-            ;;
-          Ruby)
-            ext="rb"
-            ;;
-        esac
-        case "$ext" in
+        if ! [[ "$ext" =~ ^(md|rb|sh|yml|yaml)$ ]]; then
+          type="$(file -b "$file" | cut -d' ' -f1)"
+          case $type in
+            Bourne-Again)
+              ext="sh"
+              ;;
+            HTML)
+              ext="md"
+              ;;
+            Ruby)
+              ext="rb"
+              ;;
+          esac
+        fi
+        case $ext in
           md)
             mdl "$file"
             ;;
           rb)
-            ruby -wcWlevel=2 "$file"
+            ruby=true
             rubocop "$file"
             ;;
           sh)

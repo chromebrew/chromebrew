@@ -3,24 +3,24 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.0.24'
+  @_ver = '8.0.26'
   version @_ver
   license 'PHP-3.01'
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 '8e6a63ac9cdabe4c345b32a54b18f348d9e50a1decda217faf2d61278d22f08b'
+  source_sha256 '0765bfbe640dba37ccc36d2bc7c7b7ba3d2c3381c9cd4305f66eca83e82a40b3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.24_armv7l/php80-8.0.24-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.24_armv7l/php80-8.0.24-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.24_i686/php80-8.0.24-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.24_x86_64/php80-8.0.24-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.26_armv7l/php80-8.0.26-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.26_armv7l/php80-8.0.26-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.26_i686/php80-8.0.26-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.26_x86_64/php80-8.0.26-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3db8e215096f9d704e39a46ca9979e8fa95f8729b315b355ae1fcd4757da4252',
-     armv7l: '3db8e215096f9d704e39a46ca9979e8fa95f8729b315b355ae1fcd4757da4252',
-       i686: '18c48f075f8ce83d2bc12afc25b661a42721fad7d97cf5de295c06cf7303b4c4',
-     x86_64: '4ea3e9dc1152fe946806703dad03b3f017c03b2003d9de9db4c526acff446a82'
+    aarch64: 'dce86a0856b58ac5ea0628ced134aff85fe48d0630c8c5999144f07c2815b0d5',
+     armv7l: 'dce86a0856b58ac5ea0628ced134aff85fe48d0630c8c5999144f07c2815b0d5',
+       i686: 'b0573bdcc3c03f537a32004086374d8990d7108cf934a5eb54bca983412e587f',
+     x86_64: '2ebe00cf57bbfa346b1e567c13ee39878972cccdfa7f2d1579b0e4218f1db206'
   })
 
   depends_on 'aspell_en'
@@ -71,7 +71,7 @@ class Php80 < Package
   end
 
   def self.build
-    system "CFLAGS='-pipe' ./configure \
+    system "CFLAGS='-pipe' mold -run ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -125,7 +125,7 @@ class Php80 < Package
        --with-zip \
        --with-ffi \
        --with-libedit"
-    system 'make'
+    system 'mold -run make'
   end
 
   def self.check

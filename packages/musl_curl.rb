@@ -4,7 +4,7 @@ class Musl_curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
   @_ver = '7.84.0'
-  version @_ver.to_s
+  version @_ver
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"

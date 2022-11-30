@@ -35,7 +35,7 @@ class Networkmanager < Package
   depends_on 'elogind'
   depends_on 'libnewt'
   depends_on 'mobile_broadband_provider_info'
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
 
   def self.patch
     # Patch fixes meson dependency race condition

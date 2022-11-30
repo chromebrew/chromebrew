@@ -3,23 +3,34 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  @_ver = '11.5.1'
+  @_ver = '11.5.7'
   version @_ver
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
   source_url "https://dist.torproject.org/torbrowser/#{@_ver}/tor-browser-linux64-#{@_ver}_en-US.tar.xz"
-  source_sha256 '2e0cefa6d4284c71a7816e310d935f9b9b5e4a3a408dc53330a0db0474489e8a'
+  source_sha256 '2b9d13f457bab4cb8fd49e607f02bd7ffdb965e6a443dbec262e0838f6ba7cc9'
 
   depends_on 'gtk3'
   depends_on 'sommelier'
 
   def self.build
-    @tor = <<~EOF
-      #!/bin/sh -e
+    tor = <<~EOF
+      #!/bin/bash
+      SCALE=1
+      RESOLUTION=$(xdpyinfo | awk '/dimensions:/ { print $2 }' | cut -d'x' -f1)
+      [[ $RESOLUTION -gt 1500 && $RESOLUTION -lt 2500 ]] && SCALE=1.5
+      [[ $RESOLUTION -ge 2500 && $RESOLUTION -lt 3500 ]] && SCALE=2
+      [[ $RESOLUTION -ge 3500 && $RESOLUTION -lt 4500 ]] && SCALE=2.5
+      [[ $RESOLUTION -ge 4500 && $RESOLUTION -lt 5500 ]] && SCALE=3
+      [[ $RESOLUTION -gt 5500 ]] && SCALE=3.5
+      [ -z "$DISPLAY" ] && DISPLAY=':0'
+      export GDK_BACKEND=x11
+      export GDK_SCALE=$SCALE
+      export DISPLAY=$DISPLAY
       cd #{CREW_PREFIX}/share/
       ./start-tor-browser.desktop "$@"
     EOF
-    File.write('tor', @tor)
+    File.write('tor', tor)
   end
 
   def self.install

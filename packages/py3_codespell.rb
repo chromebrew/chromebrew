@@ -23,17 +23,15 @@ class Py3_codespell < Package
      x86_64: '1f2e5d809b529d6934686e7e2af476dd066f224896f2b5f0efde061e2e5fba37'
   })
 
+  depends_on 'python3'
   depends_on 'py3_setuptools' => :build
-
-  python_major = `python3 -V | cut -d' ' -f2 | cut -d'.' -f1`.chomp
-  python_minor = `python3 -V | cut -d' ' -f2 | cut -d'.' -f2`.chomp
-  @python_ver = "python#{python_major}.#{python_minor}"
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
   end
 
   def self.install
+    @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
     system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
     # Fixes ModuleNotFoundError: No module named 'codespell_lib._version'
     _version_tuple = "(#{@_ver.gsub('.', ', ')})"
@@ -49,6 +47,7 @@ class Py3_codespell < Package
   end
 
   def self.remove
+    @python_ver = "python#{`python3 -V`[/\d.\d+/]}"
     # Remove data, __pycache__ and tests directories.
     FileUtils.rm_rf "#{CREW_PREFIX}/lib/#{@python_ver}/site-packages/codespell_lib"
   end

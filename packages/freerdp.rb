@@ -3,41 +3,65 @@ require 'package'
 class Freerdp < Package
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version '2.8.0'
+  version '2.8.1'
   license 'Apache-2.0'
-  compatibility 'x86_64 armv7l aarch64'
+  compatibility 'all'
   source_url "https://github.com/FreeRDP/FreeRDP/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 '86f1ce8ef71aff73881a48b40d31dda2fc2a94bdbe37e1c1af8447a0e4fa5cc8'
+  source_sha256 '80afdf3fd4304bfc96d4792632660c5fb65ecf5c04c8872cb838a02f4b4cced3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.0_armv7l/freerdp-2.8.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.0_armv7l/freerdp-2.8.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.0_x86_64/freerdp-2.8.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.1_armv7l/freerdp-2.8.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.1_armv7l/freerdp-2.8.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.1_i686/freerdp-2.8.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.8.1_x86_64/freerdp-2.8.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9395c3882984fc0155cd2489546b1717d04483583cd517ddddc7ea9bd04f710a',
-     armv7l: '9395c3882984fc0155cd2489546b1717d04483583cd517ddddc7ea9bd04f710a',
-     x86_64: '87dcb6d9b28405fe2879dd2862de3c06d1c4981cfede0aaec760a14005d25bc0'
+    aarch64: 'e8537453f7fceeadb69ba1d10ae5aab8d44bd5b7069183ef999d18ab0514d10d',
+     armv7l: 'e8537453f7fceeadb69ba1d10ae5aab8d44bd5b7069183ef999d18ab0514d10d',
+       i686: '0ed8d10f56766408d686b92d6db7d8f15b8c94d02674169a476491d8d23feee0',
+     x86_64: '5162d2198dcd7f39a6361fcd3ba86a18be6beff8a283be512a8bef4179ee1761'
   })
 
-  depends_on 'cairo'
-  depends_on 'cups'
-  depends_on 'faac'
-  depends_on 'faad2'
-  depends_on 'ffmpeg'
-  depends_on 'gsm'
-  depends_on 'gstreamer'
-  depends_on 'libfdk_aac'
-  depends_on 'linux_pam'
-  depends_on 'pulseaudio'
-  depends_on 'xdg_base'
-  depends_on 'xmlto'
-  depends_on 'xprop'
-  depends_on 'wayland'
+  depends_on 'alsa_lib' # R
+  depends_on 'cairo' => :build
+  depends_on 'cups' => :build
+  depends_on 'e2fsprogs' # R
+  depends_on 'faac' => :build
+  depends_on 'faad2' => :build
+  depends_on 'ffmpeg' => :build
+  depends_on 'glibc' # R
+  depends_on 'gsm' => :build
+  depends_on 'gstreamer' => :build
+  depends_on 'krb5' # R
+  depends_on 'libfdk_aac' => :build
+  depends_on 'libjpeg' # R
+  depends_on 'libmp3lame' # R
+  depends_on 'libsoxr' # R
+  depends_on 'libusb' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxinerama' # R
+  depends_on 'libxi' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxkbfile' # R
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'libxtst' # R
+  depends_on 'libxv' # R
+  depends_on 'linux_pam' => :build
+  depends_on 'openssl' # R
+  depends_on 'pulseaudio' => :build
   depends_on 'sommelier'
+  depends_on 'wayland' => :build
+  depends_on 'xdg_base'
+  depends_on 'xmlto' => :build
+  depends_on 'xprop' => :build
 
   def self.build
-    Dir.mkdir 'builddir'
+    FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
       system "env GSS_ROOT_FLAVOUR=MIT \
         cmake \

@@ -3,37 +3,43 @@ require 'package'
 class Rav1e < Package
   description 'An AV1 encoder focused on speed and safety'
   homepage 'https://github.com/xiph/rav1e/'
-  @_ver = '0.5.0-alpha'
+  @_ver = '0.5.1-p20220927'
   version @_ver
   license 'BSD-2, Apache-2.0, MIT and Unlicense'
   compatibility 'all'
-  source_url "https://github.com/xiph/rav1e/archive/v#{@_ver}.tar.gz"
-  source_sha256 'fd884fa387d01860eaf22a0a97353525221eb32bf6b9154bbfa21b6cce5988c8'
+  source_url 'https://github.com/xiph/rav1e.git'
+  git_hashtag 'p20220927'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.0-alpha_armv7l/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.0-alpha_armv7l/rav1e-0.5.0-alpha-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.0-alpha_i686/rav1e-0.5.0-alpha-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.0-alpha_x86_64/rav1e-0.5.0-alpha-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_armv7l/rav1e-0.5.1-p20220927-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_armv7l/rav1e-0.5.1-p20220927-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_i686/rav1e-0.5.1-p20220927-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rav1e/0.5.1-p20220927_x86_64/rav1e-0.5.1-p20220927-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd02192b1152145b31bb1192d79ca40cb722d3c550b7471020e30bfac69448571',
-     armv7l: 'd02192b1152145b31bb1192d79ca40cb722d3c550b7471020e30bfac69448571',
-       i686: 'f17b429706232d8cd66e9b3368afd7211966dc23b11f8d448dada93cca8460db',
-     x86_64: '2c05f46c0361e5fc0b2e40fbd62561c0383eb2dd2b140a3d77a1fd3fc263a07f'
+    aarch64: '1a25d78f87f3f361cdfd4e1c98c0bea454a96bd73744b2a004d7a58b1ecfb6f0',
+     armv7l: '1a25d78f87f3f361cdfd4e1c98c0bea454a96bd73744b2a004d7a58b1ecfb6f0',
+       i686: 'fdf45f72a79a60b668eb49a80b6d63cb8ea7b3dd0eaa272390b105d20e3aa6a8',
+     x86_64: '8caaa04e32e710632b8d5e465dd323745a2e5d6cd55957b76ddef735487643f2'
   })
 
+  depends_on 'libaom'
+  depends_on 'libgit2'
   depends_on 'rust' => :build
   depends_on 'cargo_c' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
+    @rust_flags = ''
+    @rust_flags = 'RUSTFLAGS="-C target-cpu=x86-64-v3"' if ARCH == 'x86_64'
     system "cargo fetch \
       --manifest-path Cargo.toml"
-    system "cargo build \
+    system "#{@rust_flags} cargo build \
       --release \
       --frozen \
       --manifest-path Cargo.toml"
-    system "cargo cbuild \
+    system "#{@rust_flags} cargo cbuild \
       --release \
       --frozen \
       --prefix=#{CREW_PREFIX} \

@@ -3,28 +3,32 @@ require 'package'
 class Libxcb < Package
   description 'library for the X window system'
   homepage 'https://x.org'
-  version '1.14-3'
-  compatibility 'all'
+  version '1.15'
   license 'custom'
-  source_url 'https://xcb.freedesktop.org/dist/libxcb-1.14.tar.xz'
-  source_sha256 'a55ed6db98d43469801262d81dc2572ed124edc3db31059d4e9916eb9f844c34'
+  compatibility 'all'
+  source_url 'https://xcb.freedesktop.org/dist/libxcb-1.15.tar.xz'
+  source_sha256 'cc38744f817cf6814c847e2df37fcb8997357d72fa4bcbc228ae0fe47219a059'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-3_armv7l/libxcb-1.14-3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-3_armv7l/libxcb-1.14-3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-3_i686/libxcb-1.14-3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.14-3_x86_64/libxcb-1.14-3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_armv7l/libxcb-1.15-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_armv7l/libxcb-1.15-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_i686/libxcb-1.15-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_x86_64/libxcb-1.15-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a46a95729345219d823b251dbdc851c1dbba52a7d0a0c57d7c6a96abc7bb5814',
-     armv7l: 'a46a95729345219d823b251dbdc851c1dbba52a7d0a0c57d7c6a96abc7bb5814',
-       i686: '0a3160d9de6c1b78144f7d04bd73a731e97e04400ede6dc49a5fbe7e4017509c',
-     x86_64: '452b493ca96298f6f8c7a9e79503ea99968090223d86ddb5872ac458b23e7e62'
+    aarch64: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
+     armv7l: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
+       i686: 'cc9c9c2c023c4aa478f0b256f5e4aa3b3fa51b36d8f94627342c4f2f6ca1bbbf',
+     x86_64: 'd1e81462049e32ba54bedf4a3d6ce39cb8610fa3d9b451618a78446b625fd564'
   })
 
   depends_on 'xcb_proto'
   depends_on 'libxau'
   depends_on 'pthread_stubs'
+  depends_on 'glibc' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
 
   def self.build
     system 'filefix'

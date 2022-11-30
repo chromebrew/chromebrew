@@ -3,35 +3,46 @@ require 'package'
 class Libwmf < Package
   description 'libwmf is a library for reading vector images in Microsoft\'s native Windows Metafile Format (WMF)'
   homepage 'https://github.com/caolanm/libwmf'
-  version '0.2.12-483e'
+  version '0.2.12-ad365e1'
   license 'LGPL-2'
   compatibility 'all'
-  source_url 'https://github.com/caolanm/libwmf/archive/483ee1e8d4ee11690f3459d4b4d527f69af7b9c9.zip'
-  source_sha256 'ec31cc81ee41ab28acef686b875b7692f6a5286710d6fd58429d914f78c73847'
+  source_url 'https://github.com/caolanm/libwmf.git'
+  git_hashtag 'ad365e1df356d6371daabf426bd39a5f9721160a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_armv7l/libwmf-0.2.12-483e-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_i686/libwmf-0.2.12-483e-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-483e_x86_64/libwmf-0.2.12-483e-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_armv7l/libwmf-0.2.12-ad365e1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_armv7l/libwmf-0.2.12-ad365e1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_i686/libwmf-0.2.12-ad365e1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_x86_64/libwmf-0.2.12-ad365e1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6313c27b04e538ce75b749049658d7ad0f85df880a24f49f232e1846a32535b2',
-     armv7l: '6313c27b04e538ce75b749049658d7ad0f85df880a24f49f232e1846a32535b2',
-       i686: 'dffff92d3d43cd2925d2cb7bef79cdf8454d00b5a381521d7cab12a75b3f827e',
-     x86_64: 'a870df8f42498dc2a8a07c359ff453add7623bf6dd49633ba69f12e9fe8bd5d4'
+    aarch64: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
+     armv7l: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
+       i686: '46c87dd5675bdae11cb48e0ae1a0b6092adbf926193b4c2822e3274b0078e8ab',
+     x86_64: '001151fb0dab422ecfc300fefe3793d2b0e85b4c9d3cc43a7eb2841a325d221e'
   })
 
+  depends_on 'freetype'
   depends_on 'gtk2'
   depends_on 'libgd'
   depends_on 'libjpeg'
-  depends_on 'xorg_server'
+  depends_on 'xwayland' => :build
   depends_on 'gdk_pixbuf'
+  depends_on 'expat' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libpng' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto' CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
+    system 'autoreconf -fiv'
+    system "./configure \
       #{CREW_OPTIONS} \
       --disable-maintainer-mode"
     system 'make'
@@ -42,9 +53,9 @@ class Libwmf < Package
   end
 
   def self.postinstall
-    if File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-      system 'gdk-pixbuf-query-loaders',
-             '--update-cache'
-    end
+    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
+
+    system 'gdk-pixbuf-query-loaders',
+           '--update-cache'
   end
 end

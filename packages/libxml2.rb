@@ -3,23 +3,23 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.10.2'
+  version '2.10.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.2/libxml2-v2.10.2.tar.bz2'
-  source_sha256 'd50e8a55b2797501929d3411b81d5d37ec44e9a4aa58eae9052572977c632d7a'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.3/libxml2-v2.10.3.tar.bz2'
+  source_sha256 '302bbb86400b8505bebfbf7b3d1986e9aa05073198979f258eed4be481ff5f83'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_armv7l/libxml2-2.10.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_armv7l/libxml2-2.10.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_i686/libxml2-2.10.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.2_x86_64/libxml2-2.10.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_armv7l/libxml2-2.10.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_armv7l/libxml2-2.10.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_i686/libxml2-2.10.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_x86_64/libxml2-2.10.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd71f1920d9c2db027f1dabf735038ef8bbcfca33d714773ae6d1049879ac9889',
-     armv7l: 'd71f1920d9c2db027f1dabf735038ef8bbcfca33d714773ae6d1049879ac9889',
-       i686: 'e1c1c121adb611590f66062919e5a15cfdd62a9da89b37105af5789660db416a',
-     x86_64: '0d463712429ba8c0d01f58ac772db9e5e1e88d47ae57f88c7e9a06e87dc8788b'
+    aarch64: 'dd632f61bf378aa089500a377e1192650e7ee22d373f09ee3be981a54db764be',
+     armv7l: 'dd632f61bf378aa089500a377e1192650e7ee22d373f09ee3be981a54db764be',
+       i686: '5a49faa80100a3a7d893ead1a324773c671550cb6647cab48660acec35dbfcde',
+     x86_64: 'a54015b9df27a83262c999d2e00946c928206900a4303ee0f6b3e44b46597d56'
   })
 
   depends_on 'gcc' # R
@@ -28,11 +28,12 @@ class Libxml2 < Package
   depends_on 'ncurses'
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
+
   no_patchelf
 
   def self.patch
     # Fix encoding.c:1961:31: error: ‘TRUE’ undeclared (first use in this function)
-    system "for f in \$(grep -rl \'TRUE)\'); do sed -i 's,TRUE),true),g' \$f; done"
+    system "for f in $(grep -rl 'TRUE)'); do sed -i 's,TRUE),true),g' $f; done"
   end
 
   def self.build
