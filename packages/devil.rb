@@ -5,15 +5,21 @@ class Devil < Package
   homepage 'http://openil.sourceforge.net/'
   version '1.8.0-6f3d5e9'
   license 'LGPL-2.1'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://github.com/DentonW/DevIL.git'
   git_hashtag '6f3d5e9bc5d173f56060fc8e14bed35c8edcfdcc'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_x86_64/devil-1.8.0-6f3d5e9-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_armv7l/devil-1.8.0-6f3d5e9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_armv7l/devil-1.8.0-6f3d5e9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_i686/devil-1.8.0-6f3d5e9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_x86_64/devil-1.8.0-6f3d5e9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
+    aarch64: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
+     armv7l: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
+       i686: '893a086ba8c9d0bb286bc1ee024f30e8b3dd851dd64053ab2aba744d6585f51e',
+     x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
   })
 
   depends_on 'freeglut'
@@ -30,6 +36,7 @@ class Devil < Package
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
+  depends_on 'libglvnd' # R
 
   def self.patch
     system "find -type f -exec sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' {} +"
@@ -82,7 +89,7 @@ class Devil < Package
        	return iwrite(buf, 1, cnt);
     JASPER_PATCH
     File.write('jasper.patch', @jasper_patch)
-    system 'patch -Np1 -i jasper.patch'
+    system 'patch -Np1 -i jasper.patch' if ARCH == 'x86_64'
   end
 
   def self.build
