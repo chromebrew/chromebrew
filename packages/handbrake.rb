@@ -90,7 +90,7 @@ class Handbrake < Package
       alias ghb="GDK_BACKEND=wayland ghb"
     HANDBRAKE_ENVD_EOF
   end
- 
+
   def self.postinstall
     puts
     puts "To get started, type 'ghb'.".lightblue
