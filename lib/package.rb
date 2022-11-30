@@ -41,6 +41,8 @@ class Package
     pkgObj = const_get(className)
     pkgObj.name = pkgName
 
+    @crew_current_package = @crew_current_package.nil? ? pkgObj.name : @crew_current_package
+
     return pkgObj
   end
 
@@ -91,8 +93,9 @@ class Package
     # parse dependencies recursively
     expandedDeps = deps.uniq.map do |dep, depTags|
       # check build dependencies only if building from source is needed/specified
-      next unless (include_build_deps == true) || \
-                  ((include_build_deps == 'auto') && is_source) || \
+      # Do not recursively find :build based build dependencies.
+      next unless (include_build_deps == true && @crew_current_package == pkgObj.name) || \
+                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkgObj.name) || \
                   !depTags.include?(:build)
 
       # overwrite tags if parent dependency is a build dependency
