@@ -10,8 +10,22 @@ class Readline < Package
   source_url "https://ftpmirror.gnu.org/readline/readline-#{@_ver}.tar.gz"
   source_sha256 '3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
 
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_armv7l/readline-8.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_armv7l/readline-8.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_i686/readline-8.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_x86_64/readline-8.2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
+     armv7l: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
+       i686: '4e0b1ad9c373fb7fe6b8f4bcfd15ee5abef73512d46db51b307966b233ca2794',
+     x86_64: '20b80a9206e4327a373c564ac9a041f0192955bd6105a7ddcdecbcc8482081a0'
+  })
+
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
+  depends_on 'gcc' # R
 
   def self.build
     system "./configure \
