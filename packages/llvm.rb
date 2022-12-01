@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, libcxxabi, and openmp are included.'
   homepage 'http://llvm.org/'
-  @_ver = '15.0.1'
+  @_ver = '15.0.6'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -11,19 +11,21 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_armv7l/llvm-15.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_armv7l/llvm-15.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_i686/llvm-15.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.1_x86_64/llvm-15.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.6_armv7l/llvm-15.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.6_armv7l/llvm-15.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.6_i686/llvm-15.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/15.0.6_x86_64/llvm-15.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'af77b81a172156105f5a8f3f97bb096a304bea87570acc491ea9d8d46ffdf5e6',
-     armv7l: 'af77b81a172156105f5a8f3f97bb096a304bea87570acc491ea9d8d46ffdf5e6',
-       i686: 'a4076e4e2f7a01b8bc131f8f3e2ccc68a012fe8859657468b0fbd4f19391b704',
-     x86_64: 'e70d89a80486f4afa911df7624510f465a75658b40df8db21a0ef41770fdc83a'
+    aarch64: '6060bde18a2a89bf32538504cbd4231020d70cac7359765dd83555c4699bb077',
+     armv7l: '6060bde18a2a89bf32538504cbd4231020d70cac7359765dd83555c4699bb077',
+       i686: '0b6068291d2a75ed85291247ebf4f8c895dd43686045ad4bd46335b93862c7bc',
+     x86_64: 'b3302aacb390c75e8984a07dbaa30e4e087599d3e4372174fd3595a02d96bc74'
   })
 
-  # depends_on 'ccache' => :build
+  depends_on 'ocaml' => :build
+  depends_on 'py3_pygments' => :build
+  depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
@@ -31,11 +33,10 @@ class Llvm < Package
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
-  depends_on 'ocaml' => :build
-  depends_on 'py3_pygments' => :build
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+
   no_env_options
   no_patchelf
 
@@ -43,8 +44,8 @@ class Llvm < Package
   when 'aarch64', 'armv7l'
     # LLVM_TARGETS_TO_BUILD = 'ARM;AArch64;AMDGPU'
     # LLVM_TARGETS_TO_BUILD = 'all'.freeze
-    @ARCH_C_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
-    @ARCH_CXX_FLAGS = "-fPIC -march=armv7-a -mfloat-abi=hard -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_C_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_BUILD}"
+    @ARCH_CXX_FLAGS = "-fPIC -mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp -ccc-gcc-name #{CREW_BUILD}"
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
     # compiler-rt fails with
@@ -89,6 +90,26 @@ class Llvm < Package
   # https://reviews.llvm.org/rG1de56d6d13c083c996dfd44a32041dacae037d66
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
 
+  def self.patch
+    return unless ARCH == 'i686'
+
+    # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
+    @llvm_i686_patch = <<~LLVM_PATCH_EOF
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
+             D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
+           addPathIfExists(D, D.Dir + "/../lib", Paths);
+
+      +  addPathIfExists(D, concat(SysRoot, "#{CREW_LIB_PREFIX}"), Paths);
+         addPathIfExists(D, concat(SysRoot, "/lib"), Paths);
+         addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
+       }
+    LLVM_PATCH_EOF
+    File.write('llvm_i686.patch', @llvm_i686_patch)
+    system 'patch -Np1 -i llvm_i686.patch'
+  end
+
   def self.build
     ############################################################
     puts "Building LLVM Targets: #{LLVM_TARGETS_TO_BUILD}".lightgreen
@@ -106,20 +127,20 @@ class Llvm < Package
     # As per https://github.com/SVF-tools/SVF/wiki/Install-LLVM-Gold-Plugin-on-Ubuntu
     # system "git clone --depth 1 --branch #{BINUTILS_BRANCH} git://sourceware.org/git/binutils-gdb.git binutils"
 
-    Dir.mkdir 'builddir'
+    FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
       system "echo '#!/bin/bash
-machine=\$(gcc -dumpmachine)
-version=\$(gcc -dumpversion)
-gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
-clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
+machine=$(gcc -dumpmachine)
+version=$(gcc -dumpversion)
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+clang -B ${gnuc_lib} -L ${gnuc_lib} \"$@\"' > clc"
       system "echo '#!/bin/bash
-machine=\$(gcc -dumpmachine)
-version=\$(gcc -dumpversion)
-cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
-cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
-gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
-clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
+machine=$(gcc -dumpmachine)
+version=$(gcc -dumpversion)
+cxx_sys=#{CREW_PREFIX}/include/c++/${version}
+cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} \"$@\"' > clc++"
       system "LLVM_IAS=1 PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
             cmake -G Ninja \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
@@ -157,8 +178,9 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
-            -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
+            -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -DOPENMP_ENABLE_LIBOMPTARGET=OFF \
+            -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev \
             ../llvm"
