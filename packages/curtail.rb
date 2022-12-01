@@ -31,7 +31,7 @@ class Curtail < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} build"
+    system "meson setup #{CREW_MESON_OPTIONS} build"
     system 'ninja -C build'
   end
 

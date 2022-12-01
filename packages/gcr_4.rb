@@ -46,7 +46,7 @@ class Gcr_4 < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=false \
     builddir"
     system 'meson configure builddir'

@@ -23,7 +23,7 @@ class Iputils < Package
   depends_on 'libcap'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

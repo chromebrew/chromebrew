@@ -37,7 +37,7 @@ class Gjs < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dinstalled_tests=false \
     -Dskip_dbus_tests=true \
     -Dskip_gtk_tests=true \

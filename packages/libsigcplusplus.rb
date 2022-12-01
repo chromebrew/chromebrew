@@ -29,7 +29,7 @@ class Libsigcplusplus < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dmaintainer-mode=true \
     -Dbuild-deprecated-api=true \
     -Dbuild-examples=false \

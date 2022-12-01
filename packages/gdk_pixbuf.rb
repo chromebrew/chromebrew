@@ -44,7 +44,7 @@ class Gdk_pixbuf < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dinstalled_tests=false \
       -Dbuiltin_loaders=all \
       -Drelocatable=true \

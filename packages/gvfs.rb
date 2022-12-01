@@ -51,7 +51,7 @@ class Gvfs < Package
   depends_on 'libxml2' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dfuse=true \
     -Dgoa=false \
     -Dgoogle=false \

@@ -31,7 +31,7 @@ class Libwacom < Package
   depends_on 'py3_pytest' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dtests=disabled \
       builddir"
     system 'samu -C builddir'

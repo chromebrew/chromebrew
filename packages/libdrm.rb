@@ -31,7 +31,7 @@ class Libdrm < Package
   depends_on 'gcc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dfreedreno-kgsl=true \
       -Damdgpu=enabled \
       -Dradeon=enabled \

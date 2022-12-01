@@ -35,7 +35,7 @@ class Upower < Package
   depends_on 'gcc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dos_backend=linux \
       -Dsystemdsystemunitdir=no \
       -Dhistorydir=#{CREW_PREFIX}/var \

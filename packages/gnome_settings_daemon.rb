@@ -62,7 +62,7 @@ class Gnome_settings_daemon < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystemd=false \
     -Dcolord=false \
     builddir"

@@ -45,7 +45,7 @@ class Appstream_glib < Package
   depends_on 'util_linux'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dtests=false \
       -Dsysprof=disabled \
       -Dintrospection=true \

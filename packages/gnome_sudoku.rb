@@ -17,7 +17,7 @@ class Gnome_sudoku < Package
   depends_on 'sommelier'
 
   def self.build
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

@@ -89,7 +89,7 @@ class Sommelier < Package
 
       system <<~BUILD
         env CC=clang CXX=clang++ \
-          meson #{CREW_MESON_OPTIONS} \
+          meson setup #{CREW_MESON_OPTIONS} \
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \

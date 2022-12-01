@@ -56,7 +56,7 @@ class Nautilus < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Ddocs=false \
     -Dpackagekit=false \
     -Dtests=headless \

@@ -23,7 +23,7 @@ class Ksh < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Daudit-file=#{CREW_PREFIX}/etc/ksh_audit build"
     system 'ninja -C build'
   end

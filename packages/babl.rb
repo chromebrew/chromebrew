@@ -29,7 +29,7 @@ class Babl < Package
   depends_on 'gcc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Denable-gir=true \
       builddir"
     system 'meson configure builddir'

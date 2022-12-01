@@ -26,7 +26,7 @@ class Fuse3 < Package
   depends_on 'py3_pytest' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Ddisable-mtab=true \
     -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d/ \
     -Dexamples=true \

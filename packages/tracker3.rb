@@ -42,7 +42,7 @@ class Tracker3 < Package
   depends_on 'sqlite' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
       -Ddocs=false \
       -Dman=false \

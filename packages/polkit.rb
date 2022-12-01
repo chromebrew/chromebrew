@@ -61,7 +61,7 @@ class Polkit < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsession_tracking=libelogind \
     -Dsystemdsystemunitdir=#{CREW_PREFIX}/etc/elogind/ \
     -Djs_engine=duktape \

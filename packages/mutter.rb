@@ -34,7 +34,7 @@ class Mutter < Package
   depends_on 'xwayland'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dtests=false \
     -Dprofiler=false \
     -Dopengl=true \

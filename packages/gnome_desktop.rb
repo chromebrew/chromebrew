@@ -49,7 +49,7 @@ class Gnome_desktop < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \
     builddir"
     system 'meson configure builddir'

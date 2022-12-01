@@ -33,7 +33,7 @@ class Geoclue < Package
   depends_on 'modemmanager'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dsystemd=disabled \
       -Ddbus-sys-dir=#{CREW_PREFIX}/share/dbus-1 \
       -D3g-source=true \

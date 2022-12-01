@@ -24,7 +24,7 @@ class Mm_common < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Duse-network=true \
     builddir"
     system 'meson configure builddir'

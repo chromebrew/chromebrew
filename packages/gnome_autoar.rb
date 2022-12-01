@@ -40,7 +40,7 @@ class Gnome_autoar < Package
   depends_on 'zlibpkg' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'mold -run samu -C builddir'

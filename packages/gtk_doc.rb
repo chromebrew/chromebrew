@@ -29,7 +29,7 @@ class Gtk_doc < Package
   depends_on 'py3_pygments' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

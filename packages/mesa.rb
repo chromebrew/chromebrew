@@ -331,7 +331,7 @@ class Mesa < Package
     end
   else
     def self.build
-      system "meson #{CREW_MESON_OPTIONS} \
+      system "meson setup #{CREW_MESON_OPTIONS} \
       -Db_asneeded=false \
       -Ddri3=enabled \
       -Degl=enabled \

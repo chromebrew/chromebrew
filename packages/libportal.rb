@@ -31,7 +31,7 @@ class Libportal < Package
   depends_on 'vulkan_icd_loader'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbackends=gtk3,gtk4 \
     -Ddocs=false \
     -Dportal-tests=false \
