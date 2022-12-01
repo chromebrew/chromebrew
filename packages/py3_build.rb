@@ -3,7 +3,7 @@ require 'package'
 class Py3_build < Package
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://pypa-build.readthedocs.io/'
-  @_ver = '0.8.0'
+  @_ver = '0.9.0'
   version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
@@ -24,7 +24,7 @@ class Py3_build < Package
   })
 
   depends_on 'py3_packaging'
-  depends_on 'py3_pep517'
+  depends_on 'py3_pyproject_hooks'
   depends_on 'py3_tomli'
 
   def self.build

@@ -3,7 +3,7 @@ require 'package'
 class Py3_flit_core < Package
   description 'Flit provides simplified packaging of Python modules—core portions.'
   homepage 'https://flit.pypa.io/'
-  @_ver = '3.7.1'
+  @_ver = '3.8.0'
   version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
