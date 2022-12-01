@@ -48,7 +48,7 @@ class Tracker3_miners < Package
   depends_on 'util_linux' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
       -Dman=false \
       -Dsystemd_user_services=false \

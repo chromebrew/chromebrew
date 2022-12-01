@@ -26,7 +26,7 @@ class Pixman < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dgtk=disabled \
     -Dlibpng=disabled \

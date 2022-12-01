@@ -24,7 +24,7 @@ class Libmicrodns < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
               -Dtests=enabled builddir"
     system 'samu -C builddir'
   end

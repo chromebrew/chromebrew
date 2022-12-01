@@ -33,7 +33,7 @@ class Jsonrpc_glib < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'mold -run samu -C builddir'

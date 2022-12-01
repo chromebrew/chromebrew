@@ -84,7 +84,7 @@ class Libefl < Package
   depends_on 'zlibpkg' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
        -Dcrypto=gnutls \
        -Dsystemd=false \
        -Dglib=false \

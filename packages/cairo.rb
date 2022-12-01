@@ -35,7 +35,7 @@ class Cairo < Package
   conflicts_ok # because this overwrites the limited cairo from harfbuzz
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dgl-backend=auto \
     -Dglesv3=enabled \

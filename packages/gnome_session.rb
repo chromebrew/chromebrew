@@ -47,7 +47,7 @@ class Gnome_session < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS}\
+    system "meson setup #{CREW_MESON_OPTIONS}\
       -Dsystemd=false \
       -Dsystemd_session=disable \
       -Dsystemd_journal=false \

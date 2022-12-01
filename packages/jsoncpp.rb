@@ -25,7 +25,7 @@ class Jsoncpp < Package
   depends_on 'meson'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'

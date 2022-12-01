@@ -32,7 +32,7 @@ class Libva < Package
   depends_on 'wayland'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     --default-library=both \
     builddir"
     system 'meson configure builddir'

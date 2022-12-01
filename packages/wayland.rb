@@ -44,7 +44,7 @@ class Wayland < Package
       set +a
     WAYLAND_ENV_EOF
 
-    system "meson #{CREW_MESON_OPTIONS} -Ddocumentation=false builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} -Ddocumentation=false builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

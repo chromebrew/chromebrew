@@ -29,7 +29,7 @@ class Vmaf < Package
     @avx512 = ARCH == 'x86_64' ? 'true' : 'false'
 
     Dir.chdir 'libvmaf' do
-      system "meson #{CREW_MESON_OPTIONS} \
+      system "meson setup #{CREW_MESON_OPTIONS} \
       -Denable_docs=false \
       -Denable_tests=false \
       -Denable_avx512=#{@avx512} \

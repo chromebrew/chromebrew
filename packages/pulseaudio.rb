@@ -60,7 +60,7 @@ class Pulseaudio < Package
   git_fetchtags
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystem_user=chronos \
     -Dsystem_group=cras \
     -Daccess_group=cras \

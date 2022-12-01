@@ -31,7 +31,7 @@ class Gnome_terminal < Package
   depends_on 'gtk_doc'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Ddocs=false \
     -Dsearch_provider=false \

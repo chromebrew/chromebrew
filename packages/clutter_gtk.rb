@@ -29,7 +29,7 @@ class Clutter_gtk < Package
   depends_on 'valgrind' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

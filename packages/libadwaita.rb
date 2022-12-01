@@ -43,7 +43,7 @@ class Libadwaita < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
             -Dintrospection=enabled \
             -Dexamples=false \
             -Dgtk_doc=false \

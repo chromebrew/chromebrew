@@ -26,7 +26,7 @@ class Seatd < Package
   depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
         -Dlibseat-logind=disabled \
         -Dlibseat-seatd=enabled \
         -Dlibseat-builtin=enabled \

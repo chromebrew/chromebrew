@@ -35,7 +35,7 @@ class Folks < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbluez_backend=false \
     -Ddocs=false \
     -Deds_backend=false \

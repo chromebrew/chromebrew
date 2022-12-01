@@ -27,7 +27,7 @@ class Gtkmm3 < Package
   depends_on 'pangomm'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     --default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-demos=false \

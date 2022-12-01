@@ -37,7 +37,7 @@ class Luajit_lgi < Package
     @lua_include = `pkg-config --cflags-only-I luajit | sed 's/-I//'`.chomp
     system "make LUA_INCDIR=#{@lua_include} \
        LUA_CFLAGS=#{@lua_cflags}"
-    # system "meson #{CREW_MESON_OPTIONS} \
+    # system "meson setup #{CREW_MESON_OPTIONS} \
     #-Dlua-pc=luajit \
     #-Dlua-bin=#{CREW_PREFIX}/bin/luajit \
     #-Dtests=false \

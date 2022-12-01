@@ -26,7 +26,7 @@ class Totem_pl_parser < Package
   depends_on 'libsoup'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} build"
+    system "meson setup #{CREW_MESON_OPTIONS} build"
     system 'meson configure build'
     system 'ninja -C build'
   end

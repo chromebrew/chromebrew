@@ -39,7 +39,7 @@ class Libgweather < Package
   gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsoup2=true \
     builddir"
     system 'meson configure builddir'

@@ -58,7 +58,7 @@ class Weston < Package
   depends_on 'wayland' # R
 
   def self.build
-    system "LIBRARY_PATH=#{CREW_LIB_PREFIX} meson #{CREW_MESON_OPTIONS} \
+    system "LIBRARY_PATH=#{CREW_LIB_PREFIX} meson setup #{CREW_MESON_OPTIONS} \
         -Dshell-ivi=false \
         -Dremoting=true \
         -Dbackend-default=wayland \

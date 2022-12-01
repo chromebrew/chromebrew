@@ -115,7 +115,7 @@ class Gstreamer < Package
     when 'i686'
       @plugins = '-Dgst-plugins-bad:msdk=disabled'
     end
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dgpl=enabled \
     -Dtests=disabled #{@plugins}\
     builddir"

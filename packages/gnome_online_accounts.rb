@@ -34,7 +34,7 @@ class Gnome_online_accounts < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=true \
     builddir"
     system 'meson configure builddir'

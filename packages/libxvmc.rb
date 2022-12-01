@@ -26,7 +26,7 @@ class Libxvmc < Package
   depends_on 'libx11'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
             builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

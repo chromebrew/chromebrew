@@ -48,7 +48,7 @@ class Gtksourceview_5 < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
     builddir"
     system 'meson configure builddir'

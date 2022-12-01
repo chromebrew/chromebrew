@@ -39,7 +39,7 @@ class Gnome_shell < Package
   depends_on 'vulkan_icd_loader' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=true \
     -Dsystemd=false \
     -Dnetworkmanager=false \

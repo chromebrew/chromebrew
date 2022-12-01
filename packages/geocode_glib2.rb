@@ -38,7 +38,7 @@ class Geocode_glib2 < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dsoup2=false \
       builddir"
     system 'meson configure builddir'
