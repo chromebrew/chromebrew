@@ -3,7 +3,7 @@ require 'package'
 class Py3_wheel < Package
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
-  @_ver = '0.37.1'
+  @_ver = '0.38.4'
   version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
