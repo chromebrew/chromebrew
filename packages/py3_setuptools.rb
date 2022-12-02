@@ -11,19 +11,22 @@ class Py3_setuptools < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_armv7l/py3_setuptools-62.3.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_armv7l/py3_setuptools-62.3.2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_i686/py3_setuptools-62.3.2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_x86_64/py3_setuptools-62.3.2-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_armv7l/py3_setuptools-65.6.3-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_armv7l/py3_setuptools-65.6.3-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_i686/py3_setuptools-65.6.3-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_x86_64/py3_setuptools-65.6.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ed19d9aaf456c27cfdf4710da4fab2ad2e812534d6cd231bd33cbd9a5af8cd4a',
-     armv7l: 'ed19d9aaf456c27cfdf4710da4fab2ad2e812534d6cd231bd33cbd9a5af8cd4a',
-       i686: 'dd44b626a2a870243a86437c5e78291253fa9f8b535c96dfd776ca8770f64290',
-     x86_64: '714df6d99e3c8b369930197ee71dd0d6f21862ffdbf9c136f960eab1323f27bb'
+    aarch64: '2bd36f8e08cc0fe3dfcb58b9cf4bdaf813fe335e29573e8ed9c123f80e61396e',
+     armv7l: '2bd36f8e08cc0fe3dfcb58b9cf4bdaf813fe335e29573e8ed9c123f80e61396e',
+       i686: '93b437571e80d739fb123862ff4296069a8fc460025d5a51309935c303be69d4',
+     x86_64: 'dde1cabacc460a83dcf97da29314a969cd0a79b4ff6c911bd4cb1a4ac4640de7'
   })
 
+  depends_on 'python3'
   depends_on 'py3_packaging'
+
+  conflicts_ok
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"

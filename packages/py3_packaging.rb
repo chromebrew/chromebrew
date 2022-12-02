@@ -11,19 +11,22 @@ class Py3_packaging < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-2_armv7l/py3_packaging-21.3-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-2_armv7l/py3_packaging-21.3-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-2_i686/py3_packaging-21.3-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-2_x86_64/py3_packaging-21.3-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-py3.11_armv7l/py3_packaging-21.3-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-py3.11_armv7l/py3_packaging-21.3-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-py3.11_i686/py3_packaging-21.3-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-py3.11_x86_64/py3_packaging-21.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dddc4ef138725db002e41214df0b79e22719b930d0eb8b91b7e2059f1c3b64e9',
-     armv7l: 'dddc4ef138725db002e41214df0b79e22719b930d0eb8b91b7e2059f1c3b64e9',
-       i686: 'c30dc89d108fabb94855bc0bab22ffb4b9e39d6113f67b64de76cb717c55477a',
-     x86_64: '2df6b24cb4a867e840a1380bf0ce7d12b60f2a91de2a2c2df4ead79317233f12'
+    aarch64: '054e3e64cc9b74492064908f16be5951311e314858085a638afbbe10f4e3af4b',
+     armv7l: '054e3e64cc9b74492064908f16be5951311e314858085a638afbbe10f4e3af4b',
+       i686: '6e319e19bcc16d562bc4db5b056136c3a160c9496c75f913f3b89bd25608c5aa',
+     x86_64: '86db6c8d0e2f7214bb86d48f8d2566d4085f266697fe801b36448dbd0229e942'
   })
 
+  depends_on 'python3'
   depends_on 'py3_pyparsing'
+
+  conflicts_ok
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"

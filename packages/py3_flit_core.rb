@@ -11,17 +11,21 @@ class Py3_flit_core < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_armv7l/py3_flit_core-3.7.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_armv7l/py3_flit_core-3.7.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_i686/py3_flit_core-3.7.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.7.1-1_x86_64/py3_flit_core-3.7.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.8.0-py3.11_armv7l/py3_flit_core-3.8.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.8.0-py3.11_armv7l/py3_flit_core-3.8.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.8.0-py3.11_i686/py3_flit_core-3.8.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit_core/3.8.0-py3.11_x86_64/py3_flit_core-3.8.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '891eef9b18bbba389d8c075dc7f465d52bcb37ed13f25260ded8e77efc928031',
-     armv7l: '891eef9b18bbba389d8c075dc7f465d52bcb37ed13f25260ded8e77efc928031',
-       i686: '8f8f77092250172966e361e3471962836bb7d8dc00d8f2bcd4257c890309ca44',
-     x86_64: 'e20eb9cd5a7dec671b74c6f2096544aa311a2340fbf34c5b86879441816da233'
+    aarch64: '85ea9d73f58cb78eb263a47bed9c0c45d4b1a2e454fc2f50472d080d817ad8d8',
+     armv7l: '85ea9d73f58cb78eb263a47bed9c0c45d4b1a2e454fc2f50472d080d817ad8d8',
+       i686: 'c92eff1ea8ac7df10faae1cbe95039660cdbfea2805ae6bd1d7644cba2df700e',
+     x86_64: '3152ec858076c6beb0bea4427ce1a7041045787c58ff72fe83b31ee18496c6e1'
   })
+
+  depends_on 'python3'
+
+  conflicts_ok
 
   def self.build
     Dir.chdir 'flit_core' do

@@ -11,19 +11,22 @@ class Py3_pyparsing < Package
   git_hashtag "pyparsing_#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_armv7l/py3_pyparsing-3.0.9-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_armv7l/py3_pyparsing-3.0.9-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_i686/py3_pyparsing-3.0.9-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-1_x86_64/py3_pyparsing-3.0.9-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-py3.11_armv7l/py3_pyparsing-3.0.9-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-py3.11_armv7l/py3_pyparsing-3.0.9-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-py3.11_i686/py3_pyparsing-3.0.9-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-py3.11_x86_64/py3_pyparsing-3.0.9-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1d699410ff0ce5fd1ffd04e0821c6f4cf40c1ba121e068667c10c54aec6e9988',
-     armv7l: '1d699410ff0ce5fd1ffd04e0821c6f4cf40c1ba121e068667c10c54aec6e9988',
-       i686: '58120f6c525c5948122d0e3667d84a7a525c8ff41b09ba85529a756c3bae0775',
-     x86_64: '0570ed48a42e9a30e2587f3384ab3468a9280e06433658d00f0cdd9578326633'
+    aarch64: 'f9b77523c088b539ed706824100f3119fc7f2d6b09ec69acc8fd5fedc7f481a2',
+     armv7l: 'f9b77523c088b539ed706824100f3119fc7f2d6b09ec69acc8fd5fedc7f481a2',
+       i686: '82f7f41291a85b988879a1c64f1617e0e75eba6afdf1995b7b320f17565939c8',
+     x86_64: '2fc02404bd61fe6fb2cfd6c696dcd0d4d72cd58cc917820e971293d94520f396'
   })
 
+  depends_on 'python3'
   depends_on 'py3_flit_core'
+
+  conflicts_ok
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
