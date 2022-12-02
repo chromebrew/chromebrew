@@ -46,6 +46,10 @@ class Python3 < Package
   no_env_options
   conflicts_ok
 
+  def self.preinstall
+    system 'crew remove py3_setuptools py3_pip', exception: false
+  end
+
   def self.patch
     system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
 		Lib/distutils/command/install.py \
