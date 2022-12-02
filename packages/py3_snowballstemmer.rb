@@ -4,23 +4,23 @@ class Py3_snowballstemmer < Package
   description 'Snowball stemming library collection for Python'
   homepage 'https://snowballstem.org'
   @_ver = '2.1.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://pypi.python.org/packages/source/s/snowballstemmer/snowballstemmer-2.1.0.tar.gz'
   source_sha256 'e997baa4f2e9139951b6f4c631bad912dfd3c792467e2f03d7239464af90e914'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-1_armv7l/py3_snowballstemmer-2.1.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-1_armv7l/py3_snowballstemmer-2.1.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-1_i686/py3_snowballstemmer-2.1.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-1_x86_64/py3_snowballstemmer-2.1.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-py3.11_armv7l/py3_snowballstemmer-2.1.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-py3.11_armv7l/py3_snowballstemmer-2.1.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-py3.11_i686/py3_snowballstemmer-2.1.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_snowballstemmer/2.1.0-py3.11_x86_64/py3_snowballstemmer-2.1.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9d26f6cacccbf9716e4ef5f255971065c1ae7923376d4239a29282ac21b23ccc',
-     armv7l: '9d26f6cacccbf9716e4ef5f255971065c1ae7923376d4239a29282ac21b23ccc',
-       i686: 'bb4d132b6c655d80adbcf4023c0458d3934dd195eddcf2b670c65544c80e90ec',
-     x86_64: 'fe32d3d5799f729258b7d85d5b1d149f7a5197933b215d7a1876b3e0cf2f4210'
+    aarch64: '3fee5918d80fe9bf6d1b7510469ea516f89d52813287dce07fa3d6da226506ee',
+     armv7l: '3fee5918d80fe9bf6d1b7510469ea516f89d52813287dce07fa3d6da226506ee',
+       i686: '2d873048ec2b09da6c7bbfcfd1dbe66511c84c4499f66000590b7dc7fc4fb066',
+     x86_64: 'fb138ef4df39d93e20bb1839b30080f15587a95b31f5a908d0e68829a019ab2d'
   })
 
   depends_on 'py3_pystemmer'

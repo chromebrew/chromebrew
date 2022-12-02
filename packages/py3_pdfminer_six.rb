@@ -4,28 +4,28 @@ class Py3_pdfminer_six < Package
   description 'PDFminer.six is a community maintained fork of PDFminer.'
   homepage 'https://pdfminersix.readthedocs.io/'
   @_ver = '20201018'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pdfminer/pdfminer.six.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-1_armv7l/py3_pdfminer_six-20201018-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-1_armv7l/py3_pdfminer_six-20201018-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-1_i686/py3_pdfminer_six-20201018-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-1_x86_64/py3_pdfminer_six-20201018-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-py3.11_armv7l/py3_pdfminer_six-20201018-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-py3.11_armv7l/py3_pdfminer_six-20201018-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-py3.11_i686/py3_pdfminer_six-20201018-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pdfminer_six/20201018-py3.11_x86_64/py3_pdfminer_six-20201018-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '77d7e27ebb8f8b4a8e90f15ea626d0e62c68af8c15103ed99c444b7f0003f237',
-     armv7l: '77d7e27ebb8f8b4a8e90f15ea626d0e62c68af8c15103ed99c444b7f0003f237',
-       i686: '7fdb846a171a677ecf661951e3d89432d263b8302003b46b1f24b820443b8328',
-     x86_64: 'bd96db5bf397b6cf89cf7628bba9ecfd2c17413979dadb7772e351db2990ad82'
+    aarch64: '2ba0ca3c986d0513205530c8b7e1307427f1bf2fafe65c9160b70f7f75682607',
+     armv7l: '2ba0ca3c986d0513205530c8b7e1307427f1bf2fafe65c9160b70f7f75682607',
+       i686: '41e3e92aea50c8d43d6542d56c8eedaf1e71221a534d2c09b1887a7b40027213',
+     x86_64: '81b51b7be0493c2e627d4ba6fef00030531b8ba68c01e2c7b952baf3586c214c'
   })
 
   depends_on 'py3_pycryptodome'
   depends_on 'py3_sortedcontainers'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

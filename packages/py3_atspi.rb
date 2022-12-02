@@ -19,10 +19,10 @@ class Py3_atspi < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_atspi/2.46.0_x86_64/py3_atspi-2.46.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'db93f6d178f997e3dd9db88dca25e08f4b81f108c335a0469ac4ea8746e2fd34',
-     armv7l: 'db93f6d178f997e3dd9db88dca25e08f4b81f108c335a0469ac4ea8746e2fd34',
-       i686: 'f474a6b122a29c8c5c6747d4734c871b9455506db702041cb6a7cde5dfe5e1c6',
-     x86_64: '9d8c292cd5f060c08d3af5b4ae4a7535bd1777dfd085bd67637f6437691249c9'
+    aarch64: 'fbe377c1252ee7c0660a0056fcbb0d3dd810dfc1f78fc98046048f10c00d4c75',
+     armv7l: 'fbe377c1252ee7c0660a0056fcbb0d3dd810dfc1f78fc98046048f10c00d4c75',
+       i686: '4edf9a96a0143e3125f9ea74c8a38295033bef9fa2b9b7393b6cb1875c8caf94',
+     x86_64: 'd055212318d6d767727c4ef4b8ce3c8e2e9ebf753136b22d1e4bb0200b66985e'
   })
 
   depends_on 'pygobject'

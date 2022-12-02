@@ -35,7 +35,7 @@ class Libcurl < Package
   depends_on 'libunistring' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pip' => :build
+  depends_on 'python3' => :build
   depends_on 'rust' => :build
   depends_on 'valgrind' => :build
   depends_on 'zlibpkg' # R

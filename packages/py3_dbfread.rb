@@ -4,26 +4,26 @@ class Py3_dbfread < Package
   description 'DBFread reads DBF Files with Python.'
   homepage 'https://dbfread.readthedocs.io/'
   @_ver = '2.0.7'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/olemb/dbfread.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-1_armv7l/py3_dbfread-2.0.7-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-1_armv7l/py3_dbfread-2.0.7-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-1_i686/py3_dbfread-2.0.7-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-1_x86_64/py3_dbfread-2.0.7-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-py3.11_armv7l/py3_dbfread-2.0.7-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-py3.11_armv7l/py3_dbfread-2.0.7-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-py3.11_i686/py3_dbfread-2.0.7-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbfread/2.0.7-py3.11_x86_64/py3_dbfread-2.0.7-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5e26415d709930abf7483e9d218028a3b23a83da706c982a9ec359f24d6a237d',
-     armv7l: '5e26415d709930abf7483e9d218028a3b23a83da706c982a9ec359f24d6a237d',
-       i686: '9fca2e015bbb73af1128dcd28813181f6ab89820dc42e5e34d051c807bf729b6',
-     x86_64: 'b039bc216450fb4b2ae00ef2dfb01b5c01c22acc85f06708ebd4a53263eb6b67'
+    aarch64: 'b65ebb3937c60bf909fd6b352f17139eb778cb8be33a194be129913f46b5ec66',
+     armv7l: 'b65ebb3937c60bf909fd6b352f17139eb778cb8be33a194be129913f46b5ec66',
+       i686: '00d1994ab6b9d78860a79346a25769df7ac4724d97a0dc2b05a195daa6756891',
+     x86_64: '8cbbe7ccf0407c72ce9838d4dec3cef7374de1db139312c977ad6a05deb5d39e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

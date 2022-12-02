@@ -4,26 +4,26 @@ class Py3_cssselect < Package
   description 'CSSselect parses CSS3 Selectors and translates them to XPath 1.0.'
   homepage 'https://cssselect.readthedocs.io/'
   @_ver = '1.1.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/scrapy/cssselect.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-1_armv7l/py3_cssselect-1.1.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-1_armv7l/py3_cssselect-1.1.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-1_i686/py3_cssselect-1.1.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-1_x86_64/py3_cssselect-1.1.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-py3.11_armv7l/py3_cssselect-1.1.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-py3.11_armv7l/py3_cssselect-1.1.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-py3.11_i686/py3_cssselect-1.1.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cssselect/1.1.0-py3.11_x86_64/py3_cssselect-1.1.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7119884c145fa8377a85c046227b1303fc96b494c96b788c6ef7690e5dd50dac',
-     armv7l: '7119884c145fa8377a85c046227b1303fc96b494c96b788c6ef7690e5dd50dac',
-       i686: 'dacbdc4729a1479f95b4a7fba2d5a5215904d7239e6d6473ada98e40b845026b',
-     x86_64: '32f4c061ade50ca3d27c10908770cd2a93ca8b995e20473911da11d912e60f03'
+    aarch64: 'd4ad31bc93c4e45c15c5e8f2db59e3680af163cc33e8a548b5c4d40bd8866fa9',
+     armv7l: 'd4ad31bc93c4e45c15c5e8f2db59e3680af163cc33e8a548b5c4d40bd8866fa9',
+       i686: '5cc74206bdf8fc42cf193fcfd5ded61a42eda6bdb80fdd2b6fc58b719c119dc7',
+     x86_64: '50db0afcfb22bfac8a45fc3d7691b424e17b78055c978c80365a9f0657908729'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

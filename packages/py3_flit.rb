@@ -4,23 +4,23 @@ class Py3_flit < Package
   description 'Flit provides simplified packaging of Python modules.'
   homepage 'https://flit.pypa.io/'
   @_ver = '3.7.1'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/flit.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-1_armv7l/py3_flit-3.7.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-1_armv7l/py3_flit-3.7.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-1_i686/py3_flit-3.7.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-1_x86_64/py3_flit-3.7.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-py3.11_armv7l/py3_flit-3.7.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-py3.11_armv7l/py3_flit-3.7.1-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-py3.11_i686/py3_flit-3.7.1-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_flit/3.7.1-py3.11_x86_64/py3_flit-3.7.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3455725f378233c10d8ff31cb5cb3a471546365245d07804ca663b5f4f51a844',
-     armv7l: '3455725f378233c10d8ff31cb5cb3a471546365245d07804ca663b5f4f51a844',
-       i686: 'a6b6a9ba748228b961f04537528a8383715de29937f25530d0066988f665caea',
-     x86_64: '27bcb645fc59ae1b026d4326bc11b243fa20d5ccdad5bba23d0a1d6dd713304a'
+    aarch64: '6e42adb538b73ca79c0edbe15c136594901ba8603b19b4a563c7e3166c92a51e',
+     armv7l: '6e42adb538b73ca79c0edbe15c136594901ba8603b19b4a563c7e3166c92a51e',
+       i686: '4f12e828705743f113f4e0a3014d51f1396810d2fe743f36687bf4bd1e90bef7',
+     x86_64: 'ef549b3f9aaba5b26bb60ce47aa8f4b869558f4646d1d93f9b6476172beda7b0'
   })
 
   depends_on 'py3_docutils'

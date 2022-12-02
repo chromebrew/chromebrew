@@ -23,7 +23,7 @@ class Speedtest_cli < Package
      x86_64: '72123fd6389ff0c7c9d0855a5eb6010f88e1e86742d6bc13d8f58faabf6e170b'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

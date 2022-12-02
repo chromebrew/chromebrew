@@ -4,26 +4,26 @@ class Py3_pyasn1 < Package
   description 'PyASN.1 is a generic ASN.1 library for Python'
   homepage 'https://github.com/etingof/pyasn1/'
   @_ver = '0.4.8'
-  version "#{@_ver}-1"
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/etingof/pyasn1.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-1_armv7l/py3_pyasn1-0.4.8-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-1_armv7l/py3_pyasn1-0.4.8-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-1_i686/py3_pyasn1-0.4.8-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-1_x86_64/py3_pyasn1-0.4.8-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-py3.11_armv7l/py3_pyasn1-0.4.8-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-py3.11_armv7l/py3_pyasn1-0.4.8-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-py3.11_i686/py3_pyasn1-0.4.8-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyasn1/0.4.8-py3.11_x86_64/py3_pyasn1-0.4.8-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd9ca4fe715b2d51dfbc819568f12df82edc6770b2b8f3556304cdee267ca5cfc',
-     armv7l: 'd9ca4fe715b2d51dfbc819568f12df82edc6770b2b8f3556304cdee267ca5cfc',
-       i686: 'b1c488ddb0a3c2b4055ff9efc4e72b9e4ebd9a5bcfa513c4cd24d1a03c1f6208',
-     x86_64: '9be6d5cb186073d9c04adc800d49ec02251003e59e07fdff65475ef6f4be1be9'
+    aarch64: '78d77366c5fbfc2c48ef365fb8f9e298eef9e0600c84dc11d16f92e80e395e99',
+     armv7l: '78d77366c5fbfc2c48ef365fb8f9e298eef9e0600c84dc11d16f92e80e395e99',
+       i686: '97cdadd851d80ef77100a5639e11ebd4eebc3d849566f2e29f04fa660f284596',
+     x86_64: '56e14fe97553facf807b9436278956681ce3a82cf357ae2631768f14a64db155'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

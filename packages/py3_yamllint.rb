@@ -4,28 +4,28 @@ class Py3_yamllint < Package
   description 'YAMLlint is a linter for YAML files.'
   homepage 'https://github.com/adrienverge/yamllint/'
   @_ver = '1.26.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/adrienverge/yamllint.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3_armv7l/py3_yamllint-1.26.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3_armv7l/py3_yamllint-1.26.3-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3_i686/py3_yamllint-1.26.3-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3_x86_64/py3_yamllint-1.26.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3-py3.11_armv7l/py3_yamllint-1.26.3-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3-py3.11_armv7l/py3_yamllint-1.26.3-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3-py3.11_i686/py3_yamllint-1.26.3-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_yamllint/1.26.3-py3.11_x86_64/py3_yamllint-1.26.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5a8d289862914e1222dd1af691c929795435871a7143e694420854c9d7170cb4',
-     armv7l: '5a8d289862914e1222dd1af691c929795435871a7143e694420854c9d7170cb4',
-       i686: 'e386a4975dc95c65cc6350f9afdc2e4cc4ec8da4e4bfb39d7e367a3599787ee0',
-     x86_64: '22405702c7dd3e4d6e11e944c5c8d610784cd5c5cbec8da7d5e86a90f9cd147e'
+    aarch64: '28bbff4485afa48cb71885d35f07fed58b51c05fa98d3882820fa52a4ab4dafa',
+     armv7l: '28bbff4485afa48cb71885d35f07fed58b51c05fa98d3882820fa52a4ab4dafa',
+       i686: '8eb2752adcc48b7c8b06a39427c7265534ece8368ac879959210c6db4e74c2f1',
+     x86_64: '32c6d94fa374a1075ef243fa3eb76a0b14f28da5541f7729a74ab55b81fbea07'
   })
 
   depends_on 'py3_pathspec'
   depends_on 'py3_pyyaml'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

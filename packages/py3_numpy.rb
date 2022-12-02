@@ -3,8 +3,8 @@ require 'package'
 class Py3_numpy < Package
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  @_ver = '1.21.4'
-  version @_ver
+  @_ver = '1.23.5'
+  version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/numpy/numpy.git'
@@ -12,21 +12,23 @@ class Py3_numpy < Package
   git_fetchtags
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_armv7l/py3_numpy-1.21.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_i686/py3_numpy-1.21.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.21.4_x86_64/py3_numpy-1.21.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_armv7l/py3_numpy-1.23.5-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_armv7l/py3_numpy-1.23.5-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_i686/py3_numpy-1.23.5-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_x86_64/py3_numpy-1.23.5-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'eb62980656c6cafe8ee1bd97ae0d6d6dff5402f9ff7a1f5f3687074661897c4d',
-     armv7l: 'eb62980656c6cafe8ee1bd97ae0d6d6dff5402f9ff7a1f5f3687074661897c4d',
-       i686: '17fe1d24ba66b5316c12a43ee64c1d59670cde1ab6179eb71dce1b8c6ea5dee4',
-     x86_64: '59b54964979b170cb4076b98a0ac1e67cb1292b2d472ed9c39c66199d835f54a'
+    aarch64: 'cbc553a992632a5dffafce74961a7aaa29418507ba734043d2a85a9fe93fa461',
+     armv7l: 'cbc553a992632a5dffafce74961a7aaa29418507ba734043d2a85a9fe93fa461',
+       i686: '74b19513ee9f8bd43b2b488d214938088d738abbfa71435bf23489f0b1d94748',
+     x86_64: '728b3c482536bc36ba8962301ae7ab4e48056d63447acf351eacaa17ecf4d78a'
   })
 
   depends_on 'lapack'
   depends_on 'py3_cython' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

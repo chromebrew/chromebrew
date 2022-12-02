@@ -4,26 +4,28 @@ class Py3_cffi < Package
   description 'C Foreign Function Interface for Python calling C code.'
   homepage 'https://cffi.readthedocs.io/'
   @_ver = '1.15.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://files.pythonhosted.org/packages/00/9e/92de7e1217ccc3d5f352ba21e52398372525765b2e0c4530e6eb2ba9282a/cffi-1.15.0.tar.gz'
   source_sha256 '920f0d66a896c2d99f0adbb391f990a84091179542c205fa53ce5787aff87954'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_armv7l/py3_cffi-1.15.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_armv7l/py3_cffi-1.15.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_i686/py3_cffi-1.15.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0_x86_64/py3_cffi-1.15.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0-py3.11_armv7l/py3_cffi-1.15.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0-py3.11_armv7l/py3_cffi-1.15.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0-py3.11_i686/py3_cffi-1.15.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cffi/1.15.0-py3.11_x86_64/py3_cffi-1.15.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd98d10a7bfc0bbd722e3393b00a56d2295b8d946596d4f2f34d336ad77ac6db0',
-     armv7l: 'd98d10a7bfc0bbd722e3393b00a56d2295b8d946596d4f2f34d336ad77ac6db0',
-       i686: '2f0edc72092b7964dfd2a4d5d8c28dff88126f0f6f93f6c4d4a7855305c07584',
-     x86_64: '871e834b08e282b6324df52853b7313de281fac7ee1e1b9cd0837ed5627a0038'
+    aarch64: 'ed06675b88a4cdb3a722e7fda48a646b1afea39cf2bb79adeff1bc7d9d5646b9',
+     armv7l: 'ed06675b88a4cdb3a722e7fda48a646b1afea39cf2bb79adeff1bc7d9d5646b9',
+       i686: '681ae7959a6cc57d64b36a3114bde7884034487dd41b144c96d461906502bf92',
+     x86_64: 'dbd694a4d23264d95be5ddcd14f64dc88977e1cc6d6f3be3023383fdfafaf585'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'glibc' # R
+  depends_on 'libffi' # R
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

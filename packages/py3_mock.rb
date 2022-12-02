@@ -4,23 +4,23 @@ class Py3_mock < Package
   description 'Mock is a testing library in Python.'
   homepage 'https://mock.readthedocs.org/'
   @_ver = '4.0.3'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/testing-cabal/mock.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3_armv7l/py3_mock-4.0.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3_armv7l/py3_mock-4.0.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3_i686/py3_mock-4.0.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3_x86_64/py3_mock-4.0.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3-py3.11_armv7l/py3_mock-4.0.3-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3-py3.11_armv7l/py3_mock-4.0.3-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3-py3.11_i686/py3_mock-4.0.3-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_mock/4.0.3-py3.11_x86_64/py3_mock-4.0.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8811dd4d68642ea79a00943b6013ba3d9f6e0e12b8c485a1b871010c9b8cf943',
-     armv7l: '8811dd4d68642ea79a00943b6013ba3d9f6e0e12b8c485a1b871010c9b8cf943',
-       i686: '8892d22ca4d6b6968b78e13f36f734a07ced9bd9062b79fcbeec945d12760af6',
-     x86_64: '2ff3e0801c0e2d8df05fa4e614a41641f4551aaeb158ab90780fe2c6c793b78e'
+    aarch64: 'af0273a79a3f73973b9005acd5dddb956f3a3bb0d43545b3054b6e4c06df879d',
+     armv7l: 'af0273a79a3f73973b9005acd5dddb956f3a3bb0d43545b3054b6e4c06df879d',
+       i686: 'c9d56be03f1e1c14ef0510c1800869c7faac8bbc90c086a1041d245345b64b37',
+     x86_64: '944fd6c35accba7f188a498463ed6738f063386149716db0304ae181c8d9b829'
   })
 
   def self.build
