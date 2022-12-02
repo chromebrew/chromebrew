@@ -35,8 +35,6 @@ class Python3 < Package
   depends_on 'mpdecimal' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
-  depends_on 'py3_pip' # L
-  depends_on 'py3_setuptools' # L
   depends_on 'readline' # R
   depends_on 'sqlite' # R
   depends_on 'xzutils' # R
