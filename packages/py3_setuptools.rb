@@ -28,6 +28,11 @@ class Py3_setuptools < Package
 
   conflicts_ok
 
+   def self.preflight
+    @pyver = `python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp
+    abort if @pyver.to_f < 3.11
+  end
+
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
   end
