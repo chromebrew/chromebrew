@@ -11,20 +11,23 @@ class Py3_dbus_python < Package
   git_hashtag "dbus-python-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18_armv7l/py3_dbus_python-1.2.18-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18_armv7l/py3_dbus_python-1.2.18-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18_i686/py3_dbus_python-1.2.18-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18_x86_64/py3_dbus_python-1.2.18-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18-py3.11_armv7l/py3_dbus_python-1.2.18-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18-py3.11_armv7l/py3_dbus_python-1.2.18-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18-py3.11_i686/py3_dbus_python-1.2.18-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_dbus_python/1.2.18-py3.11_x86_64/py3_dbus_python-1.2.18-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a27b5684646d29eff8f8f394c219e7499bcc38c5d14da2e38a2fb20a5980d90d',
-     armv7l: 'a27b5684646d29eff8f8f394c219e7499bcc38c5d14da2e38a2fb20a5980d90d',
-       i686: '7f4ed8709baa910b0fb983d3109d87c1252d4dc9ff61f6fa91a4dd230f250dff',
-     x86_64: '07902001348df9983ad0eb42d6c6b04abe18cf5e48ba0f039f6629d677353b0d'
+    aarch64: 'd02784920f615e953fb663e33b728d863f1c992acc8bcfda41dcd0ba72199a70',
+     armv7l: 'd02784920f615e953fb663e33b728d863f1c992acc8bcfda41dcd0ba72199a70',
+       i686: '93f165c88365a40d792548ae732a1a9bff974974036301c6d8fcb305653322da',
+     x86_64: 'fc38250c40a8266f65d1e0ad8d2483b6c7b5b7c9363dedda7c0a41d089a48556'
   })
 
   depends_on 'autoconf_archive' => :build
   depends_on 'py3_setuptools' => :build
+  depends_on 'dbus' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

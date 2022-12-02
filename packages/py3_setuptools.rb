@@ -17,10 +17,10 @@ class Py3_setuptools < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_x86_64/py3_setuptools-65.6.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2bd36f8e08cc0fe3dfcb58b9cf4bdaf813fe335e29573e8ed9c123f80e61396e',
-     armv7l: '2bd36f8e08cc0fe3dfcb58b9cf4bdaf813fe335e29573e8ed9c123f80e61396e',
-       i686: '93b437571e80d739fb123862ff4296069a8fc460025d5a51309935c303be69d4',
-     x86_64: 'dde1cabacc460a83dcf97da29314a969cd0a79b4ff6c911bd4cb1a4ac4640de7'
+    aarch64: 'd357201c692981911586872b1d7f0b6900b886d13202a50aaedf91f02942db08',
+     armv7l: 'd357201c692981911586872b1d7f0b6900b886d13202a50aaedf91f02942db08',
+       i686: '876fc977e01a7d639adef3a9a7403813cf599f98d0c28d9d7d906d6fba73b34c',
+     x86_64: '483166d8742478f87585c5a10d10fafd5953dabb1c6e435d2c13d5bccebcd74a'
   })
 
   depends_on 'python3'

@@ -17,10 +17,10 @@ class Py3_pyparsing < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyparsing/3.0.9-py3.11_x86_64/py3_pyparsing-3.0.9-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f9b77523c088b539ed706824100f3119fc7f2d6b09ec69acc8fd5fedc7f481a2',
-     armv7l: 'f9b77523c088b539ed706824100f3119fc7f2d6b09ec69acc8fd5fedc7f481a2',
-       i686: '82f7f41291a85b988879a1c64f1617e0e75eba6afdf1995b7b320f17565939c8',
-     x86_64: '2fc02404bd61fe6fb2cfd6c696dcd0d4d72cd58cc917820e971293d94520f396'
+    aarch64: '939e0032145745843ca76b98e80e2f1fdb2747ed6fd9789e6bf92454eccb29ce',
+     armv7l: '939e0032145745843ca76b98e80e2f1fdb2747ed6fd9789e6bf92454eccb29ce',
+       i686: 'ffc073d888b238111adaaf1c7c9d87057cc6c7e53cd04972be0777cf446fd202',
+     x86_64: 'ed9b21c9b56086df2f7d8f31c3b6b7c5c9b2a6669140f2ef30c7c644c3334f79'
   })
 
   depends_on 'python3'

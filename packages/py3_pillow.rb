@@ -11,16 +11,16 @@ class Py3_pillow < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0_armv7l/py3_pillow-9.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0_armv7l/py3_pillow-9.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0_i686/py3_pillow-9.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0_x86_64/py3_pillow-9.2.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0-py3.11_armv7l/py3_pillow-9.2.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0-py3.11_armv7l/py3_pillow-9.2.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0-py3.11_i686/py3_pillow-9.2.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pillow/9.2.0-py3.11_x86_64/py3_pillow-9.2.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a7dca84ba66e922f09d1228359603b4ccb100e942cc94b54c6403762631f64ad',
-     armv7l: 'a7dca84ba66e922f09d1228359603b4ccb100e942cc94b54c6403762631f64ad',
-       i686: '1bc978b4feb8e36f5adfcd39ed70f617e1b3e1687aa4c427aadf75c771505f69',
-     x86_64: 'dd1671f31ece4b7524ff8c4750b0d4c014e5558c0f12ddb2def2c1195bfeabb6'
+    aarch64: 'dae86150cfd6bbeae44bb91ef6c74d39323559f0abd3ad7f839a1603df4a9ddc',
+     armv7l: 'dae86150cfd6bbeae44bb91ef6c74d39323559f0abd3ad7f839a1603df4a9ddc',
+       i686: 'b9a56506e4704e8d9a8077c6767c15d53cd41970749e7d3a99a1b21e11f46b7b',
+     x86_64: 'bfbdbaf6614df85dc23199fb358b06dc455f8c0372b6b382dcd4b38fa43eed5d'
   })
 
   depends_on 'py3_lxml'

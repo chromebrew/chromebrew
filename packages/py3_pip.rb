@@ -17,10 +17,10 @@ class Py3_pip < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/22.3.1-py3.11_x86_64/py3_pip-22.3.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fef14295481a2740d07e716905748df9cae0d5b1bc686ddb7bdc683bd4835284',
-     armv7l: 'fef14295481a2740d07e716905748df9cae0d5b1bc686ddb7bdc683bd4835284',
-       i686: 'af84a40117c7257a907c3c44955cb56ab41240a4f45ec69622c1f115fc69bec0',
-     x86_64: 'da150010a81c82c2f69aa60136bdbb1b44a3c8574f8bbe9543de72edf917794b'
+    aarch64: '023cc76bd338a1d14b6ed45d55e8fe6b05454145abe941cc0fdec3d0bbf5ffe4',
+     armv7l: '023cc76bd338a1d14b6ed45d55e8fe6b05454145abe941cc0fdec3d0bbf5ffe4',
+       i686: '3826d8987e023d5afa98cb322a6f920fcbbc37c83d82ec4e048b28c7fd16cdaf',
+     x86_64: 'af52f8111904a49684b37251cc65c8d5dc9235238ecf49aa56a27fb95bd1c994'
   })
 
   depends_on 'python3'

@@ -17,10 +17,10 @@ class Py3_codespell < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_codespell/2.2.2-py3.11_x86_64/py3_codespell-2.2.2-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6a4d7764591d8ff196ff9003ddc80e43cdc8ffda451c54be485126f7a7ca90bd',
-     armv7l: '6a4d7764591d8ff196ff9003ddc80e43cdc8ffda451c54be485126f7a7ca90bd',
-       i686: '89e58d435f0b7a4b98dfe60a2d20fbfdd0d61399b96773588e64ddfb53b40c21',
-     x86_64: '0c4596e2d756b8235197f0f57cf449b81e502396b3bae87508e8a892b58e0210'
+    aarch64: '3cf7f2828d028eb28ff2b3d57eb2c597215b504ca4c905b5afd4d55c9a7b3d28',
+     armv7l: '3cf7f2828d028eb28ff2b3d57eb2c597215b504ca4c905b5afd4d55c9a7b3d28',
+       i686: '93051a0e20b1927e5e43d64ee2e3faf1199757f61dc4bb0485f76552d650cebf',
+     x86_64: '6ded3458c8635855bf0549a2be1b8b7cc5c0245bcf708a9a6d64c5e53b8966a4'
   })
 
   depends_on 'python3'

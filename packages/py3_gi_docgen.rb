@@ -19,10 +19,10 @@ class Py3_gi_docgen < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.1_x86_64/py3_gi_docgen-2022.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '36720faa65b83944a74384038f50d878ae21b8f2cc076fae7feb3c065216ad91',
-     armv7l: '36720faa65b83944a74384038f50d878ae21b8f2cc076fae7feb3c065216ad91',
-       i686: '87267762d0360ac2f65c21a3a38efd186ccbe8d3f2869bdf9c0d64924fd40630',
-     x86_64: '61da242a83085c27b3f1a7b4e4966fa28568f4654f430e638a7764e38111ba56'
+    aarch64: '65c999d122794719e33d424824c74c5652e096cfc00602c3d4c3735580ed890c',
+     armv7l: '65c999d122794719e33d424824c74c5652e096cfc00602c3d4c3735580ed890c',
+       i686: '7fb80e8f5ceb7f4203648bf8e31cdf1447ff2e9b7a705b8cb915b21988d4ac26',
+     x86_64: 'b032122aca3708e986ea8ff5b1b6a978407ee9c7370006c560e3c865b4242cfd'
   })
 
   depends_on 'py3_jinja2'
@@ -32,6 +32,7 @@ class Py3_gi_docgen < Package
   depends_on 'py3_setuptools' => :build
   depends_on 'py3_toml'
   depends_on 'py3_typogrify'
+
   gnome
 
   def self.build

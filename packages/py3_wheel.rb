@@ -17,10 +17,10 @@ class Py3_wheel < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_wheel/0.38.4-py3.11_x86_64/py3_wheel-0.38.4-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '87c443d42f54772f3ff26c871dafde7a2058315b27e8de958df100594921c828',
-     armv7l: '87c443d42f54772f3ff26c871dafde7a2058315b27e8de958df100594921c828',
-       i686: '05b0d55b07d56b2b3743d2ce6e1af8d849cf5424f3af51023352884d5e802f40',
-     x86_64: 'e20a4e37c977a37b0c28fd363d78e95593f5f519ef67f87cb16dfacfcb4a0a8a'
+    aarch64: 'e09e5d9ff60863d7b57313f881b33ea8099ec0b53959f31aee776ffb571559f8',
+     armv7l: 'e09e5d9ff60863d7b57313f881b33ea8099ec0b53959f31aee776ffb571559f8',
+       i686: '6b42d8c7e0208d36acd186bd747a76c22e77cf0fe1a57035f0f920b25db4df57',
+     x86_64: '78e005cc0c9a6606d9c269c99196f797f7ebdc648724ffb74f967427b56dd279'
   })
 
   depends_on 'python3'

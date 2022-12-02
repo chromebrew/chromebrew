@@ -17,10 +17,10 @@ class Py3_pyproject_hooks < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyproject_hooks/1.0.0-py3.11_x86_64/py3_pyproject_hooks-1.0.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bf73236a9802a89c2dcdeadd958f888a8a7464cf279e72e59a075171c9728050',
-     armv7l: 'bf73236a9802a89c2dcdeadd958f888a8a7464cf279e72e59a075171c9728050',
-       i686: '7d5bb4006e0503a520b0262364c70177838b467b21492c10d0f52dbfdb7dcfc0',
-     x86_64: '4056bb0bddf75f921e5dd4b10139bfa0458cf744ccaba5583eb3d623269970b5'
+    aarch64: '21f517d2022987ada64860830426cb7f7a769e405d42cb381f24063629433e55',
+     armv7l: '21f517d2022987ada64860830426cb7f7a769e405d42cb381f24063629433e55',
+       i686: '3de0b5be888db9484499d5083ed1011908945e36603fff4a2386869a5ba897ce',
+     x86_64: 'bc0168df62eb6b2c238a49bbfa289cdb1e3941648e8d6427552a9270fefc6579'
   })
 
   depends_on 'python3'

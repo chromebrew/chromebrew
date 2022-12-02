@@ -17,10 +17,10 @@ class Py3_pyelftools < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyelftools/0.29-py3.11_x86_64/py3_pyelftools-0.29-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '507c5cb7f67912c4f58751e1f2355bba66db769347413914b172bb1597a7894c',
-     armv7l: '507c5cb7f67912c4f58751e1f2355bba66db769347413914b172bb1597a7894c',
-       i686: '4832ba057d09781193e13c422f6ebe2cc4559b9fc610bfdeb5bf8d81a7e8ca8d',
-     x86_64: '5bbf7eb6f58583ba570a591b953c411acd7fb31d2263edec7c72b7793ad104ca'
+    aarch64: '705c080e39ddf3a95545b40e2fba1149d159c24e73635754fa1a9faecc3bbb02',
+     armv7l: '705c080e39ddf3a95545b40e2fba1149d159c24e73635754fa1a9faecc3bbb02',
+       i686: '570868d4967670730b3fa5d295a5db45c17421d27b3c6c973af0be3e423440a0',
+     x86_64: '90b75c348286fc8f731f38a7bc3b8548989ea9416935008e36753928b7f61f97'
   })
 
   depends_on 'glibc' # R

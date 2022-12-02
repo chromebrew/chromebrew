@@ -17,10 +17,10 @@ class Py3_pep517 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/0.12.0-py3.11_x86_64/py3_pep517-0.12.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e77638b9339f8b30bd99b1a780992c4c6e6b6c64a0a2d14b474ee5e5c53c2af8',
-     armv7l: 'e77638b9339f8b30bd99b1a780992c4c6e6b6c64a0a2d14b474ee5e5c53c2af8',
-       i686: '4b1553ad456e3d9721750275df595f1fbd8102dfb9e9d0555aee2a2c240adb75',
-     x86_64: '84beaaca58b1b64ac5820a1e71f496aae8e4bba5f68c048be71295e0083f8a9c'
+    aarch64: 'fabe3ecf70eed72c0df14ca2251baab7abacaeb2f120ab33d2837ba9bf472519',
+     armv7l: 'fabe3ecf70eed72c0df14ca2251baab7abacaeb2f120ab33d2837ba9bf472519',
+       i686: '62fe92d192ce43d0da02458c24a0f22bc2d477e1d16fe05f58edd8d6b7af83b0',
+     x86_64: '3e49aa5bef6b9ed8c404421d10b6dc5c1380b5eb89f4dbb7c6ee6be2309204f3'
   })
 
   depends_on 'python3'

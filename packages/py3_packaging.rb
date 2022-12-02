@@ -17,10 +17,10 @@ class Py3_packaging < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_packaging/21.3-py3.11_x86_64/py3_packaging-21.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '054e3e64cc9b74492064908f16be5951311e314858085a638afbbe10f4e3af4b',
-     armv7l: '054e3e64cc9b74492064908f16be5951311e314858085a638afbbe10f4e3af4b',
-       i686: '6e319e19bcc16d562bc4db5b056136c3a160c9496c75f913f3b89bd25608c5aa',
-     x86_64: '86db6c8d0e2f7214bb86d48f8d2566d4085f266697fe801b36448dbd0229e942'
+    aarch64: 'f62325e7769ae74eb20c83e5b03b53659911c231a295d9b32cf905490942bc3c',
+     armv7l: 'f62325e7769ae74eb20c83e5b03b53659911c231a295d9b32cf905490942bc3c',
+       i686: '6bfa2e877c594e9b45b1ef7fde31e61ce88642574c17fadd19aaf227c8a01073',
+     x86_64: '636fd08cfbfe22116e5712aa89106f9fe3929ca65845f03240f5ef3d3e615494'
   })
 
   depends_on 'python3'
