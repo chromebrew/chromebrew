@@ -3,7 +3,7 @@ require 'package'
 class Py3_numpy < Package
   description 'NumPy is the fundamental package for array computing with Python.'
   homepage 'https://numpy.org/'
-  @_ver = '1.21.4'
+  @_ver = '1.23.5'
   version "#{@_ver}-py3.11"
   license 'BSD'
   compatibility 'all'

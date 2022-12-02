@@ -3,14 +3,12 @@ require 'package'
 class Py3_lxml < Package
   description 'LXML is a Python library for processing XML and HTML.'
   homepage 'https://lxml.de/'
-  @_ver = '4.6.3'
+  @_ver = '4.9.1'
   version "#{@_ver}-py3.11"
   license 'BSD-3'
-  # source_url 'https://github.com/lxml/lxml.git'
-  # git_hashtag "lxml-#{@_ver}"
+  source_url 'https://github.com/lxml/lxml.git'
+  git_hashtag "lxml-#{@_ver}"
   compatibility 'all'
-  source_url 'https://files.pythonhosted.org/packages/e5/21/a2e4517e3d216f0051687eea3d3317557bde68736f038a3b105ac3809247/lxml-4.6.3.tar.gz'
-  source_sha256 '39b78571b3b30645ac77b95f7c69d1bffc4cf8c3b157c435a34da72e78c82468'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_lxml/4.6.3-1_armv7l/py3_lxml-4.6.3-1-chromeos-armv7l.tpxz',

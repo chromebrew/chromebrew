@@ -3,7 +3,7 @@ require 'package'
 class Py3_cython < Package
   description 'The Cython language makes writing C extensions for the Python language as easy as Python itself.'
   homepage 'https://cython.org/'
-  @_ver = '0.29.25'
+  @_ver = '0.29.32'
   version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'

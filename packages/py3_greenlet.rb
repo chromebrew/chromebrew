@@ -3,7 +3,7 @@ require 'package'
 class Py3_greenlet < Package
   description 'Greenlet provides lightweight in-process concurrent programming.'
   homepage 'https://greenlet.readthedocs.io/'
-  @_ver = '1.1.2'
+  @_ver = '2.0.1'
   version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'

@@ -3,7 +3,7 @@ require 'package'
 class Py3_cryptography < Package
   description 'Cryptography provides cryptographic recipes and primitives to Python developers.'
   homepage 'https://cryptography.io/'
-  @_ver = '37.0.2'
+  @_ver = '38.0.4'
   version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
@@ -24,7 +24,6 @@ class Py3_cryptography < Package
   })
 
   depends_on 'py3_cffi'
-  depends_on 'py3_six'
   depends_on 'py3_typing_extensions'
   depends_on 'py3_setuptools_rust' => :build
   depends_on 'py3_pycparser' => :build
