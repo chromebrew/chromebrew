@@ -23,7 +23,7 @@ class Py3_olefile < Package
      x86_64: '5d71419582c752f10df1be75c0547722fa3b376e40b21f24f6ee03f4c7e56df0'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_smartypants < Package
      x86_64: 'db69abe9f50050bb8daa8dd5091088717f8c3832e461b63b7617a6a30e7bd0eb'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

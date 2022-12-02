@@ -24,7 +24,7 @@ class Mypaint < Package
   })
 
   depends_on 'swig' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'mypaint_brushes'
   depends_on 'openmp'
   depends_on 'pygobject'

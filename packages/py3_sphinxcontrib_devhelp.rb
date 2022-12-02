@@ -23,7 +23,7 @@ class Py3_sphinxcontrib_devhelp < Package
      x86_64: '6bd6e4dfb8897ba567d3682f6860b06422bc39a68bbb2afd16671f3a1a17b41e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

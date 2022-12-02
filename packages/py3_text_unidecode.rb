@@ -23,7 +23,7 @@ class Py3_text_unidecode < Package
      x86_64: '47e70367c0e7296a67faafbd70085f8b08db9ccfd38f7cca3eeca83d776c2623'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -26,7 +26,7 @@ class Py3_pycairo < Package
   depends_on 'cairo'
   depends_on 'libxxf86vm'
   depends_on 'libxrender'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
 

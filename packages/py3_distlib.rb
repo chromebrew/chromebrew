@@ -23,7 +23,7 @@ class Py3_distlib < Package
      x86_64: 'edb08089d1d9a0610195fde860b88a22d1025beb3ef3f42c5e5fbb023eddae0a'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

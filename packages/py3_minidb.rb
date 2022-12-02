@@ -23,7 +23,7 @@ class Py3_minidb < Package
      x86_64: 'fd86795705d4f6c4270a2ed682c2b87903eb00fb3759b78f9cc6190f946de10b'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

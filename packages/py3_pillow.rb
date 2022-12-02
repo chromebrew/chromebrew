@@ -27,7 +27,7 @@ class Py3_pillow < Package
   depends_on 'py3_xlsxwriter'
   depends_on 'libjpeg'
   depends_on 'libxcb'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'lcms' # R

@@ -23,7 +23,7 @@ class Py3_xlrd < Package
      x86_64: 'ddeb2ca4c1e6b8ef5e45d240b2e8f7425a04d5bcba534868dd083950f8edc819'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

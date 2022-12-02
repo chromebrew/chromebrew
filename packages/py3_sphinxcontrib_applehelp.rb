@@ -23,7 +23,7 @@ class Py3_sphinxcontrib_applehelp < Package
      x86_64: '972c91c7b6844715480cd97b415da0a8d794af96006c6e742dc92d515b7e2178'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

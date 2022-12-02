@@ -23,7 +23,7 @@ class Py3_pytimeparse < Package
      x86_64: 'b93618489600390b6c9ef56ef72543803df440d87ed391e10e14a79d0e70293a'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

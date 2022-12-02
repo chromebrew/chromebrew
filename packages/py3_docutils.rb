@@ -23,7 +23,7 @@ class Py3_docutils < Package
      x86_64: 'ad77384090df820e29cf07fffbfbe73f4eed0e0051051746761e7057e018a3cb'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

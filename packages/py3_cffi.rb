@@ -23,7 +23,7 @@ class Py3_cffi < Package
      x86_64: 'dbd694a4d23264d95be5ddcd14f64dc88977e1cc6d6f3be3023383fdfafaf585'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
   depends_on 'libffi' # R
 

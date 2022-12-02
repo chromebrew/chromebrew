@@ -30,7 +30,7 @@ class Py3_tox < Package
   depends_on 'py3_virtualenv'
   depends_on 'py3_pluggy'
   depends_on 'py3_toml'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

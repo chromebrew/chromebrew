@@ -23,7 +23,7 @@ class Py3_dnspython < Package
      x86_64: '78917859b0b84a94219c826389f13f4f05660a1974b74e970ccdc75985938e35'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

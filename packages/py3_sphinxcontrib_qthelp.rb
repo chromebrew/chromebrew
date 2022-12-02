@@ -23,7 +23,7 @@ class Py3_sphinxcontrib_qthelp < Package
      x86_64: 'eaddf48b547fb6882e7013dbd3bc1ecee0d449ea3e3f5103c61562866e4cc45f'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

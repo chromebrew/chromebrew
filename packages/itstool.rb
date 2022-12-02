@@ -24,7 +24,7 @@ class Itstool < Package
   })
 
   depends_on 'py3_libxml2'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system 'env NOCONFIGURE=1 ./autogen.sh'

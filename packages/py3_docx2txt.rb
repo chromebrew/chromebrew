@@ -23,7 +23,7 @@ class Py3_docx2txt < Package
      x86_64: '1def4380df5dbdcb05f653dfa2f974d9356115f6949c8fde9ce1f06dd985a863'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

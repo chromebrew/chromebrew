@@ -23,7 +23,7 @@ class Py3_chardet < Package
      x86_64: '3bcfb7009c40cd73c2e6ec803f4dd2cd4b9592bdb41a024fa192e8d963ad54ab'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_alabaster < Package
      x86_64: 'd2a6ccf5010567c119639e8c16c625de222a06be0582d5378105f37e543300f2'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

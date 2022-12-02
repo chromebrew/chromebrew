@@ -23,7 +23,7 @@ class Py3_typing_extensions < Package
      x86_64: 'b7eea615705e3f2c048d5ad803c88d02c9a4ea5ec59603137beeaa0a41382812'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     Dir.chdir 'typing_extensions' do

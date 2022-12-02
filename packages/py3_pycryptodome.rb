@@ -23,7 +23,7 @@ class Py3_pycryptodome < Package
      x86_64: '35a5619fddda1ab79fd29f010f19e01255a113f6e26ac33b8038ec711977e81c'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

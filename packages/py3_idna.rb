@@ -23,7 +23,7 @@ class Py3_idna < Package
      x86_64: '0be1c3bce7ae0355b442ffd7d47f662be9ee08a3629213b8d75d78dc76ac1be0'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

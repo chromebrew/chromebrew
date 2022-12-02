@@ -29,7 +29,7 @@ class Py3_pytest < Package
   depends_on 'py3_attrs'
   depends_on 'py3_pluggy'
   depends_on 'py3_iniconfig'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

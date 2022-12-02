@@ -23,7 +23,7 @@ class Py3_appdirs < Package
      x86_64: 'f75c8097c3bd5b119e36b6b4576baf13df3b3e09bc6d8a1044f5af9d0ddefc6b'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

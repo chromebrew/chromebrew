@@ -23,7 +23,7 @@ class Py3_parsedatetime < Package
      x86_64: 'ea2d58b5bbd901016efb3c21f680c696d18779f8122dd4b216a1a1218a994598'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -26,7 +26,7 @@ class Py3_requests < Package
   depends_on 'py3_chardet'
   depends_on 'py3_idna'
   depends_on 'py3_urllib3'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

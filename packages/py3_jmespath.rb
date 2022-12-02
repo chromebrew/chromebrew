@@ -23,7 +23,7 @@ class Py3_jmespath < Package
      x86_64: 'cf6fabd0b3335419b092a37fae5d808c21b20581a8962604fe8fb5edeb173b91'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

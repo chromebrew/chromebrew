@@ -23,7 +23,7 @@ class Py3_pycryptodomex < Package
      x86_64: '3333e339f97560d6d1ca712ca7f8711d55a34051a2bbd6acdb3617739ea86588'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

@@ -23,7 +23,7 @@ class Py3_xmltodict < Package
      x86_64: '4ce3e0327518c75e04e8204317674ca49e355ce679a06bc01f0c4ed14edd02b5'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

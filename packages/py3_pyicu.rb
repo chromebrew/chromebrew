@@ -23,7 +23,7 @@ class Py3_pyicu < Package
      x86_64: 'c72cbc39569332967082b3d1e934aeb1823e494eadf8ea172d401e74b6a439c5'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R

@@ -23,7 +23,7 @@ class Py3_ply < Package
      x86_64: '750e99c7798c4106e81f97fd3e0baf7074043083ebc4fe15d0648b3ed09bfdb7'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

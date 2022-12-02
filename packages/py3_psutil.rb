@@ -23,7 +23,7 @@ class Py3_psutil < Package
      x86_64: '7f160be435bba0f50f8df6b42eeb7d4186e2c95cbcb927c16336443e133ebb81'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

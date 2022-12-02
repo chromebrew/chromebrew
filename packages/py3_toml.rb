@@ -23,7 +23,7 @@ class Py3_toml < Package
      x86_64: 'ccf6bd61f11662b7ae1b2017bc94c675bcd6ca9c3a0fd4d1c80ead0995e81d5a'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

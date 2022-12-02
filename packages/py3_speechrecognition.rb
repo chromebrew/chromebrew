@@ -23,7 +23,7 @@ class Py3_speechrecognition < Package
      x86_64: '209d4474b031f48507075d5f843943f6c30f675e69f5735659fc8ee98a6ccf05'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

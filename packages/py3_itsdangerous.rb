@@ -23,7 +23,7 @@ class Py3_itsdangerous < Package
      x86_64: '1999c81d49d2692b484373632fadfda7bd8402317e5595518ca32fe6a38f95d1'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

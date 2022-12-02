@@ -23,7 +23,7 @@ class Py3_sqlalchemy < Package
      x86_64: '942cdf21083e64bbf4d5bb4c83e29c9f931ebd0d161bd33fece8562be3dce47f'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

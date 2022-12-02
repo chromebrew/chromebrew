@@ -23,8 +23,7 @@ class Py3_pipdeptree < Package
      x86_64: '1dee5c0ebb751d44751107867841b39a8c1208826c2c88b5cc1aff56eb0eb018'
   })
 
-  depends_on 'py3_pip'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

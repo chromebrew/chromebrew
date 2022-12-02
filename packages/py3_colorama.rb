@@ -23,7 +23,7 @@ class Py3_colorama < Package
      x86_64: '423d4464df9bacce84bf757b109983801e49664b4511ccf06b5552961511a84a'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

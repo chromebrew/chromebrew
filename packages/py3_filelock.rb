@@ -23,7 +23,7 @@ class Py3_filelock < Package
      x86_64: '90519a0df43254d4bc4410bfeed9bd0b785748dd260ef7541814e2345e91bef1'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

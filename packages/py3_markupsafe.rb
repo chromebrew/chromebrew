@@ -23,7 +23,7 @@ class Py3_markupsafe < Package
      x86_64: 'db3fa2c7949b255ca644833c3c0c967cfc4d50f906f7088b1412a1764e637c9d'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

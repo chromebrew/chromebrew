@@ -23,7 +23,7 @@ class Py3_argcomplete < Package
      x86_64: '1abfd335df19833406fa0fcfc1053ad70f87e7647034c825a18b72e7d7d41608'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

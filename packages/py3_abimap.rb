@@ -23,7 +23,7 @@ class Py3_abimap < Package
      x86_64: 'a5588bdec847d4b46483068b6d060ad9763ed03fc6fef3ea8f1fda6cb70b3da8'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

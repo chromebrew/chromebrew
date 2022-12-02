@@ -23,7 +23,7 @@ class Py3_pyxdg < Package
      x86_64: 'da83893265d4bcfd96676abc00eb9ff63478f04918e3aae0fea53de580916950'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   no_compile_needed
 

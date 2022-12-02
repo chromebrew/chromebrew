@@ -23,7 +23,7 @@ class Py3_urwid < Package
      x86_64: 'a778ec1d7d65772e68a928444ead655f5fdf00ef3e67b7fc9a60e881c0d3b745'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

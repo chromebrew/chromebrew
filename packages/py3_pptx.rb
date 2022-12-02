@@ -26,7 +26,7 @@ class Py3_pptx < Package
   depends_on 'py3_lxml'
   depends_on 'py3_pillow'
   depends_on 'py3_xlsxwriter'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

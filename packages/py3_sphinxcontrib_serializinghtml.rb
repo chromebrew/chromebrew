@@ -23,7 +23,7 @@ class Py3_sphinxcontrib_serializinghtml < Package
      x86_64: 'c40c5424f59918ad5d21be8330ca9c1fa100e3b02593fe75e56afaafbd252224'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

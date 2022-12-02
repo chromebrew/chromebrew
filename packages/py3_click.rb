@@ -23,7 +23,7 @@ class Py3_click < Package
      x86_64: 'af275727cbea5c79880ef59c9c80dbcd9972fa9437bff7103a24cde7b86b393d'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

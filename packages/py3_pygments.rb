@@ -23,7 +23,7 @@ class Py3_pygments < Package
      x86_64: 'bf15045e59e9b4e11f4ad81a57f50ddbbe34bcd4b7cb76ef219aa954de4809b2'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

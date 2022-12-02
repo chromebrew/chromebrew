@@ -23,7 +23,7 @@ class Py3_cmarkgfm < Package
      x86_64: '4849972d806eb83d7fee77d9dd202f2859e373fd17852b4195ced7045292e0f9'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'py3_cffi'
   depends_on 'glibc' # R
 

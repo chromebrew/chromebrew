@@ -23,7 +23,7 @@ class Py3_semantic_version < Package
      x86_64: 'a1ff66d7b04d0482c5c5f8e6f60b7adb02516176b5d44e9355ba57505fbcc37e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

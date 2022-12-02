@@ -24,7 +24,7 @@ class Py3_lxml < Package
   })
 
   depends_on 'py3_cython' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R

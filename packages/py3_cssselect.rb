@@ -23,7 +23,7 @@ class Py3_cssselect < Package
      x86_64: '50db0afcfb22bfac8a45fc3d7691b424e17b78055c978c80365a9f0657908729'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

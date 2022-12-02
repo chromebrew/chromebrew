@@ -23,7 +23,7 @@ class Py3_certifi < Package
      x86_64: 'b7c9747a94f8fab4b51d967291d99bc9b41533ef2db9ba3124c97aadd5ec5d6a'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_beautifulsoup4 < Package
      x86_64: '73396f0ec6e75dafe95fc072aa3ba62e83eac708df0a71349d51848179fb8c8d'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_pystemmer < Package
      x86_64: 'c3d75ba58d256841c277712ccc61b497ad67a7299b99633b86259379d8c0e7e7'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

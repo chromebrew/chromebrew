@@ -25,7 +25,7 @@ class Mercurial < Package
 
   depends_on 'py3_docutils'
   depends_on 'texinfo' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

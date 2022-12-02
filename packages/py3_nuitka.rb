@@ -23,7 +23,7 @@ class Py3_nuitka < Package
      x86_64: '4f663d79719d33ac6142331106dc0db871d040bc0f6c4c5610fd4ff0787f01aa'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

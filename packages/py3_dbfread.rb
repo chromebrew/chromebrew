@@ -23,7 +23,7 @@ class Py3_dbfread < Package
      x86_64: '8cbbe7ccf0407c72ce9838d4dec3cef7374de1db139312c977ad6a05deb5d39e'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

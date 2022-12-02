@@ -23,7 +23,7 @@ class Py3_sortedcontainers < Package
      x86_64: '8c5e1f3e934aaf3759e075099f1ad8b17676b94a862a69c1dbe7efcbb6ce6548'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

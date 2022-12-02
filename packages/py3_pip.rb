@@ -24,8 +24,7 @@ class Py3_pip < Package
   })
 
   depends_on 'python3'
-  depends_on 'py3_setuptools'
-  depends_on 'py3_wheel'
+  depends_on 'python3'
 
   conflicts_ok
 

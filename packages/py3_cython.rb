@@ -23,7 +23,7 @@ class Py3_cython < Package
      x86_64: '9b89dc31b73ec39627bf6e9aab3a88c6416e3d6042224ae6599c731aa37a9513'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
 
   def self.build

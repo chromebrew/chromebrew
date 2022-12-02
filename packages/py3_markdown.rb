@@ -23,7 +23,7 @@ class Py3_markdown < Package
      x86_64: '0ec6f065d1d90b919a0437e9f9baff3b0ca088fa2c93eaec002bcff9bcb5e5a0'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_zipp < Package
      x86_64: '0697f9eecf402951133377009b6f3fb1a7129e09f3c0f37981f1b27600b68756'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

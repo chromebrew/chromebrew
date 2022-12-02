@@ -25,7 +25,7 @@ class Py3_pyelftools < Package
 
   depends_on 'glibc' # R
   depends_on 'python3' # R
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

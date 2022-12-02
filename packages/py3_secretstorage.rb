@@ -25,7 +25,7 @@ class Py3_secretstorage < Package
 
   depends_on 'py3_jeepney'
   depends_on 'py3_cryptography'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

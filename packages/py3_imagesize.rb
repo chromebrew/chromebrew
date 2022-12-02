@@ -23,7 +23,7 @@ class Py3_imagesize < Package
      x86_64: '01fa549a37079b466e6b740f9b0764d00ac0cda284182fc98f6d968f7f9419f1'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

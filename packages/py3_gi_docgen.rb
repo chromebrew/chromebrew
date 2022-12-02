@@ -30,7 +30,7 @@ class Py3_gi_docgen < Package
   depends_on 'py3_markdown'
   depends_on 'py3_markupsafe'
   depends_on 'py3_pygments'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'py3_toml'
   depends_on 'py3_typogrify'
 

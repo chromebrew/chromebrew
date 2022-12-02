@@ -24,7 +24,7 @@ class Py3_dbus_python < Package
   })
 
   depends_on 'autoconf_archive' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'dbus' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R

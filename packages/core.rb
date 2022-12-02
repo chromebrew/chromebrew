@@ -67,8 +67,6 @@ class Core < Package
   depends_on 'perl'
   depends_on 'pixz'
   depends_on 'popt'
-  depends_on 'py3_pip'
-  depends_on 'py3_setuptools'
   depends_on 'py3_wheel'
   depends_on 'python3'
   depends_on 'readline'

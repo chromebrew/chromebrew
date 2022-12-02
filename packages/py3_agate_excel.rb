@@ -27,7 +27,7 @@ class Py3_agate_excel < Package
   depends_on 'py3_openpyxl'
   depends_on 'py3_olefile'
   depends_on 'py3_agate'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_pathspec < Package
      x86_64: '30e5b78e216257ffa93c6b819375a242336f6eed428c302de97f124647242952'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

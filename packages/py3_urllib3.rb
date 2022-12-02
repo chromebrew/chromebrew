@@ -23,7 +23,7 @@ class Py3_urllib3 < Package
      x86_64: 'cab19fea342c980f528c8f3f73b9279ec256643d0c20f8a55ddb513f81b2784d'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

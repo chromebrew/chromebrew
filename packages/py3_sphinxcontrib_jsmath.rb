@@ -23,7 +23,7 @@ class Py3_sphinxcontrib_jsmath < Package
      x86_64: 'fa9f5d30f4d0b34e343c5c265032bc4f6e6398a0c78b19420c610f7d3a4a518f'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

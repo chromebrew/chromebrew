@@ -23,7 +23,7 @@ class Py3_dicttoxml < Package
      x86_64: '686a16d30dbbd3b22d9460497d93c322b541db7cccc65ed50802c9cbcb3cb806'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

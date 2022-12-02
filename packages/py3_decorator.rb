@@ -23,7 +23,7 @@ class Py3_decorator < Package
      x86_64: '085e0a502866ce816c43932f6fc4635de47f52b4a7c1629f4fcc572a6159f0f9'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

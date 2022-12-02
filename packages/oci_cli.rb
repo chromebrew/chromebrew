@@ -37,7 +37,7 @@ class Oci_cli < Package
   depends_on 'py3_configparser'
   depends_on 'py3_pytz'
   depends_on 'py3_oci'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

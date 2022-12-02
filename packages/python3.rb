@@ -125,4 +125,8 @@ class Python3 < Package
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
   end
+
+  def self.postinstall
+    system 'pip3 install --upgrade pip'
+  end
 end

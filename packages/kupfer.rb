@@ -14,7 +14,7 @@ class Kupfer < Package
   depends_on 'py3_dbus_python'
   depends_on 'py3_pyxdg'
   depends_on 'py3_docutils' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'sommelier'
 
   binary_url({

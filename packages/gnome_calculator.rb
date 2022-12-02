@@ -23,7 +23,7 @@ class Gnome_calculator < Package
      x86_64: '414afd75da3ffda9b37f3eddfc892686461ea174cce752017113700bdd76ec33'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'py3_libxml2' => :build
   depends_on 'gtk3'
   depends_on 'gtksourceview'

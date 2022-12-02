@@ -23,7 +23,7 @@ class Py3_xlsxwriter < Package
      x86_64: '80de04bc94504270d869de1d9111e601289df686663be94754b3744013019719'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

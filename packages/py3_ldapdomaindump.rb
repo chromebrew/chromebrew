@@ -26,7 +26,7 @@ class Py3_ldapdomaindump < Package
   depends_on 'py3_future'
   depends_on 'py3_dnspython'
   depends_on 'py3_ldap3'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,7 +23,7 @@ class Py3_pyyaml < Package
      x86_64: '8c265cf0aa797e72b7d92c3982f70dc155290ecf9b47a97b3968a10c3e089fb9'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -26,7 +26,7 @@ class Py3_extract_msg < Package
   depends_on 'py3_tzlocal'
   depends_on 'py3_olefile'
   depends_on 'py3_imapclient'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

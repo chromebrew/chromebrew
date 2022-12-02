@@ -24,7 +24,6 @@ class Py3_wheel < Package
   })
 
   depends_on 'python3'
-  depends_on 'py3_setuptools' => :build
   depends_on 'py3_packaging'
 
 

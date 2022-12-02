@@ -38,7 +38,7 @@ class Sphinx < Package
   depends_on 'py3_pygments'
   depends_on 'py3_packaging'
   depends_on 'py3_snowballstemmer'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

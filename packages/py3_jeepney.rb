@@ -23,7 +23,7 @@ class Py3_jeepney < Package
      x86_64: '17cac2095823723f3c87e1378f36e2e84780832d90ba60395f3b5f758e193b94'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

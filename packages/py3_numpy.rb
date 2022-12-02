@@ -26,7 +26,7 @@ class Py3_numpy < Package
 
   depends_on 'lapack'
   depends_on 'py3_cython' => :build
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
 

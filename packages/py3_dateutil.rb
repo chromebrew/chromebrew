@@ -23,7 +23,7 @@ class Py3_dateutil < Package
      x86_64: '2040989794fa0663e1761f168a8b33c8fb32307ed4e9e90e2d8142beddb9ba44'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

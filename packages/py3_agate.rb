@@ -31,7 +31,7 @@ class Py3_agate < Package
   depends_on 'py3_isodate'
   depends_on 'py3_leather'
   depends_on 'py3_parsedatetime'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

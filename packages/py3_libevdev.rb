@@ -23,7 +23,7 @@ class Py3_libevdev < Package
      x86_64: '1a1f346f5216d0ff006c2b5a1fbf9608274009a53c3386f704cfbcdf25390344'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

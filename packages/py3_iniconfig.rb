@@ -23,7 +23,7 @@ class Py3_iniconfig < Package
      x86_64: '18b05b6e41419244e80b3de06ab40597cb1d503f178dbbdd91ae5b427877eb3a'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

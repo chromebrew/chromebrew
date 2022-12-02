@@ -24,7 +24,7 @@ class Py3_magic < Package
   })
 
   depends_on 'filecmd'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

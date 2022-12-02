@@ -23,7 +23,7 @@ class Py3_configparser < Package
      x86_64: '89b15a470eb7e14fbca38c7fb96ab5562403e76588cb0e6eb7e8e38a67733150'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

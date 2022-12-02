@@ -27,7 +27,7 @@ class Pygobject < Package
   depends_on 'wayland'
   depends_on 'gobject_introspection'
   depends_on 'py3_pycairo'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'python3'
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R

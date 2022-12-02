@@ -25,7 +25,7 @@ class Py3_libxml2 < Package
 
   depends_on 'libxml2'
   depends_on 'libxslt'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 
