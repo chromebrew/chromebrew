@@ -23,6 +23,8 @@ class Xcb_proto < Package
      x86_64: 'b928bb9db79c61bc301d46979ab688dde12e9fe56d031f7a5a94b8181bf61c6f'
   })
 
+  depends_on 'python3'
+
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "./configure #{CREW_OPTIONS}"
