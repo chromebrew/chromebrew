@@ -25,7 +25,6 @@ class Py3_installer < Package
 
   depends_on 'python3'
 
-
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
   end

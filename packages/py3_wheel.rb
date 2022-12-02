@@ -26,7 +26,6 @@ class Py3_wheel < Package
   depends_on 'python3'
   depends_on 'py3_packaging'
 
-
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
   end
