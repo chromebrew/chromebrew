@@ -47,7 +47,14 @@ class Python3 < Package
   conflicts_ok
 
   def self.preinstall
-    system 'crew remove py3_setuptools py3_pip', exception: false
+    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+    @replaces = %w[py3_pip py3_setuptools]
+    @replaces.each do |package|
+      if @device[:installed_packages].any? { |elem| elem[:name] == package }
+        puts "Removing superseded package #{package}...".orange
+        system "crew remove #{package}", exception: false
+      end
+    end
   end
 
   def self.patch
