@@ -6,23 +6,24 @@ require 'package'
 class Py3_gi_docgen < Package
   description 'Documentation generator for GObject-based libraries'
   homepage 'https://gnome.pages.gitlab.gnome.org/gi-docgen/'
-  version '2022.1'
+  @_ver = '2022.2'
+  version "#{@_ver}-py3.11"
   license 'Apache GPL3'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gi-docgen.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.1_armv7l/py3_gi_docgen-2022.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.1_armv7l/py3_gi_docgen-2022.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.1_i686/py3_gi_docgen-2022.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.1_x86_64/py3_gi_docgen-2022.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.2-py3.11_armv7l/py3_gi_docgen-2022.2-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.2-py3.11_armv7l/py3_gi_docgen-2022.2-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.2-py3.11_i686/py3_gi_docgen-2022.2-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_gi_docgen/2022.2-py3.11_x86_64/py3_gi_docgen-2022.2-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '65c999d122794719e33d424824c74c5652e096cfc00602c3d4c3735580ed890c',
-     armv7l: '65c999d122794719e33d424824c74c5652e096cfc00602c3d4c3735580ed890c',
-       i686: '7fb80e8f5ceb7f4203648bf8e31cdf1447ff2e9b7a705b8cb915b21988d4ac26',
-     x86_64: 'b032122aca3708e986ea8ff5b1b6a978407ee9c7370006c560e3c865b4242cfd'
+    aarch64: 'a78bcb45f4fec353fe56b0b41cfc5f57c40af41b7110eba2133a4b37aaa39800',
+     armv7l: 'a78bcb45f4fec353fe56b0b41cfc5f57c40af41b7110eba2133a4b37aaa39800',
+       i686: '06a00c7177601748ea9819233281843c139c2f2997fda1c90e7e3eb760a641ad',
+     x86_64: '9a0c6863028c8a81fdc247b6a4ef8905ff03d332072ea73be8082775c2bf1f34'
   })
 
   depends_on 'py3_jinja2'
