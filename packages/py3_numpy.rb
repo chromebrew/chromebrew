@@ -9,20 +9,20 @@ class Py3_numpy < Package
   compatibility 'all'
   source_url 'https://github.com/numpy/numpy.git'
   git_hashtag "v#{@_ver}"
+  git_fetchtags
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.20.2_armv7l/py3_numpy-1.20.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.20.2_armv7l/py3_numpy-1.20.2-chromeos-armv7l.tar.xz',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_armv7l/py3_numpy-1.23.5-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_armv7l/py3_numpy-1.23.5-py3.11-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_i686/py3_numpy-1.23.5-py3.11-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.23.5-py3.11_x86_64/py3_numpy-1.23.5-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '05050e3e26fe3b6d6aaa9c07e22df825dd8a4da4c19cca8ccbd63c74752a5827',
-     armv7l: '05050e3e26fe3b6d6aaa9c07e22df825dd8a4da4c19cca8ccbd63c74752a5827',
+    aarch64: 'cbc553a992632a5dffafce74961a7aaa29418507ba734043d2a85a9fe93fa461',
+     armv7l: 'cbc553a992632a5dffafce74961a7aaa29418507ba734043d2a85a9fe93fa461',
        i686: '74b19513ee9f8bd43b2b488d214938088d738abbfa71435bf23489f0b1d94748',
      x86_64: '728b3c482536bc36ba8962301ae7ab4e48056d63447acf351eacaa17ecf4d78a'
   })
-  git_fetchtags
 
   depends_on 'lapack'
   depends_on 'py3_cython' => :build
