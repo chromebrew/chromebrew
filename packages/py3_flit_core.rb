@@ -25,7 +25,6 @@ class Py3_flit_core < Package
 
   depends_on 'python3'
 
-  conflicts_ok
 
   def self.build
     Dir.chdir 'flit_core' do

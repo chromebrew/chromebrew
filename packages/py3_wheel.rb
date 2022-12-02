@@ -27,7 +27,6 @@ class Py3_wheel < Package
   depends_on 'py3_setuptools' => :build
   depends_on 'py3_packaging'
 
-  conflicts_ok
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"

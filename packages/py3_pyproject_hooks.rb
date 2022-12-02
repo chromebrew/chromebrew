@@ -26,7 +26,6 @@ class Py3_pyproject_hooks < Package
   depends_on 'python3'
   depends_on 'py3_tomli'
 
-  conflicts_ok
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
