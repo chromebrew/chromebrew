@@ -11,14 +11,14 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.64.1_armv7l/meson-0.64.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.64.1_armv7l/meson-0.64.1-chromeos-armv7l.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.64.1-py3.11_armv7l/meson-0.64.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.64.1-py3.11_armv7l/meson-0.64.1-py3.11-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.64.1-py3.11_i686/meson-0.64.1-py3.11-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/0.64.1-py3.11_x86_64/meson-0.64.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b1dddc4342c0afe9627533ea94cddcd34e2c6b0d3dd227b933eb3e69807cb531',
-     armv7l: 'b1dddc4342c0afe9627533ea94cddcd34e2c6b0d3dd227b933eb3e69807cb531',
+    aarch64: '2c823c8b85bac3f2e46f64d2ca83445db7c0746973a99ef4617e9a98f5b03f78',
+     armv7l: '2c823c8b85bac3f2e46f64d2ca83445db7c0746973a99ef4617e9a98f5b03f78',
        i686: '2292157273f6368207dc42c7bdd099f36d1905bb9f842df0a2a7372e61388c1e',
      x86_64: 'e7f0e20cb77a4cc9fb850a1e86671af30e528758f2385ccc0b7ebd8b4f31a230'
   })
