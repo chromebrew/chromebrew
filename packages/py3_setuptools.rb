@@ -28,9 +28,9 @@ class Py3_setuptools < Package
 
   conflicts_ok
 
-   def self.preflight
+  def self.preflight
     @pyver = `python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp
-    abort if @pyver.to_f < 3.11
+    abort unless @pyver.to_f < 3.11
   end
 
   def self.build
