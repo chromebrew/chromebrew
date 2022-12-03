@@ -173,7 +173,7 @@ end
 
 def print_current_package(extra = false)
   status = \
-      if @pkg.name =~ /^py3_/
+      if @pkg.name =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
         Pip.installed_list.has_key?( @pkg.name.delete_prefix('py3_').tr('_', '-') ) ? :installed : :available
       else
         if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
@@ -1422,7 +1422,7 @@ def resolve_dependencies
 end
 
 def install
-  if @pkg.name =~ /py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+  if @pkg.name =~ /py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
     return Pip.install( @pkg.name.delete_prefix('py3_').tr('_', '-') )
   end
 
