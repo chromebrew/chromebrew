@@ -1345,7 +1345,7 @@ def resolve_dependencies_and_install
     origin = @pkg.name
 
     @to_postinstall = []
-    resolve_dependencies
+    resolve_dependencies if @pkg.dependencies.any?
 
     search origin, true
     install
