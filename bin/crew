@@ -216,7 +216,7 @@ def set_package(pkgName, pkgPath)
     return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
   end
 
-  unless File.file?(pkgPath) && silent
+  unless File.exist?(pkgPath)
     @pkg = nil
     abort "Package #{pkgName} not found. 😞".lightred
   end
