@@ -174,7 +174,7 @@ end
 def print_current_package(extra = false)
   status = \
       if @pkg.name =~ /^py3_/
-        Pip.installed_list.has_key?( @pkg.name.delete_prefix('py3_') ) ? :installed : :available
+        Pip.installed_list.has_key?( @pkg.name.delete_prefix('py3_').tr('_', '-') ) ? :installed : :available
       else
         if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
           :installed
@@ -212,14 +212,13 @@ def set_package(pkgName, pkgPath)
     @pkg.compatibility 'all'
     @pkg.is_fake
 
-    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_') )
+    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_').tr('_', '-') )
     return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
   end
 
   unless File.file?(pkgPath) && silent
     @pkg = nil
-    abort "Package #{pkgName} not found. 😞".lightred unless silent
-    return false
+    abort "Package #{pkgName} not found. 😞".lightred
   end
 
   begin
@@ -1424,7 +1423,7 @@ end
 
 def install
   if @pkg.name =~ /py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-    return Pip.install( @pkg.name.delete_prefix('py3_') )
+    return Pip.install( @pkg.name.delete_prefix('py3_').tr('_', '-') )
   end
 
   if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
@@ -1584,7 +1583,7 @@ end
 def remove(pkgName)
   # throw it to pip
   if pkgName =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-    return Pip.remove( pkgName.delete_prefix('py3_') )
+    return Pip.remove( pkgName.delete_prefix('py3_').tr('_', '-') )
   end
 
   # make sure the package is actually installed
