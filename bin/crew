@@ -1423,6 +1423,7 @@ end
 
 def install
   if @pkg.name =~ /py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
+    puts "Using 'pip' to install Python 3 packages...".lightblue
     return Pip.install( @pkg.name.delete_prefix('py3_').tr('_', '-') )
   end
 
@@ -1581,9 +1582,11 @@ def archive_package(pwd)
 end
 
 def remove(pkgName)
-  # throw it to pip
   if pkgName =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-    return Pip.remove( pkgName.delete_prefix('py3_').tr('_', '-') )
+    puts "Using 'pip' to remove Python 3 packages...".lightblue
+    Pip.remove( pkgName.delete_prefix('py3_').tr('_', '-') )
+    puts "#{pkgName.capitalize} removed!".lightgreen
+    return true
   end
 
   # make sure the package is actually installed
