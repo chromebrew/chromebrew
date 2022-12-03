@@ -51,9 +51,7 @@ class Python3 < Package
     @replaces = %w[py3_pip py3_setuptools]
     @replaces_installed = []
     @replaces.each do |package|
-      if @device[:installed_packages].any? { |elem| elem[:name] == package }
-        @replaces_installed.push(package)
-      end
+      @replaces_installed.push(package) if @device[:installed_packages].any? { |elem| elem[:name] == package }
     end
     unless @replaces_installed.empty?
       puts "Removing superseded package(s): #{@replaces_installed.join(' ')}...".orange
