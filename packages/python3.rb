@@ -47,7 +47,16 @@ class Python3 < Package
   conflicts_ok
 
   def self.preinstall
-    system 'crew remove py3_setuptools py3_pip', exception: false
+    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+    @replaces = %w[py3_pip py3_setuptools]
+    @replaces_installed = []
+    @replaces.each do |package|
+      @replaces_installed.push(package) if @device[:installed_packages].any? { |elem| elem[:name] == package }
+    end
+    unless @replaces_installed.empty?
+      puts "Removing superseded package(s): #{@replaces_installed.join(' ')}...".orange
+      system "crew remove #{@replaces_installed.join(' ')}", exception: false
+    end
   end
 
   def self.patch
@@ -122,9 +131,6 @@ class Python3 < Package
     Dir.chdir 'builddir' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
-
-    # Remove conflicting binaries
-    # FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wheel"
 
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
