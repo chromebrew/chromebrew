@@ -49,11 +49,15 @@ class Python3 < Package
   def self.preinstall
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
     @replaces = %w[py3_pip py3_setuptools]
+    @replaces_installed = []
     @replaces.each do |package|
       if @device[:installed_packages].any? { |elem| elem[:name] == package }
-        puts "Removing superseded package #{package}...".orange
-        system "crew remove #{package}", exception: false
+        @replaces_installed.push(package)
       end
+    end
+    unless @replaces_installed.empty?
+      puts "Removing superseded package(s): #{@replaces_installed.join(' ')}...".orange
+      system "crew remove #{@replaces_installed.join(' ')}", exception: false
     end
   end
 

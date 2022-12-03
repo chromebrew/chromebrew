@@ -959,6 +959,17 @@ def pre_install(dest_dir)
   Dir.chdir dest_dir do
     puts 'Performing pre-install...'
     @pkg.preinstall
+    # Reload device.json in case preinstall modified it via
+    # running 'crew remove packages...'
+    @device = JSON.parse(File.read("#{CREW_CONFIG_PATH}device.json"), symbolize_names: true)
+    # symbolize also values
+    @device.each do |key, _elem|
+      @device[key] = begin
+        @device[key].to_sym
+      rescue StandardError
+        @device[key]
+      end
+    end
   end
 end
 
