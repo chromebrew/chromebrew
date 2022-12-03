@@ -15,6 +15,7 @@ require_relative '../lib/convert_size'
 require_relative '../lib/downloader'
 require_relative '../lib/deb_utils'
 require_relative '../lib/package'
+require_relative '../lib/pip_integration'
 
 # Add lib to LOAD_PATH
 $LOAD_PATH.unshift "#{CREW_LIB_PATH}lib"
@@ -204,6 +205,17 @@ def print_current_package(extra = false)
 end
 
 def set_package(pkgName, pkgPath)
+  if pkgName =~ /^py3_/
+    @pkg = Package.dup
+
+    @pkg.name = pkgName
+    @pkg.compatibility 'all'
+    @pkg.is_fake
+
+    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_') )
+    return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
+  end
+
   begin
     @pkg = Package.load_package(pkgPath, pkgName)
   rescue SyntaxError => e
@@ -317,17 +329,6 @@ def generate_compatible
 end
 
 def search(pkgName, silent = false)
-  if pkgName =~ /^py3_/
-    @pkg = Package.dup
-
-    @pkg.name = pkgName
-    @pkg.compatibility 'all'
-    @pkg.is_fake
-
-    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_') )
-    return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
-  end
-
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
 
   begin
