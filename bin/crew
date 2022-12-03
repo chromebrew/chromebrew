@@ -171,13 +171,18 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
-  status = if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
-             :installed
-           elsif !@pkg.compatible?
-             :incompatible
-           else
-             :available
-           end
+  status = \
+      if @pkg.name =~ /^py3_/
+        Pip.installed_list.has_key?( @pkg.name.delete_prefix('py3_') ) ? :installed : :available
+      else
+        if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
+          :installed
+        elsif !@pkg.compatible?
+          :incompatible
+        else
+          :available
+        end
+      end
 
   case status
   when :installed
@@ -312,12 +317,25 @@ def generate_compatible
 end
 
 def search(pkgName, silent = false)
+  if pkgName =~ /^py3_/
+    @pkg = Package.dup
+
+    @pkg.name = pkgName
+    @pkg.compatibility 'all'
+    @pkg.is_fake
+
+    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_') )
+    return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
+  end
+
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
+
   begin
     return set_package(pkgName, pkgPath) if File.file?(pkgPath)
   rescue StandardError => e
     puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
+
   unless File.file?(pkgPath) && silent
     @pkg = nil
     abort "Package #{pkgName} not found. 😞".lightred unless silent
@@ -1404,6 +1422,10 @@ def resolve_dependencies
 end
 
 def install
+  if @pkg.name =~ /py3_/
+    return Pip.install( @pkg.name.delete_prefix('py3_') )
+  end
+
   if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
@@ -1559,6 +1581,11 @@ def archive_package(pwd)
 end
 
 def remove(pkgName)
+  # throw it to pip
+  if pkgName =~ /^py3_/
+    return Pip.remove( pkgName.delete_prefix('py3_') )
+  end
+
   # make sure the package is actually installed
   unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
