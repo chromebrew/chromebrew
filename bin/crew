@@ -337,7 +337,7 @@ def search(pkgName, silent = false)
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
 
   begin
-    return set_package(pkgName, pkgPath) if File.file?(pkgPath)
+    return set_package(pkgName, pkgPath)
   rescue StandardError => e
     puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
