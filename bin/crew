@@ -315,17 +315,6 @@ def generate_compatible
 end
 
 def search(pkgName, silent = false)
-  if pkgName =~ /^py3_/
-    @pkg = Package.dup
-
-    @pkg.name = pkgName
-    @pkg.compatibility 'all'
-    @pkg.is_fake
-
-    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_') )
-    return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
-  end
-
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
 
   begin
