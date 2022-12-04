@@ -632,11 +632,11 @@ class Glibc < Package
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
       when 'aarch64', 'armv7l'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
+        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
       when 'i686'
         FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
       when 'x86_64'
-        FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
       end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
