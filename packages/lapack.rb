@@ -3,43 +3,42 @@ require 'package'
 class Lapack < Package
   description 'Lapack is a linear algebra package.'
   homepage 'https://www.netlib.org/lapack/'
-  version '3.8.0-1'
+  @_ver = '3.11.0'
+  version @_ver
   license 'BSD'
   compatibility 'all'
-  source_url 'https://www.netlib.org/lapack/lapack-3.8.0.tar.gz'
-  source_sha256 'deb22cc4a6120bff72621155a9917f485f96ef8319ac074a7afbc68aab88bcf6'
+  source_url 'https://github.com/Reference-LAPACK/lapack.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_armv7l/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_armv7l/lapack-3.8.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_i686/lapack-3.8.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.8.0-1_x86_64/lapack-3.8.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.11.0_armv7l/lapack-3.11.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.11.0_armv7l/lapack-3.11.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.11.0_i686/lapack-3.11.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lapack/3.11.0_x86_64/lapack-3.11.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f93b9afdd088faa48b11735b7467a2056f13efc98d0edc158166364f1edd795d',
-     armv7l: 'f93b9afdd088faa48b11735b7467a2056f13efc98d0edc158166364f1edd795d',
-       i686: '3f3d266856c00034b1f3a1efad00a4a8d838ecbc3682cc7a3788fbb209ff0da7',
-     x86_64: '45aec7ef9a9c37e098be7fd80b88c580bef29181b398e6e4c8d15cee9ddf7456'
+    aarch64: '318a9912f69b2f2883c77e9d9b1eb7c63dc5fbfa6751a1792f4b5f793f5400ae',
+     armv7l: '318a9912f69b2f2883c77e9d9b1eb7c63dc5fbfa6751a1792f4b5f793f5400ae',
+       i686: 'd6e4d4239263523c71773907d3abf1de403867b21cf0b4ba761141a7aeac3752',
+     x86_64: '9c4b6ddc16d763f61d79cc7bdc21021f83b6efb06419851ac6a502372f26d850'
   })
 
-  depends_on 'python2'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
-    Dir.mkdir 'build'
+    FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             "-DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX}",
-             '-DBUILD_SHARED_LIBS=ON',
-             '..'
-      system 'make'
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -DBUILD_SHARED_LIBS=ON \
+        -Wno-dev \
+        .."
     end
+    system 'ninja -C build'
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
   end
 end
