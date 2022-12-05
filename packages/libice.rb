@@ -3,31 +3,35 @@ require 'package'
 class Libice < Package
   description 'X.org X Inter Client Exchange Library'
   homepage 'http://www.x.org'
-  version '1.0.10'
+  version '1.1.0'
   license 'X11'
   compatibility 'all'
-  source_url 'https://www.x.org/archive/individual/lib/libICE-1.0.10.tar.gz'
-  source_sha256 '1116bc64c772fd127a0d0c0ffa2833479905e3d3d8197740b3abd5f292f22d2d'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libice.git'
+  git_hashtag "libICE-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.10_armv7l/libice-1.0.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.10_armv7l/libice-1.0.10-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.10_i686/libice-1.0.10-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.0.10_x86_64/libice-1.0.10-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_armv7l/libice-1.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_armv7l/libice-1.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_i686/libice-1.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_x86_64/libice-1.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '47981dc8ab3d21b12cdd36f69ca5c81da33d87c11da279a6cff8f37b146538c8',
-     armv7l: '47981dc8ab3d21b12cdd36f69ca5c81da33d87c11da279a6cff8f37b146538c8',
-       i686: 'acebe9d03d26e8fa5e47079d3f68346fd8af17b0820ad2f6738e9c1b153f9295',
-     x86_64: 'af7d070f98f27176345c0735a53a8fd1434d8843683dc282180091dde7efc030'
+    aarch64: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
+     armv7l: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
+       i686: 'aa06dc806a8c3b32e8bcd401297d19bddf05689927842001be65cd66b0fc96b2',
+     x86_64: '58bbc7896230e0d630360a6b4686b7c41f40f44f1477da31bff7cde929569752'
   })
 
-  depends_on 'libxtrans'
-  depends_on 'libx11'
-  depends_on 'libbsd'
+  depends_on 'libxtrans' => :build
+  depends_on 'libx11' => :build
+  depends_on 'libbsd' # R
+  depends_on 'glibc' # R
+  depends_on 'libmd' # R
+
   patchelf
 
   def self.build
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
