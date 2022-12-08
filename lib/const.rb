@@ -295,7 +295,7 @@ OPT
 CREW_LIB_SUFFIX = ARCH == 'x86_64' ? '64' : ''
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
-PY3_VERSION=File.file?("#{CREW_PREFIX}/bin/python3") ? `#{CREW_PREFIX}/bin/python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp.to_f : 404
+PY3_VERSION = File.file?("#{CREW_PREFIX}/bin/python3") ? `#{CREW_PREFIX}/bin/python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp.to_f : 404
 PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
