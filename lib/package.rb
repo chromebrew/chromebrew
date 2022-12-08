@@ -204,7 +204,7 @@ class Package
         unless Gem::Version.new(installed_ver).send( operator.to_sym, Gem::Version.new(target_ver) )
           # print error if the range is not fulfilled
           warn <<~EOT.lightred
-            Package #{name} depends on '#{depName}' (#{operator} #{target_ver}), however version '#{installed_ver}' is installed :/
+            Package #{name} depends on '#{depName}' (#{operator} #{target_ver}), however '#{depName}' with version #{installed_ver} is currently installed :/
 
             Run `crew update && crew upgrade` and try again?
           EOT
