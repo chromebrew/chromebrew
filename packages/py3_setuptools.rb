@@ -6,7 +6,8 @@ class Py3_setuptools < Package
   @_ver = '65.6.3'
   version "#{@_ver}-py3.11"
   license 'MIT'
-  compatibility 'all'
+  @compatibility = PY3_VERSION < 3.11 ? 'all' : ''
+  compatibility @compatibility
   source_url 'https://github.com/pypa/setuptools.git'
   git_hashtag "v#{@_ver}"
 
@@ -27,11 +28,6 @@ class Py3_setuptools < Package
   depends_on 'py3_packaging'
 
   conflicts_ok
-
-  def self.preflight
-    @pyver = `python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp
-    abort unless @pyver.to_f < 3.11
-  end
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"

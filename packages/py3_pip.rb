@@ -6,7 +6,8 @@ class Py3_pip < Package
   @_ver = '22.3.1'
   version "#{@_ver}-py3.11"
   license 'MIT'
-  compatibility 'all'
+  @compatibility = PY3_VERSION < 3.11 ? 'all' : ''
+  compatibility @compatibility
   source_url 'https://github.com/pypa/pip.git'
   git_hashtag @_ver
 
@@ -24,14 +25,8 @@ class Py3_pip < Package
   })
 
   depends_on 'python3'
-  depends_on 'python3'
 
   conflicts_ok
-
-  def self.preflight
-    @pyver = `python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp
-    abort unless @pyver.to_f < 3.11
-  end
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

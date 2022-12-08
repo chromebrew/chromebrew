@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.28.6'
+CREW_VERSION = '1.28.7'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -295,6 +295,7 @@ OPT
 CREW_LIB_SUFFIX = ARCH == 'x86_64' ? '64' : ''
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
+PY3_VERSION=`python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp.to_f
 PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
 PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
