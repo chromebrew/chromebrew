@@ -1366,10 +1366,10 @@ def resolve_dependencies
     tags, version_check = dep.values[0]
     installed_version   = dep_info[:version]
 
-    next unless dep.version_check
+    next unless version_check
 
     # abort if the range is not fulfilled
-    abort unless dep.version_check.call(installed_version)
+    abort unless version_check.call(installed_version)
   end
 
   # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
