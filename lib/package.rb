@@ -53,11 +53,12 @@ class Package
     @dependencies ||= {}
   end
 
-  def self.get_deps_list(pkgName = name, hash: false, include_build_deps: 'auto', include_self: false,
-                         pkgTags: [], highlight_build_deps: true, exclude_buildessential: false, top_level: true)
+  def self.get_deps_list(pkgName = name, return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
+                         pkgTags: [], ver_check: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
     # get_deps_list: get dependencies list of pkgName (current package by default)
     #
     #                pkgName: package to check dependencies, current package by default
+    #            return_attr: return package attribute (tags and version lambda) also
     #                   hash: return result in nested hash, used by `print_deps_tree` (`bin/crew`)
     #
     #     include_build_deps: if set to true, force all build dependencies to be returned.
@@ -91,7 +92,7 @@ class Package
     end
 
     # parse dependencies recursively
-    expandedDeps = deps.uniq.map do |dep, depTags|
+    expandedDeps = deps.uniq.map do |dep, depTags, ver_check|
       # check build dependencies only if building from source is needed/specified
       # Do not recursively find :build based build dependencies.
       next unless (include_build_deps == true && @crew_current_package == pkgObj.name) || \
@@ -104,15 +105,11 @@ class Package
 
       if @checked_list.keys.none?(dep)
         # check dependency by calling this function recursively
-        next send(__method__, dep,
-                  hash: hash,
-               pkgTags: tags,
-    include_build_deps: include_build_deps,
-  highlight_build_deps: highlight_build_deps,
-exclude_buildessential: exclude_buildessential,
-          include_self: true,
-             top_level: false)
-
+        next \
+          send(
+            __method__, dep, pkgTags: tags, ver_check:, include_self: true, top_level: false,
+            hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
+          )
       elsif hash && top_level
         # will be dropped here if current dependency is already checked and #{top_level} is set to true
         #
@@ -137,7 +134,11 @@ exclude_buildessential: exclude_buildessential,
       end
     elsif include_self
       # return pkgName itself if this function is called as a recursive loop (see `expandedDeps`)
-      return [expandedDeps, pkgName].flatten
+      if return_attr
+        return [expandedDeps, { pkgName => [pkgTags, ver_check] }].flatten
+      else
+        return [expandedDeps, pkgName].flatten
+      end
     else
       # if this function is called outside of this function, return parsed dependencies only
       return expandedDeps.flatten
@@ -173,24 +174,47 @@ exclude_buildessential: exclude_buildessential,
     end
   end
 
-  def self.depends_on(dependency = nil)
+  def self.depends_on(dependency, ver_range = nil)
     @dependencies ||= {}
-    if dependency
-      # add element in "[ name, [ tag1, tag2, ... ] ]" format
-      if dependency.is_a?(Hash)
-        if dependency.first[1].is_a?(Array)
-          # parse "depends_on name => [ tag1, tag2 ]"
-          @dependencies.store(dependency.first[0], dependency.first[1])
-        else
-          # parse "depends_on name => tag"
-          @dependencies.store(dependency.first[0], [dependency.first[1]])
+    ver_check = nil
+    dep_tags  = []
+
+    # add element in "[ name, [ tag1, tag2, ... ] ]" format
+    if dependency.is_a?(Hash)
+      # parse "depends_on name => <tags: Symbol|Array>"
+      depName, tags = dependency.first
+
+      # convert `tags` to array in case `tags` is a symbol
+      dep_tags += [tags].flatten
+    else
+      # parse "depends_on name"
+      depName = dependency
+    end
+
+    # process dependency version range if specified
+    # example:
+    #   depends_on name, '>= 1.0'
+    #
+    # operator can be '>=', '==', '<=', '<', '>'
+    if ver_range
+      operator, ver = ver_check.split(' ', 2)
+
+      # lambda for comparing the given range with installed version
+      ver_check = lambda do |ver|
+        unless Gem::Version.new(ver).send( operator.to_sym, Gem::Version.new(ver) )
+          # print error if the range is not fulfilled
+          warn <<~EOT.lightred
+            Package #{name} depends on '#{depName}' (#{operator} #{ver}), however version '#{ver}' is installed :/
+
+            Run `crew update && crew upgrade` and try again?
+          EOT
+          return false
         end
-      else
-        # parse "depends_on name"
-        @dependencies.store(dependency, [])
+        return true
       end
     end
-    @dependencies
+
+    @dependencies.store(depName, dep_tags, ver_check)
   end
 
   def self.get_url(architecture)
