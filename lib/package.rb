@@ -197,14 +197,14 @@ class Package
     #
     # operator can be '>=', '==', '<=', '<', '>'
     if ver_range
-      operator, ver = ver_check.split(' ', 2)
+      operator, target_ver = ver_range.split(' ', 2)
 
       # lambda for comparing the given range with installed version
-      ver_check = lambda do |ver|
-        unless Gem::Version.new(ver).send( operator.to_sym, Gem::Version.new(ver) )
+      ver_check = lambda do |installed_ver|
+        unless Gem::Version.new(installed_ver).send( operator.to_sym, Gem::Version.new(target_ver) )
           # print error if the range is not fulfilled
           warn <<~EOT.lightred
-            Package #{name} depends on '#{depName}' (#{operator} #{ver}), however version '#{ver}' is installed :/
+            Package #{name} depends on '#{depName}' (#{operator} #{target_ver}), however version '#{installed_ver}' is installed :/
 
             Run `crew update && crew upgrade` and try again?
           EOT

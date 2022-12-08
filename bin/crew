@@ -1353,7 +1353,7 @@ def resolve_dependencies
   @dependencies = @pkg.get_deps_list(return_attr: true)
 
   # leave only not installed packages in dependencies
-  @dependencies.reject! { |name| @device[:installed_packages].any? { |pkg| pkg[:name] == name } }
+  @dependencies.reject! { |dep| @device[:installed_packages].any? { |pkg| pkg[:name] == dep.keys[0] } }
 
   # compare dependency version with required range (if installed)
   @dependencies.each do |dep|
