@@ -1357,6 +1357,8 @@ def resolve_dependencies
 
   # compare dependency version with required range (if installed)
   @dependencies.each do |dep|
+    next unless version_check
+
     depName  = dep.keys[0]
     dep_info = @device[:install_package].select {|pkg| pkg[:name] == depName }
 

@@ -88,11 +88,11 @@ class Package
        !exclude_buildessential && \
        !@checked_list.keys.include?('buildessential')
 
-      deps = { 'buildessential' => [:build] }.merge(deps)
+      deps = { 'buildessential' => [[:build]] }.merge(deps)
     end
 
     # parse dependencies recursively
-    expandedDeps = deps.uniq.map do |dep, depTags, ver_check|
+    expandedDeps = deps.uniq.map do |dep, (depTags, ver_check)|
       # check build dependencies only if building from source is needed/specified
       # Do not recursively find :build based build dependencies.
       next unless (include_build_deps == true && @crew_current_package == pkgObj.name) || \
@@ -214,7 +214,7 @@ class Package
       end
     end
 
-    @dependencies.store(depName, dep_tags, ver_check)
+    @dependencies.store(depName, [dep_tags, ver_check])
   end
 
   def self.get_url(architecture)
