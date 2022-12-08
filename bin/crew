@@ -1357,19 +1357,19 @@ def resolve_dependencies
 
   # compare dependency version with required range (if installed)
   @dependencies.each do |dep|
-    next unless version_check
-
     depName  = dep.keys[0]
-    dep_info = @device[:install_package].select {|pkg| pkg[:name] == depName }
+    dep_info = @device[:installed_packages].select {|pkg| pkg[:name] == depName } [0]
 
     # skip if dependency is not installed
     next if dep_info.empty?
 
-    tags, version_check = deps.values[0]
+    tags, version_check = dep.values[0]
     installed_version   = dep_info[:version]
 
+    next unless dep.version_check
+
     # abort if the range is not fulfilled
-    abort unless version_check.call(installed_version)
+    abort unless dep.version_check.call(installed_version)
   end
 
   # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
