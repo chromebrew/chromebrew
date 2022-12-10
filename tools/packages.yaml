@@ -475,6 +475,11 @@ url: https://github.com/sstephenson/bats/releases
 activity: none
 ---
 kind: url
+name: bazel
+url: https://github.com/bazelbuild/bazel/releases
+activity: medium
+---
+kind: url
 name: bc
 url: https://ftp.gnu.org/gnu/bc
 activity: low
@@ -630,6 +635,11 @@ url: http://www.bzip.org
 activity: none
 ---
 kind: url
+name: bz3
+url: https://github.com/kspalaiologos/bzip3/releases
+activity: medium
+---
+kind: url
 name: c_ares
 url: https://github.com/c-ares/c-ares/releases
 activity: medium
@@ -692,6 +702,11 @@ activity: high
 kind: url
 name: cbase
 url: http://www.hyperrealm.com/packages
+activity: none
+---
+kind: url
+name: cbonsai
+url: https://gitlab.com/jallbrit/cbonsai/-/tags
 activity: none
 ---
 kind: url
@@ -4145,6 +4160,11 @@ url: https://download.netsurf-browser.org/libs/releases/
 activity: none
 ---
 kind: url
+name: libnsl
+url: https://github.com/thkukuk/libnsl/releases
+activity: none
+---
+kind: url
 name: libnsutils
 url: https://download.netsurf-browser.org/libs/releases/
 activity: low
@@ -5503,6 +5523,11 @@ kind: url
 name: nedit
 url: https://sourceforge.net/projects/nedit/files/nedit-source/
 activity: none
+---
+kind: url
+name: neo_matrix
+url: https://github.com/st3w/neo/releases
+activity: low
 ---
 kind: url
 name: neofetch
@@ -6925,6 +6950,11 @@ url: https://github.com/roswell/roswell/releases
 activity: medium
 ---
 kind: url
+name: rpcsvc_proto
+url: https://github.com/thkukuk/rpcsvc-proto/releases
+activity: low
+---
+kind: url
 name: rsu_client
 url: https://github.com/rsu-client/rsu-client/releases
 activity: low
@@ -6968,6 +6998,11 @@ kind: url
 name: ruby_docopt
 url: https://github.com/docopt/docopt/releases
 activity: none
+---
+kind: url
+name: ruby_glib2
+url: https://rubygems.org/gems/glib2
+activity: medium
 ---
 kind: url
 name: ruby_mdl
@@ -7058,6 +7093,11 @@ kind: url
 name: sccache
 url: https://github.com/mozilla/sccache/releases
 activity: low
+---
+kind: url
+name: scdoc
+url: https://git.sr.ht/~sircmpwn/scdoc/refs
+activity: none
 ---
 kind: url
 name: scheme48
@@ -7822,6 +7862,11 @@ activity: none
 kind: url
 name: ttf2pt1
 url: https://sourceforge.net/projects/ttf2pt1/files/ttf2pt1/
+activity: none
+---
+kind: url
+name: ttf_hanazono
+url: https://osdn.net/projects/hanazono-font/releases/
 activity: none
 ---
 kind: url
