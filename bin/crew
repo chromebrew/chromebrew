@@ -1349,16 +1349,31 @@ def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 0
 end
 
-def expand_dependencies
-  @dependencies = @pkg.get_deps_list.reject { |depName| @device[:installed_packages].any? { |pkg| pkg[:name] == depName } }
-end
-
 def resolve_dependencies
-  @dependencies = []
-  expand_dependencies
+  @dependencies = @pkg.get_deps_list(return_attr: true)
+
+  # compare dependency version with required range (if installed)
+  @dependencies.each do |dep|
+    depName  = dep.keys[0]
+    dep_info = @device[:installed_packages].select {|pkg| pkg[:name] == depName } [0]
+
+    # skip if dependency is not installed
+    next unless dep_info
+
+    tags, version_check = dep.values[0]
+    installed_version   = dep_info[:version]
+
+    next unless version_check
+
+    # abort if the range is not fulfilled
+    abort unless version_check.call(installed_version)
+  end
+
+  # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
+  @dependencies.map!(&:keys).flatten!
 
   # leave only not installed packages in dependencies
-  @dependencies.reject! { |name| @device[:installed_packages].any? { |pkg| pkg[:name] == name } }
+  @dependencies.reject! { |depName| @device[:installed_packages].any? { |pkg| pkg[:name] == depName } }
 
   # run preflight check for dependencies
   @dependencies.each do |depName|
