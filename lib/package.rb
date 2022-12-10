@@ -54,7 +54,7 @@ class Package
   end
 
   def self.get_deps_list(pkgName = name, return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
-                         pkgTags: [], ver_check: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
+                         pkgTags: [], verCheck: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
     # get_deps_list: get dependencies list of pkgName (current package by default)
     #
     #                pkgName: package to check dependencies, current package by default
@@ -92,7 +92,7 @@ class Package
     end
 
     # parse dependencies recursively
-    expandedDeps = deps.uniq.map do |dep, (depTags, ver_check)|
+    expandedDeps = deps.uniq.map do |dep, (depTags, verCheck)|
       # check build dependencies only if building from source is needed/specified
       # Do not recursively find :build based build dependencies.
       next unless (include_build_deps == true && @crew_current_package == pkgObj.name) || \
@@ -107,7 +107,7 @@ class Package
         # check dependency by calling this function recursively
         next \
           send(
-            __method__, dep, pkgTags: tags, ver_check:, include_self: true, top_level: false,
+            __method__, dep, pkgTags: tags, verCheck:, include_self: true, top_level: false,
             hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
           )
       elsif hash && top_level
@@ -135,7 +135,7 @@ class Package
     elsif include_self
       # return pkgName itself if this function is called as a recursive loop (see `expandedDeps`)
       if return_attr
-        return [expandedDeps, { pkgName => [pkgTags, ver_check] }].flatten
+        return [expandedDeps, { pkgName => [pkgTags, verCheck] }].flatten
       else
         return [expandedDeps, pkgName].flatten
       end
