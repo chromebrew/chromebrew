@@ -23,15 +23,9 @@ class Py3_pip < Package
      x86_64: 'af52f8111904a49684b37251cc65c8d5dc9235238ecf49aa56a27fb95bd1c994'
   })
 
-  depends_on 'python3'
-  depends_on 'python3'
+  depends_on 'python3', '< 3.11.0'
 
   conflicts_ok
-
-  def self.preflight
-    @pyver = `python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp
-    abort unless @pyver.to_f < 3.11
-  end
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -23,15 +23,10 @@ class Py3_setuptools < Package
      x86_64: '483166d8742478f87585c5a10d10fafd5953dabb1c6e435d2c13d5bccebcd74a'
   })
 
-  depends_on 'python3'
+  depends_on 'python3', '< 3.11.0'
   depends_on 'py3_packaging'
 
   conflicts_ok
-
-  def self.preflight
-    @pyver = `python3 --version | cut -d" " -f2 | cut -d"." -f1,2`.chomp
-    abort unless @pyver.to_f < 3.11
-  end
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
