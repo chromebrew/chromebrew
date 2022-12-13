@@ -17,10 +17,10 @@ class Python3 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.1_x86_64/python3-3.11.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '793d52e01d7a8762b702142f75018f97e3b8a2f6ecf843d3e164aaa7e24ed535',
-     armv7l: '793d52e01d7a8762b702142f75018f97e3b8a2f6ecf843d3e164aaa7e24ed535',
-       i686: 'dd074f9083bb3216bc609c6f3df52c9b4382abd2c9a734b3e7103f61da26bc21',
-     x86_64: '9c0fdebdc6cda29943f67f3f5de52b0a77fe0a1da05adb3a8cfe4a87a8ea2f03'
+    aarch64: '7a85f7ac7fa1cb5f1521ac4e14a82f6ac58d90b560f3b47b3b383e42917c00b4',
+     armv7l: '7a85f7ac7fa1cb5f1521ac4e14a82f6ac58d90b560f3b47b3b383e42917c00b4',
+       i686: '23e9f83a36a1e5fcecefcb6fb6b34be4e21a602272fe33482a9baace22ed9a69',
+     x86_64: 'e11b219c4a8d43a7af5cac2444aa4cb627452480e9fbf3e26d07654dddccc938'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -133,6 +133,7 @@ class Python3 < Package
     Dir.chdir 'builddir' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       system "#{CREW_DEST_PREFIX}/bin/python3 -m ensurepip --upgrade --default-pip"
+      system "sed -i 's,#{CREW_DEST_PREFIX}/bin/python3,#{CREW_PREFIX}/bin/python3,g' #{CREW_DEST_PREFIX}/bin/pip3"
     end
 
     # Make python3 the default python
