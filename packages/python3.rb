@@ -143,7 +143,7 @@ class Python3 < Package
 
   def self.postinstall
     puts 'Updating pip packages...'.lightblue
-    @piplist = `pip list | awk '{print $1}'`.split
+    @piplist = `pip list | cut -d' ' -f1`.split
     @piplist.drop(2).each do |pip_pkg|
       system "pip install #{pip_pkg} -U", exception: false
     end
