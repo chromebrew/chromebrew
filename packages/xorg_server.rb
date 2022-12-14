@@ -3,24 +3,24 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.4'
-  version "#{@_ver}-1"
+  @_ver = '21.1.5'
+  version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xorg-server-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_armv7l/xorg_server-21.1.4-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_armv7l/xorg_server-21.1.4-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_i686/xorg_server-21.1.4-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.4-1_x86_64/xorg_server-21.1.4-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_armv7l/xorg_server-21.1.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_armv7l/xorg_server-21.1.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_i686/xorg_server-21.1.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_x86_64/xorg_server-21.1.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a9d526be5c144b29b17ee2bb149b186e362c1d88ab9865c4139d90349cee5f5c',
-     armv7l: 'a9d526be5c144b29b17ee2bb149b186e362c1d88ab9865c4139d90349cee5f5c',
-       i686: '923a9fdfcef675ff34b919709ee50e821b50f15d99b2c0eda76f5079faf734f4',
-     x86_64: '3b8d3fc545bdd8e802b3d0466963aceb435c6b393c940525dc021f5568b899ba'
+    aarch64: '78ad6bfdd97bd1056e0d75f7c5f787178815e8c9404ff08503765b13d9a2d444',
+     armv7l: '78ad6bfdd97bd1056e0d75f7c5f787178815e8c9404ff08503765b13d9a2d444',
+       i686: '461fb290fa7b5f7237445c9cf6d7ba4e15c69e3a31c651ee91f6de40db939885',
+     x86_64: '6f438b6d48592c9c3b52bd50abbc6040d3048dc357164a96f6c5d42c9b24fc20'
   })
 
   depends_on 'dbus' # R
