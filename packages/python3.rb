@@ -142,6 +142,10 @@ class Python3 < Package
   end
 
   def self.postinstall
-    system 'python -m ensurepip --upgrade --default-pip'
+    puts 'Updating pip packages...'.lightblue
+    @piplist = `pip list | awk '{print $1}'`.split
+    @piplist.drop(2).each do |pip_pkg|
+      system "pip install #{pip_pkg} -U", exception: false
+    end
   end
 end
