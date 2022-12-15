@@ -3,11 +3,11 @@ require 'package'
 class Brave < Package
   description 'Next generation Brave browser for macOS, Windows, Linux, Android.'
   homepage 'https://brave.com/'
-  version '1.46.140'
+  version '1.46.144'
   license 'MPL-2'
   compatibility 'x86_64'
   source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
-  source_sha256 '221f62645ceadcb7bd5b5c8b9548c10e4f275ed5f84ed7b60e80519893b52521'
+  source_sha256 'c3dac3131b35843965f1b19a40a37d808fe8ed388c11ffcb333b4d9dbac25389'
 
   no_compile_needed
 
