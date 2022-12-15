@@ -11,7 +11,7 @@ class Mesa < Package
     @_ver = git_hashtag[0, 7]
     version "amber-#{@_ver}"
   else
-    @_ver = '22.3.0'
+    @_ver = '22.3.1'
     version @_ver
     git_hashtag "mesa-#{@_ver}"
   end
@@ -34,14 +34,14 @@ class Mesa < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0_armv7l/mesa-22.3.0-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0_armv7l/mesa-22.3.0-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.0_x86_64/mesa-22.3.0-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.1_armv7l/mesa-22.3.1-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.1_armv7l/mesa-22.3.1-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.1_x86_64/mesa-22.3.1-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '8598fd9bd62a8ec4e8728748e4132496bd4d800246ed9eabade4b15fe0231643',
-       armv7l: '8598fd9bd62a8ec4e8728748e4132496bd4d800246ed9eabade4b15fe0231643',
-       x86_64: '3d84d22c5b48d4c973ac4f0829c5964c0de23df4a71cc4622321aec2a5f2a9de'
+      aarch64: '43f2931b481e97cbdbf79f1609dd9388fba53d864706aee9e0e7e0ee242a81d9',
+       armv7l: '43f2931b481e97cbdbf79f1609dd9388fba53d864706aee9e0e7e0ee242a81d9',
+       x86_64: '6f6e15157b73a521a1982da20d604c5f6c41aac711c1c1e3ec3b0cab4bcb4e08'
     })
   end
 
