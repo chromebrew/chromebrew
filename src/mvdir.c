@@ -11,7 +11,7 @@
   cc ./mvdir.c -O2 -o crew_mvdir
 */
 
-#define _XOPEN_SOURCE 700
+#define _XOPEN_SOURCE 700 // for nftw()
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -28,7 +28,7 @@ char dirs_to_be_removed[1024][PATH_MAX];
 int dirs_to_be_removed_i = 0;
 
 int move_file(const char *path, const struct stat *sb, int flag, struct FTW *ftwbuf) {
-  char dst_path[128] = {0};
+  char dst_path[PATH_MAX] = {0};
   strcpy(dst_path, dst);
   strcat(dst_path, "/");
   strcat(dst_path, path);
