@@ -172,18 +172,15 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
-  status = \
-      if @pkg.name =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
-        Pip.installed_list.has_key?( @pkg.name.delete_prefix('py3_').tr('_', '-') ) ? :installed : :available
-      else
-        if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
-          :installed
-        elsif !@pkg.compatible?
-          :incompatible
-        else
-          :available
-        end
-      end
+  status = if @pkg.name =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
+             Pip.installed_list.key?( @pkg.name.delete_prefix('py3_').tr('_', '-') ) ? :installed : :available
+           elsif @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
+             :installed
+           elsif !@pkg.compatible?
+             :incompatible
+           else
+             :available
+           end
 
   case status
   when :installed
@@ -333,7 +330,7 @@ def generate_compatible
   puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
-def search(pkgName, silent = false)
+def search(pkgName, _silent = false)
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
 
   begin
@@ -795,11 +792,11 @@ def download
           cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
@@ -1168,7 +1165,7 @@ def strip_find_files(find_cmd, strip_option = '')
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
-  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
+  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
 end
 
 def strip_dir(dir)
@@ -1182,7 +1179,7 @@ def strip_dir(dir)
       puts 'Stripping binaries...'
       extensions = %w[bz2 gz lha lz lzh rar tar tbz tgz tpxz txz xz Z zip zst]
       inames = extensions.join(' ! -iname *\.')
-      strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+      strip_find_files "find . -type f ! -iname *.#{inames} -perm /111 -print | sed -e '/lib.*.a$/d' -e '/lib.*.so/d'"
     end
   end
 end

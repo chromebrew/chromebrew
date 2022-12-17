@@ -14,7 +14,7 @@ class Pip
   end
 
   def self.update_installed_list
-    @installed = `pip list`.lines(chomp: true)[2..-1].map(&:split).to_h
+    @installed = `pip list`.lines(chomp: true)[2..].map(&:split).to_h
   end
 
   def self.installed_list
@@ -26,7 +26,7 @@ class Pip
   def self.install(pkgName)
     @installed || update_installed_list
 
-    if @installed.has_key?(pkgName)
+    if @installed.key?(pkgName)
       warn "Package py3_#{pkgName} already installed, skipping...".lightgreen
       return false
     else
@@ -38,7 +38,7 @@ class Pip
   def self.remove(pkgName)
     @installed || update_installed_list
 
-    if @installed.has_key?(pkgName)
+    if @installed.key?(pkgName)
       system 'pip', 'uninstall', '--yes', pkgName, exception: true
       update_installed_list
     else
