@@ -7,11 +7,11 @@ class Crew_mvdir < Package
   compatibility 'all'
   license 'GPL-3'
 
-  source_url 'https://github.com/supechicken/chromebrew/raw/master/src/mvdir.c'
+  source_url 'https://github.com/supechicken/chromebrew/raw/use_rename/src/mvdir.c'
   source_sha256 'SKIP'
 
   def self.build
-    system "mold -run cc #{CREW_COMMON_FLAGS} mvdir.c crew-mvdir"
+    system "mold -run cc #{CREW_COMMON_FLAGS} mvdir.c -o crew-mvdir"
   end
 
   def self.install
