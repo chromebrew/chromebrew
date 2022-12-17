@@ -7,7 +7,7 @@ class Crew_mvdir < Package
   compatibility 'all'
   license 'GPL-3'
 
-  source_url 'https://github.com/chromebrew/chromebrew/raw/master/src/mvdir.c'
+  source_url 'https://github.com/supechicken/chromebrew/raw/master/src/mvdir.c'
   source_sha256 'SKIP'
 
   def self.build
