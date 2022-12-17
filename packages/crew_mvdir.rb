@@ -1,7 +1,7 @@
 require 'package'
 
 class Crew_mvdir < Package
-  description 'Alternative for "mv dir1/* dir2", with ability to override conflict files in destination'
+  description 'Alternative for "rsync --remove-source-files dir1/ dir2/", with faster speed'
   homepage 'https://chromebrew.github.io'
   version '0.1'
   compatibility 'all'
@@ -9,6 +9,8 @@ class Crew_mvdir < Package
 
   source_url 'https://github.com/supechicken/chromebrew/raw/use_rename/src/mvdir.c'
   source_sha256 'SKIP'
+
+  no_shrink # upx: CantPackException: bad DT_GNU_HASH (1+ max_bucket)=0x1 < symbias=0x14
 
   def self.build
     system "mold -run cc #{CREW_COMMON_FLAGS} mvdir.c -o crew-mvdir"
