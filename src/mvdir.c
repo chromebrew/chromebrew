@@ -2,6 +2,10 @@
   mvdir.c: Move all files under one directory to another,
            override conflict files in the destination directory (merge two directories)
 
+  Equivalent of `rsync -ahHAXW --remove-source-files dir1/ dir2/`
+
+  We use rename() syscall to move files (instead of copying-deleting), that's why it is faster than `rsync`
+
   Usage: ./mvdir [-v] [src] [dst]
 
   cc ./mvdir.c -O2 -o crew_mvdir
