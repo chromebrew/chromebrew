@@ -314,7 +314,7 @@ def generate_compatible
   puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
-def search(pkgName, silent = false)
+def search(pkgName, _silent = false)
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
 
   begin
@@ -858,9 +858,11 @@ def download
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
           cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
           cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
@@ -1205,10 +1207,7 @@ def strip_find_files(find_cmd, strip_option = '')
 
   # Run find_cmd and strip only files with ar or elf magic headers.
   system "#{find_cmd} | xargs -r chmod u+w"
-  @strip_verbose = @opt_verbose ? 'echo "Stripping ${0:1}" &&' : ''
-  # The craziness here is from having to escape the special characters
-  # in the magic headers for these files.
-  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) #{@strip_verbose} llvm-strip #{strip_option} ${0} ;; esac'"
+  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
 end
 
 def strip_dir(dir)
@@ -1221,8 +1220,8 @@ def strip_dir(dir)
       # Strip binaries but not compressed archives
       puts 'Stripping binaries...'
       extensions = %w[bz2 gz lha lz lzh rar tar tbz tgz tpxz txz xz Z zip zst]
-      inames = extensions.join(' -o -iname *.')
-      strip_find_files "find . -type f ! \\( -iname *.#{inames} \\) ! \\( -name 'lib*.a' -o -name 'lib*.so' \\) -perm /111 -print"
+      inames = extensions.join(' ! -iname *\.')
+      strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
     end
   end
 end
