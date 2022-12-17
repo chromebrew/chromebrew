@@ -24,6 +24,8 @@ class Crew_mvdir < Package
 
   no_zstd
 
+  no_shrink # upx: CantPackException: bad DT_GNU_HASH (1+ max_bucket)=0x1 < symbias=0x14
+
   def self.build
     system "mold -run cc -static #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
   end
