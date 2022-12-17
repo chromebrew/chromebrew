@@ -6,9 +6,9 @@
 
   We use rename() syscall to move files (instead of copying-deleting), that's why it is faster than `rsync`
 
-  Usage: ./mvdir [-v] [src] [dst]
+  Usage: ./crew-mvdir [-v] [src] [dst]
 
-  cc ./mvdir.c -O2 -o crew_mvdir
+  cc ./mvdir.c -O2 -o crew-mvdir
 */
 
 #define _XOPEN_SOURCE 700 // for nftw()
