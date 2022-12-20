@@ -18,10 +18,8 @@ class Sejda_console < Package
   def self.build
     @sejda = <<~EOF
       #!/bin/bash
-      PWD=$(pwd)
       cd #{CREW_PREFIX}/share/sejda_console
-      bin/sejda-console "$@"
-      cd $PWD
+      exec bin/sejda-console "$@"
     EOF
     File.write 'sejda-console', @sejda
   end

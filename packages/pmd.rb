@@ -17,18 +17,14 @@ class Pmd < Package
   def self.build
     cpd = <<~EOF
       #!/bin/bash
-      PWD=$(pwd)
       cd #{CREW_PREFIX}/share/pmd
-      bin/run.sh cpd "$@"
-      cd $PWD
+      exec bin/run.sh cpd "$@"
     EOF
     File.write('cpd', cpd)
     pmd = <<~EOF
       #!/bin/bash
-      PWD=$(pwd)
       cd #{CREW_PREFIX}/share/pmd
-      bin/run.sh pmd "$@"
-      cd $PWD
+      exec bin/run.sh pmd "$@"
     EOF
     File.write('pmd', pmd)
   end
