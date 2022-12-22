@@ -26,6 +26,7 @@ class Gobject_introspection < Package
   depends_on 'glib'
   depends_on 'glibc' # R
   depends_on 'libffi' # R
+  depends_on 'python3' # R
 
   gnome
 
