@@ -3,23 +3,23 @@ require 'package'
 class Ffmpegthumbnailer < Package
   description 'FFmpegthumbnailer is a lightweight video thumbnailer that can be used by file managers to create thumbnails for your video files.'
   homepage 'https://github.com/dirkvdb/ffmpegthumbnailer'
-  version '2.2.0-1'
+  version '2.2.3-e0bf01d'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/dirkvdb/ffmpegthumbnailer/releases/download/2.2.0/ffmpegthumbnailer-2.2.0.tar.bz2'
-  source_sha256 'e5c31299d064968198cd378f7488e52cd5e738fac998eea780bc77d7f32238c2'
+  source_url 'https://github.com/dirkvdb/ffmpegthumbnailer.git'
+  git_hashtag 'e0bf01d97e0261219b06d1e560e923354949b93e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_armv7l/ffmpegthumbnailer-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_armv7l/ffmpegthumbnailer-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_i686/ffmpegthumbnailer-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.0_x86_64/ffmpegthumbnailer-2.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d_armv7l/ffmpegthumbnailer-2.2.3-e0bf01d-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d_armv7l/ffmpegthumbnailer-2.2.3-e0bf01d-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d_i686/ffmpegthumbnailer-2.2.3-e0bf01d-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d_x86_64/ffmpegthumbnailer-2.2.3-e0bf01d-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
-     armv7l: 'd87b2c125e50ecc2556594995889eba190dff239f3e3d9707f7cb73dc4a6adc8',
-       i686: 'e47f302bf25775143bd1e7b0a62af36dfe734d7f9766c5e9a13c4eee54b69701',
-     x86_64: '1ca2b6e0d414f56c48952814a8470e01c012d11434ab3c26fa28dfbb39b13890'
+    aarch64: '52ce4e6f607f33c56bbc51ab712de2181b9b050074ca4da1bc3eefc244a35ccf',
+     armv7l: '52ce4e6f607f33c56bbc51ab712de2181b9b050074ca4da1bc3eefc244a35ccf',
+       i686: '1cae20f661e2429b2753dc1d06caa34ef4f9956df354569b14003ed0f146f17d',
+     x86_64: 'ea211b71290b0db4db405ad4b902a6bbb1ddc78ada453375817466661dc11e33'
   })
 
   depends_on 'ffmpeg'
@@ -27,11 +27,9 @@ class Ffmpegthumbnailer < Package
   def self.build
     Dir.mkdir 'build'
     Dir.chdir 'build' do
-      if ARCH == 'x86_64'
-        system "cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DLIB_SUFFIX=64"
-      else
-        system "cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_GIO=ON -DENABLE_THUMBNAILER=ON -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}"
-      end
+      system "cmake #{CREW_CMAKE_OPTIONS} \
+              -DENABLE_THUMBNAILER=ON \
+              -DENABLE_GIO=ON .."
       system 'make'
     end
   end
