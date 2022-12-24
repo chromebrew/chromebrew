@@ -1,23 +1,23 @@
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.38.2'
+  version '2.38.3'
   license 'LGPL-2+ and BSD-2'
   compatibility 'all'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.2.tar.xz'
-  source_sha256 'f3eb82899651f583b4d99cacd16af784a1a7710fce9e7b6807bd6ccde909fe3e'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.3.tar.xz'
+  source_sha256 '41f001d1ed448c6936b394a9f20e4640eebf83a7f08262df28504f7410604a5a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_armv7l/webkit2gtk_4-2.38.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_armv7l/webkit2gtk_4-2.38.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_i686/webkit2gtk_4-2.38.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.2_x86_64/webkit2gtk_4-2.38.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.3_armv7l/webkit2gtk_4-2.38.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.3_armv7l/webkit2gtk_4-2.38.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.3_i686/webkit2gtk_4-2.38.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.38.3_x86_64/webkit2gtk_4-2.38.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2f8dd6bd1d070fae699d56efbe844c3b02ff1f7efe8f314ce9f3f17075813e60',
-     armv7l: '2f8dd6bd1d070fae699d56efbe844c3b02ff1f7efe8f314ce9f3f17075813e60',
-       i686: '480b6c18c735be76735e5fe7acc386c01171300132e025779df022d2cbca0141',
-     x86_64: '66d3ecaa53fbde5917eb6b7d1ee0e5883e736fbe461650fbff7140635d26a685'
+    aarch64: '8e5e418a47b808f99003bc9473d316b1013ddda917948958ec0328340cde820b',
+     armv7l: '8e5e418a47b808f99003bc9473d316b1013ddda917948958ec0328340cde820b',
+       i686: '9b95b50ad1535b654aeb75c0f285e61593e480d1874a6baa7342311f00f9813b',
+     x86_64: 'c0c4576b995d44de7df7bc8cc4bc416227594a2724a0cf67a27c8be1b222e1f7'
   })
 
   depends_on 'atk' # R
