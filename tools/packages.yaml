@@ -85,6 +85,11 @@ url: https://ftpmirror.gnu.org/alive/
 activity: none
 ---
 kind: url
+name: aliyun_cli
+url: https://github.com/aliyun/aliyun-cli/releases
+activity: medium
+---
+kind: url
 name: alpine
 url: http://alpine.x10host.com/alpine/release
 activity: none
