@@ -20,6 +20,11 @@ url: https://abcde.einval.com/download/
 activity: medium
 ---
 kind: url
+name: abcl
+url: https://abcl.org/releases
+activity: medium
+---
+kind: url
 name: abseil_cpp
 url: https://github.com/abseil/abseil-cpp/releases
 activity: medium
