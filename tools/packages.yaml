@@ -50,6 +50,11 @@ url: https://acpica.org/downloads
 activity: medium
 ---
 kind: url
+name: act
+url: https://github.com/nektos/act/releases
+activity: medium
+---
+kind: url
 name: adobe_source_code_pro_fonts
 url: https://github.com/adobe-fonts/source-code-pro/releases
 activity: low
