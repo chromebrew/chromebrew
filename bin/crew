@@ -201,7 +201,7 @@ def print_current_package(extra = false)
   puts ''
 end
 
-def set_package(pkgName, pkgPath)
+def set_package(pkgName, pkgPath, silent = false)
   if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
     @pkg = Package.dup
 
@@ -213,7 +213,7 @@ def set_package(pkgName, pkgPath)
     return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
   end
 
-  unless File.exist?(pkgPath)
+  unless silent || File.exist?(pkgPath)
     @pkg = nil
     abort "Package #{pkgName} not found. 😞".lightred
   end
@@ -330,11 +330,11 @@ def generate_compatible
   puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
-def search(pkgName, _silent = false)
+def search(pkgName, silent = false)
   pkgPath = "#{CREW_PACKAGES_PATH}#{pkgName}.rb"
 
   begin
-    return set_package(pkgName, pkgPath)
+    return set_package(pkgName, pkgPath, silent)
   rescue StandardError => e
     puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
