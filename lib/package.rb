@@ -10,7 +10,7 @@ class Package
            :git_branch, :git_hashtag
 
   boolean_property = %i[conflicts_ok git_fetchtags gnome is_fake is_musl
-                        is_static no_compile_needed no_compress no_env_options
+                        is_pip is_static no_compile_needed no_compress no_env_options
                         no_fhs no_patchelf no_shrink no_strip no_zstd patchelf
                         git_clone_deep no_git_submodules]
 

@@ -215,6 +215,7 @@ def set_package(pkgName, pkgPath = '', silent = false)
     @pkg.name = pkgName
     @pkg.compatibility 'all'
     @pkg.is_fake
+    @pkg.is_pip
 
     pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
     pkgInfo     = Pip.get_package_info(pip_pkgName)
@@ -698,7 +699,7 @@ def upgrade(*pkgs, build_from_source: false)
     end
 
     to_be_upgraded += Pip.upgradable_list.keys.map do |pip_pkgName|
-      "py3_#{pip_pkgName.tr('-', '_')}"
+      "py3_#{pip_pkgName.tr('-', '_').downcase}"
     end
   end
 
@@ -1407,7 +1408,7 @@ end
 
 def resolve_dependencies
   @dependencies = []
-  expand_dependencies
+  expand_dependencies unless @pkg.is_pip?
 
   # leave only not installed packages in dependencies
   @dependencies.reject! { |name| @device[:installed_packages].any? { |pkg| pkg[:name] == name } }
