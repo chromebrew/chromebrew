@@ -104,10 +104,9 @@ rescue Docopt::Exit => e
       unless @cmds.include?(ARGV[0])
         similar = @cmds.select { |word| edit_distance(ARGV[0], word) < 4 }
         unless similar.empty?
-          puts <<~EOT
+          abort <<~EOT
             Did you mean?
-
-              #{similar.join("\n  ")}"
+              #{similar.join("\n  ")}
           EOT
         end
       end
@@ -130,7 +129,7 @@ def load_json
   @device   = JSON.load_file(json_path, symbolize_names: true)
 
   # symbolize also values
-  @device.transform_values {|val| val.to_sym rescue val }
+  @device.transform_values! {|val| val.to_sym if val.is_a?(String) }
 end
 
 def print_package(pkgPath, extra = false)
@@ -477,12 +476,12 @@ def const(var = nil)
   else
     # Get all constants defined by crew (or const.rb)
     @constants = Object.constants.select do |const|
-      Object.const_source_location(const)[0].include?(CREW_LIB_PATH)
+      Object.const_source_location(const)[0]&.include?(CREW_LIB_PATH)
     end
 
     # Print a sorted list of the remaining constants used by crew.
     @constants.sort.each do |var|
-      value = eval(var.to_s)
+      value = Object.const_get(var.to_sym)
       puts "#{var}=#{value}"
     end
   end
