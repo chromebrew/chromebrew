@@ -627,8 +627,8 @@ def upgrade(*pkgs, build_from_source: false)
     resolve_dependencies_and_install
   end
 
-  puts 'Packages have been updated.'.lightgreen
-  puts "Please rerun 'crew upgrade' since ruby was upgraded.".lightblue if @rerun_upgrade
+  puts 'Packages have been updated.'.lightgreen unless @rerun_upgrade
+  puts "Ruby was upgraded. Please run 'crew upgrade' again to make sure upgrades are complete.".lightblue if @rerun_upgrade
 end
 
 def download
