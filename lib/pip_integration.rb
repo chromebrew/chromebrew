@@ -92,4 +92,10 @@ class Pip
 
     return filelist
   end
+
+  def self.get_filelist(pkgName)
+    abort unless installed_list.key?(pkgName)
+
+    return get_pkg_info(pkgName)[:filelist]
+  end
 end

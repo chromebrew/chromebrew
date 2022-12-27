@@ -583,12 +583,9 @@ def files(pkgName)
     else
       abort "Package #{pkgName} is not installed. :(".lightred
     end
-
-    puts filelist, <<~EOT.lightgreen
-
-      Total found: #{lines}
-      Disk usage: #{human_size(size)}
-    EOT
+    humansize = human_size(size)
+    puts "Total found: #{lines}".lightgreen
+    puts "Disk usage: #{humansize}".lightgreen
   else
     filelist_path = File.join(CREW_META_PATH, "#{pkgName}.filelist")
     if File.file?(filelist_path)
@@ -599,19 +596,17 @@ def files(pkgName)
   end
 end
 
-def prop(silent = false)
-  props = []
-  pkg = Package.new
-  excluded_methods = %w[compatible is_binary is_source json_creatable autoload include const_defined class_variable_defined singleton_class method_defined public_method_defined private_method_defined protected_method_defined instance_variable_defined instance_of kind_of is_a frozen nil eql respond_to equal]
-  all_methods = pkg.class.methods.grep(/\?$/).to_s.gsub(/([?:,\[\]])/, '').split
-  all_methods.each do |method|
-    props.push(method) unless excluded_methods.include?(method)
-  end
-  if silent
-    return props
-  else
-    puts props.sort
-    puts "For more information, type 'crew help prop <property>' where <property> is one of the above properties.".lightblue
+def whatprovides(regexPat)
+  # Use grep version command to ascertain whether we have a working grep.
+  abort 'Grep is not working. Please install it with \'crew install grep\''.lightred unless system('grep -V > /dev/null 2>&1')
+  fileArray = []
+  @grepresults = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.chomp.gsub('.filelist', '').gsub(':', ': ').gsub(CREW_META_PATH, '').split(/$/).map(&:strip)
+  @grepresults.each { |fileLine| fileArray.push(fileLine) }
+  unless fileArray.empty?
+    fileArray.sort.each do |item|
+      puts item
+    end
+    puts "\nTotal found: #{fileArray.length}".lightgreen
   end
 end
 
@@ -716,6 +711,10 @@ def upgrade(*pkgs, build_from_source: false)
       to_be_upgraded << pkg[:name] if check_update_avail.call(pkgFile)
     end
 
+    puts 'Checking for Python package updates...'
+    to_be_upgraded += Pip.upgradable_list.keys
+  end
+
     to_be_upgraded += Pip.upgradable_list.keys.map do |pip_pkgName|
       "py3_#{pip_pkgName.tr('-', '_').downcase}"
     end
@@ -754,7 +753,7 @@ def upgrade(*pkgs, build_from_source: false)
     return true
   end
 
-  puts 'Packages have been updated.'.lightgreen unless @rerun_upgrade
+  puts 'Packages have been updated.'.lightgreen
   puts "Ruby was upgraded. Please run 'crew upgrade' again to make sure upgrades are complete.".lightblue if @rerun_upgrade
 end
 
@@ -1207,7 +1206,10 @@ def strip_find_files(find_cmd, strip_option = '')
 
   # Run find_cmd and strip only files with ar or elf magic headers.
   system "#{find_cmd} | xargs -r chmod u+w"
-  system "#{find_cmd} | xargs -r sh -c 'for i in \"$0\" \"$@\"; do case \"$(head -c 4 $i)\" in ?ELF|\!?ar) echo \"$i\";; esac ; done' | xargs -r llvm-strip #{strip_option}"
+  @strip_verbose = @opt_verbose ? 'echo "Stripping ${0:1}" &&' : ''
+  # The craziness here is from having to escape the special characters
+  # in the magic headers for these files.
+  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) #{@strip_verbose} llvm-strip #{strip_option} ${0} ;; esac'"
 end
 
 def strip_dir(dir)
@@ -1220,8 +1222,8 @@ def strip_dir(dir)
       # Strip binaries but not compressed archives
       puts 'Stripping binaries...'
       extensions = %w[bz2 gz lha lz lzh rar tar tbz tgz tpxz txz xz Z zip zst]
-      inames = extensions.join(' ! -iname *\.')
-      strip_find_files "find . -type f ! -iname *\.#{inames} -perm /111 -print | sed -e '/lib.*\.a$/d' -e '/lib.*\.so/d'"
+      inames = extensions.join(' -o -iname *.')
+      strip_find_files "find . -type f ! \\( -iname *.#{inames} \\) ! \\( -name 'lib*.a' -o -name 'lib*.so' \\) -perm /111 -print"
     end
   end
 end
