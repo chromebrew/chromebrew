@@ -217,7 +217,7 @@ def list_installed
     @sorted_installed_packages.map(&:strip).each do |line|
       puts "%-#{@first_col_width}s%s".lightgreen % line.split
     end
-    puts
+    print "\n"
   else
     Dir["#{CREW_META_PATH}*.directorylist"].map do |f|
       File.basename(f, '.directorylist').lightgreen
@@ -557,8 +557,7 @@ def update
   end
 
   if canBeUpdated.positive?
-    puts
-    puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
+    puts "\nRun `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages."
   else
     puts 'Your software is up to date.'.lightgreen
   end
