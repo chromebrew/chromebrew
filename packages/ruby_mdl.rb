@@ -3,7 +3,7 @@ require 'package'
 class Ruby_mdl < Package
   description 'Style checker/lint tool for markdown files.'
   homepage 'https://github.com/markdownlint/markdownlint'
-  version '0.12.0'
+  version '0.12.0-ruby-3.2'
   compatibility 'all'
   source_url 'SKIP'
 
@@ -12,10 +12,6 @@ class Ruby_mdl < Package
 
   depends_on 'libyaml'
   depends_on 'ruby'
-
-  def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX
-  end
 
   def self.postinstall
     @gem_name = name.sub('ruby_', '')
