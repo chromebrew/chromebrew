@@ -825,9 +825,9 @@ def unpack(meta)
       # Check the number of directories in the archive
       entries = Dir["#{@extract_dir}/*"]
 
-      if entries.empty?
+      if entries.empty? and @opt_verbose
         # This will happen with SKIP packages.
-        puts "Empty archive: #{meta[:filename]}".orange if @opt_verbose
+        puts "Empty archive: #{meta[:filename]}".orange
       end
       if entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
