@@ -721,11 +721,11 @@ def download
           cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.\-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
@@ -825,17 +825,17 @@ def unpack(meta)
       # Check the number of directories in the archive
       entries = Dir["#{@extract_dir}/*"]
 
-      if entries.empty? and @opt_verbose
+      if entries.empty? && @opt_verbose
         # This will happen with SKIP packages.
         puts "Empty archive: #{meta[:filename]}".orange
       end
-      if entries.length == 1 && File.directory?(entries.first)
+      target_dir = if entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
-        target_dir = entries.first
-      else
+                     entries.first
+                   else
         # Use `extract_dir` otherwise
-        target_dir = @extract_dir
-      end
+                     @extract_dir
+                   end
     else
       # Use `extract_dir` for binary distribution
       target_dir = @extract_dir
