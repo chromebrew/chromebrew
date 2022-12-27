@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.29.0'
+CREW_VERSION = '1.30.0'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -24,7 +24,7 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
                      elsif CPUINFO.key?('features')
                        # ARM-based processor stores supported instructions in 'features' field
                        if CPUINFO['cpu architecture'].to_i >= 8
-                         # if the processor is ARMv8+, than it is 64-bit
+                         # if the processor is ARMv8+, then it is 64-bit
                          %w[aarch64 armv7l armv8l]
                        else
                          # ARMv7 processor
@@ -116,7 +116,6 @@ CREW_CACHE_ENABLED = !ENV['CREW_CACHE_ENABLED'].to_s.empty?
 CREW_CONFLICTS_ONLY_ADVISORY = !ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? # or use conflicts_ok
 CREW_DISABLE_ENV_OPTIONS = !ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? # or use no_env_options
 CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? # or use no_fhs
-CREW_LA_RENAME_ENABLED = !ENV['CREW_LA_RENAME_ENABLED'].to_s.empty?
 CREW_NOT_COMPRESS = !ENV['CREW_NOT_COMPRESS'].to_s.empty? # or use no_compress
 CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
