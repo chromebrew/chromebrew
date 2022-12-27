@@ -13,7 +13,7 @@ class Pip
 
     info = {
       # use "summary" if "description" is too long
-      description: (pkgInfo[:description]&.count("\n") >= 3) ? pkgInfo[:summary] : pkgInfo[:description],
+      description: (pkgInfo[:description] && pkgInfo[:description].count("\n") >= 3) ? pkgInfo[:summary] : pkgInfo[:description],
       homepage: pkgInfo[:home_page],
       license: pkgInfo[:license],
       version: pkgInfo[:version]
