@@ -47,14 +47,14 @@ class Pip
       install pkgName, '--upgrade', reinstall: true
     else
       upgradable_list.each_pair do |pkgName, (currentVer, latestVer)|
-        install "#{pkgName}==#{latestVer}", '--upgrade', reinstall: true
+        install pkgName, '--upgrade', version: latestVer, reinstall: true
       end
     end
     update_cache
     update_upgradable_list
   end
 
-  def self.install(pkgName, version = nil, *opts, reinstall: true)
+  def self.install(pkgName, *opts, version: nil, reinstall: true)
     if installed?(pkgName) && !reinstall
       warn "Package py3_#{pkgName} already installed, skipping...".lightgreen
       return false
@@ -62,8 +62,7 @@ class Pip
       remove(pkgName)
     end
 
-    pkgName = version ? "#{pkgName}==#{version}" : pkgName
-    system 'pip', 'install', pkgName, *opts, exception: true
+    system 'pip', 'install', pkgName, *opts, version:, exception: true
     update_cache
   end
 

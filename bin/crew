@@ -703,7 +703,6 @@ def upgrade(*pkgs, build_from_source: false)
   if to_be_upgraded.any?
     # install new dependencies (if any)
     to_be_upgraded.each do |pkgName|
-      next if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
       search(pkgName)
       resolve_dependencies
     end
@@ -712,19 +711,14 @@ def upgrade(*pkgs, build_from_source: false)
 
     # upgrade packages
     to_be_upgraded.each do |pkgName|
-      if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-        pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
-        Pip.upgrade(pip_pkgName)
-      else
-        search(pkgName)
-        print_current_package
-        @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
+      search(pkgName)
+      print_current_package
+      @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
 
-        puts "Updating #{@pkg.name}..." if @opt_verbose
+      puts "Updating #{@pkg.name}..." if @opt_verbose
 
-        @pkg.in_upgrade = true
-        resolve_dependencies_and_install
-      end
+      @pkg.in_upgrade = true
+      resolve_dependencies_and_install
     end
   else
     puts 'Your software is already up to date.'.lightgreen
