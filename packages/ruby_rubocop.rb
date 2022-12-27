@@ -30,7 +30,7 @@ class Ruby_rubocop < Package
     @gem_name = name.sub('ruby_', '')
     system "gem install -N #{@gem_name}", exception: false
 
-    puts "Chromebrew rubocop config file was installed at #{@xdg_config_home}/rubocop/config.yml".lightblue
+    puts "Chromebrew rubocop config file was installed at #{CREW_DEST_PREFIX}/.config/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
   end
 
