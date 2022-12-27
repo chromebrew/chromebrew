@@ -40,7 +40,7 @@ class Pip
 
   def self.check_update
     upgradable_list.each_pair do |pkgName, (currentVer, latestVer)|
-      puts "#{pkgName} could be updated from #{currentVer} to #{latestVer}"
+      puts "py3_#{pkgName.tr('-', '_').downcase} could be updated from #{currentVer} to #{latestVer}"
     end
 
     return upgradable_list.size
