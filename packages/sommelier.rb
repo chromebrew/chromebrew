@@ -43,7 +43,7 @@ class Sommelier < Package
   depends_on 'xxd_standalone' # for xxd in wrapper script
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  
+
   no_shrink
 
   def self.preflight
