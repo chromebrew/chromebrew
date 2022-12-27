@@ -599,6 +599,14 @@ def upgrade(*pkgs, build_from_source: false)
     return true
   end
 
+  # Only upgrade ruby if ruby is in the upgrade list, as other
+  # package upgrades may break until crew is rerun with the new
+  # version of ruby.
+  if to_be_upgraded.include?('ruby')
+    to_be_upgraded = ['ruby']
+    @rerun_upgrade = true
+  end
+  
   # install new dependencies (if any)
   to_be_upgraded.each do |pkgName|
     search(pkgName)
@@ -620,6 +628,7 @@ def upgrade(*pkgs, build_from_source: false)
   end
 
   puts 'Packages have been updated.'.lightgreen
+  puts "Please rerun 'crew upgrade' since ruby was upgraded.".lightblue if @rerun_upgrade
 end
 
 def download
