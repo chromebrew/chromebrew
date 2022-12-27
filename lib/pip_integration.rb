@@ -25,9 +25,12 @@ class Pip
   end
 
   def self.update_upgradable_list
-    @upgradable = `pip list --outdated`.lines(chomp: true)[2..].to_h do |pkg|
+    @upgradable = `pip list --outdated`.lines(chomp: true)[2..].map do |pkg|
       pkgName, currentVer, latestVer, _ = pkg.split(/\s+/, 4)
       [pkgName, [currentVer, latestVer]]
+    end.reject do |(pkgName, _)|
+      # don't check for updates if crew version exists
+      File.file?( File.join(CREW_PACKAGES_PATH, "py3_#{pkgName.tr('-', '_')}.rb") )
     end
   end
 
