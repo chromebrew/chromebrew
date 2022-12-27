@@ -15,10 +15,11 @@ class Pip
         version: pkgInfo[:info][:version]
       }.transform_values(&:chomp)
     else
-      pkgInfo   = `pip show -f #{pkgName}`.scan(/^[[:blank:]]*(.+?): (.+)$/).to_h
-      pkgPrefix = pkgInfo['Location']
+      pipOutput   = `pip show -f #{pkgName}`
+      pkgInfo     = pipOutput.scan(/^[[:blank:]]*(.+?): (.+)$/).to_h
+      pkgPrefix   = pkgInfo['Location']
 
-      filelist = pkgInfo[pkgInfo.index('Files:')..].map do |path|
+      filelist = pipOutput.partition('Files:').last.lines(chomp: true).map do |path|
         File.expand_path(path, pkgPrefix)
       end
 
