@@ -3,7 +3,7 @@ require_relative 'color'
 
 class Pip
   def self.get_package_info(pkgName, prefer_online: false)
-    is_installed = installed_list.key?(pkgName)
+    is_installed = installed?(pkgName)
 
     if prefer_online || !is_installed
       pkgInfo = JSON.parse(`curl -LSs https://pypi.org/pypi/#{pkgName}/json`, symbolize_names: true)
@@ -20,8 +20,7 @@ class Pip
   end
 
   def self.update_cache
-    @inspect   = JSON.parse(`pip inspect 2> /dev/null`, symbolize_names: true)
-    @installed = @inspect[:installed].map {|pkg| pkg[:metadata][:name] }
+    @inspect = JSON.parse(`pip inspect 2> /dev/null`, symbolize_names: true)
   end
 
   def self.update_upgradable_list
@@ -32,9 +31,8 @@ class Pip
   end
 
   def self.pip_inspect         = (@inspect || update_cache)
-  def self.installed_list      = (@installed || update_cache)
   def self.upgradable_list     = (@upgradable_list || update_upgradable_list)
-  def self.installed?(pkgName) = installed_list.key?(pkgName)
+  def self.installed?(pkgName) = @inspect[:installed].any? {|pkg| pkg[:metadata][:name] == pkgName }
 
   def self.check_update
     upgradable_list.each_pair do |pkgName, (currentVer, latestVer)|
@@ -57,7 +55,7 @@ class Pip
   end
 
   def self.install(pkgName, version = nil, *opts, run_anyways: true)
-    if installed_list.key?(pkgName) && !run_anyways
+    if installed?(pkgName) && !run_anyways
       warn "Package py3_#{pkgName} already installed, skipping...".lightgreen
       return false
     else
@@ -68,7 +66,7 @@ class Pip
   end
 
   def self.remove(pkgName)
-    if installed_list.key?(pkgName)
+    if installed?(pkgName)
       system 'pip', 'uninstall', '--yes', pkgName, exception: true
       update_cache
     else
@@ -78,7 +76,7 @@ class Pip
   end
 
   def self.get_filelist(pkgName)
-    abort "Package #{pkgName} is not installed. :(".lightred unless installed_list.key?(pkgName)
+    abort "Package #{pkgName} is not installed. :(".lightred unless installed?(pkgName)
 
     pipOutput   = `pip show -f #{pkgName}`
     pkgInfo     = pipOutput.scan(/^[[:blank:]]*(.+?): (.+)$/).to_h
