@@ -1426,10 +1426,6 @@ def resolve_dependencies
     abort unless version_check.call(installed_version)
   end
 
-def resolve_dependencies
-  @dependencies = []
-  expand_dependencies unless @pkg.is_pip?
-
   # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
   @dependencies.map!(&:keys).flatten!
 
