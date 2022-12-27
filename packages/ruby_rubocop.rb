@@ -27,7 +27,7 @@ class Ruby_rubocop < Package
     @gem_name = name.sub('ruby_', '')
     system "gem install -N #{@gem_name}", exception: false
 
-    puts "Chromebrew rubocop config file was installed at #{CREW_DEST_PREFIX}/.config/rubocop/config.yml".lightblue
+    puts "Chromebrew rubocop config file was installed at #{CREW_PREFIX}/.config/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
   end
 
@@ -42,7 +42,5 @@ class Ruby_rubocop < Package
     @gems.each do |gem|
       system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
     end
-
-    FileUtils.rm_f "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 end
