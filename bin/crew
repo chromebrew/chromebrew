@@ -874,13 +874,6 @@ def build_and_preconfigure(target_dir)
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install
-
-    unless @pkg.no_compile_needed? && !CREW_LA_RENAME_ENABLED
-      # Rename all *.la_tmp back to *.la to avoid
-      # cannot access '*.la': No such file or directory
-      puts 'Rename all *.la_tmp files back to *.la'.lightblue
-      system "find #{CREW_LIB_PREFIX} -type f -name '*.la_tmp' -exec bash -c 'mv #{@short_verbose} \"$1\" \"${1%.la_tmp}.la\"' _  {} \\;"
-    end
   end
 end
 
