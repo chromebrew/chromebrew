@@ -20,8 +20,8 @@ class Pip
   end
 
   def self.update_cache
-    @inspect = JSON.parse(`pip inspect 2> /dev/null`, symbolize_names: true)
-    @installed   = @pip_inspect[:installed].map {|pkg| pkg[:metadata][:name] }
+    @inspect   = JSON.parse(`pip inspect 2> /dev/null`, symbolize_names: true)
+    @installed = @inspect[:installed].map {|pkg| pkg[:metadata][:name] }
   end
 
   def self.update_upgradable_list
