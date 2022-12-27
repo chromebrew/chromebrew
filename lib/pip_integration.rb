@@ -12,7 +12,8 @@ class Pip
     end
 
     info = {
-      description: pkgInfo[:description],
+      # use "summary" if "description" is too long
+      description: (pkgInfo[:description].size > 300) ? pkgInfo[:description] : pkgInfo[:summary],
       homepage: pkgInfo[:home_page],
       license: pkgInfo[:license],
       version: pkgInfo[:version]
