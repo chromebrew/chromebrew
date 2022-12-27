@@ -44,25 +44,27 @@ class Pip
 
   def self.upgrade(pkgName = nil)
     if pkgName
-      install pkgName, '--upgrade', run_anyways: true
+      install pkgName, '--upgrade', reinstall: true
     else
       upgradable_list.each_pair do |pkgName, (currentVer, latestVer)|
-        install "#{pkgName}==#{latestVer}", '--upgrade', run_anyways: true
+        install "#{pkgName}==#{latestVer}", '--upgrade', reinstall: true
       end
     end
     update_cache
     update_upgradable_list
   end
 
-  def self.install(pkgName, version = nil, *opts, run_anyways: true)
-    if installed?(pkgName) && !run_anyways
+  def self.install(pkgName, version = nil, *opts, reinstall: true)
+    if installed?(pkgName) && !reinstall
       warn "Package py3_#{pkgName} already installed, skipping...".lightgreen
       return false
-    else
-      pkgName = version ? "#{pkgName}==#{version}" : pkgName
-      system 'pip', 'install', pkgName, *opts, exception: true
-      update_cache
+    elsif reinstall
+      remove(pkgName)
     end
+
+    pkgName = version ? "#{pkgName}==#{version}" : pkgName
+    system 'pip', 'install', pkgName, *opts, exception: true
+    update_cache
   end
 
   def self.remove(pkgName)

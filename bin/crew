@@ -573,7 +573,7 @@ def files(pkgName)
     pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
 
     if Pip.installed?(pip_pkgName)
-      filelist = Pip.get_package_info(pip_pkgName)[:filelist]
+      filelist = Pip.get_filelist(pip_pkgName)
     else
       abort "Package #{pkgName} is not installed. :(".lightred
     end
@@ -1464,7 +1464,7 @@ def install
     pip_pkgName = @pkg.name.delete_prefix('py3_').tr('_', '-')
 
     puts "Using 'pip' to install Python 3 packages...".lightblue
-    return Pip.install(pip_pkgName, run_anyways: @pkg.in_upgrade)
+    return Pip.install(pip_pkgName, reinstall: @pkg.in_upgrade)
   end
 
   if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
