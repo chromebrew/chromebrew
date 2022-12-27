@@ -173,7 +173,8 @@ end
 
 def print_current_package(extra = false)
   status = if @pkg.name =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
-             Pip.installed_list.key?( @pkg.name.delete_prefix('py3_').tr('_', '-') ) ? :installed : :available
+             pip_pkgName = @pkg.name.delete_prefix('py3_').tr('_', '-')
+             Pip.installed?(pip_pkgName) ? :installed : :available
            elsif @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
              :installed
            elsif !@pkg.compatible?
@@ -563,7 +564,7 @@ def files(pkgName)
   if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
     pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
 
-    if Pip.installed_list.key?(pip_pkgName)
+    if Pip.installed?(pip_pkgName)
       filelist = Pip.get_package_info(pip_pkgName)[:filelist]
     else
       abort "Package #{pkgName} is not installed. :(".lightred
