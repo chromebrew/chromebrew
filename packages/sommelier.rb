@@ -44,6 +44,8 @@ class Sommelier < Package
   depends_on 'gcc' # R
   depends_on 'glibc' # R
 
+  no_shrink
+
   def self.preflight
     return if File.socket?('/var/run/chrome/wayland-0') || CREW_IN_CONTAINER
 
