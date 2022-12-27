@@ -32,16 +32,12 @@ class Ruby_rubocop < Package
   @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
-  def self.build
-    # system 'bundle install'
-    # system 'rake build'
-  end
+  def self.build; end
 
   def self.install
-    # system "gem install --build=#{CREW_DEST_DIR} pkg/rubocop-#{version}.gem"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
     downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP',
-"#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
+               "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 
   def self.postinstall
@@ -52,7 +48,7 @@ class Ruby_rubocop < Package
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
     FileUtils.mkdir_p "#{@xdg_config_home}/rubocop"
     downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP',
-"#{@xdg_config_home}/rubocop/config.yml"
+               "#{@xdg_config_home}/rubocop/config.yml"
   end
 
   def self.remove
