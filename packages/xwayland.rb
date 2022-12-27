@@ -24,6 +24,7 @@ class Xwayland < Package
   })
 
   no_env_options
+  no_shrink
 
   depends_on 'dbus' => :build
   depends_on 'eudev' => :build
