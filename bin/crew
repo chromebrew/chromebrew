@@ -1509,7 +1509,9 @@ def remove(pkgName)
         next unless Dir.empty?(line)
 
         puts "Removing directory #{line}".lightred if @opt_verbose
-        FileUtils.rmdir(line)
+        # rmtree gives the 'rm -rf' functionality which rmdir
+        # does not have.
+        FileUtils.rmtree(line)
       end
 
       # remove the file and directory list
