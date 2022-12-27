@@ -826,8 +826,10 @@ def unpack(meta)
       entries = Dir["#{@extract_dir}/*"]
 
       if entries.empty?
-        abort "Empty archive: #{meta[:filename]}".lightred
-      elsif entries.length == 1 && File.directory?(entries.first)
+        # This will happen with SKIP packages.
+        puts "Empty archive: #{meta[:filename]}".orange if @opt_verbose
+      end
+      if entries.length == 1 && File.directory?(entries.first)
         # Use `extract_dir/dir_in_archive` if there is only one directory.
         target_dir = entries.first
       else
