@@ -209,7 +209,7 @@ def set_package(pkgName, pkgPath, silent = false)
     @pkg.compatibility 'all'
     @pkg.is_fake
 
-    pkgInfo = Pip.get_info( pkgName.delete_prefix('py3_').tr('_', '-') )
+    pkgInfo = Pip.get_package_info( pkgName.delete_prefix('py3_').tr('_', '-') )
     return pkgInfo.each_pair {|k, v| @pkg.send(k, v) }
   end
 
