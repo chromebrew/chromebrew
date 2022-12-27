@@ -8,36 +8,22 @@ class Ruby_rubocop < Package
   homepage 'https://rubocop.org'
   version '1.41.1-ruby-3.2'
   compatibility 'all'
-  source_url 'SKIP'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.41.1-ruby-3.2_armv7l/ruby_rubocop-1.41.1-ruby-3.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.41.1-ruby-3.2_armv7l/ruby_rubocop-1.41.1-ruby-3.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.41.1-ruby-3.2_i686/ruby_rubocop-1.41.1-ruby-3.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_rubocop/1.41.1-ruby-3.2_x86_64/ruby_rubocop-1.41.1-ruby-3.2-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '5091d0c031c4e99a96c6276771f0f004a9b662b29d5a61c70a079203cf473bed',
-     armv7l: '5091d0c031c4e99a96c6276771f0f004a9b662b29d5a61c70a079203cf473bed',
-       i686: '08c568915137cbad80800158e5470721b55123260bde2fc886d358adaddb9cb2',
-     x86_64: '21b15de2bb144c053695fd00878d89e1fb30b5cfca8b51717f0a8615e519eb7d'
-  })
+  source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
+  source_sha256 'c98e2a4bde8cbf658d226d71f1e84fc3e4ce071692e6253a7708c8c90af3f7b5'
 
   depends_on 'libyaml'
   depends_on 'ruby'
   depends_on 'xdg_base'
 
   no_fhs
+  no_compile_needed
 
   @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
-  def self.build; end
-
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
-    downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'c98e2a4bde8cbf658d226d71f1e84fc3e4ce071692e6253a7708c8c90af3f7b5',
-               "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
+    FileUtils.install '.rubocop.yml', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml", mode: 0o644
   end
 
   def self.postinstall
