@@ -3,7 +3,7 @@ require 'package'
 class Ruby_yaml_lint < Package
   description 'Check if your YAML files can be loaded.'
   homepage 'https://rubygems.org/gems/yaml-lint'
-  version '0.0.10'
+  version '0.0.10-ruby-3.2'
   compatibility 'all'
   source_url 'SKIP'
 
@@ -12,10 +12,6 @@ class Ruby_yaml_lint < Package
 
   depends_on 'libyaml'
   depends_on 'ruby'
-
-  def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX
-  end
 
   def self.postinstall
     @gem_name = name.sub('ruby_', '').sub('_', '-')
