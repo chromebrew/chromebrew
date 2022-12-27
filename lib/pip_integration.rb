@@ -13,7 +13,7 @@ class Pip
 
     info = {
       # use "summary" if "description" is too long
-      description: (pkgInfo[:description].size > 300) ? pkgInfo[:description] : pkgInfo[:summary],
+      description: (pkgInfo[:description].count("\n") >= 3) ? pkgInfo[:description] : pkgInfo[:summary],
       homepage: pkgInfo[:home_page],
       license: pkgInfo[:license],
       version: pkgInfo[:version]
@@ -25,10 +25,10 @@ class Pip
   end
 
   def self.update_upgradable_list
-    @upgradable = `pip list --outdated`.lines(chomp: true)[2..].map do |pkg|
+    @upgradable = `pip list --outdated`.lines(chomp: true)[2..].to_h do |pkg|
       pkgName, currentVer, latestVer, _ = pkg.split(/\s+/, 4)
       [pkgName, [currentVer, latestVer]]
-    end.to_h
+    end
   end
 
   def self.pip_inspect         = (@inspect || update_cache)
@@ -63,7 +63,9 @@ class Pip
       remove(pkgName)
     end
 
-    system 'pip', 'install', pkgName, *opts, version:, exception: true
+    pkgName = "#{pkgName}==#{version}" if version
+    system 'pip', 'install', pkgName, *opts, exception: true
+
     update_cache
   end
 

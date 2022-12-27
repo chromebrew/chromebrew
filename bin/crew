@@ -699,7 +699,7 @@ def upgrade(*pkgs, build_from_source: false)
 
     to_be_upgraded += Pip.upgradable_list.keys.reject do |pkg|
       # don't check for updates if crew version exists
-      File.file?( File.join(CREW_PACKAGES_PATH, pkg) )
+      File.file?( File.join(CREW_PACKAGES_PATH, "#{pkg}.rb") )
     end.map do |pip_pkgName|
       "py3_#{pip_pkgName.tr('-', '_')}"
     end
