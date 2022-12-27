@@ -18,9 +18,6 @@ class Ruby_rubocop < Package
   no_fhs
   no_compile_needed
 
-  @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
-  @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
-
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
     FileUtils.install '.rubocop.yml', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml", mode: 0o644
@@ -46,6 +43,6 @@ class Ruby_rubocop < Package
       system "gem uninstall -Dx --force --abort-on-dependent #{gem}", exception: false
     end
 
-    FileUtils.rm_f "#{@xdg_config_home}/rubocop/config.yml"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 end
