@@ -3,7 +3,7 @@ require 'package'
 class Ruby_debug < Package
   description 'Debugging functionality for Ruby. This is completely rewritten debug.rb which was contained by the ancient Ruby versions.'
   homepage 'https://github.com/ruby/debug'
-  version '1.6.2-1'
+  version '1.7.1-ruby-3.2'
   compatibility 'all'
   source_url 'SKIP'
 
