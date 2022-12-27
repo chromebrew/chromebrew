@@ -46,9 +46,11 @@ class Ruby_rubocop < Package
 
     puts "Installing Chromebrew rubocop config file at #{@xdg_config_home}/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
-    FileUtils.mkdir_p "#{@xdg_config_home}/rubocop"
-    downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP',
-               "#{@xdg_config_home}/rubocop/config.yml"
+    # FileUtils.mkdir_p "#{@xdg_config_home}/rubocop"
+    # downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP',
+    #            "#{@xdg_config_home}/rubocop/config.yml"
+    # Prevent breakage on ruby upgrades by not invoking ruby extensions during postinstall.
+    system "curl -Ls https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml -o #{@xdg_config_home}/rubocop/config.yml"
   end
 
   def self.remove
