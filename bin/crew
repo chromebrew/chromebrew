@@ -1509,7 +1509,7 @@ def remove(pkgName)
 
       # remove all directories installed by the package
       File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
-        next unless Dir.empty?(line)
+        next unless Dir.exist?(line)
 
         puts "Removing directory #{line}".lightred if @opt_verbose
         # rmtree gives the 'rm -rf' functionality which rmdir
