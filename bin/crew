@@ -963,7 +963,9 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    system 'find . \( -type f -o -type l \) | cut -c2-', out: 'filelist'
+    system 'find . -type f > ../filelist'
+    system 'find . -type l >> ../filelist'
+    system 'cut -c2- ../filelist > filelist'
 
     # check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
