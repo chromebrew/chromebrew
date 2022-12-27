@@ -172,7 +172,7 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
-  status = if @pkg.name =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
+  status = if @pkg.name =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
              Pip.installed_list.key?( @pkg.name.delete_prefix('py3_').tr('_', '-') ) ? :installed : :available
            elsif @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
              :installed
@@ -202,7 +202,7 @@ def print_current_package(extra = false)
 end
 
 def set_package(pkgName, pkgPath)
-  if pkgName =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+  if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
     @pkg = Package.dup
 
     @pkg.name = pkgName
@@ -560,20 +560,36 @@ def const(var)
 end
 
 def files(pkgName)
-  filelist = "#{CREW_META_PATH}#{pkgName}.filelist"
-  if File.file? filelist
-    system "sort #{filelist}"
-    lines = File.readlines(filelist).size
-    size = 0
-    File.readlines(filelist).each do |filename|
-      size += File.size(filename.chomp) if File.file? filename.chomp
+  if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+    pip_pkgName = pkgName.sub(/^py3_/, '').tr('_', '-')
+
+    if Pip.installed_list.keys?(pip_pkgName)
+      filelist = Pip.installed_list.keys?(pkgName.sub(/^py3_/, '').tr('_', '-'))
+    else
+      abort "Package #{pkgName} is not installed. :(".lightred
     end
-    humansize = human_size(size)
-    puts "Total found: #{lines}".lightgreen
-    puts "Disk usage: #{humansize}".lightgreen
   else
-    puts "Package #{pkgName} is not installed. :(".lightred
+    filelist_path = File.join(CREW_META_PATH, "#{pkgName}.filelist")
+    if File.file?(filelist_path)
+      filelist = File.readlines(filelist_path, chomp: true).sort
+    else
+      abort "Package #{pkgName} is not installed. :(".lightred
+    end
   end
+
+  lines = filelist.size
+  size = 0
+
+  filelist.each do |filename|
+    # ignore symlinks to prevent duplicating calculation
+    size += File.size(filename) if File.file?(filename) && !File.symlink?(filename)
+  end
+
+  puts filelist, <<~EOT.lightgreen
+
+    Total found: #{lines}
+    Disk usage: #{human_size(size)}
+  EOT
 end
 
 def whatprovides(regexPat)
@@ -626,6 +642,9 @@ def update
     end
   end
 
+  puts 'Checking for Python package updates...'
+  canBeUpdated += Pip.check_update
+
   if canBeUpdated.positive?
     puts
     puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
@@ -654,8 +673,13 @@ def upgrade(*pkgs, build_from_source: false)
   if pkgs.any?
     # check for specific package(s)
     pkgs.each do |pkgName|
-      pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
-      to_be_upgraded << pkgName if check_update_avail.call(pkgFile)
+      if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+        pip_pkgName = pkgName.sub(/^py3_/, '').tr('_', '-')
+        to_be_upgraded << pkgName if Pip.upgradable_list.key?(pip_pkgName)
+      else
+        pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
+        to_be_upgraded << pkgName if check_update_avail.call(pkgFile)
+      end
     end
   else
     # check for all packages if no package name provided
@@ -663,31 +687,40 @@ def upgrade(*pkgs, build_from_source: false)
       pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkg[:name]}.rb")
       to_be_upgraded << pkg[:name] if check_update_avail.call(pkgFile)
     end
+
+    puts 'Checking for Python package updates...'
+    to_be_upgraded += Pip.upgradable_list.keys
   end
 
-  if to_be_upgraded.empty?
+  if to_be_upgraded.any?
+    # install new dependencies (if any)
+    to_be_upgraded.each do |pkgName|
+      next if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+      search(pkgName)
+      resolve_dependencies
+    end
+
+    puts 'Updating packages...'
+
+    # upgrade packages
+    to_be_upgraded.each do |pkgName|
+      if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+        pip_pkgName = pkgName.sub(/^py3_/, '').tr('_', '-')
+        Pip.upgrade(pip_pkgName)
+      else
+        search(pkgName)
+        print_current_package
+        @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
+
+        puts "Updating #{@pkg.name}..." if @opt_verbose
+
+        @pkg.in_upgrade = true
+        resolve_dependencies_and_install
+      end
+    end
+  else
     puts 'Your software is already up to date.'.lightgreen
     return true
-  end
-
-  # install new dependencies (if any)
-  to_be_upgraded.each do |pkgName|
-    search(pkgName)
-    resolve_dependencies
-  end
-
-  puts 'Updating packages...'
-
-  # upgrade packages
-  to_be_upgraded.each do |pkgName|
-    search(pkgName)
-    print_current_package
-    @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
-
-    puts "Updating #{@pkg.name}..." if @opt_verbose
-
-    @pkg.in_upgrade = true
-    resolve_dependencies_and_install
   end
 
   puts 'Packages have been updated.'.lightgreen
@@ -1419,7 +1452,7 @@ def resolve_dependencies
 end
 
 def install
-  if @pkg.name =~ /py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
+  if @pkg.name =~ /py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
     puts "Using 'pip' to install Python 3 packages...".lightblue
     return Pip.install( @pkg.name.delete_prefix('py3_').tr('_', '-') )
   end
@@ -1579,7 +1612,7 @@ def archive_package(pwd)
 end
 
 def remove(pkgName)
-  if pkgName =~ /^py3_/ && !File.exist?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
+  if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
     puts "Using 'pip' to remove Python 3 packages...".lightblue
     Pip.remove( pkgName.delete_prefix('py3_').tr('_', '-') )
     puts "#{pkgName.capitalize} removed!".lightgreen
