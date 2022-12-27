@@ -924,6 +924,9 @@ def compress_doc(dir)
 end
 
 def prepare_package(destdir)
+  # Create the destdir if it does not exist to avoid having to have
+  # this single line in no_compile_needed packages.
+  FileUtils.mkdir_p CREW_DEST_PREFIX
   Dir.chdir destdir do
     # Avoid /usr/local/share/info/dir{.gz} file conflict:
     # The install-info program maintains a directory of installed
