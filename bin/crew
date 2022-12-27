@@ -561,10 +561,10 @@ end
 
 def files(pkgName)
   if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-    pip_pkgName = pkgName.sub(/^py3_/, '').tr('_', '-')
+    pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
 
-    if Pip.installed_list.keys?(pip_pkgName)
-      filelist = Pip.installed_list.keys?(pkgName.sub(/^py3_/, '').tr('_', '-'))
+    if Pip.installed_list.key?(pip_pkgName)
+      filelist = Pip.get_package_info(pip_pkgName)[:filelist]
     else
       abort "Package #{pkgName} is not installed. :(".lightred
     end
@@ -674,7 +674,7 @@ def upgrade(*pkgs, build_from_source: false)
     # check for specific package(s)
     pkgs.each do |pkgName|
       if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-        pip_pkgName = pkgName.sub(/^py3_/, '').tr('_', '-')
+        pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
         to_be_upgraded << pkgName if Pip.upgradable_list.key?(pip_pkgName)
       else
         pkgFile = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
@@ -704,7 +704,7 @@ def upgrade(*pkgs, build_from_source: false)
     # upgrade packages
     to_be_upgraded.each do |pkgName|
       if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-        pip_pkgName = pkgName.sub(/^py3_/, '').tr('_', '-')
+        pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
         Pip.upgrade(pip_pkgName)
       else
         search(pkgName)
@@ -1452,8 +1452,10 @@ end
 
 def install
   if @pkg.name =~ /py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{@pkg.name}.rb") )
+    pip_pkgName = @pkg.name.delete_prefix('py3_').tr('_', '-')
+
     puts "Using 'pip' to install Python 3 packages...".lightblue
-    return Pip.install( @pkg.name.delete_prefix('py3_').tr('_', '-') )
+    return Pip.install(pip_pkgName, run_anyways: @pkg.in_upgrade)
   end
 
   if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }

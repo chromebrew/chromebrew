@@ -57,18 +57,18 @@ class Pip
 
   def self.upgrade(pkgName = nil)
     if pkgName
-      install pkgName, '--upgrade'
+      install pkgName, '--upgrade', run_anyways: true
     else
       upgradable_list.each_pair do |pkgName, (currentVer, latestVer)|
-        install "#{pkgName}==#{latestVer}", '--upgrade'
+        install "#{pkgName}==#{latestVer}", '--upgrade', run_anyways: true
       end
     end
     update_installed_list
     update_upgradable_list
   end
 
-  def self.install(pkgName, version = nil, *opts)
-    if installed_list.key?(pkgName)
+  def self.install(pkgName, version = nil, *opts, run_anyways: true)
+    if installed_list.key?(pkgName) && !run_anyways
       warn "Package py3_#{pkgName} already installed, skipping...".lightgreen
       return false
     else
@@ -86,11 +86,6 @@ class Pip
       warn "Package py3_#{pkgName} isn't installed.".lightred
       return false
     end
-  end
-
-  def self.reinstall(pkgName)
-    remove pkgName
-    install pkgName
   end
 
   def self.get_filelist(pkgName)
