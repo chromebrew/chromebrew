@@ -36,7 +36,7 @@ class Ruby_rubocop < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
-    downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP',
+    downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'c98e2a4bde8cbf658d226d71f1e84fc3e4ce071692e6253a7708c8c90af3f7b5',
                "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml"
   end
 
@@ -44,13 +44,8 @@ class Ruby_rubocop < Package
     @gem_name = name.sub('ruby_', '')
     system "gem install -N #{@gem_name}", exception: false
 
-    puts "Installing Chromebrew rubocop config file at #{@xdg_config_home}/rubocop/config.yml".lightblue
+    puts "Chromebrew rubocop config file was installed at #{@xdg_config_home}/rubocop/config.yml".lightblue
     puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
-    # FileUtils.mkdir_p "#{@xdg_config_home}/rubocop"
-    # downloader 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml', 'SKIP',
-    #            "#{@xdg_config_home}/rubocop/config.yml"
-    # Prevent breakage on ruby upgrades by not invoking ruby extensions during postinstall.
-    system "curl -Ls https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml -o #{@xdg_config_home}/rubocop/config.yml"
   end
 
   def self.remove
