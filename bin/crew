@@ -129,7 +129,7 @@ def load_json
   @device   = JSON.load_file(json_path, symbolize_names: true)
 
   # symbolize also values
-  @device.transform_values! {|val| val.to_sym if val.is_a?(String) }
+  @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
 end
 
 def print_package(pkgPath, extra = false)
@@ -474,13 +474,13 @@ def const(var = nil)
     value = Object.const_get(var.to_sym)
     puts "#{var}=#{value}"
   else
-    # Get all constants defined by crew (or const.rb)
-    @constants = Object.constants.select do |const|
-      Object.const_source_location(const)[0]&.include?(CREW_LIB_PATH)
-    end
+    # Get all constants defined by const.rb
+    constants = Object.constants.select do |const|
+      Object.const_source_location(const)[0] == File.join(CREW_LIB_PATH, 'lib/const.rb')
+    end.sort
 
     # Print a sorted list of the remaining constants used by crew.
-    @constants.sort.each do |var|
+    constants.each do |var|
       value = Object.const_get(var.to_sym)
       puts "#{var}=#{value}"
     end
@@ -490,7 +490,7 @@ end
 def files(pkgName)
   filelist_path = File.join(CREW_META_PATH, "#{pkgName}.filelist")
   if File.file?(filelist_path)
-    filelist = File.readlines(filelist_path, chomp: true)
+    filelist = File.readlines(filelist_path, chomp: true).sort
     lines = filelist.size
     size = 0
 
@@ -499,25 +499,25 @@ def files(pkgName)
       size += File.size(filename) if File.file?(filename) && !File.symlink?(filename)
     end
 
-    puts "Total found: #{lines}".lightgreen
-    puts "Disk usage: #{human_size(size)}".lightgreen
+    puts filelist, <<~EOT.lightgreen
+
+      Total found: #{lines}
+      Disk usage: #{human_size(size)}
+    EOT
   else
     puts "Package #{pkgName} is not installed. :(".lightred
   end
 end
 
 def whatprovides(regexPat)
-  fileArray = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flatten_map do |result|
-    filelist, matchedFile = result.split(':', 2)
-    pkgName               = File.basename(filelist, '.filelist')
+  matched_pkgs = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flat_map do |result|
+    filelist, matched_file = result.split(':', 2)
+    pkgName                = File.basename(filelist, '.filelist')
 
-    [pkgName, matchedFile]
+    "#{pkgName}: #{matched_file}"
   end.sort
 
-  unless fileArray.empty?
-    puts fileArray,
-         "\nTotal found: #{fileArray.length}".lightgreen
-  end
+  puts fileArray, "\nTotal found: #{fileArray.length}".lightgreen if matched_pkgs.any?
 end
 
 def update
