@@ -236,7 +236,7 @@ def list_compatible(compat = true)
           puts pkgName
         end
       end
-    elsif !compact
+    elsif !compat
       puts pkgName.lightred
     end
   end
