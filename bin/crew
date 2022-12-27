@@ -510,14 +510,14 @@ def files(pkgName)
 end
 
 def whatprovides(regexPat)
-  matched_pkgs = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flat_map do |result|
-    filelist, matched_file = result.split(':', 2)
-    pkgName                = File.basename(filelist, '.filelist')
+  matchedList = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flat_map do |result|
+    filelist, matchedFile = result.split(':', 2)
+    pkgName               = File.basename(filelist, '.filelist')
 
-    "#{pkgName}: #{matched_file}"
+    "#{pkgName}: #{matchedFile}"
   end.sort
 
-  puts fileArray, "\nTotal found: #{fileArray.length}".lightgreen if matched_pkgs.any?
+  puts matchedList, "\nTotal found: #{matchedList.length}".lightgreen if matchedList.any?
 end
 
 def update
