@@ -204,13 +204,21 @@ end
 
 def set_package(pkgName, pkgPath, silent = false)
   if pkgName =~ /^py3_/ && !File.file?( File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb") )
-    @pkg = Package.dup
+    if @pip_pkg&.key?(pkgName)
+      @pkg = @pip_pkg[pkgName]
+      return @pkg
+    end
+
+    @pip_pkg ||= {}
+    @pkg = @pip_pkg[pkgName] = Package.dup
 
     @pkg.name = pkgName
     @pkg.compatibility 'all'
     @pkg.is_fake
 
-    pkgInfo = Pip.get_package_info( pkgName.delete_prefix('py3_').tr('_', '-') )
+    pip_pkgName = pkgName.delete_prefix('py3_').tr('_', '-')
+    pkgInfo     = Pip.get_package_info(pip_pkgName)
+
     return %i[description homepage license version].each {|k| @pkg.send(k, pkgInfo[k]) }
   end
 

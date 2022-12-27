@@ -6,16 +6,16 @@ class Pip
     is_installed = installed?(pkgName)
 
     if prefer_online || !is_installed
-      pkgInfo = JSON.parse(`curl -LSs https://pypi.org/pypi/#{pkgName}/json`, symbolize_names: true)
+      pkgInfo = JSON.parse(`curl -LSs https://pypi.org/pypi/#{pkgName}/json`, symbolize_names: true)[:info]
     else
-      pkgInfo = pip_inspect[:installed].select {|pkg| pkg[:metadata][:name] == pkgName } [:metadata]
+      pkgInfo = pip_inspect[:installed].select {|pkg| pkg[:metadata][:name] == pkgName } [0][:metadata]
     end
 
     info = {
-      description: pkgInfo[:info][:description],
-      homepage: pkgInfo[:info][:home_page],
-      license: pkgInfo[:info][:license],
-      version: pkgInfo[:info][:version]
+      description: pkgInfo[:description],
+      homepage: pkgInfo[:home_page],
+      license: pkgInfo[:license],
+      version: pkgInfo[:version]
     }.transform_values(&:chomp)
   end
 
@@ -32,7 +32,7 @@ class Pip
 
   def self.pip_inspect         = (@inspect || update_cache)
   def self.upgradable_list     = (@upgradable_list || update_upgradable_list)
-  def self.installed?(pkgName) = @inspect[:installed].any? {|pkg| pkg[:metadata][:name] == pkgName }
+  def self.installed?(pkgName) = pip_inspect[:installed].any? {|pkg| pkg[:metadata][:name] == pkgName }
 
   def self.check_update
     upgradable_list.each_pair do |pkgName, (currentVer, latestVer)|
