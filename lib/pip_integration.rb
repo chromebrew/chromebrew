@@ -13,7 +13,7 @@ class Pip
 
     info = {
       # use "summary" if "description" is too long
-      description: (pkgInfo[:description].count("\n") >= 3) ? pkgInfo[:description] : pkgInfo[:summary],
+      description: (pkgInfo[:description].count("\n") >= 3) ? pkgInfo[:summary] : pkgInfo[:description],
       homepage: pkgInfo[:home_page],
       license: pkgInfo[:license],
       version: pkgInfo[:version]
@@ -31,7 +31,7 @@ class Pip
     end.reject do |(pkgName, _)|
       # don't check for updates if crew version exists
       File.file?( File.join(CREW_PACKAGES_PATH, "py3_#{pkgName.tr('-', '_')}.rb") )
-    end
+    end.to_h
   end
 
   def self.pip_inspect         = (@inspect || update_cache)
