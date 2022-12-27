@@ -642,7 +642,7 @@ def update
     end
   end
 
-  puts 'Checking for Python package updates...'
+  puts "\nChecking for Python package updates..."
   canBeUpdated += Pip.check_update
 
   if canBeUpdated.positive?
@@ -688,7 +688,6 @@ def upgrade(*pkgs, build_from_source: false)
       to_be_upgraded << pkg[:name] if check_update_avail.call(pkgFile)
     end
 
-    puts 'Checking for Python package updates...'
     to_be_upgraded += Pip.upgradable_list.keys
   end
 
