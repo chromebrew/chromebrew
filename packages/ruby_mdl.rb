@@ -13,8 +13,6 @@ class Ruby_mdl < Package
   depends_on 'libyaml'
   depends_on 'ruby'
 
-  def self.install; end
-
   def self.postinstall
     @gem_name = name.sub('ruby_', '')
     system "gem uninstall -Dx --force --abort-on-dependent #{@gem_name}", exception: false
