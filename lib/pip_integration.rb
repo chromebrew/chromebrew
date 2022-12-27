@@ -13,7 +13,7 @@ class Pip
 
     info = {
       # use "summary" if "description" is too long
-      description: (pkgInfo[:description].count("\n") >= 3) ? pkgInfo[:summary] : pkgInfo[:description],
+      description: (pkgInfo[:description]&.count("\n") >= 3) ? pkgInfo[:summary] : pkgInfo[:description],
       homepage: pkgInfo[:home_page],
       license: pkgInfo[:license],
       version: pkgInfo[:version]
@@ -30,7 +30,7 @@ class Pip
       [pkgName, [currentVer, latestVer]]
     end.reject do |(pkgName, _)|
       # don't check for updates if crew version exists
-      File.file?( File.join(CREW_PACKAGES_PATH, "py3_#{pkgName.tr('-', '_')}.rb") )
+      File.file?( File.join(CREW_PACKAGES_PATH, "py3_#{pkgName.tr('-', '_').downcase}.rb") )
     end.to_h
   end
 
