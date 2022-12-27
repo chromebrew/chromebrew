@@ -19,8 +19,8 @@ class Pip
       pkgInfo     = pipOutput.scan(/^[[:blank:]]*(.+?): (.+)$/).to_h
       pkgPrefix   = pkgInfo['Location']
 
-      filelist = pipOutput.partition('Files:').last.lines(chomp: true).map do |path|
-        File.expand_path(path, pkgPrefix)
+      filelist = pipOutput.partition('Files:').last.lines.map do |path|
+        File.expand_path(path, pkgPrefix.strip)
       end
 
       info = {
