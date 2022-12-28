@@ -1040,6 +1040,11 @@ url: https://chromium.googlesource.com/crosvm/crosvm
 activity: high
 ---
 kind: url
+name: cryptopp
+url: https://cryptopp.com/#download
+activity: low
+---
+kind: url
 name: cryptsetup
 url: https://www.kernel.org/pub/linux/utils/cryptsetup/
 activity: low
