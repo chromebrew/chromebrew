@@ -1186,26 +1186,28 @@ def install_package(pkgdir)
     FileUtils.mv 'dlist', "#{CREW_META_PATH}#{@pkg.name}.directorylist", verbose: @fileutils_verbose
     FileUtils.mv 'filelist', "#{CREW_META_PATH}#{@pkg.name}.filelist", verbose: @fileutils_verbose
 
-    @brokensymlinks = nil
-    @brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
-    unless @brokensymlinks.to_s.empty?
-      puts 'There are broken symlinks. Will try to fix.'.orange if @opt_verbose
-      @brokensymlinks.each_line(chomp: true) do |fixlink|
-        @brokentarget = @fixedtarget = nil
-        @brokentarget = `readlink -n #{fixlink}`.chomp
-        puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange if @opt_verbose
-        @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR)
-        @fixedlink_loc = File.join(pkgdir, fixlink.delete_prefix('.'))
-        # If no changes were made, don't replace symlink
-        unless @fixedtarget == @brokentarget
-          FileUtils.ln_sf @fixedtarget, @fixedlink_loc
-          puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
+    unless CREW_NOT_LINKS || @pkg.no_links?
+      @brokensymlinks = nil
+      @brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
+      unless @brokensymlinks.to_s.empty?
+        puts 'There are broken symlinks. Will try to fix.'.orange if @opt_verbose
+        @brokensymlinks.each_line(chomp: true) do |fixlink|
+          @brokentarget = @fixedtarget = nil
+          @brokentarget = `readlink -n #{fixlink}`.chomp
+          puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{@brokentarget}".orange if @opt_verbose
+          @fixedtarget = @brokentarget.delete_prefix(CREW_DEST_DIR)
+          @fixedlink_loc = File.join(pkgdir, fixlink.delete_prefix('.'))
+          # If no changes were made, don't replace symlink
+          unless @fixedtarget == @brokentarget
+            FileUtils.ln_sf @fixedtarget, @fixedlink_loc
+            puts "Fixed: #{@fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
+          end
         end
       end
-    end
-    if File.executable?("#{CREW_PREFIX}/bin/rdfind")
-      puts 'Using rdfind to convert duplicate files to hard links.'
-      system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
+      if File.executable?("#{CREW_PREFIX}/bin/rdfind")
+        puts 'Using rdfind to convert duplicate files to hard links.'
+        system 'rdfind -removeidentinode true -makesymlinks false -makehardlinks true -makeresultsfile false .'
+      end
     end
 
     # check if the available rsync command support ACLs
