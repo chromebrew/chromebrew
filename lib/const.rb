@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.30.0'
+CREW_VERSION = '1.30.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -117,6 +117,7 @@ CREW_CONFLICTS_ONLY_ADVISORY = !ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? 
 CREW_DISABLE_ENV_OPTIONS = !ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? # or use no_env_options
 CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? # or use no_fhs
 CREW_NOT_COMPRESS = !ENV['CREW_NOT_COMPRESS'].to_s.empty? # or use no_compress
+CREW_NOT_LINKS = !ENV['CREW_NOT_LINKS'].to_s.empty? # or use no_links
 CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
