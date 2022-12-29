@@ -574,7 +574,7 @@ def upgrade(*pkgs, build_from_source: false)
 
     pkgs.each do |package|
       unless @device[:installed_packages].any? { |package| package[:name] == pkgName }
-        puts "Package ".lightred +  "#{pkgName}".orange + " is not installed. 😔 You may try this: ".lightred + "crew install #{pkgName}".lightblue
+        puts 'Package '.lightred +  "#{pkgName}".orange + ' is not installed. 😔 You may try this: '.lightred + "crew install #{pkgName}".lightblue
         return false
       end
     end
