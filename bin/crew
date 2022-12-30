@@ -1018,7 +1018,7 @@ def prepare_package(destdir)
     # check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
     @_errors = false
-    @fhs_compliant_prefix = %W[bin etc include lib lib#{ARCH_LIB} libexec opt sbin share var].uniq
+    @fhs_compliant_prefix = %W[bin etc include lib #{ARCH_LIB} libexec opt sbin share var].uniq
 
     Dir.foreach(CREW_DEST_PREFIX) do |filename|
       next if %w[. ..].include?(filename)
