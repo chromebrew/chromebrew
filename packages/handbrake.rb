@@ -3,17 +3,17 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.6-d260dde'
+  version '1.6.0'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
-  git_hashtag 'd260ddeb569330500baddc8433491842fb954861'
+  git_hashtag version
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.6-d260dde_x86_64/handbrake-1.6-d260dde-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.6.0_x86_64/handbrake-1.6.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '95ffecf8fe9eba20ef4f85e1091330930ca9742ec467b64d047684b734b8998c'
+    x86_64: '1863142bbbaec234618c56397c2a4474dfa05fb69e2faeabe0d9524a79e9288b'
   })
 
   depends_on 'atk' # R
@@ -31,7 +31,7 @@ class Handbrake < Package
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
-  depends_on 'intel_media_sdk' if ARCH == 'x86_64'
+  depends_on 'intel_media_sdk'
   depends_on 'jansson' # R
   depends_on 'libass' # R
   depends_on 'libdvdcss'
@@ -49,11 +49,12 @@ class Handbrake < Package
   depends_on 'mesa'
   depends_on 'nasm' => :build
   depends_on 'numactl' # R
-  depends_on 'onevpl' if ARCH == 'x86_64' # R
+  depends_on 'onevpl' # R
   depends_on 'opus' # R
   depends_on 'pango' # R
   depends_on 'speex' # R
   depends_on 'util_linux' # R
+  depends_on 'vulkan_headers' => :build
   depends_on 'wayland_protocols' => :build
   depends_on 'xcb_util' => :build
   depends_on 'xzutils' # R
@@ -61,17 +62,31 @@ class Handbrake < Package
 
   no_env_options
 
+  def self.patch
+    Dir.chdir 'gtk' do
+      system 'autoupdate'
+      system "sed -i '/AM_MAINTAINER_MODE/a AC_CONFIG_MACRO_DIRS([m4])' configure.ac"
+      system 'autoreconf -fiv'
+    end
+  end
+
   def self.build
-    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} \
-      --enable-x265 \
-      --enable-numa \
-      --enable-fdk-aac \
-      --enable-qsv \
-      --no-harden \
-      --force"
+    # Need to temporarily create a symlink for libfribidi.la or the build fails
+    # with a libtool error.
+    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libfribidi.la", "#{CREW_PREFIX}/lib/"
+
+    unless Dir.exist? 'x86_64-cros-linux-gnu'
+      system "#{CREW_ENV_FNO_LTO_OPTIONS} LDFLAGS='-L #{CREW_LIB_PREFIX}' ./configure #{CREW_OPTIONS} \
+        --enable-x265 \
+        --enable-numa \
+        --enable-fdk-aac \
+        --enable-qsv \
+        --no-harden \
+        --force"
+    end
     FileUtils.mkdir_p 'x86_64-cros-linux-gnu/contrib/lib/pkgconfig'
     Dir.chdir('x86_64-cros-linux-gnu/contrib/lib/pkgconfig') do
-      @handbrake_libs = %w[glib-2.0 fribidi harfbuzz freetype]
+      @handbrake_libs = %w[glib-2.0 fribidi harfbuzz freetype2]
       @handbrake_libs.each do |f|
         next if File.file?("#{f}.pc")
 
@@ -79,6 +94,9 @@ class Handbrake < Package
       end
     end
     system 'make -C x86_64-cros-linux-gnu || make -j1 -C x86_64-cros-linux-gnu'
+
+    # Remove temporarily created symlink for libfribidi.la.
+    FileUtils.rm_f "#{CREW_PREFIX}/lib/libfribidi.la"
   end
 
   def self.install
@@ -102,5 +120,3 @@ class Handbrake < Package
     puts
   end
 end
-
-
