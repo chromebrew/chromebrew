@@ -5050,6 +5050,11 @@ url: http://download.savannah.gnu.org/releases/lzip
 activity: low
 ---
 kind: url
+name: lzlib
+url: http://download.savannah.gnu.org/releases/lzip/lzlib
+activity: low
+---
+kind: url
 name: lzo
 url: http://www.oberhumer.com/opensource/lzo/download
 activity: none
