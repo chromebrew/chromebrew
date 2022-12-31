@@ -1084,7 +1084,7 @@ def strip_find_files(find_cmd, strip_option = '')
 
   # run find_cmd and strip only ar or ELF files
   system "#{find_cmd} | xargs -r chmod u+w"
-  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r sh -c 'case \"$(head -c7 ${0})\" in \x7FELF*|!<arch>) llvm-strip #{strip_option};; esac ; done'"
+  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r sh -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) llvm-strip #{strip_option} ;; esac'"
 end
 
 def strip_dir(dir)
