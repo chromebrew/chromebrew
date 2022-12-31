@@ -1079,12 +1079,15 @@ def patchelf_set_need_paths(dir)
 end
 
 def strip_find_files(find_cmd, strip_option = '')
-  # check whether crew should strip
+  # Check whether crew should strip.
   return if CREW_NOT_STRIP || @pkg.no_strip? || !File.file?("#{CREW_PREFIX}/bin/llvm-strip")
 
-  # run find_cmd and strip only ar or ELF files
+  # Run find_cmd and strip only files with ar or elf magic headers.
   system "#{find_cmd} | xargs -r chmod u+w"
-  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r sh -c 'case \"$(head -c7 ${0})\" in \x7FELF*|!<arch>) llvm-strip #{strip_option};; esac ; done'"
+  @strip_verbose = @opt_verbose ? 'echo "Stripping ${0:1}" &&' : ''
+  # The craziness here is from having to escape the special characters
+  # in the magic headers for these files.
+  system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) #{@strip_verbose} llvm-strip #{strip_option} ${0} ;; esac'"
 end
 
 def strip_dir(dir)
