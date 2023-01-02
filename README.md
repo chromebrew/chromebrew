@@ -101,6 +101,7 @@ Where available commands are:
 | install | install package(s) along with dependencies after prompting for confirmation |
 | list | available, installed, compatible or incompatible packages |
 | postinstall | display postinstall messages of package(s) |
+| prop | display all package boolean properties |
 | reinstall | remove and install package(s) |
 | remove | remove package(s) |
 | search | look for package(s) |
