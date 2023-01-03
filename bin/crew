@@ -44,10 +44,11 @@ DOC = <<~DOCOPT
     crew deps [options] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <name> ...
     crew download [options] <name> ...
     crew files [options] <name> ...
-    crew help [<command>]
+    crew help [<command>] [<subcommand>]
     crew install [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
     crew list [options] (available|installed|compatible|incompatible)
     crew postinstall [options] <name> ...
+    crew prop
     crew reinstall [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
     crew remove [options] <name> ...
     crew search [options] [<name> ...]
@@ -403,6 +404,68 @@ def help(pkgName = nil)
       Usage: crew postinstall <package1> [<package2> ...]
       The package(s) must be currently installed.
     EOT
+  when 'prop'
+    if ARGV[2]
+      valid = nil
+      properties = prop(true)
+      properties.each do |p|
+        if ARGV[2] == p
+          valid = true
+          break
+        end
+      end
+      abort 'Invalid property.'.lightred unless valid
+      case ARGV[2]
+      when 'conflicts_ok'
+        puts "The 'conflicts_ok' property bypasses checks for other package file conflicts."
+      when 'git_clone_deep'
+        puts "The 'git_clone_deep' property clones the repository without a depth value."
+        puts "Applicable only when 'source_url' is a git repository."
+      when 'git_fetchtags'
+        puts "The 'git_fetchtags' property gets the repository tags."
+        puts "Applicable only when 'source_url' is a git repository."
+      when 'gnome'
+        puts "Use the 'gnome' property for gnome specific packages."
+      when 'is_fake'
+        puts "Use the 'is_fake' property for packages that simply depend on other packages."
+      when 'is_musl'
+        puts "Use the 'is_musl' property for musl specific packages."
+      when 'is_static'
+        puts "Use the 'is_static' property for packages which do not require shared dependencies."
+      when 'no_compile_needed'
+        puts "Use the 'no_compile_needed' property for packages that do not require pre-built binaries."
+      when 'no_compress'
+        puts "Use the 'no_compress' property for packages that do not need compressed files."
+      when 'no_env_options'
+        puts "Use the 'no_env_options' property for packages that do not require"
+        puts 'environment options or to override the default options.'
+      when 'no_fhs'
+        puts "The 'no_fhs' property bypasses FHS3 compliance checks."
+      when 'no_git_submodules'
+        puts "Use the 'no_git_submodules' property for repositories without git submodules."
+        puts "Applicable only when 'source_url' is a git repository."
+      when 'no_links'
+        puts "Use the 'no_links' property to bypass checks for duplicate links."
+      when 'no_patchelf'
+        puts "Use the 'no_patchelf' property to bypass patchelf execution."
+      when 'no_shrink'
+        puts "Use the 'no_shrink' property to bypass upx binary compression."
+      when 'no_strip'
+        puts "Use the 'no_strip' property to bypass strip execution."
+      when 'no_zstd'
+        puts "Use the 'no_zstd' property for the alternate xz compression algorithm."
+      when 'patchelf'
+        puts "Use the 'patchelf' property for patchelf execution."
+        puts 'This is the default and for most cases is not needed.'
+      else
+        abort "Help for the '#{ARGV[2]}' property is not available.".lightred
+      end
+    else
+      puts <<~EOT
+        Display all available package boolean properties.
+        Usage: crew prop
+      EOT
+    end
   when 'reinstall'
     puts <<~EOT
       Remove and install package(s).
@@ -436,10 +499,9 @@ def help(pkgName = nil)
     EOT
   when 'sysinfo'
     puts <<~EOT
-      Show system infomation.
-      If `-v` or `--verbose` is present, show system infomation with raw Markdown.
-
+      Show system information.
       Usage: crew sysinfo
+      If `-v` or `--verbose` is present, show system information with raw markdown.
     EOT
   when 'update'
     puts <<~EOT
@@ -533,6 +595,22 @@ def files(pkgName)
     else
       abort "Package #{pkgName} is not installed. :(".lightred
     end
+  end
+end
+
+def prop(silent = false)
+  props = []
+  pkg = Package.new
+  excluded_methods = %w[compatible is_binary is_source json_creatable autoload include const_defined class_variable_defined singleton_class method_defined public_method_defined private_method_defined protected_method_defined instance_variable_defined instance_of kind_of is_a frozen nil eql respond_to equal]
+  all_methods = pkg.class.methods.grep(/\?$/).to_s.gsub(/([?:,\[\]])/, '').split
+  all_methods.each do |method|
+    props.push(method) unless excluded_methods.include?(method)
+  end
+  if silent
+    return props
+  else
+    puts props.sort
+    puts "For more information, type 'crew help prop <property>' where <property> is one of the above properties.".lightblue
   end
 end
 
@@ -1794,6 +1872,10 @@ def postinstall_command(args)
       puts "Package #{@pkgName} is not installed. :(".lightred
     end
   end
+end
+
+def prop_command(_)
+  prop
 end
 
 def reinstall_command(args)
