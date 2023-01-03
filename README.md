@@ -99,7 +99,9 @@ Where available commands are:
 | upgrade | update all or specific package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
 
-Available packages are listed in the [packages directory](https://github.com/chromebrew/chromebrew/tree/master/packages). Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
+Available packages are listed in the [packages directory](https://github.com/chromebrew/chromebrew/tree/master/packages).
+
+Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
 ```bash
 crew install --keep [...]
