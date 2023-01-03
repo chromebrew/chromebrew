@@ -3,11 +3,11 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  @_ver = '1.1.1s'
-  version @_ver
+  # Do not use @_ver here, it will break the installer.
+  version '1.1.1s'
   license 'openssl'
   compatibility 'all'
-  source_url "https://www.openssl.org/source/openssl-#{@_ver}.tar.gz"
+  source_url 'https://www.openssl.org/source/openssl-1.1.1s.tar.gz'
   source_sha256 'c5ac01e760ee6ff0dab61d6b2bbd30146724d063eb322180c6f18a6f74e4b6aa'
 
   binary_url({
@@ -62,7 +62,7 @@ class Openssl < Package
 
   def self.check
     # Don't run tests if we are just rebuilding the same version of openssl.
-    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == @_ver
+    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == '1.1.1s'
   end
 
   def self.install
