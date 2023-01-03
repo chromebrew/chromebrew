@@ -42,7 +42,7 @@ jobs:
             fi
             case $ext in
               md)
-                mdl "$file"
+                mdl -c .mdlrc "$file"
                 ;;
               rb)
                 ruby=true
