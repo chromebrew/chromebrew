@@ -99,9 +99,12 @@ crew install --keep [...]
 
 Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](https://github.com/chromebrew/chromebrew/blob/master/lib/docopt.LICENSE).
 
-<a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html">
-  <img alt="GNU General Public License" style="border-width: 0; padding-right: 15px;" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" />
-</a>
-<a rel="license-docopt" href="https://mit-license.org/">
-  <img alt="MIT License" style="border-width: 0;" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="31" />
-</a>
+<div>
+  <a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html">
+    <img alt="GNU General Public License" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" />
+  </a>
+  <img src="about:blank" width="15px"> <!-- acting a space between two images -->
+  <a rel="license-docopt" href="https://mit-license.org/">
+    <img alt="MIT License" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="31" />
+  </a>
+</div>
