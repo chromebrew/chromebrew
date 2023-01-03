@@ -1,6 +1,6 @@
-<svg height="70" width="170" xmlns="http://www.w3.org/2000/svg">
+<svg height="70" width="180" xmlns="http://www.w3.org/2000/svg">
   <style>
-    image { height: 70px; width: 170px; }
+    image { height: 70px; width: 180px; }
 
     /* dark mode detection */
     image.light { display: inline; }
