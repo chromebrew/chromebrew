@@ -3,7 +3,7 @@ require 'package'
 class Linter < Package
   description 'Comprehensive linter and code analysis for various file types.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.3'
+  version '1.4'
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
@@ -43,10 +43,9 @@ class Linter < Package
         fi
         case $ext in
           md)
-            mdl -c $HOME/.mdlrc "$file"
+            mdl -c "$HOME/.mdlrc" "$file"
             ;;
           rb)
-            ruby=true
             rubocop "$file"
             ;;
           sh)
