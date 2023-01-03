@@ -1,17 +1,14 @@
-
-# Chromebrew
-
-![Chromebrew logo](/images/brew.png)
-
-The Missing Package Manager For Chrome OS
+<div align="center">
+  <img src="images/brew.png" alt="Chromebrew icon">
+  <h1>Chromebrew</h1>
+  <p>The Missing Package Manager For Chrome OS</p>
+</div>
 
 ## Chat With Us
 
 _Discord is not currently syncing messages with Slack_
 
-[![Slack Invite](https://cdn.bfldr.com/5H442O3W/at/pl546j-7le8zk-838dm2/Slack_RGB.png?auto=webp&format=png)](mailto:crewonslack@gmail.com?subject=Slack%20invitation%20link%20request&body=Auto-generated%20by%20README.md)
-
-[![Discord Invite](https://discord.com/assets/ff41b628a47ef3141164bfedb04fb220.png)](https://discord.gg/QRrzBXN)
+![Slack and Discord](images/slack_discord.svg)
 
 ## Overview
 
@@ -53,18 +50,6 @@ Then download and run the installation script below:
 curl -Ls git.io/vddgY | bash
 ```
 
-On a rooted Google OnHub, the command needs to be run with the "chronos" user. In order to make su work, a password is needed for the chronos user.
-
-```bash
-# passwd chronos
-Changing password for chronos.
-Enter new UNIX password:
-Retype new UNIX password:
-# su - chronos
-Password:
-$ curl -Ls git.io/vddgY | bash
-```
-
 ## Help
 
 Please check out the [wiki](https://github.com/chromebrew/chromebrew/wiki) to find out more information about Chromebrew including helpful tips, resource links and frequently asked questions.
@@ -73,8 +58,8 @@ Also please check existing [issues](https://github.com/chromebrew/chromebrew/iss
 
 ## Usage
 
-```bash
-crew [-k|--keep] [...]
+```
+crew <command> <package1> [<package2> ...]
 ```
 
 Where available commands are:
@@ -111,6 +96,9 @@ crew install --keep [...]
 
 Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](https://github.com/chromebrew/chromebrew/blob/master/lib/docopt.LICENSE).
 
-[![GNU General Public License](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-
-[![MIT License](https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg)](https://mit-license.org/)
+<a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html">
+  <img alt="GNU General Public License" style="border-width: 0; padding-right: 15px;" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" />
+</a>
+<a rel="license-docopt" href="https://mit-license.org/">
+  <img alt="MIT License" style="border-width: 0;" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="31" />
+</a>
