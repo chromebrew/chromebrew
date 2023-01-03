@@ -25,7 +25,7 @@ class Tinycc < Package
   def self.patch
     system 'sed -i "/LD_LIBRARY_PATH/s,\$(CURDIR)/\$(TOP),\${LD_LIBRARY_PATH}:&," Makefile'
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' texi2pod.pl"
-    system "sed -i 's,\$(tccdir)/include,\$(tccdir)/tcc/include,g' Makefile"
+    system "sed -i 's,$(tccdir)/include,$(tccdir)/tcc/include,g' Makefile"
   end
 
   def self.build

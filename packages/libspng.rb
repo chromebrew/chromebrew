@@ -26,7 +26,7 @@ class Libspng < Package
     Dir.mkdir 'build'
     Dir.chdir('build') do
       system "cmake -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} .."
-      system "sed -i 's,build\/tests\/libspng\.pc,build\/libspng.pc,' cmake_install.cmake"
+      system "sed -i 's,build/tests/libspng.pc,build/libspng.pc,' cmake_install.cmake"
       system 'make'
     end
   end

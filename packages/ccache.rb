@@ -56,8 +56,8 @@ class Ccache < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @ccacheenv = <<~CCACHEEOF
       # ccache configuration
-      if ! [[ \$PATH == *"ccache/bin"* ]]; then
-        export PATH="#{CREW_LIB_PREFIX}/ccache/bin:\$PATH"
+      if ! [[ $PATH == *"ccache/bin"* ]]; then
+        export PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
       fi
     CCACHEEOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/ccache", @ccacheenv)

@@ -24,9 +24,9 @@ class Tig < Package
 
   def self.build
     system './configure', "--prefix=#{CREW_PREFIX}"
-    system "sed -i 's,\$(QUIET_LINK),,' Makefile"
-    system "sed -i 's,\$(QUIET_CC),,' Makefile"
-    system "sed -i 's,\$(QUIET_GEN),,g' Makefile"
+    system "sed -i 's,$(QUIET_LINK),,' Makefile"
+    system "sed -i 's,$(QUIET_CC),,' Makefile"
+    system "sed -i 's,$(QUIET_GEN),,g' Makefile"
     system 'make'
   end
 

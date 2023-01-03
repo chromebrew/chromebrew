@@ -29,7 +29,7 @@ class Vagrant < Package
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "echo '#!/bin/bash' > vagrant"
       system "echo 'cd #{CREW_PREFIX}/share/vagrant' >> vagrant"
-      system "echo 'bundle exec vagrant \"\$@\"' >> vagrant"
+      system "echo 'bundle exec vagrant \"$@\"' >> vagrant"
       system 'chmod +x vagrant'
     end
     system "sed -i '349,354d' templates/locales/en.yml"

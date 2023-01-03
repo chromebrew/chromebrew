@@ -62,12 +62,12 @@ echo Starting XServer XSDL
 MAX_ATTEMPTS=120 # About 60 seconds
 COUNT=0
 echo -n \"Waiting for X server to be ready...\"
-while ! xdpyinfo -display \${DISPLAY} >/dev/null 2>&1; do
+while ! xdpyinfo -display ${DISPLAY} >/dev/null 2>&1; do
   echo -n \".\"
   sleep 0.50s
-  COUNT=\$(( COUNT + 1 ))
-  if [ \"\${COUNT}\" -ge \"\${MAX_ATTEMPTS}\" ]; then
-    echo \"  Gave up waiting for X server on \${DISPLAY}\"
+  COUNT=$(( COUNT + 1 ))
+  if [ \"${COUNT}\" -ge \"${MAX_ATTEMPTS}\" ]; then
+    echo \"  Gave up waiting for X server on ${DISPLAY}\"
     exit 1
   fi
 done
@@ -90,7 +90,7 @@ EOF"
 
   def self.postinstall
     system "echo '#!/bin/bash' > cloudready.sh"
-    system "temp=\"echo 'pkill twm && openbox &' >> #{CREW_PREFIX}/etc/X11/xinit/xinitrc\" && echo \"if [[ '$(cat /etc/lsb-release | grep CHROMEOS_ARC_ANDROID_SDK_VERSION)' = '' ]]; then crew install xinit && \$temp ; fi\" >> cloudready.sh"
+    system "temp=\"echo 'pkill twm && openbox &' >> #{CREW_PREFIX}/etc/X11/xinit/xinitrc\" && echo \"if [[ '$(cat /etc/lsb-release | grep CHROMEOS_ARC_ANDROID_SDK_VERSION)' = '' ]]; then crew install xinit && $temp ; fi\" >> cloudready.sh"
     system 'bash cloudready.sh'
     puts
     puts 'For Chrome OS/Fyde OS user:'.lightblue

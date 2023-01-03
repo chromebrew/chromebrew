@@ -9,10 +9,8 @@ class Ghc < Package
   source_url 'https://downloads.haskell.org/~ghc/8.8.3/ghc-8.8.3-src.tar.xz.sig'
   source_sha256 'fcdb99dabdf74c5a0607df5276df2cd12b8b7bedcac4079546bb9418c8438f02'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'stack'
   depends_on 'libtinfo'
@@ -20,7 +18,7 @@ class Ghc < Package
   def self.build
     system "stack setup ghc-#{version}"
     system "echo '#!/bin/bash' > ghc"
-    system "echo 'stack exec -- ghc \"\$@\"' >> ghc"
+    system "echo 'stack exec -- ghc \"$@\"' >> ghc"
   end
 
   def self.install

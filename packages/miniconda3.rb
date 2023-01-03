@@ -34,7 +34,7 @@ class Miniconda3 < Package
       FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
         system "echo '#!/bin/bash' > conda"
         system "echo 'cd #{CREW_PREFIX}/share/miniconda3' >> conda"
-        system "echo 'bin/conda \"\$@\"' >> conda"
+        system "echo 'bin/conda \"$@\"' >> conda"
         system 'chmod +x conda'
       end
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"

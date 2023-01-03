@@ -32,7 +32,7 @@ class Dia < Package
 
   def self.patch
     # Fix broken images.  See http://archscientist.altervista.org/blog/how-to-solve-libpng-error-idat-invalid-distance-too-far-back/.
-    system "find app/pixmaps -iname '\*.png' -exec echo {} > /tmp/pngfiles.txt \\;"
+    system "find app/pixmaps -iname '*.png' -exec echo {} > /tmp/pngfiles.txt \\;"
     system 'cat /tmp/pngfiles.txt | xargs -n 1 -P 3 optipng -quiet -force -fix'
     system 'rm -f /tmp/pngfiles.txt'
   end

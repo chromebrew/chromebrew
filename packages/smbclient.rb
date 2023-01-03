@@ -56,7 +56,7 @@ class Smbclient < Package
   @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', nil)
 
   def self.patch
-    system "sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
+    system "sed -e 's:<gpgme.h>:<gpgme/gpgme.h>:' \
     -i source4/dsdb/samdb/ldb_modules/password_hash.c"
     system "sed -i 's,/etc/xml/catalog,#{@xml_catalog_files},g' docs-xml/Makefile"
     system "sed -i 's,file:///etc/xml/catalog,#{@xml_catalog_files},g' buildtools/wafsamba/wafsamba.py"

@@ -26,7 +26,7 @@ class Libmpeg2 < Package
   depends_on 'libx11'
 
   def self.patch
-    system "for i in \$(cat debian/patches/series); do patch -Np1 -i debian/patches/\${i}; done"
+    system 'for i in $(cat debian/patches/series); do patch -Np1 -i debian/patches/${i}; done'
     # system "sed '60d' bootstrap" # Our automake version is greater than 1.5
   end
 

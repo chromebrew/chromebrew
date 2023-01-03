@@ -25,7 +25,7 @@ class Libaio < Package
 
   def self.build
     system "sed -i 's,prefix=/usr,prefix=#{CREW_PREFIX},' Makefile"
-    system "sed -i 's,libdir=\$(prefix)/lib,libdir=#{CREW_LIB_PREFIX},' Makefile"
+    system "sed -i 's,libdir=$(prefix)/lib,libdir=#{CREW_LIB_PREFIX},' Makefile"
     system 'make'
   end
 

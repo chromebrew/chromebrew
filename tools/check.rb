@@ -364,7 +364,7 @@ desc 'Check for new version of ffcall'
 task :ffcall do
   check_version pkg_name: 'ffcall',
                 url: 'http://www.haible.de/bruno/packages-ffcall-README.html',
-                pattern: "ffcall-([\\d.]+)\.tar\.gz",
+                pattern: 'ffcall-([\\d.]+).tar.gz',
                 rest: '| uniq'
 end
 

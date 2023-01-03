@@ -24,7 +24,7 @@ class Ladspa < Package
 
   def self.patch
     Dir.chdir('src') do
-      system 'sed', '-i', '-e', "s,/usr,\$(DESTDIR)#{CREW_PREFIX},g", '-e', "s,lib,#{ARCH_LIB},", 'Makefile'
+      system 'sed', '-i', '-e', "s,/usr,$(DESTDIR)#{CREW_PREFIX},g", '-e', "s,lib,#{ARCH_LIB},", 'Makefile'
     end
   end
 

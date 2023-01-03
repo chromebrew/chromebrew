@@ -32,21 +32,21 @@ class Gb < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
       system "echo '#!/bin/bash' > gb"
-      system "echo 'if [ -z \"\$GOPATH\" ]; then' >> gb"
+      system "echo 'if [ -z \"$GOPATH\" ]; then' >> gb"
       system "echo '  echo \"GOPATH environment variable not set.\"' >> gb"
       system "echo '  exit 1' >> gb"
       system "echo 'fi' >> gb"
       system "echo 'cd #{CREW_PREFIX}/share/gb' >> gb"
-      system "echo 'bin/gb \"\$@\"' >> gb"
+      system "echo 'bin/gb \"$@\"' >> gb"
       system "echo 'cd -' >> gb"
       system 'chmod +x gb'
       system "echo '#!/bin/bash' > gb-vendor"
-      system "echo 'if [ -z \"\$GOPATH\" ]; then' >> gb-vendor"
+      system "echo 'if [ -z \"$GOPATH\" ]; then' >> gb-vendor"
       system "echo '  echo \"GOPATH environment variable not set.\"' >> gb-vendor"
       system "echo '  exit 1' >> gb-vendor"
       system "echo 'fi' >> gb-vendor"
       system "echo 'cd #{CREW_PREFIX}/share/gb' >> gb-vendor"
-      system "echo 'bin/gb-vendor \"\$@\"' >> gb-vendor"
+      system "echo 'bin/gb-vendor \"$@\"' >> gb-vendor"
       system "echo 'cd -' >> gb-vendor"
       system 'chmod +x gb-vendor'
     end

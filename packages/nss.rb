@@ -42,7 +42,7 @@ class Nss < Package
     system "sed -i \
     -e 's,^libdir=.*,libdir=#{CREW_LIB_PREFIX},g' \
     -e 's,^prefix=.*,prefix=#{CREW_PREFIX},g' \
-    -e 's,\${exec_prefix}/lib,\${exec_prefix}/#{ARCH_LIB},g' \
+    -e 's,${exec_prefix}/lib,${exec_prefix}/#{ARCH_LIB},g' \
     dist/Release/lib/pkgconfig/nspr.pc"
   end
 

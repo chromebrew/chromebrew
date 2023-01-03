@@ -23,7 +23,7 @@ class Libslz < Package
   })
 
   def self.build
-    system "sed -i 's,LIBDIR     := \$(PREFIX)/lib,LIBDIR     := #{CREW_LIB_PREFIX},' Makefile"
+    system "sed -i 's,LIBDIR     := $(PREFIX)/lib,LIBDIR     := #{CREW_LIB_PREFIX},' Makefile"
     system "make PREFIX=#{CREW_PREFIX}"
   end
 

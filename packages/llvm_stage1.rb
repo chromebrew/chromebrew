@@ -69,22 +69,22 @@ class Llvm_stage1 < Package
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "echo '#!/bin/bash
-machine=\$(gcc -dumpmachine)
-version=\$(gcc -dumpversion)
-gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
-clang -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc"
+machine=$(gcc -dumpmachine)
+version=$(gcc -dumpversion)
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+clang -B ${gnuc_lib} -L ${gnuc_lib} \"$@\"' > clc"
       system "echo '#!/bin/bash
-machine=\$(gcc -dumpmachine)
-version=\$(gcc -dumpversion)
-cxx_sys=#{CREW_PREFIX}/include/c++/\${version}
-cxx_inc=#{CREW_PREFIX}/include/c++/\${version}/\${machine}
-gnuc_lib=#{CREW_LIB_PREFIX}/gcc/\${machine}/\${version}
-clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem \${cxx_sys} -I \${cxx_inc} -B \${gnuc_lib} -L \${gnuc_lib} \"\$@\"' > clc++"
+machine=$(gcc -dumpmachine)
+version=$(gcc -dumpversion)
+cxx_sys=#{CREW_PREFIX}/include/c++/${version}
+cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
+gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} \"$@\"' > clc++"
       system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin FC= \
             cmake -G Ninja \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DLLVM_DEFAULT_TARGET_TRIPLE=#{CREW_BUILD} \
-            -DLLVM_TARGETS_TO_BUILD=\'#{LLVM_TARGETS_TO_BUILD}' \
+            -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -DCMAKE_BUILD_TYPE=Release \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DCMAKE_LINKER=$(which ld.gold) \

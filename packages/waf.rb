@@ -26,7 +26,7 @@ class Waf < Package
 
   def self.build
     system './waf-light configure build'
-    system "./waf-light --tools=compat15 --prelude=\$'\tfrom waflib.extras import compat15\n'"
+    system "./waf-light --tools=compat15 --prelude=$'\tfrom waflib.extras import compat15\n'"
     system 'help2man -N ./waf > waf.1'
     system "sed -i 's,/lib/,/lib64/,' waf" if ARCH == 'x86_64'
   end

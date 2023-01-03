@@ -28,7 +28,7 @@ class Byobu < Package
     system './configure'
     system "sed -i '249d' Makefile && sed -i '262d' Makefile"
     system "sed -i '242iprefix = #{CREW_PREFIX}' Makefile"
-    system "sed -i '243iexec_prefix = \${prefix}' Makefile"
+    system "sed -i '243iexec_prefix = ${prefix}' Makefile"
     system 'make'
   end
 

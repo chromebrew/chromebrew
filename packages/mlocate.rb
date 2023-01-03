@@ -24,7 +24,7 @@ class Mlocate < Package
 
   def self.build
     system "mkdir -p #{CREW_PREFIX}/db/mlocate"
-    system "sed -i 's,\$(localstatedir)/,#{CREW_PREFIX}/db/,g' Makefile.*"
+    system "sed -i 's,$(localstatedir)/,#{CREW_PREFIX}/db/,g' Makefile.*"
     system "sed -i \"s/groupname = mlocate/groupname = #{USER}/g\" Makefile.*"
     system './configure'
     system 'make'

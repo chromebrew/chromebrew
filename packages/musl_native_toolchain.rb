@@ -137,13 +137,13 @@ class Musl_native_toolchain < Package
 
       FLAG = -g0 -O2 -pipe -fno-align-functions -fno-align-jumps -fno-align-loops -fno-align-labels -Wno-error -fPIC
 
-      ifneq (\$(NATIVE),)
-      COMMON_CONFIG += LIBRARY_PATH=#{CREW_MUSL_PREFIX}/lib:#{CREW_LIB_PREFIX} CC="\$(HOST)-gcc \${STAT}" CXX="\$(HOST)-g++ \${STAT}" FC="\$(HOST)-gfortran \${STAT}"
+      ifneq ($(NATIVE),)
+      COMMON_CONFIG += LIBRARY_PATH=#{CREW_MUSL_PREFIX}/lib:#{CREW_LIB_PREFIX} CC="$(HOST)-gcc ${STAT}" CXX="$(HOST)-g++ ${STAT}" FC="$(HOST)-gfortran ${STAT}"
       else
-      COMMON_CONFIG += LIBRARY_PATH=#{CREW_MUSL_PREFIX}/lib:#{CREW_LIB_PREFIX} CC="gcc \${STAT}" CXX="g++ \${STAT}" FC="gfortran \${STAT}"
+      COMMON_CONFIG += LIBRARY_PATH=#{CREW_MUSL_PREFIX}/lib:#{CREW_LIB_PREFIX} CC="gcc ${STAT}" CXX="g++ ${STAT}" FC="gfortran ${STAT}"
       endif
 
-      COMMON_CONFIG += CFLAGS="\${FLAG}" CXXFLAGS="\${FLAG}" FFLAGS="\${FLAG}" LDFLAGS="-s -L#{CREW_LIB_PREFIX} \${STAT}"
+      COMMON_CONFIG += CFLAGS="${FLAG}" CXXFLAGS="${FLAG}" FFLAGS="${FLAG}" LDFLAGS="-s -L#{CREW_LIB_PREFIX} ${STAT}"
 
       BINUTILS_CONFIG += --enable-gold --enable-plugins --enable-64-bit-bfd
       GCC_CONFIG += --enable-default-pie --enable-static-pie --disable-cet --with-gcc-major-version-only #{@archflags} ZSTD_INC=#{CREW_PREFIX}/include ZSTD_LIB='#{CREW_LIB_PREFIX}/libzstd.a -pthread'

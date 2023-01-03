@@ -25,7 +25,7 @@ class Fskit < Package
   depends_on 'attr'
 
   def self.patch
-    system "sed -i 's,#include <attr/xattr\.h>,#include <attr/attributes.h>\n#include <sys/xattr.h>,g' include/fskit/*.h"
+    system "sed -i 's,#include <attr/xattr.h>,#include <attr/attributes.h>\n#include <sys/xattr.h>,g' include/fskit/*.h"
   end
 
   def self.build

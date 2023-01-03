@@ -35,15 +35,15 @@ class Duktape < Package
     system "setconf Makefile INSTALL_PREFIX #{CREW_DEST_PREFIX}"
     @duktapepc = <<~DUKTAPEPCEOF
       prefix=#{CREW_PREFIX}
-      exec_prefix=\${prefix}
+      exec_prefix=${prefix}
       libdir=#{CREW_LIB_PREFIX}
-      includedir=\${prefix}/include
+      includedir=${prefix}/include
 
       Name: duktape
       Description: Embeddable Javascript engine
       Version: #{@_ver}
-      Libs: -L\${libdir} -lduktape
-      Cflags: -I\${includedir}
+      Libs: -L${libdir} -lduktape
+      Cflags: -I${includedir}
     DUKTAPEPCEOF
     File.write('duktape.pc', @duktapepc)
   end

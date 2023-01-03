@@ -38,14 +38,14 @@ class Lmdb < Package
     @lmdb_pc = <<~LMDB_PC_EOF
       prefix=#{CREW_PREFIX}
       libdir=#{CREW_LIB_PREFIX}
-      includedir=\${prefix}/include
+      includedir=${prefix}/include
 
       Name: liblmdb
       Description: Lightning Memory-Mapped Database
       URL: https://symas.com/products/lightning-memory-mapped-database/
       Version: #{version}
-      Libs: -L\${libdir} -llmdb
-      Cflags: -I\${includedir}
+      Libs: -L${libdir} -llmdb
+      Cflags: -I${includedir}
     LMDB_PC_EOF
   end
 

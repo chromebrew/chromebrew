@@ -9,10 +9,8 @@ class Mysql < Package
   source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.28-linux-glibc2.17-x86_64-minimal.tar.xz'
   source_sha256 '39d58319a2d34b27dc229eb32c07f3902863fb5dfe25d25b5d537cc7299b4fed'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'numactl'
 

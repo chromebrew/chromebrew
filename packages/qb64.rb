@@ -34,9 +34,9 @@ class Qb64 < Package
 
   def self.patch
     system "find . -name '*.sh' -exec sed -i \"s/\\r//g\" {} \\;"
-    system "find . -name '*.sh' -exec sed -i \"s/\.\\/setup/bash setup/g\" {} \\;"
-    system "find . -name '*.sh' -exec sed -i \"s/\.\\/qb64 \\&/exec qb64 \\&/g\" {} \\;"
-    system "find . -name '*.sh' -exec sed -i \"s/\~\\/\.local\\/share\\/applicationexec qb64\\.desktop/\\/dev\\/null/g\" {} \\;"
+    system "find . -name '*.sh' -exec sed -i \"s/.\\/setup/bash setup/g\" {} \\;"
+    system "find . -name '*.sh' -exec sed -i \"s/.\\/qb64 \\&/exec qb64 \\&/g\" {} \\;"
+    system "find . -name '*.sh' -exec sed -i \"s/~\\/.local\\/share\\/applicationexec qb64\\.desktop/\\/dev\\/null/g\" {} \\;"
     case ARCH
     when 'armv7l', 'aarch64'
       system "sed -i '1i#define QB64_NOT_X86' internal/c/common.h"
@@ -52,7 +52,7 @@ class Qb64 < Package
     system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/share/qb64"
     system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/bin"
     system 'cp', '-rpa', '.', "#{CREW_DEST_PREFIX}/share/qb64/"
-    system "echo '\#!/bin/bash' >> #{CREW_DEST_PREFIX}/bin/qb64"
+    system "echo '#!/bin/bash' >> #{CREW_DEST_PREFIX}/bin/qb64"
     system "echo \"cd #{CREW_PREFIX}/share/qb64/\" >> #{CREW_DEST_PREFIX}/bin/qb64"
     system "echo \"sommelier -X #{CREW_PREFIX}/share/qb64/qb64\" >> #{CREW_DEST_PREFIX}/bin/qb64"
     system "chmod +x #{CREW_DEST_PREFIX}/bin/qb64"

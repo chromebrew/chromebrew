@@ -46,7 +46,7 @@ class Firefox < Package
   def self.build
     @firefox_sh = <<~FIREFOX_SH
       #!/bin/bash
-      GDK_BACKEND=x11 #{CREW_PREFIX}/firefox/firefox "\$@"
+      GDK_BACKEND=x11 #{CREW_PREFIX}/firefox/firefox "$@"
     FIREFOX_SH
     # For some reason, the binaries do not have a desktop file so add it here.
     @firefox_desktop = <<~FIREFOX_DESKTOP

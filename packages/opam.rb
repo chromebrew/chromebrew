@@ -38,7 +38,7 @@ class Opam < Package
       OCAMLOPT='ocamlopt -unsafe-string'"
     @bashd_opam = <<~OPAMEOF
       export OPAMROOT=#{@OPAMROOT}
-      eval \$(opam env --root=#{@OPAMROOT} --switch=default)
+      eval $(opam env --root=#{@OPAMROOT} --switch=default)
       test -r #{@OPAMROOT}/opam-init/init.sh && . #{@OPAMROOT}/opam-init/init.sh &> /dev/null || true
     OPAMEOF
   end
@@ -51,7 +51,7 @@ class Opam < Package
 
   def self.postinstall
     system "opam init --root=#{@OPAMROOT} -y \
-            && eval \$(opam env --root=#{@OPAMROOT} --switch=default) \
+            && eval $(opam env --root=#{@OPAMROOT} --switch=default) \
             && opam option --global depext=false --root=#{@OPAMROOT} -y"
   end
 

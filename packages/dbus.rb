@@ -51,11 +51,11 @@ class Dbus < Package
     @dbusconfigenv = <<~DBUSCONFIGEOF
       # Dbus settings
       DBUS_SYSTEM_BUS_ADDRESS='unix:path=/var/run/dbus/system_bus_socket'
-      [[ "\$DBUS_SESSION_BUS_ADDRESS"=="disabled:" ]] && unset DBUS_SESSION_BUS_ADDRESS
-      if [ -z "\${DBUS_SESSION_BUS_ADDRESS}" ]; then
+      [[ "$DBUS_SESSION_BUS_ADDRESS"=="disabled:" ]] && unset DBUS_SESSION_BUS_ADDRESS
+      if [ -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
         # if not found, launch a new one
         eval `dbus-launch --sh-syntax`
-        # echo "D-Bus per-session daemon address is: \$DBUS_SESSION_BUS_ADDRESS"
+        # echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
       fi
       dbus-update-activation-environment --all
     DBUSCONFIGEOF

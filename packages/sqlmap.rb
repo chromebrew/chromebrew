@@ -27,7 +27,7 @@ class Sqlmap < Package
   def self.build
     system "echo '#!/bin/bash' > sqlmap"
     system "echo 'cd #{CREW_PREFIX}/share/sqlmap' >> sqlmap"
-    system "echo 'python sqlmap.py -c sqlmap.conf \"\$@\"' >> sqlmap"
+    system "echo 'python sqlmap.py -c sqlmap.conf \"$@\"' >> sqlmap"
   end
 
   def self.install

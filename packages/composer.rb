@@ -28,7 +28,7 @@ class Composer < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     FileUtils.install 'composer.phar', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
-    system "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' > #{CREW_DEST_PREFIX}/etc/env.d/10-composer"
+    system "echo 'export PATH=$HOME/.config/composer/vendor/bin:$PATH' > #{CREW_DEST_PREFIX}/etc/env.d/10-composer"
   end
 
   def self.postinstall

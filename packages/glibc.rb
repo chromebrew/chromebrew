@@ -441,7 +441,7 @@ class Glibc < Package
           # install-symbolic-link segfaults on armv7l, but we're deleting
           # the libraries anyways, so it doesn't matter.
           system "sed -i 's,install-symbolic-link,/bin/true,g' ../Makefile"
-          system "sed -i 's,symbolic-link-prog := \$(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
+          system "sed -i 's,symbolic-link-prog := $(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
           File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
           system "env \

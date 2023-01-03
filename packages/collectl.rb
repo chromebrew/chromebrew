@@ -25,9 +25,9 @@ class Collectl < Package
   def self.build
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' colmux"
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' collectl"
-    system "sed -i 's,/etc/\$ConfigFile,#{CREW_PREFIX}/etc/\$ConfigFile,' collectl"
-    system "sed -i 's,DESTDIR=\${DESTDIR:=\"/\"},DESTDIR=#{CREW_DEST_PREFIX},' INSTALL"
-    system "sed -i 's,\$DESTDIR/usr,\$DESTDIR,g' INSTALL"
+    system "sed -i 's,/etc/$ConfigFile,#{CREW_PREFIX}/etc/$ConfigFile,' collectl"
+    system "sed -i 's,DESTDIR=${DESTDIR:=\"/\"},DESTDIR=#{CREW_DEST_PREFIX},' INSTALL"
+    system "sed -i 's,$DESTDIR/usr,$DESTDIR,g' INSTALL"
     system "sed -i 's,/var/log,#{CREW_PREFIX}/logs,' INSTALL"
   end
 

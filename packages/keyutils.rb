@@ -27,8 +27,8 @@ class Keyutils < Package
     system "sed -i 's,ETCDIR		:= /etc,ETCDIR		:= #CREW_PREFIX#/etc,g' Makefile"
     system "sed -i 's,BINDIR		:= /bin,BINDIR		:= #CREW_PREFIX#/bin,g' Makefile"
     system "sed -i 's,SBINDIR		:= /sbin,SBINDIR		:= #CREW_PREFIX#/sbin,g' Makefile"
-    system "sed -i 's,:= /lib*\$,:= #CREW_LIB_PREFIX#,g' Makefile"
-    system "sed -i 's,:= /lib64*\$,:= #CREW_LIB_PREFIX#,g' Makefile"
+    system "sed -i 's,:= /lib*$,:= #CREW_LIB_PREFIX#,g' Makefile"
+    system "sed -i 's,:= /lib64*$,:= #CREW_LIB_PREFIX#,g' Makefile"
     system "sed -i '1,/PREFIX/ {/PREFIX/a\
 USRLIBDIR		:= #CREW_LIB_PREFIX#
 }' Makefile"

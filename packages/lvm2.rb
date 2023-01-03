@@ -30,7 +30,7 @@ class Lvm2 < Package
     FileUtils.mkdir_p 'bin'
     @pwd = `pwd`.chomp
     FileUtils.cp "#{CREW_PREFIX}/bin/ld.lld", 'bin/ld'
-    system "#{CREW_ENV_OPTIONS.gsub('-fuse-ld=gold', '')} LD=ld.lld PATH=#{@pwd}/bin:\$PATH ./configure \
+    system "#{CREW_ENV_OPTIONS.gsub('-fuse-ld=gold', '')} LD=ld.lld PATH=#{@pwd}/bin:$PATH ./configure \
       #{CREW_OPTIONS} \
       --disable-selinux \
       --enable-cmdlib \
@@ -38,7 +38,7 @@ class Lvm2 < Package
       --enable-pkgconfig \
       --with-symvers=no \
       --with-confdir=#{CREW_PREFIX}/etc"
-    system "PATH=#{@pwd}/bin:\$PATH make"
+    system "PATH=#{@pwd}/bin:$PATH make"
   end
 
   def self.install

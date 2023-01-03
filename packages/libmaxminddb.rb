@@ -26,7 +26,7 @@ class Libmaxminddb < Package
 
   def self.patch
     system "sed -i '/set(CMAKE_C_EXTENSIONS OFF)/a include(GNUInstallDirs)' CMakeLists.txt"
-    system "sed -i 's,DESTINATION lib,DESTINATION \${CMAKE_INSTALL_LIBDIR},g' CMakeLists.txt"
+    system "sed -i 's,DESTINATION lib,DESTINATION ${CMAKE_INSTALL_LIBDIR},g' CMakeLists.txt"
   end
 
   def self.build

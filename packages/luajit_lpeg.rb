@@ -29,7 +29,7 @@ class Luajit_lpeg < Package
 
   def self.patch
     @lua_cflags = `pkg-config --cflags luajit`.chomp
-    system "sed -i 's,-I\$(LUADIR),#{@lua_cflags},g' makefile"
+    system "sed -i 's,-I$(LUADIR),#{@lua_cflags},g' makefile"
   end
 
   def self.build

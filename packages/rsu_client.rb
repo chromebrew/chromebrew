@@ -30,11 +30,11 @@ class Rsu_client < Package
 
   def self.patch
     Dir.chdir 'runescape' do
-      system "for f in \$(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
-                sed -i 's,/usr/local,/usr,g' \${f}
+      system "for f in $(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
+                sed -i 's,/usr/local,/usr,g' ${f}
               done"
-      system "for f in \$(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
-                sed -i 's,/usr,#{CREW_PREFIX},g' \${f}
+      system "for f in $(grep -r /usr/bin .|egrep -v '^Binary'|egrep -o '^[^:]+');do
+                sed -i 's,/usr,#{CREW_PREFIX},g' ${f}
               done"
     end
   end

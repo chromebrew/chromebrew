@@ -32,8 +32,8 @@ class Fpc < Package
   })
 
   def self.patch
-    system "sed -i 's,PREFIX=\"\$HOME/fpc-\$VERSION\",PREFIX=#{CREW_DEST_PREFIX},' install.sh"
-    system "sed -i 's,\$PREFIX/lib,#{CREW_DEST_LIB_PREFIX},' install.sh"
+    system "sed -i 's,PREFIX=\"$HOME/fpc-$VERSION\",PREFIX=#{CREW_DEST_PREFIX},' install.sh"
+    system "sed -i 's,$PREFIX/lib,#{CREW_DEST_LIB_PREFIX},' install.sh"
   end
 
   def self.install

@@ -57,21 +57,21 @@ class Inetutils < Package
       #!/bin/bash
       sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
           --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-          -c "#{CREW_PREFIX}/bin/ping.elf \$@"
+          -c "#{CREW_PREFIX}/bin/ping.elf $@"
     PING_HEREDOC
     File.write("#{CREW_DEST_PREFIX}/bin/ping", @PING_SH, perm: 0o755)
     @PING6_SH = <<~PING6_HEREDOC
       #!/bin/bash
       sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
           --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-          -c "#{CREW_PREFIX}/bin/ping6.elf \$@"
+          -c "#{CREW_PREFIX}/bin/ping6.elf $@"
     PING6_HEREDOC
     File.write("#{CREW_DEST_PREFIX}/bin/ping6", @PING6_SH, perm: 0o755)
     @TRACEROUTE_SH = <<~TRACEROUTE_HEREDOC
       #!/bin/bash
       sudo -E #{CREW_PREFIX}/sbin/capsh --caps='cap_net_raw+eip cap_setpcap,cap_setuid,cap_setgid+ep' \\
           --keep=1 --user=nobody --addamb=cap_net_raw -- \\
-          -c "#{CREW_PREFIX}/bin/traceroute.elf \$@"
+          -c "#{CREW_PREFIX}/bin/traceroute.elf $@"
     TRACEROUTE_HEREDOC
     File.write("#{CREW_DEST_PREFIX}/bin/traceroute", @TRACEROUTE_SH, perm: 0o755)
   end

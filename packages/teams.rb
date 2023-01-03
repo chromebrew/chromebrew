@@ -39,7 +39,7 @@ class Teams < Package
   end
 
   def self.remove
-    config_dirs = ["#{CREW_PREFIX}/.config/Microsoft\ Teams\ -\ Preview", "#{CREW_PREFIX}/.config/Microsoft/Microsoft\ Teams"]
+    config_dirs = ["#{CREW_PREFIX}/.config/Microsoft Teams - Preview", "#{CREW_PREFIX}/.config/Microsoft/Microsoft Teams"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir
 

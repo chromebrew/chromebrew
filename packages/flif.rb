@@ -25,7 +25,7 @@ class Flif < Package
   depends_on 'libsdl2'
 
   def self.patch
-    system "sed -i 's,\$(PREFIX)/lib,#{CREW_DEST_LIB_PREFIX},g' src/Makefile"
+    system "sed -i 's,$(PREFIX)/lib,#{CREW_DEST_LIB_PREFIX},g' src/Makefile"
     system "sed -i 's,export LD_LIBRARY_PATH,#export LD_LIBRARY_PATH,' src/Makefile"
   end
 

@@ -33,14 +33,14 @@ class Minijail < Package
     @minijail_pc = <<~MINIJAIL_PC_EOF
       prefix=#{CREW_PREFIX}
       libdir=#{CREW_LIB_PREFIX}
-      includedir=\${prefix}/include
+      includedir=${prefix}/include
 
       Name: libminijail
       Description: Minijail shared library
       URL: https://google.github.io/minijail/
       Version: #{@minijail_version}
-      Libs: -L\${libdir} -lminijail
-      Cflags: -I\${includedir}
+      Libs: -L${libdir} -lminijail
+      Cflags: -I${includedir}
     MINIJAIL_PC_EOF
   end
 

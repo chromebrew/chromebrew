@@ -23,7 +23,7 @@ class Nvm < Package
   })
 
   def self.install
-    system "sed -i 's,\$HOME/.nvm,#{CREW_DEST_PREFIX}/share/nvm,g' install.sh"
+    system "sed -i 's,$HOME/.nvm,#{CREW_DEST_PREFIX}/share/nvm,g' install.sh"
     system "NVM_DIR=#{CREW_DEST_PREFIX}/share/nvm && bash install.sh"
     system "rm -rf #{CREW_DEST_PREFIX}/share/nvm/.git*"
     system "rm -rf #{CREW_DEST_PREFIX}/share/nvm/test"

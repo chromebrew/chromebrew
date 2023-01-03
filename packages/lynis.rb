@@ -29,10 +29,10 @@ class Lynis < Package
     system 'gzip -9 lynis.8'
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/lynis"
     system "echo '#!/bin/bash' > lynis"
-    system "echo 'PWD=\$(pwd)' >> lynis"
+    system "echo 'PWD=$(pwd)' >> lynis"
     system "echo 'cd #{CREW_PREFIX}/share/lynis' >> lynis"
-    system "echo './lynis \"\$@\"' >> lynis"
-    system "echo 'cd \$PWD' >> lynis"
+    system "echo './lynis \"$@\"' >> lynis"
+    system "echo 'cd $PWD' >> lynis"
     system "install -Dm755 lynis #{CREW_DEST_PREFIX}/bin/lynis"
     system "install -Dm644 lynis.8.gz #{CREW_DEST_PREFIX}/man/man8/lynis.8.gz"
   end

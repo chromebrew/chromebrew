@@ -67,7 +67,7 @@ class Qemu < Package
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error
     FileUtils.mkdir_p 'linux'
     FileUtils.cp "#{CREW_PREFIX}/include/linux/usbdevice_fs.h", 'linux/usbdevice_fs.h'
-    system "sed -i 's,^\\\([[:blank:]]*\\\)u8,\\1__u8,g' linux/usbdevice_fs.h"
+    system "sed -i 's,^\\([[:blank:]]*\\)u8,\\1__u8,g' linux/usbdevice_fs.h"
     system "sed -i 's,<linux/usbdevice_fs.h>,\"linux/usbdevice_fs.h\",g' hw/usb/host-libusb.c"
   end
 

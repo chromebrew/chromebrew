@@ -34,6 +34,6 @@ class Libmfx < Package
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
     # fix version in pkg-config file"
-    system "sed -i /Version:/s/[0-9]\.[0-9]\{2\}/#{version}/ #{CREW_DEST_LIB_PREFIX}/pkgconfig/libmfx.pc"
+    system "sed -i /Version:/s/[0-9].[0-9]{2}/#{version}/ #{CREW_DEST_LIB_PREFIX}/pkgconfig/libmfx.pc"
   end
 end

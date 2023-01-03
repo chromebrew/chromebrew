@@ -28,7 +28,7 @@ class Acpica < Package
 
   def self.install
     Dir.chdir 'generate/unix/bin' do
-      system "for f in \$(ls | xargs); do install -Dm755 \$f #{CREW_DEST_PREFIX}/bin/\$f; done"
+      system "for f in $(ls | xargs); do install -Dm755 $f #{CREW_DEST_PREFIX}/bin/$f; done"
     end
   end
 end

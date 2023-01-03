@@ -27,8 +27,8 @@ class Gittools < Package
 
   def self.build
     system "echo '#!/bin/bash' > gitfinder"
-    system "echo 'if test \"\$@\"; then' >> gitfinder"
-    system "echo '  python3 #{CREW_PREFIX}/bin/gitfinder.py \"\$@\"' >> gitfinder"
+    system "echo 'if test \"$@\"; then' >> gitfinder"
+    system "echo '  python3 #{CREW_PREFIX}/bin/gitfinder.py \"$@\"' >> gitfinder"
     system "echo 'else' >> gitfinder"
     system "echo '  python3 #{CREW_PREFIX}/bin/gitfinder.py -h' >> gitfinder"
     system "echo 'fi' >> gitfinder"

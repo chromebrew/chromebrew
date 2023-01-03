@@ -26,7 +26,7 @@ class Encodings < Package
 
   def self.build
     system "./configure #{CREW_OPTIONS} --with-fontrootdir=#{CREW_PREFIX}/share/fonts"
-    system "sed -e 's|^\(encodings_DATA = $(DATA_FILES)\).*|\1|' -i Makefile" # Found in xbps-src
+    system "sed -e 's|^(encodings_DATA = $(DATA_FILES)).*|\1|' -i Makefile" # Found in xbps-src
     system 'make'
   end
 

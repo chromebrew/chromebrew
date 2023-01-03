@@ -14,7 +14,7 @@ class Komodo < Package
   depends_on 'sommelier'
 
   def self.build
-    system "sed -i 's,\$dname/INSTALLDIR/lib/python/bin/python,#{CREW_PREFIX}/bin/python2,' install.sh"
+    system "sed -i 's,$dname/INSTALLDIR/lib/python/bin/python,#{CREW_PREFIX}/bin/python2,' install.sh"
     system "sed -i 's,INSTALLDIR,#{CREW_DEST_PREFIX},' install.sh"
     system "sed -i '74d' install.sh"
   end

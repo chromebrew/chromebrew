@@ -30,7 +30,7 @@ class Codelite < Package
   depends_on 'harfbuzz'
 
   def self.patch
-    system "for f in \$(grep -rn '\"/usr\"' | grep set | cut -d':' -f1 | sort | uniq); do sed -i 's,/usr,#{CREW_PREFIX},' \$f; done"
+    system "for f in $(grep -rn '\"/usr\"' | grep set | cut -d':' -f1 | sort | uniq); do sed -i 's,/usr,#{CREW_PREFIX},' $f; done"
     # As per https://github.com/eranif/codelite/issues/2292
     @gtk3patch = <<~PATCH_EOF
             From 92ed90e07774dfc8556bee02c66120eed4938a40 Mon Sep 17 00:00:00 2001

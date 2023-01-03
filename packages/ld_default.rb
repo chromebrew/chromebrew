@@ -16,25 +16,25 @@ class Ld_default < Package
 
   set -e
 
-  mktmp=\$(mktemp -d)
+  mktmp=$(mktemp -d)
 
   cd #{CREW_PREFIX}/bin
 
-  type=\$(file ld | cut -d' ' -f2 | tr -d '\\n')
+  type=$(file ld | cut -d' ' -f2 | tr -d '\\n')
 
-  if [[ \"\${type}\" == \"ELF\" ]]; then
-    current=\$(basename $(find . -inum \$(ls -i ld | cut -d' ' -f1) | fgrep 'ld.'))
+  if [[ \"${type}\" == \"ELF\" ]]; then
+    current=$(basename $(find . -inum $(ls -i ld | cut -d' ' -f1) | fgrep 'ld.'))
   elif [[ \"${type}\" == \"symbolic\" ]]; then
-    current=\$(basename \$(readlink ld))
+    current=$(basename $(readlink ld))
   elif [[ \"${type}\" == \"Bourne-Again\" ]]; then
-    current=\$(basename \$(tail -1 ld | cut -d' ' -f1))
+    current=$(basename $(tail -1 ld | cut -d' ' -f1))
   else # Fall back to \"Unknown\" if linker was not identified
     current=\"Unknown\"
   fi
 
-  if [[ -z \"\${1}\" ]]; then
+  if [[ -z \"${1}\" ]]; then
     echo
-    echo \"  Current default linker: \${current}\"
+    echo \"  Current default linker: ${current}\"
     echo
     echo '  Enter the new default linker:'
     echo
@@ -44,20 +44,20 @@ class Ld_default < Package
     echo '  0 = Cancel'
     echo
   else
-    echo \"\${current}\" | cut -d'.' -f2 | cut -c1
+    echo \"${current}\" | cut -d'.' -f2 | cut -c1
   fi
 
   while true; do
-    if [[ -z \"\${1}\" ]]; then
+    if [[ -z \"${1}\" ]]; then
       read default
     else
-      default=\"\${1}\"
-      if [[ \"\${default}\" != 'b' ]] && [[ \"\${default}\" != 'g' ]] && [[ \"\${default}\" != 'l' ]]; then
-        echo \"Invalid linker configuration: \${default}\"
+      default=\"${1}\"
+      if [[ \"${default}\" != 'b' ]] && [[ \"${default}\" != 'g' ]] && [[ \"${default}\" != 'l' ]]; then
+        echo \"Invalid linker configuration: ${default}\"
         exit 1
       fi
     fi
-    case \"\${default}\" in
+    case \"${default}\" in
       b)
         new='ld.bfd'
         break;;
@@ -75,12 +75,12 @@ class Ld_default < Package
     esac
   done
 
-  echo '#!/bin/bash' > \${mktmp}/ld
-  echo \"\${new}\"' --library-path #{CREW_LIB_PREFIX} -rpath #{CREW_LIB_PREFIX} \"\$@\"' >> \${mktmp}/ld
+  echo '#!/bin/bash' > ${mktmp}/ld
+  echo \"${new}\"' --library-path #{CREW_LIB_PREFIX} -rpath #{CREW_LIB_PREFIX} \"$@\"' >> ${mktmp}/ld
 
-  install -Dm755 \${mktmp}/ld #{CREW_PREFIX}/bin/ld
+  install -Dm755 ${mktmp}/ld #{CREW_PREFIX}/bin/ld
 
-  rm -rf \${mktmp}
+  rm -rf ${mktmp}
 EOF"
   end
 

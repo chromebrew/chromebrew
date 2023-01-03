@@ -29,7 +29,7 @@ class Fasd < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @fasdenv = <<~FASDEOF
       # Fasd shell configuration
-      eval \"\$(fasd --init auto)\"
+      eval "$(fasd --init auto)"
     FASDEOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/fasd", @fasdenv)
   end

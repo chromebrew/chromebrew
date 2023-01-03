@@ -8,10 +8,8 @@ class Broadway < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'gtk3'
 
@@ -20,31 +18,31 @@ class Broadway < Package
     system "echo 'XDG_RUNTIME_DIR=/var/run/chrome' >> .broadway.env"
     system "echo 'BROADWAY_DISPLAY=:5' >> .broadway.env"
     system "echo '#!/bin/bash' > initbroadway"
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> initbroadway"
-    system "echo 'if [ -z \"\${BROADWAYD}\" ]; then' >> initbroadway"
+    system "echo 'BROADWAYD=$(pidof broadwayd 2>/dev/null)' >> initbroadway"
+    system "echo 'if [ -z \"${BROADWAYD}\" ]; then' >> initbroadway"
     system "echo '  [ -f #{CREW_PREFIX}/bin/stopsommelier ] && stopsommelier' >> initbroadway"
-    system "echo '  broadwayd \${BROADWAY_DISPLAY} &' >> initbroadway"
+    system "echo '  broadwayd ${BROADWAY_DISPLAY} &' >> initbroadway"
     system "echo '  sleep 3' >> initbroadway"
     system "echo 'fi' >> initbroadway"
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> initbroadway"
-    system "echo 'if [ ! -z \"\${BROADWAYD}\" ]; then' >> initbroadway"
-    system "echo '  echo \"broadwayd process \${BROADWAYD} is running\"' >> initbroadway"
+    system "echo 'BROADWAYD=$(pidof broadwayd 2>/dev/null)' >> initbroadway"
+    system "echo 'if [ ! -z \"${BROADWAYD}\" ]; then' >> initbroadway"
+    system "echo '  echo \"broadwayd process ${BROADWAYD} is running\"' >> initbroadway"
     system "echo 'else' >> initbroadway"
     system "echo '  echo \"broadwayd failed to start\"' >> initbroadway"
     system "echo '  exit 1' >> initbroadway"
     system "echo 'fi' >> initbroadway"
     system "echo '#!/bin/bash' > stopbroadway"
     system 'echo >> stopbroadway'
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> stopbroadway"
-    system "echo 'if [ ! -z \"\${BROADWAYD}\" ]; then' >> stopbroadway"
+    system "echo 'BROADWAYD=$(pidof broadwayd 2>/dev/null)' >> stopbroadway"
+    system "echo 'if [ ! -z \"${BROADWAYD}\" ]; then' >> stopbroadway"
     system "echo '  pkill broadwayd' >> stopbroadway"
     system "echo '  sleep 3' >> stopbroadway"
     system "echo 'fi' >> stopbroadway"
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2> /dev/null)' >> stopbroadway"
-    system "echo 'if [ -z \"\${BROADWAYD}\" ]; then' >> stopbroadway"
+    system "echo 'BROADWAYD=$(pidof broadwayd 2> /dev/null)' >> stopbroadway"
+    system "echo 'if [ -z \"${BROADWAYD}\" ]; then' >> stopbroadway"
     system "echo '  echo \"broadwayd process stopped\"' >> stopbroadway"
     system "echo 'else' >> stopbroadway"
-    system "echo '  echo \"broadwayd process \${BROADWAYD} is running\"' >> stopbroadway"
+    system "echo '  echo \"broadwayd process ${BROADWAYD} is running\"' >> stopbroadway"
     system "echo '  exit 1' >> stopbroadway"
     system "echo 'fi' >> stopbroadway"
   end

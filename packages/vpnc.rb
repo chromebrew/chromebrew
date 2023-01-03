@@ -25,7 +25,7 @@ class Vpnc < Package
   depends_on 'libgcrypt'
 
   def self.patch
-    system "sed -i 's,\./makeman.pl,perl makeman.pl,' Makefile"
+    system "sed -i 's,./makeman.pl,perl makeman.pl,' Makefile"
     system "sed -i 's,ETCDIR=/etc/vpnc,ETCDIR=#{CREW_PREFIX}/etc/vpnc,' Makefile"
   end
 

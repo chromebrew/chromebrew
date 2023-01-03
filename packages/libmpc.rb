@@ -26,7 +26,7 @@ class Libmpc < Package
   depends_on 'libcue'
 
   def self.patch
-    system "for i in debian/patches/*.patch ; do patch -Np1 -i \${i}; done"
+    system 'for i in debian/patches/*.patch ; do patch -Np1 -i ${i}; done'
   end
 
   def self.build

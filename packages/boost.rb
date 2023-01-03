@@ -29,7 +29,7 @@ class Boost < Package
 
   def self.install
     system "#{CREW_ENV_OPTIONS} ./b2 \
-            --build-dir=\${PWD}/builddir \
+            --build-dir=${PWD}/builddir \
             -a --prefix=#{CREW_DEST_PREFIX} \
             --libdir=#{CREW_DEST_LIB_PREFIX} \
             install"

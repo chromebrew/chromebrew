@@ -19,10 +19,8 @@ class Tinycore < Package
     source_sha256 'cbc2f97c8b8dada90ec3cf99b328ec73c1b0fa9cc2cb594d273fd7b118610d49'
   end
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   def self.build
     case ARCH
@@ -31,8 +29,8 @@ class Tinycore < Package
 
 set -e
 
-export PKG=`echo $\{1%%.*\}`
-export BIN=`echo $1|sed \"s/^[^\.]*\.//\"`
+export PKG=`echo ${1%%.*}`
+export BIN=`echo $1|sed \"s/^[^.]*.//\"`
 export OPT=`shift; echo $@`
 
 [ -d #{CREW_PREFIX}/share/tinycore/$PKG ] || { echo Package $PKG not found. && exit 1; }
@@ -48,8 +46,8 @@ fi
 
 set -e
 
-export PKG=`echo $\{1%%.*\}`
-export BIN=`echo $1|sed \"s/^[^\.]*\.//\"`
+export PKG=`echo ${1%%.*}`
+export BIN=`echo $1|sed \"s/^[^.]*.//\"`
 export OPT=`shift; echo $@`
 
 [ -d #{CREW_PREFIX}/share/tinycore/$PKG ] || { echo Package $PKG not found. && exit 1; }

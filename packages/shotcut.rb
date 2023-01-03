@@ -26,23 +26,23 @@ class Shotcut < Package
 #!/bin/sh
 # Set up environment
 # Run this instead of trying to run bin/shotcut. It runs shotcut with the correct environment.
-CURRENT_DIR=\$(readlink -f \"\$0\")
+CURRENT_DIR=$(readlink -f \"$0\")
 INSTALL_DIR=#{CREW_PREFIX}/share/shotcut
-export LD_LIBRARY_PATH=\"\$INSTALL_DIR/lib\":\$LD_LIBRARY_PATH
-export MLT_REPOSITORY=\"\$INSTALL_DIR/lib/mlt\"
-export MLT_DATA=\"\$INSTALL_DIR/share/mlt\"
-export MLT_PROFILES_PATH=\"\$INSTALL_DIR/share/mlt/profiles\"
-export MLT_MOVIT_PATH=\"\$INSTALL_DIR/share/movit\"
-export FREI0R_PATH=\"\$INSTALL_DIR/lib/frei0r-1\"
+export LD_LIBRARY_PATH=\"$INSTALL_DIR/lib\":$LD_LIBRARY_PATH
+export MLT_REPOSITORY=\"$INSTALL_DIR/lib/mlt\"
+export MLT_DATA=\"$INSTALL_DIR/share/mlt\"
+export MLT_PROFILES_PATH=\"$INSTALL_DIR/share/mlt/profiles\"
+export MLT_MOVIT_PATH=\"$INSTALL_DIR/share/movit\"
+export FREI0R_PATH=\"$INSTALL_DIR/lib/frei0r-1\"
 # Temporarily ignore user and default path because csladspa bug is crashing with
 # LADSPA_PATH set, and Shotcut only needs the supplied SWH plugins.
-# export LADSPA_PATH=\"\$LADSPA_PATH:/usr/local/lib/ladspa:/usr/lib/ladspa:/usr/lib64/ladspa:\$INSTALL_DIR/lib/ladspa\"
-export LADSPA_PATH=\"\$INSTALL_DIR/lib/ladspa\"
-export LIBVA_DRIVERS_PATH=\"\$INSTALL_DIR/lib/va\"
-cd \"\$INSTALL_DIR\"
+# export LADSPA_PATH=\"$LADSPA_PATH:/usr/local/lib/ladspa:/usr/lib/ladspa:/usr/lib64/ladspa:$INSTALL_DIR/lib/ladspa\"
+export LADSPA_PATH=\"$INSTALL_DIR/lib/ladspa\"
+export LIBVA_DRIVERS_PATH=\"$INSTALL_DIR/lib/va\"
+cd \"$INSTALL_DIR\"
 export QT_PLUGIN_PATH=\"lib/qt5\"
 export QML2_IMPORT_PATH=\"lib/qml\"
-bin/shotcut \"\$@\"
+bin/shotcut \"$@\"
 EOF"
   end
 

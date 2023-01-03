@@ -12,10 +12,8 @@ class Mongodb < Package
   source_url 'https://fastdl.mongodb.org/src/mongodb-src-r3.2.16.tar.gz'
   source_sha256 '7a8b1b16f3fa545af16f48aeef1f918f57d96a80e1ceb6e669cdb81fab6511d0'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'libpcap' => :build
   depends_on 'scons' => :build

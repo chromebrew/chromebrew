@@ -23,10 +23,10 @@ class Openlibm < Package
   })
 
   def self.patch
-    system "sed -i 's,\$(DESTDIR)\$(libdir),#{CREW_DEST_LIB_PREFIX},g' Makefile"
-    system "sed -i 's,\$(DESTDIR)\$(shlibdir),#{CREW_DEST_LIB_PREFIX},g' Makefile"
-    system "sed -i 's,\$(DESTDIR)\$(includedir),#{CREW_DEST_PREFIX}/include,g' Makefile"
-    system "sed -i 's,\$(DESTDIR)\$(pkgconfigdir),#{CREW_DEST_LIB_PREFIX}/pkgconfig,g' Makefile"
+    system "sed -i 's,$(DESTDIR)$(libdir),#{CREW_DEST_LIB_PREFIX},g' Makefile"
+    system "sed -i 's,$(DESTDIR)$(shlibdir),#{CREW_DEST_LIB_PREFIX},g' Makefile"
+    system "sed -i 's,$(DESTDIR)$(includedir),#{CREW_DEST_PREFIX}/include,g' Makefile"
+    system "sed -i 's,$(DESTDIR)$(pkgconfigdir),#{CREW_DEST_LIB_PREFIX}/pkgconfig,g' Makefile"
   end
 
   def self.build

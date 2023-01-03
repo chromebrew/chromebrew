@@ -25,7 +25,7 @@ class Samurai < Package
 
   def self.patch
     system "sed -i 's:PREFIX=/usr/local:PREFIX=#{CREW_PREFIX}:' Makefile"
-    system "sed -i 's:MANDIR=\$(PREFIX)/share/man:MANDIR=#{CREW_MAN_PREFIX}:g' Makefile"
+    system "sed -i 's:MANDIR=$(PREFIX)/share/man:MANDIR=#{CREW_MAN_PREFIX}:g' Makefile"
   end
 
   def self.build

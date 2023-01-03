@@ -38,7 +38,7 @@ class Musl_libunwind < Package
     when 'x86_64'
       @arch = 'x86_64'
     end
-    system "sed -i '1i#include <ucontext.h>\' src/#{@arch}/Gos-linux.c"
+    system "sed -i '1i#include <ucontext.h>' src/#{@arch}/Gos-linux.c"
     system 'filefix'
   end
 

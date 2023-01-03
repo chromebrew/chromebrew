@@ -25,7 +25,7 @@ class Nedit < Package
   depends_on 'motif'
 
   def self.patch
-    system "sed -i 's/\$@/linux/g' Makefile"
+    system "sed -i 's/$@/linux/g' Makefile"
   end
 
   def self.build

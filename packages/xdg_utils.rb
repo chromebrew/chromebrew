@@ -32,9 +32,9 @@ class Xdg_utils < Package
 
   def self.build
     system "./configure --prefix=#{CREW_PREFIX}"
-    system "sed -i 's,\$(XMLTO) man,#{CREW_PREFIX}/bin/xmlto -x #{CREW_PREFIX}/docbook/manpages/docbook.xsl man,' scripts/Makefile"
-    system "sed -i 's,\$(XMLTO) html,#{CREW_PREFIX}/bin/xmlto -x #{CREW_PREFIX}/docbook/html/docbook.xsl html,' scripts/Makefile"
-    system "sed -i 's,\$(XMLTO) txt,#{CREW_PREFIX}/bin/xmlto -x #{CREW_PREFIX}/docbook/html/docbook.xsl txt,' scripts/Makefile"
+    system "sed -i 's,$(XMLTO) man,#{CREW_PREFIX}/bin/xmlto -x #{CREW_PREFIX}/docbook/manpages/docbook.xsl man,' scripts/Makefile"
+    system "sed -i 's,$(XMLTO) html,#{CREW_PREFIX}/bin/xmlto -x #{CREW_PREFIX}/docbook/html/docbook.xsl html,' scripts/Makefile"
+    system "sed -i 's,$(XMLTO) txt,#{CREW_PREFIX}/bin/xmlto -x #{CREW_PREFIX}/docbook/html/docbook.xsl txt,' scripts/Makefile"
     system 'make'
   end
 

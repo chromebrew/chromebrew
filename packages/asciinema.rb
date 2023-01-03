@@ -36,7 +36,7 @@ class Asciinema < Package
 
 [record]
 
-; Command to record, default: \$SHELL
+; Command to record, default: $SHELL
 command = /bin/bash -l
 
 ; Enable stdin (keyboard) recording, default: no

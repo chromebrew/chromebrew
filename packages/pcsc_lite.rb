@@ -29,7 +29,7 @@ class Pcsc_lite < Package
   depends_on 'elogind'
 
   def self.patch
-    system "for i in \$(cat debian/patches/series); do patch -Np1 -i debian/patches/\${i}; done"
+    system 'for i in $(cat debian/patches/series); do patch -Np1 -i debian/patches/${i}; done'
   end
 
   def self.build

@@ -50,7 +50,7 @@ class Zstd < Package
     end
     # Convert symlinks to hard links in libdir.
     Dir.chdir CREW_DEST_LIB_PREFIX do
-      system "find -type l -exec bash -c 'ln -f \"\$(readlink -m \"\$0\")\" \"\$0\"' {} \\\;"
+      system "find -type l -exec bash -c 'ln -f \"$(readlink -m \"$0\")\" \"$0\"' {} \\;"
     end
   end
 end

@@ -32,9 +32,9 @@ class Antlr4 < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @antlrenv = <<~ANTLR_EOF
       # ANTLR (ANother Tool for Language Recognition) configuration
-      export CLASSPATH=\".:#{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar:\$CLASSPATH\"
-      alias antlr4=\"java -jar #{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar\"
-      alias grun=\"java org.antlr.v4.gui.TestRig\"
+      export CLASSPATH=".:#{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar:$CLASSPATH"
+      alias antlr4="java -jar #{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar"
+      alias grun="java org.antlr.v4.gui.TestRig"
     ANTLR_EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/antlr4", @antlrenv)
   end

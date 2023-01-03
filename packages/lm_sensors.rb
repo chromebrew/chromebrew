@@ -25,7 +25,7 @@ class Lm_sensors < Package
   def self.build
     system "sed -i 's/-Llib -lsensors/-Llib -lsensors -liconv/g' prog/sensors/Module.mk"
     system "sed -i \"/LIBDIR :=/c LIBDIR := #{CREW_LIB_PREFIX}\" Makefile"
-    system "sed -i \"/ETCDIR :=/c ETCDIR := #{CREW_PREFIX}\/etc\" Makefile"
+    system "sed -i \"/ETCDIR :=/c ETCDIR := #{CREW_PREFIX}/etc\" Makefile"
     system "make PREFIX=#{CREW_PREFIX}"
   end
 

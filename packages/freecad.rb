@@ -9,10 +9,8 @@ class Freecad < Package
   source_url 'https://github.com/FreeCAD/FreeCAD/releases/download/0.19.2/FreeCAD_0.19-24291-Linux-Conda_glibc2.12-x86_64.AppImage'
   source_sha256 'c196a6e59349ed452cc9b9af2c6a0d983a698831630aa5c7077565ed8570c9ad'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'sommelier'
 
@@ -22,7 +20,7 @@ class Freecad < Package
   end
 
   def self.patch
-    system "sed -i 's,LD_LIBRARY_PATH=\${HERE}/usr/lib,LD_LIBRARY_PATH=\${HERE}/usr/lib:\${LD_LIBRARY_PATH},' AppRun"
+    system "sed -i 's,LD_LIBRARY_PATH=${HERE}/usr/lib,LD_LIBRARY_PATH=${HERE}/usr/lib:${LD_LIBRARY_PATH},' AppRun"
   end
 
   def self.build

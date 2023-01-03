@@ -31,7 +31,7 @@ class Binutils < Package
 
   def self.patch
     system 'filefix'
-    system "sed -i 's,scriptdir = \$(tooldir)/lib,scriptdir = \$(tooldir)/#{ARCH_LIB},g' ld/Makefile.am"
+    system "sed -i 's,scriptdir = $(tooldir)/lib,scriptdir = $(tooldir)/#{ARCH_LIB},g' ld/Makefile.am"
     Dir.chdir 'ld' do
       system 'aclocal && automake'
     end

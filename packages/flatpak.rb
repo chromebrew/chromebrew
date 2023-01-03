@@ -124,7 +124,7 @@ class Flatpak < Package
       fi
       # Start pulseaudio if it is not running.
       pgrep -x pulseaudio >/dev/null || pulseaudio -D
-      if [[ "\$*" == *run* ]]
+      if [[ "$*" == *run* ]]
       then
           FLATPAK_FLAGS='--socket=wayland'
       else
@@ -134,7 +134,7 @@ class Flatpak < Package
       unset GDK_PIXBUF_MODULEDIR
       unset GDK_BACKEND
       unset FONTCONFIG_PATH
-      #{CREW_PREFIX}/libexec/flatpak/flatpak \$FLATPAK_FLAGS  "\$@"
+      #{CREW_PREFIX}/libexec/flatpak/flatpak $FLATPAK_FLAGS  "$@"
     FLATPAK_HEREDOC
     File.write("#{CREW_DEST_PREFIX}/bin/flatpak", @flatpak_sh, perm: 0o755)
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"

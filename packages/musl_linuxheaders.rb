@@ -48,8 +48,8 @@ class Musl_linuxheaders < Package
     system "PATH=#{@workdir}/crew_bin:$PATH make defconfig"
     system "PATH=#{@workdir}/crew_bin:$PATH make headers_install INSTALL_HDR_PATH=#{CREW_DEST_MUSL_PREFIX}"
     Dir.chdir("#{CREW_DEST_MUSL_PREFIX}/include") do
-      system "for file in \$(find . -not -type d -name '.*'); do
-                rm \${file};
+      system "for file in $(find . -not -type d -name '.*'); do
+                rm ${file};
               done"
     end
   end
