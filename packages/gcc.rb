@@ -3,6 +3,7 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
+  # Do not use @_ver here, it will break the installer.
   version '12.2.1-b80a690'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
