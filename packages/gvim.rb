@@ -99,7 +99,8 @@ class Gvim < Package
   def self.postinstall
     puts
     puts "The config files are located in #{CREW_PREFIX}/etc.".lightblue
-    puts 'User-specific configuration should go in ~/.vimrc.'.lightblue
+    puts 'User-specific configuration should go in ~/.vimrc and'.lightblue
+    puts '~/.gvimrc.'.lightblue
     puts
     puts 'If you are upgrading from an earlier version, edit ~/.bashrc'.orange
     puts "and remove the 'export VIMRUNTIME' and 'export LC_ALL=C' lines.".orange
