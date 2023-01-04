@@ -96,7 +96,6 @@ class Vim < Package
     puts
     puts 'If you are upgrading from an earlier version, edit ~/.bashrc'.orange
     puts "and remove the 'export VIMRUNTIME' and 'export LC_ALL=C' lines.".orange
-    puts
     # Set vim to be the default vi if there is no vi or if a default
     # vi does not exist.
     @crew_vi = File.file?("#{CREW_PREFIX}/bin/vi")
