@@ -128,9 +128,7 @@ class Gvim < Package
 
   def self.remove
     # Remove vi symlink if it is to vim.
-    unless File.symlink?("#{CREW_PREFIX}/bin/vi") && (File.readlink("#{CREW_PREFIX}/bin/vi") == "#{CREW_PREFIX}/bin/vim")
-      return
-    end
+    return unless File.symlink?("#{CREW_PREFIX}/bin/vi") && (File.readlink("#{CREW_PREFIX}/bin/vi") == "#{CREW_PREFIX}/bin/vim")
 
     FileUtils.rm "#{CREW_PREFIX}/bin/vi"
   end
