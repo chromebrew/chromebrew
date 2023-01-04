@@ -3,8 +3,7 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  # Do not use @_ver here, it will break the installer.
-  version '1.1.1s'
+  version '1.1.1s' # Do not use @_ver here, it will break the installer.
   license 'openssl'
   compatibility 'all'
   source_url 'https://www.openssl.org/source/openssl-1.1.1s.tar.gz'
