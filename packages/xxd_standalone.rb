@@ -3,7 +3,7 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'http://www.vim.org'
-  @_ver = '8.2.2783'
+  @_ver = '9.0.1145'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
@@ -11,23 +11,23 @@ class Xxd_standalone < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/8.2.2783_armv7l/xxd_standalone-8.2.2783-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/8.2.2783_armv7l/xxd_standalone-8.2.2783-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/8.2.2783_i686/xxd_standalone-8.2.2783-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/8.2.2783_x86_64/xxd_standalone-8.2.2783-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_i686/xxd_standalone-9.0.1145-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_x86_64/xxd_standalone-9.0.1145-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '398383f29decea21b375a83861804a76b8a7f5345ea5d8e632430d596836862e',
-     armv7l: '398383f29decea21b375a83861804a76b8a7f5345ea5d8e632430d596836862e',
-       i686: '25b253e518dd4ad8db7d7ccb4b98b5f68bb84ad242219071c9815cbd77f12c24',
-     x86_64: '83d62f69fcb6ee14ba78175affb5a6d11627b2a1b21b84cf61a859e01b011921'
+    aarch64: '6f0371fe309b6acf9075ffe3d5c39565d265aafd2aae6915aa8e7d34e2497833',
+     armv7l: '6f0371fe309b6acf9075ffe3d5c39565d265aafd2aae6915aa8e7d34e2497833',
+       i686: 'c18efdaca3fdc3c670a044e105968d34c214347763500fd329a0fa610c09f2da',
+     x86_64: 'b6b4db1208ebb85772a18f08aea51a5644cebb8e62473b3008c29e8bd61c153a'
   })
+
+  depends_on 'glibc' # R
 
   def self.build
     Dir.chdir 'src/xxd' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-        LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-        make xxd"
+      system 'make xxd'
     end
   end
 
