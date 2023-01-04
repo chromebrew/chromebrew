@@ -3,8 +3,8 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  @_ver = '3.2.0'
-  version @_ver
+  # Do not use @_ver here, it will break the installer.
+  version '3.2.0'
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0.tar.gz'
@@ -57,7 +57,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system 'make check || true' unless RUBY_VERSION == @_ver
+    system 'make check || true' unless RUBY_VERSION == '3.2.0'
   end
 
   def self.install
@@ -65,7 +65,7 @@ class Ruby < Package
     # Gems are stored in a ruby majorversion.minorversion.0 folder.
     @gemrc = <<~GEMRCEOF
       gem: --no-document
-      gempath: #{CREW_LIB_PREFIX}/ruby/gems/#{@_ver.rpartition('.')[0]}.0
+      gempath: #{CREW_LIB_PREFIX}/ruby/gems/3.2.0
     GEMRCEOF
     FileUtils.mkdir_p CREW_DEST_HOME
     File.write("#{CREW_DEST_HOME}/.gemrc", @gemrc)

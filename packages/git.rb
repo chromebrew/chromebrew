@@ -3,8 +3,8 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.38.1'
-  version @_ver
+  # Do not use @_ver here, it will break the installer.
+  version '2.38.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.38.1.tar.xz'
