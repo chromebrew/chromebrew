@@ -3,8 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  # Do not use @_ver here, it will break the installer.
-  version '3.2.0'
+  version '3.2.0' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0.tar.gz'
