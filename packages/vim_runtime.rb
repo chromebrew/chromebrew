@@ -3,7 +3,7 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '8.2.4594'
+  @_ver = '9.0.1145'
   version @_ver
   license 'GPL-2'
   compatibility 'all'
@@ -11,23 +11,22 @@ class Vim_runtime < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_armv7l/vim_runtime-8.2.4594-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_armv7l/vim_runtime-8.2.4594-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_i686/vim_runtime-8.2.4594-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/8.2.4594_x86_64/vim_runtime-8.2.4594-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_armv7l/vim_runtime-9.0.1145-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_armv7l/vim_runtime-9.0.1145-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_i686/vim_runtime-9.0.1145-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_x86_64/vim_runtime-9.0.1145-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1e163860d1e33df29dc2298c8916b79eb10e093ee7aa93aa45649b2f24b8717b',
-     armv7l: '1e163860d1e33df29dc2298c8916b79eb10e093ee7aa93aa45649b2f24b8717b',
-       i686: '8dbf821e3b74d5e881a6939cf711f08e0375cd24be12bdc08fc240beed72ed69',
-     x86_64: '20d6505461857fb25901b3c18ed8a7f20f95111c1cfe8d6dc3306d314bf78264'
+    aarch64: 'abf07f7472d5f2ecd2694d3251da5dc28f9c261fea289087ae8d8ae95aa07bbc',
+     armv7l: 'abf07f7472d5f2ecd2694d3251da5dc28f9c261fea289087ae8d8ae95aa07bbc',
+       i686: '0f80a4d523325e3e4b1dd3a16533f71bc56873d4e234534b71ce042e5312cd33',
+     x86_64: '010794241e8435eb04170737ccae9f8ad22878f49ee642f611361a58e967e590'
   })
 
   depends_on 'gpm'
   depends_on 'libsodium'
 
   def self.patch
-    abort('Please remove libiconv before building.') if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
     # set the system-wide vimrc path
     FileUtils.cd('src') do
       system 'sed', '-i', "s|^.*#define SYS_VIMRC_FILE.*$|#define SYS_VIMRC_FILE \"#{CREW_PREFIX}/etc/vimrc\"|",
@@ -39,10 +38,7 @@ class Vim_runtime < Package
 
   def self.build
     system '[ -x configure ] || autoreconf -fvi'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --localstatedir=#{CREW_PREFIX}/var/lib/vim \
       --with-features=huge \
@@ -67,6 +63,7 @@ class Vim_runtime < Package
   end
 
   def self.install
+    @vim_version = version.rpartition('.')[0].sub('.', '')
     system 'make', "VIMRCLOC=#{CREW_PREFIX}/etc", "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     # bin and man will be provided by the 'vim' packages
@@ -128,7 +125,7 @@ class Vim_runtime < Package
         silent! call mkdir(expand(&g:undodir), 'p', 0700)
       endif
     EOF
-    system "sed -i 's/set mouse=a/set mouse-=a/g' #{CREW_DEST_PREFIX}/share/vim/vim82/defaults.vim"
+    system "sed -i 's/set mouse=a/set mouse-=a/g' #{CREW_DEST_PREFIX}/share/vim/vim#{@vim_version}/defaults.vim"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     vimrc = "#{CREW_DEST_PREFIX}/etc/vimrc"
     # by default we will load the global config
