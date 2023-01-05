@@ -43,8 +43,8 @@ class Torbrowser < Package
 
   def self.postinstall
     print "\nSet Tor as your default browser? [Y/n]: "
-    case $stdin.getc
-    when "\n", 'Y', 'y'
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'tor', 'x-www-browser'
       end

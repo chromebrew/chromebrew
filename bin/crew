@@ -1405,11 +1405,11 @@ def resolve_dependencies
   puts @dependencies.join(' ')
 
   print 'Do you agree? [Y/n] '
-  response = $stdin.getc
+  response = $stdin.gets.chomp.downcase
   case response
-  when 'n'
+  when 'n', 'no'
     abort 'No changes made.'
-  when "\n", 'y', 'Y'
+  when '', 'y', 'yes'
     puts 'Proceeding...'
   else
     puts "I don't understand `#{response}`. :(".lightred

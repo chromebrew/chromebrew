@@ -43,11 +43,11 @@ class Dosbox < Package
 
   def self.remove
     print 'Would you like to remove the config directory? [y/N] '
-    response = $stdin.getc
+    response = $stdin.gets.chomp.downcase
     config_dir = "#{HOME}/.dosbox"
     if Dir.exist? config_dir
       case response
-      when 'y', 'Y'
+      when '', 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

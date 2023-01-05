@@ -82,9 +82,9 @@ class Nodebrew < Package
     if Dir.exist? "#{CREW_PREFIX}/share/nodebrew"
       puts
       print "Would you like to remove #{CREW_PREFIX}/share/nodebrew? [y/N] "
-      response = $stdin.getc
+      response = $stdin.gets.chomp.downcase
       case response
-      when 'y', 'Y'
+      when '', 'y', 'yes'
         FileUtils.rm_rf "#{CREW_PREFIX}/share/nodebrew"
         puts "#{CREW_PREFIX}/share/nodebrew removed.".lightred
       else

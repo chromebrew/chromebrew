@@ -37,8 +37,8 @@ class Electric < Package
     log_file = "#{HOME}/electric.log"
     if File.exist? log_file
       print "Would you like to remove #{log_file}? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when '', 'y', 'yes'
         FileUtils.rm_f log_file
         puts "#{log_file} removed.".lightred
       else

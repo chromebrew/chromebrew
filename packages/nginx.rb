@@ -85,9 +85,9 @@ class Nginx < Package
     if Dir.exist? "#{CREW_PREFIX}/share/nginx"
       puts
       print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "
-      response = $stdin.getc
+      response = $stdin.gets.chomp.downcase
       case response
-      when 'y', 'Y'
+      when '', 'y', 'yes'
         FileUtils.rm_rf "#{CREW_PREFIX}/share/nginx"
         puts "#{CREW_PREFIX}/share/nginx removed.".lightred
       else
