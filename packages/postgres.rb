@@ -75,8 +75,8 @@ class Postgres < Package
     if Dir.exist? PGDATA
       puts 'WARNING: This will delete all databases!'.orange
       print "Would you like to remove #{PGDATA}? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf PGDATA
         FileUtils.rm_rf "#{CREW_PREFIX}/pgsql"
         puts "#{PGDATA} removed.".lightred

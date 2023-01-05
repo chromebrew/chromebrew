@@ -28,7 +28,7 @@ class Php < Package
     puts '8.2 = PHP 8.2.1'
     puts '  0 = Cancel'
 
-    while version = $stdin.gets.chomp
+    while version = $stdin.gets.chomp.downcase
       case version
       when '5.6'
         depends_on 'php5'

@@ -46,8 +46,8 @@ class Github_desktop < Package
     if Dir.exist? config_dir.to_s
       system "echo '#{config_dir}'; ls '#{config_dir}'"
       print "\nWould you like to remove the config directories above? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "'#{config_dir}' removed.".lightred
       else

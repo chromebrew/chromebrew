@@ -104,8 +104,8 @@ class Wine < Package
       next unless Dir.exist? config_dir
 
       print "\nWould you like to remove #{config_dir}? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

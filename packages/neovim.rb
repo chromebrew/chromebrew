@@ -59,8 +59,8 @@ class Neovim < Package
     @create_vi_symlink_ask = true if @crew_vi || @system_vi
     if @create_vi_symlink_ask
       print "\nWould you like to set nvim to be the default vi [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         @create_vi_symlink = true
       else
         @create_vi_symlink = false

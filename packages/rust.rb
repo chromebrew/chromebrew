@@ -80,8 +80,8 @@ class Rust < Package
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
     print config_dirs.to_s
     print "\nWould you like to remove the config directories above? [y/N] "
-    case $stdin.getc
-    when 'y', 'Y'
+    case $stdin.gets.chomp.downcase
+    when 'y', 'yes'
       FileUtils.rm_rf config_dirs
       puts "#{config_dirs} removed.".lightgreen
     else

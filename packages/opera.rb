@@ -38,8 +38,8 @@ class Opera < Package
   def self.postinstall
     puts
     print 'Set Opera as your default browser? [Y/n]: '
-    case $stdin.getc
-    when "\n", 'Y', 'y'
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf "#{CREW_LIB_PREFIX}/opera/opera", 'x-www-browser'
       end
