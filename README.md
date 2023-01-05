@@ -61,7 +61,7 @@ Also please check existing [issues](https://github.com/chromebrew/chromebrew/iss
 
 ## Usage
 
-```
+```text
 crew <command> <package1> [<package2> ...]
 ```
 
@@ -91,7 +91,7 @@ Available packages are listed in the [packages directory](https://github.com/chr
 
 Chromebrew will wipe its `BREW_DIR` (`/usr/local/tmp/crew` by default) after installation unless you pass `-k` or `--keep` when running `crew install`.
 
-```bash
+```text
 crew install --keep [...]
 ```
 
