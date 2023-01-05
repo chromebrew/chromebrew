@@ -83,7 +83,7 @@ class Clamtk < Package
       puts 'WARNING: This will remove all clamtk config!'.orange
       print "Would you like to remove the #{config_dir} directory? [y/N] "
       case $stdin.gets.chomp.downcase
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightgreen
       else

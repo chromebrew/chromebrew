@@ -50,7 +50,7 @@ class Freecad < Package
     if Dir.exist? config_dir.to_s
       print "\nWould you like to remove #{config_dir}? [y/N] "
       case $stdin.gets.chomp.downcase
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir.to_s
         puts "#{config_dir} removed.".lightred
       else

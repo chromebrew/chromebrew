@@ -47,7 +47,7 @@ class Dosbox < Package
     config_dir = "#{HOME}/.dosbox"
     if Dir.exist? config_dir
       case response
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

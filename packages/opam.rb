@@ -62,7 +62,7 @@ class Opam < Package
     print "Would you like to remove #{@OPAMROOT}? [y/N] "
     response = $stdin.gets.chomp.downcase
     case response
-    when '', 'y', 'yes'
+    when 'y', 'yes'
       FileUtils.rm_rf @OPAMROOT
       puts "#{@OPAMROOT} removed.".lightred
     else

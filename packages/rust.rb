@@ -81,7 +81,7 @@ class Rust < Package
     print config_dirs.to_s
     print "\nWould you like to remove the config directories above? [y/N] "
     case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
+    when 'y', 'yes'
       FileUtils.rm_rf config_dirs
       puts "#{config_dirs} removed.".lightgreen
     else

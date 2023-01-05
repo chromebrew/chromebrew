@@ -64,7 +64,7 @@ class Mysql < Package
       puts "\nWARNING: This will delete all your databases!".orange
       print "Would you like to remove #{data_dir}? [y/N] "
       case $stdin.gets.chomp.downcase
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf data_dir.to_s
         puts "#{data_dir} removed.".lightred
       else

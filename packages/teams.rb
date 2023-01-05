@@ -47,7 +47,7 @@ class Teams < Package
     end
     print "\nWould you like to remove the config directories above? [y/N] "
     case $stdin.gets.chomp.downcase
-    when '', 'y', 'yes'
+    when 'y', 'yes'
       config_dirs.each do |config_dir|
         next unless Dir.exist? config_dir
 

@@ -105,7 +105,7 @@ class Wine < Package
 
       print "\nWould you like to remove #{config_dir}? [y/N] "
       case $stdin.gets.chomp.downcase
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

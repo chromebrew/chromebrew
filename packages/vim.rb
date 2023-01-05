@@ -105,7 +105,7 @@ class Vim < Package
     if @create_vi_symlink_ask
       print "\nWould you like to set vim to be the default vi [y/N] "
       case $stdin.gets.chomp.downcase
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         @create_vi_symlink = true
       else
         @create_vi_symlink = false

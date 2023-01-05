@@ -46,7 +46,7 @@ class Stellarium < Package
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
       case $stdin.gets.chomp.downcase
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

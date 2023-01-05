@@ -87,7 +87,7 @@ class Nginx < Package
       print "Would you like to remove #{CREW_PREFIX}/share/nginx? [y/N] "
       response = $stdin.gets.chomp.downcase
       case response
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf "#{CREW_PREFIX}/share/nginx"
         puts "#{CREW_PREFIX}/share/nginx removed.".lightred
       else

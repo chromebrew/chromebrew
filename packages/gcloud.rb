@@ -62,7 +62,7 @@ class Gcloud < Package
       next unless Dir.exist? config_dir
 
       case response
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else

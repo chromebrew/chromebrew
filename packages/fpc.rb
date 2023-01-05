@@ -52,7 +52,7 @@ class Fpc < Package
     config_dirs = ["#{HOME}/.fpc.cfg", "#{HOME}/.config/fppkg.cfg", "#{HOME}/.fppkg"]
     config_dirs.each do |config_dir|
       case response
-      when '', 'y', 'yes'
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
         puts "#{config_dir} removed.".lightred
       else
