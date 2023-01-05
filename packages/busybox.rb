@@ -3,34 +3,35 @@ require 'package'
 class Busybox < Package
   description 'BusyBox combines tiny versions of many common UNIX utilities into a single small executable.'
   homepage 'https://busybox.net/'
-  @_ver = '1.35.0'
+  @_ver = '1.36.0'
   version @_ver
   license 'GPL-3'
   compatibility 'all'
   source_url "https://busybox.net/downloads/busybox-#{@_ver}.tar.bz2"
-  source_sha256 'faeeb244c35a348a334f4a59e44626ee870fb07b6884d68c10ae8bc19f83a694'
+  source_sha256 '542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.35.0_armv7l/busybox-1.35.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.35.0_armv7l/busybox-1.35.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.35.0_i686/busybox-1.35.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.35.0_x86_64/busybox-1.35.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_armv7l/busybox-1.36.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_armv7l/busybox-1.36.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_i686/busybox-1.36.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/busybox/1.36.0_x86_64/busybox-1.36.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0783568306c472659628e942dcb7fa96b49e7f08dd269979b3cf8efd47cc87b3',
-     armv7l: '0783568306c472659628e942dcb7fa96b49e7f08dd269979b3cf8efd47cc87b3',
-       i686: 'bd18763f0c7c55f7909b425363f1259f25f66072813aefbf40921a24d91f76ad',
-     x86_64: '61dee16d7f675c5730743f0f0c278f751dc8f713c7a3ae5253c4f08de8c1eccd'
+    aarch64: '6f5f08cfdf0d8ff167066ae7d7d9a2b51a33206b057ea5e0d5a478c2bcc91dc0',
+     armv7l: '6f5f08cfdf0d8ff167066ae7d7d9a2b51a33206b057ea5e0d5a478c2bcc91dc0',
+       i686: '8a9b6909611bdfea34b486d8ac0fc582181b077605bcdadb8eca58a6c8925fe6',
+     x86_64: '528a049232c37afa8b65951864041c1c068ca720b34be5d42b7acfd0e8230fbb'
   })
 
   depends_on 'linux_pam'
+  depends_on 'glibc' # R
 
   def self.patch
     @busyboxconfig = <<~BUSYBOXCONFIGEOF
       #
       # Automatically generated make config: don't edit
-      # Busybox version: 1.35.0
-      # Mon May 30 14:43:30 2022
+      # Busybox version: 1.36.0
+      # Wed Jan  4 16:46:14 2023
       #
       CONFIG_HAVE_DOT_CONFIG=y
 
@@ -51,7 +52,7 @@ class Busybox < Package
       # CONFIG_FEATURE_UTMP is not set
       # CONFIG_FEATURE_WTMP is not set
       CONFIG_FEATURE_PIDFILE=y
-      CONFIG_PID_FILE_PATH="/var/run"
+      CONFIG_PID_FILE_PATH="#{CREW_PREFIX}/var/run"
       CONFIG_BUSYBOX=y
       CONFIG_FEATURE_SHOW_SCRIPT=y
       CONFIG_FEATURE_INSTALLER=y
@@ -122,6 +123,9 @@ class Busybox < Package
       # CONFIG_FEATURE_BUFFERS_GO_IN_BSS is not set
       CONFIG_PASSWORD_MINLEN=6
       CONFIG_MD5_SMALL=1
+      CONFIG_SHA1_SMALL=0
+      CONFIG_SHA1_HWACCEL=y
+      CONFIG_SHA256_HWACCEL=y
       CONFIG_SHA3_SMALL=1
       CONFIG_FEATURE_NON_POSIX_CP=y
       CONFIG_FEATURE_VERBOSE_CP_MESSAGE=y
@@ -152,6 +156,9 @@ class Busybox < Package
       CONFIG_UNICODE_BIDI_SUPPORT=y
       # CONFIG_UNICODE_NEUTRAL_TABLE is not set
       # CONFIG_UNICODE_PRESERVE_BROKEN is not set
+      # CONFIG_LOOP_CONFIGURE is not set
+      # CONFIG_NO_LOOP_CONFIGURE is not set
+      CONFIG_TRY_LOOP_CONFIGURE=y
 
       #
       # Applets
@@ -367,6 +374,7 @@ class Busybox < Package
       CONFIG_FEATURE_TR_EQUIV=y
       CONFIG_TRUE=y
       CONFIG_TRUNCATE=y
+      CONFIG_TSORT=y
       CONFIG_TTY=y
       CONFIG_UNAME=y
       CONFIG_UNAME_OSNAME="GNU/Linux"
@@ -856,10 +864,12 @@ class Busybox < Package
       CONFIG_RFKILL=y
       # CONFIG_RUNLEVEL is not set
       CONFIG_RX=y
+      CONFIG_SEEDRNG=y
       CONFIG_SETFATTR=y
       CONFIG_SETSERIAL=y
       CONFIG_STRINGS=y
       CONFIG_TIME=y
+      CONFIG_TREE=y
       CONFIG_TS=y
       CONFIG_TTYSIZE=y
       CONFIG_UBIATTACH=y
@@ -1032,6 +1042,7 @@ class Busybox < Package
       # CONFIG_FEATURE_UDHCPC_ARPING is not set
       # CONFIG_FEATURE_UDHCPC_SANITIZEOPT is not set
       CONFIG_UDHCPC_DEFAULT_SCRIPT=""
+      CONFIG_UDHCPC6_DEFAULT_SCRIPT=""
       # CONFIG_UDHCPC6 is not set
       # CONFIG_FEATURE_UDHCPC6_RFC3646 is not set
       # CONFIG_FEATURE_UDHCPC6_RFC4704 is not set
@@ -1162,6 +1173,7 @@ class Busybox < Package
       CONFIG_ASH_ECHO=y
       CONFIG_ASH_PRINTF=y
       CONFIG_ASH_TEST=y
+      CONFIG_ASH_SLEEP=y
       CONFIG_ASH_HELP=y
       CONFIG_ASH_GETOPTS=y
       CONFIG_ASH_CMDCMD=y
@@ -1241,6 +1253,8 @@ class Busybox < Package
       CONFIG_FEATURE_KMSG_SYSLOG=y
     BUSYBOXCONFIGEOF
     File.write('.config', @busyboxconfig)
+    # seedrng fails on i686 due to a missing sys/random.h
+    system "sed -i 's/CONFIG_SEEDRNG=y/CONFIG_SEEDRNG=n/g' .config" if ARCH == 'i686'
   end
 
   def self.prebuild
