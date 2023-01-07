@@ -3,13 +3,13 @@ if [ ! -f packages.yaml ]; then
   echo "packages.yaml not found."
   exit 1
 fi
-if test $1; then
+if test "$1"; then
   valid=
   opt="core high medium low"
   for o in $opt; do
-    [ $1 == $o ] && valid=1
+    [ "$1" == "$o" ] && valid=1
   done
-  if ! test $valid; then
+  if ! test "$valid"; then
     echo "Usage: $0 [activity] [offset] [lines]"
     echo "activity: core|high|medium|low"
     echo "offset: # of lines to skip"
@@ -19,7 +19,9 @@ if test $1; then
   if [[ "$1" == "core" ]]; then
     rm -f /tmp/urls.txt
     cat core_packages.txt > /tmp/names.txt
-    for p in $(cat /tmp/names.txt); do
+    ps=$(< /tmp/names.txt)
+    ps=$(echo "$ps" | xargs)
+    for p in $ps; do
       grep -1 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2  >> /tmp/urls.txt
     done
   else
@@ -32,59 +34,65 @@ else
   grep ^name: packages.yaml | cut -d' ' -f2 > /tmp/names.txt
   grep ^url: packages.yaml | cut -d' ' -f2 > /tmp/urls.txt
 fi
-if test $2; then
+if test "$2"; then
   lines=$(wc -l /tmp/urls.txt | cut -d' ' -f1)
-  offset=$2
-  urls=$(($lines - $offset))
-  if test $3; then
+  offset="$2"
+  urls=$((lines-offset))
+  if test "$3"; then
     count=$3
-    tail -$urls /tmp/names.txt | head -$count > /tmp/new_names.txt
-    tail -$urls /tmp/urls.txt | head -$count > /tmp/new_urls.txt
+    tail "-$urls" /tmp/names.txt | head "-$count" > /tmp/new_names.txt
+    tail "-$urls" /tmp/urls.txt | head "-$count" > /tmp/new_urls.txt
   else
-    tail -$urls /tmp/names.txt > /tmp/new_names.txt
-    tail -$urls /tmp/urls.txt > /tmp/new_urls.txt
+    tail "-$urls" /tmp/names.txt > /tmp/new_names.txt
+    tail "-$urls" /tmp/urls.txt > /tmp/new_urls.txt
   fi
   mv /tmp/new_names.txt /tmp/names.txt
   mv /tmp/new_urls.txt /tmp/urls.txt
 fi
 c=0
-for p in $(cat /tmp/names.txt); do
+ps=$(< /tmp/names.txt)
+ps=$(echo "$ps" | xargs)
+for p in $ps; do
   a=$(grep -2 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2)
-  if [ "${a}" != "none" ]; then
+  if [ "$a" != "none" ]; then
     star=
     repo=
     u=$(grep -1 "^name: ${p}$" packages.yaml | tail -1 | cut -d' ' -f2)
-    version=$(grep "^  version" ../packages/$p.rb | cut -d"'" -f2)
+    version=$(grep "^  @_ver" ../packages/"$p.rb" 2>/dev/null | cut -d= -f2 | xargs)
+    [ -z "$version" ] && version=$(grep "^  version" ../packages/"$p.rb" | cut -d"'" -f2)
     cp=$(grep "^${p}$" core_packages.txt)
-    test $cp && star=*
-    [[ $u == *"gnu.org"* ]] && repo="gnu"
-    [[ $u == *"github.com"* && $u == *"/releases"* ]] && repo="github"
-    [[ $u == *"savannah.gnu.org"* && $u == *"/releases"* ]] && repo="savannah"
-    case $repo in
+    test "$cp" && star="*"
+    [[ "$u" == *"gnu.org"* ]] && repo="gnu"
+    [[ "$u" == *"github.com"* && $u == *"/releases"* ]] && repo="github"
+    [[ "$u" == *"savannah.gnu.org"* && $u == *"/releases"* ]] && repo="savannah"
+    case "$repo" in
     gnu)
-      content=$(curl -Ls $u)
-      content=$(echo $content | sed 's,[ds|latest].tar,,g')
+      content=$(curl -Ls "$u")
+      content=${content/[ds|latest].tar//}
       d=${content##*\.tar\.[g|l|x]z\">}
-      rel=$(echo $d | cut -d'<' -f1 | cut -d '-' -f2)
+      rel=$(echo "$d" | cut -d'<' -f1 | cut -d'-' -f2 | xargs)
       ver=${rel%.tar*}
       nu="$u/$p-$rel"
-      [[ $version != $ver ]] && echo "- [ ] $p$star | $nu | $version | $ver"
+      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
       ;;
     github)
-      content=$(curl -Ls $u)
-      d=${content#*/archive/}
-      rel=$(echo $d | cut -d '"' -f1)
+      relu=${u#*com}/tag/
+      content=$(curl -Ls "$u" | grep "href=\"$relu")
+      d=${content#*/releases/tag/}
+      rel=$(echo "$d" | cut -d'"' -f1)
+      rel=$(echo "$rel" | cut -d' ' -f1)
       ver=${rel%.zip*}
-      nu=$(echo "${u/releases/archive}")
-      [[ $version != $ver ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | $ver"
+      nu=${u/releases/archive}
+      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu/$ver.tar.gz | $version | $ver"
       ;;
     savannah)
-      content=$(curl -Ls $u)
+      content=$(curl -Ls "$u")
       d=${content##*\.tar\.[g|l|x]z\">}
-      rel=$(echo $d | cut -d'<' -f1 | cut -d '-' -f2)
+      rel=$(echo "$d" | cut -d'<' -f1 | cut -d'-' -f2 | xargs | cut -d' ' -f1)
+      rel=${rel% *}
       ver=${rel%.tar*}
       nu="$u/$p-$rel"
-      [[ $version != $ver ]] && echo "- [ ] $p$star | $nu | $version | $ver"
+      [[ "$version" != "$ver" ]] && echo "- [ ] $p$star | $nu | $version | $ver"
       ;;
     *)
       echo "- [ ] $p$star | $u | $version | not checked"
