@@ -18,7 +18,7 @@ class Glibc < Package
   @libc_version = LIBC_VERSION
   # Uncomment following line to build a version of glibc different
   # from the one ChromeOS ships with.
-  # @libc_version = '2.33'
+  # @libc_version = '2.35'
   if @libc_version == '2.23'
     version '2.23-6'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
@@ -60,20 +60,39 @@ class Glibc < Package
        armv7l: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
        x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
     })
-  elsif @libc_version.to_f >= 2.33 # All architectures with updates past M97.
-    version '2.33-2'
+  elsif @libc_version == '2.33' # All architectures with updates past M97.
+    version '2.33-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-2_armv7l/glibc-2.33-2-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-2_armv7l/glibc-2.33-2-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-2_x86_64/glibc-2.33-2-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_armv7l/glibc-2.33-3-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_armv7l/glibc-2.33-3-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_x86_64/glibc-2.33-3-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '66dbf19881b7aec1890b9d8a99e08f36e1da902bf548b02e5a4b43ba43f3cfe3',
-       armv7l: '66dbf19881b7aec1890b9d8a99e08f36e1da902bf548b02e5a4b43ba43f3cfe3',
-       x86_64: 'e2c30bfd366367481020f36345f3e11e3d9bfa6b9f6351e65183e10755e982fb'
+      aarch64: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
+       armv7l: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
+       x86_64: '3edde53b5ab8b577604b127c141042f4572b8972b7081abcda2e86778d1974a9'
+    })
+  elsif @libc_version.to_f >= 2.35 # All architectures with updates past M108.
+    version '2.35'
+    # Use current glibc 2.35 stable branch commit, which avoids
+    # compilation failures.
+    source_url 'https://github.com/bminor/glibc/archive/293211b6fddf60fc407d21fcba0326dd2148f76b.zip'
+    source_sha256 '2e352a074ced0f3874a359f1ded6877d2e7891df337c97b2e9635c718499c9b2'
+    # source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.35.tar.xz'
+    # source_sha256 '5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
+
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_armv7l/glibc-2.35-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_armv7l/glibc-2.35-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_x86_64/glibc-2.35-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      aarch64: '7f7b85a8dffcc9d3812af50f5a1be279440d6366c570abc7bc4aad8d89b0c8a1',
+       armv7l: '7f7b85a8dffcc9d3812af50f5a1be279440d6366c570abc7bc4aad8d89b0c8a1',
+       x86_64: 'fbc0404951b9cbadf5f4dee37688a35dcccde730d60a8478fbd7c43fac9fe04b'
     })
   end
 
@@ -323,6 +342,27 @@ class Glibc < Package
         puts "patch -Np1 < #{patch} || true" if @opt_verbose
         system "patch -Np1 < #{patch} || true"
       end
+    when '2.35'
+      FileUtils.mkdir 'fedora'
+      # Patch to enable build-local-archive
+      system 'curl -Ls https://src.fedoraproject.org/rpms/glibc/raw/f30/f/glibc-fedora-locarchive.patch | \
+      hashpipe sha256 0acccf57d8c6e7de82871c61ccb845f7a1ae13ae1fbc65995d347de8367c7bb1 | \
+      patch -Np1 --binary'
+      system 'curl -Ls https://src.fedoraproject.org/rpms/glibc/raw/f30/f/build-locale-archive.c | \
+      hashpipe sha256 6834e8b8f2a987bf8adfd265c0e01665f102c7115db94b99ec36376b68e9d3fa > fedora/build-locale-archive.c'
+      system "sed -i 's,/lib/locale,/lib#{CREW_LIB_SUFFIX}/locale,g' fedora/build-locale-archive.c"
+      system "sed -i 's,/usr/sbin/tzdata-update,/bin/true,g' fedora/build-locale-archive.c"
+      system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
+      system "sed -i 's,be_quiet,locale_be_quiet,g' fedora/build-locale-archive.c"
+      @googlesource_branch = 'release-R109-15236.B'
+      system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+      # Remove conflicting patches.
+      FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.35/0005-Add-dlopen_with_offset-to-glibc.patch'
+      FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.35/0006-glibc-add-clang-style-FORTIFY.patch'
+      Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.35/*.patch').each do |patch|
+        puts "patch -Np1 < #{patch} || true" if @opt_verbose
+        system "patch -Np1 -F 10 -i #{patch} || true"
+      end
     end
   end
 
@@ -398,7 +438,7 @@ class Glibc < Package
         # Optimization flags from https://github.com/InBetweenNames/gentooLTO
         case ARCH
         when 'armv7l', 'aarch64'
-          system "env CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+          system "CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
             LD=ld ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
@@ -412,7 +452,7 @@ class Glibc < Package
             --disable-werror \
             --enable-bind-now \
             --enable-hacker-mode \
-            --enable-kernel=3.18 \
+            --enable-kernel=4.14 \
             --enable-shared \
             libc_cv_386_tls=yes \
             libc_cv_arm_tls=yes \
@@ -441,16 +481,14 @@ class Glibc < Package
           # install-symbolic-link segfaults on armv7l, but we're deleting
           # the libraries anyways, so it doesn't matter.
           system "sed -i 's,install-symbolic-link,/bin/true,g' ../Makefile"
-          system "sed -i 's,symbolic-link-prog := \$(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
+          system "sed -i 's,symbolic-link-prog := $(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
-          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
-          system "env \
-          CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
+          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}", mode: 'a+')
+          system "CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
             LD=ld ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-headers=#{CREW_PREFIX}/include \
-            --without-gd \
             ac_cv_header_cpuid_h=yes \
             ac_cv_lib_audit_audit_log_user_avc_message=no \
             ac_cv_lib_cap_cap_init=no \
@@ -460,7 +498,7 @@ class Glibc < Package
             --enable-bind-now \
             --enable-cet \
             --enable-hacker-mode \
-            --enable-kernel=3.10 \
+            --enable-kernel=4.14 \
             --enable-shared \
             libc_cv_386_tls=yes \
             libc_cv_arm_tls=yes \
@@ -484,11 +522,12 @@ class Glibc < Package
             --with-binutils=binutils \
             --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
             --without-cvs \
+            --without-gd \
             --without-selinux \
             "
         end
       end
-      system 'make -j 1'
+      system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
       if @libc_version.to_f >= 2.32
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
@@ -591,8 +630,12 @@ class Glibc < Package
         end
       end
     end
-    # libnsl is provided by perl
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/libnsl.so*")
+    # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
+    # For this to work, build on a M107 or newer container.
+    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
+
     # Remove libmount.so since it conflicts with the one from util_linux.
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
   end
