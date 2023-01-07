@@ -60,7 +60,7 @@ class Glibc < Package
        armv7l: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
        x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
     })
-  elsif @libc_version.to_f == 2.33 # All architectures with updates past M97.
+  elsif @libc_version == '2.33' # All architectures with updates past M97.
     version '2.33-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
