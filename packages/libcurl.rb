@@ -3,24 +3,24 @@ require 'package'
 class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.86.0'
+  @_ver = '7.87.0'
   version @_ver
   license 'curl'
   compatibility 'all'
   source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
-  source_sha256 '2d61116e5f485581f6d59865377df4463f2e788677ac43222b496d4e49fb627b'
+  source_sha256 'ee5f1a1955b0ed413435ef79db28b834ea5f0fb7c8cfb1ce47175cc3bee08fff'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.86.0_armv7l/libcurl-7.86.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.86.0_armv7l/libcurl-7.86.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.86.0_i686/libcurl-7.86.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.86.0_x86_64/libcurl-7.86.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.87.0_armv7l/libcurl-7.87.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.87.0_armv7l/libcurl-7.87.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.87.0_i686/libcurl-7.87.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcurl/7.87.0_x86_64/libcurl-7.87.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5e1dba3eef4a0cf7fd9c2edba1a1c5f823a2c3bbace196cb6102099f963aa3ad',
-     armv7l: '5e1dba3eef4a0cf7fd9c2edba1a1c5f823a2c3bbace196cb6102099f963aa3ad',
-       i686: '4f70bccbcc26c3182d76d542fa75b6ef70aea5352479fb2a24dd0b2af1f529c8',
-     x86_64: '8d579bd3ca36b7304e4505dd2a05a9872f667057b6974396d3c24a49727a416c'
+    aarch64: '146fecd53de78d2810efdfead7a174df08d697839001957bd7e9b31f57444bd4',
+     armv7l: '146fecd53de78d2810efdfead7a174df08d697839001957bd7e9b31f57444bd4',
+       i686: '8d717d14fab33421f6692190ce800c3ad3a906fdbbe580fff64ae86bf5d3a010',
+     x86_64: 'd2a65ba19146ce40827f7a281a3678542433f46cbe2a19ba9968086793265ac3'
   })
 
   depends_on 'brotli' # R
