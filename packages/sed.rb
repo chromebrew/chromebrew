@@ -3,40 +3,40 @@ require 'package'
 class Sed < Package
   description 'sed (stream editor) is a non-interactive command-line text editor.'
   homepage 'https://www.gnu.org/software/sed/'
-  version '4.8-1'
+  version '4.9'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/sed/sed-4.8.tar.xz'
-  source_sha256 'f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633'
+  source_url 'https://ftpmirror.gnu.org/sed/sed-4.9.tar.xz'
+  source_sha256 '6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.8-1_armv7l/sed-4.8-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.8-1_armv7l/sed-4.8-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.8-1_i686/sed-4.8-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.8-1_x86_64/sed-4.8-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_armv7l/sed-4.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_armv7l/sed-4.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_i686/sed-4.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sed/4.9_x86_64/sed-4.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fd595a2f1e13c1e961e25fc22cc3407d8cb6b294bdae42736ac25678f862ae79',
-     armv7l: 'fd595a2f1e13c1e961e25fc22cc3407d8cb6b294bdae42736ac25678f862ae79',
-       i686: '051be8f498eaefaa5d1abc57e19f3205927fa35fcbf5cdb0c10368a0a89ec760',
-     x86_64: '1d2c3988aa831e795c8a0f0b9c4345cd6e40c1df9a16960015bdef0aaf9e9387'
+    aarch64: '13f49db4006bd22a894f8c8f870635074438b1b125849ab14220e98205a6b56a',
+     armv7l: '13f49db4006bd22a894f8c8f870635074438b1b125849ab14220e98205a6b56a',
+       i686: 'b601023458812f12c08a5659d5e2033489f8a554fea17b92ea2761b909a3f863',
+     x86_64: 'b0072a360f9a1e921e183f380934b67b5203b6de2104ddfb0441080bd7954bfe'
   })
 
   depends_on 'acl'
+  depends_on 'glibc' # R
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-            --without-selinux"
+    system "./configure #{CREW_OPTIONS} --without-selinux"
     system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
   def self.check
     # Remove selinux tests since we're building without it.
     system "sed -i 's,testsuite/inplace-selinux.sh ,,' Makefile"
     system 'make', 'check'
+  end
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
