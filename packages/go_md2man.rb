@@ -25,7 +25,7 @@ class Go_md2man < Package
      x86_64: '28e764d9db64f7d5f4a4effdebcc9ba8cee3a52f42193789cd9e173bc31c187e'
   })
 
-  depends_on 'go'
+  depends_on 'go' => :build
   depends_on 'glibc' # R
 
   def self.build
