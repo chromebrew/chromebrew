@@ -3,42 +3,41 @@ require 'package'
 class Lvm2 < Package
   description 'LVM2 refers to the userspace toolset that provide logical volume management facilities on linux.'
   homepage 'https://sourceware.org/lvm2'
-  version '2.03.15'
+  version '2.03.18'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://sourceware.org/git/lvm2.git'
   git_hashtag "v#{version.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.15_armv7l/lvm2-2.03.15-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.15_armv7l/lvm2-2.03.15-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.15_i686/lvm2-2.03.15-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.15_x86_64/lvm2-2.03.15-chromeos-x86_64.tar.zst'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.15_i686/lvm2-2.03.15-chromeos-i686.tar.zst',
+ aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_armv7l/lvm2-2.03.18-chromeos-armv7l.tar.zst',
+  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_armv7l/lvm2-2.03.18-chromeos-armv7l.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_x86_64/lvm2-2.03.18-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8cfc43361bba3afa4985b060648be0d72adcb7a2e0f27a7fdf771e26adef7219',
-     armv7l: '8cfc43361bba3afa4985b060648be0d72adcb7a2e0f27a7fdf771e26adef7219',
-       i686: 'fcc82c8f6189cd3e7050db3b6a2d4b2e18f920888e438c94bbe1620331aa2932',
-     x86_64: 'c0cd04e473acf8aec4ca3030fce901c793b0b40947f1aa44b2be8b7fea863f24'
+    i686: 'fcc82c8f6189cd3e7050db3b6a2d4b2e18f920888e438c94bbe1620331aa2932',
+ aarch64: '267db66e0d088def3d3644b48fa5621eb05ed4641554de044186c093a3fbfecb',
+  armv7l: '267db66e0d088def3d3644b48fa5621eb05ed4641554de044186c093a3fbfecb',
+  x86_64: '8c7d270a64308d1cb541392abbc23174a09231cb99e1ac3bd5eff5e111d02542'
   })
 
-  depends_on 'libaio'
+  depends_on 'glibc' # R
+  depends_on 'libaio' # R
+  depends_on 'readline' # R
+  depends_on 'util_linux' # R
+
   no_env_options
 
   def self.build
-    # gold linker gives error: ltrans0.ltrans.o: multiple definition of 'dm_bitset_parse_list'
-    FileUtils.mkdir_p 'bin'
-    @pwd = `pwd`.chomp
-    FileUtils.cp "#{CREW_PREFIX}/bin/ld.lld", 'bin/ld'
-    system "#{CREW_ENV_OPTIONS.gsub('-fuse-ld=gold', '')} LD=ld.lld PATH=#{@pwd}/bin:\$PATH ./configure \
-      #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
       --disable-selinux \
       --enable-cmdlib \
       --enable-dmeventd \
       --enable-pkgconfig \
       --with-symvers=no \
       --with-confdir=#{CREW_PREFIX}/etc"
-    system "PATH=#{@pwd}/bin:\$PATH make"
+    system 'make'
   end
 
   def self.install

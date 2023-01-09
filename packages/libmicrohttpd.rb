@@ -3,34 +3,35 @@ require 'package'
 class Libmicrohttpd < Package
   description 'GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application.'
   homepage 'https://www.gnu.org/software/libmicrohttpd/'
-  version '0.9.58'
+  version '0.9.75'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-0.9.58.tar.gz'
-  source_sha256 '7a11e1376c62ff95bd6d2dfe6799d57ac7cdbcb32f70bfbd5e47c71f373e01f3'
+  source_url 'https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-0.9.75.tar.gz'
+  source_sha256 '9278907a6f571b391aab9644fd646a5108ed97311ec66f6359cebbedb0a4e3bb'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_armv7l/libmicrohttpd-0.9.58-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_i686/libmicrohttpd-0.9.58-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.58_x86_64/libmicrohttpd-0.9.58-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.75_armv7l/libmicrohttpd-0.9.75-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.75_armv7l/libmicrohttpd-0.9.75-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.75_i686/libmicrohttpd-0.9.75-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmicrohttpd/0.9.75_x86_64/libmicrohttpd-0.9.75-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '861604f225237f0ab46185d0b71fb8e405efe376c1c8014dc15ad1491ab76e8f',
-     armv7l: '861604f225237f0ab46185d0b71fb8e405efe376c1c8014dc15ad1491ab76e8f',
-       i686: '056291de57c0e46c8632cc4cc9f46d15aa4aab580777894694923ac8b2374ebe',
-     x86_64: 'aa41e8d0577c54de70b7f830be5780d5b9f5d92ccafca54570d9a97a9b7fda15'
+    aarch64: '206d5948a84b2c884464c974764806441076c64db7ce6c887cc4af3f33683950',
+     armv7l: '206d5948a84b2c884464c974764806441076c64db7ce6c887cc4af3f33683950',
+       i686: '7b97ae4618bc881864db1dfefc69643ff45c2946c9915e0c9d8254b4664f3bd3',
+     x86_64: 'f9d2926975d54adbf19858c8b2a2cb9b6e20368301a24aa168f7a10ec3228717'
   })
 
   depends_on 'diffutils' => :build
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "gzip -9 #{CREW_DEST_PREFIX}/share/man/man3/libmicrohttpd.3"
   end
 end

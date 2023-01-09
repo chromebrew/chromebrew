@@ -3,28 +3,27 @@ require 'package'
 class E2fsprogs < Package
   description 'e2fsprogs are ext2/3/4 file system utilities.'
   homepage 'http://e2fsprogs.sourceforge.net/'
-  @_ver = '1.46.2'
-  version "#{@_ver}-1"
+  @_ver = '1.46.5'
+  version @_ver
   license 'GPL-2 and BSD'
   compatibility 'all'
   source_url "https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v#{@_ver}/e2fsprogs-#{@_ver}.tar.xz"
-  source_sha256 '23aa093295c94e71ef1be490c4004871c5b01d216a8cb4d111fa6c0aac354168'
+  source_sha256 '2f16c9176704cf645dc69d5b15ff704ae722d665df38b2ed3cfc249757d8d81e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_armv7l/e2fsprogs-1.46.2-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_armv7l/e2fsprogs-1.46.2-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_i686/e2fsprogs-1.46.2-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.2-1_x86_64/e2fsprogs-1.46.2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_armv7l/e2fsprogs-1.46.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_armv7l/e2fsprogs-1.46.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_x86_64/e2fsprogs-1.46.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '572b1c252242a85862898afa75480a2d6b81352a9deb268e1d01021e2b477045',
-     armv7l: '572b1c252242a85862898afa75480a2d6b81352a9deb268e1d01021e2b477045',
-       i686: 'e0103e9ecb4e07110909da7405f8ef9a11961a990789a944a0e43271d82aec6b',
-     x86_64: 'aa77be21096e0f8f749cc4fc4f2e35d794ba70694a9e4d6b58c49353b5fe9138'
+    aarch64: 'd0ababe4b2faf85050132674cd3cf2b98563c22f5b8775557988a7c0e10f4aaa',
+     armv7l: 'd0ababe4b2faf85050132674cd3cf2b98563c22f5b8775557988a7c0e10f4aaa',
+     x86_64: 'c0f2abf8ec9388bc2539126557e8e7cfd0e2e9a9f2f8a8a564c2b29212aa84ba'
   })
 
   depends_on 'glibc' # R
   depends_on 'util_linux' # R
+  depends_on 'gcc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}\
