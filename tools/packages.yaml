@@ -920,6 +920,11 @@ url: https://github.com/cmus/cmus/releases
 activity: none
 ---
 kind: url
+name: cni_plugins
+url: https://github.com/containernetworking/plugins/releases
+activity: medium
+---
+kind: url
 name: codelite
 url: https://github.com/eranif/codelite/releases/
 activity: medium

@@ -73,6 +73,7 @@ class Containers_common < Package
 
   def self.install
     FileUtils.mkdir_p %W[
+      #{CREW_DEST_PREFIX}/etc/containers/networks
       #{CREW_DEST_PREFIX}/etc/containers/oci/hooks.d/
       #{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/
       #{CREW_DEST_PREFIX}/etc/containers/registries.d/
@@ -109,6 +110,26 @@ class Containers_common < Package
 
     Dir.chdir 'git' do
       Dir.chdir 'image' do
+        @registry_add = <<~'REGISTRY_ADD_EOF'
+          # Note that changing the order here may break tests.
+          unqualified-search-registries = ['docker.io', 'quay.io', 'registry.fedoraproject.org']
+
+          [[registry]]
+          # In Nov. 2020, Docker rate-limits image pulling.  To avoid hitting these
+          # limits while testing, always use the google mirror for qualified and
+          # unqualified `docker.io` images.
+          # Ref: https://cloud.google.com/container-registry/docs/pulling-cached-images
+          prefix="docker.io"
+          location="mirror.gcr.io"
+
+          # 2020-10-27 a number of images are not present in gcr.io, and podman
+          # barfs spectacularly when trying to fetch them. We've hand-copied
+          # those to quay, using skopeo copy --all ...
+          [[registry]]
+          prefix="docker.io/library"
+          location="quay.io/libpod"
+        REGISTRY_ADD_EOF
+        File.write('registries.conf', @registry_add, mode: 'a+')
         FileUtils.install 'registries.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
         Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
           FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/registries.conf", 'registries.conf'
@@ -172,6 +193,8 @@ class Containers_common < Package
   end
 
   def self.remove
+    return if CREW_IN_CONTAINER
+
     @config_file = "#{HOME}/.config/containers/policy.json"
     print "\nWould you like to remove the user container policy file #{@config_file} ? [y/N] "
     case $stdin.gets.chomp.downcase

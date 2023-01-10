@@ -18,13 +18,14 @@ class Podman < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'aced2c84f47e98085e4277b8e8b8628ed5c18bdc6e85c632fe0ac93bea4300a8',
-     armv7l: 'aced2c84f47e98085e4277b8e8b8628ed5c18bdc6e85c632fe0ac93bea4300a8',
-     x86_64: 'db54e6c863f485d214a25f63d0ca7c8b2b80886297eff6180b9472bd401f15bd'
+    aarch64: 'b166c1c4338769091181209f5801f1b7325eac547297dc07da630263ac03b703',
+     armv7l: 'b166c1c4338769091181209f5801f1b7325eac547297dc07da630263ac03b703',
+     x86_64: '1ffe8267bbe498d594766cc7a6a229650c9b33c955194309651fccb20c56bafe'
   })
 
   depends_on 'btrfsprogs' => :build
-  depends_on 'catatonit'
+  depends_on 'catatonit' # L
+  depends_on 'cni_plugins' # L
   depends_on 'containers_common' # L
   depends_on 'fuse_overlayfs' # L
   depends_on 'glibc' # R
@@ -42,6 +43,8 @@ class Podman < Package
     system "sed -i 's,/etc/containers/registries.conf,#{CREW_PREFIX}/etc/containers/registries.conf,' vendor/github.com/containers/image/v5/pkg/sysregistriesv2/paths_common.go"
     system "sed -i 's,/etc/containers/registries.conf.d,#{CREW_PREFIX}/etc/containers/registries.conf.d,' vendor/github.com/containers/image/v5/pkg/sysregistriesv2/paths_common.go"
     system "sed -i 's,/etc/containers/storage.conf,#{CREW_PREFIX}/etc/containers/storage.conf,' vendor/github.com/containers/storage/types/options_linux.go"
+    system "sed -i 's,/etc/cni/net.d/,#{CREW_PREFIX}/etc/cni/net.d/,' vendor/github.com/containers/common/libnetwork/network/interface_linux.go"
+    system "sed -i 's,/etc/containers/networks,#{CREW_PREFIX}/etc/containers/networks,' vendor/github.com/containers/common/libnetwork/network/interface_linux.go"
     system "sed -i 's,PREFIX ?= /usr/local,PREFIX = #{CREW_PREFIX},' Makefile"
   end
 
