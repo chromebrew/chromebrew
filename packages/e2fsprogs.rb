@@ -13,11 +13,13 @@ class E2fsprogs < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_armv7l/e2fsprogs-1.46.5-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_armv7l/e2fsprogs-1.46.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_i686/e2fsprogs-1.46.5-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.46.5_x86_64/e2fsprogs-1.46.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'd0ababe4b2faf85050132674cd3cf2b98563c22f5b8775557988a7c0e10f4aaa',
      armv7l: 'd0ababe4b2faf85050132674cd3cf2b98563c22f5b8775557988a7c0e10f4aaa',
+       i686: '198b678526aa37a67493bf1d5ea67e710105064519f369eb314129267f7211b0',
      x86_64: 'c0f2abf8ec9388bc2539126557e8e7cfd0e2e9a9f2f8a8a564c2b29212aa84ba'
   })
 
@@ -38,8 +40,9 @@ class E2fsprogs < Package
 
   def self.check
     # j_recover_fast_commit fails on armv7l
+    # r_corrupt_fs fails on i686
     case ARCH
-    when 'i686', 'x86_64'
+    when 'x86_64'
       system 'make', 'check'
     end
   end

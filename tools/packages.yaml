@@ -605,6 +605,11 @@ url: https://github.com/brave/brave-browser/releases/
 activity: high
 ---
 kind: url
+name: bridge_utils
+url: https://mirrors.edge.kernel.org/pub/linux/utils/net/bridge-utils/
+activity: medium
+---
+kind: url
 name: broadway
 url: https://developer.gnome.org/gtk3/stable/gtk-broadway.html
 activity: none
@@ -970,6 +975,16 @@ url: https://github.com/ConsoleKit2/ConsoleKit2/releases
 activity: low
 ---
 kind: url
+name: containerd
+url: https://github.com/containerd/containerd/releases
+activity: medium
+---
+kind: url
+name: containers_common
+url: https://github.com/containers/common/releases
+activity: medium
+---
+kind: url
 name: coreutils
 url: https://ftp.gnu.org/gnu/coreutils
 activity: low
@@ -1278,6 +1293,16 @@ kind: url
 name: docbook2x
 url: https://sourceforge.net/projects/docbook2x/files/docbook2x/
 activity: none
+---
+kind: url
+name: docker
+url: https://github.com/docker/cli/releases
+activity: medium
+---
+kind: url
+name: docker_systemctl_replacement
+url: https://github.com/gdraheim/docker-systemctl-replacement/releases
+activity: low
 ---
 kind: url
 name: docx2txt
@@ -1960,6 +1985,11 @@ url: https://github.com/libfuse/libfuse/releases
 activity: high
 ---
 kind: url
+name: fuse_overlayfs
+url: https://github.com/containers/fuse-overlayfs/releases
+activity: medium
+---
+kind: url
 name: fzf
 url: https://github.com/junegunn/fzf/releases
 activity: low
@@ -2473,6 +2503,11 @@ kind: url
 name: go_fetch
 url: https://github.com/gruntwork-io/fetch/releases
 activity: medium
+---
+kind: url
+name: go_md2man
+url: https://github.com/cpuguy83/go-md2man/releases
+activity: low
 ---
 kind: url
 name: go_tools
@@ -3040,6 +3075,11 @@ url: https://github.com/ipfs/go-ipfs/releases
 activity: high
 ---
 kind: url
+name: iproute2
+url: https://www.kernel.org/pub/linux/utils/net/iproute2
+activity: high
+---
+kind: url
 name: iptables
 url: https://www.netfilter.org/projects/iptables/files
 activity: low
@@ -3483,6 +3523,12 @@ kind: url
 name: libbluray
 url: https://get.videolan.org/libbluray/
 activity: low
+---
+---
+kind: url
+name: libbpf
+url: hhttps://github.com/libbpf/libbpf/releases
+activity: medium
 ---
 kind: url
 name: libbsd
@@ -5100,6 +5146,11 @@ url: http://download.savannah.gnu.org/releases/man-db
 activity: medium
 ---
 kind: url
+name: mandown
+url: https://gitlab.com/kornelski/mandown/-/tags
+activity: low
+---
+kind: url
 name: manpages
 url: https://www.kernel.org/pub/linux/docs/man-pages
 activity: medium
@@ -5568,6 +5619,11 @@ kind: url
 name: neovim
 url: https://github.com/neovim/neovim/releases
 activity: low
+---
+kind: url
+name: netavark
+url: https://github.com/containers/netavark/releases
+activity: medium
 ---
 kind: url
 name: netbeans
@@ -7048,6 +7104,11 @@ kind: url
 name: ruby_yaml_lint
 url: https://github.com/Pryz/yaml-lint/releases
 activity: none
+---
+kind: url
+name: runc
+url: hhttps://github.com/opencontainers/runc/releases
+activity: medium
 ---
 kind: url
 name: rush
