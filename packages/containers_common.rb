@@ -19,21 +19,21 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '06f20054310a55b9371336b4b5cd88b6a9f89d3f85702d1e99b21aec7fa13123',
-     armv7l: '06f20054310a55b9371336b4b5cd88b6a9f89d3f85702d1e99b21aec7fa13123',
-       i686: '80811ec2080d153dd4f470c7e92413dc8cc61526241749391237a2eec86e0405',
-     x86_64: '1597d590420e90de5edbca768026642871c0849aeb7566b8ed55a22be7dc9d99'
+    aarch64: 'ba345b5deb1294ed0e4976fa9037a871f3f303fec404fabd2c91aba967fd258a',
+     armv7l: 'ba345b5deb1294ed0e4976fa9037a871f3f303fec404fabd2c91aba967fd258a',
+       i686: 'f4af8a3a7e200be8e2282ae8d6f49e990bb3da513953de78d746064bad1ad567',
+     x86_64: 'c493c0b509a7f6fccfe70fa100357b195223720cfe4af09e9231704e485cbc41'
   })
 
   depends_on 'netavark'
   depends_on 'go_md2man' => :build
 
   def self.build
-    @image_version = 'v5.20.0'
-    @podman_version = 'v4.0.2'
+    @image_version = 'v5.23.1'
+    @podman_version = 'v4.3.1'
     @shortnames_version = 'v2022.02.08'
-    @skopeo_version = 'v1.6.1'
-    @storage_version = 'v1.38.2'
+    @skopeo_version = 'v1.9.3'
+    @storage_version = 'v1.43.1'
     Dir.chdir 'docs' do
       system 'for _man_page in *.md
       do
@@ -56,9 +56,6 @@ class Containers_common < Package
         done'
       end
       system "git clone --depth 1 --branch #{@podman_version} https://github.com/containers/podman.git"
-      Dir.chdir 'podman' do
-        system 'go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out oci-hooks.5'
-      end
       system "git clone --depth 1 --branch #{@shortnames_version} https://github.com/containers/shortnames.git"
       system "git clone --depth 1 --branch #{@skopeo_version} https://github.com/containers/skopeo.git"
       system "git clone --depth 1 --branch #{@storage_version} https://github.com/containers/storage.git"
@@ -74,6 +71,7 @@ class Containers_common < Package
     FileUtils.mkdir_p %W[
       #{CREW_DEST_PREFIX}/etc/containers/oci/hooks.d/
       #{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/
+      #{CREW_DEST_PREFIX}/etc/containers/registries.d/
       #{CREW_DEST_PREFIX}/share/containers/oci/hooks.d/
       #{CREW_DEST_PREFIX}/var/lib/containers/
       #{CREW_DEST_MAN_PREFIX}/man1/
@@ -84,35 +82,36 @@ class Containers_common < Package
       # containers-mounts.conf for further information)
     MOUNTS_CONF_EOF
     File.write("#{CREW_DEST_PREFIX}/etc/containers/mounts.conf", @mounts_conf, perm: 0o644)
-    system "install -vDm 644 pkg/config/containers.conf -t #{CREW_DEST_PREFIX}/etc/containers/"
-    system "install -vDm 644 pkg/config/containers.conf -t #{CREW_DEST_PREFIX}/share/containers/"
-    system "install -vDm 644 pkg/seccomp/seccomp.json -t #{CREW_DEST_PREFIX}/etc/containers/"
-    system "install -vDm 644 pkg/seccomp/seccomp.json -t #{CREW_DEST_PREFIX}/share/containers/"
-    system "install -vDm 644 docs/*.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+    FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+    FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+    FileUtils.install 'pkg/seccomp/seccomp.json', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+    FileUtils.install 'pkg/seccomp/seccomp.json', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+    FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
 
     Dir.chdir 'git' do
       Dir.chdir 'image' do
-        system "install -vDm 644 registries.conf -t #{CREW_DEST_PREFIX}/etc/containers/"
+        FileUtils.install 'registries.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
 
-        system "install -vDm 644 docs/*.1 -t #{CREW_DEST_MAN_PREFIX}/man1/"
-        system "install -vDm 644 docs/man5/*.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+        FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+        FileUtils.install Dir['docs/man5/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
       Dir.chdir 'podman' do
-        system "install -vDm 644 *.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+        FileUtils.install Dir['*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
 
       Dir.chdir 'shortnames' do
-        system "install -vDm 644 shortnames.conf #{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/00-shortnames.conf"
+        FileUtils.install 'shortnames.conf', "#{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/00-shortnames.conf",
+mode: 0o644
       end
       Dir.chdir 'skopeo' do
-        system "install -vDm 644 default-policy.json #{CREW_DEST_PREFIX}/etc/containers/policy.json"
-        system "install -vDm 644 default.yaml -t #{CREW_DEST_PREFIX}/etc/containers/registries.d/"
+        FileUtils.install 'default-policy.json', "#{CREW_DEST_PREFIX}/etc/containers/policy.json", mode: 0o644
+        FileUtils.install 'default.yaml', "#{CREW_DEST_PREFIX}/etc/containers/registries.d/", mode: 0o644
       end
       Dir.chdir 'storage' do
-        system "install -vDm 644 storage.conf -t #{CREW_DEST_PREFIX}/etc/containers/"
-        system "install -vDm 644 storage.conf -t #{CREW_DEST_PREFIX}/share/containers/"
-        system "install -vDm 644 docs/*.1 -t #{CREW_DEST_MAN_PREFIX}/man1/"
-        system "install -vDm 644 docs/*.5 -t #{CREW_DEST_MAN_PREFIX}/man5/"
+        FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+        FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+        FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+        FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
     end
   end
