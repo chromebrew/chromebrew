@@ -176,7 +176,7 @@ class Containers_common < Package
     print "\nWould you like to remove the user container policy file #{@config_file} ? [y/N] "
     case $stdin.gets.chomp.downcase
     when 'y', 'yes'
-      FileUtils.rm_rf config_dir
+      FileUtils.rm_rf @config_file
       puts "#{@config_file} removed.".lightred
     else
       puts "#{@config_file} saved.".lightgreen
