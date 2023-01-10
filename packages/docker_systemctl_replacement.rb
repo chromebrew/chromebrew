@@ -23,7 +23,6 @@ class Docker_systemctl_replacement < Package
   })
 
   depends_on 'python3'
-  no_fhs
 
   def self.patch
     system "sed -i 's,/usr/bin/python3,#{CREW_PREFIX}/bin/python3,g' files/docker/systemctl3.py"

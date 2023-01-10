@@ -37,7 +37,7 @@ class Btrfsprogs < Package
             --disable-documentation \
             --disable-convert \
             --with-crypto=libgcrypt \
-            --with-convert=ext2"  # Convert fails to build, help appreciated
+            --with-convert=ext2"
     system 'make'
   end
 

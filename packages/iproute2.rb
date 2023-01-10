@@ -8,28 +8,25 @@ class Iproute2 < Package
   homepage 'https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
   version '6.1.0'
   license 'GPL2'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.1.0.tar.xz'
   source_sha256 '5ce12a0fec6b212725ef218735941b2dab76244db7e72646a76021b0537b43ab'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/5.16.0_i686/iproute2-5.16.0-chromeos-i686.tar.zst',
- aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_armv7l/iproute2-6.1.0-chromeos-armv7l.tar.zst',
-  armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_armv7l/iproute2-6.1.0-chromeos-armv7l.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_x86_64/iproute2-6.1.0-chromeos-x86_64.tar.zst'
-  })
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_armv7l/iproute2-6.1.0-chromeos-armv7l.tar.zst',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_armv7l/iproute2-6.1.0-chromeos-armv7l.tar.zst',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iproute2/6.1.0_x86_64/iproute2-6.1.0-chromeos-x86_64.tar.zst'
+    })
   binary_sha256({
-    i686: '70fbd1ce18158a5ab4b8f2f66c21c4b76d1e15a56f11bfe6094f5d5929f8e9a1',
- aarch64: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
-  armv7l: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
-  x86_64: '72308fddc001ba8a049f347337d5c26c02853695daae8042319381f272c00a3a'
+     aarch64: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
+      armv7l: '5f7277867d9fb2192273a7defb083dbe4dfb2dc7e0afc65049418a8c5c0bebef',
+      x86_64: '72308fddc001ba8a049f347337d5c26c02853695daae8042319381f272c00a3a'
   })
 
   depends_on 'elfutils' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'iptables' # R
-  depends_on 'libbpf' # R
   depends_on 'libbpf' unless ARCH == 'i686'
   depends_on 'libcap' # R
   depends_on 'libtirpc' # R

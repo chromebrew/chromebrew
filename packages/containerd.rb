@@ -7,7 +7,7 @@ class Containerd < Package
   description 'An open and reliable container runtime'
   homepage 'https://containerd.io/'
   version '1.6.15'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   license 'Apache'
   source_url 'https://github.com/containerd/containerd.git'
   git_hashtag "v#{version}"

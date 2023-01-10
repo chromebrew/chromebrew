@@ -34,8 +34,5 @@ class Libtirpc < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # system "mkdir #{CREW_DEST_PREFIX}/include/rpc"
-    # system "mv #{CREW_DEST_PREFIX}/include/tirpc/rpc/* #{CREW_DEST_PREFIX}/include/rpc/"
-    # system "curl -Lo #{CREW_DEST_PREFIX}/include/netconfig.h https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/include/netconfig.h"
   end
 end

@@ -8,7 +8,7 @@ class Libbpf < Package
   homepage 'https://github.com/libbpf/libbpf'
   version '1.1.0'
   license 'LGPL2.1'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libbpf/libbpf.git'
   git_hashtag "v#{version}"
 

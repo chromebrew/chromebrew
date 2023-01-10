@@ -5,7 +5,7 @@ class Iptables < Package
   homepage 'https://www.netfilter.org/projects/iptables/'
   version '1.8.8'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://www.netfilter.org/projects/iptables/files/iptables-1.8.8.tar.bz2'
   source_sha256 '71c75889dc710676631553eb1511da0177bbaaf1b551265b912d236c3f51859f'
 
