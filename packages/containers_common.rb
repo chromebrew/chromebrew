@@ -150,8 +150,11 @@ class Containers_common < Package
   def self.postinstall
     # Podman will not work unless a local policy.json file is populated.
     @user_container_policy = File.file?("#{HOME}/.config/containers/policy.json")
+    return if @user_container_policy && FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
+
     @create_user_container_policy = true unless @user_container_policy
     @create_user_container_ask = true if @user_container_policy
+    FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
     if @create_user_container_ask
       print "\nWould you like to overwrite the local container policy file? [y/N] "
       case $stdin.gets.chomp.downcase
