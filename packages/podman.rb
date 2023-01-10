@@ -34,6 +34,7 @@ class Podman < Package
   depends_on 'gpgme' # R
   depends_on 'libseccomp' # R
   depends_on 'lvm2' # R
+  depends_on 'runc' # L
 
   no_fhs
 
