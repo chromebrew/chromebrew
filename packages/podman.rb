@@ -18,9 +18,9 @@ class Podman < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c79e7fb8fb5a07d63f0adae358673b6c3ee71d5061cf16678fff89f386b76887',
-     armv7l: 'c79e7fb8fb5a07d63f0adae358673b6c3ee71d5061cf16678fff89f386b76887',
-     x86_64: 'fc321157beacd2d9ee9f3699f2a0c33eb38418e3e36b8118f9525e83d8fab129'
+    aarch64: '0bee1e0a63cc8dd3224dab5099079e1204f43ff17a962c70483ac55a48c656b9',
+     armv7l: '0bee1e0a63cc8dd3224dab5099079e1204f43ff17a962c70483ac55a48c656b9',
+     x86_64: 'f3b80cb83ffc501f238022a64e068227a5618d43d87eacfb2a385d33be198171'
   })
 
   depends_on 'btrfsprogs' => :build
@@ -38,6 +38,7 @@ class Podman < Package
 
   def self.patch
     system "sed -i 's,/usr/libexec/podman/catatonit,#{CREW_PREFIX}/bin/catatonit,g' vendor/github.com/containers/common/pkg/config/default.go"
+    system "sed -i 's,/etc/containers/policy.json,#{CREW_PREFIX}/etc/containers/policy.json,' vendor/github.com/containers/image/v5/signature/policy_paths_common.go"
     system "sed -i 's,PREFIX ?= /usr/local,PREFIX = #{CREW_PREFIX},' Makefile"
   end
 
