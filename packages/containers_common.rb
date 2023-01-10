@@ -155,7 +155,7 @@ class Containers_common < Package
     if @create_user_container_ask
       return if FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
 
-      print "\nWould you like to overwrite the local container policy file? [y/N] "
+      print "\nWould you like to overwrite the local container policy file with the package default? [y/N] "
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         @create_user_container_policy = true
@@ -171,9 +171,14 @@ class Containers_common < Package
   end
 
   def self.remove
-    return unless File.exist?("#{HOME}/.config/containers/policy.json")
-
-    # Only remove the container policy file if it is the same as the default.
-    FileUtils.rm_f "#{HOME}/.config/containers/policy.json" if FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
+    @config_file = "#{CREW_PREFIX}/etc/containers/policy.json"
+    print "\nWould you like to remove the local container policy file #{@config_file} ? [y/N] "
+    case $stdin.gets.chomp.downcase
+    when 'y', 'yes'
+      FileUtils.rm_rf config_dir
+      puts "#{@config_file} removed.".lightred
+    else
+      puts "#{@config_file} saved.".lightgreen
+    end
   end
 end
