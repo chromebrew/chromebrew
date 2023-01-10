@@ -13,14 +13,14 @@ class Containerd < Package
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_armv7l/containerd-1.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_armv7l/containerd-1.6.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.1_x86_64/containerd-1.6.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.15_armv7l/containerd-1.6.15-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.15_armv7l/containerd-1.6.15-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.15_x86_64/containerd-1.6.15-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ba0e2edf47204f1dfb0dc009cfe9e92eaa51e269dd07333783d33e9fb6b7a73d',
-     armv7l: 'ba0e2edf47204f1dfb0dc009cfe9e92eaa51e269dd07333783d33e9fb6b7a73d',
-     x86_64: 'a16adc6e1e3bf5ab88439c5dc6c31a7d49e91e93f3b9e1e6e3f41644ec23ae44'
+    aarch64: '9066f34834804c72df3922cbd3048134fc97f98419ff419d47ed5c041f3bdc1f',
+     armv7l: '9066f34834804c72df3922cbd3048134fc97f98419ff419d47ed5c041f3bdc1f',
+     x86_64: '7798ed903b72b0ffd21313082332ad2664ce67a27655b6149c85f82354a6968c'
   })
 
   depends_on 'docker_systemctl_replacement'
