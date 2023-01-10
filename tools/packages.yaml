@@ -720,6 +720,11 @@ url: https://github.com/lu-zero/cargo-c/releases
 activity: high
 ---
 kind: url
+name: catatonit
+url: https://github.com/openSUSE/catatonit/releases
+activity: low
+---
+kind: url
 name: cbase
 url: http://www.hyperrealm.com/packages
 activity: none
