@@ -18,9 +18,9 @@ class Libbpf < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbpf/1.1.0_x86_64/libbpf-1.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fe66b50e10b69c3fe432ee271e6513718af791b9cec9bb0b8e5379d95e71fc78',
-     armv7l: 'fe66b50e10b69c3fe432ee271e6513718af791b9cec9bb0b8e5379d95e71fc78',
-     x86_64: 'ea164c187e69e6e8871ca17f3fd9dbfcaa9ff81680950c0b57cae82251721f26'
+    aarch64: '7cc452dff12174b961543b3553395eb7f1cdaf0447a3adcb65d250a25a94571a',
+     armv7l: '7cc452dff12174b961543b3553395eb7f1cdaf0447a3adcb65d250a25a94571a',
+     x86_64: '2c42149ed642aca1295c9b2fe288fdaa012b190d9f77dc6e0e4bbd027c2959ff'
   })
 
   depends_on 'elfutils' # R
