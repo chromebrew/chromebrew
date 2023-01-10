@@ -1260,6 +1260,11 @@ url: https://sourceforge.net/projects/disktype/files/disktype/
 activity: none
 ---
 kind: url
+name: distrobox
+url: https://github.com/89luca89/distrobox/releases
+activity: high
+---
+kind: url
 name: diy
 url: https://github.com/diatomic/diy/releases
 activity: none
