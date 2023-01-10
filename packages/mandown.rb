@@ -35,6 +35,7 @@ class Mandown < Package
 
   def self.install
     system 'cargo build --release --locked --all-features --target-dir=target'
-    system "install -Dm 755 target/release/mandown -t #{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.install 'target/release/mandown', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
   end
 end

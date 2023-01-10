@@ -43,9 +43,9 @@ class Runc < Package
   def self.install
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin/ #{CREW_DEST_MAN_PREFIX}/man8
                          #{CREW_DEST_PREFIX}/share/bash-completion/completions]
-    system "install -Dm755 runc #{CREW_DEST_PREFIX}/bin/runc"
-    system "install -Dm644 contrib/completions/bash/runc \
-      #{CREW_DEST_PREFIX}/share/bash-completion/completions/runc"
-    system "install -m644 man/man8/*.8 #{CREW_DEST_MAN_PREFIX}/man8"
+    FileUtils.install 'runc', "#{CREW_DEST_PREFIX}/bin/runc", mode: 0o755
+    FileUtils.install 'contrib/completions/bash/runc',
+                      "#{CREW_DEST_PREFIX}/share/bash-completion/completions/runc", mode: 0o644
+    FileUtils.install Dir['man/man8/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
   end
 end
