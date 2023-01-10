@@ -8,19 +8,19 @@ class Podman < Package
   homepage 'https://github.com/containers/podman'
   version '4.3.1'
   license 'Apache'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://github.com/containers/podman.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_armv7l/podman-4.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_armv7l/podman-4.3.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
+     aarch64: 'file:///usr/local/tmp/packages/podman-4.3.1-chromeos-armv7l.tar.zst',
+      armv7l: 'file:///usr/local/tmp/packages/podman-4.3.1-chromeos-armv7l.tar.zst',
+      x86_64: 'file:///usr/local/tmp/packages/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a3463bf6ec42a9e8aadc258813e2ea0c7dd7653f731cff0013e49e14e654a61d',
-     armv7l: 'a3463bf6ec42a9e8aadc258813e2ea0c7dd7653f731cff0013e49e14e654a61d',
-     x86_64: '71cf3e1d3403473d6b2fc120ea7b4cfbad753023c33010457816e3f5632bfd50'
+     aarch64: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
+      armv7l: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
+      x86_64: 'ae4c383f25fb63d92f505c830cd1788660b2d351433454e4352ffdd47413270a'
   })
 
   depends_on 'btrfsprogs' => :build
@@ -32,6 +32,7 @@ class Podman < Package
   depends_on 'go_md2man' => :build
   depends_on 'gpgme' # R
   depends_on 'libseccomp' # R
+  depends_on 'lvm2' # R
 
   no_fhs
 
@@ -41,18 +42,18 @@ class Podman < Package
     system "sed -i 's,/var/lib/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' vendor/github.com/containers/storage/storage.conf"
     system "sed -i 's,\\$HOME/.local/share/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' vendor/github.com/containers/storage/storage.conf"
     system "sed -i 's,# rootless_storage_path,rootless_storage_path,g' vendor/github.com/containers/storage/storage.conf"
+    system "sed -i 's,PREFIX ?= /usr/local,PREFIX = #{CREW_PREFIX},' Makefile"
   end
 
   def self.build
-    system "GOFLAGS='-buildmode=pie -trimpath' make EXTRA_LDFLAGS='-s -w -linkmode=external'"
+    system "GOFLAGS='-buildmode=pie -trimpath' BUILDTAGS="" make EXTRA_LDFLAGS='-s -w -linkmode=external'"
     system 'make docker-docs'
   end
 
   def self.install
-    @xdg_config_home = "#{CREW_DEST_PREFIX}/.config"
-    FileUtils.mkdir_p %W[#{@xdg_config_home}/containers #{CREW_DEST_PREFIX}/var/run/containers/storage
+    FileUtils.mkdir_p %W[#{CREW_PREFIX}/etc/containers #{CREW_DEST_PREFIX}/var/run/containers/storage
                          #{CREW_DEST_PREFIX}/var/lib/containers/storage]
-    FileUtils.install 'vendor/github.com/containers/storage/storage.conf', "#{@xdg_config_home}/containers/",
+    FileUtils.install 'vendor/github.com/containers/storage/storage.conf', "#{CREW_PREFIX}/etc/containers/",
                       mode: 0o644
     system "make install install.completions install.docker-full DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} LIBEXECDIR=#{CREW_LIB_PREFIX}"
     # Remove conflicts with containers_common.

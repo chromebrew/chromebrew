@@ -10,16 +10,16 @@ class Lvm2 < Package
   git_hashtag "v#{version.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_armv7l/lvm2-2.03.18-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_armv7l/lvm2-2.03.18-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_i686/lvm2-2.03.18-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_x86_64/lvm2-2.03.18-chromeos-x86_64.tar.zst'
+     aarch64: 'file:///usr/local/tmp/packages/lvm2-2.03.18-chromeos-armv7l.tar.zst',
+      armv7l: 'file:///usr/local/tmp/packages/lvm2-2.03.18-chromeos-armv7l.tar.zst',
+        i686: 'file:///usr/local/tmp/packages/lvm2-2.03.18-chromeos-i686.tar.zst',
+      x86_64: 'file:///usr/local/tmp/packages/lvm2-2.03.18-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '267db66e0d088def3d3644b48fa5621eb05ed4641554de044186c093a3fbfecb',
-     armv7l: '267db66e0d088def3d3644b48fa5621eb05ed4641554de044186c093a3fbfecb',
-       i686: '0d3c7c5e3322a8244e970dfa09e21ab50f54d34a1219725f0b7fad0658378ca4',
-     x86_64: '8c7d270a64308d1cb541392abbc23174a09231cb99e1ac3bd5eff5e111d02542'
+     aarch64: 'd9505883f72c0ad509c453c81b1489f46bd90704486e6ad5850905329ff4281e',
+      armv7l: 'd9505883f72c0ad509c453c81b1489f46bd90704486e6ad5850905329ff4281e',
+        i686: 'b25d5d6fe3efb61b9c3355d699e2cb7c076497925dc3125ee3019dabd474bd1c',
+      x86_64: '6dfd9b44c1b7fae9e5bea128a278091b225dd626fb112169519f0541bfeb4d81'
   })
 
   depends_on 'glibc' # R
@@ -27,15 +27,16 @@ class Lvm2 < Package
   depends_on 'readline' # R
   depends_on 'util_linux' # R
 
-  no_env_options
-
   def self.build
     system "./configure #{CREW_OPTIONS} \
+      --localstatedir=#{CREW_PREFIX}/var \
       --disable-selinux \
       --enable-cmdlib \
       --enable-dmeventd \
       --enable-pkgconfig \
-      --with-symvers=no \
+      --enable-readline \
+      --with-cache=internal \
+      --with-thin=internal \
       --with-confdir=#{CREW_PREFIX}/etc"
     system 'make'
   end
