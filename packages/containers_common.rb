@@ -169,7 +169,9 @@ class Containers_common < Package
   end
 
   def self.remove
+    return unless File.exist?("#{HOME}/.config/containers/policy.json")
+
     # Only remove the container policy file if it is the same as the default.
-    FileUtils.rm_f "#{HOME}/.config/containers/policy.json" if File.exist?("#{HOME}/.config/containers/policy.json") && FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
+    FileUtils.rm_f "#{HOME}/.config/containers/policy.json" if FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
   end
 end
