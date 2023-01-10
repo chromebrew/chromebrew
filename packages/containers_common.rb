@@ -19,14 +19,16 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '77337b8b18fa1748eabc22813c74d3ae36c91e9080b15e97de1c6d4b02591ddd',
-     armv7l: '77337b8b18fa1748eabc22813c74d3ae36c91e9080b15e97de1c6d4b02591ddd',
-       i686: '221abed7e9b7fe9a5aaf56b8577e03844804d777c3d375e984bbf8f5a7b6fb5c',
-     x86_64: 'fcc496562d3e7b76b8b0aadb68658f1a933362f4dea263bbb775a39f77767cba'
+    aarch64: 'e72891a84dc9e8c60ffe236f478aadd51f0e1c3e88da3f004c47ec33d224e110',
+     armv7l: 'e72891a84dc9e8c60ffe236f478aadd51f0e1c3e88da3f004c47ec33d224e110',
+       i686: '73d80e5d88b304397d93626bd26817e5fc08a4a23c46389a64e32d4a91faeb1f',
+     x86_64: 'af9bfc1e77c12af34b9905756b5a16c74584ce77ff0e6ceb4be130543f6a145a'
   })
 
   depends_on 'netavark'
   depends_on 'go_md2man' => :build
+
+  no_fhs
 
   def self.build
     @image_version = 'v5.23.1'
@@ -74,6 +76,7 @@ class Containers_common < Package
       #{CREW_DEST_PREFIX}/etc/containers/registries.d/
       #{CREW_DEST_PREFIX}/share/containers/oci/hooks.d/
       #{CREW_DEST_PREFIX}/var/lib/containers/
+      #{CREW_DEST_PREFIX}/.config/containers/
       #{CREW_DEST_MAN_PREFIX}/man1/
       #{CREW_DEST_MAN_PREFIX}/man5/
     ]
@@ -113,6 +116,9 @@ class Containers_common < Package
         system "sed -i 's,\\$HOME/.local/share/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' storage.conf"
         system "sed -i 's,# rootless_storage_path,rootless_storage_path,g' storage.conf"
         FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+        Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
+          FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/storage.conf", 'storage.conf'
+        end
         FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
         FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
         FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
