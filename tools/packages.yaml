@@ -975,6 +975,11 @@ url: https://github.com/ojab/BLFS/releases
 activity: low
 ---
 kind: url
+name: conmon
+url: https://github.com/containers/conmon/releases
+activity: high
+---
+kind: url
 name: consolekit
 url: https://github.com/ConsoleKit2/ConsoleKit2/releases
 activity: low

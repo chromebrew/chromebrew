@@ -23,6 +23,7 @@ class Distrobox < Package
      x86_64: 'f9db02ef1b5ab56c45fe7f0916137c86d730e72a9ff2fd4af17b3ad1ef08da63'
   })
 
+  depends_on 'conmon' # L
   depends_on 'podman'
 
   def self.install
