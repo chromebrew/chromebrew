@@ -18,9 +18,9 @@ class Podman < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e3571233bc5fb9838cec80c26c7b278f8e4db2bb370f563fe7f6ee181386baa9',
-     armv7l: 'e3571233bc5fb9838cec80c26c7b278f8e4db2bb370f563fe7f6ee181386baa9',
-     x86_64: 'c1fcbd1ee007f997cf4ca1e7ad73e12c0fad8a0c01bb3120531fe1c280a53f23'
+    aarch64: 'c79e7fb8fb5a07d63f0adae358673b6c3ee71d5061cf16678fff89f386b76887',
+     armv7l: 'c79e7fb8fb5a07d63f0adae358673b6c3ee71d5061cf16678fff89f386b76887',
+     x86_64: 'fc321157beacd2d9ee9f3699f2a0c33eb38418e3e36b8118f9525e83d8fab129'
   })
 
   depends_on 'btrfsprogs' => :build
@@ -42,7 +42,7 @@ class Podman < Package
   end
 
   def self.build
-    system "GOFLAGS='-buildmode=pie -trimpath' BUILDTAGS="" make EXTRA_LDFLAGS='-s -w -linkmode=external'"
+    system "GOFLAGS='-buildmode=pie -trimpath' BUILDTAGS="" make EXTRA_LDFLAGS='-s -w -linkmode=external -X github.com/containers/image/signature.systemDefaultPolicyPath=#{CREW_PREFIX}/etc/containers/policy.json'"
     system 'make docker-docs'
   end
 

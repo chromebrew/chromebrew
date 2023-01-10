@@ -39,6 +39,5 @@ class Libbpf < Package
 
   def self.install
     system "make -C src DESTDIR=#{CREW_DEST_DIR} LIBSUBDIR=#{ARCH_LIB} install install_headers"
-    system "install -Dm 644 README.md -t #{CREW_DEST_PREFIX}/share/doc/libbpf"
   end
 end
