@@ -26,8 +26,8 @@ class Runc < Package
   })
 
   depends_on 'libseccomp' # R
-  depends_on 'go' => ':build'
-  depends_on 'go_md2man' => ':build'
+  depends_on 'go' => :build
+  depends_on 'go_md2man' => :build
   depends_on 'glibc' # R
 
   def self.build
