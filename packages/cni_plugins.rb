@@ -19,10 +19,10 @@ class Cni_plugins < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cni_plugins/1.1.1_x86_64/cni_plugins-1.1.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ed64d05531ed07aeceb7fd839979dc30b310d286cd8b78ab024df944bae992cb',
-     armv7l: 'ed64d05531ed07aeceb7fd839979dc30b310d286cd8b78ab024df944bae992cb',
-       i686: '3d4b4bdae5e1390d49f7ec16de46ba44094f3de3908807100bed64b325b12a68',
-     x86_64: 'e69d81655b9138e6723b438a1b880de35035f9e8bb349fa98bf4846f4a3a0833'
+    aarch64: '3b8fda3df8740b15ee87fe6d993525b8b8ef17371e18bfde042e4212646ac05f',
+     armv7l: '3b8fda3df8740b15ee87fe6d993525b8b8ef17371e18bfde042e4212646ac05f',
+       i686: 'a8d8248955525a82f0e5a4be964e001829fa9f904b3c9a996046a0fff97d1981',
+     x86_64: 'fd612dffe632d8d6933a3a77e54276cdb755c103a75727008452a497c90f4736'
   })
 
   depends_on 'glibc'
@@ -33,7 +33,7 @@ class Cni_plugins < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/etc/cni/net.d]
-    FileUtils.install Dir['bin/*'], "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/libexec/cni #{CREW_DEST_PREFIX}/etc/cni/net.d]
+    FileUtils.install Dir['bin/*'], "#{CREW_DEST_PREFIX}/libexec/cni/", mode: 0o755
   end
 end
