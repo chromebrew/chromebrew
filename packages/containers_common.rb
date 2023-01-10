@@ -19,10 +19,10 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '686298740d756f41be62f903176ba69e74a79ec7c66285f855687d67f29cbeed',
-     armv7l: '686298740d756f41be62f903176ba69e74a79ec7c66285f855687d67f29cbeed',
-       i686: '7cff822e9e68b40044b25715e5771fa372d410725038d2efb127a4c1b9dbf9e5',
-     x86_64: '44d2bb8ae915f1d52acc416ad31753f835cb77dac476b6bf1d4861cdf2de188e'
+    aarch64: '6392ff4aa23fd338970ed7e5e80d5bb752e8ab9aef9c86c4017992981801d4e7',
+     armv7l: '6392ff4aa23fd338970ed7e5e80d5bb752e8ab9aef9c86c4017992981801d4e7',
+       i686: '0d6ead1799c0d21ef6341089cb821629de64f39d0a9746b9b0b419e8b72e1474',
+     x86_64: 'a0b7f800b90670d3a7c080ec0394bcb9d45cd4fc95c238bc3b1a3580475d182e'
   })
 
   depends_on 'catatonit'
@@ -94,7 +94,7 @@ class Containers_common < Package
     system "sed -i 's,#seccomp_profile = \"/usr/share/containers/seccomp.json\",seccomp_profile = \"#{CREW_PREFIX}/etc/containers/seccomp.json\",' pkg/config/containers.conf"
     system "sed -i 's,#volume_path = \"/var/lib/containers/storage/volumes\",volume_path = \"#{CREW_PREFIX}/var/lib/containers/storage/volumes\",' pkg/config/containers.conf"
     system "sed -i 's,#init = false,init = true,' pkg/config/containers.conf"
-    system "sed -i 's,#tz = "",tz = \"local\",' pkg/config/containers.conf"
+    system "sed -i 's,#tz = \"\",tz = \"local\",' pkg/config/containers.conf"
     FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
     FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
     Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
