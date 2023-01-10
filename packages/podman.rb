@@ -13,14 +13,14 @@ class Podman < Package
   git_hashtag "v#{version}"
 
   binary_url({
-     aarch64: 'file:///usr/local/tmp/packages/podman-4.3.1-chromeos-armv7l.tar.zst',
-      armv7l: 'file:///usr/local/tmp/packages/podman-4.3.1-chromeos-armv7l.tar.zst',
-      x86_64: 'file:///usr/local/tmp/packages/podman-4.3.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_armv7l/podman-4.3.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_armv7l/podman-4.3.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     aarch64: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
-      armv7l: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
-      x86_64: 'ae4c383f25fb63d92f505c830cd1788660b2d351433454e4352ffdd47413270a'
+    aarch64: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
+     armv7l: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
+     x86_64: 'ae4c383f25fb63d92f505c830cd1788660b2d351433454e4352ffdd47413270a'
   })
 
   depends_on 'btrfsprogs' => :build
