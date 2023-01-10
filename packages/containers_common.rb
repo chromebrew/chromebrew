@@ -19,10 +19,10 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6392ff4aa23fd338970ed7e5e80d5bb752e8ab9aef9c86c4017992981801d4e7',
-     armv7l: '6392ff4aa23fd338970ed7e5e80d5bb752e8ab9aef9c86c4017992981801d4e7',
-       i686: '0d6ead1799c0d21ef6341089cb821629de64f39d0a9746b9b0b419e8b72e1474',
-     x86_64: 'a0b7f800b90670d3a7c080ec0394bcb9d45cd4fc95c238bc3b1a3580475d182e'
+    aarch64: '3f31ccb561a6df7db406e88ee8b6d664e5479e56e38ac59c0c7c8064cc669500',
+     armv7l: '3f31ccb561a6df7db406e88ee8b6d664e5479e56e38ac59c0c7c8064cc669500',
+       i686: 'dd67820ba974d91fbd148ea3720feb1fbece604128487e0605adfb3e728b1488',
+     x86_64: '0d195eaadbcdd4e3149b0ed1777809d9f51d6f6a77a7da59f28aa3ed1a198f0a'
   })
 
   depends_on 'catatonit'
@@ -175,7 +175,8 @@ class Containers_common < Package
     @create_user_container_policy = true unless @user_container_policy
     @create_user_container_ask = true if @user_container_policy
     if @create_user_container_ask
-      return if FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
+      return if FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json",
+                                       "#{HOME}/.config/containers/policy.json")
 
       print "\nWould you like to overwrite the user container policy file with the package default? [y/N] "
       case $stdin.gets.chomp.downcase
