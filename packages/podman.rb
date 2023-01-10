@@ -8,7 +8,7 @@ class Podman < Package
   homepage 'https://github.com/containers/podman'
   version '4.3.1'
   license 'Apache'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://github.com/containers/podman.git'
   git_hashtag "v#{version}"
 
@@ -18,9 +18,9 @@ class Podman < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0bee1e0a63cc8dd3224dab5099079e1204f43ff17a962c70483ac55a48c656b9',
-     armv7l: '0bee1e0a63cc8dd3224dab5099079e1204f43ff17a962c70483ac55a48c656b9',
-     x86_64: 'f3b80cb83ffc501f238022a64e068227a5618d43d87eacfb2a385d33be198171'
+    aarch64: '419149119b396b7a3d445f3ec828a762d2cbcc530015dca9d45edf68346b95ec',
+     armv7l: '419149119b396b7a3d445f3ec828a762d2cbcc530015dca9d45edf68346b95ec',
+     x86_64: 'ae351ba551bdafb1f2532f3d932d0a0ca53f69d3098ef591aef9f14446559f10'
   })
 
   depends_on 'btrfsprogs' => :build
@@ -39,6 +39,9 @@ class Podman < Package
   def self.patch
     system "sed -i 's,/usr/libexec/podman/catatonit,#{CREW_PREFIX}/bin/catatonit,g' vendor/github.com/containers/common/pkg/config/default.go"
     system "sed -i 's,/etc/containers/policy.json,#{CREW_PREFIX}/etc/containers/policy.json,' vendor/github.com/containers/image/v5/signature/policy_paths_common.go"
+    system "sed -i 's,/etc/containers/registries.conf,#{CREW_PREFIX}/etc/containers/registries.conf,' vendor/github.com/containers/image/v5/pkg/sysregistriesv2/paths_common.go"
+    system "sed -i 's,/etc/containers/registries.conf.d,#{CREW_PREFIX}/etc/containers/registries.conf.d,' vendor/github.com/containers/image/v5/pkg/sysregistriesv2/paths_common.go"
+    system "sed -i 's,/etc/containers/storage.conf,#{CREW_PREFIX}/etc/containers/storage.conf,' vendor/github.com/containers/storage/types/options_linux.go"
     system "sed -i 's,PREFIX ?= /usr/local,PREFIX = #{CREW_PREFIX},' Makefile"
   end
 
