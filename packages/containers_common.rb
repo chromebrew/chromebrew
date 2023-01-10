@@ -148,20 +148,21 @@ class Containers_common < Package
   end
 
   def self.postinstall
-    # Podman will not work unless a local policy.json file is populated.
+    # Podman will not work unless a user policy.json file at
+    # #{HOME}/.config/containers/policy.json is populated.
     @user_container_policy = File.file?("#{HOME}/.config/containers/policy.json")
     @create_user_container_policy = true unless @user_container_policy
     @create_user_container_ask = true if @user_container_policy
     if @create_user_container_ask
       return if FileUtils.compare_file("#{CREW_PREFIX}/etc/containers/policy.json", "#{HOME}/.config/containers/policy.json")
 
-      print "\nWould you like to overwrite the local container policy file with the package default? [y/N] "
+      print "\nWould you like to overwrite the user container policy file with the package default? [y/N] "
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         @create_user_container_policy = true
       else
         @create_user_container_policy = false
-        puts 'Local container policy file left unchanged.'.lightgreen
+        puts 'User container policy file left unchanged.'.lightgreen
       end
     end
     return unless @create_user_container_policy
@@ -171,8 +172,8 @@ class Containers_common < Package
   end
 
   def self.remove
-    @config_file = "#{CREW_PREFIX}/etc/containers/policy.json"
-    print "\nWould you like to remove the local container policy file #{@config_file} ? [y/N] "
+    @config_file = "#{HOME}/.config/containers/policy.json"
+    print "\nWould you like to remove the user container policy file #{@config_file} ? [y/N] "
     case $stdin.gets.chomp.downcase
     when 'y', 'yes'
       FileUtils.rm_rf config_dir
