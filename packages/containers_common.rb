@@ -15,11 +15,13 @@ class Containers_common < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_armv7l/containers_common-0.49.3-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_armv7l/containers_common-0.49.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_i686/containers_common-0.49.3-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '06f20054310a55b9371336b4b5cd88b6a9f89d3f85702d1e99b21aec7fa13123',
      armv7l: '06f20054310a55b9371336b4b5cd88b6a9f89d3f85702d1e99b21aec7fa13123',
+       i686: '80811ec2080d153dd4f470c7e92413dc8cc61526241749391237a2eec86e0405',
      x86_64: '1597d590420e90de5edbca768026642871c0849aeb7566b8ed55a22be7dc9d99'
   })
 

@@ -13,11 +13,13 @@ class Libtirpc < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.3_armv7l/libtirpc-1.3.3-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.3_armv7l/libtirpc-1.3.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.3_i686/libtirpc-1.3.3-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtirpc/1.3.3_x86_64/libtirpc-1.3.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '35c1c157bcddb9807781d1a6ccd8d1b3499f06fda5b3d6789c60f2b54000fbd2',
      armv7l: '35c1c157bcddb9807781d1a6ccd8d1b3499f06fda5b3d6789c60f2b54000fbd2',
+       i686: '7d8e3e54442fa216539c32e024d5d4aefa203c042ff9081f34690b98cb714849',
      x86_64: '05420165d33ce9802715424596c55fa0f32e71c4662fa03253b889ebcf7deade'
   })
 

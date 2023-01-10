@@ -15,11 +15,13 @@ class Libaio < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.113-932de6c_armv7l/libaio-0.3.113-932de6c-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.113-932de6c_armv7l/libaio-0.3.113-932de6c-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.113-932de6c_i686/libaio-0.3.113-932de6c-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaio/0.3.113-932de6c_x86_64/libaio-0.3.113-932de6c-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'a950ffa572b765898a2607ac7a220a854f2f48578128e67a1c122687d817dc5e',
      armv7l: 'a950ffa572b765898a2607ac7a220a854f2f48578128e67a1c122687d817dc5e',
+       i686: '0a22ed56376f7c0d7b0518f4f2503efc1701583eb5c60cd02fcfc1111a97a04b',
      x86_64: '4021e49d7549ef0601f2baf53a2b12f62d39c7535bc4db13a4153968f00789e8'
   })
 

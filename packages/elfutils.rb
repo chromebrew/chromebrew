@@ -13,11 +13,13 @@ class Elfutils < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.188_armv7l/elfutils-0.188-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.188_armv7l/elfutils-0.188-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.188_i686/elfutils-0.188-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elfutils/0.188_x86_64/elfutils-0.188-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'da8ce7537065401f2e4bcfbc2a1d2984892957cb611783b539bb805d72db15e3',
      armv7l: 'da8ce7537065401f2e4bcfbc2a1d2984892957cb611783b539bb805d72db15e3',
+       i686: 'cbe8e8134256de0d2b0d28f01012f74cc6cf2313340214909f9a7fddd5ee93f8',
      x86_64: '9952fb6d9c22cde9ac9ceb45363d8bd5f8cca2a7ee61a66ccfb063e9e4dca32e'
   })
 
