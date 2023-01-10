@@ -19,10 +19,10 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ba345b5deb1294ed0e4976fa9037a871f3f303fec404fabd2c91aba967fd258a',
-     armv7l: 'ba345b5deb1294ed0e4976fa9037a871f3f303fec404fabd2c91aba967fd258a',
-       i686: 'f4af8a3a7e200be8e2282ae8d6f49e990bb3da513953de78d746064bad1ad567',
-     x86_64: 'c493c0b509a7f6fccfe70fa100357b195223720cfe4af09e9231704e485cbc41'
+    aarch64: '77337b8b18fa1748eabc22813c74d3ae36c91e9080b15e97de1c6d4b02591ddd',
+     armv7l: '77337b8b18fa1748eabc22813c74d3ae36c91e9080b15e97de1c6d4b02591ddd',
+       i686: '221abed7e9b7fe9a5aaf56b8577e03844804d777c3d375e984bbf8f5a7b6fb5c',
+     x86_64: 'fcc496562d3e7b76b8b0aadb68658f1a933362f4dea263bbb775a39f77767cba'
   })
 
   depends_on 'netavark'
@@ -101,13 +101,17 @@ class Containers_common < Package
 
       Dir.chdir 'shortnames' do
         FileUtils.install 'shortnames.conf', "#{CREW_DEST_PREFIX}/etc/containers/registries.conf.d/00-shortnames.conf",
-mode: 0o644
+                          mode: 0o644
       end
       Dir.chdir 'skopeo' do
         FileUtils.install 'default-policy.json', "#{CREW_DEST_PREFIX}/etc/containers/policy.json", mode: 0o644
         FileUtils.install 'default.yaml', "#{CREW_DEST_PREFIX}/etc/containers/registries.d/", mode: 0o644
       end
       Dir.chdir 'storage' do
+        system "sed -i 's,/run/containers/storage,#{CREW_PREFIX}/var/run/containers/storage,g' storage.conf"
+        system "sed -i 's,/var/lib/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' storage.conf"
+        system "sed -i 's,\\$HOME/.local/share/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' storage.conf"
+        system "sed -i 's,# rootless_storage_path,rootless_storage_path,g' storage.conf"
         FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
         FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
         FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644

@@ -18,9 +18,9 @@ class Podman < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podman/4.3.1_x86_64/podman-4.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
-     armv7l: '4822a910ceafb2f407c8074e6a80fe0cf49898956691608685dd14d4261c4832',
-     x86_64: 'ae4c383f25fb63d92f505c830cd1788660b2d351433454e4352ffdd47413270a'
+    aarch64: 'e3571233bc5fb9838cec80c26c7b278f8e4db2bb370f563fe7f6ee181386baa9',
+     armv7l: 'e3571233bc5fb9838cec80c26c7b278f8e4db2bb370f563fe7f6ee181386baa9',
+     x86_64: 'c1fcbd1ee007f997cf4ca1e7ad73e12c0fad8a0c01bb3120531fe1c280a53f23'
   })
 
   depends_on 'btrfsprogs' => :build
@@ -38,10 +38,6 @@ class Podman < Package
 
   def self.patch
     system "sed -i 's,/usr/libexec/podman/catatonit,#{CREW_PREFIX}/bin/catatonit,g' vendor/github.com/containers/common/pkg/config/default.go"
-    system "sed -i 's,/run/containers/storage,#{CREW_PREFIX}/var/run/containers/storage,g' vendor/github.com/containers/storage/storage.conf"
-    system "sed -i 's,/var/lib/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' vendor/github.com/containers/storage/storage.conf"
-    system "sed -i 's,\\$HOME/.local/share/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' vendor/github.com/containers/storage/storage.conf"
-    system "sed -i 's,# rootless_storage_path,rootless_storage_path,g' vendor/github.com/containers/storage/storage.conf"
     system "sed -i 's,PREFIX ?= /usr/local,PREFIX = #{CREW_PREFIX},' Makefile"
   end
 
@@ -51,10 +47,7 @@ class Podman < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_PREFIX}/etc/containers #{CREW_DEST_PREFIX}/var/run/containers/storage
-                         #{CREW_DEST_PREFIX}/var/lib/containers/storage]
-    FileUtils.install 'vendor/github.com/containers/storage/storage.conf', "#{CREW_PREFIX}/etc/containers/",
-                      mode: 0o644
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/var/run/containers/storage #{CREW_DEST_PREFIX}/var/lib/containers/storage]
     system "make install install.completions install.docker-full DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} LIBEXECDIR=#{CREW_LIB_PREFIX}"
     # Remove conflicts with containers_common.
     FileUtils.remove_dir "#{CREW_DEST_MAN_PREFIX}/man5"
