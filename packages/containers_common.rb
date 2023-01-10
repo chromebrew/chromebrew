@@ -19,11 +19,13 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '104de5c0cbcfade5b20e008a9bf28d1a76b1fd6f52f96659c32a4b6cf1cbca1c',
-     armv7l: '104de5c0cbcfade5b20e008a9bf28d1a76b1fd6f52f96659c32a4b6cf1cbca1c',
-       i686: '2468701207070cac0cccb9e6db4a9d4289af4e955863b0fc3dcb61749c7ad1e4',
-     x86_64: '2b8c9ebb6812da9e9725bc2c2a27e5fce0290a547b16e3a25ed672f101482cfd'
+    aarch64: '686298740d756f41be62f903176ba69e74a79ec7c66285f855687d67f29cbeed',
+     armv7l: '686298740d756f41be62f903176ba69e74a79ec7c66285f855687d67f29cbeed',
+       i686: '7cff822e9e68b40044b25715e5771fa372d410725038d2efb127a4c1b9dbf9e5',
+     x86_64: '44d2bb8ae915f1d52acc416ad31753f835cb77dac476b6bf1d4861cdf2de188e'
   })
+
+  depends_on 'catatonit'
 
   depends_on 'netavark'
   depends_on 'go_md2man' => :build
@@ -85,16 +87,32 @@ class Containers_common < Package
       # containers-mounts.conf for further information)
     MOUNTS_CONF_EOF
     File.write("#{CREW_DEST_PREFIX}/etc/containers/mounts.conf", @mounts_conf, perm: 0o644)
+    Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
+      FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/mounts.conf", 'mounts.conf'
+    end
+    system "sed -i 's,#init_path = \"/usr/libexec/podman/catatonit\",init_path = \"#{CREW_PREFIX}/bin/catatonit\",' pkg/config/containers.conf"
+    system "sed -i 's,#seccomp_profile = \"/usr/share/containers/seccomp.json\",seccomp_profile = \"#{CREW_PREFIX}/etc/containers/seccomp.json\",' pkg/config/containers.conf"
+    system "sed -i 's,#volume_path = \"/var/lib/containers/storage/volumes\",volume_path = \"#{CREW_PREFIX}/var/lib/containers/storage/volumes\",' pkg/config/containers.conf"
+    system "sed -i 's,#init = false,init = true,' pkg/config/containers.conf"
+    system "sed -i 's,#tz = "",tz = \"local\",' pkg/config/containers.conf"
     FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
     FileUtils.install 'pkg/config/containers.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+    Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
+      FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/containers.conf", 'containers.conf'
+    end
     FileUtils.install 'pkg/seccomp/seccomp.json', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
     FileUtils.install 'pkg/seccomp/seccomp.json', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
+    Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
+      FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/seccomp.json", 'seccomp.json'
+    end
     FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
 
     Dir.chdir 'git' do
       Dir.chdir 'image' do
         FileUtils.install 'registries.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
-
+        Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
+          FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/registries.conf", 'registries.conf'
+        end
         FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
         FileUtils.install Dir['docs/man5/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
@@ -119,10 +137,10 @@ class Containers_common < Package
         system "sed -i 's,\\$HOME/.local/share/containers/storage,#{CREW_PREFIX}/var/lib/containers/storage,g' storage.conf"
         system "sed -i 's,# rootless_storage_path,rootless_storage_path,g' storage.conf"
         FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/etc/containers/", mode: 0o644
+        FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
         Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
           FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/storage.conf", 'storage.conf'
         end
-        FileUtils.install 'storage.conf', "#{CREW_DEST_PREFIX}/share/containers/", mode: 0o644
         FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
         FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
