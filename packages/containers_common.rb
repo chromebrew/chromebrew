@@ -19,10 +19,10 @@ class Containers_common < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e72891a84dc9e8c60ffe236f478aadd51f0e1c3e88da3f004c47ec33d224e110',
-     armv7l: 'e72891a84dc9e8c60ffe236f478aadd51f0e1c3e88da3f004c47ec33d224e110',
-       i686: '73d80e5d88b304397d93626bd26817e5fc08a4a23c46389a64e32d4a91faeb1f',
-     x86_64: 'af9bfc1e77c12af34b9905756b5a16c74584ce77ff0e6ceb4be130543f6a145a'
+    aarch64: '104de5c0cbcfade5b20e008a9bf28d1a76b1fd6f52f96659c32a4b6cf1cbca1c',
+     armv7l: '104de5c0cbcfade5b20e008a9bf28d1a76b1fd6f52f96659c32a4b6cf1cbca1c',
+       i686: '2468701207070cac0cccb9e6db4a9d4289af4e955863b0fc3dcb61749c7ad1e4',
+     x86_64: '2b8c9ebb6812da9e9725bc2c2a27e5fce0290a547b16e3a25ed672f101482cfd'
   })
 
   depends_on 'netavark'
@@ -108,6 +108,9 @@ class Containers_common < Package
       end
       Dir.chdir 'skopeo' do
         FileUtils.install 'default-policy.json', "#{CREW_DEST_PREFIX}/etc/containers/policy.json", mode: 0o644
+        Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
+          FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/policy.json", 'policy.json'
+        end
         FileUtils.install 'default.yaml', "#{CREW_DEST_PREFIX}/etc/containers/registries.d/", mode: 0o644
       end
       Dir.chdir 'storage' do
