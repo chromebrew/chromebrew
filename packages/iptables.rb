@@ -3,24 +3,24 @@ require 'package'
 class Iptables < Package
   description 'iptables is the userspace command line program used to configure the Linux 2.4.x and later packet filtering ruleset.'
   homepage 'https://www.netfilter.org/projects/iptables/'
-  version '1.8.7'
+  version '1.8.8'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://www.netfilter.org/projects/iptables/files/iptables-1.8.7.tar.bz2'
-  source_sha256 'c109c96bb04998cd44156622d36f8e04b140701ec60531a10668cfdff5e8d8f0'
+  compatibility 'aarch64 armv7l x86_64'
+  source_url 'https://www.netfilter.org/projects/iptables/files/iptables-1.8.8.tar.bz2'
+  source_sha256 '71c75889dc710676631553eb1511da0177bbaaf1b551265b912d236c3f51859f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.7_armv7l/iptables-1.8.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.7_armv7l/iptables-1.8.7-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.7_i686/iptables-1.8.7-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.7_x86_64/iptables-1.8.7-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.8_armv7l/iptables-1.8.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.8_armv7l/iptables-1.8.8-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iptables/1.8.8_x86_64/iptables-1.8.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '80ae46865b58fe834170eebe40182daf19fbe7799ef2e0ec1ed0ae3236e47a98',
-     armv7l: '80ae46865b58fe834170eebe40182daf19fbe7799ef2e0ec1ed0ae3236e47a98',
-       i686: '82b5ace4df5886a23853fdf5fe578dcf49e2987d2f279cdc5f95c6e82fc8c2ed',
-     x86_64: '1e103594a1e9f9741a1c4dcf2d9087657c3a26dc2c6bf6f64c151a7ba51921e9'
+    aarch64: 'e13ddd61cf7c2bc5428ebc87c3723818982e21ba53527bc98b7e55a5f68eb6fa',
+     armv7l: 'e13ddd61cf7c2bc5428ebc87c3723818982e21ba53527bc98b7e55a5f68eb6fa',
+     x86_64: '64356d6f62e37dd77ec2c5953cc20b9fe6280623145c184fc5896b184a6317ff'
   })
+
+  depends_on 'glibc' # R
 
   def self.patch
     system 'filefix'

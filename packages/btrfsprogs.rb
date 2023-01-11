@@ -3,37 +3,41 @@ require 'package'
 class Btrfsprogs < Package
   description 'BTRFS is a modern copy on write filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.'
   homepage 'https://btrfs.wiki.kernel.org/index.php/Main_Page'
-  version '5.10.1'
+  version '6.1.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/kdave/btrfs-progs/archive/v5.10.1.tar.gz'
   source_sha256 '69788461f7076951f7235b87d0a5615683151dfbfaaa93f645279bf757e85769'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_armv7l/btrfsprogs-5.10.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_armv7l/btrfsprogs-5.10.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_i686/btrfsprogs-5.10.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/5.10.1_x86_64/btrfsprogs-5.10.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_armv7l/btrfsprogs-6.1.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_armv7l/btrfsprogs-6.1.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_i686/btrfsprogs-6.1.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_x86_64/btrfsprogs-6.1.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7219f58137c4275bc242ee4a1c6dc41289a19965e7d4239dc9f0f2d5b917f427',
-     armv7l: '7219f58137c4275bc242ee4a1c6dc41289a19965e7d4239dc9f0f2d5b917f427',
-       i686: '470bb79df032e2113fe80a37d9d2319f48fdfdee2525b457d74903d2edc7c9de',
-     x86_64: '52f7d338e8c1ae27d657ea6e48209fd4517691a15ee39d65b54cf330f26e76af'
+    aarch64: '30b25d3fa711ffe7a814c779831d81a2330fbfa8d7c755f4e4ae2d7a285a9de2',
+     armv7l: '30b25d3fa711ffe7a814c779831d81a2330fbfa8d7c755f4e4ae2d7a285a9de2',
+       i686: 'bd46556e6758de9cb7e21e012e81582c65448be3140130b41c24df876886e9b9',
+     x86_64: '67b69603e47c96060fbbf3d0e009cd42ed811d345ddad365d82fb41b241b4750'
   })
 
-  depends_on 'util_linux'
-  depends_on 'libgcrypt'
-  depends_on 'lzo'
-  # depends_on 'e2fsprogs'
+  depends_on 'e2fsprogs'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'lzo' # R
+  depends_on 'util_linux' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     system './autogen.sh'
     system "./configure #{CREW_OPTIONS} \
             --disable-documentation \
             --disable-convert \
-            --with-crypto=libgcrypt"
-    #            --with-convert=ext2  # Convert fails to build, help appreciated
+            --with-crypto=libgcrypt \
+            --with-convert=ext2"
     system 'make'
   end
 
