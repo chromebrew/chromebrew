@@ -1045,6 +1045,11 @@ url: https://chromium.googlesource.com/chromiumos/third_party/adhd
 activity: medium
 ---
 kind: url
+name: criu
+url: https://github.com/checkpoint-restore/criu/tags
+activity: medium
+---
+kind: url
 name: cronie
 url: https://github.com/cronie-crond/cronie/releases
 activity: medium
@@ -1067,6 +1072,11 @@ activity: medium
 kind: url
 name: crosvm
 url: https://chromium.googlesource.com/crosvm/crosvm
+activity: high
+---
+kind: url
+name: crun
+url: https://github.com/containers/crun/releases
 activity: high
 ---
 kind: url

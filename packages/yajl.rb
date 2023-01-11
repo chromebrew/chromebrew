@@ -3,43 +3,46 @@ require 'package'
 class Yajl < Package
   description 'A fast streaming JSON parsing library in C.'
   homepage 'http://lloyd.github.io/yajl/'
-  version '2.1.0-2'
+  version '2.1.0-3'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/lloyd/yajl/archive/2.1.0.tar.gz'
+  source_url 'https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz'
   source_sha256 '3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_armv7l/yajl-2.1.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_armv7l/yajl-2.1.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_i686/yajl-2.1.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-2_x86_64/yajl-2.1.0-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-3_armv7l/yajl-2.1.0-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-3_armv7l/yajl-2.1.0-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-3_i686/yajl-2.1.0-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yajl/2.1.0-3_x86_64/yajl-2.1.0-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4afb152584a025239161684888378662bc1305adccd63b5b5246581a914b74c8',
-     armv7l: '4afb152584a025239161684888378662bc1305adccd63b5b5246581a914b74c8',
-       i686: 'fab84163e9ddd02ec0286ccbad845005d376352f392e68bd57955b003c788d89',
-     x86_64: 'f702d50a8e81b5fcfed7229a782aae5f03e45d85b0a386a24d152e3fac5ed595'
+    aarch64: 'ea5d04c8b8e356b3d2e7bfc72832da5501ea13adac7bea73f46ea84908b2eef7',
+     armv7l: 'ea5d04c8b8e356b3d2e7bfc72832da5501ea13adac7bea73f46ea84908b2eef7',
+       i686: '8cf7bea8291e23db0bccc346b5d37348c22f1be4e75bdc2210b48c2ef5f55984',
+     x86_64: '66ce37f06d1b48a593fd3cfb99263337c65597e12719c203641da0a0980e96f2'
   })
 
+  depends_on 'glibc' # R
+
+  def self.patch
+    # Fix CVE-2022-24795
+    downloader 'https://patch-diff.githubusercontent.com/raw/lloyd/yajl/pull/242.patch',
+               '28cf573e61ad5d442dc3ea23912e1d1a3a714c6f20a647304fbd5a886b457f29'
+    system 'patch -Np1 -i 242.patch'
+  end
+
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. -DCMAKE_C_FLAGS=' -fPIC' -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} -DCMAKE_BUILD_TYPE=Release"
-      system 'make'
+    FileUtils.mkdir('builddir')
+    Dir.chdir('builddir') do
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_LIBSUFFIX_OPTIONS} \
+        -Wno-dev \
+        .."
     end
+    system 'samu -C builddir'
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      case ARCH
-      when 'x86_64'
-        Dir.chdir CREW_DEST_PREFIX.to_s do
-          FileUtils.mkdir 'lib64'
-          FileUtils.mv Dir.glob('lib/*'), 'lib64/'
-        end
-      end
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
