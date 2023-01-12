@@ -1930,6 +1930,11 @@ url: https://sourceforge.net/projects/freepascal/files/Linux/
 activity: low
 ---
 kind: url
+name: fragments
+url: https://gitlab.gnome.org/World/Fragments/-/tags
+activity: medium
+---
+kind: url
 name: freebasic
 url: https://sourceforge.net/projects/fbc/files/Source%20Code/
 activity: none
