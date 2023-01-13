@@ -705,7 +705,7 @@ class Glibc < Package
         end
       end
     end
-    return unless @libc_version.to_f >= 2.32 and CREW_KERNEL_VERSION.to_f >= 5.4
+    return unless @libc_version.to_f >= 2.32 && CREW_KERNEL_VERSION.to_f >= 5.4
 
     puts 'Paring locales to a minimal set.'.lightblue
     system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',
