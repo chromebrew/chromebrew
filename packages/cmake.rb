@@ -3,24 +3,24 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.24.2'
-  version "#{@_ver}-1"
+  @_ver = '3.25.1'
+  version @_ver
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.2-1_armv7l/cmake-3.24.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.2-1_armv7l/cmake-3.24.2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.2-1_i686/cmake-3.24.2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.24.2-1_x86_64/cmake-3.24.2-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.1_armv7l/cmake-3.25.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.1_armv7l/cmake-3.25.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.1_i686/cmake-3.25.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.1_x86_64/cmake-3.25.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7c553287271609f9f2153b79879495f65f64ad5c8f7f146b66beebc168de9e6a',
-     armv7l: '7c553287271609f9f2153b79879495f65f64ad5c8f7f146b66beebc168de9e6a',
-       i686: 'bcaa0e282dba32c33bd6cec8678cae917e1b740289835c4d90f45bf56e17bbd7',
-     x86_64: '8c82b522e826f18d25189ced89a99e86ee660d965feb0af2b9176ed9f1c5b6e6'
+    aarch64: '41b6faf7139d383d69200c47ad8b7d1465b478c20af6ae69319e8abd2b37f5da',
+     armv7l: '41b6faf7139d383d69200c47ad8b7d1465b478c20af6ae69319e8abd2b37f5da',
+       i686: '758f6b73887f43f76e1446508028896886bc3679267a5d6f6c188ced504641be',
+     x86_64: '9fbb4d4282b52ddf9dbf3eab6a7b1d2ee3f1332d85430f0493838bd715c996d5'
   })
 
   depends_on 'expat'
@@ -36,6 +36,8 @@ class Cmake < Package
   depends_on 'librhash'
   depends_on 'libuv'
   depends_on 'llvm' => :build
+  depends_on 'gcc' # R
+  depends_on 'ncurses' # R
 
   def self.build
     Dir.mkdir 'builddir'
