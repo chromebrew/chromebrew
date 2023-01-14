@@ -890,6 +890,11 @@ url: https://www.bastoul.net/cloog/download.php
 activity: none
 ---
 kind: url
+name: cloudcross
+url: https://github.com/MasterSoft24/CloudCross/releases
+activity: none
+---
+kind: url
 name: clutter
 url: https://ftp.gnome.org/pub/GNOME/sources/clutter/
 activity: low
