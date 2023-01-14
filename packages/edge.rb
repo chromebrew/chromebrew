@@ -3,11 +3,11 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '108.0.1462.76-1'
+  version '109.0.1518.52-1'
   compatibility 'x86_64'
   license 'MIT'
-  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_108.0.1462.76-1_amd64.deb'
-  source_sha256 'bba15caba3d7b23c1fe1567907ccd78ccebaa884a258c1116872ee688be9b7b6'
+  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_109.0.1518.52-1_amd64.deb'
+  source_sha256 '1bd79c51ae2f56d4a3ced3b78e11eabd58a0cb9a0e4cbd37a96e1cac253d93f8'
 
   no_compile_needed
 
