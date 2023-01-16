@@ -36,6 +36,7 @@ class Fragments < Package
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'rust' => :build
+  depends_on 'transmission' # L
   depends_on 'zlibpkg' # R
 
   gnome
