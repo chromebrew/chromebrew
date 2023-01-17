@@ -3,7 +3,7 @@ require 'package'
 class Gmmlib < Package
   description 'The Intel(R) Graphics Memory Management Library provides device specific and buffer management for the Intel(R) Graphics Compute Runtime for OpenCL(TM) and the Intel(R) Media Driver for VAAPI.'
   homepage 'https://github.com/intel/gmmlib/'
-  @_ver = '22.3.1'
+  @_ver = '22.3.3'
   version @_ver
   license 'MIT'
   compatibility 'x86_64'
@@ -11,13 +11,13 @@ class Gmmlib < Package
   git_hashtag "intel-gmmlib-#{@_ver}"
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmmlib/22.3.1_x86_64/gmmlib-22.3.1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmmlib/22.3.3_x86_64/gmmlib-22.3.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '6d3b479fc5505fabc13d61b0b3e2a8ca929061cff0629ca57456ce828cbf337e'
+    x86_64: '73746485904173970cd608975011f0c91628ebdd5c68d09fd615d27327da27da'
   })
 
-  depends_on 'libva'
+  depends_on 'libva' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
 
