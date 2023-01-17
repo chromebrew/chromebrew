@@ -3,27 +3,32 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.39'
+  @_ver = '2.40'
   version @_ver
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.xz"
-  source_sha256 '645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.bz2"
+  source_sha256 'f8298eb153a4b37d112e945aa5cb2850040bcf26a3ea65b5a715c83afe05e48a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.39_armv7l/binutils-2.39-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.39_armv7l/binutils-2.39-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.39_i686/binutils-2.39-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.39_x86_64/binutils-2.39-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_armv7l/binutils-2.40-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_armv7l/binutils-2.40-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_i686/binutils-2.40-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_x86_64/binutils-2.40-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8432ae6977b5cb0bac2a197cb20372652ac218d37ccf1f3b2eaa2994498f792d',
-     armv7l: '8432ae6977b5cb0bac2a197cb20372652ac218d37ccf1f3b2eaa2994498f792d',
-       i686: '43a6b790fb88e7f4458816115e58f58ca3e90233c740ffd736cabbac52ce7cdf',
-     x86_64: '441b6efece778075bf55b36b70a42379d2bd3ae056bf8a6edef5ea6989cdc95d'
+    aarch64: 'a0b2e49e2c1845b93e783543aab4e5870a80492b0daae013acff32a3737d2dbf',
+     armv7l: 'a0b2e49e2c1845b93e783543aab4e5870a80492b0daae013acff32a3737d2dbf',
+       i686: '3c297c16f332328a87e39186afa98ecc733a5f5a31fa02d3c91fb3a2b15f8040',
+     x86_64: '8c63236295e9a7e427b06323f313c35cdeae3a7bf13f7e8738edf37f49d2b14e'
   })
 
-  depends_on 'flex'
+  depends_on 'elfutils' # R
+  depends_on 'flex' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.prebuild
     FileUtils.rm_f "#{CREW_LIB_PREFIX}/libiberty.a"
@@ -31,18 +36,22 @@ class Binutils < Package
 
   def self.patch
     system 'filefix'
-    system "sed -i 's,scriptdir = \$(tooldir)/lib,scriptdir = \$(tooldir)/#{ARCH_LIB},g' ld/Makefile.am"
+    system "sed -i 's,scriptdir = $(tooldir)/lib,scriptdir = $(tooldir)/#{ARCH_LIB},g' ld/Makefile.am"
     Dir.chdir 'ld' do
       system 'aclocal && automake'
     end
   end
 
   def self.build
+    # gprofng is broken on i686 in binutils 2.40
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30006
+    @gprofng = ARCH == 'i686' ? '--disable-gprofng' : ''
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "../configure #{CREW_OPTIONS} \
         --disable-bootstrap \
         --disable-maintainer-mode \
+        #{@gprofng} \
         --enable-64-bit-bfd \
         --enable-gold=default \
         --enable-install-libiberty \
@@ -59,7 +68,7 @@ class Binutils < Package
         --with-pkgversion=Chromebrew \
         --with-system-zlib"
       system 'make configure-host'
-      system "make tooldir=#{CREW_PREFIX}"
+      system "make tooldir=#{CREW_PREFIX} || make -j 1"
     end
   end
 
