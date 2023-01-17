@@ -9,7 +9,7 @@ class Crun < Package
   @_ver = '1.7.2'
   version "#{@_ver}-1"
   license 'LGPL'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'all'
   source_url 'https://github.com/containers/crun.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'
