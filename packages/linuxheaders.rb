@@ -78,8 +78,14 @@ class Linuxheaders < Package
     FileUtils.mkdir_p('crew_bin')
     @workdir = Dir.pwd
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/ld.bfd", "#{@workdir}/crew_bin/ld"
-    system "PATH=#{@workdir}/crew_bin:$PATH make defconfig"
-    system "PATH=#{@workdir}/crew_bin:$PATH make headers_install INSTALL_HDR_PATH=#{CREW_DEST_PREFIX}"
+    @kbuild_arch = case ARCH
+                   when 'armv7l', 'aarch64'
+                     'arm'
+                   else
+                     'x86'
+                   end
+    system "ARCH=#{@kbuild_arch} PATH=#{@workdir}/crew_bin:$PATH make defconfig"
+    system "ARCH=#{@kbuild_arch} PATH=#{@workdir}/crew_bin:$PATH make headers_install INSTALL_HDR_PATH=#{CREW_DEST_PREFIX}"
     Dir.chdir("#{CREW_DEST_PREFIX}/include") do
       system "for file in $(find . -not -type d -name '.*'); do
                 rm ${file};
