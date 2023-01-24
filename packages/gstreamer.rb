@@ -3,7 +3,7 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.20.3'
+  @_ver = '1.22.0'
   version @_ver
   license 'LGPL-2+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Gstreamer < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3-1_armv7l/gstreamer-1.20.3-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3-1_armv7l/gstreamer-1.20.3-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3-1_i686/gstreamer-1.20.3-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.20.3-1_x86_64/gstreamer-1.20.3-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_armv7l/gstreamer-1.22.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_armv7l/gstreamer-1.22.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_i686/gstreamer-1.22.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_x86_64/gstreamer-1.22.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e841406957a963846da6a63864001c8165b7afa83abcc73ec1a86b939a3c9462',
-     armv7l: 'e841406957a963846da6a63864001c8165b7afa83abcc73ec1a86b939a3c9462',
-       i686: 'f2ac4f825c4b078617ab15ca590dfe1dbd4fb644c87ad984726cb28f70117a18',
-     x86_64: '23752e3b1a1cb4feb2c3c0a7286833ef2d49598ab615ef93f0874b535e4d1e06'
+    aarch64: '7e922a8538098687783f2d6915bd40c28808d47988ff5cfc74ac55cf344acb0d',
+     armv7l: '7e922a8538098687783f2d6915bd40c28808d47988ff5cfc74ac55cf344acb0d',
+       i686: '99f9fb1315f751dfaa5356210e4d65316f245dd31fec5b6478a286d7bd5f1a0a',
+     x86_64: '30984cbfa7175a3a2df26766cd032a0cd27ece010b7c9018f438a207423630a7'
   })
 
   depends_on 'alsa_lib' # R
@@ -38,6 +38,7 @@ class Gstreamer < Package
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'gnutls' # R
+  depends_on 'gobject_introspection' # R
   depends_on 'graphene' # R
   depends_on 'gsl'
   depends_on 'gsm' # R
@@ -56,6 +57,7 @@ class Gstreamer < Package
   depends_on 'libdrm' # R
   depends_on 'libdv' # R
   depends_on 'libfdk_aac' # R
+  depends_on 'libffi' # R
   depends_on 'libglvnd' # R
   depends_on 'libgudev' # R
   depends_on 'libiec61883' # R
@@ -82,6 +84,7 @@ class Gstreamer < Package
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
+  depends_on 'libxi' # R
   depends_on 'libxml2' # R
   depends_on 'libxv' # R
   depends_on 'lilv' # R
