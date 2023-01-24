@@ -92,10 +92,10 @@ begin
 rescue Docopt::Exit => e
   if ARGV[0]
     case ARGV[0]
-    when '-V', '--version'
+    when '-V', '--version', 'version'
       puts CREW_VERSION
       exit 0
-    when '-L', '--license'
+    when '-L', '--license', 'license'
       puts CREW_LICENSE
       exit 0
     end
