@@ -13,7 +13,7 @@ class Libdeflate < Package
   depends_on 'glibc' # R
 
   def self.build
-    Dir.mkdir 'builddir'
+    Dir.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
       system "cmake -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
