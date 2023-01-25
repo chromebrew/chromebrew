@@ -3,7 +3,7 @@ require 'package'
 class Bz3 < Package
   description 'bzip3 is a better and stronger spiritual successor to bzip2.'
   homepage 'https://github.com/kspalaiologos/bzip3'
-  @_ver = '1.1.8'
+  @_ver = '1.2.2'
   version @_ver
   license 'LGPL-3'
   compatibility 'all'
