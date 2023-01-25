@@ -51,9 +51,6 @@ class Wine < Package
   depends_on 'vkd3d'
   depends_on 'xdg_base'
 
-  @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
-  @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
-
   def self.build
     FileUtils.mkdir_p 'wine64-build'
     Dir.chdir 'wine64-build' do
@@ -100,6 +97,8 @@ class Wine < Package
   end
 
   def self.remove
+    @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
+    @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
     config_dirs = ["#{HOME}/.wine", "#{@xdg_config_home}/.wine"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir
