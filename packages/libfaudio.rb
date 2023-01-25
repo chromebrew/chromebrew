@@ -3,7 +3,7 @@ require 'package'
 class Libfaudio < Package
   description 'FAudio is an XAudio reimplementation that focuses solely on developing fully accurate DirectX Audio runtime libraries for the FNA project.'
   homepage 'https://fna-xna.github.io/'
-  @_ver = '22.04'
+  @_ver = '23.01'
   version @_ver
   license 'ZLIB'
   compatibility 'all'
@@ -11,26 +11,26 @@ class Libfaudio < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/22.01_armv7l/libfaudio-22.01-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/22.01_armv7l/libfaudio-22.01-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/22.01_i686/libfaudio-22.01-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/22.01_x86_64/libfaudio-22.01-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_armv7l/libfaudio-23.01-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_armv7l/libfaudio-23.01-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_i686/libfaudio-23.01-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_x86_64/libfaudio-23.01-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b3254a7042cf5561d1dcfd7274836be58fefb76c8d51b9fe1c24bec6cdd78ad2',
-     armv7l: 'b3254a7042cf5561d1dcfd7274836be58fefb76c8d51b9fe1c24bec6cdd78ad2',
-       i686: 'edcb532fa7cba8ce46d377d4550d9289748e87780aa19eb55216a4b802024747',
-     x86_64: 'd4a3bd0adf604d19a7596644f8720d607628d2751f9c711f61b9b3f95e3a6977'
+    aarch64: '44a8d21f66f7c203de84fa23f7a62fb4a0ee9336a70723b1be2c6e07a8ab6b24',
+     armv7l: '44a8d21f66f7c203de84fa23f7a62fb4a0ee9336a70723b1be2c6e07a8ab6b24',
+       i686: '2a066df72e1e98b6ac9ed469965599afe27db630e4d3df4127edf14a6d41f2e5',
+     x86_64: 'ea99d746766103f3ffe67feab001c04428c788a2db2d583edb0e3b5b87947e4b'
   })
 
-  depends_on 'libsdl2'
+  depends_on 'glibc' # R
+  depends_on 'libsdl2' # R
 
   def self.build
     FileUtils.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "cmake -G 'Ninja' #{CREW_CMAKE_OPTIONS} .. \
-              -DBUILD_TESTS=ON \
-              -DGSTREAMER=OFF" # GStreamer support is depreciated
+              -DBUILD_TESTS=ON"
     end
     system 'samu -C builddir'
   end

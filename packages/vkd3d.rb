@@ -3,30 +3,32 @@ require 'package'
 class Vkd3d < Package
   description 'Vkd3d is a 3D graphics library built on top of Vulkan. It has an API very similar, but not identical, to Direct3D 12.'
   homepage 'https://wiki.winehq.org/Vkd3d/'
-  version '1.3'
+  version '1.6'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://dl.winehq.org/vkd3d/source/vkd3d-1.3.tar.xz'
-  source_sha256 '134b347806d34a4d2b39ea29ff1c2b38443793803a3adc50800855bb929fb8b2'
+  source_url 'https://dl.winehq.org/vkd3d/source/vkd3d-1.6.tar.xz'
+  source_sha256 '9dce98c32c48932370bd51f50e2f9316e7bdacaf69506ce5a1bf28a590926c87'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.3_armv7l/vkd3d-1.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.3_armv7l/vkd3d-1.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.3_i686/vkd3d-1.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.3_x86_64/vkd3d-1.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.6_armv7l/vkd3d-1.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.6_armv7l/vkd3d-1.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.6_i686/vkd3d-1.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vkd3d/1.6_x86_64/vkd3d-1.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '90afb4961e1e781d04d373ccb90ddb86684dc2d70996078014283974cb95bdb0',
-     armv7l: '90afb4961e1e781d04d373ccb90ddb86684dc2d70996078014283974cb95bdb0',
-       i686: '0f504ecc0fa598f2eabc3eb77ae4f55f4e0482019e5d0f9fcffad6a3a7eed889',
-     x86_64: 'a14fe1fc952c60a888c624825d82211f53d305d64f9905ae86d3b52673c2c307'
+    aarch64: '022d7e9e7e15a2546b462f46b2c79b477b46581204b80ea81ef8e1317b145320',
+     armv7l: '022d7e9e7e15a2546b462f46b2c79b477b46581204b80ea81ef8e1317b145320',
+       i686: '4d6896053db854565178eaa05d58dac00f14872bdf7bb7ff66eb9836320cf1e2',
+     x86_64: '6ea8560991499d40a425e4f5a64a4c61fdd26c68256eb6d30c168211519f84ef'
   })
 
-  depends_on 'libxcb'
+  depends_on 'glibc' # R
+  depends_on 'libxcb' => :build
+  depends_on 'ncurses' # R
   depends_on 'spirv_headers' => :build
-  depends_on 'spirv_tools'
+  depends_on 'spirv_tools' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader'
+  depends_on 'vulkan_icd_loader' => :build
 
   def self.build
     system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} \
