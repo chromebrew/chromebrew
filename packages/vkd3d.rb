@@ -37,6 +37,11 @@ class Vkd3d < Package
     system 'make'
   end
 
+  def self.check
+    # Tests don't work in a container due to 'Failed to create Vulkan instance' errors.
+    system 'make check || true'
+  end
+
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
