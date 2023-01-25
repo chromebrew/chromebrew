@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.30.8'
+CREW_VERSION = '1.30.9'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -86,8 +86,10 @@ CREW_CONFIG_PATH = "#{CREW_PREFIX}/etc/crew/"
 CREW_META_PATH = "#{CREW_CONFIG_PATH}meta/"
 CREW_BREW_DIR = "#{CREW_PREFIX}/tmp/crew/"
 CREW_DEST_DIR = "#{CREW_BREW_DIR}dest"
+CREW_DLL_PREFIX = "#{CREW_LIB_PREFIX}/wine"
 CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
+CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility

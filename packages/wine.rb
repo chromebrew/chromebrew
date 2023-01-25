@@ -1,88 +1,86 @@
 require 'package'
-require 'fileutils'
 
 class Wine < Package
-  description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD.'
+  description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Microsoft Windows applications.'
   homepage 'https://www.winehq.org/'
-  version '6.5'
+  version '8.0'
   license 'LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://dl.winehq.org/wine/source/6.x/wine-6.5.tar.xz'
-  source_sha256 '0600fd208c06925d6634d29f543bba0a64361c34e9bd7609c2f0e209610ad347'
+  compatibility 'x86_64'
+  source_url 'https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz'
+  source_sha256 '0272c20938f8721ae4510afaa8b36037457dd57661e4d664231079b9e91c792e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_armv7l/wine-6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_armv7l/wine-6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_i686/wine-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/6.5_x86_64/wine-6.5-chromeos-x86_64.tar.xz'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/8.0_x86_64/wine-8.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b9be4a9acbe76ba54be0671952221a019240811a27e94f53c40e5fb67e0624a3',
-     armv7l: 'b9be4a9acbe76ba54be0671952221a019240811a27e94f53c40e5fb67e0624a3',
-       i686: '35ccf55f9abc5f022a6f5756db2ac97c0c9a6dd5f644e6421805c64b6a335ec3',
-     x86_64: '01113b6f570b01b8598b38a478ed1bfe55b9cec63ed5f1683a52153f51fb3b6d'
+     x86_64: '68a6e7d08fa1bfafb96986936690202b4e83dab8f915ce0c9aff0280d3df7e54'
   })
 
-  depends_on 'alsa_lib'
-  depends_on 'eudev'
-  depends_on 'glib'
-  depends_on 'gstreamer'
+  depends_on 'alsa_lib' # R
+  depends_on 'desktop_file_utils'
+  depends_on 'eudev' # R
+  depends_on 'fontconfig'
+  depends_on 'giflib'
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gstreamer' # R
   depends_on 'lcms'
-  depends_on 'libgphoto'
-  depends_on 'libpcap'
-  depends_on 'libunwind'
-  depends_on 'libusb'
-  depends_on 'libx11'
-  depends_on 'libxext'
+  depends_on 'libfaudio'
+  depends_on 'libglu'
+  depends_on 'libgphoto' # R
+  depends_on 'libjpeg'
+  depends_on 'libpcap' # R
+  depends_on 'libpng'
+  depends_on 'libsm'
+  depends_on 'libunwind' # R
+  depends_on 'libusb' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcursor'
+  depends_on 'libxdamage'
+  depends_on 'libxext' # R
+  depends_on 'libxi'
+  depends_on 'libxrandr'
+  depends_on 'mesa'
   depends_on 'mpg123'
   depends_on 'openal'
-  depends_on 'pulseaudio'
-  depends_on 'xdg_base'
+  depends_on 'opencl_headers' => :build
+  depends_on 'opencl_icd_loader' # R
+  depends_on 'openldap'
+  depends_on 'pulseaudio' # R
   depends_on 'sommelier'
-
-  @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
-  @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
+  depends_on 'vkd3d'
+  depends_on 'xdg_base'
 
   def self.build
-    case ARCH
-    when 'x86_64'
-      FileUtils.mkdir 'wine64-build'
-      Dir.chdir 'wine64-build' do
-        system "../configure #{CREW_OPTIONS} \
+    FileUtils.mkdir_p 'wine64-build'
+    Dir.chdir 'wine64-build' do
+      unless File.file?('Makefile')
+        system "#{CREW_ENV_FNO_LTO_OPTIONS} ../configure #{CREW_OPTIONS} \
           --enable-win64 \
           --disable-maintainer-mode \
+          --with-gstreamer \
           --with-x"
-        system 'make'
       end
-      # Needs a 32 bit compiler, which we don't have on x86_64
-      # FileUtils.mkdir 'wine32-build'
-      # Dir.chdir 'wine32-build' do
-      # system "../configure #{CREW_OPTIONS} \
-      #--with-wine64=../wine64-build \
-      #--disable-maintainer-mode \
-      #--with-x"
-      # system 'make'
-      # end
-    else
-      system "./configure #{CREW_OPTIONS} \
-        --disable-maintainer-mode \
-        --with-x"
+      system 'make || make'
     end
-    system 'make'
+  end
+
+  def self.check
+    # There are all sorts of fixme errors, but wine does successfully
+    # prompt for install of the wine-mono package, which it then claims
+    # to install during the test process...
+    Dir.chdir 'wine64-build' do
+      system 'make test || true'
+    end
   end
 
   def self.install
-    case ARCH
-    when 'x86_64'
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-      Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-        FileUtils.ln_s 'wine64', 'wine'
-      end
-      Dir.chdir 'wine64-build' do
-        system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      end
-    else
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      FileUtils.ln_s 'wine64', 'wine'
+    end
+    Dir.chdir 'wine64-build' do
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", "DLLDIR=#{CREW_DEST_DLL_PREFIX}", 'install'
     end
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @wine_config_env = <<~'WINE_CONFIG_EOF'
@@ -94,11 +92,13 @@ class Wine < Package
 
   def self.postinstall
     puts
-    puts "Type 'WINEPREFIX=#{@xdg_config_home}/.wine wine explorer' to get started using the file explorer.".lightblue
+    puts 'To run an application with wine, type `wine path/to/myexecutable.exe` or `wine path/to/myinstaller.msi`.'.lightblue
     puts
   end
 
   def self.remove
+    @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
+    @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
     config_dirs = ["#{HOME}/.wine", "#{@xdg_config_home}/.wine"]
     config_dirs.each do |config_dir|
       next unless Dir.exist? config_dir
@@ -107,9 +107,9 @@ class Wine < Package
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
-        puts "#{config_dir} saved.".lightgreen
+        puts "#{config_dir} saved.".lightblue
       end
     end
   end

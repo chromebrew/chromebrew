@@ -3841,6 +3841,11 @@ url: http://www.exiv2.org/builds/
 activity: none
 ---
 kind: url
+name: libfaudio
+url: https://github.com/FNA-XNA/FAudio/releases
+activity: high
+---
+kind: url
 name: libfdk_aac
 url: https://sourceforge.net/projects/opencore-amr/files/fdk-aac/
 activity: none
@@ -5889,6 +5894,16 @@ kind: url
 name: openbox
 url: http://openbox.org/wiki/Openbox:Download
 activity: none
+---
+kind: url
+name: opencl_headers
+url: https://github.com/KhronosGroup/OpenCL-Headers/releases
+activity: medium
+---
+kind: url
+name: opencl_icd_loader
+url: https://github.com/KhronosGroup/OpenCL-ICD-Loader/releases
+activity: medium
 ---
 kind: url
 name: openconnect
@@ -8218,6 +8233,11 @@ activity: low
 kind: url
 name: vivaldi
 url: https://vivaldi.com/download/
+activity: medium
+---
+kind: url
+name: vkd3d
+url: https://dl.winehq.org/vkd3d/source/
 activity: medium
 ---
 kind: url
