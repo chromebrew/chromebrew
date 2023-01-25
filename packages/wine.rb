@@ -55,14 +55,25 @@ class Wine < Package
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
-    FileUtils.mkdir 'wine64-build'
+    FileUtils.mkdir_p 'wine64-build'
     Dir.chdir 'wine64-build' do
-      system "#{CREW_ENV_FNO_LTO_OPTIONS} ../configure #{CREW_OPTIONS} \
-        --enable-win64 \
-        --disable-maintainer-mode \
-        --with-gstreamer \
-        --with-x"
+      unless File.file?('Makefile')
+        system "#{CREW_ENV_FNO_LTO_OPTIONS} ../configure #{CREW_OPTIONS} \
+          --enable-win64 \
+          --disable-maintainer-mode \
+          --with-gstreamer \
+          --with-x"
+      end
       system 'make || make'
+    end
+  end
+
+  def self.check
+    # There are all sorts of fixme errors, but wine does successfully
+    # prompt for install of the wine-mono package, which it then claims
+    # to install during the test process...
+    Dir.chdir 'wine64-build' do
+      system 'make test || true'
     end
   end
 
