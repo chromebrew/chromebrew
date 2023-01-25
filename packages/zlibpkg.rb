@@ -6,7 +6,8 @@ class Zlibpkg < Package
   @_ver = '1.2.13'
   version @_ver
   # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
-  puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
+  # The following breaks the installer script.
+  # puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
   license 'zlib'
   compatibility 'all'
   source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
