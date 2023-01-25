@@ -55,7 +55,7 @@ class Wine < Package
           --enable-win64 \
           --disable-maintainer-mode \
           --with-x"
-        system 'make'
+        system 'make || make'
       end
       # Needs a 32 bit compiler, which we don't have on x86_64
       # FileUtils.mkdir 'wine32-build'
@@ -97,7 +97,7 @@ class Wine < Package
 
   def self.postinstall
     puts
-    puts "To run an application with wine, type `wine path/to/myexecutable.exe` or `wine path/to/myinstaller.msi`.".lightblue
+    puts 'To run an application with wine, type `wine path/to/myexecutable.exe` or `wine path/to/myinstaller.msi`.'.lightblue
     puts
   end
 
