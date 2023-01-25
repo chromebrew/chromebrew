@@ -31,9 +31,15 @@ class Opencl_icd_loader < Package
     Dir.chdir 'builddir' do
       system "cmake -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
-        -DOPENCL_HEADERS_INSTALL_DIR=#{CREW_PREFIX} .."
+        -DOPENCL_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
+        -DOPENCL_ICD_LOADER_BUILD_TESTING=ON \
+         .."
     end
     system 'samu -C builddir'
+  end
+
+  def self.check
+    system 'samu -C builddir test'
   end
 
   def self.install
