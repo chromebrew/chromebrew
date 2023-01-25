@@ -3,9 +3,10 @@ require 'package'
 class Zlibpkg < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'https://www.zlib.net/'
-  # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
   @_ver = '1.2.13'
   version @_ver
+  # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
+  puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
   license 'zlib'
   compatibility 'all'
   source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
