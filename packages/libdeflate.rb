@@ -3,7 +3,7 @@ require 'package'
 class Libdeflate < Package
   description 'Heavily optimized library for DEFLATE compression and decompression'
   homepage 'https://github.com/ebiggers/libdeflate/'
-  @_ver = '1.14'
+  @_ver = '1.17'
   version @_ver
   compatibility 'all'
   license 'MIT'
@@ -12,28 +12,21 @@ class Libdeflate < Package
 
   depends_on 'glibc' # R
 
-  # The next release of libdeflate will use cmake
-
   def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-      PREFIX=#{CREW_PREFIX} \
-      LIBDIR=#{CREW_LIB_PREFIX} \
-      make"
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+         .."
+    end
+    system 'samu -C builddir'
   end
-  
+
   def self.check
-    system "env #{CREW_ENV_OPTIONS} \
-      PREFIX=#{CREW_PREFIX} \
-      LIBDIR=#{CREW_LIB_PREFIX} \
-      make"
+    system 'samu -C builddir test'
   end
 
   def self.install
-    system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
-      LDFLAGS='-flto=auto' \
-      DESTDIR=#{CREW_DEST_DIR} \
-      PREFIX=#{CREW_PREFIX} \
-      LIBDIR=#{CREW_LIB_PREFIX} \
-      make install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
