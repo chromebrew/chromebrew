@@ -2,26 +2,25 @@ require 'package'
 
 class Gjs < Package
   description 'Javascript Bindings for GNOME'
-  @_ver = '1.71.1'
+  @_ver = '1.74.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gjs.git'
-  git_branch 'mozjs91'
-  git_hashtag 'e41f247f8c170d125ce968ed236ae7249e966178'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.71.1_armv7l/gjs-1.71.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.71.1_armv7l/gjs-1.71.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.71.1_i686/gjs-1.71.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.71.1_x86_64/gjs-1.71.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_armv7l/gjs-1.74.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_armv7l/gjs-1.74.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_i686/gjs-1.74.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gjs/1.74.0_x86_64/gjs-1.74.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f13e6ea4b094df81d3c48a0a46cc095651c43490785f4f40062078427899edb3',
-     armv7l: 'f13e6ea4b094df81d3c48a0a46cc095651c43490785f4f40062078427899edb3',
-       i686: '5bbb9d5c10377d3de0d388f2e9e65f0ad6c187e2d25ab29ebcf92cfcb58a6050',
-     x86_64: '84cf5ab2dbe09170b7a60dc005988d97cbc573e064484935d91de910e3402d00'
+    aarch64: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
+     armv7l: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
+       i686: 'c1b996c78fd6ab6ca1419101d1e63cff1726c458275bac1e2084ae40f3a7dfad',
+     x86_64: 'decdaf546dac3ccee260617d756619892cd443f6b42c19b56318feae913cc31e'
   })
 
   depends_on 'cairo' # R
@@ -29,13 +28,20 @@ class Gjs < Package
   depends_on 'dconf' => :build
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R
-  depends_on 'js91'
+  depends_on 'js102'
   depends_on 'libx11' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libffi' # R
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dinstalled_tests=false \
     -Dskip_dbus_tests=true \
+    -Dskip_gtk_tests=true \
+    -Dprofiler=disabled \
     -Dreadline=disabled \
     builddir"
     system 'meson configure builddir'

@@ -1,37 +1,50 @@
 require 'package'
 
 class Libjpeg < Package
-  description 'JPEG is a free library for image compression.'
-  homepage 'https://www.ijg.org/'
-  version '9.4.0'
-  license 'custom' # Very similar to the BSD license
+  description 'Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.'
+  homepage 'https://libjpeg-turbo.org'
+  @_ver = '2.1.4'
+  version @_ver
   compatibility 'all'
-  source_url 'https://www.ijg.org/files/jpegsrc.v9d.tar.gz'
-  source_sha256 '6c434a3be59f8f62425b2e3c077e785c9ce30ee5874ea1c270e843f273ba71ee'
+  source_url 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/9.4.0_armv7l/libjpeg-9.4.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/9.4.0_armv7l/libjpeg-9.4.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/9.4.0_i686/libjpeg-9.4.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/9.4.0_x86_64/libjpeg-9.4.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.4_armv7l/libjpeg-2.1.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.4_armv7l/libjpeg-2.1.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.4_i686/libjpeg-2.1.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.4_x86_64/libjpeg-2.1.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5aea50db0ee0ad0839f58b973cff9808b57babba318409a36b7967b1c4f8285f',
-     armv7l: '5aea50db0ee0ad0839f58b973cff9808b57babba318409a36b7967b1c4f8285f',
-       i686: '041768d7dcbe7720371629f8d5e1eafdf18a14bd69b1d06eefff5cc36f42f2c3',
-     x86_64: '74ae5e410b0407999b85c0837c56d6e265c4dfb4098bc6413e6438b60bb89524'
+    aarch64: '1de3b99b8a2ce0618e2538ad517d62b29a85f1938dca07c0570933b7f1f58313',
+     armv7l: '1de3b99b8a2ce0618e2538ad517d62b29a85f1938dca07c0570933b7f1f58313',
+       i686: 'e5b1f49cd89009289ebabb9cd2e76c3b000e49e8b752e376a8ef68e8b3c81b0d',
+     x86_64: 'fec9fd92a2b02df0a9811ca75b64e1ee4ff34897ad8db83093506ea9f86bdae1'
   })
 
+  depends_on 'yasm' => :build
+  depends_on 'glibc' # R
+
   def self.build
-    system '[ -x configure ] || ./bootstrap.py'
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake \
+        -G Ninja \
+        #{CREW_CMAKE_OPTIONS} \
+        -DWITH_JAVA=OFF \
+        -DWITH_12BIT=OFF \
+        -W no-dev \
+        .."
+    end
+    system 'ninja -C builddir'
+  end
+
+  def self.check
+    system 'ninja -C builddir test'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    Dir.chdir CREW_DEST_LIB_PREFIX do
-      FileUtils.ln_s 'libjpeg.so.9.4.0', 'libjpeg.so.8'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    FileUtils.install 'jpegint.h', "#{CREW_DEST_PREFIX}/include/", mode: 0o644
   end
 end

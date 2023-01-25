@@ -3,35 +3,38 @@ require 'package'
 class Libva < Package
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  @_ver = '2.15.0'
-  version @_ver.to_s
+  @_ver = '2.17.0'
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/intel/libva.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.15.0_armv7l/libva-2.15.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.15.0_armv7l/libva-2.15.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.15.0_i686/libva-2.15.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.15.0_x86_64/libva-2.15.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0_armv7l/libva-2.17.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0_armv7l/libva-2.17.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0_i686/libva-2.17.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0_x86_64/libva-2.17.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '201b781e9ecae81f6d7b978f9314ca321f6dbe78829467f84f5f38461597b371',
-     armv7l: '201b781e9ecae81f6d7b978f9314ca321f6dbe78829467f84f5f38461597b371',
-       i686: 'db83ae08bb404bfec867ba159a30b1d9bca57d4fe17f22332965da0ce4aab8da',
-     x86_64: '660fde88cdf68687ae52aca11d88ecc90424a943d7dd16ab5c572143637007a4'
+    aarch64: '07f809c623bffb4d16013374a9dbe6ad68e16c25026ec9b48aa447205ce4165d',
+     armv7l: '07f809c623bffb4d16013374a9dbe6ad68e16c25026ec9b48aa447205ce4165d',
+       i686: 'ef1f0b3f5afe4b99bd40cb664ed850194598be5a1501883ff6291c430b54ee90',
+     x86_64: 'ca1bbccb041e31b567d4c1322e35afa8856d392b0408599c56778545c74ca42a'
   })
 
-  depends_on 'libdrm'
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
+  depends_on 'glibc' # R
+  depends_on 'libdrm' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
   depends_on 'mesa'
-  depends_on 'wayland'
+  depends_on 'wayland' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     --default-library=both \
     builddir"
     system 'meson configure builddir'

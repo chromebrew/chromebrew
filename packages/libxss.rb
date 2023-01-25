@@ -3,34 +3,38 @@ require 'package'
 class Libxss < Package
   description 'X11 Screen Saver extension library'
   homepage 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
-  @_ver = '1.2.3'
-  version @_ver
+  version '1.2.4'
   license 'MIT'
   compatibility 'all'
-  source_url "https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-#{@_ver}.tar.bz2"
-  source_sha256 'f917075a1b7b5a38d67a8b0238eaab14acd2557679835b154cf2bca576e89bf8'
+  source_url 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git'
+  git_hashtag "libXScrnSaver-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_armv7l/libxss-1.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_armv7l/libxss-1.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_i686/libxss-1.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.3_x86_64/libxss-1.2.3-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.4_armv7l/libxss-1.2.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.4_armv7l/libxss-1.2.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.4_i686/libxss-1.2.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxss/1.2.4_x86_64/libxss-1.2.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cec3f0b92f4c56b7ec262ec05356f6304b6e5e651f3074abdb08177a4ef10099',
-     armv7l: 'cec3f0b92f4c56b7ec262ec05356f6304b6e5e651f3074abdb08177a4ef10099',
-       i686: 'a7c94cac209cda5532aba55897b7334586881757f47eeaaf136e64b9f5cdeb0a',
-     x86_64: '4de949279407adf9abf83328e51e7d86c0630ec2eae6925aa3fc02fe4a0166a5'
+    aarch64: '2779424e8d1364c22a3d56cd98bf335721ceb0adb6229db84702009d116b7f72',
+     armv7l: '2779424e8d1364c22a3d56cd98bf335721ceb0adb6229db84702009d116b7f72',
+       i686: '19428de1250a4399d152cb85de245ae326a47414096e36f0f42f747a1751f5a2',
+     x86_64: 'ea6648451677b22506a534c62a3a90a7e12ee433cfee8835dcef65894ee12517'
   })
 
-  depends_on 'libxext'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
   depends_on 'util_macros' => :build
 
   def self.build
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS} \
+    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
+    system "./configure #{CREW_OPTIONS} \
       --sysconfdir=#{CREW_PREFIX}/etc"
     system 'make'
   end

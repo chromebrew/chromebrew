@@ -1,25 +1,24 @@
 require 'package'
 
 class At_spi2_core < Package
-  description 'This is over DBus; toolkit widgets provide their content to screen readers such as Orca'
+  description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
-  version '2.39.91'
-  license 'LGPL-2.1+'
+  version '2.46.0'
   compatibility 'all'
-  source_url 'https://download.gnome.org/core/40/40.rc/sources/at-spi2-core-2.39.91.tar.xz'
-  source_sha256 '4f71d3d208736adfe004102b4caca0ad70a7e3986d9bcd1661d7d824e10bbfb3'
+  source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
+  git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_armv7l/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_armv7l/at_spi2_core-2.39.91-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_i686/at_spi2_core-2.39.91-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.39.91_x86_64/at_spi2_core-2.39.91-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.46.0_armv7l/at_spi2_core-2.46.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.46.0_armv7l/at_spi2_core-2.46.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.46.0_i686/at_spi2_core-2.46.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.46.0_x86_64/at_spi2_core-2.46.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7a9ab15123727d6036c8b30b9a35ab52f71745a8a4edce0fe80039216c2649b1',
-     armv7l: '7a9ab15123727d6036c8b30b9a35ab52f71745a8a4edce0fe80039216c2649b1',
-       i686: 'd29109b831f23f0412f79c174fcd0b0c13e69ffdccd86d2bf7663601a4252fd6',
-     x86_64: '7ae8a3cca653f06dc1efb1945117bd0fbab719462b3bdbc385057664f25acfc2'
+    aarch64: 'e41f66f60dc1cf250c5261fbb273a28235de94f07eb7875b47e7e911952f07f3',
+     armv7l: 'e41f66f60dc1cf250c5261fbb273a28235de94f07eb7875b47e7e911952f07f3',
+       i686: '84715693ae536e4971ed770b0c8b4dfe3ba9b01672c18608ba962c7acd225318',
+     x86_64: '34da69bd9bc905ca3cd2fcd57bb2f2acfdb91ce7cc0fb48dd2bb02c8acada64b'
   })
 
   depends_on 'libxtst'
@@ -28,9 +27,20 @@ class At_spi2_core < Package
   depends_on 'gobject_introspection'
   depends_on 'libxcb'
   depends_on 'gtk_doc'
+  depends_on 'atk' # R
+  depends_on 'at_spi2_atk' # R
+  depends_on 'glibc' # R
+  depends_on 'libxext' # R
+  depends_on 'libx11' # R
+  depends_on 'libxi' # R
+  depends_on 'gcc' # R
+
+  conflicts_ok # Doesn't actually conflict with atk
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} \
+    builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

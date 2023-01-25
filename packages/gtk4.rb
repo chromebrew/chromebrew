@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.7.2'
+  @_ver = '4.8.2'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_armv7l/gtk4-4.7.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_armv7l/gtk4-4.7.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_i686/gtk4-4.7.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.7.2_x86_64/gtk4-4.7.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_armv7l/gtk4-4.8.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_armv7l/gtk4-4.8.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_i686/gtk4-4.8.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_x86_64/gtk4-4.8.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '44707b210266ff3b5cceefc12f9eabf1478a9e59502dcb14759b80a70b950a05',
-     armv7l: '44707b210266ff3b5cceefc12f9eabf1478a9e59502dcb14759b80a70b950a05',
-       i686: '712572f265f17b4df169a0f4a425d775596cf82325cba8b5c6038f52c007ff36',
-     x86_64: 'f9e4381b2451904fe970f10da3a072997f1f59a8af902cd4ac4ced1685bad122'
+    aarch64: '32277a3d530cf76f0f77568679818eed8bbaf86e28395524f19686066244fab2',
+     armv7l: '32277a3d530cf76f0f77568679818eed8bbaf86e28395524f19686066244fab2',
+       i686: '9916b4c01138e0a6f23ebe894229241715d24e1bb5b6c220d4eb712e4c5b7b61',
+     x86_64: '55b12fef43364a630b7bddfd833067c12024204581f6c0057e6bb615afdefe36'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -34,8 +34,8 @@ class Gtk4 < Package
   depends_on 'libspectre' => :build
   depends_on 'mesa' => :build
   depends_on 'valgrind' => :build
-  depends_on 'py3_pygments' => :build # Is this needed?
-  depends_on 'py3_six' => :build # Is this needed?
+  depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'adwaita_icon_theme' # L
   depends_on 'cantarell_fonts' # L
@@ -45,7 +45,6 @@ class Gtk4 < Package
   depends_on 'xdg_base' # L
   depends_on 'cairo' # R
   depends_on 'cups' # R
-  depends_on 'ffmpeg' # R
   depends_on 'fontconfig' # R
   depends_on 'fribidi' # R
   depends_on 'gdk_pixbuf' # R
@@ -53,10 +52,7 @@ class Gtk4 < Package
   depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
-  depends_on 'json_glib' # R
   depends_on 'libepoxy' # R
-  depends_on 'libmfx' if ARCH.eql?('i686') # R
-  depends_on 'libsass' if ARCH.eql?('x86_64') # R
   depends_on 'libx11' # R
   depends_on 'libxcomposite' # R
   depends_on 'libxcursor' # R
@@ -68,9 +64,15 @@ class Gtk4 < Package
   depends_on 'libxkbcommon' # R
   depends_on 'libxrandr' # R
   depends_on 'pango' # R
-  depends_on 'rest' # R
+  depends_on 'sassc' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # R
+  depends_on 'libcloudproviders' # R
   gnome
 
   def self.patch
@@ -88,7 +90,7 @@ class Gtk4 < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -96,6 +98,7 @@ class Gtk4 < Package
       -Dgraphene:default_library=both \
       -Dlibsass:default_library=both \
       -Dmutest:default_library=both \
+      -Dcloudproviders=enabled \
       -Dvulkan=enabled \
       build"
     system 'meson configure build'

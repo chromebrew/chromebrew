@@ -3,23 +3,23 @@ require 'package'
 class Gtk_vnc < Package
   description 'VNC viewer widget for GTK'
   homepage 'https://wiki.gnome.org/Projects/gtk-vnc'
-  version '1.2.0'
+  version '1.3.1'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtk-vnc.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_armv7l/gtk_vnc-1.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_i686/gtk_vnc-1.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.2.0_x86_64/gtk_vnc-1.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.3.1_armv7l/gtk_vnc-1.3.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.3.1_armv7l/gtk_vnc-1.3.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.3.1_i686/gtk_vnc-1.3.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_vnc/1.3.1_x86_64/gtk_vnc-1.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '62d85534080b53b4b3e0a20c58979db9e550a035414821d210a45fc8965da0ab',
-     armv7l: '62d85534080b53b4b3e0a20c58979db9e550a035414821d210a45fc8965da0ab',
-       i686: '609017642a8be0a5d309b05d07aed5665760eca14af26075c3b719fef3736dc8',
-     x86_64: '5001d552bfa4155bf2c77a1e1a7ee4714125566db0b9ce1e3e3c5e88ace8057d'
+    aarch64: '40f49371a8483626e1c080435e4bf7afaf3f9908e6722558d394f65dff9e7874',
+     armv7l: '40f49371a8483626e1c080435e4bf7afaf3f9908e6722558d394f65dff9e7874',
+       i686: '3936d69bd7fa0a3a742d3836e2bf27f53670218195bc396663c74a682f1ab219',
+     x86_64: 'd135ac0a8ab47f12e4104eabbd36036c3519c1e38722a6e4aae25c0b35a5aac7'
   })
 
   depends_on 'cairo'
@@ -28,10 +28,14 @@ class Gtk_vnc < Package
   depends_on 'gtk3'
   depends_on 'libgcrypt'
   depends_on 'pulseaudio'
-
-  def self.patch
-    system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
-  end
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libx11' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'gcc' # R
 
   def self.build
     system "meson \

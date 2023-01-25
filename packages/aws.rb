@@ -22,7 +22,7 @@ class Aws < Package
   })
 
   depends_on 'groff'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.install
     system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} \

@@ -3,7 +3,7 @@ require 'package'
 class Gvfs < Package
   description 'Virtual filesystem implementation for GIO'
   homepage 'https://wiki.gnome.org/Projects/gvfs'
-  @_ver = '1.48.1'
+  @_ver = '1.50.2'
   version @_ver
   license 'GPLv2'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Gvfs < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.1_armv7l/gvfs-1.48.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.1_armv7l/gvfs-1.48.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.1_i686/gvfs-1.48.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.48.1_x86_64/gvfs-1.48.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.2_armv7l/gvfs-1.50.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.2_armv7l/gvfs-1.50.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.2_i686/gvfs-1.50.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.2_x86_64/gvfs-1.50.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3585ea23719cf4e3c3da8c84beed3df3f020a91feb3d3af7f05e81514cec1e21',
-     armv7l: '3585ea23719cf4e3c3da8c84beed3df3f020a91feb3d3af7f05e81514cec1e21',
-       i686: 'b617653b15b4c87f2759c36067f638b70e501f4ecf01243b6ae6ef1ced47b314',
-     x86_64: '5094180c75e7e99ac78a191935a6d0af41a50bf4dbcd7764bea96d7114282b19'
+    aarch64: '32879178b42dcc09ee6fc932eb05127fa23b8331add08f225a8a0ca5f51368cd',
+     armv7l: '32879178b42dcc09ee6fc932eb05127fa23b8331add08f225a8a0ca5f51368cd',
+       i686: '044bb14dcb792ca02baee2bebc2ba7334efb6e3995e44ef0cbd79ccebdb7e14f',
+     x86_64: 'd9ef574da4c1d7153eb2ec1cc7bd339c96dcf7c9910f875acfc745d8f771815b'
   })
 
   depends_on 'avahi' # R
@@ -29,7 +29,7 @@ class Gvfs < Package
   depends_on 'docbook_xsl' => :build
   depends_on 'elogind' => :build
   depends_on 'fuse3' # R
-  depends_on 'gcr' # R
+  depends_on 'gcr_3' # R
   depends_on 'glib' # R
   depends_on 'gtk3' => :build
   depends_on 'libcdio'
@@ -45,9 +45,13 @@ class Gvfs < Package
   depends_on 'libsoup2' # R
   depends_on 'polkit' # R
   depends_on 'smbclient' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libsoup' # R
+  depends_on 'libxml2' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dfuse=true \
     -Dgoa=false \
     -Dgoogle=false \

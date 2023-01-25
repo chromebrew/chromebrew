@@ -3,28 +3,29 @@ require 'package'
 class Py3_build < Package
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://pypa-build.readthedocs.io/'
-  @_ver = '0.8.0'
-  version "#{@_ver}-1"
+  @_ver = '0.9.0'
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/build.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_armv7l/py3_build-0.8.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_armv7l/py3_build-0.8.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_i686/py3_build-0.8.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.8.0-1_x86_64/py3_build-0.8.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.9.0-py3.11_armv7l/py3_build-0.9.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.9.0-py3.11_armv7l/py3_build-0.9.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.9.0-py3.11_i686/py3_build-0.9.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_build/0.9.0-py3.11_x86_64/py3_build-0.9.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fad4cbbb4220a513f0357cd549f5d9760dfbb542cdca26564aff7bee1b3cf280',
-     armv7l: 'fad4cbbb4220a513f0357cd549f5d9760dfbb542cdca26564aff7bee1b3cf280',
-       i686: 'ded0af9208dc6465bfc84b78e922e2243a4a95e8c4969e4eb57e206203c9eb54',
-     x86_64: '820bc24d5da0c2394fa587b3b41f62b5bf4903a7eb91263ef555380f367bc9a3'
+    aarch64: '9b0448006c3e4f6453bfcae30472f50a4e68848d6ae322dae9b5335c4274cb71',
+     armv7l: '9b0448006c3e4f6453bfcae30472f50a4e68848d6ae322dae9b5335c4274cb71',
+       i686: '9048410e94aef4feb6950fa7574c0082c1c39a030aa79bd99ae731a58c01c1df',
+     x86_64: 'd98e8bf6a856a84306eb4c29a6858307625cbc0f4eaa4a4344e5d9506406e5e3'
   })
 
+  depends_on 'python3'
   depends_on 'py3_packaging'
-  depends_on 'py3_pep517'
+  depends_on 'py3_pyproject_hooks'
   depends_on 'py3_tomli'
 
   def self.build

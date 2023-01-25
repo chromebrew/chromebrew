@@ -4,26 +4,26 @@ class Py3_itsdangerous < Package
   description 'ItsDangerous provide various helpers to pass data to untrusted environments and back.'
   homepage 'https://palletsprojects.com/p/itsdangerous/'
   @_ver = '2.0.1'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/pallets/itsdangerous.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_armv7l/py3_itsdangerous-2.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_armv7l/py3_itsdangerous-2.0.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_i686/py3_itsdangerous-2.0.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1_x86_64/py3_itsdangerous-2.0.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1-py3.11_armv7l/py3_itsdangerous-2.0.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1-py3.11_armv7l/py3_itsdangerous-2.0.1-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1-py3.11_i686/py3_itsdangerous-2.0.1-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_itsdangerous/2.0.1-py3.11_x86_64/py3_itsdangerous-2.0.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e480e5ef2d9b757bbcd7b45a0427003a2d81ee85e9388f56cfc895ec6ed5d0c1',
-     armv7l: 'e480e5ef2d9b757bbcd7b45a0427003a2d81ee85e9388f56cfc895ec6ed5d0c1',
-       i686: '6776095190067ae1b6809aa7cb6d61f0baa08423e2bac1f4b110584d7da56600',
-     x86_64: 'b211621da276c9693729ba64ab14f4a133683c2692f5b737e38ea50653adf00a'
+    aarch64: '74ed5411afe6eb809329a3c32420a396d5594351277e8c31ca4189f43c92ebff',
+     armv7l: '74ed5411afe6eb809329a3c32420a396d5594351277e8c31ca4189f43c92ebff',
+       i686: 'b451a5210e46366bdb295f0f84b5ddd976a45abdaa5a1ca356dd84d2d7146349',
+     x86_64: '1999c81d49d2692b484373632fadfda7bd8402317e5595518ca32fe6a38f95d1'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

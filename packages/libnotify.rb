@@ -27,7 +27,7 @@ class Libnotify < Package
   depends_on 'glib' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dman=false \
     -Ddocbook_docs=disabled \
     -Dtests=false \

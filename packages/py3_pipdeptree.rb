@@ -4,27 +4,26 @@ class Py3_pipdeptree < Package
   description 'Displays a dependency tree of the installed Python packages.'
   homepage 'https://github.com/naiquevin/pipdeptree/'
   @_ver = '2.2.0'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/naiquevin/pipdeptree.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_armv7l/py3_pipdeptree-2.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_armv7l/py3_pipdeptree-2.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_i686/py3_pipdeptree-2.2.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0_x86_64/py3_pipdeptree-2.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0-py3.11_armv7l/py3_pipdeptree-2.2.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0-py3.11_armv7l/py3_pipdeptree-2.2.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0-py3.11_i686/py3_pipdeptree-2.2.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pipdeptree/2.2.0-py3.11_x86_64/py3_pipdeptree-2.2.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '43bcc3d8c7cafc9ff0ffb11c3ac02d711bad8c3a255544ae1359f6266b61c96b',
-     armv7l: '43bcc3d8c7cafc9ff0ffb11c3ac02d711bad8c3a255544ae1359f6266b61c96b',
-       i686: 'def4e8eddadd8d3e5842c7c55796c753bd56fc7e4dd07b825e05703a73647906',
-     x86_64: 'a33079dea17ba00a73708eece8b455506abe1a3d46ed814f68176d2b62f7c9d0'
+    aarch64: 'def0045207880e58c9103fe7cf9d4427f45e474f56ba283668795dc8f67e46b9',
+     armv7l: 'def0045207880e58c9103fe7cf9d4427f45e474f56ba283668795dc8f67e46b9',
+       i686: 'debbcdd861ada8ac88eecb15d4fd98a412f1876fce25dfab02371d985084f7e9',
+     x86_64: '1dee5c0ebb751d44751107867841b39a8c1208826c2c88b5cc1aff56eb0eb018'
   })
 
-  depends_on 'py3_pip'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

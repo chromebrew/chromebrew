@@ -6,23 +6,23 @@ require 'package'
 class Evince < Package
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
-  version '40.2'
+  version '43.0'
   license 'GPL'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_armv7l/evince-40.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_armv7l/evince-40.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_i686/evince-40.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/40.2_x86_64/evince-40.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/43.0_armv7l/evince-43.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/43.0_armv7l/evince-43.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/43.0_i686/evince-43.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/43.0_x86_64/evince-43.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '74251f49f4fe22b9a19e4cbd16770d270eb13147df23265e62bb960ec71634e0',
-     armv7l: '74251f49f4fe22b9a19e4cbd16770d270eb13147df23265e62bb960ec71634e0',
-       i686: '30051f33d1c73422b28298ccb9f7a84cc6dbb30a742cc01aef63d7054b090b04',
-     x86_64: '49e164c40f852960136be7660fc38be92d6517d45c073d2b076dcdbf643cffd6'
+    aarch64: '7a9a9a562931d0df03ae78badadb3e87a34c6810cbc848066bfae27d33695587',
+     armv7l: '7a9a9a562931d0df03ae78badadb3e87a34c6810cbc848066bfae27d33695587',
+       i686: '951637e6b83cf9682b7779d5394e403df80d3e9e291458ff8cd08589c9f4e104',
+     x86_64: 'dc46b37780ac1b9f5c400a3bd8b4c8f01a0752b287747ced776e62b7be053cf5'
   })
 
   depends_on 'atk' # R
@@ -45,10 +45,12 @@ class Evince < Package
   depends_on 'pango' # R
   depends_on 'poppler' # R
   depends_on 'valgrind' => :build
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dgtk_doc=false \
+      -Dnautilus=false \
       -Dps=enabled \
       -Dsystemduserunitdir=no \
       builddir"

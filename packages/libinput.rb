@@ -4,7 +4,7 @@ class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
   @_ver = '1.21.0'
-  version @_ver.to_s
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
@@ -35,7 +35,7 @@ class Libinput < Package
   # depends_on 'gtk3' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Ddebug-gui=false \
       -Ddocumentation=false \
       builddir"

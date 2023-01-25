@@ -3,24 +3,23 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  @_ver = '2.38.0'
-  version @_ver
+  version '2.39.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.38.0.tar.xz'
-  source_sha256 '923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.1.tar.xz'
+  source_sha256 '40a38a0847b30c371b35873b3afcf123885dd41ea3ecbbf510efa97f3ce5c161'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_armv7l/git-2.38.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_armv7l/git-2.38.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_i686/git-2.38.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.38.0_x86_64/git-2.38.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.1_armv7l/git-2.39.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.1_armv7l/git-2.39.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.1_i686/git-2.39.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.1_x86_64/git-2.39.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '14c5aa369d3bbea0122c17228cc2123d8fcd055c2f4e03c3bf164fd177380f00',
-     armv7l: '14c5aa369d3bbea0122c17228cc2123d8fcd055c2f4e03c3bf164fd177380f00',
-       i686: '98eb7a1935c8d3af328be87ccc023fc4e08fbf7ddbfdafb3957c529d1b2c5be1',
-     x86_64: '5292a96fbd2c230395535311b696a9f87a3f337f104927b1ce39a31713da0653'
+    aarch64: '31020a59a0d4f164b926adaff2c188edb1cc02cff0f6a6126fd0053958912309',
+     armv7l: '31020a59a0d4f164b926adaff2c188edb1cc02cff0f6a6126fd0053958912309',
+       i686: '428f5d688660e564575d2c5d65375be981bba728184b5b7b8b6546e28ed88fa3',
+     x86_64: '5bc031d6f6c9b297665e89faba78ecd823364bef8a9fd25bb40d61fa195fe86c'
   })
 
   depends_on 'ca_certificates' => :build
@@ -28,6 +27,8 @@ class Git < Package
   depends_on 'libunistring'
   depends_on 'pcre2'
   depends_on 'zlibpkg'
+  depends_on 'expat' # R
+  depends_on 'glibc' # R
 
   no_patchelf
   no_zstd
@@ -35,12 +36,12 @@ class Git < Package
   def self.patch
     # Patch to prevent error function conflict with libidn2
     # By replacing all calls to error with git_error.
-    system "sed -i 's,^#undef error\$,#undef git_error,' usage.c"
+    system "sed -i 's,^#undef error$,#undef git_error,' usage.c"
     sedcmd = 's/\([[:blank:]]\)error(/\1git_error(/'.dump
     system "grep -rl '[[:space:]]error(' . | xargs sed -i #{sedcmd}"
     sedcmd2 = 's/\([[:blank:]]\)error (/\1git_error (/'.dump
     system "grep -rl '[[:space:]]error (' . | xargs sed -i #{sedcmd2}"
-    system "grep -rl ' !!error(' . | xargs sed -i 's/ \!\!error(/ \!\!git_error(/g'"
+    system "grep -rl ' !!error(' . | xargs sed -i 's/ !!error(/ !!git_error(/g'"
     system "sed -i 's/#define git_error(...) (error(__VA_ARGS__), const_error())/#define git_error(...) (git_error(__VA_ARGS__), const_error())/' git-compat-util.h"
     # CMake patches.
     # Avoid undefined reference to `trace2_collect_process_info' &  `obstack_free'
@@ -50,9 +51,9 @@ class Git < Package
     system "sed -i 's,set(PERL_PATH /usr/bin/perl),set(PERL_PATH #{CREW_PREFIX}/bin/perl),g' contrib/buildsystems/CMakeLists.txt"
     system "sed -i 's,#!/usr/bin,#!#{CREW_PREFIX}/bin,g' contrib/buildsystems/CMakeLists.txt"
     # Without the following DESTDIR doesn't work.
-    system "sed -i 's,\${CMAKE_INSTALL_PREFIX}/bin/git,\${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
-    system "sed -i 's,\${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
-    system "sed -i 's,\${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,${CMAKE_BINARY_DIR}/git,g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,${CMAKE_INSTALL_PREFIX}/bin/git,\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/git,g' contrib/buildsystems/CMakeLists.txt"
+    system "sed -i 's,${CMAKE_INSTALL_PREFIX},\\\\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX},g' contrib/buildsystems/CMakeLists.txt"
   end
 
   def self.build

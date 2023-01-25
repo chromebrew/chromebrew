@@ -20,7 +20,7 @@ class Mutter < Package
      x86_64: '1dbf561eb457bb72023362e41f995c7820fb5c5b899a1f157e43a5722531dbe7'
   })
 
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dconf'
   depends_on 'gnome_settings_daemon'
   depends_on 'gobject_introspection' => :build
@@ -34,7 +34,7 @@ class Mutter < Package
   depends_on 'xwayland'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dtests=false \
     -Dprofiler=false \
     -Dopengl=true \

@@ -3,14 +3,16 @@ require 'package'
 class Netbeans < Package
   description 'Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.'
   homepage 'https://netbeans.org/'
-  version '12.6'
+  version '16'
   license 'Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1'
   compatibility 'all'
-  source_url 'https://dlcdn.apache.org/netbeans/netbeans/12.6/netbeans-12.6-bin.zip'
-  source_sha256 '95ea3f8aab954ee44e68ee2f2a8828e46f91fda86efa9312b1186e7736ab8b49'
+  source_url 'https://dlcdn.apache.org/netbeans/netbeans/16/netbeans-16-bin.zip'
+  source_sha256 '6c45db982a5cac94738033817cc37025167302d54beca6f834d2372992836a3b'
 
-  depends_on 'jdk8'
+  depends_on 'openjdk8'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -28,10 +30,10 @@ class Netbeans < Package
     config_dir = "#{HOME}/.netbeans"
     if Dir.exist? config_dir
       print "Would you like to remove the config directory #{config_dir}? [y/N] "
-      case $stdin.getc
-      when 'y', 'Y'
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
         puts "#{config_dir} saved.".lightgreen
       end

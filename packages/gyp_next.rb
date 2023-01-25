@@ -23,7 +23,7 @@ class Gyp_next < Package
      x86_64: 'a7c4e1a5c46b7d72fc35023a04110cb4cd76709b0ba8fcabb2af8a10362830a1'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

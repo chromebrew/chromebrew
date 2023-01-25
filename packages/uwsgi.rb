@@ -21,7 +21,7 @@ class Uwsgi < Package
     system "echo 'Select plugin(s):' && ls plugins"
     puts
     system "echo -n 'Enter selection (separate multiple plugins by a space) [python]: '"
-    plugins = $stdin.gets.chomp
+    plugins = $stdin.gets.chomp.downcase
     puts
     system "make #{plugins}"
   end

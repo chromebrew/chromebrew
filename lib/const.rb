@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.27.0'
+CREW_VERSION = '1.30.9'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -24,7 +24,7 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
                      elsif CPUINFO.key?('features')
                        # ARM-based processor stores supported instructions in 'features' field
                        if CPUINFO['cpu architecture'].to_i >= 8
-                         # if the processor is ARMv8+, than it is 64-bit
+                         # if the processor is ARMv8+, then it is 64-bit
                          %w[aarch64 armv7l armv8l]
                        else
                          # ARMv7 processor
@@ -57,6 +57,27 @@ else
   HOME = CREW_PREFIX + Dir.home
 end
 
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
+
+CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
+# vendor_id may not exist on non-x86 platforms.
+CREW_IS_AMD = ARCH == 'x86_64' ? CPUINFO['vendor_id'].include?('AuthenticAMD') : false
+CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? CPUINFO['vendor_id'].include?('GenuineIntel') : false
+
+# Use sane minimal defaults if in container and no override specified.
+if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
+  case ARCH
+  when 'i686'
+    CREW_KERNEL_VERSION = '3.8'
+  when 'aarch64', 'armv7l'
+    CREW_KERNEL_VERSION = '4.14'
+  when 'x86_64'
+    CREW_KERNEL_VERSION = '4.14'
+  end
+else
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
+end
+
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
 CREW_MAN_PREFIX = "#{CREW_PREFIX}/share/man"
 CREW_LIB_PATH = "#{CREW_PREFIX}/lib/crew/"
@@ -65,8 +86,10 @@ CREW_CONFIG_PATH = "#{CREW_PREFIX}/etc/crew/"
 CREW_META_PATH = "#{CREW_CONFIG_PATH}meta/"
 CREW_BREW_DIR = "#{CREW_PREFIX}/tmp/crew/"
 CREW_DEST_DIR = "#{CREW_BREW_DIR}dest"
+CREW_DLL_PREFIX = "#{CREW_LIB_PREFIX}/wine"
 CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
 CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
+CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
@@ -95,8 +118,8 @@ CREW_CACHE_ENABLED = !ENV['CREW_CACHE_ENABLED'].to_s.empty?
 CREW_CONFLICTS_ONLY_ADVISORY = !ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? # or use conflicts_ok
 CREW_DISABLE_ENV_OPTIONS = !ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? # or use no_env_options
 CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? # or use no_fhs
-CREW_LA_RENAME_ENABLED = !ENV['CREW_LA_RENAME_ENABLED'].to_s.empty?
 CREW_NOT_COMPRESS = !ENV['CREW_NOT_COMPRESS'].to_s.empty? # or use no_compress
+CREW_NOT_LINKS = !ENV['CREW_NOT_LINKS'].to_s.empty? # or use no_links
 CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
@@ -151,12 +174,17 @@ case ARCH
 when 'aarch64', 'armv7l'
   CREW_TGT = 'armv7l-cros-linux-gnueabihf'
   CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
+  # These settings have been selected to match debian armhf.
+  # Using -mfpu=neon breaks builds such as webkit2gtk.
+  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp'
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
   CREW_BUILD = 'i686-cros-linux-gnu'
+  CREW_ARCH_FLAGS = ''
 when 'x86_64'
   CREW_TGT = 'x86_64-cros-linux-gnu'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
+  CREW_ARCH_FLAGS = ''
 end
 
 CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
@@ -166,7 +194,7 @@ CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
               end
 CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', nil)
 
-CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"

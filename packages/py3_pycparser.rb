@@ -4,23 +4,23 @@ class Py3_pycparser < Package
   description 'PyCParser is a complete C99 parser in pure Python.'
   homepage 'https://github.com/eliben/pycparser/'
   @_ver = '2.21'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/eliben/pycparser.git'
   git_hashtag "release_v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21_armv7l/py3_pycparser-2.21-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21_armv7l/py3_pycparser-2.21-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21_i686/py3_pycparser-2.21-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21_x86_64/py3_pycparser-2.21-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21-py3.11_armv7l/py3_pycparser-2.21-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21-py3.11_armv7l/py3_pycparser-2.21-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21-py3.11_i686/py3_pycparser-2.21-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycparser/2.21-py3.11_x86_64/py3_pycparser-2.21-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7c9cbd663a180226c1688c99c2ae9fd650bd46a8581e7538b1a63d557ded94cd',
-     armv7l: '7c9cbd663a180226c1688c99c2ae9fd650bd46a8581e7538b1a63d557ded94cd',
-       i686: 'a43749ca7aceccda4465573ae593fbd4056a6ec57d331da5b8c48d3151d45af4',
-     x86_64: 'b3a54f1e0a3dd3d27a6cd3cc3a578f91cd91507d8e6e15c85b5ad29d57bfe49c'
+    aarch64: 'bdc292c1677a3998ebe26ba56fe728ba322f6e679faf18850ad742728fac7b3c',
+     armv7l: 'bdc292c1677a3998ebe26ba56fe728ba322f6e679faf18850ad742728fac7b3c',
+       i686: 'd7d6ff2cf84b41a82cfe249c72010803f465d07019777eec05692641c1606a16',
+     x86_64: '7d22bed99ec1dbbe572a234c1cf7bcd17849335954a521c0c4c86a118364c14c'
   })
 
   def self.build

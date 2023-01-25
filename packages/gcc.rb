@@ -3,27 +3,27 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '12.2'
+  version '12.2.1-b80a690' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
-  source_url 'https://gcc.gnu.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz'
-  source_sha256 'e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
+  source_url 'https://github.com/gcc-mirror/gcc.git'
+  git_hashtag 'b80a690673272919896ee5939250e50d882f2418'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_armv7l/gcc-12.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_i686/gcc-12.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2_x86_64/gcc-12.2-chromeos-x86_64.tar.zst'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_i686/gcc-12.2.1-b80a690-chromeos-i686.tar.xz',
+   aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
+    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_x86_64/gcc-12.2.1-b80a690-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
-     armv7l: '0b6ba2549556fdcfe489253ee99362bf4d5278411f695433121ac82665a5521e',
-       i686: '80d91fa11b291a5e89f7f14a31149c96ebcb26ed2a34560a216d8f184ee788a6',
-     x86_64: '01efdcdab6bebc32fd5608f6a061c7ceebd69e9f96084293a903f5af9c3576f3'
+      i686: '14de19fc4bf6d97c936541593e79638b4661855d1b3bfe3f14d3d520870951de',
+   aarch64: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
+    armv7l: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
+    x86_64: '62a41fb9a13969fe9ecca02f4f8db153abd15ae66874154735aeee22009e7c8e'
   })
 
   depends_on 'binutils' => :build
-  depends_on 'ccache' => :build
+  # depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
   depends_on 'gmp' # R
@@ -119,7 +119,7 @@ class Gcc < Package
     @languages = 'c,c++,jit,objc,fortran'
     case ARCH
     when 'armv7l', 'aarch64'
-      @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-fpu=neon --with-tune=cortex-a15'
+      @archflags = '--with-arch=armv7-a+fp --with-float=hard --with-tune=cortex-a15 --with-fpu=vfpv3-d16'
     when 'x86_64'
       @archflags = '--with-arch-64=x86-64'
     when 'i686'

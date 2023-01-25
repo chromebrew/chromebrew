@@ -3,23 +3,23 @@ require 'package'
 class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.3-20211106'
+  version '6.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/mirror/ncurses.git'
-  git_hashtag 'f399f54c6c4ea2143afcbf704ce9af0be52b63fc'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_armv7l/ncurses-6.3-20211106-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_armv7l/ncurses-6.3-20211106-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_i686/ncurses-6.3-20211106-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.3-20211106_x86_64/ncurses-6.3-20211106-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4_armv7l/ncurses-6.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4_armv7l/ncurses-6.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4_i686/ncurses-6.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4_x86_64/ncurses-6.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ca5672be1713a202243f5c13bbb688254cf0c93b075dcfc5c3d51677d6861b1e',
-     armv7l: 'ca5672be1713a202243f5c13bbb688254cf0c93b075dcfc5c3d51677d6861b1e',
-       i686: '208930e9bb95aa70c7111e3ea22fcdc4f03295153feed0b7b2b79ff179a42d13',
-     x86_64: '567cf7a40682009b0b817795e62e248374e87896ab76e5bd5fc69f98d252bf31'
+    aarch64: 'b0a5264b54ebb2c794dd160bf80c15a53e7bf643729ffe6d52a7cee14a38ec17',
+     armv7l: 'b0a5264b54ebb2c794dd160bf80c15a53e7bf643729ffe6d52a7cee14a38ec17',
+       i686: 'c528b561ca5f8e2add713471bc7c08febb56f207f661047b86efb1566905919f',
+     x86_64: '8deeac491093d2413eb512daf8c0a98839e3e144ff282d94ec9566c59bd98aba'
   })
 
   depends_on 'gcc' # R
@@ -70,13 +70,9 @@ class Ncurses < Package
     Dir.chdir 'ncursesw_build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
-    # Make symlinks for non-wide software
-    # Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
-    #  Dir.glob('*w.so*').each do |f|
-    #    @basefile_nowide = f.gsub('w.so', '.so')
-    #    puts "Symlinking #{f} to #{@basefile_nowide}"
-    #    FileUtils.ln_sf f, @basefile_nowide
-    #  end
-    # end
+    # Remove conflicts with dvtm package.
+    Dir.chdir "#{CREW_DEST_PREFIX}/share/terminfo/d" do
+      FileUtils.rm %w[dvtm dvtm-256color]
+    end
   end
 end

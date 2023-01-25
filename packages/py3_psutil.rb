@@ -4,26 +4,27 @@ class Py3_psutil < Package
   description 'psutil is a cross-platform library for process and system monitoring in Python.'
   homepage 'https://github.com/giampaolo/psutil/'
   @_ver = '5.8.0'
-  version "#{@_ver}-2"
+  version "#{@_ver}-py3.11"
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/giampaolo/psutil.git'
   git_hashtag "release-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-2_armv7l/py3_psutil-5.8.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-2_armv7l/py3_psutil-5.8.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-2_i686/py3_psutil-5.8.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-2_x86_64/py3_psutil-5.8.0-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-py3.11_armv7l/py3_psutil-5.8.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-py3.11_armv7l/py3_psutil-5.8.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-py3.11_i686/py3_psutil-5.8.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_psutil/5.8.0-py3.11_x86_64/py3_psutil-5.8.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '057244fca3ea15cff9a405bf6bb817bea914dbfb05c9df73b3557868172b446b',
-     armv7l: '057244fca3ea15cff9a405bf6bb817bea914dbfb05c9df73b3557868172b446b',
-       i686: '05a3dda9127409bec1e5768cbe420fcd43b418fb52b7b1d665bc0581011738c1',
-     x86_64: '291c19700b40dc71833318e93bc5d7e228ea0087aa039fb66cad76a470279211'
+    aarch64: '081cca634ab2a2d6773de6d719fe81950d1ae89edf2917ec72c5a6b6fadbcde1',
+     armv7l: '081cca634ab2a2d6773de6d719fe81950d1ae89edf2917ec72c5a6b6fadbcde1',
+       i686: '5a975016897e70279ae72416221f75cd405451c159f2f5b00cfab9204c08e790',
+     x86_64: '7f160be435bba0f50f8df6b42eeb7d4186e2c95cbcb927c16336443e133ebb81'
   })
 
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
+  depends_on 'glibc' # R
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

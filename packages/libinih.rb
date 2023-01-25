@@ -24,7 +24,7 @@ class Libinih < Package
   })
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Ddefault_library=both \
     -Ddistro_install=true \
     -Dwith_INIReader=true \

@@ -18,7 +18,7 @@ class Imagemagick < Package
     puts '  7 = ImageMagick 7.0.11-2'
     puts '  0 = Cancel'
 
-    while version = $stdin.gets.chomp
+    while version = $stdin.gets.chomp.downcase
       case version
       when '6'
         depends_on 'imagemagick6'

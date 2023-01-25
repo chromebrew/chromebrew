@@ -3,24 +3,24 @@ require 'package'
 class Folks < Package
   description 'Library to aggregates people into metacontacts'
   homepage 'https://wiki.gnome.org/Projects/Folks'
-  @_ver = '0.15.2'
+  @_ver = '0.15.5'
   version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/folks/-/archive/#{@_ver}/folks-#{@_ver}.tar.bz2"
-  source_sha256 'fc793ac48add708bf95b65060e74d66c016ea6077297f3329c59fee83cc415ed'
+  source_sha256 'f79952f6b0c8f6c0fa2efefbcfc4d4875a2ee5e4518f7d4bf520b62b5c89568c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_armv7l/folks-0.15.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_armv7l/folks-0.15.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_i686/folks-0.15.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.2_x86_64/folks-0.15.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_armv7l/folks-0.15.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_armv7l/folks-0.15.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_i686/folks-0.15.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_x86_64/folks-0.15.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e6b4e6fe98522d67283e033a176c9efbb11784d0a5dd93c048a96418011fb64f',
-     armv7l: 'e6b4e6fe98522d67283e033a176c9efbb11784d0a5dd93c048a96418011fb64f',
-       i686: '96eff279765de921eeca9ea66dfc78b9885f65feac95d85a87bdf4dec8b94e51',
-     x86_64: '304f648e3f5a0ea9cf558c435830cd172a118ce3b4bd96ab3b4958c3f9a8eb1b'
+    aarch64: '2999307030aa76fb2e9ee4aaf52d83ae0835829d8d14c16af03f88efab8bda16',
+     armv7l: '2999307030aa76fb2e9ee4aaf52d83ae0835829d8d14c16af03f88efab8bda16',
+       i686: 'df9800ddea6eb9a6e0056d87f3af74a7212c519db9b57ac85625ea7511e5c6cc',
+     x86_64: '8d5447fdd889e1f45f4f7178db791b0ff5fd7c5d7eac854872b43de36e44df4f'
   })
 
   depends_on 'libgee'
@@ -28,9 +28,14 @@ class Folks < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'vala' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'libxml2' # R
+  depends_on 'readline' # R
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbluez_backend=false \
     -Ddocs=false \
     -Deds_backend=false \
@@ -45,5 +50,9 @@ class Folks < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
   end
 end

@@ -4,27 +4,27 @@ class Py3_leather < Package
   description 'Leather is a fast, approximate chart generator in Python.'
   homepage 'https://leather.readthedocs.io/'
   @_ver = '0.3.4'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/leather.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4_armv7l/py3_leather-0.3.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4_armv7l/py3_leather-0.3.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4_i686/py3_leather-0.3.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4_x86_64/py3_leather-0.3.4-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4-py3.11_armv7l/py3_leather-0.3.4-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4-py3.11_armv7l/py3_leather-0.3.4-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4-py3.11_i686/py3_leather-0.3.4-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_leather/0.3.4-py3.11_x86_64/py3_leather-0.3.4-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1a1eb059dbb9caa8f20c53c7e71b4b23c1931a6587ecb43166f767cee8c840b1',
-     armv7l: '1a1eb059dbb9caa8f20c53c7e71b4b23c1931a6587ecb43166f767cee8c840b1',
-       i686: '2137d4c5d5d7334974f3f3f580434427c36a91e95b06e62caf5352b55d1a0530',
-     x86_64: 'e2af8d01d60392799ee3a8bf4624b4df30b4644288da9df8226e3386d9cc1313'
+    aarch64: '62d3e162fdfdf0271105bff92d10c52ec3e16a1e77fd28de06816e21369858db',
+     armv7l: '62d3e162fdfdf0271105bff92d10c52ec3e16a1e77fd28de06816e21369858db',
+       i686: '807bba928e7f04eeee2f4a0c97f6c6b889e31ced0050d9187581d34f7699cb16',
+     x86_64: '7bb7a780eb641936d1dfc1c843d276e42ca5bafb3d11cedabfbf45319783fb7f'
   })
 
   depends_on 'py3_six'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

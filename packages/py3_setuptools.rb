@@ -3,27 +3,30 @@ require 'package'
 class Py3_setuptools < Package
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  @_ver = '62.3.2'
-  version "#{@_ver}-1"
+  @_ver = '65.6.3'
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_armv7l/py3_setuptools-62.3.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_armv7l/py3_setuptools-62.3.2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_i686/py3_setuptools-62.3.2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/62.3.2-1_x86_64/py3_setuptools-62.3.2-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_armv7l/py3_setuptools-65.6.3-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_armv7l/py3_setuptools-65.6.3-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_i686/py3_setuptools-65.6.3-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_setuptools/65.6.3-py3.11_x86_64/py3_setuptools-65.6.3-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ed19d9aaf456c27cfdf4710da4fab2ad2e812534d6cd231bd33cbd9a5af8cd4a',
-     armv7l: 'ed19d9aaf456c27cfdf4710da4fab2ad2e812534d6cd231bd33cbd9a5af8cd4a',
-       i686: 'dd44b626a2a870243a86437c5e78291253fa9f8b535c96dfd776ca8770f64290',
-     x86_64: '714df6d99e3c8b369930197ee71dd0d6f21862ffdbf9c136f960eab1323f27bb'
+    aarch64: 'd357201c692981911586872b1d7f0b6900b886d13202a50aaedf91f02942db08',
+     armv7l: 'd357201c692981911586872b1d7f0b6900b886d13202a50aaedf91f02942db08',
+       i686: '876fc977e01a7d639adef3a9a7403813cf599f98d0c28d9d7d906d6fba73b34c',
+     x86_64: '483166d8742478f87585c5a10d10fafd5953dabb1c6e435d2c13d5bccebcd74a'
   })
 
+  depends_on 'python3', '< 3.11.0'
   depends_on 'py3_packaging'
+
+  conflicts_ok
 
   def self.build
     system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"

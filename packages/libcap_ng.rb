@@ -22,7 +22,8 @@ class Libcap_ng < Package
      x86_64: '4b8cba2423a776d025e888dfd0e42ad9b9ce9402576271529fc89b5abb33a193'
   })
 
-  depends_on 'python3'
+  depends_on 'glibc' # R
+  depends_on 'python3' => :build
 
   def self.patch
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' utils/captest.c"

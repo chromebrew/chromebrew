@@ -3,30 +3,38 @@ require 'package'
 class Mupdf < Package
   description 'MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.'
   homepage 'https://mupdf.com/'
-  version '1.20.0'
+  version '1.20.3'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://mupdf.com/downloads/archive/mupdf-1.20.0-source.tar.lz'
-  source_sha256 '68dbb1cf5e31603380ce3f1c7f6c431ad442fa735d048700f50ab4de4c3b0f82'
+  source_url 'https://mupdf.com/downloads/archive/mupdf-1.20.3-source.tar.lz'
+  source_sha256 '6f73f63ef8aa81991dfd023d4426a548827d1d74e0bfcf2a013acad63b651868'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.0_armv7l/mupdf-1.20.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.0_armv7l/mupdf-1.20.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.0_i686/mupdf-1.20.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.0_x86_64/mupdf-1.20.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_armv7l/mupdf-1.20.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_armv7l/mupdf-1.20.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_i686/mupdf-1.20.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_x86_64/mupdf-1.20.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0a1ce87c5e8252efd0e9afce24e605965c6516623897ca5fd31d495ae0d8c98c',
-     armv7l: '0a1ce87c5e8252efd0e9afce24e605965c6516623897ca5fd31d495ae0d8c98c',
-       i686: '8002b5e73d5147791e57264100ef56427048d3665e845dce538dd49bdb4042b5',
-     x86_64: '31f9ebf66d6e1566ab66a6d9b670a94bdd9378ccb55ff900776844b26cc97bcc'
+    aarch64: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
+     armv7l: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
+       i686: '76189a9e7138b4380a24470ce7010f95d50db15be74f980294d5b8d33c95010d',
+     x86_64: '4ce6bdbb132b435eadc824639e460b159e753b8d40c79a4815aa6b7299dfcf04'
   })
 
-  depends_on 'freetype'
-  depends_on 'jbigkit'
-  depends_on 'libjpeg'
-  depends_on 'openjpeg'
   depends_on 'freeglut'
+  depends_on 'freetype'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'jbigkit'
+  depends_on 'libcurl' # R
+  depends_on 'libjpeg'
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxrandr' # R
+  depends_on 'mesa' # R
+  depends_on 'openjpeg'
+  depends_on 'openssl' # R
   depends_on 'sommelier' unless ARCH == 'i686'
 
   def self.build

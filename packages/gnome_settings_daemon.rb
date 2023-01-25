@@ -3,7 +3,7 @@ require 'package'
 class Gnome_settings_daemon < Package
   description 'GNOME Settings Daemon'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
-  @_ver = '40.0.1'
+  @_ver = '43.0'
   version @_ver
   license 'GPL-2+ and LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l' # not compatible with i686 upstream
@@ -11,21 +11,23 @@ class Gnome_settings_daemon < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0.1_armv7l/gnome_settings_daemon-40.0.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0.1_armv7l/gnome_settings_daemon-40.0.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/40.0.1_x86_64/gnome_settings_daemon-40.0.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/43.0_armv7l/gnome_settings_daemon-43.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/43.0_armv7l/gnome_settings_daemon-43.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/43.0_x86_64/gnome_settings_daemon-43.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '13be0d7f914c132310b6a5ccd7cfb9584269dac858a3cc61a46fcd63966cf425',
-     armv7l: '13be0d7f914c132310b6a5ccd7cfb9584269dac858a3cc61a46fcd63966cf425',
-     x86_64: '26646a35e2335da43548bcade06a0f1e609ee8eacfe1815c2ac6c07a2187355d'
+    aarch64: 'deaf3ac2235aa02689caeb7bc4ff86d341e37101da32f9714af0e54049ebb22d',
+     armv7l: 'deaf3ac2235aa02689caeb7bc4ff86d341e37101da32f9714af0e54049ebb22d',
+     x86_64: '97ba6e1783736d5ea0046ea1e4a2e441a91c2921ba87d2ab11727d3bdb0ad1ef'
   })
 
+  depends_on 'colord'
   depends_on 'dconf'
   depends_on 'gnome_desktop'
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libcanberra'
   depends_on 'libnotify'
+  depends_on 'libxfixes' # R
   depends_on 'libxslt' => :build
   depends_on 'networkmanager' => :build
   depends_on 'nss' => :build
@@ -37,24 +39,30 @@ class Gnome_settings_daemon < Package
   depends_on 'elogind'
   depends_on 'geoclue'
   depends_on 'gcr'
-
-  # def self.patch
-  ## Source has libgnome-volume-control repo as submodule
-  # @git_dir = 'subprojects/gvc'
-  # @git_hash = '7a621180b46421e356b33972e3446775a504139c'
-  # @git_url = 'https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
-  # FileUtils.rm_rf(@git_dir)
-  # FileUtils.mkdir_p(@git_dir)
-  # Dir.chdir @git_dir do
-  # system 'git init'
-  # system "git remote add origin #{@git_url}"
-  # system "git fetch --depth 1 origin #{@git_hash}"
-  # system 'git checkout FETCH_HEAD'
-  # end
-  # end
+  depends_on 'upower' # R
+  depends_on 'alsa_lib' # R
+  depends_on 'cups' # R
+  depends_on 'gcr_4' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libgudev' # R
+  depends_on 'libwacom' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxi' # R
+  depends_on 'modemmanager' # R
+  depends_on 'networkmanager' # R
+  depends_on 'nss' # R
+  depends_on 'pango' # R
+  depends_on 'pulseaudio' # R
+  depends_on 'wayland' # R
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystemd=false \
     -Dcolord=false \
     builddir"

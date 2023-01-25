@@ -3,40 +3,47 @@ require 'package'
 class Libarchive < Package
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  @_ver = '3.5.1'
-  version "#{@_ver}-2"
+  @_ver = '3.6.2'
+  version @_ver
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
-  source_sha256 '0e17d3a8d0b206018693b27f08029b598f6ef03600c2b5d10c94ce58692e299b'
+  source_sha256 '9e2c1b80d5fbe59b61308fdfab6c79b5021d7ff4ff2489fb12daf0a96a83551d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.5.1-2_armv7l/libarchive-3.5.1-2-chromeos-armv7l.tar.xz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.5.1-2_armv7l/libarchive-3.5.1-2-chromeos-armv7l.tar.xz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.5.1-2_i686/libarchive-3.5.1-2-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.5.1-2_x86_64/libarchive-3.5.1-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2_armv7l/libarchive-3.6.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2_armv7l/libarchive-3.6.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2_i686/libarchive-3.6.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2_x86_64/libarchive-3.6.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9c1ee0cdca17abfba167d39f82fb339ca5a51fd3c10cacd55f538ae99d972655',
-    armv7l: '9c1ee0cdca17abfba167d39f82fb339ca5a51fd3c10cacd55f538ae99d972655',
-    i686: '71c9ae6c9722b152a3798eb15d09cc667e9207518a3ce5c75b823fa5610c64b3',
-    x86_64: 'd21778e1bca3015e53dfe253eedae0b0f497c21554563d41eed6233b37a15762'
+    aarch64: 'ea79c0fb02a8fcedaecb62560c31229a9e75d2c9c610d098a5b8f6edb6259b53',
+     armv7l: 'ea79c0fb02a8fcedaecb62560c31229a9e75d2c9c610d098a5b8f6edb6259b53',
+       i686: 'facc3060ac2b1fbc32adfca9c4603261d54044788d48dcb91521ca12c6c37192',
+     x86_64: 'b47fba0e0591e1e05c38d3cf74c44d49ba9ff8a4bb2bd6a02bdfa61d9c098802'
   })
 
   depends_on 'acl' # R
+  depends_on 'attr' # R
   depends_on 'bz2' # R
   depends_on 'glibc' # R
+  depends_on 'icu4c' # R
   depends_on 'libxml2' # R
   depends_on 'lz4' # R
   depends_on 'openssl' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
+  end
+
+  def self.check
+    system 'make', 'check'
   end
 
   def self.install

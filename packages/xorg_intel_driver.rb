@@ -27,7 +27,7 @@ class Xorg_intel_driver < Package
   def self.build
     # LTO is broken with this build.
     # See https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/issues/28
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} \
+    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
             -Ddefault-dri=3 \
             -Dxvmc=false \
             builddir"

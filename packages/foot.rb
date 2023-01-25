@@ -49,7 +49,7 @@ class Foot < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dterminfo=disabled \
       -Dthemes=false \
       builddir"

@@ -3,30 +3,32 @@ require 'package'
 class Libwpe < Package
   description 'General-purpose library for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  @_ver = '1.10.0'
+  @_ver = '1.14.0'
   version @_ver
   license 'BSD-2'
   compatibility 'all'
   source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{@_ver}/libwpe-#{@_ver}.tar.xz"
-  source_sha256 '2415e270d45e3595ed4052bc105f733744dc2d3677e12ff4a831e5029841084d'
+  source_sha256 'c073305bbac5f4402cc1c8a4753bfa3d63a408901f86182051eaa5a75dd89c00'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.10.0_armv7l/libwpe-1.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.10.0_armv7l/libwpe-1.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.10.0_i686/libwpe-1.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.10.0_x86_64/libwpe-1.10.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.14.0_armv7l/libwpe-1.14.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.14.0_armv7l/libwpe-1.14.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.14.0_i686/libwpe-1.14.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwpe/1.14.0_x86_64/libwpe-1.14.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '44c64f96d2051025c83162c7a556400156eb8657fb4965a1da8f3d6919e44d47',
-     armv7l: '44c64f96d2051025c83162c7a556400156eb8657fb4965a1da8f3d6919e44d47',
-       i686: '4f376503f92ed5e655fcef91ec6518fb147250a352f59b941f52797eadadcfdc',
-     x86_64: 'f7bf29748a591772836b70aa213e1c8dc67236c7ea3f2ea72717bfe928a39d69'
+    aarch64: 'd56fb79ad0b2dbd584cb8d1e0fc14adafcde48059a61a5b6f274d748b2fcd151',
+     armv7l: 'd56fb79ad0b2dbd584cb8d1e0fc14adafcde48059a61a5b6f274d748b2fcd151',
+       i686: 'b1c5159036dbaed97bc7e239431fc22efa8465db35277326e057f80041edb85f',
+     x86_64: '910bf8a7b96f7d9f9d4990cc1ba4b20849785444f00537ae97b92ffc85d11563'
   })
 
   depends_on 'libxkbcommon'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

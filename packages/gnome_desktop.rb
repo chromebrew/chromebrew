@@ -3,23 +3,25 @@ require 'package'
 class Gnome_desktop < Package
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
-  @_ver = '40.3'
+  @_ver = '43'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.3_armv7l/gnome_desktop-40.3-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.3_armv7l/gnome_desktop-40.3-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/40.3_x86_64/gnome_desktop-40.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_armv7l/gnome_desktop-43-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_armv7l/gnome_desktop-43-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_i686/gnome_desktop-43-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_x86_64/gnome_desktop-43-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '42015f607b49bda566fb307649835336bafafebf182d6a6938bee23489a8c0f9',
-     armv7l: '42015f607b49bda566fb307649835336bafafebf182d6a6938bee23489a8c0f9',
-     x86_64: 'c9dc4e63cc3c1e16a957e37064fd2efed590b96b5bb58b8fe3004ea2dcf825f2'
+    aarch64: 'a74b7c69028d47aaf02549264b22818423cec6fef60b40ef3a25f188f5337ede',
+     armv7l: 'a74b7c69028d47aaf02549264b22818423cec6fef60b40ef3a25f188f5337ede',
+       i686: '4f1c5e72754b21fca772b944fa72c6e7f1b29525e9d2424bbc6f8ec6c5679f80',
+     x86_64: '759b39213e12c916986ba8c7913f25f7a38cba961d8b85241ba80e4aa59d8a86'
   })
 
   depends_on 'cairo'
@@ -35,10 +37,19 @@ class Gnome_desktop < Package
   depends_on 'libxkbcommon'
   depends_on 'libxkbfile'
   depends_on 'xkeyboard_config'
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader'
   depends_on 'yelp_tools' => :build
+  depends_on 'glibc' # R
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libseccomp' # R
+  depends_on 'gcc' # R
+
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \
     builddir"
     system 'meson configure builddir'

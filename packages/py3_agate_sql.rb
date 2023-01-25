@@ -4,28 +4,28 @@ class Py3_agate_sql < Package
   description 'Agate-sql adds SQL read/write support to agate.'
   homepage 'https://agate-sql.readthedocs.org/'
   @_ver = '0.5.8'
-  version @_ver
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/agate-sql.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8_armv7l/py3_agate_sql-0.5.8-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8_armv7l/py3_agate_sql-0.5.8-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8_i686/py3_agate_sql-0.5.8-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8_x86_64/py3_agate_sql-0.5.8-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8-py3.11_armv7l/py3_agate_sql-0.5.8-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8-py3.11_armv7l/py3_agate_sql-0.5.8-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8-py3.11_i686/py3_agate_sql-0.5.8-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_sql/0.5.8-py3.11_x86_64/py3_agate_sql-0.5.8-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6c5754f93292e168e09d476a81e501eaf3a12949b72be2b4a71a30681d209e8f',
-     armv7l: '6c5754f93292e168e09d476a81e501eaf3a12949b72be2b4a71a30681d209e8f',
-       i686: 'efd1f5a6bbec27206a296180059a306f16660de872f59ae0bde97bf870b87ffe',
-     x86_64: 'a7a2ec511e4cedb249d0d9585d9bc7129cb5b434004553608a18d88c3ff52496'
+    aarch64: '93364ad5859fe10567bcdf106369883abe63a3e0bf22b0dd7aad8bfbea00dcc3',
+     armv7l: '93364ad5859fe10567bcdf106369883abe63a3e0bf22b0dd7aad8bfbea00dcc3',
+       i686: '64e29cf1b7b62dfb70f100ba38252545f3dbcab04f3829f7fd160ad5eadabb99',
+     x86_64: 'fa0e99f692aed25314df94ad5a7776859a150268d893eac9231f770a6f86cc7f'
   })
 
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
-  depends_on 'py3_setuptools' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

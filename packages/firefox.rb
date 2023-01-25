@@ -3,7 +3,7 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '106.0.1'
+  version '109.0'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'i686,x86_64'
 
@@ -12,8 +12,8 @@ class Firefox < Package
       i686: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-i686/en-US/firefox-#{version}.tar.bz2"
   })
   source_sha256({
-    x86_64: '9158e760a1baf524d2dd5095f44e71cfb50062e00074bbd8368b88c9eb547085',
-      i686: '7bd5efeb3b023624c61ddb4e0683e2573d0b6b49e5521ac8fc4474c8c0c09618'
+    x86_64: 'f19775cc6adecc529003ba0239bd46e94ca70a866f19b071a367905184f6d4f2',
+      i686: '793fbbb013c18956806e9e5d1f67de94a649c3cd8d10b3a75bd388b87ddae916'
   })
 
   no_compile_needed
@@ -97,8 +97,8 @@ class Firefox < Package
 
   def self.postinstall
     print "\nSet Firefox as your default browser? [Y/n]: "
-    case $stdin.getc
-    when "\n", 'Y', 'y'
+    case $stdin.gets.chomp.downcase
+    when '', 'y', 'yes'
       Dir.chdir("#{CREW_PREFIX}/bin") do
         FileUtils.ln_sf 'firefox', 'x-www-browser'
       end

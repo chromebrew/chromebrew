@@ -18,8 +18,8 @@ class Glibc < Package
   @libc_version = LIBC_VERSION
   # Uncomment following line to build a version of glibc different
   # from the one ChromeOS ships with.
-  # @libc_version = '2.33'
-  if @libc_version == '2.23'.freeze
+  # @libc_version = '2.35'
+  if @libc_version == '2.23'
     version '2.23-6'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
     source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
@@ -45,7 +45,7 @@ class Glibc < Package
        armv7l: '64b4b73e2096998fd1a0a0e7d18472ef977aebb2f1cad83d99c77e164cb6a1d6',
        x86_64: '5fe94642dbbf900d22b715021c73ac1a601b81517f0da1e7413f0af8fbea7997'
     })
-  elsif @libc_version == '2.32'.freeze # All architectures with updates past M92.
+  elsif @libc_version == '2.32' # All architectures with updates past M92.
     version '2.32-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
     source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
@@ -60,20 +60,39 @@ class Glibc < Package
        armv7l: 'ea89e4f2bcd1ec397108d17b834199e04652316f870e1ec0f6389db1ad864e6b',
        x86_64: '3e3eaa6551492ef0f1bc28600102503b721b19d0ee7396c4301771df402ea355'
     })
-  elsif @libc_version.to_f >= 2.33 # All architectures with updates past M97.
-    version '2.33-1'
+  elsif @libc_version == '2.33' # All architectures with updates past M97.
+    version '2.33-3'
     source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.33.tar.xz'
     source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_armv7l/glibc-2.33-chromeos-armv7l.tpxz',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_armv7l/glibc-2.33-chromeos-armv7l.tpxz',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33_x86_64/glibc-2.33-chromeos-x86_64.tpxz'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_armv7l/glibc-2.33-3-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_armv7l/glibc-2.33-3-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_x86_64/glibc-2.33-3-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '13aeaaa63cc2124e776a992f7f56453f9cae9c7fb21d30c38cd5958bd17d004e',
-       armv7l: '13aeaaa63cc2124e776a992f7f56453f9cae9c7fb21d30c38cd5958bd17d004e',
-       x86_64: 'bbdd07d1a4a962aebf365786db48d1da41a84a6bef8b78eef86f051ad01a9980'
+      aarch64: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
+       armv7l: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
+       x86_64: '3edde53b5ab8b577604b127c141042f4572b8972b7081abcda2e86778d1974a9'
+    })
+  elsif @libc_version.to_f >= 2.35 # All architectures with updates past M108.
+    version '2.35'
+    # Use current glibc 2.35 stable branch commit, which avoids
+    # compilation failures.
+    source_url 'https://github.com/bminor/glibc/archive/293211b6fddf60fc407d21fcba0326dd2148f76b.zip'
+    source_sha256 '2e352a074ced0f3874a359f1ded6877d2e7891df337c97b2e9635c718499c9b2'
+    # source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.35.tar.xz'
+    # source_sha256 '5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
+
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_armv7l/glibc-2.35-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_armv7l/glibc-2.35-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_x86_64/glibc-2.35-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      aarch64: '7f7b85a8dffcc9d3812af50f5a1be279440d6366c570abc7bc4aad8d89b0c8a1',
+       armv7l: '7f7b85a8dffcc9d3812af50f5a1be279440d6366c570abc7bc4aad8d89b0c8a1',
+       x86_64: 'fbc0404951b9cbadf5f4dee37688a35dcccde730d60a8478fbd7c43fac9fe04b'
     })
   end
 
@@ -323,11 +342,32 @@ class Glibc < Package
         puts "patch -Np1 < #{patch} || true" if @opt_verbose
         system "patch -Np1 < #{patch} || true"
       end
+    when '2.35'
+      FileUtils.mkdir 'fedora'
+      # Patch to enable build-local-archive
+      system 'curl -Ls https://src.fedoraproject.org/rpms/glibc/raw/f30/f/glibc-fedora-locarchive.patch | \
+      hashpipe sha256 0acccf57d8c6e7de82871c61ccb845f7a1ae13ae1fbc65995d347de8367c7bb1 | \
+      patch -Np1 --binary'
+      system 'curl -Ls https://src.fedoraproject.org/rpms/glibc/raw/f30/f/build-locale-archive.c | \
+      hashpipe sha256 6834e8b8f2a987bf8adfd265c0e01665f102c7115db94b99ec36376b68e9d3fa > fedora/build-locale-archive.c'
+      system "sed -i 's,/lib/locale,/lib#{CREW_LIB_SUFFIX}/locale,g' fedora/build-locale-archive.c"
+      system "sed -i 's,/usr/sbin/tzdata-update,/bin/true,g' fedora/build-locale-archive.c"
+      system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
+      system "sed -i 's,be_quiet,locale_be_quiet,g' fedora/build-locale-archive.c"
+      @googlesource_branch = 'release-R109-15236.B'
+      system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
+      # Remove conflicting patches.
+      FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.35/0005-Add-dlopen_with_offset-to-glibc.patch'
+      FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.35/0006-glibc-add-clang-style-FORTIFY.patch'
+      Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.35/*.patch').each do |patch|
+        puts "patch -Np1 < #{patch} || true" if @opt_verbose
+        system "patch -Np1 -F 10 -i #{patch} || true"
+      end
     end
   end
 
   def self.build
-    Dir.mkdir 'glibc_build'
+    FileUtils.mkdir_p 'glibc_build'
     Dir.chdir 'glibc_build' do
       # gold linker does not work for glibc 2.23, and maybe others.
       FileUtils.mkdir_p 'binutils'
@@ -398,7 +438,7 @@ class Glibc < Package
         # Optimization flags from https://github.com/InBetweenNames/gentooLTO
         case ARCH
         when 'armv7l', 'aarch64'
-          system "env CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+          system "CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
             LD=ld ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
@@ -412,7 +452,7 @@ class Glibc < Package
             --disable-werror \
             --enable-bind-now \
             --enable-hacker-mode \
-            --enable-kernel=3.18 \
+            --enable-kernel=4.14 \
             --enable-shared \
             libc_cv_386_tls=yes \
             libc_cv_arm_tls=yes \
@@ -441,16 +481,14 @@ class Glibc < Package
           # install-symbolic-link segfaults on armv7l, but we're deleting
           # the libraries anyways, so it doesn't matter.
           system "sed -i 's,install-symbolic-link,/bin/true,g' ../Makefile"
-          system "sed -i 's,symbolic-link-prog := \$(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
+          system "sed -i 's,symbolic-link-prog := $(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
-          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}")
-          system "env \
-          CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
-            ../configure \
+          File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}", mode: 'a+')
+          system "CFLAGS='-pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
+            LD=ld ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-headers=#{CREW_PREFIX}/include \
-            --without-gd \
             ac_cv_header_cpuid_h=yes \
             ac_cv_lib_audit_audit_log_user_avc_message=no \
             ac_cv_lib_cap_cap_init=no \
@@ -460,7 +498,7 @@ class Glibc < Package
             --enable-bind-now \
             --enable-cet \
             --enable-hacker-mode \
-            --enable-kernel=3.10 \
+            --enable-kernel=4.14 \
             --enable-shared \
             libc_cv_386_tls=yes \
             libc_cv_arm_tls=yes \
@@ -484,11 +522,12 @@ class Glibc < Package
             --with-binutils=binutils \
             --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
             --without-cvs \
+            --without-gd \
             --without-selinux \
             "
         end
       end
-      system "make -k -j #{CREW_NPROC}"
+      system "make PARALLELMFLAGS='-j #{CREW_NPROC}' || make || make PARALLELMFLAGS='-j 1'"
       if @libc_version.to_f >= 2.32
         system "gcc -Os -g -static -o build-locale-archive ../fedora/build-locale-archive.c \
           ../glibc_build/locale/locarchive.o \
@@ -509,9 +548,9 @@ class Glibc < Package
       system 'touch', "#{CREW_DEST_PREFIX}/etc/ld.so.conf"
       case ARCH
       when 'aarch64', 'armv7l'
-        system "make DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
+        system "make -j1 DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
       when 'i686', 'x86_64'
-        system "make DESTDIR=#{CREW_DEST_DIR} install"
+        system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
       end
       case @libc_version
       when '2.23', '2.27'
@@ -548,11 +587,55 @@ class Glibc < Package
       end
       if @libc_version.to_f >= 2.32
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
-        system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'localedata/install-locales'
+        system "make -j1 DESTDIR=#{CREW_DEST_DIR} localedata/install-locales"
+      end
+      Dir.chdir CREW_DEST_LIB_PREFIX do
+        puts "System glibc version is #{LIBC_VERSION}.".lightblue
+        puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
+        @crew_libc_version = @libc_version
+        case ARCH
+        when 'aarch64', 'armv7l'
+          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
+        when 'i686'
+          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+        when 'x86_64'
+          FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+        end
+        @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
+                        libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
+                        libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
+                        libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+        @libraries.each do |lib|
+          # Reject entries which aren't libraries ending in .so, and which aren't files.
+          Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+            @filetype = `file #{f}`.chomp
+            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+              g = File.basename(f)
+              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
+            end
+          end
+          # Reject entries which aren't libraries ending in .so, and which aren't files.
+          # Reject text files such as libc.so because they points to files like
+          # libc_nonshared.a, which are not provided by ChromeOS
+          Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
+            @filetype = `file #{f}`.chomp
+            puts "f: #{@filetype}" if @opt_verbose
+            if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
+              g = File.basename(f)
+              FileUtils.ln_sf f.to_s, "#{CREW_DEST_LIB_PREFIX}/#{g}"
+            elsif @opt_verbose
+              puts "#{f} excluded because #{@filetype}"
+            end
+          end
+        end
       end
     end
-    # libnsl is provided by perl
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/libnsl.so*")
+    # Only save libnsl.so.2, since libnsl.so.1 is provided by perl
+    # For this to work, build on a M107 or newer container.
+    FileUtils.cp File.realpath("#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"), "#{CREW_DEST_LIB_PREFIX}/libnsl.so.2"
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
+
     # Remove libmount.so since it conflicts with the one from util_linux.
     FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
   end
@@ -570,9 +653,9 @@ class Glibc < Package
     # make: *** [Makefile:9: check] Error 2
     return if ARCH == 'i686'
 
-    Dir.chdir 'glibc_build' do
-      system 'make check'
-    end
+    # Dir.chdir 'glibc_build' do
+    #   system 'make -j1 check'
+    # end
   end
 
   def self.postinstall
@@ -586,63 +669,81 @@ class Glibc < Package
     @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
-                    libresolv librlv librt libthread_db-1.0 libutil]
+                    libthread_db libresolv librlv librt libthread_db-1.0 libutil]
     Dir.chdir CREW_LIB_PREFIX do
-      puts "System glibc version is #{LIBC_VERSION}.".lightblue
+      puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
+      case ARCH
+      when 'aarch64', 'armv7l'
+        FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
+      when 'i686'
+        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+      when 'x86_64'
+        FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
+      end
       @libraries.each do |lib|
         # Reject entries which aren't libraries ending in .so, and which aren't files.
         Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          if `file #{f} | grep "shared object"`
+          @filetype = `file #{f}`.chomp
+          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
             g = File.basename(f)
-            FileUtils.ln_sf f.to_s, g.to_s
+            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
           end
         end
         # Reject entries which aren't libraries ending in .so, and which aren't files.
         # Reject text files such as libc.so because they points to files like
         # libc_nonshared.a, which are not provided by ChromeOS
         Dir["/usr/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
-          if `file #{f} | grep "shared object"`
+          @filetype = `file #{f}`.chomp
+          puts "f: #{@filetype}" if @opt_verbose
+          if ['shared object', 'symbolic link'].any? { |type| @filetype.include?(type) }
             g = File.basename(f)
-            FileUtils.ln_sf f.to_s, g.to_s unless `file #{g} | grep "ASCII text"`
+            FileUtils.ln_sf f.to_s, "#{CREW_LIB_PREFIX}/#{g}"
+          elsif @opt_verbose
+            puts "#{f} excluded because #{@filetype}"
           end
         end
       end
     end
-    if @libc_version.to_f >= 2.32
-      puts 'Paring locales to a minimal set.'.lightblue
-      system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive', exception: false
-      FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
-      if @opt_verbose
-        system 'build-locale-archive'
-      else
-        system 'build-locale-archive', %i[out err] => File::NULL
-      end
-      FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
-      # minimum set of locales -> #{CREW_LIB_PREFIX}/locale/locale-archive
-      # We just whitelist certain locales and delete everything else like other distributions do, e.g.
-      # for dir in locale i18n; do
-      # find #{CREW_PREFIX}/usr/share/${dir} -mindepth  1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name POSIX \) -exec rm -rf {} +
-      # done
-      # This is the array of locales to save:
-      @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
-      @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-      @filelist = File.readlines("#{CREW_META_PATH}/glibc.filelist")
-      @localedirs.each do |localedir|
-        Dir.chdir localedir do
-          Dir['*'].each do |f|
-            next if @locales.any? { |s| File.basename(f).include?(s) }
+    return unless @libc_version.to_f >= 2.32 && CREW_KERNEL_VERSION.to_f >= 5.4
 
-            FileUtils.rm_f f
-            @fpath = "#{localedir}/#{f}"
-            @filelist.reject! { |e| e.include?(@fpath) }
-          end
+    puts 'Paring locales to a minimal set.'.lightblue
+    system 'localedef --list-archive | grep -v -i -e ^en -e ^cs -e ^de -e ^es -e ^fa -e ^fe -e ^it -e ^ja -e ^ru -e ^tr -e ^zh -e ^C| xargs localedef --delete-from-archive',
+           exception: false
+    FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
+    unless File.file?('')
+      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@crew_libc_version}/master/intl/locale.alias",
+                 'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
+    end
+    if @opt_verbose
+      system 'build-locale-archive'
+    else
+      system 'build-locale-archive', %i[out err] => File::NULL
+    end
+    FileUtils.rm "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
+    # minimum set of locales -> #{CREW_LIB_PREFIX}/locale/locale-archive
+    # We just whitelist certain locales and delete everything else like other distributions do, e.g.
+    # for dir in locale i18n; do
+    # find #{CREW_PREFIX}/usr/share/${dir} -mindepth  1 -maxdepth 1 -type d -not \( -name "${KEEPLANG}" -o -name POSIX \) -exec rm -rf {} +
+    # done
+    # This is the array of locales to save:
+    @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
+    @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
+    @filelist = File.readlines("#{CREW_META_PATH}/glibc.filelist")
+    @localedirs.each do |localedir|
+      Dir.chdir localedir do
+        Dir['*'].each do |f|
+          next if @locales.any? { |s| File.basename(f).include?(s) }
+
+          FileUtils.rm_f f
+          @fpath = "#{localedir}/#{f}"
+          @filelist.reject! { |e| e.include?(@fpath) }
         end
       end
-      puts 'Updating glibc package filelist...'.lightblue
-      File.open("#{CREW_META_PATH}/glibc.filelist", 'w+') do |f|
-        f.puts(@filelist)
-      end
+    end
+    puts 'Updating glibc package filelist...'.lightblue
+    File.open("#{CREW_META_PATH}/glibc.filelist", 'w+') do |f|
+      f.puts(@filelist)
     end
   end
 end

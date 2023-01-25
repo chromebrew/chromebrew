@@ -3,22 +3,24 @@ require 'package'
 class Gnome_session < Package
   description 'The GNOME Session Handler'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-session'
-  @_ver = '40.beta'
+  @_ver = '43.0'
   version @_ver
   license 'GPL-2+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/gnome-session/-/archive/#{@_ver}/gnome-session-#{@_ver}.tar.bz2"
-  source_sha256 '0dd8c38c29568db6ffbd2a788f12b9e93262296ffd6d4c40fc2a830099d46883'
+  source_sha256 'a56b5a4179e4e567fb360e98ae1a1b8b8e3deed8fb0ff66d3f343e4623f59f3c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_armv7l/gnome_session-40.beta-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/40.beta_x86_64/gnome_session-40.beta-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/43.0_armv7l/gnome_session-43.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/43.0_armv7l/gnome_session-43.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/43.0_i686/gnome_session-43.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_session/43.0_x86_64/gnome_session-43.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9bdad789a49f45e3574f829455a1d89d71b1cddbfe8d0cb7c6868b892ad5ae98',
-     armv7l: '9bdad789a49f45e3574f829455a1d89d71b1cddbfe8d0cb7c6868b892ad5ae98',
-     x86_64: 'b2a8ebdb421823febd16ed797e73fe26c33e53d407db2665af166b96015a0f74'
+    aarch64: 'f15e68a01de854d8d373b4632ccc2ff4c928288b3945cbc804972fb54e0f6d9f',
+     armv7l: 'f15e68a01de854d8d373b4632ccc2ff4c928288b3945cbc804972fb54e0f6d9f',
+       i686: '7604da967a83dcd89a6c5a125ea0ef4863e17e6c6d09461e32890dcd54f63049',
+     x86_64: 'f4ed165ccdfc333ea3caf0d21ff8ab7610860af818b7bd4b6eac105f6dc97766'
   })
 
   depends_on 'elogind'
@@ -31,9 +33,21 @@ class Gnome_session < Package
   depends_on 'libxtrans' => :build
   depends_on 'xmlto' => :build
   depends_on 'docbook_xsl' => :build
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'json_glib' # R
+  depends_on 'libepoxy' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libice' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'mesa' # R
+
+  gnome
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS}\
+    system "meson setup #{CREW_MESON_OPTIONS}\
       -Dsystemd=false \
       -Dsystemd_session=disable \
       -Dsystemd_journal=false \

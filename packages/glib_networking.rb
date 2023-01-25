@@ -26,7 +26,7 @@ class Glib_networking < Package
   depends_on 'gsettings_desktop_schemas'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dstatic_modules=true builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

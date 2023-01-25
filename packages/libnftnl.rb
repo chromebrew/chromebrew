@@ -3,26 +3,27 @@ require 'package'
 class Libnftnl < Package
   description 'libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.'
   homepage 'https://netfilter.org/projects/libnftnl/'
-  compatibility 'all'
   license 'GPL-2'
-  version '1.1.7-1'
-  source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.1.7.tar.bz2'
-  source_sha256 '20dbc13f11004aea2c9e479cfb90359cb11fe3446c3140811c18e4ec1648ed8f'
+  version '1.2.4'
+  compatibility 'all'
+  source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.2.4.tar.bz2'
+  source_sha256 'c0fe233be4cdfd703e7d5977ef8eb63fcbf1d0052b6044e1b23d47ca3562477f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_armv7l/libnftnl-1.1.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_armv7l/libnftnl-1.1.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_i686/libnftnl-1.1.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.1.7-1_x86_64/libnftnl-1.1.7-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.4_armv7l/libnftnl-1.2.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.4_armv7l/libnftnl-1.2.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.4_i686/libnftnl-1.2.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.4_x86_64/libnftnl-1.2.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6cc802f2d8a84367d34fc91c32aa8f06715a0cac91d4c6ea774fe2905be1255a',
-     armv7l: '6cc802f2d8a84367d34fc91c32aa8f06715a0cac91d4c6ea774fe2905be1255a',
-       i686: '510a3ca438c83f53457707bc89e6ddab8332fb7e5343721def87cbc9a86c34da',
-     x86_64: '7e72516f66aab3d3ed6d554e72c0b198ec82ee8e061a7c3941d607890de100f2'
+    aarch64: 'ad098ec7999d05bbe18c08c31e456e5b1fad46f0168b6f2bf16313044a403378',
+     armv7l: 'ad098ec7999d05bbe18c08c31e456e5b1fad46f0168b6f2bf16313044a403378',
+       i686: '1337220cb856de42777e6fdb1d4cc85140bd5e00dcfb5cd171ac3f316d9b590b',
+     x86_64: '791461abdbe8e7aea50998a783844c30ba323c2827e013c9017d555600b13b5d'
   })
 
-  depends_on 'libmnl'
+  depends_on 'libmnl' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

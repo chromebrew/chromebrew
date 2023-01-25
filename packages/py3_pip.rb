@@ -3,29 +3,29 @@ require 'package'
 class Py3_pip < Package
   description 'Pip is the python package manager from the Python Packaging Authority.'
   homepage 'https://pip.pypa.io/'
-  @_ver = '21.3.1'
-  version @_ver
+  @_ver = '22.3.1'
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/pip.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.3.1_armv7l/py3_pip-21.3.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.3.1_armv7l/py3_pip-21.3.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.3.1_i686/py3_pip-21.3.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/21.3.1_x86_64/py3_pip-21.3.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/22.3.1-py3.11_armv7l/py3_pip-22.3.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/22.3.1-py3.11_armv7l/py3_pip-22.3.1-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/22.3.1-py3.11_i686/py3_pip-22.3.1-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pip/22.3.1-py3.11_x86_64/py3_pip-22.3.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0aaabc8b36b049243e2c7532c5c2744ad433977a930c86544f9a1482de83ef6c',
-     armv7l: '0aaabc8b36b049243e2c7532c5c2744ad433977a930c86544f9a1482de83ef6c',
-       i686: '12bda5895cedab8e41e9bb110a73f654230d04ad3abc55006e46e06158725fa0',
-     x86_64: 'f54f266e6727c2a480eb565b2e1ee2f1cf7b7c28db8d0d1330b27b8291086e7d'
+    aarch64: '023cc76bd338a1d14b6ed45d55e8fe6b05454145abe941cc0fdec3d0bbf5ffe4',
+     armv7l: '023cc76bd338a1d14b6ed45d55e8fe6b05454145abe941cc0fdec3d0bbf5ffe4',
+       i686: '3826d8987e023d5afa98cb322a6f920fcbbc37c83d82ec4e048b28c7fd16cdaf',
+     x86_64: 'af52f8111904a49684b37251cc65c8d5dc9235238ecf49aa56a27fb95bd1c994'
   })
 
-  depends_on 'python3'
-  depends_on 'py3_setuptools'
-  depends_on 'py3_wheel'
+  depends_on 'python3', '< 3.11.0'
+
+  conflicts_ok
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"

@@ -3,24 +3,25 @@ require 'package'
 class Ruby_concurrent_ruby < Package
   description 'Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.'
   homepage 'https://github.com/ruby-concurrency/concurrent-ruby'
-  version '1.1.10-1'
+  version '1.1.10-ruby-3.2'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10_armv7l/ruby_concurrent_ruby-1.1.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10_armv7l/ruby_concurrent_ruby-1.1.10-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10_i686/ruby_concurrent_ruby-1.1.10-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10_x86_64/ruby_concurrent_ruby-1.1.10-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10-ruby-3.2_armv7l/ruby_concurrent_ruby-1.1.10-ruby-3.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10-ruby-3.2_armv7l/ruby_concurrent_ruby-1.1.10-ruby-3.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10-ruby-3.2_i686/ruby_concurrent_ruby-1.1.10-ruby-3.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby_concurrent_ruby/1.1.10-ruby-3.2_x86_64/ruby_concurrent_ruby-1.1.10-ruby-3.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '77ce10258eadf962da6da2e99e4646eceb68d4ead5e423640cf0f26dbbfac74e',
-     armv7l: '77ce10258eadf962da6da2e99e4646eceb68d4ead5e423640cf0f26dbbfac74e',
-       i686: 'f699799facdd54b2618a36f92a3f5a4423fe474a545b2e63d535bf5ae16672d9',
-     x86_64: 'aa8c2a94be76cad7e060216efe3a8b4433822e8b7a6567807801565f78f5e69a'
+    aarch64: 'eb94a449d442287df52a6afa4c079dd50700c33c398b602973dbb4d77eb574a5',
+     armv7l: 'eb94a449d442287df52a6afa4c079dd50700c33c398b602973dbb4d77eb574a5',
+       i686: 'ee38c3838f51036de486fca4bf0dc3de7c9a997f7a754d3585befdcee26a76db',
+     x86_64: '168941807c0f574570bb53f55818e40e2297b51175442611dcd13010c7f88935'
   })
 
   no_fhs
+  no_compile_needed
 
   depends_on 'libyaml'
   depends_on 'ruby'

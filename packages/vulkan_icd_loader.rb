@@ -3,26 +3,25 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  @_ver = '1.3.230'
+  @_ver = '1.3.231'
   version @_ver
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_armv7l/vulkan_icd_loader-1.3.230-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_armv7l/vulkan_icd_loader-1.3.230-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_i686/vulkan_icd_loader-1.3.230-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.230_x86_64/vulkan_icd_loader-1.3.230-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.231_armv7l/vulkan_icd_loader-1.3.231-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.231_armv7l/vulkan_icd_loader-1.3.231-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.231_i686/vulkan_icd_loader-1.3.231-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.231_x86_64/vulkan_icd_loader-1.3.231-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '15f8878ef502ebe90ed22535d2e99e6da804e02aae41f0a4c7403c4ae512b26f',
-     armv7l: '15f8878ef502ebe90ed22535d2e99e6da804e02aae41f0a4c7403c4ae512b26f',
-       i686: 'f36cd322d98a6c6874e9c450cf5bbde693b297cd8315f6e01d7cc94f6ff2d982',
-     x86_64: 'fdfb0631b3069712a4aa0095cd0055d5425d842a76bfa5e979fdba04a6a49f7e'
+    aarch64: 'd48edf42f7c448182905ddeeb9651f2db0dfdbb331b19f3b67ac1f97d3e34b0a',
+     armv7l: 'd48edf42f7c448182905ddeeb9651f2db0dfdbb331b19f3b67ac1f97d3e34b0a',
+       i686: '9d546f058735fc9ae488e8cbc7adf064a2b5ff4649cc732ad066dc359475d662',
+     x86_64: 'bb1c74e5a6dc3ecde467665561d59992b22a577e8fa3b03613d2b32ef162f1d9'
   })
-
-  git_hashtag "v#{@_ver}"
 
   depends_on 'libx11'
   depends_on 'libxrandr'
@@ -31,8 +30,10 @@ class Vulkan_icd_loader < Package
   depends_on 'libxrandr' => :build
   depends_on 'wayland' => :build
   depends_on 'vulkan_headers' => :build
+  depends_on 'glibc' # R
 
   def self.build
+    system 'scripts/update_deps.py'
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "env #{CREW_ENV_OPTIONS} \

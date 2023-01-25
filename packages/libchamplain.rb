@@ -32,7 +32,7 @@ class Libchamplain < Package
   depends_on 'vala' => :build
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'

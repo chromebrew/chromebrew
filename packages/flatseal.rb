@@ -31,7 +31,7 @@ class Flatseal < Package
   depends_on 'sommelier'
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} builddir"
+    system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'samu -C builddir'
   end
 

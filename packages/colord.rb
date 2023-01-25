@@ -39,7 +39,7 @@ class Colord < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_FNO_LTO_OPTIONS} -Dsystemd=false -Ddaemon_user=#{USER} builddir"
+    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} -Dsystemd=false -Ddaemon_user=#{USER} builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end

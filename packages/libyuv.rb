@@ -3,57 +3,42 @@ require 'package'
 class Libyuv < Package
   description 'Library for YUV scaling'
   homepage 'https://chromium.googlesource.com/libyuv/libyuv/'
-  version 'd470'
+  version 'd47031c'
   license 'BSD-Google'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url 'https://chromium.googlesource.com/libyuv/libyuv.git'
+  git_hashtag 'd47031c0d42efa8f10842e36f7b8135b52bcd3d0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_armv7l/libyuv-d470-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_armv7l/libyuv-d470-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_i686/libyuv-d470-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d470_x86_64/libyuv-d470-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_armv7l/libyuv-d47031c-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_armv7l/libyuv-d47031c-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_i686/libyuv-d47031c-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_x86_64/libyuv-d47031c-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7fa394f0b0e7da7ccb54fa49dd04ee1fc794eee1518c6a9a39743ab006ca7dd0',
-     armv7l: '7fa394f0b0e7da7ccb54fa49dd04ee1fc794eee1518c6a9a39743ab006ca7dd0',
-       i686: '15f7bb558997c8a437997d61aa7a16aed327a87cf50e0d7504373ba9b6796c79',
-     x86_64: 'e4a3761380386ef8fa07c95b195eedfd4cae05616d5ee3af4e55ae761010efff'
+    aarch64: '18ea1ea4d78c74d225a5bf5a7ca1d4f188688907ce4603c5e63e28c32ea6f2bc',
+     armv7l: '18ea1ea4d78c74d225a5bf5a7ca1d4f188688907ce4603c5e63e28c32ea6f2bc',
+       i686: '286acb3983d5b3771e3dc3711946166b054fbf8c2cd6febc52d2fe4286e6b5eb',
+     x86_64: '74f2df52cec84b0879235e2db0b6c831518692ffc20deb3e2e2b55e60de55e48'
   })
 
   depends_on 'libjpeg'
-
-  def self.prebuild
-    @git_dir = 'libyuv_git'
-    @git_hash = 'd47031c0d42efa8f10842e36f7b8135b52bcd3d0'
-    @git_url = 'https://chromium.googlesource.com/libyuv/libyuv'
-    FileUtils.rm_rf(@git_dir)
-    FileUtils.mkdir_p(@git_dir)
-    Dir.chdir @git_dir do
-      system 'git init'
-      system "git remote add origin #{@git_url}"
-      system "git fetch --depth 1 origin #{@git_hash}"
-      system 'git checkout FETCH_HEAD'
-    end
-  end
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
-    Dir.mkdir 'libyuv_git/builddir'
-    Dir.chdir 'libyuv_git/builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+    Dir.mkdir 'builddir'
+    Dir.chdir 'builddir' do
+      system "cmake \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
         .."
     end
-    system 'ninja -C libyuv_git/builddir'
-    system 'du -a libyuv_git/builddir'
+    system 'ninja -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C libyuv_git/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
     Dir.chdir CREW_DEST_PREFIX do
       FileUtils.mv 'lib', 'lib64' if ARCH == 'x86_64'
     end
