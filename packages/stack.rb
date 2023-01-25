@@ -3,22 +3,24 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/'
-  @_ver = '2.5.1'
+  @_ver = '2.9.3'
   version @_ver
   license 'BSD'
   compatibility 'all'
   source_url "https://github.com/commercialhaskell/stack/releases/download/v#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
-  source_sha256 'c83b6c93d6541c0bce2175085a04062020f4160a86116e20f3b343b562f2d1e8'
+  source_sha256 '938f689dc45e2693ab1ca3ea215790b3786dfd531dcf6c0bf40842c24e579ae9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.5.1_armv7l/stack-2.5.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.5.1_armv7l/stack-2.5.1-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.5.1_x86_64/stack-2.5.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_i686/stack-2.9.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_x86_64/stack-2.9.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '132f347c6b7f956938c8e4190e2828738e77422389247845d9437cb8fe821279',
-     armv7l: '132f347c6b7f956938c8e4190e2828738e77422389247845d9437cb8fe821279',
-     x86_64: '6b6c4ad3fbcaf3c1df90ff04820ee20c4ba90265a51e197aae3d4904cb3f9bf9'
+    aarch64: '3551e29cf348081a27f2e598133b9a9a4498a0e0e4b7a098dd0e4b583ccfc7c9',
+     armv7l: '3551e29cf348081a27f2e598133b9a9a4498a0e0e4b7a098dd0e4b583ccfc7c9',
+       i686: '6df32dce7ba7c5509f93a6b4951a8e1f5cb3e6892f8a402efbe3c46b0d208f15',
+     x86_64: 'd6b30d5262a17ed264eec11dc5076cc16ab5810c25dc3c04bb9f3ba6e75cfd33'
   })
 
   def self.install
