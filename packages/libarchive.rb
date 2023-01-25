@@ -3,21 +3,12 @@ require 'package'
 class Libarchive < Package
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  @_ver = '3.6.1'
+  @_ver = '3.6.2'
   version @_ver
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
   source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
-  source_sha256 '5a411aceb978f43e626f0c2d1812ddd8807b645ed892453acabd532376c148e6'
-
-  binary_url({
-        i686: 'file:///usr/local/tmp/packages/libarchive-3.6.1-chromeos-i686.tar.zst',
-      x86_64: 'file:///usr/local/tmp/packages/libarchive-3.6.1-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-        i686: '8ac07aaccabd5eacc1702e63879fc1c2cd2640e30028738996944644af3a4a8d',
-      x86_64: '5dfe44a35baa0065e86d06e3cc6a0c721d8b2abef4f28d0cc561a0bc9e36af19'
-  })
+  source_sha256 '9e2c1b80d5fbe59b61308fdfab6c79b5021d7ff4ff2489fb12daf0a96a83551d'
 
   depends_on 'acl' # R
   depends_on 'bz2' # R
