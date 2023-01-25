@@ -47,44 +47,23 @@ class Wine < Package
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
 
   def self.build
-    case ARCH
-    when 'x86_64'
-      FileUtils.mkdir 'wine64-build'
-      Dir.chdir 'wine64-build' do
-        system "#{CREW_ENV_FNO_LTO_OPTIONS} ../configure #{CREW_OPTIONS} \
-          --enable-win64 \
-          --disable-maintainer-mode \
-          --with-x"
-        system 'make || make'
-      end
-      # Needs a 32 bit compiler, which we don't have on x86_64
-      # FileUtils.mkdir 'wine32-build'
-      # Dir.chdir 'wine32-build' do
-      # system "../configure #{CREW_OPTIONS} \
-      #--with-wine64=../wine64-build \
-      #--disable-maintainer-mode \
-      #--with-x"
-      # system 'make'
-      # end
-    else
-      system "./configure #{CREW_OPTIONS} \
+    FileUtils.mkdir 'wine64-build'
+    Dir.chdir 'wine64-build' do
+      system "#{CREW_ENV_FNO_LTO_OPTIONS} ../configure #{CREW_OPTIONS} \
+        --enable-win64 \
         --disable-maintainer-mode \
+        --with-gstreamer \
         --with-x"
+      system 'make || make'
     end
-    system 'make'
   end
 
   def self.install
-    case ARCH
-    when 'x86_64'
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-      Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-        FileUtils.ln_s 'wine64', 'wine'
-      end
-      Dir.chdir 'wine64-build' do
-        system 'make', "DESTDIR=#{CREW_DEST_DIR}", "DLLDIR=#{CREW_DEST_DLL_PREFIX}", 'install'
-      end
-    else
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
+      FileUtils.ln_s 'wine64', 'wine'
+    end
+    Dir.chdir 'wine64-build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", "DLLDIR=#{CREW_DEST_DLL_PREFIX}", 'install'
     end
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
