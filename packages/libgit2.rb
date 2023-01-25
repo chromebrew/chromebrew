@@ -3,7 +3,7 @@ require 'package'
 class Libgit2 < Package
   description 'A portable, pure C implementation of the Git core methods'
   homepage 'https://libgit2.org/'
-  @_ver = '1.5.0'
+  @_ver = '1.5.1'
   version @_ver
   license 'GPL-2-with-linking-exception'
   compatibility 'all'
@@ -11,21 +11,20 @@ class Libgit2 < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.0_armv7l/libgit2-1.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.0_armv7l/libgit2-1.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.0_i686/libgit2-1.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.0_x86_64/libgit2-1.5.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.1_armv7l/libgit2-1.5.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.1_armv7l/libgit2-1.5.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.1_i686/libgit2-1.5.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.1_x86_64/libgit2-1.5.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a047f829611f016ea6f1c2773838b4673446fded955049b849d402493e4de123',
-     armv7l: 'a047f829611f016ea6f1c2773838b4673446fded955049b849d402493e4de123',
-       i686: '467813edb1d605f8464780d366d5587633219a3d322ec6f1edef2c59bb20c47f',
-     x86_64: '8401c5d508b5d25eb4c804eb79c3e1331f21643cd6192c655a88627c2c7a6e41'
+    aarch64: '41bfb7566d34afa5c07d59e28ca1734a43c8b8049903d5d2faed644506abb40e',
+     armv7l: '41bfb7566d34afa5c07d59e28ca1734a43c8b8049903d5d2faed644506abb40e',
+       i686: 'c22cdf93057e33fbf8109c2be948cde27b6d1f42db173dab2213e04cf083a712',
+     x86_64: 'dd634a7a8b0dbc4c25fd9c5e329f6e95670db8dace736f14bfc4f667deaf669c'
   })
 
-  depends_on 'python3'
-  depends_on 'libssh2'
   depends_on 'glibc' # R
+  depends_on 'libssh2' # R
   depends_on 'openssl' # R
   depends_on 'pcre' # R
   depends_on 'python3' # L
