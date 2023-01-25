@@ -5,43 +5,51 @@ class Wine < Package
   homepage 'https://www.winehq.org/'
   version '8.0'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url 'https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz'
   source_sha256 '0272c20938f8721ae4510afaa8b36037457dd57661e4d664231079b9e91c792e'
 
-  depends_on 'alsa_lib'
+  binary_url({
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/8.0_x86_64/wine-8.0-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+     x86_64: '68a6e7d08fa1bfafb96986936690202b4e83dab8f915ce0c9aff0280d3df7e54'
+  })
+
+  depends_on 'alsa_lib' # R
   depends_on 'desktop_file_utils'
-  depends_on 'eudev'
+  depends_on 'eudev' # R
   depends_on 'fontconfig'
   depends_on 'giflib'
-  depends_on 'glib'
-  depends_on 'gstreamer'
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gstreamer' # R
   depends_on 'lcms'
   depends_on 'libfaudio'
   depends_on 'libglu'
-  depends_on 'libgphoto'
+  depends_on 'libgphoto' # R
   depends_on 'libjpeg'
-  depends_on 'openldap'
-  depends_on 'libpcap'
+  depends_on 'libpcap' # R
   depends_on 'libpng'
   depends_on 'libsm'
-  depends_on 'libunwind'
-  depends_on 'libusb'
-  depends_on 'libx11'
-  depends_on 'libxext'
+  depends_on 'libunwind' # R
+  depends_on 'libusb' # R
+  depends_on 'libx11' # R
   depends_on 'libxcursor'
   depends_on 'libxdamage'
+  depends_on 'libxext' # R
   depends_on 'libxi'
   depends_on 'libxrandr'
   depends_on 'mesa'
   depends_on 'mpg123'
   depends_on 'openal'
   depends_on 'opencl_headers' => :build
-  depends_on 'opencl_icd_loader'
-  depends_on 'pulseaudio'
+  depends_on 'opencl_icd_loader' # R
+  depends_on 'openldap'
+  depends_on 'pulseaudio' # R
+  depends_on 'sommelier'
   depends_on 'vkd3d'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
 
   @xdg_config_home = ENV.fetch('XDG_CONFIG_HOME', nil)
   @xdg_config_home = "#{CREW_PREFIX}/.config" if @xdg_config_home.to_s.empty?
