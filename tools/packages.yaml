@@ -485,6 +485,11 @@ url: https://github.com/scop/bash-completion/releases
 activity: medium
 ---
 kind: url
+name: bash_snippets
+url: https://github.com/alexanderepstein/Bash-Snippets/releases
+activity: none
+---
+kind: url
 name: bashdb
 url: https://sourceforge.net/projects/bashdb/files/bashdb/
 activity: low
