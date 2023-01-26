@@ -6,7 +6,7 @@ require 'package'
 class Docker < Package
   description 'Pack, ship and run any application as a lightweight container'
   homepage 'https://www.docker.com/'
-  version '23.0.0-rc.1'
+  version '23.0.0-rc.3'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/docker/cli.git'
