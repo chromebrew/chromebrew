@@ -7,19 +7,19 @@ class Libcyrussasl < Package
   license 'custom'
   compatibility 'all'
   source_url 'https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz'
-  source_sha256 '26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5'
+  source_sha256 '7ccfc6abd01ed67c1a0924b353e526f1b766b21f42d4562ee635a8ebfc5bb38c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.27-2_armv7l/libcyrussasl-2.1.27-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.27-2_armv7l/libcyrussasl-2.1.27-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.27-2_i686/libcyrussasl-2.1.27-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.27-2_x86_64/libcyrussasl-2.1.27-2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28_armv7l/libcyrussasl-2.1.28-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28_armv7l/libcyrussasl-2.1.28-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28_i686/libcyrussasl-2.1.28-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28_x86_64/libcyrussasl-2.1.28-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5271b29ef9e1bbcd92d597ec69750f89b9a62a70b1c4ceb900cae769da7ad27a',
-     armv7l: '5271b29ef9e1bbcd92d597ec69750f89b9a62a70b1c4ceb900cae769da7ad27a',
-       i686: 'd62620954fbd9ba7fd6279c7412dccb56a91318e0ed0150c1fc0efbf23314587',
-     x86_64: 'f1bc40fa4566b8928447b59387a49268e4aa541a3e80d7f059e74e7d62e17a63'
+    aarch64: 'be22b132e1bd8d4576fcce5b05fd8d9954c118f7b08ee5ecc81695216a57b21f',
+     armv7l: 'be22b132e1bd8d4576fcce5b05fd8d9954c118f7b08ee5ecc81695216a57b21f',
+       i686: '80f070c21fd19968a95c4a5f5db1d63f4de4c7555eccfb0f4d27cdecce0f3980',
+     x86_64: 'fa5421975beaac8151c7039d48164e3fbe12ece34e28f84445303bd2ab91ce35'
   })
 
   depends_on 'diffutils' => :build
@@ -37,9 +37,11 @@ class Libcyrussasl < Package
   def self.build
     system "./configure \
       #{CREW_OPTIONS} \
-      --enable-static \
       --enable-shared \
-      --with-cxx-shared"
+      --enable-static \
+      --with-configdir=#{CREW_PREFIX}/etc/sasl2 \
+      --with-cxx-shared \
+      --with-dbpath=#{CREW_PREFIX}/etc/sasldb2"
     system 'make'
   end
 
