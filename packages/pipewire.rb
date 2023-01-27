@@ -3,10 +3,12 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  @_ver = if CREW_KERNEL_VERSION.to_f < 3.9
+  @_ver = if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
             '0.3.29'
-          else
+          elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
             '0.3.60'
+          else
+            '0.3.65'
           end
   version @_ver
   license 'LGPL-2.1+'
@@ -14,14 +16,14 @@ class Pipewire < Package
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
   git_hashtag @_ver
 
-  if CREW_KERNEL_VERSION.to_f < 3.9
+  if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
     binary_url({
      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_i686/pipewire-0.3.29-chromeos-i686.tpxz'
     })
     binary_sha256({
      i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
     })
-  else
+  elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.60_armv7l/pipewire-0.3.60-chromeos-armv7l.tar.zst',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.60_armv7l/pipewire-0.3.60-chromeos-armv7l.tar.zst',
@@ -31,6 +33,17 @@ class Pipewire < Package
       aarch64: '237ad8299b16e6d294a6561a4959efb47fc72ee66d06f51a3863f55dbdedcf78',
        armv7l: '237ad8299b16e6d294a6561a4959efb47fc72ee66d06f51a3863f55dbdedcf78',
        x86_64: '1534c6a7d71870ac60ec77aab0f795e148e63cf2eac61ff6ec58a5d3af23d994'
+    })
+  else
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.65_armv7l/pipewire-0.3.65-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.65_armv7l/pipewire-0.3.65-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.65_x86_64/pipewire-0.3.65-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      aarch64: '6a67e384a6beadaa6884732609d4e3aa8e4067f4e46d7e823358494fa804d5e9',
+       armv7l: '6a67e384a6beadaa6884732609d4e3aa8e4067f4e46d7e823358494fa804d5e9',
+       x86_64: '26dd5457a4c334f87f038108c30db60b7e8de0f5d7259fe5452bef3a60f73bbc'
     })
   end
 
