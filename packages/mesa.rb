@@ -5,7 +5,7 @@ class Mesa < Package
   homepage 'https://www.mesa3d.org'
   # We use mesa amber (derived from the 21.3 series) for older kernels
   # and current mesa versions for newer kernels.
-  if CREW_KERNEL_VERSION.to_f < 5.10
+  if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('5.10')
     # Built off of the mesa amber branch
     git_hashtag 'acfef002a081f36e6eebc6e8ab908a36ab18f68c'
     @_ver = git_hashtag[0, 7]
@@ -19,7 +19,7 @@ class Mesa < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
 
-  if CREW_KERNEL_VERSION.to_f < 5.10
+  if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('5.10')
     binary_url({
       aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_armv7l/mesa-amber-acfef00-chromeos-armv7l.tar.zst',
        armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_armv7l/mesa-amber-acfef00-chromeos-armv7l.tar.zst',
@@ -81,7 +81,7 @@ class Mesa < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  if CREW_KERNEL_VERSION.to_f < 5.10
+  if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('5.10')
     def self.patch
       case ARCH
       when 'aarch64', 'armv7l'
