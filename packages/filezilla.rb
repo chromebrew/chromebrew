@@ -3,22 +3,21 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  @_ver = '3.61.0'
-  version @_ver
+  version '3.63.1'
   license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url "https://download.filezilla-project.org/client/FileZilla_#{@_ver}_src.tar.bz2"
-  source_sha256 '0afef0e4da25202687b32ed6b1ffcd8442d5b35bdcd16df4f02bb2ea92e299f7'
+  source_url 'https://download.filezilla-project.org/client/FileZilla_3.63.1_src.tar.bz2'
+  source_sha256 '4e0b5c0f79f4f8bca4ba21e713ba97b86d5b45c4723de67b9c10d23bf417a37f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_armv7l/filezilla-3.61.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_armv7l/filezilla-3.61.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.61.0_x86_64/filezilla-3.61.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.1_armv7l/filezilla-3.63.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.1_armv7l/filezilla-3.63.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.1_x86_64/filezilla-3.63.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b46be3e5056a153fa2f7ca8812209493a8e0cf54dcb4bffb4f097cac1ef5d9a8',
-     armv7l: 'b46be3e5056a153fa2f7ca8812209493a8e0cf54dcb4bffb4f097cac1ef5d9a8',
-     x86_64: '2c8d7a8cc38acace81cf12a2fee9be663f88028e690d70efddc1a1374d55d8fe'
+    aarch64: '3e0dd61dd48adb2a4a1a3412f77b0dafdfa3ac7d6a3949ec037c43aa59e89eb2',
+     armv7l: '3e0dd61dd48adb2a4a1a3412f77b0dafdfa3ac7d6a3949ec037c43aa59e89eb2',
+     x86_64: 'e07cbcb631ea7b6d77f27aee52a4d060c2015e48364d6c5903cd501c4d0edcb5'
   })
 
   depends_on 'dbus'
