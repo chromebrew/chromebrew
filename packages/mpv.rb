@@ -3,24 +3,24 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  @_ver = '0.35.0-ead8469'
+  @_ver = '0.35.1'
   version @_ver
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/mpv-player/mpv.git'
-  git_hashtag 'ead8469454afa63e6e1fdd9e978af765f89379ce'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_armv7l/mpv-0.35.0-ead8469-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_armv7l/mpv-0.35.0-ead8469-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_i686/mpv-0.35.0-ead8469-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.0-ead8469_x86_64/mpv-0.35.0-ead8469-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_armv7l/mpv-0.35.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_armv7l/mpv-0.35.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_i686/mpv-0.35.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_x86_64/mpv-0.35.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '37ad11ac5ea437938829c4f59b01e7e254f5fad021b734c79a684865ce5fde86',
-     armv7l: '37ad11ac5ea437938829c4f59b01e7e254f5fad021b734c79a684865ce5fde86',
-       i686: '04ea3976c5e8a0b89a71cbd3706f37653866f5e8d20e3ca3c74396d84ffc21a7',
-     x86_64: '0bc54f5f6e50c8c9e3912cffedfe1ea61b35f8abd293e56742f2a31c19529c23'
+    aarch64: 'ed7c4be9ce73917e3b8e81a8f24586a16a8e529bd618b9c905285b7badb63e9b',
+     armv7l: 'ed7c4be9ce73917e3b8e81a8f24586a16a8e529bd618b9c905285b7badb63e9b',
+       i686: 'fe948199d9ce4f08ed94f06f645a8714b10bbf42ea2d147d482ec9b608c4754f',
+     x86_64: '7b62049cf82f8ff437ecfb088a8f96b9858548af05b1e521c6dddee468e18ad7'
   })
 
   depends_on 'alsa_lib' # R
