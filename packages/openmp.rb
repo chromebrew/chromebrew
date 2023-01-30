@@ -6,10 +6,14 @@ require 'package'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '15.0.2'
+  @_ver = '16.0.0-rc1'
+  version @_ver
+  # When upgrading llvm, be sure to upgrade openmp in tandem.
+  puts "#{self} version differs from llvm version #{Llvm.version}".orange if @_ver != Llvm.version
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/llvm-project-#{version}.src.tar.xz"
-  source_sha256 '7877cd67714728556a79e5ec0cc72d66b6926448cf73b12b2cb901b268f7a872'
+  license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
+  source_url 'https://github.com/llvm/llvm-project.git'
+  git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/15.0.2_armv7l/openmp-15.0.2-chromeos-armv7l.tar.zst',
