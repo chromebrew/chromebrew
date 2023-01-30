@@ -3,27 +3,27 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '12.2.1-b80a690' # Do not use @_ver here, it will break the installer.
-  license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
+  version '12.2.1-591ec48' # Do not use @_ver here, it will break the installer.
   compatibility 'all'
+  license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'b80a690673272919896ee5939250e50d882f2418'
+  git_hashtag '591ec4820aa4e6d757ddc76cae1d92d445daf72c'
 
   binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_i686/gcc-12.2.1-b80a690-chromeos-i686.tar.xz',
-   aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_armv7l/gcc-12.2.1-b80a690-chromeos-armv7l.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-b80a690_x86_64/gcc-12.2.1-b80a690-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_armv7l/gcc-12.2.1-591ec48-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_armv7l/gcc-12.2.1-591ec48-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_x86_64/gcc-12.2.1-591ec48-chromeos-x86_64.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_i686/gcc-12.2.1-591ec48-chromeos-i686.tar.xz'
   })
   binary_sha256({
-      i686: '14de19fc4bf6d97c936541593e79638b4661855d1b3bfe3f14d3d520870951de',
-   aarch64: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
-    armv7l: '423cf37574ab4844dd27214c3f048730eacf2af114c6973cb1236e498cb655c2',
-    x86_64: '62a41fb9a13969fe9ecca02f4f8db153abd15ae66874154735aeee22009e7c8e'
+    aarch64: 'cdd41b9d1f9be347077d5e50f8d6d8d40961b21246a82b62d56ef304485d59c8',
+     armv7l: 'cdd41b9d1f9be347077d5e50f8d6d8d40961b21246a82b62d56ef304485d59c8',
+     x86_64: 'c21a879d5fc57e6f88aa67590c459dc4df6314ef00e75fbf6b432f89a5bc0d2d',
+       i686: 'e4d6bedfbee76e966e13c50ea7f2ece3b103625e6dd64e26812a7008e42c4541'
   })
 
   depends_on 'binutils' => :build
-  # depends_on 'ccache' => :build
+  depends_on 'ccache' => :build
   depends_on 'dejagnu' => :build # for test
   depends_on 'glibc' # R
   depends_on 'gmp' # R
@@ -46,11 +46,11 @@ class Gcc < Package
     # This is defined in https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/include/uapi/linux/limits.h
     # and is defined as per suggested method here: https://github.com/ZefengWang/cross-tool-chain-build
     # The following is due to sed not passing newlines right.
-    if system 'grep -q 4096 libsanitizer/asan/asan_linux.cpp', exception: false
-      system "sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp"
-      system "sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp"
-      system "sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp"
-    end
+    return unless system 'grep -q 4096 libsanitizer/asan/asan_linux.cpp', exception: false
+
+    system "sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp"
+    system "sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp"
+    system "sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp"
   end
 
   def self.prebuild
