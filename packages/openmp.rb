@@ -9,7 +9,7 @@ class Openmp < Package
   @_ver = '16.0.0-rc1'
   version @_ver
   # When upgrading llvm, be sure to upgrade openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm.version}".orange if @_ver != Llvm.version
+  # puts "#{self} version differs from llvm version #{Llvm.version}".orange if @_ver != Llvm.version
   compatibility 'all'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   source_url 'https://github.com/llvm/llvm-project.git'
