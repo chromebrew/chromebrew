@@ -23,12 +23,15 @@ class Gettext < Package
   })
 
   depends_on 'acl' # R
+  depends_on 'attr' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  depends_on 'openjdk8' => :build
+  depends_on 'icu4c' # R
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
-  depends_on 'openmp'
+  depends_on 'openjdk8' => :build
+  depends_on 'openmp' => :build
+  depends_on 'zlibpkg' # R
 
   def self.build
     raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
