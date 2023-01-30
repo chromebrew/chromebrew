@@ -13,13 +13,13 @@ class Gcc < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_armv7l/gcc-12.2.1-591ec48-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_armv7l/gcc-12.2.1-591ec48-chromeos-armv7l.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_x86_64/gcc-12.2.1-591ec48-chromeos-x86_64.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_i686/gcc-12.2.1-591ec48-chromeos-i686.tar.xz'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_i686/gcc-12.2.1-591ec48-chromeos-i686.tar.zst'
   })
   binary_sha256({
     aarch64: 'cdd41b9d1f9be347077d5e50f8d6d8d40961b21246a82b62d56ef304485d59c8',
      armv7l: 'cdd41b9d1f9be347077d5e50f8d6d8d40961b21246a82b62d56ef304485d59c8',
      x86_64: 'c21a879d5fc57e6f88aa67590c459dc4df6314ef00e75fbf6b432f89a5bc0d2d',
-       i686: 'e4d6bedfbee76e966e13c50ea7f2ece3b103625e6dd64e26812a7008e42c4541'
+       i686: '8da4aaab51741bf9a21619a6632ef201cf08cdb7ce10fa9fb68a7138e33b82f3'
   })
 
   depends_on 'binutils' => :build
