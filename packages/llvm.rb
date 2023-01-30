@@ -61,7 +61,7 @@ class Llvm < Package
     LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   when 'i686'
     # LLVM_TARGETS_TO_BUILD = 'X86'.freeze
-    # Because ld.lld: error: undefinler-rt;libc;libcxx;libcxxabi;libunwind;openmped symbol: __atomic_store
+    # Because ld.lld: error: undefined symbol: __atomic_store
     # Polly demands fPIC
     @ARCH_C_FLAGS = '-latomic -fPIC'
     @ARCH_CXX_FLAGS = '-latomic -fPIC'
