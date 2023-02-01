@@ -3,20 +3,20 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.19.4'
+  version '1.20'
   license 'BSD'
   compatibility 'all'
   source_url({
-    aarch64: 'https://go.dev/dl/go1.19.4.linux-armv6l.tar.gz',
-     armv7l: 'https://go.dev/dl/go1.19.4.linux-armv6l.tar.gz',
-       i686: 'https://go.dev/dl/go1.19.4.linux-386.tar.gz',
-     x86_64: 'https://go.dev/dl/go1.19.4.linux-amd64.tar.gz'
+    aarch64: 'https://go.dev/dl/go1.20.linux-armv6l.tar.gz',
+     armv7l: 'https://go.dev/dl/go1.20.linux-armv6l.tar.gz',
+       i686: 'https://go.dev/dl/go1.20.linux-386.tar.gz',
+     x86_64: 'https://go.dev/dl/go1.20.linux-amd64.tar.gz'
   })
   source_sha256({
-    aarch64: '7a51dae4f3a52d2dfeaf59367cc0b8a296deddc87e95aa619bf87d24661d2370',
-     armv7l: '7a51dae4f3a52d2dfeaf59367cc0b8a296deddc87e95aa619bf87d24661d2370',
-       i686: 'e5f0b0551e120bf3d1246cb960ec58032d7ca69e1adcf0fdb91c07da620e0c61',
-     x86_64: 'c9c08f783325c4cf840a94333159cc937f05f75d36a8b307951d5bd959cf2ab8'
+    aarch64: 'ee8550213c62812f90dbfd3d098195adedd450379fd4d3bb2c85607fd5a2d283',
+     armv7l: 'ee8550213c62812f90dbfd3d098195adedd450379fd4d3bb2c85607fd5a2d283',
+       i686: '1420582fb43a15dbe94760fdd92171315414c4afc21ffe9d3b5875f9386ebe53',
+     x86_64: '5a9ebcc65c1cce56e0d2dc616aff4c4cedcfbda8cc6f0288cc08cda3b18dcbf1'
   })
 
   no_compile_needed
