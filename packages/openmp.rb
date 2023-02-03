@@ -10,44 +10,45 @@ class Openmp < Package
   version @_ver
   # When upgrading llvm, be sure to upgrade openmp in tandem.
   # puts "#{self} version differs from llvm version #{Llvm.version}".orange if @_ver != Llvm.version
-  compatibility 'all'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
+  compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/15.0.2_armv7l/openmp-15.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/15.0.2_armv7l/openmp-15.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/15.0.2_i686/openmp-15.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/15.0.2_x86_64/openmp-15.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_armv7l/openmp-16.0.0-rc1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_armv7l/openmp-16.0.0-rc1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_i686/openmp-16.0.0-rc1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_x86_64/openmp-16.0.0-rc1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1959ad7a1990b976c00ff0017c934e83874de75693d544f72ba0b7b09113aef4',
-     armv7l: '1959ad7a1990b976c00ff0017c934e83874de75693d544f72ba0b7b09113aef4',
-       i686: 'df454f2ea8052853943241282265785f04f532b929114f2b0a4002027a08d3d0',
-     x86_64: '685c4751bcf4f6c37aa040a7fe15be18228a3a4ba10ac646159edb87edcce4b4'
+    aarch64: 'a8b5a1770a714283db2005d5519014756ed31601cefb80f060a21f210f2ae5a8',
+     armv7l: 'a8b5a1770a714283db2005d5519014756ed31601cefb80f060a21f210f2ae5a8',
+       i686: '742a5671d9a8a6b38073e9f6c56eec0778f0f8128d4e8abe6cfc0d67d66aa9f4',
+     x86_64: 'f9c667a78a71552e852a34cabeee05557c9427b0860b8d355c94eba4fccfc130'
   })
 
-  depends_on 'libffi'
-  depends_on 'llvm' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'libffi'
+  depends_on 'llvm' # R
+  depends_on 'python3' # R
+
   no_env_options
 
   def self.patch
-    return unless ARCH == 'armv7l' || ARCH == 'aarch64'
-
-    open('openmp/CMakeLists.txt', 'a') do |f|
-      f.puts 'set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")'
-      f.puts 'set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")'
-    end
+    # See https://github.com/llvm/llvm-project/issues/60393
+    # This should be gone by llvm 16 final.
+    downloader 'https://reviews.llvm.org/file/data/g3g6o5c5blv6cpw4vsi5/PHID-FILE-osrdddmkv4akws36db7u/D143200.diff',
+'SKIP'
+    system 'patch -Np1 -i D143200.diff'
   end
 
   def self.build
     Dir.mkdir 'openmp/builddir'
     Dir.chdir 'openmp/builddir' do
       system "cmake -G Ninja \
-            #{CREW_CMAKE_OPTIONS.gsub('-flto', '').gsub('mold', 'lld')} \
+            #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-fno-lto', '').gsub('-ffat-lto-objects', '')} \
             -DCMAKE_C_COMPILER=$(which clang) \
             -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
