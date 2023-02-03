@@ -40,7 +40,7 @@ class Openmp < Package
     # See https://github.com/llvm/llvm-project/issues/60393
     # This should be gone by llvm 16 final.
     downloader 'https://reviews.llvm.org/file/data/g3g6o5c5blv6cpw4vsi5/PHID-FILE-osrdddmkv4akws36db7u/D143200.diff',
-'SKIP'
+               'SKIP'
     system 'patch -Np1 -i D143200.diff'
   end
 
