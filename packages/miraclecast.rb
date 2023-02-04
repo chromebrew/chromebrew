@@ -25,6 +25,7 @@ class Miraclecast < Package
      x86_64: 'ee12795967f9de44c27aea232a53b0e181e0eae7b7172efdc2fa80c15018cefe'
   })
 
+  depends_on 'chromaprint' # R
   depends_on 'elogind' # R
   depends_on 'eudev' # R
   depends_on 'ffmpeg' # R
