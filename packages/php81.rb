@@ -3,24 +3,23 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '8.1.14'
-  version @_ver
+  version '8.1.15'
   license 'PHP-3.01'
   compatibility 'all'
-  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
-  source_sha256 'e16e47a872d58685913ac848ce92ec49f42c1828110c98c65fb6265a08724a1a'
+  source_url 'https://www.php.net/distributions/php-8.1.15.tar.xz'
+  source_sha256 'cd450fb4ee50488c5bf5f08851f514e5a1cac18c9512234d9e16c3a1d35781a6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.14_armv7l/php81-8.1.14-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.14_armv7l/php81-8.1.14-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.14_i686/php81-8.1.14-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.14_x86_64/php81-8.1.14-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.15_armv7l/php81-8.1.15-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.15_armv7l/php81-8.1.15-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.15_i686/php81-8.1.15-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.15_x86_64/php81-8.1.15-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '33221bb50e3a3e81bc3fdb1b469e74a310f6c74a31341da79d4136f91a61a982',
-     armv7l: '33221bb50e3a3e81bc3fdb1b469e74a310f6c74a31341da79d4136f91a61a982',
-       i686: '0ef44d4a9a36389383ae00b1da1569318e000e78f1de6ba2ef524a9b23878ae0',
-     x86_64: '0eb999e302fe9bdf864fc1a7aa2732060b7b7fdcbc063ad7185e8ac5cf5271e7'
+    aarch64: '6fcccdd3b648d5a7edf7a0829f4283e126a63d0c214b7012d7cf44a233d836d6',
+     armv7l: '6fcccdd3b648d5a7edf7a0829f4283e126a63d0c214b7012d7cf44a233d836d6',
+       i686: '2f7ec19c82b1d914ebc633630551427b35c22831ff956423a8a41171e7d8ac89',
+     x86_64: '32e874f788d11e0d4e901c9ab469f80a8598a1a6c357679f10998382ce57eb82'
   })
 
   depends_on 'aspell_en'
