@@ -5470,6 +5470,12 @@ name: minizip
 url: https://sourceforge.net/projects/libpng/files/zlib/
 activity: none
 ---
+---
+kind: url
+name: miraclecast
+url: https://github.com/albfan/miraclecast/tags
+activity: low
+---
 kind: url
 name: miscfiles
 url: https://ftpmirror.gnu.org/miscfiles/
