@@ -3,13 +3,13 @@ require 'package'
 class Box < Package
   description 'Fast, zero config application bundler with PHARs.'
   homepage 'https://github.com/box-project/box'
-  version '4.0.2'
+  version '4.2.0'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/box-project/box/releases/download/#{version}/box.phar"
-  source_sha256 'ddb2ddb694ba07e5fcd0dc681e204f7a94844409a26f7b74bb1fe2748908fd9e'
+  source_url 'https://github.com/box-project/box/releases/download/4.2.0/box.phar'
+  source_sha256 'f693e1a85abdb7730a23fcbaffb882601f1d75616b69f195715fe4f84c5bf8a4'
 
-  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   no_compile_needed
 
