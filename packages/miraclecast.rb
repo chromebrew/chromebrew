@@ -33,7 +33,7 @@ class Miraclecast < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R
-  depwnds_on 'llvm' # R
+  depends_on 'llvm' # R
   depends_on 'pygobject' # L
   depends_on 'readline' # R
 
