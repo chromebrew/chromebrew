@@ -22,27 +22,27 @@ class Sommelier < Package
      x86_64: '648d89e83d67ccd47e05d51d5487353d64fcdeaeb76308cde56b940831913b38'
   })
 
-  depends_on 'libdrm'
-  depends_on 'libxcb'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libdrm' # R
+  depends_on 'libxcb' # R
   depends_on 'libxcomposite' => :build
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
-  depends_on 'libxkbcommon'
+  depends_on 'libxkbcommon' # R
   depends_on 'llvm' # R
-  depends_on 'mesa'
-  depends_on 'pixman'
+  depends_on 'mesa' # R
+  depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc'
-  depends_on 'wayland'
+  depends_on 'wayland' # R
   depends_on 'xauth'
+  depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
   depends_on 'xorg_xset' # for xset in wrapper script
-  depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xsetroot' # for xsetroot in /usr/local/etc/sommelierrc script
-  depends_on 'xwayland'
+  depends_on 'xwayland' # L
   depends_on 'xxd_standalone' # for xxd in wrapper script
-  depends_on 'gcc' # R
-  depends_on 'glibc' # R
 
   no_shrink
 
