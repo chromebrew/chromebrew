@@ -57,7 +57,6 @@ class Sommelier < Package
     # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
     Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc",
                   chdir: 'vm_tools/sommelier'
-    return unless ARCH == 'armv7l' || ARCH == 'aarch64'
   end
 
   def self.build
@@ -364,7 +363,7 @@ class Sommelier < Package
 
   def self.postinstall
     # all tasks are done by sommelier.env now
-    now = `date +%Y%m%d%H%M`.chomp
+    now = Time.now.strftime('%Y%m%d%H%M')
     FileUtils.cp "#{HOME}/.bashrc", "#{HOME}/.bashrc.#{now}"
     system "sed -i '/[sS]ommelier/d' #{HOME}/.bashrc"
     diff = `diff #{HOME}/.bashrc #{HOME}/.bashrc.#{now}`.chomp
@@ -382,6 +381,7 @@ class Sommelier < Package
 
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"
     puts <<~EOT1.lightblue
+
       The default environment is stored in #{CREW_PREFIX}/etc/env.d/sommelier.
     EOT1
 
