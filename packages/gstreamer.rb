@@ -3,24 +3,24 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.22.0'
+  @_ver = '1.22.0-9fa5fbc2'
   version @_ver
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
-  git_hashtag @_ver
+  git_hashtag '9fa5fbc25e38b7b8a851b88a5bbb1e48f7caee62'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_armv7l/gstreamer-1.22.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_armv7l/gstreamer-1.22.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_i686/gstreamer-1.22.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0_x86_64/gstreamer-1.22.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_armv7l/gstreamer-1.22.0-9fa5fbc2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_armv7l/gstreamer-1.22.0-9fa5fbc2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_i686/gstreamer-1.22.0-9fa5fbc2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_x86_64/gstreamer-1.22.0-9fa5fbc2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7e922a8538098687783f2d6915bd40c28808d47988ff5cfc74ac55cf344acb0d',
-     armv7l: '7e922a8538098687783f2d6915bd40c28808d47988ff5cfc74ac55cf344acb0d',
-       i686: '99f9fb1315f751dfaa5356210e4d65316f245dd31fec5b6478a286d7bd5f1a0a',
-     x86_64: '30984cbfa7175a3a2df26766cd032a0cd27ece010b7c9018f438a207423630a7'
+    aarch64: '62d0cdb30104093c71e02ad760f8e549f58d3abf75e353ccd70adf80ed41017b',
+     armv7l: '62d0cdb30104093c71e02ad760f8e549f58d3abf75e353ccd70adf80ed41017b',
+       i686: '52b4f6c834be0450cd8fdee2874997cb4f8f047513bd44979279b7c74da3001d',
+     x86_64: 'b1cf2798ff216ed089417c52b60b5a2345e9aa428f2fcd8218bbd5f7a681493c'
   })
 
   depends_on 'alsa_lib' # R
@@ -104,6 +104,7 @@ class Gstreamer < Package
   depends_on 'speex' # R
   depends_on 'sratom' # R
   depends_on 'srt' # R
+  depends_on 'svt_av1' # R
   depends_on 'v4l_utils' # R
   depends_on 'wavpack' # R
   depends_on 'wayland' # R

@@ -4,23 +4,23 @@ class Pulseaudio < Package
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
   @_ver = '16.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1 and GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_armv7l/pulseaudio-16.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_armv7l/pulseaudio-16.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_i686/pulseaudio-16.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1_x86_64/pulseaudio-16.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_armv7l/pulseaudio-16.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_armv7l/pulseaudio-16.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_i686/pulseaudio-16.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_x86_64/pulseaudio-16.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e8edeba8f44d27128c2679d249b8199894574c195bab7ac0950e49fe037a2036',
-     armv7l: 'e8edeba8f44d27128c2679d249b8199894574c195bab7ac0950e49fe037a2036',
-       i686: 'd72a2bcb9e1185aa1d528217ba4ac58e6c6fba6ae109ab7bba3366f1969ffcdb',
-     x86_64: 'ad53a21305519ea3d25aeb3e3905035e94ecb25890355063eaaf26e5a6620d42'
+    aarch64: 'ec3902a15d62f0a958f128601616557e61ecb5b20bc7b96ea52221f1de58ac19',
+     armv7l: 'ec3902a15d62f0a958f128601616557e61ecb5b20bc7b96ea52221f1de58ac19',
+       i686: '7c62fc32a176a187c5da671e1d2ad0afeca9a3fd04d9d50868560750db811ef1',
+     x86_64: '1cda482d6e9e3158edd8e9a1e69369b2b7b0c481929536d5d04d7d9394983c25'
   })
 
   depends_on 'alsa_lib' # R
@@ -29,12 +29,13 @@ class Pulseaudio < Package
   depends_on 'check' => :build
   depends_on 'cras' # L
   depends_on 'dbus' # R
-  depends_on 'elogind' => :build
+  depends_on 'elogind' # R
   depends_on 'eudev' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   # depends_on 'gsettings_desktop_schemas' # L
+  depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'jsonc' => :build
   depends_on 'libcap' # R
@@ -45,17 +46,15 @@ class Pulseaudio < Package
   depends_on 'libsoxr' # R
   depends_on 'libtool' # R
   depends_on 'libx11' # R
-  depends_on 'libxfixes' => :build
   depends_on 'libxcb' # R
+  depends_on 'libxfixes' => :build
   depends_on 'libxtst' # R
   depends_on 'openssl' # R
   depends_on 'speexdsp' # R
-  depends_on 'tcpwrappers' => :build
+  depends_on 'tcpwrappers' # R
   depends_on 'tdb' # R
   depends_on 'valgrind' => :build
   depends_on 'webrtc_audio_processing' # R
-  depends_on 'elogind' # R
-  depends_on 'tcpwrappers' # R
 
   git_fetchtags
 
@@ -71,6 +70,7 @@ class Pulseaudio < Package
     -Dtests=false \
     -Dudevrulesdir=#{CREW_PREFIX}/libexec/rules.d \
     -Dalsadatadir=#{CREW_PREFIX}/share/alsa-card-profile \
+    -Dlocalstatedir=#{CREW_PREFIX}/var/run \
     builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
