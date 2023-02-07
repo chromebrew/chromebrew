@@ -219,7 +219,8 @@ class Sommelier < Package
                 source #{CREW_PREFIX}/etc/sommelierrc" \
             &>> #{CREW_PREFIX}/var/log/sommelier.log
 
-            echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
+            # echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
+            pgrep Xwayland > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             xhost +si:localuser:root
           fi
         SOMMELIERDEOF
