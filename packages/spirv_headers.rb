@@ -5,40 +5,33 @@ require 'package'
 
 class Spirv_headers < Package
   description 'SPIR-V Headers'
-  version '1.5.4-f88a'
+  version '1.3.239.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/KhronosGroup/SPIRV-Headers/archive/f88a1f98fa7a44ccfcf33d810c72b200e7d9a78a.zip'
-  source_sha256 'b209fe7fd0db5a2eb61db5d93525ce0f39e4d615f2f82bd02ff0ee512bd45a1e'
+  source_url 'https://github.com/KhronosGroup/SPIRV-Headers.git'
+  git_hashtag "sdk-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.5.4-f88a_armv7l/spirv_headers-1.5.4-f88a-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.5.4-f88a_armv7l/spirv_headers-1.5.4-f88a-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.5.4-f88a_i686/spirv_headers-1.5.4-f88a-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.5.4-f88a_x86_64/spirv_headers-1.5.4-f88a-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.239.0_armv7l/spirv_headers-1.3.239.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.239.0_armv7l/spirv_headers-1.3.239.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.239.0_i686/spirv_headers-1.3.239.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.239.0_x86_64/spirv_headers-1.3.239.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7fbc45daafcb8a8d2a2b677321df22f86797cc3cdd17b57e6ff6e56e6f00bc79',
-     armv7l: '7fbc45daafcb8a8d2a2b677321df22f86797cc3cdd17b57e6ff6e56e6f00bc79',
-       i686: '3b7e2d5cddd5a470bc44a2429559bd03aaa339e6fc2c16eee018b1758de5d6c6',
-     x86_64: 'fe9c5758664a18559627bb5b1fda22ca5d5c6c6308ebf2d5bf6c65be393bf33a'
+    aarch64: '6720cd5bf305167e12ad4055ed9ca1c3bf89506ca1ca82c8f3789f1decfd8aa5',
+     armv7l: '6720cd5bf305167e12ad4055ed9ca1c3bf89506ca1ca82c8f3789f1decfd8aa5',
+       i686: '105ae0fa19df004896b558969432b713cb18e793b75c54fa763a47b76dec1ad9',
+     x86_64: '8178f815c883270d734f637e27a1588f7b2115b89398c1d1f4423912dca4cc64'
   })
 
   def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
+    system "cmake -B builddir \
+      -G Ninja \
+      #{CREW_CMAKE_OPTIONS}"
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end

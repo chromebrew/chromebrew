@@ -6,51 +6,39 @@ require 'package'
 class Glslang < Package
   description 'OpenGL and OpenGL ES shader front end and validator'
   homepage 'https://github.com/KhronosGroup/glslang'
-  version '8.13.3743'
+  version '12.0.0'
   license 'BSD-3, MIT, BSD-2, Apache-2.0 and NVIDIA'
   compatibility 'all'
-  source_url 'https://github.com/KhronosGroup/glslang/archive/8.13.3743.tar.gz'
-  source_sha256 '639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f'
+  source_url 'https://github.com/KhronosGroup/glslang.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/8.13.3743_armv7l/glslang-8.13.3743-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/8.13.3743_armv7l/glslang-8.13.3743-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/8.13.3743_i686/glslang-8.13.3743-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/8.13.3743_x86_64/glslang-8.13.3743-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/12.0.0_armv7l/glslang-12.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/12.0.0_armv7l/glslang-12.0.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/12.0.0_i686/glslang-12.0.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glslang/12.0.0_x86_64/glslang-12.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '927f23fc3390cc2b66da76f8ebab2ed55e04c2544d8ed5ce3ce84f734d6631d6',
-     armv7l: '927f23fc3390cc2b66da76f8ebab2ed55e04c2544d8ed5ce3ce84f734d6631d6',
-       i686: '73a6dd675301d314921c69f016659cfe1c520176ece194eac6e47b934706b213',
-     x86_64: '51de97dab57fb0e21f4b0746b1117cca66481d8dfe63065edda8f122feaceb6f'
+    aarch64: 'faf914601e515f39d2ef854e427cea8a75fa70aa3d0fa9ebd70a6d9ee21c13f8',
+     armv7l: 'faf914601e515f39d2ef854e427cea8a75fa70aa3d0fa9ebd70a6d9ee21c13f8',
+       i686: 'a0e1b631baa510e7d7baeda275bade2b4518a9c31273c156dbdc7cd837c5e5b6',
+     x86_64: '2247c659389a1b6b31d95f365addb9267cfcacae5f69af321945ceeea4d300ae'
   })
 
+  depends_on 'spirv_headers' => :build
+  depends_on 'spirv_tools' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+
   def self.build
-    system './update_glslang_sources.py'
-    Dir.mkdir 'build-shared'
-    Dir.chdir 'build-shared' do
-      system "cmake .. \
-      -GNinja \
-      -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-      -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_SHARED_LIBS=ON"
-    end
-    system 'ninja -C build-shared'
-    Dir.mkdir 'build-static'
-    Dir.chdir 'build-static' do
-      system "cmake .. \
-      -GNinja \
-      -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-      -DCMAKE_INSTALL_LIBDIR=#{CREW_LIB_PREFIX} \
-      -DCMAKE_BUILD_TYPE=Release \
+    system "cmake -B build-static \
+      -G Ninja \
+      #{CREW_CMAKE_OPTIONS} \
       -DBUILD_SHARED_LIBS=OFF"
-    end
     system 'ninja -C build-static'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-shared install"
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build-static install"
   end
 end

@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '22.1.6'
+  @_ver = '22.1.8'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Xwayland < Package
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.6_armv7l/xwayland-22.1.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.6_armv7l/xwayland-22.1.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.6_i686/xwayland-22.1.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.6_x86_64/xwayland-22.1.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_armv7l/xwayland-22.1.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_armv7l/xwayland-22.1.8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_i686/xwayland-22.1.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_x86_64/xwayland-22.1.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a489685a929c7b12f1ccea0f40c025961fa98d9765396fff6970ff949a66c5a5',
-     armv7l: 'a489685a929c7b12f1ccea0f40c025961fa98d9765396fff6970ff949a66c5a5',
-       i686: '893e7045102d9e22c68b7c936b1ce5f56d2d18b6c9918a856922a9c1c91f86da',
-     x86_64: '078dc6abfaac286f7b805d26ea3db01aa56afe95cc6a3d01ff0b2c514f8655ed'
+    aarch64: 'd38eb4ef182e0ce88625dea2c15ba0bf424d469f535ef7ef8bfd653417d66d5b',
+     armv7l: 'd38eb4ef182e0ce88625dea2c15ba0bf424d469f535ef7ef8bfd653417d66d5b',
+       i686: 'd218eff809c0afaa67bff4b3ae237110d7b7cd1e0d347f28d3e9429326b50e9f',
+     x86_64: '98166b0c68fc229bdc453c333dc1ae9ca4b6c603cd1c00a7a0e144bae5b5c84f'
   })
 
   no_env_options

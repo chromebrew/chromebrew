@@ -3,7 +3,7 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.5'
+  @_ver = '21.1.7'
   version @_ver
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Xorg_server < Package
   git_hashtag "xorg-server-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_armv7l/xorg_server-21.1.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_armv7l/xorg_server-21.1.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_i686/xorg_server-21.1.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.5_x86_64/xorg_server-21.1.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_armv7l/xorg_server-21.1.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_armv7l/xorg_server-21.1.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_i686/xorg_server-21.1.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_x86_64/xorg_server-21.1.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '78ad6bfdd97bd1056e0d75f7c5f787178815e8c9404ff08503765b13d9a2d444',
-     armv7l: '78ad6bfdd97bd1056e0d75f7c5f787178815e8c9404ff08503765b13d9a2d444',
-       i686: '461fb290fa7b5f7237445c9cf6d7ba4e15c69e3a31c651ee91f6de40db939885',
-     x86_64: '6f438b6d48592c9c3b52bd50abbc6040d3048dc357164a96f6c5d42c9b24fc20'
+    aarch64: 'd42c06ceb209fb5fb76efbafddd71d9d70fbf22b1a26eed272260c568df24d59',
+     armv7l: 'd42c06ceb209fb5fb76efbafddd71d9d70fbf22b1a26eed272260c568df24d59',
+       i686: '30050665805c5ff827611a2e5e20ca7a2d7da17c95474f3cb488dcac6686f85f',
+     x86_64: '28d7c2d8632c1dd232cc3847c3161ea494ef8b86108bedc1b69da6d4daf5d782'
   })
 
   depends_on 'dbus' # R
