@@ -73,7 +73,7 @@ class Sommelier < Package
 
       system <<~BUILD
         env CC=clang CXX=clang++ \
-          meson setup #{CREW_MESON_OPTIONS} \
+          meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '-fuse-ld=lld').gsub('-ffat-lto-objects', '')} \
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
