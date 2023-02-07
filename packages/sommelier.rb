@@ -22,6 +22,7 @@ class Sommelier < Package
      x86_64: '648d89e83d67ccd47e05d51d5487353d64fcdeaeb76308cde56b940831913b38'
   })
 
+  depends_on 'diffutils' # L (for diff usage in postinstall)
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libdrm' # R
