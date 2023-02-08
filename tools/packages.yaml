@@ -8741,6 +8741,11 @@ url: https://gitlab.freedesktop.org/xorg/app/xeyes/-/tags
 activity: low
 ---
 kind: url
+name: xorg_xlsfonts
+url: https://gitlab.freedesktop.org/xorg/app/xlsfonts/-/tags
+activity: low
+---
+kind: url
 name: xorg_xset
 url: https://gitlab.freedesktop.org/xorg/app/xset/-/tags
 activity: low
