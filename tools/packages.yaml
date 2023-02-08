@@ -5126,6 +5126,11 @@ url: https://github.com/libmpack/libmpack-lua/releases
 activity: low
 ---
 kind: url
+name: luit
+url: https://github.com/ThomasDickey/luit-snapshots/tags
+activity: medium
+---
+kind: url
 name: lv2
 url: https://github.com/lv2/lv2/tags
 activity: none
