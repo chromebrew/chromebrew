@@ -10,16 +10,16 @@ class Xterm < Package
   git_hashtag "xterm-#{version}"
 
   binary_url({
-     aarch64: 'file:///usr/local/tmp/packages/xterm-378c-chromeos-armv7l.tar.zst',
-      armv7l: 'file:///usr/local/tmp/packages/xterm-378c-chromeos-armv7l.tar.zst',
-        i686: 'file:///usr/local/tmp/packages/xterm-378c-chromeos-i686.tar.zst',
-      x86_64: 'file:///usr/local/tmp/packages/xterm-378c-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_armv7l/xterm-378c-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_armv7l/xterm-378c-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_i686/xterm-378c-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_x86_64/xterm-378c-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     aarch64: '34b81402bedfe9a2a1973f4f9b6033ce0db46076b3409a705a14c5dac912c197',
-      armv7l: '34b81402bedfe9a2a1973f4f9b6033ce0db46076b3409a705a14c5dac912c197',
-        i686: 'ee9f8a26da34386339529aebbad1a520e82f1f79f1df43d67cbba34d2dccf800',
-      x86_64: '6616c699151c4cda0b6f3b1f4808acd5e38d03827a98ccec032228b7b0629ffa'
+    aarch64: 'a8302b75325cda9acbf59929ecaf791281e2710b1c9e128354844145aa9c2d40',
+     armv7l: 'a8302b75325cda9acbf59929ecaf791281e2710b1c9e128354844145aa9c2d40',
+       i686: '235f5938788fbc494bac5bac66a15259795ddad186b081ace5a21092f995942c',
+     x86_64: '88353d7c42d3a91c5d7f1440d78808c6625cbf5cb9a186ebe10a8a2caeda37af'
   })
 
   depends_on 'libxaw' => :build
