@@ -3,31 +3,39 @@ require 'package'
 class Libxpm < Package
   description 'X.org X Pixmap Library'
   homepage 'https://www.x.org'
-  version '3.5.12'
+  version '3.5.15'
   license 'custom'
   compatibility 'all'
-  source_url 'https://www.x.org/archive//individual/lib/libXpm-3.5.12.tar.gz'
-  source_sha256 '2523acc780eac01db5163267b36f5b94374bfb0de26fc0b5a7bee76649fd8501'
+  source_url 'https://www.x.org/archive/individual/lib/libXpm-3.5.15.tar.gz'
+  source_sha256 '2a9bd419e31270593e59e744136ee2375ae817322447928d2abb6225560776f9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_armv7l/libxpm-3.5.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_armv7l/libxpm-3.5.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_i686/libxpm-3.5.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.12_x86_64/libxpm-3.5.12-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.15_armv7l/libxpm-3.5.15-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.15_armv7l/libxpm-3.5.15-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.15_i686/libxpm-3.5.15-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.15_x86_64/libxpm-3.5.15-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c38c518e3fd530ad13fd27dc67d5a14f5eb06b2a5259c38a321e80e02541a9e8',
-     armv7l: 'c38c518e3fd530ad13fd27dc67d5a14f5eb06b2a5259c38a321e80e02541a9e8',
-       i686: '2ea376f91f067e0191dafb7aad088ad1ed7408997e3384e8c820344fc2c0373f',
-     x86_64: '8690186c140efb01a93ed7f0142a12d7e591ad7a336494ae0e9df44b754af239'
+    aarch64: 'dda20cb64733b2ad86fd1073547056006b0e4214f86a0fcf72cebfa309d5bc29',
+     armv7l: 'dda20cb64733b2ad86fd1073547056006b0e4214f86a0fcf72cebfa309d5bc29',
+       i686: '6b1e51fbcf3ae2ea5a21ffa84ea8815f0dee3db6a0c8fd89bccd8792f8388a3c',
+     x86_64: 'c154aa0ff14f8fffd52031e56362e48dbdf6217c84a99e5bf9e0bc4598a8a661'
   })
 
   depends_on 'libx11'
   depends_on 'util_macros'
   depends_on 'gettext'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'ncompress' => :build
+  depends_on 'gcc' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

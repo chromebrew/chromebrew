@@ -5636,6 +5636,11 @@ url: http://ftp.ncftp.com/ncftp
 activity: none
 ---
 kind: url
+name: ncompress
+url: https://github.com/vapier/ncompress/releases
+activity: low
+---
+kind: url
 name: nconvert
 url: https://download.xnview.com/
 activity: low
@@ -8733,6 +8738,11 @@ activity: low
 kind: url
 name: xorg_xeyes
 url: https://gitlab.freedesktop.org/xorg/app/xeyes/-/tags
+activity: low
+---
+kind: url
+name: xorg_xlsfonts
+url: https://gitlab.freedesktop.org/xorg/app/xlsfonts/-/tags
 activity: low
 ---
 kind: url
