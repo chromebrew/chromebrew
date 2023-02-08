@@ -4,7 +4,7 @@ class Libfontenc < Package
   description 'Fontenc Library from X.org'
   homepage 'https://xorg.freedesktop.org/'
   version '1.1.7'
-  license 'custom'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/lib/libfontenc-1.1.7.tar.xz'
   source_sha256 'c0d36991faee06551ddbaf5d99266e97becdc05edfae87a833c3ff7bf73cfec2'
