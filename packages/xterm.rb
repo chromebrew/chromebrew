@@ -43,6 +43,10 @@ class Xterm < Package
 
   no_env_options
 
+  def self.patch
+    system "sed -i '/^LDFLAGS/ s/$/ -DUSE_TERMINFO=1 -ltinfo/' Makefile.in"
+  end
+
   def self.build
     system "./configure #{CREW_OPTIONS} \
       --disable-imake \
@@ -79,7 +83,6 @@ class Xterm < Package
       --with-x \
       --with-xinerama \
       --with-xpm=#{CREW_PREFIX}"
-    system "sed -i '/^LDFLAGS/ s/$/ -DUSE_TERMINFO=1 -ltinfo/' Makefile"
     system 'make'
   end
 
