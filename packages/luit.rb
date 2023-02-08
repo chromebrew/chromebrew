@@ -10,7 +10,7 @@ class Luit < Package
   license 'custom'
   compatibility 'all'
   source_url 'https://github.com/ThomasDickey/luit-snapshots.git'
-  git_hashtag 'v2_0_20230201'
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luit/2_0_20230201_armv7l/luit-2_0_20230201-chromeos-armv7l.tar.zst',
