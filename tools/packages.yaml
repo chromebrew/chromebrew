@@ -4501,6 +4501,11 @@ url: http://ftp.gnu.org/gnu/libsigsegv
 activity: low
 ---
 kind: url
+name: libsixel
+url: https://github.com/libsixel/libsixel/releases
+activity: low
+---
+kind: url
 name: libslz
 url: http://www.libslz.org/
 activity: none
@@ -4684,6 +4689,11 @@ kind: url
 name: libusbmuxd
 url: http://www.libimobiledevice.org/downloads/
 activity: none
+---
+kind: url
+name: libutempter
+url: https://github.com/altlinux/libutempter/tags
+activity: low
 ---
 kind: url
 name: libuv
@@ -5114,6 +5124,11 @@ kind: url
 name: luajit_mpack
 url: https://github.com/libmpack/libmpack-lua/releases
 activity: low
+---
+kind: url
+name: luit
+url: https://github.com/ThomasDickey/luit-snapshots/tags
+activity: medium
 ---
 kind: url
 name: lv2

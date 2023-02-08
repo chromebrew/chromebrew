@@ -3,23 +3,23 @@ require 'package'
 class Libfontenc < Package
   description 'Fontenc Library from X.org'
   homepage 'https://xorg.freedesktop.org/'
-  version '1.1.6'
+  version '1.1.7'
+  license 'MIT'
   compatibility 'all'
-  license 'custom'
-  source_url 'https://www.x.org/releases/individual/lib/libfontenc-1.1.5.tar.xz'
-  source_sha256 '43ef0387090ea526faf8d3b0907ee0e4be0fb433c17e0b1bdb8433aa1de2b12c'
+  source_url 'https://www.x.org/releases/individual/lib/libfontenc-1.1.7.tar.xz'
+  source_sha256 'c0d36991faee06551ddbaf5d99266e97becdc05edfae87a833c3ff7bf73cfec2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_armv7l/libfontenc-1.1.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_armv7l/libfontenc-1.1.4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.4_x86_64/libfontenc-1.1.4-chromeos-x86_64.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.6_i686/libfontenc-1.1.6-chromeos-i686.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.7_armv7l/libfontenc-1.1.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.7_armv7l/libfontenc-1.1.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.7_i686/libfontenc-1.1.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfontenc/1.1.7_x86_64/libfontenc-1.1.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cf093d4545369715602df5d61ed7338a867bbe11a07a26ddcd563c95478c78c5',
-     armv7l: 'cf093d4545369715602df5d61ed7338a867bbe11a07a26ddcd563c95478c78c5',
-     x86_64: '08bc791449cfabb5833a5cbd7c35c541032bae3bf3f8755455935ec61fd815c4',
-       i686: '8929d18ee367196ebaf989813abe51979929896d2f881e8775babe37a49ba65f'
+    aarch64: '8d2dee2568b7a2389cff4435c26653fe56c8b3bda1132ec74215ed87ca8eb287',
+     armv7l: '8d2dee2568b7a2389cff4435c26653fe56c8b3bda1132ec74215ed87ca8eb287',
+       i686: '20d2b4358c6b10ac9f215919ec0b57691565d7dd1e8883d32397ed5b1d773b32',
+     x86_64: '4331cdbb4108722b6fc8d05249cdba21b67e917270ccba8b03b17808176dc30f'
   })
 
   depends_on 'xorg_proto'
