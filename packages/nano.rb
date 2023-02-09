@@ -30,7 +30,7 @@ class Nano < Package
   end
 
   def self.build
-    system "CFLAGS=-flto LDFLAGS=-static \
+    system "CFLAGS=-flto=auto LDFLAGS=-static \
       ./configure #{CREW_OPTIONS} \
       --enable-threads=posix \
       --enable-nls \

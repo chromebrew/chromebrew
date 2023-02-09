@@ -44,7 +44,7 @@ class Gtksourceview_4 < Package
   depends_on 'zlibpkg' # R
 
   def self.patch
-    system "sed -i 's/-fstack-protector-strong/-flto/g' meson.build"
+    system "sed -i 's/-fstack-protector-strong/-flto=auto/g' meson.build"
   end
 
   def self.build

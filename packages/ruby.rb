@@ -45,7 +45,7 @@ class Ruby < Package
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
-      optflags='-flto -fuse-ld=#{CREW_LINKER}' \
+      optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
       ./configure #{CREW_OPTIONS} \
       --enable-shared \
       #{@yjit} \

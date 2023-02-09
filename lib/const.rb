@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.30.9'
+CREW_VERSION = '1.31.0'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -195,9 +195,9 @@ CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
 CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', nil)
 
 CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
-CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto"
+CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS = "-flto #{CREW_LINKER_FLAGS}"
+CREW_LDFLAGS = "-flto=auto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS = '-fno-lto'
 
 CREW_ENV_OPTIONS_HASH = if CREW_DISABLE_ENV_OPTIONS

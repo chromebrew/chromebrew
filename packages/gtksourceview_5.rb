@@ -44,7 +44,7 @@ class Gtksourceview_5 < Package
   depends_on 'pcre2' # R
 
   def self.patch
-    system "sed -i 's/-fstack-protector-strong/-flto/g' meson.build"
+    system "sed -i 's/-fstack-protector-strong/-flto=auto/g' meson.build"
   end
 
   def self.build
