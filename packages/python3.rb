@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.11.1'
+  @_ver = '3.11.2'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '85879192f2cffd56cb16c092905949ebf3e5e394b7f764723529637901dfb58f'
+  source_sha256 '29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.1_armv7l/python3-3.11.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.1_armv7l/python3-3.11.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.1_i686/python3-3.11.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.1_x86_64/python3-3.11.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_armv7l/python3-3.11.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_armv7l/python3-3.11.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_i686/python3-3.11.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_x86_64/python3-3.11.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7a85f7ac7fa1cb5f1521ac4e14a82f6ac58d90b560f3b47b3b383e42917c00b4',
-     armv7l: '7a85f7ac7fa1cb5f1521ac4e14a82f6ac58d90b560f3b47b3b383e42917c00b4',
-       i686: '23e9f83a36a1e5fcecefcb6fb6b34be4e21a602272fe33482a9baace22ed9a69',
-     x86_64: 'e11b219c4a8d43a7af5cac2444aa4cb627452480e9fbf3e26d07654dddccc938'
+    aarch64: '2675699dc7d9d7efb0f28adbeddab995462b258cda318a83efcdd5f4b96f796c',
+     armv7l: '2675699dc7d9d7efb0f28adbeddab995462b258cda318a83efcdd5f4b96f796c',
+       i686: '06379bc6eff897e98ce84778514f0bbc3923f86a4e8bf7b707cd3cb38a9e6fbf',
+     x86_64: 'ecfd4e6f65a7bbd6e396e0fb9759ce6c9e14c426fe6176d3a2562924e82d00cf'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -37,11 +37,11 @@ class Python3 < Package
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
+  depends_on 'util_linux' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   # depends_on 'tcl' # Needed for tkinter support
   # depends_on 'tk'  # Needed for tkinter support
-  depends_on 'util_linux' # R
 
   no_env_options
   conflicts_ok
@@ -53,10 +53,10 @@ class Python3 < Package
     @replaces.each do |package|
       @replaces_installed.push(package) if @device[:installed_packages].any? { |elem| elem[:name] == package }
     end
-    unless @replaces_installed.empty?
-      puts "Removing superseded package(s): #{@replaces_installed.join(' ')}...".orange
-      system "crew remove #{@replaces_installed.join(' ')}", exception: false
-    end
+    return if @replaces_installed.empty?
+
+    puts "Removing superseded package(s): #{@replaces_installed.join(' ')}...".orange
+    system "crew remove #{@replaces_installed.join(' ')}", exception: false
   end
 
   def self.patch
@@ -85,10 +85,11 @@ class Python3 < Package
     # test_urllib, test_urllib2, test_urllib2_localnet.
     # So, modifying environment variable to make pass tests.
 
-    unless Dir.exist?('builddir')
-      FileUtils.mkdir_p 'builddir'
-      Dir.chdir 'builddir' do
-        system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
+    return if Dir.exist?('builddir')
+
+    FileUtils.mkdir_p 'builddir'
+    Dir.chdir 'builddir' do
+      system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \
           --with-ensurepip \
@@ -99,8 +100,7 @@ class Python3 < Package
           --with-system-libmpdec \
           --with-libc= \
           --enable-shared"
-        system 'mold -run make'
-      end
+      system 'mold -run make'
     end
   end
 
