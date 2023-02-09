@@ -43,8 +43,8 @@ class Openssl < Package
     @openssl_configure_target = 'linux-x86_64'
   end
   @ARCH_LDFLAGS = '-flto'
-  @ARCH_C_LTO_FLAGS = "#{@arch_c_flags} -flto"
-  @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto"
+  @ARCH_C_LTO_FLAGS = "#{@arch_c_flags} -flto=auto"
+  @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto=auto"
 
   def self.build
     # This gives you the list of OpenSSL configure targets
