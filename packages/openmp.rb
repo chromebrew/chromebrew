@@ -6,7 +6,7 @@ require 'package'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  @_ver = '16.0.0-rc1'
+  @_ver = '16.0.0-rc2'
   version @_ver
   # When upgrading llvm, be sure to upgrade openmp in tandem.
   # puts "#{self} version differs from llvm version #{Llvm.version}".orange if @_ver != Llvm.version
@@ -16,16 +16,16 @@ class Openmp < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_armv7l/openmp-16.0.0-rc1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_armv7l/openmp-16.0.0-rc1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_i686/openmp-16.0.0-rc1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc1_x86_64/openmp-16.0.0-rc1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_armv7l/openmp-16.0.0-rc2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_armv7l/openmp-16.0.0-rc2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_i686/openmp-16.0.0-rc2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_x86_64/openmp-16.0.0-rc2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a8b5a1770a714283db2005d5519014756ed31601cefb80f060a21f210f2ae5a8',
-     armv7l: 'a8b5a1770a714283db2005d5519014756ed31601cefb80f060a21f210f2ae5a8',
-       i686: '742a5671d9a8a6b38073e9f6c56eec0778f0f8128d4e8abe6cfc0d67d66aa9f4',
-     x86_64: 'f9c667a78a71552e852a34cabeee05557c9427b0860b8d355c94eba4fccfc130'
+    aarch64: 'dc9a4e772621521cc3dbc036568c3ee72385c34d41bc6176ff8d49a99a38aaec',
+     armv7l: 'dc9a4e772621521cc3dbc036568c3ee72385c34d41bc6176ff8d49a99a38aaec',
+       i686: 'f10a32819d93b0febf886a0fbc24232afc3b5b5db37e01c1a54333953a9cb278',
+     x86_64: '2fc676d03698ea2d3ff5ea4ebb64861d614e49bf69ca7da5bbc2b0259f0a488e'
   })
 
   depends_on 'gcc' # R
@@ -35,14 +35,6 @@ class Openmp < Package
   depends_on 'python3' # R
 
   no_env_options
-
-  def self.patch
-    # See https://github.com/llvm/llvm-project/issues/60393
-    # This should be gone by llvm 16 final.
-    downloader 'https://reviews.llvm.org/file/data/g3g6o5c5blv6cpw4vsi5/PHID-FILE-osrdddmkv4akws36db7u/D143200.diff',
-               'SKIP'
-    system 'patch -Np1 -i D143200.diff'
-  end
 
   def self.build
     Dir.mkdir 'openmp/builddir'
