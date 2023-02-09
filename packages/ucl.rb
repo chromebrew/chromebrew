@@ -25,7 +25,7 @@ class Ucl < Package
   })
 
   def self.build
-    system "env CFLAGS='-pipe -std=gnu90 -fPIC -flto' \
+    system "env CFLAGS='-pipe -std=gnu90 -fPIC -flto=auto' \
       ./configure #{CREW_OPTIONS} \
       --enable-shared \
       --enable-static"

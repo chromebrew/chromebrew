@@ -25,9 +25,9 @@ class Bz2 < Package
   depends_on 'glibc' # R
 
   def self.patch
-    system "sed -i 's,^LDFLAGS=,LDFLAGS=-flto,' Makefile"
-    system "sed -i 's,^CFLAGS=-Wall,CFLAGS=-Wall -flto,' Makefile"
-    system "sed -i 's,^CFLAGS=-fpic,CFLAGS=-fpic -flto,' Makefile-libbz2_so"
+    system "sed -i 's,^LDFLAGS=,LDFLAGS=-flto=auto,' Makefile"
+    system "sed -i 's,^CFLAGS=-Wall,CFLAGS=-Wall -flto=auto,' Makefile"
+    system "sed -i 's,^CFLAGS=-fpic,CFLAGS=-fpic -flto=auto,' Makefile-libbz2_so"
   end
 
   def self.build

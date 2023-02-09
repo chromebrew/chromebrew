@@ -25,7 +25,7 @@ class Libpcap < Package
   depends_on 'libnl3'
 
   def self.build
-    system "CFLAGS='-I#{CREW_PREFIX}/include/libnl3 -flto -fuse-ld=gold' ./configure #{CREW_OPTIONS}"
+    system "CFLAGS='-I#{CREW_PREFIX}/include/libnl3 -flto=auto -fuse-ld=gold' ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

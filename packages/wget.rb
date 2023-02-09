@@ -34,7 +34,7 @@ class Wget < Package
   def self.build
     puts 'libiconv installed, Will build with libiconv.'.yellow if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
 
-    @lto = ARCH == 'i686' ? '' : '-flto'
+    @lto = ARCH == 'i686' ? '' : '-flto=auto'
     @cc = ARCH == 'i686' ? 'clang' : 'gcc'
     system './bootstrap --skip-po --no-git --gnulib-srcdir=./gnulib'
     system "CFLAGS='-O2 -pipe #{@lto} -fPIC' LDFLAGS=#{@lto} CC=#{@cc} LD=mold \

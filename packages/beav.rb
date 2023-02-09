@@ -32,7 +32,7 @@ class Beav < Package
     system "sed -i '76d' random.c"
     system "sed -i '11d' symbol.c"
     system "sed -i 's:#include <term.h>:#include <ncursesw/term.h>:' tcap.c"
-    system "sed -i 's,-g -DUNIX -Wall,-g -DUNIX -Wall -flto,g' Makefile"
+    system "sed -i 's,-g -DUNIX -Wall,-g -DUNIX -Wall -flto=auto,g' Makefile"
   end
 
   def self.build
