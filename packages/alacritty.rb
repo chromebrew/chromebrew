@@ -41,18 +41,24 @@ class Alacritty < Package
   end
 
   def self.install
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_MAN_PREFIX}/man1
+                         #{CREW_DEST_PREFIX}/share/appdata #{CREW_DEST_PREFIX}/share/doc/alacritty/example
+                         #{CREW_DEST_PREFIX}/share/bash-completion/completions
+                         #{CREW_DEST_PREFIX}/share/zsh/site-functions
+                         #{CREW_DEST_PREFIX}/share/fish/vendor_completions.d
+                         #{CREW_DEST_PREFIX}/share/pixmaps]
     FileUtils.install 'target/release/alacritty', "#{CREW_DEST_PREFIX}/bin/alacritty", mode: 0o755
     FileUtils.install 'extra/alacritty.man', "#{CREW_DEST_MAN_PREFIX}/man1/alacritty.1", mode: 0o644
     FileUtils.install 'extra/alacritty-msg.man', "#{CREW_DEST_MAN_PREFIX}/man1/alacritty-msg.1", mode: 0o644
     FileUtils.install 'extra/linux/org.alacritty.Alacritty.appdata.xml',
-"#{CREW_DEST_PREFIX}/share/appdata/org.alacritty.Alacritty.appdata.xml", mode: 0o644
+                      "#{CREW_DEST_PREFIX}/share/appdata/org.alacritty.Alacritty.appdata.xml", mode: 0o644
     FileUtils.install 'alacritty.yml', "#{CREW_DEST_PREFIX}/share/doc/alacritty/example/alacritty.yml", mode: 0o644
     FileUtils.install 'extra/completions/alacritty.bash',
-"#{CREW_DEST_PREFIX}/share/bash-completion/completions/alacritty", mode: 0o644
+                      "#{CREW_DEST_PREFIX}/share/bash-completion/completions/alacritty", mode: 0o644
     FileUtils.install 'extra/completions/_alacritty', "#{CREW_DEST_PREFIX}/share/zsh/site-functions/_alacritty",
-mode: 0o644
+                      mode: 0o644
     FileUtils.install 'extra/completions/alacritty.fish',
-"#{CREW_DEST_PREFIX}/share/fish/vendor_completions.d/alacritty.fish", mode: 0o644
+                      "#{CREW_DEST_PREFIX}/share/fish/vendor_completions.d/alacritty.fish", mode: 0o644
     FileUtils.install 'extra/logo/alacritty-term.svg', "#{CREW_DEST_PREFIX}/share/pixmaps/Alacritty.svg", mode: 0o644
   end
 end
