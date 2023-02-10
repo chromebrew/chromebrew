@@ -8,7 +8,7 @@ class Wlroots < Package
   homepage 'https://gitlab.freedesktop.org/wlroots/wlroots'
   version '0.16.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64, armv7l, x86_64'
   source_url 'https://gitlab.freedesktop.org/wlroots/wlroots.git'
   git_hashtag version
 
