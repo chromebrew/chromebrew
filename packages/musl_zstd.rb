@@ -3,24 +3,24 @@ require 'package'
 class Musl_zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
-  @_ver = '1.5.2'
-  version "#{@_ver}-2"
+  @_ver = '1.5.4'
+  version @_ver
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_armv7l/musl_zstd-1.5.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_armv7l/musl_zstd-1.5.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_i686/musl_zstd-1.5.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.2-2_x86_64/musl_zstd-1.5.2-2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_armv7l/musl_zstd-1.5.4-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_armv7l/musl_zstd-1.5.4-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_i686/musl_zstd-1.5.4-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_x86_64/musl_zstd-1.5.4-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: 'fc17f3e5f3456deed345eced630e6c7836e81525a494c365bc54277ad6ee0d77',
-     armv7l: 'fc17f3e5f3456deed345eced630e6c7836e81525a494c365bc54277ad6ee0d77',
-       i686: '6c695a6fe0933b98f4b6bde67af84017975894fcd476318fc9b53f6f7006fb30',
-     x86_64: '57510ec4dd8dd6846d11c6d426023fea918399dda184b748d9b508dd10f76696'
+    aarch64: 'cc967734abc1d7a5bcd5d98145c320f503681e4e61a8778bc3c10cb398b3ddde',
+     armv7l: 'cc967734abc1d7a5bcd5d98145c320f503681e4e61a8778bc3c10cb398b3ddde',
+       i686: 'd2f19e7f400ee1837bae1274eb194cda2bcfa21bd15865fd29ac8f780d0334bb',
+     x86_64: '0b0fe1d9610000330402df3863897a21afb45e42f23a222e21de1b19ea76c6b3'
   })
 
   depends_on 'musl_native_toolchain' => :build
