@@ -1553,7 +1553,7 @@ def archive_package(pwd)
   if File.file?("#{CREW_PREFIX}/bin/zstd")
     @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
   end
-  if @pkg.no_zstd? || (!@crew_prefix_zstd_available)
+  if @pkg.no_zstd? || !@crew_prefix_zstd_available
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
