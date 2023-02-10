@@ -90,6 +90,11 @@ url: http://download.aircrack-ng.org
 activity: none
 ---
 kind: url
+name: alacritty
+url: https://github.com/alacritty/alacritty/tags
+activity: medium
+---
+kind: url
 name: alien
 url: https://sourceforge.net/projects/alien-pkg-convert/files/release/
 activity: none
