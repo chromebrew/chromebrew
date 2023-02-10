@@ -3,23 +3,23 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.2.0' # Do not use @_ver here, it will break the installer.
+  version '3.2.1' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0.tar.gz'
-  source_sha256 'daaa78e1360b2783f98deeceb677ad900f3a36c0ffa6e2b6b19090be77abc272'
+  source_url 'https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.gz'
+  source_sha256 '13d67901660ee3217dbd9dd56059346bd4212ce64a69c306ef52df64935f8dbd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.0_armv7l/ruby-3.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.0_armv7l/ruby-3.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.0_i686/ruby-3.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.0_x86_64/ruby-3.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.1_armv7l/ruby-3.2.1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.1_armv7l/ruby-3.2.1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.1_i686/ruby-3.2.1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.1_x86_64/ruby-3.2.1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '209698a9c1891cb25de1ced01c8e768e70ba6a59122c462efea1e6fdc80ca765',
-     armv7l: '209698a9c1891cb25de1ced01c8e768e70ba6a59122c462efea1e6fdc80ca765',
-       i686: '02190d36607be1bb794c194f1c7c7dbf195964ca6863ecb11f4fd88956f9fd8b',
-     x86_64: 'b5577d755252aee7eeb0a98e8daea589d6d4c635b2171666bfa299cd83ca48cb'
+    aarch64: 'cf8852042ea62836af0274d8fb7f5a89db69ccd486ed6745280b75bd28004d09',
+     armv7l: 'cf8852042ea62836af0274d8fb7f5a89db69ccd486ed6745280b75bd28004d09',
+       i686: '835e328f91883740d25477c82c998a2361c6f5647e70786900c85ef53f412d92',
+     x86_64: '56bd07418efda0107bdb5eb2acb52940f6fee7e2286bfc4c97f1cfc2ce70185c'
   })
 
   depends_on 'zlibpkg' # R
