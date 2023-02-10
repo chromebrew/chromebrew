@@ -8,7 +8,7 @@ class Cage < Package
   homepage 'https://www.hjdskes.nl/projects/cage/'
   version '0.1.6-46f0ec1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64, armv7l, x86_64'
   source_url 'https://github.com/Hjdskes/cage.git'
   git_hashtag '46f0ec1b729cf2e4fb9c69bb8660e908d1311ea0'
 
