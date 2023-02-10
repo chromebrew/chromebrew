@@ -811,14 +811,14 @@ def download
         # No git branch specified, just a git commit or tag
         if @pkg.git_branch.to_s.empty?
           abort('No Git branch, commit, or tag specified!').lightred if @pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.xz"
+          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst"
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
@@ -861,8 +861,10 @@ def download
         Dir.chdir @extract_dir do
           # Do not use --exclude-vcs to exclude .git
           # because some builds will use that information.
-          system "tar c#{@verbose}Jf #{cachefile} \
-            $(find -mindepth 1 -maxdepth 1 -printf '%P\n')"
+          system "tar c#{@verbose} \
+            $(find -mindepth 1 -maxdepth 1 -printf '%P\n') | \
+            nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - >  \
+            #{cachefile}"
         end
         system 'sha256sum', cachefile, out: "#{cachefile}.sha256"
         puts 'Git repo cached.'.lightgreen
@@ -1300,7 +1302,7 @@ def install_package(pkgdir)
     # check if the available rsync command support ACLs
 
     rsync_available = (File.executable?("#{CREW_PREFIX}/bin/rsync") && `#{CREW_PREFIX}/bin/rsync --version`.include?('rsync  version'))
-    puts 'rsync is not working. Please (re)install it with \'crew remove musl_zstd zstd ; crew install musl_zstd ; crew install rsync\''.lightred unless rsync_available || (@pkg.name == 'rsync')
+    puts 'rsync is not working. Please (re)install it with \'crew reinstall rsync\''.lightred unless rsync_available || (@pkg.name == 'rsync')
     if Dir.exist? "#{pkgdir}/#{HOME}"
       if rsync_available
         system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
@@ -1553,10 +1555,7 @@ def archive_package(pwd)
   if File.file?("#{CREW_PREFIX}/bin/zstd")
     @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
   end
-  if File.file?("#{CREW_MUSL_PREFIX}/bin/zstd")
-    @crew_musl_prefix_zstd_available = `#{CREW_MUSL_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
-  end
-  if @pkg.no_zstd? || (!@crew_prefix_zstd_available && !@crew_musl_prefix_zstd_available)
+  if @pkg.no_zstd? || !@crew_prefix_zstd_available
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
@@ -1573,9 +1572,6 @@ def archive_package(pwd)
       if @crew_prefix_zstd_available
         puts 'Using standard zstd'.lightblue if @opt_verbose
         system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
-      elsif @crew_musl_prefix_zstd_available
-        puts 'Using musl zstd'.lightblue if @opt_verbose
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_MUSL_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
       end
     end
   end
