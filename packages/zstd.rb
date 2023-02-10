@@ -48,7 +48,9 @@ class Zstd < Package
     end
     # Convert symlinks to hard links in libdir.
     Dir.chdir CREW_DEST_LIB_PREFIX do
-      system "find -type l -exec bash -c 'ln -f \"$(readlink -m \"$0\")\" \"$0\"' {} \\;"
+      Dir['*'].each do |f|
+        FileUtils.ln File.realpath(f), f, force: true if File.symlink?(f)
+      end
     end
   end
 end
