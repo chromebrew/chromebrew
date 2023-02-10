@@ -705,6 +705,11 @@ url: https://packages.ubuntu.com/source/xenial/cadaver
 activity: none
 ---
 kind: url
+name: cage
+url: https://github.com/Hjdskes/cage/releases
+activity: low
+---
+kind: url
 name: cairo
 url: https://www.cairographics.org/releases
 activity: low
@@ -8453,6 +8458,11 @@ activity: low
 kind: url
 name: wl_clipboard
 url: https://github.com/bugaevc/wl-clipboard/releases/
+activity: medium
+---
+kind: url
+name: wlroots
+url: https://gitlab.freedesktop.org/wlroots/wlroots/-/tags
 activity: medium
 ---
 kind: url
