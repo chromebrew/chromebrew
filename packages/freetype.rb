@@ -3,23 +3,23 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.12.1' # Update freetype in harfbuzz when updating freetype
+  version '2.13.0' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
   git_hashtag "VER-#{version.tr('.', '-')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.1_armv7l/freetype-2.12.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.1_armv7l/freetype-2.12.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.1_i686/freetype-2.12.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.12.1_x86_64/freetype-2.12.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0_armv7l/freetype-2.13.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0_armv7l/freetype-2.13.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0_i686/freetype-2.13.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.0_x86_64/freetype-2.13.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '3f5eed6ccf7971482eb10aaa9ceae4f215987ec0f970d041da370da192332c4d',
-     armv7l: '3f5eed6ccf7971482eb10aaa9ceae4f215987ec0f970d041da370da192332c4d',
-       i686: '9895147ac6bdac52535e3c68ccc8ba28a7c175d28650a5c99ebe9e348a01894e',
-     x86_64: '2e7bceecce63383b9e13f03c84e56ddd8181a774814280d4246c38446dfc890b'
+    aarch64: '5ac0c1ae298b159f60e169e647b3830569a7059d36f18d947cc80dc999acb917',
+     armv7l: '5ac0c1ae298b159f60e169e647b3830569a7059d36f18d947cc80dc999acb917',
+       i686: '71b1668a81a50c9b570affac0b7ea6f86b856c9b4798b3b0990d65977b43e80b',
+     x86_64: '0d6b3a3e3ef42571543fee805e3a65b796c1e1aa4f0ace8f595fc10a835a71a3'
   })
 
   depends_on 'brotli'
@@ -34,6 +34,7 @@ class Freetype < Package
   depends_on 'zlibpkg'
   depends_on 'glibc' # R
   depends_on 'libpng' # R
+  depends_on 'py3_docwriter'
 
   # to avoid resetting mold usage
   no_env_options
@@ -42,14 +43,11 @@ class Freetype < Package
   conflicts_ok
 
   def self.build
-    system 'pip3 install docwriter'
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Dharfbuzz=enabled \
       builddir"
     system 'meson configure builddir'
     system 'samu -C builddir'
-    system 'pip3 uninstall docwriter -y'
-    system "pip3 install docwriter --root #{CREW_DEST_DIR} --prefix #{CREW_PREFIX}"
   end
 
   def self.install

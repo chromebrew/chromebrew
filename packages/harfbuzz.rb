@@ -3,7 +3,7 @@ require 'package'
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  @_ver = '6.0.0'
+  @_ver = '7.0.0'
   version @_ver
   license 'Old-MIT, ISC and icu'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Harfbuzz < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/6.0.0_armv7l/harfbuzz-6.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/6.0.0_armv7l/harfbuzz-6.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/6.0.0_i686/harfbuzz-6.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/6.0.0_x86_64/harfbuzz-6.0.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_armv7l/harfbuzz-7.0.0-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_armv7l/harfbuzz-7.0.0-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_i686/harfbuzz-7.0.0-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_x86_64/harfbuzz-7.0.0-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '10b278cd56c54f2ee4b4104054a2a94005a8b7840228e1d45ca1b1a2749ad281',
-     armv7l: '10b278cd56c54f2ee4b4104054a2a94005a8b7840228e1d45ca1b1a2749ad281',
-       i686: 'fe045b441d110f8effe6c3eceb259ba56cbe39b4da7d3109cc55df7dbefd503a',
-     x86_64: '211ffb1386e8bda5ebdb002441eee0fd32aa35a4254ff3bd5c3a04c78094064a'
+    aarch64: '342f5333c03ee22b9a171d4e4d998b8b68deafd5db27dfdd0ad0c17ea8ece173',
+     armv7l: '342f5333c03ee22b9a171d4e4d998b8b68deafd5db27dfdd0ad0c17ea8ece173',
+       i686: 'a96129c9bb8a4b1a74bb5d06515f90825cde267615901d8bffc61d7a9ace962d',
+     x86_64: 'ee2537c312edb6427d21ac09065478650eab4da979054ffcc756e4caa6629085'
   })
 
   depends_on 'brotli' # R
@@ -50,10 +50,6 @@ class Harfbuzz < Package
 
   no_env_options
   conflicts_ok
-
-  def self.patch
-    system "sed -i 's,revision=c90faeb7492b1b778d18a796afe5c2e4b32a6356,revision=055ca7fb09842caa2595cf7864fa3afd417ebd37,g' subprojects/cairo.wrap"
-  end
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
