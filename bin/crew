@@ -1553,7 +1553,7 @@ end
 def archive_package(pwd)
   # Check to see that there is a working zstd
   if File.file?("#{CREW_PREFIX}/bin/zstd")
-    @crew_prefix_zstd_available = `#{CREW_PREFIX}/bin/zstd --version`.include?('zstd command line interface') ? true : nil
+    @crew_prefix_zstd_available = File.file?("#{CREW_PREFIX}/bin/zstd") ? true : nil
   end
   if @pkg.no_zstd? || !@crew_prefix_zstd_available
     puts 'Using xz to compress package. This may take some time.'.lightblue
