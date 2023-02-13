@@ -824,7 +824,7 @@ def download
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
           if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
             FileUtils.mkdir_p @extract_dir
-            system "tar x#{@verbose}f #{cachefile} -C #{@extract_dir}"
+            system "tar -Izstd -x#{@verbose}f #{cachefile} -C #{@extract_dir}"
             return { source:, filename: }
           else
             puts 'Cached git repository checksum mismatch. 😔 Will download.'.lightred
