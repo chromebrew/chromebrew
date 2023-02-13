@@ -77,9 +77,9 @@ class ProgressBar
   end
 
   def show
-    return Thread.new do
-      @progress_bar_showing = true
+    @progress_bar_showing = true
 
+    return Thread.new do
       print "\e[?25l" # hide cursor to prevent cursor flickering
 
       while @progress_bar_showing
