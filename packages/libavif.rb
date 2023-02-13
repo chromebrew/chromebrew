@@ -3,24 +3,24 @@ require 'package'
 class Libavif < Package
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  @_ver = '0.10.1'
-  version "#{@_ver}-1"
+  @_ver = '0.11.1'
+  version @_ver
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1-1_armv7l/libavif-0.10.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1-1_armv7l/libavif-0.10.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1-1_i686/libavif-0.10.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.10.1-1_x86_64/libavif-0.10.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.11.1_armv7l/libavif-0.11.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.11.1_armv7l/libavif-0.11.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.11.1_i686/libavif-0.11.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.11.1_x86_64/libavif-0.11.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6742660c503f4e1ac5f39e8b5e3c5ef04b064d5d01ab9b36ebf6c8d0d912db64',
-     armv7l: '6742660c503f4e1ac5f39e8b5e3c5ef04b064d5d01ab9b36ebf6c8d0d912db64',
-       i686: '88f3295861a9005e0dda42b4ffe1f7b9a5950fd5d024498aa009387fa4991639',
-     x86_64: '5913a00db3f91eb5c64e95aa844ea6d7be2605b9e6244bb1dc640644ca1df634'
+    aarch64: '9c5152797b36c3da157ac4e43ba462617fe4c173f0dfda6ffc3f2f83250e8a06',
+     armv7l: '9c5152797b36c3da157ac4e43ba462617fe4c173f0dfda6ffc3f2f83250e8a06',
+       i686: '970d2f65e8dac8eaec92c0847deeb5aa25d557bebddc904bdc60f968e135e484',
+     x86_64: 'd8473a785ecd42c53652973068f65c3462114539339194937e36e3e9301127ec'
   })
 
   depends_on 'libaom'
@@ -31,6 +31,7 @@ class Libavif < Package
   depends_on 'libjpeg'
   depends_on 'libyuv'
   depends_on 'nasm' => :build
+  depends_on 'pandoc' => :build
   depends_on 'pkgconf' => :build
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
@@ -50,6 +51,7 @@ class Libavif < Package
         -DAVIF_CODEC_RAV1E=ON \
         -DAVIF_CODEC_SVT=ON \
         -DAVIF_BUILD_GDK_PIXBUF=ON \
+        -DAVIF_BUILD_MAN_PAGES=ON \
         .."
     end
     system 'ninja -C builddir'

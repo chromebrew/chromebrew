@@ -3,23 +3,23 @@ require 'package'
 class Gimp < Package
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '2.99.14'
+  version '2.10.32'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
-  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.14.tar.xz'
-  source_sha256 '313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8'
+  source_url 'https://download.gimp.org/gimp/v2.10/gimp-2.10.32.tar.bz2'
+  source_sha256 '3f15c70554af5dcc1b46e6dc68f3d8f0a6cc9fe56b6d78ac08c0fd859ab89a25'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.14_armv7l/gimp-2.99.14-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.14_armv7l/gimp-2.99.14-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.14_i686/gimp-2.99.14-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.14_x86_64/gimp-2.99.14-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.32_armv7l/gimp-2.10.32-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.32_armv7l/gimp-2.10.32-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.32_i686/gimp-2.10.32-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.10.32_x86_64/gimp-2.10.32-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a1e0ae2ca1ed77cb11d746745fa4103231c7fd61959d745f2c803dcc5de29e8d',
-     armv7l: 'a1e0ae2ca1ed77cb11d746745fa4103231c7fd61959d745f2c803dcc5de29e8d',
-       i686: '0508068761b35033e80f25866f54d835a63f967da7eec4547b32f0f213d272d0',
-     x86_64: '40972b5410efa1d614286ea762d2dfcf969e346f893b172000d4e06784dbca22'
+    aarch64: 'c07455d117cb5401425eb1da195c49084949b35228b33e00b8e162e1a4c37978',
+     armv7l: 'c07455d117cb5401425eb1da195c49084949b35228b33e00b8e162e1a4c37978',
+       i686: 'da489078f0e946f11e2ac57111b37f6dbca73fdf9c591d1b2fa23150769d02d1',
+     x86_64: 'fa589a17ab1af432be4de739a2597d8df992d4573b7a3ebaffee073160acdb43'
   })
 
   depends_on 'aalib' # R
@@ -44,6 +44,7 @@ class Gimp < Package
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'ilmbase' # R
+  depends_on 'iso_codes' # R
   depends_on 'jsonc' => :build
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
@@ -79,9 +80,11 @@ class Gimp < Package
   depends_on 'pango' # R
   depends_on 'poppler_data'
   depends_on 'poppler' # R
-  depends_on 'py3_pycairo' => :build
+  depends_on 'py2_pycairo' => :build
   depends_on 'pygtk' => :build
+  depends_on 'python2' => :build
   depends_on 'shared_mime_info' => :build
+  depends_on 'webkit2gtk' # R
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
@@ -89,15 +92,11 @@ class Gimp < Package
   gnome
 
   def self.build
-    system "meson \
-      #{CREW_MESON_OPTIONS} \
-      -Dbug-report-url=https://github.com/chromebrew/chromebrew/issues \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "./configure #{CREW_OPTIONS}"
+    system 'make'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
