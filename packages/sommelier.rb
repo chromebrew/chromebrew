@@ -8,6 +8,8 @@ class Sommelier < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'dbd90c6b002f7d0867cc0b0f1538cc979b688d13'
+  # The 02 Feb 2022 commit fbd707f "vm_tools: Upgrades Sommelier to support xdg_shell v3" breaks functionality for Chromebrew with the error:
+  # wl_registry@2: error 0: invalid version for global xdg_wm_base (41): have 1, wanted 3
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_armv7l/sommelier-20230125-1-chromeos-armv7l.tar.zst',
