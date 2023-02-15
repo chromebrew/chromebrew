@@ -1049,8 +1049,8 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    system 'find . -type f > ../filelist'
-    system 'find . -type l >> ../filelist'
+    system "find .#{CREW_PREFIX} -type f > ../filelist"
+    system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist > filelist'
 
     # check for FHS3 compliance
@@ -1091,7 +1091,7 @@ def prepare_package(destdir)
     abort 'Exiting due to above errors.'.lightred if @_errors
 
     # create directory list
-    system 'find . -type d | cut -c2- | tail -n +2', out: 'dlist'
+    system "find .#{CREW_PREFIX} -type d | cut -c2- | tail -n +2", out: 'dlist'
 
     strip_dir destdir
 
