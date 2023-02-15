@@ -1610,7 +1610,8 @@ def remove(pkgName)
           puts "Removing #{line} will break crew. It was #{'NOT'.lightred} deleted." if @opt_verbose
         else
           puts "Removing file #{line}".lightred if @opt_verbose
-          FileUtils.rm_rf line
+          puts "fileist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
+          FileUtils.rm_rf line if line.include?(CREW_PREFIX)
         end
       end
 
