@@ -76,23 +76,23 @@ class Glibc < Package
        x86_64: '3edde53b5ab8b577604b127c141042f4572b8972b7081abcda2e86778d1974a9'
     })
   elsif @libc_version.to_f >= 2.35 # All architectures with updates past M108.
-    version '2.35'
+    version '2.35-1'
     # Use current glibc 2.35 stable branch commit, which avoids
-    # compilation failures.
-    source_url 'https://github.com/bminor/glibc/archive/293211b6fddf60fc407d21fcba0326dd2148f76b.zip'
-    source_sha256 '2e352a074ced0f3874a359f1ded6877d2e7891df337c97b2e9635c718499c9b2'
+    # compilation failures, from https://github.com/bminor/glibc/tree/release/2.35/master
+    source_url 'https://github.com/bminor/glibc/archive/757d9a6306cee9e96d7a4d1d11c8d69763c6eecf.zip'
+    source_sha256 '75d6586a89a8c03b434ef7fa1b4b02b007287fc9a6b8148a84e97d6ed039872d'
     # source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.35.tar.xz'
     # source_sha256 '5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
 
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_armv7l/glibc-2.35-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_armv7l/glibc-2.35-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35_x86_64/glibc-2.35-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35-1_armv7l/glibc-2.35-1-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35-1_armv7l/glibc-2.35-1-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35-1_x86_64/glibc-2.35-1-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '7f7b85a8dffcc9d3812af50f5a1be279440d6366c570abc7bc4aad8d89b0c8a1',
-       armv7l: '7f7b85a8dffcc9d3812af50f5a1be279440d6366c570abc7bc4aad8d89b0c8a1',
-       x86_64: 'fbc0404951b9cbadf5f4dee37688a35dcccde730d60a8478fbd7c43fac9fe04b'
+      aarch64: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
+       armv7l: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
+       x86_64: 'e7977a6ad811776fbb8c3d54e11e408a5f9ffeee8b3d8bb666255695b3fc20d6'
     })
   end
 
@@ -605,6 +605,7 @@ class Glibc < Package
                         libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                         libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                         libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+        @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
         @libraries.each do |lib|
           # Reject entries which aren't libraries ending in .so, and which aren't files.
           Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
@@ -670,6 +671,7 @@ class Glibc < Package
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libthread_db libresolv librlv librt libthread_db-1.0 libutil]
+    @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
     Dir.chdir CREW_LIB_PREFIX do
       puts "System glibc version is #{@crew_libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
