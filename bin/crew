@@ -1616,7 +1616,8 @@ def remove(pkgName)
 
       # remove all directories installed by the package
       File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
-        next unless Dir.exist?(line) && Dir.empty?(line)
+        puts "directorylist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
+        next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
 
         puts "Removing directory #{line}".lightred if @opt_verbose
         FileUtils.rmdir(line)
