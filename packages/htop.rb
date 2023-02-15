@@ -3,31 +3,34 @@ require 'package'
 class Htop < Package
   description 'htop is an interactive process viewer for Unix systems.'
   homepage 'https://github.com/htop-dev/htop'
-  version '3.0.5'
+  version '3.2.2'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/htop-dev/htop/archive/refs/tags/3.0.5.tar.gz'
-  source_sha256 '4c2629bd50895bd24082ba2f81f8c972348aa2298cc6edc6a21a7fa18b73990c'
+  source_url 'https://github.com/htop-dev/htop/archive/refs/tags/3.2.2.tar.gz'
+  source_sha256 '3829c742a835a0426db41bb039d1b976420c21ec65e93b35cd9bfd2d57f44ac8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.0.5_armv7l/htop-3.0.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.0.5_armv7l/htop-3.0.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.0.5_i686/htop-3.0.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.0.5_x86_64/htop-3.0.5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_armv7l/htop-3.2.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_armv7l/htop-3.2.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_i686/htop-3.2.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/htop/3.2.2_x86_64/htop-3.2.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0d41a8aebc631c10aece2fe14fd1762bdeabaef59347af6e7e1e88b3cdabb5b4',
-     armv7l: '0d41a8aebc631c10aece2fe14fd1762bdeabaef59347af6e7e1e88b3cdabb5b4',
-       i686: '25835e8c7455192d539682ae269cd20e1accf6103d31f355f4a29cbcb215a646',
-     x86_64: 'ae62201f3496fd3b64c94002af594c9650f3e345ed34db7f1d9d04d667e03d5c'
+    aarch64: 'd1a46af7a625b50a304fcaecedcbc8204297b53519bd3ead8ba044e4c31686c4',
+     armv7l: 'd1a46af7a625b50a304fcaecedcbc8204297b53519bd3ead8ba044e4c31686c4',
+       i686: '8410a807707dee0dd9980a16ae16e42902842cb34e3a11919ff2eda7facfe407',
+     x86_64: '01c92862b89fa1b5d3738f301f28e8a9c119eaaacd1b047fa8fb0f05139979ed'
   })
 
   depends_on 'buildessential' => :build
+  depends_on 'glibc' # R
+  depends_on 'libcap' # R
+  depends_on 'libunwind' # R
+  depends_on 'ncurses' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-      CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw' \
+    system "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw' \
       ./configure #{CREW_OPTIONS} \
       --disable-unicode"
     system 'make'
