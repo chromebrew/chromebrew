@@ -394,6 +394,8 @@ class Sommelier < Package
     EOT2
     puts <<~EOT1.lightblue
       To override environment variables set above, edit ~/.sommelier.env instead.
+      Information about those environment variables may be found on the
+      Chromebrew wiki: https://github.com/chromebrew/chromebrew/wiki
 
       To start the sommelier daemon, run 'startsommelier'
       To stop the sommelier daemon, run 'stopsommelier'
