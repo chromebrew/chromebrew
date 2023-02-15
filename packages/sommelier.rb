@@ -16,10 +16,10 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_x86_64/sommelier-20230125-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bdfbc3bffa2ed85a0349e99a7055bfae2609c2212949caf74e5bed4e084816b8',
-     armv7l: 'bdfbc3bffa2ed85a0349e99a7055bfae2609c2212949caf74e5bed4e084816b8',
-       i686: 'd8f4c1dd1ba4caa4da1b4045fcdb89d072c1717735fa03fc036bac99c9b05bf1',
-     x86_64: 'b4383e43eb75462f81278f66e2e70630fb94ebb28f607ed4707ab8c22fa08180'
+    aarch64: '4a5719e1ab6cbf277a3360c2f3eb60483be474b07725d123d5cbf3426540603a',
+     armv7l: '4a5719e1ab6cbf277a3360c2f3eb60483be474b07725d123d5cbf3426540603a',
+       i686: '41df727007973520d856253a93ed85787a98d1948489502184eaba5b6d6474e9',
+     x86_64: 'f275bc12bb18c5af2d97c6b391de77c7fa4e293f1fcb3922f03af7ae20e4e8c0'
   })
 
   depends_on 'diffutils' # L (for diff usage in postinstall)
@@ -249,14 +249,6 @@ class Sommelier < Package
           #
           if [[ "${#DRM_DEVICES_LIST[@]}" -gt 1 ]]; then
             for dev in "${DRM_DEVICES_LIST[@]}"; do
-              # Note that different arm chromebooks may need the#{' '}
-              # following line adjusted.
-              # Please open a github issue with the output of both
-              #   readlink -f "/sys/class/drm/renderD129/device/driver"
-              # and
-              #   readlink -f "/sys/class/drm/renderD128/device/driver"
-              # if sommelier does not start properly on your arm ChromeOS
-              # device.
               if [[ "$(coreutils --coreutils-prog=readlink -f "/sys/class/drm/${dev}/device/driver")" =~ (bus/pci|drm) ]]; then
                 SOMMELIER_DRM_DEVICE="/dev/dri/${dev##*/}"
                 echo -e "\e[1;33m""${#DRM_DEVICES_LIST[@]} DRM render nodes available, ${SOMMELIER_DRM_DEVICE} will be used.""\e[0m"
@@ -424,6 +416,14 @@ class Sommelier < Package
 
       (If you are upgrading from an earlier version of sommelier,
       also run 'restartsommelier'.)
+
+      Please open a github issue at
+      https://github.com/chromebrew/chromebrew/issues/new/choose
+      with the output of both
+       readlink -f "/sys/class/drm/renderD129/device/driver"
+      and
+       readlink -f "/sys/class/drm/renderD128/device/driver"
+      if sommelier does not start properly on your arm ChromeOS device.
     EOT2
   end
 end
