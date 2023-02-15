@@ -3,40 +3,41 @@ require 'package'
 class Libglvnd < Package
   description 'The GL Vendor-Neutral Dispatch library'
   homepage 'https://gitlab.freedesktop.org/glvnd/libglvnd'
-  @_ver = '1.5.0'
-  version "#{@_ver}-1"
+  @_ver = '1.6.0'
+  version @_ver
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/glvnd/libglvnd.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.5.0-1_armv7l/libglvnd-1.5.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.5.0-1_armv7l/libglvnd-1.5.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.5.0-1_i686/libglvnd-1.5.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.5.0-1_x86_64/libglvnd-1.5.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_armv7l/libglvnd-1.6.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_armv7l/libglvnd-1.6.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_i686/libglvnd-1.6.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_x86_64/libglvnd-1.6.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '977a403cea84ffa10f1d36699909679be3e1ebbb1c736c8334ea0885fd9ebd94',
-     armv7l: '977a403cea84ffa10f1d36699909679be3e1ebbb1c736c8334ea0885fd9ebd94',
-       i686: '9c9e4edbaff44cb62c30700363cfc1fd18c61e912d28446242e8419504d6456b',
-     x86_64: '212b02d81595f1048de400fd2049b961912ce118ababdfaefa524ff7cd91ae6a'
+    aarch64: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
+     armv7l: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
+       i686: '14fbc324b9e8cd2d168af66add8f40e6b55ac7068a30df0fcefa66c5ebe3f1a3',
+     x86_64: 'e076f11dae10b4fd8c21076b33a85be40bc585cc7612f3da29802e6b09e58ba5'
   })
 
-  depends_on 'libxext'
-  depends_on 'libx11'
-  depends_on 'glproto'
-  depends_on 'python3' => :build
+  depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'glproto' => :build
+  depends_on 'libx11' # R
+  depends_on 'libxext' => :build
+  depends_on 'python3' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system 'samu -C builddir'
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
   end
 end
