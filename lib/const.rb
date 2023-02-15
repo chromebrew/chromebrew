@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.31.3'
+CREW_VERSION = '1.31.4'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp

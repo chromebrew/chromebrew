@@ -1049,8 +1049,8 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    system 'find . -type f > ../filelist'
-    system 'find . -type l >> ../filelist'
+    system "find .#{CREW_PREFIX} -type f > ../filelist"
+    system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist > filelist'
 
     # check for FHS3 compliance
@@ -1091,7 +1091,7 @@ def prepare_package(destdir)
     abort 'Exiting due to above errors.'.lightred if @_errors
 
     # create directory list
-    system 'find . -type d | cut -c2- | tail -n +2', out: 'dlist'
+    system "find .#{CREW_PREFIX} -type d | cut -c2- | tail -n +2", out: 'dlist'
 
     strip_dir destdir
 
@@ -1610,13 +1610,15 @@ def remove(pkgName)
           puts "Removing #{line} will break crew. It was #{'NOT'.lightred} deleted." if @opt_verbose
         else
           puts "Removing file #{line}".lightred if @opt_verbose
-          FileUtils.rm_rf line
+          puts "fileist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
+          FileUtils.rm_rf line if line.include?(CREW_PREFIX)
         end
       end
 
       # remove all directories installed by the package
       File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
-        next unless Dir.exist?(line) && Dir.empty?(line)
+        puts "directorylist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
+        next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
 
         puts "Removing directory #{line}".lightred if @opt_verbose
         FileUtils.rmdir(line)
