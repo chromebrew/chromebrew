@@ -3,23 +3,23 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230125'
+  version '20230125-1'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag 'dbd90c6b002f7d0867cc0b0f1538cc979b688d13'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125_armv7l/sommelier-20230125-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125_armv7l/sommelier-20230125-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125_i686/sommelier-20230125-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125_x86_64/sommelier-20230125-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_armv7l/sommelier-20230125-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_armv7l/sommelier-20230125-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_i686/sommelier-20230125-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_x86_64/sommelier-20230125-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '79bbb81998375083f3b66663d73acd674d0cbb69e527dd6287ff27adac4bba35',
-     armv7l: '79bbb81998375083f3b66663d73acd674d0cbb69e527dd6287ff27adac4bba35',
-       i686: '42da8c908244cfc05753670d767c3f126aeb49dd8ec056138a696536a12788ec',
-     x86_64: '2445b4970b72445e0b731cc74566db3d85ca34c82d046b3ba5db16df183b1d14'
+    aarch64: 'bdfbc3bffa2ed85a0349e99a7055bfae2609c2212949caf74e5bed4e084816b8',
+     armv7l: 'bdfbc3bffa2ed85a0349e99a7055bfae2609c2212949caf74e5bed4e084816b8',
+       i686: 'd8f4c1dd1ba4caa4da1b4045fcdb89d072c1717735fa03fc036bac99c9b05bf1',
+     x86_64: 'b4383e43eb75462f81278f66e2e70630fb94ebb28f607ed4707ab8c22fa08180'
   })
 
   depends_on 'diffutils' # L (for diff usage in postinstall)
@@ -230,6 +230,12 @@ class Sommelier < Package
         # startsommelier
         File.write 'startsommelier', <<~STARTSOMMELIEREOF
           #!/bin/bash -a
+          # Exit if in container.
+          if [[ -f '/.dockerenv' ]]; then
+            echo "Cannot run sommelier in a container."
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
+          fi
           set -a
           # Set DRM device here so output is visible, but don't run
           # some of these checks in an env.d file since we don't need
@@ -243,7 +249,15 @@ class Sommelier < Package
           #
           if [[ "${#DRM_DEVICES_LIST[@]}" -gt 1 ]]; then
             for dev in "${DRM_DEVICES_LIST[@]}"; do
-              if [[ "$(coreutils --coreutils-prog=readlink -f "/sys/class/drm/${dev}/device/driver")" =~ bus/pci ]]; then
+              # Note that different arm chromebooks may need the#{' '}
+              # following line adjusted.
+              # Please open a github issue with the output of both
+              #   readlink -f "/sys/class/drm/renderD129/device/driver"
+              # and
+              #   readlink -f "/sys/class/drm/renderD128/device/driver"
+              # if sommelier does not start properly on your arm ChromeOS
+              # device.
+              if [[ "$(coreutils --coreutils-prog=readlink -f "/sys/class/drm/${dev}/device/driver")" =~ (bus/pci|drm) ]]; then
                 SOMMELIER_DRM_DEVICE="/dev/dri/${dev##*/}"
                 echo -e "\e[1;33m""${#DRM_DEVICES_LIST[@]} DRM render nodes available, ${SOMMELIER_DRM_DEVICE} will be used.""\e[0m"
                 break
