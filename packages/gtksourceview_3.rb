@@ -6,18 +6,20 @@ class Gtksourceview_3 < Package
   @_ver = '3.24.11'
   version @_ver
   license 'GPL-2'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz'
   source_sha256 '691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_armv7l/gtksourceview_3-3.24.11-chromeos-armv7l.tar.xz',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_armv7l/gtksourceview_3-3.24.11-chromeos-armv7l.tar.xz',
+     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_i686/gtksourceview_3-3.24.11-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_3/3.24.11_x86_64/gtksourceview_3-3.24.11-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '66c81231c2866221935586f1230a5be8df66685bbe29cc9c44063a0d5999dc5b',
      armv7l: '66c81231c2866221935586f1230a5be8df66685bbe29cc9c44063a0d5999dc5b',
+     i686: '05d72c6ec22ca912ee561db41a42f3ab8ea723f1cdb607f75e8dc60466a40a19',
      x86_64: '539da69432b1494f60cdc5d498f0ec13d89835688b3775a1b0a7d72c671b8454'
   })
 
