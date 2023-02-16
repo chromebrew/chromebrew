@@ -23,22 +23,27 @@ class Gtksourceview_3 < Package
      x86_64: '539da69432b1494f60cdc5d498f0ec13d89835688b3775a1b0a7d72c671b8454'
   })
 
-  depends_on 'atk'
-  depends_on 'cairo'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'fribidi'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'glade'
-  depends_on 'graphene'
-  depends_on 'gtk3'
-  depends_on 'gtk4'
-  depends_on 'harfbuzz'
-  depends_on 'libsoup'
-  depends_on 'pango'
-  depends_on 'vala'
-  depends_on 'vulkan_icd_loader'
+  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' => :build
+  depends_on 'fontconfig' => :build
+  depends_on 'freetype' => :build
+  depends_on 'fribidi' => :build
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glade' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' => :build
+  depends_on 'gtk3' # R
+  depends_on 'gtk4' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'libsoup' => :build
+  depends_on 'libxml2' # R
+  depends_on 'pango' # R
+  depends_on 'vala' => :build
+  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} --enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html"
