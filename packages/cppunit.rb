@@ -2,35 +2,36 @@ require 'package'
 
 class Cppunit < Package
   description 'CppUnit is the C++ port of the famous JUnit framework for unit testing.'
-  homepage 'https://sourceforge.net/projects/cppunit/'
-  version '1.12.1'
-  license 'LGPL-2.1'
+  homepage 'https://www.freedesktop.org/wiki/Software/cppunit'
+  version '1.15.1'
+  license 'LGPL'
   compatibility 'all'
-  source_url 'http://downloads.sourceforge.net/project/cppunit/cppunit/1.12.1/cppunit-1.12.1.tar.gz'
-  source_sha256 'ac28a04c8e6c9217d910b0ae7122832d28d9917fa668bcc9e0b8b09acb4ea44a'
+  source_url 'https://dev-www.libreoffice.org/src/cppunit-1.15.1.tar.gz'
+  source_sha256 '89c5c6665337f56fd2db36bc3805a5619709d51fb136e51937072f63fcc717a7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_armv7l/cppunit-1.12.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_armv7l/cppunit-1.12.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_i686/cppunit-1.12.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.12.1_x86_64/cppunit-1.12.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1_armv7l/cppunit-1.15.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1_armv7l/cppunit-1.15.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1_i686/cppunit-1.15.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1_x86_64/cppunit-1.15.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5629277d1bb357eb5a1f0cf6a0febe1078b67c63030ecf9c51cf885704c76107',
-     armv7l: '5629277d1bb357eb5a1f0cf6a0febe1078b67c63030ecf9c51cf885704c76107',
-       i686: '3c6ccb427841faf098fc43520f1f288c23c34aadce01f5aa843e35a19100f54a',
-     x86_64: 'e5f432ecd193119cb7201eec9881f3e89dd7bccbb78f3ba4cc8374471acbe236'
+    aarch64: 'ff33e323513beb49457df2f8fd8d5642998664a4eef9e0f1095aa5f99d79e05d',
+     armv7l: 'ff33e323513beb49457df2f8fd8d5642998664a4eef9e0f1095aa5f99d79e05d',
+       i686: '91c258a319a9bb7fc7052e4ed40b057a653125b5a4a9b17d21145d603088bf28',
+     x86_64: '2020d8901ded8bb1123f82ab598b77af77cd08392204a939f1d229c915c353cb'
   })
 
-  depends_on 'doxygen' => :build
-  depends_on 'graphviz' => :build
+  depends_on 'doxygen' => ':build'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
+    system "./configure #{CREW_OPTIONS} --disable-static"
     system 'make'
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
   end
 end

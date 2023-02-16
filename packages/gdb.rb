@@ -6,23 +6,23 @@ require 'package'
 class Gdb < Package
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '12.1-py3.11'
+  version '12.1-a4418a9-py3.11'
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/gdb/gdb-12.1.tar.xz'
-  source_sha256 '0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed'
+  source_url 'https://github.com/bminor/binutils-gdb.git'
+  git_hashtag 'a4418a9c6f99fd31c51698b1f6a6f8dbc1b81b6f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-py3.11_armv7l/gdb-12.1-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-py3.11_armv7l/gdb-12.1-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-py3.11_i686/gdb-12.1-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-py3.11_x86_64/gdb-12.1-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-a4418a9-py3.11_armv7l/gdb-12.1-a4418a9-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-a4418a9-py3.11_armv7l/gdb-12.1-a4418a9-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-a4418a9-py3.11_i686/gdb-12.1-a4418a9-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/12.1-a4418a9-py3.11_x86_64/gdb-12.1-a4418a9-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5d9c9535e1bd99c0eeecbd194738008561e43d48acef7f7050c0bcba892cc181',
-     armv7l: '5d9c9535e1bd99c0eeecbd194738008561e43d48acef7f7050c0bcba892cc181',
-       i686: '5bdd057f755617dc06a5d06acc201a7a65234c396db046e5c1e6a3d531eca202',
-     x86_64: 'e9aee1dec6dd2d353d1a72d3f97fa7dffeee32b54d52e2b8805138798167f54f'
+    aarch64: 'cdacd167edef7d56254298d1169551996b2910d1dcc97111fbb0740307f60154',
+     armv7l: 'cdacd167edef7d56254298d1169551996b2910d1dcc97111fbb0740307f60154',
+       i686: '87a1644e64b00b86aeed1dd00e6081314129a4658f9609fc2b9aaff06d388809',
+     x86_64: 'a88eabe0cceb8bd0d87d6c54dfb70922e7d810af4629e49cb91b7bf99f7f70d6'
   })
 
   depends_on 'boost' # R
@@ -41,7 +41,7 @@ class Gdb < Package
   depends_on 'zlibpkg' # R
 
   def self.patch
-    @readline8patch = <<~'READLINE8_PATCH_EOF'
+    @readline8patch = <<~READLINE8_PATCH_EOF
       commit 1add37b567a7dee39d99f37b37802034c3fce9c4
       Author: Andreas Schwab <schwab@linux-m68k.org>
       Date:   Sun Mar 20 14:01:54 2022 +0100

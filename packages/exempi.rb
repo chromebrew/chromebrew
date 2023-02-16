@@ -6,33 +6,36 @@ require 'package'
 class Exempi < Package
   description 'A library to parse XMP metadata'
   homepage 'https://libopenraw.freedesktop.org/wiki/Exempi'
-  @_ver = '2.5.2'
-  version "#{@_ver}-1"
+  @_ver = '2.6.3'
+  version @_ver
   license 'BSD'
   compatibility 'all'
   source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{@_ver}/exempi-#{@_ver}.tar.bz2"
-  source_sha256 'dff105f53bdd971e633b7fcb3bcfb22276716228a9e6063c1fd241a8542b9cec'
+  source_sha256 'e79995bb3c5319293e3f2abfc9da83a9ee5a83102724336599d535d874509632'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_armv7l/exempi-2.5.2-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_armv7l/exempi-2.5.2-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_i686/exempi-2.5.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.5.2-1_x86_64/exempi-2.5.2-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.3_armv7l/exempi-2.6.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.3_armv7l/exempi-2.6.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.3_i686/exempi-2.6.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.3_x86_64/exempi-2.6.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '551b3b9ea9078d1ace55df7014d34863ce4708e273cc336ce165775dc6e34c30',
-     armv7l: '551b3b9ea9078d1ace55df7014d34863ce4708e273cc336ce165775dc6e34c30',
-       i686: '5bb4594a18f52103b41d6a9be9c9729d485b68e302cf3ac5afbbb5a150f58384',
-     x86_64: 'fd2cb5b92e6b19a1897ace6d32cb608748d963776011923e41c2580061bbd46c'
+    aarch64: '60ae93ee0ae5c7edd00d3206dff793d5255436d37eb5bf118243bf7142393ac4',
+     armv7l: '60ae93ee0ae5c7edd00d3206dff793d5255436d37eb5bf118243bf7142393ac4',
+       i686: '5febec27428020406e8d6dd85abd5058cd2e72b47ee92dc28be7ea4997d6a29e',
+     x86_64: '17a8c579b9a51f254476675b3d2bcdda6370fae697bf25da191f569321f7cd4e'
   })
 
-  depends_on 'boost' => :build
   depends_on 'autoconf_archive' => :build
+  depends_on 'boost' => :build
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
