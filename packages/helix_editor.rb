@@ -6,10 +6,8 @@ class Helix_editor < Package
   version '22.12'
   license 'MPL-2.0' # license of source
   compatibility 'all'
-  source_url 'https://t.ly/-vk7'
+  source_url 'https://github.com/helix-editor/helix/archive/22.12.tar.gz' #'https://t.ly/-vk7'
   source_sha256 'edae8af46401b45c3e71c38b4fa99f931c4458127978ccd1b29aaae79331d972' # Use the command "sha256sum"
-  source_url 'file:///usr/local/home/helix/deleteme.tar.gz'
-  source_sha256 'c3a0e022a7bcd6b139ae7abf1e0dae33c8f9ec82dc680076d9e5ea6593b85bc6'
 
   depends_on 'rust' => :build
   depends_on 'xdg_base'
@@ -21,10 +19,10 @@ class Helix_editor < Package
 
   def self.build
     puts 'Building. This may be long.'
-    puts 'cargo build \
+    system "cargo build \
       --release \
       --locked \
-     '
+     "
   end
 
   def self.check
@@ -59,5 +57,21 @@ class Helix_editor < Package
       To be able to load some themes, helix needs to be started in a terminal it recognizes#{' '}
       as supporting true colors.
     EOT2
+  end
+
+  def self.remove
+    # Some files in the directory are write protected...
+    FileUtils.rm_rf @helix_runtime_dir
+    # If the user added a configuration dir, we ask if he wishes to remove it as well
+    config_dir = "#{HOME}/.config/helix"
+    Dir.exist? config_dir
+      puts "\nWould you like to remove the configuration folder: #{config_dir}? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightred
+      else
+        puts "#{config_dir} was not removed.".lightgreen
+      end
   end
 end
