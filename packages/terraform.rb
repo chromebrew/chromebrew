@@ -7,13 +7,13 @@ class Terraform < Package
   license 'Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode'
   compatibility 'all'
   source_url({
-    aarch64: "https://releases.hashicorp.com/terraform/#{version}/terraform_#{version}_linux_arm64.zip",
+    aarch64: "https://releases.hashicorp.com/terraform/#{version}/terraform_#{version}_linux_arm.zip",
      armv7l: "https://releases.hashicorp.com/terraform/#{version}/terraform_#{version}_linux_arm.zip",
        i686: "https://releases.hashicorp.com/terraform/#{version}/terraform_#{version}_linux_386.zip",
      x86_64: "https://releases.hashicorp.com/terraform/#{version}/terraform_#{version}_linux_amd64.zip"
   })
   source_sha256({
-    aarch64: 'da571087268c5faf884912c4239c6b9c8e1ed8e8401ab1dcb45712df70f42f1b',
+    aarch64: '58203da8e5468ab5c22d26d242bf64e305c038d99717199f6783a3686130b60e',
      armv7l: '58203da8e5468ab5c22d26d242bf64e305c038d99717199f6783a3686130b60e',
        i686: 'd321b0ef810a3f972b031176e329006644c8915b83ecfcf506099952c5fbaccc',
      x86_64: '53048fa573effdd8f2a59b726234c6f450491fe0ded6931e9f4c6e3df6eece56'
