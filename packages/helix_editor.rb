@@ -30,7 +30,7 @@ class Helix_editor < Package
     `hx --version`
     # Check if helix can find its runtime path
     command_output = `hx --health`
-    if !command_output.include?(@helix_runtime_dir.to_s)
+    if !command_output.include? @helix_runtime_dir
       raise 'Helix cannot find its runtime dir'
     end
   end
@@ -40,11 +40,11 @@ class Helix_editor < Package
     # Copy executable
     helix_executable_dest_dir = "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p helix_executable_dest_dir.to_s
-    FileUtils.install './target/release/hx', helix_executable_dest_dir.to_s, :mode => 0755
+    FileUtils.install './target/release/hx', helix_executable_dest_dir, :mode => 0755
     # Copy runtime dir
     helix_runtime_dest_dir = "#{CREW_DEST_DIR}#{@helix_runtime_dir}"
-    FileUtils.mkdir_p helix_runtime_dest_dir.to_s
-    FileUtils.cp_r './runtime', helix_runtime_dest_dir.to_s
+    FileUtils.mkdir_p helix_runtime_dest_dir
+    FileUtils.cp_r './runtime', helix_runtime_dest_dir
   end
 
   def self.postinstall
