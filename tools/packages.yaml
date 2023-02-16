@@ -3636,6 +3636,11 @@ url: https://github.com/rocky/libcdio-paranoia/releases
 activity: none
 ---
 kind: url
+name: libcdr
+url: https://dev-www.libreoffice.org/src/libcdr/
+activity: low
+---
+kind: url
 name: libcec
 url: https://github.com/Pulse-Eight/libcec/releases
 activity: low
@@ -4441,6 +4446,11 @@ url: https://github.com/librespot-org/librespot/releases
 activity: high
 ---
 kind: url
+name: librevenge
+url: https://sourceforge.net/projects/libwpd/files/librevenge
+activity: low
+---
+kind: url
 name: librhash
 url: https://github.com/rhash/RHash/releases
 activity: low
@@ -4736,6 +4746,11 @@ url: https://github.com/libvips/libvips/releases
 activity: medium
 ---
 kind: url
+name: libvisio
+url: https://dev-www.libreoffice.org/src/libvisio
+activity: low
+---
+kind: url
 name: libvisual
 url: https://github.com/Libvisual/libvisual/releases
 activity: none
@@ -4796,9 +4811,19 @@ url: https://ftp.gnome.org/pub/GNOME/sources/libwnck/
 activity: low
 ---
 kind: url
+name: libwpd
+url: https://sourceforge.net/projects/libwpd/files/
+activity: low
+---
+kind: url
 name: libwpe
 url: https://github.com/WebPlatformForEmbedded/libwpe/releases/
 activity: medium
+---
+kind: url
+name: libwpg
+url: https://sourceforge.net/projects/libwpg/files/
+activity: low
 ---
 kind: url
 name: libx11
