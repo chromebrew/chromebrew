@@ -6,7 +6,7 @@ class Helix_editor < Package
   version '22.12'
   license 'MPL-2.0' # license of source
   compatibility 'all'
-  source_url 'https://github.com/helix-editor/helix/archive/22.12.tar.gz' #'https://t.ly/-vk7'
+  source_url 'https://t.ly/-vk7'
   source_sha256 'edae8af46401b45c3e71c38b4fa99f931c4458127978ccd1b29aaae79331d972' # Use the command "sha256sum"
 
   depends_on 'rust' => :build
@@ -30,17 +30,14 @@ class Helix_editor < Package
     `hx --version`
     # Check if helix can find its runtime path
     command_output = `hx --health`
-    if !command_output.include? @helix_runtime_dir
-      raise 'Helix cannot find its runtime dir'
-    end
+    raise 'Helix cannot find its runtime dir' unless command_output.include? @helix_runtime_dir
   end
-
 
   def self.install
     # Copy executable
     helix_executable_dest_dir = "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p helix_executable_dest_dir.to_s
-    FileUtils.install './target/release/hx', helix_executable_dest_dir, :mode => 0755
+    FileUtils.install './target/release/hx', helix_executable_dest_dir, mode: 0o755
     # Copy runtime dir
     helix_runtime_dest_dir = "#{CREW_DEST_DIR}#{@helix_runtime_dir}"
     FileUtils.mkdir_p helix_runtime_dest_dir
@@ -65,13 +62,13 @@ class Helix_editor < Package
     # If the user added a configuration dir, we ask if he wishes to remove it as well
     config_dir = "#{HOME}/.config/helix"
     Dir.exist? config_dir
-      puts "\nWould you like to remove the configuration folder: #{config_dir}? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
-      else
-        puts "#{config_dir} was not removed.".lightgreen
-      end
+    puts "\nWould you like to remove the configuration folder: #{config_dir}? [y/N] "
+    case $stdin.gets.chomp.downcase
+    when 'y', 'yes'
+      FileUtils.rm_rf config_dir
+      puts "#{config_dir} removed.".lightred
+    else
+      puts "#{config_dir} was not removed.".lightgreen
+    end
   end
 end
