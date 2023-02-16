@@ -6,7 +6,7 @@ class Helix_editor < Package
   version '22.12'
   license 'MPL-2.0' # license of source
   compatibility 'all'
-  source_url 'https://github.com/helix-editor/helix/archive/22.12.tar.gz' #'https://t.ly/-vk7'
+  source_url 'https://github.com/helix-editor/helix/archive/22.12.tar.gz' # 'https://t.ly/-vk7'
   source_sha256 'edae8af46401b45c3e71c38b4fa99f931c4458127978ccd1b29aaae79331d972' # Use the command "sha256sum"
 
   depends_on 'rust' => :build
@@ -39,8 +39,8 @@ class Helix_editor < Package
 
   def self.check
     # Ensure hx is executable
-    command_status = system".#{@build_folder_suffix}/hx --version"
-    raise "hx is not executable" unless command_status == true
+    command_status = system ".#{@build_folder_suffix}/hx --version"
+    raise 'hx is not executable' unless command_status == true
   end
 
   def self.postinstall
