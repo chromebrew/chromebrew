@@ -25,12 +25,12 @@ class Libwpg < Package
      x86_64: '9b7f4b5b3e31bd451a7c80d895490c784517f29d2b5f3126e7abf332e4ab4a21'
   })
 
-  depends_on 'libwpd'
-  depends_on 'perl'
-  depends_on 'librevenge'
   depends_on 'doxygen' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'librevenge' # R
+  depends_on 'libwpd' # R
+  depends_on 'perl' => :build
   depends_on 'zlibpkg' # R
 
   def self.build

@@ -25,12 +25,12 @@ class Librevenge < Package
      x86_64: '3f1b4296f12579b941ce8a32a037a25fe2f28e60dbf7e4d6ce981170cb5c27f8'
   })
 
-  depends_on 'zlibpkg'
   depends_on 'boost' => :build
   depends_on 'cppunit' => :build
   depends_on 'doxygen' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} --disable-werror"
