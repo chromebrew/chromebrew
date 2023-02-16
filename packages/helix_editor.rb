@@ -14,7 +14,7 @@ class Helix_editor < Package
 
   @no_fhs = true
 
-  @xdg_config_home = ENV.fetch 'XDG_CONFIG_HOME', '/usr/local/.config'
+  @xdg_config_home = ENV.fetch 'XDG_CONFIG_HOME', "#{CREW_PREFIX}/.config"
   @helix_runtime_dir = "#{@xdg_config_home}/helix"
 
   def self.build
