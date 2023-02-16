@@ -16,6 +16,7 @@ class Helix_editor < Package
 
   @xdg_config_home = ENV.fetch 'XDG_CONFIG_HOME', "#{CREW_PREFIX}/.config"
   @helix_runtime_dir = "#{@xdg_config_home}/helix"
+  @build_folder_suffix = '/target/release'
 
   def self.build
     puts 'Building. This may be long.'
@@ -25,33 +26,36 @@ class Helix_editor < Package
      "
   end
 
-  def self.check
-    # This will raise an error if "hx" is not a valid command
-    `hx --version`
-    # Check if helix can find its runtime path
-    command_output = `hx --health`
-    raise 'Helix cannot find its runtime dir' unless command_output.include? @helix_runtime_dir
-  end
-
   def self.install
     # Copy executable
     helix_executable_dest_dir = "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p helix_executable_dest_dir.to_s
-    FileUtils.install './target/release/hx', helix_executable_dest_dir, mode: 0o755
+    FileUtils.install ".#{@build_folder_suffix}/hx", helix_executable_dest_dir, mode: 0o755
     # Copy runtime dir
     helix_runtime_dest_dir = "#{CREW_DEST_DIR}#{@helix_runtime_dir}"
     FileUtils.mkdir_p helix_runtime_dest_dir
     FileUtils.cp_r './runtime', helix_runtime_dest_dir
   end
 
+  def self.check
+    # Ensure hx is executable
+    command_status = system".#{@build_folder_suffix}/hx --version"
+    raise "hx is not executable" unless command_status == true
+  end
+
   def self.postinstall
+    # This will print a warning if "hx" is not a valid command
+    command_status = system 'hx --version'
+    puts 'Warning: hx is not path'.red unless command_status == true
+    # Check if helix can find its runtime path
+    command_output = `hx --health`
+    puts 'Warning: helix cannot find its runtime dir'.red unless command_output.include? @helix_runtime_dir
+
     puts <<~EOT2.orange
       Use the 'hx' command to start helix.
-
       Use 'hx --health' to see if helix can find its runtime and to see which LSP
       servers are detected.
-
-      To be able to load some themes, helix needs to be started in a terminal it recognizes
+      Note that to be able to load some themes, helix needs to be started in a terminal it recognizes
       as supporting true colors.
     EOT2
   end
