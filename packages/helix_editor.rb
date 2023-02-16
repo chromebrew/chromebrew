@@ -8,7 +8,7 @@ class Helix_editor < Package                 # The first character of the class 
   compatibility 'all'
   source_url 'https://github.com/helix-editor/helix/archive/refs/tags/22.12.tar.gz'
   source_sha256 'edae8af46401b45c3e71c38b4fa99f931c4458127978ccd1b29aaae79331d972'   # Use the command "sha256sum"
-
+  
   depends_on 'rust' => :build
 
   @no_fhs = true
@@ -33,10 +33,10 @@ class Helix_editor < Package                 # The first character of the class 
   end
 
   def self.check
-    # TODO: check seems to be never called
-    # system "hx --version"
-    # helix_health_output = capture(:stdout) { system("hx --health") }
-    # return helix_health_output.include?("#{CREW_PREFIX}#{ENV['XDG_CONFIG_HOME']}/helix")
+    puts "self.check is called"
+    return false
+    # Check "hx --version" status code and if hx found its runtime directory
+    # return (system "hx --version") && (`hx --health`.include?("#{ENV['XDG_CONFIG_HOME']}"))
   end
 
   def self.postinstall
@@ -46,7 +46,7 @@ class Helix_editor < Package                 # The first character of the class 
       Use 'hx --health' to see if helix detects its runtime and to see which LSP 
       servers are detected.
     
-      To use the default theme, helix has to be started in a terminal it recognizes 
+      To be able to load some themes, helix neefds to be started in a terminal it recognizes 
       as supporting true colors.
     EOT2
   end
