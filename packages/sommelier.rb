@@ -1,3 +1,4 @@
+require 'popen'
 require 'package'
 
 class Sommelier < Package
@@ -90,8 +91,10 @@ class Sommelier < Package
          APPLICATION_ID_FORMAT_PREFIX ".wayland.%s"
     EOF
 
-    File.write('patch', patch)
-    system 'patch -p1 < patch'
+    Dir.chdir 'vm_tools/sommelier' do
+      File.write('patch', patch)
+      system 'patch -p1 < patch'
+    end
   end
 
   def self.build
