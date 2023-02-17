@@ -5,26 +5,10 @@ class Sommelier < Package
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
   version '20230125-1'
   license 'BSD-Google'
-  compatibility 'all'
+  compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag 'dbd90c6b002f7d0867cc0b0f1538cc979b688d13'
-  # The 02 Feb 2022 commit fbd707f "vm_tools: Upgrades Sommelier to support xdg_shell v3" breaks functionality for Chromebrew with the error:
-  # wl_registry@2: error 0: invalid version for global xdg_wm_base (41): have 1, wanted 3
+  git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_armv7l/sommelier-20230125-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_armv7l/sommelier-20230125-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_i686/sommelier-20230125-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230125-1_x86_64/sommelier-20230125-1-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: '4a5719e1ab6cbf277a3360c2f3eb60483be474b07725d123d5cbf3426540603a',
-     armv7l: '4a5719e1ab6cbf277a3360c2f3eb60483be474b07725d123d5cbf3426540603a',
-       i686: '41df727007973520d856253a93ed85787a98d1948489502184eaba5b6d6474e9',
-     x86_64: 'f275bc12bb18c5af2d97c6b391de77c7fa4e293f1fcb3922f03af7ae20e4e8c0'
-  })
-
-  depends_on 'diffutils' # L (for diff usage in postinstall)
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libdrm' # R
@@ -39,6 +23,7 @@ class Sommelier < Package
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc'
   depends_on 'wayland' # R
+  depends_on 'wayland_info'
   depends_on 'xauth'
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
@@ -56,18 +41,63 @@ class Sommelier < Package
   end
 
   def self.patch
-    # Patch to avoid error with GCC > 9.x
-    # ../sommelier.cc:3238:10: warning: ‘char* strncpy(char*, const char*, size_t)’ specified bound 108 equals destination size [-Wstringop-truncation]
-    Kernel.system "sed -i 's/sizeof(addr.sun_path))/sizeof(addr.sun_path) - 1)/' sommelier.cc",
-                  chdir: 'vm_tools/sommelier'
+    # This patch fixes:
+    #   wl_registry@2: error 0: invalid version for global xdg_wm_base (41): have 1, wanted 3
+    #   sommelier.elf: ../sommelier-window.cc:412: void sl_window_update(struct sl_window *): Assertion `ctx->xdg_shell' failed.
+    patch = <<~EOF
+      diff -Nur a/sommelier.cc b/sommelier.cc
+      --- a/sommelier.cc      2023-02-17 20:55:44.591868511 +0800
+      +++ b/sommelier.cc      2023-02-17 22:21:11.221142302 +0800
+      @@ -88,6 +88,8 @@
+       #define MIN_AURA_SHELL_VERSION 6
+       #define MAX_AURA_SHELL_VERSION 38
+
+      +char xdg_shell_interface[20] = "xdg_wm_base";
+      +
+       int sl_open_wayland_socket(const char* socket_name,
+                                  struct sockaddr_un* addr,
+                                  int* lock_fd,
+      @@ -616,7 +618,7 @@
+             data_device_manager->host_global =
+                 sl_data_device_manager_global_create(ctx);
+           }
+      -  } else if (strcmp(interface, "xdg_wm_base") == 0) {
+      +  } else if (strcmp(interface, xdg_shell_interface) == 0) {
+           struct sl_xdg_shell* xdg_shell =
+               static_cast<sl_xdg_shell*>(malloc(sizeof(struct sl_xdg_shell)));
+           assert(xdg_shell);
+      @@ -3793,6 +3795,8 @@
+             ctx.use_virtgpu_channel = true;
+           } else if (strstr(arg, "--noop-driver") == arg) {
+             noop_driver = true;
+      +    } else if (strstr(arg, "--xdg-shell-v6") == arg) {
+      +      strcpy(xdg_shell_interface, "zxdg_shell_v6");
+       #ifdef PERFETTO_TRACING
+           } else if (strstr(arg, "--trace-filename") == arg) {
+             ctx.trace_filename = sl_arg_value(arg);
+      diff -Nur a/sommelier.h b/sommelier.h
+      --- a/sommelier.h       2023-02-17 20:55:44.591868511 +0800
+      +++ b/sommelier.h       2023-02-17 22:20:37.052140477 +0800
+      @@ -21,8 +21,8 @@
+       #include "weak-resource-ptr.h"  // NOLINT(build/include_directory)
+
+       #define SOMMELIER_VERSION "0.20"
+      -#define XDG_SHELL_VERSION 3u
+      -#define APPLICATION_ID_FORMAT_PREFIX "org.chromium.guest_os.%s"
+      +#define XDG_SHELL_VERSION 1u
+      +#define APPLICATION_ID_FORMAT_PREFIX "org.chromebrew.%s"
+       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \
+         APPLICATION_ID_FORMAT_PREFIX ".wayland.%s"
+    EOF
+
+    File.write('patch', patch)
+    system 'patch -p1 < patch'
   end
 
   def self.build
     case ARCH
     when 'armv7l', 'aarch64'
       @peer_cmd_prefix = '/lib/ld-linux-armhf.so.3'
-    when 'i686'
-      @peer_cmd_prefix = '/lib/ld-2.23.so'
     when 'x86_64'
       @peer_cmd_prefix = '/lib64/ld-linux-x86-64.so.2'
     end
@@ -76,7 +106,7 @@ class Sommelier < Package
 
       system <<~BUILD
         env CC=clang CXX=clang++ \
-          meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '-fuse-ld=lld').gsub('-ffat-lto-objects', '')} \
+          meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '').gsub('-ffat-lto-objects', '')} \
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
@@ -204,6 +234,13 @@ class Sommelier < Package
             pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
             DISPLAY="${DISPLAY:0:3}"
 
+            xdg_shell_v6=''
+
+            # check if exo support xdg_wm_base
+            if [[ -z "$(wayland-info -i xdg_wm_base)" ]]; then
+              xdg_shell_v6='--xdg-shell-v6'
+            fi
+
             sommelier_cmd="sommelier -X \
               --x-display=${DISPLAY} \
               --scale=${SCALE} \
@@ -215,7 +252,7 @@ class Sommelier < Package
               --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri \
               --peer-cmd-prefix=#{CREW_PREFIX}#{@peer_cmd_prefix} \
               --enable-xshape \
-              --noop-driver \
+              --noop-driver ${xdg_shell_v6} \
               --no-exit-with-child \
               /bin/sh -c \\"touch ~/.Xauthority
                 xauth -f ~/.Xauthority add ${DISPLAY} . $(xxd -l 16 -p /dev/urandom)
@@ -345,9 +382,7 @@ class Sommelier < Package
         RESTARTSOMMELIEREOF
 
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-        @bashd_sommelier = <<~BASHDEOF
-          source #{CREW_PREFIX}/bin/startsommelier
-        BASHDEOF
+        @bashd_sommelier = "source #{CREW_PREFIX}/bin/startsommelier"
       end
     end
   end
@@ -375,17 +410,16 @@ class Sommelier < Package
 
   def self.postinstall
     # all tasks are done by sommelier.env now
-    now = Time.now.strftime('%Y%m%d%H%M')
-    FileUtils.cp "#{HOME}/.bashrc", "#{HOME}/.bashrc.#{now}"
+    FileUtils.cp "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak"
     system "sed -i '/[sS]ommelier/d' #{HOME}/.bashrc"
-    diff = `diff #{HOME}/.bashrc #{HOME}/.bashrc.#{now}`.chomp
-    if diff == ''
-      FileUtils.rm "#{HOME}/.bashrc.#{now}"
+
+    if FileUtils.identical?("#{HOME}/.bashrc", "#{HOME}/.bashrc.bak")
+      FileUtils.rm "#{HOME}/.bashrc.bak"
     else
       puts <<~EOT0.lightblue
 
         Removed old sommelier environment variables in ~/.bashrc.
-        A backup of the original is stored in ~/.bashrc.#{now}.
+        A backup of the original is stored in ~/.bashrc.bak.
         To complete the installation, execute the following:
         source ~/.bashrc
       EOT0
