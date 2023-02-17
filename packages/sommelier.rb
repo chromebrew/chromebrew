@@ -86,7 +86,7 @@ class Sommelier < Package
       -#define APPLICATION_ID_FORMAT_PREFIX "org.chromium.guest_os.%s"
       +#define XDG_SHELL_VERSION 1u
       +#define APPLICATION_ID_FORMAT_PREFIX "org.chromebrew.%s"
-       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \
+       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \\
          APPLICATION_ID_FORMAT_PREFIX ".wayland.%s"
     EOF
 
