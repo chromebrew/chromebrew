@@ -20,10 +20,7 @@ class Helix_editor < Package
 
   def self.build
     puts 'Building. This may be long.'
-    system 'cargo build \
-      --release \
-      --locked \
-     '
+    system 'cargo build --release --locked'
   end
 
   def self.install
