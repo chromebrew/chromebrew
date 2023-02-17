@@ -36,16 +36,16 @@ class Helix_editor < Package
 
   def self.check
     # Ensure hx is executable
-    command_status = system ".#{@build_folder_suffix}/hx --version"
+    command_status = system ".#{@build_folder_suffix}/hx --version", exception: false
     raise 'hx is not executable' unless command_status == true
   end
 
   def self.postinstall
     # This will print a warning if "hx" is not a valid command
-    command_status = system 'hx --version'
+    command_status = system 'hx --version', exception: false
     puts 'Warning: hx is not in path'.red unless command_status == true
     # Check if helix can find its runtime path
-    command_output = `hx --health`
+    command_output = `hx --health`, exception: false
     puts 'Warning: helix cannot find its runtime dir'.red unless command_output.include? @helix_runtime_dir
 
     puts <<~EOT2.orange
