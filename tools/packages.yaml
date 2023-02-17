@@ -1320,6 +1320,11 @@ url: https://sourceforge.net/projects/djvu/files/DjVuLibre/
 activity: low
 ---
 kind: url
+name: dmd
+url:  https://github.com/dlang/dmd/releases
+activity: high
+---
+kind: url
 name: dmidecode
 url: http://download.savannah.gnu.org/releases/dmidecode
 activity: low
