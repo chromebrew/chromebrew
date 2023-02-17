@@ -1,4 +1,3 @@
-require 'popen'
 require 'package'
 
 class Sommelier < Package
