@@ -46,7 +46,7 @@ class Helix_editor < Package
   def self.postinstall
     # This will print a warning if "hx" is not a valid command
     command_status = system 'hx --version'
-    puts 'Warning: hx is not path'.red unless command_status == true
+    puts 'Warning: hx is not in path'.red unless command_status == true
     # Check if helix can find its runtime path
     command_output = `hx --health`
     puts 'Warning: helix cannot find its runtime dir'.red unless command_output.include? @helix_runtime_dir
