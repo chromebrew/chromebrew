@@ -12,8 +12,10 @@ class Dmd < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmd/2.102.1_x86_64/dmd-2.102.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '83d81ef8e0c7e0cb113c01fde0945c945f8dff57ed64c8e4aa61cf9e1f5d2cb6'
+    x86_64: '62e7602a9d0a511905e8ef0488cb51990443df19901ea09fa36d723a1e04dee4'
   })
+
+  depends_on 'dub' => :build # For running tests.
 
   def self.build
     system "git clone -b v#{version} https://github.com/dlang/dmd.git"
@@ -24,16 +26,70 @@ class Dmd < Package
     Dir.chdir 'phobos' do
       system 'make -f posix.mak'
     end
+    system "git clone -b v#{version} https://github.com/dlang/tools.git"
+    Dir.chdir 'tools' do
+      system 'make -f posix.mak all'
+    end
+    conf = <<~EOF
+      ;
+      ; dmd.conf file for dmd
+      ;
+      ; dmd will look for dmd.conf in the following sequence of directories:
+      ;   - current working directory
+      ;   - directory specified by the HOME environment variable
+      ;   - directory dmd resides in
+      ;   - /etc directory
+      ;
+      ; Names enclosed by %% are searched for in the existing environment and inserted
+      ;
+      ; The special name %@P% is replaced with the path to this file
+      ;
+
+      [Environment32]
+      DFLAGS=-I#{CREW_PREFIX}/include/phobos -I#{CREW_PREFIX}/include/dmd/druntime/import -L#{CREW_LIB_PREFIX}/i386-linux-gnu --export-dynamic -fPIC
+
+      [Environment64]
+      DFLAGS=-I#{CREW_PREFIX}/include/phobos -I#{CREW_PREFIX}/include/dmd/druntime/import -L#{CREW_LIB_PREFIX}/x86_64-linux-gnu --export-dynamic -fPIC
+    EOF
+    File.write('dmd.conf', conf)
+  end
+
+  def self.check
+    # These tests take a LONG time to run.
+    # Dir.chdir 'dmd' do
+    #   system 'make -f posix.mak test AUTO_BOOTSTRAP=1'
+    # end
+    # Dir.chdir 'phobos' do
+    #   system 'make -f posix.mak unittest AUTO_BOOTSTRAP=1'
+    # end
+    # Tests fail with Error: cannot find input file `/bin/sh.d`
+    # Dir.chdir 'tools' do
+    #   system 'make -f posix.mak test AUTO_BOOTSTRAP=1'
+    # end
   end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
-    Dir.chdir 'dmd/generated/linux/release/64' do
-      FileUtils.install 'dmd', "#{CREW_DEST_PREFIX}/bin/dmd", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/phobos"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/dmd/druntime"
+    FileUtils.install 'dmd/generated/linux/release/64/dmd', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
+    FileUtils.cp_r 'dmd/druntime/import', "#{CREW_DEST_PREFIX}/include/dmd/druntime"
+    FileUtils.install 'dmd.conf', "#{CREW_DEST_PREFIX}/etc", mode: 0o644
+    FileUtils.cp_r 'dmd/compiler/docs/man/man5', CREW_DEST_MAN_PREFIX.to_s
+    Dir.chdir 'dmd/generated/linux/release/64/host_dmd-2.095.0/dmd2/man/man1' do
+      FileUtils.install %w[dmd.1 rdmd.1], "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0o644
     end
     Dir.chdir 'phobos/generated/linux/release/64' do
-      FileUtils.install %w[libphobos2.a libphobos2.so libphobos2.so.0.102 libphobos2.so.0.102.1], CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
+      libraries = %w[libphobos2.a libphobos2.so libphobos2.so.0.102 libphobos2.so.0.102.1]
+      FileUtils.install libraries, CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
+    end
+    FileUtils.cp_r ['phobos/etc', 'phobos/std'], "#{CREW_DEST_PREFIX}/include/phobos"
+    Dir.chdir 'tools/generated/linux/64' do
+      executables = %w[catdoc changed checkwhitespace contributors ddemangle detab dget dustmite rdmd tolf updatecopyright]
+      FileUtils.install executables, "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     end
   end
 end
