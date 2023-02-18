@@ -1270,6 +1270,11 @@ url: https://github.com/DentonW/DevIL/releases
 activity: none
 ---
 kind: url
+name: dexed
+url: https://gitlab.com/basile.b/dexed/-/tags
+activity: low
+---
+kind: url
 name: dfc
 url: https://projects.gw-computing.net/
 activity: low
