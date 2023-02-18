@@ -28,7 +28,8 @@ class Helix_editor < Package
     helix_executable_dest_dir = "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p helix_executable_dest_dir.to_s
     FileUtils.install ".#{@build_folder_suffix}/hx", helix_executable_dest_dir, mode: 0o755
-    # Copy runtime dir
+    # Copy runtime dir (without the sources)
+    FileUtils.rm_rf './runtime/grammars/sources' # remove the sources
     helix_runtime_dest_dir = "#{CREW_DEST_DIR}#{@helix_runtime_dir}"
     FileUtils.mkdir_p helix_runtime_dest_dir
     FileUtils.cp_r './runtime', helix_runtime_dest_dir
