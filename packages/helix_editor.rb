@@ -49,9 +49,13 @@ class Helix_editor < Package
     command_status = system 'hx --version', exception: false
     puts 'Warning: hx is not in PATH'.lightred unless command_status == true
     # Check if helix can find its runtime path
-    command_output = `hx --health`
-    puts 'Warning: helix cannot find its runtime dir'.lightred unless command_output.include? @helix_runtime_dir
-
+    if command_status == true
+      command_output = `hx --health`
+      unless command_output.include? @helix_runtime_dir
+        puts "Warning: helix cannot find its runtime dir. \
+        The environment variable HELIX_RUNTIME may need to be set.".lightred
+      end
+    end
     puts <<~EOT2.lightblue
       Use the 'hx' command to start helix.
       Use 'hx --health' to see if helix can find its runtime and to see which LSP
