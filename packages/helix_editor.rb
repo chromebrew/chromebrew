@@ -43,12 +43,12 @@ class Helix_editor < Package
   def self.postinstall
     # This will print a warning if "hx" is not a valid command
     command_status = system 'hx --version', exception: false
-    puts 'Warning: hx is not in path'.red unless command_status == true
+    puts 'Warning: hx is not in path'.lightred unless command_status == true
     # Check if helix can find its runtime path
     command_output = `hx --health`, exception: false
-    puts 'Warning: helix cannot find its runtime dir'.red unless command_output.include? @helix_runtime_dir
+    puts 'Warning: helix cannot find its runtime dir'.lightred unless command_output.include? @helix_runtime_dir
 
-    puts <<~EOT2.orange
+    puts <<~EOT2.lightblue
       Use the 'hx' command to start helix.
       Use 'hx --health' to see if helix can find its runtime and to see which LSP
       servers are detected.
@@ -67,9 +67,9 @@ class Helix_editor < Package
     case $stdin.gets.chomp.downcase
     when 'y', 'yes'
       FileUtils.rm_rf config_dir
-      puts "#{config_dir} removed.".lightred
+      puts "#{config_dir} removed.".lightgreen
     else
-      puts "#{config_dir} was not removed.".lightgreen
+      puts "#{config_dir} was not removed.".lightblue
     end
   end
 end
