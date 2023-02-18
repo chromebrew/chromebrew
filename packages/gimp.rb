@@ -37,7 +37,7 @@ class Gimp < Package
   depends_on 'gegl' # R
   depends_on 'gexiv2' # R
   depends_on 'ghostscript' # R
-  depends_on 'gjs' => :build
+  depends_on 'gjs' # L
   depends_on 'glibc' # R
   depends_on 'glib_networking'
   depends_on 'glib' # R
@@ -71,15 +71,16 @@ class Gimp < Package
   depends_on 'libxmu' # R
   depends_on 'libxpm' # R
   depends_on 'libxt' => :build
-  depends_on 'luajit' => :build
-  depends_on 'luajit_lgi' => :build
+  depends_on 'luajit' # L
+  depends_on 'luajit_lgi' # L
   depends_on 'mypaint_brushes_1' => :build
   depends_on 'openexr' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'poppler_data'
   depends_on 'poppler' # R
-  depends_on 'py3_pycairo' => :build
+  depends_on 'pygobject' # L
+  depends_on 'py3_pycairo' # L
   depends_on 'pygtk' => :build
   depends_on 'shared_mime_info' => :build
   depends_on 'xdg_base' => :build
