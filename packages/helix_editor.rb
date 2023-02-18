@@ -49,7 +49,7 @@ class Helix_editor < Package
     command_status = system 'hx --version', exception: false
     puts 'Warning: hx is not in path'.lightred unless command_status == true
     # Check if helix can find its runtime path
-    command_output = `hx --health`, exception: false
+    command_output = `hx --health`
     puts 'Warning: helix cannot find its runtime dir'.lightred unless command_output.include? @helix_runtime_dir
 
     puts <<~EOT2.lightblue
