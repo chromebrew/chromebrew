@@ -58,8 +58,7 @@ class Helix_editor < Package
     end
     puts <<~EOT2.lightblue
       Use the 'hx' command to start helix.
-      Use 'hx --health' to see if helix can find its runtime and to see which LSP
-      servers are detected.
+      Use 'hx --health' to see if helix can find its runtime and to see which LSP servers are detected.
       Note that to be able to load some themes, helix needs to be started in a terminal it recognizes
       as supporting true colors.
     EOT2
