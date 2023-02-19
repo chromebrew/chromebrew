@@ -138,8 +138,8 @@ echo -en "${GRAY}"
 # Use parallel mode if available.
 CURL_OPTS="-OL"
 [[ "$(curl --help curl)" =~ --parallel ]] && CURL_OPTS+="Z"
-BOOTSTRAP_PKGS="${BOOTSTRAP_PACKAGES// /,}"
-cd "${CREW_LIB_PATH}"/packages && curl "${CURL_OPTS}" "${URL}"/packages/"${BOOTSTRAP_PKGS}".rb
+BOOTSTRAP_PKGS="${BOOTSTRAP_PACKAGES// /.rb,}.rb"
+cd "${CREW_PACKAGES_PATH}" && curl "${CURL_OPTS}" "${URL}/packages/{${BOOTSTRAP_PKGS}}"
 echo -e "${RESET}"
 
 # Prepare url and sha256.
