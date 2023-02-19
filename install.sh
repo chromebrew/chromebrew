@@ -85,13 +85,12 @@ fi
 # Force curl to use system libraries.
 function curl () {
   # Retry if download failed.
-  # The --retry/--retry-all-errors parameter in curl will not work with 
+  # The --retry/--retry-all-errors parameter in curl will not work with
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
   for (( i = 0; i < 4; i++ )); do
-    env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && \
-      return 0 || \
-      echo_info "Retrying, $((3-$i)) retries left."
+    env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && return 0
+    echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
   echo_error "Download failed :/ Please check your network settings."
@@ -122,7 +121,7 @@ do
 done
 sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
-# Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro 
+# Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro
 # if they exist.
 [ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
 [ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
@@ -137,11 +136,10 @@ done
 echo_info "\nDownloading information for Bootstrap packages..."
 echo -en "${GRAY}"
 # Use parallel mode if available.
-if [[ "$(curl --help curl)" =~ --parallel ]]; then
-  (cd "${CREW_LIB_PATH}"/packages && curl -OLZ "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
-else
-  (cd "${CREW_LIB_PATH}"/packages && curl -OL "${URL}"/packages/{"${BOOTSTRAP_PACKAGES// /,}"}.rb)
-fi
+CURL_OPTS="-OL"
+[[ "$(curl --help curl)" =~ --parallel ]] && CURL_OPTS+="Z"
+BOOTSTRAP_PKGS="${BOOTSTRAP_PACKAGES// /,}"
+cd "${CREW_LIB_PATH}"/packages && curl "${CURL_OPTS}" "${URL}"/packages/"${BOOTSTRAP_PKGS}".rb
 echo -e "${RESET}"
 
 # Prepare url and sha256.
@@ -166,7 +164,7 @@ if [ ! -f device.json ]; then
     '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 fi
 
-for package in $BOOTSTRAP_PACKAGES; do
+for package in ${BOOTSTRAP_PACKAGES}; do
   pkgfile="${CREW_PACKAGES_PATH}/${package}.rb"
 
   [[ "$(sed -n '/binary_sha256/,/}/p' "${pkgfile}")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
@@ -254,18 +252,20 @@ function update_device_json () {
 
   if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
     echo_intra "Updating version number of ${1} in device.json..."
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json) > device.json
+    ver_num=$(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json)
+    cat <<< "${ver_num}" > device.json
   else
     echo_intra "Adding new information on ${1} to device.json..."
-    cat <<< $(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json ) > device.json
+    new_info=$(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json)
+    cat <<< "${new_info}" > device.json
   fi
 }
 echo_info "Downloading Bootstrap packages...\n"
 # Extract, install and register packages.
 for i in $(seq 0 $((${#urls[@]} - 1))); do
-  url="${urls["${i}"]}"
-  sha256="${sha256s["${i}"]}"
-  tarfile="$(basename ${url})"
+  url=${urls["${i}"]}
+  sha256=${sha256s["${i}"]}
+  tarfile=$(basename "${url}")
   name="${tarfile%%-*}"   # extract string before first '-'
   rest="${tarfile#*-}"    # extract string after first '-'
   version="${rest%%-chromeos*}"
@@ -293,7 +293,7 @@ curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH
 # the mandb install doesn't fail.
 export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
 
-# Since we just downloaded the package repo, just update package 
+# Since we just downloaded the package repo, just update package
 # compatibility information.
 crew update compatible
 
@@ -301,7 +301,7 @@ echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall $BOOTSTRAP_PACKAGES
+crew postinstall "${BOOTSTRAP_PACKAGES}"
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
@@ -309,7 +309,7 @@ if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "https://github.com/chromebrew/chromebrew/issues\n\n"
 else
   echo_info "Synchronizng local package repo..."
-  # First clear out temporary package repo so we can replace it with the 
+  # First clear out temporary package repo so we can replace it with the
   # repo downloaded via git.
   find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
@@ -318,7 +318,7 @@ else
   # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
   # If using alternate branch don't use depth=1 .
   [[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
-  git clone $GIT_DEPTH --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+  git clone "${GIT_DEPTH}" --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
   cd "${CREW_LIB_PATH}"
 
@@ -374,10 +374,10 @@ echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
 source ~/.bashrc"
 fi
 echo_intra "
-Edit ${CREW_PREFIX}/etc/env.d/02-pager to change the default PAGER.
+Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
 more is used by default
 
-You may wish to edit the ${CREW_PREFIX}/etc/env.d/01-editor file for an editor default.
+You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor default.
 
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
