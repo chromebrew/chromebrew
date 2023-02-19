@@ -69,14 +69,15 @@ class Helix_editor < Package
     FileUtils.rm_rf @helix_runtime_dir
     # If the user added a configuration dir, we ask if he wishes to remove it as well
     config_dir = "#{HOME}/.config/helix"
-    Dir.exist? config_dir
-    puts "\nWould you like to remove the configuration folder: #{config_dir}? [y/N] "
-    case $stdin.gets.chomp.downcase
-    when 'y', 'yes'
-      FileUtils.rm_rf config_dir
-      puts "#{config_dir} removed.".lightgreen
-    else
-      puts "#{config_dir} was not removed.".lightblue
+    if Dir.exist? config_dir
+      puts "\nWould you like to remove the configuration folder: #{config_dir}? [y/N] "
+      case $stdin.gets.chomp.downcase
+      when 'y', 'yes'
+        FileUtils.rm_rf config_dir
+        puts "#{config_dir} removed.".lightgreen
+      else
+        puts "#{config_dir} was not removed.".lightblue
+      end
     end
   end
 end
