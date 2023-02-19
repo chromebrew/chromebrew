@@ -3,24 +3,24 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  @_ver = '2.42.10-6550872'
+  @_ver = '2.42.10'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
-  git_hashtag '6550872a2b89a09b1b2e811206a38475fbe7cec9'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_armv7l/gdk_pixbuf-2.42.10-6550872-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_armv7l/gdk_pixbuf-2.42.10-6550872-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_i686/gdk_pixbuf-2.42.10-6550872-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-6550872_x86_64/gdk_pixbuf-2.42.10-6550872-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10_armv7l/gdk_pixbuf-2.42.10-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10_armv7l/gdk_pixbuf-2.42.10-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10_i686/gdk_pixbuf-2.42.10-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10_x86_64/gdk_pixbuf-2.42.10-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c67990aabbb3576a6101822df693e67afaf8103e9f1088c0d40298834f8cc496',
-     armv7l: 'c67990aabbb3576a6101822df693e67afaf8103e9f1088c0d40298834f8cc496',
-       i686: 'c128a2bf1322a737a4dc3598020e1601eab3a6e6c2cb1164b69ddb7bbd004db7',
-     x86_64: '704985704e0c6ba5b3aad0cecf1fe7525df9cd5bb9791088ee4b313b9afff4e3'
+    aarch64: '4c4a3256bd6d71d843fdb61eaaa4747ad593794ef6e0d13e098da0113734c6a2',
+     armv7l: '4c4a3256bd6d71d843fdb61eaaa4747ad593794ef6e0d13e098da0113734c6a2',
+       i686: '21e9221b750b29249859be3459783bd7ef374edca8cf44cc6854a909369d44e8',
+     x86_64: '2f374ebec8d94d8856d577e3046c889c45e77787115acf471bf853db13b05301'
   })
 
   depends_on 'glib' # R
@@ -41,6 +41,7 @@ class Gdk_pixbuf < Package
   depends_on 'glibc' # R
   depends_on 'libpng' # R
   depends_on 'zlibpkg' # R
+
   gnome
 
   def self.build
