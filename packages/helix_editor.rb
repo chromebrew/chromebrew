@@ -12,10 +12,10 @@ class Helix_editor < Package
   depends_on 'rust' => :build
   depends_on 'xdg_base'
 
-  @no_fhs = true
-  @no_shrink = true
-  @no_strip = true
-  @no_patchelf = true
+  @no_fhs
+  @no_shrink
+  @no_strip
+  @no_patchelf
 
   @xdg_config_home = ENV.fetch 'XDG_CONFIG_HOME', "#{CREW_PREFIX}/.config"
   @helix_runtime_dir = "#{@xdg_config_home}/helix"
