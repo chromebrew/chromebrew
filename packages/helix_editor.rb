@@ -65,8 +65,6 @@ class Helix_editor < Package
   end
 
   def self.remove
-    # Some files in the directory are write protected...
-    FileUtils.rm_rf @helix_runtime_dir
     # If the user added a configuration dir, we ask if he wishes to remove it as well
     config_dir = "#{HOME}/.config/helix"
     if Dir.exist? config_dir
