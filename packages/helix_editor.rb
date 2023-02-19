@@ -41,7 +41,7 @@ class Helix_editor < Package
   def self.check
     # Ensure hx is executable
     command_status = system ".#{@build_folder_suffix}/hx --version", exception: false
-    raise 'hx is not executable' unless command_status == true
+    raise 'hx is not executable'.lightred unless command_status == true
   end
 
   def self.postinstall
