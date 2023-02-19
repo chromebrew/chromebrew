@@ -49,7 +49,7 @@ class Helix_editor < Package
     command_status = system 'hx --version', exception: false
     puts 'Warning: hx is not in PATH'.lightred unless command_status == true
     # Check if helix can find its runtime path
-    if command_status == true
+    if command_status
       command_output = `hx --health`
       unless command_output.include? @helix_runtime_dir
         puts "Warning: helix cannot find its runtime dir. \
