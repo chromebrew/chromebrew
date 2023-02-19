@@ -3,9 +3,9 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230125-1'
+  version '20230125-2'
   license 'BSD-Google'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
 
@@ -23,7 +23,7 @@ class Sommelier < Package
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc'
   depends_on 'wayland' # R
-  depends_on 'wayland_info'
+  depends_on 'wayland_info' # L
   depends_on 'xauth'
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
@@ -106,29 +106,29 @@ class Sommelier < Package
     Dir.chdir('vm_tools/sommelier') do
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
-      system <<~BUILD
-        env CC=clang CXX=clang++ \
-          meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '').gsub('-ffat-lto-objects', '')} \
-          -Db_asneeded=false \
-          -Db_lto=true \
-          -Db_lto_mode=thin \
-          -Dwith_tests=false \
-          -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-          -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
-          -Ddefault_library=both \
-          builddir
-      BUILD
+      unless ARCH == 'i686'
+        system <<~BUILD
+          env CC=clang CXX=clang++ \
+            meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '').gsub('-ffat-lto-objects', '')} \
+            -Db_asneeded=false \
+            -Db_lto=true \
+            -Db_lto_mode=thin \
+            -Dwith_tests=false \
+            -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+            -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
+            -Ddefault_library=both \
+            builddir
+        BUILD
 
-      system 'meson configure builddir'
-      system 'samu -C builddir'
+        system 'meson configure builddir'
+        system 'samu -C builddir'
+      end
 
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
 
         @sommelierenv = <<~SOMMELIERENVEOF
           set -a
-          CLUTTER_BACKEND=wayland
-          DISPLAY=:0
           GDK_BACKEND=x11
           SCALE=1
           SOMMELIER_ACCELERATORS='Super_L,<Alt>bracketleft,<Alt>bracketright'
@@ -166,6 +166,15 @@ class Sommelier < Package
 
           # Override environment settings above.
           [ -f "~/.sommelier.env" ] && source ~/.sommelier.env
+          # Adjust settings for container usage if necessary.
+          if [[ -f '/.dockerenv' ]]; then
+            CLUTTER_BACKEND=x11
+            set +1
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
+          fi
+          CLUTTER_BACKEND=wayland
+          DISPLAY=:0
 
           set +a
         SOMMELIERENVEOF
@@ -277,6 +286,12 @@ class Sommelier < Package
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 0 || exit 0
           fi
+          if [[ "$(uname -m)" == i686 ]]; then
+            echo "Sommelier is not supported on i686."
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
+          fi
+
           set -a
           # Set DRM device here so output is visible, but don't run
           # some of these checks in an env.d file since we don't need
@@ -393,9 +408,9 @@ class Sommelier < Package
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d
                          #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
     Dir.chdir('vm_tools/sommelier') do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install" unless ARCH == 'i686'
       Dir.chdir('builddir') do
-        FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
+        FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf" unless ARCH == 'i686'
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
         FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
         FileUtils.install 'startsommelier', "#{CREW_DEST_PREFIX}/bin/startsommelier", mode: 0o755
