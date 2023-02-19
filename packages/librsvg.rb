@@ -3,24 +3,24 @@ require 'package'
 class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  @_ver = '2.55.1'
-  version "#{@_ver}-2"
+  @_ver = '2.55.91'
+  version @_ver
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.1-2_armv7l/librsvg-2.55.1-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.1-2_armv7l/librsvg-2.55.1-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.1-2_i686/librsvg-2.55.1-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.1-2_x86_64/librsvg-2.55.1-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.91_armv7l/librsvg-2.55.91-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.91_armv7l/librsvg-2.55.91-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.91_i686/librsvg-2.55.91-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.55.91_x86_64/librsvg-2.55.91-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '20ced6237e0904c1f54975925007ac0a8f5d7a66c43526bf54d443ac81335108',
-     armv7l: '20ced6237e0904c1f54975925007ac0a8f5d7a66c43526bf54d443ac81335108',
-       i686: 'b083b593deb1f4ea719eec3cea14b99328b50a77bc604f2f276418ec4c315e9c',
-     x86_64: 'd850dce4e8290134d7c6a53c859c3bbd9229732123db450bf13aa4652035795f'
+    aarch64: 'ddc33a6810e6759d26089586648a52f4eee799e605e8538e36720905d42d0264',
+     armv7l: 'ddc33a6810e6759d26089586648a52f4eee799e605e8538e36720905d42d0264',
+       i686: 'fdc274ddb62267b9cf5014132c6633753ac5e1a51be880776fa74bb0d02a4376',
+     x86_64: '10094c5a19052f73b7e59de9c7c6966213eadd63c7982dd4016fef0f9d63cc1f'
   })
 
   depends_on 'fontconfig'
@@ -45,6 +45,8 @@ class Librsvg < Package
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'zlibpkg' # R
+  depends_on 'cairo' # R
+
   gnome
 
   def self.build
