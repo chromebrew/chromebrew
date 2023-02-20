@@ -64,18 +64,22 @@ class Helix_editor < Package
     EOT2
   end
 
-  def self.remove
-    # If the user added a configuration dir, we ask if he wishes to remove it as well
-    config_dir = "#{HOME}/.config/helix"
-    if Dir.exist? config_dir
-      puts "\nWould you like to remove the configuration folder: #{config_dir}? [y/N] "
-      case $stdin.gets.chomp.downcase
-      when 'y', 'yes'
-        FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightgreen
-      else
-        puts "#{config_dir} was not removed.".lightblue
-      end
+  def ask_to_remove_user_defined_config_files_in(dir)
+    puts "\nRemove user defined files in folder: #{dir}? [y/N] "
+    case $stdin.gets.chomp.downcase
+    when 'y', 'yes'
+      FileUtils.rm_rf config_dir.to_s
+      puts "#{dir} removed.".lightgreen
+    else
+      puts "#{dir} was not removed.".lightblue
     end
+  end
+
+  def self.remove
+    # If the user added configuration files in @helix_runtime_dir, remove them if desired
+    ask_to_remove_user_defined_config_files_in @helix_runtime_dir if Dir.exist? @helix_runtime_dir
+    # If the user added a configuration dir in HOME, remove it if desired
+    config_dir = "#{HOME}/.config/helix"
+    ask_to_remove_user_defined_config_files_in config_dir if Dir.exist? config_dir
   end
 end
