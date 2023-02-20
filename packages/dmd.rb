@@ -12,10 +12,10 @@ class Dmd < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmd/2.102.1_x86_64/dmd-2.102.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '62e7602a9d0a511905e8ef0488cb51990443df19901ea09fa36d723a1e04dee4'
+    x86_64: '4a32b8ae822fc66fc26d6399d9d7db872ae72d8c97f2dde8606bc4defbbe760a'
   })
 
-  depends_on 'dub' => :build # For running tests.
+  depends_on 'ldc' => :build # For running dub in tests.
 
   def self.build
     system "git clone -b v#{version} https://github.com/dlang/dmd.git"
@@ -80,7 +80,7 @@ class Dmd < Package
     FileUtils.install 'dmd.conf', "#{CREW_DEST_PREFIX}/etc", mode: 0o644
     FileUtils.cp_r 'dmd/compiler/docs/man/man5', CREW_DEST_MAN_PREFIX.to_s
     Dir.chdir 'dmd/generated/linux/release/64/host_dmd-2.095.0/dmd2/man/man1' do
-      FileUtils.install %w[dmd.1 rdmd.1], "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0o644
+      FileUtils.install 'dmd.1', "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0o644
     end
     Dir.chdir 'phobos/generated/linux/release/64' do
       libraries = %w[libphobos2.a libphobos2.so libphobos2.so.0.102 libphobos2.so.0.102.1]
@@ -88,7 +88,7 @@ class Dmd < Package
     end
     FileUtils.cp_r ['phobos/etc', 'phobos/std'], "#{CREW_DEST_PREFIX}/include/phobos"
     Dir.chdir 'tools/generated/linux/64' do
-      executables = %w[catdoc changed checkwhitespace contributors ddemangle detab dget dustmite rdmd tolf updatecopyright]
+      executables = %w[catdoc changed checkwhitespace contributors detab dget tolf updatecopyright]
       FileUtils.install executables, "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     end
   end
