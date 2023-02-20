@@ -41,13 +41,13 @@ class Helix_editor < Package
   def self.check
     # Ensure hx is executable
     command_status = system ".#{@build_folder_suffix}/hx --version", exception: false
-    raise 'hx is not executable'.lightred unless command_status == true
+    raise 'hx is not executable'.lightred unless command_status
   end
 
   def self.postinstall
     # This will print a warning if "hx" is not a valid command
     command_status = system 'hx --version', exception: false
-    puts 'Warning: hx is not in PATH'.lightred unless command_status == true
+    puts 'Warning: hx is not in PATH'.lightred unless command_status
     # Check if helix can find its runtime path
     if command_status
       command_output = `hx --health`
