@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cfb295750d43362fede4c912a4977a169a1cb0386b2ef1857e12a8c0bba3aa26',
-     armv7l: 'cfb295750d43362fede4c912a4977a169a1cb0386b2ef1857e12a8c0bba3aa26',
-     x86_64: '05270a896971b6e0565a3197c1455cca19910c4481dd1d3566d54e8cf3cba63f'
+    aarch64: 'c11272f483b99d62e4d05392303be25c65d36be6a1d301823fee918eacf7d681',
+     armv7l: 'c11272f483b99d62e4d05392303be25c65d36be6a1d301823fee918eacf7d681',
+     x86_64: 'b60d7d0ccc260edf646bb930f6a8d81dfdbaf05ba435bcef5bc781417b4d17c6'
   })
 
   depends_on 'gcc' # R
@@ -181,8 +181,6 @@ class Sommelier < Package
             ;;
             esac
           fi
-          # Override environment settings above.
-          [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env
           CLUTTER_BACKEND=${CLUTTER_BACKEND:-wayland}
           DISPLAY=${DISPLAY:-:0}
           set +a
@@ -280,7 +278,6 @@ class Sommelier < Package
             $sommelier_cmd &>> #{CREW_PREFIX}/var/log/sommelier.log &
 
             pgrep Xwayland > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
-            source #{CREW_PREFIX}/etc/sommelierrc
             xhost +si:localuser:root
           fi
         SOMMELIERDEOF
@@ -360,6 +357,8 @@ class Sommelier < Package
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
+            # Allow overriding environment variables before starting sommelier daemon.
+            [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env
             #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
             # source #{CREW_PREFIX}/sbin/sommelierd
           fi
@@ -415,7 +414,10 @@ class Sommelier < Package
         RESTARTSOMMELIEREOF
 
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-        @bashd_sommelier = "source #{CREW_PREFIX}/bin/startsommelier"
+        File.write 'bash.d_sommelier', <<~BASHDSOMMELIEREOF
+          source #{CREW_PREFIX}/bin/startsommelier
+          pgrep Xwayland &>/dev/null && source #{CREW_PREFIX}/etc/sommelierrc
+        BASHDSOMMELIEREOF
       end
     end
   end
@@ -435,9 +437,9 @@ class Sommelier < Package
         FileUtils.install 'restartsommelier', "#{CREW_DEST_PREFIX}/bin/restartsommelier", mode: 0o755
         FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o644
         FileUtils.install 'sommelierenv', "#{CREW_DEST_PREFIX}/etc/env.d/sommelier", mode: 0o644
+        FileUtils.install 'bash.d_sommelier', "#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", mode: 0o644
       end
     end
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bashd_sommelier)
   end
 
   def self.postinstall
