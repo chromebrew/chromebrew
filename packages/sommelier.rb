@@ -41,7 +41,6 @@ class Sommelier < Package
   depends_on 'xorg_xset' # for xset in wrapper script
   depends_on 'xsetroot' # for xsetroot in /usr/local/etc/sommelierrc script
   depends_on 'xwayland' # L
-  depends_on 'xxd_standalone' # for xxd in wrapper script
 
   no_shrink
 
