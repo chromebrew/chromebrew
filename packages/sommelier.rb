@@ -3,11 +3,22 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230125-2'
+  version '20230217-1'
   license 'BSD-Google'
-  compatibility 'all'
+  compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
+
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_armv7l/sommelier-20230217-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_armv7l/sommelier-20230217-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: 'cfb295750d43362fede4c912a4977a169a1cb0386b2ef1857e12a8c0bba3aa26',
+     armv7l: 'cfb295750d43362fede4c912a4977a169a1cb0386b2ef1857e12a8c0bba3aa26',
+     x86_64: '05270a896971b6e0565a3197c1455cca19910c4481dd1d3566d54e8cf3cba63f'
+  })
 
   depends_on 'gcc' # R
   depends_on 'glibc' # R
@@ -106,36 +117,44 @@ class Sommelier < Package
     Dir.chdir('vm_tools/sommelier') do
       # lld is needed so libraries linked to system libraries (e.g. libgbm.so) can be linked against, since those are required for graphics acceleration.
 
-      unless ARCH == 'i686'
-        system <<~BUILD
-          env CC=clang CXX=clang++ \
-            meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '').gsub('-ffat-lto-objects', '')} \
-            -Db_asneeded=false \
-            -Db_lto=true \
-            -Db_lto_mode=thin \
-            -Dwith_tests=false \
-            -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
-            -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
-            -Ddefault_library=both \
-            builddir
-        BUILD
+      system <<~BUILD
+        env CC=clang CXX=clang++ \
+          meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '-fuse-ld=lld').gsub('-ffat-lto-objects', '')} \
+          -Db_asneeded=false \
+          -Db_lto=true \
+          -Db_lto_mode=thin \
+          -Dwith_tests=false \
+          -Dxwayland_path=#{CREW_PREFIX}/bin/Xwayland \
+          -Dxwayland_gl_driver_path=#{CREW_LIB_PREFIX}/dri \
+          -Ddefault_library=both \
+          builddir
+      BUILD
 
-        system 'meson configure builddir'
-        system 'samu -C builddir'
-      end
+      system 'meson configure builddir'
+      system 'samu -C builddir'
 
+      FileUtils.mkdir_p 'builddir'
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
+        system "sed -i '/exit 0/d' sommelierrc"
+        system "echo '# Return or exit depending upon whether script was sourced.' >> sommelierrc"
+        system "echo '(return 0 2>/dev/null) && return 0 || exit 0' >> sommelierrc"
 
-        @sommelierenv = <<~SOMMELIERENVEOF
+        File.write 'sommelierenv', <<~SOMMELIERENVEOF
           set -a
-          GDK_BACKEND=x11
-          SCALE=1
+          GDK_BACKEND=${GDK_BACKEND:-x11}
+          # Adjust settings for container usage if necessary.
+          if [[ -f '/.dockerenv' ]]; then
+            CLUTTER_BACKEND=x11
+            set +a
+            # Return or exit depending upon whether script was sourced.
+            (return 0 2>/dev/null) && return 0 || exit 0
+          fi
+          SCALE=${SCALE:-1}
           SOMMELIER_ACCELERATORS='Super_L,<Alt>bracketleft,<Alt>bracketright'
           WAYLAND_DISPLAY=wayland-0
           XDG_RUNTIME_DIR=/var/run/chrome
           SOMMELIER_VM_IDENTIFIER=chromebrew
-
           if grep -q GenuineIntel /proc/cpuinfo ;then
             check_linux_version() {
                 maj_ver=$1
@@ -154,7 +173,7 @@ class Sommelier < Package
                 fi
             }
             case "$(uname -m)" in
-            x86_64|i686)
+            x86_64)
               if ! check_linux_version 4 16; then
                 MESA_LOADER_DRIVER_OVERRIDE=i965
               elif check_linux_version 5 10; then
@@ -163,19 +182,10 @@ class Sommelier < Package
             ;;
             esac
           fi
-
           # Override environment settings above.
-          [ -f "~/.sommelier.env" ] && source ~/.sommelier.env
-          # Adjust settings for container usage if necessary.
-          if [[ -f '/.dockerenv' ]]; then
-            CLUTTER_BACKEND=x11
-            set +1
-            # Return or exit depending upon whether script was sourced.
-            (return 0 2>/dev/null) && return 0 || exit 0
-          fi
-          CLUTTER_BACKEND=wayland
-          DISPLAY=:0
-
+          [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env
+          CLUTTER_BACKEND=${CLUTTER_BACKEND:-wayland}
+          DISPLAY=${DISPLAY:-:0}
           set +a
         SOMMELIERENVEOF
 
@@ -215,7 +225,7 @@ class Sommelier < Package
         # sommelierd
         File.write 'sommelierd', <<~SOMMELIERDEOF
           #!/bin/bash -a
-
+          set -a
           source ${CREW_PREFIX}/etc/env.d/sommelier
           set +a
           mkdir -p #{CREW_PREFIX}/var/{log,run}
@@ -252,6 +262,8 @@ class Sommelier < Package
               xdg_shell_v6='--xdg-shell-v6'
             fi
 
+            xauth_cmd="xauth generate ${DISPLAY} . trusted"
+            # --enable-xshape Appears to be broken as of Feb 17, 2023.
             sommelier_cmd="sommelier -X \
               --x-display=${DISPLAY} \
               --scale=${SCALE} \
@@ -262,17 +274,14 @@ class Sommelier < Package
               --xwayland-path=/usr/local/bin/Xwayland \
               --xwayland-gl-driver-path=#{CREW_LIB_PREFIX}/dri \
               --peer-cmd-prefix=#{CREW_PREFIX}#{@peer_cmd_prefix} \
-              --enable-xshape \
               --noop-driver ${xdg_shell_v6} \
               --no-exit-with-child \
-              /bin/sh -c \\"touch ~/.Xauthority
-                xauth -f ~/.Xauthority add ${DISPLAY} . $(xxd -l 16 -p /dev/urandom)
-                source #{CREW_PREFIX}/etc/sommelierrc\\""
-            echo $sommelier_cmd >> #{CREW_PREFIX}/var/log/sommelier.log
-            $sommelier_cmd &>> #{CREW_PREFIX}/var/log/sommelier.log
+              /bin/sh -c ${xauth_cmd}"
+            echo "$sommelier_cmd" >> #{CREW_PREFIX}/var/log/sommelier.log
+            $sommelier_cmd &>> #{CREW_PREFIX}/var/log/sommelier.log &
 
-            # echo "${!}" > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
             pgrep Xwayland > #{CREW_PREFIX}/var/run/sommelier-xwayland.pid
+            source #{CREW_PREFIX}/etc/sommelierrc
             xhost +si:localuser:root
           fi
         SOMMELIERDEOF
@@ -283,11 +292,6 @@ class Sommelier < Package
           # Exit if in container.
           if [[ -f '/.dockerenv' ]]; then
             echo "Cannot run sommelier in a container."
-            # Return or exit depending upon whether script was sourced.
-            (return 0 2>/dev/null) && return 0 || exit 0
-          fi
-          if [[ "$(uname -m)" == i686 ]]; then
-            echo "Sommelier is not supported on i686."
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 0 || exit 0
           fi
@@ -328,7 +332,17 @@ class Sommelier < Package
             echo -e "\e[1;33m""Sommelier can use direct scaling.""\e[0m"
             SOMMELIER_DIRECT_SCALE='--direct-scale'
           fi
-
+          # via https://stackoverflow.com/questions/47027323/round-to-the-nearest-0-5-decimal-in-bash/47027557#47027557
+          function roundhalves {
+                  echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
+          }
+          pxwidth=$(wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
+          lwidth=$(wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
+          # echo "pxwidth: $pxwidth, lwidth: $lwidth"
+          # SCALE needs to be rounded to the nearest 0.5
+          SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
+          echo -e "\e[1;33m""Sommelier SCALE automatically set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
+          echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
           set +a
 
           checksommelierwayland () {
@@ -348,6 +362,7 @@ class Sommelier < Package
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
             #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
+            # source #{CREW_PREFIX}/sbin/sommelierd
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
@@ -374,6 +389,8 @@ class Sommelier < Package
         # stopsommelier
         File.write 'stopsommelier', <<~STOPSOMMELIEREOF
           #!/bin/bash
+          # Quickest way is to use killall on Xwayland
+          pgrep Xwayland &>/dev/null && killall Xwayland
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
             pkill -f sommelier.elf &>/dev/null
@@ -408,9 +425,9 @@ class Sommelier < Package
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d
                          #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
     Dir.chdir('vm_tools/sommelier') do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install" unless ARCH == 'i686'
+      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
       Dir.chdir('builddir') do
-        FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf" unless ARCH == 'i686'
+        FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
         FileUtils.install 'sommelierd', "#{CREW_DEST_PREFIX}/sbin/sommelierd", mode: 0o755
         FileUtils.install 'startsommelier', "#{CREW_DEST_PREFIX}/bin/startsommelier", mode: 0o755
@@ -418,11 +435,10 @@ class Sommelier < Package
         FileUtils.install 'stopsommelier', "#{CREW_DEST_PREFIX}/bin/stopsommelier", mode: 0o755
         FileUtils.install 'restartsommelier', "#{CREW_DEST_PREFIX}/bin/restartsommelier", mode: 0o755
         FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o644
+        FileUtils.install 'sommelierenv', "#{CREW_DEST_PREFIX}/etc/env.d/sommelier", mode: 0o644
       end
     end
-
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", @bashd_sommelier)
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/sommelier", @sommelierenv)
   end
 
   def self.postinstall
