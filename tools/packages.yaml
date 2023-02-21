@@ -515,6 +515,11 @@ url: https://github.com/bazelbuild/bazel/releases
 activity: medium
 ---
 kind: url
+name: bazelisk
+url: https://github.com/bazelbuild/bazelisk/releases
+activity: low
+---
+kind: url
 name: bc
 url: https://ftp.gnu.org/gnu/bc
 activity: low
