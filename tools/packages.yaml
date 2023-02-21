@@ -8386,6 +8386,11 @@ url: https://wayland.freedesktop.org/releases.html
 activity: high
 ---
 kind: url
+name: wayland_info
+url: https://gitlab.freedesktop.org/wayland/wayland-utils/-/tags
+activity: medium
+---
+kind: url
 name: wayland_protocols
 url: https://wayland.freedesktop.org/releases.html
 activity: high
