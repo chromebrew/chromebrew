@@ -36,4 +36,3 @@ class Wayland_info < Package
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
-
