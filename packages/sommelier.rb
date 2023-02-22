@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cfad8fcc1334545af6184dc05ab4f65446a0439b7d7f69f26b1489494e51cb77',
-     armv7l: 'cfad8fcc1334545af6184dc05ab4f65446a0439b7d7f69f26b1489494e51cb77',
-     x86_64: '5a900c0056f78519c7c96b9e758d51385fcecdd2cbf0416dd79b872c0e8228ad'
+    aarch64: 'bd3b72361e569654ba9d79b1d6f2c779e97ab4a1d51d4244ecc620e3813967a8',
+     armv7l: 'bd3b72361e569654ba9d79b1d6f2c779e97ab4a1d51d4244ecc620e3813967a8',
+     x86_64: 'f952d03857683b2a89537fca6469798a41a2deb24bd50e46fb903ed5c875daa2'
   })
 
   depends_on 'gcc' # R
@@ -365,8 +365,7 @@ class Sommelier < Package
             set +a
             echo -e "\e[1;33m""Sommelier SCALE is set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
             echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
-            #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
-            # source #{CREW_PREFIX}/sbin/sommelierd
+            #{CREW_PREFIX}/sbin/sommelierd &>> #{CREW_PREFIX}/var/log/sommelier.log &
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
@@ -394,7 +393,7 @@ class Sommelier < Package
         File.write 'stopsommelier', <<~STOPSOMMELIEREOF
           #!/bin/bash
           # Quickest way is to use killall on Xwayland
-          pgrep Xwayland &>/dev/null && killall Xwayland
+          pgrep Xwayland 2>> #{CREW_PREFIX}/var/log/sommelier.log && killall Xwayland
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
             pkill -f sommelier.elf &>/dev/null
@@ -422,7 +421,7 @@ class Sommelier < Package
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
         File.write 'bash.d_sommelier', <<~BASHDSOMMELIEREOF
           source #{CREW_PREFIX}/bin/startsommelier
-          pgrep Xwayland &>/dev/null && source #{CREW_PREFIX}/etc/sommelierrc
+          pgrep Xwayland 2>> #{CREW_PREFIX}/var/log/sommelier.log && source #{CREW_PREFIX}/etc/sommelierrc
         BASHDSOMMELIEREOF
       end
     end
