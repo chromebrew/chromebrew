@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2d5dda093b6d06cdc2811e83293a62bdcf91953fdbe698070f668bfc672f292b',
-     armv7l: '2d5dda093b6d06cdc2811e83293a62bdcf91953fdbe698070f668bfc672f292b',
-     x86_64: 'd4164dab7286bf09f38545ff4178a0d04239762f78b8cac0be5d940fcd01fba7'
+    aarch64: 'cfad8fcc1334545af6184dc05ab4f65446a0439b7d7f69f26b1489494e51cb77',
+     armv7l: 'cfad8fcc1334545af6184dc05ab4f65446a0439b7d7f69f26b1489494e51cb77',
+     x86_64: '5a900c0056f78519c7c96b9e758d51385fcecdd2cbf0416dd79b872c0e8228ad'
   })
 
   depends_on 'gcc' # R
@@ -450,16 +450,17 @@ class Sommelier < Package
 
   def self.postinstall
     # all tasks are done by sommelier.env now
-    FileUtils.cp "#{HOME}/.bashrc", "#{HOME}/.bashrc.bak"
+    @now = Time.now.strftime('%Y%m%d%H%M')
+    FileUtils.cp "#{HOME}/.bashrc", "#{HOME}/.bashrc.#{@now}"
     system "sed -i '/[sS]ommelier/d' #{HOME}/.bashrc"
 
-    if FileUtils.identical?("#{HOME}/.bashrc", "#{HOME}/.bashrc.bak")
-      FileUtils.rm "#{HOME}/.bashrc.bak"
+    if FileUtils.identical?("#{HOME}/.bashrc", "#{HOME}/.bashrc.#{@now}")
+      FileUtils.rm "#{HOME}/.bashrc.#{@now}"
     else
       puts <<~EOT0.lightblue
 
         Removed old sommelier environment variables in ~/.bashrc.
-        A backup of the original is stored in ~/.bashrc.bak.
+        A backup of the original is stored in ~/.bashrc.#{@now}
         To complete the installation, execute the following:
         source ~/.bashrc
       EOT0
