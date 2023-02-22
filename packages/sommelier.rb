@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5071cea7e9e8c892787c386efd9806eeed08c4d4b06c38321b9996505aaf6e86',
-     armv7l: '5071cea7e9e8c892787c386efd9806eeed08c4d4b06c38321b9996505aaf6e86',
-     x86_64: '21183a81b95ed92fa8c83ee502fe7f6caff2e2f145211abe3dc5985c1f7f6178'
+    aarch64: '493c066ee3f6250df407e77133ca00a47d3cfb7521d150dc95905c55013ff647',
+     armv7l: '493c066ee3f6250df407e77133ca00a47d3cfb7521d150dc95905c55013ff647',
+     x86_64: '631631d07ad31b3268d25bd0ce9afb4556648980d23c1aff72215b0f852d5108'
   })
 
   depends_on 'gcc' # R
@@ -362,7 +362,7 @@ class Sommelier < Package
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
             # Allow overriding environment variables before starting sommelier daemon.
-            [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env
+            [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env 2>> /usr/local/var/log/sommelier.log
             #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
             # source #{CREW_PREFIX}/sbin/sommelierd
           fi
