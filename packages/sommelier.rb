@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '04f8f3acdadc9061b6759b75af949c4994c6f45e52093f88a9e4684c57244954',
-     armv7l: '04f8f3acdadc9061b6759b75af949c4994c6f45e52093f88a9e4684c57244954',
-     x86_64: '7e284e4cd610a2a275e78242ec3ad6cebebac58873305a98cb1e2ec4b47074e0'
+    aarch64: 'a7f6c1447c93bf6eaa74b395d93a3c79ca3e7e14ac72864b6247be141aa9be85',
+     armv7l: 'a7f6c1447c93bf6eaa74b395d93a3c79ca3e7e14ac72864b6247be141aa9be85',
+     x86_64: '2c128067ce998c69f693c3d5baf1706e603a1a342ae310f5d1e950b9d2f71d65'
   })
 
   depends_on 'gcc' # R
@@ -32,10 +32,10 @@ class Sommelier < Package
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script
-  depends_on 'psmisc'
+  depends_on 'psmisc' # L
   depends_on 'wayland' # R
   depends_on 'wayland_info' # L
-  depends_on 'xauth'
+  depends_on 'xauth' # L
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.
   depends_on 'xorg_xset' # for xset in wrapper script
@@ -393,7 +393,7 @@ class Sommelier < Package
         File.write 'stopsommelier', <<~STOPSOMMELIEREOF
           #!/bin/bash
           # Quickest way is to use killall on Xwayland
-          pgrep Xwayland 2>> #{CREW_PREFIX}/var/log/sommelier.log && killall Xwayland
+          pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && killall Xwayland
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
             pkill -f sommelier.elf &>/dev/null
@@ -421,7 +421,7 @@ class Sommelier < Package
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
         File.write 'bash.d_sommelier', <<~BASHDSOMMELIEREOF
           source #{CREW_PREFIX}/bin/startsommelier
-          pgrep Xwayland 2>> #{CREW_PREFIX}/var/log/sommelier.log && source #{CREW_PREFIX}/etc/sommelierrc
+          pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && source #{CREW_PREFIX}/etc/sommelierrc
         BASHDSOMMELIEREOF
       end
     end
