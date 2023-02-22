@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c11272f483b99d62e4d05392303be25c65d36be6a1d301823fee918eacf7d681',
-     armv7l: 'c11272f483b99d62e4d05392303be25c65d36be6a1d301823fee918eacf7d681',
-     x86_64: 'b60d7d0ccc260edf646bb930f6a8d81dfdbaf05ba435bcef5bc781417b4d17c6'
+    aarch64: '6beeb6b20ce771cbf999b4e73fff26875fef475daedac6765c6db69c2745d075',
+     armv7l: '6beeb6b20ce771cbf999b4e73fff26875fef475daedac6765c6db69c2745d075',
+     x86_64: 'c8effd129481e73940ed03f7d350d040ac61e5e22dce9fd142df8c6a105bd002'
   })
 
   depends_on 'gcc' # R
@@ -255,7 +255,7 @@ class Sommelier < Package
             xdg_shell_v6=''
 
             # check if exo support xdg_wm_base
-            if [[ -z "$(wayland-info -i xdg_wm_base)" ]]; then
+            if [[ -z "$(WAYLAND_DISPLAY=wayland-0 wayland-info -i xdg_wm_base)" ]]; then
               xdg_shell_v6='--xdg-shell-v6'
             fi
 
@@ -332,8 +332,8 @@ class Sommelier < Package
           function roundhalves {
                   echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
           }
-          pxwidth=$(wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
-          lwidth=$(wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
+          pxwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
+          lwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
           # echo "pxwidth: $pxwidth, lwidth: $lwidth"
           # SCALE needs to be rounded to the nearest 0.5
           SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
