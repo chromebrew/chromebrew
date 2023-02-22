@@ -3,23 +3,23 @@ require 'package'
 class Lvm2 < Package
   description 'LVM2 refers to the userspace toolset that provide logical volume management facilities on linux.'
   homepage 'https://sourceware.org/lvm2'
-  version '2.03.18'
+  version '2.03.19'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://sourceware.org/git/lvm2.git'
   git_hashtag "v#{version.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_armv7l/lvm2-2.03.18-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_armv7l/lvm2-2.03.18-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_i686/lvm2-2.03.18-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.18_x86_64/lvm2-2.03.18-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.19_armv7l/lvm2-2.03.19-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.19_armv7l/lvm2-2.03.19-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.19_i686/lvm2-2.03.19-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.19_x86_64/lvm2-2.03.19-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd9505883f72c0ad509c453c81b1489f46bd90704486e6ad5850905329ff4281e',
-     armv7l: 'd9505883f72c0ad509c453c81b1489f46bd90704486e6ad5850905329ff4281e',
-       i686: 'b25d5d6fe3efb61b9c3355d699e2cb7c076497925dc3125ee3019dabd474bd1c',
-     x86_64: '6dfd9b44c1b7fae9e5bea128a278091b225dd626fb112169519f0541bfeb4d81'
+    aarch64: '66310aeb86c3cd74f561202b8c56fa26fe9e14795c2bd0c2c661fc9ecef47497',
+     armv7l: '66310aeb86c3cd74f561202b8c56fa26fe9e14795c2bd0c2c661fc9ecef47497',
+       i686: '00a31956da2b6c85c1d11bd5b175cabbc91772a86d3f9ff9c02121d03064e6c8',
+     x86_64: 'e814c5e0e9859fd55634bec5a7ca3c7231b2ef017faa52e09b685c2ae89355e8'
   })
 
   depends_on 'glibc' # R
