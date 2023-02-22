@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a7f6c1447c93bf6eaa74b395d93a3c79ca3e7e14ac72864b6247be141aa9be85',
-     armv7l: 'a7f6c1447c93bf6eaa74b395d93a3c79ca3e7e14ac72864b6247be141aa9be85',
-     x86_64: '2c128067ce998c69f693c3d5baf1706e603a1a342ae310f5d1e950b9d2f71d65'
+    aarch64: 'b5e64142b9c4f74c219dd928f15f7df233e4964f476a42229b7626e78bb1615c',
+     armv7l: 'b5e64142b9c4f74c219dd928f15f7df233e4964f476a42229b7626e78bb1615c',
+     x86_64: 'f28a1b463037ec0093d38edd61e3a9f76e2b75f61b4915f7a796e1eab280d9d1'
   })
 
   depends_on 'gcc' # R
@@ -290,7 +290,7 @@ class Sommelier < Package
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 0 || exit 0
           fi
-
+          touch #{CREW_PREFIX}/var/log/sommelier.log
           set -a
           # Set DRM device here so output is visible, but don't run
           # some of these checks in an env.d file since we don't need
@@ -340,7 +340,7 @@ class Sommelier < Package
             (return 0 2>/dev/null) && return 0 || exit 0
           }
           checksommelierxwayland () {
-            DISPLAY="${DISPLAY}" timeout 1s xset q &>/dev/null
+            DISPLAY="${DISPLAY}" timeout 1s xset q &>> #{CREW_PREFIX}/var/log/sommelier.log
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
@@ -365,7 +365,7 @@ class Sommelier < Package
             set +a
             echo -e "\e[1;33m""Sommelier SCALE is set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
             echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
-            #{CREW_PREFIX}/sbin/sommelierd &>> #{CREW_PREFIX}/var/log/sommelier.log &
+            #{CREW_PREFIX}/sbin/sommelierd &>> #{CREW_PREFIX}/var/log/sommelierd.log &
           fi
           wait=3
           until checksommelierwayland && checksommelierxwayland; do
@@ -396,9 +396,9 @@ class Sommelier < Package
           pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && killall Xwayland
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
           if [[ "${SOMM}" -gt "0" ]]; then
-            pkill -f sommelier.elf &>/dev/null
-            pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>/dev/null
-            pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>/dev/null
+            pkill -f sommelier.elf &>> #{CREW_PREFIX}/var/log/sommelier.log
+            pkill -F #{CREW_PREFIX}/var/run/sommelier-wayland.pid &>> #{CREW_PREFIX}/var/log/sommelier.log
+            pkill -F #{CREW_PREFIX}/var/run/sommelier-xwayland.pid &>> #{CREW_PREFIX}/var/log/sommelier.log
           else
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 0 || exit 0
