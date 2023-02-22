@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6beeb6b20ce771cbf999b4e73fff26875fef475daedac6765c6db69c2745d075',
-     armv7l: '6beeb6b20ce771cbf999b4e73fff26875fef475daedac6765c6db69c2745d075',
-     x86_64: 'c8effd129481e73940ed03f7d350d040ac61e5e22dce9fd142df8c6a105bd002'
+    aarch64: '5071cea7e9e8c892787c386efd9806eeed08c4d4b06c38321b9996505aaf6e86',
+     armv7l: '5071cea7e9e8c892787c386efd9806eeed08c4d4b06c38321b9996505aaf6e86',
+     x86_64: '21183a81b95ed92fa8c83ee502fe7f6caff2e2f145211abe3dc5985c1f7f6178'
   })
 
   depends_on 'gcc' # R
@@ -336,8 +336,12 @@ class Sommelier < Package
           lwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
           # echo "pxwidth: $pxwidth, lwidth: $lwidth"
           # SCALE needs to be rounded to the nearest 0.5
-          SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
-          echo -e "\e[1;33m""Sommelier SCALE automatically set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
+          # Check to see if pxwidth and lwidth are integers before calculating SCALE.
+          # wayland-info on armv7l does not show lwidth, but aarch64 does.
+          if [[ $pxwidth == ?(-)+([0-9]) ]] && [[ $lwidth == ?(-)+([0-9]) ]]; then
+            SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
+          fi
+          echo -e "\e[1;33m""Sommelier SCALE was set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
           echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
           set +a
 
