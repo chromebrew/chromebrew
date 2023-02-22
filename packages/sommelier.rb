@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0e60851e94db618826f02254fae426d451bb04997d78916c7d0dfeed97bae540',
-     armv7l: '0e60851e94db618826f02254fae426d451bb04997d78916c7d0dfeed97bae540',
-     x86_64: '9fd40cb244aaab9f25496fba779334ca377ac375e658d0b3899920ee3a16cd02'
+    aarch64: 'df91be068c3ba691d57f740b8fa99158446940488204a4582dada0015d6b0e76',
+     armv7l: 'df91be068c3ba691d57f740b8fa99158446940488204a4582dada0015d6b0e76',
+     x86_64: '52838d797529f72d300124f6cf1080d695add9c897ef6142ef04167a850a1a4c'
   })
 
   depends_on 'gcc' # R
@@ -136,8 +136,6 @@ class Sommelier < Package
       Dir.chdir('builddir') do
         system 'curl -L "https://chromium.googlesource.com/chromiumos/containers/sommelier/+/fbdefff6230026ac333eac0924d71cf824e6ecd8/sommelierrc?format=TEXT" | base64 --decode > sommelierrc'
         system "sed -i '/exit 0/d' sommelierrc"
-        system "echo '# Return or exit depending upon whether script was sourced.' >> sommelierrc"
-        system "echo '(return 0 2>/dev/null) && return 0 || exit 0' >> sommelierrc"
 
         File.write 'sommelierenv', <<~SOMMELIERENVEOF
           set -a
@@ -422,7 +420,7 @@ class Sommelier < Package
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
         File.write 'bash.d_sommelier', <<~BASHDSOMMELIEREOF
           source #{CREW_PREFIX}/bin/startsommelier
-          pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && source #{CREW_PREFIX}/etc/sommelierrc
+          pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && #{CREW_PREFIX}/etc/sommelierrc &>> #{CREW_PREFIX}/var/log/sommelier.log
         BASHDSOMMELIEREOF
       end
     end
@@ -441,7 +439,7 @@ class Sommelier < Package
         FileUtils.ln_sf 'startsommelier', "#{CREW_DEST_PREFIX}/bin/initsommelier"
         FileUtils.install 'stopsommelier', "#{CREW_DEST_PREFIX}/bin/stopsommelier", mode: 0o755
         FileUtils.install 'restartsommelier', "#{CREW_DEST_PREFIX}/bin/restartsommelier", mode: 0o755
-        FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o644
+        FileUtils.install 'sommelierrc', "#{CREW_DEST_PREFIX}/etc/sommelierrc", mode: 0o755
         FileUtils.install 'sommelierenv', "#{CREW_DEST_PREFIX}/etc/env.d/sommelier", mode: 0o644
         FileUtils.install 'bash.d_sommelier', "#{CREW_DEST_PREFIX}/etc/bash.d/sommelier", mode: 0o644
       end
