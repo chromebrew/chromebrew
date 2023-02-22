@@ -16,10 +16,10 @@ class P7zip_gui < Package
 
   case ARCH
   when 'x86_64'
-    depends_on 'yasm' # needed for compiling the faster asm binary
+    depends_on 'yasm' => :build # needed for compiling the faster asm binary
     @_makefile = 'makefile.linux_amd64_asm'
   when 'i686'
-    depends_on 'nasm' # needed for compiling the faster asm binary
+    depends_on 'nasm' => :build # needed for compiling the faster asm binary
     @_makefile = 'makefile.linux_x86_asm_gcc_4.X'
   else
     @_makefile = 'makefile.linux_any_cpu'

@@ -22,7 +22,7 @@ class Libxvid < Package
      x86_64: 'e990606cef5b83dcffa96e6595538240934c6f926ca49701c165322811f8a44f'
   })
 
-  depends_on 'yasm'
+  depends_on 'yasm' => :build
 
   def self.build
     FileUtils.cd('build/generic') do
