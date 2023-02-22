@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bd3b72361e569654ba9d79b1d6f2c779e97ab4a1d51d4244ecc620e3813967a8',
-     armv7l: 'bd3b72361e569654ba9d79b1d6f2c779e97ab4a1d51d4244ecc620e3813967a8',
-     x86_64: 'f952d03857683b2a89537fca6469798a41a2deb24bd50e46fb903ed5c875daa2'
+    aarch64: '04f8f3acdadc9061b6759b75af949c4994c6f45e52093f88a9e4684c57244954',
+     armv7l: '04f8f3acdadc9061b6759b75af949c4994c6f45e52093f88a9e4684c57244954',
+     x86_64: '7e284e4cd610a2a275e78242ec3ad6cebebac58873305a98cb1e2ec4b47074e0'
   })
 
   depends_on 'gcc' # R
@@ -258,7 +258,7 @@ class Sommelier < Package
               xdg_shell_v6='--xdg-shell-v6'
             fi
 
-            xauth_cmd="xauth generate ${DISPLAY} . trusted"
+            xauth_cmd="touch ~/.Xauthority ; xauth generate ${DISPLAY} . trusted"
             # --enable-xshape Appears to be broken as of Feb 17, 2023.
             sommelier_cmd="sommelier -X \
               --x-display=${DISPLAY} \
@@ -361,7 +361,7 @@ class Sommelier < Package
               SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
             fi
             # Allow overriding environment variables before starting sommelier daemon.
-            [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env 2>> /usr/local/var/log/sommelier.log
+            [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env 2>> #{CREW_PREFIX}/var/log/sommelier.log
             set +a
             echo -e "\e[1;33m""Sommelier SCALE is set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
             echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
