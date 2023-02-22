@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '493c066ee3f6250df407e77133ca00a47d3cfb7521d150dc95905c55013ff647',
-     armv7l: '493c066ee3f6250df407e77133ca00a47d3cfb7521d150dc95905c55013ff647',
-     x86_64: '631631d07ad31b3268d25bd0ce9afb4556648980d23c1aff72215b0f852d5108'
+    aarch64: '2d5dda093b6d06cdc2811e83293a62bdcf91953fdbe698070f668bfc672f292b',
+     armv7l: '2d5dda093b6d06cdc2811e83293a62bdcf91953fdbe698070f668bfc672f292b',
+     x86_64: 'd4164dab7286bf09f38545ff4178a0d04239762f78b8cac0be5d940fcd01fba7'
   })
 
   depends_on 'gcc' # R
@@ -149,7 +149,6 @@ class Sommelier < Package
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 0 || exit 0
           fi
-          SCALE=${SCALE:-1}
           SOMMELIER_ACCELERATORS='Super_L,<Alt>bracketleft,<Alt>bracketright'
           WAYLAND_DISPLAY=wayland-0
           XDG_RUNTIME_DIR=/var/run/chrome
@@ -328,23 +327,7 @@ class Sommelier < Package
             echo -e "\e[1;33m""Sommelier can use direct scaling.""\e[0m"
             SOMMELIER_DIRECT_SCALE='--direct-scale'
           fi
-          # via https://stackoverflow.com/questions/47027323/round-to-the-nearest-0-5-decimal-in-bash/47027557#47027557
-          function roundhalves {
-                  echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
-          }
-          pxwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
-          lwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
-          # echo "pxwidth: $pxwidth, lwidth: $lwidth"
-          # SCALE needs to be rounded to the nearest 0.5
-          # Check to see if pxwidth and lwidth are integers before calculating SCALE.
-          # wayland-info on armv7l does not show lwidth, but aarch64 does.
-          if [[ $pxwidth == ?(-)+([0-9]) ]] && [[ $lwidth == ?(-)+([0-9]) ]]; then
-            SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
-          fi
-          echo -e "\e[1;33m""Sommelier SCALE was set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
-          echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
           set +a
-
           checksommelierwayland () {
             #if [ -f "#{CREW_PREFIX}/var/run/sommelier-wayland.pid" ]; then
             #  /sbin/ss --unix -a -p |\
@@ -361,8 +344,27 @@ class Sommelier < Package
           }
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
+            set -a
+            # Set default SCALE to 1.
+            SCALE=${SCALE:-1}
+            # via https://stackoverflow.com/questions/47027323/round-to-the-nearest-0-5-decimal-in-bash/47027557#47027557
+            function roundhalves {
+                    echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
+            }
+            pxwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i wl_output | grep width: | grep px | head -n 1 | awk '{print $2}')
+            lwidth=$(WAYLAND_DISPLAY=wayland-0 wayland-info -i zxdg_output_manager_v1 | grep logical_width:  | sed 's/,//' | awk '{print $2}')
+            # echo "pxwidth: $pxwidth, lwidth: $lwidth"
+            # SCALE needs to be rounded to the nearest 0.5
+            # Check to see if pxwidth and lwidth are integers before calculating SCALE.
+            # wayland-info on armv7l does not show lwidth, but aarch64 does.
+            if [[ $pxwidth == ?(-)+([0-9]) ]] && [[ $lwidth == ?(-)+([0-9]) ]]; then
+              SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
+            fi
             # Allow overriding environment variables before starting sommelier daemon.
             [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env 2>> /usr/local/var/log/sommelier.log
+            set +a
+            echo -e "\e[1;33m""Sommelier SCALE is set to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
+            echo -e "\e[1;33m""SCALE may be manually set in ~/.sommelier.env .""\e[0m"
             #{CREW_PREFIX}/sbin/sommelierd &>/dev/null &
             # source #{CREW_PREFIX}/sbin/sommelierd
           fi
