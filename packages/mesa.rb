@@ -150,7 +150,7 @@ class Mesa < Package
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff',
                  'b769f0eb2db0b71723f8ad6f20c03a166a54eab74bfd292cf5b9c8ea86d2c73b'
       # Refreshed llvm15 patch from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17518.diff
-      @mesa_17518_patch = <<~'PATCH_EOF'
+      @mesa_17518_patch = <<~PATCH_EOF
         diff -Npaur a/lp_bld_arit.c b/lp_bld_arit.c
         --- a/src/gallium/auxiliary/gallivm/lp_bld_arit.c
         +++ b/src/gallium/auxiliary/gallivm/lp_bld_arit.c
