@@ -3,43 +3,44 @@ require 'package'
 class Libadwaita < Package
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  @_ver = '1.2.0'
-  version "#{@_ver}-1"
+  @_ver = '1.2.2'
+  version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.0-1_armv7l/libadwaita-1.2.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.0-1_armv7l/libadwaita-1.2.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.0-1_i686/libadwaita-1.2.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.0-1_x86_64/libadwaita-1.2.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_armv7l/libadwaita-1.2.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_armv7l/libadwaita-1.2.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_i686/libadwaita-1.2.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_x86_64/libadwaita-1.2.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c554162f65773ba5b814131091279d803bd1960b1907e27ab195f9cc324b74ed',
-     armv7l: 'c554162f65773ba5b814131091279d803bd1960b1907e27ab195f9cc324b74ed',
-       i686: '0f519fa0b42782fa36fd3bec21e4aba8b1afcf89e38c2066c9c5a90881b71ab5',
-     x86_64: 'eca2ddef9d0e97b70dc3dde07b1bdb2c712f40430bb0609b13c409384db75d02'
+    aarch64: '698ecd25158bafb2e9f5f4572df26d9e9e2d12320659a99fa43635682717b161',
+     armv7l: '698ecd25158bafb2e9f5f4572df26d9e9e2d12320659a99fa43635682717b161',
+       i686: '73d649873455a83191b93f702baafdcef91193a5ea5d83bc5415d0fac030f859',
+     x86_64: '2c2316140dc142bc48e5eda47136ffafaf686e164e708bee276e714dca4d6f3f'
   })
 
   depends_on 'cairo'
+  depends_on 'fribidi' # R
   depends_on 'gdk_pixbuf'
-  depends_on 'glib'
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene'
-  depends_on 'gtk4'
+  depends_on 'graphene' # R
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
   depends_on 'libjpeg'
-  depends_on 'pango'
-  depends_on 'py3_gi_docgen' => :build
   depends_on 'libsass' => :build
+  depends_on 'pango' # R
+  depends_on 'py3_gi_docgen' => :build
   depends_on 'sassc' => :build
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'fribidi' # R
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
   depends_on 'vulkan_icd_loader' # R
+
   gnome
 
   def self.build
