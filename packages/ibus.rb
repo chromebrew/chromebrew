@@ -3,7 +3,7 @@ require 'package'
 class Ibus < Package
   description 'Next Generation Input Bus for Linux'
   homepage 'https://github.com/ibus/ibus/wiki'
-  @_ver = '1.5.25'
+  @_ver = '1.5.28'
   version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Ibus < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_armv7l/ibus-1.5.25-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_armv7l/ibus-1.5.25-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_i686/ibus-1.5.25-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.25_x86_64/ibus-1.5.25-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.28_armv7l/ibus-1.5.28-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.28_armv7l/ibus-1.5.28-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.28_i686/ibus-1.5.28-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.28_x86_64/ibus-1.5.28-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '422f1a98bd9d3f8cae040fceaf56725b0493996f8a9768dfc6b517b695af9d45',
-     armv7l: '422f1a98bd9d3f8cae040fceaf56725b0493996f8a9768dfc6b517b695af9d45',
-       i686: 'cef3949b6b3dce1feeab92375135894070585d1aaeb107701c6c2b5e4755795b',
-     x86_64: 'ddc0ce92ae7723c87ef3527e47a69684e3ac65b3adb0b2c7fe4cdbf6e9580235'
+    aarch64: '0da10f4284f8f9f53120eb73da5310f7467038e33f68537bf5f247fd85df3778',
+     armv7l: '0da10f4284f8f9f53120eb73da5310f7467038e33f68537bf5f247fd85df3778',
+       i686: '802e477595ac64a073a9eda3811cd1aa31c9a6e9c93cee36e5ca22e07aa8ed63',
+     x86_64: '85e9181167b7238411d198bff3f673d40693b8391e0dd1a4cc1bbaaa4ce02303'
   })
 
   depends_on 'atk'
@@ -33,6 +33,7 @@ class Ibus < Package
   depends_on 'graphene'
   depends_on 'harfbuzz'
   depends_on 'hicolor_icon_theme'
+  depends_on 'iso_codes'
   depends_on 'libnotify'
   depends_on 'libx11'
   depends_on 'libxi'
@@ -40,6 +41,7 @@ class Ibus < Package
   depends_on 'pygobject'
   depends_on 'unicode_cldr'
   depends_on 'unicode_emoji'
+  depends_on 'vulkan_headers'
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland'
   depends_on 'gobject_introspection' => :build
@@ -70,11 +72,15 @@ class Ibus < Package
     --disable-memconf \
     --enable-ui \
     --disable-python2 \
+    --disable-systemd-services \
     --with-unicode-emoji-dir=#{CREW_PREFIX}/share/unicode/emoji \
     --with-emoji-annotation-dir=#{CREW_PREFIX}/share/unicode/cldr/common/annotations \
     --with-python=python3 \
     --with-ucd-dir=#{CREW_PREFIX}/share/unicode"
-    system "curl -Lf https://github.com/ibus/ibus/raw/#{@_ver}/engine/denylist.txt -o engine/denylist.txt" unless File.exist?('engine/denylist.txt')
+    unless File.exist?('engine/denylist.txt')
+      downloader "https://github.com/ibus/ibus/raw/#{@_ver}/engine/denylist.txt",
+                 '8589b87200d2e7dbf8a413129270d678e83b727bb5b7f8607e62cb9e40d2fdf1'
+    end
     system 'make'
   end
 
