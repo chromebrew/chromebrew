@@ -27,6 +27,7 @@ class Gnome_terminal < Package
   depends_on 'atk' # R
   depends_on 'at_spi2_core' # R
   depends_on 'dconf' => :build
+  depends_on 'dbus' # L
   depends_on 'desktop_file_utilities' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
@@ -59,5 +60,6 @@ class Gnome_terminal < Package
 
   def self.postinstall
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
+    puts 'gnome-terminal should be launched using "dbus-launch gnome-terminal"'.lightblue
   end
 end
