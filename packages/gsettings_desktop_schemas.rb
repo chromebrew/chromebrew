@@ -3,7 +3,7 @@ require 'package'
 class Gsettings_desktop_schemas < Package
   description 'Collection of GSettings schemas for GNOME desktop.'
   homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
-  @_ver = '43.0'
+  @_ver = '44.beta'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Gsettings_desktop_schemas < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/43.0_armv7l/gsettings_desktop_schemas-43.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/43.0_armv7l/gsettings_desktop_schemas-43.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/43.0_i686/gsettings_desktop_schemas-43.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/43.0_x86_64/gsettings_desktop_schemas-43.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.beta_armv7l/gsettings_desktop_schemas-44.beta-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.beta_armv7l/gsettings_desktop_schemas-44.beta-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.beta_i686/gsettings_desktop_schemas-44.beta-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.beta_x86_64/gsettings_desktop_schemas-44.beta-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'baa1861484b9291c7a1c22e22dd08478689907564f6947cc97e8f30cb2cc4d44',
-     armv7l: 'baa1861484b9291c7a1c22e22dd08478689907564f6947cc97e8f30cb2cc4d44',
-       i686: '6ccf93dcbfd48dc7d43f4a2a115ab4eae1a6238916868e068726cdcee259e908',
-     x86_64: '6df95b4f1cea0c2ffcb39a606ddb87686a15f682f7777bc35ae68793cea1e371'
+    aarch64: '3dc0496c2be85936884bd6841b2136add5aa883eec33926fadd6ac4358b46f8e',
+     armv7l: '3dc0496c2be85936884bd6841b2136add5aa883eec33926fadd6ac4358b46f8e',
+       i686: '4e9ac1a1ef5a84f66c39bd3390a96757353df6e4a8b5d935e620674ad8575008',
+     x86_64: '0e3f608fde5304b2f75897f6016990add9900434a0e64264f9d1c245f91288bc'
   })
 
   # depends_on 'gnome_common'
@@ -38,5 +38,9 @@ class Gsettings_desktop_schemas < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+  end
+
+  def self.postinstall
+    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
   end
 end
