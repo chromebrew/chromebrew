@@ -3,21 +3,21 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230217-1'
+  version '20230217-2'
   license 'BSD-Google'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_armv7l/sommelier-20230217-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_armv7l/sommelier-20230217-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-1_x86_64/sommelier-20230217-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2_armv7l/sommelier-20230217-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2_armv7l/sommelier-20230217-2-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2_x86_64/sommelier-20230217-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'df91be068c3ba691d57f740b8fa99158446940488204a4582dada0015d6b0e76',
-     armv7l: 'df91be068c3ba691d57f740b8fa99158446940488204a4582dada0015d6b0e76',
-     x86_64: '52838d797529f72d300124f6cf1080d695add9c897ef6142ef04167a850a1a4c'
+    aarch64: '8d1c8ef58af52f95406a9e33ff36d0a3f13ca44415aa05e844b40897ccc20bb9',
+     armv7l: '8d1c8ef58af52f95406a9e33ff36d0a3f13ca44415aa05e844b40897ccc20bb9',
+     x86_64: '63bd561fe46b6aff5b0124ec450d967706487d58e294998e2f35abfeefdce566'
   })
 
   depends_on 'gcc' # R
@@ -289,7 +289,7 @@ class Sommelier < Package
             # Return or exit depending upon whether script was sourced.
             (return 0 2>/dev/null) && return 0 || exit 0
           fi
-          touch #{CREW_PREFIX}/var/log/sommelier.log
+          mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/sommelier.log
           set -a
           # Set DRM device here so output is visible, but don't run
           # some of these checks in an env.d file since we don't need
@@ -344,8 +344,6 @@ class Sommelier < Package
           if ! checksommelierwayland || ! checksommelierxwayland ; then
             [ -f  #{CREW_PREFIX}/bin/stopbroadway ] && stopbroadway
             set -a
-            # Set default SCALE to 1.
-            SCALE=${SCALE:-1}
             # via https://stackoverflow.com/questions/47027323/round-to-the-nearest-0-5-decimal-in-bash/47027557#47027557
             function roundhalves {
                     echo "$1 * 2" | bc | xargs -I@ printf "%1.f" @ | xargs -I% echo "% * .5" | bc
@@ -356,9 +354,11 @@ class Sommelier < Package
             # SCALE needs to be rounded to the nearest 0.5
             # Check to see if pxwidth and lwidth are integers before calculating SCALE.
             # wayland-info on armv7l does not show lwidth, but aarch64 does.
-            if [[ $pxwidth == ?(-)+([0-9]) ]] && [[ $lwidth == ?(-)+([0-9]) ]]; then
+            if [[ $pxwidth == ?(-)+([0-9]) ]] && [[ $lwidth == ?(-)+([0-9]) ]] && [[ -z "$SCALE" ]] ; then
               SCALE=$(roundhalves $(echo "scale=2 ;$lwidth / $pxwidth" | bc))
             fi
+            # Set default SCALE to 1 if unset.
+            SCALE=${SCALE:-1}
             # Allow overriding environment variables before starting sommelier daemon.
             [ -f "$HOME/.sommelier.env" ] && source ~/.sommelier.env 2>> #{CREW_PREFIX}/var/log/sommelier.log
             set +a
@@ -391,6 +391,7 @@ class Sommelier < Package
         # stopsommelier
         File.write 'stopsommelier', <<~STOPSOMMELIEREOF
           #!/bin/bash
+          mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/sommelier.log
           # Quickest way is to use killall on Xwayland
           pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && killall Xwayland
           SOMM="$(pgrep -fc sommelier.elf 2> /dev/null)"
@@ -420,6 +421,7 @@ class Sommelier < Package
         # start sommelier from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
         File.write 'bash.d_sommelier', <<~BASHDSOMMELIEREOF
           source #{CREW_PREFIX}/bin/startsommelier
+          mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/sommelier.log
           pgrep Xwayland &>> #{CREW_PREFIX}/var/log/sommelier.log && #{CREW_PREFIX}/etc/sommelierrc &>> #{CREW_PREFIX}/var/log/sommelier.log
         BASHDSOMMELIEREOF
       end
