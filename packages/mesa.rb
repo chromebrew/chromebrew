@@ -11,8 +11,8 @@ class Mesa < Package
     @_ver = git_hashtag[0, 7]
     version "21.3.9-#{@_ver}"
   else
-    @_ver = '23.0.0-rc5'
-    version @_ver
+    @_ver = '23.0.0'
+    version "#{@_ver}-llvm15"
     git_hashtag "mesa-#{@_ver}"
   end
   license 'MIT'
@@ -34,14 +34,14 @@ class Mesa < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-rc5_armv7l/mesa-23.0.0-rc5-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-rc5_armv7l/mesa-23.0.0-rc5-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-rc5_x86_64/mesa-23.0.0-rc5-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm15_armv7l/mesa-mesa-23.0.0-llvm15-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm15_armv7l/mesa-mesa-23.0.0-llvm15-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm15_x86_64/mesa-23.0.0-llvm15-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: 'c4887c502708b31b3068cfffa54a160433942fca9aaf5fe58425afb6424eb8e5',
-       armv7l: 'c4887c502708b31b3068cfffa54a160433942fca9aaf5fe58425afb6424eb8e5',
-       x86_64: 'b9ff208928e1d1fecb869d93cf2c7a927bff19815062646ffceab535984e787f'
+      aarch64: 'ba3d38a9e4690149c98ab5e68c588cab1d94335ff2cef8b2ca8750fff4e13a06',
+       armv7l: 'ba3d38a9e4690149c98ab5e68c588cab1d94335ff2cef8b2ca8750fff4e13a06',
+       x86_64: 'a91a8d5f5b2c7d766d36e644564a29d4107b823ee3cf0f08691e9b6e78ad497c'
     })
   end
 
@@ -83,7 +83,6 @@ class Mesa < Package
 
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('5.10')
     def self.patch
-      puts 'Downloading mesa amber patches...'.yellow
       case ARCH
       when 'aarch64', 'armv7l'
         # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5067
@@ -134,31 +133,24 @@ class Mesa < Package
       # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.diff',
                  '76d2dd16532336837bccd4885c40efed0ab5f1de8e8fa114a7835dc269f221ac'
-      puts 'downloaded p1'
       # mesa: Implement ANGLE_sync_control_rate (used by Chrome browser)
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff',
                  '1391e189f5ad40a711a6f72a7d59aef1b943ec9dc408852f5f562699bf50ba6c'
-      puts 'downloaded p2'
       # The following patches are all for llvm 15:
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15091.diff',
                  'c53387c9fce1f34b6d7c0272ebef148dda59dea35fd83df2f3f4a0033732ebbd'
-      puts 'downloaded p3'
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15232.diff',
                  'c66b6b03a59ad43a89bc7ab4e04f8c311631d27c3ea6769217c09beef707d6c3'
-      puts 'downloaded p4'
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16129.diff',
                  '88e5d7f6b4e6dd4ac7220cf194aab6e86d748a8cb99a86515eb4c6bdf9b20959'
-      puts 'downloaded p5'
       # system "curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff"
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff',
                  '56725f4238d8bb60d813db1724e37bf149345ff456c0c2792f0982d237c18cf1'
-      puts 'downloaded p6'
       # system "curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff"
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff',
                  'b769f0eb2db0b71723f8ad6f20c03a166a54eab74bfd292cf5b9c8ea86d2c73b'
-      puts 'downloaded p7'
       # Refreshed llvm15 patch from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17518.diff
-      @mesa_17518_patch = <<~PATCH_EOF
+      @mesa_17518_patch = <<~'PATCH_EOF'
         diff -Npaur a/lp_bld_arit.c b/lp_bld_arit.c
         --- a/src/gallium/auxiliary/gallivm/lp_bld_arit.c
         +++ b/src/gallium/auxiliary/gallivm/lp_bld_arit.c
@@ -288,7 +280,6 @@ class Mesa < Package
 
       PATCH_EOF
       File.write('17518.patch', @mesa_17518_patch)
-      puts 'done downloading patches'
       system 'patch', '-Np1', '-i', '13273.diff'
       system 'patch', '-Np1', '-i', '15381.diff'
       system 'patch', '-Np1', '-i', '15091.diff'
