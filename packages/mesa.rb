@@ -27,8 +27,8 @@ class Mesa < Package
        x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-14d7da2_x86_64/mesa-21.3.9-14d7da2-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: 'c447aa959d8940bc9e291d2a6c28e23364b3f8db45ac277a2b27bc091be82789 ',
-       armv7l: 'c447aa959d8940bc9e291d2a6c28e23364b3f8db45ac277a2b27bc091be82789 ',
+      aarch64: 'c447aa959d8940bc9e291d2a6c28e23364b3f8db45ac277a2b27bc091be82789',
+       armv7l: 'c447aa959d8940bc9e291d2a6c28e23364b3f8db45ac277a2b27bc091be82789',
          i686: '6ec1ca595287ed62bacc68dc5fc426ee1f020ace31c7c6f3a4973c43968a01a6',
        x86_64: '3726cde150f952bc125661554a3620d746e1a5fb3438ef2458bcf080159affb7'
     })
