@@ -7,12 +7,12 @@ class Mesa < Package
   # and current mesa versions for newer kernels.
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('5.10')
     # Built off of the mesa amber branch
-    git_hashtag 'acfef002a081f36e6eebc6e8ab908a36ab18f68c'
+    git_hashtag '14d7da24640dadfb55769cfc93e13ab653996fed'
     @_ver = git_hashtag[0, 7]
-    version "amber-#{@_ver}"
+    version "21.3.9-#{@_ver}"
   else
-    @_ver = '22.3.4'
-    version @_ver
+    @_ver = '23.0.0'
+    version "#{@_ver}-llvm15"
     git_hashtag "mesa-#{@_ver}"
   end
   license 'MIT'
@@ -21,27 +21,27 @@ class Mesa < Package
 
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('5.10')
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_armv7l/mesa-amber-acfef00-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_armv7l/mesa-amber-acfef00-chromeos-armv7l.tar.zst',
-         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_i686/mesa-amber-acfef00-chromeos-i686.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/amber-acfef00_x86_64/mesa-amber-acfef00-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-14d7da2_armv7l/mesa-21.3.9-14d7da2-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-14d7da2_armv7l/mesa-21.3.9-14d7da2-chromeos-armv7l.tar.zst',
+         i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-14d7da2_i686/mesa-21.3.9-14d7da2-chromeos-i686.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/21.3.9-14d7da2_x86_64/mesa-21.3.9-14d7da2-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: 'e9ef6ce22956bdae6f75a44e953cc189f08a3c7e7cf9235a24dbe77f94dc39dd',
-       armv7l: 'e9ef6ce22956bdae6f75a44e953cc189f08a3c7e7cf9235a24dbe77f94dc39dd',
-         i686: '596ce6a08d3b63ba990058acdf876e4b815882e3d0e0c61bfcd079fdfeb6fb9f',
-       x86_64: '9fe6dfd910312956da149dd5cd95f2fd58f7ca4bd8a4dbc646ec11ac3864a683'
+      aarch64: 'c447aa959d8940bc9e291d2a6c28e23364b3f8db45ac277a2b27bc091be82789 ',
+       armv7l: 'c447aa959d8940bc9e291d2a6c28e23364b3f8db45ac277a2b27bc091be82789 ',
+         i686: '6ec1ca595287ed62bacc68dc5fc426ee1f020ace31c7c6f3a4973c43968a01a6',
+       x86_64: '3726cde150f952bc125661554a3620d746e1a5fb3438ef2458bcf080159affb7'
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.4_armv7l/mesa-22.3.4-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.4_armv7l/mesa-22.3.4-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/22.3.4_x86_64/mesa-22.3.4-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm15_armv7l/mesa-mesa-23.0.0-llvm15-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm15_armv7l/mesa-mesa-23.0.0-llvm15-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm15_x86_64/mesa-23.0.0-llvm15-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '2374719284c66e8c35409d19ec45aacf123a46cc3d712ed6aea914d0ffd55756',
-       armv7l: '2374719284c66e8c35409d19ec45aacf123a46cc3d712ed6aea914d0ffd55756',
-       x86_64: '6dd7cf29a88f87bce15526f5f05a810eb9d2e9aa3ebe350ee60566117974c45b'
+      aarch64: 'ba3d38a9e4690149c98ab5e68c588cab1d94335ff2cef8b2ca8750fff4e13a06',
+       armv7l: 'ba3d38a9e4690149c98ab5e68c588cab1d94335ff2cef8b2ca8750fff4e13a06',
+       x86_64: 'a91a8d5f5b2c7d766d36e644564a29d4107b823ee3cf0f08691e9b6e78ad497c'
     })
   end
 
@@ -107,7 +107,6 @@ class Mesa < Package
                    #endif
         FREEDRENOPATCHEOF
         File.write('freedreno.patch', @freedrenopatch)
-        system 'patch -Np1 -i freedreno.patch'
         # See https://gitlab.freedesktop.org/mesa/mesa/-/issues/3505
         @tegrapatch = <<~TEGRAPATCHEOF
                   diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c b/src/gallium/drivers/nouveau/nvc0/nvc0_state_validate.c
@@ -126,48 +125,32 @@ class Mesa < Package
                          }
         TEGRAPATCHEOF
         File.write('tegra.patch', @tegrapatch)
+
+        system 'patch -Np1 -i freedreno.patch'
         system 'patch -Np1 -i tegra.patch'
       end
       # llvm 13/14 patch  See https://gitlab.freedesktop.org/mesa/mesa/-/issues/5455
-      # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.patch
+      # & https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/13273.diff',
                  '76d2dd16532336837bccd4885c40efed0ab5f1de8e8fa114a7835dc269f221ac'
-      system 'patch -Np1 -i 13273.diff'
       # mesa: Implement ANGLE_sync_control_rate (used by Chrome browser)
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15381.diff',
                  '1391e189f5ad40a711a6f72a7d59aef1b943ec9dc408852f5f562699bf50ba6c'
-      system 'patch -Np1 -i 15381.diff'
-      # llvm 15 patch
-      puts 'patch 1'
+      # The following patches are all for llvm 15:
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15091.diff',
                  'c53387c9fce1f34b6d7c0272ebef148dda59dea35fd83df2f3f4a0033732ebbd'
-      system 'patch -Np1 -i 15091.diff'
-      # another llvm 15 patch
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15232.diff',
                  'c66b6b03a59ad43a89bc7ab4e04f8c311631d27c3ea6769217c09beef707d6c3'
-      system 'patch -Np1 -i 15232.diff'
-      # another llvm 15 patch
-      puts 'patch 3'
       downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16129.diff',
                  '88e5d7f6b4e6dd4ac7220cf194aab6e86d748a8cb99a86515eb4c6bdf9b20959'
-      system 'patch -Np1 -i 16129.diff'
-      # another llvm 15 patch
-      puts 'patch 4'
-      # downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff',
-      #            '56725f4238d8bb60d813db1724e37bf149345ff456c0c2792f0982d237c18cf1'
-      system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff'
-      puts 'installing patch 4'
-      system 'patch -Np1 -F 10  -i 16289.diff'
-      # another llvm 15 patch
-      puts 'patch 5'
-      # downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff',
-      #            'b769f0eb2db0b71723f8ad6f20c03a166a54eab74bfd292cf5b9c8ea86d2c73b'
-      system 'curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff'
-      system 'patch -Np1 -i 17514.diff'
-      puts 'downloader done'
-      # another llvm 15 patch
-      # Refreshed patch from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17518.diff
-      @mesa_patch = <<~'PATCH_EOF'
+      # system "curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff"
+      downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16289.diff',
+                 '56725f4238d8bb60d813db1724e37bf149345ff456c0c2792f0982d237c18cf1'
+      # system "curl -OLf https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff"
+      downloader 'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17514.diff',
+                 'b769f0eb2db0b71723f8ad6f20c03a166a54eab74bfd292cf5b9c8ea86d2c73b'
+      # Refreshed llvm15 patch from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17518.diff
+      @mesa_17518_patch = <<~PATCH_EOF
         diff -Npaur a/lp_bld_arit.c b/lp_bld_arit.c
         --- a/src/gallium/auxiliary/gallivm/lp_bld_arit.c
         +++ b/src/gallium/auxiliary/gallivm/lp_bld_arit.c
@@ -296,41 +279,61 @@ class Mesa < Package
              * We don't use RCPPS because:
 
       PATCH_EOF
-      File.write('mesa.patch', @mesa_patch)
-      system 'patch -p1 -i mesa.patch'
+      File.write('17518.patch', @mesa_17518_patch)
+      system 'patch', '-Np1', '-i', '13273.diff'
+      system 'patch', '-Np1', '-i', '15381.diff'
+      system 'patch', '-Np1', '-i', '15091.diff'
+      system 'patch', '-Np1', '-i', '15232.diff'
+      system 'patch', '-Np1', '-i', '16129.diff'
+      system 'patch', '-Np1', '-F', '10', '-i', '16289.diff'
+      system 'patch', '-Np1', '-i', '17514.diff'
+      system 'patch', '-Np1', '-i', '17518.patch'
     end
 
     def self.build
       case ARCH
       when 'i686'
-        @vk = 'intel,swrast'
-        @galliumdrivers = 'swrast,svga,virgl,zink'
-        @lto = CREW_MESON_FNO_LTO_OPTIONS
-        @osmesa = 'false'
+        @egl_amber = 'enabled'
+        @vulkan_drivers_amber = 'intel,swrast'
+        @gallium_drivers_amber = 'auto'
+        @lto_amber_meson_options = CREW_MESON_FNO_LTO_OPTIONS
+        @osmesa_amber = 'false'
       when 'aarch64', 'armv7l'
-        @vk = 'auto'
-        @galliumdrivers = 'auto'
-        @lto = CREW_MESON_OPTIONS
-        @osmesa = 'true'
+        @egl_amber = 'disabled'
+        @vulkan_drivers_amber = 'auto'
+        @gallium_drivers_amber = 'auto'
+        @lto_amber_meson_options = CREW_MESON_OPTIONS
+        @osmesa_amber = 'true'
       when 'x86_64'
-        @vk = 'auto'
-        @galliumdrivers = 'r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus'
-        @lto = CREW_MESON_OPTIONS
-        @osmesa = 'true'
+        @egl_amber = 'enabled'
+        @vulkan_drivers_amber = 'auto'
+        @gallium_drivers_amber = 'auto'
+        @lto_amber_meson_options = CREW_MESON_OPTIONS
+        @osmesa_amber = 'true'
       end
-      system "meson #{@lto} \
+      system "meson setup #{@lto_amber_meson_options} \
+      -Damber=false \
       -Db_asneeded=false \
+      -Ddri3=enabled \
       -Ddri-drivers=auto \
-      -Dvulkan-drivers=#{@vk} \
-      -Dgallium-drivers=#{@galliumdrivers} \
-      -Dosmesa=#{@osmesa} \
+      -Dgallium-drivers=#{@gallium_drivers_amber} \
+      -Degl=#{@egl_amber} \
+      -Dgbm=enabled \
+      -Dgles1=disabled \
+      -Dgles2=enabled \
       -Dglvnd=true \
+      -Dglx=dri \
+      -Dllvm=enabled \
+      -Dosmesa=#{@osmesa_amber} \
+      -Dvulkan-drivers=#{@vulkan_drivers_amber} \
        builddir"
       system 'meson configure builddir'
       system 'mold -run samu -C builddir'
     end
   else
     def self.build
+      @gallium_drivers = ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'
+      @vulkan_drivers = ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'
       system "meson setup #{CREW_MESON_OPTIONS} \
       -Db_asneeded=false \
       -Ddri3=enabled \
@@ -341,7 +344,8 @@ class Mesa < Package
       -Dglvnd=true \
       -Dglx=dri \
       -Dllvm=enabled \
-      -Dvulkan-drivers=auto \
+      -Dgallium-drivers='#{@gallium_drivers}' \
+      -Dvulkan-drivers='#{@vulkan_drivers}' \
       -Dvideo-codecs='vc1dec,h264dec,h264enc,h265dec,h265enc' \
        builddir"
       system 'meson configure builddir'
