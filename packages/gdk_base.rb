@@ -37,6 +37,7 @@ class Gdk_base < Package
       #[[ $RESOLUTION -ge 4500 && $RESOLUTION -lt 5500 ]] && GDK_SCALE=3
       #[[ $RESOLUTION -gt 5500 ]] && GDK_SCALE=3.5
       SCALE=${SCALE:-1}
+      echo -e "\e[1;33m""Gdk_base set SCALE & GDK_SCALE to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
       GDK_SCALE=$SCALE
       QT_SCALE_FACTOR=$GDK_SCALE
     EOF
