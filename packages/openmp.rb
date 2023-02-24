@@ -6,7 +6,7 @@ require 'package'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  @_ver = '16.0.0-rc2'
+  @_ver = '16.0.0-rc3'
   version @_ver
   # When upgrading llvm, be sure to upgrade openmp in tandem.
   # puts "#{self} version differs from llvm version #{Llvm.version}".orange if @_ver != Llvm.version
@@ -16,16 +16,16 @@ class Openmp < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_armv7l/openmp-16.0.0-rc2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_armv7l/openmp-16.0.0-rc2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_i686/openmp-16.0.0-rc2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc2_x86_64/openmp-16.0.0-rc2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc3_armv7l/openmp-16.0.0-rc3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc3_armv7l/openmp-16.0.0-rc3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc3_i686/openmp-16.0.0-rc3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.0-rc3_x86_64/openmp-16.0.0-rc3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dc9a4e772621521cc3dbc036568c3ee72385c34d41bc6176ff8d49a99a38aaec',
-     armv7l: 'dc9a4e772621521cc3dbc036568c3ee72385c34d41bc6176ff8d49a99a38aaec',
-       i686: 'f10a32819d93b0febf886a0fbc24232afc3b5b5db37e01c1a54333953a9cb278',
-     x86_64: '2fc676d03698ea2d3ff5ea4ebb64861d614e49bf69ca7da5bbc2b0259f0a488e'
+    aarch64: '8936917ce9dc59f7855a1257ab01f5949f0f8fde10f900a924d1bfa75fba3d73',
+     armv7l: '8936917ce9dc59f7855a1257ab01f5949f0f8fde10f900a924d1bfa75fba3d73',
+       i686: 'fa66b8b13f799d3d2d2822d3ce44c480130d6a151cac3bb92339c2562ccb3754',
+     x86_64: '3a20ad29d91d07a7f02f1534391de17783d0693981841290beaf6784cdd9ce9c'
   })
 
   depends_on 'gcc' # R
@@ -54,7 +54,7 @@ class Openmp < Package
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -Wno-dev \
             .."
-      system 'ninja'
+      system 'mold -run ninja'
     end
   end
 
