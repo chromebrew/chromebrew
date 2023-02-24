@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.8.2'
+  @_ver = '4.9.4'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
@@ -12,16 +12,16 @@ class Gtk4 < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_armv7l/gtk4-4.8.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_armv7l/gtk4-4.8.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_i686/gtk4-4.8.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.8.2_x86_64/gtk4-4.8.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_armv7l/gtk4-4.9.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_armv7l/gtk4-4.9.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_i686/gtk4-4.9.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_x86_64/gtk4-4.9.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '32277a3d530cf76f0f77568679818eed8bbaf86e28395524f19686066244fab2',
-     armv7l: '32277a3d530cf76f0f77568679818eed8bbaf86e28395524f19686066244fab2',
-       i686: '9916b4c01138e0a6f23ebe894229241715d24e1bb5b6c220d4eb712e4c5b7b61',
-     x86_64: '55b12fef43364a630b7bddfd833067c12024204581f6c0057e6bb615afdefe36'
+    aarch64: '3a89f5ad7377d2808ee8e65697ea2cffc58f5217e5def3d37fcb5f502da78699',
+     armv7l: '3a89f5ad7377d2808ee8e65697ea2cffc58f5217e5def3d37fcb5f502da78699',
+       i686: 'f6d89fecdb7422b3d86e146ed9afdec7dc6da69aa6db52b37cb500bd09dc1ee9',
+     x86_64: 'eecfcfa694b871c156e289af6a67db6f00e6247d70f1ea67c1f8b904c41f0349'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -73,6 +73,8 @@ class Gtk4 < Package
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
   depends_on 'libcloudproviders' # R
+  depends_on 'vulkan_headers' => :build
+
   gnome
 
   def self.patch
@@ -90,16 +92,20 @@ class Gtk4 < Package
   end
 
   def self.build
+    @cups = ARCH == 'i686' ? 'disabled' : 'auto'
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
-      -Ddemos=false\
+      -Dbuild-testsuite=false \
+      -Ddemos=false \
+      -Dintrospection=enabled \
       -Dgraphene:default_library=both \
       -Dlibsass:default_library=both \
       -Dmutest:default_library=both \
       -Dcloudproviders=enabled \
       -Dvulkan=enabled \
+      -Dprint-cups=#{@cups} \
       build"
     system 'meson configure build'
     system 'ninja -C build'

@@ -3,24 +3,24 @@ require 'package'
 class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  @_ver = '0.70.0'
-  version "#{@_ver}-1"
+  @_ver = '0.71.92'
+  version @_ver
   license 'LGPL-2+ and GPL-3+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0-1_armv7l/vte-0.70.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0-1_armv7l/vte-0.70.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0-1_i686/vte-0.70.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.70.0-1_x86_64/vte-0.70.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.71.92_armv7l/vte-0.71.92-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.71.92_armv7l/vte-0.71.92-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.71.92_i686/vte-0.71.92-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.71.92_x86_64/vte-0.71.92-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6ab56bce567f65eeab081b9fa45673a68b51c37fd1adfbf292cac5c4d14e840c',
-     armv7l: '6ab56bce567f65eeab081b9fa45673a68b51c37fd1adfbf292cac5c4d14e840c',
-       i686: '6af08fe4156f0af3b3fa9fd1c3839bffd94ebabd8afdc503868eee357b31637c',
-     x86_64: 'a4be13fcccff562384060a74288c9e7109cd63d120a0a9383604e53b1480e986'
+    aarch64: '1b34b6cdf4755b9b2701de67bba27207c057e4f3cedab5c1787240f40bf68048',
+     armv7l: '1b34b6cdf4755b9b2701de67bba27207c057e4f3cedab5c1787240f40bf68048',
+       i686: '8f23401336fe44e7d0a921c544cd79efb36ce13d362df6eb420630f6832b38b9',
+     x86_64: '8e05cc8656261e324f8189fb55cb0289696209c7ad49d1b0971bfeff0eab42b8'
   })
 
   depends_on 'gobject_introspection' => :build
