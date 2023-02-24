@@ -6,23 +6,23 @@ require 'package'
 class Gnome_console < Package
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
-  version '43.0'
+  version '44.beta'
   license 'GPL3'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/console.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/43.0_armv7l/gnome_console-43.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/43.0_armv7l/gnome_console-43.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/43.0_i686/gnome_console-43.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/43.0_x86_64/gnome_console-43.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_armv7l/gnome_console-44.beta-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_armv7l/gnome_console-44.beta-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_i686/gnome_console-44.beta-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_x86_64/gnome_console-44.beta-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a17b89319b29ee05699060f1081fd1a696f459d7b9667c1d72e47475bfcf9b91',
-     armv7l: 'a17b89319b29ee05699060f1081fd1a696f459d7b9667c1d72e47475bfcf9b91',
-       i686: '6c60da06b547cc5988c88b4e69fc6f8f725bd8a948ae46800735f5a8c0c5d599',
-     x86_64: '16dde8210402c103df444487e6e6837be5f1cc5a231db07b6596cc5b97317697'
+    aarch64: 'dbc14ab6922e47d06f754ce71bc56c9a92b5f6327dbf68a70e71a847415a3a1e',
+     armv7l: 'dbc14ab6922e47d06f754ce71bc56c9a92b5f6327dbf68a70e71a847415a3a1e',
+       i686: 'ba4c9c384b6d4ef0d8e25388fe17b133bf336f7101c9791ad16935bc901deb60',
+     x86_64: '406c3d4f67aacc9824f5fe69a62bd356ee8230b4eb5c55e41fdd2c1ac6ee6d0f'
   })
 
   depends_on 'libgtop'

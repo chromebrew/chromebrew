@@ -34,7 +34,6 @@ class Glib < Package
   depends_on 'pcre2' # R
 
   no_strip if %w[aarch64 armv7l].include? ARCH
-  patchelf
   gnome
 
   def self.build
@@ -108,9 +107,5 @@ class Glib < Package
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
     File.write("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la", @libtool_file)
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
   end
 end
