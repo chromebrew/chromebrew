@@ -450,6 +450,11 @@ url: https://github.com/boostorg/build/releases
 activity: low
 ---
 kind: url
+name: b64
+url: https://sourceforge.net/projects/base64/files/
+activity: none
+---
+kind: url
 name: babl
 url: https://download.gimp.org/pub/babl/
 activity: high
@@ -3585,6 +3590,11 @@ url: https://github.com/AOMediaCodec/libavif/releases
 activity: medium
 ---
 kind: url
+name: libb64
+url: https://github.com/libb64/libb64/releases
+activity: none
+---
+kind: url
 name: libblockdev
 url: https://github.com/storaged-project/libblockdev/releases
 activity: low
@@ -4729,6 +4739,11 @@ kind: url
 name: libutempter
 url: https://github.com/altlinux/libutempter/tags
 activity: low
+---
+kind: url
+name: libutp
+url: https://github.com/bittorrent/libutp
+activity: none
 ---
 kind: url
 name: libuv
@@ -7627,7 +7642,7 @@ activity: low
 ---
 kind: url
 name: sqlite
-url: https://www.sqlite.org
+url: https://sqlite.org/download.html
 activity: medium
 ---
 kind: url
