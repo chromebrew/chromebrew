@@ -3,7 +3,7 @@ require 'package'
 class Libadwaita < Package
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  @_ver = '1.2.2'
+  @_ver = '1.3.beta'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Libadwaita < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_armv7l/libadwaita-1.2.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_armv7l/libadwaita-1.2.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_i686/libadwaita-1.2.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.2.2_x86_64/libadwaita-1.2.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_armv7l/libadwaita-1.3.beta-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_armv7l/libadwaita-1.3.beta-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_i686/libadwaita-1.3.beta-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_x86_64/libadwaita-1.3.beta-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '698ecd25158bafb2e9f5f4572df26d9e9e2d12320659a99fa43635682717b161',
-     armv7l: '698ecd25158bafb2e9f5f4572df26d9e9e2d12320659a99fa43635682717b161',
-       i686: '73d649873455a83191b93f702baafdcef91193a5ea5d83bc5415d0fac030f859',
-     x86_64: '2c2316140dc142bc48e5eda47136ffafaf686e164e708bee276e714dca4d6f3f'
+    aarch64: 'e5cd5435b81fd35bc68767f3e5f64984afe5bdf4b12edff8a79ecb595a824f65',
+     armv7l: 'e5cd5435b81fd35bc68767f3e5f64984afe5bdf4b12edff8a79ecb595a824f65',
+       i686: 'f8014d089f29c90e50deb66b1c909d6cf0ea64c11fd0b6874ed2811e938f3648',
+     x86_64: '1fbbb78a8db44da2d889b92966635100e40ab46503f606083fb77370597a94d0'
   })
 
   depends_on 'cairo'
@@ -48,7 +48,6 @@ class Libadwaita < Package
             -Dintrospection=enabled \
             -Dexamples=false \
             -Dgtk_doc=false \
-            -Dtests=false \
             builddir"
     system 'meson configure builddir'
     system 'mold -run samu -C builddir'
