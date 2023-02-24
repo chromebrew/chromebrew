@@ -886,7 +886,7 @@ def unpack(meta)
       system "tar -Izstd -x#{@verbose}f #{@build_cachefile} -C #{CREW_BREW_DIR}", exception: true
       # Need to reset @extract_dir to the extracted cached build
       # directory.
-      @extract_dir = `tar --exclude='./*/*' -tf #{@build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
+      @extract_dir = `tar -Izstd --exclude='./*/*' -tf #{@build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
     else
       @pkg.cached_build = false
       case File.basename meta[:filename]
