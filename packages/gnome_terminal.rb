@@ -41,6 +41,8 @@ class Gnome_terminal < Package
   depends_on 'vte' # R
   depends_on 'yelp_tools' => :build
 
+  gnome
+
   def self.build
     system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
     --default-library=both \
