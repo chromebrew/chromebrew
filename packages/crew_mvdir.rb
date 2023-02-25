@@ -10,14 +10,14 @@ class Crew_mvdir < Package
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
   git_hashtag 'ca2bec1fcf76394387a880f1745e57393b7a63c2'
 
-  binary_url ({
+  binary_url({
     aarch64: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-armv7l.tar.zst',
        i686: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-i686.tar.zst',
      x86_64: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-x86_64.tar.zst'
   })
 
-  binary_sha256 ({
+  binary_sha256({
     aarch64: '02c2e0a70b1ebf403a02fdb8affec4ac4b9ab1f6e8b0b99898077bbcd2d8806f',
      armv7l: '02c2e0a70b1ebf403a02fdb8affec4ac4b9ab1f6e8b0b99898077bbcd2d8806f',
        i686: '2ec5fd0c56e9b771a618c0e3c2795ec4d27b151836a72e9fa307d30195ba9b4e',
