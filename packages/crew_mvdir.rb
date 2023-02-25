@@ -24,14 +24,13 @@ class Crew_mvdir < Package
 
   no_zstd
 
-  no_shrink # upx: CantPackException: bad DT_GNU_HASH (1+ max_bucket)=0x1 < symbias=0x14
+  #no_shrink # upx: CantPackException: bad DT_GNU_HASH (1+ max_bucket)=0x1 < symbias=0x14
 
   def self.build
     system "mold -run cc -static #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'crew-mvdir', "#{CREW_DEST_PREFIX}/bin/crew-mvdir", mode: 0o755
   end
 end
