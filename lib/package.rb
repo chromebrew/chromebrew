@@ -22,11 +22,11 @@ class Package
                      :preinstall,  # Function to perform pre-install operations prior to install.
                      :install,     # Function to perform install from source build.
                      :postinstall, # Function to perform post-install for both source build and binary distribution.
+                     :preremove,   # Function to perform prior to package removal.
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :cached_build, :in_build, :build_from_source,
-                  :in_upgrade
+    attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
   def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))

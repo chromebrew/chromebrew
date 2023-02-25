@@ -115,6 +115,10 @@ class Transmission < Package
     puts "\nConfiguration files are stored in #{HOME}/.config/transmission-daemon\n".lightblue
   end
 
+  def self.preremove
+    system 'stoptransmission'
+  end
+
   def self.remove
     config_dirs_exist = false
     config_dirs = ["#{CREW_PREFIX}/.config/transmission", "#{CREW_PREFIX}/.config/transmission-daemon"]
