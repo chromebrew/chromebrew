@@ -31,6 +31,7 @@ class Crew_mvdir < Package
   end
 
   def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'crew-mvdir', "#{CREW_DEST_PREFIX}/bin/crew-mvdir", mode: 0o755
   end
 end
