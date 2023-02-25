@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  @_ver = '16.0.0-rc2'
+  @_ver = '16.0.0-rc3'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc2_armv7l/llvm-16.0.0-rc2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc2_armv7l/llvm-16.0.0-rc2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc2_i686/llvm-16.0.0-rc2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc2_x86_64/llvm-16.0.0-rc2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc3_armv7l/llvm-16.0.0-rc3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc3_armv7l/llvm-16.0.0-rc3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc3_i686/llvm-16.0.0-rc3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc3_x86_64/llvm-16.0.0-rc3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c566aed4fc14b764e758679da34fb177284e73dd6d3a2c3ee7cd93989f2f4d17',
-     armv7l: 'c566aed4fc14b764e758679da34fb177284e73dd6d3a2c3ee7cd93989f2f4d17',
-       i686: '9854ebf239b1b4f84bef22d41b1f58b070d8a6e6dbdfc16b90b990db60932495',
-     x86_64: '1e3b43edba7be1cf892bc51ec8a8864fba3b4f5c734a9e5b3818ca706e4d69f6'
+    aarch64: 'c418fecaa448255d3f332f88f09e517cbe0c182452c9c166ec7c753f489b41ed',
+     armv7l: 'c418fecaa448255d3f332f88f09e517cbe0c182452c9c166ec7c753f489b41ed',
+       i686: '1ea0fa3056ebfdedae9475180e57ca113f2a7f7d87e90c63d2a2eee8ca123b19',
+     x86_64: 'bb5b62aff90ff217494ad7da8f7f87df2fd08d7821dfc3710c280dbd463f6a6f'
   })
 
   depends_on 'ocaml' => :build
@@ -71,7 +71,7 @@ class Llvm < Package
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;flang;libclc;lld;lldb;polly;pstl'.freeze
+    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   end
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
