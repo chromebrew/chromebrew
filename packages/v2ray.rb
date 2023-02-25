@@ -35,7 +35,7 @@ class V2ray < Package
     puts <<~EOT.lightblue
       To start using v2ray, type `v2ray`.
 
-      You can use customer config. about how to use v2ray command, see www.v2fly.org
+      For more information, see https://www.v2fly.org/en_US/guide/start.html#novice-guide?
     EOT
   end
 end
