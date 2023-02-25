@@ -24,7 +24,7 @@ class V2ray < Package
   no_compile_needed
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin", "#{CREW_DEST_PREFIX}/etc/v2ray", "#{CREW_DEST_PREFIX}/share/v2ray"
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/etc/v2ray #{CREW_DEST_PREFIX}/share/v2ray]
     FileUtils.chmod 0o755, 'v2ray'
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/v2ray"
     FileUtils.ln_s "#{CREW_PREFIX}/share/v2ray/v2ray", "#{CREW_DEST_PREFIX}/bin/v2ray"
