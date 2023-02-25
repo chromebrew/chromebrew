@@ -20,6 +20,8 @@ class Powershell < Package
 
   depends_on 'xdg_base'
 
+  no_compile_needed
+
   def self.install
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share/powershell]
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/powershell"
