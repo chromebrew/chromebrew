@@ -1586,6 +1586,10 @@ def remove(pkgName)
     return
   end
 
+  # Perform any operations required prior to package removal.
+  search pkgName, true
+  @pkg.preremove
+
   # Preserve CREW_ESSENTIAL_FILES and make sure they are real files
   # and not symlinks, because preserving symlinked libraries does not
   # prevent breakage.
