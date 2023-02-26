@@ -89,7 +89,8 @@ function curl () {
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
   for (( i = 0; i < 4; i++ )); do
-    env LD_LIBRARY_PATH='' ${CURL} --ssl -C - "${@}" && return 0
+    # force TLSv1.3 as we know GitLab supports it
+    env -u LD_LIBRARY_PATH ${CURL} --ssl-reqd --tlsv3 -C - "${@}" && return 0
     echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.

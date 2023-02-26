@@ -1,5 +1,6 @@
 require 'io/console'
 require 'digest/sha2'
+require 'uri'
 require_relative 'const'
 require_relative 'color'
 require_relative 'progress_bar'
@@ -14,11 +15,9 @@ rescue RuntimeError => e
     Object.send(:remove_const, :CREW_USE_CURL)
     CREW_USE_CURL = true
   else
-    abort e.full_message
+    raise
   end
 end
-
-require 'uri'
 
 def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
   # downloader: wrapper for all Chromebrew downloaders (`net/http`,`curl`...)
@@ -55,7 +54,7 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
   # verify with given checksum
   calc_sha256sum = Digest::SHA256.hexdigest(File.read(filename))
 
-  unless sha256sum =~ (/^SKIP$/i) || (calc_sha256sum == sha256sum)
+  unless (sha256sum =~ /^SKIP$/i) || (calc_sha256sum == sha256sum)
     FileUtils.rm_f filename
 
     warn 'Checksum mismatch :/ Try again?'.lightred, <<~EOT
@@ -67,17 +66,22 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
 
     exit 2
   end
+rescue
+  # fallback to curl if error occurred
+  external_downloader(uri, filename, verbose)
 end
 
 def http_downloader(uri, filename = File.basename(url), verbose = false)
   # http_downloader: Downloader based on net/http library
+  ssl_error_retry = 0
 
   # open http connection
   Net::HTTP.start(uri.host, uri.port, {
     max_retries: CREW_DOWNLOADER_RETRY,
-      use_ssl: uri.scheme.eql?('https'),
-      ca_file: SSL_CERT_FILE,
-      ca_path: SSL_CERT_DIR
+        use_ssl: uri.scheme.eql?('https'),
+    min_version: :TLSv1,
+        ca_file: SSL_CERT_FILE,
+        ca_path: SSL_CERT_DIR
   }) do |http|
     http.request(Net::HTTP::Get.new(uri)) do |response|
       case
@@ -136,6 +140,15 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
       end
     end
   end
+rescue OpenSSL::SSL::SSLError
+  # handle SSL errors
+  ssl_error_retry += 1
+
+  if ssl_error_retry <= 3
+    retry
+  else
+    raise
+  end
 end
 
 def external_downloader(uri, filename = File.basename(url), verbose = false)
@@ -146,7 +159,7 @@ def external_downloader(uri, filename = File.basename(url), verbose = false)
   #      %<retry>: Will be substitute to #{CREW_DOWNLOADER_RETRY}
   #       %<url>s: Will be substitute to #{url}
   #    %<output>s: Will be substitute to #{filename}
-  curl_cmdline = 'curl %<verbose>s -L -# --ssl --retry %<retry>s %<url>s -o %<output>s'
+  curl_cmdline = 'curl %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s'
 
   # use CREW_DOWNLOADER if specified, use curl by default
   downloader_cmdline = CREW_DOWNLOADER || curl_cmdline
