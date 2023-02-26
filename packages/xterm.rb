@@ -3,27 +3,24 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '378c'
+  version '379'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
   git_hashtag "xterm-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_armv7l/xterm-378c-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_armv7l/xterm-378c-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_i686/xterm-378c-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/378c_x86_64/xterm-378c-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_armv7l/xterm-379-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_armv7l/xterm-379-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_x86_64/xterm-379-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a8302b75325cda9acbf59929ecaf791281e2710b1c9e128354844145aa9c2d40',
-     armv7l: 'a8302b75325cda9acbf59929ecaf791281e2710b1c9e128354844145aa9c2d40',
-       i686: '235f5938788fbc494bac5bac66a15259795ddad186b081ace5a21092f995942c',
-     x86_64: '88353d7c42d3a91c5d7f1440d78808c6625cbf5cb9a186ebe10a8a2caeda37af'
+    aarch64: '9607c9b1dd0681f7dd9b290670195865d1cb0a2ac7d6b384ce366ef29d90e78d',
+     armv7l: '9607c9b1dd0681f7dd9b290670195865d1cb0a2ac7d6b384ce366ef29d90e78d',
+     x86_64: '54246bdb12676ba86429c5d9ac710716e332ce85e8073ac0aa90bc49e40614ca'
   })
 
   depends_on 'libxaw' => :build
-  depends_on 'sommelier'
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
@@ -40,6 +37,7 @@ class Xterm < Package
   depends_on 'luit' => :build
   depends_on 'ncurses' # R
   depends_on 'pcre' # R
+  depends_on 'sommelier'
 
   no_env_options
 
