@@ -3,13 +3,14 @@ require 'package'
 class Netbeans < Package
   description 'Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.'
   homepage 'https://netbeans.org/'
-  version '16'
+  version '17'
   license 'Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1'
   compatibility 'all'
-  source_url 'https://dlcdn.apache.org/netbeans/netbeans/16/netbeans-16-bin.zip'
-  source_sha256 '6c45db982a5cac94738033817cc37025167302d54beca6f834d2372992836a3b'
+  source_url 'https://dlcdn.apache.org/netbeans/netbeans/17/netbeans-17-bin.zip'
+  source_sha256 '518856002d8ed9a66617a380c877dac67ac5e92b1772106128619e4f9e456493'
 
   depends_on 'openjdk8'
+  depends_on 'libxtst'
   depends_on 'sommelier'
 
   no_compile_needed
