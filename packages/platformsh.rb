@@ -3,11 +3,11 @@ require 'package'
 class Platformsh < Package
   description 'The unified tool for managing your Platform.sh services from the command line.'
   homepage 'https://docs.platform.sh/overview/cli.html'
-  version '4.0.2'
+  version '4.1.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/platformsh/legacy-cli/releases/download/v4.0.2/platform.phar'
-  source_sha256 '187e147f2f4048442ea0a57c512d3cd49ca6483505c925c9ba2c6fd6447941ff'
+  source_url 'https://github.com/platformsh/legacy-cli/releases/download/v4.1.2/platform.phar'
+  source_sha256 'd4aff4ca47a18f24a5510031fd9576e4e1541150c25b297410b44a5bd5073d9a'
 
   depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
