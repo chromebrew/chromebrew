@@ -90,7 +90,7 @@ function curl () {
   # here.
   for (( i = 0; i < 4; i++ )); do
     # force TLS as we know GitLab supports it
-    env -u LD_LIBRARY_PATH ${CURL} --ssl-reqd --tlsv1 -C - "${@}" && return 0
+    env -u LD_LIBRARY_PATH ${CURL} --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
