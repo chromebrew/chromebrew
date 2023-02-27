@@ -45,20 +45,17 @@ class Epiphany < Package
   depends_on 'nettle' # R
   depends_on 'sqlite' # R
   depends_on 'gcc' # R
+
   gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
