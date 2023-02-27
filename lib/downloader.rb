@@ -161,7 +161,7 @@ def external_downloader(uri, filename = File.basename(url), verbose = false)
   #      %<retry>: Will be substitute to #{CREW_DOWNLOADER_RETRY}
   #       %<url>s: Will be substitute to #{url}
   #    %<output>s: Will be substitute to #{filename}
-  curl_cmdline = 'curl %<verbose>s -L -# --tlsv1 --retry %<retry>s %<url>s -o %<output>s'
+  curl_cmdline = 'curl %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s'
 
   # use CREW_DOWNLOADER if specified, use curl by default
   downloader_cmdline = CREW_DOWNLOADER || curl_cmdline
