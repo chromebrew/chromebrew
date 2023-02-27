@@ -3,39 +3,35 @@ require 'package'
 class Antlr4 < Package
   description 'ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files.'
   homepage 'https://www.antlr.org/'
-  version '4.7.1-1'
+  version '4.12.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://raw.githubusercontent.com/antlr/antlr4/4.7.1/README.md'
-  source_sha256 '70a58ea4c4f5ed23306313782bc13f36c3529d9a990e95ab273d5deed9286d4f'
+  source_url 'https://www.antlr.org/download/antlr-4.12.0-complete.jar'
+  source_sha256 '88f18a2bfac0dde1009eda5c7dce358a52877faef7868f56223a5bcc15329e43'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_armv7l/antlr4-4.7.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_armv7l/antlr4-4.7.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_i686/antlr4-4.7.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antlr4/4.7.1-1_x86_64/antlr4-4.7.1-1-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '13ba681685e80cfc70ca3346d42038c7798eb71a867ebbeaefbe92aa4bcd63ac',
-     armv7l: '13ba681685e80cfc70ca3346d42038c7798eb71a867ebbeaefbe92aa4bcd63ac',
-       i686: '621f4cc8a6c8cf696c01c3694d1507cd51a313ee9dde90646b60de1152b143cc',
-     x86_64: 'dd474ad8ab5eb164714dfa647a6e6faba701228f2bc8d89d6af77437d5829d2b'
-  })
+  depends_on 'openjdk11'
 
-  depends_on 'jdk8'
+  no_compile_needed
 
-  def self.install
-    system 'curl -#LO https://www.antlr.org/download/antlr-4.7.1-complete.jar'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('antlr-4.7.1-complete.jar')) == 'f41dce7441d523baf9769cb7756a00f27a4b67e55aacab44525541f62d7f6688'
-    system "install -Dm644 antlr-4.7.1-complete.jar #{CREW_DEST_LIB_PREFIX}/antlr-4.7.1-complete.jar"
-
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+  def self.build
     @antlrenv = <<~ANTLR_EOF
       # ANTLR (ANother Tool for Language Recognition) configuration
-      export CLASSPATH=\".:#{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar:\$CLASSPATH\"
-      alias antlr4=\"java -jar #{CREW_LIB_PREFIX}/antlr-4.7.1-complete.jar\"
-      alias grun=\"java org.antlr.v4.gui.TestRig\"
+      CLASSPATH=".:#{CREW_PREFIX}/share/antlr/antlr-#{version}-complete.jar:$CLASSPATH"
+      alias antlr4="java -jar #{CREW_PREFIX}/share/antlr/antlr-#{version}-complete.jar"
+      alias grun="java org.antlr.v4.gui.TestRig"
     ANTLR_EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/antlr4", @antlrenv)
+  end
+
+  def self.install
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/antlr"
+    File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-antlr4", @antlrenv)
+    FileUtils.install "antlr-#{version}-complete.jar", "#{CREW_DEST_PREFIX}/share/antlr", mode: 0o644
+  end
+
+  def self.postinstall
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts 'source ~/.bashrc'.lightblue
+    puts "\nType 'antlr4' to get started.\n".lightblue
   end
 end

@@ -17,32 +17,32 @@ class Codium < Package
     @arch = 'x64'
   end
 
-  depends_on 'alsa_lib'
-  depends_on 'atk'
-  depends_on 'at_spi2_atk'
-  depends_on 'at_spi2_core'
-  depends_on 'cairo'
-  depends_on 'cups'
-  depends_on 'dbus'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'libcom_err'
-  depends_on 'libdrm'
-  depends_on 'libx11'
-  depends_on 'libxcb'
-  depends_on 'libxcomposite'
-  depends_on 'libxdamage'
-  depends_on 'libxext'
-  depends_on 'libxfixes'
-  depends_on 'libxkbcommon'
-  depends_on 'libxkbfile'
-  depends_on 'libxrandr'
-  depends_on 'mesa'
-  depends_on 'nspr'
-  depends_on 'nss'
-  depends_on 'pango'
-  depends_on 'sommelier'
+  depends_on 'alsa_lib' # R
+  depends_on 'atk' # R
+  depends_on 'at_spi2_atk' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'cups' # R
+  depends_on 'dbus' # R
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libdrm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxcomposite' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxkbfile' # R
+  depends_on 'libxrandr' # R
+  depends_on 'mesa' # R
+  depends_on 'nss' # R
+  depends_on 'pango' # R
+  depends_on 'sommelier' # L
 
   no_fhs
   no_shrink
