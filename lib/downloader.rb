@@ -66,7 +66,9 @@ def downloader(url, sha256sum, filename = File.basename(url), verbose = false)
 
     exit 2
   end
-rescue
+rescue StandardError => e
+  warn e.full_message
+
   # fallback to curl if error occurred
   external_downloader(uri, filename, verbose)
 end
@@ -79,7 +81,7 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
   Net::HTTP.start(uri.host, uri.port, {
     max_retries: CREW_DOWNLOADER_RETRY,
         use_ssl: uri.scheme.eql?('https'),
-    min_version: :TLSv1,
+    min_version: :TLS1,
         ca_file: SSL_CERT_FILE,
         ca_path: SSL_CERT_DIR
   }) do |http|
