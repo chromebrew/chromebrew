@@ -135,22 +135,17 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
 
           io.write(chunk) # write to file
         end
-      ensure
-        # stop progress bar, wait for it to terminate
-        progress_bar.progress_bar_showing = false
-        progress_bar_thread.join
       end
+    ensure
+      # stop progress bar, wait for it to terminate
+      progress_bar.progress_bar_showing = false
+      progress_bar_thread.join
     end
   end
 rescue OpenSSL::SSL::SSLError
   # handle SSL errors
   ssl_error_retry += 1
-
-  if ssl_error_retry <= 3
-    retry
-  else
-    raise
-  end
+  ssl_error_retry <= 3 ? retry : raise
 end
 
 def external_downloader(uri, filename = File.basename(url), verbose = false)
