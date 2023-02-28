@@ -24,7 +24,7 @@ class Wireshark < Package
      x86_64: '60eee74f73306e3339da92c28e1e14202ebaaff3046521eab46eb8fa4a091b7c'
   })
 
-  depends_on 'asciidoctor' => :build
+  depends_on 'ruby_asciidoctor' => :build
   depends_on 'c_ares'
   depends_on 'libmaxminddb'
   depends_on 'libcap'

@@ -24,7 +24,7 @@ class Shaderc < Package
      x86_64: '9e32e0db031138d5ead88e9e6a99f1a14d1d07e6c89999f0d336d105462b1306'
   })
 
-  depends_on 'asciidoctor' => :build
+  depends_on 'ruby_asciidoctor' => :build
 
   def self.build
     system './utils/git-sync-deps'

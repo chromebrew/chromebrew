@@ -275,11 +275,6 @@ url: https://sourceforge.net/projects/asciidoc/files/asciidoc/
 activity: none
 ---
 kind: url
-name: asciidoctor
-url: https://github.com/asciidoctor/asciidoctor/releases
-activity: medium
----
-kind: url
 name: asciinema
 url: https://github.com/asciinema/asciinema/releases
 activity: medium
@@ -7208,6 +7203,11 @@ activity: none
 kind: url
 name: ruby
 url: http://www.ruby-lang.org/en/downloads/
+activity: medium
+---
+kind: url
+name: ruby_asciidoctor
+url: https://github.com/asciidoctor/asciidoctor/releases
 activity: medium
 ---
 kind: url
