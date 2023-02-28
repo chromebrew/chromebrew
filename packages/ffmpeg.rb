@@ -3,24 +3,24 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '5.1.2-a6e2605'
+  @_ver = '6.0'
   version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
-  git_hashtag 'a6e26053c21362bb882932f3cfd1f1dfa2551f1d'
+  git_hashtag "n#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_armv7l/ffmpeg-5.1.2-a6e2605-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_armv7l/ffmpeg-5.1.2-a6e2605-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_i686/ffmpeg-5.1.2-a6e2605-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_x86_64/ffmpeg-5.1.2-a6e2605-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_armv7l/ffmpeg-6.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_armv7l/ffmpeg-6.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_i686/ffmpeg-6.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_x86_64/ffmpeg-6.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '943d4c7d51e5cf8e93ba1a17c5e7ab8809bc14937e6902b9813f19f9111eb1e1',
-     armv7l: '943d4c7d51e5cf8e93ba1a17c5e7ab8809bc14937e6902b9813f19f9111eb1e1',
-       i686: '772400a972aba55c397d1b3d31eb22177591ed511b6b84fe6ab8cc8b03da8d3e',
-     x86_64: '078cad1e60401f681af51926fff6b358da907ccc4aaf13750dd7732d792a243d'
+    aarch64: 'f9582a5b4b952bc93149699cd93925ed981bda29afd48d50801074ee57a64d89',
+     armv7l: 'f9582a5b4b952bc93149699cd93925ed981bda29afd48d50801074ee57a64d89',
+       i686: 'c8aefd871147308c58f6f5def9b7cb41cbc990039563cabbc0db07e0236126ba',
+     x86_64: 'ac43642d77a265265b04ac5d541c9de655231a4a3e36c6e0dede2fe9bf41e17b'
   })
 
   depends_on 'avisynthplus' # ?
@@ -104,6 +104,8 @@ class Ffmpeg < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'libglvnd' # R
+  depends_on 'gcc' # R
+
   no_env_options if %w[aarch64 armv7l].include? ARCH
 
   def self.patch
