@@ -127,19 +127,18 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
 
       # read file chunks from server, write it to filesystem
       File.open(filename, 'wb') do |io|
-        progress_bar_thread = progress_bar.show # print progress bar
-
         response.read_body do |chunk|
-          downloaded_size += chunk.size # record downloaded size, used for showing progress bar
+          progress_bar_thread = progress_bar.show # print progress bar
+          downloaded_size    += chunk.size        # record downloaded size, used for showing progress bar
           progress_bar.set_downloaded_size(downloaded_size, invalid_size_error: false) if file_size.positive?
 
           io.write(chunk) # write to file
+        ensure
+          # stop progress bar, wait for it to terminate
+          progress_bar.progress_bar_showing = false
+          progress_bar_thread.join
         end
       end
-    ensure
-      # stop progress bar, wait for it to terminate
-      progress_bar.progress_bar_showing = false
-      progress_bar_thread.join
     end
   end
 rescue OpenSSL::SSL::SSLError
