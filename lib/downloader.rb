@@ -135,11 +135,11 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
 
           io.write(chunk) # write to file
         end
+      ensure
+        # stop progress bar, wait for it to terminate
+        progress_bar.progress_bar_showing = false
+        progress_bar_thread.join
       end
-    ensure
-      # stop progress bar, wait for it to terminate
-      progress_bar.progress_bar_showing = false
-      progress_bar_thread.join
     end
   end
 rescue OpenSSL::SSL::SSLError
