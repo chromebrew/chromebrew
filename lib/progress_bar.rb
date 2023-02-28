@@ -102,7 +102,7 @@ class ProgressBar
         end
 
         # stop when 100%
-        @percentage >= 100 ? break : print "\r"
+        @percentage >= 100 ? break : print("\r")
       end
     ensure
       print "\e[2K\r\e[?25h" # clear line and restore cursor mode
