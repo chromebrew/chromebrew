@@ -17,10 +17,10 @@ class Ffmpeg < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_x86_64/ffmpeg-6.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f9582a5b4b952bc93149699cd93925ed981bda29afd48d50801074ee57a64d89',
-     armv7l: 'f9582a5b4b952bc93149699cd93925ed981bda29afd48d50801074ee57a64d89',
-       i686: 'c8aefd871147308c58f6f5def9b7cb41cbc990039563cabbc0db07e0236126ba',
-     x86_64: 'ac43642d77a265265b04ac5d541c9de655231a4a3e36c6e0dede2fe9bf41e17b'
+    aarch64: '4d00d3e3173677b0bb3f3e532a1fbf2c9eae989c75cfe32f3e01f8ab07249c83',
+     armv7l: '4d00d3e3173677b0bb3f3e532a1fbf2c9eae989c75cfe32f3e01f8ab07249c83',
+       i686: '655d767407057f45e6dd2bdd16066d9a1fa6f1bd60769a7903c4d1833999cc02',
+     x86_64: '13408e878e46651d0b14047e53b8d99563ac1bbab80daf8d6a751481579c6a8a'
   })
 
   depends_on 'avisynthplus' # ?
@@ -220,5 +220,8 @@ class Ffmpeg < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
+    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
+    FileUtils.install 'doc/ffmpeg.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+    FileUtils.install 'doc/ffplay.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
   end
 end
