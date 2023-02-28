@@ -130,7 +130,7 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
       # read file chunks from server, write it to filesystem
       File.open(filename, 'wb') do |io|
         response.read_body do |chunk|
-          downloaded_size += chunk.size        # record downloaded size, used for showing progress bar
+          downloaded_size += chunk.size # record downloaded size, used for showing progress bar
           progress_bar.set_downloaded_size(downloaded_size, invalid_size_error: false) if file_size.positive?
 
           io.write(chunk) # write to file
