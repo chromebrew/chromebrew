@@ -20,7 +20,7 @@ class Ndctl < Package
      x86_64: '6d1a0625c7c26687531cf8d63859bbe4bcdd44c5f1b623657491845c89a2a8bc'
   })
 
-  depends_on 'asciidoctor' => :build
+  depends_on 'ruby_asciidoctor' => :build
   depends_on 'bash_completion' => :build
   depends_on 'iniparser' => :build
   depends_on 'jsonc' => :build

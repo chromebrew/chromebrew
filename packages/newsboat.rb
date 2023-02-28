@@ -29,7 +29,7 @@ class Newsboat < Package
   depends_on 'libstfl'
   depends_on 'jsonc'
   depends_on 'openssl'
-  depends_on 'asciidoctor' => :build
+  depends_on 'ruby_asciidoctor' => :build
   depends_on 'rust' => :build
 
   def self.patch
