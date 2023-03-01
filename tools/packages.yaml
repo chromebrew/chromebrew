@@ -1560,6 +1560,16 @@ url: https://mirrors.edge.kernel.org/pub/software/network/ethtool/
 activity: medium
 ---
 kind: url
+name: ettercap
+url: https://github.com/Ettercap/ettercap/releases
+activity: low
+---
+kind: url
+name: ettercap_gtk
+url: https://github.com/Ettercap/ettercap/releases
+activity: low
+---
+kind: url
 name: eudev
 url: https://github.com/gentoo/eudev/releases
 activity: none
