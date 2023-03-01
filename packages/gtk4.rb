@@ -65,6 +65,7 @@ class Gtk4 < Package
   depends_on 'libxrandr' # R
   depends_on 'pango' # R
   depends_on 'sassc' => :build
+  depends_on 'sommelier' # L
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'gcc' # R

@@ -65,6 +65,7 @@ class Gtk3 < Package
   depends_on 'pango' # R
   depends_on 'rest' # R
   depends_on 'shared_mime_info' # L
+  depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
