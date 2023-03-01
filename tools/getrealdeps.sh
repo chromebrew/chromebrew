@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# getrealdeps for Chromebrew
+# getrealdeps for Chromebrew version 1.1
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # set -x
 pkg="${1%.rb}"
@@ -50,6 +50,9 @@ if ! [[ -f "${CREW_PREFIX}/etc/crew/meta/${pkg}.filelist" ]]; then
   echo_error "Package $pkg either does not exist or does not contain any libraries."
   exit 1
 fi
+
+# Speed up grep
+LC_ALL=C
 
 # Install grep if a functional local copy does not exist.
 if grep --version &> /dev/null; then
