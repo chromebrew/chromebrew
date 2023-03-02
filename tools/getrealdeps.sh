@@ -52,7 +52,7 @@ if ! [[ -f "${CREW_PREFIX}/etc/crew/meta/${pkg}.filelist" ]]; then
 fi
 
 # Speed up grep
-LC_ALL=C
+export LC_ALL=C
 
 # Install grep if a functional local copy does not exist.
 if grep --version &> /dev/null; then
