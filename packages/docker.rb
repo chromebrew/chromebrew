@@ -6,21 +6,21 @@ require 'package'
 class Docker < Package
   description 'Pack, ship and run any application as a lightweight container'
   homepage 'https://www.docker.com/'
-  version '23.0.0-rc.3'
+  version '23.0.1'
   license 'Apache'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/docker/cli.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.0-rc.1_armv7l/docker-23.0.0-rc.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.0-rc.1_armv7l/docker-23.0.0-rc.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.0-rc.1_x86_64/docker-23.0.0-rc.1-chromeos-x86_64.tar.zst'
+     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.1_armv7l/docker-23.0.1-chromeos-armv7l.tar.zst',
+      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.1_armv7l/docker-23.0.1-chromeos-armv7l.tar.zst',
+      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.1_x86_64/docker-23.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7cd26fca47393832c15012ce0345f78c688b1062e1fb3eef985db625cd1be9cd',
-     armv7l: '7cd26fca47393832c15012ce0345f78c688b1062e1fb3eef985db625cd1be9cd',
-     x86_64: 'afc88b554da28cce205a42de3a7a9abc0d567fd08b5d0fd66c77f95d728368c4'
+     aarch64: '650a679b977225872025f7a9a4a0a560f9e1c478fba485e26cd2fc791bb7d7af',
+      armv7l: '650a679b977225872025f7a9a4a0a560f9e1c478fba485e26cd2fc791bb7d7af',
+      x86_64: 'b8eea65d02dee8c9d9b9119c7ddeda59009f8f820c3eefa720682c951b71b5f8'
   })
 
   depends_on 'bridge_utils'
@@ -41,28 +41,28 @@ class Docker < Package
   def self.build
     @cli_version = git_hashtag
     @moby_version = git_hashtag
-    @libnetwork_version = '1f3b98be6833a93f254aa0f765ff55d407dfdd69'
-    @tini_version = '378bbbc8909a960e89de220b1a4e50781233a740'
-    @buildx_version = '8a7a221a7fd636bafd6bf05b964f8b87b65d8877'
+    @libnetwork_version = '05b93e0d3a95952f70c113b0bc5bdb538d7afdd7'
+    @tini_version = '0b44d3665869e46ccbac7414241b8256d6234dc4'
+    @buildx_version = 'eefe27ff42e51004cfc4fe321c6bff2e27fb3c51'
     @gopath = `pwd`.chomp
     FileUtils.mkdir_p 'src/github.com/docker'
     FileUtils.ln_s @gopath, 'src/github.com/docker/cli'
     Dir.chdir 'src/github.com/docker/cli' do
       system "GOPATH=#{@gopath} \
-      CGO_CPPFLAGS='#{CREW_COMMON_FLAGS}' \
-      CGO_CFLAGS='#{CREW_COMMON_FLAGS}' \
-      CGO_CXXFLAGS='#{CREW_COMMON_FLAGS}' \
-      CGO_LDFLAGS='#{CREW_LDFLAGS}' \
+      CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+      CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+      CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+      CGO_LDFLAGS='#{CREW_LDFLAGS.gsub('=auto', '')}' \
       LDFLAGS='' \
       GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
       GO111MODULE=off \
       DISABLE_WARN_OUTSIDE_CONTAINER=1 \
       make VERSION=#{version} dynbinary"
       system "GOPATH=#{@gopath} \
-      CGO_CPPFLAGS='#{CREW_COMMON_FLAGS}' \
-      CGO_CFLAGS='#{CREW_COMMON_FLAGS}' \
-      CGO_CXXFLAGS='#{CREW_COMMON_FLAGS}' \
-      CGO_LDFLAGS='#{CREW_LDFLAGS}' \
+      CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+      CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+      CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+      CGO_LDFLAGS='#{CREW_LDFLAGS.gsub('=auto', '')}' \
       LDFLAGS='' \
       GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
       GO111MODULE=off \
@@ -74,9 +74,9 @@ class Docker < Package
       Dir.chdir 'docker' do
         system "sed -i 's,/usr,#{CREW_PREFIX},g' contrib/init/systemd/docker.service"
         system "GOPATH=#{@gopath} \
-        CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('-flto', '')}' \
-        CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('-flto', '')}' \
-        CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('-flto', '')}' \
+        CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '').gsub('-flto', '')}' \
+        CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '').gsub('-flto', '')}' \
+        CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '').gsub('-flto', '')}' \
         CGO_LDFLAGS='' \
         LDFLAGS='' \
         GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
@@ -91,10 +91,10 @@ class Docker < Package
       Dir.chdir 'libnetwork' do
         system "git checkout #{@libnetwork_version}"
         system "GOPATH=#{@gopath} \
-        CGO_CPPFLAGS='#{CREW_COMMON_FLAGS}' \
-        CGO_CFLAGS='#{CREW_COMMON_FLAGS}' \
-        CGO_CXXFLAGS='#{CREW_COMMON_FLAGS}' \
-        CGO_LDFLAGS='#{CREW_LDFLAGS}' \
+        CGO_CPPFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+        CGO_CFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+        CGO_CXXFLAGS='#{CREW_COMMON_FLAGS.gsub('=auto', '')}' \
+        CGO_LDFLAGS='#{CREW_LDFLAGS.gsub('=auto', '')}' \
         LDFLAGS='' \
         GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external' \
         GO111MODULE=off \
