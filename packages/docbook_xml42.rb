@@ -38,17 +38,17 @@ class Docbook_xml42 < Package
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
     if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.zero?("#{CREW_PREFIX}/etc/xml/catalog")
-      puts "#{CREW_PREFIX}/etc/xml/catalog exists"
+      puts "#{CREW_PREFIX}/etc/xml/catalog exists" if @opt_verbose
     else
-      puts "Creating #{CREW_PREFIX}/etc/xml/catalog"
+      puts "Creating #{CREW_PREFIX}/etc/xml/catalog" if @opt_verbose
       FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/catalog"
       system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog"
     end
 
     if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.zero?("#{CREW_PREFIX}/etc/xml/docbook-xml")
-      puts "#{CREW_PREFIX}/etc/xml/docbook-xml not empty"
+      puts "#{CREW_PREFIX}/etc/xml/docbook-xml not empty" if @opt_verbose
     else
-      puts "Creating #{CREW_PREFIX}/etc/xml/docbook-xml"
+      puts "Creating #{CREW_PREFIX}/etc/xml/docbook-xml" if @opt_verbose
       FileUtils.rm_f "#{CREW_PREFIX}/etc/xml/docbook-xml"
       system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/docbook-xml"
     end
