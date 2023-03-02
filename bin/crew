@@ -1742,7 +1742,7 @@ def install
     installedComponents << @pkg.target_component
   else
     # add an entry for the package if not exist
-    @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, is_dep: @pkg.is_dep, installedComponents: [@pkg.target_component])
+    @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, installedComponents: [@pkg.target_component])
   end
 
   File.write( "#{CREW_CONFIG_PATH}/device.json.tmp", JSON.pretty_generate(@device) )

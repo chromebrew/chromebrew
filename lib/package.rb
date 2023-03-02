@@ -58,7 +58,7 @@ class Package
     @dependencies ||= {}
   end
 
-  def self.get_deps_list(name = "#{self.name}::#{target_component}", hash: false, include_build_deps: 'auto', include_self: false,
+  def self.get_deps_list(name = "#{self.name}::#{target_component}", return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
                          pkgTags: [], verCheck: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
     # get_deps_list: get dependencies list of pkgName (current package by default)
     #
