@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# getrealdeps for Chromebrew
+# getrealdeps for Chromebrew version 1.1
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 # set -x
 pkg="${1%.rb}"
@@ -51,6 +51,9 @@ if ! [[ -f "${CREW_PREFIX}/etc/crew/meta/${pkg}.filelist" ]]; then
   exit 1
 fi
 
+# Speed up grep
+LC_ALL=C
+
 # Install grep if a functional local copy does not exist.
 if grep --version &> /dev/null; then
   GREP="grep"
@@ -100,6 +103,7 @@ read -r -n 4 exec_header_bytes < "${i}"
 # since otherwise we cannot figure out their dependencies.
 [[ -f "/.dockerenv" ]] &&  upx -d "${i}" &> /dev/null
 mkdir -p /tmp/deps/"${pkg}"/
+# shellcheck disable=SC2030,SC2046
 lines+=$(echo ; readelf -d "$i" 2>/dev/null | $GREP NEEDED | awk '{print $5}' \
 | sed 's/\[//g' | sed 's/\]//g' | awk '!x[$0]++' | tee /tmp/deps/"${pkg}"/$(basename "$i") ; echo ) ; \
 done ; \
@@ -110,6 +114,7 @@ echo "$lines" | tr " " "\n" \
 pkgdeps="$(awk 'NF' <<< "${pkgdeps}" | awk '!x[$0]++')"
 
 # Figure out which Chromebrew packages provide the relevant deps.
+# shellcheck disable=SC2031
 pkgdeps=$(unset lines; for j in $pkgdeps ; \
 do lines+=$(echo ; whatprovidesfxn "$j"); done ; \
 echo "$lines" | tr " " "\n" | awk '!x[$0]++')
