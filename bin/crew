@@ -137,7 +137,7 @@ end
 def print_package(pkgPath, extra = false)
   pkgName = File.basename pkgPath, '.rb'
   begin
-    set_package pkgName, pkgPath
+    set_package pkgName
   rescue StandardError => e
     warn "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
   end
@@ -145,6 +145,9 @@ def print_package(pkgPath, extra = false)
 end
 
 def print_current_package(extra = false)
+  # print component name only if the target component is not 'all'
+  fullName = @pkg.target_component == 'all' ? @pkg.name : "#{@pkg.name}::#{@pkg.target_component}"
+
   status = if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
              :installed
            elsif !@pkg.compatible?
@@ -155,30 +158,67 @@ def print_current_package(extra = false)
 
   case status
   when :installed
-    print @pkg.name.lightgreen
+    # installed
+    print fullName.lightgreen
   when :incompatible
-    print @pkg.name.lightred
+    # not compatible
+    print fullName.lightred
   when :available
-    print @pkg.name.lightblue
+    # not installed
+    print fullName.lightblue
   end
 
   print ": #{@pkg.description}".lightblue if @pkg.description
   if extra
-    puts ''
     puts @pkg.homepage if @pkg.homepage
     puts "Version: #{@pkg.version}"
-    print "License: #{@pkg.license}" if @pkg.license
+    puts "License: #{@pkg.license}" if @pkg.license
   end
-  puts ''
 end
 
-def set_package(pkgName, pkgPath)
-  begin
-    @pkg = Package.load_package(pkgPath, pkgName)
-  rescue SyntaxError => e
-    warn "#{e.class}: #{e.message}".red
+def set_package(pkgName, componentName = 'all', silent: false)
+  # set_package: load package #{pkgName} and bind the package with variable @pkg
+  #
+  #   pkgName: name of the package
+  #   componentName: component to be operated, only used to set @pkg.target_component here (default: 'all')
+  #
+  pkgPath = "#{CREW_PACKAGES_PATH}/#{pkgName}.rb"
+
+  unless File.exist?(pkgPath)
+    if silent
+      return false
+    else
+      abort "Package #{pkgName} not found :/".lightred
+    end
   end
 
+  # add `PKG_` to the beginning of class name if it starts with a digit
+  className = if pkgName =~ /^[0-9]/
+                "PKG_#{pkgName}"
+              else
+                pkgName.capitalize
+              end
+
+  begin
+    require_relative pkgPath
+    @pkg = Object.const_get(className)
+  rescue Exception => e
+    puts "Error with #{pkgName}.rb: ".red
+    puts e.message.orange
+    exit 2
+  end
+
+  unless @pkg.componentList.include?(componentName)
+    if silent
+      return false
+    else
+      abort "#{pkgName}: component #{componentName} not found :/".lightred
+    end
+  end
+
+  @pkg.name ||= pkgName
+  @pkg.build_from_source ||= @opt_recursive
+  @pkg.target_component ||= componentName
   @pkg.build_from_source = true if @opt_recursive
 end
 
@@ -197,7 +237,7 @@ def list_available
     next unless notInstalled
 
     begin
-      set_package pkgName, filename
+      set_package pkgName
     rescue StandardError => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
@@ -250,7 +290,7 @@ def generate_compatible
   Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     begin
-      set_package pkgName, filename
+      set_package pkgName
     rescue StandardError => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
@@ -286,40 +326,75 @@ def generate_compatible
   puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
-def search(pkgName, silent = false)
+def search(name, silent = false)
+  # search: Same as set_package(), but package name and component name need to be passed in a string
+  #
+  #   name: "<pkgName>::<componentName(optional)>"
+  #
+  pkgName, componentName = name.split('::', 2)
+  componentName ||= 'all'
   pkgPath = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
-  begin
-    return set_package(pkgName, pkgPath) if File.file?(pkgPath)
-  rescue StandardError => e
-    puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
+  # begin
+    # return set_package(pkgName, pkgPath) if File.file?(pkgPath)
+  # rescue StandardError => e
+    # puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
+  # end
+  unless File.file?(pkgPath)
+    if silent
+      return false
+    else
+      abort "Package #{pkgName} not found. 😞".lightred
+    end
   end
-  unless File.file?(pkgPath) && silent
-    @pkg = nil
-    abort "Package #{pkgName} not found. 😞".lightred unless silent
-    return
+
+  set_package(pkgName, componentName)
+
+  unless @pkg.componentFileFilter.key?(componentName)
+    if silent
+      return false
+    else
+      abort "Component #{componentName} not found :/".lightred
+    end
   end
 end
 
-def regexp_search(pkgPat)
-  re = Regexp.new(pkgPat, true)
-  results = Dir["#{CREW_PACKAGES_PATH}*.rb"] \
-            .select  { |f| File.basename(f, '.rb') =~ re } \
-            .each    { |f| print_package(f, @opt_verbose) }
-  if results.empty?
-    Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |packagePath|
-      packageName = File.basename packagePath, '.rb'
-      begin
-        set_package packageName, packagePath
-      rescue StandardError => e
-        puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
-      end
-      if @pkg.description =~ /#{pkgPat}/i
-        print_current_package @opt_verbose
-        results.push(packageName)
-      end
+def regexp_search(pattern)
+  regex = Regexp.new(pattern, Regexp::IGNORECASE)
+  any_matches = nil
+
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |pkgPath|
+    set_package( File.basename(pkgPath, '.rb') )
+
+    # also check components under packages
+    @pkg.componentList.each do |componentName|
+      fullName = "#{@pkg.name}::#{componentName}"
+
+      next unless fullName =~ regex
+
+      @pkg.target_component = componentName
+      print_current_package(false)
+      any_matches ||= true
     end
   end
-  abort "Package #{pkgPat} not found. :(".lightred if results.empty?
+
+  return if any_matches
+
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |pkgPath|
+    begin
+      set_package( File.basename(pkgPath, '.rb') )
+    rescue StandardError => e
+      puts "Error with #{pkgPath}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
+    end
+    @pkg.descriptionList.each_pair do |componentName, description|
+      next unless description =~ regex
+
+      @pkg.target_component = componentName
+      print_current_package(false)
+      any_matches ||= true
+    end
+  end
+
+  abort "Package #{pattern} not found. :(".lightred unless any_matches
 end
 
 def help(pkgName = nil)
@@ -556,25 +631,29 @@ def const(var = nil)
   end
 end
 
-def files(pkgName)
-  filelist_path = File.join(CREW_META_PATH, "#{pkgName}.filelist")
+def files(pkgName, componentName = 'all')
+  filelist_path = File.join(CREW_META_PATH, "#{pkgName}::#{componentName}.filelist")
+
   if File.file?(filelist_path)
-    filelist = File.readlines(filelist_path, chomp: true).sort
-    lines = filelist.size
+    filelistArray = File.readlines(filelist_path, chomp: true).sort
+
+    lines = filelistArray.size
     size = 0
 
-    filelist.each do |filename|
-      # ignore symlinks to prevent duplicating calculation
+    # ignore symlinks to prevent duplicating calculation
+    filelistArray.each do |filename|
       size += File.size(filename) if File.file?(filename) && !File.symlink?(filename)
     end
 
-    puts filelist, <<~EOT.lightgreen
+    puts filelistArray, <<~EOT.lightgreen
 
       Total found: #{lines}
       Disk usage: #{human_size(size)}
     EOT
+  elsif package_installed?(pkgName, 'all')
+    puts "#{pkgName}: no filelist available for component '#{componentName}' as it is installed as a part of component 'all'".yellow
   else
-    puts "Package #{pkgName} is not installed. :(".lightred
+    puts "Package #{pkgName}::#{componentName} is not installed. :(".lightred
   end
 end
 
@@ -597,6 +676,28 @@ def updatefiles
     puts "CREW_MANIFEST_CACHE_DIR #{CREW_MANIFEST_CACHE_DIR} is not writable.".lightred
     puts 'The crew files cache cannot be rebuilt.'.lightred
   end
+
+def package_installed?(pkgName, componentName = 'all', output_if_not_installed = false)
+  # package_installed?: Check if a package component is installed
+  #
+  if @device[:installed_packages].none? {|pkg| pkg[:name] == pkgName }
+    puts "Package #{pkgName} isn't installed.".lightred if output_if_not_installed
+    return false
+  end
+
+  # if <pkgName>.filelist exists (without any component name) (a file on installs before provide system update,
+  #                                                            a symlink to <pkgName>::all.filelist on installs after provide system update),
+  # that means all components were installed
+  all_components_installed = File.exist?("#{CREW_META_PATH}/#{pkgName}.filelist")
+
+  unless all_components_installed || \
+         @device[:installed_packages].select {|pkg| pkg[:name] == pkgName } [0][:installedComponents]&.include?(componentName)
+
+    puts "#{pkgName}: component #{componentName} isn't installed.".lightred if output_if_not_installed
+    return false
+  end
+
+  return true
 end
 
 def prop(silent = false)
@@ -1383,12 +1484,52 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
 end
 
 def install_package(pkgdir)
+  def copy_to_rootfs(files)
+    File.write 'tmplist', files.map {|f| f.sub(%r{^/}, './') }.join("\n")
+
+    # check if rsync available
+    rsync_available = system('rsync', '--version', out: '/dev/null', exception: false)
+
+    if rsync_available
+      system 'rsync', '-apHW', '--no-implied-dirs', '--remove-source-files', '--files-from=tmplist', '.', '/'
+    else
+      system "tar -c#{@verbose}f - -T tmplist | tar -xp --keep-directory-symlink -C / -f -"
+    end
+
+    File.delete 'tmplist'
+  end
+
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', "#{CREW_META_PATH}#{@pkg.name}.directorylist", verbose: @fileutils_verbose
-    FileUtils.mv 'filelist', "#{CREW_META_PATH}#{@pkg.name}.filelist", verbose: @fileutils_verbose
+    if @pkg.target_component == 'all'
+      filelist = File.readlines('filelist', chomp: true)
+      directoryList = File.readlines('dlist', chomp: true)
+    else
+      # only include specific files that match the component's file filter
+      filelist = File.readlines('filelist', chomp: true).select do |f|
+        # pass the modified filename (after deleting CREW_PREFIX) to the filter function
+        @pkg.componentFileFilter[@pkg.target_component].call( f.sub(%r{^#{CREW_PREFIX}/?}, '') )
+      end
+
+      # generate filelist according to the filelist
+      directoryList = filelist.map {|f| File.dirname(f) }.uniq
+    end
+
+    File.write "#{CREW_META_PATH}/#{@pkg.name}::#{@pkg.target_component}.filelist", filelist.join("\n")
+    File.write "#{CREW_META_PATH}/#{@pkg.name}::#{@pkg.target_component}.directorylist", directoryList.join("\n")
+
+    # When installing component 'all' (default component if no component specified), replace the
+    # old filelist (with no component name in file name) with a symlink that points to the new
+    # filelist (with a component name) for compatibility
+    if @pkg.target_component == 'all'
+      FileUtils.ln_sf "#{@pkg.name}::all.filelist", "#{CREW_META_PATH}/#{@pkg.name}.filelist"
+      FileUtils.ln_sf "#{@pkg.name}::all.directorylist", "#{CREW_META_PATH}/#{@pkg.name}.directorylist"
+    end
+
+    # FileUtils.mv 'dlist', "#{CREW_META_PATH}#{@pkg.name}.directorylist", verbose: @fileutils_verbose
+    # FileUtils.mv 'filelist', "#{CREW_META_PATH}#{@pkg.name}.filelist", verbose: @fileutils_verbose
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       @brokensymlinks = nil
@@ -1414,8 +1555,13 @@ def install_package(pkgdir)
       end
     end
 
-    install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
-    install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
+    # create directories listed in directory list
+    FileUtils.mkdir_p(directoryList)
+    # install files listed in filelist
+    copy_to_rootfs(filelist) if filelist.any?
+
+    # install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
+    # install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
   end
 end
 
@@ -1450,7 +1596,14 @@ def resolve_dependencies_and_install
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" # this is a little ugly, feel free to find a better way
     end
   end
-  puts "#{@pkg.name.capitalize} installed!".lightgreen
+
+  # hide component name when target component is 'all'
+  if @pkg.target_component == 'all'
+    puts "#{@pkg.name.capitalize} installed!".lightgreen
+  else
+    puts "#{@pkg.name.capitalize}::#{@pkg.target_component} installed!".lightgreen
+  end
+
   @resolve_dependencies_and_install = 0
 end
 
@@ -1478,10 +1631,14 @@ def resolve_dependencies
   @dependencies.map!(&:keys).flatten!
 
   # leave only not installed packages in dependencies
-  @dependencies.reject! { |depName| @device[:installed_packages].any? { |pkg| pkg[:name] == depName } }
+  @dependencies.reject! do |name|
+    depName, depComponentName = name.split('::', 2)
+    package_installed?(depName, depComponentName || 'all')
+  end
 
   # run preflight check for dependencies
   @dependencies.each do |depName|
+    puts 'Preflight for components not yet implemented.'.lightred
     dep_pkgPath = File.join(CREW_PACKAGES_PATH, "#{depName}.rb")
     Package.load_package(dep_pkgPath, depName).preflight
   end
@@ -1491,7 +1648,8 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.file?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
+    depName, depComponentName = dep.split('::', 2)
+    abort "Dependency #{dep} was not found.".lightred unless File.file?( File.join(CREW_PACKAGES_PATH, "#{depName}.rb") )
   end
 
   puts @dependencies.join(' ')
@@ -1527,9 +1685,9 @@ def resolve_dependencies
 end
 
 def install
-  if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
-    puts "Package #{@pkg.name} already installed, skipping...".lightgreen
-    return
+  if package_installed?(@pkg.name, @pkg.target_component) && !@pkg.in_upgrade
+    puts "Package #{@pkg.name}::#{@pkg.target_component} already installed, skipping...".lightgreen
+    return false
   end
 
   unless @pkg.is_fake?
@@ -1560,7 +1718,7 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
-    remove @pkg.name
+    remove @pkg.name, @pkg.target_component
   end
 
   unless @pkg.is_fake?
@@ -1577,11 +1735,18 @@ def install
   end
 
   # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version)
-  File.open("#{CREW_CONFIG_PATH}device.json.tmp", 'w') do |file|
-    output = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(output)
+  if @device[:installed_packages].any? {|e| e[:name] == @pkg.name }
+    # add component to the package's entry
+    installedComponents = @device[:installed_packages].select {|e| e[:name] == @pkg.name } [0][:installedComponents]
+    installedComponents ||= []
+    installedComponents << @pkg.target_component
+  else
+    # add an entry for the package if not exist
+    @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, is_dep: @pkg.is_dep, installedComponents: [@pkg.target_component])
   end
+
+  File.write( "#{CREW_CONFIG_PATH}/device.json.tmp", JSON.pretty_generate(@device) )
+
   # Copy over original if the write to the tmp file succeeds.
   FileUtils.cp "#{CREW_CONFIG_PATH}device.json.tmp", "#{CREW_CONFIG_PATH}device.json"
   FileUtils.rm "#{CREW_CONFIG_PATH}device.json.tmp"
@@ -1673,16 +1838,23 @@ def archive_package(pwd)
   system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
 end
 
-def remove(pkgName)
+def remove(pkgName, componentName = 'all')
   # make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
-    puts "Package #{pkgName} isn't installed.".lightred
-    return
-  end
+  return unless package_installed?(pkgName, componentName, true)
 
-  # Perform any operations required prior to package removal.
-  search pkgName, true
-  @pkg.preremove
+  # if we are still here, that means either the component 'all' or <componentName> itself is installed.
+  #
+  # don't perform uninstall for <componentName> if <componentName> is not installed separately (installed via component 'all')
+  if package_installed?(pkgName, 'all') && (componentName != 'all')
+    abort <<~EOT.chomp.yellow
+      #{pkgName}: component '#{componentName}' is installed as a part of component 'all'.
+      Component '#{componentName}' will NOT be removed.
+    EOT
+  else
+    # Perform any operations required prior to package removal only if all is installed.
+    search pkgName, true
+    @pkg.preremove
+  end
 
   # Preserve CREW_ESSENTIAL_FILES and make sure they are real files
   # and not symlinks, because preserving symlinked libraries does not
@@ -1700,7 +1872,15 @@ def remove(pkgName)
   conflicts = determine_conflicts(Dir.pwd, @pkg.name)
 
   # if the filelist exists, remove the files and directories installed by the package
-  if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  if componentName == 'all'
+    # keep compatibility with packages installed before implementation of the provide system
+    filelist = "#{CREW_META_PATH}/#{pkgName}.filelist"
+    directoryList = "#{CREW_META_PATH}/#{pkgName}.directorylist"
+  else
+    filelist = "#{CREW_META_PATH}/#{pkgName}::#{componentName}.filelist"
+    directoryList = "#{CREW_META_PATH}/#{pkgName}::#{componentName}.directorylist"
+  end
+  if File.file?(filelist)
     Dir.chdir CREW_CONFIG_PATH do
       # remove all files installed by the package
       File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
@@ -1724,7 +1904,7 @@ def remove(pkgName)
       end
 
       # remove all directories installed by the package
-      File.foreach("meta/#{pkgName}.directorylist", chomp: true) do |line|
+      File.foreach(directorylist, chomp: true) do |line|
         puts "directorylist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
         next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
 
@@ -1733,13 +1913,20 @@ def remove(pkgName)
       end
 
       # remove the file and directory list
-      FileUtils.rm_f Dir["meta/#{pkgName}.{file,directory}list"]
+      FileUtils.rm_f Dir[filelist, directorylist]
     end
   end
 
   # remove from installed packages
-  puts "Removing package #{pkgName}".lightred if @opt_verbose
-  @device[:installed_packages].delete_if { |elem| elem[:name] == pkgName }
+  puts "Removing package #{pkgName}::#{componentName}".lightred if @opt_verbose
+
+  if componentName == 'all'
+    @device[:installed_packages].delete_if {|elem| elem[:name] == pkgName }
+  else
+    installedComponents = @device[:installed_packages].select {|elem| elem[:name] == pkgName } [0][:installedComponents]
+    installedComponents.delete(componentName)
+    @device[:installed_packages].delete_if {|elem| elem[:name] == pkgName } if installedComponents.empty?
+  end
 
   # update the device manifest
   File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
@@ -1747,7 +1934,11 @@ def remove(pkgName)
   search pkgName, true
   @pkg.remove
 
-  puts "#{pkgName.capitalize} removed!".lightgreen
+  if componentName == 'all'
+    puts "#{pkgName.capitalize} removed!".lightgreen
+  else
+    puts "#{pkgName.capitalize}::#{componentName} removed.".lightgreen
+  end
 end
 
 def print_deps_tree(args)
@@ -1760,7 +1951,7 @@ def print_deps_tree(args)
   jsonView = JSON.pretty_generate(depHash)
 
   # convert formatted json string to tree structure
-  treeView = jsonView.gsub(/\{\s*/m, '└─────').gsub(/[\[\]{},":]/, '').gsub(/^\s*$\n/, '').gsub(/\s*$/, '')
+  treeView = jsonView.gsub(/\{\s*/m, '└─────').gsub(/[\[\]{},"]/, '').gsub(/:(?=\s)/, '').gsub(/^\s*$\n/, '').gsub(/\s*$/, '')
 
   # add pipe char to connect endpoints and starting points, improve readability
   # find the horizontal location of all arrow symbols
@@ -1827,8 +2018,9 @@ end
 
 def build_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
     print_current_package @opt_verbose
     resolve_dependencies_and_build
   end
@@ -1846,8 +2038,9 @@ end
 
 def deps_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
 
     if args['--tree']
       # call `print_deps_tree` (print dependency tree) if --tree is specified
@@ -1861,8 +2054,9 @@ end
 
 def download_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
     print_current_package @opt_verbose
     download
   end
@@ -1870,10 +2064,11 @@ end
 
 def files_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
     print_current_package
-    files name
+    files @pkgName, componentName
   end
 end
 
@@ -1888,8 +2083,9 @@ end
 
 def install_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
     print_current_package true
     @pkg.build_from_source = true if @opt_src || @opt_recursive || (CREW_BUILD_FROM_SOURCE == '1')
     resolve_dependencies_and_install
@@ -1910,9 +2106,10 @@ end
 
 def postinstall_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName, true
-    if @device[:installed_packages].any? { |elem| elem[:name] == @pkgName }
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name, true
+    if package_installed?(@pkgName, componentName)
       @pkg.postinstall
     else
       puts "Package #{@pkgName} is not installed. :(".lightred
@@ -1926,8 +2123,9 @@ end
 
 def reinstall_command(args)
   args['<name>'].each do |name|
-    @pkgName = name
-    search @pkgName
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
     print_current_package
     @pkg.build_from_source = true if @opt_src || @opt_recursive || (CREW_BUILD_FROM_SOURCE == '1')
     next unless @pkgName
@@ -1939,7 +2137,7 @@ def reinstall_command(args)
 end
 
 def remove_command(args)
-  args['<name>'].each {|name| remove name }
+  args['<name>'].each {|name| remove(*name.split('::', 2)) }
 end
 
 def search_command(args)
@@ -2004,7 +2202,18 @@ def updatefiles_command(args)
   updatefiles
 end
 
-def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)
+# def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)
+def upgrade_command(args)
+  args['<name>'].each do |name|
+    @pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    search name
+    print_current_package
+    upgrade(name, build_from_source: @opt_src)
+  end.empty? and begin
+    upgrade(name, build_from_source: @opt_src)
+  end
+end
 
 def whatprovides_command(args)
   args['<pattern>'].each do |name|

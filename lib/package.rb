@@ -5,9 +5,9 @@ require_relative 'package_helpers'
 require_relative 'selector'
 
 class Package
-  property :description, :homepage, :version, :license, :compatibility,
-           :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag
+  property :homepage, :version, :license, :compatibility, :binary_url,
+           :binary_sha256, :source_url, :source_sha256, :git_branch,
+           :git_hashtag
 
   boolean_property = %i[conflicts_ok git_clone_deep git_fetchtags gnome is_fake is_musl is_static
                         no_compile_needed no_compress no_env_options no_fhs no_git_submodules
@@ -26,7 +26,13 @@ class Package
                      :remove       # Function to perform after package removal.
 
   class << self
-    attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
+    attr_reader_with_default componentList: ['all'],
+                             componentFileFilter: { 'all' => nil },
+                             componentOption: { 'all' => { run_postinstall: true } },
+                             descriptionList: {}
+
+    attr_accessor :name, :cached_build, :in_build, :build_from_source,
+                  :in_upgrade, :target_component
   end
 
   def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
@@ -52,7 +58,7 @@ class Package
     @dependencies ||= {}
   end
 
-  def self.get_deps_list(pkgName = name, return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
+  def self.get_deps_list(name = "#{self.name}::#{target_component}", hash: false, include_build_deps: 'auto', include_self: false,
                          pkgTags: [], verCheck: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
     # get_deps_list: get dependencies list of pkgName (current package by default)
     #
@@ -75,7 +81,12 @@ class Package
     @checked_list ||= {} # create @checked_list placeholder if not exist
 
     # add current package to @checked_list for preventing extra checks
-    @checked_list.merge!({ pkgName => pkgTags })
+    @checked_list.merge!({ name => pkgTags })
+
+    pkgName, componentName = name.split('::', 2)
+    componentName ||= 'all'
+    require_relative "#{CREW_PACKAGES_PATH}/#{pkgName}.rb"
+    Object.const_get(pkgName.capitalize).target_component = componentName
 
     pkgObj = load_package("#{CREW_PACKAGES_PATH}/#{pkgName}.rb")
     is_source = pkgObj.is_source?(ARCH.to_sym) or pkgObj.build_from_source
@@ -127,16 +138,16 @@ class Package
     if hash
       # the '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "build dependency"
       if highlight_build_deps && pkgTags.include?(:build)
-        return { "*#{pkgName}*" => expandedDeps }
+        return { "*#{name}*" => expandedDeps }
       else
-        return { pkgName => expandedDeps }
+        return { name => expandedDeps }
       end
     elsif include_self
-      # return pkgName itself if this function is called as a recursive loop (see `expandedDeps`)
+      # return name itself if this function is called as a recursive loop (see `expandedDeps`)
       if return_attr
-        return [expandedDeps, { pkgName => [pkgTags, verCheck] }].flatten
+        return [expandedDeps, { name => [pkgTags, verCheck] }].flatten
       else
-        return [expandedDeps, pkgName].flatten
+        return [expandedDeps, name].flatten
       end
     else
       # if this function is called outside of this function, return parsed dependencies only
@@ -170,6 +181,16 @@ class Package
     else
       warn "#{name}: Missing `compatibility` field.".lightred
       return false
+    end
+  end
+
+  def self.description(text = nil)
+    # self.description: set package description
+    @descriptionList ||= {}
+    if text
+      @descriptionList['all'] = text
+    else
+      return @descriptionList[@target_component]
     end
   end
 
@@ -214,6 +235,53 @@ class Package
     end
 
     @dependencies.store(depName, [dep_tags, ver_check])
+  end
+
+  def self.provides(componentName, description, fileFilter, **opts)
+    # self.provides: define a component for the current package
+    # Usage: provides <componentName:string>, <description:string>,
+    #                 <fileFilter:lambda>, [options]
+    #
+    #   componentName: The name of this component
+    #     description: Description of this component
+    #      fileFilter: Used to specify file(s) that need to be installed/extracted from main package
+    #
+    # Accepted #{fileFilter} types:
+    #     glob: bash style file wildcard patterns
+    #    regex: regular expressions
+    #   lambda: a lambda function (act as a filter), determine if a file should be
+    #           installed based on the return value of the lambda function
+    #
+    # Available options:
+    #   :run_postinstall      (default: false) run main package's postinstall or not
+    #
+    @componentList ||= ['all']
+    @componentFileFilter ||= { 'all' => nil }
+    @descriptionList ||= {}
+    @componentOption ||= {}
+
+    @componentList << componentName
+    @descriptionList[componentName] = description
+
+    # determine fileFilter type, convert them to lambda functions based on its type
+    if fileFilter.is_a?(Proc) && fileFilter.lambda?
+      # when a lambda block is passed as #{fileFilter}, store it
+      @componentFileFilter[componentName] = fileFilter
+    elsif fileFilter.is_a?(Regexp)
+      # when a regex object is passed as #{fileFilter},
+      # create a lambda block for comparing filenames with the passed regex
+      @componentFileFilter[componentName] = ->(file) { file =~ fileFilter }
+    elsif fileFilter.is_a?(Array)
+      # when an array containing files is passed as #{fileFilter},
+      # create a lambda block for checking if the filename is included in the passed array
+      @componentFileFilter[componentName] = ->(file) { fileFilter.include?(file) }
+    elsif fileFilter.is_a?(String)
+      # when a string (glob) is passed as #{fileFilter},
+      # create a lambda block for comparing filenames with the passed glob
+      @componentFileFilter[componentName] = ->(file) { File.fnmatch(fileFilter, file) }
+    end
+
+    @componentOption[componentName] = opts
   end
 
   def self.get_url(architecture)

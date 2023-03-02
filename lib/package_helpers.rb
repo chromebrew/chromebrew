@@ -1,5 +1,12 @@
 class InstallError < RuntimeError; end
 
+def attr_reader_with_default(**vars)
+  # attr_reader_with_default: like attr_reader but with the ability to specify a default value
+  vars.each_pair do |varName, defaultValue|
+    class_eval("def #{varName}; return ( @#{varName} || #{defaultValue} ); end", __FILE__, __LINE__)
+  end
+end
+
 def create_placeholder(*functions)
   # create_placeholder: create a placeholder for functions that will be used by crew later
   functions.each do |func|
