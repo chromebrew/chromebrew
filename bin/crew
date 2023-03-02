@@ -202,9 +202,8 @@ def set_package(pkgName, componentName = 'all', silent: false)
   begin
     require_relative pkgPath
     @pkg = Object.const_get(className)
-  rescue Exception => e
-    puts "Error with #{pkgName}.rb: ".red
-    puts e.message.orange
+  rescue SyntaxError => e
+    warn "#{e.class}: #{e.message}".orange
     exit 2
   end
 
@@ -1483,22 +1482,22 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
   end
 end
 
-def install_package(pkgdir)
-  def copy_to_rootfs(files)
-    File.write 'tmplist', files.map {|f| f.sub(%r{^/}, './') }.join("\n")
+def copy_to_rootfs(files)
+  File.write 'tmplist', files.map {|f| f.sub(%r{^/}, './') }.join("\n")
 
-    # check if rsync available
-    rsync_available = system('rsync', '--version', out: '/dev/null', exception: false)
+  # check if rsync available
+  rsync_available = system('rsync', '--version', out: '/dev/null', exception: false)
 
-    if rsync_available
-      system 'rsync', '-apHW', '--no-implied-dirs', '--remove-source-files', '--files-from=tmplist', '.', '/'
-    else
-      system "tar -c#{@verbose}f - -T tmplist | tar -xp --keep-directory-symlink -C / -f -"
-    end
-
-    File.delete 'tmplist'
+  if rsync_available
+    system 'rsync', '-apHW', '--no-implied-dirs', '--remove-source-files', '--files-from=tmplist', '.', '/'
+  else
+    system "tar -c#{@verbose}f - -T tmplist | tar -xp --keep-directory-symlink -C / -f -"
   end
 
+  File.delete 'tmplist'
+end
+
+def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
     puts 'Performing install...'
