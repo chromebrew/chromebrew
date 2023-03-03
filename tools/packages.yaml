@@ -1080,6 +1080,11 @@ url: https://chromium.googlesource.com/chromiumos/third_party/adhd
 activity: medium
 ---
 kind: url
+name: crew-mvdir
+url: https://github.com/chromebrew/crew-mvdir/releases
+activity: medium
+---
+kind: url
 name: criu
 url: https://github.com/checkpoint-restore/criu/tags
 activity: medium

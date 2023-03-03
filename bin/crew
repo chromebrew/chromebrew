@@ -74,11 +74,6 @@ DOCOPT
 # All available crew commands.
 @cmds = DOC.scan(/crew ([^\s]+)/).flatten
 
-# Verbose options
-@fileutils_verbose = @opt_verbose
-@verbose           = @opt_verbose ? 'v' : ''
-@short_verbose     = @opt_verbose ? '-v' : ''
-
 # Disallow sudo
 abort 'Chromebrew should not be run as root.'.lightred if Process.uid.zero?
 
@@ -123,6 +118,11 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_verbose   = args['--verbose']
 @opt_src       = args['--build-from-source']
 @opt_recursive = args['--recursive-build']
+
+# Verbose options
+@fileutils_verbose = @opt_verbose
+@verbose           = @opt_verbose ? 'v' : ''
+@short_verbose     = @opt_verbose ? '-v' : ''
 
 def load_json
   # load_json(): (re)load device.json
@@ -1268,6 +1268,26 @@ def shrink_dir(dir)
   end
 end
 
+def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/local') ))
+  if Dir.exist?(src)
+    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
+      system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
+    else
+      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless @pkg.name == 'crew_mvdir'
+
+      if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
+        # rsync src path needs a trailing slash
+        src << '/' unless src.end_with?('/')
+        system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
+      else
+        system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
+      end
+    end
+  else
+    abort "#{src} directory does not exist.".lightred
+  end
+end
+
 def install_package(pkgdir)
   Dir.chdir pkgdir do
     # install filelist, dlist and binary files
@@ -1300,33 +1320,8 @@ def install_package(pkgdir)
       end
     end
 
-    # check if the available rsync command support ACLs
-
-    rsync_available = (File.executable?("#{CREW_PREFIX}/bin/rsync") && `#{CREW_PREFIX}/bin/rsync --version`.include?('rsync  version'))
-    puts 'rsync is not working. Please (re)install it with \'crew reinstall rsync\''.lightred unless rsync_available || (@pkg.name == 'rsync')
-    if Dir.exist? "#{pkgdir}/#{HOME}"
-      if rsync_available
-        system "rsync -ahHAXW --remove-source-files ./#{HOME.delete_prefix('/')}/ #{HOME}"
-      else
-        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
-      end
-    end
-    if Dir.exist? "#{pkgdir}/usr/local"
-      if rsync_available
-        # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
-        system "rsync -ahHAXWx --remove-source-files ./usr/local/ #{CREW_PREFIX}"
-      else
-        system "tar -c#{@verbose}f - ./usr/* | (cd /; tar xp --keep-directory-symlink -f -)"
-      end
-    end
-    if Dir.exist? "#{pkgdir}/#{CREW_PREFIX}"
-      if rsync_available
-        # Adjust "./usr/local" if the build CREW_PREFIX ever changes.
-        system "rsync -ahHAXWx --remove-source-files ./#{CREW_PREFIX}/ #{CREW_PREFIX}"
-      else
-        system "cp -a#{@verbose} ./#{CREW_PREFIX}/* #{CREW_PREFIX}"
-      end
-    end
+    install_files(".#{CREW_PREFIX}") if Dir.exist?(".#{CREW_PREFIX}")
+    install_files(".#{HOME}", HOME) if Dir.exist?(".#{HOME}")
   end
 end
 
