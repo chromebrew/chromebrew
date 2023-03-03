@@ -1485,14 +1485,7 @@ end
 def copy_to_rootfs(files)
   File.write 'tmplist', files.map {|f| f.sub(%r{^/}, './') }.join("\n")
 
-  # check if rsync available
-  rsync_available = system('rsync', '--version', out: '/dev/null', exception: false)
-
-  if rsync_available
-    system 'rsync', '-apHW', '--no-implied-dirs', '--remove-source-files', '--files-from=tmplist', '.', '/'
-  else
-    system "tar -c#{@verbose}f - -T tmplist | tar -xp --keep-directory-symlink -C / -f -"
-  end
+  system "tar -c#{@verbose}f - -T tmplist | tar -xp --keep-directory-symlink -C / -f -"
 
   File.delete 'tmplist'
 end
