@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.31.7'
+CREW_VERSION = '1.31.8'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -308,6 +308,5 @@ PY3_BUILD_OPTIONS = '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
-                       `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/rsync`.scan(/\t([^ ]+)/).flatten +
                        %w[libzstd.so.1 libstdc++.so.6]
 CREW_ESSENTIAL_FILES.uniq!
