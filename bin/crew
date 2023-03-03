@@ -1896,7 +1896,7 @@ def remove(pkgName, componentName = 'all')
       end
 
       # remove all directories installed by the package
-      File.foreach(directorylist, chomp: true) do |line|
+      File.foreach(directoryList, chomp: true) do |line|
         puts "directorylist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
         next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
 
@@ -1905,7 +1905,7 @@ def remove(pkgName, componentName = 'all')
       end
 
       # remove the file and directory list
-      FileUtils.rm_f Dir[filelist, directorylist]
+      FileUtils.rm_f Dir[filelist, directoryList]
     end
   end
 
