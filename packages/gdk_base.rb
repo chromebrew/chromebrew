@@ -3,7 +3,7 @@ require 'package'
 class Gdk_base < Package
   description 'Set environment variables for autoscaling GTK applications'
   homepage 'https://gitlab.com/chromebrew/chromebrew/'
-  version '1.2'
+  version '1.3'
   license 'GPL-3'
   compatibility 'all'
   source_url 'SKIP'
@@ -37,9 +37,12 @@ class Gdk_base < Package
       #[[ $RESOLUTION -ge 4500 && $RESOLUTION -lt 5500 ]] && GDK_SCALE=3
       #[[ $RESOLUTION -gt 5500 ]] && GDK_SCALE=3.5
       SCALE=${SCALE:-1}
-      echo -e "\e[1;33m""Gdk_base set SCALE & GDK_SCALE to \e[1;32m"${SCALE}"\e[1;33m"."\e[0m"
       GDK_SCALE=$SCALE
-      QT_SCALE_FACTOR=$GDK_SCALE
+      QT_SCALE_FACTOR=$(printf "%.2f" $(bc -l <<< "((1 / $SCALE))"))
+      echo -e "Gdk_base set environment variables below:"
+      echo -e "\e[1;33mSCALE=\e[1;32m"${SCALE}
+      echo -e "\e[1;33mGDK_SCALE=\e[1;32m"${GDK_SCALE}
+      echo -e "\e[1;33mQT_SCALE_FACTOR=\e[1;32m"${QT_SCALE_FACTOR}"\e[0m"
     EOF
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/09-gdk_base", gdk_base)
