@@ -3,28 +3,22 @@ require 'package'
 class Krita < Package
   description 'A generic image manipulation/painting application in the style of Photoshop or GIMP.'
   homepage 'https://krita.org/en'
-  version '5.0.2'
+  version '5.1.4'
   license 'GPL-3'
   compatibility 'x86_64'
-  source_url 'https://download.kde.org/stable/krita/5.0.2/krita-5.0.2-x86_64.appimage'
-  source_sha256 '139e621ec3a4ec1918e6046bdd7be4c0b392cdf2571ca83a065a3e2f00f585e8'
+  source_url 'https://download.kde.org/stable/krita/5.1.4/krita-5.1.4-x86_64.appimage'
+  source_sha256 'f6678796cb98086b1e576aae4911e3d6b133cd0a4ec61a900ff5136a9f55917d'
 
   no_compile_needed
 
   depends_on 'gtk3'
+  depends_on 'gdk_base'
   depends_on 'sommelier'
 
   def self.build
     krita = <<~EOF
       #!/bin/bash
-      SCALE=1
-      RESOLUTION=$(xdpyinfo | awk '/dimensions:/ { print $2 }' | cut -d'x' -f1)
-      [[ $RESOLUTION -gt 1500 && $RESOLUTION -lt 3000 ]] && SCALE=1.5
-      [[ $RESOLUTION -ge 3000 && $RESOLUTION -lt 4500 ]] && SCALE=2
-      [[ $RESOLUTION -ge 4500 && $RESOLUTION -lt 6000 ]] && SCALE=2.5
-      [[ $RESOLUTION -ge 6000 ]] && SCALE=3
-      export GDK_BACKEND=x11
-      export QT_SCALE_FACTOR=$SCALE
+      export PYTHONHOME=#{CREW_PREFIX}/bin
       export PYTHONPATH=#{CREW_PREFIX}/share/krita/usr/lib/python3.8:$PYTHONPATH
       export LD_LIBRARY_PATH=#{CREW_PREFIX}/share/krita/usr/lib:$LD_LIBRARY_PATH
       cd #{CREW_PREFIX}/share/krita
@@ -43,6 +37,8 @@ class Krita < Package
   end
 
   def self.postinstall
-    puts "\nType 'krita' to get started.\n".lightblue
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts 'source ~/.bashrc'.lightblue
+    puts "\nAfter the above, type 'krita' to get started.\n".lightblue
   end
 end
