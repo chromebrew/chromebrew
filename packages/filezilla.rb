@@ -3,21 +3,21 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '3.63.1'
+  version '3.63.2.1'
   license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://download.filezilla-project.org/client/FileZilla_3.63.1_src.tar.bz2'
-  source_sha256 '4e0b5c0f79f4f8bca4ba21e713ba97b86d5b45c4723de67b9c10d23bf417a37f'
+  source_url 'https://download.filezilla-project.org/client/FileZilla_3.63.2.1_src.tar.bz2'
+  source_sha256 '6dc14c6f7f4de7e44c8429b32f7f9edbbf10732d21dd75d8974ae44007b7b79d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.1_armv7l/filezilla-3.63.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.1_armv7l/filezilla-3.63.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.1_x86_64/filezilla-3.63.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.2.1_armv7l/filezilla-3.63.2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.2.1_armv7l/filezilla-3.63.2.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.63.2.1_x86_64/filezilla-3.63.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3e0dd61dd48adb2a4a1a3412f77b0dafdfa3ac7d6a3949ec037c43aa59e89eb2',
-     armv7l: '3e0dd61dd48adb2a4a1a3412f77b0dafdfa3ac7d6a3949ec037c43aa59e89eb2',
-     x86_64: 'e07cbcb631ea7b6d77f27aee52a4d060c2015e48364d6c5903cd501c4d0edcb5'
+    aarch64: '0f2797a486f08daf0beea70493e3cb66466d7a908c9531002269cb754ad6f287',
+     armv7l: '0f2797a486f08daf0beea70493e3cb66466d7a908c9531002269cb754ad6f287',
+     x86_64: 'fc5cf25b9cfdae4b0c82ff0ab9fd7c4de90e9f7303e9f091b5d6ec35513d6504'
   })
 
   depends_on 'dbus'
