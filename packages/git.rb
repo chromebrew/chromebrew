@@ -10,16 +10,16 @@ class Git < Package
   source_sha256 '475f75f1373b2cd4e438706185175966d5c11f68c4db1e48c26257c43ddcf2d6'
 
   binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_i686/git-2.39.2-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_x86_64/git-2.39.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_i686/git-2.39.2-1-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_x86_64/git-2.39.2-1-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-     aarch64: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
-      armv7l: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
-        i686: 'b8d4ac0df63ab8990c8178b5cc464ff402cc9bd3d5ed9cf6ec0d27987c4289c1',
-      x86_64: 'e5a5ea385c6d95be6a2f1bc4e3f40bb0308e323a711408c5ec46c6fd9fa17c6e'
+    aarch64: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
+     armv7l: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
+       i686: 'b8d4ac0df63ab8990c8178b5cc464ff402cc9bd3d5ed9cf6ec0d27987c4289c1',
+     x86_64: 'e5a5ea385c6d95be6a2f1bc4e3f40bb0308e323a711408c5ec46c6fd9fa17c6e'
   })
 
   depends_on 'ca_certificates' => :build
