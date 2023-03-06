@@ -3,7 +3,7 @@ require 'package'
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  @_ver = '7.0.0'
+  @_ver = '7.1.0'
   version @_ver
   license 'Old-MIT, ISC and icu'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Harfbuzz < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_armv7l/harfbuzz-7.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_armv7l/harfbuzz-7.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_i686/harfbuzz-7.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.0.0_x86_64/harfbuzz-7.0.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_armv7l/harfbuzz-7.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_armv7l/harfbuzz-7.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_i686/harfbuzz-7.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_x86_64/harfbuzz-7.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '342f5333c03ee22b9a171d4e4d998b8b68deafd5db27dfdd0ad0c17ea8ece173',
-     armv7l: '342f5333c03ee22b9a171d4e4d998b8b68deafd5db27dfdd0ad0c17ea8ece173',
-       i686: 'a96129c9bb8a4b1a74bb5d06515f90825cde267615901d8bffc61d7a9ace962d',
-     x86_64: 'ee2537c312edb6427d21ac09065478650eab4da979054ffcc756e4caa6629085'
+    aarch64: '4f7a52a90c3ba072e520ce35d1f3ae98d5673394703ef2af3bc11ecc59be653e',
+     armv7l: '4f7a52a90c3ba072e520ce35d1f3ae98d5673394703ef2af3bc11ecc59be653e',
+       i686: '51ff026b275866174cf2e3b3b86f5351c542ae6bd62763124eba9ea69d8f8471',
+     x86_64: '6403cc02542560d51c9e64ab8ab502774a8324f59f8e936956dc3425565c67b5'
   })
 
   depends_on 'brotli' # R
@@ -52,6 +52,7 @@ class Harfbuzz < Package
   conflicts_ok
 
   def self.build
+    system 'update-ca-certificates --fresh'
     system "meson setup #{CREW_MESON_OPTIONS} \
       --wrap-mode=default \
       --default-library=both \
@@ -65,11 +66,11 @@ class Harfbuzz < Package
       -Dtests=disabled \
       builddir"
     system 'meson configure builddir'
-    system 'mold -run ninja -C builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja install -C builddir"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     # The following are included the libpng package.
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/libpng*"]
     FileUtils.rm Dir["#{CREW_DEST_PREFIX}/include/libpng16/png*"]
