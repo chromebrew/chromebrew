@@ -24,7 +24,6 @@ class Gtksourceview_3 < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
   depends_on 'fontconfig' => :build
   depends_on 'freetype' => :build

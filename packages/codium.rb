@@ -19,7 +19,6 @@ class Codium < Package
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'cups' # R
   depends_on 'dbus' # R
   depends_on 'expat' # R

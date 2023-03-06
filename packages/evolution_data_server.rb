@@ -23,7 +23,6 @@ class Evolution_data_server < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'gcc' # R
   depends_on 'gcr_3' # R
   depends_on 'gdk_pixbuf' # R

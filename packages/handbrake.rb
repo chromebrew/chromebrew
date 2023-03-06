@@ -17,7 +17,6 @@ class Handbrake < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'bz2' # R
   depends_on 'expat' # R
   depends_on 'ffmpeg'

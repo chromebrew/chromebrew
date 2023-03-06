@@ -38,7 +38,6 @@ class Vte < Package
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'zlibpkg' # R
-  depends_on 'at_spi2_core' # R
 
   gnome
 
