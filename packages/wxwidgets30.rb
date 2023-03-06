@@ -23,7 +23,7 @@ class Wxwidgets30 < Package
      x86_64: '0eb2ecba4109d960ab9c23a51161964b26864aad475f7d2a2bfc63b3b4a1a8da'
   })
 
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'fontconfig'
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R

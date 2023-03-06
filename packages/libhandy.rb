@@ -23,7 +23,7 @@ class Libhandy < Package
      x86_64: '5bb6704da3f64fb2a1259fc79dae2680804d007316c552c23a8eefb506ca53f2'
   })
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'fribidi'
   depends_on 'gdk_pixbuf'

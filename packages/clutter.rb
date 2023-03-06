@@ -22,7 +22,7 @@ class Clutter < Package
      x86_64: '1fc7d581d9c66bf0d415cddf76e561428d8610513d41c89ed130a84e3acc605c'
   })
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'pango'
   depends_on 'libxi'
   depends_on 'libxcomposite'

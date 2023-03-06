@@ -26,7 +26,7 @@ class Gtk3 < Package
 
   # L = Logical Dependency, R = Runtime Dependency
   depends_on 'adwaita_icon_theme' # L
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'cantarell_fonts' # L

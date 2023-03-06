@@ -22,7 +22,7 @@ class Geany < Package
      x86_64: 'dd80c365678847a11d7cd2c2b1dcc9d6d88b50fa573a895d506555113ea973d7'
   })
 
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R

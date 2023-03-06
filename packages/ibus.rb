@@ -23,7 +23,7 @@ class Ibus < Package
      x86_64: '85e9181167b7238411d198bff3f673d40693b8391e0dd1a4cc1bbaaa4ce02303'
   })
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'dconf'
   depends_on 'fontconfig'

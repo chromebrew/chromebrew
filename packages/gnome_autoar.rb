@@ -23,7 +23,7 @@ class Gnome_autoar < Package
      x86_64: 'f5171c23c19d2f72ad51152def99143cb502b99c41d1ec850e1cdb6e741dd349'
   })
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'autoconf_archive' => :build
   depends_on 'cairo'
   depends_on 'gdk_pixbuf'

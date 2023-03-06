@@ -22,7 +22,7 @@ class Ghostscript < Package
      x86_64: 'c3c1f1ac1c31ea6a465367504156c18d47bae8b1ecbaee3b118e3bbc3b25a5a9'
   })
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'cups'
   depends_on 'fontconfig'

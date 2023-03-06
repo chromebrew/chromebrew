@@ -19,7 +19,7 @@ class Firefox < Package
   no_compile_needed
   no_shrink
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'dbus'
   depends_on 'dbus_glib'

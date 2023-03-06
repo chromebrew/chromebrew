@@ -24,7 +24,7 @@ class Gstreamer < Package
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bz2' # R
   depends_on 'cairo' # R

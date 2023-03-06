@@ -30,7 +30,7 @@ class Mjpegtools < Package
   depends_on 'libsdl2'
   depends_on 'libx11'
   depends_on 'v4l_utils' => :build
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'expat' # R
   depends_on 'freetype' # R
   depends_on 'gcc' # R

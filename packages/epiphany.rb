@@ -23,7 +23,7 @@ class Epiphany < Package
      x86_64: '0757192bb0ba72bf09da813e4ddabee332f3ae9ad1b8d621a3f9b23bf8658305'
   })
 
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'docbook_xml' => :build
   depends_on 'freetype' => :build

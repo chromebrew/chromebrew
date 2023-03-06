@@ -22,7 +22,7 @@ class Atkmm < Package
      x86_64: '86017c202ce153168975d2bac00d6777961dc9af26ded6d058e8a70537400a8e'
   })
 
-  depends_on 'atk_spi2_core'
+  depends_on 'at_spi2_core'
   depends_on 'glibmm'
   depends_on 'gcc' # R
   depends_on 'glib' # R

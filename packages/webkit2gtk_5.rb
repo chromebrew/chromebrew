@@ -20,7 +20,7 @@ class Webkit2gtk_5 < Package
      x86_64: 'f9c74f727f3d98063e4e0f0f2921e702377f304b1d9c6ab8905ae267f13e1b92'
   })
 
-  depends_on 'atk_spi2_core' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo'
   # depends_on 'ccache' => :build
