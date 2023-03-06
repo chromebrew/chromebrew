@@ -6,23 +6,23 @@ require 'package'
 class Grep < Package
   description 'A string search utility'
   homepage 'https://www.gnu.org/software/grep/'
-  version '3.8'
+  version '3.9'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/grep/grep-3.8.tar.xz'
-  source_sha256 '498d7cc1b4fb081904d87343febb73475cf771e424fb7e6141aff66013abc382'
+  source_url 'https://ftpmirror.gnu.org/grep/grep-3.9.tar.xz'
+  source_sha256 'abcd11409ee23d4caf35feb422e53bbac867014cfeed313bb5f488aca170b599'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.8_armv7l/grep-3.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.8_armv7l/grep-3.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.8_i686/grep-3.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.8_x86_64/grep-3.8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.9_armv7l/grep-3.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.9_armv7l/grep-3.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.9_i686/grep-3.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.9_x86_64/grep-3.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '370bc4fa22b15c51baa50e1f4b477bbd1e92f5b43e49a72393efa5c4af842330',
-     armv7l: '370bc4fa22b15c51baa50e1f4b477bbd1e92f5b43e49a72393efa5c4af842330',
-       i686: 'ce9a41e16cf4a3d056f82e0281bfe50288dac53717d51287355e5b3bbe9afdff',
-     x86_64: '3d525207a010f50d6c929028138d876d43e11dc6d21172b739fbe012f4e0c942'
+    aarch64: 'a6154af6e4abc36435d339cd91b826b9c8f535f022ed8e69e3319f691f300905',
+     armv7l: 'a6154af6e4abc36435d339cd91b826b9c8f535f022ed8e69e3319f691f300905',
+       i686: 'beb06a03aa72c063905589811b3e7c917d149bb476703c9012e56e965076cede',
+     x86_64: 'a2162b32e3d4042f82583edeccfcdbb2aad61790c54e7169f758b45b179b42d9'
   })
 
   depends_on 'pcre'
@@ -34,6 +34,11 @@ class Grep < Package
       ./configure #{CREW_OPTIONS} \
       --without-included-regex"
     system 'make'
+  end
+
+  def self.check
+    # Section XFAIL test with grep: regexec.c:1344: pop_fail_stack: Assertion `num >= 0' failed.
+    # system 'make', 'check'
   end
 
   def self.install
