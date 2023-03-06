@@ -10,17 +10,30 @@ class Pango < Package
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
   git_hashtag @_ver
 
-  depends_on 'cairo'
-  depends_on 'fribidi' # Gets built inside install automatically.
-  depends_on 'glib'
-  depends_on 'gobject_introspection' # add this package to build gtk+, avoid compilation error
-  depends_on 'harfbuzz'
-  depends_on 'libx11'
-  depends_on 'libxdmcp'
-  depends_on 'libxft'
-  depends_on 'libxrender'
-  depends_on 'xorg_proto' => :build
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14_armv7l/pango-1.50.14-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14_armv7l/pango-1.50.14-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14_i686/pango-1.50.14-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14_x86_64/pango-1.50.14-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '80c4f94b3af1913342af608b36459b88fda898fd47f046dd04e3dd5ee9e45a52',
+     armv7l: '80c4f94b3af1913342af608b36459b88fda898fd47f046dd04e3dd5ee9e45a52',
+       i686: 'e4824ad37383eee09843bad8e197bafc940a30228357e2befaf93997c767d893',
+     x86_64: '7f25de6365060477d569d2257cc41482ddf2b7a8cf25062aa2261f274ca6b22c'
+  })
+
+  depends_on 'cairo' => :build
+  depends_on 'fribidi' # R
+  depends_on 'glib' # R
   depends_on 'glibc' # R
+  depends_on 'gobject_introspection' => :build # add this package to build gtk+, avoid compilation error
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11' # R
+  depends_on 'libxdmcp' => :build
+  depends_on 'libxft' # R
+  depends_on 'libxrender' # R
+  depends_on 'xorg_proto' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

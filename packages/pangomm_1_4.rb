@@ -11,12 +11,16 @@ class Pangomm_1_4 < Package
   git_hashtag version
 
   binary_url({
-       i686: 'file:///usr/local/tmp/packages/pangomm_1_4-2.46.3-chromeos-i686.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/pangomm_1_4-2.46.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_armv7l/pangomm_1_4-2.46.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_armv7l/pangomm_1_4-2.46.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_i686/pangomm_1_4-2.46.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_x86_64/pangomm_1_4-2.46.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: '1b2d1f408399784382577c632c7d8840102c5b462a5458410b1bb6d028644b0c',
-     x86_64: 'af30b91e184de0bc84d648b484411dc7b969bf401e108a6d6b5aca33af0ae78c'
+    aarch64: 'd0ab38c4372a12282ab46bf51016f040070c5cf866a0936f04058ba35f7656cb',
+     armv7l: 'd0ab38c4372a12282ab46bf51016f040070c5cf866a0936f04058ba35f7656cb',
+       i686: '65f4880d875dafa601622537ca47530dee764d293510f7871a11137d6025ccf0',
+     x86_64: '50dd9b642fcc0dfa348f89e364d6db1a1f509e97aa0aee75e0b3be3cf7c14913'
   })
 
   depends_on 'cairomm_1_0' # R
