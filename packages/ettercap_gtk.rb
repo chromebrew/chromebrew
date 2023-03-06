@@ -23,7 +23,7 @@ class Ettercap_gtk < Package
       x86_64: '79fa1456b6486a304d9d4f45e7ebf7ec9a2565ebd19d0947b142676af997deeb'
   })
 
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'curl' => :build
   depends_on 'ethtool' => :build

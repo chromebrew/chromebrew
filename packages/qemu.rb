@@ -21,7 +21,7 @@ class Qemu < Package
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'eudev' # R
   depends_on 'fontconfig' # R

@@ -25,7 +25,7 @@ class Asunder < Package
      x86_64: '46865361e0deeaef1539d52dc35daeb28c1b322b947a00a3b7c15580212ba686'
   })
 
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cdparanoia' # R
   depends_on 'freetype' # R

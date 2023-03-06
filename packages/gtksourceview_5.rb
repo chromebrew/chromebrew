@@ -23,7 +23,7 @@ class Gtksourceview_5 < Package
      x86_64: '025bfd8d5b98858324e8590e0f3fb813b5f7464e63bfe2e346f9925fe153ef69'
   })
 
-  depends_on 'atk'
+  depends_on 'atk_spi2_core'
   depends_on 'cairo'
   depends_on 'fontconfig'
   depends_on 'freetype'

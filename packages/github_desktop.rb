@@ -14,7 +14,7 @@ class Github_desktop < Package
   binary_sha256({
   })
 
-  depends_on 'at_spi2_atk'
+  depends_on 'at_spi2_core'
   depends_on 'gdk_pixbuf'
   depends_on 'libcom_err'
   depends_on 'xdg_base'

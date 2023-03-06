@@ -24,7 +24,7 @@ class Gnome_terminal < Package
   })
 
   depends_on 'adobe_source_code_pro_fonts' # (Needed for monospace fonts)
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'dconf' => :build
   depends_on 'dbus' # L

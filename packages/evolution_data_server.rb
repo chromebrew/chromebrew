@@ -22,7 +22,7 @@ class Evolution_data_server < Package
      x86_64: '57189bbc3c4fa355db5d3e64dc89521f91e7366eadb251b993bd963ec573d1d3'
   })
 
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'gcc' # R
   depends_on 'gcr_3' # R

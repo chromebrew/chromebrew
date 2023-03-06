@@ -23,7 +23,7 @@ class Qtbase < Package
   })
 
   depends_on 'alsa_plugins' => :build
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
   depends_on 'cups' # R

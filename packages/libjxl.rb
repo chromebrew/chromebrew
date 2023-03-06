@@ -32,7 +32,7 @@ class Libjxl < Package
   depends_on 'gimp' => :build
   depends_on 'libjpeg' # This needs to be turbo.
   depends_on 'xdg_utils' => :build
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'babl' # R
   depends_on 'freetype' # R
   depends_on 'gcc' # R

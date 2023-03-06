@@ -23,7 +23,7 @@ class Graphviz < Package
      x86_64: 'ce900808e60f7fcc5a558a6fe50d8700ccf5f25528a11227d52750ec72621f31'
   })
 
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
   depends_on 'expat' # R

@@ -25,7 +25,7 @@ class Evince < Package
      x86_64: 'dc46b37780ac1b9f5c400a3bd8b4c8f01a0752b287747ced776e62b7be053cf5'
   })
 
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'djvulibre' # R
   depends_on 'docbook_xsl' => :build

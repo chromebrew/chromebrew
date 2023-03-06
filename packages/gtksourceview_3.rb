@@ -23,7 +23,7 @@ class Gtksourceview_3 < Package
      x86_64: '539da69432b1494f60cdc5d498f0ec13d89835688b3775a1b0a7d72c671b8454'
   })
 
-  depends_on 'atk' # R
+  depends_on 'atk_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
   depends_on 'fontconfig' => :build
