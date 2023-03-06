@@ -4,11 +4,12 @@ require 'package'
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.13.0-1' # Update freetype in harfbuzz when updating freetype
+  @_ver = '2.13.0' # Update freetype in harfbuzz when updating freetype
+  version "#{@_ver}-1" # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
-  git_hashtag "VER-#{version.tr('.', '-')}"
+  git_hashtag "VER-#{@_ver.tr('.', '-')}"
 
   depends_on 'brotli'
   depends_on 'bz2'
