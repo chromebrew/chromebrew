@@ -34,7 +34,7 @@ class Gspell < Package
   depends_on 'llvm' => :build
   depends_on 'hunspell'
   depends_on 'aspell' # R
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R

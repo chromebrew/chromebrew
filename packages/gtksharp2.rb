@@ -25,7 +25,7 @@ class Gtksharp2 < Package
   depends_on 'mono'
   depends_on 'libglade'
   depends_on 'pango'
-  depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'gtk2'
   depends_on 'glib'
 

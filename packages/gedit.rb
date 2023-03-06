@@ -23,7 +23,7 @@ class Gedit < Package
   })
 
   depends_on 'amtk' # R
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R

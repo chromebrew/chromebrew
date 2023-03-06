@@ -20,7 +20,7 @@ class Transmission < Package
      x86_64: 'e0892a64138e17054f34b4acdda32f37aee610eed50ad3a7f4da12d71b0bae46'
   })
 
-  depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'freetype' => :build
   depends_on 'gdk_pixbuf'

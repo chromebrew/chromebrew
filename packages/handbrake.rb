@@ -16,7 +16,7 @@ class Handbrake < Package
     x86_64: '1863142bbbaec234618c56397c2a4474dfa05fb69e2faeabe0d9524a79e9288b'
   })
 
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bz2' # R
   depends_on 'expat' # R

@@ -27,7 +27,7 @@ class Wxwidgets31 < Package
   # https://gitlab.kitware.com/cmake/cmake/-/issues/24019
   # https://github.com/wxWidgets/wxWidgets/issues/22841
 
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R

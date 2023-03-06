@@ -22,7 +22,7 @@ class Geany_plugins < Package
      x86_64: '410488ee35fefbd1e502ead3a67fde697ac48ee8a8ecd6de1217951db382e08a'
   })
 
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'enchant' # R
   depends_on 'gdk_pixbuf' # R

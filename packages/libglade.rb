@@ -22,7 +22,7 @@ class Libglade < Package
      x86_64: 'a950a82a9b670902efd4418b9947ef47764520811fd65d2623ddc8416d818f05'
   })
 
-  depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'fontconfig'
   depends_on 'freetype'

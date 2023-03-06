@@ -27,7 +27,7 @@ class Vte < Package
   depends_on 'fribidi'
   depends_on 'gtk3'
   depends_on 'gtk4'
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R

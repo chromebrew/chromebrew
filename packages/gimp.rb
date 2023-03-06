@@ -25,7 +25,7 @@ class Gimp < Package
   depends_on 'aalib' # R
   depends_on 'alsa_lib' # R
   depends_on 'appstream_glib' # R
-  depends_on 'atk' => :build
+  depends_on 'at_spi2_core' => :build
   depends_on 'babl' # R
   depends_on 'bz2' # R
   depends_on 'cairo' # R

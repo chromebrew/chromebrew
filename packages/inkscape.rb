@@ -23,7 +23,7 @@ class Inkscape < Package
   })
 
   depends_on 'atkmm' # R
-  depends_on 'atk' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bdwgc' # R
   depends_on 'boost' # R

@@ -11,7 +11,7 @@ class Signal_desktop < Package
 
   no_compile_needed
 
-  depends_on 'at_spi2_atk'
+  depends_on 'at_spi2_core'
   depends_on 'gtk3'
   depends_on 'sommelier'
 

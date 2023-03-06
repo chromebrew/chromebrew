@@ -22,7 +22,7 @@ class Gtk2 < Package
      x86_64: '8bddd0719e044e3440c028bf86b16f60229d61c80dcfe29a2b88055fc1d0bbe0'
   })
 
-  depends_on 'atk'
+  depends_on 'at_spi2_core'
   depends_on 'cairo'
   depends_on 'cups'
   depends_on 'fontconfig'
