@@ -3,42 +3,41 @@ require 'package'
 class Glibmm_2_4 < Package
   description 'C++ bindings for GLib'
   homepage 'https://www.gtkmm.org'
-  @_ver = '2.66.0'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
+  @_ver = '2.66.5'
   version @_ver
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://ftp.gnome.org/pub/GNOME/sources/glibmm/#{@_ver_prelastdot}/glibmm-#{@_ver}.tar.xz"
-  source_sha256 '9e1db7d43d2e2d4dfa2771354e21a69a6beec7c446b711619cf8c779e13a581e'
+  source_url 'https://gitlab.gnome.org/GNOME/glibmm.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.0_armv7l/glibmm_2_4-2.66.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.0_armv7l/glibmm_2_4-2.66.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.0_i686/glibmm_2_4-2.66.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.0_x86_64/glibmm_2_4-2.66.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.5_armv7l/glibmm_2_4-2.66.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.5_armv7l/glibmm_2_4-2.66.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.5_i686/glibmm_2_4-2.66.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_4/2.66.5_x86_64/glibmm_2_4-2.66.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c6c0459c412f133ac1d581a4db4a8d4c6ae69227755f191822d59272502d0455',
-     armv7l: 'c6c0459c412f133ac1d581a4db4a8d4c6ae69227755f191822d59272502d0455',
-       i686: '8a3dade9644c0be55d3fb3ddf21f470466562020e5313e3f97557e2243db42fe',
-     x86_64: 'cd9b610bceadc050a09099d80815cfe4c092cb5cb8b67d0bc73c5d71e2f5f63c'
+    aarch64: '3e34ada67361ef49fa5ef6849d86864834f24637492360412645a4f556f8b3d0',
+     armv7l: '3e34ada67361ef49fa5ef6849d86864834f24637492360412645a4f556f8b3d0',
+       i686: 'f272fb88a74508d78f0dfad36a3d39e870962ded2ecc404e3c85175efe6fef62',
+     x86_64: 'b259f25b53e787d82690c55235c0180c264e7fcdf50d2e2be9aaf0cabf4f9bf5'
   })
 
   depends_on 'libsigcplusplus'
   depends_on 'mm_common' => :build
+  depends_on 'gcc' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
-    --default-library=both \
     -Dbuild-documentation=false \
-    -Dbuild-demos=false \
-    -Dbuild-tests=false \
     builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
