@@ -18,7 +18,7 @@ class Freetype < Package
   depends_on 'glib'
   depends_on 'graphite'
   depends_on 'harfbuzz'
-  depends_on 'librsvg'
+  # depends_on 'librsvg'
   depends_on 'pcre'
   depends_on 'zlibpkg'
   depends_on 'glibc' # R
