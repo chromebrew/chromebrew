@@ -1,4 +1,5 @@
 require 'package'
+# build order: harfbuzz => freetype => fontconfig => pango
 
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
@@ -50,6 +51,14 @@ class Harfbuzz < Package
 
   no_env_options
   conflicts_ok
+
+  def self.prebuild
+    %w[fontconfig freetype].each do |build_exclusion|
+      next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{build_exclusion}.filelist"
+
+      puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
+    end
+  end
 
   def self.build
     system 'update-ca-certificates --fresh'

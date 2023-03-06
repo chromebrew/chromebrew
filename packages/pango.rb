@@ -1,4 +1,5 @@
 require 'package'
+# build order: harfbuzz => freetype => fontconfig => pango.
 
 class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
@@ -28,6 +29,8 @@ class Pango < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'gobject_introspection' => :build # add this package to build gtk+, avoid compilation error
+  depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
   depends_on 'libxdmcp' => :build
