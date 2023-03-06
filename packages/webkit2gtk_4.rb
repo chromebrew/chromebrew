@@ -21,7 +21,6 @@ class Webkit2gtk_4 < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'cairo'
   # depends_on 'ccache' => :build
   depends_on 'dav1d'

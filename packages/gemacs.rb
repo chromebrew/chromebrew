@@ -25,7 +25,6 @@ class Gemacs < Package
   depends_on 'acl' # R
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'cairo'
   depends_on 'dbus' # R
   depends_on 'freetype' # R

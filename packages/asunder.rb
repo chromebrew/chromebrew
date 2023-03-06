@@ -26,7 +26,6 @@ class Asunder < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'cdparanoia' # R
   depends_on 'freetype' # R
   depends_on 'gdk_pixbuf' # R

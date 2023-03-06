@@ -24,7 +24,6 @@ class Ettercap_gtk < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'at_spi2_core' # R
   depends_on 'curl' => :build
   depends_on 'ethtool' => :build
   depends_on 'freetype' # R
