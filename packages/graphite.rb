@@ -3,24 +3,27 @@ require 'package'
 class Graphite < Package
   description 'Reimplementation of the SIL Graphite text processing engine'
   homepage 'https://github.com/silnrsi/graphite'
-  version '425da3d'
+  version '2757274'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/silnrsi/graphite.git'
-  git_hashtag '425da3d08926b9cf321fc0014dfa979c24d2cf64'
+  git_hashtag '27572742003b93dc53dc02c01c237b72c6c25f54'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/425da3d_armv7l/graphite-425da3d-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/425da3d_armv7l/graphite-425da3d-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/425da3d_i686/graphite-425da3d-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/425da3d_x86_64/graphite-425da3d-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_armv7l/graphite-2757274-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_armv7l/graphite-2757274-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_i686/graphite-2757274-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_x86_64/graphite-2757274-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '94516aa9980b775d1134a8d1ccdfc22cc1cfe205214da799d725ddbb23994968',
-     armv7l: '94516aa9980b775d1134a8d1ccdfc22cc1cfe205214da799d725ddbb23994968',
-       i686: '085fdc5fd0b57b89d924bee3db23499cdb2804351e4da10830f6b99fe8dd5ba8',
-     x86_64: '7731c7c3bfc32f76f80294621cc1b37cb1270828bc1f80c0226f44e9f28abce7'
+    aarch64: 'db258e3b6e5c9809d0d2f95bcbda19fd8bb989667f722282e5284745cc3a20e4',
+     armv7l: 'db258e3b6e5c9809d0d2f95bcbda19fd8bb989667f722282e5284745cc3a20e4',
+       i686: '7245cfaa6b1d4dbfd0b495b0a78a4b0969002d67e118184e887a2347328c12c4',
+     x86_64: 'f3e5350af96d7c6785b06f260bbc66a96568118739ae737cd98d91e9cfcc49ca'
   })
+
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.patch
     # remove font tools dependent tests
@@ -28,15 +31,11 @@ class Graphite < Package
   end
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake #{CREW_CMAKE_LIBSUFFIX_OPTIONS} .."
-    end
+    system "cmake -B builddir #{CREW_CMAKE_LIBSUFFIX_OPTIONS} -G Ninja"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
