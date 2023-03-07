@@ -3,25 +3,23 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.34-80d8970'
+  @_ver = '3.24.37'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag '80d8970072650c7715c62bef933f8d332525c6c0'
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34-80d8970_armv7l/gtk3-3.24.34-80d8970-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34-80d8970_armv7l/gtk3-3.24.34-80d8970-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34-80d8970_i686/gtk3-3.24.34-80d8970-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.34-80d8970_x86_64/gtk3-3.24.34-80d8970-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_x86_64/gtk3-3.24.37-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '817fabb61fc657cd6521da1daf75b59c4e05c3bb789cf2f288891f24e51cf6c4',
-     armv7l: '817fabb61fc657cd6521da1daf75b59c4e05c3bb789cf2f288891f24e51cf6c4',
-       i686: '559f507efe16ef35f24fb9ca36fc01ad903de6c86039d298a7570e0f4149ac39',
-     x86_64: '1abe7f4880f0c4380413bf39cfea75621c47907047016210d620d988b95c5dc0'
+    aarch64: 'e201202002119422cc80a59f8868f6da5a0cef1933617b3f9ec97119adee209c',
+     armv7l: 'e201202002119422cc80a59f8868f6da5a0cef1933617b3f9ec97119adee209c',
+     x86_64: '56bb3d925fddd32df243f858a65f1aefb9296dacc854fda4c3f9854cd712ea81'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -34,8 +32,10 @@ class Gtk3 < Package
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'fribidi' # R
+  depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'ghostscript' => :build
+  depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
@@ -44,10 +44,11 @@ class Gtk3 < Package
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'iso_codes' => :build
-  depends_on 'json_glib' # R
+  depends_on 'json_glib' => :build
   depends_on 'libdeflate' => :build # Do we need this?
   depends_on 'libepoxy' # R
   depends_on 'libjpeg' => :build # Do we need this?
+  depends_on 'librsvg' => :build
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'libx11' # R
@@ -62,13 +63,12 @@ class Gtk3 < Package
   depends_on 'libxrandr' # R
   depends_on 'mesa' => :build
   depends_on 'pango' # R
-  depends_on 'rest' # R
+  depends_on 'rest' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
-  depends_on 'glibc' # R
   gnome
 
   def self.patch
