@@ -1422,6 +1422,7 @@ def resolve_dependencies
   if @resolve_dependencies_and_install.eql?(1) || @resolve_dependencies_and_build.eql?(1)
     @to_postinstall = @dependencies
   else
+    @dependencies.partition { |v| v != 'sommelier' }.reduce(:+)
     @dependencies.each do |dep|
       search dep
       post_install
