@@ -3,24 +3,23 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.22.0-9fa5fbc2'
-  version @_ver
+  version '1.22.1'
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
-  git_hashtag '9fa5fbc25e38b7b8a851b88a5bbb1e48f7caee62'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_armv7l/gstreamer-1.22.0-9fa5fbc2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_armv7l/gstreamer-1.22.0-9fa5fbc2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_i686/gstreamer-1.22.0-9fa5fbc2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.0-9fa5fbc2_x86_64/gstreamer-1.22.0-9fa5fbc2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_armv7l/gstreamer-1.22.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_armv7l/gstreamer-1.22.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_i686/gstreamer-1.22.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_x86_64/gstreamer-1.22.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '62d0cdb30104093c71e02ad760f8e549f58d3abf75e353ccd70adf80ed41017b',
-     armv7l: '62d0cdb30104093c71e02ad760f8e549f58d3abf75e353ccd70adf80ed41017b',
-       i686: '52b4f6c834be0450cd8fdee2874997cb4f8f047513bd44979279b7c74da3001d',
-     x86_64: 'b1cf2798ff216ed089417c52b60b5a2345e9aa428f2fcd8218bbd5f7a681493c'
+    aarch64: '7af562a45c5b84644373d5fdeca6d05126f4b279ae2b002ed59fb593ba21c282',
+     armv7l: '7af562a45c5b84644373d5fdeca6d05126f4b279ae2b002ed59fb593ba21c282',
+       i686: '52c6aebaeb9eebe30f5db2a019548673dfc0d54b89b543f2f43ee7784f0f845c',
+     x86_64: 'eb33b06d5cb4c35dc3007f1c1f8937c72f6a55522c0a4a91bf78ecbda6e3e310'
   })
 
   depends_on 'alsa_lib' # R
