@@ -4,7 +4,6 @@ class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
   @_ver = '3.24.37'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
@@ -17,9 +16,9 @@ class Gtk3 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_x86_64/gtk3-3.24.37-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e201202002119422cc80a59f8868f6da5a0cef1933617b3f9ec97119adee209c',
-     armv7l: 'e201202002119422cc80a59f8868f6da5a0cef1933617b3f9ec97119adee209c',
-     x86_64: '56bb3d925fddd32df243f858a65f1aefb9296dacc854fda4c3f9854cd712ea81'
+    aarch64: '3dbf8f2b97f1ea7e0b58bfd07a95be8d8288674a92e084f26688b9e8233d96bc',
+     armv7l: '3dbf8f2b97f1ea7e0b58bfd07a95be8d8288674a92e084f26688b9e8233d96bc',
+     x86_64: 'ef6decef4d5d47c29a99777af6fc20ac9f9fcc3490a0974e512569cd3f75dc9c'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -69,7 +68,9 @@ class Gtk3 < Package
   depends_on 'valgrind' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
+
   gnome
+  no_fhs
 
   def self.patch
     # Use locally build subprojects
@@ -87,7 +88,7 @@ class Gtk3 < Package
       -Dgtk_doc=false \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "#{CREW_NINJA} -C builddir"
     @gtk3settings = <<~GTK3_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -99,9 +100,9 @@ class Gtk3 < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     system "sed -i 's,null,,g'  #{CREW_DEST_LIB_PREFIX}/pkgconfig/gtk*.pc"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-3.0"
-    File.write("#{CREW_DEST_PREFIX}/etc/gtk-3.0/settings.ini", @gtk3settings)
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/gtk-3.0"
+    File.write("#{CREW_DEST_PREFIX}/.config/gtk-3.0/settings.ini", @gtk3settings)
   end
 end

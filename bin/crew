@@ -1422,6 +1422,8 @@ def resolve_dependencies
   if @resolve_dependencies_and_install.eql?(1) || @resolve_dependencies_and_build.eql?(1)
     @to_postinstall = @dependencies
   else
+    # Make sure the sommelier postinstall happens last so the messages
+    # from that are not missed by users.
     @dependencies.partition { |v| v != 'sommelier' }.reduce(:+)
     @dependencies.each do |dep|
       search dep
