@@ -18,10 +18,10 @@ class Pango < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14_x86_64/pango-1.50.14-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '80c4f94b3af1913342af608b36459b88fda898fd47f046dd04e3dd5ee9e45a52',
-     armv7l: '80c4f94b3af1913342af608b36459b88fda898fd47f046dd04e3dd5ee9e45a52',
-       i686: 'e4824ad37383eee09843bad8e197bafc940a30228357e2befaf93997c767d893',
-     x86_64: '7f25de6365060477d569d2257cc41482ddf2b7a8cf25062aa2261f274ca6b22c'
+    aarch64: '1ce1cf1f0c7caf921d5d0781ae6758ee907e39d6f305653d761e0be63e152964',
+     armv7l: '1ce1cf1f0c7caf921d5d0781ae6758ee907e39d6f305653d761e0be63e152964',
+       i686: '488189887047f561ab1bd02065fab5781c3178ff6ea430bf07dad9db5c420b8a',
+     x86_64: 'c984d03b58e8bcfb5a35e44be3be61f37efb3ceef4554fe9dab4a7cf86cf6b43'
   })
 
   depends_on 'cairo' => :build
@@ -37,6 +37,7 @@ class Pango < Package
   depends_on 'libxft' # R
   depends_on 'libxrender' # R
   depends_on 'xorg_proto' => :build
+  depends_on 'cairo' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
