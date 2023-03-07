@@ -25,13 +25,6 @@ class Fontconfig < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
       --wrap-mode=default \
       -Dlocalstatedir=#{CREW_PREFIX}/cache \
-      -Dbenchmark=disabled \
-      -Dcairo=enabled \
-      -Ddocs=disabled \
-      -Dfreetype=enabled \
-      -Dgraphite2=enabled \
-      -Dintrospection=enabled \
-      -Dragel_subproject=true \
       -Dtests=disabled \
       builddir"
     system 'meson configure builddir'
