@@ -3,43 +3,45 @@ require 'package'
 class Cairomm_1_16 < Package
   description 'The Cairomm package provides a C++ interface to Cairo.'
   homepage 'https://www.cairographics.org/'
-  @_ver = '1.16.0'
+  @_ver = '1.16.2'
   version @_ver
   license 'LGPL-2+'
   compatibility 'all'
-  source_url "https://www.cairographics.org/releases/cairomm-#{@_ver}.tar.xz"
-  source_sha256 '7e881492c5f9f546688c31160deb742c166fc4c68b6b8eb9920c00a0f0f144f9'
+  source_url 'https://gitlab.freedesktop.org/cairo/cairomm.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_armv7l/cairomm_1_16-1.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_armv7l/cairomm_1_16-1.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_i686/cairomm_1_16-1.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.0_x86_64/cairomm_1_16-1.16.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.2_armv7l/cairomm_1_16-1.16.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.2_armv7l/cairomm_1_16-1.16.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.2_i686/cairomm_1_16-1.16.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairomm_1_16/1.16.2_x86_64/cairomm_1_16-1.16.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '59ca0664657952e1296639082e8352e26ad1b9792208b4a2b713c64178f73e77',
-     armv7l: '59ca0664657952e1296639082e8352e26ad1b9792208b4a2b713c64178f73e77',
-       i686: 'e874a3fc54b12a36625063808ac69fe76dbd77eed044f300cf51170359f4bd4a',
-     x86_64: '69ad2d194716615b38b13eb321bd019c61cceb1124c787a990524d792d1eac6d'
+    aarch64: 'f762614a3a14af45a249fb9c218864f90fc5f17c76e162b1ebac72a3f50ff8d6',
+     armv7l: 'f762614a3a14af45a249fb9c218864f90fc5f17c76e162b1ebac72a3f50ff8d6',
+       i686: '69c11234edaa48db3e9f916a66566eea806f451c48d787174a015c9d905607d3',
+     x86_64: '98b889a6b0e94f60e931471faead51a176f1efd88bf17221c04ac1a13b2f195e'
   })
 
-  depends_on 'cairo'
-  depends_on 'libsigcplusplus3'
-  depends_on 'libxxf86vm'
-  depends_on 'libxrender'
+  depends_on 'cairo' # R
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libsigcplusplus3' # R
+  depends_on 'libxrender' => :build
+  depends_on 'libxxf86vm' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
-    --default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
     builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
