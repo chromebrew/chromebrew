@@ -10,13 +10,28 @@ class Fontconfig < Package
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
   git_hashtag version
 
-  depends_on 'expat'
-  depends_on 'jsonc'
-  depends_on 'gperf'
-  depends_on 'freetype'
-  depends_on 'libpng'
-  depends_on 'util_linux'
-  depends_on 'graphite'
+  binary_url({
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_armv7l/fontconfig-2.14.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_armv7l/fontconfig-2.14.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_i686/fontconfig-2.14.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_x86_64/fontconfig-2.14.2-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    aarch64: '8bf542223e21a4c683aa148fa2b98f0f66758676fb64b01f819239cf0c6de686',
+     armv7l: '8bf542223e21a4c683aa148fa2b98f0f66758676fb64b01f819239cf0c6de686',
+       i686: '93a0f764c5352cf888849d4212519c06338b65cdc7099f2a01b9bdc28ee022e7',
+     x86_64: '24a0a1cd2cc53c56bb7256e410592ac9b6398eecf02effc6c3944554dc840c77'
+  })
+
+  depends_on 'expat' # R
+  depends_on 'jsonc' => :build
+  depends_on 'gperf' => :build
+  depends_on 'freetype' # R
+  depends_on 'libpng' => :build
+  depends_on 'util_linux' => :build
+  depends_on 'graphite' => :build
+  depends_on 'glibc' # R
+  depends_on 'harfbuzz' # R
 
   no_fhs
   conflicts_ok # allowed to overwrite harfbuzz
