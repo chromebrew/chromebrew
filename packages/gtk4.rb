@@ -3,25 +3,21 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.9.4'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '4.10.0'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_armv7l/gtk4-4.9.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_armv7l/gtk4-4.9.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_i686/gtk4-4.9.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.9.4_x86_64/gtk4-4.9.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.0_armv7l/gtk4-4.10.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.0_armv7l/gtk4-4.10.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.0_x86_64/gtk4-4.10.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3a89f5ad7377d2808ee8e65697ea2cffc58f5217e5def3d37fcb5f502da78699',
-     armv7l: '3a89f5ad7377d2808ee8e65697ea2cffc58f5217e5def3d37fcb5f502da78699',
-       i686: 'f6d89fecdb7422b3d86e146ed9afdec7dc6da69aa6db52b37cb500bd09dc1ee9',
-     x86_64: 'eecfcfa694b871c156e289af6a67db6f00e6247d70f1ea67c1f8b904c41f0349'
+    aarch64: 'dcc5e63215b1e7185ab366f4f26b3c9674c459d4e8bf310f61437118b03071aa',
+     armv7l: 'dcc5e63215b1e7185ab366f4f26b3c9674c459d4e8bf310f61437118b03071aa',
+     x86_64: 'bcd655a3a40d18c55cfb5ae579b408b6ecd5a9656ccda339dff0dd5a5883688a'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -65,7 +61,6 @@ class Gtk4 < Package
   depends_on 'libxrandr' # R
   depends_on 'pango' # R
   depends_on 'sassc' => :build
-  depends_on 'sommelier' # L
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'gcc' # R
@@ -75,25 +70,21 @@ class Gtk4 < Package
   depends_on 'libtiff' # R
   depends_on 'libcloudproviders' # R
   depends_on 'vulkan_headers' => :build
+  depends_on 'xdg_base' # L
+  depends_on 'sommelier' # L
 
   gnome
+  no_fhs
 
   def self.patch
-    case ARCH
-    when 'i686'
-      system "sed -i 's,#include <fcntl.h>,#include <linux/fcntl.h>,' gdk/wayland/cursor/os-compatibility.c"
-      system "sed -i 's/#define HAVE_MEMFD_CREATE/#define HAVE_MEMFD_CREATE_NO/' gdk/wayland/cursor/os-compatibility.c"
-    end
     # Don't rebuild packaged subprojects
-    @deps = %w[cairo librsvg]
-    @deps.each do |dep|
+    %w[cairo librsvg].each do |dep|
       FileUtils.rm_rf "subprojects/#{dep}"
       FileUtils.rm_rf "subprojects/#{dep}.wrap"
     end
   end
 
   def self.build
-    @cups = ARCH == 'i686' ? 'disabled' : 'auto'
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
       -Dbuild-examples=false \
@@ -106,7 +97,7 @@ class Gtk4 < Package
       -Dmutest:default_library=both \
       -Dcloudproviders=enabled \
       -Dvulkan=enabled \
-      -Dprint-cups=#{@cups} \
+      -Dprint-cups=auto \
       build"
     system 'meson configure build'
     system 'ninja -C build'
@@ -120,7 +111,8 @@ class Gtk4 < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/gtk-4.0"
-    File.write("#{CREW_DEST_PREFIX}/etc/gtk-4.0/settings.ini", @gtk4settings)
+    @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
+    FileUtils.mkdir_p "#{@xdg_config_dest_home}/gtk-4.0"
+    File.write("#{@xdg_config_dest_home}/gtk-4.0/settings.ini", @gtk4settings)
   end
 end
