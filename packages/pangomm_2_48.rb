@@ -17,10 +17,10 @@ class Pangomm_2_48 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_2_48/2.50.1_x86_64/pangomm_2_48-2.50.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2c0c017674e705ceadda84e527a91cf64b8d71e6d4d3c95e8df9709684d2bdfd',
-     armv7l: '2c0c017674e705ceadda84e527a91cf64b8d71e6d4d3c95e8df9709684d2bdfd',
-       i686: '5413ee536d4fa7d4fe989a53f5330b9aee8069255dc84d69243058b80e42f50a',
-     x86_64: '4f137c118d4325099490937fc01c1496d80a5c62bbbe3128af73a812923a9e89'
+    aarch64: '217a0cdd025020aefaa9c8a07366e72ac564d7d8fbdb3c45bfd4e29ae1c69204',
+     armv7l: '217a0cdd025020aefaa9c8a07366e72ac564d7d8fbdb3c45bfd4e29ae1c69204',
+       i686: '8a9b560961d6f11166fd47bfcefbecd11b0196f979e33433c321305dece1bb94',
+     x86_64: '385ac710ce7ae48615305920bdb3c1284211799f9db312aaba9805232c40c02a'
   })
 
   depends_on 'cairomm_1_16' # R
