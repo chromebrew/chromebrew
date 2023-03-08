@@ -1097,7 +1097,7 @@ def prepare_package(destdir)
     strip_dir destdir
 
     # Use patchelf to set need paths for all binaries.
-    patchelf_set_need_paths destdir
+    # patchelf_set_need_paths destdir
 
     # use upx on executables
     shrink_dir destdir
