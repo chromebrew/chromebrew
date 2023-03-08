@@ -1106,7 +1106,7 @@ end
 
 def patchelf_set_need_paths(dir)
   # Patchelf currently disabled for security reasons
-  puts 'Patchelf is currently disabled during builds due to problems with upx.'
+  puts 'Patchelf is currently disabled during builds due to problems with upx.'.yellow
   return
   return if @pkg.no_patchelf? || @pkg.no_compile_needed?
 
