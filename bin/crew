@@ -1096,6 +1096,7 @@ def prepare_package(destdir)
 
     strip_dir destdir
 
+    # Patchelf currently disabled for security reasons
     # Use patchelf to set need paths for all binaries.
     # patchelf_set_need_paths destdir
 
@@ -1105,10 +1106,9 @@ def prepare_package(destdir)
 end
 
 def patchelf_set_need_paths(dir)
-  # Patchelf currently disabled for security reasons
+  return if @pkg.no_patchelf? || @pkg.no_compile_needed?
   puts 'Patchelf is currently disabled during builds due to problems with upx.'.yellow
   return
-  return if @pkg.no_patchelf? || @pkg.no_compile_needed?
 
   Dir.chdir dir do
     puts 'Running patchelf'.lightblue
