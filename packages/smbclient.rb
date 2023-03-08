@@ -3,34 +3,41 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.16.4'
+  version '4.18.0'
   license 'GPLv3'
   compatibility 'all'
-  source_url 'https://download.samba.org/pub/samba/stable/samba-4.16.4.tar.gz'
-  source_sha256 '9532f848fb125a17e4e5d98e1ae8b42f210ed4433835e815b97c5dde6dc4702f'
+  source_url 'https://download.samba.org/pub/samba/stable/samba-4.18.0.tar.gz'
+  source_sha256 '70348656ef807be9c8be4465ca157cef4d99818e234253d2c684cc18b8408149'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_armv7l/smbclient-4.16.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_armv7l/smbclient-4.16.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_i686/smbclient-4.16.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.16.4_x86_64/smbclient-4.16.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_armv7l/smbclient-4.18.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_armv7l/smbclient-4.18.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_i686/smbclient-4.18.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_x86_64/smbclient-4.18.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '13db8144966947e8a3d308021c397d4a43f080d812e30c773ef6013eb28d50ce',
-     armv7l: '13db8144966947e8a3d308021c397d4a43f080d812e30c773ef6013eb28d50ce',
-       i686: '2a3238c55a2727d837d99afbded7ea7a54edf9eb15e951fff48a421d9a27c6cc',
-     x86_64: '00d317e6601217874a2b7f5947ded2191c703b1469455031f554d1e53b95908d'
+    aarch64: 'a38a5fad0e20363676d14560f9e05e3b1e746d23feed9e46fe95c7e02c62eb03',
+     armv7l: 'a38a5fad0e20363676d14560f9e05e3b1e746d23feed9e46fe95c7e02c62eb03',
+       i686: '816f819404ff0ef963606976e254b4a9ceaf672ddcd3ee47a6f2c0a02447b55b',
+     x86_64: '42b704298039f3b23734048f40ebfb0bd2067737de0befdbbff5b5d65b63837d'
   })
 
+  depends_on 'acl' # R
   depends_on 'avahi' # R
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
   depends_on 'docbook_xsl' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'gnutls' # R
   depends_on 'gpgme' => :build
-  depends_on 'jansson' => :build
+  depends_on 'icu4c' # R
+  depends_on 'jansson' # R
   depends_on 'ldb' # R
+  depends_on 'libarchive' # R
   depends_on 'libbsd' # R
   depends_on 'libcap' # R
+  depends_on 'libtasn1' # R
   depends_on 'libunwind' # R
   depends_on 'liburing' => :build
   depends_on 'linux_pam' # R
@@ -38,12 +45,14 @@ class Smbclient < Package
   depends_on 'openldap' # R
   depends_on 'perl_json' => :build
   depends_on 'perl_parse_yapp' => :build
-  depends_on 'popt' => :build
+  depends_on 'popt' # R
   depends_on 'py3_dnspython' => :build
   depends_on 'py3_markdown' => :build
+  depends_on 'readline' # R
   depends_on 'talloc' # R
   depends_on 'tdb' # R
   depends_on 'tevent' # R
+  depends_on 'zlibpkg' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'
@@ -56,7 +65,7 @@ class Smbclient < Package
   @xml_catalog_files = ENV.fetch('XML_CATALOG_FILES', nil)
 
   def self.patch
-    system "sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
+    system "sed -e 's:<gpgme.h>:<gpgme/gpgme.h>:' \
     -i source4/dsdb/samdb/ldb_modules/password_hash.c"
     system "sed -i 's,/etc/xml/catalog,#{@xml_catalog_files},g' docs-xml/Makefile"
     system "sed -i 's,file:///etc/xml/catalog,#{@xml_catalog_files},g' buildtools/wafsamba/wafsamba.py"
