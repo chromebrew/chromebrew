@@ -6,29 +6,32 @@ require 'package'
 class Tevent < Package
   description 'Event system based on the talloc memory management library'
   homepage 'https://tevent.samba.org/'
-  version '0.13.0'
+  @_ver = '0.14.1'
+  version "#{@_ver}-py3.11"
   license 'LGPL'
   compatibility 'all'
-  source_url "https://samba.org/ftp/tevent/tevent-#{version}.tar.gz"
-  source_sha256 'b9437a917fa55344361beb64ec9e0042e99cae8879882a62dd38f6abe2371d0c'
+  source_url "https://samba.org/ftp/tevent/tevent-#{@_ver}.tar.gz"
+  source_sha256 'ef85fcaa80ffd2351036ba4b347630fef2a1ac3da964a7f1820466bad03cd00d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_armv7l/tevent-0.13.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_armv7l/tevent-0.13.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_i686/tevent-0.13.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.13.0_x86_64/tevent-0.13.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.14.1-py3.11_armv7l/tevent-0.14.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.14.1-py3.11_armv7l/tevent-0.14.1-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.14.1-py3.11_i686/tevent-0.14.1-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tevent/0.14.1-py3.11_x86_64/tevent-0.14.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6882e33fce796b68aea820e56f502a0fbca16b366bcdeedced2b0d11a1e2bc96',
-     armv7l: '6882e33fce796b68aea820e56f502a0fbca16b366bcdeedced2b0d11a1e2bc96',
-       i686: '6b144a691f72dbc6161dcc6c3a90080aa5a980ae53fe0db79b5365a716fcd780',
-     x86_64: '8f7afd3c02a9f6832c0bdae29b9ab629b5aa205433bd0f9f4fbbb617dffa62e9'
+    aarch64: '345bde4110b93f90d8d71109dd28e599dd23bb665c652ed3e6d743c7980b6cca',
+     armv7l: '345bde4110b93f90d8d71109dd28e599dd23bb665c652ed3e6d743c7980b6cca',
+       i686: 'e7483ab95644fb71d5fea6a4b97813b7d30edc470295bcfcdb6754b7734e5413',
+     x86_64: '9670ae6cdf285b38902cf8b552698266d514b1ed4627d6e1df2bc0358ee11b73'
   })
 
-  depends_on 'libbsd'
-  depends_on 'libxcrypt'
-  depends_on 'talloc'
   depends_on 'cmocka' => :build
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libxcrypt' => :build
+  depends_on 'python3' => :build
+  depends_on 'talloc' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS.sub(/--program-suffix.*/, '')} \
