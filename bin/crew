@@ -1203,6 +1203,8 @@ def shrink_dir(dir)
       # compressed file to use ldd.
       # sommelier also isn't happy when sommelier and xwayland are compressed
       # so don't compress those packages.
+
+      # Note that non-x86_64 upx library issues should now be resolved.
       if File.executable?("#{CREW_PREFIX}/bin/upx")
         # 1. Find executable binaries but also check for hard linked
         # files by making sure we have a unique set of
@@ -1214,7 +1216,8 @@ def shrink_dir(dir)
         # 5. If the expansion doesn't error out then it is ok to copy
         # over the original. (This also lets us only avoid compressing
         # hard linked files multiple times.)
-        @execfiles = `find . -executable -type f ! \\( -name '*.so*' -o -name '*.a' \\) | xargs -P8 -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
+        # @execfiles = `find . -executable -type f ! \\( -name '*.so*' -o -name '*.a' \\) | xargs -P8 -n1 sh -c '[ "$(head -c4 ${1})" = "\x7FELF" ] && echo ${1}' --`.chomp
+        @execfiles = `find . -executable -type f`.chomp
 
         unless @execfiles.empty?
           puts 'Using upx to shrink binaries.'
