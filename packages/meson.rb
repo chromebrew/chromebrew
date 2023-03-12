@@ -3,7 +3,7 @@ require 'package'
 class Meson < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '1.0.0'
+  @_ver = '1.0.1'
   version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.0-py3.11_armv7l/meson-1.0.0-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.0-py3.11_armv7l/meson-1.0.0-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.0-py3.11_i686/meson-1.0.0-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.0-py3.11_x86_64/meson-1.0.0-py3.11-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_i686/meson-1.0.1-py3.11-chromeos-i686.tar.zst',
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_armv7l/meson-1.0.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_armv7l/meson-1.0.1-py3.11-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_x86_64/meson-1.0.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '58fdc7699c6edf05d35a8449f10f8a366556074fc85af7c88a77dcb72dee142a',
-     armv7l: '58fdc7699c6edf05d35a8449f10f8a366556074fc85af7c88a77dcb72dee142a',
-       i686: 'e048ad48e24777ab55158bdddd7f839c8eafd4353334737c4958deac1b9bfdf7',
-     x86_64: 'c14ad3a8aad7ae3c4ff7392cd4bf5d472563904551826875523a9339a793676d'
+       i686: 'b51bfa30ec8d9112d8f8f418033400a529fec95ee430e46cca5da8b0567b1a83',
+    aarch64: 'b2528b3d8f6b1220c11426d2e8be5223647a2d643345f1d549b958c8aeac52a0',
+     armv7l: 'b2528b3d8f6b1220c11426d2e8be5223647a2d643345f1d549b958c8aeac52a0',
+     x86_64: '6ca576d33b33ec1a216185024867f2555d39f69c91b3e86fbadc00c4c97bf016'
   })
 
   depends_on 'ninja'
