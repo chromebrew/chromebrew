@@ -3,7 +3,7 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  @_ver = '3.25.2'
+  @_ver = '3.25.3'
   version @_ver
   license 'CMake'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Cmake < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.2_armv7l/cmake-3.25.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.2_armv7l/cmake-3.25.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.2_i686/cmake-3.25.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.2_x86_64/cmake-3.25.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.3_armv7l/cmake-3.25.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.3_armv7l/cmake-3.25.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.3_i686/cmake-3.25.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.25.3_x86_64/cmake-3.25.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '35cdcf9335f22731354b4bd31f8bf83f4084409115a0d68321fca37aa6423fd7',
-     armv7l: '35cdcf9335f22731354b4bd31f8bf83f4084409115a0d68321fca37aa6423fd7',
-       i686: 'ee657bc571b00d64a79e4634027745fab35bf23208971fdc8f55b998b262b84e',
-     x86_64: 'ab832e369f7fac6d391048b6418b6285ee91158e730b86af47bb2f5a5085ed3e'
+    aarch64: '4911ff7281c642c3fdb810743ebaaa16ba47d2f001c97557070da05b20359b3b',
+     armv7l: '4911ff7281c642c3fdb810743ebaaa16ba47d2f001c97557070da05b20359b3b',
+       i686: '3c9347271d0626df4cda13c8f5b3fa238db3a9d7d3668b99a5e74d5b1dc38e3a',
+     x86_64: '50ada85d5eb8b571bfb3ede09e5bb9fc83669346bfb447568d704705d27ed080'
   })
 
   depends_on 'expat'
