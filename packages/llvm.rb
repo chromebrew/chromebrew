@@ -17,10 +17,10 @@ class Llvm < Package
       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0-rc4_x86_64/llvm-16.0.0-rc4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     aarch64: '0ad54552caaf1746a017fea9ee1093aa60e612b73aac11b46e756676be78b3da',
-      armv7l: '0ad54552caaf1746a017fea9ee1093aa60e612b73aac11b46e756676be78b3da',
-        i686: '8051285bcf0f12aa28d7669f7c772deb6b72ed9085e0aa5ef274b129ec5b880b',
-      x86_64: 'fa2ff23e4dba0c8aa3092b1d052bccaa33720f4cb16bfc3fe473e529796686d4'
+     aarch64: '469212d67c80dc0a6a03a9592c647d9092ba76b88efedf9e19aade8118591de3',
+      armv7l: '469212d67c80dc0a6a03a9592c647d9092ba76b88efedf9e19aade8118591de3',
+        i686: '459a27ee96ead60a79aecfdf8b813af8e7c54c1083eba617021746df0aafc563',
+      x86_64: 'f4df9e79952476ed5e9a5c2f9189c3fd8bb71c35419ce019cb72071d9fd59287'
   })
 
   depends_on 'ocaml' => :build
