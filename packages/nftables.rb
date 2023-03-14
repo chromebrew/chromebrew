@@ -6,21 +6,21 @@ require 'package'
 class Nftables < Package
   description 'Netfilter tables userspace tools'
   homepage 'https://netfilter.org/projects/nftables/'
-  version '1.0.6'
+  version '1.0.7'
   license 'GPL2'
   compatibility 'aarch64 armv7l x86_64'
-  source_url 'https://netfilter.org/projects/nftables/files/nftables-1.0.6.tar.xz'
-  source_sha256 '2407430ddd82987670e48dc2fda9e280baa8307abec04ab18d609df3db005e4c'
+  source_url 'https://netfilter.org/projects/nftables/files/nftables-1.0.7.tar.xz'
+  source_sha256 'c12ac941fff9adaedf17367d5ce213789b98a0d314277bc22b3d71e10891f412'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.6_armv7l/nftables-1.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.6_armv7l/nftables-1.0.6-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.6_x86_64/nftables-1.0.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.7_armv7l/nftables-1.0.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.7_armv7l/nftables-1.0.7-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nftables/1.0.7_x86_64/nftables-1.0.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '729a1969245334e36de1b6a3b43284e418de245e9cd1f59bdaa5846a694584d6',
-     armv7l: '729a1969245334e36de1b6a3b43284e418de245e9cd1f59bdaa5846a694584d6',
-     x86_64: 'b9069b7d5528cf7a9f2aafc452f8d2e895e841b4a51c21769f4e336d76b915dc'
+    aarch64: 'f3f13ae9973a69553bfc0105a4437f5ff049331f1323a1839e5e7a522f6d00f8',
+     armv7l: 'f3f13ae9973a69553bfc0105a4437f5ff049331f1323a1839e5e7a522f6d00f8',
+     x86_64: 'ea7b3b864f346788e228516ee5a170ec37ad5f798e977df045b46673995704cb'
   })
 
   depends_on 'asciidoc' => :build
@@ -35,7 +35,6 @@ class Nftables < Package
     system "./configure \
            --prefix=#{CREW_PREFIX} \
            --libdir=#{CREW_LIB_PREFIX} \
-           --sbindir=#{CREW_PREFIX}/bin \
            --sysconfdir=#{CREW_PREFIX}/etc \
            --with-json \
            --with-cli=readline \
