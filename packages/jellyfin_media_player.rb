@@ -13,10 +13,10 @@ class Jellyfin_media_player < Package
   source_sha256 '366aac5a355d9dd435037442e0fff091a85019ea8b27ce6db3f957c8dd54d1ca'
 
   binary_url({
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.0_x86_64/jellyfin_media_player-1.9.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.0_x86_64/jellyfin_media_player-1.9.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     x86_64: '04f33ba8a02ba9dde7c4a2605fa243d1a569d1f9daadf43c9818bdd9aa853d64'
+    x86_64: '04f33ba8a02ba9dde7c4a2605fa243d1a569d1f9daadf43c9818bdd9aa853d64'
   })
 
   depends_on 'gcc' # R
