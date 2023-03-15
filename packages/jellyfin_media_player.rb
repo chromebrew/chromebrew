@@ -35,7 +35,7 @@ class Jellyfin_media_player < Package
   depends_on 'qtbase' # R
   depends_on 'qtdeclarative' # R
   depends_on 'qtlocation' # R
-  depends_on 'qtquickcontrols' => :build
+  depends_on 'qtquickcontrols' # L
   depends_on 'qtwayland' # R
   depends_on 'qtwebchannel' # R
   depends_on 'qtwebengine' # R
