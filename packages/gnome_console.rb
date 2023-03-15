@@ -6,53 +6,53 @@ require 'package'
 class Gnome_console < Package
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
-  version '44.beta'
+  @_ver = '44.beta'
+  version "#{@_ver}-1"
   license 'GPL3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/console.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_armv7l/gnome_console-44.beta-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_armv7l/gnome_console-44.beta-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_i686/gnome_console-44.beta-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta_x86_64/gnome_console-44.beta-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta-1_armv7l/gnome_console-44.beta-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta-1_armv7l/gnome_console-44.beta-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta-1_x86_64/gnome_console-44.beta-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dbc14ab6922e47d06f754ce71bc56c9a92b5f6327dbf68a70e71a847415a3a1e',
-     armv7l: 'dbc14ab6922e47d06f754ce71bc56c9a92b5f6327dbf68a70e71a847415a3a1e',
-       i686: 'ba4c9c384b6d4ef0d8e25388fe17b133bf336f7101c9791ad16935bc901deb60',
-     x86_64: '406c3d4f67aacc9824f5fe69a62bd356ee8230b4eb5c55e41fdd2c1ac6ee6d0f'
+    aarch64: '93d882c703a0f53035783ce30ce5cb0db6fd553eebd1fc18bb69bcd88399f8bc',
+     armv7l: '93d882c703a0f53035783ce30ce5cb0db6fd553eebd1fc18bb69bcd88399f8bc',
+     x86_64: '13cdea3dc6b049f7defc8aed6735e16c66eb74c08688b47aad6504dafd4cb190'
   })
 
-  depends_on 'libgtop'
-  depends_on 'libhandy'
-  depends_on 'vte'
-  depends_on 'sassc' => :build
-  depends_on 'nautilus' => :build
   depends_on 'gcc' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
+  depends_on 'gdk_pixbuf' # L
   depends_on 'glibc' # R
-  depends_on 'graphene' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' => :build
   depends_on 'gtk4' # R
-  depends_on 'harfbuzz' # R
+  depends_on 'harfbuzz' => :build
   depends_on 'libadwaita' # R
+  depends_on 'libgtop' # R
+  depends_on 'libhandy' => :build
+  depends_on 'nautilus' => :build
   depends_on 'pango' # R
-  depends_on 'pcre2' # R
-  depends_on 'vulkan_icd_loader' # R
+  depends_on 'pcre2' => :build
+  depends_on 'sassc' => :build
+  depends_on 'vte' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # L
 
   gnome
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
     builddir"
     system 'meson configure builddir'
-    system 'mold -run samu -C builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   def self.postinstall
