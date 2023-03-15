@@ -3,21 +3,21 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.10.0'
+  version '4.10.1'
   license 'LGPL-2.1'
-  compatibility 'aarch64,armv7l,x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.0_armv7l/gtk4-4.10.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.0_armv7l/gtk4-4.10.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.0_x86_64/gtk4-4.10.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1_armv7l/gtk4-4.10.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1_armv7l/gtk4-4.10.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1_x86_64/gtk4-4.10.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dcc5e63215b1e7185ab366f4f26b3c9674c459d4e8bf310f61437118b03071aa',
-     armv7l: 'dcc5e63215b1e7185ab366f4f26b3c9674c459d4e8bf310f61437118b03071aa',
-     x86_64: 'bcd655a3a40d18c55cfb5ae579b408b6ecd5a9656ccda339dff0dd5a5883688a'
+    aarch64: '8a33562692300a3600fba6caf29326b1effd6e1c458a3f30ffb49fc05d3306df',
+     armv7l: '8a33562692300a3600fba6caf29326b1effd6e1c458a3f30ffb49fc05d3306df',
+     x86_64: 'b9840269788ae21b6b0649762cfbd0ca56a352348fa5bc50d264e654b486f90e'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -85,7 +85,7 @@ class Gtk4 < Package
   end
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -99,8 +99,8 @@ class Gtk4 < Package
       -Dvulkan=enabled \
       -Dprint-cups=auto \
       build"
-    system 'meson configure build'
-    system 'ninja -C build'
+    system 'meson configure builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
     @gtk4settings = <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -110,7 +110,7 @@ class Gtk4 < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
     FileUtils.mkdir_p "#{@xdg_config_dest_home}/gtk-4.0"
     File.write("#{@xdg_config_dest_home}/gtk-4.0/settings.ini", @gtk4settings)
