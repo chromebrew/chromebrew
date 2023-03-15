@@ -3,24 +3,22 @@ require 'package'
 class Libadwaita < Package
   description 'Library of GNOME-specific UI patterns, replacing libhandy for GTK4'
   homepage 'https://gitlab.gnome.org/GNOME/libadwaita/'
-  @_ver = '1.3.beta'
+  @_ver = '1.3.rc'
   version @_ver
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libadwaita.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_armv7l/libadwaita-1.3.beta-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_armv7l/libadwaita-1.3.beta-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_i686/libadwaita-1.3.beta-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.beta_x86_64/libadwaita-1.3.beta-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.rc_armv7l/libadwaita-1.3.rc-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.rc_armv7l/libadwaita-1.3.rc-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libadwaita/1.3.rc_x86_64/libadwaita-1.3.rc-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e5cd5435b81fd35bc68767f3e5f64984afe5bdf4b12edff8a79ecb595a824f65',
-     armv7l: 'e5cd5435b81fd35bc68767f3e5f64984afe5bdf4b12edff8a79ecb595a824f65',
-       i686: 'f8014d089f29c90e50deb66b1c909d6cf0ea64c11fd0b6874ed2811e938f3648',
-     x86_64: '1fbbb78a8db44da2d889b92966635100e40ab46503f606083fb77370597a94d0'
+    aarch64: '9befd825d6c634327d2b7a2a4445f746a5b0651b77247b02f7a867a77f2b071f',
+     armv7l: '9befd825d6c634327d2b7a2a4445f746a5b0651b77247b02f7a867a77f2b071f',
+     x86_64: '8f1ae1e2195af60a04b962aa5209e101c7945347c1276197f6f63f0fac79bb93'
   })
 
   depends_on 'cairo'
