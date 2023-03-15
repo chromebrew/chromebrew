@@ -85,7 +85,7 @@ class Gtk4 < Package
   end
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
@@ -99,8 +99,8 @@ class Gtk4 < Package
       -Dvulkan=enabled \
       -Dprint-cups=auto \
       build"
-    system 'meson configure build'
-    system 'ninja -C build'
+    system 'meson configure builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
     @gtk4settings = <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
@@ -110,7 +110,7 @@ class Gtk4 < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
     FileUtils.mkdir_p "#{@xdg_config_dest_home}/gtk-4.0"
     File.write("#{@xdg_config_dest_home}/gtk-4.0/settings.ini", @gtk4settings)

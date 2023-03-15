@@ -36,18 +36,18 @@ class Glib < Package
   gnome
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
     -Dselinux=disabled \
     -Dsysprof=disabled \
     -Dman=false \
     -Dtests=false \
     builddir"
     system 'meson configure builddir'
-    system 'mold -run ninja -C builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     # Create libtool file. Needed by handbrake build.
     return if File.file?("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la")
 
