@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.32.0'
+CREW_VERSION = '1.32.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -137,6 +137,10 @@ CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                      # newer version of Chrome OS exports info to env by default
                      ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
                    end
+
+# If CREW_ENABLE_MVDIR environment variable exists use crew-mvdir in lieu of rsync/tar to install files.
+# This overrides CREW_DISABLE_MVDIR.
+CREW_ENABLE_MVDIR = ENV['CREW_ENABLE_MVDIR'].eql?('1')
 
 # If CREW_DISABLE_MVDIR environment variable exists use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR'].eql?('1')
