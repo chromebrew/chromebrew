@@ -1274,11 +1274,10 @@ end
 
 def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/local') ))
   if Dir.exist?(src)
-    CREW_DISABLE_MVDIR = 1 unless CREW_ENABLE_MVDIR
-    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
+    if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR && CREW_ENABLE_MVDIR
       system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
     else
-      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless @pkg.name == 'crew_mvdir' or CREW_DISABLE_MVDIR
+      warn 'crew-mvdir is not installed. Please install it with \'crew install crew_mvdir\' for improved installation performance'.yellow unless @pkg.name == 'crew_mvdir' or !CREW_ENABLE_MVDIR
 
       if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
         # rsync src path needs a trailing slash
