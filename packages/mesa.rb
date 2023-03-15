@@ -7,17 +7,17 @@ class Mesa < Package
   version "#{@_ver}-llvm16"
   git_hashtag "mesa-#{@_ver}"
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm16_armv7l/mesa-mesa-23.0.0-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm16_armv7l/mesa-mesa-23.0.0-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/mesa-23.0.0-llvm16_x86_64/mesa-23.0.0-llvm16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-llvm16_armv7l/mesa-23.0.0-llvm16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-llvm16_armv7l/mesa-23.0.0-llvm16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-llvm16_x86_64/mesa-23.0.0-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b13b0187acfffb47ac9508d48f1bfbeaadf28353732d223aba6197d0ec663548',
-     armv7l: 'b13b0187acfffb47ac9508d48f1bfbeaadf28353732d223aba6197d0ec663548',
+    aarch64: '2a12b450aa029896db832ce0a88fcf4d0775ad01b4b86f0ca8a7fc7188d5ece8',
+     armv7l: '2a12b450aa029896db832ce0a88fcf4d0775ad01b4b86f0ca8a7fc7188d5ece8',
      x86_64: '1d8bbbd42c178296d7d6c4a425674ae4764e83efa852931779bc3b79bf733bf8'
   })
 
@@ -56,6 +56,7 @@ class Mesa < Package
   depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'llvm' # R
 
   def self.build
     @gallium_drivers = ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'

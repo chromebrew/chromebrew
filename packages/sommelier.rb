@@ -15,9 +15,9 @@ class Sommelier < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_x86_64/sommelier-20230217-2-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'acb447472c9bcc3869fb66bddbaf9de79094200f488797cf888e83c77d7db227',
-     armv7l: 'acb447472c9bcc3869fb66bddbaf9de79094200f488797cf888e83c77d7db227',
-     x86_64: '9a4b5bbeaea3000e2eec817c1a2d5e7a6b1dc86e2df329079f84ecd4a2910862'
+    aarch64: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
+     armv7l: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
+     x86_64: '7c0fd4b04a1e4a201db27641672bf95d25cb9baaf674c2805419c23f2e8acc0b'
   })
 
   depends_on 'gcc' # R
@@ -171,7 +171,9 @@ class Sommelier < Package
             case "$(uname -m)" in
             x86_64)
               if ! check_linux_version 4 16; then
-                MESA_LOADER_DRIVER_OVERRIDE=i965
+              :
+              # Mesa > 22.0 does not support i965
+              # MESA_LOADER_DRIVER_OVERRIDE=i965
               elif check_linux_version 5 10; then
                 MESA_LOADER_DRIVER_OVERRIDE=iris
               fi
