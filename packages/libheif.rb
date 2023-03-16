@@ -23,32 +23,29 @@ class Libheif < Package
      x86_64: '626d99ad78adb2e959bc0cf812ce53da110d79d3917378b110b914f545137660'
   })
 
-  depends_on 'dav1d'
-  depends_on 'libaom'
-  depends_on 'libde265'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libx265'
-  depends_on 'rav1e'
-  depends_on 'gdk_pixbuf' => :build
+  depends_on 'dav1d' # R
   depends_on 'gcc' # R
-  depends_on 'glib' # R
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'libaom' # R
+  depends_on 'libde265' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libtiff' # L
+  depends_on 'libx265' # R
+  depends_on 'rav1e' # R
   depends_on 'zlibpkg' # R
 
   def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake \
+      system "cmake -B builddir \
         -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
+        #{CREW_CMAKE_OPTIONS}"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   def self.postinstall

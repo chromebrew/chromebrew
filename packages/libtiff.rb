@@ -22,23 +22,24 @@ class Libtiff < Package
      x86_64: '33129073011fd853518e91376a84fa0ddbc61605c041297c0d130294a113f389'
   })
 
-  depends_on 'freeglut'
-  depends_on 'imake' => :build
-  depends_on 'libdeflate'
-  depends_on 'libglu'
-  depends_on 'libice'
-  depends_on 'libjpeg'
-  depends_on 'libsm'
-  depends_on 'libwebp'
-  depends_on 'libx11'
-  depends_on 'libxi'
-  depends_on 'mesa'
-  depends_on 'wget' => :build
-  depends_on 'zstd'
+  depends_on 'freeglut' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'imake' => :build
+  depends_on 'libdeflate' # R
+  depends_on 'libglu' # R
+  depends_on 'libglvnd' # R
+  depends_on 'libice' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libsm' # R
+  depends_on 'libwebp' # R
+  depends_on 'libx11' # R
+  depends_on 'libxi' # R
+  depends_on 'mesa' => :build
+  depends_on 'wget' => :build
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
