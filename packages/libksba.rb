@@ -3,30 +3,31 @@ require 'package'
 class Libksba < Package
   description 'Libksba is a library to make the tasks of working with X.509 certificates, CMS data and related objects more easy.'
   homepage 'https://www.gnupg.org/related_software/libksba/index.html'
-  version '1.6.0'
+  version '1.6.3'
   license 'LGPL-3+, GPL-2+ and GPL-3+'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.0.tar.bz2'
-  source_sha256 'dad683e6f2d915d880aa4bed5cea9a115690b8935b78a1bbe01669189307a48b'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2'
+  source_sha256 '3f72c68db30971ebbf14367527719423f0a4d5f8103fc9f4a1c01a9fa440de5c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_armv7l/libksba-1.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_armv7l/libksba-1.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_i686/libksba-1.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.0_x86_64/libksba-1.6.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_armv7l/libksba-1.6.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_armv7l/libksba-1.6.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_i686/libksba-1.6.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_x86_64/libksba-1.6.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd25ccbccc0a376b5a832167dadf95295117feb63b52020438e301e3f2d6eca66',
-     armv7l: 'd25ccbccc0a376b5a832167dadf95295117feb63b52020438e301e3f2d6eca66',
-       i686: 'db9c4cccfa6452890cfcd2c90155a097cc8c24ff884eacb2377364b437a3d3ce',
-     x86_64: '1306f097b8a500d4bd39442329083fd79cceb8fd62a7b159466b6acef9ad8839'
+    aarch64: '3143a3ade1b121b8359f72da982aa9510e5846f1a4869f0d45690d6a03279d58',
+     armv7l: '3143a3ade1b121b8359f72da982aa9510e5846f1a4869f0d45690d6a03279d58',
+       i686: 'd427822f59b7a958fdbe3d6ec9793ab37c1e1a32cb33277d0cf380651abca2e4',
+     x86_64: '6efc93e6a46d47947344ff7f8c277219edeee50de94d653501db712800ea25a3'
   })
 
-  depends_on 'libgpgerror'
-  depends_on 'npth'
+  depends_on 'npth' => :build
+  depends_on 'glibc' # R
+  depends_on 'libgpgerror' # R
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 

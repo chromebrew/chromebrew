@@ -51,7 +51,7 @@ class Gtk2 < Package
   depends_on 'libxau' # R
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
-  depends_on 'sommelier' # L
+  depends_on 'sommelier' unless ARCH == 'i686' # L
 
   def self.build
     system "#{CREW_ENV_OPTIONS} \

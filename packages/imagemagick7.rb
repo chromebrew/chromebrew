@@ -23,23 +23,49 @@ class Imagemagick7 < Package
      x86_64: '7f9e553d8b73ba2339a800d8668f80d9518879dbf3c2296e55e14f4ebd190edb'
   })
 
-  depends_on 'flif'
-  depends_on 'freeimage'
-  depends_on 'freetype'
-  depends_on 'ghostscript'
-  depends_on 'graphviz'
-  depends_on 'jbigkit'
-  depends_on 'jemalloc'
-  depends_on 'xzutils'
-  depends_on 'libheif'
-  depends_on 'libpng'
-  depends_on 'librsvg'
-  depends_on 'libwebp'
-  depends_on 'libwmf'
-  depends_on 'msttcorefonts'
-  depends_on 'openexr'
-  depends_on 'openjpeg'
-  depends_on 'pango'
+  depends_on 'bz2' # R
+  depends_on 'flif' => :build
+  depends_on 'freeimage' => :build
+  depends_on 'freetype' # R
+  depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'ghostscript' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphviz' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'ilmbase' # R
+  depends_on 'jbigkit' => :build
+  depends_on 'jemalloc' # R
+  depends_on 'lcms' # R
+  depends_on 'libbsd' # R
+  depends_on 'libdeflate' # R
+  depends_on 'libheif' => :build
+  depends_on 'libice' # R
+  depends_on 'libmd' # R
+  depends_on 'libpng' # R
+  depends_on 'librsvg' # R
+  depends_on 'libsm' # R
+  depends_on 'libtiff' # R
+  depends_on 'libtool' # R
+  depends_on 'libwebp' # R
+  depends_on 'libwmf' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'libxext' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxt' # R
+  depends_on 'msttcorefonts' # L
+  depends_on 'openexr' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
+  depends_on 'util_linux' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
