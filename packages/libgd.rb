@@ -3,46 +3,40 @@ require 'package'
 class Libgd < Package
   description 'GD is an open source code library for the dynamic creation of images by programmers.'
   homepage 'https://libgd.org/'
-  @_ver = '2.3.2'
-  version @_ver
+  version '2.3.3'
   license 'custom'
   compatibility 'all'
-  source_url "https://github.com/libgd/libgd/archive/gd-#{@_ver}.tar.gz"
-  source_sha256 'dcc22244d775f469bee21dce1ea42552adbb72ba0cc423f9fa6a64601b3a1893'
+  source_url 'https://github.com/libgd/libgd.git'
+  git_hashtag "gd-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_armv7l/libgd-2.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_armv7l/libgd-2.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_i686/libgd-2.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.2_x86_64/libgd-2.3.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_armv7l/libgd-2.3.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_armv7l/libgd-2.3.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_i686/libgd-2.3.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_x86_64/libgd-2.3.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'af41a2f68397421ae6d8974b1caaf41e559ddfce9b381dfa45ad235b8f912f1c',
-     armv7l: 'af41a2f68397421ae6d8974b1caaf41e559ddfce9b381dfa45ad235b8f912f1c',
-       i686: 'd6a56c32366bb5014e5cf04bd7a0ad4e9eb0038bb95df2e2ec7793d67111e4bc',
-     x86_64: '41a0e61d953cca647d9a31bf88c294918f7f089689f3552fb93cf2903aadeabe'
+    aarch64: '7cf782cc8aec78168810faa2b83f66edc791820f13e6a0ffdd45c33ff7c034e9',
+     armv7l: '7cf782cc8aec78168810faa2b83f66edc791820f13e6a0ffdd45c33ff7c034e9',
+       i686: '1e8ec5a47547e2cd484b45b7bb0cff89f7049f5841ebdc85d852b9bb02ad45bb',
+     x86_64: '0e6c97f3a19ad37591c1dd8b1daa44fa34661130282ca50a697f1ab01f080a64'
   })
 
   depends_on 'libpng'
   depends_on 'libavif'
   depends_on 'libheif'
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
 
   def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto -I#{CREW_PREFIX}/include/harfbuzz' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      cmake \
+    system "mold -run cmake -B builddir \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
-        -DCMAKE_INCLUDE_PATH=#{CREW_PREFIX}/include \
-        .."
-    end
-    system 'ninja -C builddir'
+        -DCMAKE_INCLUDE_PATH=#{CREW_PREFIX}/include"
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
