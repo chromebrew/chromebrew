@@ -34,8 +34,8 @@ class Mold < Package
   no_env_options
 
   def self.build
-      # TBB build option due to
-      # https://github.com/oneapi-src/oneTBB/issues/843#issuecomment-1152646035
+    # TBB build option due to
+    # https://github.com/oneapi-src/oneTBB/issues/843#issuecomment-1152646035
     system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
         -DBUILD_TESTING=OFF \
         -DMOLD_LTO=ON \
