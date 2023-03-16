@@ -3,46 +3,46 @@ require 'package'
 class Expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://sourceforge.net/projects/expat/'
-  version '2.4.1'
+  version '2.5.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.4.1/expat-2.4.1.tar.xz'
-  source_sha256 'cf032d0dba9b928636548e32b327a2d66b1aab63c4f4a13dd132c2d1d2f2fb6a'
+  source_url 'https://github.com/libexpat/libexpat.git'
+  git_hashtag "R_#{version.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_armv7l/expat-2.4.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_armv7l/expat-2.4.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_i686/expat-2.4.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.4.1_x86_64/expat-2.4.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_i686/expat-2.5.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_x86_64/expat-2.5.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1f044a7aecace21975cb528e625a1364d485f976eb3c12e53edf85006efe2980',
-     armv7l: '1f044a7aecace21975cb528e625a1364d485f976eb3c12e53edf85006efe2980',
-       i686: '5731a665443b8e029da85c5207352e380d476c6a9bbc4810fff23fa5bb0451e4',
-     x86_64: 'e5f8529e86f68486309d884676fdd72186a6ece1864d72ac97151a2d907690d4'
+    aarch64: '80cde237aba35f24d0c245139f9da977ca7e9cf6ba567f7227227aabb33e5387',
+     armv7l: '80cde237aba35f24d0c245139f9da977ca7e9cf6ba567f7227227aabb33e5387',
+       i686: '83123fee8e066ae20d256587969d5e411ec22d605323c1a8fb1d12e3068db83f',
+     x86_64: '5608360a9754d4c1c6932fccab28e13ff0cd5c735a77d28be14d1daefe0e13f3'
   })
 
   depends_on 'glibc' # R
 
-  def self.patch
-    system 'filefix'
-  end
-
   def self.build
-    system "./configure \
-       #{CREW_OPTIONS} \
-       #{CREW_ENV_OPTIONS} \
-       --enable-shared \
-       --enable-static \
-       --with-pic"
-    system 'make'
+    Dir.chdir('expat') do
+      system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+          -DBUILD_SHARED_LIBS=ON \
+          -Wno-dev \
+          -G Ninja"
+      system "mold -run #{CREW_NINJA} -C builddir"
+    end
   end
 
   def self.check
-    system 'make', 'check'
+    Dir.chdir('expat') do
+      system "mold -run #{CREW_NINJA} -C builddir test"
+    end
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    Dir.chdir('expat') do
+      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    end
   end
 end
