@@ -16,18 +16,18 @@ class Dbus < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_x86_64/dbus-1.15.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '56ae6e368d15e57266f2cad048c96c5588d87084182e532446ec2bc87a628f26',
-     armv7l: '56ae6e368d15e57266f2cad048c96c5588d87084182e532446ec2bc87a628f26',
-       i686: '3753ef0a2fd4760f822198aa1df6ad83fc5b576a3505aae963c03031cf2a3e8e',
-     x86_64: 'aebef42655ec0fe024f5ec4fa5bcb13b35c88ef4686491309fb89c26d4db4e0d'
+    aarch64: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
+     armv7l: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
+       i686: 'd48d4149c92bef9981515ce47a4491123013b855147290f358126e18d1e5d4b7',
+     x86_64: 'fc1c818d773ece8193082dca1203878e8382a3fb17d7c6cd32a1f29d9f4788e4'
   })
 
   depends_on 'libice' => :build
   depends_on 'libsm' => :build
-  depends_on 'libx11' => :build
   depends_on 'expat' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'libx11' # R
 
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
@@ -39,7 +39,7 @@ class Dbus < Package
       -Dxml_docs=disabled \
       -Druntime_dir=/var \
       -Dsystemd=disabled \
-      -Dx11_autolaunch=disabled \
+      -Dx11_autolaunch=enabled \
        builddir"
     system 'meson configure builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
