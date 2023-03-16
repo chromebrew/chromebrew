@@ -3,7 +3,7 @@ require 'package'
 class Graphviz < Package
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
-  @_ver = '7.0.2'
+  @_ver = '7.1.0'
   version @_ver
   license 'BSD'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Graphviz < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.0.2_armv7l/graphviz-7.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.0.2_armv7l/graphviz-7.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.0.2_i686/graphviz-7.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.0.2_x86_64/graphviz-7.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.1.0_armv7l/graphviz-7.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.1.0_armv7l/graphviz-7.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.1.0_i686/graphviz-7.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.1.0_x86_64/graphviz-7.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3b9901385fa06dc66d81a21674a8059f0f033d6a1b1fce3a246e9b182d1a1cfd',
-     armv7l: '3b9901385fa06dc66d81a21674a8059f0f033d6a1b1fce3a246e9b182d1a1cfd',
-       i686: 'd3f57884c68a7d4766e886c7ad70138b3cef6f91980c7d275a8c6c7f6e0956a9',
-     x86_64: 'ce900808e60f7fcc5a558a6fe50d8700ccf5f25528a11227d52750ec72621f31'
+    aarch64: '7c8572e45f268f52eea6213b5191687f9289ccdfb5bcae98896435f44e91918a',
+     armv7l: '7c8572e45f268f52eea6213b5191687f9289ccdfb5bcae98896435f44e91918a',
+       i686: 'da761f75ea9ccfd0372f6c94b1a87172bb8e89cc8ab257f352cb08117e14fb09',
+     x86_64: 'a695af69c648392c30af266e8916dee9a4940ec650fd9cca70dc07603f8e1018'
   })
 
   depends_on 'at_spi2_core' # R
@@ -40,12 +40,13 @@ class Graphviz < Package
   depends_on 'libx11' # R
   depends_on 'libxrender' # R
   depends_on 'pango' # R
-  depends_on 'qtbase' # R
+  depends_on 'qtbase' unless ARCH == 'i686'
   depends_on 'zlibpkg' # R
+  depends_on 'ghostscript' # R
 
   def self.patch
     system "sed -i 's|/usr|#{CREW_PREFIX}|g' cmake/config_checks.cmake"
-    @graphviz_cmake_patch = <<~'CMAKE_PATCH_EOF'
+    @graphviz_cmake_patch = <<~CMAKE_PATCH_EOF
       diff -Npaur a/cmake/configure_plugins.cmake.in b/cmake/configure_plugins.cmake.in
       --- a/cmake/configure_plugins.cmake.in	2022-11-19 23:41:08.008581039 -0500
       +++ b/cmake/configure_plugins.cmake.in	2022-11-19 23:59:33.747877029 -0500
@@ -68,23 +69,23 @@ class Graphviz < Package
          COMMAND ${ROOT}/bin/dot -c
     CMAKE_PATCH_EOF
     File.write('graphviz_cmake.patch', @graphviz_cmake_patch)
-    system 'patch -Np1 -i graphviz_cmake.patch'
+    # system 'patch -Np1 -i graphviz_cmake.patch'
   end
 
   def self.build
-    Dir.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "AWK=#{CREW_PREFIX}/bin/mawk \
-      cmake \
+    # gvedit pulls in the QT dependency.
+    @gvedit = ARCH == 'i686' ? 'OFF' : 'ON'
+    system "AWK=#{CREW_PREFIX}/bin/mawk \
+        cmake -B builddir \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS} \
-        .."
-    end
-    system 'ninja -C builddir'
+        -Dwith_gvedit=#{@gvedit}"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    # There is a library error only when installing dot using the following command.
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install || true"
   end
 
   def self.postinstall
