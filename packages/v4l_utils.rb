@@ -27,8 +27,8 @@ class V4l_utils < Package
   depends_on 'eudev'
   depends_on 'libglu'
   depends_on 'libjpeg'
-  depends_on 'mesa'
-  depends_on 'qtbase'
+  depends_on 'mesa' unless ARCH == 'i686'
+  depends_on 'qtbase' unless ARCH == 'i686'
   depends_on 'sdl2_image'
   depends_on 'gcc' # R
   depends_on 'glibc' # R
