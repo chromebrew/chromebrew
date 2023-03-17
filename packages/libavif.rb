@@ -31,6 +31,7 @@ class Libavif < Package
   depends_on 'libaom' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
+  depends_on 'libtiff' # L
   depends_on 'libyuv' # R
   depends_on 'nasm' => :build
   depends_on 'pandoc' => :build
@@ -50,11 +51,11 @@ class Libavif < Package
       -DAVIF_CODEC_SVT=ON \
       -DAVIF_BUILD_GDK_PIXBUF=ON \
       -DAVIF_BUILD_MAN_PAGES=ON"
-    system 'samu -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   def self.postinstall

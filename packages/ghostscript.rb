@@ -22,31 +22,31 @@ class Ghostscript < Package
      x86_64: 'c3c1f1ac1c31ea6a465367504156c18d47bae8b1ecbaee3b118e3bbc3b25a5a9'
   })
 
-  depends_on 'at_spi2_core'
-  depends_on 'cairo'
-  depends_on 'cups'
-  depends_on 'fontconfig'
-  depends_on 'freetype'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'harfbuzz'
-  depends_on 'lcms'
-  depends_on 'libice'
-  depends_on 'libjpeg'
-  depends_on 'libpaper'
-  depends_on 'libpng'
-  depends_on 'libsm'
-  depends_on 'libtiff'
-  depends_on 'libx11'
-  depends_on 'libxext'
-  depends_on 'libxt'
-  depends_on 'openjpeg'
-  depends_on 'pango'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' => :build
+  depends_on 'cups' # R
   depends_on 'expat' # R
+  depends_on 'fontconfig' => :build
+  depends_on 'freetype' # R
   depends_on 'gcc' # R
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' unless ARCH == 'i686' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'lcms' # R
   depends_on 'libarchive' # R
+  depends_on 'libice' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpaper' # R
+  depends_on 'libpng' # R
+  depends_on 'libsm' # R
+  depends_on 'libtiff' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxt' # R
+  depends_on 'openjpeg' # R
+  depends_on 'pango' # R
   depends_on 'zlibpkg' # R
 
   def self.patch
