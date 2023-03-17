@@ -38,7 +38,7 @@ class Libheif < Package
   depends_on 'zlibpkg' # R
 
   def self.build
-      system "cmake -B builddir \
+    system "cmake -B builddir \
         -G Ninja \
         #{CREW_CMAKE_OPTIONS}"
     system "#{CREW_NINJA} -C builddir"
