@@ -46,29 +46,6 @@ class Graphviz < Package
 
   def self.patch
     system "sed -i 's|/usr|#{CREW_PREFIX}|g' cmake/config_checks.cmake"
-    @graphviz_cmake_patch = <<~CMAKE_PATCH_EOF
-      diff -Npaur a/cmake/configure_plugins.cmake.in b/cmake/configure_plugins.cmake.in
-      --- a/cmake/configure_plugins.cmake.in	2022-11-19 23:41:08.008581039 -0500
-      +++ b/cmake/configure_plugins.cmake.in	2022-11-19 23:59:33.747877029 -0500
-      @@ -29,11 +29,11 @@
-
-       set(ROOT $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})
-
-      -if(APPLE)
-      -  set(ENV{DYLD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
-      -elseif(UNIX)
-      -  set(ENV{LD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
-      -endif()
-      +#if(APPLE)
-      +#  set(ENV{DYLD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
-      +#elseif(UNIX)
-      +#  set(ENV{LD_LIBRARY_PATH} "${ROOT}/@LIBRARY_INSTALL_DIR@")
-      +#endif()
-
-       execute_process(
-         COMMAND ${ROOT}/bin/dot -c
-    CMAKE_PATCH_EOF
-    File.write('graphviz_cmake.patch', @graphviz_cmake_patch)
     # system 'patch -Np1 -i graphviz_cmake.patch'
   end
 
