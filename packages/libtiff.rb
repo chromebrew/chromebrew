@@ -3,23 +3,23 @@ require 'package'
 class Libtiff < Package
   description 'LibTIFF provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.'
   homepage 'http://www.libtiff.org/'
-  version '4.4.0'
+  version '4.5.0'
   license 'libtiff'
   compatibility 'all'
-  source_url 'https://download.osgeo.org/libtiff/tiff-4.4.0.tar.xz'
-  source_sha256 '49307b510048ccc7bc40f2cba6e8439182fe6e654057c1a1683139bf2ecb1dc1'
+  source_url 'https://download.osgeo.org/libtiff/tiff-4.5.0.tar.xz'
+  source_sha256 'dafac979c5e7b6c650025569c5a4e720995ba5f17bc17e6276d1f12427be267c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_armv7l/libtiff-4.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_armv7l/libtiff-4.4.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_i686/libtiff-4.4.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.4.0_x86_64/libtiff-4.4.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.5.0_armv7l/libtiff-4.5.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.5.0_armv7l/libtiff-4.5.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.5.0_i686/libtiff-4.5.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.5.0_x86_64/libtiff-4.5.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a971b42ca81eaf5375b09c69b34e14d367a8c0b86802d25dc1c8f0b89ed6ab76',
-     armv7l: 'a971b42ca81eaf5375b09c69b34e14d367a8c0b86802d25dc1c8f0b89ed6ab76',
-       i686: '2eaf5efe70745023e0f70670247338eebc7b75df8df85ec72980056954d7a924',
-     x86_64: '33129073011fd853518e91376a84fa0ddbc61605c041297c0d130294a113f389'
+    aarch64: '7f675f104ab5e96bd2d36e0b20c66cd04e28670f656754d63efec6fb0b75a8c7',
+     armv7l: '7f675f104ab5e96bd2d36e0b20c66cd04e28670f656754d63efec6fb0b75a8c7',
+       i686: '5f4fb64998b71ec589113545de1b14606e8e5f4302d06a2bb5f85c06856ab8e6',
+     x86_64: '6bc2360a7b3d5d986575dd8f2220efbeea3bb227dfcc707a9e8cc6168e632d7f'
   })
 
   depends_on 'freeglut' # R
