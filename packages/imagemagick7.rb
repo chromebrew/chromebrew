@@ -3,28 +3,29 @@ require 'package'
 class Imagemagick7 < Package
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.1.0-37'
-  version @_ver
+  @_ver = '7.1.1-3'
+  version "#{@_ver}-perl5.34"
   license 'imagemagick'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-37_armv7l/imagemagick7-7.1.0-37-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-37_armv7l/imagemagick7-7.1.0-37-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-37_i686/imagemagick7-7.1.0-37-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.0-37_x86_64/imagemagick7-7.1.0-37-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_armv7l/imagemagick7-7.1.1-3-perl5.34-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_armv7l/imagemagick7-7.1.1-3-perl5.34-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_i686/imagemagick7-7.1.1-3-perl5.34-chromeos-i686.tar.zst',
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_x86_64/imagemagick7-7.1.1-3-perl5.34-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '734c1dde282b695f90ad9a7af940a088ff91eefcb30189fbcb0b89d5eb14bd3a',
-     armv7l: '734c1dde282b695f90ad9a7af940a088ff91eefcb30189fbcb0b89d5eb14bd3a',
-       i686: '1f0490156c755f3328b6881641251292332ca527bd5fdfa757bf3190f1982dc8',
-     x86_64: '7f9e553d8b73ba2339a800d8668f80d9518879dbf3c2296e55e14f4ebd190edb'
+    aarch64: 'cc275b254e3f1bfafb8bace8227a2d07cf2d7dacd15619915ccdd48b9470acc2',
+     armv7l: 'cc275b254e3f1bfafb8bace8227a2d07cf2d7dacd15619915ccdd48b9470acc2',
+       i686: '9156bfdd7c388a8d0895317ef8b1347991ea3925b933bf426521d6f51f6c3686',
+    x86_64: 'ed0e5cdf87a45c8c01e501022e49d045df5bb6f0b3e74111f1131c00a418a350'
   })
 
   depends_on 'bz2' # R
   depends_on 'flif' => :build
+  depends_on 'fontconfig' => :build
   depends_on 'freeimage' => :build
   depends_on 'freetype' # R
   depends_on 'gcc' # R
@@ -66,6 +67,9 @@ class Imagemagick7 < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'expat' # R
+  depends_on 'fontconfig' # R
+  depends_on 'libjpeg' # R
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
@@ -77,12 +81,7 @@ class Imagemagick7 < Package
   end
 
   def self.build
-    system "env CFLAGS='-pipe -flto=auto -fno-stack-protector -U_FORTIFY_SOURCE \
-      -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 \
-      -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
-      CXXFLAGS='-pipe -flto=auto -fno-stack-protector -U_FORTIFY_SOURCE' \
-      LDFLAGS='-flto=auto -fno-stack-protector -U_FORTIFY_SOURCE' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --mandir=#{CREW_MAN_PREFIX} \
       --program-prefix='' \
