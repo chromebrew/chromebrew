@@ -6,7 +6,7 @@ class Imagemagick7 < Package
   @_ver = '7.1.1-3'
   version "#{@_ver}-perl5.34"
   license 'imagemagick'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
   git_hashtag @_ver
 
