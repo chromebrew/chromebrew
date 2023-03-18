@@ -3,75 +3,77 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.10.1'
+  @_ver = '4.10.1'
+  version "#{@_ver}-1"
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1_armv7l/gtk4-4.10.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1_armv7l/gtk4-4.10.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1_x86_64/gtk4-4.10.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1-1_armv7l/gtk4-4.10.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1-1_armv7l/gtk4-4.10.1-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1-1_x86_64/gtk4-4.10.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8a33562692300a3600fba6caf29326b1effd6e1c458a3f30ffb49fc05d3306df',
-     armv7l: '8a33562692300a3600fba6caf29326b1effd6e1c458a3f30ffb49fc05d3306df',
-     x86_64: 'b9840269788ae21b6b0649762cfbd0ca56a352348fa5bc50d264e654b486f90e'
+    aarch64: 'ca7f1ce3f5409710c8d4f17228125e6bc02c4029065903968c423dc301402d5b',
+     armv7l: 'ca7f1ce3f5409710c8d4f17228125e6bc02c4029065903968c423dc301402d5b',
+     x86_64: '29d046f29f83a5ca0b0aef1423646270aff6987b2f22726e265858102ebc1b27'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
-  depends_on 'docbook' => :build
-  depends_on 'ghostscript' => :build
-  depends_on 'gobject_introspection' => :build
-  depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
-  depends_on 'iso_codes' => :build
-  depends_on 'libsass' => :build
-  depends_on 'libspectre' => :build
-  depends_on 'mesa' => :build
-  depends_on 'valgrind' => :build
-  depends_on 'py3_gi_docgen' => :build
-  depends_on 'py3_pygments' => :build
-  depends_on 'vulkan_headers' => :build
   depends_on 'adwaita_icon_theme' # L
-  depends_on 'cantarell_fonts' # L
-  depends_on 'gnome_icon_theme' # L
-  depends_on 'hicolor_icon_theme' # L
-  depends_on 'shared_mime_info' # L
-  depends_on 'xdg_base' # L
   depends_on 'cairo' # R
+  depends_on 'cantarell_fonts' # L
   depends_on 'cups' # R
+  depends_on 'docbook' => :build
   depends_on 'fontconfig' # R
+  depends_on 'freetype' # R
   depends_on 'fribidi' # R
+  depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'ghostscript' => :build
+  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'gnome_icon_theme' # L
+  depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'harfbuzz' # R
+  depends_on 'hicolor_icon_theme' # L
+  depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
+  depends_on 'iso_codes' => :build
+  depends_on 'libcloudproviders' # R
   depends_on 'libepoxy' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
+  depends_on 'libsass' => :build
+  depends_on 'libspectre' => :build
+  depends_on 'libtiff' # R
   depends_on 'libx11' # R
   depends_on 'libxcomposite' # R
   depends_on 'libxcursor' # R
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'libxi' # R
   depends_on 'libxinerama' # R
+  depends_on 'libxi' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
+  depends_on 'mesa' => :build
   depends_on 'pango' # R
+  depends_on 'py3_gi_docgen' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'sassc' => :build
+  depends_on 'shared_mime_info' # L
+  depends_on 'sommelier' # L
+  depends_on 'valgrind' => :build
+  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
-  depends_on 'gcc' # R
-  depends_on 'glibc' # R
-  depends_on 'libjpeg' # R
-  depends_on 'libpng' # R
-  depends_on 'libtiff' # R
-  depends_on 'libcloudproviders' # R
-  depends_on 'vulkan_headers' => :build
   depends_on 'xdg_base' # L
-  depends_on 'sommelier' # L
+  depends_on 'zlibpkg' # R
 
   gnome
   no_fhs
@@ -98,7 +100,7 @@ class Gtk4 < Package
       -Dcloudproviders=enabled \
       -Dvulkan=enabled \
       -Dprint-cups=auto \
-      build"
+      builddir"
     system 'meson configure builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
     @gtk4settings = <<~GTK4_CONFIG_HEREDOC
