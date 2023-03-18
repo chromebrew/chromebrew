@@ -3,23 +3,23 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.0.0'
+  version '10.0.0-1'
   license 'AGPL-3+'
   compatibility 'all'
   source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostpdl-10.0.0.tar.xz'
   source_sha256 '8f2b7941f60df694b4f5c029b739007f7c4e0d43858471ae481e319a967d5d8b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_armv7l/ghostscript-10.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_armv7l/ghostscript-10.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_i686/ghostscript-10.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0_x86_64/ghostscript-10.0.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_armv7l/ghostscript-10.0.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_armv7l/ghostscript-10.0.0-1-chromeos-armv7l.tar.zst',
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_i686/ghostscript-10.0.0-1-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_x86_64/ghostscript-10.0.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '82c15db8a46f73fcf467fd36bdc1d9713bfe35e1fd269408a75232967400ebf4',
-     armv7l: '82c15db8a46f73fcf467fd36bdc1d9713bfe35e1fd269408a75232967400ebf4',
-       i686: '91dfb5bab16d31c3418c57cae464f0b2377f0e19d0057cec751ef8b14f50b9aa',
-     x86_64: 'c3c1f1ac1c31ea6a465367504156c18d47bae8b1ecbaee3b118e3bbc3b25a5a9'
+    aarch64: 'b238eae744d34ddb16c3b8d460bf6012021deadf690ce23a08449c8c0d5c583f',
+     armv7l: 'b238eae744d34ddb16c3b8d460bf6012021deadf690ce23a08449c8c0d5c583f',
+    i686: '858a1f11a7c3977e3e42bb0179b1964a8671196270f9cd1f3a02b3dee735aed9',
+  x86_64: '384a4c40c58a46bc7c7610fbd883bb532d0da7c83ff2cf9858aa51f989e4525d'
   })
 
   depends_on 'at_spi2_core' # R
@@ -34,6 +34,7 @@ class Ghostscript < Package
   depends_on 'glib' # R
   depends_on 'gtk3' unless ARCH == 'i686' # R
   depends_on 'harfbuzz' # R
+  depends_on 'jbigkit' => :build
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
   depends_on 'libice' # R
@@ -56,6 +57,7 @@ class Ghostscript < Package
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
     system 'filefix'
+    @x = ARCH == 'i686' ? '--with-x' : ''
     system "./configure #{CREW_OPTIONS} \
       --disable-compile-inits \
       --enable-dynamic \
@@ -67,10 +69,8 @@ class Ghostscript < Package
       --with-ijs \
       --with-jbig2dec \
       --with-libpaper \
-      --with-openprinting \
-      --without-luratech \
       --with-system-libtiff \
-      --with-x"
+      #{@x}"
     system 'make'
     system 'make so' # Make libgs
   end
