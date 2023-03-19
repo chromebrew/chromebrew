@@ -3,23 +3,23 @@ require 'package'
 class Xzutils < Package
   description 'XZ Utils is free general-purpose data compression software with a high compression ratio.'
   homepage 'http://tukaani.org/xz/'
-  version '5.2.5-e7da-1'
+  version '5.4.2'
   license 'public-domain, LGPL-2.1+ and GPL-2+'
   compatibility 'all'
-  source_url 'https://github.com/xz-mirror/xz.git'
-  git_hashtag 'e7da44d5151e21f153925781ad29334ae0786101'
+  source_url 'https://tukaani.org/xz/xz-5.4.2.tar.gz'
+  source_sha256 '87947679abcf77cc509d8d1b474218fd16b72281e2797360e909deaee1ac9d05'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5-e7da-1_armv7l/xzutils-5.2.5-e7da-1-chromeos-armv7l.tar.xz',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5-e7da-1_armv7l/xzutils-5.2.5-e7da-1-chromeos-armv7l.tar.xz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5-e7da-1_i686/xzutils-5.2.5-e7da-1-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.2.5-e7da-1_x86_64/xzutils-5.2.5-e7da-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.4.2_armv7l/xzutils-5.4.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.4.2_armv7l/xzutils-5.4.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.4.2_i686/xzutils-5.4.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xzutils/5.4.2_x86_64/xzutils-5.4.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4caa279bff570ecefe1fa84519dec7ec66d55bec943eee7ec94a8274d7c8e620',
-    armv7l: '4caa279bff570ecefe1fa84519dec7ec66d55bec943eee7ec94a8274d7c8e620',
-    i686: '853236ac1097893128530ab257f59a3e0c430a886be495e3129917da85ac1060',
-    x86_64: '3dc20e0ee9d0a08c43c61ab4cced5c497ffafd9ab1d46f9ec50ff8969e98dfe0'
+    aarch64: '7641b6c7b1795b5ceb9fc69a07709383af08447d19b72282431edc8f25d83148',
+     armv7l: '7641b6c7b1795b5ceb9fc69a07709383af08447d19b72282431edc8f25d83148',
+       i686: '88e98f1c8524bf5cd6080b05b5bf9f1d7c38224abea6c216783288aebf7266d3',
+     x86_64: '0ec4d59acf5bab9c6ce3a2bef1fe0721bcf9eb8df2103805eb5c2ed860b6ddf1'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -31,8 +31,7 @@ class Xzutils < Package
       ./configure \
       #{CREW_OPTIONS} \
       --disable-docs \
-      --enable-shared \
-      --with-pic"
+      --enable-shared"
     system 'make'
   end
 
