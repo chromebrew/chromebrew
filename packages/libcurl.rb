@@ -11,4 +11,8 @@ class Libcurl < Package
   is_fake
 
   depends_on 'curl'
+
+  def self.postinstall
+    system 'crew reinstall curl' if !File.file?("#{CREW_PREFIX}/bin/curl")
+  end
 end
