@@ -22,7 +22,7 @@ class Od1n < Package
      x86_64: '38b19eb0cb14694e30040105ac05fd0e250ced2bbac6c0e7428b8adbd495dd2c'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
 
   def self.build
     system 'make'

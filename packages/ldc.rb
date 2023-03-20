@@ -9,7 +9,7 @@ class Ldc < Package
   source_url 'https://github.com/ldc-developers/ldc/releases/download/v1.31.0/ldc2-1.31.0-linux-x86_64.tar.xz'
   source_sha256 '7dbd44786c0772ec41890a8c03e22b0985d6ef547c40943dd56bc6be21cf4d98'
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'ncurses'
   depends_on 'zlibpkg'
 

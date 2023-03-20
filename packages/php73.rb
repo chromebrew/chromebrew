@@ -23,7 +23,7 @@ class Php73 < Package
      x86_64: '332b1b11d789481fc735d59722364772ec68cfc4de6c775a558b45454cb074bb'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libgcrypt'
   depends_on 'libjpeg'
   depends_on 'libpng'

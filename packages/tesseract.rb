@@ -31,7 +31,7 @@ class Tesseract < Package
   depends_on 'glib'
   depends_on 'leptonica'
   depends_on 'libarchive'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libjpeg'
   depends_on 'openldap'
   depends_on 'harfbuzz'

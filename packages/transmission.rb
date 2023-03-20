@@ -33,7 +33,7 @@ class Transmission < Package
   depends_on 'gtkmm4' # R
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libdeflate' # R
   depends_on 'libevent' # R
   depends_on 'libpsl' # R

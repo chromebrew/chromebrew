@@ -28,7 +28,7 @@ class R < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'icu4c' # R
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libice' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R

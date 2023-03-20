@@ -9,7 +9,7 @@ class Codelobster < Package
   source_url 'https://codelobsteride.com/download/codelobsteride-1.11.1_amd64.deb'
   source_sha256 '7772c87bfda497caaf48ce92ad263a57e537f898fc307a213159d73f9b95e28f'
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'sommelier'
 
   binary_url({

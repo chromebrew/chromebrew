@@ -46,7 +46,7 @@ class Wxwidgets < Package
   depends_on 'expat' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
   depends_on 'libpng' # R

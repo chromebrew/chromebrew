@@ -23,7 +23,7 @@ class Roswell < Package
   })
 
   depends_on 'brotli'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libcyrussasl'
   depends_on 'libnghttp2'
   depends_on 'openldap'

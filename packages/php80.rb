@@ -23,7 +23,7 @@ class Php80 < Package
   })
 
   depends_on 'aspell_en'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libgcrypt'
   depends_on 'libjpeg'
   depends_on 'libpng'

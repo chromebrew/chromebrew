@@ -18,7 +18,7 @@ class Obs < Package
     x86_64: '854492244415cea4b4874cf3cd2302649d5b538d89366f2fd1ccceda7ff1f3ea'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'ffmpeg'
   depends_on 'jack'
   depends_on 'jansson'

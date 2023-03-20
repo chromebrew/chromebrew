@@ -22,7 +22,7 @@ class Xercesc < Package
      x86_64: 'd1a0c7fd791b712963ea851792e8253474ec0ba5683d631ce0b0ac981e90762e'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
 
   def self.build
     system './configure',
