@@ -3776,6 +3776,11 @@ url: https://github.com/strukturag/libde265/releases/
 activity: medium
 ---
 kind: url
+name: libdecor
+url: https://gitlab.freedesktop.org/libdecor/libdecor/-/tags
+activity: medium
+---
+kind: url
 name: libdeflate
 url: https://github.com/ebiggers/libdeflate/releases
 activity: low
