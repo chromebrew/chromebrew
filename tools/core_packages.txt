@@ -11,6 +11,7 @@ ca_certificates
 cmake
 compressdoc
 crew_profile_base
+curl
 diffutils
 docbook_xml
 docbook_xml412
@@ -52,7 +53,6 @@ jsoncpp
 krb5
 less
 libarchive
-libcurl
 libcyrussasl
 libdb
 libedit
