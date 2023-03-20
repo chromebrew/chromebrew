@@ -13,6 +13,6 @@ class Libcurl < Package
   depends_on 'curl'
 
   def self.postinstall
-    system 'crew reinstall curl' if !File.file?("#{CREW_PREFIX}/bin/curl")
+    system 'crew reinstall curl' unless File.file?("#{CREW_PREFIX}/bin/curl")
   end
 end
