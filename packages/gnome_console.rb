@@ -6,7 +6,7 @@ require 'package'
 class Gnome_console < Package
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
-  @_ver = '44.beta'
+  @_ver = '44.0'
   version "#{@_ver}-1"
   license 'GPL3'
   compatibility 'x86_64 aarch64 armv7l'
@@ -14,33 +14,33 @@ class Gnome_console < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta-1_armv7l/gnome_console-44.beta-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta-1_armv7l/gnome_console-44.beta-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.beta-1_x86_64/gnome_console-44.beta-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_armv7l/gnome_console-44.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_armv7l/gnome_console-44.0-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_x86_64/gnome_console-44.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '93d882c703a0f53035783ce30ce5cb0db6fd553eebd1fc18bb69bcd88399f8bc',
-     armv7l: '93d882c703a0f53035783ce30ce5cb0db6fd553eebd1fc18bb69bcd88399f8bc',
-     x86_64: '13cdea3dc6b049f7defc8aed6735e16c66eb74c08688b47aad6504dafd4cb190'
+    aarch64: '1ab2ae3fe6ae44c24c64f2798f45d465c48b4116f530e975bfa967af3bd23a1e',
+     armv7l: '1ab2ae3fe6ae44c24c64f2798f45d465c48b4116f530e975bfa967af3bd23a1e',
+     x86_64: 'f66c46cdf1a783f685240ba195232e5056db5de64b37994e7e2701fa870f7adc'
   })
 
   depends_on 'gcc' # R
-  depends_on 'gdk_pixbuf' # L
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'graphene' => :build
+  depends_on 'graphene' # R
   depends_on 'gtk4' # R
-  depends_on 'harfbuzz' => :build
+  depends_on 'harfbuzz' # R
   depends_on 'libadwaita' # R
   depends_on 'libgtop' # R
   depends_on 'libhandy' => :build
   depends_on 'nautilus' => :build
   depends_on 'pango' # R
-  depends_on 'pcre2' => :build
+  depends_on 'pcre2' # R
   depends_on 'sassc' => :build
   depends_on 'vte' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # L
+  depends_on 'vulkan_icd_loader' # R
 
   gnome
 
