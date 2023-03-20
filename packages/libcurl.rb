@@ -4,8 +4,6 @@ require_relative 'curl'
 class Libcurl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  #@curlversion = Curl.version
-  #version @curlversion
   version Curl.version.to_s
   license 'curl'
   compatibility 'all'
