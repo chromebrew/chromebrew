@@ -35,7 +35,7 @@ class Ettercap_gtk < Package
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libbsd' # R
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libnet' # R
   depends_on 'libpcap' # R
   depends_on 'libtool' => :build

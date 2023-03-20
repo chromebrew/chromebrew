@@ -22,7 +22,7 @@ class Minerd < Package
      x86_64: 'a4101c3804f18fa55f93ea0516c5deca35093064f47146ef1f398b8b1e10f343'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'jansson'
 
   def self.build

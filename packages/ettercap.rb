@@ -31,7 +31,7 @@ class Ettercap < Package
   depends_on 'ghostscript' => :build
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libnet' # R
   depends_on 'libpcap' # R
   depends_on 'libtool' => :build

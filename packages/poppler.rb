@@ -38,7 +38,7 @@ class Poppler < Package
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'zlibpkg' # R
 
   def self.build

@@ -22,7 +22,7 @@ class Rng_tools < Package
      x86_64: 'df9504bf42632204e92fb4b97ac0b863c7e8cbb7d5592ec9ab7c4224071b711b'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libgcrypt'
   depends_on 'sysfsutils'
   depends_on 'psmisc'

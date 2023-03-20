@@ -22,7 +22,7 @@ class Cloudcross < Package
      x86_64: 'b36c6764610ad51c82bc930b701968863bde93057ce11436b7a9cb9d41c3e398'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'qtbase' => :build
 
   def self.build

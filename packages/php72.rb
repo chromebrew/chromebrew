@@ -28,7 +28,7 @@ class Php72 < Package
   depends_on 'libjpeg'
   depends_on 'libxslt'
   depends_on 'libzip'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'exif'
   depends_on 'freetype'
   depends_on 'pcre'

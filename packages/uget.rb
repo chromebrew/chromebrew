@@ -22,7 +22,7 @@ class Uget < Package
      x86_64: 'e75eeddfb77a1d22fbe9ff38b20b65a2e85862b22812f78296a4f760f44a0854'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'gtk3'
   depends_on 'libnotify'
   depends_on 'gstreamer'

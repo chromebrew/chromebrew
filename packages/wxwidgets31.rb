@@ -51,7 +51,7 @@ class Wxwidgets31 < Package
   depends_on 'freetype' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libglvnd' # R
   depends_on 'libsoup2' # R
   depends_on 'libxtst' # R

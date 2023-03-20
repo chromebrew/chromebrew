@@ -22,7 +22,7 @@ class Glyr < Package
      x86_64: 'c9ade91fe3da5da7cd53d53ff9e17a072fc60dd540f2e812ebfccdfe041aed50'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'glib'
   depends_on 'sqlite'
 

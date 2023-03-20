@@ -1165,6 +1165,11 @@ url: https://github.com/apple/cups/releases
 activity: medium
 ---
 kind: url
+name: curl
+url: https://github.com/curl/curl/releases
+activity: high
+---
+kind: url
 name: curtail
 url: https://github.com/Huluti/Curtail/releases
 activity: low
@@ -3729,11 +3734,6 @@ kind: url
 name: libcue
 url: https://github.com/lipnitsk/libcue/releases
 activity: none
----
-kind: url
-name: libcurl
-url: https://github.com/curl/curl/releases
-activity: high
 ---
 kind: url
 name: libcyrussasl

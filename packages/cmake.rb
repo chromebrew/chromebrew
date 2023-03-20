@@ -32,7 +32,7 @@ class Cmake < Package
   depends_on 'libnghttp2'
   depends_on 'zstd'
   depends_on 'libarchive'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'librhash'
   depends_on 'libuv'
   depends_on 'llvm' => :build

@@ -24,7 +24,7 @@ class Mapserver < Package
 
   depends_on 'cmake'
   depends_on 'cairo'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'fribidi'
   depends_on 'gdal'
   depends_on 'geos'

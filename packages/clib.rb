@@ -22,7 +22,7 @@ class Clib < Package
      x86_64: '06c1bac595387b7eeb3e2fddd64c94d3ef6394492e4315f4604e4c4f719efeb9'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
 
   def self.build
     system "sed -i 's,PREFIX ?= /usr/local,PREFIX ?= #{CREW_DEST_PREFIX},' Makefile"

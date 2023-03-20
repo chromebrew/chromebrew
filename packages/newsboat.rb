@@ -24,7 +24,7 @@ class Newsboat < Package
 
   depends_on 'sqlite'
   depends_on 'gettext'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libxml2'
   depends_on 'libstfl'
   depends_on 'jsonc'

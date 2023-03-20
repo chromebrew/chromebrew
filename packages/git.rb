@@ -23,7 +23,7 @@ class Git < Package
   })
 
   depends_on 'ca_certificates' => :build
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'libunistring'
   depends_on 'pcre2'
   depends_on 'zlibpkg'

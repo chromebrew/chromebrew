@@ -18,7 +18,7 @@ class Darktable < Package
 
   depends_on 'cairo'
   depends_on 'colord'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'dbus_glib'
   depends_on 'fop'
   depends_on 'gexiv2'

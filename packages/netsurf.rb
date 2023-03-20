@@ -26,7 +26,7 @@ class Netsurf < Package
   depends_on 'libidn2'
   depends_on 'libmng'
   depends_on 'libxml2'
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'lcms'
   depends_on 'libwebp'
   depends_on 'libcss'

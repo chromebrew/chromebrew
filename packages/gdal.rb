@@ -29,7 +29,7 @@ class Gdal < Package
   depends_on 'glibc' # R
   depends_on 'hdf5' => :build
   depends_on 'jsonc' # R
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libdeflate' # R
   depends_on 'libgeotiff' # R
   depends_on 'libjpeg' # R

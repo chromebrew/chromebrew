@@ -22,7 +22,7 @@ class Netcdf < Package
      x86_64: 'ff3aaee614a276bcbde78d0afb4339ca7312b76e16f9811bb97a621cb6f8874c'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'hdf5'
 
   def self.build

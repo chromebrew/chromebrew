@@ -50,7 +50,7 @@ class Gstreamer < Package
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
   depends_on 'libcap'
-  depends_on 'libcurl' # R
+  depends_on 'curl' # R
   depends_on 'libde265' # R
   depends_on 'libdrm' # R
   depends_on 'libdv' # R

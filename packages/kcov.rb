@@ -22,7 +22,7 @@ class Kcov < Package
      x86_64: '35ccebb9cda52beb4cf13977483fcb4ebc6011fe0c1e52ce9be2cefb5fbd300a'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'elfutils'
   depends_on 'py3_six'
 

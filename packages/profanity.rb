@@ -22,7 +22,7 @@ class Profanity < Package
      x86_64: 'ead2d0a06e37c622913b76941c292a3b10ad500a1f75ebab45e2b08779f007bd'
   })
 
-  depends_on 'libcurl'
+  depends_on 'curl'
   depends_on 'glib'
   depends_on 'gpgme'
   depends_on 'gtk2'
