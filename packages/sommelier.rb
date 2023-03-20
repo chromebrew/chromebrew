@@ -3,21 +3,21 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230217-2'
+  version '20230217-2-llvm16'
   license 'BSD-Google'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
   git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2_armv7l/sommelier-20230217-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2_armv7l/sommelier-20230217-2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2_x86_64/sommelier-20230217-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_armv7l/sommelier-20230217-2-llvm16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_armv7l/sommelier-20230217-2-llvm16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_x86_64/sommelier-20230217-2-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8d1c8ef58af52f95406a9e33ff36d0a3f13ca44415aa05e844b40897ccc20bb9',
-     armv7l: '8d1c8ef58af52f95406a9e33ff36d0a3f13ca44415aa05e844b40897ccc20bb9',
-     x86_64: '63bd561fe46b6aff5b0124ec450d967706487d58e294998e2f35abfeefdce566'
+    aarch64: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
+     armv7l: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
+     x86_64: '7c0fd4b04a1e4a201db27641672bf95d25cb9baaf674c2805419c23f2e8acc0b'
   })
 
   depends_on 'gcc' # R
@@ -28,7 +28,7 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm' # R
+  depends_on 'llvm' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script
@@ -118,7 +118,7 @@ class Sommelier < Package
 
       system <<~BUILD
         env CC=clang CXX=clang++ \
-          meson setup #{CREW_MESON_OPTIONS.gsub('-fuse-ld=mold', '-fuse-ld=lld').gsub('-ffat-lto-objects', '')} \
+          mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-ffat-lto-objects', '')} \
           -Db_asneeded=false \
           -Db_lto=true \
           -Db_lto_mode=thin \
@@ -130,7 +130,7 @@ class Sommelier < Package
       BUILD
 
       system 'meson configure builddir'
-      system 'samu -C builddir'
+      system "mold -run #{CREW_NINJA} -C builddir"
 
       FileUtils.mkdir_p 'builddir'
       Dir.chdir('builddir') do
@@ -171,7 +171,9 @@ class Sommelier < Package
             case "$(uname -m)" in
             x86_64)
               if ! check_linux_version 4 16; then
-                MESA_LOADER_DRIVER_OVERRIDE=i965
+              :
+              # Mesa > 22.0 does not support i965
+              # MESA_LOADER_DRIVER_OVERRIDE=i965
               elif check_linux_version 5 10; then
                 MESA_LOADER_DRIVER_OVERRIDE=iris
               fi
@@ -432,7 +434,7 @@ class Sommelier < Package
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/sbin #{CREW_DEST_PREFIX}/etc/bash.d
                          #{CREW_DEST_PREFIX}/etc/env.d CREW_DEST_HOME]
     Dir.chdir('vm_tools/sommelier') do
-      system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+      system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
       Dir.chdir('builddir') do
         FileUtils.mv "#{CREW_DEST_PREFIX}/bin/sommelier", "#{CREW_DEST_PREFIX}/bin/sommelier.elf"
         FileUtils.install 'sommelier_sh', "#{CREW_DEST_PREFIX}/bin/sommelier", mode: 0o755
