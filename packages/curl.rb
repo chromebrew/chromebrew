@@ -42,7 +42,6 @@ class Curl < Package
   depends_on 'zstd' # R
 
   no_patchelf
-  conflicts_ok # Only conflict is with the older libcurl.
 
   def self.build
     system '[ -x configure ] || autoreconf -fvi'
