@@ -21,16 +21,16 @@ class Libadwaita < Package
      x86_64: 'd0e1ca917bff27d4b6356c9699d57031f6f209280ccd127fe757b4828bc554d9'
   })
 
-  depends_on 'cairo'
+  depends_on 'cairo' => :build
   depends_on 'fribidi' # R
-  depends_on 'gdk_pixbuf'
+  depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg' => :build
   depends_on 'libsass' => :build
   depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
