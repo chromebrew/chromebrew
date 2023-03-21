@@ -3,19 +3,17 @@ require 'package'
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
   homepage 'https://www.balena.io/etcher/'
-  @_ver = '1.7.3'
+  @_ver = '1.18.4'
   version @_ver
   license 'Apache-2.0'
-  compatibility 'x86_64, i686'
+  compatibility 'x86_64'
 
   source_url({
-    x86_64: "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-x64.AppImage",
-      i686: "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-ia32.AppImage"
+    x86_64: "https://github.com/balena-io/etcher/releases/download/v#{@_ver}/balenaEtcher-#{@_ver}-x64.AppImage"
   })
 
   source_sha256({
-    x86_64: 'b2432729ad79e6aa1d6292465db065b078b627c5ec6ddedea8580434088cb74f',
-      i686: 'c9a2c976f0edff0521c71b9e4e948dc6f133749cd7e60ffc3796a6743d17e841'
+    x86_64: '94022b35d6935a133508d4e27674d26ae0a20a0fcee2deaae0aea765e6ff46de'
   })
 
   no_compile_needed
@@ -33,27 +31,9 @@ class Balena_etcher < Package
   depends_on 'xhost'
   depends_on 'sommelier'
 
-  def self.build
-    etcher = <<~EOF
-      #!/bin/bash
-      xhost si:localuser:root
-      cd #{CREW_PREFIX}/share/balena-etcher
-      sudo -E LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ./AppRun "$@"
-    EOF
-    File.write('etcher.sh', etcher)
-  end
-
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/balena-etcher"
-    FileUtils.install 'etcher.sh', "#{CREW_DEST_PREFIX}/bin/etcher", mode: 0o755
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share/balena-etcher]
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/balena-etcher"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-    puts
-    puts "To get started, type 'etcher'.".lightblue
-    puts
+    FileUtils.ln_s "#{CREW_PREFIX}/share/balena-etcher/balena-etcher", "#{CREW_PREFIX}/bin/balena-etcher"
   end
 end
