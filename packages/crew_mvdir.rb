@@ -8,7 +8,7 @@ class Crew_mvdir < Package
   license 'GPL-3'
 
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
-  git_hashtag 'v0.2'
+  git_hashtag version
 
   def self.build
     system "mold -run cc -static #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
