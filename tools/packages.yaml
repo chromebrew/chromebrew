@@ -1480,6 +1480,11 @@ url: http://ftpmirror.gnu.org/ed
 activity: low
 ---
 kind: url
+name: editoconfig_core_c
+url: https://github.com/editorconfig/editorconfig-core-c/releases
+activity: medium
+---
+kind: url
 name: edge
 url: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/
 activity: high
