@@ -16,19 +16,18 @@ class R < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.2.3_x86_64/r-4.2.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1d01f36d352e2ea85eecfa30e201c5255a81faf080cea2e02d72932836185053',
-     armv7l: '1d01f36d352e2ea85eecfa30e201c5255a81faf080cea2e02d72932836185053',
-       i686: '5a8ead751ce5da6966b9b8121585c34a6b89cf1c8af32f24cc890073c8d59d93',
-     x86_64: '845b50f2d03d03e57657e0296d3beb69aaa03613c1e36ffa1698f67197121c75'
+    aarch64: 'f711a539777bb37da48892cf2742ae4541cc985e0e5d690e4a10c4b09cfbcc98',
+     armv7l: 'f711a539777bb37da48892cf2742ae4541cc985e0e5d690e4a10c4b09cfbcc98',
+       i686: 'b69271b2fe3b38f37315b685eeb023a4a6ce6f1e6cc48b762fa4cb6725cc47aa',
+     x86_64: '2a5cfece8a24b8bad17ade73b2751cf23c1c9d5e1604addce436e45740400354'
   })
 
-  # depends_on 'gfortran'       # require gfortran enabled gcc
   depends_on 'bz2' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'icu4c' # R
-  depends_on 'curl'
+  depends_on 'curl' => :build
   depends_on 'libice' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
@@ -40,15 +39,15 @@ class R < Package
   depends_on 'libxss' # R
   depends_on 'libxt' # R
   depends_on 'pango' # R
-  depends_on 'pcre2'
+  depends_on 'pcre2' => :build
   depends_on 'tcl' # R
   depends_on 'tk' # R
-  depends_on 'xdg_utils'
+  depends_on 'xdg_utils' => :build
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
   def self.build
-    @x = ARCH == 'i686' ? '--with-x' : ''
+    @x = ARCH == 'i686' ? '' : '--with-x'
     system "./configure #{CREW_OPTIONS} \
            --disable-maintainer-mode \
            --enable-R-shlib \
