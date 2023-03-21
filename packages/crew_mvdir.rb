@@ -10,6 +10,8 @@ class Crew_mvdir < Package
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
   git_hashtag version
 
+  no_zstd
+
   def self.build
     system "mold -run cc -static #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
   end
