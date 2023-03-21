@@ -3,25 +3,27 @@ require 'package'
 class Crew_mvdir < Package
   description 'Faster alternative to "rsync --remove-source-files dir1/ dir2/"'
   homepage 'https://github.com/chromebrew/crew-mvdir'
-  version '0.1'
+  version '0.2'
   compatibility 'all'
   license 'GPL-3'
 
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
-  git_hashtag 'ca2bec1fcf76394387a880f1745e57393b7a63c2'
+  git_hashtag version
+
+  no_zstd
 
   binary_url({
-    aarch64: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://github.com/chromebrew/crew-mvdir/releases/download/0.1/crew_mvdir-0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2_armv7l/crew_mvdir-0.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2_armv7l/crew_mvdir-0.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2_i686/crew_mvdir-0.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2_x86_64/crew_mvdir-0.2-chromeos-x86_64.tar.xz'
   })
 
   binary_sha256({
-    aarch64: '02c2e0a70b1ebf403a02fdb8affec4ac4b9ab1f6e8b0b99898077bbcd2d8806f',
-     armv7l: '02c2e0a70b1ebf403a02fdb8affec4ac4b9ab1f6e8b0b99898077bbcd2d8806f',
-       i686: '2ec5fd0c56e9b771a618c0e3c2795ec4d27b151836a72e9fa307d30195ba9b4e',
-     x86_64: 'b026992a3fc4b801d0799a117eabe1f725de8986a11d3c3f216823def9acd43d'
+    aarch64: 'd8a85c966d4769f7d89f9c24fa6d681bdefcff6922649eedfb697c6febe12d27',
+     armv7l: 'd8a85c966d4769f7d89f9c24fa6d681bdefcff6922649eedfb697c6febe12d27',
+       i686: '5b9657fae8a361678b3a868d486819cf7b3258ba6d4734d20f9a0ac8e9a5ad9b',
+     x86_64: 'd02fa43e4f44e739222b8bd04c12fc0b479cc9968a904781d7fc306172786c81'
   })
 
   def self.build

@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.32.1'
+CREW_VERSION = '1.32.2'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -139,7 +139,7 @@ CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                    end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
-CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR'] != '0'
+CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR'].eql?('1')
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
 CREW_USE_CURL = ENV['CREW_USE_CURL'].eql?('1')
