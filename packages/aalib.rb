@@ -3,30 +3,44 @@ require 'package'
 class Aalib < Package
   description 'AA means Ascii Art - the AAlib (ascii art GFX library), BB (audiovisual demonstration for your terminal), aview (image browser/animation player), AAvga (SVGAlib wrapper for AA-lib), ttyquake (text mode quake), aa3d (random dot stereogram generator)...'
   homepage 'https://sourceforge.net/projects/aa-project/'
-  version '1.4rc5-1'
+  version '1.4p5-50'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/aa-project/aa-lib/1.4rc5/aalib-1.4rc5.tar.gz'
-  source_sha256 'fbddda9230cf6ee2a4f5706b4b11e2190ae45f5eda1f0409dc4f99b35e0a70ee'
+  source_url 'https://salsa.debian.org/debian/aalib.git'
+  git_hashtag "debian/#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_armv7l/aalib-1.4rc5-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_armv7l/aalib-1.4rc5-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_i686/aalib-1.4rc5-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4rc5-1_x86_64/aalib-1.4rc5-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4p5-50_armv7l/aalib-1.4p5-50-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4p5-50_armv7l/aalib-1.4p5-50-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4p5-50_i686/aalib-1.4p5-50-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aalib/1.4p5-50_x86_64/aalib-1.4p5-50-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '755e06e37eb67e35e25001426a69b6549160aae9262411afbac6435dcd2bc3fb',
-     armv7l: '755e06e37eb67e35e25001426a69b6549160aae9262411afbac6435dcd2bc3fb',
-       i686: '5c63962cd96ef7a0ac7c364fa58634719857959191548e3853ab2c7bc51aabc9',
-     x86_64: '51442b518e9d817078e7bd677667847d363bcf7bc47616331e76b2150ccf28f9'
+    aarch64: '6922a2f976e1b20143edc66ae9db0dc7adf7642f00018fdff58abc20a3a1fad5',
+     armv7l: '6922a2f976e1b20143edc66ae9db0dc7adf7642f00018fdff58abc20a3a1fad5',
+       i686: 'c46022b194d9d561fbc527dd54ff6ce01312f2e8d7d10ae54405616dd6d87a8c',
+     x86_64: 'c5817e248feb5caf3b2a3bf47d1fab23d2482646cf3eb13de713ccb99616d367'
   })
 
-  depends_on 'libx11'
+  depends_on 'glibc' # R
+  depends_on 'libbsd' # R
+  depends_on 'libmd' # R
+  depends_on 'libx11' # R
+  depends_on 'libxau' # R
+  depends_on 'libxcb' # R
+  depends_on 'libxdmcp' # R
+  depends_on 'slang' # R
   depends_on 'xorg_proto' => :build
 
+  def self.patch
+    File.foreach 'debian/patches/series' do |patch|
+      system "patch -Np1 -i debian/patches/#{patch}" if File.file?(patch)
+    end
+  end
+
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system 'autoreconf -fiv'
+    system "./configure #{CREW_OPTIONS} \
             --with-x \
             --with-x11-driver \
             --with-slang-driver"
@@ -35,6 +49,5 @@ class Aalib < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mv "#{CREW_DEST_PREFIX}/info/", "#{CREW_DEST_PREFIX}/share/"
   end
 end
