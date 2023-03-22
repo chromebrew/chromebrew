@@ -102,11 +102,20 @@ function curl () {
 case "${ARCH}" in
 "i686"|"x86_64"|"armv7l"|"aarch64")
   LIB_SUFFIX=
-  [ "${ARCH}" == "x86_64" ] && LIB_SUFFIX='64'
+  # See https://superuser.com/a/1369875
+  # If /bin/bash is 64-bit, then set LIB_SUFFIX, as this is true on both
+  # x86_64 and aarch64 userspace
+  # shellcheck disable=SC2046
+  [ $(od -An -t x1 -j 4 -N 1  /bin/bash) == 02 ] && LIB_SUFFIX='64'
+  if [[ $LIB_SUFFIX == '64' ]] && [[ $ARCH == 'aarch64' ]]; then
+    echo_error "Your device is not supported by Chromebrew yet :/"
+    exit 1
+  fi
   ;;
 *)
   echo_error "Your device is not supported by Chromebrew yet :/"
-  exit 1;;
+  exit 1
+  ;;
 esac
 
 echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
