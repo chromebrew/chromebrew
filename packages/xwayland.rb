@@ -3,24 +3,22 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '22.1.8'
+  @_ver = '23.1.0'
   version @_ver
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xwayland-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_armv7l/xwayland-22.1.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_armv7l/xwayland-22.1.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_i686/xwayland-22.1.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/22.1.8_x86_64/xwayland-22.1.8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.1.0_armv7l/xwayland-23.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.1.0_armv7l/xwayland-23.1.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.1.0_x86_64/xwayland-23.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd38eb4ef182e0ce88625dea2c15ba0bf424d469f535ef7ef8bfd653417d66d5b',
-     armv7l: 'd38eb4ef182e0ce88625dea2c15ba0bf424d469f535ef7ef8bfd653417d66d5b',
-       i686: 'd218eff809c0afaa67bff4b3ae237110d7b7cd1e0d347f28d3e9429326b50e9f',
-     x86_64: '98166b0c68fc229bdc453c333dc1ae9ca4b6c603cd1c00a7a0e144bae5b5c84f'
+    aarch64: 'da0937a3e667ed805111e88ff625bfb4e24d2322a872e9b228cb4a655e109c0e',
+     armv7l: 'da0937a3e667ed805111e88ff625bfb4e24d2322a872e9b228cb4a655e109c0e',
+     x86_64: '33c4a4374ddd0a141dd011f667ec64309e3f293d4c1ade28ac9c533c5a8e4112'
   })
 
   no_env_options
@@ -56,19 +54,19 @@ class Xwayland < Package
   depends_on 'libglvnd' # R
 
   def self.build
-    system 'meson setup build'
-    system "meson configure #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
               -Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxcsecurity=true \
               -Dglamor=true \
               build"
-    system 'ninja -C build'
+    system 'meson configure build'
+    system "#{CREW_NINJA} -C build"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C build install"
     # Get these from xorg_server package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
     @deletefiles.each do |f|
