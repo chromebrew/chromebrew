@@ -105,7 +105,8 @@ case "${ARCH}" in
   # See https://superuser.com/a/1369875
   # If /bin/bash is 64-bit, then set LIB_SUFFIX, as this is true on both
   # x86_64 and aarch64 userspace
-  [ $(od -An -t x1 -j 4 -N 1  /bin/bash) == "02" ] && LIB_SUFFIX='64'
+  # shellcheck disable=SC2046
+  [ $(od -An -t x1 -j 4 -N 1  /bin/bash) == 02 ] && LIB_SUFFIX='64'
   if [[ $LIB_SUFFIX == '64' ]] && [[ $ARCH == 'aarch64' ]]; then
     echo_error "Your device is not supported by Chromebrew yet :/"
     exit 1
