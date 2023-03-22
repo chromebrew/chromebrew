@@ -19,7 +19,7 @@ class Coreutils < Package
     aarch64: '39540783dbce98b48122fdba187de6a14622fdeec7bc6ceffe399e280379ec4f',
      armv7l: '39540783dbce98b48122fdba187de6a14622fdeec7bc6ceffe399e280379ec4f',
        i686: '0745b0227a7f39f3958403cb116974a11189dccc6953a23e2919768e83f769ee',
-     x86_64: '354fc8cfaba39b4bc37cde938ea8bea330d242c3e51cad2835f78d1d4834a829'
+     x86_64: 'c6c2bd27e42c071f17bf7499618a6c4defc24ec2b72aebc3c6ccb0e864bf3948'
   })
 
   depends_on 'libcap' # R
