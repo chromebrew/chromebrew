@@ -20,21 +20,16 @@ class Psmisc < Package
     aarch64: 'd84be50b9c1f15bbd6e547e3b5b323e3218c9e02cd348792afce0106108e09de',
      armv7l: 'd84be50b9c1f15bbd6e547e3b5b323e3218c9e02cd348792afce0106108e09de',
        i686: 'f833aae432564a90811d6196b0353ddeca6a3c818532d05fd161731deb3d960d',
-     x86_64: 'c11276bfd53756012bf7375dcf4a7add56799d29456ad78a9ec0442bfddc9365'
+     x86_64: '29a2b3ed12ece0f873cf335f6bcf5ace47a10ffe26e7582cde0ab451c07c8532'
   })
 
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 
-  def self.patch
-    system "sed -i 's,<curses.h,<ncurses/curses.h,g' src/pstree.c"
-    system "sed -i 's,<term.h,<ncurses/term.h,g' src/pstree.c"
-  end
-
   def self.build
     system './autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
+    system "CFLAGS+=' -I#{CREW_PREFIX}/include/ncurses' ./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
