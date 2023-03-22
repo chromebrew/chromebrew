@@ -17,10 +17,10 @@ class Ffmpeg < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_x86_64/ffmpeg-6.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4d00d3e3173677b0bb3f3e532a1fbf2c9eae989c75cfe32f3e01f8ab07249c83',
-     armv7l: '4d00d3e3173677b0bb3f3e532a1fbf2c9eae989c75cfe32f3e01f8ab07249c83',
+    aarch64: '8791502edf8e591d920acad5ec0b1a43119bfdfc9e56b3b3723d1e016a88ffe5',
+     armv7l: '8791502edf8e591d920acad5ec0b1a43119bfdfc9e56b3b3723d1e016a88ffe5',
        i686: '655d767407057f45e6dd2bdd16066d9a1fa6f1bd60769a7903c4d1833999cc02',
-     x86_64: '13408e878e46651d0b14047e53b8d99563ac1bbab80daf8d6a751481579c6a8a'
+     x86_64: '64b02fc207ed0fb44cf6649fed59fe0f1858b43fae1abc3ed86af8ed33927d90'
   })
 
   depends_on 'avisynthplus' # ?
@@ -53,6 +53,7 @@ class Ffmpeg < Package
   depends_on 'libfdk_aac' # R
   depends_on 'libiec61883' # R
   depends_on 'libjpeg' # R
+  depends_on 'libjxl' # R
   depends_on 'libmfx' if ARCH == 'i686' && CREW_IS_INTEL # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -165,6 +166,7 @@ class Ffmpeg < Package
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
+        --enable-libjxl \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
