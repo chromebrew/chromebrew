@@ -3,23 +3,21 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.0.0-1'
+  version '10.01.0'
   license 'AGPL-3+'
-  compatibility 'all'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostpdl-10.0.0.tar.xz'
-  source_sha256 '8f2b7941f60df694b4f5c029b739007f7c4e0d43858471ae481e319a967d5d8b'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10010/ghostpdl-10.01.0.tar.gz'
+  source_sha256 '8262db43ad84f8822e1dcfa1443d91342348f7cb0fa0e2a3bede6bab0eff6c7b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_armv7l/ghostscript-10.0.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_armv7l/ghostscript-10.0.0-1-chromeos-armv7l.tar.zst',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_i686/ghostscript-10.0.0-1-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.0.0-1_x86_64/ghostscript-10.0.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.01.0_armv7l/ghostscript-10.01.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.01.0_armv7l/ghostscript-10.01.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.01.0_x86_64/ghostscript-10.01.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b238eae744d34ddb16c3b8d460bf6012021deadf690ce23a08449c8c0d5c583f',
-     armv7l: 'b238eae744d34ddb16c3b8d460bf6012021deadf690ce23a08449c8c0d5c583f',
-    i686: '858a1f11a7c3977e3e42bb0179b1964a8671196270f9cd1f3a02b3dee735aed9',
-  x86_64: '384a4c40c58a46bc7c7610fbd883bb532d0da7c83ff2cf9858aa51f989e4525d'
+    aarch64: '9612b6b1e4673ee90538b4dd50c1c87ebc0b4518cd64879f402ee2c5473979e9',
+     armv7l: '9612b6b1e4673ee90538b4dd50c1c87ebc0b4518cd64879f402ee2c5473979e9',
+     x86_64: '42a52eaa65b2394964d8e2783a4ec7e9adb7bd399f13825179b874590eebcc59'
   })
 
   depends_on 'at_spi2_core' # R
@@ -43,15 +41,17 @@ class Ghostscript < Package
   depends_on 'libpng' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R
+  depends_on 'libvdpau' # R
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxt' # R
+  depends_on 'neon' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'zlibpkg' # R
 
   def self.patch
-    system 'rm -r cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib'
+    FileUtils.rm_rf %w[cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib]
   end
 
   def self.build
@@ -59,6 +59,7 @@ class Ghostscript < Package
     system 'filefix'
     @x = ARCH == 'i686' ? '--with-x' : ''
     system "./configure #{CREW_OPTIONS} \
+      --disable-hidden-visibility \
       --disable-compile-inits \
       --enable-dynamic \
       --enable-fontconfig \
@@ -78,7 +79,7 @@ class Ghostscript < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system "make soinstall DESTDIR=#{CREW_DEST_DIR}" # Install libgs
-    FileUtils.cp_r Dir.glob('./base/*.h'), "#{CREW_DEST_PREFIX}/include/ghostscript"
+    FileUtils.cp_r Dir['./base/*.h'], "#{CREW_DEST_PREFIX}/include/ghostscript"
     FileUtils.ln_sf 'ghostscript', "#{CREW_DEST_PREFIX}/include/ps"
   end
 end
