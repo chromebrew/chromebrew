@@ -3,32 +3,31 @@ require 'package'
 class Libinih < Package
   description 'A simple .INI file parser written in C'
   homepage 'https://github.com/benhoyt/inih'
-  @_ver = '52'
-  version @_ver
+  version 'r56'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/benhoyt/inih/archive/r#{@_ver}.tar.gz"
-  source_sha256 '439cff9ce9a8afc52d08772ac3e93b3cecd79c7707f871fb4534fb3a48201880'
+  source_url 'https://github.com/benhoyt/inih/archive/r56.tar.gz'
+  source_sha256 '4f2ba6bd122d30281a8c7a4d5723b7af90b56aa828c0e88256d7fceda03a491a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/52_armv7l/libinih-52-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/52_armv7l/libinih-52-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/52_i686/libinih-52-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/52_x86_64/libinih-52-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/r56_armv7l/libinih-r56-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/r56_armv7l/libinih-r56-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/r56_i686/libinih-r56-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinih/r56_x86_64/libinih-r56-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '813f8831babc7ab96bc4ec618b3b702e09906c97f7d319dc24e7cb5cf9b517a9',
-      armv7l: '813f8831babc7ab96bc4ec618b3b702e09906c97f7d319dc24e7cb5cf9b517a9',
-        i686: '652b3f23a2e720dcc915894a8c335efa08b664782c667331e7fea40f41debfb6',
-      x86_64: '81bc105c7144a03bb7a81a5997925fa67973c62c8598730586942950d40098b4'
+    aarch64: '343920e4395e4796ac4b59476808427c9a967490f8693c9be68a02706c3591d2',
+     armv7l: '343920e4395e4796ac4b59476808427c9a967490f8693c9be68a02706c3591d2',
+       i686: '55670d4dd11e48e1e4728596ceec33cc6d25fe4ec371cdfd2e2ef53cd483401a',
+     x86_64: '04d8b95f7242efe441d26b228e7481af59768cfdef9211cb0a74792b97b91511'
   })
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
-    -Ddefault_library=both \
-    -Ddistro_install=true \
-    -Dwith_INIReader=true \
-    builddir"
+      -Ddefault_library=both \
+      -Ddistro_install=true \
+      -Dwith_INIReader=true \
+      builddir"
     system 'meson configure builddir'
     system 'ninja -C builddir'
   end
