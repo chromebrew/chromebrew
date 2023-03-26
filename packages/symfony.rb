@@ -4,7 +4,7 @@ class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
   version '5.5.2'
-  license 'Symfony-cli-EULA'
+  license 'AGPL-3.0'
   compatibility 'all'
   source_url({
     aarch64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.5.2/symfony-cli_linux_armv6.tar.gz',

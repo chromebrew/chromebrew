@@ -7822,7 +7822,7 @@ activity: low
 ---
 kind: url
 name: symfony
-url: https://github.com/symfony/cli/releases/
+url: https://github.com/symfony-cli/symfony-cli/releases
 activity: high
 ---
 kind: url
