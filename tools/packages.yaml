@@ -4741,6 +4741,11 @@ url: http://download.savannah.gnu.org/releases/libunwind
 activity: none
 ---
 kind: url
+name: liburcu
+url: https://lttng.org/files/urcu/
+activity: medium
+---
+kind: url
 name: liburing
 url: https://github.com/axboe/liburing/releases
 activity: low
