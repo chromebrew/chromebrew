@@ -3,23 +3,23 @@ require 'package'
 class Dnsmasq < Package
   description 'Lightweight, easy to configure DNS forward ,TFTP server and DHCP server'
   homepage 'http://www.thekelleys.org.uk/dnsmasq/doc.html'
-  version '2.80'
+  version '2.89'
   license 'GPL-2 or GPL-3'
   compatibility 'all'
-  source_url 'http://thekelleys.org.uk/dnsmasq/dnsmasq-2.80.tar.xz'
-  source_sha256 'cdaba2785e92665cf090646cba6f94812760b9d7d8c8d0cfb07ac819377a63bb'
+  source_url 'http://thekelleys.org.uk/dnsmasq/dnsmasq-2.89.tar.xz'
+  source_sha256 '02bd230346cf0b9d5909f5e151df168b2707103785eb616b56685855adebb609'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_armv7l/dnsmasq-2.80-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_armv7l/dnsmasq-2.80-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_i686/dnsmasq-2.80-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.80_x86_64/dnsmasq-2.80-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.89_armv7l/dnsmasq-2.89-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.89_armv7l/dnsmasq-2.89-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.89_i686/dnsmasq-2.89-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dnsmasq/2.89_x86_64/dnsmasq-2.89-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cc8c362e20af19a30faf76355ca10a3f3ec856004008c2dd0272e40957fdfc62',
-     armv7l: 'cc8c362e20af19a30faf76355ca10a3f3ec856004008c2dd0272e40957fdfc62',
-       i686: 'b775dbaf13731edd9875c102ac27d5887662140640258e17929aeb31030411ba',
-     x86_64: '08436672bcc06753874f043ce26f5d35fb8a1588a0bf8b05d17c638cbd83394c'
+    aarch64: 'e798ec6969f5ec63d9975efbeef5f82d537fc8349f95b4151d07dd19de9792e2',
+     armv7l: 'e798ec6969f5ec63d9975efbeef5f82d537fc8349f95b4151d07dd19de9792e2',
+       i686: 'a73b32027305d5d9d28331624f95272c47675b25fe0be8b65ff51a3e59b0a442',
+     x86_64: 'aa5c65411792ffc97c989e8b3f5e7447e12a68f7c6c992e4e4e747236e626845'
   })
 
   def self.build
