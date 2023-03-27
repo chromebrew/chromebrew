@@ -1,36 +1,32 @@
 require 'package'
 
 class Faad2 < Package
-  description 'ISO AAC audio decoder'
-  homepage 'https://github.com/knik0/faad2'
-  @_ver = '2.10.0'
-  version @_ver
-  license 'faad2'
+  description 'Freeware Advanced Audio (AAC) Decoder'
+  homepage 'https://faac.sourceforge.net/'
+  version '2.10.1'
+  license 'GPL2 custom'
   compatibility 'all'
-  source_url 'https://github.com/knik0/faad2/archive/2_10_0.tar.gz'
-  source_sha256 '0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb'
+  source_url 'https://github.com/knik0/faad2/archive/2.10.1.tar.gz'
+  source_sha256 '4c16c71295ca0cbf7c3dfe98eb11d8fa8d0ac3042e41604cfd6cc11a408cf264'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_armv7l/faad2-2.10.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_armv7l/faad2-2.10.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_i686/faad2-2.10.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.0_x86_64/faad2-2.10.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_armv7l/faad2-2.10.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_armv7l/faad2-2.10.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_i686/faad2-2.10.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_x86_64/faad2-2.10.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '61e4cfcd34bbedcb9cb3abea2a5bb73f57027319665c96eade68f0cf80e913e0',
-     armv7l: '61e4cfcd34bbedcb9cb3abea2a5bb73f57027319665c96eade68f0cf80e913e0',
-       i686: 'e816286dbfe694b8a6b5c1014772aa14b664c64fe76f759f218142a57d31596a',
-     x86_64: 'b88cde37bb9e6cbf2a60c4b4249741becf3a8cf5c4139bdbd11bd56d6079f3d9'
+    aarch64: '389a358f4514844f9ba7d50d7472b34e403707fb195dd8075e6dd2d0c3178d50',
+     armv7l: '389a358f4514844f9ba7d50d7472b34e403707fb195dd8075e6dd2d0c3178d50',
+       i686: 'b0ca855b9f06e9bd4f3d5ec04877605f93b3a2daac4e930235bb10e2996759a8',
+     x86_64: '9c9290c676d3c77a86b0f45e1b4cdd6aa32cd75c149c260a30e281cdd58870ec'
   })
 
-  def self.patch
-    system 'filefix'
-  end
+  depends_on 'glibc'
 
   def self.build
-    system 'autoreconf -vfi'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure #{CREW_OPTIONS}"
+    system './bootstrap'
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
