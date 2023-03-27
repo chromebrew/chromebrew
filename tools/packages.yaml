@@ -2595,6 +2595,11 @@ url: https://golang.org/doc/install/source#bootstrapFromSource
 activity: none
 ---
 kind: url
+name: go_containerregistry
+url: https://github.com/google/go-containerregistry/releases
+activity: medium
+---
+kind: url
 name: go_fetch
 url: https://github.com/gruntwork-io/fetch/releases
 activity: medium
