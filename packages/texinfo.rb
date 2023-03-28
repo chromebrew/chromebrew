@@ -3,23 +3,23 @@ require 'package'
 class Texinfo < Package
   description 'Texinfo is the official documentation format of the GNU project.'
   homepage 'https://www.gnu.org/software/texinfo/'
-  version '7.0'
+  version '7.0.3'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-7.0.tar.xz'
-  source_sha256 '20744b82531ce7a04d8cee34b07143ad59777612c3695d5855f29fba40fbe3e0'
+  source_url 'https://ftpmirror.gnu.org/texinfo/texinfo-7.0.3.tar.xz'
+  source_sha256 '74b420d09d7f528e84f97aa330f0dd69a98a6053e7a4e01767eed115038807bf'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0_armv7l/texinfo-7.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0_armv7l/texinfo-7.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0_i686/texinfo-7.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0_x86_64/texinfo-7.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0.3_armv7l/texinfo-7.0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0.3_armv7l/texinfo-7.0.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0.3_i686/texinfo-7.0.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.0.3_x86_64/texinfo-7.0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b2a728d4411d0f6413b4799db055b2a86d34de21b4a3fab0b63816a75e5a1c0f',
-     armv7l: 'b2a728d4411d0f6413b4799db055b2a86d34de21b4a3fab0b63816a75e5a1c0f',
-       i686: '5d2bc0b29e4066dfb002a618089cefe8c438635e45e9cce523fd3da6691c18a8',
-     x86_64: '2c5c0166ad926b0fbafed07ae06b44635bba753fdc569108d6f07dbfb314a7ed'
+    aarch64: '477c405025570b2e6b723af86c5931b0d6e5e1df424d4d0e712ea0bd46c84aac',
+     armv7l: '477c405025570b2e6b723af86c5931b0d6e5e1df424d4d0e712ea0bd46c84aac',
+       i686: 'eabbfd13da1d8b08bfb0f06c729054db098ed708b9443410432250fc9a660697',
+     x86_64: 'd9fa00e921ebef6d30fe29005b404656c1b698e97b5a46d10408d1ebf71a5a4f'
   })
 
   depends_on 'glibc' # R
@@ -42,11 +42,11 @@ class Texinfo < Package
     system 'make'
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
   def self.check
     system 'make', 'check'
+  end
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
