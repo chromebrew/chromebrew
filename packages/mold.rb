@@ -54,4 +54,9 @@ class Mold < Package
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.install 'moldenv', "#{CREW_DEST_PREFIX}/etc/env.d/mold", mode: 0o644
   end
+
+  def self.postinstall
+    puts "\nTo finish the installation, execute the following:".lightblue
+    puts "source ~/.bashrc\n".lightblue
+  end
 end
