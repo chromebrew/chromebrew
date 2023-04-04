@@ -6,29 +6,30 @@ require 'package'
 class Uutils_coreutils < Package
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.16'
+  version '0.0.18'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.16_armv7l/uutils_coreutils-0.0.16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.16_armv7l/uutils_coreutils-0.0.16-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.16_i686/uutils_coreutils-0.0.16-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.16_x86_64/uutils_coreutils-0.0.16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.18_armv7l/uutils_coreutils-0.0.18-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.18_armv7l/uutils_coreutils-0.0.18-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.18_i686/uutils_coreutils-0.0.18-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.18_x86_64/uutils_coreutils-0.0.18-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '819bf74dc4d1cdbe7fb45cb711b73f2494c14a7779644905a8b50e8bc8739451',
-     armv7l: '819bf74dc4d1cdbe7fb45cb711b73f2494c14a7779644905a8b50e8bc8739451',
-       i686: '9b6f7f69737350b817fb88ac97f918f8db25ea1418f045446a63783f99c8db7d',
-     x86_64: '082a81168509e3c1a0ff43f8f89e82fb46f4e2c2aa89d3dd5a53a16a7317b8a4'
+    aarch64: '09bf7c9ec7da786615beafa0a6f9fa93963ac845eecfc0a71ed38f8c4e3ad45a',
+     armv7l: '09bf7c9ec7da786615beafa0a6f9fa93963ac845eecfc0a71ed38f8c4e3ad45a',
+       i686: '75fa951d5ac2fedbb34b07d523e666fde68f8c3161543f93b6cd1ada366b9157',
+     x86_64: '931033384608415a641f1dd2590510610fec578b416f711992237b0aa4aa40a1'
   })
 
   depends_on 'rust' => :build
   depends_on 'sphinx' => :build
   depends_on 'gcc' # R
   depends_on 'glibc' # R
+
   conflicts_ok # conflicts with coreutils
 
   def self.preflight
