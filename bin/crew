@@ -689,7 +689,7 @@ def package_installed?(pkgName, componentName = 'all', output_if_not_installed =
   # that means all components were installed
   all_components_installed = File.exist?("#{CREW_META_PATH}/#{pkgName}.filelist")
 
-  unless all_components_installed || \
+  unless all_components_installed ||
          @device[:installed_packages].select {|pkg| pkg[:name] == pkgName } [0][:installedComponents]&.include?(componentName)
 
     puts "#{pkgName}: component #{componentName} isn't installed.".lightred if output_if_not_installed
