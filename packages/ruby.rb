@@ -62,7 +62,7 @@ class Ruby < Package
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system 'make check || true' unless RUBY_VERSION == version
+    system 'make check || true' unless version == RUBY_VERSION
   end
 
   def self.install
