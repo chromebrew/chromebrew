@@ -16,9 +16,9 @@ class Wayland < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.22.0_x86_64/wayland-1.22.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '78e0b1c7e54a4af3caa20151692bc1370e8925106c1673455bd7e8f12eb380ca',
-     armv7l: '78e0b1c7e54a4af3caa20151692bc1370e8925106c1673455bd7e8f12eb380ca',
-     x86_64: '757e55aabee653519af9d4b01888ddbb6a4bbb024be79749322f36b2dfbcf636'
+    aarch64: '72e4522abfc219a7f20f7894dcbeb3efe1f630ddda000131df9ba827e5547d13',
+     armv7l: '72e4522abfc219a7f20f7894dcbeb3efe1f630ddda000131df9ba827e5547d13',
+     x86_64: '1fc209aa34fa165f41a6100dad83c352c5bfb5662bc37b279ce6091052edc90b'
   })
 
   depends_on 'expat' # R
@@ -32,14 +32,11 @@ class Wayland < Package
   def self.build
     File.write 'waylandenv', <<~WAYLAND_ENV_EOF
       # environment set-up for Chrome OS built-in Wayland server
-      set -a
-
       : "${XDG_RUNTIME_DIR:=/var/run/chrome}"
       : "${XDG_SESSION_TYPE:=wayland}"
       : "${WAYLAND_DISPLAY:=wayland-0}"
       : "${CLUTTER_BACKEND:=wayland}"
       : "${GDK_BACKEND:=wayland}"
-      set +a
     WAYLAND_ENV_EOF
     system "meson setup #{CREW_MESON_OPTIONS} -Ddocumentation=false builddir"
     system 'meson configure builddir'
