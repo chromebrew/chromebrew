@@ -3,7 +3,7 @@ require 'package'
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
-  @_ver = '1.5.4'
+  @_ver = '1.5.5'
   version @_ver
   license 'BSD or GPL-2'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Zstd < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.4_armv7l/zstd-1.5.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.4_armv7l/zstd-1.5.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.4_i686/zstd-1.5.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.4_x86_64/zstd-1.5.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_armv7l/zstd-1.5.5-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_armv7l/zstd-1.5.5-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_i686/zstd-1.5.5-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_x86_64/zstd-1.5.5-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
-    aarch64: '85cdfe9c3242874f74cdbc31ed8d07a33d1d9e0fc593317e88d36e2b1f1524e1',
-     armv7l: '85cdfe9c3242874f74cdbc31ed8d07a33d1d9e0fc593317e88d36e2b1f1524e1',
-       i686: '077b2e269304567c0a413bc636b789130d3f549ec9272b4040b89ee81231482a',
-     x86_64: 'd3aab25ec7be12f784474f288ebc6818051f8beb5cddf8580e1d5a35ca0b7e4f'
+    aarch64: 'dff0cc50967894c3ad9876ff05a4d77c9eab3f5addaeaab5a17a1434965d9405',
+     armv7l: 'dff0cc50967894c3ad9876ff05a4d77c9eab3f5addaeaab5a17a1434965d9405',
+       i686: 'ea977e70ac582248beacc24191173b105ab220a330d53dc8aff23003f6242d5e',
+     x86_64: '94355516d3bf8a75b4197d5c146d89ae7f1dae7f5e9042c2562c538bc48fda59'
   })
 
   depends_on 'glibc' # R
