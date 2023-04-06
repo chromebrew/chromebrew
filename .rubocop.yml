@@ -176,6 +176,9 @@ Style/NumericLiterals:
 Style/RedundantCapitalW:
   Enabled: false
 
+Style/RedundantLineContinuation:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 
