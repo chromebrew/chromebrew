@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.76.0'
+  @_ver = '2.76.1'
   version @_ver
   license 'LGPL-2.1'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Glib < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.0_armv7l/glib-2.76.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.0_armv7l/glib-2.76.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.0_i686/glib-2.76.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.0_x86_64/glib-2.76.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.1_armv7l/glib-2.76.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.1_armv7l/glib-2.76.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.1_i686/glib-2.76.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.1_x86_64/glib-2.76.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4cf42a0a1cafa5e90770767b47ae1c017b2d5263e843cf2b764f1c62140f308a',
-     armv7l: '4cf42a0a1cafa5e90770767b47ae1c017b2d5263e843cf2b764f1c62140f308a',
-       i686: '98ac44357d9dc5e09dac89451de90e5abb18e3a33d7a6474f7cb926b974b1bbc',
-     x86_64: 'dec2b47aa6487b723e87859a58d77e8c7242a96e56a3d3b597d2b53f2f62b131'
+    aarch64: '4de956e508a942e13d352e31dea62a0cb772dba9670d0cbf8ccd911735b581cb',
+     armv7l: '4de956e508a942e13d352e31dea62a0cb772dba9670d0cbf8ccd911735b581cb',
+       i686: 'c1a22da7456ff75fd39dd5d2d313ff4163989a7d25e573ac91b262f8b9f77f62',
+     x86_64: 'e599c1d0e64f366ca5e3ba9bc03e1462651c60fdf5ff9b9a989a4c1c5821b1ba'
   })
 
   depends_on 'elfutils' # R
@@ -31,6 +31,7 @@ class Glib < Package
   depends_on 'util_linux' # R
   depends_on 'zlibpkg' # R
   depends_on 'pcre2' # R
+  depends_on 'gcc' # R
 
   no_strip if %w[aarch64 armv7l].include? ARCH
   gnome
