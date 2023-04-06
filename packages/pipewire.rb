@@ -8,7 +8,7 @@ class Pipewire < Package
           elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
             '0.3.60'
           else
-            '0.3.65'
+            '0.3.68'
           end
   version @_ver
   license 'LGPL-2.1+'
@@ -36,14 +36,14 @@ class Pipewire < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.65_armv7l/pipewire-0.3.65-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.65_armv7l/pipewire-0.3.65-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.65_x86_64/pipewire-0.3.65-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.68_armv7l/pipewire-0.3.68-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.68_armv7l/pipewire-0.3.68-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.68_x86_64/pipewire-0.3.68-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '6a67e384a6beadaa6884732609d4e3aa8e4067f4e46d7e823358494fa804d5e9',
-       armv7l: '6a67e384a6beadaa6884732609d4e3aa8e4067f4e46d7e823358494fa804d5e9',
-       x86_64: '26dd5457a4c334f87f038108c30db60b7e8de0f5d7259fe5452bef3a60f73bbc'
+      aarch64: '31bff6a96b4590ec5daa461933d77c0dae2d138e37ccd659c8b857ce3d77b804',
+       armv7l: '31bff6a96b4590ec5daa461933d77c0dae2d138e37ccd659c8b857ce3d77b804',
+       x86_64: '865bd2cb8ed938a1d6efce427ed07090d2191540963ae6fee2623c589c6d56f5'
     })
   end
 
@@ -80,10 +80,10 @@ class Pipewire < Package
       -Dvolume=auto \
       builddir"
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end
