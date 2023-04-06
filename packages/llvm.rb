@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  @_ver = '16.0.0'
+  @_ver = '16.0.1'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0_armv7l/llvm-16.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0_armv7l/llvm-16.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0_i686/llvm-16.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.0_x86_64/llvm-16.0.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_armv7l/llvm-16.0.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_armv7l/llvm-16.0.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_i686/llvm-16.0.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_x86_64/llvm-16.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '38e91738735c8a9ca037d14b61f62da7179902fbf2e2207f45680a38ba4c3fa8',
-     armv7l: '38e91738735c8a9ca037d14b61f62da7179902fbf2e2207f45680a38ba4c3fa8',
-       i686: '568c97dc87d275bb27e88d34820ed45c271628650fe10cba6de4ba83af68f092',
-     x86_64: '67acc38ccd618a2f91693e6e39394588a0eeba6a3359274c7a24d4f9188b8e53'
+    aarch64: '9dd363e6a64b95fb411a1db0afd4878c866208eb6d48def619e1cb91f3f2c58f',
+     armv7l: '9dd363e6a64b95fb411a1db0afd4878c866208eb6d48def619e1cb91f3f2c58f',
+       i686: '564b6c5add2680f3267070a85a7ff34790c2ac690d2bd43489d9494609726f38',
+     x86_64: '2eb8ece4fe2540073bb2beb5011b9e3023b32d881a10fb660e81fc56556ec46f'
   })
 
   depends_on 'ocaml' => :build
@@ -124,14 +124,16 @@ cxx_sys=#{CREW_PREFIX}/include/c++/${version}
 cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
 gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
 clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} \"$@\"' > builddir/clc++"
-      system "LLVM_IAS=1 PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin LD=ld.lld \
-            cmake -B builddir -G Ninja \
+
+      system "cmake -B builddir -G Ninja llvm \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_C_FLAGS='#{@ARCH_C_LTO_FLAGS}' \
             -DCMAKE_CXX_COMPILER=$(which clang++) \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
@@ -157,16 +159,15 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cx
             -DLLVM_ENABLE_RTTI=ON \
             -DLLVM_ENABLE_RUNTIME=all \
             -DLLVM_ENABLE_TERMINFO=ON \
+            -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DLLVM_INSTALL_UTILS=ON \
             -DLLVM_LIBDIR_SUFFIX='#{CREW_LIB_SUFFIX}' \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DLLVM_OPTIMIZED_TABLEGEN=ON \
             -DLLVM_TARGETS_TO_BUILD='#{LLVM_TARGETS_TO_BUILD}' \
             -DOPENMP_ENABLE_LIBOMPTARGET=OFF \
-            -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DPYTHON_EXECUTABLE=$(which python3) \
-            -Wno-dev \
-            llvm"
+            -Wno-dev"
     end
     system 'mold -run samu -C builddir'
   end
