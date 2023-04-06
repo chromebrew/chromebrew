@@ -3,31 +3,32 @@ require 'package'
 class Mediainfo < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'http://mediaarea.net/en/MediaInfo'
-  version '22.09'
+  version '23.03'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://mediaarea.net/download/binary/mediainfo/22.09/MediaInfo_CLI_22.09_GNU_FromSource.tar.bz2'
-  source_sha256 'cbeb09e63d77e10d74ff5ee3c4955f7ff848796f506d64cbed3d6e828632d52b'
+  source_url 'https://mediaarea.net/download/binary/mediainfo/23.03/MediaInfo_CLI_23.03_GNU_FromSource.tar.bz2'
+  source_sha256 '1c6692bf146ee107ee224af20c28ed5acc6879a8584be51914c4f212d56fe205'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/22.09_armv7l/mediainfo-22.09-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/22.09_armv7l/mediainfo-22.09-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/22.09_i686/mediainfo-22.09-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/22.09_x86_64/mediainfo-22.09-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/23.03_armv7l/mediainfo-23.03-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/23.03_armv7l/mediainfo-23.03-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/23.03_i686/mediainfo-23.03-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo/23.03_x86_64/mediainfo-23.03-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c9f8c08e3b443beea717e7a709b799930f3f68188e17c232b952bc1e4920b955',
-     armv7l: 'c9f8c08e3b443beea717e7a709b799930f3f68188e17c232b952bc1e4920b955',
-       i686: '5e3d9d17a62739aebb3ea66a43641dabd62aaaa3fbd17a67fd4efbc21e98271e',
-     x86_64: '235aae12f22bc6dee1e57b3871780eeecb950f87cd89c4a49dfddd6131ddaa44'
+    aarch64: 'da14fe71564dd40069ab8aead8d29733094859ef0ed4f4155667487587e4038b',
+     armv7l: 'da14fe71564dd40069ab8aead8d29733094859ef0ed4f4155667487587e4038b',
+       i686: 'e81399c39169201f3bb76aba8c3fc3ae8fe22d7d13693f0088db22d949ab6543',
+     x86_64: '168c887710a06d43c517e6d4b87c55a05223f3e56272cb5b340331d3a61068fd'
   })
 
   def self.patch
+    # Fix /usr/bin/file: No such file or directory
     system 'filefix'
   end
 
   def self.build
-    system "./CLI_Compile.sh #{CREW_OPTIONS}"
+    system "mold -run ./CLI_Compile.sh #{CREW_OPTIONS}"
   end
 
   def self.install
