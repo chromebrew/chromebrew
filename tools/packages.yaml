@@ -4206,6 +4206,11 @@ url: https://gitlab.gnome.org/GNOME/libmediaart/-/tags
 activity: low
 ---
 kind: url
+name: libmediainfo
+url: https://mediaarea.net/download/binary/libmediainfo0/
+activity: medium
+---
+kind: url
 name: libmetalink
 url: https://launchpad.net/libmetalink/+download
 activity: none
