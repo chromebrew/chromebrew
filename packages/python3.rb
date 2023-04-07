@@ -3,24 +3,24 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.11.2'
+  @_ver = '3.11.3'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '29e4b8f5f1658542a8c13e2dd277358c9c48f2b2f7318652ef1675e402b9d2af'
+  source_sha256 '8a5db99c961a7ecf27c75956189c9602c968751f11dbeae2b900dbff1c085b5e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_armv7l/python3-3.11.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_armv7l/python3-3.11.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_i686/python3-3.11.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.2_x86_64/python3-3.11.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_armv7l/python3-3.11.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_armv7l/python3-3.11.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_i686/python3-3.11.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_x86_64/python3-3.11.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2675699dc7d9d7efb0f28adbeddab995462b258cda318a83efcdd5f4b96f796c',
-     armv7l: '2675699dc7d9d7efb0f28adbeddab995462b258cda318a83efcdd5f4b96f796c',
-       i686: '06379bc6eff897e98ce84778514f0bbc3923f86a4e8bf7b707cd3cb38a9e6fbf',
-     x86_64: 'ecfd4e6f65a7bbd6e396e0fb9759ce6c9e14c426fe6176d3a2562924e82d00cf'
+    aarch64: 'd326bb768180e3c561db8ecf2fb3bc0b03303f5ff6768677e39192b639c7258f',
+     armv7l: 'd326bb768180e3c561db8ecf2fb3bc0b03303f5ff6768677e39192b639c7258f',
+       i686: '9de0b393c9dc488023dd4b7932f34ec5d52cdf35de055e3534ff7236e57a4e6f',
+     x86_64: 'e45a68453da6535759673487b10746c574a7a4ed0244fad70611654d313f6f92'
   })
 
   depends_on 'autoconf_archive' => :build
