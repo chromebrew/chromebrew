@@ -3,22 +3,22 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '23.0.0'
+  @_ver = '23.0.2'
   version "#{@_ver}-llvm16"
-  git_hashtag "mesa-#{@_ver}"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
+  git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-llvm16_armv7l/mesa-23.0.0-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-llvm16_armv7l/mesa-23.0.0-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.0-llvm16_x86_64/mesa-23.0.0-llvm16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.2-llvm16_armv7l/mesa-23.0.2-llvm16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.2-llvm16_armv7l/mesa-23.0.2-llvm16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.0.2-llvm16_x86_64/mesa-23.0.2-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2a12b450aa029896db832ce0a88fcf4d0775ad01b4b86f0ca8a7fc7188d5ece8',
-     armv7l: '2a12b450aa029896db832ce0a88fcf4d0775ad01b4b86f0ca8a7fc7188d5ece8',
-     x86_64: '1d8bbbd42c178296d7d6c4a425674ae4764e83efa852931779bc3b79bf733bf8'
+    aarch64: '4fc0c5b2ae25fa949eecaeac17ddae4d04f5510463cf41b3b2ffd8e738008142',
+     armv7l: '4fc0c5b2ae25fa949eecaeac17ddae4d04f5510463cf41b3b2ffd8e738008142',
+     x86_64: '56da5e1c03e9dcee24b9d1b45d7056d984bd617fd26d1cd7d291b976528e41ac'
   })
 
   depends_on 'elfutils' # R
