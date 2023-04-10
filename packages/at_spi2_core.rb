@@ -4,6 +4,7 @@ class At_spi2_core < Package
   description 'This is over DBus, tookit widgets provide their content to screen readers such as Orca'
   homepage 'http://www.freedesktop.org/'
   version '2.47.90'
+  license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
   git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"

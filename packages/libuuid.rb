@@ -1,11 +1,12 @@
 require 'package'
+require_relative 'util_linux'
 
 class Libuuid < Package
-  description 'Portable UUID C library'
+  description 'Portable UUID C library. Bundled with util_linux.'
   homepage 'https://sourceforge.net/projects/libuuid/'
-  version '1.3.0'
-  license 'BSD' # The actual libuuid library
-  compatibility 'all'
+  version Util_linux.version.to_s
+  license Util_linux.license.to_s
+  compatibility Util_linux.compatibility.to_s
 
   is_fake
 

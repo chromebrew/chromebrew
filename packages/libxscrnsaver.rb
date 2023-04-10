@@ -1,11 +1,12 @@
 require 'package'
+require_relative 'libxss'
 
 class Libxscrnsaver < Package
-  description 'X11 Screen Saver extension library'
-  homepage 'https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver'
-  version '1.2.3'
-  license 'MIT'
-  compatibility 'all'
+  description Libxss.description.to_s
+  homepage Libxss.homepage.to_s
+  version Libxss.version.to_s
+  license Libxss.license.to_s
+  compatibility Libxss.compatibility.to_s
 
   is_fake
 

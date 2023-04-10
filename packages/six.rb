@@ -1,11 +1,12 @@
 require 'package'
+require_relative 'py3_six'
 
 class Six < Package
-  description 'Dummy package for py3_six'
-  homepage 'https://six.readthedocs.io/'
-  version '1'
-  license 'MIT'
-  compatibility 'all'
+  description Py3_six.description.to_s
+  homepage Py3_six.homepage.to_s
+  version Py3_six.version.to_s
+  license Py3_six.license.to_s
+  compatibility Py3_six.compatibility.to_s
 
   is_fake
 

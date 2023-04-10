@@ -1,12 +1,14 @@
 require 'package'
+require_relative 'harfbuzz'
 
 class Ragel < Package
   description 'Ragel compiles executable finite state machines from regular languages. Now bundled with harfbuzz.'
   homepage 'https://www.colm.net/open-source/ragel/'
-  version '1.0'
+  version Harfbuzz.version.to_s
   license 'MIT' # Previously was GPL-2
   compatibility 'all'
 
-  depends_on 'harfbuzz'
   is_fake
+
+  depends_on 'harfbuzz'
 end

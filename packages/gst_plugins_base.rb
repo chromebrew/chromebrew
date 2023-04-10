@@ -1,12 +1,12 @@
 require 'package'
+require_relative 'gstreamer'
 
 class Gst_plugins_base < Package
   description 'An essential, exemplary set of elements for GStreamer'
   homepage 'https://gstreamer.freedesktop.org/modules/gst-plugins-base.html'
-  @_ver = '1.20.0'
-  version @_ver
-  license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
+  version Gstreamer.version.to_s
+  license Gstreamer.license.to_s
+  compatibility Gstreamer.compatibility.to_s
 
   is_fake
 

@@ -3,7 +3,7 @@ require 'package'
 class Snap < Package
   description 'Server stack which includes sqlite, nginx and php. Not to be confused with snapd.'
   homepage ''
-  version '1.0'
+  version '1.1'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -11,5 +11,5 @@ class Snap < Package
 
   depends_on 'nginx'
   depends_on 'sqlite'
-  depends_on 'php74' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
 end

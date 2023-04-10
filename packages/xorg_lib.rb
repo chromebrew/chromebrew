@@ -1,11 +1,12 @@
 require 'package'
+require_relative 'libx11'
 
 class Xorg_lib < Package
   description 'A collection of xorg libraries.'
-  homepage ''
-  version '0.1-0'
-  license '' # is_fake
-  compatibility 'all'
+  homepage Libx11.homepage.to_s
+  version Libx11.version.to_s
+  license Libx11.license.to_s
+  compatibility Libx11.compatibility.to_s
 
   is_fake
 

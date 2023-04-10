@@ -1,11 +1,14 @@
 require 'package'
+require_relative 'gtksourceview_3'
+require_relative 'gtksourceview_4'
+require_relative 'gtksourceview_5'
 
 class Gtksourceview < Package
-  description 'Source code editing widget'
-  homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  version '1.1'
-  license 'GPL-2 and LGPL-2.1+'
-  compatibility 'all'
+  description Gtksourceview_3.description.to_s
+  homepage Gtksourceview_3.homepage.to_s
+  version "#{Gtksourceview_3.version}+#{Gtksourceview_4.version}+#{Gtksourceview_5.version}"
+  license Gtksourceview_3.license.to_s
+  compatibility Gtksourceview_3.compatibility.to_s
 
   is_fake
 
