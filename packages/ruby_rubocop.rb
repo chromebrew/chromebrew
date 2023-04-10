@@ -6,10 +6,10 @@ require 'package'
 class Ruby_rubocop < Package
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version '1.41.1-ruby-3.2'
+  version '1.49.0-ruby-3.2'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
-  source_sha256 'c98e2a4bde8cbf658d226d71f1e84fc3e4ce071692e6253a7708c8c90af3f7b5'
+  source_sha256 'cb65065787f428b6872637fcd2d5b7bc59d25f2a11ffc88834007646148f8af8'
 
   depends_on 'libyaml'
   depends_on 'ruby'
@@ -19,7 +19,6 @@ class Ruby_rubocop < Package
   no_compile_needed
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop"
     FileUtils.install '.rubocop.yml', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml", mode: 0o644
   end
 
