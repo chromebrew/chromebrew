@@ -3,7 +3,7 @@ require 'package'
 class Meson < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '1.0.1'
+  @_ver = '1.1.0'
   version "#{@_ver}-py3.11"
   license 'Apache-2.0'
   compatibility 'all'
@@ -11,22 +11,21 @@ class Meson < Package
   git_hashtag @_ver
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_i686/meson-1.0.1-py3.11-chromeos-i686.tar.zst',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_armv7l/meson-1.0.1-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_armv7l/meson-1.0.1-py3.11-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.0.1-py3.11_x86_64/meson-1.0.1-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.1.0-py3.11_armv7l/meson-1.1.0-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.1.0-py3.11_armv7l/meson-1.1.0-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.1.0-py3.11_i686/meson-1.1.0-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/meson/1.1.0-py3.11_x86_64/meson-1.1.0-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: 'b51bfa30ec8d9112d8f8f418033400a529fec95ee430e46cca5da8b0567b1a83',
-    aarch64: 'b2528b3d8f6b1220c11426d2e8be5223647a2d643345f1d549b958c8aeac52a0',
-     armv7l: 'b2528b3d8f6b1220c11426d2e8be5223647a2d643345f1d549b958c8aeac52a0',
-     x86_64: '6ca576d33b33ec1a216185024867f2555d39f69c91b3e86fbadc00c4c97bf016'
+    aarch64: 'bac4a4abb5cd9c870ab3b2bb07545cd2c1ac31a71168398a47c97086bbf56be5',
+     armv7l: 'bac4a4abb5cd9c870ab3b2bb07545cd2c1ac31a71168398a47c97086bbf56be5',
+       i686: 'f24be3abf488387cd5fa4920aab132a396502ce9f5f3d524d3a41efdf08d3939',
+     x86_64: 'befbe36af731aba0723771b98eaceae4f54406607253de3863e41939a615aa87'
   })
 
   depends_on 'ninja'
   depends_on 'samurai'
   depends_on 'python3'
-  depends_on 'python3' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
