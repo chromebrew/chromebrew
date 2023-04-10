@@ -1,11 +1,13 @@
 require 'package'
+require_relative 'gcr_3'
+require_relative 'gcr_4'
 
 class Gcr < Package
-  description 'GNOME crypto package'
-  homepage 'https://www.gnome.org'
-  version '4.0.0'
-  license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
+  description Gcr_3.description.to_s
+  homepage Gcr_3.homepage.to_s
+  version "#{Gcr_3.version}+#{Gcr_4.version}"
+  license Gcr_3.license.to_s
+  compatibility Gcr_3.compatibility.to_s
 
   is_fake
 

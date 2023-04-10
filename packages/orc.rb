@@ -1,12 +1,12 @@
 require 'package'
+require_relative 'gstreamer'
 
 class Orc < Package
-  description 'Optimized Inner Loop Runtime Compiler'
+  description 'Optimized Inner Loop Runtime Compiler. Bundled with gstreamer.'
   homepage 'https://gitlab.freedesktop.org/gstreamer/orc'
-  @_ver = '0.4.32'
-  version @_ver
-  license 'BSD and BSD-2'
-  compatibility 'all'
+  version Gstreamer.version.to_s
+  license Gstreamer.license.to_s
+  compatibility Gstreamer.compatibilty.to_s
 
   is_fake
 

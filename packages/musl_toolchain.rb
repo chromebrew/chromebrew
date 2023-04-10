@@ -1,11 +1,12 @@
 require 'package'
+require_relative 'musl_cc_toolchain'
 
 class Musl_toolchain < Package
-  description 'A modern, simple, and fast C library implementation that strives to be lightweight, fast, simple, free, and correct in the sense of standards-conformance and safety.'
-  homepage 'https://musl.cc/'
-  version '1.2.2-b76f37fd'
-  compatibility 'all'
-  license 'MIT, LGPL-2 and GPL-2'
+  description Musl_cc_toolchain.description.to_s
+  homepage Musl_cc_toolchain.homepage.to_s
+  version Musl_cc_toolchain.version.to_s
+  license Musl_cc_toolchain.license.to_s
+  compatibility Musl_cc_toolchain.compatibility.to_s
 
   is_fake
 

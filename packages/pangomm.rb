@@ -1,11 +1,13 @@
 require 'package'
+require_relative 'pangomm_1_4'
+require_relative 'pangomm_2_48'
 
 class Pangomm < Package
-  description 'pangomm is the official C++ interface for the Pango font layout library.'
-  homepage 'https://developer.gnome.org/pangomm/stable/'
-  version '1.0'
-  license 'LGPL-2.1+'
-  compatibility 'all'
+  description Pangomm_1_4.description.to_s
+  homepage Pangomm_1_4.homepage.to_s
+  version "#{Pangomm_1_4.version}+#{Pangomm_2_48.version}"
+  license Pangomm_1_4.license.to_s
+  compatibility Pangomm_1_4.compatibility.to_s
 
   is_fake
 

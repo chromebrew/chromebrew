@@ -1,15 +1,14 @@
 require 'package'
+require_relative 'ruby_asciidoctor'
 
 class Asciidoctor < Package
-  description 'A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.'
-  homepage 'https://asciidoctor.org/'
-  version '2.0.18'
-  license 'MIT'
-  compatibility 'all'
-  source_url 'SKIP'
+  description Ruby_asciidoctor.description.to_s
+  homepage Ruby_asciidoctor.homepage.to_s
+  version Ruby_asciidoctor.version.to_s
+  license Ruby_asciidoctor.license.to_s
+  compatibility Ruby_asciidoctor.compatibility.to_s
 
   is_fake
 
   depends_on 'ruby_asciidoctor'
-
 end

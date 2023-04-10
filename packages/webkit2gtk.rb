@@ -1,12 +1,12 @@
 require 'package'
+require_relative 'webkit2gtk_4'
 
 class Webkit2gtk < Package
-  description 'Web content engine for GTK'
-  homepage 'https://webkitgtk.org'
-  @_ver = '2.32.0'
-  version @_ver
-  license 'LGPL-2+ and BSD-2'
-  compatibility 'all'
+  description Webkit2gtk_4.description.to_s
+  homepage Webkit2gtk_4.homepage.to_s
+  version Webkit2gtk_4.version.to_s
+  license Webkit2gtk_4.license.to_s
+  compatibility Webkit2gtk_4.compatibility.to_s
 
   is_fake
 

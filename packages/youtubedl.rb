@@ -1,12 +1,12 @@
 require 'package'
+require_relative 'youtube_dl'
 
 class Youtubedl < Package
-  description 'Legacy compatibility package for youtube_dl'
-  homepage 'https://youtube-dl.org/'
-  @_ver = '2021.12.17'
-  version @_ver
-  license 'public-domain'
-  compatibility 'all'
+  description Youtube_dl.description.to_s
+  homepage Youtube_dl.homepage.to_s
+  version Youtube_dl.version.to_s
+  license Youtube_dl.license.to_s
+  compatibility Youtube_dl.compatibility.to_s
 
   is_fake
 
