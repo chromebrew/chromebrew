@@ -6,7 +6,7 @@ class Orc < Package
   homepage 'https://gitlab.freedesktop.org/gstreamer/orc'
   version Gstreamer.version.to_s
   license Gstreamer.license.to_s
-  compatibility Gstreamer.compatibilty.to_s
+  compatibility Gstreamer.compatibility.to_s
 
   is_fake
 
