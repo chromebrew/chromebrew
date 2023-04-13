@@ -49,6 +49,7 @@ class Pipewire < Package
 
   depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins' => :build
+  depends_on 'ca_certificates' => :build
   depends_on 'dbus' # R
   depends_on 'eudev' # R
   depends_on 'glib' # R
