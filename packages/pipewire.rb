@@ -69,9 +69,9 @@ class Pipewire < Package
   depends_on 'webrtc_audio_processing' # R
 
   def self.prebuild
-    # Without this armv7l build breaks on complaining about the network
-    # not working.
-    system 'crew postinstall ca_certificates'
+    # Without running the ca_certificates postinstall armv7l build breaks
+    # complaining about the network not working.
+    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
   def self.build
