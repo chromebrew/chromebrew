@@ -71,7 +71,7 @@ class Pipewire < Package
   def self.prebuild
     # Without this armv7l build breaks on complaining about the network
     # not working.
-    system "crew postinstall ca_certificates"
+    system 'crew postinstall ca_certificates'
   end
 
   def self.build
