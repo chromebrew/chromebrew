@@ -3,24 +3,24 @@ require 'package'
 class Pcre < Package
   description 'The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.'
   homepage 'http://pcre.org/'
-  @_ver = '8.44'
-  version "#{@_ver}-1"
+  @_ver = '8.45'
+  version @_ver
   license 'BSD-3'
   compatibility 'all'
-  source_url "https://ftp.pcre.org/pub/pcre/pcre-#{@_ver}.tar.bz2"
-  source_sha256 '19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d'
+  source_url 'https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2'
+  source_sha256 '4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.44-1_armv7l/pcre-8.44-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.44-1_armv7l/pcre-8.44-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.44-1_i686/pcre-8.44-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.44-1_x86_64/pcre-8.44-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.45_armv7l/pcre-8.45-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.45_armv7l/pcre-8.45-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.45_i686/pcre-8.45-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre/8.45_x86_64/pcre-8.45-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6d54befc6735b9d85928c14d1f03519d25514aed4c1a1f3d12114d3585f535f3',
-     armv7l: '6d54befc6735b9d85928c14d1f03519d25514aed4c1a1f3d12114d3585f535f3',
-       i686: '092fe524f7e00bc4e19b6a5cf01e1677f9d7900c8e105adcd086cd9670c7c558',
-     x86_64: '4c62ce6b8ae532c7b0885973b50363034c2a84b281baa5542149226a38016cbe'
+    aarch64: '925da859f7c9b10946cdbd731549de593a7990a1d73f24dc683512d60aea4b2e',
+     armv7l: '925da859f7c9b10946cdbd731549de593a7990a1d73f24dc683512d60aea4b2e',
+       i686: 'dcc02d2beb02b9b6e901da65913be151e3d6c564ffa2e77ec3ccfe7bcf9539f0',
+     x86_64: 'ee4f6f40c9acfd64e9c93281d8a5a6b8ac1aab3da5f11c7bbf5bfddc2bedc2d3'
   })
 
   depends_on 'gcc' # R
