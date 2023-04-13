@@ -8,7 +8,7 @@ class Pipewire < Package
           elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
             '0.3.60'
           else
-            '0.3.68'
+            '0.3.69'
           end
   version @_ver
   license 'LGPL-2.1+'
@@ -36,14 +36,14 @@ class Pipewire < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.68_armv7l/pipewire-0.3.68-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.68_armv7l/pipewire-0.3.68-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.68_x86_64/pipewire-0.3.68-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.69_armv7l/pipewire-0.3.69-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.69_armv7l/pipewire-0.3.69-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.69_x86_64/pipewire-0.3.69-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '31bff6a96b4590ec5daa461933d77c0dae2d138e37ccd659c8b857ce3d77b804',
-       armv7l: '31bff6a96b4590ec5daa461933d77c0dae2d138e37ccd659c8b857ce3d77b804',
-       x86_64: '865bd2cb8ed938a1d6efce427ed07090d2191540963ae6fee2623c589c6d56f5'
+      aarch64: '414a31116a60e69d5f045a2facd85937d3b5dccfad1f4dfce81c6dd913699304',
+       armv7l: '414a31116a60e69d5f045a2facd85937d3b5dccfad1f4dfce81c6dd913699304',
+       x86_64: 'f3a7d892a4357da083fcd30006bdf230fa72c0585fc67a18913b61e8f169d53c'
     })
   end
 
@@ -68,8 +68,14 @@ class Pipewire < Package
   depends_on 'readline' # R
   depends_on 'webrtc_audio_processing' # R
 
+  def self.prebuild
+    # Without this armv7l build breaks on complaining about the network
+    # not working.
+    system "crew postinstall ca_certificates"
+  end
+
   def self.build
-    system "meson \
+    system "mold -run meson \
       #{CREW_MESON_OPTIONS} \
       -Dbluez5-backend-hsphfpd=disabled \
       -Dbluez5-backend-ofono=disabled \
