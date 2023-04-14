@@ -3,23 +3,21 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22.1'
+  version '1.22.2'
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_armv7l/gstreamer-1.22.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_armv7l/gstreamer-1.22.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_i686/gstreamer-1.22.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.1_x86_64/gstreamer-1.22.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.2_armv7l/gstreamer-1.22.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.2_armv7l/gstreamer-1.22.2-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.2_x86_64/gstreamer-1.22.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7af562a45c5b84644373d5fdeca6d05126f4b279ae2b002ed59fb593ba21c282',
-     armv7l: '7af562a45c5b84644373d5fdeca6d05126f4b279ae2b002ed59fb593ba21c282',
-       i686: '52c6aebaeb9eebe30f5db2a019548673dfc0d54b89b543f2f43ee7784f0f845c',
-     x86_64: 'eb33b06d5cb4c35dc3007f1c1f8937c72f6a55522c0a4a91bf78ecbda6e3e310'
+    aarch64: '7fff080e923d8fb3945e3befe0edc35d9d8ce085ab62e10dd0e05ea8124986ca',
+     armv7l: '7fff080e923d8fb3945e3befe0edc35d9d8ce085ab62e10dd0e05ea8124986ca',
+     x86_64: '0a0ecd1a6ef16024fcab24628dff679719ba9d366ce039723da445b54fb2b280'
   })
 
   depends_on 'alsa_lib' # R
@@ -27,20 +25,21 @@ class Gstreamer < Package
   depends_on 'bz2' # R
   depends_on 'cairo' # R
   depends_on 'chromaprint' # R
-  depends_on 'elfutils'
+  depends_on 'curl' # R
+  depends_on 'elfutils' # R
   depends_on 'ffmpeg' # R
   depends_on 'flac' # R
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glib'
   depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gmp' # R
   depends_on 'gnutls' # R
   depends_on 'gobject_introspection' # R
   depends_on 'graphene' # R
-  depends_on 'gsl'
+  depends_on 'gsl' => :build
   depends_on 'gsm' # R
-  depends_on 'gtk3'
+  depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'intel_media_sdk' if ARCH.eql?('x86_64') # R
   depends_on 'jack' # R
@@ -50,7 +49,7 @@ class Gstreamer < Package
   depends_on 'libass' # R
   depends_on 'libavc1394' # R
   depends_on 'libcap'
-  depends_on 'curl' # R
+  depends_on 'libcap' # R
   depends_on 'libde265' # R
   depends_on 'libdrm' # R
   depends_on 'libdv' # R
@@ -60,6 +59,7 @@ class Gstreamer < Package
   depends_on 'libgudev' # R
   depends_on 'libiec61883' # R
   depends_on 'libjpeg'
+  depends_on 'libjpeg' # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
   depends_on 'libogg' # R
@@ -70,6 +70,7 @@ class Gstreamer < Package
   depends_on 'libsndfile' # R
   depends_on 'libtheora' # R
   depends_on 'libunwind'
+  depends_on 'libunwind' # R
   depends_on 'libusb' # R
   depends_on 'libva' # R
   depends_on 'libvorbis' # R
@@ -87,12 +88,14 @@ class Gstreamer < Package
   depends_on 'libxv' # R
   depends_on 'lilv' # R
   depends_on 'mesa' # R
+  depends_on 'neon' # R
   depends_on 'nettle' # R
   depends_on 'openal' # R
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
   depends_on 'opus' # R
   depends_on 'pango' # R
+  depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'python3' # R
   depends_on 'rtmpdump' # R
@@ -112,21 +115,16 @@ class Gstreamer < Package
 
   conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
   def self.build
-    @plugins = ''
-    case ARCH
-    when 'i686'
-      @plugins = '-Dgst-plugins-bad:msdk=disabled'
-    end
     system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dgpl=enabled \
-    -Dtests=disabled #{@plugins}\
-    builddir"
+      -Dgpl=enabled \
+      -Dtests=disabled \
+      builddir"
     system 'meson configure builddir'
-    system 'mold -run samu -C builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   def self.check
