@@ -3,21 +3,21 @@ require 'package'
 class Transmission < Package
   description 'A fast, easy, and free BitTorrent client.'
   homepage 'https://transmissionbt.com/'
-  version '4.0.2'
+  version '4.0.3'
   license 'GPL-2, GPL-3 or Transmission-OpenSSL-exception, GPL-2 and MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/transmission/transmission/releases/download/4.0.2/transmission-4.0.2.tar.xz'
-  source_sha256 '39bf7a104a722805a9dc089cdaaffe33bf90b82230a7ea7f340cae59f00a2ee8'
+  source_url 'https://github.com/transmission/transmission/releases/download/4.0.3/transmission-4.0.3.tar.xz'
+  source_sha256 'b6b01fd58e42bb14f7aba0253db932ced050fcd2bba5d9f8469d77ddd8ad545a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.2_armv7l/transmission-4.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.2_armv7l/transmission-4.0.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.2_x86_64/transmission-4.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.3_armv7l/transmission-4.0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.3_armv7l/transmission-4.0.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/transmission/4.0.3_x86_64/transmission-4.0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cf3fe4b1eee0677f3fbfcc275dc18eebcb9379c46c66e1f1edf0c067a92f9150',
-     armv7l: 'cf3fe4b1eee0677f3fbfcc275dc18eebcb9379c46c66e1f1edf0c067a92f9150',
-     x86_64: '250988507ff257b2815543dd9caafc7c1b3b7f3ab02aab275e7cef0f1bf088a6'
+    aarch64: 'e798d83974522956c59950d3d8c2e9aa394483ba69df6bb91900fe37c2decc16',
+     armv7l: 'e798d83974522956c59950d3d8c2e9aa394483ba69df6bb91900fe37c2decc16',
+     x86_64: '23633d290a1a9428a7361ae50079b9e254dee2053ddc6cbbc5befefd7dadb3e5'
   })
 
   depends_on 'at_spi2_core' => :build
