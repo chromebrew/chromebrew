@@ -7086,6 +7086,11 @@ url: https://github.com/ranger/ranger/releases
 activity: low
 ---
 kind: url
+name: rapidjson
+url: https://github.com/Tencent/rapidjson/releases
+activity: none
+---
+kind: url
 name: rarian
 url: https://ftp.gnome.org/pub/gnome/sources/rarian/
 activity: none
