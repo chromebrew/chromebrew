@@ -3,38 +3,33 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '6.1'
+  version '7.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://nano-editor.org/dist/v6/nano-6.1.tar.xz'
-  source_sha256 '3d57ec893fbfded12665b7f0d563d74431fc43abeaccacedea23b66af704db40'
+  source_url 'https://nano-editor.org/dist/v7/nano-7.2.tar.xz'
+  source_sha256 '86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_armv7l/nano-6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_armv7l/nano-6.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_i686/nano-6.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/6.1_x86_64/nano-6.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_i686/nano-7.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_x86_64/nano-7.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5e1c05739831b22109ff5b342e26b2a6060a4d7eedbf85429071717b0e68dc6e',
-     armv7l: '5e1c05739831b22109ff5b342e26b2a6060a4d7eedbf85429071717b0e68dc6e',
-       i686: '213937bceb48bdd1e96fcc7e658183ee835ea98218a279748a4479048d5a4a7c',
-     x86_64: 'ef01d254db458f10046ad8ca64e90d486242ca737a32736d2656598c998a5c56'
+    aarch64: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
+     armv7l: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
+       i686: '32aee8fa703ffe9b01e53f2ba1c839bef2b7cefdeacf3471475afa27b7d5003d',
+     x86_64: 'fddc8a4be84f736f549bf480c84ee8259e4b00e2a88913ca1fe36c404d613a3e'
   })
 
-  depends_on 'xdg_base'
-  no_env_options
-
-  def self.patch
-    system "sed -i '/SIGWINCH/d' src/nano.c"
-  end
+  depends_on 'filecmd' # R
+  depends_on 'glibc' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
-    system "CFLAGS=-flto=auto LDFLAGS=-static \
+    system "mold -run \
       ./configure #{CREW_OPTIONS} \
-      --enable-threads=posix \
-      --enable-nls \
-      --enable-rpath \
       --enable-browser \
       --enable-color \
       --enable-comment \
@@ -47,12 +42,16 @@ class Nano < Package
       --enable-mouse \
       --enable-multibuffer \
       --enable-nanorc \
+      --enable-nls \
       --enable-operatingdir \
+      --enable-rpath \
       --enable-speller \
       --enable-tabcomp \
+      --enable-threads=posix \
+      --enable-utf8 \
       --enable-wordcomp \
       --enable-wrapping \
-      --enable-utf8"
+      --enable-year2038"
     system 'make'
     open('nanorc', 'w') do |f|
       f << "set constantshow\n"
@@ -70,9 +69,7 @@ class Nano < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-strip'
-    system "install -Dm644 nanorc #{CREW_DEST_HOME}/.nanorc"
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.local/share"
-    FileUtils.ln_sf("#{CREW_PREFIX}/share/nano", "#{CREW_DEST_HOME}/.local/share/")
+    FileUtils.install 'nanorc', "#{CREW_DEST_HOME}/.nanorc", mode: 0o644
   end
 
   def self.postinstall
