@@ -2400,6 +2400,11 @@ url: https://github.com/charmbracelet/glow/releases
 activity: medium
 ---
 kind: url
+name: glpk
+url: https://ftpmirror.gnu.org/glpk/
+activity: none
+---
+kind: url
 name: glproto
 url: https://github.com/freedesktop/glproto/releases
 activity: none
