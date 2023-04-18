@@ -3,12 +3,11 @@ require 'package'
 class Asciinema < Package
   description 'Terminal session recorder'
   homepage 'https://asciinema.org/'
-  @_ver = '2.1.0'
-  version @_ver
+  version '2.1.0'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/asciinema/asciinema.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{@version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_armv7l/asciinema-2.1.0-chromeos-armv7l.tpxz',

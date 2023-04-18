@@ -3,8 +3,8 @@ require 'package'
 class Alien < Package
   description 'This program converts linux packages between the rpm, deb, tgz and slp packages.'
   homepage 'https://sourceforge.net/projects/alien-pkg-convert/'
-  @_ver = '8.95'
-  version "#{@_ver}-1"
+  version '8.95'
+  revision 1
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/alien-pkg-convert/release/alien_8.95.tar.xz'
