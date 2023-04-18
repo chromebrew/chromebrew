@@ -5,7 +5,7 @@ require_relative 'package_helpers'
 require_relative 'selector'
 
 class Package
-  property :description, :homepage, :version, :license, :compatibility,
+  property :description, :homepage, :version, :revision, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag
 
@@ -216,6 +216,14 @@ class Package
     @dependencies.store(depName, [dep_tags, ver_check])
   end
 
+  def self.full_version
+    if @release && @revision != 0
+      return "#{@version}-#{@revision}"
+    else
+      return @version
+    end
+  end
+
   def self.get_url(architecture)
     if !@build_from_source && @binary_url && @binary_url.key?(architecture)
       return @binary_url[architecture]
@@ -245,23 +253,15 @@ class Package
   end
 
   def self.get_extract_dir
-    "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
+    return "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
   end
 
   def self.is_binary?(architecture)
-    if !@build_from_source && @binary_url && @binary_url.key?(architecture)
-      return true
-    else
-      return false
-    end
+    return (!@build_from_source && @binary_url && @binary_url.key?(architecture))
   end
 
   def self.is_source?(architecture)
-    if is_binary?(architecture) || is_fake?
-      return false
-    else
-      return true
-    end
+    return !(is_binary?(architecture) || is_fake?)
   end
 
   def self.system(*args, **opt_args)
