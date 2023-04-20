@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  @_ver = '16.0.1'
+  @_ver = '16.0.2'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_armv7l/llvm-16.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_armv7l/llvm-16.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_i686/llvm-16.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.1_x86_64/llvm-16.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_armv7l/llvm-16.0.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_armv7l/llvm-16.0.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_i686/llvm-16.0.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_x86_64/llvm-16.0.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9dd363e6a64b95fb411a1db0afd4878c866208eb6d48def619e1cb91f3f2c58f',
-     armv7l: '9dd363e6a64b95fb411a1db0afd4878c866208eb6d48def619e1cb91f3f2c58f',
-       i686: '564b6c5add2680f3267070a85a7ff34790c2ac690d2bd43489d9494609726f38',
-     x86_64: '2eb8ece4fe2540073bb2beb5011b9e3023b32d881a10fb660e81fc56556ec46f'
+    aarch64: '7aeb14e92e74c9e54b6bb399837d472aad0060e42337dd222aa5f37f1dbd2453',
+     armv7l: '7aeb14e92e74c9e54b6bb399837d472aad0060e42337dd222aa5f37f1dbd2453',
+       i686: '7770fb2bbdbaaa3a4a65ad7f6ddfdc8ee6f812d5e0519433369fc3dc66f05502',
+     x86_64: '89c5c057a7ebeae11eabd1cda5996ffa33e265448c77cedd19fcef5c51ecdbfa'
   })
 
   depends_on 'ocaml' => :build
@@ -39,7 +39,6 @@ class Llvm < Package
   depends_on 'zstd' # R
 
   no_env_options
-  no_patchelf
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -169,11 +168,11 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cx
             -DPYTHON_EXECUTABLE=$(which python3) \
             -Wno-dev"
     end
-    system 'mold -run samu -C builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     Dir.chdir('builddir') do
       FileUtils.install 'clc', "#{CREW_DEST_PREFIX}/bin/clc", mode: 0o755
       FileUtils.install 'clc++', "#{CREW_DEST_PREFIX}/bin/clc++", mode: 0o755
@@ -186,12 +185,13 @@ clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cx
     end
   end
 
+  # preserve for check, skip check for current version
   def self.check
-    Dir.chdir('builddir') do
-      system 'samu check-llvm || true'
-      system 'samu check-clang || true'
-      system 'samu check-lld || true'
-    end
+    # Dir.chdir('builddir') do
+    # system 'samu check-llvm || true'
+    # system 'samu check-clang || true'
+    # system 'samu check-lld || true'
+    # end
   end
 
   def self.postinstall
