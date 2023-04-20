@@ -3,23 +3,23 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '12.2.1-591ec48' # Do not use @_ver here, it will break the installer.
-  compatibility 'all'
+  version '13.1-68997d4' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
+  compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '591ec4820aa4e6d757ddc76cae1d92d445daf72c'
+  git_hashtag '68997d4323cdcbd4c626b04f6f29df835694056a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_armv7l/gcc-12.2.1-591ec48-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_armv7l/gcc-12.2.1-591ec48-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_x86_64/gcc-12.2.1-591ec48-chromeos-x86_64.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/12.2.1-591ec48_i686/gcc-12.2.1-591ec48-chromeos-i686.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_armv7l/gcc-13.1-68997d4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_armv7l/gcc-13.1-68997d4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_i686/gcc-13.1-68997d4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_x86_64/gcc-13.1-68997d4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cdd41b9d1f9be347077d5e50f8d6d8d40961b21246a82b62d56ef304485d59c8',
-     armv7l: 'cdd41b9d1f9be347077d5e50f8d6d8d40961b21246a82b62d56ef304485d59c8',
-     x86_64: 'c21a879d5fc57e6f88aa67590c459dc4df6314ef00e75fbf6b432f89a5bc0d2d',
-       i686: 'e4d6bedfbee76e966e13c50ea7f2ece3b103625e6dd64e26812a7008e42c4541'
+    aarch64: '6f6953e5625d3061c58ddcc1e1e5e15b5beb08bd79e2fe376d5433191374eddf',
+     armv7l: '6f6953e5625d3061c58ddcc1e1e5e15b5beb08bd79e2fe376d5433191374eddf',
+       i686: 'f0228e5994f1dbabe28b3dc86780975f4654bfba724452292783526987f7502e',
+     x86_64: '3463644c9b1fc6702ad533aa6d2c3164dd7e977bcc38a458c9a20505aeb5b9ba'
   })
 
   depends_on 'binutils' => :build
@@ -36,7 +36,6 @@ class Gcc < Package
 
   no_env_options
   no_patchelf
-  no_zstd if ARCH == 'i686'
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
@@ -152,7 +151,7 @@ class Gcc < Package
         }.transform_keys(&:to_s)
 
       system configure_env, <<~BUILD.chomp
-        ../configure #{CREW_OPTIONS} \
+        mold -run ../configure #{CREW_OPTIONS} \
           #{@gcc_global_opts} \
           #{@archflags} \
           --with-native-system-header-dir=#{CREW_PREFIX}/include \
