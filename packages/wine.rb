@@ -3,17 +3,17 @@ require 'package'
 class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Microsoft Windows applications.'
   homepage 'https://www.winehq.org/'
-  version '8.0'
+  version '8.0.1'
   license 'LGPL-2.1'
   compatibility 'x86_64'
-  source_url 'https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz'
-  source_sha256 '0272c20938f8721ae4510afaa8b36037457dd57661e4d664231079b9e91c792e'
+  source_url 'https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz'
+  source_sha256 '22035f3836b4f9c3b1940ad90f9b9e3c1be09234236d2a80d893180535c75b7d'
 
   binary_url({
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/8.0_x86_64/wine-8.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/8.0.1_x86_64/wine-8.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     x86_64: '68a6e7d08fa1bfafb96986936690202b4e83dab8f915ce0c9aff0280d3df7e54'
+    x86_64: '047a10a50f0e9adc37c85a98b43f93db4375c2c1982b29ea941bb4ad1c623c0e'
   })
 
   depends_on 'alsa_lib' # R
@@ -62,6 +62,10 @@ class Wine < Package
           --with-x"
       end
       system 'make || make'
+      File.write 'wine_config_env', <<~WINE_CONFIG_EOF
+        # Wine configuration
+        WINEPREFIX="${XDG_CONFIG_HOME}"/.wine
+      WINE_CONFIG_EOF
     end
   end
 
@@ -81,13 +85,8 @@ class Wine < Package
     end
     Dir.chdir 'wine64-build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", "DLLDIR=#{CREW_DEST_DLL_PREFIX}", 'install'
+      FileUtils.install 'wine_config_env', "#{CREW_DEST_PREFIX}/etc/env.d/wine", mode: 0o644
     end
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @wine_config_env = <<~'WINE_CONFIG_EOF'
-      # Wine configuration
-      WINEPREFIX="${XDG_CONFIG_HOME}"/.wine
-    WINE_CONFIG_EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/wine", @wine_config_env)
   end
 
   def self.postinstall
