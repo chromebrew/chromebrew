@@ -91,6 +91,7 @@ class Wine < Package
 
   def self.postinstall
     puts
+    puts "\nTo finish the installation, execute 'source ~/.bashrc'".lightblue
     puts 'To run an application with wine, type `wine path/to/myexecutable.exe` or `wine path/to/myinstaller.msi`.'.lightblue
     puts
   end
