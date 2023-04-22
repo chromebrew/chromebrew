@@ -73,7 +73,7 @@ class Php82 < Package
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    return unless ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
+    return unless ARGV[0] != 'reinstall' && version != phpver && !phpver.empty?
 
     abort "PHP version #{phpver} already installed.".lightgreen
   end
