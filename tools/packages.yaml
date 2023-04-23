@@ -3080,6 +3080,11 @@ url: http://tango-project.org/releases/
 activity: none
 ---
 kind: url
+name: icoutils
+url: https://savannah.nongnu.org/download/icoutils
+activity: none
+---
+kind: url
 name: icu4c
 url: https://github.com/unicode-org/icu/releases/
 activity: medium
