@@ -7521,6 +7521,11 @@ url: https://github.com/mltframework/shotcut/releases
 activity: high
 ---
 kind: url
+name: shotwell
+url: https://download.gnome.org/sources/shotwell/
+activity: high
+---
+kind: url
 name: shrinkpdf
 url: http://alfredklomp.com/programming/shrinkpdf/
 activity: none
