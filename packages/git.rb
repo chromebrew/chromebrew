@@ -3,23 +3,23 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.39.2-1' # Do not use @_ver here, it will break the installer.
+  version '2.40.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.2.tar.xz'
-  source_sha256 '475f75f1373b2cd4e438706185175966d5c11f68c4db1e48c26257c43ddcf2d6'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.40.1.tar.xz'
+  source_sha256 '4893b8b98eefc9fdc4b0e7ca249e340004faa7804a433d17429e311e1fef21d2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_i686/git-2.39.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_x86_64/git-2.39.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_armv7l/git-2.40.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_armv7l/git-2.40.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_i686/git-2.40.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_x86_64/git-2.40.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
-     armv7l: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
-       i686: 'b8d4ac0df63ab8990c8178b5cc464ff402cc9bd3d5ed9cf6ec0d27987c4289c1',
-     x86_64: 'e5a5ea385c6d95be6a2f1bc4e3f40bb0308e323a711408c5ec46c6fd9fa17c6e'
+    aarch64: '6732e4a1b5c55dc0009de7c6d2f2834050c5d48ada82dd02a80a4bb06080d363',
+     armv7l: '6732e4a1b5c55dc0009de7c6d2f2834050c5d48ada82dd02a80a4bb06080d363',
+       i686: 'dd8a123503a2970405e748bae73294f509b2a138a1b9daecd5f604c3673febee',
+     x86_64: 'a9df1739222bf0ece3fbd3d6885a728649f798b0e7911c5d747bece87e20c11b'
   })
 
   depends_on 'ca_certificates' => :build
@@ -29,9 +29,6 @@ class Git < Package
   depends_on 'zlibpkg'
   depends_on 'expat' # R
   depends_on 'glibc' # R
-
-  no_patchelf
-  no_zstd
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
@@ -57,29 +54,25 @@ class Git < Package
   end
 
   def self.build
-    Dir.mkdir 'contrib/buildsystems/builddir'
-    Dir.chdir 'contrib/buildsystems/builddir' do
-      system "mold -run cmake \
-          #{CREW_CMAKE_OPTIONS} \
-          -DUSE_VCPKG=FALSE \
-          -Wdev \
-          -G Ninja \
-          .."
-      system 'mold -run samu'
-    end
+    system "mold -run cmake -B builddir \
+        #{CREW_CMAKE_OPTIONS} \
+        -DUSE_VCPKG=FALSE \
+        -Wdev \
+        -G Ninja \
+        contrib/buildsystems"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C contrib/buildsystems/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @git_bashd_env = <<~GIT_BASHD_EOF
+    File.write 'git_bashd_env', <<~GIT_BASHD_EOF
       # git bash completion
       source #{CREW_PREFIX}/share/git-completion/git-completion.bash
     GIT_BASHD_EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/git", @git_bashd_env)
+    FileUtils.install 'git_bashd_env', "#{CREW_DEST_PREFIX}/etc/bash.d/git", mode: 0o644
   end
 
   def self.check
