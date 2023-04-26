@@ -3,23 +3,23 @@ require 'package'
 class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '13.1-68997d4' # Do not use @_ver here, it will break the installer.
+  version '13.1.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '68997d4323cdcbd4c626b04f6f29df835694056a'
+  git_hashtag 'releases/gcc-13.1.0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_armv7l/gcc-13.1-68997d4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_armv7l/gcc-13.1-68997d4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_i686/gcc-13.1-68997d4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1-68997d4_x86_64/gcc-13.1-68997d4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_armv7l/gcc-13.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_armv7l/gcc-13.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_i686/gcc-13.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_x86_64/gcc-13.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6f6953e5625d3061c58ddcc1e1e5e15b5beb08bd79e2fe376d5433191374eddf',
-     armv7l: '6f6953e5625d3061c58ddcc1e1e5e15b5beb08bd79e2fe376d5433191374eddf',
-       i686: 'f0228e5994f1dbabe28b3dc86780975f4654bfba724452292783526987f7502e',
-     x86_64: '3463644c9b1fc6702ad533aa6d2c3164dd7e977bcc38a458c9a20505aeb5b9ba'
+    aarch64: '577d57952a1c9832ace16823e499a1ee58e8ced7aa745ea74a1cab54bb78d6ce',
+     armv7l: '577d57952a1c9832ace16823e499a1ee58e8ced7aa745ea74a1cab54bb78d6ce',
+       i686: '0393d1ce628d918720a19dfb9c7e587a4ace9f77cdd4ba44a3e7482b0aba5a43',
+     x86_64: '471cdf9a91992c2ece9fed7fecd234779ebe1a6b4b87774da9af6a210da844ba'
   })
 
   depends_on 'binutils' => :build
@@ -35,7 +35,6 @@ class Gcc < Package
   depends_on 'zstd' # R
 
   no_env_options
-  no_patchelf
 
   @gcc_version = version.split('-')[0].partition('.')[0]
 
