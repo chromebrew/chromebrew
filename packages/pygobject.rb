@@ -3,7 +3,7 @@ require 'package'
 class Pygobject < Package
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.readthedocs.io/'
-  @_ver = '3.43.1'
+  @_ver = '3.44.1'
   version "#{@_ver}-py3.11"
   license 'LGPL-2.1+'
   compatibility 'all'
@@ -11,26 +11,27 @@ class Pygobject < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.43.1-py3.11_armv7l/pygobject-3.43.1-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.43.1-py3.11_armv7l/pygobject-3.43.1-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.43.1-py3.11_i686/pygobject-3.43.1-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.43.1-py3.11_x86_64/pygobject-3.43.1-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_armv7l/pygobject-3.44.1-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_armv7l/pygobject-3.44.1-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_i686/pygobject-3.44.1-py3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_x86_64/pygobject-3.44.1-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8c9f546d17d1e57303a2541c4f00af5ca92214f89b6d5eccc7bba8f2629f8f5c',
-     armv7l: '8c9f546d17d1e57303a2541c4f00af5ca92214f89b6d5eccc7bba8f2629f8f5c',
-       i686: 'aa8f8c57783fb61d56379f679d6b526a5bdbad475135d1de923bcbabf4ad20fa',
-     x86_64: '4a57c35deb72a415979a43651dc89ef4a4a91cdd99390cf8d7c653c5e3994644'
+    aarch64: '2ef873543b7493be84c95a9f9991bf00b06c244603086cca762e6f67dd04f130',
+     armv7l: '2ef873543b7493be84c95a9f9991bf00b06c244603086cca762e6f67dd04f130',
+       i686: 'e3d27cd0f68ecb35513bcd6476d9accbaabfc4cbc2dbfd77a319fefa069b969f',
+     x86_64: 'b8cd3b017da2a8b5c20eadbd5423096a79d5772a88141f039b2e34dc7bd42a93'
   })
 
-  depends_on 'glib'
-  depends_on 'wayland'
-  depends_on 'gobject_introspection'
-  depends_on 'py3_pycairo'
-  depends_on 'python3' # R
+  depends_on 'gcc' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' # R
   depends_on 'harfbuzz' # R
   depends_on 'libffi' # R
+  depends_on 'py3_pycairo' => :build
+  depends_on 'python3' # R
+  depends_on 'wayland' => :build
 
   def self.build
     system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
