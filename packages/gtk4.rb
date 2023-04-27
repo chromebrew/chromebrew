@@ -3,22 +3,22 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  @_ver = '4.10.1'
-  version "#{@_ver}-1"
+  @_ver = '4.10.3'
+  version @_ver
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1-1_armv7l/gtk4-4.10.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1-1_armv7l/gtk4-4.10.1-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.1-1_x86_64/gtk4-4.10.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.3_armv7l/gtk4-4.10.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.3_armv7l/gtk4-4.10.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.3_x86_64/gtk4-4.10.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ca7f1ce3f5409710c8d4f17228125e6bc02c4029065903968c423dc301402d5b',
-     armv7l: 'ca7f1ce3f5409710c8d4f17228125e6bc02c4029065903968c423dc301402d5b',
-     x86_64: '29d046f29f83a5ca0b0aef1423646270aff6987b2f22726e265858102ebc1b27'
+    aarch64: '2f8a3bcb6777fdda195da9b0718515473d568ec021363fa882e8f67e64ca14ab',
+     armv7l: '2f8a3bcb6777fdda195da9b0718515473d568ec021363fa882e8f67e64ca14ab',
+     x86_64: '4bd956bd09d7ebb89cda1d51d59762238028f95c4fac8393ae225b434a56fa2c'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -102,8 +102,8 @@ class Gtk4 < Package
       -Dprint-cups=auto \
       builddir"
     system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-    @gtk4settings = <<~GTK4_CONFIG_HEREDOC
+    system "#{CREW_NINJA} -C builddir"
+    File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
       [Settings]
       gtk-icon-theme-name = Adwaita
       gtk-theme-name = Adwaita
@@ -114,7 +114,6 @@ class Gtk4 < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     @xdg_config_dest_home = "#{CREW_DEST_PREFIX}/.config"
-    FileUtils.mkdir_p "#{@xdg_config_dest_home}/gtk-4.0"
-    File.write("#{@xdg_config_dest_home}/gtk-4.0/settings.ini", @gtk4settings)
+    FileUtils.install 'gtk4settings', "#{@xdg_config_dest_home}/gtk-4.0/settings.ini", mode: 0o644
   end
 end
