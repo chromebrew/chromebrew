@@ -36,7 +36,7 @@ class Gnutls < Package
   depends_on 'openssl' # R
   depends_on 'p11kit' # R This package cannot be built statically.
   depends_on 'trousers' => :build
-  depends_on 'zlibpkg'=> :build
+  depends_on 'zlibpkg' => :build
   depends_on 'zstd' # R
 
   no_env_options
