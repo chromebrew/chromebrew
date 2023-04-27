@@ -25,8 +25,8 @@ class Brotli < Package
   depends_on 'glibc' # R
 
   def self.patch
-    # Fixes issue with newer gcc
-    # https://github.com/google/brotli/issues/836
+    # Fixes issue with newer gcc complaining about "-R".
+    # See: https://github.com/google/brotli/issues/836
     downloader 'https://patch-diff.githubusercontent.com/raw/google/brotli/pull/838.diff',
                '7e3113676bb8b632316a339232e3c92b2c0fa025782f2fcc45c2acb305b812d8'
     system 'patch -Np1 -i 838.diff'
