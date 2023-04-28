@@ -589,11 +589,17 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  matchedList = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flat_map do |result|
+  matchedList = `zgrep "#{regexPat}" #{CREW_LIB_PATH}filelist_all.gz`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
-    pkgName               = File.basename(filelist, '.filelist')
+    pkgName = File.basename(filelist, '.filelist')
+    pkgNameStatus = pkgName
+    if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
+      pkgNameStatus = pkgName.lightgreen if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
+    else
+      pkgNameStatus = pkgName.lightred
+    end
 
-    "#{pkgName}: #{matchedFile}"
+    "#{pkgNameStatus}:#{matchedFile}"
   end.sort
 
   puts matchedList, "\nTotal found: #{matchedList.length}".lightgreen if matchedList.any?
