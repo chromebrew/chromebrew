@@ -24,7 +24,7 @@ class Vala < Package
 
   depends_on 'autoconf_archive' => :build
   depends_on 'autoconf213' => :build
-  depends_on 'graphviz' unless ARCH.eql('i686')
+  depends_on 'graphviz' unless ARCH.eql?('i686')
   depends_on 'libxslt'
   depends_on 'glib'
   depends_on 'dbus'
