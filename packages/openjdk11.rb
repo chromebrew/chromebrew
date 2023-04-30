@@ -3,20 +3,20 @@ require 'package'
 class Openjdk11 < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
-  version '11.0.18'
+  version '11.0.19'
   license 'GPL-2'
   compatibility 'all'
   source_url({
-    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.62.17-ca-jdk11.0.18-linux_aarch32hf.tar.gz',
-     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.62.17-ca-jdk11.0.18-linux_aarch32hf.tar.gz',
-       i686: 'https://cdn.azul.com/zulu/bin/zulu11.62.17-ca-jdk11.0.18-linux_i686.tar.gz',
-     x86_64: 'https://cdn.azul.com/zulu/bin/zulu11.62.17-ca-jdk11.0.18-linux_x64.tar.gz'
+    aarch64: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.64.19-ca-jdk11.0.19-linux_aarch32hf.tar.gz',
+     armv7l: 'https://cdn.azul.com/zulu-embedded/bin/zulu11.64.19-ca-jdk11.0.19-linux_aarch32hf.tar.gz',
+       i686: 'https://cdn.azul.com/zulu/bin/zulu11.64.19-ca-jdk11.0.19-linux_i686.tar.gz',
+     x86_64: 'https://cdn.azul.com/zulu/bin/zulu11.64.19-ca-jdk11.0.19-linux_x64.tar.gz'
   })
   source_sha256({
-    aarch64: '8ba7a6bc773f934bc95d1e26a3209e97ae947905df284548b0628be5864a8f0b',
-     armv7l: '8ba7a6bc773f934bc95d1e26a3209e97ae947905df284548b0628be5864a8f0b',
-       i686: 'f79c37ff6873f0eb3b82cf1e8bc302ee078c658631eade9d6ba9bdc69728e113',
-     x86_64: '6fae6811b0f3aebb14c3e59a5fde14481cff412ef8ca23221993f1ab33269aab'
+    aarch64: '89e633988881975cd4715f4208c165545e7776372d927d352d5df0e4929be0a6',
+     armv7l: '89e633988881975cd4715f4208c165545e7776372d927d352d5df0e4929be0a6',
+       i686: '80ce9d9eb1dcd313b2393fa847f244b69af50f08fc0e38ad7b66cc845ee1f455',
+     x86_64: '8b963105ad195c8f622b34dbac663ce11e5f73f4c84edd6dd1d364a26798b540'
   })
 
   no_compile_needed
