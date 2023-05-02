@@ -3,26 +3,28 @@ require 'package'
 class Libunbound < Package
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  @_ver = '1.15.0'
+  @_ver = '1.17.1'
   version @_ver
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{@_ver}.tar.gz"
-  source_sha256 'a480dc6c8937447b98d161fe911ffc76cfaffa2da18788781314e81339f1126f'
+  source_sha256 'ee4085cecce12584e600f3d814a28fa822dfaacec1f94c84bfd67f8a5571a5f4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.15.0_armv7l/libunbound-1.15.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.15.0_armv7l/libunbound-1.15.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.15.0_i686/libunbound-1.15.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.15.0_x86_64/libunbound-1.15.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.17.1_armv7l/libunbound-1.17.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.17.1_armv7l/libunbound-1.17.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.17.1_i686/libunbound-1.17.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.17.1_x86_64/libunbound-1.17.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '138691148c63f343b99d70e58405f26a5efc185cefb0aa6e7f9d96a8e5738131',
-     armv7l: '138691148c63f343b99d70e58405f26a5efc185cefb0aa6e7f9d96a8e5738131',
-       i686: '1eb7e176be91f7fa902a75295a81d1116745b3fd71ef87588964b7c2e129c363',
-     x86_64: '5c4125bce66bb83fc775a5fe236718dee958b9724d5b6adf55d3b682c2b05401'
+    aarch64: '221a8882a2903fb0783c4708113c2f630a8a1fc61de2427e664823421172b43e',
+     armv7l: '221a8882a2903fb0783c4708113c2f630a8a1fc61de2427e664823421172b43e',
+       i686: 'e4f090cdb6f1df7cc0df9750a6e6cf5f05a113dd7889cdfd015e7c4480d7fae4',
+     x86_64: '7d7ffb5749599f0a772e6b3304a398f1b8a7b17d7ec30858d98da5057522739d'
   })
 
+  depends_on 'expat' # R
+  depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.
 
@@ -31,9 +33,8 @@ class Libunbound < Package
   end
 
   def self.build
-    system "./configure \
+    system "mold -run ./configure \
     #{CREW_OPTIONS} \
-    #{CREW_ENV_OPTIONS} \
     --enable-shared \
     --enable-static \
     --with-pic"
