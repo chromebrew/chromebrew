@@ -6,22 +6,22 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '1.11.0-4610013'
+  version '1.11.0-dce8ebe'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
-  git_hashtag '461001328bccf3b61709ee4531c6768c5280e289'
+  git_hashtag 'dce8ebe5265b615f35999272d3dc666b1c246ff4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-4610013_armv7l/mold-1.11.0-4610013-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-4610013_armv7l/mold-1.11.0-4610013-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-4610013_i686/mold-1.11.0-4610013-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-4610013_x86_64/mold-1.11.0-4610013-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-dce8ebe_armv7l/mold-1.11.0-dce8ebe-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-dce8ebe_armv7l/mold-1.11.0-dce8ebe-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-dce8ebe_i686/mold-1.11.0-dce8ebe-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-dce8ebe_x86_64/mold-1.11.0-dce8ebe-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cbe0e18bcd3a58d72342e4369d4cd42a2017f352a96daaebb60c7016cdc98409',
-     armv7l: 'cbe0e18bcd3a58d72342e4369d4cd42a2017f352a96daaebb60c7016cdc98409',
-       i686: 'ef84fd60c77e04d7ba97f171b7a6bd353d4ac23ab0e8912c8d97dd91b403d2b4',
-     x86_64: 'f3bdf8618e34e7aa23ddcfdd94e6576e3e052fc9a467eba50e2afca2a078451c'
+    aarch64: 'df0c064788a64611a0b7f051bac1601350b42ab8567f739a369f623443a52495',
+     armv7l: 'df0c064788a64611a0b7f051bac1601350b42ab8567f739a369f623443a52495',
+       i686: '450456d45ac0ffc4a0dbeafd7c6a404263932aa436828550915a63a253998c80',
+     x86_64: '8851d9188f83533dbf94000b9960a2cba816e46493d91297f092eba97d178f8f'
   })
 
   depends_on 'zlibpkg' # R
@@ -46,7 +46,11 @@ class Mold < Package
     system "#{CREW_NINJA} -C builddir"
     File.write 'moldenv', <<~MOLD_ENV_EOF
       # See https://github.com/rui314/mold/commit/36fc0655489eb96e1be15b03b3f5e227cd97a22e
-      MOLD_JOBS=1
+      if [[ $(free | head -n 2 | tail -n 1 | awk '{print $4}') -gt '4096000' ]]; then
+        unset MOLD_JOBS
+      else
+        MOLD_JOBS=1
+      fi
     MOLD_ENV_EOF
   end
 
