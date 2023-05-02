@@ -692,6 +692,14 @@ def upgrade(*pkgs, build_from_source: false)
     @rerun_upgrade = true
   end
 
+  # Only upgrade openssl if openssl is in the upgrade list, as other
+  # package upgrades may break until crew is rerun with the new
+  # version of openssl.
+  if to_be_upgraded.include?('openssl')
+    to_be_upgraded = ['openssl']
+    @rerun_upgrade = true
+  end
+
   # install new dependencies (if any)
   to_be_upgraded.each do |pkgName|
     search(pkgName)
