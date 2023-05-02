@@ -3,23 +3,23 @@ require 'package'
 class Gnutls < Package
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.7.9'
+  version '3.8.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.9.tar.xz'
-  source_sha256 'aaa03416cdbd54eb155187b359e3ec3ed52ec73df4df35a0edd49429ff64d844'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz'
+  source_sha256 '0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.9_armv7l/gnutls-3.7.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.9_armv7l/gnutls-3.7.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.9_i686/gnutls-3.7.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.7.9_x86_64/gnutls-3.7.9-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_armv7l/gnutls-3.8.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_armv7l/gnutls-3.8.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_i686/gnutls-3.8.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_x86_64/gnutls-3.8.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4a7ed8769bc725a52a49d2cf6a00ba6cf582cbbb2cb64fde92c4ff2de325ef7f',
-     armv7l: '4a7ed8769bc725a52a49d2cf6a00ba6cf582cbbb2cb64fde92c4ff2de325ef7f',
-       i686: '208ccbca3dda2b6a0fce1d915dbdca10bb12dc017268d74edc279a120f034add',
-     x86_64: 'acfaf2260b1fed8a1d9bcab454cdf0ad21433cd9ad81b02aacb4a71a8516f596'
+    aarch64: '0a897675292ac7dac0705366de6e43ec3d49ef5f981984570d6574be2416af20',
+     armv7l: '0a897675292ac7dac0705366de6e43ec3d49ef5f981984570d6574be2416af20',
+       i686: 'e13f1dd743d212689362e087300db5c2b96bb524d38dcaf9c05e9a408fd7f261',
+     x86_64: 'f3629c95675ce0f48d8de9f525d7aa359f50c3f84fc5970e83ecf3fd50477a7a'
   })
 
   depends_on 'brotli' # R
@@ -34,9 +34,9 @@ class Gnutls < Package
   depends_on 'libunistring' # R
   depends_on 'nettle' # R
   depends_on 'openssl' # R
-  depends_on 'p11kit' # R This package cannot be built statically.
+  depends_on 'p11kit' # R
   depends_on 'trousers' => :build
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
   no_env_options
