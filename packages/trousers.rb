@@ -23,11 +23,12 @@ class Trousers < Package
      x86_64: 'ae6c76c54c1337dc41efc95b6017e45999a56a3470620420d95f76e7e671a0d2'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
+
   def self.build
     system './bootstrap.sh'
-    system "CFLAGS='-flto=auto' CXXFLAGS='-flto=auto'
-      LDFLAGS='-flto=auto' \
-      ./configure \
+    system "./configure \
       #{CREW_OPTIONS} \
       --with-gui=none"
     system 'make'
