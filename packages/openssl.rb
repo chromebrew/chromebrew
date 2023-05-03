@@ -73,23 +73,24 @@ class Openssl < Package
     # Builds and rebuilds of packages against OpenSSL should automatically
     # build against OpenSSL 3.x and not against OpenSSL 1.1.1x.
     File.write 'openssl111_files', <<~EOF
-      #{CREW_LIB_PREFIX.chr}/libcrypto.so.1.1
-      #{CREW_LIB_PREFIX.chr}/libssl.so.1.1
+      #{CREW_LIB_PREFIX[1..-1]}/libcrypto.so.1.1
+      #{CREW_LIB_PREFIX[1..-1]}/libssl.so.1.1
     EOF
     @cur_dir = `pwd`.chomp
+    @legacy_version = '1.1.1t'
     case ARCH
     when 'aarch64', 'armv7l'
-      downloader 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_armv7l/openssl-1.1.1t-chromeos-armv7l.tar.xz',
-                 '88a36d1539c7c01af1f5e469b64c2760f43126bb75c0e63b53d3d61c2a6fbe7f', 'openssl-1.1.1t-chromeos.tar.xz'
+      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/#{@legacy_version}_armv7l/openssl-#{@legacy_version}-chromeos-armv7l.tar.xz",
+                 '88a36d1539c7c01af1f5e469b64c2760f43126bb75c0e63b53d3d61c2a6fbe7f', "openssl-#{@legacy_version}-chromeos.tar.xz"
     when 'i686'
-      downloader 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_i686/openssl-1.1.1t-chromeos-i686.tar.xz',
-                 'ce98c1898e57df1cbcceab08912e219fb5f27b0e4585315f7babdf524fa844dc', 'openssl-1.1.1t-chromeos.tar.xz'
+      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/#{@legacy_version}_i686/openssl-#{@legacy_version}-chromeos-i686.tar.xz",
+                 'ce98c1898e57df1cbcceab08912e219fb5f27b0e4585315f7babdf524fa844dc', "openssl-#{@legacy_version}-chromeos.tar.xz"
     when 'x86_64'
-      downloader 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_x86_64/openssl-1.1.1t-chromeos-x86_64.tar.xz',
-                 'd6583dc2c7566da33402cb8d7f9025189d65b8ba6300e752edcb0d74ebcb1f68', 'openssl-1.1.1t-chromeos.tar.xz'
+      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/#{@legacy_version}_x86_64/openssl-#{@legacy_version}-chromeos-x86_64.tar.xz",
+                 'd6583dc2c7566da33402cb8d7f9025189d65b8ba6300e752edcb0d74ebcb1f68', "openssl-#{@legacy_version}-chromeos.tar.xz"
     end
     Dir.chdir(CREW_DEST_DIR) do
-      system "tar -xv --files-from #{@cur_dir}/openssl111_files -f #{@cur_dir}/openssl-1.1.1t-chromeos.tar.xz"
+      system "tar -xv --files-from #{@cur_dir}/openssl111_files -f #{@cur_dir}/openssl-#{@legacy_version}-chromeos.tar.xz"
     end
   end
 end
