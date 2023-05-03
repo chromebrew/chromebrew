@@ -16,10 +16,10 @@ class Most < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_x86_64/most-5.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '12068a13f4a6dbf37c5a22a13834e306c5b91999af51e2a7cfa3ebc244473f1f',
-     armv7l: '12068a13f4a6dbf37c5a22a13834e306c5b91999af51e2a7cfa3ebc244473f1f',
-       i686: '2988c796e2d092d1026b2db237f084bb5562fa924884acac60182bad54764322',
-     x86_64: '068c1106e867493a8a2b7566c08df4202e44e7e7d740e98fceac2e74346781a1'
+    aarch64: '6689e97e303c8e6ab015a54dcc518e8f3aaafb67c3d7c4921a1fdebaf112c3c4',
+     armv7l: '6689e97e303c8e6ab015a54dcc518e8f3aaafb67c3d7c4921a1fdebaf112c3c4',
+       i686: '7cae7bae27f55159d799d83824e00e6a25ec3b2fc4ec8f2c74b5e793e1cc50d6',
+     x86_64: 'afc592b6140eb946a257197597f624a5125ae1f694f4883d5013461be388e071'
   })
 
   depends_on 'glibc' # R
