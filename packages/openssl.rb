@@ -73,8 +73,8 @@ class Openssl < Package
     # Builds and rebuilds of packages against OpenSSL should automatically
     # build against OpenSSL 3.x and not against OpenSSL 1.1.1x.
     File.write 'openssl111_files', <<~EOF
-      #{CREW_LIB_PREFIX[1..-1]}/libcrypto.so.1.1
-      #{CREW_LIB_PREFIX[1..-1]}/libssl.so.1.1
+      #{CREW_LIB_PREFIX[1..]}/libcrypto.so.1.1
+      #{CREW_LIB_PREFIX[1..]}/libssl.so.1.1
     EOF
     @cur_dir = `pwd`.chomp
     @legacy_version = '1.1.1t'
