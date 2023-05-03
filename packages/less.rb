@@ -3,23 +3,23 @@ require 'package'
 class Less < Package
   description 'GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.'
   homepage 'https://www.gnu.org/software/less/'
-  version '633x-35aac3f'
+  version '633'
   license 'GPL-3 or BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/gwsw/less.git'
-  git_hashtag '35aac3f11104ed597886d05fa9d3264387c3f6e6'
+  source_url "https://greenwoodsoftware.com/less/less-#{version}.tar.gz"
+  source_sha256 '2f201d64b828b88af36dfe6cfdba3e0819ece2e446ebe6224813209aaefed04f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633x-35aac3f_armv7l/less-633x-35aac3f-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633x-35aac3f_armv7l/less-633x-35aac3f-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633x-35aac3f_i686/less-633x-35aac3f-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633x-35aac3f_x86_64/less-633x-35aac3f-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633_armv7l/less-633-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633_armv7l/less-633-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633_i686/less-633-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/633_x86_64/less-633-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '400dd810afa42f62d45fe724aa1f8eb5df1c3491731f4f3cc70bd21c09d0e96c',
-     armv7l: '400dd810afa42f62d45fe724aa1f8eb5df1c3491731f4f3cc70bd21c09d0e96c',
-       i686: '31bf6c9a0f46b70d99626c94ec8f59c92603574fa1be10fe48495ecf76368e79',
-     x86_64: '421e919875a8b600cd710aba4d910b64f6767217c1cf8387bfa419ee0d656573'
+    aarch64: '0ce05f43a05e71150e80ab0663640c8802a2d9c258b9d014e293a637801ababb',
+     armv7l: '0ce05f43a05e71150e80ab0663640c8802a2d9c258b9d014e293a637801ababb',
+       i686: 'a18c9f5a8420cad3ff50a6b3ad3a15c507f319aec4cfc711cbde06ba8957d0a8',
+     x86_64: 'fcb65cc3739f3c868cee842d0fc88e51152f52cd0ac93c00fe47c91b74944d03'
   })
 
   depends_on 'glibc' # R
@@ -27,7 +27,6 @@ class Less < Package
   depends_on 'gcc' # R
 
   def self.build
-    system 'make -f Makefile.aut distfiles'
     system "./configure #{CREW_OPTIONS} --with-regex=posix"
     system 'make'
     File.write 'lessenv', <<~LESS_ENV_EOF
