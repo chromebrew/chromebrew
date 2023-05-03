@@ -45,7 +45,6 @@ class Openssl < Package
 
   def self.build
     @no_tests_target = `openssl version | awk '{print $2}'`.chomp == version.to_s ? 'no-tests' : ''
-    puts "@no_tests_target is #{@no_tests_target}"
 
     # This gives you the list of OpenSSL configure targets
     system './Configure LIST'
