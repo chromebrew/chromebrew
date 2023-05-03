@@ -691,9 +691,7 @@ def upgrade(*pkgs, build_from_source: false)
   # Upgrade OpenSSL first if OpenSSL is in the upgrade list, as other
   # package upgrades, especially their postinstalls, may break until the
   # new version of OpenSSL is installed.
-  if to_be_upgraded.include?('openssl')
-    to_be_upgraded.insert(0, to_be_upgraded.delete('openssl'))
-  end
+  to_be_upgraded.insert(0, to_be_upgraded.delete('openssl')) if to_be_upgraded.include?('openssl')
 
   # Only upgrade ruby if ruby is in the upgrade list, as other
   # package upgrades may break until crew is rerun with the new
