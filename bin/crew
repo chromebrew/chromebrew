@@ -684,6 +684,15 @@ def upgrade(*pkgs, build_from_source: false)
     return true
   end
 
+  # Eventually, we should have the upgrade order generated based upon an
+  # analysis of the dependency hierarchy, to make sure that earlier
+  # dependencies get upgraded first.
+
+  # Upgrade OpenSSL first if OpenSSL is in the upgrade list, as other
+  # package upgrades, especially their postinstalls, may break until the
+  # new version of OpenSSL is installed.
+  to_be_upgraded.insert(0, to_be_upgraded.delete('openssl')) if to_be_upgraded.include?('openssl')
+
   # Only upgrade ruby if ruby is in the upgrade list, as other
   # package upgrades may break until crew is rerun with the new
   # version of ruby.

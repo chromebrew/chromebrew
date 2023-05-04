@@ -3,7 +3,7 @@ require 'package'
 class Librhash < Package
   description 'RHash is a console utility for computing and verifying hash sums of files.'
   homepage 'http://rhash.anz.ru/'
-  @_ver = '1.4.2'
+  @_ver = '1.4.3'
   version @_ver
   license 'MIT'
   compatibility 'all'
@@ -11,20 +11,24 @@ class Librhash < Package
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_armv7l/librhash-1.4.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_armv7l/librhash-1.4.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_i686/librhash-1.4.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.2_x86_64/librhash-1.4.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_armv7l/librhash-1.4.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_armv7l/librhash-1.4.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_i686/librhash-1.4.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_x86_64/librhash-1.4.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '59805811b7e2933f16bd2114d865802ffc42ea025f353c7ae70326443d502a9e',
-     armv7l: '59805811b7e2933f16bd2114d865802ffc42ea025f353c7ae70326443d502a9e',
-       i686: '32a3acd47df5deb05dc97177438d9ef6d7c0b66940d82e6e9a5206ebec6a6bba',
-     x86_64: '60784cf7c9145aaf4c3f98e705ec4c0b2d1d6468957cee41f12f851731431a5a'
+    aarch64: 'fdb6b38162bd3a25a3797a2e151262b45338bd56915555f97402308d6290b4c8',
+     armv7l: 'fdb6b38162bd3a25a3797a2e151262b45338bd56915555f97402308d6290b4c8',
+       i686: 'e3a3a89ca257d2132713f6770aa66774af98def033e2eaa44225da969e7ef1f6',
+     x86_64: 'bdcf6b36fe18f40f153b083daca45f3b634face054642ff469076afa46934299'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'openssl' # R
+  depends_on 'gcc' # R
+
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure \
+    system "mold -run ./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}\
             --cc=#{CREW_TGT}-gcc \
