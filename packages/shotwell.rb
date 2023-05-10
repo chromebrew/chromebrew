@@ -3,21 +3,21 @@ require 'package'
 class Shotwell < Package
   description 'An open-source digital photo organiser for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Shotwell'
-  version '0.32.0'
+  version '0.32.1'
   license 'GPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gnome.org/sources/shotwell/0.32/shotwell-0.32.0.tar.xz'
-  source_sha256 '1772b2fa1e7a5479d528028bc9a303f2855e1d959a5b3c917922e63a98a90b19'
+  source_url 'https://download.gnome.org/sources/shotwell/0.32/shotwell-0.32.1.tar.xz'
+  source_sha256 '4ac4517416ad8aa23b44e75c34bd6e16bab7363fa20991bb09bacdfab3f763ce'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.0_armv7l/shotwell-0.32.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.0_armv7l/shotwell-0.32.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.0_x86_64/shotwell-0.32.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.1_armv7l/shotwell-0.32.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.1_armv7l/shotwell-0.32.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.1_x86_64/shotwell-0.32.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '088c46df2ab44dd0279c06cacc8b76a6fc2aef0463616f0df531b8476fa45082',
-     armv7l: '088c46df2ab44dd0279c06cacc8b76a6fc2aef0463616f0df531b8476fa45082',
-     x86_64: 'a998826a68da79628baabdc79c243038762dd32e2b8d1b3e14a46a580e55adf2'
+    aarch64: '74b2761fe3bac1dda3a107fa06f6e5b77d3971064a8c186924a83315b3079ee2',
+     armv7l: '74b2761fe3bac1dda3a107fa06f6e5b77d3971064a8c186924a83315b3079ee2',
+     x86_64: '3dbaeddb783532faa4d9d61fe2cdcfea2f0ee19f48ee4bc5b83b3952a4e49686'
   })
 
   depends_on 'vala' => :build
