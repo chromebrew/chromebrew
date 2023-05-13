@@ -6,23 +6,23 @@ require 'package'
 class Grep < Package
   description 'A string search utility'
   homepage 'https://www.gnu.org/software/grep/'
-  version '3.10'
+  version '3.11'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/grep/grep-3.10.tar.xz'
-  source_sha256 '24efa5b595fb5a7100879b51b8868a0bb87a71c183d02c4c602633b88af6855b'
+  source_url 'https://ftpmirror.gnu.org/grep/grep-3.11.tar.xz'
+  source_sha256 '1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.10_armv7l/grep-3.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.10_armv7l/grep-3.10-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.10_i686/grep-3.10-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.10_x86_64/grep-3.10-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_armv7l/grep-3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_armv7l/grep-3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_i686/grep-3.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_x86_64/grep-3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1c09b2c36f6ac56d0e5bbab737e4d5d24ef45c21e2f9b9ca581137c80d6209d9',
-     armv7l: '1c09b2c36f6ac56d0e5bbab737e4d5d24ef45c21e2f9b9ca581137c80d6209d9',
-       i686: '345ac10320793cccad6d5b817cb15e1853c135f4235dc532b66d2972fba9a698',
-     x86_64: '44ab3681e82fcfd16e97894538a84473ad5669d323db0277d81aaf7ccf49cf8a'
+    aarch64: 'e26ffb1c929816e035a5e64a5140ae1acdc54a83f115478a907d407a31088a1c',
+     armv7l: 'e26ffb1c929816e035a5e64a5140ae1acdc54a83f115478a907d407a31088a1c',
+       i686: 'c91c85ea8ee3f7d604b4d0a46041918d94fcbec8dfe7f9e35c5eb8478535649c',
+     x86_64: '337ed11dee1a3d584105e0b5b4a3ec32bd658ebaa9674a1513223348e457a5b3'
   })
 
   depends_on 'pcre'
