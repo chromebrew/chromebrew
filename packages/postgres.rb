@@ -3,24 +3,41 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '10.17'
+  version '15.3'
   license 'PostgreSQL and GPL-2'
   compatibility 'all'
-  source_url 'https://ftp.postgresql.org/pub/source/v10.17/postgresql-10.17.tar.bz2'
-  source_sha256 '5af28071606c9cd82212c19ba584657a9d240e1c4c2da28fc1f3998a2754b26c'
+  source_url 'https://ftp.postgresql.org/pub/source/v15.3/postgresql-15.3.tar.bz2'
+  source_sha256 'ffc7d4891f00ffbf5c3f4eab7fbbced8460b8c0ee63c5a5167133b9e6599d932'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_armv7l/postgres-10.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_armv7l/postgres-10.17-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_i686/postgres-10.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/10.17_x86_64/postgres-10.17-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_armv7l/postgres-15.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_armv7l/postgres-15.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_i686/postgres-15.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_x86_64/postgres-15.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '67ec0a8d3aa3fa72a86a6041d74cf17ba16919e373127f19c50b88518d830a08',
-     armv7l: '67ec0a8d3aa3fa72a86a6041d74cf17ba16919e373127f19c50b88518d830a08',
-       i686: '0e6b22d4eaab62bfd4eac9586569d8d28b842e2386af2a03374887a6edf8d384',
-     x86_64: '60acfd4374380012bce2cda3d6e2df788f340c180fb725f5166a46c48932a17f'
+    aarch64: 'b405cde3037b87a93a730bbcb60b83ce0bca8de039abd6efb4c619caba420785',
+     armv7l: 'b405cde3037b87a93a730bbcb60b83ce0bca8de039abd6efb4c619caba420785',
+       i686: 'b19e9500521024d5ad34d92012424f82649d55005e43ba6a82f509a0d05d80f3',
+     x86_64: '082fa193fcdab42cd484388111cc1dc841c0e403df069e76b600015cfc996d92'
   })
+
+  depends_on 'brotli'
+  depends_on 'expat'
+  depends_on 'icu4c'
+  depends_on 'krb5'
+  depends_on 'libcyrussasl'
+  depends_on 'libxml2'
+  depends_on 'linux_pam'
+  depends_on 'llvm'
+  depends_on 'lz4'
+  depends_on 'openldap'
+  depends_on 'perl'
+  depends_on 'python3'
+  depends_on 'tcl'
+  depends_on 'zstd'
+
+  no_fhs
 
   # Feel free to change this directory prior to compiling.
 
@@ -29,7 +46,19 @@ class Postgres < Package
 
   def self.build
     system "sed -i 's,PGDATA=\"/usr/local/pgsql/data\",PGDATA=\"#{PGDATA}\",' contrib/start-scripts/linux"
-    system "./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS} \
+      --with-gssapi \
+      --with-icu \
+      --with-ldap \
+      --with-libxml \
+      --with-llvm \
+      --with-lz4 \
+      --with-openssl \
+      --with-pam \
+      --with-perl \
+      --with-python \
+      --with-tcl \
+      --with-zstd"
     system 'make world'
   end
 
@@ -41,16 +70,18 @@ class Postgres < Package
     end
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-world'
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @postgresenv = <<~POSTGRESEOF
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/var/log/"
+    FileUtils.touch "#{CREW_DEST_PREFIX}/var/log/pgsql.log"
+
+    File.write 'postgresenv', <<~POSTGRESEOF
       # PostgreSQL configuration
       export PGDATA="#{PGDATA}"
       # Start server on login
-      #if [ -f #{CREW_PREFIX}/bin/pg_ctl ]; then
-      #  pg_ctl -l #{CREW_PREFIX}/tmp/pgsql.log start
-      #fi
+      if [ -x #{CREW_PREFIX}/bin/pg_ctl ]; then
+        pg_ctl -l #{CREW_PREFIX}/var/log/pgsql.log start
+      fi
     POSTGRESEOF
-    File.write("#{CREW_DEST_PREFIX}/etc/env.d/postgres", @postgresenv)
+    FileUtils.install 'postgresenv', "#{CREW_DEST_PREFIX}/etc/env.d/postgres", mode: 0o644
   end
 
   def self.postinstall
@@ -63,10 +94,11 @@ class Postgres < Package
     puts
     puts 'To start postgres: pg_ctl -l logfile start'.lightblue
     puts 'To stop postgres: pg_ctl stop'.lightblue
+    puts
     puts 'Create a database: createdb <dbname>'.lightblue
     puts 'Connect to database: psql <dbname>'.lightblue
     puts
-    puts "To configure, edit #{CREW_DEST_PREFIX}/etc/env.d/postgres".lightblue
+    puts "To configure, edit #{CREW_PREFIX}/etc/env.d/postgres".lightblue
     puts "Remember to 'source ~/.bashrc' after changes".lightblue
     puts
   end
