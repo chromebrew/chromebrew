@@ -4,23 +4,21 @@ class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
   @_ver = '0.35.1'
-  version @_ver
+  version "#{@_ver}-1"
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/mpv-player/mpv.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_armv7l/mpv-0.35.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_armv7l/mpv-0.35.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_i686/mpv-0.35.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1_x86_64/mpv-0.35.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1-1_armv7l/mpv-0.35.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1-1_armv7l/mpv-0.35.1-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1-1_x86_64/mpv-0.35.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ed7c4be9ce73917e3b8e81a8f24586a16a8e529bd618b9c905285b7badb63e9b',
-     armv7l: 'ed7c4be9ce73917e3b8e81a8f24586a16a8e529bd618b9c905285b7badb63e9b',
-       i686: 'fe948199d9ce4f08ed94f06f645a8714b10bbf42ea2d147d482ec9b608c4754f',
-     x86_64: '7b62049cf82f8ff437ecfb088a8f96b9858548af05b1e521c6dddee468e18ad7'
+    aarch64: '1d720233e0f7f5c1337bbb5a7b0351767f40607034661f3387bdd03a4071f739',
+     armv7l: '1d720233e0f7f5c1337bbb5a7b0351767f40607034661f3387bdd03a4071f739',
+     x86_64: '10cbe9d834e2a8808f4cf4c3b3286b974faccfe1d06b57f0efb85b7102312db6'
   })
 
   depends_on 'alsa_lib' # R
@@ -87,11 +85,11 @@ class Mpv < Package
       fs=yes
     MPVCONF
     system 'meson configure builddir'
-    system 'ninja -C builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.mpv"
     FileUtils.install 'mpv.conf', "#{CREW_DEST_HOME}/.mpv/mpv.conf", mode: 0o644
   end
