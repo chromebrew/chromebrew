@@ -23,7 +23,7 @@ class Cantarell_fonts < Package
      x86_64: '6640502ffa69e9826def172ad79941dac5dd281138dbe7b2ba7f502ab50f2fad'
   })
 
-  depends_on 'appstream_glib'
+  depends_on 'appstream_glib' => :build
   depends_on 'fontconfig' => :build
   depends_on 'graphite' => :build
 
