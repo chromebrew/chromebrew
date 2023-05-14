@@ -3,22 +3,22 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '6.0'
+  @_ver = '6.0-27205c0'
   version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
-  git_hashtag "n#{@_ver}"
+  git_hashtag '27205c0b476a1095bc38759ad9df001e799e4843'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_armv7l/ffmpeg-6.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_armv7l/ffmpeg-6.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0_x86_64/ffmpeg-6.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-27205c0_armv7l/ffmpeg-6.0-27205c0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-27205c0_armv7l/ffmpeg-6.0-27205c0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-27205c0_x86_64/ffmpeg-6.0-27205c0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8791502edf8e591d920acad5ec0b1a43119bfdfc9e56b3b3723d1e016a88ffe5',
-     armv7l: '8791502edf8e591d920acad5ec0b1a43119bfdfc9e56b3b3723d1e016a88ffe5',
-     x86_64: '64b02fc207ed0fb44cf6649fed59fe0f1858b43fae1abc3ed86af8ed33927d90'
+    aarch64: 'd9fbe22ec6b976dbd92d4fb75d3e9bba8c09b2fc24733842432a7413b74d1b83',
+     armv7l: 'd9fbe22ec6b976dbd92d4fb75d3e9bba8c09b2fc24733842432a7413b74d1b83',
+     x86_64: '75e56571a13b9aaa67c29723753e3d10f21750f11adfb2d454c65e66078f655f'
   })
 
   depends_on 'avisynthplus' # ?
