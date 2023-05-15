@@ -3,23 +3,21 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version '5.15.7-5125862'
+  version '5.15.9-8415277'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag '51258629f2cf37fff8406bf705d79c07fc7135ca'
+  git_hashtag '84152777a48af444a902bbf4df8b38146171c20d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_armv7l/qtbase-5.15.7-5125862-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_armv7l/qtbase-5.15.7-5125862-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_i686/qtbase-5.15.7-5125862-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_x86_64/qtbase-5.15.7-5125862-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-8415277_armv7l/qtbase-5.15.9-8415277-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-8415277_armv7l/qtbase-5.15.9-8415277-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-8415277_x86_64/qtbase-5.15.9-8415277-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '96c0fffc13bb13fd42480f03e1f3b7d67c7861394221ac06fb593869653e2201',
-     armv7l: '96c0fffc13bb13fd42480f03e1f3b7d67c7861394221ac06fb593869653e2201',
-       i686: '76d578ef8209f34d10d99af5833b0c13e6a7fac07878e878e214711cb78798a8',
-     x86_64: 'fec0cd7227bf4e75cf5d15d6cdd6f58eb37c781ed4da86662a5f56726b5defb6'
+    aarch64: 'e57671fa0d6a5abcdde8eb7c06a15be2cb810c687b29f3ef095e693bd18befce',
+     armv7l: 'e57671fa0d6a5abcdde8eb7c06a15be2cb810c687b29f3ef095e693bd18befce',
+     x86_64: 'c4c3860f30518cf8aebcc147e42814c44f8db2b862480c51d86f24754445c9aa'
   })
 
   depends_on 'alsa_plugins' => :build
@@ -34,7 +32,6 @@ class Qtbase < Package
   depends_on 'freetype' # R
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' => :build
