@@ -20,7 +20,7 @@ class Ffmpegthumbnailer < Package
      x86_64: '52d11863520762477c41f80ac962e0fd361a31891da7f106af31ef6cbe9aef34'
   })
 
-  depends_on 'ffmpeg'
+  depends_on 'ffmpeg' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libjpeg' # R
