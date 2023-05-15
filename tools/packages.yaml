@@ -6141,6 +6141,11 @@ url: https://archive.mozilla.org/pub/opus/
 activity: none
 ---
 kind: url
+name: opusfile
+url: https://github.com/xiph/opusfile/releases
+activity: low
+---
+kind: url
 name: osl
 url: https://github.com/periscop/openscop/releases/
 activity: low
