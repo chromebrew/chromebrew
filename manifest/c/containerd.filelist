@@ -1,0 +1,13 @@
+/usr/local/.config/systemd/user/containerd.service
+/usr/local/etc/containerd/config.toml
+/usr/local/etc/containerd/debug.toml
+/usr/local/share/man/man5/containerd-config.toml.5.zst
+/usr/local/share/man/man8/containerd-config.8.zst
+/usr/local/share/man/man8/containerd.8.zst
+/usr/local/share/man/man8/ctr.8.zst
+/usr/local/bin/ctr
+/usr/local/bin/containerd
+/usr/local/bin/containerd-stress
+/usr/local/bin/containerd-shim
+/usr/local/bin/containerd-shim-runc-v1
+/usr/local/bin/containerd-shim-runc-v2

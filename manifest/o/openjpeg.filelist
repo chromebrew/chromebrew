@@ -1,0 +1,14 @@
+/usr/local/lib64/openjpeg-2.5/OpenJPEGTargets.cmake
+/usr/local/lib64/openjpeg-2.5/OpenJPEGTargets-release.cmake
+/usr/local/lib64/openjpeg-2.5/OpenJPEGConfig.cmake
+/usr/local/lib64/pkgconfig/libopenjp2.pc
+/usr/local/lib64/libopenjp2.so.2.5.0
+/usr/local/lib64/libopenjp2.a
+/usr/local/include/openjpeg-2.5/opj_config.h
+/usr/local/include/openjpeg-2.5/openjpeg.h
+/usr/local/include/openjpeg-2.5/opj_stdint.h
+/usr/local/bin/opj_decompress
+/usr/local/bin/opj_compress
+/usr/local/bin/opj_dump
+/usr/local/lib64/libopenjp2.so.7
+/usr/local/lib64/libopenjp2.so

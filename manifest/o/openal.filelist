@@ -1,0 +1,23 @@
+/usr/local/lib64/pkgconfig/openal.pc
+/usr/local/lib64/libopenal.so.1.20.1
+/usr/local/lib64/cmake/OpenAL/OpenALConfig-release.cmake
+/usr/local/lib64/cmake/OpenAL/OpenALConfig.cmake
+/usr/local/share/openal/hrtf/Default HRTF.mhr
+/usr/local/share/openal/presets/presets.txt
+/usr/local/share/openal/presets/3D7.1.ambdec
+/usr/local/share/openal/presets/rectangle.ambdec
+/usr/local/share/openal/presets/square.ambdec
+/usr/local/share/openal/presets/itu5.1.ambdec
+/usr/local/share/openal/presets/hexagon.ambdec
+/usr/local/share/openal/presets/itu5.1-nocenter.ambdec
+/usr/local/share/openal/alsoftrc.sample
+/usr/local/bin/altonegen
+/usr/local/bin/openal-info
+/usr/local/include/AL/efx.h
+/usr/local/include/AL/alext.h
+/usr/local/include/AL/efx-creative.h
+/usr/local/include/AL/al.h
+/usr/local/include/AL/efx-presets.h
+/usr/local/include/AL/alc.h
+/usr/local/lib64/libopenal.so
+/usr/local/lib64/libopenal.so.1

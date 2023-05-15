@@ -1,0 +1,15 @@
+/usr/local/lib64/libcheck.la
+/usr/local/lib64/libcheck.a
+/usr/local/lib64/pkgconfig/check.pc
+/usr/local/lib64/libcheck.so.0.0.0
+/usr/local/share/doc/check/README
+/usr/local/share/doc/check/COPYING.LESSER
+/usr/local/share/doc/check/ChangeLog
+/usr/local/share/doc/check/NEWS
+/usr/local/share/aclocal/check.m4
+/usr/local/share/man/man1/checkmk.1.gz
+/usr/local/bin/checkmk
+/usr/local/include/check.h
+/usr/local/include/check_stdint.h
+/usr/local/lib64/libcheck.so
+/usr/local/lib64/libcheck.so.0

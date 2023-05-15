@@ -1,0 +1,4 @@
+/usr/local/lib64/pkgconfig/printproto.pc
+/usr/local/share/man/man7/Xprint.7.gz
+/usr/local/include/X11/extensions/Print.h
+/usr/local/include/X11/extensions/Printstr.h

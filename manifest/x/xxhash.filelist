@@ -1,0 +1,15 @@
+/usr/local/lib64/libxxhash.a
+/usr/local/lib64/libxxhash.so.0.8.1
+/usr/local/lib64/pkgconfig/libxxhash.pc
+/usr/local/include/xxhash.h
+/usr/local/include/xxh3.h
+/usr/local/bin/xxhsum
+/usr/local/share/man/man1/xxhsum.1.gz
+/usr/local/lib64/libxxhash.so.0
+/usr/local/lib64/libxxhash.so
+/usr/local/bin/xxh32sum
+/usr/local/bin/xxh64sum
+/usr/local/bin/xxh128sum
+/usr/local/share/man/man1/xxh128sum.1.gz
+/usr/local/share/man/man1/xxh32sum.1.gz
+/usr/local/share/man/man1/xxh64sum.1.gz

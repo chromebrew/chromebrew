@@ -1,0 +1,6 @@
+/usr/local/etc/bash.d/wishlist
+/usr/local/share/man/man1/wishlist.1.zst
+/usr/local/share/wishlist/completions/wishlist.fish
+/usr/local/share/wishlist/completions/wishlist.bash
+/usr/local/share/wishlist/completions/wishlist.zsh
+/usr/local/bin/wishlist

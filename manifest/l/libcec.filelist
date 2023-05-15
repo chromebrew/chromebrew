@@ -1,0 +1,17 @@
+/usr/local/bin/cec-client-6.0.2
+/usr/local/bin/cecc-client-6.0.2
+/usr/local/bin/pyCecClient
+/usr/local/lib/python3.10/site-packages/_cec.so
+/usr/local/lib/python3.10/site-packages/cec.py
+/usr/local/lib64/pkgconfig/libcec.pc
+/usr/local/lib64/libcec.so.6.0.2
+/usr/local/include/libcec/cec.h
+/usr/local/include/libcec/cecc.h
+/usr/local/include/libcec/cecloader.h
+/usr/local/include/libcec/ceccloader.h
+/usr/local/include/libcec/cectypes.h
+/usr/local/include/libcec/version.h
+/usr/local/bin/cec-client
+/usr/local/bin/cecc-client
+/usr/local/lib64/libcec.so.6
+/usr/local/lib64/libcec.so

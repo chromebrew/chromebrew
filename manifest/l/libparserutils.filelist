@@ -1,0 +1,16 @@
+/usr/local/lib64/libparserutils.so.0.2.4
+/usr/local/lib64/pkgconfig/libparserutils.pc
+/usr/local/include/parserutils/parserutils.h
+/usr/local/include/parserutils/functypes.h
+/usr/local/include/parserutils/charset/utf16.h
+/usr/local/include/parserutils/charset/utf8.h
+/usr/local/include/parserutils/charset/codec.h
+/usr/local/include/parserutils/charset/mibenum.h
+/usr/local/include/parserutils/input/inputstream.h
+/usr/local/include/parserutils/types.h
+/usr/local/include/parserutils/errors.h
+/usr/local/include/parserutils/utils/stack.h
+/usr/local/include/parserutils/utils/buffer.h
+/usr/local/include/parserutils/utils/vector.h
+/usr/local/lib64/libparserutils.so
+/usr/local/lib64/libparserutils.so.0

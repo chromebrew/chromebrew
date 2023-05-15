@@ -53,6 +53,7 @@ DOC = <<~DOCOPT
     crew search [options] [<name> ...]
     crew sysinfo [options]
     crew update [options] [<compatible>]
+    crew updatefiles [options]
     crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
     crew whatprovides [options] <pattern> ...
 
@@ -487,6 +488,11 @@ def help(pkgName = nil)
       Usage: crew update compatible
       This updates the crew package compatibility list.
     EOT
+  when 'updatefiles'
+    puts <<~EOT
+      Update crew files cache.
+      Usage: crew updatefiles
+    EOT
   when 'upgrade'
     puts <<~EOT
       Update package(s).
@@ -572,6 +578,24 @@ def files(pkgName)
   end
 end
 
+def updatefiles
+  puts 'Rebuilding crew files cache...'.yellow
+  FileUtils.rm_rf "#{CREW_MANIFEST_CACHE_DIR}/*"
+  # if CREW_LOCAL_MANIFEST_PATH.empty?
+  Dir.chdir CREW_MANIFEST_CACHE_DIR do
+    if CREW_TESTING
+      system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
+      system "tar x#{@verbose}f #{CREW_TESTING_BRANCH}.tar.gz chromebrew-#{CREW_TESTING_BRANCH}/manifest"
+    else
+      system "curl -L#O https://github.com/#{CREW_GITHUB_ACCOUNT}/chromebrew/archive/#{CREW_GITHUB_BRANCH}.tar.gz"
+      system "tar x#{@verbose}f #{CREW_GITHUB_BRANCH}.tar.gz chromebrew-#{CREW_GITHUB_BRANCH}/manifest"
+    end
+  end
+  # else
+  #   FileUtils.cp_r Dir["#{CREW_LOCAL_MANIFEST_PATH}/*"], CREW_MANIFEST_CACHE_DIR, verbose: @fileutils_verbose
+  # end
+end
+
 def prop(silent = false)
   props = []
   pkg = Package.new
@@ -589,11 +613,19 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  matchedList = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flat_map do |result|
-    filelist, matchedFile = result.split(':', 2)
-    pkgName               = File.basename(filelist, '.filelist')
+  updatefiles if Dir.empty?(CREW_MANIFEST_CACHE_DIR)
 
-    "#{pkgName}: #{matchedFile}"
+  matchedList = `grep -r "#{regexPat}" #{CREW_MANIFEST_CACHE_DIR}`.lines(chomp: true).flat_map do |result|
+    filelist, matchedFile = result.split(':', 2)
+    pkgName = File.basename(filelist, '.filelist')
+    pkgNameStatus = pkgName
+    if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
+      pkgNameStatus = pkgName.lightgreen if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
+    else
+      pkgNameStatus = pkgName.lightred
+    end
+
+    "#{pkgNameStatus}: #{matchedFile}"
   end.sort
 
   puts matchedList, "\nTotal found: #{matchedList.length}".lightgreen if matchedList.any?
@@ -1062,6 +1094,11 @@ def prepare_package(destdir)
     system "find .#{CREW_PREFIX} -type f > ../filelist"
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist > filelist'
+    if CREW_LOCAL_MANIFEST_PATH != '' && File.basename(CREW_LOCAL_MANIFEST_PATH) == 'chromebrew'
+      FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{@pkg.name.initial}/#{@pkg.name}.filelist"
+    else
+      abort 'Unable to locate CREW_LOCAL_MANIFEST_PATH.  Please try again in the chromebrew repository.'.lightred
+    end
 
     # check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
@@ -1906,6 +1943,11 @@ def update_command(args)
   else
     update
   end
+end
+
+def updatefiles_command(args)
+  verbose = args['--verbose'] ? '-v' : ''
+  updatefiles
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)

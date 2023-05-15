@@ -1,0 +1,17 @@
+/usr/local/lib64/libigfxcmrt.so.7.2.0
+/usr/local/lib64/pkgconfig/igfxcmrt.pc
+/usr/local/lib64/dri/iHD_drv_video.so
+/usr/local/etc/env.d/intel_media_driver
+/usr/local/include/igfxcmrt/cm_rt_g11.h
+/usr/local/include/igfxcmrt/cm_rt_g10.h
+/usr/local/include/igfxcmrt/cm_hw_vebox_cmd_g10.h
+/usr/local/include/igfxcmrt/cm_rt_g12_tgl.h
+/usr/local/include/igfxcmrt/cm_rt_extension.h
+/usr/local/include/igfxcmrt/cm_rt_g9.h
+/usr/local/include/igfxcmrt/cm_rt_def_os.h
+/usr/local/include/igfxcmrt/cm_rt_api_os.h
+/usr/local/include/igfxcmrt/cm_rt_g8.h
+/usr/local/include/igfxcmrt/cm_rt_g12_dg1.h
+/usr/local/include/igfxcmrt/cm_rt.h
+/usr/local/lib64/libigfxcmrt.so.7
+/usr/local/lib64/libigfxcmrt.so

@@ -1,0 +1,9 @@
+/usr/local/lib64/libiperf.a
+/usr/local/lib64/libiperf.so.0.0.0
+/usr/local/lib64/libiperf.la
+/usr/local/share/man/man3/libiperf.3.gz
+/usr/local/share/man/man1/iperf3.1.gz
+/usr/local/bin/iperf3
+/usr/local/include/iperf_api.h
+/usr/local/lib64/libiperf.so.0
+/usr/local/lib64/libiperf.so

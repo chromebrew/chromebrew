@@ -1,0 +1,16 @@
+/usr/local/lib64/libsrt.so.1.4.3
+/usr/local/lib64/libsrt.a
+/usr/local/lib64/pkgconfig/haisrt.pc
+/usr/local/lib64/pkgconfig/srt.pc
+/usr/local/include/srt/version.h
+/usr/local/include/srt/srt.h
+/usr/local/include/srt/logging_api.h
+/usr/local/include/srt/access_control.h
+/usr/local/include/srt/platform_sys.h
+/usr/local/include/srt/udt.h
+/usr/local/bin/srt-live-transmit
+/usr/local/bin/srt-file-transmit
+/usr/local/bin/srt-tunnel
+/usr/local/bin/srt-ffplay
+/usr/local/lib64/libsrt.so.1.4
+/usr/local/lib64/libsrt.so

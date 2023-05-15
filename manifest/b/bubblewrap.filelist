@@ -1,0 +1,3 @@
+/usr/local/bin/bwrap
+/usr/local/bin/bwrap.elf
+/usr/local/share/bash-completion/completions/bwrap

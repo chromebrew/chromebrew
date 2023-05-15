@@ -1,0 +1,8 @@
+/usr/local/lib64/pkgconfig/cmocka.pc
+/usr/local/lib64/cmake/cmocka/cmocka-config.cmake
+/usr/local/lib64/cmake/cmocka/cmocka-config-version.cmake
+/usr/local/lib64/libcmocka.so.0.7.0
+/usr/local/include/cmocka.h
+/usr/local/include/cmocka_pbc.h
+/usr/local/lib64/libcmocka.so.0
+/usr/local/lib64/libcmocka.so

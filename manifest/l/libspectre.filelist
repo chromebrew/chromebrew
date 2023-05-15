@@ -1,0 +1,14 @@
+/usr/local/lib64/libspectre.so.1.1.10
+/usr/local/lib64/libspectre.la
+/usr/local/lib64/libspectre.a
+/usr/local/lib64/pkgconfig/libspectre.pc
+/usr/local/include/libspectre/spectre.h
+/usr/local/include/libspectre/spectre-macros.h
+/usr/local/include/libspectre/spectre-status.h
+/usr/local/include/libspectre/spectre-document.h
+/usr/local/include/libspectre/spectre-render-context.h
+/usr/local/include/libspectre/spectre-page.h
+/usr/local/include/libspectre/spectre-exporter.h
+/usr/local/include/libspectre/spectre-version.h
+/usr/local/lib64/libspectre.so.1
+/usr/local/lib64/libspectre.so

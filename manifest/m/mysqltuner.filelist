@@ -1,0 +1,4 @@
+/usr/local/share/mysqltuner/mysqltuner.pl
+/usr/local/share/mysqltuner/basic_passwords.txt
+/usr/local/share/mysqltuner/vulnerabilities.csv
+/usr/local/bin/mysqltuner
