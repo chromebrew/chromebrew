@@ -20,13 +20,15 @@ class Alsa_tools < Package
      x86_64: '283ef086a574219f99f711890d9d184898b50478172d0ac48819aec33c92b4ce'
   })
 
+  depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
+  depends_on 'fltk' # R
   depends_on 'freetype' # R
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  depwnds_on 'gtk2' # R
+  depends_on 'gtk2' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
@@ -36,8 +38,6 @@ class Alsa_tools < Package
   depends_on 'libxrender' # R
   depends_on 'pango' # R
   depends_on 'zlibpkg' # R
-  depends_on 'alsa_lib' # R
-  depends_on 'fltk' # R
 
   def self.patch
     # Make sure automake can be found.
