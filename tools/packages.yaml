@@ -870,6 +870,11 @@ url: https://github.com/civetweb/civetweb/releases
 activity: low
 ---
 kind: url
+name: cjson
+url: https://github.com/DaveGamble/cJSON/releases
+activity: low
+---
+kind: url
 name: ck4up
 url: http://jue.li/crux/ck4up/
 activity: none
