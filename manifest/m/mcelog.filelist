@@ -1,0 +1,14 @@
+/usr/local/sbin/mcelog
+/usr/local/share/man/man5/mcelog.conf.5.gz
+/usr/local/share/man/man5/mcelog.triggers.5.gz
+/usr/local/share/man/man8/mcelog.8.gz
+/usr/local/etc/mcelog/iomca-error-trigger
+/usr/local/etc/mcelog/bus-error-trigger
+/usr/local/etc/mcelog/cache-error-trigger
+/usr/local/etc/mcelog/unknown-error-trigger
+/usr/local/etc/mcelog/dimm-error-trigger
+/usr/local/etc/mcelog/page-error-trigger
+/usr/local/etc/mcelog/page-error-post-sync-soft-trigger
+/usr/local/etc/mcelog/mcelog.conf
+/usr/local/etc/mcelog/page-error-pre-sync-soft-trigger
+/usr/local/etc/mcelog/socket-memory-error-trigger

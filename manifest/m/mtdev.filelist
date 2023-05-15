@@ -1,0 +1,9 @@
+/usr/local/include/mtdev.h
+/usr/local/include/mtdev-plumbing.h
+/usr/local/include/mtdev-mapping.h
+/usr/local/bin/mtdev-test
+/usr/local/lib64/pkgconfig/mtdev.pc
+/usr/local/lib64/libmtdev.so.1.0.0
+/usr/local/lib64/libmtdev.la
+/usr/local/lib64/libmtdev.so
+/usr/local/lib64/libmtdev.so.1

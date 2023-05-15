@@ -1,0 +1,13 @@
+/usr/local/lib64/libxcb-util.so.1.0.0
+/usr/local/lib64/libxcb-util.la
+/usr/local/lib64/libxcb-util.a
+/usr/local/lib64/pkgconfig/xcb-atom.pc
+/usr/local/lib64/pkgconfig/xcb-aux.pc
+/usr/local/lib64/pkgconfig/xcb-event.pc
+/usr/local/lib64/pkgconfig/xcb-util.pc
+/usr/local/include/xcb/xcb_util.h
+/usr/local/include/xcb/xcb_atom.h
+/usr/local/include/xcb/xcb_aux.h
+/usr/local/include/xcb/xcb_event.h
+/usr/local/lib64/libxcb-util.so.1
+/usr/local/lib64/libxcb-util.so

@@ -1,0 +1,8 @@
+/usr/local/lib64/libbenchmark_main.a
+/usr/local/lib64/pkgconfig/benchmark.pc
+/usr/local/lib64/cmake/benchmark/benchmarkConfig.cmake
+/usr/local/lib64/cmake/benchmark/benchmarkTargets-release.cmake
+/usr/local/lib64/cmake/benchmark/benchmarkTargets.cmake
+/usr/local/lib64/cmake/benchmark/benchmarkConfigVersion.cmake
+/usr/local/lib64/libbenchmark.a
+/usr/local/include/benchmark/benchmark.h

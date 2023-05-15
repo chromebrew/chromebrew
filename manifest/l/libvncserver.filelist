@@ -1,0 +1,15 @@
+/usr/local/lib64/libvncserver.so.0.9.13
+/usr/local/lib64/libvncclient.so.0.9.13
+/usr/local/lib64/pkgconfig/libvncserver.pc
+/usr/local/lib64/pkgconfig/libvncclient.pc
+/usr/local/include/rfb/keysym.h
+/usr/local/include/rfb/threading.h
+/usr/local/include/rfb/rfb.h
+/usr/local/include/rfb/rfbclient.h
+/usr/local/include/rfb/rfbconfig.h
+/usr/local/include/rfb/rfbproto.h
+/usr/local/include/rfb/rfbregion.h
+/usr/local/lib64/libvncserver.so.1
+/usr/local/lib64/libvncserver.so
+/usr/local/lib64/libvncclient.so.1
+/usr/local/lib64/libvncclient.so

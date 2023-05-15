@@ -1,11 +1,11 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.32.4'
+CREW_VERSION = '1.33.0'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
 
-# read and parse processor infomation from /proc/cpuinfo
+# read and parse processor information from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
               .partition("\n\n")[0] \
               .scan(/^(.+?)\t*: (.+)$/).to_h \
@@ -92,6 +92,16 @@ CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
+# GitHub constants.
+CREW_GITHUB_ACCOUNT = 'chromebrew'
+CREW_GITHUB_BRANCH = 'master'
+CREW_GITHUB_REPO = 'https://github.com/chromebrew/chromebrew.git'
+
+# Local constants for contributors.
+CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
+CREW_LOCAL_MANIFEST_PATH = CREW_LOCAL_REPO_BASE == CREW_GITHUB_ACCOUNT ? "#{CREW_LOCAL_REPO_ROOT}/manifest" : ''
+
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
 CREW_DEST_MUSL_PREFIX = CREW_DEST_DIR + CREW_MUSL_PREFIX
@@ -106,7 +116,8 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                    File.join(ENV.fetch('CREW_CACHE_DIR', nil), '')
                  end
 
-FileUtils.mkdir_p CREW_CACHE_DIR
+CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
+FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
@@ -124,6 +135,7 @@ CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
 # Set testing constants from environment variables
+CREW_TESTING_ACCOUNT = ENV.fetch('CREW_TESTING_ACCOUNT', nil)
 CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
 CREW_TESTING_REPO = ENV.fetch('CREW_TESTING_REPO', nil)
 

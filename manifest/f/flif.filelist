@@ -1,0 +1,14 @@
+/usr/local/lib64/libflif.so
+/usr/local/lib64/libflif_dec.so.0
+/usr/local/lib64/libflif.so.0
+/usr/local/lib64/libflif_dec.so
+/usr/local/share/man/man1/flif.1.gz
+/usr/local/bin/gif2flif
+/usr/local/bin/apng2flif
+/usr/local/bin/flif
+/usr/local/bin/viewflif
+/usr/local/bin/dflif
+/usr/local/include/flif.h
+/usr/local/include/flif_common.h
+/usr/local/include/flif_enc.h
+/usr/local/include/flif_dec.h

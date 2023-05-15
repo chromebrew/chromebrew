@@ -1,0 +1,4 @@
+/usr/local/bin/pdfgrep
+/usr/local/share/bash-completion/completions/pdfgrep
+/usr/local/share/zsh/site-functions/_pdfgrep
+/usr/local/share/man/man1/pdfgrep.1.gz

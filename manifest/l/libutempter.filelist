@@ -1,0 +1,12 @@
+/usr/local/include/utempter.h
+/usr/local/share/man/man3/utempter.3.zst
+/usr/local/lib64/libutempter.a
+/usr/local/lib64/utempter/utempter
+/usr/local/lib64/libutempter.so.1.2.1
+/usr/local/share/man/man3/utempter_add_record.3.zst
+/usr/local/share/man/man3/utempter_remove_record.3.zst
+/usr/local/share/man/man3/utempter_set_helper.3.zst
+/usr/local/share/man/man3/libutempter.3.zst
+/usr/local/share/man/man3/utempter_remove_added_record.3.zst
+/usr/local/lib64/libutempter.so
+/usr/local/lib64/libutempter.so.0

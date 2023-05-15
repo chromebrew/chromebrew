@@ -1,0 +1,5 @@
+/usr/local/share/musl/lib/pkgconfig/zlib.pc
+/usr/local/share/musl/lib/libz.a
+/usr/local/share/musl/share/man/man3/zlib.3
+/usr/local/share/musl/include/zlib.h
+/usr/local/share/musl/include/zconf.h

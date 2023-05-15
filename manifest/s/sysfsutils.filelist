@@ -1,0 +1,13 @@
+/usr/local/bin/get_device
+/usr/local/bin/systool
+/usr/local/bin/get_driver
+/usr/local/bin/dlist_test
+/usr/local/bin/get_module
+/usr/local/lib64/libsysfs.la
+/usr/local/lib64/libsysfs.a
+/usr/local/lib64/libsysfs.so.2.0.1
+/usr/local/man/man1/systool.1.gz
+/usr/local/include/sysfs/libsysfs.h
+/usr/local/include/sysfs/dlist.h
+/usr/local/lib64/libsysfs.so
+/usr/local/lib64/libsysfs.so.2

@@ -1,0 +1,16 @@
+/usr/local/lib64/libgcrypt.so.20.3.4
+/usr/local/lib64/libgcrypt.la
+/usr/local/lib64/libgcrypt.a
+/usr/local/lib64/pkgconfig/libgcrypt.pc
+/usr/local/bin/dumpsexp
+/usr/local/bin/hmac256
+/usr/local/bin/mpicalc
+/usr/local/bin/libgcrypt-config
+/usr/local/share/aclocal/libgcrypt.m4
+/usr/local/share/info/gcrypt.info.gz
+/usr/local/share/info/gcrypt.info-1.gz
+/usr/local/share/info/gcrypt.info-2.gz
+/usr/local/share/man/man1/hmac256.1.gz
+/usr/local/include/gcrypt.h
+/usr/local/lib64/libgcrypt.so.20
+/usr/local/lib64/libgcrypt.so

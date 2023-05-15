@@ -1,0 +1,11 @@
+/usr/local/lib64/libiec61883.so.0.1.1
+/usr/local/lib64/libiec61883.la
+/usr/local/lib64/libiec61883.a
+/usr/local/lib64/pkgconfig/libiec61883.pc
+/usr/local/include/libiec61883/iec61883.h
+/usr/local/bin/plugreport
+/usr/local/bin/plugctl
+/usr/local/share/man/man1/plugctl.1.gz
+/usr/local/share/man/man1/plugreport.1.gz
+/usr/local/lib64/libiec61883.so.0
+/usr/local/lib64/libiec61883.so

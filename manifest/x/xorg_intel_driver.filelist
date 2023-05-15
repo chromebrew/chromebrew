@@ -1,0 +1,6 @@
+/usr/local/lib64/xorg/modules/drivers/intel_drv.so
+/usr/local/bin/intel-virtual-output
+/usr/local/libexec/xf86-video-intel-backlight-helper
+/usr/local/share/man/man4/intel.4.gz
+/usr/local/share/man/man4/intel-virtual-output.4.gz
+/usr/local/share/polkit-1/actions/org.x.xf86-video-intel.backlight-helper.policy
