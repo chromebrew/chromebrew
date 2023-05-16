@@ -141,9 +141,15 @@ CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
 # Set testing constants from environment variables
-CREW_TESTING_ACCOUNT = ENV.fetch('CREW_TESTING_ACCOUNT', nil)
-CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
 CREW_TESTING_REPO = ENV.fetch('CREW_TESTING_REPO', nil)
+if CREW_TESTING_REPO
+  CREW_TESTING_ACCOUNT = if CREW_TESTING_REPO.downcase.include?('github')
+                           CREW_TESTING_REPO.to_s.downcase.gsub('https://github.com/', '').gsub('/chromebrew.git', '')
+                         else
+                           ENV.fetch('CREW_TESTING_ACCOUNT', nil)
+                         end
+end
+CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
 
 CREW_TESTING = CREW_TESTING_BRANCH.to_s.empty? || CREW_TESTING_REPO.to_s.empty? ? '0' : ENV.fetch('CREW_TESTING', nil)
 
