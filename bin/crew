@@ -583,7 +583,7 @@ def updatefiles
   FileUtils.rm_rf "#{CREW_MANIFEST_CACHE_DIR}/*"
   # if CREW_LOCAL_MANIFEST_PATH.empty?
   Dir.chdir CREW_MANIFEST_CACHE_DIR do
-    if CREW_TESTING
+    if ENV['CREW_TESTING'] == '1'
       system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
       system "tar x#{@verbose}f #{CREW_TESTING_BRANCH}.tar.gz chromebrew-#{CREW_TESTING_BRANCH}/manifest"
     else
@@ -1094,11 +1094,7 @@ def prepare_package(destdir)
     system "find .#{CREW_PREFIX} -type f > ../filelist"
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist > filelist'
-    if CREW_LOCAL_MANIFEST_PATH != '' && File.basename(CREW_LOCAL_MANIFEST_PATH) == 'chromebrew'
-      FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{@pkg.name.initial}/#{@pkg.name}.filelist"
-    else
-      abort 'Unable to locate CREW_LOCAL_MANIFEST_PATH.  Please try again in the chromebrew repository.'.lightred
-    end
+    FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{@pkg.name.initial}/#{@pkg.name}.filelist"
 
     # check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
@@ -1575,6 +1571,7 @@ end
 def build_package(pwd)
   abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
   abort 'It is not possible to build without source'.lightred unless @pkg.is_source?(@device[:architecture])
+  abort "Unable to locate CREW_LOCAL_MANIFEST_PATH.  Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
 
   # download source codes and unpack it
   meta = download
