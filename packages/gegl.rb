@@ -15,9 +15,9 @@ class Gegl < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.44_x86_64/gegl-0.4.44-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4dd98c8698998748677622d0ffe3c034993e805ebd3f0e04f87cf6b862c7af9f',
-     armv7l: '4dd98c8698998748677622d0ffe3c034993e805ebd3f0e04f87cf6b862c7af9f',
-     x86_64: '27b61ace2d2a769c9c8fe78a8221c5372c07e2a80685503fb31351e465003eaf'
+    aarch64: 'fbf703399b6c122d4de162c6c74927deb4b5274503de128828982de360e880fd',
+     armv7l: 'fbf703399b6c122d4de162c6c74927deb4b5274503de128828982de360e880fd',
+     x86_64: '40d68501c59aef4d1f3e2e6852b4d5aca02dc9d0630e1adb589d2896675c1607'
   })
 
   depends_on 'asciidoc' => :build
