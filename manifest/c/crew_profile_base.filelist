@@ -1,8 +1,0 @@
-/usr/local/etc/zsh.d/0-stub
-/usr/local/etc/profile
-/usr/local/etc/env.d/05-iconv
-/usr/local/etc/env.d/00-path
-/usr/local/etc/env.d/0-stub
-/usr/local/etc/env.d/06-chromebrew
-/usr/local/etc/bash.d/0-stub
-/usr/local/etc/bash.d/01-crew

@@ -1,0 +1,10 @@
+/usr/local/bin/pspax
+/usr/local/bin/symtree
+/usr/local/bin/dumpelf
+/usr/local/bin/lddtree
+/usr/local/bin/scanmacho
+/usr/local/bin/scanelf
+/usr/local/share/man/man1/scanelf.1.zst
+/usr/local/share/man/man1/scanmacho.1.zst
+/usr/local/share/man/man1/dumpelf.1.zst
+/usr/local/share/man/man1/pspax.1.zst

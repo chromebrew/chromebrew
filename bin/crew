@@ -613,9 +613,11 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  updatefiles if Dir.empty?(CREW_MANIFEST_CACHE_DIR)
+  @crew_manifest_search_dir = ENV['CREW_TESTING'] == '1' ? "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}" : "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
 
-  matchedList = `grep -r "#{regexPat}" #{CREW_MANIFEST_CACHE_DIR}`.lines(chomp: true).flat_map do |result|
+  updatefiles unless Dir.exist?(@crew_manifest_search_dir) && !Dir.empty?(@crew_manifest_search_dir)
+
+  matchedList = `grep -r "#{regexPat}" #{@crew_manifest_search_dir}`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
     pkgName = File.basename(filelist, '.filelist')
     pkgNameStatus = pkgName
@@ -1094,7 +1096,11 @@ def prepare_package(destdir)
     system "find .#{CREW_PREFIX} -type f > ../filelist"
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist > filelist'
-    FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{@pkg.name.initial}/#{@pkg.name}.filelist"
+
+    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH)
+      FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
+      FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+    end
 
     # check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
