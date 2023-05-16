@@ -613,9 +613,10 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  updatefiles if Dir.empty?(CREW_MANIFEST_CACHE_DIR)
 
   @crew_manifest_search_dir = ENV['CREW_TESTING'] == '1' ? "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}" : "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
+
+  updatefiles if Dir.empty?(@crew_manifest_search_dir)
 
   matchedList = `grep -r "#{regexPat}" #{@crew_manifest_search_dir}`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
