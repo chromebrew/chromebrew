@@ -1,0 +1,15 @@
+/usr/local/include/expat_config.h
+/usr/local/include/expat.h
+/usr/local/include/expat_external.h
+/usr/local/lib/libexpat.so.1.8.10
+/usr/local/lib/cmake/expat-2.5.0/expat.cmake
+/usr/local/lib/cmake/expat-2.5.0/expat-config.cmake
+/usr/local/lib/cmake/expat-2.5.0/expat-config-version.cmake
+/usr/local/lib/cmake/expat-2.5.0/expat-release.cmake
+/usr/local/lib/pkgconfig/expat.pc
+/usr/local/lib/libexpat.la
+/usr/local/share/doc/expat/AUTHORS
+/usr/local/share/doc/expat/changelog
+/usr/local/bin/xmlwf
+/usr/local/lib/libexpat.so
+/usr/local/lib/libexpat.so.1

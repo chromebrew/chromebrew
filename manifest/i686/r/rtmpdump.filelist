@@ -1,0 +1,15 @@
+/usr/local/lib/librtmp.so.1
+/usr/local/lib/librtmp.a
+/usr/local/lib/pkgconfig/librtmp.pc
+/usr/local/bin/rtmpdump
+/usr/local/include/librtmp/log.h
+/usr/local/include/librtmp/http.h
+/usr/local/include/librtmp/rtmp.h
+/usr/local/include/librtmp/amf.h
+/usr/local/share/man/man3/librtmp.3.gz
+/usr/local/share/man/man1/rtmpdump.1.gz
+/usr/local/share/man/man8/rtmpgw.8.gz
+/usr/local/sbin/rtmpgw
+/usr/local/sbin/rtmpsrv
+/usr/local/sbin/rtmpsuck
+/usr/local/lib/librtmp.so

@@ -1,0 +1,17 @@
+/usr/local/bin/db4-entities.pl
+/usr/local/etc/xml/docbook-5.1.xml
+/usr/local/share/xml/docbook/schema/rng/5.1/assembly.rnc
+/usr/local/share/xml/docbook/schema/rng/5.1/dbits.rnc
+/usr/local/share/xml/docbook/schema/rng/5.1/docbookxi.rnc
+/usr/local/share/xml/docbook/schema/rng/5.1/docbook.rnc
+/usr/local/share/xml/docbook/schema/rng/5.1/catalog.xml
+/usr/local/share/xml/docbook/schema/rng/5.1/docbook.rng
+/usr/local/share/xml/docbook/schema/rng/5.1/docbookxi.rng
+/usr/local/share/xml/docbook/schema/rng/5.1/dbits.rng
+/usr/local/share/xml/docbook/schema/rng/5.1/assembly.rng
+/usr/local/share/xml/docbook/schema/sch/5.1/docbookxi.sch
+/usr/local/share/xml/docbook/schema/sch/5.1/catalog.xml
+/usr/local/share/xml/docbook/schema/sch/5.1/dbits.sch
+/usr/local/share/xml/docbook/schema/sch/5.1/assembly.sch
+/usr/local/share/xml/docbook/schema/sch/5.1/docbook.sch
+/usr/local/share/xml/docbook/stylesheet/docbook5/db4-upgrade.xsl

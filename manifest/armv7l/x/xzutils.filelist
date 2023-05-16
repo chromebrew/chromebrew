@@ -1,3 +1,7 @@
+/usr/local/lib/liblzma.so.5.4.3
+/usr/local/lib/liblzma.a
+/usr/local/lib/liblzma.la
+/usr/local/lib/pkgconfig/liblzma.pc
 /usr/local/include/lzma.h
 /usr/local/include/lzma/delta.h
 /usr/local/include/lzma/lzma12.h
@@ -13,10 +17,6 @@
 /usr/local/include/lzma/block.h
 /usr/local/include/lzma/bcj.h
 /usr/local/include/lzma/stream_flags.h
-/usr/local/lib64/liblzma.so.5.4.3
-/usr/local/lib64/liblzma.a
-/usr/local/lib64/liblzma.la
-/usr/local/lib64/pkgconfig/liblzma.pc
 /usr/local/share/man/man1/xzgrep.1.zst
 /usr/local/share/man/man1/xzdec.1.zst
 /usr/local/share/man/man1/xzless.1.zst
@@ -176,8 +176,8 @@
 /usr/local/bin/xzgrep
 /usr/local/bin/xzdec
 /usr/local/bin/xzmore
-/usr/local/lib64/liblzma.so.5
-/usr/local/lib64/liblzma.so
+/usr/local/lib/liblzma.so.5
+/usr/local/lib/liblzma.so
 /usr/local/share/man/man1/lzcmp.1.zst
 /usr/local/share/man/man1/xzegrep.1.zst
 /usr/local/share/man/man1/lzmore.1.zst
