@@ -143,7 +143,7 @@ CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use n
 # Set testing constants from environment variables
 CREW_TESTING_REPO = ENV.fetch('CREW_TESTING_REPO', nil)
 if CREW_TESTING_REPO
-  CREW_TESTING_ACCOUNT = if CREW_TESTING_REPO.downcase.include?('github')
+  CREW_TESTING_ACCOUNT = if CREW_TESTING_REPO.downcase.include?('https://github.com')
                            CREW_TESTING_REPO.to_s.downcase.gsub('https://github.com/', '').gsub('/chromebrew.git', '')
                          else
                            ENV.fetch('CREW_TESTING_ACCOUNT', nil)
