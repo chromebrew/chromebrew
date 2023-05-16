@@ -1096,6 +1096,7 @@ def prepare_package(destdir)
     system "find .#{CREW_PREFIX} -type f > ../filelist"
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist > filelist'
+    FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
     FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
 
     # check for FHS3 compliance
