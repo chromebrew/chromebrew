@@ -1,10 +1,10 @@
-/usr/local/lib/libsqlite3.a
+/usr/local/share/man/man1/sqlite3.1.zst
+/usr/local/include/sqlite3ext.h
+/usr/local/include/sqlite3.h
+/usr/local/lib/pkgconfig/sqlite3.pc
 /usr/local/lib/libsqlite3.so.0.8.6
 /usr/local/lib/libsqlite3.la
-/usr/local/lib/pkgconfig/sqlite3.pc
-/usr/local/include/sqlite3.h
-/usr/local/include/sqlite3ext.h
-/usr/local/share/man/man1/sqlite3.1.zst
+/usr/local/lib/libsqlite3.a
 /usr/local/bin/sqlite3
-/usr/local/lib/libsqlite3.so
 /usr/local/lib/libsqlite3.so.0
+/usr/local/lib/libsqlite3.so
