@@ -46,6 +46,7 @@ class Gegl < Package
   depends_on 'openexr' # R
   depends_on 'pango' # R
   depends_on 'poppler' # R
+  depends_on 'source_highlight' => :build
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
