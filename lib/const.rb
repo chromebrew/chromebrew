@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.33.3'
+CREW_VERSION = '1.33.4'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -106,7 +106,11 @@ if repo_root.empty? || File.basename(repo_root) != 'chromebrew'
 end
 CREW_LOCAL_REPO_ROOT = repo_root
 CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
-CREW_LOCAL_MANIFEST_PATH = CREW_LOCAL_REPO_BASE == CREW_GITHUB_ACCOUNT ? "#{CREW_LOCAL_REPO_ROOT}/manifest" : ''
+CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
+                   CREW_LOCAL_REPO_BASE == CREW_GITHUB_ACCOUNT ? "#{CREW_LOCAL_REPO_ROOT}/manifest" : ''
+                 else
+                   ENV.fetch('CREW_LOCAL_MANIFEST_PATH', nil)
+                 end
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
