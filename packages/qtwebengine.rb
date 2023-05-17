@@ -2,21 +2,28 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/PKGBUILD
 
 require 'package'
+require_relative 'qtbase'
 
 class Qtwebengine < Package
   description 'Provides support for web applications using the Chromium browser project'
   homepage 'https://www.qt.io'
-  version '5.15.7-3d23b37'
+  version '5.15.13'
+  @qt_pkgver = Qtwebengine.version.to_s.gsub(/-.*/, '')
+  @qt_basever = Qtbase.version.to_s.gsub(/-.*/, '')
   license 'LGPL3 LGPL2.1 BSD'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwebengine.git'
-  git_hashtag '3d23b379a7c0a87922f9f5d9600fde8c4e58f1fd'
+  git_hashtag "v#{version}-lts"
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.7-3d23b37_x86_64/qtwebengine-5.15.7-3d23b37-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.13_armv7l/qtwebengine-5.15.13-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.13_armv7l/qtwebengine-5.15.13-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.13_x86_64/qtwebengine-5.15.13-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '734f050156e52a6fee7666a9601c70e6ddc0df87fbd9ee178ccae5faf51b7f5b'
+    aarch64: '5b4f0f87ab95cd3bf6b597f3d5423b5a457283087c054794a5fb975e85a57cd9',
+     armv7l: '5b4f0f87ab95cd3bf6b597f3d5423b5a457283087c054794a5fb975e85a57cd9',
+     x86_64: 'd9708eb0508f7ff1c09b01b8155891a4dba2af2c8e0b43e16793c2a48521c24b'
   })
 
   depends_on 'alsa_lib' # R
@@ -44,6 +51,7 @@ class Qtwebengine < Package
   depends_on 'libxrandr' => :build
   depends_on 'libxslt' # R
   depends_on 'libxss' => :build
+  depends_on 'minizip' => :build
   depends_on 'nodebrew' => :build
   depends_on 'nss' # R
   depends_on 'opus' # R
@@ -55,10 +63,12 @@ class Qtwebengine < Package
   depends_on 'qtlocation' # R
   depends_on 'qttools' # R
   depends_on 'qtwebchannel' # R
+  depends_on 're2' => :build
   depends_on 'snappy' # R
   depends_on 'zlibpkg' # R
 
   def self.patch
+    puts "@qt_pkgver is #{@qt_pkgver} and @qt_basever is #{@qt_basever}".lightblue
     # Build & patches track Arch PKGBUILD at https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webengine/trunk/PKGBUILD
     Dir.chdir('src/3rdparty') do
       system 'git checkout 87-based'
@@ -98,9 +108,8 @@ class Qtwebengine < Package
       puts "Please run 'crew postinstall nodebrew' for more info.".orange
       abort
     end
-    @jumbo_build = ARCH == 'x86_64' ? '1' : '0'
     system "qmake CONFIG+=force_debug_info -- \
-    -webengine-jumbo-build #{@jumbo_build} \
+    -webengine-jumbo-build \
     -proprietary-codecs \
     -system-ffmpeg \
     -webp \
@@ -115,8 +124,8 @@ class Qtwebengine < Package
 
   def self.install
     system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-    # This is needed because this is a frankenstein build of 5.15.11 and 5.15.7,
+    # This is needed because this is a frankenstein build of @qt_pkgver and @qt_basever,
     # which is the version of the other QT files.
-    system "sed -e 's|5.15.11 |5.15.7 |' -i #{CREW_DEST_LIB_PREFIX}/cmake/*/*Config.cmake"
+    system "sed -e 's|#{@qt_pkgver} |#{@qt_basever} |' -i #{CREW_DEST_LIB_PREFIX}/cmake/*/*Config.cmake"
   end
 end
