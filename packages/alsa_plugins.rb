@@ -6,7 +6,7 @@ class Alsa_plugins < Package
   version '1.2.7.1'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'http://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2'
+  source_url 'https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2'
   source_sha256 '8c337814954bb7c167456733a6046142a2931f12eccba3ec2a4ae618a3432511'
 
   binary_url({

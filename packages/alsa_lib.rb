@@ -3,11 +3,10 @@ require 'package'
 class Alsa_lib < Package
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  @_ver = '1.2.9'
-  version @_ver.to_s
+  version '1.2.9'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
   source_sha256 '95bbac3c04e7a722439e0c282232881e8657562ae55a90b85e58a8f5aa140ac0'
 
   binary_url({
