@@ -62,7 +62,7 @@ class Nodebrew < Package
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew/default", "#{CREW_PREFIX}/share/nodebrew/current"
-    FileUtils.mkdir_p "#{HOME}/.nodebrew/src" unless Dir.exist?("#{HOME}/.nodebrew/src")
+    FileUtils.mkdir_p "#{HOME}/.nodebrew/src"
     puts
     if ARCH == 'i686'
       puts 'FYI: v17.9.1 is the last version compatible with i686.'.orange
