@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.33.5'
+CREW_VERSION = '1.33.6'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -129,6 +129,9 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
 CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
 begin
   FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
+rescue Errno::EROFS => e
+  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  puts e.message.to_s.orange
 rescue Errno::ENOENT => e
   puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
   puts e.message.to_s.orange
