@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.33.4'
+CREW_VERSION = '1.33.5'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -127,7 +127,12 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                  end
 
 CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
-FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
+begin
+  FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
+rescue Errno::ENOENT => e
+  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  puts "#{e.message}".orange
+end
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
