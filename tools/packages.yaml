@@ -870,6 +870,11 @@ url: https://github.com/civetweb/civetweb/releases
 activity: low
 ---
 kind: url
+name: cjson
+url: https://github.com/DaveGamble/cJSON/releases
+activity: low
+---
+kind: url
 name: ck4up
 url: http://jue.li/crux/ck4up/
 activity: none
@@ -6051,6 +6056,11 @@ url: https://github.com/openexr/openexr/releases/
 activity: low
 ---
 kind: url
+name: openh264
+url: https://github.com/cisco/openh264/releases
+activity: medium
+---
+kind: url
 name: openhab
 url: https://www.openhab.org/download/
 activity: high
@@ -6139,6 +6149,11 @@ kind: url
 name: opus
 url: https://archive.mozilla.org/pub/opus/
 activity: none
+---
+kind: url
+name: opusfile
+url: https://github.com/xiph/opusfile/releases
+activity: low
 ---
 kind: url
 name: osl

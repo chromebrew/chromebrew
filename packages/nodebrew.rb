@@ -4,23 +4,23 @@ class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
   @_ver = '1.2.0'
-  version @_ver
+  version "#{@_ver}-1"
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
   source_sha256 '6d72e39c8acc5b22f4fc7a1734cd3bb8d00b61119ab7fea6cde376810ff2005e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_armv7l/nodebrew-1.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_armv7l/nodebrew-1.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_i686/nodebrew-1.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0_x86_64/nodebrew-1.2.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_armv7l/nodebrew-1.2.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_armv7l/nodebrew-1.2.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_i686/nodebrew-1.2.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_x86_64/nodebrew-1.2.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '319000f56a7e608647a19ed95fa7a555a815cf3b64990cf11ceddd3d5ba658e9',
-     armv7l: '319000f56a7e608647a19ed95fa7a555a815cf3b64990cf11ceddd3d5ba658e9',
-       i686: 'f5cfdff134b421478106612cc2c4ee2d6a7135fac4cf0bec06a7d10653903572',
-     x86_64: '0bb4d2d805938635bff351f4154c95b177ddc87a21d7a86ad63fd49a2524b34a'
+    aarch64: '2d66f5d8c02b4eb1709837d8a1271988441507f58ee3e05a4db99861cb01f229',
+     armv7l: '2d66f5d8c02b4eb1709837d8a1271988441507f58ee3e05a4db99861cb01f229',
+       i686: '1b9e9e93a6c8cdffbb47bc09ac84b8ca2e40536c903f79be55927a8a694aefd3',
+     x86_64: '1756ea6eb396fd0e448b7dfbf9c7d37e95fb22b616c03ffc833a219777a275f9'
   })
 
   def self.install
@@ -34,7 +34,8 @@ class Nodebrew < Package
       # Handle x86 binaries no longer showing up on the official build server.
       system "sed -i 's,nodejs.org/dist,unofficial-builds.nodejs.org/download/release,g' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
     end
-    FileUtils.mkdir_p CREW_DEST_HOME
+    # Download fails unless this directory is created.
+    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.nodebrew/src"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/nodebrew", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/current/bin/node", "#{CREW_DEST_PREFIX}/bin/"
@@ -52,7 +53,7 @@ class Nodebrew < Package
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/nodebrew", @bashd)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
-    @env = <<~'NODEBREWENVEOF'
+    @env = <<~NODEBREWENVEOF
       # nodebrew configuration
       export PATH="$PATH:$HOME/.nodebrew/current/bin"
     NODEBREWENVEOF
@@ -61,6 +62,7 @@ class Nodebrew < Package
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew/default", "#{CREW_PREFIX}/share/nodebrew/current"
+    FileUtils.mkdir_p "#{HOME}/.nodebrew/src"
     puts
     if ARCH == 'i686'
       puts 'FYI: v17.9.1 is the last version compatible with i686.'.orange
@@ -79,18 +81,18 @@ class Nodebrew < Package
   end
 
   def self.remove
-    if Dir.exist? "#{CREW_PREFIX}/share/nodebrew"
-      puts
-      print "Would you like to remove #{CREW_PREFIX}/share/nodebrew? [y/N] "
-      response = $stdin.gets.chomp.downcase
-      case response
-      when 'y', 'yes'
-        FileUtils.rm_rf "#{CREW_PREFIX}/share/nodebrew"
-        puts "#{CREW_PREFIX}/share/nodebrew removed.".lightred
-      else
-        puts "#{CREW_PREFIX}/share/nodebrew saved.".lightgreen
-      end
-      puts
+    return unless Dir.exist? "#{CREW_PREFIX}/share/nodebrew"
+
+    puts
+    print "Would you like to remove #{CREW_PREFIX}/share/nodebrew? [y/N] "
+    response = $stdin.gets.chomp.downcase
+    case response
+    when 'y', 'yes'
+      FileUtils.rm_rf "#{CREW_PREFIX}/share/nodebrew"
+      puts "#{CREW_PREFIX}/share/nodebrew removed.".lightred
+    else
+      puts "#{CREW_PREFIX}/share/nodebrew saved.".lightgreen
     end
+    puts
   end
 end

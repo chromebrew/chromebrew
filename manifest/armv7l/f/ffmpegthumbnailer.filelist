@@ -1,0 +1,14 @@
+/usr/local/include/libffmpegthumbnailer/videoframe.h
+/usr/local/include/libffmpegthumbnailer/filmstripfilter.h
+/usr/local/include/libffmpegthumbnailer/ifilter.h
+/usr/local/include/libffmpegthumbnailer/videothumbnailerc.h
+/usr/local/include/libffmpegthumbnailer/imagetypes.h
+/usr/local/include/libffmpegthumbnailer/ffmpegthumbnailertypes.h
+/usr/local/include/libffmpegthumbnailer/videothumbnailer.h
+/usr/local/bin/ffmpegthumbnailer
+/usr/local/lib/pkgconfig/libffmpegthumbnailer.pc
+/usr/local/lib/libffmpegthumbnailer.so.4.15.1
+/usr/local/share/thumbnailers/ffmpegthumbnailer.thumbnailer
+/usr/local/share/man/man1/ffmpegthumbnailer.1.zst
+/usr/local/lib/libffmpegthumbnailer.so.4
+/usr/local/lib/libffmpegthumbnailer.so
