@@ -597,7 +597,7 @@ def updatefiles
     end
   else
     puts "CREW_MANIFEST_CACHE_DIR #{CREW_MANIFEST_CACHE_DIR} is not writable.".lightred
-    puts "The crew files cache cannot be rebuilt.".lightred
+    puts 'The crew files cache cannot be rebuilt.'.lightred
   end
   # else
   #   FileUtils.cp_r Dir["#{CREW_LOCAL_MANIFEST_PATH}/*"], CREW_MANIFEST_CACHE_DIR, verbose: @fileutils_verbose
