@@ -130,9 +130,15 @@ CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
 begin
   FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
 rescue Errno::EROFS => e
+  # r/o fs
+  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  puts e.message.to_s.orange
+rescue Errno::EACCES => e
+  # no write access
   puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
   puts e.message.to_s.orange
 rescue Errno::ENOENT => e
+  # weird fs
   puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
   puts e.message.to_s.orange
 end
