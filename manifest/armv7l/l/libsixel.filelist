@@ -1,0 +1,13 @@
+/usr/local/bin/sixel2png
+/usr/local/bin/libsixel-config
+/usr/local/bin/img2sixel
+/usr/local/lib/pkgconfig/libsixel.pc
+/usr/local/lib/libsixel.so.1.0.0
+/usr/local/lib/libsixel.a
+/usr/local/include/sixel.h
+/usr/local/share/bash-completion/completions/img2sixel
+/usr/local/share/man/man1/img2sixel.1.zst
+/usr/local/share/man/man1/sixel2png.1.zst
+/usr/local/share/zsh/site-functions/_img2sixel
+/usr/local/lib/libsixel.so
+/usr/local/lib/libsixel.so.1

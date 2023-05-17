@@ -1,0 +1,13 @@
+/usr/local/share/musl/include/libssh/libssh_version.h
+/usr/local/share/musl/include/libssh/callbacks.h
+/usr/local/share/musl/include/libssh/server.h
+/usr/local/share/musl/include/libssh/libsshpp.hpp
+/usr/local/share/musl/include/libssh/ssh2.h
+/usr/local/share/musl/include/libssh/legacy.h
+/usr/local/share/musl/include/libssh/libssh.h
+/usr/local/share/musl/include/libssh/sftp.h
+/usr/local/share/musl/lib/cmake/libssh/libssh-config-release.cmake
+/usr/local/share/musl/lib/cmake/libssh/libssh-config.cmake
+/usr/local/share/musl/lib/cmake/libssh/libssh-config-version.cmake
+/usr/local/share/musl/lib/libssh.a
+/usr/local/share/musl/lib/pkgconfig/libssh.pc

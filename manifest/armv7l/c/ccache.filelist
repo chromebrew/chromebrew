@@ -1,0 +1,9 @@
+/usr/local/etc/env.d/00-ccache
+/usr/local/share/man/man1/ccache.1.zst
+/usr/local/bin/ccache
+/usr/local/lib/ccache/bin/clang
+/usr/local/lib/ccache/bin/cc
+/usr/local/lib/ccache/bin/clang++
+/usr/local/lib/ccache/bin/c++
+/usr/local/lib/ccache/bin/g++
+/usr/local/lib/ccache/bin/gcc

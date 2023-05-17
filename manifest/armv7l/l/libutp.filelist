@@ -1,0 +1,13 @@
+/usr/local/lib/libutp.a
+/usr/local/lib/libutp.so
+/usr/local/include/utp/utp.h
+/usr/local/include/utp/utp_callbacks.h
+/usr/local/include/utp/utp_packedsockaddr.h
+/usr/local/include/utp/utp_hash.h
+/usr/local/include/utp/utp_templates.h
+/usr/local/include/utp/utp_types.h
+/usr/local/include/utp/utp_internal.h
+/usr/local/include/utp/utp_utils.h
+/usr/local/include/utp/libutp_inet_ntop.h
+/usr/local/bin/ucat-static
+/usr/local/bin/ucat

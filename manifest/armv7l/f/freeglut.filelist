@@ -1,0 +1,14 @@
+/usr/local/lib/cmake/FreeGLUT/FreeGLUTConfigVersion.cmake
+/usr/local/lib/cmake/FreeGLUT/FreeGLUTTargets.cmake
+/usr/local/lib/cmake/FreeGLUT/FreeGLUTTargets-release.cmake
+/usr/local/lib/cmake/FreeGLUT/FreeGLUTConfig.cmake
+/usr/local/lib/libglut.a
+/usr/local/lib/pkgconfig/glut.pc
+/usr/local/lib/libglut.so.3.11.0
+/usr/local/include/GL/freeglut.h
+/usr/local/include/GL/glut.h
+/usr/local/include/GL/freeglut_ext.h
+/usr/local/include/GL/freeglut_std.h
+/usr/local/include/GL/freeglut_ucall.h
+/usr/local/lib/libglut.so.3
+/usr/local/lib/libglut.so

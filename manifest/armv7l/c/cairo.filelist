@@ -1,0 +1,6 @@
+/usr/local/include/cairo/cairo-tee.h
+/usr/local/bin/cairo-sphinx
+/usr/local/lib/cairo/libcairo-sphinx.so
+/usr/local/lib/cairo/libcairo-fdr.so
+/usr/local/lib/pkgconfig/cairo-xlib-xcb.pc
+/usr/local/lib/pkgconfig/cairo-tee.pc

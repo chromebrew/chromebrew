@@ -1,0 +1,4 @@
+/usr/local/share/musl/include/backtrace-supported.h
+/usr/local/share/musl/include/backtrace.h
+/usr/local/share/musl/lib/libbacktrace.la
+/usr/local/share/musl/lib/libbacktrace.a

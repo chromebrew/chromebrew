@@ -1,0 +1,12 @@
+/usr/local/bin/ncftpbatch
+/usr/local/bin/ncftpget
+/usr/local/bin/ncftpput
+/usr/local/bin/ncftp
+/usr/local/bin/ncftpspooler
+/usr/local/bin/ncftpls
+/usr/local/share/man/man1/ncftpput.1.gz
+/usr/local/share/man/man1/ncftpspooler.1.gz
+/usr/local/share/man/man1/ncftpls.1.gz
+/usr/local/share/man/man1/ncftpget.1.gz
+/usr/local/share/man/man1/ncftp.1.gz
+/usr/local/share/man/man1/ncftpbatch.1.gz

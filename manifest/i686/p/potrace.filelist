@@ -1,0 +1,11 @@
+/usr/local/bin/potrace
+/usr/local/bin/mkbitmap
+/usr/local/lib/libpotrace.la
+/usr/local/lib/libpotrace.so.0.0.6
+/usr/local/lib/libpotrace.a
+/usr/local/include/potracelib.h
+/usr/local/share/doc/potrace/placement.pdf
+/usr/local/share/man/man1/potrace.1.zst
+/usr/local/share/man/man1/mkbitmap.1.zst
+/usr/local/lib/libpotrace.so.0
+/usr/local/lib/libpotrace.so

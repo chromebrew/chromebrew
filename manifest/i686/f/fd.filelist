@@ -1,0 +1,4 @@
+/usr/local/bin/fd
+/usr/local/share/man/man1/fd.1.gz
+/usr/local/share/bash-completion/completions/fd
+/usr/local/share/zsh/site-functions/_fd

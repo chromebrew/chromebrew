@@ -1,0 +1,14 @@
+/usr/local/include/GL/glew.h
+/usr/local/include/GL/wglew.h
+/usr/local/include/GL/glxew.h
+/usr/local/bin/visualinfo
+/usr/local/bin/glewinfo
+/usr/local/lib/libGLEW.so.2.2.0
+/usr/local/lib/cmake/glew/glew-targets-release.cmake
+/usr/local/lib/cmake/glew/glew-targets.cmake
+/usr/local/lib/cmake/glew/glew-config.cmake
+/usr/local/lib/cmake/glew/CopyImportedTargetProperties.cmake
+/usr/local/lib/libGLEW.a
+/usr/local/lib/pkgconfig/glew.pc
+/usr/local/lib/libGLEW.so
+/usr/local/lib/libGLEW.so.2.2

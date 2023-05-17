@@ -1,0 +1,6 @@
+/usr/local/include/GL/glxproto.h
+/usr/local/include/GL/glxmd.h
+/usr/local/include/GL/internal/glcore.h
+/usr/local/include/GL/glxtokens.h
+/usr/local/include/GL/glxint.h
+/usr/local/lib/pkgconfig/glproto.pc

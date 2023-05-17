@@ -1,0 +1,11 @@
+/usr/local/include/libdeflate.h
+/usr/local/bin/libdeflate-gzip
+/usr/local/bin/libdeflate-gunzip
+/usr/local/lib/libdeflate.so.0
+/usr/local/lib/cmake/libdeflate/libdeflate-config-version.cmake
+/usr/local/lib/cmake/libdeflate/libdeflate-config.cmake
+/usr/local/lib/cmake/libdeflate/libdeflate-targets.cmake
+/usr/local/lib/cmake/libdeflate/libdeflate-targets-release.cmake
+/usr/local/lib/libdeflate.a
+/usr/local/lib/pkgconfig/libdeflate.pc
+/usr/local/lib/libdeflate.so

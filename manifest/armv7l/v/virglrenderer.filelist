@@ -1,0 +1,7 @@
+/usr/local/include/virgl/virglrenderer.h
+/usr/local/bin/virgl_test_server
+/usr/local/libexec/virgl_render_server
+/usr/local/lib/libvirglrenderer.so.1.5.3
+/usr/local/lib/pkgconfig/virglrenderer.pc
+/usr/local/lib/libvirglrenderer.so
+/usr/local/lib/libvirglrenderer.so.1

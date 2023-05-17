@@ -1,0 +1,13 @@
+/usr/local/lib/pkgconfig/xinerama.pc
+/usr/local/lib/libXinerama.so.1.0.0
+/usr/local/lib/libXinerama.la
+/usr/local/lib/libXinerama.a
+/usr/local/share/man/man3/Xinerama.3.gz
+/usr/local/share/man/man3/XineramaQueryScreens.3.gz
+/usr/local/share/man/man3/XineramaIsActive.3.gz
+/usr/local/share/man/man3/XineramaQueryExtension.3.gz
+/usr/local/share/man/man3/XineramaQueryVersion.3.gz
+/usr/local/include/X11/extensions/Xinerama.h
+/usr/local/include/X11/extensions/panoramiXext.h
+/usr/local/lib/libXinerama.so
+/usr/local/lib/libXinerama.so.1

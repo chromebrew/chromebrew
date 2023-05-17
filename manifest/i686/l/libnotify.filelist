@@ -1,0 +1,11 @@
+/usr/local/include/libnotify/notify-enum-types.h
+/usr/local/include/libnotify/notify.h
+/usr/local/include/libnotify/notification.h
+/usr/local/include/libnotify/notify-features.h
+/usr/local/lib/libnotify.so.4.0.0
+/usr/local/lib/girepository-1.0/Notify-0.7.typelib
+/usr/local/lib/pkgconfig/libnotify.pc
+/usr/local/share/gir-1.0/Notify-0.7.gir
+/usr/local/bin/notify-send
+/usr/local/lib/libnotify.so.4
+/usr/local/lib/libnotify.so

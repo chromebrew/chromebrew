@@ -1,0 +1,16 @@
+/usr/local/lib/libXpresent.a
+/usr/local/lib/pkgconfig/xpresent.pc
+/usr/local/lib/libXpresent.so.1.0.0
+/usr/local/lib/libXpresent.la
+/usr/local/include/X11/extensions/Xpresent.h
+/usr/local/share/man/man3/XPresentQueryCapabilities.3.gz
+/usr/local/share/man/man3/XPresentVersion.3.gz
+/usr/local/share/man/man3/Xpresent.3.gz
+/usr/local/share/man/man3/XPresentFreeInput.3.gz
+/usr/local/share/man/man3/XPresentQueryExtension.3.gz
+/usr/local/share/man/man3/XPresentPixmap.3.gz
+/usr/local/share/man/man3/XPresentSelectInput.3.gz
+/usr/local/share/man/man3/XPresentNotifyMSC.3.gz
+/usr/local/share/man/man3/XPresentQueryVersion.3.gz
+/usr/local/lib/libXpresent.so.1
+/usr/local/lib/libXpresent.so

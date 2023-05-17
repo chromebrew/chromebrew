@@ -1,0 +1,9 @@
+/usr/local/lib/pkgconfig/libnsutils.pc
+/usr/local/lib/libnsutils.so.0.1.0
+/usr/local/include/nsutils/errors.h
+/usr/local/include/nsutils/endian.h
+/usr/local/include/nsutils/unistd.h
+/usr/local/include/nsutils/time.h
+/usr/local/include/nsutils/base64.h
+/usr/local/lib/libnsutils.so.0
+/usr/local/lib/libnsutils.so

@@ -1,0 +1,9 @@
+/usr/local/bin/mate-autogen
+/usr/local/bin/mate-doc-common
+/usr/local/share/man/man1/mate-autogen.1.gz
+/usr/local/share/man/man1/mate-doc-common.1.gz
+/usr/local/share/mate-common/data/omf.make
+/usr/local/share/mate-common/data/xmldocs.make
+/usr/local/share/aclocal/mate-common.m4
+/usr/local/share/aclocal/mate-compiler-flags.m4
+/usr/local/share/aclocal/mate-code-coverage.m4

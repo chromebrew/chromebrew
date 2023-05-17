@@ -1,0 +1,12 @@
+/usr/local/lib/libvmaf.so.1.1.1
+/usr/local/lib/libvmaf.a
+/usr/local/lib/pkgconfig/libvmaf.pc
+/usr/local/bin/vmaf
+/usr/local/include/libvmaf/libvmaf.h
+/usr/local/include/libvmaf/compute_vmaf.h
+/usr/local/include/libvmaf/feature.h
+/usr/local/include/libvmaf/model.h
+/usr/local/include/libvmaf/picture.h
+/usr/local/include/libvmaf/version.h
+/usr/local/lib/libvmaf.so.1
+/usr/local/lib/libvmaf.so

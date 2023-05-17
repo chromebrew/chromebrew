@@ -1,0 +1,11 @@
+/usr/local/include/protobuf-c/protobuf-c.h
+/usr/local/include/protobuf-c/protobuf-c.proto
+/usr/local/lib/pkgconfig/libprotobuf-c.pc
+/usr/local/lib/libprotobuf-c.so.1.0.0
+/usr/local/lib/libprotobuf-c.la
+/usr/local/lib/libprotobuf-c.a
+/usr/local/bin/protoc-gen-c
+/usr/local/include/google/protobuf-c/protobuf-c.h
+/usr/local/lib/libprotobuf-c.so.1
+/usr/local/lib/libprotobuf-c.so
+/usr/local/bin/protoc-c

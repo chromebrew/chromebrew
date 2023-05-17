@@ -1,0 +1,14 @@
+/usr/local/lib/libdv.so.4.0.3
+/usr/local/lib/libdv.la
+/usr/local/lib/libdv.a
+/usr/local/lib/pkgconfig/libdv.pc
+/usr/local/include/libdv/dv_types.h
+/usr/local/include/libdv/dv.h
+/usr/local/bin/encodedv
+/usr/local/bin/dvconnect
+/usr/local/bin/dubdv
+/usr/local/share/man/man1/dubdv.1.gz
+/usr/local/share/man/man1/dvconnect.1.gz
+/usr/local/share/man/man1/encodedv.1.gz
+/usr/local/lib/libdv.so.4
+/usr/local/lib/libdv.so

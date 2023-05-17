@@ -1,0 +1,9 @@
+/usr/local/include/ladspa.h
+/usr/local/bin/applyplugin
+/usr/local/bin/analyseplugin
+/usr/local/bin/listplugins
+/usr/local/lib/ladspa/sine.so
+/usr/local/lib/ladspa/amp.so
+/usr/local/lib/ladspa/filter.so
+/usr/local/lib/ladspa/noise.so
+/usr/local/lib/ladspa/delay.so

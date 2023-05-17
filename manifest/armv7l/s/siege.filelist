@@ -1,0 +1,10 @@
+/usr/local/etc/urls.txt
+/usr/local/etc/siegerc
+/usr/local/bin/siege
+/usr/local/bin/bombardment
+/usr/local/bin/siege2csv.pl
+/usr/local/bin/siege.config
+/usr/local/share/man/man1/bombardment.1.gz
+/usr/local/share/man/man1/siege2csv.1.gz
+/usr/local/share/man/man1/siege.config.1.gz
+/usr/local/share/man/man1/siege.1.gz

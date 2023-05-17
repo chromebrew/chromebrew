@@ -1,0 +1,11 @@
+/usr/local/include/tidyplatform.h
+/usr/local/include/tidybuffio.h
+/usr/local/include/tidyenum.h
+/usr/local/include/tidy.h
+/usr/local/bin/tidy
+/usr/local/lib/libtidy.so.5.8.0
+/usr/local/lib/pkgconfig/tidy.pc
+/usr/local/lib/libtidy.a
+/usr/local/share/man/man1/tidy.1.zst
+/usr/local/lib/libtidy.so.58
+/usr/local/lib/libtidy.so

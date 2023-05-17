@@ -1,0 +1,10 @@
+/usr/local/share/aclocal/xtrans.m4
+/usr/local/share/pkgconfig/xtrans.pc
+/usr/local/share/doc/xtrans/xtrans.xml
+/usr/local/include/X11/Xtrans/Xtrans.c
+/usr/local/include/X11/Xtrans/Xtransint.h
+/usr/local/include/X11/Xtrans/Xtrans.h
+/usr/local/include/X11/Xtrans/Xtransutil.c
+/usr/local/include/X11/Xtrans/transport.c
+/usr/local/include/X11/Xtrans/Xtranslcl.c
+/usr/local/include/X11/Xtrans/Xtranssock.c

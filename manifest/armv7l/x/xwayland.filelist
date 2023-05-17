@@ -1,0 +1,5 @@
+/usr/local/bin/Xwayland
+/usr/local/lib/xorg/protocol.txt
+/usr/local/lib/pkgconfig/xwayland.pc
+/usr/local/share/applications/org.freedesktop.Xwayland.desktop
+/usr/local/share/man/man1/Xwayland.1.zst

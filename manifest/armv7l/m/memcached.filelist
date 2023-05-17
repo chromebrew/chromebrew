@@ -1,0 +1,3 @@
+/usr/local/bin/memcached
+/usr/local/share/man/man1/memcached.1.gz
+/usr/local/include/memcached/protocol_binary.h
