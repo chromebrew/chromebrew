@@ -131,7 +131,7 @@ begin
   FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
 rescue Errno::ENOENT => e
   puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
-  puts "#{e.message}".orange
+  puts e.message.to_s.orange
 end
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
