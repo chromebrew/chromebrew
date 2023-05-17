@@ -127,19 +127,20 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                  end
 
 CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
+@crew_manifest_cache_error = "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}"
 begin
   FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
 rescue Errno::EROFS => e
   # r/o fs
-  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  puts @crew_manifest_cache_error.lightred
   puts e.message.to_s.orange
 rescue Errno::EACCES => e
   # no write access
-  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  puts @crew_manifest_cache_error.lightred
   puts e.message.to_s.orange
 rescue Errno::ENOENT => e
   # weird fs e.g., /proc
-  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  puts @crew_manifest_cache_error.lightred
   puts e.message.to_s.orange
 end
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
