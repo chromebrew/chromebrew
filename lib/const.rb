@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.33.5'
+CREW_VERSION = '1.33.6'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -127,10 +127,20 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                  end
 
 CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
+@crew_manifest_cache_error = "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}"
 begin
   FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
+rescue Errno::EROFS => e
+  # r/o fs
+  puts @crew_manifest_cache_error.lightred
+  puts e.message.to_s.orange
+rescue Errno::EACCES => e
+  # no write access
+  puts @crew_manifest_cache_error.lightred
+  puts e.message.to_s.orange
 rescue Errno::ENOENT => e
-  puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
+  # weird fs e.g., /proc
+  puts @crew_manifest_cache_error.lightred
   puts e.message.to_s.orange
 end
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)

@@ -580,16 +580,21 @@ end
 
 def updatefiles
   puts 'Rebuilding crew files cache...'.yellow
-  FileUtils.rm_rf "#{CREW_MANIFEST_CACHE_DIR}/*"
-  # if CREW_LOCAL_MANIFEST_PATH.empty?
-  Dir.chdir CREW_MANIFEST_CACHE_DIR do
-    if ENV['CREW_TESTING'] == '1'
-      system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
-      system "tar x#{@verbose}f #{CREW_TESTING_BRANCH}.tar.gz chromebrew-#{CREW_TESTING_BRANCH}/manifest"
-    else
-      system "curl -L#O https://github.com/#{CREW_GITHUB_ACCOUNT}/chromebrew/archive/#{CREW_GITHUB_BRANCH}.tar.gz"
-      system "tar x#{@verbose}f #{CREW_GITHUB_BRANCH}.tar.gz chromebrew-#{CREW_GITHUB_BRANCH}/manifest"
+  if File.writable?(CREW_MANIFEST_CACHE_DIR)
+    FileUtils.rm_rf Dir["#{CREW_MANIFEST_CACHE_DIR}/chromebrew-*"]
+    # if CREW_LOCAL_MANIFEST_PATH.empty?
+    Dir.chdir CREW_MANIFEST_CACHE_DIR do
+      if ENV['CREW_TESTING'] == '1'
+        system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
+        system "tar x#{@verbose}f #{CREW_TESTING_BRANCH}.tar.gz chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}"
+      else
+        system "curl -L#O https://github.com/#{CREW_GITHUB_ACCOUNT}/chromebrew/archive/#{CREW_GITHUB_BRANCH}.tar.gz"
+        system "tar x#{@verbose}f #{CREW_GITHUB_BRANCH}.tar.gz chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
+      end
     end
+  else
+    puts "CREW_MANIFEST_CACHE_DIR #{CREW_MANIFEST_CACHE_DIR} is not writable.".lightred
+    puts 'The crew files cache cannot be rebuilt.'.lightred
   end
   # else
   #   FileUtils.cp_r Dir["#{CREW_LOCAL_MANIFEST_PATH}/*"], CREW_MANIFEST_CACHE_DIR, verbose: @fileutils_verbose
