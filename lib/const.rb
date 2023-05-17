@@ -138,7 +138,7 @@ rescue Errno::EACCES => e
   puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
   puts e.message.to_s.orange
 rescue Errno::ENOENT => e
-  # weird fs
+  # weird fs e.g., /proc
   puts "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}".lightred
   puts e.message.to_s.orange
 end
