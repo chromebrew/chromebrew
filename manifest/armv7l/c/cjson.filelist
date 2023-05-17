@@ -1,0 +1,9 @@
+/usr/local/include/cjson/cJSON.h
+/usr/local/lib/cmake/cJSON/cJSONConfig.cmake
+/usr/local/lib/cmake/cJSON/cjson-release.cmake
+/usr/local/lib/cmake/cJSON/cJSONConfigVersion.cmake
+/usr/local/lib/cmake/cJSON/cjson.cmake
+/usr/local/lib/libcjson.so.1.7.15
+/usr/local/lib/pkgconfig/libcjson.pc
+/usr/local/lib/libcjson.so
+/usr/local/lib/libcjson.so.1
