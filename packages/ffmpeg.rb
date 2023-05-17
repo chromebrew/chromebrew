@@ -220,7 +220,6 @@ class Ffmpeg < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
     FileUtils.install 'doc/ffmpeg.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
     FileUtils.install 'doc/ffplay.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
   end
