@@ -1,0 +1,4 @@
+/usr/local/bin/cargo-cbuild
+/usr/local/bin/cargo-cinstall
+/usr/local/bin/cargo-ctest
+/usr/local/bin/cargo-capi

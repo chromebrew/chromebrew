@@ -1,0 +1,12 @@
+/usr/local/include/yajl/yajl_version.h
+/usr/local/include/yajl/yajl_gen.h
+/usr/local/include/yajl/yajl_parse.h
+/usr/local/include/yajl/yajl_tree.h
+/usr/local/include/yajl/yajl_common.h
+/usr/local/bin/json_verify
+/usr/local/bin/json_reformat
+/usr/local/lib/libyajl.so.2.1.0
+/usr/local/lib/libyajl_s.a
+/usr/local/share/pkgconfig/yajl.pc
+/usr/local/lib/libyajl.so
+/usr/local/lib/libyajl.so.2

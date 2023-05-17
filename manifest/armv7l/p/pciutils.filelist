@@ -1,0 +1,16 @@
+/usr/local/bin/lspci
+/usr/local/bin/update-pciids
+/usr/local/bin/setpci
+/usr/local/share/man/man7/pcilib.7.gz
+/usr/local/share/man/man8/lspci.8.gz
+/usr/local/share/man/man8/update-pciids.8.gz
+/usr/local/share/man/man8/setpci.8.gz
+/usr/local/share/pci.ids.gz
+/usr/local/lib/libpci.so.3.6.2
+/usr/local/lib/pkgconfig/libpci.pc
+/usr/local/include/pci/types.h
+/usr/local/include/pci/pci.h
+/usr/local/include/pci/header.h
+/usr/local/include/pci/config.h
+/usr/local/lib/libpci.so.3
+/usr/local/lib/libpci.so

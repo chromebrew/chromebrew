@@ -1,0 +1,8 @@
+/usr/local/libexec/bats
+/usr/local/libexec/bats-preprocess
+/usr/local/libexec/bats-exec-suite
+/usr/local/libexec/bats-exec-test
+/usr/local/libexec/bats-format-tap-stream
+/usr/local/share/man/man1/bats.1.gz
+/usr/local/share/man/man7/bats.7.gz
+/usr/local/bin/bats

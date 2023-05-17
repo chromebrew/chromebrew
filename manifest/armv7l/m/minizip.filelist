@@ -1,0 +1,13 @@
+/usr/local/include/minizip/mztools.h
+/usr/local/include/minizip/zip.h
+/usr/local/include/minizip/unzip.h
+/usr/local/include/minizip/ioapi.h
+/usr/local/include/minizip/crypt.h
+/usr/local/bin/miniunzip
+/usr/local/bin/minizip
+/usr/local/lib/libminizip.so.1.0.0
+/usr/local/lib/libminizip.la
+/usr/local/lib/libminizip.a
+/usr/local/lib/pkgconfig/minizip.pc
+/usr/local/lib/libminizip.so
+/usr/local/lib/libminizip.so.1

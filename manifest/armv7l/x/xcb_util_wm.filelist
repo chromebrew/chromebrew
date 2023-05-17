@@ -1,0 +1,14 @@
+/usr/local/include/xcb/xcb_ewmh.h
+/usr/local/include/xcb/xcb_icccm.h
+/usr/local/lib/libxcb-icccm.la
+/usr/local/lib/libxcb-icccm.so.4.0.0
+/usr/local/lib/libxcb-ewmh.a
+/usr/local/lib/pkgconfig/xcb-icccm.pc
+/usr/local/lib/pkgconfig/xcb-ewmh.pc
+/usr/local/lib/libxcb-ewmh.so.2.0.0
+/usr/local/lib/libxcb-ewmh.la
+/usr/local/lib/libxcb-icccm.a
+/usr/local/lib/libxcb-ewmh.so
+/usr/local/lib/libxcb-icccm.so.4
+/usr/local/lib/libxcb-icccm.so
+/usr/local/lib/libxcb-ewmh.so.2

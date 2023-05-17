@@ -1,0 +1,12 @@
+/usr/local/bin/xdt-autogen
+/usr/local/bin/xfce-get-translations
+/usr/local/bin/xfce-update-news
+/usr/local/bin/xfce-build
+/usr/local/bin/xdt-csource
+/usr/local/bin/xfce-do-release
+/usr/local/bin/xfce-get-release-notes
+/usr/local/share/aclocal/xdt-version.m4
+/usr/local/share/aclocal/xdt-i18n.m4
+/usr/local/share/aclocal/xdt-features.m4
+/usr/local/share/aclocal/xdt-depends.m4
+/usr/local/share/man/man1/xdt-csource.1.gz

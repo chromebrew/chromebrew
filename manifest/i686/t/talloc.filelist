@@ -1,0 +1,14 @@
+/usr/local/share/man/man3/talloc.3.zst
+/usr/local/include/talloc.h
+/usr/local/include/pytalloc.h
+/usr/local/lib/libtalloc-compat1-2.4.0.so
+/usr/local/lib/libtalloc.so.2.4.0
+/usr/local/lib/python3.11/site-packages/talloc.cpython-311-i386-linux-gnu.so
+/usr/local/lib/libpytalloc-util.cpython-311-i386-linux-gnu.so.2.4.0
+/usr/local/lib/pkgconfig/talloc.pc
+/usr/local/lib/pkgconfig/pytalloc-util.cpython-311-i386-linux-gnu.pc
+/usr/local/lib/libpytalloc-util.cpython-311-i386-linux-gnu.so.2
+/usr/local/lib/libtalloc.so.2
+/usr/local/lib/libpytalloc-util.cpython-311-i386-linux-gnu.so
+/usr/local/lib/libtalloc.so
+/usr/local/lib/libtalloc.so.1

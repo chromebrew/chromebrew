@@ -1,0 +1,13 @@
+/usr/local/share/musl/share/doc/expat/AUTHORS
+/usr/local/share/musl/share/doc/expat/changelog
+/usr/local/share/musl/lib/libexpat.la
+/usr/local/share/musl/lib/libexpat.a
+/usr/local/share/musl/lib/cmake/expat-2.4.8/expat.cmake
+/usr/local/share/musl/lib/cmake/expat-2.4.8/expat-config-version.cmake
+/usr/local/share/musl/lib/cmake/expat-2.4.8/expat-noconfig.cmake
+/usr/local/share/musl/lib/cmake/expat-2.4.8/expat-config.cmake
+/usr/local/share/musl/lib/pkgconfig/expat.pc
+/usr/local/share/musl/include/expat_config.h
+/usr/local/share/musl/include/expat.h
+/usr/local/share/musl/include/expat_external.h
+/usr/local/share/musl/bin/xmlwf

@@ -1,0 +1,16 @@
+/usr/local/include/libraw1394/raw1394.h
+/usr/local/include/libraw1394/ieee1394.h
+/usr/local/include/libraw1394/csr.h
+/usr/local/bin/sendiso
+/usr/local/bin/testlibraw
+/usr/local/bin/dumpiso
+/usr/local/lib/libraw1394.a
+/usr/local/lib/libraw1394.la
+/usr/local/lib/libraw1394.so.11.0.1
+/usr/local/lib/pkgconfig/libraw1394.pc
+/usr/local/share/man/man5/isodump.5.gz
+/usr/local/share/man/man1/dumpiso.1.gz
+/usr/local/share/man/man1/testlibraw.1.gz
+/usr/local/share/man/man1/sendiso.1.gz
+/usr/local/lib/libraw1394.so
+/usr/local/lib/libraw1394.so.11

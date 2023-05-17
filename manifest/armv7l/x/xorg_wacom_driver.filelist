@@ -1,0 +1,13 @@
+/usr/local/share/man/man1/xsetwacom.1
+/usr/local/share/man/man4/wacom.4
+/usr/local/share/X11/xorg.conf.d/70-wacom.conf
+/usr/local/bin/xsetwacom
+/usr/local/bin/isdv4-serial-debugger
+/usr/local/bin/isdv4-serial-inputattach
+/usr/local/lib/pkgconfig/xorg-wacom.pc
+/usr/local/lib/udev/rules.d/wacom.rules
+/usr/local/lib/xorg/modules/input/wacom_drv.so
+/usr/local/include/xorg/wacom-properties.h
+/usr/local/include/xorg/isdv4.h
+/usr/local/include/xorg/wacom-util.h
+/usr/local/include/xorg/Xwacom.h

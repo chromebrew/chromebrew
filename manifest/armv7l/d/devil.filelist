@@ -1,0 +1,12 @@
+/usr/local/lib/pkgconfig/ILUT.pc
+/usr/local/lib/pkgconfig/ILU.pc
+/usr/local/lib/pkgconfig/IL.pc
+/usr/local/lib/libILU.so.1
+/usr/local/lib/libILUT.so.1
+/usr/local/lib/libIL.so.1
+/usr/local/include/IL/ilu.h
+/usr/local/include/IL/il.h
+/usr/local/include/IL/ilut.h
+/usr/local/lib/libILUT.so
+/usr/local/lib/libIL.so
+/usr/local/lib/libILU.so

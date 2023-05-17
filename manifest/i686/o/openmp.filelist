@@ -1,0 +1,16 @@
+/usr/local/lib/libompd.so
+/usr/local/lib/libomp.so
+/usr/local/lib/libarcher_static.a
+/usr/local/lib/cmake/openmp/FindOpenMPTarget.cmake
+/usr/local/lib/libarcher.so
+/usr/local/share/gdb/python/ompd/ompd.py
+/usr/local/share/gdb/python/ompd/ompdModule.so
+/usr/local/share/gdb/python/ompd/__init__.py
+/usr/local/share/gdb/python/ompd/ompd_handles.py
+/usr/local/share/gdb/python/ompd/frame_filter.py
+/usr/local/share/gdb/python/ompd/ompd_address_space.py
+/usr/local/share/gdb/python/ompd/ompd_callbacks.py
+/usr/local/include/ompt-multiplex.h
+/usr/local/include/omp-tools.h
+/usr/local/include/omp.h
+/usr/local/include/ompt.h

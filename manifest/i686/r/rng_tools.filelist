@@ -1,0 +1,6 @@
+/usr/local/share/man/man8/rngd.8.gz
+/usr/local/share/man/man1/rngtest.1.gz
+/usr/local/sbin/rngd
+/usr/local/bin/stoprngd
+/usr/local/bin/startrngd
+/usr/local/bin/rngtest

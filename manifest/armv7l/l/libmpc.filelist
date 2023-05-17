@@ -1,0 +1,17 @@
+/usr/local/include/mpc/mpcmath.h
+/usr/local/include/mpc/mpcdec.h
+/usr/local/include/mpc/reader.h
+/usr/local/include/mpc/minimax.h
+/usr/local/include/mpc/mpc_types.h
+/usr/local/include/mpc/datatypes.h
+/usr/local/include/mpc/streaminfo.h
+/usr/local/bin/wavcmp
+/usr/local/bin/mpc2sv8
+/usr/local/bin/mpcenc
+/usr/local/bin/mpccut
+/usr/local/bin/mpcdec
+/usr/local/lib/libmpcdec.a
+/usr/local/lib/libmpcdec.la
+/usr/local/lib/libmpcdec.so.6.1.0
+/usr/local/lib/libmpcdec.so
+/usr/local/lib/libmpcdec.so.6

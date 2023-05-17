@@ -1,0 +1,16 @@
+/usr/local/lib/libopenblas_armv7p-r0.3.10.a
+/usr/local/lib/cmake/openblas/OpenBLASConfig.cmake
+/usr/local/lib/cmake/openblas/OpenBLASConfigVersion.cmake
+/usr/local/lib/libopenblas_armv7p-r0.3.10.so
+/usr/local/lib/pkgconfig/openblas.pc
+/usr/local/include/lapacke_mangling.h
+/usr/local/include/f77blas.h
+/usr/local/include/openblas_config.h
+/usr/local/include/cblas.h
+/usr/local/include/lapack.h
+/usr/local/include/lapacke_config.h
+/usr/local/include/lapacke.h
+/usr/local/include/lapacke_utils.h
+/usr/local/lib/libopenblas.so
+/usr/local/lib/libopenblas.a
+/usr/local/lib/libopenblas.so.0

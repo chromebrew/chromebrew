@@ -1,0 +1,12 @@
+/usr/local/share/man/man8/fsck.exfat.8.gz
+/usr/local/share/man/man8/dump.exfat.8.gz
+/usr/local/share/man/man8/exfat2img.8.gz
+/usr/local/share/man/man8/mkfs.exfat.8.gz
+/usr/local/share/man/man8/tune.exfat.8.gz
+/usr/local/share/man/man8/exfatlabel.8.gz
+/usr/local/sbin/exfat2img
+/usr/local/sbin/mkfs.exfat
+/usr/local/sbin/tune.exfat
+/usr/local/sbin/exfatlabel
+/usr/local/sbin/dump.exfat
+/usr/local/sbin/fsck.exfat

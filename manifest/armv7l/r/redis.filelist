@@ -1,0 +1,6 @@
+/usr/local/bin/redis-check-rdb
+/usr/local/bin/redis-check-aof
+/usr/local/bin/redis-cli
+/usr/local/bin/redis-server
+/usr/local/bin/redis-benchmark
+/usr/local/bin/redis-sentinel

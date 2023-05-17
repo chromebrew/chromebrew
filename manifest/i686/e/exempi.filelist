@@ -1,0 +1,12 @@
+/usr/local/bin/exempi
+/usr/local/lib/libexempi.la
+/usr/local/lib/libexempi.so.8.1.3
+/usr/local/lib/libexempi.a
+/usr/local/lib/pkgconfig/exempi-2.0.pc
+/usr/local/share/man/man1/exempi.1.zst
+/usr/local/include/exempi-2.0/exempi/xmpconsts.h
+/usr/local/include/exempi-2.0/exempi/xmp.h
+/usr/local/include/exempi-2.0/exempi/xmperrors.h
+/usr/local/include/exempi-2.0/exempi/xmp++.hpp
+/usr/local/lib/libexempi.so
+/usr/local/lib/libexempi.so.8

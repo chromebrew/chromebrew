@@ -1,0 +1,12 @@
+/home/chronos/user/.swatchdogrc
+/usr/local/lib/perl5/site_perl/5.26.1/armv7l-linux/auto/swatchdog/.packlist
+/usr/local/lib/perl5/site_perl/5.26.1/Swatchdog/Actions.pm
+/usr/local/lib/perl5/site_perl/5.26.1/Swatchdog/Threshold.pm
+/usr/local/lib/perl5/site_perl/5.26.1/Swatchdog/Throttle.pm
+/usr/local/lib/perl5/site_perl/5.26.1/auto/Swatchdog/Actions/autosplit.ix
+/usr/local/lib/perl5/5.26.1/armv7l-linux/perllocal.pod
+/usr/local/bin/swatchdog
+/usr/local/share/man/man1/swatchdog.1.gz
+/usr/local/share/man/man3/Swatchdog::Threshold.3.gz
+/usr/local/share/man/man3/Swatchdog::Actions.3.gz
+/usr/local/share/man/man3/Swatchdog::Throttle.3.gz

@@ -1,0 +1,13 @@
+/usr/local/bin/cdparanoia
+/usr/local/share/man/man1/cdparanoia.1.zst
+/usr/local/include/cdda_paranoia.h
+/usr/local/include/cdda_interface.h
+/usr/local/include/utils.h
+/usr/local/lib/libcdda_paranoia.so.0.10.2
+/usr/local/lib/libcdda_paranoia.a
+/usr/local/lib/libcdda_interface.so.0.10.2
+/usr/local/lib/libcdda_interface.a
+/usr/local/lib/libcdda_interface.so.0
+/usr/local/lib/libcdda_interface.so
+/usr/local/lib/libcdda_paranoia.so.0
+/usr/local/lib/libcdda_paranoia.so
