@@ -8241,6 +8241,11 @@ url: https://www.unicode.org/Public/emoji/
 activity: low
 ---
 kind: url
+name: unifdef
+url: https://dotat.at/prog/unifdef/
+activity: low
+---
+kind: url
 name: units
 url: https://ftp.gnu.org/gnu/units
 activity: medium
