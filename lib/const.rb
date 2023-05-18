@@ -60,10 +60,12 @@ end
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
-# The vendor_id may not exist on non-x86 platforms, or when a container
-# is virtualized on non-x86 platforms. Default to CREW_IS_INTEL for x86
-# architectures.
-CREW_IS_AMD = ARCH == 'x86_64' ? CPUINFO['vendor_id'].include?('AuthenticAMD') : false
+# The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
+# container is virtualized on non-x86 platforms. Default to
+# CREW_IS_INTEL for x86 architectures. Note that a QEMU_EMULATED check
+# is not relevant here since qemu can be configured to pass through a
+# cpuinfo vendor_id.
+CREW_IS_AMD = ARCH == 'x86_64' ? ( CREW_CPU_VENDOR != 'unknown' and CPUINFO['vendor_id'].include?('AuthenticAMD') ) : false
 CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? ( CREW_CPU_VENDOR == 'unknown' or CPUINFO['vendor_id'].include?('GenuineIntel') ) : false
 
 # Use sane minimal defaults if in container and no override specified.
