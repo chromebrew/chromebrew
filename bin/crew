@@ -1100,7 +1100,7 @@ def prepare_package(destdir)
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist | sort -o filelist'
 
-    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH)
+    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH) && File.writable?(CREW_LOCAL_MANIFEST_PATH)
       FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
       FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
     end
