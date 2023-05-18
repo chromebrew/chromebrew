@@ -25,8 +25,6 @@ class Icu4c < Package
   depends_on 'gcc' # R
   depends_on 'glibc' # R
 
-  no_patchelf
-
   def self.build
     FileUtils.cd('source') do
       case ARCH
