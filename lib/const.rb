@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.33.7'
+CREW_VERSION = '1.33.8'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -60,9 +60,11 @@ end
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
-# vendor_id may not exist on non-x86 platforms.
+# The vendor_id may not exist on non-x86 platforms, or when a container
+# is virtualized on non-x86 platforms. Default to CREW_IS_INTEL for x86
+# architectures.
 CREW_IS_AMD = ARCH == 'x86_64' ? CPUINFO['vendor_id'].include?('AuthenticAMD') : false
-CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? CPUINFO['vendor_id'].include?('GenuineIntel') : false
+CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? ( CREW_CPU_VENDOR == 'unknown' or CPUINFO['vendor_id'].include?('GenuineIntel') ) : false
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
