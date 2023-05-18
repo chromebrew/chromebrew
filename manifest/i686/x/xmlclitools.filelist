@@ -1,7 +1,7 @@
 /usr/local/bin/xmlfmt
-/usr/local/bin/xmlmod
 /usr/local/bin/xmlgrep
+/usr/local/bin/xmlmod
 /usr/local/bin/xmlngrep
-/usr/local/man/man1/xmlgrep.1.gz
 /usr/local/man/man1/xmlfmt.1.gz
+/usr/local/man/man1/xmlgrep.1.gz
 /usr/local/man/man1/xmlmod.1.gz

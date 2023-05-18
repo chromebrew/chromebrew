@@ -1,8 +1,6 @@
+/usr/local/bin/vsyasm
 /usr/local/bin/yasm
 /usr/local/bin/ytasm
-/usr/local/bin/vsyasm
-/usr/local/lib64/libyasm.a
-/usr/local/include/libyasm.h
 /usr/local/include/libyasm/arch.h
 /usr/local/include/libyasm/assocdat.h
 /usr/local/include/libyasm/bitvect.h
@@ -14,6 +12,7 @@
 /usr/local/include/libyasm/expr.h
 /usr/local/include/libyasm/file.h
 /usr/local/include/libyasm/floatnum.h
+/usr/local/include/libyasm.h
 /usr/local/include/libyasm/hamt.h
 /usr/local/include/libyasm/insn.h
 /usr/local/include/libyasm/intnum.h
@@ -27,10 +26,11 @@
 /usr/local/include/libyasm/phash.h
 /usr/local/include/libyasm/preproc.h
 /usr/local/include/libyasm/section.h
+/usr/local/include/libyasm-stdint.h
 /usr/local/include/libyasm/symrec.h
 /usr/local/include/libyasm/valparam.h
 /usr/local/include/libyasm/value.h
-/usr/local/include/libyasm-stdint.h
+/usr/local/lib64/libyasm.a
 /usr/local/share/man/man1/yasm.1.gz
 /usr/local/share/man/man7/yasm_arch.7.gz
 /usr/local/share/man/man7/yasm_dbgfmts.7.gz

@@ -1,6 +1,6 @@
-/usr/local/bin/zenc
 /usr/local/bin/zdec
-/usr/local/lib/libslz.so.1
-/usr/local/lib/libslz.a
+/usr/local/bin/zenc
 /usr/local/include/slz.h
+/usr/local/lib/libslz.a
 /usr/local/lib/libslz.so
+/usr/local/lib/libslz.so.1

@@ -1,9 +1,9 @@
-/usr/local/include/ndp.h
-/usr/local/lib64/libndp.so.0.1.1
-/usr/local/lib64/libndp.la
-/usr/local/lib64/libndp.a
-/usr/local/lib64/pkgconfig/libndp.pc
 /usr/local/bin/ndptool
-/usr/local/share/man/man8/ndptool.8.gz
-/usr/local/lib64/libndp.so.0
+/usr/local/include/ndp.h
+/usr/local/lib64/libndp.a
+/usr/local/lib64/libndp.la
 /usr/local/lib64/libndp.so
+/usr/local/lib64/libndp.so.0
+/usr/local/lib64/libndp.so.0.1.1
+/usr/local/lib64/pkgconfig/libndp.pc
+/usr/local/share/man/man8/ndptool.8.gz

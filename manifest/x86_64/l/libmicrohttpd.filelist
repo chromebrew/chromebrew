@@ -1,11 +1,11 @@
 /usr/local/include/microhttpd.h
-/usr/local/lib64/libmicrohttpd.so.12.60.0
-/usr/local/lib64/libmicrohttpd.la
 /usr/local/lib64/libmicrohttpd.a
+/usr/local/lib64/libmicrohttpd.la
+/usr/local/lib64/libmicrohttpd.so
+/usr/local/lib64/libmicrohttpd.so.12
+/usr/local/lib64/libmicrohttpd.so.12.60.0
 /usr/local/lib64/pkgconfig/libmicrohttpd.pc
-/usr/local/share/info/libmicrohttpd-tutorial.info.zst
 /usr/local/share/info/libmicrohttpd.info.zst
 /usr/local/share/info/libmicrohttpd_performance_data.png.zst
+/usr/local/share/info/libmicrohttpd-tutorial.info.zst
 /usr/local/share/man/man3/libmicrohttpd.3.zst
-/usr/local/lib64/libmicrohttpd.so.12
-/usr/local/lib64/libmicrohttpd.so

@@ -1,6 +1,6 @@
-/usr/local/include/libseat.h
-/usr/local/bin/seatd-launch
 /usr/local/bin/seatd
+/usr/local/bin/seatd-launch
+/usr/local/include/libseat.h
+/usr/local/lib/libseat.so
 /usr/local/lib/libseat.so.1
 /usr/local/lib/pkgconfig/libseat.pc
-/usr/local/lib/libseat.so

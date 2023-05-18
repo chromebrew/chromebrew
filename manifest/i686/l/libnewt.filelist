@@ -1,10 +1,11 @@
-/usr/local/lib/libnewt.so.0.52.21
-/usr/local/lib/whiptcl.so
-/usr/local/lib/pkgconfig/libnewt.pc
-/usr/local/lib/libnewt.a
 /usr/local/bin/whiptail
 /usr/local/include/newt.h
-/usr/local/share/man/man1/whiptail.1.gz
+/usr/local/lib/libnewt.a
+/usr/local/lib/libnewt.so
+/usr/local/lib/libnewt.so.0.52
+/usr/local/lib/libnewt.so.0.52.21
+/usr/local/lib/pkgconfig/libnewt.pc
+/usr/local/lib/whiptcl.so
 /usr/local/share/locale/ar/LC_MESSAGES/newt.mo
 /usr/local/share/locale/as/LC_MESSAGES/newt.mo
 /usr/local/share/locale/ast/LC_MESSAGES/newt.mo
@@ -84,5 +85,4 @@
 /usr/local/share/locale/xh/LC_MESSAGES/newt.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/newt.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/newt.mo
-/usr/local/lib/libnewt.so
-/usr/local/lib/libnewt.so.0.52
+/usr/local/share/man/man1/whiptail.1.gz

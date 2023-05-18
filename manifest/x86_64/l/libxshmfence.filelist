@@ -1,7 +1,7 @@
-/usr/local/lib64/libxshmfence.so.1.0.0
-/usr/local/lib64/libxshmfence.la
-/usr/local/lib64/libxshmfence.a
-/usr/local/lib64/pkgconfig/xshmfence.pc
 /usr/local/include/X11/xshmfence.h
-/usr/local/lib64/libxshmfence.so.1
+/usr/local/lib64/libxshmfence.a
+/usr/local/lib64/libxshmfence.la
 /usr/local/lib64/libxshmfence.so
+/usr/local/lib64/libxshmfence.so.1
+/usr/local/lib64/libxshmfence.so.1.0.0
+/usr/local/lib64/pkgconfig/xshmfence.pc

@@ -1,10 +1,10 @@
-/usr/local/lib/libfetch_pic.a
-/usr/local/lib/libfetch.so.1.0
-/usr/local/lib/libfetch.a
 /usr/local/bin/fetch
+/usr/local/include/fetch-estream.h
+/usr/local/include/fetch.h
+/usr/local/lib/libfetch.a
+/usr/local/lib/libfetch_pic.a
+/usr/local/lib/libfetch.so
+/usr/local/lib/libfetch.so.1
+/usr/local/lib/libfetch.so.1.0
 /usr/local/share/man/man1/fetch.1.gz
 /usr/local/share/man/man3/fetch.3.gz
-/usr/local/include/fetch.h
-/usr/local/include/fetch-estream.h
-/usr/local/lib/libfetch.so.1
-/usr/local/lib/libfetch.so

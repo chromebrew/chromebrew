@@ -1,4 +1,4 @@
-/usr/local/bin/pandoc-citeproc
 /usr/local/bin/pandoc
-/usr/local/share/man/man1/pandoc-citeproc.1.gz
+/usr/local/bin/pandoc-citeproc
 /usr/local/share/man/man1/pandoc.1.gz
+/usr/local/share/man/man1/pandoc-citeproc.1.gz

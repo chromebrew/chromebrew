@@ -1,65 +1,65 @@
-/usr/local/share/sublime_merge/git-credential-sublime
-/usr/local/share/sublime_merge/sublime_merge
+/usr/local/bin/sublime_merge
 /usr/local/share/sublime_merge/changelog.txt
-/usr/local/share/sublime_merge/ssh-askpass-sublime
-/usr/local/share/sublime_merge/sublime_merge.desktop
 /usr/local/share/sublime_merge/crash_reporter
-/usr/local/share/sublime_merge/Packages/C++.sublime-package
-/usr/local/share/sublime_merge/Packages/Default.sublime-package
-/usr/local/share/sublime_merge/Packages/R.sublime-package
-/usr/local/share/sublime_merge/Packages/JavaScript.sublime-package
-/usr/local/share/sublime_merge/Packages/CSS.sublime-package
-/usr/local/share/sublime_merge/Packages/ASP.sublime-package
-/usr/local/share/sublime_merge/Packages/Default - Merge.sublime-package
-/usr/local/share/sublime_merge/Packages/RestructuredText.sublime-package
-/usr/local/share/sublime_merge/Packages/Pascal.sublime-package
+/usr/local/share/sublime_merge/git-credential-sublime
+/usr/local/share/sublime_merge/Icon/128x128/sublime-merge.png
+/usr/local/share/sublime_merge/Icon/16x16/sublime-merge.png
+/usr/local/share/sublime_merge/Icon/256x256/sublime-merge.png
+/usr/local/share/sublime_merge/Icon/32x32/sublime-merge.png
+/usr/local/share/sublime_merge/Icon/48x48/sublime-merge.png
 /usr/local/share/sublime_merge/Packages/ActionScript.sublime-package
-/usr/local/share/sublime_merge/Packages/Clojure.sublime-package
-/usr/local/share/sublime_merge/Packages/Perl.sublime-package
-/usr/local/share/sublime_merge/Packages/Python.sublime-package
 /usr/local/share/sublime_merge/Packages/AppleScript.sublime-package
-/usr/local/share/sublime_merge/Packages/Color Scheme - Default.sublime-package
-/usr/local/share/sublime_merge/Packages/Language - English.sublime-package
-/usr/local/share/sublime_merge/Packages/PHP.sublime-package
+/usr/local/share/sublime_merge/Packages/ASP.sublime-package
 /usr/local/share/sublime_merge/Packages/Batch File.sublime-package
-/usr/local/share/sublime_merge/Packages/Theme - Merge.sublime-package
+/usr/local/share/sublime_merge/Packages/Binary.sublime-package
+/usr/local/share/sublime_merge/Packages/Clojure.sublime-package
+/usr/local/share/sublime_merge/Packages/Color Scheme - Default.sublime-package
+/usr/local/share/sublime_merge/Packages/Color Scheme - Legacy.sublime-package
+/usr/local/share/sublime_merge/Packages/CSS.sublime-package
 /usr/local/share/sublime_merge/Packages/C#.sublime-package
+/usr/local/share/sublime_merge/Packages/C++.sublime-package
+/usr/local/share/sublime_merge/Packages/Default - Merge.sublime-package
+/usr/local/share/sublime_merge/Packages/Default.sublime-package
+/usr/local/share/sublime_merge/Packages/D.sublime-package
+/usr/local/share/sublime_merge/Packages/Erlang.sublime-package
+/usr/local/share/sublime_merge/Packages/Git Formats.sublime-package
+/usr/local/share/sublime_merge/Packages/Go.sublime-package
+/usr/local/share/sublime_merge/Packages/Graphviz.sublime-package
+/usr/local/share/sublime_merge/Packages/Groovy.sublime-package
 /usr/local/share/sublime_merge/Packages/Haskell.sublime-package
 /usr/local/share/sublime_merge/Packages/HTML.sublime-package
-/usr/local/share/sublime_merge/Packages/Erlang.sublime-package
-/usr/local/share/sublime_merge/Packages/Scala.sublime-package
-/usr/local/share/sublime_merge/Packages/Color Scheme - Legacy.sublime-package
-/usr/local/share/sublime_merge/Packages/YAML.sublime-package
-/usr/local/share/sublime_merge/Packages/Binary.sublime-package
-/usr/local/share/sublime_merge/Packages/SQL.sublime-package
-/usr/local/share/sublime_merge/Packages/Rust.sublime-package
-/usr/local/share/sublime_merge/Packages/Makefile.sublime-package
-/usr/local/share/sublime_merge/Packages/Objective-C.sublime-package
-/usr/local/share/sublime_merge/Packages/TCL.sublime-package
-/usr/local/share/sublime_merge/Packages/Regular Expressions.sublime-package
-/usr/local/share/sublime_merge/Packages/D.sublime-package
-/usr/local/share/sublime_merge/Packages/Markdown.sublime-package
-/usr/local/share/sublime_merge/Packages/Theme - Default.sublime-package
-/usr/local/share/sublime_merge/Packages/Rails.sublime-package
-/usr/local/share/sublime_merge/Packages/Go.sublime-package
-/usr/local/share/sublime_merge/Packages/LaTeX.sublime-package
-/usr/local/share/sublime_merge/Packages/Text.sublime-package
-/usr/local/share/sublime_merge/Packages/Git Formats.sublime-package
-/usr/local/share/sublime_merge/Packages/OCaml.sublime-package
-/usr/local/share/sublime_merge/Packages/Graphviz.sublime-package
-/usr/local/share/sublime_merge/Packages/Matlab.sublime-package
-/usr/local/share/sublime_merge/Packages/XML.sublime-package
-/usr/local/share/sublime_merge/Packages/Ruby.sublime-package
+/usr/local/share/sublime_merge/Packages/JavaScript.sublime-package
 /usr/local/share/sublime_merge/Packages/Java.sublime-package
-/usr/local/share/sublime_merge/Packages/Lisp.sublime-package
-/usr/local/share/sublime_merge/Packages/Groovy.sublime-package
-/usr/local/share/sublime_merge/Packages/Lua.sublime-package
 /usr/local/share/sublime_merge/Packages/JSON.sublime-package
+/usr/local/share/sublime_merge/Packages/Language - English.sublime-package
+/usr/local/share/sublime_merge/Packages/LaTeX.sublime-package
+/usr/local/share/sublime_merge/Packages/Lisp.sublime-package
+/usr/local/share/sublime_merge/Packages/Lua.sublime-package
+/usr/local/share/sublime_merge/Packages/Makefile.sublime-package
+/usr/local/share/sublime_merge/Packages/Markdown.sublime-package
+/usr/local/share/sublime_merge/Packages/Matlab.sublime-package
+/usr/local/share/sublime_merge/Packages/Objective-C.sublime-package
+/usr/local/share/sublime_merge/Packages/OCaml.sublime-package
+/usr/local/share/sublime_merge/Packages/Pascal.sublime-package
+/usr/local/share/sublime_merge/Packages/Perl.sublime-package
+/usr/local/share/sublime_merge/Packages/PHP.sublime-package
+/usr/local/share/sublime_merge/Packages/Python.sublime-package
+/usr/local/share/sublime_merge/Packages/Rails.sublime-package
+/usr/local/share/sublime_merge/Packages/Regular Expressions.sublime-package
+/usr/local/share/sublime_merge/Packages/RestructuredText.sublime-package
+/usr/local/share/sublime_merge/Packages/R.sublime-package
+/usr/local/share/sublime_merge/Packages/Ruby.sublime-package
+/usr/local/share/sublime_merge/Packages/Rust.sublime-package
+/usr/local/share/sublime_merge/Packages/Scala.sublime-package
 /usr/local/share/sublime_merge/Packages/ShellScript.sublime-package
+/usr/local/share/sublime_merge/Packages/SQL.sublime-package
+/usr/local/share/sublime_merge/Packages/TCL.sublime-package
 /usr/local/share/sublime_merge/Packages/Textile.sublime-package
-/usr/local/share/sublime_merge/Icon/48x48/sublime-merge.png
-/usr/local/share/sublime_merge/Icon/256x256/sublime-merge.png
-/usr/local/share/sublime_merge/Icon/16x16/sublime-merge.png
-/usr/local/share/sublime_merge/Icon/128x128/sublime-merge.png
-/usr/local/share/sublime_merge/Icon/32x32/sublime-merge.png
-/usr/local/bin/sublime_merge
+/usr/local/share/sublime_merge/Packages/Text.sublime-package
+/usr/local/share/sublime_merge/Packages/Theme - Default.sublime-package
+/usr/local/share/sublime_merge/Packages/Theme - Merge.sublime-package
+/usr/local/share/sublime_merge/Packages/XML.sublime-package
+/usr/local/share/sublime_merge/Packages/YAML.sublime-package
+/usr/local/share/sublime_merge/ssh-askpass-sublime
+/usr/local/share/sublime_merge/sublime_merge
+/usr/local/share/sublime_merge/sublime_merge.desktop

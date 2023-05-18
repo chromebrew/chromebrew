@@ -1,3 +1,4 @@
+/usr/local/share/pkgconfig/wayland-protocols.pc
 /usr/local/share/wayland-protocols/stable/presentation-time/presentation-time.xml
 /usr/local/share/wayland-protocols/stable/viewporter/viewporter.xml
 /usr/local/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml
@@ -32,4 +33,3 @@
 /usr/local/share/wayland-protocols/unstable/xdg-shell/xdg-shell-unstable-v5.xml
 /usr/local/share/wayland-protocols/unstable/xdg-shell/xdg-shell-unstable-v6.xml
 /usr/local/share/wayland-protocols/unstable/xwayland-keyboard-grab/xwayland-keyboard-grab-unstable-v1.xml
-/usr/local/share/pkgconfig/wayland-protocols.pc

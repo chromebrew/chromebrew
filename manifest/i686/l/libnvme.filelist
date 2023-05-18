@@ -1,8 +1,3 @@
-/usr/local/lib/libnvme.so.1.0.0
-/usr/local/lib/python3.10/site-packages/libnvme/nvme.py
-/usr/local/lib/python3.10/site-packages/libnvme/_nvme.cpython-310-i386-linux-gnu.so
-/usr/local/lib/python3.10/site-packages/libnvme/__init__.py
-/usr/local/lib/pkgconfig/libnvme.pc
 /usr/local/include/libnvme.h
 /usr/local/include/nvme/fabrics.h
 /usr/local/include/nvme/filters.h
@@ -12,5 +7,10 @@
 /usr/local/include/nvme/tree.h
 /usr/local/include/nvme/types.h
 /usr/local/include/nvme/util.h
-/usr/local/lib/libnvme.so.1
 /usr/local/lib/libnvme.so
+/usr/local/lib/libnvme.so.1
+/usr/local/lib/libnvme.so.1.0.0
+/usr/local/lib/pkgconfig/libnvme.pc
+/usr/local/lib/python3.10/site-packages/libnvme/__init__.py
+/usr/local/lib/python3.10/site-packages/libnvme/_nvme.cpython-310-i386-linux-gnu.so
+/usr/local/lib/python3.10/site-packages/libnvme/nvme.py

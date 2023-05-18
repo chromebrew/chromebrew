@@ -1,6 +1,6 @@
-/usr/local/lib64/pkgconfig/stfl.pc
-/usr/local/lib64/libstfl.so.0.23
-/usr/local/lib64/libstfl.a
 /usr/local/include/stfl.h
+/usr/local/lib64/libstfl.a
 /usr/local/lib64/libstfl.so
 /usr/local/lib64/libstfl.so.0
+/usr/local/lib64/libstfl.so.0.23
+/usr/local/lib64/pkgconfig/stfl.pc

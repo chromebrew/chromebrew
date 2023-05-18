@@ -1,10 +1,12 @@
-/usr/local/include/liburing/io_uring.h
-/usr/local/include/liburing/compat.h
 /usr/local/include/liburing/barrier.h
+/usr/local/include/liburing/compat.h
 /usr/local/include/liburing.h
-/usr/local/lib/liburing.a
-/usr/local/lib/pkgconfig/liburing.pc
+/usr/local/include/liburing/io_uring.h
+/usr/local/lib64/liburing.so.2
 /usr/local/lib64/liburing.so.2.0.0
+/usr/local/lib/liburing.a
+/usr/local/lib/liburing.so
+/usr/local/lib/pkgconfig/liburing.pc
 /usr/local/share/man/man2/io_uring_enter.2.gz
 /usr/local/share/man/man2/io_uring_register.2.gz
 /usr/local/share/man/man2/io_uring_setup.2.gz
@@ -12,5 +14,3 @@
 /usr/local/share/man/man3/io_uring_queue_exit.3.gz
 /usr/local/share/man/man3/io_uring_queue_init.3.gz
 /usr/local/share/man/man7/io_uring.7.gz
-/usr/local/lib/liburing.so
-/usr/local/lib64/liburing.so.2

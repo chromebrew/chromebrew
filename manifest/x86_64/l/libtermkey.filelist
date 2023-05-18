@@ -1,14 +1,16 @@
 /usr/local/include/termkey.h
-/usr/local/lib64/pkgconfig/termkey.pc
-/usr/local/lib64/libtermkey.so.1.14.2
-/usr/local/lib64/libtermkey.la
 /usr/local/lib64/libtermkey.a
+/usr/local/lib64/libtermkey.la
+/usr/local/lib64/libtermkey.so
+/usr/local/lib64/libtermkey.so.1
+/usr/local/lib64/libtermkey.so.1.14.2
+/usr/local/lib64/pkgconfig/termkey.pc
 /usr/local/share/man/man3/termkey_advisereadable.3.gz
 /usr/local/share/man/man3/termkey_canonicalise.3.gz
 /usr/local/share/man/man3/termkey_get_buffer_remaining.3.gz
 /usr/local/share/man/man3/termkey_get_fd.3.gz
-/usr/local/share/man/man3/termkey_get_keyname.3.gz
 /usr/local/share/man/man3/termkey_getkey.3.gz
+/usr/local/share/man/man3/termkey_get_keyname.3.gz
 /usr/local/share/man/man3/termkey_interpret_csi.3.gz
 /usr/local/share/man/man3/termkey_interpret_modereport.3.gz
 /usr/local/share/man/man3/termkey_interpret_mouse.3.gz
@@ -28,5 +30,3 @@
 /usr/local/share/man/man3/termkey_strpkey.3.gz
 /usr/local/share/man/man3/termkey_waitkey.3.gz
 /usr/local/share/man/man7/termkey.7.gz
-/usr/local/lib64/libtermkey.so.1
-/usr/local/lib64/libtermkey.so

@@ -1,6 +1,3 @@
-/usr/local/lib64/libp8-platform.so.2.1.0
-/usr/local/lib64/pkgconfig/p8-platform.pc
-/usr/local/lib64/p8-platform/p8-platform-config.cmake
 /usr/local/include/p8-platform/os.h
 /usr/local/include/p8-platform/posix/os-socket.h
 /usr/local/include/p8-platform/posix/os-threads.h
@@ -13,9 +10,12 @@
 /usr/local/include/p8-platform/threads/threads.h
 /usr/local/include/p8-platform/util/atomic.h
 /usr/local/include/p8-platform/util/buffer.h
-/usr/local/include/p8-platform/util/StringUtils.h
 /usr/local/include/p8-platform/util/StdString.h
+/usr/local/include/p8-platform/util/StringUtils.h
 /usr/local/include/p8-platform/util/timeutils.h
 /usr/local/include/p8-platform/util/util.h
-/usr/local/lib64/libp8-platform.so.2
 /usr/local/lib64/libp8-platform.so
+/usr/local/lib64/libp8-platform.so.2
+/usr/local/lib64/libp8-platform.so.2.1.0
+/usr/local/lib64/p8-platform/p8-platform-config.cmake
+/usr/local/lib64/pkgconfig/p8-platform.pc

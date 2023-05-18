@@ -1,431 +1,431 @@
+/usr/local/bin/remmina
+/usr/local/bin/remmina-file-wrapper
 /usr/local/include/remmina/plugin.h
 /usr/local/include/remmina/remmina_trace_calls.h
 /usr/local/include/remmina/types.h
-/usr/local/bin/remmina
-/usr/local/bin/remmina-file-wrapper
+/usr/local/lib/pkgconfig/remmina.pc
+/usr/local/lib/remmina/plugins/remmina-plugin-exec.so
+/usr/local/lib/remmina/plugins/remmina-plugin-python_wrapper.so
 /usr/local/lib/remmina/plugins/remmina-plugin-rdp.so
 /usr/local/lib/remmina/plugins/remmina-plugin-secret.so
-/usr/local/lib/remmina/plugins/remmina-plugin-python_wrapper.so
 /usr/local/lib/remmina/plugins/remmina-plugin-vnc.so
 /usr/local/lib/remmina/plugins/remmina-plugin-www.so
-/usr/local/lib/remmina/plugins/remmina-plugin-exec.so
-/usr/local/lib/pkgconfig/remmina.pc
-/usr/local/share/locale/it/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/mk/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ug/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/mr/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ja/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/de/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/uz/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/sq/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/oc/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/hi/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/eu/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/fa/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/bn/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ka/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/id/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/si/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/nl/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/es_VE/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/hu/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/cs/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/en_US/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ca/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/br/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/shn/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/en_GB/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/pt/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ro/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/km/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/fr/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/el/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ko/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/tr/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/sk/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/lv/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/gl/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ca@valencia/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/he/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ar/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/hr/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ru/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/zh_CN/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/uk/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/eo/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/da/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/es/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/zh_TW/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/sl/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/te/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/kn/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ms/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/bs/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ie/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ber/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/my/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/en_AU/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/nb/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/kab/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ckb/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/pt_PT/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/sv/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/ast/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/th/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/pl/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/lt/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/bg/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/et/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/kk/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/sr/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/uz@cyrillic/LC_MESSAGES/remmina.mo
-/usr/local/share/locale/fi/LC_MESSAGES/remmina.mo
-/usr/local/share/mime/packages/remmina-mime.xml
-/usr/local/share/remmina/res/www-js.js
-/usr/local/share/remmina/external_tools/remmina_ping.sh
-/usr/local/share/remmina/external_tools/remmina_filezilla_sftp_pki.sh
-/usr/local/share/remmina/external_tools/remmina_nslookup.sh
-/usr/local/share/remmina/external_tools/launcher.sh
-/usr/local/share/remmina/external_tools/functions.sh
-/usr/local/share/remmina/external_tools/remmina_filezilla_sftp.sh
-/usr/local/share/remmina/external_tools/remmina_traceroute.sh
-/usr/local/share/remmina/theme/Builtin Tango Light.colors
-/usr/local/share/remmina/theme/vimbones.colors
-/usr/local/share/remmina/theme/CGA.colors
-/usr/local/share/remmina/theme/Grey-green.colors
-/usr/local/share/remmina/theme/MaterialDark.colors
-/usr/local/share/remmina/theme/lovelace.colors
-/usr/local/share/remmina/theme/Red Alert.colors
-/usr/local/share/remmina/theme/Django.colors
-/usr/local/share/remmina/theme/Espresso.colors
-/usr/local/share/remmina/theme/The Hulk.colors
-/usr/local/share/remmina/theme/HaX0R_R3D.colors
-/usr/local/share/remmina/theme/zenbones_dark.colors
-/usr/local/share/remmina/theme/LiquidCarbonTransparent.colors
-/usr/local/share/remmina/theme/Rapture.colors
-/usr/local/share/remmina/theme/Aurora.colors
-/usr/local/share/remmina/theme/Monokai Soda.colors
-/usr/local/share/remmina/theme/Dracula+.colors
-/usr/local/share/remmina/theme/zenbones_light.colors
-/usr/local/share/remmina/theme/Solarized Darcula.colors
-/usr/local/share/remmina/theme/Rouge 2.colors
-/usr/local/share/remmina/theme/Galaxy.colors
-/usr/local/share/remmina/theme/SpaceGray Eighties Dull.colors
-/usr/local/share/remmina/theme/Ryuuko.colors
-/usr/local/share/remmina/theme/Hopscotch.256.colors
-/usr/local/share/remmina/theme/Wez.colors
-/usr/local/share/remmina/theme/idea.colors
-/usr/local/share/remmina/theme/Seafoam Pastel.colors
-/usr/local/share/remmina/theme/Tinacious Design (Dark).colors
-/usr/local/share/remmina/theme/Bright Lights.colors
-/usr/local/share/remmina/theme/Belafonte Night.colors
-/usr/local/share/remmina/theme/iceberg-light.colors
-/usr/local/share/remmina/theme/Fairyfloss.colors
-/usr/local/share/remmina/theme/Breeze.colors
-/usr/local/share/remmina/theme/rebecca.colors
-/usr/local/share/remmina/theme/UltraViolent.colors
-/usr/local/share/remmina/theme/Seti.colors
-/usr/local/share/remmina/theme/Symfonic.colors
-/usr/local/share/remmina/theme/Medallion.colors
-/usr/local/share/remmina/theme/Darkside.colors
-/usr/local/share/remmina/theme/AlienBlood.colors
-/usr/local/share/remmina/theme/Dark+.colors
-/usr/local/share/remmina/theme/FrontEndDelight.colors
-/usr/local/share/remmina/theme/UltraDark.colors
-/usr/local/share/remmina/theme/kanagawabones.colors
-/usr/local/share/remmina/theme/Peppermint.colors
-/usr/local/share/remmina/theme/Earthsong.colors
-/usr/local/share/remmina/theme/DjangoSmooth.colors
-/usr/local/share/remmina/theme/Scarlet Protocol.colors
-/usr/local/share/remmina/theme/Blazer.colors
-/usr/local/share/remmina/theme/HaX0R_BLUE.colors
-/usr/local/share/remmina/theme/WarmNeon.colors
-/usr/local/share/remmina/theme/Pnevma.colors
-/usr/local/share/remmina/theme/Purple Rain.colors
-/usr/local/share/remmina/theme/Vaughn.colors
-/usr/local/share/remmina/theme/MaterialOcean.colors
-/usr/local/share/remmina/theme/OceanicMaterial.colors
-/usr/local/share/remmina/theme/Molokai.colors
-/usr/local/share/remmina/theme/tokyonight-storm.colors
-/usr/local/share/remmina/theme/FirefoxDev.colors
-/usr/local/share/remmina/theme/Flat.colors
-/usr/local/share/remmina/theme/UnderTheSea.colors
-/usr/local/share/remmina/theme/Subliminal.colors
-/usr/local/share/remmina/theme/Harper.colors
-/usr/local/share/remmina/theme/BirdsOfParadise.colors
-/usr/local/share/remmina/theme/SpaceGray Eighties.colors
-/usr/local/share/remmina/theme/Tomorrow Night Eighties.colors
-/usr/local/share/remmina/theme/Lab Fox.colors
-/usr/local/share/remmina/theme/coffee_theme.colors
-/usr/local/share/remmina/theme/Andromeda.colors
-/usr/local/share/remmina/theme/Red Planet.colors
-/usr/local/share/remmina/theme/Galizur.colors
-/usr/local/share/remmina/theme/Novel.colors
-/usr/local/share/remmina/theme/tokyonight.colors
-/usr/local/share/remmina/theme/arcoiris.colors
-/usr/local/share/remmina/theme/Github.colors
-/usr/local/share/remmina/theme/3024 Day.colors
-/usr/local/share/remmina/theme/Hivacruz.colors
-/usr/local/share/remmina/theme/Builtin Light.colors
-/usr/local/share/remmina/theme/idleToes.colors
-/usr/local/share/remmina/theme/GitHub Dark.colors
-/usr/local/share/remmina/theme/Violet Dark.colors
-/usr/local/share/remmina/theme/Nocturnal Winter.colors
-/usr/local/share/remmina/theme/Rippedcasts.colors
-/usr/local/share/remmina/theme/Elementary.colors
-/usr/local/share/remmina/theme/BlulocoDark.colors
-/usr/local/share/remmina/theme/OneHalfLight.colors
-/usr/local/share/remmina/theme/Floraverse.colors
-/usr/local/share/remmina/theme/MonaLisa.colors
-/usr/local/share/remmina/theme/Thayer Bright.colors
-/usr/local/share/remmina/theme/Raycast_Light.colors
-/usr/local/share/remmina/theme/DotGov.colors
-/usr/local/share/remmina/theme/Violet Light.colors
-/usr/local/share/remmina/theme/Sublette.colors
-/usr/local/share/remmina/theme/zenbones.colors
-/usr/local/share/remmina/theme/Guezwhoz.colors
-/usr/local/share/remmina/theme/Banana Blueberry.colors
-/usr/local/share/remmina/theme/Jackie Brown.colors
-/usr/local/share/remmina/theme/zenburned.colors
-/usr/local/share/remmina/theme/Hipster Green.colors
-/usr/local/share/remmina/theme/Shaman.colors
-/usr/local/share/remmina/theme/Alabaster.colors
-/usr/local/share/remmina/theme/Builtin Solarized Light.colors
-/usr/local/share/remmina/theme/cyberpunk.colors
-/usr/local/share/remmina/theme/Hardcore.colors
-/usr/local/share/remmina/theme/tokyonight-day.colors
-/usr/local/share/remmina/theme/SeaShells.colors
-/usr/local/share/remmina/theme/Japanesque.colors
-/usr/local/share/remmina/theme/HaX0R_GR33N.colors
-/usr/local/share/remmina/theme/deep.colors
-/usr/local/share/remmina/theme/Relaxed.colors
-/usr/local/share/remmina/theme/Ollie.colors
-/usr/local/share/remmina/theme/Arthur.colors
-/usr/local/share/remmina/theme/Spiderman.colors
-/usr/local/share/remmina/theme/AtomOneLight.colors
-/usr/local/share/remmina/theme/darkmatrix.colors
-/usr/local/share/remmina/theme/3024 Night.colors
-/usr/local/share/remmina/theme/PencilDark.colors
-/usr/local/share/remmina/theme/Twilight.colors
-/usr/local/share/remmina/theme/BlueBerryPie.colors
-/usr/local/share/remmina/theme/Calamity.colors
-/usr/local/share/remmina/theme/midnight-in-mojave.colors
-/usr/local/share/remmina/theme/DjangoRebornAgain.colors
-/usr/local/share/remmina/theme/Jellybeans.colors
-/usr/local/share/remmina/theme/SpaceGray.colors
-/usr/local/share/remmina/theme/duckbones.colors
-/usr/local/share/remmina/theme/Borland.colors
-/usr/local/share/remmina/theme/synthwave.colors
-/usr/local/share/remmina/theme/Mathias.colors
-/usr/local/share/remmina/theme/Duotone Dark.colors
-/usr/local/share/remmina/theme/synthwave-everything.colors
-/usr/local/share/remmina/theme/Tango Adapted.colors
-/usr/local/share/remmina/theme/Ubuntu.colors
-/usr/local/share/remmina/theme/Monokai Remastered.colors
-/usr/local/share/remmina/theme/Dark Pastel.colors
-/usr/local/share/remmina/theme/FunForrest.colors
-/usr/local/share/remmina/theme/Chester.colors
-/usr/local/share/remmina/theme/Highway.colors
-/usr/local/share/remmina/theme/Fahrenheit.colors
-/usr/local/share/remmina/theme/Spring.colors
-/usr/local/share/remmina/theme/Kolorit.colors
-/usr/local/share/remmina/theme/Builtin Dark.colors
-/usr/local/share/remmina/theme/Later This Evening.colors
-/usr/local/share/remmina/theme/Tomorrow Night Bright.colors
-/usr/local/share/remmina/theme/primary.colors
-/usr/local/share/remmina/theme/Material.colors
-/usr/local/share/remmina/theme/nord.colors
-/usr/local/share/remmina/theme/Chalk.colors
-/usr/local/share/remmina/theme/Spacedust.colors
-/usr/local/share/remmina/theme/Neon.colors
-/usr/local/share/remmina/theme/ToyChest.colors
-/usr/local/share/remmina/theme/PaleNightHC.colors
-/usr/local/share/remmina/theme/Unikitty.colors
-/usr/local/share/remmina/theme/Neopolitan.colors
-/usr/local/share/remmina/theme/CrayonPonyFish.colors
-/usr/local/share/remmina/theme/Pandora.colors
-/usr/local/share/remmina/theme/Wombat.colors
-/usr/local/share/remmina/theme/CLRS.colors
-/usr/local/share/remmina/theme/Konsolas.colors
-/usr/local/share/remmina/theme/Ayu Mirage.colors
-/usr/local/share/remmina/theme/BlueDolphin.colors
-/usr/local/share/remmina/theme/IC_Green_PPL.colors
-/usr/local/share/remmina/theme/Firewatch.colors
-/usr/local/share/remmina/theme/IR_Black.colors
-/usr/local/share/remmina/theme/ENCOM.colors
-/usr/local/share/remmina/theme/Brogrammer.colors
-/usr/local/share/remmina/theme/Zenburn.colors
-/usr/local/share/remmina/theme/Espresso Libre.colors
-/usr/local/share/remmina/theme/Misterioso.colors
-/usr/local/share/remmina/theme/Royal.colors
-/usr/local/share/remmina/theme/Doom Peacock.colors
-/usr/local/share/remmina/theme/Belafonte Day.colors
-/usr/local/share/remmina/theme/Piatto Light.colors
-/usr/local/share/remmina/theme/PencilLight.colors
-/usr/local/share/remmina/theme/Solarized Dark Higher Contrast.colors
-/usr/local/share/remmina/theme/DimmedMonokai.colors
-/usr/local/share/remmina/theme/seoulbones_dark.colors
-/usr/local/share/remmina/theme/Raycast_Dark.colors
-/usr/local/share/remmina/theme/Ciapre.colors
-/usr/local/share/remmina/theme/Grape.colors
-/usr/local/share/remmina/theme/jubi.colors
-/usr/local/share/remmina/theme/IC_Orange_PPL.colors
-/usr/local/share/remmina/theme/Operator Mono Dark.colors
-/usr/local/share/remmina/theme/Solarized Dark - Patched.colors
-/usr/local/share/remmina/theme/Terminal Basic.colors
-/usr/local/share/remmina/theme/Teerb.colors
-/usr/local/share/remmina/theme/Blue Matrix.colors
-/usr/local/share/remmina/theme/Paraiso Dark.colors
-/usr/local/share/remmina/theme/Hurtado.colors
-/usr/local/share/remmina/theme/shades-of-purple.colors
-/usr/local/share/remmina/theme/Red Sands.colors
-/usr/local/share/remmina/theme/Hacktober.colors
-/usr/local/share/remmina/theme/seoulbones_light.colors
-/usr/local/share/remmina/theme/Atom.colors
-/usr/local/share/remmina/theme/Night Owlish Light.colors
-/usr/local/share/remmina/theme/Cobalt2.colors
-/usr/local/share/remmina/theme/MaterialDesignColors.colors
-/usr/local/share/remmina/theme/Builtin Pastel Dark.colors
-/usr/local/share/remmina/theme/LiquidCarbon.colors
-/usr/local/share/remmina/theme/AdventureTime.colors
-/usr/local/share/remmina/theme/ForestBlue.colors
-/usr/local/share/remmina/theme/Abernathy.colors
-/usr/local/share/remmina/theme/ayu_light.colors
-/usr/local/share/remmina/theme/zenwritten_light.colors
-/usr/local/share/remmina/theme/purplepeter.colors
-/usr/local/share/remmina/theme/nord-light.colors
-/usr/local/share/remmina/theme/Retro.colors
-/usr/local/share/remmina/theme/Pro Light.colors
-/usr/local/share/remmina/theme/Cobalt Neon.colors
-/usr/local/share/remmina/theme/Sundried.colors
-/usr/local/share/remmina/theme/Oceanic-Next.colors
-/usr/local/share/remmina/theme/Dracula.colors
-/usr/local/share/remmina/theme/SoftServer.colors
-/usr/local/share/remmina/theme/Framer.colors
-/usr/local/share/remmina/theme/Popping and Locking.colors
-/usr/local/share/remmina/theme/C64.colors
-/usr/local/share/remmina/theme/LiquidCarbonTransparentInverse.colors
-/usr/local/share/remmina/theme/NightLion v2.colors
-/usr/local/share/remmina/theme/Cyberdyne.colors
-/usr/local/share/remmina/theme/BlulocoLight.colors
-/usr/local/share/remmina/theme/Obsidian.colors
-/usr/local/share/remmina/theme/ChallengerDeep.colors
-/usr/local/share/remmina/theme/Builtin Tango Dark.colors
-/usr/local/share/remmina/theme/FishTank.colors
-/usr/local/share/remmina/theme/Batman.colors
-/usr/local/share/remmina/theme/matrix.colors
-/usr/local/share/remmina/theme/Lavandula.colors
-/usr/local/share/remmina/theme/Smyck.colors
-/usr/local/share/remmina/theme/Hybrid.colors
-/usr/local/share/remmina/theme/Treehouse.colors
-/usr/local/share/remmina/theme/Wryan.colors
-/usr/local/share/remmina/theme/Neutron.colors
-/usr/local/share/remmina/theme/Kibble.colors
-/usr/local/share/remmina/theme/Laser.colors
-/usr/local/share/remmina/theme/Square.colors
-/usr/local/share/remmina/theme/Tinacious Design (Light).colors
-/usr/local/share/remmina/theme/Afterglow.colors
-/usr/local/share/remmina/theme/Flatland.colors
-/usr/local/share/remmina/theme/Glacier.colors
-/usr/local/share/remmina/theme/Overnight Slumber.colors
-/usr/local/share/remmina/theme/PaulMillr.colors
-/usr/local/share/remmina/theme/Urple.colors
-/usr/local/share/remmina/theme/Ocean.colors
-/usr/local/share/remmina/theme/Argonaut.colors
-/usr/local/share/remmina/theme/Mariana.colors
-/usr/local/share/remmina/theme/DoomOne.colors
-/usr/local/share/remmina/theme/Adventure.colors
-/usr/local/share/remmina/theme/Sakura.colors
-/usr/local/share/remmina/theme/Mirage.colors
-/usr/local/share/remmina/theme/Homebrew.colors
-/usr/local/share/remmina/theme/Slate.colors
-/usr/local/share/remmina/theme/WildCherry.colors
-/usr/local/share/remmina/theme/NightLion v1.colors
-/usr/local/share/remmina/theme/MaterialDarker.colors
-/usr/local/share/remmina/theme/Tomorrow Night.colors
-/usr/local/share/remmina/theme/VibrantInk.colors
-/usr/local/share/remmina/theme/Tomorrow Night Burns.colors
-/usr/local/share/remmina/theme/Whimsy.colors
-/usr/local/share/remmina/theme/N0tch2k.colors
-/usr/local/share/remmina/theme/AtelierSulphurpool.colors
-/usr/local/share/remmina/theme/Builtin Solarized Dark.colors
-/usr/local/share/remmina/theme/Hopscotch.colors
-/usr/local/share/remmina/theme/Monokai Vivid.colors
-/usr/local/share/remmina/theme/Pro.colors
-/usr/local/share/remmina/theme/JetBrains Darcula.colors
-/usr/local/share/remmina/theme/zenwritten_dark.colors
-/usr/local/share/remmina/theme/OneHalfDark.colors
-/usr/local/share/remmina/theme/SleepyHollow.colors
-/usr/local/share/remmina/theme/Broadcast.colors
-/usr/local/share/remmina/theme/Tomorrow Night Blue.colors
-/usr/local/share/remmina/theme/Fideloper.colors
-/usr/local/share/remmina/theme/neobones_light.colors
-/usr/local/share/remmina/theme/Gruvbox Light.colors
-/usr/local/share/remmina/theme/Gruvbox Dark.colors
-/usr/local/share/remmina/theme/Tomorrow.colors
-/usr/local/share/remmina/theme/Grass.colors
-/usr/local/share/remmina/theme/Snazzy.colors
-/usr/local/share/remmina/theme/Chalkboard.colors
-/usr/local/share/remmina/theme/darkermatrix.colors
-/usr/local/share/remmina/theme/Man Page.colors
-/usr/local/share/remmina/theme/iceberg-dark.colors
-/usr/local/share/remmina/theme/Tango Half Adapted.colors
-/usr/local/share/remmina/theme/neobones_dark.colors
-/usr/local/share/remmina/theme/Desert.colors
-/usr/local/share/remmina/theme/Elemental.colors
-/usr/local/share/remmina/theme/ayu.colors
-/usr/local/share/metainfo/org.remmina.Remmina.appdata.xml
-/usr/local/share/applications/org.remmina.Remmina-file.desktop
 /usr/local/share/applications/org.remmina.Remmina.desktop
-/usr/local/share/icons/hicolor/64x64/status/org.remmina.Remmina-status.svg
-/usr/local/share/icons/hicolor/64x64/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/32x32/status/org.remmina.Remmina-status.svg
-/usr/local/share/icons/hicolor/32x32/apps/org.remmina.Remmina.png
+/usr/local/share/applications/org.remmina.Remmina-file.desktop
 /usr/local/share/icons/hicolor/128x128/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/256x256/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/48x48/status/org.remmina.Remmina-status.svg
-/usr/local/share/icons/hicolor/48x48/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/22x22/status/org.remmina.Remmina-status.svg
+/usr/local/share/icons/hicolor/16x16/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/16x16/status/org.remmina.Remmina-status.svg
 /usr/local/share/icons/hicolor/22x22/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/22x22/status/org.remmina.Remmina-status.svg
+/usr/local/share/icons/hicolor/24x24/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/24x24/status/org.remmina.Remmina-status.svg
+/usr/local/share/icons/hicolor/256x256/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/32x32/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/32x32/status/org.remmina.Remmina-status.svg
+/usr/local/share/icons/hicolor/48x48/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/48x48/status/org.remmina.Remmina-status.svg
+/usr/local/share/icons/hicolor/512x512/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/64x64/apps/org.remmina.Remmina.png
+/usr/local/share/icons/hicolor/64x64/status/org.remmina.Remmina-status.svg
 /usr/local/share/icons/hicolor/72x72/apps/org.remmina.Remmina.png
 /usr/local/share/icons/hicolor/96x96/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/24x24/status/org.remmina.Remmina-status.svg
-/usr/local/share/icons/hicolor/24x24/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-www-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-ssh-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-rdp-ssh-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-vnc-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-rdp-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-tool-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-sftp-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-vnc-ssh-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-down-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-preferences-system-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-fit-window-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-save-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-send-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-scale-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pin-up-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-fullscreen-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pin-down-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-dynres-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-switch-page-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-duplicate-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-go-bottom-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-up-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-camera-photo-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-disconnect-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-connect-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-system-run-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-keyboard-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-multi-monitor-symbolic.svg
-/usr/local/share/icons/hicolor/scalable/apps/org.remmina.Remmina.svg
-/usr/local/share/icons/hicolor/scalable/apps/org.remmina.Remmina-symbolic.svg
-/usr/local/share/icons/hicolor/16x16/status/org.remmina.Remmina-status.svg
-/usr/local/share/icons/hicolor/16x16/apps/org.remmina.Remmina.png
-/usr/local/share/icons/hicolor/512x512/apps/org.remmina.Remmina.png
 /usr/local/share/icons/hicolor/apps/org.remmina.Remmina-symbolic.svg
 /usr/local/share/icons/hicolor/apps/remmina-symbolic.svg
-/usr/local/share/man/man1/remmina-file-wrapper.1.gz
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-camera-photo-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-connect-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-disconnect-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-save-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-document-send-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-duplicate-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-dynres-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-fit-window-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-fullscreen-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-go-bottom-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-keyboard-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-multi-monitor-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-down-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-up-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pin-down-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pin-up-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-preferences-system-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-scale-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-switch-page-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-system-run-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/apps/org.remmina.Remmina.svg
+/usr/local/share/icons/hicolor/scalable/apps/org.remmina.Remmina-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-rdp-ssh-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-rdp-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-sftp-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-ssh-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-tool-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-vnc-ssh-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-vnc-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/emblems/org.remmina.Remmina-www-symbolic.svg
+/usr/local/share/locale/ar/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ast/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ber/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/bg/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/bn/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/br/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/bs/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ca/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ca@valencia/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ckb/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/cs/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/da/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/de/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/el/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/en_AU/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/en_GB/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/en_US/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/eo/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/es/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/es_VE/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/et/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/eu/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/fa/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/fi/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/fr/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/gl/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/he/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/hi/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/hr/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/hu/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/id/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ie/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/it/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ja/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/kab/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ka/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/kk/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/km/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/kn/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ko/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/lt/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/lv/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/mk/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/mr/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ms/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/my/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/nb/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/nl/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/oc/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/pl/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/pt/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/pt_PT/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ro/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ru/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/shn/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/si/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/sk/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/sl/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/sq/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/sr/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/sv/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/te/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/th/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/tr/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/ug/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/uk/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/uz@cyrillic/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/uz/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/zh_CN/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/remmina.mo
 /usr/local/share/man/man1/remmina.1.gz
+/usr/local/share/man/man1/remmina-file-wrapper.1.gz
+/usr/local/share/metainfo/org.remmina.Remmina.appdata.xml
+/usr/local/share/mime/packages/remmina-mime.xml
+/usr/local/share/remmina/external_tools/functions.sh
+/usr/local/share/remmina/external_tools/launcher.sh
+/usr/local/share/remmina/external_tools/remmina_filezilla_sftp_pki.sh
+/usr/local/share/remmina/external_tools/remmina_filezilla_sftp.sh
+/usr/local/share/remmina/external_tools/remmina_nslookup.sh
+/usr/local/share/remmina/external_tools/remmina_ping.sh
+/usr/local/share/remmina/external_tools/remmina_traceroute.sh
+/usr/local/share/remmina/res/www-js.js
+/usr/local/share/remmina/theme/3024 Day.colors
+/usr/local/share/remmina/theme/3024 Night.colors
+/usr/local/share/remmina/theme/Abernathy.colors
+/usr/local/share/remmina/theme/Adventure.colors
+/usr/local/share/remmina/theme/AdventureTime.colors
+/usr/local/share/remmina/theme/Afterglow.colors
+/usr/local/share/remmina/theme/Alabaster.colors
+/usr/local/share/remmina/theme/AlienBlood.colors
+/usr/local/share/remmina/theme/Andromeda.colors
+/usr/local/share/remmina/theme/arcoiris.colors
+/usr/local/share/remmina/theme/Argonaut.colors
+/usr/local/share/remmina/theme/Arthur.colors
+/usr/local/share/remmina/theme/AtelierSulphurpool.colors
+/usr/local/share/remmina/theme/Atom.colors
+/usr/local/share/remmina/theme/AtomOneLight.colors
+/usr/local/share/remmina/theme/Aurora.colors
+/usr/local/share/remmina/theme/ayu.colors
+/usr/local/share/remmina/theme/ayu_light.colors
+/usr/local/share/remmina/theme/Ayu Mirage.colors
+/usr/local/share/remmina/theme/Banana Blueberry.colors
+/usr/local/share/remmina/theme/Batman.colors
+/usr/local/share/remmina/theme/Belafonte Day.colors
+/usr/local/share/remmina/theme/Belafonte Night.colors
+/usr/local/share/remmina/theme/BirdsOfParadise.colors
+/usr/local/share/remmina/theme/Blazer.colors
+/usr/local/share/remmina/theme/BlueBerryPie.colors
+/usr/local/share/remmina/theme/BlueDolphin.colors
+/usr/local/share/remmina/theme/Blue Matrix.colors
+/usr/local/share/remmina/theme/BlulocoDark.colors
+/usr/local/share/remmina/theme/BlulocoLight.colors
+/usr/local/share/remmina/theme/Borland.colors
+/usr/local/share/remmina/theme/Breeze.colors
+/usr/local/share/remmina/theme/Bright Lights.colors
+/usr/local/share/remmina/theme/Broadcast.colors
+/usr/local/share/remmina/theme/Brogrammer.colors
+/usr/local/share/remmina/theme/Builtin Dark.colors
+/usr/local/share/remmina/theme/Builtin Light.colors
+/usr/local/share/remmina/theme/Builtin Pastel Dark.colors
+/usr/local/share/remmina/theme/Builtin Solarized Dark.colors
+/usr/local/share/remmina/theme/Builtin Solarized Light.colors
+/usr/local/share/remmina/theme/Builtin Tango Dark.colors
+/usr/local/share/remmina/theme/Builtin Tango Light.colors
+/usr/local/share/remmina/theme/C64.colors
+/usr/local/share/remmina/theme/Calamity.colors
+/usr/local/share/remmina/theme/CGA.colors
+/usr/local/share/remmina/theme/Chalkboard.colors
+/usr/local/share/remmina/theme/Chalk.colors
+/usr/local/share/remmina/theme/ChallengerDeep.colors
+/usr/local/share/remmina/theme/Chester.colors
+/usr/local/share/remmina/theme/Ciapre.colors
+/usr/local/share/remmina/theme/CLRS.colors
+/usr/local/share/remmina/theme/Cobalt2.colors
+/usr/local/share/remmina/theme/Cobalt Neon.colors
+/usr/local/share/remmina/theme/coffee_theme.colors
+/usr/local/share/remmina/theme/CrayonPonyFish.colors
+/usr/local/share/remmina/theme/Cyberdyne.colors
+/usr/local/share/remmina/theme/cyberpunk.colors
+/usr/local/share/remmina/theme/Dark+.colors
+/usr/local/share/remmina/theme/darkermatrix.colors
+/usr/local/share/remmina/theme/darkmatrix.colors
+/usr/local/share/remmina/theme/Dark Pastel.colors
+/usr/local/share/remmina/theme/Darkside.colors
+/usr/local/share/remmina/theme/deep.colors
+/usr/local/share/remmina/theme/Desert.colors
+/usr/local/share/remmina/theme/DimmedMonokai.colors
+/usr/local/share/remmina/theme/Django.colors
+/usr/local/share/remmina/theme/DjangoRebornAgain.colors
+/usr/local/share/remmina/theme/DjangoSmooth.colors
+/usr/local/share/remmina/theme/DoomOne.colors
+/usr/local/share/remmina/theme/Doom Peacock.colors
+/usr/local/share/remmina/theme/DotGov.colors
+/usr/local/share/remmina/theme/Dracula+.colors
+/usr/local/share/remmina/theme/Dracula.colors
+/usr/local/share/remmina/theme/duckbones.colors
+/usr/local/share/remmina/theme/Duotone Dark.colors
+/usr/local/share/remmina/theme/Earthsong.colors
+/usr/local/share/remmina/theme/Elemental.colors
+/usr/local/share/remmina/theme/Elementary.colors
+/usr/local/share/remmina/theme/ENCOM.colors
+/usr/local/share/remmina/theme/Espresso.colors
+/usr/local/share/remmina/theme/Espresso Libre.colors
+/usr/local/share/remmina/theme/Fahrenheit.colors
+/usr/local/share/remmina/theme/Fairyfloss.colors
+/usr/local/share/remmina/theme/Fideloper.colors
+/usr/local/share/remmina/theme/FirefoxDev.colors
+/usr/local/share/remmina/theme/Firewatch.colors
+/usr/local/share/remmina/theme/FishTank.colors
+/usr/local/share/remmina/theme/Flat.colors
+/usr/local/share/remmina/theme/Flatland.colors
+/usr/local/share/remmina/theme/Floraverse.colors
+/usr/local/share/remmina/theme/ForestBlue.colors
+/usr/local/share/remmina/theme/Framer.colors
+/usr/local/share/remmina/theme/FrontEndDelight.colors
+/usr/local/share/remmina/theme/FunForrest.colors
+/usr/local/share/remmina/theme/Galaxy.colors
+/usr/local/share/remmina/theme/Galizur.colors
+/usr/local/share/remmina/theme/Github.colors
+/usr/local/share/remmina/theme/GitHub Dark.colors
+/usr/local/share/remmina/theme/Glacier.colors
+/usr/local/share/remmina/theme/Grape.colors
+/usr/local/share/remmina/theme/Grass.colors
+/usr/local/share/remmina/theme/Grey-green.colors
+/usr/local/share/remmina/theme/Gruvbox Dark.colors
+/usr/local/share/remmina/theme/Gruvbox Light.colors
+/usr/local/share/remmina/theme/Guezwhoz.colors
+/usr/local/share/remmina/theme/Hacktober.colors
+/usr/local/share/remmina/theme/Hardcore.colors
+/usr/local/share/remmina/theme/Harper.colors
+/usr/local/share/remmina/theme/HaX0R_BLUE.colors
+/usr/local/share/remmina/theme/HaX0R_GR33N.colors
+/usr/local/share/remmina/theme/HaX0R_R3D.colors
+/usr/local/share/remmina/theme/Highway.colors
+/usr/local/share/remmina/theme/Hipster Green.colors
+/usr/local/share/remmina/theme/Hivacruz.colors
+/usr/local/share/remmina/theme/Homebrew.colors
+/usr/local/share/remmina/theme/Hopscotch.256.colors
+/usr/local/share/remmina/theme/Hopscotch.colors
+/usr/local/share/remmina/theme/Hurtado.colors
+/usr/local/share/remmina/theme/Hybrid.colors
+/usr/local/share/remmina/theme/iceberg-dark.colors
+/usr/local/share/remmina/theme/iceberg-light.colors
+/usr/local/share/remmina/theme/IC_Green_PPL.colors
+/usr/local/share/remmina/theme/IC_Orange_PPL.colors
+/usr/local/share/remmina/theme/idea.colors
+/usr/local/share/remmina/theme/idleToes.colors
+/usr/local/share/remmina/theme/IR_Black.colors
+/usr/local/share/remmina/theme/Jackie Brown.colors
+/usr/local/share/remmina/theme/Japanesque.colors
+/usr/local/share/remmina/theme/Jellybeans.colors
+/usr/local/share/remmina/theme/JetBrains Darcula.colors
+/usr/local/share/remmina/theme/jubi.colors
+/usr/local/share/remmina/theme/kanagawabones.colors
+/usr/local/share/remmina/theme/Kibble.colors
+/usr/local/share/remmina/theme/Kolorit.colors
+/usr/local/share/remmina/theme/Konsolas.colors
+/usr/local/share/remmina/theme/Lab Fox.colors
+/usr/local/share/remmina/theme/Laser.colors
+/usr/local/share/remmina/theme/Later This Evening.colors
+/usr/local/share/remmina/theme/Lavandula.colors
+/usr/local/share/remmina/theme/LiquidCarbon.colors
+/usr/local/share/remmina/theme/LiquidCarbonTransparent.colors
+/usr/local/share/remmina/theme/LiquidCarbonTransparentInverse.colors
+/usr/local/share/remmina/theme/lovelace.colors
+/usr/local/share/remmina/theme/Man Page.colors
+/usr/local/share/remmina/theme/Mariana.colors
+/usr/local/share/remmina/theme/Material.colors
+/usr/local/share/remmina/theme/MaterialDark.colors
+/usr/local/share/remmina/theme/MaterialDarker.colors
+/usr/local/share/remmina/theme/MaterialDesignColors.colors
+/usr/local/share/remmina/theme/MaterialOcean.colors
+/usr/local/share/remmina/theme/Mathias.colors
+/usr/local/share/remmina/theme/matrix.colors
+/usr/local/share/remmina/theme/Medallion.colors
+/usr/local/share/remmina/theme/midnight-in-mojave.colors
+/usr/local/share/remmina/theme/Mirage.colors
+/usr/local/share/remmina/theme/Misterioso.colors
+/usr/local/share/remmina/theme/Molokai.colors
+/usr/local/share/remmina/theme/MonaLisa.colors
+/usr/local/share/remmina/theme/Monokai Remastered.colors
+/usr/local/share/remmina/theme/Monokai Soda.colors
+/usr/local/share/remmina/theme/Monokai Vivid.colors
+/usr/local/share/remmina/theme/N0tch2k.colors
+/usr/local/share/remmina/theme/neobones_dark.colors
+/usr/local/share/remmina/theme/neobones_light.colors
+/usr/local/share/remmina/theme/Neon.colors
+/usr/local/share/remmina/theme/Neopolitan.colors
+/usr/local/share/remmina/theme/Neutron.colors
+/usr/local/share/remmina/theme/NightLion v1.colors
+/usr/local/share/remmina/theme/NightLion v2.colors
+/usr/local/share/remmina/theme/Night Owlish Light.colors
+/usr/local/share/remmina/theme/Nocturnal Winter.colors
+/usr/local/share/remmina/theme/nord.colors
+/usr/local/share/remmina/theme/nord-light.colors
+/usr/local/share/remmina/theme/Novel.colors
+/usr/local/share/remmina/theme/Obsidian.colors
+/usr/local/share/remmina/theme/Ocean.colors
+/usr/local/share/remmina/theme/OceanicMaterial.colors
+/usr/local/share/remmina/theme/Oceanic-Next.colors
+/usr/local/share/remmina/theme/Ollie.colors
+/usr/local/share/remmina/theme/OneHalfDark.colors
+/usr/local/share/remmina/theme/OneHalfLight.colors
+/usr/local/share/remmina/theme/Operator Mono Dark.colors
+/usr/local/share/remmina/theme/Overnight Slumber.colors
+/usr/local/share/remmina/theme/PaleNightHC.colors
+/usr/local/share/remmina/theme/Pandora.colors
+/usr/local/share/remmina/theme/Paraiso Dark.colors
+/usr/local/share/remmina/theme/PaulMillr.colors
+/usr/local/share/remmina/theme/PencilDark.colors
+/usr/local/share/remmina/theme/PencilLight.colors
+/usr/local/share/remmina/theme/Peppermint.colors
+/usr/local/share/remmina/theme/Piatto Light.colors
+/usr/local/share/remmina/theme/Pnevma.colors
+/usr/local/share/remmina/theme/Popping and Locking.colors
+/usr/local/share/remmina/theme/primary.colors
+/usr/local/share/remmina/theme/Pro.colors
+/usr/local/share/remmina/theme/Pro Light.colors
+/usr/local/share/remmina/theme/purplepeter.colors
+/usr/local/share/remmina/theme/Purple Rain.colors
+/usr/local/share/remmina/theme/Rapture.colors
+/usr/local/share/remmina/theme/Raycast_Dark.colors
+/usr/local/share/remmina/theme/Raycast_Light.colors
+/usr/local/share/remmina/theme/rebecca.colors
+/usr/local/share/remmina/theme/Red Alert.colors
+/usr/local/share/remmina/theme/Red Planet.colors
+/usr/local/share/remmina/theme/Red Sands.colors
+/usr/local/share/remmina/theme/Relaxed.colors
+/usr/local/share/remmina/theme/Retro.colors
+/usr/local/share/remmina/theme/Rippedcasts.colors
+/usr/local/share/remmina/theme/Rouge 2.colors
+/usr/local/share/remmina/theme/Royal.colors
+/usr/local/share/remmina/theme/Ryuuko.colors
+/usr/local/share/remmina/theme/Sakura.colors
+/usr/local/share/remmina/theme/Scarlet Protocol.colors
+/usr/local/share/remmina/theme/Seafoam Pastel.colors
+/usr/local/share/remmina/theme/SeaShells.colors
+/usr/local/share/remmina/theme/seoulbones_dark.colors
+/usr/local/share/remmina/theme/seoulbones_light.colors
+/usr/local/share/remmina/theme/Seti.colors
+/usr/local/share/remmina/theme/shades-of-purple.colors
+/usr/local/share/remmina/theme/Shaman.colors
+/usr/local/share/remmina/theme/Slate.colors
+/usr/local/share/remmina/theme/SleepyHollow.colors
+/usr/local/share/remmina/theme/Smyck.colors
+/usr/local/share/remmina/theme/Snazzy.colors
+/usr/local/share/remmina/theme/SoftServer.colors
+/usr/local/share/remmina/theme/Solarized Darcula.colors
+/usr/local/share/remmina/theme/Solarized Dark Higher Contrast.colors
+/usr/local/share/remmina/theme/Solarized Dark - Patched.colors
+/usr/local/share/remmina/theme/Spacedust.colors
+/usr/local/share/remmina/theme/SpaceGray.colors
+/usr/local/share/remmina/theme/SpaceGray Eighties.colors
+/usr/local/share/remmina/theme/SpaceGray Eighties Dull.colors
+/usr/local/share/remmina/theme/Spiderman.colors
+/usr/local/share/remmina/theme/Spring.colors
+/usr/local/share/remmina/theme/Square.colors
+/usr/local/share/remmina/theme/Sublette.colors
+/usr/local/share/remmina/theme/Subliminal.colors
+/usr/local/share/remmina/theme/Sundried.colors
+/usr/local/share/remmina/theme/Symfonic.colors
+/usr/local/share/remmina/theme/synthwave.colors
+/usr/local/share/remmina/theme/synthwave-everything.colors
+/usr/local/share/remmina/theme/Tango Adapted.colors
+/usr/local/share/remmina/theme/Tango Half Adapted.colors
+/usr/local/share/remmina/theme/Teerb.colors
+/usr/local/share/remmina/theme/Terminal Basic.colors
+/usr/local/share/remmina/theme/Thayer Bright.colors
+/usr/local/share/remmina/theme/The Hulk.colors
+/usr/local/share/remmina/theme/Tinacious Design (Dark).colors
+/usr/local/share/remmina/theme/Tinacious Design (Light).colors
+/usr/local/share/remmina/theme/tokyonight.colors
+/usr/local/share/remmina/theme/tokyonight-day.colors
+/usr/local/share/remmina/theme/tokyonight-storm.colors
+/usr/local/share/remmina/theme/Tomorrow.colors
+/usr/local/share/remmina/theme/Tomorrow Night Blue.colors
+/usr/local/share/remmina/theme/Tomorrow Night Bright.colors
+/usr/local/share/remmina/theme/Tomorrow Night Burns.colors
+/usr/local/share/remmina/theme/Tomorrow Night.colors
+/usr/local/share/remmina/theme/Tomorrow Night Eighties.colors
+/usr/local/share/remmina/theme/ToyChest.colors
+/usr/local/share/remmina/theme/Treehouse.colors
+/usr/local/share/remmina/theme/Twilight.colors
+/usr/local/share/remmina/theme/Ubuntu.colors
+/usr/local/share/remmina/theme/UltraDark.colors
+/usr/local/share/remmina/theme/UltraViolent.colors
+/usr/local/share/remmina/theme/UnderTheSea.colors
+/usr/local/share/remmina/theme/Unikitty.colors
+/usr/local/share/remmina/theme/Urple.colors
+/usr/local/share/remmina/theme/Vaughn.colors
+/usr/local/share/remmina/theme/VibrantInk.colors
+/usr/local/share/remmina/theme/vimbones.colors
+/usr/local/share/remmina/theme/Violet Dark.colors
+/usr/local/share/remmina/theme/Violet Light.colors
+/usr/local/share/remmina/theme/WarmNeon.colors
+/usr/local/share/remmina/theme/Wez.colors
+/usr/local/share/remmina/theme/Whimsy.colors
+/usr/local/share/remmina/theme/WildCherry.colors
+/usr/local/share/remmina/theme/Wombat.colors
+/usr/local/share/remmina/theme/Wryan.colors
+/usr/local/share/remmina/theme/zenbones.colors
+/usr/local/share/remmina/theme/zenbones_dark.colors
+/usr/local/share/remmina/theme/zenbones_light.colors
+/usr/local/share/remmina/theme/Zenburn.colors
+/usr/local/share/remmina/theme/zenburned.colors
+/usr/local/share/remmina/theme/zenwritten_dark.colors
+/usr/local/share/remmina/theme/zenwritten_light.colors

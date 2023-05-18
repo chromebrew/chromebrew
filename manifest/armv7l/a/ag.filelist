@@ -1,4 +1,4 @@
 /usr/local/bin/ag
 /usr/local/share/man/man1/ag.1.gz
-/usr/local/share/zsh/site-functions/_the_silver_searcher
 /usr/local/share/the_silver_searcher/completions/ag.bashcomp.sh
+/usr/local/share/zsh/site-functions/_the_silver_searcher

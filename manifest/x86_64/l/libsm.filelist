@@ -1,11 +1,11 @@
 /usr/local/include/X11/SM/SM.h
 /usr/local/include/X11/SM/SMlib.h
 /usr/local/include/X11/SM/SMproto.h
-/usr/local/lib64/libSM.so.6.0.1
-/usr/local/lib64/libSM.la
 /usr/local/lib64/libSM.a
+/usr/local/lib64/libSM.la
+/usr/local/lib64/libSM.so
+/usr/local/lib64/libSM.so.6
+/usr/local/lib64/libSM.so.6.0.1
 /usr/local/lib64/pkgconfig/sm.pc
 /usr/local/share/doc/libSM/SMlib.xml
 /usr/local/share/doc/libSM/xsmp.xml
-/usr/local/lib64/libSM.so.6
-/usr/local/lib64/libSM.so

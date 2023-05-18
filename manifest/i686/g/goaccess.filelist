@@ -1,11 +1,11 @@
-/usr/local/etc/goaccess.conf
 /usr/local/bin/goaccess
-/usr/local/share/man/man1/goaccess.1.gz
-/usr/local/share/doc/goaccess/app.js
+/usr/local/etc/goaccess.conf
 /usr/local/share/doc/goaccess/app.css
-/usr/local/share/doc/goaccess/tpls.html
+/usr/local/share/doc/goaccess/app.js
+/usr/local/share/doc/goaccess/bootstrap.min.css
 /usr/local/share/doc/goaccess/charts.js
 /usr/local/share/doc/goaccess/d3.v3.min.js
-/usr/local/share/doc/goaccess/bootstrap.min.css
-/usr/local/share/doc/goaccess/hogan.min.js
 /usr/local/share/doc/goaccess/fa.min.css
+/usr/local/share/doc/goaccess/hogan.min.js
+/usr/local/share/doc/goaccess/tpls.html
+/usr/local/share/man/man1/goaccess.1.gz

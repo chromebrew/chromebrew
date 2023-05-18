@@ -1,11 +1,11 @@
 /usr/local/bin/dav1d
-/usr/local/lib64/libdav1d.so.6.8.0
-/usr/local/lib64/pkgconfig/dav1d.pc
 /usr/local/include/dav1d/common.h
 /usr/local/include/dav1d/data.h
+/usr/local/include/dav1d/dav1d.h
 /usr/local/include/dav1d/headers.h
 /usr/local/include/dav1d/picture.h
-/usr/local/include/dav1d/dav1d.h
 /usr/local/include/dav1d/version.h
 /usr/local/lib64/libdav1d.so
 /usr/local/lib64/libdav1d.so.6
+/usr/local/lib64/libdav1d.so.6.8.0
+/usr/local/lib64/pkgconfig/dav1d.pc

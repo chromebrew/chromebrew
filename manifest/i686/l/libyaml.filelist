@@ -1,7 +1,7 @@
 /usr/local/include/yaml.h
-/usr/local/lib/libyaml.la
+/usr/local/lib/libyaml-0.so.2
 /usr/local/lib/libyaml-0.so.2.0.9
 /usr/local/lib/libyaml.a
-/usr/local/lib/pkgconfig/yaml-0.1.pc
+/usr/local/lib/libyaml.la
 /usr/local/lib/libyaml.so
-/usr/local/lib/libyaml-0.so.2
+/usr/local/lib/pkgconfig/yaml-0.1.pc

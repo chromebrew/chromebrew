@@ -3,8 +3,8 @@
 /usr/local/share/musl/lib/libnghttp2.a
 /usr/local/share/musl/lib/pkgconfig/libnghttp2.pc
 /usr/local/share/musl/share/doc/nghttp2/README.rst
-/usr/local/share/musl/share/nghttp2/fetch-ocsp-response
-/usr/local/share/musl/share/man/man1/nghttpd.1
-/usr/local/share/musl/share/man/man1/nghttp.1
-/usr/local/share/musl/share/man/man1/nghttpx.1
 /usr/local/share/musl/share/man/man1/h2load.1
+/usr/local/share/musl/share/man/man1/nghttp.1
+/usr/local/share/musl/share/man/man1/nghttpd.1
+/usr/local/share/musl/share/man/man1/nghttpx.1
+/usr/local/share/musl/share/nghttp2/fetch-ocsp-response

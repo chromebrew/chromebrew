@@ -1,12 +1,6 @@
-/usr/local/bin/lshw
 /usr/local/bin/gtk-lshw
-/usr/local/share/man/man1/lshw.1.zst
-/usr/local/share/lshw/pci.ids.gz
-/usr/local/share/lshw/usb.ids.gz
-/usr/local/share/lshw/oui.txt.gz
-/usr/local/share/lshw/manuf.txt.gz
-/usr/local/share/lshw/pnp.ids.gz
-/usr/local/share/lshw/pnpid.txt.gz
+/usr/local/bin/lshw
+/usr/local/share/locale/fr/LC_MESSAGES/lshw.mo
 /usr/local/share/lshw/artwork/amd.svg
 /usr/local/share/lshw/artwork/audio.svg
 /usr/local/share/lshw/artwork/battery.svg
@@ -32,8 +26,8 @@
 /usr/local/share/lshw/artwork/motherboard.svg
 /usr/local/share/lshw/artwork/network.svg
 /usr/local/share/lshw/artwork/parallel.svg
-/usr/local/share/lshw/artwork/powermac.svg
 /usr/local/share/lshw/artwork/powermacg5.svg
+/usr/local/share/lshw/artwork/powermac.svg
 /usr/local/share/lshw/artwork/powerpc.svg
 /usr/local/share/lshw/artwork/printer.svg
 /usr/local/share/lshw/artwork/question.svg
@@ -44,5 +38,11 @@
 /usr/local/share/lshw/artwork/towercomputer.svg
 /usr/local/share/lshw/artwork/usb.svg
 /usr/local/share/lshw/artwork/wifi.svg
+/usr/local/share/lshw/manuf.txt.gz
+/usr/local/share/lshw/oui.txt.gz
+/usr/local/share/lshw/pci.ids.gz
+/usr/local/share/lshw/pnp.ids.gz
+/usr/local/share/lshw/pnpid.txt.gz
 /usr/local/share/lshw/ui/gtk-lshw.ui
-/usr/local/share/locale/fr/LC_MESSAGES/lshw.mo
+/usr/local/share/lshw/usb.ids.gz
+/usr/local/share/man/man1/lshw.1.zst

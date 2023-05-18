@@ -1,9 +1,9 @@
-/usr/local/share/kde4/services/ServiceMenus/mediainfo-gui.desktop
-/usr/local/share/metainfo/mediainfo-gui.metainfo.xml
-/usr/local/share/pixmaps/mediainfo.xpm
-/usr/local/share/apps/konqueror/servicemenus/mediainfo-gui.desktop
-/usr/local/share/kservices5/ServiceMenus/mediainfo-gui.desktop
+/usr/local/bin/mediainfo-gui
 /usr/local/share/applications/mediainfo-gui.desktop
+/usr/local/share/apps/konqueror/servicemenus/mediainfo-gui.desktop
 /usr/local/share/icons/hicolor/256x256/apps/mediainfo.png
 /usr/local/share/icons/hicolor/scalable/apps/mediainfo.svg
-/usr/local/bin/mediainfo-gui
+/usr/local/share/kde4/services/ServiceMenus/mediainfo-gui.desktop
+/usr/local/share/kservices5/ServiceMenus/mediainfo-gui.desktop
+/usr/local/share/metainfo/mediainfo-gui.metainfo.xml
+/usr/local/share/pixmaps/mediainfo.xpm

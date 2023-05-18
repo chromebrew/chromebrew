@@ -1,5 +1,6 @@
 /usr/local/bin/opam
 /usr/local/bin/opam-installer
+/usr/local/etc/bash.d/opam
 /usr/local/share/man/man1/opam.1.gz
 /usr/local/share/man/man1/opam-admin.1.gz
 /usr/local/share/man/man1/opam-admin-add-constraint.1.gz
@@ -40,4 +41,3 @@
 /usr/local/share/man/man1/opam-update.1.gz
 /usr/local/share/man/man1/opam-upgrade.1.gz
 /usr/local/share/man/man1/opam-var.1.gz
-/usr/local/etc/bash.d/opam

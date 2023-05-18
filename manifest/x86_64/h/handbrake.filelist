@@ -1,9 +1,9 @@
-/usr/local/bin/HandBrakeCLI
 /usr/local/bin/ghb
-/usr/local/share/icons/hicolor/scalable/apps/hb-icon.svg
-/usr/local/share/icons/hicolor/scalable/apps/fr.handbrake.ghb.svg
-/usr/local/share/metainfo/fr.handbrake.ghb.metainfo.xml
+/usr/local/bin/HandBrakeCLI
+/usr/local/etc/env.d/10-handbrake
 /usr/local/share/applications/fr.handbrake.ghb.desktop
+/usr/local/share/icons/hicolor/scalable/apps/fr.handbrake.ghb.svg
+/usr/local/share/icons/hicolor/scalable/apps/hb-icon.svg
 /usr/local/share/locale/af/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/bg/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/ca/LC_MESSAGES/ghb.mo
@@ -37,4 +37,4 @@
 /usr/local/share/locale/uk_UA/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/ghb.mo
-/usr/local/etc/env.d/10-handbrake
+/usr/local/share/metainfo/fr.handbrake.ghb.metainfo.xml

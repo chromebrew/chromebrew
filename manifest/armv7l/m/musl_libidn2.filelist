@@ -1,5 +1,5 @@
-/usr/local/share/musl/include/idn2.h
 /usr/local/share/musl/bin/idn2
+/usr/local/share/musl/include/idn2.h
 /usr/local/share/musl/lib/libidn2.a
-/usr/local/share/musl/lib/pkgconfig/libidn2.pc
 /usr/local/share/musl/lib/libidn2.la
+/usr/local/share/musl/lib/pkgconfig/libidn2.pc

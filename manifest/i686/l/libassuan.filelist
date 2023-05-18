@@ -1,9 +1,9 @@
-/usr/local/lib/libassuan.so.0.8.5
-/usr/local/lib/libassuan.la
-/usr/local/lib/pkgconfig/libassuan.pc
 /usr/local/bin/libassuan-config
+/usr/local/include/assuan.h
+/usr/local/lib/libassuan.la
+/usr/local/lib/libassuan.so
+/usr/local/lib/libassuan.so.0
+/usr/local/lib/libassuan.so.0.8.5
+/usr/local/lib/pkgconfig/libassuan.pc
 /usr/local/share/aclocal/libassuan.m4
 /usr/local/share/info/assuan.info.gz
-/usr/local/include/assuan.h
-/usr/local/lib/libassuan.so.0
-/usr/local/lib/libassuan.so

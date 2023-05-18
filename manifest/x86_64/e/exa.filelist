@@ -1,6 +1,6 @@
 /usr/local/bin/exa
-/usr/local/share/zsh/site-functions/_exa
-/usr/local/share/man/man1/exa.1.zst
-/usr/local/share/man/man5/exa_colors.5.zst
 /usr/local/share/bash-completion/completions/exa
 /usr/local/share/fish/vendor_completions.d/exa.fish
+/usr/local/share/man/man1/exa.1.zst
+/usr/local/share/man/man5/exa_colors.5.zst
+/usr/local/share/zsh/site-functions/_exa

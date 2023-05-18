@@ -1,9 +1,9 @@
 /usr/local/include/duk_config.h
 /usr/local/include/duktape.h
+/usr/local/lib/libduktaped.so
+/usr/local/lib/libduktaped.so.206
 /usr/local/lib/libduktaped.so.206.20600
+/usr/local/lib/libduktape.so
+/usr/local/lib/libduktape.so.206
 /usr/local/lib/libduktape.so.206.20600
 /usr/local/lib/pkgconfig/duktape.pc
-/usr/local/lib/libduktaped.so
-/usr/local/lib/libduktape.so.206
-/usr/local/lib/libduktape.so
-/usr/local/lib/libduktaped.so.206

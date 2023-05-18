@@ -1,9 +1,9 @@
-/usr/local/lib64/pkgconfig/libeconf.pc
-/usr/local/lib64/libeconf.so.0.3.8
-/usr/local/lib64/cmake/libeconf/libeconfTargets.cmake
-/usr/local/lib64/cmake/libeconf/libeconfTargets-release.cmake
+/usr/local/include/libeconf.h
 /usr/local/lib64/cmake/libeconf/libeconfConfig.cmake
 /usr/local/lib64/cmake/libeconf/libeconfConfigVersion.cmake
-/usr/local/include/libeconf.h
-/usr/local/lib64/libeconf.so.0
+/usr/local/lib64/cmake/libeconf/libeconfTargets.cmake
+/usr/local/lib64/cmake/libeconf/libeconfTargets-release.cmake
 /usr/local/lib64/libeconf.so
+/usr/local/lib64/libeconf.so.0
+/usr/local/lib64/libeconf.so.0.3.8
+/usr/local/lib64/pkgconfig/libeconf.pc

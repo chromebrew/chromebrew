@@ -1,6 +1,6 @@
-/usr/local/bin/ddrescuelog
 /usr/local/bin/ddrescue
-/usr/local/share/info/dir.gz
+/usr/local/bin/ddrescuelog
 /usr/local/share/info/ddrescue.info.gz
-/usr/local/share/man/man1/ddrescuelog.1.gz
+/usr/local/share/info/dir.gz
 /usr/local/share/man/man1/ddrescue.1.gz
+/usr/local/share/man/man1/ddrescuelog.1.gz

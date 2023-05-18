@@ -1,6 +1,6 @@
 /usr/local/include/fcft/fcft.h
 /usr/local/include/fcft/stride.h
-/usr/local/lib/libfcft.so.3.5.1
-/usr/local/lib/pkgconfig/fcft.pc
 /usr/local/lib/libfcft.so
 /usr/local/lib/libfcft.so.3
+/usr/local/lib/libfcft.so.3.5.1
+/usr/local/lib/pkgconfig/fcft.pc

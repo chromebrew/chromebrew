@@ -1,3 +1,5 @@
+/usr/local/bin/hello
+/usr/local/share/info/hello.info.gz
 /usr/local/share/locale/ast/LC_MESSAGES/hello.mo
 /usr/local/share/locale/bg/LC_MESSAGES/hello.mo
 /usr/local/share/locale/ca/LC_MESSAGES/hello.mo
@@ -27,8 +29,8 @@
 /usr/local/share/locale/nl/LC_MESSAGES/hello.mo
 /usr/local/share/locale/nn/LC_MESSAGES/hello.mo
 /usr/local/share/locale/pl/LC_MESSAGES/hello.mo
-/usr/local/share/locale/pt/LC_MESSAGES/hello.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/hello.mo
+/usr/local/share/locale/pt/LC_MESSAGES/hello.mo
 /usr/local/share/locale/ro/LC_MESSAGES/hello.mo
 /usr/local/share/locale/ru/LC_MESSAGES/hello.mo
 /usr/local/share/locale/sk/LC_MESSAGES/hello.mo
@@ -43,5 +45,3 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/hello.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/hello.mo
 /usr/local/share/man/man1/hello.1.gz
-/usr/local/share/info/hello.info.gz
-/usr/local/bin/hello

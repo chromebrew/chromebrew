@@ -1,5 +1,5 @@
-/usr/local/lib64/pkgconfig/imagequant.pc
-/usr/local/lib64/libimagequant.a
-/usr/local/lib64/libimagequant.so.0
 /usr/local/include/libimagequant.h
+/usr/local/lib64/libimagequant.a
 /usr/local/lib64/libimagequant.so
+/usr/local/lib64/libimagequant.so.0
+/usr/local/lib64/pkgconfig/imagequant.pc

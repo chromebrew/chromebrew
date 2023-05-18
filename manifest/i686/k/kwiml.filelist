@@ -1,6 +1,6 @@
-/usr/local/share/cmake/kwiml-1.0/kwiml-config-version.cmake
-/usr/local/share/cmake/kwiml-1.0/kwiml-config.cmake
-/usr/local/share/cmake/kwiml-1.0/kwiml-targets.cmake
-/usr/local/include/kwiml/version.h
-/usr/local/include/kwiml/int.h
 /usr/local/include/kwiml/abi.h
+/usr/local/include/kwiml/int.h
+/usr/local/include/kwiml/version.h
+/usr/local/share/cmake/kwiml-1.0/kwiml-config.cmake
+/usr/local/share/cmake/kwiml-1.0/kwiml-config-version.cmake
+/usr/local/share/cmake/kwiml-1.0/kwiml-targets.cmake

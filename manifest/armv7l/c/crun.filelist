@@ -1,10 +1,10 @@
 /usr/local/bin/crun
-/usr/local/lib/python3.11/site-packages/python_crun.la
-/usr/local/lib/python3.11/site-packages/python_crun.a
-/usr/local/lib/python3.11/site-packages/python_crun.so
 /usr/local/lib/libcrun.a
 /usr/local/lib/libcrun.la
-/usr/local/lib/libcrun.so.0.0.0
-/usr/local/share/man/man1/crun.1.zst
 /usr/local/lib/libcrun.so
 /usr/local/lib/libcrun.so.0
+/usr/local/lib/libcrun.so.0.0.0
+/usr/local/lib/python3.11/site-packages/python_crun.a
+/usr/local/lib/python3.11/site-packages/python_crun.la
+/usr/local/lib/python3.11/site-packages/python_crun.so
+/usr/local/share/man/man1/crun.1.zst

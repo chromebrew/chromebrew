@@ -1,11 +1,11 @@
-/usr/local/bin/mdb_stat
 /usr/local/bin/mdb_copy
 /usr/local/bin/mdb_dump
 /usr/local/bin/mdb_load
+/usr/local/bin/mdb_stat
+/usr/local/include/lmdb.h
 /usr/local/lib/liblmdb.a
 /usr/local/lib/liblmdb.so
 /usr/local/lib/pkgconfig/lmdb.pc
-/usr/local/include/lmdb.h
 /usr/local/share/man/man1/mdb_copy.1.gz
 /usr/local/share/man/man1/mdb_dump.1.gz
 /usr/local/share/man/man1/mdb_load.1.gz

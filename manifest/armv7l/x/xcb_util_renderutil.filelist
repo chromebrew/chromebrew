@@ -1,7 +1,7 @@
 /usr/local/include/xcb/xcb_renderutil.h
 /usr/local/lib/libxcb-render-util.a
+/usr/local/lib/libxcb-render-util.la
+/usr/local/lib/libxcb-render-util.so
+/usr/local/lib/libxcb-render-util.so.0
 /usr/local/lib/libxcb-render-util.so.0.0.0
 /usr/local/lib/pkgconfig/xcb-renderutil.pc
-/usr/local/lib/libxcb-render-util.la
-/usr/local/lib/libxcb-render-util.so.0
-/usr/local/lib/libxcb-render-util.so

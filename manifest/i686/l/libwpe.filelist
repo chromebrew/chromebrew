@@ -1,5 +1,3 @@
-/usr/local/lib/libwpe-1.0.so.1.8.0
-/usr/local/lib/pkgconfig/wpe-1.0.pc
 /usr/local/include/wpe-1.0/wpe/export.h
 /usr/local/include/wpe-1.0/wpe/gamepad.h
 /usr/local/include/wpe-1.0/wpe/input.h
@@ -11,10 +9,12 @@
 /usr/local/include/wpe-1.0/wpe/process.h
 /usr/local/include/wpe-1.0/wpe/renderer-backend-egl.h
 /usr/local/include/wpe-1.0/wpe/renderer-host.h
-/usr/local/include/wpe-1.0/wpe/version.h
 /usr/local/include/wpe-1.0/wpe/version-deprecated.h
+/usr/local/include/wpe-1.0/wpe/version.h
 /usr/local/include/wpe-1.0/wpe/view-backend.h
 /usr/local/include/wpe-1.0/wpe/wpe-egl.h
 /usr/local/include/wpe-1.0/wpe/wpe.h
-/usr/local/lib/libwpe-1.0.so.1
 /usr/local/lib/libwpe-1.0.so
+/usr/local/lib/libwpe-1.0.so.1
+/usr/local/lib/libwpe-1.0.so.1.8.0
+/usr/local/lib/pkgconfig/wpe-1.0.pc

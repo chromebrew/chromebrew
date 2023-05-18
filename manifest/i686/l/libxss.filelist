@@ -1,7 +1,9 @@
 /usr/local/include/X11/extensions/scrnsaver.h
-/usr/local/lib/libXss.so.1.0.0
-/usr/local/lib/libXss.la
 /usr/local/lib/libXss.a
+/usr/local/lib/libXss.la
+/usr/local/lib/libXss.so
+/usr/local/lib/libXss.so.1
+/usr/local/lib/libXss.so.1.0.0
 /usr/local/lib/pkgconfig/xscrnsaver.pc
 /usr/local/share/man/man3/XScreenSaverAllocInfo.3.zst
 /usr/local/share/man/man3/XScreenSaverGetRegistered.3.zst
@@ -15,5 +17,3 @@
 /usr/local/share/man/man3/XScreenSaverUnregister.3.zst
 /usr/local/share/man/man3/XScreenSaverUnsetAttributes.3.zst
 /usr/local/share/man/man3/Xss.3.zst
-/usr/local/lib/libXss.so.1
-/usr/local/lib/libXss.so

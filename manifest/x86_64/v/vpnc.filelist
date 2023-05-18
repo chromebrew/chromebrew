@@ -1,10 +1,10 @@
-/usr/local/etc/vpnc/default.conf
-/usr/local/etc/vpnc/vpnc-script
 /usr/local/bin/cisco-decrypt
 /usr/local/bin/pcf2vpnc
-/usr/local/sbin/vpnc-disconnect
+/usr/local/etc/vpnc/default.conf
+/usr/local/etc/vpnc/vpnc-script
 /usr/local/sbin/vpnc
+/usr/local/sbin/vpnc-disconnect
+/usr/local/share/doc/vpnc/COPYING
 /usr/local/share/man/man1/cisco-decrypt.1.gz
 /usr/local/share/man/man1/pcf2vpnc.1.gz
 /usr/local/share/man/man8/vpnc.8.gz
-/usr/local/share/doc/vpnc/COPYING

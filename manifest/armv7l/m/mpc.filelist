@@ -1,7 +1,7 @@
-/usr/local/lib/libmpc.so.3.2.1
-/usr/local/lib/libmpc.la
-/usr/local/lib/libmpc.a
-/usr/local/share/info/mpc.info.gz
 /usr/local/include/mpc.h
-/usr/local/lib/libmpc.so.3
+/usr/local/lib/libmpc.a
+/usr/local/lib/libmpc.la
 /usr/local/lib/libmpc.so
+/usr/local/lib/libmpc.so.3
+/usr/local/lib/libmpc.so.3.2.1
+/usr/local/share/info/mpc.info.gz

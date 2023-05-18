@@ -1,6 +1,6 @@
-/usr/local/include/kore/kore.h
+/usr/local/bin/kore
+/usr/local/include/kore/http.h
 /usr/local/include/kore/jsonrpc.h
+/usr/local/include/kore/kore.h
 /usr/local/include/kore/pgsql.h
 /usr/local/include/kore/tasks.h
-/usr/local/include/kore/http.h
-/usr/local/bin/kore

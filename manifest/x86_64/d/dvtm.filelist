@@ -1,5 +1,5 @@
-/usr/local/share/man/man1/dvtm.1.zst
-/usr/local/share/terminfo/d/dvtm-256color
-/usr/local/share/terminfo/d/dvtm
-/usr/local/bin/dvtm-status
 /usr/local/bin/dvtm
+/usr/local/bin/dvtm-status
+/usr/local/share/man/man1/dvtm.1.zst
+/usr/local/share/terminfo/d/dvtm
+/usr/local/share/terminfo/d/dvtm-256color

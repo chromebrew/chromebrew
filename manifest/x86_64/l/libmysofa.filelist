@@ -1,9 +1,9 @@
-/usr/local/include/mysofa.h
 /usr/local/bin/mysofa2json
-/usr/local/share/libmysofa/MIT_KEMAR_normal_pinna.sofa
-/usr/local/lib64/libmysofa.so.1.1.0
+/usr/local/include/mysofa.h
 /usr/local/lib64/libmysofa.a
+/usr/local/lib64/libmysofa.so
+/usr/local/lib64/libmysofa.so.1
+/usr/local/lib64/libmysofa.so.1.1.0
 /usr/local/lib64/pkgconfig/libmysofa.pc
 /usr/local/share/libmysofa/default.sofa
-/usr/local/lib64/libmysofa.so.1
-/usr/local/lib64/libmysofa.so
+/usr/local/share/libmysofa/MIT_KEMAR_normal_pinna.sofa

@@ -1,8 +1,8 @@
-/usr/local/lib/pkgconfig/xfixes.pc
-/usr/local/lib/libXfixes.a
-/usr/local/lib/libXfixes.so.3.1.0
-/usr/local/lib/libXfixes.la
 /usr/local/include/X11/extensions/Xfixes.h
-/usr/local/share/man/man3/Xfixes.3.gz
-/usr/local/lib/libXfixes.so.3
+/usr/local/lib/libXfixes.a
+/usr/local/lib/libXfixes.la
 /usr/local/lib/libXfixes.so
+/usr/local/lib/libXfixes.so.3
+/usr/local/lib/libXfixes.so.3.1.0
+/usr/local/lib/pkgconfig/xfixes.pc
+/usr/local/share/man/man3/Xfixes.3.gz

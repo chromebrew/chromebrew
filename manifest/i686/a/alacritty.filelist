@@ -1,9 +1,9 @@
 /usr/local/bin/alacritty
+/usr/local/share/appdata/org.alacritty.Alacritty.appdata.xml
 /usr/local/share/bash-completion/completions/alacritty
+/usr/local/share/doc/alacritty/example/alacritty.yml
+/usr/local/share/fish/vendor_completions.d/alacritty.fish
+/usr/local/share/man/man1/alacritty.1.zst
+/usr/local/share/man/man1/alacritty-msg.1.zst
 /usr/local/share/pixmaps/Alacritty.svg
 /usr/local/share/zsh/site-functions/_alacritty
-/usr/local/share/doc/alacritty/example/alacritty.yml
-/usr/local/share/man/man1/alacritty-msg.1.zst
-/usr/local/share/man/man1/alacritty.1.zst
-/usr/local/share/appdata/org.alacritty.Alacritty.appdata.xml
-/usr/local/share/fish/vendor_completions.d/alacritty.fish

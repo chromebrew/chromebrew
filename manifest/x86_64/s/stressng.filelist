@@ -1,4 +1,6 @@
 /usr/local/bin/stress-ng
+/usr/local/etc/bash.d/stressng
+/usr/local/share/bash-completion/completions/stress-ng
 /usr/local/share/man/man1/stress-ng.1.gz
 /usr/local/share/stress-ng/example-jobs/cpu-cache.job
 /usr/local/share/stress-ng/example-jobs/cpu.job
@@ -15,5 +17,3 @@
 /usr/local/share/stress-ng/example-jobs/scheduler.job
 /usr/local/share/stress-ng/example-jobs/security.job
 /usr/local/share/stress-ng/example-jobs/vm.job
-/usr/local/share/bash-completion/completions/stress-ng
-/usr/local/etc/bash.d/stressng

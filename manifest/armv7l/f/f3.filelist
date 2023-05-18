@@ -1,7 +1,7 @@
-/usr/local/bin/f3read
-/usr/local/bin/f3fix
-/usr/local/bin/f3write
-/usr/local/bin/f3probe
 /usr/local/bin/f3brew
+/usr/local/bin/f3fix
+/usr/local/bin/f3probe
+/usr/local/bin/f3read
+/usr/local/bin/f3write
 /usr/local/share/man/man1/f3read.1.gz
 /usr/local/share/man/man1/f3write.1.gz

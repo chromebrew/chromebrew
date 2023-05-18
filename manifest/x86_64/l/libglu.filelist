@@ -1,6 +1,6 @@
-/usr/local/lib64/libGLU.so.1.3.1
-/usr/local/lib64/libGLU.a
-/usr/local/lib64/pkgconfig/glu.pc
 /usr/local/include/GL/glu.h
-/usr/local/lib64/libGLU.so.1
+/usr/local/lib64/libGLU.a
 /usr/local/lib64/libGLU.so
+/usr/local/lib64/libGLU.so.1
+/usr/local/lib64/libGLU.so.1.3.1
+/usr/local/lib64/pkgconfig/glu.pc

@@ -1,4 +1,5 @@
 /usr/local/bin/git-lfs
+/usr/local/share/man/man1/git-lfs.1.gz
 /usr/local/share/man/man1/git-lfs-checkout.1.gz
 /usr/local/share/man/man1/git-lfs-clean.1.gz
 /usr/local/share/man/man1/git-lfs-clone.1.gz
@@ -28,5 +29,4 @@
 /usr/local/share/man/man1/git-lfs-unlock.1.gz
 /usr/local/share/man/man1/git-lfs-untrack.1.gz
 /usr/local/share/man/man1/git-lfs-update.1.gz
-/usr/local/share/man/man1/git-lfs.1.gz
 /usr/local/share/man/man5/git-lfs-config.5.gz

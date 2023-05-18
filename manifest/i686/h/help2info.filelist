@@ -1,5 +1,5 @@
 /usr/local/bin/help2info
-/usr/local/share/man/man1/help2info.1.gz
+/usr/local/share/help2info/fdl.texi
 /usr/local/share/info/dir.gz
 /usr/local/share/info/help2info.info.gz
-/usr/local/share/help2info/fdl.texi
+/usr/local/share/man/man1/help2info.1.gz

@@ -1,6 +1,6 @@
-/usr/local/etc/colordiffrc
-/usr/local/man/man1/colordiff.1.gz
-/usr/local/man/man1/cdiff.1.gz
+/home/chronos/user/.colordiffrc
 /usr/local/bin/cdiff
 /usr/local/bin/colordiff
-/home/chronos/user/.colordiffrc
+/usr/local/etc/colordiffrc
+/usr/local/man/man1/cdiff.1.gz
+/usr/local/man/man1/colordiff.1.gz

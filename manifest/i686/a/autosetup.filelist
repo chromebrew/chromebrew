@@ -1,5 +1,5 @@
 /usr/local/bin/autosetup
-/usr/local/bin/autosetup-find-tclsh
-/usr/local/bin/autosetup-config.sub
-/usr/local/bin/autosetup-test-tclsh
 /usr/local/bin/autosetup-config.guess
+/usr/local/bin/autosetup-config.sub
+/usr/local/bin/autosetup-find-tclsh
+/usr/local/bin/autosetup-test-tclsh

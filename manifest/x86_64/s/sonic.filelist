@@ -1,6 +1,6 @@
 /usr/local/bin/sonic
-/usr/local/lib/libsonic.a
-/usr/local/lib/libsonic.so.0.2.0
 /usr/local/include/sonic.h
-/usr/local/lib/libsonic.so.0
+/usr/local/lib/libsonic.a
 /usr/local/lib/libsonic.so
+/usr/local/lib/libsonic.so.0
+/usr/local/lib/libsonic.so.0.2.0

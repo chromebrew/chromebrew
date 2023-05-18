@@ -1,8 +1,8 @@
-/usr/local/lib64/pkgconfig/qqwing.pc
-/usr/local/lib64/libqqwing.so.2.1.0
-/usr/local/lib64/libqqwing.la
-/usr/local/share/man/man1/qqwing.1.gz
 /usr/local/bin/qqwing
 /usr/local/include/qqwing.hpp
-/usr/local/lib64/libqqwing.so.2
+/usr/local/lib64/libqqwing.la
 /usr/local/lib64/libqqwing.so
+/usr/local/lib64/libqqwing.so.2
+/usr/local/lib64/libqqwing.so.2.1.0
+/usr/local/lib64/pkgconfig/qqwing.pc
+/usr/local/share/man/man1/qqwing.1.gz

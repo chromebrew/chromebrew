@@ -1,5 +1,5 @@
 /usr/local/include/libaio.h
 /usr/local/lib64/libaio.a
-/usr/local/lib64/libaio.so.1.0.2
-/usr/local/lib64/libaio.so.1
 /usr/local/lib64/libaio.so
+/usr/local/lib64/libaio.so.1
+/usr/local/lib64/libaio.so.1.0.2

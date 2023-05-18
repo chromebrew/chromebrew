@@ -1,9 +1,9 @@
-/usr/local/share/man/man1/syndaemon.1
-/usr/local/share/man/man1/synclient.1
-/usr/local/share/man/man4/synaptics.4
-/usr/local/share/X11/xorg.conf.d/70-synaptics.conf
-/usr/local/bin/syndaemon
 /usr/local/bin/synclient
+/usr/local/bin/syndaemon
+/usr/local/include/xorg/synaptics-properties.h
 /usr/local/lib/pkgconfig/xorg-synaptics.pc
 /usr/local/lib/xorg/modules/input/synaptics_drv.so
-/usr/local/include/xorg/synaptics-properties.h
+/usr/local/share/man/man1/synclient.1
+/usr/local/share/man/man1/syndaemon.1
+/usr/local/share/man/man4/synaptics.4
+/usr/local/share/X11/xorg.conf.d/70-synaptics.conf

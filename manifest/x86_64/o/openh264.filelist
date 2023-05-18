@@ -1,8 +1,8 @@
 /usr/local/include/wels/codec_api.h
+/usr/local/include/wels/codec_app_def.h
 /usr/local/include/wels/codec_def.h
 /usr/local/include/wels/codec_ver.h
-/usr/local/include/wels/codec_app_def.h
-/usr/local/lib64/pkgconfig/openh264.pc
-/usr/local/lib64/libopenh264.so.2.3.1
 /usr/local/lib64/libopenh264.so
+/usr/local/lib64/libopenh264.so.2.3.1
 /usr/local/lib64/libopenh264.so.7
+/usr/local/lib64/pkgconfig/openh264.pc
