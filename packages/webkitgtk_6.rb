@@ -8,10 +8,10 @@ class Webkitgtk_6 < Package
   source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.40.1_x86_64/webkit2gtk_5-2.40.1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.1_x86_64/webkitgtk_6-2.40.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '9c537a717f01234dc176936968a83277475bd85747fa3eae1ab7055871e6884c'
+    x86_64: '6f1f6309d27d15ba2040a6f0753c9c36e40ae213f9324dcfc4486e613c671bf7'
   })
 
   depends_on 'at_spi2_core' # R
@@ -162,7 +162,7 @@ class Webkitgtk_6 < Package
     end
     @counter = 1
     loop do
-      break if system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
       @counter += 1
       break if @counter > 20
