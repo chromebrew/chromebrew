@@ -1,4 +1,4 @@
-class Webkit2gtk_4_1 < Package
+class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
   version '2.40.1'
@@ -8,16 +8,16 @@ class Webkit2gtk_4_1 < Package
   source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.1_x86_64/webkit2gtk_4_1-2.40.1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_5/2.40.1_x86_64/webkit2gtk_5-2.40.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '89020c648f7d9e4927999ac9528f2e0d9c34a45c4c206284a380bae1254971d1'
+    x86_64: '9c537a717f01234dc176936968a83277475bd85747fa3eae1ab7055871e6884c'
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
+  depends_on 'cairo'
   # depends_on 'ccache' => :build
-  depends_on 'dav1d' => :build
+  depends_on 'dav1d'
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
@@ -27,14 +27,15 @@ class Webkit2gtk_4_1 < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hyphen' # R
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
-  depends_on 'libavif' => :build
   depends_on 'libavif' # R
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
@@ -42,12 +43,12 @@ class Webkit2gtk_4_1 < Package
   depends_on 'libglvnd' # R
   depends_on 'libgpgerror' # R
   depends_on 'libjpeg' # R
-  depends_on 'libjxl' => :build
   depends_on 'libjxl' # R
   depends_on 'libnotify'
   depends_on 'libpng' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup' # R
+  depends_on 'libsoup'
+  depends_on 'libsoup2' # R
   depends_on 'libtasn1' # R
   depends_on 'libwebp' # R
   depends_on 'libwpe' # R
@@ -58,7 +59,6 @@ class Webkit2gtk_4_1 < Package
   depends_on 'libxrender' # R
   depends_on 'libxslt' # R
   depends_on 'libxt' # R
-  depends_on 'mesa' => :build
   depends_on 'mesa' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
@@ -67,6 +67,7 @@ class Webkit2gtk_4_1 < Package
   depends_on 'sqlite' # R
   depends_on 'unifdef' => :build
   depends_on 'valgrind' => :build
+  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland' # R
   depends_on 'woff2' # R
@@ -134,7 +135,7 @@ class Webkit2gtk_4_1 < Package
   end
 
   def self.build
-    # This builds webkit2gtk4_1 (which uses gtk3, but not libsoup2)
+    # This builds webkit2gtk5 (which uses gtk4, but not libsoup2)
     @workdir = `pwd`.chomp
     # Bubblewrap sandbox breaks on epiphany with
     # bwrap: Can't make symlink at /var/run: File exists
@@ -153,7 +154,7 @@ class Webkit2gtk_4_1 < Package
           -DENABLE_MINIBROWSER=ON \
           -DUSE_SYSTEM_MALLOC=ON \
           -DPORT=GTK \
-          -DUSE_GTK4=OFF \
+          -DUSE_GTK4=ON \
           -DUSE_JPEGXL=ON \
           -DUSE_SOUP2=OFF \
           -DPYTHON_EXECUTABLE=`which python` \
@@ -170,6 +171,6 @@ class Webkit2gtk_4_1 < Package
 
   def self.install
     system "DESTDIR=/usr/local/tmp/crew/dest #{CREW_NINJA} -C builddir install"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.1"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_6"
   end
 end

@@ -12,5 +12,5 @@ class Webkit2gtk < Package
 
   depends_on 'webkit2gtk_4'
   depends_on 'webkit2gtk_4_1'
-  depends_on 'webkit2gtk_5'
+  depends_on 'webkitgtk_6'
 end
