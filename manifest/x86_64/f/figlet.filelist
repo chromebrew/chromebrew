@@ -2,10 +2,6 @@
 /usr/local/bin/figlet
 /usr/local/bin/figlist
 /usr/local/bin/showfigfonts
-/usr/local/man/man6/chkfont.6.gz
-/usr/local/man/man6/figlet.6.gz
-/usr/local/man/man6/figlist.6.gz
-/usr/local/man/man6/showfigfonts.6.gz
 /usr/local/share/figlet/646-ca2.flc
 /usr/local/share/figlet/646-ca.flc
 /usr/local/share/figlet/646-cn.flc
@@ -63,3 +59,7 @@
 /usr/local/share/figlet/ushebrew.flc
 /usr/local/share/figlet/uskata.flc
 /usr/local/share/figlet/utf8.flc
+/usr/local/share/man/man6/chkfont.6.zst
+/usr/local/share/man/man6/figlet.6.zst
+/usr/local/share/man/man6/figlist.6.zst
+/usr/local/share/man/man6/showfigfonts.6.zst

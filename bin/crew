@@ -1086,10 +1086,23 @@ def prepare_package(destdir)
       system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete"
     end
 
-    # compress manual files
+    # Compress manual files, and move errant files to the correct
+    # locations.
+    if File.exist?("#{CREW_DEST_PREFIX}/man")
+      puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
+      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
+      Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
+    end
+    if File.exist?("#{CREW_DEST_PREFIX}/info")
+      puts "Files in #{CREW_PREFIX}/info will be moved to #{CREW_PREFIX}/share/info.".orange
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/info/"
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/info/*"], "#{CREW_DEST_PREFIX}/share/info/"
+      Dir.rmdir "#{CREW_DEST_PREFIX}/info" if Dir.empty?("#{CREW_DEST_PREFIX}/info")
+    end
+    # Remove the "share/info/dir.*" file since it causes conflicts.
+    FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
     compress_doc CREW_DEST_MAN_PREFIX.to_s
-    compress_doc "#{CREW_DEST_PREFIX}/info"
-    compress_doc "#{CREW_DEST_PREFIX}/man"
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # Allow postbuild to override the filelist contents
