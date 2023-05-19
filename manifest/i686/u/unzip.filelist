@@ -1,7 +1,7 @@
-/usr/local/bin/unzipsfx
-/usr/local/bin/zipgrep
 /usr/local/bin/funzip
 /usr/local/bin/unzip
+/usr/local/bin/unzipsfx
+/usr/local/bin/zipgrep
 /usr/local/bin/zipinfo
 /usr/local/share/man/man1/funzip.1.gz
 /usr/local/share/man/man1/unzip.1.gz

@@ -1,7 +1,7 @@
-/usr/local/lib/pkgconfig/xcb-cursor.pc
-/usr/local/lib/libxcb-cursor.so.0.0.0
-/usr/local/lib/libxcb-cursor.la
-/usr/local/lib/libxcb-cursor.a
 /usr/local/include/xcb/xcb_cursor.h
-/usr/local/lib/libxcb-cursor.so.0
+/usr/local/lib/libxcb-cursor.a
+/usr/local/lib/libxcb-cursor.la
 /usr/local/lib/libxcb-cursor.so
+/usr/local/lib/libxcb-cursor.so.0
+/usr/local/lib/libxcb-cursor.so.0.0.0
+/usr/local/lib/pkgconfig/xcb-cursor.pc

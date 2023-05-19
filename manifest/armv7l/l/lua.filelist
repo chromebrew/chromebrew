@@ -1,10 +1,10 @@
-/usr/local/include/lua.hpp
-/usr/local/include/lauxlib.h
-/usr/local/include/lua.h
-/usr/local/include/luaconf.h
-/usr/local/include/lualib.h
 /usr/local/bin/lua
 /usr/local/bin/luac
+/usr/local/include/lauxlib.h
+/usr/local/include/luaconf.h
+/usr/local/include/lua.h
+/usr/local/include/lua.hpp
+/usr/local/include/lualib.h
 /usr/local/lib/liblua.a
-/usr/local/share/man/man1/luac.1.gz
 /usr/local/share/man/man1/lua.1.gz
+/usr/local/share/man/man1/luac.1.gz

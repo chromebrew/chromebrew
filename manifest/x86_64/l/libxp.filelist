@@ -1,7 +1,10 @@
-/usr/local/lib64/libXp.so.6.2.0
-/usr/local/lib64/libXp.la
 /usr/local/lib64/libXp.a
+/usr/local/lib64/libXp.la
+/usr/local/lib64/libXp.so
+/usr/local/lib64/libXp.so.6
+/usr/local/lib64/libXp.so.6.2.0
 /usr/local/lib64/pkgconfig/xp.pc
+/usr/local/share/man/man3/libXp.3.gz
 /usr/local/share/man/man3/XpCancelDoc.3.gz
 /usr/local/share/man/man3/XpCancelJob.3.gz
 /usr/local/share/man/man3/XpCancelPage.3.gz
@@ -35,6 +38,3 @@
 /usr/local/share/man/man3/XpStartDoc.3.gz
 /usr/local/share/man/man3/XpStartJob.3.gz
 /usr/local/share/man/man3/XpStartPage.3.gz
-/usr/local/share/man/man3/libXp.3.gz
-/usr/local/lib64/libXp.so.6
-/usr/local/lib64/libXp.so

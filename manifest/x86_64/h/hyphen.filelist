@@ -1,8 +1,8 @@
-/usr/local/lib64/libhyphen.a
-/usr/local/lib64/libhyphen.la
-/usr/local/lib64/libhyphen.so.0.3.0
-/usr/local/share/hyphen/hyph_en_US.dic
 /usr/local/bin/substrings.pl
 /usr/local/include/hyphen.h
-/usr/local/lib64/libhyphen.so.0
+/usr/local/lib64/libhyphen.a
+/usr/local/lib64/libhyphen.la
 /usr/local/lib64/libhyphen.so
+/usr/local/lib64/libhyphen.so.0
+/usr/local/lib64/libhyphen.so.0.3.0
+/usr/local/share/hyphen/hyph_en_US.dic

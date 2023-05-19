@@ -1,11 +1,11 @@
-/usr/local/lib64/libaudiofile.a
-/usr/local/lib64/pkgconfig/audiofile.pc
-/usr/local/lib64/libaudiofile.la
-/usr/local/lib64/libaudiofile.so.1.0.0
 /usr/local/bin/sfconvert
 /usr/local/bin/sfinfo
 /usr/local/include/af_vfs.h
-/usr/local/include/aupvlist.h
 /usr/local/include/audiofile.h
-/usr/local/lib64/libaudiofile.so.1
+/usr/local/include/aupvlist.h
+/usr/local/lib64/libaudiofile.a
+/usr/local/lib64/libaudiofile.la
 /usr/local/lib64/libaudiofile.so
+/usr/local/lib64/libaudiofile.so.1
+/usr/local/lib64/libaudiofile.so.1.0.0
+/usr/local/lib64/pkgconfig/audiofile.pc

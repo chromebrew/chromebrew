@@ -1,4 +1,4 @@
 /usr/local/share/musl/include/obstack.h
-/usr/local/share/musl/lib/pkgconfig/musl-obstack.pc
-/usr/local/share/musl/lib/libobstack.la
 /usr/local/share/musl/lib/libobstack.a
+/usr/local/share/musl/lib/libobstack.la
+/usr/local/share/musl/lib/pkgconfig/musl-obstack.pc

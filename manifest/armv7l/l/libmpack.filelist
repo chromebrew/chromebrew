@@ -1,7 +1,7 @@
 /usr/local/include/mpack.h
-/usr/local/lib/libmpack.so.0.0.0
 /usr/local/lib/libmpack.a
-/usr/local/lib/pkgconfig/mpack.pc
 /usr/local/lib/libmpack.la
-/usr/local/lib/libmpack.so.0
 /usr/local/lib/libmpack.so
+/usr/local/lib/libmpack.so.0
+/usr/local/lib/libmpack.so.0.0.0
+/usr/local/lib/pkgconfig/mpack.pc

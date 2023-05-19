@@ -1,6 +1,9 @@
-/usr/local/lib/libXv.so.1.0.0
-/usr/local/lib/libXv.la
+/usr/local/include/X11/extensions/Xvlib.h
 /usr/local/lib/libXv.a
+/usr/local/lib/libXv.la
+/usr/local/lib/libXv.so
+/usr/local/lib/libXv.so.1
+/usr/local/lib/libXv.so.1.0.0
 /usr/local/lib/pkgconfig/xv.pc
 /usr/local/share/man/man3/Xv.3.zst
 /usr/local/share/man/man3/XvCreateImage.3.zst
@@ -28,6 +31,3 @@
 /usr/local/share/man/man3/XvStopVideo.3.zst
 /usr/local/share/man/man3/XvUngrabPort.3.zst
 /usr/local/share/man/man3/XvVideoNotify.3.zst
-/usr/local/include/X11/extensions/Xvlib.h
-/usr/local/lib/libXv.so.1
-/usr/local/lib/libXv.so

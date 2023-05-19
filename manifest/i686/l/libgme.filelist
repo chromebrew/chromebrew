@@ -1,6 +1,6 @@
-/usr/local/include/gme/gme.h
 /usr/local/include/gme/blargg_source.h
+/usr/local/include/gme/gme.h
+/usr/local/lib/libgme.so
+/usr/local/lib/libgme.so.0
 /usr/local/lib/libgme.so.0.6.3
 /usr/local/lib/pkgconfig/libgme.pc
-/usr/local/lib/libgme.so.0
-/usr/local/lib/libgme.so

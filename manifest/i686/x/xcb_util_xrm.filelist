@@ -1,7 +1,7 @@
-/usr/local/lib/libxcb-xrm.so.0.0.0
-/usr/local/lib/libxcb-xrm.la
-/usr/local/lib/libxcb-xrm.a
-/usr/local/lib/pkgconfig/xcb-xrm.pc
 /usr/local/include/xcb/xcb_xrm.h
-/usr/local/lib/libxcb-xrm.so.0
+/usr/local/lib/libxcb-xrm.a
+/usr/local/lib/libxcb-xrm.la
 /usr/local/lib/libxcb-xrm.so
+/usr/local/lib/libxcb-xrm.so.0
+/usr/local/lib/libxcb-xrm.so.0.0.0
+/usr/local/lib/pkgconfig/xcb-xrm.pc

@@ -1,7 +1,7 @@
-/usr/local/include/serd-0/serd/serd.h
-/usr/local/lib/pkgconfig/serd-0.pc
-/usr/local/lib/libserd-0.so.0.30.10
 /usr/local/bin/serdi
-/usr/local/share/man/man1/serdi.1.gz
+/usr/local/include/serd-0/serd/serd.h
 /usr/local/lib/libserd-0.so
 /usr/local/lib/libserd-0.so.0
+/usr/local/lib/libserd-0.so.0.30.10
+/usr/local/lib/pkgconfig/serd-0.pc
+/usr/local/share/man/man1/serdi.1.gz

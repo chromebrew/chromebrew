@@ -1,3 +1,10 @@
+/usr/local/include/X11/Xauth.h
+/usr/local/lib/libXau.a
+/usr/local/lib/libXau.la
+/usr/local/lib/libXau.so
+/usr/local/lib/libXau.so.6
+/usr/local/lib/libXau.so.6.0.0
+/usr/local/lib/pkgconfig/xau.pc
 /usr/local/share/man/man3/Xau.3.gz
 /usr/local/share/man/man3/XauDisposeAuth.3.gz
 /usr/local/share/man/man3/XauFileName.3.gz
@@ -7,10 +14,3 @@
 /usr/local/share/man/man3/XauReadAuth.3.gz
 /usr/local/share/man/man3/XauUnlockAuth.3.gz
 /usr/local/share/man/man3/XauWriteAuth.3.gz
-/usr/local/lib/pkgconfig/xau.pc
-/usr/local/lib/libXau.so.6.0.0
-/usr/local/lib/libXau.la
-/usr/local/lib/libXau.a
-/usr/local/include/X11/Xauth.h
-/usr/local/lib/libXau.so.6
-/usr/local/lib/libXau.so

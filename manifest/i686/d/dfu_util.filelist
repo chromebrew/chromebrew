@@ -1,4 +1,4 @@
+/usr/local/bin/dfu-prefix
 /usr/local/bin/dfu-suffix
 /usr/local/bin/dfu-util
-/usr/local/bin/dfu-prefix
 /usr/local/share/man/man1/dfu-util.1.gz

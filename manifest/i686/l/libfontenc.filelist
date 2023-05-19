@@ -1,7 +1,7 @@
-/usr/local/lib/pkgconfig/fontenc.pc
-/usr/local/lib/libfontenc.la
-/usr/local/lib/libfontenc.so.1.0.0
-/usr/local/lib/libfontenc.a
 /usr/local/include/X11/fonts/fontenc.h
+/usr/local/lib/libfontenc.a
+/usr/local/lib/libfontenc.la
 /usr/local/lib/libfontenc.so
 /usr/local/lib/libfontenc.so.1
+/usr/local/lib/libfontenc.so.1.0.0
+/usr/local/lib/pkgconfig/fontenc.pc

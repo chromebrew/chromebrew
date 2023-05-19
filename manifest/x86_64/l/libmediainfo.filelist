@@ -1,11 +1,11 @@
-/usr/local/include/MediaInfo/MediaInfo.h
-/usr/local/include/MediaInfo/MediaInfo_Events.h
-/usr/local/include/MediaInfo/MediaInfoList.h
-/usr/local/include/MediaInfo/MediaInfo_Const.h
 /usr/local/include/MediaInfoDLL/MediaInfoDLL.h
 /usr/local/include/MediaInfoDLL/MediaInfoDLL_Static.h
+/usr/local/include/MediaInfo/MediaInfo_Const.h
+/usr/local/include/MediaInfo/MediaInfo_Events.h
+/usr/local/include/MediaInfo/MediaInfo.h
+/usr/local/include/MediaInfo/MediaInfoList.h
 /usr/local/lib64/libmediainfo.la
+/usr/local/lib64/libmediainfo.so
+/usr/local/lib64/libmediainfo.so.0
 /usr/local/lib64/libmediainfo.so.0.0.0
 /usr/local/lib64/pkgconfig/libmediainfo.pc
-/usr/local/lib64/libmediainfo.so.0
-/usr/local/lib64/libmediainfo.so

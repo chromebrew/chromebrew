@@ -1,11 +1,11 @@
-/usr/local/share/itstool/its/docbook.its
+/usr/local/bin/itstool
+/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/dependency_links.txt
+/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/PKG-INFO
+/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/SOURCES.txt
+/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/top_level.txt
 /usr/local/share/itstool/its/docbook5.its
+/usr/local/share/itstool/its/docbook.its
 /usr/local/share/itstool/its/its.its
 /usr/local/share/itstool/its/mallard.its
 /usr/local/share/itstool/its/ttml.its
 /usr/local/share/itstool/its/xhtml.its
-/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/PKG-INFO
-/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/dependency_links.txt
-/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/top_level.txt
-/usr/local/lib/python3.11/site-packages/itstool-2.0.7-py3.11.egg-info/SOURCES.txt
-/usr/local/bin/itstool

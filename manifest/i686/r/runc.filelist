@@ -1,4 +1,6 @@
 /usr/local/bin/runc
+/usr/local/share/bash-completion/completions/runc
+/usr/local/share/man/man8/runc.8.zst
 /usr/local/share/man/man8/runc-checkpoint.8.zst
 /usr/local/share/man/man8/runc-create.8.zst
 /usr/local/share/man/man8/runc-delete.8.zst
@@ -15,5 +17,3 @@
 /usr/local/share/man/man8/runc-start.8.zst
 /usr/local/share/man/man8/runc-state.8.zst
 /usr/local/share/man/man8/runc-update.8.zst
-/usr/local/share/man/man8/runc.8.zst
-/usr/local/share/bash-completion/completions/runc

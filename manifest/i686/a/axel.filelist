@@ -1,11 +1,11 @@
 /usr/local/bin/axel
-/usr/local/share/locale/ru/LC_MESSAGES/axel.mo
-/usr/local/share/locale/es/LC_MESSAGES/axel.mo
 /usr/local/share/locale/de/LC_MESSAGES/axel.mo
-/usr/local/share/locale/it/LC_MESSAGES/axel.mo
+/usr/local/share/locale/es/LC_MESSAGES/axel.mo
 /usr/local/share/locale/id_ID/LC_MESSAGES/axel.mo
-/usr/local/share/locale/zh_CN/LC_MESSAGES/axel.mo
-/usr/local/share/locale/nl/LC_MESSAGES/axel.mo
+/usr/local/share/locale/it/LC_MESSAGES/axel.mo
 /usr/local/share/locale/ja/LC_MESSAGES/axel.mo
+/usr/local/share/locale/nl/LC_MESSAGES/axel.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/axel.mo
+/usr/local/share/locale/ru/LC_MESSAGES/axel.mo
+/usr/local/share/locale/zh_CN/LC_MESSAGES/axel.mo
 /usr/local/share/man/man1/axel.1.gz

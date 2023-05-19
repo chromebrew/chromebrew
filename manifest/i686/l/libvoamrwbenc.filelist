@@ -1,7 +1,7 @@
-/usr/local/lib/libvo-amrwbenc.a
-/usr/local/lib/pkgconfig/vo-amrwbenc.pc
-/usr/local/lib/libvo-amrwbenc.so.0.0.4
-/usr/local/lib/libvo-amrwbenc.la
 /usr/local/include/vo-amrwbenc/enc_if.h
+/usr/local/lib/libvo-amrwbenc.a
+/usr/local/lib/libvo-amrwbenc.la
 /usr/local/lib/libvo-amrwbenc.so
 /usr/local/lib/libvo-amrwbenc.so.0
+/usr/local/lib/libvo-amrwbenc.so.0.0.4
+/usr/local/lib/pkgconfig/vo-amrwbenc.pc

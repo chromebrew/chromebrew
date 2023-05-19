@@ -1,9 +1,9 @@
-/usr/local/etc/env.d/00-ccache
-/usr/local/share/man/man1/ccache.1.zst
 /usr/local/bin/ccache
-/usr/local/lib64/ccache/bin/clang
-/usr/local/lib64/ccache/bin/cc
-/usr/local/lib64/ccache/bin/clang++
+/usr/local/etc/env.d/00-ccache
 /usr/local/lib64/ccache/bin/c++
+/usr/local/lib64/ccache/bin/cc
+/usr/local/lib64/ccache/bin/clang
+/usr/local/lib64/ccache/bin/clang++
 /usr/local/lib64/ccache/bin/g++
 /usr/local/lib64/ccache/bin/gcc
+/usr/local/share/man/man1/ccache.1.zst

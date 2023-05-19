@@ -3,7 +3,7 @@
 /usr/local/include/xcb/xcb_pixel.h
 /usr/local/lib/libxcb-image.a
 /usr/local/lib/libxcb-image.la
-/usr/local/lib/pkgconfig/xcb-image.pc
-/usr/local/lib/libxcb-image.so.0.0.0
 /usr/local/lib/libxcb-image.so
 /usr/local/lib/libxcb-image.so.0
+/usr/local/lib/libxcb-image.so.0.0.0
+/usr/local/lib/pkgconfig/xcb-image.pc

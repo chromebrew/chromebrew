@@ -1,8 +1,8 @@
-/usr/local/lib/pkgconfig/libfs.pc
-/usr/local/lib/libFS.la
-/usr/local/lib/libFS.so.6.0.0
-/usr/local/lib/libFS.a
 /usr/local/include/X11/fonts/FSlib.h
-/usr/local/share/doc/libFS/FSlib.txt
-/usr/local/lib/libFS.so.6
+/usr/local/lib/libFS.a
+/usr/local/lib/libFS.la
 /usr/local/lib/libFS.so
+/usr/local/lib/libFS.so.6
+/usr/local/lib/libFS.so.6.0.0
+/usr/local/lib/pkgconfig/libfs.pc
+/usr/local/share/doc/libFS/FSlib.txt

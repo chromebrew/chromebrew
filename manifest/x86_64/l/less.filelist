@@ -1,7 +1,7 @@
-/usr/local/etc/env.d/less
-/usr/local/bin/lesskey
-/usr/local/bin/lessecho
 /usr/local/bin/less
-/usr/local/share/man/man1/lesskey.1.zst
+/usr/local/bin/lessecho
+/usr/local/bin/lesskey
+/usr/local/etc/env.d/less
 /usr/local/share/man/man1/less.1.zst
 /usr/local/share/man/man1/lessecho.1.zst
+/usr/local/share/man/man1/lesskey.1.zst

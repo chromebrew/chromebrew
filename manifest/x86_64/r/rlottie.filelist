@@ -1,8 +1,8 @@
-/usr/local/lib64/librlottie-image-loader.so
-/usr/local/lib64/librlottie.so.0.2
-/usr/local/lib64/pkgconfig/rlottie.pc
-/usr/local/include/rlottie.h
 /usr/local/include/rlottie_capi.h
 /usr/local/include/rlottiecommon.h
-/usr/local/lib64/librlottie.so.0
+/usr/local/include/rlottie.h
+/usr/local/lib64/librlottie-image-loader.so
 /usr/local/lib64/librlottie.so
+/usr/local/lib64/librlottie.so.0
+/usr/local/lib64/librlottie.so.0.2
+/usr/local/lib64/pkgconfig/rlottie.pc

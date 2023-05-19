@@ -1,3 +1,4 @@
+/usr/local/etc/xml/docbook-5.0.xml
 /usr/local/share/xml/docbook/schema/dtd/5.0/catalog.xml
 /usr/local/share/xml/docbook/schema/dtd/5.0/docbook.dtd
 /usr/local/share/xml/docbook/schema/rng/5.0/catalog.xml
@@ -11,4 +12,3 @@
 /usr/local/share/xml/docbook/schema/xsd/5.0/docbook.xsd
 /usr/local/share/xml/docbook/schema/xsd/5.0/xlink.xsd
 /usr/local/share/xml/docbook/schema/xsd/5.0/xml.xsd
-/usr/local/etc/xml/docbook-5.0.xml

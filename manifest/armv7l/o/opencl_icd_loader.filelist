@@ -1,7 +1,7 @@
-/usr/local/lib/libOpenCL.so.1.2
-/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets.cmake
-/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfig.cmake
-/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfigVersion.cmake
-/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets-release.cmake
 /usr/local/lib/libOpenCL.so
 /usr/local/lib/libOpenCL.so.1
+/usr/local/lib/libOpenCL.so.1.2
+/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfig.cmake
+/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderConfigVersion.cmake
+/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets.cmake
+/usr/local/share/cmake/OpenCLICDLoader/OpenCLICDLoaderTargets-release.cmake

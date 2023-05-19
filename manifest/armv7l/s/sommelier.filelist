@@ -1,10 +1,10 @@
-/usr/local/sbin/sommelierd
-/usr/local/bin/startsommelier
+/usr/local/bin/initsommelier
 /usr/local/bin/restartsommelier
-/usr/local/bin/stopsommelier
 /usr/local/bin/sommelier
 /usr/local/bin/sommelier.elf
-/usr/local/etc/sommelierrc
+/usr/local/bin/startsommelier
+/usr/local/bin/stopsommelier
 /usr/local/etc/bash.d/sommelier
 /usr/local/etc/env.d/sommelier
-/usr/local/bin/initsommelier
+/usr/local/etc/sommelierrc
+/usr/local/sbin/sommelierd

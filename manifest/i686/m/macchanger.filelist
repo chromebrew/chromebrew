@@ -1,6 +1,6 @@
 /usr/local/bin/macchanger
-/usr/local/share/macchanger/wireless.list
-/usr/local/share/macchanger/OUI.list
-/usr/local/share/info/macchanger.info.gz
 /usr/local/share/info/dir.gz
+/usr/local/share/info/macchanger.info.gz
+/usr/local/share/macchanger/OUI.list
+/usr/local/share/macchanger/wireless.list
 /usr/local/share/man/man1/macchanger.1.gz

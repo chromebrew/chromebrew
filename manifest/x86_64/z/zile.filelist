@@ -1,6 +1,6 @@
 /usr/local/bin/zile
-/usr/local/share/man/man1/zile.1.gz
-/usr/local/share/doc/zile/NEWS
 /usr/local/share/doc/zile/AUTHORS
-/usr/local/share/doc/zile/FAQ
 /usr/local/share/doc/zile/dotzile.sample
+/usr/local/share/doc/zile/FAQ
+/usr/local/share/doc/zile/NEWS
+/usr/local/share/man/man1/zile.1.gz

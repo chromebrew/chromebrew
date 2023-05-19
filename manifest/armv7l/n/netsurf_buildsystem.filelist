@@ -1,10 +1,10 @@
 /usr/local/share/netsurf-buildsystem/citools/jenkins-build.sh
-/usr/local/share/netsurf-buildsystem/testtools/testrunner.pl
 /usr/local/share/netsurf-buildsystem/makefiles/Makefile.clang
+/usr/local/share/netsurf-buildsystem/makefiles/Makefile.gcc
+/usr/local/share/netsurf-buildsystem/makefiles/Makefile.norcroft
 /usr/local/share/netsurf-buildsystem/makefiles/Makefile.open64
 /usr/local/share/netsurf-buildsystem/makefiles/Makefile.pkgconfig
 /usr/local/share/netsurf-buildsystem/makefiles/Makefile.subdir
 /usr/local/share/netsurf-buildsystem/makefiles/Makefile.tools
-/usr/local/share/netsurf-buildsystem/makefiles/Makefile.norcroft
 /usr/local/share/netsurf-buildsystem/makefiles/Makefile.top
-/usr/local/share/netsurf-buildsystem/makefiles/Makefile.gcc
+/usr/local/share/netsurf-buildsystem/testtools/testrunner.pl

@@ -1,6 +1,6 @@
 /usr/local/bin/autossh
 /usr/local/man/man1/autossh.1.gz
-/usr/local/share/examples/autossh/rscreen
-/usr/local/share/examples/autossh/autossh.host
-/usr/local/share/doc/autossh/README
 /usr/local/share/doc/autossh/CHANGES
+/usr/local/share/doc/autossh/README
+/usr/local/share/examples/autossh/autossh.host
+/usr/local/share/examples/autossh/rscreen

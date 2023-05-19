@@ -1,9 +1,9 @@
-/usr/local/bin/wl-paste
 /usr/local/bin/wl-copy
-/usr/local/share/man/man1/wl-copy.1.gz
+/usr/local/bin/wl-paste
+/usr/local/share/bash-completion/completions/wl-copy
+/usr/local/share/bash-completion/completions/wl-paste
 /usr/local/share/man/man1/wl-clipboard.1.gz
+/usr/local/share/man/man1/wl-copy.1.gz
 /usr/local/share/man/man1/wl-paste.1.gz
 /usr/local/share/zsh/site-functions/_wl-copy
 /usr/local/share/zsh/site-functions/_wl-paste
-/usr/local/share/bash-completion/completions/wl-paste
-/usr/local/share/bash-completion/completions/wl-copy

@@ -1,8 +1,8 @@
-/usr/local/share/musl/include/libucontext/libucontext.h
 /usr/local/share/musl/include/libucontext/bits.h
+/usr/local/share/musl/include/libucontext/libucontext.h
 /usr/local/share/musl/lib/libucontext.a
-/usr/local/share/musl/lib/libucontext_posix.so.1
 /usr/local/share/musl/lib/libucontext_posix.a
-/usr/local/share/musl/lib/pkgconfig/libucontext.pc
-/usr/local/share/musl/lib/libucontext.so.1
+/usr/local/share/musl/lib/libucontext_posix.so.1
 /usr/local/share/musl/lib/libucontext.so
+/usr/local/share/musl/lib/libucontext.so.1
+/usr/local/share/musl/lib/pkgconfig/libucontext.pc

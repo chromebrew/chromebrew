@@ -1,6 +1,6 @@
-/usr/local/lib64/libpcaudio.a
-/usr/local/lib64/libpcaudio.so.0.0.1
-/usr/local/lib64/libpcaudio.la
 /usr/local/include/pcaudiolib/audio.h
+/usr/local/lib64/libpcaudio.a
+/usr/local/lib64/libpcaudio.la
 /usr/local/lib64/libpcaudio.so
 /usr/local/lib64/libpcaudio.so.0
+/usr/local/lib64/libpcaudio.so.0.0.1

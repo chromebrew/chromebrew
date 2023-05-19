@@ -1,8 +1,8 @@
-/usr/local/lib/mold/mold-wrapper.so
-/usr/local/bin/mold
-/usr/local/share/doc/mold/LICENSE
-/usr/local/share/man/man1/mold.1.zst
-/usr/local/etc/env.d/mold
 /usr/local/bin/ld.mold
-/usr/local/share/man/man1/ld.mold.1.zst
+/usr/local/bin/mold
+/usr/local/etc/env.d/mold
 /usr/local/libexec/mold/ld
+/usr/local/lib/mold/mold-wrapper.so
+/usr/local/share/doc/mold/LICENSE
+/usr/local/share/man/man1/ld.mold.1.zst
+/usr/local/share/man/man1/mold.1.zst

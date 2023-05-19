@@ -1,10 +1,10 @@
-/usr/local/share/doc/libatasmart/README
-/usr/local/share/vala/vapi/atasmart.vapi
-/usr/local/lib/pkgconfig/libatasmart.pc
-/usr/local/lib/libatasmart.so.4.0.5
-/usr/local/lib/libatasmart.la
 /usr/local/include/atasmart.h
+/usr/local/lib/libatasmart.la
+/usr/local/lib/libatasmart.so
+/usr/local/lib/libatasmart.so.4
+/usr/local/lib/libatasmart.so.4.0.5
+/usr/local/lib/pkgconfig/libatasmart.pc
 /usr/local/sbin/skdump
 /usr/local/sbin/sktest
-/usr/local/lib/libatasmart.so.4
-/usr/local/lib/libatasmart.so
+/usr/local/share/doc/libatasmart/README
+/usr/local/share/vala/vapi/atasmart.vapi

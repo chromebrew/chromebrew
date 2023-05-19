@@ -1,9 +1,9 @@
-/usr/local/lib/libticonv.so.8.0.4
-/usr/local/lib/libticonv.la
-/usr/local/lib/pkgconfig/ticonv.pc
-/usr/local/include/tilp2/export4.h
-/usr/local/include/tilp2/ticonv.h
-/usr/local/include/tilp2/stdints4.h
 /usr/local/include/tilp2/charset.h
+/usr/local/include/tilp2/export4.h
+/usr/local/include/tilp2/stdints4.h
+/usr/local/include/tilp2/ticonv.h
+/usr/local/lib/libticonv.la
 /usr/local/lib/libticonv.so
 /usr/local/lib/libticonv.so.8
+/usr/local/lib/libticonv.so.8.0.4
+/usr/local/lib/pkgconfig/ticonv.pc

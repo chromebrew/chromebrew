@@ -1,5 +1,5 @@
-/usr/local/share/X11/xorg.conf.d/40-libinput.conf
-/usr/local/share/man/man4/libinput.4
 /usr/local/include/xorg/libinput-properties.h
 /usr/local/lib64/pkgconfig/xorg-libinput.pc
 /usr/local/lib64/xorg/modules/input/libinput_drv.so
+/usr/local/share/man/man4/libinput.4
+/usr/local/share/X11/xorg.conf.d/40-libinput.conf

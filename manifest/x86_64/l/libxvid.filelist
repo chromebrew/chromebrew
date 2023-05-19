@@ -1,5 +1,5 @@
 /usr/local/include/xvid.h
-/usr/local/lib64/libxvidcore.so.4.3
 /usr/local/lib64/libxvidcore.a
-/usr/local/lib64/libxvidcore.so.4
 /usr/local/lib64/libxvidcore.so
+/usr/local/lib64/libxvidcore.so.4
+/usr/local/lib64/libxvidcore.so.4.3

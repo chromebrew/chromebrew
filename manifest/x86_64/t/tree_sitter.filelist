@@ -1,8 +1,8 @@
-/usr/local/lib64/libtree-sitter.a
-/usr/local/lib64/libtree-sitter.so.0.0
-/usr/local/lib64/pkgconfig/tree-sitter.pc
+/usr/local/bin/tree-sitter
 /usr/local/include/tree_sitter/api.h
 /usr/local/include/tree_sitter/parser.h
-/usr/local/bin/tree-sitter
-/usr/local/lib64/libtree-sitter.so.0
+/usr/local/lib64/libtree-sitter.a
 /usr/local/lib64/libtree-sitter.so
+/usr/local/lib64/libtree-sitter.so.0
+/usr/local/lib64/libtree-sitter.so.0.0
+/usr/local/lib64/pkgconfig/tree-sitter.pc

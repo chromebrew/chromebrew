@@ -1,5 +1,5 @@
-/usr/local/lib/cli.js
-/usr/local/lib/v8-compile-cache.js
-/usr/local/bin/yarnpkg
 /usr/local/bin/yarn
 /usr/local/bin/yarn.js
+/usr/local/bin/yarnpkg
+/usr/local/lib/cli.js
+/usr/local/lib/v8-compile-cache.js

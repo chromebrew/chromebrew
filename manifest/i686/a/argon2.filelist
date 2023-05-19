@@ -1,7 +1,7 @@
-/usr/local/include/argon2.h
 /usr/local/bin/argon2
-/usr/local/share/man/man1/argon2.1.gz
+/usr/local/include/argon2.h
 /usr/local/lib/libargon2.a
-/usr/local/lib/pkgconfig/libargon2.pc
-/usr/local/lib/libargon2.so.1
 /usr/local/lib/libargon2.so
+/usr/local/lib/libargon2.so.1
+/usr/local/lib/pkgconfig/libargon2.pc
+/usr/local/share/man/man1/argon2.1.gz

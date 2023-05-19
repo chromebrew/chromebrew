@@ -1,4 +1,4 @@
 /usr/local/bin/xclock
-/usr/local/share/X11/app-defaults/XClock-color
-/usr/local/share/X11/app-defaults/XClock
 /usr/local/share/man/man1/xclock.1.gz
+/usr/local/share/X11/app-defaults/XClock
+/usr/local/share/X11/app-defaults/XClock-color

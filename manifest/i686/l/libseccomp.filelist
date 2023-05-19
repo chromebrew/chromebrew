@@ -1,10 +1,12 @@
+/usr/local/bin/scmp_sys_resolver
 /usr/local/include/seccomp.h
 /usr/local/include/seccomp-syscalls.h
-/usr/local/lib/libseccomp.so.2.5.4
-/usr/local/lib/libseccomp.la
 /usr/local/lib/libseccomp.a
+/usr/local/lib/libseccomp.la
+/usr/local/lib/libseccomp.so
+/usr/local/lib/libseccomp.so.2
+/usr/local/lib/libseccomp.so.2.5.4
 /usr/local/lib/pkgconfig/libseccomp.pc
-/usr/local/bin/scmp_sys_resolver
 /usr/local/share/man/man1/scmp_sys_resolver.1.gz
 /usr/local/share/man/man3/seccomp_api_get.3.gz
 /usr/local/share/man/man3/seccomp_api_set.3.gz
@@ -38,5 +40,3 @@
 /usr/local/share/man/man3/seccomp_syscall_resolve_name_rewrite.3.gz
 /usr/local/share/man/man3/seccomp_syscall_resolve_num_arch.3.gz
 /usr/local/share/man/man3/seccomp_version.3.gz
-/usr/local/lib/libseccomp.so.2
-/usr/local/lib/libseccomp.so

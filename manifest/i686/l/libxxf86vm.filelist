@@ -1,9 +1,10 @@
 /usr/local/include/X11/extensions/xf86vmode.h
-/usr/local/lib/libXxf86vm.so.1.0.0
-/usr/local/lib/libXxf86vm.la
 /usr/local/lib/libXxf86vm.a
+/usr/local/lib/libXxf86vm.la
+/usr/local/lib/libXxf86vm.so
+/usr/local/lib/libXxf86vm.so.1
+/usr/local/lib/libXxf86vm.so.1.0.0
 /usr/local/lib/pkgconfig/xxf86vm.pc
-/usr/local/share/man/man3/XF86VM.3.gz
 /usr/local/share/man/man3/XF86VidModeAddModeLine.3.gz
 /usr/local/share/man/man3/XF86VidModeDeleteModeLine.3.gz
 /usr/local/share/man/man3/XF86VidModeGetAllModeLines.3.gz
@@ -26,5 +27,4 @@
 /usr/local/share/man/man3/XF86VidModeSwitchMode.3.gz
 /usr/local/share/man/man3/XF86VidModeSwitchToMode.3.gz
 /usr/local/share/man/man3/XF86VidModeValidateModeLine.3.gz
-/usr/local/lib/libXxf86vm.so.1
-/usr/local/lib/libXxf86vm.so
+/usr/local/share/man/man3/XF86VM.3.gz

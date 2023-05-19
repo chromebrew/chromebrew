@@ -1,10 +1,10 @@
-/usr/local/etc/abcde.conf
-/usr/local/bin/cddb-tool
 /usr/local/bin/abcde
 /usr/local/bin/abcde-musicbrainz-tool
-/usr/local/share/man/man1/cddb-tool.1.gz
-/usr/local/share/man/man1/abcde.1.gz
-/usr/local/share/doc/abcde-2.9.3/COPYING
-/usr/local/share/doc/abcde-2.9.3/README
-/usr/local/share/doc/abcde-2.9.3/FAQ
+/usr/local/bin/cddb-tool
+/usr/local/etc/abcde.conf
 /usr/local/share/doc/abcde-2.9.3/changelog
+/usr/local/share/doc/abcde-2.9.3/COPYING
+/usr/local/share/doc/abcde-2.9.3/FAQ
+/usr/local/share/doc/abcde-2.9.3/README
+/usr/local/share/man/man1/abcde.1.gz
+/usr/local/share/man/man1/cddb-tool.1.gz

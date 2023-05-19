@@ -2,10 +2,10 @@
 /usr/local/share/policy/crosvm/9p_device.policy
 /usr/local/share/policy/crosvm/balloon_device.policy
 /usr/local/share/policy/crosvm/battery.policy
-/usr/local/share/policy/crosvm/block.policy
 /usr/local/share/policy/crosvm/block_device.policy
 /usr/local/share/policy/crosvm/block_device_vhost_user.policy
 /usr/local/share/policy/crosvm/block_device_vvu.policy
+/usr/local/share/policy/crosvm/block.policy
 /usr/local/share/policy/crosvm/coiommu_device.policy
 /usr/local/share/policy/crosvm/common_device.frequency
 /usr/local/share/policy/crosvm/common_device.policy
@@ -20,10 +20,10 @@
 /usr/local/share/policy/crosvm/null_audio_device.policy
 /usr/local/share/policy/crosvm/pmem_device.policy
 /usr/local/share/policy/crosvm/rng_device.policy
-/usr/local/share/policy/crosvm/serial.policy
 /usr/local/share/policy/crosvm/serial_device.policy
 /usr/local/share/policy/crosvm/serial_device_vhost_user.policy
 /usr/local/share/policy/crosvm/serial_device_vvu.policy
+/usr/local/share/policy/crosvm/serial.policy
 /usr/local/share/policy/crosvm/snd_cras_device.policy
 /usr/local/share/policy/crosvm/snd_null_device.policy
 /usr/local/share/policy/crosvm/tpm_device.policy

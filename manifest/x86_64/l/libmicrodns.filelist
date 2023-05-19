@@ -1,6 +1,6 @@
 /usr/local/include/microdns/microdns.h
 /usr/local/include/microdns/rr.h
+/usr/local/lib64/libmicrodns.so
+/usr/local/lib64/libmicrodns.so.1
 /usr/local/lib64/libmicrodns.so.1.0.0
 /usr/local/lib64/pkgconfig/microdns.pc
-/usr/local/lib64/libmicrodns.so.1
-/usr/local/lib64/libmicrodns.so

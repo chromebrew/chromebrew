@@ -1,8 +1,8 @@
-/usr/local/lib64/libserf-1.a
-/usr/local/lib64/pkgconfig/serf-1.pc
-/usr/local/lib64/libserf-1.so.1.3.0
-/usr/local/include/serf-1/serf_bucket_util.h
 /usr/local/include/serf-1/serf_bucket_types.h
+/usr/local/include/serf-1/serf_bucket_util.h
 /usr/local/include/serf-1/serf.h
-/usr/local/lib64/libserf-1.so.1
+/usr/local/lib64/libserf-1.a
 /usr/local/lib64/libserf-1.so
+/usr/local/lib64/libserf-1.so.1
+/usr/local/lib64/libserf-1.so.1.3.0
+/usr/local/lib64/pkgconfig/serf-1.pc

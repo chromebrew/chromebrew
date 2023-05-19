@@ -8,7 +8,7 @@
 /usr/local/include/spice-1/spice/qxl_windows.h
 /usr/local/include/spice-1/spice/start-packed.h
 /usr/local/include/spice-1/spice/stats.h
+/usr/local/include/spice-1/spice/stream-device.h
 /usr/local/include/spice-1/spice/types.h
 /usr/local/include/spice-1/spice/vd_agent.h
-/usr/local/include/spice-1/spice/stream-device.h
 /usr/local/share/pkgconfig/spice-protocol.pc

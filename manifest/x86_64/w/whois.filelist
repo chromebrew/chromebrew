@@ -1,6 +1,6 @@
 /usr/local/bin/mkpasswd
 /usr/local/bin/whois
-/usr/local/man/man5/whois.conf.5.gz
-/usr/local/man/man1/whois.1.gz
-/usr/local/man/man1/mkpasswd.1.gz
 /usr/local/etc/whois.conf
+/usr/local/man/man1/mkpasswd.1.gz
+/usr/local/man/man1/whois.1.gz
+/usr/local/man/man5/whois.conf.5.gz

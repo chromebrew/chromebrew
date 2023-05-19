@@ -1,15 +1,16 @@
 /usr/local/bin/asunder
+/usr/local/share/applications/asunder.desktop
 /usr/local/share/locale/af/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/am/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/an/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ar/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/as/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/az/LC_MESSAGES/asunder.mo
-/usr/local/share/locale/be/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/be@latin/LC_MESSAGES/asunder.mo
+/usr/local/share/locale/be/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/bg/LC_MESSAGES/asunder.mo
-/usr/local/share/locale/bn/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/bn_IN/LC_MESSAGES/asunder.mo
+/usr/local/share/locale/bn/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/br/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/bs_BA/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ca/LC_MESSAGES/asunder.mo
@@ -69,8 +70,8 @@
 /usr/local/share/locale/pa/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/pl/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ps/LC_MESSAGES/asunder.mo
-/usr/local/share/locale/pt/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/asunder.mo
+/usr/local/share/locale/pt/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ro/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ru/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/rw/LC_MESSAGES/asunder.mo
@@ -78,8 +79,8 @@
 /usr/local/share/locale/sk/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/sl/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/sq/LC_MESSAGES/asunder.mo
-/usr/local/share/locale/sr/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/sr@latin/LC_MESSAGES/asunder.mo
+/usr/local/share/locale/sr/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/sv/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ta/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/te/LC_MESSAGES/asunder.mo
@@ -92,8 +93,8 @@
 /usr/local/share/locale/uk/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ur/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/ur_PK/LC_MESSAGES/asunder.mo
-/usr/local/share/locale/uz/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/uz@cyrillic/LC_MESSAGES/asunder.mo
+/usr/local/share/locale/uz/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/vi/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/wa/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/wo/LC_MESSAGES/asunder.mo
@@ -102,6 +103,5 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/asunder.mo
 /usr/local/share/locale/zu/LC_MESSAGES/asunder.mo
-/usr/local/share/applications/asunder.desktop
 /usr/local/share/pixmaps/asunder.png
 /usr/local/share/pixmaps/asunder.svg

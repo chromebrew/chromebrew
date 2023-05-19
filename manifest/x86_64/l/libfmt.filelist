@@ -1,9 +1,3 @@
-/usr/local/lib64/libfmt.so.9.0.0
-/usr/local/lib64/cmake/fmt/fmt-config.cmake
-/usr/local/lib64/cmake/fmt/fmt-config-version.cmake
-/usr/local/lib64/cmake/fmt/fmt-targets.cmake
-/usr/local/lib64/cmake/fmt/fmt-targets-release.cmake
-/usr/local/lib64/pkgconfig/fmt.pc
 /usr/local/include/fmt/args.h
 /usr/local/include/fmt/chrono.h
 /usr/local/include/fmt/color.h
@@ -17,5 +11,11 @@
 /usr/local/include/fmt/ranges.h
 /usr/local/include/fmt/std.h
 /usr/local/include/fmt/xchar.h
-/usr/local/lib64/libfmt.so.9
+/usr/local/lib64/cmake/fmt/fmt-config.cmake
+/usr/local/lib64/cmake/fmt/fmt-config-version.cmake
+/usr/local/lib64/cmake/fmt/fmt-targets.cmake
+/usr/local/lib64/cmake/fmt/fmt-targets-release.cmake
 /usr/local/lib64/libfmt.so
+/usr/local/lib64/libfmt.so.9
+/usr/local/lib64/libfmt.so.9.0.0
+/usr/local/lib64/pkgconfig/fmt.pc
