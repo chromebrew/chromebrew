@@ -1086,10 +1086,23 @@ def prepare_package(destdir)
       system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete"
     end
 
-    # compress manual files
-    compress_doc "#{CREW_DEST_PREFIX}/man"
-    compress_doc "#{CREW_DEST_PREFIX}/info"
-    compress_doc "#{CREW_DEST_PREFIX}/share/man"
+    # Compress manual files, and move errant files to the correct
+    # locations.
+    if File.exist?("#{CREW_DEST_PREFIX}/man")
+      puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
+      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
+      Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
+    end
+    if File.exist?("#{CREW_DEST_PREFIX}/info")
+      puts "Files in #{CREW_PREFIX}/info will be moved to #{CREW_PREFIX}/share/info.".orange
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/info/"
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/info/*"], "#{CREW_DEST_PREFIX}/share/info/"
+      Dir.rmdir "#{CREW_DEST_PREFIX}/info" if Dir.empty?("#{CREW_DEST_PREFIX}/info")
+    end
+    # Remove the "share/info/dir.*" file since it causes conflicts.
+    FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
+    compress_doc CREW_DEST_MAN_PREFIX.to_s
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # Allow postbuild to override the filelist contents
@@ -1098,9 +1111,9 @@ def prepare_package(destdir)
     # create file list
     system "find .#{CREW_PREFIX} -type f > ../filelist"
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
-    system 'cut -c2- ../filelist > filelist'
+    system 'cut -c2- ../filelist | sort -o filelist'
 
-    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH)
+    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH) && File.writable?(CREW_LOCAL_MANIFEST_PATH)
       FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
       FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
     end
@@ -1580,7 +1593,8 @@ end
 def build_package(pwd)
   abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
   abort 'It is not possible to build without source'.lightred unless @pkg.is_source?(@device[:architecture])
-  abort "Unable to locate CREW_LOCAL_MANIFEST_PATH.  Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
+  abort "Unable to locate CREW_LOCAL_MANIFEST_PATH. Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
+  abort "CREW_LOCAL_MANIFEST_PATH: #{CREW_LOCAL_MANIFEST_PATH} is not writable.".lightred unless File.writable?(CREW_LOCAL_MANIFEST_PATH)
 
   # download source codes and unpack it
   meta = download

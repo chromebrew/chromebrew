@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.33.8'
+CREW_VERSION = '1.33.9'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -74,9 +74,9 @@ if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
   when 'aarch64', 'armv7l'
-    CREW_KERNEL_VERSION = '4.14'
+    CREW_KERNEL_VERSION = '5.10'
   when 'x86_64'
-    CREW_KERNEL_VERSION = '4.14'
+    CREW_KERNEL_VERSION = '5.10'
   end
 else
   CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
