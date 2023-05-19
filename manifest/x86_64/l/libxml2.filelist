@@ -52,7 +52,7 @@
 /usr/local/lib64/libxml2.la
 /usr/local/lib64/libxml2.so
 /usr/local/lib64/libxml2.so.2
-/usr/local/lib64/libxml2.so.2.10.3
+/usr/local/lib64/libxml2.so.2.11.3
 /usr/local/lib64/pkgconfig/libxml-2.0.pc
 /usr/local/share/aclocal/libxml.m4
 /usr/local/share/doc/libxml2/examples/index.html
@@ -177,6 +177,6 @@
 /usr/local/share/gtk-doc/html/libxml2/right.png
 /usr/local/share/gtk-doc/html/libxml2/style.css
 /usr/local/share/gtk-doc/html/libxml2/up.png
-/usr/local/share/man/man1/xml2-config.1.gz
-/usr/local/share/man/man1/xmlcatalog.1.gz
-/usr/local/share/man/man1/xmllint.1.gz
+/usr/local/share/man/man1/xml2-config.1.zst
+/usr/local/share/man/man1/xmlcatalog.1.zst
+/usr/local/share/man/man1/xmllint.1.zst

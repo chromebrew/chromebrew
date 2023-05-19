@@ -3,23 +3,23 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.10.3'
+  version '2.11.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.3/libxml2-v2.10.3.tar.bz2'
-  source_sha256 '302bbb86400b8505bebfbf7b3d1986e9aa05073198979f258eed4be481ff5f83'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.3/libxml2-v2.11.3.tar.bz2'
+  source_sha256 '44b38be302a103c62f80e792478a505365693349a76ea6b98e9c68aab8eab9e0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_armv7l/libxml2-2.10.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_armv7l/libxml2-2.10.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_i686/libxml2-2.10.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.10.3_x86_64/libxml2-2.10.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.3_armv7l/libxml2-2.11.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.3_armv7l/libxml2-2.11.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.3_i686/libxml2-2.11.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.3_x86_64/libxml2-2.11.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dd632f61bf378aa089500a377e1192650e7ee22d373f09ee3be981a54db764be',
-     armv7l: 'dd632f61bf378aa089500a377e1192650e7ee22d373f09ee3be981a54db764be',
-       i686: '5a49faa80100a3a7d893ead1a324773c671550cb6647cab48660acec35dbfcde',
-     x86_64: 'a54015b9df27a83262c999d2e00946c928206900a4303ee0f6b3e44b46597d56'
+    aarch64: 'f9385326fbe519211d28026c79e9e0a01ab9909f0f0177e769c7684548154bab',
+     armv7l: 'f9385326fbe519211d28026c79e9e0a01ab9909f0f0177e769c7684548154bab',
+       i686: 'fabaabc7d32e9648b77f470c40bbf94a25a32df100d819f7de13b26eb35485be',
+     x86_64: '266475bea4c3f138f9d1e894b36cdf1cfafb38db6d69945f41c3bc1ac11f70d3'
   })
 
   depends_on 'gcc' # R
@@ -29,8 +29,6 @@ class Libxml2 < Package
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
 
-  no_patchelf
-
   def self.patch
     # Fix encoding.c:1961:31: error: ‘TRUE’ undeclared (first use in this function)
     system "for f in $(grep -rl 'TRUE)'); do sed -i 's,TRUE),true),g' $f; done"
@@ -38,9 +36,16 @@ class Libxml2 < Package
 
   def self.build
     # libxml2-python built in another package (py3_libxml2)
+    # system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+    #-DLIBXML2_WITH_ICU=ON \
+    #-DLIBXML2_WITH_DEBUG=OFF \
+    #-DLIBXML2_WITH_PYTHON=OFF \
+    #-Wno-dev \
+    #-G Ninja"
+    # system "#{CREW_NINJA} -C builddir"
+    # cmake depends upon libxml2...
     system "./autogen.sh \
       #{CREW_OPTIONS} \
-      #{CREW_ENV_OPTIONS} \
       --enable-shared \
       --enable-static \
       --with-pic \
@@ -58,10 +63,12 @@ class Libxml2 < Package
     # Check https://mail.gnome.org/archives/xml/2010-April/msg00010.html for details.
     system 'rm', 'test/ebcdic_566012.xml'
 
+    # system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir check"
     system 'make', 'check'
   end
 
   def self.install
+    # system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
