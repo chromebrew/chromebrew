@@ -16,10 +16,10 @@ class Icu4c < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icu4c/73.1_x86_64/icu4c-73.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5210c847d3309ce471c1bd28c489870a45e232b1753133db7fb55f1d14c2818e',
-     armv7l: '5210c847d3309ce471c1bd28c489870a45e232b1753133db7fb55f1d14c2818e',
+    aarch64: 'c7135c94dd51231686d4239d00da8fd6b1a902792ca66e32ef078eccc48093a8',
+     armv7l: 'c7135c94dd51231686d4239d00da8fd6b1a902792ca66e32ef078eccc48093a8',
        i686: '991de36f03221b8e667442a376ba2af261e732ec9231cffceae8693a5b307dad',
-     x86_64: 'd58e8780151086f32dbf946d4985d604de9b54ce751cb34471490a0eca932b98'
+     x86_64: 'c00ba9876a12e220bb1ef837e08930b7a44c8683b1d0b70f288f968f85a7b14c'
   })
 
   depends_on 'gcc' # R
@@ -33,19 +33,18 @@ class Icu4c < Package
         # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
         system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i config/mh-linux"
       end
-      system "./configure \
+      system "mold -run ./configure \
         #{CREW_OPTIONS} \
-        #{CREW_ENV_OPTIONS} \
         --enable-static \
         --enable-shared \
         --disable-samples \
         --disable-tests"
-      system 'mold -run make'
+      system 'make'
     end
   end
 
   @icuver = '73'
-  @oldicuver = %w[72]
+  @oldicuver = %w[72.1]
 
   def self.install
     FileUtils.cd('source') do
