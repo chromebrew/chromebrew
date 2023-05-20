@@ -21,7 +21,7 @@ class Webkit2gtk_4_1 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc10' => :build if %w[aarch64 armv7l x86_64].include? ARCH
+  depends_on 'gcc10' => :build
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
@@ -117,7 +117,7 @@ class Webkit2gtk_4_1 < Package
       # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
       @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
     end
-    @gcc_ver = '-10' if %w[aarch64 armv7l x86_64].include? ARCH
+    @gcc_ver = '-10'
     @new_gcc = <<~NEW_GCCEOF
       #!/bin/bash
       gcc#{@gcc_ver} #{@arch_flags} $@
