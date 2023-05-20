@@ -36,14 +36,6 @@ class Libxml2 < Package
 
   def self.build
     # libxml2-python built in another package (py3_libxml2)
-    # system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-    #-DLIBXML2_WITH_ICU=ON \
-    #-DLIBXML2_WITH_DEBUG=OFF \
-    #-DLIBXML2_WITH_PYTHON=OFF \
-    #-Wno-dev \
-    #-G Ninja"
-    # system "#{CREW_NINJA} -C builddir"
-    # cmake depends upon libxml2...
     system "./autogen.sh \
       #{CREW_OPTIONS} \
       --enable-shared \
@@ -63,12 +55,10 @@ class Libxml2 < Package
     # Check https://mail.gnome.org/archives/xml/2010-April/msg00010.html for details.
     system 'rm', 'test/ebcdic_566012.xml'
 
-    # system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir check"
     system 'make', 'check'
   end
 
   def self.install
-    # system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
