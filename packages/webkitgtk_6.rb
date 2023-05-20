@@ -164,6 +164,7 @@ class Webkitgtk_6 < Package
     @counter_max = 5
     loop do
       break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+
       puts "Make iteration #{@counter} of #{@counter_max}...".orange
 
       @counter += 1
