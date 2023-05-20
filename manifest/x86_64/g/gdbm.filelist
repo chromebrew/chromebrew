@@ -7,8 +7,7 @@
 /usr/local/lib64/libgdbm.so
 /usr/local/lib64/libgdbm.so.6
 /usr/local/lib64/libgdbm.so.6.0.0
-/usr/local/share/info/dir.gz
-/usr/local/share/info/gdbm.info.gz
+/usr/local/share/info/gdbm.info.zst
 /usr/local/share/locale/da/LC_MESSAGES/gdbm.mo
 /usr/local/share/locale/de/LC_MESSAGES/gdbm.mo
 /usr/local/share/locale/eo/LC_MESSAGES/gdbm.mo
@@ -23,7 +22,7 @@
 /usr/local/share/locale/sv/LC_MESSAGES/gdbm.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gdbm.mo
 /usr/local/share/locale/vi/LC_MESSAGES/gdbm.mo
-/usr/local/share/man/man1/gdbm_dump.1.gz
-/usr/local/share/man/man1/gdbm_load.1.gz
-/usr/local/share/man/man1/gdbmtool.1.gz
-/usr/local/share/man/man3/gdbm.3.gz
+/usr/local/share/man/man1/gdbm_dump.1.zst
+/usr/local/share/man/man1/gdbm_load.1.zst
+/usr/local/share/man/man1/gdbmtool.1.zst
+/usr/local/share/man/man3/gdbm.3.zst
