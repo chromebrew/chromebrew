@@ -133,6 +133,7 @@
 /usr/local/include/evolution-data-server/libebackend/e-backend-factory.h
 /usr/local/include/evolution-data-server/libebackend/e-backend.h
 /usr/local/include/evolution-data-server/libebackend/e-cache.h
+/usr/local/include/evolution-data-server/libebackend/e-cache-keys.h
 /usr/local/include/evolution-data-server/libebackend/e-cache-reaper.h
 /usr/local/include/evolution-data-server/libebackend/e-collection-backend-factory.h
 /usr/local/include/evolution-data-server/libebackend/e-collection-backend.h
@@ -154,6 +155,7 @@
 /usr/local/include/evolution-data-server/libebackend/e-webdav-collection-backend.h
 /usr/local/include/evolution-data-server/libebackend/libebackend.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-address-western.h
+/usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-autocleanups.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-enums.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-enumtypes.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-utils.h
@@ -164,6 +166,7 @@
 /usr/local/include/evolution-data-server/libebook-contacts/e-source-backend-summary-setup.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-vcard.h
 /usr/local/include/evolution-data-server/libebook-contacts/libebook-contacts.h
+/usr/local/include/evolution-data-server/libebook/e-book-autocleanups.h
 /usr/local/include/evolution-data-server/libebook/e-book-client-cursor.h
 /usr/local/include/evolution-data-server/libebook/e-book-client.h
 /usr/local/include/evolution-data-server/libebook/e-book-client-view.h
