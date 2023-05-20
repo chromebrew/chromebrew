@@ -16,7 +16,7 @@ class Jellyfin_media_player < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1_x86_64/jellyfin_media_player-1.9.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '8d3f5a1bbb68a3c1a641a8df45cb5e301ff92a38399afea3b18d176968b285af'
+    x86_64: '36c7847fbc29da687a10369e15819249788fdd72b134bf2850f86e7104d7ad93'
   })
 
   depends_on 'gcc' # R
@@ -60,7 +60,7 @@ class Jellyfin_media_player < Package
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     File.write 'jellyfinmediaplayer_env.d', <<~JELLYFIN_ENVD_EOF
       # QT_QPA_PLATFORM=wayland is unaccelerated and unusable.
-      alias jellyfinmediaplayer="QT_QPA_PLATFORM=eglfs jellyfinmediaplayer"
+      alias jmp="QT_QPA_PLATFORM=eglfs jellyfinmediaplayer"
     JELLYFIN_ENVD_EOF
     FileUtils.install 'jellyfinmediaplayer_env.d', "#{CREW_DEST_PREFIX}/etc/env.d/10-jellyfinmediaplayer", mode: 0o644
   end
