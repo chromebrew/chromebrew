@@ -160,11 +160,13 @@ class Webkit2gtk_4_1 < Package
           -DUSER_AGENT_BRANDING='Chromebrew'"
     end
     @counter = 1
+    @counter_max = 5
     loop do
-      break if system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      puts "Make iteration #{@counter} of #{@counter_max}...".orange
 
       @counter += 1
-      break if @counter > 20
+      break if @counter > @counter_max
     end
   end
 
