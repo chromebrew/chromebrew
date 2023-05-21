@@ -8,20 +8,20 @@ class Pipewire < Package
           elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
             '0.3.60'
           else
-            '0.3.69'
+            '0.3.71'
           end
   version @_ver
-  license 'LGPL-2.1+'
   compatibility 'all'
+  license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
   git_hashtag @_ver
 
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
     binary_url({
-     i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_i686/pipewire-0.3.29-chromeos-i686.tpxz'
+      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.29_i686/pipewire-0.3.29-chromeos-i686.tpxz'
     })
     binary_sha256({
-     i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
+      i686: '0dbeda58c4e1db7a180ebfb2b7bc3057cc6966927f4d5ee543953b734dfc4510'
     })
   elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
     binary_url({
@@ -36,14 +36,14 @@ class Pipewire < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.69_armv7l/pipewire-0.3.69-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.69_armv7l/pipewire-0.3.69-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.69_x86_64/pipewire-0.3.69-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.71_armv7l/pipewire-0.3.71-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.71_armv7l/pipewire-0.3.71-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.71_x86_64/pipewire-0.3.71-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '414a31116a60e69d5f045a2facd85937d3b5dccfad1f4dfce81c6dd913699304',
-       armv7l: '414a31116a60e69d5f045a2facd85937d3b5dccfad1f4dfce81c6dd913699304',
-       x86_64: 'f3a7d892a4357da083fcd30006bdf230fa72c0585fc67a18913b61e8f169d53c'
+      aarch64: 'c813945a0e27640e05ac58bbb4491e4cd345e7ccb4d5930917ae0a106617f269',
+       armv7l: 'c813945a0e27640e05ac58bbb4491e4cd345e7ccb4d5930917ae0a106617f269',
+       x86_64: '5056c498a704805f1d0b5abd28fc26a9e27f695651ab030d8f3adc83c2bb7259'
     })
   end
 
@@ -82,6 +82,7 @@ class Pipewire < Package
       -Dbluez5-backend-ofono=disabled \
       -Dbluez5=disabled \
       -Dexamples=disabled \
+      -Dtest=disabled \
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d \
       -Dv4l2=disabled \
       -Dvolume=auto \
@@ -92,5 +93,9 @@ class Pipewire < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    Dir.chdir("#{CREW_DEST_PREFIX}/include") do
+      FileUtils.ln_sf 'spa-0.2/spa', 'spa'
+      FileUtils.ln_sf 'pipewire-0.3/pipewire', 'pipewire'
+    end
   end
 end

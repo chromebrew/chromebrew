@@ -3,21 +3,21 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version '5.15.9-8415277'
+  version '5.15.9-2103f24'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag '84152777a48af444a902bbf4df8b38146171c20d'
+  git_hashtag '2103f2487f709dd9546c503820d9ad509e9a63b3'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-8415277_armv7l/qtbase-5.15.9-8415277-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-8415277_armv7l/qtbase-5.15.9-8415277-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-8415277_x86_64/qtbase-5.15.9-8415277-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-2103f24_armv7l/qtbase-5.15.9-2103f24-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-2103f24_armv7l/qtbase-5.15.9-2103f24-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-2103f24_x86_64/qtbase-5.15.9-2103f24-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e57671fa0d6a5abcdde8eb7c06a15be2cb810c687b29f3ef095e693bd18befce',
-     armv7l: 'e57671fa0d6a5abcdde8eb7c06a15be2cb810c687b29f3ef095e693bd18befce',
-     x86_64: 'c4c3860f30518cf8aebcc147e42814c44f8db2b862480c51d86f24754445c9aa'
+    aarch64: '36a47fed35f8d3170765e2de46d90617679c1509d6bac0cf5c9804de4a076951',
+     armv7l: '36a47fed35f8d3170765e2de46d90617679c1509d6bac0cf5c9804de4a076951',
+     x86_64: '6d9be19c42473ccb85bfac5613ccfd8a8ea891e5d7eabe4e058adade351def45'
   })
 
   depends_on 'alsa_plugins' => :build
@@ -62,23 +62,32 @@ class Qtbase < Package
   depends_on 'zstd' # R
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}/share/Qt-5",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '-nomake', 'examples',
-           '-nomake', 'tests',
-           '-verbose',
-           '-release',
-           '-opensource',
-           '-confirm-license',
-           '-inotify',
-           '-system-pcre',
-           '-system-zlib',
-           '-system-libpng',
-           '-system-libjpeg',
-           '-system-freetype'
-    system 'bin/qmake CONFIG+=fat-static-lto -- -redo'
-    system 'make'
+    system "mold -run ./configure \
+           --prefix=#{CREW_PREFIX}/share/Qt-5 \
+           --libdir=#{CREW_LIB_PREFIX} \
+           -nomake examples \
+           -nomake tests \
+           -verbose \
+           -release \
+           -opensource \
+           -confirm-license \
+           -inotify \
+           -system-pcre \
+           -system-zlib \
+           -system-libpng \
+           -system-libjpeg \
+           -system-freetype"
+    system 'mold -run bin/qmake CONFIG+=fat-static-lto -- -redo'
+    @counter = 1
+    @counter_max = 5
+    loop do
+      break if Kernel.system "make -j #{CREW_NPROC}"
+
+      puts "Make iteration #{@counter} of #{@counter_max}...".orange
+
+      @counter += 1
+      break if @counter > @counter_max
+    end
   end
 
   def self.install

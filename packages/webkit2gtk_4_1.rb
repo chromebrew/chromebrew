@@ -1,33 +1,27 @@
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.38.3'
+  version '2.40.1'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'all'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.38.3.tar.xz'
-  source_sha256 '41f001d1ed448c6936b394a9f20e4640eebf83a7f08262df28504f7410604a5a'
+  compatibility 'x86_64'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz'
+  source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.3_armv7l/webkit2gtk_4_1-2.38.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.3_armv7l/webkit2gtk_4_1-2.38.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.3_i686/webkit2gtk_4_1-2.38.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.38.3_x86_64/webkit2gtk_4_1-2.38.3-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.1_x86_64/webkit2gtk_4_1-2.40.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e8cb89f4b9af14a04f4ec01d3d8b43c4a2dee3da4a468d99729fbd0532b78de4',
-     armv7l: 'e8cb89f4b9af14a04f4ec01d3d8b43c4a2dee3da4a468d99729fbd0532b78de4',
-       i686: 'd5f26338fce98085a4e5638bac8f5b29fd73c092e1c9c9ae5be82e80f1f352c5',
-     x86_64: '915161e70db53e313b65f234733a5bda433e0fd192672062a1c737e7a345e2f4'
+    x86_64: '89020c648f7d9e4927999ac9528f2e0d9c34a45c4c206284a380bae1254971d1'
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo'
+  depends_on 'cairo' => :build
   # depends_on 'ccache' => :build
-  depends_on 'dav1d'
+  depends_on 'dav1d' => :build
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc10' => :build if %w[aarch64 armv7l i686].include? ARCH
+  depends_on 'gcc10' => :build
   depends_on 'gcc' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
@@ -40,17 +34,20 @@ class Webkit2gtk_4_1 < Package
   depends_on 'hyphen' # R
   depends_on 'icu4c' # R
   depends_on 'lcms' # R
+  depends_on 'libavif' => :build
   depends_on 'libavif' # R
+  depends_on 'libdrm' # R
+  depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
   depends_on 'libglvnd' # R
   depends_on 'libgpgerror' # R
   depends_on 'libjpeg' # R
+  depends_on 'libjxl' => :build
   depends_on 'libjxl' # R
   depends_on 'libnotify'
   depends_on 'libpng' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup'
-  depends_on 'libsoup2' # R
+  depends_on 'libsoup' # R
   depends_on 'libtasn1' # R
   depends_on 'libwebp' # R
   depends_on 'libwpe' # R
@@ -61,14 +58,15 @@ class Webkit2gtk_4_1 < Package
   depends_on 'libxrender' # R
   depends_on 'libxslt' # R
   depends_on 'libxt' # R
+  depends_on 'mesa' => :build
   depends_on 'mesa' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'sqlite' # R
+  depends_on 'unifdef' => :build
   depends_on 'valgrind' => :build
-  depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'
   depends_on 'wayland' # R
   depends_on 'woff2' # R
@@ -119,7 +117,7 @@ class Webkit2gtk_4_1 < Package
       # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
       @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
     end
-    @gcc_ver = '-10' if %w[aarch64 armv7l i686].include? ARCH
+    @gcc_ver = '-10'
     @new_gcc = <<~NEW_GCCEOF
       #!/bin/bash
       gcc#{@gcc_ver} #{@arch_flags} $@
@@ -136,38 +134,45 @@ class Webkit2gtk_4_1 < Package
   end
 
   def self.build
-    # This builds webkit2gtk4 (which uses gtk3)
-    FileUtils.mkdir_p 'builddir'
+    # This builds webkit2gtk4_1 (which uses gtk3, but not libsoup2)
     @workdir = `pwd`.chomp
-    Dir.chdir 'builddir' do
-      # Bubblewrap sandbox breaks on epiphany with
-      # bwrap: Can't make symlink at /var/run: File exists
-      # LDFLAGS from debian: -Wl,--no-keep-memory
-      unless File.file?('build.ninja')
-        @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
-        system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' cmake \
-            -G Ninja \
-            #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
-            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-            -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
-            -DENABLE_DOCUMENTATION=OFF \
-            -DENABLE_JOURNALD_LOG=OFF \
-            -DENABLE_GAMEPAD=OFF \
-            -DENABLE_MINIBROWSER=ON \
-            -DUSE_SYSTEM_MALLOC=ON \
-            -DPORT=GTK \
-            -DUSE_GTK4=OFF \
-            -DUSE_SOUP2=OFF \
-            -DPYTHON_EXECUTABLE=`which python` \
-            -DUSER_AGENT_BRANDING='Chromebrew' \
-            .."
-      end
-      system "ninja -j #{CREW_NPROC} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(2).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(3).ceil} || ninja -j #{CREW_NPROC.to_f.fdiv(4).ceil}"
+    # Bubblewrap sandbox breaks on epiphany with
+    # bwrap: Can't make symlink at /var/run: File exists
+    # LDFLAGS from debian: -Wl,--no-keep-memory
+    unless File.file?('build.ninja')
+      @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
+      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
+          cmake -B builddir -G Ninja \
+          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+          -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
+          -DENABLE_DOCUMENTATION=OFF \
+          -DENABLE_GLES2=OFF \
+          -DENABLE_JOURNALD_LOG=OFF \
+          -DENABLE_GAMEPAD=OFF \
+          -DENABLE_MINIBROWSER=ON \
+          -DUSE_SYSTEM_MALLOC=ON \
+          -DPORT=GTK \
+          -DUSE_GTK4=OFF \
+          -DUSE_JPEGXL=ON \
+          -DUSE_SOUP2=OFF \
+          -DPYTHON_EXECUTABLE=`which python` \
+          -DUSER_AGENT_BRANDING='Chromebrew'"
+    end
+    @counter = 1
+    @counter_max = 5
+    loop do
+      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+
+      puts "Make iteration #{@counter} of #{@counter_max}...".orange
+
+      @counter += 1
+      break if @counter > @counter_max
     end
   end
 
   def self.install
-    system 'DESTDIR=/usr/local/tmp/crew/dest ninja -C builddir install'
+    system "DESTDIR=/usr/local/tmp/crew/dest #{CREW_NINJA} -C builddir install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.1"
   end
 end

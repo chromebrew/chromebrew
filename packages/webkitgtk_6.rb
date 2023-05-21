@@ -1,4 +1,4 @@
-class Webkit2gtk_4 < Package
+class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
   version '2.40.1'
@@ -8,10 +8,10 @@ class Webkit2gtk_4 < Package
   source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.40.1_x86_64/webkit2gtk_4-2.40.1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.1_x86_64/webkitgtk_6-2.40.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '40a29011b49180f39a1b5cc759791ef73e936054d99f05c8fed7d028a5d32813'
+    x86_64: '6f1f6309d27d15ba2040a6f0753c9c36e40ae213f9324dcfc4486e613c671bf7'
   })
 
   depends_on 'at_spi2_core' # R
@@ -27,8 +27,10 @@ class Webkit2gtk_4 < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hyphen' # R
@@ -133,7 +135,7 @@ class Webkit2gtk_4 < Package
   end
 
   def self.build
-    # This builds webkit2gtk4 (which uses gtk3 and libsoup2)
+    # This builds webkit2gtk5 (which uses gtk4, but not libsoup2)
     @workdir = `pwd`.chomp
     # Bubblewrap sandbox breaks on epiphany with
     # bwrap: Can't make symlink at /var/run: File exists
@@ -141,22 +143,22 @@ class Webkit2gtk_4 < Package
     unless File.file?('build.ninja')
       @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
       system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
-            cmake -B builddir -G Ninja \
-            #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
-            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-            -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
-            -DENABLE_DOCUMENTATION=OFF \
-            -DENABLE_GLES2=OFF \
-            -DENABLE_JOURNALD_LOG=OFF \
-            -DENABLE_GAMEPAD=OFF \
-            -DENABLE_MINIBROWSER=ON \
-            -DUSE_SYSTEM_MALLOC=ON \
-            -DPORT=GTK \
-            -DUSE_JPEGXL=ON \
-            -DUSE_GTK4=OFF \
-            -DUSE_SOUP2=ON \
-            -DPYTHON_EXECUTABLE=`which python` \
-            -DUSER_AGENT_BRANDING='Chromebrew'"
+          cmake -B builddir -G Ninja \
+          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+          -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
+          -DENABLE_DOCUMENTATION=OFF \
+          -DENABLE_GLES2=OFF \
+          -DENABLE_JOURNALD_LOG=OFF \
+          -DENABLE_GAMEPAD=OFF \
+          -DENABLE_MINIBROWSER=ON \
+          -DUSE_SYSTEM_MALLOC=ON \
+          -DPORT=GTK \
+          -DUSE_GTK4=ON \
+          -DUSE_JPEGXL=ON \
+          -DUSE_SOUP2=OFF \
+          -DPYTHON_EXECUTABLE=`which python` \
+          -DUSER_AGENT_BRANDING='Chromebrew'"
     end
     @counter = 1
     @counter_max = 5
@@ -171,7 +173,7 @@ class Webkit2gtk_4 < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_4.0"
+    system "DESTDIR=/usr/local/tmp/crew/dest #{CREW_NINJA} -C builddir install"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_6"
   end
 end
