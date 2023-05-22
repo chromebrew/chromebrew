@@ -3,23 +3,23 @@ require 'package'
 class Doxygen < Package
   description 'Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.'
   homepage 'http://www.doxygen.nl/'
-  version '1.9.5'
+  version '1.9.7'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/doxygen/doxygen/archive/Release_1_9_5.tar.gz'
-  source_sha256 '1c5c9cd4445f694e43f089c17529caae6fe889b732fb0b145211025a1fcda1bb'
+  source_url 'https://github.com/doxygen/doxygen/archive/Release_1_9_7.tar.gz'
+  source_sha256 '691777992a7240ed1f822a5c2ff2c4273b57c1cf9fc143553d87f91a0c5970ee'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.5_armv7l/doxygen-1.9.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.5_armv7l/doxygen-1.9.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.5_i686/doxygen-1.9.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.5_x86_64/doxygen-1.9.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.7_armv7l/doxygen-1.9.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.7_armv7l/doxygen-1.9.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.7_i686/doxygen-1.9.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.7_x86_64/doxygen-1.9.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '29e7040a1a35caf72ed743594a2f4f41e9e20ca240865be676d1c3b6a25368da',
-     armv7l: '29e7040a1a35caf72ed743594a2f4f41e9e20ca240865be676d1c3b6a25368da',
-       i686: '3ed03d545754891a70844fc88b6cbcb74123262dd065d4e8d04ed9ba78d2d4cf',
-     x86_64: 'f4552b1b37b871beed3c94659a72da80ceb20e802e1afc1c78eeab6bab29b7e0'
+    aarch64: '6d4833b7b1a11da5e296ccc42b1e1160c0f82a352e530a0d5fb089d2579e1c4c',
+     armv7l: '6d4833b7b1a11da5e296ccc42b1e1160c0f82a352e530a0d5fb089d2579e1c4c',
+       i686: '7e361e8ee99288f285e6fe5eab63bb1319f86b465471ee39981f899920a46fe3',
+     x86_64: 'e4e7a0f6ffd124d55edd4e0a8534604d4601016ffdabe8531fba1c39be38066f'
   })
 
   depends_on 'python3' => :build
