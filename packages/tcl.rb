@@ -3,41 +3,37 @@ require 'package'
 class Tcl < Package
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  @_ver = '8.6.11'
+  @_ver = '8.6.13'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version "#{@_ver}-1"
+  version @_ver
   license 'tcltk'
   compatibility 'all'
   source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tcl#{@_ver}-src.tar.gz"
-  source_sha256 '8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258'
+  source_sha256 '43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_armv7l/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_armv7l/tcl-8.6.11-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_i686/tcl-8.6.11-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.11-1_x86_64/tcl-8.6.11-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_armv7l/tcl-8.6.13-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_armv7l/tcl-8.6.13-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_i686/tcl-8.6.13-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_x86_64/tcl-8.6.13-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '82ae2b101306c3a450a81a44e3b9d5e05b2a5f6bcfaba6bbe9907a26b04914aa',
-     armv7l: '82ae2b101306c3a450a81a44e3b9d5e05b2a5f6bcfaba6bbe9907a26b04914aa',
-       i686: '52dbbca5c17fc69ced4ae740c00f5c992dd0a7495753c9c32c2ffe6a0ce3f052',
-     x86_64: '2a7b7348a8b4c83b3bd5b6e6d584911ebba10db0b1485f974888ec4f5734f27f'
+    aarch64: '2f64a7d1350b05414f52a3e12b5cf2d7d0396619c83810bea71eed443064b83a',
+     armv7l: '2f64a7d1350b05414f52a3e12b5cf2d7d0396619c83810bea71eed443064b83a',
+       i686: 'd36ca1f8dd507f12e5c2d43080bb8b5bd0e4b161efb1f3949fa4e46fd5bf6a46',
+     x86_64: '02b7cc2f6a94226a4400348d62933eb4b297aa52380a4d5303ce865d34a8d639'
   })
+
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
+
+  no_env_options
 
   # tk breaks if tcl is built with lto
   def self.build
     FileUtils.chdir('unix') do
-      if ARCH == 'x86_64'
-        system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE' \
-      ./configure #{CREW_OPTIONS} --enable-64bit"
-      else
-        system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE' \
-      ./configure #{CREW_OPTIONS} --disable-64bit"
-      end
+      @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
+      system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} --#{@bit64}-64bit"
       system 'make'
     end
   end
