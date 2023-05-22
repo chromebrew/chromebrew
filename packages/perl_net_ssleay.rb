@@ -10,12 +10,16 @@ class Perl_net_ssleay < Package
   source_sha256 '47c2f2b300f2e7162d71d699f633dd6a35b0625a00cbda8c50ac01144a9396a9'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.36_i686/perl_net_ssleay-1.92-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.36_x86_64/perl_net_ssleay-1.92-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.36_armv7l/perl_net_ssleay-1.92-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.36_armv7l/perl_net_ssleay-1.92-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.36_i686/perl_net_ssleay-1.92-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.36_x86_64/perl_net_ssleay-1.92-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'ac5f4c5f7258acb1d99ae15af602cb446259de5f710ac4b1781be83a4ae51ea8',
-  x86_64: 'b20b79a93ff93f258738d83cf16777194d704a1abb27480e4c2bd15b85af9515'
+    aarch64: '73e4785fea11772bfe6f5b461263c593b866efb6ce1b2bce19dc836cf5fd6ee2',
+     armv7l: '73e4785fea11772bfe6f5b461263c593b866efb6ce1b2bce19dc836cf5fd6ee2',
+       i686: '265e1e190b232d1c7155ea8d2d727eb9cebb570b002decc11ceff82e79d48fcb',
+     x86_64: '7641efe43aa6c31f3ea6416c13671cf5dd891991588d67e27a0ee02812ba38c8'
   })
 
   depends_on 'glibc' # R
