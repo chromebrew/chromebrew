@@ -18,8 +18,8 @@ class Perl_xml_sax < Package
   x86_64: 'a5c4f62598b738a7846fbb86d3db1ba3ef67fe30cfb34fea90b2d1513794402e'
   })
 
-  depends_on 'perl_xml_sax_base'
-  depends_on 'perl_xml_namespacesupport'
+  depends_on 'perl_xml_sax_base' => :build
+  depends_on 'perl_xml_namespacesupport' => :build
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

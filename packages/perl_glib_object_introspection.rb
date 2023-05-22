@@ -24,7 +24,7 @@ class Perl_glib_object_introspection < Package
 
   depends_on 'cairo'
   depends_on 'gobject_introspection'
-  depends_on 'perl_glib'
+  depends_on 'perl_glib' => :build
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

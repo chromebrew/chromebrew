@@ -22,7 +22,7 @@ class Perl_xml_simple < Package
      x86_64: '3e412a9ffcccf45908cf651af554ba7cc89576753c0e9930d3f6f86cd18545c1'
   })
 
-  depends_on 'perl_xml_parser'
+  depends_on 'perl_xml_parser' => :build
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

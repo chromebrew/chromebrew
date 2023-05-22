@@ -22,7 +22,7 @@ class Perl_text_wrapi18n < Package
      x86_64: 'e5ff4381cfb80b6d4729e59a41e56b48130506c8beddb46a4466447ea8d1f6c2'
   })
 
-  depends_on 'perl_text_charwidth'
+  depends_on 'perl_text_charwidth' => :build
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

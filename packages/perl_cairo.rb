@@ -10,8 +10,8 @@ class Perl_cairo < Package
   source_sha256 '8219736e401c2311da5f515775de43fd87e6384b504da36a192f2b217643077f'
 
   depends_on 'cairo'
-  depends_on 'perl_extutils_depends'
-  depends_on 'perl_extutils_pkgconfig'
+  depends_on 'perl_extutils_depends' => :build
+  depends_on 'perl_extutils_pkgconfig' => :build
 
   no_compile_needed
 

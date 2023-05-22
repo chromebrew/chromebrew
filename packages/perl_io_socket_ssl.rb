@@ -22,8 +22,8 @@ class Perl_io_socket_ssl < Package
      x86_64: 'c5bb85cb8cf6a216f6ae8acdaf16f083c799eb2c528c3468d80644a99d3ef9af'
   })
 
-  depends_on 'perl_net_ssleay'
-  depends_on 'perl_mozilla_ca'
+  depends_on 'perl_net_ssleay' => :build
+  depends_on 'perl_mozilla_ca' => :build
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

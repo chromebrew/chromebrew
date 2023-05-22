@@ -22,7 +22,7 @@ class Perl_sgmls < Package
      x86_64: '415e030d98d8af9d7afbafc97027e107fb1f3489a44c8615697694379cc79adf'
   })
 
-  depends_on 'perl_module_build'
+  depends_on 'perl_module_build' => :build
 
   def self.patch
     # For some reason this file doesn't have the proper permissions in the tarball
