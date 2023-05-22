@@ -10,16 +10,16 @@ class Perl_app_cpanminus < Package
   source_sha256 '3e8c9d9b44a7348f9acc917163dbfc15bd5ea72501492cea3a35b346440ff862'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_armv7l/perl_app_cpanminus-1.7045-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_armv7l/perl_app_cpanminus-1.7045-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_i686/perl_app_cpanminus-1.7045-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_x86_64/perl_app_cpanminus-1.7045-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.36_armv7l/perl_app_cpanminus-1.7046-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.36_armv7l/perl_app_cpanminus-1.7046-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.36_i686/perl_app_cpanminus-1.7046-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.36_x86_64/perl_app_cpanminus-1.7046-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '688d1f8c904ef638932f871b8364492ae6d487e0ce1b0a3357eec9749555dc66',
-     armv7l: '688d1f8c904ef638932f871b8364492ae6d487e0ce1b0a3357eec9749555dc66',
-       i686: 'c4242cf166543fc1bca251e32346c00f6c2035f8e4108a010dc8485e2e6de461',
-     x86_64: 'f6448d53166638b53d376d4cd5358acfd65de7da839313d81234618abf56347e'
+    aarch64: 'ab34b9201aa1afbe9c3780559be9a45fc1c5e790024556b057a153c227854b0c',
+     armv7l: 'ab34b9201aa1afbe9c3780559be9a45fc1c5e790024556b057a153c227854b0c',
+       i686: '1270c228ef305d754a8a7bf91aa48a4a4fb0ebc497bba616a9f71c30582d59cc',
+     x86_64: '701d2656d770acff0e83b6a4067700c9ebbfa44052ff15f7a74f8ffab7b6f448'
   })
 
   def self.prebuild

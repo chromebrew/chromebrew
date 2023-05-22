@@ -10,16 +10,16 @@ class Perl_date_manip < Package
   source_sha256 '6bd9cb47e82ba91fdba4022ef358149d81e8453f52ca54f49faac2696210c479'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_armv7l/perl_date_manip-6.86-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_armv7l/perl_date_manip-6.86-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_i686/perl_date_manip-6.86-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.86_x86_64/perl_date_manip-6.86-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_armv7l/perl_date_manip-6.91-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_armv7l/perl_date_manip-6.91-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_i686/perl_date_manip-6.91-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_manip/6.91-perl5.36_x86_64/perl_date_manip-6.91-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6c728a87e7326bac9ce2c24941226395918d4547c50c4fbf65b0c2d85c0924a8',
-     armv7l: '6c728a87e7326bac9ce2c24941226395918d4547c50c4fbf65b0c2d85c0924a8',
-       i686: '76657f3f2cc037f83597b4ca2d01e8281b86b886365bd12ff2d824323f21fab9',
-     x86_64: '12f9ce224833afc565ab0818e6809752d88860f2b3d48a66ea60ab65d62f3e33'
+    aarch64: 'bb494888bca9031449a0f01676e9f3e091d11a92e6a59d69ce594d1f93ef1469',
+     armv7l: 'bb494888bca9031449a0f01676e9f3e091d11a92e6a59d69ce594d1f93ef1469',
+       i686: '8641f7ec4d130d254c81c6d2401cdd1a945a3e3a5adf06684c737f5d6c956df2',
+     x86_64: '415754d100f572be59a2fb0225a8941fc864045e39a7c363c5a0641121b1e187'
   })
 
   def self.prebuild

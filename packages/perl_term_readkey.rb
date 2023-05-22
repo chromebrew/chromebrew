@@ -10,17 +10,15 @@ class Perl_term_readkey < Package
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-2_armv7l/perl_term_readkey-2.38-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-2_armv7l/perl_term_readkey-2.38-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-2_i686/perl_term_readkey-2.38-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-2_x86_64/perl_term_readkey-2.38-2-chromeos-x86_64.tar.zst'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_i686/perl_term_readkey-2.38-perl5.36-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_x86_64/perl_term_readkey-2.38-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '41103c448aa3ea3f160fe01189a398a5fd4459d8543caec8ab29a0a01fa444e1',
-     armv7l: '41103c448aa3ea3f160fe01189a398a5fd4459d8543caec8ab29a0a01fa444e1',
-       i686: 'bc2946c9827d4d986c2fddb906545e2a100540b2548652ba701179ed7052f3ec',
-     x86_64: '7aa01f6ee9583f44efdf9fa3ffb9b9defbac3e52082f97d72acc1fc2bb7bd6a9'
+    i686: 'ddaec2057ef5f4282dc7fe69115f462f051083b80340a5ea42baeab30a07f7a2',
+  x86_64: 'f29c2299108b54a7d66dd0eeb0a9ea527ba49907e3eb6eb3c7591fae940b4b0f'
   })
+
+  depends_on 'glibc' # R
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

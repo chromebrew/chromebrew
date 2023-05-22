@@ -10,17 +10,15 @@ class Perl_unicode_linebreak < Package
   git_hashtag 'Unicode-LineBreak-2019.001'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-2_armv7l/perl_unicode_linebreak-2019.001-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-2_armv7l/perl_unicode_linebreak-2019.001-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-2_i686/perl_unicode_linebreak-2019.001-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-2_x86_64/perl_unicode_linebreak-2019.001-2-chromeos-x86_64.tar.zst'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_i686/perl_unicode_linebreak-2019.001-perl5.36-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_x86_64/perl_unicode_linebreak-2019.001-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1f71d4967b901d3963686dc939a741fdb400097c09df8dc549a6cd41b6517843',
-     armv7l: '1f71d4967b901d3963686dc939a741fdb400097c09df8dc549a6cd41b6517843',
-       i686: '88fd6c7ba13998040d725c83befef32e63e6047c22a93dba099fdaaa2864e463',
-     x86_64: '7cee8353db2d0da6fc91915f6be07e77fe4746f3ab60e0e145c46cdf52150b75'
+    i686: 'c9c65c9b12bb61735dcf0c771fafef3560847c50d05d2a1350540e7be59c078b',
+  x86_64: 'a1a6f8ea2a00e25e05d88eea93055061b3774838ff488b6622ce3e99d93e6ab9'
   })
+
+  depends_on 'glibc' # R
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

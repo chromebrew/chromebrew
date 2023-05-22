@@ -36,7 +36,7 @@
 /usr/local/share/doc/stow/manual-split/Types-And-Syntax-Of-Ignore-Lists.html
 /usr/local/share/doc/stow/README.md
 /usr/local/share/doc/stow/version.texi
-/usr/local/share/info/stow.info.gz
-/usr/local/share/man/man8/stow.8.gz
+/usr/local/share/info/stow.info.zst
+/usr/local/share/man/man8/stow.8.zst
 /usr/local/share/perl5/vendor_perl/Stow.pm
 /usr/local/share/perl5/vendor_perl/Stow/Util.pm
