@@ -6,5 +6,5 @@
 /usr/local/include/lua.hpp
 /usr/local/include/lualib.h
 /usr/local/lib/liblua.a
-/usr/local/share/man/man1/lua.1.gz
-/usr/local/share/man/man1/luac.1.gz
+/usr/local/share/man/man1/lua.1.zst
+/usr/local/share/man/man1/luac.1.zst
