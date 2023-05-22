@@ -27,5 +27,11 @@ class Perl_extutils_depends < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    @perl_conflicts = %w[
+      Data::Dumper
+    ]
+    @perl_conflicts.each do |conflict|
+      FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3", "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}-#{name}.3"
+    end
   end
 end

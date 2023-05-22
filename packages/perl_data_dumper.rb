@@ -22,6 +22,11 @@ class Perl_data_dumper < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Data::Dumper.3", "#{CREW_DEST_MAN_PREFIX}/man3/Data::Dumper-perl_data_dumper.3"
+    @perl_conflicts = %w[
+      Data::Dumper
+    ]
+    @perl_conflicts.each do |conflict|
+      FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3", "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}-#{name}.3"
+    end
   end
 end
