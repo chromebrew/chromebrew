@@ -26,7 +26,10 @@ class Perl_data_dumper < Package
       Data::Dumper
     ]
     @perl_conflicts.each do |conflict|
-      FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3", "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}-#{name}.3"
+      if File.exist?("#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3")
+        FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3",
+                     "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}-#{name}.3"
+      end
     end
   end
 end
