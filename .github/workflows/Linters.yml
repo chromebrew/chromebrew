@@ -11,16 +11,16 @@ jobs:
         with:
           fetch-depth: 0
       - name: Install ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@v1.150.0
         with:
-          ruby-version: 3.1
+          ruby-version: 3.2.2
       - name: Install linters
         run: |
           gem install mdl yaml-lint
           sudo apt install shellcheck -y
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v33
+        uses: tj-actions/changed-files@v35
       - name: Syntax check
         run: |
           ruby=
@@ -62,7 +62,7 @@ jobs:
           echo "ruby=$ruby" >> $GITHUB_ENV
       - name: Rubocop
         if: env.ruby
-        uses: Freshly/Octocop@v0.0.2
+        uses: satmandu/Octocop@v0.0.3
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
