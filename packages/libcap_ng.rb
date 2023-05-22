@@ -3,27 +3,28 @@ require 'package'
 class Libcap_ng < Package
   description 'The libcap-ng library is intended to make programming with posix capabilities much easier than the traditional libcap library.'
   homepage 'https://people.redhat.com/sgrubb/libcap-ng'
-  version '0.8.2'
+  version '0.8.4-5d3aea2-py3.11'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/stevegrubb/libcap-ng.git'
-  git_hashtag "v#{version}"
+  git_hashtag "5d3aea2d098ea222fb35a0be75adeed40e2e96d3"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.2_armv7l/libcap_ng-0.8.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.2_armv7l/libcap_ng-0.8.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.2_i686/libcap_ng-0.8.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.2_x86_64/libcap_ng-0.8.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_armv7l/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_armv7l/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-py3.11-5d3aea2_i686/libcap_ng-0.8.4-py3.11-5d3aea2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_x86_64/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '340c58b5a3d0225fd783c27ef82544640add2dd0f268a58185fb76b938226a48',
-     armv7l: '340c58b5a3d0225fd783c27ef82544640add2dd0f268a58185fb76b938226a48',
-       i686: '9bc669a2810c2b52faacb62f090d0291393782dba241f0b05bf96cfacfd8acde',
-     x86_64: '4b8cba2423a776d025e888dfd0e42ad9b9ce9402576271529fc89b5abb33a193'
+    aarch64: '151e957f7f2e69fc7522ff1b38147ba8972f3bce7a9faa0aa6feb8c059010c76',
+     armv7l: '151e957f7f2e69fc7522ff1b38147ba8972f3bce7a9faa0aa6feb8c059010c76',
+       i686: '04d91c8a9be68946b357e6c6970bc9b253888a09bcd285c1d98ffe28a3e4cfd7',
+     x86_64: '3c7a9b520cf2d63fa5722229e44f86287bd0081d18d0561009ef1cb771783857'
   })
 
   depends_on 'glibc' # R
   depends_on 'python3' => :build
+  depends_on 'swig' => :build
 
   def self.patch
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' utils/captest.c"
@@ -32,12 +33,14 @@ class Libcap_ng < Package
   def self.build
     system './autogen.sh'
     system 'filefix'
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS} \
+      --with-capability_header=#{CREW_PREFIX}/include/linux/capability.h"
     system 'make'
   end
 
   def self.check
-    system 'make', 'check'
+    # Doesn't work if kernel doesn't match headers.
+    # system 'make', 'check'
   end
 
   def self.install
