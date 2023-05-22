@@ -10,12 +10,16 @@ class Perl_text_csv < Package
   source_sha256 '84120de3e10489ea8fbbb96411a340c32cafbe5cdff7dd9576b207081baa9d24'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.36_i686/perl_text_csv-2.02-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.36_x86_64/perl_text_csv-2.02-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.36_armv7l/perl_text_csv-2.02-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.36_armv7l/perl_text_csv-2.02-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.36_i686/perl_text_csv-2.02-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.36_x86_64/perl_text_csv-2.02-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '8428258149269a1bf6079bb9cf0f5731c71ee83fc38a6a708351559728b642f9',
-  x86_64: 'd7563c2942c6f0303f916fec70d8468f3b8436a50943bd06eabfb6216d1a3ea5'
+    aarch64: 'b3791f8fd11680d25b2071392eb622ba25c1734ad3e8763de0838ffe884760b6',
+     armv7l: 'b3791f8fd11680d25b2071392eb622ba25c1734ad3e8763de0838ffe884760b6',
+       i686: 'a3c419980f73e6f9a1c62b20124a1d0accd765ed464646e38d8e1e186ea26271',
+     x86_64: 'b25e40e39bec7d8f4eafec508f5a802f111de72a187e5668d531a507e7a49809'
   })
 
   no_compile_needed

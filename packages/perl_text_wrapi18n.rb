@@ -10,12 +10,16 @@ class Perl_text_wrapi18n < Package
   source_sha256 '4bd29a17f0c2c792d12c1005b3c276f2ab0fae39c00859ae1741d7941846a488'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-perl5.36_i686/perl_text_wrapi18n-0.06-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-perl5.36_x86_64/perl_text_wrapi18n-0.06-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-perl5.36_armv7l/perl_text_wrapi18n-0.06-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-perl5.36_armv7l/perl_text_wrapi18n-0.06-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-perl5.36_i686/perl_text_wrapi18n-0.06-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_wrapi18n/0.06-perl5.36_x86_64/perl_text_wrapi18n-0.06-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '148dd4536d42b9c4795f6a9908bd4302aadbd8cbc047129416b1b19599dc4ae0',
-  x86_64: '77b27d44fd628031c4e917e22be90a2200b48ef4035c0a22f6b122de76893790'
+    aarch64: 'b750c02e991b11e69a63671988a0ede7413f48cbd6281caaddf314a107f6b0a2',
+     armv7l: 'b750c02e991b11e69a63671988a0ede7413f48cbd6281caaddf314a107f6b0a2',
+       i686: '71693e5d5b19237d7936dd3ae4438a1e078248adcc8963f048ccb603c4ca2492',
+     x86_64: '7bec9e612011701dcdd66d90dd39c68075d95bfc82a89c1bc768293d9b5bd661'
   })
 
   depends_on 'perl_text_charwidth' => :build

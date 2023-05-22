@@ -10,12 +10,16 @@ class Perl_sgmls < Package
   source_sha256 '550c9245291c8df2242f7e88f7921a0f636c7eec92c644418e7d89cfea70b2bd'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_i686/perl_sgmls-1.1-perl-5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_x86_64/perl_sgmls-1.1-perl-5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_armv7l/perl_sgmls-1.1-perl-5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_armv7l/perl_sgmls-1.1-perl-5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_i686/perl_sgmls-1.1-perl-5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_sgmls/1.1-perl-5.36_x86_64/perl_sgmls-1.1-perl-5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '0e3384c54492b0cc504637e60f6aab43f0831fe02e811880b2e3e5613026031d',
-  x86_64: 'f74c528789d0d368af0aa4ee8b025ae7242f7bcf6ab476aa44d371eadac9c439'
+    aarch64: 'c18668defa473525aea779db1eb182554ec26d8d2f4203c4c4cc28cc673e41c8',
+     armv7l: 'c18668defa473525aea779db1eb182554ec26d8d2f4203c4c4cc28cc673e41c8',
+       i686: '7035942646548233a1e7471f26ded22199fef4623182508d00e93683eb781f5d',
+     x86_64: '65c2d87a8ce93e0ffc0e035a7dffa474a28f3fa6ca8fac98bf1384e9252c150a'
   })
 
   depends_on 'perl_module_build' => :build

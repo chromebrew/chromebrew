@@ -10,13 +10,19 @@ class Perl_text_charwidth < Package
   source_sha256 'abded5f4fdd9338e89fd2f1d8271c44989dae5bf50aece41b6179d8e230704f8'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_i686/perl_text_charwidth-0.04-perl-5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_x86_64/perl_text_charwidth-0.04-perl-5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_armv7l/perl_text_charwidth-0.04-perl-5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_armv7l/perl_text_charwidth-0.04-perl-5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_i686/perl_text_charwidth-0.04-perl-5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_charwidth/0.04-perl-5.36_x86_64/perl_text_charwidth-0.04-perl-5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'a0dd49e8edbc26e54f34fc3d57130a6eea0ebff73a668221e05ed8e8cec489e6',
-  x86_64: 'd21101abb3d966bea235fd05a4b96da73585bcd7f35fcbe098946f84195227c4'
+    aarch64: '43b5c99fd673e7ac47a11516367505afb89c022b9388706e19d54517436ea7bc',
+     armv7l: '43b5c99fd673e7ac47a11516367505afb89c022b9388706e19d54517436ea7bc',
+       i686: 'fd86eeb4a6a524e4fe2314fdc4c5e4f454538485526aad1751cc5e175046a528',
+     x86_64: '67be1d93589b122d905c9685378fb95eaf5403ac80472481f1baa826c0375571'
   })
+
+  depends_on 'glibc' # R
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

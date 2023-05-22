@@ -10,12 +10,16 @@ class Perl_unicode_linebreak < Package
   git_hashtag 'Unicode-LineBreak-2019.001'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_i686/perl_unicode_linebreak-2019.001-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_x86_64/perl_unicode_linebreak-2019.001-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_armv7l/perl_unicode_linebreak-2019.001-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_armv7l/perl_unicode_linebreak-2019.001-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_i686/perl_unicode_linebreak-2019.001-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_linebreak/2019.001-perl5.36_x86_64/perl_unicode_linebreak-2019.001-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'c9c65c9b12bb61735dcf0c771fafef3560847c50d05d2a1350540e7be59c078b',
-  x86_64: 'a1a6f8ea2a00e25e05d88eea93055061b3774838ff488b6622ce3e99d93e6ab9'
+    aarch64: 'ddf06319525408d46d08bf364c6d4f18fd103af8080cf0f2cfacbca208d71508',
+     armv7l: 'ddf06319525408d46d08bf364c6d4f18fd103af8080cf0f2cfacbca208d71508',
+       i686: '34f186375c3431108966f528a6560e9f25386cec190209d389643a14a1cbf2a6',
+     x86_64: '36a7895dfccedf012de2c6a07330b6d09568fb7183e004818d4f7945d3c00c09'
   })
 
   depends_on 'glibc' # R

@@ -10,12 +10,16 @@ class Perl_term_readkey < Package
   source_sha256 '5a645878dc570ac33661581fbb090ff24ebce17d43ea53fd22e105a856a47290'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_i686/perl_term_readkey-2.38-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_x86_64/perl_term_readkey-2.38-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_armv7l/perl_term_readkey-2.38-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_armv7l/perl_term_readkey-2.38-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_i686/perl_term_readkey-2.38-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_term_readkey/2.38-perl5.36_x86_64/perl_term_readkey-2.38-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: 'ddaec2057ef5f4282dc7fe69115f462f051083b80340a5ea42baeab30a07f7a2',
-  x86_64: 'f29c2299108b54a7d66dd0eeb0a9ea527ba49907e3eb6eb3c7591fae940b4b0f'
+    aarch64: 'f418eae999f3c02805427d440c478c0d6438cb4dbd47a7b757bca0cc791acea6',
+     armv7l: 'f418eae999f3c02805427d440c478c0d6438cb4dbd47a7b757bca0cc791acea6',
+       i686: '103535eebcdf38eef22e3cc5befdaaad3518be14ad96ac9b1ff547883509db9c',
+     x86_64: 'c989aaceb6b404a437baa31d65a1e60a866611993c58f3fe75223de62ba27b8d'
   })
 
   depends_on 'glibc' # R

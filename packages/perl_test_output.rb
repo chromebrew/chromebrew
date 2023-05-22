@@ -10,12 +10,16 @@ class Perl_test_output < Package
   source_sha256 'f6a8482740b075fad22aaf4d987d38ef927c6d2b452d4ae0d0bd8f779830556e'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.36_i686/perl_test_output-1.033-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.36_x86_64/perl_test_output-1.033-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.36_armv7l/perl_test_output-1.033-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.36_armv7l/perl_test_output-1.033-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.36_i686/perl_test_output-1.033-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_test_output/1.033-perl5.36_x86_64/perl_test_output-1.033-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '689a71b93ea01e8aae2c36229196a7106d3d288b8063ec08fb02fe66b7a9fc1f',
-  x86_64: '4c40890b5787d4e1abe67a0136e89b8e98237d72272446420029c66dbf90c283'
+    aarch64: 'ca86085970d3bb5456a613bf7a72c231bac53fe682b5ed9b5de5204c02532946',
+     armv7l: 'ca86085970d3bb5456a613bf7a72c231bac53fe682b5ed9b5de5204c02532946',
+       i686: '448e6fa7f9e01e2e12e85d2506476c876077860dad9e4c881ba93dfdf008a370',
+     x86_64: 'bffa05e9e052824db057080344c3990f6b62196a34914071a7a85ab213959f8a'
   })
 
   def self.prebuild

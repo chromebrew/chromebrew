@@ -10,12 +10,16 @@ class Perl_xml_simple < Package
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
 
   binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_i686/perl_xml_simple-2.25-perl5.36-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_x86_64/perl_xml_simple-2.25-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_armv7l/perl_xml_simple-2.25-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_armv7l/perl_xml_simple-2.25-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_i686/perl_xml_simple-2.25-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.36_x86_64/perl_xml_simple-2.25-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    i686: '5e54ff30d6de83b364781d6c1644ad631eac5ef00c2686f9407a2c8f64bc8542',
-  x86_64: 'c9177b56ce48f24f6950b4826e9c49491b9bd08aecf686099c1ba9480fd4bb10'
+    aarch64: '410ccdb5826bcb467594300ff1cdceeb44646f506ae325b75d077c1351fd3fc2',
+     armv7l: '410ccdb5826bcb467594300ff1cdceeb44646f506ae325b75d077c1351fd3fc2',
+       i686: '45dae7fafa2b946f59c18ebb62e7cdd760ccfe1a6ef2b73f8381d2b50a05d64a',
+     x86_64: '28e2460023ca11cd1c496a4a411ada0f3bce447aaa18a776a14f34d736a28997'
   })
 
   depends_on 'perl_xml_parser' => :build
