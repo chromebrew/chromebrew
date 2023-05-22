@@ -1,10 +1,10 @@
-/usr/local/share/man/man3/Date::Format.3.gz
-/usr/local/share/man/man3/Date::Language.3.gz
-/usr/local/share/man/man3/Date::Language::Bulgarian.3.gz
-/usr/local/share/man/man3/Date::Language::Hungarian.3.gz
-/usr/local/share/man/man3/Date::Parse.3.gz
-/usr/local/share/man/man3/TimeDate.3.gz
-/usr/local/share/man/man3/Time::Zone.3.gz
+/usr/local/share/man/man3/Date::Format.3.zst
+/usr/local/share/man/man3/Date::Language.3.zst
+/usr/local/share/man/man3/Date::Language::Bulgarian.3.zst
+/usr/local/share/man/man3/Date::Language::Hungarian.3.zst
+/usr/local/share/man/man3/Date::Parse.3.zst
+/usr/local/share/man/man3/TimeDate.3.zst
+/usr/local/share/man/man3/Time::Zone.3.zst
 /usr/local/share/perl5/site_perl/Date/Format.pm
 /usr/local/share/perl5/site_perl/Date/Language/Afar.pm
 /usr/local/share/perl5/site_perl/Date/Language/Amharic.pm

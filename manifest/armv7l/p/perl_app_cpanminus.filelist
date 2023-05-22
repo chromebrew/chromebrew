@@ -1,6 +1,6 @@
 /usr/local/bin/cpanm
-/usr/local/share/man/man1/cpanm.1.gz
-/usr/local/share/man/man3/App::cpanminus.3.gz
-/usr/local/share/man/man3/App::cpanminus::fatscript.3.gz
+/usr/local/share/man/man1/cpanm.1.zst
+/usr/local/share/man/man3/App::cpanminus.3.zst
+/usr/local/share/man/man3/App::cpanminus::fatscript.3.zst
 /usr/local/share/perl5/site_perl/App/cpanminus/fatscript.pm
 /usr/local/share/perl5/site_perl/App/cpanminus.pm

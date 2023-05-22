@@ -1,9 +1,10 @@
 require 'package'
+require_relative 'perl_term_readkey'
 
 class Perl_read_key < Package
   description 'Term::ReadKey - A perl module for simple terminal control'
   homepage 'https://metacpan.org/pod/Term::ReadKey'
-  version '2.38-3'
+  version Perl_term_readkey.version.to_s
   license 'GPL-1+ or Artistic'
   compatibility 'all'
 

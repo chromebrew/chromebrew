@@ -3,40 +3,39 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  @_ver = '5.34.1'
-  version "#{@_ver}-1"
+  @_ver = '5.36.1'
+  version @_ver
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{@_ver}.tar.xz"
-  source_sha256 '6d52cf833ff1af27bb5e986870a2c30cec73c044b41e3458cd991f94374039f7'
+  source_sha256 'bd91217ea8a8c8b81f21ebbb6cefdf0d13ae532013f944cdece2cd51aef4b6a7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_armv7l/perl-5.34.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_armv7l/perl-5.34.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_i686/perl-5.34.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.34.1-1_x86_64/perl-5.34.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_armv7l/perl-5.36.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_armv7l/perl-5.36.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_i686/perl-5.36.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_x86_64/perl-5.36.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6c8b5d157e1e2fd3ebd3ee55a8ef78a516339ddd55a4f6ebef2f1e4b5d9812a9',
-     armv7l: '6c8b5d157e1e2fd3ebd3ee55a8ef78a516339ddd55a4f6ebef2f1e4b5d9812a9',
-       i686: '71f484904c833ac564961903ee1d05b2f8a7d0df8358b9dde8b94bfd2df47cac',
-     x86_64: '4c0bc04df5a046bffe2e35b5fc6bfec8cfbe462c5cc4e9b2fb9e7e70c8373828'
+    aarch64: '81ca29933d6061669fd85dc75ca6e1be321b685f0a22fc04e1b8eeb0656644ef',
+     armv7l: '81ca29933d6061669fd85dc75ca6e1be321b685f0a22fc04e1b8eeb0656644ef',
+       i686: '8c834adff441dde931df788fd87bee381954a9dde6107950324fdaa39a3723c9',
+     x86_64: '1712230f6360e5c81ef56095331a2fac2ad94846b40fb4b75c5c9be81c471777'
   })
 
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'libdb' # R
   depends_on 'patch' => :build
-  no_patchelf
 
   def self.build
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
     # Use system zlib and bzip2
     # Create shared library
     # Install manual files into #{CREW_PREFIX}/share/man/man* even if groff is not installed.
-    system "env AR=gcc-ar RANLIB=gcc-ranlib NM=gcc-nm \
+    system "AR=gcc-ar RANLIB=gcc-ranlib NM=gcc-nm \
       BUILD_ZLIB=False BUILD_BZIP2=0 \
-      ./Configure \
+      mold -run ./Configure \
       -de \
       -Dprefix=#{CREW_PREFIX} \
       -Dvendorprefix=#{CREW_PREFIX} \
@@ -91,6 +90,6 @@ diff -ur perl-5.22.1.orig/t/lib/warnings/regexec perl-5.22.1/t/lib/warnings/rege
 EOF'
 
     # test
-    # system 'make test || true'
+    system "make test -j #{CREW_NPROC} || true"
   end
 end

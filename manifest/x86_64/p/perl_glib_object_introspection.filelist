@@ -1,5 +1,6 @@
 /usr/local/bin/perli11ndoc
-/usr/local/lib64/perl5/5.34.1/site_perl/auto/Glib/Object/Introspection/Introspection.so
-/usr/local/lib64/perl5/5.34.1/site_perl/Glib/Object/Introspection/Install/Files.pm
-/usr/local/lib64/perl5/5.34.1/site_perl/Glib/Object/Introspection.pm
+/usr/local/lib64/perl5/5.36.1/site_perl/auto/Glib/Object/Introspection/Introspection.so
+/usr/local/lib64/perl5/5.36.1/site_perl/Glib/Object/Introspection/Install/Files.pm
+/usr/local/lib64/perl5/5.36.1/site_perl/Glib/Object/Introspection.pm
+/usr/local/share/man/man1/perli11ndoc.1.zst
 /usr/local/share/man/man3/Glib::Object::Introspection.3.zst

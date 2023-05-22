@@ -3,7 +3,7 @@ require 'package'
 class Perl_data_dumper < Package
   description 'Stringified perl data structures, suitable for both printing and eval'
   homepage 'https://metacpan.org/pod/Data::Dumper'
-  version '2.183'
+  version '2.183-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/Data-Dumper-2.183.tar.gz'
@@ -22,5 +22,14 @@ class Perl_data_dumper < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    @perl_conflicts = %w[
+      Data::Dumper
+    ]
+    @perl_conflicts.each do |conflict|
+      if File.exist?("#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3")
+        FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}.3",
+                     "#{CREW_DEST_MAN_PREFIX}/man3/#{conflict}-#{name}.3"
+      end
+    end
   end
 end
