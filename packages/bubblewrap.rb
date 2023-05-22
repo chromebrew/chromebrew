@@ -3,28 +3,29 @@ require 'package'
 class Bubblewrap < Package
   description 'bubblewrap works by creating a new, completely empty, mount namespace'
   homepage 'https://github.com/containers/bubblewrap'
-  @_ver = '0.4.1'
-  version "#{@_ver}-1"
+  @_ver = '0.8.0'
+  version @_ver
   license 'LGPL-2+'
   compatibility 'all'
   source_url "https://github.com/containers/bubblewrap/releases/download/v#{@_ver}/bubblewrap-#{@_ver}.tar.xz"
-  source_sha256 'b9c69b9b1c61a608f34325c8e1a495229bacf6e4a07cbb0c80cf7a814d7ccc03'
+  source_sha256 '957ad1149db9033db88e988b12bcebe349a445e1efc8a9b59ad2939a113d333a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_armv7l/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_armv7l/bubblewrap-0.4.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_i686/bubblewrap-0.4.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.4.1-1_x86_64/bubblewrap-0.4.1-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.8.0_armv7l/bubblewrap-0.8.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.8.0_armv7l/bubblewrap-0.8.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.8.0_i686/bubblewrap-0.8.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bubblewrap/0.8.0_x86_64/bubblewrap-0.8.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7c3f2c4a332342b9d7aa15d6aa776a38d1dc94a8c4c904a81a64f7e7ca45cedd',
-     armv7l: '7c3f2c4a332342b9d7aa15d6aa776a38d1dc94a8c4c904a81a64f7e7ca45cedd',
-       i686: '75795e2c15720ad488335de59b94c3577102b8ba3ca5e855b5b132f3f213cce7',
-     x86_64: '4c3f0aaec3afc4a1ba48d10dfb87208b47d11f2047fe11d6dce5056ff4dce79f'
+    aarch64: '03ab623c12a28cb7267dc25efffb286dafde5b566f890eb1f86d52f9a3411b3a',
+     armv7l: '03ab623c12a28cb7267dc25efffb286dafde5b566f890eb1f86d52f9a3411b3a',
+       i686: '33e1a0850f79cb2b4e9e5e4f4d81b51931ec18be2147878431ab943a2f54ea1d',
+     x86_64: 'af31e6097168fc0219300ca90d2f68f13382c6469130a7417f88d53bca47201c'
   })
 
-  depends_on 'libcap' => :build
-  depends_on 'dconf'
+  depends_on 'dconf' => :build
+  depends_on 'glibc' # R
+  depends_on 'libcap' # R
 
   def self.patch
     system "sed -i '/SUDO_BIN/d' Makefile.in"
@@ -35,22 +36,21 @@ class Bubblewrap < Package
     system "env #{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} \
       --disable-maintainer-mode \
-      --disable-man \
       --with-priv-mode=setuid \
       --enable-sudo"
     system 'make'
+    File.write 'bwrap.sh', <<~BWRAP_HEREDOC
+      #!/bin/bash
+      sudo chown root "#{CREW_PREFIX}/bin/bwrap.elf"
+      sudo chmod +s "#{CREW_PREFIX}/bin/bwrap.elf"
+      #{CREW_PREFIX}/bin/bwrap.elf "$@"
+      sudo chown chronos "#{CREW_PREFIX}/bin/bwrap.elf"
+    BWRAP_HEREDOC
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.install "#{CREW_DEST_PREFIX}/bin/bwrap", "#{CREW_DEST_PREFIX}/bin/bwrap.elf", mode: 0o755
-    @bwrap_sh = <<~BWRAP_HEREDOC
-      #!/bin/bash
-      sudo chown root "#{CREW_PREFIX}/bin/bwrap.elf"
-      sudo chmod +s "#{CREW_PREFIX}/bin/bwrap.elf"
-      #{CREW_PREFIX}/bin/bwrap.elf "\$@"
-      sudo chown chronos "#{CREW_PREFIX}/bin/bwrap.elf"
-    BWRAP_HEREDOC
-    File.write("#{CREW_DEST_PREFIX}/bin/bwrap", @bwrap_sh, perm: 0o755)
+    FileUtils.install 'bwrap.sh', "#{CREW_DEST_PREFIX}/bin/bwrap", mode: 0o755
   end
 end
