@@ -10,15 +10,15 @@ class Perl_extutils_makemaker < Package
   source_sha256 'f108bd46420d2f00d242825f865b0f68851084924924f92261d684c49e3e7a74'
 
   binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/perl_extutils_makemaker-7.70-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'file:///usr/local/tmp/packages/perl_extutils_makemaker-7.70-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'file:///usr/local/tmp/packages/perl_extutils_makemaker-7.70-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'file:///usr/local/tmp/packages/perl_extutils_makemaker-7.70-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_makemaker/7.70-perl5.36_armv7l/perl_extutils_makemaker-7.70-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_makemaker/7.70-perl5.36_armv7l/perl_extutils_makemaker-7.70-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_makemaker/7.70-perl5.36_i686/perl_extutils_makemaker-7.70-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_makemaker/7.70-perl5.36_x86_64/perl_extutils_makemaker-7.70-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '60ce24dcf38163b91d06705de3b6dbf648c5ce95fbc5c92586ee6e73572ead27',
      armv7l: '60ce24dcf38163b91d06705de3b6dbf648c5ce95fbc5c92586ee6e73572ead27',
-       i686: 'b4b525706d76c08f920e7b94ece5069db045471b27c795d5e99be6f656326767',
+       i686: '8cbb1c4223271d4bd18b99fe9636f765cce0d4e1d198d9e38ed1da67792c1653',
      x86_64: 'f01bfae2b9bb137290079af71746fb6a0ee065156287d164b78a30404b626343'
   })
 
