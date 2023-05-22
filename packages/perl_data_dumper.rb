@@ -22,6 +22,6 @@ class Perl_data_dumper < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Data::Dumper.3", "#{CREW_DEST_MAN_PREFIX}/man3/Data::Dumper-standalone.3"
+    FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Data::Dumper.3", "#{CREW_DEST_MAN_PREFIX}/man3/Data::Dumper-perl_data_dumper.3"
   end
 end
