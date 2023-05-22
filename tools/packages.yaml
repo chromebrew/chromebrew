@@ -3080,6 +3080,11 @@ url: https://github.com/ibus/ibus/releases/
 activity: low
 ---
 kind: url
+name: icecream
+url: https://github.com/icecc/icecream/releases
+activity: medium
+---
+kind: url
 name: icon_naming_utils
 url: http://tango-project.org/releases/
 activity: none
