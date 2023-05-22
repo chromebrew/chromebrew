@@ -3,7 +3,7 @@ require 'package'
 class Perl_glib < Package
   description 'Provides perl access to Glib and GLib\'s GObject libraries.'
   homepage 'https://metacpan.org/pod/Glib'
-  version '1.3293'
+  version '1.3293-perl5.36'
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-1.3293.tar.gz'

@@ -3,7 +3,7 @@ require 'package'
 class Perl_file_tail < Package
   description 'File::Tail - Perl extension for reading from continuously updated files'
   homepage 'https://metacpan.org/pod/File::Tail'
-  version '1.3-2'
+  version '1.3-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MG/MGRABNAR/File-Tail-1.3.tar.gz'

@@ -3,7 +3,7 @@ require 'package'
 class Perl_text_charwidth < Package
   description 'Text::CharWidth - Get number of occupied columns of a string on terminals'
   homepage 'https://metacpan.org/pod/Text::CharWidth'
-  version '0.04-3'
+  version '0.04-perl-5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/Text-CharWidth-0.04.tar.gz'

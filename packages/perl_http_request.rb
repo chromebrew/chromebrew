@@ -3,7 +3,7 @@ require 'package'
 class Perl_http_request < Package
   description 'HTTP style request message'
   homepage 'https://metacpan.org/pod/HTTP::Request'
-  version '6.44'
+  version '6.44-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.44.tar.gz'

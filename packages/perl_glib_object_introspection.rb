@@ -3,11 +3,11 @@ require 'package'
 class Perl_glib_object_introspection < Package
   description 'Dynamically create Perl language bindings'
   homepage 'https://metacpan.org/pod/Glib::Object::Introspection'
-  version '0.049'
+  version '0.050-perl5.36'
   license 'GPL PerlArtistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.049.tar.gz'
-  source_sha256 '464628cb9dd028b10438c23892de6f8a30202355a4e4eb01bfd13b8cfe35af57'
+  source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.050.tar.gz'
+  source_sha256 'ecf3bbb824df5eed6a3a7fcfd61be9ef448519801badcc82a6e3c4daab0cd763'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib_object_introspection/0.049_armv7l/perl_glib_object_introspection-0.049-chromeos-armv7l.tar.zst',

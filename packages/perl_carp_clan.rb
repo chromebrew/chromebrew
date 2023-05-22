@@ -3,7 +3,7 @@ require 'package'
 class Perl_carp_clan < Package
   description 'Carp::Clan - Report errors from perspective of caller of a "clan" of modules'
   homepage 'https://metacpan.org/pod/Carp::Clan'
-  version '6.08-2'
+  version '6.08-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Carp-Clan-6.08.tar.gz'

@@ -3,7 +3,7 @@ require 'package'
 class Perl_text_unidecode < Package
   description 'Perl Text::Unidecode -- plain ASCII transliterations of Unicode text.'
   homepage 'https://metacpan.org/pod/Text::Unidecode'
-  version '1.30-3'
+  version '1.30-perl-5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz'

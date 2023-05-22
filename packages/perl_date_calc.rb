@@ -3,7 +3,7 @@ require 'package'
 class Perl_date_calc < Package
   description 'Gregorian calendar date calculations'
   homepage 'https://metacpan.org/pod/Date::Calc'
-  version '6.4-2'
+  version '6.4-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/ST/STBEY/Date-Calc-6.4.tar.gz'

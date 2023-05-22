@@ -3,11 +3,11 @@ require 'package'
 class Perl_module_build < Package
   description 'Module::Build - Build and install Perl modules'
   homepage 'https://metacpan.org/pod/Module::Build'
-  version '0.4231-2'
+  version '0.4234-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4231.tar.gz'
-  source_sha256 '7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717'
+  source_url 'https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4234.tar.gz'
+  source_sha256 '66aeac6127418be5e471ead3744648c766bd01482825c5b66652675f2bc86a8f'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4231-2_armv7l/perl_module_build-0.4231-2-chromeos-armv7l.tar.zst',

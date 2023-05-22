@@ -3,7 +3,7 @@ require 'package'
 class Perl_parse_yapp < Package
   description 'Parse::Yapp - Perl extension for generating and using LALR parsers.'
   homepage 'https://metacpan.org/pod/Parse::Yapp'
-  version '1.21-1'
+  version '1.21-perl5.36'
   license 'GPL'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz'

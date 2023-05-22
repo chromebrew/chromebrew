@@ -3,7 +3,7 @@ require 'package'
 class Perl_text_csv < Package
   description 'Comma-separated values manipulator (using XS or PurePerl)'
   homepage 'https://metacpan.org/pod/Text::CSV'
-  version '2.02'
+  version '2.02-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/Text-CSV-2.02.tar.gz'

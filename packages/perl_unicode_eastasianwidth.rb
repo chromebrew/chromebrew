@@ -3,7 +3,7 @@ require 'package'
 class Perl_unicode_eastasianwidth < Package
   description 'Perl Unicode::EastAsianWidth - East Asian Width properties.'
   homepage 'https://metacpan.org/pod/Unicode::EastAsianWidth'
-  version '12.0-3'
+  version '12.0-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-12.0.tar.gz'

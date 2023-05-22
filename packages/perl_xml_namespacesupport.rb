@@ -3,7 +3,7 @@ require 'package'
 class Perl_xml_namespacesupport < Package
   description 'XML::NamespaceSupport - A simple generic namespace processor'
   homepage 'https://metacpan.org/pod/XML::NamespaceSupport'
-  version '1.12'
+  version '1.12-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/P/PE/PERIGRIN/XML-NamespaceSupport-1.12.tar.gz'

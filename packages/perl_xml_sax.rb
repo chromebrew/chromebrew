@@ -3,7 +3,7 @@ require 'package'
 class Perl_xml_sax < Package
   description 'XML::SAX - Simple API for XML'
   homepage 'https://metacpan.org/pod/XML::SAX'
-  version '1.02'
+  version '1.02-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-1.02.tar.gz'

@@ -3,7 +3,7 @@ require 'package'
 class Perl_cairo < Package
   description 'Perl interface to the cairo 2d vector graphics library'
   homepage 'https://metacpan.org/pod/Cairo'
-  version '1.109'
+  version '1.109-perl5.36'
   license 'GPL 2.1'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Cairo-1.109.tar.gz'

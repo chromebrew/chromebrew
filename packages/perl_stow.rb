@@ -3,7 +3,7 @@ require 'package'
 class Perl_stow < Package
   description 'Manage installation of multiple softwares in the same directory tree'
   homepage 'https://www.gnu.org/software/stow/'
-  version '2.3.1'
+  version '2.3.1-perl5.36'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/stow/stow-2.3.1.tar.gz'

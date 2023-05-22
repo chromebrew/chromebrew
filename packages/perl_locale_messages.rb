@@ -3,11 +3,11 @@ require 'package'
 class Perl_locale_messages < Package
   description 'Perl Locale::Messages - Gettext Like Message Retrieval'
   homepage 'https://metacpan.org/pod/Locale::Messages'
-  version '1.32'
+  version '1.33-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.32.tar.gz'
-  source_sha256 '80108298f2564ecbfc7110a3042008e665ed00c2e155b36b0188e6c1135ceba5'
+  source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.33.tar.gz'
+  source_sha256 '5126eda9ccd0eeb10db82ddef63cbcaf7dbd771e78cc0fb110cc3b5a6b8679e7'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_messages/1.32_armv7l/perl_locale_messages-1.32-chromeos-armv7l.tar.zst',

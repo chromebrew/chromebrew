@@ -3,7 +3,7 @@ require 'package'
 class Perl_unicode_linebreak < Package
   description 'Unicode::LineBreak - UAX #14 Unicode Line Breaking Algorithm'
   homepage 'http://search.cpan.org/~nezumi/Unicode-LineBreak-2018.003/lib/Unicode/LineBreak.pod'
-  version '2019.001-2'
+  version '2019.001-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://github.com/hatukanezumi/Unicode-LineBreak.git'

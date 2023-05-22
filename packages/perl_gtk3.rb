@@ -3,7 +3,7 @@ require 'package'
 class Perl_gtk3 < Package
   description 'Perl interface to the 3.x series of the gtk+ toolkit'
   homepage 'https://metacpan.org/pod/Gtk3'
-  version '0.038'
+  version '0.038-perl5.36'
   license 'GPL 2.1+'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Gtk3-0.038.tar.gz'

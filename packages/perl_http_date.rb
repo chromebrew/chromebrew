@@ -3,7 +3,7 @@ require 'package'
 class Perl_http_date < Package
   description 'Date conversion routines'
   homepage 'https://metacpan.org/pod/HTTP::Date'
-  version '6.05'
+  version '6.05-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Date-6.05.tar.gz'

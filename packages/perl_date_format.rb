@@ -3,7 +3,7 @@ require 'package'
 class Perl_date_format < Package
   description 'Date formatting subroutines'
   homepage 'https://metacpan.org/pod/Date::Format'
-  version '2.33-1'
+  version '2.33-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.33.tar.gz'

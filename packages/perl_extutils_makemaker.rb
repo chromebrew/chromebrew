@@ -3,11 +3,11 @@ require 'package'
 class Perl_extutils_makemaker < Package
   description 'Create a module Makefile'
   homepage 'https://metacpan.org/pod/ExtUtils::MakeMaker'
-  version '7.64'
+  version '7.70-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.64.tar.gz'
-  source_sha256 '4a6ac575815c0413b1f58967043cc9f2e166446b73c687f9bc62b5eaed9464a0'
+  source_url 'https://cpan.metacpan.org/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.70.tar.gz'
+  source_sha256 'f108bd46420d2f00d242825f865b0f68851084924924f92261d684c49e3e7a74'
 
   no_compile_needed
 

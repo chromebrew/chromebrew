@@ -3,11 +3,11 @@ require 'package'
 class Perl_yaml_tiny < Package
   description 'YAML::Tiny - Read/Write YAML files with as little code as possible'
   homepage 'https://metacpan.org/pod/YAML::Tiny'
-  version '1.73-3'
+  version '1.74-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.73.tar.gz'
-  source_sha256 'bc315fa12e8f1e3ee5e2f430d90b708a5dc7e47c867dba8dce3a6b8fbe257744'
+  source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.74.tar.gz'
+  source_sha256 '7b38ca9f5d3ce24230a6b8bdc1f47f5b2db348e7f7f9666c26f5955636e33d6c'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_yaml_tiny/1.73-3_armv7l/perl_yaml_tiny-1.73-3-chromeos-armv7l.tar.zst',

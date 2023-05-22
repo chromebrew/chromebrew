@@ -3,7 +3,7 @@ require 'package'
 class Perl_xml_parser < Package
   description 'Perl XML::Parser - A perl module for parsing XML documents'
   homepage 'https://metacpan.org/pod/XML::Parser'
-  version '2.46-2'
+  version '2.46-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz'

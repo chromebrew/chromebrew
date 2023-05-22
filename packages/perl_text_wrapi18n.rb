@@ -3,7 +3,7 @@ require 'package'
 class Perl_text_wrapi18n < Package
   description 'Text::WrapI18N - Line wrapping module with support for multibyte, fullwidth, and combining characters and languages without whitespaces between words.'
   homepage 'https://metacpan.org/pod/Text::WrapI18N'
-  version '0.06-3'
+  version '0.06-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/K/KU/KUBOTA/Text-WrapI18N-0.06.tar.gz'

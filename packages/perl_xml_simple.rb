@@ -3,7 +3,7 @@ require 'package'
 class Perl_xml_simple < Package
   description 'XML::Simple - An API for simple XML files'
   homepage 'https://metacpan.org/pod/XML::Simple'
-  version '2.25-3'
+  version '2.25-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'

@@ -3,11 +3,11 @@ require 'package'
 class Perl_app_cpanminus < Package
   description 'App::cpanminus - get, unpack, build and install modules from CPAN'
   homepage 'https://metacpan.org/pod/App::cpanminus'
-  version '1.7045'
+  version '1.7046-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7045.tar.gz'
-  source_sha256 'ac4e4adc23fec0ab54f088aca511f5a57d95e6c97a12a1cb98eed1fe0fe0e99c'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/App-cpanminus-1.7046.tar.gz'
+  source_sha256 '3e8c9d9b44a7348f9acc917163dbfc15bd5ea72501492cea3a35b346440ff862'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7045_armv7l/perl_app_cpanminus-1.7045-chromeos-armv7l.tar.zst',

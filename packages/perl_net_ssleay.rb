@@ -3,7 +3,7 @@ require 'package'
 class Perl_net_ssleay < Package
   description 'Net::SSLeay - Perl bindings for OpenSSL and LibreSSL'
   homepage 'https://metacpan.org/pod/Net::SSLeay'
-  version '1.92'
+  version '1.92-perl5.36'
   license 'BSD'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.92.tar.gz'

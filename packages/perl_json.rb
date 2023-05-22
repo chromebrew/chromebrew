@@ -6,11 +6,11 @@ require 'package'
 class Perl_json < Package
   description 'JSON JavaScript Object Notation encoder/decoder'
   homepage 'https://search.cpan.org/dist/JSON'
-  version '4.05'
+  version '4.10-perl5.36'
   license 'GPL PerlArtistic'
   compatibility 'all'
-  source_url 'https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-4.05.tar.gz'
-  source_sha256 '53839373210bebea0b24fe459d0a8232446b62015c8dc42dc36051da67336bf0'
+  source_url 'https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz'
+  source_sha256 'df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.05_armv7l/perl_json-4.05-chromeos-armv7l.tar.zst',

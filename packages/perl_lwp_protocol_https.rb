@@ -3,7 +3,7 @@ require 'package'
 class Perl_lwp_protocol_https < Package
   description 'Provide https support for LWP::UserAgent'
   homepage 'https://metacpan.org/pod/LWP::Protocol::https'
-  version '6.10'
+  version '6.10-perl5.36'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.10.tar.gz'
