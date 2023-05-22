@@ -52,6 +52,9 @@ class Opam < Package
   end
 
   def self.postinstall
+    # Segfaults in container, works on hardware.
+    return if CREW_IN_CONTAINER
+
     system "opam init --root=#{@OPAMROOT} -y \
             && eval $(opam env --root=#{@OPAMROOT} --switch=default) \
             && opam option --global depext=false --root=#{@OPAMROOT} -y"
