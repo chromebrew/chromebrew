@@ -6,21 +6,21 @@ require 'package'
 class Docker < Package
   description 'Pack, ship and run any application as a lightweight container'
   homepage 'https://www.docker.com/'
-  version '23.0.1'
+  version '24.0.1'
   license 'Apache'
-  compatibility 'aarch64 armv7l x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/docker/cli.git'
   git_hashtag "v#{version}"
 
   binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.1_armv7l/docker-23.0.1-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.1_armv7l/docker-23.0.1-chromeos-armv7l.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/23.0.1_x86_64/docker-23.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-     aarch64: '650a679b977225872025f7a9a4a0a560f9e1c478fba485e26cd2fc791bb7d7af',
-      armv7l: '650a679b977225872025f7a9a4a0a560f9e1c478fba485e26cd2fc791bb7d7af',
-      x86_64: 'b8eea65d02dee8c9d9b9119c7ddeda59009f8f820c3eefa720682c951b71b5f8'
+    aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
+     armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
+     x86_64: '21f9db6ec0086ab6452be9cd50a6bc980eb00caafb439a3387802c5363085ec1'
   })
 
   depends_on 'bridge_utils'
@@ -40,10 +40,34 @@ class Docker < Package
 
   def self.build
     @cli_version = git_hashtag
+
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
+       armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
+       x86_64: '21f9db6ec0086ab6452be9cd50a6bc980eb00caafb439a3387802c5363085ec1'
+    })
+
     @moby_version = git_hashtag
-    @libnetwork_version = '05b93e0d3a95952f70c113b0bc5bdb538d7afdd7'
+
+    binary_url({
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
+    })
+    binary_sha256({
+      aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
+       armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
+       x86_64: '21f9db6ec0086ab6452be9cd50a6bc980eb00caafb439a3387802c5363085ec1'
+    })
+
+    @libnetwork_version = '3f0048413d95802b9c6c836eba06bfc54f9dbd03'
     @tini_version = '0b44d3665869e46ccbac7414241b8256d6234dc4'
-    @buildx_version = 'eefe27ff42e51004cfc4fe321c6bff2e27fb3c51'
+    @buildx_version = 'v0.10.5'
     @gopath = `pwd`.chomp
     FileUtils.mkdir_p 'src/github.com/docker'
     FileUtils.ln_s @gopath, 'src/github.com/docker/cli'
@@ -123,17 +147,7 @@ class Docker < Package
 
   def self.install
     FileUtils.mkdir_p %W[
-      #{CREW_DEST_LIB_PREFIX}/docker/cli-plugins
-      #{CREW_DEST_MAN_PREFIX}/man1
-      #{CREW_DEST_MAN_PREFIX}/man5
-      #{CREW_DEST_MAN_PREFIX}/man8
-      #{CREW_DEST_PREFIX}/bin
-      #{CREW_DEST_PREFIX}/.config/systemd/user
       #{CREW_DEST_PREFIX}/etc/sysusers.d
-      #{CREW_DEST_PREFIX}/etc/udev/rules.d
-      #{CREW_DEST_PREFIX}/share/bash-completion/completions
-      #{CREW_DEST_PREFIX}/share/fish/vendor_completions.d
-      #{CREW_DEST_PREFIX}/share/zsh/site-functions
     ]
     FileUtils.install 'src/github.com/docker/libnetwork/proxy', "#{CREW_DEST_PREFIX}/bin/docker-proxy", mode: 0o755
     FileUtils.install 'src/github.com/docker/tini/tini-static', "#{CREW_DEST_PREFIX}/bin/docker-init", mode: 0o755
@@ -154,7 +168,9 @@ class Docker < Package
                       mode: 0o644
     FileUtils.install 'contrib/completion/fish/docker.fish',
                       "#{CREW_DEST_PREFIX}/share/fish/vendor_completions.d/docker.fish", mode: 0o644
-    FileUtils.cp_r Dir.glob('man/man*'), "#{CREW_DEST_MAN_PREFIX}/"
+    FileUtils.install Dir.glob('man/man1/*'), "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+    FileUtils.install Dir.glob('man/man5/*'), "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+    FileUtils.install Dir.glob('man/man8/*'), "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
     FileUtils.install 'src/github.com/docker/buildx/docker-buildx',
                       "#{CREW_DEST_LIB_PREFIX}/docker/cli-plugins/docker-buildx", mode: 0o755
   end
