@@ -3,7 +3,7 @@ require 'package'
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  @_ver = '16.0.2'
+  @_ver = '16.0.4'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -11,16 +11,16 @@ class Llvm < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_armv7l/llvm-16.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_armv7l/llvm-16.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_i686/llvm-16.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.2_x86_64/llvm-16.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_armv7l/llvm-16.0.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_armv7l/llvm-16.0.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_i686/llvm-16.0.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_x86_64/llvm-16.0.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7aeb14e92e74c9e54b6bb399837d472aad0060e42337dd222aa5f37f1dbd2453',
-     armv7l: '7aeb14e92e74c9e54b6bb399837d472aad0060e42337dd222aa5f37f1dbd2453',
-       i686: '7770fb2bbdbaaa3a4a65ad7f6ddfdc8ee6f812d5e0519433369fc3dc66f05502',
-     x86_64: '89c5c057a7ebeae11eabd1cda5996ffa33e265448c77cedd19fcef5c51ecdbfa'
+    aarch64: '855163a440ee90063318e5197434a9cdc1369f576e1635916f9fec5eee230048',
+     armv7l: '855163a440ee90063318e5197434a9cdc1369f576e1635916f9fec5eee230048',
+       i686: '2f7bedad924926887e26ed11d215cb3700ed11d5109c73da83cb2097f1e58292',
+     x86_64: '6dfb48123873899363b9b4ec62645951f2f39380c84ef102815f9371be80f374'
   })
 
   depends_on 'ocaml' => :build
