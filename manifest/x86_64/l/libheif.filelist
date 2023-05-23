@@ -14,7 +14,7 @@
 /usr/local/lib64/libheif/libheif-svtenc.so
 /usr/local/lib64/libheif.so
 /usr/local/lib64/libheif.so.1
-/usr/local/lib64/libheif.so.1.15.1
+/usr/local/lib64/libheif.so.1.16.2
 /usr/local/lib64/pkgconfig/libheif.pc
 /usr/local/share/man/man1/heif-convert.1.zst
 /usr/local/share/man/man1/heif-enc.1.zst
