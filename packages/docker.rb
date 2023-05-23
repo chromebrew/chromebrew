@@ -38,6 +38,12 @@ class Docker < Package
   no_env_options
   no_fhs
 
+  def self.preflight
+    return if File.exist?('/dev/kvm') || CREW_IN_CONTAINER
+
+    abort 'This package is not compatible with your device :/'.lightred
+  end
+
   def self.build
     @cli_version = git_hashtag
 
