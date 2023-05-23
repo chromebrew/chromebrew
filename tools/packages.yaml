@@ -1380,6 +1380,11 @@ url: https://sourceforge.net/projects/docbook2x/files/docbook2x/
 activity: none
 ---
 kind: url
+name: docker
+url: https://github.com/docker/cli/releases
+activity: medium
+---
+kind: url
 name: docker_systemctl_replacement
 url: https://github.com/gdraheim/docker-systemctl-replacement/releases
 activity: low
