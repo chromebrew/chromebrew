@@ -3,24 +3,24 @@ require 'package'
 class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  @_ver = '2.56.0'
+  @_ver = '2.56.0-59d5d83'
   version @_ver
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
-  git_hashtag @_ver
+  git_hashtag '59d5d832be20c37f301ccf4d0de2e0004d49bd86'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0_armv7l/librsvg-2.56.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0_armv7l/librsvg-2.56.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0_i686/librsvg-2.56.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0_x86_64/librsvg-2.56.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_armv7l/librsvg-2.56.0-59d5d83-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_armv7l/librsvg-2.56.0-59d5d83-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_i686/librsvg-2.56.0-59d5d83-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_x86_64/librsvg-2.56.0-59d5d83-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f39f6e1529d64ee294a79a68cb2f8ff36a6d1704a3ba871bb1bbd253926aa283',
-     armv7l: 'f39f6e1529d64ee294a79a68cb2f8ff36a6d1704a3ba871bb1bbd253926aa283',
-       i686: 'b9abc50a6c9356c714ab16c9b7b146cbc3e461d87e1f0e7389cf75af160ef263',
-     x86_64: '580d8fcd3430199122dbb222a8d399364d80b5dd96b9f786ab2d38f25decf570'
+    aarch64: 'fa8525eccd9577796f53fdb62118a004abdbb75d69bbf50c98abf37ab6598022',
+     armv7l: 'fa8525eccd9577796f53fdb62118a004abdbb75d69bbf50c98abf37ab6598022',
+       i686: '147942d68517190deaedfe3a69b6ff6e70c5f4aa7725d0aa6aa704d19dc98b23',
+     x86_64: '7cf6e73193d51fe89715bcaffd7fa30eace1eda3ee94b7bff06f819035376bc5'
   })
 
   depends_on 'cairo' # R
