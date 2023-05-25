@@ -5,9 +5,9 @@ class Minizip < Package
   description 'Minizip is a simple package to zip/unzip files, from zlib.'
   homepage Zlibpkg.homepage
   @_ver = '1.2.13'
-  version @_ver
+  version "#{@_ver}-1"
   # When upgrading minizip, be sure to upgrade zlibpkg in tandem.
-  puts "#{self} version differs from Zlibpkg version #{Zlibpkg.version}".orange if @_ver != Zlibpkg.version
+  puts "#{self} version differs from Zlibpkg version #{Zlibpkg.version}".orange if version != Zlibpkg.version
   license Zlibpkg.license
   compatibility 'all'
   source_url Zlibpkg.source_url
