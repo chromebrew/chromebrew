@@ -648,10 +648,10 @@
 /usr/local/include/wireshark/ws_version.h
 /usr/local/lib/libwireshark.so
 /usr/local/lib/libwireshark.so.16
-/usr/local/lib/libwireshark.so.16.0.5
+/usr/local/lib/libwireshark.so.16.0.6
 /usr/local/lib/libwiretap.so
 /usr/local/lib/libwiretap.so.13
-/usr/local/lib/libwiretap.so.13.0.5
+/usr/local/lib/libwiretap.so.13.0.6
 /usr/local/lib/libwsutil.so
 /usr/local/lib/libwsutil.so.14
 /usr/local/lib/libwsutil.so.14.0.0
