@@ -14,11 +14,9 @@
 /usr/local/lib64/cmake/libjpeg-turbo/libjpeg-turboConfigVersion.cmake
 /usr/local/lib64/cmake/libjpeg-turbo/libjpeg-turboTargets.cmake
 /usr/local/lib64/cmake/libjpeg-turbo/libjpeg-turboTargets-release.cmake
-/usr/local/lib64/libjpeg.a
 /usr/local/lib64/libjpeg.so
 /usr/local/lib64/libjpeg.so.62
 /usr/local/lib64/libjpeg.so.62.3.0
-/usr/local/lib64/libturbojpeg.a
 /usr/local/lib64/libturbojpeg.so
 /usr/local/lib64/libturbojpeg.so.0
 /usr/local/lib64/libturbojpeg.so.0.2.0
@@ -33,8 +31,8 @@
 /usr/local/share/doc/libjpeg-turbo/tjexample.c
 /usr/local/share/doc/libjpeg-turbo/usage.txt
 /usr/local/share/doc/libjpeg-turbo/wizard.txt
-/usr/local/share/man/man1/cjpeg.1.gz
-/usr/local/share/man/man1/djpeg.1.gz
-/usr/local/share/man/man1/jpegtran.1.gz
-/usr/local/share/man/man1/rdjpgcom.1.gz
-/usr/local/share/man/man1/wrjpgcom.1.gz
+/usr/local/share/man/man1/cjpeg.1.zst
+/usr/local/share/man/man1/djpeg.1.zst
+/usr/local/share/man/man1/jpegtran.1.zst
+/usr/local/share/man/man1/rdjpgcom.1.zst
+/usr/local/share/man/man1/wrjpgcom.1.zst
