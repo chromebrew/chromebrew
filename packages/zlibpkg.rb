@@ -20,8 +20,8 @@ class Zlibpkg < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.13-1_x86_64/zlibpkg-1.2.13-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4d1da86d9682dcf90538cce22f4650b7c2a35dff251d613783b446023eb7d211',
-     armv7l: '4d1da86d9682dcf90538cce22f4650b7c2a35dff251d613783b446023eb7d211',
+    aarch64: 'efeca0dc51b8d47e6b88b8a5b5ad2b6362ef70202a2373ab612bc5f676af007f',
+     armv7l: 'efeca0dc51b8d47e6b88b8a5b5ad2b6362ef70202a2373ab612bc5f676af007f',
        i686: 'e772f09b58ac0ea37e6845da3aefcb217631de37daeaa9863d7f96d74c3dc45b',
      x86_64: 'a8a3748e34f5a19bf2696cfef5a95642dd138996ae06acda06a1527a0a793dd7'
   })
@@ -34,16 +34,19 @@ class Zlibpkg < Package
   end
 
   def self.build
-    system "cmake -B builddir -G Ninja #{CREW_CMAKE_OPTIONS}"
-    system 'samu -C builddir'
+    system "cmake \
+      -B builddir -G Ninja \
+      #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+      -Wno-dev"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.check
-    system 'samu -C builddir test'
+    system "#{CREW_NINJA} -C builddir test"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     # Remove static library.
     FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libz.a"
   end
