@@ -26,14 +26,18 @@ class Libwebp < Package
   depends_on 'gcc' # R
   depends_on 'giflib' # R
   depends_on 'glibc' # R
-  depends_on 'jbigkit' => :build
+  depends_on 'jbigkit' # R
   depends_on 'libdeflate' # R
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
+  depends_on 'libice' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
-  depends_on 'libsdl' => :build unless ARCH == 'i686'
+  depends_on 'libsdl' => :build
+  depends_on 'libsm' # R
   depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
+  depends_on 'libx11' # R
   depends_on 'libxi' # R
   depends_on 'libxmu' # R
   depends_on 'xzutils' # R
