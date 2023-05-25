@@ -6,22 +6,22 @@ require 'package'
 class Wireshark < Package
   description 'Network traffic and protocol analyzer/sniffer'
   homepage 'https://www.wireshark.org/'
-  version '4.0.5'
+  version '4.0.6'
   compatibility 'all'
   source_url 'https://github.com/wireshark/wireshark.git'
   git_hashtag "wireshark-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.5_armv7l/wireshark-4.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.5_armv7l/wireshark-4.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.5_i686/wireshark-4.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.5_x86_64/wireshark-4.0.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.6_armv7l/wireshark-4.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.6_armv7l/wireshark-4.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.6_i686/wireshark-4.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.6_x86_64/wireshark-4.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e5b718b77a4ffe92b15910376f2c9efabcbb4191c996a2fa436ee58a83978436',
-     armv7l: 'e5b718b77a4ffe92b15910376f2c9efabcbb4191c996a2fa436ee58a83978436',
-       i686: '4879cbf58ce9042ab231a5e3e67714ba4ab1e4f70f3803e16b84c0e2a1d7bf87',
-     x86_64: '7b8c4f1a3655d18caba8304a93f0773d703c7def5894c879982f081a66d1f15b'
+    aarch64: '017257adc58efbfcb50a218505d0f36954d3ff25a475df7b3e34858c6f6b22b3',
+     armv7l: '017257adc58efbfcb50a218505d0f36954d3ff25a475df7b3e34858c6f6b22b3',
+       i686: '7b505459f5f8e8a98cb64c98e32190300e9ffbcb4f832528f8e3ca3d30c4eb92',
+     x86_64: 'd9a064f716807a3354ea0f09971e3c9a54a46dd5fa15add2e5e1719d3735437d'
   })
 
   depends_on 'brotli' # R
@@ -54,6 +54,8 @@ class Wireshark < Package
   depends_on 'speexdsp' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+
+  git_fetchtags
 
   def self.build
     @gui = 'true'
