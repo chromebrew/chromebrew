@@ -14,6 +14,7 @@
 /usr/local/lib/libpng/libpng16.cmake
 /usr/local/lib/libpng/libpng16-release.cmake
 /usr/local/lib/libpng.so
+/usr/local/lib/libpng.so.la
 /usr/local/lib/pkgconfig/libpng16.pc
 /usr/local/lib/pkgconfig/libpng.pc
 /usr/local/share/man/man3/libpng.3.zst

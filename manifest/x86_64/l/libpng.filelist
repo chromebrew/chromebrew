@@ -12,6 +12,7 @@
 /usr/local/lib64/libpng16.so.16
 /usr/local/lib64/libpng16.so.16.39.0
 /usr/local/lib64/libpng.so
+/usr/local/lib64/libpng.so.la
 /usr/local/lib64/pkgconfig/libpng16.pc
 /usr/local/lib64/pkgconfig/libpng.pc
 /usr/local/lib/libpng/libpng16.cmake
