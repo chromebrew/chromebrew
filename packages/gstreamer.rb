@@ -3,21 +3,21 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22-d764703'
+  version '1.22.3'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
-  git_hashtag 'd7647035cc0e532483103a8458b2ee228744620e'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22-d764703_armv7l/gstreamer-1.22-d764703-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22-d764703_armv7l/gstreamer-1.22-d764703-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22-d764703_x86_64/gstreamer-1.22-d764703-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_armv7l/gstreamer-1.22.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_armv7l/gstreamer-1.22.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_x86_64/gstreamer-1.22.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '117dce90579c0ce85c10353208113cb51e489174031c2acac01da9de8171fc3c',
-     armv7l: '117dce90579c0ce85c10353208113cb51e489174031c2acac01da9de8171fc3c',
-     x86_64: 'a23ebdb7fd19391efec24c9b057de3a16ecb32aff5ba01d30c6a4e35c16d4274'
+    aarch64: 'e930960a30813fab3d71875c16eb72a471019f82b23cbac50f69a2e6d46b58b2',
+     armv7l: 'e930960a30813fab3d71875c16eb72a471019f82b23cbac50f69a2e6d46b58b2',
+     x86_64: '51456b1df1cf1196181e6e6eeabf5f216a43ea7cbbf992254f4a63735771e511'
   })
 
   depends_on 'alsa_lib' # R
@@ -129,7 +129,7 @@ class Gstreamer < Package
   end
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
       -Dgpl=enabled \
       -Dtests=disabled \
       builddir"
