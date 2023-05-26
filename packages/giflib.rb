@@ -3,30 +3,33 @@ require 'package'
 class Giflib < Package
   description 'giflib is a library for reading and writing gif images.'
   homepage 'http://giflib.sourceforge.net/'
-  version '5.2.1'
+  version '5.2.1-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz'
   source_sha256 '31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1_armv7l/giflib-5.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1_armv7l/giflib-5.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1_i686/giflib-5.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1_x86_64/giflib-5.2.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_armv7l/giflib-5.2.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_armv7l/giflib-5.2.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_i686/giflib-5.2.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_x86_64/giflib-5.2.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '727b6d1cdbcbc59a90d2b759faeaddf29a957bc4670e088683f5f867caf04593',
-     armv7l: '727b6d1cdbcbc59a90d2b759faeaddf29a957bc4670e088683f5f867caf04593',
-       i686: 'cc0a7353ec3c691b37e33512f25bd7b5d0d20a57dcc5d516162c3a66b6905c4e',
-     x86_64: '06bb0ff65e3562c7779671eaa4a0fbd45ae51e01e46e4b4ced6e89df05b6abbf'
+    aarch64: '3b0b0b66720c1eec34ba17441a5edb0a27b1accfcd91ea22cd52c1e5f343e95e',
+     armv7l: '3b0b0b66720c1eec34ba17441a5edb0a27b1accfcd91ea22cd52c1e5f343e95e',
+       i686: 'd94ebf373666a28f98c2010c5e1e72f35b3f1559e512a7307ff52b646ec3db34',
+     x86_64: '9828787f55c5af5fc53587a3a7c2552adf53079f4291164eef3fe982ba51bdb6'
   })
 
   depends_on 'glibc' # R
 
+  no_env_options
+
   def self.build
     # No configure script in the source.
-    system 'make', "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}"
+    system "#{CREW_ENV_OPTIONS.gsub('-mfpu=vfpv3-d16',
+                                    '-mfpu=neon-fp16')} make PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX}"
   end
 
   def self.check
@@ -35,6 +38,8 @@ class Giflib < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}", 'install'
+    # Remove static library.
+    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libgif.a"
     @libname = name.to_s.start_with?('lib') ? name.downcase : "lib#{name.gsub('lib', '').downcase}"
     @libnames = Dir["#{CREW_DEST_LIB_PREFIX}/#{@libname}.so*"]
     @libnames = Dir["#{CREW_DEST_LIB_PREFIX}/#{@libname}-*.so*"] if @libnames.empty?

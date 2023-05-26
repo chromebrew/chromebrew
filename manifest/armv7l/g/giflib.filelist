@@ -5,7 +5,6 @@
 /usr/local/bin/giftext
 /usr/local/bin/giftool
 /usr/local/include/gif_lib.h
-/usr/local/lib/libgif.a
 /usr/local/lib/libgif.la
 /usr/local/lib/libgif.so
 /usr/local/lib/libgif.so.7

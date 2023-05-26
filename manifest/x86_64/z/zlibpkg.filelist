@@ -1,6 +1,5 @@
 /usr/local/include/zconf.h
 /usr/local/include/zlib.h
-/usr/local/lib64/libz.a
 /usr/local/lib64/libz.so
 /usr/local/lib64/libz.so.1
 /usr/local/lib64/libz.so.1.2.13

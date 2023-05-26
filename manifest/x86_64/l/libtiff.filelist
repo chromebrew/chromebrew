@@ -22,7 +22,6 @@
 /usr/local/include/tiffio.h
 /usr/local/include/tiffio.hxx
 /usr/local/include/tiffvers.h
-/usr/local/lib64/libtiff.a
 /usr/local/lib64/libtiff.la
 /usr/local/lib64/libtiff.so
 /usr/local/lib64/libtiff.so.6
