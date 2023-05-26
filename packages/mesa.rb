@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '23.1.0'
+  @_ver = '23.1.1'
   version "#{@_ver}-llvm16"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -11,14 +11,14 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.0-llvm16_armv7l/mesa-23.1.0-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.0-llvm16_armv7l/mesa-23.1.0-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.0-llvm16_x86_64/mesa-23.1.0-llvm16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.1-llvm16_armv7l/mesa-23.1.1-llvm16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.1-llvm16_armv7l/mesa-23.1.1-llvm16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.1-llvm16_x86_64/mesa-23.1.1-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f2530801fdf5086ad79956abb619648bba7f23d5b53ece069b8a299a038e7a9e',
-     armv7l: 'f2530801fdf5086ad79956abb619648bba7f23d5b53ece069b8a299a038e7a9e',
-     x86_64: 'f6e22d21f23d5488f9a7e91162de8f7898ba48a103a6efeeaa102bd52ecba952'
+    aarch64: 'eef03661be81f613a4436f5532ea1d9e586a5c179502774014cfcd6634e57a4a',
+     armv7l: 'eef03661be81f613a4436f5532ea1d9e586a5c179502774014cfcd6634e57a4a',
+     x86_64: '28b87224d20bce6dd7a07f562e8f76fab6473c5b424b9be3fd40f3b0f3f1c5c0'
   })
 
   depends_on 'elfutils' # R
@@ -61,7 +61,7 @@ class Mesa < Package
   def self.build
     @gallium_drivers = ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'
     @vulkan_drivers = ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
       -Db_asneeded=false \
       -Ddri3=enabled \
       -Degl=enabled \
