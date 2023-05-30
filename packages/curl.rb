@@ -3,23 +3,23 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.1.1'
+  version '8.1.2'
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-8.1.1.tar.xz'
-  source_sha256 '08a948e061929645597c1ef7194e07b308b22084ff03fa7400b465e6c05149e5'
+  source_url 'https://curl.se/download/curl-8.1.2.tar.xz'
+  source_sha256 '31b1118eb8bfd43cd95d9a3f146f814ff874f6ed3999b29d94f4d1e7dbac5ef6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.1_armv7l/curl-8.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.1_armv7l/curl-8.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.1_i686/curl-8.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.1_x86_64/curl-8.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_armv7l/curl-8.1.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_armv7l/curl-8.1.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_i686/curl-8.1.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_x86_64/curl-8.1.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2aac2181915719a3d8e37fe31ce07fa8899a27123f35737005f3fc9c86230b6b',
-     armv7l: '2aac2181915719a3d8e37fe31ce07fa8899a27123f35737005f3fc9c86230b6b',
-       i686: '5f45857e77f5722e0457b25f7cc8db859e2a9d7ab70aae849ff5810f2db4dcae',
-     x86_64: 'b216c350e6f6c64c9580fab5db321733dd1f4d86c94733162bba9c6de0f6d69c'
+    aarch64: 'f61797ea0812422a343bb2de6d6be68ae4391630ea8552c9b6f93eb3021ce282',
+     armv7l: 'f61797ea0812422a343bb2de6d6be68ae4391630ea8552c9b6f93eb3021ce282',
+       i686: 'c72d008177000b151c28095477feae0d75056f76f97b20a687c6c02dbd610985',
+     x86_64: '4b664fdab78743015c37fbc11af00e34991097137ca955869629a77bd023822d'
   })
 
   depends_on 'brotli' # R
