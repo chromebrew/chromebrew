@@ -4751,6 +4751,11 @@ url: https://ftp.gnu.org/gnu/libtool
 activity: none
 ---
 kind: url
+name: libtorrent
+url: https://github.com/arvidn/libtorrent/releases
+activity: low
+---
+kind: url
 name: libudev_stub
 url: https://github.com/therealkenc/libudev-stub/releases
 activity: none
@@ -6984,6 +6989,11 @@ kind: url
 name: qb64
 url: https://github.com/Galleondragon/qb64/releases
 activity: low
+---
+kind: url
+name: qbittorrent
+url: https://sourceforge.net/projects/qbittorrent/files/qbittorrent/
+activity: medium
 ---
 kind: url
 name: qemacs
