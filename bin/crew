@@ -1347,7 +1347,13 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
       if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
         # rsync src path needs a trailing slash
         src << '/' unless src.end_with?('/')
-        system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
+        # Check for ACLs support.
+        @rsync_version = `rsync --version`.chomp
+        if @rsync_version.include?('ACLs')
+          system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
+        else
+          system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
+        end
       else
         system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
       end
