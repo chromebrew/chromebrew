@@ -3,8 +3,8 @@ require 'package'
 class Yt_dlp < Package
   description 'A fork of youtube-dl with additional features and patches'
   homepage 'https://github.com/yt-dlp/yt-dlp'
-  @_ver = '2022.10.04'
-  version @_ver
+  @_ver = '2023.03.04'
+  version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/yt-dlp/yt-dlp.git'
@@ -23,10 +23,10 @@ class Yt_dlp < Package
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=#{CREW_MAN_PREFIX}", 'install'
     # Makefile is screwy
-    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], CREW_DEST_MAN_PREFIX
-    FileUtils.rm_r "#{CREW_DEST_PREFIX}/man"
+    # FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
+    # FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], CREW_DEST_MAN_PREFIX
+    # FileUtils.rm_r "#{CREW_DEST_PREFIX}/man"
   end
 end
