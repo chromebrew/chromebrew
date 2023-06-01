@@ -24,9 +24,5 @@ class Yt_dlp < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=#{CREW_MAN_PREFIX}", 'install'
-    # Makefile is screwy
-    # FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
-    # FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], CREW_DEST_MAN_PREFIX
-    # FileUtils.rm_r "#{CREW_DEST_PREFIX}/man"
   end
 end

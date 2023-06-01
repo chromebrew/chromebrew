@@ -21,7 +21,7 @@ class Py3_pycryptodomex < Package
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
     @pip_files_lines.each do |pip_file|
       @pip_path = File.expand_path("#{@pip_files_base}#{pip_file}")
-      @destpath = "#{CREW_DEST_DIR.chomp("/")}#{@pip_path}"
+      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{@pip_path}"
       FileUtils.install @pip_path, @destpath
     end
   end
