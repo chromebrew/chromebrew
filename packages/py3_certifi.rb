@@ -7,8 +7,7 @@ class Py3_certifi < Package
   version "#{@_ver}-py3.11"
   license 'MPL-2.0'
   compatibility 'all'
-  source_url 'https://github.com/certifi/python-certifi.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
 
   depends_on 'python3' # L
   depends_on 'py3_pip' # L

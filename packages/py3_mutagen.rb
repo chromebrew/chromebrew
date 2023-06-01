@@ -7,8 +7,7 @@ class Py3_mutagen < Package
   version "#{@_ver}-py3.11"
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/quodlibet/mutagen.git'
-  git_hashtag "release-#{@_ver}"
+  source_url 'SKIP'
 
   depends_on 'python3' # L
   depends_on 'py3_pip' # L

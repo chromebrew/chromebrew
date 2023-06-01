@@ -7,8 +7,7 @@ class Py3_brotlicffi < Package
   version "#{@_ver}-py3.11"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/python-hyper/brotlicffi.git'
-  git_hashtag "v#{@_ver}"
+  source_url 'SKIP'
 
   depends_on 'brotli'
   depends_on 'py3_cffi'

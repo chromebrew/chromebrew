@@ -7,8 +7,7 @@ class Py3_pycryptodomex < Package
   version "#{@_ver}-py3.11"
   license 'BSD and public-domain'
   compatibility 'all'
-  source_url 'https://github.com/Legrandin/pycryptodome.git'
-  git_hashtag "v#{@_ver}x"
+  source_url 'SKIP'
 
   depends_on 'python3' # L
   depends_on 'py3_pip' # L
