@@ -41,12 +41,12 @@ class Qtx11extras < Package
   end
 
   def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
+    system 'make', "prefix=#{CREW_PREFIX}", "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     Dir.chdir('src') do
-      system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
+      system 'make', "prefix=#{CREW_PREFIX}", "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir('src/x11extras') do
-      system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
+      system 'make', "prefix=#{CREW_PREFIX}", "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     end
   end
 end

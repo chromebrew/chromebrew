@@ -37,11 +37,10 @@ class Qtwayland < Package
   depends_on 'zlibpkg' # R
 
   def self.build
-    system 'qmake'
-    system 'make'
+    system 'qmake && make'
   end
 
   def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
+    system 'make', "prefix=#{CREW_PREFIX}", "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
   end
 end

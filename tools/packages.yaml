@@ -7027,8 +7027,13 @@ activity: none
 ---
 kind: url
 name: qtbase
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qtbase/-/tags
+activity: medium
+---
+kind: url
+name: qtcharts
+url: https://invent.kde.org/qt/qt/qtcharts/-/tags
+activity: medium
 ---
 kind: url
 name: qtchooser
@@ -7042,7 +7047,7 @@ activity: high
 ---
 kind: url
 name: qtdeclarative
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtdeclarative/-/tags
 activity: medium
 ---
 kind: url
@@ -7051,13 +7056,18 @@ url: https://github.com/rodlie/qtfm/releases
 activity: medium
 ---
 kind: url
+name: qtimageformats
+url: https://invent.kde.org/qt/qt/qtimageformats/-/tags
+activity: medium
+---
+kind: url
 name: qtlocation
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtlocation/-/tags
 activity: medium
 ---
 kind: url
 name: qtmultimedia
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtmultimedia/-/tags
 activity: medium
 ---
 kind: url
@@ -7067,27 +7077,27 @@ activity: medium
 ---
 kind: url
 name: qtscript
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtscript/-/tags
 activity: medium
 ---
 kind: url
 name: qtserialport
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtserialport/-/tags
 activity: medium
 ---
 kind: url
 name: qtsvg
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qtsvg/-/tags
+activity: medium
 ---
 kind: url
 name: qttools
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qttools/-/tags
+activity: medium
 ---
 kind: url
 name: qtwayland
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtwayland/-/tags
 activity: medium
 ---
 kind: url
@@ -7101,9 +7111,19 @@ url: https://invent.kde.org/qt/qt/qtwebengine/-/tags
 activity: medium
 ---
 kind: url
+name: qtwebglplugin
+url: https://invent.kde.org/qt/qt/qtwebglplugin/-/tags
+activity: medium
+---
+kind: url
+name: qtwebsockets
+url: https://invent.kde.org/qt/qt/qtwebsockets/-/tags
+activity: medium
+---
+kind: url
 name: qtx11extras
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qtx11extras/-/tags
+activity: medium
 ---
 kind: url
 name: quakespasm
