@@ -4,38 +4,39 @@ class Libcue < Package
   description 'Parses so-called cue sheets and handles the parsed data.'
   homepage 'https://github.com/lipnitsk/libcue/'
   @_ver = '2.2.1'
-  version "#{@_ver}-2"
+  version "#{@_ver}-3"
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/lipnitsk/libcue.git'
   git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-2_armv7l/libcue-2.2.1-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-2_armv7l/libcue-2.2.1-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-2_i686/libcue-2.2.1-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-2_x86_64/libcue-2.2.1-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-3_armv7l/libcue-2.2.1-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-3_armv7l/libcue-2.2.1-3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-3_i686/libcue-2.2.1-3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcue/2.2.1-3_x86_64/libcue-2.2.1-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7280f4c8791036ff19b4f7c66247a4061bdbcf1174c462b6514ddf9d595f246d',
-     armv7l: '7280f4c8791036ff19b4f7c66247a4061bdbcf1174c462b6514ddf9d595f246d',
-       i686: 'ff73b593cb5b157df293efbba4eda3aace6ccf3f8ff7a65501e06d3114d96f5f',
-     x86_64: '643d18797d75d95900d74fe3287f92f3273019b6221b503fa0cb4abecc632269'
+    aarch64: '59e82a71c1709c6549556edbf3a165c6514c552fbd094dbdbbb1bd12da8626ba',
+     armv7l: '59e82a71c1709c6549556edbf3a165c6514c552fbd094dbdbbb1bd12da8626ba',
+       i686: '0a30d2b87104637f19aef5aa24f9130e794029b13c9f12f89313a9204e1d9c29',
+     x86_64: '8649bbcefec967a29b2eb3f96fa86c129c52c577b04ac50148e11c549ab46c37'
   })
 
+  depends_on 'glibc' # R
+
   def self.build
-    FileUtils.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "cmake -G 'Ninja' #{CREW_CMAKE_OPTIONS} .."
-    end
-    system 'samu -C builddir'
+    system "cmake -B builddir -G 'Ninja' \
+      #{CREW_CMAKE_OPTIONS} \
+      -DBUILD_SHARED_LIBS=ON"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   def self.check
-    system 'samu -C builddir test'
+    system "#{CREW_NINJA} -C builddir test"
   end
 end

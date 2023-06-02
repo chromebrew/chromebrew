@@ -1,4 +1,6 @@
 /usr/local/include/libcue.h
 /usr/local/include/libcue/libcue.h
-/usr/local/lib64/libcue.a
+/usr/local/lib64/libcue.so
+/usr/local/lib64/libcue.so.2
+/usr/local/lib64/libcue.so.2.2.1
 /usr/local/lib64/pkgconfig/libcue.pc
