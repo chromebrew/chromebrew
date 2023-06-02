@@ -6,21 +6,21 @@ require 'package'
 class Tracker3_miners < Package
   description 'Collection of data extractors for Tracker/Nepomuk'
   homepage 'https://wiki.gnome.org/Projects/Tracker'
-  version '3.5.0'
+  version '3.5.2'
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/tracker-miners/-/archive/#{version}/tracker-miners-#{version}.tar.bz2"
-  source_sha256 '6bc573140e379ef1fd9040adcda234fd8da6586622878a67f0f4ec75bd2cc170'
+  source_url 'https://gitlab.gnome.org/GNOME/tracker-miners.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.5.0_armv7l/tracker3_miners-3.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.5.0_armv7l/tracker3_miners-3.5.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.5.0_x86_64/tracker3_miners-3.5.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.5.2_armv7l/tracker3_miners-3.5.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.5.2_armv7l/tracker3_miners-3.5.2-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.5.2_x86_64/tracker3_miners-3.5.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '44885f8b09a3d7469b7fdee754ce9893dd1103680d6e83bc0134180ee74844d6',
-     armv7l: '44885f8b09a3d7469b7fdee754ce9893dd1103680d6e83bc0134180ee74844d6',
-     x86_64: '5b1961229a1ef4284241dbc6b2f9ca1487f6daf841f0a027d3f24b3abf781213'
+    aarch64: '38c66235dd271fa17a8225ae4bfcc64347af4a4040609185511d9e49246e5436',
+     armv7l: '38c66235dd271fa17a8225ae4bfcc64347af4a4040609185511d9e49246e5436',
+     x86_64: '9c206b84278fa58ab236f1583bb11a3c1f0bf72baa7c13450debbdbaf517726b'
   })
 
   depends_on 'asciidoc' => :build
@@ -32,6 +32,7 @@ class Tracker3_miners < Package
   depends_on 'gstreamer' # R
   depends_on 'icu4c' # R
   depends_on 'libcue' => :build
+  depends_on 'libcue' # R
   depends_on 'libexif' # R
   depends_on 'libgrss' # R
   depends_on 'libgsf' # R
@@ -40,6 +41,7 @@ class Tracker3_miners < Package
   depends_on 'libseccomp' # R
   depends_on 'libtiff' # R
   depends_on 'libxml2' # R
+  depends_on 'poppler' # R
   depends_on 'tracker3' # R
   depends_on 'util_linux' # R
   depends_on 'vala' => :build
