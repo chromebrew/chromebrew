@@ -1,7 +1,7 @@
 /usr/local/bin/qtfm
-/usr/local/lib/libQtFM.so
-/usr/local/lib/libQtFM.so.6
-/usr/local/lib/libQtFM.so.6.3.0
+/usr/local/lib64/libQtFM.so
+/usr/local/lib64/libQtFM.so.6
+/usr/local/lib64/libQtFM.so.6.3.0
 /usr/local/share/applications/qtfm.desktop
 /usr/local/share/doc/qtfm-6.3.0/AUTHORS
 /usr/local/share/doc/qtfm-6.3.0/ChangeLog

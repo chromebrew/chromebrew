@@ -3,27 +3,26 @@ require 'package'
 class Qtfm < Package
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
-  version '6.3.0-c19b9c1'
+  version '6.3.0-c19b9c1-1'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/rodlie/qtfm.git'
   git_hashtag 'c19b9c14d1afde8558c912b17497dd2c34c971ef'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1_armv7l/qtfm-6.3.0-c19b9c1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1_armv7l/qtfm-6.3.0-c19b9c1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1_x86_64/qtfm-6.3.0-c19b9c1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1-1_armv7l/qtfm-6.3.0-c19b9c1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1-1_armv7l/qtfm-6.3.0-c19b9c1-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1-1_x86_64/qtfm-6.3.0-c19b9c1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '77291ef1b43542d0b6269428c7d7c4cbd0d900d0ae34c2f80d95a4a58e16e0db',
-     armv7l: '77291ef1b43542d0b6269428c7d7c4cbd0d900d0ae34c2f80d95a4a58e16e0db',
-     x86_64: '7de70548f891d644236d84e53ba08b4dbb48fadd9c92977c419205a999da83f9'
+    aarch64: '414ca7a9d1e42424456dd0c8f32abcda0e3e9b6fee193fc51f89e45ad1413f68',
+     armv7l: '414ca7a9d1e42424456dd0c8f32abcda0e3e9b6fee193fc51f89e45ad1413f68',
+     x86_64: '2a83b6944bd9e04a655afc1c5789b2cbad676e3b78440ab1a0c325ad74e72aa1'
   })
 
   depends_on 'ffmpeg' # R
   depends_on 'gcc' # R
   depends_on 'glibc' # R
-  depends_on 'imagemagick7' # R
   depends_on 'qtbase' # R
 
   def self.patch
@@ -33,9 +32,10 @@ class Qtfm < Package
 
   def self.build
     system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+        -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
         -DENABLE_DBUS=OFF \
         -DENABLE_FFMPEG=ON \
-        -DENABLE_MAGICK=ON \
+        -DENABLE_MAGICK=OFF \
         -DENABLE_TRAY=OFF \
         -DENABLE_UDISKS=OFF \
         -Wno-dev \
