@@ -6,23 +6,21 @@ require 'package'
 class Tracker3 < Package
   description 'Desktop-neutral user information store, search tool and indexer'
   homepage 'https://wiki.gnome.org/Projects/Tracker'
-  version '3.5.0'
+  version '3.5.3'
   license 'GPLv2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/tracker.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.0_armv7l/tracker3-3.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.0_armv7l/tracker3-3.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.0_i686/tracker3-3.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.0_x86_64/tracker3-3.5.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.3_armv7l/tracker3-3.5.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.3_armv7l/tracker3-3.5.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.3_x86_64/tracker3-3.5.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3a8b373d7264681df1abd2cab31df0b4b55b2b094ecf3418d4a4daefca2b1e5b',
-     armv7l: '3a8b373d7264681df1abd2cab31df0b4b55b2b094ecf3418d4a4daefca2b1e5b',
-       i686: '63eac259d495420d057634e1eba55c6ab3d1e4c63e25cfc37b75a224e0b78c2b',
-     x86_64: '24773226fab94d1f5fc9f9da4fa8e347d790717be6177451696bb700105aaf38'
+    aarch64: '418e1194ab2c3b06520ca4bc70734d2608d1eed30373de2a33672d7bb3ee941b',
+     armv7l: '418e1194ab2c3b06520ca4bc70734d2608d1eed30373de2a33672d7bb3ee941b',
+     x86_64: '8f3f2c5032e828955f781d757b401d6b6eff0aa3a681d8670aea61c82d750def'
   })
 
   depends_on 'asciidoc' => :build
