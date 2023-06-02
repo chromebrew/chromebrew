@@ -2,7 +2,7 @@ require 'package'
 require_relative 'llvm_build'
 
 class Llvm_bin < Package
-  description 'LLVM Libraries'
+  description 'LLVM: Everything except libLLVM'
   homepage Llvm_build.homepage
   version '16.0.4'
   # When upgrading llvm, be sure to upgrade llvm_libs in tandem.
@@ -34,7 +34,7 @@ class Llvm_bin < Package
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|
-      next unless filename.include?(CREW_LIB_PREFIX) && filename.include?('.so') && filename.include?('libLLVM')
+      next unless filename.include?(CREW_LIB_PREFIX) && !filename.include?('.so') && !filename.include?('libLLVM')
 
       @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
       @filename_target = File.realpath(filename)
