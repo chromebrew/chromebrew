@@ -1,7 +1,7 @@
 require 'package'
 require_relative 'llvm_build'
 
-class Llvm_libs < Package
+class Llvm_bin < Package
   description 'LLVM Libraries'
   homepage Llvm_build.homepage
   version '16.0.4'
