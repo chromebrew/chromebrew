@@ -6926,8 +6926,18 @@ url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
 activity: low
 ---
 kind: url
+name: py3_brotlicffi
+url: https://github.com/python-hyper/brotlicffi/tags
+activity: low
+---
+kind: url
 name: py3_gi_docgen
 url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
+activity: medium
+---
+kind: url
+name: py3_mutagen
+url: https://github.com/quodlibet/mutagen/releases
 activity: medium
 ---
 kind: url
@@ -6939,6 +6949,11 @@ kind: url
 name: py3_setuptools
 url: https://github.com/pypa/setuptools/releases
 activity: medium
+---
+kind: url
+name: py3_websockets
+url: https://github.com/python-websockets/websockets/tags
+activity: high
 ---
 kind: url
 name: py3_wheel
@@ -9048,6 +9063,11 @@ activity: high
 kind: url
 name: youtube_dl
 url: https://github.com/rg3/youtube-dl/releases
+activity: high
+---
+kind: url
+name: yt_dlp
+url: https://github.com/yt-dlp/yt-dlp/releases
 activity: high
 ---
 kind: url

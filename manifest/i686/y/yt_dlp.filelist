@@ -1,0 +1,5 @@
+/usr/local/bin/yt-dlp
+/usr/local/share/bash-completion/completions/yt-dlp
+/usr/local/share/fish/vendor_completions.d/yt-dlp.fish
+/usr/local/share/man/man1/yt-dlp.1.zst
+/usr/local/share/zsh/site-functions/_yt-dlp
