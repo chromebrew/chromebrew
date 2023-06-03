@@ -11,16 +11,16 @@ class Llvm_build < Package
   git_hashtag "llvmorg-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_armv7l/llvm-16.0.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_armv7l/llvm-16.0.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_i686/llvm-16.0.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm/16.0.4_x86_64/llvm-16.0.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_build/16.0.5_armv7l/llvm_build-16.0.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_build/16.0.5_armv7l/llvm_build-16.0.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_build/16.0.5_i686/llvm_build-16.0.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_build/16.0.5_x86_64/llvm_build-16.0.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '855163a440ee90063318e5197434a9cdc1369f576e1635916f9fec5eee230048',
-     armv7l: '855163a440ee90063318e5197434a9cdc1369f576e1635916f9fec5eee230048',
-       i686: '2f7bedad924926887e26ed11d215cb3700ed11d5109c73da83cb2097f1e58292',
-     x86_64: '6dfb48123873899363b9b4ec62645951f2f39380c84ef102815f9371be80f374'
+    aarch64: '9c2cf4b212a6db1175945d98beeae7b7e7cee8b270570651261fcde7818444ce',
+     armv7l: '9c2cf4b212a6db1175945d98beeae7b7e7cee8b270570651261fcde7818444ce',
+       i686: '7eeb97b5675712423c091ac84b8f0bf753a8ae7789857c1b8f17f88b5bb5df7d',
+     x86_64: '54b646b81f76a6c8f7e2593fb1cfe002502ca433a52a4ec85cfe6924b3ad2895'
   })
 
   depends_on 'ocaml' => :build
