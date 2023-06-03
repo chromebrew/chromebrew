@@ -12,19 +12,28 @@ class Llvm_libs < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.4_armv7l/llvm_libs-16.0.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.4_armv7l/llvm_libs-16.0.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.4_i686/llvm_libs-16.0.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.4_x86_64/llvm_libs-16.0.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.5_armv7l/llvm_libs-16.0.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.5_armv7l/llvm_libs-16.0.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.5_i686/llvm_libs-16.0.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_libs/16.0.5_x86_64/llvm_libs-16.0.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b6e5091f724e334ca371ac9b6e391496b2875b56e927f5f8cebccdf7e4f899bb',
-     armv7l: 'b6e5091f724e334ca371ac9b6e391496b2875b56e927f5f8cebccdf7e4f899bb',
-       i686: '35cc9ee58f6fb140cc3babfe96c0f472c04949f01439b06eee455cac3a9e647b',
-     x86_64: '7c2a38326d08d6d69ccad8c47906d67956111b784359ca50dd67b7735d355027'
+    aarch64: '9761adb20f321950ef7c5040d3c57cdc9d079a0a73019a92a6cf27e2356719a8',
+     armv7l: '9761adb20f321950ef7c5040d3c57cdc9d079a0a73019a92a6cf27e2356719a8',
+       i686: '286cba57561e4c60084981f6019636489c3e59bd861ec92d7591bbb379c5bf3a',
+     x86_64: '571392d60f172f60bbfb029af2e3e868b3fed1cce2c965955b0711468740dfa1'
   })
 
   depends_on 'llvm_build' => :build
+  depends_on 'gcc' # R
+  depends_on 'glibc' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libxml2' # R
+  depends_on 'ncurses' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
+
   conflicts_ok
 
   def self.install

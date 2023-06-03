@@ -10,7 +10,6 @@ class Llvm < Package
 
   is_fake
 
-  #depends_on 'llvm_libs'
-  #depends_on 'llvm_bin'
-  depends_on 'llvm_build'
+  depends_on 'llvm_libs'
+  depends_on 'llvm_bin'
 end
