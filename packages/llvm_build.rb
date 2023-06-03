@@ -3,7 +3,7 @@ require 'package'
 class Llvm_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  @_ver = '16.0.4'
+  @_ver = '16.0.5'
   version @_ver
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
@@ -39,6 +39,7 @@ class Llvm_build < Package
   depends_on 'zstd' # R
 
   no_env_options
+  conflicts_ok
 
   case ARCH
   when 'aarch64', 'armv7l'

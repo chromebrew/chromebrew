@@ -4,7 +4,7 @@ require_relative 'llvm_build'
 class Llvm_bin < Package
   description 'LLVM: Everything except libLLVM'
   homepage Llvm_build.homepage
-  version '16.0.4'
+  version '16.0.5'
   # When upgrading llvm, be sure to upgrade llvm_libs in tandem.
   puts "#{self} version differs from llvm version #{Llvm_build.version}".orange if version != Llvm_build.version.to_s
   license Llvm_build.license

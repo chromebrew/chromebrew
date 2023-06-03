@@ -7,7 +7,7 @@ require_relative 'llvm'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '16.0.4'
+  version '16.0.5'
   # When upgrading llvm, be sure to upgrade openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm.version}".orange if version != Llvm.version.to_s
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
