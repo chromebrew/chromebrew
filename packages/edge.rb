@@ -3,16 +3,20 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '113.0.1774.57-1'
+  version '114.0.1823.37-1'
   compatibility 'x86_64'
   license 'MIT'
-  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_113.0.1774.57-1_amd64.deb'
-  source_sha256 'f8ce2c7475f39d175f77818e0ccc5493b37823df33aec5575aab1d8b16818a2d'
+  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_114.0.1823.37-1_amd64.deb'
+  source_sha256 '2342b8940d94e21ed69efbcea3822ab75b1be4333f755653693b60654e0f3312'
+
+  depends_on 'at_spi2_core'
+  depends_on 'libcom_err'
+  depends_on 'libxcomposite'
+  depends_on 'libxdamage'
+  depends_on 'sommelier'
 
   no_compile_needed
-
-  depends_on 'libcom_err'
-  depends_on 'sommelier'
+  no_shrink
 
   def self.patch
     # Make sure the executable path is correct.
