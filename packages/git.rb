@@ -3,23 +3,23 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.40.1' # Do not use @_ver here, it will break the installer.
+  version '2.41.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.40.1.tar.xz'
-  source_sha256 '4893b8b98eefc9fdc4b0e7ca249e340004faa7804a433d17429e311e1fef21d2'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.41.0.tar.xz'
+  source_sha256 'e748bafd424cfe80b212cbc6f1bbccc3a47d4862fb1eb7988877750478568040'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_armv7l/git-2.40.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_armv7l/git-2.40.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_i686/git-2.40.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.40.1_x86_64/git-2.40.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_armv7l/git-2.41.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_armv7l/git-2.41.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_i686/git-2.41.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_x86_64/git-2.41.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6732e4a1b5c55dc0009de7c6d2f2834050c5d48ada82dd02a80a4bb06080d363',
-     armv7l: '6732e4a1b5c55dc0009de7c6d2f2834050c5d48ada82dd02a80a4bb06080d363',
-       i686: 'dd8a123503a2970405e748bae73294f509b2a138a1b9daecd5f604c3673febee',
-     x86_64: 'a9df1739222bf0ece3fbd3d6885a728649f798b0e7911c5d747bece87e20c11b'
+    aarch64: 'a97633447906fed410ab11b260121492c904f8e0a7c94eaf6b667c5fe626a0c9',
+     armv7l: 'a97633447906fed410ab11b260121492c904f8e0a7c94eaf6b667c5fe626a0c9',
+       i686: 'f2e5a76e573c12d0584e6241c6f1b62b1d44394a9f22cea5029914daf5db6cf4',
+     x86_64: '41415400d573af954371398375204003a5b4306c027e2fdf75c764dba93aaf11'
   })
 
   depends_on 'ca_certificates' => :build
@@ -81,6 +81,13 @@ class Git < Package
     unless File.symlink?("#{CREW_DEST_PREFIX}/libexec/git-core/git-remote-https") ||
            File.exist?("#{CREW_DEST_PREFIX}/libexec/git-core/git-remote-https")
       abort 'git-remote-https is broken'.lightred
+    end
+  end
+
+  def self.postinstall
+    puts 'Running git garbage collection...'.lightblue
+    Dir.chdir("#{CREW_PREFIX}/lib/crew") do
+      system 'git gc', exception: false
     end
   end
 end

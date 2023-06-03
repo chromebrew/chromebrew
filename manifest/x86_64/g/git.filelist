@@ -216,6 +216,7 @@
 /usr/local/share/git-core/templates/hooks/pre-rebase.sample
 /usr/local/share/git-core/templates/hooks/pre-receive.sample
 /usr/local/share/git-core/templates/hooks/push-to-checkout.sample
+/usr/local/share/git-core/templates/hooks/sendemail-validate.sample
 /usr/local/share/git-core/templates/hooks/update.sample
 /usr/local/share/git-core/templates/info/exclude
 /usr/local/share/locale/bg/LC_MESSAGES/git.mo
@@ -233,6 +234,7 @@
 /usr/local/share/locale/ru/LC_MESSAGES/git.mo
 /usr/local/share/locale/sv/LC_MESSAGES/git.mo
 /usr/local/share/locale/tr/LC_MESSAGES/git.mo
+/usr/local/share/locale/uk/LC_MESSAGES/git.mo
 /usr/local/share/locale/vi/LC_MESSAGES/git.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/git.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/git.mo
