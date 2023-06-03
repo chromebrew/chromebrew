@@ -24,7 +24,7 @@ class Llvm_libs < Package
      x86_64: '7c2a38326d08d6d69ccad8c47906d67956111b784359ca50dd67b7735d355027'
   })
 
-  depends_on 'llvm' => :build
+  depends_on 'llvm_build' => :build
   conflicts_ok
 
   def self.install
