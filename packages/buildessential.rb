@@ -95,7 +95,6 @@ class Buildessential < Package
 
   # LLVM
   depends_on 'llvm_dev16'
-  depends_on 'openmp' # msgmerge from gettext depends upon this.
 
   # Meson build system
   depends_on 'meson'
