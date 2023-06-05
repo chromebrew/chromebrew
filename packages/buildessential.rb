@@ -94,7 +94,7 @@ class Buildessential < Package
   # depends_on 'sbcl'
 
   # LLVM
-  depends_on 'llvm'
+  depends_on 'llvm_dev16'
 
   # Meson build system
   depends_on 'meson'
@@ -109,7 +109,7 @@ class Buildessential < Package
 
   # Patchelf
   # for setting library paths in packages
-  depends_on 'patchelf'
+  # depends_on 'patchelf'
 
   # Add pax_utils (gives us lddtree)
   depends_on 'pax_utils'

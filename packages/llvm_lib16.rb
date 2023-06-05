@@ -1,5 +1,5 @@
 require 'package'
-require_relative 'llvm_build1616'
+require_relative 'llvm_build16'
 
 class Llvm_lib16 < Package
   description 'LibLLVM and llvm-strip'

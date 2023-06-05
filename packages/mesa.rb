@@ -45,7 +45,7 @@ class Mesa < Package
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako'
   depends_on 'valgrind' => :build
@@ -56,7 +56,7 @@ class Mesa < Package
   depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'llvm' # R
+  depends_on 'llvm_lib16' # R
 
   def self.build
     @gallium_drivers = ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'

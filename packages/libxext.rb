@@ -22,7 +22,7 @@ class Libxext < Package
      x86_64: '9024bf186472eeb3ed2fe0ea7c77716f76c9860248418d8f804f600d5b5c2704'
   })
 
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
 
   def self.build
     ENV['CFLAGS'] = '-fuse-ld=lld'

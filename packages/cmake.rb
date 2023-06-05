@@ -35,7 +35,7 @@ class Cmake < Package
   depends_on 'curl'
   depends_on 'librhash'
   depends_on 'libuv'
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
   depends_on 'gcc' # R
   depends_on 'ncurses' # R
 

@@ -49,7 +49,7 @@ class Weston < Package
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
   depends_on 'linux_pam' # R
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
   depends_on 'mesa' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
