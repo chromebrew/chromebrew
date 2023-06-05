@@ -1,3 +1,4 @@
+/usr/local/bin/llvm-strip
 /usr/local/lib64/libLLVM-16.0.5.so
 /usr/local/lib64/libLLVM-16.so
 /usr/local/lib64/libLLVM.so
