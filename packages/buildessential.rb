@@ -94,7 +94,8 @@ class Buildessential < Package
   # depends_on 'sbcl'
 
   # LLVM
-  depends_on 'llvm_dev16'
+  # This can be pulled in on a per-package basis...
+  # depends_on 'llvm_dev16'
 
   # Meson build system
   depends_on 'meson'
