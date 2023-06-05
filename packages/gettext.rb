@@ -32,7 +32,7 @@ class Gettext < Package
   depends_on 'openjdk8' => :build
   depends_on 'openmp' => :build
   depends_on 'zlibpkg' # R
-  depends_on 'openmp' # R
+  # depends_on 'openmp' # R This is only needed for the msgmerge binary.
   no_env_options
 
   def self.build
