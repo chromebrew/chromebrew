@@ -36,8 +36,6 @@ class Gettext < Package
   no_env_options
 
   def self.build
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
-
     system '[ -x configure ] || ./autogen.sh'
     system 'filefix'
     system "CC=clang CXX=clang++ ./configure #{CREW_OPTIONS} \
