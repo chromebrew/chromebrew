@@ -30,7 +30,7 @@ eudev
 expat
 filecmd
 flex
-gcc
+gcc_lib
 gdbm
 gettext
 git
