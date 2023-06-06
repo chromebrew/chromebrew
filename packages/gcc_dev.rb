@@ -8,7 +8,6 @@ class Gcc_dev < Package
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib and gcc_dev in tandem.
   puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version != Gcc_build.version.to_s
-  license Gcc_build.license
   compatibility 'all'
   source_url 'SKIP'
 
