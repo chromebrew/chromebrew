@@ -25,7 +25,7 @@ class Llvm_lib16 < Package
   })
 
   depends_on 'llvm_build16' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R

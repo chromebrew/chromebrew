@@ -27,7 +27,7 @@ class Llvm_build16 < Package
   depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
