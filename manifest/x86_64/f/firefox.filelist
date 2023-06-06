@@ -23,6 +23,7 @@
 /usr/local/firefox/firefox_sh
 /usr/local/firefox/firefox.sig
 /usr/local/firefox/fonts/TwemojiMozilla.ttf
+/usr/local/firefox/glxtest
 /usr/local/firefox/gmp-clearkey/0.1/libclearkey.so
 /usr/local/firefox/gmp-clearkey/0.1/libclearkey.so.sig
 /usr/local/firefox/gmp-clearkey/0.1/manifest.json
@@ -59,6 +60,7 @@
 /usr/local/firefox/updater
 /usr/local/firefox/updater.ini
 /usr/local/firefox/update-settings.ini
+/usr/local/firefox/vaapitest
 /usr/local/share/applications/firefox.desktop
 /usr/local/share/icons/hicolor/128x128/apps/firefox.png
 /usr/local/share/icons/hicolor/16x16/apps/firefox.png
