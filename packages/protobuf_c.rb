@@ -27,7 +27,7 @@ class Protobuf_c < Package
 
   depends_on 'protobuf'
   depends_on 'glibc' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

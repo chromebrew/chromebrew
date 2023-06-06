@@ -22,7 +22,7 @@ class Waypipe < Package
 
   depends_on 'speexdsp' => :build
   depends_on 'ffmpeg' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libdrm' => :build
   depends_on 'libva' # R

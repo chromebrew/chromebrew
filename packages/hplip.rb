@@ -22,7 +22,7 @@ class Hplip < Package
   depends_on 'dbus'
   depends_on 'libjpeg'
   depends_on 'sane_backends'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libusb' # R
   depends_on 'zlibpkg' # R

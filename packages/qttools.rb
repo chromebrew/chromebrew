@@ -20,7 +20,7 @@ class Qttools < Package
      x86_64: 'fe800718c747ffc4867a974def71df43a72cd3bdc76f98654b762495f12026f7'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
   depends_on 'qtbase' # R

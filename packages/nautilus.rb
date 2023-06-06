@@ -27,7 +27,7 @@ class Nautilus < Package
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'dconf' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'gexiv2' # R
   depends_on 'glibc' # R

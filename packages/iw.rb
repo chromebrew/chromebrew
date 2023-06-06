@@ -25,7 +25,7 @@ class Iw < Package
 
   depends_on 'libnl3'
   depends_on 'glibc' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.patch
     system "sed -i 's:/usr:#{CREW_PREFIX}:g' Makefile" # Change prefix to CREW_PREFIX

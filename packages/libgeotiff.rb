@@ -22,7 +22,7 @@ class Libgeotiff < Package
      x86_64: '14c3b9e715d8fb79247f8fb17b93a843219f4e064b6b71115a4d57f2ff81ed6b'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libtiff' # R
   depends_on 'proj4' # R

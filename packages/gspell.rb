@@ -23,7 +23,7 @@ class Gspell < Package
   depends_on 'aspell' # R
   depends_on 'at_spi2_core' # R
   depends_on 'enchant' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R

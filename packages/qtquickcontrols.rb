@@ -23,7 +23,7 @@ class Qtquickcontrols < Package
      x86_64: '4a8cfe69df169eaf5c8b3e17ecc0d25d4a5ab1831a0ce7d4a50c0f032272763a'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qtbase' # R

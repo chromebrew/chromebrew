@@ -28,7 +28,7 @@ class Source_highlight < Package
   depends_on 'boost' # R
   depends_on 'ctags' => :build
   depends_on 'texinfo' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

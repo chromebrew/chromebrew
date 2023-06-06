@@ -25,7 +25,7 @@ class Vulkan_tools < Package
      x86_64: '1d42540b628e8ebcd42a83cbfe10673f203e99e80248f7b58731c679d9c86eec'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
   depends_on 'libx11' # R

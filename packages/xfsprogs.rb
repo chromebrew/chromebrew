@@ -22,7 +22,7 @@ class Xfsprogs < Package
      x86_64: '48d2e7511699a59e52f224109479503d5a8bdd4f39e05f4b7e0d492436360cf1'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gettext' => :build
   depends_on 'glibc' # R
   depends_on 'icu4c' # R

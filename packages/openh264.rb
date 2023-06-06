@@ -25,7 +25,7 @@ class Openh264 < Package
      x86_64: '5a4dcecb3251a329c6b6539162e212fc4fb497159e98567208bc348bda5d579d'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'nasm' => :build
 

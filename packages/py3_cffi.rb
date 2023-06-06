@@ -23,7 +23,7 @@ class Py3_cffi < Package
      x86_64: 'f03f003193fdd26fd6aa6945bba10bf76d15a9e0c25c19a6c6563b7b8ba31932'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
   depends_on 'python3' # L

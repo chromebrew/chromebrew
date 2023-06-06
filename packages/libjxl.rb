@@ -33,7 +33,7 @@ class Libjxl < Package
   depends_on 'at_spi2_core' # R
   depends_on 'babl' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gegl' # R
   depends_on 'gimp' => :build
   depends_on 'glib' # R

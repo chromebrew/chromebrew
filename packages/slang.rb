@@ -26,7 +26,7 @@ class Slang < Package
   depends_on 'libpng' # R
   depends_on 'pcre' # R
   depends_on 'zlibpkg' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "mold -run ./configure #{CREW_OPTIONS} --without-x"

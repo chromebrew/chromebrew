@@ -28,7 +28,7 @@ class Jack < Package
   depends_on 'libdb'
   depends_on 'libsndfile'
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'opus' # R
 

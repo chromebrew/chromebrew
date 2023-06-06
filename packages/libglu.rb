@@ -22,7 +22,7 @@ class Libglu < Package
     x86_64: '55358e0044362fd6a9a4c1abf11f6d5757cd8cc757d96787da850e3b107ef4d1'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
   depends_on 'libglvnd' # R

@@ -30,7 +30,7 @@ class Gjs < Package
   depends_on 'gobject_introspection' # R
   depends_on 'js102'
   depends_on 'libx11' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libffi' # R

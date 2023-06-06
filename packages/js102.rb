@@ -23,7 +23,7 @@ class Js102 < Package
   })
 
   depends_on 'autoconf213' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libnotify' => :build

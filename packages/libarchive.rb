@@ -34,7 +34,7 @@ class Libarchive < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "mold -run ./configure #{CREW_OPTIONS}"

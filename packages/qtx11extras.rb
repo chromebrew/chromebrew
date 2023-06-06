@@ -20,7 +20,7 @@ class Qtx11extras < Package
      x86_64: '225bf24774fd718bcbc89c0b681a56c05d65eeb054662f05dc52ae44e6f1aae2'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qtbase' # R

@@ -25,7 +25,7 @@ class Gdbm < Package
 
   depends_on 'glibc' # R
   depends_on 'readline' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "mold -run ./configure \

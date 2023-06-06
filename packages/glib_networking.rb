@@ -22,7 +22,7 @@ class Glib_networking < Package
      x86_64: 'eba4a6f591b61f4258112e5a9a8c5f0c90019e0749398890ed33db281160ad1b'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnutls' # R

@@ -1,7 +1,7 @@
 require 'package'
 require_relative 'gcc_build'
 
-class Llvm < Package
+class Gcc < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage Gcc_build.homepage.to_s
   version Gcc_build.version.to_s

@@ -28,7 +28,7 @@ class Openmp < Package
      x86_64: '99e5bec3bb7c1704c1002c7abdb9dc3764a8cae950229bf589f475163f23e905'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi'
   depends_on 'llvm_lib16' # R

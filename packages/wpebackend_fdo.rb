@@ -28,7 +28,7 @@ class Wpebackend_fdo < Package
   depends_on 'libepoxy'
   depends_on 'mesa' => :build
   depends_on 'wayland_protocols' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
 

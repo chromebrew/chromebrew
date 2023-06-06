@@ -24,7 +24,7 @@ class Gettext < Package
 
   depends_on 'acl' # R
   depends_on 'attr' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libunistring' # R

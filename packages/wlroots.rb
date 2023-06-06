@@ -24,7 +24,7 @@ class Wlroots < Package
   })
 
   depends_on 'eudev' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'hwdata' => :build
   depends_on 'libdrm' # R

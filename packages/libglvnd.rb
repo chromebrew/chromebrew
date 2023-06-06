@@ -23,7 +23,7 @@ class Libglvnd < Package
      x86_64: 'e076f11dae10b4fd8c21076b33a85be40bc585cc7612f3da29802e6b09e58ba5'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glproto' => :build
   depends_on 'libx11' # R

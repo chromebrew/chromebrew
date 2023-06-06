@@ -25,7 +25,7 @@ class Glmark2 < Package
      x86_64: '8343d0404f69f2b1e064fdd7d8c4675bd2600b8d30cbb6cdaae99f207a6594e3'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libdrm'
   depends_on 'libjpeg'

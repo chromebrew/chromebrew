@@ -27,7 +27,7 @@ class Peek < Package
   depends_on 'harfbuzz' # R
   depends_on 'pango' # R
   depends_on 'vala' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \

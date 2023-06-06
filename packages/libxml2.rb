@@ -22,7 +22,7 @@ class Libxml2 < Package
      x86_64: '266475bea4c3f138f9d1e894b36cdf1cfafb38db6d69945f41c3bc1ac11f70d3'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'ncurses'

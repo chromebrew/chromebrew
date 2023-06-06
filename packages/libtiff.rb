@@ -23,7 +23,7 @@ class Libtiff < Package
   })
 
   depends_on 'freeglut' unless ARCH == 'i686' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'imake' => :build
   depends_on 'jbigkit' # R

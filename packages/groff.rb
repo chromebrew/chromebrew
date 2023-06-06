@@ -22,7 +22,7 @@ class Groff < Package
      x86_64: '3f3bf23656ec19567fab24646361569c2e42f8273e473b229eb5800ea53d1d30'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   # depends_on 'libice' # R (Not needed for groff binary)
   # depends_on 'libsm' # R (Not needed for groff binary)

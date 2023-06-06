@@ -32,7 +32,7 @@ class Gcc10 < Package
   depends_on 'mpfr' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   conflicts_ok
   no_env_options

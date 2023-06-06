@@ -23,7 +23,7 @@ class Libwebp < Package
   })
 
   depends_on 'freeglut' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'giflib' # R
   depends_on 'glibc' # R
   depends_on 'jbigkit' # R

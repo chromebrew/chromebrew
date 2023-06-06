@@ -24,7 +24,7 @@ class Mupdf < Package
 
   depends_on 'freeglut'
   depends_on 'freetype'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jbigkit'
   depends_on 'curl' # R

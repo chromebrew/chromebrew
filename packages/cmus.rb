@@ -25,7 +25,7 @@ class Cmus < Package
   depends_on 'faad2' # R
   depends_on 'ffmpeg' => :build
   depends_on 'flac' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jack1' # R
   depends_on 'jack' # R

@@ -26,7 +26,7 @@ class Gnome_terminal < Package
   depends_on 'dbus' # L
   depends_on 'dconf' => :build
   depends_on 'desktop_file_utilities' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas'

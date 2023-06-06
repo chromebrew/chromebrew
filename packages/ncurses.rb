@@ -22,7 +22,7 @@ class Ncurses < Package
      x86_64: '8deeac491093d2413eb512daf8c0a98839e3e144ff282d94ec9566c59bd98aba'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   no_patchelf
 

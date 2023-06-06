@@ -22,7 +22,7 @@ class Pixman < Package
      x86_64: 'fa18fdd7bd6c4f8bed2199391b36b6403bee73da220b5730371e13d2f074fed8'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

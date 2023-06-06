@@ -23,7 +23,7 @@ class Mpv < Package
 
   depends_on 'alsa_lib' # R
   depends_on 'ffmpeg' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jack' # R
   depends_on 'lcms' # R

@@ -21,7 +21,7 @@ class Libde265 < Package
      x86_64: '83acdc8cce935ffce2922bd8a8432978662b2c759df192b38c543709800fb574'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libsdl' # R
 

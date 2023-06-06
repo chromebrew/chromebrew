@@ -23,7 +23,7 @@ class Popt < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'gcc' unless ARCH == 'x86_64' # R
+  depends_on 'gcc_lib' unless ARCH == 'x86_64' # R
   no_patchelf
   no_zstd
 

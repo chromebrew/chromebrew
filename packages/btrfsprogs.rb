@@ -23,7 +23,7 @@ class Btrfsprogs < Package
   })
 
   depends_on 'e2fsprogs'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libgcrypt' # R
   depends_on 'lzo' # R

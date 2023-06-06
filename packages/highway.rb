@@ -25,7 +25,7 @@ class Highway < Package
      x86_64: 'aa0488630c6ddfbdbecdd43870568767f4bb99075f188285d4fb9d5af2caa6dd'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

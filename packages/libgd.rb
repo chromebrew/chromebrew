@@ -25,7 +25,7 @@ class Libgd < Package
   depends_on 'libpng'
   depends_on 'libavif'
   depends_on 'libheif'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

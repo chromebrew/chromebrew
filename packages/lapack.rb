@@ -23,7 +23,7 @@ class Lapack < Package
      x86_64: '9c4b6ddc16d763f61d79cc7bdc21021f83b6efb06419851ac6a502372f26d850'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

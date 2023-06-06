@@ -23,7 +23,7 @@ class Qtwebchannel < Package
      x86_64: 'e702fa7fee745f72374c288142701667d446d7615781f777fbe7fad396df92b3'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qtbase' # R

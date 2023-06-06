@@ -27,7 +27,7 @@ class Sdl2_image < Package
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libwebp'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

@@ -22,7 +22,7 @@ class Uchardet < Package
      x86_64: '75d94151c984a1b983e765fdfe33f767c84170c0b95724671665d4a8f80cb4be'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

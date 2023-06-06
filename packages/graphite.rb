@@ -22,7 +22,7 @@ class Graphite < Package
      x86_64: 'f3e5350af96d7c6785b06f260bbc66a96568118739ae737cd98d91e9cfcc49ca'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.patch

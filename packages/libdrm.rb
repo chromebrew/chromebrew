@@ -28,7 +28,7 @@ class Libdrm < Package
   depends_on 'eudev' => :build
   depends_on 'libxslt' => :build
   depends_on 'glibc' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

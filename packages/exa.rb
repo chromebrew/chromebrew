@@ -23,7 +23,7 @@ class Exa < Package
      x86_64: '6664ea74960837d09a049303ed36b3b766e40a85c652da2ec293279d87f9460f'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libgit2' # R
   depends_on 'moreutils' => :build # for the sponge command

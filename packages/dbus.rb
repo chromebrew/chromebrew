@@ -25,7 +25,7 @@ class Dbus < Package
   depends_on 'libice' => :build
   depends_on 'libsm' => :build
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libx11' # R
 
