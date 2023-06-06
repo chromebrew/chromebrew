@@ -2,36 +2,36 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
-require_relative 'llvm'
+require_relative 'llvm_build16'
 
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '16.0.4'
-  # When upgrading llvm, be sure to upgrade openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm.version}".orange if version != Llvm.version.to_s
+  version '16.0.5'
+  # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
+  puts "#{self} version differs from llvm version #{Llvm_build16.version}".orange if version != Llvm_build16.version.to_s
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm.git_hashtag.to_s
+  git_hashtag Llvm_build16.git_hashtag.to_s
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.4_armv7l/openmp-16.0.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.4_armv7l/openmp-16.0.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.4_i686/openmp-16.0.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.4_x86_64/openmp-16.0.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.5_armv7l/openmp-16.0.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.5_armv7l/openmp-16.0.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.5_i686/openmp-16.0.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.5_x86_64/openmp-16.0.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b66cf6175ade3740637533506e26926beb9293aedec5dc5d773644c78969bf89',
-     armv7l: 'b66cf6175ade3740637533506e26926beb9293aedec5dc5d773644c78969bf89',
-       i686: 'ef27539a2d4e7d32aa43f76db3480f431ff2eee6976e68187494cd74bdbf25cd',
-     x86_64: '3453bb535c6291555b610befc6c54252ee961c100995c9eca97dc76579cbe66e'
+    aarch64: 'd667cec638ae62c4dc55e11f806948aca950bd365700cf8154e446fc843ed597',
+     armv7l: 'd667cec638ae62c4dc55e11f806948aca950bd365700cf8154e446fc843ed597',
+       i686: '0b88daf871a13bf1eab3216ecce5e13e881e69aea6d96296c1d08dd2fe08fc87',
+     x86_64: '99e5bec3bb7c1704c1002c7abdb9dc3764a8cae950229bf589f475163f23e905'
   })
 
   depends_on 'gcc' # R
   depends_on 'glibc' # R
   depends_on 'libffi'
-  depends_on 'llvm' # R
+  depends_on 'llvm_lib16' # R
   depends_on 'python3' # R
 
   no_env_options

@@ -26,7 +26,7 @@ class Qttools < Package
   depends_on 'qtbase' # R
   depends_on 'libtinfo' => :build
   depends_on 'libglvnd' # R
-  depends_on 'llvm' # R
+  depends_on 'llvm_lib16' # R
   depends_on 'qtdeclarative' # R
 
   def self.build

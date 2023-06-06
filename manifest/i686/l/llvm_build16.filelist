@@ -4053,7 +4053,7 @@
 /usr/local/lib/libclangSerialization.a
 /usr/local/lib/libclang.so
 /usr/local/lib/libclang.so.16
-/usr/local/lib/libclang.so.16.0.4
+/usr/local/lib/libclang.so.16.0.5
 /usr/local/lib/libclangStaticAnalyzerCheckers.a
 /usr/local/lib/libclangStaticAnalyzerCore.a
 /usr/local/lib/libclangStaticAnalyzerFrontend.a
@@ -4102,14 +4102,14 @@
 /usr/local/lib/liblldbIntelFeatures.so.16
 /usr/local/lib/liblldb.so
 /usr/local/lib/liblldb.so.16
-/usr/local/lib/liblldb.so.16.0.4
+/usr/local/lib/liblldb.so.16.0.5
 /usr/local/lib/liblldCOFF.a
 /usr/local/lib/liblldCommon.a
 /usr/local/lib/liblldELF.a
 /usr/local/lib/liblldMachO.a
 /usr/local/lib/liblldMinGW.a
 /usr/local/lib/liblldWasm.a
-/usr/local/lib/libLLVM-16.0.4.so
+/usr/local/lib/libLLVM-16.0.5.so
 /usr/local/lib/libLLVM-16.so
 /usr/local/lib/libLLVMAArch64AsmParser.a
 /usr/local/lib/libLLVMAArch64CodeGen.a

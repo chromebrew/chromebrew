@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.23'
+  version '1.24'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -94,7 +94,9 @@ class Buildessential < Package
   # depends_on 'sbcl'
 
   # LLVM
-  depends_on 'llvm'
+  # This can be pulled in on a per-package basis...
+  # depends_on 'llvm_dev16'
+  depends_on 'llvm_lib16' # This provides llvm-strip
 
   # Meson build system
   depends_on 'meson'
@@ -109,7 +111,7 @@ class Buildessential < Package
 
   # Patchelf
   # for setting library paths in packages
-  depends_on 'patchelf'
+  # depends_on 'patchelf'
 
   # Add pax_utils (gives us lddtree)
   depends_on 'pax_utils'

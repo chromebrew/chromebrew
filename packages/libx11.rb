@@ -29,7 +29,7 @@ class Libx11 < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxtrans' => :build
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
   depends_on 'xorg_proto' => :build
 
   def self.build
