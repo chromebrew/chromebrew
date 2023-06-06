@@ -35,8 +35,6 @@ class Gcc_dev < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  conflicts_ok
-
   def self.install
     puts 'Installing Gcc_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'gcc_build.filelist')

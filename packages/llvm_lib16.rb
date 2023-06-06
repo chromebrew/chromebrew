@@ -34,8 +34,6 @@ class Llvm_lib16 < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  conflicts_ok
-
   def self.install
     puts 'Installing llvm_build16 to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'llvm_build16.filelist')

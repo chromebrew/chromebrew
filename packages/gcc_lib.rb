@@ -27,8 +27,6 @@ class Gcc_lib < Package
   depends_on 'gcc_build' => :build
   depends_on 'glibc' # R
 
-  conflicts_ok
-
   def self.install
     puts 'Installing Gcc_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'gcc_build.filelist')
