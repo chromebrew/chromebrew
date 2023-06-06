@@ -1139,7 +1139,7 @@ def prepare_package(destdir)
     # check for conflicts with other installed files
     puts 'Checking for conflicts with files from installed packages...'
     conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
+    conflictscmd = `grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
