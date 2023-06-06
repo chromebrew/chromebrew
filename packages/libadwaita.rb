@@ -23,7 +23,7 @@ class Libadwaita < Package
 
   depends_on 'cairo' => :build
   depends_on 'fribidi' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R

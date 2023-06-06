@@ -20,7 +20,7 @@ class Qtlocation < Package
      x86_64: '6a9b2e3c7b80f7ee9cf5f4f9721989878093dbe733330cdb92c89634f0c8c4f1'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libglvnd' # R

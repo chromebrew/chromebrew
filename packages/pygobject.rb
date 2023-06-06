@@ -23,7 +23,7 @@ class Pygobject < Package
      x86_64: 'b8cd3b017da2a8b5c20eadbd5423096a79d5772a88141f039b2e34dc7bd42a93'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R

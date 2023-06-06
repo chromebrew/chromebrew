@@ -29,7 +29,7 @@ class Exempi < Package
   depends_on 'autoconf_archive' => :build
   depends_on 'boost' => :build
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 

@@ -44,7 +44,7 @@ class Gnome_desktop < Package
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
   depends_on 'libseccomp' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   gnome
 

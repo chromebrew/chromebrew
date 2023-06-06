@@ -31,7 +31,7 @@ class Glib < Package
   depends_on 'util_linux' # R
   depends_on 'zlibpkg' # R
   depends_on 'pcre2' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   no_strip if %w[aarch64 armv7l].include? ARCH
   gnome

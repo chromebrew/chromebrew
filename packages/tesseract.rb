@@ -34,7 +34,7 @@ class Tesseract < Package
   depends_on 'expat' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'giflib' # R
   depends_on 'glib' => :build
   depends_on 'glibc' # R

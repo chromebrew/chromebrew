@@ -35,7 +35,7 @@ class Gtk_vnc < Package
   depends_on 'libcyrussasl' # R
   depends_on 'libx11' # R
   depends_on 'zlibpkg' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "meson \

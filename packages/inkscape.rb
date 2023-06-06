@@ -31,7 +31,7 @@ class Inkscape < Package
   depends_on 'double_conversion' # R
   depends_on 'enchant' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glibmm_2_4' # R

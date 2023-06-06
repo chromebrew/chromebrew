@@ -27,7 +27,7 @@ class Filecmd < Package
   depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'zstd' # R
 
   def self.prebuild

@@ -24,7 +24,7 @@ class Iproute2 < Package
   })
 
   depends_on 'elfutils' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'iptables' # R
   depends_on 'libbpf' unless ARCH == 'i686'

@@ -20,7 +20,7 @@ class Sommelier < Package
      x86_64: '7c0fd4b04a1e4a201db27641672bf95d25cb9baaf674c2805419c23f2e8acc0b'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libdrm' # R
   depends_on 'libxcb' # R

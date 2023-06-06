@@ -21,7 +21,7 @@ class Gnome_text_editor < Package
   depends_on 'desktop_file_utils' => :build
   depends_on 'editorconfig_core_c' # R
   depends_on 'enchant' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R

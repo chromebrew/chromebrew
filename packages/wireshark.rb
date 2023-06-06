@@ -27,7 +27,7 @@ class Wireshark < Package
   depends_on 'brotli' # R
   depends_on 'c_ares' # R
   depends_on 'e2fsprogs' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnutls' # R

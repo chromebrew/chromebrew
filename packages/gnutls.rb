@@ -24,7 +24,7 @@ class Gnutls < Package
 
   depends_on 'brotli' # R
   depends_on 'ca_certificates' # L
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'libffi' => :build

@@ -23,7 +23,7 @@ class Atkmm < Package
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glibmm_2_68' # R
   depends_on 'glib' # R

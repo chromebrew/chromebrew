@@ -24,7 +24,7 @@ class Tdb < Package
   })
 
   depends_on 'docbook_xsl' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libxslt' => :build

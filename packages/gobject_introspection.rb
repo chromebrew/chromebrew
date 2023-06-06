@@ -23,7 +23,7 @@ class Gobject_introspection < Package
      x86_64: 'b24b481077a0573ca0c74944782716c9666b666abac80d96c6068295fc678faa'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R

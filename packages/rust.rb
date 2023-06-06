@@ -23,7 +23,7 @@ class Rust < Package
      x86_64: '4cd17edb03bd013a244dd4577e548c6a998a14b8e997cbee792478ec80fb50b6'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 

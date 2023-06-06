@@ -23,21 +23,21 @@ class Cmake < Package
      x86_64: '7606cedd3efc463333b9a9360d98570bd65acbf32b9bc0f65feccf4e871eac8d'
   })
 
+  depends_on 'bz2'
+  depends_on 'curl'
   depends_on 'expat'
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'jsoncpp'
-  depends_on 'zlibpkg'
-  depends_on 'bz2'
-  depends_on 'xzutils'
-  depends_on 'libnghttp2'
-  depends_on 'zstd'
   depends_on 'libarchive'
-  depends_on 'curl'
+  depends_on 'libnghttp2'
   depends_on 'librhash'
   depends_on 'libuv'
   depends_on 'llvm_lib16' => :build
-  depends_on 'gcc' # R
   depends_on 'ncurses' # R
+  depends_on 'xzutils'
+  depends_on 'zlibpkg'
+  depends_on 'zstd'
 
   def self.build
     system "mold -run cmake -B builddir \

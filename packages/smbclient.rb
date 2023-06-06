@@ -27,7 +27,7 @@ class Smbclient < Package
   depends_on 'cmocka' => :build
   depends_on 'cups' => :build
   depends_on 'docbook_xsl' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'gpgme' => :build

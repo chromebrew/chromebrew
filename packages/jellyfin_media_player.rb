@@ -19,7 +19,7 @@ class Jellyfin_media_player < Package
     x86_64: '36c7847fbc29da687a10369e15819249788fdd72b134bf2850f86e7104d7ad93'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libcec' # R
   depends_on 'libglvnd' # R

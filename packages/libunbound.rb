@@ -24,7 +24,7 @@ class Libunbound < Package
   })
 
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R On i686 openssl needs to be installed before libunbound.
 

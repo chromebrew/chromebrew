@@ -23,7 +23,7 @@ class Glibmm_2_4 < Package
      x86_64: 'b259f25b53e787d82690c55235c0180c264e7fcdf50d2e2be9aaf0cabf4f9bf5'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'libsigcplusplus'

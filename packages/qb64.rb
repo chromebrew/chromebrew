@@ -25,7 +25,7 @@ class Qb64 < Package
   depends_on 'alsa_lib'
   depends_on 'alsa_plugins'
   depends_on 'freeglut'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglu'
   depends_on 'libx11' # R

@@ -29,7 +29,7 @@ class Alsa_plugins < Package
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'speexdsp' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "mold -run ./configure #{CREW_OPTIONS} \

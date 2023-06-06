@@ -32,7 +32,7 @@ class Php82 < Package
   depends_on 'exif'
   depends_on 'freetds'
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R

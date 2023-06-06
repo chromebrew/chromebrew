@@ -22,7 +22,7 @@ class Ocaml < Package
      x86_64: '62ddd09a8bf0b4cea07e92d30dad05c706121f133c56e9e46361f754153524d1'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.patch

@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.7'
+  version '1.8'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -20,7 +20,7 @@ class Core < Package
   depends_on 'expat'
   depends_on 'filecmd'
   depends_on 'flex'
-  depends_on 'gcc'
+  depends_on 'gcc_lib'
   depends_on 'gdbm'
   depends_on 'gettext'
   depends_on 'git'

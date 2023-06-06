@@ -26,7 +26,7 @@ class Libexiv2 < Package
   depends_on 'libssh'
   # depends_on 'ccache' => :build
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'curl' # R
   depends_on 'zlibpkg' # R

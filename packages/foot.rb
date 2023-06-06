@@ -34,7 +34,7 @@ class Foot < Package
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.preflight
     abort 'Foot requires glibc > 2.28.' if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.28')

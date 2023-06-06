@@ -14,7 +14,7 @@ class Buildessential < Package
 
   # install first to get ldconfig
   depends_on 'glibc'
-  depends_on 'gcc'
+  depends_on 'gcc_dev'
   depends_on 'gmp'
   depends_on 'mpfr'
   depends_on 'mpc'

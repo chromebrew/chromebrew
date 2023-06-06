@@ -27,7 +27,7 @@ class Freetype < Package
   depends_on 'brotli'
   depends_on 'bz2'
   depends_on 'expat'
-  depends_on 'gcc'
+  depends_on 'gcc_lib'
   depends_on 'glib'
   depends_on 'graphite'
   depends_on 'harfbuzz'

@@ -22,7 +22,7 @@ class Icu4c < Package
      x86_64: 'c00ba9876a12e220bb1ef837e08930b7a44c8683b1d0b70f288f968f85a7b14c'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

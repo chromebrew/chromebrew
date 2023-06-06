@@ -23,7 +23,7 @@ class Gdal < Package
   })
 
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'geos' # R
   depends_on 'giflib' # R
   depends_on 'glibc' # R

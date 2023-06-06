@@ -29,7 +29,7 @@ class Lua < Package
 
   depends_on 'glibc' # R
   depends_on 'readline' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.patch
     # Patch adapted from https://gitlab.archlinux.org/archlinux/packaging/packages/lua/-/blob/main/liblua.so.patch

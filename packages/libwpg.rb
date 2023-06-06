@@ -26,7 +26,7 @@ class Libwpg < Package
   })
 
   depends_on 'doxygen' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'librevenge' # R
   depends_on 'libwpd' # R

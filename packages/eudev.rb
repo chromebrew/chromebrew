@@ -23,7 +23,7 @@ class Eudev < Package
   })
 
   depends_on 'acl' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gperf' => :build
   depends_on 'libxslt' => :build

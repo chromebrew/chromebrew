@@ -24,7 +24,7 @@ class Cairomm_1_16 < Package
   })
 
   depends_on 'cairo' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libsigcplusplus3' # R

@@ -22,7 +22,7 @@ class Codium < Package
   depends_on 'cups' # R
   depends_on 'dbus' # R
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gtk3' # R

@@ -29,7 +29,7 @@ class Freerdp < Package
   depends_on 'faad2' # R
   depends_on 'ffmpeg' # R
   depends_on 'fuse3' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gsm' # R
   depends_on 'gstreamer' => :build

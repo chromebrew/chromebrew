@@ -24,7 +24,7 @@ class Libaom < Package
 
   depends_on 'nasm' => :build
   depends_on 'glibc' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   no_env_options
 
   def self.build

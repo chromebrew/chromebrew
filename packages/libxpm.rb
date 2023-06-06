@@ -32,7 +32,7 @@ class Libxpm < Package
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'ncompress' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

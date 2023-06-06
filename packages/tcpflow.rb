@@ -27,7 +27,7 @@ class Tcpflow < Package
   depends_on 'cairo' => :build
   depends_on 'expat' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libcap_ng' # R

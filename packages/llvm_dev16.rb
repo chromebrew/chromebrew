@@ -24,19 +24,17 @@ class Llvm_dev16 < Package
      x86_64: 'eba6acd9fd5192ac826cdc4491cb442bb1cb3a1317368929b1c622ae58a361c9'
   })
 
-  depends_on 'llvm_build16' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
+  depends_on 'llvm_build16' => :build
   depends_on 'llvm_lib16' # R
   depends_on 'ncurses' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-
-  conflicts_ok
 
   def self.install
     puts 'Installing llvm_build16 to pull files for build...'.lightblue

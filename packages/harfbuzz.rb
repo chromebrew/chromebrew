@@ -30,7 +30,7 @@ class Harfbuzz < Package
   depends_on 'expat' # R
   # depends_on 'fontconfig' # This pulls in freetype.
   # depends_on 'freetype' # R harfbuzz provides this.
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build

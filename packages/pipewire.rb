@@ -60,7 +60,7 @@ class Pipewire < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'avahi' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lilv' # R
   depends_on 'ncurses' # R

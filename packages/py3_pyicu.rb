@@ -24,7 +24,7 @@ class Py3_pyicu < Package
   })
 
   depends_on 'python3' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
 

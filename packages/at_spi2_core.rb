@@ -23,7 +23,7 @@ class At_spi2_core < Package
   })
 
   depends_on 'dbus' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build

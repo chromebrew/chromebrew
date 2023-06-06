@@ -17,7 +17,7 @@ class Intel_media_driver < Package
     x86_64: '415c7263be5e0743e023f3271b1d2e0823bc645678e877965fd30fc6383ea573'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmmlib' # R
   depends_on 'libva' # R

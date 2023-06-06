@@ -27,7 +27,7 @@ class Uutils_coreutils < Package
 
   depends_on 'rust' => :build
   depends_on 'sphinx' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   conflicts_ok # conflicts with coreutils

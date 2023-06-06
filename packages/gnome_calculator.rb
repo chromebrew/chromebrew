@@ -40,7 +40,7 @@ class Gnome_calculator < Package
   depends_on 'libxml2' # R
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   gnome
 
   def self.build

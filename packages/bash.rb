@@ -22,7 +22,7 @@ class Bash < Package
      x86_64: 'a777bad1a9ce382c07e73e192c48063baa481c53ef78bf5e74c32aeb60b9eefd'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
 

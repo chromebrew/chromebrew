@@ -23,7 +23,7 @@ class Libdb < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.patch
     system 'for i in $(cat debian/patches/series); do patch -Np1 -i debian/patches/${i}; done'

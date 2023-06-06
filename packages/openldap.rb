@@ -24,7 +24,7 @@ class Openldap < Package
   })
 
   depends_on 'e2fsprogs' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'krb5' => :build
   depends_on 'libcyrussasl' # R

@@ -24,7 +24,7 @@ class Libcec < Package
   })
 
   depends_on 'eudev' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libx11' # R
   depends_on 'libxrandr' # R

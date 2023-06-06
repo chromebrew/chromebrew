@@ -22,7 +22,7 @@ class Cairo < Package
      x86_64: 'ded85aef72c1c263d094b18a95201cd9e933c39b880e6ff41782c14090b8a9be'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R

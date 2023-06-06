@@ -22,7 +22,7 @@ class Openssh < Package
      x86_64: '989eb709d54b431f481127d60fa492b76bbcc24b8db3af6ad9f1d2b23eff62ff'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libmd' # R
   depends_on 'openssl' # R

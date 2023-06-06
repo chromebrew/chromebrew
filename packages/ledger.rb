@@ -23,7 +23,7 @@ class Ledger < Package
   })
 
   depends_on 'boost' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'libedit' # R
