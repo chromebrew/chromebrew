@@ -3,7 +3,7 @@ require 'package'
 class Crew_mvdir < Package
   description 'Faster alternative to "rsync --remove-source-files dir1/ dir2/"'
   homepage 'https://github.com/chromebrew/crew-mvdir'
-  version '0.2-1'
+  version '0.2-1' # Do not use @_ver here, it will break the installer.
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
