@@ -6141,6 +6141,11 @@ url: https://github.com/openssl/openssl/releases
 activity: medium
 ---
 kind: url
+name: openssl111
+url: https://github.com/openssl/openssl/releases
+activity: medium
+---
+kind: url
 name: openvpn
 url: https://openvpn.net/community-downloads/
 activity: medium
