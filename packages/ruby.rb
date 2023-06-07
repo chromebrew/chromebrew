@@ -3,23 +3,23 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.2.2' # Do not use @_ver here, it will break the installer.
+  version '3.2.2-1' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.2.tar.gz'
   source_sha256 '96c57558871a6748de5bc9f274e93f4b5aad06cd8f37befa0e8d94e7b8a423bc'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2_armv7l/ruby-3.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2_armv7l/ruby-3.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2_i686/ruby-3.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2_x86_64/ruby-3.2.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2-1_armv7l/ruby-3.2.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2-1_armv7l/ruby-3.2.2-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2-1_i686/ruby-3.2.2-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ruby/3.2.2-1_x86_64/ruby-3.2.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '338fea592e14496eca2c7548e82f369b52023093752bc367383c756930d8ed61',
-     armv7l: '338fea592e14496eca2c7548e82f369b52023093752bc367383c756930d8ed61',
-       i686: '83e0bcca62a66caf56627dc6dcc654722622a213ab19e906334249c9bd271a61',
-     x86_64: 'df20653dd55995dc3c880bc777b50752d08cdaee8a8eaa245ed6f207b9a7e7d0'
+    aarch64: 'b789a4b64e009303002774e3d9bdc84de1765e6d9bbc785aa648ff307ad80945',
+     armv7l: 'b789a4b64e009303002774e3d9bdc84de1765e6d9bbc785aa648ff307ad80945',
+       i686: '0c909907312c3404c4665cf8c09f8125dc19f5c74a173158cb3d9b62af1d8dcd',
+     x86_64: '6f3aaa3fb45ef6d5d691b9a53262aeee687e00dfcdfb5cb9771c3dfaa1b17684'
   })
 
   depends_on 'zlibpkg' # R
@@ -37,9 +37,6 @@ class Ruby < Package
 
   # at run-time, system's gmp, openssl, readline and zlibpkg can be used
 
-  no_patchelf
-  no_zstd
-
   def self.patch
     # Get the 1.71 version of fileutils, which is not in Ruby 3.2.2.
     downloader 'https://github.com/ruby/fileutils/raw/7138d851562688267f6dc064fbceca72cb96a53e/lib/fileutils.rb',
@@ -52,17 +49,17 @@ class Ruby < Package
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
-      ./configure #{CREW_OPTIONS} \
+      mold -run ./configure #{CREW_OPTIONS} \
       --enable-shared \
       #{@yjit} \
       --disable-fortify-source"
-    system 'make'
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end
 
   def self.check
     # Do not run checks if rebuilding current ruby version.
     # RUBY_VERSION is a built-in ruby constant.
-    system 'make check || true' unless version == RUBY_VERSION
+    system "MAKEFLAGS='--jobs #{CREW_NPROC}' make check || true" unless version.split('-')[0] == RUBY_VERSION
   end
 
   def self.install
