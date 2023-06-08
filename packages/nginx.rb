@@ -28,39 +28,42 @@ class Nginx < Package
     system './configure',
            "--prefix=#{CREW_PREFIX}/share/nginx"
     system 'make'
+    @startnginx = <<~STARTNGINXEOF
+      #!/bin/bash
+      NGINX=$(ps ax | grep "nginx: master process" | grep -v grep | xargs | cut -d" " -f1 2> /dev/null)
+      if [ -z "$NGINX" ]; then
+        sudo nginx
+      fi
+      NGINX=$(ps ax | grep "nginx: master process" | grep -v grep | xargs | cut -d" " -f1 2> /dev/null)
+      if [ ! -z "$NGINX" ]; then
+        echo "nginx process $NGINX is running"
+      else
+        echo "nginx failed to start"
+        exit 1
+      fi
+    STARTNGINXEOF
+    File.write('startnginx', @startnginx)
+    @stopnginx = <<~STOPNGINXEOF
+      #!/bin/bash
+      NGINX=$(ps ax | grep "nginx: master process" | grep -v grep | xargs | cut -d" " -f1 2> /dev/null)
+      if [ ! -z "$NGINX" ]; then
+        sudo nginx -s quit
+      fi
+      NGINX=$(ps ax | grep "nginx: master process" | grep -v grep | xargs | cut -d" " -f1 2> /dev/null)
+      if [ -z "$NGINX" ]; then
+        echo "nginx process stopped"
+      else
+        echo "nginx process $NGINX is running"
+        exit 1
+      fi
+    STOPNGINXEOF
+    File.write('stopnginx', @stopnginx)
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "ln -s #{CREW_PREFIX}/share/nginx/sbin/nginx nginx"
-      system "echo '#!/bin/bash' > startnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> startnginx"
-      system "echo 'if [ -z \"\$NGINX\" ]; then' >> startnginx"
-      system "echo '  sudo nginx' >> startnginx"
-      system "echo 'fi' >> startnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> startnginx"
-      system "echo 'if [ ! -z \"\$NGINX\" ]; then' >> startnginx"
-      system "echo '  echo \"nginx process \$NGINX is running\"' >> startnginx"
-      system "echo 'else' >> startnginx"
-      system "echo '  echo \"nginx failed to start\"' >> startnginx"
-      system "echo '  exit 1' >> startnginx"
-      system "echo 'fi' >> startnginx"
-      system "echo '#!/bin/bash' > stopnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> stopnginx"
-      system "echo 'if [ ! -z \"\$NGINX\" ]; then' >> stopnginx"
-      system "echo '  sudo nginx -s quit' >> stopnginx"
-      system "echo 'fi' >> stopnginx"
-      system "echo 'NGINX=\$(ps ax | grep \"nginx: master process\" | grep -v grep | xargs | cut -d\" \" -f1 2> /dev/null)' >> stopnginx"
-      system "echo 'if [ -z \"\$NGINX\" ]; then' >> stopnginx"
-      system "echo '  echo \"nginx process stopped\"' >> stopnginx"
-      system "echo 'else' >> stopnginx"
-      system "echo '  echo \"nginx process \$NGINX is running\"' >> stopnginx"
-      system "echo '  exit 1' >> stopnginx"
-      system "echo 'fi' >> stopnginx"
-      system 'chmod +x st*nginx'
-    end
+    FileUtils.install 'startnginx', "#{CREW_DEST_PREFIX}/bin/startnginx", mode: 0o755
+    FileUtils.install 'stopnginx', "#{CREW_DEST_PREFIX}/bin/stopnginx", mode: 0o755
   end
 
   def self.postinstall
@@ -73,7 +76,6 @@ class Nginx < Package
     puts 'startnginx - starts nginx'.lightblue
     puts 'stopnginx - stops nginx'.lightblue
     puts
-    puts 'To start nginx on login, execute the following:'.lightblue
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startnginx ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startnginx' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue

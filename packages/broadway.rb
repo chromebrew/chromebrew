@@ -16,43 +16,51 @@ class Broadway < Package
   depends_on 'gtk3'
 
   def self.build
-    system "echo 'GDK_BACKEND=broadway' > .broadway.env"
-    system "echo 'XDG_RUNTIME_DIR=/var/run/chrome' >> .broadway.env"
-    system "echo 'BROADWAY_DISPLAY=:5' >> .broadway.env"
-    system "echo '#!/bin/bash' > initbroadway"
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> initbroadway"
-    system "echo 'if [ -z \"\${BROADWAYD}\" ]; then' >> initbroadway"
-    system "echo '  [ -f #{CREW_PREFIX}/bin/stopsommelier ] && stopsommelier' >> initbroadway"
-    system "echo '  broadwayd \${BROADWAY_DISPLAY} &' >> initbroadway"
-    system "echo '  sleep 3' >> initbroadway"
-    system "echo 'fi' >> initbroadway"
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> initbroadway"
-    system "echo 'if [ ! -z \"\${BROADWAYD}\" ]; then' >> initbroadway"
-    system "echo '  echo \"broadwayd process \${BROADWAYD} is running\"' >> initbroadway"
-    system "echo 'else' >> initbroadway"
-    system "echo '  echo \"broadwayd failed to start\"' >> initbroadway"
-    system "echo '  exit 1' >> initbroadway"
-    system "echo 'fi' >> initbroadway"
-    system "echo '#!/bin/bash' > stopbroadway"
-    system 'echo >> stopbroadway'
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2>/dev/null)' >> stopbroadway"
-    system "echo 'if [ ! -z \"\${BROADWAYD}\" ]; then' >> stopbroadway"
-    system "echo '  pkill broadwayd' >> stopbroadway"
-    system "echo '  sleep 3' >> stopbroadway"
-    system "echo 'fi' >> stopbroadway"
-    system "echo 'BROADWAYD=\$(pidof broadwayd 2> /dev/null)' >> stopbroadway"
-    system "echo 'if [ -z \"\${BROADWAYD}\" ]; then' >> stopbroadway"
-    system "echo '  echo \"broadwayd process stopped\"' >> stopbroadway"
-    system "echo 'else' >> stopbroadway"
-    system "echo '  echo \"broadwayd process \${BROADWAYD} is running\"' >> stopbroadway"
-    system "echo '  exit 1' >> stopbroadway"
-    system "echo 'fi' >> stopbroadway"
+    @broadwayenv = <<~BROADWAYENVEOF
+      GDK_BACKEND=broadway
+      XDG_RUNTIME_DIR=/var/run/chrome
+      BROADWAY_DISPLAY=:5
+    BROADWAYENVEOF
+    File.write("#{CREW_DEST_HOME}/.broadway.env", @broadwayenv)
+    @initbroadway = <<~INITBROADWAYEOF
+      #!/bin/bash
+      BROADWAYD=$(pidof broadwayd 2>/dev/null)
+      if [ -z "${BROADWAYD}" ]; then
+        [ -f #{CREW_PREFIX}/bin/stopsommelier ] && stopsommelier
+        broadwayd ${BROADWAY_DISPLAY} &
+        sleep 3' >> initbroadway
+      fi
+      BROADWAYD=$(pidof broadwayd 2>/dev/null)
+      if [ ! -z "${BROADWAYD}" ]; then
+        echo "broadwayd process ${BROADWAYD} is running"
+      else
+        echo "broadwayd failed to start"
+        exit 1
+      fi
+    INITBROADWAYEOF
+    File.write('initbroadway', @initbroadway)
+    @stopbroadway = <<~STOPBROADWAYEOF
+      #!/bin/bash
+      BROADWAYD=$(pidof broadwayd 2>/dev/null)
+      if [ ! -z "${BROADWAYD}" ]; then
+        pkill broadwayd
+        sleep 3
+      fi
+      BROADWAYD=$(pidof broadwayd 2> /dev/null)
+      if [ -z "${BROADWAYD}" ]; then
+        echo "broadwayd process stopped"
+      else
+        echo "broadwayd process ${BROADWAYD} is running"
+        exit 1
+      fi
+    STOPBROADWAYEOF
+    File.write('stopbroadway', @stopbroadway)
   end
 
   def self.install
-    system "install -Dm755 initbroadway #{CREW_DEST_PREFIX}/bin/initbroadway"
-    system "install -Dm755 stopbroadway #{CREW_DEST_PREFIX}/bin/stopbroadway"
-    system "install -Dm644 .broadway.env #{CREW_DEST_HOME}/.broadway.env"
+    FileUtils.install 'initbroadway', "#{CREW_DEST_PREFIX}/bin/initbroadway", mode: 0o755
+    FileUtils.install 'stopbroadway', "#{CREW_DEST_PREFIX}/bin/stopbroadway", mode: 0o755
+    FileUtils.install '.broadway.env', "#{CREW_DEST_HOME}/.broadway.env", mode: 0o644
   end
 
   def self.postinstall
@@ -67,7 +75,7 @@ class Broadway < Package
     puts "To start the broadwayd daemon, run 'startbroadway'".lightblue
     puts "To stop the broadwayd daemon, run 'stopbroadway'".lightblue
     puts
-    puts 'To adjust environment variables, edit ~/.broadway.env'.lightblue
+    puts "To adjust environment variables, edit #{CREW_HOME}/.broadway.env".lightblue
     puts
     puts 'Navigate your browser to http://127.0.0.1:8085 while the broadwayd'.lightblue
     puts 'daemon is running to run GTK applications in the browser window.'.lightblue
