@@ -1,3 +1,4 @@
+---
 # The behavior of RuboCop can be controlled via the .rubocop.yml
 # configuration file. It makes it possible to enable/disable
 # certain cops (checks) and to alter their behavior if they accept
@@ -13,7 +14,7 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 3.1
   Exclude:
-  - 'lib/docopt.rb'
+    - 'lib/docopt.rb'
 
 # These cops have been temporarily disabled and should be reenabled asap
 Security/Eval:
