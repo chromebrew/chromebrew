@@ -13,6 +13,7 @@
 /usr/local/include/vulkan/vulkan_core.h
 /usr/local/include/vulkan/vulkan_directfb.h
 /usr/local/include/vulkan/vulkan_enums.hpp
+/usr/local/include/vulkan/vulkan_extension_inspection.hpp
 /usr/local/include/vulkan/vulkan_format_traits.hpp
 /usr/local/include/vulkan/vulkan_fuchsia.h
 /usr/local/include/vulkan/vulkan_funcs.hpp
@@ -42,6 +43,7 @@
 /usr/local/share/vulkan/registry/cgenerator.py
 /usr/local/share/vulkan/registry/generator.py
 /usr/local/share/vulkan/registry/genvk.py
+/usr/local/share/vulkan/registry/parse_dependency.py
 /usr/local/share/vulkan/registry/profiles/VP_KHR_roadmap_2022.json
 /usr/local/share/vulkan/registry/reg.py
 /usr/local/share/vulkan/registry/spec_tools/conventions.py
