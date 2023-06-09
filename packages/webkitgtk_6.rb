@@ -1,3 +1,5 @@
+require 'package'
+
 class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
