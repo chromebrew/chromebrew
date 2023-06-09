@@ -1,6 +1,6 @@
-require 'package'
-
 # from LFS: http://www.linuxfromscratch.org/blfs/view/cvs/pst/sgml-common.html
+
+require 'package'
 
 class Sgml_common < Package
   description 'The sgml-common package gathers very basic stuff necessary to work with SGML and XML.'
