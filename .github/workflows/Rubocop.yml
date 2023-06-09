@@ -1,0 +1,16 @@
+---
+name: Rubocop
+on: workflow_call
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Rubocop
+        uses: satmandu/Octocop@v0.0.3
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          rubocop_flags: "-l -c .rubocop.yml"

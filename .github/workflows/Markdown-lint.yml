@@ -1,0 +1,14 @@
+---
+name: Markdown-lint
+on: workflow_call
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Markdown-lint
+        uses: bewuethr/mdl-action@v1
+        with:
+          style-file: .mdl_style.rb
