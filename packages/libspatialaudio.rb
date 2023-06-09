@@ -10,19 +10,6 @@ class Libspatialaudio < Package
   source_url 'https://salsa.debian.org/multimedia-team/libspatialaudio.git'
   git_hashtag "debian/#{@_ver}+dfsg1-2"
 
-  binary_url({
-    aarch64: 'file:///usr/local/tmp/packages/libspatialaudio-0.3.0+git20180730-chromeos-armv7l.tpxz',
-      armv7l: 'file:///usr/local/tmp/packages/libspatialaudio-0.3.0+git20180730-chromeos-armv7l.tpxz',
-        i686: 'file:///usr/local/tmp/packages/libspatialaudio-0.3.0+git20180730-chromeos-i686.tpxz',
-      x86_64: 'file:///usr/local/tmp/packages/libspatialaudio-0.3.0+git20180730-chromeos-x86_64.tpxz'
-  })
-  binary_sha256({
-    aarch64: '98c19eda328ea764f9ee707ab6f580394c16bbb983896c67403fb0e39e8b2110',
-      armv7l: '98c19eda328ea764f9ee707ab6f580394c16bbb983896c67403fb0e39e8b2110',
-        i686: 'c7262162350e091cadd3d46e43774f5c9efefde3feb6c979b6a46c37f0a09ff6',
-      x86_64: '11691fca3f27b34be0bd225666f8f799f214afa372a31182a424dd9a7e7f782d'
-  })
-
   depends_on 'libmysofa'
 
   def self.patch
