@@ -22,12 +22,9 @@ class Vulkan_icd_loader < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'libx11'
-  depends_on 'libx11' => :build
+  depends_on 'libx11' # R
   depends_on 'libxcb' # R
-  depends_on 'libxrandr'
   depends_on 'libxrandr' => :build
-  depends_on 'vulkan_headers'
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland' => :build
 
