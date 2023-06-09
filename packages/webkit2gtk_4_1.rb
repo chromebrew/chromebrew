@@ -1,3 +1,5 @@
+require 'package'
+
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
