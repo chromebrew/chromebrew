@@ -23,7 +23,7 @@ class Vulkan_tools < Package
      x86_64: '61db4831ab580e0c5e6f1672a9fe252fc2aa82294e7c26358d52323173046d7c'
   })
 
-  depends_on 'gcc_dev' # R
+  depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build

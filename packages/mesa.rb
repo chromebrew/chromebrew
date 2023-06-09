@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '23.1.1'
+  @_ver = '23.1.2'
   version "#{@_ver}-llvm16"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -11,19 +11,20 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.1-llvm16_armv7l/mesa-23.1.1-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.1-llvm16_armv7l/mesa-23.1.1-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.1-llvm16_x86_64/mesa-23.1.1-llvm16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.2-llvm16_armv7l/mesa-23.1.2-llvm16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.2-llvm16_armv7l/mesa-23.1.2-llvm16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.2-llvm16_x86_64/mesa-23.1.2-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'eef03661be81f613a4436f5532ea1d9e586a5c179502774014cfcd6634e57a4a',
-     armv7l: 'eef03661be81f613a4436f5532ea1d9e586a5c179502774014cfcd6634e57a4a',
-     x86_64: '28b87224d20bce6dd7a07f562e8f76fab6473c5b424b9be3fd40f3b0f3f1c5c0'
+    aarch64: 'd77ffd9619033453c4f25a932064a01bb572ae1acf9e2ca5145cbd742d8ac001',
+     armv7l: 'd77ffd9619033453c4f25a932064a01bb572ae1acf9e2ca5145cbd742d8ac001',
+     x86_64: '3fb6eb2a105103ff898b63c66395e67e97abfe70bec57597d54a3a46fedff2db'
   })
 
   depends_on 'elfutils' # R
   depends_on 'eudev' # R
   depends_on 'expat' # R
+  depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glslang' => :build
@@ -45,7 +46,8 @@ class Mesa < Package
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm_lib16' => :build
+  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm_lib16' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako'
   depends_on 'valgrind' => :build
@@ -56,7 +58,6 @@ class Mesa < Package
   depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'llvm_lib16' # R
 
   def self.build
     @gallium_drivers = ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'
