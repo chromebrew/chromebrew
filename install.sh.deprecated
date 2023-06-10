@@ -4,9 +4,9 @@
 set -e
 
 #chromebrew directories
-: "${OWNER:=satmandu}"
+: "${OWNER:=chromebrew}"
 : "${REPO:=chromebrew}"
-: "${BRANCH:=glibc_lib}"
+: "${BRANCH:=master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
 : "${CREW_PREFIX:=/usr/local}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="glibc_libs crew_mvdir pixz ca_certificates ruby openssl"
+BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
 
 # i686 requires gcc and openssl
@@ -100,11 +100,7 @@ function curl () {
 }
 
 case "${ARCH}" in
-"i686")
-  echo_error "Installs on i686 devices are no longer supported by Chromebrew. :/"
-  exit 1
-  ;;
-"x86_64"|"armv7l"|"aarch64")
+"i686"|"x86_64"|"armv7l"|"aarch64")
   LIB_SUFFIX=
   # See https://superuser.com/a/1369875
   # If /bin/bash is 64-bit, then set LIB_SUFFIX, as this is true on both
@@ -112,8 +108,8 @@ case "${ARCH}" in
   # shellcheck disable=SC2046
   [ $(od -An -t x1 -j 4 -N 1  /bin/bash) == 02 ] && LIB_SUFFIX='64'
   if [[ $LIB_SUFFIX == '64' ]] && [[ $ARCH == 'aarch64' ]]; then
-    echo_error "Your device is not supported by Chromebrew yet, installing as armv7l."
-    LIB_SUFFIX=
+    echo_error "Your device is not supported by Chromebrew yet :/"
+    exit 1
   fi
   ;;
 *)
@@ -332,11 +328,8 @@ else
   # by default. For more on why this setup might be useful see:
   # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
   # If using alternate branch don't use depth=1 .
-  if [[ "$BRANCH" == "master" ]]; then
-    git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
-  else
-    git clone --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
-  fi
+  [[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
+  git clone "${GIT_DEPTH}" --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
 
   cd "${CREW_LIB_PATH}"
 
@@ -393,7 +386,7 @@ source ~/.bashrc"
 fi
 echo_intra "
 Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
-most is used by default
+more is used by default
 
 You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor default.
 

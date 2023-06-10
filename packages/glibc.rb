@@ -10,5 +10,5 @@ class Glibc < Package
 
   is_fake
 
-  depends_on 'glibc_libs'
+  depends_on 'glibc_lib'
 end
