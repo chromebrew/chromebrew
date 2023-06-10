@@ -26,6 +26,7 @@ ARCH="${ARCH/armv8l/armv7l}"
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="glibc_lib crew_mvdir pixz ca_certificates zlibpkg gmp ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
+[ -x ${CREW_PREFIX}/bin/xz ] && rm ${CREW_PREFIX}/bin/xz # remove local xz if installed
 
 # i686 requires gcc and openssl
 [ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc_lib"
@@ -392,14 +393,13 @@ echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.b
 echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
 source ~/.bashrc"
 fi
-echo_intra "
-if [[ $ARMV7LONAARCH64 == '1' ]]; then
-  echo_info "\n$
+if [[ "$ARMV7LONAARCH64" == '1' ]]; then
+  echo_info "\n
 Since you have installed an armv7l Chromebrew on an aarch64 userspace
 system, you need to run these commands to complete your installation:
 "
 
-  echo_intra "
+  echo_info "
 echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
 source ~/.bashrc"
 fi
