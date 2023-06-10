@@ -4,23 +4,24 @@ require_relative 'glibc'
 class Glibc_libs < Package
   description 'glibc libraries'
   homepage Glibc.homepage
-  version '2.35' # Do not use @_ver here, it will break the installer.
+  version '2.35-1' # Do not use @_ver here, it will break the installer.
   license Glibc.license
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_libs/2.35_armv7l/glibc_libs-2.35-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_libs/2.35_armv7l/glibc_libs-2.35-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_libs/2.35_x86_64/glibc_libs-2.35-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_libs/2.35-1_armv7l/glibc_libs-2.35-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_libs/2.35-1_armv7l/glibc_libs-2.35-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_libs/2.35-1_x86_64/glibc_libs-2.35-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '421849e503d19d6a6bc0c755a1d854857e5f227423b3dc3ff81dfd0fc4957689',
-     armv7l: '421849e503d19d6a6bc0c755a1d854857e5f227423b3dc3ff81dfd0fc4957689',
-     x86_64: '014dddf9cbc8f7b078f59d8f28009bf567ff8b52a757c6bc88b553f994f07c1e'
+    aarch64: '877f6ce14ccdbf7ca103a0e131d40a1f91654183599812b4917eae7cfce37550',
+     armv7l: '877f6ce14ccdbf7ca103a0e131d40a1f91654183599812b4917eae7cfce37550',
+     x86_64: '66d0971a2fbf1b69c7030ba7a8bde986baeef38870ee13606d16f381f16a551a'
   })
 
   depends_on 'glibc' => :build
+  depends_on 'glibc' # R
 
   conflicts_ok
 
@@ -35,7 +36,7 @@ class Glibc_libs < Package
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|
-      next unless filename.include?('.so')
+      next unless filename.include?('.so') || filename.include?('bin/')
 
       @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
       @filename_target = File.realpath(filename)
