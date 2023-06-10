@@ -31,7 +31,7 @@ class Glibc_lib < Package
   def self.install
     puts 'Installing Glibc_build to pull files for build...'.lightblue
     @filelist_path = File.join(CREW_META_PATH, 'glibc_build.filelist')
-    abort 'File list for Glibc does not exist!'.lightred unless File.file?(@filelist_path)
+    abort 'File list for Glibc_build does not exist!'.lightred unless File.file?(@filelist_path)
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|

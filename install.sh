@@ -400,7 +400,7 @@ system, you need to run these commands to complete your installation:
 "
 
   echo_info "
-echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
+echo -e '\\\nexport LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
 source ~/.bashrc"
 fi
 echo_intra "
