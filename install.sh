@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="glibc_lib crew_mvdir pixz ca_certificates ruby openssl"
+BOOTSTRAP_PACKAGES="glibc_lib crew_mvdir pixz ca_certificates zlibpkg gmp ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
 
 # i686 requires gcc and openssl
