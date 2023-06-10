@@ -114,6 +114,7 @@ case "${ARCH}" in
   if [[ $LIB_SUFFIX == '64' ]] && [[ $ARCH == 'aarch64' ]]; then
     echo_error "Your device is not supported by Chromebrew yet, installing as armv7l."
     LIB_SUFFIX=
+    ARMV7LONAARCH64=1
   fi
   ;;
 *)
@@ -389,6 +390,17 @@ you need to run these commands to complete your installation:
 echo 'export CREW_PREFIX=${CREW_PREFIX}' >> ~/.bashrc
 echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
+source ~/.bashrc"
+fi
+echo_intra "
+if [[ $ARMV7LONAARCH64 == '1' ]]; then
+  echo_info "\n$
+Since you have installed an armv7l Chromebrew on an aarch64 userspace
+system, you need to run these commands to complete your installation:
+"
+
+  echo_intra "
+echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
 source ~/.bashrc"
 fi
 echo_intra "
