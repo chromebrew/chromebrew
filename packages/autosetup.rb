@@ -9,10 +9,8 @@ class Autosetup < Package
   source_url 'https://github.com/msteveb/autosetup/archive/v0.7.0.tar.gz'
   source_sha256 '473123b3921acc7b623d2d4a6175a058bf685c0ae3676850fb867026d67244cb'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'tcl'
 
