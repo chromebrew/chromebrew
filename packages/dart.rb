@@ -26,7 +26,7 @@ class Dart < Package
   def self.install
     dart_prefix = File.join(CREW_LIB_PREFIX, 'dart')
 
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX, File.join(CREW_PREFIX, 'bin')
+    FileUtils.mkdir_p [CREW_DEST_LIB_PREFIX, File.join(CREW_PREFIX, 'bin')]
     FileUtils.cp_r '.', File.join(CREW_DEST_DIR, dart_prefix)
 
     FileUtils.ln_s File.join(dart_prefix, 'bin/dart'), File.join(CREW_DEST_PREFIX, 'bin/dart')
