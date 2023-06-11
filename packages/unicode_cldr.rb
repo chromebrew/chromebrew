@@ -2,7 +2,7 @@ require 'package'
 
 class Unicode_cldr < Package
   description 'Unicode Common Locale Data Repository'
-  homepage 'http://cldr.unicode.org'
+  homepage 'http://cldr.unicode.org/'
   @_ver = '43.0'
   @_ver_prelastdot = @_ver.rpartition('.')[0]
   version @_ver
