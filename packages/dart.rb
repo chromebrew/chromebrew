@@ -24,9 +24,11 @@ class Dart < Package
   no_compile_needed
 
   def self.install
+    dart_prefix = File.join(CREW_LIB_PREFIX, 'dart')
+
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    FileUtils.cp_r Dir['bin/', 'include/'], CREW_DEST_PREFIX
-    FileUtils.cp_r Dir['lib/*'], CREW_DEST_LIB_PREFIX
-    FileUtils.cp 'version', CREW_DEST_PREFIX # This stops 'pub get' from throwing errors
+    FileUtils.cp_r '.', File.join(CREW_DEST_DIR, dart_prefix)
+
+    FileUtils.ln_s File.join(dart_prefix, 'bin/dart'), File.join(CREW_DEST_PREFIX, 'bin/dart')
   end
 end
