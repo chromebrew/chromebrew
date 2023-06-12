@@ -3,12 +3,11 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  @_ver = '23.1.0'
-  version @_ver
+  version '23.1.0'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xwayland-#{@_ver}"
+  git_hashtag "xwayland-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.1.0_armv7l/xwayland-23.1.0-chromeos-armv7l.tar.zst',

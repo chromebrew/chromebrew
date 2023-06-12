@@ -3,12 +3,11 @@ require 'package'
 class Libdrm < Package
   description 'Cross-driver middleware for DRI protocol.'
   homepage 'https://dri.freedesktop.org'
-  @_ver = '2.4.114'
-  version @_ver
+  version '2.4.114'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
-  git_hashtag "libdrm-#{@_ver}"
+  git_hashtag "libdrm-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.114_armv7l/libdrm-2.4.114-chromeos-armv7l.tar.zst',

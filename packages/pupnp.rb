@@ -3,12 +3,11 @@ require 'package'
 class Pupnp < Package
   description 'PUPnP is the Portable SDK for UPnP devices.'
   homepage 'https://pupnp.github.io/pupnp/'
-  @_ver = '1.14.12'
-  version @_ver
+  version '1.14.12'
   compatibility 'all'
   license 'BSD-3'
   source_url 'https://github.com/pupnp/pupnp.git'
-  git_hashtag "release-#{@_ver}"
+  git_hashtag "release-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pupnp/1.14.12_armv7l/pupnp-1.14.12-chromeos-armv7l.tpxz',

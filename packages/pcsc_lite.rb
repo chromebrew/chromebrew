@@ -3,12 +3,11 @@ require 'package'
 class Pcsc_lite < Package
   description 'PCSC is middleware to access a smart card using SCard API (PC/SC).'
   homepage 'https://pcsclite.apdu.fr/'
-  @_ver = '1.9.5'
-  version @_ver
+  version '1.9.5'
   compatibility 'all'
   license 'BSD, ISC, MIT, GPL-3+ and GPL-2'
   source_url 'https://salsa.debian.org/debian/pcsc-lite.git'
-  git_hashtag "debian/#{@_ver}-1"
+  git_hashtag "debian/#{version}-1"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcsc_lite/1.9.5_armv7l/pcsc_lite-1.9.5-chromeos-armv7l.tpxz',

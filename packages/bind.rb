@@ -3,12 +3,11 @@ require 'package'
 class Bind < Package
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/downloads/bind/'
-  @_ver = '9.19.9'
-  version @_ver
+  version '9.19.9'
   license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
   compatibility 'all'
   source_url 'https://gitlab.isc.org/isc-projects/bind9.git'
-  git_hashtag "v#{@_ver.gsub('.', '_')}"
+  git_hashtag "v#{version.gsub('.', '_')}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.19.9_armv7l/bind-9.19.9-chromeos-armv7l.tar.zst',

@@ -3,12 +3,11 @@ require 'package'
 class Libnl3 < Package
   description 'libnl is a library for applications dealing with netlink sockets.'
   homepage 'http://www.infradead.org/~tgr/libnl/'
-  @_ver = '3.7.0'
-  version @_ver
+  version '3.7.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/thom311/libnl.git'
-  git_hashtag "libnl#{@_ver.gsub('.', '_')}"
+  git_hashtag "libnl#{version.gsub('.', '_')}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnl3/3.7.0_armv7l/libnl3-3.7.0-chromeos-armv7l.tar.zst',

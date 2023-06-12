@@ -3,12 +3,11 @@ require 'package'
 class Musl_libucontext < Package
   description 'Library which provides the ucontext.h C API'
   homepage 'https://github.com/kaniini/libucontext'
-  @_ver = '1.1'
-  version @_ver
+  version '1.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/kaniini/libucontext.git'
-  git_hashtag "libucontext-#{@_ver}"
+  git_hashtag "libucontext-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_armv7l/musl_libucontext-1.1-chromeos-armv7l.tpxz',

@@ -3,12 +3,11 @@ require 'package'
 class Libspatialaudio < Package
   description 'libspatialaudio is a library for Ambisonic encoding and decoding, filtering and binaural rendering.'
   homepage 'https://github.com/videolabs/libspatialaudio/'
-  @_ver = '0.3.0+git20180730'
-  version @_ver
+  version '0.3.0+git20180730'
   compatibility 'all'
   license 'LGPL-2.1'
   source_url 'https://salsa.debian.org/multimedia-team/libspatialaudio.git'
-  git_hashtag "debian/#{@_ver}+dfsg1-2"
+  git_hashtag "debian/#{version}+dfsg1-2"
 
   depends_on 'libmysofa'
 
