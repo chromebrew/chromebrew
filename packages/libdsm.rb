@@ -3,12 +3,11 @@ require 'package'
 class Libdsm < Package
   description 'Defective SMb: A minimalist implementation of a client library for SMB using C.'
   homepage 'https://videolabs.github.io/libdsm/'
-  @_ver = '0.3.2'
-  version @_ver
+  version '0.3.2'
   compatibility 'all'
   license 'LGPL-2.1+'
   source_url 'https://github.com/videolabs/libdsm.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.2_armv7l/libdsm-0.3.2-chromeos-armv7l.tpxz',

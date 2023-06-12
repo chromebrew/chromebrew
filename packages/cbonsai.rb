@@ -3,12 +3,11 @@ require 'package'
 class Cbonsai < Package
   description 'A CLI bonsai tree generator, grow bonsai trees in our terminal'
   homepage 'https://gitlab.com/jallbrit/cbonsai'
-  @_ver = '1.3.1'
-  version @_ver
+  version '1.3.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://gitlab.com/jallbrit/cbonsai.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbonsai/1.3.1_armv7l/cbonsai-1.3.1-chromeos-armv7l.tar.zst',

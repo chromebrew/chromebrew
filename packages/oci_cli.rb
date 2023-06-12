@@ -3,12 +3,11 @@ require 'package'
 class Oci_cli < Package
   description 'Command Line Interface for Oracle Cloud Infrastructure'
   homepage 'https://github.com/oracle/oci-cli/'
-  @_ver = '3.1.2'
-  version @_ver
+  version '3.1.2'
   license 'UPL-1.0'
   compatibility 'all'
   source_url 'https://github.com/oracle/oci-cli.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_armv7l/oci_cli-3.1.2-chromeos-armv7l.tpxz',

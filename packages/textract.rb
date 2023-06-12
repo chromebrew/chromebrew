@@ -3,12 +3,11 @@ require 'package'
 class Textract < Package
   description 'Textract provides text extracting tools for many formats.'
   homepage 'http://textract.readthedocs.io/'
-  @_ver = '1.6.4'
-  version @_ver
+  version '1.6.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/deanmalmgren/textract.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.4_armv7l/textract-1.6.4-chromeos-armv7l.tpxz',

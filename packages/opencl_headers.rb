@@ -3,12 +3,11 @@ require 'package'
 class Opencl_headers < Package
   description 'OpenCL header files'
   homepage 'https://github.com/KhronosGroup/OpenCL-Headers'
-  @_ver = '2022.09.30'
-  version @_ver
+  version '2022.09.30'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/OpenCL-Headers.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opencl_headers/2022.09.30_armv7l/opencl_headers-2022.09.30-chromeos-armv7l.tar.zst',

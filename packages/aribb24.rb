@@ -3,12 +3,11 @@ require 'package'
 class Aribb24 < Package
   description 'aribb24 is a basic implementation of the ARIB STD-B24 public standard.'
   homepage 'https://github.com/nkoriyama/aribb24/'
-  @_ver = '1.0.3'
-  version @_ver
+  version '1.0.3'
   compatibility 'all'
   license 'LGPL-3'
   source_url 'https://github.com/nkoriyama/aribb24.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   depends_on 'libpng'
 

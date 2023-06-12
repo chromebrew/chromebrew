@@ -3,12 +3,11 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'http://www.vim.org'
-  @_ver = '9.0.1145'
-  version @_ver
+  version '9.0.1145'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',

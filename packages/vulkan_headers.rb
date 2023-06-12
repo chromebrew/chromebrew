@@ -3,12 +3,11 @@ require 'package'
 class Vulkan_headers < Package
   description 'Vulkan header files'
   homepage 'https://github.com/KhronosGroup/Vulkan-Headers'
-  @_ver = '1.3.252'
-  version @_ver
+  version '1.3.252'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.252_armv7l/vulkan_headers-1.3.252-chromeos-armv7l.tar.zst',

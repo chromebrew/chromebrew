@@ -3,12 +3,11 @@ require 'package'
 class Libgit2 < Package
   description 'A portable, pure C implementation of the Git core methods'
   homepage 'https://libgit2.org/'
-  @_ver = '1.5.1'
-  version @_ver
+  version '1.5.1'
   license 'GPL-2-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/libgit2/libgit2.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgit2/1.5.1_armv7l/libgit2-1.5.1-chromeos-armv7l.tar.zst',

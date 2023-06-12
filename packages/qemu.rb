@@ -3,8 +3,7 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  @_ver = '8.0.1'
-  version @_ver
+  version '8.0.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{@_ver}"

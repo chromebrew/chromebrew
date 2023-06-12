@@ -3,12 +3,11 @@ require 'package'
 class Musl_obstack < Package
   description 'Void Linux copy + paste of the obstack functions and macros found in GNU gcc libiberty library for use with musl libc'
   homepage 'https://github.com/void-linux/musl-obstack'
-  @_ver = '1.2.2'
-  version @_ver
+  version '1.2.2'
   license 'zlib'
   compatibility 'all'
   source_url 'https://github.com/void-linux/musl-obstack.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_obstack/1.2.2_armv7l/musl_obstack-1.2.2-chromeos-armv7l.tpxz',

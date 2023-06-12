@@ -3,12 +3,11 @@ require 'package'
 class S3cmd < Package
   description 'Command line tool for managing Amazon S3 and CloudFront services'
   homepage 'http://s3tools.org/s3cmd'
-  @_ver = '2.2.0'
-  version @_ver
+  version '2.2.0'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/s3tools/s3cmd.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/s3cmd/2.2.0_armv7l/s3cmd-2.2.0-chromeos-armv7l.tpxz',

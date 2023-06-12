@@ -3,12 +3,11 @@ require 'package'
 class Libffi < Package
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
   homepage 'https://github.com/libffi/libffi/'
-  @_ver = '3.4.4'
-  version @_ver
+  version '3.4.4'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libffi/libffi.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libffi/3.4.4_armv7l/libffi-3.4.4-chromeos-armv7l.tar.zst',

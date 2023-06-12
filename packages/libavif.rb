@@ -3,12 +3,11 @@ require 'package'
 class Libavif < Package
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  @_ver = '0.11.1'
-  version @_ver
+  version '0.11.1'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/0.11.1_armv7l/libavif-0.11.1-chromeos-armv7l.tar.zst',
