@@ -3,23 +3,23 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.2.5'
+  version '8.2.7'
   license 'PHP-3.01'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-8.2.5.tar.xz'
-  source_sha256 '800738c359b7f1e67e40c22713d2d90276bc85ba1c21b43d99edd43c254c5f76'
+  source_url 'https://www.php.net/distributions/php-8.2.7.tar.xz'
+  source_sha256 '4b9fb3dcd7184fe7582d7e44544ec7c5153852a2528de3b6754791258ffbdfa0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_armv7l/php82-8.2.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_armv7l/php82-8.2.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_i686/php82-8.2.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_x86_64/php82-8.2.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_i686/php82-8.2.7-chromeos-i686.tar.zst',
+     x86_64: ''
   })
   binary_sha256({
-    aarch64: 'b7a2262392a2ec627f3630b40726e56512a4c70685d25117ec91a8d7481185e8',
-     armv7l: 'b7a2262392a2ec627f3630b40726e56512a4c70685d25117ec91a8d7481185e8',
-       i686: '117284d2577dde1ff96013aca7c9150a319954ae7d3ecce20c6a502340eaf0b7',
-     x86_64: '5437cdc57c0a93a101e422d388a09dc15b85d8b7105235626f6154c047a5802b'
+    aarch64: 'd882c0f97673bcafad430861b6df08a3e4881fef853cf77babb424b3107f0481',
+     armv7l: 'd882c0f97673bcafad430861b6df08a3e4881fef853cf77babb424b3107f0481',
+       i686: 'ad75614c3845b5eb703e08287b5b48b0c193e999f1d95f6621c99ccc8882cfe7',
+     x86_64: ''
   })
 
   depends_on 'aspell_en'
@@ -68,6 +68,7 @@ class Php82 < Package
   depends_on 'unixodbc' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'openssl111' => :build
 
   no_fhs
 
