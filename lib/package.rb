@@ -217,7 +217,7 @@ class Package
   end
 
   def self.full_version
-    if @release && @revision != 0
+    if @revision
       return "#{@version}-#{@revision}"
     else
       return @version
