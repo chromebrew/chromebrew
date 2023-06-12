@@ -13,13 +13,13 @@ class Php82 < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_i686/php82-8.2.7-chromeos-i686.tar.zst',
-     x86_64: ''
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_x86_64/php82-8.2.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd882c0f97673bcafad430861b6df08a3e4881fef853cf77babb424b3107f0481',
-     armv7l: 'd882c0f97673bcafad430861b6df08a3e4881fef853cf77babb424b3107f0481',
-       i686: 'ad75614c3845b5eb703e08287b5b48b0c193e999f1d95f6621c99ccc8882cfe7',
-     x86_64: ''
+    aarch64: 'b835a5c0a0e764a34dd76cdfd5ffcaf369f04918db8fd91d7b0b1f67b1b03007',
+     armv7l: 'b835a5c0a0e764a34dd76cdfd5ffcaf369f04918db8fd91d7b0b1f67b1b03007',
+       i686: 'c0233e1aabd4fbedf6cfeb9df2b523e70e3233dee367d4831a611cae146e4348',
+     x86_64: '5bb7dd06969c766a462f5015bef4d0da8c605be5b8164c576554476d7fb45a0b'
   })
 
   depends_on 'aspell_en'
@@ -68,7 +68,6 @@ class Php82 < Package
   depends_on 'unixodbc' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'openssl111' => :build
 
   no_fhs
 
