@@ -3,23 +3,23 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.2.5'
+  version '8.2.7'
   license 'PHP-3.01'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-8.2.5.tar.xz'
-  source_sha256 '800738c359b7f1e67e40c22713d2d90276bc85ba1c21b43d99edd43c254c5f76'
+  source_url 'https://www.php.net/distributions/php-8.2.7.tar.xz'
+  source_sha256 '4b9fb3dcd7184fe7582d7e44544ec7c5153852a2528de3b6754791258ffbdfa0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_armv7l/php82-8.2.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_armv7l/php82-8.2.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_i686/php82-8.2.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_x86_64/php82-8.2.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_i686/php82-8.2.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_x86_64/php82-8.2.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b7a2262392a2ec627f3630b40726e56512a4c70685d25117ec91a8d7481185e8',
-     armv7l: 'b7a2262392a2ec627f3630b40726e56512a4c70685d25117ec91a8d7481185e8',
-       i686: '117284d2577dde1ff96013aca7c9150a319954ae7d3ecce20c6a502340eaf0b7',
-     x86_64: '5437cdc57c0a93a101e422d388a09dc15b85d8b7105235626f6154c047a5802b'
+    aarch64: 'b835a5c0a0e764a34dd76cdfd5ffcaf369f04918db8fd91d7b0b1f67b1b03007',
+     armv7l: 'b835a5c0a0e764a34dd76cdfd5ffcaf369f04918db8fd91d7b0b1f67b1b03007',
+       i686: 'c0233e1aabd4fbedf6cfeb9df2b523e70e3233dee367d4831a611cae146e4348',
+     x86_64: '5bb7dd06969c766a462f5015bef4d0da8c605be5b8164c576554476d7fb45a0b'
   })
 
   depends_on 'aspell_en'
