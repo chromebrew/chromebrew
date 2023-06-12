@@ -7,7 +7,7 @@ class Avocado_framework < Package
   license 'GPL-2 and GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/avocado-framework/avocado.git'
-  git_hashtag @version
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avocado_framework/94.0_armv7l/avocado_framework-94.0-chromeos-armv7l.tar.xz',

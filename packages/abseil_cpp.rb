@@ -6,7 +6,7 @@ class Abseil_cpp < Package
   version '20200923.3'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url "https://github.com/abseil/abseil-cpp/archive/#{@version}.tar.gz"
+  source_url "https://github.com/abseil/abseil-cpp/archive/#{version}.tar.gz"
   source_sha256 'ebe2ad1480d27383e4bf4211e2ca2ef312d5e6a09eba869fd2e8a5c5d553ded2'
 
   binary_url({

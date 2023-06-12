@@ -6,7 +6,7 @@ class Apng2gif < Package
   version '1.8'
   license 'ZLIB'
   compatibility 'all'
-  source_url "https://sourceforge.net/projects/apng2gif/files/#{@version}/apng2gif-#{@version}-src.zip"
+  source_url "https://sourceforge.net/projects/apng2gif/files/#{version}/apng2gif-#{version}-src.zip"
   source_sha256 '9a07e386017dc696573cd7bc7b46b2575c06da0bc68c3c4f1c24a4b39cdedd4d'
 
   binary_url({
@@ -38,7 +38,7 @@ class Apng2gif < Package
     system 'make'
     system "help2man -s 1 -N -h '' \
             -n '#{description.downcase.delete! '.'}' \
-            --version-string='#{@version}' \
+            --version-string='#{version}' \
             ./apng2gif -o apng2gif.1"
   end
 

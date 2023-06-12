@@ -7,7 +7,7 @@ class Aribb24 < Package
   compatibility 'all'
   license 'LGPL-3'
   source_url 'https://github.com/nkoriyama/aribb24.git'
-  git_hashtag "v#{@version}"
+  git_hashtag "v#{version}"
 
   depends_on 'libpng'
 

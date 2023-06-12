@@ -16,6 +16,6 @@ class Aws2 < Package
   depends_on 'python3' => :build
 
   def self.install
-    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I aws2==#{@version} --no-warn-script-location"
+    system "pip install --prefix #{CREW_PREFIX} --root #{CREW_DEST_DIR} -I aws2==#{version} --no-warn-script-location"
   end
 end
