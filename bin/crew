@@ -1086,7 +1086,7 @@ def determine_conflicts(dir, pkg)
   end
   puts "removing #{pkg}".orange
   puts 'There is a conflict with the same file in another package:'.lightred unless conflicts.empty?
-  puts conflicts.orange
+  puts conflicts.to_s.orange
   conflicts.map! { |x| x.to_s.partition(':').last}
   return conflicts
 end
