@@ -3,12 +3,11 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  @_ver = '21.1.7'
-  version @_ver
+  version '21.1.7'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
-  git_hashtag "xorg-server-#{@_ver}"
+  git_hashtag "xorg-server-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.7_armv7l/xorg_server-21.1.7-chromeos-armv7l.tar.zst',

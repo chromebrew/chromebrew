@@ -3,12 +3,11 @@ require 'package'
 class Zopfli < Package
   description 'A very good, but slow, deflate or zlib compression.'
   homepage 'https://github.com/google/zopfli/'
-  @_ver = '1.0.3'
-  version @_ver
+  version '1.0.3'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/google/zopfli.git'
-  git_hashtag "zopfli-#{@_ver}"
+  git_hashtag "zopfli-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zopfli/1.0.3_armv7l/zopfli-1.0.3-chromeos-armv7l.tar.xz',

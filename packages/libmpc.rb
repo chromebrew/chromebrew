@@ -3,12 +3,11 @@ require 'package'
 class Libmpc < Package
   description 'Musepack is an audio compression format with a strong emphasis on high quality.'
   homepage 'https://www.musepack.net/'
-  @_ver = 'r495'
-  version @_ver
+  version 'r495'
   compatibility 'all'
   license 'BSD and LGPL-2+'
   source_url 'https://salsa.debian.org/multimedia-team/libmpc.git'
-  git_hashtag "debian/2%0.1_#{@_ver}-2"
+  git_hashtag "debian/2%0.1_#{version}-2"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpc/r495_armv7l/libmpc-r495-chromeos-armv7l.tpxz',

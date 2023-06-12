@@ -3,12 +3,11 @@ require 'package'
 class Xrdb < Package
   description 'xrdb - X server resource database utility'
   homepage 'https://x.org'
-  @_ver = '1.2.1'
-  version @_ver
+  version '1.2.1'
   license 'custom'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xrdb.git'
-  git_hashtag "xrdb-#{@_ver}"
+  git_hashtag "xrdb-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xrdb/1.2.1_armv7l/xrdb-1.2.1-chromeos-armv7l.tar.zst',

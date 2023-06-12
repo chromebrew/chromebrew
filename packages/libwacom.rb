@@ -3,12 +3,11 @@ require 'package'
 class Libwacom < Package
   description 'libwacom is a wrapper library for evdev devices.'
   homepage 'https://github.com/linuxwacom/libwacom'
-  @_ver = '1.12'
-  version @_ver
+  version '1.12'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/linuxwacom/libwacom.git'
-  git_hashtag "libwacom-#{@_ver}"
+  git_hashtag "libwacom-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.12_armv7l/libwacom-1.12-chromeos-armv7l.tpxz',
