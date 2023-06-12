@@ -3,12 +3,11 @@ require 'package'
 class Libmtp < Package
   description 'libmtp is a library to access MTP (Media Transfer Protocol) Devices.'
   homepage 'https://github.com/libmtp/libmtp/'
-  @_ver = '1.1.19'
-  version @_ver
+  version '1.1.19'
   compatibility 'all'
   license 'LGPL-2.1'
   source_url 'https://github.com/libmtp/libmtp.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   depends_on 'libusb'
   depends_on 'eudev'

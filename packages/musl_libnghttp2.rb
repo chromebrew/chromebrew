@@ -3,12 +3,11 @@ require 'package'
 class Musl_libnghttp2 < Package
   description 'library implementing HTTP/2 protocol'
   homepage 'https://nghttp2.org/'
-  @_ver = '1.46.0'
-  version @_ver
+  version '1.46.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_armv7l/musl_libnghttp2-1.46.0-chromeos-armv7l.tpxz',

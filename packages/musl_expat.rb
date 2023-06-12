@@ -3,8 +3,7 @@ require 'package'
 class Musl_expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
   homepage 'https://sourceforge.net/projects/expat/'
-  @_ver = '2.4.8'
-  version @_ver
+  version '2.4.8'
   license 'MIT'
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/expat/expat/2.4.8/expat-2.4.8.tar.xz'

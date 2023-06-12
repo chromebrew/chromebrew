@@ -3,8 +3,7 @@ require 'package'
 class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  @_ver = '2.56.0-59d5d83'
-  version @_ver
+  version '2.56.0-59d5d83'
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'

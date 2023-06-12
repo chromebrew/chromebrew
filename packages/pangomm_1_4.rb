@@ -3,8 +3,7 @@ require 'package'
 class Pangomm_1_4 < Package
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
-  @_ver = '2.46.3'
-  version @_ver
+  version '2.46.3'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'

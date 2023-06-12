@@ -3,8 +3,7 @@ require 'package'
 class Virglrenderer < Package
   description 'Virtual OpenGL renderer for QEMU virtual machines'
   homepage 'https://virgil3d.github.io/'
-  @_ver = '0.9.1-486d891'
-  version @_ver
+  version '0.9.1-486d891'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/virgl/virglrenderer.git'

@@ -3,12 +3,11 @@ require 'package'
 class Llvm_build16 < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  @_ver = '16.0.5'
-  version @_ver
+  version '16.0.5'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag "llvmorg-#{@_ver}"
+  git_hashtag "llvmorg-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_build16/16.0.5_armv7l/llvm_build16-16.0.5-chromeos-armv7l.tar.zst',

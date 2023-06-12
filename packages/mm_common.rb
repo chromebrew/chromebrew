@@ -3,8 +3,7 @@ require 'package'
 class Mm_common < Package
   description 'Common build files of the C++ bindings'
   homepage 'http://www.gtkmm.org/'
-  @_ver = '1.0.5'
-  version @_ver
+  version '1.0.5'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/mm-common.git'

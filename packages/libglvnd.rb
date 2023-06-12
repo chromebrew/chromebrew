@@ -3,12 +3,11 @@ require 'package'
 class Libglvnd < Package
   description 'The GL Vendor-Neutral Dispatch library'
   homepage 'https://gitlab.freedesktop.org/glvnd/libglvnd'
-  @_ver = '1.6.0'
-  version @_ver
+  version '1.6.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/glvnd/libglvnd.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_armv7l/libglvnd-1.6.0-chromeos-armv7l.tar.zst',

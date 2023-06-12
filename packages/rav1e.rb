@@ -3,8 +3,7 @@ require 'package'
 class Rav1e < Package
   description 'An AV1 encoder focused on speed and safety'
   homepage 'https://github.com/xiph/rav1e/'
-  @_ver = '0.5.1-p20220927'
-  version @_ver
+  version '0.5.1-p20220927'
   license 'BSD-2, Apache-2.0, MIT and Unlicense'
   compatibility 'all'
   source_url 'https://github.com/xiph/rav1e.git'

@@ -3,8 +3,7 @@ require 'package'
 class Musl_libunwind < Package
   description 'libunwind is a portable and efficient C programming interface (API) to determine the call-chain of a program.'
   homepage 'https://www.nongnu.org/libunwind/'
-  @_ver = '1.5.0'
-  version @_ver
+  version '1.5.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/libunwind/libunwind-1.5.0.tar.gz'

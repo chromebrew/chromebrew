@@ -3,12 +3,11 @@ require 'package'
 class Sphinx < Package
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.'
   homepage 'https://www.sphinx-doc.org/'
-  @_ver = '4.2.0'
-  version @_ver
+  version '4.2.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/sphinx-doc/sphinx.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.2.0_armv7l/sphinx-4.2.0-chromeos-armv7l.tpxz',

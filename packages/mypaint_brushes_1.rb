@@ -3,12 +3,11 @@ require 'package'
 class Mypaint_brushes_1 < Package
   description 'Brushes used by MyPaint and other software using libmypaint.'
   homepage 'http://mypaint.org/'
-  @_ver = '1.3.1'
-  version @_ver
+  version '1.3.1'
   license 'CC0-1.0'
   compatibility 'all'
   source_url 'https://github.com/mypaint/mypaint-brushes.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes_1/1.3.1_armv7l/mypaint_brushes_1-1.3.1-chromeos-armv7l.tar.zst',

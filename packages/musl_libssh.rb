@@ -3,12 +3,11 @@ require 'package'
 class Musl_libssh < Package
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
-  @_ver = '0.9.6'
-  version @_ver
+  version '0.9.6'
   compatibility 'all'
   license 'LGPL-2.1'
   source_url 'https://git.libssh.org/projects/libssh.git'
-  git_hashtag "libssh-#{@_ver}"
+  git_hashtag "libssh-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',

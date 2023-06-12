@@ -3,12 +3,11 @@ require 'package'
 class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  @_ver = '1.16.2'
-  version @_ver
+  version '1.16.2'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/strukturag/libheif.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2_armv7l/libheif-1.16.2-chromeos-armv7l.tar.zst',

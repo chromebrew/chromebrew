@@ -3,8 +3,7 @@ require 'package'
 class Libxdmcp < Package
   description 'The libXdmcp package contains a library implementing the X Display Manager Control Protocol.'
   homepage 'http://www.x.org'
-  @_ver = '4a71fdf'
-  version @_ver
+  version '4a71fdf'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxdmcp.git'
