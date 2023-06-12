@@ -3,45 +3,42 @@ require 'package'
 class Peek < Package
   description 'Simple animated GIF screen recorder with an easy to use interface'
   homepage 'https://github.com/phw/peek'
-  version '1.3.1'
+  version '1.5.1'
   license 'GPL-3+'
-  compatibility 'all'
-  source_url 'https://github.com/phw/peek/archive/1.3.1.tar.gz'
-  source_sha256 '8104b65b041858b7f7f482e1425f8f22d429524340ad341f95f08b08fe4e8602'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/phw/peek/archive/1.5.1.tar.gz'
+  source_sha256 'd2b52297d3941db2f10ad4dd00a6d5606728c0fee6af5f1594a036f88e478237'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_armv7l/peek-1.3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_armv7l/peek-1.3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_i686/peek-1.3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.3.1_x86_64/peek-1.3.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.5.1_armv7l/peek-1.5.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.5.1_armv7l/peek-1.5.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.5.1_x86_64/peek-1.5.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c24c16aff4c322c206f4b6a6d2e0d9d87d0f88aadf7ff95bc09fce9ef2958281',
-     armv7l: 'c24c16aff4c322c206f4b6a6d2e0d9d87d0f88aadf7ff95bc09fce9ef2958281',
-       i686: '093c78bb96a25e6b2400575ff90ba7ddf57288a5ad83ddcba4da79e454f20709',
-     x86_64: '15a73e027a0d2b9b1924b15d39c79625960f6a60556032d0974e868d0e228158'
+    aarch64: '2e1bb8fd9bf25cec736ccd4417b7b1154b74371f50bdf4836401c15d758354f8',
+     armv7l: '2e1bb8fd9bf25cec736ccd4417b7b1154b74371f50bdf4836401c15d758354f8',
+     x86_64: 'be10108eca6b1520a137e0e70ca2401dc99176e1c573bdbbc16b1f9b47e7df85'
   })
 
-  depends_on 'ffmpeg'
-  depends_on 'gtk3'
-  depends_on 'vala'
-  depends_on 'sommelier'
+  depends_on 'ffmpeg' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'pango' # R
+  depends_on 'vala' => :build
+  depends_on 'gcc_lib' # R
 
   def self.build
-    Dir.mkdir 'peek'
-    Dir.chdir 'peek' do
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '..'
-      system 'make'
-    end
+    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
+      -Dbuild-tests=false \
+      builddir"
+    system 'meson configure builddir'
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    Dir.chdir 'peek' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
   def self.postinstall

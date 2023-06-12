@@ -25,7 +25,7 @@ class Amtk < Package
   depends_on 'gtk3'
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \

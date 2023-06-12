@@ -1,11 +1,11 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.32.3'
+CREW_VERSION = '1.34.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
 
-# read and parse processor infomation from /proc/cpuinfo
+# read and parse processor information from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
               .partition("\n\n")[0] \
               .scan(/^(.+?)\t*: (.+)$/).to_h \
@@ -60,9 +60,13 @@ end
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
-# vendor_id may not exist on non-x86 platforms.
-CREW_IS_AMD = ARCH == 'x86_64' ? CPUINFO['vendor_id'].include?('AuthenticAMD') : false
-CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? CPUINFO['vendor_id'].include?('GenuineIntel') : false
+# The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
+# container is virtualized on non-x86 platforms. Default to
+# CREW_IS_INTEL for x86 architectures. Note that a QEMU_EMULATED check
+# is not relevant here since qemu can be configured to pass through a
+# cpuinfo vendor_id.
+CREW_IS_AMD = ARCH == 'x86_64' ? ( CREW_CPU_VENDOR != 'unknown' and CPUINFO['vendor_id'].include?('AuthenticAMD') ) : false
+CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? ( CREW_CPU_VENDOR == 'unknown' or CPUINFO['vendor_id'].include?('GenuineIntel') ) : false
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
@@ -70,9 +74,9 @@ if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
   when 'aarch64', 'armv7l'
-    CREW_KERNEL_VERSION = '4.14'
+    CREW_KERNEL_VERSION = '5.10'
   when 'x86_64'
-    CREW_KERNEL_VERSION = '4.14'
+    CREW_KERNEL_VERSION = '5.10'
   end
 else
   CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
@@ -92,6 +96,26 @@ CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
+# GitHub constants.
+CREW_GITHUB_ACCOUNT = 'chromebrew'
+CREW_GITHUB_BRANCH = 'master'
+CREW_GITHUB_REPO = 'https://github.com/chromebrew/chromebrew.git'
+
+# Local constants for contributors.
+repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+if repo_root.empty? || File.basename(repo_root) != 'chromebrew'
+  Dir.chdir '../..' do
+    repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+  end
+end
+CREW_LOCAL_REPO_ROOT = repo_root
+CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
+CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
+                             CREW_LOCAL_REPO_BASE == CREW_GITHUB_ACCOUNT ? "#{CREW_LOCAL_REPO_ROOT}/manifest" : ''
+                           else
+                             ENV.fetch('CREW_LOCAL_MANIFEST_PATH', nil)
+                           end
+
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
 CREW_DEST_MUSL_PREFIX = CREW_DEST_DIR + CREW_MUSL_PREFIX
@@ -106,7 +130,23 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                    File.join(ENV.fetch('CREW_CACHE_DIR', nil), '')
                  end
 
-FileUtils.mkdir_p CREW_CACHE_DIR
+CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
+@crew_manifest_cache_error = "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}"
+begin
+  FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
+rescue Errno::EROFS => e
+  # r/o fs
+  puts @crew_manifest_cache_error.lightred
+  puts e.message.to_s.orange
+rescue Errno::EACCES => e
+  # no write access
+  puts @crew_manifest_cache_error.lightred
+  puts e.message.to_s.orange
+rescue Errno::ENOENT => e
+  # weird fs e.g., /proc
+  puts @crew_manifest_cache_error.lightred
+  puts e.message.to_s.orange
+end
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
@@ -124,8 +164,15 @@ CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
 # Set testing constants from environment variables
-CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
 CREW_TESTING_REPO = ENV.fetch('CREW_TESTING_REPO', nil)
+if CREW_TESTING_REPO
+  CREW_TESTING_ACCOUNT = if CREW_TESTING_REPO.downcase.include?('https://github.com')
+                           CREW_TESTING_REPO.to_s.downcase.gsub('https://github.com/', '').gsub('/chromebrew.git', '')
+                         else
+                           ENV.fetch('CREW_TESTING_ACCOUNT', nil)
+                         end
+end
+CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
 
 CREW_TESTING = CREW_TESTING_BRANCH.to_s.empty? || CREW_TESTING_REPO.to_s.empty? ? '0' : ENV.fetch('CREW_TESTING', nil)
 

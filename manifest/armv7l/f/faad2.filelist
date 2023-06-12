@@ -1,0 +1,15 @@
+/usr/local/bin/faad
+/usr/local/include/faad.h
+/usr/local/include/neaacdec.h
+/usr/local/lib/libfaad.a
+/usr/local/lib/libfaad_drm.a
+/usr/local/lib/libfaad_drm.la
+/usr/local/lib/libfaad_drm.so
+/usr/local/lib/libfaad_drm.so.2
+/usr/local/lib/libfaad_drm.so.2.0.0
+/usr/local/lib/libfaad.la
+/usr/local/lib/libfaad.so
+/usr/local/lib/libfaad.so.2
+/usr/local/lib/libfaad.so.2.0.0
+/usr/local/lib/pkgconfig/faad2.pc
+/usr/local/share/man/man1/faad.1.zst

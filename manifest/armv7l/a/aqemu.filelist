@@ -1,0 +1,78 @@
+/usr/local/bin/aqemu
+/usr/local/share/applications/aqemu.desktop
+/usr/local/share/aqemu/docs/links.html
+/usr/local/share/aqemu/icons.rcc
+/usr/local/share/aqemu/os_icons/alt.png
+/usr/local/share/aqemu/os_icons/aptosid.png
+/usr/local/share/aqemu/os_icons/arch.png
+/usr/local/share/aqemu/os_icons/asp.png
+/usr/local/share/aqemu/os_icons/bodhi.png
+/usr/local/share/aqemu/os_icons/calculate.png
+/usr/local/share/aqemu/os_icons/centos.png
+/usr/local/share/aqemu/os_icons/chakra.png
+/usr/local/share/aqemu/os_icons/clearos.png
+/usr/local/share/aqemu/os_icons/damnsmalllinux.png
+/usr/local/share/aqemu/os_icons/debian.png
+/usr/local/share/aqemu/os_icons/dragonfly.png
+/usr/local/share/aqemu/os_icons/fedora.png
+/usr/local/share/aqemu/os_icons/freebsd.png
+/usr/local/share/aqemu/os_icons/frugalware.png
+/usr/local/share/aqemu/os_icons/fuduntu.png
+/usr/local/share/aqemu/os_icons/gentoo.png
+/usr/local/share/aqemu/os_icons/gnewsense.png
+/usr/local/share/aqemu/os_icons/knoppix.png
+/usr/local/share/aqemu/os_icons/knoppix_v2.png
+/usr/local/share/aqemu/os_icons/kubuntu.png
+/usr/local/share/aqemu/os_icons/kubuntu_v2.png
+/usr/local/share/aqemu/os_icons/lubuntu.png
+/usr/local/share/aqemu/os_icons/lunar.png
+/usr/local/share/aqemu/os_icons/mac.png
+/usr/local/share/aqemu/os_icons/mageia.png
+/usr/local/share/aqemu/os_icons/mandriva.png
+/usr/local/share/aqemu/os_icons/mepis.png
+/usr/local/share/aqemu/os_icons/minix.png
+/usr/local/share/aqemu/os_icons/mint.png
+/usr/local/share/aqemu/os_icons/netbsd.png
+/usr/local/share/aqemu/os_icons/novell.png
+/usr/local/share/aqemu/os_icons/openbsd.png
+/usr/local/share/aqemu/os_icons/opensolaris.png
+/usr/local/share/aqemu/os_icons/pclinuxos.png
+/usr/local/share/aqemu/os_icons/puppy.png
+/usr/local/share/aqemu/os_icons/redhat.png
+/usr/local/share/aqemu/os_icons/sabayon.png
+/usr/local/share/aqemu/os_icons/scientific.png
+/usr/local/share/aqemu/os_icons/slackware.png
+/usr/local/share/aqemu/os_icons/slackware_v2.png
+/usr/local/share/aqemu/os_icons/solaris.png
+/usr/local/share/aqemu/os_icons/suse-novell.png
+/usr/local/share/aqemu/os_icons/suse.png
+/usr/local/share/aqemu/os_icons/symphony.png
+/usr/local/share/aqemu/os_icons/ubuntu.png
+/usr/local/share/aqemu/os_icons/ubuntu_v2.png
+/usr/local/share/aqemu/os_icons/vector.png
+/usr/local/share/aqemu/os_icons/xubuntu.png
+/usr/local/share/aqemu/os_templates/FreeBSD 4.aqvmt
+/usr/local/share/aqemu/os_templates/FreeBSD 7.aqvmt
+/usr/local/share/aqemu/os_templates/FreeBSD 8.aqvmt
+/usr/local/share/aqemu/os_templates/Linux 2.0.aqvmt
+/usr/local/share/aqemu/os_templates/Linux 2.4.aqvmt
+/usr/local/share/aqemu/os_templates/Linux 2.6.aqvmt
+/usr/local/share/aqemu/os_templates/Linux 2.6 x86_64.aqvmt
+/usr/local/share/aqemu/os_templates/MacOS X x86.aqvmt
+/usr/local/share/aqemu/os_templates/Windows 2000.aqvmt
+/usr/local/share/aqemu/os_templates/Windows 7.aqvmt
+/usr/local/share/aqemu/os_templates/Windows 7 x64.aqvmt
+/usr/local/share/aqemu/os_templates/Windows 9X.aqvmt
+/usr/local/share/aqemu/os_templates/Windows Vista.aqvmt
+/usr/local/share/aqemu/os_templates/Windows Vista x64.aqvmt
+/usr/local/share/aqemu/os_templates/Windows XP.aqvmt
+/usr/local/share/aqemu/os_templates/Windows XP x64.aqvmt
+/usr/local/share/aqemu/shared_images.rcc
+/usr/local/share/doc/aqemu/AUTHORS.bz2
+/usr/local/share/doc/aqemu/CHANGELOG.bz2
+/usr/local/share/doc/aqemu/README.bz2
+/usr/local/share/doc/aqemu/TODO.bz2
+/usr/local/share/man/man1/aqemu.1.gz
+/usr/local/share/pixmaps/aqemu_48x48.png
+/usr/local/share/pixmaps/aqemu_64x64.png
+/usr/local/share/pixmaps/aqemu.png

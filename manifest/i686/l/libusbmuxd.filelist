@@ -1,0 +1,12 @@
+/usr/local/bin/inetcat
+/usr/local/bin/iproxy
+/usr/local/include/usbmuxd.h
+/usr/local/include/usbmuxd-proto.h
+/usr/local/lib/libusbmuxd-2.0.a
+/usr/local/lib/libusbmuxd-2.0.la
+/usr/local/lib/libusbmuxd-2.0.so
+/usr/local/lib/libusbmuxd-2.0.so.6
+/usr/local/lib/libusbmuxd-2.0.so.6.0.0
+/usr/local/lib/pkgconfig/libusbmuxd-2.0.pc
+/usr/local/share/man/man1/inetcat.1.gz
+/usr/local/share/man/man1/iproxy.1.gz

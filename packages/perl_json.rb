@@ -6,23 +6,23 @@ require 'package'
 class Perl_json < Package
   description 'JSON JavaScript Object Notation encoder/decoder'
   homepage 'https://search.cpan.org/dist/JSON'
-  version '4.05'
+  version '4.10-perl5.36'
   license 'GPL PerlArtistic'
   compatibility 'all'
-  source_url 'https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-4.05.tar.gz'
-  source_sha256 '53839373210bebea0b24fe459d0a8232446b62015c8dc42dc36051da67336bf0'
+  source_url 'https://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz'
+  source_sha256 'df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.05_armv7l/perl_json-4.05-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.05_armv7l/perl_json-4.05-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.05_i686/perl_json-4.05-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.05_x86_64/perl_json-4.05-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.10-perl5.36_armv7l/perl_json-4.10-perl5.36-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.10-perl5.36_armv7l/perl_json-4.10-perl5.36-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.10-perl5.36_i686/perl_json-4.10-perl5.36-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_json/4.10-perl5.36_x86_64/perl_json-4.10-perl5.36-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '30e90a27223c850822f6f738d491091b3caf2b472bf07e57927736bf24f16d70',
-     armv7l: '30e90a27223c850822f6f738d491091b3caf2b472bf07e57927736bf24f16d70',
-       i686: 'd338da27af6830628bfa65922d6a608e87430f1bab7a055a926b0d6edb47bbb5',
-     x86_64: '87cde104a0c49bea5dee8dbda9faef3a00354a5fe5f0d0233d3e25e2eb18b47a'
+    aarch64: '4fcde576679993242705a993ba29547757587feff3c723339ffe58fba1b9668e',
+     armv7l: '4fcde576679993242705a993ba29547757587feff3c723339ffe58fba1b9668e',
+       i686: '47f94cc795acebd0d640d6c89e04812e992cf337061db6e9ed0a059b8edcdd5c',
+     x86_64: '02337554beeee198cdfdaa102b544c8cafd342d0e2391cd0c2789b166f2164f1'
   })
 
   def self.prebuild

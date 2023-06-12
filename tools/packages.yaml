@@ -870,6 +870,11 @@ url: https://github.com/civetweb/civetweb/releases
 activity: low
 ---
 kind: url
+name: cjson
+url: https://github.com/DaveGamble/cJSON/releases
+activity: low
+---
+kind: url
 name: ck4up
 url: http://jue.li/crux/ck4up/
 activity: none
@@ -1373,6 +1378,11 @@ kind: url
 name: docbook2x
 url: https://sourceforge.net/projects/docbook2x/files/docbook2x/
 activity: none
+---
+kind: url
+name: docker
+url: https://github.com/docker/cli/releases
+activity: medium
 ---
 kind: url
 name: docker_systemctl_replacement
@@ -3075,8 +3085,18 @@ url: https://github.com/ibus/ibus/releases/
 activity: low
 ---
 kind: url
+name: icecream
+url: https://github.com/icecc/icecream/releases
+activity: medium
+---
+kind: url
 name: icon_naming_utils
 url: http://tango-project.org/releases/
+activity: none
+---
+kind: url
+name: icoutils
+url: https://savannah.nongnu.org/download/icoutils
 activity: none
 ---
 kind: url
@@ -4731,6 +4751,11 @@ url: https://ftp.gnu.org/gnu/libtool
 activity: none
 ---
 kind: url
+name: libtorrent
+url: https://github.com/arvidn/libtorrent/releases
+activity: low
+---
+kind: url
 name: libudev_stub
 url: https://github.com/therealkenc/libudev-stub/releases
 activity: none
@@ -6046,6 +6071,11 @@ url: https://github.com/openexr/openexr/releases/
 activity: low
 ---
 kind: url
+name: openh264
+url: https://github.com/cisco/openh264/releases
+activity: medium
+---
+kind: url
 name: openhab
 url: https://www.openhab.org/download/
 activity: high
@@ -6111,6 +6141,11 @@ url: https://github.com/openssl/openssl/releases
 activity: medium
 ---
 kind: url
+name: openssl111
+url: https://github.com/openssl/openssl/releases
+activity: medium
+---
+kind: url
 name: openvpn
 url: https://openvpn.net/community-downloads/
 activity: medium
@@ -6134,6 +6169,11 @@ kind: url
 name: opus
 url: https://archive.mozilla.org/pub/opus/
 activity: none
+---
+kind: url
+name: opusfile
+url: https://github.com/xiph/opusfile/releases
+activity: low
 ---
 kind: url
 name: osl
@@ -6891,8 +6931,18 @@ url: https://gitlab.gnome.org/GNOME/pyatspi2/-/tags
 activity: low
 ---
 kind: url
+name: py3_brotlicffi
+url: https://github.com/python-hyper/brotlicffi/tags
+activity: low
+---
+kind: url
 name: py3_gi_docgen
 url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
+activity: medium
+---
+kind: url
+name: py3_mutagen
+url: https://github.com/quodlibet/mutagen/releases
 activity: medium
 ---
 kind: url
@@ -6904,6 +6954,11 @@ kind: url
 name: py3_setuptools
 url: https://github.com/pypa/setuptools/releases
 activity: medium
+---
+kind: url
+name: py3_websockets
+url: https://github.com/python-websockets/websockets/tags
+activity: high
 ---
 kind: url
 name: py3_wheel
@@ -6956,6 +7011,11 @@ url: https://github.com/Galleondragon/qb64/releases
 activity: low
 ---
 kind: url
+name: qbittorrent
+url: https://sourceforge.net/projects/qbittorrent/files/qbittorrent/
+activity: medium
+---
+kind: url
 name: qemacs
 url: http://bellard.org/qemacs
 activity: none
@@ -6987,8 +7047,13 @@ activity: none
 ---
 kind: url
 name: qtbase
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qtbase/-/tags
+activity: medium
+---
+kind: url
+name: qtcharts
+url: https://invent.kde.org/qt/qt/qtcharts/-/tags
+activity: medium
 ---
 kind: url
 name: qtchooser
@@ -7002,7 +7067,7 @@ activity: high
 ---
 kind: url
 name: qtdeclarative
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtdeclarative/-/tags
 activity: medium
 ---
 kind: url
@@ -7011,13 +7076,18 @@ url: https://github.com/rodlie/qtfm/releases
 activity: medium
 ---
 kind: url
+name: qtimageformats
+url: https://invent.kde.org/qt/qt/qtimageformats/-/tags
+activity: medium
+---
+kind: url
 name: qtlocation
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtlocation/-/tags
 activity: medium
 ---
 kind: url
 name: qtmultimedia
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtmultimedia/-/tags
 activity: medium
 ---
 kind: url
@@ -7027,27 +7097,27 @@ activity: medium
 ---
 kind: url
 name: qtscript
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtscript/-/tags
 activity: medium
 ---
 kind: url
 name: qtserialport
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtserialport/-/tags
 activity: medium
 ---
 kind: url
 name: qtsvg
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qtsvg/-/tags
+activity: medium
 ---
 kind: url
 name: qttools
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qttools/-/tags
+activity: medium
 ---
 kind: url
 name: qtwayland
-url: http://download.qt.io/official_releases/qt/
+url: https://invent.kde.org/qt/qt/qtwayland/-/tags
 activity: medium
 ---
 kind: url
@@ -7061,9 +7131,19 @@ url: https://invent.kde.org/qt/qt/qtwebengine/-/tags
 activity: medium
 ---
 kind: url
+name: qtwebglplugin
+url: https://invent.kde.org/qt/qt/qtwebglplugin/-/tags
+activity: medium
+---
+kind: url
+name: qtwebsockets
+url: https://invent.kde.org/qt/qt/qtwebsockets/-/tags
+activity: medium
+---
+kind: url
 name: qtx11extras
-url: http://download.qt.io/official_releases/qt/
-activity: high
+url: https://invent.kde.org/qt/qt/qtx11extras/-/tags
+activity: medium
 ---
 kind: url
 name: quakespasm
@@ -7513,6 +7593,11 @@ activity: none
 kind: url
 name: shotcut
 url: https://github.com/mltframework/shotcut/releases
+activity: high
+---
+kind: url
+name: shotwell
+url: https://download.gnome.org/sources/shotwell/
 activity: high
 ---
 kind: url
@@ -8213,6 +8298,11 @@ activity: low
 kind: url
 name: unicode_emoji
 url: https://www.unicode.org/Public/emoji/
+activity: low
+---
+kind: url
+name: unifdef
+url: https://dotat.at/prog/unifdef/
 activity: low
 ---
 kind: url
@@ -8978,6 +9068,11 @@ activity: high
 kind: url
 name: youtube_dl
 url: https://github.com/rg3/youtube-dl/releases
+activity: high
+---
+kind: url
+name: yt_dlp
+url: https://github.com/yt-dlp/yt-dlp/releases
 activity: high
 ---
 kind: url

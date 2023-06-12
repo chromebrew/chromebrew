@@ -1,0 +1,9 @@
+/usr/local/bin/janet
+/usr/local/bin/jpm
+/usr/local/include/janet/janetconf.h
+/usr/local/include/janet/janet.h
+/usr/local/lib64/janet/.keep
+/usr/local/lib64/libjanet.a
+/usr/local/lib64/libjanet.so
+/usr/local/share/man/man1/janet.1.gz
+/usr/local/share/man/man1/jpm.1.gz

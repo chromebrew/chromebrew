@@ -1,0 +1,17 @@
+/usr/local/bin/lftp
+/usr/local/bin/lftpget
+/usr/local/etc/lftp.conf
+/usr/local/lib/liblftp-jobs.a
+/usr/local/lib/liblftp-jobs.la
+/usr/local/lib/liblftp-tasks.a
+/usr/local/lib/liblftp-tasks.la
+/usr/local/share/applications/lftp.desktop
+/usr/local/share/icons/hicolor/48x48/apps/lftp-icon.png
+/usr/local/share/lftp/convert-mozilla-cookies
+/usr/local/share/lftp/import-ncftp
+/usr/local/share/lftp/import-netscape
+/usr/local/share/lftp/verify-file
+/usr/local/share/lftp/xdg-move
+/usr/local/share/man/man1/lftp.1.gz
+/usr/local/share/man/man1/lftpget.1.gz
+/usr/local/share/man/man5/lftp.conf.5.gz

@@ -53,6 +53,7 @@ DOC = <<~DOCOPT
     crew search [options] [<name> ...]
     crew sysinfo [options]
     crew update [options] [<compatible>]
+    crew updatefiles [options]
     crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
     crew whatprovides [options] <pattern> ...
 
@@ -487,6 +488,11 @@ def help(pkgName = nil)
       Usage: crew update compatible
       This updates the crew package compatibility list.
     EOT
+  when 'updatefiles'
+    puts <<~EOT
+      Update crew files cache.
+      Usage: crew updatefiles
+    EOT
   when 'upgrade'
     puts <<~EOT
       Update package(s).
@@ -572,6 +578,27 @@ def files(pkgName)
   end
 end
 
+def updatefiles
+  puts 'Rebuilding crew files cache...'.yellow
+  if File.writable?(CREW_MANIFEST_CACHE_DIR)
+    FileUtils.rm_rf Dir["#{CREW_MANIFEST_CACHE_DIR}/chromebrew-*"]
+    Dir.chdir CREW_MANIFEST_CACHE_DIR do
+      if ENV['CREW_TESTING'] == '1'
+        system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
+        system "tar x#{@verbose}f #{CREW_TESTING_BRANCH}.tar.gz chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}"
+        FileUtils.rm_f "#{CREW_TESTING_BRANCH}.tar.gz"
+      else
+        system "curl -L#O https://github.com/#{CREW_GITHUB_ACCOUNT}/chromebrew/archive/#{CREW_GITHUB_BRANCH}.tar.gz"
+        system "tar x#{@verbose}f #{CREW_GITHUB_BRANCH}.tar.gz chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
+        FileUtils.rm_f "#{CREW_GITHUB_BRANCH}.tar.gz"
+      end
+    end
+  else
+    puts "CREW_MANIFEST_CACHE_DIR #{CREW_MANIFEST_CACHE_DIR} is not writable.".lightred
+    puts 'The crew files cache cannot be rebuilt.'.lightred
+  end
+end
+
 def prop(silent = false)
   props = []
   pkg = Package.new
@@ -589,11 +616,21 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  matchedList = `grep "#{regexPat}" #{CREW_META_PATH}*.filelist`.lines(chomp: true).flat_map do |result|
-    filelist, matchedFile = result.split(':', 2)
-    pkgName               = File.basename(filelist, '.filelist')
+  @crew_manifest_search_dir = ENV['CREW_TESTING'] == '1' ? "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}" : "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
 
-    "#{pkgName}: #{matchedFile}"
+  updatefiles unless Dir.exist?(@crew_manifest_search_dir) && !Dir.empty?(@crew_manifest_search_dir)
+
+  matchedList = `grep -r "#{regexPat}" #{@crew_manifest_search_dir}`.lines(chomp: true).flat_map do |result|
+    filelist, matchedFile = result.split(':', 2)
+    pkgName = File.basename(filelist, '.filelist')
+    pkgNameStatus = pkgName
+    if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
+      pkgNameStatus = pkgName.lightgreen if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
+    else
+      pkgNameStatus = pkgName.lightred
+    end
+
+    "#{pkgNameStatus}: #{matchedFile}"
   end.sort
 
   puts matchedList, "\nTotal found: #{matchedList.length}".lightgreen if matchedList.any?
@@ -683,6 +720,15 @@ def upgrade(*pkgs, build_from_source: false)
     puts 'Your software is already up to date.'.lightgreen
     return true
   end
+
+  # Eventually, we should have the upgrade order generated based upon an
+  # analysis of the dependency hierarchy, to make sure that earlier
+  # dependencies get upgraded first.
+
+  # Upgrade OpenSSL first if OpenSSL is in the upgrade list, as other
+  # package upgrades, especially their postinstalls, may break until the
+  # new version of OpenSSL is installed.
+  to_be_upgraded.insert(0, to_be_upgraded.delete('openssl')) if to_be_upgraded.include?('openssl')
 
   # Only upgrade ruby if ruby is in the upgrade list, as other
   # package upgrades may break until crew is rerun with the new
@@ -1040,10 +1086,23 @@ def prepare_package(destdir)
       system "find #{CREW_DEST_DIR} -type f \\( -name '.packlist' -o -name perllocal.pod \\) -delete"
     end
 
-    # compress manual files
-    compress_doc "#{CREW_DEST_PREFIX}/man"
-    compress_doc "#{CREW_DEST_PREFIX}/info"
-    compress_doc "#{CREW_DEST_PREFIX}/share/man"
+    # Compress manual files, and move errant files to the correct
+    # locations.
+    if File.exist?("#{CREW_DEST_PREFIX}/man")
+      puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
+      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
+      Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
+    end
+    if File.exist?("#{CREW_DEST_PREFIX}/info")
+      puts "Files in #{CREW_PREFIX}/info will be moved to #{CREW_PREFIX}/share/info.".orange
+      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/info/"
+      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/info/*"], "#{CREW_DEST_PREFIX}/share/info/"
+      Dir.rmdir "#{CREW_DEST_PREFIX}/info" if Dir.empty?("#{CREW_DEST_PREFIX}/info")
+    end
+    # Remove the "share/info/dir.*" file since it causes conflicts.
+    FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
+    compress_doc CREW_DEST_MAN_PREFIX.to_s
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # Allow postbuild to override the filelist contents
@@ -1052,7 +1111,12 @@ def prepare_package(destdir)
     # create file list
     system "find .#{CREW_PREFIX} -type f > ../filelist"
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
-    system 'cut -c2- ../filelist > filelist'
+    system 'cut -c2- ../filelist | sort -o filelist'
+
+    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH) && File.writable?(CREW_LOCAL_MANIFEST_PATH)
+      FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
+      FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+    end
 
     # check for FHS3 compliance
     puts 'Checking for FHS3 compliance...'
@@ -1075,7 +1139,7 @@ def prepare_package(destdir)
     # check for conflicts with other installed files
     puts 'Checking for conflicts with files from installed packages...'
     conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
+    conflictscmd = `grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
     conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
     unless conflicts.empty?
@@ -1283,7 +1347,13 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
       if File.executable?("#{CREW_PREFIX}/bin/rsync") && system("#{CREW_PREFIX}/bin/rsync --version > /dev/null")
         # rsync src path needs a trailing slash
         src << '/' unless src.end_with?('/')
-        system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
+        # Check for ACLs support.
+        @rsync_version = `rsync --version`.chomp
+        if @rsync_version.include?('ACLs')
+          system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
+        else
+          system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
+        end
       else
         system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
       end
@@ -1529,6 +1599,8 @@ end
 def build_package(pwd)
   abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
   abort 'It is not possible to build without source'.lightred unless @pkg.is_source?(@device[:architecture])
+  abort "Unable to locate CREW_LOCAL_MANIFEST_PATH. Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
+  abort "CREW_LOCAL_MANIFEST_PATH: #{CREW_LOCAL_MANIFEST_PATH} is not writable.".lightred unless File.writable?(CREW_LOCAL_MANIFEST_PATH)
 
   # download source codes and unpack it
   meta = download
@@ -1897,6 +1969,11 @@ def update_command(args)
   else
     update
   end
+end
+
+def updatefiles_command(args)
+  verbose = args['--verbose'] ? '-v' : ''
+  updatefiles
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)

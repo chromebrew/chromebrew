@@ -41,7 +41,7 @@ class Gcr_3 < Package
   depends_on 'glibc' # R
   depends_on 'gtk4' # R
   depends_on 'p11kit' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'harfbuzz' # R
 
   conflicts_ok # expected conflicts with gcr_4

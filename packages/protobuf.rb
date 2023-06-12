@@ -26,7 +26,7 @@ class Protobuf < Package
      x86_64: '314c9575d0a48a7a4ccada06404594452ab99183409aaec9e53abd8d1ede0dfe'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 

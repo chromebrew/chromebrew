@@ -1,0 +1,15 @@
+/usr/local/bin/monero-blockchain-ancestry
+/usr/local/bin/monero-blockchain-depth
+/usr/local/bin/monero-blockchain-export
+/usr/local/bin/monero-blockchain-import
+/usr/local/bin/monero-blockchain-mark-spent-outputs
+/usr/local/bin/monero-blockchain-prune
+/usr/local/bin/monero-blockchain-prune-known-spent-data
+/usr/local/bin/monero-blockchain-stats
+/usr/local/bin/monero-blockchain-usage
+/usr/local/bin/monerod
+/usr/local/bin/monero-gen-ssl-cert
+/usr/local/bin/monero-gen-trusted-multisig
+/usr/local/bin/monero-wallet-cli
+/usr/local/bin/monero-wallet-rpc
+/usr/local/share/monero/LICENSE

@@ -26,7 +26,7 @@ class Gexiv2 < Package
 
   depends_on 'libexiv2'
   depends_on 'gobject_introspection'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
 

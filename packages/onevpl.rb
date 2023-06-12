@@ -19,7 +19,7 @@ class Onevpl < Package
     x86_64: 'ad119dc97568f728a42b909a6c3980d9245fc10fa81bab64a261e3c8c6e6d634'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'intel_media_sdk' # R
   depends_on 'libdrm' # R

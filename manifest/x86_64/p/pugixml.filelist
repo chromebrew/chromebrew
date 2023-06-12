@@ -1,0 +1,8 @@
+/usr/local/include/pugiconfig.hpp
+/usr/local/include/pugixml.hpp
+/usr/local/lib64/cmake/pugixml/pugixml-config.cmake
+/usr/local/lib64/cmake/pugixml/pugixml-config-release.cmake
+/usr/local/lib64/libpugixml.so
+/usr/local/lib64/libpugixml.so.1
+/usr/local/lib64/libpugixml.so.1.10
+/usr/local/lib64/pkgconfig/pugixml.pc

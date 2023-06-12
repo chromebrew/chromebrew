@@ -42,7 +42,7 @@ class Libgxps < Package
   depends_on 'openjpeg'
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

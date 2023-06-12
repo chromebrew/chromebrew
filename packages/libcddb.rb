@@ -23,7 +23,7 @@ class Libcddb < Package
   })
 
   depends_on 'libcdio'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.patch

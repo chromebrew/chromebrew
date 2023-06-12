@@ -28,7 +28,7 @@ BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
 
 # i686 requires gcc and openssl
-[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc"
+[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.

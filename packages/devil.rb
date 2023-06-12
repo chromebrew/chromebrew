@@ -33,7 +33,7 @@ class Devil < Package
   depends_on 'libxi'
   depends_on 'libxmu'
   depends_on 'mesa'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
   depends_on 'libglvnd' # R

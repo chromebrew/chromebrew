@@ -6,39 +6,41 @@ require 'package'
 class Opam < Package
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
-  @_ver = '2.1.2'
+  @_ver = '2.1.4'
   version @_ver
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.2_armv7l/opam-2.1.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.2_armv7l/opam-2.1.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.2_i686/opam-2.1.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.2_x86_64/opam-2.1.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.4_armv7l/opam-2.1.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.4_armv7l/opam-2.1.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.4_i686/opam-2.1.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.4_x86_64/opam-2.1.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '596b3928ed6ebf82b865314ff0601f40f6e2bd8d9d2a0296ab6f45da1afc29cf',
-     armv7l: '596b3928ed6ebf82b865314ff0601f40f6e2bd8d9d2a0296ab6f45da1afc29cf',
-       i686: 'e21ee0b4989a8d18cc6ea6a0da59c8e214abe3de96104636b6d323195a69f393',
-     x86_64: 'bb2a382e59f36eb109eaaa0e471f0e9bc8f74823703fa9e9e0b0e11dfed6d9e7'
+    aarch64: '65aea64207802365d889763baffa5d80eb221ba29f4b467b68fc4668e9104e66',
+     armv7l: '65aea64207802365d889763baffa5d80eb221ba29f4b467b68fc4668e9104e66',
+       i686: '9a840b8be61c55699da697cba15794c1a7164ddc70546c3dc576bc3f1f1348bd',
+     x86_64: '194da91d889edbeeb90b80697fc0c57776f9d1b600e6be2ae0326cae8bc29663'
   })
 
-  depends_on 'bubblewrap'
-  depends_on 'ocaml'
-  depends_on 'rsync'
+  depends_on 'bubblewrap' # L
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'ocaml' # R
+  depends_on 'rsync' => :build
 
   @OPAMROOT = "#{CREW_PREFIX}/share/opam"
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system "make lib-ext all -j1 \
       OCAMLC='ocamlc -unsafe-string' \
       OCAMLOPT='ocamlopt -unsafe-string'"
-    @bashd_opam = <<~OPAMEOF
+    File.write 'opam.sh', <<~OPAMEOF
       export OPAMROOT=#{@OPAMROOT}
-      eval \$(opam env --root=#{@OPAMROOT} --switch=default)
+      eval $(opam env --root=#{@OPAMROOT} --switch=default)
       test -r #{@OPAMROOT}/opam-init/init.sh && . #{@OPAMROOT}/opam-init/init.sh &> /dev/null || true
     OPAMEOF
   end
@@ -46,12 +48,15 @@ class Opam < Package
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install"
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/etc/bash.d]
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/opam", @bashd_opam)
+    FileUtils.install 'opam.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/opam", mode: 0o644
   end
 
   def self.postinstall
+    # Segfaults in container, works on hardware.
+    return if CREW_IN_CONTAINER
+
     system "opam init --root=#{@OPAMROOT} -y \
-            && eval \$(opam env --root=#{@OPAMROOT} --switch=default) \
+            && eval $(opam env --root=#{@OPAMROOT} --switch=default) \
             && opam option --global depext=false --root=#{@OPAMROOT} -y"
   end
 

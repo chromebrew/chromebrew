@@ -1,0 +1,9 @@
+/usr/local/bin/sbcdec
+/usr/local/bin/sbcenc
+/usr/local/bin/sbcinfo
+/usr/local/include/sbc/sbc.h
+/usr/local/lib/libsbc.la
+/usr/local/lib/libsbc.so
+/usr/local/lib/libsbc.so.1
+/usr/local/lib/libsbc.so.1.2.2
+/usr/local/lib/pkgconfig/sbc.pc

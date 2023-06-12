@@ -3,23 +3,23 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.39.2-1' # Do not use @_ver here, it will break the installer.
+  version '2.41.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.2.tar.xz'
-  source_sha256 '475f75f1373b2cd4e438706185175966d5c11f68c4db1e48c26257c43ddcf2d6'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.41.0.tar.xz'
+  source_sha256 'e748bafd424cfe80b212cbc6f1bbccc3a47d4862fb1eb7988877750478568040'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_armv7l/git-2.39.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_i686/git-2.39.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.39.2-1_x86_64/git-2.39.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_armv7l/git-2.41.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_armv7l/git-2.41.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_i686/git-2.41.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.41.0_x86_64/git-2.41.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
-     armv7l: 'e1baf1147f0387ba5f6e3ec69f907de48dcfb0384a8dbed47d65af818e206f9b',
-       i686: 'b8d4ac0df63ab8990c8178b5cc464ff402cc9bd3d5ed9cf6ec0d27987c4289c1',
-     x86_64: 'e5a5ea385c6d95be6a2f1bc4e3f40bb0308e323a711408c5ec46c6fd9fa17c6e'
+    aarch64: 'a97633447906fed410ab11b260121492c904f8e0a7c94eaf6b667c5fe626a0c9',
+     armv7l: 'a97633447906fed410ab11b260121492c904f8e0a7c94eaf6b667c5fe626a0c9',
+       i686: 'f2e5a76e573c12d0584e6241c6f1b62b1d44394a9f22cea5029914daf5db6cf4',
+     x86_64: '41415400d573af954371398375204003a5b4306c027e2fdf75c764dba93aaf11'
   })
 
   depends_on 'ca_certificates' => :build
@@ -29,9 +29,6 @@ class Git < Package
   depends_on 'zlibpkg'
   depends_on 'expat' # R
   depends_on 'glibc' # R
-
-  no_patchelf
-  no_zstd
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
@@ -57,29 +54,25 @@ class Git < Package
   end
 
   def self.build
-    Dir.mkdir 'contrib/buildsystems/builddir'
-    Dir.chdir 'contrib/buildsystems/builddir' do
-      system "mold -run cmake \
-          #{CREW_CMAKE_OPTIONS} \
-          -DUSE_VCPKG=FALSE \
-          -Wdev \
-          -G Ninja \
-          .."
-      system 'mold -run samu'
-    end
+    system "mold -run cmake -B builddir \
+        #{CREW_CMAKE_OPTIONS} \
+        -DUSE_VCPKG=FALSE \
+        -Wdev \
+        -G Ninja \
+        contrib/buildsystems"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C contrib/buildsystems/builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
     FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
-    @git_bashd_env = <<~GIT_BASHD_EOF
+    File.write 'git_bashd_env', <<~GIT_BASHD_EOF
       # git bash completion
       source #{CREW_PREFIX}/share/git-completion/git-completion.bash
     GIT_BASHD_EOF
-    File.write("#{CREW_DEST_PREFIX}/etc/bash.d/git", @git_bashd_env)
+    FileUtils.install 'git_bashd_env', "#{CREW_DEST_PREFIX}/etc/bash.d/git", mode: 0o644
   end
 
   def self.check
@@ -88,6 +81,13 @@ class Git < Package
     unless File.symlink?("#{CREW_DEST_PREFIX}/libexec/git-core/git-remote-https") ||
            File.exist?("#{CREW_DEST_PREFIX}/libexec/git-core/git-remote-https")
       abort 'git-remote-https is broken'.lightred
+    end
+  end
+
+  def self.postinstall
+    puts 'Running git garbage collection...'.lightblue
+    Dir.chdir("#{CREW_PREFIX}/lib/crew") do
+      system 'git gc', exception: false
     end
   end
 end

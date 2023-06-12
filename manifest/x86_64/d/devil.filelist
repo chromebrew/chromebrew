@@ -1,0 +1,12 @@
+/usr/local/include/IL/il.h
+/usr/local/include/IL/ilu.h
+/usr/local/include/IL/ilut.h
+/usr/local/lib64/libIL.so
+/usr/local/lib64/libIL.so.1
+/usr/local/lib64/libILU.so
+/usr/local/lib64/libILU.so.1
+/usr/local/lib64/libILUT.so
+/usr/local/lib64/libILUT.so.1
+/usr/local/lib64/pkgconfig/IL.pc
+/usr/local/lib64/pkgconfig/ILU.pc
+/usr/local/lib64/pkgconfig/ILUT.pc

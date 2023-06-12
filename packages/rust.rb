@@ -3,27 +3,27 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver = '1.68.2'
+  @_ver = '1.70.0'
   version @_ver
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.25.2'
+  git_hashtag '1.26.0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.68.2_armv7l/rust-1.68.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.68.2_armv7l/rust-1.68.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.68.2_i686/rust-1.68.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.68.2_x86_64/rust-1.68.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.70.0_armv7l/rust-1.70.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.70.0_armv7l/rust-1.70.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.70.0_i686/rust-1.70.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.70.0_x86_64/rust-1.70.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '19be13cdf4fcdce8f8914e812b7d44a78dfb2b61d725ec47c1bdec08e478a3cf',
-     armv7l: '19be13cdf4fcdce8f8914e812b7d44a78dfb2b61d725ec47c1bdec08e478a3cf',
-       i686: '9a16b72439b234c7ee11d5718ae3ccd497335af64ce4143ac8d1743bbd645420',
-     x86_64: 'd8918ff1dc0b2eee85f34c047e0fc5b00e4db15953ddb7137eb38dcf300a5438'
+    aarch64: 'a8c96387d1dda9d42587ab00b2d4e5df91ae929b208204cbbb1bce0b93017900',
+     armv7l: 'a8c96387d1dda9d42587ab00b2d4e5df91ae929b208204cbbb1bce0b93017900',
+       i686: 'b28fcc2b3e6649e2ca473a46d930345211be027869caa77ae426b5e51f89b584',
+     x86_64: '3788fc06da7adb0ba8b82b6ba63adb6d56be6518a8f9fa30070716108732e8b7'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 
@@ -85,7 +85,7 @@ class Rust < Package
 
   def self.remove
     config_dirs = %W[#{HOME}/.rustup #{CREW_PREFIX}/share/rustup #{HOME}/.cargo #{CREW_PREFIX}/share/cargo]
-    print config_dirs.to_s
+    print config_dirs
     print "\nWould you like to remove the config directories above? [y/N] "
     case $stdin.gets.chomp.downcase
     when 'y', 'yes'

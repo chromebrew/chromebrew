@@ -6,21 +6,21 @@ require 'package'
 class Containerd < Package
   description 'An open and reliable container runtime'
   homepage 'https://containerd.io/'
-  version '1.6.15'
-  compatibility 'aarch64 armv7l x86_64'
+  version '1.7.1'
   license 'Apache'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/containerd/containerd.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.15_armv7l/containerd-1.6.15-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.15_armv7l/containerd-1.6.15-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.6.15_x86_64/containerd-1.6.15-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.7.1_armv7l/containerd-1.7.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.7.1_armv7l/containerd-1.7.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containerd/1.7.1_x86_64/containerd-1.7.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9066f34834804c72df3922cbd3048134fc97f98419ff419d47ed5c041f3bdc1f',
-     armv7l: '9066f34834804c72df3922cbd3048134fc97f98419ff419d47ed5c041f3bdc1f',
-     x86_64: '7798ed903b72b0ffd21313082332ad2664ce67a27655b6149c85f82354a6968c'
+    aarch64: 'bb5b1e4666a313f248520bd2c4dcb66afaebb17b48d51ca322f474613ada3c8a',
+     armv7l: 'bb5b1e4666a313f248520bd2c4dcb66afaebb17b48d51ca322f474613ada3c8a',
+     x86_64: '4a8b7f5420959e53972165503401fb9a69d87fcfd29d361ce4e589150d8674fe'
   })
 
   depends_on 'docker_systemctl_replacement'
@@ -32,6 +32,7 @@ class Containerd < Package
   depends_on 'libseccomp' => :build
   depends_on 'containers_common' => :build
   depends_on 'go_md2man' => :build
+
   no_fhs
 
   def self.patch
@@ -144,17 +145,11 @@ class Containerd < Package
   end
 
   def self.install
-    FileUtils.mkdir_p %W[
-      #{CREW_DEST_PREFIX}/.config/systemd/user
-      #{CREW_DEST_PREFIX}/etc/containerd/certs.d
-      #{CREW_DEST_MAN_PREFIX}/man5
-      #{CREW_DEST_MAN_PREFIX}/man8
-    ]
     system "make PREFIX=#{CREW_PREFIX} DESTDIR=#{CREW_DEST_DIR} install"
     FileUtils.install 'config.toml', "#{CREW_DEST_PREFIX}/etc/containerd/config.toml", mode: 0o644
     FileUtils.install 'config.toml', "#{CREW_DEST_PREFIX}/etc/containerd/debug.toml", mode: 0o644
     FileUtils.install 'containerd.service', "#{CREW_DEST_PREFIX}/.config/systemd/user/containerd.service", mode: 0o644
-    FileUtils.install Dir['man/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5", mode: 0o644
-    FileUtils.install Dir['man/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8", mode: 0o644
+    FileUtils.install Dir['man/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+    FileUtils.install Dir['man/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
   end
 end

@@ -28,7 +28,7 @@ class Gdb < Package
   depends_on 'boost' # R
   depends_on 'elfutils' # R
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'mpfr' # R

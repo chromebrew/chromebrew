@@ -1,0 +1,7 @@
+/usr/local/bin/pstat
+/usr/local/include/pstat/libpstat.h
+/usr/local/include/pstat/os/common.h
+/usr/local/include/pstat/os/linux.h
+/usr/local/lib64/libpstat.so
+/usr/local/lib64/libpstat.so.1
+/usr/local/lib64/libpstat.so.1.0.2

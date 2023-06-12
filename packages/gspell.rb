@@ -23,7 +23,7 @@ class Gspell < Package
   depends_on 'aspell' # R
   depends_on 'at_spi2_core' # R
   depends_on 'enchant' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
@@ -36,7 +36,7 @@ class Gspell < Package
   depends_on 'icu4c' # R
   depends_on 'iso_codes' => :build
   depends_on 'libxml2' => :build
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
   depends_on 'ncurses' # R
   depends_on 'pango' # R
   depends_on 'vala' => :build

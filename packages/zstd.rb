@@ -3,12 +3,11 @@ require 'package'
 class Zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
-  @_ver = '1.5.5'
-  version @_ver
+  version '1.5.5' # Do not use @_ver here, it will break the installer.
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/1.5.5_armv7l/zstd-1.5.5-chromeos-armv7l.tar.xz',
@@ -24,7 +23,7 @@ class Zstd < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   no_patchelf
   no_zstd

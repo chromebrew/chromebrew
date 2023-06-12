@@ -1,0 +1,9 @@
+/usr/local/bin/onig-config
+/usr/local/include/oniggnu.h
+/usr/local/include/oniguruma.h
+/usr/local/lib64/libonig.a
+/usr/local/lib64/libonig.la
+/usr/local/lib64/libonig.so
+/usr/local/lib64/libonig.so.5
+/usr/local/lib64/libonig.so.5.2.0
+/usr/local/lib64/pkgconfig/oniguruma.pc

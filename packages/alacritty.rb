@@ -30,7 +30,7 @@ class Alacritty < Package
   depends_on 'libxcb'
   depends_on 'rust' => :build
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libxcursor' # R

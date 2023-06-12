@@ -1,0 +1,7 @@
+/usr/local/include/libminijail.h
+/usr/local/lib64/libminijailpreload.so
+/usr/local/lib64/libminijail.so
+/usr/local/lib64/pkgconfig/libminijail.pc
+/usr/local/share/licenses/minijail/NOTICE
+/usr/local/share/man/man1/minijail0.1.gz
+/usr/local/share/man/man5/minijail0.5.gz

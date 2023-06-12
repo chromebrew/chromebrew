@@ -3,23 +3,21 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version '5.15.7-5125862'
+  version '5.15.9-a196623'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag '51258629f2cf37fff8406bf705d79c07fc7135ca'
+  git_hashtag 'a196623892558623e467f20b67edb78794252a09'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_armv7l/qtbase-5.15.7-5125862-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_armv7l/qtbase-5.15.7-5125862-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_i686/qtbase-5.15.7-5125862-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.7-5125862_x86_64/qtbase-5.15.7-5125862-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-a196623_armv7l/qtbase-5.15.9-a196623-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-a196623_armv7l/qtbase-5.15.9-a196623-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-a196623_x86_64/qtbase-5.15.9-a196623-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '96c0fffc13bb13fd42480f03e1f3b7d67c7861394221ac06fb593869653e2201',
-     armv7l: '96c0fffc13bb13fd42480f03e1f3b7d67c7861394221ac06fb593869653e2201',
-       i686: '76d578ef8209f34d10d99af5833b0c13e6a7fac07878e878e214711cb78798a8',
-     x86_64: 'fec0cd7227bf4e75cf5d15d6cdd6f58eb37c781ed4da86662a5f56726b5defb6'
+    aarch64: 'a79569cd61f7d59ef159cb8985afe4f887242da567fbe2610bea035274fbaf8b',
+     armv7l: 'a79569cd61f7d59ef159cb8985afe4f887242da567fbe2610bea035274fbaf8b',
+     x86_64: '4fcad8e5c53ef09ad36e47198ed8c82376dd4c4102cf7476c07963974294de01'
   })
 
   depends_on 'alsa_plugins' => :build
@@ -32,9 +30,8 @@ class Qtbase < Package
   depends_on 'fontconfig' => :build
   depends_on 'freetds' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' => :build
@@ -47,9 +44,11 @@ class Qtbase < Package
   depends_on 'libdrm' # R
   depends_on 'libevent' => :build
   depends_on 'libglvnd' # R
+  depends_on 'libice' # R
   depends_on 'libinput' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
+  depends_on 'libsm' # R
   depends_on 'libvpx' => :build
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
@@ -57,31 +56,53 @@ class Qtbase < Package
   depends_on 'libxkbcommon' # R
   depends_on 'mesa' # R
   depends_on 'mtdev' # R
+  depends_on 'mysql' => :build if ARCH == 'x86_64'
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'protobuf' => :build
   depends_on 'unixodbc' # R
+  depends_on 'xcb_proto' # R
+  depends_on 'xcb_util_cursor' # R
+  depends_on 'xcb_util_image' # R
+  depends_on 'xcb_util_keysyms' # R
+  depends_on 'xcb_util' # R
+  depends_on 'xcb_util_renderutil' # R
+  depends_on 'xcb_util_wm' # R
+  depends_on 'xcb_util_xrm' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}/share/Qt-5",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '-nomake', 'examples',
-           '-nomake', 'tests',
-           '-verbose',
-           '-release',
-           '-opensource',
-           '-confirm-license',
-           '-inotify',
-           '-system-pcre',
-           '-system-zlib',
-           '-system-libpng',
-           '-system-libjpeg',
-           '-system-freetype'
-    system 'bin/qmake CONFIG+=fat-static-lto -- -redo'
-    system 'make'
+    @sql = ARCH == 'x86_64' ? '-sql-mysql' : ''
+    system "mold -run ./configure \
+           --prefix=#{CREW_PREFIX}/share/Qt-5 \
+           --libdir=#{CREW_LIB_PREFIX} \
+           -confirm-license \
+           -inotify \
+           -nomake examples \
+           -nomake tests \
+           -opensource \
+           -release \
+           #{@sql} \
+           -system-freetype \
+           -system-libjpeg \
+           -system-libpng \
+           -system-pcre \
+           -system-zlib \
+           -verbose \
+           -xcb \
+           -xcb-xlib"
+    system 'mold -run bin/qmake CONFIG+=fat-static-lto -- -redo'
+    @counter = 1
+    @counter_max = 5
+    loop do
+      break if Kernel.system "make -j #{CREW_NPROC}"
+
+      puts "Make iteration #{@counter} of #{@counter_max}...".orange
+
+      @counter += 1
+      break if @counter > @counter_max
+    end
   end
 
   def self.install

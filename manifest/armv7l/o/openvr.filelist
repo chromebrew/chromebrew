@@ -1,0 +1,5 @@
+/usr/local/include/openvr/openvr_capi.h
+/usr/local/include/openvr/openvr_driver.h
+/usr/local/include/openvr/openvr.h
+/usr/local/lib/libopenvr_api.so
+/usr/local/share/pkgconfig/openvr.pc

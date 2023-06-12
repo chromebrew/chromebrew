@@ -1,0 +1,13 @@
+/usr/local/include/ffi.h
+/usr/local/include/ffitarget.h
+/usr/local/lib64/libffi.a
+/usr/local/lib64/libffi.la
+/usr/local/lib64/libffi.so
+/usr/local/lib64/libffi.so.8
+/usr/local/lib64/libffi.so.8.1.2
+/usr/local/lib64/pkgconfig/libffi.pc
+/usr/local/share/info/libffi.info.zst
+/usr/local/share/man/man3/ffi.3.zst
+/usr/local/share/man/man3/ffi_call.3.zst
+/usr/local/share/man/man3/ffi_prep_cif.3.zst
+/usr/local/share/man/man3/ffi_prep_cif_var.3.zst

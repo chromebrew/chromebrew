@@ -1,0 +1,10 @@
+/usr/local/bin/a52dec
+/usr/local/bin/extract_a52
+/usr/local/include/a52dec/a52.h
+/usr/local/include/a52dec/attributes.h
+/usr/local/include/a52dec/audio_out.h
+/usr/local/include/a52dec/mm_accel.h
+/usr/local/lib/liba52.a
+/usr/local/lib/liba52.la
+/usr/local/share/man/man1/a52dec.1.zst
+/usr/local/share/man/man1/extract_a52.1.zst

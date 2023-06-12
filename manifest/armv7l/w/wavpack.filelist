@@ -1,0 +1,15 @@
+/usr/local/bin/wavpack
+/usr/local/bin/wvgain
+/usr/local/bin/wvtag
+/usr/local/bin/wvunpack
+/usr/local/include/wavpack/wavpack.h
+/usr/local/lib/libwavpack.a
+/usr/local/lib/libwavpack.la
+/usr/local/lib/libwavpack.so
+/usr/local/lib/libwavpack.so.1
+/usr/local/lib/libwavpack.so.1.2.0
+/usr/local/lib/pkgconfig/wavpack.pc
+/usr/local/share/man/man1/wavpack.1.gz
+/usr/local/share/man/man1/wvgain.1.gz
+/usr/local/share/man/man1/wvtag.1.gz
+/usr/local/share/man/man1/wvunpack.1.gz

@@ -25,7 +25,7 @@ class Readline < Package
 
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure \

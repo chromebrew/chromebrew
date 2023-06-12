@@ -3,24 +3,22 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '5.1.2-a6e2605'
+  @_ver = '6.0-27205c0'
   version @_ver
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
-  git_hashtag 'a6e26053c21362bb882932f3cfd1f1dfa2551f1d'
+  git_hashtag '27205c0b476a1095bc38759ad9df001e799e4843'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_armv7l/ffmpeg-5.1.2-a6e2605-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_armv7l/ffmpeg-5.1.2-a6e2605-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_i686/ffmpeg-5.1.2-a6e2605-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/5.1.2-a6e2605_x86_64/ffmpeg-5.1.2-a6e2605-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-27205c0_armv7l/ffmpeg-6.0-27205c0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-27205c0_armv7l/ffmpeg-6.0-27205c0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-27205c0_x86_64/ffmpeg-6.0-27205c0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '943d4c7d51e5cf8e93ba1a17c5e7ab8809bc14937e6902b9813f19f9111eb1e1',
-     armv7l: '943d4c7d51e5cf8e93ba1a17c5e7ab8809bc14937e6902b9813f19f9111eb1e1',
-       i686: '772400a972aba55c397d1b3d31eb22177591ed511b6b84fe6ab8cc8b03da8d3e',
-     x86_64: '078cad1e60401f681af51926fff6b358da907ccc4aaf13750dd7732d792a243d'
+    aarch64: 'd9fbe22ec6b976dbd92d4fb75d3e9bba8c09b2fc24733842432a7413b74d1b83',
+     armv7l: 'd9fbe22ec6b976dbd92d4fb75d3e9bba8c09b2fc24733842432a7413b74d1b83',
+     x86_64: '75e56571a13b9aaa67c29723753e3d10f21750f11adfb2d454c65e66078f655f'
   })
 
   depends_on 'avisynthplus' # ?
@@ -53,6 +51,7 @@ class Ffmpeg < Package
   depends_on 'libfdk_aac' # R
   depends_on 'libiec61883' # R
   depends_on 'libjpeg' # R
+  depends_on 'libjxl' # R
   depends_on 'libmfx' if ARCH == 'i686' && CREW_IS_INTEL # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
@@ -104,6 +103,8 @@ class Ffmpeg < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'libglvnd' # R
+  depends_on 'gcc_lib' # R
+
   no_env_options if %w[aarch64 armv7l].include? ARCH
 
   def self.patch
@@ -163,6 +164,7 @@ class Ffmpeg < Package
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
+        --enable-libjxl \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
@@ -218,5 +220,7 @@ class Ffmpeg < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.install 'tools/qt-faststart', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
+    FileUtils.install 'doc/ffmpeg.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+    FileUtils.install 'doc/ffplay.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
   end
 end

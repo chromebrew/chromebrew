@@ -3,22 +3,22 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'www.v2fly.org'
-  version 'v5.3.0'
+  version 'v5.7.0'
   license 'MIT'
   compatibility 'all'
 
   source_url({
-    aarch64: 'https://github.com/v2fly/v2ray-core/releases/download/v5.3.0/v2ray-linux-arm32-v7a.zip',
-     armv7l: 'https://github.com/v2fly/v2ray-core/releases/download/v5.3.0/v2ray-linux-arm32-v7a.zip',
-       i686: 'https://github.com/v2fly/v2ray-core/releases/download/v5.3.0/v2ray-linux-32.zip',
-     x86_64: 'https://github.com/v2fly/v2ray-core/releases/download/v5.3.0/v2ray-linux-64.zip'
+    aarch64: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-arm32-v7a.zip',
+     armv7l: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-arm32-v7a.zip',
+       i686: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-32.zip',
+     x86_64: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-64.zip'
   })
 
   source_sha256({
-    aarch64: 'd782a7efa04dda771751c43bb7096c1fde0879bbd1df65e796895fa9baba5c74',
-     armv7l: 'd782a7efa04dda771751c43bb7096c1fde0879bbd1df65e796895fa9baba5c74',
-       i686: 'c3bc3da7e1a5288299230856bf3b3f63762794d47997dba50c23760c6e517712',
-     x86_64: '6cf089757128eac6d823e50e91e4dbe4f2492170d24b8721ee5dc6ec3f7d3c9c'
+    aarch64: '18fe896de67f7a351958c13f86c6b390806576e619c5e5414a6992241fedc997',
+     armv7l: '18fe896de67f7a351958c13f86c6b390806576e619c5e5414a6992241fedc997',
+       i686: 'd86adac01e7544489f2efc4c6c7d6f2ca2e0414be252fc00fbac408d6aba4221',
+     x86_64: 'a2b689865072bff4c3d5ef6ee7970628f94a0996f86ff98c06e4ac4cc8c039f8'
   })
 
   no_compile_needed

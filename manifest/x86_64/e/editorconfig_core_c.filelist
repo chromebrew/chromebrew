@@ -1,0 +1,17 @@
+/usr/local/bin/editorconfig
+/usr/local/bin/editorconfig-0.12.6
+/usr/local/include/editorconfig/editorconfig.h
+/usr/local/include/editorconfig/editorconfig_handle.h
+/usr/local/lib64/cmake/EditorConfig/EditorConfigConfig.cmake
+/usr/local/lib64/cmake/EditorConfig/EditorConfigConfigVersion.cmake
+/usr/local/lib64/cmake/EditorConfig/EditorConfigTargets.cmake
+/usr/local/lib64/cmake/EditorConfig/EditorConfigTargets-release.cmake
+/usr/local/lib64/libeditorconfig.so
+/usr/local/lib64/libeditorconfig.so.0
+/usr/local/lib64/libeditorconfig.so.0.12.6
+/usr/local/lib64/libeditorconfig_static.a
+/usr/local/lib64/pkgconfig/editorconfig.pc
+/usr/local/share/man/man1/editorconfig.1.zst
+/usr/local/share/man/man3/editorconfig.h.3.zst
+/usr/local/share/man/man3/editorconfig_handle.h.3.zst
+/usr/local/share/man/man5/editorconfig-format.5.zst

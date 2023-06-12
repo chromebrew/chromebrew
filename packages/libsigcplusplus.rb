@@ -25,7 +25,7 @@ class Libsigcplusplus < Package
 
   depends_on 'mm_common'
   depends_on 'graphviz' => :build # needed for dot
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

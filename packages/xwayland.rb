@@ -27,7 +27,7 @@ class Xwayland < Package
   depends_on 'dbus' => :build
   depends_on 'eudev' => :build
   depends_on 'font_util' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glproto'
   depends_on 'graphite'

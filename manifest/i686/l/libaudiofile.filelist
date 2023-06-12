@@ -1,0 +1,11 @@
+/usr/local/bin/sfconvert
+/usr/local/bin/sfinfo
+/usr/local/include/af_vfs.h
+/usr/local/include/audiofile.h
+/usr/local/include/aupvlist.h
+/usr/local/lib/libaudiofile.a
+/usr/local/lib/libaudiofile.la
+/usr/local/lib/libaudiofile.so
+/usr/local/lib/libaudiofile.so.1
+/usr/local/lib/libaudiofile.so.1.0.0
+/usr/local/lib/pkgconfig/audiofile.pc

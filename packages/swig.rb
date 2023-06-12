@@ -23,7 +23,7 @@ class Swig < Package
   })
 
   depends_on 'boost' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'pcre' => :build
   depends_on 'pcre2' # R

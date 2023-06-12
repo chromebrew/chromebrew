@@ -1,0 +1,13 @@
+/usr/local/include/X11/extensions/XRes.h
+/usr/local/lib/libXRes.a
+/usr/local/lib/libXRes.la
+/usr/local/lib/libXRes.so
+/usr/local/lib/libXRes.so.1
+/usr/local/lib/libXRes.so.1.0.0
+/usr/local/lib/pkgconfig/xres.pc
+/usr/local/share/man/man3/XRes.3.zst
+/usr/local/share/man/man3/XResQueryClientPixmapBytes.3.zst
+/usr/local/share/man/man3/XResQueryClientResources.3.zst
+/usr/local/share/man/man3/XResQueryClients.3.zst
+/usr/local/share/man/man3/XResQueryExtension.3.zst
+/usr/local/share/man/man3/XResQueryVersion.3.zst

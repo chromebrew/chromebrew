@@ -6,26 +6,24 @@ require 'package'
 class Qtwebchannel < Package
   description 'Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients'
   homepage 'https://www.qt.io'
-  version '5.15.7-4e35fe9'
+  version '5.15.9-c508ffb'
   license 'GPL3 LGPL3 FDL custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtwebchannel.git'
-  git_hashtag '4e35fe9429920067c17596986b486fb1c1e95db0'
+  git_hashtag 'c508ffb1996eeddfd10dda493974746e6b375080'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.7-4e35fe9_armv7l/qtwebchannel-5.15.7-4e35fe9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.7-4e35fe9_armv7l/qtwebchannel-5.15.7-4e35fe9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.7-4e35fe9_i686/qtwebchannel-5.15.7-4e35fe9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.7-4e35fe9_x86_64/qtwebchannel-5.15.7-4e35fe9-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.9-c508ffb_armv7l/qtwebchannel-5.15.9-c508ffb-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.9-c508ffb_armv7l/qtwebchannel-5.15.9-c508ffb-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebchannel/5.15.9-c508ffb_x86_64/qtwebchannel-5.15.9-c508ffb-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f424c60bf4c5a8da2c1eaed811bb61f101446e07fd2987053cd484aba198148e',
-     armv7l: 'f424c60bf4c5a8da2c1eaed811bb61f101446e07fd2987053cd484aba198148e',
-       i686: '6648a1fbe95e2381fa6b642f54159020631c35171231a45b45f7518ef8881437',
-     x86_64: '7f4a52e802c25ee71479b5fcf841a58e01bb992363948f1c189679bf9a797343'
+    aarch64: '7e826edb3047072671e38a9bf062f3803cfc07c06fe8d002797495d5b787025d',
+     armv7l: '7e826edb3047072671e38a9bf062f3803cfc07c06fe8d002797495d5b787025d',
+     x86_64: 'e702fa7fee745f72374c288142701667d446d7615781f777fbe7fad396df92b3'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qtbase' # R

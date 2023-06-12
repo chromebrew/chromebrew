@@ -3,28 +3,28 @@ require 'package'
 class Openldap < Package
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  @_ver = '2.6.3'
+  @_ver = '2.6.4'
   version @_ver
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
   source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{@_ver}.tgz"
-  source_sha256 'd2a2a1d71df3d77396b1c16ad7502e674df446e06072b0e5a4e941c3d06c0d46'
+  source_sha256 'd51704e50178430c06cf3d8aa174da66badf559747a47d920bb54b2d4aa40991'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.3_armv7l/openldap-2.6.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.3_armv7l/openldap-2.6.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.3_i686/openldap-2.6.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.3_x86_64/openldap-2.6.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_armv7l/openldap-2.6.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_armv7l/openldap-2.6.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_i686/openldap-2.6.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_x86_64/openldap-2.6.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e33440e146ed109636f46a3f5cf05db4798e6b16905f0335fdffd7a9f2f0f135',
-     armv7l: 'e33440e146ed109636f46a3f5cf05db4798e6b16905f0335fdffd7a9f2f0f135',
-       i686: '2a63e953489dc70695b841afca334218754cc883a018ef68b08f6861247cbef9',
-     x86_64: '2a2aa9b72b4a9c6f5503e388372d1a6af4b3b389ae5f9bc506df6d0afd1b0fdb'
+    aarch64: 'd7fb060b540a91e103aa4252e5ebaa3d219cb86372277f72e91b8d590c8c7592',
+     armv7l: 'd7fb060b540a91e103aa4252e5ebaa3d219cb86372277f72e91b8d590c8c7592',
+       i686: '6e4b3f2cb18c7eda1159ef59ef27120406557fc5513ed7edbb49708dfe744bc5',
+     x86_64: '1b78e492b4ba7924669f25da5b0a059f001d230bb50f5e614764ee4067ca77ef'
   })
 
   depends_on 'e2fsprogs' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'krb5' => :build
   depends_on 'libcyrussasl' # R
@@ -36,7 +36,7 @@ class Openldap < Package
   end
 
   def self.build
-    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS} --disable-slapd"
+    system "mold -run ./configure #{CREW_OPTIONS} --disable-slapd"
     system 'make'
     system 'make depend'
   end

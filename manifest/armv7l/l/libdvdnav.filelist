@@ -1,0 +1,15 @@
+/usr/local/include/dvdnav/dvdnav_events.h
+/usr/local/include/dvdnav/dvdnav.h
+/usr/local/include/dvdnav/dvd_types.h
+/usr/local/include/dvdnav/version.h
+/usr/local/lib/libdvdnav.a
+/usr/local/lib/libdvdnav.la
+/usr/local/lib/libdvdnav.so
+/usr/local/lib/libdvdnav.so.4
+/usr/local/lib/libdvdnav.so.4.3.0
+/usr/local/lib/pkgconfig/dvdnav.pc
+/usr/local/share/doc/libdvdnav/AUTHORS
+/usr/local/share/doc/libdvdnav/ChangeLog
+/usr/local/share/doc/libdvdnav/COPYING
+/usr/local/share/doc/libdvdnav/README
+/usr/local/share/doc/libdvdnav/TODO

@@ -1,0 +1,12 @@
+/usr/local/bin/gr2fonttest
+/usr/local/include/graphite2/Font.h
+/usr/local/include/graphite2/Log.h
+/usr/local/include/graphite2/Segment.h
+/usr/local/include/graphite2/Types.h
+/usr/local/lib/libgraphite2.la
+/usr/local/lib/libgraphite2.so
+/usr/local/lib/libgraphite2.so.3
+/usr/local/lib/libgraphite2.so.3.2.1
+/usr/local/lib/pkgconfig/graphite2.pc
+/usr/local/share/graphite2/graphite2.cmake
+/usr/local/share/graphite2/graphite2-release.cmake

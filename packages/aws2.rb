@@ -9,6 +9,9 @@ class Aws2 < Package
   compatibility 'all'
   source_url 'SKIP'
 
+  binary_url({})
+  binary_sha256({})
+
   depends_on 'rust' => :build
   depends_on 'python3' => :build
 

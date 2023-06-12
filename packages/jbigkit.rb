@@ -3,54 +3,38 @@ require 'package'
 class Jbigkit < Package
   description 'JBIG-KIT is a software implementation of the JBIG1 data compression standard'
   homepage 'https://www.cl.cam.ac.uk/~mgk25/jbigkit/'
-  version '2.1'
+  version '2.1-709282d'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/jbigkit-2.1.tar.gz'
-  source_sha256 'de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932'
+  source_url 'https://github.com/nu774/jbigkit.git'
+  git_hashtag '709282d1ddcb35ab17134ea8cdda43ec2d647d2f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_armv7l/jbigkit-2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_i686/jbigkit-2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1_x86_64/jbigkit-2.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_armv7l/jbigkit-2.1-709282d-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_armv7l/jbigkit-2.1-709282d-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_i686/jbigkit-2.1-709282d-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jbigkit/2.1-709282d_x86_64/jbigkit-2.1-709282d-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '04f05a1e9d64fd440828b26dbab92e332e14cf8877f89dd3a3184ccb394f28ae',
-     armv7l: '04f05a1e9d64fd440828b26dbab92e332e14cf8877f89dd3a3184ccb394f28ae',
-       i686: '4f5af8e7dcf0d1bb3901be4454bf6fcd1808ce1aac9eeeed339664836328d48a',
-     x86_64: 'e9c62cc25c29df8254d6e48e1ac31d4ae801e55f0f7edef4753daa80fbfdeee8'
+    aarch64: '33d7651880ff70c07345d33a971dd5a6ecd3a630ab3dd7a35066bd0c4e1e8dcb',
+     armv7l: '33d7651880ff70c07345d33a971dd5a6ecd3a630ab3dd7a35066bd0c4e1e8dcb',
+       i686: 'd1a83c13c9e277c20f61a3ae708299e582efade2934cf58933600049f1080fdb',
+     x86_64: '89ca5e27aa2ee40643ae9d0a4f26c44f74d2604dbdc4611102f257cd7e94bd62'
   })
 
-  def self.patch
-    system "sed -i 's,-Wno-unused-result,-Wno-unused-result -fPIC,' Makefile"
-  end
+  depends_on 'glibc' # R
 
-  def self.build
-    system 'make all'
+  def self.patch
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' pbmtools/jbgfuzz.pl"
   end
 
-  def self.check
-    system 'make', 'test'
+  def self.build
+    system 'autoreconf -fiv'
+    system "./configure #{CREW_OPTIONS}"
+    system 'make all'
   end
 
   def self.install
-    system "install -Dm644 pbmtools/jbgtopbm.1 #{CREW_DEST_PREFIX}/share/man/man1/jbgtopbm.1"
-    system "install -Dm644 pbmtools/pbmtojbg.1 #{CREW_DEST_PREFIX}/share/man/man1/pbmtojbg.1"
-    system "install -Dm644 pbmtools/pbm.5 #{CREW_DEST_PREFIX}/share/man/man5/pbm.5"
-    system "install -Dm644 pbmtools/pgm.5 #{CREW_DEST_PREFIX}/share/man/man5/pgm.5"
-    system "install -Dm644 libjbig/jbig.h #{CREW_DEST_PREFIX}/include/jbig.h"
-    system "install -Dm644 libjbig/jbig85.h #{CREW_DEST_PREFIX}/include/jbig85.h"
-    system "install -Dm644 libjbig/jbig_ar.h #{CREW_DEST_PREFIX}/include/jbig_ar.h"
-    system "install -Dm755 pbmtools/jbgfuzz.pl #{CREW_DEST_PREFIX}/bin/jbgfuzz.pl"
-    system "install -Dm755 pbmtools/jbgtopbm #{CREW_DEST_PREFIX}/bin/jbgtopbm"
-    system "install -Dm755 pbmtools/jbgtopbm85 #{CREW_DEST_PREFIX}/bin/jbgtopbm85"
-    system "install -Dm755 pbmtools/pbmtojbg #{CREW_DEST_PREFIX}/bin/pbmtojbg"
-    system "install -Dm755 pbmtools/pbmtojbg85 #{CREW_DEST_PREFIX}/bin/pbmtojbg85"
-    system "install -Dm755 libjbig/tstcodec #{CREW_DEST_PREFIX}/bin/tstcodec"
-    system "install -Dm755 libjbig/tstcodec85 #{CREW_DEST_PREFIX}/bin/tstcodec85"
-    system "install -Dm644 libjbig/libjbig.a #{CREW_DEST_LIB_PREFIX}/libjbig.a"
-    system "install -Dm644 libjbig/libjbig85.a #{CREW_DEST_LIB_PREFIX}/libjbig85.a"
+    system "DESTDIR=#{CREW_DEST_DIR} make install"
   end
 end

@@ -1,0 +1,15 @@
+/usr/local/bin/checkmk
+/usr/local/include/check.h
+/usr/local/include/check_stdint.h
+/usr/local/lib/libcheck.a
+/usr/local/lib/libcheck.la
+/usr/local/lib/libcheck.so
+/usr/local/lib/libcheck.so.0
+/usr/local/lib/libcheck.so.0.0.0
+/usr/local/lib/pkgconfig/check.pc
+/usr/local/share/aclocal/check.m4
+/usr/local/share/doc/check/ChangeLog
+/usr/local/share/doc/check/COPYING.LESSER
+/usr/local/share/doc/check/NEWS
+/usr/local/share/doc/check/README
+/usr/local/share/man/man1/checkmk.1.gz

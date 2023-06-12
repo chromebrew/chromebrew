@@ -3,28 +3,41 @@ require 'package'
 class Alsa_tools < Package
   description 'The Advanced Linux Sound Architecture (ALSA) - tools'
   homepage 'https://github.com/alsa-project/alsa-tools'
-  version '1.2.2'
+  version '1.2.5'
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://github.com/alsa-project/alsa-tools/archive/v1.2.2.tar.gz'
-  source_sha256 '7242cfb3493461b2a28c9c3a6a69dbc2e9ee236a5dc46400cbb0d1d87c27b453'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/alsa-project/alsa-tools/archive/v1.2.5.tar.gz'
+  source_sha256 'd38ef2a7582480eee31d7a7817810bc08969fd1cb045ef3b5443bda3e0df6e53'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.2_armv7l/alsa_tools-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.2_armv7l/alsa_tools-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.2_i686/alsa_tools-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.2_x86_64/alsa_tools-1.2.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.5_armv7l/alsa_tools-1.2.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.5_armv7l/alsa_tools-1.2.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_tools/1.2.5_x86_64/alsa_tools-1.2.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '13e8a8e05816e7b33369a3dfa62805d74a31899aac172f2d895e181c002e163c',
-     armv7l: '13e8a8e05816e7b33369a3dfa62805d74a31899aac172f2d895e181c002e163c',
-       i686: '1ca6fa11e786e0d277ff15532de6b58f9a1bba5198163fc7d773ecddbabe4574',
-     x86_64: '9078e54a91c60bb12d5f8087239cf21b24b033f04991e095f22502d663a5d77c'
+    aarch64: '8e54c98dc073c5f5132135db778cfb1d4bc800dd033c4c7817984b8b85114178',
+     armv7l: '8e54c98dc073c5f5132135db778cfb1d4bc800dd033c4c7817984b8b85114178',
+     x86_64: '283ef086a574219f99f711890d9d184898b50478172d0ac48819aec33c92b4ce'
   })
 
-  depends_on 'alsa_lib'
-  depends_on 'fltk'
-  depends_on 'gtk2'
+  depends_on 'alsa_lib' # R
+  depends_on 'at_spi2_core' # R
+  depends_on 'fltk' # R
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gtk2' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcursor' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxrender' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
     # Make sure automake can be found.
@@ -36,7 +49,7 @@ class Alsa_tools < Package
   end
 
   def self.build
-    system "GITCOMPILE_ARGS='--prefix=#{CREW_PREFIX}' make all"
+    system "GITCOMPILE_ARGS='--prefix=#{CREW_PREFIX}' mold -run make all"
   end
 
   def self.install

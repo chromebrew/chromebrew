@@ -3,45 +3,47 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  @_ver = '3.11.3'
+  @_ver = '3.11.4'
   version @_ver
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{@_ver}/Python-#{@_ver}.tar.xz"
-  source_sha256 '8a5db99c961a7ecf27c75956189c9602c968751f11dbeae2b900dbff1c085b5e'
+  source_sha256 '2f0e409df2ab57aa9fc4cbddfb976af44e4e55bf6f619eee6bc5c2297264a7f6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_armv7l/python3-3.11.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_armv7l/python3-3.11.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_i686/python3-3.11.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.3_x86_64/python3-3.11.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_armv7l/python3-3.11.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_armv7l/python3-3.11.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_i686/python3-3.11.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_x86_64/python3-3.11.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd326bb768180e3c561db8ecf2fb3bc0b03303f5ff6768677e39192b639c7258f',
-     armv7l: 'd326bb768180e3c561db8ecf2fb3bc0b03303f5ff6768677e39192b639c7258f',
-       i686: '9de0b393c9dc488023dd4b7932f34ec5d52cdf35de055e3534ff7236e57a4e6f',
-     x86_64: 'e45a68453da6535759673487b10746c574a7a4ed0244fad70611654d313f6f92'
+    aarch64: 'aa830703a5a46ec29ef3b7e1d50ed7610b71ac7d380d4bec6635ede88060b3f7',
+     armv7l: 'aa830703a5a46ec29ef3b7e1d50ed7610b71ac7d380d4bec6635ede88060b3f7',
+       i686: 'c13a82e54f2fadedce2c58327cd653a43a56e81c48a9e602458e91b48834d839',
+     x86_64: 'b55067edfe66b1e3970372c97d83eee7568fff791accf80eaf2e7132126bdccd'
   })
 
   depends_on 'autoconf_archive' => :build
-  depends_on 'krb5' => :build
-  depends_on 'libtirpc' => :build
   depends_on 'bz2' # R
   depends_on 'expat' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
+  depends_on 'krb5' => :build
   depends_on 'libdb' # R
   depends_on 'libffi' # R
+  depends_on 'libtirpc' => :build
   depends_on 'mpdecimal' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
+  depends_on 'tcl' => :build unless ARCH == 'i686' # Needed for tkinter support
+  depends_on 'tk' => :build unless ARCH == 'i686' # Needed for tkinter support
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
-  # depends_on 'tcl' # Needed for tkinter support
-  # depends_on 'tk'  # Needed for tkinter support
+  depends_on 'zoneinfo' # L
 
   no_env_options
   conflicts_ok
@@ -98,6 +100,7 @@ class Python3 < Package
           --with-system-ffi \
           --with-system-expat \
           --with-system-libmpdec \
+          --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
       system 'mold -run make'
@@ -147,5 +150,6 @@ class Python3 < Package
     @piplist.drop(2).each do |pip_pkg|
       system "pip install #{pip_pkg} -U", exception: false
     end
+    puts "Please install tcl and tk with 'crew install tcl tk' if tkinter is needed.".lightblue unless ARCH == 'i686'
   end
 end

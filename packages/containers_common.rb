@@ -6,23 +6,21 @@ require 'package'
 class Containers_common < Package
   description 'Configuration files and manpages for containers'
   homepage 'https://github.com/containers'
-  version '0.49.3'
+  version '0.53.0'
   license 'Apache'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/containers/common.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_armv7l/containers_common-0.49.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_armv7l/containers_common-0.49.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_i686/containers_common-0.49.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.49.3_x86_64/containers_common-0.49.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.53.0_armv7l/containers_common-0.53.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.53.0_armv7l/containers_common-0.53.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/containers_common/0.53.0_x86_64/containers_common-0.53.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3f31ccb561a6df7db406e88ee8b6d664e5479e56e38ac59c0c7c8064cc669500',
-     armv7l: '3f31ccb561a6df7db406e88ee8b6d664e5479e56e38ac59c0c7c8064cc669500',
-       i686: 'dd67820ba974d91fbd148ea3720feb1fbece604128487e0605adfb3e728b1488',
-     x86_64: '0d195eaadbcdd4e3149b0ed1777809d9f51d6f6a77a7da59f28aa3ed1a198f0a'
+    aarch64: '4e3a13f8d5d879cb36470988461b37c84f56e648a37a76da63463cb83adf1491',
+     armv7l: '4e3a13f8d5d879cb36470988461b37c84f56e648a37a76da63463cb83adf1491',
+     x86_64: '1f1902ccdd3944deaff5380ddb4af2378a4b337409e3a45882086fef6d0ef159'
   })
 
   depends_on 'catatonit'
@@ -33,11 +31,11 @@ class Containers_common < Package
   no_fhs
 
   def self.build
-    @image_version = 'v5.23.1'
-    @podman_version = 'v4.3.1'
-    @shortnames_version = 'v2022.02.08'
-    @skopeo_version = 'v1.9.3'
-    @storage_version = 'v1.43.1'
+    @image_version = 'v5.25.0'
+    @podman_version = 'v4.5.0'
+    @shortnames_version = 'v2023.02.20'
+    @skopeo_version = 'v1.12.0'
+    @storage_version = 'v1.46.1'
     Dir.chdir 'docs' do
       system 'for _man_page in *.md
       do
@@ -80,10 +78,8 @@ class Containers_common < Package
       #{CREW_DEST_PREFIX}/share/containers/oci/hooks.d/
       #{CREW_DEST_PREFIX}/var/lib/containers/
       #{CREW_DEST_PREFIX}/.config/containers/
-      #{CREW_DEST_MAN_PREFIX}/man1/
-      #{CREW_DEST_MAN_PREFIX}/man5/
     ]
-    @mounts_conf = <<~'MOUNTS_CONF_EOF'
+    @mounts_conf = <<~MOUNTS_CONF_EOF
       # Configuration file for default mounts in containers (see man 5
       # containers-mounts.conf for further information)
     MOUNTS_CONF_EOF
@@ -110,7 +106,7 @@ class Containers_common < Package
 
     Dir.chdir 'git' do
       Dir.chdir 'image' do
-        @registry_add = <<~'REGISTRY_ADD_EOF'
+        @registry_add = <<~REGISTRY_ADD_EOF
           # Note that changing the order here may break tests.
           unqualified-search-registries = ['docker.io', 'quay.io', 'registry.fedoraproject.org']
 

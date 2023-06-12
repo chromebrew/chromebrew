@@ -1,0 +1,8 @@
+/usr/local/include/rtaudio/rtaudio_c.h
+/usr/local/include/rtaudio/RtAudio.h
+/usr/local/lib/librtaudio.a
+/usr/local/lib/librtaudio.la
+/usr/local/lib/librtaudio.so
+/usr/local/lib/librtaudio.so.6
+/usr/local/lib/librtaudio.so.6.0.1
+/usr/local/lib/pkgconfig/rtaudio.pc

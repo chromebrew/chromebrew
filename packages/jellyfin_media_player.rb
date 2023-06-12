@@ -6,20 +6,20 @@ require 'package'
 class Jellyfin_media_player < Package
   description 'Jellyfin Desktop Client'
   homepage 'https://github.com/jellyfin/jellyfin-media-player'
-  version '1.9.0'
+  version '1.9.1'
   license 'GPL'
   compatibility 'x86_64'
-  source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.0.tar.gz'
-  source_sha256 '366aac5a355d9dd435037442e0fff091a85019ea8b27ce6db3f957c8dd54d1ca'
+  source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
+  source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.0_x86_64/jellyfin_media_player-1.9.0-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1_x86_64/jellyfin_media_player-1.9.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '04f33ba8a02ba9dde7c4a2605fa243d1a569d1f9daadf43c9818bdd9aa853d64'
+    x86_64: '36c7847fbc29da687a10369e15819249788fdd72b134bf2850f86e7104d7ad93'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libcec' # R
   depends_on 'libglvnd' # R
@@ -29,19 +29,21 @@ class Jellyfin_media_player < Package
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrandr' # R
+  depends_on 'minizip' # R
   depends_on 'mpv' # R
-  depends_on 'p8_platform' # R
+  depends_on 'p8_platform' => :build
   depends_on 'protobuf' => :build
   depends_on 'qtbase' # R
   depends_on 'qtdeclarative' # R
   depends_on 'qtlocation' # R
   depends_on 'qtquickcontrols' # L
-  depends_on 'qtwayland' # R
+  depends_on 'qtwayland' => :build
   depends_on 'qtwebchannel' # R
   depends_on 'qtwebengine' # R
   depends_on 'qtx11extras' # R
   depends_on 'shaderc' # L
   depends_on 'sommelier' # L
+  depends_on 'zlibpkg' # R
 
   def self.build
     system './download_webclient.sh'
@@ -56,11 +58,11 @@ class Jellyfin_media_player < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
-    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-jellyfinmediaplayer", <<~JELLYFIN_ENVD_EOF
+    File.write 'jellyfinmediaplayer_env.d', <<~JELLYFIN_ENVD_EOF
       # QT_QPA_PLATFORM=wayland is unaccelerated and unusable.
-      alias jellyfinmediaplayer="QT_QPA_PLATFORM=eglfs jellyfinmediaplayer"
+      alias jmp="QT_QPA_PLATFORM=eglfs jellyfinmediaplayer"
     JELLYFIN_ENVD_EOF
+    FileUtils.install 'jellyfinmediaplayer_env.d', "#{CREW_DEST_PREFIX}/etc/env.d/10-jellyfinmediaplayer", mode: 0o644
   end
 
   def self.postinstall

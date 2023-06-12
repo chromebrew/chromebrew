@@ -1,0 +1,12 @@
+/usr/local/include/fdk-aac/aacdecoder_lib.h
+/usr/local/include/fdk-aac/aacenc_lib.h
+/usr/local/include/fdk-aac/FDK_audio.h
+/usr/local/include/fdk-aac/genericStds.h
+/usr/local/include/fdk-aac/machine_type.h
+/usr/local/include/fdk-aac/syslib_channelMapDescr.h
+/usr/local/lib64/libfdk-aac.a
+/usr/local/lib64/libfdk-aac.la
+/usr/local/lib64/libfdk-aac.so
+/usr/local/lib64/libfdk-aac.so.2
+/usr/local/lib64/libfdk-aac.so.2.0.2
+/usr/local/lib64/pkgconfig/fdk-aac.pc

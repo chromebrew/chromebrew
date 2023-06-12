@@ -3,7 +3,7 @@ require 'package'
 class Firefox < Package
   description 'Mozilla Firefox (or simply Firefox) is a free and open-source web browser'
   homepage 'https://www.mozilla.org/en-US/firefox/'
-  version '112.0.1'
+  version '114.0.1'
   license 'MPL-2.0, GPL-2 and LGPL-2.1'
   compatibility 'x86_64'
 
@@ -11,11 +11,8 @@ class Firefox < Package
     x86_64: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}/linux-x86_64/en-US/firefox-#{version}.tar.bz2"
   })
   source_sha256({
-    x86_64: '6ae1a778523203660d1c300dfca88c14e2ea012e417a31238f6b312cfc3902f1'
+    x86_64: 'a2e6b307fa944a9ca9153c3dbe6d4a3c30e6f86d65dea3273f3873bb765246e0'
   })
-
-  no_compile_needed
-  no_shrink
 
   depends_on 'at_spi2_core'
   depends_on 'cairo'
@@ -41,13 +38,17 @@ class Firefox < Package
   depends_on 'pulseaudio'
   depends_on 'sommelier'
 
+  no_compile_needed
+  no_shrink
+  no_fhs
+
   def self.build
-    @firefox_sh = <<~FIREFOX_SH
+    File.write 'firefox_sh', <<~FIREFOX_SH
       #!/bin/bash
       GDK_BACKEND=x11 #{CREW_PREFIX}/firefox/firefox "\$@"
     FIREFOX_SH
     # For some reason, the binaries do not have a desktop file so add it here.
-    @firefox_desktop = <<~FIREFOX_DESKTOP
+    File.write 'firefox_desktop', <<~FIREFOX_DESKTOP
       [Desktop Entry]
       Version=#{version}
       Name=Firefox
@@ -65,11 +66,7 @@ class Firefox < Package
   end
 
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/firefox"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     icon_base_path = "#{CREW_DEST_PREFIX}/share/icons/hicolor"
     FileUtils.mkdir_p "#{icon_base_path}/16x16/apps"
     FileUtils.mkdir_p "#{icon_base_path}/32x32/apps"
@@ -78,8 +75,8 @@ class Firefox < Package
     FileUtils.mkdir_p "#{icon_base_path}/128x128/apps"
     FileUtils.mkdir_p "#{icon_base_path}/256x256/apps"
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/firefox"
-    File.write("#{CREW_DEST_PREFIX}/bin/firefox", @firefox_sh, perm: 0o755)
-    File.write("#{CREW_DEST_PREFIX}/share/applications/firefox.desktop", @firefox_desktop, perm: 0o644)
+    FileUtils.install 'firefox_sh', "#{CREW_DEST_PREFIX}/bin/firefox", mode: 0o755
+    FileUtils.install 'firefox_desktop', "#{CREW_DEST_PREFIX}/share/applications/firefox.desktop", mode: 0o644
     Dir.chdir 'browser/chrome/icons/default' do
       FileUtils.mv 'default16.png', "#{icon_base_path}/16x16/apps/firefox.png"
       FileUtils.mv 'default32.png', "#{icon_base_path}/32x32/apps/firefox.png"
@@ -88,8 +85,8 @@ class Firefox < Package
       FileUtils.mv 'default128.png', "#{icon_base_path}/128x128/apps/firefox.png"
     end
     # The following image is needed for crew-launcher which requires a minimum icon size of 144x144.
-    system 'curl -L#O https://files.softicons.com/download/application-icons/round-app-icons-by-ampeross/png/256x256/Mozilla.png'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('Mozilla.png')) == '994e780ada1456c26b077a9f97186aefbc90be5c57e66366b1bca32df0c14c4e'
+    downloader 'https://files.softicons.com/download/application-icons/round-app-icons-by-ampeross/png/256x256/Mozilla.png',
+               '994e780ada1456c26b077a9f97186aefbc90be5c57e66366b1bca32df0c14c4e'
     FileUtils.mv 'Mozilla.png', "#{icon_base_path}/256x256/apps/firefox.png"
   end
 

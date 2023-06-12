@@ -3,24 +3,22 @@ require 'package'
 class Poppler_data < Package
   description 'This additional package consists of encoding files for use with Poppler.'
   homepage 'https://poppler.freedesktop.org/'
-  @_ver = '0.4.10'
+  @_ver = '0.4.12'
   version @_ver
   license 'BSD, GPL-2 and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://poppler.freedesktop.org/poppler-data-#{@_ver}.tar.gz"
-  source_sha256 '6e2fcef66ec8c44625f94292ccf8af9f1d918b410d5aa69c274ce67387967b30'
+  source_sha256 'c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.10_armv7l/poppler_data-0.4.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.10_armv7l/poppler_data-0.4.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.10_i686/poppler_data-0.4.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.10_x86_64/poppler_data-0.4.10-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.12_armv7l/poppler_data-0.4.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.12_armv7l/poppler_data-0.4.12-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.12_x86_64/poppler_data-0.4.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '819a39d253b0e62d9e08f704e9d8d9bc551f48528393a82d988d87a64422ec63',
-     armv7l: '819a39d253b0e62d9e08f704e9d8d9bc551f48528393a82d988d87a64422ec63',
-       i686: '5982a173cc1a37ad97c0e5a79089e09ed9558acd11163d322b1b964dbf232d9b',
-     x86_64: '129a2d18480c9074f52a3bd2560f4fede057c065ec9823908c12f62b7c42bf20'
+    aarch64: 'ec1bcb5fb7d23cc28bbe77b3436beefff248f1164cf5910dec031f54d87820f8',
+     armv7l: 'ec1bcb5fb7d23cc28bbe77b3436beefff248f1164cf5910dec031f54d87820f8',
+     x86_64: '7dbd6d124bc6b484d35b1692e74183e6fffaa0eeddab99b843a64d563bd95a8b'
   })
 
   def self.install

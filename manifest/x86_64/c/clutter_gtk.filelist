@@ -1,0 +1,16 @@
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/clutter-gtk.h
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/gtk-clutter-actor.h
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/gtk-clutter-embed.h
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/gtk-clutter-texture.h
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/gtk-clutter-util.h
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/gtk-clutter-version.h
+/usr/local/include/clutter-gtk-1.0/clutter-gtk/gtk-clutter-window.h
+/usr/local/lib64/girepository-1.0/GtkClutter-1.0.typelib
+/usr/local/lib64/libclutter-gtk-1.0.so
+/usr/local/lib64/libclutter-gtk-1.0.so.0
+/usr/local/lib64/libclutter-gtk-1.0.so.0.800.4
+/usr/local/lib64/pkgconfig/clutter-gtk-1.0.pc
+/usr/local/share/gir-1.0/GtkClutter-1.0.gir
+/usr/local/share/locale/ja/LC_MESSAGES/cluttergtk-1.0.mo
+/usr/local/share/locale/pl/LC_MESSAGES/cluttergtk-1.0.mo
+/usr/local/share/locale/zh_CN/LC_MESSAGES/cluttergtk-1.0.mo

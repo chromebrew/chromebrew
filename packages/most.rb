@@ -3,27 +3,28 @@ require 'package'
 class Most < Package
   description 'MOST is a powerful paging program for Unix, VMS, MSDOS, and win32 systems.'
   homepage 'http://www.jedsoft.org/most/'
-  version '5.1.0'
+  version '5.2.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.jedsoft.org/releases/most/most-5.1.0.tar.gz'
-  source_sha256 'db805d1ffad3e85890802061ac8c90e3c89e25afb184a794e03715a3ed190501'
+  source_url "https://www.jedsoft.org/releases/most/most-#{version}.tar.gz"
+  source_sha256 '9455aeb8f826fa8385c850dc22bf0f22cf9069b3c3423fba4bf2c6f6226d9903'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_armv7l/most-5.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_i686/most-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.1.0_x86_64/most-5.1.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_armv7l/most-5.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_armv7l/most-5.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_i686/most-5.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/most/5.2.0_x86_64/most-5.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '333fee656f76d9a8d5343edf9d2e1c29c48d73b4c21992a76439644c7edf7f70',
-     armv7l: '333fee656f76d9a8d5343edf9d2e1c29c48d73b4c21992a76439644c7edf7f70',
-       i686: '5e3463ae4c793fcc7ee528c0b722bfe665792f831e87e7d6b88c0a1bda124825',
-     x86_64: '3fcf532ef15440abe83413ae0c422e480096a6b4997890eca2825ef288ed13ed'
+    aarch64: '6689e97e303c8e6ab015a54dcc518e8f3aaafb67c3d7c4921a1fdebaf112c3c4',
+     armv7l: '6689e97e303c8e6ab015a54dcc518e8f3aaafb67c3d7c4921a1fdebaf112c3c4',
+       i686: '7cae7bae27f55159d799d83824e00e6a25ec3b2fc4ec8f2c74b5e793e1cc50d6',
+     x86_64: 'afc592b6140eb946a257197597f624a5125ae1f694f4883d5013461be388e071'
   })
 
   depends_on 'glibc' # R
   depends_on 'slang' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

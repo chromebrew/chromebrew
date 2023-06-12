@@ -3,36 +3,37 @@ require 'package'
 class Alsa_plugins < Package
   description 'alsa-plugins contains plugins for various ALSA needs (e.g. Jack).'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.2'
+  version '1.2.7.1'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'all'
-  source_url 'ftp://ftp.alsa-project.org/pub/plugins/alsa-plugins-1.2.2.tar.bz2'
-  source_sha256 '1c0f06450c928d711719686c9dbece2d480184f36fab11b8f0534cb7b41e337d'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2'
+  source_sha256 '8c337814954bb7c167456733a6046142a2931f12eccba3ec2a4ae618a3432511'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_armv7l/alsa_plugins-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_i686/alsa_plugins-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.2_x86_64/alsa_plugins-1.2.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.7.1_armv7l/alsa_plugins-1.2.7.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.7.1_armv7l/alsa_plugins-1.2.7.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_plugins/1.2.7.1_x86_64/alsa_plugins-1.2.7.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
-     armv7l: '6dfe0afc4137d689eda0c4693aac4016e66e9da74ccaf540ebd12cb2fd704103',
-       i686: '2e363fbae56a4dc05af716316f6465b36655663a5953437af4c996e22eece8bc',
-     x86_64: '2c0108843697c8711160defebbf6db421a2b6fe1aa582b9567e8cbb9b124bf02'
+    aarch64: 'b6f8c1e388cb9e33a9579448b918e8ec702ae418d5063584b456aba5571dad74',
+     armv7l: 'b6f8c1e388cb9e33a9579448b918e8ec702ae418d5063584b456aba5571dad74',
+     x86_64: '227861025571f52113dac1be4dad0e924466d3e0f2f4439973e074a007355c5d'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'dbus'
-  # depends_on 'ffmpeg'
+  depends_on 'dbus' => :build
+  depends_on 'ffmpeg' # R
+  depends_on 'glibc' # R
+  depends_on 'jack' # R
+  depends_on 'libsamplerate' # R
+  depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
   depends_on 'speexdsp' # R
+  depends_on 'gcc_lib' # R
 
   def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--with-alsalconfdir=#{CREW_PREFIX}/etc/alsa/conf.d"
+    system "mold -run ./configure #{CREW_OPTIONS} \
+           --with-alsalconfdir=#{CREW_PREFIX}/etc/alsa/conf.d"
     system 'make'
   end
 

@@ -32,7 +32,7 @@ class Gimp < Package
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'gegl' # R
   depends_on 'gexiv2' # R

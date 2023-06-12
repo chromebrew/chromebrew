@@ -1,0 +1,5 @@
+/usr/include/gbm.h
+/usr/local/lib64/libgbm.so
+/usr/local/lib64/libgbm.so.1
+/usr/local/lib64/libminigbm.so.1.0.0
+/usr/local/lib64/pkgconfig/gbm.pc

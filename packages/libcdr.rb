@@ -28,7 +28,7 @@ class Libcdr < Package
   depends_on 'boost' => :build
   depends_on 'cppunit' => :build
   depends_on 'doxygen' => :build
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'lcms' # R

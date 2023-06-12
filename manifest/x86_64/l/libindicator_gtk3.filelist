@@ -1,0 +1,14 @@
+/usr/local/include/libindicator3-0.4/libindicator/indicator-desktop-shortcuts.h
+/usr/local/include/libindicator3-0.4/libindicator/indicator.h
+/usr/local/include/libindicator3-0.4/libindicator/indicator-image-helper.h
+/usr/local/include/libindicator3-0.4/libindicator/indicator-object.h
+/usr/local/include/libindicator3-0.4/libindicator/indicator-service.h
+/usr/local/include/libindicator3-0.4/libindicator/indicator-service-manager.h
+/usr/local/lib64/libindicator3.a
+/usr/local/lib64/libindicator3.la
+/usr/local/lib64/libindicator3.so
+/usr/local/lib64/libindicator3.so.7
+/usr/local/lib64/libindicator3.so.7.0.0
+/usr/local/lib64/libindicator/indicator-loader3
+/usr/local/lib64/pkgconfig/indicator3-0.4.pc
+/usr/local/share/libindicator/80indicator-debugging

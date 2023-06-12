@@ -31,7 +31,7 @@ class Inkscape < Package
   depends_on 'double_conversion' # R
   depends_on 'enchant' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glibmm_2_4' # R
@@ -59,7 +59,7 @@ class Inkscape < Package
   depends_on 'libxext' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
-  depends_on 'llvm' => :build
+  depends_on 'llvm_lib16' => :build
   depends_on 'pangomm_1_4' # R
   depends_on 'pango' # R
   depends_on 'poppler' # R

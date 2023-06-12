@@ -3,33 +3,34 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22.2'
+  version '1.22.3'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.2_armv7l/gstreamer-1.22.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.2_armv7l/gstreamer-1.22.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.2_x86_64/gstreamer-1.22.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_armv7l/gstreamer-1.22.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_armv7l/gstreamer-1.22.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_x86_64/gstreamer-1.22.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7fff080e923d8fb3945e3befe0edc35d9d8ce085ab62e10dd0e05ea8124986ca',
-     armv7l: '7fff080e923d8fb3945e3befe0edc35d9d8ce085ab62e10dd0e05ea8124986ca',
-     x86_64: '0a0ecd1a6ef16024fcab24628dff679719ba9d366ce039723da445b54fb2b280'
+    aarch64: 'e930960a30813fab3d71875c16eb72a471019f82b23cbac50f69a2e6d46b58b2',
+     armv7l: 'e930960a30813fab3d71875c16eb72a471019f82b23cbac50f69a2e6d46b58b2',
+     x86_64: '51456b1df1cf1196181e6e6eeabf5f216a43ea7cbbf992254f4a63735771e511'
   })
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bz2' # R
+  depends_on 'ca_certificates' => :build
   depends_on 'cairo' # R
   depends_on 'chromaprint' # R
   depends_on 'curl' # R
   depends_on 'elfutils' # R
   depends_on 'ffmpeg' # R
   depends_on 'flac' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
@@ -94,6 +95,7 @@ class Gstreamer < Package
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
   depends_on 'opus' # R
+  depends_on 'opusfile' => :build
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
@@ -112,10 +114,22 @@ class Gstreamer < Package
   depends_on 'webrtc_audio_processing' # R
   depends_on 'zlibpkg' # R
   depends_on 'zvbi' # R
+  depends_on 'faac' # R
+  depends_on 'faad2' # R
+  depends_on 'ilmbase' # R
+  depends_on 'openexr' # R
+  depends_on 'openh264' # R
+  depends_on 'qtbase' # R
+  depends_on 'qtdeclarative' # R
 
   conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
+
+  def self.prebuild
+    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
+  end
+
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
       -Dgpl=enabled \
       -Dtests=disabled \
       builddir"

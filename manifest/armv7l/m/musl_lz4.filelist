@@ -1,0 +1,17 @@
+/usr/local/share/musl/bin/lz4
+/usr/local/share/musl/bin/lz4c
+/usr/local/share/musl/bin/lz4cat
+/usr/local/share/musl/bin/unlz4
+/usr/local/share/musl/include/lz4frame.h
+/usr/local/share/musl/include/lz4frame_static.h
+/usr/local/share/musl/include/lz4.h
+/usr/local/share/musl/include/lz4hc.h
+/usr/local/share/musl/lib/liblz4.a
+/usr/local/share/musl/lib/liblz4.so
+/usr/local/share/musl/lib/liblz4.so.1
+/usr/local/share/musl/lib/liblz4.so.1.9.4
+/usr/local/share/musl/lib/pkgconfig/liblz4.pc
+/usr/local/share/musl/share/man/man1/lz4.1
+/usr/local/share/musl/share/man/man1/lz4c.1
+/usr/local/share/musl/share/man/man1/lz4cat.1
+/usr/local/share/musl/share/man/man1/unlz4.1

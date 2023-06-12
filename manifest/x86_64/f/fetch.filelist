@@ -1,0 +1,10 @@
+/usr/local/bin/fetch
+/usr/local/include/fetch-estream.h
+/usr/local/include/fetch.h
+/usr/local/lib64/libfetch.a
+/usr/local/lib64/libfetch_pic.a
+/usr/local/lib64/libfetch.so
+/usr/local/lib64/libfetch.so.1
+/usr/local/lib64/libfetch.so.1.0
+/usr/local/share/man/man1/fetch.1.gz
+/usr/local/share/man/man3/fetch.3.gz

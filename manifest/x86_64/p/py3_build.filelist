@@ -1,0 +1,16 @@
+/usr/local/bin/pyproject-build
+/usr/local/lib/python3.11/site-packages/build-0.9.0.dist-info/entry_points.txt
+/usr/local/lib/python3.11/site-packages/build-0.9.0.dist-info/LICENSE
+/usr/local/lib/python3.11/site-packages/build-0.9.0.dist-info/METADATA
+/usr/local/lib/python3.11/site-packages/build-0.9.0.dist-info/RECORD
+/usr/local/lib/python3.11/site-packages/build-0.9.0.dist-info/top_level.txt
+/usr/local/lib/python3.11/site-packages/build-0.9.0.dist-info/WHEEL
+/usr/local/lib/python3.11/site-packages/build/env.py
+/usr/local/lib/python3.11/site-packages/build/__init__.py
+/usr/local/lib/python3.11/site-packages/build/__main__.py
+/usr/local/lib/python3.11/site-packages/build/__pycache__/env.cpython-311.opt-2.pyc
+/usr/local/lib/python3.11/site-packages/build/__pycache__/__init__.cpython-311.opt-2.pyc
+/usr/local/lib/python3.11/site-packages/build/__pycache__/__main__.cpython-311.opt-2.pyc
+/usr/local/lib/python3.11/site-packages/build/__pycache__/util.cpython-311.opt-2.pyc
+/usr/local/lib/python3.11/site-packages/build/py.typed
+/usr/local/lib/python3.11/site-packages/build/util.py

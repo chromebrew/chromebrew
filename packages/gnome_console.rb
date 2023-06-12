@@ -24,7 +24,7 @@ class Gnome_console < Package
      x86_64: 'f66c46cdf1a783f685240ba195232e5056db5de64b37994e7e2701fa870f7adc'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R

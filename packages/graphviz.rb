@@ -26,7 +26,7 @@ class Graphviz < Package
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' => :build
   depends_on 'glibc' # R

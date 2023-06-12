@@ -3,34 +3,46 @@ require 'package'
 class Opus < Package
   description 'Opus is a totally open, royalty-free, highly versatile audio codec.'
   homepage 'https://opus-codec.org/'
-  version '1.3.1'
-  compatibility 'all'
+  version '1.4'
   license 'BSD'
-  source_url 'https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz'
-  source_sha256 '65b58e1e25b2a114157014736a3d9dfeaad8d41be1c8179866f144a2fb44ff9d'
+  compatibility 'all'
+  source_url 'https://github.com/xiph/opus/releases/download/v1.4/opus-1.4.tar.gz'
+  source_sha256 'c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.3.1_armv7l/opus-1.3.1-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.3.1_armv7l/opus-1.3.1-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.3.1_i686/opus-1.3.1-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.3.1_x86_64/opus-1.3.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.4_armv7l/opus-1.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.4_armv7l/opus-1.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.4_i686/opus-1.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opus/1.4_x86_64/opus-1.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ddf29b45d6a99e2e1a1c5dd87529978a6d4f922695425f504d3622090e6b033a',
-      armv7l: 'ddf29b45d6a99e2e1a1c5dd87529978a6d4f922695425f504d3622090e6b033a',
-        i686: '9af5fa2bdf079ac4ad8a617c454fd01b549ca824f37bd7d2f9fcc20f41507050',
-      x86_64: 'f77d89ba219257e2b2d97776b0df5407e40b33dcca0d0ca49d0970145009c31e'
+    aarch64: '63fe85dddd1151716ce4dd6df89216a35c4d5789396218d6d6310da6a12e6894',
+     armv7l: '63fe85dddd1151716ce4dd6df89216a35c4d5789396218d6d6310da6a12e6894',
+       i686: '1ab7a3f96a246f743148a426726fcf0af2b014f1bd8cfec757b207216e463bcb',
+     x86_64: '3729cff69b9e8635f43cfb38e2a32617a0855333dc098ca3ca391b75a579fafe'
   })
 
   depends_on 'doxygen' => :build
+  depends_on 'glibc' # R
+
+  def self.patch
+    # See https://github.com/xiph/opus/issues/273
+    downloader 'https://patch-diff.githubusercontent.com/raw/xiph/opus/pull/267.patch',
+               '39bcf3085978f1c113f6e2c60f39ccff638d2f5e1e0192ca603883e35632997c'
+    system 'patch -Np1 -i 267.patch'
+  end
 
   def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-              --enable-custom-modes"
-    system 'make'
+    system "meson setup #{CREW_MESON_OPTIONS.gsub('vfpv3-d16', 'neon')} \
+      -Dcustom-modes=true \
+      -Ddocs=disabled \
+      -Dtests=disabled \
+      builddir"
+    system 'meson configure builddir'
+    system "mold -run #{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end

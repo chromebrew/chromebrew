@@ -5,6 +5,7 @@ class Musl_libucontext < Package
   homepage 'https://github.com/kaniini/libucontext'
   @_ver = '1.1'
   version @_ver
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/kaniini/libucontext.git'
   git_hashtag "libucontext-#{@_ver}"

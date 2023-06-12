@@ -23,7 +23,7 @@ class Pcre < Package
      x86_64: 'ee4f6f40c9acfd64e9c93281d8a5a6b8ac1aab3da5f11c7bbf5bfddc2bedc2d3'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'readline' # R
 

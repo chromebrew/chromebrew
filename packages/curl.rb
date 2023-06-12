@@ -3,24 +3,23 @@ require 'package'
 class Curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '8.0.1'
-  version @_ver
+  version '8.1.2'
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-8.0.1.tar.xz'
-  source_sha256 '0a381cd82f4d00a9a334438b8ca239afea5bfefcfa9a1025f2bf118e79e0b5f0'
+  source_url 'https://curl.se/download/curl-8.1.2.tar.xz'
+  source_sha256 '31b1118eb8bfd43cd95d9a3f146f814ff874f6ed3999b29d94f4d1e7dbac5ef6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.0.1_armv7l/curl-8.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.0.1_armv7l/curl-8.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.0.1_i686/curl-8.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.0.1_x86_64/curl-8.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_armv7l/curl-8.1.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_armv7l/curl-8.1.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_i686/curl-8.1.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.1.2_x86_64/curl-8.1.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'aa1584ebca641a8fa7513f81cfa59bf5d6382be85f56c4cd4ffacf4bd0490375',
-     armv7l: 'aa1584ebca641a8fa7513f81cfa59bf5d6382be85f56c4cd4ffacf4bd0490375',
-       i686: '23894ab8f2afcf3c1d01b23f596ce45dd4119a45d1c3449d36a29b30398b3e87',
-     x86_64: '3af563e88ba9335a871cab2620f0c8703bd35275ef1ff717dd01e7b6a0d37dc2'
+    aarch64: 'f61797ea0812422a343bb2de6d6be68ae4391630ea8552c9b6f93eb3021ce282',
+     armv7l: 'f61797ea0812422a343bb2de6d6be68ae4391630ea8552c9b6f93eb3021ce282',
+       i686: 'c72d008177000b151c28095477feae0d75056f76f97b20a687c6c02dbd610985',
+     x86_64: '4b664fdab78743015c37fbc11af00e34991097137ca955869629a77bd023822d'
   })
 
   depends_on 'brotli' # R
@@ -41,8 +40,6 @@ class Curl < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  no_patchelf
-
   def self.build
     system '[ -x configure ] || autoreconf -fvi'
     system 'filefix'
@@ -59,7 +56,7 @@ class Curl < Package
       --with-openssl \
       --without-gnutls \
       --without-librtmp"
-    system "mold -run make -j #{CREW_NPROC}"
+    system 'make'
   end
 
   def self.install

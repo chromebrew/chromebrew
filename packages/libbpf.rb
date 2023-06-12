@@ -24,7 +24,7 @@ class Libbpf < Package
   })
 
   depends_on 'elfutils' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'rsync' => :build
   depends_on 'zlibpkg' # R

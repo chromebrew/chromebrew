@@ -1,0 +1,10 @@
+/usr/local/include/hubbub/errors.h
+/usr/local/include/hubbub/functypes.h
+/usr/local/include/hubbub/hubbub.h
+/usr/local/include/hubbub/parser.h
+/usr/local/include/hubbub/tree.h
+/usr/local/include/hubbub/types.h
+/usr/local/lib64/libhubbub.so
+/usr/local/lib64/libhubbub.so.0
+/usr/local/lib64/libhubbub.so.0.3.7
+/usr/local/lib64/pkgconfig/libhubbub.pc

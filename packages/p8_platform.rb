@@ -25,7 +25,7 @@ class P8_platform < Package
      x86_64: '0f6e3ba79c0f2ea8ddcbe704e04000b439ebc7b15cfbc8d8d6217ff56569e3ca'
   })
 
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build

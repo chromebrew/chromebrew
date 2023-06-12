@@ -1,0 +1,4 @@
+/usr/local/bin/mujs
+/usr/local/include/mujs.h
+/usr/local/lib64/libmujs.so
+/usr/local/lib64/pkgconfig/mujs.pc

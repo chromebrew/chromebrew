@@ -3,49 +3,79 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.2.4'
+  version '8.2.5'
   license 'PHP-3.01'
   compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-8.2.4.tar.xz'
-  source_sha256 'bc7bf4ca7ed0dd17647e3ea870b6f062fcb56b243bfdef3f59ff7f94e96176a8'
+  source_url 'https://www.php.net/distributions/php-8.2.5.tar.xz'
+  source_sha256 '800738c359b7f1e67e40c22713d2d90276bc85ba1c21b43d99edd43c254c5f76'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.4_armv7l/php82-8.2.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.4_armv7l/php82-8.2.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.4_i686/php82-8.2.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.4_x86_64/php82-8.2.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_armv7l/php82-8.2.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_armv7l/php82-8.2.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_i686/php82-8.2.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.5_x86_64/php82-8.2.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7582d0d7d93047d68649a052bb97aa95eff61260935bd944860452a463022331',
-     armv7l: '7582d0d7d93047d68649a052bb97aa95eff61260935bd944860452a463022331',
-       i686: '08dd37cb428971944008036775bf70fed358902d6b56890bb2411e971533f213',
-     x86_64: '9081724ee645e4c0d8bf5f35ac9711bac3362ad8344705b60dca98aa22be1457'
+    aarch64: 'b7a2262392a2ec627f3630b40726e56512a4c70685d25117ec91a8d7481185e8',
+     armv7l: 'b7a2262392a2ec627f3630b40726e56512a4c70685d25117ec91a8d7481185e8',
+       i686: '117284d2577dde1ff96013aca7c9150a319954ae7d3ecce20c6a502340eaf0b7',
+     x86_64: '5437cdc57c0a93a101e422d388a09dc15b85d8b7105235626f6154c047a5802b'
   })
 
   depends_on 'aspell_en'
-  depends_on 'curl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bz2' # R
+  depends_on 'c_ares' # R
+  depends_on 'curl' # R
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
-  depends_on 'freetype'
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
-  depends_on 're2c'
-  depends_on 'tidy'
-  depends_on 'unixodbc'
-  depends_on 'oniguruma'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng' # R
+  depends_on 'libpsl' # R
+  depends_on 'libsodium' # R
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt' # R
+  depends_on 'libzip' # R
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma' # R
+  depends_on 'openldap' # R
+  depends_on 'openssl' # R
   depends_on 'py3_pygments'
+  depends_on 're2c'
+  depends_on 'sqlite' # R
+  depends_on 'tidy' # R
+  depends_on 'unixodbc' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
+    return unless ARGV[0] != 'reinstall' && version != phpver && !phpver.empty?
+
+    abort "PHP version #{phpver} already installed.".lightgreen
   end
 
   def self.patch
@@ -70,7 +100,7 @@ class Php82 < Package
   end
 
   def self.build
-    system "CFLAGS='-pipe' mold -run ./configure \
+    system "mold -run ./configure \
        --prefix=#{CREW_PREFIX} \
        --docdir=#{CREW_PREFIX}/doc \
        --infodir=#{CREW_PREFIX}/info \
@@ -83,6 +113,7 @@ class Php82 < Package
        --with-kerberos=#{CREW_LIB_PREFIX} \
        --with-pear=#{CREW_LIB_PREFIX}/php \
        --with-zlib-dir=#{CREW_LIB_PREFIX} \
+       --disable-gcc-global-regs \
        --enable-exif \
        --enable-fpm \
        --enable-ftp \
@@ -124,7 +155,7 @@ class Php82 < Package
        --with-zip \
        --with-ffi \
        --with-libedit"
-    system 'mold -run make'
+    system 'make'
   end
 
   def self.check
@@ -134,16 +165,17 @@ class Php82 < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/tmp/run"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/init.d"
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/php-fpm.d"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+
     system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
     FileUtils.install 'php.ini-development', "#{CREW_DEST_PREFIX}/etc/php.ini", mode: 0o644
     FileUtils.install 'sapi/fpm/init.d.php-fpm.in', "#{CREW_DEST_PREFIX}/etc/init.d/php-fpm", mode: 0o755
-    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o755
+    FileUtils.install 'sapi/fpm/php-fpm.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.conf", mode: 0o644
     FileUtils.install 'sapi/fpm/www.conf.in', "#{CREW_DEST_PREFIX}/etc/php-fpm.d/www.conf", mode: 0o644
     FileUtils.ln_s "#{CREW_PREFIX}/etc/init.d/php-fpm", "#{CREW_DEST_PREFIX}/bin/php8-fpm"
 
-    # clean up some files created under #{CREW_DEST_DIR}. check http://pear.php.net/bugs/bug.php?id=20383 for more details
+    # Clean up some files created under #{CREW_DEST_DIR}.
+    # Check http://pear.php.net/bugs/bug.php?id=20383 for more details.
     FileUtils.mv "#{CREW_DEST_PREFIX}/php/php/fpm", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdb", "#{CREW_DEST_LIB_PREFIX}/php"
     FileUtils.mv "#{CREW_DEST_DIR}/.depdblock", "#{CREW_DEST_LIB_PREFIX}/php"
@@ -151,6 +183,11 @@ class Php82 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
+
+    # Launch php8-fpm when the bash shell session starts.
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
+      [ -x #{CREW_PREFIX}/bin/php8-fpm ] && #{CREW_PREFIX}/bin/php8-fpm start
+    EOF
   end
 
   def self.postinstall
@@ -164,10 +201,8 @@ class Php82 < Package
     puts 'To restart the php-fpm service, execute:'.lightblue
     puts 'php8-fpm restart'.lightblue
     puts
-    puts 'To start php-fpm on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php8-fpm ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/php8-fpm start' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    puts 'php8-fpm start will execute on login.'.lightblue
+    puts "To prevent this, edit or remove #{CREW_PREFIX}/etc/bash.d/01-php8-fpm.".lightblue
+    puts
   end
 end

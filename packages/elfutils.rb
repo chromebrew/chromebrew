@@ -24,7 +24,7 @@ class Elfutils < Package
   })
 
   depends_on 'bz2' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libarchive' # R
   depends_on 'curl' # R

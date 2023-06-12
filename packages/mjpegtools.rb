@@ -33,7 +33,7 @@ class Mjpegtools < Package
   depends_on 'at_spi2_core' # R
   depends_on 'expat' # R
   depends_on 'freetype' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R

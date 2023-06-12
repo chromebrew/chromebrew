@@ -25,7 +25,7 @@ class Lshw < Package
   })
 
   depends_on 'hwdata'
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R

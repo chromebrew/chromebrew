@@ -1,0 +1,17 @@
+/usr/local/include/crypt.h
+/usr/local/lib/libcrypt.la
+/usr/local/lib/libcrypt.so
+/usr/local/lib/libcrypt.so.2
+/usr/local/lib/libcrypt.so.2.0.0
+/usr/local/lib/pkgconfig/libcrypt.pc
+/usr/local/lib/pkgconfig/libxcrypt.pc
+/usr/local/share/man/man3/crypt.3.gz
+/usr/local/share/man/man3/crypt_checksalt.3.gz
+/usr/local/share/man/man3/crypt_gensalt.3.gz
+/usr/local/share/man/man3/crypt_gensalt_ra.3.gz
+/usr/local/share/man/man3/crypt_gensalt_rn.3.gz
+/usr/local/share/man/man3/crypt_preferred_method.3.gz
+/usr/local/share/man/man3/crypt_r.3.gz
+/usr/local/share/man/man3/crypt_ra.3.gz
+/usr/local/share/man/man3/crypt_rn.3.gz
+/usr/local/share/man/man5/crypt.5.gz

@@ -84,6 +84,7 @@ Where available commands are:
 | search | look for package(s) |
 | sysinfo | show system information in markdown style |
 | update | update crew itself |
+| updatefiles | update crew files cache |
 | upgrade | update all or specific package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
 

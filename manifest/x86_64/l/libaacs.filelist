@@ -1,0 +1,10 @@
+/usr/local/bin/aacs_info
+/usr/local/include/libaacs/aacs.h
+/usr/local/include/libaacs/aacs-version.h
+/usr/local/include/libaacs/filesystem.h
+/usr/local/lib64/libaacs.a
+/usr/local/lib64/libaacs.la
+/usr/local/lib64/libaacs.so
+/usr/local/lib64/libaacs.so.0
+/usr/local/lib64/libaacs.so.0.6.0
+/usr/local/lib64/pkgconfig/libaacs.pc

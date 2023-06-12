@@ -1,0 +1,13 @@
+/usr/local/bin/checkmk
+/usr/local/include/check.h
+/usr/local/include/check_stdint.h
+/usr/local/lib64/cmake/check/check-config.cmake
+/usr/local/lib64/cmake/check/check-config-version.cmake
+/usr/local/lib64/cmake/check/check-targets.cmake
+/usr/local/lib64/cmake/check/check-targets-release.cmake
+/usr/local/lib64/libcheck.a
+/usr/local/lib64/libcheck.so
+/usr/local/lib64/libcheck.so.0
+/usr/local/lib64/libcheck.so.0.15.2
+/usr/local/lib64/pkgconfig/check.pc
+/usr/local/share/man/man1/checkmk.1.gz

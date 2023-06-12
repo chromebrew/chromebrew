@@ -6,23 +6,25 @@ class Wayland < Package
   @_ver = '1.22.0'
   version @_ver
   license 'MIT'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland.git'
   git_hashtag @_ver
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.22.0_armv7l/wayland-1.22.0-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.22.0_armv7l/wayland-1.22.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.22.0_i686/wayland-1.22.0-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland/1.22.0_x86_64/wayland-1.22.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '72e4522abfc219a7f20f7894dcbeb3efe1f630ddda000131df9ba827e5547d13',
      armv7l: '72e4522abfc219a7f20f7894dcbeb3efe1f630ddda000131df9ba827e5547d13',
+       i686: 'a5be6452a0bbd9aeb09ba960449c1690e9a0cbcfafdb2283ef6a02a2e1416025',
      x86_64: '1fc209aa34fa165f41a6100dad83c352c5bfb5662bc37b279ce6091052edc90b'
   })
 
   depends_on 'expat' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' => :build
   depends_on 'libffi' # R

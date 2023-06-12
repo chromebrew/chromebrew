@@ -9,10 +9,8 @@ class Github_desktop < Package
   source_url 'https://github.com/shiftkey/desktop/releases/download/release-2.9.6-linux1/GitHubDesktop-linux-2.9.6-linux1.AppImage'
   source_sha256 'e5187e7c5a9ad1fa3c110c1ec60c9e7f75e0792c3670907741243f7cbea831b0'
 
-  binary_url({
-  })
-  binary_sha256({
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'at_spi2_core'
   depends_on 'gdk_pixbuf'

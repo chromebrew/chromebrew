@@ -3,30 +3,27 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '1.1.1t' # Do not use @_ver here, it will break the installer.
-  license 'openssl'
+  version '3.0.9' # Do not use @_ver here, it will break the installer.
+  license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-1.1.1t.tar.gz'
-  source_sha256 '8dee9b24bdb1dcbf0c3d1e9b02fb8f6bf22165e807f45adeb7c9677536859d3b'
+  source_url 'https://www.openssl.org/source/openssl-3.0.9.tar.gz'
+  source_sha256 'eb1ab04781474360f77c318ab89d8c5a03abc38e63d65a603cabbf1b00a1dc90'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_armv7l/openssl-1.1.1t-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_armv7l/openssl-1.1.1t-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_i686/openssl-1.1.1t-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/1.1.1t_x86_64/openssl-1.1.1t-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.9_armv7l/openssl-3.0.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.9_armv7l/openssl-3.0.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.9_i686/openssl-3.0.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.9_x86_64/openssl-3.0.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '88a36d1539c7c01af1f5e469b64c2760f43126bb75c0e63b53d3d61c2a6fbe7f',
-     armv7l: '88a36d1539c7c01af1f5e469b64c2760f43126bb75c0e63b53d3d61c2a6fbe7f',
-       i686: 'ce98c1898e57df1cbcceab08912e219fb5f27b0e4585315f7babdf524fa844dc',
-     x86_64: 'd6583dc2c7566da33402cb8d7f9025189d65b8ba6300e752edcb0d74ebcb1f68'
+    aarch64: '909203f4348a71d347728ef29d6e6364412dfaeff57c95e4cbea838e04c61cf7',
+     armv7l: '909203f4348a71d347728ef29d6e6364412dfaeff57c95e4cbea838e04c61cf7',
+       i686: '9732a9278f6d4434a5c9b5bf95337d731ea254c56f0333867d1f414e5763af50',
+     x86_64: '093cda273b9bd15e6e33b07f0acae8079c42461db2fe4b619a611d3687d11fd6'
   })
 
-  # depends_on 'ccache' => :build
+  depends_on 'ccache' => :build
   depends_on 'glibc' # R
-
-  no_patchelf
-  no_zstd
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -47,15 +44,17 @@ class Openssl < Package
   @ARCH_CXX_LTO_FLAGS = "#{@arch_cxx_flags} -flto=auto"
 
   def self.build
+    @no_tests_target = `openssl version | awk '{print $2}'`.chomp == version.to_s ? 'no-tests' : ''
+
     # This gives you the list of OpenSSL configure targets
     system './Configure LIST'
     system "PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
       CFLAGS=\"#{@ARCH_C_LTO_FLAGS}\" CXXFLAGS=\"#{@ARCH_CXX_LTO_FLAGS}\" \
       LDFLAGS=\"#{@ARCH_LDFLAGS}\" \
-      ./Configure --prefix=#{CREW_PREFIX} \
+      mold -run ./Configure --prefix=#{CREW_PREFIX} \
       --libdir=#{CREW_LIB_PREFIX} \
       --openssldir=#{CREW_PREFIX}/etc/ssl \
-      #{@openssl_configure_target}"
+      #{@openssl_configure_target} #{@no_tests_target}"
     system 'make'
   end
 
@@ -65,10 +64,34 @@ class Openssl < Package
     return if ARCH == 'i686'
 
     # Don't run tests if we are just rebuilding the same version of openssl.
-    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == '1.1.1s'
+    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == version.to_s
   end
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install_sw install_ssldirs"
+    # Extract OpenSSL 1.1.1 libraries for backwards compatibility purposes
+    # from the openssl111 package.
+    # Builds and rebuilds of packages against OpenSSL should automatically
+    # build against OpenSSL 3.x and not against OpenSSL 1.1.1x.
+    File.write 'openssl111_files', <<~EOF
+      #{CREW_LIB_PREFIX[1..]}/libcrypto.so.1.1
+      #{CREW_LIB_PREFIX[1..]}/libssl.so.1.1
+    EOF
+    @cur_dir = `pwd`.chomp
+    @legacy_version = '1.1.1u'
+    case ARCH
+    when 'aarch64', 'armv7l'
+      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_armv7l/openssl111-#{@legacy_version}-chromeos-armv7l.tar.zst",
+                 '99b920309fdd7e5b9512bdbe8a0f75ee8196894a8b67554545de399d6a3b9303', "openssl111-#{@legacy_version}-chromeos.tar.zst"
+    when 'i686'
+      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_i686/openssl111-#{@legacy_version}-chromeos-i686.tar.zst",
+                 '5d266d546f82e3040b71492b8c670d0fc12caac9e192afd761b04179a8bda93f', "openssl111-#{@legacy_version}-chromeos.tar.zst"
+    when 'x86_64'
+      downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_x86_64/openssl111-#{@legacy_version}-chromeos-x86_64.tar.zst",
+                 'fcd6b8ecab009fa65c2e24adf1188b341f01dc1a8883035d54ddb63307c96f67', "openssl111-#{@legacy_version}-chromeos.tar.zst"
+    end
+    Dir.chdir(CREW_DEST_DIR) do
+      system "tar -Izstd -xv --files-from #{@cur_dir}/openssl111_files -f #{@cur_dir}/openssl111-#{@legacy_version}-chromeos.tar.zst"
+    end
   end
 end

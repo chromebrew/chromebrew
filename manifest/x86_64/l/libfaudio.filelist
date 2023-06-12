@@ -1,0 +1,15 @@
+/usr/local/include/F3DAudio.h
+/usr/local/include/FACT3D.h
+/usr/local/include/FACT.h
+/usr/local/include/FAPOBase.h
+/usr/local/include/FAPOFX.h
+/usr/local/include/FAPO.h
+/usr/local/include/FAudioFX.h
+/usr/local/include/FAudio.h
+/usr/local/lib64/cmake/FAudio/FAudioConfig.cmake
+/usr/local/lib64/cmake/FAudio/FAudio-targets.cmake
+/usr/local/lib64/cmake/FAudio/FAudio-targets-release.cmake
+/usr/local/lib64/libFAudio.so
+/usr/local/lib64/libFAudio.so.0
+/usr/local/lib64/libFAudio.so.0.23.01
+/usr/local/lib64/pkgconfig/FAudio.pc

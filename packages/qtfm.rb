@@ -3,27 +3,27 @@ require 'package'
 class Qtfm < Package
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
-  version '6.2.0'
+  version '6.3.0-c19b9c1-1'
   license 'GPL-2+'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/rodlie/qtfm/archive/6.2.0.tar.gz'
-  source_sha256 '58c6af502b606e63f96e8aec96b65ca9125be18ecdd5e4680ccaf50e9c40b064'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/rodlie/qtfm.git'
+  git_hashtag 'c19b9c14d1afde8558c912b17497dd2c34c971ef'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.2.0_armv7l/qtfm-6.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.2.0_armv7l/qtfm-6.2.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.2.0_x86_64/qtfm-6.2.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1-1_armv7l/qtfm-6.3.0-c19b9c1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1-1_armv7l/qtfm-6.3.0-c19b9c1-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtfm/6.3.0-c19b9c1-1_x86_64/qtfm-6.3.0-c19b9c1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bb5fb4098d06a1fe0e8c6ba11335da83f23b5057d40e3f451c8db1074b1008af',
-     armv7l: 'bb5fb4098d06a1fe0e8c6ba11335da83f23b5057d40e3f451c8db1074b1008af',
-     x86_64: 'ff50100f60fed4086578db1514178b897e834bcbe81c331b50711aa8d341010b'
+    aarch64: '414ca7a9d1e42424456dd0c8f32abcda0e3e9b6fee193fc51f89e45ad1413f68',
+     armv7l: '414ca7a9d1e42424456dd0c8f32abcda0e3e9b6fee193fc51f89e45ad1413f68',
+     x86_64: '2a83b6944bd9e04a655afc1c5789b2cbad676e3b78440ab1a0c325ad74e72aa1'
   })
 
-  depends_on 'qtbase'
-  depends_on 'imagemagick7'
-  depends_on 'ffmpeg'
-  depends_on 'sommelier'
+  depends_on 'ffmpeg' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'qtbase' # R
 
   def self.patch
     system "sed -i '12i#include <QPainterPath>' libfm/iconlist.h"
@@ -31,24 +31,19 @@ class Qtfm < Package
   end
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'qmake',
-             "PREFIX=#{CREW_PREFIX}",
-             "LIBDIR=#{CREW_LIB_PREFIX}",
-             'CONFIG+=with_includes',
-             'CONFIG+=with_magick',
-             'CONFIG+=magick7',
-             'CONFIG+=with_ffmpeg',
-             'CONFIG+=sharedlib',
-             '..'
-      system 'make'
-    end
+    system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+        -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
+        -DENABLE_DBUS=OFF \
+        -DENABLE_FFMPEG=ON \
+        -DENABLE_MAGICK=OFF \
+        -DENABLE_TRAY=OFF \
+        -DENABLE_UDISKS=OFF \
+        -Wno-dev \
+        -G Ninja"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system 'make', "INSTALL_ROOT=#{CREW_DEST_DIR}", 'install'
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 end

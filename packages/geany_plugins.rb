@@ -24,7 +24,7 @@ class Geany_plugins < Package
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
   depends_on 'enchant' # R
-  depends_on 'gcc' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'geany' # R
   depends_on 'glibc' # R

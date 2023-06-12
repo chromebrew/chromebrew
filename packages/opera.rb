@@ -3,14 +3,14 @@ require 'package'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '97.0.4719.63'
+  version '99.0.4788.65'
   license 'OPERA-2018'
   compatibility 'x86_64'
 
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 '48a611328dd1a126e1e974c116aeb5c4a5a854b57eba704f36687644c92537d6'
+  source_sha256 '079ef24ee9eaeb04138d8318be8732d40dfffc8db6c344d351c2b56e8869a765'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -21,6 +21,7 @@ class Opera < Package
   depends_on 'sommelier'
 
   no_compile_needed
+  no_shrink
 
   def self.install
     # Since opera puts the executable in a location that is not in the path,
