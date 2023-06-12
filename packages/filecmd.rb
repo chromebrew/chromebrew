@@ -6,7 +6,7 @@ class Filecmd < Package
   version '5.44'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
-  source_url "http://ftp.astron.com/pub/file/file-#{@version}.tar.gz"
+  source_url "http://ftp.astron.com/pub/file/file-#{version}.tar.gz"
   source_sha256 '3751c7fba8dbc831cb8d7cc8aff21035459b8ce5155ef8b0880a27d028475f3b'
 
   binary_url({
