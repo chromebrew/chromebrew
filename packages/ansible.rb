@@ -3,12 +3,11 @@ require 'package'
 class Ansible < Package
   description 'Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.'
   homepage 'https://www.ansible.com/'
-  @_ver = '2.11.6'
-  version @_ver
+  version '2.11.6'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/ansible/ansible.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_armv7l/ansible-2.11.6-chromeos-armv7l.tpxz',

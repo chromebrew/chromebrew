@@ -3,12 +3,11 @@ require 'package'
 class Libdeflate < Package
   description 'Heavily optimized library for DEFLATE compression and decompression'
   homepage 'https://github.com/ebiggers/libdeflate/'
-  @_ver = '1.17'
-  version @_ver
+  version '1.17'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ebiggers/libdeflate.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdeflate/1.17_armv7l/libdeflate-1.17-chromeos-armv7l.tar.zst',

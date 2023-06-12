@@ -3,12 +3,11 @@ require 'package'
 class Neo_matrix < Package
   description 'Simulates the digital rain from "The Matrix" (A CMatrix clone with 32-bit color and Unicode support)'
   homepage 'https://github.com/st3w/neo'
-  @_ver = '0.6.1'
-  version @_ver
+  version '0.6.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/st3w/neo.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   depends_on 'ttf_hanazono' # L
   depends_on 'glibc' # R

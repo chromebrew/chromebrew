@@ -3,12 +3,11 @@ require 'package'
 class Musl_zstd < Package
   description 'Zstandard - Fast real-time compression algorithm'
   homepage 'http://www.zstd.net'
-  @_ver = '1.5.4'
-  version @_ver
+  version '1.5.4'
   license 'BSD or GPL-2'
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_armv7l/musl_zstd-1.5.4-chromeos-armv7l.tar.xz',

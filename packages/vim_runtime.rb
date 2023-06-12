@@ -3,12 +3,11 @@ require 'package'
 class Vim_runtime < Package
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  @_ver = '9.0.1145'
-  version @_ver
+  version '9.0.1145'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1145_armv7l/vim_runtime-9.0.1145-chromeos-armv7l.tar.zst',

@@ -3,12 +3,11 @@ require 'package'
 class Compressdoc < Package
   description 'Compress all man pages in a hierarchy and update symlinks. Supports a variety of compression algorithms.'
   homepage 'https://github.com/saltedcoffii/compressdoc/'
-  @_ver = '20221119'
-  version @_ver
+  version '20221119'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/saltedcoffii/compressdoc.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/compressdoc/20221119_armv7l/compressdoc-20221119-chromeos-armv7l.tar.zst',

@@ -3,12 +3,11 @@ require 'package'
 class Iw < Package
   description 'iw is a new nl80211 based CLI configuration utility for wireless devices.'
   homepage 'https://wireless.wiki.kernel.org/en/users/documentation/iw/'
-  @_ver = '5.19'
-  version @_ver
+  version '5.19'
   license 'ISC'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iw/5.19_armv7l/iw-5.19-chromeos-armv7l.tar.zst',

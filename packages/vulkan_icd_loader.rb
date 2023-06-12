@@ -3,12 +3,11 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  @_ver = '1.3.251'
-  version @_ver
+  version '1.3.251'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.251_armv7l/vulkan_icd_loader-1.3.251-chromeos-armv7l.tar.zst',

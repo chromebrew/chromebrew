@@ -3,12 +3,11 @@ require 'package'
 class Libinstpatch < Package
   description 'libInstPatch is a library for processing digital sample based MIDI instrument "patch" files.'
   homepage 'https://github.com/swami/libinstpatch/'
-  @_ver = '1.1.6'
-  version @_ver
+  version '1.1.6'
   compatibility 'all'
   license 'LGPL-2.1'
   source_url 'https://github.com/swami/libinstpatch.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinstpatch/1.1.6_armv7l/libinstpatch-1.1.6-chromeos-armv7l.tpxz',

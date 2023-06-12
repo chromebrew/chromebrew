@@ -3,12 +3,11 @@ require 'package'
 class Flatseal < Package
   description 'Flatseal is a graphical utility to review and modify permissions from your Flatpak applications.'
   homepage 'https://github.com/tchx84/Flatseal/'
-  @_ver = '1.7.5'
-  version @_ver
+  version '1.7.5'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'https://github.com/tchx84/Flatseal.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.7.5_armv7l/flatseal-1.7.5-chromeos-armv7l.tpxz',

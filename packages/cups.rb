@@ -3,12 +3,11 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  @_ver = '2.4.2'
-  version @_ver
+  version '2.4.2'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/OpenPrinting/cups.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.2_armv7l/cups-2.4.2-chromeos-armv7l.tar.zst',
