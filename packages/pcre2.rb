@@ -3,8 +3,7 @@ require 'package'
 class Pcre2 < Package
   description 'The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries.'
   homepage 'http://pcre.org/'
-  @_ver = '10.42'
-  version @_ver
+  version '10.42'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.gz'

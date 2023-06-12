@@ -3,8 +3,7 @@ require 'package'
 class Glibmm_2_4 < Package
   description 'C++ bindings for GLib'
   homepage 'https://www.gtkmm.org'
-  @_ver = '2.66.5'
-  version @_ver
+  version '2.66.5'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glibmm.git'

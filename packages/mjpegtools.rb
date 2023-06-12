@@ -3,8 +3,7 @@ require 'package'
 class Mjpegtools < Package
   description 'Video capture, editing, playback, and compression to MPEG of MJPEG video'
   homepage 'https://mjpeg.sourceforge.io/'
-  @_ver = '2.2.1'
-  version @_ver
+  version '2.2.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/mjpeg/files/mjpegtools/2.2.1/mjpegtools-2.2.1.tar.gz'

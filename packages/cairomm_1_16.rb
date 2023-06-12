@@ -3,8 +3,7 @@ require 'package'
 class Cairomm_1_16 < Package
   description 'The Cairomm package provides a C++ interface to Cairo.'
   homepage 'https://www.cairographics.org/'
-  @_ver = '1.16.2'
-  version @_ver
+  version '1.16.2'
   license 'LGPL-2+'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/cairo/cairomm.git'

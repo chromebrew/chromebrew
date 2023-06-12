@@ -3,8 +3,7 @@ require 'package'
 class Libssh2 < Package
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
   homepage 'https://www.libssh2.org/'
-  @_ver = '1.10.0'
-  version @_ver
+  version '1.10.0'
   compatibility 'all'
   license 'BSD'
   source_url 'https://www.libssh2.org/download/libssh2-1.10.0.tar.gz'

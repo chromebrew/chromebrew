@@ -3,8 +3,7 @@ require 'package'
 class Gtksourceview_3 < Package
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  @_ver = '3.24.11'
-  version @_ver
+  version '3.24.11'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz'

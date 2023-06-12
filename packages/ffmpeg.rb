@@ -3,8 +3,7 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  @_ver = '6.0-27205c0'
-  version @_ver
+  version '6.0-27205c0'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'

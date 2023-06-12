@@ -3,8 +3,7 @@ require 'package'
 class Nasm < Package
   description 'The Netwide Assembler'
   homepage 'https://www.nasm.us/'
-  @_ver = '2.15.05'
-  version @_ver
+  version '2.15.05'
   license 'BSD'
   compatibility 'all'
   source_url 'https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.xz'
