@@ -3,8 +3,7 @@ require 'package'
 class Musl_ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  @_ver = '6.3-20220402'
-  version @_ver
+  version '6.3-20220402'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/mirror/ncurses.git'

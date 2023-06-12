@@ -3,8 +3,7 @@ require 'package'
 class Openhab < Package
   description 'A vendor and technology agnostic open source automation software for your home'
   homepage 'https://www.openhab.org/'
-  @_ver = '3.2.0'
-  version @_ver
+  version '3.2.0'
   license 'Eclipse Public License 2.0'
   compatibility 'x86_64'
   source_url 'https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/3.2.0/openhab-3.2.0.tar.gz'

@@ -3,8 +3,7 @@ require 'package'
 class Webrtc_audio_processing < Package
   description 'AudioProcessing library based on Googles implementation of WebRTC'
   homepage 'https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/'
-  @_ver = '0.3.1'
-  version @_ver
+  version '0.3.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/archive/v0.3.1/webrtc-audio-processing-v0.3.1.tar.bz2'

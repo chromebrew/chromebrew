@@ -7,8 +7,7 @@ class Libminigbm < Package
   description 'Generic Buffer Management GBM implementation used in Chromium OS'
   homepage 'https://chromium.googlesource.com/chromiumos/platform/minigbm/'
   git_hashtag '407eb0ebf3ce52fd4b3d79712d1b86d7b021c29b'
-  @_ver = git_hashtag[0, 7]
-  version @_ver
+  version git_hashtag[0, 7]
   license 'custom'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/platform/minigbm.git'

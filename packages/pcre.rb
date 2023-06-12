@@ -3,8 +3,7 @@ require 'package'
 class Pcre < Package
   description 'The PCRE library is a set of functions that implement regular expression pattern matching using the same syntax and semantics as Perl 5.'
   homepage 'http://pcre.org/'
-  @_ver = '8.45'
-  version @_ver
+  version '8.45'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2'

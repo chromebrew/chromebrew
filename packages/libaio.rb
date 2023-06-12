@@ -3,8 +3,7 @@ require 'package'
 class Libaio < Package
   description 'Linux-native asynchronous I/O access library'
   homepage 'https://pagure.io/libaio'
-  @_ver = '0.3.113-932de6c'
-  version @_ver
+  version '0.3.113-932de6c'
   license 'LGPL-2'
   # Use release patched to fix lto issues as per
   # https://marc.info/?l=linux-aio&m=164999309120529&w=2
