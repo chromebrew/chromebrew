@@ -3,12 +3,11 @@ require 'package'
 class Gtest < Package
   description 'Google Test - C++ testing utility'
   homepage 'https://opensource.google/projects/googletest'
-  @_ver = '1.11.0'
-  version @_ver
+  version '1.11.0'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/google/googletest.git'
-  git_hashtag "release-#{@_ver}"
+  git_hashtag "release-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_armv7l/gtest-1.11.0-chromeos-armv7l.tar.xz',

@@ -3,12 +3,11 @@ require 'package'
 class Gmmlib < Package
   description 'The Intel(R) Graphics Memory Management Library provides device specific and buffer management for the Intel(R) Graphics Compute Runtime for OpenCL(TM) and the Intel(R) Media Driver for VAAPI.'
   homepage 'https://github.com/intel/gmmlib/'
-  @_ver = '22.3.3'
-  version @_ver
+  version '22.3.3'
   license 'MIT'
   compatibility 'x86_64'
   source_url 'https://github.com/intel/gmmlib.git'
-  git_hashtag "intel-gmmlib-#{@_ver}"
+  git_hashtag "intel-gmmlib-#{version}"
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmmlib/22.3.3_x86_64/gmmlib-22.3.3-chromeos-x86_64.tar.zst'

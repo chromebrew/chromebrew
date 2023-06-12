@@ -2,12 +2,11 @@ require 'package'
 
 class Evolution_data_server < Package
   description 'Centralized access to appointments and contacts'
-  @_ver = '3.48.1'
-  version @_ver
+  version '3.48.1'
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.48.1_x86_64/evolution_data_server-3.48.1-chromeos-x86_64.tar.zst'

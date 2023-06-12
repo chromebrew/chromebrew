@@ -3,11 +3,10 @@ require 'package'
 class Busybox < Package
   description 'BusyBox combines tiny versions of many common UNIX utilities into a single small executable.'
   homepage 'https://busybox.net/'
-  @_ver = '1.36.0'
-  version @_ver
+  version '1.36.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://busybox.net/downloads/busybox-#{@_ver}.tar.bz2"
+  source_url "https://busybox.net/downloads/busybox-#{version}.tar.bz2"
   source_sha256 '542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5'
 
   binary_url({

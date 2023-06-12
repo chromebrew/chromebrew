@@ -6,11 +6,11 @@ require 'package'
 class Djvulibre < Package
   description 'Suite to create, manipulate and view DjVu déjà vu documents'
   homepage 'http://djvu.sourceforge.net/'
-  @_ver = '3.5.28'
-  version "#{@_ver}-1"
+  version '3.5.28'
+  revision 1
   license 'GPL2'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{@_ver}/djvulibre-#{@_ver}.tar.gz"
+  source_url "https://downloads.sourceforge.net/project/djvu/DjVuLibre/#{version}/djvulibre-#{version}.tar.gz"
   source_sha256 'fcd009ea7654fde5a83600eb80757bd3a76998e47d13c66b54c8db849f8f2edc'
 
   binary_url({

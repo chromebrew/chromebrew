@@ -3,12 +3,11 @@ require 'package'
 class Gyp_next < Package
   description 'GYP is a fork of the GYP build system for use in the Node.js projects.'
   homepage 'https://github.com/nodejs/gyp-next/'
-  @_ver = '0.10.0'
-  version @_ver
+  version '0.10.0'
   license 'BSD-3'
   compatibility 'all'
   source_url 'https://github.com/nodejs/gyp-next.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gyp_next/0.10.0_armv7l/gyp_next-0.10.0-chromeos-armv7l.tpxz',

@@ -3,12 +3,12 @@ require 'package'
 class Csvkit < Package
   description 'A suite of utilities for converting to and working with CSV, the king of tabular file formats.'
   homepage 'https://csvkit.rtfd.org/'
-  @_ver = '1.0.6'
-  version "#{@_ver}-1"
+  version '1.0.6'
+  revision 1
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/wireservice/csvkit.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6-1_armv7l/csvkit-1.0.6-1-chromeos-armv7l.tpxz',

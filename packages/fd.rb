@@ -3,12 +3,12 @@ require 'package'
 class Fd < Package
   description "A simple, fast and user-friendly alternative to 'find'."
   homepage 'https://github.com/sharkdp/fd/'
-  @_ver = '8.3.0'
-  version "#{@_ver}-1"
+  version '8.3.0'
+  revision 1
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/sharkdp/fd.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fd/8.3.0-1_armv7l/fd-8.3.0-1-chromeos-armv7l.tpxz',

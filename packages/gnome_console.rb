@@ -6,12 +6,12 @@ require 'package'
 class Gnome_console < Package
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
-  @_ver = '44.0'
-  version "#{@_ver}-1"
+  version '44.0'
+  revision 1
   license 'GPL3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/console.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_armv7l/gnome_console-44.0-1-chromeos-armv7l.tar.zst',

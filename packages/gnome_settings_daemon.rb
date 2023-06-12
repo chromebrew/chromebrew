@@ -3,12 +3,11 @@ require 'package'
 class Gnome_settings_daemon < Package
   description 'GNOME Settings Daemon'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
-  @_ver = '43.0'
-  version @_ver
+  version '43.0'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l' # not compatible with i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_settings_daemon/43.0_armv7l/gnome_settings_daemon-43.0-chromeos-armv7l.tar.zst',

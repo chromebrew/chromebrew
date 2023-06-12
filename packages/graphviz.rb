@@ -3,12 +3,11 @@ require 'package'
 class Graphviz < Package
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
-  @_ver = '7.1.0'
-  version @_ver
+  version '7.1.0'
   license 'BSD'
   compatibility 'all'
   source_url 'https://gitlab.com/graphviz/graphviz.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/7.1.0_armv7l/graphviz-7.1.0-chromeos-armv7l.tar.zst',

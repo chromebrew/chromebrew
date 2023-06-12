@@ -3,12 +3,11 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  @_ver = '2.76.2'
-  version @_ver
+  version '2.76.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.76.2_armv7l/glib-2.76.2-chromeos-armv7l.tar.zst',

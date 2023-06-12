@@ -3,11 +3,10 @@ require 'package'
 class Colord < Package
   description 'colord is a system service that makes it easy to manage, install and generate color profiles to accurately color manage input and output devices.'
   homepage 'https://www.freedesktop.org/software/colord/'
-  @_ver = '1.4.5'
-  version @_ver
+  version '1.4.5'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://www.freedesktop.org/software/colord/releases/colord-#{@_ver}.tar.xz"
+  source_url "https://www.freedesktop.org/software/colord/releases/colord-#{version}.tar.xz"
   source_sha256 'b774ea443d239f4a2ee1853bd678426e669ddeda413dcb71cea1638c4d6c5e17'
 
   binary_url({

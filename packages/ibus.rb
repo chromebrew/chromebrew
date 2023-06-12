@@ -3,12 +3,11 @@ require 'package'
 class Ibus < Package
   description 'Next Generation Input Bus for Linux'
   homepage 'https://github.com/ibus/ibus/wiki'
-  @_ver = '1.5.28'
-  version @_ver
+  version '1.5.28'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/ibus/ibus.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.28_armv7l/ibus-1.5.28-chromeos-armv7l.tar.zst',
@@ -78,7 +77,7 @@ class Ibus < Package
     --with-python=python3 \
     --with-ucd-dir=#{CREW_PREFIX}/share/unicode"
     unless File.exist?('engine/denylist.txt')
-      downloader "https://github.com/ibus/ibus/raw/#{@_ver}/engine/denylist.txt",
+      downloader "https://github.com/ibus/ibus/raw/#{version}/engine/denylist.txt",
                  '8589b87200d2e7dbf8a413129270d678e83b727bb5b7f8607e62cb9e40d2fdf1'
     end
     system 'make'

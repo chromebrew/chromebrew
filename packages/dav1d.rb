@@ -3,8 +3,7 @@ require 'package'
 class Dav1d < Package
   description '**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
-  @_ver = '1.2.1'
-  version @_ver
+  version '1.2.1'
   license 'BSD-2'
   compatibility 'all'
   source_url 'https://code.videolan.org/videolan/dav1d.git'

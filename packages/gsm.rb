@@ -3,11 +3,10 @@ require 'package'
 class Gsm < Package
   description 'Shared libraries for GSM 06.10 lossy speech compression'
   homepage 'http://www.quut.com/gsm/'
-  @_ver = '1.0.19'
-  version @_ver
+  version '1.0.19'
   license 'gsm'
   compatibility 'all'
-  source_url "http://www.quut.com/gsm/gsm-#{@_ver}.tar.gz"
+  source_url "http://www.quut.com/gsm/gsm-#{version}.tar.gz"
   source_sha256 '4903652f68a8c04d0041f0d19b1eb713ddcd2aa011c5e595b3b8bca2755270f6'
 
   binary_url({

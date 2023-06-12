@@ -3,8 +3,7 @@ require 'package'
 class Go_tools < Package
   description 'Developer tools for the Go programming language'
   homepage 'https://github.com/golang/tools'
-  @_ver = '0.6.6'
-  version @_ver
+  version '0.6.6'
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
@@ -26,7 +25,7 @@ class Go_tools < Package
 
   def self.install
     @git_dir = 'go_tools_git'
-    @git_hash = "gopls/v#{@_ver}"
+    @git_hash = "gopls/v#{version}"
     @git_url = 'https://github.com/golang/tools/'
     FileUtils.rm_rf(@git_dir)
     FileUtils.mkdir_p(@git_dir)

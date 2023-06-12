@@ -3,11 +3,10 @@ require 'package'
 class Boost < Package
   description 'Boost provides free peer-reviewed portable C++ source libraries.'
   homepage 'https://www.boost.org/'
-  @_ver = '1.81.0'
-  version @_ver
+  version '1.81.0'
   license 'Boost-1.0'
   compatibility 'all'
-  source_url "https://boostorg.jfrog.io/artifactory/main/release/#{@_ver}/source/boost_#{@_ver.gsub('.', '_')}.tar.bz2"
+  source_url "https://boostorg.jfrog.io/artifactory/main/release/#{version}/source/boost_#{version.gsub('.', '_')}.tar.bz2"
   source_sha256 '71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa'
 
   binary_url({

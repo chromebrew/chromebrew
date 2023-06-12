@@ -3,11 +3,10 @@ require 'package'
 class Gusb < Package
   description 'LibGUsb is a GObject wrapper for libusb1'
   homepage 'https://www.openhub.net/p/gusb'
-  @_ver = '0.3.5'
-  version @_ver
+  version '0.3.5'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://github.com/hughsie/libgusb/archive/#{@_ver}.tar.gz"
+  source_url "https://github.com/hughsie/libgusb/archive/#{version}.tar.gz"
   source_sha256 '188c7964422417d39b02a5c645e136b1389c80e38e7abfa911fc196b9c748f45'
 
   binary_url({

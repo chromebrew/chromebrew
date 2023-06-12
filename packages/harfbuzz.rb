@@ -4,12 +4,11 @@ require 'package'
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  @_ver = '7.1.0'
-  version @_ver
+  version '7.1.0'
   license 'Old-MIT, ISC and icu'
   compatibility 'all'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_armv7l/harfbuzz-7.1.0-chromeos-armv7l.tar.zst',

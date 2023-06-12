@@ -3,11 +3,11 @@ require 'package'
 class Elogind < Package
   description 'Standalone systemd-logind fork'
   homepage 'https://github.com/elogind/elogind'
-  @_ver = '246.10'
-  version "#{@_ver}-1"
+  version '246.10'
+  revision 1
   license 'CC0-1.0, LGPL-2.1+ and public-domain'
   compatibility 'all'
-  source_url "https://github.com/elogind/elogind/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/elogind/elogind/archive/v#{version}.tar.gz"
   source_sha256 'c490dc158c8f5bca8d00ecfcc7ad5af24d1c7b9e59990a0b3b1323996221a922'
 
   binary_url({
