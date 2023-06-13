@@ -4,10 +4,10 @@ require 'fileutils'
 module FileUtils
   class << self
     def glob_handler(*args, **opts)
-      path_index = __callee__.eql?(:install) ? 1 : 0
+      path_index = %i[chmod chmod_R install].include?(__callee__) ? 1 : 0
 
       # replace ~ to home directory
-      args[path_index][0] = Dir.home if first_arg[path_index][0] == '~'
+      args[path_index][0] = Dir.home if args[path_index][0] == '~'
 
       # parse glob
       args[path_index] = Dir[args[path_index]]
