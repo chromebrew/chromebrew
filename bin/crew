@@ -1067,6 +1067,29 @@ def compress_doc(dir)
   end
 end
 
+def determine_conflicts(dir, pkg)
+  conflicts = []
+  if File.file?("#{dir}/filelist")
+    if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+      puts 'Checking for conflicts with files from installed packages...'
+      conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
+      conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+      conflicts.reject!(&:empty?)
+    end
+  elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+    puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
+    conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
+    conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+    conflicts.reject!(&:empty?)
+  end
+  if conflicts.any?
+    puts 'There is a conflict with the same file in another package:'.orange
+    puts conflicts.to_s.orange
+  end
+  conflicts.map! { |x| x.to_s.partition(':').last}
+  return conflicts
+end
+
 def prepare_package(destdir)
   # Create the destdir if it does not exist to avoid having to have
   # this single line in no_compile_needed packages.
@@ -1137,12 +1160,8 @@ def prepare_package(destdir)
     end
 
     # check for conflicts with other installed files
-    puts 'Checking for conflicts with files from installed packages...'
-    conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
-    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-    conflicts.reject!(&:empty?)
-    unless conflicts.empty?
+    conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+    if conflicts.any?
       if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
         puts 'Warning: There is a conflict with the same file in another package.'.orange
       else
@@ -1677,6 +1696,9 @@ def remove(pkgName)
       FileUtils.ln(@canonicalized_file, "#{CREW_LIB_PREFIX}/#{file}", force: true)
     end
   end
+
+  conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+
   # if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
@@ -1690,8 +1712,14 @@ def remove(pkgName)
           puts "Removing #{line} will break crew. It was #{'NOT'.lightred} deleted." if @opt_verbose
         else
           puts "Removing file #{line}".lightred if @opt_verbose
-          puts "fileist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
-          FileUtils.rm_rf line if line.include?(CREW_PREFIX)
+          puts "filelist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
+          if line.start_with?(CREW_PREFIX)
+            if conflicts.include?(line)
+              puts "#{line} is in another package. It will not be removed during the removal of #{pkgName}".orange
+            else
+              FileUtils.rm_rf line
+            end
+          end
         end
       end
 
