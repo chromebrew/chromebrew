@@ -1072,7 +1072,7 @@ def determine_conflicts(dir, pkg)
   if File.file?("#{dir}/filelist")
     if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
       puts 'Checking for conflicts with files from installed packages...'
-      conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
+      conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
       conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
       conflicts.reject!(&:empty?)
     end
@@ -1082,7 +1082,6 @@ def determine_conflicts(dir, pkg)
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end
-  puts "removing #{pkg}".orange
   unless conflicts.empty?
     puts 'There is a conflict with the same file in another package:'.orange
     puts conflicts.to_s.orange
