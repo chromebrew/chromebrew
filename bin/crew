@@ -1082,7 +1082,7 @@ def determine_conflicts(dir, pkg)
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end
-  unless conflicts.empty?
+  if conflicts.any?
     puts 'There is a conflict with the same file in another package:'.orange
     puts conflicts.to_s.orange
   end
@@ -1160,8 +1160,8 @@ def prepare_package(destdir)
     end
 
     # check for conflicts with other installed files
-    conflicts = determine_conflicts(`pwd`.chomp, @pkg.name)
-    unless conflicts.empty?
+    conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+    if conflicts.any?
       if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
         puts 'Warning: There is a conflict with the same file in another package.'.orange
       else
@@ -1697,7 +1697,7 @@ def remove(pkgName)
     end
   end
 
-  conflicts = determine_conflicts(`pwd`.chomp, @pkg.name)
+  conflicts = determine_conflicts(Dir.pwd, @pkg.name)
 
   # if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
@@ -1713,7 +1713,7 @@ def remove(pkgName)
         else
           puts "Removing file #{line}".lightred if @opt_verbose
           puts "filelist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
-          if line.include?(CREW_PREFIX)
+          if line.start_with?(CREW_PREFIX)
             if conflicts.include?(line)
               puts "#{line} is in another package. It will not be removed during the removal of #{pkgName}".orange
             else
