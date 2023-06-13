@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.34.2'
+CREW_VERSION = '1.34.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -254,22 +254,24 @@ CREW_ENV_OPTIONS_HASH = if CREW_DISABLE_ENV_OPTIONS
                           { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
                         else
                           {
-                            'CFLAGS'   => CREW_COMMON_FLAGS,
-                            'CXXFLAGS' => CREW_COMMON_FLAGS,
-                            'FCFLAGS'  => CREW_COMMON_FLAGS,
-                            'FFLAGS'   => CREW_COMMON_FLAGS,
-                            'LDFLAGS'  => CREW_LDFLAGS
+                            'CFLAGS'          => CREW_COMMON_FLAGS,
+                            'CXXFLAGS'        => CREW_COMMON_FLAGS,
+                            'FCFLAGS'         => CREW_COMMON_FLAGS,
+                            'FFLAGS'          => CREW_COMMON_FLAGS,
+                            'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+                            'LDFLAGS'         => CREW_LDFLAGS
                           }
                         end
 # parse from hash to shell readable string
 CREW_ENV_OPTIONS = CREW_ENV_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
 
 CREW_ENV_FNO_LTO_OPTIONS_HASH = {
-  'CFLAGS'   => CREW_COMMON_FNO_LTO_FLAGS,
-  'CXXFLAGS' => CREW_COMMON_FNO_LTO_FLAGS,
-  'FCFLAGS'  => CREW_COMMON_FNO_LTO_FLAGS,
-  'FFLAGS'   => CREW_COMMON_FNO_LTO_FLAGS,
-  'LDFLAGS'  => CREW_FNO_LTO_LDFLAGS
+  'CFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
+  'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
+  'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
+  'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
+  'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+  'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
 CREW_ENV_FNO_LTO_OPTIONS = CREW_ENV_FNO_LTO_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
