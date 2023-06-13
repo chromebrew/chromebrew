@@ -1,5 +1,6 @@
 # fileutils_glob.rb: Add glob support to FileUtils
 require 'fileutils'
+require_relative 'const'
 
 module FileUtils
   class << self
@@ -7,7 +8,7 @@ module FileUtils
       path_index = %i[chmod chmod_R].include?(__callee__) ? 1 : 0
 
       # replace ~ to home directory
-      args[path_index][0] = Dir.home if args[path_index][0] == '~'
+      args[path_index][0] = HOME if args[path_index][0] == '~'
 
       # parse glob
       # use Dir.glob instead of Dir[] to support array
