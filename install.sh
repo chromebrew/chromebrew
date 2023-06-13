@@ -105,7 +105,8 @@ case "${ARCH}" in
   # x86_64 and aarch64 userspace
   # shellcheck disable=SC2046
   [ $(od -An -t x1 -j 4 -N 1  /bin/bash) == 02 ] && LIB_SUFFIX='64'
-  if [[ $LIB_SUFFIX == '64' ]] && { [[ $ARCH == 'armv7l' ]] || [[ $ARCH == 'armv8l' ]] || [[ $ARCH == 'aarch64' ]]; } ; then
+  # shellcheck disable=SC1083
+  if [[ $LIB_SUFFIX == '64' ]] && { [[ "$ARCH" =~ ^(armv7l|armv81|aarch64)$ ]] }; then
     echo_error "Your device is not supported by Chromebrew yet, installing as armv7l."
     LIB_SUFFIX=
     ARMV7LONAARCH64=1
