@@ -26,9 +26,7 @@ ARCH="${ARCH/armv8l/armv7l}"
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
-
-# i686 requires gcc and openssl
-[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc_lib"
+[ -x "${CREW_PREFIX}"/bin/xz ] && rm "${CREW_PREFIX}"/bin/xz # remove local xz if installed
 
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
@@ -91,7 +89,7 @@ function curl () {
   # here.
   for (( i = 0; i < 4; i++ )); do
     # force TLS as we know GitLab supports it
-    env -u LD_LIBRARY_PATH ${CURL} --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    env -u LD_LIBRARY_PATH "${CURL}" --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
@@ -108,14 +106,23 @@ case "${ARCH}" in
   # shellcheck disable=SC2046
   [ $(od -An -t x1 -j 4 -N 1  /bin/bash) == 02 ] && LIB_SUFFIX='64'
   if [[ $LIB_SUFFIX == '64' ]] && [[ $ARCH == 'aarch64' ]]; then
-    echo_error "Your device is not supported by Chromebrew yet :/"
-    exit 1
+    echo_error "Your device is not supported by Chromebrew yet, installing as armv7l."
+    LIB_SUFFIX=
+    ARMV7LONAARCH64=1
   fi
   ;;
 *)
   echo_error "Your device is not supported by Chromebrew yet :/"
   exit 1
   ;;
+esac
+
+# Older i686 systems.
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
+libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
+case ${libc_version} in
+  # Prepend the correct packages for M113 onwards systems.
+  "2.35") BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}";;
 esac
 
 echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
@@ -134,8 +141,8 @@ sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
 # Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro
 # if they exist.
-[ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
-[ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
+[ -L "${CREW_PREFIX}/var" ] && sudo rm -f "${CREW_PREFIX}/var"
+[ -L "${CREW_PREFIX}/local" ] && sudo rm -f "${CREW_PREFIX}/local"
 
 # Prepare directories.
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
@@ -312,7 +319,10 @@ echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall "${BOOTSTRAP_PACKAGES}"
+# shellcheck disable=SC2086
+# Do NOT quote BOOTSTRAP_PACKAGES, otherwise crew thinks the list of
+# packages passed to crew postinstall is a single package.
+crew postinstall ${BOOTSTRAP_PACKAGES}
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
@@ -328,8 +338,11 @@ else
   # by default. For more on why this setup might be useful see:
   # https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/
   # If using alternate branch don't use depth=1 .
-  [[ "$BRANCH" == "master" ]] && GIT_DEPTH="--depth=1" || GIT_DEPTH=
-  git clone "${GIT_DEPTH}" --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+  if [[ "$BRANCH" == "master" ]]; then
+    git clone --depth=1 --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+  else
+    git clone --filter=blob:none --no-checkout "https://github.com/${OWNER}/${REPO}.git" "${CREW_LIB_PATH}"
+  fi
 
   cd "${CREW_LIB_PATH}"
 
@@ -386,10 +399,18 @@ source ~/.bashrc"
 fi
 echo_intra "
 Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
-more is used by default
+most is used by default
 
 You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor default.
 
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
 echo_success "Chromebrew installed successfully and package lists updated."
+if [[ "$ARMV7LONAARCH64" == '1' ]]; then
+  echo_other "\n
+Since you have installed an armv7l Chromebrew on an aarch64 userspace
+system, you MUST run this command to complete your installation:
+"
+  echo "export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}"> "${CREW_PREFIX}/etc/env.d/00-library"
+  echo_info "source ~/.bashrc"
+fi

@@ -85,9 +85,9 @@ class Git < Package
   end
 
   def self.postinstall
-    puts 'Running git garbage collection...'.lightblue
-    Dir.chdir("#{CREW_PREFIX}/lib/crew") do
-      system 'git gc', exception: false
+    if File.directory?("#{CREW_PREFIX}/lib/crew/.git")
+      puts 'Running git garbage collection...'.lightblue
+      system 'git gc', chdir: "#{CREW_PREFIX}/lib/crew", exception: false
     end
   end
 end

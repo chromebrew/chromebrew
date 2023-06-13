@@ -13,7 +13,8 @@ class Buildessential < Package
   depends_on 'core'
 
   # install first to get ldconfig
-  depends_on 'glibc'
+  depends_on 'glibc_lib'
+  depends_on 'glibc_dev'
   depends_on 'gcc_dev'
   depends_on 'gmp'
   depends_on 'mpfr'
