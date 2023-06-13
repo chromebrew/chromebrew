@@ -28,9 +28,6 @@ BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
 [ -x "${CREW_PREFIX}"/bin/xz ] && rm "${CREW_PREFIX}"/bin/xz # remove local xz if installed
 
-# i686 requires gcc and openssl
-[ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc_lib"
-
 RED='\e[1;91m';    # Use Light Red for errors.
 YELLOW='\e[1;33m'; # Use Yellow for informational messages.
 GREEN='\e[1;32m';  # Use Green for success messages.
@@ -120,15 +117,11 @@ case "${ARCH}" in
   ;;
 esac
 
+# i686 requires gcc and openssl
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
-case "${libc_version}" in
-"2.35")
 # Prepend the correct packages for M113 onwards systems.
-BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}"
-  ;;
-*)
-  ;;
-esac
+[[ "${libc_version}" == "2.35" ]] && BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}"
 
 echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
 echo_info "This may take a while if there are preexisting files in ${CREW_PREFIX}...\n"
