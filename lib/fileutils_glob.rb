@@ -10,7 +10,8 @@ module FileUtils
       args[path_index][0] = Dir.home if args[path_index][0] == '~'
 
       # parse glob
-      args[path_index] = Dir[args[path_index]]
+      # use Dir.glob instead of Dir[] to support array
+      args[path_index] = Dir.glob(args[path_index])
 
       # call original method with resolved glob
       send("orig_#{__callee__}", *args, **opts)
