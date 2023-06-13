@@ -44,7 +44,7 @@ class Balena_etcher < Package
   def self.install
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share/balena-etcher]
     FileUtils.install 'etcher.sh', "#{CREW_DEST_PREFIX}/bin/etcher", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/balena-etcher"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/balena-etcher"
   end
 
   def self.postinstall

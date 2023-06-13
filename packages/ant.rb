@@ -44,8 +44,7 @@ class Ant < Package
     end
 
     # Remove Windows executables.
-    FileUtils.rm Dir["#{CREW_DEST_PREFIX}/jre/bin/*.bat"]
-    FileUtils.rm Dir["#{CREW_DEST_PREFIX}/jre/bin/*.cmd"]
+    FileUtils.rm "#{CREW_DEST_PREFIX}/jre/bin/*.{bat,cmd}"
 
     # Add environment variables.
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"

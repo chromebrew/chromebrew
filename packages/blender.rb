@@ -14,7 +14,7 @@ class Blender < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/blender"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/blender"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/blender"
     FileUtils.ln_s "#{CREW_PREFIX}/share/blender/blender", "#{CREW_DEST_PREFIX}/bin/blender"
   end
 

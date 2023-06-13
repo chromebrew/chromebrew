@@ -581,7 +581,7 @@ end
 def updatefiles
   puts 'Rebuilding crew files cache...'.yellow
   if File.writable?(CREW_MANIFEST_CACHE_DIR)
-    FileUtils.rm_rf Dir["#{CREW_MANIFEST_CACHE_DIR}/chromebrew-*"]
+    FileUtils.rm_rf "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-*"
     Dir.chdir CREW_MANIFEST_CACHE_DIR do
       if ENV['CREW_TESTING'] == '1'
         system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
@@ -1014,7 +1014,7 @@ def build_and_preconfigure(target_dir)
     end
     @pkg.in_build = false
     # wipe crew destdir
-    FileUtils.rm_rf Dir["#{CREW_DEST_DIR}/*"], verbose: @fileutils_verbose
+    FileUtils.rm_rf "#{CREW_DEST_DIR}/*", verbose: @fileutils_verbose
     puts 'Preconfiguring package...'
     cache_build if CREW_CACHE_BUILD
     @pkg.install
@@ -1091,17 +1091,17 @@ def prepare_package(destdir)
     if File.exist?("#{CREW_DEST_PREFIX}/man")
       puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
       FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
-      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
+      FileUtils.mv "#{CREW_DEST_PREFIX}/man/*", "#{CREW_DEST_MAN_PREFIX}/"
       Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
     end
     if File.exist?("#{CREW_DEST_PREFIX}/info")
       puts "Files in #{CREW_PREFIX}/info will be moved to #{CREW_PREFIX}/share/info.".orange
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/info/"
-      FileUtils.mv Dir["#{CREW_DEST_PREFIX}/info/*"], "#{CREW_DEST_PREFIX}/share/info/"
+      FileUtils.mv "#{CREW_DEST_PREFIX}/info/*", "#{CREW_DEST_PREFIX}/share/info/"
       Dir.rmdir "#{CREW_DEST_PREFIX}/info" if Dir.empty?("#{CREW_DEST_PREFIX}/info")
     end
     # Remove the "share/info/dir.*" file since it causes conflicts.
-    FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/info/dir*"
     compress_doc CREW_DEST_MAN_PREFIX.to_s
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
@@ -1427,7 +1427,7 @@ def resolve_dependencies_and_install
   ensure
     # cleanup
     unless @opt_keep
-      FileUtils.rm_rf Dir["#{CREW_BREW_DIR}/*"]
+      FileUtils.rm_rf "#{CREW_BREW_DIR}/*"
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" # this is a little ugly, feel free to find a better way
     end
   end
@@ -1588,7 +1588,7 @@ def resolve_dependencies_and_build
   ensure
     # cleanup
     unless @opt_keep
-      FileUtils.rm_rf Dir["#{CREW_BREW_DIR}/*"], verbose: @fileutils_verbose
+      FileUtils.rm_rf "#{CREW_BREW_DIR}/*", verbose: @fileutils_verbose
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest", verbose: @fileutils_verbose # this is a little ugly, feel free to find a better way
     end
   end
@@ -1705,7 +1705,7 @@ def remove(pkgName)
       end
 
       # remove the file and directory list
-      FileUtils.rm_f Dir["meta/#{pkgName}.{file,directory}list"]
+      FileUtils.rm_f "meta/#{pkgName}.{file,directory}list"
     end
   end
 

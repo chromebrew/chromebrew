@@ -19,6 +19,6 @@ class Atom < Package
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
-    FileUtils.mv Dir['*'], CREW_DEST_PREFIX
+    FileUtils.mv '*', CREW_DEST_PREFIX
   end
 end
