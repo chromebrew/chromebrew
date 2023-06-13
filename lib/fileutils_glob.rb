@@ -11,13 +11,8 @@ module FileUtils
 
       # parse glob
       # use Dir.glob instead of Dir[] to support array
-      glob_result = Dir.glob(args[path_index])
-
-      if glob_result.empty?
-        abort "No such file or directory: #{args[path_index]}".red
-      elsif glob_result.size > 1
-        args[path_index] = glob_result
-      end
+      glob_result      = Dir.glob(args[path_index])
+      args[path_index] = glob_result if glob_result.size > 1
 
       # call original method with resolved glob
       send("orig_#{__callee__}", *args, **opts)
