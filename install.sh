@@ -404,16 +404,6 @@ echo 'export PATH=\"\${CREW_PREFIX}/bin:\${CREW_PREFIX}/sbin:\${PATH}\"' >> ~/.b
 echo 'export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}' >> ~/.bashrc
 source ~/.bashrc"
 fi
-if [[ "$ARMV7LONAARCH64" == '1' ]]; then
-  echo_info "\n
-Since you have installed an armv7l Chromebrew on an aarch64 userspace
-system, you need to run these commands to complete your installation:
-"
-
-  echo_info "
-echo -e '\\\nexport LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
-source ~/.bashrc"
-fi
 echo_intra "
 Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
 most is used by default
@@ -423,3 +413,13 @@ You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor d
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
 echo_success "Chromebrew installed successfully and package lists updated."
+if [[ "$ARMV7LONAARCH64" == '1' ]]; then
+  echo_other "\n
+Since you have installed an armv7l Chromebrew on an aarch64 userspace
+system, you MUST run these commands to complete your installation:
+"
+
+  echo_info "
+echo -e '\\\nexport LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
+source ~/.bashrc"
+fi
