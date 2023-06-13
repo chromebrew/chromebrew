@@ -44,7 +44,7 @@ class Crew_profile_base < Package
     ['.bashrc', '.zshrc'].each do |rc|
       rc_path = File.join(HOME, rc)
 
-      next unless File.exist?(rc_path)
+      # next unless File.exist?(rc_path)
 
       rc_file = File.readlines(rc_path, chomp: true)
 
