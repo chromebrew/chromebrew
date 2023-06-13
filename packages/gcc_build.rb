@@ -235,7 +235,7 @@ class Gcc_build < Package
       # The installation stage puts some files used by gdb under the /usr/local/lib(64) directory.
       # This generates spurious error messages when performing ldconfig. This command moves the files to another location.
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib"
-      FileUtils.mv Dir["#{CREW_DEST_LIB_PREFIX}/*gdb.py"], "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib/"
+      FileUtils.mv "#{CREW_DEST_LIB_PREFIX}/*gdb.py", "#{CREW_DEST_PREFIX}/share/gdb/auto-load/usr/lib/"
 
       system make_env, "make DESTDIR=#{CREW_DEST_DIR} install-fixincludes"
       system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-mkheaders"

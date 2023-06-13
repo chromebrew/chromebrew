@@ -102,7 +102,7 @@ class Containers_common < Package
     Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
       FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/seccomp.json", 'seccomp.json'
     end
-    FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+    FileUtils.install 'docs/*.5', "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
 
     Dir.chdir 'git' do
       Dir.chdir 'image' do
@@ -130,11 +130,11 @@ class Containers_common < Package
         Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
           FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/registries.conf", 'registries.conf'
         end
-        FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
-        FileUtils.install Dir['docs/man5/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+        FileUtils.install 'docs/*.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+        FileUtils.install 'docs/man5/*.5', "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
       Dir.chdir 'podman' do
-        FileUtils.install Dir['*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+        FileUtils.install '*.5', "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
 
       Dir.chdir 'shortnames' do
@@ -158,8 +158,8 @@ class Containers_common < Package
         Dir.chdir "#{CREW_DEST_PREFIX}/.config/containers/" do
           FileUtils.ln_s "#{CREW_PREFIX}/etc/containers/storage.conf", 'storage.conf'
         end
-        FileUtils.install Dir['docs/*.1'], "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
-        FileUtils.install Dir['docs/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+        FileUtils.install 'docs/*.1', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+        FileUtils.install 'docs/*.5', "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
       end
     end
   end

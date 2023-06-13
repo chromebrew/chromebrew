@@ -34,6 +34,6 @@ class Cni_plugins < Package
 
   def self.install
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/libexec/cni #{CREW_DEST_PREFIX}/etc/cni/net.d]
-    FileUtils.install Dir['bin/*'], "#{CREW_DEST_PREFIX}/libexec/cni/", mode: 0o755
+    FileUtils.install 'bin/*', "#{CREW_DEST_PREFIX}/libexec/cni/", mode: 0o755
   end
 end

@@ -214,7 +214,7 @@ class Docbook_xml50 < Package
 
     %w[dtd rng sch xsd].each do |type|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
-      FileUtils.cp Dir["#{type}/*"], "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
+      FileUtils.cp "#{type}/*", "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
     end
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

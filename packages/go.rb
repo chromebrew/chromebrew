@@ -24,7 +24,7 @@ class Go < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/go"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/go"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/go"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/go", "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/share/go/bin/gofmt", "#{CREW_DEST_PREFIX}/bin"
   end

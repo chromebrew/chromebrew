@@ -11,6 +11,6 @@ class Uthash < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/"
-    FileUtils.cp_r Dir['./src/*'], "#{CREW_DEST_PREFIX}/include/"
+    FileUtils.cp_r './src/*', "#{CREW_DEST_PREFIX}/include/"
   end
 end

@@ -83,7 +83,7 @@ class Ghostscript < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system "make soinstall DESTDIR=#{CREW_DEST_DIR}" # Install libgs
-    FileUtils.cp_r Dir['./base/*.h'], "#{CREW_DEST_PREFIX}/include/ghostscript"
+    FileUtils.cp_r './base/*.h', "#{CREW_DEST_PREFIX}/include/ghostscript"
     FileUtils.ln_sf 'ghostscript', "#{CREW_DEST_PREFIX}/include/ps"
   end
 end

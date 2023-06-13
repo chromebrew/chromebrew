@@ -24,7 +24,7 @@ class Upm < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/upm"
-    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/upm"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/upm"
     FileUtils.install 'upm', "#{CREW_DEST_PREFIX}/bin/upm", mode: 0o755
   end
 end

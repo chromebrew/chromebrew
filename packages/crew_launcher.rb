@@ -21,7 +21,7 @@ class Crew_launcher < Package
       "#{CREW_DEST_PREFIX}/etc/env.d/"
     ]
 
-    FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/crew-launcher/"
+    FileUtils.cp_r '*', "#{CREW_DEST_PREFIX}/share/crew-launcher/"
     Dir.chdir "#{CREW_DEST_PREFIX}/share/crew-launcher/lib" do
       FileUtils.ln_s '../../../lib/crew/lib/color.rb', 'color.rb'
     end

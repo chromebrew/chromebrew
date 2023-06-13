@@ -22,7 +22,7 @@ class Exodus < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Exodus-linux-x64"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/Exodus-linux-x64"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/Exodus-linux-x64"
     FileUtils.ln_s "#{CREW_PREFIX}/share/Exodus-linux-x64/Exodus", "#{CREW_DEST_PREFIX}/bin/exodus"
   end
 

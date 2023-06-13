@@ -38,6 +38,6 @@ class Crosvm < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.install 'target/release/crosvm', "#{CREW_DEST_PREFIX}/bin/crosvm", mode: 0o755
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/policy/crosvm/"
-    FileUtils.cp_r Dir["seccomp/#{ARCH}/*"], "#{CREW_DEST_PREFIX}/share/policy/crosvm/" if ARCH == 'x86_64'
+    FileUtils.cp_r "seccomp/#{ARCH}/*", "#{CREW_DEST_PREFIX}/share/policy/crosvm/" if ARCH == 'x86_64'
   end
 end

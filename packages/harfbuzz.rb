@@ -81,9 +81,9 @@ class Harfbuzz < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     # The following are included the libpng package.
-    FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/libpng*"]
-    FileUtils.rm Dir["#{CREW_DEST_PREFIX}/include/libpng16/png*"]
-    FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/pkgconfig/libpng*"]
+    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libpng*"
+    FileUtils.rm "#{CREW_DEST_PREFIX}/include/libpng16/png*"
+    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/pkgconfig/libpng*"
     # Create libtool file. Needed by handbrake build
     return if File.file?("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la")
 

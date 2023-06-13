@@ -33,7 +33,7 @@ class Krita < Package
     FileUtils.cp_r 'usr/share', CREW_DEST_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/krita"
     FileUtils.install 'krita.sh', "#{CREW_DEST_PREFIX}/bin/krita", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/krita"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/krita"
   end
 
   def self.postinstall

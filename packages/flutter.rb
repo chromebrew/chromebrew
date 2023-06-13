@@ -21,7 +21,7 @@ class Flutter < Package
     FileUtils.mkdir_p CREW_DEST_HOME
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/flutter"
-    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/flutter"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/flutter"
     FileUtils.touch "#{CREW_DEST_HOME}/.flutter_tool_state"
     FileUtils.ln_sf "#{CREW_PREFIX}/share/flutter/bin/dart", "#{CREW_DEST_PREFIX}/bin/dart" unless File.exist? "#{CREW_PREFIX}/bin/dart"
     FileUtils.ln_sf "#{CREW_PREFIX}/share/flutter/bin/flutter", "#{CREW_DEST_PREFIX}/bin/flutter"

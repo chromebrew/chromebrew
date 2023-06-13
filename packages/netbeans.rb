@@ -18,8 +18,8 @@ class Netbeans < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/netbeans"
-    FileUtils.rm Dir['bin/*.exe']
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/netbeans"
+    FileUtils.rm 'bin/*.exe'
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/netbeans"
     FileUtils.ln_s "#{CREW_PREFIX}/share/netbeans/bin/netbeans", "#{CREW_DEST_PREFIX}/bin/netbeans"
   end
 

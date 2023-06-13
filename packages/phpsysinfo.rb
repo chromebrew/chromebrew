@@ -14,7 +14,7 @@ class Phpsysinfo < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/phpsysinfo"
     FileUtils.cp 'phpsysinfo.ini.new', 'phpsysinfo.ini'
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/phpsysinfo/"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/phpsysinfo/"
   end
 
   def self.postinstall

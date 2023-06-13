@@ -101,7 +101,7 @@ class Docbook_xml51 < Package
 
     %w[rng sch].each do |type|
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
-      FileUtils.cp Dir["schemas/#{type}/*"], "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
+      FileUtils.cp "schemas/#{type}/*", "#{CREW_DEST_PREFIX}/share/xml/docbook/schema/#{type}/#{@_ver}/"
     end
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

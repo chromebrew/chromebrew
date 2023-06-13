@@ -42,7 +42,7 @@ class Openjdk8 < Package
     FileUtils.mv 'include/', CREW_DEST_PREFIX
     FileUtils.mv 'jre/', CREW_DEST_PREFIX
     FileUtils.mv 'lib/', CREW_DEST_PREFIX
-    FileUtils.mv Dir['man/*'], CREW_DEST_MAN_PREFIX
+    FileUtils.mv 'man/*', CREW_DEST_MAN_PREFIX
 
     # Make sure symlinks to all binaries exist.
     Dir["#{CREW_DEST_PREFIX}/bin/*"].each do |bin|

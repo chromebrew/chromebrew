@@ -33,7 +33,7 @@ class Ferdi < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.mv 'ferdi.desktop', "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.install 'ferdi.sh', "#{CREW_DEST_PREFIX}/bin/ferdi", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/ferdi"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/ferdi"
   end
 
   def self.postinstall

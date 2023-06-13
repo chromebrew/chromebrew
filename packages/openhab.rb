@@ -27,7 +27,7 @@ class Openhab < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/openhab"
     FileUtils.install 'openhab.sh', "#{CREW_DEST_PREFIX}/bin/openhab", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/openhab"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/openhab"
   end
 
   def self.postinstall

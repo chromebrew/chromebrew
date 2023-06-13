@@ -20,7 +20,7 @@ class Mysql < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/mysql"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.mv 'man/', "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/mysql"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/mysql"
     Dir["#{CREW_DEST_PREFIX}/mysql/bin/*"].map do |f|
       f.sub!(CREW_DEST_DIR.to_s, '')
       FileUtils.ln_s f, "#{CREW_DEST_PREFIX}/bin/"

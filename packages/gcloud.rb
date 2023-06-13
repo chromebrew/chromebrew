@@ -33,7 +33,7 @@ class Gcloud < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/gcloud"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/gcloud"
-    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/gcloud"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/gcloud"
     FileUtils.cd "#{CREW_DEST_PREFIX}/share/gcloud" do
       system "./install.sh \
               --usage-reporting false \

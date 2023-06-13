@@ -32,7 +32,7 @@ class Github_desktop < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/github_desktop"
     FileUtils.install 'github-desktop.sh', "#{CREW_DEST_PREFIX}/bin/github-desktop", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/github_desktop"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/github_desktop"
   end
 
   def self.postinstall

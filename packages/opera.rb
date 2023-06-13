@@ -33,7 +33,7 @@ class Opera < Package
     FileUtils.rm_rf 'lib/'
 
     FileUtils.mkdir_p CREW_DEST_PREFIX
-    FileUtils.mv Dir['*'], CREW_DEST_PREFIX
+    FileUtils.mv '*', CREW_DEST_PREFIX
   end
 
   def self.postinstall

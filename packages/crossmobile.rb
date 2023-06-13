@@ -27,7 +27,7 @@ class Crossmobile < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/crossmobile"
     FileUtils.install 'crossmobile.sh', "#{CREW_DEST_PREFIX}/bin/crossmobile", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/crossmobile"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/crossmobile"
   end
 
   def self.postinstall

@@ -19,7 +19,7 @@ class Ldc < Package
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
-    FileUtils.rm Dir['lib/*.o', 'lib/*.a']
+    FileUtils.rm 'lib/*.o', 'lib/*.a'
     Dir['lib/*'].each do |lib|
       FileUtils.install lib, CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
     end

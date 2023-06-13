@@ -59,7 +59,7 @@ class Jdk17 < Package
     FileUtils.mkdir_p [jdk_dir, File.join(CREW_DEST_PREFIX, 'bin'), CREW_DEST_MAN_PREFIX]
 
     FileUtils.rm_f 'lib/src.zip'
-    FileUtils.cp_r Dir['*'], jdk_dir
+    FileUtils.cp_r '*', jdk_dir
 
     Dir[File.join(jdk_dir, 'bin', '*')].each do |path|
       filename = File.basename(path)

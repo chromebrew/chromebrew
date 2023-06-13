@@ -25,7 +25,7 @@ class Idea < Package
     FileUtils.touch "#{CREW_DEST_PREFIX}/.config/.IdeaIC2022.3/test"
     FileUtils.ln_s "#{CREW_PREFIX}/.config/.IdeaIC2022.3", "#{CREW_DEST_HOME}/.IdeaIC2022.3"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/Idea"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/Idea"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/Idea"
     FileUtils.ln_s "#{CREW_PREFIX}/share/Idea/bin/idea.sh", "#{CREW_DEST_PREFIX}/bin/idea"
   end
 

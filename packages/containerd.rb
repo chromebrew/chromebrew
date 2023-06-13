@@ -149,7 +149,7 @@ class Containerd < Package
     FileUtils.install 'config.toml', "#{CREW_DEST_PREFIX}/etc/containerd/config.toml", mode: 0o644
     FileUtils.install 'config.toml', "#{CREW_DEST_PREFIX}/etc/containerd/debug.toml", mode: 0o644
     FileUtils.install 'containerd.service', "#{CREW_DEST_PREFIX}/.config/systemd/user/containerd.service", mode: 0o644
-    FileUtils.install Dir['man/*.5'], "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
-    FileUtils.install Dir['man/*.8'], "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
+    FileUtils.install 'man/*.5', "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+    FileUtils.install 'man/*.8', "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
   end
 end

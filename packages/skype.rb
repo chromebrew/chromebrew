@@ -17,7 +17,7 @@ class Skype < Package
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.ln_s './skypeforlinux', 'usr/bin/skype'
-    FileUtils.mv Dir['usr/*'], CREW_DEST_PREFIX
+    FileUtils.mv 'usr/*', CREW_DEST_PREFIX
   end
 
   def self.postinstall

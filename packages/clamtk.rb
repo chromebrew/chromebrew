@@ -65,7 +65,7 @@ class Clamtk < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/perl5/vendor_perl/ClamTk"
-    FileUtils.mv Dir['lib/*.pm'], "#{CREW_DEST_PREFIX}/share/perl5/vendor_perl/ClamTk"
+    FileUtils.mv 'lib/*.pm', "#{CREW_DEST_PREFIX}/share/perl5/vendor_perl/ClamTk"
     FileUtils.install 'clamtk.sh', "#{CREW_DEST_PREFIX}/bin/clamtk", mode: 0o755
     FileUtils.install 'clamtk', "#{CREW_DEST_PREFIX}/bin/clamtk.pl", mode: 0o755
   end

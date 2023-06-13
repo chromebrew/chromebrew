@@ -25,7 +25,7 @@ class Crew_profile_base < Package
       FileUtils.rm "./src/env.d/#{custom_files}" if File.exist?("#{CREW_PREFIX}/etc/env.d/#{custom_files}")
     end
 
-    FileUtils.cp_r Dir['./src/*'], "#{CREW_DEST_PREFIX}/etc/"
+    FileUtils.cp_r './src/*', "#{CREW_DEST_PREFIX}/etc/"
   end
 
   def self.postinstall

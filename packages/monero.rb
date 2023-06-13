@@ -21,7 +21,7 @@ class Monero < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/monero"
-    FileUtils.mv Dir['monero*'], "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.mv 'monero*', "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mv 'LICENSE', "#{CREW_DEST_PREFIX}/share/monero"
   end
 end

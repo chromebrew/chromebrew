@@ -41,7 +41,7 @@ class Vuze < Package
     FileUtils.install 'vuze.sh', "#{CREW_DEST_PREFIX}/bin/vuze", mode: 0o755
     FileUtils.rm 'vuze.sh'
     FileUtils.cp_r 'plugins', "#{CREW_DEST_HOME}/.azureus"
-    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/vuze"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/vuze"
     libraries = ['libswt-gtk-4716.so',
                  'libswt-atk-gtk-4716.so',
                  'libswt-cairo-gtk-4716.so',
@@ -50,7 +50,7 @@ class Vuze < Package
                  'libswt-webkit-gtk-4716.so']
     libraries.each do |_lib|
       system './vuze'
-      FileUtils.cp Dir["#{HOME}/.swt/lib/linux/x86_64/libswt-*"], "#{CREW_DEST_PREFIX}/share/vuze"
+      FileUtils.cp "#{HOME}/.swt/lib/linux/x86_64/libswt-*", "#{CREW_DEST_PREFIX}/share/vuze"
     end
   end
 

@@ -24,7 +24,7 @@ class Pycharm < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/PyCharm"
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/PyCharm"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/PyCharm"
     FileUtils.ln_s "#{CREW_PREFIX}/share/PyCharm/bin/pycharm.sh", "#{CREW_DEST_PREFIX}/bin/pycharm"
   end
 

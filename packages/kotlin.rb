@@ -16,7 +16,7 @@ class Kotlin < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/kotlin"
-    FileUtils.rm_f Dir['bin/*.bat']
+    FileUtils.rm_f 'bin/*.bat'
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/kotlin"
     Dir["#{CREW_DEST_PREFIX}/share/kotlin/bin/*"].each do |path|
       file = File.basename(path)

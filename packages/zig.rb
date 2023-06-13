@@ -21,7 +21,7 @@ class Zig < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/zig"
-    FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/zig"
+    FileUtils.cp_r '*', "#{CREW_DEST_PREFIX}/share/zig"
     FileUtils.ln_s "#{CREW_PREFIX}/share/zig/zig", "#{CREW_DEST_PREFIX}/bin/zig"
   end
 

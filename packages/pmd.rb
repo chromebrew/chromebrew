@@ -32,7 +32,7 @@ class Pmd < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/pmd"
-    FileUtils.rm Dir['bin/*.bat']
+    FileUtils.rm 'bin/*.bat'
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/pmd"
     FileUtils.install %w[cpd pmd], "#{CREW_DEST_PREFIX}/bin", mode: 0o755
   end

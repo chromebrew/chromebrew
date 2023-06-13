@@ -18,7 +18,7 @@ class Nvm < Package
     system "sed -i 's,$(nvm_detect_profile),#{CREW_DEST_PREFIX}/etc/bash.d/10-nvm.sh,' install.sh"
     system "NVM_DIR=#{CREW_DEST_PREFIX}/share/nvm && bash install.sh"
     system "sed -i 's,#{CREW_DEST_PREFIX},#{CREW_PREFIX},' #{CREW_DEST_PREFIX}/etc/bash.d/10-nvm.sh"
-    FileUtils.rm_rf Dir["#{CREW_DEST_PREFIX}/share/nvm/.git*"]
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/share/nvm/.git*"
     FileUtils.rm_rf "#{CREW_DEST_PREFIX}/share/nvm/test"
   end
 

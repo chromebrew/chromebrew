@@ -27,7 +27,7 @@ class Cpu_x < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/cpu-x"
     FileUtils.install 'cpu-x.sh', "#{CREW_DEST_PREFIX}/bin/cpu-x", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/cpu-x"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/cpu-x"
   end
 
   def self.postinstall

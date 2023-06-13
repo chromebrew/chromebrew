@@ -16,7 +16,7 @@ class Maven < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/apache-maven"
-    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/apache-maven"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/apache-maven"
     FileUtils.ln_s "#{CREW_PREFIX}/share/apache-maven/bin/mvn", "#{CREW_DEST_PREFIX}/bin"
   end
 end

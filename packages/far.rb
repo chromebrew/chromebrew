@@ -25,7 +25,7 @@ class Far < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/far"
-    FileUtils.cp_r Dir['.'], "#{CREW_DEST_PREFIX}/share/far"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/far"
     FileUtils.install 'far', "#{CREW_DEST_PREFIX}/bin/far", mode: 0o755
   end
 end

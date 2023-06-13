@@ -34,7 +34,7 @@ class Udeler < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.mv 'udeler.desktop', "#{CREW_DEST_PREFIX}/share/applications"
     FileUtils.install 'udeler.sh', "#{CREW_DEST_PREFIX}/bin/udeler", mode: 0o755
-    FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/udeler"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/udeler"
   end
 
   def self.postinstall

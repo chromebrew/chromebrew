@@ -75,7 +75,7 @@ class Libtinfo < Package
     # Save only the libtinfo libraries.
     FileUtils.rm_rf CREW_DEST_PREFIX
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-    FileUtils.mv Dir['ncurses_build/lib/libtinfo.so.5*'], CREW_DEST_LIB_PREFIX
-    FileUtils.mv Dir['ncursesw_build/lib/libtinfow.so.5*'], CREW_DEST_LIB_PREFIX
+    FileUtils.mv 'ncurses_build/lib/libtinfo.so.5*', CREW_DEST_LIB_PREFIX
+    FileUtils.mv 'ncursesw_build/lib/libtinfow.so.5*', CREW_DEST_LIB_PREFIX
   end
 end

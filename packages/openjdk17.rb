@@ -43,6 +43,6 @@ class Openjdk17 < Package
     FileUtils.mv 'jmods/', "#{CREW_DEST_PREFIX}/share/openjdk17"
     FileUtils.mv 'include/', CREW_DEST_PREFIX
     FileUtils.mv 'lib/', CREW_DEST_PREFIX
-    FileUtils.mv Dir['man/*'], CREW_DEST_MAN_PREFIX
+    FileUtils.mv 'man/*', CREW_DEST_MAN_PREFIX
   end
 end

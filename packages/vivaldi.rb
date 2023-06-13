@@ -39,7 +39,7 @@ class Vivaldi < Package
     FileUtils.mkdir_p CREW_DEST_PREFIX
 
     FileUtils.mv './etc/', CREW_DEST_PREFIX
-    FileUtils.mv Dir['./usr/*'], CREW_DEST_PREFIX
+    FileUtils.mv './usr/*', CREW_DEST_PREFIX
     FileUtils.mv './opt/vivaldi/', "#{CREW_DEST_PREFIX}/share/"
 
     FileUtils.ln_sf "#{CREW_PREFIX}/share/vivaldi/vivaldi", "#{CREW_DEST_PREFIX}/bin/vivaldi-stable"
