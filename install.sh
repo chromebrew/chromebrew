@@ -117,10 +117,10 @@ case "${ARCH}" in
   ;;
 esac
 
+# Older i686 systems.
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
 case ${libc_version} in
-  # Older i686 systems.
-  "2.27") BOOTSTRAP_PACKAGES+=" gcc_lib";;
   # Prepend the correct packages for M113 onwards systems.
   "2.35") BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}";;
 esac
