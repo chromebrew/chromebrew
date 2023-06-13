@@ -146,8 +146,8 @@ sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
 # Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro
 # if they exist.
-[ -L "${CREW_PREFIX}"/var ] && sudo rm -f "${CREW_PREFIX}/var"
-[ -L "${CREW_PREFIX}"/local ] && sudo rm -f "${CREW_PREFIX}/local"
+[ -L "${CREW_PREFIX}/var" ] && sudo rm -f "${CREW_PREFIX}/var"
+[ -L "${CREW_PREFIX}/local" ] && sudo rm -f "${CREW_PREFIX}/local"
 
 # Prepare directories.
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
