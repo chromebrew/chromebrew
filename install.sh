@@ -26,7 +26,7 @@ ARCH="${ARCH/armv8l/armv7l}"
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
-[ -x ${CREW_PREFIX}/bin/xz ] && rm ${CREW_PREFIX}/bin/xz # remove local xz if installed
+[ -x "${CREW_PREFIX}"/bin/xz ] && rm "${CREW_PREFIX}"/bin/xz # remove local xz if installed
 
 # i686 requires gcc and openssl
 [ "${ARCH}" == "i686" ] && BOOTSTRAP_PACKAGES+=" gcc_lib"
@@ -92,7 +92,7 @@ function curl () {
   # here.
   for (( i = 0; i < 4; i++ )); do
     # force TLS as we know GitLab supports it
-    env -u LD_LIBRARY_PATH ${CURL} --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    env -u LD_LIBRARY_PATH "${CURL}" --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
     echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
@@ -120,7 +120,7 @@ case "${ARCH}" in
   ;;
 esac
 
-libc_version=$(/lib$LIB_SUFFIX/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
+libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
 case "${libc_version}" in
 "2.23"|"2.27"|"2.32"|"2.33")
   ;;
@@ -148,8 +148,8 @@ sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 
 # Delete ${CREW_PREFIX}/{var,local} symlinks on some Chromium OS distro
 # if they exist.
-[ -L ${CREW_PREFIX}/var ] && sudo rm -f "${CREW_PREFIX}/var"
-[ -L ${CREW_PREFIX}/local ] && sudo rm -f "${CREW_PREFIX}/local"
+[ -L "${CREW_PREFIX}"/var ] && sudo rm -f "${CREW_PREFIX}/var"
+[ -L "${CREW_PREFIX}"/local ] && sudo rm -f "${CREW_PREFIX}/local"
 
 # Prepare directories.
 for dir in "${CREW_CONFIG_PATH}/meta" "${CREW_DEST_DIR}" "${CREW_PACKAGES_PATH}" "${CREW_CACHE_DIR}" ; do
