@@ -407,10 +407,8 @@ echo_success "Chromebrew installed successfully and package lists updated."
 if [[ "$ARMV7LONAARCH64" == '1' ]]; then
   echo_other "\n
 Since you have installed an armv7l Chromebrew on an aarch64 userspace
-system, you MUST run these commands to complete your installation:
+system, you MUST run this command to complete your installation:
 "
-
-  echo_info "
-echo -e '\\\nexport LD_LIBRARY_PATH=${CREW_PREFIX}/lib' >> ~/.bashrc
-source ~/.bashrc"
+  echo "export LD_LIBRARY_PATH=${CREW_PREFIX}/lib${LIB_SUFFIX}"> "${CREW_PREFIX}/etc/env.d/00-library"
+  echo_info "source ~/.bashrc"
 fi
