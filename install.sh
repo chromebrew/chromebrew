@@ -122,8 +122,6 @@ esac
 
 libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
 case "${libc_version}" in
-"2.23"|"2.27"|"2.32"|"2.33")
-  ;;
 "2.35")
 # Prepend the correct packages for M113 onwards systems.
 BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}"
