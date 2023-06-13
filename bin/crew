@@ -1072,7 +1072,6 @@ def determine_conflicts(dir, pkg)
   if File.file?("#{dir}/filelist")
     if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
       puts 'Checking for conflicts with files from installed packages...'
-      puts "#{CREW_META_PATH}#{pkg}.filelist found"
       conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
       conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
       conflicts.reject!(&:empty?)
@@ -1080,13 +1079,14 @@ def determine_conflicts(dir, pkg)
   elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
     puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
     conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
-      # conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end
   puts "removing #{pkg}".orange
-  puts 'There is a conflict with the same file in another package:'.lightred unless conflicts.empty?
-  puts conflicts.to_s.orange
+  unless conflicts.empty?
+    puts 'There is a conflict with the same file in another package:'.orange
+    puts conflicts.to_s.orange
+  end
   conflicts.map! { |x| x.to_s.partition(':').last}
   return conflicts
 end
