@@ -25,7 +25,7 @@ class Pax_utils < Package
   depends_on 'glibc' # R
   depends_on 'libcap' # R
   depends_on 'libseccomp' => :build
-  depends_on 'py3_pyelftools' => :build
+  depends_on 'py3_pyelftools' # R
   depends_on 'python3' # L
   depends_on 'xmlto' => :build
 
