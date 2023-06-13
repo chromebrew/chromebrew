@@ -326,7 +326,9 @@ echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-# Do NOT quote BOOTSTRAP_PACKAGES.
+# shellcheck disable=SC2086
+# Do NOT quote BOOTSTRAP_PACKAGES, otherwise crew thinks the list of
+# packages passed to crew postinstall is a single package.
 crew postinstall ${BOOTSTRAP_PACKAGES}
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
