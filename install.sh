@@ -24,7 +24,7 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
-BOOTSTRAP_PACKAGES="glibc_lib crew_mvdir pixz ca_certificates zlibpkg gmp ruby openssl"
+BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
 [ -x ${CREW_PREFIX}/bin/xz ] && rm ${CREW_PREFIX}/bin/xz # remove local xz if installed
 
@@ -101,11 +101,7 @@ function curl () {
 }
 
 case "${ARCH}" in
-"i686")
-  echo_error "Installs on i686 devices are no longer supported by Chromebrew. :/"
-  exit 1
-  ;;
-"x86_64"|"armv7l"|"aarch64")
+"i686"|"x86_64"|"armv7l"|"aarch64")
   LIB_SUFFIX=
   # See https://superuser.com/a/1369875
   # If /bin/bash is 64-bit, then set LIB_SUFFIX, as this is true on both
@@ -121,6 +117,18 @@ case "${ARCH}" in
 *)
   echo_error "Your device is not supported by Chromebrew yet :/"
   exit 1
+  ;;
+esac
+
+libc_version=$(/lib$LIB_SUFFIX/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
+case "${libc_version}" in
+"2.23"|"2.27"|"2.32"|"2.33")
+  ;;
+"2.35")
+# Prepend the correct packages for M113 onwards systems.
+BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}"
+  ;;
+*)
   ;;
 esac
 
