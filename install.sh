@@ -326,7 +326,8 @@ echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall "${BOOTSTRAP_PACKAGES}"
+# Do NOT quote BOOTSTRAP_PACKAGES.
+crew postinstall ${BOOTSTRAP_PACKAGES}
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
