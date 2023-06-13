@@ -70,6 +70,6 @@ class Gpm < Package
     Dir.chdir CREW_DEST_LIB_PREFIX do
       system 'ln -sfr libgpm.so.2.* libgpm.so'
     end
-    FileUtils.chmod 0o755, Dir.glob("#{CREW_DEST_LIB_PREFIX}/libgpm.so.*")
+    FileUtils.chmod 0o755, "#{CREW_DEST_LIB_PREFIX}/libgpm.so.*"
   end
 end

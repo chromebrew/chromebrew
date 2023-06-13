@@ -29,15 +29,15 @@ class Depot_tools < Package
     Dir.chdir 'depot_tools' do
       system "git checkout #{@_ver}"
       FileUtils.rm_rf 'man/src/'
-      FileUtils.rm_rf Dir.glob('.git*')
+      FileUtils.rm_rf '.git*'
       system 'find -name \'*.bat\' -delete'
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/depot_tools/"
       FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/"
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/doc/depot_tools/"
-      FileUtils.mv Dir.glob('man/html/*.html'), "#{CREW_DEST_PREFIX}/share/doc/depot_tools/"
-      FileUtils.mv Dir.glob('man/*'), CREW_DEST_MAN_PREFIX
+      FileUtils.mv 'man/html/*.html', "#{CREW_DEST_PREFIX}/share/doc/depot_tools/"
+      FileUtils.mv 'man/*', CREW_DEST_MAN_PREFIX
       FileUtils.rm_r 'man/'
-      FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/depot_tools"
+      FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/depot_tools"
       FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/.vpython-root"
       FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/.vpython_cipd_cache"
       FileUtils.ln_s "#{HOME}/.config/.vpython-root/", "#{CREW_DEST_HOME}/.vpython-root"
@@ -53,6 +53,6 @@ class Depot_tools < Package
   end
 
   def self.remove
-    FileUtils.rm_rf Dir.glob("#{HOME}/.config/.vpython*")
+    FileUtils.rm_rf "#{HOME}/.config/.vpython*"
   end
 end

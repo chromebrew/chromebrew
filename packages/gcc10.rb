@@ -179,11 +179,11 @@ class Gcc10 < Package
     end
 
     # Remove files which would conflict with the current version of gcc.
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_LIB_PREFIX}/*")
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/include/libgccjit*.h")
+    FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/*"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/include/libgccjit*.h"
     FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/armv7l-cros-linux-gnueabihf-gcc-tmp"
-    FileUtils.rm_rf Dir.glob("#{CREW_DEST_PREFIX}/share/locale/*")
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/share/man/man7/*")
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_PREFIX}/share/info/*")
+    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/share/locale/*"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/man/man7/*"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/info/*"
   end
 end

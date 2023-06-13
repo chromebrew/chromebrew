@@ -63,7 +63,7 @@ class Irrlicht < Package
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/irrlicht"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/irrlicht"
-    FileUtils.cp Dir.glob('include/*'), "#{CREW_DEST_PREFIX}/include/irrlicht"
+    FileUtils.cp 'include/*', "#{CREW_DEST_PREFIX}/include/irrlicht"
     FileUtils.cp 'lib/Linux/libIrrlicht.a', CREW_DEST_LIB_PREFIX.to_s
     FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.5', CREW_DEST_LIB_PREFIX.to_s
     Dir.chdir CREW_DEST_LIB_PREFIX.to_s do

@@ -174,9 +174,9 @@ class Docker < Package
                       mode: 0o644
     FileUtils.install 'contrib/completion/fish/docker.fish',
                       "#{CREW_DEST_PREFIX}/share/fish/vendor_completions.d/docker.fish", mode: 0o644
-    FileUtils.install Dir.glob('man/man1/*'), "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
-    FileUtils.install Dir.glob('man/man5/*'), "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
-    FileUtils.install Dir.glob('man/man8/*'), "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
+    FileUtils.install 'man/man1/*', "#{CREW_DEST_MAN_PREFIX}/man1/", mode: 0o644
+    FileUtils.install 'man/man5/*', "#{CREW_DEST_MAN_PREFIX}/man5/", mode: 0o644
+    FileUtils.install 'man/man8/*', "#{CREW_DEST_MAN_PREFIX}/man8/", mode: 0o644
     FileUtils.install 'src/github.com/docker/buildx/docker-buildx',
                       "#{CREW_DEST_LIB_PREFIX}/docker/cli-plugins/docker-buildx", mode: 0o755
   end

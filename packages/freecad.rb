@@ -36,7 +36,7 @@ class Freecad < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/freecad"
     FileUtils.install 'freecad.sh', "#{CREW_DEST_PREFIX}/bin/freecad", mode: 0o755
-    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/freecad"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/freecad"
   end
 
   def self.postinstall

@@ -62,12 +62,12 @@ class Irrlicht_tools < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/irrlicht"
     Dir.chdir 'bin' do
-      FileUtils.cp Dir.glob('Linux/*'), '.'
-      FileUtils.rm_r Dir.glob('Win*')
+      FileUtils.cp 'Linux/*', '.'
+      FileUtils.rm_r 'Win*'
       FileUtils.rm_r 'MacOSX'
       FileUtils.rm_r 'Linux'
       FileUtils.rm 'readme.txt'
-      FileUtils.cp Dir.glob('./*'), "#{CREW_DEST_PREFIX}/libexec/irrlicht/"
+      FileUtils.cp './*', "#{CREW_DEST_PREFIX}/libexec/irrlicht/"
     end
   end
 end

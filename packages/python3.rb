@@ -76,7 +76,7 @@ class Python3 < Package
   def self.prebuild
     # Ensure that internal copies of expat, libffi and zlib aren't used
     FileUtils.rm_rf 'Modules/expat'
-    FileUtils.rm_rf Dir.glob('Modules/_ctypes/libffi*')
+    FileUtils.rm_rf 'Modules/_ctypes/libffi*'
     FileUtils.rm_rf 'Modules/zlib'
   end
 

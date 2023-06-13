@@ -28,6 +28,6 @@ class Gsfonts < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/fonts/Type1"
-    FileUtils.cp_r Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/fonts/Type1"
+    FileUtils.cp_r '*', "#{CREW_DEST_PREFIX}/share/fonts/Type1"
   end
 end

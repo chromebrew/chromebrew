@@ -28,7 +28,7 @@ class Projectlibre < Package
   def self.install
     FileUtils.rm 'projectlibre.bat'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/projectlibre"
-    FileUtils.cp_r Dir.glob('.'), "#{CREW_DEST_PREFIX}/share/projectlibre"
+    FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/share/projectlibre"
     system "cat << 'EOF' > projectlibre
 #!/bin/bash
 cd #{CREW_PREFIX}/share/projectlibre

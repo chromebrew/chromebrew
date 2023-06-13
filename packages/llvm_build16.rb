@@ -192,7 +192,7 @@ class Llvm_build16 < Package
         FileUtils.ln_s "../../lib#{CREW_LIB_SUFFIX}/LLVMgold.so", 'LLVMgold.so'
       end
       # libunwind.* conflicts with libunwind package
-      FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libunwind.*")
+      FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libunwind.*"
     end
   end
 

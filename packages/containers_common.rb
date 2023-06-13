@@ -47,7 +47,7 @@ class Containers_common < Package
       system "git clone --depth 1 --branch #{@image_version} https://github.com/containers/image.git"
       Dir.chdir 'image/docs' do
         FileUtils.mkdir_p 'man5'
-        FileUtils.mv Dir.glob('*.5.md'), 'man5/'
+        FileUtils.mv '*.5.md', 'man5/'
         system 'for _man_page in *.md
         do
           go-md2man -in $_man_page -out ${_man_page//.md}.1

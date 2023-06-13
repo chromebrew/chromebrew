@@ -88,7 +88,7 @@ class Js78 < Package
   def self.install
     Dir.chdir 'obj' do
       system "make DESTDIR=#{CREW_DEST_DIR} install"
-      FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/*.ajs")
+      FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/*.ajs"
     end
   end
 end

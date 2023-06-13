@@ -52,7 +52,7 @@ class Obs < Package
     case ARCH
     when 'x86_64'
       Dir.chdir CREW_DEST_PREFIX do
-        FileUtils.mv Dir.glob('lib/*'), 'lib64/'
+        FileUtils.mv 'lib/*', 'lib64/'
       end
     end
   end

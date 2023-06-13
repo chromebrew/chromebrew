@@ -49,6 +49,6 @@ class Musl_zstd < Package
     system "DESTDIR=#{CREW_DEST_DIR} samu -C build/cmake/builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_MUSL_PREFIX}/lib"
     FileUtils.cp "#{CREW_MUSL_PREFIX}/lib/libc.so", "#{CREW_DEST_MUSL_PREFIX}/lib/"
-    FileUtils.rm_f Dir.glob("#{CREW_DEST_MUSL_PREFIX}/share/man/")
+    FileUtils.rm_f "#{CREW_DEST_MUSL_PREFIX}/share/man/"
   end
 end

@@ -120,10 +120,10 @@ class Smbclient < Package
       FileUtils.install "staging#{CREW_PREFIX}/bin/#{item}", "#{CREW_DEST_PREFIX}/bin/#{item}",
                         mode: 0o755
     end
-    FileUtils.mv Dir.glob("staging#{CREW_LIB_PREFIX}/lib*.so*"), "#{CREW_DEST_LIB_PREFIX}/"
-    FileUtils.mv Dir.glob("staging#{CREW_LIB_PREFIX}/samba/lib*.so*"), "#{CREW_DEST_LIB_PREFIX}/samba/"
+    FileUtils.mv "staging#{CREW_LIB_PREFIX}/lib*.so*", "#{CREW_DEST_LIB_PREFIX}/"
+    FileUtils.mv "staging#{CREW_LIB_PREFIX}/samba/lib*.so*", "#{CREW_DEST_LIB_PREFIX}/samba/"
     @smbclient_pkgconfig.each do |item|
-      FileUtils.mv Dir.glob("staging#{CREW_LIB_PREFIX}/pkgconfig/#{item}.pc"), "#{CREW_DEST_LIB_PREFIX}/pkgconfig/"
+      FileUtils.mv "staging#{CREW_LIB_PREFIX}/pkgconfig/#{item}.pc", "#{CREW_DEST_LIB_PREFIX}/pkgconfig/"
     end
     @smbclient_bins.each do |item|
       if File.exist?("staging#{CREW_MAN_PREFIX}/man1/#{item}.1")

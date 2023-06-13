@@ -45,9 +45,9 @@ class Pcre2 < Package
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/cmake/pcre2"
-    FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/man/*"), "#{CREW_DEST_MAN_PREFIX}/"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/man/*", "#{CREW_DEST_MAN_PREFIX}/"
     FileUtils.rmdir "#{CREW_DEST_PREFIX}/man"
-    FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/cmake/*"), "#{CREW_DEST_LIB_PREFIX}/cmake/pcre2/"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/cmake/*", "#{CREW_DEST_LIB_PREFIX}/cmake/pcre2/"
     FileUtils.rmdir "#{CREW_DEST_PREFIX}/cmake"
   end
 end

@@ -31,10 +31,10 @@ class Gptfdisk < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.install Dir.glob('*gdisk'), "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
+    FileUtils.install '*gdisk', "#{CREW_DEST_PREFIX}/bin/", mode: 0o755
     FileUtils.install 'fixparts', "#{CREW_DEST_PREFIX}/bin/fixparts", mode: 0o755
     system 'gzip -9 cgdisk.8 fixparts.8 gdisk.8 sgdisk.8'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man8/"
-    FileUtils.install Dir.glob('*.8.gz'), "#{CREW_DEST_PREFIX}/share/man/man8/", mode: 0o644
+    FileUtils.install '*.8.gz', "#{CREW_DEST_PREFIX}/share/man/man8/", mode: 0o644
   end
 end

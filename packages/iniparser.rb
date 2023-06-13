@@ -42,7 +42,7 @@ class Iniparser < Package
     # Install library
     FileUtils.install 'libiniparser.so.1', CREW_DEST_LIB_PREFIX
     # Install header files
-    FileUtils.install Dir.glob('src/*.h'), "#{CREW_DEST_PREFIX}/include"
+    FileUtils.install 'src/*.h', "#{CREW_DEST_PREFIX}/include"
     # Install library symlink
     FileUtils.ln_s 'libiniparser.so.1', "#{CREW_DEST_LIB_PREFIX}/libiniparser.so"
   end

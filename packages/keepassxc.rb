@@ -27,7 +27,7 @@ class Keepassxc < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/keepassxc"
     FileUtils.install 'keepassxc.sh', "#{CREW_DEST_PREFIX}/bin/keepassxc", mode: 0o755
-    FileUtils.mv Dir.glob('*'), "#{CREW_DEST_PREFIX}/share/keepassxc"
+    FileUtils.mv '*', "#{CREW_DEST_PREFIX}/share/keepassxc"
   end
 
   def self.postinstall

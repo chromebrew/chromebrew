@@ -37,7 +37,7 @@ class Fetch < Package
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
     if CREW_LIB_SUFFIX == '64'
       FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
-      FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), CREW_DEST_LIB_PREFIX
+      FileUtils.mv "#{CREW_DEST_PREFIX}/lib/*", CREW_DEST_LIB_PREFIX
       FileUtils.rm_r "#{CREW_DEST_PREFIX}/lib/"
     end
   end

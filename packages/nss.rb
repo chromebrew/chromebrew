@@ -49,11 +49,11 @@ class Nss < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/nss"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/nspr"
-    FileUtils.rm Dir.glob('dist/Release/lib/*.so.TOC')
+    FileUtils.rm 'dist/Release/lib/*.so.TOC'
     FileUtils.mv 'dist/Release/lib', "dist/Release/#{ARCH_LIB}" unless ARCH_LIB == 'lib'
-    FileUtils.cp_r Dir.glob('dist/Release/*'), CREW_DEST_PREFIX
-    FileUtils.cp_r Dir.glob('dist/public/nss/*'), "#{CREW_DEST_PREFIX}/include/nss/"
-    FileUtils.cp_r Dir.glob('dist/public/nspr/*'), "#{CREW_DEST_PREFIX}/include/nspr/"
+    FileUtils.cp_r 'dist/Release/*', CREW_DEST_PREFIX
+    FileUtils.cp_r 'dist/public/nss/*', "#{CREW_DEST_PREFIX}/include/nss/"
+    FileUtils.cp_r 'dist/public/nspr/*', "#{CREW_DEST_PREFIX}/include/nspr/"
     system "sed nss/pkg/pkg-config/nss.pc.in \
     -e 's,%libdir%,#{CREW_LIB_PREFIX},g' \
     -e 's,%prefix%,#{CREW_PREFIX},g' \

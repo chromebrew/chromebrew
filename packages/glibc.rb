@@ -639,7 +639,7 @@ class Glibc < Package
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libnsl.so.1"
 
     # Remove libmount.so since it conflicts with the one from util_linux.
-    FileUtils.rm Dir.glob("#{CREW_DEST_LIB_PREFIX}/libmount.so*")
+    FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libmount.so*"
   end
 
   def self.check

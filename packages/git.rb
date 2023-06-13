@@ -66,7 +66,7 @@ class Git < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/git-completion"
-    FileUtils.cp_r Dir.glob('contrib/completion/.'), "#{CREW_DEST_PREFIX}/share/git-completion/"
+    FileUtils.cp_r 'contrib/completion/.', "#{CREW_DEST_PREFIX}/share/git-completion/"
 
     File.write 'git_bashd_env', <<~GIT_BASHD_EOF
       # git bash completion

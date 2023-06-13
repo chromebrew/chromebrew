@@ -29,7 +29,7 @@ class Unshield < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
-    FileUtils.cp Dir.glob('man/*'), "#{CREW_DEST_MAN_PREFIX}/man1"
+    FileUtils.cp 'man/*', "#{CREW_DEST_MAN_PREFIX}/man1"
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
