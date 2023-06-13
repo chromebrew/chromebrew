@@ -117,11 +117,13 @@ case "${ARCH}" in
   ;;
 esac
 
-# i686 requires gcc and openssl
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
-# Prepend the correct packages for M113 onwards systems.
-[[ "${libc_version}" == "2.35" ]] && BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}"
+case ${libc_version} in
+  # Older i686 systems.
+  "2.27") BOOTSTRAP_PACKAGES+=" gcc_lib";;
+  # Prepend the correct packages for M113 onwards systems.
+  "2.35") BOOTSTRAP_PACKAGES="glibc_lib235 zlibpkg gmp ${BOOTSTRAP_PACKAGES}";;
+esac
 
 echo_info "\n\nDoing initial setup for install in ${CREW_PREFIX}."
 echo_info "This may take a while if there are preexisting files in ${CREW_PREFIX}...\n"
