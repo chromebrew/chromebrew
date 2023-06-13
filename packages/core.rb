@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.8'
+  version '1.9'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -61,7 +61,6 @@ class Core < Package
   depends_on 'nettle'
   depends_on 'openldap'
   depends_on 'openssl'
-  depends_on 'patchelf'
   depends_on 'p11kit'
   depends_on 'pcre'
   depends_on 'pcre2'
