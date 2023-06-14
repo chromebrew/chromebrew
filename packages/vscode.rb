@@ -45,14 +45,8 @@ class Vscode < Package
     symlink_prefix = prefix.delete_prefix(CREW_DEST_DIR)
     binpath        = "#{CREW_DEST_PREFIX}/bin"
 
-    {
-      './usr/share'     => "#{CREW_DEST_PREFIX}/share"
-    }.each_pair do |src, dst|
-      FileUtils.mkdir_p dst
-      FileUtils.cp_r Dir["#{src}/*"], dst
-    end
-
-    FileUtils.mkdir_p binpath
+    FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/share", binpath]
+    FileUtils.cp_r Dir['usr/share/*'], "#{CREW_DEST_PREFIX}/share"
     FileUtils.ln_s "#{symlink_prefix}/code", "#{binpath}/code"
   end
 end

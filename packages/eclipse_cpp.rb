@@ -47,15 +47,8 @@ class Eclipse_cpp < Package
     desktop_prefix = "#{CREW_DEST_PREFIX}/share/applications"
     binpath        = "#{CREW_DEST_PREFIX}/bin"
 
-    {
-      './usr/lib/eclipse' => prefix
-    }.each_pair do |src, dst|
-      FileUtils.mkdir_p dst
-      FileUtils.cp_r Dir["#{src}/*"], dst
-    end
-
     FileUtils.mkdir_p [prefix, icon_prefix, desktop_prefix, binpath]
-    FileUtils.cp_r Dir['*'], prefix
+    FileUtils.cp_r Dir['usr/lib/eclipse/*'], prefix
 
     FileUtils.ln_s "#{symlink_prefix}/eclipse", "#{binpath}/eclipse"
     FileUtils.ln_s "#{symlink_prefix}/eclipse.desktop", "#{desktop_prefix}/eclipse.desktop"

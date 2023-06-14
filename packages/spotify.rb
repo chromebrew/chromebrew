@@ -33,14 +33,8 @@ class Spotify < Package
     desktop_prefix = "#{CREW_DEST_PREFIX}/share/applications"
     binpath        = "#{CREW_DEST_PREFIX}/bin"
 
-    {
-      './usr/share'     => "#{CREW_DEST_PREFIX}/share"
-    }.each_pair do |src, dst|
-      FileUtils.mkdir_p dst
-      FileUtils.cp_r Dir["#{src}/*"], dst
-    end
-
-    FileUtils.mkdir_p [binpath, icon_prefix, desktop_prefix]
+    FileUtils.mkdir_p ["#{CREW_DEST_PREFIX}/share", binpath, icon_prefix, desktop_prefix]
+    FileUtils.cp_r Dir['usr/share/*'], "#{CREW_DEST_PREFIX}/share"
     FileUtils.ln_s "#{symlink_prefix}/spotify", "#{binpath}/spotify"
     FileUtils.ln_s "#{symlink_prefix}/spotify.desktop", "#{desktop_prefix}/spotify.desktop"
 
