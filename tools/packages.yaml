@@ -1346,7 +1346,7 @@ activity: low
 ---
 kind: url
 name: dmd
-url:  https://github.com/dlang/dmd/releases
+url: https://github.com/dlang/dmd/releases
 activity: high
 ---
 kind: url
