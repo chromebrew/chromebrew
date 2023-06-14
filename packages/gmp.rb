@@ -3,7 +3,7 @@ require 'package'
 class Gmp < Package
   description 'GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers.'
   homepage 'https://gmplib.org/'
-  version '6.2.1'
+  version '6.2.1' # Do not use @_ver here, it will break the installer.
   license 'LGPL-3+ and GPL-2+'
   compatibility 'all'
   source_url 'https://gmplib.org/download/gmp/gmp-6.2.1.tar.lz'
