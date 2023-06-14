@@ -1368,7 +1368,7 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
         src << '/' unless src.end_with?('/')
         # Check for ACLs support.
         @rsync_version = `rsync --version`.chomp
-        if @rsync_version.include?('ACLs')
+        if @rsync_version.include?('ACLs') && !@rsync_version.include?('no ACLs')
           system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
         else
           system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
