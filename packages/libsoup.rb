@@ -3,12 +3,11 @@ require 'package'
 class Libsoup < Package
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
-  @_ver = '3.4.1'
-  version @_ver
+  version '3.4.1'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup/3.4.1_armv7l/libsoup-3.4.1-chromeos-armv7l.tar.zst',

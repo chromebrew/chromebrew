@@ -3,11 +3,10 @@ require 'package'
 class Wayland_proxy_virtwl < Package
   description 'Proxy Wayland connections across the VM boundary'
   homepage 'https://github.com/talex5/wayland-proxy-virtwl'
-  @_ver = 'd7f58d405514dd031f2f12e402c8c6a58e62a885'
-  version @_ver
+  version 'd7f58d405514dd031f2f12e402c8c6a58e62a885'
   compatibility 'all'
   source_url 'https://github.com/talex5/wayland-proxy-virtwl.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_proxy_virtwl/d7f58d405514dd031f2f12e402c8c6a58e62a885_armv7l/wayland_proxy_virtwl-d7f58d405514dd031f2f12e402c8c6a58e62a885-chromeos-armv7l.tpxz',

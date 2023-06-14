@@ -3,12 +3,11 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  @_ver = '3.24.37'
-  version @_ver
+  version '3.24.37'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',

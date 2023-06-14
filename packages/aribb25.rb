@@ -3,12 +3,11 @@ require 'package'
 class Aribb25 < Package
   description 'aribb25 is a basic implementation of the ARIB STD-B25 public standard.'
   homepage 'https://code.videolan.org/videolan/aribb25/'
-  @_ver = '0.2.7'
-  version @_ver
+  version '0.2.7'
   compatibility 'all'
   license 'ISC'
   source_url 'https://code.videolan.org/videolan/aribb25.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb25/0.2.7_armv7l/aribb25-0.2.7-chromeos-armv7l.tpxz',

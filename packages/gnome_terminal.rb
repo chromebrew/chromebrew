@@ -3,12 +3,11 @@ require 'package'
 class Gnome_terminal < Package
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  @_ver = '3.48.0'
-  version @_ver
+  version '3.48.0'
   license 'GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.48.0_armv7l/gnome_terminal-3.48.0-chromeos-armv7l.tar.zst',

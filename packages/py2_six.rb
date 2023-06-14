@@ -3,12 +3,11 @@ require 'package'
 class Py2_six < Package
   description 'Six is a Python 2 and 3 compatibility library.'
   homepage 'https://six.readthedocs.io/'
-  @_ver = '1.15.0'
-  version @_ver
+  version '1.15.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/benjaminp/six.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_six/1.15.0_armv7l/py2_six-1.15.0-chromeos-armv7l.tar.xz',

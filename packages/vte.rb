@@ -3,12 +3,11 @@ require 'package'
 class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  @_ver = '0.72.1'
-  version @_ver
+  version '0.72.1'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.1_armv7l/vte-0.72.1-chromeos-armv7l.tar.zst',

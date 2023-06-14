@@ -3,12 +3,11 @@ require 'package'
 class Fragments < Package
   description 'Fragments is an easy to use BitTorrent client for the GNOME desktop environment.'
   homepage 'https://gitlab.gnome.org/World/Fragments'
-  @_ver = '2.1'
-  version @_ver
+  version '2.1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/World/Fragments.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fragments/2.1_armv7l/fragments-2.1-chromeos-armv7l.tar.zst',

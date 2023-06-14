@@ -3,12 +3,11 @@ require 'package'
 class Gnome_autoar < Package
   description 'Automatic archives creating and extracting library'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-autoar'
-  @_ver = '0.4.4'
-  version @_ver
+  version '0.4.4'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-autoar.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_autoar/0.4.4_armv7l/gnome_autoar-0.4.4-chromeos-armv7l.tar.zst',

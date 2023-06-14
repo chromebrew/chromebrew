@@ -3,12 +3,11 @@ require 'package'
 class Libmd < Package
   description 'libmd provides message digest functions found on BSD systems.'
   homepage 'https://www.hadrons.org/software/libmd/'
-  @_ver = '1.0.4'
-  version @_ver
+  version '1.0.4'
   license 'BSD-3, BSD-2, ISC, Beerware, public-domain'
   compatibility 'all'
   source_url 'https://git.hadrons.org/git/libmd.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmd/1.0.4_armv7l/libmd-1.0.4-chromeos-armv7l.tpxz',
