@@ -7,13 +7,13 @@ require_relative 'llvm16_build'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '16.0.5'
+  version '16.0.6'
   # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm_build16.version}".orange if version != Llvm_build16.version.to_s
+  puts "#{self} version differs from llvm version #{Llvm16_build.version}".orange if version != Llvm16_build.version.to_s
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm_build16.git_hashtag.to_s
+  git_hashtag Llvm16_build.git_hashtag.to_s
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/16.0.5_armv7l/openmp-16.0.5-chromeos-armv7l.tar.zst',
@@ -31,6 +31,7 @@ class Openmp < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi'
+  depends_on 'llvm16_dev' => :build
   depends_on 'llvm16_lib' # R
   depends_on 'python3' # R
 
