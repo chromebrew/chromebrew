@@ -3,7 +3,7 @@ require 'package'
 class Zlibpkg < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'https://www.zlib.net/'
-  version = '1.2.13-1' # Do not use @_ver here, it will break the installer.
+  version '1.2.13-1' # Do not use @_ver here, it will break the installer.
   # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
   # The following breaks the installer script.
   # puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
