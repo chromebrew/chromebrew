@@ -5,14 +5,16 @@ class Llvm16_build < Package
   homepage 'http://llvm.org/'
   version '16.0.6'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{version}"
 
   binary_url({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_build/16.0.6_i686/llvm16_build-16.0.6-chromeos-i686.tar.zst',
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_build/16.0.6_x86_64/llvm16_build-16.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
+       i686: '513668bf8310c34b0d0bfa26304a268a92904d3e6b81902f9148f69ab915ce6b',
     x86_64: '53fbe0edeb0e5a7a9ad1767ce3bbaf00c306cf6f05960fe1e2bb0566ec61a748'
   })
 
