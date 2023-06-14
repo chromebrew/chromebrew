@@ -24,6 +24,7 @@ class Slack < Package
   depends_on 'glib'                 # libglib2.0-bin
   depends_on 'sommelier'
 
+  no_shrink # upx will break chromium/electron-based applications
   no_compile_needed
 
   def self.install

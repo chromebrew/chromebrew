@@ -23,6 +23,7 @@ class Spotify < Package
   depends_on 'xdg_utils' # xdg-utils
   depends_on 'sommelier'
 
+  no_shrink # upx will break chromium/electron-based applications
   no_compile_needed
 
   def self.install

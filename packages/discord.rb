@@ -21,6 +21,7 @@ class Discord < Package
   depends_on 'llvm_stage1' # libc++1
   depends_on 'sommelier'
 
+  no_shrink # upx will break chromium/electron-based applications
   no_compile_needed
 
   def self.install
