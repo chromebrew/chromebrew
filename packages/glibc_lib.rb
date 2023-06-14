@@ -1,13 +1,11 @@
 require 'package'
-require_relative 'glibc_build235'
 require_relative 'glibc'
+require_relative 'glibc_build235'
 
 class Glibc_lib < Package
   description 'glibc libraries'
-  homepage Glibc_build235.homepage
-  version '2.35' # Do not use @_ver here, it will break the installer.
-  license Glibc_build235.license
-  compatibility 'x86_64 aarch64 armv7l'
+  homepage Glibc.homepage
+  license Glibc.license
   source_url 'SKIP'
 
   is_fake
