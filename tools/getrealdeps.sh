@@ -74,9 +74,9 @@ whatprovidesfxn() {
   pkgdepslcl="${1}"
   # Handle patchelf inserted full library paths.
   if [[ "${pkgdepslcl}" == *"${CREW_LIB_PREFIX}"* ]]; then
-    filelcl=$($GREP --exclude "${pkg}.filelist" --exclude={"${CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "${pkgdepslcl}$" "${CREW_PREFIX}"/etc/crew/meta/*.filelist)
+    filelcl=$($GREP --exclude "${pkg}.filelist" --exclude={"${CREW_PREFIX}/etc/crew/meta/\*_build.filelist"} "${pkgdepslcl}$" "${CREW_PREFIX}"/etc/crew/meta/*.filelist)
   else
-    filelcl=$($GREP --exclude "${pkg}.filelist" --exclude={"${CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" "${CREW_PREFIX}"/etc/crew/meta/*.filelist)
+    filelcl=$($GREP --exclude "${pkg}.filelist" --exclude={"${CREW_PREFIX}/etc/crew/meta/\*_build.filelist"} "^${CREW_LIB_PREFIX}.*${pkgdepslcl}$" "${CREW_PREFIX}"/etc/crew/meta/*.filelist)
   fi
   packagelcl=$(echo "$filelcl" | \
   sed 's/.filelist.*//g' | sed 's:.*/::' | awk '!x[$0]++' | sed s/://g)
@@ -122,6 +122,8 @@ echo "$lines" | tr " " "\n" | awk '!x[$0]++')
 
 # Remove original package from list.
 pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${pkg}/d" | sort -u )
+# Replace glibc_build packages with glibc
+pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed 's/glibc_build.*/glibc/' | sort -u )
 
 # Note which dependencies are missing, but ignore :build lines, since
 # build depenencies may still be runtime dependencies.
