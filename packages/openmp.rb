@@ -2,7 +2,7 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
-require_relative 'llvm_build16'
+require_relative 'llvm16_build'
 
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
@@ -31,7 +31,7 @@ class Openmp < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi'
-  depends_on 'llvm_lib16' # R
+  depends_on 'llvm16_lib' # R
   depends_on 'python3' # R
 
   no_env_options

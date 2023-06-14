@@ -96,8 +96,8 @@ class Buildessential < Package
 
   # LLVM
   # This can be pulled in on a per-package basis...
-  # depends_on 'llvm_dev16'
-  depends_on 'llvm_lib16' # This provides llvm-strip
+  # depends_on 'llvm16_dev'
+  depends_on 'llvm16_lib' # This provides llvm-strip
 
   # Meson build system
   depends_on 'meson'

@@ -28,7 +28,7 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm_lib16' # R Note that this may need rebuilds for newer llvm versions.
+  depends_on 'llvm16_lib' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script
