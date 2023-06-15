@@ -6,7 +6,7 @@ class Wget < Package
   version '1.21.4'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/wget/wget-1.21.4.tar.lz'
+  source_url 'https://ftpmirror.gnu.org/wget/wget-1.21.4.tar.lz'
   source_sha256 '3683619a5f50edcbccb1720a79006fa37bf9b9a255a8c5b48048bc3c7a874bd9'
 
   binary_url({
