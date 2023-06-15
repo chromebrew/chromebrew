@@ -7,8 +7,7 @@ class Gcc_lib < Package
   version '13.1.0-1' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
-  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
-                                                                                                   '') != Gcc_build.version.to_s
+  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/, '') != Gcc_build.version.to_s
   compatibility 'all'
   source_url 'SKIP'
 

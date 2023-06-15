@@ -7,11 +7,10 @@ class Libssp < Package
   version '13.1.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
-  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
-                                                                                                   '') != Gcc_build.version.to_s
+  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/, '') != Gcc_build.version.to_s
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'releases/gcc-13.1.0'
+  git_hashtag "releases/gcc-#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.1.0_armv7l/libssp-13.1.0-chromeos-armv7l.tar.zst',
