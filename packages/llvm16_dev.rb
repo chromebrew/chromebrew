@@ -12,18 +12,19 @@ class Llvm16_dev < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_dev16/16.0.5_armv7l/llvm_dev16-16.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_dev16/16.0.5_armv7l/llvm_dev16-16.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_dev16/16.0.5_i686/llvm_dev16-16.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_dev16/16.0.5_x86_64/llvm_dev16-16.0.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_dev/16.0.6_armv7l/llvm16_dev-16.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_dev/16.0.6_armv7l/llvm16_dev-16.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_dev/16.0.6_i686/llvm16_dev-16.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_dev/16.0.6_x86_64/llvm16_dev-16.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f4a2ccdb3366661c1ac733a317fe1853e5a5257fb7060610881ec34569cb3317',
-     armv7l: 'f4a2ccdb3366661c1ac733a317fe1853e5a5257fb7060610881ec34569cb3317',
-       i686: 'a14b1808ff4d03b0fd5431c86d84ddb0a1d435bef96ae0c347b623bb34aa5206',
-     x86_64: 'eba6acd9fd5192ac826cdc4491cb442bb1cb3a1317368929b1c622ae58a361c9'
+    aarch64: 'ec2e7ecd345e7d39e8e6e0de780b4770abe3f839d1ddaed51c16e86d97b7a024',
+     armv7l: 'ec2e7ecd345e7d39e8e6e0de780b4770abe3f839d1ddaed51c16e86d97b7a024',
+       i686: 'e8d83c2237656c00ff57c562c25901004a2e88a3015e6bf40954afad4172c05b',
+     x86_64: '427c152245ddd14db63e2b9d41038b1c0cc37e2c63ab758a5d04d654e066b69e'
   })
 
+  depends_on 'gcc_dev' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
@@ -35,6 +36,7 @@ class Llvm16_dev < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'llvm16_build' # R
 
   def self.install
     puts 'Installing llvm16_build to pull files for build...'.lightblue

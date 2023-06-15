@@ -12,24 +12,24 @@ class Llvm16_lib < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_lib16/16.0.5_armv7l/llvm_lib16-16.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_lib16/16.0.5_armv7l/llvm_lib16-16.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_lib16/16.0.5_i686/llvm_lib16-16.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_lib16/16.0.5_x86_64/llvm_lib16-16.0.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_armv7l/llvm16_lib-16.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_armv7l/llvm16_lib-16.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_i686/llvm16_lib-16.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_x86_64/llvm16_lib-16.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ac8284a2e2f2c21b330d8f3ebfbd9e93fb023710ce44e702df97d32117d76b60',
-     armv7l: 'ac8284a2e2f2c21b330d8f3ebfbd9e93fb023710ce44e702df97d32117d76b60',
-       i686: '96143e8c99aec50b417bfa31b8b34adb645def08b9957cfa7417fcb1e56d0073',
-     x86_64: '5cde03339bf1b972d926cfb81daa825b5814f387ba02fc729b31b95818b122e2'
+    aarch64: '996924278cd5695a0fee50649498a95b30417af629eb3b0edad66b4805fc5e9c',
+     armv7l: '996924278cd5695a0fee50649498a95b30417af629eb3b0edad66b4805fc5e9c',
+       i686: 'd7796f4b22c14c73cab97265fa0b94305fb10de2764a11e857e2049287afdc8e',
+     x86_64: '76eb8ce408c2260479fb73f82ec5a9e1f895e34b4bcc77a88a8f46eed38c2ba0'
   })
 
-  depends_on 'llvm16_build' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
+  depends_on 'llvm16_build' => :build
   depends_on 'ncurses' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
