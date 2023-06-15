@@ -8602,7 +8602,7 @@ activity: medium
 ---
 kind: url
 name: wget
-url: https://ftp.gnu.org/gnu/wget
+url: https://ftpmirror.gnu.org/wget/
 activity: low
 ---
 kind: url
