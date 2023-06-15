@@ -3,12 +3,11 @@ require 'package'
 class Libgme < Package
   description 'Blargg\'s video game music file emulation/playback library.'
   homepage 'https://bitbucket.org/mpyne/game-music-emu/'
-  @_ver = '0.6.3'
-  version @_ver
+  version '0.6.3'
   compatibility 'all'
   license 'LGPL-2.1'
   source_url 'https://bitbucket.org/mpyne/game-music-emu.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgme/0.6.3_armv7l/libgme-0.6.3-chromeos-armv7l.tpxz',

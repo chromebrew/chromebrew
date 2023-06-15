@@ -3,12 +3,11 @@ require 'package'
 class Libva < Package
   description 'Libva is an implementation for VA-API (Video Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  @_ver = '2.17.0'
-  version @_ver
+  version '2.17.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/intel/libva.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.17.0_armv7l/libva-2.17.0-chromeos-armv7l.tar.zst',

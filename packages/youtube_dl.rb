@@ -3,12 +3,11 @@ require 'package'
 class Youtube_dl < Package
   description 'Command-line program to download videos from YouTube.com and other video sites'
   homepage 'https://youtube-dl.org/'
-  @_ver = '2021.12.17'
-  version @_ver
+  version '2021.12.17'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://github.com/ytdl-org/youtube-dl.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.12.17_armv7l/youtube_dl-2021.12.17-chromeos-armv7l.tar.zst',

@@ -3,12 +3,11 @@ require 'package'
 class Libbsd < Package
   description 'This library provides useful functions commonly found on BSD systems, and lacking on others like GNU systems, thus making it easier to port projects with strong BSD origins, without needing to embed the same code over and over again on each project.'
   homepage 'https://libbsd.freedesktop.org/wiki'
-  @_ver = '0.11.7'
-  version @_ver
+  version '0.11.7'
   license 'BSD, BSD-2, BSD-4, ISC'
   compatibility 'all'
   source_url 'https://git.hadrons.org/git/libbsd.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.11.7_armv7l/libbsd-0.11.7-chromeos-armv7l.tar.zst',

@@ -3,11 +3,10 @@ require 'package'
 class Libjpeg < Package
   description 'Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.'
   homepage 'https://libjpeg-turbo.org'
-  @_ver = '2.1.5.1'
-  version @_ver
+  version '2.1.5.1'
   compatibility 'all'
   source_url 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libjpeg/2.1.5.1_armv7l/libjpeg-2.1.5.1-chromeos-armv7l.tar.zst',

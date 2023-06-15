@@ -6,11 +6,10 @@ require 'package'
 class Opam < Package
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
-  @_ver = '2.1.4'
-  version @_ver
+  version '2.1.4'
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opam/2.1.4_armv7l/opam-2.1.4-chromeos-armv7l.tar.zst',

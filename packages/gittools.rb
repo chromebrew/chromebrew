@@ -3,12 +3,11 @@ require 'package'
 class Gittools < Package
   description 'Tools for analyzing .git repositories'
   homepage 'https://github.com/internetwache/GitTools'
-  @_ver = '24eaef0d11e590643e65d188b017b49414d81cc2'
-  version @_ver
+  version '24eaef0d11e590643e65d188b017b49414d81cc2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/internetwache/GitTools.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gittools/24eaef0d11e590643e65d188b017b49414d81cc2_armv7l/gittools-24eaef0d11e590643e65d188b017b49414d81cc2-chromeos-armv7l.tpxz',

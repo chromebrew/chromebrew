@@ -3,12 +3,11 @@ require 'package'
 class Gtksourceview_4 < Package
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
-  @_ver = '4.8.3'
-  version @_ver
+  version '4.8.3'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gtksourceview.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_4/4.8.3_armv7l/gtksourceview_4-4.8.3-chromeos-armv7l.tar.zst',

@@ -3,12 +3,11 @@ require 'package'
 class Gnome_calculator < Package
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
-  @_ver = '43.0.1'
-  version @_ver
+  version '43.0.1'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/43.0.1_armv7l/gnome_calculator-43.0.1-chromeos-armv7l.tar.zst',

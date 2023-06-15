@@ -3,12 +3,11 @@ require 'package'
 class Bz3 < Package
   description 'bzip3 is a better and stronger spiritual successor to bzip2.'
   homepage 'https://github.com/kspalaiologos/bzip3'
-  @_ver = '1.2.2'
-  version @_ver
+  version '1.2.2'
   license 'LGPL-3'
   compatibility 'all'
   source_url 'https://github.com/kspalaiologos/bzip3.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz3/1.2.2_armv7l/bz3-1.2.2-chromeos-armv7l.tar.zst',

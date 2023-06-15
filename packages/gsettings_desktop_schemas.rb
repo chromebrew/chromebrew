@@ -3,12 +3,11 @@ require 'package'
 class Gsettings_desktop_schemas < Package
   description 'Collection of GSettings schemas for GNOME desktop.'
   homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
-  @_ver = '44.0'
-  version @_ver
+  version '44.0'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.0_armv7l/gsettings_desktop_schemas-44.0-chromeos-armv7l.tar.zst',

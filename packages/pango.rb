@@ -4,12 +4,11 @@ require 'package'
 class Pango < Package
   description 'Pango is a library for laying out and rendering of text, with an emphasis on internationalization.'
   homepage 'https://pango.gnome.org/'
-  @_ver = '1.50.14'
-  version @_ver
+  version '1.50.14'
   license 'LGPL-2+ and FTL'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14_armv7l/pango-1.50.14-chromeos-armv7l.tar.zst',

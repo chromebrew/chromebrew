@@ -3,12 +3,11 @@ require 'package'
 class Tesseract < Package
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  @_ver = '5.3.1'
-  version @_ver
+  version '5.3.1'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.1_armv7l/tesseract-5.3.1-chromeos-armv7l.tar.zst',
