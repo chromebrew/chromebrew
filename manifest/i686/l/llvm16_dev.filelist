@@ -3936,15 +3936,10 @@
 /usr/local/lib/clang/16/include/xsaveoptintrin.h
 /usr/local/lib/clang/16/include/xsavesintrin.h
 /usr/local/lib/clang/16/include/xtestintrin.h
-/usr/local/lib/clang/16/lib/linux/clang_rt.crtbegin-armhf.o
-/usr/local/lib/clang/16/lib/linux/clang_rt.crtend-armhf.o
-/usr/local/lib/clang/16/lib/linux/libclang_rt.builtins-armhf.a
-/usr/local/lib/clang/16/lib/linux/libclang_rt.profile-armhf.a
-/usr/local/lib/clang/16/lib/linux/libclang_rt.xray-armhf.a
-/usr/local/lib/clang/16/lib/linux/libclang_rt.xray-basic-armhf.a
-/usr/local/lib/clang/16/lib/linux/libclang_rt.xray-fdr-armhf.a
-/usr/local/lib/clang/16/lib/linux/libclang_rt.xray-profiling-armhf.a
-/usr/local/lib/clang/16/lib/linux/liborc_rt-armhf.a
+/usr/local/lib/clang/16/lib/i686-cros-linux-gnu/clang_rt.crtbegin.o
+/usr/local/lib/clang/16/lib/i686-cros-linux-gnu/clang_rt.crtend.o
+/usr/local/lib/clang/16/lib/i686-cros-linux-gnu/libclang_rt.builtins.a
+/usr/local/lib/clang/16/lib/i686-cros-linux-gnu/libclang_rt.profile.a
 /usr/local/lib/cmake/clang/AddClang.cmake
 /usr/local/lib/cmake/clang/ClangConfig.cmake
 /usr/local/lib/cmake/clang/ClangConfigVersion.cmake
@@ -4057,7 +4052,7 @@
 /usr/local/lib/libclangSerialization.a
 /usr/local/lib/libclang.so
 /usr/local/lib/libclang.so.16
-/usr/local/lib/libclang.so.16.0.5
+/usr/local/lib/libclang.so.16.0.6
 /usr/local/lib/libclangStaticAnalyzerCheckers.a
 /usr/local/lib/libclangStaticAnalyzerCore.a
 /usr/local/lib/libclangStaticAnalyzerFrontend.a
@@ -4106,7 +4101,7 @@
 /usr/local/lib/liblldbIntelFeatures.so.16
 /usr/local/lib/liblldb.so
 /usr/local/lib/liblldb.so.16
-/usr/local/lib/liblldb.so.16.0.5
+/usr/local/lib/liblldb.so.16.0.6
 /usr/local/lib/liblldCOFF.a
 /usr/local/lib/liblldCommon.a
 /usr/local/lib/liblldELF.a

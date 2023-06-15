@@ -29,7 +29,7 @@ class Postgres < Package
   depends_on 'libcyrussasl'
   depends_on 'libxml2'
   depends_on 'linux_pam'
-  depends_on 'llvm_lib16'
+  depends_on 'llvm16_lib'
   depends_on 'lz4'
   depends_on 'openldap'
   depends_on 'perl'

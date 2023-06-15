@@ -70,6 +70,7 @@
 /usr/local/bin/llvm-debuginfod-find
 /usr/local/bin/llvm-diff
 /usr/local/bin/llvm-dis
+/usr/local/bin/llvm-dlltool
 /usr/local/bin/llvm-dwarfdump
 /usr/local/bin/llvm-dwarfutil
 /usr/local/bin/llvm-dwp
@@ -4054,7 +4055,7 @@
 /usr/local/lib64/libclangSerialization.a
 /usr/local/lib64/libclang.so
 /usr/local/lib64/libclang.so.16
-/usr/local/lib64/libclang.so.16.0.5
+/usr/local/lib64/libclang.so.16.0.6
 /usr/local/lib64/libclangStaticAnalyzerCheckers.a
 /usr/local/lib64/libclangStaticAnalyzerCore.a
 /usr/local/lib64/libclangStaticAnalyzerFrontend.a
@@ -4103,14 +4104,14 @@
 /usr/local/lib64/liblldbIntelFeatures.so.16
 /usr/local/lib64/liblldb.so
 /usr/local/lib64/liblldb.so.16
-/usr/local/lib64/liblldb.so.16.0.5
+/usr/local/lib64/liblldb.so.16.0.6
 /usr/local/lib64/liblldCOFF.a
 /usr/local/lib64/liblldCommon.a
 /usr/local/lib64/liblldELF.a
 /usr/local/lib64/liblldMachO.a
 /usr/local/lib64/liblldMinGW.a
 /usr/local/lib64/liblldWasm.a
-/usr/local/lib64/libLLVM-16.0.5.so
+/usr/local/lib64/libLLVM-16.0.6.so
 /usr/local/lib64/libLLVM-16.so
 /usr/local/lib64/libLLVMAArch64AsmParser.a
 /usr/local/lib64/libLLVMAArch64CodeGen.a

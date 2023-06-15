@@ -1071,14 +1071,14 @@ def determine_conflicts(dir, pkg)
   conflicts = []
   if File.file?("#{dir}/filelist")
     if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
-      puts 'Checking for conflicts with files from installed packages...'
-      conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
+      puts 'Checking for conflicts with files from installed packages...'.orange
+      conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
       conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
       conflicts.reject!(&:empty?)
     end
   elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
     puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{pkg}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
+    conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end

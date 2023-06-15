@@ -9,7 +9,7 @@ class Crew_launcher < Package
   source_url 'https://github.com/chromebrew/crew-launcher.git'
   git_hashtag '1.1'
 
-  depends_on 'llvm_lib16'
+  depends_on 'llvm16_lib'
   depends_on 'graphicsmagick'
 
   def self.install

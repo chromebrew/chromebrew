@@ -36,7 +36,7 @@ class Gspell < Package
   depends_on 'icu4c' # R
   depends_on 'iso_codes' => :build
   depends_on 'libxml2' => :build
-  depends_on 'llvm_lib16' => :build
+  depends_on 'llvm16_lib' => :build
   depends_on 'ncurses' # R
   depends_on 'pango' # R
   depends_on 'vala' => :build
