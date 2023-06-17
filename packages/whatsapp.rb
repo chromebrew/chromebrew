@@ -1,6 +1,6 @@
 require 'package'
 
-class Whatsapp_for_linux < Package
+class Whatsapp < Package
   description 'An unofficial WhatsApp desktop application for Linux.'
   homepage 'https://github.com/eneshecan/whatsapp-for-linux'
   version '1.6.3'

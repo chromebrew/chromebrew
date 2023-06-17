@@ -32,7 +32,7 @@ class Discord < Package
     binpath        = "#{CREW_DEST_PREFIX}/bin"
 
     FileUtils.mkdir_p [prefix, "#{icon_prefix}/256x256/apps", desktop_prefix, binpath]
-    FileUtils.cp_r Dir['*'], prefix
+    FileUtils.mv Dir['*'], prefix
 
     FileUtils.ln_s "#{symlink_prefix}/Discord", "#{binpath}/discord"
     FileUtils.ln_s "#{symlink_prefix}/discord.desktop", "#{desktop_prefix}/discord.desktop"

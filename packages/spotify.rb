@@ -41,7 +41,7 @@ class Spotify < Package
     # handle icons
     %w[16 22 24 32 48 64 128 256 512].each do |size|
       FileUtils.mkdir_p "#{icon_prefix}/#{size}x#{size}/apps"
-      FileUtils.cp "./usr/share/spotify/icons/spotify-linux-#{size}.png", "#{icon_prefix}/#{size}x#{size}/apps/spotify-client.png"
+      FileUtils.install "./usr/share/spotify/icons/spotify-linux-#{size}.png", "#{icon_prefix}/#{size}x#{size}/apps/spotify-client.png"
     end
   end
 end
