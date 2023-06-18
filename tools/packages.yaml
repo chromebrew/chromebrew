@@ -5911,6 +5911,11 @@ url: https://ngrok.com/download
 activity: none
 ---
 kind: url
+name: nikto
+url: https://github.com/sullo/nikto/releases
+activity: none
+---
+kind: url
 name: nim
 url: https://nim-lang.org/install_unix.html
 activity: medium
