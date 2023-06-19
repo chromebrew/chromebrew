@@ -1,0 +1,72 @@
+---
+name: Build
+on:
+  workflow_call:
+    inputs:
+      packages:
+        required: true
+        type: string
+jobs:
+  build_x86_64:
+    runs-on: ubuntu-latest
+    container:
+      # This is using an older version of the dockerfile to avoid issues with actions/upload-artifact
+      image: satmandu/crewbuild:amd64@sha256:8ce37cddc8950a6717c2b6a335580aa4142393926fff0640ec64b6b78ee530b8
+      options: -u chronos
+    steps:
+      - name: Setup environment
+        run: |
+          mkdir /usr/local/manifests
+          mkdir /usr/local/build
+      - name: Build package
+        run: |
+          export CREW_LOCAL_MANIFEST_PATH=/usr/local/manifests
+          cd /usr/local/build
+          for package in ${{ inputs.packages }}; do
+            yes | crew build $package
+          done
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts_x86_64
+          path: |
+            /usr/local/build
+            /usr/local/manifests
+          retention-days: 1
+  commit:
+    needs: build_x86_64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: artifacts_x86_64
+          path: ${{ github.workspace }}
+      - name: Update filelists
+        run: |
+          for package in ${{ inputs.packages }}; do
+              cp -f ${{ github.workspace }}/manifests/x86_64/${package:0:1}/$package.filelist ${{ github.workspace }}/manifest/x86_64/${package:0:1}/$package.filelist
+          done
+      - name: Update binaries
+        env:
+          gitlab_token: ${{ secrets.gitlab_token  }}
+        run: |
+          for package in ${{ inputs.packages }}; do
+              mkdir ./${{ github.workspace }}/release/x86_64
+              find ./${{ github.workspace }}/builds/ -name '$package-*' -exec cp {} ./${{ github.workspace }}/release/x86_64/ \;
+              cd ./${{ github.workspace }}/tools
+              export GITLAB_TOKEN=${{ secrets.gitlab_token  }}
+              ./gl.sh $package
+          done
+      - name: Configure git
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email actions@example.com
+      - name: Commit updates
+        run: |
+          for package in ${{ inputs.packages }}; do
+              git commit -o ${{ github.workspace }}/manifest/*/${package:0:1}/$package.filelist ${{ github.workspace }}/packages/$package.rb -m "Update filelists and binaries for $package"
+              git push
+          done

@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
+      packages: ${{ steps.changed-file-extensions.outputs.packages }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -19,7 +20,11 @@ jobs:
         id: changed-file-extensions
         run: |
           category=
+          packages=
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            # If any packages were changed, get their name.
+            [[ "$(dirname $file)" == "packages" ]] && packages+="$(basename -s .rb $file) "
+            # Get the extensions of the changed files, see what type they are.
             ext="${file##*.}"
             case $ext in
               md)
@@ -37,19 +42,26 @@ jobs:
             [[ "$(file -b $file | cut -d' ' -f1)" == "Ruby" ]] && category+=" Ruby"
           done
           echo "category=$category" >> $GITHUB_OUTPUT
-  # Github won't let us do this neatly, see https://github.com/orgs/community/discussions/25246
-  markdown:
+          echo "packages=$packages" >> $GITHUB_OUTPUT
+  # Ruby workflows
+  rubocop:
     needs: handoff
-    if: contains(needs.handoff.outputs.category, 'Markdown')
-    uses: ./.github/workflows/Markdown-lint.yml
-  ruby:
-    needs: handoff
-    if: contains(needs.handoff.outputs.category, 'Ruby')
+    if: ${{ needs.handoff.outputs.category == 'Ruby' }}
     uses: ./.github/workflows/Rubocop.yml
+  build:
+    needs: handoff
+    if: ${{ needs.handoff.outputs.packages != '' }}
+    uses: ./.github/workflows/Build.yml
+    with:
+      packages: ${{ needs.handoff.outputs.packages }}
   bash:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'Bash')
     uses: ./.github/workflows/ShellCheck.yml
+  markdown:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'Markdown')
+    uses: ./.github/workflows/Markdown-lint.yml
   yaml:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
