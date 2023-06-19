@@ -23,34 +23,34 @@ jobs:
             ext="${file##*.}"
             case $ext in
               md)
-                category=Markdown;;
+                category+=" Markdown";;
               rb)
-                category=Ruby;;
+                category+=" Ruby";;
               sh)
-                category=Bash;;
+                category+=" Bash";;
               yml|yaml)
-                category=YAML;;
+                category+=" YAML";;
               *)
                 echo "Unable to check syntax of $file.";;
             esac
             # In order for files such as bin/crew to be recognised
-            [[ "$(file -b $file | cut -d' ' -f1)" == "Ruby" ]] && category=Ruby
+            [[ "$(file -b $file | cut -d' ' -f1)" == "Ruby" ]] && category+=" Ruby"
           done
           echo "category=$category" >> $GITHUB_OUTPUT
   # Github won't let us do this neatly, see https://github.com/orgs/community/discussions/25246
   markdown:
     needs: handoff
-    if: ${{ needs.handoff.outputs.category == 'Markdown' }}
+    if: contains(needs.handoff.outputs.category, 'Markdown')
     uses: ./.github/workflows/Markdown-lint.yml
   ruby:
     needs: handoff
-    if: ${{ needs.handoff.outputs.category == 'Ruby' }}
+    if: contains(needs.handoff.outputs.category, 'Ruby')
     uses: ./.github/workflows/Rubocop.yml
   bash:
     needs: handoff
-    if: ${{ needs.handoff.outputs.category == 'Bash' }}
+    if: contains(needs.handoff.outputs.category, 'Bash')
     uses: ./.github/workflows/ShellCheck.yml
   yaml:
     needs: handoff
-    if: ${{ needs.handoff.outputs.category == 'YAML' }}
+    if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
