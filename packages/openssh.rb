@@ -3,23 +3,23 @@ require 'package'
 class Openssh < Package
   description 'OpenSSH is the premier connectivity tool for remote login with the SSH protocol.'
   homepage 'https://www.openssh.com/'
-  version '9.2'
+  version '9.3'
   license 'BSD and GPL-2'
   compatibility 'all'
   source_url 'https://github.com/openssh/openssh-portable.git'
-  git_hashtag 'V_9_2_P1'
+  git_hashtag 'V_9_3_P1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.2_armv7l/openssh-9.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.2_armv7l/openssh-9.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.2_i686/openssh-9.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.2_x86_64/openssh-9.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.3_armv7l/openssh-9.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.3_armv7l/openssh-9.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.3_i686/openssh-9.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.3_x86_64/openssh-9.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b6b52c354cdfbaed0106310c665a3589d12246ff54b6d203eca450026c7dd8bc',
-     armv7l: 'b6b52c354cdfbaed0106310c665a3589d12246ff54b6d203eca450026c7dd8bc',
-       i686: '44360be3865797524ce9ae1b35903945ec15bbfcbd9f636797c99fa4c8003431',
-     x86_64: '989eb709d54b431f481127d60fa492b76bbcc24b8db3af6ad9f1d2b23eff62ff'
+    aarch64: '1a63e381cdc66ab8a90f5ab09e330c82049ae9c2d9f1214a60bd2f7674d59b30',
+     armv7l: '1a63e381cdc66ab8a90f5ab09e330c82049ae9c2d9f1214a60bd2f7674d59b30',
+       i686: 'b034291d0bdb5df894bf94c388c091084c74fbec744914377b3525cb533d3b4a',
+     x86_64: '13016d5e28942c0c225ba914a23ed4a604d5f55c426cf49f51dd24c5f7e18e92'
   })
 
   depends_on 'gcc_lib' # R
