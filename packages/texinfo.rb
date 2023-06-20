@@ -25,9 +25,9 @@ class Texinfo < Package
   depends_on 'glibc_lib' # R
   depends_on 'ncurses' # R
   depends_on 'perl' # L
-  depends_on 'perl_locale_messages' => :build
-  depends_on 'perl_text_unidecode' => :build
-  depends_on 'perl_unicode_eastasianwidth' => :build
+  depends_on 'perl_locale_messages' # L
+  depends_on 'perl_text_unidecode' # L
+  depends_on 'perl_unicode_eastasianwidth' # L
 
   def self.build
     system "mold -run ./configure #{CREW_OPTIONS} \
