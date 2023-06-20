@@ -552,7 +552,7 @@ end
 
 def files(pkgName)
   local_filelist    = File.join(CREW_META_PATH, "#{pkgName}.filelist")
-  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{ARCH}/#{pkgName}.filelist")
+  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{ARCH}/#{pkgName[0]}/#{pkgName}.filelist")
 
   if File.exist?(local_filelist)
     # search for local filelist first
