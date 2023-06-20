@@ -599,7 +599,7 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  matchedList = `grep "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{ARCH}/*.filelist`.lines(chomp: true).flat_map do |result|
+  matchedList = `grep -R "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{ARCH}`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
     pkgName = File.basename(filelist, '.filelist')
     pkgNameStatus = pkgName
@@ -620,7 +620,8 @@ def update
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system 'git sparse-checkout set packages manifest lib bin crew tools'
+    system "git sparse-checkout set packages manifest/#{ARCH} lib bin crew tools"
+    system 'git sparse-checkout reapply'
 
     if CREW_TESTING == '1'
       puts 'Updating crew from testing repository...'
