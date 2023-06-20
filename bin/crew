@@ -53,7 +53,6 @@ DOC = <<~DOCOPT
     crew search [options] [<name> ...]
     crew sysinfo [options]
     crew update [options] [<compatible>]
-    crew updatefiles [options]
     crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
     crew whatprovides [options] <pattern> ...
 
@@ -1979,11 +1978,6 @@ def update_command(args)
   else
     update
   end
-end
-
-def updatefiles_command(args)
-  verbose = args['--verbose'] ? '-v' : ''
-  updatefiles
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)
