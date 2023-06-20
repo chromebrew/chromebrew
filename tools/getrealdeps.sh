@@ -124,6 +124,8 @@ echo "$lines" | tr " " "\n" | awk '!x[$0]++')
 pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed "/${pkg}/d" | sort -u )
 # Replace glibc_build packages with glibc
 pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed 's/glibc_build.*/glibc/' | sort -u )
+# Replace glibc_lib* packages with glibc_lib
+pkgdeps=$(tr " " "\n" <<< "$pkgdeps" | sed 's/glibc_lib.*/glibc_lib/' | sort -u )
 
 # Note which dependencies are missing, but ignore :build lines, since
 # build depenencies may still be runtime dependencies.
