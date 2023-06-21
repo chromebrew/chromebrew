@@ -3,20 +3,20 @@ require 'package'
 class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
-  version '2.30.0'
+  version '2.31.0'
   license 'MIT'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/cli/cli/releases/download/v2.30.0/gh_2.30.0_linux_armv6.tar.gz',
-     armv7l: 'https://github.com/cli/cli/releases/download/v2.30.0/gh_2.30.0_linux_armv6.tar.gz',
-       i686: 'https://github.com/cli/cli/releases/download/v2.30.0/gh_2.30.0_linux_386.tar.gz',
-     x86_64: 'https://github.com/cli/cli/releases/download/v2.30.0/gh_2.30.0_linux_amd64.tar.gz'
+    aarch64: 'https://github.com/cli/cli/releases/download/v2.31.0/gh_2.31.0_linux_armv6.tar.gz',
+     armv7l: 'https://github.com/cli/cli/releases/download/v2.31.0/gh_2.31.0_linux_armv6.tar.gz',
+       i686: 'https://github.com/cli/cli/releases/download/v2.31.0/gh_2.31.0_linux_386.tar.gz',
+     x86_64: 'https://github.com/cli/cli/releases/download/v2.31.0/gh_2.31.0_linux_amd64.tar.gz'
   })
   source_sha256({
-    aarch64: '472424e5739fb626921423f04cc30aed14605eb019ec860104351baf1a7307d4',
-     armv7l: '472424e5739fb626921423f04cc30aed14605eb019ec860104351baf1a7307d4',
-       i686: 'b44c30f3662c27f60d64d420f4c8fe62d5670592de894faa245405c710a07e1c',
-     x86_64: '5aee45bd42a27f5be309373c326e45cbcc7f04591b1798581a3094af767225b7'
+    aarch64: '8ca0f926fa7c7090199f0e87c3d22e8167f4f2892c1b77dcf041ce50fd6423a0',
+     armv7l: '8ca0f926fa7c7090199f0e87c3d22e8167f4f2892c1b77dcf041ce50fd6423a0',
+       i686: '10a734127afeb4a5fc940d3023175130d3f432b14591eb8a2a24d8325c8ed803',
+     x86_64: 'eec349e43803759d3d7a138d214ae983a3bebebd8e6dd0ec0ff1eea7bdd823e7'
   })
 
   no_compile_needed
