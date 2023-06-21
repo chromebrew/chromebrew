@@ -566,8 +566,8 @@ activity: none
 ---
 kind: url
 name: bind
-url: https://www.isc.org/downloads
-activity: medium
+url: https://gitlab.isc.org/isc-projects/bind9/-/tags
+activity: high
 ---
 kind: url
 name: binutils
