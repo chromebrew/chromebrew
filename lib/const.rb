@@ -1,6 +1,6 @@
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.34.4'
+CREW_VERSION = '1.34.5'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -39,6 +39,9 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # This helps with virtualized builds on aarch64 machines
 # which report armv8l when linux32 is run.
 ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
+
+# This helps determine if there is a difference between kernel and user space
+USER_SPACE_ARCH = ARCH.eql?('aarch64') && !Dir.exist?('/lib64') ? 'armv7l' : ARCH
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
