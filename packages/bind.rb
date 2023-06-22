@@ -5,21 +5,21 @@ class Bind < Package
   homepage 'https://www.isc.org/downloads/bind/'
   version '9.18.16'
   license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
-  compatibility 'x86_64'
-  source_url 'https://gitlab.isc.org/isc-projects/bind9.git'
-  git_hashtag "v#{version}"
+  compatibility 'all'
+  source_url "https://ftp.isc.org/isc/bind9/#{version}/bind-#{version}.tar.xz"
+  source_sha256 'c88234fe07ee75c3c8a9e59152fee64b714643de8e22cf98da3db4d0b57e0775'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.16_armv7l/bind-9.18.16-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.16_armv7l/bind-9.18.16-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.16_i686/bind-9.18.16-chromeos-i686.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.16_x86_64/bind-9.18.16-chromeos-x86_64.tar.zst'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.16_x86_64/bind-9.18.16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e558664b7580684c06fbb746c531e5337ab760e6bc0891e5a8d23567b0410c9d',
-     armv7l: 'e558664b7580684c06fbb746c531e5337ab760e6bc0891e5a8d23567b0410c9d',
-       i686: 'c89e967767e8e94c759e659382e1d1d9e95abea58abdc91f7838e9c4db83cac6',
-    x86_64: 'c05311d3614493bdeab6c4c09d4e26c72265e10368891fa591d5d0325b3ceecc'
+    aarch64: '7952f0a08296a953fcec93eae2414b5bb46ca8872282272e790a192ba4eac9c2',
+     armv7l: '7952f0a08296a953fcec93eae2414b5bb46ca8872282272e790a192ba4eac9c2',
+       i686: '67fbe2a286b9d51c2fe85288d43950ab488af45535fac3fc4ecb381d19ee786c',
+     x86_64: 'e9026c5b1d05ae5b5cabfb8162cec563f6c55913121541fad9d3549f618454f1'
   })
 
   depends_on 'e2fsprogs' # R
@@ -42,7 +42,6 @@ class Bind < Package
   depends_on 'zlibpkg' # R
 
   def self.build
-    system 'autoreconf -fi'
     system 'filefix'
     system "CFLAGS='-DDIG_SIGCHASE' \
         ./configure \
@@ -50,8 +49,7 @@ class Bind < Package
          --enable-fixed-rrset \
          --enable-full-report \
          --with-openssl \
-         --with-libidn2 \
-         --disable-maintainer-mode"
+         --with-libidn2"
     system 'make'
   end
 
