@@ -3,11 +3,10 @@ require 'package'
 class Mtools < Package
   description 'Mtools is a collection of utilities to access MS-DOS disks from GNU and Unix without mounting them.'
   homepage 'https://www.gnu.org/software/mtools/'
-  @_ver = '4.0.26'
-  version @_ver
+  version '4.0.26'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftp.gnu.org/gnu/mtools/mtools-#{@_ver}.tar.lz"
+  source_url "https://ftp.gnu.org/gnu/mtools/mtools-#{version}.tar.lz"
   source_sha256 'd09cff66d7277ad36a7573fc3e9803bfa558cdda83baabaafbf7761317462283'
 
   binary_url({

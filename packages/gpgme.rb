@@ -3,11 +3,10 @@ require 'package'
 class Gpgme < Package
   description 'GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG easier for applications.'
   homepage 'https://www.gnupg.org/related_software/gpgme/index.html'
-  @_ver = '1.17.1'
-  version @_ver
+  version '1.17.1'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{@_ver}.tar.bz2"
+  source_url "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-#{version}.tar.bz2"
   source_sha256 '711eabf5dd661b9b04be9edc9ace2a7bc031f6bd9d37a768d02d0efdef108f5f'
 
   binary_url({

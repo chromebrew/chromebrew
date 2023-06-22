@@ -3,11 +3,10 @@ require 'package'
 class Libusb < Package
   description 'A cross-platform library that gives apps easy access to USB devices'
   homepage 'https://sourceforge.net/projects/libusb/'
-  @_ver = '1.0.26'
-  version @_ver
+  version '1.0.26'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://github.com/libusb/libusb/releases/download/v#{@_ver}/libusb-#{@_ver}.tar.bz2"
+  source_url "https://github.com/libusb/libusb/releases/download/v#{version}/libusb-#{version}.tar.bz2"
   source_sha256 '12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5'
 
   binary_url({

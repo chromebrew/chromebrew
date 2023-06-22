@@ -3,11 +3,10 @@ require 'package'
 class Gnome_online_accounts < Package
   description 'Single sign-on framework for GNOME'
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
-  @_ver = '3.39.92'
-  version @_ver
+  version '3.39.92'
   license 'LGPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/archive/#{@_ver}/gnome-online-accounts-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/archive/#{version}/gnome-online-accounts-#{version}.tar.bz2"
   source_sha256 '89e27c886c0266b8c84a56dbb0fb0baefa704dd4d0ec47dd154a26590554adc9'
 
   binary_url({

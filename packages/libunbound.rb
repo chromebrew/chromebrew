@@ -3,11 +3,10 @@ require 'package'
 class Libunbound < Package
   description 'Unbound is a validating, recursive, and caching DNS resolver.'
   homepage 'https://nlnetlabs.nl/projects/unbound/about/'
-  @_ver = '1.17.1'
-  version @_ver
+  version '1.17.1'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{@_ver}.tar.gz"
+  source_url "https://nlnetlabs.nl/downloads/unbound/unbound-#{version}.tar.gz"
   source_sha256 'ee4085cecce12584e600f3d814a28fa822dfaacec1f94c84bfd67f8a5571a5f4'
 
   binary_url({

@@ -3,11 +3,10 @@ require 'package'
 class Swi_prolog < Package
   description 'SWI-Prolog offers a comprehensive free Prolog environment. Since its start in 1987, SWI-Prolog development has been driven by the needs of real world applications. SWI-Prolog is widely used in research and education as well as commercial applications. Join over a million users who have downloaded SWI-Prolog.'
   homepage 'https://www.swi-prolog.org/'
-  @_ver = '8.2.4'
-  version @_ver
+  version '8.2.4'
   license 'BSD-2'
   compatibility 'i686,x86_64'
-  source_url "https://www.swi-prolog.org/download/stable/src/swipl-#{@_ver}.tar.gz"
+  source_url "https://www.swi-prolog.org/download/stable/src/swipl-#{version}.tar.gz"
   source_sha256 'f4bcc78437f9080ab089762e9e6afa7071df7f584c14999b92b9a90a4efbd7d8'
 
   binary_url({

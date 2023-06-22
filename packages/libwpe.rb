@@ -3,11 +3,10 @@ require 'package'
 class Libwpe < Package
   description 'General-purpose library for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  @_ver = '1.14.0'
-  version @_ver
+  version '1.14.0'
   license 'BSD-2'
   compatibility 'all'
-  source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{@_ver}/libwpe-#{@_ver}.tar.xz"
+  source_url "https://github.com/WebPlatformForEmbedded/libwpe/releases/download/#{version}/libwpe-#{version}.tar.xz"
   source_sha256 'c073305bbac5f4402cc1c8a4753bfa3d63a408901f86182051eaa5a75dd89c00'
 
   binary_url({

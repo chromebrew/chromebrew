@@ -3,11 +3,10 @@ require 'package'
 class Enchant < Package
   description 'Enchant is a library (and command-line program) that wraps a number of different spelling libraries and programs with a consistent interface.'
   homepage 'https://abiword.github.io/enchant/'
-  @_ver = '2.2.15'
-  version @_ver
+  version '2.2.15'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://github.com/AbiWord/enchant/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/AbiWord/enchant/archive/v#{version}.tar.gz"
   source_sha256 '85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d'
 
   binary_url({

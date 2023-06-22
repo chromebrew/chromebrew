@@ -3,11 +3,10 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.40'
-  version @_ver
+  version '2.40'
   license 'GPL-3+'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.bz2"
+  source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version}.tar.bz2"
   source_sha256 'f8298eb153a4b37d112e945aa5cb2850040bcf26a3ea65b5a715c83afe05e48a'
 
   binary_url({

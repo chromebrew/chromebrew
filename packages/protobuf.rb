@@ -6,11 +6,10 @@ require 'package'
 class Protobuf < Package
   description 'Protocol Buffers - Googles data interchange format'
   homepage 'https://developers.google.com/protocol-buffers/'
-  @_ver = '21.12'
-  version @_ver
+  version '21.12'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/protocolbuffers/protobuf/archive/v#{@_ver}/protobuf-#{@_ver}.tar.gz"
+  source_url "https://github.com/protocolbuffers/protobuf/archive/v#{version}/protobuf-#{version}.tar.gz"
   source_sha256 '22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de'
 
   binary_url({

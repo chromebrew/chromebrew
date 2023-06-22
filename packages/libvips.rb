@@ -3,11 +3,10 @@ require 'package'
 class Libvips < Package
   description 'A fast image processing library with low memory needs'
   homepage 'https://libvips.github.io/libvips/'
-  @_ver = '8.10.6-beta2'
-  version @_ver
+  version '8.10.6-beta2'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://github.com/libvips/libvips/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/libvips/libvips/archive/v#{version}.tar.gz"
   source_sha256 'b2412f580ba83129d55e57a73c7c4fdb53e60a39c48910acc5f0d80518deb7a5'
 
   binary_url({

@@ -3,11 +3,10 @@ require 'package'
 class Gcr_3 < Package
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
-  @_ver = '3.41.1'
-  version @_ver
+  version '3.41.1'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{@_ver}/gcr-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{version}/gcr-#{version}.tar.bz2"
   source_sha256 '7e06e86e12aadaac6a72f2ee7eeaaaa6228a0ba3b92cadd50b45c0f05f0d91c6'
 
   binary_url({

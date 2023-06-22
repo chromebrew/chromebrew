@@ -3,11 +3,10 @@ require 'package'
 class Libxcursor < Package
   description 'X.org X Cursor management library'
   homepage 'http://www.x.org'
-  @_ver = '1.2.1'
-  version @_ver
+  version '1.2.1'
   license 'MIT'
   compatibility 'all'
-  source_url "https://www.x.org/archive/individual/lib/libXcursor-#{@_ver}.tar.gz"
+  source_url "https://www.x.org/archive/individual/lib/libXcursor-#{version}.tar.gz"
   source_sha256 '77f96b9ad0a3c422cfa826afabaf1e02b9bfbfc8908c5fa1a45094faad074b98'
 
   binary_url({

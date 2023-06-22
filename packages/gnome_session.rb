@@ -3,11 +3,10 @@ require 'package'
 class Gnome_session < Package
   description 'The GNOME Session Handler'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-session'
-  @_ver = '43.0'
-  version @_ver
+  version '43.0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-session/-/archive/#{@_ver}/gnome-session-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/gnome-session/-/archive/#{version}/gnome-session-#{version}.tar.bz2"
   source_sha256 'a56b5a4179e4e567fb360e98ae1a1b8b8e3deed8fb0ff66d3f343e4623f59f3c'
 
   binary_url({

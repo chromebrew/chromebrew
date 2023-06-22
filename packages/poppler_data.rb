@@ -3,11 +3,10 @@ require 'package'
 class Poppler_data < Package
   description 'This additional package consists of encoding files for use with Poppler.'
   homepage 'https://poppler.freedesktop.org/'
-  @_ver = '0.4.12'
-  version @_ver
+  version '0.4.12'
   license 'BSD, GPL-2 and MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://poppler.freedesktop.org/poppler-data-#{@_ver}.tar.gz"
+  source_url "https://poppler.freedesktop.org/poppler-data-#{version}.tar.gz"
   source_sha256 'c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74'
 
   binary_url({

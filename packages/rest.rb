@@ -3,11 +3,10 @@ require 'package'
 class Rest < Package
   description 'Helper library for RESTful services'
   homepage 'https://wiki.gnome.org/Projects/Librest'
-  @_ver = '0.9.1'
-  version @_ver
+  version '0.9.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/librest/-/archive/#{@_ver}/librest-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/librest/-/archive/#{version}/librest-#{version}.tar.bz2"
   source_sha256 '5c39f6696b271194546880e0f360e21496b2882f72e4bb85433125de98fce03a'
 
   binary_url({
