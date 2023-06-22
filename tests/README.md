@@ -25,10 +25,10 @@ require_relative "../lib/package"
 pkg = Package.load_package('../package/buildessential.rb')
 
 if pkg.dependencies and pkg.dependencies.has_key?('gcc') then
-	puts "Everything works properly.".lightgreen
+    puts "Everything works properly.".lightgreen
 else
-	puts "Buildessential should depend on gcc!".lightred
-	exit 1
+    puts "Buildessential should depend on gcc!".lightred
+    exit 1
 end
 ```
 Make sure the script is executable with `chmod +x my_test`. Note: This will only work in directories with execute permission.
