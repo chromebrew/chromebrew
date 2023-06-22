@@ -29,9 +29,10 @@ class Vkd3d < Package
   depends_on 'spirv_tools' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
+  no_lto
 
   def self.build
-    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
             --with-xcb \
             --with-spirv-tools"
     system 'make'

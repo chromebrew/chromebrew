@@ -39,7 +39,7 @@ class Gnutls < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  no_env_options
+  no_lto
 
   def self.prebuild
     # Use IPv4 fallback if default connection fails.
@@ -54,7 +54,7 @@ class Gnutls < Package
 
   def self.build
     system './configure --help'
-    system "mold -run ./configure #{CREW_OPTIONS} #{CREW_ENV_FNO_LTO_OPTIONS} \
+    system "mold -run ./configure #{CREW_OPTIONS} \
       --enable-shared \
       --with-pic \
       --with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities \

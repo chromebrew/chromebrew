@@ -24,12 +24,13 @@ class Libbsd < Package
 
   depends_on 'glibc' # R
   depends_on 'libmd' # R
+  no_lto
 
   def self.build
     FileUtils.mkdir_p 'm4'
     system 'autoupdate'
     system 'autoreconf -fiv'
-    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make'
   end
 
