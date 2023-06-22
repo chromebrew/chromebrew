@@ -50,12 +50,13 @@ class Wine < Package
   depends_on 'sommelier'
   depends_on 'vkd3d'
   depends_on 'xdg_base'
+  no_lto
 
   def self.build
     FileUtils.mkdir_p 'wine64-build'
     Dir.chdir 'wine64-build' do
       unless File.file?('Makefile')
-        system "#{CREW_ENV_FNO_LTO_OPTIONS} ../configure #{CREW_OPTIONS} \
+        system "../configure #{CREW_OPTIONS} \
           --enable-win64 \
           --disable-maintainer-mode \
           --with-gstreamer \

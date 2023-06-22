@@ -429,11 +429,12 @@ def help(pkgName = nil)
         puts "Use the 'no_shrink' property to bypass upx binary compression."
       when 'no_strip'
         puts "Use the 'no_strip' property to bypass strip execution."
+      when 'no_lto'
+        puts "Use the 'no_lto' property to bypass lto usage."
       when 'no_zstd'
         puts "Use the 'no_zstd' property for the alternate xz compression algorithm."
       when 'patchelf'
         puts "Use the 'patchelf' property for patchelf execution."
-        puts 'This is the default and for most cases is not needed.'
       else
         abort "Help for the '#{ARGV[2]}' property is not available.".lightred
       end

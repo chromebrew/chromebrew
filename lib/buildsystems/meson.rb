@@ -11,7 +11,9 @@ class Meson < Package
   end
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} #{@meson_options} builddir"
+    @crew_meson_options = no_lto ? CREW_MESON_FNO_LTO_OPTIONS : CREW_MESON_OPTIONS
+    system "meson #{@crew_meson_options} #{@meson_options} builddir"
+    system 'meson configure builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

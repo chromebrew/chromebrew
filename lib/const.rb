@@ -2,7 +2,7 @@ require 'fileutils'
 
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.34.5'
+CREW_VERSION = '1.34.6'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp

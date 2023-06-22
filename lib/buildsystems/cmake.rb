@@ -11,7 +11,8 @@ class CMake < Package
   end
 
   def self.build
-    system "cmake -B builddir -G Ninja #{CREW_CMAKE_OPTIONS} #{@cmake_options}"
+    @crew_cmake_options = no_lto ? CREW_CMAKE_FNO_LTO_OPTIONS : CREW_CMAKE_OPTIONS
+    system "cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
     system "#{CREW_NINJA} -C builddir"
   end
 
