@@ -23,6 +23,13 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 # uname -m reports armv8l.
 ARCH="${ARCH/armv8l/armv7l}"
 
+# Determine if there is a difference between kernel and user space
+if [[ "${ARCH}" == "aarch64" && ! -d '/lib64' ]]; then
+  USER_SPACE_ARCH='armv7l'
+else
+  USER_SPACE_ARCH="${ARCH}"
+fi
+
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
 BOOTSTRAP_PACKAGES="crew_mvdir pixz ca_certificates ruby openssl"
 [ -x /usr/bin/zstd ] || BOOTSTRAP_PACKAGES="zstd ${BOOTSTRAP_PACKAGES}" # use system zstd if available
@@ -168,14 +175,12 @@ echo -e "${RESET}"
 urls=()
 sha256s=()
 
-case "${ARCH}" in
-"armv7l"|"aarch64")
-  if ! type "xz" > /dev/null; then
+if ! type "xz" > /dev/null; then
+  if [[ "${USER_SPACE_ARCH}" == "armv7l" ]]; then
     urls+=('https://github.com/snailium/chrome-cross/releases/download/v1.8.1/xz-5.2.3-chromeos-armv7l.tar.gz')
     sha256s+=('4dc9f086ee7613ab0145ec0ed5ac804c80c620c92f515cb62bae8d3c508cbfe7')
   fi
-  ;;
-esac
+fi
 
 # Create the device.json file if it doesn't exist.
 cd "${CREW_CONFIG_PATH}"

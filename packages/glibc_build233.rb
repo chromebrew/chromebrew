@@ -1,12 +1,13 @@
 require 'package'
 
-class Glibc_build < Package
+class Glibc_build233 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
 
   depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
   depends_on 'libidn2' => :build
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build

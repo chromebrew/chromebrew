@@ -40,6 +40,9 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # which report armv8l when linux32 is run.
 ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
 
+# This helps determine if there is a difference between kernel and user space
+USER_SPACE_ARCH = ARCH.eql?('aarch64') && !Dir.exist?('/lib64') ? 'armv7l' : ARCH
+
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
 ARCH_LIB = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? 'lib64' : 'lib'
