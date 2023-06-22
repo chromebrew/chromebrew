@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libgit2 < Package
+class Libgit2 < CMake
   description 'A portable, pure C implementation of the Git core methods'
   homepage 'https://libgit2.org/'
   version '1.5.1'
@@ -29,20 +29,7 @@ class Libgit2 < Package
   depends_on 'python3' # L
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "cmake -B builddir -G Ninja #{CREW_CMAKE_OPTIONS} \
-              -DUSE_SSH=ON \
-              -DUSE_BUNDLED_ZLIB=OFF \
-              -Wno-dev"
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
-
-  def self.check
-    # Tests #3 and #8 fail in containers
-    system 'samu -C builddir test || true'
-  end
+  cmake_options "-DUSE_SSH=ON -DUSE_BUNDLED_ZLIB=OFF"
+  # Tests #3 and #8 fail in containers
+  check? false
 end

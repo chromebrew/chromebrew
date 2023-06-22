@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_proto < Package
+class Xorg_proto < Meson
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
   version '2022.2'
@@ -21,15 +21,4 @@ class Xorg_proto < Package
        i686: '0592845ac3053d91b8158bd186c629d2a0b372a95b5d0e30c06b71a5fffe4e95',
      x86_64: '21802c99d382be50f69e613dee68e25821b6a09ba4b6833309899c76dce9789f'
   })
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end
