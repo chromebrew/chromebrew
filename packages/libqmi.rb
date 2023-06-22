@@ -3,11 +3,10 @@ require 'package'
 class Libqmi < Package
   description 'libqmi is a glib-based library for talking to WWAN modems and devices which speak the Qualcomm MSM Interface (QMI) protocol.'
   homepage 'https://www.freedesktop.org/wiki/Software/libqmi/'
-  @_ver = '1.28.2'
-  version @_ver
+  version '1.28.2'
   license 'LGPL-2'
   compatibility 'all'
-  source_url "https://www.freedesktop.org/software/libqmi/libqmi-#{@_ver}.tar.xz"
+  source_url "https://www.freedesktop.org/software/libqmi/libqmi-#{version}.tar.xz"
   source_sha256 '8c8c3ee719874d2529bce9b35b028fe435b36f003979a360d3ad0938449db783'
 
   binary_url({

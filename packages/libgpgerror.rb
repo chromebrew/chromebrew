@@ -3,11 +3,10 @@ require 'package'
 class Libgpgerror < Package
   description 'Libgpg-error is a small library that defines common error values for all GnuPG components.'
   homepage 'https://www.gnupg.org/related_software/libgpg-error/index.html'
-  @_ver = '1.46'
-  version @_ver
+  version '1.46'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{@_ver}.tar.bz2"
+  source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
   source_sha256 'b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d'
 
   binary_url({

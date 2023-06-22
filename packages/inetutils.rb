@@ -3,11 +3,10 @@ require 'package'
 class Inetutils < Package
   description 'The Inetutils package contains programs for basic networking. Such as dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp, traceroute'
   homepage 'https://www.gnu.org/software/inetutils/'
-  @_ver = '2.2'
-  version @_ver
+  version '2.2'
   license 'GPL-3'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{@_ver}.tar.xz"
+  source_url "https://ftpmirror.gnu.org/inetutils/inetutils-#{version}.tar.xz"
   source_sha256 'd547f69172df73afef691a0f7886280fd781acea28def4ff4b4b212086a89d80'
 
   binary_url({

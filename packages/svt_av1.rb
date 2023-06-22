@@ -5,11 +5,10 @@ require 'package'
 class Svt_av1 < Package
   description 'Scalable Video Technology AV1 encoder and decoder'
   homepage 'https://gitlab.com/AOMediaCodec/SVT-AV1'
-  @_ver = '1.3.0'
-  version @_ver
+  version '1.3.0'
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v#{@_ver}/SVT-AV1-v#{@_ver}.tar.bz2"
+  source_url "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v#{version}/SVT-AV1-v#{version}.tar.bz2"
   source_sha256 'f85fd13ef16880550e425797bdfdf1b0ba310c21d6b343f74ea79dd2fbb2336e'
 
   binary_url({

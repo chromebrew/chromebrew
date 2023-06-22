@@ -3,11 +3,10 @@ require 'package'
 class Libvncserver < Package
   description 'LibVNCServer/LibVNCClient are cross-platform C libraries that allow you to easily implement VNC server or client functionality in your program.'
   homepage 'https://github.com/LibVNC/libvncserver'
-  @_ver = '0.9.14'
-  version @_ver
+  version '0.9.14'
   compatibility 'all'
   license 'GPL-2, GPL-2+, LGPL-2.1+, BSD and MIT'
-  source_url "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-#{@_ver}.tar.gz"
+  source_url "https://github.com/LibVNC/libvncserver/archive/LibVNCServer-#{version}.tar.gz"
   source_sha256 '83104e4f7e28b02f8bf6b010d69b626fae591f887e949816305daebae527c9a5'
 
   binary_url({

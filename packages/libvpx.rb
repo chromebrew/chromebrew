@@ -3,11 +3,10 @@ require 'package'
 class Libvpx < Package
   description 'VP8/VP9 Codec SDK'
   homepage 'http://www.webmproject.org/code/'
-  @_ver = '1.10.0-rc1'
-  version @_ver
+  version '1.10.0-rc1'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/webmproject/libvpx/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/webmproject/libvpx/archive/v#{version}.tar.gz"
   source_sha256 '8e55e04cdefeb1596968e70c5167e13d26132ca214d276292d5cda737a430af5'
 
   binary_url({

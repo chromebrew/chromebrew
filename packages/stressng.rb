@@ -4,11 +4,10 @@ class Stressng < Package
   description 'stress-ng will stress test a computer system in various selectable ways.'
   homepage 'https://kernel.ubuntu.com/~cking/stress-ng/'
   # 0.12.06 would not build as of 2021.04.07
-  @_ver = '0.12.05'
-  version @_ver
+  version '0.12.05'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-#{@_ver}.tar.xz"
+  source_url "https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-#{version}.tar.xz"
   source_sha256 'af7779aee38e6d94726ed7d5cf36384a64d50c86e42fff89c141d8609913f425'
 
   binary_url({

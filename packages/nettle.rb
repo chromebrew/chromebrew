@@ -3,11 +3,10 @@ require 'package'
 class Nettle < Package
   description 'Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.'
   homepage 'http://www.lysator.liu.se/~nisse/nettle/'
-  @_ver = '3.7.2'
-  version @_ver
+  version '3.7.2'
   license 'LGPL-3 or LGPL-2.1'
   compatibility 'all'
-  source_url "https://ftpmirror.gnu.org/nettle/nettle-#{@_ver}.tar.gz"
+  source_url "https://ftpmirror.gnu.org/nettle/nettle-#{version}.tar.gz"
   source_sha256 '8d2a604ef1cde4cd5fb77e422531ea25ad064679ff0adf956e78b3352e0ef162'
 
   binary_url({

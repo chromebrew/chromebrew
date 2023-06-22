@@ -3,11 +3,10 @@ require 'package'
 class Gnome_maps < Package
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
-  @_ver = '43.0'
-  version @_ver
+  version '43.0'
   license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
   compatibility 'armv7l aarch64 x86_64'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-maps/-/archive/v#{@_ver}/gnome-maps-v#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/gnome-maps/-/archive/v#{version}/gnome-maps-v#{version}.tar.bz2"
   source_sha256 '5e580c23a86f6b63d7c923aac7e6351e7b6765c74298f6a811d5a398a378db12'
 
   binary_url({
