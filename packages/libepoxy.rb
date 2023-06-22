@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
 
 class Libepoxy < Package
   description 'Epoxy is a library for handling OpenGL function pointer management for you'
   homepage 'https://github.com/anholt/libepoxy'
-  version '1.5.5'
+  version '1.5.10'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/anholt/libepoxy/releases/download/1.5.5/libepoxy-1.5.5.tar.xz'
-  source_sha256 '261663db21bcc1cc232b07ea683252ee6992982276536924271535875f5b0556'
+  source_url 'https://github.com/anholt/libepoxy.git'
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.5_armv7l/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
@@ -24,14 +24,4 @@ class Libepoxy < Package
 
   depends_on 'mesa'
   depends_on 'python3'
-
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end

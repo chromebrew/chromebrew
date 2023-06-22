@@ -21,7 +21,7 @@ class Autotools < Package
         system 'autoreconf -fiv'
       end
     end
-    system "./configure #{CREW_OPTIONS} #{@configure_options}"
+    system "./configure CREW_OPTIONS #{@configure_options}"
     system 'make'
   end
 
