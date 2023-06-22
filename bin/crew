@@ -599,7 +599,7 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  matchedList = `grep -R "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{ARCH}`.lines(chomp: true).flat_map do |result|
+  matchedList = `grep -R "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{USER_SPACE_ARCH}`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
     pkgName = File.basename(filelist, '.filelist')
     pkgNameStatus = pkgName
