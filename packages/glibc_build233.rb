@@ -1,6 +1,6 @@
 require 'package'
 
-class Glibc_build < Package
+class Glibc_build233 < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
