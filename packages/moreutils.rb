@@ -3,11 +3,10 @@ require 'package'
 class Moreutils < Package
   description 'moreutils is a growing collection of the unix tools that nobody thought to write long ago when unix was young.'
   homepage 'https://joeyh.name/code/moreutils/'
-  @_ver = '0.65'
-  version @_ver
+  version '0.65'
   license 'GPL-2'
   compatibility 'all'
-  source_url "http://http.debian.net/debian/pool/main/m/moreutils/moreutils_#{@_ver}.orig.tar.xz"
+  source_url "http://http.debian.net/debian/pool/main/m/moreutils/moreutils_#{version}.orig.tar.xz"
   source_sha256 'ba0cfaa1ff6ead2b15c62a67292de66a366f9b815a09697b54677f7e15f5a2b2'
 
   binary_url({

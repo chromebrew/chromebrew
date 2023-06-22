@@ -3,8 +3,7 @@ require 'package'
 class Depot_tools < Package
   description 'Chromium uses a package of scripts, the depot_tools, to manage interaction with the Chromium source code repository and the Chromium development process.'
   homepage 'https://dev.chromium.org/developers/how-tos/depottools'
-  @_ver = 'da768751'
-  version @_ver
+  version 'da768751'
   license 'BSD-Google'
   compatibility 'all'
   source_url 'SKIP'
@@ -27,7 +26,7 @@ class Depot_tools < Package
   def self.install
     system 'git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git --depth 10'
     Dir.chdir 'depot_tools' do
-      system "git checkout #{@_ver}"
+      system "git checkout #{version}"
       FileUtils.rm_rf 'man/src/'
       FileUtils.rm_rf Dir.glob('.git*')
       system 'find -name \'*.bat\' -delete'

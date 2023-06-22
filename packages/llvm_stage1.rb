@@ -3,11 +3,10 @@ require 'package'
 class Llvm_stage1 < Package
   description 'THIS IS NOT THE LLVM PACKAGE. This is only a Limited Stage 1 compile of LLVM.'
   homepage 'http://llvm.org/'
-  @_ver = '13.0.0'
-  version @_ver
+  version '13.0.0'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain and rc'
   compatibility 'all'
-  source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{@_ver}/llvm-project-#{@_ver}.src.tar.xz"
+  source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/llvm-project-#{version}.src.tar.xz"
   source_sha256 '6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3'
 
   binary_url({
