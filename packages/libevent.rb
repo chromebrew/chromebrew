@@ -3,11 +3,10 @@ require 'package'
 class Libevent < Package
   description 'The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.'
   homepage 'http://libevent.org/'
-  @_ver = '2.1.12'
-  version @_ver
+  version '2.1.12'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/libevent/libevent/releases/download/release-#{@_ver}-stable/libevent-#{@_ver}-stable.tar.gz"
+  source_url "https://github.com/libevent/libevent/releases/download/release-#{version}-stable/libevent-#{version}-stable.tar.gz"
   source_sha256 '92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb'
 
   binary_url({

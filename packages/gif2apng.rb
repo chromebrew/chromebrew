@@ -3,11 +3,10 @@ require 'package'
 class Gif2apng < Package
   description 'Convert GIF animations into APNG format.'
   homepage 'https://sourceforge.net/projects/gif2apng/'
-  @_ver = '1.9'
-  version @_ver
+  version '1.9'
   license 'ZLIB LGPL-2.1'
   compatibility 'all'
-  source_url "https://sourceforge.net/projects/gif2apng/files/#{@_ver}/gif2apng-#{@_ver}-src.zip"
+  source_url "https://sourceforge.net/projects/gif2apng/files/#{version}/gif2apng-#{version}-src.zip"
   source_sha256 '3b21308e935d799b3ffb4a86c6e00ffa4cb9b3f72f52d58d51c66eb0574ae7d2'
 
   binary_url({
@@ -39,7 +38,7 @@ class Gif2apng < Package
     system 'make'
     system "help2man -s 1 -N -h '' \
             -n '#{description.downcase.delete! '.'}' \
-            --version-string='#{@_ver}' \
+            --version-string='#{version}' \
             ./gif2apng -o gif2apng.1"
   end
 

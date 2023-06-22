@@ -3,11 +3,10 @@ require 'package'
 class Php73 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  @_ver = '7.3.33'
-  version @_ver
+  version '7.3.33'
   license 'PHP-3.01'
   compatibility 'all'
-  source_url "https://www.php.net/distributions/php-#{@_ver}.tar.xz"
+  source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc'
 
   binary_url({

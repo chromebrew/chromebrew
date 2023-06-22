@@ -4,8 +4,7 @@ require 'uri'
 class Jdk17 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  @_ver = '17.0.4.1'
-  version @_ver
+  version '17.0.4.1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
 
@@ -15,7 +14,7 @@ class Jdk17 < Package
      x86_64: 'x64'
   }
 
-  source_url File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}_linux-x64_bin.tar.gz")
+  source_url File.join('file://', HOME, 'Downloads', "jdk-#{version}_linux-x64_bin.tar.gz")
   source_sha256 '2ac20cd72aa09c6577438e5ab5fd67e2dab606c724a84cfd289feecf6c22a1cf'
 
   no_compile_needed
@@ -50,7 +49,7 @@ class Jdk17 < Package
       You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
       https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
 
-      Download "jdk-#{@_ver}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
+      Download "jdk-#{version}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
     EOT
   end
 
