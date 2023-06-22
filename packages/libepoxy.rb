@@ -1,27 +1,28 @@
 require 'buildsystems/meson'
 
-class Libepoxy < Package
+class Libepoxy < Meson
   description 'Epoxy is a library for handling OpenGL function pointer management for you'
   homepage 'https://github.com/anholt/libepoxy'
   version '1.5.10'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/anholt/libepoxy.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.5_armv7l/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.5_armv7l/libepoxy-1.5.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.5_i686/libepoxy-1.5.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.5_x86_64/libepoxy-1.5.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.10_armv7l/libepoxy-1.5.10-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.10_armv7l/libepoxy-1.5.10-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libepoxy/1.5.10_x86_64/libepoxy-1.5.10-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'de87478a3eecf1b1ab3b23441b87ca0c81ee26af507b7223dffb51097aa15e07',
-     armv7l: 'de87478a3eecf1b1ab3b23441b87ca0c81ee26af507b7223dffb51097aa15e07',
-       i686: '39b1ca812fd683eda89f16a2b9f5be0a63425ea710f31abf5e9f208ba650b986',
-     x86_64: 'e2e6aeded9388b562742d958d047365157a7a4965a4b6147bc9178060a789bd6'
+    aarch64: '66b8a7eaa527e20d68e6e1834b4007b1f4b486bd6ad13bb31e46dc7287a75758',
+     armv7l: '66b8a7eaa527e20d68e6e1834b4007b1f4b486bd6ad13bb31e46dc7287a75758',
+     x86_64: '42b3fb3462233d166eac6af5755972df60042e06a3230a72357fe8c121ae8591'
   })
 
-  depends_on 'mesa'
-  depends_on 'python3'
+  depends_on 'mesa' => :build
+  depends_on 'python3' => :build
+  depends_on 'glibc' # R
+
+  no_lto
 end
