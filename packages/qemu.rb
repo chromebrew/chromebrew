@@ -6,7 +6,7 @@ class Qemu < Package
   version '8.0.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/qemu/qemu.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.1_armv7l/qemu-8.0.1-chromeos-armv7l.tar.zst',
