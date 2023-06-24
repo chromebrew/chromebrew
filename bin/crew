@@ -552,7 +552,7 @@ end
 
 def files(pkgName)
   local_filelist    = File.join(CREW_META_PATH, "#{pkgName}.filelist")
-  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{ARCH}/#{pkgName[0]}/#{pkgName}.filelist")
+  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{USER_SPACE_ARCH}/#{pkgName[0]}/#{pkgName}.filelist")
 
   if File.exist?(local_filelist)
     # search for local filelist first
@@ -617,6 +617,10 @@ end
 
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
+
+  # remove deprecated directory
+  FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
+
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
