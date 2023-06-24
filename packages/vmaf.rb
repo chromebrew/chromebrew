@@ -3,11 +3,10 @@ require 'package'
 class Vmaf < Package
   description 'Perceptual video quality assessment algorithm based on multi-method fusion'
   homepage 'https://github.com/Netflix/vmaf/'
-  @_ver = '2.1.1'
-  version @_ver
+  version '2.1.1'
   license 'BSD-2'
   compatibility 'all'
-  source_url "https://github.com/Netflix/vmaf/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/Netflix/vmaf/archive/v#{version}.tar.gz"
   source_sha256 'e7fc00ae1322a7eccfcf6d4f1cdf9c67eec8058709887c8c6c3795c617326f77'
 
   binary_url({

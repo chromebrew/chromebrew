@@ -3,8 +3,7 @@ require 'package'
 class Unicode_emoji < Package
   description 'Unicode Emoji Data Files'
   homepage 'https://www.unicode.org/emoji/'
-  @_ver = '13.1'
-  version @_ver
+  version '13.1'
   license 'unicode'
   compatibility 'all'
   source_url 'SKIP'
@@ -26,8 +25,8 @@ class Unicode_emoji < Package
 
   def self.install
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/unicode/emoji")
-    system "curl -Lf https://www.unicode.org/Public/emoji/#{@_ver}/emoji-sequences.txt -o #{CREW_DEST_PREFIX}/share/unicode/emoji/emoji-sequences.txt"
-    system "curl -Lf https://www.unicode.org/Public/emoji/#{@_ver}/emoji-test.txt -o #{CREW_DEST_PREFIX}/share/unicode/emoji/emoji-test.txt"
-    system "curl -Lf https://www.unicode.org/Public/emoji/#{@_ver}/emoji-zwj-sequences.txt -o #{CREW_DEST_PREFIX}/share/unicode/emoji/emoji-zwj-sequences.txt"
+    system "curl -Lf https://www.unicode.org/Public/emoji/#{version}/emoji-sequences.txt -o #{CREW_DEST_PREFIX}/share/unicode/emoji/emoji-sequences.txt"
+    system "curl -Lf https://www.unicode.org/Public/emoji/#{version}/emoji-test.txt -o #{CREW_DEST_PREFIX}/share/unicode/emoji/emoji-test.txt"
+    system "curl -Lf https://www.unicode.org/Public/emoji/#{version}/emoji-zwj-sequences.txt -o #{CREW_DEST_PREFIX}/share/unicode/emoji/emoji-zwj-sequences.txt"
   end
 end

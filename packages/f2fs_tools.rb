@@ -3,11 +3,10 @@ require 'package'
 class F2fs_tools < Package
   description 'Tools for Flash-Friendly File System F2FS'
   homepage 'https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/about/'
-  @_ver = '1.14.0'
-  version @_ver
+  version '1.14.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-#{@_ver}.tar.gz"
+  source_url "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-#{version}.tar.gz"
   source_sha256 '619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1'
 
   binary_url({

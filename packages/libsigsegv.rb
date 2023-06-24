@@ -23,12 +23,11 @@ class Libsigsegv < Package
   })
 
   depends_on 'glibc' # R
-  no_env_options
+  no_lto
 
   def self.build
     system 'autoreconf -fiv'
-    # libsigsegv fails to build with LTO.
-    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} \
+    system "./configure #{CREW_OPTIONS} \
     --enable-shared \
     --enable-static \
     --enable-relocatable"

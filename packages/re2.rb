@@ -3,12 +3,11 @@ require 'package'
 class Re2 < Package
   description 'RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python.'
   homepage 'https://github.com/google/re2/'
-  @_ver = '2021-02-02'
-  version @_ver
+  version '2021-02-02'
   license 'BSD'
   compatibility 'all'
 
-  source_url "https://github.com/google/re2/archive/#{@_ver}.tar.gz"
+  source_url "https://github.com/google/re2/archive/#{version}.tar.gz"
   source_sha256 '1396ab50c06c1a8885fb68bf49a5ecfd989163015fd96699a180d6414937f33f'
 
   binary_url({

@@ -3,11 +3,10 @@ require 'package'
 class Symlinks < Package
   description 'scan/change symbolic links'
   homepage 'https://metadata.ftp-master.debian.org/changelogs//main/s/symlinks/symlinks_1.4-4_copyright'
-  @_ver = '1.4-4'
-  version @_ver
+  version '1.4-4'
   license 'symlinks'
   compatibility 'all'
-  source_url "https://salsa.debian.org/debian/symlinks/-/archive/debian/#{@_ver}/symlinks-debian-#{@_ver}.tar.bz2"
+  source_url "https://salsa.debian.org/debian/symlinks/-/archive/debian/#{version}/symlinks-debian-#{version}.tar.bz2"
   source_sha256 'f4469a9f366ccfaa7273b1f78bd540b8a6fa96f8b2b81a95d131944fb77efdd4'
 
   binary_url({

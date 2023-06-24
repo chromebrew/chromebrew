@@ -3,11 +3,10 @@ require 'package'
 class Stack < Package
   description 'The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.'
   homepage 'https://docs.haskellstack.org/'
-  @_ver = '2.9.3'
-  version @_ver
+  version '2.9.3'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/commercialhaskell/stack/releases/download/v#{@_ver}/stack-#{@_ver}-linux-x86_64.tar.gz"
+  source_url "https://github.com/commercialhaskell/stack/releases/download/v#{version}/stack-#{version}-linux-x86_64.tar.gz"
   source_sha256 '938f689dc45e2693ab1ca3ea215790b3786dfd531dcf6c0bf40842c24e579ae9'
 
   binary_url({

@@ -3,12 +3,11 @@ require 'package'
 class Go_fetch < Package
   description 'fetch makes it easy to download files, folders, or release assets from a specific commit, branch, or tag of a public or private GitHub repo.'
   homepage 'https://github.com/gruntwork-io/fetch/'
-  @_ver = '0.4.2'
-  version @_ver
+  version '0.4.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/gruntwork-io/fetch.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_fetch/0.4.2_armv7l/go_fetch-0.4.2-chromeos-armv7l.tar.xz',
@@ -33,6 +32,6 @@ class Go_fetch < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    system "go build -ldflags \"-X main.VERSION=v#{@_ver}\" -o #{CREW_DEST_PREFIX}/bin/go-fetch"
+    system "go build -ldflags \"-X main.VERSION=v#{version}\" -o #{CREW_DEST_PREFIX}/bin/go-fetch"
   end
 end

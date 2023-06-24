@@ -3,11 +3,10 @@ require 'package'
 class Lcms < Package
   description 'Little CMS intends to be an OPEN SOURCE small-footprint color management engine, with special focus on accuracy and performance.'
   homepage 'http://www.littlecms.com/'
-  @_ver = '2.12'
-  version @_ver
+  version '2.12'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/mm2/Little-CMS/releases/download/lcms#{@_ver}/lcms2-#{@_ver}.tar.gz"
+  source_url "https://github.com/mm2/Little-CMS/releases/download/lcms#{version}/lcms2-#{version}.tar.gz"
   source_sha256 '18663985e864100455ac3e507625c438c3710354d85e5cbb7cd4043e11fe10f5'
 
   binary_url({

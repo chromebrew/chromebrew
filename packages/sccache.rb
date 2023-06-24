@@ -3,11 +3,10 @@ require 'package'
 class Sccache < Package
   description 'Shared Compilation Cache'
   homepage 'https://github.com/mozilla/sccache/'
-  @_ver = '0.2.15'
-  version @_ver
+  version '0.2.15'
   license 'Apache-2.0, Apache-2.0-with-LLVM-exceptions, BSD, BSD-2, Boost-1.0, ISC, MIT, Unlicense and ZLIB'
   compatibility 'all'
-  source_url "https://github.com/mozilla/sccache/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/mozilla/sccache/archive/v#{version}.tar.gz"
   source_sha256 '7dbe71012f9b0b57d8475de6b36a9a3b4802e44a135e886f32c5ad1b0eb506e0'
 
   binary_url({

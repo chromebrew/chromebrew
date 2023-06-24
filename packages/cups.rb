@@ -3,23 +3,23 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.5'
+  version '2.4.6'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.5_armv7l/cups-2.4.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.5_armv7l/cups-2.4.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.5_i686/cups-2.4.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.5_x86_64/cups-2.4.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_armv7l/cups-2.4.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_armv7l/cups-2.4.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_i686/cups-2.4.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_x86_64/cups-2.4.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c3b9b01548b1777198379b96cf0700157b630a97b3fce8b56992245cea84da91',
-     armv7l: 'c3b9b01548b1777198379b96cf0700157b630a97b3fce8b56992245cea84da91',
-       i686: '7098e7a9a29034da692c0ffab4c6163398bd9c453c7b986d3b114aa3a984d1ce',
-     x86_64: 'e6ae23e3907b219d8cea4a86c9a88b0db03284810e89011e0d255fefc33d1199'
+    aarch64: '832ba0f47a1fe81dd0bc55a74971c55a4b98cec9ced02d9dfd6b7589cf4e6f74',
+     armv7l: '832ba0f47a1fe81dd0bc55a74971c55a4b98cec9ced02d9dfd6b7589cf4e6f74',
+       i686: 'bbb70f7d8d3f6df469b50727f372a4fa77160b2d948b7bb0ebe706047a9f489c',
+     x86_64: 'da15e61c01c1f5ac7c3b156ce1640d14b1b2a6ebe1bcaba5051acee2fc9d8589'
   })
 
   depends_on 'acl' # R
@@ -27,7 +27,7 @@ class Cups < Package
   depends_on 'glibc' # R
   depends_on 'libusb' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm_dev' => :build if ARCH == 'armv7l' || ARCH == 'aarch64'
+  depends_on 'llvm16_dev' => :build if %w[armv7l aarch64].include?(ARCH)
   depends_on 'openssl' # R
   depends_on 'psmisc' # L
   depends_on 'zlibpkg' # R
@@ -36,7 +36,7 @@ class Cups < Package
   no_fhs
 
   def self.build
-    @buildoverride = ARCH == 'armv7l' || ARCH == 'aarch64' ? 'CC=clang CXX=clang++ LD=mold CUPS_LINKER=mold' : ''
+    @buildoverride = %w[armv7l aarch64].include?(ARCH) ? 'CC=clang CXX=clang++ LD=mold CUPS_LINKER=mold' : ''
     system "#{@buildoverride} ./configure #{CREW_OPTIONS} \
       --enable-libusb"
     system 'make'

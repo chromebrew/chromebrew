@@ -3,11 +3,10 @@ require 'package'
 class Shadow < Package
   description 'Shadow password file utilities'
   homepage 'https://github.com/shadow-maint/shadow'
-  @_ver = '4.13'
-  version @_ver
+  version '4.13'
   license 'BSD and GPL-2'
   compatibility 'all'
-  source_url "https://github.com/shadow-maint/shadow/releases/download/#{@_ver}/shadow-#{@_ver}.tar.xz"
+  source_url "https://github.com/shadow-maint/shadow/releases/download/#{version}/shadow-#{version}.tar.xz"
   source_sha256 '9afe245d79a2e7caac5f1ed62519b17416b057ec89df316df1c3935502f9dd2c'
 
   binary_url({

@@ -3,11 +3,10 @@ require 'package'
 class Yelp < Package
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  @_ver = '40.0'
-  version @_ver
+  version '40.0'
   license 'GPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/yelp/-/archive/#{@_ver}/yelp-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/yelp/-/archive/#{version}/yelp-#{version}.tar.bz2"
   source_sha256 'ec640d7a56970ab3ac6283d6c3a90ae45b7676c739671b303cbfb2f4323bf7af'
 
   binary_url({

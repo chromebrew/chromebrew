@@ -3,11 +3,10 @@ require 'package'
 class Bubblewrap < Package
   description 'bubblewrap works by creating a new, completely empty, mount namespace'
   homepage 'https://github.com/containers/bubblewrap'
-  @_ver = '0.8.0'
-  version @_ver
+  version '0.8.0'
   license 'LGPL-2+'
   compatibility 'all'
-  source_url "https://github.com/containers/bubblewrap/releases/download/v#{@_ver}/bubblewrap-#{@_ver}.tar.xz"
+  source_url "https://github.com/containers/bubblewrap/releases/download/v#{version}/bubblewrap-#{version}.tar.xz"
   source_sha256 '957ad1149db9033db88e988b12bcebe349a445e1efc8a9b59ad2939a113d333a'
 
   binary_url({

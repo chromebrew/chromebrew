@@ -3,11 +3,10 @@ require 'package'
 class V4l_utils < Package
   description 'The v4l-utils are a series of packages for handling media devices.'
   homepage 'https://www.linuxtv.org/wiki/index.php/V4l-utils'
-  @_ver = '1.22.1'
-  version @_ver
+  version '1.22.1'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'all'
-  source_url "https://linuxtv.org/downloads/v4l-utils/v4l-utils-#{@_ver}.tar.bz2"
+  source_url "https://linuxtv.org/downloads/v4l-utils/v4l-utils-#{version}.tar.bz2"
   source_sha256 '65c6fbe830a44ca105c443b027182c1b2c9053a91d1e72ad849dfab388b94e31'
 
   binary_url({

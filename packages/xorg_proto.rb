@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_proto < Package
+class Xorg_proto < Meson
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
-  version '2022.2'
+  version '2023.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
   git_hashtag "xorgproto-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_armv7l/xorg_proto-2022.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_armv7l/xorg_proto-2022.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_i686/xorg_proto-2022.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2022.2_x86_64/xorg_proto-2022.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2023.2_armv7l/xorg_proto-2023.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2023.2_armv7l/xorg_proto-2023.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2023.2_i686/xorg_proto-2023.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_proto/2023.2_x86_64/xorg_proto-2023.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4f29c3f12e684e8e3de289a0ca8810e763ddb96c3bf3a686baf0392d4d8ced66',
-     armv7l: '4f29c3f12e684e8e3de289a0ca8810e763ddb96c3bf3a686baf0392d4d8ced66',
-       i686: '0592845ac3053d91b8158bd186c629d2a0b372a95b5d0e30c06b71a5fffe4e95',
-     x86_64: '21802c99d382be50f69e613dee68e25821b6a09ba4b6833309899c76dce9789f'
+    aarch64: '135abd63058e542920a2125ff3d12f59f1f15b4e2ffd8051603e1d8d070aaafc',
+     armv7l: '135abd63058e542920a2125ff3d12f59f1f15b4e2ffd8051603e1d8d070aaafc',
+       i686: '58a8c851b381479f30e6cb24d3a0402d3990791dd823c297ab3de830e35302a5',
+     x86_64: '218d61ce750ba8f793e2f924baec49e65bd111fe9519a5b995dfb839f6f85501'
   })
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end

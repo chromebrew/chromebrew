@@ -3,11 +3,10 @@ require 'package'
 class Networkmanager < Package
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  @_ver = '1.42.2'
-  version @_ver
+  version '1.42.2'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{@_ver}/NetworkManager#{@_ver}.tar.bz2"
+  source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{version}/NetworkManager#{version}.tar.bz2"
   source_sha256 '939a27acb0520efc4af3bb7a7dac1e85c34a4b8bbec2f59e2247baf93ac81403'
 
   binary_url({

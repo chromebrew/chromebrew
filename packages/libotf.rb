@@ -3,11 +3,10 @@ require 'package'
 class Libotf < Package
   description 'OpenType Font library'
   homepage 'https://www.nongnu.org/m17n/'
-  @_ver = '0.9.16'
-  version @_ver
+  version '0.9.16'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://download.savannah.gnu.org/releases/m17n/libotf-#{@_ver}.tar.gz"
+  source_url "https://download.savannah.gnu.org/releases/m17n/libotf-#{version}.tar.gz"
   source_sha256 '68db0ca3cda2d46a663a92ec26e6eb5adc392ea5191bcda74268f0aefa78066b'
 
   binary_url({

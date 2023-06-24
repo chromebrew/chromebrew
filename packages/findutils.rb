@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Findutils < Package
+class Findutils < Autotools
   description 'the basic directory searching utilities of the GNU operating system'
   homepage 'https://www.gnu.org/software/findutils/'
   version '4.8.0'
@@ -24,18 +24,6 @@ class Findutils < Package
 
   depends_on 'python3'
 
-  ENV['PYTHON'] = 'python3' # Force use of python3 over python2.7
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-            --without-selinux"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  configure_options '--without-selinux'
+  check? true
 end

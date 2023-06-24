@@ -3,11 +3,10 @@ require 'package'
 class Wpebackend_fdo < Package
   description 'Freedesktop.org backend for WPE WebKit'
   homepage 'https://wpewebkit.org'
-  @_ver = '1.14.0'
-  version @_ver
+  version '1.14.0'
   license 'BSD-2'
   compatibility 'all'
-  source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{@_ver}/wpebackend-fdo-#{@_ver}.tar.xz"
+  source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{version}/wpebackend-fdo-#{version}.tar.xz"
   source_sha256 'e75b0cb2c7145448416e8696013d8883f675c66c11ed750e06865efec5809155'
 
   binary_url({

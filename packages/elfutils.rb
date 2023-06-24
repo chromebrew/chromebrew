@@ -3,11 +3,10 @@ require 'package'
 class Elfutils < Package
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  @_ver = '0.188'
-  version @_ver
+  version '0.188'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
-  source_url "https://sourceware.org/elfutils/ftp/#{@_ver}/elfutils-#{@_ver}.tar.bz2"
+  source_url "https://sourceware.org/elfutils/ftp/#{version}/elfutils-#{version}.tar.bz2"
   source_sha256 'fb8b0e8d0802005b9a309c60c1d8de32dd2951b56f0c3a3cb56d21ce01595dff'
 
   binary_url({

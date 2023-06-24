@@ -3,11 +3,10 @@ require 'package'
 class Psmisc < Package
   description 'PSmisc is a set of some small useful utilities that use the proc filesystem.'
   homepage 'https://gitlab.com/psmisc/psmisc'
-  @_ver = '23.6'
-  version @_ver
+  version '23.6'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://gitlab.com/psmisc/psmisc/-/archive/v#{@_ver}/psmisc-v#{@_ver}.tar.bz2"
+  source_url "https://gitlab.com/psmisc/psmisc/-/archive/v#{version}/psmisc-v#{version}.tar.bz2"
   source_sha256 '91573ca0a1a50bd491b7c3cbe400126b0dadef9a2e328030d6469bb2448e0794'
 
   binary_url({

@@ -27,13 +27,12 @@ class Tcl < Package
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 
-  no_env_options
+  no_lto
 
-  # tk breaks if tcl is built with lto
   def self.build
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} --#{@bit64}-64bit"
+      system "./configure #{CREW_OPTIONS} --#{@bit64}-64bit"
       system 'make'
     end
   end

@@ -3,11 +3,10 @@ require 'package'
 class Telepathy_glib < Package
   description 'GLib bindings for the Telepathy D-Bus protocol'
   homepage 'https://telepathy.freedesktop.org'
-  @_ver = '0.24.2'
-  version @_ver
+  version '0.24.2'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-#{@_ver}.tar.gz"
+  source_url "https://telepathy.freedesktop.org/releases/telepathy-glib/telepathy-glib-#{version}.tar.gz"
   source_sha256 'b0a374d771cdd081125f38c3abd079657642301c71a543d555e2bf21919273f0'
 
   binary_url({

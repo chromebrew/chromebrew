@@ -3,11 +3,10 @@ require 'package'
 class Mono < Package
   description 'Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.'
   homepage 'http://www.mono-project.com/'
-  @_ver = '6.12.0.122'
-  version @_ver
+  version '6.12.0.122'
   license 'MIT, LGPL-2.1, GPL-2, BSD-4, NPL-1.1, Ms-PL, GPL-3-with-linking-exception and IDPL'
   compatibility 'all'
-  source_url "https://download.mono-project.com/sources/mono/mono-#{@_ver}.tar.xz"
+  source_url "https://download.mono-project.com/sources/mono/mono-#{version}.tar.xz"
   source_sha256 '29c277660fc5e7513107aee1cbf8c5057c9370a4cdfeda2fc781be6986d89d23'
 
   binary_url({

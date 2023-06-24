@@ -4,12 +4,11 @@ require 'uri'
 class Jdk18 < Package
   description 'The Oracle JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://www.oracle.com/java'
-  @_ver = '18.0.2.1'
-  version @_ver
+  version '18.0.2.1'
   license 'Oracle-BCLA-JavaSE'
   compatibility 'x86_64'
 
-  source_url File.join('file://', HOME, 'Downloads', "jdk-#{@_ver}_linux-x64_bin.tar.gz")
+  source_url File.join('file://', HOME, 'Downloads', "jdk-#{version}_linux-x64_bin.tar.gz")
   source_sha256 'cd905013facbb5c2b5354165cc372e327259de4991c28f31c7d4231dbf638934'
 
   no_compile_needed
@@ -44,7 +43,7 @@ class Jdk18 < Package
       You must login at https://login.oracle.com/mysso/signon.jsp and then visit:
       https://www.oracle.com/java/technologies/javase/jdk18-archive-downloads.html
 
-      Download "jdk-#{@_ver}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
+      Download "jdk-#{version}_linux-x64_bin.tar.gz" (Linux x64 Compressed Archive) to Chrome OS download folder to continue.
     EOT
   end
 

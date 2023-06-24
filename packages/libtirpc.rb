@@ -3,11 +3,10 @@ require 'package'
 class Libtirpc < Package
   description 'Libtirpc is a port of Suns Transport-Independent RPC library to Linux.'
   homepage 'https://sourceforge.net/projects/libtirpc'
-  @_ver = '1.3.3'
-  version @_ver
+  version '1.3.3'
   license 'GPL-2'
   compatibility 'all'
-  source_url "http://downloads.sourceforge.net/project/libtirpc/libtirpc/#{@_ver}/libtirpc-#{@_ver}.tar.bz2"
+  source_url "http://downloads.sourceforge.net/project/libtirpc/libtirpc/#{version}/libtirpc-#{version}.tar.bz2"
   source_sha256 '6474e98851d9f6f33871957ddee9714fdcd9d8a5ee9abb5a98d63ea2e60e12f3'
 
   binary_url({

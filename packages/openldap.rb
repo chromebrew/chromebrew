@@ -3,11 +3,10 @@ require 'package'
 class Openldap < Package
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  @_ver = '2.6.4'
-  version @_ver
+  version '2.6.4'
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
-  source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{@_ver}.tgz"
+  source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{version}.tgz"
   source_sha256 'd51704e50178430c06cf3d8aa174da66badf559747a47d920bb54b2d4aa40991'
 
   binary_url({

@@ -3,13 +3,12 @@ require 'package'
 class Scdoc < Package
   description 'A simple man page generator for POSIX systems written in C99'
   homepage 'https://git.sr.ht/~sircmpwn/scdoc/'
-  @_ver = '1.11.2'
-  version @_ver
+  version '1.11.2'
   license 'MIT'
   # source_url 'https://git.sr.ht/~sircmpwn/scdoc.git' # Git url with .git at the end returns 403 Forbidden
   # git_hashtag @_ver
   compatibility 'all'
-  source_url "https://git.sr.ht/~sircmpwn/scdoc/archive/#{@_ver}.tar.gz"
+  source_url "https://git.sr.ht/~sircmpwn/scdoc/archive/#{version}.tar.gz"
   source_sha256 'e9ff9981b5854301789a6778ee64ef1f6d1e5f4829a9dd3e58a9a63eacc2e6f0'
 
   binary_url({

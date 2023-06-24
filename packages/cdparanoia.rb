@@ -27,7 +27,7 @@ class Cdparanoia < Package
 
   depends_on 'glibc'
 
-  no_env_options
+  no_lto
 
   def self.patch
     downloader 'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/cdparanoia/trunk/gcc.patch',
@@ -36,7 +36,7 @@ class Cdparanoia < Package
   end
 
   def self.build
-    system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS}"
+    system "./configure #{CREW_OPTIONS}"
     system 'make -j1'
   end
 

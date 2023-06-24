@@ -34,12 +34,12 @@ class Tk < Package
   depends_on 'tcl' # R
   depends_on 'zlibpkg' # R
 
-  no_env_options
+  no_lto
 
   def self.build
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure \
+      system "./configure \
           #{CREW_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \

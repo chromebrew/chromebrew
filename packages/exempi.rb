@@ -6,11 +6,10 @@ require 'package'
 class Exempi < Package
   description 'A library to parse XMP metadata'
   homepage 'https://libopenraw.freedesktop.org/wiki/Exempi'
-  @_ver = '2.6.3'
-  version @_ver
+  version '2.6.3'
   license 'BSD'
   compatibility 'all'
-  source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{@_ver}/exempi-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.freedesktop.org/libopenraw/exempi/-/archive/#{version}/exempi-#{version}.tar.bz2"
   source_sha256 'e79995bb3c5319293e3f2abfc9da83a9ee5a83102724336599d535d874509632'
 
   binary_url({
