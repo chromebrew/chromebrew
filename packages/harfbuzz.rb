@@ -1,26 +1,25 @@
 require 'package'
+require_relative 'freetype'
 # build order: harfbuzz => freetype => fontconfig => pango
 
 class Harfbuzz < Package
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  version '7.1.0'
+  version '7.3.0'
   license 'Old-MIT, ISC and icu'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_armv7l/harfbuzz-7.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_armv7l/harfbuzz-7.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_i686/harfbuzz-7.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_x86_64/harfbuzz-7.1.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4f7a52a90c3ba072e520ce35d1f3ae98d5673394703ef2af3bc11ecc59be653e',
-     armv7l: '4f7a52a90c3ba072e520ce35d1f3ae98d5673394703ef2af3bc11ecc59be653e',
-       i686: '51ff026b275866174cf2e3b3b86f5351c542ae6bd62763124eba9ea69d8f8471',
-     x86_64: '6403cc02542560d51c9e64ab8ab502774a8324f59f8e936956dc3425565c67b5'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst'
   })
 
   depends_on 'brotli' # R
@@ -57,6 +56,33 @@ class Harfbuzz < Package
 
       puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
     end
+  end
+
+  def self.patch
+    File.write 'subprojects/freetype2.wrap', <<~FREETYPE2_WRAP_EOF
+          [wrap-git]
+          directory = freetype-#{Freetype.version}
+          url=https://gitlab.freedesktop.org/freetype/freetype.git
+          revision=#{Freetype.git_hashtag}
+
+      binary_url ({
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_i686/harfbuzz-7.1.0-chromeos-i686.tar.zst',
+        aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+         armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+         x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst',
+      })
+      binary_sha256 ({
+       i686: '51ff026b275866174cf2e3b3b86f5351c542ae6bd62763124eba9ea69d8f8471',
+        aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+         armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
+         x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst',
+      })
+          depth=1
+
+          [provide]
+          freetype2 = freetype_dep
+          freetype = freetype_dep
+    FREETYPE2_WRAP_EOF
   end
 
   def self.build
