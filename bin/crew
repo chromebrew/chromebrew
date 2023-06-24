@@ -625,7 +625,7 @@ def update
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{ARCH} lib bin crew tools"
+    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tools"
     system 'git sparse-checkout reapply'
 
     if CREW_TESTING == '1'
