@@ -1,5 +1,4 @@
 require 'package'
-require_relative 'freetype'
 # build order: harfbuzz => freetype => fontconfig => pango
 
 class Harfbuzz < Package
@@ -10,17 +9,18 @@ class Harfbuzz < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
   git_hashtag version
+  @freetype = Package.load_package('freetype.rb')
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst'
-  })
+     })
   binary_sha256({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst'
-  })
+    aarch64: '50f4f08ed9a9ba6e81a7e138f46ae0426d84b53e83d884a8da8450b3e4223a9a',
+     armv7l: '50f4f08ed9a9ba6e81a7e138f46ae0426d84b53e83d884a8da8450b3e4223a9a',
+     x86_64: 'd2f32873d671049cd726a61faf97c54690eaba5407f461a731d03e9b6db4555f'
+     })
 
   depends_on 'brotli' # R
   depends_on 'bz2' # R
@@ -60,28 +60,15 @@ class Harfbuzz < Package
 
   def self.patch
     File.write 'subprojects/freetype2.wrap', <<~FREETYPE2_WRAP_EOF
-          [wrap-git]
-          directory = freetype-#{Freetype.version}
-          url=https://gitlab.freedesktop.org/freetype/freetype.git
-          revision=#{Freetype.git_hashtag}
+      [wrap-git]
+      directory = freetype-#{@freetype.version}
+      url=https://gitlab.freedesktop.org/freetype/freetype.git
+      revision=#{@freetype.git_hashtag}
+      depth=1
 
-      binary_url ({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.1.0_i686/harfbuzz-7.1.0-chromeos-i686.tar.zst',
-        aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-         armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-         x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst',
-      })
-      binary_sha256 ({
-       i686: '51ff026b275866174cf2e3b3b86f5351c542ae6bd62763124eba9ea69d8f8471',
-        aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-         armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-         x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst',
-      })
-          depth=1
-
-          [provide]
-          freetype2 = freetype_dep
-          freetype = freetype_dep
+      [provide]
+      freetype2 = freetype_dep
+      freetype = freetype_dep
     FREETYPE2_WRAP_EOF
   end
 
