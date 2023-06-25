@@ -36,10 +36,12 @@ class Pango < Meson
   depends_on 'libxrender' # R
   depends_on 'xorg_proto' => :build
 
-  meson_options = "-Dinstall-tests=false \
+  meson_options = <<~MESON_OPTIONS
+    -Dinstall-tests=false \
     -Dcairo=enabled \
     -Dfreetype=enabled \
     -Dfontconfig=enabled \
     -Dlibthai=disabled \
-    -Dgtk_doc=false"
+    -Dgtk_doc=false
+  MESON_OPTIONS
 end
