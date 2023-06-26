@@ -1,5 +1,5 @@
 require 'package'
-# build order: harfbuzz => freetype => fontconfig => pango
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Freetype < Package
   description 'FreeType is a freely available software library to render fonts.'
@@ -16,9 +16,9 @@ class Freetype < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetype/2.13.1_x86_64/freetype-2.13.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ceb1f17b8baf6a9817f2ed0a1652a17bf631c419152fb8c3e89fcf172cd5d05a',
-     armv7l: 'ceb1f17b8baf6a9817f2ed0a1652a17bf631c419152fb8c3e89fcf172cd5d05a',
-     x86_64: '71552811833fc832fa94cf4536057f804723c928613d187828fc80fa79cd184d'
+    aarch64: '32d644934a6727c0ea8a0e8e13ed70de49e9c0337651818566dbd91d4cd52fd7',
+     armv7l: '32d644934a6727c0ea8a0e8e13ed70de49e9c0337651818566dbd91d4cd52fd7',
+     x86_64: '7f137b4b0bdcf332afe470d32c2cfb8b1a3464ed66cc9d7d1a20fe925ddca1f8'
   })
 
   depends_on 'brotli'
@@ -30,16 +30,9 @@ class Freetype < Package
   depends_on 'graphite'
   depends_on 'harfbuzz'
   depends_on 'libpng' # R
-  # depends_on 'librsvg'
   depends_on 'pcre'
   depends_on 'py3_docwriter'
   depends_on 'zlibpkg'
-
-  # to avoid resetting mold usage
-  no_env_options
-  # This overwrites the freetype in harfbuzz, which have
-  # epicircular dependencies on each other.
-  conflicts_ok # allowed to overwrite harfbuzz
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
@@ -109,32 +102,5 @@ class Freetype < Package
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
     File.write("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la", @libtool_file)
-  end
-
-  def self.postinstall
-    # make sure to delete downloaded files
-    system "find #{CREW_BREW_DIR}/* -name freetype*.tar -exec rm -rf {} +"
-    # This should become a function.
-    # check for conflicts with other installed files
-    @override_allowed = %w[fontconfig harfbuzz]
-    puts 'Checking for conflicts with files from installed packages...'
-    conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{name}.filelist -Fxf #{CREW_META_PATH}#{name}.filelist #{CREW_META_PATH}*.filelist`
-    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-    conflicts.reject!(&:empty?)
-    return if conflicts.empty?
-
-    if conflicts_ok?
-      puts 'Handling conflict with the same file in another package.'.orange
-    else
-      puts 'Error: There is a conflict with the same file in another package.'.lightred
-      @_errors = 1
-    end
-    conflicts.each do |conflict|
-      conflict.each do |thisconflict|
-        singleconflict = thisconflict.split(':', -1)
-        system "sed -i '\\?^#{singleconflict[1]}?d'  #{CREW_META_PATH}/#{singleconflict[0]}.filelist" if @override_allowed.include?(singleconflict[0])
-      end
-    end
   end
 end

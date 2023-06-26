@@ -1,5 +1,5 @@
 require 'package'
-# build order: harfbuzz => freetype => fontconfig => pango
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
@@ -17,13 +17,14 @@ class Fontconfig < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_x86_64/fontconfig-2.14.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '068ccfd54a46300954f2a2039de20aead107667687ca3a81ae91b01f70d0de16',
-     armv7l: '068ccfd54a46300954f2a2039de20aead107667687ca3a81ae91b01f70d0de16',
-     x86_64: '2730435746090bf3504d79ad00cd923707902e0253a2ba5c203154d411e35d0d'
+    aarch64: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
+     armv7l: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
+     x86_64: '312be51a3f24e688489a30efaf61027d257998814be2fd670d403b0a88d5e818'
   })
 
   depends_on 'expat' # R
   depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gperf' => :build
   depends_on 'graphite' => :build
@@ -33,16 +34,15 @@ class Fontconfig < Package
   depends_on 'util_linux' => :build
 
   no_fhs
-  conflicts_ok # allowed to overwrite harfbuzz
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       --wrap-mode=default \
       -Dlocalstatedir=#{CREW_PREFIX}/cache \
       -Dtests=disabled \
       builddir"
     system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
