@@ -22,6 +22,5 @@ class Bdwgc < CMake
      x86_64: '66a43028848541f4352b18c711d675abaa897a940fa5c2cd434b40cc5fb5851d'
   })
 
-  depends_on 'libatomic_ops'
   depends_on 'glibc' # R
 end
