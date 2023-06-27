@@ -11,6 +11,7 @@ class Autotools < Package
   end
 
   def self.build
+    puts "Additional configure_options being used: #{if @configure_options.nil? or @configure_options.empty? ; '<no configure_options>' ; else ; @configure_options ; end}".orange
     # Run autoreconf if necessary
     unless File.executable? './configure'
       if File.executable? './autogen.sh'
