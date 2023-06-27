@@ -10,7 +10,7 @@ class Inkscape < Package
   source_sha256 'a0c7fd0d03c0a21535e648ef301dcf80dd7cfc1f3545e51065fbf1ba3ee8a5c4'
 
   binary_url({
-    x86_64: 'file:///usr/local/tmp/packages/inkscape-1.2.2-1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_x86_64/inkscape-1.2.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     x86_64: 'a59270ea6eafd1e8565c79b0ae8d05ed4ceebcaa52ef1a32eaad5ee837e9df32'
