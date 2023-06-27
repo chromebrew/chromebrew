@@ -104,10 +104,8 @@ class Harfbuzz < Package
       FileUtils.mv s, @dest
       @dest_file = `file #{@dest}`.chomp
       if @dest_file.include?('LSB shared object')
-        puts "#{@dest} is a library"
         @dest_so = @dest if @dest.include?('libcairo')
       elsif @dest_file.include?('symbolic link')
-        puts "#{@dest} is a symbolic link"
         @dest_links.push @dest
       end
     end
