@@ -22,7 +22,7 @@ class Autotools < Package
         system 'autoreconf -fiv'
       end
     end
-    abort 'configure script not found!'.lightred if File.file?('configure')
+    abort 'configure script not found!'.lightred unless File.file?('configure')
     FileUtils.chmod('+x', 'configure')
     if `grep -q /usr/bin/file configure`
       puts 'Using filefix.'.orange
