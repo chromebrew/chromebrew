@@ -3,25 +3,26 @@ require 'package'
 class Gspell < Package
   description 'a flexible API to implement the spell checking in a GTK+ application'
   homepage 'https://wiki.gnome.org/Projects/gspell'
-  version '1.12.0'
+  version '1.12.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gnome.org/sources/gspell/1.12/gspell-1.12.0.tar.xz'
-  source_sha256 '40d2850f1bb6e8775246fa1e39438b36caafbdbada1d28a19fa1ca07e1ff82ad'
+  source_url 'https://download.gnome.org/sources/gspell/1.12/gspell-1.12.1.tar.xz'
+  source_sha256 '8ec44f32052e896fcdd4926eb814a326e39a5047e251eec7b9056fbd9444b0f1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.0_armv7l/gspell-1.12.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.0_armv7l/gspell-1.12.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.0_x86_64/gspell-1.12.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.1_armv7l/gspell-1.12.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.1_armv7l/gspell-1.12.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.1_x86_64/gspell-1.12.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b2079e4a8aaa0a0af5d2429423dc490ae5fcec4e454ebfd6f1a44c5d7bc8f57d',
-     armv7l: 'b2079e4a8aaa0a0af5d2429423dc490ae5fcec4e454ebfd6f1a44c5d7bc8f57d',
-     x86_64: '2974ec509d6966649fe4f11f84920e8f722c78510925d5a88046bd13d05f79f4'
+    aarch64: '5fe8ce8680328b2b48b5466536bca49f6b8dac7070dcc75cd361f24702bf5a70',
+     armv7l: '5fe8ce8680328b2b48b5466536bca49f6b8dac7070dcc75cd361f24702bf5a70',
+     x86_64: 'ab91f8ec9eb2da5593b53ccd9fac252e50666aede63a248f572c3f0c5954b426'
   })
 
   depends_on 'aspell' # R
   depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'enchant' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -41,8 +42,6 @@ class Gspell < Package
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
-
-  ENV['XML_CATALOG_FILES'] = "#{CREW_PREFIX}/etc/xml/catalog"
 
   def self.patch
     system 'filefix'
