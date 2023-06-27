@@ -60,7 +60,7 @@ class Inkscape < Package
   depends_on 'poppler' # R
   depends_on 'popt' => :build
   depends_on 'potrace' # R
-  depends_on 'python3_cython' => :build
+  depends_on 'py3_cython' => :build
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
 
