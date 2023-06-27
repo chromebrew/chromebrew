@@ -1,54 +1,53 @@
 require 'package'
-# build order: harfbuzz => freetype => fontconfig => pango
+# build order: harfbuzz => freetype => fontconfig => cairo => pango
 
 class Fontconfig < Package
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
-  version '2.14.2'
+  @_ver = '2.14.2'
+  version "#{@_ver}-1"
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_armv7l/fontconfig-2.14.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_armv7l/fontconfig-2.14.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_i686/fontconfig-2.14.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2_x86_64/fontconfig-2.14.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_armv7l/fontconfig-2.14.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_armv7l/fontconfig-2.14.2-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_x86_64/fontconfig-2.14.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8bf542223e21a4c683aa148fa2b98f0f66758676fb64b01f819239cf0c6de686',
-     armv7l: '8bf542223e21a4c683aa148fa2b98f0f66758676fb64b01f819239cf0c6de686',
-       i686: '93a0f764c5352cf888849d4212519c06338b65cdc7099f2a01b9bdc28ee022e7',
-     x86_64: '24a0a1cd2cc53c56bb7256e410592ac9b6398eecf02effc6c3944554dc840c77'
+    aarch64: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
+     armv7l: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
+     x86_64: '312be51a3f24e688489a30efaf61027d257998814be2fd670d403b0a88d5e818'
   })
 
   depends_on 'expat' # R
-  depends_on 'jsonc' => :build
-  depends_on 'gperf' => :build
   depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gperf' => :build
+  depends_on 'graphite' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'jsonc' => :build
   depends_on 'libpng' => :build
   depends_on 'util_linux' => :build
-  depends_on 'graphite' => :build
-  depends_on 'glibc' # R
-  depends_on 'harfbuzz' # R
 
   no_fhs
-  conflicts_ok # allowed to overwrite harfbuzz
 
   def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       --wrap-mode=default \
       -Dlocalstatedir=#{CREW_PREFIX}/cache \
       -Dtests=disabled \
       builddir"
     system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    # The following are included the libpng package.
+    # The following are included in the libpng package.
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/libpng*"]
     FileUtils.rm Dir["#{CREW_DEST_PREFIX}/include/libpng16/png*"]
     FileUtils.rm Dir["#{CREW_DEST_LIB_PREFIX}/pkgconfig/libpng*"]
