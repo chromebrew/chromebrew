@@ -22,7 +22,7 @@ class Inkscape < Package
      x86_64: '529c95134104b67575d8282fe254d2266cd584cb9063604ddb0fc7f28f57eacc'
   })
 
-  depends_on 'atkmm' # R
+  depends_on 'atkmm16' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bdwgc' # R
   depends_on 'boost' # R
