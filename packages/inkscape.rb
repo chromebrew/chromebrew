@@ -13,7 +13,7 @@ class Inkscape < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_x86_64/inkscape-1.2.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'a59270ea6eafd1e8565c79b0ae8d05ed4ceebcaa52ef1a32eaad5ee837e9df32'
+    x86_64: '39ade2a3db19a8e044c39412986f8ae5eddc510cacb7f00add9e520e042f4c37'
   })
 
   depends_on 'atkmm16' # R
