@@ -1,7 +1,6 @@
 require 'package'
 
 class Meson < Package
-
   def self.meson_options(options = '')
     return (@meson_options = options if options)
   end
@@ -11,7 +10,7 @@ class Meson < Package
   end
 
   def self.build
-    puts "Additional meson_options being used: #{@meson_options}".orange
+    puts "Additional meson_options being used: #{@meson_options.nil? || @meson_options.empty? ? '<no meson_options>' : @meson_options}".orange
     @crew_meson_options = no_lto ? CREW_MESON_FNO_LTO_OPTIONS : CREW_MESON_OPTIONS
     system "meson #{@crew_meson_options} #{@meson_options} builddir"
     system 'meson configure builddir'

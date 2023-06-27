@@ -2,7 +2,7 @@ require 'fileutils'
 
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.34.7'
+CREW_VERSION = '1.34.8'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -61,6 +61,8 @@ else
   CREW_PREFIX = ENV.fetch('CREW_PREFIX', nil)
   HOME = CREW_PREFIX + Dir.home
 end
+
+CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 

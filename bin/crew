@@ -1602,7 +1602,8 @@ def resolve_dependencies_and_build
       post_install
     end
     search origin, true
-    build_package Dir.pwd
+    abort "CREW_ARCHIVE_DEST (#{CREW_ARCHIVE_DEST}) is not writable!".lightred unless File.writable?(CREW_ARCHIVE_DEST)
+    build_package CREW_ARCHIVE_DEST
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
   ensure
@@ -1616,7 +1617,7 @@ def resolve_dependencies_and_build
   @resolve_dependencies_and_build = 0
 end
 
-def build_package(pwd)
+def build_package(crew_archive_dest)
   abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
   abort 'It is not possible to build without source'.lightred unless @pkg.is_source?(@device[:architecture])
   abort "Unable to locate CREW_LOCAL_MANIFEST_PATH. Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
@@ -1643,10 +1644,10 @@ def build_package(pwd)
 
   # build package from filelist, dlist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
-  archive_package pwd
+  archive_package crew_archive_dest
 end
 
-def archive_package(pwd)
+def archive_package(crew_archive_dest)
   # Check to see that there is a working zstd
   if File.file?("#{CREW_PREFIX}/bin/zstd")
     @crew_prefix_zstd_available = File.file?("#{CREW_PREFIX}/bin/zstd") ? true : nil
@@ -1655,7 +1656,7 @@ def archive_package(pwd)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
-      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
+      system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
     end
   else
     puts 'Using zstd to compress package. This may take some time.'.lightblue
@@ -1667,11 +1668,11 @@ def archive_package(pwd)
       # Use nice so that user can (possibly) do other things during compression.
       if @crew_prefix_zstd_available
         puts 'Using standard zstd'.lightblue if @opt_verbose
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
+        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
       end
     end
   end
-  system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
+  system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
 end
 
 def remove(pkgName)

@@ -1,7 +1,7 @@
+require 'fileutils'
 require 'package'
 
 class Autotools < Package
-
   def self.configure_options(options = '')
     return (@configure_options = options if options)
   end
@@ -11,6 +11,7 @@ class Autotools < Package
   end
 
   def self.build
+    puts "Additional configure_options being used: #{@configure_options.nil? || @configure_options.empty? ? '<no configure_options>' : @configure_options}".orange
     # Run autoreconf if necessary
     unless File.executable? './configure'
       if File.executable? './autogen.sh'
@@ -20,6 +21,12 @@ class Autotools < Package
       else
         system 'autoreconf -fiv'
       end
+    end
+    abort "configure script not found!".lightred if File.file?('configure')
+    FileUtils.chmod('+x', 'configure')
+    if `grep -q /usr/bin/file configure`
+      puts 'Using filefix.'.orange
+      system 'filefix'
     end
     system "./configure #{CREW_OPTIONS} #{@configure_options}"
     system 'make'
