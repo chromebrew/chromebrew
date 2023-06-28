@@ -3,28 +3,33 @@ require 'package'
 class Gtkmm3 < Package
   description 'The Gtkmm3 package provides a C++ interface to GTK+ 3.'
   homepage 'https://www.gtkmm.org/'
-  version '3.24.4'
+  version '3.24.7'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/3.24/gtkmm-3.24.4.tar.xz'
-  source_sha256 '9beb71c3e90cfcfb790396b51e3f5e7169966751efd4f3ef9697114be3be6743'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://ftp.gnome.org/pub/gnome/sources/gtkmm/3.24/gtkmm-3.24.7.tar.xz'
+  source_sha256 '1d7a35af9c5ceccacb244ee3c2deb9b245720d8510ac5c7e6f4b6f9947e6789c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_armv7l/gtkmm3-3.24.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_i686/gtkmm3-3.24.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.4_x86_64/gtkmm3-3.24.4-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_armv7l/gtkmm3-3.24.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_armv7l/gtkmm3-3.24.7-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_x86_64/gtkmm3-3.24.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'df6763cd6810ef3b578f97525e5455dcf1dc37a2eeca0a282412dc269f75446e',
-     armv7l: 'df6763cd6810ef3b578f97525e5455dcf1dc37a2eeca0a282412dc269f75446e',
-       i686: '57287908562c48a645942a700fe9fc81a9fec23a9c5ee2c03b25c1d28b73be6d',
-     x86_64: '9c6c186cf88f779ee435f6995d3c583278d267e381e00d1f2f5013397f703390'
+    aarch64: '0c760e1b3f325ae6f3683797c6f58c4098c843270aafcf1a176346a17e533e99',
+     armv7l: '0c760e1b3f325ae6f3683797c6f58c4098c843270aafcf1a176346a17e533e99',
+     x86_64: 'fe6a68995f3e0b1f664f702917f0de24773b8d1a37618ba5e06d65631ce2dde7'
   })
 
-  depends_on 'atkmm'
-  depends_on 'gtk3'
-  depends_on 'pangomm'
+  depends_on 'atkmm16' # R
+  depends_on 'cairomm_1_0' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glibmm_2_4' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'libsigcplusplus' # R
+  depends_on 'pangomm_1_4' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
