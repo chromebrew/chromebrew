@@ -13,7 +13,7 @@ class Inkscape < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_x86_64/inkscape-1.2.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '39ade2a3db19a8e044c39412986f8ae5eddc510cacb7f00add9e520e042f4c37'
+    x86_64: '4fa021eb36d4e9fb6d948e63590dd4393f690f08c138b947be3ada7c4ea5d855'
   })
 
   depends_on 'atkmm16' # R
@@ -39,6 +39,7 @@ class Inkscape < Package
   depends_on 'gtksourceview' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
+  depends_on 'jemalloc' => :build
   depends_on 'lcms' # R
   depends_on 'libcdr' # R
   depends_on 'libice' # R
