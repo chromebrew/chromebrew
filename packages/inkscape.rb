@@ -5,15 +5,19 @@ class Inkscape < Package
   homepage 'https://inkscape.org/'
   version '1.2.2-1'
   license 'GPL-2 and LGPL-2.1'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://inkscape.org/gallery/item/37360/inkscape-1.2.2.tar.xz'
   source_sha256 'a0c7fd0d03c0a21535e648ef301dcf80dd7cfc1f3545e51065fbf1ba3ee8a5c4'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_x86_64/inkscape-1.2.2-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_armv7l/inkscape-1.2.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_armv7l/inkscape-1.2.2-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-1_x86_64/inkscape-1.2.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '4fa021eb36d4e9fb6d948e63590dd4393f690f08c138b947be3ada7c4ea5d855'
+    aarch64: '05fd2a30bdb8d682774262120e8a70bbc15a699102f59ccd0bfcd2f08245cf3a',
+     armv7l: '05fd2a30bdb8d682774262120e8a70bbc15a699102f59ccd0bfcd2f08245cf3a',
+     x86_64: '4fa021eb36d4e9fb6d948e63590dd4393f690f08c138b947be3ada7c4ea5d855'
   })
 
   depends_on 'atkmm16' # R
