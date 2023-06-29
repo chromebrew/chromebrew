@@ -10,6 +10,7 @@
 /usr/local/bin/column
 /usr/local/bin/dmesg
 /usr/local/bin/eject
+/usr/local/bin/fadvise
 /usr/local/bin/fallocate
 /usr/local/bin/fincore
 /usr/local/bin/findmnt
@@ -47,6 +48,7 @@
 /usr/local/bin/mountpoint
 /usr/local/bin/namei
 /usr/local/bin/nsenter
+/usr/local/bin/pipesz
 /usr/local/bin/prlimit
 /usr/local/bin/rename
 /usr/local/bin/renice
@@ -68,6 +70,7 @@
 /usr/local/bin/utmpdump
 /usr/local/bin/uuidgen
 /usr/local/bin/uuidparse
+/usr/local/bin/waitpid
 /usr/local/bin/wall
 /usr/local/bin/wdctl
 /usr/local/bin/whereis
@@ -107,15 +110,16 @@
 /usr/local/lib64/pkgconfig/mount.pc
 /usr/local/lib64/pkgconfig/smartcols.pc
 /usr/local/lib64/pkgconfig/uuid.pc
-/usr/local/lib64/python3.10/site-packages/libmount/__init__.py
-/usr/local/lib64/python3.10/site-packages/libmount/__pycache__/__init__.cpython-310.opt-1.pyc
-/usr/local/lib64/python3.10/site-packages/libmount/__pycache__/__init__.cpython-310.pyc
-/usr/local/lib64/python3.10/site-packages/libmount/pylibmount.la
-/usr/local/lib64/python3.10/site-packages/libmount/pylibmount.so
+/usr/local/lib64/python3.11/site-packages/libmount/__init__.py
+/usr/local/lib64/python3.11/site-packages/libmount/__pycache__/__init__.cpython-311.opt-1.pyc
+/usr/local/lib64/python3.11/site-packages/libmount/__pycache__/__init__.cpython-311.pyc
+/usr/local/lib64/python3.11/site-packages/libmount/pylibmount.la
+/usr/local/lib64/python3.11/site-packages/libmount/pylibmount.so
 /usr/local/sbin/addpart
 /usr/local/sbin/agetty
 /usr/local/sbin/blkdiscard
 /usr/local/sbin/blkid
+/usr/local/sbin/blkpr
 /usr/local/sbin/blkzone
 /usr/local/sbin/blockdev
 /usr/local/sbin/cfdisk
@@ -175,6 +179,7 @@
 /usr/local/share/bash-completion/completions/delpart
 /usr/local/share/bash-completion/completions/dmesg
 /usr/local/share/bash-completion/completions/eject
+/usr/local/share/bash-completion/completions/fadvise
 /usr/local/share/bash-completion/completions/fallocate
 /usr/local/share/bash-completion/completions/fdisk
 /usr/local/share/bash-completion/completions/fincore
@@ -223,6 +228,7 @@
 /usr/local/share/bash-completion/completions/namei
 /usr/local/share/bash-completion/completions/nsenter
 /usr/local/share/bash-completion/completions/partx
+/usr/local/share/bash-completion/completions/pipesz
 /usr/local/share/bash-completion/completions/pivot_root
 /usr/local/share/bash-completion/completions/prlimit
 /usr/local/share/bash-completion/completions/raw
@@ -255,6 +261,7 @@
 /usr/local/share/bash-completion/completions/uuidd
 /usr/local/share/bash-completion/completions/uuidgen
 /usr/local/share/bash-completion/completions/uuidparse
+/usr/local/share/bash-completion/completions/waitpid
 /usr/local/share/bash-completion/completions/wall
 /usr/local/share/bash-completion/completions/wdctl
 /usr/local/share/bash-completion/completions/whereis
@@ -277,12 +284,15 @@
 /usr/local/share/locale/id/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/it/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/ja/LC_MESSAGES/util-linux.mo
+/usr/local/share/locale/ko/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/nl/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/pl/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/pt/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/ru/LC_MESSAGES/util-linux.mo
+/usr/local/share/locale/sk/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/sl/LC_MESSAGES/util-linux.mo
+/usr/local/share/locale/sr/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/sv/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/tr/LC_MESSAGES/util-linux.mo
 /usr/local/share/locale/uk/LC_MESSAGES/util-linux.mo
@@ -300,6 +310,7 @@
 /usr/local/share/man/man1/column.1.zst
 /usr/local/share/man/man1/dmesg.1.zst
 /usr/local/share/man/man1/eject.1.zst
+/usr/local/share/man/man1/fadvise.1.zst
 /usr/local/share/man/man1/fallocate.1.zst
 /usr/local/share/man/man1/fincore.1.zst
 /usr/local/share/man/man1/flock.1.zst
@@ -328,6 +339,7 @@
 /usr/local/share/man/man1/mountpoint.1.zst
 /usr/local/share/man/man1/namei.1.zst
 /usr/local/share/man/man1/nsenter.1.zst
+/usr/local/share/man/man1/pipesz.1.zst
 /usr/local/share/man/man1/prlimit.1.zst
 /usr/local/share/man/man1/rename.1.zst
 /usr/local/share/man/man1/renice.1.zst
@@ -347,6 +359,7 @@
 /usr/local/share/man/man1/utmpdump.1.zst
 /usr/local/share/man/man1/uuidgen.1.zst
 /usr/local/share/man/man1/uuidparse.1.zst
+/usr/local/share/man/man1/waitpid.1.zst
 /usr/local/share/man/man1/wall.1.zst
 /usr/local/share/man/man1/whereis.1.zst
 /usr/local/share/man/man3/libblkid.3.zst
@@ -369,6 +382,7 @@
 /usr/local/share/man/man8/agetty.8.zst
 /usr/local/share/man/man8/blkdiscard.8.zst
 /usr/local/share/man/man8/blkid.8.zst
+/usr/local/share/man/man8/blkpr.8.zst
 /usr/local/share/man/man8/blkzone.8.zst
 /usr/local/share/man/man8/blockdev.8.zst
 /usr/local/share/man/man8/cfdisk.8.zst
