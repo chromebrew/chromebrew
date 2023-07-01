@@ -14,6 +14,7 @@
 /usr/local/share/Exodus-linux-x64/libvulkan.so.1
 /usr/local/share/Exodus-linux-x64/LICENSE
 /usr/local/share/Exodus-linux-x64/LICENSES.chromium.html
+/usr/local/share/Exodus-linux-x64/locales/af.pak
 /usr/local/share/Exodus-linux-x64/locales/am.pak
 /usr/local/share/Exodus-linux-x64/locales/ar.pak
 /usr/local/share/Exodus-linux-x64/locales/bg.pak
@@ -64,14 +65,13 @@
 /usr/local/share/Exodus-linux-x64/locales/th.pak
 /usr/local/share/Exodus-linux-x64/locales/tr.pak
 /usr/local/share/Exodus-linux-x64/locales/uk.pak
+/usr/local/share/Exodus-linux-x64/locales/ur.pak
 /usr/local/share/Exodus-linux-x64/locales/vi.pak
 /usr/local/share/Exodus-linux-x64/locales/zh-CN.pak
 /usr/local/share/Exodus-linux-x64/locales/zh-TW.pak
 /usr/local/share/Exodus-linux-x64/resources/app.asar
 /usr/local/share/Exodus-linux-x64/resources.pak
 /usr/local/share/Exodus-linux-x64/snapshot_blob.bin
-/usr/local/share/Exodus-linux-x64/swiftshader/libEGL.so
-/usr/local/share/Exodus-linux-x64/swiftshader/libGLESv2.so
 /usr/local/share/Exodus-linux-x64/v8_context_snapshot.bin
 /usr/local/share/Exodus-linux-x64/version
 /usr/local/share/Exodus-linux-x64/vk_swiftshader_icd.json

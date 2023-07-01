@@ -3,21 +3,19 @@ require 'package'
 class Exodus < Package
   description 'Exodus is a desktop crypto wallet'
   homepage 'https://www.exodus.com/'
-  version '22.3.31'
+  version '23.6.19'
   license 'Freeware'
   compatibility 'x86_64'
-  source_url 'https://downloads.exodus.com/releases/exodus-linux-x64-22.3.31.zip'
-  source_sha256 '2c94fa2f9cec42b23f3a1bc2778cd112cbe4040aea1c3ffe6f6b1f2a3899abf5'
+  source_url 'https://downloads.exodus.com/releases/exodus-linux-x64-23.6.19.zip'
+  source_sha256 'b9cc4db81dd8efbfe321394b817d641ef854d1b81a8209b330ff07aab6e8b0e0'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exodus/22.3.31_x86_64/exodus-22.3.31-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    x86_64: '61d9fca621e8747d13c46329a9fd05c5ad636860fa99999a302cd15e9fe1a57f'
-  })
-
+  depends_on 'at_spi2_core'
+  depends_on 'gtk3'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+
+  no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
