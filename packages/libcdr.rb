@@ -1,28 +1,28 @@
 # Adapted from Arch Linux libcdr PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libcdr/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Libcdr < Package
+class Libcdr < Autotools
   description 'CorelDraw file format importer library for LibreOffice'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libcdr'
-  version '0.1.7'
+  version '0.1.7-1'
   license 'GPL2 LGPL2.1 MPL'
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.7.tar.xz'
   source_sha256 '5666249d613466b9aa1e987ea4109c04365866e9277d80f6cd9663e86b8ecdd4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7_armv7l/libcdr-0.1.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7_armv7l/libcdr-0.1.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7_i686/libcdr-0.1.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7_x86_64/libcdr-0.1.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_armv7l/libcdr-0.1.7-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_armv7l/libcdr-0.1.7-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_i686/libcdr-0.1.7-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_x86_64/libcdr-0.1.7-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9a19cf28a71ebc18454cafd9f32d177a718a2019de4ffb594534e07ad9852bb1',
-     armv7l: '9a19cf28a71ebc18454cafd9f32d177a718a2019de4ffb594534e07ad9852bb1',
-       i686: '59515e0bf500daa535e9132c02b56ef21a92ae94614462a397e2a2c5ecf0bf03',
-     x86_64: '6ef34db988840140936b8c073c718f50e42348b6c7b17ee20b3de2b45b6a56db'
+    aarch64: '40f8a042200be901d8bd07bbb5daad10663386a48b8d8763e28fa38eef8b3369',
+     armv7l: '40f8a042200be901d8bd07bbb5daad10663386a48b8d8763e28fa38eef8b3369',
+       i686: 'f041ecc94e1408e137d303914dd11c7fa98de12459218bc8e87e6243fea27e29',
+     x86_64: '5437233f8a237e0d04c1f2ed635e9ce6220f24fff86c8dedfd481975c4a45cd9'
   })
 
   depends_on 'boost' => :build
@@ -35,13 +35,4 @@ class Libcdr < Package
   depends_on 'librevenge' # R
   depends_on 'libwpg' => :build
   depends_on 'zlibpkg' # R
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

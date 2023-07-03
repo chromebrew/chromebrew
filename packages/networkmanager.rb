@@ -3,21 +3,21 @@ require 'package'
 class Networkmanager < Package
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  version '1.42.2'
+  version '1.42.8'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'aarch64,armv7l,x86_64'
   source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{version}/NetworkManager#{version}.tar.bz2"
-  source_sha256 '939a27acb0520efc4af3bb7a7dac1e85c34a4b8bbec2f59e2247baf93ac81403'
+  source_sha256 'b7f59d1cc49ea77db496f547fddb2a06281867692b8ce5a5ee8f22c4e9b380eb'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.2_armv7l/networkmanager-1.42.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.2_armv7l/networkmanager-1.42.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.2_x86_64/networkmanager-1.42.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.8_armv7l/networkmanager-1.42.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.8_armv7l/networkmanager-1.42.8-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.42.8_x86_64/networkmanager-1.42.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cbabb7283021aca5027e28dc36e957464c14ae7496eb098bb4a6fe0a43712f9c',
-     armv7l: 'cbabb7283021aca5027e28dc36e957464c14ae7496eb098bb4a6fe0a43712f9c',
-     x86_64: '5a48bb9db96022e23cbdb2e76e20a7c009c3700d7cfa208552b3aec2e1b62259'
+    aarch64: '63eddf96b1b52df588323ac68f3853fd2fe4c96648dc65bc766ab5497121a7b8',
+     armv7l: '63eddf96b1b52df588323ac68f3853fd2fe4c96648dc65bc766ab5497121a7b8',
+     x86_64: '9fc107241f51ffa83d62e6fe61844e54114db1add117ac7c30189b40945f5aa2'
   })
 
   depends_on 'gobject_introspection'

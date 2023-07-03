@@ -1,7 +1,6 @@
 require 'package'
 
 class CMake < Package
-
   def self.cmake_options(options = '')
     return (@cmake_options = options if options)
   end
@@ -11,6 +10,7 @@ class CMake < Package
   end
 
   def self.build
+    puts "Additional cmake_options being used: #{@cmake_options.nil? || @cmake_options.empty? ? '<no cmake_options>' : @cmake_options}".orange
     @crew_cmake_options = no_lto ? CREW_CMAKE_FNO_LTO_OPTIONS : CREW_CMAKE_OPTIONS
     system "cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
     system "#{CREW_NINJA} -C builddir"

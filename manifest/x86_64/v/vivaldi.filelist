@@ -111,7 +111,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-15ed54b121217981fe8ba7fa4ec38d11.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-beffcdaf3e417dad625352259fde9e9b.js
 /usr/local/share/vivaldi/resources/vivaldi/browser.html
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
@@ -684,6 +684,8 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_yahoo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_yandex_market.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_youtube.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/startup-static.svg
+/usr/local/share/vivaldi/resources/vivaldi/resources/startup.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/symbol-add@2x.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/symbol-add.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/symbol-delete-white@2x.png
@@ -699,6 +701,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/unsynced_file.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_calendar_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_chat_default.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi-icon-macos.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_mail_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_rss_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcome-arrow.svg
