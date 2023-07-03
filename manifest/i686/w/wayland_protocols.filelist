@@ -3,10 +3,13 @@
 /usr/local/share/wayland-protocols/stable/viewporter/viewporter.xml
 /usr/local/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml
 /usr/local/share/wayland-protocols/staging/content-type/content-type-v1.xml
+/usr/local/share/wayland-protocols/staging/cursor-shape/cursor-shape-v1.xml
 /usr/local/share/wayland-protocols/staging/drm-lease/drm-lease-v1.xml
+/usr/local/share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml
 /usr/local/share/wayland-protocols/staging/ext-idle-notify/ext-idle-notify-v1.xml
 /usr/local/share/wayland-protocols/staging/ext-session-lock/ext-session-lock-v1.xml
 /usr/local/share/wayland-protocols/staging/fractional-scale/fractional-scale-v1.xml
+/usr/local/share/wayland-protocols/staging/security-context/security-context-v1.xml
 /usr/local/share/wayland-protocols/staging/single-pixel-buffer/single-pixel-buffer-v1.xml
 /usr/local/share/wayland-protocols/staging/tearing-control/tearing-control-v1.xml
 /usr/local/share/wayland-protocols/staging/xdg-activation/xdg-activation-v1.xml
