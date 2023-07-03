@@ -3,23 +3,23 @@ require 'package'
 class Perl_io_file < Package
   description 'Supply object methods for filehandles'
   homepage 'https://metacpan.org/pod/IO::File'
-  version '1.51-perl5.36'
+  version '1.51-perl5.38'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.51.tar.gz'
   source_sha256 '5493ea55998728cd2b7ecb8234c58fb5d5df27098d0f07addca22444d7616ce0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.36_armv7l/perl_io_file-1.51-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.36_armv7l/perl_io_file-1.51-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.36_i686/perl_io_file-1.51-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.36_x86_64/perl_io_file-1.51-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.38_armv7l/perl_io_file-1.51-perl5.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.38_armv7l/perl_io_file-1.51-perl5.38-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.38_i686/perl_io_file-1.51-perl5.38-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_io_file/1.51-perl5.38_x86_64/perl_io_file-1.51-perl5.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c918820a4ca406657dab7b50eb3ceb00c80f6fc34ec8375c408242b17cb05bea',
-     armv7l: 'c918820a4ca406657dab7b50eb3ceb00c80f6fc34ec8375c408242b17cb05bea',
-       i686: 'f58d3cbf2c72867f2f5be09bd64aea5e9e90f772af466b037b8cab1bf51332e6',
-     x86_64: '7669b1f01815221c7bec2606a4552c4ed220de8a66c0741c2c9a4118b07a631f'
+    aarch64: 'b72491694be1f3fb2333fd5b164a1a2d7e4e4e44f3b04efde49c0045b12de068',
+     armv7l: 'b72491694be1f3fb2333fd5b164a1a2d7e4e4e44f3b04efde49c0045b12de068',
+       i686: 'f17926d2b1a228fed01a3c2295f10623a30e7ebd3db920468ebb468abf1b5049',
+     x86_64: 'e19cddaa4049d2adf964e8113649dc01d9a7e410d1ef2e087956da5df47b5d41'
   })
 
   depends_on 'perl_file_temp' => :build

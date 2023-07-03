@@ -3,23 +3,23 @@ require 'package'
 class Perl_lwp_useragent < Package
   description 'Web user agent class'
   homepage 'https://metacpan.org/pod/LWP::UserAgent'
-  version '6.70-perl5.36'
+  version '6.70-perl5.38'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/libwww-perl-6.70.tar.gz'
   source_sha256 '34f00d2344757b9c0b55ad35808d53e93d7d92f7a464ec837fe6a73c51fb5969'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.36_armv7l/perl_lwp_useragent-6.70-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.36_armv7l/perl_lwp_useragent-6.70-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.36_i686/perl_lwp_useragent-6.70-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.36_x86_64/perl_lwp_useragent-6.70-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.38_armv7l/perl_lwp_useragent-6.70-perl5.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.38_armv7l/perl_lwp_useragent-6.70-perl5.38-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.38_i686/perl_lwp_useragent-6.70-perl5.38-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_lwp_useragent/6.70-perl5.38_x86_64/perl_lwp_useragent-6.70-perl5.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4c66efed60d462ef0a0d866759999823e49ed09403e0ba9f7d0de17405eac838',
-     armv7l: '4c66efed60d462ef0a0d866759999823e49ed09403e0ba9f7d0de17405eac838',
-       i686: '813fb23f85cdf25ce27eedb04118171e81b3e6188ada4c6d11a4ec7ca017239b',
-     x86_64: '417837c84a47999a7df13f82bfd7ecbc14458fd4fcda64cd4068a74df2f99ae0'
+    aarch64: '57e1b69386760c070f0163161dc6218eba21a209ab39b3877d2198e3c29d595a',
+     armv7l: '57e1b69386760c070f0163161dc6218eba21a209ab39b3877d2198e3c29d595a',
+       i686: '55e2f3f52bbd90e104f93d7bcad5e77cf168a972a8cdef5233b00947416dc927',
+     x86_64: '514405dd0e89c6953fc5edd389e4d314f733b943e175122efe645341947defe2'
   })
 
   no_compile_needed

@@ -3,30 +3,29 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  @_ver = '5.36.1'
+  @_ver = '5.38.0'
   version @_ver
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{@_ver}.tar.xz"
-  source_sha256 'bd91217ea8a8c8b81f21ebbb6cefdf0d13ae532013f944cdece2cd51aef4b6a7'
+  source_sha256 'eca551caec3bc549a4e590c0015003790bdd1a604ffe19cc78ee631d51f7072e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_armv7l/perl-5.36.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_armv7l/perl-5.36.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_i686/perl-5.36.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.36.1_x86_64/perl-5.36.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.0_armv7l/perl-5.38.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.0_armv7l/perl-5.38.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.0_i686/perl-5.38.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.0_x86_64/perl-5.38.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '81ca29933d6061669fd85dc75ca6e1be321b685f0a22fc04e1b8eeb0656644ef',
-     armv7l: '81ca29933d6061669fd85dc75ca6e1be321b685f0a22fc04e1b8eeb0656644ef',
-       i686: '8c834adff441dde931df788fd87bee381954a9dde6107950324fdaa39a3723c9',
-     x86_64: '1712230f6360e5c81ef56095331a2fac2ad94846b40fb4b75c5c9be81c471777'
+    aarch64: '4424726fdd358841c0772a04a33ba072ed5915598b718c11d7634fcf8ea713f9',
+     armv7l: '4424726fdd358841c0772a04a33ba072ed5915598b718c11d7634fcf8ea713f9',
+       i686: 'b0eabb7d4e61125f17395725a97392349b3ddd70c1068187a2fdc4138b52e81c',
+     x86_64: '659731d2d7c3475ab531908736e1888d9dc4f50ca03a51c549346b6b01ab9d25'
   })
 
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
   depends_on 'libdb' # R
-  depends_on 'patch' => :build
 
   def self.build
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_LIB_PREFIX}/libnsl.so"
@@ -72,24 +71,6 @@ class Perl < Package
   end
 
   def self.check
-    # having strange error as explained at https://patchwork.openembedded.org/patch/95795/
-    # so, apply patch from https://github.com/habitat-sh/core-plans/blob/master/perl/skip-wide-character-test.patch
-    # to ignore this single test
-    system 'patch -Np1 << EOF
-diff -ur perl-5.22.1.orig/t/lib/warnings/regexec perl-5.22.1/t/lib/warnings/regexec
---- perl-5.22.1.orig/t/lib/warnings/regexec     2015-10-30 21:14:29.000000000 +0000
-+++ perl-5.22.1/t/lib/warnings/regexec  2016-01-19 05:05:50.218474114 +0000
-@@ -188,6 +188,7 @@
- ########
- # NAME \b{} in UTF-8 locale
- require \'../loc_tools.pl\';
-+print("SKIPPED\n# This test causes a failure in the test suite\n"),exit;
- unless (locales_enabled()) {
-     print("SKIPPED\n# locales not available\n"),exit;
- }
-EOF'
-
-    # test
     system "make test -j #{CREW_NPROC} || true"
   end
 end
