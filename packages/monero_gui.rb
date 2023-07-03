@@ -3,11 +3,11 @@ require 'package'
 class Monero_gui < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.17.3.1'
+  version '0.18.2.2'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
   compatibility 'x86_64'
-  source_url 'https://downloads.getmonero.org/gui/monero-gui-linux-x64-v0.17.3.1.tar.bz2'
-  source_sha256 '02e8e32455383cf32030e33511656492a352788a619a0c9220ec360c2e863ef9'
+  source_url 'https://downloads.getmonero.org/gui/monero-gui-linux-x64-v0.18.2.2.tar.bz2'
+  source_sha256 '027707b0ad740908c26895e3bf569ca284a813263129fe2635049313c5129230'
 
   depends_on 'monero'
   depends_on 'xcb_util_image'
@@ -15,6 +15,9 @@ class Monero_gui < Package
   depends_on 'xcb_util_renderutil'
   depends_on 'xcb_util_wm'
   depends_on 'sommelier'
+
+  no_compile_needed
+  no_shrink
 
   def self.build
     monero = <<~EOF
