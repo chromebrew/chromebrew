@@ -3,23 +3,23 @@ require 'package'
 class Perl_xml_sax_base < Package
   description 'XML::SAX - Simple API for XML'
   homepage 'https://metacpan.org/pod/XML::SAX'
-  version '1.09-perl5.36'
+  version '1.09-perl5.38'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-1.09.tar.gz'
   source_sha256 '66cb355ba4ef47c10ca738bd35999723644386ac853abbeb5132841f5e8a2ad0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.36_armv7l/perl_xml_sax_base-1.09-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.36_armv7l/perl_xml_sax_base-1.09-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.36_i686/perl_xml_sax_base-1.09-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.36_x86_64/perl_xml_sax_base-1.09-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_armv7l/perl_xml_sax_base-1.09-perl5.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_armv7l/perl_xml_sax_base-1.09-perl5.38-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_i686/perl_xml_sax_base-1.09-perl5.38-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_x86_64/perl_xml_sax_base-1.09-perl5.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '19065ce765f1723ffad7072757e3b6b6a0a4ee04d32dadc731d505bb106a49ec',
-     armv7l: '19065ce765f1723ffad7072757e3b6b6a0a4ee04d32dadc731d505bb106a49ec',
-       i686: '9922191e3fdb09d497610f0b27715407d902bc1b5ca5e55ad4f70e4bc5b86d7c',
-     x86_64: 'a21d2b0f607998103b51732272c286c48439f2eab8d084aea8636f1ad7bbbd9c'
+    aarch64: '34d6dbaf878b083e623a523cb7a525405ea194a836cc5ca449c9f940de79ddd2',
+     armv7l: '34d6dbaf878b083e623a523cb7a525405ea194a836cc5ca449c9f940de79ddd2',
+       i686: '044fcc8aa33ca005865509156b121d01b0f54d8f93cbab4f99428f8f71030891',
+     x86_64: '67316a0d090248dee533f82fbd435d1160e1ac7706165364768e3268824b1414'
   })
 
   def self.prebuild
