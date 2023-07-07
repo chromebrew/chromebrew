@@ -3,23 +3,23 @@ require 'package'
 class Gcc10 < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '10.4.0-1'
-  compatibility 'all'
+  version '10.5.0'
   license 'GPL-3'
-  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.4.0/gcc-10.4.0.tar.xz'
-  source_sha256 'c9297d5bcd7cb43f3dfc2fed5389e948c9312fd962ef6a4ce455cff963ebe4f1'
+  compatibility 'all'
+  source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.5.0/gcc-10.5.0.tar.xz'
+  source_sha256 '25109543fdf46f397c347b5d8b7a2c7e5694a5a51cce4b9c6e1ea8a71ca307c1'
 
   binary_url({
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_i686/gcc10-10.4.0-1-chromeos-i686.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_x86_64/gcc10-10.4.0-1-chromeos-x86_64.tar.zst',
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.4.0-1_armv7l/gcc10-10.4.0-1-chromeos-armv7l.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_armv7l/gcc10-10.5.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_armv7l/gcc10-10.5.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_i686/gcc10-10.5.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_x86_64/gcc10-10.5.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-        i686: 'f1cd1b358a700b07400af645a324a26a6895cf8f2bc93d2b1c21782e2eb9b750',
-      x86_64: 'd0f1cb59380cf1bf7806372752f8b3f9d472058cef7b63a33df3bfc18e9fb985',
-     aarch64: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4',
-      armv7l: 'dab3fe7fa5c509f18cc20e2c067e37363f3471688cfbd6c1d875bf1b71ce77b4'
+    aarch64: '7cb05d4dedc9dd4c30964b98d3a695e630d61297bc268a553ca26b1130748e85',
+     armv7l: '7cb05d4dedc9dd4c30964b98d3a695e630d61297bc268a553ca26b1130748e85',
+       i686: '0dfddf8fcb2c472c9e0325e0a57d4fba947c4b3854a03f03209c2585bad109c9',
+     x86_64: 'b1edbcc434943696be7da3ca637515ec2f8ade68cb2c7587713e53892828dad4'
   })
 
   depends_on 'binutils' => :build
@@ -46,11 +46,11 @@ class Gcc10 < Package
     # This is defined in https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-5.4/include/uapi/linux/limits.h
     # and is defined as per suggested method here: https://github.com/ZefengWang/cross-tool-chain-build
     # The following is due to sed not passing newlines right.
-    if system 'grep -q 4096 libsanitizer/asan/asan_linux.cpp', exception: false
-      system "sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp"
-      system "sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp"
-      system "sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp"
-    end
+    return unless system 'grep -q 4096 libsanitizer/asan/asan_linux.cpp', exception: false
+
+    system "sed -i '77a #endif' libsanitizer/asan/asan_linux.cpp"
+    system "sed -i '77a #define PATH_MAX 4096' libsanitizer/asan/asan_linux.cpp"
+    system "sed -i '77a #ifndef PATH_MAX' libsanitizer/asan/asan_linux.cpp"
   end
 
   def self.build
