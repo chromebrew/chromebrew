@@ -33,7 +33,7 @@ class Libdecor < Package
   depends_on 'wayland' # R
 
   def self.build
-    system "meson #{CREW_MESON_OPTIONS} \
+    system "meson setup #{CREW_MESON_OPTIONS} \
       -Dlocalstatedir=#{CREW_PREFIX}/var \
       -Dsharedstatedir=#{CREW_PREFIX}/var/lib \
       builddir"
