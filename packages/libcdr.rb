@@ -6,23 +6,23 @@ require 'buildsystems/autotools'
 class Libcdr < Autotools
   description 'CorelDraw file format importer library for LibreOffice'
   homepage 'https://wiki.documentfoundation.org/DLP/Libraries/libcdr'
-  version '0.1.7-1'
+  version '0.1.7-2'
   license 'GPL2 LGPL2.1 MPL'
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.7.tar.xz'
   source_sha256 '5666249d613466b9aa1e987ea4109c04365866e9277d80f6cd9663e86b8ecdd4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_armv7l/libcdr-0.1.7-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_armv7l/libcdr-0.1.7-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_i686/libcdr-0.1.7-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-1_x86_64/libcdr-0.1.7-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_armv7l/libcdr-0.1.7-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_armv7l/libcdr-0.1.7-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_i686/libcdr-0.1.7-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_x86_64/libcdr-0.1.7-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '40f8a042200be901d8bd07bbb5daad10663386a48b8d8763e28fa38eef8b3369',
-     armv7l: '40f8a042200be901d8bd07bbb5daad10663386a48b8d8763e28fa38eef8b3369',
-       i686: 'f041ecc94e1408e137d303914dd11c7fa98de12459218bc8e87e6243fea27e29',
-     x86_64: '5437233f8a237e0d04c1f2ed635e9ce6220f24fff86c8dedfd481975c4a45cd9'
+    aarch64: '79124696e55c0a01674829d77e7f8c9d17e688b502e94776b4a0df0e01a0f4e0',
+     armv7l: '79124696e55c0a01674829d77e7f8c9d17e688b502e94776b4a0df0e01a0f4e0',
+       i686: '0a7f893c78a6d7d964b7191215421333e7a98584296e50e5217262cb7ebeaf40',
+     x86_64: '81bea42bae37815908e4144ad8e2da2b8a07447fed3e6cbc0e6e9d768813eafd'
   })
 
   depends_on 'boost' => :build
