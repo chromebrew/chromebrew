@@ -12,11 +12,8 @@ class CMake < Package
   def self.build
     puts "Additional cmake_options being used: #{@cmake_options.nil? || @cmake_options.empty? ? '<no cmake_options>' : @cmake_options}".orange
     @crew_cmake_options = no_lto ? CREW_CMAKE_FNO_LTO_OPTIONS : CREW_CMAKE_OPTIONS
-    if CREW_LINKER == 'mold'
-      system "mold -run cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
-    else
-      system "cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
-    end
+    @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run ' : ''
+    system "#{@mold_linker_prefix_cmd}cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
     system "#{CREW_NINJA} -C builddir"
   end
 
