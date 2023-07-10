@@ -307,6 +307,7 @@
 /usr/local/include/php/Zend/zend_llist.h
 /usr/local/include/php/Zend/zend_long.h
 /usr/local/include/php/Zend/zend_map_ptr.h
+/usr/local/include/php/Zend/zend_max_execution_timer.h
 /usr/local/include/php/Zend/zend_modules.h
 /usr/local/include/php/Zend/zend_multibyte.h
 /usr/local/include/php/Zend/zend_multiply.h

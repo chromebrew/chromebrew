@@ -3,23 +3,21 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.2.7'
+  version '8.2.8'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-8.2.7.tar.xz'
-  source_sha256 '4b9fb3dcd7184fe7582d7e44544ec7c5153852a2528de3b6754791258ffbdfa0'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.php.net/distributions/php-8.2.8.tar.xz'
+  source_sha256 'cfe1055fbcd486de7d3312da6146949aae577365808790af6018205567609801'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_armv7l/php82-8.2.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_i686/php82-8.2.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.7_x86_64/php82-8.2.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.8_armv7l/php82-8.2.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.8_armv7l/php82-8.2.8-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.8_x86_64/php82-8.2.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b835a5c0a0e764a34dd76cdfd5ffcaf369f04918db8fd91d7b0b1f67b1b03007',
-     armv7l: 'b835a5c0a0e764a34dd76cdfd5ffcaf369f04918db8fd91d7b0b1f67b1b03007',
-       i686: 'c0233e1aabd4fbedf6cfeb9df2b523e70e3233dee367d4831a611cae146e4348',
-     x86_64: '5bb7dd06969c766a462f5015bef4d0da8c605be5b8164c576554476d7fb45a0b'
+    aarch64: 'c1f9664de44e1f13da1accaceb6c3acf184f2e4bc0661fe0fef6414a7a3ce176',
+     armv7l: 'c1f9664de44e1f13da1accaceb6c3acf184f2e4bc0661fe0fef6414a7a3ce176',
+     x86_64: '941545b60e3ecffe31326166c71d3d0c21dca7ab8c086ab4f8490b525f32ad4a'
   })
 
   depends_on 'aspell_en'
@@ -43,6 +41,7 @@ class Php82 < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libgcrypt' # R
+  depends_on 'libgd' # R
   depends_on 'libgpgerror' # R
   depends_on 'libidn2' # R
   depends_on 'libjpeg' # R
