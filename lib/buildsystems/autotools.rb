@@ -28,7 +28,11 @@ class Autotools < Package
       puts 'Using filefix.'.orange
       system 'filefix'
     end
-    system "./configure #{CREW_OPTIONS} #{@configure_options}"
+    if CREW_LINKER == 'mold'
+      system "mold -run ./configure #{CREW_OPTIONS} #{@configure_options}"
+    else
+      system "./configure #{CREW_OPTIONS} #{@configure_options}"
+    end
     system 'make'
   end
 

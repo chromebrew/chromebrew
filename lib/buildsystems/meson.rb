@@ -12,7 +12,11 @@ class Meson < Package
   def self.build
     puts "Additional meson_options being used: #{@meson_options.nil? || @meson_options.empty? ? '<no meson_options>' : @meson_options}".orange
     @crew_meson_options = no_lto ? CREW_MESON_FNO_LTO_OPTIONS : CREW_MESON_OPTIONS
-    system "meson setup #{@crew_meson_options} #{@meson_options} builddir"
+    if CREW_LINKER == 'mold'
+      system "mold -run meson setup #{@crew_meson_options} #{@meson_options} builddir"
+    else
+      system "meson setup #{@crew_meson_options} #{@meson_options} builddir"
+    end
     system 'meson configure builddir'
     system "#{CREW_NINJA} -C builddir"
   end
