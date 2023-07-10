@@ -4,8 +4,8 @@ class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
   version '8.2.8'
-  compatibility 'x86_64 aarch64 armv7l'
   license 'PHP-3.01'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-8.2.8.tar.xz'
   source_sha256 'cfe1055fbcd486de7d3312da6146949aae577365808790af6018205567609801'
 
