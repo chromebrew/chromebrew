@@ -125,13 +125,14 @@
 /usr/local/lib/gegl-0.4/tiff-save.so
 /usr/local/lib/gegl-0.4/transformops.so
 /usr/local/lib/gegl-0.4/v4l.so
+/usr/local/lib/gegl-0.4/vector-fill.so
 /usr/local/lib/gegl-0.4/vector-stroke.so
 /usr/local/lib/gegl-0.4/webp-load.so
 /usr/local/lib/gegl-0.4/webp-save.so
 /usr/local/lib/girepository-1.0/Gegl-0.4.typelib
 /usr/local/lib/libgegl-0.4.so
 /usr/local/lib/libgegl-0.4.so.0
-/usr/local/lib/libgegl-0.4.so.0.443.1
+/usr/local/lib/libgegl-0.4.so.0.445.1
 /usr/local/lib/libgegl-npd-0.4.so
 /usr/local/lib/libgegl-sc-0.4.so
 /usr/local/lib/pkgconfig/gegl-0.4.pc
