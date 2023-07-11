@@ -5191,6 +5191,11 @@ url: https://git.openldap.org/openldap/openldap/-/tags
 activity: high
 ---
 kind: url
+name: lnav
+url: https://github.com/tstack/lnav/releases
+activity: high
+---
+kind: url
 name: log4c
 url: https://sourceforge.net/projects/log4c/files/log4c/
 activity: none
