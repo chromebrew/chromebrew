@@ -75,6 +75,11 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
 activity: none
 ---
 kind: url
+name: agrind
+url: https://github.com/rcoh/angle-grinder/releases
+activity: medium
+---
+kind: url
 name: aha
 url: https://github.com/theZiz/aha/releases
 activity: low
