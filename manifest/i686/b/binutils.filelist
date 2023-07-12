@@ -129,6 +129,7 @@
 /usr/local/lib/ldscripts/elf_x86_64.xu
 /usr/local/lib/ldscripts/elf_x86_64.xw
 /usr/local/lib/ldscripts/elf_x86_64.xwe
+/usr/local/lib/libbfd-2.39.50.so
 /usr/local/lib/libbfd-2.40.so
 /usr/local/lib/libbfd.a
 /usr/local/lib/libbfd.la
@@ -144,6 +145,7 @@
 /usr/local/lib/libctf.so.0
 /usr/local/lib/libctf.so.0.0.0
 /usr/local/lib/libiberty.a
+/usr/local/lib/libopcodes-2.39.50.so
 /usr/local/lib/libopcodes-2.40.so
 /usr/local/lib/libopcodes.a
 /usr/local/lib/libopcodes.la

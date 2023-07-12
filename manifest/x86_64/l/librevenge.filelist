@@ -47,7 +47,6 @@
 /usr/local/share/doc/librevenge/html/annotated.html
 /usr/local/share/doc/librevenge/html/bc_sd.png
 /usr/local/share/doc/librevenge/html/bc_s.png
-/usr/local/share/doc/librevenge/html/bdwn.png
 /usr/local/share/doc/librevenge/html/classes.html
 /usr/local/share/doc/librevenge/html/classGenericException.html
 /usr/local/share/doc/librevenge/html/classlibrevenge_1_1AllocTable.html
@@ -234,12 +233,8 @@
 /usr/local/share/doc/librevenge/html/dir_bfccd401955b95cf8c75461437045ac0.html
 /usr/local/share/doc/librevenge/html/dir_c85d3e3c5052e9ad9ce18c6863244a25.html
 /usr/local/share/doc/librevenge/html/dir_e1884f9c1f80ae0cc5c47064f073876d.html
-/usr/local/share/doc/librevenge/html/docd.png
-/usr/local/share/doc/librevenge/html/doc.png
 /usr/local/share/doc/librevenge/html/doxygen.css
 /usr/local/share/doc/librevenge/html/files.html
-/usr/local/share/doc/librevenge/html/folderclosed.png
-/usr/local/share/doc/librevenge/html/folderopen.png
 /usr/local/share/doc/librevenge/html/functions_b.html
 /usr/local/share/doc/librevenge/html/functions_c.html
 /usr/local/share/doc/librevenge/html/functions_d.html
