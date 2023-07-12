@@ -1,7 +1,11 @@
+/usr/local/bin/gimp
 /usr/local/bin/gimp-2.99
+/usr/local/bin/gimp-console
 /usr/local/bin/gimp-console-2.99
 /usr/local/bin/gimp-script-fu-interpreter-3.0
+/usr/local/bin/gimp-test-clipboard
 /usr/local/bin/gimp-test-clipboard-2.99
+/usr/local/bin/gimptool
 /usr/local/bin/gimptool-2.99
 /usr/local/etc/gimp/2.99/controllerrc
 /usr/local/etc/gimp/2.99/gimp.css
@@ -2555,10 +2559,14 @@
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gimp30-python.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gimp30-script-fu.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/gimp30-std-plug-ins.mo
+/usr/local/share/man/man1/gimp.1.zst
 /usr/local/share/man/man1/gimp-2.99.1.zst
+/usr/local/share/man/man1/gimp-console.1.zst
 /usr/local/share/man/man1/gimp-console-2.99.1.zst
+/usr/local/share/man/man1/gimptool.1.zst
 /usr/local/share/man/man1/gimptool-2.99.1.zst
 /usr/local/share/man/man5/gimprc-2.99.5.zst
+/usr/local/share/man/man5/gimprc.5.zst
 /usr/local/share/metainfo/org.gimp.GIMP.appdata.xml
 /usr/local/share/vala/vapi/gimp-3.0.deps
 /usr/local/share/vala/vapi/gimp-3.0.vapi

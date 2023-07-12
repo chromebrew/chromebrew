@@ -15,9 +15,9 @@ class Gimp < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_x86_64/gimp-2.99.16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cc06da044ebc5be47a1b757a4dfdf85c8c4433cd75b1333d89468664bc3e55bc',
-     armv7l: 'cc06da044ebc5be47a1b757a4dfdf85c8c4433cd75b1333d89468664bc3e55bc',
-     x86_64: '2548cb28a3f325f0941fb6229acded8bcc010363cfc8331be6ab3f17c4134496'
+    aarch64: '388c01fdf71960fb5bb821911640c64d60378bf8f62aea9f64f7862576457cc9',
+     armv7l: '388c01fdf71960fb5bb821911640c64d60378bf8f62aea9f64f7862576457cc9',
+     x86_64: '8ceefac4484cdd33ec95dce0ddbc755b61cfe20a1c34a9d7c8e026106c6422f1'
   })
 
   depends_on 'aalib' # R
@@ -101,5 +101,26 @@ class Gimp < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    @binaries = %w[gimp gimp-console gimp-test-clipboard gimptool]
+    @binaries.each do |binary|
+      unless File.file?("#{CREW_DEST_PREFIX}/bin/#{binary}")
+        FileUtils.ln_s "#{CREW_PREFIX}/bin/#{binary}-2.99",
+                       "#{CREW_DEST_PREFIX}/bin/#{binary}"
+      end
+    end
+    @man1pages = %w[gimp gimp-console gimptool]
+    @man5pages = %w[gimprc]
+    @man1pages.each do |manpage|
+      unless File.file?("#{CREW_DEST_MAN_PREFIX}/man1/#{manpage}.1")
+        FileUtils.ln_s "#{CREW_MAN_PREFIX}/man1/#{manpage}-2.99.1",
+                       "#{CREW_DEST_MAN_PREFIX}/man1/#{manpage}.1"
+      end
+    end
+    @man5pages.each do |manpage|
+      unless File.file?("#{CREW_DEST_MAN_PREFIX}/man5/#{manpage}.5")
+        FileUtils.ln_s "#{CREW_MAN_PREFIX}/man5/#{manpage}-2.99.5",
+                       "#{CREW_DEST_MAN_PREFIX}/man5/#{manpage}.5"
+      end
+    end
   end
 end
