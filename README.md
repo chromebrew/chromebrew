@@ -50,7 +50,7 @@ Open the terminal with Ctrl+Alt+T and type `shell`. If this command returns `ERR
 Then download and run the installation script below:
 
 ```bash
-curl -Ls git.io/vddgY | bash
+exec bash --init-file <(curl -Ls git.io/vddgY)
 ```
 
 ## Help
