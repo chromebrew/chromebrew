@@ -3,12 +3,10 @@ require 'package'
 class Libexif < Package
   description 'A library for parsing, editing, and saving EXIF data'
   homepage 'https://libexif.github.io/'
-  @_ver = '0.6.22'
-  @_ver_ = @_ver.gsub(/[.]/, '_')
+  version '0.6.22'
   license 'LGPL-2+'
-  version @_ver
   compatibility 'all'
-  source_url "https://github.com/libexif/libexif/releases/download/libexif-#{@_ver_}-release/libexif-#{@_ver}.tar.xz"
+  source_url "https://github.com/libexif/libexif/releases/download/libexif-#{version.gsub(/[.]/, '_')}-release/libexif-#{version}.tar.xz"
   source_sha256 '5048f1c8fc509cc636c2f97f4b40c293338b6041a5652082d5ee2cf54b530c56'
 
   binary_url({

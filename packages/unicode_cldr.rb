@@ -3,12 +3,10 @@ require 'package'
 class Unicode_cldr < Package
   description 'Unicode Common Locale Data Repository'
   homepage 'http://cldr.unicode.org/'
-  @_ver = '43.0'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '43.0'
   license 'unicode'
   compatibility 'all'
-  source_url "https://unicode.org/Public/cldr/#{@_ver_prelastdot}/cldr-common-#{@_ver}.zip"
+  source_url "https://unicode.org/Public/cldr/#{version.rpartition('.')[0]}/cldr-common-#{version}.zip"
   source_sha256 '7800dadb6a11e06ba1475f8c2830aa87e0749ed441c953d8deea60b4baeef592'
 
   no_compile_needed

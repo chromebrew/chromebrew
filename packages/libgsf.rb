@@ -3,9 +3,7 @@ require 'package'
 class Libgsf < Package
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
-  @_ver = '1.14.50'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '1.14.50'
   license 'GPL-2 and LGPL-2'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'

@@ -3,11 +3,10 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  @_ver = '5.38.0'
-  version @_ver
+  version '5.38.0'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url "https://www.cpan.org/src/5.0/perl-#{@_ver}.tar.xz"
+  source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
   source_sha256 'eca551caec3bc549a4e590c0015003790bdd1a604ffe19cc78ee631d51f7072e'
 
   binary_url({
@@ -39,11 +38,11 @@ class Perl < Package
       -Dprefix=#{CREW_PREFIX} \
       -Dvendorprefix=#{CREW_PREFIX} \
       -Dprivlib=#{CREW_PREFIX}/share/perl5/core_perl \
-      -Darchlib=#{CREW_LIB_PREFIX}/perl5/#{@_ver}/core_perl \
+      -Darchlib=#{CREW_LIB_PREFIX}/perl5/#{version}/core_perl \
       -Dsitelib=#{CREW_PREFIX}/share/perl5/site_perl \
-      -Dsitearch=#{CREW_LIB_PREFIX}/perl5/#{@_ver}/site_perl \
+      -Dsitearch=#{CREW_LIB_PREFIX}/perl5/#{version}/site_perl \
       -Dvendorlib=#{CREW_PREFIX}/share/perl5/vendor_perl \
-      -Dvendorarch=#{CREW_LIB_PREFIX}/perl5/#{@_ver}/vendor_perl \
+      -Dvendorarch=#{CREW_LIB_PREFIX}/perl5/#{version}/vendor_perl \
       -Dcc=#{CREW_TGT}-gcc \
       -Doptimize='#{CREW_COMMON_FLAGS}' \
       -Dlldlflags='-shared #{CREW_LDFLAGS}' -Dldflags='#{CREW_LDFLAGS}' \
@@ -54,15 +53,13 @@ class Perl < Package
   end
 
   def self.install
-    @perl_fullversion = @_ver.split('-')[0]
-    @perl_version = @_ver.rpartition('.')[0]
 
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Make libperl symlinks into standard locations
-    libperl_so = "#{CREW_LIB_PREFIX}/perl5/#{@perl_fullversion}/core_perl/CORE/libperl.so"
-    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver}" # e.g., libperl.so.5.34.1
-    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{@_ver.sub(/\.\d$/, '')}" # e.g., libperl.so.5.34
-    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so#{@_ver.sub(/\.\d\.\d$/, '')}" # e.g., libperl.so.5
+    libperl_so = "#{CREW_LIB_PREFIX}/perl5/#{version.split('-')[0]}/core_perl/CORE/libperl.so"
+    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{version}" # e.g., libperl.so.5.34.1
+    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so.#{version.sub(/\.\d$/, '')}" # e.g., libperl.so.5.34
+    FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so#{version.sub(/\.\d\.\d$/, '')}" # e.g., libperl.so.5
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so" # e.g., libperl.so
     # Consider adding this symlink to the glibc package
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
