@@ -16,4 +16,4 @@
 /usr/local/lib/cmake/cppdap/cppdapConfigVersion.cmake
 /usr/local/lib/cmake/cppdap/cppdap-targets.cmake
 /usr/local/lib/cmake/cppdap/cppdap-targets-release.cmake
-/usr/local/lib/libcppdap.a
+/usr/local/lib/libcppdap.so
