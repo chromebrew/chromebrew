@@ -3,11 +3,10 @@ require 'package'
 class Musl_perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  @_ver = '5.34.0'
-  version @_ver
+  version '5.34.0'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url "http://www.cpan.org/src/5.0/perl-#{@_ver}.tar.gz"
+  source_url "http://www.cpan.org/src/5.0/perl-#{version}.tar.gz"
   source_sha256 '551efc818b968b05216024fb0b727ef2ad4c100f8cb6b43fab615fa78ae5be9a'
 
   binary_url({
@@ -28,10 +27,6 @@ class Musl_perl < Package
   depends_on 'musl_native_toolchain'
   depends_on 'musl_zlib' => :build
   depends_on 'musl_bz2' => :build
-
-  @perl_fullversion = @_ver.split('-')[0]
-
-  @perl_version = @_ver.rpartition('.')[0]
 
   def self.build
     load "#{CREW_LIB_PATH}lib/musl.rb"
@@ -88,7 +83,7 @@ EOF'
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.mkdir_p "#{CREW_DEST_MUSL_PREFIX}/lib"
-    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/perl5/#{@perl_fullversion}/#{ARCH}-linux-thread-multi/CORE/libperl.so",
+    FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/perl5/#{version.split('-')[0]}/#{ARCH}-linux-thread-multi/CORE/libperl.so",
                     "#{CREW_DEST_MUSL_PREFIX}/lib/libperl.so"
     FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/libnsl.so.1", "#{CREW_DEST_MUSL_PREFIX}/lib/libnsl.so"
     system "install -Dm755 cpanm #{CREW_DEST_MUSL_PREFIX}/bin/cpanm"

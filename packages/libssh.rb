@@ -3,12 +3,10 @@ require 'package'
 class Libssh < Package
   description 'libssh is a multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side.'
   homepage 'https://www.libssh.org/'
-  @_ver = '0.10.4'
-  version @_ver
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
+  version '0.10.4'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://www.libssh.org/files/#{@_ver_prelastdot}/libssh-#{@_ver}.tar.xz"
+  source_url "https://www.libssh.org/files/#{version.rpartition('.')[0]}/libssh-#{version}.tar.xz"
   source_sha256 '07392c54ab61476288d1c1f0a7c557b50211797ad00c34c3af2bbc4dbc4bd97d'
 
   binary_url({

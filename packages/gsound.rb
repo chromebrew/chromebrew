@@ -3,11 +3,10 @@ require 'package'
 class Gsound < Package
   description 'GSound is a small library for playing system sounds.'
   homepage 'https://wiki.gnome.org/Projects/GSound'
-  @_ver = '1.0.2'
-  version @_ver
+  version '1.0.2'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://download.gnome.org/sources/gsound/#{@_ver.rpartition('.')[0]}/gsound-#{@_ver}.tar.xz"
+  source_url "https://download.gnome.org/sources/gsound/#{version.rpartition('.')[0]}/gsound-#{version}.tar.xz"
   source_sha256 'bba8ff30eea815037e53bee727bbd5f0b6a2e74d452a7711b819a7c444e78e53'
 
   binary_url({

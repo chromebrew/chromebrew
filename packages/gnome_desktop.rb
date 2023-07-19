@@ -3,13 +3,11 @@ require 'package'
 class Gnome_desktop < Package
   description 'Library with common API for various GNOME modules'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
-  @_ver = '43'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '43'
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_armv7l/gnome_desktop-43-chromeos-armv7l.tar.zst',

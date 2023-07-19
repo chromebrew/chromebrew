@@ -3,9 +3,7 @@ require 'package'
 class Upower < Package
   description 'Abstraction for enumerating power devices, listening to device events and querying history and statistics'
   homepage 'https://upower.freedesktop.org'
-  @_ver = '1.90.0'
-  @_ver_ = @_ver.gsub(/[.]/, '_')
-  version @_ver
+  version '1.90.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.0/upower-v1.90.0.tar.bz2'

@@ -3,12 +3,10 @@ require 'package'
 class Libchamplain < Package
   description 'A map widget'
   homepage 'https://wiki.gnome.org/Projects/libchamplain'
-  @_ver = '0.12.20'
-  @_ver_ = @_ver.gsub(/[.]/, '_')
-  version @_ver
+  version '0.12.20'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/libchamplain/-/archive/LIBCHAMPLAIN_#{@_ver_}/libchamplain-LIBCHAMPLAIN_#{@_ver_}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/libchamplain/-/archive/LIBCHAMPLAIN_#{version.gsub(/[.]/, '_')}/libchamplain-LIBCHAMPLAIN_#{version.gsub(/[.]/, '_')}.tar.bz2"
   source_sha256 'e2bfa2179a5ecbdde7fe18a0472e3b04137cb0873b4fe2de29da4c09f0b6e58d'
 
   binary_url({

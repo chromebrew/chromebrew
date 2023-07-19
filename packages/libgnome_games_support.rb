@@ -3,11 +3,10 @@ require 'package'
 class Libgnome_games_support < Package
   description 'libgnome-games-support is a small library intended for internal use by GNOME Games.'
   homepage 'https://gitlab.gnome.org/GNOME/libgnome-games-support'
-  @_ver = '1.8.1'
-  version @_ver
+  version '1.8.1'
   license 'LGPL-3+'
   compatibility 'all'
-  source_url "https://download.gnome.org/sources/libgnome-games-support/#{@_ver.rpartition('.')[0]}/libgnome-games-support-#{@_ver}.tar.xz"
+  source_url "https://download.gnome.org/sources/libgnome-games-support/#{version.rpartition('.')[0]}/libgnome-games-support-#{version}.tar.xz"
   source_sha256 'c37b7acd3ba7eb12207f5d7bb020535fa5783b0bd897e51b2bd629ce119a413f'
 
   depends_on 'gtk3'

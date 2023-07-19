@@ -3,11 +3,10 @@ require 'package'
 class Thunar < Package
   description 'Thunar File Manager'
   homepage 'https://docs.xfce.org/xfce/thunar/Start'
-  @_ver = '4.17.3'
-  version @_ver
+  version '4.17.3'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url "https://archive.xfce.org/src/xfce/thunar/#{@_ver.rpartition('.')[0]}/thunar-#{@_ver}.tar.bz2"
+  source_url "https://archive.xfce.org/src/xfce/thunar/#{version.rpartition('.')[0]}/thunar-#{version}.tar.bz2"
   source_sha256 '4580913d6c88003dbffc7e6d98a843ca0ae0fd1c5fa7b1e49fef565f33c7bea7'
 
   binary_url({
