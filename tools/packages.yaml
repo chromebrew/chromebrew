@@ -1060,6 +1060,11 @@ url: https://ftp.gnu.org/gnu/cpio/
 activity: none
 ---
 kind: url
+name: cppdap
+url: https://github.com/google/cppdap/tags
+activity: low
+---
+kind: url
 name: cppunit
 url: https://sourceforge.net/projects/cppunit/files/cppunit/
 activity: none
