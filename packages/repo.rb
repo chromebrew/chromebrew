@@ -24,7 +24,7 @@ class Repo < Package
   def self.install
     FileUtils.install 'repo', "#{CREW_DEST_PREFIX}/bin/repo", mode: 0o755
     system("gpg --recv-key 8BB9AD793E8E6153AF0F9A4416530D5E920F5C65")
-    system("chmod a+x usr/local/bin/repo")
+    system("chmod a+x $CREW_PREFIX/bin/repo")
  
   end
  
