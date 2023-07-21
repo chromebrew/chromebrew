@@ -3,23 +3,23 @@ require 'package'
 class Xfsprogs < Package
   description 'XFS filesystem utilities'
   homepage 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/'
-  version '6.3.0'
+  version '6.4.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.3.0_armv7l/xfsprogs-6.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.3.0_armv7l/xfsprogs-6.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.3.0_i686/xfsprogs-6.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.3.0_x86_64/xfsprogs-6.3.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.4.0_armv7l/xfsprogs-6.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.4.0_armv7l/xfsprogs-6.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.4.0_i686/xfsprogs-6.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfsprogs/6.4.0_x86_64/xfsprogs-6.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '022f82d3004a24de58a594be7a04903a2db2bc7740cb1f2baba25b64de688253',
-     armv7l: '022f82d3004a24de58a594be7a04903a2db2bc7740cb1f2baba25b64de688253',
-       i686: '6fb50807bba01893ea4ae58970fff9b61f6aec7ab80a47ac901af75e54fe65d8',
-     x86_64: '48d2e7511699a59e52f224109479503d5a8bdd4f39e05f4b7e0d492436360cf1'
+    aarch64: 'ffab65dd189d4b258f87241d6e4708767b1af11379238da165f10c07a74e5409',
+     armv7l: 'ffab65dd189d4b258f87241d6e4708767b1af11379238da165f10c07a74e5409',
+       i686: '480f11957cd44fdbd191c266a4fba5161b3c314428ec4494dcc033aff47c60f1',
+     x86_64: '44b56d9763e64846fdf65660813e0cf0d6cab677b1f21b09abc873f26a261f7f'
   })
 
   depends_on 'gcc_lib' # R
