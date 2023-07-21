@@ -13,6 +13,7 @@ class Zotero < Package                 # The first character of the class name m
 
   depends_on 'dbus_glib'            # packages required by this package
   depends_on 'gtk3'
+  depends_on 'desktop_file_utils'
   depends_on 'nss'
   depends_on 'libxt'
   depends_on 'perl'
