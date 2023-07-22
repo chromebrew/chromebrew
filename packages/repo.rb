@@ -3,16 +3,13 @@ require 'package'
  
 class Repo < Package
   description 'Android Repo'
-  homepage 'https://gerrit.googlesource.com/git-repo/'
-  version '1.0'
+  version '2.32'
   license 'Apache License 2'      
-  compatibility 'x86_64' 
-  source_url 'https://storage.googleapis.com/git-repo-downloads/repo'
-  source_sha256 '974992a8bc1c787979f3eb7702a803b051deddc3cd75726c4de52e09e93b798d'
-
-  depends_on 'curl'
+  compatibility 'all' 
+  source_url 'https://github.com/GerritCodeReview/git-repo.git'
+  git_hashtag "v#{version}"
+ 
   depends_on 'python3'
-  depends_on 'chromebeer'
  
   def self.preflight
     free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
