@@ -22,8 +22,6 @@ class Repo < Package
 
   def self.install
     FileUtils.install 'repo', "#{CREW_DEST_PREFIX}/bin/repo", mode: 0o755
-    system("chmod a+x $CREW_PREFIX/bin/repo")
- 
   end
  
  
