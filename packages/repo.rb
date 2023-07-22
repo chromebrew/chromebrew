@@ -5,7 +5,7 @@ class Repo < Package
   homepage 'https://gerrit.googlesource.com/git-repo/'
   version '2.35'
   license 'Apache 2.0'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url 'https://gerrit.googlesource.com/git-repo.git'
   git_hashtag "v#{version}"
 
