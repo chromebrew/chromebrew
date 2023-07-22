@@ -9,7 +9,6 @@ class Musescore < Package
   source_url 'https://musescore.org/en/download/musescore-x86_64.AppImage'
   source_sha256 'f9a54ad7caf8d2173d67e972ffa68b750bf149f34f4b07d59cbc96dc2c663c79'
  
-  depends_on 'crew-launcher'
   depends_on 'p7zip'
   depends_on 'sommelier'
   depends_on 'qtbase'
@@ -27,10 +26,7 @@ class Musescore < Package
   end
   def self.postinstall
    FileUtils.mv 'plugins/*/*.so' ,"#{CREW_DEST_PREFIX}/lib64"
-   system("crew-launcher start")
-   system("crew-launcher add #{CREW_DEST_PREFIX}/share/applications/org.musescore.MuseScore4portable.desktop")
   end 
  def self.remove
-  system("crew-launcher remove #{CREW_DEST_PREFIX}/share/applications/org.musescore.MuseScore4portable.desktop")
   end
 end
