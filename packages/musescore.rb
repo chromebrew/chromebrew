@@ -9,7 +9,7 @@ class Musescore < Package
   source_url 'https://musescore.org/en/download/musescore-x86_64.AppImage'
   source_sha256 'f9a54ad7caf8d2173d67e972ffa68b750bf149f34f4b07d59cbc96dc2c663c79'
  
-  depends_on 'crew-laucher'
+  depends_on 'crew-launcher'
   depends_on 'p7zip'
   depends_on 'sommelier'
   depends_on 'qtbase'
