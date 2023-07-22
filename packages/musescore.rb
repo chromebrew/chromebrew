@@ -15,8 +15,9 @@ class Musescore < Package
   depends_on 'qtbase'
  
   def self.preflight
-  free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
-  abort 'Not enough free disk space.  You need at least 317 MB to install.'.lightred if free_space < 317000000
+   free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
+   abort 'Not enough free disk space.  You need at least 317 MB to install.'.lightred if free_space < 317000000
+  end
   def self.install
   system("7z x musescore-x86_64.AppImage")
   FileUtils.mv 'bin' ,"#{CREW_DEST_PREFIX}"
@@ -26,8 +27,10 @@ class Musescore < Package
   end
   def self.postinstall
    FileUtils.mv 'plugins/*/*.so' ,"#{CREW_DEST_PREFIX}/lib64"
-   FileUtils.mv
    system("crew-launcher start")
    system("crew-launcher add #{CREW_DEST_PREFIX}/share/applications/org.musescore.MuseScore4portable.desktop")
+  end 
+ def self.remove
+  system("crew-launcher remove #{CREW_DEST_PREFIX}/share/applications/org.musescore.MuseScore4portable.desktop")
   end
 end
