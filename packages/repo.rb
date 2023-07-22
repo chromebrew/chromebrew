@@ -8,7 +8,7 @@ class Repo < Package
   license 'Apache License 2'      
   compatibility 'x86_64' 
   source_url 'https://storage.googleapis.com/git-repo-downloads/repo'
-  source_sha256 '974992a8bc1c787979f3eb7702a803b051deddc3cd75726c4de52e09e93b798d '
+  source_sha256 '974992a8bc1c787979f3eb7702a803b051deddc3cd75726c4de52e09e93b798d'
 
   depends_on 'gpgme'
   depends_on 'curl'
