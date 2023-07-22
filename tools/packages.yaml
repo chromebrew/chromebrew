@@ -7267,7 +7267,7 @@ activity: none
 ---
 kind: url
 name: repo
-url: https://gerrit.googlesource.com/git-repo
+url: https://gerrit.googlesource.com/git-repo/+refs
 activity: medium
 ---
 kind: url
