@@ -7266,6 +7266,11 @@ url: https://x.org/archive/individual/app
 activity: none
 ---
 kind: url
+name: repo
+url: https://gerrit.googlesource.com/git-repo
+activity: medium
+---
+kind: url
 name: rest
 url: https://gitlab.gnome.org/GNOME/librest/-/tags
 activity: none
