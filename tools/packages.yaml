@@ -5735,6 +5735,10 @@ name: mywanip
 url: https://gist.github.com/DennisLfromGA
 activity: none
 ---
+name: musescore
+url: https://github.com/musescore/MuseScore
+activity: high
+---
 kind: url
 name: nano
 url: https://www.nano-editor.org/dist
