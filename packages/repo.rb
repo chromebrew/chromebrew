@@ -10,7 +10,6 @@ class Repo < Package
   source_url 'https://storage.googleapis.com/git-repo-downloads/repo'
   source_sha256 '974992a8bc1c787979f3eb7702a803b051deddc3cd75726c4de52e09e93b798d'
 
-  depends_on 'gpgme'
   depends_on 'curl'
   depends_on 'python3'
   depends_on 'chromebeer'
@@ -23,7 +22,6 @@ class Repo < Package
 
   def self.install
     FileUtils.install 'repo', "#{CREW_DEST_PREFIX}/bin/repo", mode: 0o755
-    system("gpg --recv-key 8BB9AD793E8E6153AF0F9A4416530D5E920F5C65")
     system("chmod a+x $CREW_PREFIX/bin/repo")
  
   end
