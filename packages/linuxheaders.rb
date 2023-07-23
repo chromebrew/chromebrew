@@ -3,8 +3,8 @@ require 'package'
 class Linuxheaders < Package
   description 'Linux headers for Chrome OS.'
   homepage 'https://kernel.org/'
-  version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
-  version version
+  revision 1
+  version CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-#{revision}" : CREW_KERNEL_VERSION
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
