@@ -26,7 +26,7 @@ class Musescore < Package
   FileUtils.mv 'squashfs-root/lib' ,"#{CREW_DEST_PREFIX}"
   end
   def self.postinstall
-   FileUtils.mv 'plugins/*/*.so' ,"#{CREW_DEST_PREFIX}/lib64"
+   FileUtils.mv 'squashfs-root/plugins/*/*.so' ,"#{CREW_DEST_PREFIX}/lib64"
   end 
  def self.remove
   end
