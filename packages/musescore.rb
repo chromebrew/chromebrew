@@ -7,7 +7,7 @@ class Musescore < Package
   license 'GPL-3'
   compatibility 'aarch64, x86_64'
   source_url 'https://raw.githubusercontent.com/Franceschinie/musescore/main/install.sh'
-  source_sha256 'f9a54ad7caf8d2173d67e972ffa68b750bf149f34f4b07d59cbc96dc2c663c79'
+  source_sha256 '214441bf01166bdada109974008bccad03eedeb01957853057daf9035256670c'
  
   depends_on 'p7zip'
   depends_on 'sommelier'
