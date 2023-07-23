@@ -3,10 +3,10 @@ require 'package'
 class Musescore < Package
   description "The world's most popular notation app"
   homepage 'musescore.org'
-  version '4.0.2'
+  version '4.1.0'
   license 'GPL-3'
   compatibility 'aarch64, x86_64'
-  source_url 'https://musescore.org/en/download/musescore-x86_64.AppImage'
+  source_url 'https://github.com/musescore/MuseScore/releases/download/v4.1.0/MuseScore-4.1.0.231921359-x86_64.AppImage'
   source_sha256 'ef3179f25ae410bff256c72e1fdb30770a7f6f076ff7e30737fb109a19aaa7e7'
  
   depends_on 'p7zip'
