@@ -7,7 +7,7 @@ class Musescore < Package
   license 'GPL-3'
   compatibility 'aarch64, x86_64'
   source_url 'https://github.com/musescore/MuseScore/releases/download/v4.1.0/MuseScore-4.1.0.231921359-x86_64.AppImage'
-  source_sha256 'ef3179f25ae410bff256c72e1fdb30770a7f6f076ff7e30737fb109a19aaa7e7'
+  source_sha256 'f9a54ad7caf8d2173d67e972ffa68b750bf149f34f4b07d59cbc96dc2c663c79'
  
   depends_on 'p7zip'
   depends_on 'sommelier'
