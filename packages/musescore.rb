@@ -20,11 +20,10 @@ class Musescore < Package
    abort 'Not enough free disk space.  You need at least 317 MB to install.'.lightred if free_space < 317000000
   end
   def self.install
-  system("7z x musescore-x86_64.AppImage")
-  FileUtils.mv 'bin' ,"#{CREW_DEST_PREFIX}"
-  FileUtils.mv 'share' ,"#{CREW_DEST_PREFIX}"
-  FileUtils.mv 'include' ,"#{CREW_DEST_PREFIX}"
-  FileUtils.mv 'lib' ,"#{CREW_DEST_PREFIX}"
+  FileUtils.mv 'squashfs-root/bin' ,"#{CREW_DEST_PREFIX}"
+  FileUtils.mv 'squashfs-root/share' ,"#{CREW_DEST_PREFIX}"
+  FileUtils.mv 'squashfs-root/include' ,"#{CREW_DEST_PREFIX}"
+  FileUtils.mv 'squashfs-root/lib' ,"#{CREW_DEST_PREFIX}"
   end
   def self.postinstall
    FileUtils.mv 'plugins/*/*.so' ,"#{CREW_DEST_PREFIX}/lib64"
