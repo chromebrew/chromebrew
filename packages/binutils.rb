@@ -1,25 +1,28 @@
+# Adapted in part from Arch Linux binutils PKGBUILD at:
+# https://gitlab.archlinux.org/archlinux/packaging/packages/binutils/-/blob/main/PKGBUILD
 require 'package'
 
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  version '2.40'
+  @_ver = '2.40'
+  version "#{@_ver}-1"
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{version}.tar.bz2"
   source_sha256 'f8298eb153a4b37d112e945aa5cb2850040bcf26a3ea65b5a715c83afe05e48a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_armv7l/binutils-2.40-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_armv7l/binutils-2.40-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_i686/binutils-2.40-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40_x86_64/binutils-2.40-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_armv7l/binutils-2.40-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_armv7l/binutils-2.40-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_i686/binutils-2.40-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_x86_64/binutils-2.40-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a0b2e49e2c1845b93e783543aab4e5870a80492b0daae013acff32a3737d2dbf',
-     armv7l: 'a0b2e49e2c1845b93e783543aab4e5870a80492b0daae013acff32a3737d2dbf',
-       i686: '3c297c16f332328a87e39186afa98ecc733a5f5a31fa02d3c91fb3a2b15f8040',
-     x86_64: '8c63236295e9a7e427b06323f313c35cdeae3a7bf13f7e8738edf37f49d2b14e'
+    aarch64: 'e5cfc098a644342ce15eef1d2bc42f19db6bcb34e585dac96111c0e9423702f2',
+     armv7l: 'e5cfc098a644342ce15eef1d2bc42f19db6bcb34e585dac96111c0e9423702f2',
+       i686: 'c13f1e2cf9e9aa0237293e65fa1c20c0b512a60ea20fc038ba233293c07e113e',
+     x86_64: '7871d7b2e70c54cbf5a4e351aa31bd0394fd1b5de864525cf360fd1512f925d6'
   })
 
   depends_on 'elfutils' # R
@@ -39,6 +42,7 @@ class Binutils < Package
     Dir.chdir 'ld' do
       system 'aclocal && automake'
     end
+    system "sed -i '/^development=/s/true/false/' bfd/development.sh"
   end
 
   def self.build
@@ -48,10 +52,13 @@ class Binutils < Package
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "../configure #{CREW_OPTIONS} \
+        --disable-gdb \
+        --disable-gdbserver \
         --disable-bootstrap \
         --disable-maintainer-mode \
         #{@gprofng} \
         --enable-64-bit-bfd \
+        --enable-colored-disassembly \
         --enable-gold=default \
         --enable-install-libiberty \
         --enable-ld \
@@ -73,7 +80,11 @@ class Binutils < Package
 
   def self.check
     Dir.chdir 'build' do
-      system 'make check || true'
+      system 'make -O CFLAGS_FOR_TARGET="-O2 -g" \
+        CXXFLAGS="-O2 -no-pie -fno-PIC" \
+        CFLAGS="-O2 -no-pie" \
+        LDFLAGS="" \
+        check || true'
     end
   end
 
@@ -81,6 +92,29 @@ class Binutils < Package
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}",
              "tooldir=#{CREW_PREFIX}", 'install'
+      # install PIC version of libiberty
+      FileUtils.install 'libiberty/pic/libiberty.a', "#{CREW_DEST_LIB_PREFIX}/", mode: 0o644
+
+      # No shared linking to these files outside binutils
+      FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libbfd.so"
+      FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libopcodes.so"
+      File.write "#{CREW_DEST_LIB_PREFIX}/libbfd.so", <<~LIB_BFD_EOF
+        /* GNU ld script */
+
+        INPUT( #{CREW_LIB_PREFIX}/libbfd.a -lsframe -liberty -lz -lzstd -ldl )
+      LIB_BFD_EOF
+
+      File.write "#{CREW_DEST_LIB_PREFIX}/libopcodes.so", <<~LIB_OPCODES_EOF
+        /* GNU ld script */
+
+        INPUT( #{CREW_LIB_PREFIX}/libopcodes.a -lbfd )
+      LIB_OPCODES_EOF
+      # Needed for gdb.
+      @oldlibs = %w[bfd opcodes]
+      @oldlibs.each do |oldlib|
+        FileUtils.ln_sf "#{CREW_LIB_PREFIX}/lib#{oldlib}-#{@_ver}.so",
+                        "#{CREW_DEST_LIB_PREFIX}/lib#{oldlib}-2.39.50.so"
+      end
     end
   end
 end

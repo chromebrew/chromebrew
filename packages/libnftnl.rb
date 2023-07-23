@@ -4,22 +4,22 @@ class Libnftnl < Package
   description 'libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.'
   homepage 'https://netfilter.org/projects/libnftnl/'
   license 'GPL-2'
-  version '1.2.5'
+  version '1.2.6'
   compatibility 'all'
-  source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.2.5.tar.xz'
-  source_sha256 '966de0a8120c8a53db859889749368bfb2cba0c4f0b4c1a30d264eccc45f1226'
+  source_url 'https://netfilter.org/projects/libnftnl/files/libnftnl-1.2.6.tar.xz'
+  source_sha256 'ceeaea2cd92147da19f13a35a7f1a4bc2767ff897e838e4b479cf54b59c777f4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.5_armv7l/libnftnl-1.2.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.5_armv7l/libnftnl-1.2.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.5_i686/libnftnl-1.2.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.5_x86_64/libnftnl-1.2.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.6_armv7l/libnftnl-1.2.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.6_armv7l/libnftnl-1.2.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.6_i686/libnftnl-1.2.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnftnl/1.2.6_x86_64/libnftnl-1.2.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2466837daabd1954e66a0032ee1fe14feac173bb03d5e4b1ba0e1e001169832c',
-     armv7l: '2466837daabd1954e66a0032ee1fe14feac173bb03d5e4b1ba0e1e001169832c',
-       i686: '19843a030252288ea8e7c44e29915d4ac2d01d55858a41120712162e5972e14a',
-     x86_64: '00d251006611eb159fc38fb38c572e7a4aba843042e40b8d8f414b000f18040b'
+    aarch64: 'a6204eb6297868215b0d507ac2310274b42630094769208dc700d14acb42212e',
+     armv7l: 'a6204eb6297868215b0d507ac2310274b42630094769208dc700d14acb42212e',
+       i686: 'a4ec348f1766bd0936db67cb453c6ffb12a91ae357e2ad73e7f43cd27fb8d8c1',
+     x86_64: 'dcd8bf4815118628357e5c92f5638992976d826cc9b66c2aa6886c29c0eb4774'
   })
 
   depends_on 'libmnl' # R

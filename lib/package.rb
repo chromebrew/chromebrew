@@ -11,7 +11,7 @@ class Package
 
   boolean_property = %i[conflicts_ok git_clone_deep git_fetchtags gnome is_fake is_musl is_static
                         no_compile_needed no_compress no_env_options no_fhs no_git_submodules
-                        no_links no_patchelf no_shrink no_strip no_zstd patchelf]
+                        no_links no_lto no_patchelf no_shrink no_strip no_zstd patchelf]
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -267,6 +267,8 @@ class Package
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?
                                { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
+                             elsif no_lto?
+                               CREW_ENV_FNO_LTO_OPTIONS_HASH
                              else
                                CREW_ENV_OPTIONS_HASH
                              end

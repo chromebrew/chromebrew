@@ -3,23 +3,21 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.1.17'
+  version '8.1.21'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-8.1.17.tar.xz'
-  source_sha256 'b5c48f95b8e1d8624dd05fc2eab7be13277f9a203ccba97bdca5a1a0fb4a1460'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.php.net/distributions/php-8.1.21.tar.xz'
+  source_sha256 'e634a00b0c6a8cd39e840e9fb30b5227b820b7a9ace95b7b001053c1411c4821'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.17_armv7l/php81-8.1.17-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.17_armv7l/php81-8.1.17-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.17_i686/php81-8.1.17-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.17_x86_64/php81-8.1.17-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.21_armv7l/php81-8.1.21-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.21_armv7l/php81-8.1.21-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.21_x86_64/php81-8.1.21-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5882d94c056f46ab6ca5a5a9c48818ae7446b15143557e7235448971ba7e144e',
-     armv7l: '5882d94c056f46ab6ca5a5a9c48818ae7446b15143557e7235448971ba7e144e',
-       i686: 'c04d49fe5f1d500d71ae555b788d2fe68536618858bec32caff070994e9dac25',
-     x86_64: 'd19cce6568e26b7a850b14050aa2a3d53f77796c589cbf91bef5da36d6d14b41'
+    aarch64: '2191e0237c1d785860b7f1a57583e176ebbfac70da278b5b9e3877d979bc5602',
+     armv7l: '2191e0237c1d785860b7f1a57583e176ebbfac70da278b5b9e3877d979bc5602',
+     x86_64: '7bdd6055eccca9ce30155960e948b322ce7347f907fa3c31937304e0d7296c6e'
   })
 
   depends_on 'aspell_en'
@@ -40,12 +38,13 @@ class Php81 < Package
   depends_on 'unixodbc'
   depends_on 'oniguruma'
   depends_on 'py3_pygments'
+  depends_on 'openssl111' => :build
 
   no_fhs
 
   def self.preflight
     phpver = `php -v 2> /dev/null | head -1 | cut -d' ' -f2`.chomp
-    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && @_ver != phpver && !phpver.empty?
+    abort "PHP version #{phpver} already installed.".lightgreen if ARGV[0] != 'reinstall' && version != phpver && !phpver.empty?
   end
 
   def self.patch

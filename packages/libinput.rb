@@ -3,12 +3,11 @@ require 'package'
 class Libinput < Package
   description 'libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.'
   homepage 'https://www.freedesktop.org/wiki/Software/libinput'
-  @_ver = '1.21.0'
-  version @_ver
+  version '1.21.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_armv7l/libinput-1.21.0-chromeos-armv7l.tar.zst',

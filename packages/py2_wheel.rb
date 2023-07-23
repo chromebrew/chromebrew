@@ -3,12 +3,11 @@ require 'package'
 class Py2_wheel < Package
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
-  @_ver = '0.36.2'
-  version @_ver
+  version '0.36.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/wheel.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_wheel/0.36.2_armv7l/py2_wheel-0.36.2-chromeos-armv7l.tar.xz',

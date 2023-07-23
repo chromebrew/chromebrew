@@ -1,6 +1,5 @@
 # Defines common constants used in different parts of crew
-
-CREW_VERSION = '1.34.1'
+CREW_VERSION = '1.35.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -40,6 +39,9 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # which report armv8l when linux32 is run.
 ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
 
+# This helps determine if there is a difference between kernel and user space
+USER_SPACE_ARCH = ARCH.eql?('aarch64') && !Dir.exist?('/lib64') ? 'armv7l' : ARCH
+
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
 ARCH_LIB = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? 'lib64' : 'lib'
@@ -56,6 +58,8 @@ else
   CREW_PREFIX = ENV.fetch('CREW_PREFIX', nil)
   HOME = CREW_PREFIX + Dir.home
 end
+
+CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
 
@@ -130,23 +134,6 @@ CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
                    File.join(ENV.fetch('CREW_CACHE_DIR', nil), '')
                  end
 
-CREW_MANIFEST_CACHE_DIR = "#{CREW_CACHE_DIR}manifest"
-@crew_manifest_cache_error = "Error creating CREW_MANIFEST_CACHE_DIR: #{CREW_MANIFEST_CACHE_DIR}"
-begin
-  FileUtils.mkdir_p CREW_MANIFEST_CACHE_DIR
-rescue Errno::EROFS => e
-  # r/o fs
-  puts @crew_manifest_cache_error.lightred
-  puts e.message.to_s.orange
-rescue Errno::EACCES => e
-  # no write access
-  puts @crew_manifest_cache_error.lightred
-  puts e.message.to_s.orange
-rescue Errno::ENOENT => e
-  # weird fs e.g., /proc
-  puts @crew_manifest_cache_error.lightred
-  puts e.message.to_s.orange
-end
 CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
@@ -254,22 +241,24 @@ CREW_ENV_OPTIONS_HASH = if CREW_DISABLE_ENV_OPTIONS
                           { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
                         else
                           {
-                            'CFLAGS'   => CREW_COMMON_FLAGS,
-                            'CXXFLAGS' => CREW_COMMON_FLAGS,
-                            'FCFLAGS'  => CREW_COMMON_FLAGS,
-                            'FFLAGS'   => CREW_COMMON_FLAGS,
-                            'LDFLAGS'  => CREW_LDFLAGS
+                            'CFLAGS'          => CREW_COMMON_FLAGS,
+                            'CXXFLAGS'        => CREW_COMMON_FLAGS,
+                            'FCFLAGS'         => CREW_COMMON_FLAGS,
+                            'FFLAGS'          => CREW_COMMON_FLAGS,
+                            'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+                            'LDFLAGS'         => CREW_LDFLAGS
                           }
                         end
 # parse from hash to shell readable string
 CREW_ENV_OPTIONS = CREW_ENV_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
 
 CREW_ENV_FNO_LTO_OPTIONS_HASH = {
-  'CFLAGS'   => CREW_COMMON_FNO_LTO_FLAGS,
-  'CXXFLAGS' => CREW_COMMON_FNO_LTO_FLAGS,
-  'FCFLAGS'  => CREW_COMMON_FNO_LTO_FLAGS,
-  'FFLAGS'   => CREW_COMMON_FNO_LTO_FLAGS,
-  'LDFLAGS'  => CREW_FNO_LTO_LDFLAGS
+  'CFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
+  'CXXFLAGS'        => CREW_COMMON_FNO_LTO_FLAGS,
+  'FCFLAGS'         => CREW_COMMON_FNO_LTO_FLAGS,
+  'FFLAGS'          => CREW_COMMON_FNO_LTO_FLAGS,
+  'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+  'LDFLAGS'         => CREW_FNO_LTO_LDFLAGS
 }
 # parse from hash to shell readable string
 CREW_ENV_FNO_LTO_OPTIONS = CREW_ENV_FNO_LTO_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')

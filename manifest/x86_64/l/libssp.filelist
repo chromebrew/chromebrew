@@ -1,7 +1,7 @@
-/usr/local/lib64/gcc/x86_64-cros-linux-gnu/12/include/ssp/ssp.h
-/usr/local/lib64/gcc/x86_64-cros-linux-gnu/12/include/ssp/stdio.h
-/usr/local/lib64/gcc/x86_64-cros-linux-gnu/12/include/ssp/string.h
-/usr/local/lib64/gcc/x86_64-cros-linux-gnu/12/include/ssp/unistd.h
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/13/include/ssp/ssp.h
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/13/include/ssp/stdio.h
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/13/include/ssp/string.h
+/usr/local/lib64/gcc/x86_64-cros-linux-gnu/13/include/ssp/unistd.h
 /usr/local/lib64/libssp.a
 /usr/local/lib64/libssp.la
 /usr/local/lib64/libssp_nonshared.a

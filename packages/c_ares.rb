@@ -1,49 +1,32 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class C_ares < Package
-  description 'c-ares is a C library for asynchronous DNS requests (including name resolves).'
+class C_ares < CMake
+  description 'C library for asynchronous DNS requests (including name resolves).'
   homepage 'https://c-ares.haxx.se/'
-  version '1.18.1'
+  version '1.19.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/c-ares/c-ares.git'
   git_hashtag "cares-#{version.gsub('.', '_')}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.18.1_armv7l/c_ares-1.18.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.18.1_armv7l/c_ares-1.18.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.18.1_i686/c_ares-1.18.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.18.1_x86_64/c_ares-1.18.1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.19.1_armv7l/c_ares-1.19.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.19.1_armv7l/c_ares-1.19.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.19.1_i686/c_ares-1.19.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/c_ares/1.19.1_x86_64/c_ares-1.19.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd2116cf4dc3432f0c14f9c9667e42b10c912c82b95269ab45afe9af5271d6df5',
-     armv7l: 'd2116cf4dc3432f0c14f9c9667e42b10c912c82b95269ab45afe9af5271d6df5',
-       i686: '1241aa581fae4395c242a79372098d34f640b33c5db9d8e114ad4aa87fc239c2',
-     x86_64: '9b7be17a55637cdcb7b956147b15269e0513ca954e298e679afd08ad8b4b17b3'
+    aarch64: '8c41ecb94c5552fe5e02f86c45229543497c64fa2781394d252a627442dadea3',
+     armv7l: '8c41ecb94c5552fe5e02f86c45229543497c64fa2781394d252a627442dadea3',
+       i686: '004494aa4e31183ab22b6e6696762ee5f890cb32a7d3d2ed437e0a3c341aec79',
+     x86_64: 'e85ca9997111b55d082c5dc3a9ee12873cdd7f4d9f1523c26965d58e4feff33a'
   })
 
   depends_on 'glibc' # R
 
-  def self.patch
-    system "sed -i 's/1.18.0/#{version}/g' CMakeLists.txt"
-  end
-
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-      -DCARES_STATIC=ON \
+  cmake_options << '-DCARES_STATIC=ON \
       -DCARES_STATIC_PIC=ON \
       -DCARES_BUILD_TESTS=OFF \
       -DCARES_BUILD_TOOLS=ON \
-      -DCARES_SHARED=ON \
-      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-      ../ -G Ninja"
-    end
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+      -DCARES_SHARED=ON'
 end

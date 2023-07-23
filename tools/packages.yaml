@@ -75,6 +75,11 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
 activity: none
 ---
 kind: url
+name: agrind
+url: https://github.com/rcoh/angle-grinder/releases
+activity: medium
+---
+kind: url
 name: aha
 url: https://github.com/theZiz/aha/releases
 activity: low
@@ -566,8 +571,8 @@ activity: none
 ---
 kind: url
 name: bind
-url: https://www.isc.org/downloads
-activity: medium
+url: https://gitlab.isc.org/isc-projects/bind9/-/tags
+activity: high
 ---
 kind: url
 name: binutils
@@ -1055,6 +1060,11 @@ url: https://ftp.gnu.org/gnu/cpio/
 activity: none
 ---
 kind: url
+name: cppdap
+url: https://github.com/google/cppdap/tags
+activity: low
+---
+kind: url
 name: cppunit
 url: https://sourceforge.net/projects/cppunit/files/cppunit/
 activity: none
@@ -1346,7 +1356,7 @@ activity: low
 ---
 kind: url
 name: dmd
-url:  https://github.com/dlang/dmd/releases
+url: https://github.com/dlang/dmd/releases
 activity: high
 ---
 kind: url
@@ -5191,6 +5201,11 @@ url: https://git.openldap.org/openldap/openldap/-/tags
 activity: high
 ---
 kind: url
+name: lnav
+url: https://github.com/tstack/lnav/releases
+activity: high
+---
+kind: url
 name: log4c
 url: https://sourceforge.net/projects/log4c/files/log4c/
 activity: none
@@ -5908,6 +5923,11 @@ activity: medium
 kind: url
 name: ngrok
 url: https://ngrok.com/download
+activity: none
+---
+kind: url
+name: nikto
+url: https://github.com/sullo/nikto/releases
 activity: none
 ---
 kind: url
@@ -7244,6 +7264,11 @@ kind: url
 name: rendercheck
 url: https://x.org/archive/individual/app
 activity: none
+---
+kind: url
+name: repo
+url: https://gerrit.googlesource.com/git-repo/+refs
+activity: medium
 ---
 kind: url
 name: rest
@@ -8602,7 +8627,7 @@ activity: medium
 ---
 kind: url
 name: wget
-url: https://ftp.gnu.org/gnu/wget
+url: https://ftpmirror.gnu.org/wget/
 activity: low
 ---
 kind: url

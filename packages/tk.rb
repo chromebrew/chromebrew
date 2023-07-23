@@ -3,12 +3,10 @@ require 'package'
 class Tk < Package
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'http://www.tcl.tk/'
-  @_ver = '8.6.13'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '8.6.13'
   license 'tcltk'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tk#{@_ver}-src.tar.gz"
+  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
   source_sha256 '2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675'
 
   binary_url({
@@ -34,12 +32,12 @@ class Tk < Package
   depends_on 'tcl' # R
   depends_on 'zlibpkg' # R
 
-  no_env_options
+  no_lto
 
   def self.build
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure \
+      system "./configure \
           #{CREW_OPTIONS} \
           --with-tcl=#{CREW_LIB_PREFIX} \
           --enable-threads \
@@ -51,7 +49,7 @@ class Tk < Package
   def self.install
     FileUtils.chdir('unix') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/wish#{@_ver_prelastdot}", "#{CREW_DEST_PREFIX}/bin/wish"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/wish#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/wish"
     end
   end
 end

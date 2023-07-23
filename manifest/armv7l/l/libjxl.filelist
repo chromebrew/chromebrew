@@ -26,11 +26,11 @@
 /usr/local/lib/libjxl_dec.a
 /usr/local/lib/libjxl.so
 /usr/local/lib/libjxl.so.0.8
-/usr/local/lib/libjxl.so.0.8.1
+/usr/local/lib/libjxl.so.0.8.2
 /usr/local/lib/libjxl_threads.a
 /usr/local/lib/libjxl_threads.so
 /usr/local/lib/libjxl_threads.so.0.8
-/usr/local/lib/libjxl_threads.so.0.8.1
+/usr/local/lib/libjxl_threads.so.0.8.2
 /usr/local/lib/pkgconfig/libjxl.pc
 /usr/local/lib/pkgconfig/libjxl_threads.pc
 /usr/local/share/man/man1/cjxl.1.zst

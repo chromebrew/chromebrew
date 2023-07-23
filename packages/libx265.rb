@@ -3,11 +3,10 @@ require 'package'
 class Libx265 < Package
   description 'x265 is a H.265 / HEVC video encoder application library.'
   homepage 'http://x265.org/'
-  @_ver = '3.4'
-  version @_ver
+  version '3.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url "https://github.com/videolan/x265/archive/#{@_ver}.tar.gz"
+  source_url "https://github.com/videolan/x265/archive/#{version}.tar.gz"
   source_sha256 '544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf'
 
   binary_url({

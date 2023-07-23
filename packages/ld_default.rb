@@ -8,7 +8,7 @@ class Ld_default < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'llvm_dev16'
+  depends_on 'llvm16_dev'
 
   def self.build
     system "cat << 'EOF' > ld_default

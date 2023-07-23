@@ -3,12 +3,11 @@ require 'package'
 class Weston < Package
   description 'Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.'
   homepage 'http://wayland.freedesktop.org'
-  @_ver = '12.0.0'
-  version @_ver
+  version '12.0.0'
   license 'MIT and CC-BY-SA-3.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/12.0.0_armv7l/weston-12.0.0-chromeos-armv7l.tar.zst',
@@ -49,7 +48,7 @@ class Weston < Package
   depends_on 'libxkbcommon' # R
   depends_on 'libxxf86vm'
   depends_on 'linux_pam' # R
-  depends_on 'llvm_lib16' => :build
+  depends_on 'llvm16_lib' => :build
   depends_on 'mesa' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R

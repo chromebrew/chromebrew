@@ -3,11 +3,10 @@ require 'package'
 class Rlottie < Package
   description 'rlottie is a platform independent standalone c++ library for rendering vector based animations and art in realtime.'
   homepage 'https://github.com/Samsung/rlottie'
-  @_ver = '0.2'
-  version @_ver
+  version '0.2'
   license 'BSD, FTL, JSON and MIT'
   compatibility 'all'
-  source_url "https://github.com/Samsung/rlottie/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/Samsung/rlottie/archive/v#{version}.tar.gz"
   source_sha256 '030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
 
   binary_url({

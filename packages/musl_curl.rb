@@ -3,11 +3,10 @@ require 'package'
 class Musl_curl < Package
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  @_ver = '7.84.0'
-  version @_ver
+  version '7.84.0'
   license 'curl'
   compatibility 'all'
-  source_url "https://curl.se/download/curl-#{@_ver}.tar.xz"
+  source_url "https://curl.se/download/curl-#{version}.tar.xz"
   source_sha256 '2d118b43f547bfe5bae806d8d47b4e596ea5b25a6c1f080aef49fbcd817c5db8'
 
   binary_url({

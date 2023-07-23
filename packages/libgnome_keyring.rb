@@ -22,7 +22,7 @@ class Libgnome_keyring < Package
 
   depends_on 'dbus'
   depends_on 'libgcrypt'
-  depends_on 'llvm_lib16' => :build
+  depends_on 'llvm16_lib' => :build
 
   def self.build
     system "./configure #{CREW_OPTIONS} --enable-introspection=no --enable-vala=no"

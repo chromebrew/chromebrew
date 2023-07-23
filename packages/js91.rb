@@ -2,11 +2,10 @@ require 'package'
 
 class Js91 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 91'
-  @_ver = '91.4.1'
-  version @_ver
+  version '91.4.1'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '75e98daf53c5aea19d711a625d5d5e6dfdc8335965d3a19567c62f9d2961fc75'
 
   binary_url({
@@ -24,7 +23,7 @@ class Js91 < Package
 
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
-  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm16_dev' => :build
   depends_on 'nspr'
 
   @rust_default_host = case ARCH

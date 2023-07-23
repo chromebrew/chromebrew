@@ -11,6 +11,7 @@
 /usr/local/share/gdb/python/gdb/command/type_printers.py
 /usr/local/share/gdb/python/gdb/command/unwinders.py
 /usr/local/share/gdb/python/gdb/command/xmethods.py
+/usr/local/share/gdb/python/gdb/disassembler.py
 /usr/local/share/gdb/python/gdb/FrameDecorator.py
 /usr/local/share/gdb/python/gdb/FrameIterator.py
 /usr/local/share/gdb/python/gdb/frames.py
@@ -46,6 +47,14 @@
 /usr/local/share/gdb/system-gdbinit/elinos.py
 /usr/local/share/gdb/system-gdbinit/wrs-linux.py
 /usr/local/share/info/annotate.info.zst
+/usr/local/share/info/gdb.info-1.zst
+/usr/local/share/info/gdb.info-2.zst
+/usr/local/share/info/gdb.info-3.zst
+/usr/local/share/info/gdb.info-4.zst
+/usr/local/share/info/gdb.info-5.zst
+/usr/local/share/info/gdb.info-6.zst
+/usr/local/share/info/gdb.info-7.zst
+/usr/local/share/info/gdb.info-8.zst
 /usr/local/share/info/gdb.info.zst
 /usr/local/share/info/stabs.info.zst
 /usr/local/share/man/man1/gcore.1.zst

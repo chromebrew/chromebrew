@@ -3,11 +3,10 @@ require 'package'
 class Srt < Package
   description 'Secure Reliable Transport library'
   homepage 'https://www.srtalliance.org/'
-  @_ver = '1.4.3-rc.0'
-  version @_ver
+  version '1.4.3-rc.0'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://github.com/Haivision/srt/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/Haivision/srt/archive/v#{version}.tar.gz"
   source_sha256 '50a05239602f2a402b4a96bc8b8e1ebf98808aa2966311c14f814ad477018a56'
 
   binary_url({

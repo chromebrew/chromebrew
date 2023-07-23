@@ -3,11 +3,10 @@ require 'package'
 class L_smash < Package
   description 'MP4 muxer and other tools'
   homepage 'https://github.com/l-smash/l-smash'
-  @_ver = '2.14.5'
-  version @_ver
+  version '2.14.5'
   license 'ISC'
   compatibility 'all'
-  source_url "https://github.com/l-smash/l-smash/archive/v#{@_ver}.tar.gz"
+  source_url "https://github.com/l-smash/l-smash/archive/v#{version}.tar.gz"
   source_sha256 'e6f7c31de684f4b89ee27e5cd6262bf96f2a5b117ba938d2d606cf6220f05935'
 
   binary_url({

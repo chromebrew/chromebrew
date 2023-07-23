@@ -53,7 +53,6 @@ DOC = <<~DOCOPT
     crew search [options] [<name> ...]
     crew sysinfo [options]
     crew update [options] [<compatible>]
-    crew updatefiles [options]
     crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
     crew whatprovides [options] <pattern> ...
 
@@ -429,11 +428,12 @@ def help(pkgName = nil)
         puts "Use the 'no_shrink' property to bypass upx binary compression."
       when 'no_strip'
         puts "Use the 'no_strip' property to bypass strip execution."
+      when 'no_lto'
+        puts "Use the 'no_lto' property to bypass lto usage."
       when 'no_zstd'
         puts "Use the 'no_zstd' property for the alternate xz compression algorithm."
       when 'patchelf'
         puts "Use the 'patchelf' property for patchelf execution."
-        puts 'This is the default and for most cases is not needed.'
       else
         abort "Help for the '#{ARGV[2]}' property is not available.".lightred
       end
@@ -487,11 +487,6 @@ def help(pkgName = nil)
       This only updates crew itself.  Use `crew upgrade` to update packages.
       Usage: crew update compatible
       This updates the crew package compatibility list.
-    EOT
-  when 'updatefiles'
-    puts <<~EOT
-      Update crew files cache.
-      Usage: crew updatefiles
     EOT
   when 'upgrade'
     puts <<~EOT
@@ -557,46 +552,35 @@ def const(var = nil)
 end
 
 def files(pkgName)
-  filelist_path = File.join(CREW_META_PATH, "#{pkgName}.filelist")
-  if File.file?(filelist_path)
-    filelist = File.readlines(filelist_path, chomp: true).sort
-    lines = filelist.size
-    size = 0
+  local_filelist    = File.join(CREW_META_PATH, "#{pkgName}.filelist")
+  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{USER_SPACE_ARCH}/#{pkgName[0]}/#{pkgName}.filelist")
 
-    filelist.each do |filename|
-      # ignore symlinks to prevent duplicating calculation
-      size += File.size(filename) if File.file?(filename) && !File.symlink?(filename)
-    end
-
-    puts filelist, <<~EOT.lightgreen
-
-      Total found: #{lines}
-      Disk usage: #{human_size(size)}
-    EOT
+  if File.exist?(local_filelist)
+    # search for local filelist first
+    filelist_path = local_filelist
+  elsif File.exist?(manifest_filelist)
+    # search for manifest directory if not installed
+    filelist_path = manifest_filelist
   else
-    puts "Package #{pkgName} is not installed. :(".lightred
+    # package does not have any filelist available
+    warn "Package #{pkgName} is not installed. :(".lightred
+    return false
   end
-end
 
-def updatefiles
-  puts 'Rebuilding crew files cache...'.yellow
-  if File.writable?(CREW_MANIFEST_CACHE_DIR)
-    FileUtils.rm_rf Dir["#{CREW_MANIFEST_CACHE_DIR}/chromebrew-*"]
-    Dir.chdir CREW_MANIFEST_CACHE_DIR do
-      if ENV['CREW_TESTING'] == '1'
-        system "curl -L#O https://github.com/#{CREW_TESTING_ACCOUNT}/chromebrew/archive/#{CREW_TESTING_BRANCH}.tar.gz"
-        system "tar x#{@verbose}f #{CREW_TESTING_BRANCH}.tar.gz chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}"
-        FileUtils.rm_f "#{CREW_TESTING_BRANCH}.tar.gz"
-      else
-        system "curl -L#O https://github.com/#{CREW_GITHUB_ACCOUNT}/chromebrew/archive/#{CREW_GITHUB_BRANCH}.tar.gz"
-        system "tar x#{@verbose}f #{CREW_GITHUB_BRANCH}.tar.gz chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
-        FileUtils.rm_f "#{CREW_GITHUB_BRANCH}.tar.gz"
-      end
-    end
-  else
-    puts "CREW_MANIFEST_CACHE_DIR #{CREW_MANIFEST_CACHE_DIR} is not writable.".lightred
-    puts 'The crew files cache cannot be rebuilt.'.lightred
+  filelist = File.readlines(filelist_path, chomp: true).sort
+  lines = filelist.size
+  size = 0
+
+  filelist.each do |filename|
+    # ignore symlinks to prevent duplicating calculation
+    size += File.size(filename) if File.file?(filename) && !File.symlink?(filename)
   end
+
+  puts filelist, <<~EOT.lightgreen
+
+    Total found: #{lines}
+    Disk usage: #{human_size(size)}
+  EOT
 end
 
 def prop(silent = false)
@@ -616,11 +600,7 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  @crew_manifest_search_dir = ENV['CREW_TESTING'] == '1' ? "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_TESTING_BRANCH}/manifest/#{ARCH}" : "#{CREW_MANIFEST_CACHE_DIR}/chromebrew-#{CREW_GITHUB_BRANCH}/manifest/#{ARCH}"
-
-  updatefiles unless Dir.exist?(@crew_manifest_search_dir) && !Dir.empty?(@crew_manifest_search_dir)
-
-  matchedList = `grep -r "#{regexPat}" #{@crew_manifest_search_dir}`.lines(chomp: true).flat_map do |result|
+  matchedList = `grep -R "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{USER_SPACE_ARCH}`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
     pkgName = File.basename(filelist, '.filelist')
     pkgNameStatus = pkgName
@@ -638,12 +618,19 @@ end
 
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
+
+  # remove deprecated directory
+  FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
+
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
+    # Set sparse-checkout folders.
+    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tools"
+    system 'git sparse-checkout reapply'
+
     if CREW_TESTING == '1'
       puts 'Updating crew from testing repository...'
-      system "git remote add testing #{CREW_TESTING_REPO} 2>/dev/null || \
-        git remote set-url testing #{CREW_TESTING_REPO}"
+      system "git remote add testing #{CREW_TESTING_REPO} 2>/dev/null || git remote set-url testing #{CREW_TESTING_REPO}"
       system "git fetch testing #{CREW_TESTING_BRANCH}"
       system "git reset --hard testing/#{CREW_TESTING_BRANCH}"
     else
@@ -1067,6 +1054,29 @@ def compress_doc(dir)
   end
 end
 
+def determine_conflicts(dir, pkg)
+  conflicts = []
+  if File.file?("#{dir}/filelist")
+    if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+      puts 'Checking for conflicts with files from installed packages...'.orange
+      conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
+      conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+      conflicts.reject!(&:empty?)
+    end
+  elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+    puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
+    conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
+    conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
+    conflicts.reject!(&:empty?)
+  end
+  if conflicts.any?
+    puts 'There is a conflict with the same file in another package:'.orange
+    puts conflicts.to_s.orange
+  end
+  conflicts.map! { |x| x.to_s.partition(':').last}
+  return conflicts
+end
+
 def prepare_package(destdir)
   # Create the destdir if it does not exist to avoid having to have
   # this single line in no_compile_needed packages.
@@ -1137,12 +1147,8 @@ def prepare_package(destdir)
     end
 
     # check for conflicts with other installed files
-    puts 'Checking for conflicts with files from installed packages...'
-    conflicts = []
-    conflictscmd = `grep --exclude #{CREW_META_PATH}#{@pkg.name}.filelist --exclude #{CREW_META_PATH}*_build.filelist -Fxf filelist #{CREW_META_PATH}*.filelist`
-    conflicts << conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
-    conflicts.reject!(&:empty?)
-    unless conflicts.empty?
+    conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+    if conflicts.any?
       if CREW_CONFLICTS_ONLY_ADVISORY || @pkg.conflicts_ok?
         puts 'Warning: There is a conflict with the same file in another package.'.orange
       else
@@ -1349,7 +1355,7 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
         src << '/' unless src.end_with?('/')
         # Check for ACLs support.
         @rsync_version = `rsync --version`.chomp
-        if @rsync_version.include?('ACLs')
+        if @rsync_version.include?('ACLs') && !@rsync_version.include?('no ACLs')
           system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
         else
           system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
@@ -1582,7 +1588,8 @@ def resolve_dependencies_and_build
       post_install
     end
     search origin, true
-    build_package Dir.pwd
+    abort "CREW_ARCHIVE_DEST (#{CREW_ARCHIVE_DEST}) is not writable!".lightred unless File.writable?(CREW_ARCHIVE_DEST)
+    build_package CREW_ARCHIVE_DEST
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
   ensure
@@ -1596,7 +1603,7 @@ def resolve_dependencies_and_build
   @resolve_dependencies_and_build = 0
 end
 
-def build_package(pwd)
+def build_package(crew_archive_dest)
   abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
   abort 'It is not possible to build without source'.lightred unless @pkg.is_source?(@device[:architecture])
   abort "Unable to locate CREW_LOCAL_MANIFEST_PATH. Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
@@ -1623,10 +1630,10 @@ def build_package(pwd)
 
   # build package from filelist, dlist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
-  archive_package pwd
+  archive_package crew_archive_dest
 end
 
-def archive_package(pwd)
+def archive_package(crew_archive_dest)
   # Check to see that there is a working zstd
   if File.file?("#{CREW_PREFIX}/bin/zstd")
     @crew_prefix_zstd_available = File.file?("#{CREW_PREFIX}/bin/zstd") ? true : nil
@@ -1635,7 +1642,7 @@ def archive_package(pwd)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.full_version}-chromeos-#{@device[:architecture]}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
-      system "tar c#{@verbose}Jf #{pwd}/#{pkg_name} *"
+      system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
     end
   else
     puts 'Using zstd to compress package. This may take some time.'.lightblue
@@ -1647,11 +1654,11 @@ def archive_package(pwd)
       # Use nice so that user can (possibly) do other things during compression.
       if @crew_prefix_zstd_available
         puts 'Using standard zstd'.lightblue if @opt_verbose
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{pwd}/#{pkg_name}"
+        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
       end
     end
   end
-  system "sha256sum #{pwd}/#{pkg_name} > #{pwd}/#{pkg_name}.sha256"
+  system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
 end
 
 def remove(pkgName)
@@ -1677,6 +1684,9 @@ def remove(pkgName)
       FileUtils.ln(@canonicalized_file, "#{CREW_LIB_PREFIX}/#{file}", force: true)
     end
   end
+
+  conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+
   # if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
@@ -1690,8 +1700,14 @@ def remove(pkgName)
           puts "Removing #{line} will break crew. It was #{'NOT'.lightred} deleted." if @opt_verbose
         else
           puts "Removing file #{line}".lightred if @opt_verbose
-          puts "fileist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
-          FileUtils.rm_rf line if line.include?(CREW_PREFIX)
+          puts "filelist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
+          if line.start_with?(CREW_PREFIX)
+            if conflicts.include?(line)
+              puts "#{line} is in another package. It will not be removed during the removal of #{pkgName}".orange
+            else
+              FileUtils.rm_rf line
+            end
+          end
         end
       end
 
@@ -1969,11 +1985,6 @@ def update_command(args)
   else
     update
   end
-end
-
-def updatefiles_command(args)
-  verbose = args['--verbose'] ? '-v' : ''
-  updatefiles
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)

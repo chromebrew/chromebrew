@@ -22,9 +22,9 @@ class Libgd < Package
      x86_64: '0e6c97f3a19ad37591c1dd8b1daa44fa34661130282ca50a697f1ab01f080a64'
   })
 
-  depends_on 'libpng'
-  depends_on 'libavif'
-  depends_on 'libheif'
+  depends_on 'libpng' => :build
+  depends_on 'libavif' => :build
+  depends_on 'libheif' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 

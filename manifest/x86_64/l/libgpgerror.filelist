@@ -7,7 +7,7 @@
 /usr/local/lib64/libgpg-error.la
 /usr/local/lib64/libgpg-error.so
 /usr/local/lib64/libgpg-error.so.0
-/usr/local/lib64/libgpg-error.so.0.33.1
+/usr/local/lib64/libgpg-error.so.0.34.0
 /usr/local/lib64/pkgconfig/gpg-error.pc
 /usr/local/share/aclocal/gpg-error.m4
 /usr/local/share/aclocal/gpgrt.m4
@@ -38,3 +38,4 @@
 /usr/local/share/locale/vi/LC_MESSAGES/libgpg-error.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libgpg-error.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/libgpg-error.mo
+/usr/local/share/man/man1/gpgrt-config.1.zst

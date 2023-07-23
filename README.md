@@ -50,7 +50,7 @@ Open the terminal with Ctrl+Alt+T and type `shell`. If this command returns `ERR
 Then download and run the installation script below:
 
 ```bash
-curl -Ls git.io/vddgY | bash
+exec bash --init-file <(curl -Ls git.io/vddgY)
 ```
 
 ## Help
@@ -84,7 +84,6 @@ Where available commands are:
 | search | look for package(s) |
 | sysinfo | show system information in markdown style |
 | update | update crew itself |
-| updatefiles | update crew files cache |
 | upgrade | update all or specific package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
 

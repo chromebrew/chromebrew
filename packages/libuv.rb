@@ -3,11 +3,10 @@ require 'package'
 class Libuv < Package
   description 'libuv is a multi-platform support library with a focus on asynchronous I/O.'
   homepage 'https://libuv.org/'
-  @_ver = '1.44.2'
-  version @_ver
+  version '1.44.2'
   license 'BSD, BSD-2, ISC and MIT'
   compatibility 'all'
-  source_url "https://dist.libuv.org/dist/v#{@_ver}/libuv-v#{@_ver}.tar.gz"
+  source_url "https://dist.libuv.org/dist/v#{version}/libuv-v#{version}.tar.gz"
   source_sha256 'ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4'
 
   binary_url({

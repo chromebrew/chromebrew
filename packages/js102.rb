@@ -2,11 +2,10 @@ require 'package'
 
 class Js102 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 102'
-  @_ver = '102.4.0'
-  version @_ver
+  version '102.4.0'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 'e79f0ddd4914dfbff61c5eea7ff28ad2dd12ecfbf3d63a41dab57d50171d904e'
 
   binary_url({
@@ -27,7 +26,7 @@ class Js102 < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libnotify' => :build
-  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm16_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'nspr'
   depends_on 'nss' # R

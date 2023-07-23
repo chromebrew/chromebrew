@@ -3,11 +3,10 @@ require 'package'
 class Libva_utils < Package
   description 'Libva-utils is a collection of tests for VA-API (VIdeo Acceleration API)'
   homepage 'https://01.org/linuxmedia'
-  @_ver = '2.11.1'
-  version @_ver
+  version '2.11.1'
   license 'MIT'
   compatibility 'all'
-  source_url "https://github.com/intel/libva-utils/archive/refs/tags/#{@_ver}.tar.gz"
+  source_url "https://github.com/intel/libva-utils/archive/refs/tags/#{version}.tar.gz"
   source_sha256 '0c1eb7f717e391d00da74c53a9fe5caf3d6c510dcd35bac7f71a0e59ad1b8d26'
 
   binary_url({

@@ -3,14 +3,13 @@ require 'package'
 class Zlibpkg < Package
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'https://www.zlib.net/'
-  @_ver = '1.2.13'
-  version "#{@_ver}-1"
+  version '1.2.13-1' # Do not use @_ver here, it will break the installer.
   # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
   # The following breaks the installer script.
   # puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
   license 'zlib'
   compatibility 'all'
-  source_url "https://www.zlib.net/zlib-#{@_ver}.tar.gz"
+  source_url "https://www.zlib.net/zlib-1.2.13.tar.gz"
   source_sha256 'b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30'
 
   binary_url({

@@ -1,0 +1,56 @@
+---
+name: Handoff
+on:
+  pull_request:
+    branches: [master]
+jobs:
+  handoff:
+    runs-on: ubuntu-latest
+    outputs:
+      category: ${{ steps.changed-file-extensions.outputs.category }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v36
+      - name: Get extensions of changed files
+        id: changed-file-extensions
+        run: |
+          category=
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ext="${file##*.}"
+            case $ext in
+              md)
+                category+=" Markdown";;
+              rb)
+                category+=" Ruby";;
+              sh)
+                category+=" Bash";;
+              yml|yaml)
+                category+=" YAML";;
+              *)
+                echo "Unable to check syntax of $file.";;
+            esac
+            # In order for files such as bin/crew to be recognised
+            [[ "$(file -b $file | cut -d' ' -f1)" == "Ruby" ]] && category+=" Ruby"
+          done
+          echo "category=$category" >> $GITHUB_OUTPUT
+  # Github won't let us do this neatly, see https://github.com/orgs/community/discussions/25246
+  markdown:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'Markdown')
+    uses: ./.github/workflows/Markdown-lint.yml
+  ruby:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'Ruby')
+    uses: ./.github/workflows/Rubocop.yml
+  bash:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'Bash')
+    uses: ./.github/workflows/ShellCheck.yml
+  yaml:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'YAML')
+    uses: ./.github/workflows/YAMLlint.yml

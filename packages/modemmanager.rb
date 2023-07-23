@@ -3,11 +3,10 @@ require 'package'
 class Modemmanager < Package
   description 'ModemManager is a DBus-activated daemon which controls mobile broadband (2G/3G/4G) devices and connections.'
   homepage 'https://www.freedesktop.org/wiki/Software/ModemManager/'
-  @_ver = '1.16.2'
-  version @_ver
+  version '1.16.2'
   license 'GPL-2+'
   compatibility 'all'
-  source_url "https://www.freedesktop.org/software/ModemManager/ModemManager-#{@_ver}.tar.xz"
+  source_url "https://www.freedesktop.org/software/ModemManager/ModemManager-#{version}.tar.xz"
   source_sha256 'efa9a963499e0885f3f163096d433334143c4937545134ecd682e0157fa591e3'
 
   binary_url({

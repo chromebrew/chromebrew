@@ -1,0 +1,14 @@
+---
+name: YAMLLint
+on: workflow_call
+jobs:
+  yamllint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: YAMLLint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          config_file: .yamllint.yml

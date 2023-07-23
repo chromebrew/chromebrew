@@ -3,12 +3,10 @@ require 'package'
 class Tcl < Package
   description 'Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language, suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more.'
   homepage 'http://www.tcl.tk/'
-  @_ver = '8.6.13'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '8.6.13'
   license 'tcltk'
   compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tcl#{@_ver}-src.tar.gz"
+  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tcl#{version}-src.tar.gz"
   source_sha256 '43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066'
 
   binary_url({
@@ -27,13 +25,12 @@ class Tcl < Package
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 
-  no_env_options
+  no_lto
 
-  # tk breaks if tcl is built with lto
   def self.build
     FileUtils.chdir('unix') do
       @bit64 = ARCH == 'x86_64' ? 'enable' : 'disable'
-      system "#{CREW_ENV_FNO_LTO_OPTIONS} ./configure #{CREW_OPTIONS} --#{@bit64}-64bit"
+      system "./configure #{CREW_OPTIONS} --#{@bit64}-64bit"
       system 'make'
     end
   end
@@ -42,7 +39,7 @@ class Tcl < Package
     FileUtils.chdir('unix') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install-private-headers'
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{@_ver_prelastdot}", "#{CREW_DEST_PREFIX}/bin/tclsh"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/tclsh#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/tclsh"
     end
   end
 end

@@ -2,11 +2,10 @@ require 'package'
 
 class Js78 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 78'
-  @_ver = '78.7.0'
-  version @_ver
+  version '78.7.0'
   license 'MPL-2.0'
   compatibility 'all'
-  source_url "https://archive.mozilla.org/pub/firefox/releases/#{@_ver}esr/source/firefox-#{@_ver}esr.source.tar.xz"
+  source_url "https://archive.mozilla.org/pub/firefox/releases/#{version}esr/source/firefox-#{version}esr.source.tar.xz"
   source_sha256 '1aa041db28cd742e93d663a9da8defd33040b38d8b9470350538473251621643'
 
   binary_url({
@@ -24,7 +23,7 @@ class Js78 < Package
 
   depends_on 'autoconf213' => :build
   depends_on 'rust' => :build
-  depends_on 'llvm_dev16' => :build
+  depends_on 'llvm16_dev' => :build
   depends_on 'nspr'
 
   @rust_default_host = case ARCH

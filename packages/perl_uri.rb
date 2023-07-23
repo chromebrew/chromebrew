@@ -3,23 +3,23 @@ require 'package'
 class Perl_uri < Package
   description 'Uniform Resource Identifiers (absolute and relative)'
   homepage 'https://metacpan.org/pod/URI'
-  version '5.19-perl5.36'
+  version '5.19-perl5.38'
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz'
   source_sha256 '8fed5f819905c8a8e18f4447034322d042c3536b43c13ac1f09ba92e1a50a394'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.36_armv7l/perl_uri-5.19-perl5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.36_armv7l/perl_uri-5.19-perl5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.36_i686/perl_uri-5.19-perl5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.36_x86_64/perl_uri-5.19-perl5.36-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.38_armv7l/perl_uri-5.19-perl5.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.38_armv7l/perl_uri-5.19-perl5.38-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.38_i686/perl_uri-5.19-perl5.38-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_uri/5.19-perl5.38_x86_64/perl_uri-5.19-perl5.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c21958ae5ae418668120fcfebcf65ff37f4fb5550c688f8de6b3f01db6ede43c',
-     armv7l: 'c21958ae5ae418668120fcfebcf65ff37f4fb5550c688f8de6b3f01db6ede43c',
-       i686: '195d6f90fb767ac5ff4a900017caed04bb625dea9ce19c6702050e3b2dd80fef',
-     x86_64: '9c394cf1a2f32f7ffc16b6cc00f71e1c655ec11c83791410ec0c416fa591b229'
+    aarch64: '60efa146dff8f02e99dd1a8493660d0b5397caff9a6848208221126e223b6efd',
+     armv7l: '60efa146dff8f02e99dd1a8493660d0b5397caff9a6848208221126e223b6efd',
+       i686: 'b15b9f19038ee0efe1f3017d60e3bf62783e7eb4215608130fb4cb426f3ede2c',
+     x86_64: '2c21df63cd42d3a0217526f6cfbd19649022bc915d06ff6f3d9f50f7b7742e0b'
   })
 
   no_compile_needed

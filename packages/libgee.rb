@@ -3,12 +3,10 @@ require 'package'
 class Libgee < Package
   description 'Libgee is an utility library providing GObject-based interfaces and classes for commonly used data structures.'
   homepage 'https://wiki.gnome.org/Projects/Libgee'
-  @_ver = '0.20.4'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '0.20.4'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/libgee/-/archive/#{@_ver}/libgee-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.gnome.org/GNOME/libgee/-/archive/#{version}/libgee-#{version}.tar.bz2"
   source_sha256 'bf1e5840809e34e07b253e1363ec58c8844dac7400bc75c450e1c7aa13019c51'
 
   binary_url({

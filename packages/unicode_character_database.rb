@@ -3,11 +3,10 @@ require 'package'
 class Unicode_character_database < Package
   description 'Unicode Character Database'
   homepage 'https://www.unicode.org/'
-  @_ver = '13.0.0'
-  version @_ver
+  version '13.0.0'
   license 'Unicode-DFS-2015'
   compatibility 'all'
-  source_url "https://www.unicode.org/Public/zipped/#{@_ver}/UCD.zip"
+  source_url "https://www.unicode.org/Public/zipped/#{version}/UCD.zip"
   source_sha256 '2f76973b4d36ae45584f5a45ec65b47138932d777dd23a5669c89535ef3da951'
 
   binary_url({
@@ -26,7 +25,7 @@ class Unicode_character_database < Package
   depends_on 'libarchive' => :build
 
   def self.build
-    system "curl -Ls https://www.unicode.org/Public/zipped/#{@_ver}/Unihan.zip | bsdtar --no-same-owner --no-same-permissions -xf -"
+    system "curl -Ls https://www.unicode.org/Public/zipped/#{version}/Unihan.zip | bsdtar --no-same-owner --no-same-permissions -xf -"
   end
 
   def self.install

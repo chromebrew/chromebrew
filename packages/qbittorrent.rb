@@ -3,21 +3,21 @@ require 'package'
 class Qbittorrent < Package
   description 'Open-source software alternative to µTorrent.'
   homepage 'https://www.qbittorrent.org/'
-  version '4.5.3'
+  version '4.5.4'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.5.3/qbittorrent-4.5.3.tar.xz'
-  source_sha256 '017253c83ed0cd7893d6b5fb4a669790502226afc27df14e0ecdfdba3568d60a'
+  source_url 'https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.5.4/qbittorrent-4.5.4.tar.xz'
+  source_sha256 'f92bcd3ed25600796c59257c507e56a252a65af60bd042b71f1e7ff3fe5264da'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.5.3_armv7l/qbittorrent-4.5.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.5.3_armv7l/qbittorrent-4.5.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.5.3_x86_64/qbittorrent-4.5.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.5.4_armv7l/qbittorrent-4.5.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.5.4_armv7l/qbittorrent-4.5.4-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qbittorrent/4.5.4_x86_64/qbittorrent-4.5.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0b4e50e72927dbf7511f23104c2dc6b6deaa5aa7e1bbf3cf87d28e8fa6ef1e66',
-     armv7l: '0b4e50e72927dbf7511f23104c2dc6b6deaa5aa7e1bbf3cf87d28e8fa6ef1e66',
-     x86_64: 'a2c023d33b08d62946be072b81e4f2e6383dd55bfa96d55c36fbbf11ceb42e7d'
+    aarch64: '0c2bd9443fadff4a1a9695e3d47040d32fc06c3661b5517cac6db5a14ba4875f',
+     armv7l: '0c2bd9443fadff4a1a9695e3d47040d32fc06c3661b5517cac6db5a14ba4875f',
+     x86_64: '788824323beda84bb552fc02b246b81e32ac3d8aa6ea6b78fe0e303ae5e2dfce'
   })
 
   depends_on 'cmake' => :build

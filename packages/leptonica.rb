@@ -3,12 +3,11 @@ require 'package'
 class Leptonica < Package
   description 'Software that is broadly useful for image processing and image analysis applications'
   homepage 'http://www.leptonica.com/'
-  @_ver = '1.83.1'
-  version @_ver
+  version '1.83.1'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/DanBloomberg/leptonica.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leptonica/1.83.1_armv7l/leptonica-1.83.1-chromeos-armv7l.tar.zst',

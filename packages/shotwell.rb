@@ -1,23 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Shotwell < Package
+class Shotwell < Meson
   description 'An open-source digital photo organiser for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Shotwell'
-  version '0.32.1'
+  version '0.32.2'
   license 'GPL-2.1+'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gnome.org/sources/shotwell/0.32/shotwell-0.32.1.tar.xz'
-  source_sha256 '4ac4517416ad8aa23b44e75c34bd6e16bab7363fa20991bb09bacdfab3f763ce'
+  compatibility 'x86_64'
+  source_url 'https://download.gnome.org/sources/shotwell/0.32/shotwell-0.32.2.tar.xz'
+  source_sha256 'a5de53e873216df8f5996c96827bed963d6c6354e045e1796dfd326c6188c263'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.1_armv7l/shotwell-0.32.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.1_armv7l/shotwell-0.32.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.1_x86_64/shotwell-0.32.1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shotwell/0.32.2_x86_64/shotwell-0.32.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '74b2761fe3bac1dda3a107fa06f6e5b77d3971064a8c186924a83315b3079ee2',
-     armv7l: '74b2761fe3bac1dda3a107fa06f6e5b77d3971064a8c186924a83315b3079ee2',
-     x86_64: '3dbaeddb783532faa4d9d61fe2cdcfea2f0ee19f48ee4bc5b83b3952a4e49686'
+    x86_64: '5cdee6e092952d82c60b26a8fd57446a96baebb43681bbc449e39138cc3d75cd'
   })
 
   depends_on 'vala' => :build
@@ -43,16 +39,6 @@ class Shotwell < Package
   depends_on 'webkit2gtk' # R
 
   gnome
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} build"
-    system 'meson configure build'
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
 
   def self.postinstall
     puts "\nTo finish the installation, execute 'source ~/.bashrc'\n".lightblue

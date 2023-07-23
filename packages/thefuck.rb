@@ -3,12 +3,11 @@ require 'package'
 class Thefuck < Package
   description 'Thef*ck is a magnificent app which corrects your previous console command.'
   homepage 'https://github.com/nvbn/thefuck/'
-  @_ver = '3.31'
-  version @_ver
+  version '3.31'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/nvbn/thefuck.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/thefuck/3.31_armv7l/thefuck-3.31-chromeos-armv7l.tpxz',

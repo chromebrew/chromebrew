@@ -71,6 +71,7 @@
 /usr/local/include/cppunit/XmlOutputterHook.h
 /usr/local/lib64/libcppunit-1.15.so.1
 /usr/local/lib64/libcppunit-1.15.so.1.0.0
+/usr/local/lib64/libcppunit.a
 /usr/local/lib64/libcppunit.la
 /usr/local/lib64/libcppunit.so
 /usr/local/lib64/pkgconfig/cppunit.pc
@@ -117,7 +118,6 @@
 /usr/local/share/cppunit/html/_auto_register_suite_8h_source.html
 /usr/local/share/cppunit/html/bc_sd.png
 /usr/local/share/cppunit/html/bc_s.png
-/usr/local/share/cppunit/html/bdwn.png
 /usr/local/share/cppunit/html/_brief_test_progress_listener_8cpp.html
 /usr/local/share/cppunit/html/_brief_test_progress_listener_8cpp__incl.map
 /usr/local/share/cppunit/html/_brief_test_progress_listener_8cpp__incl.md5
@@ -608,8 +608,8 @@
 /usr/local/share/cppunit/html/_dll_main_8cpp__incl.map
 /usr/local/share/cppunit/html/_dll_main_8cpp__incl.md5
 /usr/local/share/cppunit/html/_dll_main_8cpp__incl.png
-/usr/local/share/cppunit/html/docd.png
-/usr/local/share/cppunit/html/doc.png
+/usr/local/share/cppunit/html/docd.svg
+/usr/local/share/cppunit/html/doc.svg
 /usr/local/share/cppunit/html/doxygen.css
 /usr/local/share/cppunit/html/doxygen.svg
 /usr/local/share/cppunit/html/_dynamic_library_manager_8cpp.html
@@ -666,8 +666,10 @@
 /usr/local/share/cppunit/html/_floating_point_8h__incl.md5
 /usr/local/share/cppunit/html/_floating_point_8h__incl.png
 /usr/local/share/cppunit/html/_floating_point_8h_source.html
-/usr/local/share/cppunit/html/folderclosed.png
-/usr/local/share/cppunit/html/folderopen.png
+/usr/local/share/cppunit/html/folderclosedd.svg
+/usr/local/share/cppunit/html/folderclosed.svg
+/usr/local/share/cppunit/html/folderopend.svg
+/usr/local/share/cppunit/html/folderopen.svg
 /usr/local/share/cppunit/html/functions_b.html
 /usr/local/share/cppunit/html/functions_c.html
 /usr/local/share/cppunit/html/functions_d.html

@@ -3,12 +3,10 @@ require 'package'
 class Libcroco < Package
   description 'Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit.'
   homepage 'https://git.gnome.org/browse/libcroco/'
-  @_ver = '0.6.13'
-  @_ver_prelastdot = @_ver.rpartition('.')[0]
-  version @_ver
+  version '0.6.13'
   license 'LGPL-2'
   compatibility 'all'
-  source_url "http://ftp.gnome.org/pub/gnome/sources/libcroco/#{@_ver_prelastdot}/libcroco-#{@_ver}.tar.xz"
+  source_url "http://ftp.gnome.org/pub/gnome/sources/libcroco/#{version.rpartition('.')[0]}/libcroco-#{version}.tar.xz"
   source_sha256 '767ec234ae7aa684695b3a735548224888132e063f92db585759b422570621d4'
 
   binary_url({

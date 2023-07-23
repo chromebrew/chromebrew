@@ -16,13 +16,13 @@
 /usr/local/lib64/cmake/libjpeg-turbo/libjpeg-turboTargets-release.cmake
 /usr/local/lib64/libjpeg.so
 /usr/local/lib64/libjpeg.so.62
-/usr/local/lib64/libjpeg.so.62.3.0
+/usr/local/lib64/libjpeg.so.62.4.0
 /usr/local/lib64/libturbojpeg.so
 /usr/local/lib64/libturbojpeg.so.0
-/usr/local/lib64/libturbojpeg.so.0.2.0
+/usr/local/lib64/libturbojpeg.so.0.3.0
 /usr/local/lib64/pkgconfig/libjpeg.pc
 /usr/local/lib64/pkgconfig/libturbojpeg.pc
-/usr/local/share/doc/libjpeg-turbo/example.txt
+/usr/local/share/doc/libjpeg-turbo/example.c
 /usr/local/share/doc/libjpeg-turbo/libjpeg.txt
 /usr/local/share/doc/libjpeg-turbo/LICENSE.md
 /usr/local/share/doc/libjpeg-turbo/README.ijg

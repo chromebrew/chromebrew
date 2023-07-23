@@ -1,15 +1,15 @@
 require 'package'
-require_relative 'llvm_build16'
+require_relative 'llvm16_build'
 
 class Llvm < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
-  homepage Llvm_build16.homepage.to_s
-  version Llvm_build16.version.to_s
-  license Llvm_build16.license
-  compatibility Llvm_build16.compatibility.to_s
+  homepage Llvm16_build.homepage.to_s
+  version Llvm16_build.version.to_s
+  license Llvm16_build.license
+  compatibility Llvm16_build.compatibility.to_s
 
   is_fake
 
-  depends_on 'llvm_lib16'
-  depends_on 'llvm_dev16'
+  depends_on 'llvm16_lib'
+  depends_on 'llvm16_dev'
 end

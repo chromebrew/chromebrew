@@ -59,7 +59,7 @@ class Handbrake < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
-  no_env_options
+  no_lto
 
   def self.patch
     Dir.chdir 'gtk' do
@@ -75,7 +75,7 @@ class Handbrake < Package
     FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libfribidi.la", "#{CREW_PREFIX}/lib/"
 
     unless Dir.exist? 'x86_64-cros-linux-gnu'
-      system "#{CREW_ENV_FNO_LTO_OPTIONS} LDFLAGS='-L #{CREW_LIB_PREFIX}' ./configure #{CREW_OPTIONS} \
+      system "LDFLAGS+=' -L #{CREW_LIB_PREFIX}' ./configure #{CREW_OPTIONS} \
         --enable-x265 \
         --enable-numa \
         --enable-fdk-aac \

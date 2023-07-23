@@ -35,7 +35,7 @@ class Icecream < Package
   depends_on 'libarchive' # R
   depends_on 'libcap_ng' # R
   depends_on 'libxml2' # R
-  depends_on 'llvm_lib16' => :build
+  depends_on 'llvm16_lib' => :build
   depends_on 'lz4' # R
   depends_on 'lzo' # R
   depends_on 'openssl' # R

@@ -3,12 +3,11 @@ require 'package'
 class Libfaudio < Package
   description 'FAudio is an XAudio reimplementation that focuses solely on developing fully accurate DirectX Audio runtime libraries for the FNA project.'
   homepage 'https://fna-xna.github.io/'
-  @_ver = '23.01'
-  version @_ver
+  version '23.01'
   license 'ZLIB'
   compatibility 'all'
   source_url 'https://github.com/fna-xna/faudio.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_armv7l/libfaudio-23.01-chromeos-armv7l.tar.zst',

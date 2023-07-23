@@ -3,11 +3,10 @@ require 'package'
 class Libnotify < Package
   description 'A library for sending desktop notifications.'
   homepage 'https://git.gnome.org/browse/libnotify'
-  @_ver = '0.8.1'
-  version @_ver
+  version '0.8.1'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url "https://github.com/GNOME/libnotify/archive/#{@_ver}.tar.gz"
+  source_url "https://github.com/GNOME/libnotify/archive/#{version}.tar.gz"
   source_sha256 '7c0b252edecbf08db50d775f9e720ecc03c742fb97c25f3966a8b7a4bedf8133'
 
   binary_url({

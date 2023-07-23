@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '23.1.2'
+  @_ver = '23.1.4'
   version "#{@_ver}-llvm16"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -11,14 +11,14 @@ class Mesa < Package
   git_hashtag "mesa-#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.2-llvm16_armv7l/mesa-23.1.2-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.2-llvm16_armv7l/mesa-23.1.2-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.2-llvm16_x86_64/mesa-23.1.2-llvm16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.4-llvm16_armv7l/mesa-23.1.4-llvm16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.4-llvm16_armv7l/mesa-23.1.4-llvm16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mesa/23.1.4-llvm16_x86_64/mesa-23.1.4-llvm16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd77ffd9619033453c4f25a932064a01bb572ae1acf9e2ca5145cbd742d8ac001',
-     armv7l: 'd77ffd9619033453c4f25a932064a01bb572ae1acf9e2ca5145cbd742d8ac001',
-     x86_64: '3fb6eb2a105103ff898b63c66395e67e97abfe70bec57597d54a3a46fedff2db'
+    aarch64: '159c6813dc22685ae926332a2ca589cbf0ce74f215ee158f08f3f4e4d4218186',
+     armv7l: '159c6813dc22685ae926332a2ca589cbf0ce74f215ee158f08f3f4e4d4218186',
+     x86_64: 'fceff33418d51f78ee5444630ae8c5c1e3545c7b1a7f8cc6d627730e45b2b0f2'
   })
 
   depends_on 'elfutils' # R
@@ -32,7 +32,7 @@ class Mesa < Package
   depends_on 'libglvnd' # R
   depends_on 'libomxil_bellagio' => :build
   depends_on 'libunwind'
-  depends_on 'libva' => :build # Enable only during build to avoid circular dep.
+  depends_on 'libva' => :build
   depends_on 'libvdpau' => :build
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
@@ -46,8 +46,8 @@ class Mesa < Package
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm_dev16' => :build
-  depends_on 'llvm_lib16' # R
+  depends_on 'llvm16_dev' => :build
+  depends_on 'llvm16_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako'
   depends_on 'valgrind' => :build

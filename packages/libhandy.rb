@@ -3,12 +3,11 @@ require 'package'
 class Libhandy < Package
   description 'The aim of the handy library is to help with developing UI for mobile devices using GTK/GNOME.'
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
-  @_ver = '1.8.2'
-  version @_ver
+  version '1.8.2'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libhandy.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libhandy/1.8.2_armv7l/libhandy-1.8.2-chromeos-armv7l.tar.zst',
