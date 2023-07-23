@@ -5691,8 +5691,8 @@ url: https://www.musl-libc.org/releases/
 activity: low
 ---
 kind: url
-name: musl
-url: https://github.com/musescore/MuseScore
+name: musescore
+url: https://github.com/musescore/MuseScore/releases
 activity: medium
 ---
 kind: url
