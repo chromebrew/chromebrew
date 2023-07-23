@@ -20,6 +20,7 @@ class Musescore < Package
    abort 'Not enough free disk space.  You need at least 317 MB to install.'.lightred if free_space < 317000000
   end
   def self.install
+system("sudo chmod a+x ./install.sh")
 system("sudo bash ./install.sh")
   end
   def self.postinstall
