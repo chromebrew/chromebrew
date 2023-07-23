@@ -12,6 +12,8 @@ class Musescore < Package
   depends_on 'p7zip'
   depends_on 'sommelier'
   depends_on 'qtbase'
+
+ no_compile_needed
  
   def self.preflight
    free_space = `echo $(($(stat -f --format="%a*%S" #{CREW_PREFIX})))`.chomp.to_i
