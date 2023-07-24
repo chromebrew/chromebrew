@@ -6,7 +6,7 @@
 /usr/local/include/mpv/stream_cb.h
 /usr/local/lib64/libmpv.so
 /usr/local/lib64/libmpv.so.2
-/usr/local/lib64/libmpv.so.2.0.0
+/usr/local/lib64/libmpv.so.2.1.0
 /usr/local/lib64/pkgconfig/mpv.pc
 /usr/local/share/applications/mpv.desktop
 /usr/local/share/bash-completion/completions/mpv
