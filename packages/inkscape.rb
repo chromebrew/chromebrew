@@ -1,23 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Inkscape < Package
+class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.2.2-2'
+  version '1.3'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://inkscape.org/gallery/item/37360/inkscape-1.2.2.tar.xz'
-  source_sha256 'a0c7fd0d03c0a21535e648ef301dcf80dd7cfc1f3545e51065fbf1ba3ee8a5c4'
+  source_url 'https://inkscape.org/gallery/item/42328/inkscape-1.3.tar.xz'
+  source_sha256 'bf4f286b025e0169b8948cc14d5199a9b4c204d761c894c4b48496571ec76307'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-2_armv7l/inkscape-1.2.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-2_armv7l/inkscape-1.2.2-2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.2.2-2_x86_64/inkscape-1.2.2-2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3_armv7l/inkscape-1.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3_armv7l/inkscape-1.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3_x86_64/inkscape-1.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '76c40f10857fad45cb03148b2026b2618266cf0ab2e4e390fa0bbad386fe19d4',
-     armv7l: '76c40f10857fad45cb03148b2026b2618266cf0ab2e4e390fa0bbad386fe19d4',
-     x86_64: '1de0653270641b88992007d9b98be13a6b00ae634145fbe4c5eb55e57d6f78b0'
+    aarch64: 'e155f44dcc4ef18ca31f5d440c0adb5dfaa9c35740b1298b9aee93a8062a50dd',
+     armv7l: 'e155f44dcc4ef18ca31f5d440c0adb5dfaa9c35740b1298b9aee93a8062a50dd',
+     x86_64: 'bc033557c8db10dd43f84151ddb1a35c541bad6fbdc6fee3af8f2c320fa51bae'
   })
 
   depends_on 'atkmm16' # R
@@ -40,12 +40,14 @@ class Inkscape < Package
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'gtkmm3' # R
+  depends_on 'gtksourceview_4' # R
   depends_on 'gtksourceview' => :build
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
   depends_on 'jemalloc' => :build
   depends_on 'lcms' # R
   depends_on 'libcdr' # R
+  depends_on 'libepoxy' # R
   depends_on 'libice' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
@@ -69,17 +71,8 @@ class Inkscape < Package
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-            -DWITH_IMAGE_MAGICK=OFF \
+  cmake_options << '-DWITH_IMAGE_MAGICK=OFF \
             -DWITH_INTERNAL_2GEOM=ON \
             -DWITH_MANPAGE_COMPRESSION=OFF \
-            -DWITH_X11=ON \
-            -G Ninja"
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+            -DWITH_X11=ON'
 end
