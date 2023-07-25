@@ -1,5 +1,5 @@
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.35.2'
+CREW_VERSION = '1.35.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -107,7 +107,7 @@ CREW_GITHUB_REPO = 'https://github.com/chromebrew/chromebrew.git'
 
 # Local constants for contributors.
 repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-if repo_root.empty? || File.basename(repo_root) != 'chromebrew'
+if repo_root.empty?
   Dir.chdir '../..' do
     repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
   end
@@ -115,7 +115,7 @@ end
 CREW_LOCAL_REPO_ROOT = repo_root
 CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
-                             CREW_LOCAL_REPO_BASE == CREW_GITHUB_ACCOUNT ? "#{CREW_LOCAL_REPO_ROOT}/manifest" : ''
+                             "#{CREW_LOCAL_REPO_ROOT}/manifest"
                            else
                              ENV.fetch('CREW_LOCAL_MANIFEST_PATH', nil)
                            end
