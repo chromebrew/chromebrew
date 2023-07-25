@@ -3,21 +3,21 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22.3'
+  version '1.22.5'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_armv7l/gstreamer-1.22.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_armv7l/gstreamer-1.22.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.3_x86_64/gstreamer-1.22.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.5_armv7l/gstreamer-1.22.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.5_armv7l/gstreamer-1.22.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.5_x86_64/gstreamer-1.22.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e930960a30813fab3d71875c16eb72a471019f82b23cbac50f69a2e6d46b58b2',
-     armv7l: 'e930960a30813fab3d71875c16eb72a471019f82b23cbac50f69a2e6d46b58b2',
-     x86_64: '51456b1df1cf1196181e6e6eeabf5f216a43ea7cbbf992254f4a63735771e511'
+    aarch64: 'a199e65e139ccc384046a91f68b786333fd2e7c7d6ea94f34a72e6a1d8afd13c',
+     armv7l: 'a199e65e139ccc384046a91f68b786333fd2e7c7d6ea94f34a72e6a1d8afd13c',
+     x86_64: '94d66b0a5a4145126abff5e3191ca566867d9978eed5459216b70376740e30d5'
   })
 
   depends_on 'alsa_lib' # R
@@ -99,6 +99,7 @@ class Gstreamer < Package
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
+  depends_on 'pygobject' # R
   depends_on 'python3' # R
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
@@ -122,7 +123,7 @@ class Gstreamer < Package
   depends_on 'qtbase' # R
   depends_on 'qtdeclarative' # R
 
-  conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
+  # conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
 
   def self.prebuild
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"

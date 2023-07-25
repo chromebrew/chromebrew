@@ -3,22 +3,21 @@ require 'package'
 class Mpv < Package
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  @_ver = '0.35.1'
-  version "#{@_ver}-1"
+  version '0.36.0'
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/mpv-player/mpv.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1-1_armv7l/mpv-0.35.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1-1_armv7l/mpv-0.35.1-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.35.1-1_x86_64/mpv-0.35.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.36.0_armv7l/mpv-0.36.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.36.0_armv7l/mpv-0.36.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.36.0_x86_64/mpv-0.36.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1d720233e0f7f5c1337bbb5a7b0351767f40607034661f3387bdd03a4071f739',
-     armv7l: '1d720233e0f7f5c1337bbb5a7b0351767f40607034661f3387bdd03a4071f739',
-     x86_64: '10cbe9d834e2a8808f4cf4c3b3286b974faccfe1d06b57f0efb85b7102312db6'
+    aarch64: '979f189c1c79ecee1309813bf38281d1ce6275bf797b61e8cce3dd4af8247da9',
+     armv7l: '979f189c1c79ecee1309813bf38281d1ce6275bf797b61e8cce3dd4af8247da9',
+     x86_64: '0a81daf8c213437141fd1e3b07904570cb7b1857a4d5e10b4edf72dbda1b40b7'
   })
 
   depends_on 'alsa_lib' # R

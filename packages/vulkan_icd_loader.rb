@@ -3,21 +3,21 @@ require 'package'
 class Vulkan_icd_loader < Package
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
-  version '1.3.251'
+  version '1.3.257'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Loader.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.251_armv7l/vulkan_icd_loader-1.3.251-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.251_armv7l/vulkan_icd_loader-1.3.251-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.251_x86_64/vulkan_icd_loader-1.3.251-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.257_armv7l/vulkan_icd_loader-1.3.257-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.257_armv7l/vulkan_icd_loader-1.3.257-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.257_x86_64/vulkan_icd_loader-1.3.257-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f7fc09b801ae615df9e17509f5e766f82f98d99246ca118bdd3fb89357e59eeb',
-     armv7l: 'f7fc09b801ae615df9e17509f5e766f82f98d99246ca118bdd3fb89357e59eeb',
-     x86_64: '49b3eb10c6394128cf3fb3294d6bdcc8c85cb05df85c574bee2047939f59507f'
+    aarch64: '13c0bdf67dd677f53f6c8303a847fd37a7658d32b97894661b6e69bd0b620b3c',
+     armv7l: '13c0bdf67dd677f53f6c8303a847fd37a7658d32b97894661b6e69bd0b620b3c',
+     x86_64: '74e39ecdadfa80bae231d995fcdfb749c25202664ecfe1718fcbc8757ca88aa0'
   })
 
   depends_on 'glibc' # R

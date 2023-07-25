@@ -11,6 +11,7 @@
 /usr/local/include/vulkan/vulkan_android.h
 /usr/local/include/vulkan/vulkan_beta.h
 /usr/local/include/vulkan/vulkan_core.h
+/usr/local/include/vulkan/vulkan.cppm
 /usr/local/include/vulkan/vulkan_directfb.h
 /usr/local/include/vulkan/vulkan_enums.hpp
 /usr/local/include/vulkan/vulkan_extension_inspection.hpp
@@ -30,6 +31,7 @@
 /usr/local/include/vulkan/vulkan_static_assertions.hpp
 /usr/local/include/vulkan/vulkan_structs.hpp
 /usr/local/include/vulkan/vulkan_to_string.hpp
+/usr/local/include/vulkan/vulkan_video.hpp
 /usr/local/include/vulkan/vulkan_vi.h
 /usr/local/include/vulkan/vulkan_wayland.h
 /usr/local/include/vulkan/vulkan_win32.h
@@ -38,7 +40,6 @@
 /usr/local/include/vulkan/vulkan_xlib_xrandr.h
 /usr/local/share/cmake/VulkanHeaders/VulkanHeadersConfig.cmake
 /usr/local/share/cmake/VulkanHeaders/VulkanHeadersConfigVersion.cmake
-/usr/local/share/cmake/VulkanHeaders/VulkanHeadersTargets.cmake
 /usr/local/share/vulkan/registry/apiconventions.py
 /usr/local/share/vulkan/registry/cgenerator.py
 /usr/local/share/vulkan/registry/generator.py

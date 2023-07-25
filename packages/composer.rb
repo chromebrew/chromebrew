@@ -3,11 +3,11 @@ require 'package'
 class Composer < Package
   description 'Dependency Manager for PHP'
   homepage 'https://getcomposer.org/'
-  version '2.5.5'
+  version '2.5.8'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/composer/composer/releases/download/2.5.5/composer.phar'
-  source_sha256 '566a6d1cf4be1cc3ac882d2a2a13817ffae54e60f5aa7c9137434810a5809ffc'
+  source_url 'https://github.com/composer/composer/releases/download/2.5.8/composer.phar'
+  source_sha256 'f07934fad44f9048c0dc875a506cca31cc2794d6aebfc1867f3b1fbf48dce2c5'
 
   depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
   depends_on 'xdg_base'
@@ -25,10 +25,11 @@ class Composer < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     FileUtils.install 'composer.phar', "#{CREW_DEST_PREFIX}/bin/composer", mode: 0o755
-    system "echo 'export PATH=\$HOME/.config/composer/vendor/bin:\$PATH' > #{CREW_DEST_PREFIX}/etc/env.d/10-composer"
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-composer", <<~EOF
+      PATH=$HOME/.config/composer/vendor/bin:$PATH
+    EOF
   end
 
   def self.postinstall
