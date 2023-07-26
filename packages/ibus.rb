@@ -7,7 +7,7 @@ class Ibus < Package
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/ibus/ibus.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.28_armv7l/ibus-1.5.28-chromeos-armv7l.tar.zst',

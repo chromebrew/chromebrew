@@ -3,11 +3,11 @@ require 'package'
 class Geoclue < Package
   description 'Modular geoinformation service built on the D-Bus messaging system'
   homepage 'https://www.freedesktop.org/wiki/Software/GeoClue/'
-  @_ver = '2.5.7'
-  version "#{@_ver}-1"
+  version '2.5.7'
+  revision 1
   license 'LGPL-2.1 and GPL-2+'
   compatibility 'all'
-  source_url "https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/#{@_ver}/geoclue-#{@_ver}.tar.bz2"
+  source_url "https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/#{version}/geoclue-#{version}.tar.bz2"
   source_sha256 '6cc7dbe4177b4e7f3532f7fe42262049789a3cd6c55afe60a3564d7394119c27'
 
   binary_url({

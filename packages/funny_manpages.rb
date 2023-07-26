@@ -3,12 +3,12 @@ require 'package'
 class Funny_manpages < Package
   description 'funny unix manpages'
   homepage 'https://github.com/ltworf/funny-manpages'
-  @_ver = '2.3'
-  version "#{@_ver}-1"
+  version '2.3'
+  revision 1
   license 'custom'
   compatibility 'all'
   source_url 'https:///github.com/ltworf/funny-manpages.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   depends_on 'mandb'
 

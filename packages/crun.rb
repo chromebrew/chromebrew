@@ -6,12 +6,12 @@ require 'package'
 class Crun < Package
   description 'A fast and lightweight fully featured OCI runtime and C library for running containers'
   homepage 'https://github.com/containers/crun'
-  @_ver = '1.7.2'
-  version "#{@_ver}-1"
+  version '1.7.2'
+  revision 1
   license 'LGPL'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/containers/crun.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crun/1.7.2-1_armv7l/crun-1.7.2-1-chromeos-armv7l.tar.zst',

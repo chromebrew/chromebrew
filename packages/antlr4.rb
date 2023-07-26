@@ -3,8 +3,8 @@ require 'package'
 class Antlr4 < Package
   description 'ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files.'
   homepage 'https://www.antlr.org/'
-  @_ver = '4.12.0'
-  version "#{@_ver}-1"
+  version '4.12.0'
+  revision 1
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/antlr/antlr4/archive/4.12.0.tar.gz'
@@ -28,8 +28,8 @@ class Antlr4 < Package
   def self.build
     @antlrenv = <<~ANTLR_EOF
       # ANTLR (ANother Tool for Language Recognition) configuration
-      CLASSPATH=".:#{CREW_PREFIX}/share/antlr/antlr-#{@_ver}-complete.jar:$CLASSPATH"
-      alias antlr4="java -jar #{CREW_PREFIX}/share/antlr/antlr-#{@_ver}-complete.jar"
+      CLASSPATH=".:#{CREW_PREFIX}/share/antlr/antlr-#{version}-complete.jar:$CLASSPATH"
+      alias antlr4="java -jar #{CREW_PREFIX}/share/antlr/antlr-#{version}-complete.jar"
       alias grun="java org.antlr.v4.gui.TestRig"
     ANTLR_EOF
     Dir.chdir 'runtime/Cpp' do
@@ -39,12 +39,12 @@ class Antlr4 < Package
   end
 
   def self.install
-    downloader "https://www.antlr.org/download/antlr-#{@_ver}-complete.jar",
+    downloader "https://www.antlr.org/download/antlr-#{version}-complete.jar",
                '88f18a2bfac0dde1009eda5c7dce358a52877faef7868f56223a5bcc15329e43'
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/antlr"
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-antlr4", @antlrenv)
-    FileUtils.install "antlr-#{@_ver}-complete.jar", "#{CREW_DEST_PREFIX}/share/antlr", mode: 0o644
+    FileUtils.install "antlr-#{version}-complete.jar", "#{CREW_DEST_PREFIX}/share/antlr", mode: 0o644
     Dir.chdir 'runtime/Cpp' do
       system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     end

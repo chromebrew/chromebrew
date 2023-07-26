@@ -3,8 +3,8 @@ require 'package'
 class Ctorrent < Package
   description 'CTorrent is a BitTorrent client implemented in C++ to be lightweight and quick.'
   homepage 'http://www.rahul.net/dholmes/ctorrent/'
-  @_ver = '3.3.2'
-  version "#{@_ver}-1"
+  version '3.3.2'
+  revision 1
   license 'GPL-2'
   compatibility 'all'
   source_url 'http://www.rahul.net/dholmes/ctorrent/ctorrent-dnh3.3.2.tar.gz'

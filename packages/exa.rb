@@ -3,12 +3,12 @@ require 'package'
 class Exa < Package
   description 'Exa is a modern replacement for ls'
   homepage 'https://the.exa.website/'
-  @_ver = '0.10.1'
-  version "#{@_ver}-1"
+  version '0.10.1'
+  revision 1
   license 'Apache-2.0, MIT and Unlicense'
   compatibility 'all'
   source_url 'https://github.com/ogham/exa.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1-1_armv7l/exa-0.10.1-1-chromeos-armv7l.tar.zst',

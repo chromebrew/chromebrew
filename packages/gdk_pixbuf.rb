@@ -3,12 +3,12 @@ require 'package'
 class Gdk_pixbuf < Package
   description 'GdkPixbuf is a library for image loading and manipulation.'
   homepage 'https://developer.gnome.org/gdk-pixbuf'
-  @_ver = '2.42.10'
-  version "#{@_ver}-1"
+  version '2.42.10'
+  revision 1
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-1_armv7l/gdk_pixbuf-2.42.10-1-chromeos-armv7l.tar.zst',
