@@ -6,22 +6,22 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '1.11.0-83524e3'
+  version '2.0.0'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
-  git_hashtag '83524e36903b37989b5692e931140c5b33f3e40d'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-83524e3_armv7l/mold-1.11.0-83524e3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-83524e3_armv7l/mold-1.11.0-83524e3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-83524e3_i686/mold-1.11.0-83524e3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/1.11.0-83524e3_x86_64/mold-1.11.0-83524e3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.0.0_armv7l/mold-2.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.0.0_armv7l/mold-2.0.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.0.0_i686/mold-2.0.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.0.0_x86_64/mold-2.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0c797ab4745cf99ca93084efb22e85480a607a9da9c3a4ed8bdc1d47e5fe5fd4',
-     armv7l: '0c797ab4745cf99ca93084efb22e85480a607a9da9c3a4ed8bdc1d47e5fe5fd4',
-       i686: '958f3d6d2d0cc53385f7200c0b6ae044512180125df60c527b8600424fda2526',
-     x86_64: '45652ffa430a63ba941b9c24a71ad9e49e85cb5194da942c9c4a07859b2c86e4'
+    aarch64: 'c7d7239513d8553687ea2e4a3952edff8580e8b8c56737dd659df9b0fb998af4',
+     armv7l: 'c7d7239513d8553687ea2e4a3952edff8580e8b8c56737dd659df9b0fb998af4',
+       i686: '50e491c45a287c77fd3ca465c70e9b812a11d1bced91bc26a873a81640d35802',
+     x86_64: 'be95ffb532dd7efc524796321757a77be5113390d9cc65b0ad69f03e66667b73'
   })
 
   depends_on 'zlibpkg' # R
