@@ -7,6 +7,7 @@ class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
   version '2.0.0'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
