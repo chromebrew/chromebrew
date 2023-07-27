@@ -4,25 +4,26 @@ require_relative 'gcc_build'
 class Libssp < Package
   description 'Libssp is a part of the GCC toolkit.'
   homepage 'https://gcc.gnu.org/'
-  version '13.1.0'
+  version '13.2.0'
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
-  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/, '') != Gcc_build.version.to_s
+  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
+                                                                                                   '') != Gcc_build.version.to_s
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
   git_hashtag "releases/gcc-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.1.0_armv7l/libssp-13.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.1.0_armv7l/libssp-13.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.1.0_i686/libssp-13.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.1.0_x86_64/libssp-13.1.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_armv7l/libssp-13.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_armv7l/libssp-13.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_i686/libssp-13.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_x86_64/libssp-13.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1bbf7715c57c0ea0fd357d5828c1f57b913d824365aafba078536b4ed004b802',
-     armv7l: '1bbf7715c57c0ea0fd357d5828c1f57b913d824365aafba078536b4ed004b802',
-       i686: 'aef99be4baeaa602293b09c54c40931c9b4008a9caec991a0186c87ba2c80b40',
-     x86_64: 'ded94b3dbb3489531f46c01abe2e5a0c70a85dad9171e8e5155e5277cb6ad960'
+    aarch64: '58f3da30ae2a13f4a29a7e254db60c5a07b9a7cf8375203a38b19194dd60e3aa',
+     armv7l: '58f3da30ae2a13f4a29a7e254db60c5a07b9a7cf8375203a38b19194dd60e3aa',
+       i686: '6683362cfa816ea97abdfb9dabdb59ec5413104c59bb8fbf3cf8e3cc164bd526',
+     x86_64: 'e040def45cc23201fcbd38e0ffd54be81d84925f00a2f83a10e6e5b8a260b1f0'
   })
 
   depends_on 'ccache' => :build

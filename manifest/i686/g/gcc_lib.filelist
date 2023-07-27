@@ -34,8 +34,8 @@
 /usr/local/lib/libquadmath.so.0.0.0
 /usr/local/lib/libstdc++.so
 /usr/local/lib/libstdc++.so.6
-/usr/local/lib/libstdc++.so.6.0.31
+/usr/local/lib/libstdc++.so.6.0.32
 /usr/local/lib/libubsan.so
 /usr/local/lib/libubsan.so.1
 /usr/local/lib/libubsan.so.1.0.0
-/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.31-gdb.py
+/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.32-gdb.py
