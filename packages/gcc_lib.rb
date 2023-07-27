@@ -4,24 +4,25 @@ require_relative 'gcc_build'
 class Gcc_lib < Package
   description 'GCC shared libs except libgccjit'
   homepage Gcc_build.homepage
-  version '13.1.0-1' # Do not use @_ver here, it will break the installer.
+  version '13.2.0' # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
-  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/, '') != Gcc_build.version.to_s
+  puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
+                                                                                                   '') != Gcc_build.version.to_s
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.1.0-1_armv7l/gcc_lib-13.1.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.1.0-1_armv7l/gcc_lib-13.1.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.1.0-1_i686/gcc_lib-13.1.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.1.0-1_x86_64/gcc_lib-13.1.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.2.0_armv7l/gcc_lib-13.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.2.0_armv7l/gcc_lib-13.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.2.0_i686/gcc_lib-13.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_lib/13.2.0_x86_64/gcc_lib-13.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3c5c72d2955468c9aa44014ad3a880a3c988f5e9da174225634965fdae1a26c5',
-     armv7l: '3c5c72d2955468c9aa44014ad3a880a3c988f5e9da174225634965fdae1a26c5',
-       i686: '395ef2e6e37c5d3e2745d83f9c7aadc90cb11387a0099578ab98f6265d90c791',
-     x86_64: '30fc5cd851e8785798dc5ddaf1f0fdd905e0f1abd0d3dd581cf0b12770c591e6'
+    aarch64: '04c6f1af5d8b005dcea7d0050f7ea52d8c4a37def289287e590000056d707e67',
+     armv7l: '04c6f1af5d8b005dcea7d0050f7ea52d8c4a37def289287e590000056d707e67',
+       i686: 'b0aeb79cfc7df8b46b41f36902350ac94e9a7e0f04678f85c0fbb01a24f86235',
+     x86_64: '386695ced2bc2aeb93fc96b2176f3638a3ac0271667bdd9b058ff14bf0e97256'
   })
 
   depends_on 'gcc_build' => :build

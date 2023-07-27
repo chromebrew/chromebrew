@@ -39,7 +39,7 @@
 /usr/local/lib64/libquadmath.so.0.0.0
 /usr/local/lib64/libstdc++.so
 /usr/local/lib64/libstdc++.so.6
-/usr/local/lib64/libstdc++.so.6.0.31
+/usr/local/lib64/libstdc++.so.6.0.32
 /usr/local/lib64/libtsan.so
 /usr/local/lib64/libtsan.so.2
 /usr/local/lib64/libtsan.so.2.0.0
@@ -48,4 +48,4 @@
 /usr/local/lib64/libubsan.so.1.0.0
 /usr/local/lib/bfd-plugins/liblto_plugin.so
 /usr/local/libexec/gcc/x86_64-cros-linux-gnu/13/liblto_plugin.so
-/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.31-gdb.py
+/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.32-gdb.py

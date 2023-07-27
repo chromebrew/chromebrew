@@ -3,23 +3,23 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '13.1.0' # Do not use @_ver here, it will break the installer.
+  version '13.2.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'releases/gcc-13.1.0'
+  git_hashtag 'releases/gcc-13.2.0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_armv7l/gcc-13.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_armv7l/gcc-13.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_i686/gcc-13.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc/13.1.0_x86_64/gcc-13.1.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_build/13.2.0_armv7l/gcc_build-13.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_build/13.2.0_armv7l/gcc_build-13.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_build/13.2.0_i686/gcc_build-13.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc_build/13.2.0_x86_64/gcc_build-13.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '577d57952a1c9832ace16823e499a1ee58e8ced7aa745ea74a1cab54bb78d6ce',
-     armv7l: '577d57952a1c9832ace16823e499a1ee58e8ced7aa745ea74a1cab54bb78d6ce',
-       i686: '0393d1ce628d918720a19dfb9c7e587a4ace9f77cdd4ba44a3e7482b0aba5a43',
-     x86_64: '471cdf9a91992c2ece9fed7fecd234779ebe1a6b4b87774da9af6a210da844ba'
+    aarch64: '13e3e7591636c84bf37875cddb67c012e7b4e8c39e26d069a2cf513718087bd5',
+     armv7l: '13e3e7591636c84bf37875cddb67c012e7b4e8c39e26d069a2cf513718087bd5',
+       i686: '1fb82c8c2466f405ad7839b3fc2bbfb43eaed8f0db97a6b2bb6b822a17b60759',
+     x86_64: '005bb11a10baef3970641c1ce243deb0d2ece1212a854cf592c1f7ab5428660f'
   })
 
   depends_on 'binutils' => :build

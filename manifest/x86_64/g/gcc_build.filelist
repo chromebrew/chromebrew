@@ -1583,7 +1583,7 @@
 /usr/local/lib64/libstdc++.la
 /usr/local/lib64/libstdc++.so
 /usr/local/lib64/libstdc++.so.6
-/usr/local/lib64/libstdc++.so.6.0.31
+/usr/local/lib64/libstdc++.so.6.0.32
 /usr/local/lib64/libsupc++.a
 /usr/local/lib64/libsupc++.la
 /usr/local/lib64/libtsan.a
@@ -1625,7 +1625,7 @@
 /usr/local/share/gcc-13/python/libstdcxx/v6/__pycache__/xmethods.cpython-311.opt-1.pyc
 /usr/local/share/gcc-13/python/libstdcxx/v6/__pycache__/xmethods.cpython-311.pyc
 /usr/local/share/gcc-13/python/libstdcxx/v6/xmethods.py
-/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.31-gdb.py
+/usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.32-gdb.py
 /usr/local/share/info/cpp.info.zst
 /usr/local/share/info/cppinternals.info.zst
 /usr/local/share/info/gcc.info.zst
@@ -2199,7 +2199,6 @@
 /usr/local/share/man/man3/std::filesystem.3.zst
 /usr/local/share/man/man3/std::filesystem::directory_entry.3.zst
 /usr/local/share/man/man3/std::filesystem::directory_iterator.3.zst
-/usr/local/share/man/man3/std::filesystem::__directory_iterator_proxy.3.zst
 /usr/local/share/man/man3/std::filesystem::file_status.3.zst
 /usr/local/share/man/man3/std::filesystem::filesystem_error.3.zst
 /usr/local/share/man/man3/std::filesystem::path.3.zst
@@ -2429,6 +2428,8 @@
 /usr/local/share/man/man3/std::placeholders.3.zst
 /usr/local/share/man/man3/std::plus.3.zst
 /usr/local/share/man/man3/std::pmr_memory_resource.3.zst
+/usr/local/share/man/man3/std::pmr_monotonic_buffer_resource.3.zst
+/usr/local/share/man/man3/std::pmr_polymorphic_allocator.3.zst
 /usr/local/share/man/man3/std::pmr_pool_options.3.zst
 /usr/local/share/man/man3/std::pmr_synchronized_pool_resource.3.zst
 /usr/local/share/man/man3/std::pmr_unsynchronized_pool_resource.3.zst
@@ -2439,7 +2440,6 @@
 /usr/local/share/man/man3/std::poisson_distribution_param_type.3.zst
 /usr/local/share/man/man3/std::predicate.3.zst
 /usr/local/share/man/man3/std::priority_queue.3.zst
-/usr/local/share/man/man3/std::projected.3.zst
 /usr/local/share/man/man3/std::promise.3.zst
 /usr/local/share/man/man3/std::queue.3.zst
 /usr/local/share/man/man3/std::random_access_iterator_tag.3.zst
