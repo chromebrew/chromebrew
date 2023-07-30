@@ -3,11 +3,11 @@ require 'package'
 class Telegram < Package
   description "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free."
   homepage 'https://telegram.org/'
-  version '4.8.5'
+  version '4.8.10'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
-  source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.8.5.tar.xz'
-  source_sha256 'e4f13c564fbb643cdf81a9da9d88f31a16e99a44f37d5df68e63a26b42fa4d27'
+  source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.8.10.tar.xz'
+  source_sha256 'd96b535622aa9dc560d68c59320577283f566b78ffe038388678f7ebe30019a8'
 
   depends_on 'mesa'
 
