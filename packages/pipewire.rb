@@ -8,7 +8,7 @@ class Pipewire < Package
           elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
             '0.3.60'
           else
-            '0.3.75'
+            '0.3.76'
           end
   compatibility 'all'
   license 'LGPL-2.1+'
@@ -35,14 +35,14 @@ class Pipewire < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.75_armv7l/pipewire-0.3.75-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.75_armv7l/pipewire-0.3.75-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.75_x86_64/pipewire-0.3.75-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.76_armv7l/pipewire-0.3.76-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.76_armv7l/pipewire-0.3.76-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.76_x86_64/pipewire-0.3.76-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: 'ebf7e1c4c273d77e1092e98509670dcbe0342a780aa1de948ddc5fb7340f8ca0',
-       armv7l: 'ebf7e1c4c273d77e1092e98509670dcbe0342a780aa1de948ddc5fb7340f8ca0',
-       x86_64: 'f11a32687a97676865c345360faab766eff2c7975ee14fd8969777bd58b073f5'
+      aarch64: '6f1af059561ddce4a0cab55b2385c3ccd3e2b09ee7a09393ee04482d88615a56',
+       armv7l: '6f1af059561ddce4a0cab55b2385c3ccd3e2b09ee7a09393ee04482d88615a56',
+       x86_64: 'ca9994103d3c791c72d5776df1b285f15d4cb256dfaef6da943b918c6b113211'
     })
   end
 
