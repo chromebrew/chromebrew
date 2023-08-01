@@ -5,24 +5,24 @@ require 'package'
 class Binutils < Package
   description 'The GNU Binutils are a collection of binary tools.'
   homepage 'https://www.gnu.org/software/binutils/'
-  @_ver = '2.40'
-  version "#{@_ver}-1"
+  @_ver = '2.41'
+  version @_ver
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.bz2"
-  source_sha256 'f8298eb153a4b37d112e945aa5cb2850040bcf26a3ea65b5a715c83afe05e48a'
+  source_sha256 'a4c4bec052f7b8370024e60389e194377f3f48b56618418ea51067f67aaab30b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_armv7l/binutils-2.40-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_armv7l/binutils-2.40-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_i686/binutils-2.40-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.40-1_x86_64/binutils-2.40-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_armv7l/binutils-2.41-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_armv7l/binutils-2.41-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_i686/binutils-2.41-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_x86_64/binutils-2.41-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e5cfc098a644342ce15eef1d2bc42f19db6bcb34e585dac96111c0e9423702f2',
-     armv7l: 'e5cfc098a644342ce15eef1d2bc42f19db6bcb34e585dac96111c0e9423702f2',
-       i686: 'c13f1e2cf9e9aa0237293e65fa1c20c0b512a60ea20fc038ba233293c07e113e',
-     x86_64: '7871d7b2e70c54cbf5a4e351aa31bd0394fd1b5de864525cf360fd1512f925d6'
+    aarch64: '8c22ec06120ffc67645c99dcfab36b1e1070b7ab10445dc8f738ee739abe4416',
+     armv7l: '8c22ec06120ffc67645c99dcfab36b1e1070b7ab10445dc8f738ee739abe4416',
+       i686: '606a990b5664dcb77037e2461f260621d8b9e79cdc7de4061d640bc280058f1e',
+     x86_64: '4518d1cd954c98f6f30f98518fde9bf0e32fc0f31972a24fd5f0781973ef5adb'
   })
 
   depends_on 'elfutils' # R
@@ -48,7 +48,7 @@ class Binutils < Package
   def self.build
     # gprofng is broken on i686 in binutils 2.40
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30006
-    @gprofng = ARCH == 'i686' ? '--disable-gprofng' : ''
+    @gprofng = ARCH == 'i686' || ARCH == 'x86_64' ? '--disable-gprofng' : ''
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "../configure #{CREW_OPTIONS} \
