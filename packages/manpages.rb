@@ -3,23 +3,23 @@ require 'package'
 class Manpages < Package
   description 'The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.'
   homepage 'https://www.kernel.org/doc/man-pages/'
-  version '6.04'
+  version '6.05'
   license 'man-pages, GPL-2+ and BSD'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-6.04.tar.xz'
-  source_sha256 'c2c0b9329955df81af45ee80ebc84c47291f95df5157db1fab988199f9371af1'
+  source_url 'https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-6.05.tar.xz'
+  source_sha256 '89b1445cfe2e3de8bd139758c78f08b37813cff217b9fb1c8df55fd9407875a6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.04_armv7l/manpages-6.04-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.04_armv7l/manpages-6.04-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.04_i686/manpages-6.04-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.04_x86_64/manpages-6.04-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.05_armv7l/manpages-6.05-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.05_armv7l/manpages-6.05-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.05_i686/manpages-6.05-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/manpages/6.05_x86_64/manpages-6.05-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4f6029a96085062250e4a05f1264d4b9903f8b223d5cb70e11f6f91b5e60e1f0',
-     armv7l: '4f6029a96085062250e4a05f1264d4b9903f8b223d5cb70e11f6f91b5e60e1f0',
-       i686: 'be52c3acdf80f293a248a7c1a32dd8114c7aa877b68aec1b0172933b2e18997a',
-     x86_64: 'f81883ab722914a7747fa19adeb70a9a1e6fa8dc12f19e8aca34c08072a6d103'
+    aarch64: '427a66bccf54aabdbf63ed8a72e5a27438465141358ca1411cef09043c6b416b',
+     armv7l: '427a66bccf54aabdbf63ed8a72e5a27438465141358ca1411cef09043c6b416b',
+       i686: '1d6486354a0b0079bfb8664ad6e87727d277eec1edf7b120e3a958c196353932',
+     x86_64: '09f9200441150d3ad79cb99e506cf837aa0bc87711eb4a4d35a09ca89034ae5c'
   })
 
   depends_on 'mandb'
