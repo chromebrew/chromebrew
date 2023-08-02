@@ -3,23 +3,23 @@ require 'package'
 class Musl_openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.0.9'
+  version '3.0.10'
   license 'openssl'
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{version}.tar.gz"
-  source_sha256 'eb1ab04781474360f77c318ab89d8c5a03abc38e63d65a603cabbf1b00a1dc90'
+  source_sha256 '1761d4f5b13a1028b9b6f3d4b8e17feb0cedc9370f6afe61d7193d2cdce83323'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.9_armv7l/musl_openssl-3.0.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.9_armv7l/musl_openssl-3.0.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.9_i686/musl_openssl-3.0.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.9_x86_64/musl_openssl-3.0.9-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.10_armv7l/musl_openssl-3.0.10-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.10_armv7l/musl_openssl-3.0.10-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.10_i686/musl_openssl-3.0.10-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_openssl/3.0.10_x86_64/musl_openssl-3.0.10-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4b195b3d08718ade5b7cd8f0eb14a3aefa8057de600f54ff30e3edf0c5a85a35',
-     armv7l: '4b195b3d08718ade5b7cd8f0eb14a3aefa8057de600f54ff30e3edf0c5a85a35',
-       i686: 'a8c5e26c84647b6a4979621d40c61e52b4091c4cc49934a4dc8541de89040cd2',
-     x86_64: 'd6384e4fcb7c60351686c3543459732f35f5c8e7a85feffdaeb939c1f4724e7e'
+    aarch64: '4585df04bfd1347e87bf3f8cb7da9ab791817e054ea50369ccb2fc1bdab503ae',
+     armv7l: '4585df04bfd1347e87bf3f8cb7da9ab791817e054ea50369ccb2fc1bdab503ae',
+       i686: '29a5b6de94a8c1f16492b36f67695ce08f1569b588ec0e3770d621b300d0db50',
+     x86_64: '5ff522b2a1a1b046bbdc30d2e11803b648e25716d68de6e126d3a86c4604f206'
   })
 
   depends_on 'musl_native_toolchain' => :build
