@@ -3,23 +3,23 @@ require 'package'
 class Openssl111 < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '1.1.1u' # Do not use @_ver here, it will break the installer.
+  version '1.1.1v' # Do not use @_ver here, it will break the installer.
   license 'openssl'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-1.1.1u.tar.gz'
-  source_sha256 'e2f8d84b523eecd06c7be7626830370300fbcc15386bf5142d72758f6963ebc6'
+  source_url 'https://www.openssl.org/source/openssl-1.1.1v.tar.gz'
+  source_sha256 'd6697e2871e77238460402e9362d47d18382b15ef9f246aba6c7bd780d38a6b0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1u_armv7l/openssl111-1.1.1u-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1u_armv7l/openssl111-1.1.1u-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1u_i686/openssl111-1.1.1u-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1u_x86_64/openssl111-1.1.1u-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_armv7l/openssl111-1.1.1v-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_armv7l/openssl111-1.1.1v-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_i686/openssl111-1.1.1v-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_x86_64/openssl111-1.1.1v-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '99b920309fdd7e5b9512bdbe8a0f75ee8196894a8b67554545de399d6a3b9303',
-     armv7l: '99b920309fdd7e5b9512bdbe8a0f75ee8196894a8b67554545de399d6a3b9303',
-       i686: '5d266d546f82e3040b71492b8c670d0fc12caac9e192afd761b04179a8bda93f',
-     x86_64: 'fcd6b8ecab009fa65c2e24adf1188b341f01dc1a8883035d54ddb63307c96f67'
+    aarch64: '8183a4f518e52954fce37a0947cc5095f061fe36e596425eeff5b5fcb8c18ac0',
+     armv7l: '8183a4f518e52954fce37a0947cc5095f061fe36e596425eeff5b5fcb8c18ac0',
+       i686: '04f084e0a943a09a1fbbb18dac0734d935dabf9dcbe50c9735795926e912102c',
+     x86_64: '006e3d0d36e6193eb1221aa88ca5b34c5cb7ca75c38e982f85d9756e6fc26a0e'
   })
 
   depends_on 'glibc' # R
