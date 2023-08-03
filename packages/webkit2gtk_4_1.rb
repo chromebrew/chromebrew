@@ -3,21 +3,21 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.40.1'
+  version '2.40.5'
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz'
-  source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz'
+  source_sha256 '7de051a263668621d91a61a5eb1c3771d1a7cec900043d4afef06c326c16037f'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.1_x86_64/webkit2gtk_4_1-2.40.1-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.5_x86_64/webkit2gtk_4_1-2.40.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '89020c648f7d9e4927999ac9528f2e0d9c34a45c4c206284a380bae1254971d1'
+    x86_64: '841abf3f9b483a04b3e388897ab4407fe38ad8af882a33fec3ccb07cb0b40e62'
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
+  depends_on 'cairo' # R
   # depends_on 'ccache' => :build
   depends_on 'dav1d' => :build
   depends_on 'enchant' # R
@@ -162,7 +162,7 @@ class Webkit2gtk_4_1 < Package
           -DUSER_AGENT_BRANDING='Chromebrew'"
     end
     @counter = 1
-    @counter_max = 5
+    @counter_max = 20
     loop do
       break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 

@@ -5,7 +5,7 @@ class Vte < Meson
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
   version '0.72.2'
   license 'LGPL-2+ and GPL-3+'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
   git_hashtag version
 
@@ -43,7 +43,11 @@ class Vte < Meson
   gnome
   no_lto
 
+<<<<<<< HEAD
   meson_options '-D_systemd=false \
+=======
+  meson_options << '-D_systemd=false \
+>>>>>>> f67807fd7 (add more deps)
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
