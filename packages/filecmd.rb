@@ -2,32 +2,32 @@ require 'package'
 
 class Filecmd < Package
   description 'file and libmagic determine file type'
-  homepage 'http://ftp.astron.com/'
-  version '5.44'
+  homepage 'https://www.darwinsys.com/file/'
+  version '5.45-8dc5513'
   license 'BSD-2 and GPL-3+' # Chromebrew's filefix is GPL-3+, file itself is BSD-2
   compatibility 'all'
-  source_url "http://ftp.astron.com/pub/file/file-#{version}.tar.gz"
-  source_sha256 '3751c7fba8dbc831cb8d7cc8aff21035459b8ce5155ef8b0880a27d028475f3b'
+  source_url 'https://github.com/file/file.git'
+  git_hashtag '8dc5513908381a14981b16a85d59ba054bf4df52'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.44_armv7l/filecmd-5.44-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.44_armv7l/filecmd-5.44-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.44_i686/filecmd-5.44-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.44_x86_64/filecmd-5.44-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_armv7l/filecmd-5.45-8dc5513-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_armv7l/filecmd-5.45-8dc5513-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_i686/filecmd-5.45-8dc5513-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_x86_64/filecmd-5.45-8dc5513-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f443367c293f3f88ac2f4c69bd9f9a6422b9554a191bf57596ef5e1399209ffd',
-     armv7l: 'f443367c293f3f88ac2f4c69bd9f9a6422b9554a191bf57596ef5e1399209ffd',
-       i686: 'e1d75ecf5436d9985e13e8f4be0231accea5cdfbede4e92659814455823ba64e',
-     x86_64: '20f661a859cfbc87b0847ed3b98a46d8bc618c05df8e0c08ff4468d8fc403753'
+    aarch64: '50f314a3a9e88f216c06d9aa5b89c77132539473a1b3bb063704662aa0e9b16c',
+     armv7l: '50f314a3a9e88f216c06d9aa5b89c77132539473a1b3bb063704662aa0e9b16c',
+       i686: '7ee65126f670cff57931f6def9546cf77b0e476a1f5c43eaa22236abf85d0a37',
+     x86_64: '934e22a6546df52a0fba66589029a87d1e4fabefb5a32fd4326615670deb8631'
   })
 
   depends_on 'bz2' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lzlib' # R Fixes checking lzlib.h usability... no
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
-  depends_on 'gcc_lib' # R
   depends_on 'zstd' # R
 
   def self.prebuild
@@ -37,12 +37,12 @@ class Filecmd < Package
     # It's better to run filefix if unsure.
     # See https://savannah.gnu.org/support/?func=detailitem&item_id=110550 for more information.
 
-    @filefix = <<~EOF
+    @filefix = <<~FILEFIX_EOF
       #!/usr/bin/env bash
       while IFS= read -r -d '' f; do
         sed -i 's,/usr/bin/file,#{CREW_PREFIX}/bin/file,g' "${f}"
       done <  <(find . -name configure -print0)
-    EOF
+    FILEFIX_EOF
     File.write('filefix', @filefix)
   end
 
@@ -52,6 +52,7 @@ class Filecmd < Package
   end
 
   def self.build
+    system 'autoreconf -fiv' unless File.executable? './configure'
     @filecmd_config_opts = "--enable-static \
                             --enable-shared \
                             --enable-zlib \
