@@ -42,6 +42,7 @@ class Remmina < Package
   depends_on 'vte' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R
+  depends_on 'xprop' # L
   depends_on 'xdg_utils' => :build
 
   def self.build
