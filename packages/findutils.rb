@@ -25,5 +25,5 @@ class Findutils < Autotools
   depends_on 'python3'
 
   configure_options '--without-selinux'
-  check? true
+  run_tests
 end
