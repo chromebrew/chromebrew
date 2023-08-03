@@ -71,7 +71,7 @@ class Inkscape < CMake
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
 
-  cmake_options << '-DWITH_IMAGE_MAGICK=OFF \
+  cmake_options '-DWITH_IMAGE_MAGICK=OFF \
             -DWITH_INTERNAL_2GEOM=ON \
             -DWITH_MANPAGE_COMPRESSION=OFF \
             -DWITH_X11=ON'
