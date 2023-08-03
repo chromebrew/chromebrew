@@ -43,11 +43,7 @@ class Vte < Meson
   gnome
   no_lto
 
-<<<<<<< HEAD
   meson_options '-D_systemd=false \
-=======
-  meson_options << '-D_systemd=false \
->>>>>>> f67807fd7 (add more deps)
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
