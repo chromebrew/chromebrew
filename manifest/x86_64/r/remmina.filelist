@@ -45,6 +45,8 @@
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-multi-monitor-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-down-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pan-up-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-password-conceal-symbolic.svg
+/usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-password-reveal-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pin-down-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-pin-up-symbolic.svg
 /usr/local/share/icons/hicolor/scalable/actions/org.remmina.Remmina-preferences-system-symbolic.svg
@@ -130,12 +132,13 @@
 /usr/local/share/locale/uk/LC_MESSAGES/remmina.mo
 /usr/local/share/locale/uz@cyrillic/LC_MESSAGES/remmina.mo
 /usr/local/share/locale/uz/LC_MESSAGES/remmina.mo
+/usr/local/share/locale/vi/LC_MESSAGES/remmina.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/remmina.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/remmina.mo
-/usr/local/share/man/man1/remmina.1.gz
-/usr/local/share/man/man1/remmina-file-wrapper.1.gz
+/usr/local/share/man/man1/remmina.1.zst
+/usr/local/share/man/man1/remmina-file-wrapper.1.zst
 /usr/local/share/metainfo/org.remmina.Remmina.appdata.xml
-/usr/local/share/mime/packages/remmina-mime.xml
+/usr/local/share/mime/packages/org.remmina.Remmina-mime.xml
 /usr/local/share/remmina/external_tools/functions.sh
 /usr/local/share/remmina/external_tools/launcher.sh
 /usr/local/share/remmina/external_tools/remmina_filezilla_sftp_pki.sh

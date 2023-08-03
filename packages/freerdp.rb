@@ -3,21 +3,17 @@ require 'package'
 class Freerdp < Package
   description 'FreeRDP is a free implementation of the Remote Desktop Protocol.'
   homepage 'https://www.freerdp.com/'
-  version '3.0.0-a78182c'
+  version '2.10.0-2a72946'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
-  git_hashtag 'a78182c42523489636ae5f2723126a69cccb93de'
+  git_hashtag '2a72946d18d813daffa574b26c686c3df479a447'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/3.0.0-a78182c_armv7l/freerdp-3.0.0-a78182c-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/3.0.0-a78182c_armv7l/freerdp-3.0.0-a78182c-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/3.0.0-a78182c_x86_64/freerdp-3.0.0-a78182c-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.10.0-2a72946_x86_64/freerdp-2.10.0-2a72946-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4e0a0b39ed540c8a61b58ba9d58aecfc0fb78472c6f865be09d8690604a48b94',
-     armv7l: '4e0a0b39ed540c8a61b58ba9d58aecfc0fb78472c6f865be09d8690604a48b94',
-     x86_64: '713d335270842739c1dfcda767a8eeb821dc49dffc7c9b917e1757dd9132754a'
+    x86_64: '4e61c5d31c9a17b97b0df22310c35bf2c28faba67556c2f94cd53519aebd9e5f'
   })
 
   depends_on 'alsa_lib' # R
@@ -68,25 +64,26 @@ class Freerdp < Package
   def self.build
     system "env GSS_ROOT_FLAVOUR=MIT \
         mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+        -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DDOCBOOKXSL_DIR=#{CREW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.79.2 \
-        -DWITH_GSM=ON \
+        -DWITH_CAIRO=ON \
+        -DWITH_CHANNELS=ON \
+        -DWITH_CLIENT=ON \
+        -DWITH_CLIENT_SDL=ON \
+        -DWITH_CUPS=ON \
+        -DWITH_DSP_FFMPEG=yes \
         -DWITH_FAAC=ON \
         -DWITH_FAAD2=ON \
-        -DWITH_SWSCALE=ON \
-        -DWITH_CAIRO=ON \
-        -DWITH_LIBSYSTEMD=OFF \
-        -DWITH_DSP_FFMPEG=yes \
-        -DWITH_CHANNELS=ON \
-        -DWITH_SERVER=ON \
-        -DWITH_CLIENT=ON \
+        -DWITH_GSM=ON \
         -DWITH_GSSAPI=ON \
-        -DWITH_PULSE=ON \
-        -DWITH_CUPS=ON \
-        -DWITH_SOXR=ON \
-        -DWITH_LAME=ON \
         -DWITH_JPEG=ON \
-        -DWITH_CLIENT_SDL=ON \
+        -DWITH_LAME=ON \
+        -DWITH_LIBSYSTEMD=OFF \
         -DWITH_OPENH264=ON \
+        -DWITH_PULSE=ON \
+        -DWITH_SERVER=ON \
+        -DWITH_SOXR=ON \
+        -DWITH_SWSCALE=ON \
         -DWITH_WAYLAND=ON \
         -Wno-dev \
         -G Ninja"
