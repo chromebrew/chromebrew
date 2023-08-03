@@ -3,21 +3,21 @@ require 'package'
 class Gemacs < Package
   description 'An extensible, customizable, free/libre text editor - and more.'
   homepage 'https://www.gnu.org/software/emacs/'
-  version '28.2-1'
+  version '29.1'
   license 'GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://ftpmirror.gnu.org/emacs/emacs-28.2.tar.xz'
-  source_sha256 'ee21182233ef3232dc97b486af2d86e14042dbb65bbc535df562c3a858232488'
+  source_url 'https://ftpmirror.gnu.org/emacs/emacs-29.1.tar.xz'
+  source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.2-1_armv7l/gemacs-28.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.2-1_armv7l/gemacs-28.2-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/28.2-1_x86_64/gemacs-28.2-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/29.1_armv7l/gemacs-29.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/29.1_armv7l/gemacs-29.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/29.1_x86_64/gemacs-29.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f966730acbfa66004237d915ae05c0bf94a3d595521e6d78f2b9c02393e6d8ef',
-     armv7l: 'f966730acbfa66004237d915ae05c0bf94a3d595521e6d78f2b9c02393e6d8ef',
-     x86_64: 'c3ea71b0e801bde5daddcb6880b59b0a776fc70b207fc5783631c82ad6e4f5ae'
+    aarch64: '85293f6a1e96f1b3aca3b613f3e139b335d9758491bb0364efed84c088cff0d4',
+     armv7l: '85293f6a1e96f1b3aca3b613f3e139b335d9758491bb0364efed84c088cff0d4',
+     x86_64: '12d16157477a3726a16c349e420e05f70b93bb6f5093faeee6c22f0331a883c9'
   })
 
   depends_on 'acl' # R
@@ -25,7 +25,9 @@ class Gemacs < Package
   depends_on 'at_spi2_core' # R
   depends_on 'cairo'
   depends_on 'dbus' # R
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
+  depends_on 'gcc_dev' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'giflib' # R
@@ -46,20 +48,24 @@ class Gemacs < Package
   depends_on 'libsm' # R
   depends_on 'libsoup2' # R
   depends_on 'libtiff' # R
+  depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
   depends_on 'libxcomposite' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
   depends_on 'libxinerama' # R
+  depends_on 'libxi' # R
   depends_on 'libxml2' # R
   depends_on 'libxpm' # R
   depends_on 'libxrandr' # R
   depends_on 'libxrender' # R
   depends_on 'ncurses' # R
   depends_on 'pango' # R
+  depends_on 'sqlite' # R
   depends_on 'texinfo'
   depends_on 'webkit2gtk_4'
+  depends_on 'xcb_util' # R
   depends_on 'zlibpkg' # R
 
   def self.build
