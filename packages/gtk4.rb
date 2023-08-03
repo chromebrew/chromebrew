@@ -3,21 +3,21 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.10.4'
+  version '4.11.4'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.4_armv7l/gtk4-4.10.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.4_armv7l/gtk4-4.10.4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.10.4_x86_64/gtk4-4.10.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.11.4_armv7l/gtk4-4.11.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.11.4_armv7l/gtk4-4.11.4-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk4/4.11.4_x86_64/gtk4-4.11.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6cce02639e276e90d691968194a672d96546387cea423b6bb4e936af9edd3ed6',
-     armv7l: '6cce02639e276e90d691968194a672d96546387cea423b6bb4e936af9edd3ed6',
-     x86_64: '430e515ecaf3aec786a2062acfaa1cd451a1fd6a3d2e764816df1d9a709d2391'
+    aarch64: '6916b897d6ee04dc402edc81d2128ed7e6ac8634b4c82bc31c935410b12a1d01',
+     armv7l: '6916b897d6ee04dc402edc81d2128ed7e6ac8634b4c82bc31c935410b12a1d01',
+     x86_64: '09ff3f57d25ffb0689df850da2afd838993f72cbed191f502bdd1fa6f6601f31'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
