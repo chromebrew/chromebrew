@@ -6,10 +6,6 @@ class Autotools < Package
     return (@configure_options = options if options)
   end
 
-  def self.check?(bool = true)
-    return (@check = bool)
-  end
-
   def self.build
     puts "Additional configure_options being used: #{@configure_options.nil? || @configure_options.empty? ? '<no configure_options>' : @configure_options}".orange
     # Run autoreconf if necessary
@@ -37,8 +33,9 @@ class Autotools < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 
-  if @check
-    def self.check
+  def self.check
+    if run_tests
+      puts 'Testing with make check.'.orange
       system 'make', 'check'
     end
   end
