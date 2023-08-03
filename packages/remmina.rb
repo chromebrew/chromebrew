@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Remmina < Package
+class Remmina < CMake
   description 'The GTK Remmina Remote Desktop Client'
   homepage 'https://remmina.org/'
   version '1.4.31'
@@ -13,7 +13,7 @@ class Remmina < Package
     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_x86_64/remmina-1.4.31-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '7d8d2fc596ce07b395c1436507814632aee72692cfb54592a9a4f88fb24ab8a4'
+    x86_64: 'b23f93b472e5e8dbaa021bb920bd63fc5df9c0d5e0282b2b1b0b6d1fd4d3a467'
   })
 
   depends_on 'avahi' # L
@@ -42,19 +42,9 @@ class Remmina < Package
   depends_on 'vte' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4_1' # R
-  depends_on 'xprop' # L
   depends_on 'xdg_utils' => :build
+  depends_on 'xprop' # L
 
-  def self.build
-    system "cmake -B builddir \
-      -G Ninja \
-      #{CREW_CMAKE_OPTIONS.sub("C_FLAGS='",
-                               "C_FLAGS='-Wno-unused-function ")} \
-      -DWITH_TELEPATHY=OFF"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options << '-DCMAKE_SKIP_INSTALL_RPATH=ON \
+      -DWITH_TELEPATHY=OFF'
 end
