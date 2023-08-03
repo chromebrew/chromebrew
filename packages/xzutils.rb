@@ -25,7 +25,6 @@ class Xzutils < Autotools
   depends_on 'autoconf_archive' => :build
   depends_on 'glibc' # R
 
+  configure_options '--enable-shared'
   run_tests
-
-  configure_options << '--enable-shared'
 end
