@@ -3,21 +3,21 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.24.37'
+  version '3.24.38'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_armv7l/gtk3-3.24.37-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.37_x86_64/gtk3-3.24.37-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.38_armv7l/gtk3-3.24.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.38_armv7l/gtk3-3.24.38-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.38_x86_64/gtk3-3.24.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3dbf8f2b97f1ea7e0b58bfd07a95be8d8288674a92e084f26688b9e8233d96bc',
-     armv7l: '3dbf8f2b97f1ea7e0b58bfd07a95be8d8288674a92e084f26688b9e8233d96bc',
-     x86_64: 'ef6decef4d5d47c29a99777af6fc20ac9f9fcc3490a0974e512569cd3f75dc9c'
+    aarch64: '61494cb9096068d54c0157e420b432a89a912019bd2085544fe69118c83a4644',
+     armv7l: '61494cb9096068d54c0157e420b432a89a912019bd2085544fe69118c83a4644',
+     x86_64: 'f100426a4fbb343693956d72ce7aa759306287036d5db0c92f23cf9978dbf9a7'
   })
 
   # L = Logical Dependency, R = Runtime Dependency

@@ -3,23 +3,21 @@ require 'package'
 class Librsvg < Package
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.56.0-59d5d83'
+  version '2.56.3'
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
-  git_hashtag '59d5d832be20c37f301ccf4d0de2e0004d49bd86'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_armv7l/librsvg-2.56.0-59d5d83-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_armv7l/librsvg-2.56.0-59d5d83-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_i686/librsvg-2.56.0-59d5d83-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.0-59d5d83_x86_64/librsvg-2.56.0-59d5d83-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.3_armv7l/librsvg-2.56.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.3_armv7l/librsvg-2.56.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.3_x86_64/librsvg-2.56.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fa8525eccd9577796f53fdb62118a004abdbb75d69bbf50c98abf37ab6598022',
-     armv7l: 'fa8525eccd9577796f53fdb62118a004abdbb75d69bbf50c98abf37ab6598022',
-       i686: '147942d68517190deaedfe3a69b6ff6e70c5f4aa7725d0aa6aa704d19dc98b23',
-     x86_64: '7cf6e73193d51fe89715bcaffd7fa30eace1eda3ee94b7bff06f819035376bc5'
+    aarch64: '3f70e2fc4d8038a7de82af1123a9d3cf4e94958a438ad52c6817847322fc08a6',
+     armv7l: '3f70e2fc4d8038a7de82af1123a9d3cf4e94958a438ad52c6817847322fc08a6',
+     x86_64: '85f8aa0eb830228b1b1ea528280b72ace0c36c286487ec5897716a65db7d17c8'
   })
 
   depends_on 'cairo' # R
