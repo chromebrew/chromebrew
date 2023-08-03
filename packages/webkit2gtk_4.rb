@@ -3,17 +3,21 @@ require 'package'
 class Webkit2gtk_4 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.40.1'
+  version '2.40.5'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz'
-  source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz'
+  source_sha256 '7de051a263668621d91a61a5eb1c3771d1a7cec900043d4afef06c326c16037f'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.40.1_x86_64/webkit2gtk_4-2.40.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.40.5_armv7l/webkit2gtk_4-2.40.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.40.5_armv7l/webkit2gtk_4-2.40.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4/2.40.5_x86_64/webkit2gtk_4-2.40.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '40a29011b49180f39a1b5cc759791ef73e936054d99f05c8fed7d028a5d32813'
+    aarch64: '70bfc0c10ffc3f14017219eb948eb2f03d9d81590444560992014c76cfa19ec7',
+     armv7l: '70bfc0c10ffc3f14017219eb948eb2f03d9d81590444560992014c76cfa19ec7',
+     x86_64: '551e913aa035ed8c5ebfbe6226c935cce2fcb22c992597571fc45b0c58c7825d'
   })
 
   depends_on 'at_spi2_core' # R
