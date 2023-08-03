@@ -1,26 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Vte < Package
+class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version '0.72.1'
+  version '0.72.2'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.1_armv7l/vte-0.72.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.1_armv7l/vte-0.72.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.1_x86_64/vte-0.72.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.2_armv7l/vte-0.72.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.2_armv7l/vte-0.72.2-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vte/0.72.2_x86_64/vte-0.72.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4ed41268c17e5792c69d623fb594af517aa6a390f4098a7d25f832b70900f0d7',
-     armv7l: '4ed41268c17e5792c69d623fb594af517aa6a390f4098a7d25f832b70900f0d7',
-     x86_64: '9e89895bb13ca14cb09b15f079d9f22d17e5b600ea9063fac151f9db6edd1c6b'
+    aarch64: 'e90bfce1c8449ef74c9acf5a3eeb4f365ffa39c008fe398ff3c6b7042dfc3520',
+     armv7l: 'e90bfce1c8449ef74c9acf5a3eeb4f365ffa39c008fe398ff3c6b7042dfc3520',
+     x86_64: '1c86607d53f6a6f1738770c14b06df6e5cc95f43ce9e6d54a00a1f4ec97f3017'
   })
 
   depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -40,24 +41,12 @@ class Vte < Package
   depends_on 'zlibpkg' # R
 
   gnome
+  no_lto
 
-  def self.build
-    system <<~CONFIGURE
-      mold -run meson \
-      #{CREW_MESON_FNO_LTO_OPTIONS.gsub('-fno-lto', '-fno-lto -fno-stack-protector')} \
-      -D_systemd=false \
+  meson_options << '-D_systemd=false \
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
       -Dgir=false \
-      -Dvapi=false \
-      builddir
-    CONFIGURE
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dvapi=false'
 end
