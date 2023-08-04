@@ -244,6 +244,10 @@ class Package
     end
   end
 
+  def self.get_binary_sha256(architecture)
+    return @binary_sha256 && @binary_sha256.key?(architecture) ? @binary_sha256[architecture] : ''
+  end
+
   def self.get_extract_dir
     "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
   end
