@@ -5,7 +5,7 @@ class Vte < Meson
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
   version '0.72.2'
   license 'LGPL-2+ and GPL-3+'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
   git_hashtag version
 
