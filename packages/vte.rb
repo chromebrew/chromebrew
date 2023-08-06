@@ -1,6 +1,6 @@
-require 'buildsystems/meson'
+require 'package'
 
-class Vte < Meson
+class Vte < Package
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
   version '0.72.2'
@@ -43,10 +43,20 @@ class Vte < Meson
   gnome
   no_lto
 
-  meson_options '-D_systemd=false \
+  def self.build
+    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
+      -D_systemd=false \
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
       -Dgir=false \
-      -Dvapi=false'
+      -Dvapi=false
+      builddir"
+    system 'meson configure builddir'
+    system "#{CREW_NINJA} -C builddir"
+  end
+
+  def self.install
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  end
 end
