@@ -5,15 +5,19 @@ class Remmina < CMake
   homepage 'https://remmina.org/'
   version '1.4.31'
   license 'GPL-2+-with-openssl-exception'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.com/Remmina/Remmina/-/archive/v#{version}/Remmina-v#{version}.tar.bz2"
   source_sha256 'cfe9d4a6f2951d35533e5b2235f76640573c91f1be3bd8118637fbf68234500a'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_x86_64/remmina-1.4.31-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_armv7l/remmina-1.4.31-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_armv7l/remmina-1.4.31-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_x86_64/remmina-1.4.31-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'b23f93b472e5e8dbaa021bb920bd63fc5df9c0d5e0282b2b1b0b6d1fd4d3a467'
+    aarch64: '13bab15460150e329feb3fbbd4ac68db26e599871f027d6467674d82d09304f6',
+     armv7l: '13bab15460150e329feb3fbbd4ac68db26e599871f027d6467674d82d09304f6',
+     x86_64: 'b23f93b472e5e8dbaa021bb920bd63fc5df9c0d5e0282b2b1b0b6d1fd4d3a467'
   })
 
   depends_on 'avahi' # L
