@@ -49,6 +49,6 @@ class Remmina < CMake
   depends_on 'xdg_utils' => :build
   depends_on 'xprop' # L
 
-  cmake_options << '-DCMAKE_SKIP_INSTALL_RPATH=ON \
+  cmake_options '-DCMAKE_SKIP_INSTALL_RPATH=ON \
       -DWITH_TELEPATHY=OFF'
 end

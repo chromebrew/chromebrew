@@ -175,7 +175,7 @@ class Webkitgtk_6 < Package
   end
 
   def self.install
-    system "DESTDIR=/usr/local/tmp/crew/dest #{CREW_NINJA} -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_6"
   end
 end
