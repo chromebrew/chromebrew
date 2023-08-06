@@ -3,21 +3,21 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.2.8'
+  version '8.2.9'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.php.net/distributions/php-8.2.8.tar.xz'
-  source_sha256 'cfe1055fbcd486de7d3312da6146949aae577365808790af6018205567609801'
+  source_url 'https://www.php.net/distributions/php-8.2.9.tar.xz'
+  source_sha256 '1e6cb77f997613864ab3127fbfc6a8c7fdaa89a95e8ed6167617b913b4de4765'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.8_armv7l/php82-8.2.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.8_armv7l/php82-8.2.8-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.8_x86_64/php82-8.2.8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.9_armv7l/php82-8.2.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.9_armv7l/php82-8.2.9-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.9_x86_64/php82-8.2.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c1f9664de44e1f13da1accaceb6c3acf184f2e4bc0661fe0fef6414a7a3ce176',
-     armv7l: 'c1f9664de44e1f13da1accaceb6c3acf184f2e4bc0661fe0fef6414a7a3ce176',
-     x86_64: '941545b60e3ecffe31326166c71d3d0c21dca7ab8c086ab4f8490b525f32ad4a'
+    aarch64: '789e1fc0f9159122be556f3e1b4a6c5870127ddcee304cb5660d5a6ab0b33f67',
+     armv7l: '789e1fc0f9159122be556f3e1b4a6c5870127ddcee304cb5660d5a6ab0b33f67',
+     x86_64: 'f0ad0eeba5ac4b359a1cd216a437f9edfe2a59dd235081262db6d93374ab4cb2'
   })
 
   depends_on 'aspell_en'

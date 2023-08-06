@@ -3,23 +3,21 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.0.29'
+  version '8.0.30'
   license 'PHP-3.01'
-  compatibility 'all'
-  source_url 'https://www.php.net/distributions/php-8.0.29.tar.xz'
-  source_sha256 '14db2fbf26c07d0eb2c9fab25dbde7e27726a3e88452cca671f0896bbb683ca9'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://www.php.net/distributions/php-8.0.30.tar.xz'
+  source_sha256 '216ab305737a5d392107112d618a755dc5df42058226f1670e9db90e77d777d9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.29_armv7l/php80-8.0.29-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.29_armv7l/php80-8.0.29-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.29_i686/php80-8.0.29-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.29_x86_64/php80-8.0.29-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.30_armv7l/php80-8.0.30-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.30_armv7l/php80-8.0.30-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.30_x86_64/php80-8.0.30-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fb2d1854b72614fb17326b7852817593abc9d5ffe350455945bab112d9f2db45',
-     armv7l: 'fb2d1854b72614fb17326b7852817593abc9d5ffe350455945bab112d9f2db45',
-       i686: 'ea249087e48bb91170f95b960b0c4c4acfe69349138101a9fb0f8a3f36e26105',
-     x86_64: 'b5f2f71005c2690dcbb5d541029279dbefbe14742a00b0d30d388d7511241d8b'
+    aarch64: 'e74f69975fbf7e8cbe55b6548993909c80aeb49181cb22c3175cba0de5ef5d3d',
+     armv7l: 'e74f69975fbf7e8cbe55b6548993909c80aeb49181cb22c3175cba0de5ef5d3d',
+     x86_64: '5ec87254132c6ef08e1349cd1ea454c90e2862d5cd8ba76fcc441c442ae817a2'
   })
 
   depends_on 'aspell_en'
