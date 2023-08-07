@@ -3,6 +3,7 @@
 /usr/local/bin/gtk4-encode-symbolic-svg
 /usr/local/bin/gtk4-launch
 /usr/local/bin/gtk4-query-settings
+/usr/local/bin/gtk4-rendernode-tool
 /usr/local/bin/gtk4-update-icon-cache
 /usr/local/.config/gtk-4.0/settings.ini
 /usr/local/include/gtk-4.0/gdk/broadway/gdkbroadwaycursor.h
@@ -311,6 +312,7 @@
 /usr/local/include/gtk-4.0/gtk/gtkscrollable.h
 /usr/local/include/gtk-4.0/gtk/gtkscrollbar.h
 /usr/local/include/gtk-4.0/gtk/gtkscrolledwindow.h
+/usr/local/include/gtk-4.0/gtk/gtkscrollinfo.h
 /usr/local/include/gtk-4.0/gtk/gtksearchbar.h
 /usr/local/include/gtk-4.0/gtk/gtksearchentry.h
 /usr/local/include/gtk-4.0/gtk/gtksectionmodel.h
@@ -395,7 +397,7 @@
 /usr/local/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib/libgtk-4.so
 /usr/local/lib/libgtk-4.so.1
-/usr/local/lib/libgtk-4.so.1.1104.0
+/usr/local/lib/libgtk-4.so.1.1200.0
 /usr/local/lib/pkgconfig/gtk4-broadway.pc
 /usr/local/lib/pkgconfig/gtk4.pc
 /usr/local/lib/pkgconfig/gtk4-unix-print.pc
