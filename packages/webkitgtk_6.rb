@@ -5,15 +5,19 @@ class Webkitgtk_6 < Package
   homepage 'https://webkitgtk.org'
   version '2.40.5'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz'
   source_sha256 '7de051a263668621d91a61a5eb1c3771d1a7cec900043d4afef06c326c16037f'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_x86_64/webkitgtk_6-2.40.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_armv7l/webkitgtk_6-2.40.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_armv7l/webkitgtk_6-2.40.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_x86_64/webkitgtk_6-2.40.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: 'f58045c4fa59c6c38d68eea152d4784544bfbf6deee5127bd5d5431f044acd9b'
+    aarch64: 'ddaddfc8c199388ee33a952d3752f69dc3c2584d40e3c960535ee3c9fc875230',
+     armv7l: 'ddaddfc8c199388ee33a952d3752f69dc3c2584d40e3c960535ee3c9fc875230',
+     x86_64: 'f58045c4fa59c6c38d68eea152d4784544bfbf6deee5127bd5d5431f044acd9b'
   })
 
   depends_on 'at_spi2_core' # R
