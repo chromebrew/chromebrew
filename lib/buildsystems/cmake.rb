@@ -1,13 +1,7 @@
 require 'package'
 
 class CMake < Package
-  def self.cmake_options(options = '')
-    return (@cmake_options = options if options)
-  end
-
-  def self.check?(bool = true)
-    return (@check = bool)
-  end
+  property :cmake_options
 
   def self.build
     puts "Additional cmake_options being used: #{@cmake_options.nil? || @cmake_options.empty? ? '<no cmake_options>' : @cmake_options}".orange
@@ -21,9 +15,8 @@ class CMake < Package
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
-  if @check
-    def self.check
-      system "#{CREW_NINJA} -C builddir test"
-    end
+  def self.check
+    puts "Testing with #{CREW_NINJA} test.".orange if @run_tests
+    system "#{CREW_NINJA} -C builddir test" if @run_tests
   end
 end
