@@ -3,17 +3,21 @@ require 'package'
 class Webkitgtk_6 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.40.1'
+  version '2.40.5'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz'
-  source_sha256 '64e526984f8cd2161ef03ae949af99c002ff333d615e6386b460164a3c1b7ef6'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz'
+  source_sha256 '7de051a263668621d91a61a5eb1c3771d1a7cec900043d4afef06c326c16037f'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.1_x86_64/webkitgtk_6-2.40.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_armv7l/webkitgtk_6-2.40.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_armv7l/webkitgtk_6-2.40.5-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.40.5_x86_64/webkitgtk_6-2.40.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '6f1f6309d27d15ba2040a6f0753c9c36e40ae213f9324dcfc4486e613c671bf7'
+    aarch64: 'ddaddfc8c199388ee33a952d3752f69dc3c2584d40e3c960535ee3c9fc875230',
+     armv7l: 'ddaddfc8c199388ee33a952d3752f69dc3c2584d40e3c960535ee3c9fc875230',
+     x86_64: 'f58045c4fa59c6c38d68eea152d4784544bfbf6deee5127bd5d5431f044acd9b'
   })
 
   depends_on 'at_spi2_core' # R
@@ -163,7 +167,7 @@ class Webkitgtk_6 < Package
           -DUSER_AGENT_BRANDING='Chromebrew'"
     end
     @counter = 1
-    @counter_max = 5
+    @counter_max = 20
     loop do
       break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
@@ -175,7 +179,7 @@ class Webkitgtk_6 < Package
   end
 
   def self.install
-    system "DESTDIR=/usr/local/tmp/crew/dest #{CREW_NINJA} -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver", "#{CREW_DEST_PREFIX}/bin/WebKitWebDriver_6"
   end
 end
