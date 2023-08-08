@@ -1,13 +1,7 @@
 require 'package'
 
 class Meson < Package
-  def self.meson_options(options = '')
-    return (@meson_options = options if options)
-  end
-
-  def self.check?(bool = true)
-    return (@check = bool)
-  end
+  property :meson_options
 
   def self.build
     puts "Additional meson_options being used: #{@meson_options.nil? || @meson_options.empty? ? '<no meson_options>' : @meson_options}".orange
@@ -22,9 +16,8 @@ class Meson < Package
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
   end
 
-  if @check
-    def self.check
-      system "#{CREW_NINJA} -C builddir test"
-    end
+  def self.check
+    puts "Testing with #{CREW_NINJA} test.".orange if @run_tests
+    system "#{CREW_NINJA} -C builddir test" if @run_tests
   end
 end

@@ -31,5 +31,4 @@ class Libgit2 < CMake
 
   cmake_options '-DUSE_SSH=ON -DUSE_BUNDLED_ZLIB=OFF'
   # Tests #3 and #8 fail in containers
-  # run_tests
 end

@@ -9,9 +9,9 @@ class Package
            :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag
 
-  boolean_property = %i[conflicts_ok git_clone_deep git_fetchtags gnome is_fake is_musl is_static
-                        no_compile_needed no_compress no_env_options no_fhs no_git_submodules
-                        no_links no_lto no_patchelf no_shrink no_strip no_zstd patchelf run_tests]
+  boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
+                   :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
+                   :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf, :run_tests
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -141,26 +141,6 @@ class Package
     else
       # if this function is called outside of this function, return parsed dependencies only
       return expandedDeps.flatten
-    end
-  end
-
-  boolean_property.each do |prop|
-    self.class.__send__(:attr_reader, prop.to_s)
-    class_eval <<~EOT, __FILE__, __LINE__ + 1
-      def self.#{prop} (#{prop} = nil)
-        @#{prop} = true if #{prop}
-        !!@#{prop}
-      end
-    EOT
-    instance_eval <<~EOY, __FILE__, __LINE__ + 1
-      def self.#{prop}
-        @#{prop} = true
-      end
-    EOY
-    # Adds the symbol? method
-    define_singleton_method("#{prop}?") do
-      @prop = instance_variable_get("@#{prop}")
-      !!@prop
     end
   end
 

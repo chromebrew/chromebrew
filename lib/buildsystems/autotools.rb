@@ -2,9 +2,7 @@ require 'fileutils'
 require 'package'
 
 class Autotools < Package
-  def self.configure_options(options = '')
-    return (@configure_options = options if options)
-  end
+  property :configure_options
 
   def self.build
     puts "Additional configure_options being used: #{@configure_options.nil? || @configure_options.empty? ? '<no configure_options>' : @configure_options}".orange
@@ -34,9 +32,7 @@ class Autotools < Package
   end
 
   def self.check
-    if run_tests
-      puts 'Testing with make check.'.orange
-      system 'make', 'check'
-    end
+    puts 'Testing with make check.'.orange if @run_tests
+    system 'make', 'check' if @run_tests
   end
 end
