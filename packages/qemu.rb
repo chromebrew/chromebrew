@@ -3,20 +3,18 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.0.3'
-  compatibility 'x86_64 aarch64 armv7l'
+  version '8.0.4'
+  compatibility 'all'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.3_armv7l/qemu-8.0.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.3_armv7l/qemu-8.0.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.3_x86_64/qemu-8.0.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a0a7e6b7aab48868e41850c2151be07dcf96bebd3ac5345ffa07d820b97e5373',
-     armv7l: 'a0a7e6b7aab48868e41850c2151be07dcf96bebd3ac5345ffa07d820b97e5373',
-     x86_64: '9b25f145ff725c81ce11350197596cef04a3dd0b377dc5a74fa76d28aa03e4b5'
+    aarch64: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101',
+     armv7l: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101'
   })
 
   depends_on 'alsa_lib' # R
