@@ -122,6 +122,7 @@
 /usr/local/share/examples/krb5/services.append
 /usr/local/share/locale/de/LC_MESSAGES/mit-krb5.mo
 /usr/local/share/locale/en_US/LC_MESSAGES/mit-krb5.mo
+/usr/local/share/locale/ka/LC_MESSAGES/mit-krb5.mo
 /usr/local/share/man/man1/k5srvutil.1.zst
 /usr/local/share/man/man1/kadmin.1.zst
 /usr/local/share/man/man1/kdestroy.1.zst

@@ -3,23 +3,23 @@ require 'package'
 class Openldap < Package
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  version '2.6.4'
+  version '2.6.5'
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
   source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{version}.tgz"
-  source_sha256 'd51704e50178430c06cf3d8aa174da66badf559747a47d920bb54b2d4aa40991'
+  source_sha256 '2e27a8d4f4c2af8fe840b573271c20aa163e24987f9765214644290f5beb38d9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_armv7l/openldap-2.6.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_armv7l/openldap-2.6.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_i686/openldap-2.6.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.4_x86_64/openldap-2.6.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.5_armv7l/openldap-2.6.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.5_armv7l/openldap-2.6.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.5_i686/openldap-2.6.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.5_x86_64/openldap-2.6.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd7fb060b540a91e103aa4252e5ebaa3d219cb86372277f72e91b8d590c8c7592',
-     armv7l: 'd7fb060b540a91e103aa4252e5ebaa3d219cb86372277f72e91b8d590c8c7592',
-       i686: '6e4b3f2cb18c7eda1159ef59ef27120406557fc5513ed7edbb49708dfe744bc5',
-     x86_64: '1b78e492b4ba7924669f25da5b0a059f001d230bb50f5e614764ee4067ca77ef'
+    aarch64: '781f2fda0ed60b38d3c8ff065489e603e8d4cdab667ae4b7abcfce7038c67b35',
+     armv7l: '781f2fda0ed60b38d3c8ff065489e603e8d4cdab667ae4b7abcfce7038c67b35',
+       i686: '24ca397b5b1c03444022e59ac2cfd8a8ff027590312aab32236360bee38e86bf',
+     x86_64: '459f1d99ac6d8826418fe6403053d6f384453a84af675033e75625736e3680a4'
   })
 
   depends_on 'e2fsprogs' => :build
