@@ -4,17 +4,19 @@ class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
   version '8.0.4'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst'
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_x86_64/qemu-8.0.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101',
-     armv7l: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101'
+     armv7l: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101',
+     x86_64: 'b164a7c5f6d284827cd5bf3976446d3731c92380a441bfa80f7d2986f26888a4'
   })
 
   depends_on 'alsa_lib' # R
@@ -75,7 +77,16 @@ class Qemu < Package
     Dir.chdir 'build' do
       system "mold -run ../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
         --enable-lto"
-      system 'make || make -j1'
+      @counter = 1
+      @counter_max = 20
+      loop do
+        break if Kernel.system "make -j #{CREW_NPROC}"
+
+        puts "Make iteration #{@counter} of #{@counter_max}...".orange
+
+        @counter += 1
+        break if @counter > @counter_max
+      end
     end
   end
 
