@@ -6026,6 +6026,11 @@ url: https://github.com/chromium/octane/releases
 activity: none
 ---
 kind: url
+name: octave
+url: https://ftpmirror.gnu.org/octave
+activity: medium
+---
+kind: url
 name: od1n
 url: https://github.com/CoolerVoid/0d1n/releases
 activity: low
