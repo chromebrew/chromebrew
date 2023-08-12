@@ -3,23 +3,23 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '15.3'
+  version '15.4'
   license 'PostgreSQL and GPL-2'
   compatibility 'all'
-  source_url 'https://ftp.postgresql.org/pub/source/v15.3/postgresql-15.3.tar.bz2'
-  source_sha256 'ffc7d4891f00ffbf5c3f4eab7fbbced8460b8c0ee63c5a5167133b9e6599d932'
+  source_url 'https://ftp.postgresql.org/pub/source/v15.4/postgresql-15.4.tar.bz2'
+  source_sha256 'baec5a4bdc4437336653b6cb5d9ed89be5bd5c0c58b94e0becee0a999e63c8f9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_armv7l/postgres-15.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_armv7l/postgres-15.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_i686/postgres-15.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.3_x86_64/postgres-15.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_armv7l/postgres-15.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_armv7l/postgres-15.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_i686/postgres-15.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_x86_64/postgres-15.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b405cde3037b87a93a730bbcb60b83ce0bca8de039abd6efb4c619caba420785',
-     armv7l: 'b405cde3037b87a93a730bbcb60b83ce0bca8de039abd6efb4c619caba420785',
-       i686: 'b19e9500521024d5ad34d92012424f82649d55005e43ba6a82f509a0d05d80f3',
-     x86_64: '082fa193fcdab42cd484388111cc1dc841c0e403df069e76b600015cfc996d92'
+    aarch64: '22c19fca8e27bc35cbc6b70ac0d8f3148b643e74e796543eedc82f077f3d6ec3',
+     armv7l: '22c19fca8e27bc35cbc6b70ac0d8f3148b643e74e796543eedc82f077f3d6ec3',
+       i686: '7b02b054c6b2898f8ee302e483004e82d667841b0bf42082efca461079d617ec',
+     x86_64: '0423c17723b3247d5713611895edd4e6836dfbd8036326d32c4d9a9a032d032d'
   })
 
   depends_on 'brotli'
@@ -29,6 +29,7 @@ class Postgres < Package
   depends_on 'libcyrussasl'
   depends_on 'libxml2'
   depends_on 'linux_pam'
+  depends_on 'llvm16_dev' => :build
   depends_on 'llvm16_lib'
   depends_on 'lz4'
   depends_on 'openldap'
@@ -37,15 +38,13 @@ class Postgres < Package
   depends_on 'tcl'
   depends_on 'zstd'
 
-  no_fhs
+  PGDATA = "#{CREW_PREFIX}/share/pgsql/data".freeze
 
-  # Feel free to change this directory prior to compiling.
-
-  # Future work: this directory isn't FHS compliant
-  PGDATA = "#{CREW_PREFIX}/pgsql/data".freeze
+  def self.patch
+    system "sed -i 's,PGDATA=\"/usr/local/pgsql/data\",PGDATA=\"#{PGDATA}\",' contrib/start-scripts/linux"
+  end
 
   def self.build
-    system "sed -i 's,PGDATA=\"/usr/local/pgsql/data\",PGDATA=\"#{PGDATA}\",' contrib/start-scripts/linux"
     system "./configure #{CREW_OPTIONS} \
       --with-gssapi \
       --with-icu \
@@ -110,7 +109,7 @@ class Postgres < Package
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf PGDATA
-        FileUtils.rm_rf "#{CREW_PREFIX}/pgsql"
+        FileUtils.rm_rf "#{CREW_PREFIX}/share/pgsql"
         puts "#{PGDATA} removed.".lightred
       else
         puts "#{PGDATA} saved.".lightgreen
