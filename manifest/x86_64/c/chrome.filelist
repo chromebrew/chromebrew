@@ -17,6 +17,7 @@
 /usr/local/share/chrome/libGLESv2.so
 /usr/local/share/chrome/liboptimization_guide_internal.so
 /usr/local/share/chrome/libqt5_shim.so
+/usr/local/share/chrome/libqt6_shim.so
 /usr/local/share/chrome/libvk_swiftshader.so
 /usr/local/share/chrome/libvulkan.so.1
 /usr/local/share/chrome/locales/af.pak
