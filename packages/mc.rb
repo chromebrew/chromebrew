@@ -1,40 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mc < Package
+class Mc < Autotools
   description 'GNU Midnight Commander is a visual file manager'
   homepage 'http://midnight-commander.org/'
-  version '4.8.27'
+  version '4.8.30'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/MidnightCommander/mc.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.27_armv7l/mc-4.8.27-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.27_armv7l/mc-4.8.27-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.27_i686/mc-4.8.27-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.27_x86_64/mc-4.8.27-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_armv7l/mc-4.8.30-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_armv7l/mc-4.8.30-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_i686/mc-4.8.30-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_x86_64/mc-4.8.30-chromeos-x86_64.tar.zst',
   })
   binary_sha256({
-    aarch64: '9983684570b813813665b0b01925c95e692b49d7e16af51028731db69249d47d',
-     armv7l: '9983684570b813813665b0b01925c95e692b49d7e16af51028731db69249d47d',
-       i686: '571b209953497deb0a06b762a78e3b071c349f250a9ec5a4b51397638f1c6bb5',
-     x86_64: '4194ab8ee4a1add191419107a3e9a7bb6ac0591b08e6a45943cdf55cddb13081'
+    aarch64: 'a3f46f94869391c4f9ce09490972e9a7fdfd7d67f6b6b15fa2bcf667b2dc765c',
+     armv7l: 'a3f46f94869391c4f9ce09490972e9a7fdfd7d67f6b6b15fa2bcf667b2dc765c',
+       i686: '509e05a162b01b54565c810759d3fc6e7c1a220cb959bdd1ccf4aa589daf383c',
+     x86_64: 'eab6581c138140a5a3802682e6dcde24d8f44d4bf0b6914072b6d2fec7661580',
   })
 
   depends_on 'glib' => :build
   depends_on 'aspell' => :build
   depends_on 'gpm'
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-pipe -flto=auto' CPPFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
