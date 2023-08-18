@@ -3,23 +3,21 @@ require 'package'
 class Cmake < Package
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.27.2'
+  version '3.27.3'
   license 'CMake'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/Kitware/CMake.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.2_armv7l/cmake-3.27.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.2_armv7l/cmake-3.27.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.2_i686/cmake-3.27.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.2_x86_64/cmake-3.27.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.3_armv7l/cmake-3.27.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.3_armv7l/cmake-3.27.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.3_x86_64/cmake-3.27.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '358ea19fd07a9a27b652139b42f65fffb88f4511c8ee8b682b830911d9c5a820',
-     armv7l: '358ea19fd07a9a27b652139b42f65fffb88f4511c8ee8b682b830911d9c5a820',
-       i686: '16858c500bbb8b43a17b13af6475ccd4149ef46a58e56b2ff74561e5dcd1625e',
-     x86_64: 'f16e135349fd7e6ce20de5839b430b4b46ce8077b3d96d789abc0cadaf71c59a'
+    aarch64: '28c962368f6d549b09c2b5176c06096d30120ebeac0ded7bc96157c35d838ecf',
+     armv7l: '28c962368f6d549b09c2b5176c06096d30120ebeac0ded7bc96157c35d838ecf',
+     x86_64: 'ee6fd4ae03757c08dc27b409d359d07c3c035339755f2f484ab22207a7b2fe9b'
   })
 
   depends_on 'bz2' => :build
