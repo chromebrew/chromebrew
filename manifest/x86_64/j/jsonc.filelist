@@ -6,6 +6,7 @@
 /usr/local/include/json-c/json_inttypes.h
 /usr/local/include/json-c/json_object.h
 /usr/local/include/json-c/json_object_iterator.h
+/usr/local/include/json-c/json_patch.h
 /usr/local/include/json-c/json_pointer.h
 /usr/local/include/json-c/json_tokener.h
 /usr/local/include/json-c/json_types.h
@@ -21,5 +22,5 @@
 /usr/local/lib64/libjson-c.so.3
 /usr/local/lib64/libjson-c.so.4
 /usr/local/lib64/libjson-c.so.5
-/usr/local/lib64/libjson-c.so.5.2.0
+/usr/local/lib64/libjson-c.so.5.3.0
 /usr/local/lib64/pkgconfig/json-c.pc
