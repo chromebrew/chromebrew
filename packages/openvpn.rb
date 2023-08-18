@@ -20,10 +20,16 @@ class Openvpn < Autotools
      x86_64: '92e8c9704b3eb58fbb7dedddb5562e8feb6be1c51a28b19841d8ed54b8365aa4'
   })
 
-  depends_on 'libmbedtls'
-  depends_on 'libnl3'
-  depends_on 'lzo'
+  depends_on 'glibc' # R
+  depends_on 'libcap_ng' # R
+  depends_on 'libeconf' # R
+  depends_on 'libmbedtls' => :build
+  depends_on 'libnl3' # R
+  depends_on 'linux_pam' # R
+  depends_on 'lz4' # R
+  depends_on 'lzo' # R
   depends_on 'mold' => :build
+  depends_on 'openssl' # R
   depends_on 'py3_docutils' => :build
 
   run_tests
