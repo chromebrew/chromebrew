@@ -3,23 +3,23 @@ require 'package'
 class Clamav < Package
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '0.105.1-3'
+  version '1.1.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.clamav.net/downloads/production/clamav-0.105.1-3.tar.gz'
-  source_sha256 '86d832917185c3512e639297e3d727be6b64a56e32a33b3a1522b98d7c725075'
+  source_url 'https://www.clamav.net/downloads/production/clamav-1.1.1.tar.gz'
+  source_sha256 'a26699704bb4ddf2684e4adc1f46d5f3de9a9a8959f147970f969cc32b2f0d9e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.105.1-3_armv7l/clamav-0.105.1-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.105.1-3_armv7l/clamav-0.105.1-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.105.1-3_i686/clamav-0.105.1-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/0.105.1-3_x86_64/clamav-0.105.1-3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_armv7l/clamav-1.1.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_armv7l/clamav-1.1.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_i686/clamav-1.1.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_x86_64/clamav-1.1.1-chromeos-x86_64.tar.zst',
   })
   binary_sha256({
-    aarch64: '479adab2c53567e4124b85433ff5ad84e001595dd3f01104a337695b7a8b9a3a',
-     armv7l: '479adab2c53567e4124b85433ff5ad84e001595dd3f01104a337695b7a8b9a3a',
-       i686: '13ce7a928a24c35b0aafc8bdc3650c24a22e570f02844af07cb0bdfb5e65cdf4',
-     x86_64: 'e7be225a7ad29a203d6a4cd644573c1b92f5930509ba478b70c23598ebbaa414'
+    aarch64: '99ec7eed070ac95692e6dd79b3db5e5e5d81bb2d2895847e0a4e3a574d11c00f',
+     armv7l: '99ec7eed070ac95692e6dd79b3db5e5e5d81bb2d2895847e0a4e3a574d11c00f',
+       i686: 'a8a01408181b94d88bc3f9eb404b7b8373db229251048af6d52e1c001f22a5b2',
+     x86_64: '55a9893ae7c4fd3416c3a119c0928d0ac88bf245cdf1bf1bb1c1657b3aa1c5b0',
   })
 
   depends_on 'rust' => :build
@@ -29,19 +29,16 @@ class Clamav < Package
   depends_on 'py3_pytest' => :build
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake .. #{CREW_CMAKE_OPTIONS} \
-              -D APP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
-              -D DATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
-              -D CMAKE_C_FLAGS=-fPIC \
-              -D ENABLE_JSON_SHARED=OFF \
-              -D ENABLE_STATIC_LIB=ON \
-              -D ENABLE_SYSTEMD=OFF \
-              -D ENABLE_MILTER=OFF \
-              -G Ninja"
-    end
-    system 'samu -C build'
+    system "cmake #{CREW_CMAKE_OPTIONS} -B build \
+            -D APP_CONFIG_DIRECTORY=#{CREW_PREFIX}/etc/clamav \
+            -D DATABASE_DIRECTORY=#{CREW_PREFIX}/share/clamav \
+            -D CMAKE_C_FLAGS=-fPIC \
+            -D ENABLE_JSON_SHARED=OFF \
+            -D ENABLE_STATIC_LIB=ON \
+            -D ENABLE_SYSTEMD=OFF \
+            -D ENABLE_MILTER=OFF \
+            -G Ninja"
+    system "#{CREW_NINJA} -C build"
   end
 
   def self.check
@@ -49,7 +46,7 @@ class Clamav < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C build install"
     FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
     FileUtils.cp "#{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf.sample", "#{CREW_DEST_PREFIX}/etc/clamav/freshclam.conf"
     system "sed -i 's,^Example,#Example,' #{CREW_DEST_PREFIX}/etc/clamav/clamd.conf"
