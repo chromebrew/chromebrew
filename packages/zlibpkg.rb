@@ -1,16 +1,16 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Zlibpkg < Package
+class Zlibpkg < CMake
   description 'zlib is a massively spiffy yet delicately unobtrusive compression library.'
   homepage 'https://www.zlib.net/'
-  version '1.2.13-1' # Do not use @_ver here, it will break the installer.
+  version '1.3' # Do not use @_ver here, it will break the installer.
   # When upgrading zlibpkg, be sure to upgrade minizip in tandem.
   # The following breaks the installer script.
   # puts "#{self} version differs from Minizip version #{Minizip.version}".orange if @_ver != Minizip.version
   license 'zlib'
   compatibility 'all'
-  source_url "https://www.zlib.net/zlib-1.2.13.tar.gz"
-  source_sha256 'b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30'
+  source_url 'https://www.zlib.net/zlib-1.3.tar.gz'
+  source_sha256 'ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.13-1_armv7l/zlibpkg-1.2.13-1-chromeos-armv7l.tar.zst',
@@ -27,21 +27,13 @@ class Zlibpkg < Package
 
   depends_on 'glibc' # R
 
+  cmake_options "#{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} -Wno-dev"
+
+  run_tests
+
   def self.patch
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/lib,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB},g' CMakeLists.txt"
     system "sed -i 's,CMAKE_INSTALL_PREFIX}/share/pkgconfig,CMAKE_INSTALL_PREFIX}/#{ARCH_LIB}/pkgconfig,g' CMakeLists.txt"
-  end
-
-  def self.build
-    system "cmake \
-      -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.check
-    system "#{CREW_NINJA} -C builddir test"
   end
 
   def self.install
