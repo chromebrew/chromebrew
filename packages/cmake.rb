@@ -37,7 +37,7 @@ class Cmake < Package
   depends_on 'ncurses' # R
   depends_on 'xzutils' => :build
   depends_on 'zlibpkg' # R
-  depends_on 'zstd' => :buils
+  depends_on 'zstd' => :build
 
   def self.build
     system "mold -run cmake -B builddir \
