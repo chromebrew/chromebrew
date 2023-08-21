@@ -13,16 +13,16 @@ class Zlibpkg < CMake
   source_sha256 'ff0ba4c292013dbc27530b3a81e1f9a813cd39de01ca5e0f8bf355702efa593e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.13-1_armv7l/zlibpkg-1.2.13-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.13-1_armv7l/zlibpkg-1.2.13-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.13-1_i686/zlibpkg-1.2.13-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.2.13-1_x86_64/zlibpkg-1.2.13-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3_armv7l/zlibpkg-1.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3_armv7l/zlibpkg-1.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3_i686/zlibpkg-1.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3_x86_64/zlibpkg-1.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'efeca0dc51b8d47e6b88b8a5b5ad2b6362ef70202a2373ab612bc5f676af007f',
-     armv7l: 'efeca0dc51b8d47e6b88b8a5b5ad2b6362ef70202a2373ab612bc5f676af007f',
-       i686: 'e772f09b58ac0ea37e6845da3aefcb217631de37daeaa9863d7f96d74c3dc45b',
-     x86_64: 'a8a3748e34f5a19bf2696cfef5a95642dd138996ae06acda06a1527a0a793dd7'
+    aarch64: 'e95b8506d089079f85e73a55059f45ed020b7ae63a68f082232f3c365bfdf10a',
+     armv7l: 'e95b8506d089079f85e73a55059f45ed020b7ae63a68f082232f3c365bfdf10a',
+       i686: 'b5d5a45fe613175d51080e53135f5029f7979fb8c8499471daccdfaa18ad1485',
+     x86_64: 'fbb3d244868be3fe85fe9f029249f6be267ecd5545419482d50cb3ba33a30215'
   })
 
   depends_on 'glibc' # R
