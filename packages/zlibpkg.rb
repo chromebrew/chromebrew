@@ -19,10 +19,10 @@ class Zlibpkg < CMake
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3_x86_64/zlibpkg-1.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e95b8506d089079f85e73a55059f45ed020b7ae63a68f082232f3c365bfdf10a',
-     armv7l: 'e95b8506d089079f85e73a55059f45ed020b7ae63a68f082232f3c365bfdf10a',
-       i686: 'b5d5a45fe613175d51080e53135f5029f7979fb8c8499471daccdfaa18ad1485',
-     x86_64: 'fbb3d244868be3fe85fe9f029249f6be267ecd5545419482d50cb3ba33a30215'
+    aarch64: '26f4076cb8286135fd4f6912fb07d1a12da5f0f4447d3656a9bf76f52b6cf83d',
+     armv7l: '26f4076cb8286135fd4f6912fb07d1a12da5f0f4447d3656a9bf76f52b6cf83d',
+       i686: '42aa72fec758a9ecf8a87a2a7bc5c40eb7a5c988e10dfa86feb5d75e3ca9de95',
+     x86_64: '196e293ec2ee7c06bc8bbd3746001781e9ad2e06bb57b61e442e8fe72f903d08'
   })
 
   depends_on 'glibc' # R
