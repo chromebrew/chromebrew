@@ -910,6 +910,11 @@ url: https://github.com/clibs/clib/releases
 activity: low
 ---
 kind: url
+name: clipgrab
+url: https://clipgrab.org/
+activity: none
+---
+kind: url
 name: clisp
 url: https://ftp.gnu.org/gnu/clisp/release/
 activity: none
