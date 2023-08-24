@@ -3,20 +3,20 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.0.4'
+  version '8.1.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_armv7l/qemu-8.0.4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.0.4_x86_64/qemu-8.0.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.0_armv7l/qemu-8.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.0_armv7l/qemu-8.1.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.0_x86_64/qemu-8.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101',
-     armv7l: '586505a2c455403b880629260e2ab15f51a4f9967c21ef7b32acbd68d1115101',
-     x86_64: 'b164a7c5f6d284827cd5bf3976446d3731c92380a441bfa80f7d2986f26888a4'
+    aarch64: '35e5a86f8c3dea83508f69f423a51a1291cd9cece4f6e13c02fa7c865917d139',
+     armv7l: '35e5a86f8c3dea83508f69f423a51a1291cd9cece4f6e13c02fa7c865917d139',
+     x86_64: '0443fab996ef671cbea33224ec80b14f7b5c6e3418219fcda27adc8074461acb'
   })
 
   depends_on 'alsa_lib' # R
@@ -63,6 +63,11 @@ class Qemu < Package
   depends_on 'vte' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'glibc_lib' # R
+
+  def self.preflight
+    abort "Qemu requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
+  end
 
   def self.patch
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error

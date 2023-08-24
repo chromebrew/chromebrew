@@ -73,9 +73,14 @@
 /usr/local/bin/qemu-x86_64
 /usr/local/bin/qemu-xtensa
 /usr/local/bin/qemu-xtensaeb
+/usr/local/include/fdt.h
+/usr/local/include/libfdt_env.h
+/usr/local/include/libfdt.h
 /usr/local/include/qemu-plugin.h
 /usr/local/libexec/qemu-bridge-helper
 /usr/local/libexec/virtfs-proxy-helper
+/usr/local/lib/libfdt.a
+/usr/local/lib/pkgconfig/libfdt.pc
 /usr/local/share/applications/qemu.desktop
 /usr/local/share/icons/hicolor/128x128/apps/qemu.png
 /usr/local/share/icons/hicolor/16x16/apps/qemu.png
