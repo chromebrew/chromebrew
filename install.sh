@@ -209,14 +209,12 @@ for package in $BOOTSTRAP_PACKAGES; do
 
 done
 
-# Create the device.json file if it doesn't exist.
-if [ ! -f "${CREW_CONFIG_PATH}/device.json" ]; then
-  cd "${CREW_CONFIG_PATH}"
-  echo_info "\nCreating new device.json."
-  jq --arg key0 'architecture' --arg value0 "${ARCH}" \
-    --arg key1 'installed_packages' \
-    '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
-fi
+# Create the device.json file.
+cd "${CREW_CONFIG_PATH}"
+echo_info "\nCreating device.json."
+jq --arg key0 'architecture' --arg value0 "${ARCH}" \
+  --arg key1 'installed_packages' \
+  '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 
 # Functions to maintain packages.
 
@@ -281,16 +279,9 @@ function extract_install () {
 
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
-
-  if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
-    echo_intra "Updating version number of ${1} in device.json..."
-    ver_num=$(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json)
-    cat <<< "${ver_num}" > device.json
-  else
-    echo_intra "Adding new information on ${1} to device.json..."
-    new_info=$(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json)
-    cat <<< "${new_info}" > device.json
-  fi
+  echo_intra "Adding new information on ${1} to device.json..."
+  new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "binary_sha256": $sha256}]' device.json)
+  cat <<< "${new_info}" > device.json
 }
 
 echo_info "Downloading Bootstrap packages...\n"
@@ -305,7 +296,7 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
   extract_install "${name}" "${tarfile}"
-  update_device_json "${name}" "${version}"
+  update_device_json "${name}" "${version}" "${sha256}"
 done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.

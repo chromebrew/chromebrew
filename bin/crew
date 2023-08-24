@@ -665,18 +665,25 @@ def update
       puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
       next
     end
-    if package[:binary_sha256] && package[:binary_sha256] != @pkg.get_binary_sha256(@device[:architecture])
-      canBeUpdated += 1
-      puts "#{@pkg.name} could be updated (rebuild)"
-    end
-    if package[:version] != @pkg.version
-      canBeUpdated += 1
+    differentVersion = (package[:version] != @pkg.version)
+    hasSha = !(@pkg.get_binary_sha256(@device[:architecture]).to_s.empty? || package[:binary_sha256].to_s.empty?)
+    differentSha = hasSha && package[:binary_sha256] != @pkg.get_binary_sha256(@device[:architecture])
+
+    canBeUpdated += 1 if differentVersion || differentSha
+
+    if differentVersion && !differentSha && hasSha
+      canBeUpdated -= 1
+      puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
+    elsif differentVersion
       puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}"
+    elsif !differentVersion && differentSha
+      puts "#{@pkg.name} could be updated (rebuild)"
     end
   end
 
   if canBeUpdated.positive?
-    puts "\nRun `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages."
+    puts "\n#{canBeUpdated} packages can be updated."
+    puts 'Run `crew upgrade` to update all packages or `crew upgrade <package1> [<package2> ...]` to update specific packages.'
   else
     puts 'Your software is up to date.'.lightgreen
   end
