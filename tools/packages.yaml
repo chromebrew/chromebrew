@@ -5996,6 +5996,11 @@ url: https://github.com/numactl/numactl/releases/
 activity: medium
 ---
 kind: url
+name: nuspell
+url: https://github.com/nuspell/nuspell/releases
+activity: low
+---
+kind: url
 name: nvm
 url: https://github.com/creationix/nvm/releases
 activity: medium
