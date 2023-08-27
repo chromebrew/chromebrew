@@ -16,10 +16,10 @@ class Rust < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.0_x86_64/rust-1.72.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '465facfa1ef08d915c0d98ab4d105cde8e2fa83b5fa2e32fec5cf2472104149e',
-     armv7l: '465facfa1ef08d915c0d98ab4d105cde8e2fa83b5fa2e32fec5cf2472104149e',
-       i686: '3ee3906ddebe3eaef55b80616536c562ea460da11a8c0cb05ea344f346a79f6a',
-     x86_64: 'a68a0b1f695a391abc810e4cda5174a56c2268789cc6932b31a89277dca92415'
+    aarch64: 'ec72932112110e86ece62783c5b8ac6211611b9beadd45e1d478505d4600d6bb',
+     armv7l: 'ec72932112110e86ece62783c5b8ac6211611b9beadd45e1d478505d4600d6bb',
+       i686: 'f511e081f49086062a14a53e0ab4c0dc860b3674d5d611e094acb124352fba33',
+     x86_64: '299ab0bdde9832bc3ac00b547283d395a65e1204658ba4afa8e2171ed8c752dc'
   })
 
   depends_on 'gcc_lib' # R
