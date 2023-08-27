@@ -16,10 +16,10 @@ class Doxygen < CMake
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.9.8_x86_64/doxygen-1.9.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd9b875d58bdaf11ad6cdb863987ae930f0f2014e926a3e47aa699405e42795da',
-     armv7l: 'd9b875d58bdaf11ad6cdb863987ae930f0f2014e926a3e47aa699405e42795da',
-       i686: '67043de7132eba2845ff9ffb77f27d3c64b9b1bddce916a7805167509e90a9f0',
-     x86_64: '55f9be90af5bf1204333b40308d15163f579374e7de5e0b672b33a43b568c305'
+    aarch64: '6cf8a2cb388ccc24c5068d5828e79f9334e8b774bd0085656f6dced40978063f',
+     armv7l: '6cf8a2cb388ccc24c5068d5828e79f9334e8b774bd0085656f6dced40978063f',
+       i686: '972aa02dcd763eab9c7711830f2f05bbab98d7ad0468bff59ded6cb90e31d244',
+     x86_64: '718c24a7a13b9d7c9fe519d60e66e9a23e6b4401b09ce615e54ca9d8792e5fec'
   })
 
   depends_on 'python3' => :build
