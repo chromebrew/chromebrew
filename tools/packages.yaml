@@ -3545,6 +3545,11 @@ url: https://github.com/ledger/ledger/releases
 activity: medium
 ---
 kind: url
+name: lego
+url: https://github.com/go-acme/lego/releases
+activity: medium
+---
+kind: url
 name: leiningen
 url: https://github.com/technomancy/leiningen/releases
 activity: medium
