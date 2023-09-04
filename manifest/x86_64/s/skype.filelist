@@ -119,10 +119,8 @@
 /usr/local/share/skypeforlinux/resources/app.asar.unpacked/images/tray/win/tray-onlineUnreadTemplate.ico
 /usr/local/share/skypeforlinux/resources/app.asar.unpacked/modules/electron_utility.node
 /usr/local/share/skypeforlinux/resources/app.asar.unpacked/modules/keytar.node
-/usr/local/share/skypeforlinux/resources/app.asar.unpacked/modules/platform.node
 /usr/local/share/skypeforlinux/resources/app.asar.unpacked/modules/sharing-indicator.node
 /usr/local/share/skypeforlinux/resources/app.asar.unpacked/modules/slimcore.node
-/usr/local/share/skypeforlinux/resources/app.asar.unpacked/modules/trouter-client.node
 /usr/local/share/skypeforlinux/resources/default_app.asar
 /usr/local/share/skypeforlinux/resources.pak
 /usr/local/share/skypeforlinux/skypeforlinux
