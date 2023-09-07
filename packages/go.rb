@@ -3,20 +3,20 @@ require 'package'
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
   homepage 'https://golang.org/'
-  version '1.21.0'
+  version '1.21.1'
   license 'BSD'
   compatibility 'all'
   source_url({
-    aarch64: 'https://go.dev/dl/go1.21.0.linux-armv6l.tar.gz',
-     armv7l: 'https://go.dev/dl/go1.21.0.linux-armv6l.tar.gz',
-       i686: 'https://go.dev/dl/go1.21.0.linux-386.tar.gz',
-     x86_64: 'https://go.dev/dl/go1.21.0.linux-amd64.tar.gz'
+    aarch64: 'https://go.dev/dl/go1.21.1.linux-armv6l.tar.gz',
+     armv7l: 'https://go.dev/dl/go1.21.1.linux-armv6l.tar.gz',
+       i686: 'https://go.dev/dl/go1.21.1.linux-386.tar.gz',
+     x86_64: 'https://go.dev/dl/go1.21.1.linux-amd64.tar.gz'
   })
   source_sha256({
-    aarch64: 'e377a0004957c8c560a3ff99601bce612330a3d95ba3b0a2ae144165fc87deb1',
-     armv7l: 'e377a0004957c8c560a3ff99601bce612330a3d95ba3b0a2ae144165fc87deb1',
-       i686: '0e6f378d9b072fab0a3d9ff4d5e990d98487d47252dba8160015a61e6bd0bcba',
-     x86_64: 'd0398903a16ba2232b389fb31032ddf57cac34efda306a0eebac34f0965a0742'
+    aarch64: 'f3716a43f59ae69999841d6007b42c9e286e8d8ce470656fb3e70d7be2d7ca85',
+     armv7l: 'f3716a43f59ae69999841d6007b42c9e286e8d8ce470656fb3e70d7be2d7ca85',
+       i686: 'b93850666cdadbd696a986cf7b03111fe99db8c34a9aaa113d7c96d0081e1901',
+     x86_64: 'b3075ae1ce5dab85f89bc7905d1632de23ca196bd8336afd93fa97434cfa55ae'
   })
 
   no_compile_needed
