@@ -3,14 +3,14 @@ require 'package'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '102.0.4880.33'
+  version '102.0.4880.40'
   license 'OPERA-2018'
   compatibility 'x86_64'
 
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 'e8719c75d36aeeec39eb3ee3c50835cd69f2b2132a9f26ac00b24ec3c53adb76'
+  source_sha256 '1e172d778b536cb6256cd5c0bca9b272d1be303c1e97665ff3e1fac915dc6b76'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
