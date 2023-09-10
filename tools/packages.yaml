@@ -4151,6 +4151,11 @@ url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
 ---
 kind: url
+name: libidn
+url: https://ftpmirror.gnu.org/libidn/
+activity: medium
+---
+kind: url
 name: libidn2
 url: https://ftpmirror.gnu.org/libidn/
 activity: medium
@@ -6802,7 +6807,7 @@ activity: low
 ---
 kind: url
 name: podofo
-url: https://sourceforge.net/projects/podofo/files/
+url: https://github.com/podofo/podofo/releases
 activity: low
 ---
 kind: url

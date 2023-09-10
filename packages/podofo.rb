@@ -3,42 +3,41 @@ require 'package'
 class Podofo < Package
   description 'A PDF parsing, modification and creation library.'
   homepage 'https://sourceforge.net/projects/podofo/'
-  version '0.9.7'
-  license 'LGPLv2'
-  compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/podofo/podofo/0.9.7/podofo-0.9.7.tar.gz'
-  source_sha256 '7cf2e716daaef89647c54ffcd08940492fd40c385ef040ce7529396bfadc1eb8'
+  version '0.10.1'
+  license 'GPLv2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/podofo/podofo/archive/0.10.1.tar.gz'
+  source_sha256 '9b2bb5d54185a547e440413ca2e9ec3ea9c522fec81dfeb9a23dbc3d65fbaa55'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.9.7_armv7l/podofo-0.9.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.9.7_armv7l/podofo-0.9.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.9.7_i686/podofo-0.9.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.9.7_x86_64/podofo-0.9.7-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.10.1_armv7l/podofo-0.10.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.10.1_armv7l/podofo-0.10.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.10.1_x86_64/podofo-0.10.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd0a5ea8bb5e465d45cc5ab468c4bfef62f450c951dc703871f5ea6a60b81ae8d',
-     armv7l: 'd0a5ea8bb5e465d45cc5ab468c4bfef62f450c951dc703871f5ea6a60b81ae8d',
-       i686: 'ca6bcca682a0296a9e4f80541fe9ac26f03b17b58c75a60124f75afc8bb9beab',
-     x86_64: '32c13806a35388042a63e8a641ebdf7e0cc3ce4fd46cb98b79995f06eca743a3'
+    aarch64: '2bf578c3a6f230cb1831787c4dc0c0ad88ae28918b05eaf4b684b8d19a89fba4',
+     armv7l: '2bf578c3a6f230cb1831787c4dc0c0ad88ae28918b05eaf4b684b8d19a89fba4',
+     x86_64: '0250cbf80a3144858950666ae92ebc57d84a093c817a2191a9d326bbe5015091'
   })
 
-  depends_on 'lua'
-  depends_on 'libidn2'
+  depends_on 'fontconfig'
+  depends_on 'freetype'
+  depends_on 'libidn'
+  depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'libtiff'
+  depends_on 'libxml2'
+  depends_on 'openssl'
+  depends_on 'zlibpkg'
 
   def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system "cmake -G 'Unix Makefiles' -DWANT_LIB64=ON #{CREW_CMAKE_OPTIONS} \
-               -DLIBIDN_LIBRARY_RELEASE=#{CREW_LIB_PREFIX}/libidn2.so .."
-      system 'make'
-    end
+    system "cmake -G 'Unix Makefiles' \
+      -B builddir #{CREW_CMAKE_OPTIONS} \
+      -DPODOFO_BUILD_TOOLS=TRUE"
+    system 'make -C builddir'
   end
 
   def self.install
-    Dir.chdir 'build' do
-      system "DESTDIR=#{CREW_DEST_DIR} make install"
-    end
+    system "DESTDIR=#{CREW_DEST_DIR} make -C builddir install"
   end
 end
