@@ -3,23 +3,23 @@ require 'package'
 class Openssl111 < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '1.1.1v' # Do not use @_ver here, it will break the installer.
+  version '1.1.1w' # Do not use @_ver here, it will break the installer.
   license 'openssl'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-1.1.1v.tar.gz'
-  source_sha256 'd6697e2871e77238460402e9362d47d18382b15ef9f246aba6c7bd780d38a6b0'
+  source_url "https://www.openssl.org/source/openssl-#{version}.tar.gz"
+  source_sha256 'cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_armv7l/openssl111-1.1.1v-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_armv7l/openssl111-1.1.1v-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_i686/openssl111-1.1.1v-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1v_x86_64/openssl111-1.1.1v-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_armv7l/openssl111-1.1.1w-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_armv7l/openssl111-1.1.1w-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_i686/openssl111-1.1.1w-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_x86_64/openssl111-1.1.1w-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8183a4f518e52954fce37a0947cc5095f061fe36e596425eeff5b5fcb8c18ac0',
-     armv7l: '8183a4f518e52954fce37a0947cc5095f061fe36e596425eeff5b5fcb8c18ac0',
-       i686: '04f084e0a943a09a1fbbb18dac0734d935dabf9dcbe50c9735795926e912102c',
-     x86_64: '006e3d0d36e6193eb1221aa88ca5b34c5cb7ca75c38e982f85d9756e6fc26a0e'
+    aarch64: '650209f527994f5c8bd57d1f2b5c42174d66472ca2a40116f66a043bd6e4c046',
+     armv7l: '650209f527994f5c8bd57d1f2b5c42174d66472ca2a40116f66a043bd6e4c046',
+       i686: 'a409ebebe5b5789e3ed739bc540d150faa66d9e33e6f19000b1b4e110a86d618',
+     x86_64: 'e95e8cf456fc9168de148946c38cdda6a1e7482bdcbb4121766a178a32421917'
   })
 
   depends_on 'glibc' # R
@@ -60,7 +60,7 @@ class Openssl111 < Package
 
   def self.check
     # Don't run tests if we are just rebuilding the same version of openssl.
-    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == '1.1.1u'
+    system 'make test' unless `openssl version | awk '{print $2}'`.chomp == version
   end
 
   def self.install

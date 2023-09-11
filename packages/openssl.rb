@@ -80,17 +80,17 @@ class Openssl < Package
       #{CREW_LIB_PREFIX[1..]}/libssl.so.1.1
     EOF
     @cur_dir = `pwd`.chomp
-    @legacy_version = '1.1.1v'
+    @legacy_version = '1.1.1w'
     case ARCH
     when 'aarch64', 'armv7l'
       downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_armv7l/openssl111-#{@legacy_version}-chromeos-armv7l.tar.zst",
-                 '8183a4f518e52954fce37a0947cc5095f061fe36e596425eeff5b5fcb8c18ac0', "openssl111-#{@legacy_version}-chromeos.tar.zst"
+                 '650209f527994f5c8bd57d1f2b5c42174d66472ca2a40116f66a043bd6e4c046', "openssl111-#{@legacy_version}-chromeos.tar.zst"
     when 'i686'
       downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_i686/openssl111-#{@legacy_version}-chromeos-i686.tar.zst",
-                 '04f084e0a943a09a1fbbb18dac0734d935dabf9dcbe50c9735795926e912102c', "openssl111-#{@legacy_version}-chromeos.tar.zst"
+                 'a409ebebe5b5789e3ed739bc540d150faa66d9e33e6f19000b1b4e110a86d618', "openssl111-#{@legacy_version}-chromeos.tar.zst"
     when 'x86_64'
       downloader "https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/#{@legacy_version}_x86_64/openssl111-#{@legacy_version}-chromeos-x86_64.tar.zst",
-                 '006e3d0d36e6193eb1221aa88ca5b34c5cb7ca75c38e982f85d9756e6fc26a0e', "openssl111-#{@legacy_version}-chromeos.tar.zst"
+                 'e95e8cf456fc9168de148946c38cdda6a1e7482bdcbb4121766a178a32421917', "openssl111-#{@legacy_version}-chromeos.tar.zst"
     end
     Dir.chdir(CREW_DEST_DIR) do
       system "tar -Izstd -xv --files-from #{@cur_dir}/openssl111_files -f #{@cur_dir}/openssl111-#{@legacy_version}-chromeos.tar.zst"
