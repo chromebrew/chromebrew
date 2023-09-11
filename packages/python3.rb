@@ -3,23 +3,23 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.11.4'
+  version '3.11.5'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '2f0e409df2ab57aa9fc4cbddfb976af44e4e55bf6f619eee6bc5c2297264a7f6'
+  source_sha256 '85cd12e9cf1d6d5a45f17f7afe1cebe7ee628d3282281c492e86adf636defa3f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_armv7l/python3-3.11.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_armv7l/python3-3.11.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_i686/python3-3.11.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.4_x86_64/python3-3.11.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_i686/python3-3.11.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_x86_64/python3-3.11.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'aa830703a5a46ec29ef3b7e1d50ed7610b71ac7d380d4bec6635ede88060b3f7',
-     armv7l: 'aa830703a5a46ec29ef3b7e1d50ed7610b71ac7d380d4bec6635ede88060b3f7',
-       i686: 'c13a82e54f2fadedce2c58327cd653a43a56e81c48a9e602458e91b48834d839',
-     x86_64: 'b55067edfe66b1e3970372c97d83eee7568fff791accf80eaf2e7132126bdccd'
+    aarch64: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
+     armv7l: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
+       i686: '8ef1e1c7d7c85213ade5069158cbb2b16a777bd0be374e196b0feb4491961deb',
+     x86_64: '326265010b0a4407914db78bc6a1cb754817203f2bed0c107cee8a6b4134667b'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -90,7 +90,10 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system CREW_ENV_OPTIONS_HASH.transform_values { |v| "#{v} #{@cppflags}" }, "../configure #{CREW_OPTIONS} \
+      system CREW_ENV_OPTIONS_HASH.transform_values { |v|
+               "#{v} #{@cppflags}"
+             }, "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ../configure #{CREW_OPTIONS} \
+          --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \
           --with-ensurepip \
@@ -134,7 +137,8 @@ class Python3 < Package
   def self.install
     Dir.chdir 'builddir' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      system "#{CREW_DEST_PREFIX}/bin/python3 -m ensurepip --upgrade --default-pip"
+      # There is a Python ABI break in 3.11.5 coming from 3.11.4, see https://github.com/python/cpython/issues/108525
+      system "LD_LIBRARY_PATH=#{CREW_DEST_LIB_PREFIX}:#{CREW_LIB_PREFIX} #{CREW_DEST_PREFIX}/bin/python3 -m ensurepip --upgrade --default-pip"
       system "sed -i 's,#{CREW_DEST_PREFIX}/bin/python3,#{CREW_PREFIX}/bin/python3,g' #{CREW_DEST_PREFIX}/bin/pip3"
     end
 
