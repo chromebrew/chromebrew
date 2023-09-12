@@ -8166,6 +8166,11 @@ url: https://github.com/jonas/tig/releases
 activity: low
 ---
 kind: url
+name: tika
+url: https://github.com/apache/tika/tags
+activity: low
+---
+kind: url
 name: tilp2
 url: https://sourceforge.net/projects/tilp/files/tilp2-linux/
 activity: none
