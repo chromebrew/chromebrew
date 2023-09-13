@@ -104,7 +104,6 @@ function curl () {
 
 if [[ "$USER_SPACE_ARCH" == 'armv7l' ]] && [[ "$ARCH" == 'aarch64' ]]; then
     echo_error "Your device is not supported by Chromebrew yet, installing as armv7l."
-    exit 1
 fi
 
 if [ -d "${CREW_PREFIX}" ]; then
