@@ -3,21 +3,21 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.1.22'
+  version '8.1.23'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.php.net/distributions/php-8.1.22.tar.xz'
-  source_sha256 '9ea4f4cfe775cb5866c057323d6b320f3a6e0adb1be41a068ff7bfec6f83e71d'
+  source_url 'https://www.php.net/distributions/php-8.1.23.tar.xz'
+  source_sha256 'fc48422fa7e75bb45916fc192a9f9728cb38bb2b5858572c51ea15825326360c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.22_armv7l/php81-8.1.22-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.22_armv7l/php81-8.1.22-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.22_x86_64/php81-8.1.22-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.23_armv7l/php81-8.1.23-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.23_armv7l/php81-8.1.23-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.23_x86_64/php81-8.1.23-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0a4380b58fb10d53b2cf8ffa56b1fdc62262d72c20bb9135eb339f57409dc12a',
-     armv7l: '0a4380b58fb10d53b2cf8ffa56b1fdc62262d72c20bb9135eb339f57409dc12a',
-     x86_64: 'baa622d68eb5e0db145cf40d72b5dbce9debf4420a6532ceab2e6f172a8e22eb'
+    aarch64: '82c8b3a8d0e933a0166f1a19dcacd890b0f5936efbf0ee5c7b26086c15becf71',
+     armv7l: '82c8b3a8d0e933a0166f1a19dcacd890b0f5936efbf0ee5c7b26086c15becf71',
+     x86_64: '379e5e1f284962f00c6308bb0a5342861b871913c36d650a948e7c97630c7773'
   })
 
   depends_on 'aspell_en'
