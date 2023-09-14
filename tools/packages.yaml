@@ -9186,6 +9186,11 @@ url: https://github.com/google/zopfli/releases
 activity: none
 ---
 kind: url
+name: zotero
+url: https://www.zotero.org/download
+activity: medium
+---
+kind: url
 name: zsh
 url: http://sourceforge.net/projects/zsh/files/zsh
 activity: low
