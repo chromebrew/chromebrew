@@ -28,7 +28,6 @@
 /usr/local/bin/pg_verifybackup
 /usr/local/bin/pg_waldump
 /usr/local/bin/postgres
-/usr/local/bin/postmaster
 /usr/local/bin/psql
 /usr/local/bin/reindexdb
 /usr/local/bin/vacuumdb
@@ -107,6 +106,7 @@
 /usr/local/include/postgresql/server/access/reloptions.h
 /usr/local/include/postgresql/server/access/relscan.h
 /usr/local/include/postgresql/server/access/rewriteheap.h
+/usr/local/include/postgresql/server/access/rmgrdesc_utils.h
 /usr/local/include/postgresql/server/access/rmgr.h
 /usr/local/include/postgresql/server/access/rmgrlist.h
 /usr/local/include/postgresql/server/access/sdir.h
@@ -139,6 +139,7 @@
 /usr/local/include/postgresql/server/access/visibilitymap.h
 /usr/local/include/postgresql/server/access/xact.h
 /usr/local/include/postgresql/server/access/xlogarchive.h
+/usr/local/include/postgresql/server/access/xlogbackup.h
 /usr/local/include/postgresql/server/access/xlogdefs.h
 /usr/local/include/postgresql/server/access/xlog.h
 /usr/local/include/postgresql/server/access/xloginsert.h
@@ -149,6 +150,8 @@
 /usr/local/include/postgresql/server/access/xlogrecovery.h
 /usr/local/include/postgresql/server/access/xlogstats.h
 /usr/local/include/postgresql/server/access/xlogutils.h
+/usr/local/include/postgresql/server/archive/archive_module.h
+/usr/local/include/postgresql/server/archive/shell_archive.h
 /usr/local/include/postgresql/server/bootstrap/bootstrap.h
 /usr/local/include/postgresql/server/catalog/binary_upgrade.h
 /usr/local/include/postgresql/server/catalog/catalog.h
@@ -331,7 +334,6 @@
 /usr/local/include/postgresql/server/commands/typecmds.h
 /usr/local/include/postgresql/server/commands/user.h
 /usr/local/include/postgresql/server/commands/vacuum.h
-/usr/local/include/postgresql/server/commands/variable.h
 /usr/local/include/postgresql/server/commands/view.h
 /usr/local/include/postgresql/server/common/archive.h
 /usr/local/include/postgresql/server/common/base64.h
@@ -356,6 +358,7 @@
 /usr/local/include/postgresql/server/common/logging.h
 /usr/local/include/postgresql/server/common/md5.h
 /usr/local/include/postgresql/server/common/openssl.h
+/usr/local/include/postgresql/server/common/percentrepl.h
 /usr/local/include/postgresql/server/common/pg_lzcompress.h
 /usr/local/include/postgresql/server/common/pg_prng.h
 /usr/local/include/postgresql/server/common/relpath.h
@@ -366,8 +369,8 @@
 /usr/local/include/postgresql/server/common/sha2.h
 /usr/local/include/postgresql/server/common/shortest_dec.h
 /usr/local/include/postgresql/server/common/string.h
-/usr/local/include/postgresql/server/common/unicode_combining_table.h
 /usr/local/include/postgresql/server/common/unicode_east_asian_fw_table.h
+/usr/local/include/postgresql/server/common/unicode_nonspacing_table.h
 /usr/local/include/postgresql/server/common/unicode_norm.h
 /usr/local/include/postgresql/server/common/unicode_norm_hashfunc.h
 /usr/local/include/postgresql/server/common/unicode_normprops_table.h
@@ -456,7 +459,6 @@
 /usr/local/include/postgresql/server/foreign/fdwapi.h
 /usr/local/include/postgresql/server/foreign/foreign.h
 /usr/local/include/postgresql/server/funcapi.h
-/usr/local/include/postgresql/server/getaddrinfo.h
 /usr/local/include/postgresql/server/getopt_long.h
 /usr/local/include/postgresql/server/jit/jit.h
 /usr/local/include/postgresql/server/jit/llvmjit_emit.h
@@ -476,6 +478,7 @@
 /usr/local/include/postgresql/server/libpq/crypt.h
 /usr/local/include/postgresql/server/libpq/hba.h
 /usr/local/include/postgresql/server/libpq/ifaddr.h
+/usr/local/include/postgresql/server/libpq/libpq-be-fe-helpers.h
 /usr/local/include/postgresql/server/libpq/libpq-be.h
 /usr/local/include/postgresql/server/libpq/libpq-fs.h
 /usr/local/include/postgresql/server/libpq/libpq.h
@@ -499,8 +502,11 @@
 /usr/local/include/postgresql/server/nodes/lockoptions.h
 /usr/local/include/postgresql/server/nodes/makefuncs.h
 /usr/local/include/postgresql/server/nodes/memnodes.h
+/usr/local/include/postgresql/server/nodes/miscnodes.h
+/usr/local/include/postgresql/server/nodes/multibitmapset.h
 /usr/local/include/postgresql/server/nodes/nodeFuncs.h
 /usr/local/include/postgresql/server/nodes/nodes.h
+/usr/local/include/postgresql/server/nodes/nodetags.h
 /usr/local/include/postgresql/server/nodes/params.h
 /usr/local/include/postgresql/server/nodes/parsenodes.h
 /usr/local/include/postgresql/server/nodes/pathnodes.h
@@ -508,6 +514,7 @@
 /usr/local/include/postgresql/server/nodes/plannodes.h
 /usr/local/include/postgresql/server/nodes/primnodes.h
 /usr/local/include/postgresql/server/nodes/print.h
+/usr/local/include/postgresql/server/nodes/queryjumble.h
 /usr/local/include/postgresql/server/nodes/readfuncs.h
 /usr/local/include/postgresql/server/nodes/replnodes.h
 /usr/local/include/postgresql/server/nodes/subscripting.h
@@ -542,8 +549,6 @@
 /usr/local/include/postgresql/server/optimizer/subselect.h
 /usr/local/include/postgresql/server/optimizer/tlist.h
 /usr/local/include/postgresql/server/parser/analyze.h
-/usr/local/include/postgresql/server/parser/gram.h
-/usr/local/include/postgresql/server/parser/gramparse.h
 /usr/local/include/postgresql/server/parser/kwlist.h
 /usr/local/include/postgresql/server/parser/parse_agg.h
 /usr/local/include/postgresql/server/parser/parse_clause.h
@@ -579,7 +584,6 @@
 /usr/local/include/postgresql/server/pgtime.h
 /usr/local/include/postgresql/server/pg_trace.h
 /usr/local/include/postgresql/server/plperl.h
-/usr/local/include/postgresql/server/plperl_helpers.h
 /usr/local/include/postgresql/server/plpgsql.h
 /usr/local/include/postgresql/server/plpy_cursorobject.h
 /usr/local/include/postgresql/server/plpy_elog.h
@@ -599,11 +603,9 @@
 /usr/local/include/postgresql/server/port/aix.h
 /usr/local/include/postgresql/server/port/atomics/arch-arm.h
 /usr/local/include/postgresql/server/port/atomics/arch-hppa.h
-/usr/local/include/postgresql/server/port/atomics/arch-ia64.h
 /usr/local/include/postgresql/server/port/atomics/arch-ppc.h
 /usr/local/include/postgresql/server/port/atomics/arch-x86.h
 /usr/local/include/postgresql/server/port/atomics/fallback.h
-/usr/local/include/postgresql/server/port/atomics/generic-acc.h
 /usr/local/include/postgresql/server/port/atomics/generic-gcc.h
 /usr/local/include/postgresql/server/port/atomics/generic.h
 /usr/local/include/postgresql/server/port/atomics/generic-msvc.h
@@ -613,7 +615,6 @@
 /usr/local/include/postgresql/server/port/darwin.h
 /usr/local/include/postgresql/server/port/freebsd.h
 /usr/local/include/postgresql/server/port.h
-/usr/local/include/postgresql/server/port/hpux.h
 /usr/local/include/postgresql/server/port/linux.h
 /usr/local/include/postgresql/server/port/netbsd.h
 /usr/local/include/postgresql/server/port/openbsd.h
@@ -621,7 +622,9 @@
 /usr/local/include/postgresql/server/port/pg_bswap.h
 /usr/local/include/postgresql/server/port/pg_crc32c.h
 /usr/local/include/postgresql/server/port/pg_iovec.h
+/usr/local/include/postgresql/server/port/pg_lfind.h
 /usr/local/include/postgresql/server/port/pg_pthread.h
+/usr/local/include/postgresql/server/port/simd.h
 /usr/local/include/postgresql/server/port/solaris.h
 /usr/local/include/postgresql/server/port/win32/arpa/inet.h
 /usr/local/include/postgresql/server/port/win32/dlfcn.h
@@ -635,10 +638,14 @@
 /usr/local/include/postgresql/server/port/win32_msvc/utime.h
 /usr/local/include/postgresql/server/port/win32/netdb.h
 /usr/local/include/postgresql/server/port/win32/netinet/in.h
+/usr/local/include/postgresql/server/port/win32/netinet/tcp.h
 /usr/local/include/postgresql/server/port/win32ntdll.h
 /usr/local/include/postgresql/server/port/win32_port.h
 /usr/local/include/postgresql/server/port/win32/pwd.h
+/usr/local/include/postgresql/server/port/win32/sys/resource.h
+/usr/local/include/postgresql/server/port/win32/sys/select.h
 /usr/local/include/postgresql/server/port/win32/sys/socket.h
+/usr/local/include/postgresql/server/port/win32/sys/un.h
 /usr/local/include/postgresql/server/port/win32/sys/wait.h
 /usr/local/include/postgresql/server/postgres_ext.h
 /usr/local/include/postgresql/server/postgres_fe.h
@@ -687,7 +694,6 @@
 /usr/local/include/postgresql/server/rewrite/rewriteSearchCycle.h
 /usr/local/include/postgresql/server/rewrite/rewriteSupport.h
 /usr/local/include/postgresql/server/rewrite/rowsecurity.h
-/usr/local/include/postgresql/server/rusagestub.h
 /usr/local/include/postgresql/server/snowball/header.h
 /usr/local/include/postgresql/server/snowball/libstemmer/api.h
 /usr/local/include/postgresql/server/snowball/libstemmer/header.h
@@ -784,7 +790,7 @@
 /usr/local/include/postgresql/server/storage/proclist_types.h
 /usr/local/include/postgresql/server/storage/procsignal.h
 /usr/local/include/postgresql/server/storage/reinit.h
-/usr/local/include/postgresql/server/storage/relfilenode.h
+/usr/local/include/postgresql/server/storage/relfilelocator.h
 /usr/local/include/postgresql/server/storage/sharedfileset.h
 /usr/local/include/postgresql/server/storage/shmem.h
 /usr/local/include/postgresql/server/storage/shm_mq.h
@@ -825,6 +831,7 @@
 /usr/local/include/postgresql/server/utils/cash.h
 /usr/local/include/postgresql/server/utils/catcache.h
 /usr/local/include/postgresql/server/utils/combocid.h
+/usr/local/include/postgresql/server/utils/conffiles.h
 /usr/local/include/postgresql/server/utils/date.h
 /usr/local/include/postgresql/server/utils/datetime.h
 /usr/local/include/postgresql/server/utils/datum.h
@@ -843,6 +850,7 @@
 /usr/local/include/postgresql/server/utils/freepage.h
 /usr/local/include/postgresql/server/utils/geo_decls.h
 /usr/local/include/postgresql/server/utils/guc.h
+/usr/local/include/postgresql/server/utils/guc_hooks.h
 /usr/local/include/postgresql/server/utils/guc_tables.h
 /usr/local/include/postgresql/server/utils/help_config.h
 /usr/local/include/postgresql/server/utils/hsearch.h
@@ -857,6 +865,8 @@
 /usr/local/include/postgresql/server/utils/lsyscache.h
 /usr/local/include/postgresql/server/utils/memdebug.h
 /usr/local/include/postgresql/server/utils/memutils.h
+/usr/local/include/postgresql/server/utils/memutils_internal.h
+/usr/local/include/postgresql/server/utils/memutils_memorychunk.h
 /usr/local/include/postgresql/server/utils/multirangetypes.h
 /usr/local/include/postgresql/server/utils/numeric.h
 /usr/local/include/postgresql/server/utils/old_snapshot.h
@@ -873,11 +883,10 @@
 /usr/local/include/postgresql/server/utils/probes.h
 /usr/local/include/postgresql/server/utils/ps_status.h
 /usr/local/include/postgresql/server/utils/queryenvironment.h
-/usr/local/include/postgresql/server/utils/queryjumble.h
 /usr/local/include/postgresql/server/utils/rangetypes.h
 /usr/local/include/postgresql/server/utils/regproc.h
 /usr/local/include/postgresql/server/utils/relcache.h
-/usr/local/include/postgresql/server/utils/relfilenodemap.h
+/usr/local/include/postgresql/server/utils/relfilenumbermap.h
 /usr/local/include/postgresql/server/utils/rel.h
 /usr/local/include/postgresql/server/utils/relmapper.h
 /usr/local/include/postgresql/server/utils/relptr.h
@@ -900,12 +909,14 @@
 /usr/local/include/postgresql/server/utils/tuplestore.h
 /usr/local/include/postgresql/server/utils/typcache.h
 /usr/local/include/postgresql/server/utils/tzparser.h
+/usr/local/include/postgresql/server/utils/usercontext.h
 /usr/local/include/postgresql/server/utils/uuid.h
 /usr/local/include/postgresql/server/utils/varbit.h
 /usr/local/include/postgresql/server/utils/varlena.h
 /usr/local/include/postgresql/server/utils/wait_event.h
 /usr/local/include/postgresql/server/utils/xid8.h
 /usr/local/include/postgresql/server/utils/xml.h
+/usr/local/include/postgresql/server/varatt.h
 /usr/local/include/postgresql/server/windowapi.h
 /usr/local/include/sql3types.h
 /usr/local/include/sqlca.h
@@ -916,10 +927,10 @@
 /usr/local/lib64/libecpg_compat.a
 /usr/local/lib64/libecpg_compat.so
 /usr/local/lib64/libecpg_compat.so.3
-/usr/local/lib64/libecpg_compat.so.3.15
+/usr/local/lib64/libecpg_compat.so.3.16
 /usr/local/lib64/libecpg.so
 /usr/local/lib64/libecpg.so.6
-/usr/local/lib64/libecpg.so.6.15
+/usr/local/lib64/libecpg.so.6.16
 /usr/local/lib64/libpgcommon.a
 /usr/local/lib64/libpgcommon_shlib.a
 /usr/local/lib64/libpgfeutils.a
@@ -928,11 +939,11 @@
 /usr/local/lib64/libpgtypes.a
 /usr/local/lib64/libpgtypes.so
 /usr/local/lib64/libpgtypes.so.3
-/usr/local/lib64/libpgtypes.so.3.15
+/usr/local/lib64/libpgtypes.so.3.16
 /usr/local/lib64/libpq.a
 /usr/local/lib64/libpq.so
 /usr/local/lib64/libpq.so.5
-/usr/local/lib64/libpq.so.5.15
+/usr/local/lib64/libpq.so.5.16
 /usr/local/lib64/pkgconfig/libecpg_compat.pc
 /usr/local/lib64/pkgconfig/libecpg.pc
 /usr/local/lib64/pkgconfig/libpgtypes.pc
@@ -999,6 +1010,7 @@
 /usr/local/lib64/postgresql/bitcode/citext.index.bc
 /usr/local/lib64/postgresql/bitcode/cube/cube.bc
 /usr/local/lib64/postgresql/bitcode/cube/cubeparse.bc
+/usr/local/lib64/postgresql/bitcode/cube/cubescan.bc
 /usr/local/lib64/postgresql/bitcode/cube.index.bc
 /usr/local/lib64/postgresql/bitcode/dblink/dblink.bc
 /usr/local/lib64/postgresql/bitcode/dblink.index.bc
@@ -1010,6 +1022,7 @@
 /usr/local/lib64/postgresql/bitcode/earthdistance.index.bc
 /usr/local/lib64/postgresql/bitcode/file_fdw/file_fdw.bc
 /usr/local/lib64/postgresql/bitcode/file_fdw.index.bc
+/usr/local/lib64/postgresql/bitcode/fuzzystrmatch/daitch_mokotoff.bc
 /usr/local/lib64/postgresql/bitcode/fuzzystrmatch/dmetaphone.bc
 /usr/local/lib64/postgresql/bitcode/fuzzystrmatch/fuzzystrmatch.bc
 /usr/local/lib64/postgresql/bitcode/fuzzystrmatch.index.bc
@@ -1223,6 +1236,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/nbtdesc.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/relmapdesc.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/replorigindesc.bc
+/usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/rmgrdesc_utils.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/seqdesc.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/smgrdesc.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/rmgrdesc/spgdesc.bc
@@ -1263,6 +1277,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/varsup.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xact.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlogarchive.bc
+/usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlogbackup.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlog.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlogfuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xloginsert.bc
@@ -1271,6 +1286,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlogrecovery.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlogstats.bc
 /usr/local/lib64/postgresql/bitcode/postgres/access/transam/xlogutils.bc
+/usr/local/lib64/postgresql/bitcode/postgres/archive/shell_archive.bc
 /usr/local/lib64/postgresql/bitcode/postgres/backup/backup_manifest.bc
 /usr/local/lib64/postgresql/bitcode/postgres/backup/basebackup.bc
 /usr/local/lib64/postgresql/bitcode/postgres/backup/basebackup_copy.bc
@@ -1283,6 +1299,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/backup/basebackup_throttle.bc
 /usr/local/lib64/postgresql/bitcode/postgres/backup/basebackup_zstd.bc
 /usr/local/lib64/postgresql/bitcode/postgres/bootstrap/bootparse.bc
+/usr/local/lib64/postgresql/bitcode/postgres/bootstrap/bootscanner.bc
 /usr/local/lib64/postgresql/bitcode/postgres/bootstrap/bootstrap.bc
 /usr/local/lib64/postgresql/bitcode/postgres/catalog/aclchk.bc
 /usr/local/lib64/postgresql/bitcode/postgres/catalog/catalog.bc
@@ -1473,11 +1490,13 @@
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/extensible.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/list.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/makefuncs.bc
+/usr/local/lib64/postgresql/bitcode/postgres/nodes/multibitmapset.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/nodeFuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/nodes.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/outfuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/params.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/print.bc
+/usr/local/lib64/postgresql/bitcode/postgres/nodes/queryjumblefuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/read.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/readfuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/nodes/tidbitmap.bc
@@ -1569,7 +1588,6 @@
 /usr/local/lib64/postgresql/bitcode/postgres/postmaster/interrupt.bc
 /usr/local/lib64/postgresql/bitcode/postgres/postmaster/pgarch.bc
 /usr/local/lib64/postgresql/bitcode/postgres/postmaster/postmaster.bc
-/usr/local/lib64/postgresql/bitcode/postgres/postmaster/shell_archive.bc
 /usr/local/lib64/postgresql/bitcode/postgres/postmaster/startup.bc
 /usr/local/lib64/postgresql/bitcode/postgres/postmaster/syslogger.bc
 /usr/local/lib64/postgresql/bitcode/postgres/postmaster/walwriter.bc
@@ -1579,6 +1597,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/regex/regexport.bc
 /usr/local/lib64/postgresql/bitcode/postgres/regex/regfree.bc
 /usr/local/lib64/postgresql/bitcode/postgres/regex/regprefix.bc
+/usr/local/lib64/postgresql/bitcode/postgres/replication/logical/applyparallelworker.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/logical/decode.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/logical/launcher.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/logical/logical.bc
@@ -1592,10 +1611,12 @@
 /usr/local/lib64/postgresql/bitcode/postgres/replication/logical/tablesync.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/logical/worker.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/repl_gram.bc
+/usr/local/lib64/postgresql/bitcode/postgres/replication/repl_scanner.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/slot.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/slotfuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/syncrep.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/syncrep_gram.bc
+/usr/local/lib64/postgresql/bitcode/postgres/replication/syncrep_scanner.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/walreceiver.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/walreceiverfuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/replication/walsender.bc
@@ -1635,7 +1656,6 @@
 /usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/procsignal.bc
 /usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/shmem.bc
 /usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/shm_mq.bc
-/usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/shmqueue.bc
 /usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/shm_toc.bc
 /usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/signalfuncs.bc
 /usr/local/lib64/postgresql/bitcode/postgres/storage/ipc/sinvaladt.bc
@@ -1687,6 +1707,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_checkpointer.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_database.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_function.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_io.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_relation.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_replslot.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/activity/pgstat_shmem.bc
@@ -1740,6 +1761,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/utils/adt/jsonpath.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/adt/jsonpath_exec.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/adt/jsonpath_gram.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/adt/jsonpath_scan.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/adt/like.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/adt/like_support.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/adt/lockfuncs.bc
@@ -1809,7 +1831,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/utils/cache/partcache.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/cache/plancache.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/cache/relcache.bc
-/usr/local/lib64/postgresql/bitcode/postgres/utils/cache/relfilenodemap.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/cache/relfilenumbermap.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/cache/relmapper.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/cache/spccache.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/cache/syscache.bc
@@ -1828,24 +1850,29 @@
 /usr/local/lib64/postgresql/bitcode/postgres/utils/init/globals.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/init/miscinit.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/init/postinit.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/init/usercontext.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mb/conv.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mb/mbutils.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mb/stringinfo_mb.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mb/wstrcmp.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mb/wstrncmp.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/misc/conffiles.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/guc.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/misc/guc-file.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/misc/guc_funcs.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/misc/guc_tables.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/help_config.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/pg_config.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/pg_controldata.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/pg_rusage.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/ps_status.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/queryenvironment.bc
-/usr/local/lib64/postgresql/bitcode/postgres/utils/misc/queryjumble.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/rls.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/sampling.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/superuser.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/timeout.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/misc/tzparser.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/mmgr/alignedalloc.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mmgr/aset.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mmgr/dsa.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/mmgr/freepage.bc
@@ -1860,6 +1887,7 @@
 /usr/local/lib64/postgresql/bitcode/postgres/utils/sort/sharedtuplestore.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/sort/sortsupport.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/sort/tuplesort.bc
+/usr/local/lib64/postgresql/bitcode/postgres/utils/sort/tuplesortvariants.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/sort/tuplestore.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/time/combocid.bc
 /usr/local/lib64/postgresql/bitcode/postgres/utils/time/snapmgr.bc
@@ -1868,6 +1896,7 @@
 /usr/local/lib64/postgresql/bitcode/seg.index.bc
 /usr/local/lib64/postgresql/bitcode/seg/seg.bc
 /usr/local/lib64/postgresql/bitcode/seg/segparse.bc
+/usr/local/lib64/postgresql/bitcode/seg/segscan.bc
 /usr/local/lib64/postgresql/bitcode/sslinfo.index.bc
 /usr/local/lib64/postgresql/bitcode/sslinfo/sslinfo.bc
 /usr/local/lib64/postgresql/bitcode/tablefunc.index.bc
@@ -2010,7 +2039,6 @@
 /usr/local/share/doc/postgresql/html/app-pgrewind.html
 /usr/local/share/doc/postgresql/html/app-pgverifybackup.html
 /usr/local/share/doc/postgresql/html/app-postgres.html
-/usr/local/share/doc/postgresql/html/app-postmaster.html
 /usr/local/share/doc/postgresql/html/app-psql.html
 /usr/local/share/doc/postgresql/html/app-reindexdb.html
 /usr/local/share/doc/postgresql/html/app-vacuumdb.html
@@ -2229,6 +2257,7 @@
 /usr/local/share/doc/postgresql/html/dml-update.html
 /usr/local/share/doc/postgresql/html/docguide-authoring.html
 /usr/local/share/doc/postgresql/html/docguide-build.html
+/usr/local/share/doc/postgresql/html/docguide-build-meson.html
 /usr/local/share/doc/postgresql/html/docguide-docbook.html
 /usr/local/share/doc/postgresql/html/docguide.html
 /usr/local/share/doc/postgresql/html/docguide-style.html
@@ -2462,10 +2491,10 @@
 /usr/local/share/doc/postgresql/html/installation-platform-notes.html
 /usr/local/share/doc/postgresql/html/install-binaries.html
 /usr/local/share/doc/postgresql/html/install-getsource.html
+/usr/local/share/doc/postgresql/html/install-make.html
+/usr/local/share/doc/postgresql/html/install-meson.html
 /usr/local/share/doc/postgresql/html/install-post.html
-/usr/local/share/doc/postgresql/html/install-procedure.html
 /usr/local/share/doc/postgresql/html/install-requirements.html
-/usr/local/share/doc/postgresql/html/install-short.html
 /usr/local/share/doc/postgresql/html/install-windows-full.html
 /usr/local/share/doc/postgresql/html/install-windows.html
 /usr/local/share/doc/postgresql/html/intagg.html
@@ -2683,11 +2712,7 @@
 /usr/local/share/doc/postgresql/html/regress-run.html
 /usr/local/share/doc/postgresql/html/regress-tap.html
 /usr/local/share/doc/postgresql/html/regress-variant.html
-/usr/local/share/doc/postgresql/html/release-15-1.html
-/usr/local/share/doc/postgresql/html/release-15-2.html
-/usr/local/share/doc/postgresql/html/release-15-3.html
-/usr/local/share/doc/postgresql/html/release-15-4.html
-/usr/local/share/doc/postgresql/html/release-15.html
+/usr/local/share/doc/postgresql/html/release-16.html
 /usr/local/share/doc/postgresql/html/release.html
 /usr/local/share/doc/postgresql/html/release-prior.html
 /usr/local/share/doc/postgresql/html/replication-origins.html
@@ -3005,6 +3030,7 @@
 /usr/local/share/doc/postgresql/html/storage-toast.html
 /usr/local/share/doc/postgresql/html/storage-vm.html
 /usr/local/share/doc/postgresql/html/stylesheet.css
+/usr/local/share/doc/postgresql/html/subxacts.html
 /usr/local/share/doc/postgresql/html/supported-platforms.html
 /usr/local/share/doc/postgresql/html/system-catalog-declarations.html
 /usr/local/share/doc/postgresql/html/system-catalog-initial-data.html
@@ -3026,7 +3052,9 @@
 /usr/local/share/doc/postgresql/html/textsearch-parsers.html
 /usr/local/share/doc/postgresql/html/textsearch-psql.html
 /usr/local/share/doc/postgresql/html/textsearch-tables.html
+/usr/local/share/doc/postgresql/html/transaction-id.html
 /usr/local/share/doc/postgresql/html/transaction-iso.html
+/usr/local/share/doc/postgresql/html/transactions.html
 /usr/local/share/doc/postgresql/html/trigger-datachanges.html
 /usr/local/share/doc/postgresql/html/trigger-definition.html
 /usr/local/share/doc/postgresql/html/trigger-example.html
@@ -3058,6 +3086,7 @@
 /usr/local/share/doc/postgresql/html/tutorial-update.html
 /usr/local/share/doc/postgresql/html/tutorial-views.html
 /usr/local/share/doc/postgresql/html/tutorial-window.html
+/usr/local/share/doc/postgresql/html/two-phase.html
 /usr/local/share/doc/postgresql/html/typeconv-func.html
 /usr/local/share/doc/postgresql/html/typeconv.html
 /usr/local/share/doc/postgresql/html/typeconv-oper.html
@@ -3117,6 +3146,7 @@
 /usr/local/share/doc/postgresql/html/warm-standby-failover.html
 /usr/local/share/doc/postgresql/html/warm-standby.html
 /usr/local/share/doc/postgresql/html/when-can-parallel-query-be-used.html
+/usr/local/share/doc/postgresql/html/xact-locking.html
 /usr/local/share/doc/postgresql/html/xaggr.html
 /usr/local/share/doc/postgresql/html/xfunc-c.html
 /usr/local/share/doc/postgresql/html/xfunc.html
@@ -3165,7 +3195,6 @@
 /usr/local/share/man/man1/pg_verifybackup.1.zst
 /usr/local/share/man/man1/pg_waldump.1.zst
 /usr/local/share/man/man1/postgres.1.zst
-/usr/local/share/man/man1/postmaster.1.zst
 /usr/local/share/man/man1/psql.1.zst
 /usr/local/share/man/man1/reindexdb.1.zst
 /usr/local/share/man/man1/vacuumdb.1.zst
@@ -3492,6 +3521,7 @@
 /usr/local/share/postgresql/extension/file_fdw--1.0.sql
 /usr/local/share/postgresql/extension/file_fdw.control
 /usr/local/share/postgresql/extension/fuzzystrmatch--1.0--1.1.sql
+/usr/local/share/postgresql/extension/fuzzystrmatch--1.1--1.2.sql
 /usr/local/share/postgresql/extension/fuzzystrmatch--1.1.sql
 /usr/local/share/postgresql/extension/fuzzystrmatch.control
 /usr/local/share/postgresql/extension/hstore--1.1--1.2.sql
@@ -3546,6 +3576,7 @@
 /usr/local/share/postgresql/extension/old_snapshot.control
 /usr/local/share/postgresql/extension/pageinspect--1.0--1.1.sql
 /usr/local/share/postgresql/extension/pageinspect--1.10--1.11.sql
+/usr/local/share/postgresql/extension/pageinspect--1.11--1.12.sql
 /usr/local/share/postgresql/extension/pageinspect--1.1--1.2.sql
 /usr/local/share/postgresql/extension/pageinspect--1.2--1.3.sql
 /usr/local/share/postgresql/extension/pageinspect--1.3--1.4.sql
@@ -3561,6 +3592,7 @@
 /usr/local/share/postgresql/extension/pg_buffercache--1.1--1.2.sql
 /usr/local/share/postgresql/extension/pg_buffercache--1.2--1.3.sql
 /usr/local/share/postgresql/extension/pg_buffercache--1.2.sql
+/usr/local/share/postgresql/extension/pg_buffercache--1.3--1.4.sql
 /usr/local/share/postgresql/extension/pg_buffercache.control
 /usr/local/share/postgresql/extension/pgcrypto--1.0--1.1.sql
 /usr/local/share/postgresql/extension/pgcrypto--1.1--1.2.sql
@@ -3612,6 +3644,7 @@
 /usr/local/share/postgresql/extension/pg_visibility--1.1--1.2.sql
 /usr/local/share/postgresql/extension/pg_visibility--1.1.sql
 /usr/local/share/postgresql/extension/pg_visibility.control
+/usr/local/share/postgresql/extension/pg_walinspect--1.0--1.1.sql
 /usr/local/share/postgresql/extension/pg_walinspect--1.0.sql
 /usr/local/share/postgresql/extension/pg_walinspect.control
 /usr/local/share/postgresql/extension/plperl--1.0.sql

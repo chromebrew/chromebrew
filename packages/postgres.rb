@@ -3,23 +3,23 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '15.4'
+  version '16.0'
   license 'PostgreSQL and GPL-2'
   compatibility 'all'
-  source_url 'https://ftp.postgresql.org/pub/source/v15.4/postgresql-15.4.tar.bz2'
-  source_sha256 'baec5a4bdc4437336653b6cb5d9ed89be5bd5c0c58b94e0becee0a999e63c8f9'
+  source_url 'https://ftp.postgresql.org/pub/source/v16.0/postgresql-16.0.tar.bz2'
+  source_sha256 'df9e823eb22330444e1d48e52cc65135a652a6fdb3ce325e3f08549339f51b99'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_armv7l/postgres-15.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_armv7l/postgres-15.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_i686/postgres-15.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/15.4_x86_64/postgres-15.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_armv7l/postgres-16.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_armv7l/postgres-16.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_i686/postgres-16.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_x86_64/postgres-16.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '22c19fca8e27bc35cbc6b70ac0d8f3148b643e74e796543eedc82f077f3d6ec3',
-     armv7l: '22c19fca8e27bc35cbc6b70ac0d8f3148b643e74e796543eedc82f077f3d6ec3',
-       i686: '7b02b054c6b2898f8ee302e483004e82d667841b0bf42082efca461079d617ec',
-     x86_64: '0423c17723b3247d5713611895edd4e6836dfbd8036326d32c4d9a9a032d032d'
+    aarch64: '8afed5edc4f2a481063478cf88ddbb4f3d7e1624a7490316d159f33598fde425',
+     armv7l: '8afed5edc4f2a481063478cf88ddbb4f3d7e1624a7490316d159f33598fde425',
+       i686: 'bdaeb4c338f81ccb5f0bb7df6c9a54e12e8d855bb365f6adcfd21fcfe6eb06bd',
+     x86_64: 'ec76b05bcfc8cdb797563ec2695073f31fee64c6574e4e8cbfc5aa9272694e2f'
   })
 
   depends_on 'brotli'
