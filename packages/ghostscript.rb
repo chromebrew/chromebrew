@@ -3,21 +3,21 @@ require 'package'
 class Ghostscript < Package
   description 'Interpreter for the PostScript language'
   homepage 'https://www.ghostscript.com/'
-  version '10.01.2'
+  version '10.02.0'
   license 'AGPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10012/ghostpdl-10.01.2.tar.xz'
-  source_sha256 'b535600c968f672b4f6750e7eac57623fc7f80eb8c00a0175a46010942cf0e9c'
+  source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10020/ghostpdl-10.02.0.tar.xz'
+  source_sha256 'c158f3b5ade88227510a42652e0fe7b2aa48e123c1fd663cb03e3d87ca2db86a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.01.2_armv7l/ghostscript-10.01.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.01.2_armv7l/ghostscript-10.01.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.01.2_x86_64/ghostscript-10.01.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.02.0_armv7l/ghostscript-10.02.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.02.0_armv7l/ghostscript-10.02.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.02.0_x86_64/ghostscript-10.02.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9280c8b0efd59665c590e806c749799be1b54d3905d194f0bcaf21cdfcb7e11a',
-     armv7l: '9280c8b0efd59665c590e806c749799be1b54d3905d194f0bcaf21cdfcb7e11a',
-     x86_64: '7fb1df4334f2707290a7a8f26781960f17464b7fd53059113085b3b474c8b12d'
+    aarch64: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
+     armv7l: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
+     x86_64: '04b66919323c4660ddbbfcb9f255a3ba0de73e540a956abc10650978d9abe6f1'
   })
 
   depends_on 'at_spi2_core' # R
@@ -49,6 +49,8 @@ class Ghostscript < Package
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
   depends_on 'zlibpkg' # R
+
+  no_lto
 
   def self.patch
     FileUtils.rm_rf %w[cups/libs expat ijs jpeg lcms2mt libpng openjpeg tiff zlib]
