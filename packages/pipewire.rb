@@ -8,7 +8,7 @@ class Pipewire < Package
           elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
             '0.3.60'
           else
-            '0.3.79'
+            '0.3.80'
           end
   compatibility 'all'
   license 'LGPL-2.1+'
@@ -35,37 +35,37 @@ class Pipewire < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.79_armv7l/pipewire-0.3.79-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.79_armv7l/pipewire-0.3.79-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.79_x86_64/pipewire-0.3.79-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.80_armv7l/pipewire-0.3.80-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.80_armv7l/pipewire-0.3.80-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.80_x86_64/pipewire-0.3.80-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '4f183ca08317085f7ed34849561af97489a8e353754db0c8ba11e7e612de6614',
-       armv7l: '4f183ca08317085f7ed34849561af97489a8e353754db0c8ba11e7e612de6614',
-       x86_64: 'aeb3d3eef6871b74572f237825b45f2ebf7b96e2556b0aea06b043984d664084'
+      aarch64: '2d4b62539499d2bf0aa7456e9c96900de442b69eae365c76eb855b39e4cda5f3',
+       armv7l: '2d4b62539499d2bf0aa7456e9c96900de442b69eae365c76eb855b39e4cda5f3',
+       x86_64: 'a8dbd73b9706f5a90db5aeb9177aeb3a5f009357d61c4097ae290c6cee2467d1'
     })
   end
 
   depends_on 'alsa_lib' # R
   depends_on 'alsa_plugins' => :build
+  depends_on 'avahi' # R
   depends_on 'ca_certificates' => :build
   depends_on 'dbus' # R
   depends_on 'eudev' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gstreamer' # R
   depends_on 'jack' # R
   depends_on 'libsndfile' # R
-  depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
-  depends_on 'avahi' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'lilv' # R
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'pulseaudio' # R
   depends_on 'readline' # R
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' # R
   depends_on 'webrtc_audio_processing' # R
 
   def self.prebuild
@@ -75,7 +75,7 @@ class Pipewire < Package
   end
 
   def self.build
-    system "mold -run meson \
+    system "mold -run meson setup \
       #{CREW_MESON_OPTIONS} \
       -Dbluez5-backend-hsphfpd=disabled \
       -Dbluez5-backend-ofono=disabled \
@@ -85,6 +85,7 @@ class Pipewire < Package
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d \
       -Dv4l2=disabled \
       -Dvolume=auto \
+      -Dvulkan=enabled \
       builddir"
     system 'meson configure builddir'
     system "#{CREW_NINJA} -C builddir"

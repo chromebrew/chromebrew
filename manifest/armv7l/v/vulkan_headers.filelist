@@ -23,6 +23,7 @@
 /usr/local/include/vulkan/vulkan_handles.hpp
 /usr/local/include/vulkan/vulkan_hash.hpp
 /usr/local/include/vulkan/vulkan.hpp
+/usr/local/include/vulkan/vulkan_hpp_macros.hpp
 /usr/local/include/vulkan/vulkan_ios.h
 /usr/local/include/vulkan/vulkan_macos.h
 /usr/local/include/vulkan/vulkan_metal.h
