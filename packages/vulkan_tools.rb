@@ -6,21 +6,21 @@ require 'package'
 class Vulkan_tools < Package
   description 'Vulkan Utilities and Tools'
   homepage 'https://www.khronos.org/vulkan/'
-  version '1.3.257'
+  version '1.3.264'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.257_armv7l/vulkan_tools-1.3.257-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.257_armv7l/vulkan_tools-1.3.257-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.257_x86_64/vulkan_tools-1.3.257-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.264_armv7l/vulkan_tools-1.3.264-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.264_armv7l/vulkan_tools-1.3.264-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.264_x86_64/vulkan_tools-1.3.264-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2befa479370bdb902c8968befad55f29d158ad58e857fd26bd166befbe65db66',
-     armv7l: '2befa479370bdb902c8968befad55f29d158ad58e857fd26bd166befbe65db66',
-     x86_64: '3543e09ecfe5ca8d9fd883b0691532a60b7bcd99d4a0f19e989497dbe9c6c0b9'
+    aarch64: '917411cf3ee9af92e4c54f404c53a28719b787d702d3114d9d297f824f03a153',
+     armv7l: '917411cf3ee9af92e4c54f404c53a28719b787d702d3114d9d297f824f03a153',
+     x86_64: '678946095da919cb69d0a67e88e152a61279d279b142549b65267b6664c0ff2b'
   })
 
   depends_on 'gcc_dev' => :build

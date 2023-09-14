@@ -2,6 +2,7 @@
 /usr/local/bin/pipewire-aes67
 /usr/local/bin/pipewire-avb
 /usr/local/bin/pipewire-pulse
+/usr/local/bin/pipewire-vulkan
 /usr/local/bin/pw-cat
 /usr/local/bin/pw-cli
 /usr/local/bin/pw-config
@@ -179,6 +180,9 @@
 /usr/local/include/spa-0.2/spa/param/props-types.h
 /usr/local/include/spa-0.2/spa/param/route.h
 /usr/local/include/spa-0.2/spa/param/route-types.h
+/usr/local/include/spa-0.2/spa/param/tag.h
+/usr/local/include/spa-0.2/spa/param/tag-types.h
+/usr/local/include/spa-0.2/spa/param/tag-utils.h
 /usr/local/include/spa-0.2/spa/param/type-info.h
 /usr/local/include/spa-0.2/spa/param/video/chroma.h
 /usr/local/include/spa-0.2/spa/param/video/color.h
@@ -274,19 +278,19 @@
 /usr/local/lib64/gstreamer-1.0/libgstpipewire.so
 /usr/local/lib64/libpipewire-0.3.so
 /usr/local/lib64/libpipewire-0.3.so.0
-/usr/local/lib64/libpipewire-0.3.so.0.379.0
+/usr/local/lib64/libpipewire-0.3.so.0.380.0
 /usr/local/lib64/libwireplumber-0.4.so
 /usr/local/lib64/libwireplumber-0.4.so.0
 /usr/local/lib64/libwireplumber-0.4.so.0.4.14
 /usr/local/lib64/pipewire-0.3/jack/libjacknet.so
 /usr/local/lib64/pipewire-0.3/jack/libjacknet.so.0
-/usr/local/lib64/pipewire-0.3/jack/libjacknet.so.0.3.379
+/usr/local/lib64/pipewire-0.3/jack/libjacknet.so.0.3.380
 /usr/local/lib64/pipewire-0.3/jack/libjackserver.so
 /usr/local/lib64/pipewire-0.3/jack/libjackserver.so.0
-/usr/local/lib64/pipewire-0.3/jack/libjackserver.so.0.3.379
+/usr/local/lib64/pipewire-0.3/jack/libjackserver.so.0.3.380
 /usr/local/lib64/pipewire-0.3/jack/libjack.so
 /usr/local/lib64/pipewire-0.3/jack/libjack.so.0
-/usr/local/lib64/pipewire-0.3/jack/libjack.so.0.3.379
+/usr/local/lib64/pipewire-0.3/jack/libjack.so.0.3.380
 /usr/local/lib64/pipewire-0.3/libpipewire-module-access.so
 /usr/local/lib64/pipewire-0.3/libpipewire-module-adapter.so
 /usr/local/lib64/pipewire-0.3/libpipewire-module-avb.so
@@ -332,7 +336,6 @@
 /usr/local/lib64/pkgconfig/libspa-0.2.pc
 /usr/local/lib64/pkgconfig/wireplumber-0.4.pc
 /usr/local/lib64/spa-0.2/aec/libspa-aec-null.so
-/usr/local/lib64/spa-0.2/aec/libspa-aec-webrtc.so
 /usr/local/lib64/spa-0.2/alsa/libspa-alsa.so
 /usr/local/lib64/spa-0.2/audioconvert/libspa-audioconvert.so
 /usr/local/lib64/spa-0.2/audiomixer/libspa-audiomixer.so
@@ -345,6 +348,7 @@
 /usr/local/lib64/spa-0.2/videoconvert/libspa-videoconvert.so
 /usr/local/lib64/spa-0.2/videotestsrc/libspa-videotestsrc.so
 /usr/local/lib64/spa-0.2/volume/libspa-volume.so
+/usr/local/lib64/spa-0.2/vulkan/libspa-vulkan.so
 /usr/local/lib64/wireplumber-0.4/libwireplumber-module-default-nodes-api.so
 /usr/local/lib64/wireplumber-0.4/libwireplumber-module-default-nodes.so
 /usr/local/lib64/wireplumber-0.4/libwireplumber-module-default-profile.so
@@ -566,6 +570,7 @@
 /usr/local/share/pipewire/pipewire.conf.avail/20-upmix.conf
 /usr/local/share/pipewire/pipewire-pulse.conf
 /usr/local/share/pipewire/pipewire-pulse.conf.avail/20-upmix.conf
+/usr/local/share/pipewire/pipewire-vulkan.conf
 /usr/local/share/wireplumber/bluetooth.conf
 /usr/local/share/wireplumber/bluetooth.lua.d/00-functions.lua
 /usr/local/share/wireplumber/bluetooth.lua.d/30-bluez-midi-monitor.lua
