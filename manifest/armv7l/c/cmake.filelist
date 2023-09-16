@@ -46,6 +46,7 @@
 /usr/local/share/cmake-3.27/Help/command/ctest_update.rst
 /usr/local/share/cmake-3.27/Help/command/ctest_upload.rst
 /usr/local/share/cmake-3.27/Help/command/define_property.rst
+/usr/local/share/cmake-3.27/Help/command/DEPRECATED_POLICY_VERSIONS.txt
 /usr/local/share/cmake-3.27/Help/command/DEVICE_LINK_OPTIONS.txt
 /usr/local/share/cmake-3.27/Help/command/elseif.rst
 /usr/local/share/cmake-3.27/Help/command/else.rst
