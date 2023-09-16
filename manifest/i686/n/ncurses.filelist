@@ -21,14 +21,12 @@
 /usr/local/include/ncurses/etip.h
 /usr/local/include/ncurses/form.h
 /usr/local/include/ncurses/menu.h
-/usr/local/include/ncurses/nc_tparm.h
 /usr/local/include/ncurses/ncurses_dll.h
 /usr/local/include/ncurses/ncurses.h
 /usr/local/include/ncurses/panel.h
 /usr/local/include/ncurses/termcap.h
 /usr/local/include/ncurses/term_entry.h
 /usr/local/include/ncurses/term.h
-/usr/local/include/ncurses/tic.h
 /usr/local/include/ncurses/unctrl.h
 /usr/local/include/ncursesw/cursesapp.h
 /usr/local/include/ncursesw/cursesf.h
@@ -41,14 +39,12 @@
 /usr/local/include/ncursesw/etip.h
 /usr/local/include/ncursesw/form.h
 /usr/local/include/ncursesw/menu.h
-/usr/local/include/ncursesw/nc_tparm.h
 /usr/local/include/ncursesw/ncurses_dll.h
 /usr/local/include/ncursesw/ncurses.h
 /usr/local/include/ncursesw/panel.h
 /usr/local/include/ncursesw/termcap.h
 /usr/local/include/ncursesw/term_entry.h
 /usr/local/include/ncursesw/term.h
-/usr/local/include/ncursesw/tic.h
 /usr/local/include/ncursesw/unctrl.h
 /usr/local/lib/libform.a
 /usr/local/lib/libform.so
@@ -199,6 +195,7 @@
 /usr/local/share/man/man3/curscr.3x.zst
 /usr/local/share/man/man3/curs_delch.3x.zst
 /usr/local/share/man/man3/curs_deleteln.3x.zst
+/usr/local/share/man/man3/curses.3x.zst
 /usr/local/share/man/man3/curses_trace.3x.zst
 /usr/local/share/man/man3/curses_version.3x.zst
 /usr/local/share/man/man3/curs_extend.3x.zst
@@ -435,7 +432,11 @@
 /usr/local/share/man/man3/in_wchnstr.3x.zst
 /usr/local/share/man/man3/in_wchstr.3x.zst
 /usr/local/share/man/man3/inwstr.3x.zst
+/usr/local/share/man/man3/is_cbreak.3x.zst
+/usr/local/share/man/man3/is_cbreak_sp.3x.zst
 /usr/local/share/man/man3/is_cleared.3x.zst
+/usr/local/share/man/man3/is_echo.3x.zst
+/usr/local/share/man/man3/is_echo_sp.3x.zst
 /usr/local/share/man/man3/isendwin.3x.zst
 /usr/local/share/man/man3/isendwin_sp.3x.zst
 /usr/local/share/man/man3/is_idcok.3x.zst
@@ -444,9 +445,13 @@
 /usr/local/share/man/man3/is_keypad.3x.zst
 /usr/local/share/man/man3/is_leaveok.3x.zst
 /usr/local/share/man/man3/is_linetouched.3x.zst
+/usr/local/share/man/man3/is_nl.3x.zst
+/usr/local/share/man/man3/is_nl_sp.3x.zst
 /usr/local/share/man/man3/is_nodelay.3x.zst
 /usr/local/share/man/man3/is_notimeout.3x.zst
 /usr/local/share/man/man3/is_pad.3x.zst
+/usr/local/share/man/man3/is_raw.3x.zst
+/usr/local/share/man/man3/is_raw_sp.3x.zst
 /usr/local/share/man/man3/is_scrollok.3x.zst
 /usr/local/share/man/man3/is_subwin.3x.zst
 /usr/local/share/man/man3/is_syncok.3x.zst
@@ -850,6 +855,8 @@
 /usr/local/share/man/man3/tigetstr_sp.3x.zst
 /usr/local/share/man/man3/timeout.3x.zst
 /usr/local/share/man/man3/tiparm.3x.zst
+/usr/local/share/man/man3/tiparm_s.3x.zst
+/usr/local/share/man/man3/tiscan_s.3x.zst
 /usr/local/share/man/man3/top_panel.3x.zst
 /usr/local/share/man/man3/top_row.3x.zst
 /usr/local/share/man/man3/touchline.3x.zst
@@ -2255,6 +2262,7 @@
 /usr/local/share/terminfo/l/linux-c
 /usr/local/share/terminfo/l/linux-c-nc
 /usr/local/share/terminfo/l/linux+decid
+/usr/local/share/terminfo/l/linux+kbs
 /usr/local/share/terminfo/l/linux-koi8
 /usr/local/share/terminfo/l/linux-koi8r
 /usr/local/share/terminfo/l/linux-lat
@@ -2768,6 +2776,7 @@
 /usr/local/share/terminfo/p/pty
 /usr/local/share/terminfo/p/putty
 /usr/local/share/terminfo/p/putty-256color
+/usr/local/share/terminfo/p/putty+cursor
 /usr/local/share/terminfo/p/putty+fnkeys
 /usr/local/share/terminfo/p/putty+fnkeys+esc
 /usr/local/share/terminfo/p/putty+fnkeys+linux
@@ -2846,6 +2855,8 @@
 /usr/local/share/terminfo/r/regent40
 /usr/local/share/terminfo/r/regent40+
 /usr/local/share/terminfo/r/regent60
+/usr/local/share/terminfo/r/report+da2
+/usr/local/share/terminfo/r/report+version
 /usr/local/share/terminfo/r/rt6221
 /usr/local/share/terminfo/r/rt6221-w
 /usr/local/share/terminfo/r/rtpc
