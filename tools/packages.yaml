@@ -560,6 +560,11 @@ url: https://github.com/JLErvin/berry/releases
 activity: low
 ---
 kind: url
+name: bibutils
+url: https://downloads.sourceforge.net/project/bibutils
+activity: none
+---
+kind: url
 name: biew
 url: https://sourceforge.net/projects/beye/files/biew/
 activity: none
