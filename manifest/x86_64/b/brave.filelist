@@ -15,6 +15,7 @@
 /usr/local/share/brave/libEGL.so
 /usr/local/share/brave/libGLESv2.so
 /usr/local/share/brave/libqt5_shim.so
+/usr/local/share/brave/libqt6_shim.so
 /usr/local/share/brave/libvk_swiftshader.so
 /usr/local/share/brave/libvulkan.so.1
 /usr/local/share/brave/LICENSE
