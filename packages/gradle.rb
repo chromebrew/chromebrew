@@ -3,13 +3,11 @@ require 'package'
 class Gradle < Package
   description 'From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.'
   homepage 'https://gradle.org/'
-  version '7.6'
+  version '8.3'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://services.gradle.org/distributions/gradle-7.6-bin.zip'
-  source_sha256 '7ba68c54029790ab444b39d7e293d3236b2632631fb5f2e012bb28b4ff669e4b'
-
-  depends_on 'openjdk8'
+  source_url 'https://services.gradle.org/distributions/gradle-8.3-bin.zip'
+  source_sha256 '591855b517fc635b9e04de1d05d5e76ada3f89f5fc76f87978d1b245b4f69225'
 
   no_compile_needed
 
