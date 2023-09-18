@@ -67,6 +67,7 @@
 /usr/local/share/locale/hu/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/id/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/it/LC_MESSAGES/appstream-glib.mo
+/usr/local/share/locale/ka/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/ko/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/lt/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/oc/LC_MESSAGES/appstream-glib.mo
@@ -83,6 +84,6 @@
 /usr/local/share/locale/uk/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/appstream-glib.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/appstream-glib.mo
-/usr/local/share/man/man1/appstream-builder.1.gz
-/usr/local/share/man/man1/appstream-compose.1.gz
-/usr/local/share/man/man1/appstream-util.1.gz
+/usr/local/share/man/man1/appstream-builder.1.zst
+/usr/local/share/man/man1/appstream-compose.1.zst
+/usr/local/share/man/man1/appstream-util.1.zst
