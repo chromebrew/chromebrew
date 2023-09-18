@@ -3,23 +3,23 @@ require 'package'
 class Ant < Package
   description 'Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.'
   homepage 'http://ant.apache.org/'
-  version '1.10.13'
+  version '1.10.14'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://downloads.apache.org/ant/source/apache-ant-1.10.13-src.tar.xz'
-  source_sha256 '2a3de6f5d52f7859e0a18f23d8dcdd64cde05ed262654b2286f74759cf0d68d4'
+  source_url 'https://downloads.apache.org/ant/source/apache-ant-1.10.14-src.tar.xz'
+  source_sha256 '9eea3cd8a793574a07fde2f87b203dc86339492baeb539367d5aa5be497aea24'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.13_armv7l/ant-1.10.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.13_armv7l/ant-1.10.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.13_i686/ant-1.10.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.13_x86_64/ant-1.10.13-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.14_armv7l/ant-1.10.14-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.14_armv7l/ant-1.10.14-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.14_i686/ant-1.10.14-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ant/1.10.14_x86_64/ant-1.10.14-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7efecd6f69bcd03f99fd44bc1c372a459cd4af8a733ef704c56c4d3f7c2be867',
-     armv7l: '7efecd6f69bcd03f99fd44bc1c372a459cd4af8a733ef704c56c4d3f7c2be867',
-       i686: '5d31e55569623b7c12f3e9e610d22bbfdb2c95ed755181876e77e35486c513e8',
-     x86_64: '6f77e95af8b964dd1083f94a23b8088ac016f3d50a9319b79aaf7631860c09a9'
+    aarch64: '467ba617135bbe2ba177bacbe2c98b9a520361b21d14b3e2508acee527c9f588',
+     armv7l: '467ba617135bbe2ba177bacbe2c98b9a520361b21d14b3e2508acee527c9f588',
+       i686: '979f1f0284376f53b341b8d3e015ce5bc0d425931590e5a6bde21b9de87157c2',
+     x86_64: '2763cdc4ddd5fa2a1b71f766302204f30814fad4a82528e09f947a779bc5da1a'
   })
 
   depends_on 'openjdk8'
