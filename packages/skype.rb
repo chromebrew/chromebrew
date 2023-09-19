@@ -3,11 +3,11 @@ require 'package'
 class Skype < Package
   description 'Skype is a telecommunications application that specializes in providing video chat and voice calls between devices'
   homepage 'https://www.skype.com/'
-  version '8.103.0.208'
+  version '8.104.0.207'
   license 'Skype-TOS'
   compatibility 'x86_64'
-  source_url 'https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.103.0.208_amd64.deb'
-  source_sha256 'c728163ba42c6f4df711ed0a24a81816bfd80dc89bf4641479358bbc7d56c51f'
+  source_url 'https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.104.0.207_amd64.deb'
+  source_sha256 '43642f7d145d1ee08538cb88f3eb5e93b0bca1953f6a339f3481a4b09a5c9a43'
 
   no_compile_needed
   no_shrink
