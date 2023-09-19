@@ -2,6 +2,7 @@
 /usr/local/bin/gtk4-builder-tool
 /usr/local/bin/gtk4-encode-symbolic-svg
 /usr/local/bin/gtk4-launch
+/usr/local/bin/gtk4-path-tool
 /usr/local/bin/gtk4-query-settings
 /usr/local/bin/gtk4-rendernode-tool
 /usr/local/bin/gtk4-update-icon-cache
@@ -96,9 +97,14 @@
 /usr/local/include/gtk-4.0/gsk/gskenumtypes.h
 /usr/local/include/gtk-4.0/gsk/gskglshader.h
 /usr/local/include/gtk-4.0/gsk/gsk.h
+/usr/local/include/gtk-4.0/gsk/gskpathbuilder.h
+/usr/local/include/gtk-4.0/gsk/gskpath.h
+/usr/local/include/gtk-4.0/gsk/gskpathmeasure.h
+/usr/local/include/gtk-4.0/gsk/gskpathpoint.h
 /usr/local/include/gtk-4.0/gsk/gskrenderer.h
 /usr/local/include/gtk-4.0/gsk/gskrendernode.h
 /usr/local/include/gtk-4.0/gsk/gskroundedrect.h
+/usr/local/include/gtk-4.0/gsk/gskstroke.h
 /usr/local/include/gtk-4.0/gsk/gsktransform.h
 /usr/local/include/gtk-4.0/gsk/gsktypes.h
 /usr/local/include/gtk-4.0/gsk/vulkan/gskvulkanrenderer.h
@@ -397,7 +403,7 @@
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.1200.0
+/usr/local/lib64/libgtk-4.so.1.1300.0
 /usr/local/lib64/pkgconfig/gtk4-broadway.pc
 /usr/local/lib64/pkgconfig/gtk4.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc
