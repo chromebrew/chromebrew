@@ -1,42 +1,21 @@
-# Adapted from Arch Linux mimalloc PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/mimalloc/trunk/PKGBUILD
+require 'buildsystems/cmake'
 
-require 'package'
-
-class Mimalloc < Package
+class Mimalloc < CMake
   description 'General-purpose allocator with excellent performance characteristics'
   homepage 'https://github.com/microsoft/mimalloc'
-  git_hashtag '221f96ac2c999ef22414521fb39438018dfa9a41'
-  @_ver = (@git_hashtag[0, 6])
-  version "dev-slice-#{@_ver}"
+  version '1.8.2'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/mimalloc.git'
-  git_branch 'dev-slice'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '49cd61a1b29a78db7127702148eff3b5bcb92fbeef193cafda628b023dd70fad',
-     armv7l: '49cd61a1b29a78db7127702148eff3b5bcb92fbeef193cafda628b023dd70fad',
-       i686: '7c0ac47c0d298f2d7e4ec4dfd2a2f22e706c8d9165f49a3c955006272e8f7691',
-     x86_64: '6fc9e9e7eb75c6b0bf794e321b7f2a9a48cc228c398512abbef5c8562c7bd7ec'
+    aarch64: '2dd4e9762467e71a2da0766300e04ae31880b8f1fc14e5c099f11eabd5fd5664',
+     armv7l: '2dd4e9762467e71a2da0766300e04ae31880b8f1fc14e5c099f11eabd5fd5664',
+       i686: '50306119b06dbf1d01012611ccd57006b17878ea2b4f8b998a0aeb430ca29235',
+     x86_64: '9e309d61984dc9c4640425932cf89f6e3dc82872310b2bc43c89e00213041bed'
   })
 
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-      -DMI_INSTALL_TOPLEVEL=ON \
-      -DMI_USE_CXX=ON \
-      -DMI_BUILD_TESTS=OFF \
-      -DMI_OVERRIDE=ON \
-      -Wno-dev \
-      ../ -G Ninja"
-    end
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  cmake_options '-DMI_BUILD_TESTS=OFF'
 end
