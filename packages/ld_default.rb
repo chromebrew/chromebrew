@@ -3,12 +3,12 @@ require 'package'
 class Ld_default < Package
   description "Select the default ld executable and check for libraries in #{CREW_LIB_PREFIX} first"
   homepage 'https://github.com/chromebrew/chromebrew/wiki/FAQ'
-  version '1.2'
+  version '1.3'
   license 'GPL-3+'
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'llvm16_dev'
+  depends_on 'llvm17_dev'
 
   def self.build
     system "cat << 'EOF' > ld_default
