@@ -25,7 +25,6 @@ class Upx < CMake
      x86_64: '11c22778db40cff248a3fec59193ecc710b8502f0ba7ea0d548a837f0380999c'
   })
 
-  # depends_on 'ucl'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
