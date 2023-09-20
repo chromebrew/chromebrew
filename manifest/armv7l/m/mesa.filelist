@@ -15,6 +15,7 @@
 /usr/local/lib/dri/imx-drm_dri.so
 /usr/local/lib/dri/imx-lcdif_dri.so
 /usr/local/lib/dri/ingenic-drm_dri.so
+/usr/local/lib/dri/iris_dri.so
 /usr/local/lib/dri/kgsl_dri.so
 /usr/local/lib/dri/kirin_dri.so
 /usr/local/lib/dri/kms_swrast_dri.so
@@ -59,6 +60,7 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
+/usr/local/lib/libvulkan_intel.so
 /usr/local/lib/libvulkan_lvp.so
 /usr/local/lib/libxatracker.so
 /usr/local/lib/libxatracker.so.2
@@ -76,4 +78,5 @@
 /usr/local/lib/vdpau/libvdpau_virtio_gpu.so.1.0.0
 /usr/local/share/drirc.d/00-mesa-defaults.conf
 /usr/local/share/glvnd/egl_vendor.d/50_mesa.json
+/usr/local/share/vulkan/icd.d/intel_icd.armv8l.json
 /usr/local/share/vulkan/icd.d/lvp_icd.armv8l.json
