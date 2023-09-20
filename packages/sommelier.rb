@@ -3,21 +3,21 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230217-2-llvm16'
+  version '20230912-llvm17'
   license 'BSD-Google'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag '12dee310949503318478f82357d4fc5d2a3f3ef4'
+  git_hashtag 'f699391c122d6afde169347083655f740d14c850'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_armv7l/sommelier-20230217-2-llvm16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_armv7l/sommelier-20230217-2-llvm16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230217-2-llvm16_x86_64/sommelier-20230217-2-llvm16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230912-llvm17_armv7l/sommelier-20230912-llvm17-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230912-llvm17_armv7l/sommelier-20230912-llvm17-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sommelier/20230912-llvm17_x86_64/sommelier-20230912-llvm17-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
-     armv7l: 'b4ec217aed0572fd004ca5be6330a99e7c380f43e3340280f4eaee584088670d',
-     x86_64: '7c0fd4b04a1e4a201db27641672bf95d25cb9baaf674c2805419c23f2e8acc0b'
+    aarch64: 'f5c6293a3b924dd1b7010ecd9e723045465e82c4aae21473f447585a064b6988',
+     armv7l: 'f5c6293a3b924dd1b7010ecd9e723045465e82c4aae21473f447585a064b6988',
+     x86_64: '659e85fac574b7dcf6608ac07b3ed331d1bd157e49c6f143d82be963dfdcd18e'
   })
 
   depends_on 'gcc_lib' # R
@@ -28,11 +28,12 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm16_lib' # R Note that this may need rebuilds for newer llvm versions.
+  depends_on 'llvm17_lib' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script
   depends_on 'psmisc' # L
+  depends_on 'py3_jinja2' => :build
   depends_on 'wayland' # R
   depends_on 'wayland_info' # L
   depends_on 'xauth' # L
@@ -54,11 +55,11 @@ class Sommelier < Package
     # This patch fixes:
     #   wl_registry@2: error 0: invalid version for global xdg_wm_base (41): have 1, wanted 3
     #   sommelier.elf: ../sommelier-window.cc:412: void sl_window_update(struct sl_window *): Assertion `ctx->xdg_shell' failed.
-    patch = <<~EOF
-      diff -Nur a/sommelier.cc b/sommelier.cc
-      --- a/sommelier.cc      2023-02-17 20:55:44.591868511 +0800
-      +++ b/sommelier.cc      2023-02-17 22:21:11.221142302 +0800
-      @@ -88,6 +88,8 @@
+    sommelier_patch = <<~SOMMELIER_PATCH_EOF
+      diff -Npaur a/sommelier.cc b/sommelier.cc
+      --- a/sommelier.cc	2023-09-20 19:46:09.295859977 +0000
+      +++ b/sommelier.cc	2023-09-20 19:47:31.591275800 +0000
+      @@ -96,6 +96,8 @@ struct sl_data_source {
        #define MIN_AURA_SHELL_VERSION 6
        #define MAX_AURA_SHELL_VERSION 38
 
@@ -67,7 +68,7 @@ class Sommelier < Package
        int sl_open_wayland_socket(const char* socket_name,
                                   struct sockaddr_un* addr,
                                   int* lock_fd,
-      @@ -616,7 +618,7 @@
+      @@ -619,7 +621,7 @@ void sl_registry_handler(void* data,
              data_device_manager->host_global =
                  sl_data_device_manager_global_create(ctx);
            }
@@ -76,15 +77,15 @@ class Sommelier < Package
            struct sl_xdg_shell* xdg_shell =
                static_cast<sl_xdg_shell*>(malloc(sizeof(struct sl_xdg_shell)));
            assert(xdg_shell);
-      @@ -3793,6 +3795,8 @@
+      @@ -3871,6 +3873,8 @@ int real_main(int argc, char** argv) {
              ctx.use_virtgpu_channel = true;
            } else if (strstr(arg, "--noop-driver") == arg) {
              noop_driver = true;
       +    } else if (strstr(arg, "--xdg-shell-v6") == arg) {
       +      strcpy(xdg_shell_interface, "zxdg_shell_v6");
+           } else if (strstr(arg, "--stable-scaling") == arg) {
+             ctx.stable_scaling = true;
        #ifdef PERFETTO_TRACING
-           } else if (strstr(arg, "--trace-filename") == arg) {
-             ctx.trace_filename = sl_arg_value(arg);
       diff -Nur a/sommelier.h b/sommelier.h
       --- a/sommelier.h       2023-02-17 20:55:44.591868511 +0800
       +++ b/sommelier.h       2023-02-17 22:20:37.052140477 +0800
@@ -98,11 +99,11 @@ class Sommelier < Package
       +#define APPLICATION_ID_FORMAT_PREFIX "org.chromebrew.%s"
        #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \\
          APPLICATION_ID_FORMAT_PREFIX ".wayland.%s"
-    EOF
+    SOMMELIER_PATCH_EOF
 
     Dir.chdir 'vm_tools/sommelier' do
-      File.write('patch', patch)
-      system 'patch -p1 < patch'
+      File.write('sommelier.patch', sommelier_patch)
+      system 'patch -p1 -i sommelier.patch'
     end
   end
 
