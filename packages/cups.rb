@@ -3,23 +3,23 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.6'
+  version '2.4.7'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_armv7l/cups-2.4.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_armv7l/cups-2.4.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_i686/cups-2.4.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.6_x86_64/cups-2.4.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_armv7l/cups-2.4.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_armv7l/cups-2.4.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_i686/cups-2.4.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_x86_64/cups-2.4.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '832ba0f47a1fe81dd0bc55a74971c55a4b98cec9ced02d9dfd6b7589cf4e6f74',
-     armv7l: '832ba0f47a1fe81dd0bc55a74971c55a4b98cec9ced02d9dfd6b7589cf4e6f74',
-       i686: 'bbb70f7d8d3f6df469b50727f372a4fa77160b2d948b7bb0ebe706047a9f489c',
-     x86_64: 'da15e61c01c1f5ac7c3b156ce1640d14b1b2a6ebe1bcaba5051acee2fc9d8589'
+    aarch64: '8136049f7ce18912c9d229244683cde85a376ce105b3cb4837d24b62c4dd0ab9',
+     armv7l: '8136049f7ce18912c9d229244683cde85a376ce105b3cb4837d24b62c4dd0ab9',
+       i686: 'e10353c24862994304572d586db10fe7ac2dc6073e0b22035591343c70352595',
+     x86_64: '8570aba4ee30599c186f334b72231d206c5decae39d6fc91a364db4079fc41df'
   })
 
   depends_on 'acl' # R
