@@ -5822,8 +5822,8 @@ activity: low
 ---
 kind: url
 name: ncurses
-url: https://ftpmirror.gnu.org/ncurses
-activity: low
+url: https://github.com/ThomasDickey/ncurses-snapshots/tags
+activity: medium
 ---
 kind: url
 name: ndctl
