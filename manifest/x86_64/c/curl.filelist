@@ -51,6 +51,7 @@
 /usr/local/share/man/man3/curl_global_init.3.zst
 /usr/local/share/man/man3/curl_global_init_mem.3.zst
 /usr/local/share/man/man3/curl_global_sslset.3.zst
+/usr/local/share/man/man3/curl_global_trace.3.zst
 /usr/local/share/man/man3/CURLINFO_ACTIVESOCKET.3.zst
 /usr/local/share/man/man3/CURLINFO_APPCONNECT_TIME.3.zst
 /usr/local/share/man/man3/CURLINFO_APPCONNECT_TIME_T.3.zst
