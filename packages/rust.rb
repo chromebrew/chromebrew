@@ -3,23 +3,23 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.72.0'
+  version '1.72.1'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
   git_hashtag '1.26.0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.0_armv7l/rust-1.72.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.0_armv7l/rust-1.72.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.0_i686/rust-1.72.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.0_x86_64/rust-1.72.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.1_armv7l/rust-1.72.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.1_armv7l/rust-1.72.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.1_i686/rust-1.72.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.72.1_x86_64/rust-1.72.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ec72932112110e86ece62783c5b8ac6211611b9beadd45e1d478505d4600d6bb',
-     armv7l: 'ec72932112110e86ece62783c5b8ac6211611b9beadd45e1d478505d4600d6bb',
-       i686: 'f511e081f49086062a14a53e0ab4c0dc860b3674d5d611e094acb124352fba33',
-     x86_64: '299ab0bdde9832bc3ac00b547283d395a65e1204658ba4afa8e2171ed8c752dc'
+    aarch64: '169306f774d2580e99e14c75b4449f17b7eb4e3f6094bd70db6d372f83b3d89c',
+     armv7l: '169306f774d2580e99e14c75b4449f17b7eb4e3f6094bd70db6d372f83b3d89c',
+       i686: '1acce0bdb3351ca68ab2cb42b48f6bf819c808957fca41c4452a6045538d022c',
+     x86_64: 'a3a522ddd95b8bff99d4fae9c675955bc710ea1bf8d1c6f4e55116f70b2260ba'
   })
 
   depends_on 'gcc_lib' # R
