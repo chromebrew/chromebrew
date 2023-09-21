@@ -36,6 +36,8 @@ class Llvm17_dev < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  no_shrink
+  no_strip
 
   def self.install
     puts 'Installing llvm17_build to pull files for build...'.lightblue

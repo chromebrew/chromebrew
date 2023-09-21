@@ -35,6 +35,8 @@ class Gcc_dev < Package
   depends_on 'mpfr' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  no_shrink
+  no_strip
 
   def self.install
     puts 'Installing Gcc_build to pull files for build...'.lightblue
