@@ -3,21 +3,21 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22.5'
+  version '1.22.6'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.5_armv7l/gstreamer-1.22.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.5_armv7l/gstreamer-1.22.5-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.5_x86_64/gstreamer-1.22.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6_armv7l/gstreamer-1.22.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6_armv7l/gstreamer-1.22.6-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6_x86_64/gstreamer-1.22.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a199e65e139ccc384046a91f68b786333fd2e7c7d6ea94f34a72e6a1d8afd13c',
-     armv7l: 'a199e65e139ccc384046a91f68b786333fd2e7c7d6ea94f34a72e6a1d8afd13c',
-     x86_64: '94d66b0a5a4145126abff5e3191ca566867d9978eed5459216b70376740e30d5'
+    aarch64: '24948ae7fce0c8a51ff6c038fb94500103a4c2f0baab245eb300018ad03aa19a',
+     armv7l: '24948ae7fce0c8a51ff6c038fb94500103a4c2f0baab245eb300018ad03aa19a',
+     x86_64: 'ba680b263f7b5dd0bbcd687b342d2a1f5f4659cba4dbd68ef6451411c11ddd0d'
   })
 
   depends_on 'alsa_lib' # R
@@ -122,6 +122,8 @@ class Gstreamer < Package
   depends_on 'openh264' # R
   depends_on 'qtbase' # R
   depends_on 'qtdeclarative' # R
+
+  no_lto
 
   # conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
 
