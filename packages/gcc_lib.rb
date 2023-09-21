@@ -27,6 +27,8 @@ class Gcc_lib < Package
 
   depends_on 'gcc_build' => :build
   depends_on 'glibc' # R
+  no_shrink
+  no_strip
 
   def self.install
     puts 'Installing Gcc_build to pull files for build...'.lightblue
