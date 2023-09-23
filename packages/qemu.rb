@@ -3,20 +3,20 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.1.0'
+  version '8.1.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.0_armv7l/qemu-8.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.0_armv7l/qemu-8.1.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.0_x86_64/qemu-8.1.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.1_armv7l/qemu-8.1.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.1_armv7l/qemu-8.1.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.1_x86_64/qemu-8.1.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '35e5a86f8c3dea83508f69f423a51a1291cd9cece4f6e13c02fa7c865917d139',
-     armv7l: '35e5a86f8c3dea83508f69f423a51a1291cd9cece4f6e13c02fa7c865917d139',
-     x86_64: '0443fab996ef671cbea33224ec80b14f7b5c6e3418219fcda27adc8074461acb'
+    aarch64: 'b2a0399c376d74cab6255aa3fb21401729be438c5e756db6afd11f6e73fddfe0',
+     armv7l: 'b2a0399c376d74cab6255aa3fb21401729be438c5e756db6afd11f6e73fddfe0',
+     x86_64: 'dce82ac6ef33822bb12c68e5c193d078129142d49c338d0f83698d202929c671'
   })
 
   depends_on 'alsa_lib' # R
@@ -66,7 +66,9 @@ class Qemu < Package
   depends_on 'zstd' # R
 
   def self.preflight
-    abort "Qemu requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
+    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
+
+    abort "Qemu requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred
   end
 
   def self.patch
