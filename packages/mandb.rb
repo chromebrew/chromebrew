@@ -3,23 +3,23 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.11.2'
+  version '2.12.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.11.2.tar.xz'
-  source_sha256 'cffa1ee4e974be78646c46508e6dd2f37e7c589aaab2938cc1064f058fef9f8d'
+  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.12.0.tar.xz'
+  source_sha256 '415a6284a22764ad22ff0f66710d853be7790dd451cd71436e3d25c74d996a95'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.2_armv7l/mandb-2.11.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.2_armv7l/mandb-2.11.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.2_i686/mandb-2.11.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.11.2_x86_64/mandb-2.11.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_armv7l/mandb-2.12.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_armv7l/mandb-2.12.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_i686/mandb-2.12.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_x86_64/mandb-2.12.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7ca41b1a29069b8c507e9905d7abf1e42362c2020733c560e4be5f67116b4c80',
-     armv7l: '7ca41b1a29069b8c507e9905d7abf1e42362c2020733c560e4be5f67116b4c80',
-       i686: '14996685ba4e52f79f1fa351362b9fa22033f85a15a7b71a461042ce34fe8b4f',
-     x86_64: 'cd7f9d5d6e668baeeb8cc50be591895d29e0df43c7098b75b0f1da84504ae24a'
+    aarch64: '0a555f1b940b9404ac8116f01f247fe0f6740348e472912ce93353eb82541da3',
+     armv7l: '0a555f1b940b9404ac8116f01f247fe0f6740348e472912ce93353eb82541da3',
+       i686: 'a73a6859c6b32385258366403ecd1636275f25ff4fd20189ea9aa8d8142b607f',
+     x86_64: '80d5f7e3547493821433c073ff03588e147cf2275f6cb7e8274980caf7c3c7a6'
   })
 
   no_fhs
@@ -42,7 +42,9 @@ class Mandb < Package
     # we can't write to /usr/lib/tmpfiles.d
     # we can't create the user 'man'
     # the pager is not at the default location
-    system "./configure #{CREW_OPTIONS} \
+    year2038 = ARCH == 'x86_64' ? '' : ' --disable-year2038'
+    options = CREW_OPTIONS + year2038
+    system "./configure #{options} \
       --disable-cache-owner \
       --disable-rpath \
       --disable-setuid \

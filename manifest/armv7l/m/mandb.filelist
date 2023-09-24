@@ -11,9 +11,9 @@
 /usr/local/libexec/man-db/globbing
 /usr/local/libexec/man-db/manconv
 /usr/local/libexec/man-db/zsoelim
-/usr/local/lib/man-db/libman-2.11.2.so
+/usr/local/lib/man-db/libman-2.12.0.so
 /usr/local/lib/man-db/libman.a
-/usr/local/lib/man-db/libmandb-2.11.2.so
+/usr/local/lib/man-db/libmandb-2.12.0.so
 /usr/local/lib/man-db/libmandb.a
 /usr/local/lib/man-db/libmandb.la
 /usr/local/lib/man-db/libmandb.so
@@ -54,6 +54,7 @@
 /usr/local/share/locale/ja/LC_MESSAGES/man-db-gnulib.mo
 /usr/local/share/locale/ja/LC_MESSAGES/man-db.mo
 /usr/local/share/locale/ka/LC_MESSAGES/man-db-gnulib.mo
+/usr/local/share/locale/ka/LC_MESSAGES/man-db.mo
 /usr/local/share/locale/ko/LC_MESSAGES/man-db-gnulib.mo
 /usr/local/share/locale/ko/LC_MESSAGES/man-db.mo
 /usr/local/share/locale/ms/LC_MESSAGES/man-db-gnulib.mo
