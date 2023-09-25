@@ -8541,6 +8541,11 @@ url: https://github.com/Netflix/vmaf/releases
 activity: low
 ---
 kind: url
+name: volta
+url: https://github.com/volta-cli/volta/releases
+activity: low
+---
+kind: url
 name: volume_key
 url: https://pagure.io/volume_key/releases
 activity: none
