@@ -29,6 +29,7 @@
 /usr/local/firefox/gmp-clearkey/0.1/manifest.json
 /usr/local/firefox/icons/updater.png
 /usr/local/firefox/libfreeblpriv3.so
+/usr/local/firefox/libgkcodecs.so
 /usr/local/firefox/libipcclientcerts.so
 /usr/local/firefox/liblgpllibs.so
 /usr/local/firefox/libmozavcodec.so
