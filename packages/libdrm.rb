@@ -1,25 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libdrm < Package
+class Libdrm < Meson
   description 'Cross-driver middleware for DRI protocol.'
   homepage 'https://dri.freedesktop.org'
-  version '2.4.114'
+  version '2.4.116'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/drm.git'
   git_hashtag "libdrm-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.114_armv7l/libdrm-2.4.114-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.114_armv7l/libdrm-2.4.114-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.114_i686/libdrm-2.4.114-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.114_x86_64/libdrm-2.4.114-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.116_armv7l/libdrm-2.4.116-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.116_armv7l/libdrm-2.4.116-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdrm/2.4.116_x86_64/libdrm-2.4.116-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '22204bf614205ee547091bea152cfa7a94f623ba87bf9e2b549b5e4177fd9d8c',
-     armv7l: '22204bf614205ee547091bea152cfa7a94f623ba87bf9e2b549b5e4177fd9d8c',
-       i686: '154326bf8f1d4d42c87550580a8295f490807e463ef74ff9f56d36a64efc358e',
-     x86_64: 'd22e18ca912b0ec5ce698a03eec86f45ded30c55a04265c975468328ef3204ef'
+    aarch64: 'f5f75bff60d7739e53866bdb3b35bbd68917d1912de501675130b158d9842b8e',
+     armv7l: 'f5f75bff60d7739e53866bdb3b35bbd68917d1912de501675130b158d9842b8e',
+     x86_64: 'bc42f499f47df7990980215594125ed6909a85965708aaa03abe817743a063ce'
   })
 
   depends_on 'cairo' # R
@@ -29,9 +27,7 @@ class Libdrm < Package
   depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dfreedreno-kgsl=true \
+  meson_options '-Dfreedreno-kgsl=true \
       -Damdgpu=enabled \
       -Dradeon=enabled \
       -Dnouveau=enabled \
@@ -42,13 +38,5 @@ class Libdrm < Package
       -Detnaviv=auto \
       -Dexynos=auto \
       -Dtests=false \
-      -Dudev=true \
-      builddir"
-    system 'meson configure builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+      -Dudev=true'
 end
