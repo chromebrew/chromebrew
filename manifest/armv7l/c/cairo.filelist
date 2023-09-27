@@ -1,4 +1,3 @@
-/usr/local/bin/cairo-sphinx
 /usr/local/bin/cairo-trace
 /usr/local/include/cairo/cairo-deprecated.h
 /usr/local/include/cairo/cairo-features.h
@@ -16,17 +15,16 @@
 /usr/local/include/cairo/cairo-xlib.h
 /usr/local/include/cairo/cairo-xlib-xrender.h
 /usr/local/lib/cairo/libcairo-fdr.so
-/usr/local/lib/cairo/libcairo-sphinx.so
 /usr/local/lib/cairo/libcairo-trace.so
 /usr/local/lib/libcairo-gobject.so
 /usr/local/lib/libcairo-gobject.so.2
-/usr/local/lib/libcairo-gobject.so.2.11709.0
+/usr/local/lib/libcairo-gobject.so.2.11800.0
 /usr/local/lib/libcairo-script-interpreter.so
 /usr/local/lib/libcairo-script-interpreter.so.2
-/usr/local/lib/libcairo-script-interpreter.so.2.11709.0
+/usr/local/lib/libcairo-script-interpreter.so.2.11800.0
 /usr/local/lib/libcairo.so
 /usr/local/lib/libcairo.so.2
-/usr/local/lib/libcairo.so.2.11709.0
+/usr/local/lib/libcairo.so.2.11800.0
 /usr/local/lib/pkgconfig/cairo-fc.pc
 /usr/local/lib/pkgconfig/cairo-ft.pc
 /usr/local/lib/pkgconfig/cairo-gobject.pc
