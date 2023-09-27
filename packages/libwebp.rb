@@ -3,23 +3,21 @@ require 'package'
 class Libwebp < Package
   description 'WebP is a modern image format that provides superior lossless and lossy compression for images on the web.'
   homepage 'https://developers.google.com/speed/webp/'
-  version '1.3.0-fd7b5d4'
+  version '1.3.2'
   license 'BSD'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/webmproject/libwebp.git'
-  git_hashtag 'fd7b5d48464475408d32d2611bdb6947d4246b97'
+  git_hashtag "v#{version}"
 
   binary_url({
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.0_i686/libwebp-1.3.0-chromeos-i686.tar.zst',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.0-fd7b5d4_armv7l/libwebp-1.3.0-fd7b5d4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.0-fd7b5d4_armv7l/libwebp-1.3.0-fd7b5d4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.0-fd7b5d4_x86_64/libwebp-1.3.0-fd7b5d4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.2_armv7l/libwebp-1.3.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.2_armv7l/libwebp-1.3.2-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.2_x86_64/libwebp-1.3.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-       i686: '036924f4f26489260fc49d8cbc4656c4a23b8d6c936cc71f96cd59880e650c75',
-    aarch64: '9f84e3dc4e65c702fd32fbde197aa1055b97466c883f88a7278eee3babca5782',
-     armv7l: '9f84e3dc4e65c702fd32fbde197aa1055b97466c883f88a7278eee3babca5782',
-     x86_64: '58dddc123cc887299f845b7800b8289f0ea274576980b8861f20c70bdc158256'
+    aarch64: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
+     armv7l: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
+     x86_64: '6c5b89e7c1e1098cbfc0f8aa24e44bec396728691f82805abdea95c2d1a4027c'
   })
 
   depends_on 'freeglut' # R
