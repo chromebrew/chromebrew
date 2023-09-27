@@ -211,6 +211,8 @@
 /usr/local/include/giomm-2.68/giomm/private/socket_p.h
 /usr/local/include/giomm-2.68/giomm/private/socketservice_p.h
 /usr/local/include/giomm-2.68/giomm/private/srvtarget_p.h
+/usr/local/include/giomm-2.68/giomm/private/subprocesslauncher_p.h
+/usr/local/include/giomm-2.68/giomm/private/subprocess_p.h
 /usr/local/include/giomm-2.68/giomm/private/tcpconnection_p.h
 /usr/local/include/giomm-2.68/giomm/private/tcpwrapperconnection_p.h
 /usr/local/include/giomm-2.68/giomm/private/themedicon_p.h
@@ -261,6 +263,8 @@
 /usr/local/include/giomm-2.68/giomm/socketservice.h
 /usr/local/include/giomm-2.68/giomm/socketsource.h
 /usr/local/include/giomm-2.68/giomm/srvtarget.h
+/usr/local/include/giomm-2.68/giomm/subprocess.h
+/usr/local/include/giomm-2.68/giomm/subprocesslauncher.h
 /usr/local/include/giomm-2.68/giomm/tcpconnection.h
 /usr/local/include/giomm-2.68/giomm/tcpwrapperconnection.h
 /usr/local/include/giomm-2.68/giomm/themedicon.h
@@ -371,6 +375,7 @@
 /usr/local/include/glibmm-2.68/glibmm/unicode.h
 /usr/local/include/glibmm-2.68/glibmm/uriutils.h
 /usr/local/include/glibmm-2.68/glibmm/ustring.h
+/usr/local/include/glibmm-2.68/glibmm/ustring_hash.h
 /usr/local/include/glibmm-2.68/glibmm/utility.h
 /usr/local/include/glibmm-2.68/glibmm/value_basictypes.h
 /usr/local/include/glibmm-2.68/glibmm/value_custom.h
