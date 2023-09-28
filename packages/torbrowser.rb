@@ -3,15 +3,17 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  version '12.5.1'
+  version '12.5.5'
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
-  source_url 'https://dist.torproject.org/torbrowser/12.5.1/tor-browser-linux64-12.5.1_ALL.tar.xz'
-  source_sha256 '2aeabb64d85a0e5da705ca2458a9bf5d322327c87873312fc2fb05db3dc3cc9e'
+  source_url 'https://dist.torproject.org/torbrowser/12.5.5/tor-browser-linux64-12.5.5_ALL.tar.xz'
+  source_sha256 '152d72c26fd42436624983dfd161e29285ffa3a58620ffa5410185783d20d9d7'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
-  depends_on 'sommelier'
+
+  no_compile_needed
+  no_shrink
 
   def self.build
     tor = <<~EOF
