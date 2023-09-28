@@ -38,6 +38,5 @@ class Cairo < Meson
   conflicts_ok # because this overwrites the limited cairo from harfbuzz
 
   meson_options '-Dxlib-xcb=enabled \
-    -Dtee=enabled \
     -Dtests=disabled'
 end
