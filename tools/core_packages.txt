@@ -94,7 +94,7 @@ make
 mandb
 manpages
 mawk
-meson
+mesonbuild
 mold
 most
 mpc

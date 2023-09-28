@@ -22,8 +22,6 @@ class Jsoncpp < Package
      x86_64: '5496a7bb46dd54ee680ef70955f1259cf3c0173a2f8bf8c518458ecce5cb1f9e'
   })
 
-  depends_on 'meson'
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"

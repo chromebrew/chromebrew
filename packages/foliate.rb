@@ -22,7 +22,6 @@ class Foliate < Package
      x86_64: 'd1107a7a7eded897f4b19f2f3c0fc34b83720bf2caac5be77865c223b670ccde'
   })
 
-  depends_on 'meson' => :build
   depends_on 'gettext' => :build
   depends_on 'gjs'
   depends_on 'iso_codes'

@@ -22,7 +22,6 @@ class Gn < Package
   })
 
   depends_on 'python2' => :build
-  depends_on 'meson' => :build
 
   def self.build
     system 'git clone https://gn.googlesource.com/gn'

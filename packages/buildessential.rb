@@ -100,7 +100,7 @@ class Buildessential < Package
   depends_on 'llvm17_lib' # This provides llvm-strip
 
   # Meson build system
-  depends_on 'meson'
+  depends_on 'mesonbuild'
 
   # Node.js
   # depends_on 'nodebrew'

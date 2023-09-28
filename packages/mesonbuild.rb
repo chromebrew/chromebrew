@@ -1,6 +1,6 @@
 require 'package'
 
-class Meson < Package
+class Mesonbuild < Package
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
   @_ver = '1.2.1'
