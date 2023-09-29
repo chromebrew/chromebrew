@@ -13,13 +13,13 @@ class Clamav < Package
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_armv7l/clamav-1.1.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_armv7l/clamav-1.1.1-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_i686/clamav-1.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_x86_64/clamav-1.1.1-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_x86_64/clamav-1.1.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '99ec7eed070ac95692e6dd79b3db5e5e5d81bb2d2895847e0a4e3a574d11c00f',
      armv7l: '99ec7eed070ac95692e6dd79b3db5e5e5d81bb2d2895847e0a4e3a574d11c00f',
        i686: 'a8a01408181b94d88bc3f9eb404b7b8373db229251048af6d52e1c001f22a5b2',
-     x86_64: '55a9893ae7c4fd3416c3a119c0928d0ac88bf245cdf1bf1bb1c1657b3aa1c5b0',
+     x86_64: '55a9893ae7c4fd3416c3a119c0928d0ac88bf245cdf1bf1bb1c1657b3aa1c5b0'
   })
 
   depends_on 'rust' => :build

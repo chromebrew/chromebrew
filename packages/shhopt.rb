@@ -23,7 +23,7 @@ class Shhopt < Package
   })
 
   def self.patch
-    `sed -i 's/.*#SHARED.*1.*/SHARED=1/' Makefile`   # enable shared
+    `sed -i 's/.*#SHARED.*1.*/SHARED=1/' Makefile` # enable shared
   end
 
   def self.build

@@ -53,7 +53,6 @@ class Perl < Package
   end
 
   def self.install
-
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Make libperl symlinks into standard locations
     libperl_so = "#{CREW_LIB_PREFIX}/perl5/#{version.split('-')[0]}/core_perl/CORE/libperl.so"

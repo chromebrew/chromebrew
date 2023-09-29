@@ -23,7 +23,7 @@ class Shhmsg < Package
   })
 
   def self.patch
-    `sed -i 's/.*SHARED.*0.*/SHARED=1/' Makefile`   # enable shared
+    `sed -i 's/.*SHARED.*0.*/SHARED=1/' Makefile` # enable shared
   end
 
   def self.build

@@ -40,7 +40,6 @@ class Poppler < Package
   depends_on 'qtbase' # R
   depends_on 'zlibpkg' # R
 
-
   def self.build
     system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \

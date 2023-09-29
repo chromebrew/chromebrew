@@ -41,7 +41,7 @@ class Gpm < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/profile.d"
     # via https://github.com/archlinux/svntogit-packages/tree/master/gpm/trunk
-    @gpm_path = <<~'GPM_PATH_EOF'
+    @gpm_path = <<~GPM_PATH_EOF
       [Unit]
       Description=Virtual console mouse server
 

@@ -62,7 +62,7 @@ class Docbook_xsl_nons < Package
     # Docbook common preinstall block
     FileUtils.mkdir_p "#{CREW_PREFIX}/etc/xml"
 
-    if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.zero?("#{CREW_PREFIX}/etc/xml/catalog")
+    if File.exist?("#{CREW_PREFIX}/etc/xml/catalog") && !File.empty?("#{CREW_PREFIX}/etc/xml/catalog")
       puts "#{CREW_PREFIX}/etc/xml/catalog exists" if @opt_verbose
     else
       puts "Creating #{CREW_PREFIX}/etc/xml/catalog" if @opt_verbose
@@ -70,7 +70,7 @@ class Docbook_xsl_nons < Package
       system "xmlcatalog --noout --create #{CREW_PREFIX}/etc/xml/catalog"
     end
 
-    if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.zero?("#{CREW_PREFIX}/etc/xml/docbook-xml")
+    if File.exist?("#{CREW_PREFIX}/etc/xml/docbook-xml") && !File.empty?("#{CREW_PREFIX}/etc/xml/docbook-xml")
       puts "#{CREW_PREFIX}/etc/xml/docbook-xml not empty" if @opt_verbose
     else
       puts "Creating #{CREW_PREFIX}/etc/xml/docbook-xml" if @opt_verbose

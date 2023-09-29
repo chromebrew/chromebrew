@@ -30,7 +30,7 @@ class Polkit < Package
   def self.patch
     # Fix meson 0.60+ compatibility
     # https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/99
-    @polkit_meson_patch = <<~'POLKIT_MESON_PATCH_HEREDOC'
+    @polkit_meson_patch = <<~POLKIT_MESON_PATCH_HEREDOC
       diff --git a/actions/meson.build b/actions/meson.build
       index 2abaaf3..1e3f370 100644
       --- a/actions/meson.build

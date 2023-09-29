@@ -103,7 +103,7 @@ class Handbrake < Package
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
-    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-handbrake", <<~'HANDBRAKE_ENVD_EOF'
+    File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-handbrake", <<~HANDBRAKE_ENVD_EOF
       alias ghb="GDK_BACKEND=wayland ghb"
     HANDBRAKE_ENVD_EOF
   end
