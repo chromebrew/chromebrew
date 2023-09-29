@@ -50,7 +50,7 @@ class Musl_native_toolchain < Package
     # Patch via discussion on musl mailing list with Rich Felker
     # working out issues on i686 Chromebooks for musl.
     # https://www.openwall.com/lists/musl/2022/02/18/1
-    @i686_broken_kernel_patch = <<~'BROKEN_KERNEL_PATCH_EOF'
+    @i686_broken_kernel_patch = <<~BROKEN_KERNEL_PATCH_EOF
       --- a/arch/i386/syscall_arch.h	2022-02-17 16:45:37.398583011 -0500
       +++ b/arch/i386/syscall_arch.h	2022-02-17 16:50:02.311265598 -0500
       @@ -9,11 +9,21 @@

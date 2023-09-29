@@ -53,7 +53,7 @@ class Js102 < Package
     return unless ARCH == 'i686'
 
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1729459#c25
-    @math_x86_patch = <<~'PATCH_EOF'
+    @math_x86_patch = <<~PATCH_EOF
       diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
       index 51d79f9c2ec59..fafd7d6fc1e0d 100644
       --- a/modules/fdlibm/src/math_private.h

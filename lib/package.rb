@@ -225,7 +225,7 @@ class Package
   end
 
   def self.get_binary_sha256(architecture)
-    return @binary_sha256 && @binary_sha256.key?(architecture) ? @binary_sha256[architecture] : ''
+    return @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
   end
 
   def self.get_extract_dir

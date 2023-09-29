@@ -122,12 +122,18 @@ Layout/HashAlignment:
 Layout/CommentIndentation:
   Enabled: false
 
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
 Layout/FirstHashElementIndentation:
   Enabled: false
 # EnforcedStyle: consistent
 
 Layout/IndentationStyle:
   EnforcedStyle: spaces
+
+Layout/LeadingCommentSpace:
+  Enabled: false
 
 Layout/SpaceInsideBlockBraces:
   Enabled: false
@@ -178,6 +184,9 @@ Style/RedundantCapitalW:
   Enabled: false
 
 Style/RedundantLineContinuation:
+  Enabled: false
+
+Style/RedundantStringEscape:
   Enabled: false
 
 Naming/AccessorMethodName:

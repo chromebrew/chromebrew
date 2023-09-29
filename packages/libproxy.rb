@@ -30,7 +30,7 @@ class Libproxy < Package
   def self.patch
     # As per suggestion for fixing Ninja at
     # https://github.com/libproxy/libproxy/issues/171#issuecomment-1082704815
-    @ninjapatch = <<~'NINJAPATCHEOF'
+    @ninjapatch = <<~NINJAPATCHEOF
       diff --git a/bindings/perl/t/CMakeLists.txt b/bindings/perl/t/CMakeLists.txt
       index 8007124..fdbe81c 100644
       --- a/bindings/perl/t/CMakeLists.txt

@@ -42,11 +42,11 @@ class Wayland_proxy_virtwl < Package
   end
 
   def self.postinstall
-    puts <<~'EOFSTRING'.lightblue
+    puts <<~EOFSTRING.lightblue
       Note that there is not yet hardware acceleration in wayland-proxy-virtwl.
       wayland-proxy-virtwl example usage (before running a gui program):
     EOFSTRING
-    puts <<~'EOFSHELLCODE'.lightcyan
+    puts <<~EOFSHELLCODE.lightcyan
       wayland-proxy-virtwl --wayland-display wayland-2 --x-display=2 --xrdb Xft.dpi:150 &
       export WAYLAND_DISPLAY=wayland-2
       export DISPLAY=:2

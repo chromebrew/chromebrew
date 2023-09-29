@@ -3,7 +3,7 @@ require 'package'
 class Pavucontrol < Package
   description 'PulseAudio Volume Control'
   homepage 'https://freedesktop.org/software/pulseaudio/pavucontrol/'
-  version "4.0-381b-1"
+  version '4.0-381b-1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/pulseaudio/pavucontrol/archive/381b708202e87e40347a57f8a627014199cde266.zip'

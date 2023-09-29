@@ -13,13 +13,13 @@ class Vim_runtime < Autotools
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_armv7l/vim_runtime-9.0.1863-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_armv7l/vim_runtime-9.0.1863-chromeos-armv7l.tar.zst',
        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_i686/vim_runtime-9.0.1863-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_x86_64/vim_runtime-9.0.1863-chromeos-x86_64.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_x86_64/vim_runtime-9.0.1863-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'e7f026ebc26ae12398190529cebaf1ce76f9011c5248e9cd92dfc8492f5a9a04',
      armv7l: 'e7f026ebc26ae12398190529cebaf1ce76f9011c5248e9cd92dfc8492f5a9a04',
        i686: '99ca1d5f1ebe16752f20c14542d28d3ae3cbbaf9a9782f259659f9f02fbfc215',
-     x86_64: 'd8f07c611d04450e691475a3563a2f00492c05383989638b5022aae56a25cbea',
+     x86_64: 'd8f07c611d04450e691475a3563a2f00492c05383989638b5022aae56a25cbea'
   })
 
   depends_on 'gpm'

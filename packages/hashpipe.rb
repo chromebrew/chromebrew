@@ -23,7 +23,7 @@ class Hashpipe < Package
   })
 
   def self.patch
-    @hashpipe_patch = <<~'HASHPIPE_PATCHEOF'
+    @hashpipe_patch = <<~HASHPIPE_PATCHEOF
       diff -Npaur orig/hashpipe.c new/hashpipe.c
       --- orig/hashpipe.c	2021-04-08 14:56:27.657272292 -0400
       +++ new/hashpipe.c	2021-04-08 15:11:20.398253126 -0400

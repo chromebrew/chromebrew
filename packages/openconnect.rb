@@ -60,7 +60,7 @@ class Openconnect < Package
       fi
     VPNC_STARTEOF
     File.write "#{CREW_DEST_PREFIX}/bin/vpnc-start", @vpnc_start, perm: 0o755
-    @vpnc_stop = <<~'VPNC_STOPEOF'
+    @vpnc_stop = <<~VPNC_STOPEOF
       #!/bin/bash
       killall openconnect
       sudo ip tuntap del mode tun tun0

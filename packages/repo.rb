@@ -1,5 +1,5 @@
 require 'package'
- 
+
 class Repo < Package
   description 'The Multiple Git Repository Tool'
   homepage 'https://gerrit.googlesource.com/git-repo/'
@@ -10,7 +10,7 @@ class Repo < Package
   git_hashtag "v#{version}"
 
   depends_on 'python3'
- 
+
   no_compile_needed
 
   def self.preflight

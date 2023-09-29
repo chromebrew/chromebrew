@@ -41,7 +41,7 @@ class Devil < Package
   def self.patch
     system "find -type f -exec sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' {} +"
     # As per https://github.com/DentonW/DevIL/pull/102
-    @jasper_patch = <<~'JASPER_PATCH'
+    @jasper_patch = <<~JASPER_PATCH
       diff -NPaur a/DevIL/CMakeLists.txt b/DevIL/CMakeLists.txt
       --- a/DevIL/CMakeLists.txt	2022-10-04 19:42:15.952513098 -0400
       +++ b/DevIL/CMakeLists.txt	2022-10-04 19:51:20.745032984 -0400
