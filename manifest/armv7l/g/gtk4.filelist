@@ -308,6 +308,7 @@
 /usr/local/include/gtk-4.0/gtk/gtkpopover.h
 /usr/local/include/gtk-4.0/gtk/gtkpopovermenubar.h
 /usr/local/include/gtk-4.0/gtk/gtkpopovermenu.h
+/usr/local/include/gtk-4.0/gtk/gtkprintdialog.h
 /usr/local/include/gtk-4.0/gtk/gtkprogressbar.h
 /usr/local/include/gtk-4.0/gtk/gtkrange.h
 /usr/local/include/gtk-4.0/gtk/gtkrecentmanager.h
@@ -403,7 +404,7 @@
 /usr/local/lib/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib/libgtk-4.so
 /usr/local/lib/libgtk-4.so.1
-/usr/local/lib/libgtk-4.so.1.1300.0
+/usr/local/lib/libgtk-4.so.1.1301.0
 /usr/local/lib/pkgconfig/gtk4-broadway.pc
 /usr/local/lib/pkgconfig/gtk4.pc
 /usr/local/lib/pkgconfig/gtk4-unix-print.pc
