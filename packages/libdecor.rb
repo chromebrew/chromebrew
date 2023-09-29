@@ -1,47 +1,40 @@
 # Adapted from Arch Linux libdecor PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libdecor/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libdecor < Package
+class Libdecor < Meson
   description 'Client-side decorations library for Wayland clients'
-  homepage 'https://gitlab.gnome.org/jadahl/libdecor'
-  version '0.1.1'
+  homepage 'https://gitlab.freedesktop.org/libdecor/libdecor'
+  version '0.2.0'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://gitlab.gnome.org/jadahl/libdecor/-/archive/0.1.1/libdecor-0.1.1.tar.gz'
-  source_sha256 '82adece5baeb6194292b0d1a91b4b3d10da41115f352a5e6c5844b20b88a0512'
+  source_url 'https://gitlab.freedesktop.org/libdecor/libdecor.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.1.1_armv7l/libdecor-0.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.1.1_armv7l/libdecor-0.1.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.1.1_x86_64/libdecor-0.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.2.0_armv7l/libdecor-0.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.2.0_armv7l/libdecor-0.2.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.2.0_x86_64/libdecor-0.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '24cc3736d9aba19ac6b3816c443b5b87bba919676d81adeedecac209a881e122',
-     armv7l: '24cc3736d9aba19ac6b3816c443b5b87bba919676d81adeedecac209a881e122',
-     x86_64: '1a9f8f871d637ae5d0c1df1510478a84a9dbbf71e147b84365637148f503bd4a'
+    aarch64: '26ba96e32ae7e00488aaf8f11e23b779ef8e747c37848e26965382ba84b8f81c',
+     armv7l: '26ba96e32ae7e00488aaf8f11e23b779ef8e747c37848e26965382ba84b8f81c',
+     x86_64: '3f77be8ebdfd6548f434e9f9ed13a365cc5956d413cb83f15714aaf0bb27214e'
   })
 
+  depends_on 'cairo' # R
   depends_on 'dbus' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'pango' # R
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
+  meson_options "-Ddemo=false \
       -Dlocalstatedir=#{CREW_PREFIX}/var \
-      -Dsharedstatedir=#{CREW_PREFIX}/var/lib \
-      builddir"
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dsharedstatedir=#{CREW_PREFIX}/var/lib"
 end
