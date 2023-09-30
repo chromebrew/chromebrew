@@ -3,39 +3,37 @@ require 'package'
 class Libvpx < Package
   description 'VP8/VP9 Codec SDK'
   homepage 'http://www.webmproject.org/code/'
-  version '1.10.0-rc1'
+  version '1.13.1'
   license 'BSD'
   compatibility 'all'
-  source_url "https://github.com/webmproject/libvpx/archive/v#{version}.tar.gz"
-  source_sha256 '8e55e04cdefeb1596968e70c5167e13d26132ca214d276292d5cda737a430af5'
+  source_url 'https://chromium.googlesource.com/webm/libvpx.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_armv7l/libvpx-1.10.0-rc1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_armv7l/libvpx-1.10.0-rc1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_i686/libvpx-1.10.0-rc1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.10.0-rc1_x86_64/libvpx-1.10.0-rc1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_armv7l/libvpx-1.13.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_armv7l/libvpx-1.13.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_i686/libvpx-1.13.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_x86_64/libvpx-1.13.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '61583e4e5ac53ef7534c948bf05874381c9889cf8bb25771458d332c21caddff',
-     armv7l: '61583e4e5ac53ef7534c948bf05874381c9889cf8bb25771458d332c21caddff',
-       i686: 'dea476dc36f7afc6a41de73f16f94d62d353cc34504094c6f5bdc64f3a1d9e25',
-     x86_64: '2dd18189255d957cf67842b4f12aa040d4d5bec98665c8bb7c900422377716fe'
+    aarch64: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
+     armv7l: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
+       i686: 'ebdfb3a4e7567d6e359935d8e24d28bdf4533ea119c5d70f6716f2c74aa7b07f',
+     x86_64: 'ef9b3e27b231f7546402442a04489b53aa8724c396dcbc6abc4e43b8a32080cd'
   })
 
+  depends_on 'ccache' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libyuv' => :build
   depends_on 'yasm' => :build
-  # depends_on 'ccache' => :build
-  depends_on 'libyuv'
 
   def self.build
     Dir.chdir 'build' do
-      system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-        CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-        LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-        ../configure #{CREW_OPTIONS.sub(/--mandir=.*/, '')} \
+      system "../configure #{CREW_OPTIONS.sub(/--mandir=.*/, '')} \
         --disable-debug-libs \
         --disable-install-docs \
         --enable-ccache \
-        --enable-debug \
         --enable-libyuv \
         --enable-pic \
         --enable-runtime-cpu-detect \
