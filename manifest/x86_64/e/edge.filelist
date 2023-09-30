@@ -19,12 +19,12 @@
 /usr/local/share/msedge/libEGL.so
 /usr/local/share/msedge/libGLESv2.so
 /usr/local/share/msedge/liblearning_tools.so
-/usr/local/share/msedge/libmicrosoft_apis.so
 /usr/local/share/msedge/libmip_core.so
 /usr/local/share/msedge/libmip_protection_sdk.so
 /usr/local/share/msedge/liboneauth.so
 /usr/local/share/msedge/liboneds.so
 /usr/local/share/msedge/libqt5_shim.so
+/usr/local/share/msedge/libqt6_shim.so
 /usr/local/share/msedge/libsmartscreenn.so
 /usr/local/share/msedge/libtelclient.so
 /usr/local/share/msedge/libvk_swiftshader.so
