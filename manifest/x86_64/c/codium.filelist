@@ -208,6 +208,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/dark/status-ignored.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/dark/status-modified.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/dark/status-renamed.svg
+/usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/dark/status-type-changed.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/dark/status-untracked.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/git.png
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-added.svg
@@ -217,6 +218,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-ignored.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-modified.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-renamed.svg
+/usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-type-changed.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-untracked.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/go/language-configuration.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/go/package.json
@@ -303,6 +305,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json/syntaxes/JSONC.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json/syntaxes/JSONL.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/json/syntaxes/JSON.tmLanguage.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/json/syntaxes/snippets.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/julia/language-configuration.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/julia/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/julia/package.nls.json
@@ -480,8 +483,10 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/hash.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/mappings.wasm
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/targets/node/terminateProcess.sh
+/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/ui/basic-wat.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/w32appcontainertokens-XTRA77NA.node
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/watchdog.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/ThirdPartyNotices.txt
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/ci.yml
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/cpu-client.bundle.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/extension.js
@@ -521,6 +526,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.array.include.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.full.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.date.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.full.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.intl.d.ts
@@ -568,10 +574,13 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2022.sharedmemory.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2022.string.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2023.array.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2023.collection.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2023.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2023.full.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es6.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.decorators.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.disposable.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.full.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.intl.d.ts
@@ -760,6 +769,11 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/theme-tomorrow-night-blue/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/theme-tomorrow-night-blue/package.nls.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/theme-tomorrow-night-blue/themes/tomorrow-night-blue-color-theme.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/tunnel-forwarding/dist/extension.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/tunnel-forwarding/media/icon.png
+/usr/local/VSCodium-linux-x64/resources/app/extensions/tunnel-forwarding/package.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/tunnel-forwarding/package.nls.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/tunnel-forwarding/.vscode/launch.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-basics/language-configuration.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-basics/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-basics/package.nls.json
@@ -798,6 +812,8 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/yaml/syntaxes/yaml.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/LICENSE.txt
 /usr/local/VSCodium-linux-x64/resources/app/node_modules.asar
+/usr/local/VSCodium-linux-x64/resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node
+/usr/local/VSCodium-linux-x64/resources/app/node_modules.asar.unpacked/kerberos/build/Release/obj.target/kerberos.node
 /usr/local/VSCodium-linux-x64/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node
 /usr/local/VSCodium-linux-x64/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node
 /usr/local/VSCodium-linux-x64/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node
@@ -857,6 +873,12 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/editor/common/services/editorSimpleWorker.nls.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/loader.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/break.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/chatRequestSent.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/chatResponsePending.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived1.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived2.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived3.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived4.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/diffLineDeleted.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/diffLineInserted.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/audioCues/browser/media/diffLineModified.mp3
@@ -923,6 +945,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/notebookThemes/default.png
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/notebookThemes/jupyter.png
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/openFolder.svg
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/profiles.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/runTask.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/search.svg
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg
@@ -935,7 +958,8 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/languageDetection/browser/languageDetectionSimpleWorker.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/search/worker/localFileSearch.js
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/textMate/browser/worker/textMate.worker.js
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/textMate/browser/backgroundTokenization/worker/textMateTokenizationWorker.worker.js
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/services/voiceRecognition/electron-sandbox/voiceTranscriptionWorklet.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/workbench.desktop.main.css
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/workbench.desktop.main.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/workbench/workbench.desktop.main.nls.js
