@@ -3,23 +3,23 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.11.5'
+  version '3.12.0'
   license 'PSF-2.0'
-  compatibility 'all'
+  compatibility 'x86_64'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '85cd12e9cf1d6d5a45f17f7afe1cebe7ee628d3282281c492e86adf636defa3f'
+  source_sha256 '795c34f44df45a0e9b9710c8c71c15c671871524cd412ca14def212e8ccb155d'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_i686/python3-3.11.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_x86_64/python3-3.11.5-chromeos-x86_64.tar.zst'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_i686/python3-3.12.0-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_x86_64/python3-3.12.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
      armv7l: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
-       i686: '8ef1e1c7d7c85213ade5069158cbb2b16a777bd0be374e196b0feb4491961deb',
-     x86_64: '326265010b0a4407914db78bc6a1cb754817203f2bed0c107cee8a6b4134667b'
+    i686: '25ee2c544cdcb698329bd7657b4ac7453fb8b15bf9a6e77970d44a424831f114',
+  x86_64: 'd83d60aed0e63855cb08e1032cd887824ddb573c37003c9b50fcd4c158b11bae'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -60,17 +60,17 @@ class Python3 < Package
     system "crew remove #{@replaces_installed.join(' ')}", exception: false
   end
 
-  def self.patch
-    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
-		Lib/distutils/command/install.py \
-		Lib/distutils/sysconfig.py \
-		Lib/site.py \
-		Lib/sysconfig.py \
-		Lib/test/test_site.py \
-		Makefile.pre.in \
-		Modules/getpath.c \
-		setup.py"
-  end
+  #  def self.patch
+  #    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
+  #		Lib/distutils/command/install.py \
+  #		Lib/distutils/sysconfig.py \
+  #		Lib/site.py \
+  #		Lib/sysconfig.py \
+  #		Lib/test/test_site.py \
+  #		Makefile.pre.in \
+  #		Modules/getpath.c \
+  #		setup.py"
+  #  end
 
   def self.prebuild
     # Ensure that internal copies of expat, libffi and zlib aren't used
@@ -99,7 +99,6 @@ class Python3 < Package
           --with-ensurepip \
           --enable-optimizations \
           --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
-          --with-system-ffi \
           --with-system-expat \
           --with-system-libmpdec \
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
