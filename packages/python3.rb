@@ -5,7 +5,7 @@ class Python3 < Package
   homepage 'https://www.python.org/'
   version '3.12.0'
   license 'PSF-2.0'
-  compatibility 'x86_64'
+  compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
   source_sha256 '795c34f44df45a0e9b9710c8c71c15c671871524cd412ca14def212e8ccb155d'
 
