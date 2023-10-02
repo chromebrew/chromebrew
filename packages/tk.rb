@@ -3,32 +3,31 @@ require 'package'
 class Tk < Package
   description 'Tk is a graphical user interface toolkit that takes developing desktop applications to a higher level than conventional approaches.'
   homepage 'http://www.tcl.tk/'
-  version '8.6.13'
+  @_ver = '8.6.13'
+  version '8.6.13-1'
   license 'tcltk'
-  compatibility 'all'
-  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{version}/tk#{version}-src.tar.gz"
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url "https://downloads.sourceforge.net/project/tcl/Tcl/#{@_ver}/tk#{@_ver}-src.tar.gz"
   source_sha256 '2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13_armv7l/tk-8.6.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13_armv7l/tk-8.6.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13_i686/tk-8.6.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13_x86_64/tk-8.6.13-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13-1_armv7l/tk-8.6.13-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13-1_armv7l/tk-8.6.13-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tk/8.6.13-1_x86_64/tk-8.6.13-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '60828b2d3afe1123cffd6959045692ec51bd454f1206365295d75d06df9e1bcf',
-     armv7l: '60828b2d3afe1123cffd6959045692ec51bd454f1206365295d75d06df9e1bcf',
-       i686: 'f9e25e5d0d50ef16f84e4641cc62e49b509a97df0fac8d27d4d59a1b3c824b8c',
-     x86_64: '03e96c918d55ef6ae6dc0b86af2cfc4c5732c799cf950efec089e4df7a4a7027'
+    aarch64: '11d5f652674f27e7b74b21c2cc1a5132fe068f42d9959e8f39b687b9cc4ba5ae',
+     armv7l: '11d5f652674f27e7b74b21c2cc1a5132fe068f42d9959e8f39b687b9cc4ba5ae',
+     x86_64: '1972370b1bfb3fa2ae2f2881e319e92f1fb6eb2a2245445f92fe78456874fdb6'
   })
 
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libx11' # R
-  depends_on 'libxext' unless ARCH == 'i686' # R
-  depends_on 'libxft' unless ARCH == 'i686' # R
-  depends_on 'libxss' unless ARCH == 'i686' # R
+  depends_on 'libxext' # R
+  depends_on 'libxft' # R
+  depends_on 'libxss' # R
   depends_on 'tcl' # R
   depends_on 'zlibpkg' # R
 
@@ -49,7 +48,7 @@ class Tk < Package
   def self.install
     FileUtils.chdir('unix') do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      FileUtils.ln_s "#{CREW_PREFIX}/bin/wish#{version.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/wish"
+      FileUtils.ln_s "#{CREW_PREFIX}/bin/wish#{@_ver.rpartition('.')[0]}", "#{CREW_DEST_PREFIX}/bin/wish"
     end
   end
 end
