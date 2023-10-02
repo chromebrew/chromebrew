@@ -1,10 +1,10 @@
-require 'package'
+require 'buildsystems/python'
 
-class Mesonbuild < Package
+class Mesonbuild < Python
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '1.2.1'
-  version "#{@_ver}-py3.11"
+  @_ver = '1.2.2'
+  version "#{@_ver}-py3.2"
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/mesonbuild/meson.git'
@@ -26,12 +26,4 @@ class Mesonbuild < Package
   depends_on 'ninja'
   depends_on 'samurai'
   depends_on 'python3'
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end
