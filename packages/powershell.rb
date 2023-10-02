@@ -3,19 +3,19 @@ require 'package'
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://docs.microsoft.com/en-us/powershell/'
-  version '7.3.6'
+  version '7.3.7'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
 
   source_url({
-    aarch64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.6/powershell-7.3.6-linux-arm32.tar.gz',
-     armv7l: 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.6/powershell-7.3.6-linux-arm32.tar.gz',
-     x86_64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.6/powershell-7.3.6-linux-x64.tar.gz'
+    aarch64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.7/powershell-7.3.7-linux-arm32.tar.gz',
+     armv7l: 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.7/powershell-7.3.7-linux-arm32.tar.gz',
+     x86_64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.3.7/powershell-7.3.7-linux-x64.tar.gz'
   })
   source_sha256({
-    aarch64: '0bd7759895546ac04ed81368c7818036fc8b2d9826e476f0f249dab51a30797b',
-     armv7l: '0bd7759895546ac04ed81368c7818036fc8b2d9826e476f0f249dab51a30797b',
-     x86_64: '38bfba9aa4c914adf9f9a64b7f5832f8533305b696b5f03d0c3d56f9a2d8a5dc'
+    aarch64: 'f95edb917661f91afbaa968d37ec3c166674f826017d680f954f047ca400b6da',
+     armv7l: 'f95edb917661f91afbaa968d37ec3c166674f826017d680f954f047ca400b6da',
+     x86_64: '18ab001fe03cf7f3357f1bf0e02e326fbf884dc7c3e98e0e89c6f52bc02cc302'
   })
 
   depends_on 'xdg_base'
