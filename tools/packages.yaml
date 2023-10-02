@@ -3080,6 +3080,11 @@ url: https://github.com/hunspell/hunspell/releases
 activity: low
 ---
 kind: url
+name: hurl
+url: https://github.com/Orange-OpenSource/releases
+activity: medium
+---
+kind: url
 name: hwdata
 url: https://github.com/vcrhonek/hwdata/releases
 activity: high
