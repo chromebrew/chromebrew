@@ -10,16 +10,16 @@ class Python3 < Package
   source_sha256 '795c34f44df45a0e9b9710c8c71c15c671871524cd412ca14def212e8ccb155d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_i686/python3-3.12.0-chromeos-i686.tar.zst',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_x86_64/python3-3.12.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_armv7l/python3-3.12.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_armv7l/python3-3.12.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_i686/python3-3.12.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_x86_64/python3-3.12.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
-     armv7l: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
-    i686: '25ee2c544cdcb698329bd7657b4ac7453fb8b15bf9a6e77970d44a424831f114',
-  x86_64: 'd83d60aed0e63855cb08e1032cd887824ddb573c37003c9b50fcd4c158b11bae'
+    aarch64: '1241f2fb4681b09f2c0f9d00799222b63ecc79488040403d68186bc8093eaf6c',
+     armv7l: '1241f2fb4681b09f2c0f9d00799222b63ecc79488040403d68186bc8093eaf6c',
+       i686: '25ee2c544cdcb698329bd7657b4ac7453fb8b15bf9a6e77970d44a424831f114',
+     x86_64: 'd83d60aed0e63855cb08e1032cd887824ddb573c37003c9b50fcd4c158b11bae'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -136,7 +136,7 @@ class Python3 < Package
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
     FileUtils.ln_sf 'pip3', "#{CREW_DEST_PREFIX}/bin/pip"
-    FileUtils.install 'python_config_env', "#{CREW_DEST_PREFIX}/etc/env.d/python", mode: 0o644
+    FileUtils.install 'builddir/python_config_env', "#{CREW_DEST_PREFIX}/etc/env.d/python", mode: 0o644
   end
 
   def self.postinstall
