@@ -1,10 +1,10 @@
-require 'package'
+require 'buildessentials/python'
 
-class Py3_tomli < Package
+class Py3_tomli < Python
   description "Tomli is a lil' TOML parser."
   homepage 'https://github.com/hukkin/tomli/'
   @_ver = '2.0.1'
-  version "#{@_ver}-py3.11"
+  version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/hukkin/tomli.git'
@@ -25,12 +25,4 @@ class Py3_tomli < Package
 
   depends_on 'python3'
   depends_on 'py3_flit_core'
-
-  def self.build
-    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-  end
 end

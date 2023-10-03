@@ -1,10 +1,10 @@
-require 'package'
+require 'buildessentials/python'
 
-class Py3_flit_core < Package
+class Py3_flit_core < Python
   description 'Flit provides simplified packaging of Python modules—core portions.'
   homepage 'https://flit.pypa.io/'
-  @_ver = '3.8.0'
-  version "#{@_ver}-py3.11"
+  @_ver = '3.9.0'
+  version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/flit.git'
@@ -24,16 +24,4 @@ class Py3_flit_core < Package
   })
 
   depends_on 'python3'
-
-  def self.build
-    Dir.chdir 'flit_core' do
-      system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-    end
-  end
-
-  def self.install
-    Dir.chdir 'flit_core' do
-      system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-    end
-  end
 end
