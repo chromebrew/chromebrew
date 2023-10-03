@@ -12,6 +12,7 @@
 /usr/local/bin/python3.12
 /usr/local/bin/python3.12-config
 /usr/local/bin/python3-config
+/usr/local/etc/env.d/python
 /usr/local/include/python3.12/abstract.h
 /usr/local/include/python3.12/bltinmodule.h
 /usr/local/include/python3.12/boolobject.h
