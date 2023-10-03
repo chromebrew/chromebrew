@@ -9,8 +9,12 @@ class Python < Package
 
   def self.build
     @required_pip_modules = %w[build installer setuptools wheel pep517]
+    @pip_list = `pip list --exclude pip`
     @required_pip_modules.each do |pip_pkg|
-      system "pip install #{pip_pkg}" unless `pip list | grep #{pip_pkg}`.chomp
+      unless @pip_list.include?(pip_pkg)
+        puts "Installing #{pip_pkg} using pip..."
+        system "pip install #{pip_pkg}"
+      end
     end
     puts "Python build options being used: #{PY3_SETUP_BUILD_OPTIONS} #{@python_build_options}".orange
     if File.file?('setup.py')
