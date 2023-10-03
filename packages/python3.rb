@@ -60,18 +60,6 @@ class Python3 < Package
     system "crew remove #{@replaces_installed.join(' ')}", exception: false
   end
 
-  #  def self.patch
-  #    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
-  #		Lib/distutils/command/install.py \
-  #		Lib/distutils/sysconfig.py \
-  #		Lib/site.py \
-  #		Lib/sysconfig.py \
-  #		Lib/test/test_site.py \
-  #		Makefile.pre.in \
-  #		Modules/getpath.c \
-  #		setup.py"
-  #  end
-
   def self.prebuild
     # Ensure that internal copies of expat, libffi and zlib aren't used
     FileUtils.rm_rf 'Modules/expat'
@@ -105,6 +93,10 @@ class Python3 < Package
           --with-libc= \
           --enable-shared"
       system 'mold -run make'
+      File.write 'python_config_env', <<~PYTHON_CONFIG_EOF
+        # Force use of python3 over python2.7 in packages which check the variable to set the python used.
+        PYTHON=python3
+      PYTHON_CONFIG_EOF
     end
   end
 
@@ -144,6 +136,7 @@ class Python3 < Package
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
     FileUtils.ln_sf 'pip3', "#{CREW_DEST_PREFIX}/bin/pip"
+    FileUtils.install 'python_config_env', "#{CREW_DEST_PREFIX}/etc/env.d/python", mode: 0o644
   end
 
   def self.postinstall
