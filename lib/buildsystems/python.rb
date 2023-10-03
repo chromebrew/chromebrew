@@ -20,7 +20,7 @@ class Python < Package
     if File.file?('setup.py')
       system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS} #{@python_build_options}"
     else
-      system "python3 -m build #{PY3_SETUP_BUILD_OPTIONS} #{@python_build_options}"
+      system "python3 -m build #{@python_build_options}"
     end
   end
 
