@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/python'
 
-class Py3_wheel < Package
+class Py3_wheel < Python
   description 'Wheel is the binary package format for python.'
   homepage 'https://wheel.readthedocs.io/'
   @_ver = '0.41.2'
@@ -25,12 +25,4 @@ class Py3_wheel < Package
 
   depends_on 'python3'
   depends_on 'py3_packaging'
-
-  def self.build
-    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-  end
 end
