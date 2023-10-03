@@ -1,6 +1,6 @@
-require 'buildsystems/python'
+require 'package'
 
-class Py3_installer < Python
+class Py3_installer < Package
   description 'Python build is a simple, correct PEP 517 build frontend.'
   homepage 'https://installer.readthedocs.io/'
   @_ver = '0.7.0'
@@ -24,4 +24,12 @@ class Py3_installer < Python
   })
 
   depends_on 'python3'
+
+  def self.build
+    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
+  end
+
+  def self.install
+    system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
+  end
 end
