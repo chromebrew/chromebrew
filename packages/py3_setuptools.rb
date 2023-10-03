@@ -1,10 +1,10 @@
-require 'package'
+require 'buildsystems/python'
 
-class Py3_setuptools < Package
+class Py3_setuptools < Python
   description 'Setuptools is the python build system from the Python Packaging Authority.'
   homepage 'https://setuptools.readthedocs.io/'
-  @_ver = '65.6.3'
-  version "#{@_ver}-py3.11"
+  @_ver = '68.2.2'
+  version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/pypa/setuptools.git'
@@ -23,16 +23,9 @@ class Py3_setuptools < Package
      x86_64: '483166d8742478f87585c5a10d10fafd5953dabb1c6e435d2c13d5bccebcd74a'
   })
 
-  depends_on 'python3', '< 3.11.0'
+  depends_on 'python3', '< 3.13.0'
   depends_on 'py3_packaging'
 
   conflicts_ok
 
-  def self.build
-    system "SETUPTOOLS_SCM_PRETEND_VERSION=#{@_ver} python3 -m build #{PY3_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 -m installer #{PY3_INSTALLER_OPTIONS}"
-  end
 end
