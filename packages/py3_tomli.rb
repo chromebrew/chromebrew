@@ -17,10 +17,10 @@ class Py3_tomli < Python
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_tomli/2.0.1-py3.12_x86_64/py3_tomli-2.0.1-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3c7be612da912852d98110637e4346235faec49c4a4040d0fec55ea7197bce98',
-     armv7l: '3c7be612da912852d98110637e4346235faec49c4a4040d0fec55ea7197bce98',
-       i686: 'c215a3c144b2f29f8a25e2aa32304db5bab81f9856aa03a1148a942828b3e1c6',
-     x86_64: '4a0c7533e2b146e37ccf84c7e66b54f999dfe5ffc49af16529520aaa4fed693c'
+    aarch64: '61dbfafd949c4991a945a9fcce2b949f0ed325fedb2a350248b10283dba204d0',
+     armv7l: '61dbfafd949c4991a945a9fcce2b949f0ed325fedb2a350248b10283dba204d0',
+       i686: '360bbb2634e35761dfde2b39ef206d494b026528dd426957ecba714537ba4a26',
+     x86_64: 'd7da94aa98fcd43e3c4ffabe53cad959bac1c75f4b7a7f73880a53ec65e4d3cc'
   })
 
   depends_on 'python3'

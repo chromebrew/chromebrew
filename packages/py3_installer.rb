@@ -17,10 +17,10 @@ class Py3_installer < Python
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_installer/0.7.0-py3.12_x86_64/py3_installer-0.7.0-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a6661b500b37de8a35cd949b2da19c95d711eb92728babab72649eb35524ea79',
-     armv7l: 'a6661b500b37de8a35cd949b2da19c95d711eb92728babab72649eb35524ea79',
-       i686: '97150ba777136bc8ad76b787730eebae06c71a50afe71589d8c9e000abdc8699',
-     x86_64: 'fdf87ebe7f48cbff5347738a49c4f8b2615eba3b3708abfec9b2cfe8d9d12436'
+    aarch64: '4f302c9f93e2c68f69f59006fbc25bfda1928b0c56b11bed14842bdd5a3884a0',
+     armv7l: '4f302c9f93e2c68f69f59006fbc25bfda1928b0c56b11bed14842bdd5a3884a0',
+       i686: 'ff57359c8eaf07a3d0e5bd4eb469f68a099a098e1c511feefda8149767146c24',
+     x86_64: '987a0e28faeeed4765c8f0878ac7fbfa9fe9151e3d2541e9133534e87e1885c9'
   })
 
   depends_on 'python3'

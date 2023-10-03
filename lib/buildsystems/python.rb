@@ -8,7 +8,7 @@ class Python < Package
   depends_on 'python3'
 
   def self.build
-    @required_pip_modules = %w[build installer setuptools wheel pep517]
+    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
     @pip_list = `pip list --exclude pip`
     @required_pip_modules.each do |pip_pkg|
       unless @pip_list.include?(pip_pkg)
