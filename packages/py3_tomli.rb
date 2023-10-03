@@ -1,4 +1,4 @@
-require 'buildessentials/python'
+require 'buildsystems/python'
 
 class Py3_tomli < Python
   description "Tomli is a lil' TOML parser."

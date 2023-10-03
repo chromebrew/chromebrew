@@ -1,4 +1,4 @@
-require 'buildessentials/python'
+require 'buildsystems/python'
 
 class Py3_flit_core < Python
   description 'Flit provides simplified packaging of Python modules—core portions.'
