@@ -77,6 +77,7 @@
 /usr/local/include/libnm/nm-setting-ip6-config.h
 /usr/local/include/libnm/nm-setting-ip-config.h
 /usr/local/include/libnm/nm-setting-ip-tunnel.h
+/usr/local/include/libnm/nm-setting-link.h
 /usr/local/include/libnm/nm-setting-loopback.h
 /usr/local/include/libnm/nm-setting-macsec.h
 /usr/local/include/libnm/nm-setting-macvlan.h
@@ -128,12 +129,12 @@
 /usr/local/lib64/libnm.so
 /usr/local/lib64/libnm.so.0
 /usr/local/lib64/libnm.so.0.1.0
-/usr/local/lib64/NetworkManager/1.42.8/libnm-device-plugin-adsl.so
-/usr/local/lib64/NetworkManager/1.42.8/libnm-device-plugin-bluetooth.so
-/usr/local/lib64/NetworkManager/1.42.8/libnm-device-plugin-ovs.so
-/usr/local/lib64/NetworkManager/1.42.8/libnm-device-plugin-wifi.so
-/usr/local/lib64/NetworkManager/1.42.8/libnm-device-plugin-wwan.so
-/usr/local/lib64/NetworkManager/1.42.8/libnm-wwan.so
+/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-adsl.so
+/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-bluetooth.so
+/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-ovs.so
+/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-wifi.so
+/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-wwan.so
+/usr/local/lib64/NetworkManager/1.44.2/libnm-wwan.so
 /usr/local/lib64/pkgconfig/libnm.pc
 /usr/local/libexec/nm-cloud-setup
 /usr/local/libexec/nm-daemon-helper
