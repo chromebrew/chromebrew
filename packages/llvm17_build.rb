@@ -3,7 +3,7 @@ require 'package'
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '17.0.1'
+  version '17.0.2'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -12,14 +12,14 @@ class Llvm17_build < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_armv7l/llvm17_build-17.0.1-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_armv7l/llvm17_build-17.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_i686/llvm17_build-17.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_x86_64/llvm17_build-17.0.1-chromeos-x86_64.tar.zst'
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.2_i686/llvm17_build-17.0.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.2_x86_64/llvm17_build-17.0.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '61979034409fd18ce316c0cfb1a29a7a62d6a04f387b7ca726cb7dd2728b3da6',
      armv7l: '61979034409fd18ce316c0cfb1a29a7a62d6a04f387b7ca726cb7dd2728b3da6',
-       i686: '80dc613b746126b1b393aaef98078a245f7f25d89b65de1b599f755352e21996',
-     x86_64: 'eebc943cc0c7a7d5528c143a5c0188a16486408dad029123cf644b543be30b22'
+       i686: 'bb572a3774902633aa5b004499219b0f1bf3c9ddb8e17c6483ac7c2f38e3057d',
+     x86_64: '38ed0470685997c9c583995ec7428ec862afa13a5cb81f761ce5501a40c7cffa'
   })
 
   depends_on 'ocaml' => :build
