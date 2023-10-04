@@ -3,23 +3,23 @@ require 'package'
 class Smbclient < Package
   description 'Tools to access a servers filespace and printers via SMB'
   homepage 'https://www.samba.org'
-  version '4.18.0'
+  version '4.19.0'
   license 'GPLv3'
   compatibility 'all'
-  source_url 'https://download.samba.org/pub/samba/stable/samba-4.18.0.tar.gz'
-  source_sha256 '70348656ef807be9c8be4465ca157cef4d99818e234253d2c684cc18b8408149'
+  source_url 'https://download.samba.org/pub/samba/stable/samba-4.19.0.tar.gz'
+  source_sha256 '28f98ceab75a6a59432912fa110fc8c716abcab1ed6d8bdd4393d178acff3d20'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_armv7l/smbclient-4.18.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_armv7l/smbclient-4.18.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_i686/smbclient-4.18.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.18.0_x86_64/smbclient-4.18.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.19.0_armv7l/smbclient-4.19.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.19.0_armv7l/smbclient-4.19.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.19.0_i686/smbclient-4.19.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smbclient/4.19.0_x86_64/smbclient-4.19.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a38a5fad0e20363676d14560f9e05e3b1e746d23feed9e46fe95c7e02c62eb03',
-     armv7l: 'a38a5fad0e20363676d14560f9e05e3b1e746d23feed9e46fe95c7e02c62eb03',
-       i686: '816f819404ff0ef963606976e254b4a9ceaf672ddcd3ee47a6f2c0a02447b55b',
-     x86_64: '42b704298039f3b23734048f40ebfb0bd2067737de0befdbbff5b5d65b63837d'
+    aarch64: 'b9a4ab33c8485d9b134ea179b6f844bc8f10bdba4a6bd528238bdc4f71023200',
+     armv7l: 'b9a4ab33c8485d9b134ea179b6f844bc8f10bdba4a6bd528238bdc4f71023200',
+       i686: '92d7c9f231dcdd61bba87a69942ec885ee9392f779e560fce8555836364c9499',
+     x86_64: '95c4638c81ec65bcac478a16d6581d80f154b1e718541b7b14c80d73113af668'
   })
 
   depends_on 'acl' # R
