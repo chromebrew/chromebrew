@@ -3,24 +3,24 @@ require 'package'
 class Tdb < Package
   description 'tdb is a simple database API for sharing structures between parts of Samba'
   homepage 'https://tdb.samba.org/'
-  @_ver = '1.4.8'
-  version "#{@_ver}-py3.11"
+  @_ver = '1.4.9'
+  version "#{@_ver}-py3.12"
   license 'GPL-3'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/tdb/tdb-#{@_ver}.tar.gz"
-  source_sha256 '8434c9c857d13ce3fa8466f75601f25c3693676b36919f159e0ad6121baf5ce8'
+  source_sha256 '0ac226073e3a2db8648da7af744cb95f50766a52feeb001d558b2b321b74a765'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.8-py3.11_armv7l/tdb-1.4.8-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.8-py3.11_armv7l/tdb-1.4.8-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.8-py3.11_i686/tdb-1.4.8-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.8-py3.11_x86_64/tdb-1.4.8-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.9-py3.12_armv7l/tdb-1.4.9-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.9-py3.12_armv7l/tdb-1.4.9-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.9-py3.12_i686/tdb-1.4.9-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tdb/1.4.9-py3.12_x86_64/tdb-1.4.9-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '446c1ee82faf153a38f0e2d04b1e187ba4111df6f97689a3491c9440e0d92b24',
-     armv7l: '446c1ee82faf153a38f0e2d04b1e187ba4111df6f97689a3491c9440e0d92b24',
-       i686: '15964b73b8dba92077bca5ed900d7be5a62bee9b26bc772ca04962afd12ad0be',
-     x86_64: 'e041c23152bcdc8672f274baa1e4667db5505b6187e9541dabb0c50790229d96'
+    aarch64: 'a937908bc82109fc519b31cbe0c983a49743391a535817bb71f654ba4445aa0a',
+     armv7l: 'a937908bc82109fc519b31cbe0c983a49743391a535817bb71f654ba4445aa0a',
+       i686: '9074d39c76710f9b38922b6b5b149fe7cdafc8f66594f194b90c71f8478a2e99',
+     x86_64: '0be9b8c54b76cb5a86da7f636ca3b38b2f80a41367fcb437923df0767e3473c8'
   })
 
   depends_on 'docbook_xsl' => :build

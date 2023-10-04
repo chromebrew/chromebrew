@@ -5,10 +5,10 @@
 /usr/local/include/tdb.h
 /usr/local/lib/libtdb.so
 /usr/local/lib/libtdb.so.1
-/usr/local/lib/libtdb.so.1.4.8
+/usr/local/lib/libtdb.so.1.4.9
 /usr/local/lib/pkgconfig/tdb.pc
-/usr/local/lib/python3.11/site-packages/tdb.cpython-311-arm-linux-gnueabihf.so
-/usr/local/lib/python3.11/site-packages/_tdb_text.py
+/usr/local/lib/python3.12/site-packages/tdb.cpython-312-arm-linux-gnueabihf.so
+/usr/local/lib/python3.12/site-packages/_tdb_text.py
 /usr/local/share/man/man8/tdbbackup.8.zst
 /usr/local/share/man/man8/tdbdump.8.zst
 /usr/local/share/man/man8/tdbrestore.8.zst
