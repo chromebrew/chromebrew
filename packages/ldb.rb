@@ -28,6 +28,7 @@ class Ldb < Package
 
   depends_on 'cmocka' => :build
   depends_on 'docbook_xsl' => :build
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libxcrypt' => :build
@@ -38,7 +39,6 @@ class Ldb < Package
   depends_on 'talloc' # R
   depends_on 'tdb' # R
   depends_on 'tevent' # R
-  depends_on 'gcc_lib' # R
 
   def self.build
     system "./configure \
