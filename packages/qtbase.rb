@@ -3,31 +3,33 @@ require 'package'
 class Qtbase < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version '5.15.9-a196623'
+  version '5.15.10-9b7fd27'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag 'a196623892558623e467f20b67edb78794252a09'
+  git_hashtag '9b7fd27c2b4a363ba4434353be2932483be99234'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-a196623_armv7l/qtbase-5.15.9-a196623-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-a196623_armv7l/qtbase-5.15.9-a196623-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.9-a196623_x86_64/qtbase-5.15.9-a196623-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.10-9b7fd27_armv7l/qtbase-5.15.10-9b7fd27-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.10-9b7fd27_armv7l/qtbase-5.15.10-9b7fd27-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.10-9b7fd27_x86_64/qtbase-5.15.10-9b7fd27-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a79569cd61f7d59ef159cb8985afe4f887242da567fbe2610bea035274fbaf8b',
-     armv7l: 'a79569cd61f7d59ef159cb8985afe4f887242da567fbe2610bea035274fbaf8b',
-     x86_64: '4fcad8e5c53ef09ad36e47198ed8c82376dd4c4102cf7476c07963974294de01'
+    aarch64: 'a15e6d37232737b2776334459f35e1b518fcb85304a52ef8056c4d1ad3a0b778',
+     armv7l: 'a15e6d37232737b2776334459f35e1b518fcb85304a52ef8056c4d1ad3a0b778',
+     x86_64: '33f6b7827479b706f72c63d1f088cf4ffa665c8d603dea83ad5739cff873e182'
   })
 
   depends_on 'alsa_plugins' => :build
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
+  depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'dbus' # R
   depends_on 'eudev' # R
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' => :build
+  depends_on 'fontconfig' # R
   depends_on 'freetds' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
@@ -94,7 +96,7 @@ class Qtbase < Package
            -xcb-xlib"
     system 'mold -run bin/qmake CONFIG+=fat-static-lto -- -redo'
     @counter = 1
-    @counter_max = 5
+    @counter_max = 20
     loop do
       break if Kernel.system "make -j #{CREW_NPROC}"
 
