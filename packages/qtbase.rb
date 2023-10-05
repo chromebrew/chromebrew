@@ -22,13 +22,11 @@ class Qtbase < Package
 
   depends_on 'alsa_plugins' => :build
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
   depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'dbus' # R
   depends_on 'eudev' # R
   depends_on 'ffmpeg' => :build
-  depends_on 'fontconfig' => :build
   depends_on 'fontconfig' # R
   depends_on 'freetds' # R
   depends_on 'freetype' # R

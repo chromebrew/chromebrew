@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openblas < Package
+class Openblas < CMake
   description 'OpenBLAS is an optimized BLAS library'
   homepage 'http://www.openblas.net/'
   version '0.3.10'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/xianyi/OpenBLAS/archive/v0.3.10.tar.gz'
-  source_sha256 '0484d275f87e9b8641ff2eecaa9df2830cbe276ac79ad80494822721de6e1693'
+  source_url 'https://github.com/OpenMathLib/OpenBLAS.git'
+  git_hashtag "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.10_armv7l/openblas-0.3.10-chromeos-armv7l.tar.xz',
@@ -22,36 +22,6 @@ class Openblas < Package
      x86_64: '5ff79ee03d58af432aa664986c4128cc3e8ec95b9e16ced015f48acb8edb4f3c'
   })
 
-  def self.build
-    case ARCH
-    when 'x86_64'
-      system 'mkdir -p build'
-      Dir.chdir('build') do
-        system 'cmake',
-               "-DCMAKE_INSTALL_PREFIX:PATH=#{CREW_PREFIX}",
-               "-DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX}",
-               'TARGET=ATOM',
-               '..'
-        system 'make'
-      end
-    when 'i686'
-      system 'make TARGET=ATOM'
-    when 'armv7l', 'aarch64'
-      system 'make TARGET=ARMV7'
-    end
-  end
-
-  def self.install
-    case ARCH
-    when 'x86_64'
-      Dir.chdir('build') do
-        system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-      end
-    when 'i686', 'armv7l', 'aarch64'
-      system 'make',
-             "PREFIX=#{CREW_PREFIX}",
-             "DESTDIR=#{CREW_DEST_DIR}",
-             'install'
-    end
-  end
+  depends_on 'lapack' # R
+  cmake_options "-DTARGET=#{%w[x86_64 i686].include?(ARCH) ? 'ATOM' : 'ARMV7'}"
 end
