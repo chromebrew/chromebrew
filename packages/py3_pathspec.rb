@@ -1,35 +1,27 @@
-require 'package'
+require 'buildsystems/python'
 
-class Py3_pathspec < Package
+class Py3_pathspec < Python
   description 'Path specification is a utility library for gitignore style pattern matching of file paths.'
-  homepage 'https://github.com/cpburnz/python-path-specification/'
-  @_ver = '0.9.0'
-  version "#{@_ver}-py3.11"
+  homepage 'https://github.com/cpburnz/python-pathspec'
+  @_ver = '0.11.2'
+  version "#{@_ver}-py3.12"
   license 'MPL-2.0'
   compatibility 'all'
-  source_url 'https://github.com/cpburnz/python-path-specification.git'
-  git_hashtag '7b125acf41702cb82679dcf56aaf6a14d34bd785'
+  source_url 'https://github.com/cpburnz/python-pathspec.git'
+  git_hashtag "v#{@_ver}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0-py3.11_armv7l/py3_pathspec-0.9.0-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0-py3.11_armv7l/py3_pathspec-0.9.0-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0-py3.11_i686/py3_pathspec-0.9.0-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.9.0-py3.11_x86_64/py3_pathspec-0.9.0-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.11.2-py3.12_armv7l/py3_pathspec-0.11.2-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.11.2-py3.12_armv7l/py3_pathspec-0.11.2-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.11.2-py3.12_i686/py3_pathspec-0.11.2-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pathspec/0.11.2-py3.12_x86_64/py3_pathspec-0.11.2-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1221f9bbea4d7f1731a55a31280ef64d1d696f47fe060ca2e5081a0390ce799f',
-     armv7l: '1221f9bbea4d7f1731a55a31280ef64d1d696f47fe060ca2e5081a0390ce799f',
-       i686: 'fe1135b7be4c499a15e760c0d3b7f3d1477073d0df25cfe081fdcf90104fe656',
-     x86_64: '30e5b78e216257ffa93c6b819375a242336f6eed428c302de97f124647242952'
+    aarch64: '3169f3b108464982d40355877bb4768a19d46abd1ca6a311bd011a382dad01f4',
+     armv7l: '3169f3b108464982d40355877bb4768a19d46abd1ca6a311bd011a382dad01f4',
+       i686: 'aac2999e6ff5d2f56cd41f2e9e2e58120b737cbddcf178d8b962fb4fcd6046c2',
+     x86_64: 'c1695e925dac96f847a4cb243c516d9df27135a927a3927217828fd4a6b4a341'
   })
 
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end

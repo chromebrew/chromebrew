@@ -1,35 +1,26 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Py3_pluggy < Package
+class Py3_pluggy < Pip
   description 'Pluggy provides plugin and hook calling mechanisms for Python.'
   homepage 'https://pluggy.readthedocs.io/'
-  @_ver = '1.0.0'
-  version "#{@_ver}-py3.11"
+  @_ver = '1.3.0'
+  version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pytest-dev/pluggy.git'
-  git_hashtag @_ver
+  source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0-py3.11_armv7l/py3_pluggy-1.0.0-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0-py3.11_armv7l/py3_pluggy-1.0.0-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0-py3.11_i686/py3_pluggy-1.0.0-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.0.0-py3.11_x86_64/py3_pluggy-1.0.0-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.3.0-py3.12_armv7l/py3_pluggy-1.3.0-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.3.0-py3.12_armv7l/py3_pluggy-1.3.0-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.3.0-py3.12_i686/py3_pluggy-1.3.0-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pluggy/1.3.0-py3.12_x86_64/py3_pluggy-1.3.0-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b9c6dda535fa966376c8876e1ddc6b252390d6701dbe62a84d523c3366712b9e',
-     armv7l: 'b9c6dda535fa966376c8876e1ddc6b252390d6701dbe62a84d523c3366712b9e',
-       i686: '024465077f9aab8d778e25b659c2504ece1695856f906470edb25c01fa138b9a',
-     x86_64: 'f6350fada307225ce3d70b8a8c35ed4cbf281704d45b53abdb85191f0d95c401'
+    aarch64: '0dd336a662156bd9e4a38020808f3ab263811a79cc6abde09487fc4a37ce1f7d',
+     armv7l: '0dd336a662156bd9e4a38020808f3ab263811a79cc6abde09487fc4a37ce1f7d',
+       i686: 'c2479cee3d970b77d63b5c4bdc5c7a898967f2bc6b723514894660d3bfa9e18d',
+     x86_64: 'a6b0e3d74c870c859d75bdcd16a82ffe9b18dca1d931c44071f81a19cad80599'
   })
 
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end
