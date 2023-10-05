@@ -3,23 +3,23 @@ require 'package'
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '17.0.1'
+  version '17.0.2'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_armv7l/llvm17_build-17.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_armv7l/llvm17_build-17.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_i686/llvm17_build-17.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.1_x86_64/llvm17_build-17.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.2_armv7l/llvm17_build-17.0.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.2_armv7l/llvm17_build-17.0.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.2_i686/llvm17_build-17.0.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.2_x86_64/llvm17_build-17.0.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '61979034409fd18ce316c0cfb1a29a7a62d6a04f387b7ca726cb7dd2728b3da6',
-     armv7l: '61979034409fd18ce316c0cfb1a29a7a62d6a04f387b7ca726cb7dd2728b3da6',
-       i686: '80dc613b746126b1b393aaef98078a245f7f25d89b65de1b599f755352e21996',
-     x86_64: 'eebc943cc0c7a7d5528c143a5c0188a16486408dad029123cf644b543be30b22'
+    aarch64: '5797c5ec5e436f12e0d371441ff3da4f61a9e5a6f0eb2269433854394b67c043',
+     armv7l: '5797c5ec5e436f12e0d371441ff3da4f61a9e5a6f0eb2269433854394b67c043',
+       i686: '76800ca262fc59208faddd9510fce6140f30aba759810abb42e8167588dfbe9f',
+     x86_64: 'c4162df33fd7fbfe6835f1d3d1fe5c0a326c897cc5b8cf418a19716e34327405'
   })
 
   depends_on 'ocaml' => :build
@@ -31,7 +31,7 @@ class Llvm17_build < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'llvm16_dev' => :build
+  depends_on 'llvm17_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'py3_pyyaml' => :build
   depends_on 'xzutils' # R

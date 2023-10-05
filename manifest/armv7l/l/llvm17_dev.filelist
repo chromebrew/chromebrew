@@ -3896,6 +3896,8 @@
 /usr/local/lib/clang/17/include/cpuid.h
 /usr/local/lib/clang/17/include/crc32intrin.h
 /usr/local/lib/clang/17/include/cuda_wrappers/algorithm
+/usr/local/lib/clang/17/include/cuda_wrappers/bits/basic_string.h
+/usr/local/lib/clang/17/include/cuda_wrappers/bits/basic_string.tcc
 /usr/local/lib/clang/17/include/cuda_wrappers/bits/shared_ptr_base.h
 /usr/local/lib/clang/17/include/cuda_wrappers/cmath
 /usr/local/lib/clang/17/include/cuda_wrappers/complex
@@ -4148,7 +4150,7 @@
 /usr/local/lib/libclangSerialization.a
 /usr/local/lib/libclang.so
 /usr/local/lib/libclang.so.17
-/usr/local/lib/libclang.so.17.0.1
+/usr/local/lib/libclang.so.17.0.2
 /usr/local/lib/libclangStaticAnalyzerCheckers.a
 /usr/local/lib/libclangStaticAnalyzerCore.a
 /usr/local/lib/libclangStaticAnalyzerFrontend.a
@@ -4197,7 +4199,7 @@
 /usr/local/lib/liblldbIntelFeatures.so.17
 /usr/local/lib/liblldb.so
 /usr/local/lib/liblldb.so.17
-/usr/local/lib/liblldb.so.17.0.1
+/usr/local/lib/liblldb.so.17.0.2
 /usr/local/lib/liblldCOFF.a
 /usr/local/lib/liblldCommon.a
 /usr/local/lib/liblldELF.a

@@ -4,7 +4,7 @@ require_relative 'llvm17_build'
 class Llvm17_dev < Package
   description 'LLVM: Everything except libLLVM & llvm-strip'
   homepage Llvm17_build.homepage
-  version '17.0.1'
+  version '17.0.2'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib* and llvm_dev* in tandem.
   puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version.to_s
   license Llvm17_build.license
@@ -12,16 +12,16 @@ class Llvm17_dev < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.1_armv7l/llvm17_dev-17.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.1_armv7l/llvm17_dev-17.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.1_i686/llvm17_dev-17.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.1_x86_64/llvm17_dev-17.0.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.2_armv7l/llvm17_dev-17.0.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.2_armv7l/llvm17_dev-17.0.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.2_i686/llvm17_dev-17.0.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.2_x86_64/llvm17_dev-17.0.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ffbce01c83eb39ce4da1520097f688093d82215d9056540ccda863dccd54501a',
-     armv7l: 'ffbce01c83eb39ce4da1520097f688093d82215d9056540ccda863dccd54501a',
-       i686: '4569c9d5176b767bb4009c2e2d8f2633b77b54fbbcb81d42bc0fd3c5973f1ced',
-     x86_64: '757582002d7ddbd1d33ecb6f197c6257273a5ef9678ef1662fe908134cd11e7f'
+    aarch64: '261db2294118fc01e29a8c6d39578342c21d87587460625409932da4f450ce3e',
+     armv7l: '261db2294118fc01e29a8c6d39578342c21d87587460625409932da4f450ce3e',
+       i686: 'b7c0408746a58623015ee6f80d0aa1f01d5d7a1161c344c1e1455e2523300c1c',
+     x86_64: 'c34782d68d4f160d145442de1df9a782a440ddbee68f1411415fbfe7272a8cbf'
   })
 
   depends_on 'gcc_dev' # R
