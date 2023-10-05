@@ -6,10 +6,10 @@ require 'package'
 class Ruby_rubocop < Package
   description 'A Ruby static code analyzer and formatter'
   homepage 'https://rubocop.org'
-  version '1.52.1-ruby-3.2'
+  version '1.56.4-ruby-3.2'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
-  source_sha256 'c25faeecdbc465ef97e5a9d94ca46a64af5a68c2d17d8de7ba622377d22b805c'
+  source_sha256 'ef0331bf6c4b032233f587b3fd74b688d9c1bd6cce32390dfca977bc92ef4968'
 
   depends_on 'libyaml'
   depends_on 'ruby'
