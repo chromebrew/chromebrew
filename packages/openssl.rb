@@ -3,23 +3,23 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.0.10' # Do not use @_ver here, it will break the installer.
+  version '3.0.11' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-3.0.10.tar.gz'
-  source_sha256 '1761d4f5b13a1028b9b6f3d4b8e17feb0cedc9370f6afe61d7193d2cdce83323'
+  source_url 'https://www.openssl.org/source/openssl-3.0.11.tar.gz'
+  source_sha256 'b3425d3bb4a2218d0697eb41f7fc0cdede016ed19ca49d168b78e8d947887f55'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.10_armv7l/openssl-3.0.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.10_armv7l/openssl-3.0.10-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.10_i686/openssl-3.0.10-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.10_x86_64/openssl-3.0.10-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_armv7l/openssl-3.0.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_armv7l/openssl-3.0.11-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_i686/openssl-3.0.11-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_x86_64/openssl-3.0.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a8976997294adeffc28cdebaeb795d4ded24ea1fb0f9e09fb43f9c50d3780f23',
-     armv7l: 'a8976997294adeffc28cdebaeb795d4ded24ea1fb0f9e09fb43f9c50d3780f23',
-       i686: '83fbfacd93301d23564451d35c84da6b5ff6dbf412fa555a267d09fe6384182d',
-     x86_64: 'f4a5031529521eaf0da31cbcd6dd405a7c5dd7219573b2fcc4e931ef6e32a7b9'
+    aarch64: '1da9f326a69b5191aa2abef71f175491573a3c92a8a4e309a152217fa8c750a4',
+     armv7l: '1da9f326a69b5191aa2abef71f175491573a3c92a8a4e309a152217fa8c750a4',
+       i686: '1a31f9270b9dec20d3ba6cee8f0ebccd7a69171167081fd17f7a5fa287e6765e',
+     x86_64: 'd0ce2b7746364cee34e6a7fd190dccc608cab452fd57736607ca740e359cf9fc'
   })
 
   depends_on 'ccache' => :build
