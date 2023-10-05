@@ -1,35 +1,27 @@
-require 'package'
+require 'buildsystems/python'
 
-class Py3_alabaster < Package
+class Py3_alabaster < Python
   description 'Alabaster is a configurable sidebar-enabled Sphinx theme.'
   homepage 'https://alabaster.readthedocs.io/'
-  @_ver = '0.7.12'
-  version "#{@_ver}-py3.11"
+  @_ver = '0.7.13'
+  version "#{@_ver}-py3.12"
   license 'BSD' # License is BSD-style, might be BSD-3?
   compatibility 'all'
   source_url 'https://github.com/bitprophet/alabaster.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-py3.11_armv7l/py3_alabaster-0.7.12-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-py3.11_armv7l/py3_alabaster-0.7.12-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-py3.11_i686/py3_alabaster-0.7.12-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.12-py3.11_x86_64/py3_alabaster-0.7.12-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_armv7l/py3_alabaster-0.7.13-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_armv7l/py3_alabaster-0.7.13-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_i686/py3_alabaster-0.7.13-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_x86_64/py3_alabaster-0.7.13-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1f7e4d77b30d6a8a99db2fa8f287ce2083f9a9319016a053c279a126da2242ff',
-     armv7l: '1f7e4d77b30d6a8a99db2fa8f287ce2083f9a9319016a053c279a126da2242ff',
-       i686: '6eeec008185ffaa8e146ce342009649149c069f3dea48e8beef07cfa691a3020',
-     x86_64: 'd2a6ccf5010567c119639e8c16c625de222a06be0582d5378105f37e543300f2'
+    aarch64: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
+     armv7l: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
+       i686: '0d22ad3826e6080ff23b2d6d469f9451322a16a0c10df923bbd1818ce737bc11',
+     x86_64: '6d9c2f7fe045eb5721d4e5e148dcafc6c0103153350bc150c778e3797cbdf171'
   })
 
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end
