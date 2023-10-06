@@ -9,14 +9,14 @@ class Pip < Package
     @required_pip_modules.each do |pip_pkg|
       unless @pip_list.include?(pip_pkg)
         puts "Installing #{pip_pkg} using pip..."
-        system "pip install #{pip_pkg}"
+        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
       end
     end
   end
 
   def self.install
     puts "Installing #{name.gsub('py3_', '')} python module. This may take a while...".lightblue
-    system "python -s -m pip install #{name.gsub('py3_', '')}", exception: false
+    system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install #{name.gsub('py3_', '')}", exception: false
     @pip_files = `python3 -s -m pip show -f #{name.gsub('py3_', '')}`.chomp
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
