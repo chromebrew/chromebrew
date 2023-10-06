@@ -140,8 +140,19 @@ class Python3 < Package
   end
 
   def self.postinstall
+    # Pip is installed inside Python 3. The following steps ensure that
+    # pip can properly build other packages from buildsystems/pip.
+    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
+    @pip_list = `pip list --exclude pip`
+    @required_pip_modules.each do |pip_pkg|
+      unless @pip_list.include?(pip_pkg)
+        puts "Installing #{pip_pkg} using pip..."
+        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
+      end
+    end
+
     puts 'Updating pip packages...'.lightblue
-    system 'pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
+    system 'pip list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
     puts "Please install tcl and tk with 'crew install tcl tk' if tkinter is needed.".lightblue unless ARCH == 'i686'
   end
 end
