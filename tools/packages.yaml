@@ -6291,6 +6291,11 @@ url: https://github.com/mrolli/packer-bash-completion/releases/
 activity: none
 ---
 kind: url
+name: pacman
+url: https://sources.archlinux.org/other/pacman/
+activity: medium
+---
+kind: url
 name: pacparser
 url: https://github.com/pacparser/pacparser/releases
 activity: none
