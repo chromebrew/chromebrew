@@ -134,7 +134,7 @@ class Buildessential < Package
   depends_on 'py3_build'
   depends_on 'py3_installer'
   depends_on 'py3_flit_core'
-  depends_on 'python3'
+  depends_on 'py3_pip'
   # Pax_utils needs this.
   depends_on 'py3_pyelftools'
 

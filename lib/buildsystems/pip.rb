@@ -1,9 +1,10 @@
 require 'package'
 
-depends_on 'python3'
-depends_on 'py3_pip'
-
 class Pip < Package
+  # These dependencies have to be pulled in through buildessential.
+  depends_on 'python3'
+  depends_on 'py3_pip'
+
   def self.install
     puts "Installing #{name.gsub('py3_', '')} python module. This may take a while...".lightblue
     system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install #{name.gsub('py3_', '')}", exception: false
