@@ -6,6 +6,7 @@ class Py3_numpy < Pip
   @_ver = '1.26.0'
   version "#{@_ver}-py3.12"
   license 'BSD'
+  compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
