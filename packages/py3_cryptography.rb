@@ -16,4 +16,6 @@ class Py3_cryptography < Pip
   depends_on 'py3_pycparser' => :build
   depends_on 'py3_typing_extensions'
   depends_on 'python3_rust' => :build
+
+  no_compile_needed
 end
