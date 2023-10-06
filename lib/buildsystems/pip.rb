@@ -1,9 +1,9 @@
 require 'package'
 
-class Pip < Package
-  depends_on 'python3'
-  depends_on 'py3_pip'
+depends_on 'python3'
+depends_on 'py3_pip'
 
+class Pip < Package
   def self.install
     puts "Installing #{name.gsub('py3_', '')} python module. This may take a while...".lightblue
     system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install #{name.gsub('py3_', '')}", exception: false
