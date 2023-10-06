@@ -5,10 +5,6 @@ class Python < Package
   property :python_install_options
   property :no_svem
 
-  # These dependencies have to be pulled in through buildessential.
-  depends_on 'python3'
-  depends_on 'py3_pip'
-
   def self.build
     #@required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
     #@pip_list = `pip list --exclude pip`
