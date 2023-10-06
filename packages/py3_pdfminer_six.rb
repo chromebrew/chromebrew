@@ -9,10 +9,8 @@ class Py3_pdfminer_six < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_pycryptodome'
   depends_on 'py3_sortedcontainers'
   depends_on 'python3' => :build
+  no_compile_needed
 end

@@ -9,11 +9,9 @@ class Py3_keyring < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_jeepney'
   depends_on 'py3_secretstorage'
   depends_on 'py3_importlib_metadata'
   depends_on 'python3' => :build
+  no_compile_needed
 end

@@ -8,11 +8,8 @@ class Py3_pystemmer < Pip
   license 'BSD MIT'
   compatibility 'all'
   source_url 'SKIP'
-  source_sha256 '9b81c35302f1d2a5ad9465b85986db246990db93d97d3e8f129269ed7102788e'
-
-  binary_url({})
-  binary_sha256({})
 
   depends_on 'python3' => :build
+  no_compile_needed
   depends_on 'glibc' # R
 end

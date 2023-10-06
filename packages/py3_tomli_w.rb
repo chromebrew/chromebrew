@@ -8,7 +8,4 @@ class Py3_tomli_w < Pip
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
-
-  binary_url({})
-  binary_sha256({})
 end

@@ -9,9 +9,6 @@ class Py3_cryptography < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_cffi'
   depends_on 'py3_typing_extensions'
   depends_on 'python3_rust' => :build

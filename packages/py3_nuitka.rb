@@ -8,10 +8,7 @@ class Py3_nuitka < Pip
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
-  source_sha256 'a9c7b49d0bd6ae73fe299772b0f2ae95e6d5d9a20de128932bcc5b92826f0ea7'
-
-  binary_url({})
-  binary_sha256({})
 
   depends_on 'python3' => :build
+  no_compile_needed
 end

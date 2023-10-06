@@ -9,9 +9,7 @@ class Py3_markupsafe < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'python3' => :build
+  no_compile_needed
   depends_on 'glibc' # R
 end

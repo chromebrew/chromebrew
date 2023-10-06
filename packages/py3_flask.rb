@@ -9,12 +9,10 @@ class Py3_flask < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_werkzeug'
   depends_on 'py3_itsdangerous'
   depends_on 'py3_click'
   depends_on 'py3_jinja2'
   depends_on 'python3' => :build
+  no_compile_needed
 end

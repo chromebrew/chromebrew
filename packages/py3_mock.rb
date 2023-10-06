@@ -8,7 +8,4 @@ class Py3_mock < Pip
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
-
-  binary_url({})
-  binary_sha256({})
 end

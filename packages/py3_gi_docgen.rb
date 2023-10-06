@@ -12,14 +12,12 @@ class Py3_gi_docgen < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_jinja2'
   depends_on 'py3_markdown'
   depends_on 'py3_markupsafe'
   depends_on 'py3_pygments'
   depends_on 'python3' => :build
+  no_compile_needed
   depends_on 'py3_toml'
   depends_on 'py3_typogrify'
 

@@ -9,11 +9,10 @@ class Py3_codespell < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'python3'
+  no_compile_needed
   depends_on 'python3' => :build
+  no_compile_needed
 
   def self.remove
     @python_ver = "python#{`python3 -V`[/\d.\d+/]}"

@@ -9,12 +9,10 @@ class Py3_greenlet < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_agate'
   depends_on 'py3_sqlalchemy'
   depends_on 'python3' => :build
+  no_compile_needed
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 end

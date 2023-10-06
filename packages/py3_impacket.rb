@@ -9,9 +9,6 @@ class Py3_impacket < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_pycryptodomex'
   depends_on 'py3_flask'
   depends_on 'py3_pyasn1'
@@ -20,4 +17,5 @@ class Py3_impacket < Pip
   depends_on 'py3_ldap3'
   depends_on 'py3_ldapdomaindump'
   depends_on 'python3' => :build
+  no_compile_needed
 end

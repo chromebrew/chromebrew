@@ -8,10 +8,7 @@ class Py3_docutils < Pip
   license 'BSD-2, GPL-3 and public-domain'
   compatibility 'all'
   source_url 'SKIP'
-  source_sha256 '33995a6753c30b7f577febfc2c50411fec6aac7f7ffeb7c4cfe5991072dcf9e6'
-
-  binary_url({})
-  binary_sha256({})
 
   depends_on 'python3' => :build
+  no_compile_needed
 end

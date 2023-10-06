@@ -9,9 +9,6 @@ class Py3_oci < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
-
   depends_on 'py3_dateutil'
   depends_on 'py3_configparser'
   depends_on 'py3_pyopenssl'
@@ -19,4 +16,5 @@ class Py3_oci < Pip
   depends_on 'py3_pytz'
   depends_on 'py3_cryptography'
   depends_on 'python3' => :build
+  no_compile_needed
 end
