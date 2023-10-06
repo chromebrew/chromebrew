@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Lapack < Package
+class Lapack < CMake
   description 'Lapack is a linear algebra package.'
   homepage 'https://www.netlib.org/lapack/'
   version '3.11.0'
@@ -25,19 +25,5 @@ class Lapack < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    FileUtils.mkdir_p 'build'
-    Dir.chdir 'build' do
-      system "cmake -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
-        -Wno-dev \
-        .."
-    end
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end

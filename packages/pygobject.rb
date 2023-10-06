@@ -1,28 +1,27 @@
-require 'package'
+require 'buildsystems/python'
 
-class Pygobject < Package
+class Pygobject < Python
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.readthedocs.io/'
-  @_ver = '3.44.1'
-  version "#{@_ver}-py3.11"
+  @_ver = '3.44.2'
+  version "#{@_ver}-py3.12"
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pygobject.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_armv7l/pygobject-3.44.1-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_armv7l/pygobject-3.44.1-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_i686/pygobject-3.44.1-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.1-py3.11_x86_64/pygobject-3.44.1-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.2-py3.12_armv7l/pygobject-3.44.2-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.2-py3.12_armv7l/pygobject-3.44.2-py3.12-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.2-py3.12_x86_64/pygobject-3.44.2-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2ef873543b7493be84c95a9f9991bf00b06c244603086cca762e6f67dd04f130',
-     armv7l: '2ef873543b7493be84c95a9f9991bf00b06c244603086cca762e6f67dd04f130',
-       i686: 'e3d27cd0f68ecb35513bcd6476d9accbaabfc4cbc2dbfd77a319fefa069b969f',
-     x86_64: 'b8cd3b017da2a8b5c20eadbd5423096a79d5772a88141f039b2e34dc7bd42a93'
+    aarch64: '4151689b78c1ed1417be8750710016a6380cbaba071e7f654a52196bd3c0366f',
+     armv7l: '4151689b78c1ed1417be8750710016a6380cbaba071e7f654a52196bd3c0366f',
+     x86_64: '6f9d0d03cf9e4ee58d255a9ade73023c2ec1dc1b4a10a26dbe6210c2af5decd4'
   })
 
+  depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
@@ -32,12 +31,4 @@ class Pygobject < Package
   depends_on 'py3_pycairo' => :build
   depends_on 'python3' # R
   depends_on 'wayland' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end

@@ -1,26 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gobject_introspection < Package
+class Gobject_introspection < Meson
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  @_ver = '1.76.1'
-  version "#{@_ver}-py3.11"
+  @_ver = '1.78.1'
+  version "#{@_ver}-py3.12"
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.76.1-py3.11_armv7l/gobject_introspection-1.76.1-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.76.1-py3.11_armv7l/gobject_introspection-1.76.1-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.76.1-py3.11_i686/gobject_introspection-1.76.1-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.76.1-py3.11_x86_64/gobject_introspection-1.76.1-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.78.1-py3.12_armv7l/gobject_introspection-1.78.1-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.78.1-py3.12_armv7l/gobject_introspection-1.78.1-py3.12-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gobject_introspection/1.78.1-py3.12_x86_64/gobject_introspection-1.78.1-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '13be7fdeaadb22165898a210f3e1b3d322b692ebd7722e01077f23002f18956c',
-     armv7l: '13be7fdeaadb22165898a210f3e1b3d322b692ebd7722e01077f23002f18956c',
-       i686: 'b147bbf5ec3b308bc24da53ca513fce85bd9f468d81122d5c76ed908d907dcce',
-     x86_64: 'b24b481077a0573ca0c74944782716c9666b666abac80d96c6068295fc678faa'
+    aarch64: '7df9732cf230e4d4a399e17fc3606405455fc080d1ac9b0e6be2d29049586699',
+     armv7l: '7df9732cf230e4d4a399e17fc3606405455fc080d1ac9b0e6be2d29049586699',
+     x86_64: 'e6b87bce9515b14229711bcd351e98a0b972c42c31fbce7e639303da082aba36'
   })
 
   depends_on 'gcc_lib' # R
@@ -28,18 +26,7 @@ class Gobject_introspection < Package
   depends_on 'glibc' # R
   depends_on 'libffi' # R
   depends_on 'python3' # R
+  depends_on 'py3_setuptools' => :build
 
   gnome
-
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dpython=#{CREW_PREFIX}/bin/python3 \
-      builddir"
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end

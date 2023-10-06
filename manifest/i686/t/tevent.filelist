@@ -1,7 +1,7 @@
 /usr/local/include/tevent.h
 /usr/local/lib/libtevent.so
 /usr/local/lib/libtevent.so.0
-/usr/local/lib/libtevent.so.0.14.1
+/usr/local/lib/libtevent.so.0.15.0
 /usr/local/lib/pkgconfig/tevent.pc
-/usr/local/lib/python3.11/site-packages/_tevent.cpython-311-i386-linux-gnu.so
-/usr/local/lib/python3.11/site-packages/tevent.py
+/usr/local/lib/python3.12/site-packages/_tevent.cpython-312-i386-linux-gnu.so
+/usr/local/lib/python3.12/site-packages/tevent.py

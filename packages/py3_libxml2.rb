@@ -4,29 +4,30 @@ require_relative 'libxml2'
 class Py3_libxml2 < Package
   description 'Libxml2-python provides access to libxml2 and libxslt in Python.'
   homepage 'https://gitlab.gnome.org/GNOME/libxml2/'
-  @_ver = '2.11.4'
-  version "#{@_ver}-py3.11"
+  @_ver = '2.11.5'
+  version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.4/libxml2-v2.11.4.tar.bz2'
-  source_sha256 'a9493ae091f58037dd5e73fc6035a4907eae58e2cc4756abc4e6253ee6036166'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.5/libxml2-v2.11.5.tar.bz2'
+  source_sha256 'ab3699b697e917c7d5035e81d237a9bc895eb4bf70c0a2259c6d1f125c1b77b6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.4-py3.11_armv7l/py3_libxml2-2.11.4-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.4-py3.11_armv7l/py3_libxml2-2.11.4-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.4-py3.11_i686/py3_libxml2-2.11.4-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.4-py3.11_x86_64/py3_libxml2-2.11.4-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_armv7l/py3_libxml2-2.11.5-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_armv7l/py3_libxml2-2.11.5-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_i686/py3_libxml2-2.11.5-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_x86_64/py3_libxml2-2.11.5-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9f6edbeffcd732e665818153aa2f8fa3ba3c0131148dda8cc64c4f8a3d70436f',
-     armv7l: '9f6edbeffcd732e665818153aa2f8fa3ba3c0131148dda8cc64c4f8a3d70436f',
-       i686: 'a9d44105c23ef0753af769eb45581fbb533115b76711f89e871167101fe776a9',
-     x86_64: 'c9a551869aa999fe33f4c8f8916e127734f84b77677c83cd4f22bdc9cb2a3f74'
+    aarch64: '19b264b7e48bd6d350e96742dc55fc219ad57c1aeab34af444852042d304b266',
+     armv7l: '19b264b7e48bd6d350e96742dc55fc219ad57c1aeab34af444852042d304b266',
+       i686: '8b6bfcf96537b57ce1c0ae5ccbbf7eb32f68733cce8d94d391e9328d2db35046',
+     x86_64: '334c94aa11158a7ea308d3264015edeaf9891e3923783631ba280404097a961e'
   })
 
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' => :build
+  depends_on 'py3_setuptools' => :build
   depends_on 'python3' # R
   depends_on 'zlibpkg' # R
 

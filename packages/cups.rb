@@ -27,7 +27,7 @@ class Cups < Package
   depends_on 'glibc' # R
   depends_on 'libusb' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm16_dev' => :build if %w[armv7l aarch64].include?(ARCH)
+  depends_on 'llvm17_dev' => :build if %w[armv7l aarch64].include?(ARCH)
   depends_on 'openssl' # R
   depends_on 'psmisc' # L
   depends_on 'zlibpkg' # R

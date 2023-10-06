@@ -119,7 +119,7 @@
 /usr/local/lib64/gobject-introspection/giscanner/gdumpparser.py
 /usr/local/lib64/gobject-introspection/giscanner/girparser.py
 /usr/local/lib64/gobject-introspection/giscanner/girwriter.py
-/usr/local/lib64/gobject-introspection/giscanner/_giscanner.cpython-311-x86_64-linux-gnu.so
+/usr/local/lib64/gobject-introspection/giscanner/_giscanner.cpython-312-x86_64-linux-gnu.so
 /usr/local/lib64/gobject-introspection/giscanner/__init__.py
 /usr/local/lib64/gobject-introspection/giscanner/introspectablepass.py
 /usr/local/lib64/gobject-introspection/giscanner/maintransformer.py

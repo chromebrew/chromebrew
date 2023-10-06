@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage ''
-  version '1.24'
+  version '1.25'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -131,10 +131,9 @@ class Buildessential < Package
 
   # Python
   depends_on 'python3'
-  depends_on 'py3_build'
-  depends_on 'py3_installer'
+  # depends_on 'py3_build'
+  # depends_on 'py3_installer'
   depends_on 'py3_flit_core'
-  depends_on 'python3'
   # Pax_utils needs this.
   depends_on 'py3_pyelftools'
 

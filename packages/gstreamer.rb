@@ -3,21 +3,22 @@ require 'package'
 class Gstreamer < Package
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22.6'
+  @_ver = '1.22.6'
+  version "#{@_ver}-1"
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
-  git_hashtag version
+  git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6_armv7l/gstreamer-1.22.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6_armv7l/gstreamer-1.22.6-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6_x86_64/gstreamer-1.22.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6-1_armv7l/gstreamer-1.22.6-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6-1_armv7l/gstreamer-1.22.6-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6-1_x86_64/gstreamer-1.22.6-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '24948ae7fce0c8a51ff6c038fb94500103a4c2f0baab245eb300018ad03aa19a',
-     armv7l: '24948ae7fce0c8a51ff6c038fb94500103a4c2f0baab245eb300018ad03aa19a',
-     x86_64: 'ba680b263f7b5dd0bbcd687b342d2a1f5f4659cba4dbd68ef6451411c11ddd0d'
+    aarch64: 'fbed6340d85a3568fc8fa0a0e39f04eb242f3b6ac1877b0f75f2e7811ac6e6c5',
+     armv7l: 'fbed6340d85a3568fc8fa0a0e39f04eb242f3b6ac1877b0f75f2e7811ac6e6c5',
+     x86_64: 'ce17105122937d227adf2d1ec286fd87a1284bc9b95fca4ffd0348155905d812'
   })
 
   depends_on 'alsa_lib' # R
@@ -101,6 +102,7 @@ class Gstreamer < Package
   depends_on 'pulseaudio' # R
   depends_on 'pygobject' # R
   depends_on 'python3' # R
+  depends_on 'py3_setuptools' => :build
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
   depends_on 'serd' # R
@@ -137,7 +139,16 @@ class Gstreamer < Package
       -Dtests=disabled \
       builddir"
     system 'meson configure builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
+    @counter = 1
+    @counter_max = 20
+    loop do
+      break if Kernel.system "mold -run #{CREW_NINJA} -C builddir"
+
+      puts "Make iteration #{@counter} of #{@counter_max}...".orange
+
+      @counter += 1
+      break if @counter > @counter_max
+    end
   end
 
   def self.install

@@ -3,23 +3,23 @@ require 'package'
 class Libxml2 < Package
   description 'Libxml2 is the XML C parser and toolkit developed for the Gnome project.'
   homepage 'http://xmlsoft.org/'
-  version '2.11.4'
+  version '2.11.5'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.4/libxml2-v2.11.4.tar.bz2'
-  source_sha256 'a9493ae091f58037dd5e73fc6035a4907eae58e2cc4756abc4e6253ee6036166'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.5/libxml2-v2.11.5.tar.bz2'
+  source_sha256 'ab3699b697e917c7d5035e81d237a9bc895eb4bf70c0a2259c6d1f125c1b77b6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.4_armv7l/libxml2-2.11.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.4_armv7l/libxml2-2.11.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.4_i686/libxml2-2.11.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.4_x86_64/libxml2-2.11.4-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_armv7l/libxml2-2.11.5-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_armv7l/libxml2-2.11.5-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_i686/libxml2-2.11.5-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_x86_64/libxml2-2.11.5-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '025d895d0c2cb499ad612da71f0ab928a6d010c5b85060bed5e145bb2e077d1e',
-     armv7l: '025d895d0c2cb499ad612da71f0ab928a6d010c5b85060bed5e145bb2e077d1e',
-       i686: '3836e2106e03f410c02b08e66095d9b943ad2d0a119d56585bdf0297963f1273',
-     x86_64: '310ce944062d26f07773cce0a891195e9918ab806b9f951b273004a09188b0ed'
+    aarch64: '4de8edf0e7e220cd5e174ea95ba8c4cad62182764b07a26ce2f2c522008bb0ac',
+     armv7l: '4de8edf0e7e220cd5e174ea95ba8c4cad62182764b07a26ce2f2c522008bb0ac',
+       i686: '07c89f113d9f5df241575805f2cd2df8d4a5778db5279ee52123fe760d8c4f78',
+     x86_64: '28e483b82cc026a53b5767ede5b2a2567ac1b76b2a73e02ee5bbc2c8dcfd012a'
   })
 
   depends_on 'gcc_lib' # R

@@ -6996,8 +6996,28 @@ url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
 ---
 kind: url
+name: py3_editables
+url: https://github.com/pfmoore/editables/tags
+activity: medium
+---
+kind: url
 name: py3_gi_docgen
 url: https://gitlab.gnome.org/GNOME/gi-docgen/-/tags
+activity: medium
+---
+kind: url
+name: py3_hatch_vcs
+url: https://github.com/ofek/hatch-vcs/releases
+activity: medium
+---
+kind: url
+name: py3_hatch_fancy_pypi_readme
+url: https://github.com/hynek/hatch-fancy-pypi-readme/releases
+activity: medium
+---
+kind: url
+name: py3_hatchling
+url: https://github.com/pypa/hatch/releases
 activity: medium
 ---
 kind: url
@@ -7013,6 +7033,16 @@ activity: medium
 kind: url
 name: py3_setuptools
 url: https://github.com/pypa/setuptools/releases
+activity: medium
+---
+kind: url
+name: py3_soupsieve
+url: https://github.com/facelessuser/soupsieve/releases
+activity: medium
+---
+kind: url
+name: py3_trove_classifiers
+url: https://github.com/pypa/trove-classifiers/releases
 activity: medium
 ---
 kind: url

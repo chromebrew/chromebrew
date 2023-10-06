@@ -3,23 +3,23 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.11.5'
+  version '3.12.0'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '85cd12e9cf1d6d5a45f17f7afe1cebe7ee628d3282281c492e86adf636defa3f'
+  source_sha256 '795c34f44df45a0e9b9710c8c71c15c671871524cd412ca14def212e8ccb155d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_armv7l/python3-3.11.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_i686/python3-3.11.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.11.5_x86_64/python3-3.11.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_armv7l/python3-3.12.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_armv7l/python3-3.12.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_i686/python3-3.12.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_x86_64/python3-3.12.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
-     armv7l: '2a18f192044dde5208e8c40a43b15b2683526dc4ae44884b229e60cf4a85ff66',
-       i686: '8ef1e1c7d7c85213ade5069158cbb2b16a777bd0be374e196b0feb4491961deb',
-     x86_64: '326265010b0a4407914db78bc6a1cb754817203f2bed0c107cee8a6b4134667b'
+    aarch64: '1241f2fb4681b09f2c0f9d00799222b63ecc79488040403d68186bc8093eaf6c',
+     armv7l: '1241f2fb4681b09f2c0f9d00799222b63ecc79488040403d68186bc8093eaf6c',
+       i686: '14a2bd096da4042114904389677b9b0ba44890a970b3c65d04b1191a2035fbe6',
+     x86_64: '59654b4d1746fbd04d42a42aeeae7bd4ca788bc36ff57942644ffb0d56061617'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -60,18 +60,6 @@ class Python3 < Package
     system "crew remove #{@replaces_installed.join(' ')}", exception: false
   end
 
-  def self.patch
-    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \
-		Lib/distutils/command/install.py \
-		Lib/distutils/sysconfig.py \
-		Lib/site.py \
-		Lib/sysconfig.py \
-		Lib/test/test_site.py \
-		Makefile.pre.in \
-		Modules/getpath.c \
-		setup.py"
-  end
-
   def self.prebuild
     # Ensure that internal copies of expat, libffi and zlib aren't used
     FileUtils.rm_rf 'Modules/expat'
@@ -99,13 +87,16 @@ class Python3 < Package
           --with-ensurepip \
           --enable-optimizations \
           --with-platlibdir='lib#{CREW_LIB_SUFFIX}' \
-          --with-system-ffi \
           --with-system-expat \
           --with-system-libmpdec \
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
       system 'mold -run make'
+      File.write 'python_config_env', <<~PYTHON_CONFIG_EOF
+        # Force use of python3 over python2.7 in packages which check the variable to set the python used.
+        PYTHON=python3
+      PYTHON_CONFIG_EOF
     end
   end
 
@@ -145,14 +136,23 @@ class Python3 < Package
     # Make python3 the default python
     FileUtils.ln_sf 'python3', "#{CREW_DEST_PREFIX}/bin/python"
     FileUtils.ln_sf 'pip3', "#{CREW_DEST_PREFIX}/bin/pip"
+    FileUtils.install 'builddir/python_config_env', "#{CREW_DEST_PREFIX}/etc/env.d/python", mode: 0o644
   end
 
   def self.postinstall
-    puts 'Updating pip packages...'.lightblue
-    @piplist = `pip list | cut -d' ' -f1`.split
-    @piplist.drop(2).each do |pip_pkg|
-      system "pip install #{pip_pkg} -U", exception: false
+    # Pip is installed inside Python 3. The following steps ensure that
+    # pip can properly build other packages from buildsystems/pip.
+    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
+    @pip_list = `pip list --exclude pip`
+    @required_pip_modules.each do |pip_pkg|
+      unless @pip_list.include?(pip_pkg)
+        puts "Installing #{pip_pkg} using pip..."
+        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
+      end
     end
+
+    puts 'Updating pip packages...'.lightblue
+    system 'pip list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
     puts "Please install tcl and tk with 'crew install tcl tk' if tkinter is needed.".lightblue unless ARCH == 'i686'
   end
 end
