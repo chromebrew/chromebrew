@@ -12,5 +12,6 @@ class Py3_pdfminer_six < Pip
   depends_on 'py3_pycryptodome'
   depends_on 'py3_sortedcontainers'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

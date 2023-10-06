@@ -14,5 +14,6 @@ class Py3_flask < Pip
   depends_on 'py3_click'
   depends_on 'py3_jinja2'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

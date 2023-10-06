@@ -14,5 +14,6 @@ class Py3_hatchling < Pip
   depends_on 'py3_pluggy'
   depends_on 'py3_trove_classifiers'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

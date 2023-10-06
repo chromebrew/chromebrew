@@ -14,5 +14,6 @@ class Py3_brotlicffi < Pip
   depends_on 'glibc' # R
   depends_on 'py3_cffi'
   depends_on 'python3' # L
+
   no_compile_needed
 end

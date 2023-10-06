@@ -12,6 +12,7 @@ class Py3_setuptools_rust < Pip
   depends_on 'rust'
   depends_on 'py3_semantic_version'
   depends_on 'python3'
+
   no_compile_needed
   depends_on 'py3_setuptools_scm' => :build
   depends_on 'py3_typing_extensions' => :build

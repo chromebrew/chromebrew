@@ -12,5 +12,6 @@ class Py3_ebooklib < Pip
   depends_on 'py3_lxml'
   depends_on 'py3_six'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

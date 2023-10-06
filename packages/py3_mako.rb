@@ -11,5 +11,6 @@ class Py3_mako < Pip
 
   depends_on 'py3_markupsafe'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

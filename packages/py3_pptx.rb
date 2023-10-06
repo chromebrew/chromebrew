@@ -13,5 +13,6 @@ class Py3_pptx < Pip
   depends_on 'py3_pillow'
   depends_on 'py3_xlsxwriter'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

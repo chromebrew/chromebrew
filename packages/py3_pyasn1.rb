@@ -10,5 +10,6 @@ class Py3_pyasn1 < Pip
   source_url 'SKIP'
 
   depends_on 'python3' => :build
+
   no_compile_needed
 end

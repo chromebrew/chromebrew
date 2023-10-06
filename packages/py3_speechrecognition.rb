@@ -11,5 +11,6 @@ class Py3_speechrecognition < Pip
 
   depends_on 'glibc' # R
   depends_on 'python3' => :build
+
   no_compile_needed
 end

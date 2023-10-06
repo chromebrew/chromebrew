@@ -13,5 +13,6 @@ class Py3_requests < Pip
   depends_on 'py3_idna'
   depends_on 'py3_urllib3'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

@@ -12,5 +12,6 @@ class Py3_beautifulsoup4 < Pip
   depends_on 'py3_hatchling' => :build
   depends_on 'py3_soupsieve'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

@@ -11,5 +11,6 @@ class Py3_hatch_fancy_pypi_readme < Pip
 
   depends_on 'py3_hatch_vcs' => :build
   depends_on 'python3' => :build
+
   no_compile_needed
 end

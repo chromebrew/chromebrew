@@ -17,5 +17,6 @@ class Py3_tox < Pip
   depends_on 'py3_pluggy'
   depends_on 'py3_toml'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

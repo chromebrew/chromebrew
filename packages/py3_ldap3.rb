@@ -11,5 +11,6 @@ class Py3_ldap3 < Pip
 
   depends_on 'py3_pyasn1'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

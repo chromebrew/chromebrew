@@ -10,6 +10,7 @@ class Py3_codespell < Pip
   source_url 'SKIP'
 
   depends_on 'python3'
+
   no_compile_needed
 
   def self.remove

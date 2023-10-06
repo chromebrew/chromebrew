@@ -10,5 +10,6 @@ class Py3_certifi < Pip
   source_url 'SKIP'
 
   depends_on 'python3' # L
+
   no_compile_needed
 end

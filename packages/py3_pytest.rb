@@ -16,5 +16,6 @@ class Py3_pytest < Pip
   depends_on 'py3_pluggy'
   depends_on 'py3_iniconfig'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

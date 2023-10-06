@@ -12,6 +12,7 @@ class Py3_pip < Python
 
   depends_on 'python3', '< 3.13.0'
   conflicts_ok
+
   no_compile_needed
 
   def self.postinstall

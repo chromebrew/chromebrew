@@ -12,5 +12,6 @@ class Py3_secretstorage < Pip
   depends_on 'py3_jeepney'
   depends_on 'py3_cryptography'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

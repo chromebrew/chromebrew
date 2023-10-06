@@ -13,5 +13,6 @@ class Py3_keyring < Pip
   depends_on 'py3_secretstorage'
   depends_on 'py3_importlib_metadata'
   depends_on 'python3' => :build
+
   no_compile_needed
 end

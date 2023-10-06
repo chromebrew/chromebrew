@@ -13,5 +13,6 @@ class Py3_build < Pip
   depends_on 'py3_packaging'
   depends_on 'py3_pyproject_hooks'
   depends_on 'py3_tomli'
+
   no_compile_needed
 end
