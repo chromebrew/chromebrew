@@ -2,17 +2,7 @@ require 'package'
 
 class Pip < Package
   depends_on 'python3'
-
-  def self.build
-    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
-    @pip_list = `pip list --exclude pip`
-    @required_pip_modules.each do |pip_pkg|
-      unless @pip_list.include?(pip_pkg)
-        puts "Installing #{pip_pkg} using pip..."
-        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
-      end
-    end
-  end
+  depends_on 'py3_pip'
 
   def self.install
     puts "Installing #{name.gsub('py3_', '')} python module. This may take a while...".lightblue

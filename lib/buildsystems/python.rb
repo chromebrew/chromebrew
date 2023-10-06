@@ -6,16 +6,17 @@ class Python < Package
   property :no_svem
 
   depends_on 'python3'
+  depends_on 'py3_pip'
 
   def self.build
-    @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
-    @pip_list = `pip list --exclude pip`
-    @required_pip_modules.each do |pip_pkg|
-      unless @pip_list.include?(pip_pkg)
-        puts "Installing #{pip_pkg} using pip..."
-        system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
-      end
-    end
+    #@required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
+    #@pip_list = `pip list --exclude pip`
+    #@required_pip_modules.each do |pip_pkg|
+      #unless @pip_list.include?(pip_pkg)
+        #puts "Installing #{pip_pkg} using pip..."
+        #system "MAKEFLAGS=-j#{CREW_NPROC} pip install #{pip_pkg}"
+      #end
+    #end
     if File.file?('setup.py')
       puts "Python build options being used: #{PY3_SETUP_BUILD_OPTIONS} #{@python_build_options}".orange
       system "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS} #{@python_build_options}"
