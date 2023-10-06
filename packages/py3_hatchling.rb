@@ -9,10 +9,10 @@ class Py3_hatchling < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'python3' => :build
-  no_compile_needed
   depends_on 'py3_editables'
   depends_on 'py3_pathspec'
   depends_on 'py3_pluggy'
   depends_on 'py3_trove_classifiers'
+  depends_on 'python3' => :build
+  no_compile_needed
 end

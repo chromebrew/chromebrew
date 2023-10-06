@@ -11,8 +11,6 @@ class Py3_codespell < Pip
 
   depends_on 'python3'
   no_compile_needed
-  depends_on 'python3' => :build
-  no_compile_needed
 
   def self.remove
     @python_ver = "python#{`python3 -V`[/\d.\d+/]}"

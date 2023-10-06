@@ -9,9 +9,9 @@ class Py3_json2xml < Pip
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'py3_dicttoxml'
   depends_on 'py3_requests'
   depends_on 'py3_xmltodict'
-  depends_on 'py3_dicttoxml'
   depends_on 'python3' => :build
   no_compile_needed
 end

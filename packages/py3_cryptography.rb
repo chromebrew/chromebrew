@@ -9,11 +9,11 @@ class Py3_cryptography < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'py3_cffi'
-  depends_on 'py3_typing_extensions'
-  depends_on 'python3_rust' => :build
-  depends_on 'py3_pycparser' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R
+  depends_on 'py3_cffi'
+  depends_on 'py3_pycparser' => :build
+  depends_on 'py3_typing_extensions'
+  depends_on 'python3_rust' => :build
 end

@@ -9,11 +9,11 @@ class Py3_lxml < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'py3_cython' => :build
-  depends_on 'python3' => :build
-  no_compile_needed
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'libxslt' # R
+  depends_on 'py3_cython' => :build
+  depends_on 'python3' => :build
   depends_on 'zlibpkg' # R
+  no_compile_needed
 end

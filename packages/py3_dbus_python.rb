@@ -10,9 +10,9 @@ class Py3_dbus_python < Pip
   source_url 'SKIP'
 
   depends_on 'autoconf_archive' => :build
+  depends_on 'dbus' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'python3' => :build
   no_compile_needed
-  depends_on 'dbus' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
 end

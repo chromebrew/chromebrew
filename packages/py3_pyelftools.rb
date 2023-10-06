@@ -12,6 +12,4 @@ class Py3_pyelftools < Pip
   depends_on 'glibc' # R
   depends_on 'python3' # R
   no_compile_needed
-  depends_on 'python3' => :build
-  no_compile_needed
 end

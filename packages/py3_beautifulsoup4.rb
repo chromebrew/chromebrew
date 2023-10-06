@@ -9,8 +9,8 @@ class Py3_beautifulsoup4 < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'python3' => :build
-  no_compile_needed
   depends_on 'py3_hatchling' => :build
   depends_on 'py3_soupsieve'
+  depends_on 'python3' => :build
+  no_compile_needed
 end

@@ -9,7 +9,7 @@ class Py3_packaging < Pip
   compatibility 'all'
   source_url 'SKIP'
 
+  depends_on 'py3_pyparsing'
   depends_on 'python3'
   no_compile_needed
-  depends_on 'py3_pyparsing'
 end

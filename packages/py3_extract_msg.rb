@@ -9,9 +9,9 @@ class Py3_extract_msg < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  depends_on 'py3_tzlocal'
-  depends_on 'py3_olefile'
   depends_on 'py3_imapclient'
+  depends_on 'py3_olefile'
+  depends_on 'py3_tzlocal'
   depends_on 'python3' => :build
   no_compile_needed
 end
