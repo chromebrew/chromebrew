@@ -11,8 +11,8 @@ class Py3_pip < Package
   git_hashtag @_ver
 
   depends_on 'python3', '< 3.13.0'
-
   conflicts_ok
+  no_compile_needed
 
   def self.build
     # Pip is installed inside Python 3. The following steps ensure that
