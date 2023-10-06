@@ -42,6 +42,6 @@ class Py3_pip < Package
 
   def self.postinstall
     puts 'Updating pip packages...'.lightblue
-    system 'pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U'
+    system 'pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
   end
 end

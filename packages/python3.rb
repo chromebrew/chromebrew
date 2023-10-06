@@ -141,10 +141,7 @@ class Python3 < Package
 
   def self.postinstall
     puts 'Updating pip packages...'.lightblue
-    @piplist = `pip list | cut -d' ' -f1`.split
-    @piplist.drop(2).each do |pip_pkg|
-      system "pip install #{pip_pkg} -U", exception: false
-    end
+    system 'pip --disable-pip-version-check list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
     puts "Please install tcl and tk with 'crew install tcl tk' if tkinter is needed.".lightblue unless ARCH == 'i686'
   end
 end
