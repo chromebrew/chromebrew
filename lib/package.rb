@@ -302,8 +302,8 @@ class Package
     rescue RuntimeError => e
       if modded_make_cmd && make_threads != 1
         # retry with single thread if command is `make` and is modified by crew
-        make_threads = 1
         warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") } .join(' ')}\" failed, retrying with \"-j1\"...".yellow
+        make_threads = 1
         retry
       else
         # exit with error
