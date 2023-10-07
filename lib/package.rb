@@ -259,7 +259,7 @@ class Package
 
     # add "-j#" argument to "make" at compile-time, if necessary
 
-    # Order of precedence to assign the number of processors:
+    # Order of precedence to assign the number of threads:
     # 1. The value of '-j#' from the package make argument
     # 2. The value of ENV["CREW_NPROC"]
     # 3. The value of `nproc`.strip
@@ -276,19 +276,39 @@ class Package
       env = @crew_env_options_hash
     end
 
-    # after removing the env hash, all remaining args must be command args
-    cmd_args = args
+    cmd_args        = args  # after removing the env hash, all remaining args must be command args
+    make_threads    = CREW_NPROC
+    modded_make_cmd = false
 
-    # add -j arg to build commands
-    if args.size == 1
-      # involve a shell if the command is passed in one single string
-      cmd_args = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 -j#{CREW_NPROC}")]
-    elsif cmd_args[0] == 'make'
-      cmd_args.insert(1, "-j#{CREW_NPROC}")
+    # append -j placeholder to `make` commands only if '-j#' does not exist
+    unless cmd_args.grep(/-j[[:space:]]?[0-9]+/).any?
+      if cmd_args.size == 1
+        # involve a shell if the command is passed in one single string
+        cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 <<<CREW_NPROC>>>")]
+        modded_make_cmd = true
+      elsif cmd_args[0] == 'make'
+        cmd_args.insert(1, '<<<CREW_NPROC>>>')
+        modded_make_cmd = true
+      end
     end
 
     begin
-      Kernel.system(env, *cmd_args, **opt_args)
+      if modded_make_cmd
+        # replace placeholder with '-j#' arg and execute the actual command
+        Kernel.system(env, *cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }, **opt_args)
+      else
+        Kernel.system(env, *cmd_args, **opt_args)
+      end
+    rescue RuntimeError => e
+      if modded_make_cmd
+        # retry with single thread if command is `make` and is modified by crew
+        make_threads = 1
+        warn "Command \"#{cmd_args.join(' ')}\" failed, retrying with \"-j1\"...".yellow
+        retry
+      else
+        # exit with error
+        raise e
+      end
     rescue StandardError => e
       # print failed line number and error message
       puts "#{e.backtrace[1]}: #{e.message}".orange
