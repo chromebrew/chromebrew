@@ -43,4 +43,26 @@ class Pacman < Meson
              -Dldconfig=/sbin/ldconfig \
              -Dpkg-ext=.pkg.tar.xz \
              -Dsrc-ext=.src.tar.gz"
+
+  def self.postinstall
+    # Enable mirror list.
+    system "sed -i 's/#Include = /Include = /' #{CREW_PREFIX}/etc/pacman.conf"
+    open("#{CREW_PREFIX}/etc/pacman.conf", 'a') do |f|
+      f.puts '[extra]'
+      f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
+      f.puts '[community]'
+      f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
+    end
+    puts 'Installing pacman mirrorlist.'.lightblue
+    system 'curl -Lf https://archlinux.org/mirrorlist/all/ -o mirrorlist'
+    # Uncomment worldwide mirror in mirror list.
+    system "sed -i ':a;N;\$!ba;s/## Worldwide\\\n#Server/## Worldwide\\\nServer/' mirrorlist"
+    FileUtils.install 'mirrorlist', "#{CREW_PREFIX}/etc/pacman.d/mirrorlist", mode: 0o644
+    open("#{CREW_META_PATH}/pacman.directorylist", 'a') do |f|
+      f.puts "#{CREW_PREFIX}/etc/pacman.d"
+    end
+    open("#{CREW_META_PATH}/pacman.filelist", 'a') do |f|
+      f.puts "#{CREW_PREFIX}/etc/pacman.d/mirrorlist"
+    end
+  end
 end
