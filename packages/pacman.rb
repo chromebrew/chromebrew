@@ -46,13 +46,17 @@ class Pacman < Meson
 
   def self.postinstall
     # Enable mirror list.
-    system "sed -i 's/#Include = /Include = /' #{CREW_PREFIX}/etc/pacman.conf"
     open("#{CREW_PREFIX}/etc/pacman.conf", 'a') do |f|
+      f.puts '[core]'
+      f.puts "Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"
+      f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
       f.puts '[extra]'
       f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
       f.puts '[community]'
       f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
     end
+    # Figure out how to enable trusts for the gpg sigs...
+    system "sed -i '/#SigLevel/a SigLevel = TrustAll' #{CREW_PREFIX}/etc/pacman.conf"
     puts 'Installing pacman mirrorlist.'.lightblue
     system 'curl -Lf https://archlinux.org/mirrorlist/all/ -o mirrorlist'
     # Uncomment worldwide mirror in mirror list.
@@ -64,5 +68,6 @@ class Pacman < Meson
     open("#{CREW_META_PATH}/pacman.filelist", 'a') do |f|
       f.puts "#{CREW_PREFIX}/etc/pacman.d/mirrorlist"
     end
+    puts "Please run: sudo pacman-key --init ; sudo pacman -Syu".orange
   end
 end
