@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Pacman < Meson
   description 'A library-based package manager with dependency support.'
-  version '6.0.2'
+  version '6.0.2-1'
   homepage 'http://www.archlinux.org/pacman/'
   license 'GPL 2'
   compatibility 'all'
@@ -10,16 +10,16 @@ class Pacman < Meson
   source_sha256 '7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2_armv7l/pacman-6.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2_armv7l/pacman-6.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2_i686/pacman-6.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2_x86_64/pacman-6.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2-1_armv7l/pacman-6.0.2-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2-1_armv7l/pacman-6.0.2-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2-1_i686/pacman-6.0.2-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2-1_x86_64/pacman-6.0.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '69f339fc1237c24d6de532d8a1e9735f093ae2a81e7d6799c6f1376e6d0d31a9',
-     armv7l: '69f339fc1237c24d6de532d8a1e9735f093ae2a81e7d6799c6f1376e6d0d31a9',
-       i686: '00df0e54c4c3c885c8074d49869edffc77cce3dd36e8820a04d084cafa83c608',
-     x86_64: 'c7033bc47124e20034fb00e60f7b6052d16958c6b6d0ef63907d8681de230251'
+    aarch64: 'f948bca6d9e75b56faabf2c4e178c62e98e44c953d8b5c6d02a96165107e16f2',
+     armv7l: 'f948bca6d9e75b56faabf2c4e178c62e98e44c953d8b5c6d02a96165107e16f2',
+       i686: '9005be863f9d80afa9af3f5dc3843cb8ba04aefdb7108da2d1a2b011e1923ed8',
+     x86_64: '7368961442770824e8753c591d1a604120b5410e61494afe31e5b10b5e0fd242'
   })
 
   depends_on 'asciidoc' => :build
@@ -34,7 +34,10 @@ class Pacman < Meson
   depends_on 'py3_setuptools' => :build # needed for Python 3.12 compatibility
   depends_on 'xzutils'
 
-  meson_options "-Droot-dir=/usr/local \
+  meson_options "-Droot-dir=#{CREW_PREFIX} \
+             -Dsysconfdir=#{CREW_PREFIX}/etc \
+             -Dlocalstatedir=#{CREW_PREFIX}/var \
+             -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
              -Dmakepkg-template-dir=#{CREW_PREFIX}/share/makepkg-template \
              -Dscriptlet-shell=#{CREW_PREFIX}/bin/bash \
              -Dldconfig=/sbin/ldconfig \

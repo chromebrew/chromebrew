@@ -9,6 +9,8 @@
 /usr/local/bin/repo-remove
 /usr/local/bin/testpkg
 /usr/local/bin/vercmp
+/usr/local/etc/makepkg.conf
+/usr/local/etc/pacman.conf
 /usr/local/include/alpm.h
 /usr/local/include/alpm_list.h
 /usr/local/lib/libalpm.so
