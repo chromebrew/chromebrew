@@ -3,23 +3,24 @@ require 'package'
 class Filezilla < Package
   description 'FileZilla Client is a free FTP solution.'
   homepage 'https://filezilla-project.org/'
-  version '3.64.0'
+  version '3.65.0'
   license 'GPL-2'
   compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://download.filezilla-project.org/client/FileZilla_3.64.0_src.tar.xz'
-  source_sha256 '813d184d54984cf0fb27a455423089070e273b2ef8a70cb613e741170edf479a'
+  source_url 'https://download.filezilla-project.org/client/FileZilla_3.65.0_src.tar.xz'
+  source_sha256 'd2bce4dbaa80fe035836db19441e90befcbabdef5556e9a4b3d4dd233638bdea'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.64.0_armv7l/filezilla-3.64.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.64.0_armv7l/filezilla-3.64.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.64.0_x86_64/filezilla-3.64.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.65.0_armv7l/filezilla-3.65.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.65.0_armv7l/filezilla-3.65.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.65.0_x86_64/filezilla-3.65.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '50e6374e6ec43e176f47940c281ec5f6ea089ec44aede3ef1636d6c343d92ad7',
-     armv7l: '50e6374e6ec43e176f47940c281ec5f6ea089ec44aede3ef1636d6c343d92ad7',
-     x86_64: '56402c6e620466310b85376fd5f6d432ab6aaa93d0a1a335185a588e0e181481'
+    aarch64: 'f49b082757566af7af6e8ba163646e92c3e34eaf24805ee1714734781888f820',
+     armv7l: 'f49b082757566af7af6e8ba163646e92c3e34eaf24805ee1714734781888f820',
+     x86_64: '410919de0ec45804e14177d0f79f754d469b66b95e62ac87e787852cb7b4d123'
   })
 
+  depends_on 'boost'
   depends_on 'dbus'
   depends_on 'gnome_icon_theme'
   depends_on 'hicolor_icon_theme'
