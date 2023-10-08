@@ -385,6 +385,11 @@ url: https://ftp.gnu.org/gnu/autoconf
 activity: none
 ---
 kind: url
+name: autojump
+url: https://github.com/wting/autojump/tags
+activity: none
+---
+kind: url
 name: automake
 url: https://ftp.gnu.org/gnu/automake
 activity: medium
