@@ -60,8 +60,8 @@
 /usr/local/lib/libfilezilla.a
 /usr/local/lib/libfilezilla.la
 /usr/local/lib/libfilezilla.so
-/usr/local/lib/libfilezilla.so.36
-/usr/local/lib/libfilezilla.so.36.2.0
+/usr/local/lib/libfilezilla.so.40
+/usr/local/lib/libfilezilla.so.40.0.0
 /usr/local/lib/pkgconfig/libfilezilla.pc
 /usr/local/share/locale/an/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/ar/LC_MESSAGES/libfilezilla.mo
