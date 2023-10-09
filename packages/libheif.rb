@@ -3,21 +3,21 @@ require 'package'
 class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.16.2'
+  version '1.16.2-c679a76'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/strukturag/libheif.git'
-  git_hashtag "v#{version}"
+  git_hashtag 'c679a764761ef4056bb43d2e514a607174b45bd6'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2_armv7l/libheif-1.16.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2_armv7l/libheif-1.16.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2_x86_64/libheif-1.16.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2-c679a76_armv7l/libheif-1.16.2-c679a76-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2-c679a76_armv7l/libheif-1.16.2-c679a76-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libheif/1.16.2-c679a76_x86_64/libheif-1.16.2-c679a76-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7da1e2d572c75cfaa81420b0e170c77118f02a6a5ce241b3e095412638f72866',
-     armv7l: '7da1e2d572c75cfaa81420b0e170c77118f02a6a5ce241b3e095412638f72866',
-     x86_64: 'ab72439e8517ea668c55d8c2401353c81e8a9a5e0689929b8d14864cb7c05de4'
+    aarch64: '153437667ebd49391e11d549fcb771c9f15fbba8baa361fdaded872ee5206e01',
+     armv7l: '153437667ebd49391e11d549fcb771c9f15fbba8baa361fdaded872ee5206e01',
+     x86_64: 'ec98371ae67cc1c03f79638f7df0490d094c56eb3514576d2c0b53da8400b7cc'
   })
 
   depends_on 'dav1d' # R
