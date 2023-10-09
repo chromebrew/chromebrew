@@ -20,11 +20,11 @@ class Libfilezilla < Autotools
      x86_64: '2d9ef1bca2af46802ef74fbb8962d54e931ba8c3e9543451c28993349f0ba7ad'
   })
 
-  depends_on 'openmp'
-  depends_on 'p11kit'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gmp' # R
   depends_on 'gnutls' # R
   depends_on 'nettle' # R
+  depends_on 'openmp' => :build
+  depends_on 'p11kit' => :build
 end
