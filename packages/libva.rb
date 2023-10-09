@@ -27,6 +27,6 @@ class Libva < Meson
   depends_on 'libxcb' # R
   depends_on 'libxext' # R
   depends_on 'libxfixes' # R
-  depends_on 'mesa'
+  depends_on 'mesa' # L
   depends_on 'wayland' # R
 end
