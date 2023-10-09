@@ -4,7 +4,5 @@
 /usr/local/include/sord-0/sord/sordmm.hpp
 /usr/local/lib/libsord-0.so
 /usr/local/lib/libsord-0.so.0
-/usr/local/lib/libsord-0.so.0.16.8
+/usr/local/lib/libsord-0.so.0.16.14
 /usr/local/lib/pkgconfig/sord-0.pc
-/usr/local/share/man/man1/sordi.1.gz
-/usr/local/share/man/man1/sord_validate.1.gz

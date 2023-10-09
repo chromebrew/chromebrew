@@ -1,4 +1,3 @@
-/usr/local/bin/lilv-bench
 /usr/local/bin/lv2apply
 /usr/local/bin/lv2bench
 /usr/local/bin/lv2info
@@ -8,9 +7,11 @@
 /usr/local/include/lilv-0/lilv/lilvmm.hpp
 /usr/local/lib/liblilv-0.so
 /usr/local/lib/liblilv-0.so.0
-/usr/local/lib/liblilv-0.so.0.24.12
+/usr/local/lib/liblilv-0.so.0.24.20
 /usr/local/lib/pkgconfig/lilv-0.pc
-/usr/local/lib/python3.10/site-packages/lilv.py
-/usr/local/share/man/man1/lv2apply.1.gz
-/usr/local/share/man/man1/lv2info.1.gz
-/usr/local/share/man/man1/lv2ls.1.gz
+/usr/local/lib/python3.12/site-packages/lilv.py
+/usr/local/lib/python3.12/site-packages/__pycache__/lilv.cpython-312.pyc
+/usr/local/share/man/man1/lv2apply.1.zst
+/usr/local/share/man/man1/lv2bench.1.zst
+/usr/local/share/man/man1/lv2info.1.zst
+/usr/local/share/man/man1/lv2ls.1.zst
