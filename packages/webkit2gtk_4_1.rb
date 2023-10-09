@@ -3,21 +3,17 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.40.5'
+  version '2.42.1'
   license 'LGPL-2+ and BSD-2'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.40.5.tar.xz'
-  source_sha256 '7de051a263668621d91a61a5eb1c3771d1a7cec900043d4afef06c326c16037f'
+  compatibility 'x86_64'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
+  source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.5_armv7l/webkit2gtk_4_1-2.40.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.5_armv7l/webkit2gtk_4_1-2.40.5-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.40.5_x86_64/webkit2gtk_4_1-2.40.5-chromeos-x86_64.tar.zst'
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkit2gtk_4_1/2.42.1_x86_64/webkit2gtk_4_1-2.42.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0397df920d5d913e7a49d861aa5c092c7e87bcd7b586dfbddfc2c84b7f375012',
-     armv7l: '0397df920d5d913e7a49d861aa5c092c7e87bcd7b586dfbddfc2c84b7f375012',
-     x86_64: '841abf3f9b483a04b3e388897ab4407fe38ad8af882a33fec3ccb07cb0b40e62'
+    x86_64: '0ff287563fc005cf0213d1844206bc19fba32f0edea8d386db7993a876d1e610'
   })
 
   depends_on 'at_spi2_core' # R
@@ -97,13 +93,13 @@ class Webkit2gtk_4_1 < Package
       # WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-nonnull)
       # endif ()
 
-      #+    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
-      #+    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
-      #+    # https://bugs.webkit.org/show_bug.cgi?id=226557
-      #+    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
-      #+        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
-      #+    endif ()
-      #+
+      # +    # This triggers warnings in wtf/Packed.h, a header that is included in many places. It does not
+      # +    # respect ignore warning pragmas and we cannot easily suppress it for all affected files.
+      # +    # https://bugs.webkit.org/show_bug.cgi?id=226557
+      # +    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_GREATER_EQUAL "11.0")
+      # +        WEBKIT_PREPEND_GLOBAL_CXX_FLAGS(-Wno-stringop-overread)
+      # +    endif ()
+      # +
       ## -Wexpansion-to-defined produces false positives with GCC but not Clang
       ## https://bugs.webkit.org/show_bug.cgi?id=167643#c13
       # if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
