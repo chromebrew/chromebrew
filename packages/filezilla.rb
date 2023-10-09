@@ -19,7 +19,6 @@ class Filezilla < Package
   depends_on 'at_spi2_core' # R
   depends_on 'boost' => :build
   depends_on 'cairo' # R
-  depends_on 'dbus' => :build
   depends_on 'dbus' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -38,7 +37,6 @@ class Filezilla < Package
   depends_on 'sqlite' => :build
   depends_on 'sqlite' # R
   depends_on 'wayland_protocols' => :build
-  depends_on 'wxwidgets' => :build
   depends_on 'wxwidgets' # R
   depends_on 'xcb_util' => :build
   depends_on 'xdg_utils' => :build
