@@ -1,5 +1,5 @@
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.36.0'
+CREW_VERSION = '1.36.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -277,7 +277,9 @@ OPT
 CREW_MESON_OPTIONS = <<~OPT.chomp
   -Dprefix=#{CREW_PREFIX} \
   -Dlibdir=#{CREW_LIB_PREFIX} \
+  -Dlocalstatedir=#{CREW_PREFIX}/var/local \
   -Dmandir=#{CREW_MAN_PREFIX} \
+  -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
   -Dbuildtype=release \
   -Db_lto=true \
   -Dstrip=true \
@@ -289,7 +291,9 @@ OPT
 CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
   -Dprefix=#{CREW_PREFIX} \
   -Dlibdir=#{CREW_LIB_PREFIX} \
+  -Dlocalstatedir=#{CREW_PREFIX}/var/local \
   -Dmandir=#{CREW_MAN_PREFIX} \
+  -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
   -Dbuildtype=release \
   -Db_lto=false \
   -Dstrip=true \
