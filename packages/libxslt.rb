@@ -22,9 +22,12 @@ class Libxslt < Package
      x86_64: '2ead1e30cb028f2f299056f8eea5bfb318f7346c6a65cfa4a891672560ed26bc'
   })
 
-  depends_on 'py3_libxml2'
-  depends_on 'libgcrypt'
-  depends_on 'docbook_xsl'
+  depends_on 'docbook_xsl' => :build
+  depends_on 'glibc' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libxml2' # R
+  depends_on 'py3_libxml2' => :build
 
   def self.build
     system './configure',

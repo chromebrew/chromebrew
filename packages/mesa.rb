@@ -31,7 +31,7 @@ class Mesa < Package
   depends_on 'libdrm' # R
   depends_on 'libglvnd' # R
   depends_on 'libomxil_bellagio' => :build
-  depends_on 'libunwind'
+  depends_on 'libunwind' # R
   depends_on 'libva' => :build
   depends_on 'libvdpau' => :build
   depends_on 'libx11' # R
@@ -49,10 +49,9 @@ class Mesa < Package
   depends_on 'llvm17_dev' => :build
   depends_on 'llvm17_lib' # R
   depends_on 'lm_sensors' # R
-  depends_on 'py3_mako'
+  depends_on 'py3_mako' => :build
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
