@@ -10,8 +10,6 @@
 /usr/local/lib/cmake/libheif/libheif-config-release.cmake
 /usr/local/lib/cmake/libheif/libheif-config-version.cmake
 /usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-heif.so
-/usr/local/lib/libheif/libheif-rav1e.so
-/usr/local/lib/libheif/libheif-svtenc.so
 /usr/local/lib/libheif.so
 /usr/local/lib/libheif.so.1
 /usr/local/lib/libheif.so.1.16.2

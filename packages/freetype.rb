@@ -21,18 +21,18 @@ class Freetype < Package
      x86_64: '7f137b4b0bdcf332afe470d32c2cfb8b1a3464ed66cc9d7d1a20fe925ddca1f8'
   })
 
-  depends_on 'brotli'
-  depends_on 'bz2'
-  depends_on 'expat'
-  depends_on 'gcc_lib'
-  depends_on 'glib'
+  depends_on 'brotli' # R
+  depends_on 'bz2' # R
+  depends_on 'expat' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' => :build
   depends_on 'glibc' # R
-  depends_on 'graphite'
-  depends_on 'harfbuzz'
+  depends_on 'graphite' => :build
+  depends_on 'harfbuzz' # R
   depends_on 'libpng' # R
-  depends_on 'pcre'
-  depends_on 'py3_docwriter'
-  depends_on 'zlibpkg'
+  depends_on 'pcre' => :build
+  depends_on 'py3_docwriter' => :build
+  depends_on 'zlibpkg' # R
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

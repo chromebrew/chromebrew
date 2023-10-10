@@ -61,7 +61,7 @@ class Wxwidgets31 < Package
     %w[wxwidgets wxwidgets30].each do |wxw|
       next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{wxw}.filelist"
 
-      puts "#{wxw} installed and conficts with this version.".orange
+      puts "#{wxw} installed and conflicts with this version.".orange
       puts 'To install this version, execute the following:'.lightblue
       abort "crew remove #{wxw} && crew install wxwidgets31".lightblue
     end

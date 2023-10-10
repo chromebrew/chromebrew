@@ -23,7 +23,7 @@ class Itstool < Package
      x86_64: '57c747287878cb1357f04f076e2884b332251f882ddd9250d8688a76d624c090'
   })
 
-  depends_on 'py3_libxml2'
+  depends_on 'py3_libxml2' => :build
   depends_on 'py3_setuptools' => :build
   depends_on 'python3' => :build
 

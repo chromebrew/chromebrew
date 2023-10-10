@@ -1,47 +1,32 @@
 # Adapted from Arch Linux serd PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/serd/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Serd < Package
+class Serd < Meson
   description 'Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples.'
   homepage 'https://drobilla.net/software/serd/'
-  version '0.30.10'
+  version '0.30.16'
   compatibility 'all'
   source_url 'https://github.com/drobilla/serd.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_armv7l/serd-0.30.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_armv7l/serd-0.30.10-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_i686/serd-0.30.10-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.10_x86_64/serd-0.30.10-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_armv7l/serd-0.30.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_armv7l/serd-0.30.16-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_i686/serd-0.30.16-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_x86_64/serd-0.30.16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '18bdc58281fc31baff1ad0fc464b70c78f8becd1b4efee39c1cddc17e419a88c',
-     armv7l: '18bdc58281fc31baff1ad0fc464b70c78f8becd1b4efee39c1cddc17e419a88c',
-       i686: '20f1dc846a679857ba27e234bd1a13dd546f568f2c749ec2f5d4bfcc3f421da3',
-     x86_64: '9d44f52a0f18e146458ccb8ef8478be1cba0e1fcd1d1ed76743bbd10d861bb4d'
+    aarch64: '7517865bbfacf435e720a96a370691fdda49d6310488685470be3e490ae9997f',
+     armv7l: '7517865bbfacf435e720a96a370691fdda49d6310488685470be3e490ae9997f',
+       i686: '796328150dad2ed094d157880e6061639406a8d05a2e02713c42b98576cd8e3e',
+     x86_64: 'f847accbd3ea06c142673e91d6f7b773ec5b0d70842c63da571aea5741676e4a'
   })
 
-  depends_on 'waf' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
 
-  def self.build
-    # let wscript(s) find the custom waf scripts
-    FileUtils.mkdir_p 'plugins'
-    FileUtils.mv 'waflib/extras', 'plugins/tools'
-    FileUtils.ln_s 'plugins/tools', 'tools'
-    FileUtils.rm_f 'waflib'
-    FileUtils.touch '__init__.py'
-    system "sed -e 's/waflib.extras/tools/g' \
-    -e \"s/load('autowaf'/load('autowaf', tooldir='tools'/g\" \
-    -e \"s/load('lv2'/load('lv2', tooldir='tools'/g\" \
-    -i wscript"
-    system "waf configure #{CREW_OPTIONS.sub(/--build=.*/, '')}"
-    system 'waf -v build'
-  end
-
-  def self.install
-    system "waf install --destdir=#{CREW_DEST_DIR}"
-  end
+  meson_options '-Ddocs=disabled \
+               -Dtests=disabled'
 end

@@ -139,6 +139,7 @@
 /usr/local/include/webkitgtk-4.0/webkit/WebKitAutomationSession.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitBackForwardList.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitBackForwardListItem.h
+/usr/local/include/webkitgtk-4.0/webkit/WebKitClipboardPermissionRequest.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitColorChooserRequest.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitConsoleMessage.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitContextMenuActions.h
@@ -154,6 +155,7 @@
 /usr/local/include/webkitgtk-4.0/webkit/WebKitEnumTypes.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitError.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitFaviconDatabase.h
+/usr/local/include/webkitgtk-4.0/webkit/WebKitFeature.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitFileChooserRequest.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitFindController.h
 /usr/local/include/webkitgtk-4.0/webkit/WebKitFormSubmissionRequest.h
@@ -221,10 +223,10 @@
 /usr/local/lib64/girepository-1.0/WebKit2WebExtension-4.0.typelib
 /usr/local/lib64/libjavascriptcoregtk-4.0.so
 /usr/local/lib64/libjavascriptcoregtk-4.0.so.18
-/usr/local/lib64/libjavascriptcoregtk-4.0.so.18.22.14
+/usr/local/lib64/libjavascriptcoregtk-4.0.so.18.23.10
 /usr/local/lib64/libwebkit2gtk-4.0.so
 /usr/local/lib64/libwebkit2gtk-4.0.so.37
-/usr/local/lib64/libwebkit2gtk-4.0.so.37.63.5
+/usr/local/lib64/libwebkit2gtk-4.0.so.37.67.4
 /usr/local/lib64/pkgconfig/javascriptcoregtk-4.0.pc
 /usr/local/lib64/pkgconfig/webkit2gtk-4.0.pc
 /usr/local/lib64/pkgconfig/webkit2gtk-web-extension-4.0.pc
