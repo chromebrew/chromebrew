@@ -18,7 +18,6 @@
 /usr/local/lib64/tracker-miners-3.0/extract-modules/libextract-pdf.so
 /usr/local/lib64/tracker-miners-3.0/extract-modules/libextract-png.so
 /usr/local/lib64/tracker-miners-3.0/extract-modules/libextract-ps.so
-/usr/local/lib64/tracker-miners-3.0/extract-modules/libextract-raw.so
 /usr/local/lib64/tracker-miners-3.0/extract-modules/libextract-text.so
 /usr/local/lib64/tracker-miners-3.0/extract-modules/libextract-tiff.so
 /usr/local/lib64/tracker-miners-3.0/libtracker-extract.so
@@ -67,6 +66,7 @@
 /usr/local/share/locale/es/LC_MESSAGES/tracker3-miners.mo
 /usr/local/share/locale/et/LC_MESSAGES/tracker3-miners.mo
 /usr/local/share/locale/eu/LC_MESSAGES/tracker3-miners.mo
+/usr/local/share/locale/fa/LC_MESSAGES/tracker3-miners.mo
 /usr/local/share/locale/fi/LC_MESSAGES/tracker3-miners.mo
 /usr/local/share/locale/fr/LC_MESSAGES/tracker3-miners.mo
 /usr/local/share/locale/fur/LC_MESSAGES/tracker3-miners.mo
@@ -128,7 +128,6 @@
 /usr/local/share/tracker3-miners/extract-rules/10-pdf.rule
 /usr/local/share/tracker3-miners/extract-rules/10-png.rule
 /usr/local/share/tracker3-miners/extract-rules/10-ps.rule
-/usr/local/share/tracker3-miners/extract-rules/10-raw.rule
 /usr/local/share/tracker3-miners/extract-rules/10-svg.rule
 /usr/local/share/tracker3-miners/extract-rules/10-tiff.rule
 /usr/local/share/tracker3-miners/extract-rules/11-msoffice-xml.rule
