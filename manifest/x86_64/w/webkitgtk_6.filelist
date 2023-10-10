@@ -15,6 +15,7 @@
 /usr/local/include/webkitgtk-6.0/webkit/WebKitAutomationSession.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitBackForwardList.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitBackForwardListItem.h
+/usr/local/include/webkitgtk-6.0/webkit/WebKitClipboardPermissionRequest.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitColorChooserRequest.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitContextMenuActions.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitContextMenu.h
@@ -29,6 +30,7 @@
 /usr/local/include/webkitgtk-6.0/webkit/WebKitEnumTypes.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitError.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitFaviconDatabase.h
+/usr/local/include/webkitgtk-6.0/webkit/WebKitFeature.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitFileChooserRequest.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitFindController.h
 /usr/local/include/webkitgtk-6.0/webkit/WebKitFormSubmissionRequest.h
@@ -94,10 +96,10 @@
 /usr/local/lib64/girepository-1.0/WebKitWebProcessExtension-6.0.typelib
 /usr/local/lib64/libjavascriptcoregtk-6.0.so
 /usr/local/lib64/libjavascriptcoregtk-6.0.so.1
-/usr/local/lib64/libjavascriptcoregtk-6.0.so.1.0.7
+/usr/local/lib64/libjavascriptcoregtk-6.0.so.1.1.10
 /usr/local/lib64/libwebkitgtk-6.0.so
 /usr/local/lib64/libwebkitgtk-6.0.so.4
-/usr/local/lib64/libwebkitgtk-6.0.so.4.0.5
+/usr/local/lib64/libwebkitgtk-6.0.so.4.4.4
 /usr/local/lib64/pkgconfig/javascriptcoregtk-6.0.pc
 /usr/local/lib64/pkgconfig/webkitgtk-6.0.pc
 /usr/local/lib64/pkgconfig/webkitgtk-web-process-extension-6.0.pc
