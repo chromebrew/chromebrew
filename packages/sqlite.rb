@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Sqlite < Autotools
   description 'SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.'
   homepage 'http://www.sqlite.org/'
-  version '3.43.1'
+  version '3.43.2'
   license 'public-domain'
   compatibility 'all'
-  source_url 'https://www.sqlite.org/2023/sqlite-autoconf-3430101.tar.gz'
-  source_sha256 '098984eb36a684c90bc01c0eb7bda3273c327cbc3673d7d0bc195028c19fb7b0'
+  source_url 'https://www.sqlite.org/2023/sqlite-autoconf-3430200.tar.gz'
+  source_sha256 '6d422b6f62c4de2ca80d61860e3a3fb693554d2f75bb1aaca743ccc4d6f609f0'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.1_armv7l/sqlite-3.43.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.1_armv7l/sqlite-3.43.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.1_i686/sqlite-3.43.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.1_x86_64/sqlite-3.43.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.2_armv7l/sqlite-3.43.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.2_armv7l/sqlite-3.43.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.2_i686/sqlite-3.43.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.43.2_x86_64/sqlite-3.43.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '35cdc827104dacfdac2a39b603a41786c1acb87c23a3b8b5b7ccfee6fd1fb24b',
-     armv7l: '35cdc827104dacfdac2a39b603a41786c1acb87c23a3b8b5b7ccfee6fd1fb24b',
-       i686: '655d4d13ca2daa54bd6c08456ad151da1aec53b836951fb8b13d198dcae2de3e',
-     x86_64: 'c75259d9f0217eaf2946bff7250d754513eca191f4e8cbb0675b1a5537463c78'
+    aarch64: '1a99b74561be8bf838eb7d3d8834aa15fb44fd46b7b759736e0715fbedd7e10f',
+     armv7l: '1a99b74561be8bf838eb7d3d8834aa15fb44fd46b7b759736e0715fbedd7e10f',
+       i686: 'b03bb82a74146c0a461732f182c86a4d791aa61975fb90ad12ec6995362f3649',
+     x86_64: '71de21137d8b14dc47f8c53520b297e91b67f3d1528264212c3f0af69a3590a6'
   })
 
   depends_on 'glibc' # R
