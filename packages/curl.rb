@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Curl < Autotools
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.3.0'
+  version '8.4.0'
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-8.3.0.tar.xz'
-  source_sha256 '376d627767d6c4f05105ab6d497b0d9aba7111770dd9d995225478209c37ea63'
+  source_url 'https://curl.se/download/curl-8.4.0.tar.xz'
+  source_sha256 '16c62a9c4af0f703d28bda6d7bbf37ba47055ad3414d70dec63e2e6336f2a82d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.3.0_armv7l/curl-8.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.3.0_armv7l/curl-8.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.3.0_i686/curl-8.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.3.0_x86_64/curl-8.3.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.4.0_armv7l/curl-8.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.4.0_armv7l/curl-8.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.4.0_i686/curl-8.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/curl/8.4.0_x86_64/curl-8.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '12c66e1342454bdc628ee2f4858131e4bc0b66eec398331c4879a4ef14021c5b',
-     armv7l: '12c66e1342454bdc628ee2f4858131e4bc0b66eec398331c4879a4ef14021c5b',
-       i686: '301128e5ef2625f07485dd9f2a328469c77afc837416027c4a50c1c608d97f1c',
-     x86_64: '74bfc11a9086d27128209330d17c96c5695d2e7872375900d831ff037fef90ab'
+    aarch64: '7971313b11a2a2b9107a0a55449c8db7094b5021d0591002e29889d0ae0aca9d',
+     armv7l: '7971313b11a2a2b9107a0a55449c8db7094b5021d0591002e29889d0ae0aca9d',
+       i686: '531b2bfff2f68471fd93e7497e3736d82cec55da150a093ac3a04f1ed2d89d66',
+     x86_64: '5758ac57c392aa7f8afef9a28b85960b75122cdfeeea4516b64b587eaf9fef51'
   })
 
   depends_on 'brotli' # R
