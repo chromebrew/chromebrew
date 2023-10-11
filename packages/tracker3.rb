@@ -1,31 +1,32 @@
 # Adapted from Arch Linux tracker3 PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/tracker3/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Tracker3 < Package
+class Tracker3 < Meson
   description 'Desktop-neutral user information store, search tool and indexer'
   homepage 'https://wiki.gnome.org/Projects/Tracker'
-  version '3.5.3'
+  version '3.6.0'
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/tracker.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.3_armv7l/tracker3-3.5.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.3_armv7l/tracker3-3.5.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.5.3_x86_64/tracker3-3.5.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.6.0_armv7l/tracker3-3.6.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.6.0_armv7l/tracker3-3.6.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.6.0_x86_64/tracker3-3.6.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '418e1194ab2c3b06520ca4bc70734d2608d1eed30373de2a33672d7bb3ee941b',
-     armv7l: '418e1194ab2c3b06520ca4bc70734d2608d1eed30373de2a33672d7bb3ee941b',
-     x86_64: '8f3f2c5032e828955f781d757b401d6b6eff0aa3a681d8670aea61c82d750def'
+    aarch64: '7c61e7b8d0fb1be446a2c2db2060ff1b9a4349531d7df6cde4e91a1ec69ea4ec',
+     armv7l: '7c61e7b8d0fb1be446a2c2db2060ff1b9a4349531d7df6cde4e91a1ec69ea4ec',
+     x86_64: '26e3149df2d260e96f70c11e5f0e2b7aaed38fbc6545df7cd9a8262b161dfac1'
   })
 
   depends_on 'asciidoc' => :build
   depends_on 'docbook_xml' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
@@ -41,18 +42,14 @@ class Tracker3 < Package
   depends_on 'util_linux' => :build
   depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
+  meson_options "-Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
       -Ddocs=false \
       -Dman=false \
-      -Dsystemd_user_services=false \
-      builddir"
-    system 'meson configure builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+      -Dsystemd_user_services=false"
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+  def self.preflight
+    return if Gem::Version.new(LIBC_VERSION.to_s) > Gem::Version.new('2.34')
+
+    abort "Tracker3 requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred
   end
 end
