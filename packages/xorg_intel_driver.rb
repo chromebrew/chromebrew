@@ -31,7 +31,7 @@ class Xorg_intel_driver < Package
             -Ddefault-dri=3 \
             -Dxvmc=false \
             builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

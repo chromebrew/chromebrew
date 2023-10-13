@@ -37,7 +37,7 @@ class Gcab < Package
       -Dtests=false \
       -Dvapi=false \
        builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'mold -run samu -C builddir'
   end
 

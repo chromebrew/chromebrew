@@ -40,7 +40,7 @@ class Wayland < Package
       : "${GDK_BACKEND:=wayland}"
     WAYLAND_ENV_EOF
     system "meson setup #{CREW_MESON_OPTIONS} -Ddocumentation=false builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

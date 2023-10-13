@@ -46,7 +46,7 @@ class Gnome_terminal < Package
     -Dlocalstatedir=#{CREW_PREFIX}/var/local \
     -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -8,7 +8,7 @@ class Meson < Package
     @crew_meson_options = @no_lto ? CREW_MESON_FNO_LTO_OPTIONS : CREW_MESON_OPTIONS
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
     system "#{@mold_linker_prefix_cmd} meson setup #{@crew_meson_options} #{@meson_options} builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

@@ -130,7 +130,7 @@ class Sommelier < Package
           builddir
       BUILD
 
-      system 'meson configure builddir'
+      system 'meson configure --no-pager builddir'
       system "mold -run #{CREW_NINJA} -C builddir"
 
       FileUtils.mkdir_p 'builddir'

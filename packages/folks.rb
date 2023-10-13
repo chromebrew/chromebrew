@@ -42,7 +42,7 @@ class Folks < Package
     -Dtelepathy_backend=false \
     -Dtests=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

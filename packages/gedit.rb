@@ -60,7 +60,7 @@ class Gedit < Package
     -Drequire_all_tests=false \
     -Duser_documentation=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -29,7 +29,7 @@ class Libevdev < Package
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

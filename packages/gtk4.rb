@@ -100,7 +100,7 @@ class Gtk4 < Package
       -Dvulkan=enabled \
       -Dprint-cups=auto \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
     File.write 'gtk4settings', <<~GTK4_CONFIG_HEREDOC
       [Settings]

@@ -38,7 +38,7 @@ class Libsixel < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
        -Dgdk-pixbuf2=enabled \
        builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'samu -C builddir'
   end
 

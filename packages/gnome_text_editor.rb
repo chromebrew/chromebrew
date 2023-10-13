@@ -46,7 +46,7 @@ class Gnome_text_editor < Package
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
             builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

@@ -38,7 +38,7 @@ class Baobab < Package
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'mold -run samu -C builddir'
   end
 

@@ -40,7 +40,7 @@ class Geoclue < Package
       -Dcdma-source=false \
       -Dmodem-gps-source=true \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

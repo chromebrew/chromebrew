@@ -45,7 +45,7 @@ class Gnome_shell < Package
     -Dnetworkmanager=false \
     -Dtests=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

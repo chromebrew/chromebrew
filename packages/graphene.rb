@@ -32,7 +32,7 @@ class Graphene < Package
       -Dinstalled_tests=false \
       -Dtests=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

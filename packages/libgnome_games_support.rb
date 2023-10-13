@@ -15,7 +15,7 @@ class Libgnome_games_support < Package
 
   def self.build
     system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

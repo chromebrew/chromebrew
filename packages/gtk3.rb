@@ -85,7 +85,7 @@ class Gtk3 < Package
       -Dexamples=false \
       -Dgtk_doc=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
     @gtk3settings = <<~GTK3_CONFIG_HEREDOC
       [Settings]

@@ -91,7 +91,7 @@ class Libefl < Package
        -Dgstreamer=false \
        -Decore-imf-loaders-disabler=ibus,scim \
        builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'mold -run samu -C builddir'
   end
 

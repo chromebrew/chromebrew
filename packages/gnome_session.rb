@@ -49,7 +49,7 @@ class Gnome_session < Package
       -Dsystemd_session=disable \
       -Dsystemd_journal=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

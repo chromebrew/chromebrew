@@ -61,7 +61,7 @@ class Nautilus < Package
     -Dpackagekit=false \
     -Dtests=headless \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

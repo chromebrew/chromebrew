@@ -75,7 +75,7 @@ class Mesa < Package
       -Dvulkan-drivers='#{@vulkan_drivers}' \
       -Dvideo-codecs='vc1dec,h264dec,h264enc,h265dec,h265enc' \
        builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

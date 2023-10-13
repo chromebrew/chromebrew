@@ -31,7 +31,7 @@ class Babl < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Denable-gir=true \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

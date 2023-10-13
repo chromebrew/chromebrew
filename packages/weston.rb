@@ -72,7 +72,7 @@ class Weston < Package
         -Dsystemd=false \
         -Dxwayland-path=#{CREW_PREFIX}/bin/Xwayland \
         builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
     File.write 'weston.ini', <<~WESTON_INI_EOF
       [core]

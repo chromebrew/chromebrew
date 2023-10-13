@@ -48,7 +48,7 @@ class Gnome_desktop < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

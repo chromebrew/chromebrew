@@ -29,7 +29,7 @@ class Libsigcplusplus3 < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbuild-examples=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

@@ -41,7 +41,7 @@ class Libsoup2 < Package
       -Dsysprof=disabled \
       -Dintrospection=enabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "sed -i 's#-R#-Wl,-rpath=#g' builddir/build.ninja"
     system 'mold -run samu -C builddir'
   end

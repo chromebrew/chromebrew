@@ -45,7 +45,7 @@ class Fcft < Package
       -Dgrapheme-shaping=enabled \
       -Drun-shaping=enabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'samu -C builddir'
   end
 

@@ -93,7 +93,7 @@ class Gimp < Package
       #{CREW_MESON_OPTIONS} \
       -Dbug-report-url=https://github.com/chromebrew/chromebrew/issues \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

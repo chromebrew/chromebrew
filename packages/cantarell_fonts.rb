@@ -31,7 +31,7 @@ class Cantarell_fonts < Package
       -Duseprebuilt=true \
       -Dfontsdir=#{CREW_PREFIX}/share/fonts/opentype/cantarell \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

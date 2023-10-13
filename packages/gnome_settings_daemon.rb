@@ -64,7 +64,7 @@ class Gnome_settings_daemon < Package
     -Dsystemd=false \
     -Dcolord=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 
