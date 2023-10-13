@@ -39,8 +39,6 @@ class Libshumate < Package
   depends_on 'libsoup' # R
   depends_on 'sqlite' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"

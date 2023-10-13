@@ -37,8 +37,6 @@ class Gnome_terminal < Package
   depends_on 'vte' # R
   depends_on 'yelp_tools' => :build
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
     --default-library=both \
@@ -57,7 +55,6 @@ class Gnome_terminal < Package
   end
 
   def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     puts 'gnome-terminal should be launched using "dbus-launch gnome-terminal"'.lightblue
   end
 end

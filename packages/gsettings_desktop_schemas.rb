@@ -27,8 +27,6 @@ class Gsettings_desktop_schemas < Package
   depends_on 'gobject_introspection' => :build
   # depends_on 'gtk4'
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'
@@ -37,9 +35,5 @@ class Gsettings_desktop_schemas < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
   end
 end

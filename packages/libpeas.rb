@@ -35,8 +35,6 @@ class Libpeas < Package
   depends_on 'py3_gi_docgen' # R
   depends_on 'python3' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'

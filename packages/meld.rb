@@ -24,7 +24,6 @@ class Meld < Package
 
   depends_on 'gtk3'
   depends_on 'gtksourceview_4'
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

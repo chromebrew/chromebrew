@@ -43,8 +43,6 @@ class Gnome_session < Package
   depends_on 'libxcomposite' # R
   depends_on 'mesa' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS}\
       -Dsystemd=false \

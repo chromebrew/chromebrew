@@ -42,8 +42,6 @@ class Gdk_pixbuf < Package
   depends_on 'libpng' # R
   depends_on 'zlibpkg' # R
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dinstalled_tests=false \

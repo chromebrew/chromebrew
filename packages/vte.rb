@@ -40,7 +40,6 @@ class Vte < Package
   depends_on 'vulkan_icd_loader' # R
   depends_on 'zlibpkg' # R
 
-  gnome
   no_lto
 
   def self.build

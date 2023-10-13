@@ -29,8 +29,6 @@ class Dconf_editor < Package
   depends_on 'glibc' # R
   depends_on 'libhandy' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
             builddir"

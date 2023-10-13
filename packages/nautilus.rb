@@ -55,8 +55,6 @@ class Nautilus < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Ddocs=false \

@@ -39,8 +39,6 @@ class Libadwaita < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
             -Dintrospection=enabled \

@@ -400,8 +400,6 @@ def help(pkgName = nil)
       when 'git_fetchtags'
         puts "The 'git_fetchtags' property gets the repository tags."
         puts "Applicable only when 'source_url' is a git repository."
-      when 'gnome'
-        puts "Use the 'gnome' property for gnome specific packages."
       when 'is_fake'
         puts "Use the 'is_fake' property for packages that simply depend on other packages."
       when 'is_musl'
@@ -1040,15 +1038,6 @@ def post_install
     Dir.chdir post_install_tempdir do
       puts "Performing post-install for #{@pkg.name}...".lightblue
       @pkg.postinstall
-      if @pkg.gnome?
-        puts "Performing Gnome post-installs for #{@pkg.name}...".lightblue if @opt_verbose
-        # generate schemas
-        system "#{CREW_PREFIX}/bin/glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas" if @device[:installed_packages].any? { |elem| elem[:name] == 'glib' }
-        # update mime database
-        system "#{CREW_PREFIX}/bin/update-mime-database #{CREW_PREFIX}/share/mime" if @device[:installed_packages].any? { |elem| elem[:name] == 'shared_mime_info' }
-        # update icon cache, but only if gdk_pixbuf is already installed.
-        system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true" if @device[:installed_packages].any? { |elem| elem[:name] == 'gtk3' }
-      end
     end
   end
 end

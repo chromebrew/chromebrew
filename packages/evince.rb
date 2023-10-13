@@ -51,8 +51,6 @@ class Evince < Package
   depends_on 'valgrind' => :build
   depends_on 'zlibpkg' # R
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dgtk_doc=false \
@@ -66,9 +64,5 @@ class Evince < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas/"
   end
 end

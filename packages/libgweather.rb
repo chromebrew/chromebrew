@@ -36,7 +36,6 @@ class Libgweather < Package
   depends_on 'py3_gi_docgen' => :buuld
   depends_on 'py3_smartypants' => :build
   depends_on 'json_glib' # R
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

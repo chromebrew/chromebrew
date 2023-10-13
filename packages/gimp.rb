@@ -88,8 +88,6 @@ class Gimp < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
-  gnome
-
   def self.build
     system "meson setup \
       #{CREW_MESON_OPTIONS} \

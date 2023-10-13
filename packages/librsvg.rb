@@ -43,8 +43,6 @@ class Librsvg < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  gnome
-
   def self.build
     system 'NOCONFIGURE=1 ./autogen.sh'
     system "mold -run ./configure \

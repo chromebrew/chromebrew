@@ -21,6 +21,4 @@ class Py3_gi_docgen < Pip
   no_compile_needed
   depends_on 'py3_toml'
   depends_on 'py3_typogrify'
-
-  gnome
 end

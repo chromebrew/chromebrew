@@ -32,8 +32,6 @@ class Libmediaart < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
 
-  gnome
-
   def self.build
     system "meson \
       #{CREW_MESON_OPTIONS} \

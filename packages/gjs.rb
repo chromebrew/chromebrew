@@ -32,7 +32,6 @@ class Gjs < Package
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
   depends_on 'libffi' # R
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

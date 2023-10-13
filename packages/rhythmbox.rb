@@ -36,7 +36,6 @@ class Rhythmbox < Package
   end
 
   def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     puts "\nType 'rhythmbox' to get started.\n".lightblue
   end
 end

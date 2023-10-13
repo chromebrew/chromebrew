@@ -35,8 +35,6 @@ class At_spi2_core < Package
   depends_on 'libxi' # R
   depends_on 'libxtst' # R
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
     builddir"

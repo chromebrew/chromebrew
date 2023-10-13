@@ -35,8 +35,6 @@ class Baobab < Package
   depends_on 'gtk4' # R
   depends_on 'libadwaita' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     builddir"

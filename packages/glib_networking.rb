@@ -29,8 +29,6 @@ class Glib_networking < Package
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libproxy'
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       builddir"

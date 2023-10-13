@@ -27,8 +27,6 @@ class Adwaita_icon_theme < Package
   depends_on 'vala' => :build
   depends_on 'xdg_base'
 
-  gnome
-
   def self.build
     # Need to make sure svg support is properly loaded otherwise build fails.
     system "env GDK_PIXBUF_MODULEDIR='#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders' \
