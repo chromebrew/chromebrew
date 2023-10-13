@@ -30,7 +30,7 @@ class Libsigcplusplus < Package
     -Dbuild-deprecated-api=true \
     -Dbuild-examples=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

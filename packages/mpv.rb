@@ -83,7 +83,7 @@ class Mpv < Package
       hwdec-codecs=all
       fs=yes
     MPVCONF
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

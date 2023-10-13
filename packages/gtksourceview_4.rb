@@ -50,7 +50,7 @@ class Gtksourceview_4 < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Db_asneeded=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'mold -run samu -C builddir'
   end
 

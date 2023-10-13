@@ -40,7 +40,7 @@ class Gusb < Package
     -Dusb_ids=#{CREW_PREFIX}/share/hwdata/usb.ids \
     -Ddocs=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

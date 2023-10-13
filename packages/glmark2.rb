@@ -39,7 +39,7 @@ class Glmark2 < Package
       #{CREW_MESON_OPTIONS} \
       -Dflavors=drm-gl,drm-glesv2,wayland-gl,wayland-glesv2,x11-gl,x11-glesv2 \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

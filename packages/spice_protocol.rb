@@ -29,7 +29,7 @@ class Spice_protocol < Package
     system "meson \
       #{CREW_MESON_OPTIONS} \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

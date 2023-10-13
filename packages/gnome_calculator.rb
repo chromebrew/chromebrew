@@ -43,7 +43,7 @@ class Gnome_calculator < Package
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'samu -C builddir'
   end
 

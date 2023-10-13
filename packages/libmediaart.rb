@@ -38,7 +38,7 @@ class Libmediaart < Package
       -Dimage_library=gdk-pixbuf \
       -Dtests=false \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -31,7 +31,7 @@ class Amtk < Package
     system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
     -Dc_args='-fuse-ld=lld' \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -40,7 +40,7 @@ class Upower < Package
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev \
       -Dudevhwdbdir=#{CREW_PREFIX}/etc/udev \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -28,7 +28,7 @@ class Wayland_protocols < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dtests=false \
      builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'samu -C builddir'
   end
 

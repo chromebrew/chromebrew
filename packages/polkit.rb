@@ -67,7 +67,7 @@ class Polkit < Package
     -Djs_engine=duktape \
     -Dos_type=gentoo \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -38,7 +38,7 @@ class Gtkmm3 < Package
     -Dbuild-demos=false \
     -Dbuild-tests=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

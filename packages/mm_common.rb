@@ -26,7 +26,7 @@ class Mm_common < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Duse-network=true \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

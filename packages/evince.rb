@@ -58,7 +58,7 @@ class Evince < Package
       -Dps=enabled \
       -Dsystemduserunitdir=no \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

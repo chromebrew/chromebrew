@@ -38,7 +38,7 @@ class Freetype < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Dharfbuzz=enabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'samu -C builddir'
   end
 

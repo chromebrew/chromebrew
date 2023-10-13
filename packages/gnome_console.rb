@@ -45,7 +45,7 @@ class Gnome_console < Package
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

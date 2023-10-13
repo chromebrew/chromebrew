@@ -39,7 +39,7 @@ class Pax_utils < Package
             -Duse_libcap=enabled \
             -Duse_seccomp=true \
             builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

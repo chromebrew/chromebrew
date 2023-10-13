@@ -72,7 +72,7 @@ class Pulseaudio < Package
     -Dalsadatadir=#{CREW_PREFIX}/share/alsa-card-profile \
     -Dlocalstatedir=#{CREW_PREFIX}/var/run \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

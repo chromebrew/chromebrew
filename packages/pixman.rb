@@ -32,7 +32,7 @@ class Pixman < Package
     -Dlibpng=disabled \
     -Dtests=disabled \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

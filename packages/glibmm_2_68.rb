@@ -31,7 +31,7 @@ class Glibmm_2_68 < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbuild-documentation=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

@@ -28,7 +28,7 @@ class Libinih < Package
       -Ddistro_install=true \
       -Dwith_INIReader=true \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

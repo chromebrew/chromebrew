@@ -29,7 +29,7 @@ class Libva_intel_driver_hybrid < Package
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
             -Denable_hybrid_codec=true builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -41,7 +41,7 @@ class Gjs < Package
     -Dprofiler=disabled \
     -Dreadline=disabled \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

@@ -45,7 +45,7 @@ class Libadwaita < Package
             -Dexamples=false \
             -Dgtk_doc=false \
             builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

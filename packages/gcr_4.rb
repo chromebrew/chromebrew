@@ -46,7 +46,7 @@ class Gcr_4 < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

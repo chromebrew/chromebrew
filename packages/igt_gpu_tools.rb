@@ -38,7 +38,7 @@ class Igt_gpu_tools < Package
     -Doping=disabled \
     -Drunner=disabled \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

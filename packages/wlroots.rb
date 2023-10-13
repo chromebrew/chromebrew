@@ -44,7 +44,7 @@ class Wlroots < Package
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Dxwayland=enabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

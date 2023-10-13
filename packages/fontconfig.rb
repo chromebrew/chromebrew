@@ -41,7 +41,7 @@ class Fontconfig < Package
       -Dlocalstatedir=#{CREW_PREFIX}/cache \
       -Dtests=disabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

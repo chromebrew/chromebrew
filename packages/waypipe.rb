@@ -33,7 +33,7 @@ class Waypipe < Package
   def self.build
     system "CC=clang LD=mold meson setup #{CREW_MESON_OPTIONS.gsub('-ffat-lto-objects', '').gsub('-fuse-ld=mold', '')} \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
 

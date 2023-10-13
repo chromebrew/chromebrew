@@ -43,7 +43,7 @@ class Virglrenderer < Package
       -Drender-server-worker=minijail \
       -Dvideo=true \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

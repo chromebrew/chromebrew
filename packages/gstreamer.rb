@@ -138,7 +138,7 @@ class Gstreamer < Package
       -Dgpl=enabled \
       -Dtests=disabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     @counter = 1
     @counter_max = 20
     loop do

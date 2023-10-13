@@ -37,7 +37,7 @@ class Libportal < Package
     -Dportal-tests=false \
     -Dtests=false \
     builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 

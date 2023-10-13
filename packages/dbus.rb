@@ -41,7 +41,7 @@ class Dbus < Package
       -Dsystemd=disabled \
       -Dx11_autolaunch=enabled \
        builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"
   end
 

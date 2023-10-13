@@ -42,7 +42,7 @@ class Luajit_lgi < Package
     #-Dlua-bin=#{CREW_PREFIX}/bin/luajit \
     #-Dtests=false \
     # builddir"
-    # system 'meson configure builddir'
+    # system 'meson configure --no-pager builddir'
     # system 'mold -run samu -C builddir'
   end
 

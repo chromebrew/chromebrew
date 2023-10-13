@@ -33,7 +33,7 @@ class Gst_editing_services < Package
       -Ddoc=disabled \
       -Dvalidate=disabled \
       builddir"
-    system 'meson configure builddir'
+    system 'meson configure --no-pager builddir'
     system 'ninja -C builddir'
   end
 
