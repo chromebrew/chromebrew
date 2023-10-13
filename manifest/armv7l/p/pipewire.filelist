@@ -222,6 +222,7 @@
 /usr/local/include/spa-0.2/spa/support/thread.h
 /usr/local/include/spa-0.2/spa/utils/ansi.h
 /usr/local/include/spa-0.2/spa/utils/atomic.h
+/usr/local/include/spa-0.2/spa/utils/cleanup.h
 /usr/local/include/spa-0.2/spa/utils/defs.h
 /usr/local/include/spa-0.2/spa/utils/dict.h
 /usr/local/include/spa-0.2/spa/utils/dll.h
@@ -278,19 +279,19 @@
 /usr/local/lib/gstreamer-1.0/libgstpipewire.so
 /usr/local/lib/libpipewire-0.3.so
 /usr/local/lib/libpipewire-0.3.so.0
-/usr/local/lib/libpipewire-0.3.so.0.381.0
+/usr/local/lib/libpipewire-0.3.so.0.382.0
 /usr/local/lib/libwireplumber-0.4.so
 /usr/local/lib/libwireplumber-0.4.so.0
-/usr/local/lib/libwireplumber-0.4.so.0.4.14
+/usr/local/lib/libwireplumber-0.4.so.0.4.15
 /usr/local/lib/pipewire-0.3/jack/libjacknet.so
 /usr/local/lib/pipewire-0.3/jack/libjacknet.so.0
-/usr/local/lib/pipewire-0.3/jack/libjacknet.so.0.3.381
+/usr/local/lib/pipewire-0.3/jack/libjacknet.so.0.3.382
 /usr/local/lib/pipewire-0.3/jack/libjackserver.so
 /usr/local/lib/pipewire-0.3/jack/libjackserver.so.0
-/usr/local/lib/pipewire-0.3/jack/libjackserver.so.0.3.381
+/usr/local/lib/pipewire-0.3/jack/libjackserver.so.0.3.382
 /usr/local/lib/pipewire-0.3/jack/libjack.so
 /usr/local/lib/pipewire-0.3/jack/libjack.so.0
-/usr/local/lib/pipewire-0.3/jack/libjack.so.0.3.381
+/usr/local/lib/pipewire-0.3/jack/libjack.so.0.3.382
 /usr/local/lib/pipewire-0.3/libpipewire-module-access.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-adapter.so
 /usr/local/lib/pipewire-0.3/libpipewire-module-avb.so
@@ -621,3 +622,4 @@
 /usr/local/share/wireplumber/scripts/static-endpoints.lua
 /usr/local/share/wireplumber/scripts/suspend-node.lua
 /usr/local/share/wireplumber/wireplumber.conf
+/usr/local/share/zsh/site-functions/_wpctl
