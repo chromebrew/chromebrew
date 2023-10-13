@@ -43,7 +43,6 @@ class Rest < Package
   depends_on 'libxml2' # R
   depends_on 'pango' # R
   depends_on 'vulkan_icd_loader' # R
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

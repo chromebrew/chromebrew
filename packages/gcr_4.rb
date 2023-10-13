@@ -42,8 +42,6 @@ class Gcr_4 < Package
   depends_on 'p11kit' # R
   depends_on 'gcc_lib' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dgtk_doc=false \

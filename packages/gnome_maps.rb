@@ -40,7 +40,6 @@ class Gnome_maps < Package
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'rest' # R
-  gnome
 
   def self.patch
     system "sed -i 's/geocode-glib-2.0/geocode-glib-1.0/g' meson.build"
@@ -55,9 +54,5 @@ class Gnome_maps < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end

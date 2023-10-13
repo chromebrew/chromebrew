@@ -40,7 +40,6 @@ class Gnome_calculator < Package
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
   depends_on 'gcc_lib' # R
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} builddir"
@@ -53,10 +52,6 @@ class Gnome_calculator < Package
   end
 
   def self.postinstall
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
-    system 'gdk-pixbuf-query-loaders --update-cache'
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-
     puts <<~EOT.lightblue
 
       To use the graphical calculator, execute 'gnome-calculator'

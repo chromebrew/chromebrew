@@ -38,8 +38,6 @@ class Libsoup < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dtests=false \

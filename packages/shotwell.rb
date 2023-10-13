@@ -38,8 +38,6 @@ class Shotwell < Meson
   depends_on 'sqlite' # R
   depends_on 'webkit2gtk' # R
 
-  gnome
-
   def self.postinstall
     puts "\nTo finish the installation, execute 'source ~/.bashrc'\n".lightblue
   end

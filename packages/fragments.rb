@@ -38,8 +38,6 @@ class Fragments < Package
   depends_on 'transmission' # L
   depends_on 'zlibpkg' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} builddir"
     system 'meson configure builddir'

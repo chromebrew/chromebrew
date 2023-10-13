@@ -58,7 +58,6 @@ class Gnome_settings_daemon < Package
   depends_on 'pango' # R
   depends_on 'pulseaudio' # R
   depends_on 'wayland' # R
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

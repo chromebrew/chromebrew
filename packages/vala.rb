@@ -31,7 +31,6 @@ class Vala < Package
   depends_on 'glibc' # R
 
   git_fetchtags
-  gnome
 
   def self.build
     # Bootstrap vala

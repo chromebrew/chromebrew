@@ -30,7 +30,6 @@ class Geocode_glib < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
   depends_on 'libsoup2' # R
-  gnome
 
   def self.patch
     system "sed -i 's/gnome/Adwaita/' icons/meson.build"

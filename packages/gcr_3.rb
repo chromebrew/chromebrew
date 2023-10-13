@@ -44,7 +44,6 @@ class Gcr_3 < Package
   depends_on 'harfbuzz' # R
 
   conflicts_ok # expected conflicts with gcr_4
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

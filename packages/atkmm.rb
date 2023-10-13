@@ -29,8 +29,6 @@ class Atkmm < Package
   depends_on 'glib' # R
   depends_on 'libsigcplusplus3' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dbuild-documentation=false \

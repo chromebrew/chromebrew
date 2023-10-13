@@ -28,8 +28,6 @@ class Curtail < Package
   depends_on 'jpegoptim'
   depends_on 'libwebp'
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} build"
     system 'ninja -C build'

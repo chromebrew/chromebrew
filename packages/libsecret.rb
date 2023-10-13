@@ -27,7 +27,6 @@ class Libsecret < Package
   depends_on 'vala' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \

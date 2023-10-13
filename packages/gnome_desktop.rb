@@ -44,8 +44,6 @@ class Gnome_desktop < Package
   depends_on 'libseccomp' # R
   depends_on 'gcc_lib' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
     -Dsystemd=disabled \

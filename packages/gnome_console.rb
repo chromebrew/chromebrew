@@ -42,8 +42,6 @@ class Gnome_console < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
 
-  gnome
-
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
     builddir"
@@ -53,9 +51,5 @@ class Gnome_console < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
   end
 end

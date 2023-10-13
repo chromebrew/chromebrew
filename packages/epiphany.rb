@@ -54,8 +54,6 @@ class Epiphany < Package
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'gcc_lib' # R
 
-  gnome
-
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
       builddir"

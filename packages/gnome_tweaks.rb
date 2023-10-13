@@ -26,10 +26,4 @@ class Gnome_tweaks < Meson
   depends_on 'python3'
   depends_on 'libhandy'
   depends_on 'libnotify'
-
-  gnome
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
 end

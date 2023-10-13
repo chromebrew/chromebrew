@@ -33,7 +33,6 @@ class Glib < Package
   depends_on 'gcc_lib' # R
 
   no_strip if %w[aarch64 armv7l].include? ARCH
-  gnome
 
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \

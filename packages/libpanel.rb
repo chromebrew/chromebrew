@@ -30,7 +30,6 @@ class Libpanel < Package
   depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_smartypants' => :build
   depends_on 'vala' => :build
-  gnome
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
