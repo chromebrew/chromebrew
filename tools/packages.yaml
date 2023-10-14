@@ -665,6 +665,11 @@ url: https://github.com/google/brotli/releases
 activity: medium
 ---
 kind: url
+name: btop
+url: https://github.com/aristocratos/btop/releases
+activity: low
+---
+kind: url
 name: btrfsprogs
 url: https://github.com/kdave/btrfs-progs/releases
 activity: medium
