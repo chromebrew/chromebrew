@@ -332,7 +332,6 @@
 /usr/local/share/openjdk11/legal/java.base/LICENSE
 /usr/local/share/openjdk11/legal/java.base/public_suffix.md
 /usr/local/share/openjdk11/legal/java.base/unicode.md
-/usr/local/share/openjdk11/legal/java.base/zlib.md
 /usr/local/share/openjdk11/legal/java.compiler/ADDITIONAL_LICENSE_INFO
 /usr/local/share/openjdk11/legal/java.compiler/ASSEMBLY_EXCEPTION
 /usr/local/share/openjdk11/legal/java.compiler/LICENSE
@@ -562,9 +561,6 @@
 /usr/local/share/openjdk11/legal/jdk.zipfs/ASSEMBLY_EXCEPTION
 /usr/local/share/openjdk11/legal/jdk.zipfs/LICENSE
 /usr/local/share/openjdk11/lib/classlist
-/usr/local/share/openjdk11/lib/client/libjsig.so
-/usr/local/share/openjdk11/lib/client/libjvm.so
-/usr/local/share/openjdk11/lib/client/Xusage.txt
 /usr/local/share/openjdk11/lib/ct.sym
 /usr/local/share/openjdk11/lib/jexec
 /usr/local/share/openjdk11/lib/jfr/default.jfc
@@ -616,6 +612,9 @@
 /usr/local/share/openjdk11/lib/security/cacerts
 /usr/local/share/openjdk11/lib/security/default.policy
 /usr/local/share/openjdk11/lib/security/public_suffix_list.dat
+/usr/local/share/openjdk11/lib/server/libjsig.so
+/usr/local/share/openjdk11/lib/server/libjvm.so
+/usr/local/share/openjdk11/lib/server/Xusage.txt
 /usr/local/share/openjdk11/lib/src.zip
 /usr/local/share/openjdk11/lib/tzdb.dat
 /usr/local/share/openjdk11/readme.txt
