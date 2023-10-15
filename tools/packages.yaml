@@ -6421,6 +6421,11 @@ url: https://github.com/peazip/PeaZip/releases/
 activity: high
 ---
 kind: url
+name: peco
+url: https://github.com/peco/peco/releases
+activity: medium
+---
+kind: url
 name: peek
 url: https://github.com/phw/peek/releases
 activity: low
