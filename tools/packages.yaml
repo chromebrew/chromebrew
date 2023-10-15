@@ -6166,6 +6166,11 @@ url: https://www.azul.com/downloads/?version=java-17-lts&os=linux&package=jdk
 activity: medium
 ---
 kind: url
+name: openjdk21
+url: https://www.azul.com/downloads/?version=java-21-lts&os=linux&package=jdk
+activity: medium
+---
+kind: url
 name: openjpeg
 url: https://github.com/uclouvain/openjpeg/releases
 activity: low
