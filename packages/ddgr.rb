@@ -3,23 +3,23 @@ require 'package'
 class Ddgr < Package
   description 'DuckDuckGo from the terminal'
   homepage 'https://github.com/jarun/ddgr'
-  version '2.0'
+  version '2.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/jarun/ddgr/archive/v2.0.tar.gz'
-  source_sha256 '7e46430b0a8c479a5feca832adb73f2f09804bf603dedc50f4cf2e1da4c75f88'
+  source_url 'https://github.com/jarun/ddgr.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.0_armv7l/ddgr-2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.0_armv7l/ddgr-2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.0_i686/ddgr-2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.0_x86_64/ddgr-2.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.1_armv7l/ddgr-2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.1_armv7l/ddgr-2.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.1_i686/ddgr-2.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ddgr/2.1_x86_64/ddgr-2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9aeb15a4dd5259ec574689beb5ecfb28a3c8c0bfe33547e91c02264b148effc6',
-     armv7l: '9aeb15a4dd5259ec574689beb5ecfb28a3c8c0bfe33547e91c02264b148effc6',
-       i686: '91ca6233a9624c547f9d284354486f47115f4e1145e27d8975cd1089386a8626',
-     x86_64: 'e630b4172a9cb45f55aad475f077bfd6b355c8f191cdc9ed51104e335c5c88cf'
+    aarch64: '77e8bb3cb62004313c987664af947219cdbaa40bb95d643960cf5138db9a9d9a',
+     armv7l: '77e8bb3cb62004313c987664af947219cdbaa40bb95d643960cf5138db9a9d9a',
+       i686: '843b29f4c5e8d526b563505f391a420146780dc3760def2179b1f4843bdc7caa',
+     x86_64: '3ad3923836b3bfe7a97d81c827f6953b74dc43657331f5f91fdec7159d452815'
   })
 
   def self.build
