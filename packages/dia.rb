@@ -1,59 +1,61 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Dia < Package
+class Dia < Meson
   description 'Dia Diagram Editor is free Open Source drawing software for Windows, Mac OS X and Linux.'
   homepage 'http://dia-installer.de/'
-  version '0.97.2-1'
+  version '0.97.3-85304ca'
   license 'GPL-2'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/GNOME/dia/archive/DIA_0_97_2.tar.gz'
-  source_sha256 '13437d52f2c5cfdae7ecde8bd5ed0a53a388b0331698236d0ec63453b8a13016'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/dia.git'
+  git_hashtag '85304cac0b3eeba03313733d4a9586411040a0b2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.2-1_armv7l/dia-0.97.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.2-1_armv7l/dia-0.97.2-1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.2-1_x86_64/dia-0.97.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.3-85304ca_armv7l/dia-0.97.3-85304ca-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.3-85304ca_armv7l/dia-0.97.3-85304ca-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.3-85304ca_x86_64/dia-0.97.3-85304ca-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '55db6bb7d6703818578e1a8977b5020d3e83cb5fb3ac568f8d797deaf200c3b6',
-     armv7l: '55db6bb7d6703818578e1a8977b5020d3e83cb5fb3ac568f8d797deaf200c3b6',
-     x86_64: '6c8f42b5f5da58ebfca61c328ef621e7462b1f624c5a0d7001de7eac325ba2bc'
+    aarch64: 'fa093818bb8c13c1388c38c0e37835633356c263b247e6abe17c7735a66796b6',
+     armv7l: 'fa093818bb8c13c1388c38c0e37835633356c263b247e6abe17c7735a66796b6',
+     x86_64: '1ef2a1327268136743c131ed379fda0667c4b23bfceebf7e38e4304e390c05e8'
   })
 
+  depends_on 'cairo' # R
+  depends_on 'desktop_file_utils' # L
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libart' => :build
+  depends_on 'libpng' => :build
+  depends_on 'libwmf' => :build
+  depends_on 'libxml2' # R
+  depends_on 'libxslt' # R
   depends_on 'optipng' => :build
-  depends_on 'cairo'
-  depends_on 'gtk2'
-  depends_on 'libart'
-  depends_on 'libpng'
-  depends_on 'libwmf'
-  depends_on 'py3_six'
-  depends_on 'swig1'
-  depends_on 'sommelier'
-
-  def self.patch
-    # Fix broken images.  See http://archscientist.altervista.org/blog/how-to-solve-libpng-error-idat-invalid-distance-too-far-back/.
-    system "find app/pixmaps -iname '\*.png' -exec echo {} > /tmp/pngfiles.txt \\;"
-    system 'cat /tmp/pngfiles.txt | xargs -n 1 -P 3 optipng -quiet -force -fix'
-    system 'rm -f /tmp/pngfiles.txt'
-  end
+  depends_on 'pango' # R
+  depends_on 'poppler' # R
+  depends_on 'pygobject' # R
+  depends_on 'py3_six' => :build
+  depends_on 'python3' # R
+  depends_on 'swig1' => :build
+  depends_on 'zlibpkg' # R
 
   def self.build
-    system './autogen.sh'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode',
-           '--without-python',
-           '--with-cairo',
-           '--with-swig'
-    system 'make'
-  end
+    @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
+    system "#{@mold_linker_prefix_cmd} meson setup -Ddoc=false #{CREW_MESON_OPTIONS} builddir"
+    system 'meson configure --no-pager builddir'
+    @counter = 1
+    @counter_max = 20
+    loop do
+      break if Kernel.system "ninja -C builddir -j #{CREW_NPROC}"
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # Fix dia_renderer_set_size: assertion 'irenderer != NULL' failed.  See https://bugs.launchpad.net/ubuntu/+source/dia/+bug/1102960/comments/11.
-    system 'curl -#LO https://bugs.launchpad.net/ubuntu/+source/dia/+bug/1102960/+attachment/3552916/+files/persistence'
-    abort 'Checksum mismatch :/ try again' unless Digest::SHA256.hexdigest(File.read('persistence')) == '53cb6e49892bd60870fb31780052e46d9e47c5b19f87db1651760d10d3fe66e7'
-    system "install -Dm644 persistence #{CREW_DEST_HOME}/.dia/persistence"
+      puts "Make iteration #{@counter} of #{@counter_max}...".orange
+
+      @counter += 1
+      break if @counter > @counter_max
+    end
   end
 end
