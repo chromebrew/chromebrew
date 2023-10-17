@@ -595,6 +595,11 @@ url: https://ftp.gnu.org/gnu/bison/
 activity: medium
 ---
 kind: url
+name: bitcoin_core
+url: https://github.com/bitcoin/bitcoin/releases
+activity: low
+---
+kind: url
 name: bitmap
 url: https://x.org/archive/individual/app
 activity: none
