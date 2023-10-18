@@ -7,7 +7,7 @@ require_relative 'llvm17_build'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '17.0.2'
+  version '17.0.3'
   # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version.to_s
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -16,16 +16,16 @@ class Openmp < Package
   git_hashtag Llvm17_build.git_hashtag.to_s
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.2_armv7l/openmp-17.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.2_armv7l/openmp-17.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.2_i686/openmp-17.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.2_x86_64/openmp-17.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.3_armv7l/openmp-17.0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.3_armv7l/openmp-17.0.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.3_i686/openmp-17.0.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.3_x86_64/openmp-17.0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a7bc73527e176a54011c8b57681ab31bda137fbea2ed353b8fce27e970590052',
-     armv7l: 'a7bc73527e176a54011c8b57681ab31bda137fbea2ed353b8fce27e970590052',
-       i686: '25c9171ce08777e6bd7113b00c99312fdc6d323527b5807ac1d1972088aa9ed1',
-     x86_64: 'de9de35afe05454a384133636842f44e6ed52cb52b03b47c0bbc7e059d49de15'
+    aarch64: 'b8768518be054eb550bb49eb4ecad131d7b5b3d6d19db4a62c52ac5fae48709e',
+     armv7l: 'b8768518be054eb550bb49eb4ecad131d7b5b3d6d19db4a62c52ac5fae48709e',
+       i686: 'd432c11f8cb653b805658eb3d3809f2e7b9dce40d7f2d94c13ceb3c9df796f6e',
+     x86_64: '664e6705fdeb851c2ee8039ab334410aed6c9a275a93c1da344fda1ebc88d9f0'
   })
 
   depends_on 'gcc_lib' # R

@@ -4,7 +4,7 @@ require_relative 'llvm17_build'
 class Llvm17_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm17_build.homepage
-  version '17.0.2'
+  version '17.0.3'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib* and llvm_dev* in tandem.
   puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version.to_s
   license Llvm17_build.license
@@ -12,16 +12,16 @@ class Llvm17_lib < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.2_armv7l/llvm17_lib-17.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.2_armv7l/llvm17_lib-17.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.2_i686/llvm17_lib-17.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.2_x86_64/llvm17_lib-17.0.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.3_armv7l/llvm17_lib-17.0.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.3_armv7l/llvm17_lib-17.0.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.3_i686/llvm17_lib-17.0.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.3_x86_64/llvm17_lib-17.0.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ceb06bd5ba59d5153638259de9e3f6baaa7ef05f55857988078837cd8fa0d681',
-     armv7l: 'ceb06bd5ba59d5153638259de9e3f6baaa7ef05f55857988078837cd8fa0d681',
-       i686: 'f58034a401ae0d0d939946b92f2034e8e9b837376b3ab92acbdd9671d413a2aa',
-     x86_64: 'af6d4a6120d03b1db578ad77a1bb9c97353bcc67c0b5ff585ce83a65fe02c99b'
+    aarch64: 'e0421b12d300b311abebf2ec8facf24b7c3c6a1f9b9514ac1ff727d32f6962ca',
+     armv7l: 'e0421b12d300b311abebf2ec8facf24b7c3c6a1f9b9514ac1ff727d32f6962ca',
+       i686: '2565615702fdd698fee7da093836d36555ce4c01a28e84eff83ee4dae4571135',
+     x86_64: 'af225a4e1a1bcf6e3626cf4f54ec530aae046dc0125a2a64d6b0bbfff3b7e9e2'
   })
 
   depends_on 'gcc_lib' # R
@@ -33,6 +33,7 @@ class Llvm17_lib < Package
   depends_on 'ncurses' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+
   no_shrink
   no_strip
 
