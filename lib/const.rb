@@ -1,5 +1,5 @@
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.36.2'
+CREW_VERSION = '1.36.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -303,10 +303,10 @@ CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
 OPT
 
 # Use ninja or samurai
-CREW_NINJA = if ENV['CREW_NINJA'].to_s.downcase == 'ninja'
-               'ninja'
-             else
+CREW_NINJA = if ENV['CREW_NINJA'].to_s.downcase == 'samu'
                'samu'
+             else
+               'ninja'
              end
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
