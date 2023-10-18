@@ -6,23 +6,23 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.2.0'
+  version '2.3.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.2.0_armv7l/mold-2.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.2.0_armv7l/mold-2.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.2.0_i686/mold-2.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.2.0_x86_64/mold-2.2.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.0_armv7l/mold-2.3.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.0_armv7l/mold-2.3.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.0_i686/mold-2.3.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.0_x86_64/mold-2.3.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2a7a2268564f6d7f5773437b525afc9dec0678fa0a62917e5cb479579ca2bcae',
-     armv7l: '2a7a2268564f6d7f5773437b525afc9dec0678fa0a62917e5cb479579ca2bcae',
-       i686: 'c1a441fc6b24603c470dd89376060a9278fe25230121267586fbe6a3b00b6d88',
-     x86_64: '023aea4f9eb502d0549272befd57a5a51f96f0cbc8087b33ccb78aefda588880'
+    aarch64: '1644bfdfe965477b9c579e7e151d2e640bf5d16cf3a84c97eed73885c78ea528',
+     armv7l: '1644bfdfe965477b9c579e7e151d2e640bf5d16cf3a84c97eed73885c78ea528',
+       i686: '1a4f7ab4665e4c8352e4775e19f98252ac083ab9c2d17dc7a1a1bbea5a48688a',
+     x86_64: '431a72bcfd4fb28ec9202de740c66bf8bd2706e60e85d6d3478a4264955726dd'
   })
 
   depends_on 'zlibpkg' # R
