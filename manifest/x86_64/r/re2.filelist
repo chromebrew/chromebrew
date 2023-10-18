@@ -2,8 +2,11 @@
 /usr/local/include/re2/re2.h
 /usr/local/include/re2/set.h
 /usr/local/include/re2/stringpiece.h
-/usr/local/lib64/libre2.a
+/usr/local/lib64/cmake/re2/re2Config.cmake
+/usr/local/lib64/cmake/re2/re2ConfigVersion.cmake
+/usr/local/lib64/cmake/re2/re2Targets.cmake
+/usr/local/lib64/cmake/re2/re2Targets-release.cmake
 /usr/local/lib64/libre2.so
-/usr/local/lib64/libre2.so.9
-/usr/local/lib64/libre2.so.9.0.0
+/usr/local/lib64/libre2.so.11
+/usr/local/lib64/libre2.so.11.0.0
 /usr/local/lib64/pkgconfig/re2.pc
