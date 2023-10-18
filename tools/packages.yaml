@@ -8291,18 +8291,23 @@ url: https://github.com/tmux/tmux/releases
 activity: low
 ---
 kind: url
+name: toilet
+url: http://caca.zoy.org/wiki/toilet
+activity: none
+---
+kind: url
 name: torbrowser
 url: https://dist.torproject.org/torbrowser/
 activity: high
 ---
 kind: url
-name: tpp
-url: http://www.ngolde.de/download/
+name: totem_pl_parser
+url: https://download.gnome.org/sources/totem-pl-parser/
 activity: none
 ---
 kind: url
-name: totem_pl_parser
-url: https://download.gnome.org/sources/totem-pl-parser/
+name: tpp
+url: http://www.ngolde.de/download/
 activity: none
 ---
 kind: url
