@@ -1,6 +1,6 @@
 require 'buildsystems/cmake'
 
-class Qtfm < Cmake
+class Qtfm < CMake
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
   version '6.3.0-c19b9c1-2'
