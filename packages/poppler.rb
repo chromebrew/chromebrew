@@ -37,7 +37,7 @@ class Poppler < Package
   depends_on 'nss' # R
   depends_on 'openjpeg' # R
   depends_on 'poppler_data' => :build
-  depends_on 'qtbase' # R
+  depends_on 'qt5base' # R
   depends_on 'zlibpkg' # R
 
   def self.build

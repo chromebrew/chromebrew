@@ -44,10 +44,10 @@ class Wireshark < Package
   depends_on 'lz4' # R
   depends_on 'opus' # R
   depends_on 'pcre2' # R
-  depends_on 'qtbase' unless ARCH == 'i686'
-  depends_on 'qtmultimedia' unless ARCH == 'i686'
-  depends_on 'qtsvg' unless ARCH == 'i686'
-  depends_on 'qttools' unless ARCH == 'i686'
+  depends_on 'qt5base' unless ARCH == 'i686'
+  depends_on 'qt5multimedia' unless ARCH == 'i686'
+  depends_on 'qt5svg' unless ARCH == 'i686'
+  depends_on 'qt5tools' unless ARCH == 'i686'
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'sbc' # R
   depends_on 'snappy' # R

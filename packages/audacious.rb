@@ -25,7 +25,7 @@ class Audacious < Package
   depends_on 'audacious_plugins' => :runtime
   depends_on 'gdbm'
   depends_on 'gtk2'
-  depends_on 'qtbase'
+  depends_on 'qt5base'
   depends_on 'mpg123'
   depends_on 'xdg_base'
   depends_on 'sommelier'

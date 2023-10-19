@@ -122,8 +122,8 @@ class Gstreamer < Package
   depends_on 'ilmbase' # R
   depends_on 'openexr' # R
   depends_on 'openh264' # R
-  depends_on 'qtbase' # R
-  depends_on 'qtdeclarative' # R
+  depends_on 'qt5base' # R
+  depends_on 'qt5declarative' # R
 
   no_lto
 

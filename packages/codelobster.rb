@@ -20,7 +20,7 @@ class Codelobster < Package
   })
 
   def self.preflight
-    abort 'Please remove qtbase before installing.'.lightred if File.exist? "#{CREW_LIB_PREFIX}/libQt5Core.so.5"
+    abort 'Please remove qt5base before installing.'.lightred if File.exist? "#{CREW_LIB_PREFIX}/libQt5Core.so.5"
     free_space = `echo $(($(stat -f --format="%a*%S" .)))`.chomp.to_i
     abort 'Not enough free disk space.  You need at least 1.2 GB to install.'.lightred if free_space < 1288490188
   end

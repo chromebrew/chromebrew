@@ -23,7 +23,7 @@ class Sqlitebrowser < Package
   })
 
   depends_on 'sqlite'
-  depends_on 'qtbase'
+  depends_on 'qt5base'
   depends_on 'sommelier'
 
   def self.build
