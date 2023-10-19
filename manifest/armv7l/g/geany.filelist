@@ -66,6 +66,7 @@
 /usr/local/share/geany/filedefs/filetypes.Arduino.conf
 /usr/local/share/geany/filedefs/filetypes.asciidoc
 /usr/local/share/geany/filedefs/filetypes.asm
+/usr/local/share/geany/filedefs/filetypes.autoit
 /usr/local/share/geany/filedefs/filetypes.batch
 /usr/local/share/geany/filedefs/filetypes.bibtex
 /usr/local/share/geany/filedefs/filetypes.c
@@ -138,8 +139,6 @@
 /usr/local/share/geany/filedefs/filetypes.yaml
 /usr/local/share/geany/filedefs/filetypes.zephir
 /usr/local/share/geany/filetype_extensions.conf
-/usr/local/share/geany/geany-3.0.css
-/usr/local/share/geany/geany-3.20.css
 /usr/local/share/geany/geany.css
 /usr/local/share/geany/geany.glade
 /usr/local/share/geany/GPL-2
@@ -161,6 +160,7 @@
 /usr/local/share/geany/templates/files/main.cxx
 /usr/local/share/geany/templates/files/main.d
 /usr/local/share/geany/templates/files/main.java
+/usr/local/share/geany/templates/files/main.md
 /usr/local/share/geany/templates/files/main.py
 /usr/local/share/geany/templates/files/main.vala
 /usr/local/share/geany/templates/files/module.erl

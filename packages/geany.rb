@@ -3,25 +3,25 @@ require 'package'
 class Geany < Package
   description 'Geany is a small and lightweight Integrated Development Environment.'
   homepage 'https://www.geany.org/'
-  version '1.38-e2ce7db'
+  version '2.0.0'
   license 'GPL-2+ HPND'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/geany/geany.git'
-  git_hashtag 'e2ce7db7063d6d854ba859dd975d4b0de6d0f384'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.38-e2ce7db_armv7l/geany-1.38-e2ce7db-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.38-e2ce7db_armv7l/geany-1.38-e2ce7db-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/1.38-e2ce7db_x86_64/geany-1.38-e2ce7db-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/2.0.0_armv7l/geany-2.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/2.0.0_armv7l/geany-2.0.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/2.0.0_x86_64/geany-2.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1eb49f76049199ae267232c35ba1132c06a94969066b52005de0ae4fe89eb782',
-     armv7l: '1eb49f76049199ae267232c35ba1132c06a94969066b52005de0ae4fe89eb782',
-     x86_64: 'a28be72d0b68787b66d6c36cbe72b179bed3a923e17393cefe8cbe8fd9a15db3'
+    aarch64: '8be66872a26db0399da46595609f6bda991a7b9a4594413685a5f82916435b75',
+     armv7l: '8be66872a26db0399da46595609f6bda991a7b9a4594413685a5f82916435b75',
+     x86_64: '58b0273c68e563ace1099b64f143e0b7029d6930ab84819ea18e01902ad8f1f8'
   })
 
   depends_on 'at_spi2_core' # R
-  depends_on 'cairo' => :build
+  depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
