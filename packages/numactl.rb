@@ -1,35 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Numactl < Package
+class Numactl < Autotools
   description 'NUMA support for Linux'
   homepage 'https://github.com/numactl/numactl'
-  version '2.0.13'
+  version '2.0.16'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/numactl/numactl/releases/download/v2.0.13/numactl-2.0.13.tar.gz'
-  source_sha256 '991e254b867eb5951a44d2ae0bf1996a8ef0209e026911ef6c3ef4caf6f58c9a'
+  source_url 'https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz'
+  source_sha256 '1b242f893af977a1d31af6ce9d6b8dafdd2d8ec3dc9207f7c2dc0d3446e7c7c8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_armv7l/numactl-2.0.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_armv7l/numactl-2.0.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_i686/numactl-2.0.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.13_x86_64/numactl-2.0.13-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.16_armv7l/numactl-2.0.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.16_armv7l/numactl-2.0.16-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.16_i686/numactl-2.0.16-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/numactl/2.0.16_x86_64/numactl-2.0.16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1b1e55bb8d1b72d460bd7877845e86a27a449671a0e6987bd2ba97714f8151b4',
-     armv7l: '1b1e55bb8d1b72d460bd7877845e86a27a449671a0e6987bd2ba97714f8151b4',
-       i686: '461961c1da4c70d5ae773a4a0c55b8b73bcf89ba61d305396843e22faead4a43',
-     x86_64: '806ddeb8af5525f77f826e366517990270668625ef77910deb6ebe8494d22676'
+    aarch64: 'ec2f974440d9ba7e9dbd5dd5b7cf4e486f4e8c5809e4a82cc109de4db8492c57',
+     armv7l: 'ec2f974440d9ba7e9dbd5dd5b7cf4e486f4e8c5809e4a82cc109de4db8492c57',
+       i686: 'a956f95954a63ebdaa081c44cc286a9f3d9a9e86bd0f6c7064510283c7cd39ee',
+     x86_64: 'feee34c5f54f8c7cd6da4cd7350cab19f3aa66e25715be63357477e10b523769'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  conflicts_ok # ["manpages:/usr/local/share/man/man2/move_pages.2.zst"]
 end

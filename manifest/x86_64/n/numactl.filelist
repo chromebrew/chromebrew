@@ -13,10 +13,10 @@
 /usr/local/lib64/libnuma.so.1
 /usr/local/lib64/libnuma.so.1.0.0
 /usr/local/lib64/pkgconfig/numa.pc
-/usr/local/share/man/man2/move_pages.2.gz
-/usr/local/share/man/man3/numa.3.gz
-/usr/local/share/man/man8/memhog.8.gz
-/usr/local/share/man/man8/migratepages.8.gz
-/usr/local/share/man/man8/migspeed.8.gz
-/usr/local/share/man/man8/numactl.8.gz
-/usr/local/share/man/man8/numastat.8.gz
+/usr/local/share/man/man2/move_pages.2.zst
+/usr/local/share/man/man3/numa.3.zst
+/usr/local/share/man/man8/memhog.8.zst
+/usr/local/share/man/man8/migratepages.8.zst
+/usr/local/share/man/man8/migspeed.8.zst
+/usr/local/share/man/man8/numactl.8.zst
+/usr/local/share/man/man8/numastat.8.zst
