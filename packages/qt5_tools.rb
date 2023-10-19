@@ -9,8 +9,12 @@ class Qt5_tools < Package
   source_url 'https://invent.kde.org/qt/qt/qttools.git'
   git_hashtag '38ae810be3fb4984f75b55a16d3413e35d701af1' # from kde/5.15 branch
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_tools/5.15.11-38ae810_x86_64/qt5_tools-5.15.11-38ae810-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: '6f279180b9a03233b6b7e593736fec1ac9891773c3830b8b1dc72025174518aa'
+  })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

@@ -9,8 +9,12 @@ class Qt5_x11extras < Package
   source_url 'https://invent.kde.org/qt/qt/qtx11extras.git'
   git_hashtag '5fb2e067a38d3583684310130f5d8aad064f512f' # from kde/5.15 branch
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_x11extras/5.15.11-5fb2e06_x86_64/qt5_x11extras-5.15.11-5fb2e06-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: '44eaf9dbea1761ac6d605bf3599c25a26e55338530294c14d24e4cb632e5083e'
+  })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

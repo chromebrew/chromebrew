@@ -12,8 +12,12 @@ class Qt5_webchannel < Package
   source_url 'https://invent.kde.org/qt/qt/qtwebchannel.git'
   git_hashtag 'f84887c1aee4ab04af375e639ae965c9ea2186a5' # from kde/5.15 branch
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webchannel/5.15.11-f84887c_x86_64/qt5_webchannel-5.15.11-f84887c-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: '88f6941f88078e1cac8d3fab3d78a78782f8727d7669a81bc2cbd413ee70642d'
+  })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

@@ -9,8 +9,12 @@ class Qt5_location < Package
   source_url 'https://invent.kde.org/qt/qt/qtlocation.git'
   git_hashtag '48a17e88fc1df5b6ae82a9787466226c830bcbf2' # from kde/5.15 branch
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_location/5.15.11-48a17e8_x86_64/qt5_location-5.15.11-48a17e8-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: 'cb1105335c5ead0dd7ccf89e0fbddf161756d53a43eef3602f8480d547a769f5'
+  })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
