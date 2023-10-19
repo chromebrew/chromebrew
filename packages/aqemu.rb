@@ -22,7 +22,7 @@ class Aqemu < Package
 
   depends_on 'libvncserver'
   depends_on 'qemu'
-  depends_on 'qt5base'
+  depends_on 'qt5_base'
   depends_on 'xdg_base'
   depends_on 'sommelier'
 

@@ -27,7 +27,7 @@ class V4l_utils < Package
   depends_on 'libglu'
   depends_on 'libjpeg'
   depends_on 'mesa' unless ARCH == 'i686'
-  depends_on 'qt5base' unless ARCH == 'i686'
+  depends_on 'qt5_base' unless ARCH == 'i686'
   depends_on 'sdl2_image'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
