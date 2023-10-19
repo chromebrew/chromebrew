@@ -1,28 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Geany_plugins < Package
+class Geany_plugins < Autotools
   description 'Geany plugins.'
   homepage 'https://www.geany.org/'
-  version '1.38-3ac62e2'
+  version '2.0.0'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/geany/geany-plugins.git'
-  git_hashtag '3ac62e2c81cba1fe59d7fae1db8ea910367cd589'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.38-3ac62e2_armv7l/geany_plugins-1.38-3ac62e2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.38-3ac62e2_armv7l/geany_plugins-1.38-3ac62e2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/1.38-3ac62e2_x86_64/geany_plugins-1.38-3ac62e2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/2.0.0_armv7l/geany_plugins-2.0.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/2.0.0_armv7l/geany_plugins-2.0.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany_plugins/2.0.0_x86_64/geany_plugins-2.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e43377ce7d8d200eb58350772e7d2132edbe84d9d10390a1ba95ae04d037cd40',
-     armv7l: 'e43377ce7d8d200eb58350772e7d2132edbe84d9d10390a1ba95ae04d037cd40',
-     x86_64: '4aa9fbe81d1d637979a6b112c4f3eedf23170fa4f78f2aed3f7a7a17d3625ef2'
+    aarch64: '712ed5e1737c8ae1bae903a36c182433ab01d829ec809e292d506fb1d9b2483f',
+     armv7l: '712ed5e1737c8ae1bae903a36c182433ab01d829ec809e292d506fb1d9b2483f',
+     x86_64: 'bd9e2dafbefab9bab849b93243ecc1e39174f0914267d3db55b7f1be5eda70cd'
   })
 
   depends_on 'aspell' # R
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' => :build
+  depends_on 'cairo' # R
   depends_on 'enchant' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -41,19 +42,4 @@ class Geany_plugins < Package
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
   depends_on 'zlibpkg' # R
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system 'filefix'
-    system "mold -run ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
