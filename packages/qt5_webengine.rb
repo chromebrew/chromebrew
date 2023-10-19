@@ -52,11 +52,11 @@ class Qt5_webengine < Package
   depends_on 'pipewire' => :build
   depends_on 'poppler'  => :build
   depends_on 'pulseaudio' # R
-  depends_on 'qtbase' # R
-  depends_on 'qtdeclarative' # R
-  depends_on 'qtlocation' # R
-  depends_on 'qttools' # R
-  depends_on 'qtwebchannel' # R
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_declarative' # R
+  depends_on 'qt5_location' # R
+  depends_on 'qt5_tools' # R
+  depends_on 'qt5_webchannel' # R
   depends_on 're2' # R
   depends_on 'snappy' # R
   depends_on 'zlibpkg' # R
