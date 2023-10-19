@@ -3,13 +3,18 @@ require 'package'
 class Mysql < Package
   description "MySQL Community Edition is a freely downloadable version of the world's most popular open source database"
   homepage 'https://www.mysql.com/'
-  version '8.0.33'
+  version '8.0.34'
   license 'GPL-2'
   compatibility 'x86_64'
-  source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.33-linux-glibc2.12-x86_64.tar.xz'
-  source_sha256 '4900c972a508d5b2f6d28bb9c51cf45906b6746d616d978f3996fbf2ca59467f'
+  source_url 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.34-linux-glibc2.12-x86_64.tar.xz'
+  source_sha256 '134b4f984c7acfd3b5d03839bfd8524f955738ea8ca35b9ffcdf6c8f3ad4ce6c'
 
-  depends_on 'numactl'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'numactl' # R
+  depends_on 'openssl' # R
 
   no_fhs
   no_compile_needed
