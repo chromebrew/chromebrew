@@ -20,7 +20,7 @@ class Qtserialport < Package
      x86_64: '9084b52ba54e4083fb87254e4bd87172b72a4b8a4cf65734267e36e0d7d4f60c'
   })
 
-  depends_on 'qtbase'
+  depends_on 'qt5_base'
 
   def self.build
     system 'qmake && make'

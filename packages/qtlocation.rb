@@ -24,7 +24,7 @@ class Qtlocation < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libglvnd' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtdeclarative' # R
   depends_on 'zlibpkg' # R
 

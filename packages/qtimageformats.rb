@@ -20,7 +20,7 @@ class Qtimageformats < Package
      x86_64: '7d15f1626b22beed5eb1f1eb442f1313bfb63df98a7fedec9f80c3801dd7d020'
   })
 
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'jasper' # R
   depends_on 'libmng' # R
   depends_on 'libtiff' # R

@@ -31,7 +31,7 @@ class Qtwayland < Package
   depends_on 'libxcomposite' # R
   depends_on 'libxext' # R
   depends_on 'libxkbcommon' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtdeclarative' # R
   depends_on 'wayland' # R
   depends_on 'zlibpkg' # R

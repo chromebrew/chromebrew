@@ -20,7 +20,7 @@ class Qtcharts < Package
      x86_64: '60662bd8df31f884a31e7b4e8cdd8aebc5f1ec8c111d417444e38ee62f23fd74'
   })
 
-  depends_on 'qtbase'
+  depends_on 'qt5_base'
 
   def self.build
     system 'qmake && make'

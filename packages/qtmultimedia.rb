@@ -28,7 +28,7 @@ class Qtmultimedia < Package
   depends_on 'libglvnd' # R
   depends_on 'openal' # R
   depends_on 'pulseaudio' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtdeclarative' # R
 
   def self.build

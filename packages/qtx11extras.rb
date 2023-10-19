@@ -23,7 +23,7 @@ class Qtx11extras < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
 
   def self.build
     # The simple build doesn't work, which is why we have this recursive

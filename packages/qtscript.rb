@@ -20,7 +20,7 @@ class Qtscript < Package
      x86_64: '154c0dcaf09c29c8954e7b842abc1ac1356643f916f5ad08f2f504642cdf71a1'
   })
 
-  depends_on 'qtbase'
+  depends_on 'qt5_base'
 
   def self.build
     system 'qmake && make'

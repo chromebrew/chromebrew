@@ -26,7 +26,7 @@ class Qtquickcontrols < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtdeclarative' # R
 
   def self.build

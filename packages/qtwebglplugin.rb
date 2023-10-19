@@ -20,7 +20,7 @@ class Qtwebglplugin < Package
      x86_64: '72d153c0e855fe322ebd9084902469f9353a33bff5d53ab945be096692ce1291'
   })
 
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtwebsockets' # R
 
   def self.build

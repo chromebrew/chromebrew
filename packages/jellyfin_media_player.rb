@@ -33,7 +33,7 @@ class Jellyfin_media_player < Package
   depends_on 'mpv' # R
   depends_on 'p8_platform' => :build
   depends_on 'protobuf' => :build
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtdeclarative' # R
   depends_on 'qtlocation' # R
   depends_on 'qtquickcontrols' # L

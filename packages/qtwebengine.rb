@@ -3,7 +3,7 @@
 # & LFS build documentation at https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html
 
 require 'package'
-require_relative 'qtbase'
+require_relative 'qt5_base'
 
 class Qtwebengine < Package
   description 'Provides support for web applications using the Chromium browser project'
@@ -56,7 +56,7 @@ class Qtwebengine < Package
   depends_on 'pipewire' => :build
   depends_on 'poppler'  => :build
   depends_on 'pulseaudio' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'qtdeclarative' # R
   depends_on 'qtlocation' # R
   depends_on 'qttools' # R

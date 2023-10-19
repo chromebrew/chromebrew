@@ -20,7 +20,7 @@ class Qtwebsockets < Package
      x86_64: '5c252f73cf45897a79652d3623f7e40e5c337dcd1902a19b6d7ccea95b5c275e'
   })
 
-  depends_on 'qtbase'
+  depends_on 'qt5_base'
 
   def self.build
     system 'qmake && make'

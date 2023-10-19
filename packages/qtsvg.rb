@@ -20,7 +20,7 @@ class Qtsvg < Package
      x86_64: '97a10a120362f995bd6aceb0faf49983c1af8a7e85975fc05601e429f1669c49'
   })
 
-  depends_on 'qtbase'
+  depends_on 'qt5_base'
 
   def self.build
     system 'qmake && make'

@@ -23,7 +23,7 @@ class Qttools < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
-  depends_on 'qtbase' # R
+  depends_on 'qt5_base' # R
   depends_on 'libtinfo' => :build
   depends_on 'libglvnd' # R
   depends_on 'llvm16_lib' # R
