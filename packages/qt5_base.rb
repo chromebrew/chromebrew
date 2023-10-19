@@ -5,12 +5,16 @@ class Qt5_base < Package
   homepage 'https://code.qt.io/cgit/qt/qtbase'
   version '5.15.11-ea7a183'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag 'ea7a183732c17005f08ca14fd70cdd305c90396d'
+  git_hashtag 'ea7a183732c17005f08ca14fd70cdd305c90396d' # from kde/5.15 branch
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_base/5.15.11-ea7a183_x86_64/qt5_base-5.15.11-ea7a183-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: '2a2b276df88991a22c8a1ca3a2353be583e62f1666c8393ddf05fe6085b9cb7e'
+  })
 
   depends_on 'alsa_plugins' => :build
   depends_on 'at_spi2_core' # R

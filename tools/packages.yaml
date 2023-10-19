@@ -7161,12 +7161,12 @@ url: https://github.com/fukuchi/libqrencode/releases
 activity: none
 ---
 kind: url
-name: qtbase
+name: qt5_base
 url: https://invent.kde.org/qt/qt/qtbase/-/tags
 activity: medium
 ---
 kind: url
-name: qtcharts
+name: qt5_charts
 url: https://invent.kde.org/qt/qt/qtcharts/-/tags
 activity: medium
 ---
@@ -7181,7 +7181,7 @@ url: http://download.qt.io/official_releases/qt/
 activity: high
 ---
 kind: url
-name: qtdeclarative
+name: qt5_declarative
 url: https://invent.kde.org/qt/qt/qtdeclarative/-/tags
 activity: medium
 ---
@@ -7191,72 +7191,72 @@ url: https://github.com/rodlie/qtfm/releases
 activity: medium
 ---
 kind: url
-name: qtimageformats
+name: qt5_imageformats
 url: https://invent.kde.org/qt/qt/qtimageformats/-/tags
 activity: medium
 ---
 kind: url
-name: qtlocation
+name: qt5_location
 url: https://invent.kde.org/qt/qt/qtlocation/-/tags
 activity: medium
 ---
 kind: url
-name: qtmultimedia
+name: qt5_multimedia
 url: https://invent.kde.org/qt/qt/qtmultimedia/-/tags
 activity: medium
 ---
 kind: url
-name: qtquickcontrols
+name: qt5_quickcontrols
 url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
 activity: medium
 ---
 kind: url
-name: qtscript
+name: qt5_script
 url: https://invent.kde.org/qt/qt/qtscript/-/tags
 activity: medium
 ---
 kind: url
-name: qtserialport
+name: qt5_serialport
 url: https://invent.kde.org/qt/qt/qtserialport/-/tags
 activity: medium
 ---
 kind: url
-name: qtsvg
+name: qt5_svg
 url: https://invent.kde.org/qt/qt/qtsvg/-/tags
 activity: medium
 ---
 kind: url
-name: qttools
+name: qt5_tools
 url: https://invent.kde.org/qt/qt/qttools/-/tags
 activity: medium
 ---
 kind: url
-name: qtwayland
+name: qt5_wayland
 url: https://invent.kde.org/qt/qt/qtwayland/-/tags
 activity: medium
 ---
 kind: url
-name: qtwebchannel
+name: qt5_webchannel
 url: https://invent.kde.org/qt/qt/qtwebchannel/-/tags
 activity: medium
 ---
 kind: url
-name: qtwebengine
+name: qt5_webengine
 url: https://invent.kde.org/qt/qt/qtwebengine/-/tags
 activity: medium
 ---
 kind: url
-name: qtwebglplugin
+name: qt5_webglplugin
 url: https://invent.kde.org/qt/qt/qtwebglplugin/-/tags
 activity: medium
 ---
 kind: url
-name: qtwebsockets
+name: qt5_websockets
 url: https://invent.kde.org/qt/qt/qtwebsockets/-/tags
 activity: medium
 ---
 kind: url
-name: qtx11extras
+name: qt5_x11extras
 url: https://invent.kde.org/qt/qt/qtx11extras/-/tags
 activity: medium
 ---

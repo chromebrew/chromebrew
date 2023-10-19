@@ -5,23 +5,19 @@
 require 'package'
 require_relative 'qt5_base'
 
-class Qtwebengine < Package
+class Qt5_webengine < Package
   description 'Provides support for web applications using the Chromium browser project'
   homepage 'https://www.qt.io'
-  version '5.15.14'
-  @qt_pkgver = Qtwebengine.version.to_s.gsub(/-.*/, '')
-  @qt_basever = Qtbase.version.to_s.gsub(/-.*/, '')
+  version '5.15.15'
+  compatibility 'all'
+  @qt_pkgver = Qt5_webengine.version.to_s.gsub(/-.*/, '')
+  @qt_basever = Qt5_base.version.to_s.gsub(/-.*/, '')
   license 'LGPL3 LGPL2.1 BSD'
-  compatibility 'x86_64'
-  source_url 'https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.14.tar.xz'
-  source_sha256 '1475c004860585b22af13a2b719ef10992fad58f1c145bf5cb43fbc86a3a67d2'
+  source_url 'https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.15.tar.xz'
+  source_sha256 '53b2f184c8b40bcac88b13f9f565a3d849f1ccfcc4f7344823ccc4265fb80445'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtwebengine/5.15.14_x86_64/qtwebengine-5.15.14-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    x86_64: '5bd9db7445283a9f0206864fb108a2b24b23ef35e979e42d8694a80ad4848231'
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'alsa_lib' # R
   depends_on 'dbus' # R
@@ -56,7 +52,7 @@ class Qtwebengine < Package
   depends_on 'pipewire' => :build
   depends_on 'poppler'  => :build
   depends_on 'pulseaudio' # R
-  depends_on 'qt5_base' # R
+  depends_on 'qtbase' # R
   depends_on 'qtdeclarative' # R
   depends_on 'qtlocation' # R
   depends_on 'qttools' # R
@@ -67,12 +63,17 @@ class Qtwebengine < Package
 
   def self.patch
     # Patches from lfs: https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html
-    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.14-build_fixes-1.patch', 'SKIP'
-    system 'patch -Np1 -i qtwebengine-5.15.14-build_fixes-1.patch'
-    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.14-ffmpeg5_fixes-1.patch', 'SKIP'
-    system 'patch -Np1 -i qtwebengine-5.15.14-ffmpeg5_fixes-1.patch'
-    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.14-icu_73-1.patch', 'SKIP'
-    system 'patch -Np1 -i qtwebengine-5.15.14-icu_73-1.patch'
+    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-build_fixes-1.patch',
+'a9e248414302b6fbd19e0404142e5ad082fb4a45eaf6f96d1b847a7b4bf8e1bd'
+    system 'patch -Np1 -i qtwebengine-5.15.15-build_fixes-1.patch'
+    downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-ffmpeg5_fixes-1.patch',
+'9f45c97d2aeb99ba8eea90cdd3b380c03218ca4d4c88e356f622e094971dd34a'
+    system 'patch -Np1 -i qtwebengine-5.15.15-ffmpeg5_fixes-1.patch'
+    # Further Python3 patches
+    system "sed -i 's,/usr/bin/python,#{CREW_PREFIX}/bin/python3,g' src/3rdparty/chromium/build/print_python_deps.py"
+    system "sed -i 's,qtwebengine_checkForPython2,qtwebengine_checkForPython,g' src/buildtools/config/support.pri"
+    system "sed -i 's,webengine-python2,webengine-python,g' src/buildtools/config/support.pri"
+    system "sed -i 's,Python version 2 (2.7.5 or later),Python,g' src/buildtools/config/support.pri"
     FileUtils.mkdir_p '.git'
     FileUtils.mkdir_p 'src/3rdparty/chromium/.git'
     system "sed -e '/^MODULE_VERSION/s/5.*/#{@qt_basever}/' -i .qmake.conf"
@@ -95,7 +96,7 @@ class Qtwebengine < Package
 
   def self.build
     unless File.file?('Makefile')
-      system "qmake CONFIG+=force_debug_info -- \
+      system "qmake -d -- \
       -proprietary-codecs \
       -system-ffmpeg \
       -webp \
@@ -104,9 +105,9 @@ class Qtwebengine < Package
       -webengine-kerberos"
     end
     @counter = 1
-    @counter_max = 5
+    @counter_max = 20
     loop do
-      break if Kernel.system 'NINJAJOBS=4 make'
+      break if Kernel.system "NINJAJOBS=#{CREW_NPROC} make"
 
       puts "Make iteration #{@counter} of #{@counter_max}...".orange
 

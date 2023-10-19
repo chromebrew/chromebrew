@@ -7,7 +7,7 @@ class Qt5_declarative < Package
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
   compatibility 'x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtdeclarative.git'
-  git_hashtag '1b0e366092bcfae0392592c3b7891f0e47af1018'
+  git_hashtag '1b0e366092bcfae0392592c3b7891f0e47af1018' # from kde/5.15 branch
 
   binary_url({})
   binary_sha256({})

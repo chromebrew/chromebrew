@@ -6,18 +6,14 @@ require 'package'
 class Jellyfin_media_player < Package
   description 'Jellyfin Desktop Client'
   homepage 'https://github.com/jellyfin/jellyfin-media-player'
-  version '1.9.1'
+  version '1.9.1-1'
   license 'GPL'
   compatibility 'x86_64'
   source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1_x86_64/jellyfin_media_player-1.9.1-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    x86_64: '36c7847fbc29da687a10369e15819249788fdd72b134bf2850f86e7104d7ad93'
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -34,16 +30,20 @@ class Jellyfin_media_player < Package
   depends_on 'p8_platform' => :build
   depends_on 'protobuf' => :build
   depends_on 'qt5_base' # R
-  depends_on 'qtdeclarative' # R
-  depends_on 'qtlocation' # R
-  depends_on 'qtquickcontrols' # L
-  depends_on 'qtwayland' => :build
-  depends_on 'qtwebchannel' # R
-  depends_on 'qtwebengine' # R
-  depends_on 'qtx11extras' # R
+  depends_on 'qt5_declarative' # R
+  depends_on 'qt5_location' # R
+  depends_on 'qt5_quickcontrols' # L
+  depends_on 'qt5_wayland' => :build
+  depends_on 'qt5_webchannel' # R
+  depends_on 'qt5_webengine' # R
+  depends_on 'qt5_x11extras' # R
   depends_on 'shaderc' # L
   depends_on 'sommelier' # L
   depends_on 'zlibpkg' # R
+
+  def self.patch
+    system "sed -i 's/gold/#{CREW_LINKER}/g' CMakeModules/CompilerFlags.cmake"
+  end
 
   def self.build
     system './download_webclient.sh'

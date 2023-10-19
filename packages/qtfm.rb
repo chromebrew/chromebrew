@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Qtfm < Package
+class Qtfm < Cmake
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
-  version '6.3.0-c19b9c1-1'
+  version '6.3.0-c19b9c1-2'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/rodlie/qtfm.git'
@@ -30,20 +30,9 @@ class Qtfm < Package
     system "sed -i '14i#include <QPainterPath>' libfm/iconview.h"
   end
 
-  def self.build
-    system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
-        -DENABLE_DBUS=OFF \
+  cmake_options '-DENABLE_DBUS=OFF \
         -DENABLE_FFMPEG=ON \
         -DENABLE_MAGICK=OFF \
         -DENABLE_TRAY=OFF \
-        -DENABLE_UDISKS=OFF \
-        -Wno-dev \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+        -DENABLE_UDISKS=OFF'
 end
