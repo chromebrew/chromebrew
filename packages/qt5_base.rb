@@ -1,24 +1,16 @@
 require 'package'
 
-class Qtbase < Package
+class Qt5_base < Package
   description 'Qt Base (Core, Gui, Widgets, Network, ...)'
   homepage 'https://code.qt.io/cgit/qt/qtbase'
-  version '5.15.10-9b7fd27'
+  version '5.15.11-ea7a183'
   license 'FDL, GPL-2, GPL-3, GPL-3-with-qt-exception and LGPL-3'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64'
   source_url 'https://invent.kde.org/qt/qt/qtbase.git'
-  git_hashtag '9b7fd27c2b4a363ba4434353be2932483be99234'
+  git_hashtag 'ea7a183732c17005f08ca14fd70cdd305c90396d'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.10-9b7fd27_armv7l/qtbase-5.15.10-9b7fd27-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.10-9b7fd27_armv7l/qtbase-5.15.10-9b7fd27-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qtbase/5.15.10-9b7fd27_x86_64/qtbase-5.15.10-9b7fd27-chromeos-x86_64.tar.zst'
-  })
-  binary_sha256({
-    aarch64: 'a15e6d37232737b2776334459f35e1b518fcb85304a52ef8056c4d1ad3a0b778',
-     armv7l: 'a15e6d37232737b2776334459f35e1b518fcb85304a52ef8056c4d1ad3a0b778',
-     x86_64: '33f6b7827479b706f72c63d1f088cf4ffa665c8d603dea83ad5739cff873e182'
-  })
+  binary_url({})
+  binary_sha256({})
 
   depends_on 'alsa_plugins' => :build
   depends_on 'at_spi2_core' # R
