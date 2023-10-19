@@ -9,9 +9,14 @@ class Qt5_wayland < Package
   source_url 'https://invent.kde.org/qt/qt/qtwayland.git'
   git_hashtag '4de268cbaf6ff3b633429577f06d3d746a3b202a' # from kde/5.15 branch
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_wayland/5.15.11-4de268c_x86_64/qt5_wayland-5.15.11-4de268c-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: 'e2da6a9ecb37e0a2ced50e007a6debad79179d62427882522c00045141955ce8'
+  })
 
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
