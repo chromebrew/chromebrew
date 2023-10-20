@@ -10,10 +10,14 @@ class Qt5_x11extras < Package
   git_hashtag '5fb2e067a38d3583684310130f5d8aad064f512f' # from kde/5.15 branch
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_x11extras/5.15.11-5fb2e06_x86_64/qt5_x11extras-5.15.11-5fb2e06-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_x11extras/5.15.11-5fb2e06_armv7l/qt5_x11extras-5.15.11-5fb2e06-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_x11extras/5.15.11-5fb2e06_armv7l/qt5_x11extras-5.15.11-5fb2e06-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_x11extras/5.15.11-5fb2e06_x86_64/qt5_x11extras-5.15.11-5fb2e06-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '44eaf9dbea1761ac6d605bf3599c25a26e55338530294c14d24e4cb632e5083e'
+    aarch64: '58745e684f066140d82fc7db0489586016be01e8f9928da37d0d129c4ef7dfef',
+     armv7l: '58745e684f066140d82fc7db0489586016be01e8f9928da37d0d129c4ef7dfef',
+     x86_64: '44eaf9dbea1761ac6d605bf3599c25a26e55338530294c14d24e4cb632e5083e'
   })
 
   depends_on 'gcc_lib' # R
