@@ -2,19 +2,19 @@ require 'package'
 
 class Bitcoin_core < Package
   description 'Bitcoin Core is a full Bitcoin client and builds the backbone of the network.'
-  homepage 'https://bitcoin.org/'
-  version '25.0'
+  homepage 'https://bitcoincore.org/'
+  version '25.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url({
-    aarch64: 'https://bitcoin.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz',
-     armv7l: 'https://bitcoin.org/bin/bitcoin-core-25.0/bitcoin-25.0-arm-linux-gnueabihf.tar.gz',
-     x86_64: 'https://bitcoin.org/bin/bitcoin-core-25.0/bitcoin-25.0-x86_64-linux-gnu.tar.gz'
+    aarch64: 'https://bitcoincore.org/bin/bitcoin-core-25.1/bitcoin-25.1-arm-linux-gnueabihf.tar.gz',
+     armv7l: 'https://bitcoincore.org/bin/bitcoin-core-25.1/bitcoin-25.1-arm-linux-gnueabihf.tar.gz',
+     x86_64: 'https://bitcoincore.org/bin/bitcoin-core-25.1/bitcoin-25.1-x86_64-linux-gnu.tar.gz'
   })
   source_sha256({
-    aarch64: 'e537c8630b05e63242d979c3004f851fd73c2a10b5b4fdbb161788427c7b3c0f',
-     armv7l: 'e537c8630b05e63242d979c3004f851fd73c2a10b5b4fdbb161788427c7b3c0f',
-     x86_64: '33930d432593e49d58a9bff4c30078823e9af5d98594d2935862788ce8a20aec'
+    aarch64: '28b8811984e215d9dc42536394629029edc1d15ab896f007d54d1d42a343f9db',
+     armv7l: '28b8811984e215d9dc42536394629029edc1d15ab896f007d54d1d42a343f9db',
+     x86_64: 'a978c407b497a727f0444156e397b50491ce862d1f906fef9b521415b3611c8b'
   })
 
   no_compile_needed
