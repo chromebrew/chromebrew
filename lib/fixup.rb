@@ -4,7 +4,7 @@
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
 
 # Fix missing $PATH not added in install.sh
-unless system "grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path"
+unless system "grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path || grep -q '1.36.4' #{CREW_PREFIX}/etc/env.d/path"
   puts 'Fixing path env.d file...'.orange
   puts "Please run 'source ~/.bashrc'".lightblue
   File.write "#{CREW_PREFIX}/etc/env.d/path", <<~ENVD_PATH_EOF
