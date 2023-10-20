@@ -9,6 +9,6 @@ unless system "grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path"
   puts "Please run 'source ~/.bashrc'".lightblue
   File.write "#{CREW_PREFIX}/etc/env.d/path", <<~ENVD_PATH_EOF
     ## Inserted by Chromebrew version #{CREW_VERSION}
-    PATH=#{CREW_PREFIX}/bin:#{CREW_PREFIX}/sbin:#{CREW_PREFIX}/share/musl/bin:\\\$PATH
+    PATH=#{CREW_PREFIX}/bin:#{CREW_PREFIX}/sbin:#{CREW_PREFIX}/share/musl/bin:$PATH
   ENVD_PATH_EOF
 end
