@@ -35,8 +35,7 @@ pkg_update_arr = [
   { pkg_name: 'qtwebglplugin', pkg_rename: 'qt5_webglplugin', pkg_deprecated: nil },
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil },
-  { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true },
-  { pkg_name: 'qtcreator', pkg_rename: nil, pkg_deprecated: true }
+  { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true }
 ]
 
 begin
