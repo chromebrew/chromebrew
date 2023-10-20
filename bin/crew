@@ -625,15 +625,8 @@ def update
     system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tools"
     system 'git sparse-checkout reapply'
 
-    if CREW_TESTING == '1'
-      puts 'Updating crew from testing repository...'
-      system "git remote add testing #{CREW_TESTING_REPO} 2>/dev/null || git remote set-url testing #{CREW_TESTING_REPO}"
-      system "git fetch testing #{CREW_TESTING_BRANCH}"
-      system "git reset --hard testing/#{CREW_TESTING_BRANCH}"
-    else
-      system 'git fetch origin master'
-      system 'git reset --hard origin/master'
-    end
+    system "git fetch #{CREW_REPO} #{CREW_BRANCH}"
+    system 'git reset --hard FETCH_HEAD'
   end
 
   puts 'Package lists, crew, and library updated.'
