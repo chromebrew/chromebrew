@@ -42,7 +42,7 @@ pkg_update_arr = [
 begin
   gem 'active_support'
 rescue Gem::LoadError
-  puts ' -> install gem activesupport'
+  puts ' -> installing gem activesupport'.orange
   Gem.install('activesupport')
   gem 'activesupport'
 end
@@ -50,7 +50,8 @@ require 'active_support/core_ext/object/blank'
 
 pkg_update_arr.each do |pkg|
   next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
-  p "#{pkg[:pkg_name]} found in package fixup list"
-  p "Rename #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}" unless pkg[:pkg_rename].blank?
-  p "#{pkg[:pkg_name]} is deprecated and should be removed." if pkg[:pkg_deprecated]
+
+  puts "#{pkg[:pkg_name]} found in package fixup list".orange
+  puts "Rename #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}".orange unless pkg[:pkg_rename].blank?
+  puts "#{pkg[:pkg_name]} is deprecated and should be removed.".orange if pkg[:pkg_deprecated]
 end
