@@ -1,5 +1,5 @@
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.36.4'
+CREW_VERSION = '1.36.5'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -150,18 +150,9 @@ CREW_NOT_LINKS = !ENV['CREW_NOT_LINKS'].to_s.empty? # or use no_links
 CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
 
-# Set testing constants from environment variables
-CREW_TESTING_REPO = ENV.fetch('CREW_TESTING_REPO', nil)
-if CREW_TESTING_REPO
-  CREW_TESTING_ACCOUNT = if CREW_TESTING_REPO.downcase.include?('https://github.com')
-                           CREW_TESTING_REPO.to_s.downcase.gsub('https://github.com/', '').gsub('/chromebrew.git', '')
-                         else
-                           ENV.fetch('CREW_TESTING_ACCOUNT', nil)
-                         end
-end
-CREW_TESTING_BRANCH = ENV.fetch('CREW_TESTING_BRANCH', nil)
-
-CREW_TESTING = CREW_TESTING_BRANCH.to_s.empty? || CREW_TESTING_REPO.to_s.empty? ? '0' : ENV.fetch('CREW_TESTING', nil)
+# Allow git constants to be set from environment variables (for testing)
+CREW_REPO = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
+CREW_BRANCH = ENV.fetch('CREW_BRANCH', 'master')
 
 USER = `whoami`.chomp
 
