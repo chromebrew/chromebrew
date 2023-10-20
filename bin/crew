@@ -619,9 +619,6 @@ end
 def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkgName
 
-  # remove deprecated directory
-  FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
-
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
@@ -640,6 +637,9 @@ def update
   end
 
   puts 'Package lists, crew, and library updated.'
+
+  # Do any fixups necessary after crew has updated from git.
+  load "#{CREW_LOCAL_REPO_ROOT}/lib/fixup.rb"
 
   # update compatible packages
   generate_compatible

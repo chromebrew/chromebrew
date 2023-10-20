@@ -294,12 +294,12 @@ echo_out "Set up and synchronize local package repo..."
 
 # Set LD_LIBRARY_PATH so crew doesn't break on i686 and
 # the mandb postinstall doesn't fail.
-echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib:$CREW_PREFIX/lib$LIB_SUFFIX" >> "$CREW_PREFIX"/etc/env.d/00-library
-export LD_LIBRARY_PATH=$CREW_PREFIX/lib:$CREW_PREFIX/lib$LIB_SUFFIX
-
+if [[ "$ARCH" == "i686" ]]; then
+  echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib:/lib" >> "$CREW_PREFIX"/etc/env.d/00-library
+  export LD_LIBRARY_PATH=$CREW_PREFIX/lib:/lib
+fi
 # Add the CREW_PREFIX bin and musl bin directories to PATH.
-echo "PATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:$PATH" >> "$CREW_PREFIX"/etc/env.d/path
-export PATH=$CREW_PREFIX/bin:$CREW_PREFIX/share/musl/bin:$PATH
+echo -e "## Inserted by Chromebrew's install.sh\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" > "$CREW_PREFIX"/etc/env.d/path
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
