@@ -298,7 +298,7 @@ echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib:$CREW_PREFIX/lib$LIB_SUFFIX" >> "$CREW_PR
 export LD_LIBRARY_PATH=$CREW_PREFIX/lib:$CREW_PREFIX/lib$LIB_SUFFIX
 
 # Add the CREW_PREFIX bin and musl bin directories to PATH.
-echo -e "## Inserted by Chromebrew's install.sh\n\n## Version 1.0\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" >> "$CREW_PREFIX"/etc/env.d/path
+echo -e "## Inserted by Chromebrew's install.sh\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" > "$CREW_PREFIX"/etc/env.d/path
 export PATH=$CREW_PREFIX/bin:$CREW_PREFIX/share/musl/bin:$PATH
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
