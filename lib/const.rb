@@ -100,11 +100,6 @@ CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
 CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
-# GitHub constants.
-CREW_GITHUB_ACCOUNT = 'chromebrew'
-CREW_GITHUB_BRANCH = 'master'
-CREW_GITHUB_REPO = 'https://github.com/chromebrew/chromebrew.git'
-
 # Local constants for contributors.
 repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
 if repo_root.empty?
