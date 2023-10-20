@@ -64,16 +64,14 @@ class Qt5_webengine < Package
   def self.patch
     # Patches from lfs: https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html
     downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-build_fixes-1.patch',
-'a9e248414302b6fbd19e0404142e5ad082fb4a45eaf6f96d1b847a7b4bf8e1bd'
+               'a9e248414302b6fbd19e0404142e5ad082fb4a45eaf6f96d1b847a7b4bf8e1bd'
     system 'patch -Np1 -i qtwebengine-5.15.15-build_fixes-1.patch'
     downloader 'https://www.linuxfromscratch.org/patches/blfs/svn/qtwebengine-5.15.15-ffmpeg5_fixes-1.patch',
-'9f45c97d2aeb99ba8eea90cdd3b380c03218ca4d4c88e356f622e094971dd34a'
+               '9f45c97d2aeb99ba8eea90cdd3b380c03218ca4d4c88e356f622e094971dd34a'
     system 'patch -Np1 -i qtwebengine-5.15.15-ffmpeg5_fixes-1.patch'
     # Further Python3 patches
-    system "sed -i 's,/usr/bin/python,#{CREW_PREFIX}/bin/python3,g' src/3rdparty/chromium/build/print_python_deps.py"
     system "sed -i 's,qtwebengine_checkForPython2,qtwebengine_checkForPython,g' src/buildtools/config/support.pri"
     system "sed -i 's,webengine-python2,webengine-python,g' src/buildtools/config/support.pri"
-    system "sed -i 's,Python version 2 (2.7.5 or later),Python,g' src/buildtools/config/support.pri"
     FileUtils.mkdir_p '.git'
     FileUtils.mkdir_p 'src/3rdparty/chromium/.git'
     system "sed -e '/^MODULE_VERSION/s/5.*/#{@qt_basever}/' -i .qmake.conf"
@@ -82,6 +80,8 @@ class Qt5_webengine < Package
     system "sed -e '/link_pulseaudio/s/false/true/' -i src/3rdparty/chromium/media/media_options.gni"
     system 'sed -e \'s/\\^(?i)/(?i)^/\' -i src/3rdparty/chromium/tools/metrics/ukm/ukm_model.py'
     system "sed \"s,mode = 'rU,mode = 'r,g\" -i src/3rdparty/chromium/tools/grit/grit/util.py"
+    # Fix issue with system re2 causing build to fail: https://bugs.gentoo.org/913923
+    system "sed -i 's/use_system_re2=true/use_system_re2=false/g' src/core/config/linux.pri"
   end
 
   def self.prebuild
@@ -96,7 +96,7 @@ class Qt5_webengine < Package
 
   def self.build
     unless File.file?('Makefile')
-      system "qmake -d -- \
+      system "qmake -- \
       -proprietary-codecs \
       -system-ffmpeg \
       -webp \
