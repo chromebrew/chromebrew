@@ -3,7 +3,7 @@ require 'package'
 class Qtcreator < Package
   description 'Qt is a comprehensive cross-platform framework and toolkit that helps you create and build native applications and user interfaces for all the screens of your end user.'
   homepage 'https://info.qt.io/download-qt-for-application-development'
-  version '4.6.1'
+  version '11.0.3'
   license 'unknown' # Can't find license
   compatibility 'x86_64'
   source_url 'SKIP'
