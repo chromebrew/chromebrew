@@ -300,7 +300,6 @@ if [[ "$ARCH" == "i686" ]]; then
 fi
 # Add the CREW_PREFIX bin and musl bin directories to PATH.
 echo -e "## Inserted by Chromebrew's install.sh\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" > "$CREW_PREFIX"/etc/env.d/path
-export PATH=$CREW_PREFIX/bin:$CREW_PREFIX/share/musl/bin:$PATH
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
