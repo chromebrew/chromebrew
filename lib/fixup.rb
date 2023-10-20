@@ -4,7 +4,7 @@
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
 
 # Fix missing $PATH not added in install.sh
-unless system("grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path")
+if !system("grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path") || Gem::Version.new(CREW_VERSION.to_s) < Gem::Version.new('1.36.4')
   puts 'Fixing path env.d file...'.orange
   puts "Please run 'source ~/.bashrc'".lightblue
   File.write "#{CREW_PREFIX}/etc/env.d/path", <<~ENVD_PATH_EOF
