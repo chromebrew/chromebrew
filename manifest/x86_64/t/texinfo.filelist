@@ -47,10 +47,12 @@
 /usr/local/share/locale/it/LC_MESSAGES/texinfo_document.mo
 /usr/local/share/locale/it/LC_MESSAGES/texinfo.mo
 /usr/local/share/locale/ja/LC_MESSAGES/texinfo.mo
+/usr/local/share/locale/ka/LC_MESSAGES/texinfo.mo
 /usr/local/share/locale/nb/LC_MESSAGES/texinfo.mo
 /usr/local/share/locale/nl/LC_MESSAGES/texinfo_document.mo
 /usr/local/share/locale/nl/LC_MESSAGES/texinfo.mo
 /usr/local/share/locale/no.us-ascii/LC_MESSAGES/texinfo_document.mo
+/usr/local/share/locale/pl.iso-8859-2/LC_MESSAGES/texinfo_document.mo
 /usr/local/share/locale/pl/LC_MESSAGES/texinfo_document.mo
 /usr/local/share/locale/pl/LC_MESSAGES/texinfo.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/texinfo_document.mo
@@ -89,13 +91,13 @@
 /usr/local/share/man/man5/texinfo.5.zst
 /usr/local/share/texinfo/DebugTexinfo/DebugTree.pm
 /usr/local/share/texinfo/ext/epub3.pm
+/usr/local/share/texinfo/ext/highlight_syntax.pm
 /usr/local/share/texinfo/ext/latex2html.pm
 /usr/local/share/texinfo/ext/tex4ht.pm
 /usr/local/share/texinfo/htmlxref.cnf
 /usr/local/share/texinfo/init/book.pm
 /usr/local/share/texinfo/init/chm.pm
 /usr/local/share/texinfo/init/documentation_examples.pm
-/usr/local/share/texinfo/init/highlight_syntax.pm
 /usr/local/share/texinfo/init/html32.pm
 /usr/local/share/texinfo/js/info.css
 /usr/local/share/texinfo/js/info.js
