@@ -297,7 +297,7 @@ echo_out "Set up and synchronize local package repo..."
 if [[ "$ARCH" == "i686" ]]; then
   echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib:/lib" >> "$CREW_PREFIX"/etc/env.d/00-library
 fi
-export LD_LIBRARY_PATH=$CREW_PREFIX/lib:$CREW_PREFIX/lib$LIB_SUFFIX
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
 
 # Add the CREW_PREFIX bin and musl bin directories to PATH.
 echo -e "## Inserted by Chromebrew's install.sh\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" > "$CREW_PREFIX"/etc/env.d/path
