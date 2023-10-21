@@ -65,7 +65,7 @@ class Qtcreator < Package
     FileUtils.rm_f "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    FileUtils.cp_r "#{CREW_PREFIX}/share/", "#{CREW_DEST_PREFIX}/share"
+    FileUtils.cp_r "#{CREW_PREFIX}/share/qt", "#{CREW_DEST_PREFIX}/share"
     FileUtils.ln_s "#{CREW_PREFIX}/share/qt/Tools/QtCreator/bin/qtcreator", "#{CREW_DEST_PREFIX}/bin/qtcreator"
   end
 end
