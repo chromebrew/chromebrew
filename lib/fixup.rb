@@ -38,14 +38,14 @@ pkg_update_arr = [
   { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true }
 ]
 
-begin
-  gem 'active_support'
-rescue Gem::LoadError
-  puts ' -> installing gem activesupport'.orange
-  Gem.install('activesupport')
-  gem 'activesupport'
-end
-require 'active_support/core_ext/object/blank'
+#begin
+  #gem 'active_support'
+#rescue Gem::LoadError
+  #puts ' -> installing gem activesupport'.orange
+  #Gem.install('activesupport')
+  #gem 'activesupport'
+#end
+#require 'active_support/core_ext/object/blank'
 
 pkg_update_arr.each do |pkg|
   next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
@@ -53,7 +53,7 @@ pkg_update_arr.each do |pkg|
   puts "#{pkg[:pkg_name]} found in package fixup list".orange
 
   # Package rename.
-  unless pkg[:pkg_rename].blank?
+  unless pkg[:pkg_rename].to_s.empty?
     puts "#{pkg[:pkg_name]} is being renamed to #{pkg[:pkg_rename]}".orange
     # maybe put this in a function? e.g.,
     # rename_pkg pkg[:pkg_name] pkg[:pkg_rename]
@@ -86,9 +86,6 @@ pkg_update_arr.each do |pkg|
       FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
       FileUtils.mv old_filelist, new_filelist
       FileUtils.mv old_directorylist, new_directorylist
-      # This following line isn't working to rename inside the data
-      # structure pulled from the json file.
-      # @device[:installed_packages].map { |x| x[:name] = pkg[:pkg_name] ? pkg[:pkg_rename] : x[:name] }
       @device[:installed_packages].map do |x|
         x[:name] = pkg[:pkg_rename] if x[:name] == pkg[:pkg_name]
         next x
@@ -111,9 +108,9 @@ pkg_update_arr.each do |pkg|
     # Reload json file.
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
     @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
-    # @renamed_pkg_version = @device[:installed_packages].find {|h| h[:name] == pkg[:pkg_rename]}[:version]
-    # @device[:installed_packages].find {|h| h[:name] == pkg[:pkg_rename]}.inspect
-    # puts "#{pkg[:pkg_rename]} version is #{@renamed_pkg_version}".orange
+    # Ok to remove backup and temporary json files.
+    FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.bak"
+    FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.new"
   end
 
   # Deprecated package deletion.

@@ -35,7 +35,7 @@ class Gtk3 < Package
   depends_on 'ghostscript' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gnome_icon_theme' # L
+  # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' => :build # Do we need this?
   depends_on 'graphite' => :build # Do we need this?
