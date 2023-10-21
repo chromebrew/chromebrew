@@ -1,23 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Librsvg < Package
+class Librsvg < Autotools
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.56.3'
+  version '2.57.0'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.3_armv7l/librsvg-2.56.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.3_armv7l/librsvg-2.56.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.56.3_x86_64/librsvg-2.56.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.57.0_armv7l/librsvg-2.57.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.57.0_armv7l/librsvg-2.57.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.57.0_x86_64/librsvg-2.57.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3f70e2fc4d8038a7de82af1123a9d3cf4e94958a438ad52c6817847322fc08a6',
-     armv7l: '3f70e2fc4d8038a7de82af1123a9d3cf4e94958a438ad52c6817847322fc08a6',
-     x86_64: '85f8aa0eb830228b1b1ea528280b72ace0c36c286487ec5897716a65db7d17c8'
+    aarch64: '59d527215f9325d2996a6118a688da958691daf5e5fdb861945d8737123ea26f',
+     armv7l: '59d527215f9325d2996a6118a688da958691daf5e5fdb861945d8737123ea26f',
+     x86_64: '8a044e13f8f92706851ac7fd6268116ca329c81ab340a4bcaff993560e5060e2'
   })
 
   depends_on 'cairo' # R
@@ -43,19 +43,9 @@ class Librsvg < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "mold -run ./configure \
-      #{CREW_OPTIONS} \
-      --enable-introspection=yes \
+  configure_options '--enable-introspection=yes \
       --enable-vala=yes \
-      --enable-pixbuf-loader"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+      --enable-pixbuf-loader'
 
   def self.postinstall
     return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
