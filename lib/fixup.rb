@@ -54,7 +54,7 @@ pkg_update_arr.each do |pkg|
 
   # Package rename.
   unless pkg[:pkg_rename].blank?
-    puts "Rename #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}".orange
+    puts "#{pkg[:pkg_name]} is being renamed to #{pkg[:pkg_rename]}".orange
     # maybe put this in a function? e.g.,
     # rename_pkg pkg[:pkg_name] pkg[:pkg_rename]
     old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
@@ -63,7 +63,7 @@ pkg_update_arr.each do |pkg|
     new_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.directorylist")
     # Handle case of new package already installed.
     if @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
-      puts "Renamed #{pkg[:pkg_rename]} already installed!".lightblue
+      puts "Renamed #{pkg[:pkg_rename]} is already installed. Deleting old package (#{pkg[:pkg_rename]}) information...".lightblue
       FileUtils.rm old_filelist if File.file?(old_filelist)
       FileUtils.rm old_directorylist if File.file?(old_directorylist)
       @device[:installed_packages].delete_if { |elem| elem[:name] == pkg[:pkg_name] }
@@ -81,10 +81,31 @@ pkg_update_arr.each do |pkg|
     end
     # If new filelist or directorylist do not exist and new package is not
     # marked as installed in device.json then rename and edit device.json .
-    FileUtils.mv old_filelist, new_filelist
-    FileUtils.mv old_directorylist, new_directorylist
-    @device[:installed_packages].map { |x| x[:name] == pkg[:pkg_name] ? pkg[:pkg_rename] : x[:name] }
-    File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+    puts "Renaming #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}".lightblue
+    begin
+      FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
+      FileUtils.mv old_filelist, new_filelist
+      FileUtils.mv old_directorylist, new_directorylist
+      @device[:installed_packages].map { |x| x[:name] == pkg[:pkg_name] ? pkg[:pkg_rename] : x[:name] }
+      File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
+      @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json.new", symbolize_names: true)
+      @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+      raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
+    rescue StandardError => e
+      puts 'Restoring old filelist, directorylist, and device.json...'.lightred
+      FileUtils.mv new_filelist, old_filelist
+      FileUtils.mv new_directorylist, old_directorylist
+      FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.bak", "#{CREW_CONFIG_PATH}/device.json"
+      # Reload json file.
+      @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+      @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+    end
+    # Reload json file.
+    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+    @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+    # @renamed_pkg_version = @device[:installed_packages].find {|h| h[:name] == pkg[:pkg_rename]}[:version]
+    # @device[:installed_packages].find {|h| h[:name] == pkg[:pkg_rename]}.inspect
+    # puts "#{pkg[:pkg_rename]} version is #{@renamed_pkg_version}".orange
   end
 
   # Deprecated package deletion.
