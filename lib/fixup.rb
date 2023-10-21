@@ -86,7 +86,9 @@ pkg_update_arr.each do |pkg|
       FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
       FileUtils.mv old_filelist, new_filelist
       FileUtils.mv old_directorylist, new_directorylist
-      @device[:installed_packages].map { |x| x[:name] == pkg[:pkg_name] ? pkg[:pkg_rename] : x[:name] }
+      # This following line isn't working to rename inside the data
+      # structure pulled from the json file.
+      @device[:installed_packages].map { |x| x[:name] = pkg[:pkg_name] ? pkg[:pkg_rename] : x[:name] }
       File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
       @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json.new", symbolize_names: true)
       @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
