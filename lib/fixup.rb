@@ -51,6 +51,42 @@ pkg_update_arr.each do |pkg|
   next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
 
   puts "#{pkg[:pkg_name]} found in package fixup list".orange
-  puts "Rename #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}".orange unless pkg[:pkg_rename].blank?
+
+  # Package rename.
+  unless pkg[:pkg_rename].blank?
+    puts "Rename #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}".orange
+    # maybe put this in a function? e.g.,
+    # rename_pkg pkg[:pkg_name] pkg[:pkg_rename]
+    old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
+    new_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.filelist")
+    old_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.directorylist")
+    new_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.directorylist")
+    # Handle case of new package already installed.
+    if @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
+      puts "Renamed #{pkg[:pkg_rename]} already installed!".lightblue
+      FileUtils.rm old_filelist if File.file?(old_filelist)
+      FileUtils.rm old_directorylist if File.file?(old_directorylist)
+      @device[:installed_packages].delete_if { |elem| elem[:name] == pkg[:pkg_name] }
+      File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+      next
+    end
+    # Handle case of package needing to be replaced.
+    if File.file?(new_filelist)
+      puts "new filelist for #{pkg[:pkg_rename]} already exists!"
+      next
+    end
+    if File.file?(new_directorylist)
+      puts "new directorylist for #{pkg[:pkg_rename]} already exists!"
+      next
+    end
+    # If new filelist or directorylist do not exist and new package is not
+    # marked as installed in device.json then rename and edit device.json .
+    FileUtils.mv old_filelist, new_filelist
+    FileUtils.mv old_directorylist, new_directorylist
+    @device[:installed_packages].map { |x| x[:name] == pkg[:pkg_name] ? pkg[:pkg_rename] : x[:name] }
+    File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+  end
+
+  # Deprecated package deletion.
   puts "#{pkg[:pkg_name]} is deprecated and should be removed.".orange if pkg[:pkg_deprecated]
 end
