@@ -38,15 +38,6 @@ pkg_update_arr = [
   { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true }
 ]
 
-#begin
-  #gem 'active_support'
-#rescue Gem::LoadError
-  #puts ' -> installing gem activesupport'.orange
-  #Gem.install('activesupport')
-  #gem 'activesupport'
-#end
-#require 'active_support/core_ext/object/blank'
-
 pkg_update_arr.each do |pkg|
   next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
 
@@ -64,8 +55,8 @@ pkg_update_arr.each do |pkg|
     # Handle case of new package already installed.
     if @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
       puts "Renamed #{pkg[:pkg_rename]} is already installed. Deleting old package (#{pkg[:pkg_rename]}) information...".lightblue
-      FileUtils.rm old_filelist if File.file?(old_filelist)
-      FileUtils.rm old_directorylist if File.file?(old_directorylist)
+      FileUtils.rm_f old_filelist
+      FileUtils.rm_f old_directorylist
       @device[:installed_packages].delete_if { |elem| elem[:name] == pkg[:pkg_name] }
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
       next
@@ -115,4 +106,5 @@ pkg_update_arr.each do |pkg|
 
   # Deprecated package deletion.
   puts "#{pkg[:pkg_name]} is deprecated and should be removed.".orange if pkg[:pkg_deprecated]
+  # Ask to remove package?
 end
