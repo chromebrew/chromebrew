@@ -814,8 +814,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/kerberos/build/Release/obj.target/kerberos.node
-/usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node
-/usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/native-keymap/build/Release/keymapping.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node
