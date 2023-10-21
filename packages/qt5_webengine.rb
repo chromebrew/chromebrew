@@ -96,7 +96,7 @@ class Qt5_webengine < Package
 
   def self.build
     unless File.file?('Makefile')
-      system "qmake QMAKE_LINK=#{CREW_LINKER} -- \
+      system "qmake QMAKE_LFLAGS=-fuse-ld=#{CREW_LINKER} -- \
       -proprietary-codecs \
       -system-ffmpeg \
       -webp \

@@ -64,8 +64,8 @@ class Qtcreator < Package
     system "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run --script qt-installer-script.qs"
     FileUtils.rm_f "#{CREW_PREFIX}/tmp/qt-unified-linux-x64-4.6.1-online.run"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FIleUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-    system "cp -r #{CREW_PREFIX}/share/qt #{CREW_DEST_PREFIX}/share"
-    system "ln -s #{CREW_PREFIX}/share/qt/Tools/QtCreator/bin/qtcreator #{CREW_DEST_PREFIX}/bin/qtcreator"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
+    FileUtils.cp_r "#{CREW_PREFIX}/share/", "#{CREW_DEST_PREFIX}/share"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/qt/Tools/QtCreator/bin/qtcreator", "#{CREW_DEST_PREFIX}/bin/qtcreator"
   end
 end
