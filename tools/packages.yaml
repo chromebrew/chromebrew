@@ -8911,6 +8911,11 @@ url: https://github.com/Airblader/xcb-util-xrm/releases
 activity: none
 ---
 kind: url
+name: xclip
+url: https://github.com/astrand/xclip/releases
+activity: none
+---
+kind: url
 name: xclock
 url: https://www.x.org/pub/individual/app/
 activity: low
