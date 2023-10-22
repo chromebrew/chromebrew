@@ -2,7 +2,7 @@ name: Generate Repology JSON
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Every Sunday at midnight
+    - cron: '0 0 * * *'  # Every day at midnight
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -11,7 +11,7 @@ jobs:
       - name: Generate JSON
         run: |
             sudo docker pull satmandu/crewbuild:amd64
-            sudo docker run -t -v $(pwd):/usr/local/json satmandu/crewbuild:amd64 /bin/bash -c "
+            sudo docker run -t -v $(pwd):/usr/local/json satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
             crew update
             ruby ../tools/json.rb
             cp repology.json /usr/local/json"
