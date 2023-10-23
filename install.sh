@@ -293,11 +293,10 @@ ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 echo_out "Set up and synchronize local package repo..."
 
 # Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
-# x86_64, and the mandb postinstall doesn't fail.
-if [[ "$ARCH" == "i686" ]]; then
-  echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib:/lib" >> "$CREW_PREFIX"/etc/env.d/00-library
-fi
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
+# x86_64, and the mandb postinstall doesn't fail in newer arm
+# containers.
+echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
+export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
 
 # Add the CREW_PREFIX bin and musl bin directories to PATH.
 echo -e "## Inserted by Chromebrew's install.sh\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" > "$CREW_PREFIX"/etc/env.d/path
@@ -326,6 +325,9 @@ else
   echo_info "Synchronizng local package repo..."
 
   cd "${CREW_LIB_PATH}"
+
+  # Make the git default branch error messages go away.
+  git config --global init.defaultBranch main
 
   # Setup the folder with git information.
   git init
