@@ -1660,7 +1660,11 @@ def remove(pkgName)
 
   # Perform any operations required prior to package removal.
   search pkgName, true
-  @pkg.preremove
+  begin
+    @pkg.preremove unless @in_fixup
+  rescue NoMethodError
+    puts 'Pre-Remove not available for this package.'.orange
+  end
 
   # Preserve CREW_ESSENTIAL_FILES and make sure they are real files
   # and not symlinks, because preserving symlinked libraries does not

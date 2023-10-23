@@ -106,5 +106,14 @@ pkg_update_arr.each do |pkg|
 
   # Deprecated package deletion.
   puts "#{pkg[:pkg_name]} is deprecated and should be removed.".orange if pkg[:pkg_deprecated]
-  # Ask to remove package?
+  print "\nWould you like to remove deprecated package #{pkg[:pkg_name]}? [y/N] "
+  case $stdin.gets.chomp.downcase
+  when 'y', 'yes'
+    @in_fixup = true
+    remove pkg[:pkg_name]
+    @in_fixup = false
+    puts "#{pkg[:pkg_name]} removed.".lightgreen
+  else
+    puts "#{pkg[:pkg_name]} not removed.".lightblue
+  end
 end
