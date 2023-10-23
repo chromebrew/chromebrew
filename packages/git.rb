@@ -23,12 +23,13 @@ class Git < Package
   })
 
   depends_on 'ca_certificates' => :build
-  depends_on 'curl'
-  depends_on 'libunistring'
-  depends_on 'pcre2'
-  depends_on 'zlibpkg'
+  depends_on 'curl' # R
   depends_on 'expat' # R
   depends_on 'glibc' # R
+  depends_on 'libunistring' # R
+  depends_on 'pcre2' # R
+  depends_on 'zlibpkg' # R
+
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
