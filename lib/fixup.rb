@@ -41,8 +41,7 @@ pkg_update_arr = [
 pkg_update_arr.each do |pkg|
   next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
 
-  puts
-  puts "#{pkg[:pkg_name].capitalize} found in package fixup list".lightcyan
+  puts "\n#{pkg[:pkg_name].capitalize} found in package fixup list".lightcyan
 
   # Package rename.
   unless pkg[:pkg_rename].to_s.empty?
