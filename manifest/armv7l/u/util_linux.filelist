@@ -108,11 +108,11 @@
 /usr/local/lib/pkgconfig/mount.pc
 /usr/local/lib/pkgconfig/smartcols.pc
 /usr/local/lib/pkgconfig/uuid.pc
-/usr/local/lib/python3.11/site-packages/libmount/__init__.py
-/usr/local/lib/python3.11/site-packages/libmount/__pycache__/__init__.cpython-311.opt-1.pyc
-/usr/local/lib/python3.11/site-packages/libmount/__pycache__/__init__.cpython-311.pyc
-/usr/local/lib/python3.11/site-packages/libmount/pylibmount.la
-/usr/local/lib/python3.11/site-packages/libmount/pylibmount.so
+/usr/local/lib/python3.12/site-packages/libmount/__init__.py
+/usr/local/lib/python3.12/site-packages/libmount/__pycache__/__init__.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/site-packages/libmount/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/libmount/pylibmount.la
+/usr/local/lib/python3.12/site-packages/libmount/pylibmount.so
 /usr/local/sbin/addpart
 /usr/local/sbin/agetty
 /usr/local/sbin/blkdiscard
@@ -399,6 +399,8 @@
 /usr/local/share/man/man8/hwclock.8.zst
 /usr/local/share/man/man8/isosize.8.zst
 /usr/local/share/man/man8/ldattach.8.zst
+/usr/local/share/man/man8/linux32.8.zst
+/usr/local/share/man/man8/linux64.8.zst
 /usr/local/share/man/man8/losetup.8.zst
 /usr/local/share/man/man8/lsblk.8.zst
 /usr/local/share/man/man8/lslocks.8.zst
@@ -425,6 +427,7 @@
 /usr/local/share/man/man8/swapon.8.zst
 /usr/local/share/man/man8/switch_root.8.zst
 /usr/local/share/man/man8/umount.8.zst
+/usr/local/share/man/man8/uname26.8.zst
 /usr/local/share/man/man8/uuidd.8.zst
 /usr/local/share/man/man8/wdctl.8.zst
 /usr/local/share/man/man8/wipefs.8.zst
