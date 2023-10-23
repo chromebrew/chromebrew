@@ -46,8 +46,8 @@ pkg_update_arr.each do |pkg|
 
   # Package rename.
   unless pkg[:pkg_rename].to_s.empty?
-    puts "#{pkg[:pkg_name].capitalize} is being renamed to #{pkg[:pkg_rename].capitalize}".orange
-    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".orange unless pkg[:comments].to_s.empty?
+    puts "#{pkg[:pkg_name].capitalize} has been renamed to #{pkg[:pkg_rename].capitalize}".lightpurple
+    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
 
     old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
     new_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.filelist")
@@ -107,8 +107,8 @@ pkg_update_arr.each do |pkg|
 
   # Deprecated package deletion.
   next if pkg[:pkg_deprecated].to_s.empty?
-  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightblue
-  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".orange unless pkg[:comments].to_s.empty?
+  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightpurple
+  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
   print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
   case $stdin.gets.chomp.downcase
   when 'y', 'yes'
