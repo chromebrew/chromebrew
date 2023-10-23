@@ -8,15 +8,19 @@ class Jellyfin_media_player < Package
   homepage 'https://github.com/jellyfin/jellyfin-media-player'
   version '1.9.1-1'
   license 'GPL'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_x86_64/jellyfin_media_player-1.9.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_x86_64/jellyfin_media_player-1.9.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '23648b053d15977a5e9e26a6c3e9c2cee544fab65786a8a553d5bec3002fd1d4'
+    aarch64: '9da834f707cb3480a2fbd172e8fb0aeb4e2df02b995e6d1fb2cdcb10212b0c67',
+     armv7l: '9da834f707cb3480a2fbd172e8fb0aeb4e2df02b995e6d1fb2cdcb10212b0c67',
+     x86_64: '23648b053d15977a5e9e26a6c3e9c2cee544fab65786a8a553d5bec3002fd1d4'
   })
 
   depends_on 'gcc_lib' # R
