@@ -3,11 +3,11 @@ require 'package'
 class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version 'v6_4_20231021'
+  version '6_4_20231021'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
-  git_hashtag 'v6_4_20231021'
+  git_hashtag  "v#{version}"
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/v6_4_20231021_armv7l/ncurses-v6_4_20231021-chromeos-armv7l.tar.zst',
