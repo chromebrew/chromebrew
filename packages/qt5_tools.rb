@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_tools < Package
+class Qt5_tools < Qmake
   description 'Qt Tools'
   homepage 'https://github.com/qt/qttools'
   version '5.15.11-38ae810'
@@ -28,13 +28,4 @@ class Qt5_tools < Package
   depends_on 'mesa' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

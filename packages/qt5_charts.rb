@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_charts < Package
+class Qt5_charts < Qmake
   description 'Qt Charts'
   homepage 'https://www.qt.io/'
   version '5.15.11-e17308d'
@@ -25,13 +25,4 @@ class Qt5_charts < Package
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_svg < Package
+class Qt5_svg < Qmake
   description 'Provides classes for displaying the contents of SVG files.'
   homepage 'https://www.qt.io/'
   version '5.15.11-7d6e373'
@@ -25,13 +25,4 @@ class Qt5_svg < Package
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
   depends_on 'zlibpkg' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

@@ -1,9 +1,9 @@
 # Adapted from Arch Linux qt5-quickcontrols PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/qt5-quickcontrols/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_quickcontrols < Package
+class Qt5_quickcontrols < Qmake
   description 'Reusable Qt Quick based UI controls to create classic desktop-style user interfaces'
   homepage 'https://www.qt.io'
   version '5.15.11-dcc9055'
@@ -28,13 +28,4 @@ class Qt5_quickcontrols < Package
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

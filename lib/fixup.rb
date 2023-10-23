@@ -92,9 +92,6 @@ pkg_update_arr.each do |pkg|
       FileUtils.mv new_filelist, old_filelist
       FileUtils.mv new_directorylist, old_directorylist
       FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.bak", "#{CREW_CONFIG_PATH}/device.json"
-      # Reload json file.
-      @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
-      @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
     end
     # Reload json file.
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)

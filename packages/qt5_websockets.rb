@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_websockets < Package
+class Qt5_websockets < Qmake
   description 'Qt Websockets'
   homepage 'https://www.qt.io/'
   version '5.15.11-d41bb9f'
@@ -24,13 +24,4 @@ class Qt5_websockets < Package
   depends_on 'glibc' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

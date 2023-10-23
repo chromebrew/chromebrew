@@ -1,9 +1,9 @@
 # Adapted from Arch Linux qt5-webchannel PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/qt5-webchannel/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_webchannel < Package
+class Qt5_webchannel < Qmake
   description 'Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients'
   homepage 'https://www.qt.io'
   version '5.15.11-f84887c'
@@ -28,13 +28,4 @@ class Qt5_webchannel < Package
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

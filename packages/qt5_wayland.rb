@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_wayland < Package
+class Qt5_wayland < Qmake
   description 'Qt Wayland'
   homepage 'https://www.qt.io/'
   version '5.15.11-4de268c'
@@ -36,13 +36,4 @@ class Qt5_wayland < Package
   depends_on 'qt5_declarative' # R
   depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

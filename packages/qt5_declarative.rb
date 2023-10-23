@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_declarative < Package
+class Qt5_declarative < Qmake
   description 'Provides QML and Quick declaratives.'
   homepage 'https://www.qt.io/'
   version '5.15.11-1b0e366'
@@ -24,13 +24,4 @@ class Qt5_declarative < Package
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end

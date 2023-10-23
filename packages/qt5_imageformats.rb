@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/qmake'
 
-class Qt5_imageformats < Package
+class Qt5_imageformats < Qmake
   description 'Qt Image Formats'
   homepage 'https://www.qt.io/'
   version '5.15.11-b22bf4d'
@@ -28,13 +28,4 @@ class Qt5_imageformats < Package
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'qt5_base' # R
-
-  def self.build
-    system 'qmake'
-    system 'make'
-  end
-
-  def self.install
-    system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-  end
 end
