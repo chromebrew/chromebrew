@@ -2,7 +2,7 @@ require 'package'
 
 class Arping < Package
   description 'ARP Ping'
-  homepage 'https://github.com/ThomasHabets/arping'
+  homepage 'https://www.habets.pp.se/synscan/programs_arping.html'
   version '2.21'
   license 'GPL-2'
   compatibility 'all'
