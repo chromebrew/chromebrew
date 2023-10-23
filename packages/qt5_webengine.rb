@@ -9,20 +9,25 @@ class Qt5_webengine < Package
   description 'Provides support for web applications using the Chromium browser project'
   homepage 'https://www.qt.io'
   version '5.15.15'
-  compatibility 'all'
   @qt_pkgver = Qt5_webengine.version.to_s.gsub(/-.*/, '')
   @qt_basever = Qt5_base.version.to_s.gsub(/-.*/, '')
   license 'LGPL3 LGPL2.1 BSD'
+  compatibility 'x86_64'
   source_url 'https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.15.tar.xz'
   source_sha256 '53b2f184c8b40bcac88b13f9f565a3d849f1ccfcc4f7344823ccc4265fb80445'
 
-  binary_url({})
-  binary_sha256({})
+  binary_url({
+    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_x86_64/qt5_webengine-5.15.15-chromeos-x86_64.tar.zst'
+  })
+  binary_sha256({
+    x86_64: '0b71f2615effd2e5c6628e3a18429d8ed06267b6d472b06c8b6e7b3e80732a74'
+  })
 
   depends_on 'alsa_lib' # R
   depends_on 'dbus' # R
   depends_on 'expat' # R
   depends_on 'ffmpeg' # R (This has to be patched for chromium.)
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'glib' => :build
@@ -38,12 +43,22 @@ class Qt5_webengine < Package
   depends_on 'libpng' # R
   depends_on 'libvpx' # R
   depends_on 'libwebp' # R
+  depends_on 'libx11' # R
+  depends_on 'libxcb' # R
   depends_on 'libxcomposite' => :build
+  depends_on 'libxcomposite' # R
+  depends_on 'libxdamage' # R
+  depends_on 'libxext' # R
+  depends_on 'libxfixes' # R
+  depends_on 'libxkbcommon' # R
   depends_on 'libxkbfile' => :build
   depends_on 'libxml2' # R
   depends_on 'libxrandr' => :build
+  depends_on 'libxrandr' # R
+  depends_on 'libxrender' # R
   depends_on 'libxslt' # R
   depends_on 'libxss' => :build
+  depends_on 'libxtst' # R
   depends_on 'minizip' # R
   depends_on 'nodebrew' => :build
   depends_on 'nss' # R
