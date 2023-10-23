@@ -105,7 +105,8 @@ pkg_update_arr.each do |pkg|
   end
 
   # Deprecated package deletion.
-  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightblue if pkg[:pkg_deprecated]
+  next if pkg[:pkg_deprecated].to_s.empty?
+  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightblue
   puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightblue unless pkg[:comments].to_s.empty?
   print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
   case $stdin.gets.chomp.downcase
