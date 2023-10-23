@@ -39,7 +39,7 @@ class Graphviz < Package
   depends_on 'libx11' # R
   depends_on 'libxrender' # R
   depends_on 'pango' # R
-  depends_on 'qtbase' unless ARCH == 'i686'
+  depends_on 'qt5_base' unless ARCH == 'i686'
   depends_on 'zlibpkg' # R
   depends_on 'ghostscript' # R
 

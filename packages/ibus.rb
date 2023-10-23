@@ -50,7 +50,7 @@ class Ibus < Package
   depends_on 'gtk2' => :build
   depends_on 'gtk3' => :build
   depends_on 'gtk4' => :build
-  depends_on 'qtbase' => :build
+  depends_on 'qt5_base' => :build
 
   def self.patch
     system "sed -i 's|/usr/bin/python|#{CREW_PREFIX}/bin/python3|' engine/gensimple.py"

@@ -21,8 +21,12 @@ class Qbittorrent < CMake
   })
 
   depends_on 'cmake' => :build
-  depends_on 'qtbase' => :build
-  depends_on 'qttools' => :build
-  depends_on 'qtsvg'
-  depends_on 'libtorrent'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libtorrent' # R
+  depends_on 'openssl' # R
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_svg' => :build
+  depends_on 'qt5_tools' => :build
+  depends_on 'zlibpkg' # R
 end

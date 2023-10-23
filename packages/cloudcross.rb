@@ -23,7 +23,7 @@ class Cloudcross < Package
   })
 
   depends_on 'curl'
-  depends_on 'qtbase' => :build
+  depends_on 'qt5_base' => :build
 
   def self.build
     dirs = %w[ccross-app ccross-curl-executor]
