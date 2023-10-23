@@ -1660,11 +1660,7 @@ def remove(pkgName)
 
   # Perform any operations required prior to package removal.
   search pkgName, true
-  begin
-    @pkg.preremove unless @in_fixup
-  rescue NoMethodError
-    puts 'Pre-Remove not available for this package.'.orange
-  end
+  @pkg.preremove unless @in_fixup
 
   # Preserve CREW_ESSENTIAL_FILES and make sure they are real files
   # and not symlinks, because preserving symlinked libraries does not
@@ -1679,7 +1675,7 @@ def remove(pkgName)
     end
   end
 
-  conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+  conflicts = determine_conflicts(Dir.pwd, pkgName)
 
   # if the filelist exists, remove the files and directories installed by the package
   if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
@@ -1727,7 +1723,7 @@ def remove(pkgName)
   File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
 
   search pkgName, true
-  @pkg.remove
+  @pkg.remove unless @in_fixup
 
   puts "#{pkgName.capitalize} removed!".lightgreen
 end

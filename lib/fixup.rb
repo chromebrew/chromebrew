@@ -106,14 +106,23 @@ pkg_update_arr.each do |pkg|
 
   # Deprecated package deletion.
   puts "#{pkg[:pkg_name]} is deprecated and should be removed.".orange if pkg[:pkg_deprecated]
-  print "\nWould you like to remove deprecated package #{pkg[:pkg_name]}? [y/N] "
-  case $stdin.gets.chomp.downcase
-  when 'y', 'yes'
-    @in_fixup = true
-    remove pkg[:pkg_name]
-    @in_fixup = false
-    puts "#{pkg[:pkg_name]} removed.".lightgreen
+  puts "#{pkg[:pkg_name]}: #{pkg[:comments]}".orange unless pkg[:comments].to_s.empty?
+  if Gem::Version.new(CREW_VERSION.to_s) < Gem::Version.new('1.36.5')
+    puts "Please rerun 'crew update' to allow removal of #{pkg[:pkg_name]}".orange
   else
-    puts "#{pkg[:pkg_name]} not removed.".lightblue
+    print "\nWould you like to remove deprecated package #{pkg[:pkg_name]}? [y/N] "
+    case $stdin.gets.chomp.downcase
+    when 'y', 'yes'
+      @in_fixup = true
+      begin
+        remove pkg[:pkg_name]
+      rescue NoMethodError
+        puts "Please rerun 'crew update' to allow removal of #{pkg[:pkg_name]}".orange
+        puts "#{pkg[:pkg_name]} not removed.".lightblue
+      end
+      @in_fixup = false
+    else
+      puts "#{pkg[:pkg_name]} not removed.".lightblue
+    end
   end
 end
