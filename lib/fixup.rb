@@ -35,17 +35,17 @@ pkg_update_arr = [
   { pkg_name: 'qtwebglplugin', pkg_rename: 'qt5_webglplugin', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer qt versions." }
+  { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer Qt versions." }
 ]
 
 pkg_update_arr.each do |pkg|
   next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
 
-  puts "#{pkg[:pkg_name]} found in package fixup list".orange
+  puts "#{pkg[:pkg_name].capitalize} found in package fixup list".lightgreen
 
   # Package rename.
   unless pkg[:pkg_rename].to_s.empty?
-    puts "#{pkg[:pkg_name]} is being renamed to #{pkg[:pkg_rename]}".orange
+    puts "#{pkg[:pkg_name].capitalize} is being renamed to #{pkg[:pkg_rename].capitalize}".orange
     # maybe put this in a function? e.g.,
     # rename_pkg pkg[:pkg_name] pkg[:pkg_rename]
     old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
@@ -54,7 +54,7 @@ pkg_update_arr.each do |pkg|
     new_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.directorylist")
     # Handle case of new package already installed.
     if @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
-      puts "Renamed #{pkg[:pkg_rename]} is already installed. Deleting old package (#{pkg[:pkg_rename]}) information...".lightblue
+      puts "Renamed #{pkg[:pkg_rename].capitalize} is already installed. Deleting old package (#{pkg[:pkg_rename].capitalize}) information...".lightblue
       FileUtils.rm_f old_filelist
       FileUtils.rm_f old_directorylist
       @device[:installed_packages].delete_if { |elem| elem[:name] == pkg[:pkg_name] }
@@ -63,16 +63,16 @@ pkg_update_arr.each do |pkg|
     end
     # Handle case of package needing to be replaced.
     if File.file?(new_filelist)
-      puts "new filelist for #{pkg[:pkg_rename]} already exists!"
+      puts "new filelist for #{pkg[:pkg_rename].capitalize} already exists!"
       next
     end
     if File.file?(new_directorylist)
-      puts "new directorylist for #{pkg[:pkg_rename]} already exists!"
+      puts "new directorylist for #{pkg[:pkg_rename].capitalize} already exists!"
       next
     end
     # If new filelist or directorylist do not exist and new package is not
     # marked as installed in device.json then rename and edit device.json .
-    puts "Renaming #{pkg[:pkg_name]} to #{pkg[:pkg_rename]}".lightblue
+    puts "Renaming #{pkg[:pkg_name].capitalize} to #{pkg[:pkg_rename].capitalize}".lightblue
     begin
       FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
       FileUtils.mv old_filelist, new_filelist
@@ -105,24 +105,20 @@ pkg_update_arr.each do |pkg|
   end
 
   # Deprecated package deletion.
-  puts "#{pkg[:pkg_name]} is deprecated and should be removed.".orange if pkg[:pkg_deprecated]
-  puts "#{pkg[:pkg_name]}: #{pkg[:comments]}".orange unless pkg[:comments].to_s.empty?
-  if Gem::Version.new(CREW_VERSION.to_s) < Gem::Version.new('1.36.5')
-    puts "Please rerun 'crew update' to allow removal of #{pkg[:pkg_name]}".orange
-  else
-    print "\nWould you like to remove deprecated package #{pkg[:pkg_name]}? [y/N] "
-    case $stdin.gets.chomp.downcase
-    when 'y', 'yes'
-      @in_fixup = true
-      begin
-        remove pkg[:pkg_name]
-      rescue NoMethodError
-        puts "Please rerun 'crew update' to allow removal of #{pkg[:pkg_name]}".orange
-        puts "#{pkg[:pkg_name]} not removed.".lightblue
-      end
-      @in_fixup = false
-    else
-      puts "#{pkg[:pkg_name]} not removed.".lightblue
+  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightblue if pkg[:pkg_deprecated]
+  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightblue unless pkg[:comments].to_s.empty?
+  print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
+  case $stdin.gets.chomp.downcase
+  when 'y', 'yes'
+    @in_fixup = true
+    begin
+      remove pkg[:pkg_name]
+    rescue NoMethodError # This won't work the first time crew update happens, since this requires an update to crew.
+      puts "Please rerun 'crew update' to allow for removal of #{pkg[:pkg_name].capitalize}.".orange
+      puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
     end
+    @in_fixup = false
+  else
+    puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
   end
 end
