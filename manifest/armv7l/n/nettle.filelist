@@ -7,6 +7,7 @@
 /usr/local/include/nettle/arcfour.h
 /usr/local/include/nettle/arctwo.h
 /usr/local/include/nettle/asn1.h
+/usr/local/include/nettle/balloon.h
 /usr/local/include/nettle/base16.h
 /usr/local/include/nettle/base64.h
 /usr/local/include/nettle/bignum.h
@@ -46,6 +47,8 @@
 /usr/local/include/nettle/memxor.h
 /usr/local/include/nettle/nettle-meta.h
 /usr/local/include/nettle/nettle-types.h
+/usr/local/include/nettle/nist-keywrap.h
+/usr/local/include/nettle/ocb.h
 /usr/local/include/nettle/pbkdf2.h
 /usr/local/include/nettle/pgp.h
 /usr/local/include/nettle/pkcs1.h
@@ -63,6 +66,9 @@
 /usr/local/include/nettle/sha3.h
 /usr/local/include/nettle/sha.h
 /usr/local/include/nettle/siv-cmac.h
+/usr/local/include/nettle/siv-gcm.h
+/usr/local/include/nettle/sm3.h
+/usr/local/include/nettle/sm4.h
 /usr/local/include/nettle/streebog.h
 /usr/local/include/nettle/twofish.h
 /usr/local/include/nettle/umac.h
@@ -72,11 +78,11 @@
 /usr/local/lib/libhogweed.a
 /usr/local/lib/libhogweed.so
 /usr/local/lib/libhogweed.so.6
-/usr/local/lib/libhogweed.so.6.3
+/usr/local/lib/libhogweed.so.6.7
 /usr/local/lib/libnettle.a
 /usr/local/lib/libnettle.so
 /usr/local/lib/libnettle.so.8
-/usr/local/lib/libnettle.so.8.3
+/usr/local/lib/libnettle.so.8.7
 /usr/local/lib/pkgconfig/hogweed.pc
 /usr/local/lib/pkgconfig/nettle.pc
-/usr/local/share/info/nettle.info.gz
+/usr/local/share/info/nettle.info.zst
