@@ -46,7 +46,7 @@ pkg_update_arr.each do |pkg|
   # Package rename.
   unless pkg[:pkg_rename].to_s.empty?
     puts "#{pkg[:pkg_name].capitalize} is being renamed to #{pkg[:pkg_rename].capitalize}".orange
-    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightblue unless pkg[:comments].to_s.empty?
+    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".orange unless pkg[:comments].to_s.empty?
 
     old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
     new_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.filelist")
@@ -72,7 +72,6 @@ pkg_update_arr.each do |pkg|
     end
     # If new filelist or directorylist do not exist and new package is not
     # marked as installed in device.json then rename and edit device.json .
-    puts "Renaming #{pkg[:pkg_name].capitalize} to #{pkg[:pkg_rename].capitalize}".lightblue
     begin
       FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
       FileUtils.mv old_filelist, new_filelist
@@ -87,6 +86,7 @@ pkg_update_arr.each do |pkg|
       raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
       # Ok to write working device.json
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+      puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen
     rescue StandardError => e
       puts 'Restoring old filelist, directorylist, and device.json...'.lightred
       FileUtils.mv new_filelist, old_filelist
@@ -107,7 +107,7 @@ pkg_update_arr.each do |pkg|
   # Deprecated package deletion.
   next if pkg[:pkg_deprecated].to_s.empty?
   puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightblue
-  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightblue unless pkg[:comments].to_s.empty?
+  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".orange unless pkg[:comments].to_s.empty?
   print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
   case $stdin.gets.chomp.downcase
   when 'y', 'yes'
