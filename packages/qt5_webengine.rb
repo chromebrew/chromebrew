@@ -12,15 +12,19 @@ class Qt5_webengine < Package
   @qt_pkgver = Qt5_webengine.version.to_s.gsub(/-.*/, '')
   @qt_basever = Qt5_base.version.to_s.gsub(/-.*/, '')
   license 'LGPL3 LGPL2.1 BSD'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.15.tar.xz'
   source_sha256 '53b2f184c8b40bcac88b13f9f565a3d849f1ccfcc4f7344823ccc4265fb80445'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_x86_64/qt5_webengine-5.15.15-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_armv7l/qt5_webengine-5.15.15-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_armv7l/qt5_webengine-5.15.15-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_x86_64/qt5_webengine-5.15.15-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '0b71f2615effd2e5c6628e3a18429d8ed06267b6d472b06c8b6e7b3e80732a74'
+    aarch64: '8b5cd6d79fdbc00d8eb9bc2b389814f979b487865192122d9369056dc431e7e7',
+     armv7l: '8b5cd6d79fdbc00d8eb9bc2b389814f979b487865192122d9369056dc431e7e7',
+     x86_64: '0b71f2615effd2e5c6628e3a18429d8ed06267b6d472b06c8b6e7b3e80732a74'
   })
 
   depends_on 'alsa_lib' # R
@@ -45,7 +49,6 @@ class Qt5_webengine < Package
   depends_on 'libwebp' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
-  depends_on 'libxcomposite' => :build
   depends_on 'libxcomposite' # R
   depends_on 'libxdamage' # R
   depends_on 'libxext' # R
@@ -53,7 +56,6 @@ class Qt5_webengine < Package
   depends_on 'libxkbcommon' # R
   depends_on 'libxkbfile' => :build
   depends_on 'libxml2' # R
-  depends_on 'libxrandr' => :build
   depends_on 'libxrandr' # R
   depends_on 'libxrender' # R
   depends_on 'libxslt' # R
