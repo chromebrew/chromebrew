@@ -3,23 +3,23 @@ require 'package'
 class Ncurses < Package
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6.4-20230918'
+  version '6_4_20231021'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
-  git_hashtag 'v6_4_20230918'
+  git_hashtag  "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4-20230918_armv7l/ncurses-6.4-20230918-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4-20230918_armv7l/ncurses-6.4-20230918-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4-20230918_i686/ncurses-6.4-20230918-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6.4-20230918_x86_64/ncurses-6.4-20230918-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/v6_4_20231021_armv7l/ncurses-v6_4_20231021-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/v6_4_20231021_armv7l/ncurses-v6_4_20231021-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/v6_4_20231021_i686/ncurses-v6_4_20231021-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/v6_4_20231021_x86_64/ncurses-v6_4_20231021-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '40794c56e1a88fb6750ab78bdeecba24f5574b84b80e61180870a4cfd7345d12',
-     armv7l: '40794c56e1a88fb6750ab78bdeecba24f5574b84b80e61180870a4cfd7345d12',
-       i686: '20f5040f1102665a0f9f9b7781911432acbc5a88cc4e459c6bf4a02fda0d5d82',
-     x86_64: '39d022c4b62f897785491c79964273cd1b0020792412211fcf95b0860979d4f8'
+    aarch64: '4ce9f40fed6fcc727a0fb4e8d107794a4cd4149ec3f6e779ef42fe9ca6e8a801',
+     armv7l: '4ce9f40fed6fcc727a0fb4e8d107794a4cd4149ec3f6e779ef42fe9ca6e8a801',
+       i686: '2e2d67bdd306f40862f5fff598ba0f53dda905925afefe8e9ca8d9b1222c3b22',
+     x86_64: '7394f2b9be9892b60f8bff64cd311844c2f9bcae188c8a6c7534c70d85da1743'
   })
 
   depends_on 'gcc_lib' # R

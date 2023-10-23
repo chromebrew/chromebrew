@@ -141,6 +141,7 @@
 /usr/local/share/man/man3/attron.3x.zst
 /usr/local/share/man/man3/attr_set.3x.zst
 /usr/local/share/man/man3/attrset.3x.zst
+/usr/local/share/man/man3/attr_t.3x.zst
 /usr/local/share/man/man3/baudrate.3x.zst
 /usr/local/share/man/man3/baudrate_sp.3x.zst
 /usr/local/share/man/man3/BC.3x.zst
@@ -150,6 +151,7 @@
 /usr/local/share/man/man3/bkgdset.3x.zst
 /usr/local/share/man/man3/bkgrnd.3x.zst
 /usr/local/share/man/man3/bkgrndset.3x.zst
+/usr/local/share/man/man3/bool.3x.zst
 /usr/local/share/man/man3/boolcodes.3x.zst
 /usr/local/share/man/man3/boolfnames.3x.zst
 /usr/local/share/man/man3/boolnames.3x.zst
@@ -162,8 +164,10 @@
 /usr/local/share/man/man3/can_change_color_sp.3x.zst
 /usr/local/share/man/man3/cbreak.3x.zst
 /usr/local/share/man/man3/cbreak_sp.3x.zst
+/usr/local/share/man/man3/cchar_t.3x.zst
 /usr/local/share/man/man3/ceiling_panel.3x.zst
 /usr/local/share/man/man3/chgat.3x.zst
+/usr/local/share/man/man3/chtype.3x.zst
 /usr/local/share/man/man3/clear.3x.zst
 /usr/local/share/man/man3/clearok.3x.zst
 /usr/local/share/man/man3/clrtobot.3x.zst
@@ -281,6 +285,7 @@
 /usr/local/share/man/man3/erasechar_sp.3x.zst
 /usr/local/share/man/man3/erasewchar.3x.zst
 /usr/local/share/man/man3/erasewchar_sp.3x.zst
+/usr/local/share/man/man3/ERR.3x.zst
 /usr/local/share/man/man3/ESCDELAY.3x.zst
 /usr/local/share/man/man3/exit_curses.3x.zst
 /usr/local/share/man/man3/exit_terminfo.3x.zst
@@ -290,6 +295,7 @@
 /usr/local/share/man/man3/extended_pair_content_sp.3x.zst
 /usr/local/share/man/man3/extended_slk_color.3x.zst
 /usr/local/share/man/man3/extended_slk_color_sp.3x.zst
+/usr/local/share/man/man3/FALSE.3x.zst
 /usr/local/share/man/man3/field_arg.3x.zst
 /usr/local/share/man/man3/field_back.3x.zst
 /usr/local/share/man/man3/field_buffer.3x.zst
@@ -627,6 +633,8 @@
 /usr/local/share/man/man3/_nc_free_tinfo.3x.zst
 /usr/local/share/man/man3/_nc_tracebits.3x.zst
 /usr/local/share/man/man3/ncurses.3x.zst
+/usr/local/share/man/man3/NCURSES_SCREEN_CB.3x.zst
+/usr/local/share/man/man3/NCURSES_WINDOW_CB.3x.zst
 /usr/local/share/man/man3/new_field.3x.zst
 /usr/local/share/man/man3/new_fieldtype.3x.zst
 /usr/local/share/man/man3/new_form.3x.zst
@@ -664,6 +672,7 @@
 /usr/local/share/man/man3/numcodes.3x.zst
 /usr/local/share/man/man3/numfnames.3x.zst
 /usr/local/share/man/man3/numnames.3x.zst
+/usr/local/share/man/man3/OK.3x.zst
 /usr/local/share/man/man3/ospeed.3x.zst
 /usr/local/share/man/man3/overlay.3x.zst
 /usr/local/share/man/man3/overwrite.3x.zst
@@ -876,6 +885,7 @@
 /usr/local/share/man/man3/_tracedump.3x.zst
 /usr/local/share/man/man3/_tracef.3x.zst
 /usr/local/share/man/man3/_tracemouse.3x.zst
+/usr/local/share/man/man3/TRUE.3x.zst
 /usr/local/share/man/man3/ttytype.3x.zst
 /usr/local/share/man/man3/typeahead.3x.zst
 /usr/local/share/man/man3/typeahead_sp.3x.zst
@@ -976,6 +986,7 @@
 /usr/local/share/man/man3/winch.3x.zst
 /usr/local/share/man/man3/winchnstr.3x.zst
 /usr/local/share/man/man3/winchstr.3x.zst
+/usr/local/share/man/man3/WINDOW.3x.zst
 /usr/local/share/man/man3/winnstr.3x.zst
 /usr/local/share/man/man3/winnwstr.3x.zst
 /usr/local/share/man/man3/winsch.3x.zst
@@ -1196,6 +1207,7 @@
 /usr/local/share/terminfo/a/ansi80x50-mono
 /usr/local/share/terminfo/a/ansi80x60
 /usr/local/share/terminfo/a/ansi80x60-mono
+/usr/local/share/terminfo/a/ansi+apparrows
 /usr/local/share/terminfo/a/ansi+arrows
 /usr/local/share/terminfo/a/ansi-color-2-emx
 /usr/local/share/terminfo/a/ansi-color-3-emx
@@ -2597,6 +2609,7 @@
 /usr/local/share/terminfo/o/oldpc3
 /usr/local/share/terminfo/o/old-st
 /usr/local/share/terminfo/o/oldsun
+/usr/local/share/terminfo/o/oldxterm+sm+1006
 /usr/local/share/terminfo/o/omron
 /usr/local/share/terminfo/o/opennt
 /usr/local/share/terminfo/o/opennt-100

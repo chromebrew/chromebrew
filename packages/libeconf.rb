@@ -1,43 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libeconf < Package
+class Libeconf < Meson
   description 'Enhanced config file parser, which merges config files placed in several locations into one.'
   homepage 'https://github.com/openSUSE/libeconf'
-  version '0.3.8'
+  version '0.5.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/openSUSE/libeconf/archive/v0.3.8.tar.gz'
-  source_sha256 'e0c265f85eef2aca400d17b88f74891ce40ed88d959ebc29f529d26121f7e8e3'
+  source_url 'https://github.com/openSUSE/libeconf/archive/v0.5.2.tar.gz'
+  source_sha256 'c9aa04b7ef1c7312a6e045184d15465db1985abb4058cc4c562fd33c9876bb34'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_armv7l/libeconf-0.3.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_armv7l/libeconf-0.3.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_i686/libeconf-0.3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.3.8_x86_64/libeconf-0.3.8-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_armv7l/libeconf-0.5.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_armv7l/libeconf-0.5.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_i686/libeconf-0.5.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_x86_64/libeconf-0.5.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '48ea1c16670d3f19656f6abbec7c3b218a67946512dc53b3707bacba4b36f6aa',
-     armv7l: '48ea1c16670d3f19656f6abbec7c3b218a67946512dc53b3707bacba4b36f6aa',
-       i686: 'c9f3090f534cbc02e7c44f02289d5c2140567cb071b309efda03ad22ebcdb7a8',
-     x86_64: '8172738483bdac025f09f95dcb3508d75c39c392900e6d7b73474d3513d15ca1'
+    aarch64: 'cf90019b34a1b8c577934a6a0e9a5c19f9a464c0384b8370a45810d466dd90d3',
+     armv7l: 'cf90019b34a1b8c577934a6a0e9a5c19f9a464c0384b8370a45810d466dd90d3',
+       i686: 'b838ed7b8184cb357ef6866ae0b144b8289bb6004c8921e1dc03a6c3bc931a08',
+     x86_64: '04e050e45547fbde8fb42303748d67d4ca0e15bd911f2326241445ff20f3b17e'
   })
 
-  def self.build
-    FileUtils.mkdir 'builddir'
-    Dir.chdir 'builddir' do
-      system "env CFLAGS='-flto=auto' CXXFLAGS='-flto=auto' \
-        LDFLAGS='-flto=auto' \
-        cmake -G 'Ninja' \
-        #{CREW_CMAKE_OPTIONS} .."
-    end
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.check
-    system 'ninja -C builddir check'
-  end
+  depends_on 'glibc' # R
+  depends_on 'gcc_lib' # R
 end
