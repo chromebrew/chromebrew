@@ -46,8 +46,8 @@ pkg_update_arr.each do |pkg|
   # Package rename.
   unless pkg[:pkg_rename].to_s.empty?
     puts "#{pkg[:pkg_name].capitalize} is being renamed to #{pkg[:pkg_rename].capitalize}".orange
-    # maybe put this in a function? e.g.,
-    # rename_pkg pkg[:pkg_name] pkg[:pkg_rename]
+    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightblue unless pkg[:comments].to_s.empty?
+
     old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
     new_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.filelist")
     old_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.directorylist")
