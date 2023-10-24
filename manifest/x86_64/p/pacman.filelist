@@ -11,6 +11,7 @@
 /usr/local/bin/vercmp
 /usr/local/etc/makepkg.conf
 /usr/local/etc/pacman.conf
+/usr/local/etc/pacman.d/mirrorlist
 /usr/local/include/alpm.h
 /usr/local/include/alpm_list.h
 /usr/local/lib64/libalpm.so
