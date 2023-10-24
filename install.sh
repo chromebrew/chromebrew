@@ -167,7 +167,7 @@ for package in $BOOTSTRAP_PACKAGES; do
   version=$(sed -n "${vln}s/version \(.*\)/\1/;${vln}s/^[ \t]*//;${vln}s/[ \t]*$//;${vln}s/ *#.*//p" "${package}.rb" | tr -d "'")
 
   # This is really ugly, FIXME after #7082 is merged.
-  if [[ "${package}" == "zstd" ]] || [[ "${package}" == "crew_mvdir" ]] || [[ "${package}" == "gmp" ]]; then
+  if [[ "${package}" == "zstd" ]] || [[ "${package}" == "crew_mvdir" ]]; then
     if [[ "$ARCH" == "aarch64" ]]; then
       urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_armv7l/${name}-${version}-chromeos-armv7l.tar.xz")
     else
