@@ -16,10 +16,10 @@ class Pacman < Meson
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2-1_x86_64/pacman-6.0.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '958a730cd01000d1861117ed34d2d92dc2dae97f0788c94e691807822afbda53',
-     armv7l: '958a730cd01000d1861117ed34d2d92dc2dae97f0788c94e691807822afbda53',
-       i686: '5d7fbaefbe9e12b3c78c91f0107763332fe22dbdba80477752138ca4604958f9',
-     x86_64: 'f835fbb281a6efdfb74ed6329fb0a4dc5bfaf220fc87c6d6db5c72f8e5679cba'
+    aarch64: '28d808ac53f478f07b4a7655e82a5060dbe90b5c51da50b159468d2182e5d0c4',
+     armv7l: '28d808ac53f478f07b4a7655e82a5060dbe90b5c51da50b159468d2182e5d0c4',
+       i686: 'e4a63625346999e7b5dff108a9bcabac3d3f1bcc934dc1161a070eeacf69b360',
+     x86_64: '81d800d7fb0f621fd2763a90f400a0df69a8f5972a977767bdc7738675274d4d'
   })
 
   depends_on 'asciidoc' => :build
@@ -46,15 +46,8 @@ class Pacman < Meson
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    downloader 'https://archlinux.org/mirrorlist/all/', 'SKIP', 'mirrorlist'
-    # Uncomment worldwide mirror in mirror list.
-    system "sed -i ':a;N;$!ba;s/## Worldwide\\\n#Server/## Worldwide\\\nServer/' mirrorlist"
-    FileUtils.install 'mirrorlist', "#{CREW_DEST_PREFIX}/etc/pacman.d/mirrorlist", mode: 0o644
-  end
-
-  def self.postinstall
     # Enable mirror list.
-    open("#{CREW_PREFIX}/etc/pacman.conf", 'a') do |f|
+    open("#{CREW_DEST_PREFIX}/etc/pacman.conf", 'a') do |f|
       f.puts '[core]'
       f.puts 'Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch'
       f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
@@ -64,7 +57,14 @@ class Pacman < Meson
       f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
     end
     # Figure out how to enable trusts for the gpg sigs...
-    system "sed -i '/#SigLevel/a SigLevel = TrustAll' #{CREW_PREFIX}/etc/pacman.conf"
+    system "sed -i '/#SigLevel/a SigLevel = TrustAll' #{CREW_DEST_PREFIX}/etc/pacman.conf"
+    downloader 'https://archlinux.org/mirrorlist/all/', 'SKIP', 'mirrorlist'
+    # Uncomment worldwide mirror in mirror list.
+    system "sed -i ':a;N;$!ba;s/## Worldwide\\\n#Server/## Worldwide\\\nServer/' mirrorlist"
+    FileUtils.install 'mirrorlist', "#{CREW_DEST_PREFIX}/etc/pacman.d/mirrorlist", mode: 0o644
+  end
+
+  def self.postinstall
     puts 'Updating pacman mirrorlist.'.lightblue
     downloader 'https://archlinux.org/mirrorlist/all/', 'SKIP', 'mirrorlist'
     # Uncomment worldwide mirror in mirror list.
