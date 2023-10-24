@@ -16,23 +16,32 @@ class Pacman < Meson
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pacman/6.0.2-1_x86_64/pacman-6.0.2-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f948bca6d9e75b56faabf2c4e178c62e98e44c953d8b5c6d02a96165107e16f2',
-     armv7l: 'f948bca6d9e75b56faabf2c4e178c62e98e44c953d8b5c6d02a96165107e16f2',
-       i686: '9005be863f9d80afa9af3f5dc3843cb8ba04aefdb7108da2d1a2b011e1923ed8',
-     x86_64: '7368961442770824e8753c591d1a604120b5410e61494afe31e5b10b5e0fd242'
+    aarch64: '6fbcdb729f914046f7b71b4eb9c7142805a2492f3993902165fc46120367ac86',
+     armv7l: '6fbcdb729f914046f7b71b4eb9c7142805a2492f3993902165fc46120367ac86',
+       i686: '8454c139754b140caa72cac7e64e07cff387d506a453a00fa04d16c0547fd5d7',
+     x86_64: '204720233fd56e0de7c29b90dcf3bbcad7e22fa07b9b9d1e7c5902f50e903984'
   })
 
   depends_on 'asciidoc' => :build
   depends_on 'bash' # pacman demands a bash newer than 4.0
-  depends_on 'curl'
-  depends_on 'fakeroot'
+  depends_on 'curl' # R
+  depends_on 'fakeroot' # L
   depends_on 'gcc_lib' # R
-  depends_on 'glibc'
-  depends_on 'gpgme'
-  depends_on 'libarchive'
+  depends_on 'glibc' # R
+  depends_on 'gpgme' # R
+  depends_on 'libarchive' # R
   depends_on 'openssl' # R
   depends_on 'py3_setuptools' => :build # needed for Python 3.12 compatibility
-  depends_on 'xzutils'
+  depends_on 'xzutils' # L
+
+  def self.patch
+    FileUtils.touch 'pacman.conf'
+    FileUtils.install 'pacman.conf', "#{CREW_DEST_PREFIX}/etc/pacman.conf", mode: 0o644
+    downloader 'https://archlinux.org/mirrorlist/all/', 'SKIP', 'mirrorlist'
+    # Uncomment worldwide mirror in mirror list.
+    system "sed -i ':a;N;$!ba;s/## Worldwide\\\n#Server/## Worldwide\\\nServer/' mirrorlist"
+    FileUtils.install 'mirrorlist', "#{CREW_DEST_PREFIX}/etc/pacman.d/mirrorlist", mode: 0o644
+  end
 
   meson_options "-Droot-dir=#{CREW_PREFIX} \
              -Dsysconfdir=#{CREW_PREFIX}/etc \
@@ -48,7 +57,7 @@ class Pacman < Meson
     # Enable mirror list.
     open("#{CREW_PREFIX}/etc/pacman.conf", 'a') do |f|
       f.puts '[core]'
-      f.puts "Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch"
+      f.puts 'Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch'
       f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
       f.puts '[extra]'
       f.puts "Include = #{CREW_PREFIX}/etc/pacman.d/mirrorlist"
@@ -57,17 +66,11 @@ class Pacman < Meson
     end
     # Figure out how to enable trusts for the gpg sigs...
     system "sed -i '/#SigLevel/a SigLevel = TrustAll' #{CREW_PREFIX}/etc/pacman.conf"
-    puts 'Installing pacman mirrorlist.'.lightblue
-    system 'curl -Lf https://archlinux.org/mirrorlist/all/ -o mirrorlist'
+    puts 'Updating pacman mirrorlist.'.lightblue
+    downloader 'https://archlinux.org/mirrorlist/all/', 'SKIP', 'mirrorlist'
     # Uncomment worldwide mirror in mirror list.
-    system "sed -i ':a;N;\$!ba;s/## Worldwide\\\n#Server/## Worldwide\\\nServer/' mirrorlist"
+    system "sed -i ':a;N;$!ba;s/## Worldwide\\\n#Server/## Worldwide\\\nServer/' mirrorlist"
     FileUtils.install 'mirrorlist', "#{CREW_PREFIX}/etc/pacman.d/mirrorlist", mode: 0o644
-    open("#{CREW_META_PATH}/pacman.directorylist", 'a') do |f|
-      f.puts "#{CREW_PREFIX}/etc/pacman.d"
-    end
-    open("#{CREW_META_PATH}/pacman.filelist", 'a') do |f|
-      f.puts "#{CREW_PREFIX}/etc/pacman.d/mirrorlist"
-    end
-    puts "Please run: sudo pacman-key --init ; sudo pacman -Syu".orange
+    puts 'Please run: sudo pacman-key --init ; sudo pacman -Syu'.orange
   end
 end
