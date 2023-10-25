@@ -24,7 +24,7 @@ class Crew_sudo < Package
     FileUtils.ln_s "#{path}/crew-sudo", "#{bindir}/sudo"
     FileUtils.ln_s "#{path}/crew-sudo", "#{bindir}/sudod"
 
-    FileUtils.cp 'autostart/crew-sudo.sh', envdir
+    FileUtils.cp 'autostart/crew-sudo.sh', "#{envdir}/crew_sudo"
   end
 
   def self.postinstall
