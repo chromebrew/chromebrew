@@ -10,6 +10,8 @@ class Crew_sudo < Package
   source_url 'https://github.com/supechicken/crew-sudo.git'
   git_hashtag 'v1.0'
 
+  no_compile_needed
+
   def self.install
     bindir = File.join(CREW_DEST_PREFIX, 'bin')
     envdir = File.join(CREW_DEST_PREFIX, 'etc/env.d')
