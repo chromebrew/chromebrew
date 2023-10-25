@@ -17,7 +17,7 @@ class Crew_sudo < Package
     envdir = File.join(CREW_DEST_PREFIX, 'etc/env.d')
     path   = File.join(CREW_PREFIX, 'lib/crew-sudo')
 
-    FileUtils.mkdir_p [bindir, File.join(CREW_DEST_DIR, path)]
+    FileUtils.mkdir_p [bindir, envdir, File.join(CREW_DEST_DIR, path)]
     FileUtils.cp_r Dir['*'], File.join(CREW_DEST_DIR, path)
 
     FileUtils.ln_s "#{path}/crew-sudo", "#{bindir}/crew-sudo"
