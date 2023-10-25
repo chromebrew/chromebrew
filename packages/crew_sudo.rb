@@ -30,7 +30,7 @@ class Crew_sudo < Package
   def self.postinstall
     warn <<~EOT.lightblue
 
-      In order to make sudo works properly, the crew-sudo daemon need to
+      In order to make sudo work properly, the crew-sudo daemon needs to
       start in the VT-2 shell every boot by:
 
         - Press Ctrl + Alt + -> to enter VT-2 shell
