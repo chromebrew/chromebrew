@@ -1,6 +1,6 @@
 require 'package'
 
-class Agrind < Package
+class Angle_grinder < Package
   description 'Slice and dice logs on the command line'
   homepage 'https://github.com/rcoh/angle-grinder'
   version '0.19.2'
