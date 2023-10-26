@@ -22,7 +22,7 @@ class Biew < Package
      x86_64: '140bc619e0495b7bbec4b3ca934ddb0e12cb46b793b27197dd677b73d4819ddd'
   })
 
-  depends_on 'apriconv'
+  depends_on 'apr_iconv'
   depends_on 'ncurses'
   depends_on 'slang'
 
