@@ -1,6 +1,6 @@
 require 'package'
 
-class Apriconv < Package
+class Apr_iconv < Package
   description 'a portable implementation of the iconv() library'
   homepage 'http://apr.apache.org/'
   version '1.2.2'

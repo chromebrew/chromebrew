@@ -1,6 +1,6 @@
 require 'package'
 
-class Acli < Package
+class Acquia_cli < Package
   description 'Acquia CLI - The official command-line tool for interacting with the Drupal Cloud Platform and services.'
   homepage 'https://github.com/acquia/cli'
   version '2.15.1'

@@ -22,7 +22,7 @@ class Libconfuse < Package
      x86_64: '697f525ada438cb1662374dc2ec820e2dd0133b339244ced2b56da0f098036e5'
   })
 
-  depends_on 'apriconv'
+  depends_on 'apr_iconv'
   depends_on 'intltool'
 
   def self.build
