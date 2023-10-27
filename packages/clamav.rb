@@ -3,23 +3,23 @@ require 'package'
 class Clamav < Package
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.1.1'
+  version '1.2.1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://www.clamav.net/downloads/production/clamav-1.1.1.tar.gz'
   source_sha256 'a26699704bb4ddf2684e4adc1f46d5f3de9a9a8959f147970f969cc32b2f0d9e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_armv7l/clamav-1.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_armv7l/clamav-1.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_i686/clamav-1.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.1.1_x86_64/clamav-1.1.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.2.1_armv7l/clamav-1.2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.2.1_armv7l/clamav-1.2.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.2.1_i686/clamav-1.2.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clamav/1.2.1_x86_64/clamav-1.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '99ec7eed070ac95692e6dd79b3db5e5e5d81bb2d2895847e0a4e3a574d11c00f',
-     armv7l: '99ec7eed070ac95692e6dd79b3db5e5e5d81bb2d2895847e0a4e3a574d11c00f',
-       i686: 'a8a01408181b94d88bc3f9eb404b7b8373db229251048af6d52e1c001f22a5b2',
-     x86_64: '55a9893ae7c4fd3416c3a119c0928d0ac88bf245cdf1bf1bb1c1657b3aa1c5b0'
+    aarch64: 'afed9916e17bb13666ef97098d3128cbb535e33593814ed50e1b844cae2a054f',
+     armv7l: 'afed9916e17bb13666ef97098d3128cbb535e33593814ed50e1b844cae2a054f',
+       i686: '888742d0f5dcdb5a7b226c46f38148a66916bf5c59d9cfa893874de7e97033f4',
+     x86_64: '5bb56619e8579ec7c9f038fa39ce76f9b741652a4dbf54654c611c1f82152aee'
   })
 
   depends_on 'rust' => :build
