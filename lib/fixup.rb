@@ -130,7 +130,9 @@ end
 # const.rb is different from the git commit of the potentially updated
 # ../lib/const.rb loaded here after a git pull.
 
+# Handle case of const.rb not yet defining CREW_CONST_GIT_COMMIT.
 CREW_CONST_GIT_COMMIT = '0000' unless defined?(CREW_CONST_GIT_COMMIT)
+
 NEW_CONST_GIT_COMMIT = `git log -n1 --oneline ../lib/const.rb`.chomp.split.first
 
 unless NEW_CONST_GIT_COMMIT.to_s == CREW_CONST_GIT_COMMIT.to_s
