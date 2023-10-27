@@ -1,5 +1,8 @@
+# lib/const.rb
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.37.1'
+CREW_VERSION = '1.37.2'
+
+CREW_CONST_GIT_COMMIT = `git log -n1 --oneline ../lib/const.rb`.chomp.split.first
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp

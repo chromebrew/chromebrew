@@ -1,3 +1,4 @@
+# lib/fixup.rb
 # Add fixups to be run during crew update here.
 
 # remove deprecated directory
@@ -36,10 +37,10 @@ pkg_update_arr = [
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer Qt versions." },
-  { pkg_name: 'acli', pkg_rename: 'acquia_cli', pkg_deprecated: nil, comments: "Renamed to better match upstream." },
-  { pkg_name: 'agrind', pkg_rename: 'angle_grinder', pkg_deprecated: nil, comments: "Renamed to better match upstream." },
-  { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', pkg_deprecated: nil, comments: "Renamed to better match upstream." },
-  { pkg_name: 'aprutil', pkg_rename: 'apr_util', pkg_deprecated: nil, comments: "Renamed to better match upstream." }
+  { pkg_name: 'acli', pkg_rename: 'acquia_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'agrind', pkg_rename: 'angle_grinder', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'aprutil', pkg_rename: 'apr_util', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
 ]
 
 pkg_update_arr.each do |pkg|
@@ -124,3 +125,17 @@ pkg_update_arr.each do |pkg|
     puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
   end
 end
+
+# Restart crew update if the git commit of ../lib/const.rb loaded in 
+# const.rb is different from the git commit of the potentially updated
+# ../lib/const.rb loaded here after a git pull.
+
+CREW_CONST_GIT_COMMIT = '0000' unless defined?(CREW_CONST_GIT_COMMIT)
+NEW_CONST_GIT_COMMIT = `git log -n1 --oneline ../lib/const.rb`.chomp.split.first
+
+unless NEW_CONST_GIT_COMMIT.to_s == CREW_CONST_GIT_COMMIT.to_s
+  puts 'Restarting crew update since there is an updated crew version'.lightcyan
+  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange
+  exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
+end
+
