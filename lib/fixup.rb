@@ -134,7 +134,7 @@ CREW_CONST_GIT_COMMIT = '0000' unless defined?(CREW_CONST_GIT_COMMIT)
 NEW_CONST_GIT_COMMIT = `git log -n1 --oneline ../lib/const.rb`.chomp.split.first
 
 unless NEW_CONST_GIT_COMMIT.to_s == CREW_CONST_GIT_COMMIT.to_s
-  puts 'Restarting crew update since there is an updated crew version'.lightcyan
+  puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if @opt_verbose
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
