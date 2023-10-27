@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.40.2'
+CREW_VERSION = '1.40.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -50,7 +50,7 @@ CREW_LIB_SUFFIX = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
 ARCH_LIB        = "lib#{CREW_LIB_SUFFIX}"
 
 # Glibc version can be found from the output of libc.so.6
-LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
+LIBC_VERSION = `#{`whereis libc.so.6`.split[1]}`[/Gentoo ([^-]+)/, 1]
 
 CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
 
