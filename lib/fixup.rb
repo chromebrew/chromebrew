@@ -126,14 +126,14 @@ pkg_update_arr.each do |pkg|
   end
 end
 
-# Restart crew update if the git commit of ../lib/const.rb loaded in 
+# Restart crew update if the git commit of ../lib/const.rb loaded in
 # const.rb is different from the git commit of the potentially updated
 # ../lib/const.rb loaded here after a git pull.
 
 # Handle case of const.rb not yet defining CREW_CONST_GIT_COMMIT.
 CREW_CONST_GIT_COMMIT = '0000' unless defined?(CREW_CONST_GIT_COMMIT)
 
-@new_const_git_commit = `git log -n1 --oneline ../lib/const.rb`.chomp.split.first
+@new_const_git_commit = `git log -n1 --oneline #{CREW_LOCAL_REPO_ROOT}/lib/const.rb`.chomp.split.first
 
 unless @new_const_git_commit.to_s == CREW_CONST_GIT_COMMIT.to_s
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
