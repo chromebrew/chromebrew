@@ -110,10 +110,11 @@ if repo_root.empty?
 end
 CREW_LOCAL_REPO_ROOT = repo_root
 
+# The following is used in fixup.rb to determine if crew update needs to
+# be run again.
 CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LOCAL_REPO_ROOT}/lib/const.rb`.chomp.split.first
 
 CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
-
 CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
                              "#{CREW_LOCAL_REPO_ROOT}/manifest"
                            else
