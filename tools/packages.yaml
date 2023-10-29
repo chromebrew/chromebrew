@@ -1355,6 +1355,11 @@ url: https://github.com/GNOME/dia/releases
 activity: none
 ---
 kind: url
+name: diff_so_fancy
+url: https://github.com/so-fancy/diff-so-fancy/releases
+activity: low
+---
+kind: url
 name: diffuse
 url: https://downloads.sourceforge.net/project/diffuse/diffuse/
 activity: low
