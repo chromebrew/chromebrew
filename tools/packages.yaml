@@ -9276,6 +9276,11 @@ url: https://www.zotero.org/download
 activity: medium
 ---
 kind: url
+name: zoxide
+url: https://github.com/ajeetdsouza/zoxide/releases
+activity: low
+---
+kind: url
 name: zsh
 url: http://sourceforge.net/projects/zsh/files/zsh
 activity: low
