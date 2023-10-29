@@ -3,32 +3,23 @@ require 'package'
 class Fzf < Package
   description 'A command-line fuzzy finder'
   homepage 'https://github.com/junegunn/fzf'
-  version '0.23.1'
+  version '0.43.0'
   license 'MIT and BSD-with-disclosure'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/junegunn/fzf/archive/0.23.1.tar.gz'
-  source_sha256 '07576e47d2d446366eb7806fd9f825a2340cc3dc7f799f1f53fe038ca9bf30f6'
-
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fzf/0.23.1_armv7l/fzf-0.23.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fzf/0.23.1_armv7l/fzf-0.23.1-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fzf/0.23.1_x86_64/fzf-0.23.1-chromeos-x86_64.tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url({
+    aarch64: 'https://github.com/junegunn/fzf/releases/download/0.43.0/fzf-0.43.0-linux_armv7.tar.gz',
+     armv7l: 'https://github.com/junegunn/fzf/releases/download/0.43.0/fzf-0.43.0-linux_armv7.tar.gz',
+     x86_64: 'https://github.com/junegunn/fzf/releases/download/0.43.0/fzf-0.43.0-linux_amd64.tar.gz'
   })
-  binary_sha256({
-    aarch64: '034490807bf8b4dc3b996a70f492b99e54ac2ed3035e60d819af0b9565ebb79a',
-     armv7l: '034490807bf8b4dc3b996a70f492b99e54ac2ed3035e60d819af0b9565ebb79a',
-     x86_64: '92b216ea7e169115704c2a1deeca5df5bd734b309038215b9e78cbad44e1402b'
+  source_sha256({
+    aarch64: '19f366b9f9032b4185f3906be183efa9c0411a3409a1db1c17f4fcc01cf8ec2e',
+     armv7l: '19f366b9f9032b4185f3906be183efa9c0411a3409a1db1c17f4fcc01cf8ec2e',
+     x86_64: 'a43b0b22649c8e7b2ff7528a5169f868273ba1f74bd5bb4beb282c4af619eb65'
   })
 
-  depends_on 'go' => :build
-
-  def self.build
-    system 'make'
-    system "sed -i 's,bin/fzf,#{CREW_DEST_PREFIX}/bin/fzf,' Makefile"
-  end
+  no_compile_needed
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system 'make install'
+    FileUtils.install 'fzf', "#{CREW_DEST_PREFIX}/bin/fzf", mode: 0o755
   end
 end
