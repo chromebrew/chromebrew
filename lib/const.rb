@@ -1,8 +1,6 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.37.2'
-
-CREW_CONST_GIT_COMMIT = `git log -n1 --oneline ../lib/const.rb`.chomp.split.first
+CREW_VERSION = '1.37.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -111,6 +109,11 @@ if repo_root.empty?
   end
 end
 CREW_LOCAL_REPO_ROOT = repo_root
+
+# The following is used in fixup.rb to determine if crew update needs to
+# be run again.
+CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LOCAL_REPO_ROOT}/lib/const.rb`.chomp.split.first
+
 CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
                              "#{CREW_LOCAL_REPO_ROOT}/manifest"
