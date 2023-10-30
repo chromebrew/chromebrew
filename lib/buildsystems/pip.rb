@@ -1,7 +1,11 @@
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
 require 'package'
 
 class Pip < Package
   def self.install
+    puts 'Checking for pip updates'.orange if @opt_verbose
+    system 'python3 -s -m pip install -U pip', exception: false
     puts "Installing #{name.gsub('py3_', '')} python module. This may take a while...".lightblue
     system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install #{name.gsub('py3_', '')}", exception: false
     @pip_files = `python3 -s -m pip show -f #{name.gsub('py3_', '')}`.chomp
