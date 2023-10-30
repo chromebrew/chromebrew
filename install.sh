@@ -106,14 +106,15 @@ fi
 
 echo_success "Welcome to Chromebrew!"
 
+# This does not work from crosh after M118.
 # Prompt user to enter the sudo password if it is set.
 # If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
-if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
-  echo_intra "Please enter the developer mode password"
-  # Reset sudo timeout.
-  sudo -k
-  sudo /bin/true
-fi
+# if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
+#  echo_intra "Please enter the developer mode password"
+#  # Reset sudo timeout.
+#  sudo -k
+#  sudo /bin/true
+#fi
 
 # Force curl to use system libraries.
 function curl () {
@@ -152,7 +153,8 @@ if [ -d "${CREW_PREFIX}" ]; then
     done
   fi
 else
-  sudo mkdir "${CREW_PREFIX}"
+  echo_error "${CREW_PREFIX} does not exist. (It should be mounted!)"
+  exit 1
 fi
 
 # This will allow things to work without sudo.
