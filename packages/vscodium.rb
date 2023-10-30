@@ -1,6 +1,6 @@
 require 'package'
 
-class Codium < Package
+class Vscodium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
   version '1.83.1.23285'

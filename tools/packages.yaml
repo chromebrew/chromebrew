@@ -1010,7 +1010,7 @@ url: http://codelobsteride.com/#download
 activity: medium
 ---
 kind: url
-name: codium
+name: vscodium
 url: https://github.com/VSCodium/vscodium/releases
 activity: high
 ---
