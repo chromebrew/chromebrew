@@ -3,25 +3,28 @@ require 'package'
 class Alsa_lib < Package
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  version '1.2.9'
+  @_ver = '1.2.10'
+  version "#{@_ver}-py3.12"
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{version}.tar.gz"
-  source_sha256 '95bbac3c04e7a722439e0c282232881e8657562ae55a90b85e58a8f5aa140ac0'
+  compatibility 'all'
+  source_url "https://github.com/alsa-project/alsa-lib/archive/v#{@_ver}.tar.gz"
+  source_sha256 'f55749847fd98274501f4691a2d847e89280c07d40a43cdac43d6443f69fc939'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.9_armv7l/alsa_lib-1.2.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.9_armv7l/alsa_lib-1.2.9-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.9_x86_64/alsa_lib-1.2.9-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_armv7l/alsa_lib-1.2.10-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_armv7l/alsa_lib-1.2.10-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_i686/alsa_lib-1.2.10-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_x86_64/alsa_lib-1.2.10-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f872050fc0f77633fe2d6860328ec13e7bc43a3c3e4de41bf8daefa68fe6f91e',
-     armv7l: 'f872050fc0f77633fe2d6860328ec13e7bc43a3c3e4de41bf8daefa68fe6f91e',
-     x86_64: '58437d5b0c77fb495e4f354c7b19c73dd98b8aff781cb7ea83e4339b36ba2b88'
+    aarch64: 'eb5d64babfaeb1ebb110207f85e01506e09313cdfce51ff1af7c2f85fa2da80f',
+     armv7l: 'eb5d64babfaeb1ebb110207f85e01506e09313cdfce51ff1af7c2f85fa2da80f',
+       i686: '9be05bc6dcc67cdb8d02ca168612f06baf429cd84e24533b99a9b0f9e0b9a907',
+     x86_64: '6faec883fafbf426ef0570e976a24e4755878ce77c997f346283258130124982'
   })
 
-  depends_on 'python3' # L
   depends_on 'glibc' # R
+  depends_on 'python3' # L
 
   def self.build
     @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp

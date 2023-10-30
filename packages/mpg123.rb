@@ -1,41 +1,28 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mpg123 < Package
+class Mpg123 < Autotools
   description 'Fast console MPEG Audio Player and decoder library.'
   homepage 'http://www.mpg123.org/'
-  version '1.29.3'
-  compatibility 'all'
+  version '1.32.3'
   license 'GPL-2 and LGPL-2.1'
-  source_url 'https://sourceforge.net/projects/mpg123/files/mpg123/1.29.3/mpg123-1.29.3.tar.bz2'
-  source_sha256 '963885d8cc77262f28b77187c7d189e32195e64244de2530b798ddf32183e847'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://sourceforge.net/projects/mpg123/files/mpg123/1.32.3/mpg123-1.32.3.tar.bz2'
+  source_sha256 '2d9913a57d4ee8f497a182c6e82582602409782a4fb481e989feebf4435867b4'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.29.3_armv7l/mpg123-1.29.3-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.29.3_armv7l/mpg123-1.29.3-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.29.3_i686/mpg123-1.29.3-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.29.3_x86_64/mpg123-1.29.3-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_armv7l/mpg123-1.32.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_armv7l/mpg123-1.32.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_x86_64/mpg123-1.32.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6fe2ab75f5e2dcaf0f5535dd303e0e8fbe216c20198089b917308695635e0fa8',
-      armv7l: '6fe2ab75f5e2dcaf0f5535dd303e0e8fbe216c20198089b917308695635e0fa8',
-        i686: '643101b7969e47a338e733856b562d3630d9ad0fff78e16e3c9bf1d6b2836293',
-      x86_64: 'b03804b351e3601fe2f779e2bff6d02e6b170afa89fd30f933c114349d00453a'
+    aarch64: '1ee23b78dee236ceea6eb9b8ea8b73121054e78fbbf3e5eec2ccda354a46a0aa',
+     armv7l: '1ee23b78dee236ceea6eb9b8ea8b73121054e78fbbf3e5eec2ccda354a46a0aa',
+     x86_64: '190163428312dc5dd4f5ac4c076753f7b43c563f1e702d6c508467d850e0cc11'
   })
 
   depends_on 'alsa_lib'
-  #  depends_on 'cras'
+  # depends_on 'cras'
+  depends_on 'glibc' # R
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-            --with-audio=alsa" # should we also use pulseaudio and/or jack?
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  configure_options '--with-audio=alsa'
 end

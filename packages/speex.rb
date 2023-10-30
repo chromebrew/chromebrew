@@ -1,43 +1,30 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Speex < Package
+class Speex < Autotools
   description 'Speex is an Open Source/Free Software patent-free audio compression format designed for speech.'
   homepage 'https://speex.org/'
-  version '1.2-870f'
+  version '1.2.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://gitlab.xiph.org/xiph/speex.git'
-  git_hashtag '870ff845b32f314aec0036641ffe18aba4916887'
+  git_hashtag "Speex-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2-870f_armv7l/speex-1.2-870f-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2-870f_armv7l/speex-1.2-870f-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2-870f_i686/speex-1.2-870f-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2-870f_x86_64/speex-1.2-870f-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_armv7l/speex-1.2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_armv7l/speex-1.2.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_i686/speex-1.2.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_x86_64/speex-1.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1f4901f04da81fe723e0c0181ad1ec5066c138c4ecb7f8854983e986108914be',
-     armv7l: '1f4901f04da81fe723e0c0181ad1ec5066c138c4ecb7f8854983e986108914be',
-       i686: 'e69fcd81e05805c964067e130961e9467add67ec50a850b2837ba6df705e6712',
-     x86_64: 'e448b7e79abf3a303d54d3997a9f491b086c55f7c5ae8b3654f61cfb636fd917'
+    aarch64: '9b951f2a67e662c4c38f53298af1ade1dce898c96ef9ef47e3f59adbb20900ce',
+     armv7l: '9b951f2a67e662c4c38f53298af1ade1dce898c96ef9ef47e3f59adbb20900ce',
+       i686: 'ad5627f756d4a1b07e229d1823f70d2e36ecbcdb56f083c990f06dfdd2662f26',
+     x86_64: '6c0d8ff5ab8e2ac17cac3039f2f6bcd75790e1815478d5421beaa13c1cd2f483'
   })
 
-  def self.patch
-    system 'filefix'
-  end
+  depends_on 'glibc' # R
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-      ./configure \
-      #{CREW_OPTIONS} \
-      --disable-dependency-tracking \
+  configure_options '--disable-dependency-tracking \
       --disable-maintainer-mode \
-      --disable-examples"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+      --disable-examples'
 end
