@@ -28,7 +28,7 @@ class Irrlicht < Package
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R

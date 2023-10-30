@@ -23,7 +23,7 @@ class Php82 < Package
   depends_on 'aspell_en'
   depends_on 'aspell' # R
   depends_on 'brotli' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'e2fsprogs' # R

@@ -1,6 +1,6 @@
 require 'package'
 
-class Bz2 < Package
+class Bzip2 < Package
   description 'bzip2 is a freely available, patent free, high-quality data compressor.'
   homepage 'http://www.bzip.org/'
   version '1.0.8-1'

@@ -22,7 +22,7 @@ class Lnav < Autotools
   depends_on 'ncurses' # R
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'libcurl' # R
   depends_on 'libarchive' # R
   depends_on 'wireshark' # R

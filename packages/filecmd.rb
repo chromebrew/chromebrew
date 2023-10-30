@@ -22,7 +22,7 @@ class Filecmd < Package
      x86_64: '934e22a6546df52a0fba66589029a87d1e4fabefb5a32fd4326615670deb8631'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'lzlib' # R Fixes checking lzlib.h usability... no

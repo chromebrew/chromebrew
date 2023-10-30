@@ -700,7 +700,7 @@ url: https://launchpad.net/byobu/trunk
 activity: medium
 ---
 kind: url
-name: bz2
+name: bzip2
 url: http://www.bzip.org
 activity: none
 ---

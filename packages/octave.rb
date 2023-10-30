@@ -20,7 +20,7 @@ class Octave < Autotools
      x86_64: '7eeb3d979f6cf071419b4d5d981425bc284db80604d211897950a70934e9832f'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'curl' # R
   depends_on 'fontconfig' # R
   depends_on 'freetype' # R

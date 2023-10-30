@@ -22,7 +22,7 @@ class Cmake < Package
      x86_64: 'f991e757d11a4156aac060d35912102bc81c6360501029f64604d3d7ed002d4d'
   })
 
-  depends_on 'bz2' => :build
+  depends_on 'bzip2' => :build
   depends_on 'cppdap' # R
   depends_on 'curl' # R
   depends_on 'expat' # R

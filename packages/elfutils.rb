@@ -22,7 +22,7 @@ class Elfutils < Package
      x86_64: '9952fb6d9c22cde9ac9ceb45363d8bd5f8cca2a7ee61a66ccfb063e9e4dca32e'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libarchive' # R

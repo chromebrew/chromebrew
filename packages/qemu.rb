@@ -51,7 +51,7 @@ class Qemu < Package
   depends_on 'pulseaudio' # R
   depends_on 'sdl2_image' # R
   depends_on 'snappy' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gnutls' # R

@@ -23,7 +23,7 @@ class Python3 < Package
   })
 
   depends_on 'autoconf_archive' => :build
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdbm' # R

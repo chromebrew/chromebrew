@@ -22,7 +22,7 @@ class R < Package
      x86_64: '2a5cfece8a24b8bad17ade73b2751cf23c1c9d5e1604addce436e45740400354'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R

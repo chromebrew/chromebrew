@@ -25,7 +25,7 @@ class Elinks < Package
   depends_on 'lzip'
   depends_on 'openssl' # R
   depends_on 'zlibpkg' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'expat' # R
 
   def self.build

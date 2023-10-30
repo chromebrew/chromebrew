@@ -18,7 +18,7 @@ class Shotcut < Package
 
   depends_on 'acl' # R
   depends_on 'alsa_lib' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'dav1d' # R
   depends_on 'dbus' # R
   depends_on 'elfutils' # R

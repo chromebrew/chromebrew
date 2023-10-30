@@ -25,7 +25,7 @@ class Gimp < Package
   depends_on 'appstream_glib' # R
   depends_on 'at_spi2_core' => :build
   depends_on 'babl' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'cairo' # R
   depends_on 'ffmpeg' => :build
   depends_on 'fontconfig' # R
