@@ -124,6 +124,21 @@ String.use_color = args['--color'] || !args['--no-color']
 @verbose           = @opt_verbose ? 'v' : ''
 @short_verbose     = @opt_verbose ? '-v' : ''
 
+class ExitMessage
+  @messages = []
+
+  def self.add(msg, print_last: false)
+    # add an option to allow important messages (like sommelier) to print at the bottom
+    @messages << [msg.lightcyan, print_last]
+  end
+
+  def self.print # print all messages
+    # &:last represent to print_last
+    puts @messages.reject(&:last).map(&:first)
+    puts @messages.select(&:last).map(&:first)
+  end
+end
+
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
@@ -2000,3 +2015,7 @@ end
 load_json
 command_name = args.select { |k, v| v && is_command(k) }.keys[0]
 send("#{command_name}_command", args)
+
+# Print exit messages.
+ExitMessage.add 'Crew is exiting.' if @opt_verbose
+ExitMessage.print
