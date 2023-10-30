@@ -48,11 +48,11 @@ echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunctio
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
 
 # Skip all checks if running on a docker container.
-[[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
-
-if [[ "$CREW_FORCE_INSTALL" ]]; then
+if [[ -f "/.dockerenv" ]]; then
+  CREW_FORCE_INSTALL=1
   echo_info "In container, so skipping hardware checks"
 fi
+
 #
 # Attempt install without sudo.
 #elif tty | grep -q /dev/pts1; then
