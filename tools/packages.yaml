@@ -705,7 +705,7 @@ url: http://www.bzip.org
 activity: none
 ---
 kind: url
-name: bz3
+name: bzip3
 url: https://github.com/kspalaiologos/bzip3/releases
 activity: medium
 ---

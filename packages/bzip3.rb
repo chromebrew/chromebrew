@@ -1,6 +1,6 @@
 require 'package'
 
-class Bz3 < Package
+class Bzip3 < Package
   description 'bzip3 is a better and stronger spiritual successor to bzip2.'
   homepage 'https://github.com/kspalaiologos/bzip3'
   version '1.2.2'
