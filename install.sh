@@ -53,20 +53,18 @@ echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output
 if [[ "$CREW_FORCE_INSTALL" ]]; then
   echo_info "In container, so skipping hardware checks"
 elif tty | grep -q /dev/pts1; then
-  echo_info "You are in VT-2."
+  echo_success "You are in VT-2."
   if [ "${EUID}" == "0" ]; then
-    echo_info "Please run 'chromeos-setdevpasswd' to set the chronos"
-    echo_info "password, and then use the 'exit' command."
-    echo_info "Then login again as 'chronos' and restart the install."
+    echo_info "Please login as 'chronos' and restart the install."
+    echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
     exit 1
   fi
 else
   # Error out if not in VT-2
   echo_error "You need to be in the VT-2 shell for the install to work."
   echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
-  echo_info "Once there, please login as root and run 'chromeos-setdevpasswd'"
-  echo_info "to set the chronos password, and then use the 'exit' command."
-  echo_info "Then login again as 'chronos' and restart the install."
+  echo_info "Then login as 'chronos' and restart the install."
+  echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
   exit 1
 fi
 
