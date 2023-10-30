@@ -153,7 +153,7 @@ if [ -d "${CREW_PREFIX}" ]; then
     done
   fi
 else
-  echo_error "${CREW_PREFIX} does not exist. (It should be mounted!)"
+  echo_error "${CREW_PREFIX} does not exist. (It should be created or mounted prior to install!)"
   exit 1
 fi
 
