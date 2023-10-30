@@ -132,7 +132,7 @@ end
 # Handle case of const.rb not yet defining CREW_CONST_GIT_COMMIT.
 CREW_CONST_GIT_COMMIT = '0000' unless defined?(CREW_CONST_GIT_COMMIT)
 
-@new_const_git_commit = `git log -n1 --oneline #{CREW_LOCAL_REPO_ROOT}/lib/const.rb`.chomp.split.first
+@new_const_git_commit = `git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.chomp.split.first
 
 unless @new_const_git_commit.to_s == CREW_CONST_GIT_COMMIT.to_s
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan

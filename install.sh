@@ -38,7 +38,6 @@ if [[ "$ARCH" == "x86_64" ]]; then
   LIB_SUFFIX='64'
 fi
 
-
 RESET='\e[0m'
 
 # Simplify colors and print errors to stderr (2).
@@ -49,7 +48,43 @@ echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunctio
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
 
 # Skip all checks if running on a docker container.
-[[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
+if [[ -f "/.dockerenv" ]]; then
+  CREW_FORCE_INSTALL=1
+  echo_info "In container, so skipping hardware checks"
+fi
+
+#
+# Attempt install without sudo.
+#elif tty | grep -q /dev/pts1; then
+#  echo_success "You are in VT-2."
+#  if [ "${EUID}" == "0" ]; then
+#    echo_info "Please login as 'chronos' and restart the install."
+#    echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
+#    exit 1
+#  fi
+#else
+#  # Error out if not in VT-2
+#  echo_error "You need to be in the VT-2 shell for the install to work."
+#  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
+#  echo_info "Then login as 'chronos' and restart the install."
+#  echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
+#  exit 1
+#fi
+
+# Check if the script is being run as root.
+if [ "${EUID}" == "0" ]; then
+  echo_error "Chromebrew should not be installed or run as root."
+  exit 1;
+fi
+
+# Uncomment this section if you have a stoneyridge machine and your
+# install fails.
+# if grep -s "AuthenticAMD" /proc/cpuinfo ; then
+#  echo_info "Need to disable randomize_va_space on AMD machines."
+#  # Otherwise one may get segfaults during install on stoneyridge
+#  # devices. See https://github.com/chromebrew/chromebrew/issues/8823
+#  echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+#fi
 
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
@@ -69,22 +104,17 @@ else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
-# Check if the script is being run as root.
-if [ "${EUID}" == "0" ]; then
-  echo_error "Chromebrew should not be installed or run as root."
-  exit 1;
-fi
-
 echo_success "Welcome to Chromebrew!"
 
+# This does not work from crosh after M118.
 # Prompt user to enter the sudo password if it is set.
 # If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
-if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
-  echo_intra "Please enter the developer mode password"
-  # Reset sudo timeout.
-  sudo -k
-  sudo /bin/true
-fi
+# if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
+#  echo_intra "Please enter the developer mode password"
+#  # Reset sudo timeout.
+#  sudo -k
+#  sudo /bin/true
+#fi
 
 # Force curl to use system libraries.
 function curl () {
@@ -113,7 +143,9 @@ if [ -d "${CREW_PREFIX}" ]; then
     echo_info "Continue?"
     select continue in "Yes" "No"; do
       if [[ "${continue}" == "Yes" ]]; then
-        sudo find "${CREW_PREFIX}" -mindepth 1 -delete
+        # Let's see if avoiding sudo breaks anything.
+        # sudo find "${CREW_PREFIX}" -mindepth 1 -delete
+        find "${CREW_PREFIX}" -mindepth 1 -delete
         break 2
       else
         exit 1
@@ -121,11 +153,12 @@ if [ -d "${CREW_PREFIX}" ]; then
     done
   fi
 else
-  sudo mkdir "${CREW_PREFIX}"
+  echo_error "${CREW_PREFIX} does not exist. (It should be created or mounted prior to install!)"
+  exit 1
 fi
 
 # This will allow things to work without sudo.
-sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+# sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # This will create the directories.
 crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
@@ -201,7 +234,8 @@ function download_check () {
     # Use cached file if available and caching is enabled.
     if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
       mkdir -p "$CREW_CACHE_DIR"
-      sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
+      # sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
+      chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
       echo_intra "Verifying cached ${1}..."
       echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
       case "${?}" in
@@ -285,7 +319,7 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-sudo ldconfig &> /tmp/crew_ldconfig || true
+# sudo ldconfig &> /tmp/crew_ldconfig || true
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
