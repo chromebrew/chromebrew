@@ -23,28 +23,8 @@ class Jq < Autotools
      x86_64: '5391d895d83e5c79eca278380ea062dc28478eeaa7afe2d900adcd64bcf7e12d'
   })
 
-  depends_on 'glibc' unless ARCH == 'i686'
-  depends_on 'llvm17_dev' => :build if ARCH == 'i686' # has a libm issue building againsg glibc.
+  depends_on 'glibc'
 
-  configure_options '--enable-all-static \
-      --disable-maintainer-mode \
+  configure_options '--disable-maintainer-mode \
       --disable-docs'
-
-  if ARCH == 'i686'
-    def self.build
-      system '[ -x configure ] || autoreconf -fvi'
-      system 'filefix'
-      system "CC=clang LD=ld.lld  CFLAGS='-flto -pipe -O3 -fuse-ld=lld -static' \
-        CXXFLAGS='-flto -pipe -O3 -static' \
-        LDFLAGS='-flto -static' \
-        ./configure \
-        --prefix=#{CREW_PREFIX} \
-        --libdir=#{CREW_LIB_PREFIX} \
-        --mandir=#{CREW_MAN_PREFIX} \
-        --enable-all-static \
-        --disable-maintainer-mode \
-        --disable-docs " # there's no support for manpages
-      system 'make'
-    end
-  end
 end
