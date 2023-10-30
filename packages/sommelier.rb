@@ -495,9 +495,9 @@ class Sommelier < Package
       Please open a github issue at
       https://github.com/chromebrew/chromebrew/issues/new/choose
       with the output of both
-       readlink -f "/sys/class/drm/renderD129/device/driver"
+       readlink -f '/sys/class/drm/renderD129/device/driver'
       and
-       readlink -f "/sys/class/drm/renderD128/device/driver"
+       readlink -f '/sys/class/drm/renderD128/device/driver'
       if sommelier does not start properly on your arm ChromeOS device.
     EOT2
   end
