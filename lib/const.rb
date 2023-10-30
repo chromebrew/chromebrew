@@ -103,14 +103,14 @@ CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 # Local constants for contributors.
 Dir.chdir CREW_LIB_PATH do
-  repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-  if repo_root.empty?
+  CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+  if CREW_LOCAL_REPO_ROOT.empty?
     Dir.chdir '../..' do
-      repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+      CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
     end
   end
 end
-CREW_LOCAL_REPO_ROOT = repo_root
+# CREW_LOCAL_REPO_ROOT = repo_root
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
