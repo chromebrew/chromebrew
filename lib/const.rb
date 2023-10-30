@@ -102,19 +102,17 @@ CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 # Local constants for contributors.
-Dir.chdir CREW_LIB_PATH do
-  CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-  if CREW_LOCAL_REPO_ROOT.empty?
-    Dir.chdir '../..' do
-      CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-    end
+repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+if repo_root.empty?
+  Dir.chdir '../..' do
+    repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
   end
 end
-# CREW_LOCAL_REPO_ROOT = repo_root
+CREW_LOCAL_REPO_ROOT = repo_root
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LOCAL_REPO_ROOT}/lib/const.rb`.chomp.split.first
+CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.chomp.split.first
 
 CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
