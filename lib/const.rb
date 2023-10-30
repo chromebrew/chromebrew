@@ -102,10 +102,12 @@ CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
 CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
 
 # Local constants for contributors.
-repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-if repo_root.empty?
-  Dir.chdir '../..' do
-    repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+Dir.chdir CREW_LIB_PATH do
+  repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+  if repo_root.empty?
+    Dir.chdir '../..' do
+      repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
+    end
   end
 end
 CREW_LOCAL_REPO_ROOT = repo_root
