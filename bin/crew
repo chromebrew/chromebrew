@@ -648,7 +648,7 @@ def update
   puts 'Package lists, crew, and library updated.'
 
   # Do any fixups necessary after crew has updated from git.
-  load "#{CREW_LOCAL_REPO_ROOT}/lib/fixup.rb"
+  load "#{CREW_PREFIX}/lib/crew/lib/fixup.rb"
 
   # update compatible packages
   generate_compatible
