@@ -52,21 +52,24 @@ echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output
 
 if [[ "$CREW_FORCE_INSTALL" ]]; then
   echo_info "In container, so skipping hardware checks"
-elif tty | grep -q /dev/pts1; then
-  echo_success "You are in VT-2."
-  if [ "${EUID}" == "0" ]; then
-    echo_info "Please login as 'chronos' and restart the install."
-    echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
-    exit 1
-  fi
-else
-  # Error out if not in VT-2
-  echo_error "You need to be in the VT-2 shell for the install to work."
-  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
-  echo_info "Then login as 'chronos' and restart the install."
-  echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
-  exit 1
 fi
+#
+# Attempt install without sudo.
+#elif tty | grep -q /dev/pts1; then
+#  echo_success "You are in VT-2."
+#  if [ "${EUID}" == "0" ]; then
+#    echo_info "Please login as 'chronos' and restart the install."
+#    echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
+#    exit 1
+#  fi
+#else
+#  # Error out if not in VT-2
+#  echo_error "You need to be in the VT-2 shell for the install to work."
+#  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
+#  echo_info "Then login as 'chronos' and restart the install."
+#  echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
+#  exit 1
+#fi
 
 # Check if the script is being run as root.
 if [ "${EUID}" == "0" ]; then
@@ -74,12 +77,14 @@ if [ "${EUID}" == "0" ]; then
   exit 1;
 fi
 
-if grep -s "AuthenticAMD" /proc/cpuinfo ; then
-  echo_info "Need to disable randomize_va_space on AMD machines."
-  # Otherwise one may get segfaults during install on stoneyridge
-  # devices. See https://github.com/chromebrew/chromebrew/issues/8823
-  echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-fi
+# Uncomment this section if you have a stoneyridge machine and your
+# install fails.
+# if grep -s "AuthenticAMD" /proc/cpuinfo ; then
+#  echo_info "Need to disable randomize_va_space on AMD machines."
+#  # Otherwise one may get segfaults during install on stoneyridge
+#  # devices. See https://github.com/chromebrew/chromebrew/issues/8823
+#  echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+#fi
 
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
@@ -137,7 +142,9 @@ if [ -d "${CREW_PREFIX}" ]; then
     echo_info "Continue?"
     select continue in "Yes" "No"; do
       if [[ "${continue}" == "Yes" ]]; then
-        sudo find "${CREW_PREFIX}" -mindepth 1 -delete
+        # Let's see if avoiding sudo breaks anything.
+        # sudo find "${CREW_PREFIX}" -mindepth 1 -delete
+        find "${CREW_PREFIX}" -mindepth 1 -delete
         break 2
       else
         exit 1
@@ -149,7 +156,7 @@ else
 fi
 
 # This will allow things to work without sudo.
-sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+# sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
 # This will create the directories.
 crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
@@ -225,7 +232,8 @@ function download_check () {
     # Use cached file if available and caching is enabled.
     if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
       mkdir -p "$CREW_CACHE_DIR"
-      sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
+      # sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
+      chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
       echo_intra "Verifying cached ${1}..."
       echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
       case "${?}" in
@@ -309,7 +317,7 @@ done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-sudo ldconfig &> /tmp/crew_ldconfig || true
+# sudo ldconfig &> /tmp/crew_ldconfig || true
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
