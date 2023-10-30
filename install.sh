@@ -38,7 +38,6 @@ if [[ "$ARCH" == "x86_64" ]]; then
   LIB_SUFFIX='64'
 fi
 
-
 RESET='\e[0m'
 
 # Simplify colors and print errors to stderr (2).
@@ -50,6 +49,39 @@ echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output
 
 # Skip all checks if running on a docker container.
 [[ -f "/.dockerenv" ]] && CREW_FORCE_INSTALL=1
+
+if [[ "$CREW_FORCE_INSTALL" ]]; then
+  echo_info "In container, so skipping hardware checks"
+elif tty | grep -q /dev/pts1; then
+  echo_info "You are in VT-2."
+  if [ "${EUID}" == "0" ]; then
+    echo_info "Please run 'chromeos-setdevpasswd' to set the chronos"
+    echo_info "password, and then use the 'exit' command."
+    echo_info "Then login again as 'chronos' and restart the install."
+    exit 1
+  fi
+else
+  # Error out if not in VT-2
+  echo_error "You need to be in the VT-2 shell for the install to work."
+  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
+  echo_info "Once there, please login as root and run 'chromeos-setdevpasswd'"
+  echo_info "to set the chronos password, and then use the 'exit' command."
+  echo_info "Then login again as 'chronos' and restart the install."
+  exit 1
+fi
+
+# Check if the script is being run as root.
+if [ "${EUID}" == "0" ]; then
+  echo_error "Chromebrew should not be installed or run as root."
+  exit 1;
+fi
+
+if grep -s "AuthenticAMD" /proc/cpuinfo ; then
+  echo_info "Need to disable randomize_va_space on AMD machines."
+  # Otherwise one may get segfaults during install on stoneyridge
+  # devices. See https://github.com/chromebrew/chromebrew/issues/8823
+  echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+fi
 
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
@@ -67,12 +99,6 @@ if [ -f /etc/lsb-release ]; then
   fi
 else
   echo_info "Unable to detect system information, installation will continue."
-fi
-
-# Check if the script is being run as root.
-if [ "${EUID}" == "0" ]; then
-  echo_error "Chromebrew should not be installed or run as root."
-  exit 1;
 fi
 
 echo_success "Welcome to Chromebrew!"
