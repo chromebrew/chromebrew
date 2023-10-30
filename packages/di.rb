@@ -2,7 +2,7 @@ require 'package'
 
 class Di < Package
   description 'DI is a disk information utility, displaying everything (and more) that your \'df\' command does.'
-  homepage 'http://gentoo.com/di/'
+  homepage 'https://diskinfo-di.sourceforge.io/'
   version '4.47.1'
   license 'ZLIB'
   compatibility 'all'
