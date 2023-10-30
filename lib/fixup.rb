@@ -10,7 +10,7 @@ if !system("grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path") || Gem::Version.new(
     ## Inserted by Chromebrew version #{CREW_VERSION}
     PATH=#{CREW_PREFIX}/bin:#{CREW_PREFIX}/sbin:#{CREW_PREFIX}/share/musl/bin:$PATH
   ENVD_PATH_EOF
-  ExitMessage.new "Fixed path env.d file...\nPlease run 'source ~/.bashrc'"
+  ExitMessage.new "Fixed path env.d file...\nPlease run 'source ~/.bashrc'".orange
 end
 
 # Check for renamed and deprecated packages, and handle them.
