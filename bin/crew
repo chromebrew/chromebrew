@@ -124,6 +124,25 @@ String.use_color = args['--color'] || !args['--no-color']
 @verbose           = @opt_verbose ? 'v' : ''
 @short_verbose     = @opt_verbose ? '-v' : ''
 
+class ExitMessage
+  attr_accessor :msg
+
+  @obj_all = []
+
+  def initialize(msg)
+    @msg = msg
+  end
+
+  class << self
+    attr_reader :obj_all
+
+    def new(msg)
+      obj_all << super
+      obj_all.last
+    end
+  end
+end
+
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
@@ -2000,3 +2019,11 @@ end
 load_json
 command_name = args.select { |k, v| v && is_command(k) }.keys[0]
 send("#{command_name}_command", args)
+
+# Print exit messages.
+ExitMessage.new 'Crew is exiting.' if @opt_verbose
+return if ExitMessage.obj_all.empty?
+
+ExitMessage.obj_all.map(&:msg).each do |msg|
+  puts msg.lightcyan
+end
