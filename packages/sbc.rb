@@ -22,8 +22,8 @@ class Sbc < Autotools
      x86_64: '5fd600e8ab31ea0668acb2679787a99c94fef58cb222e843a7781a820636c3bd'
   })
 
-  depends_on 'libsndfile'
   depends_on 'glibc' # R
+  depends_on 'libsndfile' => :build
 
   configure_options '--enable-high-precision \
           --disable-static \

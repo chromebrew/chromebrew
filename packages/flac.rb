@@ -22,7 +22,7 @@ class Flac < Autotools
      x86_64: 'eb70328f8034cdcbb8047ffe15f42555b048ae111f0ba4001d5c282f6c59ee42'
   })
 
-  depends_on 'libogg'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libogg' # R
 end

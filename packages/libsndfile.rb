@@ -23,13 +23,12 @@ class Libsndfile < Autotools
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'flac'
+  depends_on 'flac' # R
   depends_on 'glibc' # R
-  depends_on 'libogg'
-  depends_on 'libvorbis'
-  depends_on 'mpg123' => :build unless ARCH == 'i686'
+  depends_on 'libogg' # R
+  depends_on 'libvorbis' # R
   depends_on 'nasm' => :build
-  depends_on 'opus'
-  depends_on 'speex'
+  depends_on 'opus' # R
+  depends_on 'speex' => :build
   depends_on 'sqlite' => :build
 end

@@ -22,8 +22,8 @@ class Speexdsp < Autotools
      x86_64: '77dc391df3cfbf274e797b96b94f9217b9006b6a8f7acca19e33d39b83468397'
   })
 
-  depends_on 'speex' # R
   depends_on 'glibc' # R
+  depends_on 'speex' # R
 
   configure_options '--disable-dependency-tracking \
       --disable-maintainer-mode \
