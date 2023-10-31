@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Alsa_lib < Package
+class Alsa_lib < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
   @_ver = '1.2.10'
@@ -26,18 +26,6 @@ class Alsa_lib < Package
   depends_on 'glibc' # R
   depends_on 'python3' # L
 
-  def self.build
-    @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp
-    system 'autoreconf -fiv'
-    system "mold -run ./configure #{CREW_OPTIONS} \
-       --without-debug \
-       --disable-maintainer-mode \
-       --with-pythonlibs=-lpython#{@py_ver} \
-       --with-pythonincludes=-I#{CREW_PREFIX}/include/python#{@py_ver}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--without-debug \
+       --disable-maintainer-mode'
 end
