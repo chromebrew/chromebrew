@@ -35,7 +35,7 @@ url: https://download.savannah.gnu.org/releases/acl
 activity: medium
 ---
 kind: url
-name: acli
+name: acquia_cli
 url: https://github.com/acquia/cli/releases
 activity: medium
 ---
@@ -75,7 +75,7 @@ url: https://www.chiark.greenend.org.uk/~sgtatham/agedu/
 activity: none
 ---
 kind: url
-name: agrind
+name: angle_grinder
 url: https://github.com/rcoh/angle-grinder/releases
 activity: medium
 ---
@@ -215,12 +215,12 @@ url: https://apache.claz.org/apr
 activity: low
 ---
 kind: url
-name: apriconv
+name: apr_iconv
 url: https://apache.claz.org/apr
 activity: low
 ---
 kind: url
-name: aprutil
+name: apr_util
 url: https://apache.claz.org/apr
 activity: low
 ---
@@ -5506,7 +5506,7 @@ url: https://gitlab.freedesktop.org/mesa/demos/-/tags
 activity: none
 ---
 kind: url
-name: meson
+name: mesonbuild
 url: https://github.com/mesonbuild/meson/releases
 activity: high
 ---
@@ -7174,11 +7174,6 @@ kind: url
 name: qt5_charts
 url: https://invent.kde.org/qt/qt/qtcharts/-/tags
 activity: medium
----
-kind: url
-name: qtchooser
-url: http://download.qt.io/official_releases/qtchooser/
-activity: low
 ---
 kind: url
 name: qtcreator
