@@ -93,7 +93,7 @@ pkg_update_arr.each do |pkg|
       raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
       # Ok to write working device.json
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
-      puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen
+      puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen if @opt_verbose
     rescue StandardError => e
       puts 'Restoring old filelist, directorylist, and device.json...'.lightred
       FileUtils.mv new_filelist, old_filelist
