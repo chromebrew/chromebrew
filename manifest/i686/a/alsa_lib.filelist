@@ -4,6 +4,7 @@
 /usr/local/include/alsa/conf.h
 /usr/local/include/alsa/control_external.h
 /usr/local/include/alsa/control.h
+/usr/local/include/alsa/control_plugin.h
 /usr/local/include/alsa/error.h
 /usr/local/include/alsa/global.h
 /usr/local/include/alsa/hwdep.h
@@ -42,6 +43,8 @@
 /usr/local/include/alsa/sound/uapi/tlv.h
 /usr/local/include/alsa/timer.h
 /usr/local/include/alsa/topology.h
+/usr/local/include/alsa/ump.h
+/usr/local/include/alsa/ump_msg.h
 /usr/local/include/alsa/use-case.h
 /usr/local/include/alsa/version.h
 /usr/local/include/asoundlib.h
@@ -117,6 +120,7 @@
 /usr/local/share/alsa/cards/VXPocket440.conf
 /usr/local/share/alsa/cards/VXPocket.conf
 /usr/local/share/alsa/cards/YMF744.conf
+/usr/local/share/alsa/ctl/default.conf
 /usr/local/share/alsa/pcm/center_lfe.conf
 /usr/local/share/alsa/pcm/default.conf
 /usr/local/share/alsa/pcm/dmix.conf

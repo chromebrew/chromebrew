@@ -1,6 +1,6 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.37.5'
+CREW_VERSION = '1.37.6'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -259,6 +259,7 @@ CREW_OPTIONS = <<~OPT.chomp
   --prefix=#{CREW_PREFIX} \
   --libdir=#{CREW_LIB_PREFIX} \
   --mandir=#{CREW_MAN_PREFIX} \
+  --disable-dependency-tracking \
   --build=#{CREW_BUILD} \
   --host=#{CREW_TGT} \
   --target=#{CREW_TGT} \

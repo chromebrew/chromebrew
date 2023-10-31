@@ -11,9 +11,9 @@
 /usr/local/lib/libspeex.la
 /usr/local/lib/libspeex.so
 /usr/local/lib/libspeex.so.1
-/usr/local/lib/libspeex.so.1.5.1
+/usr/local/lib/libspeex.so.1.5.2
 /usr/local/lib/pkgconfig/speex.pc
 /usr/local/share/aclocal/speex.m4
 /usr/local/share/doc/speex/manual.pdf
-/usr/local/share/man/man1/speexdec.1.gz
-/usr/local/share/man/man1/speexenc.1.gz
+/usr/local/share/man/man1/speexdec.1.zst
+/usr/local/share/man/man1/speexenc.1.zst
