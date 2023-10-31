@@ -2,6 +2,7 @@
 /usr/local/bin/clear
 /usr/local/bin/infocmp
 /usr/local/bin/infotocap
+/usr/local/bin/ncurses6-config
 /usr/local/bin/ncursesw6-config
 /usr/local/bin/reset
 /usr/local/bin/tabs
@@ -9,6 +10,7 @@
 /usr/local/bin/toe
 /usr/local/bin/tput
 /usr/local/bin/tset
+/usr/local/include/ncurses
 /usr/local/include/ncursesw/cursesapp.h
 /usr/local/include/ncursesw/cursesf.h
 /usr/local/include/ncursesw/curses.h
