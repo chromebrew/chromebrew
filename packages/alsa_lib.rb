@@ -26,6 +26,14 @@ class Alsa_lib < Autotools
   depends_on 'glibc' # R
   depends_on 'python3' # L
 
-  configure_options '--without-debug \
-       --disable-maintainer-mode'
+  def self.build
+    @py_ver = `python -c "import sys; version = '.'.join(map(str, sys.version_info[:2])) ; print(version)"`.chomp
+    system 'autoreconf -fiv'
+    system "mold -run ./configure #{CREW_OPTIONS} \
+       --without-debug \
+       --disable-maintainer-mode \
+       --with-pythonlibs=-lpython#{@py_ver} \
+       --with-pythonincludes=-I#{CREW_PREFIX}/include/python#{@py_ver}"
+    system 'make'
+  end
 end
