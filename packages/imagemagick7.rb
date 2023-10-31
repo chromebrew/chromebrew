@@ -23,7 +23,7 @@ class Imagemagick7 < Package
     x86_64: 'ed0e5cdf87a45c8c01e501022e49d045df5bb6f0b3e74111f1131c00a418a350'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'flif' => :build
   depends_on 'fontconfig' => :build
   depends_on 'freeimage' => :build

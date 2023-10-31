@@ -21,7 +21,7 @@ class Graphicsmagick < Package
   })
 
   depends_on 'brotli' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'ghostscript' => :build

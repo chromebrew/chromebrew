@@ -34,7 +34,7 @@ class Imlib2 < Package
   depends_on 'libxcb'
   depends_on 'libxext'
   depends_on 'protobuf_c'
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R

@@ -22,7 +22,7 @@ class Util_linux < Package
      x86_64: '3b6d221adae7b6533e3f586e28ecabc4d7fee6472e220b190a87b8c623961d75'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
   depends_on 'glibc' # R

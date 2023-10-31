@@ -23,7 +23,7 @@ class Boost < Package
      x86_64: '892447b1c026b67f7d7c2e389be5953b2581db69bd0e44079fac9c3575e244f6'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R

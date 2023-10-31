@@ -24,7 +24,7 @@ class Librsync < Package
   })
 
   depends_on 'cmake' => :build
-  depends_on 'bz2'
+  depends_on 'bzip2'
   depends_on 'perl'
   depends_on 'popt'
   depends_on 'zlibpkg'

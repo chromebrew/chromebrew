@@ -22,7 +22,7 @@ class Ffmpeg < Package
 
   depends_on 'alsa_lib' # R
   depends_on 'avisynthplus' # ?
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'ccache' => :build
   depends_on 'chromaprint' # ?
   depends_on 'dav1d' # R

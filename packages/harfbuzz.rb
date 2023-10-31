@@ -23,7 +23,7 @@ class Harfbuzz < Package
   })
 
   depends_on 'brotli' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'chafa' # R
   depends_on 'expat' # R
   # depends_on 'fontconfig' # This pulls in freetype.

@@ -22,7 +22,7 @@ class Libzip < Package
       x86_64: 'dd16146327e8c8a91d0cdd5b1f2c776657bda33697c2a9e216e6804c115ac06c'
   })
 
-  depends_on 'bz2'
+  depends_on 'bzip2'
 
   def self.build
     Dir.mkdir 'builddir'

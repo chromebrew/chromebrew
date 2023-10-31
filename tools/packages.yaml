@@ -700,12 +700,12 @@ url: https://launchpad.net/byobu/trunk
 activity: medium
 ---
 kind: url
-name: bz2
+name: bzip2
 url: http://www.bzip.org
 activity: none
 ---
 kind: url
-name: bz3
+name: bzip3
 url: https://github.com/kspalaiologos/bzip3/releases
 activity: medium
 ---
@@ -1010,7 +1010,7 @@ url: http://codelobsteride.com/#download
 activity: medium
 ---
 kind: url
-name: codium
+name: vscodium
 url: https://github.com/VSCodium/vscodium/releases
 activity: high
 ---

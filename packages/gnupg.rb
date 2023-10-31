@@ -22,7 +22,7 @@ class Gnupg < Package
      x86_64: '479dad1509044aa77ebb3b6648ab54d0fcc298376df9b5fc960f4d1390b277f0'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'libassuan' # R

@@ -24,7 +24,7 @@ class Tesseract < Package
   depends_on 'asciidoc' => :build
   depends_on 'attr' => :build
   depends_on 'brotli' => :build
-  depends_on 'bz2' => :build
+  depends_on 'bzip2' => :build
   depends_on 'cairo' => :build
   depends_on 'c_ares' => :build
   depends_on 'curl' # R

@@ -23,7 +23,7 @@ class Gstreamer < Package
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'ca_certificates' => :build
   depends_on 'cairo' # R
   depends_on 'chromaprint' # R

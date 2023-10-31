@@ -23,7 +23,7 @@ class Dtrx < Package
   })
 
   depends_on 'binutils'
-  depends_on 'bz2'
+  depends_on 'bzip2'
   depends_on 'cabextract'
   depends_on 'cpio'
   depends_on 'lha'

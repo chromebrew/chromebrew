@@ -25,7 +25,7 @@ class Libarchive < Package
 
   depends_on 'acl' # R
   depends_on 'attr' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R

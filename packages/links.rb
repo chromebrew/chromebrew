@@ -23,7 +23,7 @@ class Links < Package
   })
 
   depends_on 'brotli' # R
-  depends_on 'bz2'
+  depends_on 'bzip2'
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
   depends_on 'libjpeg'
