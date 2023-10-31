@@ -3,28 +3,32 @@ require 'package'
 class Ladspa < Package
   description 'Linux Audio Developer\'s Simple Plugin API'
   homepage 'https://www.ladspa.org/'
-  version '1.15'
+  version '1.17'
   license 'LGPL-2+'
   compatibility 'all'
-  source_url 'https://www.ladspa.org/download/ladspa_sdk_1.15.tgz'
-  source_sha256 '4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded'
+  source_url 'https://www.ladspa.org/download/ladspa_sdk_1.17.tgz'
+  source_sha256 '27d24f279e4b81bd17ecbdcc38e4c42991bb388826c0b200067ce0eb59d3da5b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_armv7l/ladspa-1.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_armv7l/ladspa-1.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_i686/ladspa-1.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.15_x86_64/ladspa-1.15-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_armv7l/ladspa-1.17-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_armv7l/ladspa-1.17-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_i686/ladspa-1.17-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_x86_64/ladspa-1.17-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3aa308850f574ef1151a8bddfb1056775b81752a0e33e9da37eb1884c0261223',
-     armv7l: '3aa308850f574ef1151a8bddfb1056775b81752a0e33e9da37eb1884c0261223',
-       i686: 'bd9075f52a19d34a86f0674e9c33a14587006939760145ed1588937795e31315',
-     x86_64: 'c1f1d2875ea96794b51bd542768687ec3c8514abec0c3f9600a8dbb967a2df83'
+    aarch64: '595b2783890ec41817e5bd269dcdb80c44326b1746d9815e151c9b5554040471',
+     armv7l: '595b2783890ec41817e5bd269dcdb80c44326b1746d9815e151c9b5554040471',
+       i686: '79594f7df9ba24fbc487285d88531198d8749cb0915744e7a808e2adb79dd93c',
+     x86_64: '353b796ab639640a367524a3c24531346d0c9f69aa161807c1346e357cf4325b'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libsndfile' # R
 
   def self.patch
     Dir.chdir('src') do
-      system 'sed', '-i', '-e', "s,/usr,\$(DESTDIR)#{CREW_PREFIX},g", '-e', "s,lib,#{ARCH_LIB},", 'Makefile'
+      system 'sed', '-i', '-e', "s,/usr,$(DESTDIR)#{CREW_PREFIX},g", '-e', "s,lib,#{ARCH_LIB},", 'Makefile'
     end
   end
 
