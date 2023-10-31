@@ -2390,6 +2390,11 @@ url: http://geuz.org/gl2ps/src/
 activity: low
 ---
 kind: url
+name: glab
+url: https://gitlab.com/gitlab-org/cli/-/releases
+activity: medium
+---
+kind: url
 name: glade
 url: https://download.gnome.org/sources/glade/
 activity: high
