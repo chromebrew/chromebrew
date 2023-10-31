@@ -1,3 +1,6 @@
+# Adapted from Arch Linux ncurses PKGBUILD at:
+# https://gitlab.archlinux.org/archlinux/packaging/packages/ncurses/-/blob/main/PKGBUILD
+
 require 'package'
 
 class Ncurses < Package
@@ -16,34 +19,36 @@ class Ncurses < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6_4_20231028_x86_64/ncurses-6_4_20231028-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '63fcd6b47db611bdce379882cfcedcba0daadb635bbd8166eab4bccabc76d462',
-     armv7l: '63fcd6b47db611bdce379882cfcedcba0daadb635bbd8166eab4bccabc76d462',
-       i686: 'a1e0b336f5bc605f087824253d55e889e2775b432c03d7a2dcd56d86038fcbcf',
-     x86_64: 'bb2079373688f70f8c3f84f6a1ab6cec311a0ffb755830a20b1e3c2d3732403e'
+    aarch64: '56e665459d09ab3cb87d301d81e6d3f3909fc5e3b4b2963bae513cc25bcdd2f4',
+     armv7l: '56e665459d09ab3cb87d301d81e6d3f3909fc5e3b4b2963bae513cc25bcdd2f4',
+       i686: 'de430fd09e0b7567f9a45524dd9b461cce4d92f9916047501278b9c1be4b79ba',
+     x86_64: '943d53afd17826534d2447c7a52c1dd8a1b30afcfbe3613a7689a5775d457b39'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.build
-    system "./configure #{CREW_OPTIONS} \
-        --program-prefix='' \
-        --program-suffix='' \
-        --disable-root-access \
-        --disable-root-environ \
-        --disable-setuid-environ \
-        --with-shared \
-        --with-cxx-binding \
-        --with-cxx-shared \
-        --with-manpage-format=normal \
-        --without-debug \
-        --enable-pc-files \
-        --with-pkg-config-libdir=#{CREW_LIB_PREFIX}/pkgconfig \
-        --enable-widec \
-        --without-tests \
-        --with-termlib \
-        --without-ada \
-        --enable-termcap"
+    unless File.file?('Makefile')
+      system "./configure #{CREW_OPTIONS} \
+          --program-prefix='' \
+          --program-suffix='' \
+          --disable-root-access \
+          --disable-root-environ \
+          --disable-setuid-environ \
+          --with-shared \
+          --with-cxx-binding \
+          --with-cxx-shared \
+          --with-manpage-format=normal \
+          --without-debug \
+          --enable-pc-files \
+          --with-pkg-config-libdir=#{CREW_LIB_PREFIX}/pkgconfig \
+          --enable-widec \
+          --without-tests \
+          --with-termlib \
+          --without-ada \
+          --enable-termcap"
+    end
     system 'make'
   end
 
@@ -52,15 +57,23 @@ class Ncurses < Package
     @curseslibs = %w[ncurses ncurses++ form panel menu]
     @curseslibs.each do |lib|
       File.write("#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so", "INPUT(-l#{lib}w)")
-      FileUtils.install "misc/#{lib}w.pc", "#{CREW_LIB_PREFIX}/pkgconfig/#{lib}.pc", mode: 0o644
+      Dir["#{CREW_DEST_LIB_PREFIX}/lib#{lib}*.so.*"].each do |so|
+        baselib = File.basename(so)
+        FileUtils.ln_sf "#{CREW_LIB_PREFIX}/#{baselib}", "#{CREW_DEST_LIB_PREFIX}/#{baselib.gsub('w.so', '.so')}"
+      end
+      FileUtils.install "misc/#{lib}w.pc", "#{CREW_DEST_LIB_PREFIX}/pkgconfig/#{lib}.pc", mode: 0o644
     end
     File.write("#{CREW_DEST_LIB_PREFIX}/libcursesw.so", 'INPUT(-lncursesw)')
-    FileUtils.install 'lib/libncursesw.so', "#{CREW_LIB_PREFIX}/libcurses.so", mode: 0o755
-    @ticlibs = %w[tic ticinfo]
+    FileUtils.install 'lib/libncursesw.so', "#{CREW_DEST_LIB_PREFIX}/libcurses.so", mode: 0o755
+    @ticlibs = %w[tic ticinfo tinfo]
     @ticlibs.each do |lib|
       File.write("#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so", 'INPUT(libncursesw.so)')
-      FileUtils.install 'lib/libncursesw.so', "#{CREW_LIB_PREFIX}/lib#{lib}.so", mode: 0o755
-      FileUtils.install 'misc/ncursesw.pc', "#{CREW_LIB_PREFIX}/pkgconfig/#{lib}.pc", mode: 0o644
+      Dir["#{CREW_DEST_LIB_PREFIX}/lib#{lib}*.so.*"].each do |so|
+        baselib = File.basename(so)
+        FileUtils.ln_sf "#{CREW_LIB_PREFIX}/#{baselib}", "#{CREW_DEST_LIB_PREFIX}/#{baselib.gsub('w.so', '.so')}"
+      end
+      FileUtils.install 'lib/libncursesw.so', "#{CREW_DEST_LIB_PREFIX}/lib#{lib}.so", mode: 0o755
+      FileUtils.install 'misc/ncursesw.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/#{lib}.pc", mode: 0o644
     end
     # Remove conflicts with dvtm package.
     Dir.chdir "#{CREW_DEST_PREFIX}/share/terminfo/d" do
