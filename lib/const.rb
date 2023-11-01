@@ -112,7 +112,9 @@ CREW_LOCAL_REPO_ROOT = repo_root
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LIB_PATH}lib/const.rb`.chomp.split.first
+Dir.chdir CREW_LIB_PATH do
+  CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LIB_PATH}lib/const.rb`.chomp.split.first
+end
 
 CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
