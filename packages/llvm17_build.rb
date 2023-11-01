@@ -3,23 +3,23 @@ require 'package'
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '17.0.3'
+  version '17.0.4'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_armv7l/llvm17_build-17.0.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_armv7l/llvm17_build-17.0.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_i686/llvm17_build-17.0.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_x86_64/llvm17_build-17.0.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.4_armv7l/llvm17_build-17.0.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.4_armv7l/llvm17_build-17.0.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.4_i686/llvm17_build-17.0.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.4_x86_64/llvm17_build-17.0.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '65f09ade774535eb92ce5e4f67de81d94db851eeb497b408dda74e54ddf907ff',
-     armv7l: '65f09ade774535eb92ce5e4f67de81d94db851eeb497b408dda74e54ddf907ff',
-       i686: '7106847e33af1b460d80ad1d841789cba8cbd0f05eab2fe192822c228350eeb3',
-     x86_64: '47eb48a0d00db4932ca0429b8d4d69f55934619a7b6153420c31ce908f9bc1cc'
+    aarch64: 'cc3465b2b7335ab3e9da3a9801760fe73ca8466da031c761e8efc2b5bef28f87',
+     armv7l: 'cc3465b2b7335ab3e9da3a9801760fe73ca8466da031c761e8efc2b5bef28f87',
+       i686: 'f00f7c22e68b66ee3270d725e53150e0d416e37bca4af5a8c491ae40486150e5',
+     x86_64: '008a05de5f5b27c07425dbedbcd2813eef0fc261ca5b48e397f4827e8205ad15'
   })
 
   depends_on 'ocaml' => :build
@@ -37,6 +37,8 @@ class Llvm17_build < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'llvm17_dev' # R
+  depends_on 'llvm17_lib' # R
 
   no_env_options
   conflicts_ok
