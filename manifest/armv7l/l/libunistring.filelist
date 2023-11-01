@@ -21,8 +21,8 @@
 /usr/local/lib/libunistring.a
 /usr/local/lib/libunistring.la
 /usr/local/lib/libunistring.so
-/usr/local/lib/libunistring.so.2
-/usr/local/lib/libunistring.so.2.1.0
+/usr/local/lib/libunistring.so.5
+/usr/local/lib/libunistring.so.5.0.0
 /usr/local/share/doc/libunistring/libunistring_10.html
 /usr/local/share/doc/libunistring/libunistring_11.html
 /usr/local/share/doc/libunistring/libunistring_12.html
@@ -36,6 +36,7 @@
 /usr/local/share/doc/libunistring/libunistring_1.html
 /usr/local/share/doc/libunistring/libunistring_20.html
 /usr/local/share/doc/libunistring/libunistring_21.html
+/usr/local/share/doc/libunistring/libunistring_22.html
 /usr/local/share/doc/libunistring/libunistring_2.html
 /usr/local/share/doc/libunistring/libunistring_3.html
 /usr/local/share/doc/libunistring/libunistring_4.html
@@ -46,4 +47,4 @@
 /usr/local/share/doc/libunistring/libunistring_9.html
 /usr/local/share/doc/libunistring/libunistring_abt.html
 /usr/local/share/doc/libunistring/libunistring_toc.html
-/usr/local/share/info/libunistring.info.gz
+/usr/local/share/info/libunistring.info.zst
