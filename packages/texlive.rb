@@ -3,33 +3,45 @@ require 'package'
 class Texlive < Package
   description 'TeX Live is an easy way to get up and running with the TeX document production system.'
   homepage 'https://www.tug.org/texlive/'
-  version '20210413'
+  version '20230319'
   license 'GPL-2 and GPL-3'
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20210413_armv7l/texlive-20210413-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20210413_armv7l/texlive-20210413-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20210413_i686/texlive-20210413-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20210413_x86_64/texlive-20210413-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_armv7l/texlive-20230319-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_armv7l/texlive-20230319-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_i686/texlive-20230319-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_x86_64/texlive-20230319-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2fff9cceab61498b89bca9b24f510f7cb51ecdcc84d8f7fc412d410a39a62acc',
-     armv7l: '2fff9cceab61498b89bca9b24f510f7cb51ecdcc84d8f7fc412d410a39a62acc',
-       i686: '87d6ddff5e594171fa65a2b7749fcb36551880267bf1fddd92118ae54a749a32',
-     x86_64: '7b05daa263c6fc3a2cd1e81649b281d12d93bf9eef6c3c53267529a9dc9eec23'
+    aarch64: '5136c02c438be3d419c50990a058cde110a0dd144088d6c650e0dc6bedae037e',
+     armv7l: '5136c02c438be3d419c50990a058cde110a0dd144088d6c650e0dc6bedae037e',
+       i686: '1ebfd100a2d680d41e30d46d88f558d0af6c08985470a900c7c0de1d981cd215',
+     x86_64: '9dc5195868f9de7afa9804028dec264e2926fda6966792e941c19a7154d28dce'
   })
 
+  depends_on 'glibc' # R
+  depends_on 'libice' # R
+  depends_on 'libsm' # R
+  depends_on 'libx11' # R
+  depends_on 'libxext' # R
+  depends_on 'libxmu' # R
+  depends_on 'libxt' # R
+
+  def self.preflight
+    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.28')
+
+    abort "Texlive requires glibc 2.28. The current glibc version is #{LIBC_VERSION}.".lightred
+  end
+
   def self.build
-    system 'curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz'
-    system 'curl -#LO ftp://ftp.fu-berlin.de/tex/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512'
+    system 'curl -#LO https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz'
+    system 'curl -#LO https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz.sha512'
     system "cat install-tl-unx.tar.gz.sha512 | xargs | cut -d' ' -f1 > sha512"
     sha512 = open('sha512').read.chomp
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA512.hexdigest(File.read('install-tl-unx.tar.gz')) == sha512
-    system 'tar xvf install-tl-unx.tar.gz'
-    system 'mv install-tl-20*/* .'
-    system 'rm -rf install-tl-20*/'
+    system 'tar --strip-components=1 -xf install-tl-unx.tar.gz'
   end
 
   def self.install
