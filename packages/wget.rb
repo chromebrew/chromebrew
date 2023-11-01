@@ -16,13 +16,14 @@ class Wget < Autotools
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/2.1.0_x86_64/wget-2.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6b46a66939b3617d8f456fed4912d0922995817ca47ea200cab7091227c271c1',
-     armv7l: '6b46a66939b3617d8f456fed4912d0922995817ca47ea200cab7091227c271c1',
-       i686: '5410ba3e2077936cb1274aefac15de8043171540d7be043c7af92e7ac7d58a92',
-     x86_64: '140c6971bbd263cc9a0d8286bfcf764c1fe6d7ac7c49e8ad0524043fcf57bbbf'
+    aarch64: '2c99f8586c90c68414d7f06dc549cf303d9f64d457514086ee6b1643214b960f',
+     armv7l: '2c99f8586c90c68414d7f06dc549cf303d9f64d457514086ee6b1643214b960f',
+       i686: '40c9a58cf08e10fc6d2dcfad4c173c8ecdd378b782ffff64f517c7d06710042d',
+     x86_64: 'b1ad10232020dd5077ac36888c1db8ac105466f27c5e428a3a0f294e33419392'
   })
 
   depends_on 'brotli' # R
+  depends_on 'bzip2' # R
   depends_on 'ca_certificates' # L
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
@@ -32,16 +33,22 @@ class Wget < Autotools
   depends_on 'libnghttp2' # R
   depends_on 'libpsl' # R
   depends_on 'lzlib' # R
-  depends_on 'openssl' # R
   depends_on 'pcre2' # R
   depends_on 'util_linux' => :build
+  depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  configure_options '--with-ssl=openssl'
+  configure_options '--enable-year2038 \
+                  --with-openssl=no \
+                  --with-ssl=gnutls \
+                  --without-libidn \
+                  --with-bzip2 \
+                  --with-lzma'
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     FileUtils.ln_sf "#{CREW_PREFIX}/bin/wget2", "#{CREW_DEST_PREFIX}/bin/wget"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/wget2_noinstall"
   end
 end

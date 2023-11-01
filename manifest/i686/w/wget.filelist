@@ -1,6 +1,5 @@
 /usr/local/bin/wget
 /usr/local/bin/wget2
-/usr/local/bin/wget2_noinstall
 /usr/local/include/wget.h
 /usr/local/include/wgetver.h
 /usr/local/lib/libwget.a
