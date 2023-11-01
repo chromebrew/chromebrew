@@ -5,7 +5,14 @@
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
 
 # Fix missing $PATH not added in install.sh
-if !system("grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path") || Gem::Version.new(CREW_VERSION.to_s) < Gem::Version.new('1.36.4')
+@need_path = false
+if !File.file?("#{CREW_PREFIX}/etc/env.d/path")
+  @need_path = true
+elsif !system("grep -q '$PATH' #{CREW_PREFIX}/etc/env.d/path") || Gem::Version.new(CREW_VERSION.to_s) < Gem::Version.new('1.36.4')
+  @need_path = true
+end
+if @need_path
+  FileUtils.mkdir_p "#{CREW_PREFIX}/etc/env.d"
   File.write "#{CREW_PREFIX}/etc/env.d/path", <<~ENVD_PATH_EOF
     ## Inserted by Chromebrew version #{CREW_VERSION}
     PATH=#{CREW_PREFIX}/bin:#{CREW_PREFIX}/sbin:#{CREW_PREFIX}/share/musl/bin:$PATH
