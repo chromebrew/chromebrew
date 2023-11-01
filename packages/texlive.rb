@@ -5,19 +5,17 @@ class Texlive < Package
   homepage 'https://www.tug.org/texlive/'
   version '20230319'
   license 'GPL-2 and GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_armv7l/texlive-20230319-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_armv7l/texlive-20230319-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_i686/texlive-20230319-chromeos-i686.tar.zst',
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texlive/20230319_x86_64/texlive-20230319-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '5136c02c438be3d419c50990a058cde110a0dd144088d6c650e0dc6bedae037e',
      armv7l: '5136c02c438be3d419c50990a058cde110a0dd144088d6c650e0dc6bedae037e',
-       i686: '1ebfd100a2d680d41e30d46d88f558d0af6c08985470a900c7c0de1d981cd215',
      x86_64: '9dc5195868f9de7afa9804028dec264e2926fda6966792e941c19a7154d28dce'
   })
 
