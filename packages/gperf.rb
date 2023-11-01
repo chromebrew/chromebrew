@@ -1,33 +1,37 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gperf < Package
+class Gperf < Autotools
   description 'GNU gperf is a perfect hash function generator.'
   homepage 'https://www.gnu.org/software/gperf/'
-  version '3.1'
+  version '3.2-a02b465'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz'
-  source_sha256 '588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2'
+  source_url 'https://git.savannah.gnu.org/gitweb/?p=gperf.git;a=snapshot;h=a02b4653ee52990b22ad887607dcb881e1625258;sf=tgz'
+  source_sha256 '2a2634e8f04cd37f310eaa2c4736c18a21e06f435b91f66c9034a70e9d62fff9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_armv7l/gperf-3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_i686/gperf-3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.1_x86_64/gperf-3.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.2-a02b465_armv7l/gperf-3.2-a02b465-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.2-a02b465_armv7l/gperf-3.2-a02b465-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.2-a02b465_i686/gperf-3.2-a02b465-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gperf/3.2-a02b465_x86_64/gperf-3.2-a02b465-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4515671860504871812106df28e025e75ba47c8068d1183e2d9e2baf743c94d4',
-     armv7l: '4515671860504871812106df28e025e75ba47c8068d1183e2d9e2baf743c94d4',
-       i686: 'cc740abbac1d7bfff9886c0993a59bcbb5735cb7bcec09ab04a3c036cb3df2aa',
-     x86_64: '50d2087a5d7c41451ba6320dd8614da47582e4a01b53a9be39041a4b0e10733b'
+    aarch64: '856d1b4130417459b22d5da15eee2bd04b27d6d2e52a473a5ec7add736ef34be',
+     armv7l: '856d1b4130417459b22d5da15eee2bd04b27d6d2e52a473a5ec7add736ef34be',
+       i686: '095f630631ab8126d36cd655fa2db5049625bebae5e68bba8ac443af96c42955',
+     x86_64: '7c0e8b3a2f12543adb7e5f3025c58d8059f7b98ec74529db76324e7dafa45ad6'
   })
 
-  def self.build
-    system './configure'
-    system 'make'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'wget' => :build
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.patch
+    system 'tar --strip-components=1 -xf gitweb'
+    # doc generation requires newer tex from glibc 2.28...
+    system "sed -i '/gperf.texi/d' configure.ac"
+    system "sed -i 's,tests doc],tests],' configure.ac"
+    system "cat configure.ac | tac | sed '/doc/,+2d' | tac > configure.ac.new && mv configure.ac.new configure.ac"
+    system './autopull.sh'
   end
 end
