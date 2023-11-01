@@ -66,6 +66,9 @@ Metrics/ParameterLists:
 Layout/LineContinuationLeadingSpace:
   Enabled: false
 
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
+
 Lint/EmptyBlock:
   Enabled: false
 
