@@ -1,23 +1,23 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Tesseract < Package
+class Tesseract < CMake
   description 'A neural net (LSTM) based OCR engine which is focused on line recognition & an older OCR engine which recognizes character patterns.'
   homepage 'https://github.com/tesseract-ocr/tesseract'
-  version '5.3.1'
+  version '5.3.3'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/tesseract-ocr/tesseract.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.1_armv7l/tesseract-5.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.1_armv7l/tesseract-5.3.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.1_x86_64/tesseract-5.3.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.3_armv7l/tesseract-5.3.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.3_armv7l/tesseract-5.3.3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.3_x86_64/tesseract-5.3.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7822dc17500f27a28b76ac88637578a262d3e6f5061f7e5c086535d0162eb378',
-     armv7l: '7822dc17500f27a28b76ac88637578a262d3e6f5061f7e5c086535d0162eb378',
-     x86_64: '98d8715bf3f19ac7c32bafb76d6664117ecb964d71f0c20bfcf33c4e913917b6'
+    aarch64: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
+     armv7l: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
+     x86_64: '29ae9b0d29c8959b42e53d5676c5c29b815dc74eb92e7b814e7cf390265a5957'
   })
 
   depends_on 'acl' => :build
@@ -25,7 +25,7 @@ class Tesseract < Package
   depends_on 'attr' => :build
   depends_on 'brotli' => :build
   depends_on 'bzip2' => :build
-  depends_on 'cairo' => :build
+  depends_on 'cairo' # R
   depends_on 'c_ares' => :build
   depends_on 'curl' # R
   depends_on 'docbook_xsl' => :build
@@ -35,7 +35,6 @@ class Tesseract < Package
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
   depends_on 'giflib' # R
-  depends_on 'glib' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'harfbuzz' # R
@@ -66,17 +65,7 @@ class Tesseract < Package
 
   git_fetchtags
 
-  def self.build
-    system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-        -DBUILD_SHARED_LIBS=ON \
+  cmake_options "-DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
-        -DENABLE_LTO=ON \
-        -Wno-dev \
-        -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+        -DENABLE_LTO=ON"
 end

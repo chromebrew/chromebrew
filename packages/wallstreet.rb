@@ -15,8 +15,14 @@ class Wallstreet < Package
   depends_on 'libcaca'
   depends_on 'newsboat'
   depends_on 'ticker'
-  depends_on 'wget'
+  depends_on 'wget2'
   depends_on 'w3m'
+
+  def self.preflight
+    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.32')
+
+    abort "Wallstreet requires glibc 2.32. The current glibc version is #{LIBC_VERSION}.".lightred
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"

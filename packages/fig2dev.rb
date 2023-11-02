@@ -1,49 +1,35 @@
 # Adapted from Arch Linux fig2dev PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/fig2dev/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Fig2dev < Package
+class Fig2dev < Autotools
   description 'Format conversion utility that can be used with xfig'
   homepage 'http://mcj.sourceforge.net/'
-  version '3.2.8b'
+  version '3.2.9'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://downloads.sourceforge.net/mcj/fig2dev-#{version}.tar.xz"
-  source_sha256 '418a164aa9fad72d25bb4fec8d7b452fe3a2f12f990cf22e05c0eb16cecb68cb'
+  source_sha256 '15e246c8d13cc72de25e08314038ad50ce7d2defa9cf1afc172fd7f5932090b1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.8b_armv7l/fig2dev-3.2.8b-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.8b_armv7l/fig2dev-3.2.8b-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.8b_i686/fig2dev-3.2.8b-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.8b_x86_64/fig2dev-3.2.8b-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.9_armv7l/fig2dev-3.2.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.9_armv7l/fig2dev-3.2.9-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fig2dev/3.2.9_x86_64/fig2dev-3.2.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '7d58afbf61ec04863fb2c9c1c3f604a5f585ca0e3927e88de1c350497bb5c916',
-     armv7l: '7d58afbf61ec04863fb2c9c1c3f604a5f585ca0e3927e88de1c350497bb5c916',
-       i686: 'ca06980b6095bddc69acfc9f9cc5b1ef42d6d60b3f2c0d4e36c55c57090db2af',
-     x86_64: '4a08b8d9b7a40236308af595d94f08e9043bb7f526fdbc51125768eef21efbba'
+    aarch64: '2c33988219b2126531fe03fcdae6141ff718fb0787a90f60dc976c7d830d9606',
+     armv7l: '2c33988219b2126531fe03fcdae6141ff718fb0787a90f60dc976c7d830d9606',
+     x86_64: '292bf3bdbb1d20b043bf6978ce8a94cf7bd35e609a159ce577bedc0cdd9c47c6'
   })
 
-  depends_on 'libpng'
-  depends_on 'libxpm'
-  depends_on 'bc'
-  depends_on 'netpbm'
-  depends_on 'ghostscript'
+  depends_on 'libpng' => :build
+  depends_on 'libxpm' => :build
+  depends_on 'bc' => :build
+  depends_on 'netpbm' => :build
+  depends_on 'ghostscript' => :build
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure \
-      #{CREW_OPTIONS} \
-      --enable-transfig"
-    system "make FIG2DEV_LIBDIR=#{CREW_PREFIX}/share/fig2dev \
+  configure_options '--enable-transfig'
+  pre_configure_options "FIG2DEV_LIBDIR=#{CREW_PREFIX}/share/fig2dev \
       XFIGLIBDIR=#{CREW_PREFIX}/share/xfig"
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} \
-    XFIGLIBDIR=#{CREW_PREFIX}/share/xfig \
-    FIG2DEV_LIBDIR=#{CREW_PREFIX}/share/fig2dev \
-    MANPATH=#{CREW_MAN_PREFIX} \
-    install"
-  end
 end

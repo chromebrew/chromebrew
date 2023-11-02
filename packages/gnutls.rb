@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Gnutls < Autotools
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.8.1'
+  version '3.8.1-1'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.1.tar.xz'
   source_sha256 'ba8b9e15ae20aba88f44661978f5b5863494316fe7e722ede9d069fe6294829c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1_armv7l/gnutls-3.8.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1_armv7l/gnutls-3.8.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1_i686/gnutls-3.8.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1_x86_64/gnutls-3.8.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_armv7l/gnutls-3.8.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_armv7l/gnutls-3.8.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_i686/gnutls-3.8.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_x86_64/gnutls-3.8.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'b53214605f6bfc7c29e7587de3faa9c298908d8445bdd711df6af45a6e21944c',
-     armv7l: 'b53214605f6bfc7c29e7587de3faa9c298908d8445bdd711df6af45a6e21944c',
-       i686: 'b07688fbf3a63cc181f64ae23eddef8040491b4177a61fc8a6a80283972c70bc',
-     x86_64: '912eabd0f3c0003a6bcd24b527208ac9efb637f5930f822557bad94317174a11'
+    aarch64: 'b4ee521f0f9f8f35e5198e1c28d884fbaca674a9c17d19bcf1327695857135a9',
+     armv7l: 'b4ee521f0f9f8f35e5198e1c28d884fbaca674a9c17d19bcf1327695857135a9',
+       i686: '11a0532b28c6f962f058ae126e7adb9873b73978d96f317e248abc6ab8f4ff32',
+     x86_64: '895c33db8c7b5e4757dfeae885ae55c9df8add73c9fa5ddbd529c475adbe883d'
   })
 
   depends_on 'brotli' # R

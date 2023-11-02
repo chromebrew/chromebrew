@@ -1,43 +1,33 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Guile < Package
+class Guile < Autotools
   description 'Guile is designed to help programmers create flexible applications that can be extended by users or other programmers with plug-ins, modules, or scripts.'
   homepage 'http://www.gnu.org/software/guile/'
-  version '2.2.3-1'
+  version '3.0.9'
   license 'LGPL-3+'
   compatibility 'all'
-  source_url 'https://ftp.gnu.org/gnu/guile/guile-2.2.3.tar.xz'
-  source_sha256 '8353a8849cd7aa77be66af04bd6bf7a6207440d2f8722e46672232bb9f0a4086'
+  source_url 'https://ftpmirror.gnu.org/guile/guile-3.0.9.tar.xz'
+  source_sha256 '1a2625ac72b2366e95792f3fe758fd2df775b4044a90a4a9787326e66c0d750d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/2.2.3-1_armv7l/guile-2.2.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/2.2.3-1_armv7l/guile-2.2.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/2.2.3-1_i686/guile-2.2.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/2.2.3-1_x86_64/guile-2.2.3-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_armv7l/guile-3.0.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_armv7l/guile-3.0.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_i686/guile-3.0.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_x86_64/guile-3.0.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '418eb676b562f77b80e3dae974f35159c0f844284c8e98f02d6763ff08924d4e',
-     armv7l: '418eb676b562f77b80e3dae974f35159c0f844284c8e98f02d6763ff08924d4e',
-       i686: '18c2f42f3c60a6474854b89065c7d2de518693a1727a5dfd793fd76313a78ece',
-     x86_64: '11a28901148adef29d90c96b6b28e2ff0caee7479588683cf3a919b9cea825e9'
+    aarch64: '906f359048d339cde70258acc75d01474c7fb7b45d97f3c8098111c0d688aae0',
+     armv7l: '906f359048d339cde70258acc75d01474c7fb7b45d97f3c8098111c0d688aae0',
+       i686: 'e9ff3777e595be590a6de7920496b2263647bb1a8938ffa04c6be7bf07b6a574',
+     x86_64: '61d770df47c21761e6a35dd1d36cb50d70088e4f51988fa4636b69518a98c1f4'
   })
 
+  depends_on 'bdwgc' # R
   depends_on 'diffutils' => :build
-  depends_on 'libtool'
-  depends_on 'bdwgc'
-  depends_on 'libffi'
-  depends_on 'libunistring'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-dependency-tracking'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    system "gzip -9 #{CREW_DEST_PREFIX}/share/man/man1/guile.1"
-  end
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
+  depends_on 'libffi' # R
+  depends_on 'libtool' => :build
+  depends_on 'libunistring' # R
+  depends_on 'readline' # R
 end
