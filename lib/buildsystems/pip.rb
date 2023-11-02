@@ -18,6 +18,6 @@ class Pip < Package
       @destpath = "#{CREW_DEST_DIR.chomp('/')}#{@pip_path}"
       FileUtils.install @pip_path, @destpath
     end
-    eval @pip_install_extras
+    eval @pip_install_extras if @pip_install_extras
   end
 end
