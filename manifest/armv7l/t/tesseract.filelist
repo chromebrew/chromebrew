@@ -32,7 +32,7 @@
 /usr/local/lib/cmake/tesseract/TesseractTargets-release.cmake
 /usr/local/lib/libcommon_training.so
 /usr/local/lib/libtesseract.so
-/usr/local/lib/libtesseract.so.5.3.1
+/usr/local/lib/libtesseract.so.5.3.3
 /usr/local/lib/libunicharset_training.so
 /usr/local/lib/pkgconfig/tesseract.pc
 /usr/local/share/tessdata/configs/alto

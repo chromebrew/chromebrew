@@ -10,10 +10,10 @@ class Wget2 < Autotools
   source_sha256 'bc034194b512bb83ce0171d15a8db33e1c5c3ab8b3e343e1e6f2cf48f9154fad'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/2.1.0_armv7l/wget-2.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/2.1.0_armv7l/wget-2.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/2.1.0_i686/wget-2.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget/2.1.0_x86_64/wget-2.1.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_armv7l/wget2-2.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_armv7l/wget2-2.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_i686/wget2-2.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_x86_64/wget2-2.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '2c99f8586c90c68414d7f06dc549cf303d9f64d457514086ee6b1643214b960f',
