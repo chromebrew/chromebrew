@@ -17,7 +17,7 @@ class Py3_azure_cli < Pip
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @azureenv = <<~AZUREEOF
       # Microsoft Azure CLI bash completion
-      source #{CREW_PREFIX}/share/azure-cli/az.completion
+      source #{CREW_PREFIX}/bin/az.completion.sh
     AZUREEOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
   EOF
