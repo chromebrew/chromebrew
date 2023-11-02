@@ -16,4 +16,11 @@ class Alive < Autotools
 
   depends_on 'guile' # R
   depends_on 'inetutils' # L
+
+  def self.preflight
+    puts "You need to be in the VT-2 shell for the install of alive to work.".lightblue
+    puts "Make sure you have used Ctrl-Alt-{F2/Right arrow/Refresh} to switch to VT-2.".lightblue
+    puts "Then login as 'chronos' and install alive with 'crew install alive'.".lightblue
+    puts "You can then switch back to your regular Chromeos windows with Ctrl-Alt-{F1/Left arrow}.".lightblue
+  end
 end
