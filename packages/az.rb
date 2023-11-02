@@ -1,7 +1,7 @@
 require 'package'
 require_relative 'py3_azure_cli'
 
-class Azure_cli < Package
+class Az < Package
   description Py3_azure_cli.description.to_s
   homepage Py3_azure_cli.homepage.to_s
   version Py3_azure_cli.version.to_s
