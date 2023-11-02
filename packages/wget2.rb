@@ -16,10 +16,10 @@ class Wget2 < Autotools
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_x86_64/wget2-2.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2c99f8586c90c68414d7f06dc549cf303d9f64d457514086ee6b1643214b960f',
-     armv7l: '2c99f8586c90c68414d7f06dc549cf303d9f64d457514086ee6b1643214b960f',
-       i686: '40c9a58cf08e10fc6d2dcfad4c173c8ecdd378b782ffff64f517c7d06710042d',
-     x86_64: 'b1ad10232020dd5077ac36888c1db8ac105466f27c5e428a3a0f294e33419392'
+    aarch64: '09e08370f029c62c46d1b5c1e308d77a9b195891e350c887252e1dc79b2380be',
+     armv7l: '09e08370f029c62c46d1b5c1e308d77a9b195891e350c887252e1dc79b2380be',
+       i686: '3f1890cd75d06060a4cbc6c7abe5ab1f8ebdfade7fc9fcc899078eb27b396d32',
+     x86_64: '7f1da024c4e1d6c8492906e1bcb9fcf627ec283b12c477e7c84d8e5ded28b886'
   })
 
   depends_on 'brotli' # R
