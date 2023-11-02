@@ -1,6 +1,6 @@
 require 'buildsystems/autotools'
 
-class Wget < Autotools
+class Wget2 < Autotools
   description 'GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS.'
   homepage 'https://www.gnu.org/software/wget/'
   version '2.1.0'

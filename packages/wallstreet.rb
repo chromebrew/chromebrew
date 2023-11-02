@@ -15,7 +15,7 @@ class Wallstreet < Package
   depends_on 'libcaca'
   depends_on 'newsboat'
   depends_on 'ticker'
-  depends_on 'wget'
+  depends_on 'wget2'
   depends_on 'w3m'
 
   def self.install

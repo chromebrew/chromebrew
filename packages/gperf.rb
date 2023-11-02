@@ -24,7 +24,7 @@ class Gperf < Autotools
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'wget' => :build
+  depends_on 'wget2' => :build
 
   def self.patch
     system 'tar --strip-components=1 -xf gitweb'

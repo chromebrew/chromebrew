@@ -10,7 +10,7 @@ class C2x < Package
   source_sha256 'f09655c732ae694f22791be89d836ddde05d3690ec44a6f096aa6bf870b2924b'
 
   depends_on 'gtk3'
-  depends_on 'wget'
+  depends_on 'wget2'
 
   no_compile_needed
 

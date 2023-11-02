@@ -26,5 +26,5 @@ class Libidn < Autotools
   depends_on 'glibc' # R
   depends_on 'gperf' => :build
   depends_on 'libunistring' # R
-  depends_on 'wget' => :build
+  depends_on 'wget2' => :build
 end

@@ -8741,7 +8741,7 @@ url: https://github.com/wayland-project/weston/releases/
 activity: medium
 ---
 kind: url
-name: wget
+name: wget2
 url: https://ftpmirror.gnu.org/wget/
 activity: low
 ---
