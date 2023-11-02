@@ -3,6 +3,8 @@ Encoding.default_internal = Encoding::UTF_8
 require 'package'
 
 class Pip < Package
+  property :pip_install_extras
+
   def self.install
     puts 'Checking for pip updates'.orange if @opt_verbose
     system 'python3 -s -m pip install -U pip', exception: false
@@ -16,5 +18,6 @@ class Pip < Package
       @destpath = "#{CREW_DEST_DIR.chomp('/')}#{@pip_path}"
       FileUtils.install @pip_path, @destpath
     end
+    eval @pip_install_extras
   end
 end
