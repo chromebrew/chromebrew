@@ -3,23 +3,23 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.42.0' # Do not use @_ver here, it will break the installer.
+  version '2.42.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.42.0.tar.xz'
-  source_sha256 '3278210e9fd2994b8484dd7e3ddd9ea8b940ef52170cdb606daa94d887c93b0d'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.42.1.tar.xz'
+  source_sha256 '8e46fa96bf35a65625d85fde50391e39bc0620d1bb39afb70b96c4a237a1a4f7'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.0_armv7l/git-2.42.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.0_armv7l/git-2.42.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.0_i686/git-2.42.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.0_x86_64/git-2.42.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_armv7l/git-2.42.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_armv7l/git-2.42.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_i686/git-2.42.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_x86_64/git-2.42.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '56b4f6bae6c88f53ef6931aeb31551acb3ef58015c35a95be1b1fb9ba9c7a286',
-     armv7l: '56b4f6bae6c88f53ef6931aeb31551acb3ef58015c35a95be1b1fb9ba9c7a286',
-       i686: '12af2f3039f871e4b76cb9b91d9f1027974f36dabe99a15ac758610af9aff12e',
-     x86_64: 'db1dd6dd3356b30dd619d75b9fa100756094a96a7dedf2e9b77a99c012469e35'
+    aarch64: '32c2b530cd907343e1ce2fc8d6216ce9d6a248e5629bdf5f5e1ef18b3ae39864',
+     armv7l: '32c2b530cd907343e1ce2fc8d6216ce9d6a248e5629bdf5f5e1ef18b3ae39864',
+       i686: 'dd84fbba4b51a7dd234f3b8095c0664067b7ce5969a8fd61e42ee2657f31dfed',
+     x86_64: '0f40d76b5876f5e396d5baf164aafde3fa54144fa470bb8bdaf0528b1f09e079'
   })
 
   depends_on 'ca_certificates' => :build
@@ -29,7 +29,6 @@ class Git < Package
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
   depends_on 'zlibpkg' # R
-
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
