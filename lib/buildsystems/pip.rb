@@ -18,9 +18,11 @@ class Pip < Package
     @py_pkg_versioned_pypi_hash = JSON.parse(@py_pkg_versioned_pypi)
     @py_pkg_deps = @py_pkg_versioned_pypi_hash['info']['requires_dist']
     puts "Installing #{@py_pkg} python dependencies with pip...".orange
-    @py_pkg_deps.each do |pip_dep|
-      puts "Installing #{pip_dep}".orange if @opt_verbose
-      system "pip install #{pip_dep}", exception: false
+    unless @py_pkg_deps.to_s.empty?
+      @py_pkg_deps.each do |pip_dep|
+        puts "Installing #{pip_dep}".orange if @opt_verbose
+        system "pip install #{pip_dep}", exception: false
+      end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
     system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install #{@py_pkg}", exception: false
