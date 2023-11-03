@@ -20,8 +20,9 @@ class Pip < Package
     puts "Installing #{@py_pkg} python dependencies with pip...".orange
     unless @py_pkg_deps.to_s.empty?
       @py_pkg_deps.each do |pip_dep|
-        puts "Installing #{pip_dep}".orange if @opt_verbose
-        system "pip install #{pip_dep}", exception: false
+        @cleaned_py_dep = pip_dep[/[^;]+/]
+        puts "Installing #{@cleaned_py_dep} using 'pip install #{@cleaned_py_dep}'".orange if @opt_verbose
+        system "pip install #{@cleaned_py_dep}", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
