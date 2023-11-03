@@ -19,17 +19,17 @@ class Pip < Package
     @py_pkg_deps = @py_pkg_versioned_pypi_hash['info']['requires_dist']
     # We don't want extra packages listed in the dependency list, since
     # those are optional.
-    @py_pkg_deps.reject! {|x| x.include?('extra ==')}
+    @py_pkg_deps.reject! {|x| x.include?('extra ==')} unless @py_pkg_deps.to_s.empty?
     unless @py_pkg_deps.to_s.empty?
       puts "Installing #{@py_pkg} python dependencies with pip...".orange
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
-        puts "  Installing: #{@cleaned_py_dep}".gray
+        puts "——Installing: #{@cleaned_py_dep}".gray
         system "python3 -s -m pip install -U #{@cleaned_py_dep} | grep -v 'Requirement already satisfied'", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
-    system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install #{@py_pkg}", exception: false
+    system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install -U #{@py_pkg} | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
