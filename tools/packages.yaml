@@ -7066,6 +7066,11 @@ url: https://github.com/pypa/pip/releases
 activity: medium
 ---
 kind: url
+name: py3_ruff
+url: https://docs.astral.sh/ruff
+activity: medium
+---
+kind: url
 name: py3_setuptools
 url: https://github.com/pypa/setuptools/releases
 activity: medium

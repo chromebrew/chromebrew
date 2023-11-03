@@ -3,13 +3,14 @@ require 'buildsystems/pip'
 class Py3_codespell < Pip
   description 'Fix common misspellings in text files.'
   homepage 'https://github.com/codespell-project/codespell'
-  @_ver = '2.2.2'
+  @_ver = '2.2.6'
   version "#{@_ver}-py3.12"
   license 'GPL-2.0'
   compatibility 'all'
   source_url 'SKIP'
 
   depends_on 'python3'
+  depends_on 'py3_ruff' # R
 
   no_compile_needed
 
