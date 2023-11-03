@@ -21,7 +21,8 @@ class Pip < Package
       puts "Installing #{@py_pkg} python dependencies with pip...".orange
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
-        puts "Installing #{@cleaned_py_dep} using 'pip install #{@cleaned_py_dep}'".orange if @opt_verbose
+        puts "Installing #{@cleaned_py_dep}...".orange
+        puts "using 'pip install #{@cleaned_py_dep}'".orange if @opt_verbose
         system "pip install #{@cleaned_py_dep} | grep -v 'Requirement already satisfied'", exception: false
       end
     end
