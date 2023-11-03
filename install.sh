@@ -181,11 +181,14 @@ BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 
-
 libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
 case ${libc_version} in
   # Append the correct packages for M113 onwards systems.
-  "2.35") BOOTSTRAP_PACKAGES="${BOOTSTRAP_PACKAGES} glibc_lib235 zlibpkg gmp";;
+  "2.35")
+    BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
+    # Recent Arm systems have a cut down system.
+    [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+  ;;
 esac
 
 # Get the URLs and hashes of the bootstrap packages.
@@ -197,7 +200,7 @@ for package in $BOOTSTRAP_PACKAGES; do
   nln=$(nl -b a -n ln "${package}.rb" | sed -n '/class/p' | head -1 | cut -c 1)
   vln=$(nl -b a -n ln "${package}.rb" | sed -n '/  version/p' | head -1 | cut -c 1)
   name=$(sed -n "${nln}s/class\(.*\)<.*/\L\1/;${nln}s/^[ \t]*//;${nln}s/[ \t]*$//p" "${package}.rb")
-  version=$(sed -n "${vln}s/version \(.*\)/\1/;${vln}s/^[ \t]*//;${vln}s/[ \t]*$//;${vln}s/ *#.*//p" "${package}.rb" | tr -d "'")
+  version=$(sed -n "${vln}p" "${package}.rb" | awk '{print $2}' | tr -d "'")
 
   # This is really ugly, FIXME after #7082 is merged.
   if [[ "${package}" == "zstd" ]] || [[ "${package}" == "crew_mvdir" ]]; then
