@@ -17,8 +17,8 @@ class Pip < Package
     @py_pkg_versioned_pypi = `curl -Ls https://pypi.org/pypi/#{@py_pkg}/#{@py_pkg_version}/json`.chomp
     @py_pkg_versioned_pypi_hash = JSON.parse(@py_pkg_versioned_pypi)
     @py_pkg_deps = @py_pkg_versioned_pypi_hash['info']['requires_dist']
-    puts "Installing #{@py_pkg} python dependencies with pip...".orange
     unless @py_pkg_deps.to_s.empty?
+      puts "Installing #{@py_pkg} python dependencies with pip...".orange
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "Installing #{@cleaned_py_dep} using 'pip install #{@cleaned_py_dep}'".orange if @opt_verbose
