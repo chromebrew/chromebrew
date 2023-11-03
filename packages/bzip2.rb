@@ -3,25 +3,26 @@ require 'package'
 class Bzip2 < Package
   description 'bzip2 is a freely available, patent free, high-quality data compressor.'
   homepage 'http://www.bzip.org/'
-  version '1.0.8-1'
+  version '1.0.8-2'
   license 'BZIP2'
   compatibility 'all'
   source_url 'https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz'
   source_sha256 'ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_armv7l/bz2-1.0.8-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_armv7l/bz2-1.0.8-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_i686/bz2-1.0.8-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bz2/1.0.8-1_x86_64/bz2-1.0.8-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_armv7l/bzip2-1.0.8-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_armv7l/bzip2-1.0.8-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_i686/bzip2-1.0.8-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_x86_64/bzip2-1.0.8-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '98fec974c6fda9d4f12988db8eed1338d136fe78866f80047db70fe0bab15bcf',
-     armv7l: '98fec974c6fda9d4f12988db8eed1338d136fe78866f80047db70fe0bab15bcf',
-       i686: '2beb95c3ec8455c5eda6a4e6be3baa00a5f8ef24c9561f58750758ba62e9cc8e',
-     x86_64: 'e5dee3da36d88d602496925888f966d47453d4a52e684c4bc6a982906b3b9f32'
+    aarch64: '5e4818a8ab4fbb31e0205cbf9fa8f919af3ab2216093a9c5c15416620d24089c',
+     armv7l: '5e4818a8ab4fbb31e0205cbf9fa8f919af3ab2216093a9c5c15416620d24089c',
+       i686: 'e7b6d78ceb1def87c943ba95dd1dfa0463304373ae07a1d23e5350216f47ae39',
+     x86_64: '34ba6b40cb97ba231f526e9336a949457698f647273b2883d2ead8cd3a07beae'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
   def self.patch
