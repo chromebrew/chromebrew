@@ -10,6 +10,7 @@ class Py3_azure_cli < Pip
   source_url 'SKIP'
 
   depends_on 'python3'
+  depends_on 'py3_cryptography'
   depends_on 'rust' => :build
 
   no_compile_needed
