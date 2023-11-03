@@ -10,7 +10,6 @@ class Py3_codespell < Pip
   source_url 'SKIP'
 
   depends_on 'python3'
-  depends_on 'py3_ruff' # R
 
   no_compile_needed
 
