@@ -8,7 +8,7 @@ class Pip < Package
 
   def self.install
     puts 'Checking for pip updates'.orange if @opt_verbose
-    system 'python3 -s -m pip install -U pip', exception: false
+    system "python3 -s -m pip install -U pip | grep -v 'Requirement already satisfied'", exception: false
     @py_pkg = name.gsub('py3_', '')
     puts "Checking for #{@py_pkg} python dependencies...".orange if @opt_verbose
     @py_pkg_pypi = `curl -Ls https://pypi.org/pypi/#{@py_pkg}/json`.chomp
