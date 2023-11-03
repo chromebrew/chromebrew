@@ -29,7 +29,7 @@ class Pip < Package
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
-    system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install -U #{@py_pkg}", exception: false
+    system "MAKEFLAGS=-j#{CREW_NPROC} python -s -m pip install -U #{@py_pkg} | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
