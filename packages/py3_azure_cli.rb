@@ -10,17 +10,19 @@ class Py3_azure_cli < Pip
   source_url 'SKIP'
 
   depends_on 'python3'
+  depends_on 'py3_cryptography'
+  depends_on 'rust' => :build
 
   no_compile_needed
 
-  pip_install_extras <<~EOF
+  pip_install_extras <<~EXTRAS_EOF
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @azureenv = <<~AZUREEOF
       # Microsoft Azure CLI bash completion
       source #{CREW_PREFIX}/bin/az.completion.sh
     AZUREEOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
-  EOF
+  EXTRAS_EOF
 
   def self.postinstall
     puts "\nType 'source ~/.bashrc' to complete the installation.\n".lightblue
