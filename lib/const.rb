@@ -70,8 +70,8 @@ CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # CREW_IS_INTEL for x86 architectures. Note that a QEMU_EMULATED check
 # is not relevant here since qemu can be configured to pass through a
 # cpuinfo vendor_id.
-CREW_IS_AMD = ARCH == 'x86_64' ? ( CREW_CPU_VENDOR != 'unknown' and CPUINFO['vendor_id'].include?('AuthenticAMD') ) : false
-CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? ( CREW_CPU_VENDOR == 'unknown' or CPUINFO['vendor_id'].include?('GenuineIntel') ) : false
+CREW_IS_AMD = CREW_CPU_VENDOR.eql?('AuthenticAMD')
+CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
@@ -87,19 +87,19 @@ else
   CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
 end
 
-CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
-CREW_MAN_PREFIX = "#{CREW_PREFIX}/share/man"
-CREW_LIB_PATH = "#{CREW_PREFIX}/lib/crew/"
-CREW_PACKAGES_PATH = "#{CREW_LIB_PATH}packages/"
-CREW_CONFIG_PATH = "#{CREW_PREFIX}/etc/crew/"
-CREW_META_PATH = "#{CREW_CONFIG_PATH}meta/"
-CREW_BREW_DIR = "#{CREW_PREFIX}/tmp/crew/"
-CREW_DEST_DIR = "#{CREW_BREW_DIR}dest"
-CREW_DLL_PREFIX = "#{CREW_LIB_PREFIX}/wine"
-CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
-CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
-CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
-CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
+CREW_LIB_PREFIX      = File.join(CREW_PREFIX, ARCH_LIB)
+CREW_MAN_PREFIX      = File.join(CREW_PREFIX, 'share/man/')
+CREW_LIB_PATH        = File.join(CREW_PREFIX, 'lib/crew/')
+CREW_PACKAGES_PATH   = File.join(CREW_LIB_PATH, 'packages/')
+CREW_CONFIG_PATH     = File.join(CREW_PREFIX, 'etc/crew/')
+CREW_META_PATH       = File.join(CREW_CONFIG_PATH, 'meta/')
+CREW_BREW_DIR        = File.join(CREW_PREFIX, 'tmp/crew/')
+CREW_DEST_DIR        = File.join(CREW_BREW_DIR, 'dest/')
+CREW_DLL_PREFIX      = File.join(CREW_LIB_PREFIX, 'wine/')
+CREW_DEST_PREFIX     = File.join(CREW_DEST_DIR, CREW_PREFIX)
+CREW_DEST_LIB_PREFIX = File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
+CREW_DEST_DLL_PREFIX = File.join(CREW_DEST_PREFIX, CREW_DLL_PREFIX)
+CREW_DEST_MAN_PREFIX = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
 repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
