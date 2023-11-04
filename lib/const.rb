@@ -102,14 +102,11 @@ CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-repo_root = `cd ../..; git rev-parse --show-toplevel 2> /dev/null`.chomp if repo_root.empty?
-
-CREW_LOCAL_REPO_ROOT = repo_root
+CREW_LOCAL_REPO_ROOT = `cd #{CREW_LIB_PATH} && git rev-parse --show-toplevel 2> /dev/null`.chomp
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-CREW_CONST_GIT_COMMIT = `cd #{CREW_LIB_PATH}; git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+CREW_CONST_GIT_COMMIT = `cd #{CREW_LIB_PATH} && git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
 
 CREW_LOCAL_REPO_BASE = File.basename(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_MANIFEST_PATH = ENV.fetch('CREW_LOCAL_MANIFEST_PATH', "#{CREW_LOCAL_REPO_ROOT}/manifest")
