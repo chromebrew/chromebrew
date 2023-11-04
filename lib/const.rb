@@ -112,35 +112,31 @@ CREW_LOCAL_REPO_ROOT = repo_root
 CREW_CONST_GIT_COMMIT = `cd #{CREW_LIB_PATH}; git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
 
 CREW_LOCAL_REPO_BASE = File.basename(CREW_LOCAL_REPO_ROOT)
-CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
-                             "#{CREW_LOCAL_REPO_ROOT}/manifest"
-                           else
-                             ENV.fetch('CREW_LOCAL_MANIFEST_PATH', nil)
-                           end
+CREW_LOCAL_MANIFEST_PATH = ENV.fetch('CREW_LOCAL_MANIFEST_PATH', "#{CREW_LOCAL_REPO_ROOT}/manifest")
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
-CREW_DEST_MUSL_PREFIX = CREW_DEST_DIR + CREW_MUSL_PREFIX
+CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
 MUSL_LIBC_VERSION = `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1 >/dev/null`[/\bVersion\s+\K\S+/] || nil
 
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 
 CREW_CACHE_DIR = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
-CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
-CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
+CREW_CACHE_BUILD = ENV['CREW_CACHE_BUILD']
+CREW_CACHE_FAILED_BUILD = ENV['CREW_CACHE_FAILED_BUILD']
 
 # Set CREW_NPROC from environment variable or `nproc`
 CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
 
 # Set following as boolean if environment variables exist.
-CREW_CACHE_ENABLED                   = ENV['CREW_CACHE_ENABLED']&.eql?('1')
-CREW_CONFLICTS_ONLY_ADVISORY         = ENV['CREW_CONFLICTS_ONLY_ADVISORY']&.eql?('1')         # or use conflicts_ok
-CREW_DISABLE_ENV_OPTIONS             = ENV['CREW_DISABLE_ENV_OPTIONS']&.eql('1')              # or use no_env_options
-CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']&.eql?('1') # or use no_fhs
-CREW_NOT_COMPRESS                    = ENV['CREW_NOT_COMPRESS']&.eql?('1')                    # or use no_compress
-CREW_NOT_LINKS                       = ENV['CREW_NOT_LINKS']&.eql?('1')                       # or use no_links
-CREW_NOT_STRIP                       = ENV['CREW_NOT_STRIP']&.eql?('1')                       # or use no_strip
-CREW_NOT_SHRINK_ARCHIVE              = ENV['CREW_NOT_SHRINK_ARCHIVE']&.eql?('1')              # or use no_shrink
+CREW_CACHE_ENABLED                   = !!ENV['CREW_CACHE_ENABLED']&.eql?('1')
+CREW_CONFLICTS_ONLY_ADVISORY         = !!ENV['CREW_CONFLICTS_ONLY_ADVISORY']&.eql?('1')         # or use conflicts_ok
+CREW_DISABLE_ENV_OPTIONS             = !!ENV['CREW_DISABLE_ENV_OPTIONS']&.eql('1')              # or use no_env_options
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !!ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']&.eql?('1') # or use no_fhs
+CREW_NOT_COMPRESS                    = !!ENV['CREW_NOT_COMPRESS']&.eql?('1')                    # or use no_compress
+CREW_NOT_LINKS                       = !!ENV['CREW_NOT_LINKS']&.eql?('1')                       # or use no_links
+CREW_NOT_STRIP                       = !!ENV['CREW_NOT_STRIP']&.eql?('1')                       # or use no_strip
+CREW_NOT_SHRINK_ARCHIVE              = !!ENV['CREW_NOT_SHRINK_ARCHIVE']&.eql?('1')              # or use no_shrink
 
 # Allow git constants to be set from environment variables (for testing)
 CREW_REPO   = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
@@ -156,10 +152,10 @@ CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                    end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
-CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR']&.eql?('1')
+CREW_DISABLE_MVDIR = !!ENV['CREW_DISABLE_MVDIR']&.eql?('1')
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = ENV['CREW_USE_CURL']&.eql?('1')
+CREW_USE_CURL = !!ENV['CREW_USE_CURL']&.eql?('1')
 
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
@@ -168,7 +164,7 @@ CREW_DOWNLOADER = ENV['CREW_DOWNLOADER']
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 # show download progress bar or not (only applied when using the default ruby downloader)
-CREW_HIDE_PROGBAR = ENV['CREW_HIDE_PROGBAR']&.eql?('1')
+CREW_HIDE_PROGBAR = !!ENV['CREW_HIDE_PROGBAR']&.eql?('1')
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
