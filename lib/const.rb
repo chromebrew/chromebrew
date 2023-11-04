@@ -114,7 +114,7 @@ CREW_LOCAL_MANIFEST_PATH = ENV.fetch('CREW_LOCAL_MANIFEST_PATH', "#{CREW_LOCAL_R
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
 CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
-MUSL_LIBC_VERSION = `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1 >/dev/null`[/\bVersion\s+\K\S+/] || nil
+MUSL_LIBC_VERSION = `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1 >/dev/null`[/\bVersion\s+\K\S+/]
 
 CREW_DEST_HOME = CREW_DEST_DIR + HOME
 
