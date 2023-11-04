@@ -8,7 +8,8 @@ class Crew_sudo < Package
   compatibility 'all'
 
   source_url 'https://github.com/supechicken/crew-sudo.git'
-  git_hashtag '1.0'
+  #git_hashtag '1.0'
+  git_branch 'main'
 
   no_compile_needed
 
