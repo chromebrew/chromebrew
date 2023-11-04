@@ -29,7 +29,7 @@ class Crew_sudo < Package
   end
 
   def self.postinstall
-    warn <<~EOT.lightblue
+    ExitMessage.add <<~EOT
 
       In order to make sudo work properly, the crew-sudo daemon needs to
       start in the VT-2 shell every boot by:
