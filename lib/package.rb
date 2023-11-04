@@ -206,13 +206,8 @@ class Package
     end
   end
 
-  def self.get_binary_url(architecture)
-    return @binary_url.key?(architecture) ? @binary_url[architecture] : nil
-  end
-
-  def self.get_source_url(architecture)
-    return @source_url.key?(architecture) ? @source_url[architecture] : nil
-  end
+  def self.get_binary_url(architecture) = @binary_url.key?(architecture) ? @binary_url[architecture] : nil
+  def self.get_source_url(architecture) = @source_url.key?(architecture) ? @source_url[architecture] : nil
 
   def self.get_sha256(architecture)
     if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
@@ -224,29 +219,11 @@ class Package
     end
   end
 
-  def self.get_binary_sha256(architecture)
-    return @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
-  end
+  def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
+  def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.get_extract_dir
-    "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
-  end
-
-  def self.is_binary?(architecture)
-    if !@build_from_source && @binary_url && @binary_url.key?(architecture)
-      return true
-    else
-      return false
-    end
-  end
-
-  def self.is_source?(architecture)
-    if is_binary?(architecture) || is_fake?
-      return false
-    else
-      return true
-    end
-  end
+  def self.is_binary?(architecture) = (!@build_from_source && @binary_url && @binary_url.key?(architecture))
+  def self.is_source?(architecture) = (is_binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?
