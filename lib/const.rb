@@ -53,7 +53,7 @@ LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
 CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
 
 if CREW_PREFIX == '/usr/local'
-  CREW_BUILD_FROM_SOURCE = ENV['CREW_BUILD_FROM_SOURCE']&.eql?('1')
+  CREW_BUILD_FROM_SOURCE = !!ENV['CREW_BUILD_FROM_SOURCE']&.eql?('1')
   HOME = Dir.home
 else
   CREW_BUILD_FROM_SOURCE = true
@@ -74,7 +74,7 @@ CREW_IS_AMD = ARCH == 'x86_64' ? ( CREW_CPU_VENDOR != 'unknown' and CPUINFO['ven
 CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? ( CREW_CPU_VENDOR == 'unknown' or CPUINFO['vendor_id'].include?('GenuineIntel') ) : false
 
 # Use sane minimal defaults if in container and no override specified.
-if CREW_IN_CONTAINER && !ENV['CREW_KERNEL_VERSION']
+if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
   case ARCH
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
@@ -204,7 +204,7 @@ when 'x86_64'
 end
 
 CREW_LINKER = ENV.fetch('CREW_LINKER', 'mold')
-CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', nil)
+CREW_LINKER_FLAGS = ENV['CREW_LINKER_FLAGS']
 
 CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
 CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto=auto"
