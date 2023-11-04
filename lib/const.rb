@@ -53,7 +53,7 @@ LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
 CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
 
 if CREW_PREFIX == '/usr/local'
-  CREW_BUILD_FROM_SOURCE = ENV['CREW_BUILD_FROM_SOURCE'].eql?('1')
+  CREW_BUILD_FROM_SOURCE = ENV['CREW_BUILD_FROM_SOURCE']&.eql?('1')
   HOME = Dir.home
 else
   CREW_BUILD_FROM_SOURCE = true
@@ -62,7 +62,7 @@ end
 
 CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
 
-CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV['CREW_IN_CONTAINER'].eql?('1')
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV['CREW_IN_CONTAINER']&.eql?('1')
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
@@ -133,14 +133,14 @@ CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
 
 # Set following as boolean if environment variables exist.
-CREW_CACHE_ENABLED                   = ENV['CREW_CACHE_ENABLED'].eql?('1')
-CREW_CONFLICTS_ONLY_ADVISORY         = ENV['CREW_CONFLICTS_ONLY_ADVISORY'].eql?('1')         # or use conflicts_ok
-CREW_DISABLE_ENV_OPTIONS             = ENV['CREW_DISABLE_ENV_OPTIONS'].eql('1')              # or use no_env_options
-CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].eql?('1') # or use no_fhs
-CREW_NOT_COMPRESS                    = ENV['CREW_NOT_COMPRESS'].eql?('1')                    # or use no_compress
-CREW_NOT_LINKS                       = ENV['CREW_NOT_LINKS'].eql?('1')                       # or use no_links
-CREW_NOT_STRIP                       = ENV['CREW_NOT_STRIP'].eql?('1')                       # or use no_strip
-CREW_NOT_SHRINK_ARCHIVE              = ENV['CREW_NOT_SHRINK_ARCHIVE'].eql?('1')              # or use no_shrink
+CREW_CACHE_ENABLED                   = ENV['CREW_CACHE_ENABLED']&.eql?('1')
+CREW_CONFLICTS_ONLY_ADVISORY         = ENV['CREW_CONFLICTS_ONLY_ADVISORY']&.eql?('1')         # or use conflicts_ok
+CREW_DISABLE_ENV_OPTIONS             = ENV['CREW_DISABLE_ENV_OPTIONS']&.eql('1')              # or use no_env_options
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']&.eql?('1') # or use no_fhs
+CREW_NOT_COMPRESS                    = ENV['CREW_NOT_COMPRESS']&.eql?('1')                    # or use no_compress
+CREW_NOT_LINKS                       = ENV['CREW_NOT_LINKS']&.eql?('1')                       # or use no_links
+CREW_NOT_STRIP                       = ENV['CREW_NOT_STRIP']&.eql?('1')                       # or use no_strip
+CREW_NOT_SHRINK_ARCHIVE              = ENV['CREW_NOT_SHRINK_ARCHIVE']&.eql?('1')              # or use no_shrink
 
 # Allow git constants to be set from environment variables (for testing)
 CREW_REPO   = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
@@ -156,22 +156,22 @@ CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                    end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
-CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR'].eql?('1')
+CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR']&.eql?('1')
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = ENV['CREW_USE_CURL'].eql?('1')
+CREW_USE_CURL = ENV['CREW_USE_CURL']&.eql?('1')
 
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
-CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
+CREW_DOWNLOADER = ENV['CREW_DOWNLOADER']
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 # show download progress bar or not (only applied when using the default ruby downloader)
-CREW_HIDE_PROGBAR = ENV['CREW_HIDE_PROGBAR'].eql?('1')
+CREW_HIDE_PROGBAR = ENV['CREW_HIDE_PROGBAR']&.eql?('1')
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV.fetch('SSL_CERT_FILE', nil))
+SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
                   if File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
                     "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
                   else
