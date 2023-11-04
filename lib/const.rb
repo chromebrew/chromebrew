@@ -62,7 +62,7 @@ end
 
 CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
 
-CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV['CREW_IN_CONTAINER']&.eql?('1')
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !!ENV['CREW_IN_CONTAINER']&.eql?('1')
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
