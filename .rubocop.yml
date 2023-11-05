@@ -105,9 +105,6 @@ Lint/ShadowingOuterLocalVariable:
 Lint/SuppressedException:
   Enabled: false
 
-Lint/RedundantSafeNavigation:
-  Enabled: false
-
 Layout/LineLength:
   AllowedPatterns:
     - '#'
