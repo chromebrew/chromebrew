@@ -18,9 +18,9 @@ class Minecraft < Package
   depends_on 'libsecret'
   depends_on 'sommelier'
 
+  no_fhs
+
   def self.install
-    ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'] = '1'
-    reload_constants
     FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/minecraft-launcher", "#{CREW_DEST_PREFIX}/bin/minecraft-launcher.elf"
