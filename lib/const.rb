@@ -1,6 +1,6 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
-CREW_VERSION = '1.38.6'
+CREW_VERSION = '1.38.7'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -45,24 +45,25 @@ USER_SPACE_ARCH = ARCH.eql?('aarch64') && !Dir.exist?('/lib64') ? 'armv7l' : ARC
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
-ARCH_LIB = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? 'lib64' : 'lib'
+CREW_LIB_SUFFIX = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
+ARCH_LIB        = "lib#{CREW_LIB_SUFFIX}"
 
 # Glibc version can be found from the output of libc.so.6
 LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
 
-if ENV['CREW_PREFIX'].to_s.empty? || (ENV['CREW_PREFIX'] == '/usr/local')
-  CREW_BUILD_FROM_SOURCE = ENV.fetch('CREW_BUILD_FROM_SOURCE', nil)
-  CREW_PREFIX = '/usr/local'
+CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
+
+if CREW_PREFIX == '/usr/local'
+  CREW_BUILD_FROM_SOURCE = !!ENV['CREW_BUILD_FROM_SOURCE']&.eql?('1')
   HOME = Dir.home
 else
-  CREW_BUILD_FROM_SOURCE = 1
-  CREW_PREFIX = ENV.fetch('CREW_PREFIX', nil)
-  HOME = CREW_PREFIX + Dir.home
+  CREW_BUILD_FROM_SOURCE = true
+  HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
 CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
 
-CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER'].to_s.empty?
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !!ENV['CREW_IN_CONTAINER']&.eql?('1')
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
@@ -70,11 +71,11 @@ CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # CREW_IS_INTEL for x86 architectures. Note that a QEMU_EMULATED check
 # is not relevant here since qemu can be configured to pass through a
 # cpuinfo vendor_id.
-CREW_IS_AMD = ARCH == 'x86_64' ? ( CREW_CPU_VENDOR != 'unknown' and CPUINFO['vendor_id'].include?('AuthenticAMD') ) : false
-CREW_IS_INTEL = ARCH == 'x86_64' || ARCH == 'i686' ? ( CREW_CPU_VENDOR == 'unknown' or CPUINFO['vendor_id'].include?('GenuineIntel') ) : false
+CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
+CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 
 # Use sane minimal defaults if in container and no override specified.
-if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
+if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
   case ARCH
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
@@ -87,74 +88,55 @@ else
   CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
 end
 
-CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
-CREW_MAN_PREFIX = "#{CREW_PREFIX}/share/man"
-CREW_LIB_PATH = "#{CREW_PREFIX}/lib/crew/"
-CREW_PACKAGES_PATH = "#{CREW_LIB_PATH}packages/"
-CREW_CONFIG_PATH = "#{CREW_PREFIX}/etc/crew/"
-CREW_META_PATH = "#{CREW_CONFIG_PATH}meta/"
-CREW_BREW_DIR = "#{CREW_PREFIX}/tmp/crew/"
-CREW_DEST_DIR = "#{CREW_BREW_DIR}dest"
-CREW_DLL_PREFIX = "#{CREW_LIB_PREFIX}/wine"
-CREW_DEST_PREFIX = CREW_DEST_DIR + CREW_PREFIX
-CREW_DEST_LIB_PREFIX = CREW_DEST_DIR + CREW_LIB_PREFIX
-CREW_DEST_DLL_PREFIX = CREW_DEST_PREFIX + CREW_DLL_PREFIX
-CREW_DEST_MAN_PREFIX = CREW_DEST_DIR + CREW_MAN_PREFIX
+CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
+CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man/')
+CREW_LIB_PATH         = File.join(CREW_PREFIX, 'lib/crew/')
+CREW_PACKAGES_PATH    = File.join(CREW_LIB_PATH, 'packages/')
+CREW_CONFIG_PATH      = File.join(CREW_PREFIX, 'etc/crew/')
+CREW_META_PATH        = File.join(CREW_CONFIG_PATH, 'meta/')
+CREW_BREW_DIR         = File.join(CREW_PREFIX, 'tmp/crew/')
+CREW_DEST_DIR         = File.join(CREW_BREW_DIR, 'dest/')
+CREW_WINE_PREFIX      = File.join(CREW_LIB_PREFIX, 'wine/')
+CREW_DEST_PREFIX      = File.join(CREW_DEST_DIR, CREW_PREFIX)
+CREW_DEST_LIB_PREFIX  = File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
+CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
+CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-if repo_root.empty?
-  Dir.chdir '../..' do
-    repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp.to_s
-  end
-end
-CREW_LOCAL_REPO_ROOT = repo_root
+CREW_LOCAL_REPO_ROOT = `cd #{CREW_LIB_PATH} && git rev-parse --show-toplevel 2> /dev/null`.chomp
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-Dir.chdir CREW_LIB_PATH do
-  CREW_CONST_GIT_COMMIT = `git log -n1 --oneline #{CREW_LIB_PATH}lib/const.rb`.chomp.split.first
-end
+CREW_CONST_GIT_COMMIT = `cd #{CREW_LIB_PATH} && git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
 
-CREW_LOCAL_REPO_BASE = CREW_LOCAL_REPO_ROOT.empty? ? '' : File.basename(CREW_LOCAL_REPO_ROOT)
-CREW_LOCAL_MANIFEST_PATH = if ENV['CREW_LOCAL_MANIFEST_PATH'].to_s.empty?
-                             "#{CREW_LOCAL_REPO_ROOT}/manifest"
-                           else
-                             ENV.fetch('CREW_LOCAL_MANIFEST_PATH', nil)
-                           end
+CREW_LOCAL_REPO_BASE = File.basename(CREW_LOCAL_REPO_ROOT)
+CREW_LOCAL_MANIFEST_PATH = ENV.fetch('CREW_LOCAL_MANIFEST_PATH', "#{CREW_LOCAL_REPO_ROOT}/manifest")
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
-CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
-CREW_DEST_MUSL_PREFIX = CREW_DEST_DIR + CREW_MUSL_PREFIX
-MUSL_LIBC_VERSION = `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1 >/dev/null`[/\bVersion\s+\K\S+/] || nil
+CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
+CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
+MUSL_LIBC_VERSION     = `[ -x '#{CREW_MUSL_PREFIX}/lib/libc.so' ] && #{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/]
 
-CREW_DEST_HOME = CREW_DEST_DIR + HOME
-
-# File.join ensures a trailing slash if one does not exist.
-CREW_CACHE_DIR = if ENV['CREW_CACHE_DIR'].to_s.empty?
-                   File.join("#{HOME}/.cache/crewcache", '')
-                 else
-                   File.join(ENV.fetch('CREW_CACHE_DIR', nil), '')
-                 end
-
-CREW_CACHE_BUILD = ENV.fetch('CREW_CACHE_BUILD', nil)
-CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
+CREW_DEST_HOME          = CREW_DEST_DIR + HOME
+CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
+CREW_CACHE_BUILD        = ENV['CREW_CACHE_BUILD']
+CREW_CACHE_FAILED_BUILD = ENV['CREW_CACHE_FAILED_BUILD']
 
 # Set CREW_NPROC from environment variable or `nproc`
-CREW_NPROC = ENV['CREW_NPROC'].to_s.empty? ? `nproc`.chomp : ENV.fetch('CREW_NPROC', nil)
+CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
 
 # Set following as boolean if environment variables exist.
-CREW_CACHE_ENABLED = !ENV['CREW_CACHE_ENABLED'].to_s.empty?
-CREW_CONFLICTS_ONLY_ADVISORY = !ENV['CREW_CONFLICTS_ONLY_ADVISORY'].to_s.empty? # or use conflicts_ok
-CREW_DISABLE_ENV_OPTIONS = !ENV['CREW_DISABLE_ENV_OPTIONS'].to_s.empty? # or use no_env_options
-CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY'].to_s.empty? # or use no_fhs
-CREW_NOT_COMPRESS = !ENV['CREW_NOT_COMPRESS'].to_s.empty? # or use no_compress
-CREW_NOT_LINKS = !ENV['CREW_NOT_LINKS'].to_s.empty? # or use no_links
-CREW_NOT_STRIP = !ENV['CREW_NOT_STRIP'].to_s.empty? # or use no_strip
-CREW_NOT_SHRINK_ARCHIVE = !ENV['CREW_NOT_SHRINK_ARCHIVE'].to_s.empty? # or use no_shrink
+CREW_CACHE_ENABLED                   = !!ENV['CREW_CACHE_ENABLED']&.eql?('1')
+CREW_CONFLICTS_ONLY_ADVISORY         = !!ENV['CREW_CONFLICTS_ONLY_ADVISORY']&.eql?('1')         # or use conflicts_ok
+CREW_DISABLE_ENV_OPTIONS             = !!ENV['CREW_DISABLE_ENV_OPTIONS']&.eql('1')              # or use no_env_options
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !!ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']&.eql?('1') # or use no_fhs
+CREW_NOT_COMPRESS                    = !!ENV['CREW_NOT_COMPRESS']&.eql?('1')                    # or use no_compress
+CREW_NOT_LINKS                       = !!ENV['CREW_NOT_LINKS']&.eql?('1')                       # or use no_links
+CREW_NOT_STRIP                       = !!ENV['CREW_NOT_STRIP']&.eql?('1')                       # or use no_strip
+CREW_NOT_SHRINK_ARCHIVE              = !!ENV['CREW_NOT_SHRINK_ARCHIVE']&.eql?('1')              # or use no_shrink
 
 # Allow git constants to be set from environment variables (for testing)
-CREW_REPO = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
+CREW_REPO   = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
 CREW_BRANCH = ENV.fetch('CREW_BRANCH', 'master')
 
 USER = `whoami`.chomp
@@ -163,42 +145,42 @@ CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
                    else
                      # newer version of Chrome OS exports info to env by default
-                     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
+                     ENV['CHROMEOS_RELEASE_CHROME_MILESTONE']
                    end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
-CREW_DISABLE_MVDIR = ENV['CREW_DISABLE_MVDIR'] != '0'
+CREW_DISABLE_MVDIR = !!ENV['CREW_DISABLE_MVDIR']&.eql?('1')
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = ENV['CREW_USE_CURL'].eql?('1')
+CREW_USE_CURL = !!ENV['CREW_USE_CURL']&.eql?('1')
 
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
-CREW_DOWNLOADER = ENV['CREW_DOWNLOADER'].to_s.empty? ? nil : ENV.fetch('CREW_DOWNLOADER', nil)
+CREW_DOWNLOADER = ENV['CREW_DOWNLOADER']
 
 # Downloader maximum retry count
-CREW_DOWNLOADER_RETRY = ENV['CREW_DOWNLOADER_RETRY'].to_s.empty? ? 3 : ENV['CREW_DOWNLOADER_RETRY'].to_i
+CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 # show download progress bar or not (only applied when using the default ruby downloader)
-CREW_HIDE_PROGBAR = ENV['CREW_HIDE_PROGBAR'].eql?('1')
+CREW_HIDE_PROGBAR = !!ENV['CREW_HIDE_PROGBAR']&.eql?('1')
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE = if ENV['SSL_CERT_FILE'].to_s.empty? || !File.exist?(ENV.fetch('SSL_CERT_FILE', nil))
+SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
                   if File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
                     "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
                   else
                     '/etc/ssl/certs/ca-certificates.crt'
                   end
                 else
-                  ENV.fetch('SSL_CERT_FILE', nil)
+                  ENV['SSL_CERT_FILE']
                 end
-SSL_CERT_DIR = if ENV['SSL_CERT_DIR'].to_s.empty? || !Dir.exist?(ENV.fetch('SSL_CERT_DIR', nil))
+SSL_CERT_DIR = unless ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
                  if Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
                    "#{CREW_PREFIX}/etc/ssl/certs"
                  else
                    '/etc/ssl/certs'
                  end
                else
-                 ENV.fetch('SSL_CERT_DIR', nil)
+                 ENV['SSL_CERT_DIR']
                end
 
 case ARCH
@@ -218,18 +200,14 @@ when 'x86_64'
   CREW_ARCH_FLAGS = ''
 end
 
-CREW_LINKER = if ENV['CREW_LINKER'].to_s.empty?
-                'mold'
-              else
-                ENV.fetch('CREW_LINKER', nil)
-              end
-CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', nil)
+CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')
+CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', '')
 
-CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
-CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto=auto"
+CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_COMMON_FLAGS         = "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS = "-flto=auto #{CREW_LINKER_FLAGS}"
-CREW_FNO_LTO_LDFLAGS = '-fno-lto'
+CREW_LDFLAGS              = "-flto=auto #{CREW_LINKER_FLAGS}"
+CREW_FNO_LTO_LDFLAGS      = '-fno-lto'
 
 CREW_ENV_OPTIONS_HASH = if CREW_DISABLE_ENV_OPTIONS
                           { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
@@ -298,11 +276,7 @@ CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
 OPT
 
 # Use ninja or samurai
-CREW_NINJA = if ENV['CREW_NINJA'].to_s.downcase == 'samu'
-               'samu'
-             else
-               'ninja'
-             end
+CREW_NINJA = ENV.fetch('CREW_NINJA', 'ninja')
 
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
@@ -332,15 +306,14 @@ CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT.chomp
   -DCMAKE_BUILD_TYPE=Release
 OPT
 
-CREW_LIB_SUFFIX = ARCH == 'x86_64' ? '64' : ''
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
-PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
-PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
+PY3_SETUP_BUILD_OPTIONS          = "--executable=#{CREW_PREFIX}/bin/python3"
+PY2_SETUP_BUILD_OPTIONS          = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
-PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
-PY3_BUILD_OPTIONS = '--wheel --no-isolation'
-PY3_INSTALLER_OPTIONS = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
+PY_SETUP_INSTALL_OPTIONS         = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
+PY3_BUILD_OPTIONS                = '--wheel --no-isolation'
+PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        %w[libzstd.so.1 libstdc++.so.6]
