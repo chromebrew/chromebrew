@@ -45,7 +45,8 @@ USER_SPACE_ARCH = ARCH.eql?('aarch64') && !Dir.exist?('/lib64') ? 'armv7l' : ARC
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
-ARCH_LIB = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? 'lib64' : 'lib'
+CREW_LIB_SUFFIX = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
+ARCH_LIB        = "lib#{CREW_LIB_SUFFIX}"
 
 # Glibc version can be found from the output of libc.so.6
 LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
@@ -57,7 +58,7 @@ if CREW_PREFIX == '/usr/local'
   HOME = Dir.home
 else
   CREW_BUILD_FROM_SOURCE = true
-  HOME = CREW_PREFIX + Dir.home
+  HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
 CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
@@ -70,7 +71,7 @@ CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # CREW_IS_INTEL for x86 architectures. Note that a QEMU_EMULATED check
 # is not relevant here since qemu can be configured to pass through a
 # cpuinfo vendor_id.
-CREW_IS_AMD = CREW_CPU_VENDOR.eql?('AuthenticAMD')
+CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
 CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 
 # Use sane minimal defaults if in container and no override specified.
@@ -112,14 +113,13 @@ CREW_LOCAL_REPO_BASE = File.basename(CREW_LOCAL_REPO_ROOT)
 CREW_LOCAL_MANIFEST_PATH = ENV.fetch('CREW_LOCAL_MANIFEST_PATH', "#{CREW_LOCAL_REPO_ROOT}/manifest")
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
-CREW_MUSL_PREFIX = "#{CREW_PREFIX}/share/musl"
+CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
-MUSL_LIBC_VERSION = `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1 >/dev/null`[/\bVersion\s+\K\S+/]
+MUSL_LIBC_VERSION     = `[ -x '#{CREW_MUSL_PREFIX}/lib/libc.so' ] && #{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/]
 
-CREW_DEST_HOME = CREW_DEST_DIR + HOME
-
-CREW_CACHE_DIR = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
-CREW_CACHE_BUILD = ENV['CREW_CACHE_BUILD']
+CREW_DEST_HOME          = CREW_DEST_DIR + HOME
+CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
+CREW_CACHE_BUILD        = ENV['CREW_CACHE_BUILD']
 CREW_CACHE_FAILED_BUILD = ENV['CREW_CACHE_FAILED_BUILD']
 
 # Set CREW_NPROC from environment variable or `nproc`
@@ -200,14 +200,14 @@ when 'x86_64'
   CREW_ARCH_FLAGS = ''
 end
 
-CREW_LINKER = ENV.fetch('CREW_LINKER', 'mold')
-CREW_LINKER_FLAGS = ENV['CREW_LINKER_FLAGS']
+CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')
+CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', '')
 
-CREW_CORE_FLAGS = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
-CREW_COMMON_FLAGS = "#{CREW_CORE_FLAGS} -flto=auto"
+CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_COMMON_FLAGS         = "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS = "-flto=auto #{CREW_LINKER_FLAGS}"
-CREW_FNO_LTO_LDFLAGS = '-fno-lto'
+CREW_LDFLAGS              = "-flto=auto #{CREW_LINKER_FLAGS}"
+CREW_FNO_LTO_LDFLAGS      = '-fno-lto'
 
 CREW_ENV_OPTIONS_HASH = if CREW_DISABLE_ENV_OPTIONS
                           { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
@@ -306,15 +306,14 @@ CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT.chomp
   -DCMAKE_BUILD_TYPE=Release
 OPT
 
-CREW_LIB_SUFFIX = ARCH.eql?('x86_64') ? '64' : ''
 CREW_CMAKE_LIBSUFFIX_OPTIONS = "#{CREW_CMAKE_OPTIONS} -DLIB_SUFFIX=#{CREW_LIB_SUFFIX}"
 
-PY3_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python3"
-PY2_SETUP_BUILD_OPTIONS = "--executable=#{CREW_PREFIX}/bin/python2"
+PY3_SETUP_BUILD_OPTIONS          = "--executable=#{CREW_PREFIX}/bin/python3"
+PY2_SETUP_BUILD_OPTIONS          = "--executable=#{CREW_PREFIX}/bin/python2"
 PY_SETUP_INSTALL_OPTIONS_NO_SVEM = "--root=#{CREW_DEST_DIR} --prefix=#{CREW_PREFIX} -O2 --compile"
-PY_SETUP_INSTALL_OPTIONS = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
-PY3_BUILD_OPTIONS = '--wheel --no-isolation'
-PY3_INSTALLER_OPTIONS = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
+PY_SETUP_INSTALL_OPTIONS         = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single-version-externally-managed"
+PY3_BUILD_OPTIONS                = '--wheel --no-isolation'
+PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        %w[libzstd.so.1 libstdc++.so.6]
