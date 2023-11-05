@@ -269,6 +269,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ini/properties.language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ini/syntaxes/ini.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ipynb/dist/ipynbMain.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ipynb/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ipynb/notebook-out/cellAttachmentRenderer.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ipynb/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ipynb/package.nls.json
@@ -482,8 +483,11 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/extension.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/hash.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/mappings.wasm
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/renameWorker.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/targets/node/terminateProcess.sh
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/ui/basic-wat.tmLanguage.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/vendor/acorn.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/vendor/acorn-loose.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/w32appcontainertokens-XTRA77NA.node
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/watchdog.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/ThirdPartyNotices.txt
@@ -600,6 +604,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/node_modules/typescript/lib/zh-cn/diagnosticMessages.generated.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/node_modules/typescript/lib/zh-tw/diagnosticMessages.generated.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/node_modules/typescript/package.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/notebook-renderers/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/notebook-renderers/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/notebook-renderers/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/notebook-renderers/README.md
@@ -669,6 +674,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ruby/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ruby/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ruby/syntaxes/ruby.tmLanguage.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/rust/build/update-grammar.mjs
 /usr/local/VSCodium-linux-arm/resources/app/extensions/rust/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/rust/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/rust/package.nls.json
@@ -846,6 +852,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/ps.sh
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/terminateProcess.sh
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload-slim.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/worker/workerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vscode-dts/vscode.d.ts
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-main/main.js
@@ -877,12 +884,15 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived2.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived3.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/chatResponseReceived4.mp3
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/clear.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/diffLineDeleted.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/diffLineInserted.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/diffLineModified.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/error.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/foldedAreas.mp3
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/format.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/quickFixes.mp3
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/save.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/taskCompleted.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/taskFailed.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/audioCues/browser/media/terminalBell.mp3
@@ -957,7 +967,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/services/languageDetection/browser/languageDetectionSimpleWorker.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/services/search/worker/localFileSearch.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/services/textMate/browser/backgroundTokenization/worker/textMateTokenizationWorker.worker.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/services/voiceRecognition/electron-sandbox/voiceTranscriptionWorklet.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/workbench.desktop.main.css
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/workbench.desktop.main.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/workbench.desktop.main.nls.js
