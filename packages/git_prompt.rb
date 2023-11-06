@@ -31,8 +31,7 @@ class Git_prompt < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts 'source ~/.bashrc'.lightblue
-    puts "\ncd /path/to/git/repo and you should see the branch displayed in the prompt\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
+    ExitMessage.add "\ncd /path/to/git/repo and you should see the branch displayed in the prompt\n".lightblue
   end
 end

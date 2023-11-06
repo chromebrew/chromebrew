@@ -25,6 +25,6 @@ class Py3_azure_cli < Pip
   EXTRAS_EOF
 
   def self.postinstall
-    puts "\nType 'source ~/.bashrc' to complete the installation.\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end

@@ -51,8 +51,7 @@ class Antlr4 < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts 'source ~/.bashrc'.lightblue
-    puts "\nType 'antlr4' to get started.\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
+    ExitMessage.add "\nType 'antlr4' to get started.\n".lightblue
   end
 end

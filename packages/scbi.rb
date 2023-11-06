@@ -36,7 +36,7 @@ class Scbi < Package
   end
 
   def self.postinstall
-    puts "\nType 'source ~/.bashrc' to complete the installation.".lightblue
-    puts "\nTo view the User Guide, execute 'crew install zathura && zathura #{CREW_PREFIX}/share/scbi/scbi.pdf'.\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
+    ExitMessage.add "\nTo view the User Guide, execute 'crew install zathura && zathura #{CREW_PREFIX}/share/scbi/scbi.pdf'.\n".lightblue
   end
 end

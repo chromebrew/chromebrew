@@ -27,8 +27,7 @@ class Nvm < Package
       puts "\nNode.js 18.x and above requires GLIBC 2.28.".orange
       puts "ChromeOS is currently running GLIBC #{LIBC_VERSION}.".orange
     end
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 
   def self.remove

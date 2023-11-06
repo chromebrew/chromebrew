@@ -464,9 +464,8 @@ class Sommelier < Package
 
         Removed old sommelier environment variables in ~/.bashrc.
         A backup of the original is stored in ~/.bashrc.#{@now}
-        To complete the installation, execute the following:
-        source ~/.bashrc
       EOT0
+      ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     end
 
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"

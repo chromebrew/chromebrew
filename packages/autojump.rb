@@ -25,6 +25,6 @@ class Autojump < Package
   end
 
   def self.postinstall
-    puts "\nType 'source ~/.bashrc' to finish the installation.\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end

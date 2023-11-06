@@ -39,6 +39,6 @@ class Shotwell < Meson
   depends_on 'webkit2gtk' # R
 
   def self.postinstall
-    puts "\nTo finish the installation, execute 'source ~/.bashrc'\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end

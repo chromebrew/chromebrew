@@ -54,8 +54,7 @@ class Bluefish < Package
 
   def self.postinstall
     system "update-mime-database #{CREW_PREFIX}/share/mime"
-    puts "\nTo complete the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 
   def self.remove

@@ -98,8 +98,7 @@ class Postgres < Package
     puts 'Connect to database: psql <dbname>'.lightblue
     puts
     puts "To configure, edit #{CREW_PREFIX}/etc/env.d/postgres".lightblue
-    puts "Remember to 'source ~/.bashrc' after changes".lightblue
-    puts
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 
   def self.remove

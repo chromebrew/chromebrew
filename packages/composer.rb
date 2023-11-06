@@ -34,7 +34,6 @@ class Composer < Package
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/.config", "#{HOME}/.config"
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
+    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end
