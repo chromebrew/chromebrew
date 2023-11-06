@@ -34,6 +34,7 @@ class Mold < Package
 
   no_env_options
   no_compile_needed
+  reload_source
 
   def self.build
     # TBB build option due to
