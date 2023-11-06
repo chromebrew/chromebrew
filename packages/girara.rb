@@ -1,37 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Girara < Package
+class Girara < Meson
   description 'Girara is a library that implements a user interface that focuses on simplicity and minimalism'
   homepage 'https://pwmt.org/projects/girara/'
-  version '0.3.5'
+  version '0.4.0'
   license 'ZLIB'
-  compatibility 'all'
-  source_url 'https://pwmt.org/projects/girara/download/girara-0.3.5.tar.xz'
-  source_sha256 'e33ba2a21dd57606439d37c829d48466a14e3e50a698e6bd678b511f5c59f4b5'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://pwmt.org/projects/girara/download/girara-0.4.0.tar.xz'
+  source_sha256 'ceafd0a6aed50ad832ba766ec629f1ea366681c15f8fa728a8f55418c39dc901'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.3.5_armv7l/girara-0.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.3.5_armv7l/girara-0.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.3.5_i686/girara-0.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.3.5_x86_64/girara-0.3.5-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.4.0_armv7l/girara-0.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.4.0_armv7l/girara-0.4.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.4.0_x86_64/girara-0.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '82dff3ea4ff0099f016a5aee03c52115b3acea760e55ec7c25c624f337f4f934',
-     armv7l: '82dff3ea4ff0099f016a5aee03c52115b3acea760e55ec7c25c624f337f4f934',
-       i686: '40b3fa4edd6a75356e1ae9d9d9be6d44b6df5c3389e1aedb65aff5afbb7b3888',
-     x86_64: '31702ec57e6ff9e1a1d096ecdf73ad2411e14b87c86cb6524175ee91f1dd1742'
+    aarch64: 'bdae13227ad4229a14cfdc9f5208931b546115fb9fe953d2d8ceba049b6536e8',
+     armv7l: 'bdae13227ad4229a14cfdc9f5208931b546115fb9fe953d2d8ceba049b6536e8',
+     x86_64: '46ba52550665ecc3e54cfc919f404b7bb0943a16fda7f0d74b4da6073dbdacf0'
   })
 
   depends_on 'gtk3'
   depends_on 'glib'
   depends_on 'jsonc'
-
-  def self.build
-    system "meson  --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'json_glib'
 end
