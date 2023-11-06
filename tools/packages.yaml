@@ -7581,6 +7581,11 @@ url: https://github.com/sbt/sbt/releases
 activity: medium
 ---
 kind: url
+name: scbi
+url: https://github.com/TurboGit/scbi/releases
+activity: high
+---
+kind: url
 name: sccache
 url: https://github.com/mozilla/sccache/releases
 activity: low
