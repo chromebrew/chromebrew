@@ -38,6 +38,8 @@ class Postgres < Package
   depends_on 'tcl'
   depends_on 'zstd'
 
+  reload_source
+
   PGDATA = "#{CREW_PREFIX}/share/pgsql/data".freeze
 
   def self.patch
@@ -98,7 +100,6 @@ class Postgres < Package
     puts 'Connect to database: psql <dbname>'.lightblue
     puts
     puts "To configure, edit #{CREW_PREFIX}/etc/env.d/postgres".lightblue
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 
   def self.remove

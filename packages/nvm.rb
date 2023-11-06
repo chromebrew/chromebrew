@@ -10,6 +10,7 @@ class Nvm < Package
   git_hashtag "v#{version}"
 
   no_compile_needed
+  reload_source
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/nvm"
@@ -27,7 +28,6 @@ class Nvm < Package
       puts "\nNode.js 18.x and above requires GLIBC 2.28.".orange
       puts "ChromeOS is currently running GLIBC #{LIBC_VERSION}.".orange
     end
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 
   def self.remove

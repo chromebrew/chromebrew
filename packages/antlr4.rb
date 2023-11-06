@@ -24,6 +24,7 @@ class Antlr4 < Package
   })
 
   depends_on 'openjdk11'
+  reload_source
 
   def self.build
     @antlrenv = <<~ANTLR_EOF
@@ -51,7 +52,6 @@ class Antlr4 < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     ExitMessage.add "\nType 'antlr4' to get started.\n".lightblue
   end
 end

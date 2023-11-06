@@ -33,6 +33,7 @@ class Mold < Package
   depends_on 'zstd' # R
 
   no_env_options
+  no_compile_needed
 
   def self.build
     # TBB build option due to
@@ -58,9 +59,5 @@ class Mold < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.install 'moldenv', "#{CREW_DEST_PREFIX}/etc/env.d/mold", mode: 0o644
-  end
-
-  def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end

@@ -44,6 +44,7 @@ class Sommelier < Package
   depends_on 'xwayland' # L
 
   no_shrink
+  reload_source
 
   def self.preflight
     return if File.socket?('/var/run/chrome/wayland-0') || CREW_IN_CONTAINER
@@ -465,7 +466,6 @@ class Sommelier < Package
         Removed old sommelier environment variables in ~/.bashrc.
         A backup of the original is stored in ~/.bashrc.#{@now}
       EOT0
-      ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     end
 
     FileUtils.touch "#{HOME}/.sommelier.env" unless File.exist? "#{HOME}/.sommelier.env"

@@ -12,6 +12,7 @@ class Openjdk21 < Package
 
   no_compile_needed
   no_shrink
+  reload_source
 
   def self.preflight
     jdkver = `java -version 2>&1`[/version "(.*?)"/, 1].to_s
@@ -44,9 +45,5 @@ class Openjdk21 < Package
       JAVA_HOME=#{CREW_PREFIX}
     EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk21", javaenv)
-  end
-
-  def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end

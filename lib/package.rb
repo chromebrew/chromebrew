@@ -11,7 +11,8 @@ class Package
 
   boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
-                   :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf, :run_tests
+                   :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf, :reload_source,
+                   :run_tests
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.

@@ -13,6 +13,7 @@ class Composer < Package
   depends_on 'xdg_base'
 
   no_compile_needed
+  reload_source
 
   def self.preinstall
     if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
@@ -34,6 +35,5 @@ class Composer < Package
 
   def self.postinstall
     FileUtils.ln_sf "#{CREW_PREFIX}/.config", "#{HOME}/.config"
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end

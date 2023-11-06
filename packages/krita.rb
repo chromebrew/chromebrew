@@ -9,11 +9,12 @@ class Krita < Package
   source_url 'https://download.kde.org/stable/krita/5.1.4/krita-5.1.4-x86_64.appimage'
   source_sha256 'f6678796cb98086b1e576aae4911e3d6b133cd0a4ec61a900ff5136a9f55917d'
 
-  no_compile_needed
-
   depends_on 'gtk3'
   depends_on 'gdk_base'
   depends_on 'sommelier'
+
+  no_compile_needed
+  reload_source
 
   def self.build
     krita = <<~EOF
@@ -37,7 +38,6 @@ class Krita < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     ExitMessage.add "\nType 'krita' to get started.\n".lightblue
   end
 end

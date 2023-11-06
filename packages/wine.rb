@@ -50,7 +50,9 @@ class Wine < Package
   depends_on 'sommelier'
   depends_on 'vkd3d'
   depends_on 'xdg_base'
+
   no_lto
+  reload_source
 
   def self.build
     FileUtils.mkdir_p 'wine64-build'
@@ -91,7 +93,6 @@ class Wine < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     ExitMessage.add 'To run an application with wine, type `wine path/to/myexecutable.exe` or `wine path/to/myinstaller.msi`.'.lightblue
   end
 

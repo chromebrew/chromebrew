@@ -8,6 +8,8 @@ class Git_prompt < Package
   compatibility 'all'
   source_url 'SKIP'
 
+  reload_source
+
   def self.build
     system "curl -#LO https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh"
     abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('git-prompt.sh')) == '1fbced3fe345ec14f828ffb876e191d69457cccc807c70f54c9ba48cb2a6620e'
@@ -31,7 +33,6 @@ class Git_prompt < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     ExitMessage.add "\ncd /path/to/git/repo and you should see the branch displayed in the prompt\n".lightblue
   end
 end

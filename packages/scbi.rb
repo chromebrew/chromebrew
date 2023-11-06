@@ -15,6 +15,7 @@ class Scbi < Package
 
   no_compile_needed
   no_fhs
+  reload_source
 
   def self.patch
     # Set up destination locations.
@@ -36,7 +37,6 @@ class Scbi < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
     ExitMessage.add "\nTo view the User Guide, execute 'crew install zathura && zathura #{CREW_PREFIX}/share/scbi/scbi.pdf'.\n".lightblue
   end
 end

@@ -11,6 +11,8 @@ class Crystal < Package
 
   depends_on 'llvm16_lib' # R
 
+  reload_source
+
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
     FileUtils.mv %w[bin lib share], CREW_DEST_PREFIX.to_s
@@ -20,9 +22,5 @@ class Crystal < Package
     EOF
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/10-crystal", bashcomp)
-  end
-
-  def self.postinstall
-    ExitMessage.add "\nTo finish the installation, please execute the following:\nsource ~/.bashrc".lightblue, print_last: true
   end
 end
