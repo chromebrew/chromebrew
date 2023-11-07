@@ -46,6 +46,8 @@ class Filezilla < Package
   depends_on 'xdg_utils' => :build
   depends_on 'zlibpkg' # R
 
+  print_source_bashrc
+
   def self.patch
     system 'filefix'
   end
@@ -61,10 +63,5 @@ class Filezilla < Package
       alias filezilla="WAYLAND_DISPLAY=wayland-0 DISPLAY='' GDK_BACKEND=wayland filezilla"
     FILEZILLA_EOF
     FileUtils.install 'filezilla', "#{CREW_DEST_PREFIX}/etc/env.d/10-filezilla", mode: 0o644
-  end
-
-  def self.postinstall
-    puts "\nTo complete the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
   end
 end

@@ -14,6 +14,7 @@ class Torbrowser < Package
 
   no_compile_needed
   no_shrink
+  print_source_bashrc
 
   def self.build
     tor = <<~EOF
@@ -37,8 +38,6 @@ class Torbrowser < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts 'source ~/.bashrc'.lightblue
     print "\nSet Tor as your default browser? [Y/n]: "
     case $stdin.gets.chomp.downcase
     when '', 'y', 'yes'

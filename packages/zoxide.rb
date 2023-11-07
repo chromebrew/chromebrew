@@ -20,6 +20,7 @@ class Zoxide < Package
   depends_on 'fzf'
 
   no_compile_needed
+  print_source_bashrc
 
   def self.build
     File.write 'zoxide.bash', <<~EOF
@@ -40,9 +41,5 @@ class Zoxide < Package
     FileUtils.install 'zoxide', "#{CREW_DEST_PREFIX}/bin/zoxide", mode: 0o755
     FileUtils.mv 'completions', "#{CREW_DEST_PREFIX}/share"
     FileUtils.mv 'man/man1', CREW_DEST_MAN_PREFIX.to_s
-  end
-
-  def self.postinstall
-    puts "\nType 'source ~/.bashrc' to complete the installation.\n".lightblue
   end
 end

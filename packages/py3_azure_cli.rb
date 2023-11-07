@@ -14,6 +14,7 @@ class Py3_azure_cli < Pip
   depends_on 'rust' => :build
 
   no_compile_needed
+  print_source_bashrc
 
   pip_install_extras <<~EXTRAS_EOF
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
@@ -23,8 +24,4 @@ class Py3_azure_cli < Pip
     AZUREEOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/az", @azureenv)
   EXTRAS_EOF
-
-  def self.postinstall
-    puts "\nType 'source ~/.bashrc' to complete the installation.\n".lightblue
-  end
 end

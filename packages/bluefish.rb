@@ -35,6 +35,8 @@ class Bluefish < Package
   depends_on 'mesa'
   depends_on 'xcb_util'
 
+  print_source_bashrc
+
   def self.build
     system 'filefix'
     system "./configure #{CREW_OPTIONS}"
@@ -54,8 +56,6 @@ class Bluefish < Package
 
   def self.postinstall
     system "update-mime-database #{CREW_PREFIX}/share/mime"
-    puts "\nTo complete the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
   end
 
   def self.remove
