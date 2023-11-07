@@ -1061,7 +1061,7 @@ end
 
 def post_install
   if @pkg.print_source_bashrc?
-    ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue
+    ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
       To finish the installation, please execute the following:
       source ~/.bashrc
