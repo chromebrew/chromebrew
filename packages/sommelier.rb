@@ -44,7 +44,7 @@ class Sommelier < Package
   depends_on 'xwayland' # L
 
   no_shrink
-  reload_source
+  print_reload_bashrc
 
   def self.preflight
     return if File.socket?('/var/run/chrome/wayland-0') || CREW_IN_CONTAINER

@@ -10,7 +10,7 @@ class Nvm < Package
   git_hashtag "v#{version}"
 
   no_compile_needed
-  reload_source
+  print_reload_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/nvm"

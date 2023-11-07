@@ -24,7 +24,7 @@ class Antlr4 < Package
   })
 
   depends_on 'openjdk11'
-  reload_source
+  print_reload_bashrc
 
   def self.build
     @antlrenv = <<~ANTLR_EOF

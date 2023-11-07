@@ -14,7 +14,7 @@ class Torbrowser < Package
 
   no_compile_needed
   no_shrink
-  reload_source
+  print_reload_bashrc
 
   def self.build
     tor = <<~EOF

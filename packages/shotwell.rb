@@ -16,7 +16,7 @@ class Shotwell < Meson
     x86_64: '5cdee6e092952d82c60b26a8fd57446a96baebb43681bbc449e39138cc3d75cd'
   })
 
-  reload_source
+  print_reload_bashrc
 
   depends_on 'vala' => :build
   depends_on 'cairo' # R

@@ -46,7 +46,7 @@ class Filezilla < Package
   depends_on 'xdg_utils' => :build
   depends_on 'zlibpkg' # R
 
-  reload_source
+  print_reload_bashrc
 
   def self.patch
     system 'filefix'

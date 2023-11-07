@@ -11,7 +11,7 @@ class Crystal < Package
 
   depends_on 'llvm16_lib' # R
 
-  reload_source
+  print_reload_bashrc
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_PREFIX.to_s

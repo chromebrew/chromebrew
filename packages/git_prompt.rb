@@ -8,7 +8,7 @@ class Git_prompt < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  reload_source
+  print_reload_bashrc
 
   def self.build
     system "curl -#LO https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh"

@@ -34,7 +34,7 @@ class Mold < Package
 
   no_env_options
   no_compile_needed
-  reload_source
+  print_reload_bashrc
 
   def self.build
     # TBB build option due to

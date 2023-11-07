@@ -52,7 +52,7 @@ class Wine < Package
   depends_on 'xdg_base'
 
   no_lto
-  reload_source
+  print_reload_bashrc
 
   def self.build
     FileUtils.mkdir_p 'wine64-build'

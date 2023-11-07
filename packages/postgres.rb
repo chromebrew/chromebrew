@@ -38,7 +38,7 @@ class Postgres < Package
   depends_on 'tcl'
   depends_on 'zstd'
 
-  reload_source
+  print_reload_bashrc
 
   PGDATA = "#{CREW_PREFIX}/share/pgsql/data".freeze
 

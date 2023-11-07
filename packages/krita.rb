@@ -14,7 +14,7 @@ class Krita < Package
   depends_on 'sommelier'
 
   no_compile_needed
-  reload_source
+  print_reload_bashrc
 
   def self.build
     krita = <<~EOF

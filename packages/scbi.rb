@@ -15,7 +15,7 @@ class Scbi < Package
 
   no_compile_needed
   no_fhs
-  reload_source
+  print_reload_bashrc
 
   def self.patch
     # Set up destination locations.

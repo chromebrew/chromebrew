@@ -1058,12 +1058,12 @@ def pre_install(dest_dir)
 end
 
 def post_install
-  if @pkg.reload_source?
-    ExitMessage.add <<~SOURCE_BASHRC_EOT.lightblue
+  if @pkg.print_reload_bashrc?
+    ExitMessage.add <<~PRINT_RELOAD_BASHRC_EOT.lightblue
 
       To finish the installation, please execute the following:
       source ~/.bashrc
-    SOURCE_BASHRC_EOT
+    PRINT_RELOAD_BASHRC_EOT
   end
   # return unless the postinstall function was defined by the package recipe
   return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")
