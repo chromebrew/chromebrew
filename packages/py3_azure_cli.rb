@@ -14,7 +14,7 @@ class Py3_azure_cli < Pip
   depends_on 'rust' => :build
 
   no_compile_needed
-  print_reload_bashrc
+  print_source_bashrc
 
   pip_install_extras <<~EXTRAS_EOF
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"

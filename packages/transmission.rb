@@ -48,7 +48,7 @@ class Transmission < Package
   depends_on 'xdg_base' # L
   depends_on 'pango' # R
 
-  print_reload_bashrc
+  print_source_bashrc
 
   def self.build
     system "cmake -B builddir -G Ninja \

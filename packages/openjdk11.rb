@@ -22,7 +22,7 @@ class Openjdk11 < Package
 
   no_compile_needed
   no_shrink
-  print_reload_bashrc
+  print_source_bashrc
 
   def self.preflight
     jdkver = `java -version 2>&1`[/version "(.*?)"/, 1].to_s

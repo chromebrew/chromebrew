@@ -20,7 +20,7 @@ class Zoxide < Package
   depends_on 'fzf'
 
   no_compile_needed
-  print_reload_bashrc
+  print_source_bashrc
 
   def self.build
     File.write 'zoxide.bash', <<~EOF

@@ -35,7 +35,7 @@ class Bluefish < Package
   depends_on 'mesa'
   depends_on 'xcb_util'
 
-  print_reload_bashrc
+  print_source_bashrc
 
   def self.build
     system 'filefix'
