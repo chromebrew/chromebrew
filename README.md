@@ -45,9 +45,9 @@ The beta, dev, and Canary channels are ***not*** supported and should ***not*** 
 
 See issue [#2890](https://github.com/chromebrew/chromebrew/issues/2890) and the [FAQ](https://github.com/chromebrew/chromebrew/wiki/FAQ) for more details.
 
-Open the terminal with Ctrl+Alt+T and type `shell`. If this command returns `ERROR: unknown command: shell`, please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
+Open a VT-2 terminal session with Ctrl+Alt+-> and login with the 'chronos' user and password as set above or simply hit enter at the password prompt. If you are unable to do this, please have a second look at the prerequisites and make sure your Chromebook is in developer mode.
 
-Then download and run the installation script below:
+Then run the installation script below:
 
 ```bash
 exec bash --init-file <(curl -Ls git.io/vddgY)
