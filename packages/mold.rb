@@ -15,14 +15,14 @@ class Mold < Package
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.2_armv7l/mold-2.3.2-chromeos-armv7l.tar.zst',
      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.2_armv7l/mold-2.3.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.2_i686/mold-2.3.2-chromeos-i686.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.2-0c6daad_x86_64/mold-2.3.2-0c6daad-chromeos-x86_64.tar.zst'
+    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.2-0c6daad_i686/mold-2.3.2-0c6daad-chromeos-i686.tar.zst',
+  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.2-0c6daad_x86_64/mold-2.3.2-0c6daad-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: 'd3da641a7e37663a989bf0ecacecd37a7bf087fbbc199b5c8afc975c729f5647',
      armv7l: 'd3da641a7e37663a989bf0ecacecd37a7bf087fbbc199b5c8afc975c729f5647',
-       i686: '63293b849ec265b40453fa3fbdde565e322bd56725079e24a27d80cfc7a82de2',
-    x86_64: '5772b5cb14ca2dfa2946edf2c3f7c7fd5366256aabc0b2cd67bf71f997886ac9'
+    i686: '91801098f4c2504f7dcc0d38c624224e0a63b8b252df1c5f1d33142e818c74e6',
+  x86_64: '5772b5cb14ca2dfa2946edf2c3f7c7fd5366256aabc0b2cd67bf71f997886ac9'
   })
 
   depends_on 'gcc_lib' # R
