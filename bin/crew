@@ -660,8 +660,8 @@ def update
     system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tools"
     system 'git sparse-checkout reapply'
 
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}"
-    system 'git reset --hard FETCH_HEAD'
+    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
+    system 'git reset --hard FETCH_HEAD', exception: true
   end
 
   puts 'Package lists, crew, and library updated.'
