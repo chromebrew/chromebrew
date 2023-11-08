@@ -13,11 +13,10 @@ jobs:
         shell: bash
         env:
          GITHUB_CONTEXT: ${{ toJson(github) }}
-      - name: get repository name
-        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
       - name: Unit Tests
         run: |
             sudo docker pull satmandu/crewbuild:amd64
             sudo docker run -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
-            CREW_REPO=https://github.com/${{  github.actor  }}/chromebrew.git CREW_BRANCH=$GITHUB_REF_NAME crew update && \
+            CREW_REPO=https://github.com/${{  github.actor  }}/chromebrew.git CREW_BRANCH=${{ github.head_ref }} crew update && \
+            yes | crew upgrade && \
             yes | crew install vim" >> $GITHUB_OUTPUT
