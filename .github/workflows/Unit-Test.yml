@@ -1,0 +1,23 @@
+name: Run Unit Tests on PR
+
+on:
+  pull_request:
+    branches: [master]
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Dump github context
+        run:   echo "$GITHUB_CONTEXT"
+        shell: bash
+        env:
+         GITHUB_CONTEXT: ${{ toJson(github) }}
+      - name: Unit Tests
+        run: |
+            sudo docker run -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
+            echo \"CREW_REPO is ${{  github.actor  }}\" && \
+            echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
+            CREW_REPO=https://github.com/${{  github.actor  }}/chromebrew.git CREW_BRANCH=${{ github.head_ref }} crew update && \
+            yes | crew upgrade && \
+            yes | crew install vim"
