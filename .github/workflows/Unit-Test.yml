@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [master]
 jobs:
-  generate:
+  container_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
