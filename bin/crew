@@ -662,7 +662,6 @@ def update
 
     system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
     system 'git reset --hard FETCH_HEAD', exception: true
-    exit 1
   end
 
   puts 'Package lists, crew, and library updated.'
