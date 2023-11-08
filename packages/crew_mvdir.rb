@@ -3,29 +3,29 @@ require 'package'
 class Crew_mvdir < Package
   description 'Faster alternative to "rsync --remove-source-files dir1/ dir2/"'
   homepage 'https://github.com/chromebrew/crew-mvdir'
-  version '0.2-1' # Do not use @_ver here, it will break the installer.
+  version '0.2-2' # Do not use @_ver here, it will break the installer.
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
   git_hashtag '0.2'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-1_armv7l/crew_mvdir-0.2-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-1_armv7l/crew_mvdir-0.2-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-1_i686/crew_mvdir-0.2-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-1_x86_64/crew_mvdir-0.2-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_armv7l/crew_mvdir-0.2-2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_armv7l/crew_mvdir-0.2-2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_i686/crew_mvdir-0.2-2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_x86_64/crew_mvdir-0.2-2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '9ff299429cf50479d2cdfcade11603819797c9e10fd1d5415acbede7a04caf60',
-     armv7l: '9ff299429cf50479d2cdfcade11603819797c9e10fd1d5415acbede7a04caf60',
-       i686: '7a8b93d1711e96b4251c79f8e374ab331963f4948886c098895c7d8b11ed4f93',
-     x86_64: '6fa2c5216648703eb85caf927253d87b1a5bc367511e802b23f55c68e13b53e7'
+    aarch64: 'c6738e9eb4d6771c9349cbab24c5a0ff0802919e08931c979558bc0f2c33d719',
+     armv7l: 'c6738e9eb4d6771c9349cbab24c5a0ff0802919e08931c979558bc0f2c33d719',
+       i686: '94b576672248ce488bbc8c44f8ff83a5ef862264cd115ec5dea641d7ed2a740a',
+     x86_64: '7e8c79bded2e1c3d07c8d25c9773a9a8ecb23cd2e20169ff26ec6c09e9eeae41'
   })
 
-  no_zstd
+  depends_on 'glibc' # R
 
   def self.build
-    system "mold -run cc -static #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
+    system "mold -run cc #{CREW_COMMON_FLAGS} crew-mvdir.c -o crew-mvdir"
   end
 
   def self.install
