@@ -16,8 +16,8 @@ jobs:
       - name: Unit Tests
         run: |
             sudo docker run -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
-            echo \"CREW_REPO is ${{  github.actor  }}\" \
-            echo \"CREW_BRANCH is ${{ github.head_ref }}\" \
+            echo \"CREW_REPO is ${{  github.actor  }}\" && \
+            echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=https://github.com/${{  github.actor  }}/chromebrew.git CREW_BRANCH=${{ github.head_ref }} crew update && \
             yes | crew upgrade && \
             yes | crew install vim"
