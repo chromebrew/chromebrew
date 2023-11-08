@@ -20,4 +20,5 @@ jobs:
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
             yes | crew upgrade && \
-            yes | crew install vim"
+            yes | crew install vim && \
+            yes | crew remove vim"
