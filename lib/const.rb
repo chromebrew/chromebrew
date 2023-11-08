@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.39.0'
+CREW_VERSION = '1.39.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -55,7 +55,7 @@ LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
 CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
 
 if CREW_PREFIX == '/usr/local'
-  CREW_BUILD_FROM_SOURCE = !!ENV['CREW_BUILD_FROM_SOURCE']&.eql?('1')
+  CREW_BUILD_FROM_SOURCE = !ENV['CREW_BUILD_FROM_SOURCE']&.eql?('1').nil?
   HOME = Dir.home
 else
   CREW_BUILD_FROM_SOURCE = true
@@ -64,7 +64,7 @@ end
 
 CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
 
-CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !!ENV['CREW_IN_CONTAINER']&.eql?('1')
+CREW_IN_CONTAINER = File.exist?('/.dockerenv') || !ENV['CREW_IN_CONTAINER']&.eql?('1').nil?
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
@@ -120,21 +120,21 @@ MUSL_LIBC_VERSION     = `[ -x '#{CREW_MUSL_PREFIX}/lib/libc.so' ] && #{CREW_MUSL
 
 CREW_DEST_HOME          = CREW_DEST_DIR + HOME
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
-CREW_CACHE_BUILD        = ENV['CREW_CACHE_BUILD']
-CREW_CACHE_FAILED_BUILD = ENV['CREW_CACHE_FAILED_BUILD']
+CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', nil)
+CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', nil)
 
 # Set CREW_NPROC from environment variable or `nproc`
 CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
 
 # Set following as boolean if environment variables exist.
-CREW_CACHE_ENABLED                   = !!ENV['CREW_CACHE_ENABLED']&.eql?('1')
-CREW_CONFLICTS_ONLY_ADVISORY         = !!ENV['CREW_CONFLICTS_ONLY_ADVISORY']&.eql?('1')         # or use conflicts_ok
-CREW_DISABLE_ENV_OPTIONS             = !!ENV['CREW_DISABLE_ENV_OPTIONS']&.eql('1')              # or use no_env_options
-CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !!ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']&.eql?('1') # or use no_fhs
-CREW_NOT_COMPRESS                    = !!ENV['CREW_NOT_COMPRESS']&.eql?('1')                    # or use no_compress
-CREW_NOT_LINKS                       = !!ENV['CREW_NOT_LINKS']&.eql?('1')                       # or use no_links
-CREW_NOT_STRIP                       = !!ENV['CREW_NOT_STRIP']&.eql?('1')                       # or use no_strip
-CREW_NOT_SHRINK_ARCHIVE              = !!ENV['CREW_NOT_SHRINK_ARCHIVE']&.eql?('1')              # or use no_shrink
+CREW_CACHE_ENABLED                   = !ENV['CREW_CACHE_ENABLED']&.eql?('1').nil?
+CREW_CONFLICTS_ONLY_ADVISORY         = !ENV['CREW_CONFLICTS_ONLY_ADVISORY']&.eql?('1').nil?         # or use conflicts_ok
+CREW_DISABLE_ENV_OPTIONS             = !ENV['CREW_DISABLE_ENV_OPTIONS']&.eql('1').nil?              # or use no_env_options
+CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY = !ENV['CREW_FHS_NONCOMPLIANCE_ONLY_ADVISORY']&.eql?('1').nil? # or use no_fhs
+CREW_NOT_COMPRESS                    = !ENV['CREW_NOT_COMPRESS']&.eql?('1').nil?                    # or use no_compress
+CREW_NOT_LINKS                       = !ENV['CREW_NOT_LINKS']&.eql?('1').nil?                       # or use no_links
+CREW_NOT_STRIP                       = !ENV['CREW_NOT_STRIP']&.eql?('1').nil?                       # or use no_strip
+CREW_NOT_SHRINK_ARCHIVE              = !ENV['CREW_NOT_SHRINK_ARCHIVE']&.eql?('1').nil?              # or use no_shrink
 
 # Allow git constants to be set from environment variables (for testing)
 CREW_REPO   = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
@@ -146,42 +146,38 @@ CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
                    else
                      # newer version of Chrome OS exports info to env by default
-                     ENV['CHROMEOS_RELEASE_CHROME_MILESTONE']
+                     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
                    end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
-CREW_DISABLE_MVDIR = !!ENV['CREW_DISABLE_MVDIR']&.eql?('1')
+CREW_DISABLE_MVDIR = !ENV['CREW_DISABLE_MVDIR']&.eql?('1').nil?
 
 # If CREW_USE_CURL environment variable exists use curl in lieu of net/http.
-CREW_USE_CURL = !!ENV['CREW_USE_CURL']&.eql?('1')
+CREW_USE_CURL = !ENV['CREW_USE_CURL']&.eql?('1').nil?
 
 # Use an external downloader instead of net/http if CREW_DOWNLOADER is set, see lib/downloader.rb for more info
 # About the format of the CREW_DOWNLOADER variable, see line 130-133 in lib/downloader.rb
-CREW_DOWNLOADER = ENV['CREW_DOWNLOADER']
+CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 # show download progress bar or not (only applied when using the default ruby downloader)
-CREW_HIDE_PROGBAR = !!ENV['CREW_HIDE_PROGBAR']&.eql?('1')
+CREW_HIDE_PROGBAR = !ENV['CREW_HIDE_PROGBAR']&.eql?('1').nil?
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE = unless ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
-                  if File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
-                    "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-                  else
-                    '/etc/ssl/certs/ca-certificates.crt'
-                  end
-                else
+SSL_CERT_FILE = if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
                   ENV['SSL_CERT_FILE']
+                elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
+                  "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+                else
+                  '/etc/ssl/certs/ca-certificates.crt'
                 end
-SSL_CERT_DIR = unless ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
-                 if Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
-                   "#{CREW_PREFIX}/etc/ssl/certs"
-                 else
-                   '/etc/ssl/certs'
-                 end
-               else
+SSL_CERT_DIR = if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
                  ENV['SSL_CERT_DIR']
+               elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
+                 "#{CREW_PREFIX}/etc/ssl/certs"
+               else
+                 '/etc/ssl/certs'
                end
 
 case ARCH
