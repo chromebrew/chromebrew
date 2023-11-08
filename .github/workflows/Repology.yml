@@ -1,5 +1,5 @@
+---
 name: Generate Repology JSON
-
 on:
   schedule:
     - cron: '0 0 * * *'  # Every day at midnight
