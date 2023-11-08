@@ -87,7 +87,7 @@ class Wine < Package
       FileUtils.ln_s 'wine64', 'wine'
     end
     Dir.chdir 'wine64-build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", "DLLDIR=#{CREW_DEST_DLL_PREFIX}", 'install'
+      system 'make', "DESTDIR=#{CREW_DEST_DIR}", "DLLDIR=#{CREW_DEST_WINE_PREFIX}", 'install'
       FileUtils.install 'wine_config_env', "#{CREW_DEST_PREFIX}/etc/env.d/wine", mode: 0o644
     end
   end

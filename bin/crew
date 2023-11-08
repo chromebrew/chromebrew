@@ -772,7 +772,7 @@ def upgrade(*pkgs, build_from_source: false)
   to_be_upgraded.each do |pkgName|
     search(pkgName)
     print_current_package
-    @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
+    @pkg.build_from_source = (build_from_source || CREW_BUILD_FROM_SOURCE)
 
     puts "Updating #{@pkg.name}..." if @opt_verbose
 
@@ -1912,7 +1912,7 @@ def install_command(args)
     @pkgName = name
     search @pkgName
     print_current_package true
-    @pkg.build_from_source = true if @opt_source || @opt_recursive || (CREW_BUILD_FROM_SOURCE == '1')
+    @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     resolve_dependencies_and_install
   end
 end
@@ -1950,7 +1950,7 @@ def reinstall_command(args)
     @pkgName = name
     search @pkgName
     print_current_package
-    @pkg.build_from_source = true if @opt_source || @opt_recursive || (CREW_BUILD_FROM_SOURCE == '1')
+    @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkgName
 
     @pkg.in_upgrade = true
