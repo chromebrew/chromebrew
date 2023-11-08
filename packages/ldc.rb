@@ -14,6 +14,7 @@ class Ldc < Package
   depends_on 'zlibpkg'
 
   no_compile_needed
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
@@ -28,10 +29,5 @@ class Ldc < Package
     end
     FileUtils.install 'etc/ldc2.conf', "#{CREW_DEST_PREFIX}/etc", mode: 0o644
     FileUtils.install 'etc/bash_completion.d/ldc2', "#{CREW_DEST_PREFIX}/etc/bash.d", mode: 0o644
-  end
-
-  def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
   end
 end

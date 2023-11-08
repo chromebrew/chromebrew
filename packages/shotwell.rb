@@ -16,6 +16,8 @@ class Shotwell < Meson
     x86_64: '5cdee6e092952d82c60b26a8fd57446a96baebb43681bbc449e39138cc3d75cd'
   })
 
+  print_source_bashrc
+
   depends_on 'vala' => :build
   depends_on 'cairo' # R
   depends_on 'gcr' # R
@@ -37,8 +39,4 @@ class Shotwell < Meson
   depends_on 'json_glib' # R
   depends_on 'sqlite' # R
   depends_on 'webkit2gtk' # R
-
-  def self.postinstall
-    puts "\nTo finish the installation, execute 'source ~/.bashrc'\n".lightblue
-  end
 end

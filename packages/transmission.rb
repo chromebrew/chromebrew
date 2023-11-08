@@ -48,6 +48,8 @@ class Transmission < Package
   depends_on 'xdg_base' # L
   depends_on 'pango' # R
 
+  print_source_bashrc
+
   def self.build
     system "cmake -B builddir -G Ninja \
       #{CREW_CMAKE_OPTIONS} \
@@ -113,7 +115,6 @@ class Transmission < Package
     puts "\nTo start the gui client, execute 'transmission-gtk'".lightblue
     puts "\nTo start the daemon, execute 'starttransmission'".lightblue
     puts "\nTo stop the daemon, execute 'stoptransmission'".lightblue
-    puts "\nTo finish the installation, execute 'source ~/.bashrc'".lightblue
     puts "\nConfiguration files are stored in #{HOME}/.config/transmission-daemon\n".lightblue
   end
 

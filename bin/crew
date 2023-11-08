@@ -128,15 +128,32 @@ class ExitMessage
   @messages = []
 
   def self.add(msg, print_last: false)
-    # add an option to allow important messages (like sommelier) to print at the bottom
+    # Use the print_last option to allow important messages (like sommelier) to print at the bottom
+    # Usage:
+    # ExitMessage.add 'Last Message', print_last: true
     @messages << [msg.lightcyan, print_last]
   end
 
-  def self.print # print all messages
-    # &:last represent to print_last
-    puts @messages.reject(&:last).map(&:first)
-    puts @messages.select(&:last).map(&:first)
+  def self.handle_messages(msg)
+    puts msg
+    # Delete printed message from array & only print each message once.
+    @messages.reject! {|x| x.include? msg }
   end
+
+  def self.print
+    # print first non-print_last messages, then print_last messages.
+    # &:last represent to print_last
+    handle_messages(@messages.reject(&:last).map(&:first).first) until @messages.reject(&:last).map(&:first).empty?
+    handle_messages(@messages.select(&:last).map(&:first).first) until @messages.select(&:last).map(&:first).empty?
+  end
+end
+
+at_exit do
+  unless $ERROR_INFO.nil? || ($ERROR_INFO.is_a?(SystemExit) && $ERROR_INFO.success?)
+    code = $ERROR_INFO.is_a?(SystemExit) ? $ERROR_INFO.status : 1
+  end
+  # Print exit messages.
+  ExitMessage.print
 end
 
 def load_json
@@ -448,6 +465,8 @@ def help(pkgName = nil)
         puts "Use the 'no_zstd' property for the alternate xz compression algorithm."
       when 'patchelf'
         puts "Use the 'patchelf' property for patchelf execution."
+      when 'print_source_bashrc'
+        puts "Prints 'source ~/.bashrc' message at end of install."
       when 'run_tests'
         puts "Use the 'run_tests' property to execute make check tests."
       else
@@ -1041,6 +1060,13 @@ def pre_install(dest_dir)
 end
 
 def post_install
+  if @pkg.print_source_bashrc?
+    ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
+
+      To finish the installation, please execute the following:
+      source ~/.bashrc
+    PRINT_SOURCE_BASHRC_EOT
+  end
   # return unless the postinstall function was defined by the package recipe
   return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")
 
@@ -2007,15 +2033,15 @@ def is_command(name) = !!!name[/^[-<]/]
 Signal.trap('INT') do
   if CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED && @pkg.in_build
     cache_build
-    abort 'The build was interrupted. The build directory was cached.'.lightred
+    ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
+    exit 1
   end
-  abort 'Interrupted.'.lightred
+  ExitMessage.add 'Interrupted!'.lightred
+  exit 1
 end
 
 load_json
 command_name = args.select { |k, v| v && is_command(k) }.keys[0]
 send("#{command_name}_command", args)
 
-# Print exit messages.
 ExitMessage.add 'Crew is exiting.' if @opt_verbose
-ExitMessage.print

@@ -12,6 +12,7 @@ class Autojump < Package
   depends_on 'python3'
 
   no_compile_needed
+  print_source_bashrc
 
   def self.build
     File.write 'autojump.sh', <<~EOF
@@ -22,9 +23,5 @@ class Autojump < Package
   def self.install
     system "./install.py -p #{CREW_DEST_PREFIX}"
     FileUtils.install 'autojump.sh', "#{CREW_DEST_PREFIX}/etc/env.d/autojump.sh", mode: 0o755
-  end
-
-  def self.postinstall
-    puts "\nType 'source ~/.bashrc' to finish the installation.\n".lightblue
   end
 end

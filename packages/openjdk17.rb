@@ -22,6 +22,7 @@ class Openjdk17 < Package
 
   no_compile_needed
   no_shrink
+  print_source_bashrc
 
   def self.preflight
     jdkver = `java -version 2>&1`[/version "(.*?)"/, 1].to_s
@@ -54,9 +55,5 @@ class Openjdk17 < Package
       JAVA_HOME=#{CREW_PREFIX}
     EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/10-openjdk17", javaenv)
-  end
-
-  def self.postinstall
-    puts "\nType 'source ~/.bashrc' to finish the installation.\n".lightblue
   end
 end
