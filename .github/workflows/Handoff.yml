@@ -54,7 +54,7 @@ jobs:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
-  test:
+  unittests:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'Ruby')
     uses: ./.github/workflows/Unit-Test.yml

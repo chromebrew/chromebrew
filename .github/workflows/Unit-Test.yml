@@ -1,18 +1,16 @@
+---
 name: Run Unit Tests on PR
-
-on:
-  pull_request:
-    branches: [master]
+on: workflow_call
 jobs:
-  generate:
+  container_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Dump github context
-        run:   echo "$GITHUB_CONTEXT"
+        run: echo "$GITHUB_CONTEXT"
         shell: bash
         env:
-         GITHUB_CONTEXT: ${{ toJson(github) }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Unit Tests
         run: |
             sudo docker run -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
