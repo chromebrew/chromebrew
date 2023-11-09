@@ -1,7 +1,6 @@
 ---
 name: Run Unit Tests on PR
-on:
-  workflow_call
+on: workflow_call
 jobs:
   container_tests:
     runs-on: ubuntu-latest
