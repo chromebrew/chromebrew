@@ -972,7 +972,7 @@ def unpack(meta)
       when /\.deb$/i
         puts "Unpacking '.deb' archive, this may take a while..."
         DebUtils.extract_deb(meta[:filename], /data\..*/)
-        system 'tar', "-x#{@verbose}f", Dir['data.*'].join(' '), '-C', @extract_dir, exception: true
+        system 'tar', "-x#{@verbose}f", *Dir['data.*'], '-C', @extract_dir, exception: true
       when /\.AppImage$/i
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
