@@ -63,7 +63,7 @@ class Texlive < Package
     end
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     destpath = `echo #{CREW_DEST_PREFIX}/share/texlive/20*`.chomp
-    path = destpath.gsub(CREW_DEST_PREFIX.to_s, CREW_PREFIX.to_s)
+    path = destpath.gsub(CREW_DEST_PREFIX, CREW_PREFIX)
     @texliveenv = <<~TEXLIVEEOF
       # texlive configuration
       export PATH="$PATH:#{path}/bin/#{@archpath}"

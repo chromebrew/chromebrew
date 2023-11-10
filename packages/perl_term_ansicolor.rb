@@ -4,7 +4,7 @@ require_relative 'perl'
 class Perl_term_ansicolor < Package
   description 'Character mode terminal access for Perl Term::ANSIColor'
   homepage 'https://metacpan.org/pod/Term::ANSIColor'
-  version Perl.version.to_s
+  version Perl.version
   license 'GPL-1+ or Artistic'
   compatibility 'all'
 

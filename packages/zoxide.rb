@@ -34,12 +34,12 @@ class Zoxide < Package
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
     FileUtils.install 'zoxide.bash', "#{CREW_DEST_PREFIX}/etc/env.d/zoxide.bash", mode: 0o644
     FileUtils.install 'zoxide.init', "#{CREW_DEST_PREFIX}/etc/env.d/zoxide.init", mode: 0o644
     FileUtils.install 'zoxide', "#{CREW_DEST_PREFIX}/bin/zoxide", mode: 0o755
     FileUtils.mv 'completions', "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv 'man/man1', CREW_DEST_MAN_PREFIX.to_s
+    FileUtils.mv 'man/man1', CREW_DEST_MAN_PREFIX
   end
 end

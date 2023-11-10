@@ -35,7 +35,7 @@ class Musl_cc_toolchain < Package
       FileUtils.ln_sf 'libc.so', 'ld-musl-x86_64.so.1' if ARCH == 'x86_64'
       FileUtils.ln_sf 'libc.so', 'ld-musl-armhf.so.1' if ARCH == 'armv7l'
     end
-    Dir.chdir(CREW_DEST_MUSL_PREFIX.to_s) do
+    Dir.chdir(CREW_DEST_MUSL_PREFIX) do
       FileUtils.ln_sf 'lib', 'lib64' if ARCH == 'x86_64'
     end
   end

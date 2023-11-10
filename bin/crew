@@ -1134,7 +1134,7 @@ def prepare_package(destdir)
     # locations.
     if File.exist?("#{CREW_DEST_PREFIX}/man")
       puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
-      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
       FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
       Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
     end
@@ -1146,7 +1146,7 @@ def prepare_package(destdir)
     end
     # Remove the "share/info/dir.*" file since it causes conflicts.
     FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
-    compress_doc CREW_DEST_MAN_PREFIX.to_s
+    compress_doc CREW_DEST_MAN_PREFIX
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # Allow postbuild to override the filelist contents

@@ -9,7 +9,7 @@ class Openmp < Package
   homepage 'https://openmp.llvm.org/'
   version '17.0.4'
   # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version.to_s
+  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'

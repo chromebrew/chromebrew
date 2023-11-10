@@ -24,6 +24,6 @@ class Github_cli < Package
 
   def self.install
     FileUtils.install 'bin/gh', "#{CREW_DEST_PREFIX}/bin/gh", mode: 0o755
-    FileUtils.mv 'share', CREW_DEST_PREFIX.to_s
+    FileUtils.mv 'share', CREW_DEST_PREFIX
   end
 end

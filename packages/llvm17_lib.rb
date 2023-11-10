@@ -6,7 +6,7 @@ class Llvm17_lib < Package
   homepage Llvm17_build.homepage
   version '17.0.4'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib* and llvm_dev* in tandem.
-  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version.to_s
+  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version
   license Llvm17_build.license
   compatibility 'all'
   source_url 'SKIP'

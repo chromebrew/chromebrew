@@ -2,11 +2,11 @@ require 'package'
 require_relative 'musl_cc_toolchain'
 
 class Musl_toolchain < Package
-  description Musl_cc_toolchain.description.to_s
-  homepage Musl_cc_toolchain.homepage.to_s
-  version Musl_cc_toolchain.version.to_s
-  license Musl_cc_toolchain.license.to_s
-  compatibility Musl_cc_toolchain.compatibility.to_s
+  description Musl_cc_toolchain.description
+  homepage Musl_cc_toolchain.homepage
+  version Musl_cc_toolchain.version
+  license Musl_cc_toolchain.license
+  compatibility Musl_cc_toolchain.compatibility
 
   is_fake
 

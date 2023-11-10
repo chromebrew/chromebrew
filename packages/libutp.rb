@@ -28,10 +28,10 @@ class Libutp < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/utp"
     FileUtils.install %w[ucat ucat-static], "#{CREW_DEST_PREFIX}/bin", mode: 0o755
-    FileUtils.install %w[libutp.a libutp.so], CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
+    FileUtils.install %w[libutp.a libutp.so], CREW_DEST_LIB_PREFIX, mode: 0o644
     FileUtils.install Dir['*.h'], "#{CREW_DEST_PREFIX}/include/utp", mode: 0o644
   end
 end

@@ -24,7 +24,7 @@ class Pandoc < Package
   })
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_PREFIX
     system "cp -r bin/ #{CREW_DEST_PREFIX}"
     system "cp -r share/ #{CREW_DEST_PREFIX}"
   end

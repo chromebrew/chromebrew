@@ -25,7 +25,7 @@ class Python < Package
 
   def self.install
     if File.file?('setup.py')
-      @py_setup_install_options = @no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM.to_s : PY_SETUP_INSTALL_OPTIONS.to_s
+      @py_setup_install_options = @no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM : PY_SETUP_INSTALL_OPTIONS
       puts "Python install options being used: #{@py_setup_install_options} #{@python_install_options}".orange
       system "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py install #{@py_setup_install_options} #{@python_install_options}"
     else

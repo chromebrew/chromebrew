@@ -2,11 +2,11 @@ require 'package'
 require_relative 'github_cli'
 
 class Gh < Package
-  description Github_cli.description.to_s
-  homepage Github_cli.homepage.to_s
-  version Github_cli.version.to_s
-  license Github_cli.license.to_s
-  compatibility Github_cli.compatibility.to_s
+  description Github_cli.description
+  homepage Github_cli.homepage
+  version Github_cli.version
+  license Github_cli.license
+  compatibility Github_cli.compatibility
 
   is_fake
 

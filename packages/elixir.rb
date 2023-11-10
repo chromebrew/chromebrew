@@ -20,11 +20,11 @@ class Elixir < Package
     FileUtils.rm_f Dir['bin/*.bat']
     FileUtils.rm_f Dir['man/*.1.in']
     # Prepare destination directories
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
     # Add relevant files
-    FileUtils.cp_r 'bin/', CREW_DEST_PREFIX.to_s
-    FileUtils.cp_r Dir['lib/mix/lib/*'], CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.cp_r 'bin/', CREW_DEST_PREFIX
+    FileUtils.cp_r Dir['lib/mix/lib/*'], CREW_DEST_LIB_PREFIX
     FileUtils.cp_r Dir['man/*'], "#{CREW_DEST_MAN_PREFIX}/man1"
   end
 end

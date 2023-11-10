@@ -12,12 +12,12 @@ class Glibc_lib < Package
 
   case LIBC_VERSION
   when '2.35'
-    version Glibc_build235.version.to_s
-    compatibility Glibc_build235.compatibility.to_s
+    version Glibc_build235.version
+    compatibility Glibc_build235.compatibility
     depends_on 'glibc_lib235'
   else
-    version Glibc.version.to_s
-    compatibility Glibc.compatibility.to_s
+    version Glibc.version
+    compatibility Glibc.compatibility
     depends_on 'glibc'
   end
 end

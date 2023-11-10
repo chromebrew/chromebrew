@@ -34,7 +34,7 @@ class Vamp_sdk < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     if ARCH == 'x86_64'
-      Dir.chdir CREW_DEST_PREFIX.to_s do
+      Dir.chdir CREW_DEST_PREFIX do
         FileUtils.mv 'lib/', 'lib64/'
       end
     end
