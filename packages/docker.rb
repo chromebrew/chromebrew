@@ -74,7 +74,7 @@ class Docker < Package
     @libnetwork_version = '3f0048413d95802b9c6c836eba06bfc54f9dbd03'
     @tini_version = '0b44d3665869e46ccbac7414241b8256d6234dc4'
     @buildx_version = 'v0.10.5'
-    @gopath = `pwd`.chomp
+    @gopath = Dir.pwd
     FileUtils.mkdir_p 'src/github.com/docker'
     FileUtils.ln_s @gopath, 'src/github.com/docker/cli'
     Dir.chdir 'src/github.com/docker/cli' do

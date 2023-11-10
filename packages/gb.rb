@@ -29,26 +29,27 @@ class Gb < Package
             export GOPATH=#{CREW_DEST_PREFIX}/share/gb && \
             go get -v github.com/constabulary/gb/... && \
             export GOPATH=$SAVEGOPATH"
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > gb"
-      system "echo 'if [ -z \"\$GOPATH\" ]; then' >> gb"
-      system "echo '  echo \"GOPATH environment variable not set.\"' >> gb"
-      system "echo '  exit 1' >> gb"
-      system "echo 'fi' >> gb"
-      system "echo 'cd #{CREW_PREFIX}/share/gb' >> gb"
-      system "echo 'bin/gb \"\$@\"' >> gb"
-      system "echo 'cd -' >> gb"
-      system 'chmod +x gb'
-      system "echo '#!/bin/bash' > gb-vendor"
-      system "echo 'if [ -z \"\$GOPATH\" ]; then' >> gb-vendor"
-      system "echo '  echo \"GOPATH environment variable not set.\"' >> gb-vendor"
-      system "echo '  exit 1' >> gb-vendor"
-      system "echo 'fi' >> gb-vendor"
-      system "echo 'cd #{CREW_PREFIX}/share/gb' >> gb-vendor"
-      system "echo 'bin/gb-vendor \"\$@\"' >> gb-vendor"
-      system "echo 'cd -' >> gb-vendor"
-      system 'chmod +x gb-vendor'
+      File.write 'gb', <<~EOF, perm: 0o755
+        #!/bin/bash
+        if [ -z "$GOPATH" ]; then
+          echo "GOPATH environment variable not set."
+          exit 1
+        fi
+        cd #{CREW_PREFIX}/share/gb
+        bin/gb "$@"
+      EOF
+
+      File.write 'gb-vendor', <<~EOF, perm: 0o755
+        #!/bin/bash
+        if [ -z "$GOPATH" ]; then
+          echo "GOPATH environment variable not set."
+          exit 1
+        fi
+        cd #{CREW_PREFIX}/share/gb
+        bin/gb-vendor "$@"
+      EOF
     end
   end
 end

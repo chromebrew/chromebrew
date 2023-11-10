@@ -25,8 +25,8 @@ class Fslint < Package
   depends_on 'help2man'
 
   def self.build
-    system 'rm -f man/*'
-    system 'chmod +x fslint/supprt/fslver'
+    FileUtils.rm_rf Dir['man/*']
+    FileUtils.chmod 0o755, 'fslint/supprt/fslver'
     system 'help2man -N fslint/findup > man/findup.1'
     system 'help2man -N fslint/findnl > man/findnl.1'
     system 'help2man -N fslint/findu8 > man/findu8.1'
@@ -43,10 +43,8 @@ class Fslint < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
-    system "cp -r fslint/* #{CREW_DEST_PREFIX}/bin"
-    system "cp fslint/fstool/lS #{CREW_DEST_PREFIX}/bin"
-    system "cp man/* #{CREW_DEST_PREFIX}/man/man1"
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/man/man1]
+    FileUtils.cp_r Dir['fslint/*', 'fslint/fstool/lS'], "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.cp Dir['man/*'], "#{CREW_DEST_PREFIX}/man/man1"
   end
 end

@@ -31,14 +31,17 @@ class Gwt < Package
     system "mkdir -p #{CREW_DEST_PREFIX}/share/gwt"
     system "cp -r . #{CREW_DEST_PREFIX}/share/gwt"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      system "echo '#!/bin/bash' > i18nCreator"
-      system "echo 'cd #{CREW_PREFIX}/share/gwt' >> i18nCreator"
-      system "echo './i18nCreator \"$@\"' >> i18nCreator"
-      system 'chmod +x i18nCreator'
-      system "echo '#!/bin/bash' > webAppCreator"
-      system "echo 'cd #{CREW_PREFIX}/share/gwt' >> webAppCreator"
-      system "echo './webAppCreator \"$@\"' >> webAppCreator"
-      system 'chmod +x webAppCreator'
+      File.write 'i18nCreator', <<~EOF, perm: 0o755
+        #!/bin/bash
+        cd #{CREW_PREFIX}/share/gwt
+        ./i18nCreator "$@"
+      EOF
+
+      File.write 'webAppCreator', <<~EOF, perm: 0o755
+        #!/bin/bash
+        cd #{CREW_PREFIX}/share/gwt
+        ./webAppCreator "$@"
+      EOF
     end
   end
 

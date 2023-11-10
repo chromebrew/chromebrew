@@ -30,33 +30,33 @@ class Dropbox < Package
   def self.build
     system 'curl -#LO https://linux.dropbox.com/packages/dropbox.py'
     system "sed -i 's,~/.dropbox-dist,#{CREW_LIB_PREFIX}/dropbox,g' dropbox.py"
-    system "echo '#!/bin/bash' > dropboxd"
-    system "echo 'PWD=$(pwd)' >> dropboxd"
-    system "echo 'cd #{CREW_LIB_PREFIX}/dropbox' >> dropboxd"
-    system "echo './dropboxd' >> dropboxd"
-    system "echo 'cd $PWD' >> dropboxd"
-    system 'chmod +x dropboxd'
-    system "echo '#!/bin/bash' > dropbox"
-    system "echo 'python #{CREW_PREFIX}/bin/dropbox.py \"$@\"' >> dropbox"
-    system 'chmod +x dropbox'
+    File.write 'dropboxd', <<~EOF, perm: 0o755
+      #!/bin/bash
+      cd #{CREW_LIB_PREFIX}/dropbox
+      ./dropboxd
+    EOF
+
+    File.write 'dropbox', <<~EOF, perm: 0o755
+      #!/bin/bash
+      python #{CREW_PREFIX}/bin/dropbox.py "$@"
+    EOF
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}/dropbox"
-    system "cp -r .dropbox-dist/* #{CREW_DEST_LIB_PREFIX}/dropbox"
-    system "cp dropbox.py #{CREW_DEST_PREFIX}/bin"
-    system "cp dropboxd #{CREW_DEST_PREFIX}/bin"
-    system "cp dropbox #{CREW_DEST_PREFIX}/bin"
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_LIB_PREFIX}/dropbox]
+    FileUtils.cp_r Dir['.dropbox-dist/*'], "#{CREW_DEST_LIB_PREFIX}/dropbox"
+    FileUtils.mv %w[dropbox.py dropboxd dropbox], "#{CREW_DEST_PREFIX}/bin"
   end
 
   def self.postinstall
-    puts
-    puts "To finish the installation, execute 'dropboxd'.".lightblue
-    puts 'Login to dropbox.com, highlight the url and paste into Chrome.'.lightblue
-    puts 'Type Ctrl+C to exit dropboxd after linking your system.'.lightblue
-    puts "Execute 'dropbox start' and after syncing is complete, files will be available in ~/Dropbox.".lightblue
-    puts "Execute 'dropbox' to see the full list of available options.".lightblue
-    puts
+    puts <<~EOT.lightblue
+
+      To finish the installation, execute 'dropboxd'.
+      Login to dropbox.com, highlight the url and paste into Chrome.
+      Type Ctrl+C to exit dropboxd after linking your system.
+      Execute 'dropbox start' and after syncing is complete, files will be available in ~/Dropbox.
+      Execute 'dropbox' to see the full list of available options.
+
+    EOT
   end
 end

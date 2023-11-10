@@ -26,7 +26,7 @@ class Perl_sgmls < Package
 
   def self.patch
     # For some reason this file doesn't have the proper permissions in the tarball
-    system 'chmod 0644 MYMETA.yml'
+    FileUtils.chmod 0o644, 'MYMETA.yml'
   end
 
   def self.prebuild
