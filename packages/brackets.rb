@@ -43,7 +43,7 @@ class Brackets < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_HOME}/.config/Brackets"
-    FileUtils.mv 'usr/share', CREW_DEST_PREFIX.to_s
+    FileUtils.mv 'usr/share', CREW_DEST_PREFIX
     FileUtils.mv 'opt/brackets', "#{CREW_DEST_PREFIX}/share"
     FileUtils.ln_s "#{CREW_PREFIX}/share/brackets/Brackets", "#{CREW_DEST_PREFIX}/bin/brackets"
     system "touch #{CREW_DEST_HOME}/.config/Brackets/window.ini"

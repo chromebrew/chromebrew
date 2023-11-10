@@ -40,7 +40,7 @@ class Libudev_stub < Package
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       system "ln -sf #{CREW_PREFIX}/bin/g++-7.3 g++-6"
     end
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     system "cp -r build/out/lib/* #{CREW_DEST_LIB_PREFIX}"
     system "install -Dm755 build/out/bin/libudev_test #{CREW_DEST_PREFIX}/bin/libudev_test"
   end

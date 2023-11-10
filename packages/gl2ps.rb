@@ -37,8 +37,8 @@ class Gl2ps < Package
     Dir.chdir 'build' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
       if ARCH == 'x86_64'
-        FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
-        FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), CREW_DEST_LIB_PREFIX.to_s
+        FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+        FileUtils.mv Dir.glob("#{CREW_DEST_PREFIX}/lib/*"), CREW_DEST_LIB_PREFIX
       end
     end
   end

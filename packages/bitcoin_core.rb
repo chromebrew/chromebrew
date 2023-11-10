@@ -21,15 +21,15 @@ class Bitcoin_core < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
-    FileUtils.mv 'bin/', CREW_DEST_PREFIX.to_s
-    FileUtils.mv 'share/', CREW_DEST_PREFIX.to_s
-    FileUtils.mv 'include/', CREW_DEST_PREFIX.to_s
+    FileUtils.mv 'bin/', CREW_DEST_PREFIX
+    FileUtils.mv 'share/', CREW_DEST_PREFIX
+    FileUtils.mv 'include/', CREW_DEST_PREFIX
     FileUtils.mv 'bitcoin.conf', "#{CREW_DEST_PREFIX}/etc"
     if ARCH == 'x86_64'
-      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
-      FileUtils.mv Dir['lib/*'], CREW_DEST_LIB_PREFIX.to_s
+      FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
+      FileUtils.mv Dir['lib/*'], CREW_DEST_LIB_PREFIX
     else
-      FileUtils.mv 'lib/', CREW_DEST_PREFIX.to_s
+      FileUtils.mv 'lib/', CREW_DEST_PREFIX
     end
   end
 end

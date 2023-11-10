@@ -13,8 +13,8 @@ class Yarn < Package
   depends_on 'nodebrew' unless node_version.to_s != ''
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.rm_f ['bin/yarn.cmd', 'bin/yarnpkg.cmd']
-    FileUtils.cp_r ['bin/', 'lib/'], CREW_DEST_PREFIX.to_s
+    FileUtils.cp_r ['bin/', 'lib/'], CREW_DEST_PREFIX
   end
 end

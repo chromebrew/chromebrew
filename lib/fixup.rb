@@ -147,7 +147,7 @@ Dir.chdir CREW_LIB_PATH do
   @new_const_git_commit = `git log -n1 --oneline #{CREW_LIB_PATH}lib/const.rb`.chomp.split.first
 end
 
-unless @new_const_git_commit.to_s == CREW_CONST_GIT_COMMIT.to_s
+unless @new_const_git_commit == CREW_CONST_GIT_COMMIT
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
   puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if @opt_verbose
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"

@@ -8,7 +8,7 @@ class Gcc_lib < Package
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
-                                                                                                   '') != Gcc_build.version.to_s
+                                                                                                   '') != Gcc_build.version
   compatibility 'all'
   source_url 'SKIP'
 

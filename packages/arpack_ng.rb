@@ -56,7 +56,7 @@ class Arpack_ng < Package
              '-DMPI=ON',
              '..'
       system 'make'
-      system 'ld_default', old_ld.to_s
+      system 'ld_default', old_ld
     end
   end
 

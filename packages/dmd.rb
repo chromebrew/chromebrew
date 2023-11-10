@@ -71,20 +71,20 @@ class Dmd < Package
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc"
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/phobos"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/dmd/druntime"
     FileUtils.install 'dmd/generated/linux/release/64/dmd', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
     FileUtils.cp_r 'dmd/druntime/import', "#{CREW_DEST_PREFIX}/include/dmd/druntime"
     FileUtils.install 'dmd.conf', "#{CREW_DEST_PREFIX}/etc", mode: 0o644
-    FileUtils.cp_r 'dmd/compiler/docs/man/man5', CREW_DEST_MAN_PREFIX.to_s
+    FileUtils.cp_r 'dmd/compiler/docs/man/man5', CREW_DEST_MAN_PREFIX
     Dir.chdir 'dmd/generated/linux/release/64/host_dmd-2.095.0/dmd2/man/man1' do
       FileUtils.install 'dmd.1', "#{CREW_DEST_MAN_PREFIX}/man1", mode: 0o644
     end
     Dir.chdir 'phobos/generated/linux/release/64' do
       libraries = %w[libphobos2.a libphobos2.so libphobos2.so.0.102 libphobos2.so.0.102.1]
-      FileUtils.install libraries, CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
+      FileUtils.install libraries, CREW_DEST_LIB_PREFIX, mode: 0o644
     end
     FileUtils.cp_r ['phobos/etc', 'phobos/std'], "#{CREW_DEST_PREFIX}/include/phobos"
     Dir.chdir 'tools/generated/linux/64' do

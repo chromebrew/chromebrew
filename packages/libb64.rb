@@ -29,10 +29,10 @@ class Libb64 < Package
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
     FileUtils.install 'base64/base64', "#{CREW_DEST_PREFIX}/bin", mode: 0o755
-    FileUtils.install 'src/libb64.a', CREW_DEST_LIB_PREFIX.to_s, mode: 0o644
+    FileUtils.install 'src/libb64.a', CREW_DEST_LIB_PREFIX, mode: 0o644
     FileUtils.cp_r 'include/b64', "#{CREW_DEST_PREFIX}/include"
   end
 end

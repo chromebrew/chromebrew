@@ -21,7 +21,7 @@ class Minecraft < Package
   no_fhs
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_PREFIX
     FileUtils.cp_r '.', "#{CREW_DEST_PREFIX}/"
     FileUtils.mv "#{CREW_DEST_PREFIX}/bin/minecraft-launcher", "#{CREW_DEST_PREFIX}/bin/minecraft-launcher.elf"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/.minecraft"

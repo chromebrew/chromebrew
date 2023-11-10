@@ -14,8 +14,8 @@ class Crystal < Package
   print_source_bashrc
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
-    FileUtils.mv %w[bin lib share], CREW_DEST_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_PREFIX
+    FileUtils.mv %w[bin lib share], CREW_DEST_PREFIX
     bashcomp = <<~EOF
       # Crystal bash completion
       source "#{CREW_PREFIX}/share/bash-completion/completions/crystal"

@@ -2,11 +2,11 @@ require 'package'
 require_relative 'perl_stow'
 
 class Stow < Package
-  description Perl_stow.description.to_s
-  homepage Perl_stow.homepage.to_s
-  version Perl_stow.version.to_s
-  license Perl_stow.license.to_s
-  compatibility Perl_stow.compatibility.to_s
+  description Perl_stow.description
+  homepage Perl_stow.homepage
+  version Perl_stow.version
+  license Perl_stow.license
+  compatibility Perl_stow.compatibility
 
   depends_on 'perl_stow'
 

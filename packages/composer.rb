@@ -18,7 +18,7 @@ class Composer < Package
   def self.preinstall
     if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")
       # Save any existing configuration
-      FileUtils.cp_r "#{HOME}/.config", CREW_PREFIX.to_s, remove_destination: true unless Dir.empty? "#{HOME}/.config"
+      FileUtils.cp_r "#{HOME}/.config", CREW_PREFIX, remove_destination: true unless Dir.empty? "#{HOME}/.config"
     else
       # Remove the symlink, if it exists
       FileUtils.rm_f "#{HOME}/.config"

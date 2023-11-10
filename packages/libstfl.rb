@@ -45,10 +45,10 @@ class Libstfl < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    Dir.chdir CREW_DEST_PREFIX.to_s do
-      FileUtils.mv 'lib', CREW_DEST_LIB_PREFIX.to_s if CREW_LIB_SUFFIX.to_s == '64'
+    Dir.chdir CREW_DEST_PREFIX do
+      FileUtils.mv 'lib', CREW_DEST_LIB_PREFIX if CREW_LIB_SUFFIX.to_s == '64'
     end
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       FileUtils.symlink 'libstfl.so.0.23', 'libstfl.so.0'
     end
   end
