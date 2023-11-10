@@ -39,6 +39,6 @@ class Healthcheck < Package
       To execute, enter the following:
       sudo healthcheck
 
-    EOF
+    EOT
   end
 end
