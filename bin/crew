@@ -962,28 +962,21 @@ def unpack(meta)
       case File.basename meta[:filename]
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
-        _verbopt = @opt_verbose ? '-v' : '-qq'
-        system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
-      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz)$/i
+        system 'unzip', (@opt_verbose ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
+      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+        system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
       when /\.tar\.zst$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system "tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+        system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
       when /\.deb$/i
         puts "Unpacking '.deb' archive, this may take a while..."
         DebUtils.extract_deb(meta[:filename], /data\..*/)
-        system "tar x#{@verbose}f data.* -C #{@extract_dir}", exception: true
+        system 'tar', "-x#{@verbose}f", Dir['data.*'].join(' '), '-C', @extract_dir, exception: true
       when /\.AppImage$/i
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
-        Dir.chdir @extract_dir do
-          system "../#{meta[:filename]} --appimage-extract", exception: true
-        end
-      when /\.tpxz$/i
-        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred unless File.file?("#{CREW_PREFIX}/bin/pixz")
-        puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
-        system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+        system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       end
     end
     if meta[:source]
@@ -1134,7 +1127,7 @@ def prepare_package(destdir)
     # locations.
     if File.exist?("#{CREW_DEST_PREFIX}/man")
       puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
-      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
       FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
       Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
     end
@@ -1146,7 +1139,7 @@ def prepare_package(destdir)
     end
     # Remove the "share/info/dir.*" file since it causes conflicts.
     FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
-    compress_doc CREW_DEST_MAN_PREFIX.to_s
+    compress_doc CREW_DEST_MAN_PREFIX
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # Allow postbuild to override the filelist contents
