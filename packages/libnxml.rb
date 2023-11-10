@@ -27,7 +27,7 @@ class Libnxml < Package
   end
 
   def self.prebuild
-    system 'chmod +x ./configure'
+    FileUtils.chmod 0o755, './configure'
   end
 
   def self.build

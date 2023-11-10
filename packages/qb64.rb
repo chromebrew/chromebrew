@@ -48,13 +48,13 @@ class Qb64 < Package
   end
 
   def self.install
-    system 'chmod', '+x', 'qb64'
-    system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/share/qb64"
-    system 'mkdir', '-p', "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.chmod 0o644, 'qb64'
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/share/qb64 #{CREW_DEST_PREFIX}/bin]
     system 'cp', '-rpa', '.', "#{CREW_DEST_PREFIX}/share/qb64/"
-    system "echo '\#!/bin/bash' >> #{CREW_DEST_PREFIX}/bin/qb64"
-    system "echo \"cd #{CREW_PREFIX}/share/qb64/\" >> #{CREW_DEST_PREFIX}/bin/qb64"
-    system "echo \"sommelier -X #{CREW_PREFIX}/share/qb64/qb64\" >> #{CREW_DEST_PREFIX}/bin/qb64"
-    system "chmod +x #{CREW_DEST_PREFIX}/bin/qb64"
+    File.write "#{CREW_DEST_PREFIX}/bin/qb64", <<~EOF, perm: 0o755
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/qb64/
+      sommelier -X #{CREW_PREFIX}/share/qb64/qb64
+    EOF
   end
 end

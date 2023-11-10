@@ -32,8 +32,7 @@ class Minecraft < Package
         # https://minecraft.fandom.com/wiki/Minecraft_Launcher
         HOME=#{CREW_PREFIX}/.config #{CREW_PREFIX}/bin/minecraft-launcher.elf --workDir #{CREW_PREFIX}/.config/.minecraft --tmpDir #{CREW_PREFIX}/tmp $@
       EOF
-      File.write('minecraft-launcher', @launcherscript)
-      system 'chmod +x minecraft-launcher'
+      File.write('minecraft-launcher', @launcherscript, perm: 0o755)
     end
   end
 
