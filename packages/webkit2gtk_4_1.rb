@@ -141,7 +141,7 @@ class Webkit2gtk_4_1 < Package
 
   def self.build
     # This builds webkit2gtk4_1 (which uses gtk3, but not libsoup2)
-    @workdir = `pwd`.chomp
+    @workdir = Dir.pwd
     # Bubblewrap sandbox breaks on epiphany with
     # bwrap: Can't make symlink at /var/run: File exists
     # LDFLAGS from debian: -Wl,--no-keep-memory

@@ -79,7 +79,7 @@ class Openssl < Package
       #{CREW_LIB_PREFIX[1..]}/libcrypto.so.1.1
       #{CREW_LIB_PREFIX[1..]}/libssl.so.1.1
     EOF
-    @cur_dir = `pwd`.chomp
+    @cur_dir = Dir.pwd
     @legacy_version = '1.1.1w'
     case ARCH
     when 'aarch64', 'armv7l'

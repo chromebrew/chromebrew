@@ -29,7 +29,7 @@ class Ipfs < Package
     system 'mkdir -p ../src/github.com/ipfs/go-ipfs'
     system 'cp -aT . ../src/github.com/ipfs/go-ipfs/'
     system 'mv ../src .'
-    system 'export GOPATH=`pwd`; cd src/github.com/ipfs/go-ipfs; make build'
+    system "GOPATH=#{Dir.pwd} make build", chdir: 'src/github.com/ipfs/go-ipfs'
   end
 
   def self.install
