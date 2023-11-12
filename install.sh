@@ -345,7 +345,6 @@ crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
 # We need these to install core.
-yes | crew install pixz
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
