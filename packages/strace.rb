@@ -26,7 +26,7 @@ class Strace < Autotools
   depends_on 'glibc' # R
 
   # This needs to be built with linux headers 4.14 on x86_64 via
-  # CREW_KERNEL_VERSION=4.14 crew build...
+  # CREW_KERNEL_VERSION=4.14 crew upgrade linuxheaders ; CREW_KERNEL_VERSION=4.14 crew build strace
 
   configure_options '--disable-mpers \
       --with-libdw'
