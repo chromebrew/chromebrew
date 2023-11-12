@@ -11,5 +11,3 @@
 /usr/local/lib64/libgudev-1.0.so.0.3.0
 /usr/local/lib64/pkgconfig/gudev-1.0.pc
 /usr/local/share/gir-1.0/GUdev-1.0.gir
-/usr/local/share/vala/vapi/gudev-1.0.deps
-/usr/local/share/vala/vapi/gudev-1.0.vapi
