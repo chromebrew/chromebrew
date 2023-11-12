@@ -1,4 +1,3 @@
-/usr/local/bin/gpgme-config
 /usr/local/bin/gpgme-json
 /usr/local/bin/gpgme-tool
 /usr/local/include/gpgme++/configuration.h
@@ -20,6 +19,7 @@
 /usr/local/include/gpgme++/gpgmefw.h
 /usr/local/include/gpgme++/gpgmepp_export.h
 /usr/local/include/gpgme++/gpgmepp_version.h
+/usr/local/include/gpgme++/gpgrevokekeyeditinteractor.h
 /usr/local/include/gpgme++/gpgsetexpirytimeeditinteractor.h
 /usr/local/include/gpgme++/gpgsetownertrusteditinteractor.h
 /usr/local/include/gpgme++/gpgsignkeyeditinteractor.h
@@ -49,10 +49,10 @@
 /usr/local/lib64/libgpgmepp.la
 /usr/local/lib64/libgpgmepp.so
 /usr/local/lib64/libgpgmepp.so.6
-/usr/local/lib64/libgpgmepp.so.6.14.0
+/usr/local/lib64/libgpgmepp.so.6.20.0
 /usr/local/lib64/libgpgme.so
 /usr/local/lib64/libgpgme.so.11
-/usr/local/lib64/libgpgme.so.11.26.0
+/usr/local/lib64/libgpgme.so.11.32.0
 /usr/local/lib64/pkgconfig/gpgme-glib.pc
 /usr/local/lib64/pkgconfig/gpgme.pc
 /usr/local/share/aclocal/gpgme.m4
@@ -60,6 +60,6 @@
 /usr/local/share/common-lisp/source/gpgme/gpgme-grovel.lisp
 /usr/local/share/common-lisp/source/gpgme/gpgme.lisp
 /usr/local/share/common-lisp/source/gpgme/gpgme-package.lisp
-/usr/local/share/info/gpgme.info-1.gz
-/usr/local/share/info/gpgme.info-2.gz
-/usr/local/share/info/gpgme.info.gz
+/usr/local/share/info/gpgme.info-1.zst
+/usr/local/share/info/gpgme.info-2.zst
+/usr/local/share/info/gpgme.info.zst
