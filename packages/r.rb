@@ -45,7 +45,6 @@ class R < Autotools
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
-  configure_options "--disable-maintainer-mode \
-           --enable-R-shlib \
-           --with-x"
+  configure_options '--enable-R-shlib \
+           --with-x'
 end

@@ -40,8 +40,7 @@ class Elinks < Meson
     -Didn=false \
     -Dgemini=true \
     -Dbrotli=true \
-    -Dbzlib=true \
-    -Dzlib=true'
+    -Dbzlib=true'
 
   def self.patch
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,g' doc/tools/help2xml"

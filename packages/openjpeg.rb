@@ -31,6 +31,5 @@ class Openjpeg < CMake
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  cmake_options "-DBUILD_SHARED_LIBS=ON \
-        -DOPENJPEG_INSTALL_LIB_DIR='lib#{CREW_LIB_SUFFIX}'"
+  cmake_options "-DOPENJPEG_INSTALL_LIB_DIR='lib#{CREW_LIB_SUFFIX}'"
 end

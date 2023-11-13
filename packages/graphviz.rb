@@ -40,16 +40,11 @@ class Graphviz < Package
   depends_on 'qt5_base' # R
   depends_on 'zlibpkg' # R
 
-  def self.patch
-    system "sed -i 's|/usr|#{CREW_PREFIX}|g' cmake/config_checks.cmake"
-  end
-
   def self.build
     system "AWK=#{CREW_PREFIX}/bin/mawk \
         cmake -B builddir \
         -G Ninja \
-        #{CREW_CMAKE_OPTIONS} \
-        -Dwith_gvedit=ON"
+        #{CREW_CMAKE_OPTIONS}"
     system "#{CREW_NINJA} -C builddir"
   end
 
