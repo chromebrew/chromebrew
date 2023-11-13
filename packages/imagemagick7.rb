@@ -77,11 +77,9 @@ class Imagemagick7 < Autotools
   configure_options "--mandir=#{CREW_MAN_PREFIX} \
       --program-prefix='' \
       --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
-      --with-magick-plus-plus \
       --enable-hugepages \
       --with-jemalloc \
       --with-modules \
-      --enable-hdri \
       --with-perl \
       --with-perl-options='INSTALLDIRS=vendor' \
       --with-rsvg \

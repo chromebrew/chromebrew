@@ -40,8 +40,6 @@ class Graphviz < CMake
   depends_on 'qt5_base' # R
   depends_on 'zlibpkg' # R
 
-  pre_cmake_options "AWK=#{CREW_PREFIX}/bin/mawk"
-
   def self.install
     # There is a library error only when installing dot using the following command.
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install || true"
