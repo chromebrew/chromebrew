@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Graphviz < Package
+class Graphviz < CMake
   description 'Graphviz is open source graph visualization software.'
   homepage 'https://www.graphviz.org/'
   version '9.0.0'
@@ -40,13 +40,7 @@ class Graphviz < Package
   depends_on 'qt5_base' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "AWK=#{CREW_PREFIX}/bin/mawk \
-        cmake -B builddir \
-        -G Ninja \
-        #{CREW_CMAKE_OPTIONS}"
-    system "#{CREW_NINJA} -C builddir"
-  end
+  pre_cmake_options "AWK=#{CREW_PREFIX}/bin/mawk"
 
   def self.install
     # There is a library error only when installing dot using the following command.

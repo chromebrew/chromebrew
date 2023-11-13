@@ -1,13 +1,13 @@
 require 'package'
 
 class Meson < Package
-  property :meson_options
+  property :meson_options, :pre_meson_options
 
   def self.build
-    puts "Additional meson_options being used: #{@meson_options.nil? || @meson_options.empty? ? '<no meson_options>' : @meson_options}".orange
+    puts "Additional meson_options being used: #{@pre_meson_options.nil? || @pre_meson_options.empty? ? '<no pre_meson_options>' : @pre_meson_options} #{@meson_options.nil? || @meson_options.empty? ? '<no meson_options>' : @meson_options}".orange
     @crew_meson_options = @no_lto ? CREW_MESON_FNO_LTO_OPTIONS : CREW_MESON_OPTIONS
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
-    system "#{@mold_linker_prefix_cmd} meson setup #{@crew_meson_options} #{@meson_options} builddir"
+    system "#{@pre_meson_options} #{@mold_linker_prefix_cmd} meson setup #{@crew_meson_options} #{@meson_options} builddir"
     system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
   end
