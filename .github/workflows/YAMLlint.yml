@@ -7,6 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: YAMLLint
-        uses: ibiqlik/action-yamllint@v3
-        with:
-          config_file: .yamllint.yml
+        uses: reviewdog/action-yamllint@v1

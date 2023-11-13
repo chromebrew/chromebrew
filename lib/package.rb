@@ -254,7 +254,7 @@ class Package
       env = @crew_env_options_hash
     end
 
-    cmd_args        = args  # after removing the env hash, all remaining args must be command args
+    cmd_args        = args # after removing the env hash, all remaining args must be command args
     make_threads    = CREW_NPROC
     modded_make_cmd = false
 
@@ -262,7 +262,7 @@ class Package
     unless cmd_args.grep(/-j[[:space:]]?[0-9]+/).any?
       if cmd_args.size == 1
         # involve a shell if the command is passed in one single string
-        cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 <<<CREW_NPROC>>>")]
+        cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, '\\1 <<<CREW_NPROC>>>')]
         modded_make_cmd = true
       elsif cmd_args[0] == 'make'
         cmd_args.insert(1, '<<<CREW_NPROC>>>')
@@ -280,7 +280,7 @@ class Package
     rescue RuntimeError => e
       if modded_make_cmd && make_threads != 1
         # retry with single thread if command is `make` and is modified by crew
-        warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") } .join(' ')}\" failed, retrying with \"-j1\"...".yellow
+        warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }.join(' ')}\" failed, retrying with \"-j1\"...".yellow
         make_threads = 1
         retry
       else

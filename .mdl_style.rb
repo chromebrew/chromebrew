@@ -1,6 +1,6 @@
 all
-rule 'MD003', :style => :atx
-rule 'MD029', :style => :ordered
+rule 'MD003', style: :atx
+rule 'MD029', style: :ordered
 
 exclude_rule 'MD002' # We use HTML <h1> tag as the top level header
 exclude_rule 'MD013' # Ignore 80 character line length limit.
