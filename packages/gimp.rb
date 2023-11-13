@@ -1,23 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gimp < Package
+class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '2.99.16'
+  version '2.99.16-1'
   license 'GPL-3 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.16.tar.xz'
   source_sha256 '6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_armv7l/gimp-2.99.16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_armv7l/gimp-2.99.16-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_x86_64/gimp-2.99.16-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16-1_armv7l/gimp-2.99.16-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16-1_armv7l/gimp-2.99.16-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16-1_x86_64/gimp-2.99.16-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '388c01fdf71960fb5bb821911640c64d60378bf8f62aea9f64f7862576457cc9',
-     armv7l: '388c01fdf71960fb5bb821911640c64d60378bf8f62aea9f64f7862576457cc9',
-     x86_64: '8ceefac4484cdd33ec95dce0ddbc755b61cfe20a1c34a9d7c8e026106c6422f1'
+    aarch64: '88d64a06b50592b6275e9c5c34f1ae8365155c886eb228ea6e854734c4568cdf',
+     armv7l: '88d64a06b50592b6275e9c5c34f1ae8365155c886eb228ea6e854734c4568cdf',
+     x86_64: 'eac55fe54702d7749f47478abe30e905f6dc8649350b96bad8f0ec2df5959c72'
   })
 
   depends_on 'aalib' # R
@@ -87,14 +87,7 @@ class Gimp < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "meson setup \
-      #{CREW_MESON_OPTIONS} \
-      -Dbug-report-url=https://github.com/chromebrew/chromebrew/issues \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+  meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
