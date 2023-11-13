@@ -7,7 +7,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Generate JSON
         run: |
             sudo docker pull satmandu/crewbuild:amd64
