@@ -36,7 +36,6 @@ class Imagemagick7 < Package
   depends_on 'graphviz' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
-  depends_on 'ilmbase' # R
   depends_on 'jbigkit' => :build
   depends_on 'jemalloc' # R
   depends_on 'lcms' # R

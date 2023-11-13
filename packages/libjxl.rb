@@ -38,7 +38,6 @@ class Libjxl < Package
   depends_on 'gtk2' => :build
   depends_on 'harfbuzz' => :build
   depends_on 'highway' # R
-  depends_on 'ilmbase' # R
   depends_on 'json_glib' => :build
   depends_on 'libjpeg' # R This needs to be turbo.
   depends_on 'libpng' # R

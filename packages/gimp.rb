@@ -43,7 +43,6 @@ class Gimp < Package
   depends_on 'gobject_introspection' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'ilmbase' # R
   depends_on 'jsonc' => :build
   depends_on 'json_glib' # R
   depends_on 'lcms' # R

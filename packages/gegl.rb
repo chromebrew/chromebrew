@@ -32,7 +32,6 @@ class Gegl < Package
   depends_on 'glib' # R
   depends_on 'graphviz' => :build # for dot
   depends_on 'harfbuzz' # R
-  depends_on 'ilmbase' # R
   depends_on 'jasper' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R

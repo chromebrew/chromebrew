@@ -119,7 +119,6 @@ class Gstreamer < Package
   depends_on 'zvbi' # R
   depends_on 'faac' # R
   depends_on 'faad2' # R
-  depends_on 'ilmbase' # R
   depends_on 'openexr' # R
   depends_on 'openh264' # R
   depends_on 'qt5_base' => :build # otherwise this becomes circular
