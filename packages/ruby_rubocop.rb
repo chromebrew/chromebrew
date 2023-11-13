@@ -9,7 +9,7 @@ class Ruby_rubocop < Package
   version '1.57.2-ruby-3.2'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
-  source_sha256 'bfbed91f5e939d498da3619f8df7e9854c15df8b8eb29ebc052809b14d64c851'
+  source_sha256 '3942911bbee4c316617fa78825160726a398737db9a6085c743c9477acd55222'
 
   depends_on 'libyaml'
   depends_on 'ruby'

@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: ShellCheck
-        uses: ludeeus/action-shellcheck@master
+        uses: reviewdog/action-shellcheck@v1
         with:
-          ignore_paths: ./tools/*
+          exclude: './tools/*'

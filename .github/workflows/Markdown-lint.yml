@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Markdown-lint
-        uses: bewuethr/mdl-action@v1
+        uses: reviewdog/action-markdownlint@v0
         with:
-          style-file: .mdl_style.rb
+          markdownlint_flags: '-s .mdl_style.rb'

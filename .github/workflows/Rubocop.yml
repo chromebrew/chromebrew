@@ -6,9 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Rubocop
-        uses: satmandu/Octocop@v0.0.3
+      - uses: ruby/setup-ruby@v1
         with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-check
-          rubocop_flags: "-l -c .rubocop.yml"
+          ruby-version: '3.2'
+      - name: Rubocop
+        uses: reviewdog/action-rubocop@v2

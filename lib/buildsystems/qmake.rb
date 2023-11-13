@@ -1,7 +1,6 @@
 require 'package'
 
 class Qmake < Package
-
   def self.build
     system 'qmake'
     system 'make'
