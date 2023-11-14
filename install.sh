@@ -159,11 +159,32 @@ fi
 
 # This will allow things to work without sudo.
 # sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
-# This will create the directories.
+
+perm_error () {
+  if tty | grep -q /dev/pts1; then
+    echo_success "You are in VT-2."
+    if [ "${EUID}" == "0" ]; then
+      echo_info "Please run: 'chown -R chronos ${CREW_PREFIX}', and then login as 'chronos' and restart the install."
+      echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
+      exit 1
+    fi
+  fi
+  # Give message on how to fix permissions in VT-2.
+  echo_error "You need set permissions in the VT-2 shell for the install to work."
+  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
+  echo_info "Then login as 'root' and run: 'chown -R chronos ${CREW_PREFIX}'"
+  echo_info "or login as 'chronos' and run: 'sudo chown -R chronos ${CREW_PREFIX}'"
+  echo_info "Then switch back to crosh in the main ChromeOS screen with Ctrl-Alt-{F1/Left arrow}) and restart the install."
+  exit 1
+}
+
+
+
+# This will create the directories
 crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage
-(cd "${CREW_PREFIX}"; mkdir -p ${crew_folders})
+(cd "${CREW_PREFIX}"; mkdir -p ${crew_folders} || perm_error )
 
 
 # Remove old git config directories if they exist.
