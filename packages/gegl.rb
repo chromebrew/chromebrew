@@ -3,16 +3,16 @@ require 'buildsystems/meson'
 class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'https://gegl.org/'
-  version '0.4.46-1'
+  version '0.4.46'
   license 'GPL-3+ and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.46.tar.xz'
   source_sha256 'd0b3b2481bc8774c5f3d0a487611910166d18eef823a859fb91e781ab7b1e892'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46-1_armv7l/gegl-0.4.46-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46-1_armv7l/gegl-0.4.46-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46-1_x86_64/gegl-0.4.46-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46_armv7l/gegl-0.4.46-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46_armv7l/gegl-0.4.46-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gegl/0.4.46_x86_64/gegl-0.4.46-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '2610a83b435ff282b0c974cda143d44d8df8ae9a6b42ff6d108feb45150b969c',
