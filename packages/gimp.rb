@@ -10,9 +10,9 @@ class Gimp < Meson
   source_sha256 '6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16-1_armv7l/gimp-2.99.16-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16-1_armv7l/gimp-2.99.16-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16-1_x86_64/gimp-2.99.16-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_armv7l/gimp-2.99.16-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_armv7l/gimp-2.99.16-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gimp/2.99.16_x86_64/gimp-2.99.16-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '88d64a06b50592b6275e9c5c34f1ae8365155c886eb228ea6e854734c4568cdf',
