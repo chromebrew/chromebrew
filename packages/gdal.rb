@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Gdal < CMake
   description 'The Geospatial Data Abstraction Library is a translator for raster and vector geospatial data formats.'
-  homepage 'http://www.gdal.org/'
+  homepage 'https://gdal.org/'
   version '3.7.3'
   license 'BSD, Info-ZIP and MIT'
   compatibility 'x86_64 aarch64 armv7l'
