@@ -29,7 +29,7 @@ class Pip < Package
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
-    puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? || @pre_configure_options.empty? ? '<no pre_configure_options>' : @pre_configure_options}".orange
+    puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
     system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install -U #{@py_pkg} | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
