@@ -3,28 +3,32 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.73.0'
+  @_ver =  '1.73.0'
+  version "#{@_ver}-1"
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.26.0'
+  git_hashtag '519381b19d7ab75ba160c68479e4dd4579fb51e1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_armv7l/rust-1.73.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_armv7l/rust-1.73.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_i686/rust-1.73.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_x86_64/rust-1.73.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_armv7l/rust-1.73.0-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_armv7l/rust-1.73.0-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_i686/rust-1.73.0-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_x86_64/rust-1.73.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bc34b9244fd8344f7c43767ae51735fe65ffe872d9c1082ae9b3d19f1a7359c6',
-     armv7l: 'bc34b9244fd8344f7c43767ae51735fe65ffe872d9c1082ae9b3d19f1a7359c6',
-       i686: '6ed95494307adcd6838905fbb19d35073ae2cdb512edd6d97c834728c43a0c90',
-     x86_64: '3217c3b9c09ab10f37df79d242b8d9f43c8c932b0d7840f2d04f2c4291aa4b64'
+    aarch64: 'd3e31abb1afad65d75614a7f2a509af11667dab32db40979192259578e9a6b8c',
+     armv7l: 'd3e31abb1afad65d75614a7f2a509af11667dab32db40979192259578e9a6b8c',
+       i686: 'e4e26134673e7354c4f51f9ca5b53ce073ff2de753c59f66d5a4aaaf40171e05',
+     x86_64: '24e55713a341ed6942ed9270ec5bfad3cbf4dec9fc049ca1820865f32f4fe190'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
+
+  no_strip
+  no_shrink
 
   def self.install
     ENV['RUSTUP_PERMIT_COPY_RENAME'] = 'unstable'
@@ -38,15 +42,15 @@ class Rust < Package
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/cargo")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
-    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version} --profile minimal"
+    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{@_ver} --profile minimal"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/bash-completion/completions/")
-    # FileUtils.install "#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo",
+    # FileUtils.install "#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo",
     #                   "#{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo", mode: 0o644
-    # FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo")
+    # FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo")
     FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
-    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/man/",
+    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
-    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/doc/")
+    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/doc/")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/cargo", "#{CREW_DEST_HOME}/.cargo")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
@@ -79,7 +83,7 @@ class Rust < Package
   end
 
   def self.postinstall
-    system "rustup default #{version}"
+    system 'rustup default stable'
   end
 
   def self.remove
