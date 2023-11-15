@@ -17,10 +17,10 @@ class Rust < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_x86_64/rust-1.73.0-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd3e31abb1afad65d75614a7f2a509af11667dab32db40979192259578e9a6b8c',
-     armv7l: 'd3e31abb1afad65d75614a7f2a509af11667dab32db40979192259578e9a6b8c',
-       i686: 'e4e26134673e7354c4f51f9ca5b53ce073ff2de753c59f66d5a4aaaf40171e05',
-     x86_64: '24e55713a341ed6942ed9270ec5bfad3cbf4dec9fc049ca1820865f32f4fe190'
+    aarch64: 'bf5b59e8d91de817c31600a3587d04aefada6c9558db05edc3d551071bcab444',
+     armv7l: 'bf5b59e8d91de817c31600a3587d04aefada6c9558db05edc3d551071bcab444',
+       i686: '029a4a61ed0ebb268b0d124d6317ea17df28d34df6eb0b0ceefa14e0ec820a7d',
+     x86_64: '309d2f7fdccdaed99b5392b4418160cf376e56db4c43bbc20876b83c1f017d34'
   })
 
   depends_on 'gcc_lib' # R
@@ -29,6 +29,7 @@ class Rust < Package
 
   no_strip
   no_shrink
+  print_source_bashrc
 
   def self.install
     ENV['RUSTUP_PERMIT_COPY_RENAME'] = 'unstable'
@@ -55,17 +56,18 @@ class Rust < Package
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    system "sed -i 's,#{CREW_DEST_PREFIX}/share/cargo,#{CREW_PREFIX}/share/cargo,g' #{CREW_DEST_PREFIX}/share/cargo/env"
     @rustconfigenv = <<~RUSTCONFIGEOF
       # Rustup and cargo configuration
       export CARGO_HOME=#{CREW_PREFIX}/share/cargo
       export RUSTUP_HOME=#{CREW_PREFIX}/share/rustup
+      source #{CREW_PREFIX}/share/cargo/env
     RUSTCONFIGEOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @rustconfigenv)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @rustcompletionenv = <<~RUSTCOMPLETIONEOF
       # Rustup and cargo bash completion
-      source #{CREW_PREFIX}/share/bash-completion/completions/cargo
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
     RUSTCOMPLETIONEOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
