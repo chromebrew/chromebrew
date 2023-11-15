@@ -2,46 +2,56 @@ require 'package'
 
 class Squashfs < Package
   description 'Squashfs is a compressed read-only filesystem for Linux.'
-  homepage 'http://squashfs.sourceforge.net/'
-  version '4.5'
+  homepage 'https://github.com/plougher/squashfs-tools'
+  version '4.6.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/squashfs/squashfs/squashfs4.5/squashfs4.5.tar.gz'
-  source_sha256 'c493b29c3d152789d04fae5e6532499d96ce3f79256bc6df4f97b5170c88e979'
+  source_url 'https://github.com/plougher/squashfs-tools.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_armv7l/squashfs-4.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_armv7l/squashfs-4.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_i686/squashfs-4.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.5_x86_64/squashfs-4.5-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_armv7l/squashfs-4.6.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_armv7l/squashfs-4.6.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_i686/squashfs-4.6.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_x86_64/squashfs-4.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '630e363cf16b40b181ac3e09792ae9d7f73874ea4e902905824785c7c489546d',
-     armv7l: '630e363cf16b40b181ac3e09792ae9d7f73874ea4e902905824785c7c489546d',
-       i686: 'b72fc434de5a0c0f80edadff18efb2dfc13bc3223fe7a57b366621c1b34572f4',
-     x86_64: '6a3f77adbef01926ed731f7a69dab7607218dd13b31dda230556d5590dd7eea3'
+    aarch64: 'da924cdb4c4f856b7b9b869e60496b10096132beb2e57592e8f015c1486c123c',
+     armv7l: 'da924cdb4c4f856b7b9b869e60496b10096132beb2e57592e8f015c1486c123c',
+       i686: 'fbe58537fd0a167f61b60c8c6ea23517c46816ae9e30fdace0f65c72a4887add',
+     x86_64: '14309b3d8544314236aacd248f48cb781d28d232b23228646c481e2619223974'
   })
 
   depends_on 'compressdoc' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'help2man' => :build
-  depends_on 'lzo'
+  depends_on 'lz4' # R
+  depends_on 'lzo' # R
+  depends_on 'xzutils' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
-  def self.build
+  def self.patch
     FileUtils.cd('squashfs-tools') do
       system "sed -i '5iLZ4_SUPPORT = 1' Makefile"
       system "sed -i '6iLZO_SUPPORT = 1' Makefile"
       system "sed -i '7iXZ_SUPPORT = 1' Makefile"
+      system "sed -i '8iZSTD_SUPPORT = 1' Makefile"
+      system "sed -i 's,INSTALL_PREFIX = /usr/local,INSTALL_PREFIX = #{CREW_DEST_PREFIX},g' Makefile"
+      system "sed -i 's,INSTALL_MANPAGES_DIR = $(INSTALL_PREFIX)/man/man1,INSTALL_MANPAGES_DIR = #{CREW_DEST_MAN_PREFIX}man1,g' Makefile"
+    end
+  end
+
+  def self.build
+    FileUtils.cd('squashfs-tools') do
       system 'make'
     end
   end
 
   def self.install
     FileUtils.cd('squashfs-tools') do
-      system "mkdir -p #{CREW_DEST_PREFIX}/share/man/man1"
-      system "install -Dm755 mksquashfs #{CREW_DEST_PREFIX}/bin/mksquashfs"
-      system "install -Dm755 unsquashfs #{CREW_DEST_PREFIX}/bin/unsquashfs"
-      system "help2man ./mksquashfs -N --no-discard-stderr > #{CREW_DEST_PREFIX}/share/man/man1/mksquashfs.1"
-      system "help2man ./unsquashfs -N --no-discard-stderr > #{CREW_DEST_PREFIX}/share/man/man1/unsquashfs.1"
+      system 'make install'
     end
   end
 end

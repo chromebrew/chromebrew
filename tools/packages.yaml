@@ -7927,8 +7927,8 @@ activity: low
 ---
 kind: url
 name: squashfs
-url: https://sourceforge.net/projects/squashfs/files/squashfs/
-activity: none
+url: https://github.com/plougher/squashfs-tools/releases
+activity: low
 ---
 kind: url
 name: squashfs_tools_ng
