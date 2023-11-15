@@ -1,4 +1,8 @@
 /usr/local/bin/mksquashfs
+/usr/local/bin/sqfscat
+/usr/local/bin/sqfstar
 /usr/local/bin/unsquashfs
 /usr/local/share/man/man1/mksquashfs.1.zst
+/usr/local/share/man/man1/sqfscat.1.zst
+/usr/local/share/man/man1/sqfstar.1.zst
 /usr/local/share/man/man1/unsquashfs.1.zst
