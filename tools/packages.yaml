@@ -5496,11 +5496,6 @@ url: https://memcached.org/downloads
 activity: high
 ---
 kind: url
-name: mercurial
-url: https://www.mercurial-scm.org/release
-activity: high
----
-kind: url
 name: mesa
 url: https://mesa.freedesktop.org/archive/
 activity: high
@@ -7054,6 +7049,11 @@ kind: url
 name: py3_hatchling
 url: https://github.com/pypa/hatch/releases
 activity: medium
+---
+kind: url
+name: py3_mercurial
+url: https://www.mercurial-scm.org/release
+activity: high
 ---
 kind: url
 name: py3_mutagen
