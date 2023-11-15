@@ -8,9 +8,12 @@
 /usr/local/include/openblas/lapack.h
 /usr/local/include/openblas/openblas_config.h
 /usr/local/include/openblas/openblas/lapacke_mangling.h
+/usr/local/lib64/cmake/OpenBLAS/OpenBLASConfig.cmake
+/usr/local/lib64/cmake/OpenBLAS/OpenBLASConfigVersion.cmake
+/usr/local/lib64/cmake/OpenBLAS/OpenBLASTargets.cmake
+/usr/local/lib64/cmake/OpenBLAS/OpenBLASTargets-release.cmake
 /usr/local/lib64/libopenblas.a
+/usr/local/lib64/libopenblas.so
+/usr/local/lib64/libopenblas.so.0
+/usr/local/lib64/libopenblas.so.0.3
 /usr/local/lib64/pkgconfig/openblas.pc
-/usr/local/share/cmake/OpenBLAS/OpenBLASConfig.cmake
-/usr/local/share/cmake/OpenBLAS/OpenBLASConfigVersion.cmake
-/usr/local/share/cmake/OpenBLAS/OpenBLASTargets.cmake
-/usr/local/share/cmake/OpenBLAS/OpenBLASTargets-noconfig.cmake

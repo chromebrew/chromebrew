@@ -35,6 +35,7 @@
 /usr/local/lib64/R/doc/html/about.html
 /usr/local/lib64/R/doc/html/favicon.ico
 /usr/local/lib64/R/doc/html/index.html
+/usr/local/lib64/R/doc/html/katex-check.js
 /usr/local/lib64/R/doc/html/katex-config.js
 /usr/local/lib64/R/doc/html/katex/fonts/KaTeX_AMS-Regular.ttf
 /usr/local/lib64/R/doc/html/katex/fonts/KaTeX_AMS-Regular.woff
@@ -192,7 +193,6 @@
 /usr/local/lib64/R/include/Rmath.h
 /usr/local/lib64/R/include/Rversion.h
 /usr/local/lib64/R/lib/libRblas.so
-/usr/local/lib64/R/lib/libRlapack.so
 /usr/local/lib64/R/lib/libR.so
 /usr/local/lib64/R/library/base/CITATION
 /usr/local/lib64/R/library/base/demo/error.catching.R
@@ -561,6 +561,10 @@
 /usr/local/lib64/R/library/grDevices/enc/PDFDoc.enc
 /usr/local/lib64/R/library/grDevices/enc/TeXtext.enc
 /usr/local/lib64/R/library/grDevices/enc/WinAnsi.enc
+/usr/local/lib64/R/library/grDevices/fonts/Montserrat/static/Montserrat-BoldItalic.ttf
+/usr/local/lib64/R/library/grDevices/fonts/Montserrat/static/Montserrat-Medium.ttf
+/usr/local/lib64/R/library/grDevices/fonts/Roboto/LICENSE.txt
+/usr/local/lib64/R/library/grDevices/fonts/Roboto/Roboto-Medium.ttf
 /usr/local/lib64/R/library/grDevices/help/aliases.rds
 /usr/local/lib64/R/library/grDevices/help/AnIndex
 /usr/local/lib64/R/library/grDevices/help/grDevices.rdb
@@ -654,6 +658,10 @@
 /usr/local/lib64/R/library/lattice/demo/lattice.R
 /usr/local/lib64/R/library/lattice/demo/panel.R
 /usr/local/lib64/R/library/lattice/DESCRIPTION
+/usr/local/lib64/R/library/lattice/doc/grid.pdf
+/usr/local/lib64/R/library/lattice/doc/grid.R
+/usr/local/lib64/R/library/lattice/doc/grid.Rnw
+/usr/local/lib64/R/library/lattice/doc/index.html
 /usr/local/lib64/R/library/lattice/help/aliases.rds
 /usr/local/lib64/R/library/lattice/help/AnIndex
 /usr/local/lib64/R/library/lattice/help/lattice.rdb
@@ -671,8 +679,9 @@
 /usr/local/lib64/R/library/lattice/Meta/nsInfo.rds
 /usr/local/lib64/R/library/lattice/Meta/package.rds
 /usr/local/lib64/R/library/lattice/Meta/Rd.rds
+/usr/local/lib64/R/library/lattice/Meta/vignette.rds
 /usr/local/lib64/R/library/lattice/NAMESPACE
-/usr/local/lib64/R/library/lattice/NEWS
+/usr/local/lib64/R/library/lattice/NEWS.md
 /usr/local/lib64/R/library/lattice/po/de/LC_MESSAGES/R-lattice.mo
 /usr/local/lib64/R/library/lattice/po/en@quot/LC_MESSAGES/R-lattice.mo
 /usr/local/lib64/R/library/lattice/po/fr/LC_MESSAGES/R-lattice.mo
@@ -730,14 +739,12 @@
 /usr/local/lib64/R/library/MASS/scripts/ch14.R
 /usr/local/lib64/R/library/MASS/scripts/ch15.R
 /usr/local/lib64/R/library/MASS/scripts/ch16.R
-/usr/local/lib64/R/library/Matrix/Copyrights
 /usr/local/lib64/R/library/Matrix/data/CAex.R
 /usr/local/lib64/R/library/Matrix/data/datalist
 /usr/local/lib64/R/library/Matrix/data/KNex.R
 /usr/local/lib64/R/library/Matrix/data/USCounties.R
 /usr/local/lib64/R/library/Matrix/data/wrld_1deg.R
 /usr/local/lib64/R/library/Matrix/DESCRIPTION
-/usr/local/lib64/R/library/Matrix/doc/Announce.txt
 /usr/local/lib64/R/library/Matrix/doc/Comparisons.pdf
 /usr/local/lib64/R/library/Matrix/doc/Comparisons.R
 /usr/local/lib64/R/library/Matrix/doc/Comparisons.Rnw
@@ -759,8 +766,6 @@
 /usr/local/lib64/R/library/Matrix/doc/SuiteSparse/COLAMD.txt
 /usr/local/lib64/R/library/Matrix/doc/SuiteSparse/SPQR.txt
 /usr/local/lib64/R/library/Matrix/doc/SuiteSparse/SuiteSparse_config.txt
-/usr/local/lib64/R/library/Matrix/doc/SuiteSparse/UserGuides.txt
-/usr/local/lib64/R/library/Matrix/Doxyfile
 /usr/local/lib64/R/library/Matrix/external/CAex_slots.rda
 /usr/local/lib64/R/library/Matrix/external/jgl009.mtx
 /usr/local/lib64/R/library/Matrix/external/KNex_slots.rda
@@ -865,6 +870,8 @@
 /usr/local/lib64/R/library/mgcv/po/en@quot/LC_MESSAGES/R-mgcv.mo
 /usr/local/lib64/R/library/mgcv/po/fr/LC_MESSAGES/mgcv.mo
 /usr/local/lib64/R/library/mgcv/po/fr/LC_MESSAGES/R-mgcv.mo
+/usr/local/lib64/R/library/mgcv/po/it/LC_MESSAGES/mgcv.mo
+/usr/local/lib64/R/library/mgcv/po/it/LC_MESSAGES/R-mgcv.mo
 /usr/local/lib64/R/library/mgcv/po/ko/LC_MESSAGES/mgcv.mo
 /usr/local/lib64/R/library/mgcv/po/ko/LC_MESSAGES/R-mgcv.mo
 /usr/local/lib64/R/library/mgcv/po/pl/LC_MESSAGES/mgcv.mo
@@ -1155,6 +1162,9 @@
 /usr/local/lib64/R/library/survival/doc/discrim.R
 /usr/local/lib64/R/library/survival/doc/discrim.Rnw
 /usr/local/lib64/R/library/survival/doc/index.html
+/usr/local/lib64/R/library/survival/doc/matrix.pdf
+/usr/local/lib64/R/library/survival/doc/matrix.R
+/usr/local/lib64/R/library/survival/doc/matrix.Rnw
 /usr/local/lib64/R/library/survival/doc/multi.pdf
 /usr/local/lib64/R/library/survival/doc/multi.Rnw
 /usr/local/lib64/R/library/survival/doc/other.pdf
@@ -1162,6 +1172,9 @@
 /usr/local/lib64/R/library/survival/doc/population.pdf
 /usr/local/lib64/R/library/survival/doc/population.R
 /usr/local/lib64/R/library/survival/doc/population.Rnw
+/usr/local/lib64/R/library/survival/doc/redistribute.pdf
+/usr/local/lib64/R/library/survival/doc/redistribute.R
+/usr/local/lib64/R/library/survival/doc/redistribute.Rnw
 /usr/local/lib64/R/library/survival/doc/splines.pdf
 /usr/local/lib64/R/library/survival/doc/splines.R
 /usr/local/lib64/R/library/survival/doc/splines.Rnw
@@ -1197,6 +1210,7 @@
 /usr/local/lib64/R/library/survival/Meta/vignette.rds
 /usr/local/lib64/R/library/survival/NAMESPACE
 /usr/local/lib64/R/library/survival/NEWS.Rd
+/usr/local/lib64/R/library/survival/NEWS.Rd.orig
 /usr/local/lib64/R/library/survival/R/survival
 /usr/local/lib64/R/library/survival/R/survival.rdb
 /usr/local/lib64/R/library/survival/R/survival.rdx

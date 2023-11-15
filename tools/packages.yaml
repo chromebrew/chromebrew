@@ -1566,8 +1566,8 @@ activity: none
 ---
 kind: url
 name: elinks
-url: https://gitlab.com/alanaktion/elinks-mirror/repository
-activity: none
+url: https://github.com/rkd77/elinks/releases
+activity: medium
 ---
 kind: url
 name: elixir

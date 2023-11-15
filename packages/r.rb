@@ -1,33 +1,32 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class R < Package
+class R < Autotools
   description 'R is a free software environment for statistical computing and graphics.'
   homepage 'https://www.r-project.org/'
-  version '4.2.3'
+  version '4.3.2'
   license 'GPL-2 or GPL-3 and LGPL-2.1'
-  compatibility 'all'
-  source_url 'https://cran.r-project.org/src/base/R-4/R-4.2.3.tar.gz'
-  source_sha256 '55e4a9a6d43be314e2c03d0266a6fa5444afdce50b303bfc3b82b3979516e074'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://cran.r-project.org/src/base/R-4/R-4.3.2.tar.gz'
+  source_sha256 'b3f5760ac2eee8026a3f0eefcb25b47723d978038eee8e844762094c860c452a'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.2.3_armv7l/r-4.2.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.2.3_armv7l/r-4.2.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.2.3_i686/r-4.2.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.2.3_x86_64/r-4.2.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.3.2_armv7l/r-4.3.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.3.2_armv7l/r-4.3.2-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.3.2_x86_64/r-4.3.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'f711a539777bb37da48892cf2742ae4541cc985e0e5d690e4a10c4b09cfbcc98',
-     armv7l: 'f711a539777bb37da48892cf2742ae4541cc985e0e5d690e4a10c4b09cfbcc98',
-       i686: 'b69271b2fe3b38f37315b685eeb023a4a6ce6f1e6cc48b762fa4cb6725cc47aa',
-     x86_64: '2a5cfece8a24b8bad17ade73b2751cf23c1c9d5e1604addce436e45740400354'
+    aarch64: 'd6907d92580d0ca488c5dcfc7c274b09aed94d3fd1ff500442f7101616c1cf6d',
+     armv7l: 'd6907d92580d0ca488c5dcfc7c274b09aed94d3fd1ff500442f7101616c1cf6d',
+     x86_64: 'def76c5bcfd0f929fe5579e4de4850276c4c359fb1b4e6a1375de63717d5a9a2'
   })
 
   depends_on 'bzip2' # R
+  depends_on 'curl' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'icu4c' # R
-  depends_on 'curl' => :build
+  depends_on 'lapack' # R
   depends_on 'libice' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
@@ -46,25 +45,6 @@ class R < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    @x = ARCH == 'i686' ? '' : '--with-x'
-    system "./configure #{CREW_OPTIONS} \
-           --disable-maintainer-mode \
-           --enable-R-shlib \
-           #{@x}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    # tests fail.
-    # if ARCH == 'x86_64'
-    # Chromeos doesn't have "en_GB.UTF-8" locale, so ignore error check
-    # system "sed -i tests/reg-tests-3.R -e '/stopifnot(identical(Sys.setlocale(/s/^/#/'"
-    # system 'make', 'check'
-    # end
-  end
+  configure_options '--enable-R-shlib \
+           --with-x'
 end

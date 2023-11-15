@@ -1,7 +1,7 @@
 /usr/local/bin/cpio
 /usr/local/bin/mt
 /usr/local/libexec/rmt
-/usr/local/share/info/cpio.info.gz
+/usr/local/share/info/cpio.info.zst
 /usr/local/share/locale/da/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/de/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/es/LC_MESSAGES/cpio.mo
@@ -14,6 +14,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/it/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/ja/LC_MESSAGES/cpio.mo
+/usr/local/share/locale/ka/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/ko/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/nl/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/pl/LC_MESSAGES/cpio.mo
@@ -28,6 +29,6 @@
 /usr/local/share/locale/vi/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/cpio.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/cpio.mo
-/usr/local/share/man/man1/cpio.1.gz
-/usr/local/share/man/man1/mt.1.gz
-/usr/local/share/man/man8/rmt.8.gz
+/usr/local/share/man/man1/cpio.1.zst
+/usr/local/share/man/man1/mt.1.zst
+/usr/local/share/man/man8/rmt.8.zst

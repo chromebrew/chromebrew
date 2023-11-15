@@ -2,11 +2,11 @@ require 'fileutils'
 require 'package'
 
 class Autotools < Package
-  property :pre_configure_options, :configure_options
+  property :configure_options, :pre_configure_options
 
   def self.build
     unless File.file?('Makefile') && CREW_CACHE_BUILD
-      puts "Additional configure_options being used: #{@pre_configure_options.nil? || @pre_configure_options.empty? ? '<no pre_configure_options>' : @pre_configure_options} #{@configure_options.nil? || @configure_options.empty? ? '<no configure_options>' : @configure_options}".orange
+      puts "Additional configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options} #{@configure_options.nil? ? '<no configure_options>' : @configure_options}".orange
       # Run autoreconf if necessary
       unless File.executable? './configure'
         if File.executable? './autogen.sh'

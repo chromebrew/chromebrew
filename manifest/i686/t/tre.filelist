@@ -2,10 +2,12 @@
 /usr/local/include/tre/regex.h
 /usr/local/include/tre/tre-config.h
 /usr/local/include/tre/tre.h
+/usr/local/lib/libtre.la
 /usr/local/lib/libtre.so
 /usr/local/lib/libtre.so.5
 /usr/local/lib/libtre.so.5.0.0
 /usr/local/lib/pkgconfig/tre.pc
 /usr/local/share/locale/fi/LC_MESSAGES/tre.mo
 /usr/local/share/locale/sv/LC_MESSAGES/tre.mo
-/usr/local/share/man/man1/agrep.1.gz
+/usr/local/share/locale/zh_CN/LC_MESSAGES/tre.mo
+/usr/local/share/man/man1/agrep.1.zst

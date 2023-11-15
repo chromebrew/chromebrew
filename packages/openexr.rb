@@ -1,38 +1,28 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Openexr < Package
+class Openexr < CMake
   description 'OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications.'
   homepage 'http://www.openexr.com/'
-  version '2.3.0'
+  version '3.2.1'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/openexr/openexr/releases/download/v2.3.0/openexr-2.3.0.tar.gz'
-  source_sha256 'fd6cb3a87f8c1a233be17b94c74799e6241d50fc5efd4df75c7a4b9cf4e25ea6'
+  source_url 'https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.2.1.tar.gz'
+  source_sha256 '61e175aa2203399fb3c8c2288752fbea3c2637680d50b6e306ea5f8ffdd46a9b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_armv7l/openexr-2.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_armv7l/openexr-2.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_i686/openexr-2.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/2.3.0_x86_64/openexr-2.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_armv7l/openexr-3.2.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_armv7l/openexr-3.2.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_i686/openexr-3.2.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_x86_64/openexr-3.2.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd2c0cda2100a6928c13ee79bd605be4c0457f11b289fe7970ac4fdee18d4653b',
-     armv7l: 'd2c0cda2100a6928c13ee79bd605be4c0457f11b289fe7970ac4fdee18d4653b',
-       i686: '71fb7e679140b71ada434125e1d3f2d475806fa1bb08d476f196b5999ec04c4c',
-     x86_64: '4db94a6aa538bdfb6ab6b41f24d03afab0b81c827d64b2b4bf44d004a8c72d15'
+    aarch64: '790cd3fba4398fea18376924db32bbe58c547ebf652ab7d9cb029b4772e83602',
+     armv7l: '790cd3fba4398fea18376924db32bbe58c547ebf652ab7d9cb029b4772e83602',
+       i686: '1fa2bf8fa2709282fd43329ae05f14f261b4e021a49fd78fb0bc506a6cc4d433',
+     x86_64: 'e11aa055cbace1b83b088aae1d68a95a44863df3a1276639f28838cab3e6977c'
   })
 
-  depends_on 'ilmbase'
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'libdeflate' # R
 end

@@ -1,37 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tre < Package
+class Tre < Autotools
   description 'The approximate regex matching library and agrep command line tool.'
   homepage 'https://github.com/laurikari/tre'
-  version '6fb7206'
+  version '07e66d0'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://github.com/laurikari/tre/archive/6fb7206b935b35814c5078c20046dbe065435363.tar.gz'
-  source_sha256 'd2810576685b10c6bf9270793550032bdada04afd963fa4670a08fdc57859bdd'
+  source_url 'https://github.com/laurikari/tre.git'
+  git_hashtag '07e66d07b44ae95a7a89f79c7ce1090f0f4d64db'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/6fb7206_armv7l/tre-6fb7206-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/6fb7206_armv7l/tre-6fb7206-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/6fb7206_i686/tre-6fb7206-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/6fb7206_x86_64/tre-6fb7206-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/07e66d0_armv7l/tre-07e66d0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/07e66d0_armv7l/tre-07e66d0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/07e66d0_i686/tre-07e66d0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tre/07e66d0_x86_64/tre-07e66d0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6c59cddabc2dd32d56b97b48b32fca26cb654b453cb3c8089bc50cd78266e217',
-     armv7l: '6c59cddabc2dd32d56b97b48b32fca26cb654b453cb3c8089bc50cd78266e217',
-       i686: '54c589df47bf9822b6e14b67d10a03457989bcb532a3ea899d2619a8e602f539',
-     x86_64: 'b5d531c2f83c53fb1f54c5b658bb67fb875e16183a9cdc2c4d5a03cf7e091130'
+    aarch64: '52cb371f497a56b4647b1463bf393e1d8fcbcae188e4e7a5748231e49c807389',
+     armv7l: '52cb371f497a56b4647b1463bf393e1d8fcbcae188e4e7a5748231e49c807389',
+       i686: 'cb7b5c5903676eeff0f8574015c43f4d9d7fa0da7c6aabf22f00b10411cad707',
+     x86_64: '5461ed9ebf0e3894502b436cfd87d56bdd89bb741ff1bf31f3f8d635aaa81b1f'
   })
 
-  def self.build
-    system './utils/autogen.sh'
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
 end
