@@ -437,4 +437,13 @@ most is used by default
 You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor default.
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
+# The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
+# instruction, as it was first introduced in Bulldozer and later dropped in Zen.
+if grep -s "fma4" /proc/cpuinfo ; then
+  echo_info "Notice: You are running an AMD StoneyRidge device; due to some bugs some"
+  echo_info "older packages may fail with a segmentation fault and need to be rebuilt.\n"
+  echo_info "If this happens, please report them to:"
+  echo_info "https://github.com/chromebrew/chromebrew/issues\n\n"
+fi
+
 echo_success "Chromebrew installed successfully and package lists updated."
