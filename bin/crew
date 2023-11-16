@@ -1464,6 +1464,23 @@ def resolve_dependencies_and_install
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" # this is a little ugly, feel free to find a better way
     end
   end
+
+  # Warn of possible segfaults for older packages on AMD StoneyRidge platforms
+  # Family 21 identifies AMD Bulldozer/Piledriver/Steamroller/Excavator µArchs
+  puts <<~EOT.yellow if CREW_IS_AMD && CPUINFO['cpu family'] == '21'
+    Notice: You are running an AMD StoneyRidge device; due to some bugs some
+    older packages may fail with a segmentation fault and need to be rebuilt.
+
+    If this happens, please report them to:
+    https://github.com/chromebrew/chromebrew/issues
+
+    Otherwise, rebuilding from source (1) or disabling ASLR (2) usually solves the issue:
+    (1) Run `crew reinstall -s #{@pkg.name}` to rebuild the package from source,
+    __OR__
+    (2) Execute `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` to disable ASLR.
+    Warning: Disabling ASLR may create security issues, use it at your own risk!
+  EOT
+
   puts "#{@pkg.name.capitalize} installed!".lightgreen
   @resolve_dependencies_and_install = 0
 end
