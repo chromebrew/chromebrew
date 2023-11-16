@@ -6,23 +6,23 @@ require 'package'
 class Uutils_coreutils < Package
   description 'Cross-platform Rust rewrite of the GNU coreutils'
   homepage 'https://github.com/uutils/coreutils'
-  version '0.0.22'
+  version '0.0.23'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.22_armv7l/uutils_coreutils-0.0.22-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.22_armv7l/uutils_coreutils-0.0.22-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.22_i686/uutils_coreutils-0.0.22-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.22_x86_64/uutils_coreutils-0.0.22-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_armv7l/uutils_coreutils-0.0.23-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_armv7l/uutils_coreutils-0.0.23-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_i686/uutils_coreutils-0.0.23-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_x86_64/uutils_coreutils-0.0.23-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '034873137c942dacc6c3bb1d57b986ee1b829e3c0bcf264ee9e712905834c68d',
-     armv7l: '034873137c942dacc6c3bb1d57b986ee1b829e3c0bcf264ee9e712905834c68d',
-       i686: 'bf7fc782145279832e2905faa11afcc898911f1374aa8490572f97610f5770e3',
-     x86_64: '829ee7bccb186a8a7519c1182a4fd3f13f70625b7c19cf10354aac44e6266f96'
+    aarch64: '06be1802c7cf4725b824ae6872a875c84b605a03101ab6fa68df93a8eba3e5c2',
+     armv7l: '06be1802c7cf4725b824ae6872a875c84b605a03101ab6fa68df93a8eba3e5c2',
+       i686: '01ba93e28719d0587ea73b7d9e7e926b0c9850a31c9634d3dce6cc5ab85d7954',
+     x86_64: '75f1b5c7f4a66e689df88e29a4703c69fdca3dca7191bc23e79aa461c827341d'
   })
 
   depends_on 'rust' => :build
