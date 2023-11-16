@@ -25,12 +25,12 @@ class Pip < Package
       @py_pkg_deps.each do |pip_dep|
         @cleaned_py_dep = pip_dep[/[^;]+/]
         puts "——Installing: #{@cleaned_py_dep}".gray
-        system "python3 -s -m pip install -U #{@cleaned_py_dep} | grep -v 'Requirement already satisfied'", exception: false
+        system "python3 -s -m pip install -U \"#{@cleaned_py_dep}\" | grep -v 'Requirement already satisfied'", exception: false
       end
     end
     puts "Installing #{@py_pkg} python module. This may take a while...".lightblue
     puts "Additional pre_configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options}".orange
-    system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install -U #{@py_pkg} | grep -v 'Requirement already satisfied'", exception: false
+    system "MAKEFLAGS=-j#{CREW_NPROC} #{@pre_configure_options} python -s -m pip install -U \"#{@py_pkg}\" | grep -v 'Requirement already satisfied'", exception: false
     @pip_files = `python3 -s -m pip show -f #{@py_pkg}`.chomp
     @pip_files_base = @pip_files[/(?<=Location: ).*/, 0].concat('/')
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
