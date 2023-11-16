@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.39.2'
+CREW_VERSION = '1.39.3'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -74,9 +74,6 @@ CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
 # cpuinfo vendor_id.
 CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
 CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
-# Used to identify Grunt (AMD StoneyRidge, family 21) boards;
-# May also be used to identify other sub-variants, exp. AMD or ARM (using some other key).
-CREW_CPU_FAMILY = %w[x86_64 i686].include?(ARCH) ? CPUINFO['cpu family'] : ''
 
 # Use sane minimal defaults if in container and no override specified.
 if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
