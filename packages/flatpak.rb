@@ -3,7 +3,7 @@ require 'package'
 class Flatpak < Package
   description 'Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.'
   homepage 'https://flatpak.org'
-  @_ver = '1.10.2'
+  @_ver = '1.15.6'
   version "#{@_ver}-1"
   license 'LGPL-2.1+'
   compatibility 'all'
