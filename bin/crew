@@ -1467,7 +1467,7 @@ def resolve_dependencies_and_install
 
   # Warn of possible segfaults for older packages on AMD StoneyRidge platforms
   # Family 21 identifies AMD Bulldozer/Piledriver/Steamroller/Excavator µArchs
-   amd_str_warn = <<~EOT
+  amd_str_warn = <<~EOT
     Notice: You are running an AMD StoneyRidge device; due to some bugs some
     older packages may fail with a segmentation fault and need to be rebuilt.
 
@@ -1480,9 +1480,7 @@ def resolve_dependencies_and_install
     (2) Execute `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` to disable ASLR.
     Warning: Disabling ASLR may create security issues, use it at your own risk!
   EOT
-  if CREW_CPU_FAMILY == '21'
-    puts amd_str_warn.yellow
-  end
+  puts amd_str_warn.yellow if CREW_CPU_FAMILY == '21'
 
   puts "#{@pkg.name.capitalize} installed!".lightgreen
   @resolve_dependencies_and_install = 0
