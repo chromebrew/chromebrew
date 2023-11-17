@@ -19,12 +19,13 @@ class Libxmlb < Meson
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmlb/0.3.14_x86_64/libxmlb-0.3.14-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c63785e43de4d1761d560dfb928a87811cdfacabca418a69cc85e3478db50dca',
-     armv7l: 'c63785e43de4d1761d560dfb928a87811cdfacabca418a69cc85e3478db50dca',
-       i686: 'e61e0fc258310c2e294ecc12f5028129a855ba6e68f3cbaceeaa61cb457a8f9e',
-     x86_64: '2c94f36118889be247c3dcbf2e871dac303770aef92b04c3b1b0d9237c25d2fb'
+    aarch64: '6e8fc1cfaf0e7332a9fb4bb5111d60fbbe2ce33036fd1a34eb2ba8883a37c0f0',
+     armv7l: '6e8fc1cfaf0e7332a9fb4bb5111d60fbbe2ce33036fd1a34eb2ba8883a37c0f0',
+       i686: '4833226d07eeb7afc4ee89dd7130df5c292ba3e2c47c220c536cd73175344367',
+     x86_64: '6e31fb5ded6d3c981f5e13887f284cfe36bfc941672d5f8d08f1eb8e297c5d71'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
@@ -34,6 +35,7 @@ class Libxmlb < Meson
   depends_on 'xzutils' # R
   depends_on 'zstd' # R
 
-  meson_options '-Dstemmer=true \
-    -Dtests=false'
+  run_tests
+
+  meson_options '-Dstemmer=true'
 end

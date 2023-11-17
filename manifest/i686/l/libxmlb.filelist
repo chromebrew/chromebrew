@@ -19,6 +19,13 @@
 /usr/local/include/libxmlb-2/libxmlb/xb-value-bindings.h
 /usr/local/include/libxmlb-2/libxmlb/xb-version.h
 /usr/local/include/libxmlb-2/xmlb.h
+/usr/local/libexec/installed-tests/libxmlb/test.desktop
+/usr/local/libexec/installed-tests/libxmlb/test.quirk
+/usr/local/libexec/installed-tests/libxmlb/test.xml
+/usr/local/libexec/installed-tests/libxmlb/test.xml.gz.gz.gz
+/usr/local/libexec/installed-tests/libxmlb/test.xml.xz
+/usr/local/libexec/installed-tests/libxmlb/test.xml.zstd
+/usr/local/libexec/installed-tests/libxmlb/xb-self-test
 /usr/local/lib/girepository-1.0/Xmlb-2.0.typelib
 /usr/local/lib/libxmlb.so
 /usr/local/lib/libxmlb.so.2
@@ -56,4 +63,5 @@
 /usr/local/share/gtk-doc/html/libxmlb/style.css
 /usr/local/share/gtk-doc/html/libxmlb/up-insensitive.png
 /usr/local/share/gtk-doc/html/libxmlb/up.png
+/usr/local/share/installed-tests/libxmlb/libxmlb.test
 /usr/local/share/man/man1/xb-tool.1.zst

@@ -24,6 +24,13 @@
 /usr/local/lib64/libxmlb.so.2
 /usr/local/lib64/libxmlb.so.2.0.0
 /usr/local/lib64/pkgconfig/xmlb.pc
+/usr/local/libexec/installed-tests/libxmlb/test.desktop
+/usr/local/libexec/installed-tests/libxmlb/test.quirk
+/usr/local/libexec/installed-tests/libxmlb/test.xml
+/usr/local/libexec/installed-tests/libxmlb/test.xml.gz.gz.gz
+/usr/local/libexec/installed-tests/libxmlb/test.xml.xz
+/usr/local/libexec/installed-tests/libxmlb/test.xml.zstd
+/usr/local/libexec/installed-tests/libxmlb/xb-self-test
 /usr/local/share/gir-1.0/Xmlb-2.0.gir
 /usr/local/share/gtk-doc/html/libxmlb/annotation-glossary.html
 /usr/local/share/gtk-doc/html/libxmlb/api-index-full.html
@@ -56,4 +63,5 @@
 /usr/local/share/gtk-doc/html/libxmlb/style.css
 /usr/local/share/gtk-doc/html/libxmlb/up-insensitive.png
 /usr/local/share/gtk-doc/html/libxmlb/up.png
+/usr/local/share/installed-tests/libxmlb/libxmlb.test
 /usr/local/share/man/man1/xb-tool.1.zst
