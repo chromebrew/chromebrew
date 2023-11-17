@@ -27,6 +27,7 @@
 /usr/local/lib/wireshark/extcap/sshdump
 /usr/local/lib/wireshark/extcap/udpdump
 /usr/local/lib/wireshark/extcap/wifidump
+/usr/local/lib/wireshark/plugins/4.2/codecs/amrnb.so
 /usr/local/lib/wireshark/plugins/4.2/codecs/g711.so
 /usr/local/lib/wireshark/plugins/4.2/codecs/l16mono.so
 /usr/local/lib/wireshark/plugins/4.2/codecs/opus_dec.so
