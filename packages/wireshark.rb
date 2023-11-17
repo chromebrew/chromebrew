@@ -1,27 +1,27 @@
 # Adapted from Arch Linux wireshark PKGBUILD at:
 # https://github.com/archlinux/svntogit-community/raw/packages/wireshark/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Wireshark < Package
+class Wireshark < CMake
   description 'Network traffic and protocol analyzer/sniffer'
   homepage 'https://www.wireshark.org/'
-  version '4.0.7'
+  version '4.2.0'
   compatibility 'all'
   source_url 'https://github.com/wireshark/wireshark.git'
   git_hashtag "wireshark-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.7_armv7l/wireshark-4.0.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.7_armv7l/wireshark-4.0.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.7_i686/wireshark-4.0.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.0.7_x86_64/wireshark-4.0.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.2.0_armv7l/wireshark-4.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.2.0_armv7l/wireshark-4.2.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.2.0_i686/wireshark-4.2.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wireshark/4.2.0_x86_64/wireshark-4.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '151e5fc92876d26cf2961725549ccae7f2a30dbbac4775db855c332cad637dbf',
-     armv7l: '151e5fc92876d26cf2961725549ccae7f2a30dbbac4775db855c332cad637dbf',
-       i686: 'd4d44e2f452d3481cb2831f9ff223d1239dc92e9770da305bcd89230095e658b',
-     x86_64: '219be09a131409c6868478701b2f6c27093fcd89b0ab88d62139b7a7c938f784'
+    aarch64: '54abe57326dc705ae7a3a28a7e92e5d576aa6ec91944255287f99c71ca835911',
+     armv7l: '54abe57326dc705ae7a3a28a7e92e5d576aa6ec91944255287f99c71ca835911',
+       i686: '19c3478e380880a5e7069a9f9072820025d641e707e8000f360e59efe75a43a0',
+     x86_64: '04fc54e9aa11ce00e7513997a78377ff56702f9bb1c8313c0b8bdbef6e4f1ef4'
   })
 
   depends_on 'brotli' # R
@@ -38,10 +38,13 @@ class Wireshark < Package
   depends_on 'libmaxminddb' # R
   depends_on 'libnghttp2' # R
   depends_on 'libnl3' # R
+  depends_on 'libopencoreamr' # R
   depends_on 'libpcap' # R
+  depends_on 'libsmi' # R
   depends_on 'libssh' # R
   depends_on 'libxml2' # R
   depends_on 'lz4' # R
+  depends_on 'minizip' # R
   depends_on 'opus' # R
   depends_on 'pcre2' # R
   depends_on 'qt5_base' unless ARCH == 'i686'
@@ -57,20 +60,7 @@ class Wireshark < Package
 
   git_fetchtags
 
-  def self.build
-    @gui = 'true'
-    case ARCH
-    when 'i686'
-      @gui = 'false'
-    end
-    system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \
-      -DENABLE_LTO=true \
-      -DBUILD_wireshark=#{@gui} \
-      -G Ninja"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  pre_cmake_options 'WIRESHARK_BUILD_WITH_QT5=1'
+  cmake_options "-DENABLE_LTO=true \
+    -DBUILD_wireshark=#{ARCH == 'i686' ? 'false' : 'true'}"
 end
