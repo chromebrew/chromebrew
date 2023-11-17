@@ -4691,6 +4691,11 @@ url: https://www.x.org/archive/individual/lib/
 activity: none
 ---
 kind: url
+name: libsmi
+url: https://gitlab.ibr.cs.tu-bs.de/nm/libsmi/-/tags
+activity: none
+---
+kind: url
 name: libsndfile
 url: http://www.mega-nerd.com/libsndfile/files
 activity: none
