@@ -205,6 +205,11 @@ url: https://x.org/archive/individual/app/
 activity: none
 ---
 kind: url
+name: appstream
+url: https://github.com/ximion/appstream/tags
+activity: medium
+---
+kind: url
 name: appstream_glib
 url: https://people.freedesktop.org/~hughsient/appstream-glib/releases/
 activity: medium
@@ -5103,6 +5108,11 @@ activity: none
 kind: url
 name: libxml2
 url: https://gitlab.gnome.org/GNOME/libxml2/tags
+activity: medium
+---
+kind: url
+name: libxmlb
+url: https://github.com/hughsie/libxmlb/releases
 activity: medium
 ---
 kind: url
