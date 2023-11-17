@@ -1365,6 +1365,11 @@ url: https://github.com/so-fancy/diff-so-fancy/releases
 activity: low
 ---
 kind: url
+name: difftastic
+url: https://github.com/Wilfred/difftastic/releases
+activity: medium
+---
+kind: url
 name: diffuse
 url: https://downloads.sourceforge.net/project/diffuse/diffuse/
 activity: low
