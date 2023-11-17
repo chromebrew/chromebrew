@@ -50,7 +50,7 @@ class Appstream < Meson
   depends_on 'xmlto' => :build
   depends_on 'zstd' # R
 
-  meson_options ' -Dcompose=true \
+  meson_options '-Dcompose=true \
     -Dqt5=true \
     -Dsystemd=false \
     -Dvapi=true'
