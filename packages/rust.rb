@@ -3,24 +3,23 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  @_ver =  '1.73.0'
-  version "#{@_ver}-1"
+  version '1.74.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
   git_hashtag '519381b19d7ab75ba160c68479e4dd4579fb51e1'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_armv7l/rust-1.73.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_armv7l/rust-1.73.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_i686/rust-1.73.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0-1_x86_64/rust-1.73.0-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.0_armv7l/rust-1.74.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.0_armv7l/rust-1.74.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.0_i686/rust-1.74.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.0_x86_64/rust-1.74.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bf5b59e8d91de817c31600a3587d04aefada6c9558db05edc3d551071bcab444',
-     armv7l: 'bf5b59e8d91de817c31600a3587d04aefada6c9558db05edc3d551071bcab444',
-       i686: '029a4a61ed0ebb268b0d124d6317ea17df28d34df6eb0b0ceefa14e0ec820a7d',
-     x86_64: '309d2f7fdccdaed99b5392b4418160cf376e56db4c43bbc20876b83c1f017d34'
+    aarch64: '885df5aaccfbb4c6d610d45c2d38721af1095d21ce54d72442a6590a03c41f64',
+     armv7l: '885df5aaccfbb4c6d610d45c2d38721af1095d21ce54d72442a6590a03c41f64',
+       i686: 'e705dc8ed8564a6ff8358422cdaa8e8919e758675c48e5e833aab241a6d6fb7c',
+     x86_64: '80c9303d70bc10c8f0a780f154be9d1c66154acd14abfd0c338e0bb69ad9e822'
   })
 
   depends_on 'gcc_lib' # R
@@ -43,15 +42,15 @@ class Rust < Package
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/bin")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/cargo")
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/rustup")
-    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{@_ver} --profile minimal"
+    system "RUSTFLAGS='-Clto=thin' bash ./rustup-init.sh -y --no-modify-path --default-host #{default_host} --default-toolchain #{version} --profile minimal"
     FileUtils.mkdir_p("#{CREW_DEST_PREFIX}/share/bash-completion/completions/")
-    # FileUtils.install "#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo",
+    # FileUtils.install "#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo",
     #                   "#{CREW_DEST_PREFIX}/share/bash-completion/completions/cargo", mode: 0o644
-    # FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/etc/bash_completion.d/cargo")
+    # FileUtils.rm("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/etc/bash_completion.d/cargo")
     FileUtils.touch "#{CREW_DEST_PREFIX}/share/bash-completion/completions/rustup"
-    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/man/",
+    FileUtils.mv("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/man/",
                  "#{CREW_DEST_PREFIX}/share/")
-    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{@_ver}-#{default_host}/share/doc/")
+    FileUtils.rm_rf("#{CREW_DEST_PREFIX}/share/rustup/toolchains/#{version}-#{default_host}/share/doc/")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/cargo", "#{CREW_DEST_HOME}/.cargo")
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
