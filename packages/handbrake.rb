@@ -3,23 +3,25 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.6.0'
+  version '1.7.0'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
   git_hashtag version
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.6.0_x86_64/handbrake-1.6.0-chromeos-x86_64.tar.zst'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/handbrake/1.7.0_x86_64/handbrake-1.7.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '1863142bbbaec234618c56397c2a4474dfa05fb69e2faeabe0d9524a79e9288b'
+     x86_64: 'ea62798482bd654274a9bbefc22f3f1bb7daab72021a552625ae3b3f7ec010b6'
   })
 
   depends_on 'at_spi2_core' # R
   depends_on 'bzip2' # R
+  depends_on 'cairo' # R
   depends_on 'expat' # R
-  depends_on 'ffmpeg'
+  depends_on 'ffmpeg' # R
+  depends_on 'fontconfig' # R
   depends_on 'freetype' # R
   depends_on 'fribidi' # R
   depends_on 'gcc_lib' # R
@@ -45,7 +47,7 @@ class Handbrake < Package
   depends_on 'libvpx' # R
   depends_on 'libx264' # R
   depends_on 'libxml2' # R
-  depends_on 'mesa'
+  depends_on 'mesa' # R
   depends_on 'nasm' => :build
   depends_on 'numactl' # R
   depends_on 'onevpl' # R
@@ -60,14 +62,6 @@ class Handbrake < Package
   depends_on 'zlibpkg' # R
 
   no_lto
-
-  def self.patch
-    Dir.chdir 'gtk' do
-      system 'autoupdate'
-      system "sed -i '/AM_MAINTAINER_MODE/a AC_CONFIG_MACRO_DIRS([m4])' configure.ac"
-      system 'autoreconf -fiv'
-    end
-  end
 
   def self.build
     # Need to temporarily create a symlink for libfribidi.la or the build fails
