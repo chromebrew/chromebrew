@@ -3,23 +3,23 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.42.1' # Do not use @_ver here, it will break the installer.
+  version '2.43.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.42.1.tar.xz'
-  source_sha256 '8e46fa96bf35a65625d85fde50391e39bc0620d1bb39afb70b96c4a237a1a4f7'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.43.0.tar.xz'
+  source_sha256 '5446603e73d911781d259e565750dcd277a42836c8e392cac91cf137aa9b76ec'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_armv7l/git-2.42.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_armv7l/git-2.42.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_i686/git-2.42.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.42.1_x86_64/git-2.42.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_armv7l/git-2.43.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_armv7l/git-2.43.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_i686/git-2.43.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_x86_64/git-2.43.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '32c2b530cd907343e1ce2fc8d6216ce9d6a248e5629bdf5f5e1ef18b3ae39864',
-     armv7l: '32c2b530cd907343e1ce2fc8d6216ce9d6a248e5629bdf5f5e1ef18b3ae39864',
-       i686: 'dd84fbba4b51a7dd234f3b8095c0664067b7ce5969a8fd61e42ee2657f31dfed',
-     x86_64: '0f40d76b5876f5e396d5baf164aafde3fa54144fa470bb8bdaf0528b1f09e079'
+    aarch64: '6a7203d257fd345739aabfd1d0a138673ea77e0726a3d7486912a0b48fe7b4e0',
+     armv7l: '6a7203d257fd345739aabfd1d0a138673ea77e0726a3d7486912a0b48fe7b4e0',
+       i686: '01ff74e06bbfb82942805d77b3f0bcc800ba6e7608d7cb6bb25c81d9f679fb33',
+     x86_64: '71e08f302551dcb0895560d40030b0e09062f7c32c117173910adc755afc0e17'
   })
 
   depends_on 'ca_certificates' => :build
