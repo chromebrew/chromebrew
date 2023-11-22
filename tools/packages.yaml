@@ -8736,6 +8736,11 @@ url: http://www.hping.org/wbox
 activity: none
 ---
 kind: url
+name: wcslib
+url: https://www.atnf.csiro.au/people/Mark.Calabretta/WCS/
+activity: none
+---
+kind: url
 name: wdiff
 url: https://ftpmirror.gnu.org/wdiff/
 activity: none
