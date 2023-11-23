@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.39.4'
+CREW_VERSION = '1.39.5'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -104,7 +104,7 @@ CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT = `cd #{CREW_LIB_PATH} && git rev-parse --show-toplevel 2> /dev/null`.chomp
+CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
