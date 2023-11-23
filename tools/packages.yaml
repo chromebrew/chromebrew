@@ -2630,6 +2630,11 @@ url: https://ftpmirror.gnu.org/time/
 activity: none
 ---
 kind: url
+name: gnuastro
+url: https://ftpmirror.gnu.org/gnuastro/
+activity: low
+---
+kind: url
 name: gnuchess
 url: https://ftpmirror.gnu.org/chess/
 activity: low
