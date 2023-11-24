@@ -6781,6 +6781,11 @@ url: https://sourceforge.net/projects/phpsysinfo/files/phpsysinfo/
 activity: low
 ---
 kind: url
+name: pickle
+url: https://github.com/FriendsOfPHP/pickle/releases
+activity: none
+---
+kind: url
 name: picom
 url: https://github.com/yshui/picom/releases
 activity: low
