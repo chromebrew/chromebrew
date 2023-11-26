@@ -7,6 +7,7 @@ class Ucl < Package
   description 'Portable lossless data compression library written in ANSI C'
   homepage 'https://www.oberhumer.com/opensource/ucl/'
   version '1.03'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://www.oberhumer.com/opensource/ucl/download/ucl-1.03.tar.gz'
   source_sha256 'b865299ffd45d73412293369c9754b07637680e5c826915f097577cd27350348'

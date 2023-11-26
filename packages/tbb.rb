@@ -7,6 +7,7 @@ class Tbb < Package
   description 'High level abstract threading library'
   homepage 'https://www.threadingbuildingblocks.org/'
   version '2021.5.0'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/oneapi-src/oneTBB.git'
   git_hashtag "v#{version}"

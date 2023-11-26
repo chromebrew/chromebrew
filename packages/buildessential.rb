@@ -2,7 +2,7 @@ require 'package'
 
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
-  homepage ''
+  homepage 'SKIP'
   version '1.25'
   license 'GPL-3+'
   compatibility 'all'

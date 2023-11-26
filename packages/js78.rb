@@ -2,6 +2,7 @@ require 'package'
 
 class Js78 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 78'
+  homepage 'https://spidermonkey.dev/'
   version '78.7.0'
   license 'MPL-2.0'
   compatibility 'all'

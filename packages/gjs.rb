@@ -2,6 +2,7 @@ require 'package'
 
 class Gjs < Package
   description 'Javascript Bindings for GNOME'
+  homepage 'https://gitlab.gnome.org/GNOME/gjs/'
   version '1.74.0'
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
   compatibility 'all'
