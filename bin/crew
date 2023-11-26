@@ -1150,9 +1150,9 @@ def prepare_package(destdir)
     system "find .#{CREW_PREFIX} -type l >> ../filelist"
     system 'cut -c2- ../filelist | sort -o filelist'
 
-    if Dir.exist?(CREW_LOCAL_MANIFEST_PATH) && File.writable?(CREW_LOCAL_MANIFEST_PATH)
-      FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
-      FileUtils.cp 'filelist', "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+    if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
+      FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{USER_SPACE_ARCH}/#{@pkg.name.chr.downcase}"
+      FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{USER_SPACE_ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
     end
 
     # check for FHS3 compliance
@@ -1484,8 +1484,6 @@ def resolve_dependencies_and_install
 end
 
 def resolve_dependencies
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
-
   @dependencies = @pkg.get_deps_list(return_attr: true)
 
   # compare dependency version with required range (if installed)
@@ -1632,8 +1630,7 @@ def resolve_dependencies_and_build
       post_install
     end
     search origin, true
-    abort "CREW_ARCHIVE_DEST (#{CREW_ARCHIVE_DEST}) is not writable!".lightred unless File.writable?(CREW_ARCHIVE_DEST)
-    build_package CREW_ARCHIVE_DEST
+    build_package CREW_LOCAL_BUILD_DIR
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
   ensure
@@ -1648,11 +1645,6 @@ def resolve_dependencies_and_build
 end
 
 def build_package(crew_archive_dest)
-  abort 'It is not possible to build a fake package'.lightred if @pkg.is_fake?
-  abort 'It is not possible to build without source'.lightred unless @pkg.is_source?(@device[:architecture])
-  abort "Unable to locate CREW_LOCAL_MANIFEST_PATH. Please try again in the chromebrew/release/#{ARCH} directory.".lightred if CREW_LOCAL_MANIFEST_PATH.empty?
-  abort "CREW_LOCAL_MANIFEST_PATH: #{CREW_LOCAL_MANIFEST_PATH} is not writable.".lightred unless File.writable?(CREW_LOCAL_MANIFEST_PATH)
-
   # download source codes and unpack it
   meta = download
   target_dir = unpack meta
@@ -1857,12 +1849,22 @@ def print_deps_tree(args)
 end
 
 def build_command(args)
+  abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT
+  abort "Unable to locate local build directory #{CREW_LOCAL_BUILD_DIR}.".lightred unless Dir.exist? CREW_LOCAL_BUILD_DIR
+  abort "#{CREW_LOCAL_BUILD_DIR} is not writable.".lightred unless File.writable?(CREW_LOCAL_BUILD_DIR)
   args['<name>'].each do |name|
     @pkgName = name
     search @pkgName
     print_current_package @opt_verbose
-    resolve_dependencies_and_build
+    next unless @pkgName
+
+    puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
+    puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless @pkg.compatible?
+    puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
+    puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source?(USER_SPACE_ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
+    resolve_dependencies_and_build if !@pkg.is_fake? && @pkg.is_source?(USER_SPACE_ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
   end
+  puts "Builds are located in #{CREW_LOCAL_BUILD_DIR}.".yellow
 end
 
 def const_command(args)
@@ -1923,7 +1925,10 @@ def install_command(args)
     search @pkgName
     print_current_package true
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
-    resolve_dependencies_and_install
+    next unless @pkgName
+
+    puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred unless @pkg.compatible?
+    resolve_dependencies_and_install if @pkg.compatible?
   end
 end
 
@@ -1963,6 +1968,8 @@ def reinstall_command(args)
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkgName
 
+    puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping reinstall.".lightred unless @pkg.compatible?
+    next unless @pkg.compatible?
     @pkg.in_upgrade = true
     resolve_dependencies_and_install
     @pkg.in_upgrade = false
