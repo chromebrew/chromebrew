@@ -1436,8 +1436,6 @@ end
 def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 1
 
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
-
   # Process preflight block to see if package should even
   # be downloaded or installed.
   pre_flight
@@ -1486,6 +1484,8 @@ def resolve_dependencies_and_install
 end
 
 def resolve_dependencies
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
+
   @dependencies = @pkg.get_deps_list(return_attr: true)
 
   # compare dependency version with required range (if installed)
