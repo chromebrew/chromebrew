@@ -785,7 +785,6 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
-  @pkg.build_from_source = true if @opt_source
   url = @pkg.get_url(@device[:architecture])
   source = @pkg.is_source?(@device[:architecture])
 
@@ -1894,6 +1893,7 @@ def download_command(args)
   args['<name>'].each do |name|
     @pkgName = name
     search @pkgName
+    @pkg.build_from_source = true if @opt_source
     print_current_package @opt_verbose
     download
   end
