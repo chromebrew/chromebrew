@@ -9,7 +9,7 @@ class Metasploit < Package
   source_url 'https://github.com/rapid7/metasploit-framework/archive/6.0.9.tar.gz'
   source_sha256 '69a12a089fcd130a40f3f973a53057a948a7f2b6df6a3a64613ee22aa3d53016'
 
-  binary_sha256({})
+  no_compile_needed
 
   depends_on 'ruby'
   depends_on 'readline'

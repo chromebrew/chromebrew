@@ -8,7 +8,7 @@ class Broadway < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_sha256({})
+  no_compile_needed
 
   depends_on 'gtk3'
 
