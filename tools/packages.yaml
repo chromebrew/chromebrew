@@ -7116,6 +7116,11 @@ url: https://github.com/pypa/trove-classifiers/releases
 activity: medium
 ---
 kind: url
+name: py3_unsupported_python
+url: https://github.com/ntessore/unsupported-python/releases
+activity: none
+---
+kind: url
 name: py3_websockets
 url: https://github.com/python-websockets/websockets/tags
 activity: high
