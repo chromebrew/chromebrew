@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_xml_parser < Perl
+class Perl_xml_parser < PErl
   description 'Perl XML::Parser - A perl module for parsing XML documents'
   homepage 'https://metacpan.org/pod/XML::Parser'
   version '2.46-perl5.38.1'
