@@ -1,41 +1,28 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_net_ssleay < Package
+class Perl_net_ssleay < PErl
   description 'Net::SSLeay - Perl bindings for OpenSSL and LibreSSL'
   homepage 'https://metacpan.org/pod/Net::SSLeay'
-  version '1.92-perl5.38'
+  version '1.92-perl5.38.1'
   license 'BSD'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.92.tar.gz'
   source_sha256 '47c2f2b300f2e7162d71d699f633dd6a35b0625a00cbda8c50ac01144a9396a9'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38_armv7l/perl_net_ssleay-1.92-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38_armv7l/perl_net_ssleay-1.92-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38_i686/perl_net_ssleay-1.92-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38_x86_64/perl_net_ssleay-1.92-perl5.38-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38.1_armv7l/perl_net_ssleay-1.92-perl5.38.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38.1_armv7l/perl_net_ssleay-1.92-perl5.38.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38.1_i686/perl_net_ssleay-1.92-perl5.38.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_net_ssleay/1.92-perl5.38.1_x86_64/perl_net_ssleay-1.92-perl5.38.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c91931945668c1d5aa628828851b31b8179211d3b2bbc52c934d8362fded337e',
-     armv7l: 'c91931945668c1d5aa628828851b31b8179211d3b2bbc52c934d8362fded337e',
-       i686: 'fbc0ea95d57e97bd4652d4ca64281f33f6b608b6845becbb092402bac0ca8414',
-     x86_64: '8f672b3fa6f9c612ebe94b9a326de37cbbd7c6fbdda9a4272c730498c205e80a'
+    aarch64: 'f6f038c94dd24a4e6a697427555018857b44bb1a277c3f83340db631e154c370',
+     armv7l: 'f6f038c94dd24a4e6a697427555018857b44bb1a277c3f83340db631e154c370',
+       i686: '51594ba90b3524dd0e1f70e78e13ed621547ded18ffa3f8fc9fa302b293e61cf',
+     x86_64: '6ad8d74152f699fd03dab5303f4307377817a560c24460c3cb59eab16c1ea244'
   })
 
   depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'zlibpkg' # R
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end
