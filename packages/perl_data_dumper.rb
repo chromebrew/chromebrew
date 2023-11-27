@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_data_dumper < Package
+class Perl_data_dumper < PERL
   description 'Stringified perl data structures, suitable for both printing and eval'
   homepage 'https://metacpan.org/pod/Data::Dumper'
   version '2.183-perl5.38.1'
@@ -23,17 +23,6 @@ class Perl_data_dumper < Package
   })
 
   depends_on 'glibc' # R
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

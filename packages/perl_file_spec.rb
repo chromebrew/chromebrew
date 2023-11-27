@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_file_spec < Package
+class Perl_file_spec < PERL
   description 'Portably perform operations on file names'
   homepage 'https://metacpan.org/pod/File::Spec'
   version '3.75-perl5.38.1'
@@ -23,17 +23,6 @@ class Perl_file_spec < Package
   })
 
   depends_on 'glibc' # R
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
