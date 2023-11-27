@@ -657,7 +657,7 @@ def update
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tools"
+    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tests tools"
     system 'git sparse-checkout reapply'
 
     system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
@@ -1435,8 +1435,6 @@ end
 def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 1
 
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
-
   # Process preflight block to see if package should even
   # be downloaded or installed.
   pre_flight
@@ -1485,6 +1483,8 @@ def resolve_dependencies_and_install
 end
 
 def resolve_dependencies
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
+
   @dependencies = @pkg.get_deps_list(return_attr: true)
 
   # compare dependency version with required range (if installed)
