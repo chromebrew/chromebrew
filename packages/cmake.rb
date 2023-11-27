@@ -1,25 +1,25 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Cmake < Package
+class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.27.7'
+  version '3.27.8'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.7_armv7l/cmake-3.27.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.7_armv7l/cmake-3.27.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.7_i686/cmake-3.27.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.7_x86_64/cmake-3.27.7-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_armv7l/cmake-3.27.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_armv7l/cmake-3.27.8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_i686/cmake-3.27.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_x86_64/cmake-3.27.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '11f4c625a0b01ea03386a1b60e2f52687a3cd2176711ac205c5d3368483315d8',
-     armv7l: '11f4c625a0b01ea03386a1b60e2f52687a3cd2176711ac205c5d3368483315d8',
-       i686: '96e658c56f0862f6c748f14f3577892783b2bc24a24db98e05d8e8d72156910e',
-     x86_64: 'f991e757d11a4156aac060d35912102bc81c6360501029f64604d3d7ed002d4d'
+    aarch64: '1ced511da84c596faf36c533a9ca472145e780d6ab6b0fecc51f70eda073c835',
+     armv7l: '1ced511da84c596faf36c533a9ca472145e780d6ab6b0fecc51f70eda073c835',
+       i686: 'c33b0de21ae2c5b8a81f77183199a608c92c30eda7fd1042e32157161947ec8a',
+     x86_64: '443d9d3c93c749bfa854aebe8d209d44e15a56501e1fe65c96dbcd4ff64cae10'
   })
 
   depends_on 'bzip2' => :build
@@ -39,14 +39,8 @@ class Cmake < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' => :build
 
-  def self.build
-    system "mold -run cmake -B builddir \
-          -G Ninja \
-          #{CREW_CMAKE_OPTIONS} \
-          -DCMAKE_USE_SYSTEM_LIBRARIES=ON \
-          -DBUILD_QtDialog=NO"
-    system "#{CREW_NINJA} -C builddir"
-  end
+  cmake_options '-DCMAKE_USE_SYSTEM_LIBRARIES=ON \
+     -DBUILD_QtDialog=NO'
 
   # Failed tests:
   # BundleUtilities (armv7l,x86_64)
