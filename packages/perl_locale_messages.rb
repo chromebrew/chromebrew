@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_locale_messages < PErl
+class Perl_locale_messages < PERL
   description 'Perl Locale::Messages - Gettext Like Message Retrieval'
   homepage 'https://metacpan.org/pod/Locale::Messages'
   version '1.33-perl5.38.1'

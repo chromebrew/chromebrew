@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_clone < PErl
+class Perl_clone < PERL
   description 'Recursively copy Perl datatypes'
   homepage 'https://metacpan.org/pod/Clone'
   version '0.46-perl5.38.1'

@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_net_ssleay < PErl
+class Perl_net_ssleay < PERL
   description 'Net::SSLeay - Perl bindings for OpenSSL and LibreSSL'
   homepage 'https://metacpan.org/pod/Net::SSLeay'
   version '1.92-perl5.38.1'

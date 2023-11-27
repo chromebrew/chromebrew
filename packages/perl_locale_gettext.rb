@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_locale_gettext < PErl
+class Perl_locale_gettext < PERL
   description 'Locale::gettext - message handling functions'
   homepage 'https://search.cpan.org/dist/Locale-gettext/'
   license 'GPL-1+ or Artistic'

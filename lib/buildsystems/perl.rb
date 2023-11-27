@@ -1,6 +1,6 @@
 require 'package'
 
-class PErl < Package
+class PERL < Package
   property :pre_perl_options
 
   def self.prebuild

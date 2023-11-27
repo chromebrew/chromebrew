@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_glib < PErl
+class Perl_glib < PERL
   description 'Provides perl access to Glib and GLib\'s GObject libraries.'
   homepage 'https://metacpan.org/pod/Glib'
   version '1.3293-perl5.38.1'

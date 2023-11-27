@@ -1,6 +1,6 @@
 require 'buildsystems/perl'
 
-class Perl_term_readkey < PErl
+class Perl_term_readkey < PERL
   description 'Term::ReadKey - A perl module for simple terminal control'
   homepage 'https://metacpan.org/pod/Term::ReadKey'
   version '2.38-perl5.38.1'
