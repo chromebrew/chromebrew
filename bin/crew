@@ -1129,9 +1129,7 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    system "find .#{CREW_PREFIX} -type f > ../filelist"
-    system "find .#{CREW_PREFIX} -type l >> ../filelist"
-    system 'cut -c2- ../filelist | sort -o filelist'
+    system "find .#{CREW_PREFIX} .#{HOME} -type f,l | cut -c2- | tail -n +2 | sort", out: 'filelist'
 
     if Dir.exist?(CREW_LOCAL_MANIFEST_PATH) && File.writable?(CREW_LOCAL_MANIFEST_PATH)
       FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
@@ -1172,7 +1170,7 @@ def prepare_package(destdir)
     abort 'Exiting due to above errors.'.lightred if @_errors
 
     # create directory list
-    system "find .#{CREW_PREFIX} -type d | cut -c2- | tail -n +2", out: 'dlist'
+    system "find .#{CREW_PREFIX} .#{HOME} -type d | cut -c2- | tail -n +2 | sort", out: 'dlist'
 
     strip_dir destdir
 
