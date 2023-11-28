@@ -1173,7 +1173,7 @@ def prepare_package(destdir)
     # Remove CREW_PREFIX and HOME from the generated directorylist.
     @crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
     @home_escaped = HOME.gsub('/', '\/')
-    system "find ./usr/local ./home/chronos/user -type d | cut -c2- | sed '0,/#{@crew_prefix_escaped}/{/#{@crew_prefix_escaped}/d}' | sed '0,/#{@home_escaped}/{/#{@home_escaped}/d}' | sort", out: 'dlist'
+    system "find .#{CREW_PREFIX} .#{HOME} -type d | cut -c2- | sed '0,/#{@crew_prefix_escaped}/{/#{@crew_prefix_escaped}/d}' | sed '0,/#{@home_escaped}/{/#{@home_escaped}/d}' | sort", out: 'dlist'
 
     strip_dir destdir
 
