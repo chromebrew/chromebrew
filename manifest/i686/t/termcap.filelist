@@ -1,7 +1,8 @@
 /usr/local/include/termcap.h
-/usr/local/info/termcap.info-1.gz
-/usr/local/info/termcap.info-2.gz
-/usr/local/info/termcap.info-3.gz
-/usr/local/info/termcap.info-4.gz
-/usr/local/info/termcap.info.gz
-/usr/local/lib/libtermcap.a
+/usr/local/lib/libtermcap.so
+/usr/local/lib/libtermcap.so.1.3.1
+/usr/local/share/info/termcap.info-1.zst
+/usr/local/share/info/termcap.info-2.zst
+/usr/local/share/info/termcap.info-3.zst
+/usr/local/share/info/termcap.info-4.zst
+/usr/local/share/info/termcap.info.zst
