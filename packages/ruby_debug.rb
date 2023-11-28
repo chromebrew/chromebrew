@@ -4,6 +4,7 @@ class Ruby_debug < Package
   description 'Debugging functionality for Ruby. This is completely rewritten debug.rb which was contained by the ancient Ruby versions.'
   homepage 'https://github.com/ruby/debug'
   version '1.7.1-ruby-3.2'
+  license 'BSD-2 Clause'
   compatibility 'all'
   source_url 'SKIP'
 

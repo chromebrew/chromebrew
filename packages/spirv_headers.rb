@@ -4,6 +4,7 @@
 require 'package'
 
 class Spirv_headers < Package
+  homepage 'https://github.com/KhronosGroup/SPIRV-Headers'
   description 'SPIR-V Headers'
   version '1.3.239.0'
   license 'MIT'

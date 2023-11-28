@@ -5,8 +5,9 @@ require 'package'
 
 class Shaderc < Package
   description 'Collection of tools, libraries and tests for shader compilation'
+  homepage 'https://github.com/google/shaderc'
   version '2023.2'
-  license 'Apache'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/google/shaderc.git'
   git_hashtag "v#{version}"

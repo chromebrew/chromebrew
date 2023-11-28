@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift '../lib'
+
+require 'find'
+require_relative '../lib/const'
+require_relative '../lib/color'
+require_relative '../lib/package'
+
+tofail = 0
+
+Dir.glob('../packages/*.rb').each do |filename|
+  pkg = Package.load_package(filename)
+  name = File.basename(filename, '.rb').gsub('_', '-')
+  puts "#{name} is missing a description." if pkg.description.to_s.empty?
+  puts "#{name} is missing a homepage." if pkg.homepage.to_s.empty?
+  puts "#{name} is missing a version." if pkg.version.to_s.empty?
+  puts "#{name} is missing a license." if pkg.license.to_s.empty?
+  puts "#{name} is missing a compatibility property." if pkg.compatibility.to_s.empty?
+  tofail += 1 if pkg.description.to_s.empty? || pkg.homepage.to_s.empty? || pkg.version.to_s.empty? || pkg.license.to_s.empty? || pkg.compatibility.to_s.empty?
+end
+
+if tofail.positive?
+  puts "\n#{tofail} failing packages."
+  exit(1) if tofail.positive?
+else
+  puts "\nAll property tests successful.".lightgreen
+end

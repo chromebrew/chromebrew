@@ -2,14 +2,15 @@
 
 # This test checks whether the packages create a dependency cycle.
 
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift '../lib'
+
 require 'find'
 require_relative '../lib/const'
 require_relative '../lib/color'
 require_relative '../lib/package'
 
 @all_pkgs = {}
-
-$LOAD_PATH.unshift '../lib'
 
 puts "Running dependency cycle tests...\n".yellow
 

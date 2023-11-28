@@ -7,6 +7,7 @@ class Lv2 < Meson
   description 'Plugin standard for audio systems'
   homepage 'http://lv2plug.in/'
   version '1.18.10'
+  license 'ISC License'
   compatibility 'all'
   source_url 'https://github.com/lv2/lv2.git'
   git_hashtag "v#{version}"

@@ -7,6 +7,7 @@ class Musl_wolfssl < Package
   description 'small, fast, portable implementation of TLS/SSL for embedded devices to the cloud formerly CyaSSL'
   homepage 'https://www.wolfssl.com/'
   version '5.1.1'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/wolfSSL/wolfssl/archive/v5.1.1-stable.tar.gz'
   source_sha256 'd3e0544dbe7e9587c0f6538cdc671b6492663bb7a4281819538abe6c99cdbd92'

@@ -3,6 +3,7 @@
 require 'package'
 
 class Spirv_tools < Package
+  homepage 'https://github.com/KhronosGroup/SPIRV-Tools'
   description 'API and commands for processing SPIR-V modules'
   version '2023.1'
   license 'custom'

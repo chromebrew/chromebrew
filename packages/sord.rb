@@ -7,6 +7,7 @@ class Sord < Meson
   description 'A lightweight C library for storing RDF data in memory'
   homepage 'https://drobilla.net/software/sord/'
   version '0.16.14'
+  license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/drobilla/sord.git'
   git_hashtag "v#{version}"

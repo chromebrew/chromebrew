@@ -286,23 +286,7 @@ def generate_compatible
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
     puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
-    # If compatibility property does not exist, check if a binary package
-    # exists, and if not, see if at least a source url exists.
-    @compatibility = true
-    @binary_url = ''
-    @url = ''
-    if @pkg.compatibility.nil?
-      @binary_url = @pkg.get_binary_url(@device[:architecture])
-      @url = @pkg.get_url(@device[:architecture])
-      unless @binary_url
-        puts "#{pkgName} is missing compatibility information".red
-        # puts "url: #{@url}".green
-        # If no source package is available, then package is not compatible.
-        @compatibility = false unless @url
-        puts "#{pkgName} compatibility is #{@compatibility}" if @opt_verbose
-      end
-    end
-    if @pkg.compatible? && @compatibility
+    if @pkg.compatible?
       # add to compatible packages
       puts "Adding #{pkgName} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)

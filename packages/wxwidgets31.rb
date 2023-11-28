@@ -5,6 +5,7 @@ class Wxwidgets31 < Package
   homepage 'https://www.wxwidgets.org/'
   @_ver = '3.1.7'
   version "#{@_ver}-2"
+  license 'wxWindows Library Licence'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"

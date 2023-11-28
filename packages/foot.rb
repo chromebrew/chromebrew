@@ -7,6 +7,7 @@ class Foot < Meson
   description 'Wayland terminal emulator - fast, lightweight and minimalistic'
   homepage 'https://codeberg.org/dnkl/foot'
   version '1.15.0'
+  license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://codeberg.org/dnkl/foot.git'
   git_hashtag version

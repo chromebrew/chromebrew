@@ -1,8 +1,10 @@
 require 'package'
 
 class Gnome_text_editor < Package
-  description 'GNOME Text Editor (2021)'
+  description 'GNOME Text Editor'
+  homepage 'https://gitlab.gnome.org/GNOME/gnome-text-editor'
   version '44.0'
+  license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-text-editor.git'
   git_hashtag version

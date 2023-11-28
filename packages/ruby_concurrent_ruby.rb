@@ -4,6 +4,7 @@ class Ruby_concurrent_ruby < Package
   description 'Modern concurrency tools for Ruby. Inspired by Erlang, Clojure, Scala, Haskell, F#, C#, Java, and classic concurrency patterns.'
   homepage 'https://github.com/ruby-concurrency/concurrent-ruby'
   version '1.1.10-ruby-3.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 
