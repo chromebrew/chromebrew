@@ -7,6 +7,7 @@ class Tllist < Package
   description 'A typed linked list C header file only library'
   homepage 'https://codeberg.org/dnkl/tllist'
   version '1.0.5'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://codeberg.org/dnkl/tllist.git'
   git_hashtag version

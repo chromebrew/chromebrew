@@ -7,6 +7,7 @@ class Fcft < Package
   description 'Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.'
   homepage 'https://codeberg.org/dnkl/fcft'
   version '2.5.1'
+  license 'MIT'
   compatibility 'all'
   source_url 'https://codeberg.org/dnkl/fcft.git'
   git_hashtag version

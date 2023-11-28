@@ -2,14 +2,14 @@ require 'package'
 
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
-  @_ver = if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
-              '0.3.29'
-            elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
-              '0.3.60'
-            else
-              '1.0.0'
-            end
-  version @_ver
+  homepage 'https://pipewire.org'
+  if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
+    version '0.3.29'
+  elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
+    version '0.3.60'
+  else
+    version '1.0.0'
+  end
   compatibility 'all'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'

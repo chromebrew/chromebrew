@@ -4,7 +4,7 @@ class Pkgsrc < Package
   description 'pkgsrc is a framework for building third-party software on NetBSD and other UNIX-like systems'
   homepage 'https://github.com/NetBSD/pkgsrc'
   version '2021Q1'
-  license '' # Can't find license
+  license 'BSD-2 Clause'
   compatibility 'all'
   source_url 'https://github.com/NetBSD/pkgsrc/archive/ccaf3cb68a965f1b055b3e04485d725fc7043813.tar.gz'
   source_sha256 '16039f24bb84d5046832e462cfd7a21c5f53dd15792a9e6b71fa4faec3a7ab4e'

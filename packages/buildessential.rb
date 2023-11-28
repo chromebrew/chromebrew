@@ -2,8 +2,8 @@ require 'package'
 
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
-  homepage ''
-  version '1.25'
+  homepage 'SKIP'
+  version '1.26'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -28,6 +28,10 @@ class Buildessential < Package
 
   # Linkers
   depends_on 'mold'
+
+  # findutils is needed for the newer version
+  # of 'find' used by crew in 'prepare_package'
+  depends_on 'findutils'
 
   # typically required libraries & tools to configure packages
   # e.g. using "./autogen.sh"

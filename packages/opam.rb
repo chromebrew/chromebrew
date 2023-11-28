@@ -7,6 +7,7 @@ class Opam < Package
   description 'OCaml package manager'
   homepage 'https://opam.ocaml.org/'
   version '2.1.4'
+  license 'LGPL-2.1-with-linking-exception'
   compatibility 'all'
   source_url 'https://github.com/ocaml/opam.git'
   git_hashtag version
