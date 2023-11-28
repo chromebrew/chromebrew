@@ -1,3 +1,4 @@
+/home/chronos/user/.config/weston.ini
 /usr/local/bin/wcap-decode
 /usr/local/bin/weston
 /usr/local/bin/weston-calibrator
@@ -55,7 +56,6 @@
 /usr/local/include/neatvnc.h
 /usr/local/include/weston/weston.h
 /usr/local/libexec/weston-desktop-shell
-/usr/local/libexec/weston-keyboard
 /usr/local/libexec/weston-simple-im
 /usr/local/lib/libaml.so
 /usr/local/lib/libaml.so.0

@@ -15,9 +15,9 @@ class Weston < Meson
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/13.0.0_x86_64/weston-13.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '050b3e9b1f0752efb6679a92d4e1512e36df31da42d22fd3857968d1bc7ce35a',
-     armv7l: '050b3e9b1f0752efb6679a92d4e1512e36df31da42d22fd3857968d1bc7ce35a',
-     x86_64: '16c521689a2622cb48c9b9f2834ee935560df97b6a5b978e2345c27aa7a0767c'
+    aarch64: '6bdc016e369c410e42adfd2e67d2e757c77b6d31036081cbbcb5d2e1c189efbf',
+     armv7l: '6bdc016e369c410e42adfd2e67d2e757c77b6d31036081cbbcb5d2e1c189efbf',
+     x86_64: '1472d72e07bcf37651bee693f50c33f02cd3829d58581e9ef8e3d32480305dcb'
   })
 
   depends_on 'cairo' # R
@@ -80,7 +80,6 @@ class Weston < Meson
 
       [terminal]
       font=Cousine
-      EOF"
     WESTON_INI_EOF
     FileUtils.install 'weston.ini', "#{CREW_DEST_HOME}/.config/weston.ini", mode: 0o644
   end

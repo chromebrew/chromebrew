@@ -1,3 +1,4 @@
+/home/chronos/user/.config/weston.ini
 /usr/local/bin/wcap-decode
 /usr/local/bin/weston
 /usr/local/bin/weston-calibrator
@@ -52,7 +53,6 @@
 /usr/local/include/libweston-13/libweston/windowed-output-api.h
 /usr/local/include/libweston-13/libweston/xwayland-api.h
 /usr/local/include/libweston-13/libweston/zalloc.h
-/usr/local/include/neatvnc.h
 /usr/local/include/weston/weston.h
 /usr/local/lib64/libaml.so
 /usr/local/lib64/libaml.so.0
