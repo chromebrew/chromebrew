@@ -15,9 +15,9 @@ class Weston < Meson
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/13.0.0_x86_64/weston-13.0.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6bdc016e369c410e42adfd2e67d2e757c77b6d31036081cbbcb5d2e1c189efbf',
-     armv7l: '6bdc016e369c410e42adfd2e67d2e757c77b6d31036081cbbcb5d2e1c189efbf',
-     x86_64: '1472d72e07bcf37651bee693f50c33f02cd3829d58581e9ef8e3d32480305dcb'
+    aarch64: '463fafa09122de01bf4c8dbba4eb157ae9741aa0aec68561e3ef03878d262161',
+     armv7l: '463fafa09122de01bf4c8dbba4eb157ae9741aa0aec68561e3ef03878d262161',
+     x86_64: 'daacfeb06185e4ff3a0fef2b7845a7b4f2528a02d1569957d5a61a70cc3e5bd2'
   })
 
   depends_on 'cairo' # R
