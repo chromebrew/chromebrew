@@ -9,7 +9,7 @@ class Termcap < Package
   version '1.3.1-2'
   license 'GPL'
   compatibility 'all'
-  source_url 'http://ftp.gnu.org/gnu/termcap/termcap-1.3.1.tar.gz'
+  source_url 'https://ftpmirror.gnu.org/termcap/termcap-1.3.1.tar.gz'
   source_sha256 '91a0e22e5387ca4467b5bcb18edf1c51b930262fd466d5fda396dd9d26719100'
 
   binary_url({
