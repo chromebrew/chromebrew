@@ -1600,7 +1600,7 @@ def install
     file.write JSON.pretty_generate(output)
   end
   # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", json_path
+  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
   FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
 end
 
