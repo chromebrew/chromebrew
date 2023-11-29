@@ -29,7 +29,6 @@ class Libomxil_bellagio < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # ????
     system "cp -r #{CREW_DEST_DIR}#{CREW_DEST_DIR}/* #{CREW_DEST_DIR}/"
     system "rm -rf #{CREW_DEST_DIR}#{CREW_DEST_DIR}/"
   end

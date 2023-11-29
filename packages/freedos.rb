@@ -35,9 +35,8 @@ class Freedos < Package
   end
 
   def self.install
-    system "install -Dm755 freedos #{CREW_DEST_PREFIX}/bin/freedos"
-    system "install -Dm644 freedos.img #{CREW_DEST_HOME}/freedos.img"
-    # system 'install -Dm644 freedos.img $HOME/freedos.img'
+    FileUtils.install 'freedos', "#{CREW_DEST_PREFIX}/bin/freedos", mode: 0o755
+    FileUtils.install 'freedos.img', "#{CREW_DEST_HOME}/freedos.img", mode: 0o644
   end
 
   def self.postinstall
