@@ -294,7 +294,7 @@ def generate_compatible
       puts "#{pkgName} is not a compatible package.".lightred
     end
   end
-  File.open("#{CREW_CONFIG_PATH}device.json", 'w') do |file|
+  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
@@ -1572,7 +1572,7 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  FileUtils.cp "#{CREW_CONFIG_PATH}device.json", "#{CREW_CONFIG_PATH}device.json.tmp"
+  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp"
 
   # remove it just before the file copy
   if @pkg.in_upgrade
@@ -1595,13 +1595,13 @@ def install
 
   # add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256(@device[:architecture]))
-  File.open("#{CREW_CONFIG_PATH}device.json.tmp", 'w') do |file|
+  File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
   # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp "#{CREW_CONFIG_PATH}device.json.tmp", "#{CREW_CONFIG_PATH}device.json"
-  FileUtils.rm "#{CREW_CONFIG_PATH}device.json.tmp"
+  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", json_path
+  FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
 end
 
 def resolve_dependencies_and_build
