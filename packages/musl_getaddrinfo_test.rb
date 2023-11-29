@@ -11,7 +11,7 @@ class Musl_getaddrinfo_test < Package
   depends_on 'musl_native_toolchain' => :build
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     @a_c = <<~'SOURCEEOF'
           #include <netdb.h>
           #include <stdio.h>

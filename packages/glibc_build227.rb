@@ -230,7 +230,7 @@ class Glibc_build227 < Package
     Dir.chdir 'glibc_build' do
       # gold linker does not work for glibc 2.23, and maybe others.
       FileUtils.mkdir_p 'binutils'
-      @binutils = File.readlines("#{CREW_META_PATH}binutils.filelist")
+      @binutils = File.readlines(File.join(CREW_META_PATH, 'binutils.filelist'))
       @binutils.each do |bin|
         FileUtils.cp bin.chomp, "binutils/#{File.basename(bin.chomp)}" if bin['/bin/']
       end

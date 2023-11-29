@@ -194,7 +194,7 @@ class Musl_native_toolchain < Package
   end
 
   def self.install
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "OUTPUT=#{CREW_DEST_MUSL_PREFIX} make install"
     # Delete libc symlink made to syslibdir
     FileUtils.rm_f "#{CREW_DEST_MUSL_PREFIX}/usr/local"

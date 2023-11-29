@@ -77,7 +77,7 @@ class Icu4c < Package
         @nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
         @nmresults.each { |fileLine| @libArray.push(fileLine.partition(':').first) }
         @libArray.each do |f|
-          @grepresults = `grep "#{f}" #{CREW_META_PATH}*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
+          @grepresults = `grep "#{f}" #{CREW_META_PATH}/*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
             CREW_META_PATH, ''
           ).split(/$/).map(&:strip)
           @grepresults.each { |fileLine| @fileArray.push(fileLine) }

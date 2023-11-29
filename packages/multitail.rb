@@ -32,7 +32,7 @@ class Multitail < Package
   def self.install
     system 'make', "PREFIX=#{CREW_PREFIX}", "DESTDIR=#{CREW_DEST_DIR}", 'install'
     system "mkdir -p #{CREW_DEST_DIR}$HOME"
-    system "cp #{CREW_DEST_PREFIX}/etc/multitail.conf.new #{CREW_DEST_DIR}$HOME/.multitail.conf"
+    system "cp #{CREW_DEST_PREFIX}/etc/multitail.conf.new #{CREW_DEST_HOME}/.multitail.conf"
     system "cp #{CREW_DEST_PREFIX}/etc/multitail.conf.new $HOME/.multitail.conf"
   end
 
