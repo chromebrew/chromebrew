@@ -113,7 +113,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-9be21cba1efa41530b1d88b3a12dc25f.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-fd93c2e97637f00d264a94602ac14712.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -426,6 +426,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/tidal.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/unext_jp.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/vg_no.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/vivaldia_games.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/vivaldi_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/vivaldi_game.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/vivaldi_net.png
@@ -722,6 +723,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_uk_telegraph.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_uz_gazeta.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_vi_24hnews.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_vivaldia_games.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_vivaldi_community.gif
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_vivaldi_community.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_vivaldi_game.png
