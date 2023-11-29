@@ -91,7 +91,7 @@ end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man')
-CREW_LIB_PATH         = File.join(CREW_PREFIX, 'lib/crew/')
+CREW_LIB_PATH         = File.join(CREW_PREFIX, 'lib/crew')
 CREW_PACKAGES_PATH    = File.join(CREW_LIB_PATH, 'packages')
 CREW_CONFIG_PATH      = File.join(CREW_PREFIX, 'etc/crew/')
 CREW_META_PATH        = File.join(CREW_CONFIG_PATH, 'meta')

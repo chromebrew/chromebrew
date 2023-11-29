@@ -993,7 +993,7 @@ def build_and_preconfigure(target_dir)
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
-      load "#{CREW_LIB_PATH}lib/musl.rb" if @pkg.is_musl?
+      load "#{CREW_LIB_PATH}/lib/musl.rb" if @pkg.is_musl?
     end
 
     @pkg.in_build = true

@@ -30,7 +30,7 @@ class Musl_wolfssl < Package
   is_static
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "#{MUSL_ENV_OPTIONS} ./autogen.sh"
     system "#{MUSL_ENV_OPTIONS} ./configure \
     --prefix=#{CREW_MUSL_PREFIX} \

@@ -28,7 +28,7 @@ class Musl_xz < Package
   is_static
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system 'NOCONFIGURE=1 ./autogen.sh --no-po4a'
     system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \
       --libdir=#{CREW_MUSL_PREFIX}/lib \
