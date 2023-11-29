@@ -214,13 +214,13 @@ def set_package(pkgName, pkgPath)
 end
 
 def list_packages
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     print_package filename
   end
 end
 
 def list_available
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName      = File.basename(filename, '.rb')
     filelist     = File.join(CREW_META_PATH, "#{pkgName}.filelist")
     notInstalled = !File.file?(filelist)
@@ -259,7 +259,7 @@ def list_installed
 end
 
 def list_compatible(compat = true)
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
       if compat
@@ -278,7 +278,7 @@ end
 def generate_compatible
   puts 'Generating compatible packages...'.orange if @opt_verbose
   @device[:compatible_packages] = []
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     begin
       set_package pkgName, filename
@@ -317,11 +317,11 @@ end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir["#{CREW_PACKAGES_PATH}*.rb"] \
+  results = Dir["#{CREW_PACKAGES_PATH}/*.rb"] \
             .select  { |f| File.basename(f, '.rb') =~ re } \
             .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |packagePath|
+    Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
       begin
         set_package packageName, packagePath
