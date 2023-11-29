@@ -79,9 +79,9 @@ class Gdb < Package
     conflict_packages.each do |package|
       file = File.read("#{CREW_META_PATH}#{package}.filelist")
       file.each_line do |line|
-        if File.exist?("#{CREW_DEST_DIR}#{line}")
-          FileUtils.rm_f "#{CREW_DEST_DIR}#{line}"
-          puts "Removed #{CREW_DEST_DIR}#{line}"
+        if File.exist?("#{CREW_DEST_DIR}/#{line}")
+          FileUtils.rm_f "#{CREW_DEST_DIR}/#{line}"
+          puts "Removed #{CREW_DEST_DIR}/#{line}"
         end
       end
     end

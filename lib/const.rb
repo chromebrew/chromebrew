@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.40.1'
+CREW_VERSION = '1.40.2'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -96,7 +96,7 @@ CREW_PACKAGES_PATH    = File.join(CREW_LIB_PATH, 'packages/')
 CREW_CONFIG_PATH      = File.join(CREW_PREFIX, 'etc/crew/')
 CREW_META_PATH        = File.join(CREW_CONFIG_PATH, 'meta/')
 CREW_BREW_DIR         = File.join(CREW_PREFIX, 'tmp/crew/')
-CREW_DEST_DIR         = File.join(CREW_BREW_DIR, 'dest/')
+CREW_DEST_DIR         = File.join(CREW_BREW_DIR, 'dest')
 CREW_WINE_PREFIX      = File.join(CREW_LIB_PREFIX, 'wine/')
 CREW_DEST_PREFIX      = File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  = File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)

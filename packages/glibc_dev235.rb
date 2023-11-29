@@ -36,7 +36,7 @@ class Glibc_dev235 < Package
     @filelist.each do |filename|
       next if filename.include?('.so') || filename.include?('bin/')
 
-      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
+      @destpath = File.join(CREW_DEST_DIR, filename)
       # next unless File.file?(filename)
 
       @filename_target = File.realpath(filename)
