@@ -252,7 +252,7 @@ def list_installed
     end
     print "\n"
   else
-    Dir["#{CREW_META_PATH}*.directorylist"].map do |f|
+    Dir["#{CREW_META_PATH}/*.directorylist"].map do |f|
       File.basename(f, '.directorylist').lightgreen
     end
   end
@@ -263,7 +263,7 @@ def list_compatible(compat = true)
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
       if compat
-        if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
+        if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
           puts pkgName.lightgreen
         else
           puts pkgName
@@ -1067,15 +1067,15 @@ end
 def determine_conflicts(dir, pkg)
   conflicts = []
   if File.file?("#{dir}/filelist")
-    if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+    if File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
       puts 'Checking for conflicts with files from installed packages...'.orange
-      conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
+      conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}/*.filelist`
       conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
       conflicts.reject!(&:empty?)
     end
-  elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+  elsif File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
     puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
-    conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
+    conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{File.join(CREW_META_PATH, "#{pkg}.filelist")} #{CREW_META_PATH}/*.filelist`
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end
@@ -1387,8 +1387,8 @@ def install_package(pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', "#{CREW_META_PATH}#{@pkg.name}.directorylist", verbose: @fileutils_verbose
-    FileUtils.mv 'filelist', "#{CREW_META_PATH}#{@pkg.name}.filelist", verbose: @fileutils_verbose
+    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: @fileutils_verbose
+    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: @fileutils_verbose
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       @brokensymlinks = nil
@@ -1692,7 +1692,7 @@ end
 
 def remove(pkgName)
   # make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?(File.join(CREW_META_PATH, "#{pkgName}.filelist"))
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
@@ -1717,7 +1717,7 @@ def remove(pkgName)
   conflicts = determine_conflicts(Dir.pwd, pkgName)
 
   # if the filelist exists, remove the files and directories installed by the package
-  if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  if File.file?(File.join(CREW_META_PATH, "#{pkgName}.filelist"))
     Dir.chdir CREW_CONFIG_PATH do
       # remove all files installed by the package
       File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
