@@ -27,7 +27,7 @@ class Musl_libucontext < Package
   is_static
 
   def self.patch
-    load "#{CREW_LIB_PATH}/lib/musl.rb"
+    load "#{CREW_LIB_PATH}lib/musl.rb"
     system "sed -i 's,LIBDIR := /lib,LIBDIR := #{CREW_MUSL_PREFIX}/lib,g' Makefile"
     system "sed -i 's,INCLUDEDIR := /usr/include,INCLUDEDIR := #{CREW_MUSL_PREFIX}/include,g' Makefile"
     system "sed -i 's,PKGCONFIGDIR := /usr/lib/pkgconfig,PKGCONFIGDIR := #{CREW_MUSL_PREFIX}/lib/pkgconfig,g' Makefile"

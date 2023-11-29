@@ -28,7 +28,7 @@ class Musl_libbacktrace < Package
   depends_on 'musl_native_toolchain' => :build
 
   def self.build
-    load "#{CREW_LIB_PATH}/lib/musl.rb"
+    load "#{CREW_LIB_PATH}lib/musl.rb"
     system "./configure --prefix=#{CREW_MUSL_PREFIX} \
       #{MUSL_ENV_OPTIONS} \
       --enable-shared \

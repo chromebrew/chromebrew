@@ -50,7 +50,7 @@ class Llvm16_dev < Package
         next
       end
 
-      @destpath = File.join(CREW_DEST_DIR, filename)
+      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end

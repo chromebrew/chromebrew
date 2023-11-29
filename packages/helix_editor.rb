@@ -45,7 +45,7 @@ class Helix_editor < Package
     FileUtils.install ".#{@build_folder_suffix}/hx", helix_executable_dest_dir.to_s, mode: 0o755
     # Copy runtime dir (without the sources)
     FileUtils.rm_rf './runtime/grammars/sources' # remove the sources
-    helix_runtime_dest_dir = File.join(CREW_DEST_DIR, @helix_runtime_dir)
+    helix_runtime_dest_dir = "#{CREW_DEST_DIR}#{@helix_runtime_dir}"
     FileUtils.mkdir_p helix_runtime_dest_dir.to_s
     FileUtils.cp_r './runtime', helix_runtime_dest_dir.to_s
   end

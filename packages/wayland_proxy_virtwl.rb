@@ -35,7 +35,7 @@ class Wayland_proxy_virtwl < Package
       # ld.gold breaks logs 0.7.0 builds with ocaml 4.1.2
       FileUtils.cp "#{CREW_PREFIX}/bin/ld.bfd", "#{CREW_DEST_PREFIX}/bin/ld"
     end
-    system "PATH=#{CREW_DEST_PREFIX}/bin:$PATH OPAMROOT=#{@OPAMROOT} opam install . --root=#{@OPAMROOT} --destdir=#{File.join(CREW_DEST_DIR, @OPAMROOT)} -y"
+    system "PATH=#{CREW_DEST_PREFIX}/bin:$PATH OPAMROOT=#{@OPAMROOT} opam install . --root=#{@OPAMROOT} --destdir=#{CREW_DEST_DIR}#{@OPAMROOT} -y"
     FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/ld"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_s '../share/opam/bin/wayland-proxy-virtwl', 'wayland-proxy-virtwl'

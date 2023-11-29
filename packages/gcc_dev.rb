@@ -47,7 +47,7 @@ class Gcc_dev < Package
     @filelist.each do |filename|
       next if filename.include?('.so') && !filename.include?('libgccjit')
 
-      @destpath = File.join(CREW_DEST_DIR, filename)
+      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end

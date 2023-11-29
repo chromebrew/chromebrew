@@ -214,13 +214,13 @@ def set_package(pkgName, pkgPath)
 end
 
 def list_packages
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     print_package filename
   end
 end
 
 def list_available
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     pkgName      = File.basename(filename, '.rb')
     filelist     = File.join(CREW_META_PATH, "#{pkgName}.filelist")
     notInstalled = !File.file?(filelist)
@@ -252,18 +252,18 @@ def list_installed
     end
     print "\n"
   else
-    Dir["#{CREW_META_PATH}/*.directorylist"].map do |f|
+    Dir["#{CREW_META_PATH}*.directorylist"].map do |f|
       File.basename(f, '.directorylist').lightgreen
     end
   end
 end
 
 def list_compatible(compat = true)
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
       if compat
-        if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
+        if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
           puts pkgName.lightgreen
         else
           puts pkgName
@@ -278,7 +278,7 @@ end
 def generate_compatible
   puts 'Generating compatible packages...'.orange if @opt_verbose
   @device[:compatible_packages] = []
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     begin
       set_package pkgName, filename
@@ -294,7 +294,7 @@ def generate_compatible
       puts "#{pkgName} is not a compatible package.".lightred
     end
   end
-  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
+  File.open("#{CREW_CONFIG_PATH}device.json", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
@@ -317,11 +317,11 @@ end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir["#{CREW_PACKAGES_PATH}/*.rb"] \
+  results = Dir["#{CREW_PACKAGES_PATH}*.rb"] \
             .select  { |f| File.basename(f, '.rb') =~ re } \
             .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |packagePath|
+    Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
       begin
         set_package packageName, packagePath
@@ -993,7 +993,7 @@ def build_and_preconfigure(target_dir)
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
-      load "#{CREW_LIB_PATH}/lib/musl.rb" if @pkg.is_musl?
+      load "#{CREW_LIB_PATH}lib/musl.rb" if @pkg.is_musl?
     end
 
     @pkg.in_build = true
@@ -1067,15 +1067,15 @@ end
 def determine_conflicts(dir, pkg)
   conflicts = []
   if File.file?("#{dir}/filelist")
-    if File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
+    if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
       puts 'Checking for conflicts with files from installed packages...'.orange
-      conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}/*.filelist`
+      conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
       conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
       conflicts.reject!(&:empty?)
     end
-  elsif File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
+  elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
     puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
-    conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{File.join(CREW_META_PATH, "#{pkg}.filelist")} #{CREW_META_PATH}/*.filelist`
+    conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end
@@ -1387,8 +1387,8 @@ def install_package(pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: @fileutils_verbose
-    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: @fileutils_verbose
+    FileUtils.mv 'dlist', "#{CREW_META_PATH}#{@pkg.name}.directorylist", verbose: @fileutils_verbose
+    FileUtils.mv 'filelist', "#{CREW_META_PATH}#{@pkg.name}.filelist", verbose: @fileutils_verbose
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       @brokensymlinks = nil
@@ -1572,7 +1572,7 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp"
+  FileUtils.cp "#{CREW_CONFIG_PATH}device.json", "#{CREW_CONFIG_PATH}device.json.tmp"
 
   # remove it just before the file copy
   if @pkg.in_upgrade
@@ -1595,13 +1595,13 @@ def install
 
   # add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256(@device[:architecture]))
-  File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
+  File.open("#{CREW_CONFIG_PATH}device.json.tmp", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
   # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
-  FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
+  FileUtils.cp "#{CREW_CONFIG_PATH}device.json.tmp", "#{CREW_CONFIG_PATH}device.json"
+  FileUtils.rm "#{CREW_CONFIG_PATH}device.json.tmp"
 end
 
 def resolve_dependencies_and_build
@@ -1692,7 +1692,7 @@ end
 
 def remove(pkgName)
   # make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?(File.join(CREW_META_PATH, "#{pkgName}.filelist"))
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
@@ -1717,7 +1717,7 @@ def remove(pkgName)
   conflicts = determine_conflicts(Dir.pwd, pkgName)
 
   # if the filelist exists, remove the files and directories installed by the package
-  if File.file?(File.join(CREW_META_PATH, "#{pkgName}.filelist"))
+  if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
     Dir.chdir CREW_CONFIG_PATH do
       # remove all files installed by the package
       File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|

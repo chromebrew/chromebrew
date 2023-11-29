@@ -29,7 +29,7 @@ class Musl_perl < Package
   depends_on 'musl_bz2' => :build
 
   def self.build
-    load "#{CREW_LIB_PATH}/lib/musl.rb"
+    load "#{CREW_LIB_PATH}lib/musl.rb"
     # Install manual files into #{CREW_MUSL_PREFIX}/share/man/man* even if groff is not installed.
     system "#{MUSL_ENV_OPTIONS} \
       ./Configure \
@@ -88,7 +88,7 @@ EOF'
     FileUtils.ln_sf "#{CREW_MUSL_PREFIX}/lib/libnsl.so.1", "#{CREW_DEST_MUSL_PREFIX}/lib/libnsl.so"
     system "install -Dm755 cpanm #{CREW_DEST_MUSL_PREFIX}/bin/cpanm"
     Dir.chdir(CREW_DEST_MUSL_PREFIX) do
-      load "#{CREW_LIB_PATH}/lib/musl.rb"
+      load "#{CREW_LIB_PATH}lib/musl.rb"
       Musl.patchelf
     end
   end

@@ -28,7 +28,7 @@ class Musl_brotli < Package
   is_static
 
   def self.build
-    load "#{CREW_LIB_PATH}/lib/musl.rb"
+    load "#{CREW_LIB_PATH}lib/musl.rb"
     FileUtils.mkdir('builddir')
     Dir.chdir('builddir') do
       system "#{MUSL_CMAKE_OPTIONS} \

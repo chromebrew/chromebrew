@@ -1,7 +1,7 @@
 ENV['CREW_DISABLE_ENV_OPTIONS'] = '1'
 warn_level = $VERBOSE
 $VERBOSE = nil
-load "#{CREW_LIB_PATH}/lib/const.rb"
+load "#{CREW_LIB_PATH}lib/const.rb"
 # Defines common musl build constants used in musl builds
 MUSL_ARCH_SSP_CFLAGS = ''
 MUSL_ARCH_C_FLAGS = ''
