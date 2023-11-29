@@ -3,23 +3,23 @@ require 'package'
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '17.0.5'
+  version '17.0.6'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.5_armv7l/llvm17_build-17.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.5_armv7l/llvm17_build-17.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.5_i686/llvm17_build-17.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.5_x86_64/llvm17_build-17.0.5-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_i686/llvm17_build-17.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_x86_64/llvm17_build-17.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dc3d4ec4368b2117b4c55a81127b826d2639056c5b6fb3dbf2452e94a763b86f',
-     armv7l: 'dc3d4ec4368b2117b4c55a81127b826d2639056c5b6fb3dbf2452e94a763b86f',
-       i686: '4acbc53da656fa4f1607a29146e577a90a87ed93a0a94861e577d90f21044f8a',
-     x86_64: '08184f1b59366c4217b75bd6966c8e1dc77498af248730626adbc4cd6ecadb67'
+    aarch64: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
+     armv7l: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
+       i686: 'ac38487519bf7b3646e4da173cab22d1a8a3966f66a2a4ab20ab00230a1ddd2c',
+     x86_64: 'b7e8797a0d0b7003c6a14749b83e339a92d58aaa66bb120e7b211d9bb03dfa59'
   })
 
   depends_on 'ccache' => :build
