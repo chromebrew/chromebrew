@@ -3,23 +3,23 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.27.8'
+  version '3.27.9'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_armv7l/cmake-3.27.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_armv7l/cmake-3.27.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_i686/cmake-3.27.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.8_x86_64/cmake-3.27.8-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.9_armv7l/cmake-3.27.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.9_armv7l/cmake-3.27.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.9_i686/cmake-3.27.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.27.9_x86_64/cmake-3.27.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1ced511da84c596faf36c533a9ca472145e780d6ab6b0fecc51f70eda073c835',
-     armv7l: '1ced511da84c596faf36c533a9ca472145e780d6ab6b0fecc51f70eda073c835',
-       i686: 'c33b0de21ae2c5b8a81f77183199a608c92c30eda7fd1042e32157161947ec8a',
-     x86_64: '443d9d3c93c749bfa854aebe8d209d44e15a56501e1fe65c96dbcd4ff64cae10'
+    aarch64: 'c2596e58ace280661656d53a25175ccc6bef87398621f73fb9b491466652d277',
+     armv7l: 'c2596e58ace280661656d53a25175ccc6bef87398621f73fb9b491466652d277',
+       i686: '192ac2969f88c4e4d00a21dd3f55316ef85ffb50256fee206001edcd746caa75',
+     x86_64: 'b857245ca262a7104f13fd8ee4f9047e91b4d9a6c4b7fbbedd6bdc0a511aaece'
   })
 
   depends_on 'bzip2' => :build
