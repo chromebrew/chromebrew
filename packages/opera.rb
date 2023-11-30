@@ -3,14 +3,14 @@ require 'package'
 class Opera < Package
   description 'Opera is a multi-platform web browser based on Chromium and developed by Opera Software.'
   homepage 'https://www.opera.com/'
-  version '105.0.4970.21'
+  version '105.0.4970.29'
   license 'OPERA-2018'
   compatibility 'x86_64'
 
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
   source_url "https://get.opera.com/pub/opera/desktop/#{version}/linux/opera-stable_#{version}_amd64.deb"
-  source_sha256 '7e06d1eea01629a660c4c78ca35fe57bc835ff34a84e5fb988825e2a5d517376'
+  source_sha256 '771b3744dad77839161b8ab8cf2786620c4d57d641144b4720ac8507bf1b06aa'
 
   depends_on 'gtk3'
   depends_on 'gsettings_desktop_schemas'
@@ -21,6 +21,13 @@ class Opera < Package
 
   no_compile_needed
   no_shrink
+
+  def self.preflight
+    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
+      puts "\nOpera requires GLIBC 2.29 and above.".lightred
+      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
+    end
+  end
 
   def self.install
     # Since opera puts the executable in a location that is not in the path,
