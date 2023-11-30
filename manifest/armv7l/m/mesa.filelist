@@ -8,6 +8,7 @@
 /usr/local/lib/dri/armada-drm_dri.so
 /usr/local/lib/dri/etnaviv_dri.so
 /usr/local/lib/dri/exynos_dri.so
+/usr/local/lib/dri/hdlcd_dri.so
 /usr/local/lib/dri/hx8357d_dri.so
 /usr/local/lib/dri/ili9225_dri.so
 /usr/local/lib/dri/ili9341_dri.so
