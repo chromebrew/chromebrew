@@ -1445,6 +1445,11 @@ url: https://github.com/gdraheim/docker-systemctl-replacement/releases
 activity: low
 ---
 kind: url
+name: doctl
+url: https://github.com/digitalocean/doctl/releases
+activity: medium
+---
+kind: url
 name: docx2txt
 url: https://sourceforge.net/projects/docx2txt/files/docx2txt/
 activity: none
