@@ -8271,6 +8271,11 @@ url: https://github.com/nvbn/thefuck/releases
 activity: medium
 ---
 kind: url
+name: thorium
+url: https://github.com/Alex313031/thorium/releases
+activity: medium
+---
+kind: url
 name: thunar
 url: https://archive.xfce.org/src/xfce/thunar/
 activity: medium
