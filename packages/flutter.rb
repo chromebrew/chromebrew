@@ -41,7 +41,7 @@ class Flutter < Package
       case response
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        FileUtils.rm_f "#{HOME}/.flutter_tool_state
+        FileUtils.rm_f "#{HOME}/.flutter_tool_state"
         puts "#{config_dir} removed.".lightred
       else
         puts "#{config_dir} saved.".lightgreen
