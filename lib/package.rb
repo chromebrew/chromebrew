@@ -147,7 +147,7 @@ class Package
 
   def self.compatible?
     if @compatibility
-      return (@compatibility.casecmp?('all') || @compatibility.include?(ARCH))
+      return @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
     else
       warn "#{name}: Missing `compatibility` field.".lightred
       return false
@@ -223,7 +223,7 @@ class Package
   def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
   def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.is_binary?(architecture) = (!@build_from_source && @binary_url && @binary_url.key?(architecture))
+  def self.is_binary?(architecture) = !@build_from_source && @binary_url && @binary_url.key?(architecture)
   def self.is_source?(architecture) = !(is_binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
