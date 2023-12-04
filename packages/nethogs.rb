@@ -1,33 +1,32 @@
 require 'package'
 
 class Nethogs < Package
-  description "NetHogs is a small 'net top' tool."
+  description "Linux 'net top' tool"
   homepage 'https://github.com/raboof/nethogs'
-  version '0.8.6'
+  version '0.8.7'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/raboof/nethogs/archive/v0.8.6.tar.gz'
-  source_sha256 '317c1d5235d4be677e494e931c41d063a783ac0ac51e35e345e621d261c2e5a0'
+  source_url 'https://github.com/raboof/nethogs.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.6_armv7l/nethogs-0.8.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.6_armv7l/nethogs-0.8.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.6_i686/nethogs-0.8.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.6_x86_64/nethogs-0.8.6-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.7_armv7l/nethogs-0.8.7-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.7_armv7l/nethogs-0.8.7-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.7_i686/nethogs-0.8.7-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nethogs/0.8.7_x86_64/nethogs-0.8.7-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '60471aea008d2c85e0cbd5986830141c8aa0bdf81d7543fc8d14f002efbdf719',
-     armv7l: '60471aea008d2c85e0cbd5986830141c8aa0bdf81d7543fc8d14f002efbdf719',
-       i686: '75c9da9bc2d40133aff0293346065412360f83cbe378c4f4d4bbab144292e3b2',
-     x86_64: '420ed356066fa1c0593778999c2037adcb85988e226833753dd812e62b9b7632'
+    aarch64: '8a8b4e25bd6fd1a3df1d9fb9c0376332b76b5276b36f22a2f87fe0747e8c6d24',
+     armv7l: '8a8b4e25bd6fd1a3df1d9fb9c0376332b76b5276b36f22a2f87fe0747e8c6d24',
+       i686: '5701e00bfea5af2b08ab7115db03b579306a3cba427fb3680c6f6d501c9d635c',
+     x86_64: '372a053ebcf2cee7e02f0ae832b9e4744ad25c5d248fad429daef55015ecea30'
   })
 
+  depends_on 'ncurses'
   depends_on 'libpcap'
 
   def self.build
-    ENV['PREFIX'] = CREW_PREFIX
-    ENV['CPPFLAGS'] = "-I#{CREW_PREFIX}/include/ncursesw"
-    system 'make'
+    system "PREFIX=#{CREW_PREFIX} CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw' make"
   end
 
   def self.install
