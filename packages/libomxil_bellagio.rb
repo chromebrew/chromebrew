@@ -24,7 +24,7 @@ class Libomxil_bellagio < Package
 
   def self.build
     system './configure', "--prefix=#{CREW_PREFIX}", "--libdir=#{CREW_LIB_PREFIX}"
-    system 'make', '-j1', 'CFLAGS=-Wno-error=switch'    # only -j1 possible (tested on armv7l)
+    system 'make', '-j1', 'CFLAGS=-Wno-error=switch' # only -j1 possible (tested on armv7l)
   end
 
   def self.install

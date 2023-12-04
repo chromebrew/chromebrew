@@ -1771,7 +1771,7 @@ def print_deps_tree(args)
   warn 'Walking through dependencies recursively, this may take a while...', ''
 
   # depHash: Hash object returned by @pkg.get_deps_list
-  depHash = @pkg.get_deps_list(hash: true, include_build_deps: (args['--include-build-deps'] || 'auto'), exclude_buildessential: args['--exclude-buildessential'])
+  depHash = @pkg.get_deps_list(hash: true, include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
 
   # convert returned hash to json and format it
   jsonView = JSON.pretty_generate(depHash)
@@ -1871,7 +1871,7 @@ def deps_command(args)
       print_deps_tree(args)
     else
       # print dependencies according to the install order if --tree is not specified
-      puts @pkg.get_deps_list(include_build_deps: (args['--include-build-deps'] || 'auto'), exclude_buildessential: args['--exclude-buildessential'])
+      puts @pkg.get_deps_list(include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
     end
   end
 end
