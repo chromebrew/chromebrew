@@ -3,11 +3,11 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '119.0.2151.72-1'
+  version '119.0.2151.97-1'
   compatibility 'x86_64'
   license 'MIT'
-  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_119.0.2151.72-1_amd64.deb'
-  source_sha256 'b61071ffeead84d5d72a9a40d7520e1b9122331ee903d140def4a4c1af7e174a'
+  source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_119.0.2151.97-1_amd64.deb'
+  source_sha256 '504224d2e893d6c963c2fa5231c4877566fe5bf26f7154f2c718dd66e3bfca7d'
 
   depends_on 'at_spi2_core'
   depends_on 'libcom_err'
@@ -17,6 +17,13 @@ class Edge < Package
 
   no_compile_needed
   no_shrink
+
+  def self.preflight
+    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
+      puts "\nEdge requires GLIBC 2.29 and above.".lightred
+      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
+    end
+  end
 
   def self.patch
     # Make sure the executable path is correct.
