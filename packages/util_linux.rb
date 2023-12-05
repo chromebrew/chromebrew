@@ -3,23 +3,23 @@ require 'package'
 class Util_linux < Package
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version '2.39.2-py3.12'
+  version '2.39.3-py3.12'
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.2.tar.xz'
-  source_sha256 '87abdfaa8e490f8be6dde976f7c80b9b5ff9f301e1b67e3899e1f05a59a1531f'
+  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz'
+  source_sha256 '7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.2-py3.12_armv7l/util_linux-2.39.2-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.2-py3.12_armv7l/util_linux-2.39.2-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.2-py3.12_i686/util_linux-2.39.2-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.2-py3.12_x86_64/util_linux-2.39.2-py3.12-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_armv7l/util_linux-2.39.3-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_armv7l/util_linux-2.39.3-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_i686/util_linux-2.39.3-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_x86_64/util_linux-2.39.3-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '35acf85706ecc5fdc3fefcf165042d880a9b8c7a0a4e81eae205ce922c28d30e',
-     armv7l: '35acf85706ecc5fdc3fefcf165042d880a9b8c7a0a4e81eae205ce922c28d30e',
-       i686: '191eb6130e80862c29f56eb8834cc07a962156445cc920f298e96c7e3176aaff',
-     x86_64: '3b6d221adae7b6533e3f586e28ecabc4d7fee6472e220b190a87b8c623961d75'
+    aarch64: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
+     armv7l: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
+       i686: '082eca25c5a7c714bdfbb906952ecf948458ce1a93edc47a140b6ca9024e4304',
+     x86_64: '23c2ea99c198e5bc5af485b4f090f1257355df07a2e5f32858250c45b7af76e3'
   })
 
   depends_on 'bzip2' # R
