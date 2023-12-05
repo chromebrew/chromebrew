@@ -1,28 +1,28 @@
 # Adapted from Arch Linux gdb PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/gdb/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Gdb < Package
+class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '13.2-py3.11'
+  version '14.1-py3.12'
   license 'GPL3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/gdb/gdb-13.2.tar.xz'
-  source_sha256 'fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a'
+  source_url 'https://ftpmirror.gnu.org/gnu/gdb/gdb-14.1.tar.xz'
+  source_sha256 'd66df51276143451fcbff464cc8723d68f1e9df45a6a2d5635a54e71643edb80'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/13.2-py3.11_armv7l/gdb-13.2-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/13.2-py3.11_armv7l/gdb-13.2-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/13.2-py3.11_i686/gdb-13.2-py3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/13.2-py3.11_x86_64/gdb-13.2-py3.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_armv7l/gdb-14.1-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_armv7l/gdb-14.1-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_i686/gdb-14.1-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_x86_64/gdb-14.1-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'dcd1c83d33b476f72819f88309957e4885222257286af38d6278bf435ac3b112',
-     armv7l: 'dcd1c83d33b476f72819f88309957e4885222257286af38d6278bf435ac3b112',
-       i686: 'f443297dca5d7e247d6e423b3cfc8bab778ddca02de58fec7ddc36aeed762d45',
-     x86_64: '5e55256a5cea3c1f4954900e3b59c99f150d22ebd67b3c499a75a896017dedaf'
+    aarch64: '480f63771ac9e063bcd8a09c7033381c5a974a817cb12d89b22bddde0353ff33',
+     armv7l: '480f63771ac9e063bcd8a09c7033381c5a974a817cb12d89b22bddde0353ff33',
+       i686: 'b406ce513112710967880cf65bdaaede2e25770df312dbc840c0b5b88d24ff9f',
+     x86_64: '9af9831acd85d87b5451cc33fca809d81a4e8979c956a1faa21222049ec843e8'
   })
 
   depends_on 'binutils' # R
@@ -42,14 +42,19 @@ class Gdb < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
+  conflicts_ok # binutils conflicts
+
   def self.build
+    @x = ARCH == 'i686' ? '' : '--with-x'
     FileUtils.mkdir_p 'build'
     Dir.chdir('build') do
-      system "CPPFLAGS='-I#{CREW_PREFIX}/include/ncursesw  -lncursesw' \
-        ../configure \
+      system "../configure \
         #{CREW_OPTIONS} \
+        --disable-binutils \
+        --disable-ld \
         --disable-nls \
         --enable-64-bit-bfd \
+        --enable-install-libbfd \
         --enable-host-shared \
         --enable-lto \
         --enable-shared \
@@ -63,27 +68,20 @@ class Gdb < Package
         --with-system-gdbinit=#{CREW_PREFIX}/etc/gdb/gdbinit \
         --with-system-readline \
         --with-system-zlib \
-        --with-x"
+        #{@x}"
       system 'make'
     end
   end
 
   def self.install
     Dir.chdir('build') do
+      # Handle missing libopcodes
+      # https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/merge_requests/13697/diffs
       system "make -C gdb DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C opcodes DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C bfd DESTDIR=#{CREW_DEST_DIR} install"
+      system "make -C gdb/data-directory DESTDIR=#{CREW_DEST_DIR} install"
       system "make -C gdbserver DESTDIR=#{CREW_DEST_DIR} install"
-    end
-    # Remove files conflicting with binutils
-    FileUtils.rm_f "#{CREW_DEST_PREFIX}/share/info/bfd.info"
-    conflict_packages = %w[binutils]
-    conflict_packages.each do |package|
-      file = File.read(File.join(CREW_META_PATH, "#{package}.filelist"))
-      file.each_line do |line|
-        if File.exist?("#{CREW_DEST_DIR}/#{line}")
-          FileUtils.rm_f "#{CREW_DEST_DIR}/#{line}"
-          puts "Removed #{CREW_DEST_DIR}/#{line}"
-        end
-      end
     end
     FileUtils.rm_f "#{CREW_DEST_LIB_PREFIX}/libinproctrace.so"
   end
