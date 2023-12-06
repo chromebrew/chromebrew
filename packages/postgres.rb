@@ -3,40 +3,45 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '16.0'
+  version '16.1'
   license 'PostgreSQL and GPL-2'
   compatibility 'all'
-  source_url 'https://ftp.postgresql.org/pub/source/v16.0/postgresql-16.0.tar.bz2'
-  source_sha256 'df9e823eb22330444e1d48e52cc65135a652a6fdb3ce325e3f08549339f51b99'
+  source_url 'https://ftp.postgresql.org/pub/source/v16.1/postgresql-16.1.tar.bz2'
+  source_sha256 'ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_armv7l/postgres-16.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_armv7l/postgres-16.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_i686/postgres-16.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.0_x86_64/postgres-16.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.1_armv7l/postgres-16.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.1_armv7l/postgres-16.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.1_i686/postgres-16.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/postgres/16.1_x86_64/postgres-16.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8afed5edc4f2a481063478cf88ddbb4f3d7e1624a7490316d159f33598fde425',
-     armv7l: '8afed5edc4f2a481063478cf88ddbb4f3d7e1624a7490316d159f33598fde425',
-       i686: 'bdaeb4c338f81ccb5f0bb7df6c9a54e12e8d855bb365f6adcfd21fcfe6eb06bd',
-     x86_64: 'ec76b05bcfc8cdb797563ec2695073f31fee64c6574e4e8cbfc5aa9272694e2f'
+    aarch64: 'b4b1f8792cbf30805033648567e0a4a873a1ab14fa32260466e714b11e12d72e',
+     armv7l: 'b4b1f8792cbf30805033648567e0a4a873a1ab14fa32260466e714b11e12d72e',
+       i686: '501a3a528759ce1a8ed341f9e8099ca26c591274cb7764907dbb5ba04cb629dd',
+     x86_64: '65d915bea48812de8ae2f5aa16bb280b34edd082e60478a34ad8eddb80a29b6a'
   })
 
-  depends_on 'brotli'
-  depends_on 'expat'
-  depends_on 'icu4c'
-  depends_on 'krb5'
-  depends_on 'libcyrussasl'
-  depends_on 'libxml2'
-  depends_on 'linux_pam'
+  depends_on 'brotli' => :build
+  depends_on 'expat' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' => :build
+  depends_on 'libxml2' # R
+  depends_on 'linux_pam' # R
   depends_on 'llvm17_dev' => :build
-  depends_on 'llvm16_lib'
-  depends_on 'lz4'
-  depends_on 'openldap'
-  depends_on 'perl'
-  depends_on 'python3'
-  depends_on 'tcl'
-  depends_on 'zstd'
+  depends_on 'llvm17_lib' # R
+  depends_on 'lz4' # R
+  depends_on 'openldap' # R
+  depends_on 'openssl' # R
+  depends_on 'perl' # R
+  depends_on 'python3' # R
+  depends_on 'readline' # R
+  depends_on 'tcl' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   print_source_bashrc
 
