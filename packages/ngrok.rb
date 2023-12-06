@@ -3,7 +3,7 @@ require 'package'
 class Ngrok < Package
   description 'ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.'
   homepage 'https://ngrok.com/'
-  version '3.1.0'
+  version '3.4.0'
   license 'Copyright (c) 2015 by Alan Shreve' # Source code not available
   compatibility 'all'
   source_url({
@@ -13,13 +13,14 @@ class Ngrok < Package
      x86_64: 'https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz'
   })
   source_sha256({
-    aarch64: 'e0bf8908b9952f98137082bfa5724a7f0f275a98adf86e782c8d6a08fc08c103',
-     armv7l: 'e0bf8908b9952f98137082bfa5724a7f0f275a98adf86e782c8d6a08fc08c103',
-       i686: '665975464823b4f0d7a4527b6d90b3be3d1116b5c70d0a1f3fc1bd6e5ab50adc',
-     x86_64: '7386d7af1eb115a6e6bec4b98105f08a4c6edd42d85aae341e80a84be8f04637'
+    aarch64: 'c16b2408a967917aa4d3daa8f14f923ded71c5004fdc27411c06a26413f4906a',
+     armv7l: 'c16b2408a967917aa4d3daa8f14f923ded71c5004fdc27411c06a26413f4906a',
+       i686: 'c817db35544f0572c73cf43eb1a7dd0ebde54d838d95a541e8732f04c9d0e8f8',
+     x86_64: '8b6040b5e35dab4624e4206850d944db385386bde0c0f834077f7ce04cc10387'
   })
 
   no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
