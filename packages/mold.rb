@@ -6,23 +6,23 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.3.3'
+  version '2.4.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.3_armv7l/mold-2.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.3_armv7l/mold-2.3.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.3_i686/mold-2.3.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.3_x86_64/mold-2.3.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_i686/mold-2.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_x86_64/mold-2.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '56eca39b06a0e02ba693699b9c5acbdd524401015eba7b83ad6d28ea43c80290',
-     armv7l: '56eca39b06a0e02ba693699b9c5acbdd524401015eba7b83ad6d28ea43c80290',
-       i686: 'd18847b03499b3709d6324de9f25b7ad00f550c915bac56d737d41ed8c2d372a',
-     x86_64: '9ce8af39c4ef8f1f82dd9100aac759b0dea7106048c3b1e053a1fbcc11381a87'
+    aarch64: '0bce500014118f5d55dad3d41a8dbdc8c2806b8203426a15f088f8d2b28e6b88',
+     armv7l: '0bce500014118f5d55dad3d41a8dbdc8c2806b8203426a15f088f8d2b28e6b88',
+       i686: 'c3e6f963dff77a8c1b0466ddb06a7055ba868dfafb524ce99e3e436802d3209a',
+     x86_64: 'ca15ebacc507f7ce643675f1f763a7086b5f507d4f0dbcf6b9fdb31a4f503d50'
   })
 
   depends_on 'gcc_lib' # R
