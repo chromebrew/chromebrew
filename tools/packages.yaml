@@ -7256,6 +7256,11 @@ url: https://invent.kde.org/qt/qt/qtmultimedia/-/tags
 activity: medium
 ---
 kind: url
+name: qt5_networkauth
+url: https://invent.kde.org/qt/qt/qtnetworkauth/-/tags
+activity: medium
+---
+kind: url
 name: qt5_quickcontrols
 url: https://invent.kde.org/qt/qt/qtquickcontrols/-/tags
 activity: medium
@@ -7308,6 +7313,11 @@ activity: medium
 kind: url
 name: qt5_x11extras
 url: https://invent.kde.org/qt/qt/qtx11extras/-/tags
+activity: medium
+---
+kind: url
+name: qt5_xmlpatterns
+url: https://invent.kde.org/qt/qt/qtxmlpatterns/-/tags
 activity: medium
 ---
 kind: url
