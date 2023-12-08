@@ -17,6 +17,6 @@ class Py3_pip < Python
 
   def self.postinstall
     puts 'Updating pip package...'.lightblue
-    system 'pip install -U pip', exception: false
+    system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip', exception: false
   end
 end
