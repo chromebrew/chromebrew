@@ -33,7 +33,7 @@ if [ -f /etc/lsb-release ]; then
     echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
     exit 1
   fi
-  export $(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)
+  export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
