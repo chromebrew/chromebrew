@@ -33,6 +33,7 @@ if [ -f /etc/lsb-release ]; then
     echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
     exit 1
   fi
+  export `grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release`
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
@@ -166,8 +167,7 @@ BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 
-
-if [[ -v "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
   # Append the correct packages for systems running v113 onwards.
   BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
 
