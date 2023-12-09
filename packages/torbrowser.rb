@@ -3,11 +3,11 @@ require 'package'
 class Torbrowser < Package
   description "'The Onion Router' browser"
   homepage 'https://www.torproject.org/'
-  version '12.5.5'
+  version '13.0.6'
   license 'BSD, custom, MPL-2.0 and MIT'
   compatibility 'x86_64'
-  source_url 'https://dist.torproject.org/torbrowser/12.5.5/tor-browser-linux64-12.5.5_ALL.tar.xz'
-  source_sha256 '152d72c26fd42436624983dfd161e29285ffa3a58620ffa5410185783d20d9d7'
+  source_url 'https://dist.torproject.org/torbrowser/13.0.6/tor-browser-linux-x86_64-13.0.6.tar.xz'
+  source_sha256 'ed3f8f244b062207be2493b3e86886f3def59679db40bda37477e574d993e234'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
