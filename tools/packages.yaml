@@ -8476,6 +8476,11 @@ url: https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/
 activity: low
 ---
 kind: url
+name: ugrep
+url: https://github.com/Genivia/ugrep/releases
+activity: high
+---
+kind: url
 name: umockdev
 url: https://github.com/martinpitt/umockdev/releases
 activity: medium
