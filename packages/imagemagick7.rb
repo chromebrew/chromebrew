@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.1.1-21'
+  @_ver = '7.1.1-23'
   version "#{@_ver}-perl5.38"
   license 'imagemagick'
   compatibility 'x86_64 aarch64 armv7l'
@@ -11,14 +11,14 @@ class Imagemagick7 < Autotools
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-21-perl5.38_armv7l/imagemagick7-7.1.1-21-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-21-perl5.38_armv7l/imagemagick7-7.1.1-21-perl5.38-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-21-perl5.38_x86_64/imagemagick7-7.1.1-21-perl5.38-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_x86_64/imagemagick7-7.1.1-23-perl5.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bc6fea71d9dfc086cb5518d4226e05669a341be55abe3921adb89373f075577b',
-     armv7l: 'bc6fea71d9dfc086cb5518d4226e05669a341be55abe3921adb89373f075577b',
-     x86_64: 'a1594d54dd328ac01753b02a3f6e0d92d87e811f779edc33dcd02b8f130d9443'
+    aarch64: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
+     armv7l: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
+     x86_64: '7c0a0c4340d25380efd0fabe2eb92c2b87ce49141b79cf696aaf7be9fc187ecc'
   })
 
   depends_on 'bzip2' # R
