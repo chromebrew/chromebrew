@@ -3,20 +3,20 @@ require 'package'
 class Symfony < Package
   description 'Symfony is a set of PHP Components, a Web Application framework'
   homepage 'https://symfony.com/'
-  version '5.5.10'
+  version '5.7.5'
   license 'AGPL-3.0'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.5.10/symfony-cli_linux_armv6.tar.gz',
-     armv7l: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.5.10/symfony-cli_linux_armv6.tar.gz',
-       i686: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.5.10/symfony-cli_linux_386.tar.gz',
-     x86_64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.5.10/symfony-cli_linux_amd64.tar.gz'
+    aarch64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_armv6.tar.gz',
+     armv7l: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_armv6.tar.gz',
+       i686: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_386.tar.gz',
+     x86_64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_amd64.tar.gz'
   })
   source_sha256({
-    aarch64: '6d42eaf68cb9006a377faf0461fd3078e441d83adebb5a4ae96a7e1c8abf1ca4',
-     armv7l: '6d42eaf68cb9006a377faf0461fd3078e441d83adebb5a4ae96a7e1c8abf1ca4',
-       i686: 'f08dc545bfa311179443fedbd696acd9d0a6aab7297d77e4511e0fd71e8e0dab',
-     x86_64: '6eb8c40f56427f0b00c06df708720429e1f7e06bee8f6902206576460b83707f'
+    aarch64: '00221a0045dfbc980a18bead0c174041f8cbc4f63e4ff3c81d8cf391f353e510',
+     armv7l: '00221a0045dfbc980a18bead0c174041f8cbc4f63e4ff3c81d8cf391f353e510',
+       i686: '79cf4af35cd1da15834b99924f9868ef5d2a27b4749d6c1253d67c5188de540c',
+     x86_64: '584e69add9bcb3bbf0c82c4da626c52924428181c85820a20c7f355e427eccac'
   })
 
   depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
