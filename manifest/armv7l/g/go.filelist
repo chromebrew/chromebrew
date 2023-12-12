@@ -2377,6 +2377,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/mod_domain_root.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_dot.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_concurrent_read.txt
+/usr/local/share/go/src/cmd/go/testdata/script/mod_download_exec_toolchain.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_git_bareRepository.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_git_decorate_full.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_download_hash.txt
@@ -2505,6 +2506,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/mod_init_invalid_major.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_init_path.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_init_tidy.txt
+/usr/local/share/go/src/cmd/go/testdata/script/mod_insecure_issue63845.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_install_hint.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_install_pkg_version.txt
 /usr/local/share/go/src/cmd/go/testdata/script/mod_install_versioned.txt
@@ -7391,6 +7393,7 @@
 /usr/local/share/go/src/path/filepath/match.go
 /usr/local/share/go/src/path/filepath/match_test.go
 /usr/local/share/go/src/path/filepath/path.go
+/usr/local/share/go/src/path/filepath/path_nonwindows.go
 /usr/local/share/go/src/path/filepath/path_plan9.go
 /usr/local/share/go/src/path/filepath/path_test.go
 /usr/local/share/go/src/path/filepath/path_unix.go
@@ -11577,12 +11580,17 @@
 /usr/local/share/go/test/fixedbugs/issue62203.go
 /usr/local/share/go/test/fixedbugs/issue62469.go
 /usr/local/share/go/test/fixedbugs/issue6247.go
+/usr/local/share/go/test/fixedbugs/issue62498.dir/a.go
+/usr/local/share/go/test/fixedbugs/issue62498.dir/main.go
+/usr/local/share/go/test/fixedbugs/issue62498.go
 /usr/local/share/go/test/fixedbugs/issue6269.go
 /usr/local/share/go/test/fixedbugs/issue6295.dir/p0.go
 /usr/local/share/go/test/fixedbugs/issue6295.dir/p1.go
 /usr/local/share/go/test/fixedbugs/issue6295.dir/p2.go
 /usr/local/share/go/test/fixedbugs/issue6295.go
 /usr/local/share/go/test/fixedbugs/issue6298.go
+/usr/local/share/go/test/fixedbugs/issue63657.go
+/usr/local/share/go/test/fixedbugs/issue63955.go
 /usr/local/share/go/test/fixedbugs/issue6399.go
 /usr/local/share/go/test/fixedbugs/issue6402.go
 /usr/local/share/go/test/fixedbugs/issue6403.go
