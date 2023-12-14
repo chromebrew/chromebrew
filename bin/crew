@@ -528,7 +528,7 @@ def help(pkgName = nil)
 end
 
 def cache_build
-  @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+  @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
   if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
     @pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
@@ -777,7 +777,7 @@ def download
   sha256sum = @pkg.get_sha256(@device[:architecture])
   @extract_dir = @pkg.get_extract_dir
 
-  @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+  @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
   return { source:, filename: } if CREW_CACHE_BUILD && File.file?(@build_cachefile)
 
   if !url
@@ -864,14 +864,14 @@ def download
         # No git branch specified, just a git commit or tag
         if @pkg.git_branch.to_s.empty?
           abort('No Git branch, commit, or tag specified!').lightred if @pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
+          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
+          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst"
+          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst"
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
@@ -932,7 +932,7 @@ def unpack(meta)
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
-    @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     if CREW_CACHE_BUILD && File.file?(@build_cachefile) && File.file?("#{@build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
