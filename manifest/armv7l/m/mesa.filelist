@@ -61,6 +61,9 @@
 /usr/local/lib/libGLX_mesa.so
 /usr/local/lib/libGLX_mesa.so.0
 /usr/local/lib/libGLX_mesa.so.0.0.0
+/usr/local/lib/liblua.so
+/usr/local/lib/liblua.so.5.4
+/usr/local/lib/liblua.so.5.4.6
 /usr/local/lib/libvulkan_intel.so
 /usr/local/lib/libvulkan_lvp.so
 /usr/local/lib/libxatracker.so
