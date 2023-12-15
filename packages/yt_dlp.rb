@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/python'
 
-class Yt_dlp < Package
+class Yt_dlp < Python
   description 'A fork of youtube-dl with additional features and patches'
   homepage 'https://github.com/yt-dlp/yt-dlp'
-  @_ver = '2023.09.24'
+  @_ver = '2023.11.16'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
@@ -11,19 +11,18 @@ class Yt_dlp < Package
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.09.24-py3.12_armv7l/yt_dlp-2023.09.24-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.09.24-py3.12_armv7l/yt_dlp-2023.09.24-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.09.24-py3.12_i686/yt_dlp-2023.09.24-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.09.24-py3.12_x86_64/yt_dlp-2023.09.24-py3.12-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_armv7l/yt_dlp-2023.11.16-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_armv7l/yt_dlp-2023.11.16-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_i686/yt_dlp-2023.11.16-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_x86_64/yt_dlp-2023.11.16-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bfad9e7ad58d6d6c73670c7b9f1dda64d385664e00b49ac97f693ce9fb0b01b2',
-     armv7l: 'bfad9e7ad58d6d6c73670c7b9f1dda64d385664e00b49ac97f693ce9fb0b01b2',
-       i686: '17e497c4c75f7849fec648b08ae8490fd7a3654269f1f6991d5c4b5387fd0d0f',
-     x86_64: 'a35f6f6f3fbe3c3b619f122b056f359f4420d76ff7d5578e8218bbddf9e752a2'
+    aarch64: '38eb870583b3d2615d407cc95d14e3a6a0b4475cf6d2efaaa292167575db552d',
+     armv7l: '38eb870583b3d2615d407cc95d14e3a6a0b4475cf6d2efaaa292167575db552d',
+       i686: 'dfeeb747f3e48d3c9043dbcb04e5766c7c75e21a382b657dffd95188bb774c74',
+     x86_64: '71028892a2c9a276012c7fb0d3fc6493b24b878d724831722ec7082753884aa8'
   })
 
-  depends_on 'pandoc' => :build
   depends_on 'py3_brotlicffi'
   depends_on 'py3_certifi'
   depends_on 'py3_mutagen'
@@ -31,15 +30,9 @@ class Yt_dlp < Package
   depends_on 'py3_websockets'
   depends_on 'python3'
 
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "MANDIR=#{CREW_MAN_PREFIX}", 'install'
-  end
-
   def self.postinstall
-    puts "\nType 'yt-dlp' to get started.\n".lightblue
+    ExitMessage.add <<~EOF.lightblue
+      Type 'yt-dlp' to get started.
+    EOF
   end
 end
