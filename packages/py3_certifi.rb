@@ -3,7 +3,7 @@ require 'buildsystems/pip'
 class Py3_certifi < Pip
   description 'Certifi provides Mozilla\'s CA Bundle.'
   homepage 'https://certifi.io/'
-  @_ver = '2023.07.22'
+  @_ver = '2023.11.17'
   version "#{@_ver}-py3.12"
   license 'MPL-2.0'
   compatibility 'all'
