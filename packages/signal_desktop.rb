@@ -3,17 +3,25 @@ require 'package'
 class Signal_desktop < Package
   description 'Private Messenger for Windows, Mac, and Linux'
   homepage 'https://signal.org/'
-  version '6.19.0'
+  version '6.42.0'
   license 'AGPL-3.0'
   compatibility 'x86_64'
-  source_url 'https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_6.19.0_amd64.deb'
-  source_sha256 '0f9e00f73e7e6379ecdfadd997c202867ca410184ecfc6890a04c24088eafdf7'
+  source_url 'https://updates.signal.org/desktop/apt/pool/s/signal-desktop/signal-desktop_6.42.0_amd64.deb'
+  source_sha256 'b86b15bff27c78c8cf39d52cfbc19c628a72f43da0dd25214b4f5b6a7ac0ea16'
 
   no_compile_needed
+  no_shrink
 
   depends_on 'at_spi2_core'
   depends_on 'gtk3'
   depends_on 'sommelier'
+
+  def self.preflight
+    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
+      puts "\nSignal_desktop requires GLIBC 2.29 and above.".lightred
+      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
+    end
+  end
 
   def self.patch
     Dir.chdir 'usr/share/applications' do
