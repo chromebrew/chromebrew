@@ -2120,6 +2120,11 @@ url: https://github.com/fribidi/fribidi/releases
 activity: high
 ---
 kind: url
+name: frp
+url: https://github.com/fatedier/frp/releases
+activity: medium
+---
+kind: url
 name: fskit
 url: https://github.com/jcnelson/fskit/releases
 activity: none
