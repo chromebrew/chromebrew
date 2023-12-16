@@ -6,6 +6,7 @@ class Nushell < Package
   version '0.88.0'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.28'
   source_url({
     aarch64: 'https://github.com/nushell/nushell/releases/download/0.88.0/nu-0.88.0-armv7-unknown-linux-gnueabihf.tar.gz',
      armv7l: 'https://github.com/nushell/nushell/releases/download/0.88.0/nu-0.88.0-armv7-unknown-linux-gnueabihf.tar.gz',
@@ -19,13 +20,6 @@ class Nushell < Package
 
   no_compile_needed
   no_shrink
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.28')
-      puts "\nNushell requires GLIBC 2.28 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.install
     Dir['nu*'].each do |bin|

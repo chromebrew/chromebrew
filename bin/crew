@@ -1022,6 +1022,10 @@ end
 
 def pre_flight
   puts 'Performing pre-flight checks...'
+  if defined?(@pkg.min_glibc) && @pkg.min_glibc && (Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new(@pkg.min_glibc))
+    puts "\n#{@pkg.name.capitalize} requires glibc #{@pkg.min_glibc} and above.".lightred
+    abort "ChromeOS is currently running glibc #{LIBC_VERSION}.\n".lightred
+  end
   @pkg.preflight
 end
 

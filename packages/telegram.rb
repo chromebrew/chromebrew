@@ -6,6 +6,7 @@ class Telegram < Package
   version '4.12.2'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
+  min_glibc '2.29'
   source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.12.2.tar.xz'
   source_sha256 '0b412e0d685d7bf85302d971c893a505e5eb05f0c39a6706566f230058f4ad40'
 
@@ -13,13 +14,6 @@ class Telegram < Package
 
   no_compile_needed
   no_shrink
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
-      puts "\nOpera requires GLIBC 2.29 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.build
     telegram = <<~EOF

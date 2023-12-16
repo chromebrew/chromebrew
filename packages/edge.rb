@@ -5,6 +5,7 @@ class Edge < Package
   homepage 'https://www.microsoft.com/en-us/edge'
   version '120.0.2210.77-1'
   compatibility 'x86_64'
+  min_glibc '2.29'
   license 'MIT'
   source_url 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_120.0.2210.77-1_amd64.deb'
   source_sha256 '992231fda62eb6603f846c9c35aa6f9bcfc19c00ed5c0e8d4653269ecfb23399'
@@ -17,13 +18,6 @@ class Edge < Package
 
   no_compile_needed
   no_shrink
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
-      puts "\nEdge requires GLIBC 2.29 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.patch
     # Make sure the executable path is correct.

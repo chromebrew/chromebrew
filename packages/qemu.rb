@@ -6,6 +6,7 @@ class Qemu < Package
   version '8.1.2'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.35'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
 
@@ -65,12 +66,6 @@ class Qemu < Package
   depends_on 'vte' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-
-  def self.preflight
-    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
-
-    abort "Qemu requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred
-  end
 
   def self.patch
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error

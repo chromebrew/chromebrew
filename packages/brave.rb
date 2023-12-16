@@ -6,6 +6,7 @@ class Brave < Package
   version '1.61.104'
   license 'MPL-2'
   compatibility 'x86_64'
+  min_glibc '2.29'
   source_url "https://github.com/brave/brave-browser/releases/download/v#{version}/brave-browser-#{version}-linux-amd64.zip"
   source_sha256 '4a0175573fca8509e181316b2cd2cb8ebf0f9dc05889a0f0152c20a9c1e5864d'
 
@@ -16,13 +17,6 @@ class Brave < Package
   depends_on 'libcom_err'
   depends_on 'xdg_base'
   depends_on 'sommelier'
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
-      puts "\nBrave requires GLIBC 2.29 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
