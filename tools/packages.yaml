@@ -7101,9 +7101,19 @@ url: https://github.com/quodlibet/mutagen/releases
 activity: medium
 ---
 kind: url
+name: py3_nodeenv
+url: https://github.com/ekalinin/nodeenv/releases
+activity: low
+---
+kind: url
 name: py3_pip
 url: https://github.com/pypa/pip/releases
 activity: medium
+---
+kind: url
+name: py3_pyright
+url: https://github.com/RobertCraigie/pyright-python/releases
+activity: high
 ---
 kind: url
 name: py3_ruff
