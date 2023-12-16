@@ -6,6 +6,7 @@ class Thorium < Package
   version '117.0.5938.157'
   license 'BSD-3 Clause'
   compatibility 'x86_64'
+  min_glibc '2.29'
   source_url "https://github.com/Alex313031/thorium/releases/download/M#{version}/Thorium_Browser_#{version}_x64.AppImage"
   source_sha256 '7657c29416f04a4420e2cb4a65d4a0360dc416c5a4b28236d5cc511b948cace3'
 
@@ -15,13 +16,6 @@ class Thorium < Package
   no_compile_needed
   no_shrink
   print_source_bashrc
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
-      puts "\nThorium requires GLIBC 2.29 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.build
     @thoriumenv = <<~EOF

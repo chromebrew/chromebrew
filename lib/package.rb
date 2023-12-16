@@ -7,7 +7,7 @@ require_relative 'selector'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag
+           :git_branch, :git_hashtag, :min_glibc
 
   boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,

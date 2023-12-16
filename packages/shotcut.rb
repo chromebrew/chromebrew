@@ -6,6 +6,7 @@ class Shotcut < Package
   version '23.11.29'
   license 'GPL-3+'
   compatibility 'x86_64'
+  min_glibc '2.30'
   source_url 'https://github.com/mltframework/shotcut/releases/download/v23.11.29/shotcut-linux-x86_64-231129.txz'
   source_sha256 'df34a68bf37ec3295745287f375b6ca82ec3f4f16eb09416a508d31c6b40fc77'
 
@@ -95,13 +96,6 @@ class Shotcut < Package
   depends_on 'zimg' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.30')
-      puts "\nShotcut requires GLIBC 2.30 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.build
     File.write 'shotcut', <<~EOF

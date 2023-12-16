@@ -6,6 +6,7 @@ class Opera < Package
   version '105.0.4970.48'
   license 'OPERA-2018'
   compatibility 'x86_64'
+  min_glibc '2.29'
 
   # faster apt mirror, but only works when downloading latest version of opera
   # source_url "https://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_#{version}_amd64.deb"
@@ -21,13 +22,6 @@ class Opera < Package
 
   no_compile_needed
   no_shrink
-
-  def self.preflight
-    if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.29')
-      puts "\nOpera requires GLIBC 2.29 and above.".lightred
-      abort "ChromeOS is currently running GLIBC #{LIBC_VERSION}.\n".lightred
-    end
-  end
 
   def self.install
     # Since opera puts the executable in a location that is not in the path,

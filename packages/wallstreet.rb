@@ -6,6 +6,7 @@ class Wallstreet < Package
   version '1.21'
   license 'Apache-2.0'
   compatibility 'all'
+  min_glibc '2.32'
   source_url 'https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_1.21.orig.tar.gz'
   source_sha256 '793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb'
 
@@ -17,12 +18,6 @@ class Wallstreet < Package
   depends_on 'ticker'
   depends_on 'wget2'
   depends_on 'w3m'
-
-  def self.preflight
-    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.32')
-
-    abort "Wallstreet requires glibc 2.32. The current glibc version is #{LIBC_VERSION}.".lightred
-  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
