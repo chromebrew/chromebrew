@@ -5426,6 +5426,11 @@ url: ftp://ftp.mars.org/pub/mpeg/
 activity: none
 ---
 kind: url
+name: magic
+url: https://github.com/RTimothyEdwards/magic/releases
+activity: high
+---
+kind: url
 name: mailutils
 url: https://ftpmirror.gnu.org/mailutils/
 activity: high
