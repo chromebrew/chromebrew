@@ -136,8 +136,13 @@ function curl () {
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
   for (( i = 0; i < 4; i++ )); do
-    # Force TLS as we know GitLab supports it.
-    env -u LD_LIBRARY_PATH curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    if [[ "$ARCH" == "i686" ]]; then
+      # i686 curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
+      env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
+    else
+      # Force TLS as we know GitLab supports it.
+      env -u LD_LIBRARY_PATH curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    fi
     echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
