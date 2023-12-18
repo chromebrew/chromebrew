@@ -2,7 +2,7 @@ require 'fileutils'
 require 'package'
 
 class Autotools < Package
-  property :configure_options, :pre_configure_options
+  property :configure_options, :pre_configure_options, :install_extras
 
   def self.build
     unless File.file?('Makefile') && CREW_CACHE_BUILD
@@ -31,6 +31,7 @@ class Autotools < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    eval @install_extras if @install_extras
   end
 
   def self.check
