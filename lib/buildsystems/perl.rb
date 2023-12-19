@@ -1,7 +1,7 @@
 require 'package'
 
 class PERL < Package
-  property :pre_perl_options
+  property :pre_perl_options, :perl_install_extras
 
   def self.prebuild
     puts "Additional pre_perl_options being used: #{@pre_perl_options.nil? ? '<no pre_perl_options>' : @pre_perl_options}".orange
@@ -16,5 +16,6 @@ class PERL < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    eval @perl_install_extras if @perl_install_extras
   end
 end
