@@ -16,10 +16,10 @@ class Openssh < Autotools
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.6p1_x86_64/openssh-9.6p1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '2febf81fb6e0482dee87b45b07b81b5f279e94a041678cba8892cf604aa6858b',
-     armv7l: '2febf81fb6e0482dee87b45b07b81b5f279e94a041678cba8892cf604aa6858b',
-       i686: 'b7eaed3ee4f3a46a8a1b1b4e76715afd203c9688c252231d58c7c6bff1c2255d',
-     x86_64: '5284f191b28997c52b952cddf703d1ae0b65ca080052ac0d5a5002887a5f41cf'
+    aarch64: '56ba02dfb90234a579ad2625cc8a6acd58257f0160d35c3d34150b0eb3abca05',
+     armv7l: '56ba02dfb90234a579ad2625cc8a6acd58257f0160d35c3d34150b0eb3abca05',
+       i686: 'ac1f4567a4a85a11cae2ce9f6ca1b7824871f02469b706d418aa85e5f223e206',
+     x86_64: 'e500485d26540eb8236543d1710c807ff35fe43dad406f1304b5bd9a37e27ea8'
   })
 
   depends_on 'gcc_lib' # R
