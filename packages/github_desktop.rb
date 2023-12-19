@@ -3,18 +3,19 @@ require 'package'
 class Github_desktop < Package
   description 'GitHub Desktop is an open source Electron-based GitHub app'
   homepage 'https://desktop.github.com/'
-  version '3.3.3-RC2'
+  version '3.3.6-RC2'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.29'
   source_url({
-    aarch64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.3-linux2/GitHubDesktop-linux-armv7l-3.3.3-linux2.AppImage',
-     armv7l: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.3-linux2/GitHubDesktop-linux-armv7l-3.3.3-linux2.AppImage',
-     x86_64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.3-linux2/GitHubDesktop-linux-x86_64-3.3.3-linux2.AppImage'
+    aarch64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-armv7l-3.3.6-linux2.AppImage',
+     armv7l: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-armv7l-3.3.6-linux2.AppImage',
+     x86_64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-x86_64-3.3.6-linux2.AppImage'
   })
   source_sha256({
-    aarch64: '7080fd4b4e371e56b5bc49a0d66fe888f81884260283f181c0e33377810613b4',
-     armv7l: '7080fd4b4e371e56b5bc49a0d66fe888f81884260283f181c0e33377810613b4',
-     x86_64: 'c8b71fef885e903ff569273853c2848230a990e602d053b196443bdc3c7645a0'
+    aarch64: '4508fcbc680408a183fbd00f172e5beccad414e503cefd77163bffff0bd1a31c',
+     armv7l: '4508fcbc680408a183fbd00f172e5beccad414e503cefd77163bffff0bd1a31c',
+     x86_64: 'fe0e8689886939247819dc0ae3d1f242ade555e4990c3ede045ba3493514d250'
   })
 
   depends_on 'at_spi2_core'
@@ -28,13 +29,12 @@ class Github_desktop < Package
   no_strip # Fixes Syntax error: redirection unexpected (expecting ")")
 
   def self.build
-    gd = <<~EOF
+    File.write 'github-desktop.sh', <<~EOF
       #!/bin/bash
       GDK_BACKEND=x11
       cd #{CREW_PREFIX}/share/github_desktop
       ./AppRun "$@"
     EOF
-    File.write('github-desktop.sh', gd)
   end
 
   def self.install
@@ -45,7 +45,7 @@ class Github_desktop < Package
   end
 
   def self.postinstall
-    puts "\nType 'github-desktop' to get started.\n".lightblue
+    ExitMessage.add "Type 'github-desktop' to get started.".lightblue
   end
 
   def self.remove
