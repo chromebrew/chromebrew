@@ -7071,6 +7071,11 @@ url: https://github.com/python-hyper/brotlicffi/tags
 activity: low
 ---
 kind: url
+name: py3_devedeng
+url: https://gitlab.com/rastersoft/devedeng/-/tags
+activity: low
+---
+kind: url
 name: py3_editables
 url: https://github.com/pfmoore/editables/tags
 activity: medium
