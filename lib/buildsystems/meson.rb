@@ -1,7 +1,7 @@
 require 'package'
 
 class Meson < Package
-  property :meson_options, :pre_meson_options
+  property :meson_options, :pre_meson_options, :meson_install_extras
 
   def self.build
     puts "Additional meson_options being used: #{@pre_meson_options.nil? ? '<no pre_meson_options>' : @pre_meson_options} #{@meson_options.nil? ? '<no meson_options>' : @meson_options}".orange
@@ -14,6 +14,7 @@ class Meson < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    eval @meson_install_extras if @meson_install_extras
   end
 
   def self.check
