@@ -2,6 +2,14 @@
 /usr/local/bin/ug+
 /usr/local/bin/ugrep
 /usr/local/bin/ugrep+
+/usr/local/share/bash-completion/completions/ug
+/usr/local/share/bash-completion/completions/ug+
+/usr/local/share/bash-completion/completions/ugrep
+/usr/local/share/bash-completion/completions/ugrep+
+/usr/local/share/fish/vendor_completions.d/ug.fish
+/usr/local/share/fish/vendor_completions.d/ug+.fish
+/usr/local/share/fish/vendor_completions.d/ugrep.fish
+/usr/local/share/fish/vendor_completions.d/ugrep+.fish
 /usr/local/share/man/man1/ug.1.zst
 /usr/local/share/man/man1/ugrep.1.zst
 /usr/local/share/ugrep/patterns/c++/classes
@@ -191,3 +199,7 @@
 /usr/local/share/ugrep/patterns/xml/zap_comments
 /usr/local/share/ugrep/patterns/xml/zap_pis
 /usr/local/share/ugrep/patterns/xml/zap_strings
+/usr/local/share/zsh/site-functions/_ug
+/usr/local/share/zsh/site-functions/_ug+
+/usr/local/share/zsh/site-functions/_ugrep
+/usr/local/share/zsh/site-functions/_ugrep+
