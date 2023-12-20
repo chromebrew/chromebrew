@@ -1,24 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gstreamer < Package
+class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  @_ver = '1.22.6'
-  version "#{@_ver}-1"
+  version '1.22.8'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.29'
   source_url 'https://gitlab.freedesktop.org/gstreamer/gstreamer.git'
-  git_hashtag @_ver
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6-1_armv7l/gstreamer-1.22.6-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6-1_armv7l/gstreamer-1.22.6-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.6-1_x86_64/gstreamer-1.22.6-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.8_armv7l/gstreamer-1.22.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.8_armv7l/gstreamer-1.22.8-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.8_x86_64/gstreamer-1.22.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'fbed6340d85a3568fc8fa0a0e39f04eb242f3b6ac1877b0f75f2e7811ac6e6c5',
-     armv7l: 'fbed6340d85a3568fc8fa0a0e39f04eb242f3b6ac1877b0f75f2e7811ac6e6c5',
-     x86_64: 'ce17105122937d227adf2d1ec286fd87a1284bc9b95fca4ffd0348155905d812'
+    aarch64: '3822b6aa2e2f0efb453be442a9e685a0b5c81d7cdbe17804b29f1144beac6937',
+     armv7l: '3822b6aa2e2f0efb453be442a9e685a0b5c81d7cdbe17804b29f1144beac6937',
+     x86_64: '7f8292a89eadce907711e53da6e8cfed6305f5d036077b104e8d53d1321695e7'
   })
 
   depends_on 'alsa_lib' # R
@@ -132,29 +132,7 @@ class Gstreamer < Package
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -Dgpl=enabled \
-      -Dtests=disabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "mold -run #{CREW_NINJA} -C builddir"
-
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      @counter += 1
-      break if @counter > @counter_max
-    end
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.check
-    # system 'make', 'check' # The 'gst/gsttracerrecord' test fails.
-  end
+  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    -Dgpl=enabled \
+    -Dtests=disabled"
 end
