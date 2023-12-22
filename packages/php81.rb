@@ -15,11 +15,12 @@ class Php81 < Package
      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_x86_64/php81-8.1.27-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '83decad125169dcad5ae6a075cfea2f2c4335e5485a70c73f0bbe18bf2baf122',
-     armv7l: '83decad125169dcad5ae6a075cfea2f2c4335e5485a70c73f0bbe18bf2baf122',
-     x86_64: '8f2012862c50522bbbd42032334abf7201116ba870b6bcda77d79be004b5cc8e'
+    aarch64: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
+     armv7l: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
+     x86_64: '6d7654ea3352c8335a0ac02d80b732dabcdcb4abd33686887c5b7017f9644945'
   })
 
+  depends_on 'aspell_en' => :build
   depends_on 'aspell' # R
   depends_on 'brotli' # R
   depends_on 'bzip2' # R
@@ -177,6 +178,12 @@ class Php81 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+    # Launch php8-fpm when the bash shell session starts.
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
+      [ -x #{CREW_PREFIX}/bin/php8-fpm ] && #{CREW_PREFIX}/bin/php8-fpm start
+    EOF
   end
 
   def self.postinstall
