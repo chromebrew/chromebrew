@@ -3,21 +3,21 @@ require 'buildsystems/cmake'
 class Putty < CMake
   description 'Free Telnet, SSH, and Rlogin clients plus a terminal emulator'
   homepage 'https://www.chiark.greenend.org.uk/~sgtatham/putty/'
-  version '0.79'
+  version '0.80'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://the.earth.li/~sgtatham/putty/latest/putty-0.79.tar.gz'
-  source_sha256 '428cc8666fbb938ebf4ac9276341980dcd70de395b33164496cf7995ef0ef0d8'
+  source_url 'https://the.earth.li/~sgtatham/putty/latest/putty-0.80.tar.gz'
+  source_sha256 '2013c83a721b1753529e9090f7c3830e8fe4c80a070ccce764539badb3f67081'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.79_armv7l/putty-0.79-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.79_armv7l/putty-0.79-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.79_x86_64/putty-0.79-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_armv7l/putty-0.80-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_armv7l/putty-0.80-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_x86_64/putty-0.80-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5c0134296695b1aad7631fbc2357dad7f218b84d934adf2f581d99ad6ce4a662',
-     armv7l: '5c0134296695b1aad7631fbc2357dad7f218b84d934adf2f581d99ad6ce4a662',
-     x86_64: '4c2849c1a4ffe3f6f910471ef491db63db27a374392c53c176ef412c33febaf3'
+    aarch64: 'f912d682a591e77d835f97caab122d83adaf63c3440c73972402a2a09f335e3a',
+     armv7l: 'f912d682a591e77d835f97caab122d83adaf63c3440c73972402a2a09f335e3a',
+     x86_64: '63dbbbca5ec4caea00e1cf63a45cf2cf3a093f0525e48c890e59eac88d85ba9b'
   })
 
   depends_on 'at_spi2_core' # R
