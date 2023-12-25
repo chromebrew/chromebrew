@@ -113,7 +113,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-fd93c2e97637f00d264a94602ac14712.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-60ff59994839a2744d7330ab468bf5ed.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -348,6 +348,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/disneyplus_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/dn_se.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ebay_com.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/eguide.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/elcorteingles_es.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/eluniversal_com_mx.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/eneba.png
@@ -356,6 +357,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/finn_no.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/fnac_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/gazzetta.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/gmail.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/google-16x16.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/google.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/habr_com.png
@@ -388,8 +390,10 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mbl_is.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mediaexpert_pl.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/mercedes.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/microsoft365.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/milanuncios_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/morrisons_com.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/myrenault.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/naver_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ndtv_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/news_abs-cbn_com.png
@@ -398,8 +402,10 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/onliner_by.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/ostrovok_ru.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/otto_de.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/outlook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/overstock_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/polestar.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/primevideo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/qwant_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/rakuten_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/recreation.png
