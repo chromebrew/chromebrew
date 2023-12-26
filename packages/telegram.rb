@@ -3,12 +3,12 @@ require 'package'
 class Telegram < Package
   description "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free."
   homepage 'https://telegram.org/'
-  version '4.12.2'
+  version '4.13.0'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
   min_glibc '2.29'
-  source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.12.2.tar.xz'
-  source_sha256 '0b412e0d685d7bf85302d971c893a505e5eb05f0c39a6706566f230058f4ad40'
+  source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.13.0.tar.xz'
+  source_sha256 '0b3ac9df357ba02097240c25f2fe2f36e81e345b2b0fe848c90d097f42dba052'
 
   depends_on 'mesa'
 
@@ -34,6 +34,6 @@ class Telegram < Package
   end
 
   def self.postinstall
-    puts "\nType 'telegram' to get started.\n".lightblue
+    ExitMessage.add "\nType 'telegram' to get started.\n".lightblue
   end
 end
