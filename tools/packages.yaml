@@ -8671,6 +8671,11 @@ url: https://launchpad.net/veracrypt/+download
 activity: medium
 ---
 kind: url
+name: vice
+url: https://downloads.sourceforge.net/project/vice-emu/releases
+activity: low
+---
+kind: url
 name: vidstab
 url: https://github.com/georgmartius/vid.stab/releases
 activity: none
