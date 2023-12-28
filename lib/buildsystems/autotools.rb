@@ -2,33 +2,36 @@ require 'fileutils'
 require 'package'
 
 class Autotools < Package
-  property :configure_options
+  property :configure_options, :pre_configure_options, :install_extras
 
   def self.build
-    puts "Additional configure_options being used: #{@configure_options.nil? || @configure_options.empty? ? '<no configure_options>' : @configure_options}".orange
-    # Run autoreconf if necessary
-    unless File.executable? './configure'
-      if File.executable? './autogen.sh'
-        system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
-      elsif File.executable? './bootstrap'
-        system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
-      else
-        system 'autoreconf -fiv'
+    unless File.file?('Makefile') && CREW_CACHE_BUILD
+      puts "Additional configure_options being used: #{@pre_configure_options.nil? ? '<no pre_configure_options>' : @pre_configure_options} #{@configure_options.nil? ? '<no configure_options>' : @configure_options}".orange
+      # Run autoreconf if necessary
+      unless File.executable? './configure'
+        if File.executable? './autogen.sh'
+          system 'NOCONFIGURE=1 ./autogen.sh --no-configure || NOCONFIGURE=1 ./autogen.sh'
+        elsif File.executable? './bootstrap'
+          system 'NOCONFIGURE=1 ./bootstrap --no-configure || NOCONFIGURE=1 ./bootstrap'
+        else
+          system 'autoreconf -fiv'
+        end
       end
+      abort 'configure script not found!'.lightred unless File.file?('configure')
+      FileUtils.chmod('+x', 'configure')
+      if `grep -q /usr/bin/file configure`
+        puts 'Using filefix.'.orange
+        system 'filefix'
+      end
+      @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run ' : ''
+      system "#{@pre_configure_options} #{@mold_linker_prefix_cmd}./configure #{CREW_OPTIONS} #{@configure_options}"
     end
-    abort 'configure script not found!'.lightred unless File.file?('configure')
-    FileUtils.chmod('+x', 'configure')
-    if `grep -q /usr/bin/file configure`
-      puts 'Using filefix.'.orange
-      system 'filefix'
-    end
-    @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run ' : ''
-    system "#{@mold_linker_prefix_cmd}./configure #{CREW_OPTIONS} #{@configure_options}"
     system 'make'
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    eval @install_extras if @install_extras
   end
 
   def self.check

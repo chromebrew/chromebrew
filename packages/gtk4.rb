@@ -34,7 +34,7 @@ class Gtk4 < Package
   depends_on 'ghostscript' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gnome_icon_theme' # L
+  # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
   depends_on 'gstreamer' # R

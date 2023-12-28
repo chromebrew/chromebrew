@@ -28,7 +28,7 @@ class Irrlicht < Package
   depends_on 'libjpeg'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'mesa' # R
@@ -60,13 +60,13 @@ class Irrlicht < Package
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include/irrlicht"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/libexec/irrlicht"
     FileUtils.cp Dir.glob('include/*'), "#{CREW_DEST_PREFIX}/include/irrlicht"
-    FileUtils.cp 'lib/Linux/libIrrlicht.a', CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.5', CREW_DEST_LIB_PREFIX.to_s
-    Dir.chdir CREW_DEST_LIB_PREFIX.to_s do
+    FileUtils.cp 'lib/Linux/libIrrlicht.a', CREW_DEST_LIB_PREFIX
+    FileUtils.cp 'lib/Linux/libIrrlicht.so.1.8.5', CREW_DEST_LIB_PREFIX
+    Dir.chdir CREW_DEST_LIB_PREFIX do
       FileUtils.symlink 'libIrrlicht.so.1.8.5', 'libIrrlicht.so.1.8'
       FileUtils.symlink 'libIrrlicht.so.1.8.5', 'libIrrlicht.so'
     end

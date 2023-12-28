@@ -21,7 +21,7 @@ class Tcpflow < Package
   })
 
   depends_on 'boost' => :build
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'cairo' => :build
   depends_on 'cairo' # R
   depends_on 'expat' # R

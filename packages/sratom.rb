@@ -7,6 +7,7 @@ class Sratom < Meson
   description 'An LV2 Atom RDF serialisation library'
   homepage 'https://drobilla.net/software/sratom/'
   version '0.6.14'
+  license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/lv2/sratom.git'
   git_hashtag "v#{version}"

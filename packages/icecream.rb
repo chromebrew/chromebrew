@@ -27,7 +27,7 @@ class Icecream < Package
 
   depends_on 'acl' # R
   depends_on 'attr' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'docbook2x' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

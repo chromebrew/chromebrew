@@ -24,7 +24,7 @@ class Pcre2 < Package
 
   depends_on 'glibc' # R
   depends_on 'readline' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'zlibpkg' # R
 
   def self.build

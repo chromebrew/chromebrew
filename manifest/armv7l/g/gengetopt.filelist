@@ -24,6 +24,6 @@
 /usr/local/share/gengetopt/getopt1.c
 /usr/local/share/gengetopt/getopt.c
 /usr/local/share/gengetopt/gnugetopt.h
-/usr/local/share/info/dir.gz
-/usr/local/share/info/gengetopt.info.gz
-/usr/local/share/man/man1/gengetopt.1.gz
+/usr/local/share/info/gengetopt.info.zst
+/usr/local/share/info/index.info.zst
+/usr/local/share/man/man1/gengetopt.1.zst

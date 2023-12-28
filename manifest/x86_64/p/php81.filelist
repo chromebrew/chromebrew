@@ -10,6 +10,7 @@
 /usr/local/bin/phpdbg
 /usr/local/bin/php-fpm
 /usr/local/bin/phpize
+/usr/local/etc/bash.d/01-php8-fpm
 /usr/local/etc/init.d/php-fpm
 /usr/local/etc/pear.conf
 /usr/local/etc/php-fpm.conf

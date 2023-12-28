@@ -3,23 +3,23 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.0.11' # Do not use @_ver here, it will break the installer.
+  version '3.0.12' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-3.0.11.tar.gz'
-  source_sha256 'b3425d3bb4a2218d0697eb41f7fc0cdede016ed19ca49d168b78e8d947887f55'
+  source_url 'https://www.openssl.org/source/openssl-3.0.12.tar.gz'
+  source_sha256 'f93c9e8edde5e9166119de31755fc87b4aa34863662f67ddfcba14d0b6b69b61'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_armv7l/openssl-3.0.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_armv7l/openssl-3.0.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_i686/openssl-3.0.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.11_x86_64/openssl-3.0.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.12_armv7l/openssl-3.0.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.12_armv7l/openssl-3.0.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.12_i686/openssl-3.0.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl/3.0.12_x86_64/openssl-3.0.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1da9f326a69b5191aa2abef71f175491573a3c92a8a4e309a152217fa8c750a4',
-     armv7l: '1da9f326a69b5191aa2abef71f175491573a3c92a8a4e309a152217fa8c750a4',
-       i686: '1a31f9270b9dec20d3ba6cee8f0ebccd7a69171167081fd17f7a5fa287e6765e',
-     x86_64: 'd0ce2b7746364cee34e6a7fd190dccc608cab452fd57736607ca740e359cf9fc'
+    aarch64: 'a373a6a05ebaded0c415dde10b81d83d7b5926b717ea2f4f335befde71f0eb79',
+     armv7l: 'a373a6a05ebaded0c415dde10b81d83d7b5926b717ea2f4f335befde71f0eb79',
+       i686: '89cb4058dea5d4184485312ae6bcb2944f565e9b5cfeaaa8e46032b75d3bf2e0',
+     x86_64: 'acf5e602aa15f0d56df54b312fbc1c298af655b57208cefa30552bca2b394b83'
   })
 
   depends_on 'ccache' => :build
@@ -79,7 +79,7 @@ class Openssl < Package
       #{CREW_LIB_PREFIX[1..]}/libcrypto.so.1.1
       #{CREW_LIB_PREFIX[1..]}/libssl.so.1.1
     EOF
-    @cur_dir = `pwd`.chomp
+    @cur_dir = Dir.pwd
     @legacy_version = '1.1.1w'
     case ARCH
     when 'aarch64', 'armv7l'

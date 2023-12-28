@@ -9,6 +9,7 @@ class Tracker3 < Meson
   version '3.6.0'
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.35'
   source_url 'https://gitlab.gnome.org/GNOME/tracker.git'
   git_hashtag version
 
@@ -46,10 +47,4 @@ class Tracker3 < Meson
       -Ddocs=false \
       -Dman=false \
       -Dsystemd_user_services=false"
-
-  def self.preflight
-    return if Gem::Version.new(LIBC_VERSION.to_s) > Gem::Version.new('2.34')
-
-    abort "Tracker3 requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred
-  end
 end

@@ -3,27 +3,25 @@ require 'package'
 class Llvm17_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '17.0.3'
+  version '17.0.6'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag "llvmorg-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_armv7l/llvm17_build-17.0.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_armv7l/llvm17_build-17.0.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_i686/llvm17_build-17.0.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.3_x86_64/llvm17_build-17.0.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_i686/llvm17_build-17.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_x86_64/llvm17_build-17.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '65f09ade774535eb92ce5e4f67de81d94db851eeb497b408dda74e54ddf907ff',
-     armv7l: '65f09ade774535eb92ce5e4f67de81d94db851eeb497b408dda74e54ddf907ff',
-       i686: '7106847e33af1b460d80ad1d841789cba8cbd0f05eab2fe192822c228350eeb3',
-     x86_64: '47eb48a0d00db4932ca0429b8d4d69f55934619a7b6153420c31ce908f9bc1cc'
+    aarch64: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
+     armv7l: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
+       i686: 'ac38487519bf7b3646e4da173cab22d1a8a3966f66a2a4ab20ab00230a1ddd2c',
+     x86_64: 'b7e8797a0d0b7003c6a14749b83e339a92d58aaa66bb120e7b211d9bb03dfa59'
   })
 
-  depends_on 'ocaml' => :build
-  depends_on 'py3_pygments' => :build
   depends_on 'ccache' => :build
   depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
@@ -33,6 +31,8 @@ class Llvm17_build < Package
   depends_on 'libxml2' # R
   depends_on 'llvm17_dev' => :build
   depends_on 'ncurses' # R
+  depends_on 'ocaml' => :build
+  depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
@@ -71,7 +71,7 @@ class Llvm17_build < Package
     @ARCH_CXX_FLAGS = '-fPIC'
     @ARCH_LDFLAGS = ''
     @ARCH_LTO_LDFLAGS = "#{@ARCH_LDFLAGS} -flto=thin"
-    LLVM_PROJECTS_TO_BUILD = 'clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
+    LLVM_PROJECTS_TO_BUILD = 'bolt;clang;clang-tools-extra;compiler-rt;libclc;lld;lldb;polly;pstl'.freeze
   end
   @ARCH_C_LTO_FLAGS = "#{@ARCH_C_FLAGS} -flto=thin"
   @ARCH_CXX_LTO_FLAGS = "#{@ARCH_CXX_FLAGS} -flto=thin"
@@ -127,7 +127,7 @@ class Llvm17_build < Package
         gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
         clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
-      system "cmake -B builddir -G Ninja llvm \
+      system "mold -run cmake -B builddir -G Ninja llvm \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_C_COMPILER=$(which clang) \
@@ -174,7 +174,7 @@ class Llvm17_build < Package
     @counter = 1
     @counter_max = 20
     loop do
-      break if Kernel.system "#{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
+      break if Kernel.system "mold -run #{CREW_NINJA} -C builddir -j #{CREW_NPROC}"
 
       puts "Make iteration #{@counter} of #{@counter_max}...".orange
 

@@ -1,31 +1,31 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Imagemagick7 < Package
+class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.1.1-3'
-  version "#{@_ver}-perl5.34"
+  @_ver = '7.1.1-23'
+  version "#{@_ver}-perl5.38"
   license 'imagemagick'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
   git_hashtag @_ver
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_armv7l/imagemagick7-7.1.1-3-perl5.34-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_armv7l/imagemagick7-7.1.1-3-perl5.34-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_i686/imagemagick7-7.1.1-3-perl5.34-chromeos-i686.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-3-perl5.34_x86_64/imagemagick7-7.1.1-3-perl5.34-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_x86_64/imagemagick7-7.1.1-23-perl5.38-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'cc275b254e3f1bfafb8bace8227a2d07cf2d7dacd15619915ccdd48b9470acc2',
-     armv7l: 'cc275b254e3f1bfafb8bace8227a2d07cf2d7dacd15619915ccdd48b9470acc2',
-       i686: '9156bfdd7c388a8d0895317ef8b1347991ea3925b933bf426521d6f51f6c3686',
-    x86_64: 'ed0e5cdf87a45c8c01e501022e49d045df5bb6f0b3e74111f1131c00a418a350'
+    aarch64: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
+     armv7l: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
+     x86_64: '7c0a0c4340d25380efd0fabe2eb92c2b87ce49141b79cf696aaf7be9fc187ecc'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
+  depends_on 'cairo' # R
+  depends_on 'expat' # R
   depends_on 'flif' => :build
-  depends_on 'fontconfig' => :build
+  depends_on 'fontconfig' # R
   depends_on 'freeimage' => :build
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R
@@ -36,14 +36,15 @@ class Imagemagick7 < Package
   depends_on 'graphviz' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
-  depends_on 'ilmbase' # R
-  depends_on 'jbigkit' => :build
+  depends_on 'jbigkit' # R
   depends_on 'jemalloc' # R
   depends_on 'lcms' # R
   depends_on 'libbsd' # R
   depends_on 'libdeflate' # R
-  depends_on 'libheif' => :build
+  depends_on 'libheif' # R
   depends_on 'libice' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libjxl' # R
   depends_on 'libmd' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
@@ -67,37 +68,22 @@ class Imagemagick7 < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'expat' # R
-  depends_on 'fontconfig' # R
-  depends_on 'libjpeg' # R
 
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
     abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
   end
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system "./configure \
-      #{CREW_OPTIONS} \
-      --mandir=#{CREW_MAN_PREFIX} \
+  configure_options "--mandir=#{CREW_MAN_PREFIX} \
       --program-prefix='' \
       --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
-      --disable-dependency-tracking \
-      --with-magick-plus-plus \
       --enable-hugepages \
       --with-jemalloc \
       --with-modules \
-      --enable-hdri \
       --with-perl \
       --with-perl-options='INSTALLDIRS=vendor' \
       --with-rsvg \
       --with-x"
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

@@ -1,41 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libunistring < Package
+class Libunistring < Autotools
   description 'A library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.'
   homepage 'https://www.gnu.org/software/libunistring/'
-  version '0.9.10-1'
+  version '1.1'
   license 'LGPL-3+ or GPL-2+ and FDL-1.2 or GPL-3+'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-0.9.10.tar.xz'
-  source_sha256 'eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+  source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-1.1.tar.xz'
+  source_sha256 '827c1eb9cb6e7c738b171745dac0888aa58c5924df2e59239318383de0729b98'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10-1_armv7l/libunistring-0.9.10-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10-1_armv7l/libunistring-0.9.10-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10-1_i686/libunistring-0.9.10-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/0.9.10-1_x86_64/libunistring-0.9.10-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/1.1_armv7l/libunistring-1.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/1.1_armv7l/libunistring-1.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/1.1_i686/libunistring-1.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunistring/1.1_x86_64/libunistring-1.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1987a956d1d5faf7f1364cd56c61536ca7727782c199d910bbef609109095a32',
-     armv7l: '1987a956d1d5faf7f1364cd56c61536ca7727782c199d910bbef609109095a32',
-       i686: 'd9d4a7741d8ae40b02593d6b4e89f3c4c0da8a0be709a1275045f024853f4c21',
-     x86_64: '3073ee4151dd8c96b87c21cb1f1e183c29c0da7c5a8e51f45641387c237b316c'
+    aarch64: '09608afc35eb1786fd6971351bd0bcde0c57296c43e0b8cfdfcbf8910d308935',
+     armv7l: '09608afc35eb1786fd6971351bd0bcde0c57296c43e0b8cfdfcbf8910d308935',
+       i686: '64f4a8775f607f477ba256aa0f1733f94176f99dfe58d55d4fc3b29bf3480cd6',
+     x86_64: 'b92ce0d125d451d35b0604e8282288b9a9f6be36d8f76c88b20f9143cbcb773f'
   })
 
   depends_on 'glibc'
 
-  def self.build
-    system "./configure #{CREW_ENV_OPTIONS} #{CREW_OPTIONS} \
-      --enable-static \
-      --enable-shared"
-    system 'make'
-  end
-
-  # def self.check
-  # system "make", "check"
-  # end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-static \
+      --enable-shared'
 end

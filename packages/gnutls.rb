@@ -1,25 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnutls < Package
+class Gnutls < Autotools
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
   homepage 'http://gnutls.org/'
-  version '3.8.0'
+  version '3.8.1-1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz'
-  source_sha256 '0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5'
+  source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.1.tar.xz'
+  source_sha256 'ba8b9e15ae20aba88f44661978f5b5863494316fe7e722ede9d069fe6294829c'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_armv7l/gnutls-3.8.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_armv7l/gnutls-3.8.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_i686/gnutls-3.8.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.0_x86_64/gnutls-3.8.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_armv7l/gnutls-3.8.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_armv7l/gnutls-3.8.1-1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_i686/gnutls-3.8.1-1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_x86_64/gnutls-3.8.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0a897675292ac7dac0705366de6e43ec3d49ef5f981984570d6574be2416af20',
-     armv7l: '0a897675292ac7dac0705366de6e43ec3d49ef5f981984570d6574be2416af20',
-       i686: 'e13f1dd743d212689362e087300db5c2b96bb524d38dcaf9c05e9a408fd7f261',
-     x86_64: 'f3629c95675ce0f48d8de9f525d7aa359f50c3f84fc5970e83ecf3fd50477a7a'
+    aarch64: 'b4ee521f0f9f8f35e5198e1c28d884fbaca674a9c17d19bcf1327695857135a9',
+     armv7l: 'b4ee521f0f9f8f35e5198e1c28d884fbaca674a9c17d19bcf1327695857135a9',
+       i686: '11a0532b28c6f962f058ae126e7adb9873b73978d96f317e248abc6ab8f4ff32',
+     x86_64: '895c33db8c7b5e4757dfeae885ae55c9df8add73c9fa5ddbd529c475adbe883d'
   })
 
   depends_on 'brotli' # R
@@ -48,25 +48,12 @@ class Gnutls < Package
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
-  def self.patch
-    system 'filefix'
-  end
-
-  def self.build
-    system './configure --help'
-    system "mold -run ./configure #{CREW_OPTIONS} \
-      --enable-shared \
+  configure_options "--enable-shared \
       --with-pic \
       --with-system-priority-file=#{CREW_PREFIX}/etc/gnutls/default-priorities \
       --with-trousers-lib=#{CREW_LIB_PREFIX}/libtspi.so.1 \
       --with-unbound-root-key-file=#{CREW_PREFIX}/etc/unbound/root.key \
       --with-default-trust-store-file=#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 
   def self.check
     # There are numerous failures in the test suite on all systems.

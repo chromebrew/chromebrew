@@ -1,39 +1,29 @@
-require 'package'
+require 'buildsystems/meson'
 
-class P11kit < Package
+class P11kit < Meson
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
   homepage 'https://p11-glue.freedesktop.org/p11-kit.html'
-  version '0.24.0-1'
+  version '0.25.3'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/p11-glue/p11-kit/archive/0.24.0.tar.gz'
-  source_sha256 '284d209e045ebc7e30ccb479c7b559edfcb5433d665b497386dd35291826e39c'
+  source_url 'https://github.com/p11-glue/p11-kit.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_armv7l/p11kit-0.24.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_armv7l/p11kit-0.24.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_i686/p11kit-0.24.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.24.0-1_x86_64/p11kit-0.24.0-1-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.25.3_armv7l/p11kit-0.25.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.25.3_armv7l/p11kit-0.25.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.25.3_i686/p11kit-0.25.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p11kit/0.25.3_x86_64/p11kit-0.25.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5eb5c9e6046d6a124235c797c14d06e2c82dde0161ba55bec3caa2463cdc0d0f',
-     armv7l: '5eb5c9e6046d6a124235c797c14d06e2c82dde0161ba55bec3caa2463cdc0d0f',
-       i686: 'ebb1bfdd6933dbde83ea6e2684070814ea1532a9b1dbabfce0b2918d7a74082c',
-     x86_64: '8259e4144eea281d3da641b7973e807518f521db62c552691a2e8d65f879ee87'
+    aarch64: '7f626c8bd485c1e5adb2a3561820840a4d9ba18a5ac14e6b00d6037795142533',
+     armv7l: '7f626c8bd485c1e5adb2a3561820840a4d9ba18a5ac14e6b00d6037795142533',
+       i686: '2793b90c951e3235b2d3f57f318294fa8b76ce2fe479b9b4b2f700438b945bd2',
+     x86_64: 'c04c315bf005beccac0b3945d4c80c19383e0b7e6f3231f2ca8d7a634783088e'
   })
 
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
   depends_on 'libtasn1' # R
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      build"
-    system 'meson configure build'
-    system 'ninja -C build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
 end

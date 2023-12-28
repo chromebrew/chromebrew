@@ -8,7 +8,7 @@ class Gcc_lib < Package
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
-                                                                                                   '') != Gcc_build.version.to_s
+                                                                                                   '') != Gcc_build.version
   compatibility 'all'
   source_url 'SKIP'
 
@@ -39,7 +39,7 @@ class Gcc_lib < Package
     @filelist.each do |filename|
       next unless filename.include?('.so') && !filename.include?('libgccjit')
 
-      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
+      @destpath = File.join(CREW_DEST_DIR, filename)
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end

@@ -35,7 +35,5 @@ class Xdotool < Package
 
   def self.install
     system "LDCONFIG=#{CREW_PREFIX}/sbin/ldconfig DESTDIR=#{CREW_DEST_DIR} PREFIX=#{CREW_PREFIX} INSTALLLIB=#{CREW_LIB_PREFIX} make install"
-    # Remove execute bit from header file'
-    system "chmod -x #{CREW_DEST_PREFIX}/include/xdo.h"
   end
 end

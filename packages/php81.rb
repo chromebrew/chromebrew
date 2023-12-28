@@ -3,42 +3,70 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.1.24'
+  version '8.1.27'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.php.net/distributions/php-8.1.24.tar.xz'
-  source_sha256 'ee61f6232bb29bd2e785daf325d2177f2272bf80d086c295a724594e710bce3d'
+  source_url 'https://www.php.net/distributions/php-8.1.27.tar.xz'
+  source_sha256 '479e65c3f05714d4aace1370e617d78e49e996ec7a7579a5be47535be61f0658'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.24_armv7l/php81-8.1.24-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.24_armv7l/php81-8.1.24-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.24_x86_64/php81-8.1.24-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_armv7l/php81-8.1.27-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_armv7l/php81-8.1.27-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_x86_64/php81-8.1.27-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5d1f6a3534f120050db2924ffadd3f0e0fd3d83d023f73b51781edbc668783ee',
-     armv7l: '5d1f6a3534f120050db2924ffadd3f0e0fd3d83d023f73b51781edbc668783ee',
-     x86_64: 'a35861fc09703fb1eee52d5f00e7f8fe803819c7da349450b84cd13c998edb6e'
+    aarch64: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
+     armv7l: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
+     x86_64: '6d7654ea3352c8335a0ac02d80b732dabcdcb4abd33686887c5b7017f9644945'
   })
 
-  depends_on 'aspell_en'
-  depends_on 'curl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'aspell_en' => :build
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
+  depends_on 'curl' # R
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
-  depends_on 'freetype'
+  depends_on 'freetype' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
-  depends_on 're2c'
-  depends_on 'tidy'
-  depends_on 'unixodbc'
-  depends_on 'oniguruma'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg' # R
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng' # R
+  depends_on 'libpsl' # R
+  depends_on 'libsodium' # R
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt' # R
+  depends_on 'libzip' # R
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma' # R
+  depends_on 'openldap' # R
+  depends_on 'openssl111' # R
+  depends_on 'openssl' # R
   depends_on 'py3_pygments'
-  depends_on 'openssl111' => :build
+  depends_on 're2c'
+  depends_on 'sqlite' # R
+  depends_on 'tidy' # R
+  depends_on 'unixodbc' # R
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   no_fhs
 
@@ -150,23 +178,29 @@ class Php81 < Package
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.filemap"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.lock"
     FileUtils.rm_rf "#{CREW_DEST_DIR}/.registry"
+
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
+    # Launch php8-fpm when the bash shell session starts.
+    File.write "#{CREW_DEST_PREFIX}/etc/bash.d/01-php8-fpm", <<~EOF
+      [ -x #{CREW_PREFIX}/bin/php8-fpm ] && #{CREW_PREFIX}/bin/php8-fpm start
+    EOF
   end
 
   def self.postinstall
-    puts
-    puts 'To start the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm start'.lightblue
-    puts
-    puts 'To stop the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm stop'.lightblue
-    puts
-    puts 'To restart the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm restart'.lightblue
-    puts
-    puts 'To start php-fpm on login, execute the following:'.lightblue
-    puts "echo 'if [ -f #{CREW_PREFIX}/bin/php8-fpm ]; then' >> ~/.bashrc".lightblue
-    puts "echo '  #{CREW_PREFIX}/bin/php8-fpm start' >> ~/.bashrc".lightblue
-    puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
+    ExitMessage.add <<~EOF.lightblue
+
+      To start the php-fpm service, execute:
+      php8-fpm start
+
+      To stop the php-fpm service, execute:
+      php8-fpm stop
+
+      To restart the php-fpm service, execute:
+      php8-fpm restart
+
+      php8-fpm start will execute on login.
+      To prevent this, edit or remove #{CREW_PREFIX}/etc/bash.d/01-php8-fpm.
+
+    EOF
   end
 end

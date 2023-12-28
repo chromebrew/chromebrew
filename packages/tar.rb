@@ -1,54 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tar < Package
+class Tar < Autotools
   description 'GNU Tar provides the ability to create tar archives, as well as various other kinds of manipulation.'
   homepage 'https://www.gnu.org/software/tar/'
-  version '1.34-1'
+  version '1.35'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/gnu/tar/tar-1.34.tar.xz'
-  source_sha256 '63bebd26879c5e1eea4352f0d03c991f966aeb3ddeb3c7445c902568d5411d28'
+  source_url 'https://ftpmirror.gnu.org/gnu/tar/tar-1.35.tar.xz'
+  source_sha256 '4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.34-1_armv7l/tar-1.34-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.34-1_armv7l/tar-1.34-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.34-1_i686/tar-1.34-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.34-1_x86_64/tar-1.34-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_armv7l/tar-1.35-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_armv7l/tar-1.35-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_i686/tar-1.35-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_x86_64/tar-1.35-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'aac20805fa2ea1680117b88966a7809968eaf3cc76723d2c214a4bdbf12b778f',
-     armv7l: 'aac20805fa2ea1680117b88966a7809968eaf3cc76723d2c214a4bdbf12b778f',
-       i686: '83729fed6d5cbc0599a6bcd8b94b6b527f8dabb77d97051cb4b8494757f870ff',
-     x86_64: '1644c4e2725d8965c3b735ab1f0ac67afd9c0891d6942ca187cf3f80d27a5bad'
+    aarch64: '2c9d3d099f95858ea9eefc15efdf082b1a60f891f1eaeab96973d448caf34351',
+     armv7l: '2c9d3d099f95858ea9eefc15efdf082b1a60f891f1eaeab96973d448caf34351',
+       i686: '52018d0418db20f3d38bfcd200f01e1c0081d9abcd6f1b21b3edd47672247b2a',
+     x86_64: '860624ccd43ece3195914c147943241ccad087a9eefb44ddc32e4120454a871e'
   })
 
-  depends_on 'musl_native_toolchain' => :build
-  depends_on 'musl_zstd' => :build
-  depends_on 'musl_xz' => :build
+  depends_on 'acl' # R
+  depends_on 'glibc' # R
 
-  is_musl
-  is_static
-  no_zstd
-
-  def self.build
-    system "#{MUSL_ENV_OPTIONS} ./configure \
-      --prefix=#{CREW_MUSL_PREFIX} \
-      --libdir=#{CREW_MUSL_PREFIX}/lib \
-      --mandir=#{CREW_PREFIX}/share/man \
-      --with-lzma=xz"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-    # Simplying the following block leads to the symlink not being created properly.
-    Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      FileUtils.ln_s '../share/musl/bin/tar', 'tar'
-    end
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
+  configure_options '--disable-year2038' unless ARCH == 'x86_64'
 end

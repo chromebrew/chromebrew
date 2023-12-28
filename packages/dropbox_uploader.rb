@@ -26,14 +26,20 @@ class Dropbox_uploader < Package
 
   def self.install
     system "sed -i 's,dropbox_uploader.sh,dropbox_uploader,g' dropShell.sh"
-    system 'chmod +x dropShell.sh'
-    system 'chmod +x dropbox_uploader.sh'
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "cp dropShell.sh #{CREW_DEST_PREFIX}/bin/dropshell"
-    system "cp dropbox_uploader.sh #{CREW_DEST_PREFIX}/bin/dropbox_uploader"
-    puts ''
-    puts "Type 'dropbox_uploader' and follow the instructions to finish the installation.".lightblue
-    puts "To execute The Interactive Dropbox SHELL, type 'dropshell'.".lightblue
-    puts ''
+
+    FileUtils.chmod 0o755, %w[dropShell.sh dropbox_uploader.sh]
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+
+    FileUtils.mv 'dropShell.sh', "#{CREW_DEST_PREFIX}/bin/dropshell"
+    FileUtils.mv 'dropbox_uploader.sh', "#{CREW_DEST_PREFIX}/bin/dropbox_uploader"
+  end
+
+  def self.postinstall
+    puts <<~EOT.lightblue
+
+      Type 'dropbox_uploader' and follow the instructions to finish the installation.
+      To execute The Interactive Dropbox SHELL, type 'dropshell'.
+
+    EOT
   end
 end

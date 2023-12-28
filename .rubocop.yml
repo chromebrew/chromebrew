@@ -12,7 +12,7 @@
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.2
   Exclude:
     - 'lib/docopt.rb'
 
@@ -66,6 +66,9 @@ Metrics/ParameterLists:
 Layout/LineContinuationLeadingSpace:
   Enabled: false
 
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
+
 Lint/EmptyBlock:
   Enabled: false
 
@@ -100,6 +103,9 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
 Lint/SuppressedException:
+  Enabled: false
+
+Lint/RedundantSafeNavigation:
   Enabled: false
 
 Layout/LineLength:

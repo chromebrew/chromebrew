@@ -3,39 +3,40 @@ require 'package'
 class Util_linux < Package
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version '2.39.1-py3.11'
+  version '2.39.3-py3.12'
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.1.tar.xz'
-  source_sha256 '890ae8ff810247bd19e274df76e8371d202cda01ad277681b0ea88eeaa00286b'
+  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz'
+  source_sha256 '7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.1_armv7l/util_linux-2.39.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.1_armv7l/util_linux-2.39.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.1_i686/util_linux-2.39.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.1_x86_64/util_linux-2.39.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_armv7l/util_linux-2.39.3-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_armv7l/util_linux-2.39.3-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_i686/util_linux-2.39.3-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_linux/2.39.3-py3.12_x86_64/util_linux-2.39.3-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '4ce6e57e3f5fab54f18764edc9edfd059faf94b45b8e43930aa5f6f879761794',
-     armv7l: '4ce6e57e3f5fab54f18764edc9edfd059faf94b45b8e43930aa5f6f879761794',
-       i686: '9b84a3f15cfa13ef60ae498d0cf9cf1d1ca04bef988da28973367a7b313104f8',
-     x86_64: 'eae35dd81597ed8506bec34aaa7b5050c26e55325110ca4b0567299896f623eb'
+    aarch64: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
+     armv7l: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
+       i686: '082eca25c5a7c714bdfbb906952ecf948458ce1a93edc47a140b6ca9024e4304',
+     x86_64: '23c2ea99c198e5bc5af485b4f090f1257355df07a2e5f32858250c45b7af76e3'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
   depends_on 'glibc' # R
   depends_on 'libcap_ng' # R
   depends_on 'libeconf' # R
   depends_on 'linux_pam' # R
+  depends_on 'lzlib' # R
   depends_on 'ncurses' # R
   depends_on 'pcre2' => :build
   depends_on 'readline' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
-  patchelf
   no_env_options
 
   def self.patch

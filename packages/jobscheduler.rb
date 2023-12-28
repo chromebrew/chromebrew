@@ -25,7 +25,7 @@ class Jobscheduler < Package
   depends_on 'jdk8'
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_PREFIX
     system "cp -r bin/ #{CREW_DEST_PREFIX}"
     system "cp -r lib/ #{CREW_DEST_PREFIX}"
     system "cp -r var_4445/ #{CREW_DEST_PREFIX}"

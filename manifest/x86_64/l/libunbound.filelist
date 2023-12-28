@@ -4,7 +4,7 @@
 /usr/local/lib64/libunbound.la
 /usr/local/lib64/libunbound.so
 /usr/local/lib64/libunbound.so.8
-/usr/local/lib64/libunbound.so.8.1.21
+/usr/local/lib64/libunbound.so.8.1.22
 /usr/local/lib64/pkgconfig/libunbound.pc
 /usr/local/sbin/unbound
 /usr/local/sbin/unbound-anchor

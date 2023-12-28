@@ -6,7 +6,7 @@ class Llvm16_lib < Package
   homepage Llvm16_build.homepage
   version '16.0.6'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib* and llvm_dev* in tandem.
-  puts "#{self} version differs from llvm version #{Llvm16_build.version}".orange if version != Llvm16_build.version.to_s
+  puts "#{self} version differs from llvm version #{Llvm16_build.version}".orange if version != Llvm16_build.version
   license Llvm16_build.license
   compatibility 'all'
   source_url 'SKIP'
@@ -43,7 +43,7 @@ class Llvm16_lib < Package
     @filelist.each do |filename|
       next unless (filename.include?('.so') && filename.include?('libLLVM')) || filename.include?('llvm-strip')
 
-      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
+      @destpath = File.join(CREW_DEST_DIR, filename)
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end

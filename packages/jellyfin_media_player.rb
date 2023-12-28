@@ -6,17 +6,22 @@ require 'package'
 class Jellyfin_media_player < Package
   description 'Jellyfin Desktop Client'
   homepage 'https://github.com/jellyfin/jellyfin-media-player'
-  version '1.9.1'
+  version '1.9.1-1'
   license 'GPL'
-  compatibility 'x86_64'
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.35'
   source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1_x86_64/jellyfin_media_player-1.9.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_x86_64/jellyfin_media_player-1.9.1-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '36c7847fbc29da687a10369e15819249788fdd72b134bf2850f86e7104d7ad93'
+    aarch64: '9da834f707cb3480a2fbd172e8fb0aeb4e2df02b995e6d1fb2cdcb10212b0c67',
+     armv7l: '9da834f707cb3480a2fbd172e8fb0aeb4e2df02b995e6d1fb2cdcb10212b0c67',
+     x86_64: '23648b053d15977a5e9e26a6c3e9c2cee544fab65786a8a553d5bec3002fd1d4'
   })
 
   depends_on 'gcc_lib' # R
@@ -33,17 +38,21 @@ class Jellyfin_media_player < Package
   depends_on 'mpv' # R
   depends_on 'p8_platform' => :build
   depends_on 'protobuf' => :build
-  depends_on 'qtbase' # R
-  depends_on 'qtdeclarative' # R
-  depends_on 'qtlocation' # R
-  depends_on 'qtquickcontrols' # L
-  depends_on 'qtwayland' => :build
-  depends_on 'qtwebchannel' # R
-  depends_on 'qtwebengine' # R
-  depends_on 'qtx11extras' # R
+  depends_on 'qt5_base' # R
+  depends_on 'qt5_declarative' # R
+  depends_on 'qt5_location' # R
+  depends_on 'qt5_quickcontrols' # L
+  depends_on 'qt5_wayland' => :build
+  depends_on 'qt5_webchannel' # R
+  depends_on 'qt5_webengine' # R
+  depends_on 'qt5_x11extras' # R
   depends_on 'shaderc' # L
   depends_on 'sommelier' # L
   depends_on 'zlibpkg' # R
+
+  def self.patch
+    system "sed -i 's/gold/#{CREW_LINKER}/g' CMakeModules/CompilerFlags.cmake"
+  end
 
   def self.build
     system './download_webclient.sh'

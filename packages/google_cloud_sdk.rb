@@ -2,11 +2,11 @@ require 'package'
 require_relative 'gcloud'
 
 class Google_cloud_sdk < Package
-  description Gcloud.description.to_s
-  homepage Gcloud.homepage.to_s
-  version Gcloud.version.to_s
-  license Gcloud.license.to_s
-  compatibility Gcloud.compatibility.to_s
+  description Gcloud.description
+  homepage Gcloud.homepage
+  version Gcloud.version
+  license Gcloud.license
+  compatibility Gcloud.compatibility
 
   is_fake
 

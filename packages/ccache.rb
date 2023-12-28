@@ -3,23 +3,23 @@ require 'package'
 class Ccache < Package
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.samba.org/'
-  version '4.8.2'
+  version '4.8.3'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url "https://github.com/ccache/ccache/releases/download/v#{version}/ccache-#{version}.tar.xz"
-  source_sha256 '3d3fb3f888a5b16c4fa7ee5214cca76348afd6130e8443de5f6f2424f2076a49'
+  source_sha256 'e47374c810b248cfca3665ee1d86c7c763ffd68d9944bc422d9c1872611f2b11'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.2_armv7l/ccache-4.8.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.2_armv7l/ccache-4.8.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.2_i686/ccache-4.8.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.2_x86_64/ccache-4.8.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_armv7l/ccache-4.8.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_armv7l/ccache-4.8.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_i686/ccache-4.8.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_x86_64/ccache-4.8.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '279ee8b2baba8170657f548d0dfef3754acd0dc9c3c58c91a689ef1135ed9f5a',
-     armv7l: '279ee8b2baba8170657f548d0dfef3754acd0dc9c3c58c91a689ef1135ed9f5a',
-       i686: '84eee2802132145654a3e32d16702d502e0e2d8e474322555e251dce37ecb452',
-     x86_64: '3df947b2666aea7f86b1399211799ea182f1a6d5b74d635e8589fff050521bec'
+    aarch64: '8a70dd0613001a060b6abe38ceebd9b5349782161a109776c01fc21290c8d9c4',
+     armv7l: '8a70dd0613001a060b6abe38ceebd9b5349782161a109776c01fc21290c8d9c4',
+       i686: '011dbc560981470a4af0ce7b32278b8601be9efaf354efe8b8ea55ac1cbc61c2',
+     x86_64: '85a098065edc90e41092640acb41a5d37529374c4109b1f1903f22373489b432'
   })
 
   depends_on 'gcc_dev' # R

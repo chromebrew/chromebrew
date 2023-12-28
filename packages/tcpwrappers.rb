@@ -42,7 +42,7 @@ class Tcpwrappers < Package
   end
 
   def self.install
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/sbin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/include"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/man/man3"

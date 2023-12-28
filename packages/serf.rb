@@ -23,7 +23,7 @@ class Serf < Package
   })
 
   depends_on 'scons'
-  depends_on 'aprutil'
+  depends_on 'apr_util'
   depends_on 'openssl'
 
   def self.build

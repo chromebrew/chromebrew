@@ -22,7 +22,7 @@ class Zip < Package
      x86_64: 'c78a63d3630f3dbf637127e1a5a08942fd1da213cde296d33e77823e8547a56c'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'glibc' # R
 
   # adapted from the homebrew recipe as seen at: https://github.com/Homebrew/homebrew-core/blob/master/Formula/zip.rb

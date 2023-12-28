@@ -1,5 +1,5 @@
+---
 name: Generate Repology JSON
-
 on:
   schedule:
     - cron: '0 0 * * *'  # Every day at midnight
@@ -7,16 +7,17 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Generate JSON
         run: |
             sudo docker pull satmandu/crewbuild:amd64
             sudo docker run -t -v $(pwd):/usr/local/json satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
-            crew update &&
-            ruby ../tools/json.rb &&
-            cp repology.json /usr/local/json"
+            crew update && \
+            ruby ../tools/json.rb && \
+            sudo cp repology.json /usr/local/json"
       - name: Upload JSON arifact
         uses: actions/upload-artifact@v3
         with:
           name: repology-json
           path: repology.json
+          if-no-files-found: error

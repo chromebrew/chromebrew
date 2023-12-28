@@ -3,26 +3,26 @@ require 'package'
 class Ffmpeg < Package
   description 'Complete solution to record, convert and stream audio and video'
   homepage 'https://ffmpeg.org/'
-  version '6.0-067ed53-1'
+  version '6.0.1'
   license 'LGPL-2,1, GPL-2, GPL-3, and LGPL-3' # When changing ffmpeg's configure options, make sure this variable is still accurate.
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
-  git_hashtag '067ed535f47373927e8bc2ff8eec2c18014197e5'
+  git_hashtag "n#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-067ed53-1_armv7l/ffmpeg-6.0-067ed53-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-067ed53-1_armv7l/ffmpeg-6.0-067ed53-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0-067ed53-1_x86_64/ffmpeg-6.0-067ed53-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0.1_armv7l/ffmpeg-6.0.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0.1_armv7l/ffmpeg-6.0.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0.1_x86_64/ffmpeg-6.0.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a98c97cc63f7753a7a1852638d85898ccaa0aa504572dfa9a65985368d733cd2',
-     armv7l: 'a98c97cc63f7753a7a1852638d85898ccaa0aa504572dfa9a65985368d733cd2',
-     x86_64: '52b48b3fe38d501d46a39d532f023ef353f4bd5297e5a27c329c34ec7f27c005'
+    aarch64: '92e98d1fa4476fad082e2eaf86e73b2e28d2b1e6e60b0c3ef2fefeaaf3b0f75b',
+     armv7l: '92e98d1fa4476fad082e2eaf86e73b2e28d2b1e6e60b0c3ef2fefeaaf3b0f75b',
+     x86_64: '5e809fb78ca0a2953e73d55a87dbb70772c484bd0aec547558d678a33d75077d'
   })
 
   depends_on 'alsa_lib' # R
   depends_on 'avisynthplus' # ?
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'ccache' => :build
   depends_on 'chromaprint' # ?
   depends_on 'dav1d' # R
@@ -134,9 +134,9 @@ class Ffmpeg < Package
     # ChromeOS awk employs sandbox redirection protections which screw
     # up configure script generation, so use mawk.
     system "sed -i 's/awk/mawk/g' configure"
-    system "CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
-        CXXFLAGS='-pipe -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
-        LDFLAGS='-U_FORTIFY_SOURCE #{@lto}' \
+    system "CFLAGS='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+      CXXFLAGS='#{CREW_ENV_OPTIONS_HASH['CXXFLAGS']} #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+      LDFLAGS='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} #{@lto}' \
         ./configure \
         --arch=#{ARCH} \
         --disable-debug \
@@ -204,10 +204,9 @@ class Ffmpeg < Package
         --enable-shared \
         --enable-version3 \
         #{@mfx}  \
-        --host-cflags='-pipe -fno-stack-protector -U_FORTIFY_SOURCE #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
-        --host-ldflags='-fno-stack-protector -U_FORTIFY_SOURCE #{@lto} #{@arch_cflags}' \
-        #{CREW_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon')}"
-
+        --host-cflags='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+        --host-ldflags='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} #{@lto}' \
+        #{CREW_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '')}"
     system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
         make -j#{CREW_NPROC}"
     system 'make tools/qt-faststart'

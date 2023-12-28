@@ -3,21 +3,21 @@ require 'buildsystems/autotools'
 class Openvpn < Autotools
   description 'OpenVPN is an open source VPN daemon'
   homepage 'https://openvpn.net/'
-  version '2.6.6'
+  version '2.6.8'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/OpenVPN/openvpn/archive/v2.6.6.tar.gz'
-  source_sha256 '81415358b89660c9da98d9cf26fd4942fa806fa8f653529fa100a3090c8a3951'
+  source_url 'https://github.com/OpenVPN/openvpn.git'
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.6.6_armv7l/openvpn-2.6.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.6.6_armv7l/openvpn-2.6.6-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.6.6_x86_64/openvpn-2.6.6-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.6.8_armv7l/openvpn-2.6.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.6.8_armv7l/openvpn-2.6.8-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openvpn/2.6.8_x86_64/openvpn-2.6.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '19b7b4a5ca495f7d3d690246e0e9898c9b09530cea21bd237c673f8bc45b235f',
-     armv7l: '19b7b4a5ca495f7d3d690246e0e9898c9b09530cea21bd237c673f8bc45b235f',
-     x86_64: '92e8c9704b3eb58fbb7dedddb5562e8feb6be1c51a28b19841d8ed54b8365aa4'
+    aarch64: '71aacc0355e0449f445a2ac84c16bba406f0f5f71fa59cc74b0acaf8d17286d6',
+     armv7l: '71aacc0355e0449f445a2ac84c16bba406f0f5f71fa59cc74b0acaf8d17286d6',
+     x86_64: '1a39cb8676cc5dc683e63d3f54ed6ddf05dd2cac44ba8c386a66a6898030b93d'
   })
 
   depends_on 'glibc' # R

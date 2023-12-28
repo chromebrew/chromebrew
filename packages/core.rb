@@ -10,7 +10,7 @@ class Core < Package
   is_fake
 
   depends_on 'brotli'
-  depends_on 'bz2'
+  depends_on 'bzip2'
   depends_on 'c_ares'
   depends_on 'ca_certificates'
   depends_on 'crew_mvdir'
@@ -65,7 +65,6 @@ class Core < Package
   depends_on 'pcre'
   depends_on 'pcre2'
   depends_on 'perl'
-  depends_on 'pixz'
   depends_on 'popt'
   depends_on 'py3_wheel'
   depends_on 'python3'

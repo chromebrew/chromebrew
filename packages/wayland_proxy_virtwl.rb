@@ -4,6 +4,7 @@ class Wayland_proxy_virtwl < Package
   description 'Proxy Wayland connections across the VM boundary'
   homepage 'https://github.com/talex5/wayland-proxy-virtwl'
   version 'd7f58d405514dd031f2f12e402c8c6a58e62a885'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/talex5/wayland-proxy-virtwl.git'
   git_hashtag version
@@ -34,7 +35,7 @@ class Wayland_proxy_virtwl < Package
       # ld.gold breaks logs 0.7.0 builds with ocaml 4.1.2
       FileUtils.cp "#{CREW_PREFIX}/bin/ld.bfd", "#{CREW_DEST_PREFIX}/bin/ld"
     end
-    system "PATH=#{CREW_DEST_PREFIX}/bin:$PATH OPAMROOT=#{@OPAMROOT} opam install . --root=#{@OPAMROOT} --destdir=#{CREW_DEST_DIR}#{@OPAMROOT} -y"
+    system "PATH=#{CREW_DEST_PREFIX}/bin:$PATH OPAMROOT=#{@OPAMROOT} opam install . --root=#{@OPAMROOT} --destdir=#{File.join(CREW_DEST_DIR, @OPAMROOT)} -y"
     FileUtils.rm_f "#{CREW_DEST_PREFIX}/bin/ld"
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       FileUtils.ln_s '../share/opam/bin/wayland-proxy-virtwl', 'wayland-proxy-virtwl'

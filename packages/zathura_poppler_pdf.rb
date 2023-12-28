@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Zathura_poppler_pdf < Package
+class Zathura_poppler_pdf < Meson
   description 'The zathura_poppler_pdf plugin adds PDF support to zathura by using the poppler rendering engine.'
   homepage 'https://pwmt.org/projects/zathura-pdf-poppler/'
-  version '0.3.0'
+  version '0.3.1'
   license 'BSD-3'
-  compatibility 'all'
-  source_url 'https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-0.3.0.tar.xz'
-  source_sha256 'd5cc3a7dae49471b85b503bbb9049c6f8d10903f4a611d721a2e0fefe726d4ed'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://pwmt.org/projects/zathura-pdf-poppler/download/zathura-pdf-poppler-0.3.1.tar.xz'
+  source_sha256 'ee8127532cc6f92bf32d48a6a0d4c61e33cd4df49a3159e57592877ba19e108b'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_armv7l/zathura_poppler_pdf-0.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_armv7l/zathura_poppler_pdf-0.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_i686/zathura_poppler_pdf-0.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.0_x86_64/zathura_poppler_pdf-0.3.0-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.1_armv7l/zathura_poppler_pdf-0.3.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.1_armv7l/zathura_poppler_pdf-0.3.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura_poppler_pdf/0.3.1_x86_64/zathura_poppler_pdf-0.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8f0a5457aa3ed3f5eed6f602b4439967ab6957b3d1e04e7f9a9468d77713f1ea',
-     armv7l: '8f0a5457aa3ed3f5eed6f602b4439967ab6957b3d1e04e7f9a9468d77713f1ea',
-       i686: 'cc192c10e8188c90ca55162e60aba590e0cebe4235ee93e58a9c868115224f3f',
-     x86_64: '2a45979d58fa1ca321cd4432a2591f6e6737212ebef0abb30d9e25f5b8f1b3d0'
+    aarch64: '30137fbf39a3c16b2225251cf93fdc85f0ee65acc6a55d0023679a796f42c17b',
+     armv7l: '30137fbf39a3c16b2225251cf93fdc85f0ee65acc6a55d0023679a796f42c17b',
+     x86_64: '9c81c4fbd46467d5d41af304764b7098f90403a95ce477388861dbd462b48040'
   })
 
   depends_on 'poppler'
-
-  def self.build
-    system "meson  --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} builddir"
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end

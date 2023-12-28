@@ -3,21 +3,21 @@ require 'buildsystems/cmake'
 class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.3'
+  version '1.3.1'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://inkscape.org/gallery/item/42328/inkscape-1.3.tar.xz'
-  source_sha256 'bf4f286b025e0169b8948cc14d5199a9b4c204d761c894c4b48496571ec76307'
+  source_url 'https://inkscape.org/gallery/item/44467/inkscape-1.3.1.tar.xz'
+  source_sha256 '421e0035fe5b3b054a0865dc8235be3f9e6e2dea54190d926b880a4ce05b00d8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3_armv7l/inkscape-1.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3_armv7l/inkscape-1.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3_x86_64/inkscape-1.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_armv7l/inkscape-1.3.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_armv7l/inkscape-1.3.1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_x86_64/inkscape-1.3.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e155f44dcc4ef18ca31f5d440c0adb5dfaa9c35740b1298b9aee93a8062a50dd',
-     armv7l: 'e155f44dcc4ef18ca31f5d440c0adb5dfaa9c35740b1298b9aee93a8062a50dd',
-     x86_64: 'bc033557c8db10dd43f84151ddb1a35c541bad6fbdc6fee3af8f2c320fa51bae'
+    aarch64: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
+     armv7l: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
+     x86_64: 'c2bcaa2c535c20efacfa5974808012696f15d90a74298e82936a0e5b5e8994ef'
   })
 
   depends_on 'atkmm16' # R
@@ -69,6 +69,7 @@ class Inkscape < CMake
   depends_on 'potrace' # R
   depends_on 'py3_cython' => :build
   depends_on 'readline' # R
+  depends_on 'xdg_base' # R
   depends_on 'zlibpkg' # R
 
   cmake_options '-DWITH_IMAGE_MAGICK=OFF \

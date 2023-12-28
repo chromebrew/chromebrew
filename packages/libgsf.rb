@@ -24,7 +24,7 @@ class Libgsf < Package
 
   depends_on 'gdk_pixbuf'
   depends_on 'gtk_doc'
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R

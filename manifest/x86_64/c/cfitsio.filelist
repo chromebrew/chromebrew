@@ -12,6 +12,6 @@
 /usr/local/include/longnam.h
 /usr/local/lib64/libcfitsio.a
 /usr/local/lib64/libcfitsio.so
-/usr/local/lib64/libcfitsio.so.9
-/usr/local/lib64/libcfitsio.so.9.3.49
+/usr/local/lib64/libcfitsio.so.10
+/usr/local/lib64/libcfitsio.so.10.4.3.0
 /usr/local/lib64/pkgconfig/cfitsio.pc

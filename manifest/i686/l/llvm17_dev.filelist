@@ -4145,7 +4145,7 @@
 /usr/local/lib/libclangSerialization.a
 /usr/local/lib/libclang.so
 /usr/local/lib/libclang.so.17
-/usr/local/lib/libclang.so.17.0.3
+/usr/local/lib/libclang.so.17.0.6
 /usr/local/lib/libclangStaticAnalyzerCheckers.a
 /usr/local/lib/libclangStaticAnalyzerCore.a
 /usr/local/lib/libclangStaticAnalyzerFrontend.a
@@ -4194,7 +4194,7 @@
 /usr/local/lib/liblldbIntelFeatures.so.17
 /usr/local/lib/liblldb.so
 /usr/local/lib/liblldb.so.17
-/usr/local/lib/liblldb.so.17.0.3
+/usr/local/lib/liblldb.so.17.0.6
 /usr/local/lib/liblldCOFF.a
 /usr/local/lib/liblldCommon.a
 /usr/local/lib/liblldELF.a

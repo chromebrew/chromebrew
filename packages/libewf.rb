@@ -22,7 +22,7 @@ class Libewf < Package
      x86_64: '383f9c811cddf2c957588c265f7fb31075a4b3fce94e6c4d324f1fd1dd31fc13'
   })
 
-  depends_on 'bz2'
+  depends_on 'bzip2'
   depends_on 'py3_six'
   depends_on 'util_linux'
 

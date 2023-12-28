@@ -9,6 +9,7 @@ class Mimalloc < Package
   git_hashtag '221f96ac2c999ef22414521fb39438018dfa9a41'
   @_ver = (@git_hashtag[0, 6])
   version "dev-slice-#{@_ver}"
+  license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/microsoft/mimalloc.git'
   git_branch 'dev-slice'

@@ -1,38 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Nettle < Package
+class Nettle < Autotools
   description 'Nettle is a cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.'
   homepage 'http://www.lysator.liu.se/~nisse/nettle/'
-  version '3.7.2'
+  version '3.9'
   license 'LGPL-3 or LGPL-2.1'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/nettle/nettle-#{version}.tar.gz"
-  source_sha256 '8d2a604ef1cde4cd5fb77e422531ea25ad064679ff0adf956e78b3352e0ef162'
+  source_sha256 '0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.7.2_armv7l/nettle-3.7.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.7.2_armv7l/nettle-3.7.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.7.2_i686/nettle-3.7.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.7.2_x86_64/nettle-3.7.2-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_armv7l/nettle-3.9-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_armv7l/nettle-3.9-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_i686/nettle-3.9-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_x86_64/nettle-3.9-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd8aa510c56d8e768789bfc85d7d48f4a82929fc09c63dc13164e56b5cd3944ff',
-     armv7l: 'd8aa510c56d8e768789bfc85d7d48f4a82929fc09c63dc13164e56b5cd3944ff',
-       i686: '0cf3d6e72bfb27525f21a8222361637f8899f3dd97abd2ba5eeb970c74835346',
-     x86_64: '8f3f8f16263b2a1ccef1c078ee9443bcbe4f7a08fc9bb66ab1e5cf0715e7df0f'
+    aarch64: '059a8950bbfb7e6e5f6eafd42bf6d2b10cad2fe1a591f9d33f05308c0f9a5961',
+     armv7l: '059a8950bbfb7e6e5f6eafd42bf6d2b10cad2fe1a591f9d33f05308c0f9a5961',
+       i686: '7b0f8d72e3247b515cd413f2eb61e36015be7fe8c8536b6ae476a24a80325c08',
+     x86_64: '0f6c3d1add197df8cb44e490f74c7acc8bc696027f9df9d1e51d476af27c7842'
   })
 
   depends_on 'glibc' # R
   depends_on 'gmp' # R
-  depends_on 'm4'
-  depends_on 'openssl'
-
-  def self.build
-    system "./configure #{CREW_OPTIONS} #{CREW_ENV_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'm4' => :build
+  depends_on 'openssl' => :build
 end

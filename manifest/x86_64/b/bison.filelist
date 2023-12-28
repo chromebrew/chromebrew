@@ -86,7 +86,7 @@
 /usr/local/share/doc/bison/README
 /usr/local/share/doc/bison/THANKS
 /usr/local/share/doc/bison/TODO
-/usr/local/share/info/bison.info.gz
+/usr/local/share/info/bison.info.zst
 /usr/local/share/locale/af/LC_MESSAGES/bison-gnulib.mo
 /usr/local/share/locale/ast/LC_MESSAGES/bison-runtime.mo
 /usr/local/share/locale/be/LC_MESSAGES/bison-gnulib.mo
@@ -196,5 +196,5 @@
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bison-gnulib.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bison.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bison-runtime.mo
-/usr/local/share/man/man1/bison.1.gz
-/usr/local/share/man/man1/yacc.1.gz
+/usr/local/share/man/man1/bison.1.zst
+/usr/local/share/man/man1/yacc.1.zst

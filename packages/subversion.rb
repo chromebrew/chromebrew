@@ -22,7 +22,7 @@ class Subversion < Package
      x86_64: 'c708bfe66744ccb19d7fcf463912a4b27c14fe854d9de83e49cb174baadf5d5e'
   })
 
-  depends_on 'aprutil'
+  depends_on 'apr_util'
   depends_on 'serf'
   depends_on 'sqlite'
 

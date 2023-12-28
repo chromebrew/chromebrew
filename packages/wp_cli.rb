@@ -3,11 +3,11 @@ require 'package'
 class Wp_cli < Package
   description 'The command line interface for WordPress'
   homepage 'https://wp-cli.org/'
-  version '2.8.1'
+  version '2.9.0'
   license 'LGPL-3'
   compatibility 'all'
   source_url "https://github.com/wp-cli/wp-cli/releases/download/v#{version}/wp-cli-#{version}.phar"
-  source_sha256 '8503cd579480d0cb237b4bef35e0c3da11c2ab872a1bc8f26d2da0ca0729b6a7'
+  source_sha256 'af6b7ccc21ed0907cb504db5a059f0e120117905a6017bfdd4375cee3c93d864'
 
   depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
 

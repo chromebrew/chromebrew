@@ -5,7 +5,7 @@ class Tinycore < Package
           This is a wrapper script to be able to execute their .tcz files.'
   homepage 'https://distro.ibiblio.org/tinycorelinux/'
   version '9.0-0'
-  license '' # Figuring out
+  license 'GPL-2'
   compatibility 'all'
   case ARCH
   when 'armv7l', 'aarch64'

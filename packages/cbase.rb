@@ -29,7 +29,7 @@ class Cbase < Package
     case ARCH
     when 'armv7l', 'aarch64'
       Dir.chdir('lib') do
-        system "sed -i '376c if (&vp == NULL)' strings.c"  # change from   if(!vp)   to    if (&vp == NULL),  tested on armv7l
+        system "sed -i '376c if (&vp == NULL)' strings.c" # change from   if(!vp)   to    if (&vp == NULL),  tested on armv7l
       end
     end
 

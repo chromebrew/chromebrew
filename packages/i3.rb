@@ -41,13 +41,14 @@ class I3 < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
       system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
-      system "echo '#!/bin/sh' > starti3"
-      system "echo 'stopsommelier' >> starti3"
-      system "echo 'export DISPLAY=100.115.92.2:0' >> starti3"
-      system "echo 'i3 \"$@\"' >> starti3"
-      system "echo 'export DISPLAY=:0' >> starti3"
-      system "echo 'startsommelier' >> starti3"
-      system 'chmod +x starti3'
+      File.write 'starti3', <<~EOF, perm: 0o755
+        #!/bin/sh
+        stopsommelier
+        export DISPLAY=100.115.92.2:0
+        i3 "$@"
+        export DISPLAY=:0
+        startsommelier
+      EOF
     end
   end
 

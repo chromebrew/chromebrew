@@ -4,24 +4,24 @@ require_relative 'llvm17_build'
 class Llvm17_dev < Package
   description 'LLVM: Everything except libLLVM & llvm-strip'
   homepage Llvm17_build.homepage
-  version '17.0.3'
+  version '17.0.6'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib* and llvm_dev* in tandem.
-  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version.to_s
+  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version
   license Llvm17_build.license
   compatibility 'all'
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.3_armv7l/llvm17_dev-17.0.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.3_armv7l/llvm17_dev-17.0.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.3_i686/llvm17_dev-17.0.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.3_x86_64/llvm17_dev-17.0.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_armv7l/llvm17_dev-17.0.6-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_armv7l/llvm17_dev-17.0.6-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_i686/llvm17_dev-17.0.6-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_x86_64/llvm17_dev-17.0.6-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '0b4a821d32f3793f322ed2bb58720a83969bcdfa1d7393670518df47e410c8df',
-     armv7l: '0b4a821d32f3793f322ed2bb58720a83969bcdfa1d7393670518df47e410c8df',
-       i686: '88d7e35985a8a090fca56c1c02753d217e25f1f486e02d025887a51d9d7e4faa',
-     x86_64: 'ed5c6c99a369fd5aad45c0b8f4273fa6952642d52e5cb2fecc98789fd11efb66'
+    aarch64: '617d966e31c3300adfd2c8ca5ddbc2446a69a853eb2f60727d54359241844b38',
+     armv7l: '617d966e31c3300adfd2c8ca5ddbc2446a69a853eb2f60727d54359241844b38',
+       i686: 'ef650542e7a559299822a365ef229eabd282bd704d1d3b9d3fd7939ae9827238',
+     x86_64: 'b290a8656cbbe76c6519f09d8d557910c0d8e7ddcbbdbba4092d871975562909'
   })
 
   depends_on 'gcc_dev' # R
@@ -53,7 +53,7 @@ class Llvm17_dev < Package
         next
       end
 
-      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{filename}"
+      @destpath = File.join(CREW_DEST_DIR, filename)
       @filename_target = File.realpath(filename)
       FileUtils.install @filename_target, @destpath
     end

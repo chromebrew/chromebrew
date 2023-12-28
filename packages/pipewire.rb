@@ -3,13 +3,13 @@ require 'package'
 class Pipewire < Package
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
-  version = if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
-            '0.3.29'
-          elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
-            '0.3.60'
-          else
-            '0.3.82'
-          end
+  if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
+    version '0.3.29'
+  elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
+    version '0.3.60'
+  else
+    version '1.0.0'
+  end
   compatibility 'all'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
@@ -35,14 +35,14 @@ class Pipewire < Package
     })
   else
     binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.82_armv7l/pipewire-0.3.82-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.82_armv7l/pipewire-0.3.82-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/0.3.82_x86_64/pipewire-0.3.82-chromeos-x86_64.tar.zst'
+      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/1.0.0_armv7l/pipewire-1.0.0-chromeos-armv7l.tar.zst',
+       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/1.0.0_armv7l/pipewire-1.0.0-chromeos-armv7l.tar.zst',
+       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pipewire/1.0.0_x86_64/pipewire-1.0.0-chromeos-x86_64.tar.zst'
     })
     binary_sha256({
-      aarch64: '969d6a68b78689e0559b603566ac0378079343a8c263a2ba19567550c4901414',
-       armv7l: '969d6a68b78689e0559b603566ac0378079343a8c263a2ba19567550c4901414',
-       x86_64: '388b2986dd969340d499273150922713905fb7f9752f0ff1c75c82521d1f03f2'
+      aarch64: '02406faf3daa23bf9505d6660e4687faebf081af06150cd7e373ff4d2d9489d5',
+       armv7l: '02406faf3daa23bf9505d6660e4687faebf081af06150cd7e373ff4d2d9489d5',
+       x86_64: '59f0bc0e2496f3d4792ce9ea74c7c03ab72f954c63c2253cf6ed82ea3dce5279'
     })
   end
 

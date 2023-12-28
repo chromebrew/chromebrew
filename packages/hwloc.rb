@@ -7,6 +7,7 @@ class Hwloc < Package
   description 'Portable Hardware Locality is a portable abstraction of hierarchical architectures'
   homepage 'https://www.open-mpi.org/projects/hwloc/'
   version '2.7.0'
+  license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'https://github.com/open-mpi/hwloc.git'
   git_hashtag "hwloc-#{version}"

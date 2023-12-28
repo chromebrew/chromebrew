@@ -43,6 +43,8 @@
 /usr/local/include/alsa/sound/uapi/tlv.h
 /usr/local/include/alsa/timer.h
 /usr/local/include/alsa/topology.h
+/usr/local/include/alsa/ump.h
+/usr/local/include/alsa/ump_msg.h
 /usr/local/include/alsa/use-case.h
 /usr/local/include/alsa/version.h
 /usr/local/include/asoundlib.h

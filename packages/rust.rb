@@ -3,28 +3,32 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.73.0'
+  version '1.74.1'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag '1.26.0'
+  git_hashtag 'b430816406df4695405344c148c1391b8f66ec1f'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_armv7l/rust-1.73.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_armv7l/rust-1.73.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_i686/rust-1.73.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.73.0_x86_64/rust-1.73.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_armv7l/rust-1.74.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_armv7l/rust-1.74.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_i686/rust-1.74.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_x86_64/rust-1.74.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'bc34b9244fd8344f7c43767ae51735fe65ffe872d9c1082ae9b3d19f1a7359c6',
-     armv7l: 'bc34b9244fd8344f7c43767ae51735fe65ffe872d9c1082ae9b3d19f1a7359c6',
-       i686: '6ed95494307adcd6838905fbb19d35073ae2cdb512edd6d97c834728c43a0c90',
-     x86_64: '3217c3b9c09ab10f37df79d242b8d9f43c8c932b0d7840f2d04f2c4291aa4b64'
+    aarch64: '32435fadad6196f0100da837ae9f092eb81fbb81f31beae80b0aa0ab7fb74f08',
+     armv7l: '32435fadad6196f0100da837ae9f092eb81fbb81f31beae80b0aa0ab7fb74f08',
+       i686: '21fdd8057c41e2be04bf892b056965fce8fd6e7187d485b8b8a586e6cf0c79ed',
+     x86_64: 'd23f1feb11f096b75f07dcadf41826907398733a679389fa432b8cb98b3bc982'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
+
+  no_strip
+  no_shrink
+  print_source_bashrc
 
   def self.install
     ENV['RUSTUP_PERMIT_COPY_RENAME'] = 'unstable'
@@ -51,17 +55,18 @@ class Rust < Package
     FileUtils.ln_sf("#{CREW_PREFIX}/share/rustup", "#{CREW_DEST_HOME}/.rustup")
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    system "sed -i 's,#{CREW_DEST_PREFIX}/share/cargo,#{CREW_PREFIX}/share/cargo,g' #{CREW_DEST_PREFIX}/share/cargo/env"
     @rustconfigenv = <<~RUSTCONFIGEOF
       # Rustup and cargo configuration
       export CARGO_HOME=#{CREW_PREFIX}/share/cargo
       export RUSTUP_HOME=#{CREW_PREFIX}/share/rustup
+      source #{CREW_PREFIX}/share/cargo/env
     RUSTCONFIGEOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/rust", @rustconfigenv)
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @rustcompletionenv = <<~RUSTCOMPLETIONEOF
       # Rustup and cargo bash completion
-      source #{CREW_PREFIX}/share/bash-completion/completions/cargo
       source #{CREW_PREFIX}/share/bash-completion/completions/rustup
     RUSTCOMPLETIONEOF
     File.write("#{CREW_DEST_PREFIX}/etc/bash.d/rust", @rustcompletionenv)
@@ -79,7 +84,7 @@ class Rust < Package
   end
 
   def self.postinstall
-    system "rustup default #{version}"
+    system 'rustup default stable'
   end
 
   def self.remove

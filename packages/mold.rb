@@ -6,33 +6,34 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.3.1'
+  version '2.4.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.1_armv7l/mold-2.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.1_armv7l/mold-2.3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.1_i686/mold-2.3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.3.1_x86_64/mold-2.3.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_i686/mold-2.4.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_x86_64/mold-2.4.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '5b7966e94dab6666e1e86ec0128209c26689fb306f98fb53e9463af99c5802c4',
-     armv7l: '5b7966e94dab6666e1e86ec0128209c26689fb306f98fb53e9463af99c5802c4',
-       i686: '9c588afe02c221a9e69806f2226308ea5bf6a7a8b7318f9d85a6bbc79bab688b',
-     x86_64: '7ab15db9f31bbe7b24168e9aff48e74c0e6d78d0e1080c41f9238fcfdf1882bf'
+    aarch64: '0bce500014118f5d55dad3d41a8dbdc8c2806b8203426a15f088f8d2b28e6b88',
+     armv7l: '0bce500014118f5d55dad3d41a8dbdc8c2806b8203426a15f088f8d2b28e6b88',
+       i686: 'c3e6f963dff77a8c1b0466ddb06a7055ba868dfafb524ce99e3e436802d3209a',
+     x86_64: 'ca15ebacc507f7ce643675f1f763a7086b5f507d4f0dbcf6b9fdb31a4f503d50'
   })
 
-  depends_on 'zlibpkg' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'openssl' # R
-  depends_on 'gcc_lib' # R
   depends_on 'xxhash' => :build
+  depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
   no_env_options
+  print_source_bashrc
 
   def self.build
     # TBB build option due to
@@ -58,10 +59,5 @@ class Mold < Package
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     FileUtils.install 'moldenv', "#{CREW_DEST_PREFIX}/etc/env.d/mold", mode: 0o644
-  end
-
-  def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc\n".lightblue
   end
 end

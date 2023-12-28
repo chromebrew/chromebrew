@@ -3,29 +3,38 @@ require 'package'
 class Github_desktop < Package
   description 'GitHub Desktop is an open source Electron-based GitHub app'
   homepage 'https://desktop.github.com/'
-  version '2.9.6-RC'
+  version '3.3.6-RC2'
   license 'MIT'
-  compatibility 'x86_64'
-  source_url 'https://github.com/shiftkey/desktop/releases/download/release-2.9.6-linux1/GitHubDesktop-linux-2.9.6-linux1.AppImage'
-  source_sha256 'e5187e7c5a9ad1fa3c110c1ec60c9e7f75e0792c3670907741243f7cbea831b0'
-
-  binary_url({})
-  binary_sha256({})
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.29'
+  source_url({
+    aarch64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-armv7l-3.3.6-linux2.AppImage',
+     armv7l: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-armv7l-3.3.6-linux2.AppImage',
+     x86_64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-x86_64-3.3.6-linux2.AppImage'
+  })
+  source_sha256({
+    aarch64: '4508fcbc680408a183fbd00f172e5beccad414e503cefd77163bffff0bd1a31c',
+     armv7l: '4508fcbc680408a183fbd00f172e5beccad414e503cefd77163bffff0bd1a31c',
+     x86_64: 'fe0e8689886939247819dc0ae3d1f242ade555e4990c3ede045ba3493514d250'
+  })
 
   depends_on 'at_spi2_core'
   depends_on 'gdk_pixbuf'
   depends_on 'libcom_err'
   depends_on 'xdg_base'
-  depends_on 'sommelier'
+  depends_on 'gtk3'
+
+  no_compile_needed
+  no_shrink
+  no_strip # Fixes Syntax error: redirection unexpected (expecting ")")
 
   def self.build
-    gd = <<~EOF
+    File.write 'github-desktop.sh', <<~EOF
       #!/bin/bash
       GDK_BACKEND=x11
       cd #{CREW_PREFIX}/share/github_desktop
       ./AppRun "$@"
     EOF
-    File.write('github-desktop.sh', gd)
   end
 
   def self.install
@@ -36,7 +45,7 @@ class Github_desktop < Package
   end
 
   def self.postinstall
-    puts "\nType 'github-desktop' to get started.\n".lightblue
+    ExitMessage.add "Type 'github-desktop' to get started.".lightblue
   end
 
   def self.remove

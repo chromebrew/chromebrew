@@ -11,5 +11,5 @@
 /usr/local/lib/cmake/libssh/libssh-config-version.cmake
 /usr/local/lib/libssh.so
 /usr/local/lib/libssh.so.4
-/usr/local/lib/libssh.so.4.9.4
+/usr/local/lib/libssh.so.4.9.5
 /usr/local/lib/pkgconfig/libssh.pc

@@ -7,11 +7,12 @@ require_relative 'selector'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag
+           :git_branch, :git_hashtag, :min_glibc
 
   boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
-                   :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf, :run_tests
+                   :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf,
+                   :print_source_bashrc, :run_tests
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -146,7 +147,7 @@ class Package
 
   def self.compatible?
     if @compatibility
-      return (@compatibility.casecmp?('all') || @compatibility.include?(ARCH))
+      return @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
     else
       warn "#{name}: Missing `compatibility` field.".lightred
       return false
@@ -206,13 +207,8 @@ class Package
     end
   end
 
-  def self.get_binary_url(architecture)
-    return @binary_url.key?(architecture) ? @binary_url[architecture] : nil
-  end
-
-  def self.get_source_url(architecture)
-    return @source_url.key?(architecture) ? @source_url[architecture] : nil
-  end
+  def self.get_binary_url(architecture) = @binary_url.key?(architecture) ? @binary_url[architecture] : nil
+  def self.get_source_url(architecture) = @source_url.key?(architecture) ? @source_url[architecture] : nil
 
   def self.get_sha256(architecture)
     if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
@@ -224,29 +220,11 @@ class Package
     end
   end
 
-  def self.get_binary_sha256(architecture)
-    return @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
-  end
+  def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
+  def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.get_extract_dir
-    "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
-  end
-
-  def self.is_binary?(architecture)
-    if !@build_from_source && @binary_url && @binary_url.key?(architecture)
-      return true
-    else
-      return false
-    end
-  end
-
-  def self.is_source?(architecture)
-    if is_binary?(architecture) || is_fake?
-      return false
-    else
-      return true
-    end
-  end
+  def self.is_binary?(architecture) = !@build_from_source && @binary_url && @binary_url.key?(architecture)
+  def self.is_source?(architecture) = !(is_binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?
@@ -276,7 +254,7 @@ class Package
       env = @crew_env_options_hash
     end
 
-    cmd_args        = args  # after removing the env hash, all remaining args must be command args
+    cmd_args        = args # after removing the env hash, all remaining args must be command args
     make_threads    = CREW_NPROC
     modded_make_cmd = false
 
@@ -284,7 +262,7 @@ class Package
     unless cmd_args.grep(/-j[[:space:]]?[0-9]+/).any?
       if cmd_args.size == 1
         # involve a shell if the command is passed in one single string
-        cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, "\\1 <<<CREW_NPROC>>>")]
+        cmd_args        = ['bash', '-c', cmd_args[0].sub(/^(make)\b/, '\\1 <<<CREW_NPROC>>>')]
         modded_make_cmd = true
       elsif cmd_args[0] == 'make'
         cmd_args.insert(1, '<<<CREW_NPROC>>>')
@@ -302,7 +280,7 @@ class Package
     rescue RuntimeError => e
       if modded_make_cmd && make_threads != 1
         # retry with single thread if command is `make` and is modified by crew
-        warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") } .join(' ')}\" failed, retrying with \"-j1\"...".yellow
+        warn "Command \"#{cmd_args.map { |arg| arg.sub('<<<CREW_NPROC>>>', "-j#{make_threads}") }.join(' ')}\" failed, retrying with \"-j1\"...".yellow
         make_threads = 1
         retry
       else

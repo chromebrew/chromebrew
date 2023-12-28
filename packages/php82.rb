@@ -3,27 +3,27 @@ require 'package'
 class Php82 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.2.11'
+  version '8.2.14'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.php.net/distributions/php-8.2.11.tar.xz'
-  source_sha256 '29af82e4f7509831490552918aad502697453f0869a579ee1b80b08f9112c5b8'
+  source_url 'https://www.php.net/distributions/php-8.2.14.tar.xz'
+  source_sha256 '763ecd39fcf51c3815af6ef6e43fa9aa0d0bd8e5a615009e5f4780c92705f583'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.11_armv7l/php82-8.2.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.11_armv7l/php82-8.2.11-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.11_x86_64/php82-8.2.11-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.14_armv7l/php82-8.2.14-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.14_armv7l/php82-8.2.14-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php82/8.2.14_x86_64/php82-8.2.14-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '3a484d3bb0113ef3f2382725b82277845e57cade145db2fdaeeb1de9309339ce',
-     armv7l: '3a484d3bb0113ef3f2382725b82277845e57cade145db2fdaeeb1de9309339ce',
-     x86_64: '27fc3e1b39845665227f414d2a3c07db0194bd83cbb25e2d46ce0e7275395228'
+    aarch64: '5238263a9f7579dda27a22dd688ff45d96d5076168910eb3ff8d83936efe7e99',
+     armv7l: '5238263a9f7579dda27a22dd688ff45d96d5076168910eb3ff8d83936efe7e99',
+     x86_64: '03db149e61d36af1d44b1fe8fc83799145784289e043f08c0de7bb58e22bbe68'
   })
 
-  depends_on 'aspell_en'
+  depends_on 'aspell_en' => :build
   depends_on 'aspell' # R
   depends_on 'brotli' # R
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'c_ares' # R
   depends_on 'curl' # R
   depends_on 'e2fsprogs' # R
@@ -190,18 +190,20 @@ class Php82 < Package
   end
 
   def self.postinstall
-    puts
-    puts 'To start the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm start'.lightblue
-    puts
-    puts 'To stop the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm stop'.lightblue
-    puts
-    puts 'To restart the php-fpm service, execute:'.lightblue
-    puts 'php8-fpm restart'.lightblue
-    puts
-    puts 'php8-fpm start will execute on login.'.lightblue
-    puts "To prevent this, edit or remove #{CREW_PREFIX}/etc/bash.d/01-php8-fpm.".lightblue
-    puts
+    ExitMessage.add <<~EOF.lightblue
+
+      To start the php-fpm service, execute:
+      php8-fpm start
+
+      To stop the php-fpm service, execute:
+      php8-fpm stop
+
+      To restart the php-fpm service, execute:
+      php8-fpm restart
+
+      php8-fpm start will execute on login.
+      To prevent this, edit or remove #{CREW_PREFIX}/etc/bash.d/01-php8-fpm.
+
+    EOF
   end
 end

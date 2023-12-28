@@ -9,7 +9,7 @@ jobs:
     outputs:
       category: ${{ steps.changed-file-extensions.outputs.category }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Get changed files
@@ -54,3 +54,7 @@ jobs:
     needs: handoff
     if: contains(needs.handoff.outputs.category, 'YAML')
     uses: ./.github/workflows/YAMLlint.yml
+  unittests:
+    needs: handoff
+    if: contains(needs.handoff.outputs.category, 'Ruby')
+    uses: ./.github/workflows/Unit-Test.yml

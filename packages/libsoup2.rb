@@ -30,7 +30,7 @@ class Libsoup2 < Package
   depends_on 'libevent'
   depends_on 'libpsl' # R
   depends_on 'libxml2' # R
-  # depends_on 'qtbase' => :build
+  # depends_on 'qt5_base' => :build
   depends_on 'sqlite' # R
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R

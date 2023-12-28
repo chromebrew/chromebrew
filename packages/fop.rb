@@ -25,18 +25,15 @@ class Fop < Package
   depends_on 'openjdk8'
 
   def self.install
-    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_LIB_PREFIX}/fop"
-    system "cp -r . #{CREW_DEST_LIB_PREFIX}/fop"
-    FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-      system "echo '#!/bin/bash' > fop"
-      system "echo 'cd #{CREW_LIB_PREFIX}/fop/fop' >> fop"
-      system "echo './fop \"$@\"' >> fop"
-      system "echo 'cd $PWD' >> fop"
-      system 'chmod +x fop'
-    end
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_LIB_PREFIX}/fop #{CREW_DEST_PREFIX}/etc/env.d/]
+    FileUtils.cp_r '.', "#{CREW_DEST_LIB_PREFIX}/fop"
 
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
+    File.write "#{CREW_DEST_PREFIX}/bin/fop", <<~EOF, perm: 0o755
+      #!/bin/bash
+      cd #{CREW_LIB_PREFIX}/fop/fop
+      ./fop "$@"
+    EOF
+
     @fopenv = <<~FOPEOF
       # Fop configuration
       export JAVA_HOME=#{CREW_PREFIX}/jre

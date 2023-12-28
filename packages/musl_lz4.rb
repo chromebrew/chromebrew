@@ -27,7 +27,7 @@ class Musl_lz4 < Package
   is_static
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "#{MUSL_ENV_OPTIONS} make PREFIX=#{CREW_MUSL_PREFIX} \
       LIBDIR=#{CREW_MUSL_PREFIX}/lib \
       BUILD_STATIC=yes \

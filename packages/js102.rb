@@ -2,6 +2,7 @@ require 'package'
 
 class Js102 < Package
   description 'Spidermonkey is a javaScript interpreter with libraries from Mozilla — Version 102'
+  homepage 'https://spidermonkey.dev/'
   version '102.4.0'
   license 'MPL-2.0'
   compatibility 'all'

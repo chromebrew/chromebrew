@@ -41,6 +41,7 @@
 /usr/local/lib/pkgconfig/e2p.pc
 /usr/local/lib/pkgconfig/ext2fs.pc
 /usr/local/lib/pkgconfig/ss.pc
+/usr/local/lib/udev/rules.d/96-e2scrub.rules
 /usr/local/sbin/badblocks
 /usr/local/sbin/debugfs
 /usr/local/sbin/dumpe2fs
@@ -77,6 +78,7 @@
 /usr/local/share/locale/es/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/fi/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/fr/LC_MESSAGES/e2fsprogs.mo
+/usr/local/share/locale/fur/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/hu/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/id/LC_MESSAGES/e2fsprogs.mo
 /usr/local/share/locale/it/LC_MESSAGES/e2fsprogs.mo

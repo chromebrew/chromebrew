@@ -27,18 +27,16 @@ class Miniconda3 < Package
       system 'curl -Ls -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh'
       abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('miniconda.sh')) == 'ea4594241e13a2671c5b158b3b813f0794fe58d514795fbf72a1aad24db918cf'
     end
-    case ARCH
-    when 'i686', 'x86_64'
-      system "bash miniconda.sh -b -p #{CREW_PREFIX}/share/miniconda3"
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
-      FileUtils.cd("#{CREW_DEST_PREFIX}/bin") do
-        system "echo '#!/bin/bash' > conda"
-        system "echo 'cd #{CREW_PREFIX}/share/miniconda3' >> conda"
-        system "echo 'bin/conda \"\$@\"' >> conda"
-        system 'chmod +x conda'
-      end
-      FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share"
-      system "cp -r #{CREW_PREFIX}/share/miniconda3 #{CREW_DEST_PREFIX}/share"
-    end
+
+    system "bash miniconda.sh -b -p #{CREW_PREFIX}/share/miniconda3"
+    FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share]
+
+    File.write "#{CREW_DEST_PREFIX}/bin/conda", <<~EOF, perm: 0o755
+      #!/bin/bash
+      cd #{CREW_PREFIX}/share/miniconda3
+      bin/conda "$@"
+    EOF
+
+    FileUtils.cp "#{CREW_PREFIX}/share/miniconda3", "#{CREW_DEST_PREFIX}/share"
   end
 end

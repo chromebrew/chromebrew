@@ -56,6 +56,9 @@
 /usr/local/bin/llvm-as
 /usr/local/bin/llvm-bcanalyzer
 /usr/local/bin/llvm-bitcode-strip
+/usr/local/bin/llvm-bolt
+/usr/local/bin/llvm-boltdiff
+/usr/local/bin/llvm-bolt-heatmap
 /usr/local/bin/llvm-cat
 /usr/local/bin/llvm-cfi-verify
 /usr/local/bin/llvm-config
@@ -121,11 +124,13 @@
 /usr/local/bin/llvm-undname
 /usr/local/bin/llvm-windres
 /usr/local/bin/llvm-xray
+/usr/local/bin/merge-fdata
 /usr/local/bin/modularize
 /usr/local/bin/not
 /usr/local/bin/nvptx-arch
 /usr/local/bin/obj2yaml
 /usr/local/bin/opt
+/usr/local/bin/perf2bolt
 /usr/local/bin/pp-trace
 /usr/local/bin/run-clang-tidy
 /usr/local/bin/sancov
@@ -4095,6 +4100,9 @@
 /usr/local/lib64/cmake/polly/PollyConfig.cmake
 /usr/local/lib64/cmake/polly/PollyConfigVersion.cmake
 /usr/local/lib64/cmake/polly/PollyExports-all.cmake
+/usr/local/lib64/libbolt_rt_hugify.a
+/usr/local/lib64/libbolt_rt_instr.a
+/usr/local/lib64/libbolt_rt_instr_osx.a
 /usr/local/lib64/libclangAnalysis.a
 /usr/local/lib64/libclangAnalysisFlowSensitive.a
 /usr/local/lib64/libclangAnalysisFlowSensitiveModels.a
@@ -4147,7 +4155,7 @@
 /usr/local/lib64/libclangSerialization.a
 /usr/local/lib64/libclang.so
 /usr/local/lib64/libclang.so.17
-/usr/local/lib64/libclang.so.17.0.3
+/usr/local/lib64/libclang.so.17.0.6
 /usr/local/lib64/libclangStaticAnalyzerCheckers.a
 /usr/local/lib64/libclangStaticAnalyzerCore.a
 /usr/local/lib64/libclangStaticAnalyzerFrontend.a
@@ -4196,7 +4204,7 @@
 /usr/local/lib64/liblldbIntelFeatures.so.17
 /usr/local/lib64/liblldb.so
 /usr/local/lib64/liblldb.so.17
-/usr/local/lib64/liblldb.so.17.0.3
+/usr/local/lib64/liblldb.so.17.0.6
 /usr/local/lib64/liblldCOFF.a
 /usr/local/lib64/liblldCommon.a
 /usr/local/lib64/liblldELF.a
@@ -4235,6 +4243,15 @@
 /usr/local/lib64/libLLVMBitReader.a
 /usr/local/lib64/libLLVMBitstreamReader.a
 /usr/local/lib64/libLLVMBitWriter.a
+/usr/local/lib64/libLLVMBOLTCore.a
+/usr/local/lib64/libLLVMBOLTPasses.a
+/usr/local/lib64/libLLVMBOLTProfile.a
+/usr/local/lib64/libLLVMBOLTRewrite.a
+/usr/local/lib64/libLLVMBOLTRuntimeLibs.a
+/usr/local/lib64/libLLVMBOLTTargetAArch64.a
+/usr/local/lib64/libLLVMBOLTTargetRISCV.a
+/usr/local/lib64/libLLVMBOLTTargetX86.a
+/usr/local/lib64/libLLVMBOLTUtils.a
 /usr/local/lib64/libLLVMBPFAsmParser.a
 /usr/local/lib64/libLLVMBPFCodeGen.a
 /usr/local/lib64/libLLVMBPFDesc.a

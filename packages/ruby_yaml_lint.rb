@@ -4,6 +4,7 @@ class Ruby_yaml_lint < Package
   description 'Check if your YAML files can be loaded.'
   homepage 'https://rubygems.org/gems/yaml-lint'
   version '0.0.10-ruby-3.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 

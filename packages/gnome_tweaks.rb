@@ -2,6 +2,7 @@ require 'buildsystems/meson'
 
 class Gnome_tweaks < Meson
   description 'Graphical interface for advanced GNOME 3 settings Tweak Tool'
+  homepage 'https://wiki.gnome.org/Apps/Tweaks'
   @_ver = '42.0'
   version "#{@_ver}-py3.12"
   license 'GPL-3+ and CC0-1.0'

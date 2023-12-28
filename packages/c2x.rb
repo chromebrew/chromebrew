@@ -9,8 +9,9 @@ class C2x < Package
   source_url 'http://www.goedeke.net/c2x-cmd/c2x-cmd-linux-amd64.tar.gz'
   source_sha256 'f09655c732ae694f22791be89d836ddde05d3690ec44a6f096aa6bf870b2924b'
 
-  depends_on 'gtk3'
-  depends_on 'wget'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'openjdk21' # R
 
   no_compile_needed
 

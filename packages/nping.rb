@@ -23,7 +23,7 @@ class Nping < Package
   })
 
   depends_on 'buildessential' => :build
-  depends_on 'filecmd' => :build   # configure uses file
+  depends_on 'filecmd' => :build # configure uses file
 
   def self.build
     # fixup "/usr/bin/file" -> "file" in the configure script

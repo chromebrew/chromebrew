@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Alive < Package
+class Alive < Autotools
   description 'Automatic login and keep-alive utility for Internet connections.'
   homepage 'https://www.gnu.org/software/alive/'
-  version '2.0.3'
+  version '2.0.5'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/alive/alive-2.0.3.tar.xz'
-  source_sha256 '8bf41150ade07b86a806ce40ce99509713e2abcc92c4182a8d961aa3cf757014'
+  source_url 'https://ftpmirror.gnu.org/alive/alive-2.0.5.tar.lz'
+  source_sha256 '94cf3dbffd9644405ed4944f94a7bb989674321607318c5a35d5fabc56a75089'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.3_armv7l/alive-2.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.3_armv7l/alive-2.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.3_i686/alive-2.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alive/2.0.3_x86_64/alive-2.0.3-chromeos-x86_64.tar.xz'
-  })
-  binary_sha256({
-    aarch64: '71b2d2e62c4858eecc2a7d11cc1b767b48587597714de6e6b89b2890c743e026',
-     armv7l: '71b2d2e62c4858eecc2a7d11cc1b767b48587597714de6e6b89b2890c743e026',
-       i686: '9a06f4e646d7e9c1a0ce43c596c0b32e46024013c0867b7aa5b64c3a431261ea',
-     x86_64: 'a123e91cd331380092a1b598e87c4252fa38c71094d17263432c3329c543c904'
-  })
+  binary_url({})
+  binary_sha256({})
 
-  depends_on 'guile'
+  depends_on 'guile' # R
+  depends_on 'inetutils' # L
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+  def self.preflight
+    puts 'You need to be in the VT-2 shell for the install of alive to work.'.lightblue
+    puts 'Make sure you have used Ctrl-Alt-{F2/Right arrow/Refresh} to switch to VT-2.'.lightblue
+    puts "Then login as 'chronos' and install alive with 'crew install alive'.".lightblue
+    puts 'You can then switch back to your regular Chromeos windows with Ctrl-Alt-{F1/Left arrow}.'.lightblue
   end
 end

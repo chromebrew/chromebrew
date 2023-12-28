@@ -46,7 +46,7 @@ class Netpbm < Package
     system "sed -i 's,/usr/bin/perl,#{CREW_PREFIX}/bin/perl,' #{CREW_DEST_PREFIX}/bin/manweb"
     system "sed -i 's,/etc/manweb.conf,#{CREW_PREFIX}/etc/manweb.conf,' #{CREW_DEST_PREFIX}/bin/manweb"
     FileUtils.mv "#{CREW_DEST_PREFIX}/man", "#{CREW_DEST_PREFIX}/share"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX.to_s if ARCH == 'x86_64'
+    FileUtils.mv "#{CREW_DEST_PREFIX}/lib", CREW_DEST_LIB_PREFIX if ARCH == 'x86_64'
     FileUtils.rm_f '/tmp/netpbm'
   end
 end

@@ -26,7 +26,7 @@ class Mandb < Package
 
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
-  depends_on 'groff'
+  depends_on 'groff' # L
   depends_on 'libpipeline' # R
   depends_on 'libseccomp' # R
   depends_on 'zlibpkg' # R

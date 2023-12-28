@@ -1,9 +1,7 @@
 require 'package'
 
 class Python < Package
-  property :python_build_options
-  property :python_install_options
-  property :no_svem
+  property :python_build_options, :python_install_options, :python_install_extras, :no_svem
 
   def self.build
     #@required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
@@ -25,12 +23,13 @@ class Python < Package
 
   def self.install
     if File.file?('setup.py')
-      @py_setup_install_options = @no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM.to_s : PY_SETUP_INSTALL_OPTIONS.to_s
+      @py_setup_install_options = @no_svem ? PY_SETUP_INSTALL_OPTIONS_NO_SVEM : PY_SETUP_INSTALL_OPTIONS
       puts "Python install options being used: #{@py_setup_install_options} #{@python_install_options}".orange
       system "MAKEFLAGS=-j#{CREW_NPROC} python3 setup.py install #{@py_setup_install_options} #{@python_install_options}"
     else
       puts "Python install options being used: #{PY3_INSTALLER_OPTIONS}".orange
       system "MAKEFLAGS=-j#{CREW_NPROC} python3 -m installer #{PY3_INSTALLER_OPTIONS}"
     end
+    eval @python_install_extras if @python_install_extras
   end
 end

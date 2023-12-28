@@ -22,7 +22,7 @@ class Python2 < Package
      x86_64: 'b733a3aa7b34b2737cc1cc433e3fe2ddb99c014837268fde3b5697f79da2510c'
   })
 
-  depends_on 'bz2' # R
+  depends_on 'bzip2' # R
   depends_on 'expat' # R
   depends_on 'glibc' # R
   depends_on 'libdb' # R

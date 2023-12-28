@@ -1,0 +1,16 @@
+/usr/local/bin/zoxide
+/usr/local/etc/env.d/zoxide.bash
+/usr/local/etc/env.d/zoxide.init
+/usr/local/share/completions/README.md
+/usr/local/share/completions/_zoxide
+/usr/local/share/completions/zoxide.bash
+/usr/local/share/completions/zoxide.elv
+/usr/local/share/completions/zoxide.fish
+/usr/local/share/completions/_zoxide.ps1
+/usr/local/share/completions/zoxide.ts
+/usr/local/share/man/man1/zoxide.1.zst
+/usr/local/share/man/man1/zoxide-add.1.zst
+/usr/local/share/man/man1/zoxide-import.1.zst
+/usr/local/share/man/man1/zoxide-init.1.zst
+/usr/local/share/man/man1/zoxide-query.1.zst
+/usr/local/share/man/man1/zoxide-remove.1.zst

@@ -41,19 +41,19 @@ DOC = <<~DOCOPT
     crew build [options] [-k|--keep] <name> ...
     crew const [options] [<name> ...]
     crew deps [options] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <name> ...
-    crew download [options] <name> ...
+    crew download [options] [-s|--source] <name> ...
     crew files [options] <name> ...
     crew help [<command>] [<subcommand>]
-    crew install [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
+    crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] <name> ...
     crew list [options] (available|installed|compatible|incompatible)
     crew postinstall [options] <name> ...
     crew prop
-    crew reinstall [options] [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] <name> ...
+    crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] <name> ...
     crew remove [options] <name> ...
     crew search [options] [<name> ...]
     crew sysinfo [options]
     crew update [options] [<compatible>]
-    crew upgrade [options] [-k|--keep] [-s|--build-from-source] [<name> ...]
+    crew upgrade [options] [-k|--keep] [-s|--source] [<name> ...]
     crew whatprovides [options] <pattern> ...
 
     -b --include-build-deps  Include build dependencies in output.
@@ -62,7 +62,7 @@ DOC = <<~DOCOPT
     -d --no-color            Disable colors even if standard out is a tty.
     -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
     -L --license             Display the crew license.
-    -s --build-from-source   Build from source even if pre-compiled binary exists.
+    -s --source              Build or download from source even if pre-compiled binary exists.
     -S --recursive-build     Build from source, including all dependencies, even if pre-compiled binaries exist.
     -v --verbose             Show extra information.
     -V --version             Display the crew version.
@@ -116,13 +116,45 @@ String.use_color = args['--color'] || !args['--no-color']
 
 @opt_keep      = args['--keep']
 @opt_verbose   = args['--verbose']
-@opt_src       = args['--build-from-source']
+@opt_source    = args['--source']
 @opt_recursive = args['--recursive-build']
 
 # Verbose options
 @fileutils_verbose = @opt_verbose
 @verbose           = @opt_verbose ? 'v' : ''
 @short_verbose     = @opt_verbose ? '-v' : ''
+
+class ExitMessage
+  @messages = []
+
+  def self.add(msg, print_last: false)
+    # Use the print_last option to allow important messages (like sommelier) to print at the bottom
+    # Usage:
+    # ExitMessage.add 'Last Message', print_last: true
+    @messages << [msg.lightcyan, print_last]
+  end
+
+  def self.handle_messages(msg)
+    puts msg
+    # Delete printed message from array & only print each message once.
+    @messages.reject! {|x| x.include? msg }
+  end
+
+  def self.print
+    # print first non-print_last messages, then print_last messages.
+    # &:last represent to print_last
+    handle_messages(@messages.reject(&:last).map(&:first).first) until @messages.reject(&:last).map(&:first).empty?
+    handle_messages(@messages.select(&:last).map(&:first).first) until @messages.select(&:last).map(&:first).empty?
+  end
+end
+
+at_exit do
+  unless $ERROR_INFO.nil? || ($ERROR_INFO.is_a?(SystemExit) && $ERROR_INFO.success?)
+    code = $ERROR_INFO.is_a?(SystemExit) ? $ERROR_INFO.status : 1
+  end
+  # Print exit messages.
+  ExitMessage.print
+end
 
 def load_json
   # load_json(): (re)load device.json
@@ -182,13 +214,13 @@ def set_package(pkgName, pkgPath)
 end
 
 def list_packages
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     print_package filename
   end
 end
 
 def list_available
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName      = File.basename(filename, '.rb')
     filelist     = File.join(CREW_META_PATH, "#{pkgName}.filelist")
     notInstalled = !File.file?(filelist)
@@ -220,18 +252,18 @@ def list_installed
     end
     print "\n"
   else
-    Dir["#{CREW_META_PATH}*.directorylist"].map do |f|
+    Dir["#{CREW_META_PATH}/*.directorylist"].map do |f|
       File.basename(f, '.directorylist').lightgreen
     end
   end
 end
 
 def list_compatible(compat = true)
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
       if compat
-        if File.file? "#{CREW_META_PATH}#{pkgName}.filelist"
+        if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
           puts pkgName.lightgreen
         else
           puts pkgName
@@ -246,7 +278,7 @@ end
 def generate_compatible
   puts 'Generating compatible packages...'.orange if @opt_verbose
   @device[:compatible_packages] = []
-  Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |filename|
+  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     begin
       set_package pkgName, filename
@@ -254,23 +286,7 @@ def generate_compatible
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
     puts "Checking #{pkgName} for compatibility.".orange if @opt_verbose
-    # If compatibility property does not exist, check if a binary package
-    # exists, and if not, see if at least a source url exists.
-    @compatibility = true
-    @binary_url = ''
-    @url = ''
-    if @pkg.compatibility.nil?
-      @binary_url = @pkg.get_binary_url(@device[:architecture])
-      @url = @pkg.get_url(@device[:architecture])
-      unless @binary_url
-        puts "#{pkgName} is missing compatibility information".red
-        # puts "url: #{@url}".green
-        # If no source package is available, then package is not compatible.
-        @compatibility = false unless @url
-        puts "#{pkgName} compatibility is #{@compatibility}" if @opt_verbose
-      end
-    end
-    if @pkg.compatible? && @compatibility
+    if @pkg.compatible?
       # add to compatible packages
       puts "Adding #{pkgName} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
@@ -278,7 +294,7 @@ def generate_compatible
       puts "#{pkgName} is not a compatible package.".lightred
     end
   end
-  File.open("#{CREW_CONFIG_PATH}device.json", 'w') do |file|
+  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
@@ -301,11 +317,11 @@ end
 
 def regexp_search(pkgPat)
   re = Regexp.new(pkgPat, true)
-  results = Dir["#{CREW_PACKAGES_PATH}*.rb"] \
+  results = Dir["#{CREW_PACKAGES_PATH}/*.rb"] \
             .select  { |f| File.basename(f, '.rb') =~ re } \
             .each    { |f| print_package(f, @opt_verbose) }
   if results.empty?
-    Dir["#{CREW_PACKAGES_PATH}*.rb"].each do |packagePath|
+    Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
       begin
         set_package packageName, packagePath
@@ -349,8 +365,9 @@ def help(pkgName = nil)
   when 'download'
     puts <<~EOT
       Download package(s).
-      Usage: crew download [-v|--verbose] <package1> [<package2> ...]
+      Usage: crew download [-s|--source] [-v|--verbose] <package1> [<package2> ...]
       Download package(s) to `CREW_BREW_DIR` (#{CREW_BREW_DIR}), but don't install.
+      If `-s` or `--source` is present, the source will be downloaded instead of the binary.
       If `-v` or `--verbose` is present, extra information will be displayed.
     EOT
   when 'files'
@@ -362,10 +379,10 @@ def help(pkgName = nil)
   when 'install'
     puts <<~EOT
       Install package(s).
-      Usage: crew install [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+      Usage: crew install [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
       The package(s) must have a valid name.  Use `crew search <pattern>` to search for packages to install.
       If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
-      If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary.
+      If `-s` or `--source` is present, the package(s) will be compiled instead of installed via binary.
       If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
       If `-v` or `--verbose` is present, extra information will be displayed.
     EOT
@@ -432,6 +449,8 @@ def help(pkgName = nil)
         puts "Use the 'no_zstd' property for the alternate xz compression algorithm."
       when 'patchelf'
         puts "Use the 'patchelf' property for patchelf execution."
+      when 'print_source_bashrc'
+        puts "Prints 'source ~/.bashrc' message at end of install."
       when 'run_tests'
         puts "Use the 'run_tests' property to execute make check tests."
       else
@@ -446,9 +465,9 @@ def help(pkgName = nil)
   when 'reinstall'
     puts <<~EOT
       Remove and install package(s).
-      Usage: crew reinstall [-k|--keep] [-s|--build-from-source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+      Usage: crew reinstall [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
       If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
-      If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of installed via binary.
+      If `-s` or `--source` is present, the package(s) will be compiled instead of installed via binary.
       If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
       If `-v` or `--verbose` is present, extra information will be displayed.
     EOT
@@ -491,10 +510,10 @@ def help(pkgName = nil)
   when 'upgrade'
     puts <<~EOT
       Update package(s).
-      Usage: crew upgrade [-v|--verbose] [-s|--build-from-source] <package1> [<package2> ...]
+      Usage: crew upgrade [-v|--verbose] [-s|--source] <package1> [<package2> ...]
       If package(s) are omitted, all packages will be updated.  Otherwise, specific package(s) will be updated.
       Use `crew update` to update crew itself.
-      If `-s` or `--build-from-source` is present, the package(s) will be compiled instead of upgraded via binary.
+      If `-s` or `--source` is present, the package(s) will be compiled instead of upgraded via binary.
       If `-v` or `--verbose` is present, extra information will be displayed.
     EOT
   when 'whatprovides'
@@ -509,7 +528,7 @@ def help(pkgName = nil)
 end
 
 def cache_build
-  @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+  @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
   if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
     @pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
@@ -622,17 +641,17 @@ def update
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tools"
+    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tests tools"
     system 'git sparse-checkout reapply'
 
-    system "git fetch #{CREW_REPO} #{CREW_BRANCH}"
-    system 'git reset --hard FETCH_HEAD'
+    system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
+    system 'git reset --hard FETCH_HEAD', exception: true
   end
 
   puts 'Package lists, crew, and library updated.'
 
   # Do any fixups necessary after crew has updated from git.
-  load "#{CREW_LOCAL_REPO_ROOT}/lib/fixup.rb"
+  load "#{CREW_LIB_PATH}/lib/fixup.rb"
 
   # update compatible packages
   generate_compatible
@@ -737,7 +756,7 @@ def upgrade(*pkgs, build_from_source: false)
   to_be_upgraded.each do |pkgName|
     search(pkgName)
     print_current_package
-    @pkg.build_from_source = (build_from_source or CREW_BUILD_FROM_SOURCE.eql?(1))
+    @pkg.build_from_source = (build_from_source || CREW_BUILD_FROM_SOURCE)
 
     puts "Updating #{@pkg.name}..." if @opt_verbose
 
@@ -758,15 +777,15 @@ def download
   sha256sum = @pkg.get_sha256(@device[:architecture])
   @extract_dir = @pkg.get_extract_dir
 
-  @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+  @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
   return { source:, filename: } if CREW_CACHE_BUILD && File.file?(@build_cachefile)
 
   if !url
     abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
-  elsif !source
-    puts 'Precompiled binary available, downloading...'
   elsif @pkg.build_from_source
     puts 'Downloading source...'
+  elsif !source
+    puts 'Precompiled binary available, downloading...'
   elsif url.casecmp?('SKIP')
     puts 'Skipping source download...'
   else
@@ -845,14 +864,14 @@ def download
         # No git branch specified, just a git commit or tag
         if @pkg.git_branch.to_s.empty?
           abort('No Git branch, commit, or tag specified!').lightred if @pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
+          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
+          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = "#{CREW_CACHE_DIR}#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst"
+          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst"
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
@@ -913,7 +932,7 @@ def unpack(meta)
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
-    @build_cachefile = "#{CREW_CACHE_DIR}#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
     if CREW_CACHE_BUILD && File.file?(@build_cachefile) && File.file?("#{@build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
@@ -926,28 +945,21 @@ def unpack(meta)
       case File.basename meta[:filename]
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
-        _verbopt = @opt_verbose ? '-v' : '-qq'
-        system 'unzip', _verbopt, '-d', @extract_dir, meta[:filename], exception: true
-      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz)$/i
+        system 'unzip', (@opt_verbose ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
+      when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system "tar x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+        system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
       when /\.tar\.zst$/i
         puts "Unpacking archive using 'tar', this may take a while..."
-        system "tar -Izstd -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+        system 'tar', '-Izstd', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
       when /\.deb$/i
         puts "Unpacking '.deb' archive, this may take a while..."
         DebUtils.extract_deb(meta[:filename], /data\..*/)
-        system "tar x#{@verbose}f data.* -C #{@extract_dir}", exception: true
+        system 'tar', "-x#{@verbose}f", *Dir['data.*'], '-C', @extract_dir, exception: true
       when /\.AppImage$/i
         puts "Unpacking 'AppImage' archive, this may take a while..."
         FileUtils.chmod 0o755, meta[:filename], verbose: @fileutils_verbose
-        Dir.chdir @extract_dir do
-          system "../#{meta[:filename]} --appimage-extract", exception: true
-        end
-      when /\.tpxz$/i
-        abort 'Pixz is needed for this install. Please install it with \'crew install pixz\''.lightred unless File.file?("#{CREW_PREFIX}/bin/pixz")
-        puts "Unpacking 'tpxz' archive using 'tar', this may take a while..."
-        system "tar -Ipixz -x#{@verbose}f #{meta[:filename]} -C #{@extract_dir}", exception: true
+        system "../#{meta[:filename]}", '--appimage-extract', chdir: @extract_dir, exception: true
       end
     end
     if meta[:source]
@@ -981,7 +993,7 @@ def build_and_preconfigure(target_dir)
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
-      load "#{CREW_LIB_PATH}lib/musl.rb" if @pkg.is_musl?
+      load "#{CREW_LIB_PATH}/lib/musl.rb" if @pkg.is_musl?
     end
 
     @pkg.in_build = true
@@ -1010,6 +1022,10 @@ end
 
 def pre_flight
   puts 'Performing pre-flight checks...'
+  if defined?(@pkg.min_glibc) && @pkg.min_glibc && (Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new(@pkg.min_glibc))
+    puts "\n#{@pkg.name.capitalize} requires glibc #{@pkg.min_glibc} and above.".lightred
+    abort "ChromeOS is currently running glibc #{LIBC_VERSION}.\n".lightred
+  end
   @pkg.preflight
 end
 
@@ -1024,6 +1040,13 @@ def pre_install(dest_dir)
 end
 
 def post_install
+  if @pkg.print_source_bashrc?
+    ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
+
+      To finish the installation, please execute the following:
+      source ~/.bashrc
+    PRINT_SOURCE_BASHRC_EOT
+  end
   # return unless the postinstall function was defined by the package recipe
   return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")
 
@@ -1048,15 +1071,15 @@ end
 def determine_conflicts(dir, pkg)
   conflicts = []
   if File.file?("#{dir}/filelist")
-    if File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+    if File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
       puts 'Checking for conflicts with files from installed packages...'.orange
-      conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}*.filelist`
+      conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{dir}/filelist #{CREW_META_PATH}/*.filelist`
       conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
       conflicts.reject!(&:empty?)
     end
-  elsif File.file?("#{CREW_META_PATH}#{pkg}.filelist")
+  elsif File.file?(File.join(CREW_META_PATH, "#{pkg}.filelist"))
     puts "Checking for conflicts of #{pkg} with files from installed packages...".orange
-    conflictscmd = `grep --exclude=#{CREW_META_PATH}#{pkg}.filelist --exclude=#{CREW_META_PATH}\\\*_build.filelist -Fxf #{CREW_META_PATH}#{pkg}.filelist #{CREW_META_PATH}*.filelist`
+    conflictscmd = `grep --exclude=#{File.join(CREW_META_PATH, "#{pkg}.filelist")} --exclude=#{CREW_META_PATH}/\\\*_build.filelist -Fxf #{File.join(CREW_META_PATH, "#{pkg}.filelist")} #{CREW_META_PATH}/*.filelist`
     conflicts = conflictscmd.gsub(/(\.filelist|#{CREW_META_PATH})/, '').split("\n")
     conflicts.reject!(&:empty?)
   end
@@ -1091,7 +1114,7 @@ def prepare_package(destdir)
     # locations.
     if File.exist?("#{CREW_DEST_PREFIX}/man")
       puts "Files in #{CREW_PREFIX}/man will be moved to #{CREW_MAN_PREFIX}.".orange
-      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX.to_s
+      FileUtils.mkdir_p CREW_DEST_MAN_PREFIX
       FileUtils.mv Dir["#{CREW_DEST_PREFIX}/man/*"], "#{CREW_DEST_MAN_PREFIX}/"
       Dir.rmdir "#{CREW_DEST_PREFIX}/man" if Dir.empty?("#{CREW_DEST_PREFIX}/man")
     end
@@ -1103,16 +1126,15 @@ def prepare_package(destdir)
     end
     # Remove the "share/info/dir.*" file since it causes conflicts.
     FileUtils.rm_f Dir["#{CREW_DEST_PREFIX}/share/info/dir*"]
-    compress_doc CREW_DEST_MAN_PREFIX.to_s
+    compress_doc CREW_DEST_MAN_PREFIX
     compress_doc "#{CREW_DEST_PREFIX}/share/info"
 
     # Allow postbuild to override the filelist contents
     @pkg.postbuild
 
     # create file list
-    system "find .#{CREW_PREFIX} -type f > ../filelist"
-    system "find .#{CREW_PREFIX} -type l >> ../filelist"
-    system 'cut -c2- ../filelist | sort -o filelist'
+    system "find .#{CREW_PREFIX} -type f,l | cut -c2- | sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_PREFIX)
+    system "find .#{HOME} -type f,l | cut -c2- | sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_HOME)
 
     if Dir.exist?(CREW_LOCAL_MANIFEST_PATH) && File.writable?(CREW_LOCAL_MANIFEST_PATH)
       FileUtils.mkdir_p "#{CREW_LOCAL_MANIFEST_PATH}/#{ARCH}/#{@pkg.name.chr.downcase}"
@@ -1153,7 +1175,11 @@ def prepare_package(destdir)
     abort 'Exiting due to above errors.'.lightred if @_errors
 
     # create directory list
-    system "find .#{CREW_PREFIX} -type d | cut -c2- | tail -n +2", out: 'dlist'
+    # Remove CREW_PREFIX and HOME from the generated directorylist.
+    @crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
+    @home_escaped = HOME.gsub('/', '\/')
+    system "find .#{CREW_PREFIX} -type d | cut -c2- | sed '0,/#{@crew_prefix_escaped}/{/#{@crew_prefix_escaped}/d}'| sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_PREFIX)
+    system "find .#{HOME} -type d | cut -c2- | sed '0,/#{@home_escaped}/{/#{@home_escaped}/d}' | sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_HOME)
 
     strip_dir destdir
 
@@ -1365,8 +1391,8 @@ def install_package(pkgdir)
     # install filelist, dlist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', "#{CREW_META_PATH}#{@pkg.name}.directorylist", verbose: @fileutils_verbose
-    FileUtils.mv 'filelist', "#{CREW_META_PATH}#{@pkg.name}.filelist", verbose: @fileutils_verbose
+    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: @fileutils_verbose
+    FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: @fileutils_verbose
 
     unless CREW_NOT_LINKS || @pkg.no_links?
       @brokensymlinks = nil
@@ -1400,8 +1426,6 @@ end
 def resolve_dependencies_and_install
   @resolve_dependencies_and_install = 1
 
-  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
-
   # Process preflight block to see if package should even
   # be downloaded or installed.
   pre_flight
@@ -1428,11 +1452,30 @@ def resolve_dependencies_and_install
       FileUtils.mkdir_p "#{CREW_BREW_DIR}/dest" # this is a little ugly, feel free to find a better way
     end
   end
+
+  # Warn of possible segfaults for older packages on AMD StoneyRidge platforms
+  # Family 21 identifies AMD Bulldozer/Piledriver/Steamroller/Excavator µArchs
+  puts <<~EOT.yellow if CREW_IS_AMD && CPUINFO['cpu family'] == '21'
+    Notice: You are running an AMD StoneyRidge device; due to some bugs some
+    older packages may fail with a segmentation fault and need to be rebuilt.
+
+    If this happens, please report them to:
+    https://github.com/chromebrew/chromebrew/issues
+
+    Otherwise, rebuilding from source (1) or disabling ASLR (2) usually solves the issue:
+    (1) Run `crew reinstall -s #{@pkg.name}` to rebuild the package from source,
+    __OR__
+    (2) Execute `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` to disable ASLR.
+    Warning: Disabling ASLR may create security issues, use it at your own risk!
+  EOT
+
   puts "#{@pkg.name.capitalize} installed!".lightgreen
   @resolve_dependencies_and_install = 0
 end
 
 def resolve_dependencies
+  abort "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}) :/".lightred unless @pkg.compatible?
+
   @dependencies = @pkg.get_deps_list(return_attr: true)
 
   # compare dependency version with required range (if installed)
@@ -1533,7 +1576,7 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  FileUtils.cp "#{CREW_CONFIG_PATH}device.json", "#{CREW_CONFIG_PATH}device.json.tmp"
+  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp"
 
   # remove it just before the file copy
   if @pkg.in_upgrade
@@ -1556,13 +1599,13 @@ def install
 
   # add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256(@device[:architecture]))
-  File.open("#{CREW_CONFIG_PATH}device.json.tmp", 'w') do |file|
+  File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
   # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp "#{CREW_CONFIG_PATH}device.json.tmp", "#{CREW_CONFIG_PATH}device.json"
-  FileUtils.rm "#{CREW_CONFIG_PATH}device.json.tmp"
+  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
+  FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
 end
 
 def resolve_dependencies_and_build
@@ -1653,14 +1696,14 @@ end
 
 def remove(pkgName)
   # make sure the package is actually installed
-  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  unless @device[:installed_packages].any? { |pkg| pkg[:name] == pkgName } || File.file?(File.join(CREW_META_PATH, "#{pkgName}.filelist"))
     puts "Package #{pkgName} isn't installed.".lightred
     return
   end
 
   # Perform any operations required prior to package removal.
   search pkgName, true
-  @pkg.preremove
+  @pkg.preremove unless @in_fixup
 
   # Preserve CREW_ESSENTIAL_FILES and make sure they are real files
   # and not symlinks, because preserving symlinked libraries does not
@@ -1675,10 +1718,10 @@ def remove(pkgName)
     end
   end
 
-  conflicts = determine_conflicts(Dir.pwd, @pkg.name)
+  conflicts = determine_conflicts(Dir.pwd, pkgName)
 
   # if the filelist exists, remove the files and directories installed by the package
-  if File.file?("#{CREW_META_PATH}#{pkgName}.filelist")
+  if File.file?(File.join(CREW_META_PATH, "#{pkgName}.filelist"))
     Dir.chdir CREW_CONFIG_PATH do
       # remove all files installed by the package
       File.foreach("meta/#{pkgName}.filelist", chomp: true) do |line|
@@ -1723,7 +1766,7 @@ def remove(pkgName)
   File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
 
   search pkgName, true
-  @pkg.remove
+  @pkg.remove unless @in_fixup
 
   puts "#{pkgName.capitalize} removed!".lightgreen
 end
@@ -1732,7 +1775,7 @@ def print_deps_tree(args)
   warn 'Walking through dependencies recursively, this may take a while...', ''
 
   # depHash: Hash object returned by @pkg.get_deps_list
-  depHash = @pkg.get_deps_list(hash: true, include_build_deps: (args['--include-build-deps'] || 'auto'), exclude_buildessential: args['--exclude-buildessential'])
+  depHash = @pkg.get_deps_list(hash: true, include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
 
   # convert returned hash to json and format it
   jsonView = JSON.pretty_generate(depHash)
@@ -1832,7 +1875,7 @@ def deps_command(args)
       print_deps_tree(args)
     else
       # print dependencies according to the install order if --tree is not specified
-      puts @pkg.get_deps_list(include_build_deps: (args['--include-build-deps'] || 'auto'), exclude_buildessential: args['--exclude-buildessential'])
+      puts @pkg.get_deps_list(include_build_deps: args['--include-build-deps'] || 'auto', exclude_buildessential: args['--exclude-buildessential'])
     end
   end
 end
@@ -1841,6 +1884,7 @@ def download_command(args)
   args['<name>'].each do |name|
     @pkgName = name
     search @pkgName
+    @pkg.build_from_source = true if @opt_source
     print_current_package @opt_verbose
     download
   end
@@ -1869,7 +1913,7 @@ def install_command(args)
     @pkgName = name
     search @pkgName
     print_current_package true
-    @pkg.build_from_source = true if @opt_src || @opt_recursive || (CREW_BUILD_FROM_SOURCE == '1')
+    @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     resolve_dependencies_and_install
   end
 end
@@ -1907,7 +1951,7 @@ def reinstall_command(args)
     @pkgName = name
     search @pkgName
     print_current_package
-    @pkg.build_from_source = true if @opt_src || @opt_recursive || (CREW_BUILD_FROM_SOURCE == '1')
+    @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkgName
 
     @pkg.in_upgrade = true
@@ -1977,7 +2021,7 @@ def update_command(args)
   end
 end
 
-def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_src)
+def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
 
 def whatprovides_command(args)
   args['<pattern>'].each do |name|
@@ -1990,11 +2034,15 @@ def is_command(name) = !!!name[/^[-<]/]
 Signal.trap('INT') do
   if CREW_CACHE_FAILED_BUILD && CREW_CACHE_ENABLED && @pkg.in_build
     cache_build
-    abort 'The build was interrupted. The build directory was cached.'.lightred
+    ExitMessage.add 'The build was interrupted. The build directory was cached.'.lightred
+    exit 1
   end
-  abort 'Interrupted.'.lightred
+  ExitMessage.add 'Interrupted!'.lightred
+  exit 1
 end
 
 load_json
 command_name = args.select { |k, v| v && is_command(k) }.keys[0]
 send("#{command_name}_command", args)
+
+ExitMessage.add 'Crew is exiting.' if @opt_verbose

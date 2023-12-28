@@ -5,7 +5,7 @@
 /usr/local/share/doc/dmidecode/AUTHORS
 /usr/local/share/doc/dmidecode/NEWS
 /usr/local/share/doc/dmidecode/README
-/usr/local/share/man/man8/biosdecode.8.gz
-/usr/local/share/man/man8/dmidecode.8.gz
-/usr/local/share/man/man8/ownership.8.gz
-/usr/local/share/man/man8/vpddecode.8.gz
+/usr/local/share/man/man8/biosdecode.8.zst
+/usr/local/share/man/man8/dmidecode.8.zst
+/usr/local/share/man/man8/ownership.8.zst
+/usr/local/share/man/man8/vpddecode.8.zst

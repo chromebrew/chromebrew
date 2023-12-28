@@ -6,26 +6,27 @@ require 'package'
 class Duktape < Package
   description 'Embeddable Javascript engine'
   homepage 'https://duktape.org/'
-  version '2.6.0'
-  compatibility 'all'
+  version '2.7.0'
   license 'MIT'
+  compatibility 'all'
   source_url "https://duktape.org/duktape-#{version}.tar.xz"
-  source_sha256 '96f4a05a6c84590e53b18c59bb776aaba80a205afbbd92b82be609ba7fe75fa7'
+  source_sha256 '90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_armv7l/duktape-2.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_armv7l/duktape-2.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_i686/duktape-2.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.6.0_x86_64/duktape-2.6.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_armv7l/duktape-2.7.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_armv7l/duktape-2.7.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_i686/duktape-2.7.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_x86_64/duktape-2.7.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'c734d031be824d9bdaa17efe89f88a527e585fdd4665ec406251d0451ad1b77f',
-     armv7l: 'c734d031be824d9bdaa17efe89f88a527e585fdd4665ec406251d0451ad1b77f',
-       i686: '5e4bfca44b948812f3f20730ff779c7d92358dca39e958105a011cbb856069da',
-     x86_64: '5f5787b8f9893d2b838e41c9391022f7fd9f0f7bacf45059b40e061ec7654ed1'
+    aarch64: '9d20adb7b8948b3f8109de81c39ef477b3ec1d50fe7adde2ad6029d49f834bc7',
+     armv7l: '9d20adb7b8948b3f8109de81c39ef477b3ec1d50fe7adde2ad6029d49f834bc7',
+       i686: '30b287b4a28f993215998be0bfe145d134d60dac3656e19da78dd9ea76d1db7e',
+     x86_64: '11fa2e446783af1230ba5df5e628460a8875a35c0e542de441778fa7301d9826'
   })
 
   depends_on 'setconf' => :build
+  depends_on 'glibc' # R
 
   def self.build
     FileUtils.mv 'Makefile.sharedlibrary', 'Makefile'
@@ -34,15 +35,15 @@ class Duktape < Package
     system "setconf Makefile INSTALL_PREFIX #{CREW_DEST_PREFIX}"
     @duktapepc = <<~DUKTAPEPCEOF
       prefix=#{CREW_PREFIX}
-      exec_prefix=\${prefix}
+      exec_prefix=${prefix}
       libdir=#{CREW_LIB_PREFIX}
-      includedir=\${prefix}/include
+      includedir=${prefix}/include
 
       Name: duktape
       Description: Embeddable Javascript engine
       Version: #{version}
-      Libs: -L\${libdir} -lduktape
-      Cflags: -I\${includedir}
+      Libs: -L${libdir} -lduktape
+      Cflags: -I${includedir}
     DUKTAPEPCEOF
     File.write('duktape.pc', @duktapepc)
   end

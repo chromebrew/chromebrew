@@ -4,6 +4,7 @@ class Ruby_mdl < Package
   description 'Style checker/lint tool for markdown files.'
   homepage 'https://github.com/markdownlint/markdownlint'
   version '0.12.0-ruby-3.2'
+  license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
 

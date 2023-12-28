@@ -6,6 +6,7 @@ class Wallstreet < Package
   version '1.21'
   license 'Apache-2.0'
   compatibility 'all'
+  min_glibc '2.32'
   source_url 'https://httpredir.debian.org/debian/pool/main/h/hollywood/hollywood_1.21.orig.tar.gz'
   source_sha256 '793ef1f022b376e131c75e05ff1b55a010c0f4193225bb79018855cb9ab89acb'
 
@@ -15,7 +16,7 @@ class Wallstreet < Package
   depends_on 'libcaca'
   depends_on 'newsboat'
   depends_on 'ticker'
-  depends_on 'wget'
+  depends_on 'wget2'
   depends_on 'w3m'
 
   def self.install

@@ -1,32 +1,33 @@
-### list of all tools
+# Tools
 
-Tools to build pre-build binary easy.
+This directory contains a number of tools used to assist in the development of Chromebrew.
 
-- Makefile
-- build.sh
-- genpkgname.sh
+## Check for packages needing updates
 
-Tools to upload and update URL in package files.
+These are a collection of scripts and files used to detect if packages need an update.
+Coverage is spotty, and the majority of packages are unsuppported.
 
-- upload_github_release.sh
+- `check.rb`
+- `check_updates.sh`
+- `compare_packages.sh`
+- `core_packages.txt`
+- `packages.yaml`
 
-Tools to check URL or SHA stuff from packages files.
+## Add missing dependencies to packages
 
-- create_sha_list.sh
-- create_url_list.sh
+This script adds missing dependencies to packages by checking their library dependencies and what crew package provides them.
 
-Obsolete tools to create package.  Now, we use `crew build`.
+- `getrealdeps.sh`
 
-- create_package.sh
+## Upload package binaries to GitLab
 
-### Usage of Makefile
+This script uploads built packages to GitLab, where we currently host precompiled binaries.
 
-Make working directory on your Chromebook and copy files there.
-Then, performs `make` there.
+- `gl.sh`
 
-```bash
-mkdir /usr/local/work
-cd /usr/local/work
-cp your-path-for-original-tool-directory/{Makefile,build.sh,genpkgname.sh} .
-make -k
-```
+## Valid licenses for packages
+
+This file contains guidance on formatting conventions for what to put in the license field of packages.
+There is also a rough list of what licenses are used, although this is incomplete and a little outdated.
+
+- `licenses.txt`

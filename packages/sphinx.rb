@@ -1,25 +1,25 @@
-require 'package'
+require 'buildsystems/pip'
 
-class Sphinx < Package
+class Sphinx < Pip
   description 'Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.'
   homepage 'https://www.sphinx-doc.org/'
-  version '4.2.0'
+  @_ver = '4.9.1'
+  version "#{@_ver}-py3.12"
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/sphinx-doc/sphinx.git'
-  git_hashtag "v#{version}"
+  source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.2.0_armv7l/sphinx-4.2.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.2.0_armv7l/sphinx-4.2.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.2.0_i686/sphinx-4.2.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.2.0_x86_64/sphinx-4.2.0-chromeos-x86_64.tpxz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.9.1-py3.12_armv7l/sphinx-4.9.1-py3.12-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.9.1-py3.12_armv7l/sphinx-4.9.1-py3.12-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.9.1-py3.12_i686/sphinx-4.9.1-py3.12-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sphinx/4.9.1-py3.12_x86_64/sphinx-4.9.1-py3.12-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ce5176f31393c5a931194b48cf89d05e9632715ecd3595bfdb2a3fa18cb21705',
-     armv7l: 'ce5176f31393c5a931194b48cf89d05e9632715ecd3595bfdb2a3fa18cb21705',
-       i686: 'be2f188aedc8feed484b01481e22c7204e204a4507cf08463ff98c24c7ede010',
-     x86_64: '402759f1a3779046dc33c905391d3d937d2371ba5f046c8aaa67b655504933aa'
+    aarch64: '3ddd6e74e262d728dbd2f14232bc4656f9697a10e97f690671964bfbd3135be1',
+     armv7l: '3ddd6e74e262d728dbd2f14232bc4656f9697a10e97f690671964bfbd3135be1',
+       i686: '1f27ff0a89d9808f6128770381bf2e4e3d09113c53fb0509d7de40c27fd4d899',
+     x86_64: 'd9704da781764f0a74a18a963ad304ca3667abd981e778de646d243e72086277'
   })
 
   depends_on 'py3_jinja2'
@@ -38,12 +38,4 @@ class Sphinx < Package
   depends_on 'py3_packaging'
   depends_on 'py3_snowballstemmer'
   depends_on 'python3' => :build
-
-  def self.build
-    system "python3 setup.py build #{PY3_SETUP_BUILD_OPTIONS}"
-  end
-
-  def self.install
-    system "python3 setup.py install #{PY_SETUP_INSTALL_OPTIONS}"
-  end
 end

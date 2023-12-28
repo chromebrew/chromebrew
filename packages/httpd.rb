@@ -23,7 +23,7 @@ class Httpd < Package
   })
 
   depends_on 'apr'
-  depends_on 'aprutil'
+  depends_on 'apr_util'
   depends_on 'libtool'
   depends_on 'pcre'
   depends_on 'expat'

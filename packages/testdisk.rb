@@ -22,7 +22,7 @@ class Testdisk < Package
      x86_64: 'c861cb658e05fee9728239a404f4aaf87617fb19805f9ec2f183f6a9ff6205db'
   })
 
-  depends_on 'apriconv'
+  depends_on 'apr_iconv'
   depends_on 'compressdoc' => :build
   depends_on 'libjpeg'
   depends_on 'ncurses'
