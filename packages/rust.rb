@@ -3,11 +3,11 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.74.1'
+  version '1.75.0'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'
-  git_hashtag 'b430816406df4695405344c148c1391b8f66ec1f'
+  git_hashtag '5162a98938a13276604c8d656a22f1cf34b36415'
 
   binary_url({
     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_armv7l/rust-1.74.1-chromeos-armv7l.tar.zst',
