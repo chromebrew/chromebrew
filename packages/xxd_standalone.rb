@@ -3,23 +3,23 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'http://www.vim.org'
-  version '9.0.1145'
+  version '9.0.2190'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_i686/xxd_standalone-9.0.1145-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_x86_64/xxd_standalone-9.0.1145-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.2190_armv7l/xxd_standalone-9.0.2190-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.2190_armv7l/xxd_standalone-9.0.2190-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.2190_i686/xxd_standalone-9.0.2190-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.2190_x86_64/xxd_standalone-9.0.2190-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6f0371fe309b6acf9075ffe3d5c39565d265aafd2aae6915aa8e7d34e2497833',
-     armv7l: '6f0371fe309b6acf9075ffe3d5c39565d265aafd2aae6915aa8e7d34e2497833',
-       i686: 'c18efdaca3fdc3c670a044e105968d34c214347763500fd329a0fa610c09f2da',
-     x86_64: 'b6b4db1208ebb85772a18f08aea51a5644cebb8e62473b3008c29e8bd61c153a'
+    aarch64: '5ebd390959bcd9e4e44df22c19a84b76a4b3339d6b024044f1923994969f52b3',
+     armv7l: '5ebd390959bcd9e4e44df22c19a84b76a4b3339d6b024044f1923994969f52b3',
+       i686: '3e03e41e5b59c1368b26dbd96ec44a52455311b519f7a918445ac15c11084ccb',
+     x86_64: '77864c03b920834ddeb263a236ff75d4ebb30f61755c54bdbce89c64a7e785ab'
   })
 
   depends_on 'glibc' # R
