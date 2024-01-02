@@ -3,21 +3,21 @@ require 'buildsystems/autotools'
 class Gvim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)'
   homepage 'http://www.vim.org/'
-  version '9.0.1863'
+  version '9.0.2091'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1863_armv7l/gvim-9.0.1863-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1863_armv7l/gvim-9.0.1863-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.1863_x86_64/gvim-9.0.1863-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.2091_armv7l/gvim-9.0.2091-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.2091_armv7l/gvim-9.0.2091-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.0.2091_x86_64/gvim-9.0.2091-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '119196db7a16e55a6d1e21520e53ea1b9596fe3dc71e68f4016ba0ddb367cbc1',
-     armv7l: '119196db7a16e55a6d1e21520e53ea1b9596fe3dc71e68f4016ba0ddb367cbc1',
-     x86_64: '1494873a3dcf265b0f564455d03d40b5ffa6b66c77130c555dd1bf34c12613d9'
+    aarch64: 'bd34acbf2a673e8cbdf2c44e2a24fcc613e93aea9ee0cf4d488884191fd55cd4',
+     armv7l: 'bd34acbf2a673e8cbdf2c44e2a24fcc613e93aea9ee0cf4d488884191fd55cd4',
+     x86_64: 'e533c377ab75ec6bcc644ac81c2d947ca79721a836864fb43056b0041ff2c7c7'
   })
 
   depends_on 'acl' # R

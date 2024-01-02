@@ -2,6 +2,7 @@
 /usr/local/share/vim/vim90/autoload/adacomplete.vim
 /usr/local/share/vim/vim90/autoload/ada.vim
 /usr/local/share/vim/vim90/autoload/bitbake.vim
+/usr/local/share/vim/vim90/autoload/cargo.vim
 /usr/local/share/vim/vim90/autoload/ccomplete.vim
 /usr/local/share/vim/vim90/autoload/clojurecomplete.vim
 /usr/local/share/vim/vim90/autoload/contextcomplete.vim
@@ -9,9 +10,12 @@
 /usr/local/share/vim/vim90/autoload/csscomplete.vim
 /usr/local/share/vim/vim90/autoload/decada.vim
 /usr/local/share/vim/vim90/autoload/dist/ft.vim
+/usr/local/share/vim/vim90/autoload/dist/json.vim
 /usr/local/share/vim/vim90/autoload/dist/man.vim
 /usr/local/share/vim/vim90/autoload/dist/script.vim
+/usr/local/share/vim/vim90/autoload/dist/vim9.vim
 /usr/local/share/vim/vim90/autoload/dist/vimindent.vim
+/usr/local/share/vim/vim90/autoload/dist/vim.vim
 /usr/local/share/vim/vim90/autoload/freebasic.vim
 /usr/local/share/vim/vim90/autoload/getscript.vim
 /usr/local/share/vim/vim90/autoload/gnat.vim
@@ -28,6 +32,7 @@
 /usr/local/share/vim/vim90/autoload/python3complete.vim
 /usr/local/share/vim/vim90/autoload/pythoncomplete.vim
 /usr/local/share/vim/vim90/autoload/python.vim
+/usr/local/share/vim/vim90/autoload/racket.vim
 /usr/local/share/vim/vim90/autoload/README.txt
 /usr/local/share/vim/vim90/autoload/RstFold.vim
 /usr/local/share/vim/vim90/autoload/rubycomplete.vim
@@ -404,6 +409,7 @@
 /usr/local/share/vim/vim90/ftplugin/cvsrc.vim
 /usr/local/share/vim/vim90/ftplugin/debchangelog.vim
 /usr/local/share/vim/vim90/ftplugin/debcontrol.vim
+/usr/local/share/vim/vim90/ftplugin/debsources.vim
 /usr/local/share/vim/vim90/ftplugin/denyhosts.vim
 /usr/local/share/vim/vim90/ftplugin/desktop.vim
 /usr/local/share/vim/vim90/ftplugin/dictconf.vim
@@ -446,6 +452,7 @@
 /usr/local/share/vim/vim90/ftplugin/gitignore.vim
 /usr/local/share/vim/vim90/ftplugin/gitrebase.vim
 /usr/local/share/vim/vim90/ftplugin/gitsendemail.vim
+/usr/local/share/vim/vim90/ftplugin/git.vim
 /usr/local/share/vim/vim90/ftplugin/go.vim
 /usr/local/share/vim/vim90/ftplugin/gpg.vim
 /usr/local/share/vim/vim90/ftplugin/gprof.vim
@@ -474,6 +481,7 @@
 /usr/local/share/vim/vim90/ftplugin/javascript.vim
 /usr/local/share/vim/vim90/ftplugin/java.vim
 /usr/local/share/vim/vim90/ftplugin/jproperties.vim
+/usr/local/share/vim/vim90/ftplugin/json5.vim
 /usr/local/share/vim/vim90/ftplugin/jsonc.vim
 /usr/local/share/vim/vim90/ftplugin/jsonnet.vim
 /usr/local/share/vim/vim90/ftplugin/json.vim
@@ -481,6 +489,7 @@
 /usr/local/share/vim/vim90/ftplugin/julia.vim
 /usr/local/share/vim/vim90/ftplugin/j.vim
 /usr/local/share/vim/vim90/ftplugin/kconfig.vim
+/usr/local/share/vim/vim90/ftplugin/kotlin.vim
 /usr/local/share/vim/vim90/ftplugin/kwt.vim
 /usr/local/share/vim/vim90/ftplugin/ld.vim
 /usr/local/share/vim/vim90/ftplugin/less.vim
@@ -531,6 +540,7 @@
 /usr/local/share/vim/vim90/ftplugin/nroff.vim
 /usr/local/share/vim/vim90/ftplugin/nsis.vim
 /usr/local/share/vim/vim90/ftplugin/objc.vim
+/usr/local/share/vim/vim90/ftplugin/objdump.vim
 /usr/local/share/vim/vim90/ftplugin/obse.vim
 /usr/local/share/vim/vim90/ftplugin/ocaml.vim
 /usr/local/share/vim/vim90/ftplugin/occam.vim
@@ -609,6 +619,7 @@
 /usr/local/share/vim/vim90/ftplugin/swayconfig.vim
 /usr/local/share/vim/vim90/ftplugin/swiftgyb.vim
 /usr/local/share/vim/vim90/ftplugin/swift.vim
+/usr/local/share/vim/vim90/ftplugin/swig.vim
 /usr/local/share/vim/vim90/ftplugin/sysctl.vim
 /usr/local/share/vim/vim90/ftplugin/systemd.vim
 /usr/local/share/vim/vim90/ftplugin/systemverilog.vim
@@ -640,9 +651,10 @@
 /usr/local/share/vim/vim90/ftplugin/vim.vim
 /usr/local/share/vim/vim90/ftplugin/vroom.vim
 /usr/local/share/vim/vim90/ftplugin/vue.vim
-/usr/local/share/vim/vim90/ftplugin/wast.vim
+/usr/local/share/vim/vim90/ftplugin/wat.vim
 /usr/local/share/vim/vim90/ftplugin/wget2.vim
 /usr/local/share/vim/vim90/ftplugin/wget.vim
+/usr/local/share/vim/vim90/ftplugin/xcompose.vim
 /usr/local/share/vim/vim90/ftplugin/xdefaults.vim
 /usr/local/share/vim/vim90/ftplugin/xf86conf.vim
 /usr/local/share/vim/vim90/ftplugin/xhtml.vim
@@ -730,6 +742,7 @@
 /usr/local/share/vim/vim90/indent/jsp.vim
 /usr/local/share/vim/vim90/indent/julia.vim
 /usr/local/share/vim/vim90/indent/j.vim
+/usr/local/share/vim/vim90/indent/kotlin.vim
 /usr/local/share/vim/vim90/indent/krl.vim
 /usr/local/share/vim/vim90/indent/ld.vim
 /usr/local/share/vim/vim90/indent/less.vim
@@ -800,6 +813,7 @@
 /usr/local/share/vim/vim90/indent/tf.vim
 /usr/local/share/vim/vim90/indent/tilde.vim
 /usr/local/share/vim/vim90/indent/treetop.vim
+/usr/local/share/vim/vim90/indent/typescriptreact.vim
 /usr/local/share/vim/vim90/indent/typescript.vim
 /usr/local/share/vim/vim90/indent/vb.vim
 /usr/local/share/vim/vim90/indent/verilog.vim
@@ -808,7 +822,7 @@
 /usr/local/share/vim/vim90/indent/vim.vim
 /usr/local/share/vim/vim90/indent/vroom.vim
 /usr/local/share/vim/vim90/indent/vue.vim
-/usr/local/share/vim/vim90/indent/wast.vim
+/usr/local/share/vim/vim90/indent/wat.vim
 /usr/local/share/vim/vim90/indent/xf86conf.vim
 /usr/local/share/vim/vim90/indent/xhtml.vim
 /usr/local/share/vim/vim90/indent/xinetd.vim
@@ -1058,6 +1072,7 @@
 /usr/local/share/vim/vim90/syntax/datascript.vim
 /usr/local/share/vim/vim90/syntax/dcd.vim
 /usr/local/share/vim/vim90/syntax/dcl.vim
+/usr/local/share/vim/vim90/syntax/deb822sources.vim
 /usr/local/share/vim/vim90/syntax/debchangelog.vim
 /usr/local/share/vim/vim90/syntax/debcontrol.vim
 /usr/local/share/vim/vim90/syntax/debcopyright.vim
@@ -1218,6 +1233,7 @@
 /usr/local/share/vim/vim90/syntax/jgraph.vim
 /usr/local/share/vim/vim90/syntax/jovial.vim
 /usr/local/share/vim/vim90/syntax/jproperties.vim
+/usr/local/share/vim/vim90/syntax/json5.vim
 /usr/local/share/vim/vim90/syntax/jsonc.vim
 /usr/local/share/vim/vim90/syntax/json.vim
 /usr/local/share/vim/vim90/syntax/jsp.vim
@@ -1226,6 +1242,7 @@
 /usr/local/share/vim/vim90/syntax/kconfig.vim
 /usr/local/share/vim/vim90/syntax/kivy.vim
 /usr/local/share/vim/vim90/syntax/kix.vim
+/usr/local/share/vim/vim90/syntax/kotlin.vim
 /usr/local/share/vim/vim90/syntax/krl.vim
 /usr/local/share/vim/vim90/syntax/kscript.vim
 /usr/local/share/vim/vim90/syntax/kwt.vim
@@ -1297,6 +1314,7 @@
 /usr/local/share/vim/vim90/syntax/modsim3.vim
 /usr/local/share/vim/vim90/syntax/modula2.vim
 /usr/local/share/vim/vim90/syntax/modula3.vim
+/usr/local/share/vim/vim90/syntax/mojo.vim
 /usr/local/share/vim/vim90/syntax/monk.vim
 /usr/local/share/vim/vim90/syntax/moo.vim
 /usr/local/share/vim/vim90/syntax/mplayerconf.vim
@@ -1340,6 +1358,7 @@
 /usr/local/share/vim/vim90/syntax/openvpn.vim
 /usr/local/share/vim/vim90/syntax/opl.vim
 /usr/local/share/vim/vim90/syntax/ora.vim
+/usr/local/share/vim/vim90/syntax/pacmanlog.vim
 /usr/local/share/vim/vim90/syntax/pamconf.vim
 /usr/local/share/vim/vim90/syntax/pamenv.vim
 /usr/local/share/vim/vim90/syntax/papp.vim
@@ -1459,6 +1478,7 @@
 /usr/local/share/vim/vim90/syntax/shared/context-data-interfaces.vim
 /usr/local/share/vim/vim90/syntax/shared/context-data-metafun.vim
 /usr/local/share/vim/vim90/syntax/shared/context-data-tex.vim
+/usr/local/share/vim/vim90/syntax/shared/debversions.vim
 /usr/local/share/vim/vim90/syntax/shared/hgcommitDiff.vim
 /usr/local/share/vim/vim90/syntax/shared/README.txt
 /usr/local/share/vim/vim90/syntax/shared/typescriptcommon.vim
@@ -1523,6 +1543,7 @@
 /usr/local/share/vim/vim90/syntax/swayconfig.vim
 /usr/local/share/vim/vim90/syntax/swiftgyb.vim
 /usr/local/share/vim/vim90/syntax/swift.vim
+/usr/local/share/vim/vim90/syntax/swig.vim
 /usr/local/share/vim/vim90/syntax/syncolor.vim
 /usr/local/share/vim/vim90/syntax/synload.vim
 /usr/local/share/vim/vim90/syntax/syntax.vim
@@ -1598,7 +1619,7 @@
 /usr/local/share/vim/vim90/syntax/vroom.vim
 /usr/local/share/vim/vim90/syntax/vsejcl.vim
 /usr/local/share/vim/vim90/syntax/vue.vim
-/usr/local/share/vim/vim90/syntax/wast.vim
+/usr/local/share/vim/vim90/syntax/wat.vim
 /usr/local/share/vim/vim90/syntax/wdiff.vim
 /usr/local/share/vim/vim90/syntax/wdl.vim
 /usr/local/share/vim/vim90/syntax/webmacro.vim
@@ -1612,6 +1633,7 @@
 /usr/local/share/vim/vim90/syntax/wsml.vim
 /usr/local/share/vim/vim90/syntax/wvdial.vim
 /usr/local/share/vim/vim90/syntax/xbl.vim
+/usr/local/share/vim/vim90/syntax/xcompose.vim
 /usr/local/share/vim/vim90/syntax/xdefaults.vim
 /usr/local/share/vim/vim90/syntax/xf86conf.vim
 /usr/local/share/vim/vim90/syntax/xhtml.vim
@@ -1660,6 +1682,7 @@
 /usr/local/share/vim/vim90/tools/xcmdsrv_client.c
 /usr/local/share/vim/vim90/tutor/README.el.cp737.txt
 /usr/local/share/vim/vim90/tutor/README.el.txt
+/usr/local/share/vim/vim90/tutor/README.ru.utf-8.txt
 /usr/local/share/vim/vim90/tutor/README.txt
 /usr/local/share/vim/vim90/tutor/tutor
 /usr/local/share/vim/vim90/tutor/tutor.bar
