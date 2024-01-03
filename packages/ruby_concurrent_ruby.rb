@@ -7,4 +7,6 @@ class Ruby_concurrent_ruby < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+
+  conflicts_ok
 end
