@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Vim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'http://www.vim.org/'
-  version '9.0.2190'
+  version '9.1.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.0.2190_armv7l/vim-9.0.2190-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.0.2190_armv7l/vim-9.0.2190-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.0.2190_i686/vim-9.0.2190-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.0.2190_x86_64/vim-9.0.2190-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_armv7l/vim-9.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_armv7l/vim-9.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_i686/vim-9.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_x86_64/vim-9.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '013e6100f6a8fd650da65acc99218f26fab884578b736f4d6d6c1762bc374da5',
-     armv7l: '013e6100f6a8fd650da65acc99218f26fab884578b736f4d6d6c1762bc374da5',
-       i686: '1d055ca34ed43c552e29a1bf517ccdb677fac7f6f916f7fc462d8a5af469a455',
-     x86_64: '617c9bbcbcc21b6c74899c713299c71d32e92af874018e7219b07783b256e9cc'
+    aarch64: '0f02ba1fd86f9f7ea9c188f544a397d1a47c6bec7de718be00b485fcdec90621',
+     armv7l: '0f02ba1fd86f9f7ea9c188f544a397d1a47c6bec7de718be00b485fcdec90621',
+       i686: 'e885a7795536483801993daecef9da25c4cef6c1a096388b27c782ed5f2ee160',
+     x86_64: '2295cbf27e8f02430c6473b1b95aa91135601c427af1b2b5381fcac061f118a4'
   })
 
   depends_on 'vim_runtime'

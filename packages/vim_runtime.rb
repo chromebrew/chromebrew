@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Vim_runtime < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  version '9.0.2190'
+  version '9.1.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.2190_armv7l/vim_runtime-9.0.2190-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.2190_armv7l/vim_runtime-9.0.2190-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.2190_i686/vim_runtime-9.0.2190-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.2190_x86_64/vim_runtime-9.0.2190-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_armv7l/vim_runtime-9.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_armv7l/vim_runtime-9.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_i686/vim_runtime-9.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_x86_64/vim_runtime-9.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ad0daf7cff243b8187748643517fabff9f3bd455b9fa97f578fa3b39bd85795c',
-     armv7l: 'ad0daf7cff243b8187748643517fabff9f3bd455b9fa97f578fa3b39bd85795c',
-       i686: '047b73f088e11cb0130c0de41b376fd20d1e315ec4cad16e6de2d038c5ff0531',
-     x86_64: '65b8ba39bb515e8067cd6f7b70ab000509f270838e7abcdf9de3834ad5cbc3bb'
+    aarch64: 'a8c1ddafbe0c2b7e1b8dd15deb080c0e704129ce1e82d48eb8258c535383bc3e',
+     armv7l: 'a8c1ddafbe0c2b7e1b8dd15deb080c0e704129ce1e82d48eb8258c535383bc3e',
+       i686: '7bcacfc4e02638043b823f88220e5c641463577195246881e2c08bafbcf57535',
+     x86_64: '08b3ee6c3a0cebac310137b79dc692629f92507f4feff1e3cf09e28630584d47'
   })
 
   depends_on 'gpm'
