@@ -7161,6 +7161,11 @@ url: https://github.com/pypa/wheel/releases
 activity: low
 ---
 kind: url
+name: py3_zcmds
+url: https://github.com/zackees/zcmds/releases
+activity: none
+---
+kind: url
 name: pycharm
 url: https://www.jetbrains.com/pycharm/download/other.html
 activity: medium
