@@ -355,6 +355,11 @@ url: https://download.savannah.gnu.org/releases/atool/
 activity: none
 ---
 kind: url
+name: atop
+url: https://www.atoptool.nl/downloadatop.php
+activity: low
+---
+kind: url
 name: attr
 url: http://download.savannah.gnu.org/releases/attr
 activity: medium
