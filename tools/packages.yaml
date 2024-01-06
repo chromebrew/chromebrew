@@ -8071,6 +8071,11 @@ url: https://github.com/commercialhaskell/stack/releases
 activity: medium
 ---
 kind: url
+name: starship
+url: https://github.com/starship/starship/releases
+activity: medium
+---
+kind: url
 name: startup_notification
 url: https://freedesktop.org/software/startup-notification/releases
 activity: none
