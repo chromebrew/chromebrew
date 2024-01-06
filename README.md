@@ -52,7 +52,7 @@ You will need a Chromebook with developer mode enabled. To do so, select your de
 >
 > See issue [#2890](https://github.com/chromebrew/chromebrew/issues/2890) and the [FAQ](https://github.com/chromebrew/chromebrew/wiki/FAQ) for more details.
 
-> [!NOTE]
+> [!WARNING]
 > On ChromeOS M117+, the Chromebrew installer will not work in `crosh` anymore due to the security changes introduced in ChromeOS M117.
 
 Open a VT-2 terminal session with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>-></kbd> and login with the `chronos` user and password if set [above](#set_passwd). *(if you are unable to do this, please have a second look at the prerequisites and make sure your Chromebook is in developer mode)*
@@ -107,14 +107,10 @@ crew install --keep [...]
 
 ## License
 
-Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](https://github.com/chromebrew/chromebrew/blob/master/lib/docopt.LICENSE).
+Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](lib/docopt.LICENSE).
 
 <div>
-  <a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html">
-    <img alt="GNU General Public License" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" />
-  </a>
+  <a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GNU General Public License" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" /></a>
   <img src="about:blank" width="15px"> <!-- acting a space between two images -->
-  <a rel="license-docopt" href="https://mit-license.org/">
-    <img alt="MIT License" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="31" />
-  </a>
+  <a rel="license-docopt" href="https://mit-license.org/"><img alt="MIT License" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/MIT_logo.svg" height="31" /></a>
 </div>
