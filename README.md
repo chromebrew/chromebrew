@@ -107,7 +107,7 @@ crew install --keep [...]
 
 ## License
 
-Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). 
+Copyright 2013-2024 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). 
 
 This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](lib/docopt.LICENSE).
 
