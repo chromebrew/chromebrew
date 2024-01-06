@@ -77,24 +77,24 @@ crew <command> <package1> [<package2> ...]
 
 Where available commands are:
 
-| Command | Description |
-|:---|:---|
-| build | build package(s) from source and store the archive and checksum in the current working directory |
-| const | display constant(s) |
-| deps | display dependencies of package(s) |
-| download | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
-| files | display installed files of package(s) |
-| help | get information about command usage |
-| install | install package(s) along with dependencies after prompting for confirmation |
-| list | available, installed, compatible or incompatible packages |
-| postinstall | display postinstall messages of package(s) |
-| prop | display all package boolean properties |
-| reinstall | remove and install package(s) |
-| remove | remove package(s) |
-| search | look for package(s) |
-| sysinfo | show system information in markdown style |
-| update | update crew itself |
-| upgrade | update all or specific package(s) |
+| Command      | Description |
+|:------------:|:------------|
+| build        | build package(s) from source and store the archive and checksum in the current working directory |
+| const        | display constant(s) |
+| deps         | display dependencies of package(s) |
+| download     | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
+| files        | display installed files of package(s) |
+| help         | get information about command usage |
+| install      | install package(s) along with dependencies after prompting for confirmation |
+| list         | available, installed, compatible or incompatible packages |
+| postinstall  | display postinstall messages of package(s) |
+| prop         | display all package boolean properties |
+| reinstall    | remove and install package(s) |
+| remove       | remove package(s) |
+| search       | look for package(s) |
+| sysinfo      | show system information in markdown style |
+| update       | update crew itself |
+| upgrade      | update all or specific package(s) |
 | whatprovides | regex search for package(s) that contains file(s) |
 
 Available packages are listed in the [packages directory](https://github.com/chromebrew/chromebrew/tree/master/packages).
@@ -107,7 +107,9 @@ crew install --keep [...]
 
 ## License
 
-Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](lib/docopt.LICENSE).
+Copyright 2013-2023 Michal Siwek and [all the awesome contributors](https://github.com/chromebrew/chromebrew/graphs/contributors). 
+
+This project including all of its source files is released under the terms of [GNU General Public License (version 3 or later)](http://www.gnu.org/licenses/gpl.txt). This project embeds [docopt.rb](https://github.com/docopt/docopt.rb) at lib/docopt.rb. We retain its [MIT license](lib/docopt.LICENSE).
 
 <div>
   <a rel="license-software" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GNU General Public License" src="https://www.gnu.org/graphics/gplv3-127x51.png" height="31" /></a>
