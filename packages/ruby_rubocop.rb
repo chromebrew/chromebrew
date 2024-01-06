@@ -10,7 +10,7 @@ class Ruby_rubocop < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
-  source_sha256 '3942911bbee4c316617fa78825160726a398737db9a6085c743c9477acd55222'
+  source_sha256 '60e2e5b6e56b6c5b8cd760e47d7abfee2ea920a6fcb6985ece95d6097bc76c07'
 
   depends_on 'libyaml'
   depends_on 'xdg_base'
