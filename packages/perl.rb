@@ -3,23 +3,23 @@ require 'package'
 class Perl < Package
   description 'Perl 5 is a highly capable, feature-rich programming language with over 29 years of development.'
   homepage 'https://www.perl.org/'
-  version '5.38.1'
+  version '5.38.2'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
-  source_sha256 '6a82c7930563086e78cb84d9c265e6b212ee65d509d19eedcd23ab8c1ba3f046'
+  source_sha256 'd91115e90b896520e83d4de6b52f8254ef2b70a8d545ffab33200ea9f1cf29e8'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.1_armv7l/perl-5.38.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.1_armv7l/perl-5.38.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.1_i686/perl-5.38.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.1_x86_64/perl-5.38.1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_armv7l/perl-5.38.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_armv7l/perl-5.38.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_i686/perl-5.38.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_x86_64/perl-5.38.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a0cb26ba85d6508457af956a5f5ffc941374737253b673cf9dc25a7d43f5595a',
-     armv7l: 'a0cb26ba85d6508457af956a5f5ffc941374737253b673cf9dc25a7d43f5595a',
-       i686: '9f309db6a023bc0aa9ce9f822c11154d306aa823ab7b952d6318515b47ee67e8',
-     x86_64: '806722babdf990ce24239dee426996adfa7129c8120785d5499328ccee699529'
+    aarch64: 'a2c1ad4b8b0da344fff07a60f6feb58cd95756e19c5b5dbd325d4bf0ae1ea4e8',
+     armv7l: 'a2c1ad4b8b0da344fff07a60f6feb58cd95756e19c5b5dbd325d4bf0ae1ea4e8',
+       i686: 'bab6f8c7bde74661d808e7c5bc5f506d0cfbdac9d40409b86f89b58b3a0ce551',
+     x86_64: '6c376747b4c8a582694cba6cd4b45949e7d8ed492462e38bc0857a38dc3113be'
   })
 
   depends_on 'gdbm' # R
