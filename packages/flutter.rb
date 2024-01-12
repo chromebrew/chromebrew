@@ -3,7 +3,7 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '3.16.2'
+  version '3.16.7'
   license 'BSD-3'
   compatibility 'x86_64'
   source_url 'https://github.com/flutter/flutter.git'
@@ -28,7 +28,7 @@ class Flutter < Package
   end
 
   def self.postinstall
-    puts "\nType 'flutter' to get started.\n".lightblue
+    ExitMessage.add "\nType 'flutter' to get started.\n".lightblue
   end
 
   def self.remove
