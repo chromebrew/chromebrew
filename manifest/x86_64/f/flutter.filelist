@@ -1,3 +1,4 @@
+/usr/local/bin/dart
 /usr/local/bin/flutter
 /usr/local/share/flutter/analysis_options.yaml
 /usr/local/share/flutter/AUTHORS
@@ -5378,9 +5379,9 @@
 /usr/local/share/flutter/.git/index
 /usr/local/share/flutter/.git/info/exclude
 /usr/local/share/flutter/.git/logs/HEAD
-/usr/local/share/flutter/.git/objects/pack/pack-36f734530bf1ac5497b0230b3ea49bd472b9dd2a.idx
-/usr/local/share/flutter/.git/objects/pack/pack-36f734530bf1ac5497b0230b3ea49bd472b9dd2a.pack
-/usr/local/share/flutter/.git/objects/pack/pack-36f734530bf1ac5497b0230b3ea49bd472b9dd2a.rev
+/usr/local/share/flutter/.git/objects/pack/pack-ff1c1669411203accd962bc85b76306658adbba8.idx
+/usr/local/share/flutter/.git/objects/pack/pack-ff1c1669411203accd962bc85b76306658adbba8.pack
+/usr/local/share/flutter/.git/objects/pack/pack-ff1c1669411203accd962bc85b76306658adbba8.rev
 /usr/local/share/flutter/.git/shallow
 /usr/local/share/flutter/LICENSE
 /usr/local/share/flutter/packages/analysis_options.yaml
@@ -7904,6 +7905,7 @@
 /usr/local/share/flutter/packages/flutter_tools/lib/src/reporting/github_template.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/reporting/README.md
 /usr/local/share/flutter/packages/flutter_tools/lib/src/reporting/reporting.dart
+/usr/local/share/flutter/packages/flutter_tools/lib/src/reporting/unified_analytics.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/reporting/usage.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/resident_devtools_handler.dart
 /usr/local/share/flutter/packages/flutter_tools/lib/src/resident_runner.dart
@@ -8579,6 +8581,7 @@
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/test/web_test_compiler_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/time_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/tracing_test.dart
+/usr/local/share/flutter/packages/flutter_tools/test/general.shard/unified_analytics_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/update_packages_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/utils_test.dart
 /usr/local/share/flutter/packages/flutter_tools/test/general.shard/version_test.dart
