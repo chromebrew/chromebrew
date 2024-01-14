@@ -6901,6 +6901,11 @@ url: https://github.com/kornelski/pngquant/tags
 activity: low
 ---
 kind: url
+name: pocl
+url: https://github.com/pocl/pocl/releases
+activity: medium
+---
+kind: url
 name: podofo
 url: https://github.com/podofo/podofo/releases
 activity: low
