@@ -3,11 +3,11 @@ require 'package'
 class Terminus < Package
   description 'The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform'
   homepage 'https://github.com/pantheon-systems/terminus'
-  version '3.3.1'
+  version '3.3.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/pantheon-systems/terminus/releases/download/3.3.1/terminus.phar'
-  source_sha256 'de4a5e3210a156bbaffcf7ca3ff87af78571c446f7a52a902c855167690ee657'
+  source_url 'https://github.com/pantheon-systems/terminus/releases/download/3.3.2/terminus.phar'
+  source_sha256 '383359ff74675fcd22b058e4ad5861b03970357913e1624a97fb3885ee365812'
 
   depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
