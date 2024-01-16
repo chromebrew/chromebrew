@@ -355,6 +355,11 @@ url: https://download.savannah.gnu.org/releases/atool/
 activity: none
 ---
 kind: url
+name: atop
+url: https://www.atoptool.nl/downloadatop.php
+activity: low
+---
+kind: url
 name: attr
 url: http://download.savannah.gnu.org/releases/attr
 activity: medium
@@ -6896,6 +6901,11 @@ url: https://github.com/kornelski/pngquant/tags
 activity: low
 ---
 kind: url
+name: pocl
+url: https://github.com/pocl/pocl/releases
+activity: medium
+---
+kind: url
 name: podofo
 url: https://github.com/podofo/podofo/releases
 activity: low
@@ -7159,6 +7169,11 @@ kind: url
 name: py3_wheel
 url: https://github.com/pypa/wheel/releases
 activity: low
+---
+kind: url
+name: py3_zcmds
+url: https://github.com/zackees/zcmds/releases
+activity: none
 ---
 kind: url
 name: pycharm
@@ -8058,6 +8073,11 @@ activity: low
 kind: url
 name: stack
 url: https://github.com/commercialhaskell/stack/releases
+activity: medium
+---
+kind: url
+name: starship
+url: https://github.com/starship/starship/releases
 activity: medium
 ---
 kind: url

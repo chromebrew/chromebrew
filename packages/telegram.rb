@@ -3,12 +3,12 @@ require 'package'
 class Telegram < Package
   description "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free."
   homepage 'https://telegram.org/'
-  version '4.13.0'
+  version '4.14.3'
   license 'BSD, LGPL-2+ and GPL-3-with-openssl-exception'
   compatibility 'x86_64'
   min_glibc '2.29'
-  source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.13.0.tar.xz'
-  source_sha256 '0b3ac9df357ba02097240c25f2fe2f36e81e345b2b0fe848c90d097f42dba052'
+  source_url 'https://updates.tdesktop.com/tlinux/tsetup.4.14.3.tar.xz'
+  source_sha256 'bfc0fbc58d8105c69b767a19db76541ecb81183fc98e516226dcf8ac7d5dd15c'
 
   depends_on 'mesa'
 
@@ -16,7 +16,7 @@ class Telegram < Package
   no_shrink
 
   def self.build
-    telegram = <<~EOF
+    File.write 'telegram', <<~EOF
       #!/bin/bash
       DISPLAY=
       GDK_BACKEND=wayland
@@ -24,11 +24,9 @@ class Telegram < Package
       QT_QPA_PLATFORM=wayland-egl
       Telegram "$@"
     EOF
-    File.write('telegram', telegram)
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.install 'Telegram', "#{CREW_DEST_PREFIX}/bin/Telegram", mode: 0o755
     FileUtils.install 'telegram', "#{CREW_DEST_PREFIX}/bin/telegram", mode: 0o755
   end

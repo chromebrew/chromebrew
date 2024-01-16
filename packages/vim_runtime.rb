@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Vim_runtime < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)'
   homepage 'http://www.vim.org/'
-  version '9.0.1863'
+  version '9.1.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_armv7l/vim_runtime-9.0.1863-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_armv7l/vim_runtime-9.0.1863-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_i686/vim_runtime-9.0.1863-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.0.1863_x86_64/vim_runtime-9.0.1863-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_armv7l/vim_runtime-9.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_armv7l/vim_runtime-9.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_i686/vim_runtime-9.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim_runtime/9.1.0_x86_64/vim_runtime-9.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e7f026ebc26ae12398190529cebaf1ce76f9011c5248e9cd92dfc8492f5a9a04',
-     armv7l: 'e7f026ebc26ae12398190529cebaf1ce76f9011c5248e9cd92dfc8492f5a9a04',
-       i686: '99ca1d5f1ebe16752f20c14542d28d3ae3cbbaf9a9782f259659f9f02fbfc215',
-     x86_64: 'd8f07c611d04450e691475a3563a2f00492c05383989638b5022aae56a25cbea'
+    aarch64: 'a8c1ddafbe0c2b7e1b8dd15deb080c0e704129ce1e82d48eb8258c535383bc3e',
+     armv7l: 'a8c1ddafbe0c2b7e1b8dd15deb080c0e704129ce1e82d48eb8258c535383bc3e',
+       i686: '7bcacfc4e02638043b823f88220e5c641463577195246881e2c08bafbcf57535',
+     x86_64: '08b3ee6c3a0cebac310137b79dc692629f92507f4feff1e3cf09e28630584d47'
   })
 
   depends_on 'gpm'
@@ -35,7 +35,7 @@ class Vim_runtime < Autotools
     end
   end
 
-  configure_options "-localstatedir=#{CREW_PREFIX}/var/lib/vim \
+  configure_options "--localstatedir=#{CREW_PREFIX}/var/lib/vim \
     --with-features=huge \
     --with-compiledby='Chromebrew' \
     --enable-gpm \
