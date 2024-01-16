@@ -14,18 +14,7 @@ class Crew_sudo < Package
   no_compile_needed
 
   def self.install
-    bindir = File.join(CREW_DEST_PREFIX, 'bin')
-    envdir = File.join(CREW_DEST_PREFIX, 'etc/env.d')
-    path   = File.join(CREW_PREFIX, 'lib/crew-sudo')
-
-    FileUtils.mkdir_p [bindir, envdir, File.join(CREW_DEST_DIR, path)]
-    FileUtils.cp_r Dir['*'], File.join(CREW_DEST_DIR, path)
-
-    FileUtils.ln_s "#{path}/crew-sudo", "#{bindir}/crew-sudo"
-    FileUtils.ln_s "#{path}/crew-sudo", "#{bindir}/sudo"
-    FileUtils.ln_s "#{path}/crew-sudo", "#{bindir}/sudod"
-
-    FileUtils.cp 'autostart/crew-sudo.sh', "#{envdir}/crew_sudo"
+    system({ 'CREW_DEST_PREFIX' => CREW_DEST_PREFIX }, './install.sh')
   end
 
   def self.postinstall
