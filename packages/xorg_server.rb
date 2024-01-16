@@ -3,21 +3,21 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  version '21.1.10'
+  version '21.1.11'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xorg-server-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.10_armv7l/xorg_server-21.1.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.10_armv7l/xorg_server-21.1.10-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.10_x86_64/xorg_server-21.1.10-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.11_armv7l/xorg_server-21.1.11-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.11_armv7l/xorg_server-21.1.11-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_server/21.1.11_x86_64/xorg_server-21.1.11-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a9ef1edc061677e829132e250ed5c774c25a738dc06d5a2b4bd5e5f360614524',
-     armv7l: 'a9ef1edc061677e829132e250ed5c774c25a738dc06d5a2b4bd5e5f360614524',
-     x86_64: '08d117a7c5429a46e8d0886e9b7a6de7e751454cceb94721d7f1d852903f3961'
+    aarch64: 'a862462a659a28b8ab13eb6a3e799f338517b1bb0fbd5c83e326a66e42125a16',
+     armv7l: 'a862462a659a28b8ab13eb6a3e799f338517b1bb0fbd5c83e326a66e42125a16',
+     x86_64: '2a583a60d704338b12d9d3149b7b59553157655bcddcb056600c107b65b8a3e5'
   })
 
   depends_on 'dbus' # R

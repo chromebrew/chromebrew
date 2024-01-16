@@ -3,21 +3,21 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  version '23.2.3'
+  version '23.2.4'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
   git_hashtag "xwayland-#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.2.3_armv7l/xwayland-23.2.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.2.3_armv7l/xwayland-23.2.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.2.3_x86_64/xwayland-23.2.3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.2.4_armv7l/xwayland-23.2.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.2.4_armv7l/xwayland-23.2.4-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xwayland/23.2.4_x86_64/xwayland-23.2.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e9d428fd69fe6d5e4fe30c22c492833de98825d74cf9af664cfe177a54750190',
-     armv7l: 'e9d428fd69fe6d5e4fe30c22c492833de98825d74cf9af664cfe177a54750190',
-     x86_64: '9e8803363d834c6a08050e3bf23d9c83e882e2bdf3dd1ce449841944bb449158'
+    aarch64: '39adea468f9f4d7574e95f7beab1b111307ea0a343be01e456e33a6a74bf5ea0',
+     armv7l: '39adea468f9f4d7574e95f7beab1b111307ea0a343be01e456e33a6a74bf5ea0',
+     x86_64: '9c1177d82c90051f3123bdababe9b119452062b072bf0f68e63a4d8c2605a906'
   })
 
   no_env_options
