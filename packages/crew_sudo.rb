@@ -3,13 +3,12 @@ require 'package'
 class Crew_sudo < Package
   description 'Workaround for using sudo on ChromeOS crosh shell (ChromeOS v117+)'
   homepage 'https://github.com/supechicken/crew-sudo'
-  version '1.0'
+  version '1.1'
   license 'GPL-3'
   compatibility 'all'
 
   source_url 'https://github.com/supechicken/crew-sudo.git'
-  #git_hashtag '1.0'
-  git_branch 'main'
+  git_hashtag "v#{@version}"
 
   no_compile_needed
 
@@ -28,6 +27,6 @@ class Crew_sudo < Package
         - The daemon should start automatically now
         - Press Ctrl + Alt + <- to switch back to ChromeOS UI
 
-      EOT
+    EOT
   end
 end
