@@ -1,9 +1,9 @@
 # Adapted from Arch Linux vulkan-tools PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/vulkan-tools/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/cmake'
 
-class Vulkan_tools < Package
+class Vulkan_tools < CMake
   description 'Vulkan Utilities and Tools'
   homepage 'https://www.khronos.org/vulkan/'
   version '1.3.275'
