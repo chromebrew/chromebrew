@@ -43,6 +43,7 @@
 /usr/local/include/spirv/unified1/extinst.debuginfo.grammar.json
 /usr/local/include/spirv/unified1/extinst.glsl.std.450.grammar.json
 /usr/local/include/spirv/unified1/extinst.nonsemantic.clspvreflection.grammar.json
+/usr/local/include/spirv/unified1/extinst.nonsemantic.debugbreak.grammar.json
 /usr/local/include/spirv/unified1/extinst.nonsemantic.debugprintf.grammar.json
 /usr/local/include/spirv/unified1/extinst.nonsemantic.shader.debuginfo.100.grammar.json
 /usr/local/include/spirv/unified1/extinst.opencl.debuginfo.100.grammar.json
@@ -53,6 +54,7 @@
 /usr/local/include/spirv/unified1/extinst.spv-amd-shader-trinary-minmax.grammar.json
 /usr/local/include/spirv/unified1/GLSL.std.450.h
 /usr/local/include/spirv/unified1/NonSemanticClspvReflection.h
+/usr/local/include/spirv/unified1/NonSemanticDebugBreak.h
 /usr/local/include/spirv/unified1/NonSemanticDebugPrintf.h
 /usr/local/include/spirv/unified1/NonSemanticShaderDebugInfo100.h
 /usr/local/include/spirv/unified1/OpenCLDebugInfo100.h
@@ -69,5 +71,4 @@
 /usr/local/include/spirv/unified1/spv.d
 /usr/local/share/cmake/SPIRV-Headers/SPIRV-HeadersConfig.cmake
 /usr/local/share/cmake/SPIRV-Headers/SPIRV-HeadersConfigVersion.cmake
-/usr/local/share/cmake/SPIRV-Headers/SPIRV-HeadersTargets.cmake
 /usr/local/share/pkgconfig/SPIRV-Headers.pc
