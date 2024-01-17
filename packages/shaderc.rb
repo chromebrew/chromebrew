@@ -6,23 +6,23 @@ require 'package'
 class Shaderc < Package
   description 'Collection of tools, libraries and tests for shader compilation'
   homepage 'https://github.com/google/shaderc'
-  version '2023.2'
+  version '2023.8'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/google/shaderc.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.2_armv7l/shaderc-2023.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.2_armv7l/shaderc-2023.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.2_i686/shaderc-2023.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.2_x86_64/shaderc-2023.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_armv7l/shaderc-2023.8-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_armv7l/shaderc-2023.8-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_i686/shaderc-2023.8-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_x86_64/shaderc-2023.8-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '82dae8a8ea92e6ddeee954db3ed57c61dc8f6fbd5cad222e1a1a656525b85be0',
-     armv7l: '82dae8a8ea92e6ddeee954db3ed57c61dc8f6fbd5cad222e1a1a656525b85be0',
-       i686: '894583bffe1d861a0bb56b9a7f7ad04769d296b7e4433abe404c6661359b0129',
-     x86_64: '35cb29eb703b562c83a749d9427c10e80a47cc734ade0d233f1163ac6b5c9fff'
+    aarch64: '0c21288bcfcc9f477a938a4a3a33c1bc9c8b44d473363547cce3dd6af5d91714',
+     armv7l: '0c21288bcfcc9f477a938a4a3a33c1bc9c8b44d473363547cce3dd6af5d91714',
+       i686: 'd0b7a92f5021b97f5c9e0ec229acae6f2820b8b38a037755c526328458442c7c',
+     x86_64: '981a43dee48b92467c019941b665c6f5844e86c1b7b6ef81e11bbc345683ac10'
   })
 
   depends_on 'ruby_asciidoctor' => :build
