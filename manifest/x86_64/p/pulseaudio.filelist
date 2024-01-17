@@ -59,12 +59,12 @@
 /usr/local/lib64/libpulse-simple.so.0.1.1
 /usr/local/lib64/libpulse.so
 /usr/local/lib64/libpulse.so.0
-/usr/local/lib64/libpulse.so.0.24.2
+/usr/local/lib64/libpulse.so.0.24.3
 /usr/local/lib64/pkgconfig/libpulse-mainloop-glib.pc
 /usr/local/lib64/pkgconfig/libpulse.pc
 /usr/local/lib64/pkgconfig/libpulse-simple.pc
-/usr/local/lib64/pulseaudio/libpulsecommon-16.1.so
-/usr/local/lib64/pulseaudio/libpulsecore-16.1.so
+/usr/local/lib64/pulseaudio/libpulsecommon-17.0.so
+/usr/local/lib64/pulseaudio/libpulsecore-17.0.so
 /usr/local/lib64/pulseaudio/libpulsedsp.so
 /usr/local/lib64/pulseaudio/modules/libalsa-util.so
 /usr/local/lib64/pulseaudio/modules/libavahi-wrap.so
@@ -76,7 +76,6 @@
 /usr/local/lib64/pulseaudio/modules/libprotocol-simple.so
 /usr/local/lib64/pulseaudio/modules/libraop.so
 /usr/local/lib64/pulseaudio/modules/librtp.so
-/usr/local/lib64/pulseaudio/modules/libwebrtc-util.so
 /usr/local/lib64/pulseaudio/modules/module-allow-passthrough.so
 /usr/local/lib64/pulseaudio/modules/module-alsa-card.so
 /usr/local/lib64/pulseaudio/modules/module-alsa-sink.so
@@ -198,6 +197,7 @@
 /usr/local/share/alsa-card-profile/paths/usb-gaming-headset-output-mono.conf
 /usr/local/share/alsa-card-profile/paths/usb-gaming-headset-output-stereo.conf
 /usr/local/share/alsa-card-profile/paths/virtual-surround-7.1.conf
+/usr/local/share/alsa-card-profile/profile-sets/asus-xonar-se.conf
 /usr/local/share/alsa-card-profile/profile-sets/audigy.conf
 /usr/local/share/alsa-card-profile/profile-sets/cmedia-high-speed-true-hdaudio.conf
 /usr/local/share/alsa-card-profile/profile-sets/default.conf
@@ -245,6 +245,7 @@
 /usr/local/share/locale/el/LC_MESSAGES/pulseaudio.mo
 /usr/local/share/locale/eo/LC_MESSAGES/pulseaudio.mo
 /usr/local/share/locale/es/LC_MESSAGES/pulseaudio.mo
+/usr/local/share/locale/eu/LC_MESSAGES/pulseaudio.mo
 /usr/local/share/locale/fi/LC_MESSAGES/pulseaudio.mo
 /usr/local/share/locale/fr/LC_MESSAGES/pulseaudio.mo
 /usr/local/share/locale/gl/LC_MESSAGES/pulseaudio.mo
