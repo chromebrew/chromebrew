@@ -864,14 +864,14 @@ def download
         # No git branch specified, just a git commit or tag
         if @pkg.git_branch.to_s.empty?
           abort('No Git branch, commit, or tag specified!').lightred if @pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
+          cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst")
         # Git branch and git commit specified
         elsif !@pkg.git_hashtag.to_s.empty?
-          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst"
+          cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}_#{@pkg.git_hashtag.gsub('/', '_')}.tar.zst")
         # Git branch specified, without a specific git commit.
         else
           # Use to the day granularity for a branch timestamp with no specific commit specified.
-          cachefile = "#{CREW_CACHE_DIR}/#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst"
+          cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
@@ -932,7 +932,7 @@ def unpack(meta)
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
-    @build_cachefile = "#{CREW_CACHE_DIR}/#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst"
+    @build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
     if CREW_CACHE_BUILD && File.file?(@build_cachefile) && File.file?("#{@build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{@build_cachefile}.sha256" )
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{@build_cachefile}".lightgreen
@@ -993,7 +993,7 @@ def build_and_preconfigure(target_dir)
       puts 'Building from source, this may take a while...'
 
       # Load musl options only if package is targeted at the musl toolchain
-      load "#{CREW_LIB_PATH}/lib/musl.rb" if @pkg.is_musl?
+      load File.join(CREW_LIB_PATH, 'lib/musl.rb').to_s if @pkg.is_musl?
     end
 
     @pkg.in_build = true
