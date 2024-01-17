@@ -29,6 +29,7 @@
 /usr/local/include/vulkan/vulkan_metal.h
 /usr/local/include/vulkan/vulkan_raii.hpp
 /usr/local/include/vulkan/vulkan_screen.h
+/usr/local/include/vulkan/vulkan_shared.hpp
 /usr/local/include/vulkan/vulkan_static_assertions.hpp
 /usr/local/include/vulkan/vulkan_structs.hpp
 /usr/local/include/vulkan/vulkan_to_string.hpp
@@ -44,7 +45,6 @@
 /usr/local/share/vulkan/registry/apiconventions.py
 /usr/local/share/vulkan/registry/cgenerator.py
 /usr/local/share/vulkan/registry/generator.py
-/usr/local/share/vulkan/registry/genvk.py
 /usr/local/share/vulkan/registry/parse_dependency.py
 /usr/local/share/vulkan/registry/profiles/VP_KHR_roadmap_2022.json
 /usr/local/share/vulkan/registry/reg.py

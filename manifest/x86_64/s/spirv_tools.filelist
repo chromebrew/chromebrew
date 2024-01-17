@@ -4,6 +4,7 @@
 /usr/local/bin/spirv-lesspipe.sh
 /usr/local/bin/spirv-link
 /usr/local/bin/spirv-lint
+/usr/local/bin/spirv-objdump
 /usr/local/bin/spirv-opt
 /usr/local/bin/spirv-reduce
 /usr/local/bin/spirv-val
@@ -33,12 +34,12 @@
 /usr/local/lib64/cmake/SPIRV-Tools-tools/SPIRV-Tools-toolsConfig.cmake
 /usr/local/lib64/cmake/SPIRV-Tools-tools/SPIRV-Tools-toolsTargets.cmake
 /usr/local/lib64/cmake/SPIRV-Tools-tools/SPIRV-Tools-toolsTargets-release.cmake
-/usr/local/lib64/libSPIRV-Tools.a
-/usr/local/lib64/libSPIRV-Tools-diff.a
-/usr/local/lib64/libSPIRV-Tools-link.a
-/usr/local/lib64/libSPIRV-Tools-lint.a
-/usr/local/lib64/libSPIRV-Tools-opt.a
-/usr/local/lib64/libSPIRV-Tools-reduce.a
+/usr/local/lib64/libSPIRV-Tools-diff.so
+/usr/local/lib64/libSPIRV-Tools-link.so
+/usr/local/lib64/libSPIRV-Tools-lint.so
+/usr/local/lib64/libSPIRV-Tools-opt.so
+/usr/local/lib64/libSPIRV-Tools-reduce.so
 /usr/local/lib64/libSPIRV-Tools-shared.so
+/usr/local/lib64/libSPIRV-Tools.so
 /usr/local/lib64/pkgconfig/SPIRV-Tools.pc
 /usr/local/lib64/pkgconfig/SPIRV-Tools-shared.pc

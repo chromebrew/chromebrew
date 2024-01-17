@@ -6,21 +6,21 @@ require 'package'
 class Vulkan_tools < Package
   description 'Vulkan Utilities and Tools'
   homepage 'https://www.khronos.org/vulkan/'
-  version '1.3.264'
+  version '1.3.275'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Tools.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.264_armv7l/vulkan_tools-1.3.264-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.264_armv7l/vulkan_tools-1.3.264-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.264_x86_64/vulkan_tools-1.3.264-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.275_armv7l/vulkan_tools-1.3.275-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.275_armv7l/vulkan_tools-1.3.275-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_tools/1.3.275_x86_64/vulkan_tools-1.3.275-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '917411cf3ee9af92e4c54f404c53a28719b787d702d3114d9d297f824f03a153',
-     armv7l: '917411cf3ee9af92e4c54f404c53a28719b787d702d3114d9d297f824f03a153',
-     x86_64: '678946095da919cb69d0a67e88e152a61279d279b142549b65267b6664c0ff2b'
+    aarch64: 'dca98a388f97544eae859aca495c5f9a6ca85534e51421084b1b94b5ad941292',
+     armv7l: 'dca98a388f97544eae859aca495c5f9a6ca85534e51421084b1b94b5ad941292',
+     x86_64: '15e5d8dedfffc534102a0a93924d652b96a92bed650da0cde2bb7358e5c41947'
   })
 
   depends_on 'gcc_dev' => :build
@@ -51,7 +51,8 @@ class Vulkan_tools < Package
         -DBUILD_WSI_WAYLAND_SUPPORT=On \
         -DBUILD_CUBE=ON \
         -DBUILD_VULKANINFO=ON \
-        -DBUILD_ICD=OFF"
+        -DBUILD_ICD=OFF \
+        -DUPDATE_DEPS=ON"
     system "cmake -G Ninja -B builddir-wayland \
         #{CREW_CMAKE_OPTIONS} \
         -DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
@@ -64,7 +65,8 @@ class Vulkan_tools < Package
         -DBUILD_CUBE=ON \
         -DCUBE_WSI_SELECTION=WAYLAND \
         -DBUILD_VULKANINFO=OFF \
-        -DBUILD_ICD=OFF"
+        -DBUILD_ICD=OFF \
+        -DUPDATE_DEPS=ON"
     system "#{CREW_NINJA} -C builddir"
     system "#{CREW_NINJA} -C builddir-wayland"
   end
