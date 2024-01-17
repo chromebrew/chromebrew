@@ -1,8 +1,8 @@
 # Adapted from Arch Linux spirv-tools PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/spirv-tools/trunk/PKGBUILD
-require 'package'
+require 'buildsystems/cmake'
 
-class Spirv_tools < Package
+class Spirv_tools < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Tools'
   description 'API and commands for processing SPIR-V modules'
   version '2023.6.rc1'
@@ -29,19 +29,12 @@ class Spirv_tools < Package
   git_fetchtags
   no_lto
 
-  def self.build
+  def self.patch
     system 'utils/git-sync-deps'
-    system "cmake -B builddir \
-      -G Ninja \
-      #{CREW_CMAKE_OPTIONS} \
-      -DSPIRV_WERROR=Off \
-      -DSPIRV_TOOLS_BUILD_STATIC=OFF \
-      -DSPIRV_SKIP_TESTS=ON \
-      -DBUILD_SHARED_LIBS=ON"
-    system "#{CREW_NINJA} -C builddir"
   end
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options '-DSPIRV_WERROR=Off \
+      -DSPIRV_TOOLS_BUILD_STATIC=OFF \
+      -DSPIRV_SKIP_TESTS=ON \
+      -DBUILD_SHARED_LIBS=ON'
 end

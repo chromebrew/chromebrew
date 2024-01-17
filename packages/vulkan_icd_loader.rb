@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Vulkan_icd_loader < Package
+class Vulkan_icd_loader < CMake
   description 'Vulkan Installable Client Driver ICD Loader'
   homepage 'https://github.com/KhronosGroup/Vulkan-Loader'
   version '1.3.275'
@@ -27,11 +27,11 @@ class Vulkan_icd_loader < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'wayland' => :build
 
-  def self.build
+  def self.patch
     system 'scripts/update_deps.py'
-    system "cmake -G Ninja -B builddir \
-        #{CREW_CMAKE_OPTIONS} \
-        -DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
+  end
+
+  cmake_options "-DVULKAN_HEADERS_INSTALL_DIR=#{CREW_PREFIX} \
         -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
         -DCMAKE_INSTALL_DATADIR=#{CREW_PREFIX}/share \
         -DCMAKE_SKIP_RPATH=True \
@@ -39,10 +39,4 @@ class Vulkan_icd_loader < Package
         -DBUILD_WSI_XCB_SUPPORT=On \
         -DBUILD_WSI_XLIB_SUPPORT=On \
         -DBUILD_WSI_WAYLAND_SUPPORT=On"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
 end
