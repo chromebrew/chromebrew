@@ -1,26 +1,24 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pulseaudio < Package
+class Pulseaudio < Meson
   description 'PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for your sound applications.'
   homepage 'https://www.freedesktop.org/wiki/Software/PulseAudio/'
-  @_ver = '16.1'
-  version "#{@_ver}-1"
+  version '17.0'
   license 'LGPL-2.1 and GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.34'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git'
-  git_hashtag "v#{@_ver}"
+  git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_armv7l/pulseaudio-16.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_armv7l/pulseaudio-16.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_i686/pulseaudio-16.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/16.1-1_x86_64/pulseaudio-16.1-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_armv7l/pulseaudio-17.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_armv7l/pulseaudio-17.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_x86_64/pulseaudio-17.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ec3902a15d62f0a958f128601616557e61ecb5b20bc7b96ea52221f1de58ac19',
-     armv7l: 'ec3902a15d62f0a958f128601616557e61ecb5b20bc7b96ea52221f1de58ac19',
-       i686: '7c62fc32a176a187c5da671e1d2ad0afeca9a3fd04d9d50868560750db811ef1',
-     x86_64: '1cda482d6e9e3158edd8e9a1e69369b2b7b0c481929536d5d04d7d9394983c25'
+    aarch64: '546dac0ebd845e22d5c5530bfcfaad5a855e59110b4bb660e1cc41902d21d425',
+     armv7l: '546dac0ebd845e22d5c5530bfcfaad5a855e59110b4bb660e1cc41902d21d425',
+     x86_64: '5df633594ec2e85a3b0c5d4a91e9fd09daa27cf6f1d16a30fc668634528d6ab8'
   })
 
   depends_on 'alsa_lib' # R
@@ -32,6 +30,7 @@ class Pulseaudio < Package
   depends_on 'elogind' # R
   depends_on 'eudev' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   # depends_on 'gsettings_desktop_schemas' # L
@@ -50,6 +49,7 @@ class Pulseaudio < Package
   depends_on 'libxfixes' => :build
   depends_on 'libxtst' # R
   depends_on 'openssl' # R
+  depends_on 'pipewire' # R
   depends_on 'speexdsp' # R
   depends_on 'tcpwrappers' # R
   depends_on 'tdb' # R
@@ -58,9 +58,7 @@ class Pulseaudio < Package
 
   git_fetchtags
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsystem_user=chronos \
+  meson_options "-Dsystem_user=chronos \
     -Dsystem_group=cras \
     -Daccess_group=cras \
     -Dbluez5=disabled \
@@ -70,11 +68,7 @@ class Pulseaudio < Package
     -Dtests=false \
     -Dudevrulesdir=#{CREW_PREFIX}/libexec/rules.d \
     -Dalsadatadir=#{CREW_PREFIX}/share/alsa-card-profile \
-    -Dlocalstatedir=#{CREW_PREFIX}/var/run \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+    -Dlocalstatedir=#{CREW_PREFIX}/var/run"
 
   def self.check
     # 39/50 thread-test                                                                                                   FAIL             4.02s   exit status 1
@@ -91,7 +85,7 @@ class Pulseaudio < Package
   end
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     @pulseaudio_daemon_conf = <<~PAUDIO_DAEMON_CONF_HEREDOC
       # Replace these with the proper values
       exit-idle-time = 10 # Exit as soon as unneeded
@@ -135,8 +129,5 @@ class Pulseaudio < Package
       .endif
     PAUDIO_DEFAULT_PA_HEREDOC
     File.write("#{CREW_DEST_PREFIX}/etc/pulse/default.pa", @pulseaudio_default_pa, perm: 0o666)
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/dbus-1/system.d"
-    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/dbus-1/system.d/pulseaudio-system.conf",
-                 "#{CREW_DEST_PREFIX}/share/dbus-1/system.d/pulseaudio-system.conf"
   end
 end
