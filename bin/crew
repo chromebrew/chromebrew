@@ -875,7 +875,9 @@ def download
         end
         puts "Git cachefile is #{cachefile}".orange if @opt_verbose
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
-          if system "cd #{CREW_CACHE_DIR} && sha256sum -c #{cachefile}.sha256"
+          if Dir.chdir CREW_CACHE_DIR do
+               system "sha256sum -c #{cachefile}.sha256"
+             end
             FileUtils.mkdir_p @extract_dir
             system "tar -Izstd -x#{@verbose}f #{cachefile} -C #{@extract_dir}"
             return { source:, filename: }
