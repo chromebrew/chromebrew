@@ -1480,6 +1480,11 @@ url: https://github.com/joncampbell123/dosbox-x/releases
 activity: none
 ---
 kind: url
+name: dotnet
+url: https://dotnet.microsoft.com/en-us/download/dotnet
+activity: high
+---
+kind: url
 name: double_conversion
 url: https://github.com/google/double-conversion/releases
 activity: none
