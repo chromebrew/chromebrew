@@ -1,40 +1,29 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Apr_util < Package
+class Apr_util < Autotools
   description 'APR-util provides a number of helpful abstractions on top of APR.'
   homepage 'http://apr.apache.org/'
-  version '1.6.1'
+  version '1.6.3'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://apache.claz.org/apr/apr-util-1.6.1.tar.bz2'
-  source_sha256 'd3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b'
+  source_url 'https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.bz2'
+  source_sha256 'a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aprutil/1.6.1_armv7l/aprutil-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aprutil/1.6.1_armv7l/aprutil-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aprutil/1.6.1_i686/aprutil-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aprutil/1.6.1_x86_64/aprutil-1.6.1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_util/1.6.3_armv7l/apr_util-1.6.3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_util/1.6.3_armv7l/apr_util-1.6.3-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_util/1.6.3_i686/apr_util-1.6.3-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_util/1.6.3_x86_64/apr_util-1.6.3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'e9fc87b307ffd4b0ebf0f8edb198813eff40c78652ca128b870401e0b95e8da5',
-     armv7l: 'e9fc87b307ffd4b0ebf0f8edb198813eff40c78652ca128b870401e0b95e8da5',
-       i686: '487fce828c6a4e0bae45b4675240fa06bd7a59bde1007009db3722dce065397f',
-     x86_64: 'e5abe47026a3bf51748e2d3aaaa1e5dc5d46c66180145502e989a28cdae49b30'
+    aarch64: '51950f0c56c7f9c8e8e86dd2783a6f2ca4f3f3867a043f0e267218c9d4f42915',
+     armv7l: '51950f0c56c7f9c8e8e86dd2783a6f2ca4f3f3867a043f0e267218c9d4f42915',
+       i686: '377343921064393e2f63b891df8dc1e485c2b4ff87611e91aeb17096fac12dc7',
+     x86_64: '501d3d799eda2eb77a76994ca0ef00ccf56b231acd59de3a915e598b3555e5db'
   })
 
   depends_on 'apr'
   depends_on 'expat'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           "--with-apr=#{CREW_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options "--with-apr=#{CREW_PREFIX}"
 end
