@@ -3,7 +3,7 @@ require 'package'
 class Pinentry < Package
   description 'A collection of passphrase entry dialogs which is required for almost all usages of GnuPG'
   homepage 'https://gnupg.org/software/pinentry/index.html'
-  version '1.1.0-1'
+  version '1.1.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2'

@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Sed < Autotools
   description 'sed (stream editor) is a non-interactive command-line text editor.'
   homepage 'https://www.gnu.org/software/sed/'
-  version '4.9-1'
+  version '4.9'
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/sed/sed-4.9.tar.xz'

@@ -3,7 +3,7 @@ require 'package'
 class Biew < Package
   description 'EYE (Binary EYE) is a free, portable, advanced file viewer with built-in editor for binary, hexadecimal and disassembler modes.'
   homepage 'https://sourceforge.net/projects/beye/'
-  version '6.1.0-0'
+  version '6.1.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/beye/biew/6.1.0/biew-610-src.tar.bz2'

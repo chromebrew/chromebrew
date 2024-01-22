@@ -3,7 +3,7 @@ require 'package'
 class Wput < Package
   description 'wput is a command line file upload tool, the opposite of wget'
   homepage 'http://wput.sourceforge.net/'
-  version '0.6.2-1'
+  version '0.6.2'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/wput/wput/0.6.2/wput-0.6.2.tgz'

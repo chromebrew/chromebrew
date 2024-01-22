@@ -3,7 +3,7 @@ require 'package'
 class Anagram < Package
   description 'finds anagrams or permutations of words in the target phrase'
   homepage 'https://www.fourmilab.ch/anagram/'
-  version '1.5-1'
+  version '1.5'
   license 'public-domain'
   compatibility 'all'
   source_url 'https://www.fourmilab.ch/anagram/anagram-1.5.tar.gz'
