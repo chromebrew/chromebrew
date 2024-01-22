@@ -1,37 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Apr < Package
+class Apr < Autotools
   description 'The mission of the Apache Portable Runtime (APR) project is to create and maintain software libraries that provide a predictable and consistent interface to underlying platform-specific implementations.  APR is the base portability library.'
   homepage 'https://apr.apache.org/'
-  version '1.7.0-1'
+  version '1.7.4'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://apache.claz.org/apr/apr-1.7.0.tar.bz2'
-  source_sha256 'e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea'
+  source_url 'https://dlcdn.apache.org/apr/apr-1.7.4.tar.bz2'
+  source_sha256 'fc648de983f3a2a6c9e78dea1f180639bd2fad6c06d556d4367a701fe5c35577'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.0-1_armv7l/apr-1.7.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.0-1_armv7l/apr-1.7.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.0-1_i686/apr-1.7.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.0-1_x86_64/apr-1.7.0-1-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_armv7l/apr-1.7.4-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_armv7l/apr-1.7.4-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_i686/apr-1.7.4-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_x86_64/apr-1.7.4-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'a57bb1fa211ba38061bb9d6498fd567559d80362591845687945318e9f657f4d',
-     armv7l: 'a57bb1fa211ba38061bb9d6498fd567559d80362591845687945318e9f657f4d',
-       i686: '0c69672d2390520bb3e1259da5842a86abb8d0fef7ffa111f2c8b8ed7500b61c',
-     x86_64: '074000aa69a400375f08d9c947bff250995a4b59a28e48952738d19efe97f9e6'
+    aarch64: 'd412d8dd1ca6fac9d86b6f4fbbc78b39b5902ac605120bf2baee81b3945db9c7',
+     armv7l: 'd412d8dd1ca6fac9d86b6f4fbbc78b39b5902ac605120bf2baee81b3945db9c7',
+       i686: 'b9a87b935a3585dbab5bc3b6a476a106fe6b433d37c7b32934b41e706b28604f',
+     x86_64: 'c9dd5b5505bf47f490f887d48131508d149b342076f1d41e11b5491037311781'
   })
 
-  def self.build
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS} \
-            --disable-maintainer-mode \
-            --with-devrandom \
-            --without-sendfile"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.rm_rf "#{CREW_DEST_PREFIX}/build-1" # Seems residual from build and isn't needed
-  end
+  # https://bz.apache.org/bugzilla/show_bug.cgi?id=63439
+  configure_options '--with-devrandom --without-sendfile --enable-layout=GNU'
 end
