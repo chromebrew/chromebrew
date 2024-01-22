@@ -34,10 +34,14 @@
 /usr/local/include/apr-1/apu.h
 /usr/local/include/apr-1/apu_version.h
 /usr/local/include/apr-1/apu_want.h
+/usr/local/lib/apr-util-1/apr_dbd_sqlite3-1.so
+/usr/local/lib/apr-util-1/apr_dbd_sqlite3.a
+/usr/local/lib/apr-util-1/apr_dbd_sqlite3.la
+/usr/local/lib/apr-util-1/apr_dbd_sqlite3.so
 /usr/local/lib/aprutil.exp
 /usr/local/lib/libaprutil-1.a
 /usr/local/lib/libaprutil-1.la
 /usr/local/lib/libaprutil-1.so
 /usr/local/lib/libaprutil-1.so.0
-/usr/local/lib/libaprutil-1.so.0.6.1
+/usr/local/lib/libaprutil-1.so.0.6.3
 /usr/local/lib/pkgconfig/apr-util-1.pc
