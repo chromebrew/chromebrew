@@ -6,14 +6,14 @@ class Apr_iconv < Package
   version '1.2.2'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://apache.claz.org/apr/apr-iconv-1.2.2.tar.bz2'
+  source_url 'https://dlcdn.apache.org/apr/apr-iconv-1.2.2.tar.bz2'
   source_sha256 '7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apriconv/1.2.2_armv7l/apriconv-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apriconv/1.2.2_armv7l/apriconv-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apriconv/1.2.2_i686/apriconv-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apriconv/1.2.2_x86_64/apriconv-1.2.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_armv7l/apr_iconv-1.2.2-chromeos-armv7l.tar.xz',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_armv7l/apr_iconv-1.2.2-chromeos-armv7l.tar.xz',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_i686/apr_iconv-1.2.2-chromeos-i686.tar.xz',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_x86_64/apr_iconv-1.2.2-chromeos-x86_64.tar.xz'
   })
   binary_sha256({
     aarch64: '6ec314d1d6143a855e59d5a3b76db311e3ba60b980b98be3d639c39e74949fed',
@@ -30,6 +30,8 @@ class Apr_iconv < Package
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
             --with-apr=#{CREW_PREFIX}"
+    # These sed commands can be removed and the package converted to buildsystems once this issue is resolved:
+    # https://bz.apache.org/bugzilla/show_bug.cgi?id=68516
     system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' Makefile"
     system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' ccs/Makefile"
     system "sed -i 's,/usr/local/lib,#{CREW_LIB_PREFIX},g' ces/Makefile"
