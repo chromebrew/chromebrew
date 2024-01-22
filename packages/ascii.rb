@@ -3,7 +3,7 @@ require 'package'
 class Ascii < Package
   description 'List ASCII idiomatic names and octal/decimal code-point forms.'
   homepage 'http://www.catb.org/~esr/ascii/'
-  version '3.18-1'
+  version '3.18'
   license 'BSD'
   compatibility 'all'
   source_url 'http://www.catb.org/~esr/ascii/ascii-3.18.tar.gz'
