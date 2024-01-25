@@ -2,22 +2,22 @@
 name: Generate Repology JSON
 on:
   schedule:
-    - cron: '0 0 * * *'  # Every day at midnight
+    - cron: '0 0 * * 0'  # Weekly
 jobs:
   generate:
     runs-on: ubuntu-latest
+    container: satmandu/crewbuild:amd64
     steps:
-      - uses: actions/checkout@v4
       - name: Generate JSON
         run: |
-            sudo docker pull satmandu/crewbuild:amd64
-            sudo docker run -t -v $(pwd):/usr/local/json satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
-            crew update && \
-            ruby ../tools/json.rb && \
-            sudo cp repology.json /usr/local/json"
-      - name: Upload JSON arifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: repology-json
-          path: repology.json
-          if-no-files-found: error
+          git config --global safe.directory /usr/local/lib/crew
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper store
+          echo 'https://token:${{ secrets.GITHUB_TOKEN }}@github.com' > ~/.git-credentials
+          cd /usr/local/lib/crew/tools
+          ruby json.rb
+          # We only need to add repology.json for the first run of the script
+          git add repology.json
+          git commit -o repology.json -m "Update Repology JSON"
+          git push

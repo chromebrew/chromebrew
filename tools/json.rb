@@ -14,4 +14,4 @@ Dir.glob('../packages/*.rb').each do |filename|
   output << { name: File.basename(filename, '.rb').gsub('_', '-'), description: pkg.description, homepage: pkg.homepage, version: pkg.version, license: pkg.license, compatibility: pkg.compatibility }
 end
 
-File.write('repology.json', JSON.generate(output))
+File.write('repology.json', JSON.pretty_generate(output))
