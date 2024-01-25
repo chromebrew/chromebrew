@@ -10,9 +10,9 @@ class Glibc_dev235 < Package
   source_url 'SKIP'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_dev/2.35_armv7l/glibc_dev-2.35-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_dev/2.35_armv7l/glibc_dev-2.35-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_dev/2.35_x86_64/glibc_dev-2.35-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_dev235/2.35_armv7l/glibc_dev235-2.35-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_dev235/2.35_armv7l/glibc_dev235-2.35-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_dev235/2.35_x86_64/glibc_dev235-2.35-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '18779266ab02bc47f080a3d12d710f6fca9539ce9d7d96d824bbb8d51294d530',
