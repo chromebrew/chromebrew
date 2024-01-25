@@ -8,13 +8,8 @@ class Libtheora < Package
   compatibility 'all'
   source_url 'https://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2'
   source_sha256 'b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtheora/1.1.1-0_armv7l/libtheora-1.1.1-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtheora/1.1.1-0_armv7l/libtheora-1.1.1-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtheora/1.1.1-0_i686/libtheora-1.1.1-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtheora/1.1.1-0_x86_64/libtheora-1.1.1-0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8737530ad3a7923d32b273258123f8c18d9f7c7ef13be95880e9b4e85d435cfb',
      armv7l: '8737530ad3a7923d32b273258123f8c18d9f7c7ef13be95880e9b4e85d435cfb',

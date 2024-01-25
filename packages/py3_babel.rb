@@ -9,13 +9,8 @@ class Py3_babel < Python
   compatibility 'all'
   source_url 'https://github.com/python-babel/babel.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_babel/2.13.0-py3.12_armv7l/py3_babel-2.13.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_babel/2.13.0-py3.12_armv7l/py3_babel-2.13.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_babel/2.13.0-py3.12_i686/py3_babel-2.13.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_babel/2.13.0-py3.12_x86_64/py3_babel-2.13.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '104eec74ce764321b0c1473feacfa7a50450030d0d02e58ca8e276ab6c4e7e9d',
      armv7l: '104eec74ce764321b0c1473feacfa7a50450030d0d02e58ca8e276ab6c4e7e9d',

@@ -8,13 +8,8 @@ class Wget2 < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/wget/wget2-2.1.0.tar.lz'
   source_sha256 'bc034194b512bb83ce0171d15a8db33e1c5c3ab8b3e343e1e6f2cf48f9154fad'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_armv7l/wget2-2.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_armv7l/wget2-2.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_i686/wget2-2.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wget2/2.1.0_x86_64/wget2-2.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '09e08370f029c62c46d1b5c1e308d77a9b195891e350c887252e1dc79b2380be',
      armv7l: '09e08370f029c62c46d1b5c1e308d77a9b195891e350c887252e1dc79b2380be',

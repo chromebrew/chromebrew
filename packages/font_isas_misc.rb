@@ -8,13 +8,8 @@ class Font_isas_misc < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-isas-misc-1.0.3.tar.bz2'
   source_sha256 '5824ab4b485951107dd245b8f7717d2822f1a6dbf6cea98f1ac7f49905c0a867'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_isas_misc/1.0.3_armv7l/font_isas_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_isas_misc/1.0.3_armv7l/font_isas_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_isas_misc/1.0.3_i686/font_isas_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_isas_misc/1.0.3_x86_64/font_isas_misc-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '853abfd7c65dd75187f6137b6fba9154cb02f86e1c1d02c7375b89345a3682de',
      armv7l: '853abfd7c65dd75187f6137b6fba9154cb02f86e1c1d02c7375b89345a3682de',

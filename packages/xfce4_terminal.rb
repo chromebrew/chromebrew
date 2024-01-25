@@ -8,13 +8,8 @@ class Xfce4_terminal < Package
   compatibility 'all'
   source_url "https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-#{version}.tar.bz2"
   source_sha256 '7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_terminal/0.8.10_armv7l/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_terminal/0.8.10_armv7l/xfce4_terminal-0.8.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_terminal/0.8.10_i686/xfce4_terminal-0.8.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xfce4_terminal/0.8.10_x86_64/xfce4_terminal-0.8.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b11aa2b481bf89d83e2d1e8086f8a38947c6f1b1e5ec7b3db2e4a9a71b192aa1',
      armv7l: 'b11aa2b481bf89d83e2d1e8086f8a38947c6f1b1e5ec7b3db2e4a9a71b192aa1',

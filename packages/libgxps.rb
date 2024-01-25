@@ -12,13 +12,8 @@ class Libgxps < Package
   compatibility 'all'
   source_url "https://gitlab.gnome.org/GNOME/libgxps/-/archive/#{@_ver}/libgxps-#{@_ver}.tar.bz2"
   source_sha256 'ffbc656e801233a64ea5b6ab5532691e8b91f72cce3ea957615fe8523696d42a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-2_armv7l/libgxps-0.3.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-2_armv7l/libgxps-0.3.2-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-2_i686/libgxps-0.3.2-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgxps/0.3.2-2_x86_64/libgxps-0.3.2-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1461554706deed2492e3b07ce9bca2d2902086e7a540b1a27b757b9168424b52',
      armv7l: '1461554706deed2492e3b07ce9bca2d2902086e7a540b1a27b757b9168424b52',

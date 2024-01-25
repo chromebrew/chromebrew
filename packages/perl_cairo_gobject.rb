@@ -8,12 +8,8 @@ class Perl_cairo_gobject < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Cairo-GObject-1.005.tar.gz'
   source_sha256 '8d896444d71e1d0bca3d24e31e5d82bd0d9542aaed91d1fb7eab367bce675c50'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_cairo_gobject/1.005-perl5.38_armv7l/perl_cairo_gobject-1.005-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_cairo_gobject/1.005-perl5.38_armv7l/perl_cairo_gobject-1.005-perl5.38-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_cairo_gobject/1.005-perl5.38_x86_64/perl_cairo_gobject-1.005-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e47d27066dfcce1985e12ac63222c3a652978c66c35bde0913355b2b570629d1',
      armv7l: 'e47d27066dfcce1985e12ac63222c3a652978c66c35bde0913355b2b570629d1',

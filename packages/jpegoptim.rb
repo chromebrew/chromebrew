@@ -8,13 +8,8 @@ class Jpegoptim < Package
   compatibility 'all'
   source_url 'https://github.com/tjko/jpegoptim/archive/v1.5.0.tar.gz'
   source_sha256 '67b0feba73fd72f0bd383f25bf84149a73378d34c0c25bc0b9b25b0264d85824'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jpegoptim/1.5.0_armv7l/jpegoptim-1.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jpegoptim/1.5.0_armv7l/jpegoptim-1.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jpegoptim/1.5.0_i686/jpegoptim-1.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jpegoptim/1.5.0_x86_64/jpegoptim-1.5.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd4decc886ec846db2b6c730ddac7593c806fdad9f271dfdd91f164a3f167f751',
      armv7l: 'd4decc886ec846db2b6c730ddac7593c806fdad9f271dfdd91f164a3f167f751',

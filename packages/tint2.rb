@@ -8,13 +8,8 @@ class Tint2 < Package
   compatibility 'all'
   source_url 'https://gitlab.com/o9000/tint2/-/archive/v16.7/tint2-v16.7.tar.gz'
   source_sha256 '74962c1dd111be9955319a133a790b24fe5a8ef0315a1bcdabc58c1157c1fb26'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tint2/16.7_armv7l/tint2-16.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tint2/16.7_armv7l/tint2-16.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tint2/16.7_i686/tint2-16.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tint2/16.7_x86_64/tint2-16.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a975a792b4d533bf2d64a776c20c8b9e5b9a4e6b1243e8206f6051f1afc02c77',
      armv7l: 'a975a792b4d533bf2d64a776c20c8b9e5b9a4e6b1243e8206f6051f1afc02c77',

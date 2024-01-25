@@ -8,13 +8,8 @@ class Gphoto < Package
   compatibility 'all'
   source_url 'https://github.com/gphoto/gphoto2/archive/gphoto2-2_5_23-release.tar.gz'
   source_sha256 'dc78b7f8a88803937301d157b5b32cd45f6defcc771564438a477a7fb05f4489'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gphoto/2.5.23_armv7l/gphoto-2.5.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gphoto/2.5.23_armv7l/gphoto-2.5.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gphoto/2.5.23_i686/gphoto-2.5.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gphoto/2.5.23_x86_64/gphoto-2.5.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '055e881c56a7e40a0208176d08555a8992f15844aedc204f53d99db8e86e1f31',
      armv7l: '055e881c56a7e40a0208176d08555a8992f15844aedc204f53d99db8e86e1f31',

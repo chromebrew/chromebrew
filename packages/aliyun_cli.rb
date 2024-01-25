@@ -8,13 +8,8 @@ class Aliyun_cli < Package
   compatibility 'all'
   source_url 'https://github.com/aliyun/aliyun-cli.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aliyun_cli/3.0.141_armv7l/aliyun_cli-3.0.141-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aliyun_cli/3.0.141_armv7l/aliyun_cli-3.0.141-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aliyun_cli/3.0.141_i686/aliyun_cli-3.0.141-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aliyun_cli/3.0.141_x86_64/aliyun_cli-3.0.141-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c7a970329f5f13c3d39fc359ab54c6b7bf686ba667c448d880116bb0be0b1770',
      armv7l: 'c7a970329f5f13c3d39fc359ab54c6b7bf686ba667c448d880116bb0be0b1770',

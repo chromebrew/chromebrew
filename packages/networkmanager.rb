@@ -8,12 +8,8 @@ class Networkmanager < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{version}/NetworkManager#{version}.tar.bz2"
   source_sha256 '8dccf93214de0723f7f961f002f9d82428ddaee4604c524fbda883ce4992e660'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.44.2_armv7l/networkmanager-1.44.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.44.2_armv7l/networkmanager-1.44.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/networkmanager/1.44.2_x86_64/networkmanager-1.44.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '59f9d7dc41ad58396ae07cd39c71b2c232cfac55ce795f57b214c7e6044087b8',
      armv7l: '59f9d7dc41ad58396ae07cd39c71b2c232cfac55ce795f57b214c7e6044087b8',

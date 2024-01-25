@@ -8,13 +8,8 @@ class Zstd < Package
   compatibility 'all'
   source_url 'https://github.com/facebook/zstd.git'
   git_hashtag version
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/3298a08076081dbfa8eba5b08c2167b06020c5ff_armv7l/zstd-3298a08076081dbfa8eba5b08c2167b06020c5ff-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/3298a08076081dbfa8eba5b08c2167b06020c5ff_armv7l/zstd-3298a08076081dbfa8eba5b08c2167b06020c5ff-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/3298a08076081dbfa8eba5b08c2167b06020c5ff_i686/zstd-3298a08076081dbfa8eba5b08c2167b06020c5ff-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zstd/3298a08076081dbfa8eba5b08c2167b06020c5ff_x86_64/zstd-3298a08076081dbfa8eba5b08c2167b06020c5ff-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1c12e49396d6df5bc42ca922ab19481d844683b64521e1878cc592e538c2c8f5',
      armv7l: '1c12e49396d6df5bc42ca922ab19481d844683b64521e1878cc592e538c2c8f5',

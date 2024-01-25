@@ -9,13 +9,8 @@ class Gdk_pixbuf < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-1_armv7l/gdk_pixbuf-2.42.10-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-1_armv7l/gdk_pixbuf-2.42.10-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-1_i686/gdk_pixbuf-2.42.10-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdk_pixbuf/2.42.10-1_x86_64/gdk_pixbuf-2.42.10-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8d79852a5069b1c1e5a6834648c32f346ad407e894be2ecc75a66f69cf42160c',
      armv7l: '8d79852a5069b1c1e5a6834648c32f346ad407e894be2ecc75a66f69cf42160c',

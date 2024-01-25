@@ -8,13 +8,8 @@ class Cgroupfs_mount < Package
   compatibility 'all'
   source_url 'https://github.com/tianon/cgroupfs-mount/archive/1.4.tar.gz'
   source_sha256 'd6c8aff7af59c7d0082ee3018c97f73b0421e81a49bb28ad9f66a36da5cd6ec7'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cgroupfs_mount/1.4_armv7l/cgroupfs_mount-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cgroupfs_mount/1.4_armv7l/cgroupfs_mount-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cgroupfs_mount/1.4_i686/cgroupfs_mount-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cgroupfs_mount/1.4_x86_64/cgroupfs_mount-1.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5291e3cba179034a52b508008b0b35fcb5d8a800a8e14068ade8d2c1feda8ee1',
      armv7l: '5291e3cba179034a52b508008b0b35fcb5d8a800a8e14068ade8d2c1feda8ee1',

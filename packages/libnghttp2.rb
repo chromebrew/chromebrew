@@ -9,13 +9,8 @@ class Libnghttp2 < CMake
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.58.0-py3.12_armv7l/libnghttp2-1.58.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.58.0-py3.12_armv7l/libnghttp2-1.58.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.58.0-py3.12_i686/libnghttp2-1.58.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnghttp2/1.58.0-py3.12_x86_64/libnghttp2-1.58.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3d71393f9447a4cba71c42766ea5f53b97f9eda232103feb1066c3cf94443b50',
      armv7l: '3d71393f9447a4cba71c42766ea5f53b97f9eda232103feb1066c3cf94443b50',

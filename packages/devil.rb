@@ -8,13 +8,8 @@ class Devil < Package
   compatibility 'all'
   source_url 'https://github.com/DentonW/DevIL.git'
   git_hashtag '6f3d5e9bc5d173f56060fc8e14bed35c8edcfdcc'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_armv7l/devil-1.8.0-6f3d5e9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_armv7l/devil-1.8.0-6f3d5e9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_i686/devil-1.8.0-6f3d5e9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/devil/1.8.0-6f3d5e9_x86_64/devil-1.8.0-6f3d5e9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
      armv7l: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',

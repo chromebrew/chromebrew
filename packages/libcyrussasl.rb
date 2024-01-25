@@ -8,13 +8,8 @@ class Libcyrussasl < Autotools
   compatibility 'all'
   source_url 'https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz'
   source_sha256 '7ccfc6abd01ed67c1a0924b353e526f1b766b21f42d4562ee635a8ebfc5bb38c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28-2_armv7l/libcyrussasl-2.1.28-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28-2_armv7l/libcyrussasl-2.1.28-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28-2_i686/libcyrussasl-2.1.28-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcyrussasl/2.1.28-2_x86_64/libcyrussasl-2.1.28-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '256fe21c3b7e90413a775ddbe4e84354a5b626af4155aa9610f676c49ea343d1',
      armv7l: '256fe21c3b7e90413a775ddbe4e84354a5b626af4155aa9610f676c49ea343d1',

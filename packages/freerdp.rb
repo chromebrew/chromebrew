@@ -8,12 +8,8 @@ class Freerdp < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/FreeRDP/FreeRDP.git'
   git_hashtag '2a72946d18d813daffa574b26c686c3df479a447'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.10.0-2a72946_armv7l/freerdp-2.10.0-2a72946-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.10.0-2a72946_armv7l/freerdp-2.10.0-2a72946-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freerdp/2.10.0-2a72946_x86_64/freerdp-2.10.0-2a72946-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '59532eb9a6cbc636926b798088d83b54ab7054a5f93686658378e8fdc031ac41',
      armv7l: '59532eb9a6cbc636926b798088d83b54ab7054a5f93686658378e8fdc031ac41',

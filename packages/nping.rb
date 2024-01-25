@@ -8,13 +8,8 @@ class Nping < Package
   compatibility 'all'
   source_url 'https://nmap.org/dist/nmap-7.60.tar.bz2'
   source_sha256 'a8796ecc4fa6c38aad6139d9515dc8113023a82e9d787e5a5fb5fa1b05516f21'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nping/7.60_armv7l/nping-7.60-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nping/7.60_armv7l/nping-7.60-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nping/7.60_i686/nping-7.60-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nping/7.60_x86_64/nping-7.60-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e57915081b9648b6f4ea639a40f611306d870fced74b47ee3438daa8414e1921',
      armv7l: 'e57915081b9648b6f4ea639a40f611306d870fced74b47ee3438daa8414e1921',

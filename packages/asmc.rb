@@ -9,13 +9,8 @@ class Asmc < Package
   compatibility 'all'
   source_url "https://github.com/nidud/asmc/raw/#{@_commit}/bin/asmc"
   source_sha256 '90d227fa76ceba80da6aa63e90b945577daf7c13d93c3a08b76b9d488875d4a0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asmc/2.33.27-3663995_armv7l/asmc-2.33.27-3663995-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asmc/2.33.27-3663995_armv7l/asmc-2.33.27-3663995-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asmc/2.33.27-3663995_i686/asmc-2.33.27-3663995-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asmc/2.33.27-3663995_x86_64/asmc-2.33.27-3663995-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dda205aeddb6e8c0aa09f12bdb3e5c6908351a3d2528ceb0286e518efb025c73',
      armv7l: 'dda205aeddb6e8c0aa09f12bdb3e5c6908351a3d2528ceb0286e518efb025c73',

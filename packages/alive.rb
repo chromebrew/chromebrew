@@ -9,7 +9,6 @@ class Alive < Autotools
   source_url 'https://ftpmirror.gnu.org/alive/alive-2.0.5.tar.lz'
   source_sha256 '94cf3dbffd9644405ed4944f94a7bb989674321607318c5a35d5fabc56a75089'
 
-  binary_url({})
   binary_sha256({})
 
   depends_on 'guile' # R

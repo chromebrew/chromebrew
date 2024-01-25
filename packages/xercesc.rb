@@ -8,13 +8,8 @@ class Xercesc < Package
   compatibility 'all'
   source_url 'https://downloads.apache.org/xerces/c/3/sources/xerces-c-3.2.3.tar.xz'
   source_sha256 '12fc99a9fc1d1a79bd0e927b8b5637a576d6656f45b0d5e70ee3694d379cc149'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xercesc/3.2.3_armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xercesc/3.2.3_armv7l/xercesc-3.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xercesc/3.2.3_i686/xercesc-3.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xercesc/3.2.3_x86_64/xercesc-3.2.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7ee70737c8d3fe7d21a9e3cf3f27abebcf9b663da95b4aa24e9862c9c707fe4c',
      armv7l: '7ee70737c8d3fe7d21a9e3cf3f27abebcf9b663da95b4aa24e9862c9c707fe4c',

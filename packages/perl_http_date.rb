@@ -8,13 +8,8 @@ class Perl_http_date < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Date-6.05.tar.gz'
   source_sha256 '365d6294dfbd37ebc51def8b65b81eb79b3934ecbc95a2ec2d4d827efe6a922b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_date/6.05-perl5.38_armv7l/perl_http_date-6.05-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_date/6.05-perl5.38_armv7l/perl_http_date-6.05-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_date/6.05-perl5.38_i686/perl_http_date-6.05-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_date/6.05-perl5.38_x86_64/perl_http_date-6.05-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7d5092501452b15fc777c7ab5ca2d5070e639380e897bc41edf012bc73d89d8d',
      armv7l: '7d5092501452b15fc777c7ab5ca2d5070e639380e897bc41edf012bc73d89d8d',

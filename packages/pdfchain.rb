@@ -8,13 +8,8 @@ class Pdfchain < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/pdfchain/pdfchain-0.4.4.2/pdfchain-0.4.4.2.tar.gz'
   source_sha256 '1eee0f93dbe8c9cef9f9fe4ec0a10e0a45ca8cde67cd6ceffa2ce6c843752f3d'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfchain/0.4.4.2_armv7l/pdfchain-0.4.4.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfchain/0.4.4.2_armv7l/pdfchain-0.4.4.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfchain/0.4.4.2_i686/pdfchain-0.4.4.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfchain/0.4.4.2_x86_64/pdfchain-0.4.4.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'b052c791dab36fb8a87e9abd77be1695cfe1246093b222a3f83a74f9f3d8ca3a',
      armv7l: 'b052c791dab36fb8a87e9abd77be1695cfe1246093b222a3f83a74f9f3d8ca3a',

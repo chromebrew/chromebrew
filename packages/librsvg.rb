@@ -8,12 +8,8 @@ class Librsvg < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.57.0_armv7l/librsvg-2.57.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.57.0_armv7l/librsvg-2.57.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsvg/2.57.0_x86_64/librsvg-2.57.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '59d527215f9325d2996a6118a688da958691daf5e5fdb861945d8737123ea26f',
      armv7l: '59d527215f9325d2996a6118a688da958691daf5e5fdb861945d8737123ea26f',

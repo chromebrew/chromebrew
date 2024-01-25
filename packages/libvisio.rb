@@ -11,13 +11,8 @@ class Libvisio < Autotools
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/libvisio/libvisio-0.1.7.tar.xz'
   source_sha256 '8faf8df870cb27b09a787a1959d6c646faa44d0d8ab151883df408b7166bea4c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisio/0.1.7-2_armv7l/libvisio-0.1.7-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisio/0.1.7-2_armv7l/libvisio-0.1.7-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisio/0.1.7-2_i686/libvisio-0.1.7-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvisio/0.1.7-2_x86_64/libvisio-0.1.7-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '881a0996ae47fc7f1402972814298d56a8f1d5e5d94b8c65f3d02a0a120d23d3',
      armv7l: '881a0996ae47fc7f1402972814298d56a8f1d5e5d94b8c65f3d02a0a120d23d3',

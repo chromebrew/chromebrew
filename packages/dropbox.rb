@@ -14,11 +14,8 @@ class Dropbox < Package
     source_url 'https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-48.4.58.tar.gz'
     source_sha256 'bd948a712e21c36d01ad17e72a5893972dd9411408561c3b806dbca2c32ae9a4'
   end
+  binary_compression 'tar.xz'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox/48.4.58_i686/dropbox-48.4.58-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dropbox/48.4.58_x86_64/dropbox-48.4.58-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     i686: '1d272702286bd31f3235ba0eb8369946f45fb4ea919b35d1ec4ed060a1578b69',
     x86_64: 'c2c699372e4646ce5ed542fa189c08dc44dea1ae312f7401f1f385279e1b2ded'

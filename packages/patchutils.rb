@@ -8,13 +8,8 @@ class Patchutils < Package
   compatibility 'all'
   source_url 'http://cyberelk.net/tim/data/patchutils/stable/patchutils-0.3.4.tar.xz'
   source_sha256 'cf55d4db83ead41188f5b6be16f60f6b76a87d5db1c42f5459d596e81dabe876'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchutils/0.3.4_armv7l/patchutils-0.3.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchutils/0.3.4_armv7l/patchutils-0.3.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchutils/0.3.4_i686/patchutils-0.3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/patchutils/0.3.4_x86_64/patchutils-0.3.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a016f2bf4f5cd6711295f46e30563dcbd910b714be964b61f00cb68ef97d0f2c',
      armv7l: 'a016f2bf4f5cd6711295f46e30563dcbd910b714be964b61f00cb68ef97d0f2c',

@@ -8,13 +8,8 @@ class Gtksharp2 < Package
   compatibility 'all'
   source_url 'https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.45.tar.gz'
   source_sha256 '02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksharp2/2.12.45_armv7l/gtksharp2-2.12.45-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksharp2/2.12.45_armv7l/gtksharp2-2.12.45-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksharp2/2.12.45_i686/gtksharp2-2.12.45-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksharp2/2.12.45_x86_64/gtksharp2-2.12.45-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f7b0e0626a8561f4a24297d97322c2f4b280644e9b6015e03ce0d8a198bc2cfb',
      armv7l: 'f7b0e0626a8561f4a24297d97322c2f4b280644e9b6015e03ce0d8a198bc2cfb',

@@ -11,13 +11,8 @@ class Libgtop < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgtop.git'
   git_hashtag '507809b648634c6251e9aeeb8ffae1d38c5be5f7'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_armv7l/libgtop-2.40.0-507809b-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_armv7l/libgtop-2.40.0-507809b-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_i686/libgtop-2.40.0-507809b-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgtop/2.40.0-507809b_x86_64/libgtop-2.40.0-507809b-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '162e38569618da3e070b43c13efb2a097ca66e4e1bc2b22cfc81f8c64166332f',
      armv7l: '162e38569618da3e070b43c13efb2a097ca66e4e1bc2b22cfc81f8c64166332f',

@@ -8,13 +8,8 @@ class Perl_xml_simple < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz'
   source_sha256 '531fddaebea2416743eb5c4fdfab028f502123d9a220405a4100e68fc480dbf8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.38_armv7l/perl_xml_simple-2.25-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.38_armv7l/perl_xml_simple-2.25-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.38_i686/perl_xml_simple-2.25-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_simple/2.25-perl5.38_x86_64/perl_xml_simple-2.25-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0a9fd6e9a24027772a04f6ed9fec7c1fb1643839768e855e99fd0ce7132f4979',
      armv7l: '0a9fd6e9a24027772a04f6ed9fec7c1fb1643839768e855e99fd0ce7132f4979',

@@ -8,13 +8,8 @@ class Libwmf < Package
   compatibility 'all'
   source_url 'https://github.com/caolanm/libwmf.git'
   git_hashtag 'ad365e1df356d6371daabf426bd39a5f9721160a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_armv7l/libwmf-0.2.12-ad365e1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_armv7l/libwmf-0.2.12-ad365e1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_i686/libwmf-0.2.12-ad365e1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwmf/0.2.12-ad365e1_x86_64/libwmf-0.2.12-ad365e1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
      armv7l: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',

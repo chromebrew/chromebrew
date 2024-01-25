@@ -8,12 +8,8 @@ class Geany < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/geany/geany.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/2.0.0_armv7l/geany-2.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/2.0.0_armv7l/geany-2.0.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geany/2.0.0_x86_64/geany-2.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8be66872a26db0399da46595609f6bda991a7b9a4594413685a5f82916435b75',
      armv7l: '8be66872a26db0399da46595609f6bda991a7b9a4594413685a5f82916435b75',

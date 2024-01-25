@@ -8,13 +8,8 @@ class Bluefish < Package
   compatibility 'all'
   source_url 'https://www.bennewitz.com/bluefish/stable/source/bluefish-2.2.13.tar.bz2'
   source_sha256 '9b56966209d50951326a2ae21c7fd692bd91661d047ad3a01c97ba731aa477fb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.13_armv7l/bluefish-2.2.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.13_armv7l/bluefish-2.2.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.13_i686/bluefish-2.2.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bluefish/2.2.13_x86_64/bluefish-2.2.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1994ac56d3a6ef304cf7078cadb49b56ff10205bcf927dc300d2256ad9a4e34a',
      armv7l: '1994ac56d3a6ef304cf7078cadb49b56ff10205bcf927dc300d2256ad9a4e34a',

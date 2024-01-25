@@ -8,13 +8,8 @@ class Lynis < Package
   compatibility 'all'
   source_url 'https://downloads.cisofy.com/lynis/lynis-3.0.1.tar.gz'
   source_sha256 '8381b62e11a5e0ead417bcfd92845adab7dc3b9d06271c852a1166cb65a61aff'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_armv7l/lynis-3.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_armv7l/lynis-3.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_i686/lynis-3.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lynis/3.0.1_x86_64/lynis-3.0.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '4172f481e0e7fec75b0c5e7552a3cd6f22a4f6aed883bf8c08d3670216617f6b',
      armv7l: '4172f481e0e7fec75b0c5e7552a3cd6f22a4f6aed883bf8c08d3670216617f6b',

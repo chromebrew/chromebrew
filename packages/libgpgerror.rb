@@ -8,13 +8,8 @@ class Libgpgerror < Package
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-#{version}.tar.bz2"
   source_sha256 '9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.47_armv7l/libgpgerror-1.47-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.47_armv7l/libgpgerror-1.47-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.47_i686/libgpgerror-1.47-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgpgerror/1.47_x86_64/libgpgerror-1.47-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '38dd7c36e96e78bcd9b2ec5ef6c2e1780d6b5f30f0855c71ffd78c6e0fedef1a',
      armv7l: '38dd7c36e96e78bcd9b2ec5ef6c2e1780d6b5f30f0855c71ffd78c6e0fedef1a',

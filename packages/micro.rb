@@ -6,6 +6,7 @@ class Micro < Package
   version '1.4.1'
   license 'MIT'
   compatibility 'all'
+  binary_compression 'tar.xz'
 
   case ARCH
   when 'aarch64', 'armv7l'
@@ -19,12 +20,6 @@ class Micro < Package
     source_sha256 'e7d4c9427f9fdfed78e69d42cf518e93ae15fc8f70b7f0f87d292ed81206e900'
   end
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/micro/1.4.1_armv7l/micro-1.4.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/micro/1.4.1_armv7l/micro-1.4.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/micro/1.4.1_i686/micro-1.4.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/micro/1.4.1_x86_64/micro-1.4.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '305c70b8ae3ff6e8e80baf8d9af09db29b11fd3e40d381c787ee1f88406cc166',
      armv7l: '305c70b8ae3ff6e8e80baf8d9af09db29b11fd3e40d381c787ee1f88406cc166',

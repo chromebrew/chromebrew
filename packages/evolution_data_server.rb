@@ -8,10 +8,8 @@ class Evolution_data_server < Package
   compatibility 'x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evolution_data_server/3.48.1_x86_64/evolution_data_server-3.48.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '59465eb6457d3f2a01fa24983d0a99226d22145674bd6a5c38244b12569d617f'
   })

@@ -8,13 +8,8 @@ class Gnome_desktop < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_armv7l/gnome_desktop-43-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_armv7l/gnome_desktop-43-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_i686/gnome_desktop-43-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_desktop/43_x86_64/gnome_desktop-43-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a74b7c69028d47aaf02549264b22818423cec6fef60b40ef3a25f188f5337ede',
      armv7l: 'a74b7c69028d47aaf02549264b22818423cec6fef60b40ef3a25f188f5337ede',

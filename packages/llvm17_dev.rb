@@ -10,13 +10,8 @@ class Llvm17_dev < Package
   license Llvm17_build.license
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_armv7l/llvm17_dev-17.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_armv7l/llvm17_dev-17.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_i686/llvm17_dev-17.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_dev/17.0.6_x86_64/llvm17_dev-17.0.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '617d966e31c3300adfd2c8ca5ddbc2446a69a853eb2f60727d54359241844b38',
      armv7l: '617d966e31c3300adfd2c8ca5ddbc2446a69a853eb2f60727d54359241844b38',

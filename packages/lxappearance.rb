@@ -8,13 +8,8 @@ class Lxappearance < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/sourceforge/lxde/lxappearance-0.6.3.tar.xz'
   source_sha256 '7222d858b8fef4b7967c42142d61e82ded6dd42dc5ef1d59caad775795928b38'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lxappearance/0.6.3_armv7l/lxappearance-0.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lxappearance/0.6.3_armv7l/lxappearance-0.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lxappearance/0.6.3_i686/lxappearance-0.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lxappearance/0.6.3_x86_64/lxappearance-0.6.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e03262c2c8dda002b214e1ac5a9ab9a41833df883f7517d629cc394f48684356',
      armv7l: 'e03262c2c8dda002b214e1ac5a9ab9a41833df883f7517d629cc394f48684356',

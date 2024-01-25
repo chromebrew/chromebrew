@@ -8,12 +8,8 @@ class Podofo < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/podofo/podofo/archive/0.10.1.tar.gz'
   source_sha256 '9b2bb5d54185a547e440413ca2e9ec3ea9c522fec81dfeb9a23dbc3d65fbaa55'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.10.1_armv7l/podofo-0.10.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.10.1_armv7l/podofo-0.10.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/podofo/0.10.1_x86_64/podofo-0.10.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2bf578c3a6f230cb1831787c4dc0c0ad88ae28918b05eaf4b684b8d19a89fba4',
      armv7l: '2bf578c3a6f230cb1831787c4dc0c0ad88ae28918b05eaf4b684b8d19a89fba4',

@@ -8,13 +8,8 @@ class Readline < Package
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/readline/readline-#{version}.tar.gz"
   source_sha256 '3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_armv7l/readline-8.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_armv7l/readline-8.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_i686/readline-8.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/readline/8.2_x86_64/readline-8.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',
      armv7l: '2b15b0948ea00612e81fe9118ec797bf7acde887b6d9f6590c8be08cc8e60215',

@@ -8,13 +8,8 @@ class Webrtc_audio_processing < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/archive/v0.3.1/webrtc-audio-processing-v0.3.1.tar.bz2'
   source_sha256 '70d56051f73e8e4ac95fb392ce15de6c633b2c3ae492359aecc72fc663c9bdda'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webrtc_audio_processing/0.3.1_armv7l/webrtc_audio_processing-0.3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webrtc_audio_processing/0.3.1_armv7l/webrtc_audio_processing-0.3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webrtc_audio_processing/0.3.1_i686/webrtc_audio_processing-0.3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webrtc_audio_processing/0.3.1_x86_64/webrtc_audio_processing-0.3.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'dd57ac67021298092cd969fc347a277158662a2aeff1dd4f0f21dfa2f8d52f8f',
      armv7l: 'dd57ac67021298092cd969fc347a277158662a2aeff1dd4f0f21dfa2f8d52f8f',

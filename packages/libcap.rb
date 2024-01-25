@@ -8,13 +8,8 @@ class Libcap < Package
   compatibility 'all'
   source_url 'https://git.kernel.org/pub/scm/libs/libcap/libcap.git'
   git_hashtag "libcap-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.66_armv7l/libcap-2.66-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.66_armv7l/libcap-2.66-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.66_i686/libcap-2.66-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap/2.66_x86_64/libcap-2.66-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '066b33b52470c318c3e9f63fb3f493ab3dc3eb56bd500e4c431adbca76c585a7',
      armv7l: '066b33b52470c318c3e9f63fb3f493ab3dc3eb56bd500e4c431adbca76c585a7',

@@ -11,13 +11,8 @@ class Jsonrpc_glib < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/jsonrpc-glib.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonrpc_glib/3.42.0_armv7l/jsonrpc_glib-3.42.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonrpc_glib/3.42.0_armv7l/jsonrpc_glib-3.42.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonrpc_glib/3.42.0_i686/jsonrpc_glib-3.42.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jsonrpc_glib/3.42.0_x86_64/jsonrpc_glib-3.42.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3f88e3475e71dd51196732f937c0cc9c814b541a84f2dbf34945cf0b37477eec',
      armv7l: '3f88e3475e71dd51196732f937c0cc9c814b541a84f2dbf34945cf0b37477eec',

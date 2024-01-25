@@ -8,13 +8,8 @@ class Gawk < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gawk/gawk-5.3.0.tar.xz'
   source_sha256 'ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.3.0_armv7l/gawk-5.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.3.0_armv7l/gawk-5.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.3.0_i686/gawk-5.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gawk/5.3.0_x86_64/gawk-5.3.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f1b44733f046da402351e65dc672cd21e355d0719b7ac152ad27d7a23302a175',
      armv7l: 'f1b44733f046da402351e65dc672cd21e355d0719b7ac152ad27d7a23302a175',

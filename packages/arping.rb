@@ -8,13 +8,8 @@ class Arping < Package
   compatibility 'all'
   source_url 'https://github.com/ThomasHabets/arping/archive/arping-2.21.tar.gz'
   source_sha256 '7bf550571aa1d4a2b00878bb2f6fb857a09d30bf65411c90d62afcd86755bd81'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_armv7l/arping-2.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_armv7l/arping-2.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_i686/arping-2.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arping/2.21_x86_64/arping-2.21-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e85f871e84dce5360c1b50eccaa3ae5a1beaea9f89120cf0da19ffcabcf19fa1',
      armv7l: 'e85f871e84dce5360c1b50eccaa3ae5a1beaea9f89120cf0da19ffcabcf19fa1',

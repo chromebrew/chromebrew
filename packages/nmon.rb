@@ -8,13 +8,8 @@ class Nmon < Package
   compatibility 'all'
   source_url 'http://downloads.sourceforge.net/project/nmon/lmon16g.c'
   source_sha256 'da82dd693b503b062854dfe7dbb5d36b347872ab44a4aa05b97e9d577747f688'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmon/16g_armv7l/nmon-16g-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmon/16g_armv7l/nmon-16g-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmon/16g_i686/nmon-16g-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nmon/16g_x86_64/nmon-16g-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bcb216dff6287ea5bfe77ab99e0f299739be39c8e53d8887ad304f68faf8363e',
      armv7l: 'bcb216dff6287ea5bfe77ab99e0f299739be39c8e53d8887ad304f68faf8363e',

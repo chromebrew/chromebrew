@@ -8,13 +8,8 @@ class Mupdf < Package
   compatibility 'all'
   source_url 'https://mupdf.com/downloads/archive/mupdf-1.20.3-source.tar.lz'
   source_sha256 '6f73f63ef8aa81991dfd023d4426a548827d1d74e0bfcf2a013acad63b651868'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_armv7l/mupdf-1.20.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_armv7l/mupdf-1.20.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_i686/mupdf-1.20.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mupdf/1.20.3_x86_64/mupdf-1.20.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
      armv7l: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',

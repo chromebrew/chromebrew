@@ -8,13 +8,8 @@ class Libmetalink < Package
   compatibility 'all'
   source_url 'https://launchpad.net/libmetalink/trunk/libmetalink-0.1.3/+download/libmetalink-0.1.3.tar.xz'
   source_sha256 '86312620c5b64c694b91f9cc355eabbd358fa92195b3e99517504076bf9fe33a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-4_armv7l/libmetalink-0.1.3-4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-4_armv7l/libmetalink-0.1.3-4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-4_i686/libmetalink-0.1.3-4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmetalink/0.1.3-4_x86_64/libmetalink-0.1.3-4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8bd31fde06e46219af5b677ba5c9b07a08791ac55e54210c5cffab26388765ae',
      armv7l: '8bd31fde06e46219af5b677ba5c9b07a08791ac55e54210c5cffab26388765ae',

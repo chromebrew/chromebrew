@@ -9,13 +9,8 @@ class Py3_agate_excel < Python
   compatibility 'all'
   source_url 'https://github.com/wireservice/agate-excel.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5-py3.12_armv7l/py3_agate_excel-0.2.5-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5-py3.12_armv7l/py3_agate_excel-0.2.5-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5-py3.12_i686/py3_agate_excel-0.2.5-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_excel/0.2.5-py3.12_x86_64/py3_agate_excel-0.2.5-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4f804ad7c84de28dfad5c481c1dd132cc75e3b0b8e8278f67e9568864ffd4c0c',
      armv7l: '4f804ad7c84de28dfad5c481c1dd132cc75e3b0b8e8278f67e9568864ffd4c0c',

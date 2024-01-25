@@ -8,13 +8,8 @@ class Unicode_character_database < Package
   compatibility 'all'
   source_url "https://www.unicode.org/Public/zipped/#{version}/UCD.zip"
   source_sha256 '2f76973b4d36ae45584f5a45ec65b47138932d777dd23a5669c89535ef3da951'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_armv7l/unicode_character_database-13.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_armv7l/unicode_character_database-13.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_i686/unicode_character_database-13.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_character_database/13.0.0_x86_64/unicode_character_database-13.0.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '68f18a9c671f5879fccebc536c730e28610eaa3b62615faac64c2aa240c0dfbe',
      armv7l: '68f18a9c671f5879fccebc536c730e28610eaa3b62615faac64c2aa240c0dfbe',

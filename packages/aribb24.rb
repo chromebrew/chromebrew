@@ -9,13 +9,8 @@ class Aribb24 < Autotools
   license 'LGPL-3'
   source_url 'https://github.com/nkoriyama/aribb24.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb24/1.0.3-1_armv7l/aribb24-1.0.3-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb24/1.0.3-1_armv7l/aribb24-1.0.3-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb24/1.0.3-1_i686/aribb24-1.0.3-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb24/1.0.3-1_x86_64/aribb24-1.0.3-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '80476e675586eeb7e06b18f29d716ebdb92cad48ba9f7cc1dbdec384f6eec99c',
      armv7l: '80476e675586eeb7e06b18f29d716ebdb92cad48ba9f7cc1dbdec384f6eec99c',

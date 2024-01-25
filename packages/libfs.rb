@@ -8,13 +8,8 @@ class Libfs < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libFS-1.0.9.tar.xz'
   source_sha256 '597379438b3242ccc7d7b0fc432dc6c844eca0d4a82a7b82518bfeb203fc208a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.9_armv7l/libfs-1.0.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.9_armv7l/libfs-1.0.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.9_i686/libfs-1.0.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfs/1.0.9_x86_64/libfs-1.0.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7f4159d023ced6bd8b42c5e398ce1a7876de0901077945e8dcdc0b8da1a15789',
      armv7l: '7f4159d023ced6bd8b42c5e398ce1a7876de0901077945e8dcdc0b8da1a15789',

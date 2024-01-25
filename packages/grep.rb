@@ -11,13 +11,8 @@ class Grep < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/grep/grep-3.11.tar.xz'
   source_sha256 '1db2aedde89d0dea42b16d9528f894c8d15dae4e190b59aecc78f5a951276eab'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_armv7l/grep-3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_armv7l/grep-3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_i686/grep-3.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grep/3.11_x86_64/grep-3.11-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e26ffb1c929816e035a5e64a5140ae1acdc54a83f115478a907d407a31088a1c',
      armv7l: 'e26ffb1c929816e035a5e64a5140ae1acdc54a83f115478a907d407a31088a1c',

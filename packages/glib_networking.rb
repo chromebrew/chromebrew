@@ -8,12 +8,8 @@ class Glib_networking < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/glib-networking.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.78.0_armv7l/glib_networking-2.78.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.78.0_armv7l/glib_networking-2.78.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib_networking/2.78.0_x86_64/glib_networking-2.78.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0d2722140f2f0e71b7abac4acac2925ad798650f3307c2545a4cc4bfe21e599f',
      armv7l: '0d2722140f2f0e71b7abac4acac2925ad798650f3307c2545a4cc4bfe21e599f',

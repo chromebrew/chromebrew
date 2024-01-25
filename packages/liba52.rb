@@ -9,13 +9,8 @@ class Liba52 < Package
   license 'GPL-2+'
   source_url 'https://salsa.debian.org/multimedia-team/a52dec.git'
   git_hashtag "debian/#{@_ver}-20"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liba52/0.7.4-2_armv7l/liba52-0.7.4-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liba52/0.7.4-2_armv7l/liba52-0.7.4-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liba52/0.7.4-2_i686/liba52-0.7.4-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liba52/0.7.4-2_x86_64/liba52-0.7.4-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '844f79a23cd1dde50dee917211786abdef130f7e952ec6b1c9c8208f8ac69abc',
      armv7l: '844f79a23cd1dde50dee917211786abdef130f7e952ec6b1c9c8208f8ac69abc',

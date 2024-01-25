@@ -8,13 +8,8 @@ class Sane_backends < Package
   compatibility 'all'
   source_url 'https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz'
   source_sha256 '3a28c237c0a72767086202379f6dc92dbb63ec08dfbab22312cba80e238bb114'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_backends/1.0.32_armv7l/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_backends/1.0.32_armv7l/sane_backends-1.0.32-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_backends/1.0.32_i686/sane_backends-1.0.32-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_backends/1.0.32_x86_64/sane_backends-1.0.32-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ac5d7ac8a77796e58a2b423ecabb59df5cbcec5c734080942cf187517deecaf9',
      armv7l: 'ac5d7ac8a77796e58a2b423ecabb59df5cbcec5c734080942cf187517deecaf9',

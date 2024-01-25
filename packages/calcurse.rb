@@ -8,13 +8,8 @@ class Calcurse < Package
   compatibility 'all'
   source_url 'http://calcurse.org/files/calcurse-4.3.0.tar.gz'
   source_sha256 '31ecc3dc09e1e561502b4c94f965ed6b167c03e9418438c4a7ad5bad2c785f9a'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/calcurse/4.3.0_armv7l/calcurse-4.3.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/calcurse/4.3.0_armv7l/calcurse-4.3.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/calcurse/4.3.0_i686/calcurse-4.3.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/calcurse/4.3.0_x86_64/calcurse-4.3.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '363f2ae61d62e02b29a9862e358f4fbc017e7274530bd044635239be27879728',
      armv7l: '363f2ae61d62e02b29a9862e358f4fbc017e7274530bd044635239be27879728',

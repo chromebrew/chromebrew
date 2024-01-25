@@ -8,13 +8,8 @@ class Libemf < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/libemf/libemf/1.0.9/libemf-1.0.9.tar.gz'
   source_sha256 'dcc1f7dc09597a7e20fa808fbef03f0c5cbdd99d65a4fddd981d7f1dd6e28b81'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libemf/1.0.9_armv7l/libemf-1.0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libemf/1.0.9_armv7l/libemf-1.0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libemf/1.0.9_i686/libemf-1.0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libemf/1.0.9_x86_64/libemf-1.0.9-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd0823f3f19a891c6dcd66ea7c39f6c8deaefb487e6f14beb9b6045a82a8683b1',
      armv7l: 'd0823f3f19a891c6dcd66ea7c39f6c8deaefb487e6f14beb9b6045a82a8683b1',

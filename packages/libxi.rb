@@ -8,13 +8,8 @@ class Libxi < Package
   compatibility 'all'
   source_url "https://www.x.org/archive/individual/lib/libXi-#{version}.tar.gz"
   source_sha256 'b51e106c445a49409f3da877aa2f9129839001b24697d75a54e5c60507e9a5e3'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxi/1.7.10_armv7l/libxi-1.7.10-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxi/1.7.10_armv7l/libxi-1.7.10-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxi/1.7.10_i686/libxi-1.7.10-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxi/1.7.10_x86_64/libxi-1.7.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',
       armv7l: 'faed3d1ad11fa264c71cce0d762e3941f29dd1d00620f5a45fdcc27419f54be5',

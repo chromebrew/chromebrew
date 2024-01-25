@@ -9,8 +9,7 @@ class Openhab < Package
   source_url 'https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/3.2.0/openhab-3.2.0.tar.gz'
   source_sha256 'e8185adcaabdec4b860c22ec854f37db0aa490d47e3f8654cef0f1dd7346d476'
 
-  binary_url({})
-  binary_sha256({})
+  no_compile_needed
 
   depends_on 'jdk11'
 

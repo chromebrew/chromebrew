@@ -7,13 +7,8 @@ class Aws < Package
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aws/1.19.53_armv7l/aws-1.19.53-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aws/1.19.53_armv7l/aws-1.19.53-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aws/1.19.53_i686/aws-1.19.53-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aws/1.19.53_x86_64/aws-1.19.53-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b5c350d0e754a9d710c8fe5caff4c9b4c6f2a5327930984a71c490c4e8c29e32',
      armv7l: 'b5c350d0e754a9d710c8fe5caff4c9b4c6f2a5327930984a71c490c4e8c29e32',

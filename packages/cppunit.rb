@@ -8,13 +8,8 @@ class Cppunit < Autotools
   compatibility 'all'
   source_url 'https://dev-www.libreoffice.org/src/cppunit-1.15.1.tar.gz'
   source_sha256 '89c5c6665337f56fd2db36bc3805a5619709d51fb136e51937072f63fcc717a7'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1-1_armv7l/cppunit-1.15.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1-1_armv7l/cppunit-1.15.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1-1_i686/cppunit-1.15.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cppunit/1.15.1-1_x86_64/cppunit-1.15.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '34994f0771929f0990b528a73bdeba8989e609f9dec999cc8d9e08506dd91c45',
      armv7l: '34994f0771929f0990b528a73bdeba8989e609f9dec999cc8d9e08506dd91c45',

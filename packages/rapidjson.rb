@@ -8,13 +8,8 @@ class Rapidjson < Package
   compatibility 'all'
   source_url 'https://github.com/Tencent/rapidjson.git'
   git_hashtag '949c771b03de448bdedea80c44a4a5f65284bfeb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rapidjson/949c771_armv7l/rapidjson-949c771-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rapidjson/949c771_armv7l/rapidjson-949c771-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rapidjson/949c771_i686/rapidjson-949c771-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rapidjson/949c771_x86_64/rapidjson-949c771-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e76429c8d3203d9a0f7ca780585de913fc93d2f2a6d3ce341d8d482191123f3b',
      armv7l: 'e76429c8d3203d9a0f7ca780585de913fc93d2f2a6d3ce341d8d482191123f3b',

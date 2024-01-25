@@ -8,13 +8,8 @@ class Libcroco < Package
   compatibility 'all'
   source_url "http://ftp.gnome.org/pub/gnome/sources/libcroco/#{version.rpartition('.')[0]}/libcroco-#{version}.tar.xz"
   source_sha256 '767ec234ae7aa684695b3a735548224888132e063f92db585759b422570621d4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_armv7l/libcroco-0.6.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_armv7l/libcroco-0.6.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_i686/libcroco-0.6.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcroco/0.6.13_x86_64/libcroco-0.6.13-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '60fc1383b5e017354c7c2125a8357d5856c13eea76a765b92bf64e3f92df5341',
      armv7l: '60fc1383b5e017354c7c2125a8357d5856c13eea76a765b92bf64e3f92df5341',

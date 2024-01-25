@@ -8,12 +8,8 @@ class Ibus < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ibus/ibus.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.29_armv7l/ibus-1.5.29-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.29_armv7l/ibus-1.5.29-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ibus/1.5.29_x86_64/ibus-1.5.29-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fbb28b276b71eebc03c119fcfbd1759fce8b14c89b710aba4c420f0f29203f4b',
      armv7l: 'fbb28b276b71eebc03c119fcfbd1759fce8b14c89b710aba4c420f0f29203f4b',

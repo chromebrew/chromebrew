@@ -8,13 +8,8 @@ class Fslint < Package
   compatibility 'all'
   source_url 'https://www.pixelbeat.org/fslint/fslint-2.46.tar.xz'
   source_sha256 'f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_armv7l/fslint-2.46-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_i686/fslint-2.46-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fslint/2.46_x86_64/fslint-2.46-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2eb0a037b1b395589ad00bf857eb9eba17e9c30f1d1683417d7f00ef0854e50c',
      armv7l: '2eb0a037b1b395589ad00bf857eb9eba17e9c30f1d1683417d7f00ef0854e50c',

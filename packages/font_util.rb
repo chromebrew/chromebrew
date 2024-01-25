@@ -8,13 +8,8 @@ class Font_util < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-util-1.3.2.tar.bz2'
   source_sha256 '3ad880444123ac06a7238546fa38a2a6ad7f7e0cc3614de7e103863616522282'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_util/1.3.2_armv7l/font_util-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_util/1.3.2_armv7l/font_util-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_util/1.3.2_i686/font_util-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_util/1.3.2_x86_64/font_util-1.3.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cdb0bcfb44dd1513f0db12b85f6b46b63ef1b937c0a7a17a4d7d4655667632bb',
      armv7l: 'cdb0bcfb44dd1513f0db12b85f6b46b63ef1b937c0a7a17a4d7d4655667632bb',

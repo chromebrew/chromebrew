@@ -11,13 +11,8 @@ class Serd < Meson
   compatibility 'all'
   source_url 'https://github.com/drobilla/serd.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_armv7l/serd-0.30.16-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_armv7l/serd-0.30.16-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_i686/serd-0.30.16-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serd/0.30.16_x86_64/serd-0.30.16-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7517865bbfacf435e720a96a370691fdda49d6310488685470be3e490ae9997f',
      armv7l: '7517865bbfacf435e720a96a370691fdda49d6310488685470be3e490ae9997f',

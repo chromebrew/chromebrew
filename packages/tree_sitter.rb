@@ -11,13 +11,8 @@ class Tree_sitter < Package
   compatibility 'all'
   source_url 'https://github.com/tree-sitter/tree-sitter.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree_sitter/0.20.7_armv7l/tree_sitter-0.20.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree_sitter/0.20.7_armv7l/tree_sitter-0.20.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree_sitter/0.20.7_i686/tree_sitter-0.20.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tree_sitter/0.20.7_x86_64/tree_sitter-0.20.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e096d53784489397c39f249694d76e4a3f6a4b79d51a6f4b6e9a4be0d9615c5b',
      armv7l: 'e096d53784489397c39f249694d76e4a3f6a4b79d51a6f4b6e9a4be0d9615c5b',

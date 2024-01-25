@@ -8,13 +8,8 @@ class Syncthing < Package
   compatibility 'all'
   source_url 'https://github.com/syncthing/syncthing/archive/v0.14.41.tar.gz'
   source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/syncthing/0.14.41_armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/syncthing/0.14.41_armv7l/syncthing-0.14.41-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/syncthing/0.14.41_i686/syncthing-0.14.41-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/syncthing/0.14.41_x86_64/syncthing-0.14.41-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',
      armv7l: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',

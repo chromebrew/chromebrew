@@ -8,13 +8,8 @@ class Pangomm_1_4 < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_armv7l/pangomm_1_4-2.46.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_armv7l/pangomm_1_4-2.46.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_i686/pangomm_1_4-2.46.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pangomm_1_4/2.46.3_x86_64/pangomm_1_4-2.46.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'aebb5450624f733edb35c4397445b2992996f29820e9d13880ce348ad38d1498',
      armv7l: 'aebb5450624f733edb35c4397445b2992996f29820e9d13880ce348ad38d1498',

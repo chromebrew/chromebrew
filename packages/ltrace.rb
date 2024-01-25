@@ -8,13 +8,8 @@ class Ltrace < Package
   compatibility 'all'
   source_url 'https://gitlab.com/cespedes/ltrace.git'
   git_hashtag 'ea8928dab8a0a1f549d0ed8ebc6ec563e9fa1159'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ltrace/0.7.91-ea8928_armv7l/ltrace-0.7.91-ea8928-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ltrace/0.7.91-ea8928_armv7l/ltrace-0.7.91-ea8928-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ltrace/0.7.91-ea8928_i686/ltrace-0.7.91-ea8928-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ltrace/0.7.91-ea8928_x86_64/ltrace-0.7.91-ea8928-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '09bc63d26ef561e10f01628d61eb4a6c8d5caeb24a77f19deddb5fa1a5867dd2',
      armv7l: '09bc63d26ef561e10f01628d61eb4a6c8d5caeb24a77f19deddb5fa1a5867dd2',

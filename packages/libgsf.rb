@@ -8,13 +8,8 @@ class Libgsf < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
   git_hashtag "LIBGSF_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.50_armv7l/libgsf-1.14.50-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.50_armv7l/libgsf-1.14.50-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.50_i686/libgsf-1.14.50-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgsf/1.14.50_x86_64/libgsf-1.14.50-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3387aaef57bb436bc10337b988cb27a519a7c0625bd4d7922b392bd3bc995dc2',
      armv7l: '3387aaef57bb436bc10337b988cb27a519a7c0625bd4d7922b392bd3bc995dc2',

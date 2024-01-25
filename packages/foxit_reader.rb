@@ -8,8 +8,7 @@ class Foxit_reader < Package
   compatibility 'i686,x86_64'
   source_url 'SKIP'
 
-  binary_url({})
-  binary_sha256({})
+  no_compile_needed
 
   depends_on 'sommelier'
 

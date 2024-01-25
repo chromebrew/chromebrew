@@ -8,13 +8,8 @@ class Libxxf86dga < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxxf86dga.git'
   git_hashtag "libXxf86dga-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1.6_armv7l/libxxf86dga-1.1.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1.6_armv7l/libxxf86dga-1.1.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1.6_i686/libxxf86dga-1.1.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86dga/1.1.6_x86_64/libxxf86dga-1.1.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'df5fe89f84bffc941eef3a55b71873c6b9b4597846f776d9d6d07315ddcebecb',
      armv7l: 'df5fe89f84bffc941eef3a55b71873c6b9b4597846f776d9d6d07315ddcebecb',

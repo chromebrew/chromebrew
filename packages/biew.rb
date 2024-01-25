@@ -8,13 +8,8 @@ class Biew < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/beye/biew/6.1.0/biew-610-src.tar.bz2'
   source_sha256 '2e85f03c908dd6ec832461fbfbc79169a33f4caccf48c8fe60cbd29f5fb06d17'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_armv7l/biew-6.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_armv7l/biew-6.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_i686/biew-6.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/biew/6.1.0_x86_64/biew-6.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f5e456e2d4f9336f151a485e37bcbf1287e33b106cb69ec2e775eaa04e20a006',
      armv7l: 'f5e456e2d4f9336f151a485e37bcbf1287e33b106cb69ec2e775eaa04e20a006',

@@ -8,13 +8,8 @@ class Perl_file_tail < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MG/MGRABNAR/File-Tail-1.3.tar.gz'
   source_sha256 '26d09f81836e43eae40028d5283fe5620fe6fe6278bf3eb8eb600c48ec34afc7'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3-perl5.38_armv7l/perl_file_tail-1.3-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3-perl5.38_armv7l/perl_file_tail-1.3-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3-perl5.38_i686/perl_file_tail-1.3-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_file_tail/1.3-perl5.38_x86_64/perl_file_tail-1.3-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1a5261cf6d91a837edcdf5fe00e16f072edbe8fd504081c4717073f8c86900a2',
      armv7l: '1a5261cf6d91a837edcdf5fe00e16f072edbe8fd504081c4717073f8c86900a2',

@@ -8,13 +8,8 @@ class Gcc10 < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/gcc/gcc-10.5.0/gcc-10.5.0.tar.xz'
   source_sha256 '25109543fdf46f397c347b5d8b7a2c7e5694a5a51cce4b9c6e1ea8a71ca307c1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_armv7l/gcc10-10.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_armv7l/gcc10-10.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_i686/gcc10-10.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcc10/10.5.0_x86_64/gcc10-10.5.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7cb05d4dedc9dd4c30964b98d3a695e630d61297bc268a553ca26b1130748e85',
      armv7l: '7cb05d4dedc9dd4c30964b98d3a695e630d61297bc268a553ca26b1130748e85',

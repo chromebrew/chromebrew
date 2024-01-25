@@ -8,13 +8,8 @@ class Dstat < Package
   compatibility 'all'
   source_url 'https://github.com/dagwieers/dstat/archive/0.7.3.tar.gz'
   source_sha256 '46e63821857b69fbc60cb2c7d893ccdd6f31cd9ef24b8bb0b68951e1c7374898'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dstat/0.7.3_armv7l/dstat-0.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dstat/0.7.3_armv7l/dstat-0.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dstat/0.7.3_i686/dstat-0.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dstat/0.7.3_x86_64/dstat-0.7.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7a9d0511b6c3248d64fd453ccac3c360560bc6d2231e9db2d8b45347001052a7',
      armv7l: '7a9d0511b6c3248d64fd453ccac3c360560bc6d2231e9db2d8b45347001052a7',

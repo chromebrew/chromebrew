@@ -11,16 +11,12 @@ class Spirv_tools < CMake
   source_url 'https://github.com/KhronosGroup/SPIRV-Tools.git'
   git_hashtag "v#{version}"
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2023.6.rc1_armv7l/spirv_tools-2023.6.rc1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2023.6.rc1_armv7l/spirv_tools-2023.6.rc1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_tools/2023.6.rc1_x86_64/spirv_tools-2023.6.rc1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd925a80ea99206946477c5c6223629c06bbad55981da677e2ab54bbee23d843b',
      armv7l: 'd925a80ea99206946477c5c6223629c06bbad55981da677e2ab54bbee23d843b',
      x86_64: '26a772a1baadd956f875e2c9db1e371b068caf8e4546e7884965294882603974'
   })
+  binary_compression 'tar.zst'
 
   depends_on 'spirv_headers' => :build
   depends_on 'gcc_lib' # R

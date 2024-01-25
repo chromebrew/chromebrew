@@ -8,13 +8,8 @@ class Yad < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/yad-dialog/yad-0.40.0.tar.xz'
   source_sha256 'c2d0b7d1b6d3a0877299faa00db75d58c974f81fce72d520a3a84e67d1d60ef4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yad/0.40.0_armv7l/yad-0.40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yad/0.40.0_armv7l/yad-0.40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yad/0.40.0_i686/yad-0.40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yad/0.40.0_x86_64/yad-0.40.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9e95ee3627b04922ddd447649e69ea54c9dc43e7138319bd1588a4f8b58b51af',
      armv7l: '9e95ee3627b04922ddd447649e69ea54c9dc43e7138319bd1588a4f8b58b51af',

@@ -8,13 +8,8 @@ class Irrlicht_tools < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip'
   source_sha256 'f42b280bc608e545b820206fe2a999c55f290de5c7509a02bdbeeccc1bf9e433'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht_tools/1.8.4_armv7l/irrlicht_tools-1.8.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht_tools/1.8.4_armv7l/irrlicht_tools-1.8.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht_tools/1.8.4_i686/irrlicht_tools-1.8.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irrlicht_tools/1.8.4_x86_64/irrlicht_tools-1.8.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'fb12a3c4e9d2e57b9eff5c08558090035e33a4790723edb8df19b1a02070be6b',
      armv7l: 'fb12a3c4e9d2e57b9eff5c08558090035e33a4790723edb8df19b1a02070be6b',

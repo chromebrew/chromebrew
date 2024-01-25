@@ -6,7 +6,7 @@ require_relative 'selector'
 
 class Package
   property :description, :homepage, :version, :license, :compatibility,
-           :binary_url, :binary_sha256, :source_url, :source_sha256,
+           :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag, :min_glibc
 
   boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
@@ -198,8 +198,8 @@ class Package
   end
 
   def self.get_url(architecture)
-    if !@build_from_source && @binary_url && @binary_url.key?(architecture)
-      return @binary_url[architecture]
+    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
+      return get_binary_url(architecture)
     elsif @source_url.respond_to?(:has_key?)
       return @source_url.key?(architecture) ? @source_url[architecture] : nil
     else
@@ -207,7 +207,11 @@ class Package
     end
   end
 
-  def self.get_binary_url(architecture) = @binary_url.key?(architecture) ? @binary_url[architecture] : nil
+  def self.get_binary_url(architecture)
+    architecture = 'armv7l' if architecture == 'aarch64'
+    return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{architecture}/#{name}-#{version}-chromeos-#{architecture}.#{binary_compression}"
+  end
+
   def self.get_source_url(architecture) = @source_url.key?(architecture) ? @source_url[architecture] : nil
 
   def self.get_sha256(architecture)
@@ -223,7 +227,7 @@ class Package
   def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
   def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.is_binary?(architecture) = !@build_from_source && @binary_url && @binary_url.key?(architecture)
+  def self.is_binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
   def self.is_source?(architecture) = !(is_binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)

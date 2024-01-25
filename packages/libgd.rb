@@ -8,13 +8,8 @@ class Libgd < Package
   compatibility 'all'
   source_url 'https://github.com/libgd/libgd.git'
   git_hashtag "gd-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_armv7l/libgd-2.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_armv7l/libgd-2.3.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_i686/libgd-2.3.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgd/2.3.3_x86_64/libgd-2.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7cf782cc8aec78168810faa2b83f66edc791820f13e6a0ffdd45c33ff7c034e9',
      armv7l: '7cf782cc8aec78168810faa2b83f66edc791820f13e6a0ffdd45c33ff7c034e9',

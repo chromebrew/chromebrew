@@ -8,12 +8,8 @@ class Vice < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.8.tar.gz'
   source_sha256 '1d7dc4d0f2bbcc2a871bb954ff4a5df63048dea9c16f5f1e9bc8260fa41a1004'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vice/3.8_armv7l/vice-3.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vice/3.8_armv7l/vice-3.8-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vice/3.8_x86_64/vice-3.8-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '58560b5fa3bdde6e667fd7bc074bdd84bfa6bd63c65d1c08a9cc2700daf991ae',
      armv7l: '58560b5fa3bdde6e667fd7bc074bdd84bfa6bd63c65d1c08a9cc2700daf991ae',

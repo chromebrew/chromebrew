@@ -8,12 +8,8 @@ class Ffmpeg < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://git.ffmpeg.org/ffmpeg.git'
   git_hashtag "n#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0.1_armv7l/ffmpeg-6.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0.1_armv7l/ffmpeg-6.0.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpeg/6.0.1_x86_64/ffmpeg-6.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '92e98d1fa4476fad082e2eaf86e73b2e28d2b1e6e60b0c3ef2fefeaaf3b0f75b',
      armv7l: '92e98d1fa4476fad082e2eaf86e73b2e28d2b1e6e60b0c3ef2fefeaaf3b0f75b',

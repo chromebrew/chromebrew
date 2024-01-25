@@ -8,13 +8,8 @@ class Pcsc_lite < Package
   license 'BSD, ISC, MIT, GPL-3+ and GPL-2'
   source_url 'https://salsa.debian.org/debian/pcsc-lite.git'
   git_hashtag "debian/#{version}-1"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcsc_lite/1.9.5_armv7l/pcsc_lite-1.9.5-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcsc_lite/1.9.5_armv7l/pcsc_lite-1.9.5-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcsc_lite/1.9.5_i686/pcsc_lite-1.9.5-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcsc_lite/1.9.5_x86_64/pcsc_lite-1.9.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',
       armv7l: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',

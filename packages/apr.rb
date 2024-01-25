@@ -8,13 +8,8 @@ class Apr < Autotools
   compatibility 'all'
   source_url 'https://dlcdn.apache.org/apr/apr-1.7.4.tar.bz2'
   source_sha256 'fc648de983f3a2a6c9e78dea1f180639bd2fad6c06d556d4367a701fe5c35577'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_armv7l/apr-1.7.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_armv7l/apr-1.7.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_i686/apr-1.7.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr/1.7.4_x86_64/apr-1.7.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd412d8dd1ca6fac9d86b6f4fbbc78b39b5902ac605120bf2baee81b3945db9c7',
      armv7l: 'd412d8dd1ca6fac9d86b6f4fbbc78b39b5902ac605120bf2baee81b3945db9c7',

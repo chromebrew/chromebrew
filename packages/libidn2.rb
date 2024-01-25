@@ -9,13 +9,8 @@ class Libidn2 < Autotools
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/libidn/libidn2-#{@_ver}.tar.gz"
   source_sha256 '93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.4-1_armv7l/libidn2-2.3.4-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.4-1_armv7l/libidn2-2.3.4-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.4-1_i686/libidn2-2.3.4-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn2/2.3.4-1_x86_64/libidn2-2.3.4-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'adbffb0615f7f292642ef4b6b279ebe8f4f588e931b10aa804aa29faf6054857',
      armv7l: 'adbffb0615f7f292642ef4b6b279ebe8f4f588e931b10aa804aa29faf6054857',

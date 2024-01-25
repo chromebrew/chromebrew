@@ -9,13 +9,8 @@ class Yt_dlp < Python
   compatibility 'all'
   source_url 'https://github.com/yt-dlp/yt-dlp.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_armv7l/yt_dlp-2023.11.16-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_armv7l/yt_dlp-2023.11.16-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_i686/yt_dlp-2023.11.16-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yt_dlp/2023.11.16-py3.12_x86_64/yt_dlp-2023.11.16-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '38eb870583b3d2615d407cc95d14e3a6a0b4475cf6d2efaaa292167575db552d',
      armv7l: '38eb870583b3d2615d407cc95d14e3a6a0b4475cf6d2efaaa292167575db552d',

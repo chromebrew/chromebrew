@@ -9,13 +9,8 @@ class Elogind < Package
   compatibility 'all'
   source_url "https://github.com/elogind/elogind/archive/v#{@_ver}.tar.gz"
   source_sha256 'c490dc158c8f5bca8d00ecfcc7ad5af24d1c7b9e59990a0b3b1323996221a922'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elogind/246.10-1_armv7l/elogind-246.10-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elogind/246.10-1_armv7l/elogind-246.10-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elogind/246.10-1_i686/elogind-246.10-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elogind/246.10-1_x86_64/elogind-246.10-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7bf79ff8159f5d90f36c8680f70bb4ad8b36276c0600e4aac664ce79b8808b6e',
      armv7l: '7bf79ff8159f5d90f36c8680f70bb4ad8b36276c0600e4aac664ce79b8808b6e',

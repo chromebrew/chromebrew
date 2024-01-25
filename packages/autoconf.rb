@@ -8,13 +8,8 @@ class Autoconf < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/autoconf/autoconf-2.72.tar.xz'
   source_sha256 'ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.72_armv7l/autoconf-2.72-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.72_armv7l/autoconf-2.72-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.72_i686/autoconf-2.72-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf/2.72_x86_64/autoconf-2.72-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1afb15ee3b59839b1db68a3a498b226b98b55bbb4080398860c832a5ec9e1afd',
      armv7l: '1afb15ee3b59839b1db68a3a498b226b98b55bbb4080398860c832a5ec9e1afd',

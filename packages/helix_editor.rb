@@ -8,13 +8,8 @@ class Helix_editor < Package
   compatibility 'all'
   source_url 'https://github.com/helix-editor/helix/archive/22.12.tar.gz'
   source_sha256 'edae8af46401b45c3e71c38b4fa99f931c4458127978ccd1b29aaae79331d972' # Use the command "sha256sum"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/helix_editor/22.12_armv7l/helix_editor-22.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/helix_editor/22.12_armv7l/helix_editor-22.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/helix_editor/22.12_i686/helix_editor-22.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/helix_editor/22.12_x86_64/helix_editor-22.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e0f204e70c5e68b4e1f547b87cd039ac389ae3df07adf78bb19fe0cfac944907',
      armv7l: 'e0f204e70c5e68b4e1f547b87cd039ac389ae3df07adf78bb19fe0cfac944907',

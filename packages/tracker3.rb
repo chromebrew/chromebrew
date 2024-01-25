@@ -12,12 +12,8 @@ class Tracker3 < Meson
   min_glibc '2.35'
   source_url 'https://gitlab.gnome.org/GNOME/tracker.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.6.0_armv7l/tracker3-3.6.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.6.0_armv7l/tracker3-3.6.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3/3.6.0_x86_64/tracker3-3.6.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7c61e7b8d0fb1be446a2c2db2060ff1b9a4349531d7df6cde4e91a1ec69ea4ec',
      armv7l: '7c61e7b8d0fb1be446a2c2db2060ff1b9a4349531d7df6cde4e91a1ec69ea4ec',

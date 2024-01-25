@@ -8,13 +8,8 @@ class Libxpm < Autotools
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXpm-3.5.17.tar.gz'
   source_sha256 '959466c7dfcfcaa8a65055bfc311f74d4c43d9257900f85ab042604d286df0c6'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.17_armv7l/libxpm-3.5.17-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.17_armv7l/libxpm-3.5.17-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.17_i686/libxpm-3.5.17-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxpm/3.5.17_x86_64/libxpm-3.5.17-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'da3350241e31845678e96ca3243548d124fcf2bb6b3bd4f9a3b59f5c319e9c75',
      armv7l: 'da3350241e31845678e96ca3243548d124fcf2bb6b3bd4f9a3b59f5c319e9c75',

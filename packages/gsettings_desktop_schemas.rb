@@ -8,13 +8,8 @@ class Gsettings_desktop_schemas < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.0_armv7l/gsettings_desktop_schemas-44.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.0_armv7l/gsettings_desktop_schemas-44.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.0_i686/gsettings_desktop_schemas-44.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsettings_desktop_schemas/44.0_x86_64/gsettings_desktop_schemas-44.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '284c6121143978682e9907c5320afa6ad92fa2993359f79866fbbab283725072',
      armv7l: '284c6121143978682e9907c5320afa6ad92fa2993359f79866fbbab283725072',

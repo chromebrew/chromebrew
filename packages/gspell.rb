@@ -8,12 +8,8 @@ class Gspell < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gnome.org/sources/gspell/1.12/gspell-1.12.1.tar.xz'
   source_sha256 '8ec44f32052e896fcdd4926eb814a326e39a5047e251eec7b9056fbd9444b0f1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.1_armv7l/gspell-1.12.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.1_armv7l/gspell-1.12.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gspell/1.12.1_x86_64/gspell-1.12.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5fe8ce8680328b2b48b5466536bca49f6b8dac7070dcc75cd361f24702bf5a70',
      armv7l: '5fe8ce8680328b2b48b5466536bca49f6b8dac7070dcc75cd361f24702bf5a70',

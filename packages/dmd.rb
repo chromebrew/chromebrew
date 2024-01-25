@@ -7,10 +7,8 @@ class Dmd < Package
   license 'BSL-1.0'
   compatibility 'x86_64'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmd/2.102.1_x86_64/dmd-2.102.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '4a32b8ae822fc66fc26d6399d9d7db872ae72d8c97f2dde8606bc4defbbe760a'
   })

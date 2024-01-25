@@ -8,13 +8,8 @@ class Libinput < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/libinput/libinput.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_armv7l/libinput-1.21.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_armv7l/libinput-1.21.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_i686/libinput-1.21.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinput/1.21.0_x86_64/libinput-1.21.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',
      armv7l: 'c131c07fb1f1d4e9a59a47b30cfa53c7b0a9f746a35091c1576cf822a5b58637',

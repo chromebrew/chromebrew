@@ -7,13 +7,8 @@ class Chrx < Package
   license 'unlicensed'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrx/3.0.2_armv7l/chrx-3.0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrx/3.0.2_armv7l/chrx-3.0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrx/3.0.2_i686/chrx-3.0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrx/3.0.2_x86_64/chrx-3.0.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1ebaed82d042708976e490e9264dd407cc7c9216ae0fd54bb63cbfc71b65c9fb',
      armv7l: '1ebaed82d042708976e490e9264dd407cc7c9216ae0fd54bb63cbfc71b65c9fb',

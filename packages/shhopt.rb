@@ -8,13 +8,8 @@ class Shhopt < Package
   compatibility 'all'
   source_url 'http://shh.thathost.com/pub-unix/files/shhopt-1.1.7.tar.gz'
   source_sha256 'bae94335124efa6fcc2f0a55cabd68c9c90be935bcdb8054d7e5188e0d5da679'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhopt/1.1.7-2_armv7l/shhopt-1.1.7-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhopt/1.1.7-2_armv7l/shhopt-1.1.7-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhopt/1.1.7-2_i686/shhopt-1.1.7-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shhopt/1.1.7-2_x86_64/shhopt-1.1.7-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0554b4732ed0ae4b6435e79e81acc858763ec033b558db3a5f0b17c0571e69c0',
      armv7l: '0554b4732ed0ae4b6435e79e81acc858763ec033b558db3a5f0b17c0571e69c0',

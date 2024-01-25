@@ -8,13 +8,8 @@ class Gittools < Package
   compatibility 'all'
   source_url 'https://github.com/internetwache/GitTools.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gittools/24eaef0d11e590643e65d188b017b49414d81cc2_armv7l/gittools-24eaef0d11e590643e65d188b017b49414d81cc2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gittools/24eaef0d11e590643e65d188b017b49414d81cc2_armv7l/gittools-24eaef0d11e590643e65d188b017b49414d81cc2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gittools/24eaef0d11e590643e65d188b017b49414d81cc2_i686/gittools-24eaef0d11e590643e65d188b017b49414d81cc2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gittools/24eaef0d11e590643e65d188b017b49414d81cc2_x86_64/gittools-24eaef0d11e590643e65d188b017b49414d81cc2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '7d71cda4330eb365798fca1c44d42ac4757fcaa20c057b370f740874e3424820',
      armv7l: '7d71cda4330eb365798fca1c44d42ac4757fcaa20c057b370f740874e3424820',

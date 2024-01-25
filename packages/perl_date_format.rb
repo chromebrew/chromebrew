@@ -8,13 +8,8 @@ class Perl_date_format < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.33.tar.gz'
   source_sha256 'c0b69c4b039de6f501b0d9f13ec58c86b040c1f7e9b27ef249651c143d605eb2'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_format/2.33-perl5.38_armv7l/perl_date_format-2.33-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_format/2.33-perl5.38_armv7l/perl_date_format-2.33-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_format/2.33-perl5.38_i686/perl_date_format-2.33-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_date_format/2.33-perl5.38_x86_64/perl_date_format-2.33-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '769865386a5318a5ad947c33ed09df30b593b3cc2e60b51dd74bd6dc1ea7a7e1',
      armv7l: '769865386a5318a5ad947c33ed09df30b593b3cc2e60b51dd74bd6dc1ea7a7e1',

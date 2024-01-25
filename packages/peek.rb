@@ -8,12 +8,8 @@ class Peek < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/phw/peek/archive/1.5.1.tar.gz'
   source_sha256 'd2b52297d3941db2f10ad4dd00a6d5606728c0fee6af5f1594a036f88e478237'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.5.1_armv7l/peek-1.5.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.5.1_armv7l/peek-1.5.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peek/1.5.1_x86_64/peek-1.5.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2e1bb8fd9bf25cec736ccd4417b7b1154b74371f50bdf4836401c15d758354f8',
      armv7l: '2e1bb8fd9bf25cec736ccd4417b7b1154b74371f50bdf4836401c15d758354f8',

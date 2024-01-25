@@ -9,13 +9,8 @@ class Libmypaint < Package
   compatibility 'all'
   source_url 'https://github.com/mypaint/libmypaint.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1-1_armv7l/libmypaint-1.6.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1-1_armv7l/libmypaint-1.6.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1-1_i686/libmypaint-1.6.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmypaint/1.6.1-1_x86_64/libmypaint-1.6.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4ba8808e23307488b85fb7153402bc14fc5f9669ca38defc67b68c008a522cab',
      armv7l: '4ba8808e23307488b85fb7153402bc14fc5f9669ca38defc67b68c008a522cab',

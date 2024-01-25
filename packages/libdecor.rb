@@ -11,12 +11,8 @@ class Libdecor < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/libdecor/libdecor.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.2.0_armv7l/libdecor-0.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.2.0_armv7l/libdecor-0.2.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdecor/0.2.0_x86_64/libdecor-0.2.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '26ba96e32ae7e00488aaf8f11e23b779ef8e747c37848e26965382ba84b8f81c',
      armv7l: '26ba96e32ae7e00488aaf8f11e23b779ef8e747c37848e26965382ba84b8f81c',

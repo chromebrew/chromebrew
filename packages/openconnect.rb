@@ -8,13 +8,8 @@ class Openconnect < Package
   compatibility 'all'
   source_url 'https://www.infradead.org/openconnect/download/openconnect-8.20.tar.gz'
   source_sha256 'c1452384c6f796baee45d4e919ae1bfc281d6c88862e1f646a2cc513fc44e58b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/8.20_armv7l/openconnect-8.20-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/8.20_armv7l/openconnect-8.20-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/8.20_i686/openconnect-8.20-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openconnect/8.20_x86_64/openconnect-8.20-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
      armv7l: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',

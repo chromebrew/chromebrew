@@ -8,13 +8,8 @@ class Libnewt < Package
   compatibility 'all'
   source_url "https://releases.pagure.org/newt/newt-#{version}.tar.gz"
   source_sha256 '265eb46b55d7eaeb887fca7a1d51fe115658882dfe148164b6c49fccac5abb31'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_armv7l/libnewt-0.52.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_armv7l/libnewt-0.52.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_i686/libnewt-0.52.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnewt/0.52.21_x86_64/libnewt-0.52.21-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd1813f44254d795347e412bfffcc6a86b4dffc934db3e0341b5072f7a7518b12',
      armv7l: 'd1813f44254d795347e412bfffcc6a86b4dffc934db3e0341b5072f7a7518b12',

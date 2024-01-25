@@ -8,12 +8,8 @@ class Qt5_location < Qmake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://invent.kde.org/qt/qt/qtlocation.git'
   git_hashtag '48a17e88fc1df5b6ae82a9787466226c830bcbf2' # from kde/5.15 branch
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_location/5.15.11-48a17e8_armv7l/qt5_location-5.15.11-48a17e8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_location/5.15.11-48a17e8_armv7l/qt5_location-5.15.11-48a17e8-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_location/5.15.11-48a17e8_x86_64/qt5_location-5.15.11-48a17e8-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '042e590572e947277854b90900efdd19dff2c500bee634c58ac5de385f9fc384',
      armv7l: '042e590572e947277854b90900efdd19dff2c500bee634c58ac5de385f9fc384',

@@ -8,13 +8,8 @@ class Py2_six < Package
   compatibility 'all'
   source_url 'https://github.com/benjaminp/six.git'
   git_hashtag version
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_six/1.15.0_armv7l/py2_six-1.15.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_six/1.15.0_armv7l/py2_six-1.15.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_six/1.15.0_i686/py2_six-1.15.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_six/1.15.0_x86_64/py2_six-1.15.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7a5eb26a32d16ec92ff73cdf5fe85bc20810d0805e7280f1f2ce2a3db3becab4',
      armv7l: '7a5eb26a32d16ec92ff73cdf5fe85bc20810d0805e7280f1f2ce2a3db3becab4',

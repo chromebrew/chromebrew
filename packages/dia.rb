@@ -8,12 +8,8 @@ class Dia < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/dia.git'
   git_hashtag '85304cac0b3eeba03313733d4a9586411040a0b2'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.3-85304ca_armv7l/dia-0.97.3-85304ca-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.3-85304ca_armv7l/dia-0.97.3-85304ca-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dia/0.97.3-85304ca_x86_64/dia-0.97.3-85304ca-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fa093818bb8c13c1388c38c0e37835633356c263b247e6abe17c7735a66796b6',
      armv7l: 'fa093818bb8c13c1388c38c0e37835633356c263b247e6abe17c7735a66796b6',

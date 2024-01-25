@@ -9,13 +9,8 @@ class Musl_libunistring < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/libunistring/libunistring-1.0.tar.xz'
   source_sha256 '5bab55b49f75d77ed26b257997e919b693f29fd4a1bc22e0e6e024c246c72741'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_armv7l/musl_libunistring-1.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_armv7l/musl_libunistring-1.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_i686/musl_libunistring-1.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libunistring/1.0-1_x86_64/musl_libunistring-1.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '652ce2e2858bffb5a9561c444882c182b0970fa3efcedc815ed8c2fdbedb8ea2',
      armv7l: '652ce2e2858bffb5a9561c444882c182b0970fa3efcedc815ed8c2fdbedb8ea2',

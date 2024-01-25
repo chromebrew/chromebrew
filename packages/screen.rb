@@ -8,13 +8,8 @@ class Screen < Autotools
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/screen/screen-4.9.1.tar.gz'
   source_sha256 '26cef3e3c42571c0d484ad6faf110c5c15091fbf872b06fa7aa4766c7405ac69'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.9.1_armv7l/screen-4.9.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.9.1_armv7l/screen-4.9.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.9.1_i686/screen-4.9.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screen/4.9.1_x86_64/screen-4.9.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9281d8d1b1540edb54f5f4e66219c0c01c7176f7917dcc86b97e82a4031cb400',
      armv7l: '9281d8d1b1540edb54f5f4e66219c0c01c7176f7917dcc86b97e82a4031cb400',

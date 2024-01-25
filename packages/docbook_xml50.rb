@@ -9,13 +9,8 @@ class Docbook_xml50 < Package
   compatibility 'all'
   source_url "https://docbook.org/xml/#{@_ver}/docbook-#{@_ver}.zip"
   source_sha256 '3dcd65e1f5d9c0c891b3be204fa2bb418ce485d32310e1ca052e81d36623208e'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_armv7l/docbook_xml50-5.0-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_armv7l/docbook_xml50-5.0-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_i686/docbook_xml50-5.0-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml50/5.0-3_x86_64/docbook_xml50-5.0-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fcaedafc069a5be2f3eb4cf7dd051fef685baf6206c3fee32cbf8acc8b1ff87f',
      armv7l: 'fcaedafc069a5be2f3eb4cf7dd051fef685baf6206c3fee32cbf8acc8b1ff87f',

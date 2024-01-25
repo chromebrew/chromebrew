@@ -8,13 +8,8 @@ class Pkgconf < Package
   compatibility 'all'
   source_url 'https://github.com/pkgconf/pkgconf/archive/pkgconf-1.7.3.tar.gz'
   source_sha256 '8f2c6e9f08adc5773d7fa3c1db1ed03f5fa02ceed037a537ce1195f7c93700ed'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkgconf/1.7.3_armv7l/pkgconf-1.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkgconf/1.7.3_armv7l/pkgconf-1.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkgconf/1.7.3_i686/pkgconf-1.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkgconf/1.7.3_x86_64/pkgconf-1.7.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7dba3ff97aa46e3eb5ca3a3874b10d0d7952cbbd655c94d090da59827f3c05c3',
      armv7l: '7dba3ff97aa46e3eb5ca3a3874b10d0d7952cbbd655c94d090da59827f3c05c3',

@@ -8,13 +8,8 @@ class Clean < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/clean/clean/3.4/clean-3.4.tar.bz2'
   source_sha256 '761f3a9e1ed50747b6a62a8113fa362a7cc74d359ac6e8e30ba6b30d59115320'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clean/3.4_armv7l/clean-3.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clean/3.4_armv7l/clean-3.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clean/3.4_i686/clean-3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clean/3.4_x86_64/clean-3.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '151433790e60528adc37c9c80644269b5d57fdb5a2df0d0b79e99824245864e5',
      armv7l: '151433790e60528adc37c9c80644269b5d57fdb5a2df0d0b79e99824245864e5',

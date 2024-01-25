@@ -8,13 +8,8 @@ class Libpng < Package
   compatibility 'all'
   source_url 'https://git.code.sf.net/p/libpng/code.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpng/1.6.39_armv7l/libpng-1.6.39-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpng/1.6.39_armv7l/libpng-1.6.39-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpng/1.6.39_i686/libpng-1.6.39-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpng/1.6.39_x86_64/libpng-1.6.39-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '54bea8afba78bd2388704137d49b5151a9d0f8dcaafacff02436ec510e2ae627',
      armv7l: '54bea8afba78bd2388704137d49b5151a9d0f8dcaafacff02436ec510e2ae627',

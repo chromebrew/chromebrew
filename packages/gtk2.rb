@@ -8,13 +8,8 @@ class Gtk2 < Package
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz'
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-3_armv7l/gtk2-2.24.33-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-3_armv7l/gtk2-2.24.33-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-3_i686/gtk2-2.24.33-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk2/2.24.33-3_x86_64/gtk2-2.24.33-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3bbbe59aee297b198c45249a258ddac0f6a2216dee383bb9d699ceabc6983913',
      armv7l: '3bbbe59aee297b198c45249a258ddac0f6a2216dee383bb9d699ceabc6983913',

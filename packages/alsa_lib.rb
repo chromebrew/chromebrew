@@ -9,13 +9,8 @@ class Alsa_lib < Autotools
   compatibility 'all'
   source_url "https://github.com/alsa-project/alsa-lib/archive/v#{@_ver}.tar.gz"
   source_sha256 'f55749847fd98274501f4691a2d847e89280c07d40a43cdac43d6443f69fc939'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_armv7l/alsa_lib-1.2.10-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_armv7l/alsa_lib-1.2.10-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_i686/alsa_lib-1.2.10-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_lib/1.2.10-py3.12_x86_64/alsa_lib-1.2.10-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'eb5d64babfaeb1ebb110207f85e01506e09313cdfce51ff1af7c2f85fa2da80f',
      armv7l: 'eb5d64babfaeb1ebb110207f85e01506e09313cdfce51ff1af7c2f85fa2da80f',

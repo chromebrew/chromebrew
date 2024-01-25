@@ -8,13 +8,8 @@ class Vim < Autotools
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_armv7l/vim-9.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_armv7l/vim-9.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_i686/vim-9.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vim/9.1.0_x86_64/vim-9.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0f02ba1fd86f9f7ea9c188f544a397d1a47c6bec7de718be00b485fcdec90621',
      armv7l: '0f02ba1fd86f9f7ea9c188f544a397d1a47c6bec7de718be00b485fcdec90621',

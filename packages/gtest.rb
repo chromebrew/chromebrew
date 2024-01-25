@@ -8,13 +8,8 @@ class Gtest < Package
   compatibility 'all'
   source_url 'https://github.com/google/googletest.git'
   git_hashtag "release-#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_armv7l/gtest-1.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_armv7l/gtest-1.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_i686/gtest-1.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtest/1.11.0_x86_64/gtest-1.11.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '523a783df726759242ab363f4174ef27b3db4b2794b85398b2d5f97dd3c136a3',
      armv7l: '523a783df726759242ab363f4174ef27b3db4b2794b85398b2d5f97dd3c136a3',

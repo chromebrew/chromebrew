@@ -8,13 +8,8 @@ class Shrinkpdf < Package
   compatibility 'all'
   source_url 'http://alfredklomp.com/programming/shrinkpdf/index.html'
   source_sha256 'cdc74b28d8ad757fa2cc9d8782031fe2325a17d3f4fd6080c05ca62790e5c690'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shrinkpdf/2014_armv7l/shrinkpdf-2014-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shrinkpdf/2014_armv7l/shrinkpdf-2014-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shrinkpdf/2014_i686/shrinkpdf-2014-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shrinkpdf/2014_x86_64/shrinkpdf-2014-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '19c53e4be836957a64613eb60e329506cfafde2891c54155b99ba16de0855ba6',
      armv7l: '19c53e4be836957a64613eb60e329506cfafde2891c54155b99ba16de0855ba6',

@@ -8,13 +8,8 @@ class Libxmu < Package
   compatibility 'all'
   source_url 'https://www.x.org/archive/individual/lib/libXmu-1.1.4.tar.xz'
   source_sha256 '210de3ab9c3e9382572c25d17c2518a854ce6e2c62c5f8315deac7579e758244'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.4_armv7l/libxmu-1.1.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.4_armv7l/libxmu-1.1.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.4_i686/libxmu-1.1.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmu/1.1.4_x86_64/libxmu-1.1.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dc93c77b9fdb855416b04bf6f63f11726ab6e0ca4b5d838b5cc8e7588f73bf9b',
      armv7l: 'dc93c77b9fdb855416b04bf6f63f11726ab6e0ca4b5d838b5cc8e7588f73bf9b',

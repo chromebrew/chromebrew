@@ -8,13 +8,8 @@ class W3m < Package
   compatibility 'all'
   source_url 'https://github.com/tats/w3m/archive/v0.5.3+git20220429.tar.gz'
   source_sha256 '6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_armv7l/w3m-0.5.3-20220429-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_armv7l/w3m-0.5.3-20220429-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_i686/w3m-0.5.3-20220429-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/w3m/0.5.3-20220429_x86_64/w3m-0.5.3-20220429-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a0af0f7d06a26072f5af6a5dd16431b226caaa7aeec7b3af89b7f0a602ff987a',
      armv7l: 'a0af0f7d06a26072f5af6a5dd16431b226caaa7aeec7b3af89b7f0a602ff987a',

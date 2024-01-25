@@ -8,13 +8,8 @@ class Bats < Package
   compatibility 'all'
   source_url 'https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz'
   source_sha256 '480d8d64f1681eee78d1002527f3f06e1ac01e173b761bc73d0cf33f4dc1d8d7'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bats/0.4.0_armv7l/bats-0.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bats/0.4.0_armv7l/bats-0.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bats/0.4.0_i686/bats-0.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bats/0.4.0_x86_64/bats-0.4.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd551d8924ac131c93d5f7ae97b67536e3d898f6737d9accd71b979805162fa75',
      armv7l: 'd551d8924ac131c93d5f7ae97b67536e3d898f6737d9accd71b979805162fa75',

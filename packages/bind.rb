@@ -8,13 +8,8 @@ class Bind < Autotools
   compatibility 'all'
   source_url "https://ftp.isc.org/isc/bind9/#{version}/bind-#{version}.tar.xz"
   source_sha256 'a556be22505d9ea4f9c6717aee9c549739c68498aff3ca69035787ecc648fec5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_armv7l/bind-9.18.21-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_armv7l/bind-9.18.21-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_i686/bind-9.18.21-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_x86_64/bind-9.18.21-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
      armv7l: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',

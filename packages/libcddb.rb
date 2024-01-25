@@ -8,13 +8,8 @@ class Libcddb < Package
   compatibility 'all'
   source_url 'https://sourceforge.net/projects/libcddb/files/libcddb/1.3.2/libcddb-1.3.2.tar.bz2'
   source_sha256 '35ce0ee1741ea38def304ddfe84a958901413aa829698357f0bee5bb8f0a223b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcddb/1.3.2-2_armv7l/libcddb-1.3.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcddb/1.3.2-2_armv7l/libcddb-1.3.2-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcddb/1.3.2-2_i686/libcddb-1.3.2-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcddb/1.3.2-2_x86_64/libcddb-1.3.2-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '509230e87045ad19ebe5d807cc2ab6cc28759d5a8bec9c211dd0d71825b23cc6',
      armv7l: '509230e87045ad19ebe5d807cc2ab6cc28759d5a8bec9c211dd0d71825b23cc6',

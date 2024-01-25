@@ -8,13 +8,8 @@ class Atkmm < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/atkmm.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_armv7l/atkmm-2.36.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_armv7l/atkmm-2.36.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_i686/atkmm-2.36.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atkmm/2.36.2_x86_64/atkmm-2.36.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '049d1efb8c411ac36328983605a54d54e3bc45587aa3ac9157f4b629be75f720',
      armv7l: '049d1efb8c411ac36328983605a54d54e3bc45587aa3ac9157f4b629be75f720',

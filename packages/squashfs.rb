@@ -8,13 +8,8 @@ class Squashfs < Package
   compatibility 'all'
   source_url 'https://github.com/plougher/squashfs-tools.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_armv7l/squashfs-4.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_armv7l/squashfs-4.6.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_i686/squashfs-4.6.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs/4.6.1_x86_64/squashfs-4.6.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'da924cdb4c4f856b7b9b869e60496b10096132beb2e57592e8f015c1486c123c',
      armv7l: 'da924cdb4c4f856b7b9b869e60496b10096132beb2e57592e8f015c1486c123c',

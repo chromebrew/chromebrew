@@ -8,12 +8,8 @@ class Girara < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://pwmt.org/projects/girara/download/girara-0.4.0.tar.xz'
   source_sha256 'ceafd0a6aed50ad832ba766ec629f1ea366681c15f8fa728a8f55418c39dc901'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.4.0_armv7l/girara-0.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.4.0_armv7l/girara-0.4.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/girara/0.4.0_x86_64/girara-0.4.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'bdae13227ad4229a14cfdc9f5208931b546115fb9fe953d2d8ceba049b6536e8',
      armv7l: 'bdae13227ad4229a14cfdc9f5208931b546115fb9fe953d2d8ceba049b6536e8',

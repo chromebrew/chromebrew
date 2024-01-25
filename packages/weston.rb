@@ -8,12 +8,8 @@ class Weston < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/wayland/weston.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/13.0.0_armv7l/weston-13.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/13.0.0_armv7l/weston-13.0.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weston/13.0.0_x86_64/weston-13.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '463fafa09122de01bf4c8dbba4eb157ae9741aa0aec68561e3ef03878d262161',
      armv7l: '463fafa09122de01bf4c8dbba4eb157ae9741aa0aec68561e3ef03878d262161',

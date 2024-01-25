@@ -8,13 +8,8 @@ class Erlang < Package
   compatibility 'all'
   source_url 'https://github.com/erlang/otp/releases/download/OTP-25.1.2/otp_src_25.1.2.tar.gz'
   source_sha256 '5442dea694e7555d479d80bc81f1428020639c258f8e40b2052732d1cc95cca5'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.1.2_armv7l/erlang-25.1.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.1.2_armv7l/erlang-25.1.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.1.2_i686/erlang-25.1.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/erlang/25.1.2_x86_64/erlang-25.1.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5d11d08a183a483705243ac119c22c5beda2198a379680c70cadb6fab5e178bb',
      armv7l: '5d11d08a183a483705243ac119c22c5beda2198a379680c70cadb6fab5e178bb',

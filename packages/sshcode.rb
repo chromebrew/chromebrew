@@ -10,13 +10,8 @@ class Sshcode < Package
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/cdr/sshcode/v0.8.0/README.md'
   source_sha256 '5bd544d9d7e8ebf0b48934a04b55b64802e23189a70410ccab2833c2435e6736'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshcode/0.8.0_armv7l/sshcode-0.8.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshcode/0.8.0_armv7l/sshcode-0.8.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshcode/0.8.0_i686/sshcode-0.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshcode/0.8.0_x86_64/sshcode-0.8.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1b78a1aa63a27ba45913de2cd1b647a3834fff5a8bc7f0be568d86095f9cae3f',
      armv7l: '1b78a1aa63a27ba45913de2cd1b647a3834fff5a8bc7f0be568d86095f9cae3f',

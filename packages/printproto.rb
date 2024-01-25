@@ -8,13 +8,8 @@ class Printproto < Package
   compatibility 'all'
   source_url 'https://xorg.freedesktop.org/releases/individual/proto/printproto-1.0.5.tar.bz2'
   source_sha256 '1298316cf43b987365ab7764d61b022a3d7f180b67b423eed3456862d155911a'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/printproto/1.0.5-1_armv7l/printproto-1.0.5-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/printproto/1.0.5-1_armv7l/printproto-1.0.5-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/printproto/1.0.5-1_i686/printproto-1.0.5-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/printproto/1.0.5-1_x86_64/printproto-1.0.5-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c58de8b1d8ad64d5791d58efddbd3dde5a75e8b02bc78b3ddd2b1812d179d78f',
      armv7l: 'c58de8b1d8ad64d5791d58efddbd3dde5a75e8b02bc78b3ddd2b1812d179d78f',

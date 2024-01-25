@@ -8,13 +8,8 @@ class Libxinerama < Package
   version '1.1.4'
   source_url 'https://www.x.org/archive/individual/lib/libXinerama-1.1.4.tar.bz2'
   source_sha256 '0008dbd7ecf717e1e507eed1856ab0d9cf946d03201b85d5dcf61489bb02d720'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxinerama/1.1.4_armv7l/libxinerama-1.1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxinerama/1.1.4_armv7l/libxinerama-1.1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxinerama/1.1.4_i686/libxinerama-1.1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxinerama/1.1.4_x86_64/libxinerama-1.1.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
      armv7l: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',

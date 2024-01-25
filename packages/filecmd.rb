@@ -8,13 +8,8 @@ class Filecmd < Package
   compatibility 'all'
   source_url 'https://github.com/file/file.git'
   git_hashtag '8dc5513908381a14981b16a85d59ba054bf4df52'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_armv7l/filecmd-5.45-8dc5513-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_armv7l/filecmd-5.45-8dc5513-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_i686/filecmd-5.45-8dc5513-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filecmd/5.45-8dc5513_x86_64/filecmd-5.45-8dc5513-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '50f314a3a9e88f216c06d9aa5b89c77132539473a1b3bb063704662aa0e9b16c',
      armv7l: '50f314a3a9e88f216c06d9aa5b89c77132539473a1b3bb063704662aa0e9b16c',

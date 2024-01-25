@@ -8,13 +8,8 @@ class Selenium_server_standalone < Package
   compatibility 'all'
   source_url 'https://raw.githubusercontent.com/SeleniumHQ/selenium/selenium-3.11.0/README.md'
   source_sha256 '662789e2508babe0be2d5b3b84630834b7727ed1960b66567be1c73eed08433b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/selenium_server_standalone/3.11.0_armv7l/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/selenium_server_standalone/3.11.0_armv7l/selenium_server_standalone-3.11.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/selenium_server_standalone/3.11.0_i686/selenium_server_standalone-3.11.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/selenium_server_standalone/3.11.0_x86_64/selenium_server_standalone-3.11.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '38dd130c44c9cd16deefd85201331343ef675229870ddd80f1d9a2fbc7cfd432',
      armv7l: '38dd130c44c9cd16deefd85201331343ef675229870ddd80f1d9a2fbc7cfd432',

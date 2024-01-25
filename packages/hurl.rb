@@ -8,10 +8,8 @@ class Hurl < Package
   compatibility 'x86_64'
   source_url 'https://github.com/Orange-OpenSource/hurl.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hurl/4.1.0_x86_64/hurl-4.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '59132b9e9ab44687e074a9417e8172a3e09653ac1256df9fa7dd38ecc5b341f0'
   })

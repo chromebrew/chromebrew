@@ -8,13 +8,8 @@ class Perl_unicode_eastasianwidth < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-12.0.tar.gz'
   source_sha256 '2a5bfd926c4fe5f77e6137da2c31ac2545282ae5fec6e9af0fdd403555a90ff4'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.38_armv7l/perl_unicode_eastasianwidth-12.0-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.38_armv7l/perl_unicode_eastasianwidth-12.0-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.38_i686/perl_unicode_eastasianwidth-12.0-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_unicode_eastasianwidth/12.0-perl5.38_x86_64/perl_unicode_eastasianwidth-12.0-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '95257f63295ee7c5ca7869a321ae73ce4cb8a3a6de09f5be2f1571191da06b9d',
      armv7l: '95257f63295ee7c5ca7869a321ae73ce4cb8a3a6de09f5be2f1571191da06b9d',

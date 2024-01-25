@@ -10,12 +10,8 @@ class Pango < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pango.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14-1_armv7l/pango-1.50.14-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14-1_armv7l/pango-1.50.14-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pango/1.50.14-1_x86_64/pango-1.50.14-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '223a3d19029d1a31182fc300d346108ca9b9540fafc314e8783de62405cef8b5',
      armv7l: '223a3d19029d1a31182fc300d346108ca9b9540fafc314e8783de62405cef8b5',

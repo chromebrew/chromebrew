@@ -9,13 +9,8 @@ class Samurai < Package
   compatibility 'all'
   source_url 'https://github.com/michaelforney/samurai.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/samurai/1.2-1_armv7l/samurai-1.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/samurai/1.2-1_armv7l/samurai-1.2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/samurai/1.2-1_i686/samurai-1.2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/samurai/1.2-1_x86_64/samurai-1.2-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ec57080a9deeee698094cb87f0976168e0dae2ac5685deaf2e68fd1f3d8a7bb3',
      armv7l: 'ec57080a9deeee698094cb87f0976168e0dae2ac5685deaf2e68fd1f3d8a7bb3',
