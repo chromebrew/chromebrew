@@ -5,7 +5,7 @@ class Asmc < Package
   homepage 'https://github.com/nidud/asmc'
   license 'GPL-2.0'
   @_commit = '3663995a73c333742c6c3bd022ba7ba33e4f5155'
-  version "2.33.27-#{@_commit[0..7]}"
+  version "2.33.27-#{@_commit[0..6]}"
   compatibility 'all'
   source_url "https://github.com/nidud/asmc/raw/#{@_commit}/bin/asmc"
   source_sha256 '90d227fa76ceba80da6aa63e90b945577daf7c13d93c3a08b76b9d488875d4a0'

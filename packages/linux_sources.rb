@@ -3,8 +3,7 @@ require 'package'
 class Linux_sources < Package
   description 'Sources for the Linux kernel'
   homepage 'https://kernel.org/'
-  @version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
-  version @version
+  version ARCH == 'i686' ? '3.8' : '4.14-1'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'

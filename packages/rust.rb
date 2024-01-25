@@ -3,7 +3,7 @@ require 'package'
 class Rust < Package
   description 'Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.'
   homepage 'https://www.rust-lang.org/'
-  version '1.75.0'
+  version '1.74.1'
   license 'Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/rust-lang/rustup.git'

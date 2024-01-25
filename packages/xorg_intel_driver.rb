@@ -6,7 +6,7 @@ class Xorg_intel_driver < Package
   description 'The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video chips including 8xx, 9xx, Gxx, Qxx, HD, Iris, and Iris Pro graphics processors.'
   homepage 'https://01.org/linuxgraphics/'
   @_ver = '31486f40f8e8f8923ca0799aea84b58799754564'
-  version "2.99.917+916+g#{@_ver[0..7]}"
+  version "2.99.917+916+g#{@_ver[0..6]}"
   license 'MIT and ISC'
   compatibility 'x86_64'
   source_url "https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/#{@_ver}/xf86-video-intel-#{@_ver}.tar.gz"
