@@ -309,4 +309,4 @@ PY_SETUP_INSTALL_OPTIONS         = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single
 PY3_BUILD_OPTIONS                = '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
-CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 /proc/self/exe`.scan(/\t([^ ]+)/).flatten
+CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{File.realpath('/proc/self/exe')}`.scan(/\t([^ ]+)/).flatten
