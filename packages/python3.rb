@@ -3,23 +3,23 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.12.0'
+  version '3.12.1'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '795c34f44df45a0e9b9710c8c71c15c671871524cd412ca14def212e8ccb155d'
+  source_sha256 '8dfb8f426fcd226657f9e2bd5f1e96e53264965176fa17d32658e873591aeb21'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_armv7l/python3-3.12.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_armv7l/python3-3.12.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_i686/python3-3.12.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.0_x86_64/python3-3.12.0-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.1_armv7l/python3-3.12.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.1_armv7l/python3-3.12.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.1_i686/python3-3.12.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python3/3.12.1_x86_64/python3-3.12.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1241f2fb4681b09f2c0f9d00799222b63ecc79488040403d68186bc8093eaf6c',
-     armv7l: '1241f2fb4681b09f2c0f9d00799222b63ecc79488040403d68186bc8093eaf6c',
-       i686: '14a2bd096da4042114904389677b9b0ba44890a970b3c65d04b1191a2035fbe6',
-     x86_64: '59654b4d1746fbd04d42a42aeeae7bd4ca788bc36ff57942644ffb0d56061617'
+    aarch64: '3f937772ba5d33660c31fffcb70bd1ac65acb7166cefabc5af71e8030f596058',
+     armv7l: '3f937772ba5d33660c31fffcb70bd1ac65acb7166cefabc5af71e8030f596058',
+       i686: 'be7bd4897daa8361af7560d04272e44451ad8b0c4a1822e87c40ed827270568e',
+     x86_64: '376162c796c296eeeacdb6d40a354f8ddd5349653d98f8aa3705942e4dbdf1ea'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -140,6 +140,9 @@ class Python3 < Package
   end
 
   def self.postinstall
+    # First force pip upgrade to make sure we are past the problematic pip 23.2.1
+    # See https://github.com/pypa/pip/issues/12357 and https://github.com/pypa/pip/issues/12428
+    system 'PIP_DISABLE_PIP_VERSION_CHECK=1 python -m pip install --upgrade --force-reinstall pip'
     # Pip is installed inside Python 3. The following steps ensure that
     # pip can properly build other packages from buildsystems/pip.
     @required_pip_modules = %w[build installer setuptools wheel pyproject_hooks]
@@ -153,6 +156,6 @@ class Python3 < Package
 
     puts 'Updating pip packages...'.lightblue
     system 'pip list --outdated --format=json | python -c "import json, sys; print(\'\n\'.join([x[\'name\'] for x in json.load(sys.stdin)]))" | xargs -rn1 pip install -U', exception: false
-    puts "Please install tcl and tk with 'crew install tcl tk' if tkinter is needed.".lightblue unless ARCH == 'i686'
+    ExitMessage.add "Please install tcl and tk with 'crew install tcl tk' if tkinter is needed.".lightblue unless ARCH == 'i686'
   end
 end

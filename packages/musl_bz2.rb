@@ -25,7 +25,7 @@ class Musl_bz2 < Package
   depends_on 'patchelf' => :build
 
   def self.patch
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     # Modify Makefile from "ln -s $(PREFIX)/bin/xxx $(PREFIX)/bin/yyy" to
     # "ln -s xxx $(PREFIX)/bin/yyy"
     system "sed -i Makefile -e '/ln -s/s:$(PREFIX)/bin/::'"

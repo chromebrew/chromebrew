@@ -1,39 +1,26 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_locale_gettext < Package
+class Perl_locale_gettext < PERL
   description 'Locale::gettext - message handling functions'
   homepage 'https://search.cpan.org/dist/Locale-gettext/'
   license 'GPL-1+ or Artistic'
-  version '1.07-perl5.38'
+  version '1.07-perl5.38.2'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/P/PV/PVANDRY/gettext-1.07.tar.gz'
   source_sha256 '909d47954697e7c04218f972915b787bd1244d75e3bd01620bc167d5bbc49c15'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38_armv7l/perl_locale_gettext-1.07-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38_armv7l/perl_locale_gettext-1.07-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38_i686/perl_locale_gettext-1.07-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38_x86_64/perl_locale_gettext-1.07-perl5.38-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38.2_armv7l/perl_locale_gettext-1.07-perl5.38.2-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38.2_armv7l/perl_locale_gettext-1.07-perl5.38.2-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38.2_i686/perl_locale_gettext-1.07-perl5.38.2-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_locale_gettext/1.07-perl5.38.2_x86_64/perl_locale_gettext-1.07-perl5.38.2-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '236293fc1eca2efd01b9f159763db91fe2ce32d934590cac86892cf1ff5699b1',
-     armv7l: '236293fc1eca2efd01b9f159763db91fe2ce32d934590cac86892cf1ff5699b1',
-       i686: '8b845f438dc26b4d4c2e717f306535df198c3211579cdbf42dafdd720454ef78',
-     x86_64: '8f2f78ffcff91fe7b00b8a6a97d41fa3d994f2529ef18f8cc3f652b37bb04a55'
+    aarch64: 'cdee6940b15d1b616bb70ff90670e003b956370a708bfa3f8025bd428a7da2f5',
+     armv7l: 'cdee6940b15d1b616bb70ff90670e003b956370a708bfa3f8025bd428a7da2f5',
+       i686: 'b4641c2a74ba733c45e92dc76dd36b737aa2a0696f82f80e980916c1bb6cd7a1',
+     x86_64: 'a00092bdf8dee85ca9ebac6a885a414e0b17ed64bb6b62c862f221a4659a3a04'
   })
 
   depends_on 'glibc' # R
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

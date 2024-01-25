@@ -7,7 +7,7 @@ require_relative 'selector'
 class Package
   property :description, :homepage, :version, :license, :compatibility,
            :binary_url, :binary_sha256, :source_url, :source_sha256,
-           :git_branch, :git_hashtag
+           :git_branch, :git_hashtag, :min_glibc
 
   boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
@@ -147,7 +147,7 @@ class Package
 
   def self.compatible?
     if @compatibility
-      return (@compatibility.casecmp?('all') || @compatibility.include?(ARCH))
+      return @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
     else
       warn "#{name}: Missing `compatibility` field.".lightred
       return false
@@ -223,7 +223,7 @@ class Package
   def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
   def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.is_binary?(architecture) = (!@build_from_source && @binary_url && @binary_url.key?(architecture))
+  def self.is_binary?(architecture) = !@build_from_source && @binary_url && @binary_url.key?(architecture)
   def self.is_source?(architecture) = !(is_binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)

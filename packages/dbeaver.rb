@@ -3,14 +3,14 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '22.0.0'
+  version '23.3.3'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url({
-    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/22.0.0/dbeaver-ce-22.0.0-linux.gtk.x86_64.tar.gz'
+    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/23.3.3/dbeaver-ce-23.3.3-linux.gtk.x86_64.tar.gz'
   })
   source_sha256({
-    x86_64: '32d701a4d1fc74e0b220a26202e2adc2774d57c1330a35c3ce2eb16c7450a7c4'
+    x86_64: '4fa3bf1c1a738ff59c69247c73d7e0114330fa6fa6466520907e9dbfeb1cc278'
   })
 
   depends_on 'gtk3'
@@ -35,7 +35,7 @@ class Dbeaver < Package
   end
 
   def self.postinstall
-    puts "\nType 'dbeaver' to get started.\n".lightblue
+    ExitMessage.add "\nType 'dbeaver' to get started.\n".lightblue
   end
 
   def self.remove

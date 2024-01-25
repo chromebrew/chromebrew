@@ -35,13 +35,13 @@ class Grabinfo < Package
   end
 
   def self.install
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/man/man1"
-    system "mkdir -p #{CREW_DEST_DIR}#{CREW_PREFIX}/tmp/grabinfo"
-    system "cp grabinfo #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    system "cp GrabInfo.pm #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    system "cp -r GrabInfo/ #{CREW_DEST_DIR}#{CREW_PREFIX}/bin"
-    system "cp grabinfo.1 #{CREW_DEST_DIR}#{CREW_PREFIX}/man/man1"
-    system "touch #{CREW_DEST_DIR}#{CREW_PREFIX}/tmp/grabinfo/grabinfo.lock"
+    system "mkdir -p #{CREW_DEST_PREFIX}/bin"
+    system "mkdir -p #{CREW_DEST_PREFIX}/man/man1"
+    system "mkdir -p #{CREW_DEST_PREFIX}/tmp/grabinfo"
+    system "cp grabinfo #{CREW_DEST_PREFIX}/bin"
+    system "cp GrabInfo.pm #{CREW_DEST_PREFIX}/bin"
+    system "cp -r GrabInfo/ #{CREW_DEST_PREFIX}/bin"
+    system "cp grabinfo.1 #{CREW_DEST_PREFIX}/man/man1"
+    system "touch #{CREW_DEST_PREFIX}/tmp/grabinfo/grabinfo.lock"
   end
 end

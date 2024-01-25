@@ -2,6 +2,7 @@ require 'package'
 
 class Evolution_data_server < Package
   description 'Centralized access to appointments and contacts'
+  homepage 'https://wiki.gnome.org/Apps/Evolution'
   version '3.48.1'
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'x86_64'

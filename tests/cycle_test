@@ -2,14 +2,15 @@
 
 # This test checks whether the packages create a dependency cycle.
 
+# Add >LOCAL< lib to LOAD_PATH
+$LOAD_PATH.unshift '../lib'
+
 require 'find'
 require_relative '../lib/const'
 require_relative '../lib/color'
 require_relative '../lib/package'
 
 @all_pkgs = {}
-
-$LOAD_PATH.unshift '../lib'
 
 puts "Running dependency cycle tests...\n".yellow
 
@@ -39,7 +40,7 @@ def dfs(pkg)
     end
   when nil
     @state[pkg] = :on_path
-    pkg.dependencies&.each do |name, _v|
+    pkg.dependencies&.each_key do |name|
       dfs(@all_pkgs[name]) if name != pkg.name
     end
     @state[pkg] = :visited
@@ -48,7 +49,7 @@ def dfs(pkg)
 end
 
 # Calls dfs for every path
-@all_pkgs.each do |_name, pkg|
+@all_pkgs.each_value do |pkg|
   dfs(pkg)
 end
 

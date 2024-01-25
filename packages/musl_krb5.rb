@@ -32,7 +32,7 @@ class Musl_krb5 < Package
   is_static
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     Dir.chdir 'src' do
       system 'autoreconf -fiv'
       system "#{MUSL_ENV_OPTIONS.gsub("LDFLAGS='",

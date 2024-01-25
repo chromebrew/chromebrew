@@ -7,6 +7,7 @@ class Libmaxminddb < Package
   description 'MaxMind GeoIP2 database - split package with library and utilities'
   homepage 'https://dev.maxmind.com/geoip/geoip2/downloadable/'
   version '1.6.0'
+  license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://github.com/maxmind/libmaxminddb.git'
   git_hashtag version

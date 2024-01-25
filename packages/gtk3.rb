@@ -3,21 +3,21 @@ require 'package'
 class Gtk3 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.24.38'
+  version '3.24.39'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.38_armv7l/gtk3-3.24.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.38_armv7l/gtk3-3.24.38-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.38_x86_64/gtk3-3.24.38-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.39_armv7l/gtk3-3.24.39-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.39_armv7l/gtk3-3.24.39-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.39_x86_64/gtk3-3.24.39-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '61494cb9096068d54c0157e420b432a89a912019bd2085544fe69118c83a4644',
-     armv7l: '61494cb9096068d54c0157e420b432a89a912019bd2085544fe69118c83a4644',
-     x86_64: 'f100426a4fbb343693956d72ce7aa759306287036d5db0c92f23cf9978dbf9a7'
+    aarch64: '209958c529bb9567195e1f0ed5438f2e872fd1b35995db77e47ee50ad61f411c',
+     armv7l: '209958c529bb9567195e1f0ed5438f2e872fd1b35995db77e47ee50ad61f411c',
+     x86_64: '0a155697595ab3acb75e0fa3a30ec00c9bbe27d622ef9847cf7e30a49902f015'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -62,9 +62,12 @@ class Gtk3 < Package
   depends_on 'mesa' => :build
   depends_on 'pango' # R
   depends_on 'rest' => :build
+  depends_on 'shaderc' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'sommelier' # L
   depends_on 'valgrind' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'vulkan_icd_loader' => :build
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 

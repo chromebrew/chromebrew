@@ -3,53 +3,55 @@ require 'package'
 class Wine < Package
   description 'Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Microsoft Windows applications.'
   homepage 'https://www.winehq.org/'
-  version '8.0.1'
+  version '9.0'
   license 'LGPL-2.1'
   compatibility 'x86_64'
-  source_url 'https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz'
-  source_sha256 '22035f3836b4f9c3b1940ad90f9b9e3c1be09234236d2a80d893180535c75b7d'
+  source_url 'https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz'
+  source_sha256 '7cfd090a5395f5b76d95bb5defac8a312c8de4c070c1163b8b58da38330ca6ee'
 
   binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/8.0.1_x86_64/wine-8.0.1-chromeos-x86_64.tar.zst'
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/9.0_x86_64/wine-9.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    x86_64: '047a10a50f0e9adc37c85a98b43f93db4375c2c1982b29ea941bb4ad1c623c0e'
+     x86_64: '1ea5bc2c10eb8e696feac04e6f238470831743a5d744bf7a5ca53152a4f1fcfc'
   })
 
   depends_on 'alsa_lib' # R
-  depends_on 'desktop_file_utils'
+  depends_on 'desktop_file_utils' => :build
   depends_on 'eudev' # R
-  depends_on 'fontconfig'
-  depends_on 'giflib'
+  depends_on 'fontconfig' => :build
+  depends_on 'giflib' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R
-  depends_on 'lcms'
-  depends_on 'libfaudio'
-  depends_on 'libglu'
+  depends_on 'lcms' => :build
+  depends_on 'libfaudio' => :build
+  depends_on 'libglu' => :build
   depends_on 'libgphoto' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg' => :build
   depends_on 'libpcap' # R
-  depends_on 'libpng'
-  depends_on 'libsm'
+  depends_on 'libpng' => :build
+  depends_on 'libsm' => :build
   depends_on 'libunwind' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
-  depends_on 'libxcursor'
-  depends_on 'libxdamage'
+  depends_on 'libxcursor' => :build
+  depends_on 'libxdamage' => :build
   depends_on 'libxext' # R
-  depends_on 'libxi'
-  depends_on 'libxrandr'
-  depends_on 'mesa'
-  depends_on 'mpg123'
-  depends_on 'openal'
+  depends_on 'libxi' => :build
+  depends_on 'libxkbcommon' # R
+  depends_on 'libxrandr' => :build
+  depends_on 'mesa' => :build
+  depends_on 'mpg123' => :build
+  depends_on 'openal' => :build
   depends_on 'opencl_headers' => :build
   depends_on 'opencl_icd_loader' # R
-  depends_on 'openldap'
+  depends_on 'openldap' => :build
   depends_on 'pulseaudio' # R
-  depends_on 'sommelier'
-  depends_on 'vkd3d'
-  depends_on 'xdg_base'
+  depends_on 'sommelier' # L
+  depends_on 'vkd3d' => :build
+  depends_on 'wayland' # R
+  depends_on 'xdg_base' => :build
 
   no_lto
   print_source_bashrc

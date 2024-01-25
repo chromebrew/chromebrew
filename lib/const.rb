@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.39.6'
+CREW_VERSION = '1.41.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -88,14 +88,14 @@ else
 end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
-CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man/')
-CREW_LIB_PATH         = File.join(CREW_PREFIX, 'lib/crew/')
-CREW_PACKAGES_PATH    = File.join(CREW_LIB_PATH, 'packages/')
-CREW_CONFIG_PATH      = File.join(CREW_PREFIX, 'etc/crew/')
-CREW_META_PATH        = File.join(CREW_CONFIG_PATH, 'meta/')
-CREW_BREW_DIR         = File.join(CREW_PREFIX, 'tmp/crew/')
-CREW_DEST_DIR         = File.join(CREW_BREW_DIR, 'dest/')
-CREW_WINE_PREFIX      = File.join(CREW_LIB_PREFIX, 'wine/')
+CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man')
+CREW_LIB_PATH         = File.join(CREW_PREFIX, 'lib/crew')
+CREW_PACKAGES_PATH    = File.join(CREW_LIB_PATH, 'packages')
+CREW_CONFIG_PATH      = File.join(CREW_PREFIX, 'etc/crew')
+CREW_META_PATH        = File.join(CREW_CONFIG_PATH, 'meta')
+CREW_BREW_DIR         = File.join(CREW_PREFIX, 'tmp/crew')
+CREW_DEST_DIR         = File.join(CREW_BREW_DIR, 'dest')
+CREW_WINE_PREFIX      = File.join(CREW_LIB_PREFIX, 'wine')
 CREW_DEST_PREFIX      = File.join(CREW_DEST_DIR, CREW_PREFIX)
 CREW_DEST_LIB_PREFIX  = File.join(CREW_DEST_DIR, CREW_LIB_PREFIX)
 CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
@@ -114,7 +114,7 @@ CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
 MUSL_LIBC_VERSION     = `[ -x '#{CREW_MUSL_PREFIX}/lib/libc.so' ] && #{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/]
 
-CREW_DEST_HOME          = CREW_DEST_DIR + HOME
+CREW_DEST_HOME          = File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')

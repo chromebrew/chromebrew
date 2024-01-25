@@ -7,6 +7,7 @@ class Musl_wolfssl < Package
   description 'small, fast, portable implementation of TLS/SSL for embedded devices to the cloud formerly CyaSSL'
   homepage 'https://www.wolfssl.com/'
   version '5.1.1'
+  license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/wolfSSL/wolfssl/archive/v5.1.1-stable.tar.gz'
   source_sha256 'd3e0544dbe7e9587c0f6538cdc671b6492663bb7a4281819538abe6c99cdbd92'
@@ -29,7 +30,7 @@ class Musl_wolfssl < Package
   is_static
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "#{MUSL_ENV_OPTIONS} ./autogen.sh"
     system "#{MUSL_ENV_OPTIONS} ./configure \
     --prefix=#{CREW_MUSL_PREFIX} \

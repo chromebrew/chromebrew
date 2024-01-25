@@ -3,41 +3,33 @@ require 'package'
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
   homepage 'http://www.vim.org'
-  version '9.0.1145'
+  version '9.1.0'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_armv7l/xxd_standalone-9.0.1145-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_i686/xxd_standalone-9.0.1145-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.0.1145_x86_64/xxd_standalone-9.0.1145-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.1.0_armv7l/xxd_standalone-9.1.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.1.0_armv7l/xxd_standalone-9.1.0-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.1.0_i686/xxd_standalone-9.1.0-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxd_standalone/9.1.0_x86_64/xxd_standalone-9.1.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '6f0371fe309b6acf9075ffe3d5c39565d265aafd2aae6915aa8e7d34e2497833',
-     armv7l: '6f0371fe309b6acf9075ffe3d5c39565d265aafd2aae6915aa8e7d34e2497833',
-       i686: 'c18efdaca3fdc3c670a044e105968d34c214347763500fd329a0fa610c09f2da',
-     x86_64: 'b6b4db1208ebb85772a18f08aea51a5644cebb8e62473b3008c29e8bd61c153a'
+    aarch64: 'e439a0154451ef47f7d4764107ad0aa39bff0e1ac0bc2956db0ab9d6db8920f1',
+     armv7l: 'e439a0154451ef47f7d4764107ad0aa39bff0e1ac0bc2956db0ab9d6db8920f1',
+       i686: 'c4ca11a5b03b319aad1b95b459f4da91fd1c31d191112c8c75377187538f1bbb',
+     x86_64: '4c21e2969ca4a238ee02405c9164cf33b1eeca244c3f18ef0c749bed11310094'
   })
 
   depends_on 'glibc' # R
 
   def self.build
-    Dir.chdir 'src/xxd' do
-      system 'make xxd'
-    end
+    system 'make -C src/xxd xxd'
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin/"
-    FileUtils.mkdir_p "#{CREW_DEST_MAN_PREFIX}/man1/"
-    Dir.chdir 'src/xxd' do
-      FileUtils.install 'xxd', "#{CREW_DEST_PREFIX}/bin/xxd", mode: 0o755
-    end
-    Dir.chdir 'runtime/doc' do
-      FileUtils.install 'xxd.1', "#{CREW_DEST_MAN_PREFIX}/man1/xxd.1", mode: 0o644
-    end
+    FileUtils.install 'src/xxd/xxd', "#{CREW_DEST_PREFIX}/bin/xxd", mode: 0o755
+    FileUtils.install 'runtime/doc/xxd.1', "#{CREW_DEST_MAN_PREFIX}/man1/xxd.1", mode: 0o644
   end
 end

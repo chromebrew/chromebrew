@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Qtfm < CMake
   description 'Lightweight desktop independent Qt file manager'
   homepage 'https://qtfm.eu/'
-  version '6.3.0-c19b9c1-2'
+  version '6.3.0-c19b9c1-1'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/rodlie/qtfm.git'

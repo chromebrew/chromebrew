@@ -1,68 +1,53 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Fish < Package
+class Fish < CMake
   description 'fish is a smart and user-friendly command line shell for macOS, Linux, and the rest of the family.'
   homepage 'http://fishshell.com/'
-  version '3.1.2'
+  version '3.6.1'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://github.com/fish-shell/fish-shell/releases/download/3.1.2/fish-3.1.2.tar.gz'
-  source_sha256 'd5b927203b5ca95da16f514969e2a91a537b2f75bec9b21a584c4cd1c7aa74ed'
+  source_url 'https://github.com/fish-shell/fish-shell.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.1.2_armv7l/fish-3.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.1.2_armv7l/fish-3.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.1.2_i686/fish-3.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.1.2_x86_64/fish-3.1.2-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_armv7l/fish-3.6.1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_armv7l/fish-3.6.1-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_i686/fish-3.6.1-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_x86_64/fish-3.6.1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '1247991fb1785e9c5eede833c1f2dcc7c38c738b6d7a87a06fcdb752d9a246b8',
-     armv7l: '1247991fb1785e9c5eede833c1f2dcc7c38c738b6d7a87a06fcdb752d9a246b8',
-       i686: '3f5430b6e269025d8ed31324916b3eee89121fc3dab5cfd47486d41838efa764',
-     x86_64: '12b58c3c7a4bdfb45b4286a98fd5254ef4641489c3b582c7fcbf2e571fe31839'
+    aarch64: '2bee4bba2f6c8095365ad968100bfcbdc3848e818d030f5cad834042e309c9de',
+     armv7l: '2bee4bba2f6c8095365ad968100bfcbdc3848e818d030f5cad834042e309c9de',
+       i686: 'b58e4541bfc8666db7baad74283729cd91479d3db81897a58da83b6ec603f2dc',
+     x86_64: '70bbe3d5df4e138969c67a03db41b9097b644a5db7d7d7765ec6c2bf9a56efe2'
   })
 
-  depends_on 'pcre2'
-  depends_on 'termcap'
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'llvm17_dev' => :build
+  depends_on 'ncurses' # R
+  depends_on 'pcre2' # R
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             '-DBUILD_DOCS=OFF',
-             '-DBUILD_SHARED_LIBS=ON',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             "-DCMAKE_CXX_FLAGS='-lncurses -ltermcap -I#{CREW_PREFIX}/include/ncurses'",
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options "-DCURSES_INCLUDE_PATH=#{CREW_PREFIX}/include/ncurses"
 
   def self.postinstall
-    puts
-    puts 'To run fish, type `fish` in your terminal.'.lightblue
-    puts 'Even if you are already in fish, you should now start a new fish session.'.lightblue
-    puts
-    puts 'To use fish as your login shell:'.lightblue
-    puts "* add the line '#{CREW_PREFIX}/bin/fish' to the file '#{CREW_PREFIX}/etc/shells':".lightblue
-    puts "echo '#{CREW_PREFIX}/bin/fish' | tee -a #{CREW_PREFIX}/etc/shells > /dev/null".lightblue
-    puts "* run 'chsh -s #{CREW_PREFIX}/bin/fish'".lightblue
-    puts
-    puts 'If you have SELinux enabled, you may need to manually update the security policy:'.lightblue
-    puts "* use the command 'chcon -t shell_exec_t #{CREW_PREFIX}/bin/fish'".lightblue
-    puts
-    puts 'To set your colors, run `fish_config`'.lightblue
-    puts 'To scan your man pages for completions, run `fish_update_completions`'.lightblue
-    puts 'To accept autosuggestions (in grey) as you type, hit `ctrl-F` or right arrow key.'.lightblue
-    puts
-    puts 'Have fun! <><'.lightblue
-    puts
+    ExitMessage.add <<~EOT1.lightblue
+      To run fish, type `fish` in your terminal.
+      Even if you are already in fish, you should now start a new fish session.
+
+      To use fish as your login shell:
+      * add the line '#{CREW_PREFIX}/bin/fish' to the file '#{CREW_PREFIX}/etc/shells':
+      echo '#{CREW_PREFIX}/bin/fish' | tee -a #{CREW_PREFIX}/etc/shells > /dev/null
+      * run 'chsh -s #{CREW_PREFIX}/bin/fish'
+
+      If you have SELinux enabled, you may need to manually update the security policy:
+      * use the command 'chcon -t shell_exec_t #{CREW_PREFIX}/bin/fish'
+
+      To set your colors, run `fish_config`
+      To scan your man pages for completions, run `fish_update_completions`
+      To accept autosuggestions (in grey) as you type, hit `ctrl-F` or right arrow key.
+
+      Have fun! <><
+    EOT1
   end
 end

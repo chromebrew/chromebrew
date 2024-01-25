@@ -3,7 +3,7 @@ require 'package'
 class Brackets < Package
   description 'A modern, open source text editor that understands web design.'
   homepage 'http://brackets.io/'
-  version '1.14.1-1'
+  version '1.14.1'
   license 'MPL-2.0'
   compatibility 'i686,x86_64'
   source_url 'https://github.com/adobe/brackets/archive/release-1.14.1.tar.gz'

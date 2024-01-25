@@ -3,41 +3,6 @@
 # Exit on fail.
 set -e
 
-# Default chromebrew repo values.
-
-: "${OWNER:=chromebrew}"
-: "${REPO:=chromebrew}"
-: "${BRANCH:=master}"
-
-# Chromebrew directories
-: "${CREW_PREFIX:=/usr/local}"
-CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
-CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
-CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
-CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
-: "${CURL:=/usr/bin/curl}"
-: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
-
-# Architecture
-
-# For container usage, where we want to specify i686 arch
-# on a x86_64 host by setting ARCH=i686.
-: "${ARCH:=$(uname -m)}"
-# For container usage, when we are emulating armv7l via linux32
-# uname -m reports armv8l.
-ARCH="${ARCH/armv8l/armv7l}"
-
-# Determine if there is a difference between kernel and user space
-if [[ "${ARCH}" == "aarch64" && ! -d '/lib64' ]]; then
-  USER_SPACE_ARCH='armv7l'
-else
-  USER_SPACE_ARCH="${ARCH}"
-fi
-
-if [[ "$ARCH" == "x86_64" ]]; then
-  LIB_SUFFIX='64'
-fi
-
 RESET='\e[0m'
 
 # Simplify colors and print errors to stderr (2).
@@ -47,44 +12,12 @@ echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success m
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
 
-# Skip all checks if running on a docker container.
-if [[ -f "/.dockerenv" ]]; then
-  CREW_FORCE_INSTALL=1
-  echo_info "In container, so skipping hardware checks"
-fi
-
-#
-# Attempt install without sudo.
-#elif tty | grep -q /dev/pts1; then
-#  echo_success "You are in VT-2."
-#  if [ "${EUID}" == "0" ]; then
-#    echo_info "Please login as 'chronos' and restart the install."
-#    echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
-#    exit 1
-#  fi
-#else
-#  # Error out if not in VT-2
-#  echo_error "You need to be in the VT-2 shell for the install to work."
-#  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
-#  echo_info "Then login as 'chronos' and restart the install."
-#  echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
-#  exit 1
-#fi
-
 # Check if the script is being run as root.
 if [ "${EUID}" == "0" ]; then
   echo_error "Chromebrew should not be installed or run as root."
-  exit 1;
+  echo_info "Please login as 'chronos' and restart the install."
+  exit 1
 fi
-
-# Uncomment this section if you have a stoneyridge machine and your
-# install fails.
-# if grep -s "AuthenticAMD" /proc/cpuinfo ; then
-#  echo_info "Need to disable randomize_va_space on AMD machines."
-#  # Otherwise one may get segfaults during install on stoneyridge
-#  # devices. See https://github.com/chromebrew/chromebrew/issues/8823
-#  echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-#fi
 
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
@@ -96,25 +29,105 @@ fi
 # Reject non-stable Chrome OS channels.
 if [ -f /etc/lsb-release ]; then
   if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
-    echo_error "The beta, dev, and canary channel are unsupported by Chromebrew"
-    echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway"
+    echo_error "The beta, dev, and canary channel are unsupported by Chromebrew."
+    echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
     exit 1
   fi
+  export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
 
+# Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
+# Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
+: "${CREW_PREFIX:=/usr/local}"
+if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
+  echo_error "Please run the installer in the VT-2 shell."
+  echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
+  exit 1
+fi
+
+# Make sure installation directory is clean.
+if [ -d "${CREW_PREFIX}" ]; then
+  if [ "$(ls -A "${CREW_PREFIX}")" ]; then
+    echo_error "${CREW_PREFIX} is not empty, would you like it to be cleared?"
+    echo_info "This will delete ALL files in ${CREW_PREFIX}!"
+    echo_info "Continue?"
+    select continue in "Yes" "No"; do
+      if [[ "${continue}" == "Yes" ]]; then
+        sudo find "${CREW_PREFIX}" -mindepth 1 -delete
+        break 2
+      else
+        exit 1
+      fi
+    done
+  fi
+else
+  sudo mkdir -p "${CREW_PREFIX}"
+fi
+
+# Do not redundantly use sudo if the user already owns the directory.
+if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
+  # This will allow things to work without sudo.
+  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+fi
+
+# Default chromebrew repo values.
+: "${OWNER:=chromebrew}"
+: "${REPO:=chromebrew}"
+: "${BRANCH:=master}"
+
+# Chromebrew directories.
+CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
+CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
+CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
+CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
+: "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
+
+# Architecture
+
+# For container usage, where we want to specify i686 arch
+# on a x86_64 host by setting ARCH=i686.
+: "${ARCH:=$(uname -m)}"
+# For container usage, when we are emulating armv7l via linux32
+# uname -m reports armv8l.
+ARCH="${ARCH/armv8l/armv7l}"
+
+# Determine if there is a difference between kernel and user space.
+if [[ "${ARCH}" == "aarch64" && ! -d '/lib64' ]]; then
+  USER_SPACE_ARCH='armv7l'
+else
+  USER_SPACE_ARCH="${ARCH}"
+fi
+
+if [[ "$ARCH" == "x86_64" ]]; then
+  LIB_SUFFIX='64'
+fi
+
+# Warn users of the AMD segfault issue and allow them to work around it.
+# The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
+# instruction, as it was first introduced in Bulldozer and later dropped in Zen.
+if grep -s "fma4" /proc/cpuinfo ; then
+  echo_info "Notice: You are running an AMD StoneyRidge device; due to some bugs some packages may fail with a segmentation fault and need to be rebuilt."
+  echo_info "If this happens, please report them to: https://github.com/chromebrew/chromebrew/issues"
+  echo_info "If the install fails, try running 'CREW_AMD_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)'"
+  if [ "${CREW_AMD_INSTALL}" == "1" ]; then
+    # Otherwise one may get segfaults during install on stoneyridge devices.
+    # See https://github.com/chromebrew/chromebrew/issues/8823
+    echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+  fi
+fi
+
 echo_success "Welcome to Chromebrew!"
 
-# This does not work from crosh after M118.
 # Prompt user to enter the sudo password if it is set.
 # If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
-# if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
-#  echo_intra "Please enter the developer mode password"
-#  # Reset sudo timeout.
-#  sudo -k
-#  sudo /bin/true
-#fi
+if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
+  echo_intra "Please enter the developer mode password."
+  # Reset sudo timeout.
+  sudo -k
+  sudo /bin/true
+fi
 
 # Force curl to use system libraries.
 function curl () {
@@ -123,8 +136,13 @@ function curl () {
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
   # here.
   for (( i = 0; i < 4; i++ )); do
-    # Force TLS as we know GitLab supports it
-    env -u LD_LIBRARY_PATH "${CURL}" --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    if [[ "$ARCH" == "i686" ]]; then
+      # i686 curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
+      env -u LD_LIBRARY_PATH curl -kC - "${@}" && return 0
+    else
+      # Force TLS as we know GitLab supports it.
+      env -u LD_LIBRARY_PATH curl --ssl-reqd --tlsv1.2 -C - "${@}" && return 0
+    fi
     echo_info "Retrying, $((3-i)) retries left."
   done
   # The download failed if we're still here.
@@ -132,66 +150,18 @@ function curl () {
   return 1
 }
 
-if [[ "$USER_SPACE_ARCH" == 'armv7l' ]] && [[ "$ARCH" == 'aarch64' ]]; then
-    echo_error "Your device is not supported by Chromebrew yet, installing as armv7l."
-fi
-
-if [ -d "${CREW_PREFIX}" ]; then
-  if [ "$(ls -A "${CREW_PREFIX}")" ]; then
-    echo_error "${CREW_PREFIX} is not empty, would you like it to be cleared?"
-    echo_info "This will delete ALL files in ${CREW_PREFIX}!"
-    echo_info "Continue?"
-    select continue in "Yes" "No"; do
-      if [[ "${continue}" == "Yes" ]]; then
-        # Let's see if avoiding sudo breaks anything.
-        # sudo find "${CREW_PREFIX}" -mindepth 1 -delete
-        find "${CREW_PREFIX}" -mindepth 1 -delete
-        break 2
-      else
-        exit 1
-      fi
-    done
-  fi
-else
-  echo_error "${CREW_PREFIX} does not exist. (It should be created or mounted prior to install!)"
-  exit 1
-fi
-
-# This will allow things to work without sudo.
-# sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
-
-perm_error () {
-  if tty | grep -q /dev/pts1; then
-    echo_success "You are in VT-2."
-    if [ "${EUID}" == "0" ]; then
-      echo_info "Please run: 'chown -R chronos ${CREW_PREFIX}', and then login as 'chronos' and restart the install."
-      echo_info "Note that you can set the chronos password if you login as root and run 'chromeos-setdevpasswd'."
-      exit 1
-    fi
-  fi
-  # Give message on how to fix permissions in VT-2.
-  echo_error "You need set permissions in the VT-2 shell for the install to work."
-  echo_info "Please use Ctrl-Alt-{F2/Right arrow/Refresh}) to switch to VT-2."
-  echo_info "Then login as 'root' and run: 'chown -R chronos ${CREW_PREFIX}'"
-  echo_info "or login as 'chronos' and run: 'sudo chown -R chronos ${CREW_PREFIX}'"
-  echo_info "Then switch back to crosh in the main ChromeOS screen with Ctrl-Alt-{F1/Left arrow}) and restart the install."
-  exit 1
-}
-
-
-
-# This will create the directories
+# This will create the directories.
 crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
-# Quoting crew_folders leads to breakage
-(cd "${CREW_PREFIX}"; mkdir -p ${crew_folders} || perm_error )
+# Quoting crew_folders leads to breakage.
+(cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})
 
 
 # Remove old git config directories if they exist.
 find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
 # Download the chromebrew repository.
-${CURL} -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
 # Prepare urls and sha256s variables.
 urls=()
@@ -202,15 +172,13 @@ BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
 
-libc_version=$(/lib"$LIB_SUFFIX"/libc.so.6 | head -n 1 | sed -E 's/.*(stable release version.*) (.*)./\2/')
-case ${libc_version} in
-  # Append the correct packages for M113 onwards systems.
-  "2.35")
-    BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
-    # Recent Arm systems have a cut down system.
-    [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
-  ;;
-esac
+if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
+  # Append the correct packages for systems running v113 onwards.
+  BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
+
+  # Recent Arm systems have a cut down system.
+  [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+fi
 
 # Get the URLs and hashes of the bootstrap packages.
 for package in $BOOTSTRAP_PACKAGES; do
@@ -241,16 +209,14 @@ for package in $BOOTSTRAP_PACKAGES; do
 
 done
 
-# Create the device.json file if it doesn't exist.
-if [ ! -f "${CREW_CONFIG_PATH}/device.json" ]; then
-  cd "${CREW_CONFIG_PATH}"
-  echo_info "\nCreating new device.json."
-  jq --arg key0 'architecture' --arg value0 "${ARCH}" \
-    --arg key1 'installed_packages' \
-    '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
-fi
+# Create the device.json file.
+cd "${CREW_CONFIG_PATH}"
+echo_info "\nCreating device.json."
+jq --arg key0 'architecture' --arg value0 "${ARCH}" \
+  --arg key1 'installed_packages' \
+  '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 
-# Functions to maintain packages
+# Functions to maintain packages.
 
 # These functions are for handling packages.
 function download_check () {
@@ -258,8 +224,7 @@ function download_check () {
     # Use cached file if available and caching is enabled.
     if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
       mkdir -p "$CREW_CACHE_DIR"
-      # sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
-      chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
+      sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
       echo_intra "Verifying cached ${1}..."
       echo_success "$(echo "${4}" "$CREW_CACHE_DIR/${3}" | sha256sum -c -)"
       case "${?}" in
@@ -314,16 +279,9 @@ function extract_install () {
 
 function update_device_json () {
   cd "${CREW_CONFIG_PATH}"
-
-  if [[ $(jq --arg key "$1" -e '.installed_packages[] | select(.name == $key )' device.json) ]]; then
-    echo_intra "Updating version number of ${1} in device.json..."
-    ver_num=$(jq --arg key0 "$1" --arg value0 "$2" '(.installed_packages[] | select(.name == $key0) | .version) |= $value0' device.json)
-    cat <<< "${ver_num}" > device.json
-  else
-    echo_intra "Adding new information on ${1} to device.json..."
-    new_info=$(jq --arg key0 "$1" --arg value0 "$2" '.installed_packages |= . + [{"name": $key0, "version": $value0}]' device.json)
-    cat <<< "${new_info}" > device.json
-  fi
+  echo_intra "Adding new information on ${1} to device.json..."
+  new_info=$(jq --arg name "$1" --arg version "$2" --arg sha256 "$3" '.installed_packages |= . + [{"name": $name, "version": $version, "binary_sha256": $sha256}]' device.json)
+  cat <<< "${new_info}" > device.json
 }
 
 echo_info "Downloading Bootstrap packages...\n"
@@ -338,12 +296,12 @@ for i in $(seq 0 $((${#urls[@]} - 1))); do
 
   download_check "${name}" "${url}" "${tarfile}" "${sha256}"
   extract_install "${name}" "${tarfile}"
-  update_device_json "${name}" "${version}"
+  update_device_json "${name}" "${version}" "${sha256}"
 done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
-# sudo ldconfig &> /tmp/crew_ldconfig || true
+sudo ldconfig &> /tmp/crew_ldconfig || true
 
 echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
@@ -366,11 +324,12 @@ crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
 # We need these to install core.
+yes | crew install pixz
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
 # Due to a bug in crew where it accepts spaces in package files names rather than
-# splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}
+# splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
 # shellcheck disable=SC2086
 crew postinstall ${BOOTSTRAP_PACKAGES}
 
@@ -395,7 +354,7 @@ else
   git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set packages "manifest/${USER_SPACE_ARCH}" lib bin crew tools
+  git sparse-checkout set packages "manifest/${USER_SPACE_ARCH}" lib bin crew tests tools
   git reset --hard origin/"${BRANCH}"
 fi
 echo -e "${RESET}"
@@ -436,14 +395,5 @@ Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
 most is used by default
 You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor default.
 Chromebrew provides nano, vim and emacs as default TUI editor options."
-
-# The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
-# instruction, as it was first introduced in Bulldozer and later dropped in Zen.
-if grep -s "fma4" /proc/cpuinfo ; then
-  echo_info "Notice: You are running an AMD StoneyRidge device; due to some bugs some"
-  echo_info "older packages may fail with a segmentation fault and need to be rebuilt.\n"
-  echo_info "If this happens, please report them to:"
-  echo_info "https://github.com/chromebrew/chromebrew/issues\n\n"
-fi
 
 echo_success "Chromebrew installed successfully and package lists updated."

@@ -3,20 +3,22 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.1.2'
+  version '8.2.0'
+  license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.35'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.2_armv7l/qemu-8.1.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.2_armv7l/qemu-8.1.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.1.2_x86_64/qemu-8.1.2-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.2.0_armv7l/qemu-8.2.0-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.2.0_armv7l/qemu-8.2.0-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qemu/8.2.0_x86_64/qemu-8.2.0-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'ab52f53b2b458b1546ce3627e78787462d754670d4a16204b7f5b21edc8360d5',
-     armv7l: 'ab52f53b2b458b1546ce3627e78787462d754670d4a16204b7f5b21edc8360d5',
-     x86_64: '7abb2447ee49461f2ebeac8aef58124a2fdd4cdd2100c98929b4ff3e40fc3ced'
+    aarch64: '796b4b9ab3e33255ad631a66f7515a8eed904d774c5c17474d51dc91b51efee3',
+     armv7l: '796b4b9ab3e33255ad631a66f7515a8eed904d774c5c17474d51dc91b51efee3',
+     x86_64: '0299245b83ff0c723f7a15b794a943d73713b657818cd24b7ff617a7a7c43730'
   })
 
   depends_on 'alsa_lib' # R
@@ -64,12 +66,6 @@ class Qemu < Package
   depends_on 'vte' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-
-  def self.preflight
-    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
-
-    abort "Qemu requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred
-  end
 
   def self.patch
     # Avoid linux/usbdevice_fs.h:88:9: error: unknown type name ‘u8’ error

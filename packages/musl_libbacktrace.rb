@@ -7,6 +7,7 @@ class Musl_libbacktrace < Package
   description 'Library to produce symbolic backtraces'
   homepage 'https://github.com/ianlancetaylor/libbacktrace'
   version 'd0f5e95a87a4d3e0a1ed6c069b5dae7cbab3ed2a'
+  license 'BSD-3 Clause'
   compatibility 'all'
   source_url 'https://github.com/ianlancetaylor/libbacktrace.git'
   git_hashtag version
@@ -27,7 +28,7 @@ class Musl_libbacktrace < Package
   depends_on 'musl_native_toolchain' => :build
 
   def self.build
-    load "#{CREW_LIB_PATH}lib/musl.rb"
+    load "#{CREW_LIB_PATH}/lib/musl.rb"
     system "./configure --prefix=#{CREW_MUSL_PREFIX} \
       #{MUSL_ENV_OPTIONS} \
       --enable-shared \

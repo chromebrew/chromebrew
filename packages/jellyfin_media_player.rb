@@ -9,6 +9,7 @@ class Jellyfin_media_player < Package
   version '1.9.1-1'
   license 'GPL'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.35'
   source_url 'https://github.com/jellyfin/jellyfin-media-player/archive/refs/tags/v1.9.1.tar.gz'
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
 
@@ -48,12 +49,6 @@ class Jellyfin_media_player < Package
   depends_on 'shaderc' # L
   depends_on 'sommelier' # L
   depends_on 'zlibpkg' # R
-
-  def self.preflight
-    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
-
-    abort "Qemu requires glibc 2.35. The current glibc version is #{LIBC_VERSION}.".lightred
-  end
 
   def self.patch
     system "sed -i 's/gold/#{CREW_LINKER}/g' CMakeModules/CompilerFlags.cmake"

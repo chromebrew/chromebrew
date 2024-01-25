@@ -14,7 +14,7 @@
 /usr/local/libexec/p11-kit/trust-extract-compat
 /usr/local/lib/libp11-kit.so
 /usr/local/lib/libp11-kit.so.0
-/usr/local/lib/libp11-kit.so.0.3.0
+/usr/local/lib/libp11-kit.so.0.3.1
 /usr/local/lib/p11-kit-proxy.so
 /usr/local/lib/pkcs11/p11-kit-client.so
 /usr/local/lib/pkcs11/p11-kit-trust.so

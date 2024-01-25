@@ -3,7 +3,7 @@ require 'package'
 class Imgur < Package
   description 'Upload images to Imgur via a small bash script.'
   homepage 'https://github.com/tremby/imgur.sh'
-  version '9'
+  version 'v9'
   license 'unlicense'
   compatibility 'all'
   source_url 'https://github.com/tremby/imgur.sh/archive/v9.tar.gz'

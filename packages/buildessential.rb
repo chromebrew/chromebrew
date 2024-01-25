@@ -2,8 +2,8 @@ require 'package'
 
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
-  homepage ''
-  version '1.25'
+  homepage 'SKIP'
+  version '1.27'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -28,6 +28,10 @@ class Buildessential < Package
 
   # Linkers
   depends_on 'mold'
+
+  # findutils is needed for the newer version
+  # of 'find' used by crew in 'prepare_package'
+  depends_on 'findutils'
 
   # typically required libraries & tools to configure packages
   # e.g. using "./autogen.sh"
@@ -165,8 +169,6 @@ class Buildessential < Package
   # Add rubocop for linting packages. (This also installs the
   # rubocop config file.)
   depends_on 'ruby_rubocop'
-  # Add ruby_debug
-  depends_on 'ruby_debug'
   # Add ruby_concurrent_ruby
   depends_on 'ruby_concurrent_ruby'
 end

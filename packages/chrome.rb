@@ -3,11 +3,12 @@ require 'package'
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
   homepage 'https://www.google.com/chrome'
-  version '119.0.6045.159-1'
+  version '121.0.6167.85-1'
   license 'google-chrome'
   compatibility 'x86_64'
-  source_url 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_119.0.6045.159-1_amd64.deb'
-  source_sha256 'c409bb6cfb279c90fb516353b4728cbf97a71e8deb33dc3433cd503ea65594fe'
+  min_glibc '2.29'
+  source_url 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_121.0.6167.85-1_amd64.deb'
+  source_sha256 'f6f3d002264fc3ad2820b9b41dee08cfd94e73e5afb4708113d0870357a373bb'
 
   depends_on 'nspr'
   depends_on 'cairo'
@@ -29,6 +30,6 @@ class Chrome < Package
   end
 
   def self.postinstall
-    puts "\nType 'google-chrome' to get started.\n".lightblue
+    ExitMessage.add "\nType 'google-chrome' to get started.\n".lightblue
   end
 end

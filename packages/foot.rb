@@ -7,7 +7,9 @@ class Foot < Meson
   description 'Wayland terminal emulator - fast, lightweight and minimalistic'
   homepage 'https://codeberg.org/dnkl/foot'
   version '1.15.0'
+  license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.28'
   source_url 'https://codeberg.org/dnkl/foot.git'
   git_hashtag version
 
@@ -36,8 +38,4 @@ class Foot < Meson
   depends_on 'harfbuzz' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R
-
-  def self.preflight
-    abort 'Foot requires glibc > 2.28.' if Gem::Version.new(LIBC_VERSION.to_s) < Gem::Version.new('2.28')
-  end
 end

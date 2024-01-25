@@ -1,23 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Imagemagick6 < Package
+class Imagemagick6 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  version '6.9.11-29'
+  version '6.9.13-1'
   license 'imagemagick'
-  compatibility 'aarch64,armv7l,x86_64'
-  source_url 'https://github.com/ImageMagick/ImageMagick6/archive/6.9.11-29.tar.gz'
-  source_sha256 'f425e31f64cb481a1416a037d88d04eb44236bef83334e55b7ad692f71c61270'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/ImageMagick/ImageMagick6.git'
+  git_hashtag version
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_armv7l/imagemagick6-6.9.11-29-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.11-29_x86_64/imagemagick6-6.9.11-29-chromeos-x86_64.tar.xz'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.13-1_armv7l/imagemagick6-6.9.13-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.13-1_armv7l/imagemagick6-6.9.13-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick6/6.9.13-1_x86_64/imagemagick6-6.9.13-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
-     armv7l: 'd30b0f8132c26bb5a31160c046dec64b6ee5a6060130c17fdfe2546cef1c01f2',
-     x86_64: '5a247589c82be8fde96ee189ffbe12f5b72bb7398d341b80245222bab568af07'
+    aarch64: '02c86e07210e37fe812a47c3307f2adb128f842776e9bc579052e49eedae6fe0',
+     armv7l: '02c86e07210e37fe812a47c3307f2adb128f842776e9bc579052e49eedae6fe0',
+     x86_64: '7548ee592c236c1f21b1f732cffff7b60f72937bc28ffdc07a074285ac005e9f'
   })
 
   depends_on 'flif'
@@ -45,26 +45,16 @@ class Imagemagick6 < Package
     abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''
   end
 
-  def self.patch
-    system 'filefix'
-  end
+  pre_configure_options "CFLAGS=' -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale'"
 
-  def self.build
-    system "CFLAGS=' -I#{CREW_PREFIX}/include/gdk-pixbuf-2.0 -I#{CREW_PREFIX}/include/c++/v1/support/xlocale' \
-           ./configure \
-           --prefix=#{CREW_PREFIX} \
-           --libdir=#{CREW_LIB_PREFIX} \
-           --mandir=#{CREW_MAN_PREFIX} \
-           --disable-dependency-tracking \
-           --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
-           --with-jemalloc \
-           --with-modules \
-           --enable-hdri \
-           --with-perl \
-           --with-rsvg \
-           --with-x"
-    system 'make'
-  end
+  configure_options "--disable-dependency-tracking \
+    --with-windows-font-dir=#{CREW_PREFIX}/share/fonts/truetype/msttcorefonts \
+    --with-jemalloc \
+    --with-modules \
+    --enable-hdri \
+    --with-perl \
+    --with-rsvg \
+    --with-x"
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

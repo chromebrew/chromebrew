@@ -6,6 +6,7 @@ class Texlive < Package
   version '20230319'
   license 'GPL-2 and GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.28'
   source_url 'SKIP'
 
   binary_url({
@@ -26,12 +27,6 @@ class Texlive < Package
   depends_on 'libxext' # R
   depends_on 'libxmu' # R
   depends_on 'libxt' # R
-
-  def self.preflight
-    return if Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.28')
-
-    abort "Texlive requires glibc 2.28. The current glibc version is #{LIBC_VERSION}.".lightred
-  end
 
   def self.build
     system 'curl -#LO https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz'

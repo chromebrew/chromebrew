@@ -3,23 +3,23 @@ require 'buildsystems/autotools'
 class Bind < Autotools
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/downloads/bind/'
-  version '9.18.19'
+  version '9.18.21'
   license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
   compatibility 'all'
   source_url "https://ftp.isc.org/isc/bind9/#{version}/bind-#{version}.tar.xz"
-  source_sha256 '115e09c05439bebade1d272eda08fa88eb3b60129edef690588c87a4d27612cc'
+  source_sha256 'a556be22505d9ea4f9c6717aee9c549739c68498aff3ca69035787ecc648fec5'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.19_armv7l/bind-9.18.19-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.19_armv7l/bind-9.18.19-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.19_i686/bind-9.18.19-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.19_x86_64/bind-9.18.19-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_armv7l/bind-9.18.21-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_armv7l/bind-9.18.21-chromeos-armv7l.tar.zst',
+       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_i686/bind-9.18.21-chromeos-i686.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bind/9.18.21_x86_64/bind-9.18.21-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
-    aarch64: '8aa990e3de886a1e19d879ecec6a00f7253e1ee34d15b334d29cac0975e8fefc',
-     armv7l: '8aa990e3de886a1e19d879ecec6a00f7253e1ee34d15b334d29cac0975e8fefc',
-       i686: '0df1be2e43f32d38e74fe2ed8ba90aba038ba887733c9f9126655f031ab1c878',
-     x86_64: 'ee5191b2caf150d23505db782800da2e94f87da3601b0d463cad06b63d4ae66f'
+    aarch64: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
+     armv7l: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
+       i686: '899bad21b6ebc0ff3928282943cde4c7c332da860cf5e652fc0ecefb532d80ae',
+     x86_64: '2ace6554897a788547b015c55e2bdf7279c02e1cb3bbfb969c1c6f6aa6a63169'
   })
 
   depends_on 'e2fsprogs' # R
