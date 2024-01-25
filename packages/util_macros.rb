@@ -8,13 +8,8 @@ class Util_macros < Package
   compatibility 'all'
   source_url "https://xorg.freedesktop.org/releases/individual/util/util-macros-#{version}.tar.bz2"
   source_sha256 '0f812e6e9d2786ba8f54b960ee563c0663ddbe2434bf24ff193f5feab1f31971'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_macros/1.19.3_armv7l/util_macros-1.19.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_macros/1.19.3_armv7l/util_macros-1.19.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_macros/1.19.3_i686/util_macros-1.19.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/util_macros/1.19.3_x86_64/util_macros-1.19.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e97980e3df0457a1067a42e907f68c31b6be5fa7199cd259ab2ff318c0358246',
      armv7l: 'e97980e3df0457a1067a42e907f68c31b6be5fa7199cd259ab2ff318c0358246',

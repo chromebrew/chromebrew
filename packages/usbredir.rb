@@ -11,13 +11,8 @@ class Usbredir < Package
   compatibility 'all'
   source_url 'https://spice-space.org/download/usbredir/usbredir-0.9.0.tar.xz'
   source_sha256 'a3e167bf42bc7fe02c3c9db27d7767f1b8ce41b99ad14a4b0d0a60abe8bf56a6'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbredir/0.9.0_armv7l/usbredir-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbredir/0.9.0_armv7l/usbredir-0.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbredir/0.9.0_i686/usbredir-0.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbredir/0.9.0_x86_64/usbredir-0.9.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f21a861ddc071fe6979a0d3d2241447b763e23a437c432b6b41c9e74ee0d2848',
      armv7l: 'f21a861ddc071fe6979a0d3d2241447b763e23a437c432b6b41c9e74ee0d2848',

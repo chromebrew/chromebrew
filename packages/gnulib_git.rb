@@ -11,13 +11,8 @@ class Gnulib_git < Package
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/gnulib.git'
   git_hashtag '96ad66ea76f65e6cf78c638b85696157ea6141df'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnulib_git/v0.1-96ad66e_armv7l/gnulib_git-v0.1-96ad66e-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnulib_git/v0.1-96ad66e_armv7l/gnulib_git-v0.1-96ad66e-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnulib_git/v0.1-96ad66e_i686/gnulib_git-v0.1-96ad66e-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnulib_git/v0.1-96ad66e_x86_64/gnulib_git-v0.1-96ad66e-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '46a09e50986f6c5b6620c31a59f305249bd512130b8f56c55637fc1e3959a38b',
      armv7l: '46a09e50986f6c5b6620c31a59f305249bd512130b8f56c55637fc1e3959a38b',

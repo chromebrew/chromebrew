@@ -8,13 +8,8 @@ class Autoconf213 < Package
   compatibility 'all'
   source_url 'https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz'
   source_sha256 'f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13-1_armv7l/autoconf213-2.13-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13-1_armv7l/autoconf213-2.13-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13-1_i686/autoconf213-2.13-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/autoconf213/2.13-1_x86_64/autoconf213-2.13-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'fe089c6ec2d91a455bc5cd38bd73a653e0b80728bf873d0589ed57f0c7ab04be',
      armv7l: 'fe089c6ec2d91a455bc5cd38bd73a653e0b80728bf873d0589ed57f0c7ab04be',

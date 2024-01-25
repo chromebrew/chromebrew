@@ -8,13 +8,8 @@ class Vidstab < Package
   compatibility 'all'
   source_url 'https://github.com/georgmartius/vid.stab/archive/v1.1.0.tar.gz'
   source_sha256 '14d2a053e56edad4f397be0cb3ef8eb1ec3150404ce99a426c4eb641861dc0bb'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vidstab/1.1.0-1_armv7l/vidstab-1.1.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vidstab/1.1.0-1_armv7l/vidstab-1.1.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vidstab/1.1.0-1_i686/vidstab-1.1.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vidstab/1.1.0-1_x86_64/vidstab-1.1.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1f8dad35414c0ee16576445473791d9012ff3910d3a491b40d820adc05438eb2',
      armv7l: '1f8dad35414c0ee16576445473791d9012ff3910d3a491b40d820adc05438eb2',

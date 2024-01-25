@@ -8,13 +8,8 @@ class Qpdf < Package
   compatibility 'all'
   source_url 'https://github.com/qpdf/qpdf/archive/refs/tags/v11.1.1.tar.gz'
   source_sha256 '785edab622a1bc7e25e1537ad2c325005d48c5c7957f7abedff405deb80fa59a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/11.1.1_armv7l/qpdf-11.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/11.1.1_armv7l/qpdf-11.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/11.1.1_i686/qpdf-11.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qpdf/11.1.1_x86_64/qpdf-11.1.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '53a790ba153b2533d9384f3653830942fd87eac4f5f58b58d161a32af06d012c',
      armv7l: '53a790ba153b2533d9384f3653830942fd87eac4f5f58b58d161a32af06d012c',

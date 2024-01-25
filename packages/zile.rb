@@ -8,13 +8,8 @@ class Zile < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/zile/zile-2.4.14.tar.gz'
   source_sha256 '7a78742795ca32480f2bab697fd5e328618d9997d6f417cf1b14e9da9af26b74'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zile/2.4.14_armv7l/zile-2.4.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zile/2.4.14_armv7l/zile-2.4.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zile/2.4.14_i686/zile-2.4.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zile/2.4.14_x86_64/zile-2.4.14-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9af8d03f90d5a5f6ffd48774ccdc053ffb8d0a878baf883a301ff709d1d8d2d4',
      armv7l: '9af8d03f90d5a5f6ffd48774ccdc053ffb8d0a878baf883a301ff709d1d8d2d4',

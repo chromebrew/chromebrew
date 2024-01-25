@@ -8,13 +8,8 @@ class Xclock < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xclock.git'
   git_hashtag "xclock-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.1.1_armv7l/xclock-1.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.1.1_armv7l/xclock-1.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.1.1_i686/xclock-1.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclock/1.1.1_x86_64/xclock-1.1.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b35b8f4abbab0da7b6f8c04f7eabd4bddefb2b0ca56de1cbd94975c9119c5aae',
      armv7l: 'b35b8f4abbab0da7b6f8c04f7eabd4bddefb2b0ca56de1cbd94975c9119c5aae',

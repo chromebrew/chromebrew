@@ -11,13 +11,8 @@ class Hwloc < Package
   compatibility 'all'
   source_url 'https://github.com/open-mpi/hwloc.git'
   git_hashtag "hwloc-#{version}"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwloc/2.7.0_armv7l/hwloc-2.7.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwloc/2.7.0_armv7l/hwloc-2.7.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwloc/2.7.0_i686/hwloc-2.7.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hwloc/2.7.0_x86_64/hwloc-2.7.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'd08caff4ec00dcb51f41b021341619aa1c4739fffcab3c6f106eb18682542c33',
      armv7l: 'd08caff4ec00dcb51f41b021341619aa1c4739fffcab3c6f106eb18682542c33',

@@ -8,10 +8,8 @@ class Wine < Package
   compatibility 'x86_64'
   source_url 'https://dl.winehq.org/wine/source/9.0/wine-9.0.tar.xz'
   source_sha256 '7cfd090a5395f5b76d95bb5defac8a312c8de4c070c1163b8b58da38330ca6ee'
+  binary_compression 'tar.zst'
 
-  binary_url({
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wine/9.0_x86_64/wine-9.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
      x86_64: '1ea5bc2c10eb8e696feac04e6f238470831743a5d744bf7a5ca53152a4f1fcfc'
   })

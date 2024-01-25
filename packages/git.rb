@@ -8,13 +8,8 @@ class Git < Package
   compatibility 'all'
   source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.43.0.tar.xz'
   source_sha256 '5446603e73d911781d259e565750dcd277a42836c8e392cac91cf137aa9b76ec'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_armv7l/git-2.43.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_armv7l/git-2.43.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_i686/git-2.43.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/git/2.43.0_x86_64/git-2.43.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6a7203d257fd345739aabfd1d0a138673ea77e0726a3d7486912a0b48fe7b4e0',
      armv7l: '6a7203d257fd345739aabfd1d0a138673ea77e0726a3d7486912a0b48fe7b4e0',

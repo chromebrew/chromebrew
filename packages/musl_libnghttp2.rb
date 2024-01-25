@@ -8,13 +8,8 @@ class Musl_libnghttp2 < Package
   compatibility 'all'
   source_url 'https://github.com/nghttp2/nghttp2.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_armv7l/musl_libnghttp2-1.46.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_armv7l/musl_libnghttp2-1.46.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_i686/musl_libnghttp2-1.46.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libnghttp2/1.46.0_x86_64/musl_libnghttp2-1.46.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '100bc140036d70a07ae3497da6b276b46acadbbe9f214f17c7eea4b2eedea6b7',
      armv7l: '100bc140036d70a07ae3497da6b276b46acadbbe9f214f17c7eea4b2eedea6b7',

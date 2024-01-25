@@ -8,13 +8,8 @@ class Libcerf < Package
   compatibility 'all'
   source_url 'http://apps.jcns.fz-juelich.de/src/libcerf/libcerf-1.5.tgz'
   source_sha256 'e36dc147e7fff81143074a21550c259b5aac1b99fc314fc0ae33294231ca5c86'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcerf/1.5_armv7l/libcerf-1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcerf/1.5_armv7l/libcerf-1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcerf/1.5_i686/libcerf-1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcerf/1.5_x86_64/libcerf-1.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '94fc2717e970fb97ce0c508a191c5249b99af6b5f29f0855c7494593b827c063',
      armv7l: '94fc2717e970fb97ce0c508a191c5249b99af6b5f29f0855c7494593b827c063',

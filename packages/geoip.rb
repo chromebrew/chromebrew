@@ -8,13 +8,8 @@ class Geoip < Package
   compatibility 'all'
   source_url 'https://github.com/maxmind/geoip-api-c/releases/download/v1.6.12/GeoIP-1.6.12.tar.gz'
   source_sha256 '1dfb748003c5e4b7fd56ba8c4cd786633d5d6f409547584f6910398389636f80'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_armv7l/geoip-1.6.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_armv7l/geoip-1.6.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_i686/geoip-1.6.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoip/1.6.12_x86_64/geoip-1.6.12-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'fb107ce557d6fe3b876f7f19578e434b6387d23dd46e4b1718ba5039eddd1106',
      armv7l: 'fb107ce557d6fe3b876f7f19578e434b6387d23dd46e4b1718ba5039eddd1106',

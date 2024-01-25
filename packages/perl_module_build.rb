@@ -8,13 +8,8 @@ class Perl_module_build < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4234.tar.gz'
   source_sha256 '66aeac6127418be5e471ead3744648c766bd01482825c5b66652675f2bc86a8f'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4234-perl5.38_armv7l/perl_module_build-0.4234-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4234-perl5.38_armv7l/perl_module_build-0.4234-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4234-perl5.38_i686/perl_module_build-0.4234-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_module_build/0.4234-perl5.38_x86_64/perl_module_build-0.4234-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd1a56769ff3f626329cd4336da679b2e94328a7cd94120e7b3702774d555088e',
      armv7l: 'd1a56769ff3f626329cd4336da679b2e94328a7cd94120e7b3702774d555088e',

@@ -8,13 +8,8 @@ class Rush < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/rush/rush-2.1.tar.xz'
   source_sha256 'c2ff487d44ce3d14854d0269eb0aa4c0f98bcca35390fad5ea52da75d9e4abdf'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rush/2.1_armv7l/rush-2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rush/2.1_armv7l/rush-2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rush/2.1_i686/rush-2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rush/2.1_x86_64/rush-2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3b5629f53b3efc539ba397302fddd223fce1cbe5e5dee50be3e3d36868424984',
      armv7l: '3b5629f53b3efc539ba397302fddd223fce1cbe5e5dee50be3e3d36868424984',

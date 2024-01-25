@@ -8,13 +8,8 @@ class Proxychains < Package
   compatibility 'all'
   source_url 'https://github.com/haad/proxychains/archive/proxychains-4.2.0.tar.gz'
   source_sha256 '225284e5553fb062d09ed425d2815387eda9c1c0d6e2bc24ea95393a71601619'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/proxychains/4.2.0_armv7l/proxychains-4.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/proxychains/4.2.0_armv7l/proxychains-4.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/proxychains/4.2.0_i686/proxychains-4.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/proxychains/4.2.0_x86_64/proxychains-4.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '570e3bbbc4ef4429d409c65b1bb434b8fa5178f62c156c7f40390ffa7560ad63',
      armv7l: '570e3bbbc4ef4429d409c65b1bb434b8fa5178f62c156c7f40390ffa7560ad63',

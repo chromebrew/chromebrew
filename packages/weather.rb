@@ -8,13 +8,8 @@ class Weather < Package
   compatibility 'all'
   source_url 'http://fungi.yuggoth.org/weather/src/weather-2.3.tar.xz'
   source_sha256 '86148d2f1d59867f637f52558cc2a6b3280fac94df55c6e5af0ce37cc190d146'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weather/2.3_armv7l/weather-2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weather/2.3_armv7l/weather-2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weather/2.3_i686/weather-2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/weather/2.3_x86_64/weather-2.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1b25450f1ee6d3f6ec3b8e0bf356b47741cd7e942b093f6203558dad1a97d5e2',
      armv7l: '1b25450f1ee6d3f6ec3b8e0bf356b47741cd7e942b093f6203558dad1a97d5e2',

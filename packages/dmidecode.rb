@@ -8,13 +8,8 @@ class Dmidecode < Package
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.5.tar.xz'
   source_sha256 '79d76735ee8e25196e2a722964cf9683f5a09581503537884b256b01389cc073'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.5_armv7l/dmidecode-3.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.5_armv7l/dmidecode-3.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.5_i686/dmidecode-3.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dmidecode/3.5_x86_64/dmidecode-3.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'cb38d8205474b2780871da16f96f109c77cde0c804f244597b4211ecb50a1c17',
      armv7l: 'cb38d8205474b2780871da16f96f109c77cde0c804f244597b4211ecb50a1c17',

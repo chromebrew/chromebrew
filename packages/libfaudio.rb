@@ -8,13 +8,8 @@ class Libfaudio < Package
   compatibility 'all'
   source_url 'https://github.com/fna-xna/faudio.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_armv7l/libfaudio-23.01-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_armv7l/libfaudio-23.01-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_i686/libfaudio-23.01-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfaudio/23.01_x86_64/libfaudio-23.01-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '44a8d21f66f7c203de84fa23f7a62fb4a0ee9336a70723b1be2c6e07a8ab6b24',
      armv7l: '44a8d21f66f7c203de84fa23f7a62fb4a0ee9336a70723b1be2c6e07a8ab6b24',

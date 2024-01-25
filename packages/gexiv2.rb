@@ -8,13 +8,8 @@ class Gexiv2 < Package
   compatibility 'all'
   source_url "https://download.gnome.org/sources/gexiv2/#{version.rpartition('.')[0]}/gexiv2-#{version}.tar.xz"
   source_sha256 'e58279a6ff20b6f64fa499615da5e9b57cf65ba7850b72fafdf17221a9d6d69e'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gexiv2/0.14.0_armv7l/gexiv2-0.14.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gexiv2/0.14.0_armv7l/gexiv2-0.14.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gexiv2/0.14.0_i686/gexiv2-0.14.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gexiv2/0.14.0_x86_64/gexiv2-0.14.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '25bf888e23ceedb54f8adfa3b87737e66ad03ef9e6fc6292bb5888ea443ad8f7',
      armv7l: '25bf888e23ceedb54f8adfa3b87737e66ad03ef9e6fc6292bb5888ea443ad8f7',

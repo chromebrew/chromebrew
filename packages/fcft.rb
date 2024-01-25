@@ -11,13 +11,8 @@ class Fcft < Package
   compatibility 'all'
   source_url 'https://codeberg.org/dnkl/fcft.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fcft/2.5.1_armv7l/fcft-2.5.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fcft/2.5.1_armv7l/fcft-2.5.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fcft/2.5.1_i686/fcft-2.5.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fcft/2.5.1_x86_64/fcft-2.5.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '28f1176a8cece2b6e7464020871a1f543a01b387b107f7ff8eaec0bb525a2745',
      armv7l: '28f1176a8cece2b6e7464020871a1f543a01b387b107f7ff8eaec0bb525a2745',

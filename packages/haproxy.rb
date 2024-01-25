@@ -8,13 +8,8 @@ class Haproxy < Package
   compatibility 'all'
   source_url 'https://www.haproxy.org/download/2.0/src/haproxy-2.0.5.tar.gz'
   source_sha256 '3f2e0d40af66dd6df1dc2f6055d3de106ba62836d77b4c2e497a82a4bdbc5422'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_armv7l/haproxy-2.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_armv7l/haproxy-2.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_i686/haproxy-2.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haproxy/2.0.5_x86_64/haproxy-2.0.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9c3580edbfa83b4f0d59aa2f6d08689a76fef634daea6bf351a8b022110a5f29',
      armv7l: '9c3580edbfa83b4f0d59aa2f6d08689a76fef634daea6bf351a8b022110a5f29',

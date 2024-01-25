@@ -8,13 +8,8 @@ class Less < Autotools
   compatibility 'all'
   source_url 'https://greenwoodsoftware.com/less/less-643.tar.gz'
   source_sha256 '2911b5432c836fa084c8a2e68f6cd6312372c026a58faaa98862731c8b6052e8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/643_armv7l/less-643-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/643_armv7l/less-643-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/643_i686/less-643-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/less/643_x86_64/less-643-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6e958b939677a30fd4347e8db4e7f46e3447ef2a2f463ebb41c52bee1928638d',
      armv7l: '6e958b939677a30fd4347e8db4e7f46e3447ef2a2f463ebb41c52bee1928638d',

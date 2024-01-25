@@ -8,13 +8,8 @@ class Mpc < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/mpc/mpc-1.2.1.tar.gz'
   source_sha256 '17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpc/1.2.1_armv7l/mpc-1.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpc/1.2.1_armv7l/mpc-1.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpc/1.2.1_i686/mpc-1.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpc/1.2.1_x86_64/mpc-1.2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '51f7b0de3567634f42cb4e563520243cd6c9eca00b8efb1add25fbae97b286ce',
      armv7l: '51f7b0de3567634f42cb4e563520243cd6c9eca00b8efb1add25fbae97b286ce',

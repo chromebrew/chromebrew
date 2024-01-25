@@ -8,13 +8,8 @@ class Gucharmap < Package
   compatibility 'all'
   source_url 'https://download.gnome.org/sources/gucharmap/10.0/gucharmap-10.0.4.tar.xz'
   source_sha256 'bb266899266b2f2dcdbaf9f45cafd74c6f4e540132d3f0b068d37343291df001'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_armv7l/gucharmap-10.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_armv7l/gucharmap-10.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_i686/gucharmap-10.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gucharmap/10.0.4_x86_64/gucharmap-10.0.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '074dfb52ebdf428a1f88b12d45902ec1622222ee834eb301858728e06bf36bec',
      armv7l: '074dfb52ebdf428a1f88b12d45902ec1622222ee834eb301858728e06bf36bec',

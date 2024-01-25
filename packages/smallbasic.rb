@@ -8,13 +8,8 @@ class Smallbasic < Package
   compatibility 'all'
   source_url 'https://github.com/smallbasic/SmallBASIC.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_armv7l/smallbasic-12.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_armv7l/smallbasic-12.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_i686/smallbasic-12.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/smallbasic/12.23_x86_64/smallbasic-12.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e86e6eda7034972b3d8cac560fab08c64eb9868105104b8846c8f0c5c4e5e8ec',
      armv7l: 'e86e6eda7034972b3d8cac560fab08c64eb9868105104b8846c8f0c5c4e5e8ec',

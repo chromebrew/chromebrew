@@ -8,13 +8,8 @@ class Atomicparsley < Package
   compatibility 'all'
   source_url 'https://bitbucket.org/wez/atomicparsley/get/0.9.6.tar.gz'
   source_sha256 '8ba4e3e21d7a9239932e2a6f34842194d8f9eba84ce9eb83fb35369f5f3f05ab'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atomicparsley/0.9.6_armv7l/atomicparsley-0.9.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atomicparsley/0.9.6_armv7l/atomicparsley-0.9.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atomicparsley/0.9.6_i686/atomicparsley-0.9.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atomicparsley/0.9.6_x86_64/atomicparsley-0.9.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '55d6f7bf30bd0e178dd9d117c08b6b5c6f6965808f2e483256ab100a0823b4ae',
      armv7l: '55d6f7bf30bd0e178dd9d117c08b6b5c6f6965808f2e483256ab100a0823b4ae',

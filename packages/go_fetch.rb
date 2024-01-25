@@ -8,13 +8,8 @@ class Go_fetch < Package
   compatibility 'all'
   source_url 'https://github.com/gruntwork-io/fetch.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_fetch/0.4.2_armv7l/go_fetch-0.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_fetch/0.4.2_armv7l/go_fetch-0.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_fetch/0.4.2_i686/go_fetch-0.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_fetch/0.4.2_x86_64/go_fetch-0.4.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b0e8b47876a76312e2ee23bbc436e1493eb04b8814389292888229369416cbbc',
      armv7l: 'b0e8b47876a76312e2ee23bbc436e1493eb04b8814389292888229369416cbbc',

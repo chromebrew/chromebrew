@@ -8,13 +8,8 @@ class Stack < Package
   compatibility 'all'
   source_url "https://github.com/commercialhaskell/stack/releases/download/v#{version}/stack-#{version}-linux-x86_64.tar.gz"
   source_sha256 '938f689dc45e2693ab1ca3ea215790b3786dfd531dcf6c0bf40842c24e579ae9'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_armv7l/stack-2.9.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_i686/stack-2.9.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stack/2.9.3_x86_64/stack-2.9.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3551e29cf348081a27f2e598133b9a9a4498a0e0e4b7a098dd0e4b583ccfc7c9',
      armv7l: '3551e29cf348081a27f2e598133b9a9a4498a0e0e4b7a098dd0e4b583ccfc7c9',

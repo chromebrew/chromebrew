@@ -8,13 +8,8 @@ class Libxcb < Package
   compatibility 'all'
   source_url 'https://xcb.freedesktop.org/dist/libxcb-1.15.tar.xz'
   source_sha256 'cc38744f817cf6814c847e2df37fcb8997357d72fa4bcbc228ae0fe47219a059'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_armv7l/libxcb-1.15-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_armv7l/libxcb-1.15-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_i686/libxcb-1.15-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxcb/1.15_x86_64/libxcb-1.15-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',
      armv7l: 'fad951d000d7d85249abf783489d84f1d34a938cb10cd29ca7c891b9b5657767',

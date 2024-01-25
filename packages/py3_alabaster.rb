@@ -9,13 +9,8 @@ class Py3_alabaster < Python
   compatibility 'all'
   source_url 'https://github.com/bitprophet/alabaster.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_armv7l/py3_alabaster-0.7.13-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_armv7l/py3_alabaster-0.7.13-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_i686/py3_alabaster-0.7.13-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_alabaster/0.7.13-py3.12_x86_64/py3_alabaster-0.7.13-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',
      armv7l: 'ab679526f7f0bad267d8f4dd03c3c2cab94bef7111cf8ecdd6b00db91c51e738',

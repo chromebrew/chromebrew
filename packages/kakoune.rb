@@ -9,13 +9,8 @@ class Kakoune < Package
   version 'v2018.09.04'
   source_url 'https://github.com/mawww/kakoune/releases/download/v2018.09.04/kakoune-2018.09.04.tar.bz2'
   source_sha256 '7a31c9f08c261c5128d1753762721dd7b7fe4bb4e9a3c368c9d768c72a1472e1'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kakoune/v2018.09.04_armv7l/kakoune-v2018.09.04-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kakoune/v2018.09.04_armv7l/kakoune-v2018.09.04-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kakoune/v2018.09.04_i686/kakoune-v2018.09.04-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kakoune/v2018.09.04_x86_64/kakoune-v2018.09.04-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a4304ec155e6c375c841451df07d60b19ed288b0abc9f99b46a6de52a2b40321',
      armv7l: 'a4304ec155e6c375c841451df07d60b19ed288b0abc9f99b46a6de52a2b40321',

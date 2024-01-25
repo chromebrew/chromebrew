@@ -8,13 +8,8 @@ class Perl_carp_clan < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Carp-Clan-6.08.tar.gz'
   source_sha256 'c75f92e34422cc5a65ab05d155842b701452434e9aefb649d6e2289c47ef6708'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08-perl5.38_armv7l/perl_carp_clan-6.08-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08-perl5.38_armv7l/perl_carp_clan-6.08-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08-perl5.38_i686/perl_carp_clan-6.08-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_carp_clan/6.08-perl5.38_x86_64/perl_carp_clan-6.08-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '202c8b998b4756ff971dcdd1cd9b1222bad278f5cd974e1e2ade979add63beda',
      armv7l: '202c8b998b4756ff971dcdd1cd9b1222bad278f5cd974e1e2ade979add63beda',

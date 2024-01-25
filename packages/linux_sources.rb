@@ -8,13 +8,8 @@ class Linux_sources < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_armv7l/linux_sources-4.14-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_armv7l/linux_sources-4.14-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/3.8_i686/linux_sources-3.8-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/linux_sources/4.14-1_x86_64/linux_sources-4.14-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'c9b3116f83033215bf7f925a433bcea906067006d8c4c3f9747a279d729d4db0',
      armv7l: 'c9b3116f83033215bf7f925a433bcea906067006d8c4c3f9747a279d729d4db0',

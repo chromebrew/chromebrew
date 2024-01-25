@@ -9,12 +9,8 @@ class Libcaca < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/cacalabs/libcaca/archive/f42aa68fc798db63b7b2a789ae8cf5b90b57b752.zip'
   source_sha256 'a0d0afd5cc9733510f20dab2fcd59256c960b091307e37c921f158629204bfe0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-f42aa68-py3.12_armv7l/libcaca-0.99.beta20-f42aa68-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-f42aa68-py3.12_armv7l/libcaca-0.99.beta20-f42aa68-py3.12-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcaca/0.99.beta20-f42aa68-py3.12_x86_64/libcaca-0.99.beta20-f42aa68-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '26cbffa922a211ff150e019db4dad1a71a817bc18419e61dfdd898ddac3093d0',
      armv7l: '26cbffa922a211ff150e019db4dad1a71a817bc18419e61dfdd898ddac3093d0',

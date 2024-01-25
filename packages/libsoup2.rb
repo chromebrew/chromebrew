@@ -8,13 +8,8 @@ class Libsoup2 < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.2_armv7l/libsoup2-2.74.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.2_armv7l/libsoup2-2.74.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.2_i686/libsoup2-2.74.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsoup2/2.74.2_x86_64/libsoup2-2.74.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '603f80f5597fe0d7bee189cd3f6078c506f124f85be57c634f04616c06bde8f9',
      armv7l: '603f80f5597fe0d7bee189cd3f6078c506f124f85be57c634f04616c06bde8f9',

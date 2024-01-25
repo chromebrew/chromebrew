@@ -11,13 +11,8 @@ class Unibilium < Package
   compatibility 'all'
   source_url 'https://github.com/neovim/unibilium/archive/v2.1.1.tar.gz'
   source_sha256 '6f0ee21c8605340cfbb458cbd195b4d074e6d16dd0c0e12f2627ca773f3cabf1'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unibilium/2.1.1_armv7l/unibilium-2.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unibilium/2.1.1_armv7l/unibilium-2.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unibilium/2.1.1_i686/unibilium-2.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unibilium/2.1.1_x86_64/unibilium-2.1.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5ef4d9793a3679dc58bc75b493745d8821c10c0476f0f2734e2e2bdd60fd106d',
      armv7l: '5ef4d9793a3679dc58bc75b493745d8821c10c0476f0f2734e2e2bdd60fd106d',

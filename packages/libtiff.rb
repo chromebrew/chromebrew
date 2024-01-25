@@ -8,13 +8,8 @@ class Libtiff < Package
   compatibility 'all'
   source_url 'https://download.osgeo.org/libtiff/tiff-4.6.0.tar.xz'
   source_sha256 'e178649607d1e22b51cf361dd20a3753f244f022eefab1f2f218fc62ebaf87d2'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.6.0_armv7l/libtiff-4.6.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.6.0_armv7l/libtiff-4.6.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.6.0_i686/libtiff-4.6.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtiff/4.6.0_x86_64/libtiff-4.6.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c07999f1adeab936eb8f5f95f3a538abee49a7807ae83059b4aa8118140285b0',
      armv7l: 'c07999f1adeab936eb8f5f95f3a538abee49a7807ae83059b4aa8118140285b0',

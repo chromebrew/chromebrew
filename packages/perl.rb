@@ -8,13 +8,8 @@ class Perl < Package
   compatibility 'all'
   source_url "https://www.cpan.org/src/5.0/perl-#{version}.tar.xz"
   source_sha256 'd91115e90b896520e83d4de6b52f8254ef2b70a8d545ffab33200ea9f1cf29e8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_armv7l/perl-5.38.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_armv7l/perl-5.38.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_i686/perl-5.38.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl/5.38.2_x86_64/perl-5.38.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a2c1ad4b8b0da344fff07a60f6feb58cd95756e19c5b5dbd325d4bf0ae1ea4e8',
      armv7l: 'a2c1ad4b8b0da344fff07a60f6feb58cd95756e19c5b5dbd325d4bf0ae1ea4e8',

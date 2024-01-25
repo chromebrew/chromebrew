@@ -8,13 +8,8 @@ class Bash_completion < Package
   compatibility 'all'
   source_url 'https://github.com/scop/bash-completion/archive/refs/tags/2.11.tar.gz'
   source_sha256 '16adefabf43ec8ffb473704f5724d775c2f47e9f750d7d608f0251ec21fe8813'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_armv7l/bash_completion-2.11-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_armv7l/bash_completion-2.11-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_i686/bash_completion-2.11-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bash_completion/2.11-1_x86_64/bash_completion-2.11-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f08fa79964a1f0077f8c523ab3f72afcf287bab069aae3c475ef49a515689508',
      armv7l: 'f08fa79964a1f0077f8c523ab3f72afcf287bab069aae3c475ef49a515689508',

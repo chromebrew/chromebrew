@@ -11,12 +11,8 @@ class T1lib < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://www.ibiblio.org/pub/Linux/libs/graphics/t1lib-#{version}.tar.gz"
   source_sha256 '821328b5054f7890a0d0cd2f52825270705df3641dbd476d58d17e56ed957b59'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/t1lib/5.1.2_armv7l/t1lib-5.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/t1lib/5.1.2_armv7l/t1lib-5.1.2-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/t1lib/5.1.2_x86_64/t1lib-5.1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2f4799df219c60ac0ece07da29347d070b16671e3d003e988d586baf18018ecb',
      armv7l: '2f4799df219c60ac0ece07da29347d070b16671e3d003e988d586baf18018ecb',

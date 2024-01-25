@@ -11,13 +11,8 @@ class Squashfs_tools_ng < Package
   compatibility 'all'
   source_url 'https://infraroot.at/pub/squashfs/squashfs-tools-ng-1.1.0.tar.xz'
   source_sha256 '110794124b268e92e28e6a95f0781d1338f48c338434ef746f5de68c64e19aeb'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs_tools_ng/1.1.0_armv7l/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs_tools_ng/1.1.0_armv7l/squashfs_tools_ng-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs_tools_ng/1.1.0_i686/squashfs_tools_ng-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/squashfs_tools_ng/1.1.0_x86_64/squashfs_tools_ng-1.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '60048d2dd13cc62c08437afd9ef009977d4d40e5ebd3bb8e60dc8a1de0766b2f',
      armv7l: '60048d2dd13cc62c08437afd9ef009977d4d40e5ebd3bb8e60dc8a1de0766b2f',

@@ -8,13 +8,8 @@ class Aribb25 < Package
   license 'ISC'
   source_url 'https://code.videolan.org/videolan/aribb25.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb25/0.2.7_armv7l/aribb25-0.2.7-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb25/0.2.7_armv7l/aribb25-0.2.7-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb25/0.2.7_i686/aribb25-0.2.7-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aribb25/0.2.7_x86_64/aribb25-0.2.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '21290fa231ac801bbafbcf7c6f16e588257d241560e81999df3014e48c15715e',
       armv7l: '21290fa231ac801bbafbcf7c6f16e588257d241560e81999df3014e48c15715e',

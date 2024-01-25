@@ -8,12 +8,8 @@ class Appstream_glib < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/hughsie/appstream-glib.git'
   git_hashtag 'appstream_glib_0_8_2'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appstream_glib/0.8.2_armv7l/appstream_glib-0.8.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appstream_glib/0.8.2_armv7l/appstream_glib-0.8.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appstream_glib/0.8.2_x86_64/appstream_glib-0.8.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2a591cfad5df70455b2ff90f915ae057f8e5efc1e95e22c29bd5a78c9406e48e',
      armv7l: '2a591cfad5df70455b2ff90f915ae057f8e5efc1e95e22c29bd5a78c9406e48e',

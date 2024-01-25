@@ -11,12 +11,8 @@ class Spirv_headers < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/SPIRV-Headers.git'
   git_hashtag "sdk-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.261.1_armv7l/spirv_headers-1.3.261.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.261.1_armv7l/spirv_headers-1.3.261.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spirv_headers/1.3.261.1_x86_64/spirv_headers-1.3.261.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f0ccd14ad257de154c75417ebe3bb9514acfa1a11fbfda061a76e6114fd9951a',
      armv7l: 'f0ccd14ad257de154c75417ebe3bb9514acfa1a11fbfda061a76e6114fd9951a',

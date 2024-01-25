@@ -8,13 +8,8 @@ class Oneko < Package
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/o/oneko/oneko_1.2.sakura.6.orig.tar.gz'
   source_sha256 'd89cee8b81cdb40ef23b3457c9a7fe1b0ff130081b21a41ec6c41cda01391d25'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_armv7l/oneko-1.2.sakura.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_armv7l/oneko-1.2.sakura.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_i686/oneko-1.2.sakura.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oneko/1.2.sakura.6_x86_64/oneko-1.2.sakura.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '18128ddab7d13999c43c4fa2ce24fdd15a9bcd4541a815ad8c19f9154d006db8',
      armv7l: '18128ddab7d13999c43c4fa2ce24fdd15a9bcd4541a815ad8c19f9154d006db8',

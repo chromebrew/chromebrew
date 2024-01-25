@@ -8,13 +8,8 @@ class Gnutls < Autotools
   compatibility 'all'
   source_url 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.1.tar.xz'
   source_sha256 'ba8b9e15ae20aba88f44661978f5b5863494316fe7e722ede9d069fe6294829c'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_armv7l/gnutls-3.8.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_armv7l/gnutls-3.8.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_i686/gnutls-3.8.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnutls/3.8.1-1_x86_64/gnutls-3.8.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b4ee521f0f9f8f35e5198e1c28d884fbaca674a9c17d19bcf1327695857135a9',
      armv7l: 'b4ee521f0f9f8f35e5198e1c28d884fbaca674a9c17d19bcf1327695857135a9',

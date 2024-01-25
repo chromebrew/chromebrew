@@ -8,13 +8,8 @@ class Docbook2x < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/docbook2x/docbook2x/0.8.8/docbook2X-0.8.8.tar.gz'
   source_sha256 '4077757d367a9d1b1427e8d5dfc3c49d993e90deabc6df23d05cfe9cd2fcdc45'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook2x/0.8.8-1_armv7l/docbook2x-0.8.8-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook2x/0.8.8-1_armv7l/docbook2x-0.8.8-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook2x/0.8.8-1_i686/docbook2x-0.8.8-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook2x/0.8.8-1_x86_64/docbook2x-0.8.8-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '17f43a04fd80fb126cd8c7fd62163897be3edb24ed82026a1109fd614c52a585',
      armv7l: '17f43a04fd80fb126cd8c7fd62163897be3edb24ed82026a1109fd614c52a585',

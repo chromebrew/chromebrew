@@ -11,13 +11,8 @@ class Tbb < Package
   compatibility 'all'
   source_url 'https://github.com/oneapi-src/oneTBB.git'
   git_hashtag "v#{version}"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tbb/2021.5.0_armv7l/tbb-2021.5.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tbb/2021.5.0_armv7l/tbb-2021.5.0-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tbb/2021.5.0_i686/tbb-2021.5.0-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tbb/2021.5.0_x86_64/tbb-2021.5.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'f4e39ecbe901b49bc1923cc10b136b5fd01f5c73148d5d15a4dc78455ad80a07',
      armv7l: 'f4e39ecbe901b49bc1923cc10b136b5fd01f5c73148d5d15a4dc78455ad80a07',

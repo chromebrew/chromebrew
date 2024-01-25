@@ -8,13 +8,8 @@ class Pdfgrep < Package
   compatibility 'all'
   source_url 'https://pdfgrep.org/download/pdfgrep-2.0.1.tar.gz'
   source_sha256 '0370d744b3072d47383dbed2cb9c8b0b64b83c084da5a8961f8d4bc7669e941e'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfgrep/2.0.1-1_armv7l/pdfgrep-2.0.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfgrep/2.0.1-1_armv7l/pdfgrep-2.0.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfgrep/2.0.1-1_i686/pdfgrep-2.0.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfgrep/2.0.1-1_x86_64/pdfgrep-2.0.1-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0614122a56626fbc83ea82f36cacbb6fca7e5912cc0ff9b5fc343e5c67667da9',
      armv7l: '0614122a56626fbc83ea82f36cacbb6fca7e5912cc0ff9b5fc343e5c67667da9',

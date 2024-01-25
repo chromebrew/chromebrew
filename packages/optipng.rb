@@ -8,13 +8,8 @@ class Optipng < Package
   compatibility 'all'
   source_url 'https://prdownloads.sourceforge.net/project/optipng/OptiPNG/optipng-0.7.7/optipng-0.7.7.tar.gz'
   source_sha256 '4f32f233cef870b3f95d3ad6428bfe4224ef34908f1b42b0badf858216654452'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/optipng/0.7.7_armv7l/optipng-0.7.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/optipng/0.7.7_armv7l/optipng-0.7.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/optipng/0.7.7_i686/optipng-0.7.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/optipng/0.7.7_x86_64/optipng-0.7.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1601aa1f127fdb2eacad1c0faa347c405722e208387fea068a9566d11373c92f',
      armv7l: '1601aa1f127fdb2eacad1c0faa347c405722e208387fea068a9566d11373c92f',

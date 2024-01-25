@@ -8,12 +8,8 @@ class Php80 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-8.0.30.tar.xz'
   source_sha256 '216ab305737a5d392107112d618a755dc5df42058226f1670e9db90e77d777d9'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.30_armv7l/php80-8.0.30-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.30_armv7l/php80-8.0.30-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php80/8.0.30_x86_64/php80-8.0.30-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e74f69975fbf7e8cbe55b6548993909c80aeb49181cb22c3175cba0de5ef5d3d',
      armv7l: 'e74f69975fbf7e8cbe55b6548993909c80aeb49181cb22c3175cba0de5ef5d3d',

@@ -8,13 +8,8 @@ class Python2 < Package
   compatibility 'all'
   source_url 'https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz'
   source_sha256 'b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_armv7l/python2-2.7.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_armv7l/python2-2.7.18-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_i686/python2-2.7.18-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/python2/2.7.18_x86_64/python2-2.7.18-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8d50eb96aac259934a8a057280244ca4a7f312cee4a331694890ea7ac4d757c7',
      armv7l: '8d50eb96aac259934a8a057280244ca4a7f312cee4a331694890ea7ac4d757c7',

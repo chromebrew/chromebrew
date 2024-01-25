@@ -8,12 +8,8 @@ class Filezilla < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.filezilla-project.org/client/FileZilla_3.65.0_src.tar.xz'
   source_sha256 'd2bce4dbaa80fe035836db19441e90befcbabdef5556e9a4b3d4dd233638bdea'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.65.0-1_armv7l/filezilla-3.65.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.65.0-1_armv7l/filezilla-3.65.0-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/filezilla/3.65.0-1_x86_64/filezilla-3.65.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '352fdaf2d1c2d6fd7f3487dd3650a75b6695a046b8cf14b5d5fe15f54c01b14f',
      armv7l: '352fdaf2d1c2d6fd7f3487dd3650a75b6695a046b8cf14b5d5fe15f54c01b14f',

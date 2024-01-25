@@ -11,13 +11,8 @@ class Uutils_coreutils < Package
   compatibility 'all'
   source_url 'https://github.com/uutils/coreutils.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_armv7l/uutils_coreutils-0.0.23-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_armv7l/uutils_coreutils-0.0.23-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_i686/uutils_coreutils-0.0.23-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uutils_coreutils/0.0.23_x86_64/uutils_coreutils-0.0.23-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '06be1802c7cf4725b824ae6872a875c84b605a03101ab6fa68df93a8eba3e5c2',
      armv7l: '06be1802c7cf4725b824ae6872a875c84b605a03101ab6fa68df93a8eba3e5c2',

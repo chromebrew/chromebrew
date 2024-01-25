@@ -8,13 +8,8 @@ class Polkit < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/polkit/polkit.git'
   git_hashtag 'a2bf5c9c83b6ae46cbd5c779d3055bff81ded683'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_armv7l/polkit-0.120-a2bf5c-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_armv7l/polkit-0.120-a2bf5c-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_i686/polkit-0.120-a2bf5c-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/polkit/0.120-a2bf5c_x86_64/polkit-0.120-a2bf5c-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
      armv7l: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',

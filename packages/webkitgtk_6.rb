@@ -8,12 +8,8 @@ class Webkitgtk_6 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
   source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.42.1_armv7l/webkitgtk_6-2.42.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.42.1_armv7l/webkitgtk_6-2.42.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/webkitgtk_6/2.42.1_x86_64/webkitgtk_6-2.42.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '53c442de2db8f52ed203fc6a9d3417382ec0d5d1e0531ba6f0531156c006174e',
      armv7l: '53c442de2db8f52ed203fc6a9d3417382ec0d5d1e0531ba6f0531156c006174e',

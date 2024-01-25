@@ -11,13 +11,8 @@ class Luit < Package
   compatibility 'all'
   source_url 'https://github.com/ThomasDickey/luit-snapshots.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luit/2_0_20230201_armv7l/luit-2_0_20230201-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luit/2_0_20230201_armv7l/luit-2_0_20230201-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luit/2_0_20230201_i686/luit-2_0_20230201-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luit/2_0_20230201_x86_64/luit-2_0_20230201-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '04d87e98277c2b522ea8f088b11a79a46abb15700dc44db9cd85e17e4c37d111',
      armv7l: '04d87e98277c2b522ea8f088b11a79a46abb15700dc44db9cd85e17e4c37d111',

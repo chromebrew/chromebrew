@@ -9,13 +9,8 @@ class Php72 < Package
   compatibility 'all'
   source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_armv7l/php72-7.2.34-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_i686/php72-7.2.34-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php72/7.2.34-2_x86_64/php72-7.2.34-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
      armv7l: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',

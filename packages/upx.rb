@@ -11,13 +11,8 @@ class Upx < CMake
   compatibility 'all'
   source_url 'https://github.com/upx/upx.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.1.0_armv7l/upx-4.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.1.0_armv7l/upx-4.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.1.0_i686/upx-4.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upx/4.1.0_x86_64/upx-4.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b6e39f673a256b51ce6f8e0b80951b95ada8005ff14e21b11a1d2551ee01c333',
      armv7l: 'b6e39f673a256b51ce6f8e0b80951b95ada8005ff14e21b11a1d2551ee01c333',

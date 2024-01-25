@@ -8,13 +8,8 @@ class Libmms < Package
   compatibility 'all'
   source_url 'https://download.sourceforge.net/libmms/libmms-0.6.4.tar.gz'
   source_sha256 '3c05e05aebcbfcc044d9e8c2d4646cd8359be39a3f0ba8ce4e72a9094bee704f'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmms/0.6.4_armv7l/libmms-0.6.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmms/0.6.4_armv7l/libmms-0.6.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmms/0.6.4_i686/libmms-0.6.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmms/0.6.4_x86_64/libmms-0.6.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '70ff7a70293b11b92859e7ec8b7ff6c96f8e3e34ee325f83becd2cf2efcfe99b',
      armv7l: '70ff7a70293b11b92859e7ec8b7ff6c96f8e3e34ee325f83becd2cf2efcfe99b',

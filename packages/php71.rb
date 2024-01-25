@@ -9,13 +9,8 @@ class Php71 < Package
   compatibility 'all'
   source_url 'https://php.net/distributions/php-7.1.33.tar.xz'
   source_sha256 'bd7c0a9bd5433289ee01fd440af3715309faf583f75832b64fe169c100d52968'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_armv7l/php71-7.1.33-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_armv7l/php71-7.1.33-3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_i686/php71-7.1.33-3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php71/7.1.33-3_x86_64/php71-7.1.33-3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
      armv7l: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',

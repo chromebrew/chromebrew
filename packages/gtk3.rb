@@ -8,12 +8,8 @@ class Gtk3 < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.39_armv7l/gtk3-3.24.39-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.39_armv7l/gtk3-3.24.39-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk3/3.24.39_x86_64/gtk3-3.24.39-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '209958c529bb9567195e1f0ed5438f2e872fd1b35995db77e47ee50ad61f411c',
      armv7l: '209958c529bb9567195e1f0ed5438f2e872fd1b35995db77e47ee50ad61f411c',

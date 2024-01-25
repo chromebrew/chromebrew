@@ -8,13 +8,8 @@ class Gpm < Package
   compatibility 'all'
   source_url 'https://github.com/telmich/gpm/archive/e82d1a653ca94aa4ed12441424da6ce780b1e530.zip'
   source_sha256 'd3a693fde3eb1176fdcbee78768f18115e0b634c4ce29a3c3ccc953ba20e10bf'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpm/1.20.7-e82d_armv7l/gpm-1.20.7-e82d-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpm/1.20.7-e82d_armv7l/gpm-1.20.7-e82d-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpm/1.20.7-e82d_i686/gpm-1.20.7-e82d-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpm/1.20.7-e82d_x86_64/gpm-1.20.7-e82d-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '4a14aada6427aa44ca96c59b24efc36352e44b67037a3cc44b14a43c529d128a',
      armv7l: '4a14aada6427aa44ca96c59b24efc36352e44b67037a3cc44b14a43c529d128a',

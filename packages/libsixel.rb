@@ -11,13 +11,8 @@ class Libsixel < Package
   compatibility 'all'
   source_url 'https://github.com/libsixel/libsixel/archive/v1.10.3.tar.gz'
   source_sha256 '028552eb8f2a37c6effda88ee5e8f6d87b5d9601182ddec784a9728865f821e0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsixel/1.10.3_armv7l/libsixel-1.10.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsixel/1.10.3_armv7l/libsixel-1.10.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsixel/1.10.3_i686/libsixel-1.10.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsixel/1.10.3_x86_64/libsixel-1.10.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e6908061d6984a1ba7dcbe41eadeec82a71bf61bd7046a2f18123be69c8a675a',
      armv7l: 'e6908061d6984a1ba7dcbe41eadeec82a71bf61bd7046a2f18123be69c8a675a',

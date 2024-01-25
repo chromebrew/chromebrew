@@ -8,13 +8,8 @@ class Font_bitstream_75dpi < Package
   compatibility 'all'
   source_url 'https://www.x.org/releases/individual/font/font-bitstream-75dpi-1.0.3.tar.bz2'
   source_sha256 'ba3f5e4610c07bd5859881660753ec6d75d179f26fc967aa776dbb3d5d5cf48e'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_75dpi/1.0.3_armv7l/font_bitstream_75dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_75dpi/1.0.3_armv7l/font_bitstream_75dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_75dpi/1.0.3_i686/font_bitstream_75dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_75dpi/1.0.3_x86_64/font_bitstream_75dpi-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e5df678cc719b19dcb74ad1589a7d0044ba67f6df60ba72625f43fc0280304dc',
      armv7l: 'e5df678cc719b19dcb74ad1589a7d0044ba67f6df60ba72625f43fc0280304dc',

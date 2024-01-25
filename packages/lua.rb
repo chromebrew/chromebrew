@@ -13,13 +13,8 @@ class Lua < Package
   compatibility 'all'
   source_url 'https://www.lua.org/ftp/lua-5.4.6.tar.gz'
   source_sha256 '7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_armv7l/lua-5.4.6-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_armv7l/lua-5.4.6-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_i686/lua-5.4.6-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lua/5.4.6-1_x86_64/lua-5.4.6-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4bafd7a8d10d40b6f583568d210e2cfafc396cb37082cdacd9fcbf09ae5d7cf2',
      armv7l: '4bafd7a8d10d40b6f583568d210e2cfafc396cb37082cdacd9fcbf09ae5d7cf2',

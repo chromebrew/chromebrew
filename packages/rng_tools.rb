@@ -8,13 +8,8 @@ class Rng_tools < Package
   compatibility 'all'
   source_url 'https://github.com/nhorman/rng-tools/archive/v6.5.tar.gz'
   source_sha256 '5fecd904f7d01262b3209ff78dd3b9594aac8daa41badd5a1e6438658e80c36e'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_armv7l/rng_tools-6.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_i686/rng_tools-6.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rng_tools/6.5_x86_64/rng_tools-6.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd24c4b10672a24a8fee318a3eabe9f6124da04ffc8099243c88f30dddf29eb90',
      armv7l: 'd24c4b10672a24a8fee318a3eabe9f6124da04ffc8099243c88f30dddf29eb90',

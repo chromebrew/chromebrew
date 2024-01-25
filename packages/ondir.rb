@@ -8,13 +8,8 @@ class Ondir < Package
   compatibility 'all'
   source_url 'https://swapoff.org/files/ondir/ondir-0.2.2.tar.gz'
   source_sha256 '475fe7bd447756b4effde87c8aa67e063d805b775785b9f39858422dc244aef2'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ondir/0.2.2_armv7l/ondir-0.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ondir/0.2.2_armv7l/ondir-0.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ondir/0.2.2_i686/ondir-0.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ondir/0.2.2_x86_64/ondir-0.2.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd8b3ea69345a1a88511b5adf7005befa9c53a90c7df43e5a9be47ee4294faf6a',
      armv7l: 'd8b3ea69345a1a88511b5adf7005befa9c53a90c7df43e5a9be47ee4294faf6a',

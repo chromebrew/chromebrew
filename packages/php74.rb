@@ -8,13 +8,8 @@ class Php74 < Package
   compatibility 'all'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_armv7l/php74-7.4.33-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_armv7l/php74-7.4.33-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_i686/php74-7.4.33-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php74/7.4.33_x86_64/php74-7.4.33-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
      armv7l: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',

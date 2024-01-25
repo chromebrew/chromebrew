@@ -8,12 +8,8 @@ class Ghostscript < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10020/ghostpdl-10.02.0.tar.xz'
   source_sha256 'c158f3b5ade88227510a42652e0fe7b2aa48e123c1fd663cb03e3d87ca2db86a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.02.0_armv7l/ghostscript-10.02.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.02.0_armv7l/ghostscript-10.02.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ghostscript/10.02.0_x86_64/ghostscript-10.02.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',
      armv7l: 'd6788673f00998758405cc8aab3b29a0184c9abaf40c2177600f779ca5222c4a',

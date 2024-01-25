@@ -8,13 +8,8 @@ class Perl_clone < PERL
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.46.tar.gz'
   source_sha256 'aadeed5e4c8bd6bbdf68c0dd0066cb513e16ab9e5b4382dc4a0aafd55890697b'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_clone/0.46-perl5.38.2_armv7l/perl_clone-0.46-perl5.38.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_clone/0.46-perl5.38.2_armv7l/perl_clone-0.46-perl5.38.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_clone/0.46-perl5.38.2_i686/perl_clone-0.46-perl5.38.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_clone/0.46-perl5.38.2_x86_64/perl_clone-0.46-perl5.38.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e87ce66b56d1ac365fccd5e65771b904ee7ef0ed7d924774e0cf83578779a6b7',
      armv7l: 'e87ce66b56d1ac365fccd5e65771b904ee7ef0ed7d924774e0cf83578779a6b7',

@@ -9,13 +9,8 @@ class Librsync < Package
   compatibility 'all'
   source_url 'https://github.com/librsync/librsync.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_armv7l/librsync-2.3.2-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_armv7l/librsync-2.3.2-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_i686/librsync-2.3.2-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librsync/2.3.2-1_x86_64/librsync-2.3.2-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '28eec7479ef645f14297d3fc1d1db80bdf8d054ed78888ecd391f8804f2c0805',
      armv7l: '28eec7479ef645f14297d3fc1d1db80bdf8d054ed78888ecd391f8804f2c0805',

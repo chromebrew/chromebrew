@@ -8,13 +8,8 @@ class Cunit < Package
   license 'LGPL-2'
   source_url 'https://sourceforge.net/projects/cunit/files/CUnit/2.1-3/CUnit-2.1-3.tar.bz2'
   source_sha256 'f5b29137f845bb08b77ec60584fdb728b4e58f1023e6f249a464efa49a40f214'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cunit/2.1.3_armv7l/cunit-2.1.3-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cunit/2.1.3_armv7l/cunit-2.1.3-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cunit/2.1.3_i686/cunit-2.1.3-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cunit/2.1.3_x86_64/cunit-2.1.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'a956ac4488a0feeecc39cc924988975f91bac8358416ede01ec04dc8434a1a73',
       armv7l: 'a956ac4488a0feeecc39cc924988975f91bac8358416ede01ec04dc8434a1a73',

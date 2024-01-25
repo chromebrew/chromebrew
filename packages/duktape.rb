@@ -11,13 +11,8 @@ class Duktape < Package
   compatibility 'all'
   source_url "https://duktape.org/duktape-#{version}.tar.xz"
   source_sha256 '90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_armv7l/duktape-2.7.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_armv7l/duktape-2.7.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_i686/duktape-2.7.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duktape/2.7.0_x86_64/duktape-2.7.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9d20adb7b8948b3f8109de81c39ef477b3ec1d50fe7adde2ad6029d49f834bc7',
      armv7l: '9d20adb7b8948b3f8109de81c39ef477b3ec1d50fe7adde2ad6029d49f834bc7',

@@ -5,6 +5,7 @@ class Glibc_build223 < Package
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
+  binary_compression 'tar.zst'
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
@@ -20,9 +21,6 @@ class Glibc_build223 < Package
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.23.tar.xz'
   source_sha256 '94efeb00e4603c8546209cefb3e1a50a5315c86fa9b078b6fad758e187ce13e9'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.23-6_i686/glibc-2.23-6-chromeos-i686.tar.zst'
-  })
   binary_sha256({
     i686: 'f40aa662009999330bd1be1feb6c64efbe663a7a308973dc7c5a2b41c1faaf6b'
   })

@@ -8,13 +8,8 @@ class Py3_numpy < Pip
   license 'BSD'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.26.2-py3.12_armv7l/py3_numpy-1.26.2-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.26.2-py3.12_armv7l/py3_numpy-1.26.2-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.26.2-py3.12_i686/py3_numpy-1.26.2-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_numpy/1.26.2-py3.12_x86_64/py3_numpy-1.26.2-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9de2b4d3aa0824602344338db0a94c6665bc2b935a450cf8b68f92669fc56709',
      armv7l: '9de2b4d3aa0824602344338db0a94c6665bc2b935a450cf8b68f92669fc56709',

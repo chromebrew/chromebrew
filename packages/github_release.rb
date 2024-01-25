@@ -8,13 +8,8 @@ class Github_release < Package
   compatibility 'all'
   source_url 'https://github.com/aktau/github-release/archive/v0.7.2.tar.gz'
   source_sha256 '057d57b01cd45d0316e2d32b7593ff0f4bb493d4767b5701b21b54301d74ff48'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_release/0.7.2_armv7l/github_release-0.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_release/0.7.2_armv7l/github_release-0.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_release/0.7.2_i686/github_release-0.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/github_release/0.7.2_x86_64/github_release-0.7.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5877bb08e32cc5f7c53bddf4049a530d4ae277c991b3f38dec1def084c2ab212',
      armv7l: '5877bb08e32cc5f7c53bddf4049a530d4ae277c991b3f38dec1def084c2ab212',

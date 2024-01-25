@@ -8,13 +8,8 @@ class Libraw < Package
   compatibility 'all'
   source_url 'https://www.libraw.org/data/LibRaw-0.20.2.tar.gz'
   source_sha256 'dc1b486c2003435733043e4e05273477326e51c3ea554c6864a4eafaff1004a6'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_armv7l/libraw-0.20.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_armv7l/libraw-0.20.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_i686/libraw-0.20.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libraw/0.20.2_x86_64/libraw-0.20.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8c49ae291667a77b2656a9530f7aa3afcc5ba60849b421c122384c9be24fb80b',
      armv7l: '8c49ae291667a77b2656a9530f7aa3afcc5ba60849b421c122384c9be24fb80b',

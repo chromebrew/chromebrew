@@ -8,13 +8,8 @@ class Ca_certificates < Package
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/ca-certificates.git'
   git_hashtag '2c507f8c5aac8b50e35291739ffd40676ab08993'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20230311_armv7l/ca_certificates-20230311-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20230311_armv7l/ca_certificates-20230311-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20230311_i686/ca_certificates-20230311-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ca_certificates/20230311_x86_64/ca_certificates-20230311-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd2bdc9b48ea268489f2c3ef9ec7a1e2bdca4af60c355463a83bd66714d6cba72',
      armv7l: 'd2bdc9b48ea268489f2c3ef9ec7a1e2bdca4af60c355463a83bd66714d6cba72',

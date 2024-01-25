@@ -8,13 +8,8 @@ class Pagemon < Package
   compatibility 'all'
   source_url 'https://kernel.ubuntu.com/~cking/tarballs/pagemon/pagemon-0.01.10.tar.gz'
   source_sha256 '82c240b44b7000fc57355b366bfe28a47a4da857ddaea0ee0ade9d3eae037f54'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagemon/0.01.10_armv7l/pagemon-0.01.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagemon/0.01.10_armv7l/pagemon-0.01.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagemon/0.01.10_i686/pagemon-0.01.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagemon/0.01.10_x86_64/pagemon-0.01.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '83b518d6b28a899e94c40ed5cf23e4ddae10f67fcd10a2e9664d15f94d910f02',
      armv7l: '83b518d6b28a899e94c40ed5cf23e4ddae10f67fcd10a2e9664d15f94d910f02',

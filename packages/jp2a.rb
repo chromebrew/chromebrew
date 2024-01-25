@@ -8,13 +8,8 @@ class Jp2a < Autotools
   compatibility 'all'
   source_url 'https://github.com/Talinx/jp2a/releases/download/v1.1.1/jp2a-1.1.1.tar.bz2'
   source_sha256 '3b91f26f79eca4e963b1b1ae2473722a706bf642218f20bfe4ade5333aebb106'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.1-1_armv7l/jp2a-1.1.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.1-1_armv7l/jp2a-1.1.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.1-1_i686/jp2a-1.1.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jp2a/1.1.1-1_x86_64/jp2a-1.1.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9438a0ebd55061bcb22278bc446bd5b43923afd4bacd0850193dfd5f1886c702',
      armv7l: '9438a0ebd55061bcb22278bc446bd5b43923afd4bacd0850193dfd5f1886c702',

@@ -7,13 +7,8 @@ class Libcom_err < Package
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcom_err/1.1_armv7l/libcom_err-1.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcom_err/1.1_armv7l/libcom_err-1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcom_err/1.1_i686/libcom_err-1.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcom_err/1.1_x86_64/libcom_err-1.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '095f677281ab9607b311c2f20dc00155a6e028a9f092165931076368cfd86cee',
      armv7l: '095f677281ab9607b311c2f20dc00155a6e028a9f092165931076368cfd86cee',

@@ -8,13 +8,8 @@ class Libyuv < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/libyuv/libyuv.git'
   git_hashtag 'd47031c0d42efa8f10842e36f7b8135b52bcd3d0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_armv7l/libyuv-d47031c-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_armv7l/libyuv-d47031c-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_i686/libyuv-d47031c-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libyuv/d47031c_x86_64/libyuv-d47031c-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '18ea1ea4d78c74d225a5bf5a7ca1d4f188688907ce4603c5e63e28c32ea6f2bc',
      armv7l: '18ea1ea4d78c74d225a5bf5a7ca1d4f188688907ce4603c5e63e28c32ea6f2bc',

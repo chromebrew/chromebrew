@@ -8,13 +8,8 @@ class Doxygen < CMake
   compatibility 'all'
   source_url 'https://github.com/doxygen/doxygen.git'
   git_hashtag 'Release_1_10_0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.10.0_armv7l/doxygen-1.10.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.10.0_armv7l/doxygen-1.10.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.10.0_i686/doxygen-1.10.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/doxygen/1.10.0_x86_64/doxygen-1.10.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd5a9ea1719e0a44532bae613e98afd3d2b6430318ab06b4706a5e33d2170d762',
      armv7l: 'd5a9ea1719e0a44532bae613e98afd3d2b6430318ab06b4706a5e33d2170d762',

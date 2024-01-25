@@ -9,13 +9,8 @@ class Py3_pyicu < Python
   compatibility 'all'
   source_url 'https://gitlab.pyicu.org/main/pyicu.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.11-py3.12_armv7l/py3_pyicu-2.11-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.11-py3.12_armv7l/py3_pyicu-2.11-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.11-py3.12_i686/py3_pyicu-2.11-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pyicu/2.11-py3.12_x86_64/py3_pyicu-2.11-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd243b8816553c5445c02292bc1f54f3cc4cea42c44d8718f6ec52f1ceeacd147',
      armv7l: 'd243b8816553c5445c02292bc1f54f3cc4cea42c44d8718f6ec52f1ceeacd147',

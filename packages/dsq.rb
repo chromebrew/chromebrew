@@ -8,10 +8,8 @@ class Dsq < Package
   compatibility 'x86_64'
   source_url 'https://github.com/multiprocessio/dsq/archive/0.18.0.tar.gz'
   source_sha256 'b61a811646cbd383e5f98bb8d2fc16c41bdb229575d90e84daa645512ef042bb'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dsq/0.18.0_x86_64/dsq-0.18.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '8278c63305a72ecf2c5eb1343f15ed4e515cd12e79023352fc2c57a88370f763'
   })

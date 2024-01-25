@@ -8,12 +8,8 @@ class Libva < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/intel/libva.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.20.0_armv7l/libva-2.20.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.20.0_armv7l/libva-2.20.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libva/2.20.0_x86_64/libva-2.20.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dc7d16f80a0d856abc063d8a72eb0756ae6dbded238df15ca3c52341f2d7541d',
      armv7l: 'dc7d16f80a0d856abc063d8a72eb0756ae6dbded238df15ca3c52341f2d7541d',

@@ -8,13 +8,8 @@ class Moc < Package
   compatibility 'all'
   source_url 'http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.2.tar.bz2'
   source_sha256 'f3a68115602a4788b7cfa9bbe9397a9d5e24c68cb61a57695d1c2c3ecf49db08'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moc/2.5.2_armv7l/moc-2.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moc/2.5.2_armv7l/moc-2.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moc/2.5.2_i686/moc-2.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/moc/2.5.2_x86_64/moc-2.5.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'fd25d8ee963c5a4dc02b01d432ad69dfdea09f2ab05fa78da0d0e1fcf5fbc96d',
      armv7l: 'fd25d8ee963c5a4dc02b01d432ad69dfdea09f2ab05fa78da0d0e1fcf5fbc96d',

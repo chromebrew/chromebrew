@@ -9,13 +9,8 @@ class Wayland_info < Package
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland-utils.git'
   git_hashtag @_ver
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_info/1.1-3fec240_armv7l/wayland_info-1.1-3fec240-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_info/1.1-3fec240_armv7l/wayland_info-1.1-3fec240-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_info/1.1-3fec240_i686/wayland_info-1.1-3fec240-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wayland_info/1.1-3fec240_x86_64/wayland_info-1.1-3fec240-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '47fffcb289200ca6fadc3e03a6dc6f38aa411c03baa4c1e38186084a5c9fc0ff',
      armv7l: '47fffcb289200ca6fadc3e03a6dc6f38aa411c03baa4c1e38186084a5c9fc0ff',

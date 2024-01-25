@@ -8,13 +8,8 @@ class Zziplib < Package
   compatibility 'all'
   source_url 'https://github.com/gdraheim/zziplib/archive/refs/tags/v0.13.72.tar.gz'
   source_sha256 '93ef44bf1f1ea24fc66080426a469df82fa631d13ca3b2e4abaeab89538518dc'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zziplib/0.13.72_armv7l/zziplib-0.13.72-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zziplib/0.13.72_armv7l/zziplib-0.13.72-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zziplib/0.13.72_i686/zziplib-0.13.72-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zziplib/0.13.72_x86_64/zziplib-0.13.72-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2670ba6fa4866b63fd6e70070a169e530355ccc66938189ac9b679a2d9fb4f92',
      armv7l: '2670ba6fa4866b63fd6e70070a169e530355ccc66938189ac9b679a2d9fb4f92',

@@ -9,13 +9,8 @@ class Libatasmart < Package
   source_url 'http://git.0pointer.net/libatasmart.git'
   git_hashtag "v#{version}"
   git_branch 'master'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatasmart/0.19_armv7l/libatasmart-0.19-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatasmart/0.19_armv7l/libatasmart-0.19-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatasmart/0.19_i686/libatasmart-0.19-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatasmart/0.19_x86_64/libatasmart-0.19-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fa0524f0bfd1114bfd8f240b1d78c684f4d589c9e574de4ecbea5cc0d6a12970',
      armv7l: 'fa0524f0bfd1114bfd8f240b1d78c684f4d589c9e574de4ecbea5cc0d6a12970',

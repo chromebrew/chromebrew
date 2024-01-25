@@ -11,10 +11,8 @@ class Criu < Package
   compatibility 'x86_64'
   source_url 'https://github.com/checkpoint-restore/criu.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/criu/3.17.1_x86_64/criu-3.17.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '1f2d925e397b49970d38fa034cb71d9af0f8e159b9b34c0afd0d8f93e6fadf5c'
   })

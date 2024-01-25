@@ -8,13 +8,8 @@ class Elinks < Meson
   compatibility 'all'
   source_url 'https://github.com/rkd77/elinks.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.16.1.1_armv7l/elinks-0.16.1.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.16.1.1_armv7l/elinks-0.16.1.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.16.1.1_i686/elinks-0.16.1.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/elinks/0.16.1.1_x86_64/elinks-0.16.1.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e8672bf1e0e8532672bde9e64d129fdc6942580efab6296f794406edfe3c7b7d',
      armv7l: 'e8672bf1e0e8532672bde9e64d129fdc6942580efab6296f794406edfe3c7b7d',

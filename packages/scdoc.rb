@@ -10,13 +10,8 @@ class Scdoc < Package
   compatibility 'all'
   source_url "https://git.sr.ht/~sircmpwn/scdoc/archive/#{version}.tar.gz"
   source_sha256 'e9ff9981b5854301789a6778ee64ef1f6d1e5f4829a9dd3e58a9a63eacc2e6f0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scdoc/1.11.2_armv7l/scdoc-1.11.2-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scdoc/1.11.2_armv7l/scdoc-1.11.2-chromeos-armv7l.tar.zst',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scdoc/1.11.2_i686/scdoc-1.11.2-chromeos-i686.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scdoc/1.11.2_x86_64/scdoc-1.11.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
      aarch64: 'dcf77b6cae857f23bb42151fdc6c0d3155756c07d7710d286d9ef8e97414adf9',
       armv7l: 'dcf77b6cae857f23bb42151fdc6c0d3155756c07d7710d286d9ef8e97414adf9',

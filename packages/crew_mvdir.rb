@@ -8,13 +8,8 @@ class Crew_mvdir < Package
   compatibility 'all'
   source_url 'https://github.com/chromebrew/crew-mvdir.git'
   git_hashtag '0.2'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_armv7l/crew_mvdir-0.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_armv7l/crew_mvdir-0.2-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_i686/crew_mvdir-0.2-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/crew_mvdir/0.2-2_x86_64/crew_mvdir-0.2-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c6738e9eb4d6771c9349cbab24c5a0ff0802919e08931c979558bc0f2c33d719',
      armv7l: 'c6738e9eb4d6771c9349cbab24c5a0ff0802919e08931c979558bc0f2c33d719',

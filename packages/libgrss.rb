@@ -11,13 +11,8 @@ class Libgrss < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/libgrss/-/archive/ce58490680db02913f221cccd73a816eefd2e1f7/libgrss-ce58490680db02913f221cccd73a816eefd2e1f7.tar.bz2'
   source_sha256 '88eab96df1b2004c08f3b14beca038d13306518f3df18745e27788287038ea31'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgrss/0.7.0-ce58_armv7l/libgrss-0.7.0-ce58-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgrss/0.7.0-ce58_armv7l/libgrss-0.7.0-ce58-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgrss/0.7.0-ce58_i686/libgrss-0.7.0-ce58-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgrss/0.7.0-ce58_x86_64/libgrss-0.7.0-ce58-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3ec7ce667887023dd6766c726f8c054daafe58fe9003f4ac52203f73f956a743',
      armv7l: '3ec7ce667887023dd6766c726f8c054daafe58fe9003f4ac52203f73f956a743',

@@ -8,13 +8,8 @@ class Llvm_stage1 < Package
   compatibility 'all'
   source_url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/llvm-project-#{version}.src.tar.xz"
   source_sha256 '6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/13.0.0_armv7l/llvm_stage1-13.0.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/13.0.0_armv7l/llvm_stage1-13.0.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/13.0.0_i686/llvm_stage1-13.0.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm_stage1/13.0.0_x86_64/llvm_stage1-13.0.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '471ccebb72765a304bc8a1097e144b16d33e1fbbef5dd27fa4ed43530aaf2ee8',
      armv7l: '471ccebb72765a304bc8a1097e144b16d33e1fbbef5dd27fa4ed43530aaf2ee8',

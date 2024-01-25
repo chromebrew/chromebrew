@@ -8,13 +8,8 @@ class Icon_naming_utils < Package
   compatibility 'all'
   source_url 'https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/icon-naming-utils/0.8.90-2/icon-naming-utils_0.8.90.orig.tar.gz'
   source_sha256 '044ab2199ed8c6a55ce36fd4fcd8b8021a5e21f5bab028c0a7cdcf52a5902e1c'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icon_naming_utils/0.8.90_armv7l/icon_naming_utils-0.8.90-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icon_naming_utils/0.8.90_armv7l/icon_naming_utils-0.8.90-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icon_naming_utils/0.8.90_i686/icon_naming_utils-0.8.90-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icon_naming_utils/0.8.90_x86_64/icon_naming_utils-0.8.90-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7fce9929e3b4b040a53ae826ca30a36aac334ce4a4b8cfa2d31b105be7fa70a3',
      armv7l: '7fce9929e3b4b040a53ae826ca30a36aac334ce4a4b8cfa2d31b105be7fa70a3',

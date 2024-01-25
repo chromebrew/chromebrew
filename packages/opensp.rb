@@ -8,13 +8,8 @@ class Opensp < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/openjade/opensp/1.5.2/OpenSP-1.5.2.tar.gz'
   source_sha256 '57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opensp/1.5.2_armv7l/opensp-1.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opensp/1.5.2_armv7l/opensp-1.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opensp/1.5.2_i686/opensp-1.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opensp/1.5.2_x86_64/opensp-1.5.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '96b7be4dfbf6a31a3b06f6e0675267e595f58cd235f46c4b5726edb55b835360',
      armv7l: '96b7be4dfbf6a31a3b06f6e0675267e595f58cd235f46c4b5726edb55b835360',

@@ -8,13 +8,8 @@ class Mailutils < Package
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/mailutils/mailutils-3.13.tar.xz'
   source_sha256 'd920971dcb49878a009911774fd6404f13d27bd101e2d59b664a28659a4094c7'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.13_armv7l/mailutils-3.13-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.13_armv7l/mailutils-3.13-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.13_i686/mailutils-3.13-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mailutils/3.13_x86_64/mailutils-3.13-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'ad6e2116b39db4db712d59caddf7a70bfe0cb1e206d595af4011eaac29d4136a',
      armv7l: 'ad6e2116b39db4db712d59caddf7a70bfe0cb1e206d595af4011eaac29d4136a',

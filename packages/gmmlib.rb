@@ -8,10 +8,8 @@ class Gmmlib < Package
   compatibility 'x86_64'
   source_url 'https://github.com/intel/gmmlib.git'
   git_hashtag "intel-gmmlib-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gmmlib/22.3.3_x86_64/gmmlib-22.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '73746485904173970cd608975011f0c91628ebdd5c68d09fd615d27327da27da'
   })

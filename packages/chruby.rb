@@ -8,13 +8,8 @@ class Chruby < Package
   compatibility 'all'
   source_url 'https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz'
   source_sha256 '7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chruby/0.3.9-1_armv7l/chruby-0.3.9-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chruby/0.3.9-1_armv7l/chruby-0.3.9-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chruby/0.3.9-1_i686/chruby-0.3.9-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chruby/0.3.9-1_x86_64/chruby-0.3.9-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7815a4b47a82634d0a68f89d1bfe8b66f413ce68665696101032f1fb81531ee3',
      armv7l: '7815a4b47a82634d0a68f89d1bfe8b66f413ce68665696101032f1fb81531ee3',

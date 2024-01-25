@@ -8,13 +8,8 @@ class Perl_xml_sax_base < Package
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GR/GRANTM/XML-SAX-Base-1.09.tar.gz'
   source_sha256 '66cb355ba4ef47c10ca738bd35999723644386ac853abbeb5132841f5e8a2ad0'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_armv7l/perl_xml_sax_base-1.09-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_armv7l/perl_xml_sax_base-1.09-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_i686/perl_xml_sax_base-1.09-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_sax_base/1.09-perl5.38_x86_64/perl_xml_sax_base-1.09-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '34d6dbaf878b083e623a523cb7a525405ea194a836cc5ca449c9f940de79ddd2',
      armv7l: '34d6dbaf878b083e623a523cb7a525405ea194a836cc5ca449c9f940de79ddd2',

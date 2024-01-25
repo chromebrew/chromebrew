@@ -8,13 +8,8 @@ class F2fs_tools < Package
   compatibility 'all'
   source_url "https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-#{version}.tar.gz"
   source_sha256 '619263d4e2022152a1472c1d912eaae104f20bd227ce0bb9d41d1d6608094bd1'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/f2fs_tools/1.14.0_armv7l/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/f2fs_tools/1.14.0_armv7l/f2fs_tools-1.14.0-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/f2fs_tools/1.14.0_i686/f2fs_tools-1.14.0-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/f2fs_tools/1.14.0_x86_64/f2fs_tools-1.14.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',
       armv7l: '68b0d173285b156e90e7b8ef1283c0ce5b3b6b7273161baa7db8dc6a331d4e4a',

@@ -8,13 +8,8 @@ class Gnome_calculator < Package
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/43.0.1_armv7l/gnome_calculator-43.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/43.0.1_armv7l/gnome_calculator-43.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/43.0.1_i686/gnome_calculator-43.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_calculator/43.0.1_x86_64/gnome_calculator-43.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a6e5f0667f8ab02634ee3ff321155dc92dac7a974f9e20c4e9aa3c2c34dd1994',
      armv7l: 'a6e5f0667f8ab02634ee3ff321155dc92dac7a974f9e20c4e9aa3c2c34dd1994',

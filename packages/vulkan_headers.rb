@@ -8,12 +8,8 @@ class Vulkan_headers < CMake
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/Vulkan-Headers.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.275_armv7l/vulkan_headers-1.3.275-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.275_armv7l/vulkan_headers-1.3.275-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_headers/1.3.275_x86_64/vulkan_headers-1.3.275-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4851f37ec409578b77499eb90dc0ba9676dc0c19f19d2427d19f6fc806070eaf',
      armv7l: '4851f37ec409578b77499eb90dc0ba9676dc0c19f19d2427d19f6fc806070eaf',

@@ -8,13 +8,8 @@ class Chrpath < Package
   compatibility 'all'
   source_url 'https://httpredir.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz'
   source_sha256 'bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_armv7l/chrpath-0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_armv7l/chrpath-0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_i686/chrpath-0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chrpath/0.16_x86_64/chrpath-0.16-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '90a116020875ffc085d1da9352d6fadb08cedf5e50e73b296380e00d061d82f1',
      armv7l: '90a116020875ffc085d1da9352d6fadb08cedf5e50e73b296380e00d061d82f1',

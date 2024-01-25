@@ -8,13 +8,8 @@ class Xmlstarlet < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/xmlstar/xmlstarlet/1.6.1/xmlstarlet-1.6.1.tar.gz'
   source_sha256 '15d838c4f3375332fd95554619179b69e4ec91418a3a5296e7c631b7ed19e7ca'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlstarlet/1.6.1_armv7l/xmlstarlet-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlstarlet/1.6.1_armv7l/xmlstarlet-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlstarlet/1.6.1_i686/xmlstarlet-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlstarlet/1.6.1_x86_64/xmlstarlet-1.6.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c8cf483394228f94ee8c592285ed257e5b62aa839bb9ad901da0a6efbfa3b534',
      armv7l: 'c8cf483394228f94ee8c592285ed257e5b62aa839bb9ad901da0a6efbfa3b534',

@@ -8,13 +8,8 @@ class Mc < Autotools
   compatibility 'all'
   source_url 'https://github.com/MidnightCommander/mc.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_armv7l/mc-4.8.30-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_armv7l/mc-4.8.30-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_i686/mc-4.8.30-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mc/4.8.30_x86_64/mc-4.8.30-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a3f46f94869391c4f9ce09490972e9a7fdfd7d67f6b6b15fa2bcf667b2dc765c',
      armv7l: 'a3f46f94869391c4f9ce09490972e9a7fdfd7d67f6b6b15fa2bcf667b2dc765c',

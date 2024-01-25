@@ -8,13 +8,8 @@ class Aircrack_ng < Package
   compatibility 'all'
   source_url 'https://github.com/aircrack-ng/aircrack-ng/archive/17f971cebdaeea0c86e338bde09a52787fcd6d9c.zip'
   source_sha256 'd6dc9078f2ab56671f8fb707aa5ddbbec36d1a732cc7ad9a3d2803a5dbbaae5b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_armv7l/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_armv7l/aircrack_ng-1.6-17f9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_i686/aircrack_ng-1.6-17f9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aircrack_ng/1.6-17f9_x86_64/aircrack_ng-1.6-17f9-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5e48972faf181388c35a818ecfd5057b384752e82aab190376acbf838be7ee88',
      armv7l: '5e48972faf181388c35a818ecfd5057b384752e82aab190376acbf838be7ee88',

@@ -8,13 +8,8 @@ class Opencl_headers < Package
   compatibility 'all'
   source_url 'https://github.com/KhronosGroup/OpenCL-Headers.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opencl_headers/2022.09.30_armv7l/opencl_headers-2022.09.30-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opencl_headers/2022.09.30_armv7l/opencl_headers-2022.09.30-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opencl_headers/2022.09.30_i686/opencl_headers-2022.09.30-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opencl_headers/2022.09.30_x86_64/opencl_headers-2022.09.30-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '68ea6d940a1d947e20f199406ba7ba9ff3bcbfe339a909d05eb1e2ec3b1a7f52',
      armv7l: '68ea6d940a1d947e20f199406ba7ba9ff3bcbfe339a909d05eb1e2ec3b1a7f52',

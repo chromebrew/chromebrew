@@ -8,13 +8,8 @@ class Berry < Package
   compatibility 'all'
   source_url 'https://github.com/JLErvin/berry/archive/0.1.5.tar.gz'
   source_sha256 '3d2fa52aeba6ed05d3cc0e8308604c5a83e94a8623f3e66ed53fd5e0fdabfabf'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_armv7l/berry-0.1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_armv7l/berry-0.1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_i686/berry-0.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/berry/0.1.5_x86_64/berry-0.1.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cec62b31daf5040990846378b214c0856b590a9cf84873cb5f44c67a90382bc1',
      armv7l: 'cec62b31daf5040990846378b214c0856b590a9cf84873cb5f44c67a90382bc1',

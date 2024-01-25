@@ -11,13 +11,8 @@ class Asunder < Package
   compatibility 'all'
   source_url 'https://littlesvr.ca/asunder/releases/asunder-2.9.7.tar.bz2'
   source_sha256 'c1c97cd34c04b8595e95df8a9a7dbc64a1e61f494b7a0cd2873802ad111874f4'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asunder/2.9.7_armv7l/asunder-2.9.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asunder/2.9.7_armv7l/asunder-2.9.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asunder/2.9.7_i686/asunder-2.9.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asunder/2.9.7_x86_64/asunder-2.9.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4c004dfe3a8287cdb7f422bd808f7cead56bfaa496ec915e5dcb0f2816dad742',
      armv7l: '4c004dfe3a8287cdb7f422bd808f7cead56bfaa496ec915e5dcb0f2816dad742',

@@ -8,13 +8,8 @@ class Xcb_util_renderutil < Package
   license 'MIT-with-advertising'
   source_url 'https://xcb.freedesktop.org/dist/xcb-util-renderutil-0.3.9.tar.bz2'
   source_sha256 'c6e97e48fb1286d6394dddb1c1732f00227c70bd1bedb7d1acabefdd340bea5b'
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9-1_armv7l/xcb_util_renderutil-0.3.9-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9-1_armv7l/xcb_util_renderutil-0.3.9-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9-1_i686/xcb_util_renderutil-0.3.9-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_renderutil/0.3.9-1_x86_64/xcb_util_renderutil-0.3.9-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '1129f723592633bc655e902f5a8715294fbb16b68de40e9113735cf1f24dc618',
      armv7l: '1129f723592633bc655e902f5a8715294fbb16b68de40e9113735cf1f24dc618',

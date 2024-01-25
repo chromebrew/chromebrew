@@ -8,13 +8,8 @@ class Gnome_docking_library < Package
   compatibility 'all'
   source_url 'https://github.com/GNOME/gdl/archive/GDL_3_28_0.tar.gz'
   source_sha256 '14e4691026eb459ce1f65addce706eed1b2f61ef48fd6e59d72509337e87d14b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_docking_library/3.28.0-0_armv7l/gnome_docking_library-3.28.0-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_docking_library/3.28.0-0_armv7l/gnome_docking_library-3.28.0-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_docking_library/3.28.0-0_i686/gnome_docking_library-3.28.0-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_docking_library/3.28.0-0_x86_64/gnome_docking_library-3.28.0-0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '666e943121c47a202f5de8800c00226b917dbbbe75d0ba8b9dacba68f0f9ad41',
      armv7l: '666e943121c47a202f5de8800c00226b917dbbbe75d0ba8b9dacba68f0f9ad41',

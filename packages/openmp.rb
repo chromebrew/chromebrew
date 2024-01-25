@@ -14,13 +14,8 @@ class Openmp < Package
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag Llvm17_build.git_hashtag.to_s
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.6_armv7l/openmp-17.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.6_armv7l/openmp-17.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.6_i686/openmp-17.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openmp/17.0.6_x86_64/openmp-17.0.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a5b6873f2ef62d4fbebd507431f8389fd6fb63c0d04aa0236cd195f8f187957b',
      armv7l: 'a5b6873f2ef62d4fbebd507431f8389fd6fb63c0d04aa0236cd195f8f187957b',

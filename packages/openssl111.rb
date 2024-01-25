@@ -8,13 +8,8 @@ class Openssl111 < Package
   compatibility 'all'
   source_url "https://www.openssl.org/source/openssl-#{version}.tar.gz"
   source_sha256 'cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_armv7l/openssl111-1.1.1w-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_armv7l/openssl111-1.1.1w-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_i686/openssl111-1.1.1w-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssl111/1.1.1w_x86_64/openssl111-1.1.1w-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '650209f527994f5c8bd57d1f2b5c42174d66472ca2a40116f66a043bd6e4c046',
      armv7l: '650209f527994f5c8bd57d1f2b5c42174d66472ca2a40116f66a043bd6e4c046',

@@ -8,13 +8,8 @@ class Lvm2 < Autotools
   compatibility 'all'
   source_url 'https://mirrors.kernel.org/sourceware/lvm2/LVM2.2.03.23.tgz'
   source_sha256 '74e794a9e9dee1bcf8a2065f65b9196c44fdf321e22d63b98ed7de8c9aa17a5d'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.23_armv7l/lvm2-2.03.23-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.23_armv7l/lvm2-2.03.23-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.23_i686/lvm2-2.03.23-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lvm2/2.03.23_x86_64/lvm2-2.03.23-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9354ed80514c7cbedea66c76806d8de49b0b5e55960ac1e44a7f97446844344c',
      armv7l: '9354ed80514c7cbedea66c76806d8de49b0b5e55960ac1e44a7f97446844344c',

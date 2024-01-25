@@ -11,13 +11,8 @@ class Netavark < Package
   compatibility 'all'
   source_url 'https://github.com/containers/netavark.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netavark/1.0.1_armv7l/netavark-1.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netavark/1.0.1_armv7l/netavark-1.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netavark/1.0.1_i686/netavark-1.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netavark/1.0.1_x86_64/netavark-1.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5278c97de9d0e0d550d74e59bcda1250789a02f111dd2c5ab6ac6661d1a3d8dc',
      armv7l: '5278c97de9d0e0d550d74e59bcda1250789a02f111dd2c5ab6ac6661d1a3d8dc',

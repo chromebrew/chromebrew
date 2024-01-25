@@ -8,13 +8,8 @@ class Finch < Package
   compatibility 'all'
   source_url 'https://downloads.sourceforge.net/project/pidgin/Pidgin/2.12.0/pidgin-2.12.0.tar.bz2'
   source_sha256 '8c3d3536d6d3c971bd433ff9946678af70a0f6aa4e6969cc2a83bb357015b7f8'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/finch/2.12.0-1_armv7l/finch-2.12.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/finch/2.12.0-1_armv7l/finch-2.12.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/finch/2.12.0-1_i686/finch-2.12.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/finch/2.12.0-1_x86_64/finch-2.12.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'db49b25683a033caaf3b228d9766a5e1718b9caee8a05e1ac87107eb43e96138',
      armv7l: 'db49b25683a033caaf3b228d9766a5e1718b9caee8a05e1ac87107eb43e96138',

@@ -14,11 +14,8 @@ class Cf < Package
     source_url 'https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.53.0/cf-cli_6.53.0_linux_x86-64.tgz'
     source_sha256 '09664d1469fb8a0ddba804343121aba7d8f64ba6bfde75a53f6e29d6600b2342'
   end
+  binary_compression 'tar.xz'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_i686/cf-6.53.0-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cf/6.53.0_x86_64/cf-6.53.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     i686: 'bd74201bfadd439ea2e65827c8c6ff725bbd70a7931efe90e6f97b4628e10b8e',
     x86_64: '1607f02390272191a8a0c393a9a5a9cf5389df774e158bd2cb669b0edd5c3570'

@@ -9,13 +9,8 @@ class Docbook_xsl < Package
   compatibility 'all'
   source_url "https://github.com/docbook/xslt10-stylesheets/releases/download/release/#{@_ver}/docbook-xsl-#{@_ver}.zip"
   source_sha256 '853dce096f5b32fe0b157d8018d8fecf92022e9c79b5947a98b365679c7e31d7'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_armv7l/docbook_xsl-1.79.2-4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_armv7l/docbook_xsl-1.79.2-4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_i686/docbook_xsl-1.79.2-4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl/1.79.2-4_x86_64/docbook_xsl-1.79.2-4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '73221262b792d4e3539f9e5916b4b9d6213f2c396b04fca17932705d90ae9c75',
      armv7l: '73221262b792d4e3539f9e5916b4b9d6213f2c396b04fca17932705d90ae9c75',

@@ -8,13 +8,8 @@ class Btrfsprogs < Package
   compatibility 'all'
   source_url 'https://github.com/kdave/btrfs-progs/archive/v5.10.1.tar.gz'
   source_sha256 '69788461f7076951f7235b87d0a5615683151dfbfaaa93f645279bf757e85769'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_armv7l/btrfsprogs-6.1.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_armv7l/btrfsprogs-6.1.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_i686/btrfsprogs-6.1.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btrfsprogs/6.1.2_x86_64/btrfsprogs-6.1.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '30b25d3fa711ffe7a814c779831d81a2330fbfa8d7c755f4e4ae2d7a285a9de2',
      armv7l: '30b25d3fa711ffe7a814c779831d81a2330fbfa8d7c755f4e4ae2d7a285a9de2',

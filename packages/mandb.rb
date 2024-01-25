@@ -8,13 +8,8 @@ class Mandb < Package
   compatibility 'all'
   source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.12.0.tar.xz'
   source_sha256 '415a6284a22764ad22ff0f66710d853be7790dd451cd71436e3d25c74d996a95'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_armv7l/mandb-2.12.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_armv7l/mandb-2.12.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_i686/mandb-2.12.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandb/2.12.0_x86_64/mandb-2.12.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0a555f1b940b9404ac8116f01f247fe0f6740348e472912ce93353eb82541da3',
      armv7l: '0a555f1b940b9404ac8116f01f247fe0f6740348e472912ce93353eb82541da3',

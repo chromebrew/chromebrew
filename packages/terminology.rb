@@ -8,13 +8,8 @@ class Terminology < Package
   compatibility 'all'
   source_url 'https://download.enlightenment.org/rel/apps/terminology/terminology-1.8.0.tar.xz'
   source_sha256 'c6f5b003412f25507277702cabe1a11d7190971343c1d6030aa7d3fe5b45765f'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/terminology/1.8.0_armv7l/terminology-1.8.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/terminology/1.8.0_armv7l/terminology-1.8.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/terminology/1.8.0_i686/terminology-1.8.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/terminology/1.8.0_x86_64/terminology-1.8.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'be229db30e4c8c423bd89adb118e1e3d7958fe718ca5ecc149bfc395939b0523',
      armv7l: 'be229db30e4c8c423bd89adb118e1e3d7958fe718ca5ecc149bfc395939b0523',

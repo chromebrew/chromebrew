@@ -5,6 +5,7 @@ class Glibc_build232 < Package
   homepage 'https://www.gnu.org/software/libc/'
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
+  binary_compression 'tar.zst'
 
   depends_on 'gawk' => :build
   depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
@@ -20,11 +21,6 @@ class Glibc_build232 < Package
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
   source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build232/2.32-3_armv7l/glibc_build232-2.32-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build232/2.32-3_armv7l/glibc_build232-2.32-3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build232/2.32-3_x86_64/glibc_build232-2.32-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
      armv7l: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
@@ -319,7 +315,7 @@ class Glibc_build232 < Package
     # This is the array of locales to save:
     @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
     @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build.filelist")
+    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build232.filelist")
     @localedirs.each do |localedir|
       Dir.chdir localedir do
         Dir['*'].each do |f|
@@ -332,7 +328,7 @@ class Glibc_build232 < Package
       end
     end
     puts 'Updating glibc package filelist...'.lightblue
-    File.open("#{CREW_META_PATH}/glibc_build.filelist", 'w+') do |f|
+    File.open("#{CREW_META_PATH}/glibc_build232.filelist", 'w+') do |f|
       f.puts(@filelist)
     end
   end

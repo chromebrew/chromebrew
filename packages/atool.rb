@@ -8,13 +8,8 @@ class Atool < Package
   compatibility 'all'
   source_url 'http://download.savannah.gnu.org/releases/atool/atool-0.39.0.tar.gz'
   source_sha256 'aaf60095884abb872e25f8e919a8a63d0dabaeca46faeba87d12812d6efc703b'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_armv7l/atool-0.39-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_armv7l/atool-0.39-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_i686/atool-0.39-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atool/0.39_x86_64/atool-0.39-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '10d316dddae76dbb595c8ab0f5cf1486d40f18f6c20c151b46c614313a6fc822',
      armv7l: '10d316dddae76dbb595c8ab0f5cf1486d40f18f6c20c151b46c614313a6fc822',

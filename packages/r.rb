@@ -8,12 +8,8 @@ class R < Autotools
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cran.r-project.org/src/base/R-4/R-4.3.2.tar.gz'
   source_sha256 'b3f5760ac2eee8026a3f0eefcb25b47723d978038eee8e844762094c860c452a'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.3.2_armv7l/r-4.3.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.3.2_armv7l/r-4.3.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/r/4.3.2_x86_64/r-4.3.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd6907d92580d0ca488c5dcfc7c274b09aed94d3fd1ff500442f7101616c1cf6d',
      armv7l: 'd6907d92580d0ca488c5dcfc7c274b09aed94d3fd1ff500442f7101616c1cf6d',

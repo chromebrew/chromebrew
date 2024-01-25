@@ -8,13 +8,8 @@ class Libsdl < Package
   compatibility 'all'
   source_url 'http://www.libsdl.org/release/SDL-1.2.15.tar.gz'
   source_sha256 'd6d316a793e5e348155f0dd93b979798933fb98aa1edebcc108829d6474aad00'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_armv7l/libsdl-1.2.15-4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_armv7l/libsdl-1.2.15-4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_i686/libsdl-1.2.15-4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsdl/1.2.15-4_x86_64/libsdl-1.2.15-4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0875d5715c39505b6c07a04ea267d233df122fb0f2179c09b700b31817e9d4c6',
      armv7l: '0875d5715c39505b6c07a04ea267d233df122fb0f2179c09b700b31817e9d4c6',

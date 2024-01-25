@@ -8,13 +8,8 @@ class Pygtk < Package
   compatibility 'all'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2'
   source_sha256 'cd1c1ea265bd63ff669e92a2d3c2a88eb26bcd9e5363e0f82c896e649f206912'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygtk/2.24.0_armv7l/pygtk-2.24.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygtk/2.24.0_armv7l/pygtk-2.24.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygtk/2.24.0_i686/pygtk-2.24.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygtk/2.24.0_x86_64/pygtk-2.24.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8860c0568f4a0c0ebc653d1225e4e110876462711df525ee2a9a59439d242030',
      armv7l: '8860c0568f4a0c0ebc653d1225e4e110876462711df525ee2a9a59439d242030',

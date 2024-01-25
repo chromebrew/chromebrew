@@ -8,13 +8,8 @@ class Libmrss < Package
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/libmrss/-/archive/debian/0.19.2-7/libmrss-debian-0.19.2-7.tar.bz2'
   source_sha256 'cc3b466fa376d9fa54644268957437ce525fc336926180fda4e831af019767a6'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_armv7l/libmrss-0.19.2-7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_armv7l/libmrss-0.19.2-7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_i686/libmrss-0.19.2-7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmrss/0.19.2-7_x86_64/libmrss-0.19.2-7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8536ff6ee637e13f466d73afcf6806e01742df9d8ffff07120bd03fc892728a4',
      armv7l: '8536ff6ee637e13f466d73afcf6806e01742df9d8ffff07120bd03fc892728a4',

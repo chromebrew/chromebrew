@@ -8,13 +8,8 @@ class Glfw < Package
   compatibility 'all'
   source_url 'https://github.com/glfw/glfw/releases/download/3.3.2/glfw-3.3.2.zip'
   source_sha256 '08a33a512f29d7dbf78eab39bd7858576adcc95228c9efe8e4bc5f0f3261efc7'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glfw/3.3.2_armv7l/glfw-3.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glfw/3.3.2_armv7l/glfw-3.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glfw/3.3.2_i686/glfw-3.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glfw/3.3.2_x86_64/glfw-3.3.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '375586eebe407a72dd6e819c236c75d45cdb6af2fb284452d92767ec0586a031',
      armv7l: '375586eebe407a72dd6e819c236c75d45cdb6af2fb284452d92767ec0586a031',

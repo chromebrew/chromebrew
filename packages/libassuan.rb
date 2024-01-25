@@ -8,13 +8,8 @@ class Libassuan < Package
   compatibility 'all'
   source_url "https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-#{version}.tar.bz2"
   source_sha256 '8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4'
+  binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libassuan/2.5.5_armv7l/libassuan-2.5.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libassuan/2.5.5_armv7l/libassuan-2.5.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libassuan/2.5.5_i686/libassuan-2.5.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libassuan/2.5.5_x86_64/libassuan-2.5.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',
      armv7l: '853b20547fd035aa2b8e8e3653cfbbd1adc70f6b1f453a41776fa4799519a4d5',

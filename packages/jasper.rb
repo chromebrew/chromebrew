@@ -8,13 +8,8 @@ class Jasper < Package
   compatibility 'all'
   source_url 'https://github.com/jasper-software/jasper.git'
   git_hashtag "version-#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_armv7l/jasper-3.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_armv7l/jasper-3.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_i686/jasper-3.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jasper/3.0.6_x86_64/jasper-3.0.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
      armv7l: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',

@@ -8,13 +8,8 @@ class Wpebackend_fdo < Package
   compatibility 'all'
   source_url "https://github.com/Igalia/WPEBackend-fdo/releases/download/#{version}/wpebackend-fdo-#{version}.tar.xz"
   source_sha256 'e75b0cb2c7145448416e8696013d8883f675c66c11ed750e06865efec5809155'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.14.0_armv7l/wpebackend_fdo-1.14.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.14.0_armv7l/wpebackend_fdo-1.14.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.14.0_i686/wpebackend_fdo-1.14.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wpebackend_fdo/1.14.0_x86_64/wpebackend_fdo-1.14.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8bf04acd2a0086a4dfd8376829577d00de7366cd4304383d65bf2226d05449de',
      armv7l: '8bf04acd2a0086a4dfd8376829577d00de7366cd4304383d65bf2226d05449de',

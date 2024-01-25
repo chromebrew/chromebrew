@@ -11,13 +11,8 @@ class Catatonit < Package
   compatibility 'all'
   source_url 'https://github.com/openSUSE/catatonit.git'
   git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/catatonit/0.1.7_armv7l/catatonit-0.1.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/catatonit/0.1.7_armv7l/catatonit-0.1.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/catatonit/0.1.7_i686/catatonit-0.1.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/catatonit/0.1.7_x86_64/catatonit-0.1.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e53312d2dfe70cb4983c842faa39bbfbec1482057669e98d2a3920203182c944',
      armv7l: 'e53312d2dfe70cb4983c842faa39bbfbec1482057669e98d2a3920203182c944',

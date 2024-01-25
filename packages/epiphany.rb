@@ -11,12 +11,8 @@ class Epiphany < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/epiphany.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/43.1_armv7l/epiphany-43.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/43.1_armv7l/epiphany-43.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/epiphany/43.1_x86_64/epiphany-43.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'edbfc2a6ef0097b8ffbb55bd8696a996c9ea148281aba325c0d2534425a53d77',
      armv7l: 'edbfc2a6ef0097b8ffbb55bd8696a996c9ea148281aba325c0d2534425a53d77',

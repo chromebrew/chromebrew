@@ -8,13 +8,8 @@ class V4l_utils < Package
   compatibility 'all'
   source_url "https://linuxtv.org/downloads/v4l-utils/v4l-utils-#{version}.tar.bz2"
   source_sha256 '65c6fbe830a44ca105c443b027182c1b2c9053a91d1e72ad849dfab388b94e31'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/v4l_utils/1.22.1_armv7l/v4l_utils-1.22.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/v4l_utils/1.22.1_armv7l/v4l_utils-1.22.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/v4l_utils/1.22.1_i686/v4l_utils-1.22.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/v4l_utils/1.22.1_x86_64/v4l_utils-1.22.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '99bfc727cc7dc8669f57e981f8659e8278007e61c9425101f5ea6d27e3d9c2b1',
      armv7l: '99bfc727cc7dc8669f57e981f8659e8278007e61c9425101f5ea6d27e3d9c2b1',

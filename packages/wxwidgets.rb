@@ -9,12 +9,8 @@ class Wxwidgets < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/wxWidgets/wxWidgets.git'
   git_hashtag "v#{@_ver}"
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.3-rc1_armv7l/wxwidgets-3.2.3-rc1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.3-rc1_armv7l/wxwidgets-3.2.3-rc1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wxwidgets/3.2.3-rc1_x86_64/wxwidgets-3.2.3-rc1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8968dafc0c235cdf0bc0bb56d3a4f0e28f60bbf5b3f5f1de4e60c1bc3059c235',
      armv7l: '8968dafc0c235cdf0bc0bb56d3a4f0e28f60bbf5b3f5f1de4e60c1bc3059c235',

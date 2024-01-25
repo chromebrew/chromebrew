@@ -11,12 +11,8 @@ class Evince < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
   git_hashtag version
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/44.rc_armv7l/evince-44.rc-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/44.rc_armv7l/evince-44.rc-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/evince/44.rc_x86_64/evince-44.rc-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a7817e8a1cea35f9c82bbf282cfe108354161ec37a709d03007bae083dbebd61',
      armv7l: 'a7817e8a1cea35f9c82bbf282cfe108354161ec37a709d03007bae083dbebd61',

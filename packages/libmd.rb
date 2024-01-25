@@ -8,13 +8,8 @@ class Libmd < Package
   compatibility 'all'
   source_url 'https://git.hadrons.org/git/libmd.git'
   git_hashtag version
+  binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmd/1.0.4_armv7l/libmd-1.0.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmd/1.0.4_armv7l/libmd-1.0.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmd/1.0.4_i686/libmd-1.0.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmd/1.0.4_x86_64/libmd-1.0.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'd7f7fb355eeffac5bed6e547812810e56b722663262e8059048e3e66da1610b4',
      armv7l: 'd7f7fb355eeffac5bed6e547812810e56b722663262e8059048e3e66da1610b4',

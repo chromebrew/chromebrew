@@ -8,6 +8,7 @@ class Zathura < Meson
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://pwmt.org/projects/zathura/download/zathura-0.5.2.tar.xz'
   source_sha256 'c64ba7cb9facf2b1499b9dc929b6736c72c69f8062eed4f2940556c852256194'
+  binary_compression 'tar.zst'
 
   depends_on 'appstream_glib'
   depends_on 'desktop_file_utilities'
@@ -16,11 +17,6 @@ class Zathura < Meson
   depends_on 'libseccomp'
   depends_on 'zathura_poppler_pdf'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura/0.5.2_armv7l/zathura-0.5.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura/0.5.2_armv7l/zathura-0.5.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zathura/0.5.2_x86_64/zathura-0.5.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3cfbee5522f48b4f99d62d0c4f559320881012812b0f879e0592edf9b3fb608a',
      armv7l: '3cfbee5522f48b4f99d62d0c4f559320881012812b0f879e0592edf9b3fb608a',

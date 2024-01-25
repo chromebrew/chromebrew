@@ -8,13 +8,8 @@ class Bzip2 < Package
   compatibility 'all'
   source_url 'https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz'
   source_sha256 'ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269'
+  binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_armv7l/bzip2-1.0.8-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_armv7l/bzip2-1.0.8-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_i686/bzip2-1.0.8-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bzip2/1.0.8-2_x86_64/bzip2-1.0.8-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5e4818a8ab4fbb31e0205cbf9fa8f919af3ab2216093a9c5c15416620d24089c',
      armv7l: '5e4818a8ab4fbb31e0205cbf9fa8f919af3ab2216093a9c5c15416620d24089c',
