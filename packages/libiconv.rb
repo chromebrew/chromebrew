@@ -10,12 +10,6 @@ class Libiconv < Package
   source_sha256 '8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.17_armv7l/libiconv-1.17-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.17_armv7l/libiconv-1.17-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.17_i686/libiconv-1.17-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiconv/1.17_x86_64/libiconv-1.17-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '641ca4cfd2a72330fa741c17b3bf657db3a688ed097cf75c1a1a0c3fe04b56dc',
      armv7l: '641ca4cfd2a72330fa741c17b3bf657db3a688ed097cf75c1a1a0c3fe04b56dc',

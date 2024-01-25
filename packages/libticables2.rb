@@ -10,12 +10,6 @@ class Libticables2 < Package
   source_sha256 '0c6fb6516e72ccab081ddb3aecceff694ed93aec689ddd2edba9c7c7406c4522'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libticables2/1.3.5_armv7l/libticables2-1.3.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libticables2/1.3.5_armv7l/libticables2-1.3.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libticables2/1.3.5_i686/libticables2-1.3.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libticables2/1.3.5_x86_64/libticables2-1.3.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0e5fd5d8af7ad9b76dfc63ecdcc5ba071c2f8979da696b7f8fd9f9859b426931',
      armv7l: '0e5fd5d8af7ad9b76dfc63ecdcc5ba071c2f8979da696b7f8fd9f9859b426931',

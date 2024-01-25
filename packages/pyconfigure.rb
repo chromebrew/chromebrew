@@ -10,12 +10,6 @@ class Pyconfigure < Package
   source_sha256 '37438ee1ae0aad7692188c7d01218cb407a1c89f3efdb5d360311b7ade4ab14f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyconfigure/0.2.3_armv7l/pyconfigure-0.2.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyconfigure/0.2.3_armv7l/pyconfigure-0.2.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyconfigure/0.2.3_i686/pyconfigure-0.2.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pyconfigure/0.2.3_x86_64/pyconfigure-0.2.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c0f11115eee3859c7bb69ee00c3f5f3273c3feb17b638be1027df23f723724de',
      armv7l: 'c0f11115eee3859c7bb69ee00c3f5f3273c3feb17b638be1027df23f723724de',

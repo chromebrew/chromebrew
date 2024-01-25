@@ -10,11 +10,6 @@ class Php81 < Package
   source_sha256 '479e65c3f05714d4aace1370e617d78e49e996ec7a7579a5be47535be61f0658'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_armv7l/php81-8.1.27-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_armv7l/php81-8.1.27-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php81/8.1.27_x86_64/php81-8.1.27-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
      armv7l: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',

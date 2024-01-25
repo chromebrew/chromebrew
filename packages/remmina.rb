@@ -10,11 +10,6 @@ class Remmina < CMake
   source_sha256 'cfe9d4a6f2951d35533e5b2235f76640573c91f1be3bd8118637fbf68234500a'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_armv7l/remmina-1.4.31-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_armv7l/remmina-1.4.31-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/remmina/1.4.31_x86_64/remmina-1.4.31-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '13bab15460150e329feb3fbbd4ac68db26e599871f027d6467674d82d09304f6',
      armv7l: '13bab15460150e329feb3fbbd4ac68db26e599871f027d6467674d82d09304f6',

@@ -10,12 +10,6 @@ class Chromebrew_scripts < Package
   source_sha256 'acf8f89ef3b8a04fc33bb5a94188687d0fdd2dd7b05102ad442a91019cab20fb'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromebrew_scripts/1.1.0_armv7l/chromebrew_scripts-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromebrew_scripts/1.1.0_armv7l/chromebrew_scripts-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromebrew_scripts/1.1.0_i686/chromebrew_scripts-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chromebrew_scripts/1.1.0_x86_64/chromebrew_scripts-1.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '447d9faf3c89ce8f1b660948c147ce8d176e7a603c8d0c1e5d6fa141c7d42a8e',
      armv7l: '447d9faf3c89ce8f1b660948c147ce8d176e7a603c8d0c1e5d6fa141c7d42a8e',

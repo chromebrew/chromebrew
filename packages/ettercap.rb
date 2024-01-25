@@ -13,12 +13,6 @@ class Ettercap < Package
   source_sha256 'd0c3ef88dfc284b61d3d5b64d946c1160fd04276b448519c1ae4438a9cdffaf3'
   binary_compression 'tar.zst'
 
-  binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ettercap/0.8.3.1_armv7l/ettercap-0.8.3.1-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ettercap/0.8.3.1_armv7l/ettercap-0.8.3.1-chromeos-armv7l.tar.zst',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ettercap/0.8.3.1_i686/ettercap-0.8.3.1-chromeos-i686.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ettercap/0.8.3.1_x86_64/ettercap-0.8.3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
      aarch64: 'e777dff6d81b611460dfaded82b8091b38e091c2feb5056536121535f86f045f',
       armv7l: 'e777dff6d81b611460dfaded82b8091b38e091c2feb5056536121535f86f045f',

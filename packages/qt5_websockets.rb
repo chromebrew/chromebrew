@@ -10,11 +10,6 @@ class Qt5_websockets < Qmake
   git_hashtag 'd41bb9f4f7ab9d5ff184ef94cf2f6ff7cf01de00' # from kde/5.15 branch
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_websockets/5.15.11-d41bb9f_armv7l/qt5_websockets-5.15.11-d41bb9f-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_websockets/5.15.11-d41bb9f_armv7l/qt5_websockets-5.15.11-d41bb9f-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_websockets/5.15.11-d41bb9f_x86_64/qt5_websockets-5.15.11-d41bb9f-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e1b59feafd5eacece28c48eb267786dbddd6708a333afaab7144ebf552a40a8e',
      armv7l: 'e1b59feafd5eacece28c48eb267786dbddd6708a333afaab7144ebf552a40a8e',

@@ -10,12 +10,6 @@ class Clib < Package
   source_sha256 'f5718e316771571971cb4e5a0142f91b47c6bfe32997fd869fc5a90ec091a066'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clib/1.8.1_armv7l/clib-1.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clib/1.8.1_armv7l/clib-1.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clib/1.8.1_i686/clib-1.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clib/1.8.1_x86_64/clib-1.8.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2e9535f72f2b36bef76aa7cbd17b4264652d94f9c46408c81a6d1400df379851',
      armv7l: '2e9535f72f2b36bef76aa7cbd17b4264652d94f9c46408c81a6d1400df379851',

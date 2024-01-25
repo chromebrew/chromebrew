@@ -10,12 +10,6 @@ class Guile < Autotools
   source_sha256 '1a2625ac72b2366e95792f3fe758fd2df775b4044a90a4a9787326e66c0d750d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_armv7l/guile-3.0.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_armv7l/guile-3.0.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_i686/guile-3.0.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/guile/3.0.9_x86_64/guile-3.0.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '906f359048d339cde70258acc75d01474c7fb7b45d97f3c8098111c0d688aae0',
      armv7l: '906f359048d339cde70258acc75d01474c7fb7b45d97f3c8098111c0d688aae0',

@@ -10,12 +10,6 @@ class Xcb_util_xrm < Package
   source_sha256 '301cf33701207ea8782d49f4cb6404abd8f2d64e16f242017fd720be7c900c85'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_xrm/1.3-1_armv7l/xcb_util_xrm-1.3-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_xrm/1.3-1_armv7l/xcb_util_xrm-1.3-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_xrm/1.3-1_i686/xcb_util_xrm-1.3-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_xrm/1.3-1_x86_64/xcb_util_xrm-1.3-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '70cdd52679ee61272c4f07bcc1bc75132512415004011e67dc844ca26c22e5e6',
      armv7l: '70cdd52679ee61272c4f07bcc1bc75132512415004011e67dc844ca26c22e5e6',

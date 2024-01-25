@@ -10,12 +10,6 @@ class Sbt < Package
   source_sha256 'b6e073d7c201741dcca92cfdd1dd3cd76c42a47dc9d8c8ead8df7117deed7aef'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbt/0.13.15_armv7l/sbt-0.13.15-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbt/0.13.15_armv7l/sbt-0.13.15-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbt/0.13.15_i686/sbt-0.13.15-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sbt/0.13.15_x86_64/sbt-0.13.15-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e03f09d30d285e58766e9b22714e0c738502b9354fc4abeb067fd9b7575b882d',
      armv7l: 'e03f09d30d285e58766e9b22714e0c738502b9354fc4abeb067fd9b7575b882d',

@@ -11,11 +11,6 @@ class Imagemagick7 < Autotools
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_armv7l/imagemagick7-7.1.1-23-perl5.38-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imagemagick7/7.1.1-23-perl5.38_x86_64/imagemagick7-7.1.1-23-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',
      armv7l: 'fefbb13329799de2d4d62eca465c7fd5ac086386cc1e35d0b362605041e9b598',

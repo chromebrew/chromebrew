@@ -10,11 +10,6 @@ class Gtkmm3 < Package
   source_sha256 '1d7a35af9c5ceccacb244ee3c2deb9b245720d8510ac5c7e6f4b6f9947e6789c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_armv7l/gtkmm3-3.24.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_armv7l/gtkmm3-3.24.7-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm3/3.24.7_x86_64/gtkmm3-3.24.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0c760e1b3f325ae6f3683797c6f58c4098c843270aafcf1a176346a17e533e99',
      armv7l: '0c760e1b3f325ae6f3683797c6f58c4098c843270aafcf1a176346a17e533e99',

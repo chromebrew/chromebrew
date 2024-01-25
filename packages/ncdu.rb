@@ -10,12 +10,6 @@ class Ncdu < Package
   source_sha256 '820e4e4747a2a2ec7a2e9f06d2f5a353516362c22496a10a9834f871b877499a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncdu/1.12_armv7l/ncdu-1.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncdu/1.12_armv7l/ncdu-1.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncdu/1.12_i686/ncdu-1.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncdu/1.12_x86_64/ncdu-1.12-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ac04b6c7a0c6ac7b9bf75636806e12539631d5617bb85ed9ed9c8536c95062a6',
      armv7l: 'ac04b6c7a0c6ac7b9bf75636806e12539631d5617bb85ed9ed9c8536c95062a6',

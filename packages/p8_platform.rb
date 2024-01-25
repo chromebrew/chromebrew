@@ -13,12 +13,6 @@ class P8_platform < Package
   source_sha256 '064f8d2c358895c7e0bea9ae956f8d46f3f057772cb97f2743a11d478a0f68a0'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p8_platform/2.1.0.1_armv7l/p8_platform-2.1.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p8_platform/2.1.0.1_armv7l/p8_platform-2.1.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p8_platform/2.1.0.1_i686/p8_platform-2.1.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/p8_platform/2.1.0.1_x86_64/p8_platform-2.1.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a9965e17d92856f22cb5b822aa1d289d31fa41c5c88e6d5a6bf5cf549c1459ab',
      armv7l: 'a9965e17d92856f22cb5b822aa1d289d31fa41c5c88e6d5a6bf5cf549c1459ab',

@@ -10,12 +10,6 @@ class Libgme < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgme/0.6.3_armv7l/libgme-0.6.3-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgme/0.6.3_armv7l/libgme-0.6.3-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgme/0.6.3_i686/libgme-0.6.3-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgme/0.6.3_x86_64/libgme-0.6.3-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '3dd506152d59a392b3e0fd91b568acca67c95178f49b7781c05f9888ade788c8',
       armv7l: '3dd506152d59a392b3e0fd91b568acca67c95178f49b7781c05f9888ade788c8',

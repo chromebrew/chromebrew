@@ -10,12 +10,6 @@ class Quakespasm < Package
   source_sha256 'ed3ee6ba7e3d9454c7620757cc166e13d892f1167c7b74bef4f067e350d835ae'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/quakespasm/0.93.1-1_armv7l/quakespasm-0.93.1-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/quakespasm/0.93.1-1_armv7l/quakespasm-0.93.1-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/quakespasm/0.93.1-1_i686/quakespasm-0.93.1-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/quakespasm/0.93.1-1_x86_64/quakespasm-0.93.1-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a75901d94ad4475d297ddd09ec4f32b75c7b6d1120f5fdfb5d18e068d7517824',
      armv7l: 'a75901d94ad4475d297ddd09ec4f32b75c7b6d1120f5fdfb5d18e068d7517824',

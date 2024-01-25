@@ -11,12 +11,6 @@ class Libarchive < Package
   source_sha256 '9e2c1b80d5fbe59b61308fdfab6c79b5021d7ff4ff2489fb12daf0a96a83551d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2-2_armv7l/libarchive-3.6.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2-2_armv7l/libarchive-3.6.2-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2-2_i686/libarchive-3.6.2-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libarchive/3.6.2-2_x86_64/libarchive-3.6.2-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '083845ff184ba1f7a302a0ff726ccf32353c5c91a5d2df3b92d3c732c16d2a14',
      armv7l: '083845ff184ba1f7a302a0ff726ccf32353c5c91a5d2df3b92d3c732c16d2a14',

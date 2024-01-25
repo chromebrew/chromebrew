@@ -10,12 +10,6 @@ class Procps < Package
   source_sha256 '720caf307ab5dfe6d1cf4fc3e6ce786d749c69baa088627dbe1b01828f2528b1'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/procps/3.3.16_armv7l/procps-3.3.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/procps/3.3.16_armv7l/procps-3.3.16-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/procps/3.3.16_i686/procps-3.3.16-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/procps/3.3.16_x86_64/procps-3.3.16-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c126d133d112220e9b055f58ac5f71970344df4e88d5475d5005252914fe3ae0',
      armv7l: 'c126d133d112220e9b055f58ac5f71970344df4e88d5475d5005252914fe3ae0',

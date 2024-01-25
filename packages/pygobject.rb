@@ -11,11 +11,6 @@ class Pygobject < Python
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.2-py3.12_armv7l/pygobject-3.44.2-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.2-py3.12_armv7l/pygobject-3.44.2-py3.12-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject/3.44.2-py3.12_x86_64/pygobject-3.44.2-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4151689b78c1ed1417be8750710016a6380cbaba071e7f654a52196bd3c0366f',
      armv7l: '4151689b78c1ed1417be8750710016a6380cbaba071e7f654a52196bd3c0366f',

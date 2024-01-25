@@ -10,12 +10,6 @@ class Lft < Package
   source_sha256 '08e5c7973551b529c850bffbc7152c4e5f0bcb1f07ebbb39151a7dc9a3bf9de0'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lft/3.79_armv7l/lft-3.79-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lft/3.79_armv7l/lft-3.79-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lft/3.79_i686/lft-3.79-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lft/3.79_x86_64/lft-3.79-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6a3c32976a7384458cc11ba2ad0c29c44cc14d2effc3cb6d78b97c64ab2164e8',
      armv7l: '6a3c32976a7384458cc11ba2ad0c29c44cc14d2effc3cb6d78b97c64ab2164e8',

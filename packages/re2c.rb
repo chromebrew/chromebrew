@@ -10,12 +10,6 @@ class Re2c < CMake
   source_sha256 '1c499e89ffd9926d79374fa5101c27a4bc89355462d5217abdbe4c76312db2f1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/3.1_armv7l/re2c-3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/3.1_armv7l/re2c-3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/3.1_i686/re2c-3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2c/3.1_x86_64/re2c-3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'de01cccbde508b8f13ea0100c6b87aa640087865849b56bc78f55da9973437bc',
      armv7l: 'de01cccbde508b8f13ea0100c6b87aa640087865849b56bc78f55da9973437bc',

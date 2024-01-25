@@ -10,12 +10,6 @@ class Masscan < Package
   source_sha256 '51de345f677f46595fc3bd747bfb61bc9ff130adcbec48f3401f8057c8702af9'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/masscan/1.0.4_armv7l/masscan-1.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/masscan/1.0.4_armv7l/masscan-1.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/masscan/1.0.4_i686/masscan-1.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/masscan/1.0.4_x86_64/masscan-1.0.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd1ca6e9300aa9b9fcc416c3c987844eebf614b7a7c49e77bb780d84f2d4c3030',
      armv7l: 'd1ca6e9300aa9b9fcc416c3c987844eebf614b7a7c49e77bb780d84f2d4c3030',

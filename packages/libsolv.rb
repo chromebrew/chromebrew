@@ -10,12 +10,6 @@ class Libsolv < Package
   source_sha256 '34a67c23cedd38a949607d8cdbd867aa4b07556f18a57e17162ac962bbdbbf54'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_armv7l/libsolv-0.7.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_i686/libsolv-0.7.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsolv/0.7.14_x86_64/libsolv-0.7.14-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '4a559dd64cbc0a45f291bb3b7b500bcb04119559987830df0066176fc48867a9',
      armv7l: '4a559dd64cbc0a45f291bb3b7b500bcb04119559987830df0066176fc48867a9',

@@ -10,12 +10,6 @@ class Pigz < Package
   source_sha256 'a4f816222a7b4269bd232680590b579ccc72591f1bb5adafcd7208ca77e14f73'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pigz/2.4_armv7l/pigz-2.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pigz/2.4_armv7l/pigz-2.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pigz/2.4_i686/pigz-2.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pigz/2.4_x86_64/pigz-2.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '10aa75b1ea4f2bd9acc84350fa30c0d152391e37517a2487febde4c6a82d329d',
      armv7l: '10aa75b1ea4f2bd9acc84350fa30c0d152391e37517a2487febde4c6a82d329d',

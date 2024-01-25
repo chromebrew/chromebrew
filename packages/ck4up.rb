@@ -10,12 +10,6 @@ class Ck4up < Package
   source_sha256 '37f2f981cfdb6811a906e5520cb27203cb5ecb725d2180aaac59d377c1ac9fbf'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ck4up/1.4_armv7l/ck4up-1.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ck4up/1.4_armv7l/ck4up-1.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ck4up/1.4_i686/ck4up-1.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ck4up/1.4_x86_64/ck4up-1.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '04faf368ecc2291d8b0177488f1d4d26441dd2e147c27d848c7e1f719eac9238',
      armv7l: '04faf368ecc2291d8b0177488f1d4d26441dd2e147c27d848c7e1f719eac9238',

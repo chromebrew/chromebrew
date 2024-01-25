@@ -10,12 +10,6 @@ class Ag < Package
   source_sha256 '6a0a19ca5e73b2bef9481c29a508d2413ca1a0a9a5a6b1bd9bbd695a7626cbf9'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ag/2.2.0_armv7l/ag-2.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ag/2.2.0_armv7l/ag-2.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ag/2.2.0_i686/ag-2.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ag/2.2.0_x86_64/ag-2.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0e6e5a193921c38638a3eeacff917a75cc8651335c783c392053bb825743edcd',
      armv7l: '0e6e5a193921c38638a3eeacff917a75cc8651335c783c392053bb825743edcd',

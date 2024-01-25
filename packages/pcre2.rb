@@ -10,12 +10,6 @@ class Pcre2 < Package
   source_sha256 'c33b418e3b936ee3153de2c61cc638e7e4fe3156022a5c77d0711bcbb9d64f1f'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre2/10.42_armv7l/pcre2-10.42-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre2/10.42_armv7l/pcre2-10.42-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre2/10.42_i686/pcre2-10.42-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pcre2/10.42_x86_64/pcre2-10.42-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '880eb9d98a13f8532d61d6d414890ab3a5f40f3249d23f85ed097bc9d4650deb',
      armv7l: '880eb9d98a13f8532d61d6d414890ab3a5f40f3249d23f85ed097bc9d4650deb',

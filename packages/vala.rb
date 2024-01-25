@@ -10,12 +10,6 @@ class Vala < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.7_armv7l/vala-0.56.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.7_armv7l/vala-0.56.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.7_i686/vala-0.56.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vala/0.56.7_x86_64/vala-0.56.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4987cd9bdffb4056e046e81e11600bd7eb38085ce76fc87822b20be2b31aeba6',
      armv7l: '4987cd9bdffb4056e046e81e11600bd7eb38085ce76fc87822b20be2b31aeba6',

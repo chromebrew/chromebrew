@@ -10,12 +10,6 @@ class Perl_http_request < Package
   source_sha256 '398b647bf45aa972f432ec0111f6617742ba32fc773c6612d21f64ab4eacbca1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.38_armv7l/perl_http_request-6.44-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.38_armv7l/perl_http_request-6.44-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.38_i686/perl_http_request-6.44-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_http_request/6.44-perl5.38_x86_64/perl_http_request-6.44-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7dcb4d1b112c26610fcacc9a2a52933218bdc7dc2b8f290d5333c25d88b7d9cc',
      armv7l: '7dcb4d1b112c26610fcacc9a2a52933218bdc7dc2b8f290d5333c25d88b7d9cc',

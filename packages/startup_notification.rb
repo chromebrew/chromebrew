@@ -11,12 +11,6 @@ class Startup_notification < Package
   source_sha256 '3c391f7e930c583095045cd2d10eb73a64f085c7fde9d260f2652c7cb3cfbe4a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_armv7l/startup_notification-0.12-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_armv7l/startup_notification-0.12-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_i686/startup_notification-0.12-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/startup_notification/0.12-2_x86_64/startup_notification-0.12-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8bd6a0275356eb6dd22ff8b5352354873cbba0e57f99864a52e853de3f9284c2',
      armv7l: '8bd6a0275356eb6dd22ff8b5352354873cbba0e57f99864a52e853de3f9284c2',

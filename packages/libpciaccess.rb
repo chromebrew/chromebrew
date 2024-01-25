@@ -10,12 +10,6 @@ class Libpciaccess < Package
   source_sha256 '74283ba3c974913029e7a547496a29145b07ec51732bbb5b5c58d5025ad95b73'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.17_armv7l/libpciaccess-0.17-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.17_armv7l/libpciaccess-0.17-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.17_i686/libpciaccess-0.17-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpciaccess/0.17_x86_64/libpciaccess-0.17-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5c8d971346ea24e2f5bc14de9070e17151943953dbf7efa515b4fb6708a723a5',
      armv7l: '5c8d971346ea24e2f5bc14de9070e17151943953dbf7efa515b4fb6708a723a5',

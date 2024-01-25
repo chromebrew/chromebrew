@@ -10,12 +10,6 @@ class Zimg < Package
   source_sha256 'c50a0922f4adac4efad77427d13520ed89b8366eef0ef2fa379572951afcc73f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zimg/3.0.1_armv7l/zimg-3.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zimg/3.0.1_armv7l/zimg-3.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zimg/3.0.1_i686/zimg-3.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zimg/3.0.1_x86_64/zimg-3.0.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c94a5d596cdc50049c842d01603a1facb61eab365f359c260c1ea4a3b19635e6',
      armv7l: 'c94a5d596cdc50049c842d01603a1facb61eab365f359c260c1ea4a3b19635e6',

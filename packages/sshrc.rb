@@ -10,12 +10,6 @@ class Sshrc < Package
   source_sha256 'e849ff19319381548011a9bdf1e33abc6eba3dc6a910c4226e6981d75d5564dd'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshrc/0.6.1_armv7l/sshrc-0.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshrc/0.6.1_armv7l/sshrc-0.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshrc/0.6.1_i686/sshrc-0.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshrc/0.6.1_x86_64/sshrc-0.6.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e52ec8b2ea9be7d694bcc676059a8f5bfd35a9a05dbde317eff1bfb992ed9d37',
      armv7l: 'e52ec8b2ea9be7d694bcc676059a8f5bfd35a9a05dbde317eff1bfb992ed9d37',

@@ -11,12 +11,6 @@ class Ninja < CMake
   git_hashtag '885b4efb41c039789b81f0dc0d67c1ed0faea17c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.12.0-885b4ef_armv7l/ninja-1.12.0-885b4ef-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.12.0-885b4ef_armv7l/ninja-1.12.0-885b4ef-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.12.0-885b4ef_i686/ninja-1.12.0-885b4ef-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ninja/1.12.0-885b4ef_x86_64/ninja-1.12.0-885b4ef-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd3703cfe35dc9e4a52c9fe1a2fafe1545ea840b6934deb7e2f86ae5fe27dbc51',
      armv7l: 'd3703cfe35dc9e4a52c9fe1a2fafe1545ea840b6934deb7e2f86ae5fe27dbc51',

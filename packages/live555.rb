@@ -10,12 +10,6 @@ class Live555 < Package
   source_sha256 'a3dcd157865186cf883c3a80b4bb09637e91fff96b234b2c780a7f7dcc7a35dc'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/live555/2019.08.28_armv7l/live555-2019.08.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/live555/2019.08.28_armv7l/live555-2019.08.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/live555/2019.08.28_i686/live555-2019.08.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/live555/2019.08.28_x86_64/live555-2019.08.28-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ed43e0eead6cf26e0ab359f7f59611ae124afbaa640ce833ef7c564a8c52e772',
      armv7l: 'ed43e0eead6cf26e0ab359f7f59611ae124afbaa640ce833ef7c564a8c52e772',

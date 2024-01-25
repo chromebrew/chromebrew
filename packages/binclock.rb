@@ -10,12 +10,6 @@ class Binclock < Package
   source_sha256 'e8caa26437301c70bf9840901db9e46d32b99c0ec8b442562f96390e28f35408'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binclock/3883e8_armv7l/binclock-3883e8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binclock/3883e8_armv7l/binclock-3883e8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binclock/3883e8_i686/binclock-3883e8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binclock/3883e8_x86_64/binclock-3883e8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '265d4488274d213d0663f7aebb3da8c81b046edd8c6cef4101a70dcce6a39b18',
      armv7l: '265d4488274d213d0663f7aebb3da8c81b046edd8c6cef4101a70dcce6a39b18',

@@ -10,12 +10,6 @@ class Libxvmc < Package
   source_sha256 '58a1766176947ec41cf44c917d831db5d619fec11f99637d6deca45458e9829b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxvmc/1.0.13_armv7l/libxvmc-1.0.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxvmc/1.0.13_armv7l/libxvmc-1.0.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxvmc/1.0.13_i686/libxvmc-1.0.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxvmc/1.0.13_x86_64/libxvmc-1.0.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fd33a7a2d68eeb1526c3d7e69f57d003f8d94fd0ac4b48e8cf842ec65961e70c',
      armv7l: 'fd33a7a2d68eeb1526c3d7e69f57d003f8d94fd0ac4b48e8cf842ec65961e70c',

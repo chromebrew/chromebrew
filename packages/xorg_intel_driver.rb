@@ -13,9 +13,6 @@ class Xorg_intel_driver < Package
   source_sha256 '7936e8ddc2f09f272584cc9e9a2d265e9ab435f645ccd12085cd56291fa70653'
   binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_intel_driver/2.99.917+916+g31486f4_x86_64/xorg_intel_driver-2.99.917+916+g31486f4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '54715305c2ddab79a838edbccf707c2e9153912b7b8f07f6cf5d0fc0123f8cdb'
   })

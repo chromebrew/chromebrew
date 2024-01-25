@@ -10,12 +10,6 @@ class Haveged < Package
   source_sha256 '938cb494bcad7e4f24e61eb50fab4aa0acbc3240c80f3ad5c6cf7e6e922618c3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haveged/1.9.14_armv7l/haveged-1.9.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haveged/1.9.14_armv7l/haveged-1.9.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haveged/1.9.14_i686/haveged-1.9.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/haveged/1.9.14_x86_64/haveged-1.9.14-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9089376d8df95644f812c8f9226e729e12fb68c4ebe4c365a52862f0d7ba1fc9',
      armv7l: '9089376d8df95644f812c8f9226e729e12fb68c4ebe4c365a52862f0d7ba1fc9',

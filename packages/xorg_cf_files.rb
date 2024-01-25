@@ -10,12 +10,6 @@ class Xorg_cf_files < Package
   source_sha256 'a49478ba0c2138bc53de38979cd2dee073b6fd6728597c552d266a707747f472'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.7_armv7l/xorg_cf_files-1.0.7-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.7_armv7l/xorg_cf_files-1.0.7-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.7_i686/xorg_cf_files-1.0.7-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_cf_files/1.0.7_x86_64/xorg_cf_files-1.0.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '9fa482169d3e253107419a1f05cb8e6d3e3c2f58846133c2b0f827cde7161565',
      armv7l: '9fa482169d3e253107419a1f05cb8e6d3e3c2f58846133c2b0f827cde7161565',

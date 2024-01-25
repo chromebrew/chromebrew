@@ -10,12 +10,6 @@ class Libpcap < Package
   source_sha256 '8d12b42623eeefee872f123bd0dc85d535b00df4d42e865f993c40f7bfc92b1e'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_armv7l/libpcap-1.10.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_i686/libpcap-1.10.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpcap/1.10.0_x86_64/libpcap-1.10.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '3ec810c7c9ddc2e2d684cae52dcc69375b786f18b4f53086dc70a3b794a4a759',
      armv7l: '3ec810c7c9ddc2e2d684cae52dcc69375b786f18b4f53086dc70a3b794a4a759',

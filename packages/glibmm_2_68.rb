@@ -10,11 +10,6 @@ class Glibmm_2_68 < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.78.0_armv7l/glibmm_2_68-2.78.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.78.0_armv7l/glibmm_2_68-2.78.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibmm_2_68/2.78.0_x86_64/glibmm_2_68-2.78.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd101b082fdbd28e16fed1ad66a3042a58f4d4d5575e5a5b9de59552ac8402964',
      armv7l: 'd101b082fdbd28e16fed1ad66a3042a58f4d4d5575e5a5b9de59552ac8402964',

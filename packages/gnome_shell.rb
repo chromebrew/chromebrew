@@ -10,11 +10,6 @@ class Gnome_shell < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_armv7l/gnome_shell-41.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_armv7l/gnome_shell-41.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_shell/41.0_x86_64/gnome_shell-41.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'eea813182b4fb943620beab82fabbdbde3b68cae8867ebc938e35c6a90612918',
      armv7l: 'eea813182b4fb943620beab82fabbdbde3b68cae8867ebc938e35c6a90612918',

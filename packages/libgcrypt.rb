@@ -10,12 +10,6 @@ class Libgcrypt < Autotools
   source_sha256 '8b0870897ac5ac67ded568dcfadf45969cfa8a6beb0fd60af2a9eadc2a3272aa'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.10.3_armv7l/libgcrypt-1.10.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.10.3_armv7l/libgcrypt-1.10.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.10.3_i686/libgcrypt-1.10.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgcrypt/1.10.3_x86_64/libgcrypt-1.10.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd5266a65d899b92c2d5b5f821aafc4416b6a49f187198d1d8a647884af9b6cae',
      armv7l: 'd5266a65d899b92c2d5b5f821aafc4416b6a49f187198d1d8a647884af9b6cae',

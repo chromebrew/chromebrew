@@ -10,12 +10,6 @@ class Musl_libssh < Package
   git_hashtag "libssh-#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_armv7l/musl_libssh-0.9.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_i686/musl_libssh-0.9.6-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libssh/0.9.6_x86_64/musl_libssh-0.9.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '4174ea38f912fdc3de9f7100131b0bf826ad9412877bd33ff68835692aabe86f',
      armv7l: '4174ea38f912fdc3de9f7100131b0bf826ad9412877bd33ff68835692aabe86f',

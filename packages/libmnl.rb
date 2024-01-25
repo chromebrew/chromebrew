@@ -10,12 +10,6 @@ class Libmnl < Package
   source_sha256 '274b9b919ef3152bfb3da3a13c950dd60d6e2bcd54230ffeca298d03b40d0525'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmnl/1.0.5_armv7l/libmnl-1.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmnl/1.0.5_armv7l/libmnl-1.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmnl/1.0.5_i686/libmnl-1.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmnl/1.0.5_x86_64/libmnl-1.0.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '85718120df283f822eeadce36b6db63f972ce349f09f1ec67dd15e0d3c9212ec',
      armv7l: '85718120df283f822eeadce36b6db63f972ce349f09f1ec67dd15e0d3c9212ec',

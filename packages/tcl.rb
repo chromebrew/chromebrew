@@ -10,12 +10,6 @@ class Tcl < Package
   source_sha256 '43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_armv7l/tcl-8.6.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_armv7l/tcl-8.6.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_i686/tcl-8.6.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcl/8.6.13_x86_64/tcl-8.6.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2f64a7d1350b05414f52a3e12b5cf2d7d0396619c83810bea71eed443064b83a',
      armv7l: '2f64a7d1350b05414f52a3e12b5cf2d7d0396619c83810bea71eed443064b83a',

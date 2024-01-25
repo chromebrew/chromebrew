@@ -11,11 +11,6 @@ class Libidn < Autotools
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn/1.41-1_armv7l/libidn-1.41-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn/1.41-1_armv7l/libidn-1.41-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libidn/1.41-1_x86_64/libidn-1.41-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2e288c83e54adc2398f7f609cbc229b22d81b6d690ec90b0cf598dfb337b7f6e',
      armv7l: '2e288c83e54adc2398f7f609cbc229b22d81b6d690ec90b0cf598dfb337b7f6e',

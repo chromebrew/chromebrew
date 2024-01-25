@@ -10,12 +10,6 @@ class Openblas < CMake
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.25_armv7l/openblas-0.3.25-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.25_armv7l/openblas-0.3.25-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.25_i686/openblas-0.3.25-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openblas/0.3.25_x86_64/openblas-0.3.25-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '478415d5fbc9713a3e6250118d1fd04a787bd7856d3f717efced52cfb9e9cf94',
      armv7l: '478415d5fbc9713a3e6250118d1fd04a787bd7856d3f717efced52cfb9e9cf94',

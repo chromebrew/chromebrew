@@ -10,12 +10,6 @@ class Shadow < Package
   source_sha256 '9afe245d79a2e7caac5f1ed62519b17416b057ec89df316df1c3935502f9dd2c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shadow/4.13_armv7l/shadow-4.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shadow/4.13_armv7l/shadow-4.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shadow/4.13_i686/shadow-4.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shadow/4.13_x86_64/shadow-4.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ce09c87fd90b9751c7f47be22d835490685f41f0fd4af484a7e06184115176e2',
      armv7l: 'ce09c87fd90b9751c7f47be22d835490685f41f0fd4af484a7e06184115176e2',

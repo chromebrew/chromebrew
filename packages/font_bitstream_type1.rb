@@ -10,12 +10,6 @@ class Font_bitstream_type1 < Package
   source_sha256 'c6ea0569adad2c577f140328dc3302e729cb1b1ea90cd0025caf380625f8a688'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_type1/1.0.3_armv7l/font_bitstream_type1-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_type1/1.0.3_armv7l/font_bitstream_type1-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_type1/1.0.3_i686/font_bitstream_type1-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bitstream_type1/1.0.3_x86_64/font_bitstream_type1-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a5aeadbd5238efa090053c1adef4b0a07dc95c0d819ce94b978ea5df8bdb9605',
      armv7l: 'a5aeadbd5238efa090053c1adef4b0a07dc95c0d819ce94b978ea5df8bdb9605',

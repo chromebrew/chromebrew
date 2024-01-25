@@ -10,12 +10,6 @@ class Librhash < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_armv7l/librhash-1.4.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_armv7l/librhash-1.4.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_i686/librhash-1.4.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librhash/1.4.3_x86_64/librhash-1.4.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fdb6b38162bd3a25a3797a2e151262b45338bd56915555f97402308d6290b4c8',
      armv7l: 'fdb6b38162bd3a25a3797a2e151262b45338bd56915555f97402308d6290b4c8',

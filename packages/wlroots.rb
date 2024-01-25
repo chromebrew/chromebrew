@@ -13,11 +13,6 @@ class Wlroots < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wlroots/0.16.1_armv7l/wlroots-0.16.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wlroots/0.16.1_armv7l/wlroots-0.16.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wlroots/0.16.1_x86_64/wlroots-0.16.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0722ae885c1a247b03319bfb9092d9bd429209fe7b4cec3ff26276904d7b7e34',
      armv7l: '0722ae885c1a247b03319bfb9092d9bd429209fe7b4cec3ff26276904d7b7e34',

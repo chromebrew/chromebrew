@@ -10,11 +10,6 @@ class Heroku < Package
   source_sha256 '565e2a42a5095da43466465f29455ea646b235742f16b667d58da0a312c0fe8a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_armv7l/heroku-7.44.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_armv7l/heroku-7.44.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/heroku/7.44.0_x86_64/heroku-7.44.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c97d289b8e06b35552f49c2da468a883292a8bd29f40d5bf110b0e3632cfc102',
      armv7l: 'c97d289b8e06b35552f49c2da468a883292a8bd29f40d5bf110b0e3632cfc102',

@@ -10,12 +10,6 @@ class Libmysofa < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmysofa/1.2.1_armv7l/libmysofa-1.2.1-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmysofa/1.2.1_armv7l/libmysofa-1.2.1-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmysofa/1.2.1_i686/libmysofa-1.2.1-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmysofa/1.2.1_x86_64/libmysofa-1.2.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '1eafd9c9f7644c142f409027768195c9dcfaa20c0f78058e3f9ee87f04ba4ff5',
       armv7l: '1eafd9c9f7644c142f409027768195c9dcfaa20c0f78058e3f9ee87f04ba4ff5',

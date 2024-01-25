@@ -10,12 +10,6 @@ class Dbus < Package
   git_hashtag "dbus-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_armv7l/dbus-1.15.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_armv7l/dbus-1.15.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_i686/dbus-1.15.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dbus/1.15.4_x86_64/dbus-1.15.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
      armv7l: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',

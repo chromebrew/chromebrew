@@ -10,12 +10,6 @@ class Libbytesize < Package
   source_sha256 'efaa2b35b2bb3b52bf7b4ff5d0ed2c5c61360a5196053808d615dd0aa2cf0741'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbytesize/2.6_armv7l/libbytesize-2.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbytesize/2.6_armv7l/libbytesize-2.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbytesize/2.6_i686/libbytesize-2.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbytesize/2.6_x86_64/libbytesize-2.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9746d6b1aeac798fb7ccf61f966a8b5caa9e27784a50d6ec1705fa8f08ceccc4',
      armv7l: '9746d6b1aeac798fb7ccf61f966a8b5caa9e27784a50d6ec1705fa8f08ceccc4',

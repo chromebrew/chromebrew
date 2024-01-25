@@ -10,12 +10,6 @@ class Strace < Autotools
   source_sha256 '421b4186c06b705163e64dc85f271ebdcf67660af8667283147d5e859fc8a96c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/6.6_armv7l/strace-6.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/6.6_armv7l/strace-6.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/6.6_i686/strace-6.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/strace/6.6_x86_64/strace-6.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '544bd023d12da0e88ce06dd418106fbe24a1d1657e2365c3c45e9203d14f1b99',
      armv7l: '544bd023d12da0e88ce06dd418106fbe24a1d1657e2365c3c45e9203d14f1b99',

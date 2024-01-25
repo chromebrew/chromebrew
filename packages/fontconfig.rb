@@ -12,11 +12,6 @@ class Fontconfig < Package
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_armv7l/fontconfig-2.14.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_armv7l/fontconfig-2.14.2-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fontconfig/2.14.2-1_x86_64/fontconfig-2.14.2-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
      armv7l: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',

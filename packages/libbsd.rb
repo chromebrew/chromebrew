@@ -10,12 +10,6 @@ class Libbsd < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.11.7_armv7l/libbsd-0.11.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.11.7_armv7l/libbsd-0.11.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.11.7_i686/libbsd-0.11.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbsd/0.11.7_x86_64/libbsd-0.11.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'edb871fe00481c684054e3d1c411d08815d1389d5c38d5b67a3f206db3be556f',
      armv7l: 'edb871fe00481c684054e3d1c411d08815d1389d5c38d5b67a3f206db3be556f',

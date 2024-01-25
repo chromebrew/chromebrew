@@ -13,12 +13,6 @@ class Libxmlb < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmlb/0.3.14_armv7l/libxmlb-0.3.14-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmlb/0.3.14_armv7l/libxmlb-0.3.14-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmlb/0.3.14_i686/libxmlb-0.3.14-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxmlb/0.3.14_x86_64/libxmlb-0.3.14-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6e8fc1cfaf0e7332a9fb4bb5111d60fbbe2ce33036fd1a34eb2ba8883a37c0f0',
      armv7l: '6e8fc1cfaf0e7332a9fb4bb5111d60fbbe2ce33036fd1a34eb2ba8883a37c0f0',

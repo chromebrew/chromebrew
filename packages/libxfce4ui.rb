@@ -10,12 +10,6 @@ class Libxfce4ui < Package
   source_sha256 '8b06c9e94f4be88a9d87c47592411b6cbc32073e7af9cbd64c7b2924ec90ceaa'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4ui/4.16.0_armv7l/libxfce4ui-4.16.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4ui/4.16.0_armv7l/libxfce4ui-4.16.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4ui/4.16.0_i686/libxfce4ui-4.16.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfce4ui/4.16.0_x86_64/libxfce4ui-4.16.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2c97cfdf36b164b7c798dc42d16b0e4abd6777b4ab4dd6c115f4b43359afa4ad',
      armv7l: '2c97cfdf36b164b7c798dc42d16b0e4abd6777b4ab4dd6c115f4b43359afa4ad',

@@ -10,12 +10,6 @@ class Gnome_weather < Package
   source_sha256 'f687caa96f357ec6bf7a4c3c376e82f7476d0b711b9e670a2f074a069c7531d8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_weather/40.0_armv7l/gnome_weather-40.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_weather/40.0_armv7l/gnome_weather-40.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_weather/40.0_i686/gnome_weather-40.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_weather/40.0_x86_64/gnome_weather-40.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f90c5fb9bb00e103e66017515f5b0206dc1baeb2650e329c16f4a20bde827ab5',
      armv7l: 'f90c5fb9bb00e103e66017515f5b0206dc1baeb2650e329c16f4a20bde827ab5',

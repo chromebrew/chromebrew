@@ -10,11 +10,6 @@ class Gemacs < Package
   source_sha256 'd2f881a5cc231e2f5a03e86f4584b0438f83edd7598a09d24a21bd8d003e2e01'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/29.1_armv7l/gemacs-29.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/29.1_armv7l/gemacs-29.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gemacs/29.1_x86_64/gemacs-29.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '85293f6a1e96f1b3aca3b613f3e139b335d9758491bb0364efed84c088cff0d4',
      armv7l: '85293f6a1e96f1b3aca3b613f3e139b335d9758491bb0364efed84c088cff0d4',

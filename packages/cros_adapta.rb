@@ -10,12 +10,6 @@ class Cros_adapta < Package
   git_hashtag 'eb6d8c1832b9181926df107faf41a80887fd982c'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cros_adapta/20181204_armv7l/cros_adapta-20181204-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cros_adapta/20181204_armv7l/cros_adapta-20181204-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cros_adapta/20181204_x86_64/cros_adapta-20181204-chromeos-x86_64.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cros_adapta/20181204_x86_64/cros_adapta-20181204-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '6df899ac5034b5abcbfbe6f2bf920fb6dbe1b4ce5a72b725ca69e70273fe8d2f',
      armv7l: '6df899ac5034b5abcbfbe6f2bf920fb6dbe1b4ce5a72b725ca69e70273fe8d2f',

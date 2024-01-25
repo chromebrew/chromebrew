@@ -13,11 +13,6 @@ class Libdbusmenu_gtk3 < Package
   git_hashtag 'a3658f1208c31b1fb03b71af6e49c01119ba52fd'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdbusmenu_gtk3/16.04.0_armv7l/libdbusmenu_gtk3-16.04.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdbusmenu_gtk3/16.04.0_armv7l/libdbusmenu_gtk3-16.04.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdbusmenu_gtk3/16.04.0_x86_64/libdbusmenu_gtk3-16.04.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '1b83ca1cf073b97d68d5f3a69dc587b7bb9019ed85c64c3186a66586f943eb7d',
      armv7l: '1b83ca1cf073b97d68d5f3a69dc587b7bb9019ed85c64c3186a66586f943eb7d',

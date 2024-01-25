@@ -10,12 +10,6 @@ class Difftastic < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/difftastic/0.52.0_armv7l/difftastic-0.52.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/difftastic/0.52.0_armv7l/difftastic-0.52.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/difftastic/0.52.0_i686/difftastic-0.52.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/difftastic/0.52.0_x86_64/difftastic-0.52.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '54412e3711977b6cc829490a847844c12cfe5fd1898b2c9ae4d10b640df91e41',
      armv7l: '54412e3711977b6cc829490a847844c12cfe5fd1898b2c9ae4d10b640df91e41',

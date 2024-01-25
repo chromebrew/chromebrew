@@ -10,12 +10,6 @@ class Lzo < Package
   source_sha256 'c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_armv7l/lzo-2.10-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_i686/lzo-2.10-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzo/2.10-1_x86_64/lzo-2.10-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',
      armv7l: '8909723551598aea2da661c6e327d42ede4eedef60351113b2ee7923e45523d4',

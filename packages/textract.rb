@@ -10,12 +10,6 @@ class Textract < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.4_armv7l/textract-1.6.4-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.4_armv7l/textract-1.6.4-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.4_i686/textract-1.6.4-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/textract/1.6.4_x86_64/textract-1.6.4-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'd621a56b5d12557eb7d96c234a70f46fe009bb9f9cf4cb3ccf1d3d2193f95ce2',
      armv7l: 'd621a56b5d12557eb7d96c234a70f46fe009bb9f9cf4cb3ccf1d3d2193f95ce2',

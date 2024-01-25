@@ -10,12 +10,6 @@ class Snooze < Package
   source_sha256 '69242bb1534b11b569dfd1535aca20e3e6be95c6285aff1ccf612b2a9f906a1a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snooze/0.2_armv7l/snooze-0.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snooze/0.2_armv7l/snooze-0.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snooze/0.2_i686/snooze-0.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snooze/0.2_x86_64/snooze-0.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'dfe815eda42dd1c734ca9845ec5530615c1ed61a1961f50237375d4c09df57e8',
      armv7l: 'dfe815eda42dd1c734ca9845ec5530615c1ed61a1961f50237375d4c09df57e8',

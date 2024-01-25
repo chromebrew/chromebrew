@@ -11,12 +11,6 @@ class Stressng < Package
   source_sha256 'af7779aee38e6d94726ed7d5cf36384a64d50c86e42fff89c141d8609913f425'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stressng/0.12.05_armv7l/stressng-0.12.05-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stressng/0.12.05_armv7l/stressng-0.12.05-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stressng/0.12.05_i686/stressng-0.12.05-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/stressng/0.12.05_x86_64/stressng-0.12.05-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c2d12f8c29ebb89709a40880f18bf29c2f1eb4e9b50f5f601e2a47aab598ef21',
      armv7l: 'c2d12f8c29ebb89709a40880f18bf29c2f1eb4e9b50f5f601e2a47aab598ef21',

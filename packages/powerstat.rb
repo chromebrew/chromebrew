@@ -10,12 +10,6 @@ class Powerstat < Package
   source_sha256 '12781cb108be1fc3be5ec893e6d025bfb40ada060bdc5f7715b65397620f2c7b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerstat/0.02.24_armv7l/powerstat-0.02.24-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerstat/0.02.24_armv7l/powerstat-0.02.24-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerstat/0.02.24_i686/powerstat-0.02.24-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/powerstat/0.02.24_x86_64/powerstat-0.02.24-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '76653569b562862ac42fd13a04a0f89b450da94450b6a25eccb7e1e399267dcb',
      armv7l: '76653569b562862ac42fd13a04a0f89b450da94450b6a25eccb7e1e399267dcb',

@@ -11,12 +11,6 @@ class Py3_pygments < Python
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pygments/2.16.1-py3.12_armv7l/py3_pygments-2.16.1-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pygments/2.16.1-py3.12_armv7l/py3_pygments-2.16.1-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pygments/2.16.1-py3.12_i686/py3_pygments-2.16.1-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pygments/2.16.1-py3.12_x86_64/py3_pygments-2.16.1-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e5e565ab22ad338bf66569189ef0f7a7178fec541100eee7cfd4d0dca8965158',
      armv7l: 'e5e565ab22ad338bf66569189ef0f7a7178fec541100eee7cfd4d0dca8965158',

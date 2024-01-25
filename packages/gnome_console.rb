@@ -14,11 +14,6 @@ class Gnome_console < Package
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_armv7l/gnome_console-44.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_armv7l/gnome_console-44.0-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_console/44.0-1_x86_64/gnome_console-44.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1ab2ae3fe6ae44c24c64f2798f45d465c48b4116f530e975bfa967af3bd23a1e',
      armv7l: '1ab2ae3fe6ae44c24c64f2798f45d465c48b4116f530e975bfa967af3bd23a1e',

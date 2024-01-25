@@ -10,12 +10,6 @@ class Cronie < Package
   source_sha256 '370bf34641691489330e708bd4cdbd779267296a030668a12f77b7e36872fd75'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cronie/1.5.2_armv7l/cronie-1.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cronie/1.5.2_armv7l/cronie-1.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cronie/1.5.2_i686/cronie-1.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cronie/1.5.2_x86_64/cronie-1.5.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',
      armv7l: '0d44284894af0f7bf322aa649755a146cc4159b27480f5b635862cbe0fdd3d56',

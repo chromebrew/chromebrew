@@ -10,12 +10,6 @@ class Newsboat < Package
   source_sha256 '41aaab378f1dc9eff5094fc4a686a602c76497cb6c4b656c65e843a71fa6017e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/newsboat/2.25_armv7l/newsboat-2.25-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/newsboat/2.25_armv7l/newsboat-2.25-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/newsboat/2.25_i686/newsboat-2.25-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/newsboat/2.25_x86_64/newsboat-2.25-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9c4d9c323fe5e4bd22608edfd220a1ac1ce421fd79e0d9ede3b87b895ae1c294',
      armv7l: '9c4d9c323fe5e4bd22608edfd220a1ac1ce421fd79e0d9ede3b87b895ae1c294',

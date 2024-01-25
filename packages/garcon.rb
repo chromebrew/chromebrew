@@ -10,12 +10,6 @@ class Garcon < Package
   source_sha256 '82c3b61b508011642b09e6fb01b1d3f22c4e4de0fc54a9244327d0ddb66b2423'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/garcon/0.7.0_armv7l/garcon-0.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/garcon/0.7.0_armv7l/garcon-0.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/garcon/0.7.0_i686/garcon-0.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/garcon/0.7.0_x86_64/garcon-0.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b0259935006ca1549ba4bca6349047ccb730a4f6e0ae3bea71bb1ef84a46c032',
      armv7l: 'b0259935006ca1549ba4bca6349047ccb730a4f6e0ae3bea71bb1ef84a46c032',

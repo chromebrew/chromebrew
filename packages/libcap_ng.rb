@@ -10,12 +10,6 @@ class Libcap_ng < Package
   git_hashtag '5d3aea2d098ea222fb35a0be75adeed40e2e96d3'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_armv7l/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_armv7l/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-py3.11-5d3aea2_i686/libcap_ng-0.8.4-py3.11-5d3aea2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcap_ng/0.8.4-5d3aea2-py3.11_x86_64/libcap_ng-0.8.4-5d3aea2-py3.11-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '151e957f7f2e69fc7522ff1b38147ba8972f3bce7a9faa0aa6feb8c059010c76',
      armv7l: '151e957f7f2e69fc7522ff1b38147ba8972f3bce7a9faa0aa6feb8c059010c76',

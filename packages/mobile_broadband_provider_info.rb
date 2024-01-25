@@ -10,12 +10,6 @@ class Mobile_broadband_provider_info < Package
   source_sha256 '0616b3d0580575741d4319ac71ca67c9a378879943d32a67ac0460615767bcdf'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mobile_broadband_provider_info/20201225_armv7l/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mobile_broadband_provider_info/20201225_armv7l/mobile_broadband_provider_info-20201225-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mobile_broadband_provider_info/20201225_i686/mobile_broadband_provider_info-20201225-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mobile_broadband_provider_info/20201225_x86_64/mobile_broadband_provider_info-20201225-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bcd1950197cad4165f2ae459e479a33ffdf923f8ba15825bf1a7b98759c2ae6e',
      armv7l: 'bcd1950197cad4165f2ae459e479a33ffdf923f8ba15825bf1a7b98759c2ae6e',

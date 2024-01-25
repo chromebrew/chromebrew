@@ -10,11 +10,6 @@ class Ffmpegthumbnailer < Package
   git_hashtag 'e0bf01d97e0261219b06d1e560e923354949b93e'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d-1_armv7l/ffmpegthumbnailer-2.2.3-e0bf01d-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d-1_armv7l/ffmpegthumbnailer-2.2.3-e0bf01d-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ffmpegthumbnailer/2.2.3-e0bf01d-1_x86_64/ffmpegthumbnailer-2.2.3-e0bf01d-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c3ba003434e1a2f7ccbeaf02f71857b16a037a2c47bfb19a2b8bf05d1900357f',
      armv7l: 'c3ba003434e1a2f7ccbeaf02f71857b16a037a2c47bfb19a2b8bf05d1900357f',

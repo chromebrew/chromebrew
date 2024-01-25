@@ -10,12 +10,6 @@ class Gpgme < Autotools
   source_sha256 'a0c316f7ab7d3bfb01a8753c3370dc906e5b61436021f3b54ff1483b513769bd'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.23.1_armv7l/gpgme-1.23.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.23.1_armv7l/gpgme-1.23.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.23.1_i686/gpgme-1.23.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpgme/1.23.1_x86_64/gpgme-1.23.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '96d70618ccb2cf94a2e4dca0a14d6b3626f62103fecad7e539f722c9e8502280',
      armv7l: '96d70618ccb2cf94a2e4dca0a14d6b3626f62103fecad7e539f722c9e8502280',

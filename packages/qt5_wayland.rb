@@ -10,11 +10,6 @@ class Qt5_wayland < Qmake
   git_hashtag '4de268cbaf6ff3b633429577f06d3d746a3b202a' # from kde/5.15 branch
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_wayland/5.15.11-4de268c_armv7l/qt5_wayland-5.15.11-4de268c-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_wayland/5.15.11-4de268c_armv7l/qt5_wayland-5.15.11-4de268c-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_wayland/5.15.11-4de268c_x86_64/qt5_wayland-5.15.11-4de268c-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5afef355eb2a6fb5d97a4e06e06e2fc13f0147f97e5c841167473878788b5ab1',
      armv7l: '5afef355eb2a6fb5d97a4e06e06e2fc13f0147f97e5c841167473878788b5ab1',

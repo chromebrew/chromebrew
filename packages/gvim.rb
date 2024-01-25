@@ -10,11 +10,6 @@ class Gvim < Autotools
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.1.0_armv7l/gvim-9.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.1.0_armv7l/gvim-9.1.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvim/9.1.0_x86_64/gvim-9.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f4615cb399facedfa05ed67885a20943e4f713827b47f392e5ff7121c63e9904',
      armv7l: 'f4615cb399facedfa05ed67885a20943e4f713827b47f392e5ff7121c63e9904',

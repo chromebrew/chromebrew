@@ -10,12 +10,6 @@ class Hdf5 < Package
   source_sha256 '68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdf5/1.10.5_armv7l/hdf5-1.10.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdf5/1.10.5_armv7l/hdf5-1.10.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdf5/1.10.5_i686/hdf5-1.10.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdf5/1.10.5_x86_64/hdf5-1.10.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e1f92f38039d13d530ef8dee9f0c2bf3ddb9be9be3a60adee6bb82dc87a62a3a',
      armv7l: 'e1f92f38039d13d530ef8dee9f0c2bf3ddb9be9be3a60adee6bb82dc87a62a3a',

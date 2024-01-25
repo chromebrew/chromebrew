@@ -10,12 +10,6 @@ class Cfitsio < Autotools
   source_sha256 '734ab0198714fe43eab94a67d6987085bde5573e6babde4d05799a8d04ebb04c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cfitsio/4.3.0_armv7l/cfitsio-4.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cfitsio/4.3.0_armv7l/cfitsio-4.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cfitsio/4.3.0_i686/cfitsio-4.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cfitsio/4.3.0_x86_64/cfitsio-4.3.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e20497a3684e21bf81000fc303fb0ade188df0f2068cc7918e0a534732d37a40',
      armv7l: 'e20497a3684e21bf81000fc303fb0ade188df0f2068cc7918e0a534732d37a40',

@@ -10,11 +10,6 @@ class Libgnome_keyring < Package
   source_sha256 'c4c178fbb05f72acc484d22ddb0568f7532c409b0a13e06513ff54b91e947783'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgnome_keyring/3.12.0_armv7l/libgnome_keyring-3.12.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgnome_keyring/3.12.0_armv7l/libgnome_keyring-3.12.0-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgnome_keyring/3.12.0_x86_64/libgnome_keyring-3.12.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'db8b7355277ec22342f1cebe983de9a70dc0638c0fe5f42e7c4ef24ea6b42c81',
      armv7l: 'db8b7355277ec22342f1cebe983de9a70dc0638c0fe5f42e7c4ef24ea6b42c81',

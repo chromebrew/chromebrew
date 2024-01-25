@@ -10,12 +10,6 @@ class Uget < Package
   source_sha256 '445cf58799a9a06e08cd4180b172f4b0a8a8c2ee82da732bdfe2dd502d949936'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uget/2.2.1_armv7l/uget-2.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uget/2.2.1_armv7l/uget-2.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uget/2.2.1_i686/uget-2.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/uget/2.2.1_x86_64/uget-2.2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ca69d322f0584a63365f90a390adc5b5c543fc8554091f27b23b8cdd2dc60a5a',
      armv7l: 'ca69d322f0584a63365f90a390adc5b5c543fc8554091f27b23b8cdd2dc60a5a',

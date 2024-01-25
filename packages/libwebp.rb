@@ -10,11 +10,6 @@ class Libwebp < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.2_armv7l/libwebp-1.3.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.2_armv7l/libwebp-1.3.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwebp/1.3.2_x86_64/libwebp-1.3.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',
      armv7l: '90ddd5f4be685858ebf374b8b76d21633de1a6da288018f4201930906967edd2',

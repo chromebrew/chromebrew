@@ -10,12 +10,6 @@ class Libebml < Package
   git_hashtag "release-#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_armv7l/libebml-1.4.2-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_armv7l/libebml-1.4.2-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_i686/libebml-1.4.2-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libebml/1.4.2_x86_64/libebml-1.4.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '4adbc9698b598878d1ca9fdc21c76361bfb9e3f08adeb8ff50570a866e14b0ba',
       armv7l: '4adbc9698b598878d1ca9fdc21c76361bfb9e3f08adeb8ff50570a866e14b0ba',

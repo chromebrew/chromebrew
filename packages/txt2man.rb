@@ -10,12 +10,6 @@ class Txt2man < Package
   source_sha256 '984825c5fd0cb3495160bf3277f327078081a8dc219dc466509e307ec9a2b52a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/txt2man/1.5.6-1_armv7l/txt2man-1.5.6-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/txt2man/1.5.6-1_armv7l/txt2man-1.5.6-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/txt2man/1.5.6-1_i686/txt2man-1.5.6-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/txt2man/1.5.6-1_x86_64/txt2man-1.5.6-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0b6b3292d3f543f885b9aa8bfa91e0ffc25c539e73f412604077855bc2c8f5d7',
      armv7l: '0b6b3292d3f543f885b9aa8bfa91e0ffc25c539e73f412604077855bc2c8f5d7',

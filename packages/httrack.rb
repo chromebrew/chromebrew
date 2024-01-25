@@ -10,12 +10,6 @@ class Httrack < Package
   source_sha256 '3477a0e5568e241c63c9899accbfcdb6aadef2812fcce0173688567b4c7d4025'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-2_armv7l/httrack-3.49.2-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-2_armv7l/httrack-3.49.2-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-2_i686/httrack-3.49.2-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httrack/3.49.2-2_x86_64/httrack-3.49.2-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '65be9f112bd18ec49d3d0425e9b49d9c0e4a1242419ea1b4bb28ac68ec29cc8b',
      armv7l: '65be9f112bd18ec49d3d0425e9b49d9c0e4a1242419ea1b4bb28ac68ec29cc8b',

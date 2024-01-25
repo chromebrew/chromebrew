@@ -13,12 +13,6 @@ class Shaderc < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_armv7l/shaderc-2023.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_armv7l/shaderc-2023.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_i686/shaderc-2023.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shaderc/2023.8_x86_64/shaderc-2023.8-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0c21288bcfcc9f477a938a4a3a33c1bc9c8b44d473363547cce3dd6af5d91714',
      armv7l: '0c21288bcfcc9f477a938a4a3a33c1bc9c8b44d473363547cce3dd6af5d91714',

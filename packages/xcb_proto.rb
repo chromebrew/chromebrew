@@ -11,12 +11,6 @@ class Xcb_proto < Autotools
   git_hashtag "xcb-proto-#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.16.0-py3.12_armv7l/xcb_proto-1.16.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.16.0-py3.12_armv7l/xcb_proto-1.16.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.16.0-py3.12_i686/xcb_proto-1.16.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_proto/1.16.0-py3.12_x86_64/xcb_proto-1.16.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4c08e16bb63c40aa0fcf49e6edcdf7db32796c47a46ad6d83b31d1ed6b2c71b7',
      armv7l: '4c08e16bb63c40aa0fcf49e6edcdf7db32796c47a46ad6d83b31d1ed6b2c71b7',

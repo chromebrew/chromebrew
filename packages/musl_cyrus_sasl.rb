@@ -10,12 +10,6 @@ class Musl_cyrus_sasl < Package
   source_sha256 '26866b1549b00ffd020f188a43c258017fa1c382b3ddadd8201536f72efb05d5'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_armv7l/musl_cyrus_sasl-2.1.27-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_i686/musl_cyrus_sasl-2.1.27-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cyrus_sasl/2.1.27_x86_64/musl_cyrus_sasl-2.1.27-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '2821b2a97fddab00c8cb159f5c4dc85595a6567c0b3ec83c37f4e7ff3afdfade',
      armv7l: '2821b2a97fddab00c8cb159f5c4dc85595a6567c0b3ec83c37f4e7ff3afdfade',

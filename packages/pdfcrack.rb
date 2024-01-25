@@ -10,12 +10,6 @@ class Pdfcrack < Package
   source_sha256 '7865b203074ccfd5c612c8ce00c46ffcb4fabaa26154ce9304dfc668c7cb73ef'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfcrack/0.16_armv7l/pdfcrack-0.16-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfcrack/0.16_armv7l/pdfcrack-0.16-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfcrack/0.16_i686/pdfcrack-0.16-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdfcrack/0.16_x86_64/pdfcrack-0.16-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f2aeae2872eddaa3034f024d80a6a10302ba88274c07b77112aac24f7146f4e9',
      armv7l: 'f2aeae2872eddaa3034f024d80a6a10302ba88274c07b77112aac24f7146f4e9',

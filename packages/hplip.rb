@@ -10,10 +10,6 @@ class Hplip < Package
   source_sha256 'a76c2ac8deb31ddb5f0da31398d25ac57440928a0692dcb060a48daa718e69ed'
   binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.23.12_x86_64/hplip-3.23.12-chromeos-x86_64.tar.zst',
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hplip/3.23.12_i686/hplip-3.23.12-chromeos-i686.tar.zst'
-  })
   binary_sha256({
     x86_64: '6776701484130b500892959a852ce9a8c8ea8054974d64ce4539c00af64d645f',
       i686: '21e9b1238a06179554894a61c8a0e7505e25d4259d798160a500c92c37661c95'

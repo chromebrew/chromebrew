@@ -10,12 +10,6 @@ class Aspell_en < Package
   source_sha256 '4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_en/2020.12.07-0_armv7l/aspell_en-2020.12.07-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_en/2020.12.07-0_armv7l/aspell_en-2020.12.07-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_en/2020.12.07-0_i686/aspell_en-2020.12.07-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_en/2020.12.07-0_x86_64/aspell_en-2020.12.07-0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a3f897c049eb4c7b6caf9c1d08c894b6f9541681a0ce9cd2b664226a1574d69d',
      armv7l: 'a3f897c049eb4c7b6caf9c1d08c894b6f9541681a0ce9cd2b664226a1574d69d',

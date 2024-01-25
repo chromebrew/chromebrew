@@ -10,12 +10,6 @@ class Cryptsetup < Package
   source_sha256 '4d6cca04c1f5ff4a68d045d190efb2623087eda0274ded92f92a4b6911e501d4'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cryptsetup/2.0.3_armv7l/cryptsetup-2.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cryptsetup/2.0.3_armv7l/cryptsetup-2.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cryptsetup/2.0.3_i686/cryptsetup-2.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cryptsetup/2.0.3_x86_64/cryptsetup-2.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '336db165a18055d522037b89e90dc97a2c967e3c4c14a84b77a2effb2b6f8618',
      armv7l: '336db165a18055d522037b89e90dc97a2c967e3c4c14a84b77a2effb2b6f8618',

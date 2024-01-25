@@ -10,12 +10,6 @@ class Libofx < Package
   source_sha256 '57eaf97cddbaf82c24f26b8f5cf8b2fbfd4969c74500a2c9acc9082b83bcc0e4'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libofx/0.9.13_armv7l/libofx-0.9.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libofx/0.9.13_armv7l/libofx-0.9.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libofx/0.9.13_i686/libofx-0.9.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libofx/0.9.13_x86_64/libofx-0.9.13-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'da3d2fafad2db44785980c516084f122b882d2816c58f52f927942efa49d808b',
      armv7l: 'da3d2fafad2db44785980c516084f122b882d2816c58f52f927942efa49d808b',

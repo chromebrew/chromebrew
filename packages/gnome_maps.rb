@@ -10,11 +10,6 @@ class Gnome_maps < Package
   source_sha256 '5e580c23a86f6b63d7c923aac7e6351e7b6765c74298f6a811d5a398a378db12'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_maps/43.0_armv7l/gnome_maps-43.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_maps/43.0_armv7l/gnome_maps-43.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_maps/43.0_x86_64/gnome_maps-43.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f3f61311c9873f36bb12a0d64fef535cf92dc7ef15e88e209890e0f5d6ed2514',
      armv7l: 'f3f61311c9873f36bb12a0d64fef535cf92dc7ef15e88e209890e0f5d6ed2514',

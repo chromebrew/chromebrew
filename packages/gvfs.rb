@@ -10,11 +10,6 @@ class Gvfs < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.4_armv7l/gvfs-1.50.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.4_armv7l/gvfs-1.50.4-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gvfs/1.50.4_x86_64/gvfs-1.50.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4fb1df08690c8023ef4c8e5394256173398024567bc00d926dce0440d39539b0',
      armv7l: '4fb1df08690c8023ef4c8e5394256173398024567bc00d926dce0440d39539b0',

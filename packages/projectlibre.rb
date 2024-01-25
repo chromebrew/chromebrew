@@ -10,12 +10,6 @@ class Projectlibre < Package
   source_sha256 '65ca96728eb5a31c3e23eb43181dde367d785a86b82f330ca52bc7b51c74a5bb'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/projectlibre/1.9.1_armv7l/projectlibre-1.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/projectlibre/1.9.1_armv7l/projectlibre-1.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/projectlibre/1.9.1_i686/projectlibre-1.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/projectlibre/1.9.1_x86_64/projectlibre-1.9.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f7df4bbee8466e6cfffd9c4e22f5982c1762abeebf699732ea114b9fa9daf5a6',
      armv7l: 'f7df4bbee8466e6cfffd9c4e22f5982c1762abeebf699732ea114b9fa9daf5a6',

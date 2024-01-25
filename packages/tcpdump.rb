@@ -10,12 +10,6 @@ class Tcpdump < Package
   source_sha256 '0232231bb2f29d6bf2426e70a08a7e0c63a0d59a9b44863b7f5e2357a6e49fea'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.99.4_armv7l/tcpdump-4.99.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.99.4_armv7l/tcpdump-4.99.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.99.4_i686/tcpdump-4.99.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpdump/4.99.4_x86_64/tcpdump-4.99.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'baa219a275ccc1a3f96c916257fce94b79694595aabf85617e37767c9b9eb322',
      armv7l: 'baa219a275ccc1a3f96c916257fce94b79694595aabf85617e37767c9b9eb322',

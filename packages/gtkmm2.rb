@@ -10,12 +10,6 @@ class Gtkmm2 < Package
   source_sha256 '0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm2/2.24.5_armv7l/gtkmm2-2.24.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm2/2.24.5_armv7l/gtkmm2-2.24.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm2/2.24.5_i686/gtkmm2-2.24.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtkmm2/2.24.5_x86_64/gtkmm2-2.24.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'dac13fa160bade1d77733cc368cc55a901285d2901bc5a0e58e667cc9e5158d1',
      armv7l: 'dac13fa160bade1d77733cc368cc55a901285d2901bc5a0e58e667cc9e5158d1',

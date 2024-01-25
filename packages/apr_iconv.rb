@@ -10,12 +10,6 @@ class Apr_iconv < Package
   source_sha256 '7d454e0fe32f2385f671000e3b755839d16aabd7291e3947c973c90377c35313'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_armv7l/apr_iconv-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_armv7l/apr_iconv-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_i686/apr_iconv-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apr_iconv/1.2.2_x86_64/apr_iconv-1.2.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6ec314d1d6143a855e59d5a3b76db311e3ba60b980b98be3d639c39e74949fed',
      armv7l: '6ec314d1d6143a855e59d5a3b76db311e3ba60b980b98be3d639c39e74949fed',

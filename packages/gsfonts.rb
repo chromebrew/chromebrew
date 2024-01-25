@@ -10,12 +10,6 @@ class Gsfonts < Package
   source_sha256 '0eb6f356119f2e49b2563210852e17f57f9dcc5755f350a69a46a0d641a0c401'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsfonts/8.11_armv7l/gsfonts-8.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsfonts/8.11_armv7l/gsfonts-8.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsfonts/8.11_i686/gsfonts-8.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsfonts/8.11_x86_64/gsfonts-8.11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'fd8f867e14daa6927137142e6ab5d72ca3116981371608a09674191b22ab7be4',
      armv7l: 'fd8f867e14daa6927137142e6ab5d72ca3116981371608a09674191b22ab7be4',

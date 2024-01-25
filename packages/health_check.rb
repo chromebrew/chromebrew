@@ -10,12 +10,6 @@ class Health_check < Package
   source_sha256 'be4f14affaa80dc634cc4cf41efc0b3164e5b1758674762f0a2322d2ccbfbd52'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/health_check/0.02.08_armv7l/health_check-0.02.08-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/health_check/0.02.08_armv7l/health_check-0.02.08-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/health_check/0.02.08_i686/health_check-0.02.08-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/health_check/0.02.08_x86_64/health_check-0.02.08-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1bed3ca7034d5e94be02ceecd5ddf14ce7faf8abcee1c9de3c6053ae8eabd179',
      armv7l: '1bed3ca7034d5e94be02ceecd5ddf14ce7faf8abcee1c9de3c6053ae8eabd179',

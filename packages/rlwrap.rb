@@ -10,12 +10,6 @@ class Rlwrap < Package
   source_sha256 '29e5a850fbe4753f353b0734e46ec0da043621bdcf7b52a89b77517f3941aade'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rlwrap/0.43_armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rlwrap/0.43_armv7l/rlwrap-0.43-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rlwrap/0.43_i686/rlwrap-0.43-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rlwrap/0.43_x86_64/rlwrap-0.43-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bc4979020c1fe51241c491c674283c4f0a0b51521baca9b82553d69b6e984855',
      armv7l: 'bc4979020c1fe51241c491c674283c4f0a0b51521baca9b82553d69b6e984855',

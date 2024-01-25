@@ -10,12 +10,6 @@ class Duplicity < Package
   source_sha256 '488af2ecadb059214074f2b3ac51bf9d7de55a800e37ccc2f1075cd0a74940e3'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.8.20_armv7l/duplicity-0.8.20-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.8.20_armv7l/duplicity-0.8.20-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.8.20_i686/duplicity-0.8.20-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/duplicity/0.8.20_x86_64/duplicity-0.8.20-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'bcab1c51132837f0455ac7eeed0d9247c8c7ba4bc07cce885d25acf1dc083eb3',
      armv7l: 'bcab1c51132837f0455ac7eeed0d9247c8c7ba4bc07cce885d25acf1dc083eb3',

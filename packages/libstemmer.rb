@@ -10,12 +10,6 @@ class Libstemmer < Package
   source_sha256 '9bbd1bd2b7829f6bdafba97667fc795b3a80785c2285a5b73c3006b0bf3db688'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstemmer/78c149_armv7l/libstemmer-78c149-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstemmer/78c149_armv7l/libstemmer-78c149-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstemmer/78c149_i686/libstemmer-78c149-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstemmer/78c149_x86_64/libstemmer-78c149-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '854bc6cb2855c76b052d49fc8ac0c2dbc3766fede27ba6eac71846eef85f9351',
      armv7l: '854bc6cb2855c76b052d49fc8ac0c2dbc3766fede27ba6eac71846eef85f9351',

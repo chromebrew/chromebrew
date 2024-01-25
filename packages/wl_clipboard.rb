@@ -10,12 +10,6 @@ class Wl_clipboard < Package
   source_sha256 '2c42f182432adabe56da0f1144d5fcc40b7aae3d8e14d2bc4dc4c3f91b51808d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wl_clipboard/2.0.0_armv7l/wl_clipboard-2.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wl_clipboard/2.0.0_armv7l/wl_clipboard-2.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wl_clipboard/2.0.0_i686/wl_clipboard-2.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wl_clipboard/2.0.0_x86_64/wl_clipboard-2.0.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '66cbdc3e76e9325a561d749cbdf84d2f0bacaef2f3be3c2b0c950f19d466517d',
      armv7l: '66cbdc3e76e9325a561d749cbdf84d2f0bacaef2f3be3c2b0c950f19d466517d',

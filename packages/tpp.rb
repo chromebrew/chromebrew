@@ -10,12 +10,6 @@ class Tpp < Package
   source_sha256 '68e3de94fbfb62bd91a6d635581bcf8671a306fffe615d00294d388ad91e1b5f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tpp/1.3.1_armv7l/tpp-1.3.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tpp/1.3.1_armv7l/tpp-1.3.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tpp/1.3.1_i686/tpp-1.3.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tpp/1.3.1_x86_64/tpp-1.3.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e9c8e83cdd2ed2571e2959b47b33b22f621eb78fd3ef10942c6b30c50a22d823',
      armv7l: 'e9c8e83cdd2ed2571e2959b47b33b22f621eb78fd3ef10942c6b30c50a22d823',

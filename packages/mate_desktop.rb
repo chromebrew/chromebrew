@@ -10,11 +10,6 @@ class Mate_desktop < Autotools
   source_sha256 'ec3b6f3668026f933e033714daf858387c3e8d9fa46202c3d74deefe5f7b8be7'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_desktop/1.27.2_armv7l/mate_desktop-1.27.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_desktop/1.27.2_armv7l/mate_desktop-1.27.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mate_desktop/1.27.2_x86_64/mate_desktop-1.27.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2bdbf679155c30c044907e476972129fa042e7d6125532a964b358a097bb4e5a',
      armv7l: '2bdbf679155c30c044907e476972129fa042e7d6125532a964b358a097bb4e5a',

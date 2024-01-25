@@ -10,12 +10,6 @@ class Libdb < Package
   git_hashtag 'debian/5.3.28+dfsg2-1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28-dfsg2-1_armv7l/libdb-5.3.28-dfsg2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28-dfsg2-1_armv7l/libdb-5.3.28-dfsg2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28-dfsg2-1_i686/libdb-5.3.28-dfsg2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdb/5.3.28-dfsg2-1_x86_64/libdb-5.3.28-dfsg2-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '13c6a2e5b7482bf638b3a37d924a31a782dfc21dd9ac6834885e11d0d7730223',
      armv7l: '13c6a2e5b7482bf638b3a37d924a31a782dfc21dd9ac6834885e11d0d7730223',

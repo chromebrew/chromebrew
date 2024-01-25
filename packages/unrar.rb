@@ -10,12 +10,6 @@ class Unrar < Package
   source_sha256 'c590e70a745d840ae9b9f05ba6c449438838c8280d76ce796a26b3fcd0a1972e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_armv7l/unrar-5.6.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_armv7l/unrar-5.6.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_i686/unrar-5.6.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unrar/5.6.3_x86_64/unrar-5.6.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ebf07529e4586d9494a41e0c0bc08d9c45b706a953ed9dc224b93e67f6b26cab',
      armv7l: 'ebf07529e4586d9494a41e0c0bc08d9c45b706a953ed9dc224b93e67f6b26cab',

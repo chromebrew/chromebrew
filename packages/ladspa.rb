@@ -10,12 +10,6 @@ class Ladspa < Package
   source_sha256 '27d24f279e4b81bd17ecbdcc38e4c42991bb388826c0b200067ce0eb59d3da5b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_armv7l/ladspa-1.17-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_armv7l/ladspa-1.17-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_i686/ladspa-1.17-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ladspa/1.17_x86_64/ladspa-1.17-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '595b2783890ec41817e5bd269dcdb80c44326b1746d9815e151c9b5554040471',
      armv7l: '595b2783890ec41817e5bd269dcdb80c44326b1746d9815e151c9b5554040471',

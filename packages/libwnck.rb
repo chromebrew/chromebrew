@@ -10,12 +10,6 @@ class Libwnck < Package
   source_sha256 '9595835cf28d0fc6af5526a18f77f2fcf3ca8c09e36741bb33915b6e69b8e3ca'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwnck/3.32.0_armv7l/libwnck-3.32.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwnck/3.32.0_armv7l/libwnck-3.32.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwnck/3.32.0_i686/libwnck-3.32.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwnck/3.32.0_x86_64/libwnck-3.32.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '50d51f55bb6f0866732dfaf94ea2cc05dbb66651831642ffeaaed25675e758a3',
      armv7l: '50d51f55bb6f0866732dfaf94ea2cc05dbb66651831642ffeaaed25675e758a3',

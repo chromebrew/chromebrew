@@ -10,12 +10,6 @@ class Gtksourceview_5 < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_armv7l/gtksourceview_5-5.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_armv7l/gtksourceview_5-5.6.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_i686/gtksourceview_5-5.6.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtksourceview_5/5.6.1_x86_64/gtksourceview_5-5.6.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0f8d59796235811fe0293bc1b812a4bb65a717c4ba05a6accd7cd850d1b55208',
      armv7l: '0f8d59796235811fe0293bc1b812a4bb65a717c4ba05a6accd7cd850d1b55208',

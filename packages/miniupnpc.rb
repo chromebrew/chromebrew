@@ -10,12 +10,6 @@ class Miniupnpc < Package
   source_sha256 '19c5b6cf8f3fc31d5e641c797b36ecca585909c7f3685a5c1a64325340537c94'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniupnpc/2.1_armv7l/miniupnpc-2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniupnpc/2.1_armv7l/miniupnpc-2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniupnpc/2.1_i686/miniupnpc-2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/miniupnpc/2.1_x86_64/miniupnpc-2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '312d76ffa9e5f86e7d1556b49a875387455cea3914f359aa2e9b9dee761a6adb',
      armv7l: '312d76ffa9e5f86e7d1556b49a875387455cea3914f359aa2e9b9dee761a6adb',

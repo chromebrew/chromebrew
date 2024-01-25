@@ -10,12 +10,6 @@ class Thefuck < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/thefuck/3.31_armv7l/thefuck-3.31-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/thefuck/3.31_armv7l/thefuck-3.31-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/thefuck/3.31_i686/thefuck-3.31-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/thefuck/3.31_x86_64/thefuck-3.31-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'cdef429be5b7192bc2d6c01f11806b5e71e08b02862a81e1463cebb7c04f59a5',
      armv7l: 'cdef429be5b7192bc2d6c01f11806b5e71e08b02862a81e1463cebb7c04f59a5',

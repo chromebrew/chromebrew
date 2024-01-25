@@ -13,12 +13,6 @@ class Luajit_mpack < Package
   source_sha256 'e94d5cf95d7479dca00ff23755fe05a440f11f9d203635e862ad8842de95f40a'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_mpack/1.0.9_armv7l/luajit_mpack-1.0.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_mpack/1.0.9_armv7l/luajit_mpack-1.0.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_mpack/1.0.9_i686/luajit_mpack-1.0.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_mpack/1.0.9_x86_64/luajit_mpack-1.0.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1be27ef45bfaf01f91a0be5ff9a4515224176a0c480bc1b475b4ab9e2519f46b',
      armv7l: '1be27ef45bfaf01f91a0be5ff9a4515224176a0c480bc1b475b4ab9e2519f46b',

@@ -11,11 +11,6 @@ class Py3_pycairo < Python
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.25.0-py3.12_armv7l/py3_pycairo-1.25.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.25.0-py3.12_armv7l/py3_pycairo-1.25.0-py3.12-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pycairo/1.25.0-py3.12_x86_64/py3_pycairo-1.25.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b7cc5576a9bd92b01209a26a582f539dad7b4efe375ac1aeeecc6da956e27bc9',
      armv7l: 'b7cc5576a9bd92b01209a26a582f539dad7b4efe375ac1aeeecc6da956e27bc9',

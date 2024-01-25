@@ -10,12 +10,6 @@ class Netsurf < Package
   source_sha256 '36484429e193614685c2ff246f55bd0a6dddf31a018bee45e0d1f7c28851995e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_armv7l/netsurf-3.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_armv7l/netsurf-3.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_i686/netsurf-3.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netsurf/3.10_x86_64/netsurf-3.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6227ff3b0f01bfc07874340c33c598dfda687be81c0475f067a93c10ae0d14e4',
      armv7l: '6227ff3b0f01bfc07874340c33c598dfda687be81c0475f067a93c10ae0d14e4',

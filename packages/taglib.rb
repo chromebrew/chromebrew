@@ -10,12 +10,6 @@ class Taglib < Package
   source_sha256 'c8da2b10f1bfec2cd7dbfcd33f4a2338db0765d851a50583d410bacf055cfd0b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.13.1_armv7l/taglib-1.13.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.13.1_armv7l/taglib-1.13.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.13.1_i686/taglib-1.13.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/taglib/1.13.1_x86_64/taglib-1.13.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dcfa97bc61b0aa4878a96cfa82177614bc9bc1095cadf265f9065ba43a3e1f64',
      armv7l: 'dcfa97bc61b0aa4878a96cfa82177614bc9bc1095cadf265f9065ba43a3e1f64',

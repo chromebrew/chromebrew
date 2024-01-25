@@ -10,12 +10,6 @@ class Pkg_7_zip < Package
   source_sha256 '213d594407cb8efcba36610b152ca4921eda14163310b43903d13e68313e1e39'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkg_7_zip/21.07_armv7l/pkg_7_zip-21.07-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkg_7_zip/21.07_armv7l/pkg_7_zip-21.07-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkg_7_zip/21.07_i686/pkg_7_zip-21.07-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pkg_7_zip/21.07_x86_64/pkg_7_zip-21.07-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '83e2070e6eefb32e53260f7d029d3ad7d72fb1c6c64890cd24d0574ffc5e33e1',
      armv7l: '83e2070e6eefb32e53260f7d029d3ad7d72fb1c6c64890cd24d0574ffc5e33e1',

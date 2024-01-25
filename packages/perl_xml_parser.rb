@@ -10,12 +10,6 @@ class Perl_xml_parser < PERL
   source_sha256 'd331332491c51cccfb4cb94ffc44f9cd73378e618498d4a37df9e043661c515d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_parser/2.46-perl5.38.2_armv7l/perl_xml_parser-2.46-perl5.38.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_parser/2.46-perl5.38.2_armv7l/perl_xml_parser-2.46-perl5.38.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_parser/2.46-perl5.38.2_i686/perl_xml_parser-2.46-perl5.38.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_xml_parser/2.46-perl5.38.2_x86_64/perl_xml_parser-2.46-perl5.38.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '145526882871fa42720440e83ce399115861019371e4078877557f4ab579fd63',
      armv7l: '145526882871fa42720440e83ce399115861019371e4078877557f4ab579fd63',

@@ -10,12 +10,6 @@ class Xmlclitools < Package
   source_sha256 '262ce2f119a278ee2f965722f4d23b6b67f8baaa594858b9a0124849726e5a63'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlclitools/1.61-1_armv7l/xmlclitools-1.61-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlclitools/1.61-1_armv7l/xmlclitools-1.61-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlclitools/1.61-1_i686/xmlclitools-1.61-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xmlclitools/1.61-1_x86_64/xmlclitools-1.61-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e22665bdf25bbce519a68103f4021ee803006368bbea85f9106b5a6dc8229dbf',
      armv7l: 'e22665bdf25bbce519a68103f4021ee803006368bbea85f9106b5a6dc8229dbf',

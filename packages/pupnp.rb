@@ -10,12 +10,6 @@ class Pupnp < Package
   git_hashtag "release-#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pupnp/1.14.12_armv7l/pupnp-1.14.12-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pupnp/1.14.12_armv7l/pupnp-1.14.12-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pupnp/1.14.12_i686/pupnp-1.14.12-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pupnp/1.14.12_x86_64/pupnp-1.14.12-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'dfd091b7ed9f05b4f430b5f222ec455d682e892b2c1cb8335a7128c6e31c9c64',
       armv7l: 'dfd091b7ed9f05b4f430b5f222ec455d682e892b2c1cb8335a7128c6e31c9c64',

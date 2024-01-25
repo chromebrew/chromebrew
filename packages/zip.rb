@@ -10,12 +10,6 @@ class Zip < Package
   source_sha256 'f0e8bb1f9b7eb0b01285495a2699df3a4b766784c1765a8f1aeedf63c0806369'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zip/3.0-11_armv7l/zip-3.0-11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zip/3.0-11_armv7l/zip-3.0-11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zip/3.0-11_i686/zip-3.0-11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zip/3.0-11_x86_64/zip-3.0-11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1905c224b2b73e81c3622c3f440540953bff6516d514addd1f1e09a75573d34b',
      armv7l: '1905c224b2b73e81c3622c3f440540953bff6516d514addd1f1e09a75573d34b',

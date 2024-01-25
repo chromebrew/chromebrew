@@ -10,12 +10,6 @@ class Mksh < Package
   source_sha256 '3d101154182d52ae54ef26e1360c95bc89c929d28859d378cc1c84f3439dbe75'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mksh/0.57_armv7l/mksh-0.57-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mksh/0.57_armv7l/mksh-0.57-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mksh/0.57_i686/mksh-0.57-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mksh/0.57_x86_64/mksh-0.57-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ff71eee5a37906009ec8252e0b09400ea0acbf7519152ba34634baa59621f0a2',
      armv7l: 'ff71eee5a37906009ec8252e0b09400ea0acbf7519152ba34634baa59621f0a2',

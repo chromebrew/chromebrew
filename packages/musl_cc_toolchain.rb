@@ -18,11 +18,6 @@ class Musl_cc_toolchain < Package
   })
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cc_toolchain/1.2.2-b76f37fd_armv7l/musl_cc_toolchain-1.2.2-b76f37fd-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cc_toolchain/1.2.2-b76f37fd_armv7l/musl_cc_toolchain-1.2.2-b76f37fd-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_cc_toolchain/1.2.2-b76f37fd_x86_64/musl_cc_toolchain-1.2.2-b76f37fd-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '56b9685504b6ae0894b4c0e9e439c894fc3e9222124982e5c3321279c34de253',
      armv7l: '56b9685504b6ae0894b4c0e9e439c894fc3e9222124982e5c3321279c34de253',

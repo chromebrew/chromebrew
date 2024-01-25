@@ -10,12 +10,6 @@ class Coreutils < Autotools
   source_sha256 'ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.4_armv7l/coreutils-9.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.4_armv7l/coreutils-9.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.4_i686/coreutils-9.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/coreutils/9.4_x86_64/coreutils-9.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e3227e245094451d3dbc2f05aeef64b56149340b54da864c613ab124d2e5e413',
      armv7l: 'e3227e245094451d3dbc2f05aeef64b56149340b54da864c613ab124d2e5e413',

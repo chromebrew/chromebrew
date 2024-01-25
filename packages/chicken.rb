@@ -10,12 +10,6 @@ class Chicken < Package
   source_sha256 '5c1101a8d8faabfd500ad69101e0c7c8bd826c68970f89c270640470e7b84b4b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chicken/5.1.0_armv7l/chicken-5.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chicken/5.1.0_armv7l/chicken-5.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chicken/5.1.0_i686/chicken-5.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chicken/5.1.0_x86_64/chicken-5.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '508dcf75c52f3d316a9479e593654a6db5fd8cfa54e874e673750f446a0ed8c4',
      armv7l: '508dcf75c52f3d316a9479e593654a6db5fd8cfa54e874e673750f446a0ed8c4',

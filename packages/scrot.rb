@@ -10,12 +10,6 @@ class Scrot < Package
   source_sha256 '05f91be9a32eb912f8f2b9abdb3dca83166f77ed0a5a430b6766067ab13c3b18'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.8.1_armv7l/scrot-1.8.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.8.1_armv7l/scrot-1.8.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.8.1_i686/scrot-1.8.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrot/1.8.1_x86_64/scrot-1.8.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '369e6e791ae3be26802eb410e76e87ef94aacf9a22d8770f8553d08393359c19',
      armv7l: '369e6e791ae3be26802eb410e76e87ef94aacf9a22d8770f8553d08393359c19',

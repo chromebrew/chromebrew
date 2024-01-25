@@ -10,12 +10,6 @@ class Libgc < Package
   source_sha256 '436a0ddc67b1ac0b0405b61a9675bca9e075c8156f4debd1d06f3a56c7cd289d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgc/8.0.4_armv7l/libgc-8.0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgc/8.0.4_armv7l/libgc-8.0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgc/8.0.4_i686/libgc-8.0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgc/8.0.4_x86_64/libgc-8.0.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ae5052fb0631ca207dee9178f18da34ed5bb1e8da8c45249dc23e6260763e7f8',
      armv7l: 'ae5052fb0631ca207dee9178f18da34ed5bb1e8da8c45249dc23e6260763e7f8',

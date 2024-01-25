@@ -10,12 +10,6 @@ class Musl_zstd < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_armv7l/musl_zstd-1.5.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_armv7l/musl_zstd-1.5.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_i686/musl_zstd-1.5.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_zstd/1.5.4_x86_64/musl_zstd-1.5.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cc967734abc1d7a5bcd5d98145c320f503681e4e61a8778bc3c10cb398b3ddde',
      armv7l: 'cc967734abc1d7a5bcd5d98145c320f503681e4e61a8778bc3c10cb398b3ddde',

@@ -10,12 +10,6 @@ class Mtr < Package
   source_sha256 '229c673d637bd7dbb96471623785a47e85da0b1944978200c949994c1e6af10d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtr/0.93_armv7l/mtr-0.93-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtr/0.93_armv7l/mtr-0.93-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtr/0.93_i686/mtr-0.93-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtr/0.93_x86_64/mtr-0.93-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '10827000fd244c4a001077b013ed89d9ee156297764a59b763938e2e261d1965',
      armv7l: '10827000fd244c4a001077b013ed89d9ee156297764a59b763938e2e261d1965',

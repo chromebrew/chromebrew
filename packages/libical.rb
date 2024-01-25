@@ -10,11 +10,6 @@ class Libical < Package
   source_sha256 'f933b3e6cf9d56a35bb5625e8e4a9c3a50239a85aea05ed842932c1a1dc336b4'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_armv7l/libical-3.0.10-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_armv7l/libical-3.0.10-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libical/3.0.10_x86_64/libical-3.0.10-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'eaf30d94276f73f41c57f4c4ef520d90db8dd26c6fabd87ec06eb427d7630c1f',
      armv7l: 'eaf30d94276f73f41c57f4c4ef520d90db8dd26c6fabd87ec06eb427d7630c1f',

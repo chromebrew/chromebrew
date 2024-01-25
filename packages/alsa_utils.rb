@@ -10,11 +10,6 @@ class Alsa_utils < Package
   source_sha256 'fde581549326489e9acb2b2d9ddcb146ee85a1698b817f7f4891f49c9f6fc11f'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.9_armv7l/alsa_utils-1.2.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.9_armv7l/alsa_utils-1.2.9-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/alsa_utils/1.2.9_x86_64/alsa_utils-1.2.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7480e0f374071248b7bb7f3d5b4bf7b033f614303096707501836df0778aa0d9',
      armv7l: '7480e0f374071248b7bb7f3d5b4bf7b033f614303096707501836df0778aa0d9',

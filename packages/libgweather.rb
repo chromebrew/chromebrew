@@ -10,12 +10,6 @@ class Libgweather < Package
   source_sha256 '028cdca5005a17d88e78461e72c6b5c519e2df33f2e456075aeea9dc455aca20'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/4.2.0_armv7l/libgweather-4.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/4.2.0_armv7l/libgweather-4.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/4.2.0_i686/libgweather-4.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgweather/4.2.0_x86_64/libgweather-4.2.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '40a0fe50c8ec6ac566a278531b27633a226d7aab695b91fb90b97a039775be47',
      armv7l: '40a0fe50c8ec6ac566a278531b27633a226d7aab695b91fb90b97a039775be47',

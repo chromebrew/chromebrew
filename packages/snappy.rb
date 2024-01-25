@@ -10,12 +10,6 @@ class Snappy < Package
   source_sha256 '3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snappy/1.1.7_armv7l/snappy-1.1.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snappy/1.1.7_armv7l/snappy-1.1.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snappy/1.1.7_i686/snappy-1.1.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/snappy/1.1.7_x86_64/snappy-1.1.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3ea4b27d211d42908d27ab51d5c35ad3ed4fc19300a6714040e3b2f97e9d106a',
      armv7l: '3ea4b27d211d42908d27ab51d5c35ad3ed4fc19300a6714040e3b2f97e9d106a',

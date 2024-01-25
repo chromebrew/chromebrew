@@ -10,12 +10,6 @@ class Libglu < Package
   git_hashtag "glu-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-      i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.2_i686/libglu-9.0.2-chromeos-i686.tar.zst',
-   aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.2_armv7l/libglu-9.0.2-chromeos-armv7l.tar.zst',
-    armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.2_armv7l/libglu-9.0.2-chromeos-armv7l.tar.zst',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglu/9.0.2_x86_64/libglu-9.0.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
       i686: '1019df9d060a8deffe29d83c5f7bc3ae36aad7ce5aa0922ef992630cb5a54b9c',
    aarch64: 'ac1d9cc34fd08c5fcff392ba91b28e58e99bf86b9d1575be073404516d297898',

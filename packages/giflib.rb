@@ -10,12 +10,6 @@ class Giflib < Package
   source_sha256 '31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_armv7l/giflib-5.2.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_armv7l/giflib-5.2.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_i686/giflib-5.2.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/giflib/5.2.1-1_x86_64/giflib-5.2.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3b0b0b66720c1eec34ba17441a5edb0a27b1accfcd91ea22cd52c1e5f343e95e',
      armv7l: '3b0b0b66720c1eec34ba17441a5edb0a27b1accfcd91ea22cd52c1e5f343e95e',

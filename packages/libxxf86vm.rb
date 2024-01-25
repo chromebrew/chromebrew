@@ -10,12 +10,6 @@ class Libxxf86vm < Package
   source_sha256 '247fef48b3e0e7e67129e41f1e789e8d006ba47dba1c0cdce684b9b703f888e7'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.5_armv7l/libxxf86vm-1.1.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.5_armv7l/libxxf86vm-1.1.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.5_i686/libxxf86vm-1.1.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxxf86vm/1.1.5_x86_64/libxxf86vm-1.1.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1b557e148bb31223dd3a97bab29ce8ccf666632e6e5fce6ce96226d666284493',
      armv7l: '1b557e148bb31223dd3a97bab29ce8ccf666632e6e5fce6ce96226d666284493',

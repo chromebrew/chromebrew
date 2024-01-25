@@ -10,12 +10,6 @@ class Pygobject2 < Package
   source_sha256 'bb9d25a3442ca7511385a7c01b057492095c263784ef31231ffe589d83a96a5a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject2/2.28.7_armv7l/pygobject2-2.28.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject2/2.28.7_armv7l/pygobject2-2.28.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject2/2.28.7_i686/pygobject2-2.28.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pygobject2/2.28.7_x86_64/pygobject2-2.28.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3debe985d9c09730ec6e882a781cd02982a63bff5a9c709f306c6c93d0db30fd',
      armv7l: '3debe985d9c09730ec6e882a781cd02982a63bff5a9c709f306c6c93d0db30fd',

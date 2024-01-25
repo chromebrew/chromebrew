@@ -10,12 +10,6 @@ class Libiec61883 < Package
   source_sha256 'd1e02c7e276fac37313a2f8c1c33d7a9e19282ff16f32e72435428ff5121f09e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiec61883/1.2.0_armv7l/libiec61883-1.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiec61883/1.2.0_armv7l/libiec61883-1.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiec61883/1.2.0_i686/libiec61883-1.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libiec61883/1.2.0_x86_64/libiec61883-1.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'dac204a81221d75bf4ef10ffd80da9dd1a2c7622f22c3d581585e6676ca15837',
      armv7l: 'dac204a81221d75bf4ef10ffd80da9dd1a2c7622f22c3d581585e6676ca15837',

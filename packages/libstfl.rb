@@ -10,12 +10,6 @@ class Libstfl < Package
   source_sha256 'e75ed8427905ad50faf43ed5fefd0cf7b16ee0c1ca87e15d33e360bb92aedfde'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_armv7l/libstfl-0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_i686/libstfl-0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstfl/0.23_x86_64/libstfl-0.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '68532ced7ade579392d5d3ab4e9ea70f8282f5ec8a981770e6976411f496266d',
      armv7l: '68532ced7ade579392d5d3ab4e9ea70f8282f5ec8a981770e6976411f496266d',

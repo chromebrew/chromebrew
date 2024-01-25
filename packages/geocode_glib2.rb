@@ -10,12 +10,6 @@ class Geocode_glib2 < Package
   source_sha256 'b94b7cc015825b4ad64d293093f9881f1bab6837dd2500a88d12869264332e41'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geocode_glib2/3.26.4_armv7l/geocode_glib2-3.26.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geocode_glib2/3.26.4_armv7l/geocode_glib2-3.26.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geocode_glib2/3.26.4_i686/geocode_glib2-3.26.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geocode_glib2/3.26.4_x86_64/geocode_glib2-3.26.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'cb9343b3fdd5be728e673e91d6cf3f91e25418fd32aad29a92334df2ef69e3fc',
      armv7l: 'cb9343b3fdd5be728e673e91d6cf3f91e25418fd32aad29a92334df2ef69e3fc',

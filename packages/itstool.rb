@@ -11,12 +11,6 @@ class Itstool < Package
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7-py3.12_armv7l/itstool-2.0.7-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7-py3.12_armv7l/itstool-2.0.7-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7-py3.12_i686/itstool-2.0.7-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/itstool/2.0.7-py3.12_x86_64/itstool-2.0.7-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '06017558272345296c481a9ec3efd97a4011a8440aaa5768635920bda546cc1d',
      armv7l: '06017558272345296c481a9ec3efd97a4011a8440aaa5768635920bda546cc1d',

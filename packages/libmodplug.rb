@@ -10,12 +10,6 @@ class Libmodplug < Package
   source_sha256 '457ca5a6c179656d66c01505c0d95fafaead4329b9dbaa0f997d00a3508ad9de'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0-1_armv7l/libmodplug-0.8.9.0-1-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0-1_armv7l/libmodplug-0.8.9.0-1-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0-1_i686/libmodplug-0.8.9.0-1-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmodplug/0.8.9.0-1_x86_64/libmodplug-0.8.9.0-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',
       armv7l: 'fd7b70d7e739910c13fcc14c1064c87d8824adea98f709be46e730cd0b21f2d3',

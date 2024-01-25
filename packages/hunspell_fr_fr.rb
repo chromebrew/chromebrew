@@ -10,12 +10,6 @@ class Hunspell_fr_fr < Package
   source_sha256 'bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hunspell_fr_fr/1.7.0-2_armv7l/hunspell_fr_fr-1.7.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hunspell_fr_fr/1.7.0-2_armv7l/hunspell_fr_fr-1.7.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hunspell_fr_fr/1.7.0-2_i686/hunspell_fr_fr-1.7.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hunspell_fr_fr/1.7.0-2_x86_64/hunspell_fr_fr-1.7.0-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f9436296b3b3cc53ed1307e21493754054037fa4ee69e8d047316d7d9906ce07',
      armv7l: 'f9436296b3b3cc53ed1307e21493754054037fa4ee69e8d047316d7d9906ce07',

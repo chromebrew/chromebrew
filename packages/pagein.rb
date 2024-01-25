@@ -10,12 +10,6 @@ class Pagein < Package
   source_sha256 '3f81409f6227887212083c585abf5143a082dde2bbcab1d2ae8c74b6d294e8b3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagein/0.00.05_armv7l/pagein-0.00.05-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagein/0.00.05_armv7l/pagein-0.00.05-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagein/0.00.05_i686/pagein-0.00.05-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pagein/0.00.05_x86_64/pagein-0.00.05-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6a51692fb5beb3c0ea8c01773c005e312afcb777ae41bee0f2e5ba87cd38cad3',
      armv7l: '6a51692fb5beb3c0ea8c01773c005e312afcb777ae41bee0f2e5ba87cd38cad3',

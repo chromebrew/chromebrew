@@ -10,12 +10,6 @@ class Modemmanager < Package
   source_sha256 'efa9a963499e0885f3f163096d433334143c4937545134ecd682e0157fa591e3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/modemmanager/1.16.2_armv7l/modemmanager-1.16.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/modemmanager/1.16.2_armv7l/modemmanager-1.16.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/modemmanager/1.16.2_i686/modemmanager-1.16.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/modemmanager/1.16.2_x86_64/modemmanager-1.16.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '63659ccd41a81696e3ac2036d21bcb2279bd3b9aff60de09ef2fbd443712c711',
      armv7l: '63659ccd41a81696e3ac2036d21bcb2279bd3b9aff60de09ef2fbd443712c711',

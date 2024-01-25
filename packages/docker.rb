@@ -13,11 +13,6 @@ class Docker < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
      armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
@@ -48,11 +43,6 @@ class Docker < Package
   def self.build
     @cli_version = git_hashtag
 
-    binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
-    })
     binary_sha256({
       aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
        armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
@@ -61,11 +51,6 @@ class Docker < Package
 
     @moby_version = git_hashtag
 
-    binary_url({
-      aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_armv7l/docker-24.0.1-chromeos-armv7l.tar.zst',
-       x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker/24.0.1_x86_64/docker-24.0.1-chromeos-x86_64.tar.zst'
-    })
     binary_sha256({
       aarch64: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',
        armv7l: '923b0eb95c947dde422e196abd0f1ddbc0958792db2807e2c55c3048b700702a',

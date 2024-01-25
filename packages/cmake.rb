@@ -10,12 +10,6 @@ class Cmake < CMake
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.28.1_armv7l/cmake-3.28.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.28.1_armv7l/cmake-3.28.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.28.1_i686/cmake-3.28.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmake/3.28.1_x86_64/cmake-3.28.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2662f6f75e40ee8be74d58cefb184161382ca67d86d6f7585eaf705d1ef6197f',
      armv7l: '2662f6f75e40ee8be74d58cefb184161382ca67d86d6f7585eaf705d1ef6197f',

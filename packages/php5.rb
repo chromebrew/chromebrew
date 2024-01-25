@@ -10,12 +10,6 @@ class Php5 < Package
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php5/5.6.40-2_armv7l/php5-5.6.40-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php5/5.6.40-2_armv7l/php5-5.6.40-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php5/5.6.40-2_i686/php5-5.6.40-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/php5/5.6.40-2_x86_64/php5-5.6.40-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0fb88410bfb778e2f6df96cf4c5170574ad04c154cc8fa540018db91b8355cbd',
      armv7l: '0fb88410bfb778e2f6df96cf4c5170574ad04c154cc8fa540018db91b8355cbd',

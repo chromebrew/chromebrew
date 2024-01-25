@@ -13,12 +13,6 @@ class Tllist < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tllist/1.0.5_armv7l/tllist-1.0.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tllist/1.0.5_armv7l/tllist-1.0.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tllist/1.0.5_i686/tllist-1.0.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tllist/1.0.5_x86_64/tllist-1.0.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '6eefb42195190f840d23f07dbfb76963abd124babf09d5253b1e08ac9bdba5de',
      armv7l: '6eefb42195190f840d23f07dbfb76963abd124babf09d5253b1e08ac9bdba5de',

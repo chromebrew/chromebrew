@@ -10,11 +10,6 @@ class Waypipe < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.6_armv7l/waypipe-0.8.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.6_armv7l/waypipe-0.8.6-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waypipe/0.8.6_x86_64/waypipe-0.8.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9bedb1ee7e35eb794158e28ac9f3c7a6c1590bd63c49d8f1edac2eef0cb445ac',
      armv7l: '9bedb1ee7e35eb794158e28ac9f3c7a6c1590bd63c49d8f1edac2eef0cb445ac',

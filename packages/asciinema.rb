@@ -10,12 +10,6 @@ class Asciinema < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_armv7l/asciinema-2.1.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_armv7l/asciinema-2.1.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_i686/asciinema-2.1.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/asciinema/2.1.0_x86_64/asciinema-2.1.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '8ffc09b11883dbdfa8a6b3f3edca9ac2153d71caf0bd76618627b73267d8d375',
      armv7l: '8ffc09b11883dbdfa8a6b3f3edca9ac2153d71caf0bd76618627b73267d8d375',

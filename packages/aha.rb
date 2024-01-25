@@ -10,12 +10,6 @@ class Aha < Package
   source_sha256 '6aea13487f6b5c3e453a447a67345f8095282f5acd97344466816b05ebd0b3b1'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aha/0.5.1_armv7l/aha-0.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aha/0.5.1_armv7l/aha-0.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aha/0.5.1_i686/aha-0.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aha/0.5.1_x86_64/aha-0.5.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ccb183b558d74f534a4b5afdf1f28e74507349443fbf1238d053a24140fff02c',
      armv7l: 'ccb183b558d74f534a4b5afdf1f28e74507349443fbf1238d053a24140fff02c',

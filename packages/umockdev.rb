@@ -10,12 +10,6 @@ class Umockdev < Package
   source_sha256 '9f13e8a836ef36158e2cc2b679cb99639e1f68a430b04fbe4dd07d3cb2b32a75'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/umockdev/0.9.4_armv7l/umockdev-0.9.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/umockdev/0.9.4_armv7l/umockdev-0.9.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/umockdev/0.9.4_i686/umockdev-0.9.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/umockdev/0.9.4_x86_64/umockdev-0.9.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '62d6ad9b0cbcbd6c50634e7ee0e77365b810b3a0be57fb61fbde768018428e92',
      armv7l: '62d6ad9b0cbcbd6c50634e7ee0e77365b810b3a0be57fb61fbde768018428e92',

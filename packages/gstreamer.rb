@@ -11,11 +11,6 @@ class Gstreamer < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.8_armv7l/gstreamer-1.22.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.8_armv7l/gstreamer-1.22.8-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gstreamer/1.22.8_x86_64/gstreamer-1.22.8-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3822b6aa2e2f0efb453be442a9e685a0b5c81d7cdbe17804b29f1144beac6937',
      armv7l: '3822b6aa2e2f0efb453be442a9e685a0b5c81d7cdbe17804b29f1144beac6937',

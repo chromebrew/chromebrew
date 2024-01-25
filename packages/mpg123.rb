@@ -10,12 +10,6 @@ class Mpg123 < Autotools
   source_sha256 '2d9913a57d4ee8f497a182c6e82582602409782a4fb481e989feebf4435867b4'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_armv7l/mpg123-1.32.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_armv7l/mpg123-1.32.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_i686/mpg123-1.32.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpg123/1.32.3_x86_64/mpg123-1.32.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1ee23b78dee236ceea6eb9b8ea8b73121054e78fbbf3e5eec2ccda354a46a0aa',
      armv7l: '1ee23b78dee236ceea6eb9b8ea8b73121054e78fbbf3e5eec2ccda354a46a0aa',

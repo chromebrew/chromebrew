@@ -10,12 +10,6 @@ class Libart < Package
   source_sha256 'd5531ae3a206a9b5cc74e9a20d89d61b2ba3ba03d342d6a2ed48d2130ad3d847'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libart/2.3.20_armv7l/libart-2.3.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libart/2.3.20_armv7l/libart-2.3.20-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libart/2.3.20_i686/libart-2.3.20-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libart/2.3.20_x86_64/libart-2.3.20-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1142d19a7fd0bd47931f75bcc82c4b5a81366cbb2e4b33881d2bf47573851cfc',
      armv7l: '1142d19a7fd0bd47931f75bcc82c4b5a81366cbb2e4b33881d2bf47573851cfc',

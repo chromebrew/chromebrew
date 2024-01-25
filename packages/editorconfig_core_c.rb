@@ -13,12 +13,6 @@ class Editorconfig_core_c < Package
   source_sha256 '36052a5371731d915b53d9c7a24a11c4032585ccacb392ec9d58656eef4c0edf'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editorconfig_core_c/0.12.6_armv7l/editorconfig_core_c-0.12.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editorconfig_core_c/0.12.6_armv7l/editorconfig_core_c-0.12.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editorconfig_core_c/0.12.6_i686/editorconfig_core_c-0.12.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/editorconfig_core_c/0.12.6_x86_64/editorconfig_core_c-0.12.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e11a40cf379fbcdd7da6aa7183c097214909c6375bb609587a07fbeb55dd4eb3',
      armv7l: 'e11a40cf379fbcdd7da6aa7183c097214909c6375bb609587a07fbeb55dd4eb3',

@@ -13,12 +13,6 @@ class Mpdecimal < Package
   source_sha256 '9f9cd4c041f99b5c49ffb7b59d9f12d95b683d88585608aa56a6307667b2b21f'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpdecimal/2.5.1_armv7l/mpdecimal-2.5.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpdecimal/2.5.1_armv7l/mpdecimal-2.5.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpdecimal/2.5.1_i686/mpdecimal-2.5.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpdecimal/2.5.1_x86_64/mpdecimal-2.5.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'e995ff521db72f576566f4b7b9d9a5e4474be854a4e9d5177872b2185dc4ccbe',
      armv7l: 'e995ff521db72f576566f4b7b9d9a5e4474be854a4e9d5177872b2185dc4ccbe',

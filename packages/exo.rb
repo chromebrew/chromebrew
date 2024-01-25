@@ -10,12 +10,6 @@ class Exo < Package
   source_sha256 '4e89f5536afbf1cb9191cceb720fb2764df1a4fae3459512b7320841ab5a9e9d'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exo/4.16.2_armv7l/exo-4.16.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exo/4.16.2_armv7l/exo-4.16.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exo/4.16.2_i686/exo-4.16.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exo/4.16.2_x86_64/exo-4.16.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'dc9b3c212c72d35e40fc7710d3bba50bc60ed606f0413cc98bb6bc9f5131a6e0',
      armv7l: 'dc9b3c212c72d35e40fc7710d3bba50bc60ed606f0413cc98bb6bc9f5131a6e0',

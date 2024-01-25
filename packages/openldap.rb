@@ -10,12 +10,6 @@ class Openldap < Autotools
   source_sha256 '082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.6_armv7l/openldap-2.6.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.6_armv7l/openldap-2.6.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.6_i686/openldap-2.6.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openldap/2.6.6_x86_64/openldap-2.6.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1e48b2d0f8b5a575222271b57006c2281c0a392d63fd3dedf84d9ce33371a27c',
      armv7l: '1e48b2d0f8b5a575222271b57006c2281c0a392d63fd3dedf84d9ce33371a27c',

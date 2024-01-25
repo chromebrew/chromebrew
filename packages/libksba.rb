@@ -10,12 +10,6 @@ class Libksba < Package
   source_sha256 '3f72c68db30971ebbf14367527719423f0a4d5f8103fc9f4a1c01a9fa440de5c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_armv7l/libksba-1.6.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_armv7l/libksba-1.6.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_i686/libksba-1.6.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libksba/1.6.3_x86_64/libksba-1.6.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3143a3ade1b121b8359f72da982aa9510e5846f1a4869f0d45690d6a03279d58',
      armv7l: '3143a3ade1b121b8359f72da982aa9510e5846f1a4869f0d45690d6a03279d58',

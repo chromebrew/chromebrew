@@ -10,12 +10,6 @@ class Eudev < Autotools
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eudev/3.2.14_armv7l/eudev-3.2.14-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eudev/3.2.14_armv7l/eudev-3.2.14-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eudev/3.2.14_i686/eudev-3.2.14-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/eudev/3.2.14_x86_64/eudev-3.2.14-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f533cfaf65406ef7e16ddbdef10a0cb60068da3fb875874d1957811b706c9a86',
      armv7l: 'f533cfaf65406ef7e16ddbdef10a0cb60068da3fb875874d1957811b706c9a86',

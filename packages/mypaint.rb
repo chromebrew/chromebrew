@@ -11,12 +11,6 @@ class Mypaint < Package
   git_hashtag "v#{@_ver}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/2.0.1-1_armv7l/mypaint-2.0.1-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/2.0.1-1_armv7l/mypaint-2.0.1-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/2.0.1-1_i686/mypaint-2.0.1-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint/2.0.1-1_x86_64/mypaint-2.0.1-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '65b8fcea7a9864553887c42490bdc1743a7bbb55f5e84766b805423d10912ef0',
      armv7l: '65b8fcea7a9864553887c42490bdc1743a7bbb55f5e84766b805423d10912ef0',

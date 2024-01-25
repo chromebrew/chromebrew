@@ -10,12 +10,6 @@ class Zeromq < Package
   source_sha256 'ebd7b5c830d6428956b67a0454a7f8cbed1de74b3b01e5c33c5378e22740f763'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zeromq/4.3.2_armv7l/zeromq-4.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zeromq/4.3.2_armv7l/zeromq-4.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zeromq/4.3.2_i686/zeromq-4.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zeromq/4.3.2_x86_64/zeromq-4.3.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '203bef19128bd37bb9320c1413693edaad122804276cb3114e540ab0a77dae3f',
      armv7l: '203bef19128bd37bb9320c1413693edaad122804276cb3114e540ab0a77dae3f',

@@ -11,12 +11,6 @@ class Wmctrl < Package
   source_sha256 'd78a1efdb62f18674298ad039c5cbdb1edb6e8e149bb3a8e3a01a4750aa3cca9'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_armv7l/wmctrl-1.07-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_armv7l/wmctrl-1.07-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_i686/wmctrl-1.07-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wmctrl/1.07-1_x86_64/wmctrl-1.07-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '97f0bfc34405935c50b960f58b277560fc6cd866a8d56aedde7d963ff3e888e4',
      armv7l: '97f0bfc34405935c50b960f58b277560fc6cd866a8d56aedde7d963ff3e888e4',

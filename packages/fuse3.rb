@@ -10,12 +10,6 @@ class Fuse3 < Package
   git_hashtag "fuse-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.14.0_armv7l/fuse3-3.14.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.14.0_armv7l/fuse3-3.14.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.14.0_i686/fuse3-3.14.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse3/3.14.0_x86_64/fuse3-3.14.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5f4b9c7ae2b8f94e0e9e745beb28d44ab2eacc0780eafb39f5bbfc6698498736',
      armv7l: '5f4b9c7ae2b8f94e0e9e745beb28d44ab2eacc0780eafb39f5bbfc6698498736',

@@ -10,12 +10,6 @@ class Gzrt < Package
   source_sha256 'b0b7dc53dadd8309ad9f43d6d6be7ac502c68ef854f1f9a15bd7f543e4571fee'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzrt/0.8_armv7l/gzrt-0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzrt/0.8_armv7l/gzrt-0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzrt/0.8_i686/gzrt-0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzrt/0.8_x86_64/gzrt-0.8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '44e91f1d6773e9c0db2be22353d40507332514cb9315b16ccb25511ff06e04e4',
      armv7l: '44e91f1d6773e9c0db2be22353d40507332514cb9315b16ccb25511ff06e04e4',

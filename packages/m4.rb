@@ -10,12 +10,6 @@ class M4 < Package
   source_sha256 '63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.19_armv7l/m4-1.4.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.19_armv7l/m4-1.4.19-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.19_i686/m4-1.4.19-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/m4/1.4.19_x86_64/m4-1.4.19-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5ebe54bc2df20f9ce90e3d7974f82092ae7600b1ce61bf87c7f414a1447c2a25',
      armv7l: '5ebe54bc2df20f9ce90e3d7974f82092ae7600b1ce61bf87c7f414a1447c2a25',

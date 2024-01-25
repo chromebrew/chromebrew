@@ -10,12 +10,6 @@ class Twm < Package
   source_sha256 'f4e8a842dec410e79741f25ed4dfac09df080835d0bba2e3983b5914569b68c7'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/twm/1.0.11_armv7l/twm-1.0.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/twm/1.0.11_armv7l/twm-1.0.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/twm/1.0.11_i686/twm-1.0.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/twm/1.0.11_x86_64/twm-1.0.11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '84bc4882736d4ed174741a07c60404d47cdbad726ac7e9b7ace07012ded84d58',
      armv7l: '84bc4882736d4ed174741a07c60404d47cdbad726ac7e9b7ace07012ded84d58',

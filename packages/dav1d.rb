@@ -10,12 +10,6 @@ class Dav1d < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/1.3.0_armv7l/dav1d-1.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/1.3.0_armv7l/dav1d-1.3.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/1.3.0_i686/dav1d-1.3.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/dav1d/1.3.0_x86_64/dav1d-1.3.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7656d57ea668cfc33a424aa369f4761f6c11c85fefc19451c92e250f14e365e8',
      armv7l: '7656d57ea668cfc33a424aa369f4761f6c11c85fefc19451c92e250f14e365e8',

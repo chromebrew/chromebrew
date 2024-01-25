@@ -11,12 +11,6 @@ class Libunwind < Package
   source_sha256 '90337653d92d4a13de590781371c604f9031cdb50520366aa1e3a91e1efb1017'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-2_armv7l/libunwind-1.5.0-2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-2_armv7l/libunwind-1.5.0-2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-2_i686/libunwind-1.5.0-2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunwind/1.5.0-2_x86_64/libunwind-1.5.0-2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '21a4912e68f2310216c3054ada90ab13886a11024402713520ea14c22d4c90a5',
      armv7l: '21a4912e68f2310216c3054ada90ab13886a11024402713520ea14c22d4c90a5',

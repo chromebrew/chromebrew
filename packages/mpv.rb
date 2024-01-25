@@ -10,11 +10,6 @@ class Mpv < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.36.0_armv7l/mpv-0.36.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.36.0_armv7l/mpv-0.36.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpv/0.36.0_x86_64/mpv-0.36.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '979f189c1c79ecee1309813bf38281d1ce6275bf797b61e8cce3dd4af8247da9',
      armv7l: '979f189c1c79ecee1309813bf38281d1ce6275bf797b61e8cce3dd4af8247da9',

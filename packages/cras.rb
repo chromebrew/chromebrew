@@ -10,12 +10,6 @@ class Cras < Package
   source_sha256 '355514e78ba4d1736f53c427c329bdfad327afc052a1b78d543cb4840d199b4e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_armv7l/cras-stabilize-13654.B-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_armv7l/cras-stabilize-13654.B-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_i686/cras-stabilize-13654.B-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cras/stabilize-13654.B_x86_64/cras-stabilize-13654.B-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',
       armv7l: '586a93c5359b39c91a576904a212dde5926581d603263874d71feef6ef6cf1e2',

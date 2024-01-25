@@ -10,12 +10,6 @@ class Font_cursor_misc < Package
   source_sha256 '17363eb35eece2e08144da5f060c70103b59d0972b4f4d77fd84c9a7a2dba635'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_cursor_misc/1.0.3_armv7l/font_cursor_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_cursor_misc/1.0.3_armv7l/font_cursor_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_cursor_misc/1.0.3_i686/font_cursor_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_cursor_misc/1.0.3_x86_64/font_cursor_misc-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8259c1415c5c26cd3acfe4b4e285ee51e359e3a9e293ad5ee1e323b183e29447',
      armv7l: '8259c1415c5c26cd3acfe4b4e285ee51e359e3a9e293ad5ee1e323b183e29447',

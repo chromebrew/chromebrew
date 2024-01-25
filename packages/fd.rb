@@ -11,12 +11,6 @@ class Fd < Package
   git_hashtag "v#{@_ver}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fd/8.3.0-1_armv7l/fd-8.3.0-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fd/8.3.0-1_armv7l/fd-8.3.0-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fd/8.3.0-1_i686/fd-8.3.0-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fd/8.3.0-1_x86_64/fd-8.3.0-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '1325765ea06369318274a4c9432b22cff9a6714b15afd7c6d61ab833166852f3',
      armv7l: '1325765ea06369318274a4c9432b22cff9a6714b15afd7c6d61ab833166852f3',

@@ -13,11 +13,6 @@ class Libbpf < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbpf/1.1.0_armv7l/libbpf-1.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbpf/1.1.0_armv7l/libbpf-1.1.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libbpf/1.1.0_x86_64/libbpf-1.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7cc452dff12174b961543b3553395eb7f1cdaf0447a3adcb65d250a25a94571a',
      armv7l: '7cc452dff12174b961543b3553395eb7f1cdaf0447a3adcb65d250a25a94571a',

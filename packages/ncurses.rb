@@ -13,12 +13,6 @@ class Ncurses < Autotools
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6_4_20231125_armv7l/ncurses-6_4_20231125-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6_4_20231125_armv7l/ncurses-6_4_20231125-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6_4_20231125_i686/ncurses-6_4_20231125-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncurses/6_4_20231125_x86_64/ncurses-6_4_20231125-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1677cddcbd0b682d045a493f80d68764aeb49c0351a50041b8fe3dd31868a07e',
      armv7l: '1677cddcbd0b682d045a493f80d68764aeb49c0351a50041b8fe3dd31868a07e',

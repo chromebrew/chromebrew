@@ -10,13 +10,6 @@ class Openal < Package
   source_sha256 'c32d10473457a8b545aab50070fe84be2b5b041e1f2099012777ee6be0057c13'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openal/1.20.1_armv7l/openal-1.20.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openal/1.20.1_armv7l/openal-1.20.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openal/1.20.1_i686/openal-1.20.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openal/1.20.1_x86_64/openal-1.20.1-chromeos-x86_64.tar.xz'
-
-  })
   binary_sha256({
     aarch64: 'f4fad76fa80a35e5ed2b551623610a764942c599caa606474bb9585da30dd648',
      armv7l: 'f4fad76fa80a35e5ed2b551623610a764942c599caa606474bb9585da30dd648',

@@ -9,7 +9,6 @@ class Keepassxc < Package
   source_url 'https://github.com/keepassxreboot/keepassxc/releases/download/2.7.6/KeePassXC-2.7.6-x86_64.AppImage'
   source_sha256 'f32f7e7ab4bca789b24bd6a420c1d87dff40982646abef58fca481a7c56ace48'
 
-  binary_url({})
   binary_sha256({})
 
   depends_on 'sommelier'

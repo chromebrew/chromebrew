@@ -11,11 +11,6 @@ class Pulseaudio < Meson
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_armv7l/pulseaudio-17.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_armv7l/pulseaudio-17.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pulseaudio/17.0_x86_64/pulseaudio-17.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '546dac0ebd845e22d5c5530bfcfaad5a855e59110b4bb660e1cc41902d21d425',
      armv7l: '546dac0ebd845e22d5c5530bfcfaad5a855e59110b4bb660e1cc41902d21d425',

@@ -10,12 +10,6 @@ class Sl < Package
   source_sha256 '1e5996757f879c81f202a18ad8e982195cf51c41727d3fea4af01fdcbbb5563a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sl/5.02_armv7l/sl-5.02-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sl/5.02_armv7l/sl-5.02-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sl/5.02_i686/sl-5.02-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sl/5.02_x86_64/sl-5.02-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6eec64e45434268292b6c3529799b67ddca817418807fe3ce724a3c0f6a5be84',
      armv7l: '6eec64e45434268292b6c3529799b67ddca817418807fe3ce724a3c0f6a5be84',

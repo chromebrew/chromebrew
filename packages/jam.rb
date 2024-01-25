@@ -10,12 +10,6 @@ class Jam < Package
   source_sha256 '7c510be24dc9d0912886c4364dc17a013e042408386f6b937e30bd9928d5223c'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jam/2.6_armv7l/jam-2.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jam/2.6_armv7l/jam-2.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jam/2.6_i686/jam-2.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jam/2.6_x86_64/jam-2.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f3b20e59eef2b8445d75ef628daadca9b42a2cb337c0ad19e83065f16f4e08fa',
      armv7l: 'f3b20e59eef2b8445d75ef628daadca9b42a2cb337c0ad19e83065f16f4e08fa',

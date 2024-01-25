@@ -10,12 +10,6 @@ class Zenity < Package
   source_sha256 'e786e733569c97372c3ef1776e71be7e7599ebe87e11e8ad67dcc2e63a82cd95'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zenity/3.32.0_armv7l/zenity-3.32.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zenity/3.32.0_armv7l/zenity-3.32.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zenity/3.32.0_i686/zenity-3.32.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zenity/3.32.0_x86_64/zenity-3.32.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ad62a47795d7d1c530f9237dd64d33e773d347723d808dee489636652612b944',
      armv7l: 'ad62a47795d7d1c530f9237dd64d33e773d347723d808dee489636652612b944',

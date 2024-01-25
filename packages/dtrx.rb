@@ -9,7 +9,6 @@ class Dtrx < Pip
   compatibility 'all'
   source_url 'SKIP'
 
-  binary_url({})
   binary_sha256({})
 
   depends_on 'py3_unsupported_python' => :build

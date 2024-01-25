@@ -12,12 +12,6 @@ class Py3_libxml2 < Package
   source_sha256 'ab3699b697e917c7d5035e81d237a9bc895eb4bf70c0a2259c6d1f125c1b77b6'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_armv7l/py3_libxml2-2.11.5-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_armv7l/py3_libxml2-2.11.5-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_i686/py3_libxml2-2.11.5-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_libxml2/2.11.5-py3.12_x86_64/py3_libxml2-2.11.5-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '19b264b7e48bd6d350e96742dc55fc219ad57c1aeab34af444852042d304b266',
      armv7l: '19b264b7e48bd6d350e96742dc55fc219ad57c1aeab34af444852042d304b266',

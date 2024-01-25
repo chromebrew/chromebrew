@@ -10,12 +10,6 @@ class Gzsize < Package
   source_sha256 'ffb9cc1e5ed10443b1bcf2f711787bc7f69eee27ed83b48f2ccf9d80e39554dd'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzsize/0.1.1_armv7l/gzsize-0.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzsize/0.1.1_armv7l/gzsize-0.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzsize/0.1.1_i686/gzsize-0.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gzsize/0.1.1_x86_64/gzsize-0.1.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd4a24b086e172b771b389d5ce421877e5c3763dc66731cbbfa3bfe2fc40b66c6',
      armv7l: 'd4a24b086e172b771b389d5ce421877e5c3763dc66731cbbfa3bfe2fc40b66c6',

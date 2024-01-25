@@ -10,12 +10,6 @@ class Libdaemon < Package
   source_sha256 'fd23eb5f6f986dcc7e708307355ba3289abe03cc381fc47a80bca4a50aa6b834'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdaemon/0.14_armv7l/libdaemon-0.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdaemon/0.14_armv7l/libdaemon-0.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdaemon/0.14_i686/libdaemon-0.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdaemon/0.14_x86_64/libdaemon-0.14-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '352b9f73b8619625b9eaaf7725cd189c637987b4223f63e7a04cea9e61ec78b6',
      armv7l: '352b9f73b8619625b9eaaf7725cd189c637987b4223f63e7a04cea9e61ec78b6',

@@ -11,12 +11,6 @@ class Py3_pep517 < Python
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/1.0.0-py3.12_armv7l/py3_pep517-1.0.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/1.0.0-py3.12_armv7l/py3_pep517-1.0.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/1.0.0-py3.12_i686/py3_pep517-1.0.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_pep517/1.0.0-py3.12_x86_64/py3_pep517-1.0.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '62cf60f52ab472c3818994551df107cacf3ed117385bc6424a1b983284db92fb',
      armv7l: '62cf60f52ab472c3818994551df107cacf3ed117385bc6424a1b983284db92fb',

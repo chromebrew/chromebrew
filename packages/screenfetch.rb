@@ -10,12 +10,6 @@ class Screenfetch < Package
   source_sha256 'aa97dcd2a8576ae18de6c16c19744aae1573a3da7541af4b98a91930a30a3178'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screenfetch/3.9.1_armv7l/screenfetch-3.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screenfetch/3.9.1_armv7l/screenfetch-3.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screenfetch/3.9.1_i686/screenfetch-3.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/screenfetch/3.9.1_x86_64/screenfetch-3.9.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3cd66c744cc13b3527d1b0840a7a2093ac45c1bf2fb10871ccc8a63a3e98c948',
      armv7l: '3cd66c744cc13b3527d1b0840a7a2093ac45c1bf2fb10871ccc8a63a3e98c948',

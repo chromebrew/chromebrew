@@ -13,12 +13,6 @@ class Source_highlight < Autotools
   source_sha256 '98bcd3f8dceed4e4cf24dd9694163dce2b5bfc805e0ba7eb0b7b8d5a01f9154f'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-e4cf32d-2_armv7l/source_highlight-3.1.9-e4cf32d-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-e4cf32d-2_armv7l/source_highlight-3.1.9-e4cf32d-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-e4cf32d-2_i686/source_highlight-3.1.9-e4cf32d-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/source_highlight/3.1.9-e4cf32d-2_x86_64/source_highlight-3.1.9-e4cf32d-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6dd0f34e63e8cb37dee3bd9da6fb921d5ab6086728946b5d9e234b43c24deae2',
      armv7l: '6dd0f34e63e8cb37dee3bd9da6fb921d5ab6086728946b5d9e234b43c24deae2',

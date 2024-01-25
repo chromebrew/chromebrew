@@ -11,12 +11,6 @@ class Py3_installer < Python
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_installer/0.7.0-py3.12_armv7l/py3_installer-0.7.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_installer/0.7.0-py3.12_armv7l/py3_installer-0.7.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_installer/0.7.0-py3.12_i686/py3_installer-0.7.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_installer/0.7.0-py3.12_x86_64/py3_installer-0.7.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4f302c9f93e2c68f69f59006fbc25bfda1928b0c56b11bed14842bdd5a3884a0',
      armv7l: '4f302c9f93e2c68f69f59006fbc25bfda1928b0c56b11bed14842bdd5a3884a0',

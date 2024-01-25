@@ -10,12 +10,6 @@ class Gb < Package
   source_sha256 'c7993ae1994ad85cbe35b833d36a137772599fe7ed720edec2d76ebf3fc4313b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gb/0.4.4_armv7l/gb-0.4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gb/0.4.4_armv7l/gb-0.4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gb/0.4.4_i686/gb-0.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gb/0.4.4_x86_64/gb-0.4.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '642e7da9d928bc40190a8265c4ea816c18249c8ed16d25a7819f6fc1bb682c0b',
      armv7l: '642e7da9d928bc40190a8265c4ea816c18249c8ed16d25a7819f6fc1bb682c0b',

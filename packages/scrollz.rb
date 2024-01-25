@@ -10,12 +10,6 @@ class Scrollz < Package
   source_sha256 '22535bcc54ad752107ab181775d90d9cf1b37648f500d627f428388a9d3710e6'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrollz/2.3-1_armv7l/scrollz-2.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrollz/2.3-1_armv7l/scrollz-2.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrollz/2.3-1_i686/scrollz-2.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/scrollz/2.3-1_x86_64/scrollz-2.3-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a1589b1e4fd8ff13d2ab43196a169d8059763a6f2a5211197fc1531b8c9e5a31',
      armv7l: 'a1589b1e4fd8ff13d2ab43196a169d8059763a6f2a5211197fc1531b8c9e5a31',

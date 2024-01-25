@@ -10,12 +10,6 @@ class Sfk < Package
   source_sha256 '1c53d4d9d05af752546c8341a718bf64be99b62491ff91db02ef100e2f93bfc3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sfk/1.8.7_armv7l/sfk-1.8.7-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sfk/1.8.7_armv7l/sfk-1.8.7-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sfk/1.8.7_i686/sfk-1.8.7-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sfk/1.8.7_x86_64/sfk-1.8.7-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',
      armv7l: '1666f3bd5271973be9ce535e6cc1a71a831ba3d479ba2a08b7c587d2142ef360',

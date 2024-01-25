@@ -10,12 +10,6 @@ class Graphite < Package
   git_hashtag '27572742003b93dc53dc02c01c237b72c6c25f54'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_armv7l/graphite-2757274-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_armv7l/graphite-2757274-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_i686/graphite-2757274-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphite/2757274_x86_64/graphite-2757274-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'db258e3b6e5c9809d0d2f95bcbda19fd8bb989667f722282e5284745cc3a20e4',
      armv7l: 'db258e3b6e5c9809d0d2f95bcbda19fd8bb989667f722282e5284745cc3a20e4',

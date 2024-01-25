@@ -13,12 +13,6 @@ class Libshumate < Package
   source_sha256 '004188509189eab352b8f86701cec223c15c8fa52b1e0cf5379877725a1e9014'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libshumate/1.0.1_armv7l/libshumate-1.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libshumate/1.0.1_armv7l/libshumate-1.0.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libshumate/1.0.1_i686/libshumate-1.0.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libshumate/1.0.1_x86_64/libshumate-1.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f52fac3cb098d9048580df930016a6fa597e29140eb1680c34d38b98bfd74fb2',
      armv7l: 'f52fac3cb098d9048580df930016a6fa597e29140eb1680c34d38b98bfd74fb2',

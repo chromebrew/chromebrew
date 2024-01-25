@@ -10,12 +10,6 @@ class Gettext < Autotools
   source_sha256 'd2392ba0ad01961cff992da97f4b69fa5fe06bc20e33b5556c34d8aafde9cbe4'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.22.4_armv7l/gettext-0.22.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.22.4_armv7l/gettext-0.22.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.22.4_i686/gettext-0.22.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gettext/0.22.4_x86_64/gettext-0.22.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8e48a950fc3f50244a83fb5af58b9c871dfa06bff1f02ce5835a28df2aa5bd7b',
      armv7l: '8e48a950fc3f50244a83fb5af58b9c871dfa06bff1f02ce5835a28df2aa5bd7b',

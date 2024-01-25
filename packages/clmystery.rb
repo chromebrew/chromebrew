@@ -10,12 +10,6 @@ class Clmystery < Package
   source_sha256 '911bc77225bcacc8fc1a7b17b21fbc4ede371513c729b4b663989ab627604d33'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clmystery/6dd30f_armv7l/clmystery-6dd30f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clmystery/6dd30f_armv7l/clmystery-6dd30f-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clmystery/6dd30f_i686/clmystery-6dd30f-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clmystery/6dd30f_x86_64/clmystery-6dd30f-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f7384340f728ba38105163d317cd827d079dbbddff846a0101127b90ecfc701c',
      armv7l: 'f7384340f728ba38105163d317cd827d079dbbddff846a0101127b90ecfc701c',

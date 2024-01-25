@@ -10,12 +10,6 @@ class Libxslt < Package
   source_sha256 '98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_armv7l/libxslt-1.1.34-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_i686/libxslt-1.1.34-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxslt/1.1.34_x86_64/libxslt-1.1.34-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',
      armv7l: 'df33590a8edfc86f29fada7d5b44e5914651259015e8df726603a2ffdc23bd42',

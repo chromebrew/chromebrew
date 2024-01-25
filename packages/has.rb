@@ -10,12 +10,6 @@ class Has < Package
   source_sha256 'e06d9674bc1b9281c1d4391ad4366d2ef249768e7b0ada304695bf954786e9c4'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/has/1.1.0_armv7l/has-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/has/1.1.0_armv7l/has-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/has/1.1.0_i686/has-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/has/1.1.0_x86_64/has-1.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9eb67faf4e926a34f1c3e984dd31c47e90d7c67a35447b8f883619ef3ac89d99',
      armv7l: '9eb67faf4e926a34f1c3e984dd31c47e90d7c67a35447b8f883619ef3ac89d99',

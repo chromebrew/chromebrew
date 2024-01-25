@@ -11,12 +11,6 @@ class Py2_setuptools < Package
   source_sha256 'c67aa55db532a0dadc4d2e20ba9961cbd3ccc84d544e9029699822542b5a476b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_armv7l/py2_setuptools-44.1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_armv7l/py2_setuptools-44.1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_i686/py2_setuptools-44.1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_setuptools/44.1.1_x86_64/py2_setuptools-44.1.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '668bdf06acc1e02d9a2ef79e16815d14930ecf3a0cacbc449f8b4581be6453ca',
      armv7l: '668bdf06acc1e02d9a2ef79e16815d14930ecf3a0cacbc449f8b4581be6453ca',

@@ -10,12 +10,6 @@ class Gsm < Package
   source_sha256 '4903652f68a8c04d0041f0d19b1eb713ddcd2aa011c5e595b3b8bca2755270f6'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsm/1.0.19_armv7l/gsm-1.0.19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsm/1.0.19_armv7l/gsm-1.0.19-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsm/1.0.19_i686/gsm-1.0.19-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gsm/1.0.19_x86_64/gsm-1.0.19-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '4dc9c3426864671b7c61c08d846ff40fd524bf341163997c8e5caddab90c229d',
      armv7l: '4dc9c3426864671b7c61c08d846ff40fd524bf341163997c8e5caddab90c229d',

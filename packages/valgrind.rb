@@ -10,12 +10,6 @@ class Valgrind < Package
   source_sha256 'ad3aec668e813e40f238995f60796d9590eee64a16dff88421430630e69285a2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/valgrind/3.17_armv7l/valgrind-3.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/valgrind/3.17_armv7l/valgrind-3.17-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/valgrind/3.17_i686/valgrind-3.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/valgrind/3.17_x86_64/valgrind-3.17-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0cf8ca23893761153fee6ffb58af0a731244fc5e36d3686fb2d9dcd870b2e250',
      armv7l: '0cf8ca23893761153fee6ffb58af0a731244fc5e36d3686fb2d9dcd870b2e250',

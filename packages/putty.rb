@@ -10,11 +10,6 @@ class Putty < CMake
   source_sha256 '2013c83a721b1753529e9090f7c3830e8fe4c80a070ccce764539badb3f67081'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_armv7l/putty-0.80-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_armv7l/putty-0.80-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/putty/0.80_x86_64/putty-0.80-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f912d682a591e77d835f97caab122d83adaf63c3440c73972402a2a09f335e3a',
      armv7l: 'f912d682a591e77d835f97caab122d83adaf63c3440c73972402a2a09f335e3a',

@@ -10,12 +10,6 @@ class Keychain < Package
   source_sha256 'dcce703e5001211c8ebc0528f45b523f84d2bceeb240600795b4d80cb8475a0b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keychain/2.8.5_armv7l/keychain-2.8.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keychain/2.8.5_armv7l/keychain-2.8.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keychain/2.8.5_i686/keychain-2.8.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keychain/2.8.5_x86_64/keychain-2.8.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e494cfd41ed3215757cf656b36a7b483f8a0e007fb5963d2e6b058c701f6ff44',
      armv7l: 'e494cfd41ed3215757cf656b36a7b483f8a0e007fb5963d2e6b058c701f6ff44',

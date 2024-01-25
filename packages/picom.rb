@@ -10,12 +10,6 @@ class Picom < Package
   source_sha256 'f839a3c058ca90f463eae3973a9381cf2fe93be7d0e58db1c28ea72acd10480f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/picom/8_armv7l/picom-8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/picom/8_armv7l/picom-8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/picom/8_i686/picom-8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/picom/8_x86_64/picom-8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5de726299cbd8469b6c846cf437aac9132bbd50d1572c7b61dc4cfd14d8edc1f',
      armv7l: '5de726299cbd8469b6c846cf437aac9132bbd50d1572c7b61dc4cfd14d8edc1f',

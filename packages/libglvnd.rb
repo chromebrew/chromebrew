@@ -10,12 +10,6 @@ class Libglvnd < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_armv7l/libglvnd-1.6.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_armv7l/libglvnd-1.6.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_i686/libglvnd-1.6.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglvnd/1.6.0_x86_64/libglvnd-1.6.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',
      armv7l: '52555ba2aab442a4d3b336e164ad35f64ec8ea09db9340751729363e6e5d51ba',

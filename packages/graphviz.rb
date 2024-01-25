@@ -10,11 +10,6 @@ class Graphviz < CMake
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/9.0.0_armv7l/graphviz-9.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/9.0.0_armv7l/graphviz-9.0.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphviz/9.0.0_x86_64/graphviz-9.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c12deae6fa8b9d66b083bcd159658b5f693bd93814f1d6d33736c5944336bd2e',
      armv7l: 'c12deae6fa8b9d66b083bcd159658b5f693bd93814f1d6d33736c5944336bd2e',

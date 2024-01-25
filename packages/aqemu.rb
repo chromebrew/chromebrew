@@ -10,11 +10,6 @@ class Aqemu < Package
   source_sha256 'e3d54de00ebdce3754f97f7e0e7cce8cebb588e8ce6bc249401cc909281b08de'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aqemu/0.9.2_armv7l/aqemu-0.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aqemu/0.9.2_armv7l/aqemu-0.9.2-chromeos-armv7l.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aqemu/0.9.2_x86_64/aqemu-0.9.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9b660d4e0ed420f0a74c5df33e7221042fc87764d9f8e70856a1aa31d14ea71c',
      armv7l: '9b660d4e0ed420f0a74c5df33e7221042fc87764d9f8e70856a1aa31d14ea71c',

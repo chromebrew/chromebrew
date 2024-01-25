@@ -10,12 +10,6 @@ class Nim < Package
   source_sha256 '13d7702f8b57087babe8cd051c13bc56a3171418ba867b49c6bbd09b29d24fea'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nim/1.6.10_armv7l/nim-1.6.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nim/1.6.10_armv7l/nim-1.6.10-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nim/1.6.10_i686/nim-1.6.10-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nim/1.6.10_x86_64/nim-1.6.10-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '56bb6808eebaa0468fd5e23d22321d091113da09221ed9b5d86b20452ceb3201',
      armv7l: '56bb6808eebaa0468fd5e23d22321d091113da09221ed9b5d86b20452ceb3201',

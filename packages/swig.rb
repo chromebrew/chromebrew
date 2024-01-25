@@ -10,12 +10,6 @@ class Swig < Autotools
   source_sha256 '2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.1.1-1_armv7l/swig-4.1.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.1.1-1_armv7l/swig-4.1.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.1.1-1_i686/swig-4.1.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swig/4.1.1-1_x86_64/swig-4.1.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c6bcbd9582e70c4209eedbb931dd236c030a99cd4150c0ebfac1b250a7912a5b',
      armv7l: 'c6bcbd9582e70c4209eedbb931dd236c030a99cd4150c0ebfac1b250a7912a5b',

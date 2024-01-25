@@ -10,12 +10,6 @@ class Libomxil_bellagio < Package
   source_sha256 '593c0729c8ef8c1467b3bfefcf355ec19a46dd92e31bfc280e17d96b0934d74c'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libomxil_bellagio/0.9.3_armv7l/libomxil_bellagio-0.9.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libomxil_bellagio/0.9.3_armv7l/libomxil_bellagio-0.9.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libomxil_bellagio/0.9.3_i686/libomxil_bellagio-0.9.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libomxil_bellagio/0.9.3_x86_64/libomxil_bellagio-0.9.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0980aac0bbb655e74b155b2237df8ca0b36b5264c29f32201e259275fd78743f',
      armv7l: '0980aac0bbb655e74b155b2237df8ca0b36b5264c29f32201e259275fd78743f',

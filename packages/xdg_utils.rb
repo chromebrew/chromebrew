@@ -10,12 +10,6 @@ class Xdg_utils < Package
   source_sha256 'deac55c48aa2902023c96a4bea2f1778441ce9c59e60ed52c6ce5d8b3e90ba64'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_utils/1.1.3-1_armv7l/xdg_utils-1.1.3-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_utils/1.1.3-1_armv7l/xdg_utils-1.1.3-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_utils/1.1.3-1_i686/xdg_utils-1.1.3-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_utils/1.1.3-1_x86_64/xdg_utils-1.1.3-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5d39a96a61b59eed8219727da0a6197c7b7f941b40a75eece77c9a0215e8559e',
      armv7l: '5d39a96a61b59eed8219727da0a6197c7b7f941b40a75eece77c9a0215e8559e',

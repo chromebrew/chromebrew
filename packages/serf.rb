@@ -10,12 +10,6 @@ class Serf < Package
   source_sha256 '549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serf/1.3.9-2_armv7l/serf-1.3.9-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serf/1.3.9-2_armv7l/serf-1.3.9-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serf/1.3.9-2_i686/serf-1.3.9-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/serf/1.3.9-2_x86_64/serf-1.3.9-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd53554622ffbf45298ca579a698f0f9943cf96db6191e8c4967fc46bfea7900f',
      armv7l: 'd53554622ffbf45298ca579a698f0f9943cf96db6191e8c4967fc46bfea7900f',

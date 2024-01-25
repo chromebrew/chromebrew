@@ -10,12 +10,6 @@ class Mpfr < Package
   source_sha256 '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpfr/4.1.0_armv7l/mpfr-4.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpfr/4.1.0_armv7l/mpfr-4.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpfr/4.1.0_i686/mpfr-4.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mpfr/4.1.0_x86_64/mpfr-4.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '02fc4dce2dfade4e7cb7ca539ddcf8142c1cb8839c9a1f83e5362e8f00f7a1e8',
      armv7l: '02fc4dce2dfade4e7cb7ca539ddcf8142c1cb8839c9a1f83e5362e8f00f7a1e8',

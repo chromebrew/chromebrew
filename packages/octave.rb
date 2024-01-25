@@ -10,11 +10,6 @@ class Octave < Autotools
   source_sha256 'd5a7e89928528dce8cab7eead700be8a8319a98ec5334cc2ce83d29ac60264c1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octave/8.4.0_armv7l/octave-8.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octave/8.4.0_armv7l/octave-8.4.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/octave/8.4.0_x86_64/octave-8.4.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c537235f83bd16c7179fa0f9d7375f9b55c7598582965b2a096c4862bc5ba11e',
      armv7l: 'c537235f83bd16c7179fa0f9d7375f9b55c7598582965b2a096c4862bc5ba11e',

@@ -10,12 +10,6 @@ class Py3_cryptography < Pip
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/41.0.5-py3.12_armv7l/py3_cryptography-41.0.5-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/41.0.5-py3.12_armv7l/py3_cryptography-41.0.5-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/41.0.5-py3.12_i686/py3_cryptography-41.0.5-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_cryptography/41.0.5-py3.12_x86_64/py3_cryptography-41.0.5-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '107b0bf0c7535e55026aaf0df8ccdb84ee54a3231e39fadfc7e1b17a4c5c4415',
      armv7l: '107b0bf0c7535e55026aaf0df8ccdb84ee54a3231e39fadfc7e1b17a4c5c4415',

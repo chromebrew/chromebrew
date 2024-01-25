@@ -10,12 +10,6 @@ class Zvbi < Package
   source_sha256 'fc883c34111a487c4a783f91b1b2bb5610d8d8e58dcba80c7ab31e67e4765318'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_armv7l/zvbi-0.2.35-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_i686/zvbi-0.2.35-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zvbi/0.2.35-2_x86_64/zvbi-0.2.35-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8540c8bf13aa2b9e8df2e1652d11d54c3eee1cc94aa8f282d9f1fa9d72fbf61f',
      armv7l: '8540c8bf13aa2b9e8df2e1652d11d54c3eee1cc94aa8f282d9f1fa9d72fbf61f',

@@ -10,12 +10,6 @@ class Avisynthplus < Package
   source_sha256 '6159fd976dffa62d5db5277cbb0b3b7f7a4ee92fc8667edd32da9840a669ccc1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.2_armv7l/avisynthplus-3.7.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.2_armv7l/avisynthplus-3.7.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.2_i686/avisynthplus-3.7.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avisynthplus/3.7.2_x86_64/avisynthplus-3.7.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '33a07e40e5de09d4b6a3c932c3a7c05d9e809bf388950ed69d2127d24a7d5ac5',
      armv7l: '33a07e40e5de09d4b6a3c932c3a7c05d9e809bf388950ed69d2127d24a7d5ac5',

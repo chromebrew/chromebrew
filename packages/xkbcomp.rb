@@ -10,12 +10,6 @@ class Xkbcomp < Package
   source_sha256 '59cce603a607a17722a0a1cf99010f4894e7812beb5d695abbc08474d59af27e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xkbcomp/1.4.4_armv7l/xkbcomp-1.4.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xkbcomp/1.4.4_armv7l/xkbcomp-1.4.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xkbcomp/1.4.4_i686/xkbcomp-1.4.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xkbcomp/1.4.4_x86_64/xkbcomp-1.4.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c654874e78a8da297b0bc5addc3a461e840366bdc333a010db05315f79497329',
      armv7l: 'c654874e78a8da297b0bc5addc3a461e840366bdc333a010db05315f79497329',

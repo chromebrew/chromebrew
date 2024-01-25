@@ -15,12 +15,6 @@ class Mimalloc < Package
   git_branch 'dev-slice'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mimalloc/dev-slice-221f96_armv7l/mimalloc-dev-slice-221f96-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mimalloc/dev-slice-221f96_armv7l/mimalloc-dev-slice-221f96-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mimalloc/dev-slice-221f96_i686/mimalloc-dev-slice-221f96-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mimalloc/dev-slice-221f96_x86_64/mimalloc-dev-slice-221f96-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '49cd61a1b29a78db7127702148eff3b5bcb92fbeef193cafda628b023dd70fad',
      armv7l: '49cd61a1b29a78db7127702148eff3b5bcb92fbeef193cafda628b023dd70fad',

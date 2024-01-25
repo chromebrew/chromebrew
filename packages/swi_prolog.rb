@@ -10,10 +10,6 @@ class Swi_prolog < Package
   source_sha256 'f4bcc78437f9080ab089762e9e6afa7071df7f584c14999b92b9a90a4efbd7d8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swi_prolog/8.2.4_i686/swi_prolog-8.2.4-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/swi_prolog/8.2.4_x86_64/swi_prolog-8.2.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     i686: 'd8985a0a160baca9d6565d4177a43a840450ef4bb96eefae476a51ce27fec063',
     x86_64: 'cbb431b0bd28fa1c581071aeb1eeda79b70b4ec3c28c2d07b509054e810cb62b'

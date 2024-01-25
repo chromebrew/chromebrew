@@ -13,12 +13,6 @@ class Libcdio_paranoia < Package
   source_sha256 '7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio_paranoia/10.2-2.0.1-1_armv7l/libcdio_paranoia-10.2-2.0.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio_paranoia/10.2-2.0.1-1_armv7l/libcdio_paranoia-10.2-2.0.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio_paranoia/10.2-2.0.1-1_i686/libcdio_paranoia-10.2-2.0.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdio_paranoia/10.2-2.0.1-1_x86_64/libcdio_paranoia-10.2-2.0.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4098fbea318ee03de6ccecbf8bae3a1075ab9f42fc5a7fe6a02f2016aba2ab4d',
      armv7l: '4098fbea318ee03de6ccecbf8bae3a1075ab9f42fc5a7fe6a02f2016aba2ab4d',

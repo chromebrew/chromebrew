@@ -10,12 +10,6 @@ class Fnotifystat < Package
   source_sha256 'a57034f8b8db3f43b28bfd2e15a27b599a5705809c59c3983b36276f6764a691'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fnotifystat/0.02.02_armv7l/fnotifystat-0.02.02-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fnotifystat/0.02.02_armv7l/fnotifystat-0.02.02-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fnotifystat/0.02.02_i686/fnotifystat-0.02.02-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fnotifystat/0.02.02_x86_64/fnotifystat-0.02.02-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8a316ded5cb90ac39118ca8b1741b6dcae7401a761a1bbe97a024a161938f693',
      armv7l: '8a316ded5cb90ac39118ca8b1741b6dcae7401a761a1bbe97a024a161938f693',

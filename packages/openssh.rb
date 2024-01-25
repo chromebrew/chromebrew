@@ -10,12 +10,6 @@ class Openssh < Autotools
   git_hashtag 'V_9_6_P1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.6p1_armv7l/openssh-9.6p1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.6p1_armv7l/openssh-9.6p1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.6p1_i686/openssh-9.6p1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openssh/9.6p1_x86_64/openssh-9.6p1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '56ba02dfb90234a579ad2625cc8a6acd58257f0160d35c3d34150b0eb3abca05',
      armv7l: '56ba02dfb90234a579ad2625cc8a6acd58257f0160d35c3d34150b0eb3abca05',

@@ -11,12 +11,6 @@ class Py3_olefile < Python
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_olefile/0.46-py3.12_armv7l/py3_olefile-0.46-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_olefile/0.46-py3.12_armv7l/py3_olefile-0.46-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_olefile/0.46-py3.12_i686/py3_olefile-0.46-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_olefile/0.46-py3.12_x86_64/py3_olefile-0.46-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f0ddd04f4d7ee129cff58de6321cdea56c1789f61daa62439e8d6674384ca717',
      armv7l: 'f0ddd04f4d7ee129cff58de6321cdea56c1789f61daa62439e8d6674384ca717',

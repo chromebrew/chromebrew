@@ -10,12 +10,6 @@ class Isl < Package
   source_sha256 '5efc53efaef151301f4e7dde3856b66812d8153dede24fab17673f801c8698f2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/isl/0.23_armv7l/isl-0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/isl/0.23_armv7l/isl-0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/isl/0.23_i686/isl-0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/isl/0.23_x86_64/isl-0.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c552525f20ee4089d55c58cb718275ef8c5beba05f49dce6415de3a80983305e',
      armv7l: 'c552525f20ee4089d55c58cb718275ef8c5beba05f49dce6415de3a80983305e',

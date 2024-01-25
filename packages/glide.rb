@@ -19,12 +19,6 @@ class Glide < Package
   end
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glide/0.12.3_armv7l/glide-0.12.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glide/0.12.3_armv7l/glide-0.12.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glide/0.12.3_i686/glide-0.12.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glide/0.12.3_x86_64/glide-0.12.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e7ffa620825012210d2c01a0c2b4480cbcdea58e03b9aee4e62e012396924334',
      armv7l: 'e7ffa620825012210d2c01a0c2b4480cbcdea58e03b9aee4e62e012396924334',

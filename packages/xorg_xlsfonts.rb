@@ -13,12 +13,6 @@ class Xorg_xlsfonts < Package
   source_sha256 '7b726945a967b44c35cddee5edd74802907a239ce2e2e515730b8a32c8e50465'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xlsfonts/1.0.7_armv7l/xorg_xlsfonts-1.0.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xlsfonts/1.0.7_armv7l/xorg_xlsfonts-1.0.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xlsfonts/1.0.7_i686/xorg_xlsfonts-1.0.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xlsfonts/1.0.7_x86_64/xorg_xlsfonts-1.0.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a86a0ffa9e86dee2df9711303b9b3464773af0684b912e3487cf361de854ccea',
      armv7l: 'a86a0ffa9e86dee2df9711303b9b3464773af0684b912e3487cf361de854ccea',

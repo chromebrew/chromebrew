@@ -19,7 +19,6 @@ class Tinycore < Package
     source_sha256 'cbc2f97c8b8dada90ec3cf99b328ec73c1b0fa9cc2cb594d273fd7b118610d49'
   end
 
-  binary_url({})
   binary_sha256({})
 
   def self.build

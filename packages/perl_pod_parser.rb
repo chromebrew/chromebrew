@@ -10,12 +10,6 @@ class Perl_pod_parser < Package
   source_sha256 '22928a7bffe61b452c05bbbb8f5216d4b9cf9fe2a849b776c25500d24d20df7c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.38_armv7l/perl_pod_parser-1.66-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.38_armv7l/perl_pod_parser-1.66-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.38_i686/perl_pod_parser-1.66-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_pod_parser/1.66-perl5.38_x86_64/perl_pod_parser-1.66-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a2d19bbbe90f2e1fc2351ea802b54280f2bddc056e82ab4053a480358fd6d94f',
      armv7l: 'a2d19bbbe90f2e1fc2351ea802b54280f2bddc056e82ab4053a480358fd6d94f',

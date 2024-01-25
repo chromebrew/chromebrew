@@ -13,12 +13,6 @@ class Libmaxminddb < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmaxminddb/1.6.0_armv7l/libmaxminddb-1.6.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmaxminddb/1.6.0_armv7l/libmaxminddb-1.6.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmaxminddb/1.6.0_i686/libmaxminddb-1.6.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmaxminddb/1.6.0_x86_64/libmaxminddb-1.6.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'dd5d36efff43193b39e867aafa2d8dc62952dff8e4deb899bc39e118279a4ee7',
      armv7l: 'dd5d36efff43193b39e867aafa2d8dc62952dff8e4deb899bc39e118279a4ee7',

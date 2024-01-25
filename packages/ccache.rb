@@ -10,12 +10,6 @@ class Ccache < Package
   source_sha256 'e47374c810b248cfca3665ee1d86c7c763ffd68d9944bc422d9c1872611f2b11'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_armv7l/ccache-4.8.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_armv7l/ccache-4.8.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_i686/ccache-4.8.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ccache/4.8.3_x86_64/ccache-4.8.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8a70dd0613001a060b6abe38ceebd9b5349782161a109776c01fc21290c8d9c4',
      armv7l: '8a70dd0613001a060b6abe38ceebd9b5349782161a109776c01fc21290c8d9c4',

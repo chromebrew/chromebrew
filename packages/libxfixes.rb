@@ -10,12 +10,6 @@ class Libxfixes < Package
   source_sha256 'a7c1a24da53e0b46cac5aea79094b4b2257321c621b258729bc3139149245b4c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/6.0.0_armv7l/libxfixes-6.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/6.0.0_armv7l/libxfixes-6.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/6.0.0_i686/libxfixes-6.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxfixes/6.0.0_x86_64/libxfixes-6.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '334ba4a7dc7f8578bcc687dead94717e95793cf672e2c081c43b4e2707ef0251',
      armv7l: '334ba4a7dc7f8578bcc687dead94717e95793cf672e2c081c43b4e2707ef0251',

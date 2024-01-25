@@ -10,12 +10,6 @@ class Mlocate < Package
   source_sha256 '3063df79fe198fb9618e180c54baf3105b33d88fe602ff2d8570aaf944f1263e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mlocate/0.26-1_armv7l/mlocate-0.26-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mlocate/0.26-1_armv7l/mlocate-0.26-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mlocate/0.26-1_i686/mlocate-0.26-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mlocate/0.26-1_x86_64/mlocate-0.26-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '69e02f44a498cd38a8f4bc2e3410f934506426d670664c402a09bfb34d51418c',
      armv7l: '69e02f44a498cd38a8f4bc2e3410f934506426d670664c402a09bfb34d51418c',

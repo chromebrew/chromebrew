@@ -10,12 +10,6 @@ class Usbutils < Package
   source_sha256 '9e23494fcc78b7a80ee29a07dd179c95ae2f71509c35728dbbabc2d1cca41338'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbutils/013_armv7l/usbutils-013-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbutils/013_armv7l/usbutils-013-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbutils/013_i686/usbutils-013-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/usbutils/013_x86_64/usbutils-013-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '031de655991e234e4978f63306510504229fa7b84f8f98959a1afcf054db0e1f',
      armv7l: '031de655991e234e4978f63306510504229fa7b84f8f98959a1afcf054db0e1f',

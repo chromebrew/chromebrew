@@ -13,12 +13,6 @@ class Libcdr < Autotools
   source_sha256 '5666249d613466b9aa1e987ea4109c04365866e9277d80f6cd9663e86b8ecdd4'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_armv7l/libcdr-0.1.7-2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_armv7l/libcdr-0.1.7-2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_i686/libcdr-0.1.7-2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcdr/0.1.7-2_x86_64/libcdr-0.1.7-2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '79124696e55c0a01674829d77e7f8c9d17e688b502e94776b4a0df0e01a0f4e0',
      armv7l: '79124696e55c0a01674829d77e7f8c9d17e688b502e94776b4a0df0e01a0f4e0',

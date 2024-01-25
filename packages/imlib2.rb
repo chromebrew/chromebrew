@@ -10,12 +10,6 @@ class Imlib2 < Package
   source_sha256 '4a224038bfffbe5d4d250c44e05f4ee5ae24dcfef8395b1677c715c58f764d43'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_armv7l/imlib2-1.9.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_armv7l/imlib2-1.9.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_i686/imlib2-1.9.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/imlib2/1.9.1_x86_64/imlib2-1.9.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3975a861cde1bc361f8045e80b580e92585308856cdf64fb419b97be43e50e4c',
      armv7l: '3975a861cde1bc361f8045e80b580e92585308856cdf64fb419b97be43e50e4c',

@@ -10,12 +10,6 @@ class Libxshmfence < Package
   source_sha256 '1129f95147f7bfe6052988a087f1b7cb7122283d2c47a7dbf7135ce0df69b4f8'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.3.1_armv7l/libxshmfence-1.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.3.1_armv7l/libxshmfence-1.3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.3.1_i686/libxshmfence-1.3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxshmfence/1.3.1_x86_64/libxshmfence-1.3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '80960ac0229518c53314b7da0647329860ca1f3369076624e866267a555bf178',
      armv7l: '80960ac0229518c53314b7da0647329860ca1f3369076624e866267a555bf178',

@@ -10,12 +10,6 @@ class Lcms < Package
   source_sha256 '18663985e864100455ac3e507625c438c3710354d85e5cbb7cd4043e11fe10f5'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lcms/2.12_armv7l/lcms-2.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lcms/2.12_armv7l/lcms-2.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lcms/2.12_i686/lcms-2.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lcms/2.12_x86_64/lcms-2.12-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9cad876e65a97e351278154858ae68200828b01f0d93330b821ecf53d5b31ad5',
      armv7l: '9cad876e65a97e351278154858ae68200828b01f0d93330b821ecf53d5b31ad5',

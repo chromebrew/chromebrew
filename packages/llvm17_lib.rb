@@ -12,12 +12,6 @@ class Llvm17_lib < Package
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.6_armv7l/llvm17_lib-17.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.6_armv7l/llvm17_lib-17.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.6_i686/llvm17_lib-17.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_lib/17.0.6_x86_64/llvm17_lib-17.0.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1b851977336e8c48ca985aad78b3e71d514d6eef75195da0bd1eae614678655e',
      armv7l: '1b851977336e8c48ca985aad78b3e71d514d6eef75195da0bd1eae614678655e',

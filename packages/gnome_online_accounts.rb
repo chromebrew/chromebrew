@@ -10,12 +10,6 @@ class Gnome_online_accounts < Package
   source_sha256 '89e27c886c0266b8c84a56dbb0fb0baefa704dd4d0ec47dd154a26590554adc9'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_armv7l/gnome_online_accounts-3.39.92-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_i686/gnome_online_accounts-3.39.92-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_online_accounts/3.39.92_x86_64/gnome_online_accounts-3.39.92-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c99efb0ee72e176460beea2b7e75fb980d48f6f1fe56725437631fc17a804cc6',
      armv7l: 'c99efb0ee72e176460beea2b7e75fb980d48f6f1fe56725437631fc17a804cc6',

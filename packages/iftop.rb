@@ -10,12 +10,6 @@ class Iftop < Package
   source_sha256 'd032547c708307159ff5fd0df23ebd3cfa7799c31536fa0aea1820318a8e0eac'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iftop/0.17_armv7l/iftop-0.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iftop/0.17_armv7l/iftop-0.17-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iftop/0.17_i686/iftop-0.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/iftop/0.17_x86_64/iftop-0.17-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8c5c376a55f851adb4a0f189286445a67c9f51bceeada360e5c74c6d318a28ce',
      armv7l: '8c5c376a55f851adb4a0f189286445a67c9f51bceeada360e5c74c6d318a28ce',

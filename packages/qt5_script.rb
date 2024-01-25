@@ -10,11 +10,6 @@ class Qt5_script < Qmake
   git_hashtag "v#{version}-lts"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_script/5.15.15_armv7l/qt5_script-5.15.15-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_script/5.15.15_armv7l/qt5_script-5.15.15-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_script/5.15.15_x86_64/qt5_script-5.15.15-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1e87319717e320ee6492ada9ec42a5a99ddcfe4bd52bf75e843452492e562813',
      armv7l: '1e87319717e320ee6492ada9ec42a5a99ddcfe4bd52bf75e843452492e562813',

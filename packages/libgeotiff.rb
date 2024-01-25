@@ -10,12 +10,6 @@ class Libgeotiff < Package
   source_sha256 '05ab1347aaa471fc97347d8d4269ff0c00f30fa666d956baba37948ec87e55d6'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1-1_armv7l/libgeotiff-1.7.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1-1_armv7l/libgeotiff-1.7.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1-1_i686/libgeotiff-1.7.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libgeotiff/1.7.1-1_x86_64/libgeotiff-1.7.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '37c527b38436f6313b6be20ed176d7f8be509f2dd2cb9e2fadcba16823b17331',
      armv7l: '37c527b38436f6313b6be20ed176d7f8be509f2dd2cb9e2fadcba16823b17331',

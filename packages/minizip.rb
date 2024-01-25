@@ -13,12 +13,6 @@ class Minizip < Package
   source_sha256 Zlibpkg.source_sha256
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minizip/1.3_armv7l/minizip-1.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minizip/1.3_armv7l/minizip-1.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minizip/1.3_i686/minizip-1.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/minizip/1.3_x86_64/minizip-1.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9a789d1f8f2119e3f4e79ca6a7311a5df8c524c0690f7e15319691c6a60fc3ff',
      armv7l: '9a789d1f8f2119e3f4e79ca6a7311a5df8c524c0690f7e15319691c6a60fc3ff',

@@ -13,11 +13,6 @@ class Libcec < Package
   source_sha256 '090696d7a4fb772d7acebbb06f91ab92e025531c7c91824046b9e4e71ecb3377'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcec/6.0.2_armv7l/libcec-6.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcec/6.0.2_armv7l/libcec-6.0.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcec/6.0.2_x86_64/libcec-6.0.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7151a17a85563aeec9a5a9eb936db42281f84f2a9cc7bd1b9a9d9c5f18729b81',
      armv7l: '7151a17a85563aeec9a5a9eb936db42281f84f2a9cc7bd1b9a9d9c5f18729b81',

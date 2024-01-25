@@ -10,11 +10,6 @@ class Vulkan_icd_loader < CMake
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.275_armv7l/vulkan_icd_loader-1.3.275-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.275_armv7l/vulkan_icd_loader-1.3.275-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vulkan_icd_loader/1.3.275_x86_64/vulkan_icd_loader-1.3.275-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '819766507f8e7d02c215ba88fbcea5710df0cf1631ba82c940c67b8530395b82',
      armv7l: '819766507f8e7d02c215ba88fbcea5710df0cf1631ba82c940c67b8530395b82',

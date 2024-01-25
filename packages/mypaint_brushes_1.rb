@@ -10,12 +10,6 @@ class Mypaint_brushes_1 < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes_1/1.3.1_armv7l/mypaint_brushes_1-1.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes_1/1.3.1_armv7l/mypaint_brushes_1-1.3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes_1/1.3.1_i686/mypaint_brushes_1-1.3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mypaint_brushes_1/1.3.1_x86_64/mypaint_brushes_1-1.3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd4c52770e79f9752640e1925d3da1bf273f86702a3dba5286ebdb8d9265363a1',
      armv7l: 'd4c52770e79f9752640e1925d3da1bf273f86702a3dba5286ebdb8d9265363a1',

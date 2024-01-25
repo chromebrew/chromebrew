@@ -10,12 +10,6 @@ class Msttcorefonts < Package
   source_sha256 'c23a2c519acad44fb65dfdd5b6f7de7b351ec15394df52cc744e3c6deb51d42f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_armv7l/msttcorefonts-3.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_armv7l/msttcorefonts-3.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_i686/msttcorefonts-3.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msttcorefonts/3.6_x86_64/msttcorefonts-3.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f6c8457c11a02cd39c89a35af70038de861610c75dcb6304d7baf0f283306370',
      armv7l: 'f6c8457c11a02cd39c89a35af70038de861610c75dcb6304d7baf0f283306370',

@@ -13,12 +13,6 @@ class Cmocka < Package
   source_sha256 'f0ccd8242d55e2fd74b16ba518359151f6f8383ff8aef4976e48393f77bba8b6'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmocka/1.1.5_armv7l/cmocka-1.1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmocka/1.1.5_armv7l/cmocka-1.1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmocka/1.1.5_i686/cmocka-1.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmocka/1.1.5_x86_64/cmocka-1.1.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3697a4226d1da0acfd5f462f645eb31886e41ade46c10b4ba211367c55f5b820',
      armv7l: '3697a4226d1da0acfd5f462f645eb31886e41ade46c10b4ba211367c55f5b820',

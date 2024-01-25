@@ -10,12 +10,6 @@ class Yasm < Package
   source_sha256 '3dce6601b495f5b3d45b59f7d2492a340ee7e84b5beca17e48f862502bd5603f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yasm/1.3.0-1_armv7l/yasm-1.3.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yasm/1.3.0-1_armv7l/yasm-1.3.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yasm/1.3.0-1_i686/yasm-1.3.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/yasm/1.3.0-1_x86_64/yasm-1.3.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '09315c4ce83e227350b3f515217a3b77285b42606a7414c80951eb2134937d77',
      armv7l: '09315c4ce83e227350b3f515217a3b77285b42606a7414c80951eb2134937d77',

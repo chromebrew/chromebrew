@@ -10,12 +10,6 @@ class Unzip < Package
   source_sha256 '036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unzip/6.0-2_armv7l/unzip-6.0-2-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unzip/6.0-2_armv7l/unzip-6.0-2-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unzip/6.0-2_i686/unzip-6.0-2-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unzip/6.0-2_x86_64/unzip-6.0-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',
       armv7l: '116ed2b03bcaeaa7ccd339e58b67519361933490d1469a72b3c9e12808fc4797',

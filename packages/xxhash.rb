@@ -10,12 +10,6 @@ class Xxhash < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxhash/0.8.1_armv7l/xxhash-0.8.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxhash/0.8.1_armv7l/xxhash-0.8.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxhash/0.8.1_i686/xxhash-0.8.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xxhash/0.8.1_x86_64/xxhash-0.8.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7ad8cdd3611bf8336070ec55d92c30cae584656c3720ca2368101826ca089c4a',
      armv7l: '7ad8cdd3611bf8336070ec55d92c30cae584656c3720ca2368101826ca089c4a',

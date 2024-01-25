@@ -10,12 +10,6 @@ class Musl_expat < Package
   source_sha256 'f79b8f904b749e3e0d20afeadecf8249c55b2e32d4ebb089ae378df479dcaf25'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.8_armv7l/musl_expat-2.4.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.8_armv7l/musl_expat-2.4.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.8_i686/musl_expat-2.4.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_expat/2.4.8_x86_64/musl_expat-2.4.8-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'da829889bc002774679a8ac8373a662b75469cd4e1e0efcf003165e3b1083e19',
      armv7l: 'da829889bc002774679a8ac8373a662b75469cd4e1e0efcf003165e3b1083e19',

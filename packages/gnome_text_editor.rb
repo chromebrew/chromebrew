@@ -10,11 +10,6 @@ class Gnome_text_editor < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_text_editor/44.0_armv7l/gnome_text_editor-44.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_text_editor/44.0_armv7l/gnome_text_editor-44.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_text_editor/44.0_x86_64/gnome_text_editor-44.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '46d478cbb5457ba5136fcbd440e3860c785af49264a90d1b75aee6e49f4a3ebf',
      armv7l: '46d478cbb5457ba5136fcbd440e3860c785af49264a90d1b75aee6e49f4a3ebf',

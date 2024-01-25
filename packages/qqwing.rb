@@ -10,12 +10,6 @@ class Qqwing < Package
   source_sha256 '1753736c31feea0085f5cfac33143743204f8a7e66b81ccd17e249ecafba802f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qqwing/1.3.4_armv7l/qqwing-1.3.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qqwing/1.3.4_armv7l/qqwing-1.3.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qqwing/1.3.4_i686/qqwing-1.3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qqwing/1.3.4_x86_64/qqwing-1.3.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b06f588f35e0e02728cc058ed736a97653c61b0a7dd93f151e301ca2e03bf0a3',
      armv7l: 'b06f588f35e0e02728cc058ed736a97653c61b0a7dd93f151e301ca2e03bf0a3',

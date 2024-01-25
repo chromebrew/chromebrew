@@ -11,12 +11,6 @@ class Exa < Package
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1-1_armv7l/exa-0.10.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1-1_armv7l/exa-0.10.1-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1-1_i686/exa-0.10.1-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exa/0.10.1-1_x86_64/exa-0.10.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '322a9e66be6310b50ec98fd9810a65ff5ab55f04a9a885e03c81095dbd2ac87d',
      armv7l: '322a9e66be6310b50ec98fd9810a65ff5ab55f04a9a885e03c81095dbd2ac87d',

@@ -10,12 +10,6 @@ class Xcb_util_cursor < Package
   source_sha256 '28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_armv7l/xcb_util_cursor-0.1.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_armv7l/xcb_util_cursor-0.1.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_i686/xcb_util_cursor-0.1.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xcb_util_cursor/0.1.4_x86_64/xcb_util_cursor-0.1.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',
      armv7l: '6024a6c057f93b6f2fb41607cd4b94ce5d790dc0dec95c16279c0461f6d9c8b0',

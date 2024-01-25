@@ -10,11 +10,6 @@ class Xclip < Autotools
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclip/0.13_armv7l/xclip-0.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclip/0.13_armv7l/xclip-0.13-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xclip/0.13_x86_64/xclip-0.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3e1520b7cd5d82c87ee68d7777859046ede28f2cc9bacada0d06a4369f9c5dca',
      armv7l: '3e1520b7cd5d82c87ee68d7777859046ede28f2cc9bacada0d06a4369f9c5dca',

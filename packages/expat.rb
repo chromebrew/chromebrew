@@ -10,12 +10,6 @@ class Expat < Package
   git_hashtag "R_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_armv7l/expat-2.5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_i686/expat-2.5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expat/2.5.0_x86_64/expat-2.5.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b77d23f30cca02e40219c8ad5982c6f6201e986bf01111f74d28807d13942278',
      armv7l: 'b77d23f30cca02e40219c8ad5982c6f6201e986bf01111f74d28807d13942278',

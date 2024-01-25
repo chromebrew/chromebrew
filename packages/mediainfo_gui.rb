@@ -10,11 +10,6 @@ class Mediainfo_gui < Package
   source_sha256 'b9fd5783d524a48cdbc68f445b7c3bc9de50d15e088bdd12ceadd1c2d3790efd'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo_gui/23.11_armv7l/mediainfo_gui-23.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo_gui/23.11_armv7l/mediainfo_gui-23.11-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mediainfo_gui/23.11_x86_64/mediainfo_gui-23.11-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '48a38130e32ceb1ba9a4d8aba369b81647216791a1158df5bbc72ea3b8a43585',
      armv7l: '48a38130e32ceb1ba9a4d8aba369b81647216791a1158df5bbc72ea3b8a43585',

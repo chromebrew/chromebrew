@@ -10,12 +10,6 @@ class Foliate < Package
   source_sha256 '4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/foliate/2.6.4_armv7l/foliate-2.6.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/foliate/2.6.4_armv7l/foliate-2.6.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/foliate/2.6.4_i686/foliate-2.6.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/foliate/2.6.4_x86_64/foliate-2.6.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0a3f9b647599d14c483be05cc2cc4cba6e14e0cb73bd65ffed1635968c7e67e4',
      armv7l: '0a3f9b647599d14c483be05cc2cc4cba6e14e0cb73bd65ffed1635968c7e67e4',

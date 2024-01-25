@@ -10,12 +10,6 @@ class Banner < Package
   source_sha256 '0dc0ac0667b2e884a7f5ad3e467af68cd0fd5917f8c9aa19188e6452aa1fc6d5'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/banner/1.3.2_armv7l/banner-1.3.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/banner/1.3.2_armv7l/banner-1.3.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/banner/1.3.2_i686/banner-1.3.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/banner/1.3.2_x86_64/banner-1.3.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f92922550b0c8f695e68f66373ce70a874d2cfde353cf1718ef78e5ecbb364ef',
      armv7l: 'f92922550b0c8f695e68f66373ce70a874d2cfde353cf1718ef78e5ecbb364ef',

@@ -10,12 +10,6 @@ class Kubectl < Package
   source_sha256 '0fe34180a4bb61384894616b1d348cc6350d1ebcbc071c67748864ffd2deb026'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kubectl/1.7.0_armv7l/kubectl-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kubectl/1.7.0_armv7l/kubectl-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kubectl/1.7.0_i686/kubectl-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kubectl/1.7.0_x86_64/kubectl-1.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9743623318ffeeaf659364297d5d8f81c9eaa8d78e9319308fc01dfb6b0ec724',
      armv7l: '9743623318ffeeaf659364297d5d8f81c9eaa8d78e9319308fc01dfb6b0ec724',

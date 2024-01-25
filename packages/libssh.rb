@@ -10,12 +10,6 @@ class Libssh < CMake
   source_sha256 'b60e2ff7f367b9eee2b5634d3a63303ddfede0e6a18dfca88c44a8770e7e4234'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.5_armv7l/libssh-0.10.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.5_armv7l/libssh-0.10.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.5_i686/libssh-0.10.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssh/0.10.5_x86_64/libssh-0.10.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '035d003c9c829f069844cc16d7ec513a91be550d951ec2e079e18d1ebefa5561',
      armv7l: '035d003c9c829f069844cc16d7ec513a91be550d951ec2e079e18d1ebefa5561',

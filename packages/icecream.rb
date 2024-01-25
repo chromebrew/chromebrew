@@ -13,12 +13,6 @@ class Icecream < Package
   source_sha256 '249dcf74f0fc477ff9735ff0bdcdfaa4c257a864c4db5255d8b25c9f4fd20b6b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icecream/1.4_armv7l/icecream-1.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icecream/1.4_armv7l/icecream-1.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icecream/1.4_i686/icecream-1.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/icecream/1.4_x86_64/icecream-1.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1e9f3f7b04cc40f8ed6a01baf6cd8bee2ec8079b3e35a701146d1ee7185ca706',
      armv7l: '1e9f3f7b04cc40f8ed6a01baf6cd8bee2ec8079b3e35a701146d1ee7185ca706',

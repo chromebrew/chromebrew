@@ -10,12 +10,6 @@ class Libxdamage < Package
   git_hashtag "libXdamage-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdamage/1.1.6_armv7l/libxdamage-1.1.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdamage/1.1.6_armv7l/libxdamage-1.1.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdamage/1.1.6_i686/libxdamage-1.1.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxdamage/1.1.6_x86_64/libxdamage-1.1.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1acd0ec73124faf374844894ebbaa792e985272284c5ff544c93499c3b6d8e2f',
      armv7l: '1acd0ec73124faf374844894ebbaa792e985272284c5ff544c93499c3b6d8e2f',

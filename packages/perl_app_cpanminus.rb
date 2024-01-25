@@ -10,12 +10,6 @@ class Perl_app_cpanminus < Package
   source_sha256 '3e8c9d9b44a7348f9acc917163dbfc15bd5ea72501492cea3a35b346440ff862'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.38_armv7l/perl_app_cpanminus-1.7046-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.38_armv7l/perl_app_cpanminus-1.7046-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.38_i686/perl_app_cpanminus-1.7046-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_app_cpanminus/1.7046-perl5.38_x86_64/perl_app_cpanminus-1.7046-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2aeff3bc9c343b4d8f8fb6c20ee2fd010a3146b6dde47d4536e29a80325263d8',
      armv7l: '2aeff3bc9c343b4d8f8fb6c20ee2fd010a3146b6dde47d4536e29a80325263d8',

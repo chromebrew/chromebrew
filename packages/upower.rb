@@ -10,11 +10,6 @@ class Upower < Meson
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/1.90.2_armv7l/upower-1.90.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/1.90.2_armv7l/upower-1.90.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/upower/1.90.2_x86_64/upower-1.90.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4b7a470ec75af657fd8ca4cac58f6adf568756348a7c1b4112c1521fefa3cbcf',
      armv7l: '4b7a470ec75af657fd8ca4cac58f6adf568756348a7c1b4112c1521fefa3cbcf',

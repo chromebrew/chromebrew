@@ -10,12 +10,6 @@ class Gst_editing_services < Package
   source_sha256 '4687b870a7de18aebf50f45ff572ad9e0138020e3479e02a6f056a0c4c7a1d04'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_editing_services/1.18.4_armv7l/gst_editing_services-1.18.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_editing_services/1.18.4_armv7l/gst_editing_services-1.18.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_editing_services/1.18.4_i686/gst_editing_services-1.18.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gst_editing_services/1.18.4_x86_64/gst_editing_services-1.18.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b8ec4f105bd65a5d31bad65e992c9fd5cbbd09a1ae8af2fab7b381a103ee3f98',
      armv7l: 'b8ec4f105bd65a5d31bad65e992c9fd5cbbd09a1ae8af2fab7b381a103ee3f98',

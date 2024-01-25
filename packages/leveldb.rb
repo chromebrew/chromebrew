@@ -10,12 +10,6 @@ class Leveldb < Package
   source_sha256 '55423cac9e3306f4a9502c738a001e4a339d1a38ffbee7572d4a07d5d63949b2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leveldb/1.22_armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leveldb/1.22_armv7l/leveldb-1.22-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leveldb/1.22_i686/leveldb-1.22-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/leveldb/1.22_x86_64/leveldb-1.22-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '362de886138261f127b60e31644ac80c627d9aba40e027c9d92978337c327915',
      armv7l: '362de886138261f127b60e31644ac80c627d9aba40e027c9d92978337c327915',

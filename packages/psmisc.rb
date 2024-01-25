@@ -10,12 +10,6 @@ class Psmisc < Package
   source_sha256 '91573ca0a1a50bd491b7c3cbe400126b0dadef9a2e328030d6469bb2448e0794'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psmisc/23.6_armv7l/psmisc-23.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psmisc/23.6_armv7l/psmisc-23.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psmisc/23.6_i686/psmisc-23.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/psmisc/23.6_x86_64/psmisc-23.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd84be50b9c1f15bbd6e547e3b5b323e3218c9e02cd348792afce0106108e09de',
      armv7l: 'd84be50b9c1f15bbd6e547e3b5b323e3218c9e02cd348792afce0106108e09de',

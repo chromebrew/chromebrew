@@ -10,12 +10,6 @@ class Goaccess < Package
   source_sha256 '6ba9f66540ea58fc2c17f175265f9ed76d74a8432eeac1182b74ebf4f2cd3414'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/goaccess/1.2_armv7l/goaccess-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/goaccess/1.2_armv7l/goaccess-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/goaccess/1.2_i686/goaccess-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/goaccess/1.2_x86_64/goaccess-1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0c132b27f777f1e1dc14803e511bcc39878e3d95c6505340b82a1d51574e2b7e',
      armv7l: '0c132b27f777f1e1dc14803e511bcc39878e3d95c6505340b82a1d51574e2b7e',

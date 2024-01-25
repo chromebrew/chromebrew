@@ -10,12 +10,6 @@ class Irssi < Package
   source_sha256 '6727060c918568ba2ff4295ad736128dba0b995d7b20491bca11f593bd857578'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irssi/1.2.2_armv7l/irssi-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irssi/1.2.2_armv7l/irssi-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irssi/1.2.2_i686/irssi-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/irssi/1.2.2_x86_64/irssi-1.2.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cef7c8a7eae8b5c8b3436808ba40d7ee47b6bee964accc6869ccc31d0bbd0c48',
      armv7l: 'cef7c8a7eae8b5c8b3436808ba40d7ee47b6bee964accc6869ccc31d0bbd0c48',

@@ -9,12 +9,6 @@ class Unicode_emoji < Package
   source_url 'SKIP'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_emoji/13.1_armv7l/unicode_emoji-13.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_emoji/13.1_armv7l/unicode_emoji-13.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_emoji/13.1_i686/unicode_emoji-13.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unicode_emoji/13.1_x86_64/unicode_emoji-13.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9829b6a211e83f87db2d57bd1acb7c27fc9617f0eba167555813775de0aea844',
      armv7l: '9829b6a211e83f87db2d57bd1acb7c27fc9617f0eba167555813775de0aea844',

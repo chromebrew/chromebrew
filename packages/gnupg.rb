@@ -10,12 +10,6 @@ class Gnupg < Package
   source_sha256 'a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.4.3_armv7l/gnupg-2.4.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.4.3_armv7l/gnupg-2.4.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.4.3_i686/gnupg-2.4.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnupg/2.4.3_x86_64/gnupg-2.4.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '63cce56c35ff714e0c697f720b33158461b7ee869c2cd6c23c83fa0350eadb6f',
      armv7l: '63cce56c35ff714e0c697f720b33158461b7ee869c2cd6c23c83fa0350eadb6f',

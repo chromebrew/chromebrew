@@ -13,12 +13,6 @@ class Opusfile < Package
   git_hashtag '9d718345ce03b2fad5d7d28e0bcd1cc69ab2b166'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opusfile/0.12-9d71834_armv7l/opusfile-0.12-9d71834-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opusfile/0.12-9d71834_armv7l/opusfile-0.12-9d71834-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opusfile/0.12-9d71834_i686/opusfile-0.12-9d71834-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/opusfile/0.12-9d71834_x86_64/opusfile-0.12-9d71834-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3831e7c8d77a9eb3990f410254a795699bd00bdcbd4e2a1979ba481426ac940e',
      armv7l: '3831e7c8d77a9eb3990f410254a795699bd00bdcbd4e2a1979ba481426ac940e',

@@ -10,12 +10,6 @@ class Expect < Package
   source_sha256 '49a7da83b0bdd9f46d04a04deec19c7767bb9a323e40c4781f89caf760b92c34'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expect/5.45.4_armv7l/expect-5.45.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expect/5.45.4_armv7l/expect-5.45.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expect/5.45.4_i686/expect-5.45.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/expect/5.45.4_x86_64/expect-5.45.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7ec75d2e1b62aca345b82b88820a0a7e06cfc25163f39d324acb9a723420e819',
      armv7l: '7ec75d2e1b62aca345b82b88820a0a7e06cfc25163f39d324acb9a723420e819',

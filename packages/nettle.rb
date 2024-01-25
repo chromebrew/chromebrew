@@ -10,12 +10,6 @@ class Nettle < Autotools
   source_sha256 '0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_armv7l/nettle-3.9-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_armv7l/nettle-3.9-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_i686/nettle-3.9-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nettle/3.9_x86_64/nettle-3.9-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '059a8950bbfb7e6e5f6eafd42bf6d2b10cad2fe1a591f9d33f05308c0f9a5961',
      armv7l: '059a8950bbfb7e6e5f6eafd42bf6d2b10cad2fe1a591f9d33f05308c0f9a5961',

@@ -10,12 +10,6 @@ class Sane_frontends < Package
   source_sha256 'c58a2066891428c6e6c6f625b595e3ada8b36dfe69250b1bbdaded91d76b094f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_frontends/5729_armv7l/sane_frontends-5729-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_frontends/5729_armv7l/sane_frontends-5729-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_frontends/5729_i686/sane_frontends-5729-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sane_frontends/5729_x86_64/sane_frontends-5729-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2ccfe4f3af211f4132015436d57f65a59d9d011d73ad4919cb0fb7d2555d2d48',
      armv7l: '2ccfe4f3af211f4132015436d57f65a59d9d011d73ad4919cb0fb7d2555d2d48',

@@ -10,12 +10,6 @@ class Libqmi < Package
   source_sha256 '8c8c3ee719874d2529bce9b35b028fe435b36f003979a360d3ad0938449db783'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libqmi/1.28.2_armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libqmi/1.28.2_armv7l/libqmi-1.28.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libqmi/1.28.2_i686/libqmi-1.28.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libqmi/1.28.2_x86_64/libqmi-1.28.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '03ccdba7bf32be2b5e02951d25a664af9654acceb1eb5c71fcbf5179a46190d7',
      armv7l: '03ccdba7bf32be2b5e02951d25a664af9654acceb1eb5c71fcbf5179a46190d7',

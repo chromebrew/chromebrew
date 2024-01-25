@@ -12,12 +12,6 @@ class Binutils < Package
   source_url "https://ftpmirror.gnu.org/binutils/binutils-#{@_ver}.tar.bz2"
   source_sha256 'a4c4bec052f7b8370024e60389e194377f3f48b56618418ea51067f67aaab30b'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_armv7l/binutils-2.41-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_armv7l/binutils-2.41-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_i686/binutils-2.41-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/binutils/2.41_x86_64/binutils-2.41-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8c22ec06120ffc67645c99dcfab36b1e1070b7ab10445dc8f738ee739abe4416',
      armv7l: '8c22ec06120ffc67645c99dcfab36b1e1070b7ab10445dc8f738ee739abe4416',

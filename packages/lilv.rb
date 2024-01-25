@@ -14,12 +14,6 @@ class Lilv < Meson
   git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.20-py3.12_armv7l/lilv-0.24.20-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.20-py3.12_armv7l/lilv-0.24.20-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.20-py3.12_i686/lilv-0.24.20-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lilv/0.24.20-py3.12_x86_64/lilv-0.24.20-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ecbb826b1648be16f71b5c8a453c8f07a7cef24d3e4f9b529344ded90c8955b1',
      armv7l: 'ecbb826b1648be16f71b5c8a453c8f07a7cef24d3e4f9b529344ded90c8955b1',

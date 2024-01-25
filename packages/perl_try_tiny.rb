@@ -10,12 +10,6 @@ class Perl_try_tiny < Package
   source_sha256 '3300d31d8a4075b26d8f46ce864a1d913e0e8467ceeba6655d5d2b2e206c11be'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_try_tiny/0.31-perl5.38_armv7l/perl_try_tiny-0.31-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_try_tiny/0.31-perl5.38_armv7l/perl_try_tiny-0.31-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_try_tiny/0.31-perl5.38_i686/perl_try_tiny-0.31-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_try_tiny/0.31-perl5.38_x86_64/perl_try_tiny-0.31-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dad95d43bf05f77e344fe8edd618e4f1b5e5cff9af4b272fc8a8d5c9463630f0',
      armv7l: 'dad95d43bf05f77e344fe8edd618e4f1b5e5cff9af4b272fc8a8d5c9463630f0',

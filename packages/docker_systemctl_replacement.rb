@@ -10,12 +10,6 @@ class Docker_systemctl_replacement < Package
   git_hashtag '9cbe1a00eb4bdac6ff05b96ca34ec9ed3d8fc06c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker_systemctl_replacement/9cbe1a0_armv7l/docker_systemctl_replacement-9cbe1a0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker_systemctl_replacement/9cbe1a0_armv7l/docker_systemctl_replacement-9cbe1a0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker_systemctl_replacement/9cbe1a0_i686/docker_systemctl_replacement-9cbe1a0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docker_systemctl_replacement/9cbe1a0_x86_64/docker_systemctl_replacement-9cbe1a0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '018be1e2684c084bd58f80fb1a52e417c430712ea956c89bcc17d82bab472947',
      armv7l: '018be1e2684c084bd58f80fb1a52e417c430712ea956c89bcc17d82bab472947',

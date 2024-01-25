@@ -10,12 +10,6 @@ class Tcpwrappers < Package
   source_sha256 '9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpwrappers/7.6_armv7l/tcpwrappers-7.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpwrappers/7.6_armv7l/tcpwrappers-7.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpwrappers/7.6_i686/tcpwrappers-7.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpwrappers/7.6_x86_64/tcpwrappers-7.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '69e189227279eba546a162c314b40217ce272a30d6ae9ae5a7ce4715fa8fde16',
      armv7l: '69e189227279eba546a162c314b40217ce272a30d6ae9ae5a7ce4715fa8fde16',

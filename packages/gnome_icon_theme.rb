@@ -10,12 +10,6 @@ class Gnome_icon_theme < Package
   source_sha256 '359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_icon_theme/3.12.0-1_armv7l/gnome_icon_theme-3.12.0-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_icon_theme/3.12.0-1_armv7l/gnome_icon_theme-3.12.0-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_icon_theme/3.12.0-1_i686/gnome_icon_theme-3.12.0-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_icon_theme/3.12.0-1_x86_64/gnome_icon_theme-3.12.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd30d85fac5dd8b3bede925be24dcbae08d6935f4a258e85715c93564225028a7',
      armv7l: 'd30d85fac5dd8b3bede925be24dcbae08d6935f4a258e85715c93564225028a7',

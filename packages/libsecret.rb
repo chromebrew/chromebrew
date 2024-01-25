@@ -10,12 +10,6 @@ class Libsecret < Package
   source_sha256 'b33b9542222ea8866f6ff2d31c0ad373877c2277db546ca00cc7fdda9cbab1c3'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.5_armv7l/libsecret-0.20.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.5_armv7l/libsecret-0.20.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.5_i686/libsecret-0.20.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsecret/0.20.5_x86_64/libsecret-0.20.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0d9ac5b80df9e1fa0c09c790e1f50b715304ee88e0af7e9fe1f990f9e6d0457e',
      armv7l: '0d9ac5b80df9e1fa0c09c790e1f50b715304ee88e0af7e9fe1f990f9e6d0457e',

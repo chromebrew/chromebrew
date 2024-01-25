@@ -10,12 +10,6 @@ class Libaom < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.6.1_armv7l/libaom-3.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.6.1_armv7l/libaom-3.6.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.6.1_i686/libaom-3.6.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaom/3.6.1_x86_64/libaom-3.6.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '54083b99311194c9ec94abc1a4419aed309dd3476511c92269dc3d43d5f064aa',
      armv7l: '54083b99311194c9ec94abc1a4419aed309dd3476511c92269dc3d43d5f064aa',

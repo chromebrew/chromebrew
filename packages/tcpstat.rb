@@ -10,12 +10,6 @@ class Tcpstat < Package
   source_sha256 '46fde9458cc5678264b0c5f2197f84ada9101951197fdeec5f04b0801fcff0ba'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpstat/1.5_armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpstat/1.5_armv7l/tcpstat-1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpstat/1.5_i686/tcpstat-1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tcpstat/1.5_x86_64/tcpstat-1.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9dc536b86bc7e6c133931ef586b8229386ab8528e6eea8ecfb12c8ba79ad349b',
      armv7l: '9dc536b86bc7e6c133931ef586b8229386ab8528e6eea8ecfb12c8ba79ad349b',

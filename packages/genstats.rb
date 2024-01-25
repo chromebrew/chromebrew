@@ -10,12 +10,6 @@ class Genstats < Package
   source_sha256 'f0fb9f29750cdaa85dba648709110c0bc80988dd6a98dd18a53169473aaa6ad3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/genstats/1.2_armv7l/genstats-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/genstats/1.2_armv7l/genstats-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/genstats/1.2_i686/genstats-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/genstats/1.2_x86_64/genstats-1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'de63231c25a96d3941458ccaeff027d4183570ab7734948159ba24bae6df54f9',
      armv7l: 'de63231c25a96d3941458ccaeff027d4183570ab7734948159ba24bae6df54f9',

@@ -10,12 +10,6 @@ class Arduino_ide < Package
   source_sha256 '350c7e64a38d562c3c5b61e9b93d4d64455a2c71bd0773a5c593198b8efa578d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.19_armv7l/arduino_ide-1.8.19-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.19_armv7l/arduino_ide-1.8.19-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.19_i686/arduino_ide-1.8.19-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arduino_ide/1.8.19_x86_64/arduino_ide-1.8.19-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '33bd83f692a6f241b14738bfef32a9118ebb6eb2f4936b69909e2c9f546d49d3',
      armv7l: '33bd83f692a6f241b14738bfef32a9118ebb6eb2f4936b69909e2c9f546d49d3',

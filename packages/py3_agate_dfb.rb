@@ -11,12 +11,6 @@ class Py3_agate_dfb < Python
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_dfb/0.2.2-py3.12_armv7l/py3_agate_dfb-0.2.2-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_dfb/0.2.2-py3.12_armv7l/py3_agate_dfb-0.2.2-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_dfb/0.2.2-py3.12_i686/py3_agate_dfb-0.2.2-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_agate_dfb/0.2.2-py3.12_x86_64/py3_agate_dfb-0.2.2-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8e4ac34981be8be2127482517337d2bf4e70b06902dc9f91c0d91a49e2623673',
      armv7l: '8e4ac34981be8be2127482517337d2bf4e70b06902dc9f91c0d91a49e2623673',

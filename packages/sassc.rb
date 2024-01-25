@@ -10,12 +10,6 @@ class Sassc < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.2_armv7l/sassc-3.6.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.2_armv7l/sassc-3.6.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.2_i686/sassc-3.6.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sassc/3.6.2_x86_64/sassc-3.6.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b34876c122bce81fb000e249e3c240781e0815c5139255a5d92e45184959b80d',
      armv7l: 'b34876c122bce81fb000e249e3c240781e0815c5139255a5d92e45184959b80d',

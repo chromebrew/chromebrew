@@ -21,11 +21,6 @@ class Glibc_build232 < Package
   source_url 'https://ftpmirror.gnu.org/glibc/glibc-2.32.tar.xz'
   source_sha256 '1627ea54f5a1a8467032563393e0901077626dc66f37f10ee6363bb722222836'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build232/2.32-3_armv7l/glibc_build232-2.32-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build232/2.32-3_armv7l/glibc_build232-2.32-3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build232/2.32-3_x86_64/glibc_build232-2.32-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',
      armv7l: '3fd6ddb5c4a5e6c53b08562a6aeb24e36a664b58c6bfd0742918a873e19f0c9d',

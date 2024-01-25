@@ -10,12 +10,6 @@ class Byobu < Package
   source_sha256 '5022c82705a5d57f1d4e8dcb1819fd04628af2d4b4618b7d44fa27ebfcdda9db'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/byobu/5.125_armv7l/byobu-5.125-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/byobu/5.125_armv7l/byobu-5.125-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/byobu/5.125_i686/byobu-5.125-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/byobu/5.125_x86_64/byobu-5.125-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b24959d0ad54aed9655241f9492aa63473503c5720cfc66574b306e8a79edcb6',
      armv7l: 'b24959d0ad54aed9655241f9492aa63473503c5720cfc66574b306e8a79edcb6',

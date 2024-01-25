@@ -13,12 +13,6 @@ class Spice_protocol < Package
   source_sha256 '80ae89643e253dc5ddc5b2120cd3cf9d9565d00026ff261dd140d4b8c5deaa64'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_protocol/0.14.3_armv7l/spice_protocol-0.14.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_protocol/0.14.3_armv7l/spice_protocol-0.14.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_protocol/0.14.3_i686/spice_protocol-0.14.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_protocol/0.14.3_x86_64/spice_protocol-0.14.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7ac004bbebd8ba03ca9ed896d222faed432055b8f168b7274d93dd5036c8f8f3',
      armv7l: '7ac004bbebd8ba03ca9ed896d222faed432055b8f168b7274d93dd5036c8f8f3',

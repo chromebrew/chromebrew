@@ -10,12 +10,6 @@ class Translate_shell < Package
   source_sha256 '4c4843a8c66276190535b8435775ecb5d9c8286083a33cdbe2db608eba93ca97'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/translate_shell/0.9.6.12_armv7l/translate_shell-0.9.6.12-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/translate_shell/0.9.6.12_armv7l/translate_shell-0.9.6.12-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/translate_shell/0.9.6.12_i686/translate_shell-0.9.6.12-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/translate_shell/0.9.6.12_x86_64/translate_shell-0.9.6.12-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bc872006b0244ca14597766b9a7c0ef5d432cd3502dedc2d3f541c214b20c131',
      armv7l: 'bc872006b0244ca14597766b9a7c0ef5d432cd3502dedc2d3f541c214b20c131',

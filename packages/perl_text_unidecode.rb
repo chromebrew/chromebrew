@@ -10,12 +10,6 @@ class Perl_text_unidecode < Package
   source_sha256 '6c24f14ddc1d20e26161c207b73ca184eed2ef57f08b5fb2ee196e6e2e88b1c6'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_armv7l/perl_text_unidecode-1.30-perl-5.36-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_armv7l/perl_text_unidecode-1.30-perl-5.36-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_i686/perl_text_unidecode-1.30-perl-5.36-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_unidecode/1.30-perl-5.36_x86_64/perl_text_unidecode-1.30-perl-5.36-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ecfa8e0ed890718428d85991af35a66d697183921e17700142822155f3920df0',
      armv7l: 'ecfa8e0ed890718428d85991af35a66d697183921e17700142822155f3920df0',

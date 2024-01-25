@@ -10,12 +10,6 @@ class Llvm17_build < Package
   git_hashtag "llvmorg-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_armv7l/llvm17_build-17.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_i686/llvm17_build-17.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm17_build/17.0.6_x86_64/llvm17_build-17.0.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
      armv7l: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',

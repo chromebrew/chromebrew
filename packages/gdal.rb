@@ -10,11 +10,6 @@ class Gdal < CMake
   source_sha256 'e0a6f0c453ea7eb7c09967f50ac49426808fcd8f259dbc9888140eb69d7ffee6'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.7.3_armv7l/gdal-3.7.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.7.3_armv7l/gdal-3.7.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdal/3.7.3_x86_64/gdal-3.7.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3b1dff7b7b8f2b7155717b23c9b0f44e55c6d6f0966cacda7cdddde01d7b32d8',
      armv7l: '3b1dff7b7b8f2b7155717b23c9b0f44e55c6d6f0966cacda7cdddde01d7b32d8',

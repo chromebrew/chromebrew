@@ -10,12 +10,6 @@ class Abseil_cpp < CMake
   source_sha256 '987ce98f02eefbaf930d6e38ab16aa05737234d7afbab2d5c4ea7adbe50c28ed'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20230802.1_armv7l/abseil_cpp-20230802.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20230802.1_armv7l/abseil_cpp-20230802.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20230802.1_i686/abseil_cpp-20230802.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/abseil_cpp/20230802.1_x86_64/abseil_cpp-20230802.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a51a050572ebc8f1243f20c2d9816d521b79782b98fce3cfd9705966b03fe7ae',
      armv7l: 'a51a050572ebc8f1243f20c2d9816d521b79782b98fce3cfd9705966b03fe7ae',

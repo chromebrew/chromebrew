@@ -10,12 +10,6 @@ class Antiword < Package
   source_sha256 '8e2c000fcbc6d641b0e6ff95e13c846da3ff31097801e86702124a206888f5ac'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antiword/0.37-2_armv7l/antiword-0.37-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antiword/0.37-2_armv7l/antiword-0.37-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antiword/0.37-2_i686/antiword-0.37-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/antiword/0.37-2_x86_64/antiword-0.37-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '758ead9af6bdc9493b525d9e009e1f5edb3fa51ca1663d66dd8f43b89b821225',
      armv7l: '758ead9af6bdc9493b525d9e009e1f5edb3fa51ca1663d66dd8f43b89b821225',

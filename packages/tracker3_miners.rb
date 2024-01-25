@@ -13,11 +13,6 @@ class Tracker3_miners < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.6.1_armv7l/tracker3_miners-3.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.6.1_armv7l/tracker3_miners-3.6.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tracker3_miners/3.6.1_x86_64/tracker3_miners-3.6.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '804efabc8139f777cd44c4fe5c61d33da4e9db56c81123119adf18e7c7455dd3',
      armv7l: '804efabc8139f777cd44c4fe5c61d33da4e9db56c81123119adf18e7c7455dd3',

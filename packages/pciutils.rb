@@ -10,12 +10,6 @@ class Pciutils < Package
   source_sha256 'db452ec986edefd88af0d222d22f6102f8030a8633fdfe846c3ae4bde9bb93f3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pciutils/3.6.2_armv7l/pciutils-3.6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pciutils/3.6.2_armv7l/pciutils-3.6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pciutils/3.6.2_i686/pciutils-3.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pciutils/3.6.2_x86_64/pciutils-3.6.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f6e98ae7fdd796945dfc130eb256ee9d1aafe9c7e6a15bcc63a2ba4d77640b62',
      armv7l: 'f6e98ae7fdd796945dfc130eb256ee9d1aafe9c7e6a15bcc63a2ba4d77640b62',

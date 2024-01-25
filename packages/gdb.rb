@@ -13,12 +13,6 @@ class Gdb < Autotools
   source_sha256 'd66df51276143451fcbff464cc8723d68f1e9df45a6a2d5635a54e71643edb80'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_armv7l/gdb-14.1-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_armv7l/gdb-14.1-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_i686/gdb-14.1-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gdb/14.1-py3.12_x86_64/gdb-14.1-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '480f63771ac9e063bcd8a09c7033381c5a974a817cb12d89b22bddde0353ff33',
      armv7l: '480f63771ac9e063bcd8a09c7033381c5a974a817cb12d89b22bddde0353ff33',

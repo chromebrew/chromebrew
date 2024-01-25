@@ -10,12 +10,6 @@ class Fish < CMake
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_armv7l/fish-3.6.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_armv7l/fish-3.6.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_i686/fish-3.6.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fish/3.6.1_x86_64/fish-3.6.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2bee4bba2f6c8095365ad968100bfcbdc3848e818d030f5cad834042e309c9de',
      armv7l: '2bee4bba2f6c8095365ad968100bfcbdc3848e818d030f5cad834042e309c9de',

@@ -10,12 +10,6 @@ class Ncrack < Package
   source_sha256 'dbad9440c861831836d47ece95aeb2bd40374a3eb03a14dea0fe1bfa73ecd4bc'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncrack/0.5_armv7l/ncrack-0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncrack/0.5_armv7l/ncrack-0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncrack/0.5_i686/ncrack-0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ncrack/0.5_x86_64/ncrack-0.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '94ff9ab741817018e2501ee7047a913cb921429a02b55b2ca2c9ae84a1c2e0c1',
      armv7l: '94ff9ab741817018e2501ee7047a913cb921429a02b55b2ca2c9ae84a1c2e0c1',

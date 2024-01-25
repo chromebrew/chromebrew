@@ -10,12 +10,6 @@ class Kwiml < Package
   source_sha256 '09607a32224091cb6deb605382772c69a4f51d16a5ccf065688e6e7d80e6f822'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kwiml/a079af_armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kwiml/a079af_armv7l/kwiml-a079af-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kwiml/a079af_i686/kwiml-a079af-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kwiml/a079af_x86_64/kwiml-a079af-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0198974f4a579f5aadb1b2174690fc79d9deb1b7690e732d35f35214c687c4b1',
      armv7l: '0198974f4a579f5aadb1b2174690fc79d9deb1b7690e732d35f35214c687c4b1',

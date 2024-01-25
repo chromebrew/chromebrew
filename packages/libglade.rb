@@ -10,12 +10,6 @@ class Libglade < Package
   source_sha256 '64361e7647839d36ed8336d992fd210d3e8139882269bed47dc4674980165dec'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglade/2.6.4-1_armv7l/libglade-2.6.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglade/2.6.4-1_armv7l/libglade-2.6.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglade/2.6.4-1_i686/libglade-2.6.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libglade/2.6.4-1_x86_64/libglade-2.6.4-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b4cad18d6fb3ed0a1594c387ceb3f2d635b82f4ec157d2e07c0d8a8a7cacd15f',
      armv7l: 'b4cad18d6fb3ed0a1594c387ceb3f2d635b82f4ec157d2e07c0d8a8a7cacd15f',

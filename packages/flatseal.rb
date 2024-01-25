@@ -10,12 +10,6 @@ class Flatseal < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.7.5_armv7l/flatseal-1.7.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.7.5_armv7l/flatseal-1.7.5-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.7.5_i686/flatseal-1.7.5-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flatseal/1.7.5_x86_64/flatseal-1.7.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'fea48523a45f8cec6dae017c180aefabe2d2ffca20068f10d472638fefc81aaa',
      armv7l: 'fea48523a45f8cec6dae017c180aefabe2d2ffca20068f10d472638fefc81aaa',

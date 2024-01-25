@@ -13,12 +13,6 @@ class Xdpyinfo < Package
   git_hashtag "xdpyinfo-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_armv7l/xdpyinfo-1.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_armv7l/xdpyinfo-1.3.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_i686/xdpyinfo-1.3.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdpyinfo/1.3.3_x86_64/xdpyinfo-1.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6041d86f4823e1dd0918d920124ef79eebfa2f7496947d3171a8f58d09358b33',
      armv7l: '6041d86f4823e1dd0918d920124ef79eebfa2f7496947d3171a8f58d09358b33',

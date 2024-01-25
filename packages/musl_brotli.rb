@@ -10,12 +10,6 @@ class Musl_brotli < Package
   source_sha256 'f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_armv7l/musl_brotli-1.0.9-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_armv7l/musl_brotli-1.0.9-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_i686/musl_brotli-1.0.9-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_brotli/1.0.9-3_x86_64/musl_brotli-1.0.9-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2c4f045fc242e8cc58d461cd8b632c7e5748c0e26b0ab81e0509b94ba2636c9d',
      armv7l: '2c4f045fc242e8cc58d461cd8b632c7e5748c0e26b0ab81e0509b94ba2636c9d',

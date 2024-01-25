@@ -11,12 +11,6 @@ class Nodebrew < Package
   source_sha256 '6d72e39c8acc5b22f4fc7a1734cd3bb8d00b61119ab7fea6cde376810ff2005e'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_armv7l/nodebrew-1.2.0-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_armv7l/nodebrew-1.2.0-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_i686/nodebrew-1.2.0-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nodebrew/1.2.0-1_x86_64/nodebrew-1.2.0-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2d66f5d8c02b4eb1709837d8a1271988441507f58ee3e05a4db99861cb01f229',
      armv7l: '2d66f5d8c02b4eb1709837d8a1271988441507f58ee3e05a4db99861cb01f229',

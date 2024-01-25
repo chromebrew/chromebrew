@@ -10,10 +10,6 @@ class Clisp < Package
   source_sha256 '8132ff353afaa70e6b19367a25ae3d5a43627279c25647c220641fed00f8e890'
   binary_compression 'tar.xz'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clisp/2.49-3_i686/clisp-2.49-3-chromeos-i686.tar.xz',
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clisp/2.49-3_x86_64/clisp-2.49-3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     i686: '1b05410ad735f382877d134eea7d26842de2e10fe028a6b3ca78f1774ab5c9e8',
     x86_64: '7d64a5724ef656764f35ce48dca877a9f9e75842a1a420fde21d12c8bf2f5489'

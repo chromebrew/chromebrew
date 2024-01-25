@@ -10,12 +10,6 @@ class Sqlite < Autotools
   source_sha256 '72887d57a1d8f89f52be38ef84a6353ce8c3ed55ada7864eb944abd9a495e436'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.45.0_armv7l/sqlite-3.45.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.45.0_armv7l/sqlite-3.45.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.45.0_i686/sqlite-3.45.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sqlite/3.45.0_x86_64/sqlite-3.45.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fdbec9d8fda19b985161c1c25ce5db5eeee13bca212e65d2be3e833019dd6bd1',
      armv7l: 'fdbec9d8fda19b985161c1c25ce5db5eeee13bca212e65d2be3e833019dd6bd1',

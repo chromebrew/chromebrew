@@ -11,12 +11,6 @@ class Libnfs < Package
   git_hashtag "libnfs-#{@_ver}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0-1_armv7l/libnfs-4.0.0-1-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0-1_armv7l/libnfs-4.0.0-1-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0-1_i686/libnfs-4.0.0-1-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libnfs/4.0.0-1_x86_64/libnfs-4.0.0-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',
       armv7l: '93c8332ed7a11e62196a451206a1bb01f5c8d1bba0c860fdf08a6ee52638748f',

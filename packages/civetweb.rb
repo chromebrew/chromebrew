@@ -10,12 +10,6 @@ class Civetweb < Package
   source_sha256 'a7ccc76c2f1b5f4e8d855eb328ed542f8fe3b882a6da868781799a98f4acdedc'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/civetweb/1.13_armv7l/civetweb-1.13-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/civetweb/1.13_armv7l/civetweb-1.13-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/civetweb/1.13_i686/civetweb-1.13-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/civetweb/1.13_x86_64/civetweb-1.13-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a9c69122c495afd89473928171d8b6528d8d1980d136cc16160733a317e21704',
      armv7l: 'a9c69122c495afd89473928171d8b6528d8d1980d136cc16160733a317e21704',

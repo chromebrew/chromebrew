@@ -10,12 +10,6 @@ class Font_bh_lucidatypewriter_75dpi < Package
   source_sha256 '4ac16afbe205480cc5572e2977ea63488c543d05be0ea8e5a94c845a6eebcb31'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_lucidatypewriter_75dpi/1.0.3_armv7l/font_bh_lucidatypewriter_75dpi-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_lucidatypewriter_75dpi/1.0.3_armv7l/font_bh_lucidatypewriter_75dpi-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_lucidatypewriter_75dpi/1.0.3_i686/font_bh_lucidatypewriter_75dpi-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_lucidatypewriter_75dpi/1.0.3_x86_64/font_bh_lucidatypewriter_75dpi-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '28c150d55d5a1b5323eab5e908191646025ea3ed7a2590a90aef74cebf6787d2',
      armv7l: '28c150d55d5a1b5323eab5e908191646025ea3ed7a2590a90aef74cebf6787d2',

@@ -10,12 +10,6 @@ class Glew < Package
   source_sha256 'd4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glew/2.2.0_armv7l/glew-2.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glew/2.2.0_armv7l/glew-2.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glew/2.2.0_i686/glew-2.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glew/2.2.0_x86_64/glew-2.2.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '20c0ed7ae6a12d3a3b852d7d3b9f27bb9bcc9eeb13843767a599b055cde8f77e',
      armv7l: '20c0ed7ae6a12d3a3b852d7d3b9f27bb9bcc9eeb13843767a599b055cde8f77e',

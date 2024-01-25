@@ -10,12 +10,6 @@ class Lsscsi < Package
   source_sha256 'eec0c2c10b30d58aa8d7c7703ccbca92215939632ce3fea599f280f8390553e6'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lsscsi/0.28_armv7l/lsscsi-0.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lsscsi/0.28_armv7l/lsscsi-0.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lsscsi/0.28_i686/lsscsi-0.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lsscsi/0.28_x86_64/lsscsi-0.28-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '38b24d217de71e9b295edccaad466aa41a25803b87725a26aeff1aa17e5a4bc5',
      armv7l: '38b24d217de71e9b295edccaad466aa41a25803b87725a26aeff1aa17e5a4bc5',

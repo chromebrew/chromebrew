@@ -10,12 +10,6 @@ class Font_mutt_misc < Package
   source_sha256 'bd5f7adb34367c197773a9801df5bce7b019664941900b2a31fbfe1ff2830f8f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_mutt_misc/1.0.3_armv7l/font_mutt_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_mutt_misc/1.0.3_armv7l/font_mutt_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_mutt_misc/1.0.3_i686/font_mutt_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_mutt_misc/1.0.3_x86_64/font_mutt_misc-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5a0bcf47ee4af1c9f15feb3e463f37558240558fc145e046f23c6ada4acb4a9b',
      armv7l: '5a0bcf47ee4af1c9f15feb3e463f37558240558fc145e046f23c6ada4acb4a9b',

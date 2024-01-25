@@ -10,12 +10,6 @@ class Consolekit < Package
   source_sha256 '104fd9f41c2d572ad62f4032de46c4c384c3522602b0ad953cf55759c6c64c1d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/consolekit/1.2.2_armv7l/consolekit-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/consolekit/1.2.2_armv7l/consolekit-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/consolekit/1.2.2_i686/consolekit-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/consolekit/1.2.2_x86_64/consolekit-1.2.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '4b9173ec6798adc23824c4189a050744b888de6b58d60442d1ec89bf0df81443',
      armv7l: '4b9173ec6798adc23824c4189a050744b888de6b58d60442d1ec89bf0df81443',

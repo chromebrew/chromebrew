@@ -17,11 +17,6 @@ class Qt5_webengine < Package
   source_sha256 '53b2f184c8b40bcac88b13f9f565a3d849f1ccfcc4f7344823ccc4265fb80445'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_armv7l/qt5_webengine-5.15.15-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_armv7l/qt5_webengine-5.15.15-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webengine/5.15.15_x86_64/qt5_webengine-5.15.15-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8b5cd6d79fdbc00d8eb9bc2b389814f979b487865192122d9369056dc431e7e7',
      armv7l: '8b5cd6d79fdbc00d8eb9bc2b389814f979b487865192122d9369056dc431e7e7',

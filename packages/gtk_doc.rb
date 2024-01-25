@@ -10,12 +10,6 @@ class Gtk_doc < Package
   source_sha256 'cc1b709a20eb030a278a1f9842a362e00402b7f834ae1df4c1998a723152bf43'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_armv7l/gtk_doc-1.33.2-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_armv7l/gtk_doc-1.33.2-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_i686/gtk_doc-1.33.2-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gtk_doc/1.33.2-1_x86_64/gtk_doc-1.33.2-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '24057b08390fd7e509aa289cca5f34abb4aaee144597d628861e01aaec6fec7e',
      armv7l: '24057b08390fd7e509aa289cca5f34abb4aaee144597d628861e01aaec6fec7e',

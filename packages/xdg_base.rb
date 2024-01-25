@@ -9,12 +9,6 @@ class Xdg_base < Package
   source_url 'SKIP'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_armv7l/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_armv7l/xdg_base-0.7-7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_i686/xdg_base-0.7-7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdg_base/0.7-7-1_x86_64/xdg_base-0.7-7-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2ec80e4af5d9791083b8004542b4fda18160a8773ef42a7390ec3018927c37ea',
      armv7l: '2ec80e4af5d9791083b8004542b4fda18160a8773ef42a7390ec3018927c37ea',

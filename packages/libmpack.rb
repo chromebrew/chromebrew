@@ -13,12 +13,6 @@ class Libmpack < Package
   source_sha256 '4ce91395d81ccea97d3ad4cb962f8540d166e59d3e2ddce8a22979b49f108956'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpack/1.0.5_armv7l/libmpack-1.0.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpack/1.0.5_armv7l/libmpack-1.0.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpack/1.0.5_i686/libmpack-1.0.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpack/1.0.5_x86_64/libmpack-1.0.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9b657165f886604233c07ce4c441c3d10cf6452ae736de3bb9d137c39fda5526',
      armv7l: '9b657165f886604233c07ce4c441c3d10cf6452ae736de3bb9d137c39fda5526',

@@ -10,12 +10,6 @@ class Speex < Autotools
   git_hashtag "Speex-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_armv7l/speex-1.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_armv7l/speex-1.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_i686/speex-1.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speex/1.2.1_x86_64/speex-1.2.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9b951f2a67e662c4c38f53298af1ade1dce898c96ef9ef47e3f59adbb20900ce',
      armv7l: '9b951f2a67e662c4c38f53298af1ade1dce898c96ef9ef47e3f59adbb20900ce',

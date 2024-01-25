@@ -10,12 +10,6 @@ class Unshield < Package
   source_sha256 '5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unshield/1.4.2_armv7l/unshield-1.4.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unshield/1.4.2_armv7l/unshield-1.4.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unshield/1.4.2_i686/unshield-1.4.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unshield/1.4.2_x86_64/unshield-1.4.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c8e532b79f02553de261074d813e908288ba65c55787f83cda72d3af508e6a2b',
      armv7l: 'c8e532b79f02553de261074d813e908288ba65c55787f83cda72d3af508e6a2b',

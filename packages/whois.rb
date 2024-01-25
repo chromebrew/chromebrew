@@ -10,12 +10,6 @@ class Whois < Package
   source_sha256 '9e007306bc0a5e0da4fe9abd52bc79aa8202af5ee6e852fb4f130cf362340b40'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whois/5.5.2_armv7l/whois-5.5.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whois/5.5.2_armv7l/whois-5.5.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whois/5.5.2_i686/whois-5.5.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whois/5.5.2_x86_64/whois-5.5.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e1fb23bf6dc47d2504f8452f33668599ab039b32bbe6b70c3b4cf0f9c529a424',
      armv7l: 'e1fb23bf6dc47d2504f8452f33668599ab039b32bbe6b70c3b4cf0f9c529a424',

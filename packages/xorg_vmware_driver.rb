@@ -10,12 +10,6 @@ class Xorg_vmware_driver < Package
   source_sha256 'e2f7f7101fba7f53b268e7a25908babbf155b3984fb5268b3d244eb6c11bf62b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_vmware_driver/13.2.1_armv7l/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_vmware_driver/13.2.1_armv7l/xorg_vmware_driver-13.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_vmware_driver/13.2.1_i686/xorg_vmware_driver-13.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_vmware_driver/13.2.1_x86_64/xorg_vmware_driver-13.2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '23546757562958f739b4121ba98cb3324ab32687d073bdd6a0d868ee993a0bc1',
      armv7l: '23546757562958f739b4121ba98cb3324ab32687d073bdd6a0d868ee993a0bc1',

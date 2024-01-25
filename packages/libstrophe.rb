@@ -10,12 +10,6 @@ class Libstrophe < Package
   source_sha256 '158145bc1565a5fd0bbd7f57e3e15d768e58b8a460897ab5918a5a689d67ae6f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_armv7l/libstrophe-0.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_armv7l/libstrophe-0.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_i686/libstrophe-0.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libstrophe/0.9.2_x86_64/libstrophe-0.9.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '35c2806eb3e47f25c7e249a601df8149112210344653f20e5eff4093a5dbbf95',
      armv7l: '35c2806eb3e47f25c7e249a601df8149112210344653f20e5eff4093a5dbbf95',

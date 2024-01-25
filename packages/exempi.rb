@@ -13,12 +13,6 @@ class Exempi < Autotools
   source_sha256 '8d34b3860192f6d2ac017537884b099b13a492ed4884130c65da5173d5162590'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.4_armv7l/exempi-2.6.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.4_armv7l/exempi-2.6.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.4_i686/exempi-2.6.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/exempi/2.6.4_x86_64/exempi-2.6.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f9ed9074c94cbf4bc9888698b3d953e5d1174c810c09701e336eaf0555449766',
      armv7l: 'f9ed9074c94cbf4bc9888698b3d953e5d1174c810c09701e336eaf0555449766',

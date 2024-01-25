@@ -13,11 +13,6 @@ class Runc < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/runc/1.1.7_armv7l/runc-1.1.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/runc/1.1.7_armv7l/runc-1.1.7-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/runc/1.1.7_x86_64/runc-1.1.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9b26302b3cd4803d516c069901471f81ba5a043bc4e9873a87b3992f618484c8',
      armv7l: '9b26302b3cd4803d516c069901471f81ba5a043bc4e9873a87b3992f618484c8',

@@ -10,11 +10,6 @@ class Poppler_data < Package
   source_sha256 'c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.12_armv7l/poppler_data-0.4.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.12_armv7l/poppler_data-0.4.12-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/poppler_data/0.4.12_x86_64/poppler_data-0.4.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ec1bcb5fb7d23cc28bbe77b3436beefff248f1164cf5910dec031f54d87820f8',
      armv7l: 'ec1bcb5fb7d23cc28bbe77b3436beefff248f1164cf5910dec031f54d87820f8',

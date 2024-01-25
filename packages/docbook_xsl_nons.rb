@@ -11,12 +11,6 @@ class Docbook_xsl_nons < Package
   source_sha256 'ba41126fbf4021e38952f3074dc87cdf1e50f3981280c7a619f88acf31456822'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_armv7l/docbook_xsl_nons-1.79.2-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_armv7l/docbook_xsl_nons-1.79.2-3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_i686/docbook_xsl_nons-1.79.2-3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xsl_nons/1.79.2-3_x86_64/docbook_xsl_nons-1.79.2-3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8b2d037e40db4e9620283d65b54f74179e3ecdfc6aed68f8b6181b9f52f984c2',
      armv7l: '8b2d037e40db4e9620283d65b54f74179e3ecdfc6aed68f8b6181b9f52f984c2',

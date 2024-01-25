@@ -13,12 +13,6 @@ class Sngrep < Package
   depends_on 'libpcap'
   depends_on 'pcre'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_armv7l/sngrep-1.4.6-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_armv7l/sngrep-1.4.6-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_i686/sngrep-1.4.6-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sngrep/1.4.6-1_x86_64/sngrep-1.4.6-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '09a6ad001c63ce4ac435c148e5bb6df64908b3e06f95520e268510aa89f8c13f',
      armv7l: '09a6ad001c63ce4ac435c148e5bb6df64908b3e06f95520e268510aa89f8c13f',

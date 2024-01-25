@@ -10,12 +10,6 @@ class Freetds < Package
   source_sha256 'a02c27802da15a3ade85bbaab6197713cd286f036409af9bba2ab4c63bdf57c3'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetds/1.2.18_armv7l/freetds-1.2.18-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetds/1.2.18_armv7l/freetds-1.2.18-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetds/1.2.18_i686/freetds-1.2.18-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freetds/1.2.18_x86_64/freetds-1.2.18-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a31c467c683a3b574fb59cd45d8511e1a5824d5ea9ab93b3fe4816b42447d041',
      armv7l: 'a31c467c683a3b574fb59cd45d8511e1a5824d5ea9ab93b3fe4816b42447d041',

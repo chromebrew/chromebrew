@@ -10,12 +10,6 @@ class A2png < Package
   source_sha256 'd3ae1c771f5180d93f35cded76d9bb4c4cc2023dbe65613e78add3eeb43f736b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/a2png/0.1.5-1_armv7l/a2png-0.1.5-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/a2png/0.1.5-1_armv7l/a2png-0.1.5-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/a2png/0.1.5-1_i686/a2png-0.1.5-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/a2png/0.1.5-1_x86_64/a2png-0.1.5-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '72ebf874dee9871949df56eecd9b24e8586b84c1efed1bdf988f9ea9f28e012b',
      armv7l: '72ebf874dee9871949df56eecd9b24e8586b84c1efed1bdf988f9ea9f28e012b',

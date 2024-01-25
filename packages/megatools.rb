@@ -10,12 +10,6 @@ class Megatools < Package
   source_sha256 '9b0521a4d27dbc417fc8e12610ac1e1da729bf6d6eb5bef927ef3670b372a16f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/megatools/1.9.98_armv7l/megatools-1.9.98-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/megatools/1.9.98_armv7l/megatools-1.9.98-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/megatools/1.9.98_i686/megatools-1.9.98-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/megatools/1.9.98_x86_64/megatools-1.9.98-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '503807b962eb17c2b9fded0ae197ee4d78871a3b339f76a82dad76ac5d461275',
      armv7l: '503807b962eb17c2b9fded0ae197ee4d78871a3b339f76a82dad76ac5d461275',

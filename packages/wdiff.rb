@@ -10,12 +10,6 @@ class Wdiff < Package
   source_sha256 '34ff698c870c87e6e47a838eeaaae729fa73349139fc8db12211d2a22b78af6b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wdiff/1.2.2_armv7l/wdiff-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wdiff/1.2.2_armv7l/wdiff-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wdiff/1.2.2_i686/wdiff-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/wdiff/1.2.2_x86_64/wdiff-1.2.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e27cdc3a13508098ddb9e330758896596af712fb33ac4f6c5c17c1b41624ffa1',
      armv7l: 'e27cdc3a13508098ddb9e330758896596af712fb33ac4f6c5c17c1b41624ffa1',

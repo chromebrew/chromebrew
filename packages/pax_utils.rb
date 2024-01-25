@@ -10,12 +10,6 @@ class Pax_utils < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pax_utils/1.3.7_armv7l/pax_utils-1.3.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pax_utils/1.3.7_armv7l/pax_utils-1.3.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pax_utils/1.3.7_i686/pax_utils-1.3.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pax_utils/1.3.7_x86_64/pax_utils-1.3.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f05733d181ad32f5bd3795f592d1b30d1f46edb7c65a64c7cf1da8201bd44e02',
      armv7l: 'f05733d181ad32f5bd3795f592d1b30d1f46edb7c65a64c7cf1da8201bd44e02',

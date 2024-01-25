@@ -11,12 +11,6 @@ class Pandoc < Package
   source_url 'https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-linux.tar.gz'
   source_sha256 'eb775fd42ec50329004d00f0c9b13076e707cdd44745517c8ce2581fb8abdb75'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pandoc/2.7.3_armv7l/pandoc-2.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pandoc/2.7.3_armv7l/pandoc-2.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pandoc/2.7.3_i686/pandoc-2.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pandoc/2.7.3_x86_64/pandoc-2.7.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2bdd58244cb9044771e1ef36adcb9749c56c045c8f040c3e199e6bbb047a78f5',
      armv7l: '2bdd58244cb9044771e1ef36adcb9749c56c045c8f040c3e199e6bbb047a78f5',

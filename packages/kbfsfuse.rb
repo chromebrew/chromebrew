@@ -10,12 +10,6 @@ class Kbfsfuse < Package
   source_sha256 '2bbbfd2eb7ed12295375a182656af6dcc509827f7ed83c2b1dd0f72f56853fa5'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kbfsfuse/1.0.40_armv7l/kbfsfuse-1.0.40-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kbfsfuse/1.0.40_armv7l/kbfsfuse-1.0.40-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kbfsfuse/1.0.40_i686/kbfsfuse-1.0.40-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/kbfsfuse/1.0.40_x86_64/kbfsfuse-1.0.40-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'fdf320e2c52383d11ecfc3c1ab355e2950d1acc6b23583b9751b7c296948dc2e',
      armv7l: 'fdf320e2c52383d11ecfc3c1ab355e2950d1acc6b23583b9751b7c296948dc2e',

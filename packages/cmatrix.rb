@@ -10,12 +10,6 @@ class Cmatrix < Package
   source_sha256 '6b0b9aff4585147843c4cf8a8c9c6048500f66dc4887a38922197dfa326b57c8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmatrix/1.2_armv7l/cmatrix-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmatrix/1.2_armv7l/cmatrix-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmatrix/1.2_i686/cmatrix-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cmatrix/1.2_x86_64/cmatrix-1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '370bcaf095ffc55515a98a1e6e3be9c4f47c0eab4d4b71893984a520873cd35e',
      armv7l: '370bcaf095ffc55515a98a1e6e3be9c4f47c0eab4d4b71893984a520873cd35e',

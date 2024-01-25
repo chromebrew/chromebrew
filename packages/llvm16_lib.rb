@@ -12,12 +12,6 @@ class Llvm16_lib < Package
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_armv7l/llvm16_lib-16.0.6-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_armv7l/llvm16_lib-16.0.6-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_i686/llvm16_lib-16.0.6-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/llvm16_lib/16.0.6_x86_64/llvm16_lib-16.0.6-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '996924278cd5695a0fee50649498a95b30417af629eb3b0edad66b4805fc5e9c',
      armv7l: '996924278cd5695a0fee50649498a95b30417af629eb3b0edad66b4805fc5e9c',

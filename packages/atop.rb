@@ -10,11 +10,6 @@ class Atop < Package
   source_sha256 'e7a673cf2c82578e7dd82ecb0dec83fd9ecb30828b2561c28a9fa5aaf75d5f93'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atop/2.10.0_armv7l/atop-2.10.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atop/2.10.0_armv7l/atop-2.10.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/atop/2.10.0_x86_64/atop-2.10.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '99489c26c22d314b131765b7765d638f9ca0281dc012621714df2bdf053f49ab',
      armv7l: '99489c26c22d314b131765b7765d638f9ca0281dc012621714df2bdf053f49ab',

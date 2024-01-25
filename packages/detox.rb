@@ -10,12 +10,6 @@ class Detox < Package
   source_sha256 'abfad90ee7d3e0fc53ce3b9da3253f9a800cdd92e3f8cc12a19394a7b1dcdbf8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/detox/1.2.0_armv7l/detox-1.2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/detox/1.2.0_armv7l/detox-1.2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/detox/1.2.0_i686/detox-1.2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/detox/1.2.0_x86_64/detox-1.2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3afa40ee3b414e1d049c0d430c384637361fd41f3fdb4c7af8113a5f958dd94d',
      armv7l: '3afa40ee3b414e1d049c0d430c384637361fd41f3fdb4c7af8113a5f958dd94d',

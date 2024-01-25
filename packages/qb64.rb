@@ -10,12 +10,6 @@ class Qb64 < Package
   source_sha256 '47c739847e3f0d517150eae28e459e4c2cc1f904c1ab11eb7d089810d56e044a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qb64/1.2_armv7l/qb64-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qb64/1.2_armv7l/qb64-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qb64/1.2_i686/qb64-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qb64/1.2_x86_64/qb64-1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '52da6cf27545c7274592622927df205de268cbd8f4be87c75ff845ec68120cd4',
      armv7l: '52da6cf27545c7274592622927df205de268cbd8f4be87c75ff845ec68120cd4',

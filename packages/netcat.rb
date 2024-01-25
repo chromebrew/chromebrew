@@ -10,12 +10,6 @@ class Netcat < Package
   source_sha256 '30719c9a4ffbcf15676b8f528233ccc54ee6cba96cb4590975f5fd60c68a066f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcat/0.7.1_armv7l/netcat-0.7.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcat/0.7.1_armv7l/netcat-0.7.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcat/0.7.1_i686/netcat-0.7.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netcat/0.7.1_x86_64/netcat-0.7.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '02fa145b9e7d8d956b676fe8ce320d507e00852102bcfbf8c11ab68f340d090a',
      armv7l: '02fa145b9e7d8d956b676fe8ce320d507e00852102bcfbf8c11ab68f340d090a',

@@ -13,12 +13,6 @@ class Luajit_lpeg < Package
   source_sha256 '48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_lpeg/1.0.2_armv7l/luajit_lpeg-1.0.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_lpeg/1.0.2_armv7l/luajit_lpeg-1.0.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_lpeg/1.0.2_i686/luajit_lpeg-1.0.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/luajit_lpeg/1.0.2_x86_64/luajit_lpeg-1.0.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd8e6f79a92c8d8c5bc189088bda5de3816d25bfde61538a7189ff8b90ba72363',
      armv7l: 'd8e6f79a92c8d8c5bc189088bda5de3816d25bfde61538a7189ff8b90ba72363',

@@ -10,12 +10,6 @@ class Oci_cli < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_armv7l/oci_cli-3.1.2-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_armv7l/oci_cli-3.1.2-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_i686/oci_cli-3.1.2-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oci_cli/3.1.2_x86_64/oci_cli-3.1.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',
      armv7l: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',

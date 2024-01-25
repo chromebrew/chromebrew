@@ -13,11 +13,6 @@ class Qt5_webchannel < Qmake
   git_hashtag 'f84887c1aee4ab04af375e639ae965c9ea2186a5' # from kde/5.15 branch
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webchannel/5.15.11-f84887c-1_armv7l/qt5_webchannel-5.15.11-f84887c-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webchannel/5.15.11-f84887c-1_armv7l/qt5_webchannel-5.15.11-f84887c-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_webchannel/5.15.11-f84887c-1_x86_64/qt5_webchannel-5.15.11-f84887c-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '90a95da431935e73b986f26185ea64f557341bc337dda5ecaffccc5b5120d462',
      armv7l: '90a95da431935e73b986f26185ea64f557341bc337dda5ecaffccc5b5120d462',

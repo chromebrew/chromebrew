@@ -10,12 +10,6 @@ class Pinentry < Package
   source_sha256 '68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pinentry/1.1.0_armv7l/pinentry-1.1.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pinentry/1.1.0_armv7l/pinentry-1.1.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pinentry/1.1.0_i686/pinentry-1.1.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pinentry/1.1.0_x86_64/pinentry-1.1.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6b0d4c5f8806b54a00ff932b9d77183e14e16fc9d78e90018b4444591eaf1ff0',
      armv7l: '6b0d4c5f8806b54a00ff932b9d77183e14e16fc9d78e90018b4444591eaf1ff0',

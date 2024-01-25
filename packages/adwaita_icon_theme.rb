@@ -10,11 +10,6 @@ class Adwaita_icon_theme < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/45.0_armv7l/adwaita_icon_theme-45.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/45.0_armv7l/adwaita_icon_theme-45.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/adwaita_icon_theme/45.0_x86_64/adwaita_icon_theme-45.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '565d1fd47c6f327d21fb4e589ac8037484c72424ab71c8e8dfc3da2eb932b437',
      armv7l: '565d1fd47c6f327d21fb4e589ac8037484c72424ab71c8e8dfc3da2eb932b437',

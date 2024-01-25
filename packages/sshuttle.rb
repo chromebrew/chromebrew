@@ -11,12 +11,6 @@ class Sshuttle < Package
   git_hashtag "v#{@_ver}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5-1_armv7l/sshuttle-1.0.5-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5-1_armv7l/sshuttle-1.0.5-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5-1_i686/sshuttle-1.0.5-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sshuttle/1.0.5-1_x86_64/sshuttle-1.0.5-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '6828c870bd62da9edb41061bf39e99383a1a53823356d6f1a443c6b86eb19f1a',
      armv7l: '6828c870bd62da9edb41061bf39e99383a1a53823356d6f1a443c6b86eb19f1a',

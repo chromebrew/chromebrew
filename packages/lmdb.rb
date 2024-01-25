@@ -13,12 +13,6 @@ class Lmdb < Package
   source_sha256 'd35d4f6f46313d62fd342c9dcbf574432919ce5e802d2b6cbe2ebd549821e5c4'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.31_armv7l/lmdb-0.9.31-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.31_armv7l/lmdb-0.9.31-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.31_i686/lmdb-0.9.31-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lmdb/0.9.31_x86_64/lmdb-0.9.31-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4a8b49cf540611175663e4a47f5cb6a7422453737d46fd9cb719a5405c810a66',
      armv7l: '4a8b49cf540611175663e4a47f5cb6a7422453737d46fd9cb719a5405c810a66',

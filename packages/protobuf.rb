@@ -13,12 +13,6 @@ class Protobuf < Package
   source_sha256 '22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.12_armv7l/protobuf-21.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.12_armv7l/protobuf-21.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.12_i686/protobuf-21.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/protobuf/21.12_x86_64/protobuf-21.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '525fa6ba3fe024ceadab14380e4bd9e2b4a7e4c2e486285cf0cc2483a541b581',
      armv7l: '525fa6ba3fe024ceadab14380e4bd9e2b4a7e4c2e486285cf0cc2483a541b581',

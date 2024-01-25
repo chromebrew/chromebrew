@@ -11,12 +11,6 @@ class Docbook_xml42 < Package
   source_sha256 'acc4601e4f97a196076b7e64b368d9248b07c7abf26b34a02cca40eeebe60fa2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml42/4.2-2_armv7l/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml42/4.2-2_armv7l/docbook_xml42-4.2-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml42/4.2-2_i686/docbook_xml42-4.2-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/docbook_xml42/4.2-2_x86_64/docbook_xml42-4.2-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b83d4e1f4209796ea5269ed4519d2ce2fb99612cd727177fb76b19da1d2c60d3',
      armv7l: 'b83d4e1f4209796ea5269ed4519d2ce2fb99612cd727177fb76b19da1d2c60d3',

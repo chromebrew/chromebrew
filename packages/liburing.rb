@@ -10,12 +10,6 @@ class Liburing < Package
   source_sha256 'ca069ecc4aa1baf1031bd772e4e97f7e26dfb6bb733d79f70159589b22ab4dc0'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburing/2.0_armv7l/liburing-2.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburing/2.0_armv7l/liburing-2.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburing/2.0_i686/liburing-2.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/liburing/2.0_x86_64/liburing-2.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '25bda02208eb872e11c8434523056bb3591996aa6aec935171c5ce81bcb39225',
      armv7l: '25bda02208eb872e11c8434523056bb3591996aa6aec935171c5ce81bcb39225',

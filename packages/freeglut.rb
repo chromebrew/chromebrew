@@ -10,12 +10,6 @@ class Freeglut < Package
   source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_armv7l/freeglut-3.2.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_i686/freeglut-3.2.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/freeglut/3.2.1_x86_64/freeglut-3.2.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
      armv7l: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',

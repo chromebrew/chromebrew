@@ -10,12 +10,6 @@ class Grive < Package
   git_hashtag '648ff8eea1a3c7cac8bfba283f75717bf54c67eb'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.3-648ff8e-1_armv7l/grive-0.5.3-648ff8e-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.3-648ff8e-1_armv7l/grive-0.5.3-648ff8e-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.3-648ff8e-1_i686/grive-0.5.3-648ff8e-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/grive/0.5.3-648ff8e-1_x86_64/grive-0.5.3-648ff8e-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '65b144b2b0fd75508d0eefa17e85bfdf23543cfbfba6f76e03be05bd755861ce',
      armv7l: '65b144b2b0fd75508d0eefa17e85bfdf23543cfbfba6f76e03be05bd755861ce',

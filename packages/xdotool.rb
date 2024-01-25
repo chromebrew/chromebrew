@@ -13,12 +13,6 @@ class Xdotool < Package
   source_sha256 '35be5ff6edf0c620a0e16f09ea5e101d5173280161772fca18657d83f20fcca8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdotool/3.20160805.1_armv7l/xdotool-3.20160805.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdotool/3.20160805.1_armv7l/xdotool-3.20160805.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdotool/3.20160805.1_i686/xdotool-3.20160805.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xdotool/3.20160805.1_x86_64/xdotool-3.20160805.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '37b9d630ca048ed377c184d44cbbc261022fabe6bec143abc0c066563f913bc4',
      armv7l: '37b9d630ca048ed377c184d44cbbc261022fabe6bec143abc0c066563f913bc4',

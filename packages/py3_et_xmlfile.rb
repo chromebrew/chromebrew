@@ -11,12 +11,6 @@ class Py3_et_xmlfile < Python
   source_sha256 '8eb9e2bc2f8c97e37a2dc85a09ecdcdec9d8a396530a6d5a33b30b9a92da0c5c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_et_xmlfile/1.1-py3.12_armv7l/py3_et_xmlfile-1.1-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_et_xmlfile/1.1-py3.12_armv7l/py3_et_xmlfile-1.1-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_et_xmlfile/1.1-py3.12_i686/py3_et_xmlfile-1.1-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_et_xmlfile/1.1-py3.12_x86_64/py3_et_xmlfile-1.1-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2ba53d156e28c37affcce21cb2b8c07777b954999c77822d7cc2c1f0a80c254e',
      armv7l: '2ba53d156e28c37affcce21cb2b8c07777b954999c77822d7cc2c1f0a80c254e',

@@ -10,11 +10,6 @@ class Cairo < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.18.0_armv7l/cairo-1.18.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.18.0_armv7l/cairo-1.18.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cairo/1.18.0_x86_64/cairo-1.18.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd72e3793ff72a3f368d159b719522a9f832438caf816437214e359b0e5d4c2af',
      armv7l: 'd72e3793ff72a3f368d159b719522a9f832438caf816437214e359b0e5d4c2af',

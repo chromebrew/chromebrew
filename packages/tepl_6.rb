@@ -10,12 +10,6 @@ class Tepl_6 < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/5.99.0-d61f_i686/tepl_6-5.99.0-d61f-chromeos-i686.tar.xz',
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/6.0.0.0_armv7l/tepl_6-6.0.0.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/6.0.0.0_armv7l/tepl_6-6.0.0.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tepl_6/6.0.0.0_x86_64/tepl_6-6.0.0.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     i686: 'f98b0034642f3433f036107d710f7c466701f94cea809e83908ada8c98305bc2',
     aarch64: '91d6926ec63368229ac7526d719d15d1e2ae9b5cdb4e6046519792a7ce8f5a8a',

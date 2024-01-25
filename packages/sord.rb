@@ -13,12 +13,6 @@ class Sord < Meson
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.14_armv7l/sord-0.16.14-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.14_armv7l/sord-0.16.14-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.14_i686/sord-0.16.14-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sord/0.16.14_x86_64/sord-0.16.14-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c9667c90d72b3604b7ecda2fc66ea57e2d2d3bf0b8593b195d5286c9170bf19f',
      armv7l: 'c9667c90d72b3604b7ecda2fc66ea57e2d2d3bf0b8593b195d5286c9170bf19f',

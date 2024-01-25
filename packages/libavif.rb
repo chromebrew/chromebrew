@@ -10,11 +10,6 @@ class Libavif < CMake
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/1.0.1_armv7l/libavif-1.0.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/1.0.1_armv7l/libavif-1.0.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavif/1.0.1_x86_64/libavif-1.0.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dfb81842a7e868e84642c7c5d10be49ace73a1861bbc327794b1397eaac9fdab',
      armv7l: 'dfb81842a7e868e84642c7c5d10be49ace73a1861bbc327794b1397eaac9fdab',

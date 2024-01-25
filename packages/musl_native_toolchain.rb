@@ -12,12 +12,6 @@ class Musl_native_toolchain < Package
   git_hashtag '53280e53a32202a0ee874911fc52005874db344b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_armv7l/musl_native_toolchain-1.2.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_armv7l/musl_native_toolchain-1.2.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_i686/musl_native_toolchain-1.2.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_native_toolchain/1.2.3_x86_64/musl_native_toolchain-1.2.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '71fe4ca61686a3675f7f5648fe3aae59b68f4c3c1e2678fabd215ec0f6be399e',
      armv7l: '71fe4ca61686a3675f7f5648fe3aae59b68f4c3c1e2678fabd215ec0f6be399e',

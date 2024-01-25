@@ -10,12 +10,6 @@ class Speedometer < Package
   source_sha256 '63e676c96a9df953b4f7f631f1c1d21fedd71d23d159b53e60662c6bb4c19437'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speedometer/2.8-3_armv7l/speedometer-2.8-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speedometer/2.8-3_armv7l/speedometer-2.8-3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speedometer/2.8-3_i686/speedometer-2.8-3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/speedometer/2.8-3_x86_64/speedometer-2.8-3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6f3e7d29fde57f37d0f0ea595374166701b30a6153b932c25ced4be683d27edf',
      armv7l: '6f3e7d29fde57f37d0f0ea595374166701b30a6153b932c25ced4be683d27edf',

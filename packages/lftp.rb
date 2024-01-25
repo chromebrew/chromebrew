@@ -10,12 +10,6 @@ class Lftp < Package
   source_sha256 'c517c4f4f9c39bd415d7313088a2b1e313b2d386867fe40b7692b83a20f0670d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_armv7l/lftp-4.9.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_armv7l/lftp-4.9.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_i686/lftp-4.9.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lftp/4.9.2_x86_64/lftp-4.9.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '370398386c9df785c8f13dce8f1d25313bfb5a5f0a472e4abd14664abcae51aa',
      armv7l: '370398386c9df785c8f13dce8f1d25313bfb5a5f0a472e4abd14664abcae51aa',

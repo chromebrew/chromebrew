@@ -10,12 +10,6 @@ class Musl_lz4 < Package
   source_sha256 '0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.4_armv7l/musl_lz4-1.9.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.4_armv7l/musl_lz4-1.9.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.4_i686/musl_lz4-1.9.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_lz4/1.9.4_x86_64/musl_lz4-1.9.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c39ca05976e35e10d724518052aebce3cdaa54ebd3d1f1a649f2fbae6be8e4ef',
      armv7l: 'c39ca05976e35e10d724518052aebce3cdaa54ebd3d1f1a649f2fbae6be8e4ef',

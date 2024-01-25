@@ -11,12 +11,6 @@ class Geoclue < Package
   source_sha256 '6cc7dbe4177b4e7f3532f7fe42262049789a3cd6c55afe60a3564d7394119c27'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_armv7l/geoclue-2.5.7-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_i686/geoclue-2.5.7-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/geoclue/2.5.7-1_x86_64/geoclue-2.5.7-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8208222a9240c0d90afaac07a4111ad27e5b02f9ea3ba55211278440f065dad2',
      armv7l: '8208222a9240c0d90afaac07a4111ad27e5b02f9ea3ba55211278440f065dad2',

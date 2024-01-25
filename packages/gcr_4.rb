@@ -10,12 +10,6 @@ class Gcr_4 < Package
   source_sha256 'e33e5daae4715a4701a37c05775ea4ab6da17cb005adedf617f3b367be018e4b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr_4/4.0.0_armv7l/gcr_4-4.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr_4/4.0.0_armv7l/gcr_4-4.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr_4/4.0.0_i686/gcr_4-4.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gcr_4/4.0.0_x86_64/gcr_4-4.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '03c546cb1101caa00361ee1c22f4f0d81097fd3f4ee01e1ce387daf16e3dd58b',
      armv7l: '03c546cb1101caa00361ee1c22f4f0d81097fd3f4ee01e1ce387daf16e3dd58b',

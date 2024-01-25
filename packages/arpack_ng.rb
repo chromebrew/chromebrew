@@ -10,12 +10,6 @@ class Arpack_ng < Package
   source_sha256 '972e3fc3cd0b9d6b5a737c9bf6fd07515c0d6549319d4ffb06970e64fa3cc2d6'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_armv7l/arpack_ng-3.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_armv7l/arpack_ng-3.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_i686/arpack_ng-3.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/arpack_ng/3.7.0_x86_64/arpack_ng-3.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '8ac867cd31ef8c507039105de1e6467807c30a75f1752ab43650d82348b558d0',
      armv7l: '8ac867cd31ef8c507039105de1e6467807c30a75f1752ab43650d82348b558d0',

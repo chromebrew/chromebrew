@@ -10,11 +10,6 @@ class Gnome_terminal < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.48.0_armv7l/gnome_terminal-3.48.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.48.0_armv7l/gnome_terminal-3.48.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_terminal/3.48.0_x86_64/gnome_terminal-3.48.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0f2aaae2cb3b2bcfcc00df7e03213a079a74b3cd9e1f6c26507fde0ef2a209b3',
      armv7l: '0f2aaae2cb3b2bcfcc00df7e03213a079a74b3cd9e1f6c26507fde0ef2a209b3',

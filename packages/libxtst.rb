@@ -10,12 +10,6 @@ class Libxtst < Package
   source_sha256 '84f5f30b9254b4ffee14b5b0940e2622153b0d3aed8286a3c5b7eeb340ca33c8'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.4_armv7l/libxtst-1.2.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.4_armv7l/libxtst-1.2.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.4_i686/libxtst-1.2.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtst/1.2.4_x86_64/libxtst-1.2.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a44455fc4e851f8b7e876e158f4602fb10ab7181aad7813e484005121f31eae4',
      armv7l: 'a44455fc4e851f8b7e876e158f4602fb10ab7181aad7813e484005121f31eae4',

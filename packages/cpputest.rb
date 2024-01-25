@@ -10,12 +10,6 @@ class Cpputest < Package
   source_sha256 '2b95bb4a568f680cdcca678345a2c41c028275471c2ed7bf0b6f6f1f689c3b76'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpputest/3.8_armv7l/cpputest-3.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpputest/3.8_armv7l/cpputest-3.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpputest/3.8_i686/cpputest-3.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpputest/3.8_x86_64/cpputest-3.8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0f685813ef3846cc3d4cd038772c51607920a8e570bbb9f7766d37e81eada691',
      armv7l: '0f685813ef3846cc3d4cd038772c51607920a8e570bbb9f7766d37e81eada691',

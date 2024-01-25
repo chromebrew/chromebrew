@@ -10,12 +10,6 @@ class Openexr < CMake
   source_sha256 '61e175aa2203399fb3c8c2288752fbea3c2637680d50b6e306ea5f8ffdd46a9b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_armv7l/openexr-3.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_armv7l/openexr-3.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_i686/openexr-3.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/openexr/3.2.1_x86_64/openexr-3.2.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '790cd3fba4398fea18376924db32bbe58c547ebf652ab7d9cb029b4772e83602',
      armv7l: '790cd3fba4398fea18376924db32bbe58c547ebf652ab7d9cb029b4772e83602',

@@ -10,12 +10,6 @@ class Fuse2 < Package
   source_sha256 'd0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse2/2.9.9_armv7l/fuse2-2.9.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse2/2.9.9_armv7l/fuse2-2.9.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse2/2.9.9_i686/fuse2-2.9.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fuse2/2.9.9_x86_64/fuse2-2.9.9-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9ce364381c48373457a05ba46e5d9bb25bd4067191d2172afd88f8a51fa5c218',
      armv7l: '9ce364381c48373457a05ba46e5d9bb25bd4067191d2172afd88f8a51fa5c218',

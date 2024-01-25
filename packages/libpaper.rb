@@ -10,12 +10,6 @@ class Libpaper < Package
   source_sha256 'c8bb946ec93d3c2c72bbb1d7257e90172a22a44a07a07fb6b802a5bb2c95fddc'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_armv7l/libpaper-1.1.28-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_armv7l/libpaper-1.1.28-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_i686/libpaper-1.1.28-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpaper/1.1.28_x86_64/libpaper-1.1.28-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '472aad9c97d57161047736b996d1d1ae3f8baab235ce5f53fc176c74df2edb14',
      armv7l: '472aad9c97d57161047736b996d1d1ae3f8baab235ce5f53fc176c74df2edb14',

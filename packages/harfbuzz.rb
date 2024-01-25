@@ -12,11 +12,6 @@ class Harfbuzz < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_armv7l/harfbuzz-7.3.0-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/harfbuzz/7.3.0_x86_64/harfbuzz-7.3.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8eae2341b560a92f4e214b369e670e9d1cb195cbcc60489d9718fb7bfec615b0',
      armv7l: '8eae2341b560a92f4e214b369e670e9d1cb195cbcc60489d9718fb7bfec615b0',

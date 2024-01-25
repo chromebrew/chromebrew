@@ -10,12 +10,6 @@ class Which < Package
   source_sha256 'f4a245b94124b377d8b49646bf421f9155d36aa7614b6ebf83705d3ffc76eaad'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/which/2.21_armv7l/which-2.21-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/which/2.21_armv7l/which-2.21-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/which/2.21_i686/which-2.21-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/which/2.21_x86_64/which-2.21-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c9f4fc79e47e571c519d63eae22687527028403907f6bc4d2912abe41f96fb2e',
      armv7l: 'c9f4fc79e47e571c519d63eae22687527028403907f6bc4d2912abe41f96fb2e',

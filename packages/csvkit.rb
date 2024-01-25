@@ -11,12 +11,6 @@ class Csvkit < Package
   git_hashtag @_ver
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6-1_armv7l/csvkit-1.0.6-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6-1_armv7l/csvkit-1.0.6-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6-1_i686/csvkit-1.0.6-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/csvkit/1.0.6-1_x86_64/csvkit-1.0.6-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'd994091e8c7a75c037341bf54a3c13026024465b0e4d511a911d06233c892fed',
      armv7l: 'd994091e8c7a75c037341bf54a3c13026024465b0e4d511a911d06233c892fed',

@@ -10,12 +10,6 @@ class Libeconf < Meson
   source_sha256 'c9aa04b7ef1c7312a6e045184d15465db1985abb4058cc4c562fd33c9876bb34'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_armv7l/libeconf-0.5.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_armv7l/libeconf-0.5.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_i686/libeconf-0.5.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libeconf/0.5.2_x86_64/libeconf-0.5.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'cf90019b34a1b8c577934a6a0e9a5c19f9a464c0384b8370a45810d466dd90d3',
      armv7l: 'cf90019b34a1b8c577934a6a0e9a5c19f9a464c0384b8370a45810d466dd90d3',

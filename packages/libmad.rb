@@ -10,12 +10,6 @@ class Libmad < Package
   source_sha256 'bbfac3ed6bfbc2823d3775ebb931087371e142bb0e9bb1bee51a76a6e0078690'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmad/0.15.1b-1_armv7l/libmad-0.15.1b-1-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmad/0.15.1b-1_armv7l/libmad-0.15.1b-1-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmad/0.15.1b-1_i686/libmad-0.15.1b-1-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmad/0.15.1b-1_x86_64/libmad-0.15.1b-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'fa97940e20089f3c79388d13a3e05f3d527cd59641fdf09afdf8aea4ea379523',
       armv7l: 'fa97940e20089f3c79388d13a3e05f3d527cd59641fdf09afdf8aea4ea379523',

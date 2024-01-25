@@ -10,12 +10,6 @@ class Musl_perl < Package
   source_sha256 '551efc818b968b05216024fb0b727ef2ad4c100f8cb6b43fab615fa78ae5be9a'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_armv7l/musl_perl-5.34.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_armv7l/musl_perl-5.34.0-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_i686/musl_perl-5.34.0-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_perl/5.34.0_x86_64/musl_perl-5.34.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '6387be753a5b69e6665317a60493d9c8f823d19da026a3007a9c80b32d95e2a6',
      armv7l: '6387be753a5b69e6665317a60493d9c8f823d19da026a3007a9c80b32d95e2a6',

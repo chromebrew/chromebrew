@@ -13,9 +13,6 @@ class Fakeroot_ng < Package
   end
   binary_compression 'tar.xz'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot_ng/0.18_x86_64/fakeroot_ng-0.18-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     x86_64: '68ade929172b332a688333874644ce80d3af25f9604c9cc68103975c667f4fee'
   })

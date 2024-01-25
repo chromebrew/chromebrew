@@ -10,12 +10,6 @@ class Percona_server < Package
   source_sha256 '17f06c07165954e7eacc3ba2cac0e1d4ba65b0b568f2437298d3c17a6a0940fd'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_armv7l/percona_server-5.7.20-19-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_i686/percona_server-5.7.20-19-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/percona_server/5.7.20-19_x86_64/percona_server-5.7.20-19-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',
      armv7l: 'e7bdb895946e539145268d29a0c93e690ad1ff91eab871605cb2b3b686247ff5',

@@ -10,11 +10,6 @@ class Qt5_declarative < Qmake
   git_hashtag '1b0e366092bcfae0392592c3b7891f0e47af1018' # from kde/5.15 branch
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_declarative/5.15.11-1b0e366_armv7l/qt5_declarative-5.15.11-1b0e366-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_declarative/5.15.11-1b0e366_armv7l/qt5_declarative-5.15.11-1b0e366-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_declarative/5.15.11-1b0e366_x86_64/qt5_declarative-5.15.11-1b0e366-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '72f6b2fcd92fa1a52972c9d6ddacb6c8453b61b5ce3767d93a3aa7a72aedc486',
      armv7l: '72f6b2fcd92fa1a52972c9d6ddacb6c8453b61b5ce3767d93a3aa7a72aedc486',

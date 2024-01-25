@@ -10,12 +10,6 @@ class Appres < Package
   source_sha256 'ffad893712c81943b919e3cbfe46fc65259cc0d9eb96d5e658670e3fbb265928'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appres/1.0.5_armv7l/appres-1.0.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appres/1.0.5_armv7l/appres-1.0.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appres/1.0.5_i686/appres-1.0.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/appres/1.0.5_x86_64/appres-1.0.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e470f6c5a1c9d2ef2f89efe68b1243952d6697f8cd265b1baca52353933b9908',
      armv7l: 'e470f6c5a1c9d2ef2f89efe68b1243952d6697f8cd265b1baca52353933b9908',

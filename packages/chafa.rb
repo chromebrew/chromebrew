@@ -13,12 +13,6 @@ class Chafa < Package
   git_hashtag 'cf15d59da7ccc6a79f8900e21d0926bea08074e9'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_armv7l/chafa-cf15d59-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_armv7l/chafa-cf15d59-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_i686/chafa-cf15d59-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/chafa/cf15d59_x86_64/chafa-cf15d59-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd53beb7ca506c4df22a1722a4de31c9f08d9726ea73af281c4dfe59019961512',
      armv7l: 'd53beb7ca506c4df22a1722a4de31c9f08d9726ea73af281c4dfe59019961512',

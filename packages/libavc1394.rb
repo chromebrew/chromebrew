@@ -10,12 +10,6 @@ class Libavc1394 < Package
   source_sha256 '7cb1ff09506ae911ca9860bef4af08c2403f3e131f6c913a2cbd6ddca4215b53'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4-1_armv7l/libavc1394-0.5.4-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4-1_armv7l/libavc1394-0.5.4-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4-1_i686/libavc1394-0.5.4-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libavc1394/0.5.4-1_x86_64/libavc1394-0.5.4-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '23401f9493493c0368a6fcc3039df80bfb840661b3f6846a45acc991856b149a',
      armv7l: '23401f9493493c0368a6fcc3039df80bfb840661b3f6846a45acc991856b149a',

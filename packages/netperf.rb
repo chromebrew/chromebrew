@@ -10,12 +10,6 @@ class Netperf < Package
   source_sha256 '4569bafa4cca3d548eb96a486755af40bd9ceb6ab7c6abd81cc6aa4875007c4e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netperf/2.7.0_armv7l/netperf-2.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netperf/2.7.0_armv7l/netperf-2.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netperf/2.7.0_i686/netperf-2.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/netperf/2.7.0_x86_64/netperf-2.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2be8d5e4d5aceb3216010f0e79b19839d92f3fd71f0dfe22d9c6335ff7a4baed',
      armv7l: '2be8d5e4d5aceb3216010f0e79b19839d92f3fd71f0dfe22d9c6335ff7a4baed',

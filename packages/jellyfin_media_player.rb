@@ -14,11 +14,6 @@ class Jellyfin_media_player < Package
   source_sha256 '8d119bb78e897ace3041cf332114a79c51be4d8e0cc8c68f5745fd588c2b9bde'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_armv7l/jellyfin_media_player-1.9.1-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/jellyfin_media_player/1.9.1-1_x86_64/jellyfin_media_player-1.9.1-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9da834f707cb3480a2fbd172e8fb0aeb4e2df02b995e6d1fb2cdcb10212b0c67',
      armv7l: '9da834f707cb3480a2fbd172e8fb0aeb4e2df02b995e6d1fb2cdcb10212b0c67',

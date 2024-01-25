@@ -10,12 +10,6 @@ class Sxhkd < Package
   source_sha256 '1edc8b1a8b3631c10ba9cb9df1181830dacbbdf77adb558e31d5dd2029637386'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sxhkd/0.6.2_armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sxhkd/0.6.2_armv7l/sxhkd-0.6.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sxhkd/0.6.2_i686/sxhkd-0.6.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/sxhkd/0.6.2_x86_64/sxhkd-0.6.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ddc4774617d8238d80e4319771f1a9d6ef76f91337f76fa68aa49c543042bed9',
      armv7l: 'ddc4774617d8238d80e4319771f1a9d6ef76f91337f76fa68aa49c543042bed9',

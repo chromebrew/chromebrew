@@ -10,12 +10,6 @@ class Srt < Package
   source_sha256 '50a05239602f2a402b4a96bc8b8e1ebf98808aa2966311c14f814ad477018a56'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/srt/1.4.3-rc.0_armv7l/srt-1.4.3-rc.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/srt/1.4.3-rc.0_armv7l/srt-1.4.3-rc.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/srt/1.4.3-rc.0_i686/srt-1.4.3-rc.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/srt/1.4.3-rc.0_x86_64/srt-1.4.3-rc.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9c47c8399de872fe28a96f0dd4d2fac9a8c55b2d009d19962ef3fd49e7ba772f',
      armv7l: '9c47c8399de872fe28a96f0dd4d2fac9a8c55b2d009d19962ef3fd49e7ba772f',

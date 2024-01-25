@@ -10,12 +10,6 @@ class Libtasn1 < Autotools
   source_sha256 '1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtasn1/4.19_armv7l/libtasn1-4.19-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtasn1/4.19_armv7l/libtasn1-4.19-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtasn1/4.19_i686/libtasn1-4.19-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libtasn1/4.19_x86_64/libtasn1-4.19-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a7e8dc9d134572b7d5478098fd485c8e799d8bb2d3512f8ef422ec1b92474ea0',
      armv7l: 'a7e8dc9d134572b7d5478098fd485c8e799d8bb2d3512f8ef422ec1b92474ea0',

@@ -10,12 +10,6 @@ class Musl < Package
   source_sha256 '9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_armv7l/musl-1.2.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_armv7l/musl-1.2.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_i686/musl-1.2.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl/1.2.2_x86_64/musl-1.2.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3ed631095e644fc8477a73c26b29970af21fea79ee65380ede17bb1d9b8116d3',
      armv7l: '3ed631095e644fc8477a73c26b29970af21fea79ee65380ede17bb1d9b8116d3',

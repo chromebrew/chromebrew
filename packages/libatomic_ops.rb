@@ -10,12 +10,6 @@ class Libatomic_ops < Autotools
   source_sha256 '15676e7674e11bda5a7e50a73f4d9e7d60452271b8acf6fd39a71fefdf89fa31'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.8.0_armv7l/libatomic_ops-7.8.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.8.0_armv7l/libatomic_ops-7.8.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.8.0_i686/libatomic_ops-7.8.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libatomic_ops/7.8.0_x86_64/libatomic_ops-7.8.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '572b3d6d137e8d27703c29dd0e725caa61f5bae11b277433b0491a75a07b269f',
      armv7l: '572b3d6d137e8d27703c29dd0e725caa61f5bae11b277433b0491a75a07b269f',

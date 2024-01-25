@@ -10,12 +10,6 @@ class Nuspell < CMake
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nuspell/5.1.3_armv7l/nuspell-5.1.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nuspell/5.1.3_armv7l/nuspell-5.1.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nuspell/5.1.3_i686/nuspell-5.1.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nuspell/5.1.3_x86_64/nuspell-5.1.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '18ab9d2cb145ca77a7d1de062bb5670ecdc828bc1b23386c35de4f9fd0189de4',
      armv7l: '18ab9d2cb145ca77a7d1de062bb5670ecdc828bc1b23386c35de4f9fd0189de4',

@@ -10,12 +10,6 @@ class Hdparm < Package
   source_sha256 '90d80632695759ec12c8a9da94471f04bc88d5b73d34fc6a370775b534d09319'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdparm/9.32_armv7l/hdparm-9.32-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdparm/9.32_armv7l/hdparm-9.32-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdparm/9.32_i686/hdparm-9.32-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hdparm/9.32_x86_64/hdparm-9.32-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f796fcce23fca3c9a2830533b5cb63da0fc2be44c12e8e102db3f06ecf3d3a4e',
      armv7l: 'f796fcce23fca3c9a2830533b5cb63da0fc2be44c12e8e102db3f06ecf3d3a4e',

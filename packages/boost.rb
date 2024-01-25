@@ -11,12 +11,6 @@ class Boost < Package
   source_sha256 'cc4b893acf645c9d4b698e9a0f08ca8846aa5d6c68275c14c3e7949c24109454'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.84.0-py3.12_armv7l/boost-1.84.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.84.0-py3.12_armv7l/boost-1.84.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.84.0-py3.12_i686/boost-1.84.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/boost/1.84.0-py3.12_x86_64/boost-1.84.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f0861c474039eeec5fcf4c745776db81d7d2566712b6bc28db37f496bb0db4aa',
      armv7l: 'f0861c474039eeec5fcf4c745776db81d7d2566712b6bc28db37f496bb0db4aa',

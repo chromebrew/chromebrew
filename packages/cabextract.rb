@@ -10,12 +10,6 @@ class Cabextract < Package
   source_sha256 'afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cabextract/1.9.1_armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cabextract/1.9.1_armv7l/cabextract-1.9.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cabextract/1.9.1_i686/cabextract-1.9.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cabextract/1.9.1_x86_64/cabextract-1.9.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e3e343dc5e467c5ae85b2ad35aa8328c0aba6a16d31cc446cf315f14b679a3b0',
      armv7l: 'e3e343dc5e467c5ae85b2ad35aa8328c0aba6a16d31cc446cf315f14b679a3b0',

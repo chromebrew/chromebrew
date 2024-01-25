@@ -10,11 +10,6 @@ class Mutter < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_armv7l/mutter-41.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_armv7l/mutter-41.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mutter/41.0_x86_64/mutter-41.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '584f9f6e7413fcc037f6062dd3dba29d356556a58d0206b0401b3c4d34594352',
      armv7l: '584f9f6e7413fcc037f6062dd3dba29d356556a58d0206b0401b3c4d34594352',

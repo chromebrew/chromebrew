@@ -13,12 +13,6 @@ class Faac < Package
   source_sha256 'adc387ce588cca16d98c03b6ec1e58f0ffd9fc6eadb00e254157d6b16203b2d2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faac/1.30_armv7l/faac-1.30-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faac/1.30_armv7l/faac-1.30-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faac/1.30_i686/faac-1.30-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faac/1.30_x86_64/faac-1.30-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0964049377f4cb3a818b5448e0e072dffeae95919261837ad28c7135db9a441a',
      armv7l: '0964049377f4cb3a818b5448e0e072dffeae95919261837ad28c7135db9a441a',

@@ -13,12 +13,6 @@ class Cdparanoia < Package
   source_sha256 '005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdparanoia/10.2_armv7l/cdparanoia-10.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdparanoia/10.2_armv7l/cdparanoia-10.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdparanoia/10.2_i686/cdparanoia-10.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cdparanoia/10.2_x86_64/cdparanoia-10.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '355295c34b89f75440bcd3aa003d1c4132dce8bf68b11bc164031f25086ae573',
      armv7l: '355295c34b89f75440bcd3aa003d1c4132dce8bf68b11bc164031f25086ae573',

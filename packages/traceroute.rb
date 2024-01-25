@@ -10,12 +10,6 @@ class Traceroute < Package
   source_sha256 'b2e39a1d04ea45a6a60c976a2637d1a16224edd2eaa19a5870af83edb2ffe3fa'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.4_armv7l/traceroute-2.1.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.4_armv7l/traceroute-2.1.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.4_i686/traceroute-2.1.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/traceroute/2.1.4_x86_64/traceroute-2.1.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '80d2764b34cc364107065ce9a3ae76d61a2565fb4840a37642e68ffc500bfbf5',
      armv7l: '80d2764b34cc364107065ce9a3ae76d61a2565fb4840a37642e68ffc500bfbf5',

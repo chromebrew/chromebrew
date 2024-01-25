@@ -10,12 +10,6 @@ class Gpart < Package
   source_sha256 'ec56d12ec9ffdb9877c12692ea6e51620b1ae44473d3d253b27fc31ed9ebb4dd'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpart/0.3_armv7l/gpart-0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpart/0.3_armv7l/gpart-0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpart/0.3_i686/gpart-0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gpart/0.3_x86_64/gpart-0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '9dc4ad8e5e2d1784658424a6e42bae45d1703995181e925afcd0733623cc05ab',
      armv7l: '9dc4ad8e5e2d1784658424a6e42bae45d1703995181e925afcd0733623cc05ab',

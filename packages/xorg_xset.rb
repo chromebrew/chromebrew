@@ -13,12 +13,6 @@ class Xorg_xset < Package
   git_hashtag "xset-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xset/1.2.5_armv7l/xorg_xset-1.2.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xset/1.2.5_armv7l/xorg_xset-1.2.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xset/1.2.5_i686/xorg_xset-1.2.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xorg_xset/1.2.5_x86_64/xorg_xset-1.2.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '263227acbc9ac98ea273553ef221ae516375f5e410ef87bd435862ce735faf3f',
      armv7l: '263227acbc9ac98ea273553ef221ae516375f5e410ef87bd435862ce735faf3f',

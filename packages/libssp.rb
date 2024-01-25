@@ -14,12 +14,6 @@ class Libssp < Package
   git_hashtag "releases/gcc-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_armv7l/libssp-13.2.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_armv7l/libssp-13.2.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_i686/libssp-13.2.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libssp/13.2.0_x86_64/libssp-13.2.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '58f3da30ae2a13f4a29a7e254db60c5a07b9a7cf8375203a38b19194dd60e3aa',
      armv7l: '58f3da30ae2a13f4a29a7e254db60c5a07b9a7cf8375203a38b19194dd60e3aa',

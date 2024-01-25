@@ -13,12 +13,6 @@ class Mandown < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandown/0.1.3_armv7l/mandown-0.1.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandown/0.1.3_armv7l/mandown-0.1.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandown/0.1.3_i686/mandown-0.1.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mandown/0.1.3_x86_64/mandown-0.1.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd1a43979ef4adc22634ec737760800d5b4afdaddae3608659c7429e1ac4567d0',
      armv7l: 'd1a43979ef4adc22634ec737760800d5b4afdaddae3608659c7429e1ac4567d0',

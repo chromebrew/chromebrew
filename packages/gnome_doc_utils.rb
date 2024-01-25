@@ -10,12 +10,6 @@ class Gnome_doc_utils < Package
   source_sha256 'cb0639ffa9550b6ddf3b62f3b1add92fb92ab4690d351f2353cffe668be8c4a6'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_doc_utils/0.20.10_armv7l/gnome_doc_utils-0.20.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_doc_utils/0.20.10_armv7l/gnome_doc_utils-0.20.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_doc_utils/0.20.10_i686/gnome_doc_utils-0.20.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_doc_utils/0.20.10_x86_64/gnome_doc_utils-0.20.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'be5d308c26af775dcebf0fe9a3e17905d31fa983b4d6c1c590ceba5a50b89504',
      armv7l: 'be5d308c26af775dcebf0fe9a3e17905d31fa983b4d6c1c590ceba5a50b89504',

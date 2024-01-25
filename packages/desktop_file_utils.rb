@@ -10,12 +10,6 @@ class Desktop_file_utils < Package
   source_sha256 '6c094031bdec46c9f621708f919084e1cb5294e2c5b1e4c883b3e70cb8903385'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/desktop_file_utils/0.23_armv7l/desktop_file_utils-0.23-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/desktop_file_utils/0.23_armv7l/desktop_file_utils-0.23-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/desktop_file_utils/0.23_i686/desktop_file_utils-0.23-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/desktop_file_utils/0.23_x86_64/desktop_file_utils-0.23-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b13f9202b0b0f3d36a7fc0df45a7f321eebf1efc870aa553b2e8c435bfa1a063',
      armv7l: 'b13f9202b0b0f3d36a7fc0df45a7f321eebf1efc870aa553b2e8c435bfa1a063',

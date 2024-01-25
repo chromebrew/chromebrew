@@ -10,9 +10,6 @@ class Ugrep < Autotools
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ugrep/4.4.1_x86_64/ugrep-4.4.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     x86_64: '13bf9916809ac1537f7bdc1021f86bf881cc62f4dc29bcce33efb202df177c76'
   })

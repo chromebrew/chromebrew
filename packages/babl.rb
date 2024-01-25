@@ -10,11 +10,6 @@ class Babl < Package
   source_sha256 'd325135d3304f088c134cc620013acf035de2e5d125a50a2d91054e7377c415f'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/babl/0.1.106_armv7l/babl-0.1.106-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/babl/0.1.106_armv7l/babl-0.1.106-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/babl/0.1.106_x86_64/babl-0.1.106-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '17f0af1b2375ea63e73fc5dc0db25ab6a5ff2320fd8f0e590ee930c57c3b2dd6',
      armv7l: '17f0af1b2375ea63e73fc5dc0db25ab6a5ff2320fd8f0e590ee930c57c3b2dd6',

@@ -10,11 +10,6 @@ class Spacefm < Package
   source_sha256 'fedea9fcad776e0af4b8d90c5a1c86684a9c96ef1cdd4e959530ce93bdebe7c9'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6-1_armv7l/spacefm-1.0.6-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6-1_armv7l/spacefm-1.0.6-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spacefm/1.0.6-1_x86_64/spacefm-1.0.6-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3fc55c994d114e0a46a0177829e023224a28c55f28baf33333a900e69063e7b9',
      armv7l: '3fc55c994d114e0a46a0177829e023224a28c55f28baf33333a900e69063e7b9',

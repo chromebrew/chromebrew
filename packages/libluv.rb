@@ -13,12 +13,6 @@ class Libluv < Package
   git_hashtag '1.44.2-0'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libluv/1.44.2_armv7l/libluv-1.44.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libluv/1.44.2_armv7l/libluv-1.44.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libluv/1.44.2_i686/libluv-1.44.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libluv/1.44.2_x86_64/libluv-1.44.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'c0f550aad24be7f0845fbb730a70dad758a624deaf7e4bf8d1b4446cd4e3fcd1',
      armv7l: 'c0f550aad24be7f0845fbb730a70dad758a624deaf7e4bf8d1b4446cd4e3fcd1',

@@ -13,12 +13,6 @@ class Zlibpkg < CMake
   source_sha256 '9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3.1_armv7l/zlibpkg-1.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3.1_armv7l/zlibpkg-1.3.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3.1_i686/zlibpkg-1.3.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/zlibpkg/1.3.1_x86_64/zlibpkg-1.3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'a5eb9bbd6dce00c096617c1db16a71dd1f590043c39519e1645d5eb9750ed88f',
      armv7l: 'a5eb9bbd6dce00c096617c1db16a71dd1f590043c39519e1645d5eb9750ed88f',

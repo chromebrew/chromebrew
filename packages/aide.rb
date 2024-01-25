@@ -10,12 +10,6 @@ class Aide < Package
   source_sha256 '303e5c186257df8c86e418193199f4ea2183fc37d3d4a9098a614f61346059ef'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aide/0.15.1_armv7l/aide-0.15.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aide/0.15.1_armv7l/aide-0.15.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aide/0.15.1_i686/aide-0.15.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aide/0.15.1_x86_64/aide-0.15.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '805f42e0824ab40aa56a0b304636b7eac9da43832a2b20760e49a348a35f0a26',
      armv7l: '805f42e0824ab40aa56a0b304636b7eac9da43832a2b20760e49a348a35f0a26',

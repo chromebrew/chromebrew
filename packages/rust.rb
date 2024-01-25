@@ -10,12 +10,6 @@ class Rust < Package
   git_hashtag '5162a98938a13276604c8d656a22f1cf34b36415'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_armv7l/rust-1.74.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_armv7l/rust-1.74.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_i686/rust-1.74.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/rust/1.74.1_x86_64/rust-1.74.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '32435fadad6196f0100da837ae9f092eb81fbb81f31beae80b0aa0ab7fb74f08',
      armv7l: '32435fadad6196f0100da837ae9f092eb81fbb81f31beae80b0aa0ab7fb74f08',

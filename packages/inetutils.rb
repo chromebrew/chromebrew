@@ -10,12 +10,6 @@ class Inetutils < Autotools
   source_sha256 '1789d6b1b1a57dfe2a7ab7b533ee9f5dfd9cbf5b59bb1bb3c2612ed08d0f68b2'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.4_armv7l/inetutils-2.4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.4_armv7l/inetutils-2.4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.4_i686/inetutils-2.4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inetutils/2.4_x86_64/inetutils-2.4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f01833856fc5199d6b116fe6c5a1ef446a0063cbaaf61b031910e29b785898c4',
      armv7l: 'f01833856fc5199d6b116fe6c5a1ef446a0063cbaaf61b031910e29b785898c4',

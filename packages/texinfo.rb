@@ -10,12 +10,6 @@ class Texinfo < Autotools
   source_sha256 'deeec9f19f159e046fdf8ad22231981806dac332cc372f1c763504ad82b30953'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.1-perl5.38_armv7l/texinfo-7.1-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.1-perl5.38_armv7l/texinfo-7.1-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.1-perl5.38_i686/texinfo-7.1-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/texinfo/7.1-perl5.38_x86_64/texinfo-7.1-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1993d33be6ade8fc000d23e2b5e0b91bb41da63916e7ceb31698c536bbf3f3f9',
      armv7l: '1993d33be6ade8fc000d23e2b5e0b91bb41da63916e7ceb31698c536bbf3f3f9',

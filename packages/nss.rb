@@ -12,12 +12,6 @@ class Nss < Package
   source_sha256 '976dd57391aa269aa2961ac7ae002dc49935f855263df58b59b1dd4836d47cb7'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_armv7l/nss-nss.3.69.1.nspr.4.32-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_armv7l/nss-nss.3.69.1.nspr.4.32-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_i686/nss-nss.3.69.1.nspr.4.32-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nss/nss.3.69.1.nspr.4.32_x86_64/nss-nss.3.69.1.nspr.4.32-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'e68a620a7b7f35289f401561e3c86ff1fceb38d0b0652da7e6c531addc020a14',
      armv7l: 'e68a620a7b7f35289f401561e3c86ff1fceb38d0b0652da7e6c531addc020a14',

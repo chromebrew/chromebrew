@@ -10,12 +10,6 @@ class Fakeroot < Package
   source_sha256 '8e903683357f7f5bcc31b879fd743391ad47691d4be33d24a76be3b6c21e956c'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_armv7l/fakeroot-1.25.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_armv7l/fakeroot-1.25.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_i686/fakeroot-1.25.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fakeroot/1.25.3_x86_64/fakeroot-1.25.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '92c44951d47177c59c5afcb0f58a9628e469f4f29586e85ace47eb84bbfddbe7',
      armv7l: '92c44951d47177c59c5afcb0f58a9628e469f4f29586e85ace47eb84bbfddbe7',

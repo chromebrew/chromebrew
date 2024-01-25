@@ -10,12 +10,6 @@ class Aspell_fr < Package
   source_sha256 'f9421047519d2af9a7a466e4336f6e6ea55206b356cd33c8bd18cb626bf2ce91'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_fr/0.50-3_armv7l/aspell_fr-0.50-3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_fr/0.50-3_armv7l/aspell_fr-0.50-3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_fr/0.50-3_i686/aspell_fr-0.50-3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/aspell_fr/0.50-3_x86_64/aspell_fr-0.50-3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'c109f726e0a3a7e708a6c8fb4cb1cd7f84d0486fa352c141ce5f70817651efc7',
      armv7l: 'c109f726e0a3a7e708a6c8fb4cb1cd7f84d0486fa352c141ce5f70817651efc7',

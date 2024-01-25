@@ -10,12 +10,6 @@ class Links < Package
   source_sha256 '2fd5499b13dee59457c132c167b8495c40deda75389489c6cccb683193f454b4'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/2.28_armv7l/links-2.28-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/2.28_armv7l/links-2.28-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/2.28_i686/links-2.28-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/links/2.28_x86_64/links-2.28-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'afa89a2b2fabf27e2fdfa83ff6f528b66cd52a7effc69202c6e8c5a805fec617',
      armv7l: 'afa89a2b2fabf27e2fdfa83ff6f528b66cd52a7effc69202c6e8c5a805fec617',

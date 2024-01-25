@@ -10,12 +10,6 @@ class Shared_mime_info < Package
   source_sha256 'c625a83b4838befc8cafcd54e3619946515d9e44d63d61c4adf7f5513ddfbebf'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shared_mime_info/1.10_armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shared_mime_info/1.10_armv7l/shared_mime_info-1.10-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shared_mime_info/1.10_i686/shared_mime_info-1.10-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shared_mime_info/1.10_x86_64/shared_mime_info-1.10-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '29434bf4c31cf050dad19b3b31b5da17fe8e3321405e94f49769102721994f58',
      armv7l: '29434bf4c31cf050dad19b3b31b5da17fe8e3321405e94f49769102721994f58',

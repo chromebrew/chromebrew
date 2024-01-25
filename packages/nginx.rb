@@ -10,12 +10,6 @@ class Nginx < Package
   source_sha256 'b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_armv7l/nginx-1.19.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_armv7l/nginx-1.19.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_i686/nginx-1.19.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nginx/1.19.6_x86_64/nginx-1.19.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '12c999e173d529e09e73651be3da52e10c330292bb77b5f1091754470622f32c',
      armv7l: '12c999e173d529e09e73651be3da52e10c330292bb77b5f1091754470622f32c',

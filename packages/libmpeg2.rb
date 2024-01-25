@@ -11,12 +11,6 @@ class Libmpeg2 < Package
   git_hashtag "debian/#{@_ver}-9"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpeg2/0.5.1-1_armv7l/libmpeg2-0.5.1-1-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpeg2/0.5.1-1_armv7l/libmpeg2-0.5.1-1-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpeg2/0.5.1-1_i686/libmpeg2-0.5.1-1-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libmpeg2/0.5.1-1_x86_64/libmpeg2-0.5.1-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '5b5fdf553d59930d1d3df204c2b7f32c0665b7623bc83b4a88c1ffa70f7d7e7c',
       armv7l: '5b5fdf553d59930d1d3df204c2b7f32c0665b7623bc83b4a88c1ffa70f7d7e7c',

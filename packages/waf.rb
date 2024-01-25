@@ -10,12 +10,6 @@ class Waf < Package
   git_hashtag "waf-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_armv7l/waf-2.0.24-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_armv7l/waf-2.0.24-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_i686/waf-2.0.24-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/waf/2.0.24_x86_64/waf-2.0.24-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f1bab4de03c7f6aebcbce73460a06d4d4c1eefa22889230a866729ff8cdd3f8b',
      armv7l: 'f1bab4de03c7f6aebcbce73460a06d4d4c1eefa22889230a866729ff8cdd3f8b',

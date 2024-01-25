@@ -10,12 +10,6 @@ class Perl_glib < PERL
   source_sha256 '7316a0c1e7cc5cb3db7211214f45d7bdc2354365a680ac4bd3ac8bf06d1cb500'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib/1.3293-perl5.38.2_armv7l/perl_glib-1.3293-perl5.38.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib/1.3293-perl5.38.2_armv7l/perl_glib-1.3293-perl5.38.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib/1.3293-perl5.38.2_i686/perl_glib-1.3293-perl5.38.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib/1.3293-perl5.38.2_x86_64/perl_glib-1.3293-perl5.38.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ee1b9f541b3cf0476ccef89bddee302490510b124ac4c33ae7d26954fea73966',
      armv7l: 'ee1b9f541b3cf0476ccef89bddee302490510b124ac4c33ae7d26954fea73966',

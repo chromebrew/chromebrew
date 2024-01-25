@@ -10,12 +10,6 @@ class Owl < Package
   source_sha256 '4d9982da3582456d1e769e25a7d0b2daefe859c45e262c8f56f794114f9a29a0'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/owl/0.1.14_armv7l/owl-0.1.14-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/owl/0.1.14_armv7l/owl-0.1.14-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/owl/0.1.14_i686/owl-0.1.14-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/owl/0.1.14_x86_64/owl-0.1.14-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '305978182d9826979fdd56b7085cdcf0cc24cc6c234a96d7c513756f55028bc0',
      armv7l: '305978182d9826979fdd56b7085cdcf0cc24cc6c234a96d7c513756f55028bc0',

@@ -10,12 +10,6 @@ class Mapserver < Package
   source_sha256 'bb7ee625eb6fdce9bd9851f83664442845d70d041e449449e88ac855e97d773c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_armv7l/mapserver-8.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_armv7l/mapserver-8.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_i686/mapserver-8.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mapserver/8.0.0_x86_64/mapserver-8.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
      armv7l: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',

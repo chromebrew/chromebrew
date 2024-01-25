@@ -10,12 +10,6 @@ class Font_bh_ttf < Package
   source_sha256 '1b4bea63271b4db0726b5b52c97994c3313b6023510349226908090501abd25f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_ttf/1.0.3_armv7l/font_bh_ttf-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_ttf/1.0.3_armv7l/font_bh_ttf-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_ttf/1.0.3_i686/font_bh_ttf-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_bh_ttf/1.0.3_x86_64/font_bh_ttf-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'fcb876e84a386eea475d5f9f9533c3f689e90ce16b8329495a24f28a698b29fa',
      armv7l: 'fcb876e84a386eea475d5f9f9533c3f689e90ce16b8329495a24f28a698b29fa',

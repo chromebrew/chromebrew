@@ -10,12 +10,6 @@ class Font_daewoo_misc < Package
   source_sha256 'bc65de70bee12698caa95b523d3b652c056347e17b68cc8b5d6bbdff235c4be8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_armv7l/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_armv7l/font_daewoo_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_i686/font_daewoo_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_daewoo_misc/1.0.3_x86_64/font_daewoo_misc-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'ab4e6485bc9457a2bce6d7f9ebd426048a7844539f8538a0b703ceb84128e746',
      armv7l: 'ab4e6485bc9457a2bce6d7f9ebd426048a7844539f8538a0b703ceb84128e746',

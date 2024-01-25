@@ -10,12 +10,6 @@ class Axel < Package
   source_sha256 '24ab549021bdfca01ad5e8e95b706869dd30fe9ab1043da4cbb9dff89edc267d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/axel/2.17.6_armv7l/axel-2.17.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/axel/2.17.6_armv7l/axel-2.17.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/axel/2.17.6_i686/axel-2.17.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/axel/2.17.6_x86_64/axel-2.17.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '31800a542f21b117b5bb78b8c7c62fdc38d2afac61d306ddac01d71569909f4a',
      armv7l: '31800a542f21b117b5bb78b8c7c62fdc38d2afac61d306ddac01d71569909f4a',

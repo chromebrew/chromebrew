@@ -13,12 +13,6 @@ class Librevenge < Package
   source_sha256 '106d0c44bb6408b1348b9e0465666fa83b816177665a22cd017e886c1aaeeb34'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librevenge/0.0.5-1_armv7l/librevenge-0.0.5-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librevenge/0.0.5-1_armv7l/librevenge-0.0.5-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librevenge/0.0.5-1_i686/librevenge-0.0.5-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/librevenge/0.0.5-1_x86_64/librevenge-0.0.5-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6421705364f2d4a215fc4054a0823bd1e54de3eb16655c3e1eb9d6c73a809b99',
      armv7l: '6421705364f2d4a215fc4054a0823bd1e54de3eb16655c3e1eb9d6c73a809b99',

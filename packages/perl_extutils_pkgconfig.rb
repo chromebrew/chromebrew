@@ -10,12 +10,6 @@ class Perl_extutils_pkgconfig < Package
   source_sha256 'bbeaced995d7d8d10cfc51a3a5a66da41ceb2bc04fedcab50e10e6300e801c6e'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_pkgconfig/1.16-perl5.38_armv7l/perl_extutils_pkgconfig-1.16-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_pkgconfig/1.16-perl5.38_armv7l/perl_extutils_pkgconfig-1.16-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_pkgconfig/1.16-perl5.38_i686/perl_extutils_pkgconfig-1.16-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_extutils_pkgconfig/1.16-perl5.38_x86_64/perl_extutils_pkgconfig-1.16-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '66b3c4b9becc1e41f1264eeb3a9f67dd817143f7d2cd9476bf73abee485740b3',
      armv7l: '66b3c4b9becc1e41f1264eeb3a9f67dd817143f7d2cd9476bf73abee485740b3',

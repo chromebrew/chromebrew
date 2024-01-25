@@ -13,11 +13,6 @@ class Libappindicator_gtk3 < Package
   source_sha256 'd5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libappindicator_gtk3/12.10.0_armv7l/libappindicator_gtk3-12.10.0-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libappindicator_gtk3/12.10.0_armv7l/libappindicator_gtk3-12.10.0-chromeos-armv7l.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libappindicator_gtk3/12.10.0_x86_64/libappindicator_gtk3-12.10.0-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'f85c3830820c464e863a0dda0dd9805aece7ba4c5732ef79ef6d520e9bc83f3b',
      armv7l: 'f85c3830820c464e863a0dda0dd9805aece7ba4c5732ef79ef6d520e9bc83f3b',

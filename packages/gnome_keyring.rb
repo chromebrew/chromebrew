@@ -10,12 +10,6 @@ class Gnome_keyring < Package
   source_sha256 'a264b57a8d1a71fdf0d66e8cd6033d013fb828be279c35766545eb9bb3734f87'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_keyring/3.36.0-1_armv7l/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_keyring/3.36.0-1_armv7l/gnome_keyring-3.36.0-1-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_keyring/3.36.0-1_i686/gnome_keyring-3.36.0-1-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_keyring/3.36.0-1_x86_64/gnome_keyring-3.36.0-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
       armv7l: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',

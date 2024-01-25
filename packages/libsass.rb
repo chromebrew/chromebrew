@@ -10,12 +10,6 @@ class Libsass < Package
   git_hashtag version
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.5_armv7l/libsass-3.6.5-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.5_armv7l/libsass-3.6.5-chromeos-armv7l.tpxz',
-    i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.5_i686/libsass-3.6.5-chromeos-i686.tpxz',
-  x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsass/3.6.5_x86_64/libsass-3.6.5-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'da6e45c3477ba90ecf8a21b4594cd3354d4d092044f331eb10a5a1eb72950ca5',
      armv7l: 'da6e45c3477ba90ecf8a21b4594cd3354d4d092044f331eb10a5a1eb72950ca5',

@@ -10,12 +10,6 @@ class Libdca < Package
   source_sha256 '3a0b13815f582c661d2388ffcabc2f1ea82f471783c400f765f2ec6c81065f6a'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.7_armv7l/libdca-0.0.7-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.7_armv7l/libdca-0.0.7-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.7_i686/libdca-0.0.7-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdca/0.0.7_x86_64/libdca-0.0.7-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '66d6d64c9b1c9fe75c4085dbf420012fc4d9742568b1355ec4c7dbec1d694680',
       armv7l: '66d6d64c9b1c9fe75c4085dbf420012fc4d9742568b1355ec4c7dbec1d694680',

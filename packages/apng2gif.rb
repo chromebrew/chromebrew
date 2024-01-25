@@ -10,12 +10,6 @@ class Apng2gif < Package
   source_sha256 '9a07e386017dc696573cd7bc7b46b2575c06da0bc68c3c4f1c24a4b39cdedd4d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_armv7l/apng2gif-1.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_armv7l/apng2gif-1.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_i686/apng2gif-1.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/apng2gif/1.8_x86_64/apng2gif-1.8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f0d57f404b10ce2dc14a3ce61baa7be9d7bbefc8e0bb77e6b943bf7c07191578',
      armv7l: 'f0d57f404b10ce2dc14a3ce61baa7be9d7bbefc8e0bb77e6b943bf7c07191578',

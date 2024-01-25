@@ -10,12 +10,6 @@ class Mp4v2 < Package
   source_sha256 '0319b9a60b667cf10ee0ec7505eb7bdc0a2e21ca7a93db96ec5bd758e3428338'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mp4v2/2.0.0_armv7l/mp4v2-2.0.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mp4v2/2.0.0_armv7l/mp4v2-2.0.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mp4v2/2.0.0_i686/mp4v2-2.0.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mp4v2/2.0.0_x86_64/mp4v2-2.0.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a636db38c7bc1f2ea3d01f64d271f56edd37ffeafdbb792701a352ce996bcc2e',
      armv7l: 'a636db38c7bc1f2ea3d01f64d271f56edd37ffeafdbb792701a352ce996bcc2e',

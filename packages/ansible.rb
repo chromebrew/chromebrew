@@ -10,12 +10,6 @@ class Ansible < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_armv7l/ansible-2.11.6-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_armv7l/ansible-2.11.6-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_i686/ansible-2.11.6-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/ansible/2.11.6_x86_64/ansible-2.11.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'e99dda3d567d2f51088c406f87cf4a046253414af0f772449acdaf5c580990c6',
      armv7l: 'e99dda3d567d2f51088c406f87cf4a046253414af0f772449acdaf5c580990c6',

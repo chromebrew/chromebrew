@@ -10,12 +10,6 @@ class Graphene < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphene/1.10.8_armv7l/graphene-1.10.8-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphene/1.10.8_armv7l/graphene-1.10.8-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphene/1.10.8_i686/graphene-1.10.8-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/graphene/1.10.8_x86_64/graphene-1.10.8-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9ae35576dbac03a5150ef70c8a0a22321ed506f960fc4dd0153e90fc6b1cd8e0',
      armv7l: '9ae35576dbac03a5150ef70c8a0a22321ed506f960fc4dd0153e90fc6b1cd8e0',

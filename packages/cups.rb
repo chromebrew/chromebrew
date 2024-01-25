@@ -10,12 +10,6 @@ class Cups < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_armv7l/cups-2.4.7-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_armv7l/cups-2.4.7-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_i686/cups-2.4.7-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cups/2.4.7_x86_64/cups-2.4.7-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8136049f7ce18912c9d229244683cde85a376ce105b3cb4837d24b62c4dd0ab9',
      armv7l: '8136049f7ce18912c9d229244683cde85a376ce105b3cb4837d24b62c4dd0ab9',

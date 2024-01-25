@@ -10,12 +10,6 @@ class Libice < Package
   git_hashtag "libICE-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_armv7l/libice-1.1.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_armv7l/libice-1.1.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_i686/libice-1.1.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libice/1.1.0_x86_64/libice-1.1.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',
      armv7l: '98119ae9368b7d11644676afac7d66a220bc5329f41b236004e5c3f76e2ce7ec',

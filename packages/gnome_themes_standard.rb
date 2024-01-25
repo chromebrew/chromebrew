@@ -10,12 +10,6 @@ class Gnome_themes_standard < Package
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_themes_standard/3.27.92-0_armv7l/gnome_themes_standard-3.27.92-0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_themes_standard/3.27.92-0_armv7l/gnome_themes_standard-3.27.92-0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_themes_standard/3.27.92-0_i686/gnome_themes_standard-3.27.92-0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gnome_themes_standard/3.27.92-0_x86_64/gnome_themes_standard-3.27.92-0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '6c77323e31792cbf70f48a109280b9e1a8a225b1deade3de620a0624a372dc43',
      armv7l: '6c77323e31792cbf70f48a109280b9e1a8a225b1deade3de620a0624a372dc43',

@@ -10,12 +10,6 @@ class Libunbound < Autotools
   source_sha256 '3da95490a85cff6420f26fae0b84a49f5112df1bf1b7fc34f8724f02082cb712'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.18.0_armv7l/libunbound-1.18.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.18.0_armv7l/libunbound-1.18.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.18.0_i686/libunbound-1.18.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libunbound/1.18.0_x86_64/libunbound-1.18.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '5cf33946c41c35de204735c52bc42191390c35521af836238e23922adc9cef41',
      armv7l: '5cf33946c41c35de204735c52bc42191390c35521af836238e23922adc9cef41',

@@ -10,11 +10,6 @@ class Xterm < Package
   git_hashtag "xterm-#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_armv7l/xterm-379-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_armv7l/xterm-379-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xterm/379_x86_64/xterm-379-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '9607c9b1dd0681f7dd9b290670195865d1cb0a2ac7d6b384ce366ef29d90e78d',
      armv7l: '9607c9b1dd0681f7dd9b290670195865d1cb0a2ac7d6b384ce366ef29d90e78d',

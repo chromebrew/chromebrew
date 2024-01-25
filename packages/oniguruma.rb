@@ -10,12 +10,6 @@ class Oniguruma < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_armv7l/oniguruma-6.9.7.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_armv7l/oniguruma-6.9.7.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_i686/oniguruma-6.9.7.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/oniguruma/6.9.7.1_x86_64/oniguruma-6.9.7.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '61e2b0c0a8096bc2acdb1d311021786c08c0a47298fab2a063e2821c19b95f28',
      armv7l: '61e2b0c0a8096bc2acdb1d311021786c08c0a47298fab2a063e2821c19b95f28',

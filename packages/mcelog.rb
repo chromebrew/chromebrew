@@ -10,12 +10,6 @@ class Mcelog < Package
   source_sha256 'a18fdef9cfe2dfaefa09087c616c376a301dc87b1fa14a37476d97370962c668'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mcelog/165_armv7l/mcelog-165-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mcelog/165_armv7l/mcelog-165-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mcelog/165_i686/mcelog-165-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mcelog/165_x86_64/mcelog-165-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '5d9cf717ea6e8f1008b061468130164e14794588d1bf5610d01563cf48182c9b',
      armv7l: '5d9cf717ea6e8f1008b061468130164e14794588d1bf5610d01563cf48182c9b',

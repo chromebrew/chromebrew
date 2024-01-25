@@ -10,11 +10,6 @@ class Perl_gtk3 < Package
   source_sha256 '70dc4bf2aa74981c79e15fd298d998e05a92eba4811f1ad5c9f1f4de37737acc'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gtk3/0.038-perl5.38_armv7l/perl_gtk3-0.038-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gtk3/0.038-perl5.38_armv7l/perl_gtk3-0.038-perl5.38-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_gtk3/0.038-perl5.38_x86_64/perl_gtk3-0.038-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7ae67dd879f5cf7e7dd04463431df0b43b81321732d6ee4c8c846a2812fe87f6',
      armv7l: '7ae67dd879f5cf7e7dd04463431df0b43b81321732d6ee4c8c846a2812fe87f6',

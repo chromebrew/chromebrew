@@ -13,11 +13,6 @@ class Nautilus < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/44.2_armv7l/nautilus-44.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/44.2_armv7l/nautilus-44.2-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nautilus/44.2_x86_64/nautilus-44.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7aa9ac926a916451288e17fa7eff600afb79530c9eade1bbf7724049ad5a9059',
      armv7l: '7aa9ac926a916451288e17fa7eff600afb79530c9eade1bbf7724049ad5a9059',

@@ -10,12 +10,6 @@ class Keybase < Package
   source_sha256 'a65dc4b62fc1299dd17da52ddd2484fa1dc1e7d2a4776c3a6e112ee020980b12'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keybase/5.5.1_armv7l/keybase-5.5.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keybase/5.5.1_armv7l/keybase-5.5.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keybase/5.5.1_i686/keybase-5.5.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/keybase/5.5.1_x86_64/keybase-5.5.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '248fe6da5cd0a7c8e4663901a6acbcb94ca1347291309545e3e068aad6a0dd2d',
      armv7l: '248fe6da5cd0a7c8e4663901a6acbcb94ca1347291309545e3e068aad6a0dd2d',

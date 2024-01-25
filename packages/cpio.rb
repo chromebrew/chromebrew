@@ -10,12 +10,6 @@ class Cpio < Autotools
   source_sha256 'fcdc15d60f7267a6fc7efcd6b9db7b6c8966c4f2fbbb964c24d41336fd3f2c12'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpio/2.14_armv7l/cpio-2.14-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpio/2.14_armv7l/cpio-2.14-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpio/2.14_i686/cpio-2.14-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cpio/2.14_x86_64/cpio-2.14-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b3bca5b31c4e1b45e2f843658464c9fcbdb8eefeec7c5f4284f2be2011b3d969',
      armv7l: 'b3bca5b31c4e1b45e2f843658464c9fcbdb8eefeec7c5f4284f2be2011b3d969',

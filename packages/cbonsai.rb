@@ -10,12 +10,6 @@ class Cbonsai < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-     aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbonsai/1.3.1_armv7l/cbonsai-1.3.1-chromeos-armv7l.tar.zst',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbonsai/1.3.1_armv7l/cbonsai-1.3.1-chromeos-armv7l.tar.zst',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbonsai/1.3.1_i686/cbonsai-1.3.1-chromeos-i686.tar.zst',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cbonsai/1.3.1_x86_64/cbonsai-1.3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
      aarch64: '3cbeff88cd8a5bb190e5da9dd77f7007ed26ff022e52eacfb80e9c3e0cd79d74',
       armv7l: '3cbeff88cd8a5bb190e5da9dd77f7007ed26ff022e52eacfb80e9c3e0cd79d74',

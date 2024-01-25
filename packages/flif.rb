@@ -10,12 +10,6 @@ class Flif < Package
   source_sha256 'aa02a62974d78f8109cff21ecb6d805f1d23b05b2db7189cfdf1f0d97ff89498'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flif/0.3_armv7l/flif-0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flif/0.3_armv7l/flif-0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flif/0.3_i686/flif-0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/flif/0.3_x86_64/flif-0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '64f447f5fe90b8075259e6bf427387b7baa64a6d0dd7bbc49c05325bc20cf882',
      armv7l: '64f447f5fe90b8075259e6bf427387b7baa64a6d0dd7bbc49c05325bc20cf882',

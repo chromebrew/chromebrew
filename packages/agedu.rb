@@ -10,12 +10,6 @@ class Agedu < Package
   source_sha256 'ceaee592ef21b8cbb254aa7e9c5d22cefab24535e137618a4d0af591eba8339f'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/agedu/20211129_armv7l/agedu-20211129-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/agedu/20211129_armv7l/agedu-20211129-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/agedu/20211129_i686/agedu-20211129-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/agedu/20211129_x86_64/agedu-20211129-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',
      armv7l: '0cc1186dfe4a6b0079cdfd46c40654dd04e3494aa48a2db4fcfbf7b0f6ef27b5',

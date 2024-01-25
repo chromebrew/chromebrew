@@ -10,12 +10,6 @@ class Btop < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btop/1.2.13_armv7l/btop-1.2.13-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btop/1.2.13_armv7l/btop-1.2.13-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btop/1.2.13_i686/btop-1.2.13-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/btop/1.2.13_x86_64/btop-1.2.13-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '17be864bd2d5ce7c2c7975452d8baefc8b7fcef0adf833227b17e13d46cebb4b',
      armv7l: '17be864bd2d5ce7c2c7975452d8baefc8b7fcef0adf833227b17e13d46cebb4b',

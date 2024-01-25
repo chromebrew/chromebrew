@@ -13,9 +13,6 @@ class Codelobster < Package
   depends_on 'curl'
   depends_on 'sommelier'
 
-  binary_url({
-    x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/codelobster/1.11.1_x86_64/codelobster-1.11.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     x86_64: 'bb07382b79b0c7a2a11fb35f2364e21497623362f8ef1a21fac0dbda15a5b6d8'
   })

@@ -10,12 +10,6 @@ class At_spi2_core < Package
   git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.48.0_armv7l/at_spi2_core-2.48.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.48.0_armv7l/at_spi2_core-2.48.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.48.0_i686/at_spi2_core-2.48.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/at_spi2_core/2.48.0_x86_64/at_spi2_core-2.48.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8b43962dd48f8cedaa964eb5598e32ef05b7a929c09917cbc3e06e204da059de',
      armv7l: '8b43962dd48f8cedaa964eb5598e32ef05b7a929c09917cbc3e06e204da059de',

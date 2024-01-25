@@ -10,11 +10,6 @@ class Inkscape < CMake
   source_sha256 '421e0035fe5b3b054a0865dc8235be3f9e6e2dea54190d926b880a4ce05b00d8'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_armv7l/inkscape-1.3.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_armv7l/inkscape-1.3.1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inkscape/1.3.1_x86_64/inkscape-1.3.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
      armv7l: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',

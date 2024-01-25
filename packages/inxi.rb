@@ -10,12 +10,6 @@ class Inxi < Package
   source_sha256 'fd4d7e89166f4cd96fe91448753a1279520bc0f9ee3a2cfbd92ff4a2b1cf487a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inxi/811a19_armv7l/inxi-811a19-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inxi/811a19_armv7l/inxi-811a19-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inxi/811a19_i686/inxi-811a19-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/inxi/811a19_x86_64/inxi-811a19-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a7605cdd62c35259dddf00c133c7af00816ed270b3326094a129f9436e65700e',
      armv7l: 'a7605cdd62c35259dddf00c133c7af00816ed270b3326094a129f9436e65700e',

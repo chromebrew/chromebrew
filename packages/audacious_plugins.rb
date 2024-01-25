@@ -10,12 +10,6 @@ class Audacious_plugins < Package
   source_sha256 'eec3177631f99729bf0e94223b627406cc648c70e6646e35613c7b55040a2642'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious_plugins/3.10.1_armv7l/audacious_plugins-3.10.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious_plugins/3.10.1_armv7l/audacious_plugins-3.10.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious_plugins/3.10.1_i686/audacious_plugins-3.10.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/audacious_plugins/3.10.1_x86_64/audacious_plugins-3.10.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '200f784576d153da7d23ee308f32587957faf8e9108b197991c841d3cac46f18',
      armv7l: '200f784576d153da7d23ee308f32587957faf8e9108b197991c841d3cac46f18',

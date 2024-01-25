@@ -10,12 +10,6 @@ class Macchanger < Package
   source_sha256 'dae2717c270fd5f62d790dbf80c19793c651b1b26b62c101b82d5fdf25a845bf'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/macchanger/1.7.0_armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/macchanger/1.7.0_armv7l/macchanger-1.7.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/macchanger/1.7.0_i686/macchanger-1.7.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/macchanger/1.7.0_x86_64/macchanger-1.7.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bee8775a633ffd9477709174b0303a5fcb432a9065f81d978580def71fc2a744',
      armv7l: 'bee8775a633ffd9477709174b0303a5fcb432a9065f81d978580def71fc2a744',

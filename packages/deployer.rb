@@ -10,12 +10,6 @@ class Deployer < Package
   source_sha256 '81e5cea09f68b898d72a52ea6c4401fbc4cc1bc2fc30d488acce6e8fdef59d79'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/deployer/6.7.3_armv7l/deployer-6.7.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/deployer/6.7.3_armv7l/deployer-6.7.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/deployer/6.7.3_i686/deployer-6.7.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/deployer/6.7.3_x86_64/deployer-6.7.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e5a87eefab63f035398a2cfd2d4682ae6e95dc608c405242da8c60bcce2798db',
      armv7l: 'e5a87eefab63f035398a2cfd2d4682ae6e95dc608c405242da8c60bcce2798db',

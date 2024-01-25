@@ -10,12 +10,6 @@ class Tar < Autotools
   source_sha256 '4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_armv7l/tar-1.35-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_armv7l/tar-1.35-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_i686/tar-1.35-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tar/1.35_x86_64/tar-1.35-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2c9d3d099f95858ea9eefc15efdf082b1a60f891f1eaeab96973d448caf34351',
      armv7l: '2c9d3d099f95858ea9eefc15efdf082b1a60f891f1eaeab96973d448caf34351',

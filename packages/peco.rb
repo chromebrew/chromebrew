@@ -10,12 +10,6 @@ class Peco < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peco/0.5.11_armv7l/peco-0.5.11-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peco/0.5.11_armv7l/peco-0.5.11-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peco/0.5.11_i686/peco-0.5.11-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/peco/0.5.11_x86_64/peco-0.5.11-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2da48435de834d1365e1d6080babe514c6adf7ae1d70f04ee2bad71009730c6b',
      armv7l: '2da48435de834d1365e1d6080babe514c6adf7ae1d70f04ee2bad71009730c6b',

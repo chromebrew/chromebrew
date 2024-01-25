@@ -10,12 +10,6 @@ class Hicolor_icon_theme < Package
   source_sha256 '317484352271d18cbbcfac3868eab798d67fff1b8402e740baa6ff41d588a9d8'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hicolor_icon_theme/0.17_armv7l/hicolor_icon_theme-0.17-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hicolor_icon_theme/0.17_armv7l/hicolor_icon_theme-0.17-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hicolor_icon_theme/0.17_i686/hicolor_icon_theme-0.17-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/hicolor_icon_theme/0.17_x86_64/hicolor_icon_theme-0.17-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '3341e27bb5e2ea8c55b573c32bf34ba4e88da50c6cc1d865eb1c2d91232d44e6',
      armv7l: '3341e27bb5e2ea8c55b573c32bf34ba4e88da50c6cc1d865eb1c2d91232d44e6',

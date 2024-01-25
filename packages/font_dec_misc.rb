@@ -10,12 +10,6 @@ class Font_dec_misc < Package
   source_sha256 'e19ddf8b5f8de914d81675358fdfe37762e9ce524887cc983adef34f2850ff7b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_dec_misc/1.0.3_armv7l/font_dec_misc-1.0.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_dec_misc/1.0.3_armv7l/font_dec_misc-1.0.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_dec_misc/1.0.3_i686/font_dec_misc-1.0.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/font_dec_misc/1.0.3_x86_64/font_dec_misc-1.0.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e9bd304b0a670711ef40a84c9464c3f27778b111848728a2915a0e347955245e',
      armv7l: 'e9bd304b0a670711ef40a84c9464c3f27778b111848728a2915a0e347955245e',

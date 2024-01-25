@@ -10,12 +10,6 @@ class Plplot < Package
   source_sha256 'b92de4d8f626a9b20c84fc94f4f6a9976edd76e33fb1eae44f6804bdcc628c7b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plplot/5.15.0_armv7l/plplot-5.15.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plplot/5.15.0_armv7l/plplot-5.15.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plplot/5.15.0_i686/plplot-5.15.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/plplot/5.15.0_x86_64/plplot-5.15.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '13f6b739b87349e98ec82b542d0bce70b982f76b7e72ede1ff22d8f020bc05d3',
      armv7l: '13f6b739b87349e98ec82b542d0bce70b982f76b7e72ede1ff22d8f020bc05d3',

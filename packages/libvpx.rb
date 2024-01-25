@@ -10,12 +10,6 @@ class Libvpx < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_armv7l/libvpx-1.13.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_armv7l/libvpx-1.13.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_i686/libvpx-1.13.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvpx/1.13.1_x86_64/libvpx-1.13.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',
      armv7l: '32f4ebce8271fc686b711bc48d601077c07a510a9e68b5c4aa6faa3ae85bd4a3',

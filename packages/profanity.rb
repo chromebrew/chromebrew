@@ -10,12 +10,6 @@ class Profanity < Package
   source_sha256 'f1b2773b79eb294297686f3913e9489c20effae5e3a335c8956db18f6ee2f660'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/profanity/0.6.0_armv7l/profanity-0.6.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/profanity/0.6.0_armv7l/profanity-0.6.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/profanity/0.6.0_i686/profanity-0.6.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/profanity/0.6.0_x86_64/profanity-0.6.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '59229f908a8f21765e77aaa1a491ae23155452f013e9cc992f365bd66293f795',
      armv7l: '59229f908a8f21765e77aaa1a491ae23155452f013e9cc992f365bd66293f795',

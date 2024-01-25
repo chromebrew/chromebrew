@@ -13,12 +13,6 @@ class Glmark2 < Package
   source_sha256 'fd37e6360f03f8ffcd236eb39ee1cb42c487edd0418441c22e375ec5e499297d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2021.12-9057c05_armv7l/glmark2-2021.12-9057c05-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2021.12-9057c05_armv7l/glmark2-2021.12-9057c05-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2021.12-9057c05_i686/glmark2-2021.12-9057c05-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glmark2/2021.12-9057c05_x86_64/glmark2-2021.12-9057c05-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
      armv7l: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',

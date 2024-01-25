@@ -10,12 +10,6 @@ class Libdsm < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.2_armv7l/libdsm-0.3.2-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.2_armv7l/libdsm-0.3.2-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.2_i686/libdsm-0.3.2-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libdsm/0.3.2_x86_64/libdsm-0.3.2-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '0f1cfa4ecfd15ce2638be2e8bd85538898cada850ed99beea1247f928b22625b',
       armv7l: '0f1cfa4ecfd15ce2638be2e8bd85538898cada850ed99beea1247f928b22625b',

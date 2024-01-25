@@ -10,12 +10,6 @@ class Mtools < Package
   source_sha256 'd09cff66d7277ad36a7573fc3e9803bfa558cdda83baabaafbf7761317462283'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtools/4.0.26_armv7l/mtools-4.0.26-chromeos-armv7l.tar.xz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtools/4.0.26_armv7l/mtools-4.0.26-chromeos-armv7l.tar.xz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtools/4.0.26_i686/mtools-4.0.26-chromeos-i686.tar.xz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mtools/4.0.26_x86_64/mtools-4.0.26-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b04897069248682f60fe685c66cb74b1da86cbb393d80eca88a4445623a7f267',
       armv7l: 'b04897069248682f60fe685c66cb74b1da86cbb393d80eca88a4445623a7f267',

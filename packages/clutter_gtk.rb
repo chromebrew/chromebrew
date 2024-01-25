@@ -11,12 +11,6 @@ class Clutter_gtk < Package
   source_sha256 '521493ec038973c77edcb8bc5eac23eed41645117894aaee7300b2487cb42b06'
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clutter_gtk/1.8.4-1_armv7l/clutter_gtk-1.8.4-1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clutter_gtk/1.8.4-1_armv7l/clutter_gtk-1.8.4-1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clutter_gtk/1.8.4-1_i686/clutter_gtk-1.8.4-1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/clutter_gtk/1.8.4-1_x86_64/clutter_gtk-1.8.4-1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '3cdcfa7c4bf98dc60b0939a73d3923e693b7a11cfdde467083f10c4e4f667acd',
      armv7l: '3cdcfa7c4bf98dc60b0939a73d3923e693b7a11cfdde467083f10c4e4f667acd',

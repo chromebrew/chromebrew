@@ -10,12 +10,6 @@ class Avahi < Package
   source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-4_armv7l/avahi-0.8-4-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-4_armv7l/avahi-0.8-4-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-4_i686/avahi-0.8-4-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/avahi/0.8-4_x86_64/avahi-0.8-4-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '44967482fa6955e784d164cbfa534d54c3498705c71a12748fdfc4dc865ea8b6',
      armv7l: '44967482fa6955e784d164cbfa534d54c3498705c71a12748fdfc4dc865ea8b6',

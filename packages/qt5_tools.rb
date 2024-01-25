@@ -10,11 +10,6 @@ class Qt5_tools < Qmake
   git_hashtag '38ae810be3fb4984f75b55a16d3413e35d701af1' # from kde/5.15 branch
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_tools/5.15.11-38ae810_armv7l/qt5_tools-5.15.11-38ae810-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_tools/5.15.11-38ae810_armv7l/qt5_tools-5.15.11-38ae810-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_tools/5.15.11-38ae810_x86_64/qt5_tools-5.15.11-38ae810-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2f8ee51fd04a90af6ae36435acd9db326464235ec752e3796450a3fe5a5cdbb6',
      armv7l: '2f8ee51fd04a90af6ae36435acd9db326464235ec752e3796450a3fe5a5cdbb6',

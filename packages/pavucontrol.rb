@@ -10,12 +10,6 @@ class Pavucontrol < Package
   source_sha256 'aa6c5814e77a8f36d8ed50b70381fbfbab2ebbf0fb62548ec8b8b935527d527e'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pavucontrol/4.0-381b-1_armv7l/pavucontrol-4.0-381b-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pavucontrol/4.0-381b-1_armv7l/pavucontrol-4.0-381b-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pavucontrol/4.0-381b-1_i686/pavucontrol-4.0-381b-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pavucontrol/4.0-381b-1_x86_64/pavucontrol-4.0-381b-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '2773e569e8fef5cbc3d2adadf9d94abdbb7122393baff840e6f743ebe669f1b9',
      armv7l: '2773e569e8fef5cbc3d2adadf9d94abdbb7122393baff840e6f743ebe669f1b9',

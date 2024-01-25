@@ -10,12 +10,6 @@ class Pthread_stubs < Package
   source_sha256 'e4d05911a3165d3b18321cc067fdd2f023f06436e391c6a28dff618a78d2e733'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pthread_stubs/0.4_armv7l/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pthread_stubs/0.4_armv7l/pthread_stubs-0.4-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pthread_stubs/0.4_i686/pthread_stubs-0.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pthread_stubs/0.4_x86_64/pthread_stubs-0.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',
      armv7l: '85fd777e81a2dd5e3954e82465291c2c889567b7ae8bbb7a3e51b196c8ed35dd',

@@ -10,12 +10,6 @@ class Mjpegtools < Package
   source_sha256 'b180536d7d9960b05e0023a197b00dcb100929a49aab71d19d55f4a1b210f49a'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.1_armv7l/mjpegtools-2.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.1_armv7l/mjpegtools-2.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.1_i686/mjpegtools-2.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mjpegtools/2.2.1_x86_64/mjpegtools-2.2.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',
      armv7l: '769cff6f2acf252ff998f56f0d5e9c8fc9ed2a3e33f7639c4919675e783ee3ad',

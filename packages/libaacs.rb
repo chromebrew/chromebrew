@@ -10,12 +10,6 @@ class Libaacs < Package
   source_sha256 '47e0bdc9c9f0f6146ed7b4cc78ed1527a04a537012cf540cf5211e06a248bace'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaacs/0.9.0_armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaacs/0.9.0_armv7l/libaacs-0.9.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaacs/0.9.0_i686/libaacs-0.9.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libaacs/0.9.0_x86_64/libaacs-0.9.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '79d13f5b1aa9dcf1f00d982a96a4756ca71a743e488141f29f57b7752c28d335',
      armv7l: '79d13f5b1aa9dcf1f00d982a96a4756ca71a743e488141f29f57b7752c28d335',

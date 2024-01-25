@@ -10,12 +10,6 @@ class Lzip < Autotools
   source_sha256 '4792c047ddf15ef29d55ba8e68a1a21e0cb7692d87ecdf7204419864582f280d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23-1_armv7l/lzip-1.23-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23-1_armv7l/lzip-1.23-1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23-1_i686/lzip-1.23-1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/lzip/1.23-1_x86_64/lzip-1.23-1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'fd1b606e21609e6fe88154c7b782b703f5bcd112936443fa082cafe65aaf414d',
      armv7l: 'fd1b606e21609e6fe88154c7b782b703f5bcd112936443fa082cafe65aaf414d',

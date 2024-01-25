@@ -10,12 +10,6 @@ class Libfrei0r < Package
   source_sha256 'dae0ca623c83173788ce4fc74cb67ac7e50cf33a4412ee3d33bed284da1a8437'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfrei0r/1.6.1_armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfrei0r/1.6.1_armv7l/libfrei0r-1.6.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfrei0r/1.6.1_i686/libfrei0r-1.6.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libfrei0r/1.6.1_x86_64/libfrei0r-1.6.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',
      armv7l: 'bd9381d2c456c270133c206c66e94ed5f77a856bd23d18138d92df6b4e2c7759',

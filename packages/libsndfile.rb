@@ -10,12 +10,6 @@ class Libsndfile < Autotools
   source_sha256 '3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.2.2_armv7l/libsndfile-1.2.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.2.2_armv7l/libsndfile-1.2.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.2.2_i686/libsndfile-1.2.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libsndfile/1.2.2_x86_64/libsndfile-1.2.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'e64d75555b4ff9383478bbe2588693ba41a024b281a64a8de47ee0cf03e0f2f6',
      armv7l: 'e64d75555b4ff9383478bbe2588693ba41a024b281a64a8de47ee0cf03e0f2f6',

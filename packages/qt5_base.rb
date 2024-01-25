@@ -10,11 +10,6 @@ class Qt5_base < Package
   git_hashtag 'ea7a183732c17005f08ca14fd70cdd305c90396d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_base/5.15.11-ea7a183_armv7l/qt5_base-5.15.11-ea7a183-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_base/5.15.11-ea7a183_armv7l/qt5_base-5.15.11-ea7a183-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/qt5_base/5.15.11-ea7a183_x86_64/qt5_base-5.15.11-ea7a183-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'dc010e4f4dcf658a58db97602abe71c65c5704d9208f0c35f4bfbabad9bf1747',
      armv7l: 'dc010e4f4dcf658a58db97602abe71c65c5704d9208f0c35f4bfbabad9bf1747',

@@ -10,12 +10,6 @@ class Libinstpatch < Package
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinstpatch/1.1.6_armv7l/libinstpatch-1.1.6-chromeos-armv7l.tpxz',
-      armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinstpatch/1.1.6_armv7l/libinstpatch-1.1.6-chromeos-armv7l.tpxz',
-        i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinstpatch/1.1.6_i686/libinstpatch-1.1.6-chromeos-i686.tpxz',
-      x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libinstpatch/1.1.6_x86_64/libinstpatch-1.1.6-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'b7a7e8bec56017428e7aa7ebf630b6ca60ccaec4a3675d3d10c5cb9d89e13a9f',
       armv7l: 'b7a7e8bec56017428e7aa7ebf630b6ca60ccaec4a3675d3d10c5cb9d89e13a9f',

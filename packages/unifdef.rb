@@ -13,12 +13,6 @@ class Unifdef < Package
   source_sha256 'fba564a24db7b97ebe9329713ac970627b902e5e9e8b14e19e024eb6e278d10b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unifdef/2.12_armv7l/unifdef-2.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unifdef/2.12_armv7l/unifdef-2.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unifdef/2.12_i686/unifdef-2.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/unifdef/2.12_x86_64/unifdef-2.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '049abcc39d5ee4acaab7e5efb76db652247a561edbc603cb6638e5cc75793372',
      armv7l: '049abcc39d5ee4acaab7e5efb76db652247a561edbc603cb6638e5cc75793372',

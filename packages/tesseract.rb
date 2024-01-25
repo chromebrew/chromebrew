@@ -10,11 +10,6 @@ class Tesseract < CMake
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.3_armv7l/tesseract-5.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.3_armv7l/tesseract-5.3.3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/tesseract/5.3.3_x86_64/tesseract-5.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',
      armv7l: 'd8c0cca3421fca5743be7ab327ee071397069669f1f18720cfdc23ee3aa19457',

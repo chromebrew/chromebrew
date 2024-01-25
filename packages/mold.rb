@@ -13,12 +13,6 @@ class Mold < Package
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_armv7l/mold-2.4.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_i686/mold-2.4.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/mold/2.4.0_x86_64/mold-2.4.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '0bce500014118f5d55dad3d41a8dbdc8c2806b8203426a15f088f8d2b28e6b88',
      armv7l: '0bce500014118f5d55dad3d41a8dbdc8c2806b8203426a15f088f8d2b28e6b88',

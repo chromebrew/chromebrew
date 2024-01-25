@@ -10,12 +10,6 @@ class I3 < Package
   source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/i3/4.18.3_armv7l/i3-4.18.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/i3/4.18.3_armv7l/i3-4.18.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/i3/4.18.3_i686/i3-4.18.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/i3/4.18.3_x86_64/i3-4.18.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'f29889c961b37e86483c66e442ba8db653d1da7b0a3f4ab9d461f9acc7f75fb1',
      armv7l: 'f29889c961b37e86483c66e442ba8db653d1da7b0a3f4ab9d461f9acc7f75fb1',

@@ -10,12 +10,6 @@ class Vifm < Package
   source_sha256 'ab10c99d1e4c24ff8a03c20be1c202cc15874750cc47a1614e6fe4f8d816a7fd'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vifm/0.9_armv7l/vifm-0.9-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vifm/0.9_armv7l/vifm-0.9-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vifm/0.9_i686/vifm-0.9-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/vifm/0.9_x86_64/vifm-0.9-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '78e4257894e5c19e825d6b33d2f66fc29189bd17bbfa21aa8eecb9b4b75c47da',
      armv7l: '78e4257894e5c19e825d6b33d2f66fc29189bd17bbfa21aa8eecb9b4b75c47da',

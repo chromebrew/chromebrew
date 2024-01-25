@@ -10,11 +10,6 @@ class Perl_glib_object_introspection < Package
   source_sha256 'ecf3bbb824df5eed6a3a7fcfd61be9ef448519801badcc82a6e3c4daab0cd763'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib_object_introspection/0.050-perl5.38_armv7l/perl_glib_object_introspection-0.050-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib_object_introspection/0.050-perl5.38_armv7l/perl_glib_object_introspection-0.050-perl5.38-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_glib_object_introspection/0.050-perl5.38_x86_64/perl_glib_object_introspection-0.050-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'ff44807be2b14ca0b6b6fe54e156e3f2e743ab0a70908ac480e36757c494a684',
      armv7l: 'ff44807be2b14ca0b6b6fe54e156e3f2e743ab0a70908ac480e36757c494a684',

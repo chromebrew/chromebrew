@@ -13,12 +13,6 @@ class Libcacard < Package
   source_sha256 '16b1a0847d5f9d2290e0785eca40f2e49d1ed80814bfc758c05c76b3c89cdb6f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcacard/2.7.0-2_armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcacard/2.7.0-2_armv7l/libcacard-2.7.0-2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcacard/2.7.0-2_i686/libcacard-2.7.0-2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libcacard/2.7.0-2_x86_64/libcacard-2.7.0-2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'a6a77ce44bca8e06cc0c2cd1b4257cdefdf57921010bd31f2b09b934014190bf',
      armv7l: 'a6a77ce44bca8e06cc0c2cd1b4257cdefdf57921010bd31f2b09b934014190bf',

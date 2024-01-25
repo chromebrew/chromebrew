@@ -10,12 +10,6 @@ class Youtube_dl < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.12.17_armv7l/youtube_dl-2021.12.17-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.12.17_armv7l/youtube_dl-2021.12.17-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.12.17_i686/youtube_dl-2021.12.17-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/youtube_dl/2021.12.17_x86_64/youtube_dl-2021.12.17-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '67493026c59e65899994e63542d9c032c2ab85d443b57cca9933280e81d7f6a3',
      armv7l: '67493026c59e65899994e63542d9c032c2ab85d443b57cca9933280e81d7f6a3',

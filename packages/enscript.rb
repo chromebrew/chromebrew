@@ -10,12 +10,6 @@ class Enscript < Package
   source_sha256 '6d56bada6934d055b34b6c90399aa85975e66457ac5bf513427ae7fc77f5c0bb'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enscript/1.6.6_armv7l/enscript-1.6.6-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enscript/1.6.6_armv7l/enscript-1.6.6-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enscript/1.6.6_i686/enscript-1.6.6-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/enscript/1.6.6_x86_64/enscript-1.6.6-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '316ed484d08cfbe16632937379a05366b9841e986e351fd3d4061f474e046725',
      armv7l: '316ed484d08cfbe16632937379a05366b9841e986e351fd3d4061f474e046725',

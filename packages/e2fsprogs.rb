@@ -10,12 +10,6 @@ class E2fsprogs < Package
   source_sha256 '144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.47.0_armv7l/e2fsprogs-1.47.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.47.0_armv7l/e2fsprogs-1.47.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.47.0_i686/e2fsprogs-1.47.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/e2fsprogs/1.47.0_x86_64/e2fsprogs-1.47.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '51792a67015212b0bc3c88234a78b051ef7ee3e560afe9b40f4fde00843d48a1',
      armv7l: '51792a67015212b0bc3c88234a78b051ef7ee3e560afe9b40f4fde00843d48a1',

@@ -10,12 +10,6 @@ class Bleachbit < Package
   source_sha256 '113686f537be4a9fcfeb99fd2e976a33fb8eeb208fb69c571ec7acd96d7fb21b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/4.4.2_armv7l/bleachbit-4.4.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/4.4.2_armv7l/bleachbit-4.4.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/4.4.2_i686/bleachbit-4.4.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bleachbit/4.4.2_x86_64/bleachbit-4.4.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '93058ccca4af018b26df9878ba6898a3cb1d7cd7c26cb9617a4bea1173b97697',
      armv7l: '93058ccca4af018b26df9878ba6898a3cb1d7cd7c26cb9617a4bea1173b97697',

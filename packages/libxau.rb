@@ -10,12 +10,6 @@ class Libxau < Package
   source_sha256 '8be6f292334d2f87e5b919c001e149a9fdc27005d6b3e053862ac6ebbf1a0c0a'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.10_armv7l/libxau-1.0.10-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.10_armv7l/libxau-1.0.10-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.10_i686/libxau-1.0.10-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxau/1.0.10_x86_64/libxau-1.0.10-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '3a16d88d627e0762f6218f80794921dff3aa84f5b04d3cafe9d4bca32220aa11',
      armv7l: '3a16d88d627e0762f6218f80794921dff3aa84f5b04d3cafe9d4bca32220aa11',

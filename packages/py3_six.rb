@@ -11,12 +11,6 @@ class Py3_six < Python
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_six/1.16.0-py3.12_armv7l/py3_six-1.16.0-py3.12-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_six/1.16.0-py3.12_armv7l/py3_six-1.16.0-py3.12-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_six/1.16.0-py3.12_i686/py3_six-1.16.0-py3.12-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py3_six/1.16.0-py3.12_x86_64/py3_six-1.16.0-py3.12-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b5ef7eb707aaa94914ddb32ffeb0304e9748ad57e652caf6093a2c2e773e8de8',
      armv7l: 'b5ef7eb707aaa94914ddb32ffeb0304e9748ad57e652caf6093a2c2e773e8de8',

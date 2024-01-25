@@ -10,12 +10,6 @@ class Markdown < Package
   source_sha256 '6520e9b6a58c5555e381b6223d66feddee67f675ed312ec19e9cee1b92bc0137'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/markdown/1.0.1_armv7l/markdown-1.0.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/markdown/1.0.1_armv7l/markdown-1.0.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/markdown/1.0.1_i686/markdown-1.0.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/markdown/1.0.1_x86_64/markdown-1.0.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bc5c8f4b5fe7ad5239d57b442c390cbdebb2fe94f84a1e854126c3999c296dae',
      armv7l: 'bc5c8f4b5fe7ad5239d57b442c390cbdebb2fe94f84a1e854126c3999c296dae',

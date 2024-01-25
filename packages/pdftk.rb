@@ -10,12 +10,6 @@ class Pdftk < Package
   source_sha256 'c144e0dd388db2f5e8e0b412c0d9be6c54e4db99a4575b6058a209f3603a333d'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.3.3_armv7l/pdftk-3.3.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.3.3_armv7l/pdftk-3.3.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.3.3_i686/pdftk-3.3.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/pdftk/3.3.3_x86_64/pdftk-3.3.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '72389eb077f1c4a770a330869e28638694b518167c8f301e47cc0fd623912890',
      armv7l: '72389eb077f1c4a770a330869e28638694b518167c8f301e47cc0fd623912890',

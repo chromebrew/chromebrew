@@ -13,12 +13,6 @@ class Libvterm < Package
   source_sha256 '61eb0d6628c52bdf02900dfd4468aa86a1a7125228bab8a67328981887483358'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_armv7l/libvterm-0.3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_armv7l/libvterm-0.3-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_i686/libvterm-0.3-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libvterm/0.3_x86_64/libvterm-0.3-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '63bd50be7529cb4ae529474030be223abce26c0edc1c38f64f57adc7c9b0eacd',
      armv7l: '63bd50be7529cb4ae529474030be223abce26c0edc1c38f64f57adc7c9b0eacd',

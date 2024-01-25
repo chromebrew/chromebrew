@@ -10,12 +10,6 @@ class Nano < Package
   source_sha256 '86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_armv7l/nano-7.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_i686/nano-7.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nano/7.2_x86_64/nano-7.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
      armv7l: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',

@@ -13,12 +13,6 @@ class Libutempter < Package
   source_sha256 '967fef372f391de501843ad87570c6cf5dabd9651f00f1783090fbc12b2a34cb'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libutempter/1.2.1_armv7l/libutempter-1.2.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libutempter/1.2.1_armv7l/libutempter-1.2.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libutempter/1.2.1_i686/libutempter-1.2.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libutempter/1.2.1_x86_64/libutempter-1.2.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'b770b584f1fbdc24d77c0fd82dcbd6c473926b2c3de234ecce7ef4c76221fe4c',
      armv7l: 'b770b584f1fbdc24d77c0fd82dcbd6c473926b2c3de234ecce7ef4c76221fe4c',

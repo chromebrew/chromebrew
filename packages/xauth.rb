@@ -10,12 +10,6 @@ class Xauth < Package
   source_sha256 '78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xauth/1.1.2_armv7l/xauth-1.1.2-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xauth/1.1.2_armv7l/xauth-1.1.2-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xauth/1.1.2_i686/xauth-1.1.2-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xauth/1.1.2_x86_64/xauth-1.1.2-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '45f2927b7cdcb468a7b1bfa5a686033152c82102761556a21c54ad4cca1f7496',
      armv7l: '45f2927b7cdcb468a7b1bfa5a686033152c82102761556a21c54ad4cca1f7496',

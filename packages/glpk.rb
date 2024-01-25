@@ -10,12 +10,6 @@ class Glpk < Package
   source_sha256 '4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glpk/5.0_armv7l/glpk-5.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glpk/5.0_armv7l/glpk-5.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glpk/5.0_i686/glpk-5.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glpk/5.0_x86_64/glpk-5.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '60ca5699473f9c67974f0567d1ff8453c3dd8cee7cab11398ea457ad472ef45a',
      armv7l: '60ca5699473f9c67974f0567d1ff8453c3dd8cee7cab11398ea457ad472ef45a',

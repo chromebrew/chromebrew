@@ -10,12 +10,6 @@ class Folks < Package
   source_sha256 'f79952f6b0c8f6c0fa2efefbcfc4d4875a2ee5e4518f7d4bf520b62b5c89568c'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_armv7l/folks-0.15.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_armv7l/folks-0.15.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_i686/folks-0.15.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/folks/0.15.5_x86_64/folks-0.15.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2999307030aa76fb2e9ee4aaf52d83ae0835829d8d14c16af03f88efab8bda16',
      armv7l: '2999307030aa76fb2e9ee4aaf52d83ae0835829d8d14c16af03f88efab8bda16',

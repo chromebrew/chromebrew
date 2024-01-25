@@ -10,12 +10,6 @@ class Libxml2 < Package
   source_sha256 'ab3699b697e917c7d5035e81d237a9bc895eb4bf70c0a2259c6d1f125c1b77b6'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_armv7l/libxml2-2.11.5-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_armv7l/libxml2-2.11.5-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_i686/libxml2-2.11.5-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxml2/2.11.5_x86_64/libxml2-2.11.5-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '4de8edf0e7e220cd5e174ea95ba8c4cad62182764b07a26ce2f2c522008bb0ac',
      armv7l: '4de8edf0e7e220cd5e174ea95ba8c4cad62182764b07a26ce2f2c522008bb0ac',

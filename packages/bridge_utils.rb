@@ -13,12 +13,6 @@ class Bridge_utils < Package
   source_sha256 'a61d8be4f1a1405c60c8ef38d544f0c18c05b33b9b07e5b4b31033536165e60e'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bridge_utils/1.7.1_armv7l/bridge_utils-1.7.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bridge_utils/1.7.1_armv7l/bridge_utils-1.7.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bridge_utils/1.7.1_i686/bridge_utils-1.7.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bridge_utils/1.7.1_x86_64/bridge_utils-1.7.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'f1984061ce11bccfdd46b10ccf02aabc66b1e179a257892a6478d85fc76f6466',
      armv7l: 'f1984061ce11bccfdd46b10ccf02aabc66b1e179a257892a6478d85fc76f6466',

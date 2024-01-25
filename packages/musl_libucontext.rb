@@ -10,12 +10,6 @@ class Musl_libucontext < Package
   git_hashtag "libucontext-#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_armv7l/musl_libucontext-1.1-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_armv7l/musl_libucontext-1.1-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_i686/musl_libucontext-1.1-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/musl_libucontext/1.1_x86_64/musl_libucontext-1.1-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: '5b44c0cfd1bdad11b17ff782784dd0ac1f21d5cbeed72a924826b038e1ca1476',
      armv7l: '5b44c0cfd1bdad11b17ff782784dd0ac1f21d5cbeed72a924826b038e1ca1476',

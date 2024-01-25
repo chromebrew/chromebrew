@@ -10,12 +10,6 @@ class Py2_pip < Package
   git_hashtag version
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_pip/20.3.4_armv7l/py2_pip-20.3.4-chromeos-armv7l.tar.xzz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_pip/20.3.4_armv7l/py2_pip-20.3.4-chromeos-armv7l.tar.xzz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_pip/20.3.4_i686/py2_pip-20.3.4-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/py2_pip/20.3.4_x86_64/py2_pip-20.3.4-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '62d2b9126951628f2fd54bdfa3edcd67e6da21a60a42671e3523ed9ed87c734b',
      armv7l: '62d2b9126951628f2fd54bdfa3edcd67e6da21a60a42671e3523ed9ed87c734b',

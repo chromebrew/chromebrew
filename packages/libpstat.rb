@@ -10,12 +10,6 @@ class Libpstat < Package
   source_sha256 '71e5d3f190fe045b38f31dfa9b5962fb6ea4099f46b25981b411122569ff6b30'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpstat/030f37-1_armv7l/libpstat-030f37-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpstat/030f37-1_armv7l/libpstat-030f37-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpstat/030f37-1_i686/libpstat-030f37-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libpstat/030f37-1_x86_64/libpstat-030f37-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'b7fa2a3ee6eb312195bcd50c5f429ea19adde7ecc079afdb2b1b8c505ae208d9',
      armv7l: 'b7fa2a3ee6eb312195bcd50c5f429ea19adde7ecc079afdb2b1b8c505ae208d9',

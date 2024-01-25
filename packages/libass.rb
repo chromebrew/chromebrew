@@ -10,12 +10,6 @@ class Libass < Package
   source_sha256 '881f2382af48aead75b7a0e02e65d88c5ebd369fe46bc77d9270a94aa8fd38a2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libass/0.14.0_armv7l/libass-0.14.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libass/0.14.0_armv7l/libass-0.14.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libass/0.14.0_i686/libass-0.14.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libass/0.14.0_x86_64/libass-0.14.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '1749b98d9fcd1783cc6d04543ace006637732db0c0dab128597f86f122a1a28a',
      armv7l: '1749b98d9fcd1783cc6d04543ace006637732db0c0dab128597f86f122a1a28a',

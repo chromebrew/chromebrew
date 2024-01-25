@@ -10,12 +10,6 @@ class Perl_text_csv < Package
   source_sha256 '84120de3e10489ea8fbbb96411a340c32cafbe5cdff7dd9576b207081baa9d24'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.38_armv7l/perl_text_csv-2.02-perl5.38-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.38_armv7l/perl_text_csv-2.02-perl5.38-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.38_i686/perl_text_csv-2.02-perl5.38-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/perl_text_csv/2.02-perl5.38_x86_64/perl_text_csv-2.02-perl5.38-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: 'd412d2354cc124a7da35eb06fe625261c3820c2fa887d35b941c8baa71db088d',
      armv7l: 'd412d2354cc124a7da35eb06fe625261c3820c2fa887d35b941c8baa71db088d',

@@ -10,12 +10,6 @@ class Libxtrans < Package
   source_sha256 '377c4491593c417946efcd2c7600d1e62639f7a8bbca391887e2c4679807d773'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtrans/1.4.0_armv7l/libxtrans-1.4.0-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtrans/1.4.0_armv7l/libxtrans-1.4.0-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtrans/1.4.0_i686/libxtrans-1.4.0-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libxtrans/1.4.0_x86_64/libxtrans-1.4.0-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '85980bd143e9f4e68fa5ce02ab684acf4c982b2ec1c187395136c286a46fb966',
      armv7l: '85980bd143e9f4e68fa5ce02ab684acf4c982b2ec1c187395136c286a46fb966',

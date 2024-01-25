@@ -9,12 +9,6 @@ class Gn < Package
   source_url 'SKIP'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_armv7l/gn-dca877f-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_armv7l/gn-dca877f-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_i686/gn-dca877f-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gn/dca877f_x86_64/gn-dca877f-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7ecb46dc020a7f2ef83c9f299b93e33b7d7907915a580eae29fba4038d348572',
      armv7l: '7ecb46dc020a7f2ef83c9f299b93e33b7d7907915a580eae29fba4038d348572',

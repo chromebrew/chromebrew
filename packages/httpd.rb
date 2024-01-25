@@ -10,12 +10,6 @@ class Httpd < Package
   source_sha256 '8b95fe249f3a6c50aad3ca125eef3e02d619116cde242e1bc3c266b7b5c37c30'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httpd/2.4.39_armv7l/httpd-2.4.39-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httpd/2.4.39_armv7l/httpd-2.4.39-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httpd/2.4.39_i686/httpd-2.4.39-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/httpd/2.4.39_x86_64/httpd-2.4.39-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '15fa2c35305494c0c3b24a71ec3789de9c8fe4336e7c0b034a86b7b373826561',
      armv7l: '15fa2c35305494c0c3b24a71ec3789de9c8fe4336e7c0b034a86b7b373826561',

@@ -10,12 +10,6 @@ class Xe < Package
   source_sha256 '4087d40be2db3df81a836f797e1fed17d6ac1c788dcf0fd6a904f2d2178a6f1a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xe/0.11_armv7l/xe-0.11-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xe/0.11_armv7l/xe-0.11-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xe/0.11_i686/xe-0.11-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/xe/0.11_x86_64/xe-0.11-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '731178af47f83d6918dfd9967d57113f6552c48dc68a98c0c11837469f044540',
      armv7l: '731178af47f83d6918dfd9967d57113f6552c48dc68a98c0c11837469f044540',

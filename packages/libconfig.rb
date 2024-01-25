@@ -10,12 +10,6 @@ class Libconfig < Package
   source_sha256 '7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libconfig/1.7.2_armv7l/libconfig-1.7.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libconfig/1.7.2_armv7l/libconfig-1.7.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libconfig/1.7.2_i686/libconfig-1.7.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libconfig/1.7.2_x86_64/libconfig-1.7.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '7b9b54f7ba2ce3e68fc5db6d60645a38f981761ca2ba2b5e6459d924f368bb97',
      armv7l: '7b9b54f7ba2ce3e68fc5db6d60645a38f981761ca2ba2b5e6459d924f368bb97',

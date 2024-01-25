@@ -13,12 +13,6 @@ class Msgpack_c < Package
   source_sha256 '420fe35e7572f2a168d17e660ef981a589c9cbe77faa25eb34a520e1fcc032c8'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msgpack_c/4.0.0_armv7l/msgpack_c-4.0.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msgpack_c/4.0.0_armv7l/msgpack_c-4.0.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msgpack_c/4.0.0_i686/msgpack_c-4.0.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/msgpack_c/4.0.0_x86_64/msgpack_c-4.0.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '6f135003a98c4c33e936257a416166187753d66618c8663176e60950314bbffd',
      armv7l: '6f135003a98c4c33e936257a416166187753d66618c8663176e60950314bbffd',

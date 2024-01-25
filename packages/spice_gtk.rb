@@ -13,12 +13,6 @@ class Spice_gtk < Package
   source_sha256 'd8f8b5cbea9184702eeb8cc276a67d72acdb6e36e7c73349fb8445e5bca0969f'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.41_armv7l/spice_gtk-0.41-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.41_armv7l/spice_gtk-0.41-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.41_i686/spice_gtk-0.41-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/spice_gtk/0.41_x86_64/spice_gtk-0.41-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '39ef18a10e919005f06f06b45954c0c2fefe4418a93ffe2a5e4391a1b89d1f46',
      armv7l: '39ef18a10e919005f06f06b45954c0c2fefe4418a93ffe2a5e4391a1b89d1f46',

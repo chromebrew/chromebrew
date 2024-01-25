@@ -10,12 +10,6 @@ class Faad2 < Package
   source_sha256 '4c16c71295ca0cbf7c3dfe98eb11d8fa8d0ac3042e41604cfd6cc11a408cf264'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_armv7l/faad2-2.10.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_armv7l/faad2-2.10.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_i686/faad2-2.10.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/faad2/2.10.1_x86_64/faad2-2.10.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '389a358f4514844f9ba7d50d7472b34e403707fb195dd8075e6dd2d0c3178d50',
      armv7l: '389a358f4514844f9ba7d50d7472b34e403707fb195dd8075e6dd2d0c3178d50',

@@ -10,12 +10,6 @@ class Cantarell_fonts < Package
   source_sha256 'f9463a0659c63e57e381fdd753cf1929225395c5b49135989424761830530411'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cantarell_fonts/0.303.1_armv7l/cantarell_fonts-0.303.1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cantarell_fonts/0.303.1_armv7l/cantarell_fonts-0.303.1-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cantarell_fonts/0.303.1_i686/cantarell_fonts-0.303.1-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/cantarell_fonts/0.303.1_x86_64/cantarell_fonts-0.303.1-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '7a7bba136e7e7932c2b1c706b610707258c44b83656f54702d49a62b483c7e09',
      armv7l: '7a7bba136e7e7932c2b1c706b610707258c44b83656f54702d49a62b483c7e09',

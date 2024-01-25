@@ -10,12 +10,6 @@ class Fskit < Package
   source_sha256 'fe682890ebab9226d65fc6ebfb8b3619c0d5a93e3161787cea9d01ad23d3a83a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fskit/dd9a8d_armv7l/fskit-dd9a8d-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fskit/dd9a8d_armv7l/fskit-dd9a8d-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fskit/dd9a8d_i686/fskit-dd9a8d-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/fskit/dd9a8d_x86_64/fskit-dd9a8d-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '0efdae023da0bae9937978163a17248ba26ad6a29af52c7dbbcd98fbb17ae2d0',
      armv7l: '0efdae023da0bae9937978163a17248ba26ad6a29af52c7dbbcd98fbb17ae2d0',

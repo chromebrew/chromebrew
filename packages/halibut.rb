@@ -10,12 +10,6 @@ class Halibut < Package
   source_sha256 '1aedfb6240f27190c36a390fcac9ce732edbdbaa31c85ee675b994e2b083163f'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/halibut/1.2_armv7l/halibut-1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/halibut/1.2_armv7l/halibut-1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/halibut/1.2_i686/halibut-1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/halibut/1.2_x86_64/halibut-1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '04f12bb5ff68ea5c4c279f98591f8b98e07ec60286dff0bcadf5c20a5a42e257',
      armv7l: '04f12bb5ff68ea5c4c279f98591f8b98e07ec60286dff0bcadf5c20a5a42e257',

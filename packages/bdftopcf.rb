@@ -10,12 +10,6 @@ class Bdftopcf < Package
   source_sha256 '4b4df05fc53f1e98993638d6f7e178d95b31745c4568cee407e167491fd311a2'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_armv7l/bdftopcf-1.1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_armv7l/bdftopcf-1.1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_i686/bdftopcf-1.1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/bdftopcf/1.1_x86_64/bdftopcf-1.1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'cb194dc01e182cdb430c3672d2ac0c7dc83f6091cf2b29e7765ad5b75511074a',
      armv7l: 'cb194dc01e182cdb430c3672d2ac0c7dc83f6091cf2b29e7765ad5b75511074a',

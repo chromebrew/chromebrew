@@ -10,12 +10,6 @@ class Whiptail < Package
   source_sha256 '8d66ba6beffc3f786d4ccfee9d2b43d93484680ef8db9397a4fb70b5adbb6dbc'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whiptail/0.52.20_armv7l/whiptail-0.52.20-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whiptail/0.52.20_armv7l/whiptail-0.52.20-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whiptail/0.52.20_i686/whiptail-0.52.20-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/whiptail/0.52.20_x86_64/whiptail-0.52.20-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'bb960ee1d2777418158f511ec5a0f5914ed496506c541836c41cdd9429cd0176',
      armv7l: 'bb960ee1d2777418158f511ec5a0f5914ed496506c541836c41cdd9429cd0176',

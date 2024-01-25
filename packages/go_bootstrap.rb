@@ -10,12 +10,6 @@ class Go_bootstrap < Package
   source_sha256 'f4ff5b5eb3a3cae1c993723f3eab519c5bae18866b5e5f96fe1102f0cb5c3e52'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_bootstrap/1.4-1_armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_bootstrap/1.4-1_armv7l/go_bootstrap-1.4-1-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_bootstrap/1.4-1_i686/go_bootstrap-1.4-1-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/go_bootstrap/1.4-1_x86_64/go_bootstrap-1.4-1-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'dd2aaa41eb1e27a50d9a805f0bbe4b0924bb2fd4ddeccbe2658fb7fd59f48956',
      armv7l: 'dd2aaa41eb1e27a50d9a805f0bbe4b0924bb2fd4ddeccbe2658fb7fd59f48956',

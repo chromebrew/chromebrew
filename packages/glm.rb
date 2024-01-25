@@ -10,12 +10,6 @@ class Glm < Package
   source_sha256 '496e855590b8aa138347429b7fc745d66707303fb82c1545260d1888472e137b'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glm/0.9.9.3_armv7l/glm-0.9.9.3-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glm/0.9.9.3_armv7l/glm-0.9.9.3-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glm/0.9.9.3_i686/glm-0.9.9.3-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glm/0.9.9.3_x86_64/glm-0.9.9.3-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'd8d4e1467c5a2627cd97b70bdcc4b7f755e19aa2f201f7d69f0119ec2c25c014',
      armv7l: 'd8d4e1467c5a2627cd97b70bdcc4b7f755e19aa2f201f7d69f0119ec2c25c014',

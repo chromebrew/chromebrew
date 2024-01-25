@@ -10,12 +10,6 @@ class Libwacom < Package
   git_hashtag "libwacom-#{version}"
   binary_compression 'tpxz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.12_armv7l/libwacom-1.12-chromeos-armv7l.tpxz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.12_armv7l/libwacom-1.12-chromeos-armv7l.tpxz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.12_i686/libwacom-1.12-chromeos-i686.tpxz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/libwacom/1.12_x86_64/libwacom-1.12-chromeos-x86_64.tpxz'
-  })
   binary_sha256({
     aarch64: 'f7c3aa3b6f959b942e83ac4906ec57e70d1af52db9d9896684a3be2451353f65',
      armv7l: 'f7c3aa3b6f959b942e83ac4906ec57e70d1af52db9d9896684a3be2451353f65',

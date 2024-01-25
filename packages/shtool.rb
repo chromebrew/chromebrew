@@ -10,12 +10,6 @@ class Shtool < Package
   source_sha256 '1298a549416d12af239e9f4e787e6e6509210afb49d5cf28eb6ec4015046ae19'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shtool/2.0.8_armv7l/shtool-2.0.8-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shtool/2.0.8_armv7l/shtool-2.0.8-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shtool/2.0.8_i686/shtool-2.0.8-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/shtool/2.0.8_x86_64/shtool-2.0.8-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'aa29d402a98610a0191860e03429d0247a49d1e3158349a49f9daea57ba35f99',
      armv7l: 'aa29d402a98610a0191860e03429d0247a49d1e3158349a49f9daea57ba35f99',

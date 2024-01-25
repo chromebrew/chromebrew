@@ -10,12 +10,6 @@ class Nanomsg < Package
   source_sha256 '218b31ae1534ab897cb5c419973603de9ca1a5f54df2e724ab4a188eb416df5a'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nanomsg/1.1.5_armv7l/nanomsg-1.1.5-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nanomsg/1.1.5_armv7l/nanomsg-1.1.5-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nanomsg/1.1.5_i686/nanomsg-1.1.5-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/nanomsg/1.1.5_x86_64/nanomsg-1.1.5-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: '70871fc6e26bbb62ed2924c9f368f9dae4395a7c03306ccfd00d01fcae196c03',
      armv7l: '70871fc6e26bbb62ed2924c9f368f9dae4395a7c03306ccfd00d01fcae196c03',

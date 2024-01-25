@@ -10,12 +10,6 @@ class Re2 < CMake
   source_sha256 '5bb6875ae1cd1e9fedde98018c346db7260655f86fdb8837e3075103acd3649b'
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2023-09-01_armv7l/re2-2023-09-01-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2023-09-01_armv7l/re2-2023-09-01-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2023-09-01_i686/re2-2023-09-01-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/re2/2023-09-01_x86_64/re2-2023-09-01-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '2115d0d431c3d4c511a90c91b315cf7ba23f0a148fa9120d5f40a213c9ab5d79',
      armv7l: '2115d0d431c3d4c511a90c91b315cf7ba23f0a148fa9120d5f40a213c9ab5d79',

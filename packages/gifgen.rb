@@ -10,12 +10,6 @@ class Gifgen < Package
   source_sha256 '95f69c63158315ad869ff36611026cce1a7d03f8c84716b1c21a44e71e8d6aee'
   binary_compression 'tar.xz'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gifgen/1.1.2_armv7l/gifgen-1.1.2-chromeos-armv7l.tar.xz',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gifgen/1.1.2_armv7l/gifgen-1.1.2-chromeos-armv7l.tar.xz',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gifgen/1.1.2_i686/gifgen-1.1.2-chromeos-i686.tar.xz',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/gifgen/1.1.2_x86_64/gifgen-1.1.2-chromeos-x86_64.tar.xz'
-  })
   binary_sha256({
     aarch64: 'e1eadb94916b24ff42c9ea9dbeb3c16e2683f9dc392d39872cb355b5f54addc0',
      armv7l: 'e1eadb94916b24ff42c9ea9dbeb3c16e2683f9dc392d39872cb355b5f54addc0',

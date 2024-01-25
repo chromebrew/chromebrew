@@ -10,12 +10,6 @@ class Glib < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
-  binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.78.0_armv7l/glib-2.78.0-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.78.0_armv7l/glib-2.78.0-chromeos-armv7l.tar.zst',
-       i686: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.78.0_i686/glib-2.78.0-chromeos-i686.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glib/2.78.0_x86_64/glib-2.78.0-chromeos-x86_64.tar.zst'
-  })
   binary_sha256({
     aarch64: '829516ace17d57ad58ac5d5e617235e243a6fb8927505a77a967df9a90f91405',
      armv7l: '829516ace17d57ad58ac5d5e617235e243a6fb8927505a77a967df9a90f91405',
