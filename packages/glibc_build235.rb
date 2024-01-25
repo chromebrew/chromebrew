@@ -25,9 +25,9 @@ class Glibc_build235 < Package
   # source_sha256 '5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35-1_armv7l/glibc-2.35-1-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35-1_armv7l/glibc-2.35-1-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.35-1_x86_64/glibc-2.35-1-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build235/2.35-1_armv7l/glibc_build235-2.35-1-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build235/2.35-1_armv7l/glibc_build235-2.35-1-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build235/2.35-1_x86_64/glibc_build235-2.35-1-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
