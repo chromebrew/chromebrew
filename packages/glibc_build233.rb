@@ -21,9 +21,9 @@ class Glibc_build233 < Package
   source_sha256 '2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
 
   binary_url({
-    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_armv7l/glibc-2.33-3-chromeos-armv7l.tar.zst',
-     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_armv7l/glibc-2.33-3-chromeos-armv7l.tar.zst',
-     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc/2.33-3_x86_64/glibc-2.33-3-chromeos-x86_64.tar.zst'
+    aarch64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build233/2.33-3_armv7l/glibc_build233-2.33-3-chromeos-armv7l.tar.zst',
+     armv7l: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build233/2.33-3_armv7l/glibc_build233-2.33-3-chromeos-armv7l.tar.zst',
+     x86_64: 'https://gitlab.com/api/v4/projects/26210301/packages/generic/glibc_build233/2.33-3_x86_64/glibc_build233-2.33-3-chromeos-x86_64.tar.zst'
   })
   binary_sha256({
     aarch64: '11a3e7ba5eec18c325afa80bc869b4f8cc1fcbfef78ddf25e1b1e278679203a4',
@@ -319,7 +319,7 @@ class Glibc_build233 < Package
     # This is the array of locales to save:
     @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
     @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build.filelist")
+    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build233.filelist")
     @localedirs.each do |localedir|
       Dir.chdir localedir do
         Dir['*'].each do |f|
@@ -332,7 +332,7 @@ class Glibc_build233 < Package
       end
     end
     puts 'Updating glibc package filelist...'.lightblue
-    File.open("#{CREW_META_PATH}/glibc_build.filelist", 'w+') do |f|
+    File.open("#{CREW_META_PATH}/glibc_build233.filelist", 'w+') do |f|
       f.puts(@filelist)
     end
   end

@@ -319,7 +319,7 @@ class Glibc_build232 < Package
     # This is the array of locales to save:
     @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
     @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build.filelist")
+    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build232.filelist")
     @localedirs.each do |localedir|
       Dir.chdir localedir do
         Dir['*'].each do |f|
@@ -332,7 +332,7 @@ class Glibc_build232 < Package
       end
     end
     puts 'Updating glibc package filelist...'.lightblue
-    File.open("#{CREW_META_PATH}/glibc_build.filelist", 'w+') do |f|
+    File.open("#{CREW_META_PATH}/glibc_build232.filelist", 'w+') do |f|
       f.puts(@filelist)
     end
   end
