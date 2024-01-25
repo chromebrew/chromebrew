@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.42.0'
+CREW_VERSION = '1.42.1'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -62,8 +62,6 @@ else
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
-CREW_ARCHIVE_DEST = ENV.fetch('CREW_ARCHIVE_DEST', Dir.pwd)
-
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
@@ -104,14 +102,12 @@ CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT = `cd #{CREW_LIB_PATH} && git rev-parse --show-toplevel 2> /dev/null`.chomp
+CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{USER_SPACE_ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
 CREW_CONST_GIT_COMMIT = `cd #{CREW_LIB_PATH} && git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
-
-CREW_LOCAL_REPO_BASE = File.basename(CREW_LOCAL_REPO_ROOT)
-CREW_LOCAL_MANIFEST_PATH = ENV.fetch('CREW_LOCAL_MANIFEST_PATH', "#{CREW_LOCAL_REPO_ROOT}/manifest")
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
