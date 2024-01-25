@@ -85,7 +85,7 @@ if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
     CREW_KERNEL_VERSION = '5.10'
   end
 else
-  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').last)
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
 end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
