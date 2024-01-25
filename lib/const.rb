@@ -43,7 +43,7 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
 
 # This helps determine if there is a difference between kernel and user space
-USER_SPACE_ARCH = RUBY_DESCRIPTION[/\[(.+?)\-linux\-gnu/, 1]
+USER_SPACE_ARCH = RUBY_DESCRIPTION[/\[(.+?)-linux-gnu/, 1]
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
@@ -103,17 +103,17 @@ CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT = Dir.exist?('.git') ? %x[git rev-parse --show-toplevel].chomp : nil
+CREW_LOCAL_REPO_ROOT = Dir.exist?('.git') ? `git rev-parse --show-toplevel`.chomp : nil
 CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{USER_SPACE_ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-CREW_CONST_GIT_COMMIT = %x[git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__}`].split.first
+CREW_CONST_GIT_COMMIT = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__}`.split.first
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
-MUSL_LIBC_VERSION     = File.executable?("#{CREW_MUSL_PREFIX}/lib/libc.so") ? %x[#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1][/\bVersion\s+\K\S+/] : nil
+MUSL_LIBC_VERSION     = File.executable?("#{CREW_MUSL_PREFIX}/lib/libc.so") ? `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/] : nil
 
 CREW_DEST_HOME          = File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
@@ -309,4 +309,4 @@ PY_SETUP_INSTALL_OPTIONS         = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single
 PY3_BUILD_OPTIONS                = '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
-CREW_ESSENTIAL_FILES = %x[LD_TRACE_LOADED_OBJECTS=1 /proc/self/exe].scan(/\t([^ ]+)/).flatten
+CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 /proc/self/exe`.scan(/\t([^ ]+)/).flatten
