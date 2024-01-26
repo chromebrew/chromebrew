@@ -19,8 +19,8 @@ CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
-BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
-SPRASE_CHECKOUT="packages manifest/${USER_SPACE_ARCH} lib bin crew tests tools"
+BOOTSTRAP_PACKAGES=(zstd crew_mvdir ruby git ca_certificates openssl)
+SPRASE_CHECKOUT=(packages manifest/${USER_SPACE_ARCH} lib bin crew tests tools)
 
 # Simplify colors and print errors to stderr (2).
 echo_error()   { echo -e "\e[1;91m${*}\e[0m" >&2; }  # Use Light Red for errors.
@@ -176,18 +176,18 @@ urls=()
 sha256s=()
 
 # Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=(gcc_lib)
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
   # Append the correct packages for systems running v113 onwards.
-  BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
+  BOOTSTRAP_PACKAGES+=(glibc_lib235 zlibpkg gmp)
 
   # Recent Arm systems have a cut down system.
-  [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+  [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=(bzip2 ncurses readline pcre2 gcc_lib)
 fi
 
 # Get the URLs and hashes of the bootstrap packages.
-for package in $BOOTSTRAP_PACKAGES; do
+for package in "${BOOTSTRAP_PACKAGES[@]}"; do
   cd "${CREW_LIB_PATH}/packages"
   [[ "$(sed -n '/binary_sha256/,/}/p' "${package}.rb")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
     sha256s+=("${BASH_REMATCH[1]}")
@@ -333,10 +333,7 @@ echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-# Due to a bug in crew where it accepts spaces in package files names rather than
-# splitting strings at spaces, we cannot quote ${BOOTSTRAP_PACKAGES}.
-# shellcheck disable=SC2086
-crew postinstall ${BOOTSTRAP_PACKAGES}
+crew postinstall "${BOOTSTRAP_PACKAGES[@]}"
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
