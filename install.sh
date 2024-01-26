@@ -19,6 +19,7 @@ CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
 CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
+BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 SPRASE_CHECKOUT="packages manifest/${USER_SPACE_ARCH} lib bin crew tests tools"
 
 # Simplify colors and print errors to stderr (2).
@@ -40,21 +41,21 @@ fi
 # Check if the script is being run as root.
 if [ "${EUID}" == "0" ]; then
   echo_error "Chromebrew should not be installed or run as root."
-  echo_info "Please login as 'chronos' and restart the install."
+  echo_info  "Please login as 'chronos' and restart the install."
   exit 1
 fi
 
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
   echo_error "Crostini containers are not supported by Chromebrew :/"
-  echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway"
+  echo_info  "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway"
   exit 1
 fi
 
 # Reject non-stable Chrome OS channels.
 if ! [[ "${CHROMEOS_RELEASE_TRACK}" == 'stable-channel' || "${CREW_FORCE_INSTALL}" == '1' ]]; then
   echo_error "The beta, dev, and canary channel are unsupported by Chromebrew."
-  echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
+  echo_info  "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
   exit 1
 fi
 
@@ -173,8 +174,6 @@ curl -L --progress-bar "${REPO_URL}/tarball/${BRANCH}" | tar -xz --strip-compone
 # Prepare urls and sha256s variables.
 urls=()
 sha256s=()
-
-BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
