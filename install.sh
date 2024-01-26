@@ -20,7 +20,7 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 
 BOOTSTRAP_PACKAGES=(zstd crew_mvdir ruby git ca_certificates openssl)
-SPRASE_CHECKOUT=(packages manifest/${USER_SPACE_ARCH} lib bin crew tests tools)
+SPARSE_CHECKOUT=(packages manifest/${USER_SPACE_ARCH} lib bin crew tests tools)
 
 # Simplify colors and print errors to stderr (2).
 echo_error()   { echo -e "\e[1;91m${*}\e[0m" >&2; }  # Use Light Red for errors.
@@ -169,7 +169,7 @@ crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX lib
 find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
 # Download the chromebrew repository.
-curl -L --progress-bar "${REPO_URL}/tarball/${BRANCH}" | tar -xz --strip-components=1 ${SPRASE_CHECKOUT} -C "${CREW_LIB_PATH}"
+curl -L --progress-bar "${REPO_URL}/tarball/${BRANCH}" | tar -xz --strip-components=1 "${SPARSE_CHECKOUT[@]}" -C "${CREW_LIB_PATH}"
 
 # Prepare urls and sha256s variables.
 urls=()
@@ -356,7 +356,7 @@ else
   git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set ${SPRASE_CHECKOUT}
+  git sparse-checkout set "${SPARSE_CHECKOUT[@]}"
   git reset --hard origin/"${BRANCH}"
 fi
 echo -e "${RESET}"
