@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnupg < Package
+class Gnupg < Autotools
   description 'GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP).'
   homepage 'https://gnupg.org/'
-  version '2.4.3'
+  version '2.4.4'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.3.tar.bz2'
-  source_sha256 'a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d'
+  source_url 'https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.4.tar.bz2'
+  source_sha256 '67ebe016ca90fa7688ce67a387ebd82c6261e95897db7b23df24ff335be85bc6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '63cce56c35ff714e0c697f720b33158461b7ee869c2cd6c23c83fa0350eadb6f',
-     armv7l: '63cce56c35ff714e0c697f720b33158461b7ee869c2cd6c23c83fa0350eadb6f',
-       i686: '5bde4e918c1e8122e50ce20181743bd8758a516eda29558f423904aa15f6fe9f',
-     x86_64: '479dad1509044aa77ebb3b6648ab54d0fcc298376df9b5fc960f4d1390b277f0'
+    aarch64: '2a5fda73f4dc3c7cc17b0c6374e17408941dedc72add820f27d209343fd8991f',
+     armv7l: '2a5fda73f4dc3c7cc17b0c6374e17408941dedc72add820f27d209343fd8991f',
+       i686: '9e204d523d1fb4fae27fb870df06ab11535df322d2c9c5c951052826c9c6784a',
+     x86_64: 'c2172f64f852c09867f4780fdef72f1ca52fdd2df9059866f8e6b8033a256460'
   })
 
   depends_on 'bzip2' # R
@@ -34,20 +34,9 @@ class Gnupg < Package
   depends_on 'sqlite' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-              --enable-maintainer-mode \
-              --with-zlib \
-              --with-bzip2 \
-              --with-readline"
-    system "make -j #{CREW_NPROC} || make -j 1"
-  end
+  configure_options '--with-zlib \
+    --with-bzip2 \
+    --with-readline'
 
-  def self.check
-    system 'make check || true'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
