@@ -54,6 +54,7 @@ DOC = <<~DOCOPT
     crew sysinfo [options]
     crew update [options] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--source] [<name> ...]
+    crew upload [options] [<name> ...]
     crew whatprovides [options] <pattern> ...
 
     -b --include-build-deps  Include build dependencies in output.
@@ -515,6 +516,15 @@ def help(pkgName = nil)
       Use `crew update` to update crew itself.
       If `-s` or `--source` is present, the package(s) will be compiled instead of upgraded via binary.
       If `-v` or `--verbose` is present, extra information will be displayed.
+    EOT
+  when 'upload'
+    puts <<~EOT
+      Upload binaries.
+      Usage: crew upload [<package1> <package2> ...]
+      This will update the binary_sha256 hashes in each package and upload binaries to GitLab.
+      The GITLAB_TOKEN environment variable must be set to access the upstream repository.
+      If no package(s) are provided, all binaries in `#{CREW_LOCAL_REPO_ROOT}/release/<arch>` will be uploaded.
+      If `-v` or `--verbose` is present, additional debug information will be displayed.
     EOT
   when 'whatprovides'
     puts <<~EOT
@@ -1847,6 +1857,109 @@ def print_deps_tree(args)
   puts treeView
 end
 
+def upload(pkgName = nil)
+  abort "\nGITLAB_TOKEN environment variable not set.\n".lightred if ENV.fetch('GITLAB_TOKEN', nil).nil?
+
+  packages = pkgName
+  binary_compression_set = nil
+  gitlab_token = ENV.fetch('GITLAB_TOKEN', nil)
+  base_url = 'https://gitlab.com/api/v4/projects/26210301/packages/generic'
+
+  if pkgName.nil?
+    %w[.tar.xz .tar.zst].each do |ext|
+      packages += `find #{CREW_LOCAL_REPO_ROOT}/release/*/*#{ext} -exec basename -s #{ext} {} + | cut -d- -f1 | sort | uniq | xargs`
+      packages += ' '
+    end
+    abort 'No package binaries found.'.lightred if packages.empty?
+  end
+
+  packages.strip!
+
+  [packages].each do |package|
+    %w[x86_64 i686 armv7l].each do |arch|
+      pkgfile = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+      new_tarfile = Dir["#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+      if new_tarfile.nil?
+        puts "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        next
+      end
+      if binary_compression_set.nil?
+        ext = File.extname(new_tarfile)
+        puts "Setting binary compression in #{pkgfile}..."
+        puts "sed -i 's/binary_compression.*/binary_compression \'tar#{ext}\'/' #{pkgfile}" if @opt_verbose
+        system "sed -i 's/binary_compression.*/binary_compression \'tar#{ext}\'/' #{pkgfile}"
+        binary_compression_set = 1
+      end
+      puts "Package: #{package}, Arch: #{arch}".yellow
+      puts 'Generating sha256sum ...'
+      new_sha256 = Digest::SHA256.hexdigest(File.read(new_tarfile))
+      puts "Uploading #{new_tarfile} ..."
+      noname = new_tarfile.split("#{package}-").last
+      new_version = noname.split('-chromeos').first
+      new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/", '')
+      puts "curl -# --header \"DEPLOY-TOKEN: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if @opt_verbose
+      output = `curl -# --header "DEPLOY-TOKEN: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      if output.include?('201 Created')
+        puts output.lightgreen
+      else
+        puts output.lightred
+        puts "Unable to upload. Skipping binary_sha256 update in #{pkgfile}...".lightred
+        next
+      end
+      old_sha256 = `grep -m 1 #{arch}: #{pkgfile} 2> /dev/null`.chomp
+      if old_sha256.empty?
+        unless File.readlines("#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb").grep(/binary_sha256/).any?
+          if @opt_verbose
+            puts "sed -e '/binary_compression/ a\\
+\\
+\\ \\ binary_sha256 ({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+          end
+          system "sed -e '/binary_compression/ a\\
+\\
+\\ \\ binary_sha256 ({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+        end
+        puts "Adding binary_sha256 to #{pkgfile}..."
+        puts "#{arch}: '#{new_sha256}'"
+        unless new_sha256.empty?
+          update_sha256(package, arch, new_sha256)
+          update_sha256(package, 'aarch64', new_sha256) if arch.eql?('armv7l')
+        end
+      else
+        old_sha256 = old_sha256.split("'")[1]
+        if old_sha256 == new_sha256
+          puts "Skipping binary_sha256 update in #{pkgfile}..."
+        else
+          puts "Updating binary_sha256 in #{pkgfile}..."
+          puts "from: #{arch}: '#{old_sha256}'"
+          puts "  to: #{arch}: '#{new_sha256}'"
+          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkgfile}" if @opt_verbose
+          system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkgfile}"
+        end
+      end
+      puts
+    end
+  end
+end
+
+def update_sha256(package, key, value)
+  case key
+  when 'aarch64'
+    leading_space = '\\ \\ \\ \\ '
+  when 'armv7l', 'x86_64'
+    leading_space = '\\ \\ \\ \\ \\ '
+  when 'i686'
+    leading_space = '\\ \\ \\ \\ \\ \\ \\ '
+  end
+  comma = key == 'x86_64' ? '\\n\\ \\ })' : ','
+  if File.readlines("#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb").grep(/#{key}:/).any?
+    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb" if @opt_verbose
+    system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+  else
+    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb" if @opt_verbose
+    system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+  end
+end
+
 def build_command(args)
   abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT
   abort "Unable to locate local build directory #{CREW_LOCAL_BUILD_DIR}.".lightred unless Dir.exist? CREW_LOCAL_BUILD_DIR
@@ -2038,6 +2151,14 @@ def update_command(args)
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
+
+def upload_command(args)
+  upload if args['<name>'].empty?
+  args['<name>'].each do |name|
+    search name
+    upload name if @pkg.name
+  end
+end
 
 def whatprovides_command(args)
   args['<pattern>'].each do |name|
