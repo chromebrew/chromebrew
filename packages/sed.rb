@@ -11,10 +11,10 @@ class Sed < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6ad05b86518b574fab280df0788fbb7deffb99effee3b0b38222488dcaad3288',
-     armv7l: '6ad05b86518b574fab280df0788fbb7deffb99effee3b0b38222488dcaad3288',
-       i686: 'ed4650bbd4246cb3f4af2963cb3fc8cacbabcd94794c52ebc07fb45ac52369f5',
-     x86_64: '05c6b559843f27da3226b088ccca87f8eba68e49d994507e28d11e4bc4aff661'
+    aarch64: '132c549c208cb26f1770797b997163003d7d29d1cd234c6351647df201958e96',
+     armv7l: '132c549c208cb26f1770797b997163003d7d29d1cd234c6351647df201958e96',
+       i686: '02cae930c6dcfa33bab8e6f1a748c8c40be0ca14dcf66ebd59bb5f1dac89454d',
+     x86_64: 'a63c523c7433712c49f82ecddb83dccebf35e2ba6c5784fea7e5ec394e2b520a'
   })
 
   depends_on 'acl' # R
