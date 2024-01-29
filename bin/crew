@@ -1886,8 +1886,8 @@ def upload(pkgName = nil)
       if binary_compression_set.nil?
         ext = File.extname(new_tarfile)
         puts "Setting binary compression in #{pkgfile}..."
-        puts "sed -i 's/binary_compression.*/binary_compression \'tar#{ext}\'/' #{pkgfile}" if @opt_verbose
-        system "sed -i 's/binary_compression.*/binary_compression \'tar#{ext}\'/' #{pkgfile}"
+        puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkgfile}" if @opt_verbose
+        system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkgfile}"
         binary_compression_set = 1
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
@@ -1912,11 +1912,11 @@ def upload(pkgName = nil)
           if @opt_verbose
             puts "sed -e '/binary_compression/ a\\
 \\
-\\ \\ binary_sha256 ({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+\\ \\ binary_sha256({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
           end
           system "sed -e '/binary_compression/ a\\
 \\
-\\ \\ binary_sha256 ({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+\\ \\ binary_sha256({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
         end
         puts "Adding binary_sha256 to #{pkgfile}..."
         puts "#{arch}: '#{new_sha256}'"
