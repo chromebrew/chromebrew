@@ -673,7 +673,6 @@ def update
 
     if differentVersion && !differentSha && hasSha
       canBeUpdated -= 1
-      puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
     elsif differentVersion
       puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}"
     elsif !differentVersion && differentSha
