@@ -4,7 +4,7 @@ require_relative 'zlibpkg'
 class Minizip < Package
   description 'Minizip is a simple package to zip/unzip files, from zlib.'
   homepage Zlibpkg.homepage
-  version '1.3'
+  version '1.3.1'
   # When upgrading minizip, be sure to upgrade zlibpkg in tandem.
   puts "#{self} version differs from Zlibpkg version #{Zlibpkg.version}".orange if version != Zlibpkg.version
   license Zlibpkg.license
@@ -14,10 +14,10 @@ class Minizip < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9a789d1f8f2119e3f4e79ca6a7311a5df8c524c0690f7e15319691c6a60fc3ff',
-     armv7l: '9a789d1f8f2119e3f4e79ca6a7311a5df8c524c0690f7e15319691c6a60fc3ff',
-       i686: '194f8f1a9f7ac94b202926b3b5da3780d734f3586167750cb725f5d3a5f194f0',
-     x86_64: '19b5affc8be85b051f70039b4007088a23d00cea7bead6c4512b89134a493177'
+    aarch64: 'd905ac78dcf4be301c0b03cd68b1d98fdfd4607c50a6e118ecd823708691640a',
+     armv7l: 'd905ac78dcf4be301c0b03cd68b1d98fdfd4607c50a6e118ecd823708691640a',
+       i686: '42fddacd0c45d8a290068b369bb4037dae00356b7037b7a05f7f13984535aa9f',
+     x86_64: 'fbdfaeb7561751925637c326da3e6a008cb65ce4918aff2151596d52058fa614'
   })
 
   depends_on 'zlibpkg' # R
