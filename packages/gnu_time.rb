@@ -11,12 +11,17 @@ class Gnu_time < Package
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/time.git'
   git_hashtag "v#{version}"
-  binary_compression 'tpxz'
+  case ARCH
+  when 'i686'
+    binary_compression 'tar.xz'
+  else
+    binary_compression 'tpxz'
+  end
 
   binary_sha256({
-    i686: 'be10181fa1e78fbbadd2fcdd7b8d6ecd71cdd8d38b1e521f400a93b3376f98a3',
     aarch64: '91fada2df988370b67ff384fbd18e002f9123f69debdb9184dacdd231afd1924',
      armv7l: '91fada2df988370b67ff384fbd18e002f9123f69debdb9184dacdd231afd1924',
+       i686: 'be10181fa1e78fbbadd2fcdd7b8d6ecd71cdd8d38b1e521f400a93b3376f98a3',
      x86_64: 'f042a1fe4d36029d2cc90a79bdc4014c0b6324008bbc971d35fb0001216a2562'
   })
 
