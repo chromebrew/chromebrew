@@ -7916,6 +7916,11 @@ url: https://github.com/google/snappy/releases
 activity: high
 ---
 kind: url
+name: snd
+url: https://sourceforge.net/projects/snd/files/snd/
+activity: high
+---
+kind: url
 name: sngrep
 url: https://github.com/irontec/sngrep/releases
 activity: none
@@ -9297,8 +9302,8 @@ activity: none
 ---
 kind: url
 name: xzutils
-url: http://tukaani.org/xz
-activity: low
+url: https://github.com/tukaani-project/xz/releases
+activity: medium
 ---
 kind: url
 name: yad
