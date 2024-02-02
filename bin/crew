@@ -61,6 +61,7 @@ DOC = <<~DOCOPT
     -t --tree                Print dependencies in a tree-structure format.
     -c --color               Use colors even if standard out is not a tty.
     -d --no-color            Disable colors even if standard out is a tty.
+    -f --force               Force where relevant.
     -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
     -L --license             Display the crew license.
     -s --source              Build or download from source even if pre-compiled binary exists.
@@ -115,6 +116,7 @@ end
 # override default color options if specified
 String.use_color = args['--color'] || !args['--no-color']
 
+@opt_force     = args['--force']
 @opt_keep      = args['--keep']
 @opt_verbose   = args['--verbose']
 @opt_source    = args['--source']
@@ -818,10 +820,15 @@ def download
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
-        cachefile = File.join(CREW_CACHE_DIR, filename)
+        # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
+        @local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
+        @crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
+        cachefile = File.file?(@local_build_cachefile) ? @local_build_cachefile : @crew_cache_dir_cachefile
+        puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
         if File.file?(cachefile)
           puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
-          if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i
+          # Don't check checksum if file is in the build cache.
+          if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i || cachefile.include?(CREW_LOCAL_BUILD_DIR)
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
@@ -1703,6 +1710,9 @@ def archive_package(crew_archive_dest)
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
+  # Copy package file for the successfully generated package to CREW_LOCAL_REPO_ROOT .
+  FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
+  puts "The package file for #{@pkgName} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
 end
 
 def remove(pkgName)
@@ -1963,10 +1973,23 @@ end
 
 def build_command(args)
   abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT
-  abort "Unable to locate local build directory #{CREW_LOCAL_BUILD_DIR}.".lightred unless Dir.exist? CREW_LOCAL_BUILD_DIR
+  unless Dir.exist? CREW_LOCAL_BUILD_DIR
+    if @opt_force
+      puts "Attempting to creating local build directory at #{CREW_LOCAL_BUILD_DIR} .".orange
+      FileUtils.mkdir_p CREW_LOCAL_BUILD_DIR
+    else
+      abort "Unable to locate local build directory #{CREW_LOCAL_BUILD_DIR}. It will be created if you build with the '-f' flag.".lightred
+    end
+  end
   abort "#{CREW_LOCAL_BUILD_DIR} is not writable.".lightred unless File.writable?(CREW_LOCAL_BUILD_DIR)
   args['<name>'].each do |name|
-    @pkgName = name
+    # If a package file is explicitly passed, then use that package file, whereever it is.
+    if name.include?('.rb') && File.file?(name)
+      FileUtils.cp name, "#{CREW_PACKAGES_PATH}/"
+      @pkgName = File.basename(name).gsub('.rb', '')
+    else
+      @pkgName = name
+    end
     search @pkgName
     print_current_package @opt_verbose
     next unless @pkgName
