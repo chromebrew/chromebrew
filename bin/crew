@@ -1897,8 +1897,9 @@ def upload(pkgName = nil)
       noname = new_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/", '')
-      puts "curl -# --header \"PRIVATE-TOKEN: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if @opt_verbose
-      output = `curl -# --header "PRIVATE-TOKEN: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
+      token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
+      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if @opt_verbose
+      output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
       if output.include?('201 Created')
         puts output.lightgreen
       else
