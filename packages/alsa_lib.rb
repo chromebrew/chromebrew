@@ -3,19 +3,19 @@ require 'buildsystems/autotools'
 class Alsa_lib < Autotools
   description 'The Advanced Linux Sound Architecture (ALSA) provides audio and MIDI functionality to the Linux operating system.'
   homepage 'https://www.alsa-project.org/main/index.php/Main_Page'
-  @_ver = '1.2.10'
+  @_ver = '1.2.11'
   version "#{@_ver}-py3.12"
   license 'LGPL-2.1'
   compatibility 'all'
   source_url "https://github.com/alsa-project/alsa-lib/archive/v#{@_ver}.tar.gz"
-  source_sha256 'f55749847fd98274501f4691a2d847e89280c07d40a43cdac43d6443f69fc939'
+  source_sha256 '12216f0730d6dde3ded6a2a5388bc0009ad07f5c65972bd89aac9a76f8f085a4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'eb5d64babfaeb1ebb110207f85e01506e09313cdfce51ff1af7c2f85fa2da80f',
-     armv7l: 'eb5d64babfaeb1ebb110207f85e01506e09313cdfce51ff1af7c2f85fa2da80f',
-       i686: '9be05bc6dcc67cdb8d02ca168612f06baf429cd84e24533b99a9b0f9e0b9a907',
-     x86_64: '6faec883fafbf426ef0570e976a24e4755878ce77c997f346283258130124982'
+    aarch64: 'dd76e895e0314728a1600cac5e47ed5a0c15092d5927e5d6e2e280a3a6a56a42',
+     armv7l: 'dd76e895e0314728a1600cac5e47ed5a0c15092d5927e5d6e2e280a3a6a56a42',
+       i686: 'afa0c01b6cb3f50b2d8db1e08797ff8866ed1421f2e093195acacd65edbcae69',
+     x86_64: '171d4c8ee0f259871010214b1b2bb0043fe393ca8579e53f46e94cbeb2383b29'
   })
 
   depends_on 'glibc' # R
