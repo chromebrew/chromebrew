@@ -24,12 +24,5 @@ class Libsdl2 < CMake
   depends_on 'pulseaudio' => :build
   depends_on 'xwayland' => :build
 
-  def self.build
-    @arch_options = ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
-    system "cmake -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS} \
-      #{@arch_options} \
-      -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
+  @cmake_options = ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
 end
