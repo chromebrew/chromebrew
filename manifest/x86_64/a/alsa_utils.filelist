@@ -14,6 +14,7 @@
 /usr/local/bin/aseqnet
 /usr/local/bin/axfer
 /usr/local/bin/iecset
+/usr/local/bin/nhlt-dmic-info
 /usr/local/bin/speaker-test
 /usr/local/lib64/alsa-topology/libalsatplg_module_nhlt.la
 /usr/local/lib64/alsa-topology/libalsatplg_module_nhlt.so
@@ -36,6 +37,7 @@
 /usr/local/share/locale/ja/LC_MESSAGES/alsa-utils.mo
 /usr/local/share/locale/ka/LC_MESSAGES/alsaconf.mo
 /usr/local/share/locale/ka/LC_MESSAGES/alsa-utils.mo
+/usr/local/share/locale/ko/LC_MESSAGES/alsa-utils.mo
 /usr/local/share/locale/ru/LC_MESSAGES/alsaconf.mo
 /usr/local/share/locale/sk/LC_MESSAGES/alsa-utils.mo
 /usr/local/share/man/fr/man8/alsaconf.8.zst
@@ -57,6 +59,7 @@
 /usr/local/share/man/man1/axfer-list.1.zst
 /usr/local/share/man/man1/axfer-transfer.1.zst
 /usr/local/share/man/man1/iecset.1.zst
+/usr/local/share/man/man1/nhlt-dmic-info.1.zst
 /usr/local/share/man/man1/speaker-test.1.zst
 /usr/local/share/man/man8/alsaconf.8.zst
 /usr/local/share/sounds/alsa/Front_Center.wav
