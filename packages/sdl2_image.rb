@@ -1,36 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Sdl2_image < Package
+class Sdl2_image < Autotools
   description 'SDL2_image is an image loading library that is used with the SDL2 library.'
   homepage 'https://github.com/libsdl-org/SDL_image'
-  version '2.6.2'
+  version '2.8.2'
   license 'ZLIB'
-  compatibility 'all'
-  source_url 'https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-2.6.2.tar.gz'
-  source_sha256 '5d91ea72b449a161821ef51464d0767efb6fedf7a773f923c43e483dc137e362'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/libsdl-org/SDL_image.git'
+  git_hashtag "release-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41f4269501f990749c1759f37bf688b241a2e8295108c430072382f89ab80a86',
-     armv7l: '41f4269501f990749c1759f37bf688b241a2e8295108c430072382f89ab80a86',
-       i686: '55d39cc29a50856122a01d476002287f0265269a69a8eaa5b8eda437138303ea',
-     x86_64: '13ce3f7810f7c9969f5657e3dc74a171bd06211a5a02e5bcbdf7b7d70694c4f2'
+    aarch64: '1d0d60b10c863b665f400c8e65b89dc038c38ccfd64ccd9dd19e0ea017094260',
+     armv7l: '1d0d60b10c863b665f400c8e65b89dc038c38ccfd64ccd9dd19e0ea017094260',
+     x86_64: '2cd54c0f5fd71e02e7c0d5ebe9643f87e18fc239b8233db062ab1e906ccd60cb'
   })
 
-  depends_on 'libsdl2'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libtiff'
-  depends_on 'libwebp'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'libavif' => :build
+  depends_on 'libjpeg' => :build
+  depends_on 'libpng' => :build
+  depends_on 'libsdl2' # R
+  depends_on 'libtiff' => :build
+  depends_on 'libwebp' => :build
 end
