@@ -1711,11 +1711,6 @@ def archive_package(crew_archive_dest)
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
-  # Copy package file for the successfully generated package to CREW_LOCAL_REPO_ROOT only if force is set.
-  if @opt_force
-    FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
-    puts "The package file for #{@pkgName} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
-  end
 end
 
 def remove(pkgName)
@@ -1891,9 +1886,9 @@ def upload(pkgName = nil)
   [packages].each do |package|
     %w[x86_64 i686 armv7l].each do |arch|
       pkgfile = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+      new_tarfile = Dir["#{CREW_LOCAL_BUILD_DIR}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
       if new_tarfile.nil?
-        puts "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        puts "#{CREW_LOCAL_BUILD_DIR}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
         next
       end
       if binary_compression_set.nil?
