@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pipewire < Package
+class Pipewire < Meson
   description 'PipeWire is a project that aims to greatly improve handling of audio and video under Linux.'
   homepage 'https://pipewire.org'
   if Gem::Version.new(CREW_KERNEL_VERSION.to_s) < Gem::Version.new('3.9')
@@ -8,7 +8,7 @@ class Pipewire < Package
   elsif Gem::Version.new(CREW_KERNEL_VERSION.to_s) <= Gem::Version.new('5.4')
     version '0.3.60'
   else
-    version '1.0.0'
+    version '1.0.3'
   end
   compatibility 'all'
   license 'LGPL-2.1+'
@@ -28,9 +28,9 @@ class Pipewire < Package
     })
   else
     binary_sha256({
-      aarch64: '02406faf3daa23bf9505d6660e4687faebf081af06150cd7e373ff4d2d9489d5',
-       armv7l: '02406faf3daa23bf9505d6660e4687faebf081af06150cd7e373ff4d2d9489d5',
-       x86_64: '59f0bc0e2496f3d4792ce9ea74c7c03ab72f954c63c2253cf6ed82ea3dce5279'
+      aarch64: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
+       armv7l: '4e9cc1614f9e40efb98b6650a38b7decf46a88315e901ecd88f8e76b98ac7368',
+       x86_64: '21e43aa1fc9038ef0824779ce3090c2d563981cdaecdbb3d82eb59c348cd478a'
     })
   end
 
@@ -62,10 +62,7 @@ class Pipewire < Package
     system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
   end
 
-  def self.build
-    system "mold -run meson setup \
-      #{CREW_MESON_OPTIONS} \
-      -Dbluez5-backend-hsphfpd=disabled \
+  meson_options "-Dbluez5-backend-hsphfpd=disabled \
       -Dbluez5-backend-ofono=disabled \
       -Dbluez5=disabled \
       -Dexamples=disabled \
@@ -73,11 +70,7 @@ class Pipewire < Package
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d \
       -Dv4l2=disabled \
       -Dvolume=auto \
-      -Dvulkan=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+      -Dvulkan=enabled"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
