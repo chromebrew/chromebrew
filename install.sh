@@ -93,8 +93,8 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 # uname -m reports armv8l.
 ARCH="${ARCH/armv8l/armv7l}"
 
-# Determine if there is a difference between kernel and user space.
-if [[ "${ARCH}" == "aarch64" && ! -d '/lib64' ]]; then
+# This does not represent the actual userspace architecture (if there is an aarch64 userspace), but we behave as if it does
+if [[ "${ARCH}" == "aarch64" ]]; then
   USER_SPACE_ARCH='armv7l'
 else
   USER_SPACE_ARCH="${ARCH}"
@@ -163,10 +163,6 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-# Prepare urls and sha256s variables.
-urls=()
-sha256s=()
-
 BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 
 # Older i686 systems.
@@ -179,35 +175,6 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHR
   # Recent Arm systems have a cut down system.
   [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
 fi
-
-# Get the URLs and hashes of the bootstrap packages.
-for package in $BOOTSTRAP_PACKAGES; do
-  cd "${CREW_LIB_PATH}/packages"
-  [[ "$(sed -n '/binary_sha256/,/}/p' "${package}.rb")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
-    sha256s+=("${BASH_REMATCH[1]}")
-
-  nln=$(nl -b a -n ln "${package}.rb" | sed -n '/class/p' | head -1 | cut -c 1)
-  vln=$(nl -b a -n ln "${package}.rb" | sed -n '/  version/p' | head -1 | cut -c 1)
-  name=$(sed -n "${nln}s/class\(.*\)<.*/\L\1/;${nln}s/^[ \t]*//;${nln}s/[ \t]*$//p" "${package}.rb")
-  version=$(sed -n "${vln}p" "${package}.rb" | awk '{print $2}' | tr -d "'")
-
-  # This is really ugly, FIXME after #7082 is merged.
-  if [[ "${package}" == "zstd" ]]; then
-    if [[ "$ARCH" == "aarch64" ]]; then
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_armv7l/${name}-${version}-chromeos-armv7l.tar.xz")
-    else
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_${ARCH}/${name}-${version}-chromeos-${ARCH}.tar.xz")
-    fi
-  else
-    [[ "${package}" == "glibc_lib235" ]] && name="glibc_lib"
-    if [[ "$ARCH" == "aarch64" ]]; then
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_armv7l/${name}-${version}-chromeos-armv7l.tar.zst")
-    else
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_${ARCH}/${name}-${version}-chromeos-${ARCH}.tar.zst")
-    fi
-  fi
-
-done
 
 # Create the device.json file.
 cd "${CREW_CONFIG_PATH}"
@@ -286,17 +253,19 @@ function update_device_json () {
 
 echo_info "Downloading Bootstrap packages...\n"
 # Extract, install and register packages.
-for i in $(seq 0 $((${#urls[@]} - 1))); do
-  url=${urls["${i}"]}
-  sha256=${sha256s["${i}"]}
-  tarfile=$(basename "${url}")
-  name="${tarfile%%-*}"   # extract string before first '-'
-  rest="${tarfile#*-}"    # extract string after first '-'
-  version="${rest%%-chromeos*}" # extract string between first '-' and "-chromeos"
+for package in $BOOTSTRAP_PACKAGES; do
+  cd "${CREW_LIB_PATH}/packages"
+  version=$(sed -n "s/.*version '\([^']*\)'.*/\1/p" "${package}.rb")
+  binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
 
-  download_check "${name}" "${url}" "${tarfile}" "${sha256}"
-  extract_install "${name}" "${tarfile}"
-  update_device_json "${name}" "${version}" "${sha256}"
+  url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${USER_SPACE_ARCH}/${package}-${version}-chromeos-${USER_SPACE_ARCH}.${binary_compression}"
+  tarfile=$(basename "${url}")
+
+  sha256=$(sed -n "s/.*${USER_SPACE_ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
+
+  download_check "${package}" "${url}" "${tarfile}" "${sha256}"
+  extract_install "${package}" "${tarfile}"
+  update_device_json "${package}" "${version}" "${sha256}"
 done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
