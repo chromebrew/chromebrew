@@ -122,9 +122,6 @@
 /usr/local/share/msedge/msedge_crashpad_handler
 /usr/local/share/msedge/msedge-management-service
 /usr/local/share/msedge/msedge-sandbox
-/usr/local/share/msedge/nacl_helper
-/usr/local/share/msedge/nacl_helper_bootstrap
-/usr/local/share/msedge/nacl_irt_x86_64.nexe
 /usr/local/share/msedge/product_logo_128.png
 /usr/local/share/msedge/product_logo_16.png
 /usr/local/share/msedge/product_logo_24.png
