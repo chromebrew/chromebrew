@@ -1712,7 +1712,7 @@ def archive_package(crew_archive_dest)
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
   # Copy package file for the successfully generated package to CREW_LOCAL_REPO_ROOT .
-  FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
+  FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/" unless CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
   puts "The package file for #{@pkgName} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
 end
 
@@ -1973,7 +1973,8 @@ def update_sha256(package, key, value)
 end
 
 def build_command(args)
-  abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT
+  abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT && !CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
+
   unless Dir.exist? CREW_LOCAL_BUILD_DIR
     if @opt_force
       puts "Attempting to creating local build directory at #{CREW_LOCAL_BUILD_DIR} .".orange
