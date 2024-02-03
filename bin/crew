@@ -346,7 +346,8 @@ def help(pkgName = nil)
     puts <<~EOT
       Build package(s).
       Usage: crew build [-k|--keep] [-v|--verbose] <package1> [<package2> ...]
-      Build package(s) from source and place the archive and checksum in the current working directory.
+      Build package(s) from source and place the archive and checksum in the `CREW_LOCAL_BUILD_DIR/release/<arch>` directory.
+      If `-f` or `--force` is present, the `CREW_LOCAL_BUILD_DIR/release/<arch>` directories will be created.
       If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
       If `-v` or `--verbose` is present, extra information will be displayed.
     EOT
@@ -469,6 +470,7 @@ def help(pkgName = nil)
     puts <<~EOT
       Remove and install package(s).
       Usage: crew reinstall [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
+      If `-f` or `--force` is present, an option is forced, such as in `crew build -f packagename`.
       If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
       If `-s` or `--source` is present, the package(s) will be compiled instead of installed via binary.
       If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
