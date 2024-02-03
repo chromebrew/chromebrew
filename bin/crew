@@ -1712,7 +1712,7 @@ def archive_package(crew_archive_dest)
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
   # Copy package file for the successfully generated package to CREW_LOCAL_REPO_ROOT .
-  FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/" unless CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
+  FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
   puts "The package file for #{@pkgName} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
 end
 
