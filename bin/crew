@@ -470,7 +470,7 @@ def help(pkgName = nil)
     puts <<~EOT
       Remove and install package(s).
       Usage: crew reinstall [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <package1> [<package2> ...]
-      If `-f` or `--force` is present, an option is forced, such as in `crew build -f packagename`.
+      If `-f` or `--force` is present, an option is forced.
       If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
       If `-s` or `--source` is present, the package(s) will be compiled instead of installed via binary.
       If `-S` or `--recursive-build` is present, the package(s), including all dependencies, will be compiled instead of installed via binary.
