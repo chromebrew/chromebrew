@@ -1977,7 +1977,7 @@ def build_command(args)
   abort 'Change to a local chromebrew git repo directory and try again.'.lightred if CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
   unless Dir.exist? CREW_LOCAL_BUILD_DIR
     if @opt_force
-      puts "Attempting to creating local build directory at #{CREW_LOCAL_BUILD_DIR} .".orange
+      puts "Attempting to create local build directory at #{CREW_LOCAL_BUILD_DIR} .".orange
       FileUtils.mkdir_p CREW_LOCAL_BUILD_DIR
     else
       abort "Unable to locate local build directory #{CREW_LOCAL_BUILD_DIR}. It will be created if you build with the '-f' flag.".lightred
