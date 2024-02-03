@@ -3,18 +3,18 @@ require 'package'
 class Libaacs < Package
   description 'This library is simply a tool for playback of Blu-ray movies.'
   homepage 'https://www.videolan.org/developers/libaacs.html'
-  version '0.9.0'
+  version '0.11.1'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url 'https://get.videolan.org/libaacs/0.9.0/libaacs-0.9.0.tar.bz2'
-  source_sha256 '47e0bdc9c9f0f6146ed7b4cc78ed1527a04a537012cf540cf5211e06a248bace'
-  binary_compression 'tar.xz'
+  source_url 'https://get.videolan.org/libaacs/0.11.1/libaacs-0.11.1.tar.bz2'
+  source_sha256 'a88aa0ebe4c98a77f7aeffd92ab3ef64ac548c6b822e8248a8b926725bea0a39'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '79d13f5b1aa9dcf1f00d982a96a4756ca71a743e488141f29f57b7752c28d335',
-     armv7l: '79d13f5b1aa9dcf1f00d982a96a4756ca71a743e488141f29f57b7752c28d335',
-       i686: '7c5b65877429795ac1c0a772799bb79f7adf81f577a29744db418c42b7483e8d',
-     x86_64: '704e13a05f7b35053df356eec8185dc09f7437265255a7c517e203ebb3ea9848'
+    aarch64: '2bd87cccd1d123aa642b3d187c94bd2180f78be9f14f9d5e719fdfa324f54fef',
+     armv7l: '2bd87cccd1d123aa642b3d187c94bd2180f78be9f14f9d5e719fdfa324f54fef',
+       i686: 'cc86d5ba4511da7a799bb329b26b98d6581ba730b210d007cd31b76b944a1066',
+     x86_64: '3b9647d110d372cb587a982094e3cdf08e91b680ef00fd2533be16263c3368e6'
   })
 
   def self.build
