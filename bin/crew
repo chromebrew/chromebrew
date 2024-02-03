@@ -1973,8 +1973,8 @@ def update_sha256(package, key, value)
 end
 
 def build_command(args)
-  abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT && !CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
-
+  abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT
+  abort 'Change to a local chromebrew git repo directory and try again.'.lightred if CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
   unless Dir.exist? CREW_LOCAL_BUILD_DIR
     if @opt_force
       puts "Attempting to creating local build directory at #{CREW_LOCAL_BUILD_DIR} .".orange
