@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.28.1'
+  version '3.28.2'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2662f6f75e40ee8be74d58cefb184161382ca67d86d6f7585eaf705d1ef6197f',
-     armv7l: '2662f6f75e40ee8be74d58cefb184161382ca67d86d6f7585eaf705d1ef6197f',
-       i686: '68f3014ef12bc6618414ef85604d144ac8ff7838b1cb0b5f5645143c96d80e2f',
-     x86_64: '77774ff088a2a56e947eea04507bcc0ce129c9b52199ad0d03ce4500fd030e82'
+    aarch64: 'ebc9b61a7f41780cea0ea0d11452922889abdfd566e54e76d65a25c21e4af116',
+     armv7l: 'ebc9b61a7f41780cea0ea0d11452922889abdfd566e54e76d65a25c21e4af116',
+       i686: '1f8ecc98f73fd1fb59d6117cc7a65c0f8d4e139d8125c61825ab02b77dcc63b8',
+     x86_64: '43a4ea28bd271b830871297ad7232a8bc295c61eccfe543d4f795d0b5d956271'
   })
 
   depends_on 'bzip2' => :build
