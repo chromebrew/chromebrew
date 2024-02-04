@@ -1890,17 +1890,18 @@ def upload(pkgName = nil)
 
   [packages].each do |package|
     %w[x86_64 i686 armv7l].each do |arch|
-      pkgfile = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
-      new_tarfile = Dir["#{CREW_LOCAL_BUILD_DIR}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
+      release_dir = "#{CREW_LOCAL_REPO_ROOT}/release/#{arch}"
+      pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+      new_tarfile = Dir["#{release_dir}/#{package}-*-chromeos-#{arch}.{tar.xz,tar.zst}"].max_by { |f| File.mtime(f) }
       if new_tarfile.nil?
-        puts "#{CREW_LOCAL_BUILD_DIR}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
+        puts "#{release_dir}/#{package}-#-chromeos-#{arch}.(tar.xz|tar.zst) not found.\n".lightred
         next
       end
       if binary_compression_set.nil?
         ext = File.extname(new_tarfile)
-        puts "Setting binary compression in #{pkgfile}..."
-        puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkgfile}" if @opt_verbose
-        system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkgfile}"
+        puts "Setting binary compression in #{pkg_file}..."
+        puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if @opt_verbose
+        system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}"
         binary_compression_set = 1
       end
       puts "Package: #{package}, Arch: #{arch}".yellow
@@ -1909,7 +1910,7 @@ def upload(pkgName = nil)
       puts "Uploading #{new_tarfile} ..."
       noname = new_tarfile.split("#{package}-").last
       new_version = noname.split('-chromeos').first
-      new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{CREW_LOCAL_REPO_ROOT}/release/#{arch}/", '')
+      new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if @opt_verbose
       output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
@@ -1917,37 +1918,37 @@ def upload(pkgName = nil)
         puts output.lightgreen
       else
         puts output.lightred
-        puts "Unable to upload. Skipping binary_sha256 update in #{pkgfile}...".lightred
+        puts "Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
         next
       end
-      old_sha256 = `grep -m 1 #{arch}: #{pkgfile} 2> /dev/null`.chomp
+      old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
       if old_sha256.empty?
-        unless File.readlines("#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb").grep(/binary_sha256/).any?
+        unless File.readlines(pkg_file).grep(/binary_sha256/).any?
           if @opt_verbose
             puts "sed -e '/binary_compression/ a\\
 \\
-\\ \\ binary_sha256({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+\\ \\ binary_sha256({' -i #{pkg_file}"
           end
           system "sed -e '/binary_compression/ a\\
 \\
-\\ \\ binary_sha256({' -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+\\ \\ binary_sha256({' -i #{pkg_file}"
         end
-        puts "Adding binary_sha256 to #{pkgfile}..."
+        puts "Adding binary_sha256 to #{pkg_file}..."
         puts "#{arch}: '#{new_sha256}'"
         unless new_sha256.empty?
-          update_sha256(package, arch, new_sha256)
-          update_sha256(package, 'aarch64', new_sha256) if arch.eql?('armv7l')
+          update_sha256(pkg_file, arch, new_sha256)
+          update_sha256(pkg_file, 'aarch64', new_sha256) if arch.eql?('armv7l')
         end
       else
         old_sha256 = old_sha256.split("'")[1]
         if old_sha256 == new_sha256
-          puts "Skipping binary_sha256 update in #{pkgfile}..."
+          puts "Skipping binary_sha256 update in #{pkg_file}..."
         else
-          puts "Updating binary_sha256 in #{pkgfile}..."
+          puts "Updating binary_sha256 in #{pkg_file}..."
           puts "from: #{arch}: '#{old_sha256}'"
           puts "  to: #{arch}: '#{new_sha256}'"
-          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkgfile}" if @opt_verbose
-          system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkgfile}"
+          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if @opt_verbose
+          system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
         end
       end
       puts
@@ -1965,12 +1966,12 @@ def update_sha256(package, key, value)
     leading_space = '\\ \\ \\ \\ \\ \\ \\ '
   end
   comma = key == 'x86_64' ? '\\n\\ \\ })' : ','
-  if File.readlines("#{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb").grep(/#{key}:/).any?
-    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb" if @opt_verbose
-    system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+  if File.readlines(package).grep(/#{key}:/).any?
+    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if @opt_verbose
+    system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
   else
-    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb" if @opt_verbose
-    system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{CREW_LOCAL_REPO_ROOT}/packages/#{package}.rb"
+    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if @opt_verbose
+    system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
   end
 end
 
