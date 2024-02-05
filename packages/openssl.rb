@@ -3,18 +3,18 @@ require 'package'
 class Openssl < Package
   description 'The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
   homepage 'https://www.openssl.org'
-  version '3.0.12' # Do not use @_ver here, it will break the installer.
+  version '3.0.13' # Do not use @_ver here, it will break the installer.
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'https://www.openssl.org/source/openssl-3.0.12.tar.gz'
-  source_sha256 'f93c9e8edde5e9166119de31755fc87b4aa34863662f67ddfcba14d0b6b69b61'
+  source_url 'https://www.openssl.org/source/openssl-3.0.13.tar.gz'
+  source_sha256 '88525753f79d3bec27d2fa7c66aa0b92b3aa9498dafd93d7cfa4b3780cdae313'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a373a6a05ebaded0c415dde10b81d83d7b5926b717ea2f4f335befde71f0eb79',
-     armv7l: 'a373a6a05ebaded0c415dde10b81d83d7b5926b717ea2f4f335befde71f0eb79',
-       i686: '89cb4058dea5d4184485312ae6bcb2944f565e9b5cfeaaa8e46032b75d3bf2e0',
-     x86_64: 'acf5e602aa15f0d56df54b312fbc1c298af655b57208cefa30552bca2b394b83'
+    aarch64: '5450b693d453d48b4c4e0c594c98e9bb684a316802b7540cee2e52278a0d61d6',
+     armv7l: '5450b693d453d48b4c4e0c594c98e9bb684a316802b7540cee2e52278a0d61d6',
+       i686: 'a3e19ddaee80131c3432bca1acba02b095af9656d80a509e3584370f8ad7e4f4',
+     x86_64: '8ee844ac6718027da140b25501f9c2676eb98c741b0256c4c5d24b32b0b9999a'
   })
 
   depends_on 'ccache' => :build
