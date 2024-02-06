@@ -27,6 +27,6 @@ class Adwaita_icon_theme < Meson
     # Update mime database.
     system "update-mime-database #{CREW_PREFIX}/share/mime"
     # This is skipped when DESTDIR is set during build.
-    system "gtk-update-icon-cache -qtf #{CREW_PREFIX}/share/icons/Adwaita"
+    system "gtk-update-icon-cache -qtf #{CREW_PREFIX}/share/icons/Adwaita" if File.file?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
   end
 end
