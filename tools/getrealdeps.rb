@@ -44,6 +44,12 @@ unless system('gawk -W version > /dev/null 2>&1')
   system('crew install gawk')
 end
 
+# upx is needed to expand compressed binaries to check for dependencies.
+unless system('upx --version > /dev/null 2>&1')
+  puts "\nUpx is needed to expand compressed binaries."
+  system('crew install upx')
+end
+
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
 # This is a subset of what crew whatprovides gives.
 def whatprovidesfxn(pkgdepslcl, pkg)
@@ -69,7 +75,7 @@ pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || !File.read(i.chomp, 4) 
 # Use readelf to determine library dependencies, as
 # this doesn't almost run a program like using ldd would.
 pkgdepsfiles = pkgfiles.map do |i|
-  system("upx -d #{i} > /dev/null 2>&1") if File.exist?('/.dockerenv')
+  system("upx -d #{i} > /dev/null 2>&1")
   FileUtils.mkdir_p("/tmp/deps/#{pkg}/")
   `readelf -d "#{i}" 2>/dev/null | #{GREP} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg}/#{File.basename(i)}`
 end
