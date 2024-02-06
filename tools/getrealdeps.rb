@@ -23,7 +23,7 @@ unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist"
 end
 
 unless File.exist?("#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist")
-  echo_error "Package #{pkg} either does not exist or does not contain any libraries."
+  puts "Package #{pkg} either does not exist or does not contain any libraries."
   exit 1
 end
 
