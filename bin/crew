@@ -1711,6 +1711,8 @@ def archive_package(crew_archive_dest)
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
+  # Make sure the package file has runtime dependencies added properly.
+  system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{@pkgName}"
   # Copy package file for the successfully generated package to CREW_LOCAL_REPO_ROOT only if force is set.
   if @opt_force
     FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
