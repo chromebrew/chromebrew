@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk3 < Package
+class Gtk3 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk3/3.0/'
-  version '3.24.39'
+  version '3.24.41'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk3 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '209958c529bb9567195e1f0ed5438f2e872fd1b35995db77e47ee50ad61f411c',
-     armv7l: '209958c529bb9567195e1f0ed5438f2e872fd1b35995db77e47ee50ad61f411c',
-     x86_64: '0a155697595ab3acb75e0fa3a30ec00c9bbe27d622ef9847cf7e30a49902f015'
+    aarch64: '3760322a4d9bf7d8ca10e49a8b67d7222550e69f24b8b6188bcdcdb378b2dbbd',
+     armv7l: '3760322a4d9bf7d8ca10e49a8b67d7222550e69f24b8b6188bcdcdb378b2dbbd',
+     x86_64: 'dbb3e25dd81f9b9315448915a8b62bddb92ae62de28a21c17fa5e235e62e4277'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
