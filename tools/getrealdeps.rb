@@ -39,7 +39,10 @@ else
 end
 
 # Gawk is needed for adding dependencies.
-system('crew install gawk') unless system('gawk -W version > /dev/null 2>&1')
+unless system('gawk -W version > /dev/null 2>&1')
+  puts "\nGawk is needed for adding dependencies to package files."
+  system('crew install gawk') unless system('gawk -W version > /dev/null 2>&1')
+end
 
 # Search for which packages have a needed library in CREW_LIB_PREFIX.
 # This is a subset of what crew whatprovides gives.
