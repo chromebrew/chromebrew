@@ -3,10 +3,15 @@
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
-pkg = ARGV[0].chomp('.rb')
-
 # Exit quickly if an invalid package name is given.
-exit 1 if pkg.empty? || pkg.include?('#')
+if ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#')
+  puts 'Getrealdeps checks for the dependencies of a package.'
+  puts 'Dependencies are added if the package file is missing them.'
+  puts 'Usage: getrealdeps.rb <packagename>'
+  exit 1
+end
+
+pkg = ARGV[0].chomp('.rb')
 
 CREW_PREFIX = ENV['CREW_PREFIX'] || `crew const CREW_PREFIX`.split('=')[1].chomp
 CREW_LIB_PREFIX = ENV['CREW_LIB_PREFIX'] || `crew const CREW_LIB_PREFIX`.split('=')[1].chomp
