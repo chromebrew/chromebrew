@@ -1,9 +1,12 @@
 require 'package'
+require_relative 'git'
 
 class Git_prompt < Package
   description 'Display the git branch and status in the command prompt'
   homepage 'https://github.com/git/git'
-  version '2.32.0'
+  version '2.43.0'
+  # When upgrading git_prompt, be sure to upgrade git in tandem.
+  puts "#{self} version differs from Git version #{Git.version}".orange if version != Git.version
   license 'GPL-2'
   compatibility 'all'
   source_url 'SKIP'
@@ -11,8 +14,8 @@ class Git_prompt < Package
   print_source_bashrc
 
   def self.build
-    system "curl -#LO https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh"
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('git-prompt.sh')) == '1fbced3fe345ec14f828ffb876e191d69457cccc807c70f54c9ba48cb2a6620e'
+    downloader "https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh",
+               'f1bd4ed4e7b888cad5fb44960ea1ffa88cb35d5e3037a32d96d64fb783eb5c66'
     git_env = <<~EOF
 
       GIT_PS1_SHOWDIRTYSTATE=yes
@@ -22,13 +25,12 @@ class Git_prompt < Package
       GIT_PS1_DESCRIBE_STYLE=default
       GIT_PS1_SHOWCOLORHINTS=yes
 
-      PS1='\\[\\033[1;34m\\]\\u@\\h \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+      PS1='\\[\\033[1;34m\\]\\u@\\H \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
     EOF
     File.write('git-prompt.sh', git_env, mode: 'a')
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d"
     FileUtils.install 'git-prompt.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/git-prompt.sh", mode: 0o644
   end
 
