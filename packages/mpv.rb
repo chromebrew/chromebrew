@@ -37,7 +37,6 @@ class Mpv < Meson
   depends_on 'libdvdread' # R
   depends_on 'libglvnd' # R
   depends_on 'libjpeg' # R
-  depends_on 'libplacebo' => :build
   depends_on 'libplacebo' # R
   depends_on 'libsdl2' # R
   depends_on 'libva' # R
@@ -61,7 +60,6 @@ class Mpv < Meson
   depends_on 'shaderc' # R
   depends_on 'sommelier' # L
   depends_on 'uchardet' # R
-  depends_on 'vapoursynth' => :build
   depends_on 'vapoursynth' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # L
