@@ -92,9 +92,8 @@ pkgdeps = pkgdepsfiles.map do |file|
 pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_build.*/, 'glibc') }.uniq
 pkgdeps = pkgdeps.map { |i| i.gsub(/glibc_lib.*/, 'glibc_lib') }.uniq.map(&:strip).reject(&:empty?)
 
-missingpkgdeps = pkgdeps.reject do |i|
-  File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'")
-end
+# Look for missing runtime dependencies.
+missingpkgdeps = pkgdeps.reject { |i| File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}'") unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").include?("depends_on '#{i}' => :build") }
 
 puts "\nPackage #{pkg} has runtime library dependencies on these packages:"
 pkgdeps.each do |i|
