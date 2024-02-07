@@ -1905,18 +1905,17 @@ def upload(pkgName = nil)
         ext = File.extname(new_tarfile)
         puts "Setting binary compression in #{pkg_file}..."
         # Add binary compression setting, and add the line if it doesn't exist.
-        unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{package}.rb").include?('binary_compression')
-          if File.read("#{CREW_PREFIX}/lib/crew/packages/#{package}.rb").include?('source_sha256')
-            puts "sed -i \"/source_sha256/a binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
-            system "sed -i \"/source_sha256/a binary_compression 'tar#{ext}'\" #{pkg_file}"
-          elsif File.read("#{CREW_PREFIX}/lib/crew/packages/#{package}.rb").include?('git_hashtag')
-            puts "sed -i \"/git_hashtag/a \ \ binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
-            system "sed -i \"/git_hashtag/a \ \ binary_compression 'tar#{ext}'\" #{pkg_file}"
-          else
-            puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
-          end
-        else
+        if File.read(pkg_file).include?('binary_compression')
+          puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if @opt_verbose
           system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}"
+        elsif File.read(pkg_file).include?('source_sha256')
+          puts "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
+          system "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
+        elsif File.read(pkg_file).include?('git_hashtag')
+          puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
+          system "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
+        else
+          puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
         end
         binary_compression_set = 1
       end
