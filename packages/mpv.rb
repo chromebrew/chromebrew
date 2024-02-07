@@ -20,7 +20,9 @@ class Mpv < Meson
   depends_on 'alsa_lib' # R
   depends_on 'ffmpeg' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'glslang' # R
   depends_on 'jack' # R
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
@@ -29,7 +31,7 @@ class Mpv < Meson
   depends_on 'libcaca' # R
   depends_on 'libcdio_paranoia' # R
   depends_on 'libcdio' # R
-  depends_on 'libdovi' => :build
+  depends_on 'libdovi' # R
   depends_on 'libdrm' # R
   depends_on 'libdvdnav' # R
   depends_on 'libdvdread' # R
@@ -100,7 +102,7 @@ class Mpv < Meson
     # @xdg_config_home = ENV['XDG_CONFIG_HOME']
     # FileUtils.mkdir_p @xdg_config_home
     # system "touch #{@xdg_config_home}/mpv"
-    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
-    system "#{CREW_PREFIX}/bin/gtk4-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true"
+    system "#{CREW_PREFIX}/bin/gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true" if File.file?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
+    system "#{CREW_PREFIX}/bin/gtk4-update-icon-cache -ft #{CREW_PREFIX}/share/icons/* || true" if File.file?("#{CREW_PREFIX}/bin/gtk4-update-icon-cache")
   end
 end
