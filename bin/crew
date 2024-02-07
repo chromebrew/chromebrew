@@ -43,6 +43,7 @@ DOC = <<~DOCOPT
     crew deps [options] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <name> ...
     crew download [options] [-s|--source] <name> ...
     crew files [options] <name> ...
+    crew getrealdeps <name> ...
     crew help [<command>] [<subcommand>]
     crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] <name> ...
     crew list [options] (available|installed|compatible|incompatible)
@@ -378,6 +379,12 @@ def help(pkgName = nil)
     puts <<~EOT
       Display installed files of package(s).
       Usage: crew files <package1> [<package2> ...]
+      The package(s) must be currently installed.
+    EOT
+  when 'getrealdeps'
+    puts <<~EOT
+      Display dependency packages of package(s).
+      Usage: crew getrealdeps <package1> [<package2> ...]
       The package(s) must be currently installed.
     EOT
   when 'install'
@@ -2051,6 +2058,14 @@ def files_command(args)
     search @pkgName
     print_current_package
     files name
+  end
+end
+
+def getrealdeps_command(args)
+  system "#{CREW_LIB_PATH}/tools/getrealdeps.rb" if args['<name>'].empty?
+  args['<name>'].each do |name|
+    search name
+    system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{name}" if @pkg.name
   end
 end
 
