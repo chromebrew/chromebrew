@@ -6,6 +6,7 @@ class Mpv < Meson
   version '0.37.0'
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.34'
   source_url 'https://github.com/mpv-player/mpv.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
