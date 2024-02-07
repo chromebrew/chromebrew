@@ -84,6 +84,7 @@ Where available commands are:
 | deps         | display dependencies of package(s) |
 | download     | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
 | files        | display installed files of package(s) |
+| getrealdeps  | display dependency packages of package(s) |
 | help         | get information about command usage |
 | install      | install package(s) along with dependencies after prompting for confirmation |
 | list         | available, installed, compatible or incompatible packages |
