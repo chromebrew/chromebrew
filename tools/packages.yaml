@@ -5346,6 +5346,16 @@ url: https://gitlab.com/cespedes/ltrace
 activity: none
 ---
 kind: url
+name: lttng_tools
+url: https://lttng.org/download/#build-from-source
+activity: medium
+---
+kind: url
+name: lttng_ust
+url: https://lttng.org/download/#build-from-source
+activity: medium
+---
+kind: url
 name: lua
 url: https://www.lua.org/ftp
 activity: none
