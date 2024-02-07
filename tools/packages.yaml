@@ -8696,6 +8696,11 @@ url: http://sourceware.org/pub/valgrind
 activity: none
 ---
 kind: url
+name: vapoursynth
+url: https://github.com/vapoursynth/vapoursynth/releases
+activity: high
+---
+kind: url
 name: vamp_sdk
 url: https://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/files
 activity: medium
