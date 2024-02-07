@@ -9,7 +9,6 @@ class Python3 < Package
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
   source_sha256 'be28112dac813d2053545c14bf13a16401a21877f1a69eb6ea5d84c4a0f3d870'
   binary_compression 'tar.zst'
-  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '3b76c3c7ab7da89d27eed23c6b3d597679d5f269584a581092683ed89e09ebf3',
