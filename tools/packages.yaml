@@ -3941,6 +3941,11 @@ url: https://download.netsurf-browser.org/libs/releases/
 activity: low
 ---
 kind: url
+name: libdovi
+url: https://github.com/quietvoid/dovi_tool/tags
+activity: medium
+---
+kind: url
 name: libdrm
 url: https://dri.freedesktop.org/libdrm
 activity: medium
@@ -4564,6 +4569,11 @@ kind: url
 name: libpipeline
 url: https://download.savannah.gnu.org/releases/libpipeline
 activity: low
+---
+kind: url
+name: libplacebo
+url: https://code.videolan.org/videolan/libplacebo/-/tags
+activity: medium
 ---
 kind: url
 name: libplist
