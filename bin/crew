@@ -2064,7 +2064,6 @@ end
 def getrealdeps_command(args)
   system "#{CREW_LIB_PATH}/tools/getrealdeps.rb" if args['<name>'].empty?
   args['<name>'].each do |name|
-    search name
     system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{name}" if @pkg.name
   end
 end
