@@ -1905,7 +1905,7 @@ def upload(pkgName = nil)
         ext = File.extname(new_tarfile)
         puts "Setting binary compression in #{pkg_file}..."
         # Add binary compression setting, and add the line if it doesn't exist.
-        if File.read("#{CREW_PREFIX}/lib/crew/packages/#{package}.rb").include?('binary_compression')
+        unless File.read("#{CREW_PREFIX}/lib/crew/packages/#{package}.rb").include?('binary_compression')
           if File.read("#{CREW_PREFIX}/lib/crew/packages/#{package}.rb").include?('source_sha256')
             puts "sed -i \"/source_sha256/a binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
             system "sed -i \"/source_sha256/a binary_compression 'tar#{ext}'\" #{pkg_file}"
