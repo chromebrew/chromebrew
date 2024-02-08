@@ -586,7 +586,7 @@ end
 
 def files(pkgName)
   local_filelist    = File.join(CREW_META_PATH, "#{pkgName}.filelist")
-  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{USER_SPACE_ARCH}/#{pkgName[0]}/#{pkgName}.filelist")
+  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{ARCH}/#{pkgName[0]}/#{pkgName}.filelist")
 
   if File.exist?(local_filelist)
     # search for local filelist first
@@ -633,7 +633,7 @@ def prop(silent = false)
 end
 
 def whatprovides(regexPat)
-  matchedList = `grep -R "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{USER_SPACE_ARCH}`.lines(chomp: true).flat_map do |result|
+  matchedList = `grep -R "#{regexPat}" #{CREW_LIB_PATH}/manifest/#{ARCH}`.lines(chomp: true).flat_map do |result|
     filelist, matchedFile = result.split(':', 2)
     pkgName = File.basename(filelist, '.filelist')
     pkgNameStatus = pkgName
@@ -655,7 +655,7 @@ def update
   # update package lists
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{USER_SPACE_ARCH} lib bin crew tests tools"
+    system "git sparse-checkout set packages manifest/#{ARCH} lib bin crew tests tools"
     system 'git sparse-checkout reapply'
 
     system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
@@ -1165,8 +1165,8 @@ def prepare_package(destdir)
     system "find .#{HOME} -type f,l | cut -c2- | sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_HOME)
 
     if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
-      FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{USER_SPACE_ARCH}/#{@pkg.name.chr.downcase}"
-      FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{USER_SPACE_ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
+      FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
+      FileUtils.cp 'filelist', "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}/#{@pkg.name}.filelist"
     end
 
     # check for FHS3 compliance
@@ -2016,8 +2016,8 @@ def build_command(args)
     puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
     puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless @pkg.compatible?
     puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
-    puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source?(USER_SPACE_ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
-    resolve_dependencies_and_build if !@pkg.is_fake? && @pkg.is_source?(USER_SPACE_ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
+    puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
+    resolve_dependencies_and_build if !@pkg.is_fake? && @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
   end
   puts "Builds are located in #{CREW_LOCAL_BUILD_DIR}.".yellow
 end

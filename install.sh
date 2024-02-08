@@ -89,15 +89,12 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 # For container usage, where we want to specify i686 arch
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
-# For container usage, when we are emulating armv7l via linux32
-# uname -m reports armv8l.
-ARCH="${ARCH/armv8l/armv7l}"
 
-# This does not represent the actual userspace architecture (if there is an aarch64 userspace), but we behave as if it does
-if [[ "${ARCH}" == "aarch64" ]]; then
-  USER_SPACE_ARCH='armv7l'
-else
-  USER_SPACE_ARCH="${ARCH}"
+# For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
+# Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
+# When we have proper support for aarch64, remove this.
+if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
+  ARCH='armv7l'
 fi
 
 if [[ "$ARCH" == "x86_64" ]]; then
@@ -173,7 +170,7 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHR
   BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
 
   # Recent Arm systems have a cut down system.
-  [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+  [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
 fi
 
 # Create the device.json file.
@@ -258,10 +255,10 @@ for package in $BOOTSTRAP_PACKAGES; do
   version=$(sed -n "s/.*version '\([^']*\)'.*/\1/p" "${package}.rb")
   binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
 
-  url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${USER_SPACE_ARCH}/${package}-${version}-chromeos-${USER_SPACE_ARCH}.${binary_compression}"
+  url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
   tarfile=$(basename "${url}")
 
-  sha256=$(sed -n "s/.*${USER_SPACE_ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
+  sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
 
   download_check "${package}" "${url}" "${tarfile}" "${sha256}"
   extract_install "${package}" "${tarfile}"
@@ -323,7 +320,7 @@ else
   git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set packages "manifest/${USER_SPACE_ARCH}" lib bin crew tests tools
+  git sparse-checkout set packages "manifest/${ARCH}" lib bin crew tests tools
   git reset --hard origin/"${BRANCH}"
 fi
 echo -e "${RESET}"
