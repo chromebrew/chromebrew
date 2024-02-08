@@ -38,8 +38,6 @@ class Python3 < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zoneinfo' # L
-  depends_on 'tcl' unless ARCH == 'i686' # R
-  depends_on 'tk' unless ARCH == 'i686' # R
 
   no_env_options
   conflicts_ok
