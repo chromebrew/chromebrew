@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.42.8'
+CREW_VERSION = '1.42.9'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -37,12 +37,10 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
 # does not compatible with the kernel architecture natively
 QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 
-# This helps with virtualized builds on aarch64 machines
-# which report armv8l when linux32 is run.
-ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
-
-# This doesn't actually represent the userspace architecture (if the userspace architecture is aarch64), but we behave as if it does
-USER_SPACE_ARCH = ARCH.eql?('aarch64') ? 'armv7l' : ARCH
+# This helps with virtualized builds on aarch64 machines which report armv8l when linux32 is run.
+# We also report aarch64 machines as armv7l for now, as we treat them as if they were armv7l.
+# When we have proper aarch64 support, remove this.
+ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
@@ -103,7 +101,7 @@ CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{USER_SPACE_ARCH}"
+CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
