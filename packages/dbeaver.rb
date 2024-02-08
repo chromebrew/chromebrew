@@ -10,7 +10,7 @@ class Dbeaver < Package
     x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/23.3.4/dbeaver-ce-23.3.4-linux.gtk.x86_64.tar.gz'
   })
   source_sha256({
-    x86_64: 'f04b78a1cb11dac96eb8081ac004604aafe13dd3e0e4d73f11f783a17e5b489a'
+    x86_64: 'd545b1121621e18f0f0f527f9524052c1b67d903bad229ea562f64bfd5a4da24'
   })
 
   depends_on 'gtk3'
