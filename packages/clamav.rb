@@ -3,18 +3,18 @@ require 'package'
 class Clamav < Package
   description 'ClamAV is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.'
   homepage 'https://www.clamav.net/'
-  version '1.2.1'
+  version '1.3.0'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://www.clamav.net/downloads/production/clamav-1.1.1.tar.gz'
-  source_sha256 'a26699704bb4ddf2684e4adc1f46d5f3de9a9a8959f147970f969cc32b2f0d9e'
+  source_url 'https://www.clamav.net/downloads/production/clamav-1.3.0.tar.gz'
+  source_sha256 '0a86a6496320d91576037b33101119af6fd8d5b91060cd316a3a9c229e9604aa'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'afed9916e17bb13666ef97098d3128cbb535e33593814ed50e1b844cae2a054f',
-     armv7l: 'afed9916e17bb13666ef97098d3128cbb535e33593814ed50e1b844cae2a054f',
-       i686: '888742d0f5dcdb5a7b226c46f38148a66916bf5c59d9cfa893874de7e97033f4',
-     x86_64: '5bb56619e8579ec7c9f038fa39ce76f9b741652a4dbf54654c611c1f82152aee'
+    aarch64: 'c56f67bd30b297677b3d264fc8c51bc657f9e420ee8db3044f447407ad1166b3',
+     armv7l: 'c56f67bd30b297677b3d264fc8c51bc657f9e420ee8db3044f447407ad1166b3',
+       i686: '7ecc0239e776f9388644ce393762f1dea2e01f6644f6131bfebaebfbfffd9416',
+     x86_64: '9fafa4301f43066ba35a6dcb2033b1c7898afbeb40348c6fd078df190c698ea7'
   })
 
   depends_on 'rust' => :build
