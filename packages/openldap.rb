@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Openldap < Autotools
   description 'OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.'
   homepage 'https://www.openldap.org/'
-  version '2.6.6'
+  version '2.6.7'
   license 'OpenLDAP and GPL-2'
   compatibility 'all'
-  source_url "https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-#{version}.tgz"
-  source_sha256 '082e998cf542984d43634442dbe11da860759e510907152ea579bdc42fe39ea0'
+  source_url 'https://openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.7.tgz'
+  source_sha256 'cd775f625c944ed78a3da18a03b03b08eea73c8aabc97b41bb336e9a10954930'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1e48b2d0f8b5a575222271b57006c2281c0a392d63fd3dedf84d9ce33371a27c',
-     armv7l: '1e48b2d0f8b5a575222271b57006c2281c0a392d63fd3dedf84d9ce33371a27c',
-       i686: 'dabfadedd28a9db659eda4457722a9112e19e0093384cbfd06db049cd33bb6b5',
-     x86_64: 'a5a93d727f0fd0c7840d5d133801f336b5833a12c59dbcf1867451b627a931be'
+    aarch64: '59f9ff6a7e7598580b5273c33594cc37330822e1fdeaa15c45ee6b920c804ede',
+     armv7l: '59f9ff6a7e7598580b5273c33594cc37330822e1fdeaa15c45ee6b920c804ede',
+       i686: 'b46d941a4a98202ecd4cc7eb383a341cffae67b0c7249ec6613928370cd24efd',
+     x86_64: '5a209b3770c605c2543bb485b74d6c2c73d5724c5c6e45f448e623db1c39d107'
   })
 
   depends_on 'e2fsprogs' => :build
