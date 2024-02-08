@@ -1,0 +1,6 @@
+/usr/local/include/cclang/module.modulemap
+/usr/local/include/cclang/opencl-c-base.h
+/usr/local/include/cclang/opencl-c.h
+/usr/local/include/cclang/opencl_clang.h
+/usr/local/lib/libopencl-clang.so
+/usr/local/lib/libopencl-clang.so.17
