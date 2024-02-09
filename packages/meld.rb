@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version '3.22.0-684e1e2'
+  version '3.22.0-684e1e2-py3.12'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
@@ -20,6 +20,7 @@ class Meld < Meson
   depends_on 'desktop_file_utils' # L
   depends_on 'gtk3' # L
   depends_on 'gtksourceview_4' # L
+  depends_on 'python3' # L
   depends_on 'py3_pycairo' # L
   depends_on 'py3_libxml2' # L
 
