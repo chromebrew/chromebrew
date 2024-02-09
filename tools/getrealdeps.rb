@@ -3,6 +3,9 @@
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
+@crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+require "#{@crew_local_repo_root}/lib/const"
+
 if ARGV.include?('--use-crew-dest-dir')
   ARGV.delete('--use-crew-dest-dir')
   @opt_use_crew_dest_dir = true
@@ -18,10 +21,6 @@ end
 
 pkg = ARGV[0].chomp('.rb')
 puts "Checking for the runtime dependencies of #{pkg}..."
-
-CREW_PREFIX = ENV['CREW_PREFIX'] || `crew const CREW_PREFIX`.split('=')[1].chomp
-CREW_DEST_DIR = ENV['CREW_DEST_DIR'] || `crew const CREW_DEST_DIR`.split('=')[1].chomp
-CREW_LIB_PREFIX = ENV['CREW_LIB_PREFIX'] || `crew const CREW_LIB_PREFIX`.split('=')[1].chomp
 
 if @opt_use_crew_dest_dir
   define_singleton_method('pkgfilelist') {File.join(CREW_DEST_DIR, 'filelist')}
