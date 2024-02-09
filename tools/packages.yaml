@@ -2730,6 +2730,11 @@ url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
 activity: medium
 ---
 kind: url
+name: google_webdesigner
+url: https://webdesigner.withgoogle.com/
+activity: high
+---
+kind: url
 name: gox
 url: https://github.com/mitchellh/gox/releases
 activity: low
