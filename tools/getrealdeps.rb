@@ -10,13 +10,14 @@ end
 
 # Exit quickly if an invalid package name is given.
 if ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#')
-  puts 'Getrealdeps checks for the dependencies of a package.'
-  puts 'Dependencies are added if the package file is missing them.'
+  puts 'Getrealdeps checks for the runtime dependencies of a package.'
+  puts 'The runtime dependencies are added if the package file is missing them.'
   puts 'Usage: getrealdeps.rb [--use_crew_dest_dir] <packagename>'
   exit 1
 end
 
 pkg = ARGV[0].chomp('.rb')
+puts "Checking for the runtime dependencies of #{pkg}..."
 
 CREW_PREFIX = ENV['CREW_PREFIX'] || `crew const CREW_PREFIX`.split('=')[1].chomp
 CREW_DEST_DIR = ENV['CREW_DEST_DIR'] || `crew const CREW_DEST_DIR`.split('=')[1].chomp
