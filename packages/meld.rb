@@ -5,7 +5,7 @@ class Meld < Meson
   homepage 'https://meldmerge.org/'
   version '3.22.0-684e1e2-py3.12'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
   git_hashtag '684e1e27f31b4f0053da546a273a4ecf07df595f'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Meld < Meson
   binary_sha256({
     aarch64: 'c9044c2ee4f70158c0f271a764f475c6a7cb095525699fe20c3ab6e55c3a622d',
      armv7l: 'c9044c2ee4f70158c0f271a764f475c6a7cb095525699fe20c3ab6e55c3a622d',
-       i686: '738c8fe2c1df886e38587f69dddaecb928d615e19233ccc5c4fdb83f8c552478',
      x86_64: '0e8c2e68b57acfc2e826411a62c7bb5c5bea7303d4c82c84bb5e489af3182076'
   })
 
