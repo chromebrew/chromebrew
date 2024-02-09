@@ -1718,8 +1718,8 @@ def archive_package(crew_archive_dest)
   if @opt_force
     FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
     puts "The package file for #{@pkgName} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
-    puts "#{@pkgName} will now be installed".lightblue
-    install_command #{pkg_name}
+    puts "#{@pkgName} will now be installed...".lightblue
+    system "crew install #{@pkg.name}"
   end
 end
 
