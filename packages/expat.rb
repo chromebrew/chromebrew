@@ -2,8 +2,8 @@ require 'package'
 
 class Expat < Package
   description 'James Clark\'s Expat XML parser library in C.'
-  homepage 'https://sourceforge.net/projects/expat/'
-  version '2.5.0'
+  homepage 'https://github.com/libexpat/libexpat'
+  version '2.6.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/libexpat/libexpat.git'
@@ -11,10 +11,10 @@ class Expat < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b77d23f30cca02e40219c8ad5982c6f6201e986bf01111f74d28807d13942278',
-     armv7l: 'b77d23f30cca02e40219c8ad5982c6f6201e986bf01111f74d28807d13942278',
-       i686: '70030f04579c9a59340570f824ba7f6ac14b8863f5e9201f58186844df8dcd50',
-     x86_64: 'e1560b5789384bc4a6f83d4a9e8b803d00b552f894f9843b2955ec3a81648211'
+    aarch64: '0e2b6d7dbb58b6820446701b89bfad4c0a46651974d6901b0a02a0e724744bfe',
+     armv7l: '0e2b6d7dbb58b6820446701b89bfad4c0a46651974d6901b0a02a0e724744bfe',
+       i686: 'bec09a1a1c7a1e178c6e8859a49a4ba5b5376127971fbcf927751eb1b526249c',
+     x86_64: 'c5ad0543f0c6d1499243b3eba4459f328e639eb93167082d7e59c6d254aefde6'
   })
 
   depends_on 'glibc' # R
@@ -22,6 +22,7 @@ class Expat < Package
   def self.build
     Dir.chdir('expat') do
       system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \
+          -DEXPAT_BUILD_EXAMPLES=OFF \
           -DBUILD_SHARED_LIBS=ON \
           -Wno-dev \
           -G Ninja"
