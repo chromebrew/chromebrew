@@ -8526,6 +8526,11 @@ url: https://osdn.net/projects/hanazono-font/releases/
 activity: none
 ---
 kind: url
+name: tuptime
+url: https://github.com/rfmoz/tuptime/releases
+activity: low
+---
+kind: url
 name: twm
 url: https://www.x.org/archive//individual/app/
 activity: none
