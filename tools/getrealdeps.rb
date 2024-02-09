@@ -49,7 +49,7 @@ end
 
 # Gawk is needed for adding dependencies.
 unless system('gawk -W version > /dev/null 2>&1')
-  puts "\nGawk is needed for adding dependencies to package files."
+  puts "\nThe inplace replacement functionality of gawk is used to add missing dependencies to package files."
   system('crew install gawk')
 end
 
