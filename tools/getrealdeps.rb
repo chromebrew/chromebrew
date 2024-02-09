@@ -11,9 +11,11 @@ if ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#')
   exit 1
 end
 
+@opt_prepare_package = ARGV.include?('--in_prepare_package')
 pkg = ARGV[0].chomp('.rb')
 
 CREW_PREFIX = ENV['CREW_PREFIX'] || `crew const CREW_PREFIX`.split('=')[1].chomp
+CREW_DEST_DIR = ENV['CREW_DEST_DIR'] || `crew const CREW_DEST_DIR`.split('=')[1].chomp
 CREW_LIB_PREFIX = ENV['CREW_LIB_PREFIX'] || `crew const CREW_LIB_PREFIX`.split('=')[1].chomp
 
 # Package needs to be installed for package filelist to be populated.
@@ -67,6 +69,10 @@ def crewfilesfxn(pkgname)
 end
 
 pkgfiles = crewfilesfxn(pkg).split("\n").uniq
+
+if @opt_prepare_package
+  pkgfiles.map! {|item| item.prepend(CREW_DEST_DIR)}
+end
 
 FileUtils.rm_rf("/tmp/deps/#{pkg}")
 # Remove files we don't care about, such as man files and non-binaries.
