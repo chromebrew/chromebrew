@@ -1,32 +1,38 @@
 #!/usr/bin/env ruby
-# getrealdeps for Chromebrew version 1.2
+# getrealdeps for Chromebrew version 1.3
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
+
+if ARGV.include?('--use-crew-dest-dir')
+  ARGV.delete('--use-crew-dest-dir')
+  @opt_use_crew_dest_dir = true
+end
 
 # Exit quickly if an invalid package name is given.
 if ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#')
   puts 'Getrealdeps checks for the dependencies of a package.'
   puts 'Dependencies are added if the package file is missing them.'
-  puts 'Usage: getrealdeps.rb <packagename>'
+  puts 'Usage: getrealdeps.rb [--use_crew_dest_dir] <packagename>'
   exit 1
 end
 
-@opt_prepare_package = ARGV.include?('--in_prepare_package')
 pkg = ARGV[0].chomp('.rb')
 
 CREW_PREFIX = ENV['CREW_PREFIX'] || `crew const CREW_PREFIX`.split('=')[1].chomp
 CREW_DEST_DIR = ENV['CREW_DEST_DIR'] || `crew const CREW_DEST_DIR`.split('=')[1].chomp
 CREW_LIB_PREFIX = ENV['CREW_LIB_PREFIX'] || `crew const CREW_LIB_PREFIX`.split('=')[1].chomp
 
-# Package needs to be installed for package filelist to be populated.
-unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist"
-  puts "Installing #{pkg} because it is not installed."
-  system("yes | crew install #{pkg}")
-end
-
-unless File.exist?("#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist")
-  puts "Package #{pkg} either does not exist or does not contain any libraries."
-  exit 1
+if @opt_use_crew_dest_dir
+  define_singleton_method('pkgfilelist') {File.join(CREW_DEST_DIR, 'filelist')}
+  abort('Pkg was not built.') unless File.exist?(pkgfilelist)
+else
+  define_singleton_method('pkgfilelist') {"#{CREW_PREFIX}/etc/crew/meta/#{pkg}.filelist"}
+  # Package needs to be installed for package filelist to be populated.
+  unless File.exist?(pkgfilelist)
+    puts "Installing #{pkg} because it is not installed."
+    system("yes | crew install #{pkg}")
+  end
+  abort("Package #{pkg} either does not exist or does not contain any libraries.") unless File.exist?(pkgfilelist)
 end
 
 # Speed up grep.
@@ -56,23 +62,20 @@ end
 # This is a subset of what crew whatprovides gives.
 def whatprovidesfxn(pkgdepslcl, pkg)
   filelcl = if pkgdepslcl.include?(CREW_LIB_PREFIX)
-              `#{GREP} --exclude #{pkg}.filelist --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
+              `#{GREP} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
             else
-              `#{GREP} --exclude #{pkg}.filelist --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
+              `#{GREP} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
             end
   filelcl.gsub(/.filelist.*/, '').gsub(%r{.*/}, '').split("\n").uniq.join("\n").gsub(':', '')
 end
 
-# What files does a package provide.
-def crewfilesfxn(pkgname)
-  File.read("#{CREW_PREFIX}/etc/crew/meta/#{pkgname}.filelist")
-end
+# What files does the package provide.
+pkgfiles = File.read(pkgfilelist).split("\n").uniq
 
-pkgfiles = crewfilesfxn(pkg).split("\n").uniq
-
-if @opt_prepare_package
-  pkgfiles.map! {|item| item.prepend(CREW_DEST_DIR)}
-end
+# Look at files in CREW_DEST_DIR instead of assuming the package is
+# normally installed, which lets us avoid installing the package if it
+# was just built.
+pkgfiles.map! {|item| item.prepend(CREW_DEST_DIR)} if @opt_use_crew_dest_dir
 
 FileUtils.rm_rf("/tmp/deps/#{pkg}")
 # Remove files we don't care about, such as man files and non-binaries.
