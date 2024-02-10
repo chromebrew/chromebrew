@@ -7,4 +7,6 @@ class Ruby_docopt < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+
+  no_compile_needed
 end

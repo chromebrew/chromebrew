@@ -7,4 +7,6 @@ class Ruby_asciidoctor < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+
+  no_compile_needed
 end
