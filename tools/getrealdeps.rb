@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# getrealdeps for Chromebrew version 1.3
+# getrealdeps version 1.3 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
