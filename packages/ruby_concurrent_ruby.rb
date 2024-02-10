@@ -9,4 +9,5 @@ class Ruby_concurrent_ruby < RUBY
   source_url 'SKIP'
 
   conflicts_ok
+  no_compile_needed
 end
