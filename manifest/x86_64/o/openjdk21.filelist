@@ -190,6 +190,8 @@
 /usr/local/share/openjdk21/include/jvmti.h
 /usr/local/share/openjdk21/include/linux/jawt_md.h
 /usr/local/share/openjdk21/include/linux/jni_md.h
+/usr/local/share/openjdk21/jmods/com.azul.crs.client.jmod
+/usr/local/share/openjdk21/jmods/com.azul.tooling.jmod
 /usr/local/share/openjdk21/jmods/java.base.jmod
 /usr/local/share/openjdk21/jmods/java.compiler.jmod
 /usr/local/share/openjdk21/jmods/java.datatransfer.jmod
@@ -259,6 +261,12 @@
 /usr/local/share/openjdk21/jmods/jdk.unsupported.jmod
 /usr/local/share/openjdk21/jmods/jdk.xml.dom.jmod
 /usr/local/share/openjdk21/jmods/jdk.zipfs.jmod
+/usr/local/share/openjdk21/legal/com.azul.crs.client/ADDITIONAL_LICENSE_INFO
+/usr/local/share/openjdk21/legal/com.azul.crs.client/ASSEMBLY_EXCEPTION
+/usr/local/share/openjdk21/legal/com.azul.crs.client/LICENSE
+/usr/local/share/openjdk21/legal/com.azul.tooling/ADDITIONAL_LICENSE_INFO
+/usr/local/share/openjdk21/legal/com.azul.tooling/ASSEMBLY_EXCEPTION
+/usr/local/share/openjdk21/legal/com.azul.tooling/LICENSE
 /usr/local/share/openjdk21/legal/java.base/ADDITIONAL_LICENSE_INFO
 /usr/local/share/openjdk21/legal/java.base/aes.md
 /usr/local/share/openjdk21/legal/java.base/asm.md
