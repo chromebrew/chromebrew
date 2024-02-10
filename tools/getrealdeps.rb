@@ -19,6 +19,17 @@ if ARGV[0].nil? || ARGV[0].empty? || ARGV[0].include?('#')
   exit 1
 end
 
+# Search for which packages have a needed library in CREW_LIB_PREFIX.
+# This is a subset of what crew whatprovides gives.
+def whatprovidesfxn(pkgdepslcl, pkg)
+  filelcl = if pkgdepslcl.include?(CREW_LIB_PREFIX)
+              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
+            else
+              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
+            end
+  filelcl.gsub(/.filelist.*/, '').gsub(%r{.*/}, '').split("\n").uniq.join("\n").gsub(':', '')
+end
+
 def main(pkg)
   puts "Checking for the runtime dependencies of #{pkg}..."
 
@@ -56,17 +67,6 @@ def main(pkg)
   unless system('upx --version > /dev/null 2>&1')
     puts "\nUpx is needed to expand compressed binaries."
     system('crew install upx')
-  end
-
-  # Search for which packages have a needed library in CREW_LIB_PREFIX.
-  # This is a subset of what crew whatprovides gives.
-  def whatprovidesfxn(pkgdepslcl, pkg)
-    filelcl = if pkgdepslcl.include?(CREW_LIB_PREFIX)
-                `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
-              else
-                `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
-              end
-    filelcl.gsub(/.filelist.*/, '').gsub(%r{.*/}, '').split("\n").uniq.join("\n").gsub(':', '')
   end
 
   # What files does the package provide.
