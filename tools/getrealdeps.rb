@@ -4,7 +4,13 @@
 require 'fileutils'
 
 @crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-require File.join(@crew_local_repo_root, 'lib/const')
+# When invoked from crew, pwd is CREW_DEST_DIR, so @crew_local_repo_root
+# is empty.
+if @crew_local_repo_root.to_s.empty?
+  require_relative '../lib/const'
+else
+  require File.join(@crew_local_repo_root, 'lib/const')
+end
 
 if ARGV.include?('--use-crew-dest-dir')
   ARGV.delete('--use-crew-dest-dir')
