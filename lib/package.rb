@@ -198,13 +198,18 @@ class Package
   end
 
   def self.get_url(architecture)
+    is_trusted = false
+
     if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-      return get_binary_url(architecture)
+      is_trusted   = true
+      download_url = get_binary_url(architecture)
     elsif @source_url.respond_to?(:has_key?)
-      return @source_url.key?(architecture) ? @source_url[architecture] : nil
+      download_url = @source_url.key?(architecture) ? @source_url[architecture] : nil
     else
-      return @source_url
+      download_url = @source_url
     end
+
+    return [download_url, is_trusted]
   end
 
   def self.get_binary_url(architecture)

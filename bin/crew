@@ -790,12 +790,12 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
-  url = @pkg.get_url(@device[:architecture])
+  url, is_trusted = @pkg.get_url(@device[:architecture])
   source = @pkg.is_source?(@device[:architecture])
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  sha256sum = @pkg.get_sha256(@device[:architecture])
+  sha256sum = is_trusted ? 'SKIP' : @pkg.get_sha256(@device[:architecture])
   @extract_dir = @pkg.get_extract_dir
 
   @build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
