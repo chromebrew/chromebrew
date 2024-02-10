@@ -201,8 +201,8 @@ class Package
     is_trusted = false
 
     if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-      is_trusted   = true
       download_url = get_binary_url(architecture)
+      is_trusted   = true if File.extname(download_url) == '.zst'
     elsif @source_url.respond_to?(:has_key?)
       download_url = @source_url.key?(architecture) ? @source_url[architecture] : nil
     else
