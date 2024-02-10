@@ -4,7 +4,7 @@
 require 'fileutils'
 
 @crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-require "#{@crew_local_repo_root}/lib/const"
+require File.join(@crew_local_repo_root, 'lib/const')
 
 if ARGV.include?('--use-crew-dest-dir')
   ARGV.delete('--use-crew-dest-dir')
