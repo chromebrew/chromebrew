@@ -4,7 +4,7 @@ require_relative 'git'
 class Git_prompt < Package
   description 'Display the git branch and status in the command prompt'
   homepage 'https://github.com/git/git'
-  version '2.43.0'
+  version '2.43.1'
   # When upgrading git_prompt, be sure to upgrade git in tandem.
   puts "#{self} version differs from Git version #{Git.version}".orange if version != Git.version
   license 'GPL-2'
