@@ -1202,6 +1202,8 @@ def prepare_package(destdir)
     # abort if errors encountered
     abort 'Exiting due to above errors.'.lightred if @_errors
 
+    # Make sure the package file has runtime dependencies added properly.
+    system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}"
     # create directory list
     # Remove CREW_PREFIX and HOME from the generated directorylist.
     @crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
@@ -1712,12 +1714,12 @@ def archive_package(crew_archive_dest)
     end
   end
   system "sha256sum #{crew_archive_dest}/#{pkg_name} > #{crew_archive_dest}/#{pkg_name}.sha256"
-  # Make sure the package file has runtime dependencies added properly.
-  system "#{CREW_LIB_PATH}/tools/getrealdeps.rb #{@pkgName}"
   # Copy package file for the successfully generated package to CREW_LOCAL_REPO_ROOT only if force is set.
   if @opt_force
     FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkgName}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
     puts "The package file for #{@pkgName} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
+    puts "#{@pkgName} will now be installed...".lightblue
+    system "crew install #{@pkg.name}"
   end
 end
 
