@@ -245,11 +245,11 @@ def list_installed
       search package[:name], true
       installed_packages.append("#{package[:name]} #{package[:version]}")
     end
-    sorted_installed_packages = installed_packages.sort
-    sorted_installed_packages.unshift('======= =======')
-    sorted_installed_packages.unshift('Package Version')
-    first_col_width = sorted_installed_packages.map(&:split).map(&:first).max_by(&:size).size + 2
-    sorted_installed_packages.map(&:strip).each do |line|
+    installed_packages.sort!
+    installed_packages.unshift('======= =======')
+    installed_packages.unshift('Package Version')
+    first_col_width = installed_packages.map(&:split).map(&:first).max_by(&:size).size + 2
+    installed_packages.map(&:strip).each do |line|
       puts "%-#{first_col_width}s%s".lightgreen % line.split
     end
     print "\n"
