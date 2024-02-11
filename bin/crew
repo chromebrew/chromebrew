@@ -2066,7 +2066,7 @@ def postinstall_command(args)
   end
 end
 
-def prop_command(_)
+def prop_command(_args)
   prop
 end
 
