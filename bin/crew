@@ -170,7 +170,7 @@ end
 def print_package(pkgPath, extra = false)
   pkgName = File.basename pkgPath, '.rb'
   begin
-    set_package pkgName, pkgPath
+    set_package pkgPath
   rescue StandardError => e
     warn "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
   end
@@ -205,9 +205,9 @@ def print_current_package(extra = false)
   puts ''
 end
 
-def set_package(pkgName, pkgPath)
+def set_package(pkgPath)
   begin
-    @pkg = Package.load_package(pkgPath, pkgName)
+    @pkg = Package.load_package(pkgPath)
   rescue SyntaxError => e
     warn "#{e.class}: #{e.message}".red
   end
@@ -230,7 +230,7 @@ def list_available
     next unless notInstalled
 
     begin
-      set_package pkgName, filename
+      set_package filename
     rescue StandardError => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
@@ -283,7 +283,7 @@ def generate_compatible
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkgName = File.basename filename, '.rb'
     begin
-      set_package pkgName, filename
+      set_package filename
     rescue StandardError => e
       puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
@@ -306,7 +306,7 @@ end
 def search(pkgName, silent = false)
   pkgPath = File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
   begin
-    return set_package(pkgName, pkgPath) if File.file?(pkgPath)
+    return set_package(pkgPath) if File.file?(pkgPath)
   rescue StandardError => e
     puts "Error with #{pkgName}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
@@ -326,7 +326,7 @@ def regexp_search(pkgPat)
     Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |packagePath|
       packageName = File.basename packagePath, '.rb'
       begin
-        set_package packageName, packagePath
+        set_package packagePath
       rescue StandardError => e
         puts "Error with #{pkgName}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
       end
@@ -717,9 +717,9 @@ def upgrade(*pkgs, build_from_source: false)
         return false
       end
     end
-    pkgVer_latest     = Package.load_package(pkgFile, pkgName).version
+    pkgVer_latest     = Package.load_package(pkgFile).version
     pkgVer_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:version]
-    pkgHash_latest    = Package.load_package(pkgFile, pkgName).binary_sha256&.dig(ARCH.to_sym)
+    pkgHash_latest    = Package.load_package(pkgFile).binary_sha256&.dig(ARCH.to_sym)
     pkgHash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:binary_sha256]
 
     return pkgHash_latest != pkgHash_installed unless !pkgHash_installed || pkgHash_latest == 'null'
@@ -1530,8 +1530,7 @@ def resolve_dependencies
 
   # run preflight check for dependencies
   @dependencies.each do |depName|
-    dep_pkgPath = File.join(CREW_PACKAGES_PATH, "#{depName}.rb")
-    Package.load_package(dep_pkgPath, depName).preflight
+    Package.load_package(File.join(CREW_PACKAGES_PATH, "#{depName}.rb")).preflight
   end
 
   return if @dependencies.empty?

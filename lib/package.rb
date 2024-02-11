@@ -30,9 +30,10 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
+  def self.load_package(pkgFile)
     # self.load_package: load a package under 'Package' class scope
     #
+    pkgName = File.basename(pkgFile, '.rb')
     className = pkgName.capitalize
 
     # read and eval package script under 'Package' class
