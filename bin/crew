@@ -161,8 +161,7 @@ end
 
 def load_json
   # load_json(): (re)load device.json
-  json_path = File.join(CREW_CONFIG_PATH, 'device.json')
-  @device   = JSON.load_file(json_path, symbolize_names: true)
+  @device = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true)
 
   # symbolize also values
   @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
@@ -1604,7 +1603,7 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp"
+  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), File.join(CREW_CONFIG_PATH, 'device.json.tmp')
 
   # remove it just before the file copy
   if @pkg.in_upgrade
@@ -1627,13 +1626,13 @@ def install
 
   # add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256(@device[:architecture]))
-  File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
+  File.open(File.join(CREW_CONFIG_PATH, 'device.json.tmp'), 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
   # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
-  FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
+  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json.tmp'), File.join(CREW_CONFIG_PATH, 'device.json')
+  FileUtils.rm File.join(CREW_CONFIG_PATH, 'device.json.tmp')
 end
 
 def resolve_dependencies_and_build
@@ -1792,7 +1791,7 @@ def remove(pkgName)
   @device[:installed_packages].delete_if { |elem| elem[:name] == pkgName }
 
   # update the device manifest
-  File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+  File.write File.join(CREW_CONFIG_PATH, 'device.json'), JSON.pretty_generate(JSON.parse(@device.to_json))
 
   search pkgName, true
   @pkg.remove unless @in_fixup
