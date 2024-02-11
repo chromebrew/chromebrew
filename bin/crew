@@ -679,8 +679,8 @@ def update
       next
     end
     differentVersion = (package[:version] != @pkg.version)
-    hasSha = !(@pkg.get_binary_sha256(@device[:architecture]).to_s.empty? || package[:binary_sha256].to_s.empty?)
-    differentSha = hasSha && package[:binary_sha256] != @pkg.get_binary_sha256(@device[:architecture])
+    hasSha = !(@pkg.get_binary_sha256.to_s.empty? || package[:binary_sha256].to_s.empty?)
+    differentSha = hasSha && package[:binary_sha256] != @pkg.get_binary_sha256
 
     canBeUpdated += 1 if differentVersion || differentSha
 
@@ -719,7 +719,7 @@ def upgrade(*pkgs, build_from_source: false)
     end
     pkgVer_latest     = Package.load_package(pkgFile, pkgName).version
     pkgVer_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:version]
-    pkgHash_latest    = Package.load_package(pkgFile, pkgName).get_binary_sha256(@device[:architecture])
+    pkgHash_latest    = Package.load_package(pkgFile, pkgName).get_binary_sha256
     pkgHash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:binary_sha256]
 
     return pkgHash_latest != pkgHash_installed unless !pkgHash_installed || pkgHash_latest == ''
@@ -789,12 +789,12 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
-  url = @pkg.get_url(@device[:architecture])
-  source = @pkg.is_source?(@device[:architecture])
+  url = @pkg.get_url
+  source = @pkg.is_source?
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  sha256sum = @pkg.get_sha256(@device[:architecture])
+  sha256sum = @pkg.get_sha256
   @extract_dir = @pkg.get_extract_dir
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
@@ -1625,7 +1625,7 @@ def install
   end
 
   # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256(@device[:architecture]))
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256)
   File.open(File.join(CREW_CONFIG_PATH, 'device.json.tmp'), 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
@@ -2017,8 +2017,8 @@ def build_command(args)
     puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
     puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless @pkg.compatible?
     puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
-    puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
-    resolve_dependencies_and_build if !@pkg.is_fake? && @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
+    puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source? && @pkg.source_url.to_s.upcase != 'SKIP'
+    resolve_dependencies_and_build if !@pkg.is_fake? && @pkg.is_source? && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
   end
   puts "Builds are located in #{CREW_LOCAL_BUILD_DIR}.".yellow
 end
