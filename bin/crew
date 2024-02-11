@@ -251,8 +251,8 @@ end
 
 def list_compatible(compat = true)
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    pkgName = File.basename filename, '.rb'
-    if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
+    set_package filename
+    if @pkg.compatible?
       if compat
         if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
           puts pkgName.lightgreen
@@ -264,27 +264,6 @@ def list_compatible(compat = true)
       puts pkgName.lightred
     end
   end
-end
-
-def generate_compatible
-  puts 'Generating compatible packages...'.orange if @opt_verbose
-  @device[:compatible_packages] = []
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    set_package filename
-    puts "Checking #{@pkg.name} for compatibility.".orange if @opt_verbose
-    if @pkg.compatible?
-      # add to compatible packages
-      puts "Adding #{@pkg.name} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
-      @device[:compatible_packages].push(name: @pkg.name)
-    elsif @opt_verbose
-      puts "#{@pkg.name} is not a compatible package.".lightred
-    end
-  end
-  File.open(File.join(CREW_CONFIG_PATH, 'device.json'), 'w') do |file|
-    output = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(output)
-  end
-  puts 'Generating compatible packages done.'.orange if @opt_verbose
 end
 
 def search(pkgName, silent = false)
@@ -483,8 +462,6 @@ def help(pkgName = nil)
       Update crew.
       Usage: crew update
       This only updates crew itself.  Use `crew upgrade` to update packages.
-      Usage: crew update compatible
-      This updates the crew package compatibility list.
     EOT
   when 'upgrade'
     puts <<~EOT
@@ -611,7 +588,8 @@ def whatprovides(regexPat)
     filelist, matchedFile = result.split(':', 2)
     pkgName = File.basename(filelist, '.filelist')
     pkgNameStatus = pkgName
-    if @device[:compatible_packages].any? { |elem| elem[:name] == pkgName }
+    set_package File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
+    if @pkg.compatible?
       pkgNameStatus = pkgName.lightgreen if File.file? "#{CREW_META_PATH}/#{pkgName}.filelist"
     else
       pkgNameStatus = pkgName.lightred
@@ -641,8 +619,6 @@ def update
   # Do any fixups necessary after crew has updated from git.
   load "#{CREW_LIB_PATH}/lib/fixup.rb"
 
-  # update compatible packages
-  generate_compatible
   # check for outdated installed packages
   puts 'Checking for package updates...'
 
@@ -2162,12 +2138,8 @@ def sysinfo_command(_args)
   end
 end
 
-def update_command(args)
-  if args['<compatible>']
-    generate_compatible
-  else
-    update
-  end
+def update_command(_args)
+  update
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)
