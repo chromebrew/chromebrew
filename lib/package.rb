@@ -191,33 +191,28 @@ class Package
   end
 
   def self.get_url
-    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(ARCH.to_sym)
-      return get_binary_url
-    elsif @source_url.respond_to?(:has_key?)
-      return @source_url.key?(ARCH.to_sym) ? @source_url[ARCH.to_sym] : nil
+    if is_binary?
+      return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{ARCH}/#{name}-#{version}-chromeos-#{ARCH}.#{binary_compression}"
+    elsif @source_url.is_a?(Hash)
+      return @source_url[ARCH.to_sym]
     else
       return @source_url
     end
   end
 
-  def self.get_binary_url = "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{ARCH}/#{name}-#{version}-chromeos-#{ARCH}.#{binary_compression}"
-
-  def self.get_source_url = @source_url.key?(ARCH.to_sym) ? @source_url[ARCH.to_sym] : nil
-
   def self.get_sha256
-    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(ARCH.to_sym)
+    if is_binary?
       return @binary_sha256[ARCH.to_sym]
-    elsif @source_sha256.respond_to?(:has_key?)
-      return @source_sha256.key?(ARCH.to_sym) ? @source_sha256[ARCH.to_sym] : nil
+    elsif @source_sha256.is_a?(Hash)
+      return @source_sha256[ARCH.to_sym]
     else
       return @source_sha256
     end
   end
 
-  def self.get_binary_sha256 = @binary_sha256&.key?(ARCH.to_sym) ? @binary_sha256[ARCH.to_sym] : ''
   def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.is_binary? = !@build_from_source && @binary_sha256 && @binary_sha256.key?(ARCH.to_sym)
+  def self.is_binary? = !@build_from_source && @binary_sha256&.key?(ARCH.to_sym)
   def self.is_source? = !(is_binary? || is_fake?)
 
   def self.system(*args, **opt_args)

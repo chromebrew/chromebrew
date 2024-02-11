@@ -679,8 +679,8 @@ def update
       next
     end
     differentVersion = (package[:version] != @pkg.version)
-    hasSha = !(@pkg.get_binary_sha256.to_s.empty? || package[:binary_sha256].to_s.empty?)
-    differentSha = hasSha && package[:binary_sha256] != @pkg.get_binary_sha256
+    hasSha = !(@pkg.binary_sha256&.dig(ARCH.to_sym).to_s.empty? || package[:binary_sha256].to_s.empty?)
+    differentSha = hasSha && package[:binary_sha256] != @pkg.binary_sha256&.dig(ARCH.to_sym)
 
     canBeUpdated += 1 if differentVersion || differentSha
 
@@ -719,10 +719,10 @@ def upgrade(*pkgs, build_from_source: false)
     end
     pkgVer_latest     = Package.load_package(pkgFile, pkgName).version
     pkgVer_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:version]
-    pkgHash_latest    = Package.load_package(pkgFile, pkgName).get_binary_sha256
+    pkgHash_latest    = Package.load_package(pkgFile, pkgName).binary_sha256&.dig(ARCH.to_sym)
     pkgHash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:binary_sha256]
 
-    return pkgHash_latest != pkgHash_installed unless !pkgHash_installed || pkgHash_latest == ''
+    return pkgHash_latest != pkgHash_installed unless !pkgHash_installed || pkgHash_latest == 'null'
     return pkgVer_latest != pkgVer_installed
   end
 
@@ -1625,7 +1625,7 @@ def install
   end
 
   # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256)
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.binary_sha256&.dig(ARCH.to_sym))
   File.open(File.join(CREW_CONFIG_PATH, 'device.json.tmp'), 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
