@@ -541,7 +541,7 @@ def help(pkgName = nil)
 end
 
 def cache_build
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{ARCH}.tar.zst")
   if CREW_CACHE_ENABLED && File.writable?(CREW_CACHE_DIR)
     puts 'Caching build dir...'
     pkg_build_dirname_absolute = File.join(CREW_BREW_DIR, @extract_dir)
@@ -797,11 +797,11 @@ def download
   sha256sum = @pkg.get_sha256
   @extract_dir = @pkg.get_extract_dir
 
-  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+  build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{ARCH}.tar.zst")
   return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile)
 
   if !url
-    abort "No precompiled binary or source is available for #{@device[:architecture]}.".lightred
+    abort "No precompiled binary or source is available for #{ARCH}.".lightred
   elsif @pkg.build_from_source
     puts 'Downloading source...'
   elsif !source
@@ -959,7 +959,7 @@ def unpack(meta)
   Dir.chdir CREW_BREW_DIR do
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
-    build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
+    build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{ARCH}.tar.zst")
     if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256" )
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
@@ -1694,13 +1694,13 @@ def archive_package(crew_archive_dest)
   end
   if @pkg.no_zstd? || !crew_prefix_zstd_available
     puts 'Using xz to compress package. This may take some time.'.lightblue
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.xz"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
       system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
     end
   else
     puts 'Using zstd to compress package. This may take some time.'.lightblue
-    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{@device[:architecture]}.tar.zst"
+    pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.tar.zst"
     Dir.chdir CREW_DEST_DIR do
       # Using same zstd compression options as Arch, which privilege
       # decompression speed over compression speed.
