@@ -218,6 +218,7 @@ end
 
 def list_available
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
+    pkgName      = File.basename(filename, '.rb')
     filelist     = File.join(CREW_META_PATH, "#{pkgName}.filelist")
     notInstalled = !File.file?(filelist)
 
@@ -668,13 +669,12 @@ def upgrade(*pkgs, build_from_source: false)
         return false
       end
     end
-    pkgVer_latest     = Package.load_package(pkgFile).version
+    set_package File.join(CREW_PACKAGES_PATH, "#{pkgName}.rb")
     pkgVer_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:version]
-    pkgHash_latest    = Package.load_package(pkgFile).binary_sha256&.dig(ARCH.to_sym)
     pkgHash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkgName } [0][:binary_sha256]
 
-    return pkgHash_latest != pkgHash_installed unless !pkgHash_installed || pkgHash_latest == 'null'
-    return pkgVer_latest != pkgVer_installed
+    return @pkg.binary_sha256&.dig(ARCH.to_sym) != pkgHash_installed unless !pkgHash_installed || @pkg.binary_sha256&.dig(ARCH.to_sym) == 'null'
+    return @pkg.version != pkgVer_installed
   end
 
   to_be_upgraded = []
@@ -1481,7 +1481,8 @@ def resolve_dependencies
 
   # run preflight check for dependencies
   @dependencies.each do |depName|
-    Package.load_package(File.join(CREW_PACKAGES_PATH, "#{depName}.rb")).preflight
+    set_package File.join(CREW_PACKAGES_PATH, "#{depName}.rb")
+    @pkg.preflight
   end
 
   return if @dependencies.empty?
