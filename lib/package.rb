@@ -145,14 +145,7 @@ class Package
     end
   end
 
-  def self.compatible?
-    if @compatibility
-      return @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
-    else
-      warn "#{name}: Missing `compatibility` field.".lightred
-      return false
-    end
-  end
+  def self.compatible? = @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
 
   def self.depends_on(dependency, ver_range = nil)
     @dependencies ||= {}
