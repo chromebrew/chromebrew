@@ -124,8 +124,7 @@ String.use_color = args['--color'] || !args['--no-color']
 
 # Verbose options
 @fileutils_verbose = @opt_verbose
-@verbose           = @opt_verbose ? 'v' : ''
-@short_verbose     = @opt_verbose ? '-v' : ''
+@verbose           = @opt_verbose ? '-v' : ''
 
 class ExitMessage
   @messages = []
@@ -1353,12 +1352,12 @@ def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/lo
         # Check for ACLs support.
         rsync_version = `rsync --version`.chomp
         if rsync_version.include?('ACLs') && !rsync_version.include?('no ACLs')
-          system 'rsync', "-ah#{@verbose}HAXW", '--remove-source-files', src, dst, exception: true
+          system 'rsync', "#{@verbose} -ahHAXW", '--remove-source-files', src, dst, exception: true
         else
-          system 'rsync', "-ah#{@verbose}HXW", '--remove-source-files', src, dst, exception: true
+          system 'rsync', "#{@verbose} -ah#HXW", '--remove-source-files', src, dst, exception: true
         end
       else
-        system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar -x#{@verbose}p --keep-directory-symlink -f -)", exception: true
+        system "cd #{src}; tar -cf - ./* | (cd #{dst}; tar #{@verbose} -xp --keep-directory-symlink -f -)", exception: true
       end
     end
   else
@@ -1647,7 +1646,7 @@ def archive_package(crew_archive_dest)
     puts 'Using xz to compress package. This may take some time.'.lightblue
     pkg_name = "#{@pkg.name}-#{@pkg.version}-chromeos-#{ARCH}.tar.xz"
     Dir.chdir CREW_DEST_DIR do
-      system "tar c#{@verbose}Jf #{crew_archive_dest}/#{pkg_name} *"
+      system "tar cJf #{crew_archive_dest}/#{pkg_name} * #{@verbose}"
     end
   else
     puts 'Using zstd to compress package. This may take some time.'.lightblue
@@ -1659,7 +1658,7 @@ def archive_package(crew_archive_dest)
       # Use nice so that user can (possibly) do other things during compression.
       if crew_prefix_zstd_available
         puts 'Using standard zstd'.lightblue if @opt_verbose
-        system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
+        system "tar c * #{@verbose} | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
       end
     end
   end
