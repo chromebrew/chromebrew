@@ -3,18 +3,18 @@
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
-@crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
-# When invoked from crew, pwd is CREW_DEST_DIR, so @crew_local_repo_root
+crew_local_repo_root = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+# When invoked from crew, pwd is CREW_DEST_DIR, so crew_local_repo_root
 # is empty.
-if @crew_local_repo_root.to_s.empty?
+if crew_local_repo_root.to_s.empty?
   require_relative '../lib/const'
 else
-  require File.join(@crew_local_repo_root, 'lib/const')
+  require File.join(crew_local_repo_root, 'lib/const')
 end
 
 if ARGV.include?('--use-crew-dest-dir')
   ARGV.delete('--use-crew-dest-dir')
-  @opt_use_crew_dest_dir = true
+  opt_use_crew_dest_dir = true
 end
 
 # Exit quickly if an invalid package name is given.
@@ -29,9 +29,9 @@ end
 # This is a subset of what crew whatprovides gives.
 def whatprovidesfxn(pkgdepslcl, pkg)
   filelcl = if pkgdepslcl.include?(CREW_LIB_PREFIX)
-              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
+              `#{grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
             else
-              `#{@grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
+              `#{grep} --exclude #{pkg}.filelist --exclude #{pkgfilelist} --exclude={"#{CREW_PREFIX}/etc/crew/meta/*_build.filelist"} "^#{CREW_LIB_PREFIX}.*#{pkgdepslcl}$" "#{CREW_PREFIX}"/etc/crew/meta/*.filelist`
             end
   filelcl.gsub(/.filelist.*/, '').gsub(%r{.*/}, '').split("\n").uniq.join("\n").gsub(':', '')
 end
@@ -39,7 +39,7 @@ end
 def main(pkg)
   puts "Checking for the runtime dependencies of #{pkg}..."
 
-  if @opt_use_crew_dest_dir
+  if opt_use_crew_dest_dir
     define_singleton_method('pkgfilelist') {File.join(CREW_DEST_DIR, 'filelist')}
     abort('Pkg was not built.') unless File.exist?(pkgfilelist)
   else
@@ -57,10 +57,10 @@ def main(pkg)
 
   # Install grep if a functional local copy does not exist.
   if system('grep --version > /dev/null 2>&1')
-    @grep = 'grep'
+    grep = 'grep'
   else
     system('crew install grep')
-    @grep = "#{CREW_PREFIX}/bin/grep"
+    grep = "#{CREW_PREFIX}/bin/grep"
   end
 
   # Gawk is needed for adding dependencies.
@@ -81,7 +81,7 @@ def main(pkg)
   # Look at files in CREW_DEST_DIR instead of assuming the package is
   # normally installed, which lets us avoid installing the package if it
   # was just built.
-  pkgfiles.map! {|item| item.prepend(CREW_DEST_DIR)} if @opt_use_crew_dest_dir
+  pkgfiles.map! {|item| item.prepend(CREW_DEST_DIR)} if opt_use_crew_dest_dir
 
   FileUtils.rm_rf("/tmp/deps/#{pkg}")
   # Remove files we don't care about, such as man files and non-binaries.
@@ -92,7 +92,7 @@ def main(pkg)
   pkgdepsfiles = pkgfiles.map do |i|
     system("upx -d #{i} > /dev/null 2>&1")
     FileUtils.mkdir_p("/tmp/deps/#{pkg}/")
-    `readelf -d "#{i}" 2>/dev/null | #{@grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg}/#{File.basename(i)}`
+    `readelf -d "#{i}" 2>/dev/null | #{grep} NEEDED | awk '{print $5}' | sed 's/\\[//g' | sed 's/\\]//g' | awk '!x[$0]++' | tee /tmp/deps/#{pkg}/#{File.basename(i)}`
   end
   pkgdepsfiles = pkgdepsfiles.map do |filedeps|
     filedeps.split("\n")

@@ -85,23 +85,23 @@ class Musl
       puts 'Running Musl.patchelf'.lightblue
       abort('No Patchelf found!').lightred unless File.exist?("#{CREW_PREFIX}/bin/patchelf")
 
-      @execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
-      return if @execfiles.to_s.empty?
+      execfiles = `find . -executable -type f ! \\( -name \"*.a\" \\) -exec sh -c \"file -i \'{}\' | grep -q \'executable; charset=binary\'\" \\; -exec ls -1i {} \\; | sort -u -n -s -k1,1 | awk '{print $2}'`.chomp
+      return if execfiles.to_s.empty?
 
       puts 'Running patchelf to patch binaries for musl paths'.lightblue
-      @execfiles.each_line(chomp: true) do |execfiletopatch|
+      execfiles.each_line(chomp: true) do |execfiletopatch|
         execfiletopatch = Dir.pwd + execfiletopatch.delete_prefix('.')
         system "patchelf --set-interpreter #{CREW_MUSL_PREFIX}/lib/libc.so #{execfiletopatch}"
         system "patchelf --set-rpath #{CREW_MUSL_PREFIX}/lib #{execfiletopatch}"
-        @neededlibs = `patchelf --print-needed #{execfiletopatch}`
-        next if @neededlibs.to_s.empty?
+        neededlibs = `patchelf --print-needed #{execfiletopatch}`
+        next if neededlibs.to_s.empty?
 
-        @neededlibs.each_line(chomp: true) do |neededlibspatch|
+        neededlibs.each_line(chomp: true) do |neededlibspatch|
           next if neededlibspatch.include?("#{CREW_MUSL_PREFIX}/lib")
 
-          @neededlibspatchednamepath = "#{CREW_MUSL_PREFIX}/lib/" + File.basename(neededlibspatch)
-          puts "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
-          system "patchelf --replace-needed #{neededlibspatch} #{@neededlibspatchednamepath} #{execfiletopatch}"
+          neededlibspatchednamepath = "#{CREW_MUSL_PREFIX}/lib/" + File.basename(neededlibspatch)
+          puts "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}"
+          system "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}"
         end
       end
     end
