@@ -742,8 +742,7 @@ def download
   url = @pkg.get_url
   source = @pkg.is_source?
 
-  uri = URI.parse url
-  filename = File.basename(uri.path)
+  filename = File.basename(url)
   sha256sum = @pkg.get_sha256
   @extract_dir = @pkg.get_extract_dir
 
@@ -762,12 +761,12 @@ def download
     puts 'No precompiled binary available for your platform, downloading source...'
   end
 
-  git = uri.scheme.eql?('git')
+  git = URI.parse(url).scheme.eql?('git')
 
   Dir.chdir CREW_BREW_DIR do
-    case File.basename(filename)
+    case filename
     # Sources that download with our internal downloader
-    when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
+    when /\.zip$/, /\.tar.*$/, /\.deb$/, /\.AppImage$/
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
         puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
@@ -819,9 +818,9 @@ def download
       end
       return { source:, filename: }
 
-    when /^SKIP$/i
+    when 'SKIP'
       Dir.mkdir @extract_dir
-    when /\.git$/i # Source URLs which end with .git are git sources.
+    when /\.git$/ # Source URLs which end with .git are git sources.
       git = true
     else
       Dir.mkdir @extract_dir
