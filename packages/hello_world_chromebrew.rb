@@ -3,7 +3,7 @@ require 'package'
 class Hello_world_chromebrew < Package
   description 'Chromebrew Package Build Test (for use in PR Actions)'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '1.0'
+  version '1.1'
   license 'MIT'       # Package license (eg. GPL-3, MIT, etc.)
   compatibility 'all' # Package architecture compatibility (eg. aarch64, armv7l, i686, x86_64 or all)
   source_url 'https://github.com/chromebrew/chromebrew/raw/master/tools/hello_world_chromebrew.c'
@@ -42,7 +42,7 @@ class Hello_world_chromebrew < Package
   # Function to perform check from source build.
   # This is executed only during `crew build`.
   def self.check
-    system "#{CREW_PREFIX}/bin/hello"
+    system './hello'
   end
 
   # Function to perform install from source build.
@@ -52,6 +52,6 @@ class Hello_world_chromebrew < Package
 
   # Function to perform post-install for both source build and binary distribution
   def self.postinstall
-    system "#{CREW_PREFIX}/bin/hello"
+    system "#{CREW_PREFIX}/bin/hello_chromebrew"
   end
 end
