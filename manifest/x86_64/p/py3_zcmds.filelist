@@ -166,6 +166,7 @@
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/common/__pycache__/whichall.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/common/__pycache__/zcmds_main.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/common/__pycache__/zcmds_main.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/zcmds/cmds/common/README.md
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/common/say.py
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/common/search_and_replace.py
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/common/search_in_files.py
@@ -201,6 +202,7 @@
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/linux/__init__.py
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/linux/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/linux/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/zcmds/cmds/linux/TODO
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/cmds/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/cmds.txt
@@ -208,6 +210,7 @@
 /usr/local/lib/python3.12/site-packages/zcmds/__init__.py
 /usr/local/lib/python3.12/site-packages/zcmds/install/darwin/darwin_update.py
 /usr/local/lib/python3.12/site-packages/zcmds/install/darwin/__init__.py
+/usr/local/lib/python3.12/site-packages/zcmds/install/darwin/macOS_key_bindings.dict
 /usr/local/lib/python3.12/site-packages/zcmds/install/darwin/__pycache__/darwin_update.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/install/darwin/__pycache__/darwin_update.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/zcmds/install/darwin/__pycache__/__init__.cpython-312.opt-2.pyc
