@@ -16,7 +16,8 @@ puts "Running dependency cycle tests...\n".yellow
 
 # Loads all packages
 Dir['../packages/*.rb'].each do |filename|
-  pkg = Package.load_package(filename)
+  name = File.basename(filename, '.rb')
+  pkg = Package.load_package(filename, name)
   @all_pkgs[name] = pkg
 end
 

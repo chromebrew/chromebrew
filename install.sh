@@ -176,7 +176,9 @@ fi
 # Create the device.json file.
 cd "${CREW_CONFIG_PATH}"
 echo_info "\nCreating device.json."
-jq --arg key0 'installed_packages' '. | .[$key0]=[]' <<<'{}' > device.json
+jq --arg key0 'architecture' --arg value0 "${ARCH}" \
+  --arg key1 'installed_packages' \
+  '. | .[$key0]=$value0 | .[$key1]=[]' <<<'{}' > device.json
 
 # Functions to maintain packages.
 
