@@ -30,9 +30,10 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
+  def self.load_package(pkgFile)
     # self.load_package: load a package under 'Package' class scope
     #
+    pkgName = File.basename(pkgFile, '.rb')
     className = pkgName.capitalize
 
     # read and eval package script under 'Package' class
@@ -79,7 +80,7 @@ class Package
     @checked_list.merge!({ pkgName => pkgTags })
 
     pkgObj = load_package("#{CREW_PACKAGES_PATH}/#{pkgName}.rb")
-    is_source = pkgObj.is_source?(ARCH.to_sym) or pkgObj.build_from_source
+    is_source = pkgObj.is_source? or pkgObj.build_from_source
     deps = pkgObj.dependencies
 
     # append buildessential to deps if building from source is needed/specified
@@ -145,14 +146,7 @@ class Package
     end
   end
 
-  def self.compatible?
-    if @compatibility
-      return @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
-    else
-      warn "#{name}: Missing `compatibility` field.".lightred
-      return false
-    end
-  end
+  def self.compatible? = @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
 
   def self.depends_on(dependency, ver_range = nil)
     @dependencies ||= {}
@@ -197,38 +191,30 @@ class Package
     @dependencies.store(depName, [dep_tags, ver_check])
   end
 
-  def self.get_url(architecture)
-    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-      return get_binary_url(architecture)
-    elsif @source_url.respond_to?(:has_key?)
-      return @source_url.key?(architecture) ? @source_url[architecture] : nil
+  def self.get_url
+    if is_binary?
+      return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{ARCH}/#{name}-#{version}-chromeos-#{ARCH}.#{binary_compression}"
+    elsif @source_url.is_a?(Hash)
+      return @source_url[ARCH.to_sym]
     else
       return @source_url
     end
   end
 
-  def self.get_binary_url(architecture)
-    architecture = 'armv7l' if architecture == 'aarch64'
-    return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{architecture}/#{name}-#{version}-chromeos-#{architecture}.#{binary_compression}"
-  end
-
-  def self.get_source_url(architecture) = @source_url.key?(architecture) ? @source_url[architecture] : nil
-
-  def self.get_sha256(architecture)
-    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-      return @binary_sha256[architecture]
-    elsif @source_sha256.respond_to?(:has_key?)
-      return @source_sha256.key?(architecture) ? @source_sha256[architecture] : nil
+  def self.get_sha256
+    if is_binary?
+      return @binary_sha256[ARCH.to_sym]
+    elsif @source_sha256.is_a?(Hash)
+      return @source_sha256[ARCH.to_sym]
     else
       return @source_sha256
     end
   end
 
-  def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
   def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.is_binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-  def self.is_source?(architecture) = !(is_binary?(architecture) || is_fake?)
+  def self.is_binary? = !@build_from_source && @binary_sha256&.key?(ARCH.to_sym)
+  def self.is_source? = !(is_binary? || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?

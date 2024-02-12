@@ -58,7 +58,7 @@ class Jdk8 < Package
       EOT
     end
 
-    return if File.exist?( URI( get_source_url(ARCH.to_sym) ).path )
+    return if File.exist?( URI( get_url ).path )
 
     # check if we should prompt user to the archive page or download page based on #{version}
     # download page only contains latest version while archive page only contains older versions
@@ -98,6 +98,6 @@ class Jdk8 < Package
 
   def self.postinstall
     # remove jdk archive after installed
-    FileUtils.rm_f URI( get_source_url(ARCH.to_sym) ).path
+    FileUtils.rm_f URI( get_url ).path
   end
 end

@@ -1,28 +1,26 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_nibbles < Package
+class Gnome_nibbles < Meson
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
-  @_commit = '62964e9256fcac616109af874dbb2bd8342a9853'
-  version "3.38.2+git+#{@_commit[0..8]}"
-  license 'GPL-3+ and CC-BY-SA-3.0'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-nibbles/-/archive/#{@_commit}/gnome-nibbles-#{@_commit}.tar.gz"
-  source_sha256 'ebf93903d36ae939f9ae56f47bc0dea151a60dfe2c63962af84c517ef1d7aba4'
+  version '3.38.3'
+  license 'GPL-3+'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-nibbles.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '28a33cbfd5d4be568785cddbe7e6ea145d202911fb7c94803ca7098f7691cc55',
+     armv7l: '28a33cbfd5d4be568785cddbe7e6ea145d202911fb7c94803ca7098f7691cc55',
+     x86_64: '7439e1154d540af84ee1d755a672b790b0000e8158cdc16df618c72be4f61e2e'
+  })
 
   depends_on 'clutter_gtk'
+  depends_on 'desktop_file_utils' => :build
   depends_on 'gsound'
-  depends_on 'librsvg'
   depends_on 'libgnome_games_support'
+  depends_on 'librsvg'
+  depends_on 'vala' => :build
   depends_on 'wayland'
-
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end
