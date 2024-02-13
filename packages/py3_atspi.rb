@@ -8,7 +8,7 @@ class Py3_atspi < Package
   homepage 'https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus'
   version '2.46.0'
   license 'GPL2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pyatspi2.git'
   git_hashtag "PYATSPI_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'

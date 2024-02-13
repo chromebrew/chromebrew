@@ -1,8 +1,9 @@
 /usr/local/bin/smartypants
-/usr/local/lib/python3.11/site-packages/__pycache__/smartypants.cpython-311.opt-2.pyc
-/usr/local/lib/python3.11/site-packages/__pycache__/smartypants.cpython-311.pyc
-/usr/local/lib/python3.11/site-packages/smartypants-2.0.1-py3.11.egg-info/dependency_links.txt
-/usr/local/lib/python3.11/site-packages/smartypants-2.0.1-py3.11.egg-info/PKG-INFO
-/usr/local/lib/python3.11/site-packages/smartypants-2.0.1-py3.11.egg-info/SOURCES.txt
-/usr/local/lib/python3.11/site-packages/smartypants-2.0.1-py3.11.egg-info/top_level.txt
-/usr/local/lib/python3.11/site-packages/smartypants.py
+/usr/local/lib/python3.12/site-packages/__pycache__/smartypants.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/smartypants-2.0.1.dist-info/DESCRIPTION.rst
+/usr/local/lib/python3.12/site-packages/smartypants-2.0.1.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/smartypants-2.0.1.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/smartypants-2.0.1.dist-info/metadata.json
+/usr/local/lib/python3.12/site-packages/smartypants-2.0.1.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/smartypants-2.0.1.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/smartypants.py

@@ -45,6 +45,7 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/_mode_siv.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/_mode_siv.pyi
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/_pkcs1_decode.abi3.so
+/usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/_pkcs1_oaep_decode.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/PKCS1_OAEP.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/PKCS1_OAEP.pyi
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/PKCS1_v1_5.py
@@ -72,6 +73,7 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/__pycache__/_mode_openpgp.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/__pycache__/_mode_siv.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/__pycache__/PKCS1_OAEP.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/__pycache__/_pkcs1_oaep_decode.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/__pycache__/PKCS1_v1_5.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/__pycache__/Salsa20.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Cipher/_raw_aes.abi3.so
@@ -159,6 +161,8 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/__pycache__/SHAKE256.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/__pycache__/TupleHash128.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/__pycache__/TupleHash256.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/Cryptodome/Hash/__pycache__/TurboSHAKE128.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/Cryptodome/Hash/__pycache__/TurboSHAKE256.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/_RIPEMD160.abi3.so
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/RIPEMD160.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/RIPEMD160.pyi
@@ -197,6 +201,10 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TupleHash128.pyi
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TupleHash256.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TupleHash256.pyi
+/usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TurboSHAKE128.py
+/usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TurboSHAKE128.pyi
+/usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TurboSHAKE256.py
+/usr/local/lib/python3.12/site-packages/Cryptodome/Hash/TurboSHAKE256.pyi
 /usr/local/lib/python3.12/site-packages/Cryptodome/__init__.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/__init__.pyi
 /usr/local/lib/python3.12/site-packages/Cryptodome/IO/__init__.py
@@ -349,6 +357,7 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/__pycache__/test_SHA512.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/__pycache__/test_SHAKE.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/__pycache__/test_TupleHash.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/__pycache__/test_TurboSHAKE.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_BLAKE2.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_CMAC.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_cSHAKE.py
@@ -372,6 +381,7 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_SHA512.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_SHAKE.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_TupleHash.py
+/usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Hash/test_TurboSHAKE.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/__init__.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/IO/__init__.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/IO/__pycache__/__init__.cpython-312.pyc
@@ -384,9 +394,11 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/__init__.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/__pycache__/test_modexp.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/__pycache__/test_modmult.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/__pycache__/test_Numbers.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/__pycache__/test_Primality.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/test_modexp.py
+/usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/test_modmult.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/test_Numbers.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Math/test_Primality.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/SelfTest/Protocol/__init__.py
@@ -506,11 +518,11 @@
 /usr/local/lib/python3.12/site-packages/Cryptodome/Util/_strxor.abi3.so
 /usr/local/lib/python3.12/site-packages/Cryptodome/Util/strxor.py
 /usr/local/lib/python3.12/site-packages/Cryptodome/Util/strxor.pyi
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/AUTHORS.rst
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/LICENSE.rst
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/top_level.txt
-/usr/local/lib/python3.12/site-packages/pycryptodomex-3.19.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/AUTHORS.rst
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/LICENSE.rst
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/top_level.txt
+/usr/local/lib/python3.12/site-packages/pycryptodomex-3.20.0.dist-info/WHEEL

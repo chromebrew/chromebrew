@@ -1,12 +1,12 @@
 /usr/local/bin/pip
 /usr/local/bin/pip3
 /usr/local/bin/pip3.12
-/usr/local/lib/python3.12/site-packages/pip-23.2.1-py3.12.egg-info/dependency_links.txt
-/usr/local/lib/python3.12/site-packages/pip-23.2.1-py3.12.egg-info/entry_points.txt
-/usr/local/lib/python3.12/site-packages/pip-23.2.1-py3.12.egg-info/not-zip-safe
-/usr/local/lib/python3.12/site-packages/pip-23.2.1-py3.12.egg-info/PKG-INFO
-/usr/local/lib/python3.12/site-packages/pip-23.2.1-py3.12.egg-info/SOURCES.txt
-/usr/local/lib/python3.12/site-packages/pip-23.2.1-py3.12.egg-info/top_level.txt
+/usr/local/lib/python3.12/site-packages/pip-23.3.1-py3.12.egg-info/dependency_links.txt
+/usr/local/lib/python3.12/site-packages/pip-23.3.1-py3.12.egg-info/entry_points.txt
+/usr/local/lib/python3.12/site-packages/pip-23.3.1-py3.12.egg-info/not-zip-safe
+/usr/local/lib/python3.12/site-packages/pip-23.3.1-py3.12.egg-info/PKG-INFO
+/usr/local/lib/python3.12/site-packages/pip-23.3.1-py3.12.egg-info/SOURCES.txt
+/usr/local/lib/python3.12/site-packages/pip-23.3.1-py3.12.egg-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/pip/__init__.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/build_env.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/cache.py
@@ -363,7 +363,6 @@
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/glibc.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/hashes.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__init__.py
-/usr/local/lib/python3.12/site-packages/pip/_internal/utils/inject_securetransport.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/_jaraco_text.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/logging.py
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/_log.py
@@ -398,8 +397,6 @@
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/hashes.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/__init__.cpython-312.pyc
-/usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/inject_securetransport.cpython-312.opt-2.pyc
-/usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/inject_securetransport.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/_jaraco_text.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/_jaraco_text.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/_log.cpython-312.opt-2.pyc
@@ -473,7 +470,6 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__/redis_cache.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/redis_cache.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/_cmd.py
-/usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/compat.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/controller.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/filewrapper.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/heuristics.py
@@ -484,8 +480,6 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/cache.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/_cmd.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/_cmd.cpython-312.pyc
-/usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/compat.cpython-312.opt-2.pyc
-/usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/compat.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/controller.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/controller.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/filewrapper.cpython-312.opt-2.pyc
@@ -498,6 +492,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/serialize.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/wrapper.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/wrapper.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/serialize.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/cachecontrol/wrapper.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem
@@ -510,6 +505,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__/__main__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__/__main__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/certifi/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/big5freq.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/big5prober.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/chardistribution.py
@@ -646,6 +642,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/__pycache__/utf8prober.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/__pycache__/version.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/__pycache__/version.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/resultdict.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/sbcharsetprober.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/chardet/sbcsgroupprober.py
@@ -670,6 +667,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/colorama/__pycache__/win32.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/colorama/__pycache__/winterm.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/colorama/__pycache__/winterm.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/colorama.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/colorama/tests/ansi_test.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/colorama/tests/ansitowin32_test.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/colorama/tests/initialise_test.py
@@ -727,6 +725,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/version.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/wheel.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/wheel.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/distlib.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distlib/resources.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distlib/scripts.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distlib/t32.exe
@@ -747,6 +746,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distro/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distro/__pycache__/__main__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/distro/__pycache__/__main__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/distro/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/codec.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/compat.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/core.py
@@ -770,6 +770,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/package_data.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/uts46data.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/uts46data.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/idna/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/idna/uts46data.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/__init__.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/msgpack/exceptions.py
@@ -784,6 +785,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/fallback.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/msgpack.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/__about__.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/__init__.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/_manylinux.py
@@ -811,6 +813,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/utils.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/version.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/version.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/requirements.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/specifiers.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/packaging/_structures.py
@@ -820,6 +823,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pkg_resources/__init__.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pkg_resources/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pkg_resources/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/pkg_resources.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/android.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/api.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/__init__.py
@@ -841,6 +845,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/version.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/windows.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/windows.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/unix.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/version.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/platformdirs/windows.py
@@ -945,6 +950,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/unistring.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/util.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/util.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/pygments.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pygments/regexopt.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pygments/scanner.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pygments/sphinxext.py
@@ -984,6 +990,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__/unicode.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__/util.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/__pycache__/util.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/results.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/testing.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyparsing/unicode.py
@@ -1003,6 +1010,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__/_impl.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/adapters.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/api.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/auth.py
@@ -1052,19 +1060,23 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/utils.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/__version__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/__version__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/requests.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/sessions.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/status_codes.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/structures.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/utils.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/requests/__version__.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/collections_abc.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/collections_abc.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__init__.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__/collections_abc.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__/collections_abc.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/compat/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__init__.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__init__.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/providers.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/providers.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/providers.cpython-312.opt-2.pyc
@@ -1075,9 +1087,13 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/resolvers.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/structs.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/structs.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/reporters.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/reporters.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/structs.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/resolvelib/structs.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/abc.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/align.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/ansi.py
@@ -1283,6 +1299,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_windows_renderer.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_wrap.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_wrap.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/rich/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/_ratio.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/region.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/rich/repr.py
@@ -1338,6 +1355,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/__pycache__/_utils.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/__pycache__/wait.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/__pycache__/wait.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/retry.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/stop.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tenacity/tornadoweb.py
@@ -1353,9 +1371,30 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tomli/__pycache__/_re.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tomli/__pycache__/_types.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tomli/__pycache__/_types.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/tomli/py.typed
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tomli/_re.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/tomli/_types.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/_api.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__init__.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/_macos.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/_openssl.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_api.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_api.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/__init__.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_macos.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_macos.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_openssl.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_openssl.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_ssl_constants.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_ssl_constants.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_windows.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_windows.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/py.typed
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/_ssl_constants.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/truststore/_windows.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/typing_extensions.py
+/usr/local/lib/python3.12/site-packages/pip/_vendor/typing_extensions.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/_collections.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/connectionpool.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/connection.py
@@ -1431,6 +1470,7 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/response.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/_version.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/_version.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/request.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/response.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/urllib3/util/connection.py
@@ -1487,5 +1527,6 @@
 /usr/local/lib/python3.12/site-packages/pip/_vendor/webencodings/__pycache__/tests.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/webencodings/__pycache__/x_user_defined.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/pip/_vendor/webencodings/__pycache__/x_user_defined.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pip/_vendor/webencodings.pyi
 /usr/local/lib/python3.12/site-packages/pip/_vendor/webencodings/tests.py
 /usr/local/lib/python3.12/site-packages/pip/_vendor/webencodings/x_user_defined.py
