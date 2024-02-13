@@ -4,12 +4,12 @@ require_relative 'libxml2'
 class Py3_libxml2 < Package
   description 'Libxml2-python provides access to libxml2 and libxslt in Python.'
   homepage 'https://gitlab.gnome.org/GNOME/libxml2/'
-  @_ver = '2.11.5'
+  @_ver = '2.12.5'
   version "#{@_ver}-py3.12"
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.11.5/libxml2-v2.11.5.tar.bz2'
-  source_sha256 'ab3699b697e917c7d5035e81d237a9bc895eb4bf70c0a2259c6d1f125c1b77b6'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.5/libxml2-v2.12.5.tar.bz2'
+  source_sha256 '6ac1511e1f659940708254c430b51a7ba6b88a8d1d46b03e5a1e0e264bd87679'
   binary_compression 'tar.zst'
 
   binary_sha256({
