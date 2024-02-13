@@ -21,4 +21,8 @@ jobs:
             yes | crew install vim && \
             yes | crew remove vim && \
             cd ../tests && \
-            ./prop_test"
+            ./prop_test && \
+            cd ~ && \
+            git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
+            cd build_test && \
+            yes | crew build -f packages/hello_world_chromebrew.rb"
