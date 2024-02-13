@@ -1968,6 +1968,8 @@ def upload(pkgName = nil)
         end
       end
       puts
+      # Use rubocop to sanitize package file, and let errors get flagged.
+      system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
     end
   end
 end
