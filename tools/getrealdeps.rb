@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# getrealdeps version 1.4 (for Chromebrew)
+# getrealdeps version 1.5 (for Chromebrew)
 # Author: Satadru Pramanik (satmandu) satadru at gmail dot com
 require 'fileutils'
 
@@ -85,7 +85,7 @@ def main(pkg)
 
   FileUtils.rm_rf("/tmp/deps/#{pkg}")
   # Remove files we don't care about, such as man files and non-binaries.
-  pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || !File.read(i.chomp, 4) == "\x7FELF" || i.include?('.zst') }
+  pkgfiles = pkgfiles.reject { |i| !File.file?(i.chomp) || File.read(i.chomp, 4) != "\x7FELF" || i.include?('.zst') }
 
   # Use readelf to determine library dependencies, as
   # this doesn't almost run a program like using ldd would.
