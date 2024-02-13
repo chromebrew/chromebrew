@@ -1967,7 +1967,10 @@ def upload(pkgName = nil)
           system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
         end
       end
-      puts
+      # Use rubocop to sanitize package file, and let errors get flagged.
+      system 'yes | crew install ruby_rubocop' unless @device[:installed_packages].any? { |elem| elem[:name] == 'ruby_rubocop' }
+      puts "Using rubocop to sanitize #{pkg_file} .".orange
+      system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
     end
   end
 end
