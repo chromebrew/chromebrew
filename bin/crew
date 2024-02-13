@@ -1968,9 +1968,7 @@ def upload(pkgName = nil)
         end
       end
       # Use rubocop to sanitize package file, and let errors get flagged.
-      unless @device[:installed_packages].any? { |elem| elem[:name] == 'ruby_rubocop' }
-        system 'yes | crew install ruby_rubocop'
-      end
+      system 'yes | crew install ruby_rubocop' unless @device[:installed_packages].any? { |elem| elem[:name] == 'ruby_rubocop' }
       puts "Using rubocop to sanitize #{pkg_file} .".orange
       system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
     end
