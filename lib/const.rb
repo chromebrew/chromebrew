@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.43.4'
+CREW_VERSION = '1.43.5'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -174,21 +174,22 @@ SSL_CERT_DIR = if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
                  '/etc/ssl/certs'
                end
 
+CREW_ARCH_FLAGS_OVERRIDE = ENV.fetch('CREW_ARCH_FLAGS_OVERRIDE', '')
 case ARCH
 when 'aarch64', 'armv7l'
   CREW_TGT = 'armv7l-cros-linux-gnueabihf'
   CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
   # These settings have been selected to match debian armhf.
   # Using -mfpu=neon breaks builds such as webkit2gtk.
-  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp'
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp' : CREW_ARCH_FLAGS_OVERRIDE
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
   CREW_BUILD = 'i686-cros-linux-gnu'
-  CREW_ARCH_FLAGS = ''
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 when 'x86_64'
   CREW_TGT = 'x86_64-cros-linux-gnu'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
-  CREW_ARCH_FLAGS = ''
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
 CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')
