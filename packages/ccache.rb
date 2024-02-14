@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Ccache < Package
+class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
   homepage 'https://ccache.samba.org/'
-  version '4.8.3'
+  version '4.9.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
   source_url "https://github.com/ccache/ccache/releases/download/v#{version}/ccache-#{version}.tar.xz"
-  source_sha256 'e47374c810b248cfca3665ee1d86c7c763ffd68d9944bc422d9c1872611f2b11'
+  source_sha256 '4c03bc840699127d16c3f0e6112e3f40ce6a230d5873daa78c60a59c7ef59d25'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8a70dd0613001a060b6abe38ceebd9b5349782161a109776c01fc21290c8d9c4',
-     armv7l: '8a70dd0613001a060b6abe38ceebd9b5349782161a109776c01fc21290c8d9c4',
-       i686: '011dbc560981470a4af0ce7b32278b8601be9efaf354efe8b8ea55ac1cbc61c2',
-     x86_64: '85a098065edc90e41092640acb41a5d37529374c4109b1f1903f22373489b432'
+    aarch64: 'd54bd2f5b30ca8c3f706ea7a95156a2507ac14b05ca515af25c7632985c3d9a1',
+     armv7l: 'd54bd2f5b30ca8c3f706ea7a95156a2507ac14b05ca515af25c7632985c3d9a1',
+       i686: '3af6ca8bb0e136e737554172dceb98709a2548361f734879c084f0939079a527',
+     x86_64: '4f99d28cd4ec2e6931bd45b98f275c1fb3686f9c09aee7f34aa9ca05d32c1974'
   })
 
   depends_on 'gcc_dev' # R
@@ -24,22 +24,11 @@ class Ccache < Package
   depends_on 'xdg_base'
   depends_on 'zstd' # R
 
-  def self.build
-    system "cmake -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS} \
-      -DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
+  cmake_options "-DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
       -DENABLE_IPO=ON \
       -DENABLE_TESTING=OFF \
       -DZSTD_FROM_INTERNET=OFF \
       -DHIREDIS_FROM_INTERNET=ON"
-    system "#{CREW_NINJA} -C builddir"
-    File.write 'ccache_env', <<~CCACHEEOF
-      # ccache configuration
-      if [[ $PATH != *"ccache/bin"* ]]; then
-        PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
-      fi
-    CCACHEEOF
-  end
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
@@ -52,6 +41,12 @@ class Ccache < Package
         FileUtils.ln_s '../../../bin/ccache', bin
       end
     end
+    File.write 'ccache_env', <<~CCACHEEOF
+      # ccache configuration
+      if [[ $PATH != *"ccache/bin"* ]]; then
+        PATH="#{CREW_LIB_PREFIX}/ccache/bin:$PATH"
+      fi
+    CCACHEEOF
     FileUtils.install 'ccache_env', "#{CREW_DEST_PREFIX}/etc/env.d/00-ccache", mode: 0o644
   end
 end
