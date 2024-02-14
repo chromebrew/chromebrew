@@ -11,9 +11,9 @@ class Meld < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c9044c2ee4f70158c0f271a764f475c6a7cb095525699fe20c3ab6e55c3a622d',
-     armv7l: 'c9044c2ee4f70158c0f271a764f475c6a7cb095525699fe20c3ab6e55c3a622d',
-     x86_64: '0e8c2e68b57acfc2e826411a62c7bb5c5bea7303d4c82c84bb5e489af3182076'
+    aarch64: '8b120c9f6920d07e12fbcd333d8df4e118fa0d89f13dc2fc8b77726a8f7325d7',
+     armv7l: '8b120c9f6920d07e12fbcd333d8df4e118fa0d89f13dc2fc8b77726a8f7325d7',
+     x86_64: '1a2072e7778760cadadc01e6fd716eb14bcf2f34a1b51b967ac7f23ab1d5021e'
   })
 
   depends_on 'desktop_file_utils' # L
