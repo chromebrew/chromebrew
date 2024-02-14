@@ -3280,6 +3280,11 @@ url: https://github.com/Intel-Media-SDK/MediaSDK/releases
 activity: low
 ---
 kind: url
+name: intel_opencl_clang
+url: https://github.com/intel/opencl-clang/releases
+activity: medium
+---
+kind: url
 name: intltool
 url: https://launchpad.net/intltool/trunk
 activity: none
@@ -8046,6 +8051,11 @@ url: https://github.com/KhronosGroup/SPIRV-Headers/releases
 activity: medium
 ---
 kind: url
+name: spirv_llvm_translator
+url: https://github.com/KhronosGroup/SPIRV-LLVM-Translator/releases
+activity: medium
+---
+kind: url
 name: spirv_tools
 url: https://github.com/KhronosGroup/SPIRV-Tools/releases
 activity: low
@@ -8729,6 +8739,11 @@ kind: url
 name: vapoursynth
 url: https://github.com/vapoursynth/vapoursynth/releases
 activity: high
+---
+kind: url
+name: vc_intrinsics
+url: https://github.com/intel/vc-intrinsics/releases
+activity: low
 ---
 kind: url
 name: vamp_sdk
