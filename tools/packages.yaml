@@ -4011,6 +4011,11 @@ url: https://download.enlightenment.org/rel/libs/efl/
 activity: high
 ---
 kind: url
+name: libei
+url: https://gitlab.freedesktop.org/libinput/libei/-/tags
+activity: medium
+---
+kind: url
 name: libemf
 url: https://sourceforge.net/projects/libemf/files/libemf/
 activity: low
