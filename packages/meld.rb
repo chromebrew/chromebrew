@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version '3.22.0-684e1e2-py3.12'
+  version '3.22.0-2f7dbde-py3.12'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
-  git_hashtag '684e1e27f31b4f0053da546a273a4ecf07df595f'
+  git_hashtag '2f7dbdedd2b022fce238ba25e182929e0a8cea1e'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -19,9 +19,9 @@ class Meld < Meson
   depends_on 'desktop_file_utils' # L
   depends_on 'gtk3' # L
   depends_on 'gtksourceview_4' # L
-  depends_on 'python3' # L
-  depends_on 'py3_pycairo' # L
   depends_on 'py3_libxml2' # L
+  depends_on 'py3_pycairo' # L
+  depends_on 'python3' # L
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
