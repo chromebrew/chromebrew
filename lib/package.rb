@@ -9,7 +9,7 @@ class Package
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag, :min_glibc
 
-  boolean_property :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
+  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
                    :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf,
                    :print_source_bashrc, :run_tests
@@ -238,6 +238,8 @@ class Package
                              else
                                CREW_ENV_OPTIONS_HASH
                              end
+    # Replace CREW_ARCH_FLAGS if @arch_flags_override is true.
+    @crew_env_options_hash = @arch_flags_override ? @crew_env_options_hash.each { |k, v| @crew_env_options_hash[k] = v.gsub(CREW_ARCH_FLAGS, CREW_ARCH_FLAGS_OVERRIDE) } : @crew_env_options_hash
 
     # add "-j#" argument to "make" at compile-time, if necessary
 
