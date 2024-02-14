@@ -8,7 +8,7 @@ class Intel_opencl_clang < CMake
   homepage 'https://github.com/intel/opencl-clang'
   version '17.0.0'
   license 'llvm'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/intel/opencl-clang.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'

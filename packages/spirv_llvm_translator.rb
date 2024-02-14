@@ -8,7 +8,7 @@ class Spirv_llvm_translator < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
   version '17.0.0'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
