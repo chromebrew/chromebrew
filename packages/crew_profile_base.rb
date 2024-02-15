@@ -29,7 +29,10 @@ class Crew_profile_base < Package
 
   def self.postinstall
     # Remove install.sh provided path file since we supersede it.
-    FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path" if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path")
+    if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path")
+      puts "Removing #{CREW_PREFIX}/etc/env.d/path installed by the Chromebrew installer.".yellow
+      FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path"
+    end
 
     # Write our rc files
     crew_rc_source_line = "source #{CREW_PREFIX}/etc/profile"
