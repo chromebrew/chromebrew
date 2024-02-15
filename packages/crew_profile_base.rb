@@ -10,6 +10,7 @@ class Crew_profile_base < Package
   source_sha256 '7236cfa4fba6557a6215c1d23ac3d8057490a021a45fdc3e40217d1fe30fe68e'
 
   no_compile_needed
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/"
