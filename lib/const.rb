@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.43.5'
+CREW_VERSION = '1.43.6'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
