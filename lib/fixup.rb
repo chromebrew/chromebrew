@@ -20,6 +20,12 @@ if @need_path
   ExitMessage.add "Fixed path env.d file...\nPlease run 'source ~/.bashrc'".orange
 end
 
+# Remove install.sh provided path file since we supersede it.
+if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path")
+  puts "Removing #{CREW_PREFIX}/etc/env.d/path installed by the Chromebrew installer.\n".orange
+  FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path"
+end
+
 # Check for renamed and deprecated packages, and handle them.
 
 pkg_update_arr = [
