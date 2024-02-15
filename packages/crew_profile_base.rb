@@ -28,6 +28,9 @@ class Crew_profile_base < Package
   end
 
   def self.postinstall
+    # Remove install.sh provided path file since we supersede it.
+    FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path" if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path")
+
     # Write our rc files
     crew_rc_source_line = "source #{CREW_PREFIX}/etc/profile"
     crew_rcfile = <<~CREW_PROFILE_EOF
