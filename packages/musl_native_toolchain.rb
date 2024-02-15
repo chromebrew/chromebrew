@@ -26,6 +26,7 @@ class Musl_native_toolchain < Package
 
   is_musl
   conflicts_ok
+  print_source_bashrc
 
   @archflags = ''
   @linux_ver = '4.14.275'

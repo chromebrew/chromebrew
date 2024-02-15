@@ -33,6 +33,7 @@ class Musl_curl < Package
   is_musl
   is_static
   patchelf
+  print_source_bashrc
 
   def self.patch
     # Fix arm build error

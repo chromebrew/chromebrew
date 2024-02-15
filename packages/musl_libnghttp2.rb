@@ -25,6 +25,7 @@ class Musl_libnghttp2 < Package
   depends_on 'musl_openssl' => :build
 
   is_static
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

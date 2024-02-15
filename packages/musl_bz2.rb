@@ -18,6 +18,7 @@ class Musl_bz2 < Package
   })
 
   depends_on 'patchelf' => :build
+  print_source_bashrc
 
   def self.patch
     load "#{CREW_LIB_PATH}/lib/musl.rb"
