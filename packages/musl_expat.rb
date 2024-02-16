@@ -20,8 +20,9 @@ class Musl_expat < Package
   depends_on 'musl_native_toolchain' => :build
 
   is_musl
-  patchelf
   is_static
+  patchelf
+  print_source_bashrc
 
   def self.patch
     system 'filefix'
