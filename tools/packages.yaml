@@ -5351,6 +5351,11 @@ url: https://sourceforge.net/projects/circuit/files/
 activity: none
 ---
 kind: url
+name: love
+url: https://github.com/love2d/love/releases
+activity: medium
+---
+kind: url
 name: lsb_release
 url: https://sourceforge.net/projects/lsb/files/lsb_release/
 activity: none
@@ -6358,6 +6363,11 @@ activity: low
 kind: url
 name: osl
 url: https://github.com/periscop/openscop/releases/
+activity: low
+---
+kind: url
+name: ots
+url: https://github.com/khaledhosny/ots/releases
 activity: low
 ---
 kind: url
