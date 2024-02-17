@@ -1,4 +1,6 @@
 /usr/local/include/sodium/core.h
+/usr/local/include/sodium/crypto_aead_aegis128l.h
+/usr/local/include/sodium/crypto_aead_aegis256.h
 /usr/local/include/sodium/crypto_aead_aes256gcm.h
 /usr/local/include/sodium/crypto_aead_chacha20poly1305.h
 /usr/local/include/sodium/crypto_aead_xchacha20poly1305.h
@@ -23,6 +25,8 @@
 /usr/local/include/sodium/crypto_hash_sha512.h
 /usr/local/include/sodium/crypto_kdf_blake2b.h
 /usr/local/include/sodium/crypto_kdf.h
+/usr/local/include/sodium/crypto_kdf_hkdf_sha256.h
+/usr/local/include/sodium/crypto_kdf_hkdf_sha512.h
 /usr/local/include/sodium/crypto_kx.h
 /usr/local/include/sodium/crypto_onetimeauth.h
 /usr/local/include/sodium/crypto_onetimeauth_poly1305.h
@@ -64,6 +68,6 @@
 /usr/local/lib/libsodium.a
 /usr/local/lib/libsodium.la
 /usr/local/lib/libsodium.so
-/usr/local/lib/libsodium.so.23
-/usr/local/lib/libsodium.so.23.3.0
+/usr/local/lib/libsodium.so.26
+/usr/local/lib/libsodium.so.26.1.0
 /usr/local/lib/pkgconfig/libsodium.pc
