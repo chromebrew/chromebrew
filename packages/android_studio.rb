@@ -9,7 +9,7 @@ class Android_studio < Package
   source_url 'https://r2---sn-5ualdnss.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.26/android-studio-2023.1.1.26-linux.tar.gz'
   source_sha256 '977e8a9855414f7d41157f0be0e10fb740c42bd337f763d5d96b3e059780663d'
 
-  depends_on 'jdk11'
+  depends_on 'openjdk17'
   depends_on 'xdg_base'
   depends_on 'sommelier'
 
