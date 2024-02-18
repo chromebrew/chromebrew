@@ -3,17 +3,18 @@ require 'buildsystems/meson'
 class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version '3.22.0-2f7dbde-py3.12'
+  @_ver = '3.22.1'
+  version "#{@_ver}-py3.12"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/meld.git'
-  git_hashtag '2f7dbdedd2b022fce238ba25e182929e0a8cea1e'
+  git_hashtag @_ver
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8b120c9f6920d07e12fbcd333d8df4e118fa0d89f13dc2fc8b77726a8f7325d7',
-     armv7l: '8b120c9f6920d07e12fbcd333d8df4e118fa0d89f13dc2fc8b77726a8f7325d7',
-     x86_64: '1a2072e7778760cadadc01e6fd716eb14bcf2f34a1b51b967ac7f23ab1d5021e'
+    aarch64: '8c9c00dfe88d9afb6f486cf3e2cd8788fb45a27992e856056ee98960e4528547',
+     armv7l: '8c9c00dfe88d9afb6f486cf3e2cd8788fb45a27992e856056ee98960e4528547',
+     x86_64: '5fa48ea39ba4f272052001622f828eb2b67eed4065037ab93d8a20baeccd75b1'
   })
 
   depends_on 'desktop_file_utils' # L
