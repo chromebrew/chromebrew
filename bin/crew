@@ -1931,10 +1931,21 @@ def upload(pkgName = nil)
       puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if @opt_verbose
       output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
       if output.include?('201 Created')
-        puts output.lightgreen
+        puts "curl -Ls #{new_url} | sha256sum" if @opt_verbose
+        upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
+        if upstream_sha256 == new_sha256
+          puts output.lightgreen
+        else
+          if @opt_verbose
+            puts "expected sha256 hash=#{new_sha256}"
+            puts "upstream sha256 hash=#{upstream_sha256}"
+          end
+          puts "#{output}. Checksum mismatch. Skipping binary_sha256 update in #{pkg_file}...".lightred
+          next
+        end
       else
         puts output.lightred
-        puts "Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
+        puts "#{output}. Unable to upload. Skipping binary_sha256 update in #{pkg_file}...".lightred
         next
       end
       old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
@@ -2018,11 +2029,14 @@ def build_command(args)
     print_current_package @opt_verbose
     next unless @pkgName
 
-    puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
-    puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless @pkg.compatible?
-    puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
-    puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
-    resolve_dependencies_and_build if !@pkg.is_fake? && @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
+    if !@pkg.is_fake? && @pkg.compatible? && @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
+      resolve_dependencies_and_build
+    else
+      puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
+      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless @pkg.compatible?
+      puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
+      puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
+    end
   end
   puts "Builds are located in #{CREW_LOCAL_BUILD_DIR}.".yellow
 end
@@ -2090,8 +2104,11 @@ def install_command(args)
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkgName
 
-    puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred unless @pkg.compatible?
-    resolve_dependencies_and_install if @pkg.compatible?
+    if @pkg.compatible?
+      resolve_dependencies_and_install
+    else
+      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred
+    end
   end
 end
 
@@ -2131,11 +2148,13 @@ def reinstall_command(args)
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkgName
 
-    puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping reinstall.".lightred unless @pkg.compatible?
-    next unless @pkg.compatible?
-    @pkg.in_upgrade = true
-    resolve_dependencies_and_install
-    @pkg.in_upgrade = false
+    if @pkg.compatible?
+      @pkg.in_upgrade = true
+      resolve_dependencies_and_install
+      @pkg.in_upgrade = false
+    else
+      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping reinstall.".lightred
+    end
   end
 end
 
@@ -2231,5 +2250,3 @@ end
 load_json
 command_name = args.select { |k, v| v && is_command(k) }.keys[0]
 send("#{command_name}_command", args)
-
-ExitMessage.add 'Crew is exiting.' if @opt_verbose
