@@ -10,7 +10,6 @@
 /usr/local/lib/python3.12/site-packages/meld/filediff.py
 /usr/local/lib/python3.12/site-packages/meld/filters.py
 /usr/local/lib/python3.12/site-packages/meld/gutterrendererchunk.py
-/usr/local/lib/python3.12/site-packages/meld/imagediff.py
 /usr/local/lib/python3.12/site-packages/meld/__init__.py
 /usr/local/lib/python3.12/site-packages/meld/iohelpers.py
 /usr/local/lib/python3.12/site-packages/meld/linkmap.py
@@ -60,8 +59,6 @@
 /usr/local/lib/python3.12/site-packages/meld/__pycache__/filters.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/meld/__pycache__/gutterrendererchunk.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/site-packages/meld/__pycache__/gutterrendererchunk.cpython-312.pyc
-/usr/local/lib/python3.12/site-packages/meld/__pycache__/imagediff.cpython-312.opt-1.pyc
-/usr/local/lib/python3.12/site-packages/meld/__pycache__/imagediff.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/meld/__pycache__/__init__.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/site-packages/meld/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/meld/__pycache__/iohelpers.cpython-312.opt-1.pyc
@@ -120,7 +117,6 @@
 /usr/local/lib/python3.12/site-packages/meld/ui/findbar.py
 /usr/local/lib/python3.12/site-packages/meld/ui/gladesupport.py
 /usr/local/lib/python3.12/site-packages/meld/ui/gtkcompat.py
-/usr/local/lib/python3.12/site-packages/meld/ui/gtkutil.py
 /usr/local/lib/python3.12/site-packages/meld/ui/historyentry.py
 /usr/local/lib/python3.12/site-packages/meld/ui/__init__.py
 /usr/local/lib/python3.12/site-packages/meld/ui/listwidget.py
@@ -142,8 +138,6 @@
 /usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/gladesupport.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/gtkcompat.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/gtkcompat.cpython-312.pyc
-/usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/gtkutil.cpython-312.opt-1.pyc
-/usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/gtkutil.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/historyentry.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/historyentry.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/meld/ui/__pycache__/__init__.cpython-312.opt-1.pyc
@@ -203,9 +197,8 @@
 /usr/local/lib/python3.12/site-packages/meld/vcview.py
 /usr/local/lib/python3.12/site-packages/meld/windowstate.py
 /usr/local/share/applications/org.gnome.Meld.desktop
-/usr/local/share/glib-2.0/schemas/org.gnome.Meld.gschema.xml
+/usr/local/share/glib-2.0/schemas/org.gnome.meld.gschema.xml
 /usr/local/share/help/C/meld/command-line.page
-/usr/local/share/help/C/meld/figures/Meld.svg
 /usr/local/share/help/C/meld/file-changes.page
 /usr/local/share/help/C/meld/file-filters.page
 /usr/local/share/help/C/meld/file-mode.page
@@ -213,6 +206,7 @@
 /usr/local/share/help/C/meld/folder-mode.page
 /usr/local/share/help/C/meld/index.page
 /usr/local/share/help/C/meld/introduction.page
+/usr/local/share/help/C/meld/keyboard-shortcuts.page
 /usr/local/share/help/C/meld/legal.xml
 /usr/local/share/help/C/meld/missing-functionality.page
 /usr/local/share/help/C/meld/preferences.page
@@ -221,7 +215,6 @@
 /usr/local/share/help/C/meld/vc-mode.page
 /usr/local/share/help/C/meld/vc-supported.page
 /usr/local/share/help/cs/meld/command-line.page
-/usr/local/share/help/cs/meld/figures/Meld.svg
 /usr/local/share/help/cs/meld/file-changes.page
 /usr/local/share/help/cs/meld/file-filters.page
 /usr/local/share/help/cs/meld/file-mode.page
@@ -229,6 +222,7 @@
 /usr/local/share/help/cs/meld/folder-mode.page
 /usr/local/share/help/cs/meld/index.page
 /usr/local/share/help/cs/meld/introduction.page
+/usr/local/share/help/cs/meld/keyboard-shortcuts.page
 /usr/local/share/help/cs/meld/legal.xml
 /usr/local/share/help/cs/meld/missing-functionality.page
 /usr/local/share/help/cs/meld/preferences.page
@@ -237,7 +231,6 @@
 /usr/local/share/help/cs/meld/vc-mode.page
 /usr/local/share/help/cs/meld/vc-supported.page
 /usr/local/share/help/de/meld/command-line.page
-/usr/local/share/help/de/meld/figures/Meld.svg
 /usr/local/share/help/de/meld/file-changes.page
 /usr/local/share/help/de/meld/file-filters.page
 /usr/local/share/help/de/meld/file-mode.page
@@ -245,6 +238,7 @@
 /usr/local/share/help/de/meld/folder-mode.page
 /usr/local/share/help/de/meld/index.page
 /usr/local/share/help/de/meld/introduction.page
+/usr/local/share/help/de/meld/keyboard-shortcuts.page
 /usr/local/share/help/de/meld/legal.xml
 /usr/local/share/help/de/meld/missing-functionality.page
 /usr/local/share/help/de/meld/preferences.page
@@ -253,7 +247,6 @@
 /usr/local/share/help/de/meld/vc-mode.page
 /usr/local/share/help/de/meld/vc-supported.page
 /usr/local/share/help/el/meld/command-line.page
-/usr/local/share/help/el/meld/figures/Meld.svg
 /usr/local/share/help/el/meld/file-changes.page
 /usr/local/share/help/el/meld/file-filters.page
 /usr/local/share/help/el/meld/file-mode.page
@@ -261,6 +254,7 @@
 /usr/local/share/help/el/meld/folder-mode.page
 /usr/local/share/help/el/meld/index.page
 /usr/local/share/help/el/meld/introduction.page
+/usr/local/share/help/el/meld/keyboard-shortcuts.page
 /usr/local/share/help/el/meld/legal.xml
 /usr/local/share/help/el/meld/missing-functionality.page
 /usr/local/share/help/el/meld/preferences.page
@@ -269,7 +263,6 @@
 /usr/local/share/help/el/meld/vc-mode.page
 /usr/local/share/help/el/meld/vc-supported.page
 /usr/local/share/help/es/meld/command-line.page
-/usr/local/share/help/es/meld/figures/Meld.svg
 /usr/local/share/help/es/meld/file-changes.page
 /usr/local/share/help/es/meld/file-filters.page
 /usr/local/share/help/es/meld/file-mode.page
@@ -277,6 +270,7 @@
 /usr/local/share/help/es/meld/folder-mode.page
 /usr/local/share/help/es/meld/index.page
 /usr/local/share/help/es/meld/introduction.page
+/usr/local/share/help/es/meld/keyboard-shortcuts.page
 /usr/local/share/help/es/meld/legal.xml
 /usr/local/share/help/es/meld/missing-functionality.page
 /usr/local/share/help/es/meld/preferences.page
@@ -285,7 +279,6 @@
 /usr/local/share/help/es/meld/vc-mode.page
 /usr/local/share/help/es/meld/vc-supported.page
 /usr/local/share/help/pl/meld/command-line.page
-/usr/local/share/help/pl/meld/figures/Meld.svg
 /usr/local/share/help/pl/meld/file-changes.page
 /usr/local/share/help/pl/meld/file-filters.page
 /usr/local/share/help/pl/meld/file-mode.page
@@ -293,6 +286,7 @@
 /usr/local/share/help/pl/meld/folder-mode.page
 /usr/local/share/help/pl/meld/index.page
 /usr/local/share/help/pl/meld/introduction.page
+/usr/local/share/help/pl/meld/keyboard-shortcuts.page
 /usr/local/share/help/pl/meld/legal.xml
 /usr/local/share/help/pl/meld/missing-functionality.page
 /usr/local/share/help/pl/meld/preferences.page
@@ -301,7 +295,6 @@
 /usr/local/share/help/pl/meld/vc-mode.page
 /usr/local/share/help/pl/meld/vc-supported.page
 /usr/local/share/help/sv/meld/command-line.page
-/usr/local/share/help/sv/meld/figures/Meld.svg
 /usr/local/share/help/sv/meld/file-changes.page
 /usr/local/share/help/sv/meld/file-filters.page
 /usr/local/share/help/sv/meld/file-mode.page
@@ -309,6 +302,7 @@
 /usr/local/share/help/sv/meld/folder-mode.page
 /usr/local/share/help/sv/meld/index.page
 /usr/local/share/help/sv/meld/introduction.page
+/usr/local/share/help/sv/meld/keyboard-shortcuts.page
 /usr/local/share/help/sv/meld/legal.xml
 /usr/local/share/help/sv/meld/missing-functionality.page
 /usr/local/share/help/sv/meld/preferences.page
