@@ -13,10 +13,10 @@
 /usr/local/bin/tshark
 /usr/local/lib/libwireshark.so
 /usr/local/lib/libwireshark.so.17
-/usr/local/lib/libwireshark.so.17.0.0
+/usr/local/lib/libwireshark.so.17.0.3
 /usr/local/lib/libwiretap.so
 /usr/local/lib/libwiretap.so.14
-/usr/local/lib/libwiretap.so.14.0.0
+/usr/local/lib/libwiretap.so.14.1.3
 /usr/local/lib/libwsutil.so
 /usr/local/lib/libwsutil.so.15
 /usr/local/lib/libwsutil.so.15.0.0
