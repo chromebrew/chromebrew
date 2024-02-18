@@ -3,10 +3,10 @@ require 'package'
 class Android_studio < Package
   description 'Android Studio is the official IDE for Android development.'
   homepage 'https://developer.android.com/studio'
-  version '2021.2.1.15'
+  version '2023.1.1.26'
   license 'Apache-2.0'
   compatibility 'x86_64'
-  source_url 'https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz'
+  source_url 'https://r2---sn-5ualdnss.gvt1.com/edgedl/android/studio/ide-zips/2023.1.1.26/android-studio-2023.1.1.26-linux.tar.gz'
   source_sha256 '0018e0dfc0dd2921700516f7a2c443377c557788da7fb0a45243ecb4300745be'
 
   depends_on 'jdk11'
