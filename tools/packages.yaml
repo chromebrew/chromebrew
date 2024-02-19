@@ -9436,6 +9436,11 @@ url: https://github.com/yt-dlp/yt-dlp/releases
 activity: high
 ---
 kind: url
+name: ytree
+url: https://www.han.de/~werner/ytree.html
+activity: high
+---
+kind: url
 name: zathura
 url: https://pwmt.org/projects/zathura/download/
 activity: low
