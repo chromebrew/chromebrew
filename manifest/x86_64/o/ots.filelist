@@ -1,0 +1,10 @@
+/usr/local/bin/ots-idempotent
+/usr/local/bin/ots-perf
+/usr/local/bin/ots-sanitize
+/usr/local/bin/ots-side-by-side
+/usr/local/bin/ots-validator-checker
+/usr/local/share/man/man1/ots-idempotent.1.zst
+/usr/local/share/man/man1/ots-perf.1.zst
+/usr/local/share/man/man1/ots-sanitize.1.zst
+/usr/local/share/man/man1/ots-side-by-side.1.zst
+/usr/local/share/man/man1/ots-validator-checker.1.zst

@@ -3,19 +3,21 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '23.3.3'
+  version '23.3.4'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url({
-    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/23.3.3/dbeaver-ce-23.3.3-linux.gtk.x86_64.tar.gz'
+    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/23.3.4/dbeaver-ce-23.3.4-linux.gtk.x86_64.tar.gz'
   })
   source_sha256({
-    x86_64: '4fa3bf1c1a738ff59c69247c73d7e0114330fa6fa6466520907e9dbfeb1cc278'
+    x86_64: 'd545b1121621e18f0f0f527f9524052c1b67d903bad229ea562f64bfd5a4da24'
   })
 
   depends_on 'gtk3'
   depends_on 'xdg_base'
   depends_on 'sommelier'
+
+  no_compile_needed
 
   def self.patch
     system "sed -i 's,/usr/share/dbeaver-ce,#{CREW_PREFIX}/share/dbeaver,g' dbeaver-ce.desktop"

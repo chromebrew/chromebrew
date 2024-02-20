@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Curl < Autotools
   description 'Command line tool and library for transferring data with URLs.'
   homepage 'https://curl.se/'
-  version '8.5.0'
+  version '8.6.0'
   license 'curl'
   compatibility 'all'
-  source_url 'https://curl.se/download/curl-8.5.0.tar.xz'
-  source_sha256 '42ab8db9e20d8290a3b633e7fbb3cec15db34df65fd1015ef8ac1e4723750eeb'
+  source_url 'https://curl.se/download/curl-8.6.0.tar.xz'
+  source_sha256 '3ccd55d91af9516539df80625f818c734dc6f2ecf9bada33c76765e99121db15'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'edcd12652578507a20da5fffd4ba2b33b2fe0f681070f9a334efc97970f08ce8',
-     armv7l: 'edcd12652578507a20da5fffd4ba2b33b2fe0f681070f9a334efc97970f08ce8',
-       i686: 'a07f7983b8448fb12bbe0fc0a74ce0992f566d51488c2e73742ad5443c1c5510',
-     x86_64: 'e48a1d65575457eb66e1b165f285b75b3b6303ae7efef3e7b57da2ff2fcdad1d'
+    aarch64: 'd1a078e93174aa297e38dce941da921196b1f2faaa147070219dd651f01b6169',
+     armv7l: 'd1a078e93174aa297e38dce941da921196b1f2faaa147070219dd651f01b6169',
+       i686: '27f3a6a769c69b66aeb85d15ad25fc04ec30673c0ab05ba42b9401b6bd914580',
+     x86_64: '27ac18f099c383d91ec5ab0c008ed4ee1651cf40dbe37bf3390afd733d8f9228'
   })
 
   depends_on 'brotli' # R

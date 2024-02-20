@@ -3,17 +3,17 @@ require 'package'
 class Alsa_utils < Package
   description 'The Advanced Linux Sound Architecture (ALSA) - utilities'
   homepage 'https://github.com/alsa-project/alsa-utils'
-  version '1.2.9'
+  version '1.2.11'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/alsa-project/alsa-utils/archive/v#{version}.tar.gz"
-  source_sha256 'fde581549326489e9acb2b2d9ddcb146ee85a1698b817f7f4891f49c9f6fc11f'
+  source_sha256 '978961153fa8ca4c783c93767e7054d0dc1fb42ef6f1008040ca71363d0f4d35'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7480e0f374071248b7bb7f3d5b4bf7b033f614303096707501836df0778aa0d9',
-     armv7l: '7480e0f374071248b7bb7f3d5b4bf7b033f614303096707501836df0778aa0d9',
-     x86_64: 'f419d655bbc28638878231d02d69e4e17c1dc045ec9625167c9c805ee96e7633'
+    aarch64: '5f702ad52afed8235203c6155c5670bb525f88a51d0941e22231fd0b1d277a34',
+     armv7l: '5f702ad52afed8235203c6155c5670bb525f88a51d0941e22231fd0b1d277a34',
+     x86_64: '5ef82a21da013de424f882f7796ca215c14e46503420a51747cb784f98694dbf'
   })
 
   depends_on 'alsa_lib' # R

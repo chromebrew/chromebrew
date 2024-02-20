@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Libsdl2 < Package
+class Libsdl2 < CMake
   description 'Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.'
   homepage 'http://www.libsdl.org'
-  version '2.28.0'
+  version '2.30.0'
   license 'ZLIB'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libsdl-org/SDL.git'
@@ -11,9 +11,9 @@ class Libsdl2 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fd584f04ee0c5fdc49aaaa13454a618aa56ed71f73b17123edac21720191fa2a',
-     armv7l: 'fd584f04ee0c5fdc49aaaa13454a618aa56ed71f73b17123edac21720191fa2a',
-     x86_64: '707350fb01f4f26e87873388adedda472357ec2453bf6dcfb48a3e37fce29c61'
+    aarch64: '2ac3f854f9154c52c336f1437e867288d5e1861b93109393eaa90117255b186d',
+     armv7l: '2ac3f854f9154c52c336f1437e867288d5e1861b93109393eaa90117255b186d',
+     x86_64: '781d572fd31457fc6c92d57a73dc33a071e9a9df4e1ee78e6dc9496f21155410'
   })
 
   depends_on 'alsa_lib' => :build
@@ -24,16 +24,5 @@ class Libsdl2 < Package
   depends_on 'pulseaudio' => :build
   depends_on 'xwayland' => :build
 
-  def self.build
-    @arch_options = ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
-    system "cmake -B builddir -G Ninja \
-      #{CREW_CMAKE_OPTIONS} \
-      #{@arch_options} \
-      -Wno-dev"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  @cmake_options = ARCH == 'x86_64' ? '-DOPT_DEF_SSEMATH=ON' : ''
 end

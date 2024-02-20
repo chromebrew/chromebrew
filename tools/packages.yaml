@@ -275,6 +275,11 @@ url: https://github.com/ThomasHabets/arping/releases
 activity: low
 ---
 kind: url
+name: arpscan
+url: https://github.com/royhills/arp-scan/releases
+activity: none
+---
+kind: url
 name: ascii
 url: http://www.catb.org/~esr/ascii
 activity: low
@@ -2725,6 +2730,11 @@ url: https://ftp.gnome.org/pub/gnome/sources/gobject-introspection/
 activity: medium
 ---
 kind: url
+name: google_webdesigner
+url: https://webdesigner.withgoogle.com/
+activity: high
+---
+kind: url
 name: gox
 url: https://github.com/mitchellh/gox/releases
 activity: low
@@ -3268,6 +3278,11 @@ kind: url
 name: intel_media_sdk
 url: https://github.com/Intel-Media-SDK/MediaSDK/releases
 activity: low
+---
+kind: url
+name: intel_opencl_clang
+url: https://github.com/intel/opencl-clang/releases
+activity: medium
 ---
 kind: url
 name: intltool
@@ -3936,6 +3951,11 @@ url: https://download.netsurf-browser.org/libs/releases/
 activity: low
 ---
 kind: url
+name: libdovi
+url: https://github.com/quietvoid/dovi_tool/tags
+activity: medium
+---
+kind: url
 name: libdrm
 url: https://dri.freedesktop.org/libdrm
 activity: medium
@@ -3989,6 +4009,11 @@ kind: url
 name: libefl
 url: https://download.enlightenment.org/rel/libs/efl/
 activity: high
+---
+kind: url
+name: libei
+url: https://gitlab.freedesktop.org/libinput/libei/-/tags
+activity: medium
 ---
 kind: url
 name: libemf
@@ -4559,6 +4584,11 @@ kind: url
 name: libpipeline
 url: https://download.savannah.gnu.org/releases/libpipeline
 activity: low
+---
+kind: url
+name: libplacebo
+url: https://code.videolan.org/videolan/libplacebo/-/tags
+activity: medium
 ---
 kind: url
 name: libplist
@@ -5321,6 +5351,11 @@ url: https://sourceforge.net/projects/circuit/files/
 activity: none
 ---
 kind: url
+name: love
+url: https://github.com/love2d/love/releases
+activity: medium
+---
+kind: url
 name: lsb_release
 url: https://sourceforge.net/projects/lsb/files/lsb_release/
 activity: none
@@ -5339,6 +5374,16 @@ kind: url
 name: ltrace
 url: https://gitlab.com/cespedes/ltrace
 activity: none
+---
+kind: url
+name: lttng_tools
+url: https://lttng.org/download/#build-from-source
+activity: medium
+---
+kind: url
+name: lttng_ust
+url: https://lttng.org/download/#build-from-source
+activity: medium
 ---
 kind: url
 name: lua
@@ -6318,6 +6363,11 @@ activity: low
 kind: url
 name: osl
 url: https://github.com/periscop/openscop/releases/
+activity: low
+---
+kind: url
+name: ots
+url: https://github.com/khaledhosny/ots/releases
 activity: low
 ---
 kind: url
@@ -7916,6 +7966,11 @@ url: https://github.com/google/snappy/releases
 activity: high
 ---
 kind: url
+name: snd
+url: https://sourceforge.net/projects/snd/files/snd/
+activity: high
+---
+kind: url
 name: sngrep
 url: https://github.com/irontec/sngrep/releases
 activity: none
@@ -8008,6 +8063,11 @@ activity: low
 kind: url
 name: spirv_headers
 url: https://github.com/KhronosGroup/SPIRV-Headers/releases
+activity: medium
+---
+kind: url
+name: spirv_llvm_translator
+url: https://github.com/KhronosGroup/SPIRV-LLVM-Translator/releases
 activity: medium
 ---
 kind: url
@@ -8496,6 +8556,11 @@ url: https://osdn.net/projects/hanazono-font/releases/
 activity: none
 ---
 kind: url
+name: tuptime
+url: https://github.com/rfmoz/tuptime/releases
+activity: low
+---
+kind: url
 name: twm
 url: https://www.x.org/archive//individual/app/
 activity: none
@@ -8684,6 +8749,16 @@ kind: url
 name: valgrind
 url: http://sourceware.org/pub/valgrind
 activity: none
+---
+kind: url
+name: vapoursynth
+url: https://github.com/vapoursynth/vapoursynth/releases
+activity: high
+---
+kind: url
+name: vc_intrinsics
+url: https://github.com/intel/vc-intrinsics/releases
+activity: low
 ---
 kind: url
 name: vamp_sdk
@@ -9297,8 +9372,8 @@ activity: none
 ---
 kind: url
 name: xzutils
-url: http://tukaani.org/xz
-activity: low
+url: https://github.com/tukaani-project/xz/releases
+activity: medium
 ---
 kind: url
 name: yad
@@ -9358,6 +9433,11 @@ activity: high
 kind: url
 name: yt_dlp
 url: https://github.com/yt-dlp/yt-dlp/releases
+activity: high
+---
+kind: url
+name: ytree
+url: https://www.han.de/~werner/ytree.html
 activity: high
 ---
 kind: url

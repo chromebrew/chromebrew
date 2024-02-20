@@ -1,25 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libgnome_games_support < Package
+class Libgnome_games_support < Meson
   description 'libgnome-games-support is a small library intended for internal use by GNOME Games.'
   homepage 'https://gitlab.gnome.org/GNOME/libgnome-games-support'
-  version '1.8.1'
+  version '1.8.2' # 2.0.0 is out, but gnome_mines and gnome_klotski don't work with it yet.
   license 'LGPL-3+'
-  compatibility 'all'
-  source_url "https://download.gnome.org/sources/libgnome-games-support/#{version.rpartition('.')[0]}/libgnome-games-support-#{version}.tar.xz"
-  source_sha256 'c37b7acd3ba7eb12207f5d7bb020535fa5783b0bd897e51b2bd629ce119a413f'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/libgnome-games-support.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: '6f83e25e2fd800d309f96006eeb9c96f76ac11a6ab3370193427da0b7a8ba0b8',
+     armv7l: '6f83e25e2fd800d309f96006eeb9c96f76ac11a6ab3370193427da0b7a8ba0b8',
+     x86_64: 'a332d79955f7dd3e8804337410daea63b39cc41bd42b529acb61559cc4bed27b'
+  })
+
+  depends_on 'clutter'
   depends_on 'gtk3'
   depends_on 'libgee'
-  depends_on 'clutter'
-
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  depends_on 'vala' => :build
 end

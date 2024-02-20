@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '23.3.3'
+  @_ver = '24.0.1'
   version "#{@_ver}-llvm17"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -12,9 +12,9 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '81a3d1604ccb950a51cca7c6efa947162034db4e4d850bc00eea22963d733374',
-     armv7l: '81a3d1604ccb950a51cca7c6efa947162034db4e4d850bc00eea22963d733374',
-     x86_64: 'e3f45bcd7f74248f78586d8908b11586ef833de3f0c18c2af634cdaccc747fb7'
+    aarch64: 'ad768384dda6766db974129272784123976c4ad62dd9625327cc1f806d8822cc',
+     armv7l: 'ad768384dda6766db974129272784123976c4ad62dd9625327cc1f806d8822cc',
+     x86_64: '6ef49edcddfd580513c74b837b854e9e823e32c56d1fc00d5d9bb1d73285985b'
   })
 
   depends_on 'elfutils' # R
@@ -56,8 +56,6 @@ class Mesa < Package
   depends_on 'zstd' # R
 
   def self.build
-    @gallium_drivers = ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'
-    @vulkan_drivers = ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'
     system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
       -Db_asneeded=false \
       -Ddri3=enabled \
@@ -68,9 +66,9 @@ class Mesa < Package
       -Dglvnd=true \
       -Dglx=dri \
       -Dllvm=enabled \
-      -Dgallium-drivers='#{@gallium_drivers}' \
-      -Dvulkan-drivers='#{@vulkan_drivers}' \
-      -Dvideo-codecs='vc1dec,h264dec,h264enc,h265dec,h265enc' \
+      -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'}' \
+      -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
+      -Dvideo-codecs='all' \
        builddir"
     system 'meson configure --no-pager builddir'
     system "mold -run #{CREW_NINJA} -C builddir"

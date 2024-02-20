@@ -7,4 +7,6 @@ class Ruby_webrick < RUBY
   license 'BSD-2'
   compatibility 'all'
   source_url 'SKIP'
+
+  no_compile_needed
 end

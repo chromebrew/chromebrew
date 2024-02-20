@@ -89,15 +89,12 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 # For container usage, where we want to specify i686 arch
 # on a x86_64 host by setting ARCH=i686.
 : "${ARCH:=$(uname -m)}"
-# For container usage, when we are emulating armv7l via linux32
-# uname -m reports armv8l.
-ARCH="${ARCH/armv8l/armv7l}"
 
-# Determine if there is a difference between kernel and user space.
-if [[ "${ARCH}" == "aarch64" && ! -d '/lib64' ]]; then
-  USER_SPACE_ARCH='armv7l'
-else
-  USER_SPACE_ARCH="${ARCH}"
+# For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
+# Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
+# When we have proper support for aarch64, remove this.
+if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
+  ARCH='armv7l'
 fi
 
 if [[ "$ARCH" == "x86_64" ]]; then
@@ -163,10 +160,6 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-# Prepare urls and sha256s variables.
-urls=()
-sha256s=()
-
 BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
 
 # Older i686 systems.
@@ -177,37 +170,8 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHR
   BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
 
   # Recent Arm systems have a cut down system.
-  [[ "${USER_SPACE_ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
+  [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
 fi
-
-# Get the URLs and hashes of the bootstrap packages.
-for package in $BOOTSTRAP_PACKAGES; do
-  cd "${CREW_LIB_PATH}/packages"
-  [[ "$(sed -n '/binary_sha256/,/}/p' "${package}.rb")" =~ .*${ARCH}:[[:blank:]]*[\'\"]([^\'\"]*) ]]
-    sha256s+=("${BASH_REMATCH[1]}")
-
-  nln=$(nl -b a -n ln "${package}.rb" | sed -n '/class/p' | head -1 | cut -c 1)
-  vln=$(nl -b a -n ln "${package}.rb" | sed -n '/  version/p' | head -1 | cut -c 1)
-  name=$(sed -n "${nln}s/class\(.*\)<.*/\L\1/;${nln}s/^[ \t]*//;${nln}s/[ \t]*$//p" "${package}.rb")
-  version=$(sed -n "${vln}p" "${package}.rb" | awk '{print $2}' | tr -d "'")
-
-  # This is really ugly, FIXME after #7082 is merged.
-  if [[ "${package}" == "zstd" ]]; then
-    if [[ "$ARCH" == "aarch64" ]]; then
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_armv7l/${name}-${version}-chromeos-armv7l.tar.xz")
-    else
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_${ARCH}/${name}-${version}-chromeos-${ARCH}.tar.xz")
-    fi
-  else
-    [[ "${package}" == "glibc_lib235" ]] && name="glibc_lib"
-    if [[ "$ARCH" == "aarch64" ]]; then
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_armv7l/${name}-${version}-chromeos-armv7l.tar.zst")
-    else
-      urls+=("https://gitlab.com/api/v4/projects/26210301/packages/generic/${name}/${version}_${ARCH}/${name}-${version}-chromeos-${ARCH}.tar.zst")
-    fi
-  fi
-
-done
 
 # Create the device.json file.
 cd "${CREW_CONFIG_PATH}"
@@ -286,17 +250,19 @@ function update_device_json () {
 
 echo_info "Downloading Bootstrap packages...\n"
 # Extract, install and register packages.
-for i in $(seq 0 $((${#urls[@]} - 1))); do
-  url=${urls["${i}"]}
-  sha256=${sha256s["${i}"]}
-  tarfile=$(basename "${url}")
-  name="${tarfile%%-*}"   # extract string before first '-'
-  rest="${tarfile#*-}"    # extract string after first '-'
-  version="${rest%%-chromeos*}" # extract string between first '-' and "-chromeos"
+for package in $BOOTSTRAP_PACKAGES; do
+  cd "${CREW_LIB_PATH}/packages"
+  version=$(sed -n "s/.*version '\([^']*\)'.*/\1/p" "${package}.rb")
+  binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
 
-  download_check "${name}" "${url}" "${tarfile}" "${sha256}"
-  extract_install "${name}" "${tarfile}"
-  update_device_json "${name}" "${version}" "${sha256}"
+  url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
+  tarfile=$(basename "${url}")
+
+  sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
+
+  download_check "${package}" "${url}" "${tarfile}" "${sha256}"
+  extract_install "${package}" "${tarfile}"
+  update_device_json "${package}" "${version}" "${sha256}"
 done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
@@ -313,9 +279,6 @@ echo_out "Set up and synchronize local package repo..."
 # containers.
 echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
 export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
-
-# Add the CREW_PREFIX bin and musl bin directories to PATH.
-echo -e "## Inserted by Chromebrew's install.sh\nPATH=$CREW_PREFIX/bin:$CREW_PREFIX/sbin:$CREW_PREFIX/share/musl/bin:\$PATH" > "$CREW_PREFIX"/etc/env.d/path
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
@@ -354,7 +317,7 @@ else
   git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set packages "manifest/${USER_SPACE_ARCH}" lib bin crew tests tools
+  git sparse-checkout set packages "manifest/${ARCH}" lib bin crew tests tools
   git reset --hard origin/"${BRANCH}"
 fi
 echo -e "${RESET}"

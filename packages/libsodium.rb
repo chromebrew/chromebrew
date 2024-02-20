@@ -1,32 +1,21 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libsodium < Package
+class Libsodium < Autotools
   description 'A modern, portable, easy to use crypto library'
   homepage 'https://libsodium.org'
-  version '1.0.18-RELEASE'
+  version '1.0.19'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/jedisct1/libsodium/archive/refs/tags/1.0.18-RELEASE.tar.gz'
-  source_sha256 'b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/jedisct1/libsodium.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
-     armv7l: 'e87f51f0f58dfd46cd547bbe8548c9dd8fc18260c022c6440c2e2d64673de0f1',
-       i686: 'd1a7c85be6511c084b6830e9e0786e07efbc79a415e9bddc8961486bf355a41f',
-     x86_64: '46856f8d0724b7c52dc8c2b657e9f49da97bd2eaee423c3055eb426b29a200a5'
+    aarch64: 'c765b02425358132de3da5df184f990b737bb95bb30746bed2a8cefaf3a4d0e6',
+     armv7l: 'c765b02425358132de3da5df184f990b737bb95bb30746bed2a8cefaf3a4d0e6',
+       i686: 'f7971a331e7504212dd6c9bc832a8adefca11e95f0494a3ec2579512cc6a64c7',
+     x86_64: 'd650cb5469fe83f695b8b8f73f8895229c6f343b7b0b2f644078caf8c5544944'
   })
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end

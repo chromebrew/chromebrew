@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.27'
+  version '1.29'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -69,6 +69,9 @@ class Buildessential < Package
 
   # COBOL
   # depends_on 'gnucobol'
+
+  # getrealdeps needs gawk
+  depends_on 'gawk'
 
   # Google
   # depends_on 'dart'
@@ -138,6 +141,7 @@ class Buildessential < Package
   # depends_on 'py3_build'
   # depends_on 'py3_installer'
   depends_on 'py3_flit_core'
+  depends_on 'py3_libxml2'
   # Pax_utils needs this.
   depends_on 'py3_pyelftools'
 

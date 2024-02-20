@@ -3,23 +3,30 @@ require 'package'
 class Giflib < Package
   description 'giflib is a library for reading and writing gif images.'
   homepage 'http://giflib.sourceforge.net/'
-  version '5.2.1-1'
+  version '5.2.2'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://downloads.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz'
-  source_sha256 '31da5562f44c5f15d63340a09a4fd62b48c45620cd302f77a6d9acf0077879bd'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://downloads.sourceforge.net/project/giflib/giflib-5.2.2.tar.gz'
+  source_sha256 'be7ffbd057cadebe2aa144542fd90c6838c6a083b5e8a9048b8ee3b66b29d5fb'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3b0b0b66720c1eec34ba17441a5edb0a27b1accfcd91ea22cd52c1e5f343e95e',
-     armv7l: '3b0b0b66720c1eec34ba17441a5edb0a27b1accfcd91ea22cd52c1e5f343e95e',
-       i686: 'd94ebf373666a28f98c2010c5e1e72f35b3f1559e512a7307ff52b646ec3db34',
-     x86_64: '9828787f55c5af5fc53587a3a7c2552adf53079f4291164eef3fe982ba51bdb6'
+    aarch64: '73bc9172813f7d8637e5448d7c80a12270224bba12fb6f76604a9a11cc895f81',
+     armv7l: '73bc9172813f7d8637e5448d7c80a12270224bba12fb6f76604a9a11cc895f81',
+     x86_64: 'c7e4b56340c481f7007e459010ebd126b8401d8511d6e4045b4b6245c4115941'
   })
 
   depends_on 'glibc' # R
+  depends_on 'imagemagick7' => :build
 
   no_env_options
+
+  def self.patch
+    # Fix /usr/local/bin/ld: fatal error: -soname: must take a non-empty argument
+    system "sed -i 's/-soname -Wl,/-soname /g' Makefile"
+    # Make sure all the binaries are installed
+    system "sed -i 's/$(INSTALL) $^/$(INSTALL) $(UTILS)/' Makefile"
+  end
 
   def self.build
     # No configure script in the source.
@@ -32,7 +39,7 @@ class Giflib < Package
   end
 
   def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}", 'install'
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", "PREFIX=#{CREW_PREFIX}", "LIBDIR=#{CREW_LIB_PREFIX}", 'MANUAL_PAGES=doc/*.1', 'install'
     # Remove static library.
     FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libgif.a"
     @libname = name.to_s.start_with?('lib') ? name.downcase : "lib#{name.gsub('lib', '').downcase}"

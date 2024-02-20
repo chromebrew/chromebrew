@@ -6,7 +6,7 @@
 /usr/local/include/mpv/stream_cb.h
 /usr/local/lib/libmpv.so
 /usr/local/lib/libmpv.so.2
-/usr/local/lib/libmpv.so.2.1.0
+/usr/local/lib/libmpv.so.2.2.0
 /usr/local/lib/pkgconfig/mpv.pc
 /usr/local/share/applications/mpv.desktop
 /usr/local/share/bash-completion/completions/mpv
@@ -23,3 +23,4 @@
 /usr/local/share/man/man1/mpv.1.zst
 /usr/local/share/metainfo/mpv.metainfo.xml
 /usr/local/share/zsh/site-functions/_mpv
+/home/chronos/user/.mpv/mpv.conf

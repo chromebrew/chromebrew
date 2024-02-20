@@ -31,7 +31,7 @@
 /usr/local/lib/libbsd.la
 /usr/local/lib/libbsd.so
 /usr/local/lib/libbsd.so.0
-/usr/local/lib/libbsd.so.0.11.7
+/usr/local/lib/libbsd.so.0.11.8
 /usr/local/lib/pkgconfig/libbsd-ctor.pc
 /usr/local/lib/pkgconfig/libbsd-overlay.pc
 /usr/local/lib/pkgconfig/libbsd.pc

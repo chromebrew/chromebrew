@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libcap_ng < Package
+class Libcap_ng < Autotools
   description 'The libcap-ng library is intended to make programming with posix capabilities much easier than the traditional libcap library.'
   homepage 'https://people.redhat.com/sgrubb/libcap-ng'
-  version '0.8.4-5d3aea2-py3.11'
+  version '0.8.4-py3.12'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/stevegrubb/libcap-ng.git'
-  git_hashtag '5d3aea2d098ea222fb35a0be75adeed40e2e96d3'
+  git_hashtag 'v0.8.4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '151e957f7f2e69fc7522ff1b38147ba8972f3bce7a9faa0aa6feb8c059010c76',
-     armv7l: '151e957f7f2e69fc7522ff1b38147ba8972f3bce7a9faa0aa6feb8c059010c76',
-       i686: '04d91c8a9be68946b357e6c6970bc9b253888a09bcd285c1d98ffe28a3e4cfd7',
-     x86_64: '3c7a9b520cf2d63fa5722229e44f86287bd0081d18d0561009ef1cb771783857'
+    aarch64: 'fa8f2961dfa0b0b65fbe825adb4d9e309a686d2d117dc1f5f85dc7f182c55097',
+     armv7l: 'fa8f2961dfa0b0b65fbe825adb4d9e309a686d2d117dc1f5f85dc7f182c55097',
+       i686: 'b185e87d42132d43967b16a19a57ed4ffca706900f7763916dc06230aeabf810',
+     x86_64: '07de5585d76f4e0ee0b4e2ab5740189718b371edd5bad6ca18887136721c86f1'
   })
 
   depends_on 'glibc' # R
@@ -25,20 +25,5 @@ class Libcap_ng < Package
     system "sed -i 's,/usr/bin,#{CREW_PREFIX}/bin,g' utils/captest.c"
   end
 
-  def self.build
-    system './autogen.sh'
-    system 'filefix'
-    system "./configure #{CREW_OPTIONS} \
-      --with-capability_header=#{CREW_PREFIX}/include/linux/capability.h"
-    system 'make'
-  end
-
-  def self.check
-    # Doesn't work if kernel doesn't match headers.
-    # system 'make', 'check'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options "--with-capability_header=#{CREW_PREFIX}/include/linux/capability.h"
 end

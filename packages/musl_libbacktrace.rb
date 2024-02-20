@@ -21,6 +21,7 @@ class Musl_libbacktrace < Package
   })
 
   depends_on 'musl_native_toolchain' => :build
+  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

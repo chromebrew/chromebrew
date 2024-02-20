@@ -1,33 +1,31 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Meld < Package
+class Meld < Meson
   description 'Meld is a visual diff and merge tool targeted at developers.'
   homepage 'https://meldmerge.org/'
-  version '3.22.0'
+  @_ver = '3.22.1'
+  version "#{@_ver}-py3.12"
   license 'GPL-2'
-  compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/meld/-/archive/3.22.0/meld-3.22.0.tar.gz'
-  source_sha256 '6332dda01925a2ee367b4b2c50da9a89e040b6656f6643c4aae037c20690a8a2'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/meld.git'
+  git_hashtag @_ver
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41addb40a83c9994b929eb2279f4a2ba1a9daca533ffb716a7e0e78010397061',
-     armv7l: '41addb40a83c9994b929eb2279f4a2ba1a9daca533ffb716a7e0e78010397061',
-       i686: '738c8fe2c1df886e38587f69dddaecb928d615e19233ccc5c4fdb83f8c552478',
-     x86_64: 'f3c5aa6aab0cde154c79bc8d9d860b1851ea760cb54d0ff31a1df9f91d9ed1a9'
+    aarch64: '8c9c00dfe88d9afb6f486cf3e2cd8788fb45a27992e856056ee98960e4528547',
+     armv7l: '8c9c00dfe88d9afb6f486cf3e2cd8788fb45a27992e856056ee98960e4528547',
+     x86_64: '5fa48ea39ba4f272052001622f828eb2b67eed4065037ab93d8a20baeccd75b1'
   })
 
-  depends_on 'gtk3'
-  depends_on 'gtksourceview_4'
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
+  depends_on 'desktop_file_utils' # L
+  depends_on 'gtk3' # L
+  depends_on 'gtksourceview_4' # L
+  depends_on 'py3_libxml2' # L
+  depends_on 'py3_pycairo' # L
+  depends_on 'python3' # L
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
+    system "sed -i 's:#!/usr/bin/python3:#!/usr/bin/env python3:' #{CREW_DEST_PREFIX}/bin/meld"
   end
 end

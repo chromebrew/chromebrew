@@ -7,4 +7,6 @@ class Ruby_yaml_lint < RUBY
   license 'MIT'
   compatibility 'all'
   source_url 'SKIP'
+
+  no_compile_needed
 end

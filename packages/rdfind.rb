@@ -6,18 +6,18 @@ require 'package'
 class Rdfind < Package
   description 'Redundant data find - a program that finds duplicate files.'
   homepage 'http://rdfind.pauldreik.se'
-  version '1.5.0'
+  version '1.6.0'
   license 'GPL2'
   compatibility 'all'
   source_url 'https://github.com/pauldreik/rdfind.git'
   git_hashtag "releases/#{version}"
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5147ee21271d6210ed3f826d3c7e7175501a4100d5cb6898310cefc518f5b68f',
-     armv7l: '5147ee21271d6210ed3f826d3c7e7175501a4100d5cb6898310cefc518f5b68f',
-       i686: '7e9c7393fd554211dd7a0d46fa524051254d5f118377e7705a26214b1a880610',
-     x86_64: 'cc92cc6ed55717ba3dabe7160e82fa668e29f71364ff736cbc9004d61777f3ae'
+    aarch64: '4ca9417e258b5ff07bf3a102278e9b963656c443478b2aeec1eb8cba3361d5e1',
+     armv7l: '4ca9417e258b5ff07bf3a102278e9b963656c443478b2aeec1eb8cba3361d5e1',
+       i686: '6c6af3b3f4628b9a7aa8c427d2673ef7b3122343f555646895337727437a126f',
+     x86_64: '741d44e5fe82ac4a791f09fe7fa019c8398cea277c764221d8f178d33f897eb3'
   })
 
   depends_on 'autoconf_archive' => :build

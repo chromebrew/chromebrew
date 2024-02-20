@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.42.2'
+CREW_VERSION = '1.43.8'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -38,9 +38,10 @@ CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
 # does not compatible with the kernel architecture natively
 QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 
-# This helps with virtualized builds on aarch64 machines
-# which report armv8l when linux32 is run.
-ARCH = KERN_ARCH.eql?('armv8l') ? 'armv7l' : KERN_ARCH
+# This helps with virtualized builds on aarch64 machines which report armv8l when linux32 is run.
+# We also report aarch64 machines as armv7l for now, as we treat them as if they were armv7l.
+# When we have proper aarch64 support, remove this.
+ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 
 # This helps determine if there is a difference between kernel and user space
 USER_SPACE_ARCH = RUBY_DESCRIPTION[/\[(.+?)-linux-gnu/, 1]
@@ -104,7 +105,7 @@ CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
 CREW_LOCAL_REPO_ROOT = Dir.exist?('.git') ? `git rev-parse --show-toplevel`.chomp : nil
-CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{USER_SPACE_ARCH}"
+CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
@@ -177,21 +178,22 @@ SSL_CERT_DIR = if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
                  '/etc/ssl/certs'
                end
 
+CREW_ARCH_FLAGS_OVERRIDE = ENV.fetch('CREW_ARCH_FLAGS_OVERRIDE', '')
 case ARCH
 when 'aarch64', 'armv7l'
   CREW_TGT = 'armv7l-cros-linux-gnueabihf'
   CREW_BUILD = 'armv7l-cros-linux-gnueabihf'
   # These settings have been selected to match debian armhf.
   # Using -mfpu=neon breaks builds such as webkit2gtk.
-  CREW_ARCH_FLAGS = '-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp'
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '-mfloat-abi=hard -mthumb -mfpu=vfpv3-d16 -march=armv7-a+fp' : CREW_ARCH_FLAGS_OVERRIDE
 when 'i686'
   CREW_TGT = 'i686-cros-linux-gnu'
   CREW_BUILD = 'i686-cros-linux-gnu'
-  CREW_ARCH_FLAGS = ''
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 when 'x86_64'
   CREW_TGT = 'x86_64-cros-linux-gnu'
   CREW_BUILD = 'x86_64-cros-linux-gnu'
-  CREW_ARCH_FLAGS = ''
+  CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
 CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')

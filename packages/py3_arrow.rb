@@ -6,7 +6,7 @@ class Py3_arrow < Python
   @_ver = '1.3.0'
   version "#{@_ver}-py3.12"
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/arrow-py/arrow.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'
