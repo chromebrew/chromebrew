@@ -13,7 +13,7 @@ class Gimp < Meson
   binary_sha256({
     aarch64: 'e538613618d20be74bf6dbb8c8a64c226b0f827dcce487170f4ef8da92a840bd',
      armv7l: 'e538613618d20be74bf6dbb8c8a64c226b0f827dcce487170f4ef8da92a840bd',
-     x86_64: 'eac55fe54702d7749f47478abe30e905f6dc8649350b96bad8f0ec2df5959c72'
+     x86_64: '846bbfd31fa3b72a0d21017466f36c787203aa2b54c44d86a878d5bd3d48be07'
   })
 
   depends_on 'aalib' # R
