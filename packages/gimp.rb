@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '2.99.16'
+  version '2.99.18'
   license 'GPL-3 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.16.tar.xz'
-  source_sha256 '6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
+  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.18.tar.xz'
+  source_sha256 '8c1bb7a94ac0d4d0cde4d701d8b356387c2ecd87abbd35bbf7d222d40f6ddb6e'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -74,6 +74,7 @@ class Gimp < Meson
   depends_on 'pango' # R
   depends_on 'poppler_data'
   depends_on 'poppler' # R
+  depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pycairo' # L
   depends_on 'pygobject' # L
   depends_on 'pygtk' => :build
