@@ -5,7 +5,7 @@ automake
 binutils
 bison
 brotli
-bz2
+bzip2
 ca_certificates
 c_ares
 cmake
@@ -162,4 +162,5 @@ xxhash
 xzutils
 zip
 zlibpkg
+zoneinfo
 zstd
