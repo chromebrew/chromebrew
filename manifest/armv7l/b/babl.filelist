@@ -22,6 +22,7 @@
 /usr/local/lib/babl-0.1/double.so
 /usr/local/lib/babl-0.1/fast-float.so
 /usr/local/lib/babl-0.1/float.so
+/usr/local/lib/babl-0.1/formats.so
 /usr/local/lib/babl-0.1/gegl-fixups.so
 /usr/local/lib/babl-0.1/gggl-lies.so
 /usr/local/lib/babl-0.1/gggl.so
@@ -48,7 +49,7 @@
 /usr/local/lib/girepository-1.0/Babl-0.1.typelib
 /usr/local/lib/libbabl-0.1.so
 /usr/local/lib/libbabl-0.1.so.0
-/usr/local/lib/libbabl-0.1.so.0.205.1
+/usr/local/lib/libbabl-0.1.so.0.207.1
 /usr/local/lib/pkgconfig/babl-0.1.pc
 /usr/local/share/gir-1.0/Babl-0.1.gir
 /usr/local/share/vala/vapi/babl-0.1.deps

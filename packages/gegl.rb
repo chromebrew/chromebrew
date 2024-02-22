@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Gegl < Meson
   description 'GEGL (Generic Graphics Library) is a data flow based image processing framework, providing floating point processing and non-destructive image processing capabilities to GNU Image Manipulation Program and other projects.'
   homepage 'https://gegl.org/'
-  version '0.4.46'
+  version '0.4.48'
   license 'GPL-3+ and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.46.tar.xz'
-  source_sha256 'd0b3b2481bc8774c5f3d0a487611910166d18eef823a859fb91e781ab7b1e892'
+  source_url 'https://download.gimp.org/pub/gegl/0.4/gegl-0.4.48.tar.xz'
+  source_sha256 '418c26d94be8805d7d98f6de0c6825ca26bd74fcacb6c188da47533d9ee28247'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2610a83b435ff282b0c974cda143d44d8df8ae9a6b42ff6d108feb45150b969c',
-     armv7l: '2610a83b435ff282b0c974cda143d44d8df8ae9a6b42ff6d108feb45150b969c',
-     x86_64: '3cef7ba4754cd012527eb8f5c4eeefe63e747ad70dea1216b8446e447141ee5b'
+    aarch64: 'ddc725eabc4d6c7f66e34590c625f9f20e2ecd7fa3ab3964787195c649e40688',
+     armv7l: 'ddc725eabc4d6c7f66e34590c625f9f20e2ecd7fa3ab3964787195c649e40688',
+     x86_64: '09e34df60b8b9d1907149997fb7b7a29d775f035d090f92cbbcabedf65f8c249'
   })
 
   depends_on 'asciidoc' => :build

@@ -3,17 +3,17 @@ require 'buildsystems/meson'
 class Gimp < Meson
   description 'GIMP is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operating systems.'
   homepage 'https://www.gimp.org/'
-  version '2.99.16'
+  version '2.99.18'
   license 'GPL-3 and LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.16.tar.xz'
-  source_sha256 '6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
+  source_url 'https://download.gimp.org/gimp/v2.99/gimp-2.99.18.tar.xz'
+  source_sha256 '8c1bb7a94ac0d4d0cde4d701d8b356387c2ecd87abbd35bbf7d222d40f6ddb6e'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '88d64a06b50592b6275e9c5c34f1ae8365155c886eb228ea6e854734c4568cdf',
-     armv7l: '88d64a06b50592b6275e9c5c34f1ae8365155c886eb228ea6e854734c4568cdf',
-     x86_64: 'eac55fe54702d7749f47478abe30e905f6dc8649350b96bad8f0ec2df5959c72'
+    aarch64: 'e538613618d20be74bf6dbb8c8a64c226b0f827dcce487170f4ef8da92a840bd',
+     armv7l: 'e538613618d20be74bf6dbb8c8a64c226b0f827dcce487170f4ef8da92a840bd',
+     x86_64: '846bbfd31fa3b72a0d21017466f36c787203aa2b54c44d86a878d5bd3d48be07'
   })
 
   depends_on 'aalib' # R
@@ -74,6 +74,7 @@ class Gimp < Meson
   depends_on 'pango' # R
   depends_on 'poppler_data'
   depends_on 'poppler' # R
+  depends_on 'py3_gi_docgen' => :build
   depends_on 'py3_pycairo' # L
   depends_on 'pygobject' # L
   depends_on 'pygtk' => :build
