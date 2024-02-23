@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  version '2.78.0'
+  version '2.79.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -33,7 +33,7 @@ class Glib < Package
     system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
     -Dselinux=disabled \
     -Dsysprof=disabled \
-    -Dman=false \
+    -Dman-pages=disabled \
     -Dtests=false \
     builddir"
     system 'meson configure --no-pager builddir'

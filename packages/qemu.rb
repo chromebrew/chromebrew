@@ -3,7 +3,7 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.2.0'
+  version '8.2.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.35'
@@ -57,6 +57,7 @@ class Qemu < Package
   depends_on 'libcyrussasl' # R
   depends_on 'libpng' # R
   depends_on 'libseccomp' # R
+  depends_on 'libslirp' => :build
   depends_on 'libssh' # R
   depends_on 'ncurses' # R
   depends_on 'vte' # R

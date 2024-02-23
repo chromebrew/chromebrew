@@ -4736,6 +4736,11 @@ url: https://github.com/libsixel/libsixel/releases
 activity: low
 ---
 kind: url
+name: libslirp
+url: https://gitlab.freedesktop.org/slirp/libslirp/-/tags
+activity: low
+---
+kind: url
 name: libslz
 url: http://www.libslz.org/
 activity: none
