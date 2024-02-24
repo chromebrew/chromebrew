@@ -4,7 +4,7 @@ class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
   @_ver = '1.2.0'
-  version "#{@_ver}-1"
+  version "#{@_ver}-2"
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
@@ -17,6 +17,8 @@ class Nodebrew < Package
        i686: '1b9e9e93a6c8cdffbb47bc09ac84b8ca2e40536c903f79be55927a8a694aefd3',
      x86_64: '1756ea6eb396fd0e448b7dfbf9c7d37e95fb22b616c03ffc833a219777a275f9'
   })
+
+  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/nodebrew/default"
