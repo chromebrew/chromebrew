@@ -4,7 +4,7 @@ require_relative 'git'
 class Git_prompt < Package
   description 'Display the git branch and status in the command prompt'
   homepage 'https://github.com/git/git'
-  version '2.43.2'
+  version '2.44.0'
   # When upgrading git_prompt, be sure to upgrade git in tandem.
   puts "#{self} version differs from Git version #{Git.version}".orange if version != Git.version
   license 'GPL-2'
@@ -15,7 +15,7 @@ class Git_prompt < Package
 
   def self.build
     downloader "https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh",
-               'f1bd4ed4e7b888cad5fb44960ea1ffa88cb35d5e3037a32d96d64fb783eb5c66'
+               'f1eafdac2be85158de4cd62bca5b4404e3fc3b4f3604ab6e00e1dc44efe315cd'
     git_env = <<~EOF
 
       GIT_PS1_SHOWDIRTYSTATE=yes
