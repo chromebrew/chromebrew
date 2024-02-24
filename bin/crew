@@ -1638,6 +1638,10 @@ end
 
 def resolve_dependencies_and_build
   @resolve_dependencies_and_build = 1
+
+  # Process preflight block to see if package should be built
+  pre_flight
+
   @to_postinstall = []
   begin
     origin = @pkg.name
