@@ -20,7 +20,7 @@ class Libslirp < Meson
      x86_64: 'bcfe4319c8f6902437cddc15a1dd96c0003dea68f754acad0a0160f499956ec7'
   })
 
-  depends_on 'glib'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'glib' # R
 end
