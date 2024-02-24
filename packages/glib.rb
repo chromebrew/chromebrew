@@ -3,7 +3,7 @@ require 'package'
 class Glib < Package
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  version '2.78.0'
+  version '2.79.2'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -11,10 +11,10 @@ class Glib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '829516ace17d57ad58ac5d5e617235e243a6fb8927505a77a967df9a90f91405',
-     armv7l: '829516ace17d57ad58ac5d5e617235e243a6fb8927505a77a967df9a90f91405',
-       i686: '5945326740ddddfb751c7bd7740d2964f993b1dbc30c054cef35d4033082ac4a',
-     x86_64: '0af84b414507e0ce9178845035944c054deaa8e9304f05a1e3bdb2f66dfe0bf7'
+    aarch64: 'b12dd9982db97233dbc305b9f39f4e50e141be6888a94a5746cf8c48b533629a',
+     armv7l: 'b12dd9982db97233dbc305b9f39f4e50e141be6888a94a5746cf8c48b533629a',
+       i686: '44d3afc9f320cdd912537c2a63b5b15208237b604843384f98611d2b5e5324a5',
+     x86_64: 'acd4d3d7132b1fd92c6bd67261a46927c16b7af8ee14e2c6eae9e8f798bd6023'
   })
 
   depends_on 'elfutils' # R
@@ -33,7 +33,7 @@ class Glib < Package
     system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
     -Dselinux=disabled \
     -Dsysprof=disabled \
-    -Dman=false \
+    -Dman-pages=disabled \
     -Dtests=false \
     builddir"
     system 'meson configure --no-pager builddir'
