@@ -3,7 +3,7 @@ require 'package'
 class Xterm < Package
   description 'The xterm program is a terminal emulator for the X Window System.'
   homepage 'https://invisible-island.net/xterm/'
-  version '379'
+  version '390'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   source_url 'https://github.com/ThomasDickey/xterm-snapshots.git'
@@ -11,9 +11,9 @@ class Xterm < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9607c9b1dd0681f7dd9b290670195865d1cb0a2ac7d6b384ce366ef29d90e78d',
-     armv7l: '9607c9b1dd0681f7dd9b290670195865d1cb0a2ac7d6b384ce366ef29d90e78d',
-     x86_64: '54246bdb12676ba86429c5d9ac710716e332ce85e8073ac0aa90bc49e40614ca'
+    aarch64: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
+     armv7l: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
+     x86_64: 'f7295c0654e9cc1f12c848fd58f6245c522626e9ce598a32e47c815e70da1596'
   })
 
   depends_on 'libxaw' => :build
