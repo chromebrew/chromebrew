@@ -129,6 +129,7 @@
 /usr/local/libexec/git-core/git-remote-https
 /usr/local/libexec/git-core/git-repack
 /usr/local/libexec/git-core/git-replace
+/usr/local/libexec/git-core/git-replay
 /usr/local/libexec/git-core/git-request-pull
 /usr/local/libexec/git-core/git-rerere
 /usr/local/libexec/git-core/git-reset
