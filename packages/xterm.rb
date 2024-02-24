@@ -13,7 +13,7 @@ class Xterm < Package
   binary_sha256({
     aarch64: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
      armv7l: '6248935abd526d98dedaf033475bf4ef967dec6f450cd4ffa0536f3a61ff31e1',
-     x86_64: 'f7295c0654e9cc1f12c848fd58f6245c522626e9ce598a32e47c815e70da1596'
+     x86_64: '804f23057165662f203994db4614ca2595a1a2a403a1b35ba8909501fb209a6d'
   })
 
   depends_on 'libxaw' => :build
