@@ -11,10 +11,10 @@ class Git < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '16c129e1d9c785c71890d9bc16aaaddd30f273fb5211bae8919dbe92bd9527c5',
-     armv7l: '16c129e1d9c785c71890d9bc16aaaddd30f273fb5211bae8919dbe92bd9527c5',
-       i686: 'e75a03c9771dc1edf0667c2f0ecad79bcf963c5fa00052bf2d5ce424d60c7f0f',
-     x86_64: '79da0d4e68d969855943070d8310ee06cd0a21d3040d0396d5819c732234246d'
+    aarch64: 'd0f2694d662e65d10ecc3e27ef91c5ec74a7a39797ef48d526412186c3c1e1c1',
+     armv7l: 'd0f2694d662e65d10ecc3e27ef91c5ec74a7a39797ef48d526412186c3c1e1c1',
+       i686: '3326ab35452ce97a68d43a4ae6fdb521df55d216271508ed8c45b6085c5cb868',
+     x86_64: '0e6bd0f6d50c0eb8931b21044c5191b4ecdba917a3e83fbaefd1480c11e19c31'
   })
 
   depends_on 'ca_certificates' => :build
