@@ -3,11 +3,11 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.43.2' # Do not use @_ver here, it will break the installer.
+  version '2.44.0' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.43.2.tar.xz'
-  source_sha256 'f612c1abc63557d50ad3849863fc9109670139fc9901e574460ec76e0511adb9'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.44.0.tar.xz'
+  source_sha256 'e358738dcb5b5ea340ce900a0015c03ae86e804e7ff64e47aa4631ddee681de3'
   binary_compression 'tar.zst'
 
   binary_sha256({
