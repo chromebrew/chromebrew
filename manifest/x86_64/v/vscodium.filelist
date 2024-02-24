@@ -321,6 +321,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/latex/syntaxes/LaTeX.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/latex/syntaxes/markdown-latex-combined.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/latex/syntaxes/TeX.tmLanguage.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/less/build/update-grammar.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/less/language-configuration.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/less/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/less/package.nls.json
@@ -477,7 +478,6 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/diagnosticTool.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/extension.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/hash.js
-/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/mappings.wasm
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/renameWorker.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/targets/node/terminateProcess.sh
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.js-debug/src/ui/basic-wat.tmLanguage.json
@@ -801,7 +801,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/vb/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/vb/package.nls.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/vb/snippets/vb.code-snippets
-/usr/local/VSCodium-linux-x64/resources/app/extensions/vb/syntaxes/asp-vb-net.tmlanguage.json
+/usr/local/VSCodium-linux-x64/resources/app/extensions/vb/syntaxes/asp-vb-net.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/xml/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/xml/package.nls.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/xml/syntaxes/xml.tmLanguage.json

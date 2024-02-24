@@ -249,7 +249,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/hlsl/syntaxes/hlsl.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/client/dist/node/htmlClientMain.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/client/dist/node/htmlClientMain.js.LICENSE.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/icons/html.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/html-language-features/package.nls.json
@@ -294,7 +293,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/java/syntaxes/java.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/client/dist/node/jsonClientMain.js.LICENSE.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/icons/json.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/json-language-features/package.nls.json
@@ -323,6 +321,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/latex/syntaxes/LaTeX.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/latex/syntaxes/markdown-latex-combined.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/latex/syntaxes/TeX.tmLanguage.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/less/build/update-grammar.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/less/language-configuration.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/less/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/less/package.nls.json
@@ -344,7 +343,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-basics/snippets/markdown.code-snippets
 /usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-basics/syntaxes/markdown.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-language-features/dist/extension.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-language-features/dist/extension.js.LICENSE.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-language-features/.eslintignore
 /usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-language-features/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/markdown-language-features/media/highlight.css
@@ -411,13 +409,11 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/media-preview/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/media-preview/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/merge-conflict/dist/mergeConflictMain.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/merge-conflict/dist/mergeConflictMain.js.LICENSE.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/merge-conflict/media/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/merge-conflict/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/merge-conflict/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/merge-conflict/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/dist/extension.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/dist/extension.js.LICENSE.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/media/auth.css
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/media/favicon.ico
 /usr/local/VSCodium-linux-arm/resources/app/extensions/microsoft-authentication/media/icon.png
@@ -482,7 +478,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/diagnosticTool.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/extension.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/hash.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/mappings.wasm
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/renameWorker.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/targets/node/terminateProcess.sh
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/ui/basic-wat.tmLanguage.json
@@ -492,18 +487,20 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/src/watchdog.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.js-debug/ThirdPartyNotices.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/ci.yml
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/84b6bc62673660f3ffa2.module.wasm
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/94625be35e004f01f9d5.module.wasm
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/9.extension.web.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/cpu-client.bundle.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/extension.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/extension.web.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/heap-client.bundle.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/heapsnapshot-client.bundle.js
+/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/heapsnapshotWorker.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/README.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/resources/icon.png
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/ThirdPartyNotices.txt
 /usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/tsconfig.browser.json
-/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/webpack.cpu-client.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/webpack.extension.js
-/usr/local/VSCodium-linux-arm/resources/app/extensions/ms-vscode.vscode-js-profile-table/webpack.heap-client.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/node_modules/typescript/lib/cancellationToken.js
 /usr/local/VSCodium-linux-arm/resources/app/extensions/node_modules/typescript/lib/cs/diagnosticMessages.generated.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/node_modules/typescript/lib/de/diagnosticMessages.generated.json
@@ -715,7 +712,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/sql/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/sql/syntaxes/sql.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/swift/language-configuration.json
-/usr/local/VSCodium-linux-arm/resources/app/extensions/swift/LICENSE.md
 /usr/local/VSCodium-linux-arm/resources/app/extensions/swift/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/swift/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/swift/snippets/swift.code-snippets
@@ -805,7 +801,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/vb/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/vb/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/vb/snippets/vb.code-snippets
-/usr/local/VSCodium-linux-arm/resources/app/extensions/vb/syntaxes/asp-vb-net.tmlanguage.json
+/usr/local/VSCodium-linux-arm/resources/app/extensions/vb/syntaxes/asp-vb-net.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/xml/package.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/xml/package.nls.json
 /usr/local/VSCodium-linux-arm/resources/app/extensions/xml/syntaxes/xml.tmLanguage.json
@@ -851,8 +847,8 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/cpuUsage.sh
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/ps.sh
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/node/terminateProcess.sh
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload-aux.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/base/parts/sandbox/electron-sandbox/preload-slim.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/worker/workerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vscode-dts/vscode.d.ts
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-main/main.js
@@ -943,7 +939,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions-web.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/interactivePlayground.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/languages.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/learn.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/light-hc.png
@@ -959,7 +954,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/settingsSync.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/sideBySide.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/services/extensionManagement/common/media/defaultIcon.png
