@@ -12,9 +12,9 @@ class Qemu < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '796b4b9ab3e33255ad631a66f7515a8eed904d774c5c17474d51dc91b51efee3',
-     armv7l: '796b4b9ab3e33255ad631a66f7515a8eed904d774c5c17474d51dc91b51efee3',
-     x86_64: '0299245b83ff0c723f7a15b794a943d73713b657818cd24b7ff617a7a7c43730'
+    aarch64: 'aba64a65dffc4ae46ac5df5f0bae3fcc761dd6b9ddd04ffc6a749f02d8661300',
+     armv7l: 'aba64a65dffc4ae46ac5df5f0bae3fcc761dd6b9ddd04ffc6a749f02d8661300',
+     x86_64: 'b269c5e0ea7f3836bd9b9aa09cea7330432c7d615eeeb04195a6dcb0394cd838'
   })
 
   depends_on 'alsa_lib' # R
@@ -45,7 +45,7 @@ class Qemu < Package
   depends_on 'libpng' # R
   depends_on 'libsdl2' # R
   depends_on 'libseccomp' # R
-  depends_on 'libslirp' => :build
+  depends_on 'libslirp' # R
   depends_on 'libssh' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
