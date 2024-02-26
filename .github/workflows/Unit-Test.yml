@@ -22,6 +22,7 @@ jobs:
             yes | crew remove vim && \
             cd ../tests && \
             ./prop_test && \
+            ruby commands/* && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
