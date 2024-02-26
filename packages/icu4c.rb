@@ -67,22 +67,22 @@ class Icu4c < Package
       @oldicuver = %w[72 72.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
-        @fileArray = []
-        @libArray = []
+        @file_array = []
+        @lib_array = []
         @nmresults = `nm  -A *.so* 2>/dev/null | grep ucol_open_#{oldver}`.chop.split(/$/).map(&:strip)
-        @nmresults.each { |fileLine| @libArray.push(fileLine.partition(':').first) }
-        @libArray.each do |f|
+        @nmresults.each { |file_line| @lib_array.push(file_line.partition(':').first) }
+        @lib_array.each do |f|
           @grepresults = `grep "#{f}" #{CREW_META_PATH}/*.filelist`.chomp.gsub('.filelist', '').partition(':').first.gsub(
             CREW_META_PATH, ''
           ).split(/$/).map(&:strip)
-          @grepresults.each { |fileLine| @fileArray.push(fileLine) }
+          @grepresults.each { |file_line| @file_array.push(file_line) }
         end
         # Mozjs contains an internal icu which will not match this version.
         # Update the following when there is a new version of mozjs.
-        @fileArray.delete_if { |item| item == 'js102' }
-        next if @fileArray.empty?
+        @file_array.delete_if { |item| item == 'js102' }
+        next if @file_array.empty?
 
-        @fileArray.uniq.sort.each do |item|
+        @file_array.uniq.sort.each do |item|
           puts item.lightred
         end
       end

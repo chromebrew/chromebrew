@@ -93,6 +93,7 @@ def http_downloader(uri, filename = File.basename(url), verbose = false)
     http.request(Net::HTTP::Get.new(uri)) do |response|
       case
       when response.is_a?(Net::HTTPSuccess)
+        # Response is successful, don't abort
       when response.is_a?(Net::HTTPRedirection) # follow HTTP redirection
         puts <<~EOT if verbose
           * Follow HTTP redirection: #{response['Location']}

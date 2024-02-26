@@ -102,7 +102,7 @@ pkg_update_arr.each do |pkg|
       # Ok to write working device.json
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
       puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen
-    rescue StandardError => e
+    rescue StandardError
       puts 'Restoring old filelist, directorylist, and device.json...'.lightred
       FileUtils.mv new_filelist, old_filelist
       FileUtils.mv new_directorylist, old_directorylist
