@@ -6,6 +6,7 @@ class Wayland_info < Meson
   version '1.2.0'
   license 'MIT/Expat'
   compatibility 'all'
+  min_glibc '2.34'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland-utils.git'
   git_hashtag version
   binary_compression 'tar.zst'
