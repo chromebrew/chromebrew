@@ -1639,9 +1639,6 @@ end
 def resolve_dependencies_and_build
   @resolve_dependencies_and_build = 1
 
-  # Process preflight block to see if package should be built
-  pre_flight
-
   @to_postinstall = []
   begin
     origin = @pkg.name
@@ -2034,9 +2031,59 @@ def build_command(args)
     else
       @pkgName = name
     end
+
+    # Prompt to copy the local repo package to crew if the package is not found.
+    if !File.file?("#{CREW_PACKAGES_PATH}/#{@pkgName}.rb") && File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb")
+      puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb exists but crew is unable to find this package.".yellow
+      print "\nWould you like to copy #{@pkgName}.rb to crew and start the build [Y/n] ".yellow
+      response = $stdin.gets.chomp.downcase
+      case response
+      when 'n', 'no'
+        puts 'Build skipped.'
+        next
+      when '', 'y', 'yes'
+        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
+        puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+      else
+        puts "I don't understand `#{response}`. :(".lightred
+        puts 'Build skipped.'
+        next
+      end
+    end
+
+    # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the build.
+    crew_package_updated = nil
+    Dir.chdir CREW_PACKAGES_PATH do
+      crew_package_updated = `git diff #{CREW_PACKAGES_PATH}/#{@pkgName}.rb`.chomp
+    end
+    local_package_updated = nil
+    Dir.chdir CREW_LOCAL_REPO_ROOT do
+      local_package_updated = `git diff #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb`.chomp
+    end
+    if local_package_updated != '' && crew_package_updated == ''
+      puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb has been updated but the crew package is unchanged.".yellow
+      print "\nWould you like to copy #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to crew and start the build [Y/n] ".yellow
+      response = $stdin.gets.chomp.downcase
+      case response
+      when 'n', 'no'
+        puts 'Build skipped.'
+        next
+      when '', 'y', 'yes'
+        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
+        puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+      else
+        puts "I don't understand `#{response}`. :(".lightred
+        puts 'Build skipped.'
+        next
+      end
+    end
+
     search @pkgName
     print_current_package @opt_verbose
     next unless @pkgName
+
+    # Process preflight block to see if package should be built
+    pre_flight
 
     if !@pkg.is_fake? && @pkg.compatible? && @pkg.is_source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
