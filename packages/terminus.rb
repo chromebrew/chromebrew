@@ -3,15 +3,18 @@ require 'package'
 class Terminus < Package
   description 'The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform'
   homepage 'https://github.com/pantheon-systems/terminus'
-  version '3.3.2'
+  version '3.3.3'
   license 'MIT'
-  compatibility 'all'
-  source_url 'https://github.com/pantheon-systems/terminus/releases/download/3.3.2/terminus.phar'
-  source_sha256 '383359ff74675fcd22b058e4ad5861b03970357913e1624a97fb3885ee365812'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/pantheon-systems/terminus/releases/download/3.3.3/terminus.phar'
+  source_sha256 '18d5b5ba7c3fcdfa6a48768c3fe5e6c721e1f4ab6a371554359899e297572210'
 
-  depends_on 'php81' unless File.exist? "#{CREW_PREFIX}/bin/php"
+  depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   def self.install
     FileUtils.install 'terminus.phar', "#{CREW_DEST_PREFIX}/bin/terminus", mode: 0o755
+    # Fix php: error while loading shared libraries: libsodium.so.23: cannot open shared object file: No such file or directory
+    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libsodium.so", "#{CREW_DEST_LIB_PREFIX}/libsodium.so.23"
   end
 end
