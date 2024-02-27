@@ -3,19 +3,26 @@ require 'buildsystems/autotools'
 class Libsodium < Autotools
   description 'A modern, portable, easy to use crypto library'
   homepage 'https://libsodium.org'
-  version '1.0.19'
+  @_ver = '1.0.19'
+  version "#{@_ver}-1"
   license 'ISC'
   compatibility 'all'
   source_url 'https://github.com/jedisct1/libsodium.git'
-  git_hashtag version
+  git_hashtag @_ver
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c765b02425358132de3da5df184f990b737bb95bb30746bed2a8cefaf3a4d0e6',
-     armv7l: 'c765b02425358132de3da5df184f990b737bb95bb30746bed2a8cefaf3a4d0e6',
-       i686: 'f7971a331e7504212dd6c9bc832a8adefca11e95f0494a3ec2579512cc6a64c7',
-     x86_64: 'd650cb5469fe83f695b8b8f73f8895229c6f343b7b0b2f644078caf8c5544944'
+    aarch64: '4efd9fd525873faa4280e5792c04a21b5264c2ae19bc9c92d5d2be367062ca0a',
+     armv7l: '4efd9fd525873faa4280e5792c04a21b5264c2ae19bc9c92d5d2be367062ca0a',
+       i686: '97189cfbf743e03fcc9884be9d4f69b701e21e70e6880dbabb9f562a7f75902c',
+     x86_64: 'bc886a2dc037f82ad23635df4e782abdfdc3b998f8b517144d64ff9a612d224a'
   })
+
+  def self.install
+    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # Fix php: error while loading shared libraries: libsodium.so.23: cannot open shared object file: No such file or directory
+    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libsodium.so", "#{CREW_DEST_LIB_PREFIX}/libsodium.so.23"
+  end
 
   run_tests
 end
