@@ -13,8 +13,5 @@ class Terminus < Package
 
   def self.install
     FileUtils.install 'terminus.phar', "#{CREW_DEST_PREFIX}/bin/terminus", mode: 0o755
-    # Fix php: error while loading shared libraries: libsodium.so.23: cannot open shared object file: No such file or directory
-    FileUtils.mkdir_p CREW_DEST_LIB_PREFIX.to_s
-    FileUtils.ln_s "#{CREW_LIB_PREFIX}/libsodium.so", "#{CREW_DEST_LIB_PREFIX}/libsodium.so.23"
   end
 end
