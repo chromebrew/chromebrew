@@ -1834,47 +1834,79 @@ def build_command(args)
 
     # Prompt to copy the local repo package to crew if the package is not found.
     if !File.file?("#{CREW_PACKAGES_PATH}/#{@pkgName}.rb") && File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb")
-      puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb exists but crew is unable to find this package.".yellow
-      print "\nWould you like to copy #{@pkgName}.rb to crew and start the build [Y/n] ".yellow
-      response = $stdin.gets.chomp.downcase
-      case response
-      when 'n', 'no'
-        puts 'Build skipped.'
-        next
-      when '', 'y', 'yes'
+      if @opt_force
         FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
         puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
       else
-        puts "I don't understand `#{response}`. :(".lightred
-        puts 'Build skipped.'
-        next
+        puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb exists but crew is unable to find this package.".yellow
+        print "\nWould you like to copy #{@pkgName}.rb to crew and start the build [Y/n] ".yellow
+        response = $stdin.gets.chomp.downcase
+        case response
+        when 'n', 'no'
+          puts 'Build skipped.'
+          next
+        when '', 'y', 'yes'
+          FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
+          puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+        else
+          puts "I don't understand `#{response}`. :(".lightred
+          puts 'Build skipped.'
+          next
+        end
       end
     end
 
     # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the build.
-    crew_package_updated = nil
+    crew_package_updated = ''
     Dir.chdir CREW_PACKAGES_PATH do
       crew_package_updated = `git diff #{CREW_PACKAGES_PATH}/#{@pkgName}.rb`.chomp
     end
-    local_package_updated = nil
+    local_package_updated = ''
     Dir.chdir CREW_LOCAL_REPO_ROOT do
       local_package_updated = `git diff #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb`.chomp
     end
     if local_package_updated != '' && crew_package_updated == ''
-      puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb has been updated but the crew package is unchanged.".yellow
-      print "\nWould you like to copy #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to crew and start the build [Y/n] ".yellow
-      response = $stdin.gets.chomp.downcase
-      case response
-      when 'n', 'no'
-        puts 'Build skipped.'
-        next
-      when '', 'y', 'yes'
+      if @opt_force
         FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
         puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
       else
-        puts "I don't understand `#{response}`. :(".lightred
-        puts 'Build skipped.'
-        next
+        puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb has been updated but the crew package is unchanged.".yellow
+        print "\nWould you like to copy #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to crew and start the build [Y/n] ".yellow
+        response = $stdin.gets.chomp.downcase
+        case response
+        when 'n', 'no'
+          puts 'Build skipped.'
+          next
+        when '', 'y', 'yes'
+          FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
+          puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+        else
+          puts "I don't understand `#{response}`. :(".lightred
+          puts 'Build skipped.'
+          next
+        end
+      end
+    end
+    if local_package_updated != '' && crew_package_updated != '' && local_package_updated != crew_package_updated
+      if @opt_force
+        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
+        puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+      else
+        puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb has been updated and does not match the crew updated package.".yellow
+        print "\nWould you like to copy #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to crew and start the build [Y/n] ".yellow
+        response = $stdin.gets.chomp.downcase
+        case response
+        when 'n', 'no'
+          puts 'Build skipped.'
+          next
+        when '', 'y', 'yes'
+          FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb", "#{CREW_PACKAGES_PATH}/"
+          puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+        else
+          puts "I don't understand `#{response}`. :(".lightred
+          puts 'Build skipped.'
+          next
+        end
       end
     end
 
