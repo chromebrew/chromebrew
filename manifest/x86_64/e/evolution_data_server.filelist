@@ -51,6 +51,7 @@
 /usr/local/include/evolution-data-server/camel/camel-mime-filter-index.h
 /usr/local/include/evolution-data-server/camel/camel-mime-filter-linewrap.h
 /usr/local/include/evolution-data-server/camel/camel-mime-filter-pgp.h
+/usr/local/include/evolution-data-server/camel/camel-mime-filter-preview.h
 /usr/local/include/evolution-data-server/camel/camel-mime-filter-progress.h
 /usr/local/include/evolution-data-server/camel/camel-mime-filter-tohtml.h
 /usr/local/include/evolution-data-server/camel/camel-mime-filter-windows.h
@@ -159,6 +160,7 @@
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-enums.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-enumtypes.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-contacts-utils.h
+/usr/local/include/evolution-data-server/libebook-contacts/e-book-indices-updater.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-book-query.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-contact.h
 /usr/local/include/evolution-data-server/libebook-contacts/e-name-western.h
@@ -222,6 +224,9 @@
 /usr/local/include/evolution-data-server/libedata-book/e-data-book-factory.h
 /usr/local/include/evolution-data-server/libedata-book/e-data-book.h
 /usr/local/include/evolution-data-server/libedata-book/e-data-book-view.h
+/usr/local/include/evolution-data-server/libedata-book/e-data-book-view-watcher-cache.h
+/usr/local/include/evolution-data-server/libedata-book/e-data-book-view-watcher-memory.h
+/usr/local/include/evolution-data-server/libedata-book/e-data-book-view-watcher-sqlite.h
 /usr/local/include/evolution-data-server/libedata-book/e-subprocess-book-factory.h
 /usr/local/include/evolution-data-server/libedata-book/e-system-locale-watcher.h
 /usr/local/include/evolution-data-server/libedata-book/libedata-book.h
@@ -391,8 +396,8 @@
 /usr/local/lib64/libebook-contacts-1.2.so.4
 /usr/local/lib64/libebook-contacts-1.2.so.4.0.0
 /usr/local/lib64/libecal-2.0.so
-/usr/local/lib64/libecal-2.0.so.2
-/usr/local/lib64/libecal-2.0.so.2.0.0
+/usr/local/lib64/libecal-2.0.so.3
+/usr/local/lib64/libecal-2.0.so.3.0.0
 /usr/local/lib64/libedata-book-1.2.so
 /usr/local/lib64/libedata-book-1.2.so.27
 /usr/local/lib64/libedata-book-1.2.so.27.0.0
@@ -429,6 +434,7 @@
 /usr/local/libexec/evolution-data-server/addressbook-export
 /usr/local/libexec/evolution-data-server/csv2vcard
 /usr/local/libexec/evolution-data-server/evolution-alarm-notify
+/usr/local/libexec/evolution-data-server/evolution-oauth2-handler
 /usr/local/libexec/evolution-data-server/list-sources
 /usr/local/libexec/evolution-scan-gconf-tree-xml
 /usr/local/libexec/evolution-source-registry
@@ -438,6 +444,7 @@
 /usr/local/lib/systemd/user/evolution-source-registry.service
 /usr/local/lib/systemd/user/evolution-user-prompter.service
 /usr/local/share/applications/org.gnome.Evolution-alarm-notify.desktop
+/usr/local/share/applications/org.gnome.evolution-data-server.OAuth2-handler.desktop
 /usr/local/share/dbus-1/services/org.gnome.evolution.dataserver.AddressBook10.service
 /usr/local/share/dbus-1/services/org.gnome.evolution.dataserver.Calendar8.service
 /usr/local/share/dbus-1/services/org.gnome.evolution.dataserver.Sources5.service
@@ -473,6 +480,7 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.Evolution.DefaultSources.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gnome.evolution.eds-shell.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gnome.evolution.shell.network-config.gschema.xml
+/usr/local/share/icons/hicolor/scalable/apps/org.gnome.Evolution-alarm-notify.svg
 /usr/local/share/locale/am/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/ar/LC_MESSAGES/evolution-data-server.mo
 /usr/local/share/locale/as/LC_MESSAGES/evolution-data-server.mo
