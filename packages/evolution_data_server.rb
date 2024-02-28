@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Evolution_data_server < Package
+class Evolution_data_server < CMake
   description 'Centralized access to appointments and contacts'
   homepage 'https://wiki.gnome.org/Apps/Evolution'
-  version '3.48.1'
+  version '3.51.2'
   license 'LGPL-2 or LGPL-3, BSD and Sleepycat'
   compatibility 'x86_64'
   source_url 'https://gitlab.gnome.org/GNOME/evolution-data-server.git'
@@ -11,7 +11,7 @@ class Evolution_data_server < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '59465eb6457d3f2a01fa24983d0a99226d22145674bd6a5c38244b12569d617f'
+    x86_64: 'a1067e1383b20d5976ec006beeb82166c757126f693ba05603f35ce5d47400ec'
   })
 
   depends_on 'at_spi2_core' # R
@@ -47,27 +47,19 @@ class Evolution_data_server < Package
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'webkitgtk_6' # R
 
-  def self.build
-    system "LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-      cmake #{CREW_CMAKE_LIBSUFFIX_OPTIONS} -B builddir -G Ninja \
-      -DCMAKE_VERBOSE_MAKEFILE=ON \
-      -DENABLE_CANBERRA=OFF \
-      -DENABLE_EXAMPLES=OFF \
-      -DENABLE_GOA=OFF \
-      -DENABLE_GOOGLE=OFF \
-      -DENABLE_GTK_DOC=OFF \
-      -DENABLE_INTROSPECTION=OFF \
-      -DENABLE_OAUTH2=OFF \
-      -DENABLE_VALA_BINDINGS=OFF \
-      -DENABLE_WEATHER=OFF \
-      -DWITH_NSPR_INCLUDES=#{CREW_PREFIX}/include/nspr \
-      -DWITH_NSS_INCLUDES=#{CREW_PREFIX}/include/nss \
-      -DWITH_OPENLDAP=OFF \
-      -DWITH_PHONENUMBER=OFF"
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  cmake_options "-DLIB_SUFFIX=64 \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DENABLE_CANBERRA=OFF \
+    -DENABLE_EXAMPLES=OFF \
+    -DENABLE_GOA=OFF \
+    -DENABLE_GOOGLE=OFF \
+    -DENABLE_GTK_DOC=OFF \
+    -DENABLE_INTROSPECTION=OFF \
+    -DENABLE_OAUTH2=OFF \
+    -DENABLE_VALA_BINDINGS=OFF \
+    -DENABLE_WEATHER=OFF \
+    -DWITH_NSPR_INCLUDES=#{CREW_PREFIX}/include/nspr \
+    -DWITH_NSS_INCLUDES=#{CREW_PREFIX}/include/nss \
+    -DWITH_OPENLDAP=OFF \
+    -DWITH_PHONENUMBER=OFF"
 end
