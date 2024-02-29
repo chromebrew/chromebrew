@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.0.1'
+  @_ver = '24.0.2'
   version "#{@_ver}-llvm17"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -56,7 +56,7 @@ class Mesa < Package
   depends_on 'zstd' # R
 
   def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16').gsub('-mthumb', '').gsub("-Dcpp_args='", "-Dcpp_args='-Wl,--undefined-version ").gsub("-Dc_args='", "-Dc_args='-Wl,--undefined-version ")} \
       -Db_asneeded=false \
       -Ddri3=enabled \
       -Degl=enabled \
@@ -66,7 +66,7 @@ class Mesa < Package
       -Dglvnd=true \
       -Dglx=dri \
       -Dllvm=enabled \
-      -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'auto'}' \
+      -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,swrast,iris,zink'}' \
       -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
       -Dvideo-codecs='all' \
        builddir"
