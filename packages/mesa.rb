@@ -12,9 +12,9 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ad768384dda6766db974129272784123976c4ad62dd9625327cc1f806d8822cc',
-     armv7l: 'ad768384dda6766db974129272784123976c4ad62dd9625327cc1f806d8822cc',
-     x86_64: '6ef49edcddfd580513c74b837b854e9e823e32c56d1fc00d5d9bb1d73285985b'
+    aarch64: '11c6a13cee1810f4961ae603e955a3bb6cd1a8cdcd121bfb9cca20452bb76fe0',
+     armv7l: '11c6a13cee1810f4961ae603e955a3bb6cd1a8cdcd121bfb9cca20452bb76fe0',
+     x86_64: '057c85aeab36301d68887fc15930deb7b19485af173c8587925e8696149d6026'
   })
 
   depends_on 'elfutils' # R
@@ -52,6 +52,7 @@ class Mesa < Package
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
+  depends_on 'xcb_util_keysyms' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
