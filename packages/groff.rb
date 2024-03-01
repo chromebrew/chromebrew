@@ -11,10 +11,10 @@ class Groff < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e64b76b272bc182c6525c7eef2c46515a34a8a5f4c5baa98232e5a89fcf01b1',
-     armv7l: '7e64b76b272bc182c6525c7eef2c46515a34a8a5f4c5baa98232e5a89fcf01b1',
-       i686: '6e0ff314086dfd363f162cc1f397eda4777391de0052566a1494aac62be23aa7',
-     x86_64: '3f3bf23656ec19567fab24646361569c2e42f8273e473b229eb5800ea53d1d30'
+    aarch64: '41fbef186131fef1efbdf4f4108fb36520755977704c5977e799628bbf116b8b',
+     armv7l: '41fbef186131fef1efbdf4f4108fb36520755977704c5977e799628bbf116b8b',
+       i686: 'c1b8062c03a49aee7920013f9bfbdf7a80931666875e494e9ef3193c61abe394',
+     x86_64: '3edf2afaf6283fae794a498332fb2a8042b7020e504d2a5cb600de4ac229c825'
   })
 
   depends_on 'gcc_lib' # R
@@ -26,7 +26,7 @@ class Groff < Autotools
   # depends_on 'libxaw' # R (Not needed for groff binary)
   # depends_on 'libxmu' # R (Not needed for groff binary)
   # depends_on 'libxt' # R (Not needed for groff binary)
-  depends_on 'uchardet' => :build
+  depends_on 'uchardet' # R
 
   configure_options '--without-x'
 end
