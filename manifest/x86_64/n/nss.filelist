@@ -2,6 +2,7 @@
 /usr/local/bin/cmsutil
 /usr/local/bin/compile-et.pl
 /usr/local/bin/crlutil
+/usr/local/bin/dbtool
 /usr/local/bin/hw-support
 /usr/local/bin/modutil
 /usr/local/bin/nspr-config
@@ -14,6 +15,7 @@
 /usr/local/bin/signver
 /usr/local/bin/ssltap
 /usr/local/bin/symkeyutil
+/usr/local/bin/validation
 /usr/local/include/nspr/md/_aix32.cfg
 /usr/local/include/nspr/md/_aix64.cfg
 /usr/local/include/nspr/md/_bsdi.cfg
@@ -114,6 +116,7 @@
 /usr/local/include/nss/keyhi.h
 /usr/local/include/nss/keyt.h
 /usr/local/include/nss/keythi.h
+/usr/local/include/nss/kyber.h
 /usr/local/include/nss/lowkeyi.h
 /usr/local/include/nss/lowkeyti.h
 /usr/local/include/nss/mozpkix/Input.h
