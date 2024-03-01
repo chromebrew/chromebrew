@@ -1820,7 +1820,7 @@ def copy_package(pkg_name, prompt_msg = '')
     puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
   else
     # This pulls the operation from the calling function
-    operation = caller(1, 2)[1].to_s.split[3].split('_')[0]
+    operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
     puts prompt_msg.yellow
     print "\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}? [Y/n] ".yellow
     response = $stdin.gets.chomp.downcase
@@ -1860,11 +1860,11 @@ def check_package(pkg_name)
     local_package_updated = `git diff #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb`.chomp
   end
   if local_package_updated != '' && crew_package_updated == ''
-    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb has been updated but the crew package is unchanged."
+    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated but the crew package is unchanged."
     next_pkg = copy_package(pkg_name, prompt_msg)
   end
   if local_package_updated != '' && crew_package_updated != '' && local_package_updated != crew_package_updated
-    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkgName}.rb has been updated and does not match the crew updated package."
+    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated and does not match the crew updated package."
     next_pkg = copy_package(pkg_name, prompt_msg)
   end
   return next_pkg
@@ -1891,89 +1891,11 @@ def build_command(args)
       @pkg_name = name
     end
 
-    # Prompt to copy the local repo package to crew if the package is not found.
-    if !File.file?("#{CREW_PACKAGES_PATH}/#{@pkg_name}.rb") && File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb")
-      if @opt_force
-        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-        puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
-      else
-        puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb exists but crew is unable to find this package.".yellow
-        print "\nWould you like to copy #{@pkg_name}.rb to crew and start the build [Y/n] ".yellow
-        response = $stdin.gets.chomp.downcase
-        case response
-        when 'n', 'no'
-          puts 'Build skipped.'
-          next
-        when '', 'y', 'yes'
-          FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-          puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
-        else
-          puts "I don't understand `#{response}`. :(".lightred
-          puts 'Build skipped.'
-          next
-        end
-      end
-    end
-
-    # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the build.
-    crew_package_updated = ''
-    Dir.chdir CREW_PACKAGES_PATH do
-      crew_package_updated = `git diff #{CREW_PACKAGES_PATH}/#{@pkg_name}.rb`.chomp
-    end
-    local_package_updated = ''
-    Dir.chdir CREW_LOCAL_REPO_ROOT do
-      local_package_updated = `git diff #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb`.chomp
-    end
-    if local_package_updated != '' && crew_package_updated == ''
-      if @opt_force
-        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-        puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
-      else
-        puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb has been updated but the crew package is unchanged.".yellow
-        print "\nWould you like to copy #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to crew and start the build [Y/n] ".yellow
-        response = $stdin.gets.chomp.downcase
-        case response
-        when 'n', 'no'
-          puts 'Build skipped.'
-          next
-        when '', 'y', 'yes'
-          FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-          puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
-        else
-          puts "I don't understand `#{response}`. :(".lightred
-          puts 'Build skipped.'
-          next
-        end
-      end
-    end
-    if local_package_updated != '' && crew_package_updated != '' && local_package_updated != crew_package_updated
-      if @opt_force
-        FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-        puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
-      else
-        puts "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb has been updated and does not match the crew updated package.".yellow
-        print "\nWould you like to copy #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to crew and start the build [Y/n] ".yellow
-        response = $stdin.gets.chomp.downcase
-        case response
-        when 'n', 'no'
-          puts 'Build skipped.'
-          next
-        when '', 'y', 'yes'
-          FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-          puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
-        else
-          puts "I don't understand `#{response}`. :(".lightred
-          puts 'Build skipped.'
-          next
-        end
-      end
-    end
-
     search @pkg_name
     print_current_package @opt_verbose
     next unless @pkg_name
 
-    next if check_package(@pkgName)
+    next if check_package(@pkg_name)
 
     # Process preflight block to see if package should be built
     pre_flight
@@ -2049,7 +1971,7 @@ def install_command(args)
     next unless @pkg_name
 
     if @pkg.compatible?
-      next if CREW_LOCAL_REPO_ROOT.length.positive? && check_package(@pkgName)
+      next if CREW_LOCAL_REPO_ROOT.length.positive? && check_package(@pkg_name)
       resolve_dependencies_and_install
     else
       puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred
@@ -2095,7 +2017,7 @@ def reinstall_command(args)
 
     if @pkg.compatible?
       @pkg.in_upgrade = true
-      next if CREW_LOCAL_REPO_ROOT.length.positive? && check_package(@pkgName)
+      next if CREW_LOCAL_REPO_ROOT.length.positive? && check_package(@pkg_name)
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     else
