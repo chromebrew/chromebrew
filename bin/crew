@@ -1343,16 +1343,20 @@ def resolve_dependencies
 
   puts @dependencies.join(' ')
 
-  print 'Do you agree? [Y/n] '
-  response = $stdin.gets.chomp.downcase
-  case response
-  when 'n', 'no'
-    abort 'No changes made.'
-  when '', 'y', 'yes'
-    puts 'Proceeding...'
+  if @opt_force
+    puts 'Proceeding with dependency package installation...'.orange
   else
-    puts "I don't understand `#{response}`. :(".lightred
-    abort 'No changes made.'
+    print 'Do you agree? [Y/n] '
+    response = $stdin.gets.chomp.downcase
+    case response
+    when 'n', 'no'
+      abort 'No changes made.'
+    when '', 'y', 'yes'
+      puts 'Proceeding...'
+    else
+      puts "I don't understand `#{response}`. :(".lightred
+      abort 'No changes made.'
+    end
   end
 
   @dependencies.each do |dep|
