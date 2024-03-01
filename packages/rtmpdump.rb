@@ -3,18 +3,18 @@ require 'package'
 class Rtmpdump < Package
   description 'rtmpdump is a toolkit for RTMP streams.'
   homepage 'https://rtmpdump.mplayerhq.hu/'
-  version 'f1b83'
+  version '2.6-6f6bb13'
   license 'LGPL-2.1 and GPL-2'
   compatibility 'all'
   source_url 'https://git.ffmpeg.org/rtmpdump.git'
-  git_hashtag 'f1b83c10d8beb43fcc70a6e88cf4325499f25857'
-  binary_compression 'tpxz'
+  git_hashtag '6f6bb1353fc84f4cc37138baa99f586750028a01'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93a414b097aaf7e2a2c412fb412d6403563427e5a008b98bf2d26d7bbdfb5f3a',
-     armv7l: '93a414b097aaf7e2a2c412fb412d6403563427e5a008b98bf2d26d7bbdfb5f3a',
-       i686: '843c971613a11a672741cbe0094e869e049c4986234d99836abaa99bf0de1386',
-     x86_64: '7e76a4f0a4f359f5ab8283ac175c4dc85f2d54aad1413840240627e810d5c6c0'
+    aarch64: '3ac0bf695f1cf627cc9e2cdf99fb8a0ad3058360b5c46d25114c357ae7b48757',
+     armv7l: '3ac0bf695f1cf627cc9e2cdf99fb8a0ad3058360b5c46d25114c357ae7b48757',
+       i686: 'b033b0cd2ab34aa95548f370e5aed5cb3be372ab298910fc3cfd7629c8690f5f',
+     x86_64: '76b21d71603c2e7185c85e382c1a472b9cd949152034b6d113898a3ab33fb7e9'
   })
 
   depends_on 'glibc' # R
