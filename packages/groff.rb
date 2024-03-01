@@ -20,12 +20,6 @@ class Groff < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'netpbm' => :build
-  # depends_on 'libice' # R (Not needed for groff binary)
-  # depends_on 'libsm' # R (Not needed for groff binary)
-  # depends_on 'libx11' # R (Not needed for groff binary)
-  # depends_on 'libxaw' # R (Not needed for groff binary)
-  # depends_on 'libxmu' # R (Not needed for groff binary)
-  # depends_on 'libxt' # R (Not needed for groff binary)
   depends_on 'uchardet' # R
 
   configure_options '--without-x'
