@@ -39,11 +39,8 @@ class Llvm16_dev < Package
     @filelist = File.readlines(@filelist_path, chomp: true).sort
 
     @filelist.each do |filename|
-      if filename.include?('.so') && filename.include?('libLLVM')
-        next
-      elsif filename.include?('llvm-strip')
-        next
-      end
+      next if filename.include?('.so') && filename.include?('libLLVM')
+      next if filename.include?('llvm-strip')
 
       @destpath = File.join(CREW_DEST_DIR, filename)
       @filename_target = File.realpath(filename)

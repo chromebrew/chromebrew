@@ -89,16 +89,16 @@ class ProgressBar
         uncompleted_length = @bar_width - completed_length
 
         # print info and progress bar
-        @info_before_bar.each_pair do |varName, width|
-          printf '%*.*s  ', width, width, instance_variable_get("@#{varName}")
+        @info_before_bar.each_pair do |var_name, width|
+          printf '%*.*s  ', width, width, instance_variable_get("@#{var_name}")
         end
 
         # print progress bar with color code
         print (@bar_char * completed_length).send(*@bar_front_color),
               (@bar_char * uncompleted_length).send(*@bar_bg_color)
 
-        @info_after_bar.each_pair do |varName, width|
-          printf '  %*.*s', width, width, instance_variable_get("@#{varName}")
+        @info_after_bar.each_pair do |var_name, width|
+          printf '  %*.*s', width, width, instance_variable_get("@#{var_name}")
         end
 
         # stop when 100%

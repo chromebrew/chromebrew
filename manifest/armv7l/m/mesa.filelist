@@ -50,10 +50,10 @@
 /usr/local/lib/dri/tls
 /usr/local/lib/dri/udl_dri.so
 /usr/local/lib/dri/v3d_dri.so
-/usr/local/lib/dri/vc4_dri.so
 /usr/local/lib/dri/virtio_gpu_dri.so
 /usr/local/lib/dri/virtio_gpu_drv_video.so
 /usr/local/lib/dri/vmwgfx_dri.so
+/usr/local/lib/dri/zink_dri.so
 /usr/local/lib/gbm/tls/pvr_gbm.so
 /usr/local/lib/libEGL_mesa.so
 /usr/local/lib/libEGL_mesa.so.0
