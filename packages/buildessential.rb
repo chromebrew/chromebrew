@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.29'
+  version '1.30'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -163,7 +163,6 @@ class Buildessential < Package
 
   # Packages needed for shrinking package archives
   depends_on 'rdfind'
-  depends_on 'symlinks'
   depends_on 'upx'
 
   # Packages needed for compressing archives

@@ -147,7 +147,6 @@ shared_mime_info
 shellcheck
 slang
 sqlite
-symlinks
 texinfo
 trousers
 uchardet
