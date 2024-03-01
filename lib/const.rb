@@ -72,18 +72,16 @@ CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
 CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 
 # Use sane minimal defaults if in container and no override specified.
-if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
-  case ARCH
-  when 'i686'
-    CREW_KERNEL_VERSION = '3.8'
-  when 'aarch64', 'armv7l'
-    CREW_KERNEL_VERSION = '5.10'
-  when 'x86_64'
-    CREW_KERNEL_VERSION = '5.10'
-  end
-else
-  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
-end
+CREW_KERNEL_VERSION = if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
+                        case ARCH
+                        when 'i686'
+                          '3.8'
+                        else
+                          '5.10'
+                        end
+                      else
+                        ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
+                      end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man')

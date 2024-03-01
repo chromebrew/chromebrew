@@ -1,9 +1,9 @@
 require 'package'
-Dir["#{CREW_PACKAGES_PATH}/openjdk*.rb"].each do |openjdkFile|
-  next unless openjdkFile =~ /openjdk(\d+).rb/
+Dir["#{CREW_PACKAGES_PATH}/openjdk*.rb"].each do |openjdk_file|
+  next unless openjdk_file =~ /openjdk(\d+).rb/
 
-  openjdkName = File.basename(openjdkFile, '.rb')
-  require_relative openjdkName
+  openjdk_name = File.basename(openjdk_file, '.rb')
+  require_relative openjdk_name
 end
 
 class Openjdk < Package
@@ -11,18 +11,17 @@ class Openjdk < Package
   homepage 'https://openjdk.org/'
   key = 1
   versions = []
-  @openjdkVersions = []
-  Dir["#{CREW_PACKAGES_PATH}/openjdk*.rb"].each do |openjdkFile|
-    next unless openjdkFile =~ /openjdk(\d+).rb/
+  @openjdk_versions = []
+  Dir["#{CREW_PACKAGES_PATH}/openjdk*.rb"].each do |openjdk_file|
+    next unless openjdk_file =~ /openjdk(\d+).rb/
 
-    openjdkName = File.basename(openjdkFile, '.rb')
-    openjdkVer = Object.const_get(openjdkName.capitalize).version.to_s.gsub(/-(\d+)/, '')
-    openjdkMajVer = openjdkVer.match?(/^1.8/) ? '8' : openjdkVer.partition('.')[0]
-    @openjdkVersions.push [key, openjdkName, openjdkVer]
+    openjdk_name = File.basename(openjdk_file, '.rb')
+    openjdk_ver = Object.const_get(openjdk_name.capitalize).version.to_s.gsub(/-(\d+)/, '')
+    @openjdk_versions.push [key, openjdk_name, openjdk_ver]
     key += 1
   end
-  @openjdkVersions.each do |openjdkVer|
-    versions.push openjdkVer[2]
+  @openjdk_versions.each do |openjdk_ver|
+    versions.push openjdk_ver[2]
   end
   versions.sort!
   version "#{versions.first}-#{versions.last}"
@@ -34,9 +33,9 @@ class Openjdk < Package
   def self.preflight
     if ARGV.include?('install')
       puts "\n  Select version:"
-      @openjdkVersions.each do |openjdkVer|
-        option = "  #{openjdkVer[0]} = Openjdk #{openjdkVer[2]}"
-        if File.file? "#{CREW_META_PATH}/#{openjdkVer[1]}.filelist"
+      @openjdk_versions.each do |openjdk_ver|
+        option = "  #{openjdk_ver[0]} = Openjdk #{openjdk_ver[2]}"
+        if File.file? "#{CREW_META_PATH}/#{openjdk_ver[1]}.filelist"
           puts option.lightgreen
         else
           puts option
@@ -44,15 +43,15 @@ class Openjdk < Package
       end
       puts '  0 = Cancel'
 
-      while version = $stdin.gets.chomp.downcase.to_i
-        version = 0 if version.negative? || version > @openjdkVersions.length
+      while (version = $stdin.gets.chomp.downcase.to_i)
+        version = 0 if version.negative? || version > @openjdk_versions.length
         key = version - 1
         case version
-        when @openjdkVersions[key][0]
-          if File.file? "#{CREW_META_PATH}/#{@openjdkVersions[key][1]}.filelist"
-            abort "Package #{@openjdkVersions[key][1]} already installed.".lightgreen
+        when @openjdk_versions[key][0]
+          if File.file? "#{CREW_META_PATH}/#{@openjdk_versions[key][1]}.filelist"
+            abort "Package #{@openjdk_versions[key][1]} already installed.".lightgreen
           else
-            depends_on @openjdkVersions[key][1]
+            depends_on @openjdk_versions[key][1]
           end
           break
         when 0

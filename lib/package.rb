@@ -30,20 +30,20 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.load_package(pkgFile, pkgName = File.basename(pkgFile, '.rb'))
+  def self.load_package(pkg_file, pkg_name = File.basename(pkg_file, '.rb'))
     # self.load_package: load a package under 'Package' class scope
     #
-    className = pkgName.capitalize
+    class_name = pkg_name.capitalize
 
     # read and eval package script under 'Package' class
-    class_eval(File.read(pkgFile, encoding: Encoding::UTF_8), pkgFile) unless const_defined?("Package::#{className}")
+    class_eval(File.read(pkg_file, encoding: Encoding::UTF_8), pkg_file) unless const_defined?("Package::#{class_name}")
 
-    pkgObj = const_get(className)
-    pkgObj.name = pkgName
+    pkg_obj = const_get(class_name)
+    pkg_obj.name = pkg_name
 
-    @crew_current_package = @crew_current_package.nil? ? pkgObj.name : @crew_current_package
+    @crew_current_package = @crew_current_package.nil? ? pkg_obj.name : @crew_current_package
 
-    return pkgObj
+    return pkg_obj
   end
 
   def self.dependencies
@@ -53,11 +53,11 @@ class Package
     @dependencies ||= {}
   end
 
-  def self.get_deps_list(pkgName = name, return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
-                         pkgTags: [], verCheck: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
-    # get_deps_list: get dependencies list of pkgName (current package by default)
+  def self.get_deps_list(pkg_name = name, return_attr: false, hash: false, include_build_deps: 'auto', include_self: false,
+                         pkg_tags: [], ver_check: nil, highlight_build_deps: true, exclude_buildessential: false, top_level: true)
+    # get_deps_list: get dependencies list of pkg_name (current package by default)
     #
-    #                pkgName: package to check dependencies, current package by default
+    #                pkg_name: package to check dependencies, current package by default
     #            return_attr: return package attribute (tags and version lambda) also
     #                   hash: return result in nested hash, used by `print_deps_tree` (`bin/crew`)
     #
@@ -65,26 +65,26 @@ class Package
     #                         if set to false, all build dependencies will not be returned
     #                         if set to "auto" (default), return build dependencies if pre-built binaries not available
     #
-    #           include_self: include #{pkgName} itself in returned result, only used in recursive calls (see `expandedDeps` below)
+    #           include_self: include #{pkg_name} itself in returned result, only used in recursive calls (see `expanded_deps` below)
     #   highlight_build_deps: include corresponding symbols in return value, you can convert it to actual ascii color codes later
     # exclude_buildessential: do not insert `buildessential` dependency automatically
     #
     #              top_level: if set to true, return satisfied dependencies
     #                         (dependencies that might be a sub-dependency of a dependency that checked before),
-    #                         always set to false if this function is called in recursive loop (see `expandedDeps` below)
+    #                         always set to false if this function is called in recursive loop (see `expanded_deps` below)
     #
     @checked_list ||= {} # create @checked_list placeholder if not exist
 
     # add current package to @checked_list for preventing extra checks
-    @checked_list.merge!({ pkgName => pkgTags })
+    @checked_list.merge!({ pkg_name => pkg_tags })
 
-    pkgObj = load_package("#{CREW_PACKAGES_PATH}/#{pkgName}.rb")
-    is_source = pkgObj.is_source?(ARCH.to_sym) or pkgObj.build_from_source
-    deps = pkgObj.dependencies
+    pkg_obj = load_package("#{CREW_PACKAGES_PATH}/#{pkg_name}.rb")
+    is_source = pkg_obj.source?(ARCH.to_sym) or pkg_obj.build_from_source
+    deps = pkg_obj.dependencies
 
     # append buildessential to deps if building from source is needed/specified
     if ((include_build_deps == true) || ((include_build_deps == 'auto') && is_source)) && \
-       !pkgObj.no_compile_needed? && \
+       !pkg_obj.no_compile_needed? && \
        !exclude_buildessential && \
        !@checked_list.keys.include?('buildessential')
 
@@ -92,22 +92,22 @@ class Package
     end
 
     # parse dependencies recursively
-    expandedDeps = deps.uniq.map do |dep, (depTags, verCheck)|
+    expanded_deps = deps.uniq.map do |dep, (dep_tags, ver_check)|
       # check build dependencies only if building from source is needed/specified
       # Do not recursively find :build based build dependencies.
-      next unless (include_build_deps == true && @crew_current_package == pkgObj.name) || \
-                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkgObj.name) || \
-                  !depTags.include?(:build)
+      next unless (include_build_deps == true && @crew_current_package == pkg_obj.name) || \
+                  ((include_build_deps == 'auto') && is_source && @crew_current_package == pkg_obj.name) || \
+                  !dep_tags.include?(:build)
 
       # overwrite tags if parent dependency is a build dependency
       # (for build dependencies highlighting)
-      tags = pkgTags.include?(:build) ? pkgTags : depTags
+      tags = pkg_tags.include?(:build) ? pkg_tags : dep_tags
 
       if @checked_list.keys.none?(dep)
         # check dependency by calling this function recursively
         next \
           send(
-            __method__, dep, pkgTags: tags, verCheck:, include_self: true, top_level: false,
+            __method__, dep, pkg_tags: tags, ver_check:, include_self: true, top_level: false,
             hash:, return_attr:, include_build_deps:, highlight_build_deps:, exclude_buildessential:
           )
       elsif hash && top_level
@@ -127,21 +127,21 @@ class Package
 
     if hash
       # the '*' symbol tell `print_deps_tree` (`bin/crew`) to color this package as "build dependency"
-      if highlight_build_deps && pkgTags.include?(:build)
-        return { "*#{pkgName}*" => expandedDeps }
+      if highlight_build_deps && pkg_tags.include?(:build)
+        return { "*#{pkg_name}*" => expanded_deps }
       else
-        return { pkgName => expandedDeps }
+        return { pkg_name => expanded_deps }
       end
     elsif include_self
-      # return pkgName itself if this function is called as a recursive loop (see `expandedDeps`)
+      # return pkg_name itself if this function is called as a recursive loop (see `expanded_deps`)
       if return_attr
-        return [expandedDeps, { pkgName => [pkgTags, verCheck] }].flatten
+        return [expanded_deps, { pkg_name => [pkg_tags, ver_check] }].flatten
       else
-        return [expandedDeps, pkgName].flatten
+        return [expanded_deps, pkg_name].flatten
       end
     else
       # if this function is called outside of this function, return parsed dependencies only
-      return expandedDeps.flatten
+      return expanded_deps.flatten
     end
   end
 
@@ -162,13 +162,13 @@ class Package
     # add element in "[ name, [ tag1, tag2, ... ] ]" format
     if dependency.is_a?(Hash)
       # parse "depends_on name => <tags: Symbol|Array>"
-      depName, tags = dependency.first
+      dep_name, tags = dependency.first
 
       # convert `tags` to array in case `tags` is a symbol
       dep_tags += [tags].flatten
     else
       # parse "depends_on name"
-      depName = dependency
+      dep_name = dependency
     end
 
     # process dependency version range if specified
@@ -184,7 +184,7 @@ class Package
         unless Gem::Version.new(installed_ver).send( operator.to_sym, Gem::Version.new(target_ver) )
           # print error if the range is not fulfilled
           warn <<~EOT.lightred
-            Package #{name} depends on '#{depName}' (#{operator} #{target_ver}), however version '#{installed_ver}' is currently installed :/
+            Package #{name} depends on '#{dep_name}' (#{operator} #{target_ver}), however version '#{installed_ver}' is currently installed :/
 
             Run `crew update && crew upgrade` and try again?
           EOT
@@ -194,7 +194,7 @@ class Package
       end
     end
 
-    @dependencies.store(depName, [dep_tags, ver_check])
+    @dependencies.store(dep_name, [dep_tags, ver_check])
   end
 
   def self.get_url(architecture)
@@ -227,8 +227,8 @@ class Package
   def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
   def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
-  def self.is_binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-  def self.is_source?(architecture) = !(is_binary?(architecture) || is_fake?)
+  def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
+  def self.source?(architecture) = !(binary?(architecture) || is_fake?)
 
   def self.system(*args, **opt_args)
     @crew_env_options_hash = if no_env_options?
