@@ -9,17 +9,12 @@ class Linuxheaders < Package
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
   git_hashtag "chromeos-#{CREW_KERNEL_VERSION}"
-  case ARCH
-  when 'i686'
-    binary_compression 'tpxz'
-  else
-    binary_compression 'tar.zst'
-  end
+  binary_compression 'tar.zst'
 
   case CREW_KERNEL_VERSION
   when '3.8'
     binary_sha256({
-      i686: 'c16afcd95ebcffac67a026b724da19f498003ea80c13c87aeb613f09d412bb91'
+      i686: '362ab05c4f6903793560fffd33abf79e5194fb72d3d38ec1648a93c56ebf91e8'
     })
   when '4.14'
     binary_sha256({
