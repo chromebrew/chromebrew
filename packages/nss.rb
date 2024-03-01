@@ -3,23 +3,27 @@ require 'package'
 class Nss < Package
   description 'Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications.'
   homepage 'https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS'
-  @nss_ver = '3.69.1'
-  @nspr_ver = '4.32'
+  @nss_ver = '3.98'
+  @nspr_ver = '4.35'
   version "nss.#{@nss_ver}.nspr.#{@nspr_ver}"
   license 'MPL-2.0, GPL-2 or LGPL-2.1'
   compatibility 'all'
-  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_69_1_RTM/src/nss-3.69.1-with-nspr-4.32.tar.gz'
-  source_sha256 '976dd57391aa269aa2961ac7ae002dc49935f855263df58b59b1dd4836d47cb7'
-  binary_compression 'tpxz'
+  source_url 'https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_98_RTM/src/nss-3.98-with-nspr-4.35.tar.gz'
+  source_sha256 '59bb55a59b02e4004fc26ad0aa1a13fe8d73c6c90c447dd2f2efb73fb81083ed'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e68a620a7b7f35289f401561e3c86ff1fceb38d0b0652da7e6c531addc020a14',
-     armv7l: 'e68a620a7b7f35289f401561e3c86ff1fceb38d0b0652da7e6c531addc020a14',
-       i686: '2b16871a705710c6f772c255b68572013e765658cb5f791b9fdaf697c1bf36ed',
-     x86_64: '89f80e57d77168fe58e28f60e245a18256dd3b1c68640a1430fc512f93e01b01'
+    aarch64: '714dbeae044844f509da5ab30c784acf46f5df7fb072d1885de4d737250831c8',
+     armv7l: '714dbeae044844f509da5ab30c784acf46f5df7fb072d1885de4d737250831c8',
+       i686: '0c8bf447dba6f7ffc7619314f80584ff25ad8185d3ff4d852e68bf404677aa48',
+     x86_64: 'bad5c3f9db49ccc92467fd4970277c91eb3c9ee6aa638654c7cffc3e2eb41e25'
   })
 
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'gyp_next' => :build
+  depends_on 'sqlite' # R
+  depends_on 'zlibpkg' # R
 
   def self.build
     @build_64 = ARCH == 'x86_64' ? '1' : '0'
