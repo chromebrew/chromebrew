@@ -10,6 +10,6 @@
 /usr/local/sbin/rtmpgw
 /usr/local/sbin/rtmpsrv
 /usr/local/sbin/rtmpsuck
-/usr/local/share/man/man1/rtmpdump.1.gz
-/usr/local/share/man/man3/librtmp.3.gz
-/usr/local/share/man/man8/rtmpgw.8.gz
+/usr/local/share/man/man1/rtmpdump.1.zst
+/usr/local/share/man/man3/librtmp.3.zst
+/usr/local/share/man/man8/rtmpgw.8.zst

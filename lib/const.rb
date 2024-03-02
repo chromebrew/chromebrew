@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.43.8'
+CREW_VERSION = '1.44.5'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -80,9 +80,7 @@ if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
   case ARCH
   when 'i686'
     CREW_KERNEL_VERSION = '3.8'
-  when 'aarch64', 'armv7l'
-    CREW_KERNEL_VERSION = '5.10'
-  when 'x86_64'
+  else
     CREW_KERNEL_VERSION = '5.10'
   end
 else

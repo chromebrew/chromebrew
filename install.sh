@@ -317,7 +317,7 @@ else
   git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set packages "manifest/${ARCH}" lib bin crew tests tools
+  git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
   git reset --hard origin/"${BRANCH}"
 fi
 echo -e "${RESET}"

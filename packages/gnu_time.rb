@@ -6,23 +6,18 @@ require 'package'
 class Gnu_time < Package
   description 'Utility for monitoring a programs use of system resources'
   homepage 'https://www.gnu.org/software/time/'
-  version '1.9'
+  version '1.9-59f462a'
   license 'GPL'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/time.git'
-  git_hashtag "v#{version}"
-  case ARCH
-  when 'i686'
-    binary_compression 'tar.xz'
-  else
-    binary_compression 'tpxz'
-  end
+  git_hashtag '59f462a2ed5e7f073cfc9c509d3e2dec438b2681'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '91fada2df988370b67ff384fbd18e002f9123f69debdb9184dacdd231afd1924',
-     armv7l: '91fada2df988370b67ff384fbd18e002f9123f69debdb9184dacdd231afd1924',
-       i686: 'be10181fa1e78fbbadd2fcdd7b8d6ecd71cdd8d38b1e521f400a93b3376f98a3',
-     x86_64: 'f042a1fe4d36029d2cc90a79bdc4014c0b6324008bbc971d35fb0001216a2562'
+    aarch64: '08d1098eaa5dffcbd0d9931cae419f0f42a225f6cd275b5f59f07552bfd5cafa',
+     armv7l: '08d1098eaa5dffcbd0d9931cae419f0f42a225f6cd275b5f59f07552bfd5cafa',
+       i686: '0dd61bd97400d05ad8a99ce53f2e7184a9f0404b268ed5ab565167f2aaee162e',
+     x86_64: 'a2d83343217b858ebed7e290af9df06338fa30111f5ef6afdd3473046f631242'
   })
 
   depends_on 'glibc'

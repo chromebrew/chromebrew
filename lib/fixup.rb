@@ -10,6 +10,12 @@ if File.exist?("#{CREW_PREFIX}/etc/env.d/00-path") && File.exist?("#{CREW_PREFIX
   FileUtils.rm "#{CREW_PREFIX}/etc/env.d/path"
 end
 
+# Set new sparse-checkout paths for commands directory
+Dir.chdir CREW_LIB_PATH do
+  system 'git sparse-checkout add commands'
+  system 'git sparse-checkout reapply'
+end
+
 # Check for renamed and deprecated packages, and handle them.
 
 pkg_update_arr = [
@@ -96,7 +102,7 @@ pkg_update_arr.each do |pkg|
       # Ok to write working device.json
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
       puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen
-    rescue StandardError => e
+    rescue StandardError
       puts 'Restoring old filelist, directorylist, and device.json...'.lightred
       FileUtils.mv new_filelist, old_filelist
       FileUtils.mv new_directorylist, old_directorylist

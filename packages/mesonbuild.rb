@@ -3,7 +3,7 @@ require 'buildsystems/python'
 class Mesonbuild < Python
   description 'Meson is an open source build system meant to be both extremely fast and user friendly.'
   homepage 'https://mesonbuild.com/'
-  @_ver = '1.3.1'
+  @_ver = '1.3.2'
   version "#{@_ver}-py3.12"
   license 'Apache-2.0'
   compatibility 'all'
@@ -12,10 +12,10 @@ class Mesonbuild < Python
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b11b612eafd93e0f618cde4d29533e8d03d5b452aec21edd38324c5ad607721c',
-     armv7l: 'b11b612eafd93e0f618cde4d29533e8d03d5b452aec21edd38324c5ad607721c',
-       i686: '277ae382e6e7e52f7862d5e8d43d9577ac4bb51d850f2ef602f718a9ffddd91a',
-     x86_64: '318d8de75fe29afd7119b2e6fffc613f53093b1bc5bee0d55ec38a634e504ac6'
+    aarch64: '7ebb3550b0f8c6a61c9488b61c8ab88b49ee47bac39fce25c9a633dc55829487',
+     armv7l: '7ebb3550b0f8c6a61c9488b61c8ab88b49ee47bac39fce25c9a633dc55829487',
+       i686: '64faf2b00229c12da3155cb1bad698a6cdcb5a62f8bdec964a7eae853f3eaded',
+     x86_64: '677ef7b32c9e7bf020c4038f83edd23e23df9dae2058ad53ac8a460b77052be2'
   })
 
   depends_on 'ninja'

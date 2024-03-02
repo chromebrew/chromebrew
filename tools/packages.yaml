@@ -4736,6 +4736,11 @@ url: https://github.com/libsixel/libsixel/releases
 activity: low
 ---
 kind: url
+name: libslirp
+url: https://gitlab.freedesktop.org/slirp/libslirp/-/tags
+activity: low
+---
+kind: url
 name: libslz
 url: http://www.libslz.org/
 activity: none
@@ -7208,6 +7213,11 @@ activity: medium
 kind: url
 name: py3_soupsieve
 url: https://github.com/facelessuser/soupsieve/releases
+activity: medium
+---
+kind: url
+name: py3_sphinx_rtd_theme
+url: https://github.com/readthedocs/sphinx_rtd_theme/tags
 activity: medium
 ---
 kind: url

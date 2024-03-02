@@ -3,7 +3,7 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.2.0'
+  version '8.2.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.35'
@@ -12,20 +12,25 @@ class Qemu < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '796b4b9ab3e33255ad631a66f7515a8eed904d774c5c17474d51dc91b51efee3',
-     armv7l: '796b4b9ab3e33255ad631a66f7515a8eed904d774c5c17474d51dc91b51efee3',
-     x86_64: '0299245b83ff0c723f7a15b794a943d73713b657818cd24b7ff617a7a7c43730'
+    aarch64: 'aba64a65dffc4ae46ac5df5f0bae3fcc761dd6b9ddd04ffc6a749f02d8661300',
+     armv7l: 'aba64a65dffc4ae46ac5df5f0bae3fcc761dd6b9ddd04ffc6a749f02d8661300',
+     x86_64: 'b269c5e0ea7f3836bd9b9aa09cea7330432c7d615eeeb04195a6dcb0394cd838'
   })
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
+  depends_on 'bzip2' # R
   depends_on 'cairo' # R
-  depends_on 'eudev' # R
+  depends_on 'curl' # R
   depends_on 'elfutils' # R
+  depends_on 'eudev' # R
   depends_on 'fontconfig' # R
+  depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
   depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnutls' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme'
@@ -33,32 +38,30 @@ class Qemu < Package
   depends_on 'jemalloc'
   depends_on 'libaio' # R
   depends_on 'libcap_ng' # R
+  depends_on 'libcyrussasl' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt'
   depends_on 'libjpeg' # R
+  depends_on 'libpng' # R
   depends_on 'libsdl2' # R
+  depends_on 'libseccomp' # R
+  depends_on 'libslirp' # R
+  depends_on 'libssh' # R
   depends_on 'libusb' # R
   depends_on 'libx11' # R
   depends_on 'libxkbcommon' # R
   depends_on 'linux_pam' # R
   depends_on 'lzo' # R
   depends_on 'mesa' # R
+  depends_on 'ncurses' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pixman' # R
   depends_on 'pulseaudio' # R
+  depends_on 'py3_sphinx_rtd_theme' => :build
   depends_on 'sdl2_image' # R
   depends_on 'snappy' # R
-  depends_on 'bzip2' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'gnutls' # R
-  depends_on 'curl' # R
-  depends_on 'libcyrussasl' # R
-  depends_on 'libpng' # R
-  depends_on 'libseccomp' # R
-  depends_on 'libssh' # R
-  depends_on 'ncurses' # R
+  depends_on 'sphinx' => :build
   depends_on 'vte' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
