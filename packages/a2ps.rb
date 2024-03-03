@@ -1,34 +1,24 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class A2ps < Package
+class A2ps < Autotools
   description 'GNU a2ps is an Any to PostScript filter.'
   homepage 'https://www.gnu.org/software/a2ps/'
-  version '4.14-1'
+  version '4.15'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://ftpmirror.gnu.org/a2ps/a2ps-4.14.tar.gz'
-  source_sha256 'f3ae8d3d4564a41b6e2a21f237d2f2b104f48108591e8b83497500182a3ab3a4'
-  binary_compression 'tar.xz'
+  source_url 'https://ftpmirror.gnu.org/a2ps/a2ps-4.15.tar.gz'
+  source_sha256 'a5adc5a9222f98448a57c6b5eb6948b72743eaf9a30c67a134df082e99c76652'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c6c9c237e5d9e51b8d19fb74522b7a60dabe74c958061a080f1f338b289ba254',
-     armv7l: 'c6c9c237e5d9e51b8d19fb74522b7a60dabe74c958061a080f1f338b289ba254',
-       i686: '9a877e68120feb3f8ec9c50c36b9d378186fb00bc2883670bdc42089411e4607',
-     x86_64: '28b5f46158587be75ff873d64805f480af0a3bbfa2f764abf815117d0b907f48'
+    aarch64: '3611cd68968a4c8402ff4adb4a7c89579956543d085186199d64baf7d305605a',
+     armv7l: '3611cd68968a4c8402ff4adb4a7c89579956543d085186199d64baf7d305605a',
+       i686: '30d1558dbd5121b970c2dbfdee87d7d31de9a1de6faea090290fffecb1582171',
+     x86_64: '8002a71b0d233f1243a9443ab0a3a5d2d7c894aab357514d244dbf6575b9cb0d'
   })
 
   depends_on 'gperf'
   depends_on 'filecmd'
 
-  def self.build
-    system "./configure \
-            --prefix=#{CREW_PREFIX} \
-            --libdir=#{CREW_LIB_PREFIX} \
-            --localstatedir=#{CREW_PREFIX}/tmp"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options "--localstatedir=#{CREW_PREFIX}/tmp"
 end
