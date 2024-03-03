@@ -1,10 +1,11 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
+require 'etc'
 
-CREW_VERSION = '1.44.4'
+CREW_VERSION = '1.44.5'
 
 # kernel architecture
-KERN_ARCH = `uname -m`.chomp
+KERN_ARCH = Etc.uname[:machine]
 
 # read and parse processor information from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
@@ -42,13 +43,16 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # When we have proper aarch64 support, remove this.
 ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
 
+# This helps determine if there is a difference between kernel and user space
+USER_SPACE_ARCH = RUBY_DESCRIPTION[/\[(.+?)-linux-gnu/, 1]
+
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
 CREW_LIB_SUFFIX = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
 ARCH_LIB        = "lib#{CREW_LIB_SUFFIX}"
 
 # Glibc version can be found from the output of libc.so.6
-LIBC_VERSION = `/#{ARCH_LIB}/libc.so.6`[/Gentoo ([^-]+)/, 1]
+LIBC_VERSION = Etc.confstr(Etc::CS_GNU_LIBC_VERSION).split.last
 
 CREW_PREFIX = ENV.fetch('CREW_PREFIX', '/usr/local')
 
@@ -72,16 +76,16 @@ CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
 CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 
 # Use sane minimal defaults if in container and no override specified.
-CREW_KERNEL_VERSION = if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
-                        case ARCH
-                        when 'i686'
-                          '3.8'
-                        else
-                          '5.10'
-                        end
-                      else
-                        ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
-                      end
+if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
+  case ARCH
+  when 'i686'
+    CREW_KERNEL_VERSION = '3.8'
+  else
+    CREW_KERNEL_VERSION = '5.10'
+  end
+else
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
+end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man')
@@ -98,17 +102,17 @@ CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp
+CREW_LOCAL_REPO_ROOT = Dir.exist?('.git') ? `git rev-parse --show-toplevel`.chomp : nil
 CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
 # be run again.
-CREW_CONST_GIT_COMMIT = `cd #{CREW_LIB_PATH} && git log -n1 --oneline #{CREW_LIB_PATH}/lib/const.rb`.split.first
+CREW_CONST_GIT_COMMIT = `git -C #{CREW_LIB_PATH} log -n1 --oneline #{__FILE__}`.split.first
 
 # Put musl build dir under CREW_PREFIX/share/musl to avoid FHS incompatibility
 CREW_MUSL_PREFIX      = File.join(CREW_PREFIX, '/share/musl/')
 CREW_DEST_MUSL_PREFIX = File.join(CREW_DEST_DIR, CREW_MUSL_PREFIX)
-MUSL_LIBC_VERSION     = `[ -x '#{CREW_MUSL_PREFIX}/lib/libc.so' ] && #{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/]
+MUSL_LIBC_VERSION     = File.executable?("#{CREW_MUSL_PREFIX}/lib/libc.so") ? `#{CREW_MUSL_PREFIX}/lib/libc.so 2>&1`[/\bVersion\s+\K\S+/] : nil
 
 CREW_DEST_HOME          = File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
@@ -132,7 +136,7 @@ CREW_NOT_SHRINK_ARCHIVE              = ENV.fetch('CREW_NOT_SHRINK_ARCHIVE', '0')
 CREW_REPO   = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
 CREW_BRANCH = ENV.fetch('CREW_BRANCH', 'master')
 
-USER = `whoami`.chomp
+USER = Etc.getlogin
 
 CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
                      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
@@ -305,6 +309,4 @@ PY_SETUP_INSTALL_OPTIONS         = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single
 PY3_BUILD_OPTIONS                = '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
-CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
-                       %w[libzstd.so.1 libstdc++.so.6]
-CREW_ESSENTIAL_FILES.uniq!
+CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{File.realpath('/proc/self/exe')}`.scan(/\t([^ ]+)/).flatten
