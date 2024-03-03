@@ -3,8 +3,7 @@ require 'package'
 class Linuxheaders < Package
   description 'Linux headers for Chrome OS.'
   homepage 'https://kernel.org/'
-  @version = CREW_KERNEL_VERSION == '4.14' ? "#{CREW_KERNEL_VERSION}-1" : CREW_KERNEL_VERSION
-  version @version
+  version CREW_KERNEL_VERSION
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://chromium.googlesource.com/chromiumos/third_party/kernel.git'
@@ -18,9 +17,9 @@ class Linuxheaders < Package
     })
   when '4.14'
     binary_sha256({
-      aarch64: '75f253ac2cf0dd785ea8d9cdf9430d23d601ccc372e9f7afa95523a28273a340',
-       armv7l: '75f253ac2cf0dd785ea8d9cdf9430d23d601ccc372e9f7afa95523a28273a340',
-       x86_64: '5d58b327ca9bab5630f0df387a3036125e1f367e6c43cd551f4734ee3e634073'
+      aarch64: 'b45bd05d2bfcdd2c0c18c02af9fdddd4008256cfd76a70681d4ae426cd2126f3',
+       armv7l: 'b45bd05d2bfcdd2c0c18c02af9fdddd4008256cfd76a70681d4ae426cd2126f3',
+       x86_64: 'faaa0bbe68f8052906537a2bc22d9ba957d2c51e39ce94ea50f1e37cae89a252'
     })
   when '4.19'
     binary_sha256({
