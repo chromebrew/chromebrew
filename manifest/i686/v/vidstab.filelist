@@ -6,10 +6,10 @@
 /usr/local/include/vid.stab/motiondetect_internal.h
 /usr/local/include/vid.stab/motiondetect_opt.h
 /usr/local/include/vid.stab/serialize.h
-/usr/local/include/vid.stab/transformfixedpoint.h
-/usr/local/include/vid.stab/transformfloat.h
 /usr/local/include/vid.stab/transform.h
 /usr/local/include/vid.stab/transform_internal.h
+/usr/local/include/vid.stab/transformfixedpoint.h
+/usr/local/include/vid.stab/transformfloat.h
 /usr/local/include/vid.stab/transformtype.h
 /usr/local/include/vid.stab/transformtype_operations.h
 /usr/local/include/vid.stab/vidstabdefines.h

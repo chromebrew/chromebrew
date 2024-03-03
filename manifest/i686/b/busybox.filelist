@@ -1,5 +1,6 @@
 /usr/local/bin/busybox
 /usr/local/etc/env.d/busybox
+/usr/local/lib/libbusybox.so.1.36.0
 /usr/local/libexec/busybox/bin/[
 /usr/local/libexec/busybox/bin/[[
 /usr/local/libexec/busybox/bin/ar
@@ -245,10 +246,10 @@
 /usr/local/libexec/busybox/sbin/fakeidentd
 /usr/local/libexec/busybox/sbin/fdisk
 /usr/local/libexec/busybox/sbin/findfs
-/usr/local/libexec/busybox/sbin/flashcp
 /usr/local/libexec/busybox/sbin/flash_eraseall
 /usr/local/libexec/busybox/sbin/flash_lock
 /usr/local/libexec/busybox/sbin/flash_unlock
+/usr/local/libexec/busybox/sbin/flashcp
 /usr/local/libexec/busybox/sbin/freeramdisk
 /usr/local/libexec/busybox/sbin/fsck
 /usr/local/libexec/busybox/sbin/fsck.minix
@@ -332,4 +333,3 @@
 /usr/local/libexec/busybox/sbin/vconfig
 /usr/local/libexec/busybox/sbin/watchdog
 /usr/local/libexec/busybox/sbin/zcip
-/usr/local/lib/libbusybox.so.1.36.0

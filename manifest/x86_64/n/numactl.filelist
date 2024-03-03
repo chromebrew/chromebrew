@@ -4,8 +4,8 @@
 /usr/local/bin/numactl
 /usr/local/bin/numademo
 /usr/local/bin/numastat
-/usr/local/include/numacompat1.h
 /usr/local/include/numa.h
+/usr/local/include/numacompat1.h
 /usr/local/include/numaif.h
 /usr/local/lib64/libnuma.a
 /usr/local/lib64/libnuma.la

@@ -1,11 +1,12 @@
 /usr/local/bin/cpd
 /usr/local/bin/pmd
+/usr/local/share/pmd/LICENSE
 /usr/local/share/pmd/bin/run.sh
 /usr/local/share/pmd/cpd
 /usr/local/share/pmd/lib/animal-sniffer-annotations-1.14.jar
 /usr/local/share/pmd/lib/antlr-2.7.7.jar
-/usr/local/share/pmd/lib/antlr4-runtime-4.7.2.jar
 /usr/local/share/pmd/lib/antlr-runtime-3.5.2.jar
+/usr/local/share/pmd/lib/antlr4-runtime-4.7.2.jar
 /usr/local/share/pmd/lib/aopalliance-1.0.jar
 /usr/local/share/pmd/lib/asm-9.3.jar
 /usr/local/share/pmd/lib/cglib-3.3.0.jar
@@ -69,5 +70,4 @@
 /usr/local/share/pmd/lib/sourcecode_2.13-0.3.0.jar
 /usr/local/share/pmd/lib/stringtemplate-3.2.1.jar
 /usr/local/share/pmd/lib/trees_2.13-4.6.0.jar
-/usr/local/share/pmd/LICENSE
 /usr/local/share/pmd/pmd

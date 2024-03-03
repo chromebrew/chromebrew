@@ -2,12 +2,12 @@
 /usr/local/bin/zvbi-chains
 /usr/local/bin/zvbi-ntsc-cc
 /usr/local/include/libzvbi.h
-/usr/local/lib64/libzvbi.a
 /usr/local/lib64/libzvbi-chains.a
 /usr/local/lib64/libzvbi-chains.la
 /usr/local/lib64/libzvbi-chains.so
 /usr/local/lib64/libzvbi-chains.so.0
 /usr/local/lib64/libzvbi-chains.so.0.0.0
+/usr/local/lib64/libzvbi.a
 /usr/local/lib64/libzvbi.la
 /usr/local/lib64/libzvbi.so
 /usr/local/lib64/libzvbi.so.0
@@ -24,5 +24,5 @@
 /usr/local/share/locale/pl/LC_MESSAGES/zvbi.mo
 /usr/local/share/man/man1/zvbi-atsc-cc.1.gz
 /usr/local/share/man/man1/zvbi-chains.1.gz
-/usr/local/share/man/man1/zvbid.1.gz
 /usr/local/share/man/man1/zvbi-ntsc-cc.1.gz
+/usr/local/share/man/man1/zvbid.1.gz

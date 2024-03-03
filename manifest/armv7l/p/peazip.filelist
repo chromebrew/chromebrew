@@ -2,10 +2,10 @@
 /usr/local/share/application/peazip.desktop
 /usr/local/share/peazip/peazip
 /usr/local/share/peazip/res/7z/7z
-/usr/local/share/peazip/res/7z/7za
-/usr/local/share/peazip/res/7z/7zCon.sfx
-/usr/local/share/peazip/res/7z/7zr
 /usr/local/share/peazip/res/7z/7z.so
+/usr/local/share/peazip/res/7z/7zCon.sfx
+/usr/local/share/peazip/res/7z/7za
+/usr/local/share/peazip/res/7z/7zr
 /usr/local/share/peazip/res/7z/Codecs/Rar29.so
 /usr/local/share/peazip/res/lang/ar.txt
 /usr/local/share/peazip/res/lang/by-cr.txt
@@ -13,8 +13,8 @@
 /usr/local/share/peazip/res/lang/chs.txt
 /usr/local/share/peazip/res/lang/cht.txt
 /usr/local/share/peazip/res/lang/cz.txt
-/usr/local/share/peazip/res/lang/default.txt
 /usr/local/share/peazip/res/lang/de-uml.txt
+/usr/local/share/peazip/res/lang/default.txt
 /usr/local/share/peazip/res/lang/en-gb.txt
 /usr/local/share/peazip/res/lang/en.txt
 /usr/local/share/peazip/res/lang/es-es.txt

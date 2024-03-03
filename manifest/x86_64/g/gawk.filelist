@@ -47,15 +47,15 @@
 /usr/local/share/awk/tocsv.awk
 /usr/local/share/awk/walkarray.awk
 /usr/local/share/awk/zerofile.awk
+/usr/local/share/info/gawk.info.zst
 /usr/local/share/info/gawk_api-figure1.png.zst
 /usr/local/share/info/gawk_api-figure2.png.zst
 /usr/local/share/info/gawk_api-figure3.png.zst
 /usr/local/share/info/gawk_array-elements.png.zst
 /usr/local/share/info/gawk_general-program.png.zst
-/usr/local/share/info/gawkinet.info.zst
-/usr/local/share/info/gawk.info.zst
 /usr/local/share/info/gawk_process-flow.png.zst
 /usr/local/share/info/gawk_statist.jpg.zst
+/usr/local/share/info/gawkinet.info.zst
 /usr/local/share/info/gawkworkflow.info.zst
 /usr/local/share/info/pm-gawk.info.zst
 /usr/local/share/locale/bg/LC_MESSAGES/gawk.mo
@@ -72,8 +72,8 @@
 /usr/local/share/locale/ms/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/nl/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gawk.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gawk.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/ro/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/sr/LC_MESSAGES/gawk.mo
 /usr/local/share/locale/sv/LC_MESSAGES/gawk.mo

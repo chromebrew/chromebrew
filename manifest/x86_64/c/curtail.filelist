@@ -1,9 +1,9 @@
 /usr/local/bin/curtail
 /usr/local/share/applications/com.github.huluti.Curtail.desktop
-/usr/local/share/curtail/curtail/apply.py
-/usr/local/share/curtail/curtail/compressor.py
 /usr/local/share/curtail/curtail.gresource
 /usr/local/share/curtail/curtail/__init__.py
+/usr/local/share/curtail/curtail/apply.py
+/usr/local/share/curtail/curtail/compressor.py
 /usr/local/share/curtail/curtail/main.py
 /usr/local/share/curtail/curtail/preferences.py
 /usr/local/share/curtail/curtail/tools.py

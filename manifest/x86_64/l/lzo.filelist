@@ -1,8 +1,8 @@
+/usr/local/include/lzo/lzo1.h
 /usr/local/include/lzo/lzo1a.h
 /usr/local/include/lzo/lzo1b.h
 /usr/local/include/lzo/lzo1c.h
 /usr/local/include/lzo/lzo1f.h
-/usr/local/include/lzo/lzo1.h
 /usr/local/include/lzo/lzo1x.h
 /usr/local/include/lzo/lzo1y.h
 /usr/local/include/lzo/lzo1z.h
@@ -18,8 +18,8 @@
 /usr/local/lib64/pkgconfig/lzo2.pc
 /usr/local/share/doc/lzo/AUTHORS
 /usr/local/share/doc/lzo/COPYING
-/usr/local/share/doc/lzo/LZOAPI.TXT
 /usr/local/share/doc/lzo/LZO.FAQ
 /usr/local/share/doc/lzo/LZO.TXT
+/usr/local/share/doc/lzo/LZOAPI.TXT
 /usr/local/share/doc/lzo/NEWS
 /usr/local/share/doc/lzo/THANKS

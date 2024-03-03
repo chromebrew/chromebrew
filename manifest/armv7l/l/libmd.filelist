@@ -3,18 +3,17 @@
 /usr/local/include/md5.h
 /usr/local/include/ripemd.h
 /usr/local/include/rmd160.h
-/usr/local/include/sha1.h
-/usr/local/include/sha256.h
-/usr/local/include/sha2.h
-/usr/local/include/sha512.h
 /usr/local/include/sha.h
+/usr/local/include/sha1.h
+/usr/local/include/sha2.h
+/usr/local/include/sha256.h
+/usr/local/include/sha512.h
 /usr/local/lib/libmd.a
 /usr/local/lib/libmd.la
 /usr/local/lib/libmd.so
 /usr/local/lib/libmd.so.0
 /usr/local/lib/libmd.so.0.0.5
 /usr/local/lib/pkgconfig/libmd.pc
-/usr/local/share/man/man3/md2.3.gz
 /usr/local/share/man/man3/MD2Data.3.gz
 /usr/local/share/man/man3/MD2End.3.gz
 /usr/local/share/man/man3/MD2File.3.gz
@@ -23,7 +22,6 @@
 /usr/local/share/man/man3/MD2Init.3.gz
 /usr/local/share/man/man3/MD2Transform.3.gz
 /usr/local/share/man/man3/MD2Update.3.gz
-/usr/local/share/man/man3/md4.3.gz
 /usr/local/share/man/man3/MD4Data.3.gz
 /usr/local/share/man/man3/MD4End.3.gz
 /usr/local/share/man/man3/MD4File.3.gz
@@ -33,7 +31,6 @@
 /usr/local/share/man/man3/MD4Pad.3.gz
 /usr/local/share/man/man3/MD4Transform.3.gz
 /usr/local/share/man/man3/MD4Update.3.gz
-/usr/local/share/man/man3/md5.3.gz
 /usr/local/share/man/man3/MD5Data.3.gz
 /usr/local/share/man/man3/MD5End.3.gz
 /usr/local/share/man/man3/MD5File.3.gz
@@ -43,7 +40,6 @@
 /usr/local/share/man/man3/MD5Pad.3.gz
 /usr/local/share/man/man3/MD5Transform.3.gz
 /usr/local/share/man/man3/MD5Update.3.gz
-/usr/local/share/man/man3/rmd160.3.gz
 /usr/local/share/man/man3/RMD160Data.3.gz
 /usr/local/share/man/man3/RMD160End.3.gz
 /usr/local/share/man/man3/RMD160File.3.gz
@@ -53,7 +49,6 @@
 /usr/local/share/man/man3/RMD160Pad.3.gz
 /usr/local/share/man/man3/RMD160Transform.3.gz
 /usr/local/share/man/man3/RMD160Update.3.gz
-/usr/local/share/man/man3/sha1.3.gz
 /usr/local/share/man/man3/SHA1Data.3.gz
 /usr/local/share/man/man3/SHA1End.3.gz
 /usr/local/share/man/man3/SHA1File.3.gz
@@ -63,7 +58,6 @@
 /usr/local/share/man/man3/SHA1Pad.3.gz
 /usr/local/share/man/man3/SHA1Transform.3.gz
 /usr/local/share/man/man3/SHA1Update.3.gz
-/usr/local/share/man/man3/sha2.3.gz
 /usr/local/share/man/man3/SHA256Data.3.gz
 /usr/local/share/man/man3/SHA256End.3.gz
 /usr/local/share/man/man3/SHA256File.3.gz
@@ -91,3 +85,9 @@
 /usr/local/share/man/man3/SHA512Pad.3.gz
 /usr/local/share/man/man3/SHA512Transform.3.gz
 /usr/local/share/man/man3/SHA512Update.3.gz
+/usr/local/share/man/man3/md2.3.gz
+/usr/local/share/man/man3/md4.3.gz
+/usr/local/share/man/man3/md5.3.gz
+/usr/local/share/man/man3/rmd160.3.gz
+/usr/local/share/man/man3/sha1.3.gz
+/usr/local/share/man/man3/sha2.3.gz

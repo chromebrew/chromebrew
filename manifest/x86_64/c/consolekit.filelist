@@ -2,9 +2,9 @@
 /usr/local/bin/ck-launch-session
 /usr/local/bin/ck-list-sessions
 /usr/local/etc/ConsoleKit/seats.d/00-primary.seat
+/usr/local/etc/X11/xinit/xinitrc.d/90-consolekit
 /usr/local/etc/dbus-1/system.d/ConsoleKit.conf
 /usr/local/etc/logrotate.d/consolekit
-/usr/local/etc/X11/xinit/xinitrc.d/90-consolekit
 /usr/local/include/ConsoleKit/ck-connector/ck-connector.h
 /usr/local/include/ConsoleKit/libconsolekit.h
 /usr/local/lib64/ConsoleKit/ck-collect-session-info
@@ -41,8 +41,8 @@
 /usr/local/share/dbus-1/system-services/org.freedesktop.ConsoleKit.service
 /usr/local/share/gir-1.0/libconsolekit-1.0.gir
 /usr/local/share/locale/bg/LC_MESSAGES/ConsoleKit2.mo
-/usr/local/share/locale/es_419/LC_MESSAGES/ConsoleKit2.mo
 /usr/local/share/locale/es/LC_MESSAGES/ConsoleKit2.mo
+/usr/local/share/locale/es_419/LC_MESSAGES/ConsoleKit2.mo
 /usr/local/share/locale/ru/LC_MESSAGES/ConsoleKit2.mo
 /usr/local/share/man/man1/ck-history.1.gz
 /usr/local/share/man/man1/ck-launch-session.1.gz

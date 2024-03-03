@@ -3,9 +3,9 @@
 /usr/local/bin/hostname
 /usr/local/bin/ifconfig
 /usr/local/bin/ping
+/usr/local/bin/ping.elf
 /usr/local/bin/ping6
 /usr/local/bin/ping6.elf
-/usr/local/bin/ping.elf
 /usr/local/bin/talk
 /usr/local/bin/telnet
 /usr/local/bin/tftp

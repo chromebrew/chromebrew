@@ -1,5 +1,4 @@
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3
-/usr/local/bin/armv7l-cros-linux-gnueabihf-i3bar
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3-config-wizard
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3-dmenu-desktop
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3-dump-log
@@ -11,8 +10,8 @@
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3-sensible-editor
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3-sensible-pager
 /usr/local/bin/armv7l-cros-linux-gnueabihf-i3-sensible-terminal
+/usr/local/bin/armv7l-cros-linux-gnueabihf-i3bar
 /usr/local/bin/i3
-/usr/local/bin/i3bar
 /usr/local/bin/i3-config-wizard
 /usr/local/bin/i3-dmenu-desktop
 /usr/local/bin/i3-dump-log
@@ -25,10 +24,11 @@
 /usr/local/bin/i3-sensible-pager
 /usr/local/bin/i3-sensible-terminal
 /usr/local/bin/i3-with-shmlog
+/usr/local/bin/i3bar
 /usr/local/bin/starti3
 /usr/local/etc/i3/config
 /usr/local/etc/i3/config.keycodes
 /usr/local/include/i3/ipc.h
 /usr/local/share/applications/i3.desktop
-/usr/local/share/xsessions/i3.desktop
 /usr/local/share/xsessions/i3-with-shmlog.desktop
+/usr/local/share/xsessions/i3.desktop

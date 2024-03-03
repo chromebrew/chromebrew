@@ -3,7 +3,7 @@
 /usr/local/share/doc/stow/ChangeLog
 /usr/local/share/doc/stow/ChangeLog.OLD
 /usr/local/share/doc/stow/INSTALL.md
-/usr/local/share/doc/stow/manual.pdf
+/usr/local/share/doc/stow/README.md
 /usr/local/share/doc/stow/manual-single.html
 /usr/local/share/doc/stow/manual-split/Bootstrapping.html
 /usr/local/share/doc/stow/manual-split/Compile_002dtime-vs-Install_002dtime.html
@@ -14,7 +14,6 @@
 /usr/local/share/doc/stow/manual-split/GNU-Emacs.html
 /usr/local/share/doc/stow/manual-split/GNU-General-Public-License.html
 /usr/local/share/doc/stow/manual-split/Ignore-Lists.html
-/usr/local/share/doc/stow/manual-split/index.html
 /usr/local/share/doc/stow/manual-split/Index.html
 /usr/local/share/doc/stow/manual-split/Installing-Packages.html
 /usr/local/share/doc/stow/manual-split/Introduction.html
@@ -30,11 +29,12 @@
 /usr/local/share/doc/stow/manual-split/Resource-Files.html
 /usr/local/share/doc/stow/manual-split/Target-Maintenance.html
 /usr/local/share/doc/stow/manual-split/Terminology.html
-/usr/local/share/doc/stow/manual-split/tree-folding.html
-/usr/local/share/doc/stow/manual-split/tree-refolding.html
 /usr/local/share/doc/stow/manual-split/Tree-unfolding.html
 /usr/local/share/doc/stow/manual-split/Types-And-Syntax-Of-Ignore-Lists.html
-/usr/local/share/doc/stow/README.md
+/usr/local/share/doc/stow/manual-split/index.html
+/usr/local/share/doc/stow/manual-split/tree-folding.html
+/usr/local/share/doc/stow/manual-split/tree-refolding.html
+/usr/local/share/doc/stow/manual.pdf
 /usr/local/share/doc/stow/version.texi
 /usr/local/share/info/stow.info.zst
 /usr/local/share/man/man8/stow.8.zst

@@ -7,8 +7,8 @@
 /usr/local/bin/speed
 /usr/local/bin/testprog
 /usr/local/include/drvrsmem.h
-/usr/local/include/fitsio2.h
 /usr/local/include/fitsio.h
+/usr/local/include/fitsio2.h
 /usr/local/include/longnam.h
 /usr/local/lib/libcfitsio.a
 /usr/local/lib/libcfitsio.so

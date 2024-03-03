@@ -1,7 +1,11 @@
 /usr/local/bin/gradle
+/usr/local/share/gradle/LICENSE
+/usr/local/share/gradle/NOTICE
+/usr/local/share/gradle/README
 /usr/local/share/gradle/bin/gradle
 /usr/local/share/gradle/bin/gradle.bat
 /usr/local/share/gradle/init.d/readme.txt
+/usr/local/share/gradle/lib/HikariCP-4.0.3.jar
 /usr/local/share/gradle/lib/agents/gradle-instrumentation-agent-8.5.jar
 /usr/local/share/gradle/lib/annotations-24.0.1.jar
 /usr/local/share/gradle/lib/ant-1.10.13.jar
@@ -45,9 +49,9 @@
 /usr/local/share/gradle/lib/gradle-enterprise-workers-8.5.jar
 /usr/local/share/gradle/lib/gradle-execution-8.5.jar
 /usr/local/share/gradle/lib/gradle-file-collections-8.5.jar
-/usr/local/share/gradle/lib/gradle-files-8.5.jar
 /usr/local/share/gradle/lib/gradle-file-temp-8.5.jar
 /usr/local/share/gradle/lib/gradle-file-watching-8.5.jar
+/usr/local/share/gradle/lib/gradle-files-8.5.jar
 /usr/local/share/gradle/lib/gradle-functional-8.5.jar
 /usr/local/share/gradle/lib/gradle-hashing-8.5.jar
 /usr/local/share/gradle/lib/gradle-installation-beacon-8.5.jar
@@ -95,7 +99,6 @@
 /usr/local/share/gradle/lib/guava-32.1.2-jre.jar
 /usr/local/share/gradle/lib/h2-2.2.220.jar
 /usr/local/share/gradle/lib/hamcrest-core-1.3.jar
-/usr/local/share/gradle/lib/HikariCP-4.0.3.jar
 /usr/local/share/gradle/lib/jansi-1.18.jar
 /usr/local/share/gradle/lib/javaparser-core-3.17.0.jar
 /usr/local/share/gradle/lib/javax.inject-1.jar
@@ -108,12 +111,12 @@
 /usr/local/share/gradle/lib/kotlin-daemon-embeddable-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-reflect-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-sam-with-receiver-compiler-plugin-1.9.20.jar
+/usr/local/share/gradle/lib/kotlin-script-runtime-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-scripting-common-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-scripting-compiler-embeddable-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-scripting-compiler-impl-embeddable-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-scripting-jvm-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-scripting-jvm-host-1.9.20.jar
-/usr/local/share/gradle/lib/kotlin-script-runtime-1.9.20.jar
 /usr/local/share/gradle/lib/kotlin-stdlib-1.9.20.jar
 /usr/local/share/gradle/lib/kotlinx-metadata-jvm-0.5.0.jar
 /usr/local/share/gradle/lib/kryo-2.24.0.jar
@@ -182,6 +185,7 @@
 /usr/local/share/gradle/lib/plugins/gradle-platform-jvm-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-platform-native-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-plugin-development-8.5.jar
+/usr/local/share/gradle/lib/plugins/gradle-plugin-use-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-plugins-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-plugins-distribution-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-plugins-groovy-8.5.jar
@@ -191,7 +195,6 @@
 /usr/local/share/gradle/lib/plugins/gradle-plugins-jvm-test-suite-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-plugins-test-report-aggregation-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-plugins-version-catalog-8.5.jar
-/usr/local/share/gradle/lib/plugins/gradle-plugin-use-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-publish-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-reporting-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-resources-gcs-8.5.jar
@@ -201,13 +204,13 @@
 /usr/local/share/gradle/lib/plugins/gradle-scala-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-security-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-signing-8.5.jar
+/usr/local/share/gradle/lib/plugins/gradle-test-kit-8.5.jar
+/usr/local/share/gradle/lib/plugins/gradle-test-suites-base-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-testing-base-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-testing-junit-platform-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-testing-jvm-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-testing-jvm-infrastructure-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-testing-native-8.5.jar
-/usr/local/share/gradle/lib/plugins/gradle-test-kit-8.5.jar
-/usr/local/share/gradle/lib/plugins/gradle-test-suites-base-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-toolchains-jvm-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-tooling-api-builders-8.5.jar
 /usr/local/share/gradle/lib/plugins/gradle-tooling-native-8.5.jar
@@ -258,6 +261,3 @@
 /usr/local/share/gradle/lib/tomlj-1.0.0.jar
 /usr/local/share/gradle/lib/trove4j-1.0.20200330.jar
 /usr/local/share/gradle/lib/xml-apis-1.4.01.jar
-/usr/local/share/gradle/LICENSE
-/usr/local/share/gradle/NOTICE
-/usr/local/share/gradle/README

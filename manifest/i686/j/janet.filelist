@@ -1,7 +1,7 @@
 /usr/local/bin/janet
 /usr/local/bin/jpm
-/usr/local/include/janet/janetconf.h
 /usr/local/include/janet/janet.h
+/usr/local/include/janet/janetconf.h
 /usr/local/lib/janet/.keep
 /usr/local/lib/libjanet.a
 /usr/local/lib/libjanet.so

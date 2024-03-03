@@ -11,8 +11,8 @@
 /usr/local/include/json-glib-1.0/json-glib/json-reader.h
 /usr/local/include/json-glib-1.0/json-glib/json-types.h
 /usr/local/include/json-glib-1.0/json-glib/json-utils.h
-/usr/local/include/json-glib-1.0/json-glib/json-version.h
 /usr/local/include/json-glib-1.0/json-glib/json-version-macros.h
+/usr/local/include/json-glib-1.0/json-glib/json-version.h
 /usr/local/lib64/girepository-1.0/Json-1.0.typelib
 /usr/local/lib64/libjson-glib-1.0.so
 /usr/local/lib64/libjson-glib-1.0.so.0
@@ -89,14 +89,14 @@
 /usr/local/share/locale/or/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/pa/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/pl/LC_MESSAGES/json-glib-1.0.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/pt/LC_MESSAGES/json-glib-1.0.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/ro/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/ru/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/sk/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/sl/LC_MESSAGES/json-glib-1.0.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/sr/LC_MESSAGES/json-glib-1.0.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/sv/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/te/LC_MESSAGES/json-glib-1.0.mo
 /usr/local/share/locale/tg/LC_MESSAGES/json-glib-1.0.mo

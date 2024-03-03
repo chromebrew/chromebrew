@@ -1,8 +1,8 @@
 /usr/local/bin/enchant-2
 /usr/local/bin/enchant-lsmod-2
 /usr/local/include/enchant-2/enchant++.h
-/usr/local/include/enchant-2/enchant.h
 /usr/local/include/enchant-2/enchant-provider.h
+/usr/local/include/enchant-2/enchant.h
 /usr/local/lib/enchant-2/enchant_aspell.a
 /usr/local/lib/enchant-2/enchant_aspell.la
 /usr/local/lib/enchant-2/enchant_aspell.so

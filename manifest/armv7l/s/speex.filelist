@@ -1,7 +1,7 @@
+/usr/local/include/speex/speex.h
 /usr/local/include/speex/speex_bits.h
 /usr/local/include/speex/speex_callbacks.h
 /usr/local/include/speex/speex_config_types.h
-/usr/local/include/speex/speex.h
 /usr/local/include/speex/speex_header.h
 /usr/local/include/speex/speex_stereo.h
 /usr/local/include/speex/speex_types.h

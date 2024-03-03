@@ -28,8 +28,8 @@
 /usr/local/include/tesseract/version.h
 /usr/local/lib/cmake/tesseract/TesseractConfig.cmake
 /usr/local/lib/cmake/tesseract/TesseractConfigVersion.cmake
-/usr/local/lib/cmake/tesseract/TesseractTargets.cmake
 /usr/local/lib/cmake/tesseract/TesseractTargets-release.cmake
+/usr/local/lib/cmake/tesseract/TesseractTargets.cmake
 /usr/local/lib/libcommon_training.so
 /usr/local/lib/libtesseract.so
 /usr/local/lib/libtesseract.so.5.3.3
@@ -49,9 +49,9 @@
 /usr/local/share/tessdata/configs/kannada
 /usr/local/share/tessdata/configs/linebox
 /usr/local/share/tessdata/configs/logfile
+/usr/local/share/tessdata/configs/lstm.train
 /usr/local/share/tessdata/configs/lstmbox
 /usr/local/share/tessdata/configs/lstmdebug
-/usr/local/share/tessdata/configs/lstm.train
 /usr/local/share/tessdata/configs/makebox
 /usr/local/share/tessdata/configs/pdf
 /usr/local/share/tessdata/configs/quiet

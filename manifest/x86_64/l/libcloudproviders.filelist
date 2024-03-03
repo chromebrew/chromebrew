@@ -1,9 +1,9 @@
-/usr/local/include/cloudproviders/cloudprovidersaccountexporter.h
-/usr/local/include/cloudproviders/cloudprovidersaccount.h
-/usr/local/include/cloudproviders/cloudproviderscollector.h
 /usr/local/include/cloudproviders/cloudproviders.h
-/usr/local/include/cloudproviders/cloudprovidersproviderexporter.h
+/usr/local/include/cloudproviders/cloudprovidersaccount.h
+/usr/local/include/cloudproviders/cloudprovidersaccountexporter.h
+/usr/local/include/cloudproviders/cloudproviderscollector.h
 /usr/local/include/cloudproviders/cloudprovidersprovider.h
+/usr/local/include/cloudproviders/cloudprovidersproviderexporter.h
 /usr/local/include/cloudproviders/enums.h
 /usr/local/lib64/girepository-1.0/CloudProviders-0.3.typelib
 /usr/local/lib64/libcloudproviders.so

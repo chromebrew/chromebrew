@@ -3,9 +3,9 @@
 /usr/local/include/cacard/card_7816t.h
 /usr/local/include/cacard/eventt.h
 /usr/local/include/cacard/libcacard.h
+/usr/local/include/cacard/vcard.h
 /usr/local/include/cacard/vcard_emul.h
 /usr/local/include/cacard/vcard_emul_type.h
-/usr/local/include/cacard/vcard.h
 /usr/local/include/cacard/vcardt.h
 /usr/local/include/cacard/vevent.h
 /usr/local/include/cacard/vreader.h

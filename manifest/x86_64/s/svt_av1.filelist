@@ -1,12 +1,12 @@
 /usr/local/bin/SvtAv1DecApp
 /usr/local/bin/SvtAv1EncApp
 /usr/local/include/svt-av1/EbDebugMacros.h
+/usr/local/include/svt-av1/EbSvtAv1.h
 /usr/local/include/svt-av1/EbSvtAv1Dec.h
 /usr/local/include/svt-av1/EbSvtAv1Enc.h
 /usr/local/include/svt-av1/EbSvtAv1ErrorCodes.h
 /usr/local/include/svt-av1/EbSvtAv1ExtFrameBuf.h
 /usr/local/include/svt-av1/EbSvtAv1Formats.h
-/usr/local/include/svt-av1/EbSvtAv1.h
 /usr/local/include/svt-av1/EbSvtAv1Metadata.h
 /usr/local/lib64/libSvtAv1Dec.so
 /usr/local/lib64/libSvtAv1Dec.so.0

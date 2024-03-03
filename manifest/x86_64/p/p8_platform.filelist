@@ -8,10 +8,10 @@
 /usr/local/include/p8-platform/threads/atomics.h
 /usr/local/include/p8-platform/threads/mutex.h
 /usr/local/include/p8-platform/threads/threads.h
-/usr/local/include/p8-platform/util/atomic.h
-/usr/local/include/p8-platform/util/buffer.h
 /usr/local/include/p8-platform/util/StdString.h
 /usr/local/include/p8-platform/util/StringUtils.h
+/usr/local/include/p8-platform/util/atomic.h
+/usr/local/include/p8-platform/util/buffer.h
 /usr/local/include/p8-platform/util/timeutils.h
 /usr/local/include/p8-platform/util/util.h
 /usr/local/lib64/libp8-platform.so

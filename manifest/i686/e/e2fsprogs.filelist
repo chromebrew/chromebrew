@@ -11,15 +11,15 @@
 /usr/local/include/ext2fs/ext2_err.h
 /usr/local/include/ext2fs/ext2_ext_attr.h
 /usr/local/include/ext2fs/ext2_fs.h
-/usr/local/include/ext2fs/ext2fs.h
 /usr/local/include/ext2fs/ext2_io.h
 /usr/local/include/ext2fs/ext2_types.h
+/usr/local/include/ext2fs/ext2fs.h
 /usr/local/include/ext2fs/ext3_extents.h
 /usr/local/include/ext2fs/hashmap.h
 /usr/local/include/ext2fs/qcow2.h
 /usr/local/include/ext2fs/tdb.h
-/usr/local/include/ss/ss_err.h
 /usr/local/include/ss/ss.h
+/usr/local/include/ss/ss_err.h
 /usr/local/lib/e2initrd_helper
 /usr/local/lib/libcom_err.a
 /usr/local/lib/libcom_err.so

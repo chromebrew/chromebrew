@@ -20,11 +20,11 @@
 /usr/local/share/man/man3/asn1_decode_simple_ber.3.zst
 /usr/local/share/man/man3/asn1_decode_simple_der.3.zst
 /usr/local/share/man/man3/asn1_delete_element.3.zst
-/usr/local/share/man/man3/asn1_delete_structure2.3.zst
 /usr/local/share/man/man3/asn1_delete_structure.3.zst
+/usr/local/share/man/man3/asn1_delete_structure2.3.zst
 /usr/local/share/man/man3/asn1_der_coding.3.zst
-/usr/local/share/man/man3/asn1_der_decoding2.3.zst
 /usr/local/share/man/man3/asn1_der_decoding.3.zst
+/usr/local/share/man/man3/asn1_der_decoding2.3.zst
 /usr/local/share/man/man3/asn1_der_decoding_element.3.zst
 /usr/local/share/man/man3/asn1_der_decoding_startEnd.3.zst
 /usr/local/share/man/man3/asn1_dup_node.3.zst

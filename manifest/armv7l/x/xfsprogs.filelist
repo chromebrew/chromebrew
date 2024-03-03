@@ -1,12 +1,12 @@
 /usr/local/include/xfs/handle.h
 /usr/local/include/xfs/jdm.h
 /usr/local/include/xfs/linux.h
+/usr/local/include/xfs/xfs.h
 /usr/local/include/xfs/xfs_arch.h
 /usr/local/include/xfs/xfs_da_format.h
 /usr/local/include/xfs/xfs_format.h
-/usr/local/include/xfs/xfs_fs_compat.h
 /usr/local/include/xfs/xfs_fs.h
-/usr/local/include/xfs/xfs.h
+/usr/local/include/xfs/xfs_fs_compat.h
 /usr/local/include/xfs/xfs_log_format.h
 /usr/local/include/xfs/xfs_types.h
 /usr/local/include/xfs/xqm.h

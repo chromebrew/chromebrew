@@ -11,10 +11,10 @@
 /usr/local/lib64/pkgconfig/gpg-error.pc
 /usr/local/share/aclocal/gpg-error.m4
 /usr/local/share/aclocal/gpgrt.m4
-/usr/local/share/common-lisp/source/gpg-error/gpg-error.asd
 /usr/local/share/common-lisp/source/gpg-error/gpg-error-codes.lisp
-/usr/local/share/common-lisp/source/gpg-error/gpg-error.lisp
 /usr/local/share/common-lisp/source/gpg-error/gpg-error-package.lisp
+/usr/local/share/common-lisp/source/gpg-error/gpg-error.asd
+/usr/local/share/common-lisp/source/gpg-error/gpg-error.lisp
 /usr/local/share/info/gpgrt.info.zst
 /usr/local/share/libgpg-error/errorref.txt
 /usr/local/share/locale/cs/LC_MESSAGES/libgpg-error.mo

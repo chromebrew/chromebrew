@@ -1,8 +1,8 @@
 /usr/local/include/opus/opusfile.h
 /usr/local/lib64/cmake/opusfile/OpusFileConfig.cmake
 /usr/local/lib64/cmake/opusfile/OpusFileConfigVersion.cmake
-/usr/local/lib64/cmake/opusfile/OpusFileTargets.cmake
 /usr/local/lib64/cmake/opusfile/OpusFileTargets-release.cmake
+/usr/local/lib64/cmake/opusfile/OpusFileTargets.cmake
 /usr/local/lib64/libopusfile.so
 /usr/local/lib64/libopusfile.so.0
 /usr/local/lib64/libopusurl.so

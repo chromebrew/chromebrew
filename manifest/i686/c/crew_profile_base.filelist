@@ -1,5 +1,6 @@
-/usr/local/etc/bash.d/01-crew
 /usr/local/etc/bash.d/0-stub
+/usr/local/etc/bash.d/01-crew
+/usr/local/etc/env.d/0-stub
 /usr/local/etc/env.d/00-path
 /usr/local/etc/env.d/01-locale
 /usr/local/etc/env.d/02-editor
@@ -7,7 +8,6 @@
 /usr/local/etc/env.d/05-iconv
 /usr/local/etc/env.d/06-chromebrew
 /usr/local/etc/env.d/07-ld-library-path
-/usr/local/etc/env.d/0-stub
 /usr/local/etc/env.d/99-custom
 /usr/local/etc/profile
 /usr/local/etc/zsh.d/0-stub

@@ -1,5 +1,5 @@
-/usr/local/include/metalink/metalink_error.h
 /usr/local/include/metalink/metalink.h
+/usr/local/include/metalink/metalink_error.h
 /usr/local/include/metalink/metalink_parser.h
 /usr/local/include/metalink/metalink_types.h
 /usr/local/include/metalink/metalinkver.h
@@ -18,9 +18,9 @@
 /usr/local/share/man/man3/metalink_parse_final.3.zst
 /usr/local/share/man/man3/metalink_parse_fp.3.zst
 /usr/local/share/man/man3/metalink_parse_memory.3.zst
+/usr/local/share/man/man3/metalink_parse_update.3.zst
 /usr/local/share/man/man3/metalink_parser_context_delete.3.zst
 /usr/local/share/man/man3/metalink_parser_context_new.3.zst
-/usr/local/share/man/man3/metalink_parse_update.3.zst
 /usr/local/share/man/man3/metalink_piece_hash_t.3.zst
 /usr/local/share/man/man3/metalink_resource_t.3.zst
 /usr/local/share/man/man3/metalink_t.3.zst

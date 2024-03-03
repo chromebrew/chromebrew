@@ -3,9 +3,9 @@
 /usr/local/bin/csv2xml
 /usr/local/share/c2x/c2x-cmd
 /usr/local/share/c2x/c2x-cmd-manual.pdf
-/usr/local/share/c2x/c2x-wizard.jar
 /usr/local/share/c2x/c2x-wizard-license.txt
 /usr/local/share/c2x/c2x-wizard-manual.pdf
+/usr/local/share/c2x/c2x-wizard.jar
 /usr/local/share/c2x/c2x-wizard.sh
 /usr/local/share/c2x/csv2xml
 /usr/local/share/c2x/examples/example.sh
@@ -13,12 +13,12 @@
 /usr/local/share/c2x/examples/extend/mode2-dtd.dtd
 /usr/local/share/c2x/examples/extend/mode3-schema.xsd
 /usr/local/share/c2x/examples/extend/mode5-stylesheet.css
+/usr/local/share/c2x/examples/source/ex_ansi.csv
+/usr/local/share/c2x/examples/source/ex_utf8.csv
 /usr/local/share/c2x/examples/source/example1.cfg
 /usr/local/share/c2x/examples/source/example1.csv
 /usr/local/share/c2x/examples/source/example2.csv
 /usr/local/share/c2x/examples/source/example5.cfg
-/usr/local/share/c2x/examples/source/ex_ansi.csv
-/usr/local/share/c2x/examples/source/ex_utf8.csv
 /usr/local/share/c2x/get_manuals.sh
 /usr/local/share/c2x/license.txt
 /usr/local/share/c2x/release_history.txt

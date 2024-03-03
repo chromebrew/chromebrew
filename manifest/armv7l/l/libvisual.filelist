@@ -10,7 +10,6 @@
 /usr/local/include/libvisual-0.4/libvisual/lv_color.h
 /usr/local/include/libvisual-0.4/libvisual/lv_common.h
 /usr/local/include/libvisual-0.4/libvisual/lv_config.h
-/usr/local/include/libvisual-0.4/libvisual/lvconfig.h
 /usr/local/include/libvisual-0.4/libvisual/lv_cpu.h
 /usr/local/include/libvisual-0.4/libvisual/lv_defines.h
 /usr/local/include/libvisual-0.4/libvisual/lv_error.h
@@ -43,6 +42,7 @@
 /usr/local/include/libvisual-0.4/libvisual/lv_ui.h
 /usr/local/include/libvisual-0.4/libvisual/lv_utils.h
 /usr/local/include/libvisual-0.4/libvisual/lv_video.h
+/usr/local/include/libvisual-0.4/libvisual/lvconfig.h
 /usr/local/lib/libvisual-0.4.la
 /usr/local/lib/libvisual-0.4.so
 /usr/local/lib/libvisual-0.4.so.0

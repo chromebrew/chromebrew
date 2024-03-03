@@ -35,8 +35,8 @@
 /usr/local/share/man/man3/libssh2_channel_free.3.zst
 /usr/local/share/man/man3/libssh2_channel_get_exit_signal.3.zst
 /usr/local/share/man/man3/libssh2_channel_get_exit_status.3.zst
-/usr/local/share/man/man3/libssh2_channel_handle_extended_data2.3.zst
 /usr/local/share/man/man3/libssh2_channel_handle_extended_data.3.zst
+/usr/local/share/man/man3/libssh2_channel_handle_extended_data2.3.zst
 /usr/local/share/man/man3/libssh2_channel_ignore_extended_data.3.zst
 /usr/local/share/man/man3/libssh2_channel_open_ex.3.zst
 /usr/local/share/man/man3/libssh2_channel_open_session.3.zst
@@ -44,8 +44,8 @@
 /usr/local/share/man/man3/libssh2_channel_read.3.zst
 /usr/local/share/man/man3/libssh2_channel_read_ex.3.zst
 /usr/local/share/man/man3/libssh2_channel_read_stderr.3.zst
-/usr/local/share/man/man3/libssh2_channel_receive_window_adjust2.3.zst
 /usr/local/share/man/man3/libssh2_channel_receive_window_adjust.3.zst
+/usr/local/share/man/man3/libssh2_channel_receive_window_adjust2.3.zst
 /usr/local/share/man/man3/libssh2_channel_request_auth_agent.3.zst
 /usr/local/share/man/man3/libssh2_channel_request_pty.3.zst
 /usr/local/share/man/man3/libssh2_channel_request_pty_ex.3.zst
@@ -98,8 +98,8 @@
 /usr/local/share/man/man3/libssh2_publickey_remove.3.zst
 /usr/local/share/man/man3/libssh2_publickey_remove_ex.3.zst
 /usr/local/share/man/man3/libssh2_publickey_shutdown.3.zst
-/usr/local/share/man/man3/libssh2_scp_recv2.3.zst
 /usr/local/share/man/man3/libssh2_scp_recv.3.zst
+/usr/local/share/man/man3/libssh2_scp_recv2.3.zst
 /usr/local/share/man/man3/libssh2_scp_send.3.zst
 /usr/local/share/man/man3/libssh2_scp_send64.3.zst
 /usr/local/share/man/man3/libssh2_scp_send_ex.3.zst
@@ -130,8 +130,8 @@
 /usr/local/share/man/man3/libssh2_session_startup.3.zst
 /usr/local/share/man/man3/libssh2_session_supported_algs.3.zst
 /usr/local/share/man/man3/libssh2_sftp_close.3.zst
-/usr/local/share/man/man3/libssh2_sftp_closedir.3.zst
 /usr/local/share/man/man3/libssh2_sftp_close_handle.3.zst
+/usr/local/share/man/man3/libssh2_sftp_closedir.3.zst
 /usr/local/share/man/man3/libssh2_sftp_fsetstat.3.zst
 /usr/local/share/man/man3/libssh2_sftp_fstat.3.zst
 /usr/local/share/man/man3/libssh2_sftp_fstat_ex.3.zst
@@ -144,10 +144,10 @@
 /usr/local/share/man/man3/libssh2_sftp_mkdir.3.zst
 /usr/local/share/man/man3/libssh2_sftp_mkdir_ex.3.zst
 /usr/local/share/man/man3/libssh2_sftp_open.3.zst
-/usr/local/share/man/man3/libssh2_sftp_opendir.3.zst
 /usr/local/share/man/man3/libssh2_sftp_open_ex.3.zst
 /usr/local/share/man/man3/libssh2_sftp_open_ex_r.3.zst
 /usr/local/share/man/man3/libssh2_sftp_open_r.3.zst
+/usr/local/share/man/man3/libssh2_sftp_opendir.3.zst
 /usr/local/share/man/man3/libssh2_sftp_read.3.zst
 /usr/local/share/man/man3/libssh2_sftp_readdir.3.zst
 /usr/local/share/man/man3/libssh2_sftp_readdir_ex.3.zst

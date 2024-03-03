@@ -58,8 +58,8 @@
 /usr/local/share/bashdb/command/set_sub/autoeval.sh
 /usr/local/share/bashdb/command/set_sub/autolist.sh
 /usr/local/share/bashdb/command/set_sub/basename.sh
-/usr/local/share/bashdb/command/set_sub/debugging.sh
 /usr/local/share/bashdb/command/set_sub/debug.sh
+/usr/local/share/bashdb/command/set_sub/debugging.sh
 /usr/local/share/bashdb/command/set_sub/different.sh
 /usr/local/share/bashdb/command/set_sub/dollar0.sh
 /usr/local/share/bashdb/command/set_sub/editing.sh
@@ -126,8 +126,8 @@
 /usr/local/share/bashdb/lib/complete.sh
 /usr/local/share/bashdb/lib/dbg-call.sh
 /usr/local/share/bashdb/lib/display.sh
-/usr/local/share/bashdb/lib/filecache.sh
 /usr/local/share/bashdb/lib/file.sh
+/usr/local/share/bashdb/lib/filecache.sh
 /usr/local/share/bashdb/lib/fns.sh
 /usr/local/share/bashdb/lib/frame.sh
 /usr/local/share/bashdb/lib/help.sh

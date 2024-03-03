@@ -1,12 +1,12 @@
 /usr/local/bin/zipcmp
 /usr/local/bin/zipmerge
 /usr/local/bin/ziptool
-/usr/local/include/zipconf.h
 /usr/local/include/zip.h
-/usr/local/lib64/cmake/libzip/libzip-config.cmake
+/usr/local/include/zipconf.h
 /usr/local/lib64/cmake/libzip/libzip-config-version.cmake
-/usr/local/lib64/cmake/libzip/libzip-targets.cmake
+/usr/local/lib64/cmake/libzip/libzip-config.cmake
 /usr/local/lib64/cmake/libzip/libzip-targets-release.cmake
+/usr/local/lib64/cmake/libzip/libzip-targets.cmake
 /usr/local/lib64/libzip.so
 /usr/local/lib64/libzip.so.5
 /usr/local/lib64/libzip.so.5.3
@@ -14,6 +14,7 @@
 /usr/local/share/man/man1/zipcmp.1.gz
 /usr/local/share/man/man1/zipmerge.1.gz
 /usr/local/share/man/man1/ziptool.1.gz
+/usr/local/share/man/man3/ZIP_SOURCE_GET_ARGS.3.gz
 /usr/local/share/man/man3/libzip.3.gz
 /usr/local/share/man/man3/zip_add.3.gz
 /usr/local/share/man/man3/zip_add_dir.3.gz
@@ -31,12 +32,12 @@
 /usr/local/share/man/man3/zip_error_get_sys_type.3.gz
 /usr/local/share/man/man3/zip_error_init.3.gz
 /usr/local/share/man/man3/zip_error_init_with_code.3.gz
-/usr/local/share/man/man3/zip_errors.3.gz
 /usr/local/share/man/man3/zip_error_set.3.gz
 /usr/local/share/man/man3/zip_error_strerror.3.gz
 /usr/local/share/man/man3/zip_error_system_type.3.gz
 /usr/local/share/man/man3/zip_error_to_data.3.gz
 /usr/local/share/man/man3/zip_error_to_str.3.gz
+/usr/local/share/man/man3/zip_errors.3.gz
 /usr/local/share/man/man3/zip_fclose.3.gz
 /usr/local/share/man/man3/zip_fdopen.3.gz
 /usr/local/share/man/man3/zip_file_add.3.gz
@@ -47,9 +48,9 @@
 /usr/local/share/man/man3/zip_file_extra_field_delete_by_id.3.gz
 /usr/local/share/man/man3/zip_file_extra_field_get.3.gz
 /usr/local/share/man/man3/zip_file_extra_field_get_by_id.3.gz
+/usr/local/share/man/man3/zip_file_extra_field_set.3.gz
 /usr/local/share/man/man3/zip_file_extra_fields_count.3.gz
 /usr/local/share/man/man3/zip_file_extra_fields_count_by_id.3.gz
-/usr/local/share/man/man3/zip_file_extra_field_set.3.gz
 /usr/local/share/man/man3/zip_file_get_comment.3.gz
 /usr/local/share/man/man3/zip_file_get_error.3.gz
 /usr/local/share/man/man3/zip_file_get_external_attributes.3.gz
@@ -105,7 +106,6 @@
 /usr/local/share/man/man3/zip_source_free.3.gz
 /usr/local/share/man/man3/zip_source_function.3.gz
 /usr/local/share/man/man3/zip_source_function_create.3.gz
-/usr/local/share/man/man3/ZIP_SOURCE_GET_ARGS.3.gz
 /usr/local/share/man/man3/zip_source_is_deleted.3.gz
 /usr/local/share/man/man3/zip_source_keep.3.gz
 /usr/local/share/man/man3/zip_source_make_command_bitmap.3.gz

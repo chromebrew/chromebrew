@@ -1,8 +1,8 @@
 /usr/local/bin/bsdcat
 /usr/local/bin/bsdcpio
 /usr/local/bin/bsdtar
-/usr/local/include/archive_entry.h
 /usr/local/include/archive.h
+/usr/local/include/archive_entry.h
 /usr/local/lib64/libarchive.a
 /usr/local/lib64/libarchive.la
 /usr/local/lib64/libarchive.so

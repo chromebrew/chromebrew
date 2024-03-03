@@ -11,8 +11,8 @@
 /usr/local/include/cloog/isl/constraintset.h
 /usr/local/include/cloog/isl/domain.h
 /usr/local/include/cloog/loop.h
-/usr/local/include/cloog/matrix/constraintset.h
 /usr/local/include/cloog/matrix.h
+/usr/local/include/cloog/matrix/constraintset.h
 /usr/local/include/cloog/names.h
 /usr/local/include/cloog/options.h
 /usr/local/include/cloog/pprint.h

@@ -7,8 +7,8 @@
 /usr/local/include/libfilezilla/buffer.hpp
 /usr/local/include/libfilezilla/encode.hpp
 /usr/local/include/libfilezilla/encryption.hpp
-/usr/local/include/libfilezilla/event_handler.hpp
 /usr/local/include/libfilezilla/event.hpp
+/usr/local/include/libfilezilla/event_handler.hpp
 /usr/local/include/libfilezilla/event_loop.hpp
 /usr/local/include/libfilezilla/file.hpp
 /usr/local/include/libfilezilla/format.hpp
@@ -67,8 +67,8 @@
 /usr/local/share/locale/ar/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/az/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/bg_BG/LC_MESSAGES/libfilezilla.mo
-/usr/local/share/locale/ca_ES@valencia/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libfilezilla.mo
+/usr/local/share/locale/ca_ES@valencia/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/co/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/cs_CZ/LC_MESSAGES/libfilezilla.mo
 /usr/local/share/locale/cy/LC_MESSAGES/libfilezilla.mo

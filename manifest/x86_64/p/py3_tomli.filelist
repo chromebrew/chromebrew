@@ -4,11 +4,11 @@
 /usr/local/lib/python3.12/site-packages/tomli-2.0.1.dist-info/RECORD
 /usr/local/lib/python3.12/site-packages/tomli-2.0.1.dist-info/WHEEL
 /usr/local/lib/python3.12/site-packages/tomli/__init__.py
-/usr/local/lib/python3.12/site-packages/tomli/_parser.py
 /usr/local/lib/python3.12/site-packages/tomli/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/tomli/__pycache__/_parser.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/tomli/__pycache__/_re.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/site-packages/tomli/__pycache__/_types.cpython-312.opt-2.pyc
-/usr/local/lib/python3.12/site-packages/tomli/py.typed
+/usr/local/lib/python3.12/site-packages/tomli/_parser.py
 /usr/local/lib/python3.12/site-packages/tomli/_re.py
 /usr/local/lib/python3.12/site-packages/tomli/_types.py
+/usr/local/lib/python3.12/site-packages/tomli/py.typed

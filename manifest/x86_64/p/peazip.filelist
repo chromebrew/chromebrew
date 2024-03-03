@@ -4,16 +4,16 @@
 /usr/local/share/peazip/pea
 /usr/local/share/peazip/peazip
 /usr/local/share/peazip/res/bin/7z/7z
-/usr/local/share/peazip/res/bin/7z/7zCon.sfx
 /usr/local/share/peazip/res/bin/7z/7z.sfx
+/usr/local/share/peazip/res/bin/7z/7zCon.sfx
 /usr/local/share/peazip/res/bin/7z/Codecs/Rar.so
 /usr/local/share/peazip/res/bin/arc/arc
+/usr/local/share/peazip/res/bin/arc/arc-tiny.linux.sfx
 /usr/local/share/peazip/res/bin/arc/arc.groups
 /usr/local/share/peazip/res/bin/arc/arc.ini
-/usr/local/share/peazip/res/bin/arc/arc-tiny.linux.sfx
 /usr/local/share/peazip/res/bin/arc/freearc-installer.sfx
-/usr/local/share/peazip/res/bin/arc/freearc.sfx
 /usr/local/share/peazip/res/bin/arc/freearc-tiny.sfx
+/usr/local/share/peazip/res/bin/arc/freearc.sfx
 /usr/local/share/peazip/res/bin/brotli/brotli
 /usr/local/share/peazip/res/bin/lpaq/lpaq8
 /usr/local/share/peazip/res/bin/paq/paq8o
@@ -26,10 +26,62 @@
 /usr/local/share/peazip/res/portable
 /usr/local/share/peazip/res/share/batch/Add to archive.bat
 /usr/local/share/peazip/res/share/batch/Add to archive.sh
-/usr/local/share/peazip/res/share/batch/Extract....bat
 /usr/local/share/peazip/res/share/batch/Extract here (smart new folder).bat
 /usr/local/share/peazip/res/share/batch/Extract here (smart new folder).sh
+/usr/local/share/peazip/res/share/batch/Extract....bat
 /usr/local/share/peazip/res/share/batch/Extract....sh
+/usr/local/share/peazip/res/share/batch/Open as archive.bat
+/usr/local/share/peazip/res/share/batch/Open as archive.sh
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to 7Z and send by mail.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to 7Z.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to ZIP and send by mail.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to ZIP.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to archive.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to self-extracting archive.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to separate 7Z.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to separate ZIP.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to sfx and send by mail.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Browse path with PeaZip.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Convert.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Encrypt (PEA).lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Extract here (smart new folder).lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Extract here.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Extract....lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Open as archive.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Open command prompt here.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Secure delete.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Split file.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Test archive(s).lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .7Z and send by mail.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .7Z.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .ZIP and send by mail.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .ZIP.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to archive.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to self-extracting archive.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to separate .7Z.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to separate .ZIP.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to sfx and send by mail.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Browse path with PeaZip.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Convert.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Encrypt (PEA).lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Extract here (smart new folder).lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Extract here.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Extract....lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Open as archive.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Open command prompt here.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Secure delete.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Split file.lnk
+/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Test archive(s).lnk
+/usr/local/share/peazip/res/share/batch/SendTo/readme-SendTo.txt
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, add to 7Z.reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, add to ZIP.reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, add to archive.reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, extract here (smart new folder).reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, extract here.reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, extract....reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, open file or folder.reg
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/readme mini context menu.txt
+/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/remove PeaZip entries.reg
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror/peazipadd.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror/peazipext.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror/peazipextfolder.desktop
@@ -50,85 +102,33 @@
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Extract Here
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Extract to Folder
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/Open Archive
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_add.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-add-to-archive.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-here.desktop
-/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_extract.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract-smart.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-extract.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip-open.desktop
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.desktop
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_add.png
+/usr/local/share/peazip/res/share/batch/freedesktop_integration/peazip_extract.png
 /usr/local/share/peazip/res/share/batch/freedesktop_integration/readme_freedesktop_integration.txt
-/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to archive.workflow/Contents/document.wflow
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to archive.workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to archive.workflow/Contents/QuickLook/Thumbnail.png
-/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract here (smart new folder).workflow/Contents/document.wflow
+/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, add to archive.workflow/Contents/document.wflow
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract here (smart new folder).workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract here (smart new folder).workflow/Contents/QuickLook/Thumbnail.png
-/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract....workflow/Contents/document.wflow
+/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract here (smart new folder).workflow/Contents/document.wflow
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract....workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract....workflow/Contents/QuickLook/Thumbnail.png
-/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, open file or folder.workflow/Contents/document.wflow
+/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, extract....workflow/Contents/document.wflow
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, open file or folder.workflow/Contents/Info.plist
 /usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, open file or folder.workflow/Contents/QuickLook/Thumbnail.png
-/usr/local/share/peazip/res/share/batch/Open as archive.bat
-/usr/local/share/peazip/res/share/batch/Open as archive.sh
+/usr/local/share/peazip/res/share/batch/macOS service menus/PeaZip, open file or folder.workflow/Contents/document.wflow
 /usr/local/share/peazip/res/share/batch/peazip-reset.bat
 /usr/local/share/peazip/res/share/batch/peazip-reset.sh
-/usr/local/share/peazip/res/share/batch/SendTo/readme-SendTo.txt
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .7Z and send by mail.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .7Z.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to archive.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to self-extracting archive.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to separate .7Z.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to separate .ZIP.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to sfx and send by mail.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .ZIP and send by mail.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Add to .ZIP.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Browse path with PeaZip.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Convert.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Encrypt (PEA).lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Extract here.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Extract here (smart new folder).lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Extract....lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Open as archive.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Open command prompt here.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Secure delete.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Split file.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files/Test archive(s).lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to 7Z and send by mail.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to 7Z.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to archive.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to self-extracting archive.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to separate 7Z.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to separate ZIP.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to sfx and send by mail.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to ZIP and send by mail.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Add to ZIP.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Browse path with PeaZip.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Convert.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Encrypt (PEA).lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Extract here.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Extract here (smart new folder).lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Extract....lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Open as archive.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Open command prompt here.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Secure delete.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Split file.lnk
-/usr/local/share/peazip/res/share/batch/SendTo/SendTo_Program Files (x86)/Test archive(s).lnk
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, add to 7Z.reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, add to archive.reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, add to ZIP.reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, extract here.reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, extract here (smart new folder).reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, extract....reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/add PeaZip, open file or folder.reg
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/readme mini context menu.txt
-/usr/local/share/peazip/res/share/batch/Windows 11 mini context menu/remove PeaZip entries.reg
 /usr/local/share/peazip/res/share/copying/copying.txt
-/usr/local/share/peazip/res/share/copying/third-parties/7z codecs LICENSE.txt
 /usr/local/share/peazip/res/share/copying/third-parties/7z License.txt
+/usr/local/share/peazip/res/share/copying/third-parties/7z codecs LICENSE.txt
 /usr/local/share/peazip/res/share/copying/third-parties/7z note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/arc license.txt
 /usr/local/share/peazip/res/share/copying/third-parties/bcm LICENSE.txt
@@ -141,25 +141,25 @@
 /usr/local/share/peazip/res/share/copying/third-parties/upx note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/zpaq note.txt
 /usr/local/share/peazip/res/share/copying/third-parties/zstd note.txt
+/usr/local/share/peazip/res/share/icons/PeaZip.ico
 /usr/local/share/peazip/res/share/icons/PeaZip_7z.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_app.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_block.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_cd.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_package.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_rar.ico
+/usr/local/share/peazip/res/share/icons/PeaZip_zip.ico
+/usr/local/share/peazip/res/share/icons/peazip.png
 /usr/local/share/peazip/res/share/icons/peazip_7z.png
 /usr/local/share/peazip/res/share/icons/peazip_add.png
-/usr/local/share/peazip/res/share/icons/PeaZip_app.ico
 /usr/local/share/peazip/res/share/icons/peazip_app.png
-/usr/local/share/peazip/res/share/icons/PeaZip_block.ico
 /usr/local/share/peazip/res/share/icons/peazip_browse.png
-/usr/local/share/peazip/res/share/icons/PeaZip_cd.ico
 /usr/local/share/peazip/res/share/icons/peazip_convert.png
 /usr/local/share/peazip/res/share/icons/peazip_extract.png
-/usr/local/share/peazip/res/share/icons/PeaZip.ico
-/usr/local/share/peazip/res/share/icons/peazipmac.png
-/usr/local/share/peazip/res/share/icons/PeaZip_package.ico
-/usr/local/share/peazip/res/share/icons/peazip.png
-/usr/local/share/peazip/res/share/icons/PeaZip_rar.ico
 /usr/local/share/peazip/res/share/icons/peazip_rar.png
 /usr/local/share/peazip/res/share/icons/peazip_seven.icl
-/usr/local/share/peazip/res/share/icons/PeaZip_zip.ico
 /usr/local/share/peazip/res/share/icons/peazip_zip.png
+/usr/local/share/peazip/res/share/icons/peazipmac.png
 /usr/local/share/peazip/res/share/lang/ar.txt
 /usr/local/share/peazip/res/share/lang/bg.txt
 /usr/local/share/peazip/res/share/lang/by-cr.txt
@@ -168,8 +168,8 @@
 /usr/local/share/peazip/res/share/lang/chs.txt
 /usr/local/share/peazip/res/share/lang/cht.txt
 /usr/local/share/peazip/res/share/lang/cz.txt
-/usr/local/share/peazip/res/share/lang/default.txt
 /usr/local/share/peazip/res/share/lang/de-uml.txt
+/usr/local/share/peazip/res/share/lang/default.txt
 /usr/local/share/peazip/res/share/lang/en-gb.txt
 /usr/local/share/peazip/res/share/lang/en.txt
 /usr/local/share/peazip/res/share/lang/es-es.txt
@@ -204,13 +204,13 @@
 /usr/local/share/peazip/res/share/lang/vn.txt
 /usr/local/share/peazip/res/share/peazip_help.pdf
 /usr/local/share/peazip/res/share/presets/0.txt
+/usr/local/share/peazip/res/share/presets/1.txt
 /usr/local/share/peazip/res/share/presets/10.txt
 /usr/local/share/peazip/res/share/presets/11.txt
 /usr/local/share/peazip/res/share/presets/12.txt
 /usr/local/share/peazip/res/share/presets/13.txt
 /usr/local/share/peazip/res/share/presets/14.txt
 /usr/local/share/peazip/res/share/presets/15.txt
-/usr/local/share/peazip/res/share/presets/1.txt
 /usr/local/share/peazip/res/share/presets/2.txt
 /usr/local/share/peazip/res/share/presets/3.txt
 /usr/local/share/peazip/res/share/presets/4.txt
@@ -226,8 +226,8 @@
 /usr/local/share/peazip/res/share/presets/custom/cbt.txt
 /usr/local/share/peazip/res/share/presets/custom/cbz.txt
 /usr/local/share/peazip/res/share/readme/readme_Linux.txt
-/usr/local/share/peazip/res/share/readme/readme_macOS.txt
 /usr/local/share/peazip/res/share/readme/readme_Windows.txt
+/usr/local/share/peazip/res/share/readme/readme_macOS.txt
 /usr/local/share/peazip/res/share/themes/different.theme.7z
 /usr/local/share/peazip/res/share/themes/gray.theme.7z
 /usr/local/share/peazip/res/share/themes/main-embedded/fm-theme.bmp

@@ -1,8 +1,6 @@
 /usr/local/bin/opam
 /usr/local/bin/opam-installer
 /usr/local/etc/bash.d/opam
-/usr/local/share/man/man1/opam.1.zst
-/usr/local/share/man/man1/opam-admin.1.zst
 /usr/local/share/man/man1/opam-admin-add-constraint.1.zst
 /usr/local/share/man/man1/opam-admin-add-hashes.1.zst
 /usr/local/share/man/man1/opam-admin-cache.1.zst
@@ -14,6 +12,7 @@
 /usr/local/share/man/man1/opam-admin-list.1.zst
 /usr/local/share/man/man1/opam-admin-make.1.zst
 /usr/local/share/man/man1/opam-admin-upgrade.1.zst
+/usr/local/share/man/man1/opam-admin.1.zst
 /usr/local/share/man/man1/opam-clean.1.zst
 /usr/local/share/man/man1/opam-config.1.zst
 /usr/local/share/man/man1/opam-env.1.zst
@@ -41,3 +40,4 @@
 /usr/local/share/man/man1/opam-update.1.zst
 /usr/local/share/man/man1/opam-upgrade.1.zst
 /usr/local/share/man/man1/opam-var.1.zst
+/usr/local/share/man/man1/opam.1.zst

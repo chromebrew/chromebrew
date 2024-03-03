@@ -1,9 +1,9 @@
 /usr/local/bin/uchardet
 /usr/local/include/uchardet/uchardet.h
-/usr/local/lib/cmake/uchardet/uchardet-config.cmake
 /usr/local/lib/cmake/uchardet/uchardet-config-version.cmake
-/usr/local/lib/cmake/uchardet/uchardet-targets.cmake
+/usr/local/lib/cmake/uchardet/uchardet-config.cmake
 /usr/local/lib/cmake/uchardet/uchardet-targets-release.cmake
+/usr/local/lib/cmake/uchardet/uchardet-targets.cmake
 /usr/local/lib/libuchardet.a
 /usr/local/lib/libuchardet.so
 /usr/local/lib/libuchardet.so.0

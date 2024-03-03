@@ -1,6 +1,6 @@
 /usr/local/bin/rdiff
-/usr/local/include/librsync_export.h
 /usr/local/include/librsync.h
+/usr/local/include/librsync_export.h
 /usr/local/lib/librsync.so
 /usr/local/lib/librsync.so.2
 /usr/local/lib/librsync.so.2.3.2

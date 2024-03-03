@@ -1,12 +1,12 @@
-/usr/local/include/omp.h
-/usr/local/include/ompt.h
-/usr/local/include/ompt-multiplex.h
 /usr/local/include/omp-tools.h
+/usr/local/include/omp.h
+/usr/local/include/ompt-multiplex.h
+/usr/local/include/ompt.h
 /usr/local/lib64/cmake/openmp/FindOpenMPTarget.cmake
 /usr/local/lib64/libarcher.so
 /usr/local/lib64/libarcher_static.a
-/usr/local/lib64/libompd.so
 /usr/local/lib64/libomp.so
+/usr/local/lib64/libompd.so
 /usr/local/lib64/libomptarget-amdgpu-gfx1010.bc
 /usr/local/lib64/libomptarget-amdgpu-gfx1030.bc
 /usr/local/lib64/libomptarget-amdgpu-gfx1031.bc
@@ -32,7 +32,6 @@
 /usr/local/lib64/libomptarget-amdgpu-gfx90a.bc
 /usr/local/lib64/libomptarget-amdgpu-gfx90c.bc
 /usr/local/lib64/libomptarget-amdgpu-gfx940.bc
-/usr/local/lib64/libomptarget.devicertl.a
 /usr/local/lib64/libomptarget-nvptx-sm_35.bc
 /usr/local/lib64/libomptarget-nvptx-sm_37.bc
 /usr/local/lib64/libomptarget-nvptx-sm_50.bc
@@ -49,6 +48,7 @@
 /usr/local/lib64/libomptarget-nvptx-sm_87.bc
 /usr/local/lib64/libomptarget-nvptx-sm_89.bc
 /usr/local/lib64/libomptarget-nvptx-sm_90.bc
+/usr/local/lib64/libomptarget.devicertl.a
 /usr/local/lib64/libomptarget.rtl.amdgpu.so
 /usr/local/lib64/libomptarget.rtl.amdgpu.so.17
 /usr/local/lib64/libomptarget.rtl.cuda.so
@@ -57,10 +57,10 @@
 /usr/local/lib64/libomptarget.rtl.x86_64.so.17
 /usr/local/lib64/libomptarget.so
 /usr/local/lib64/libomptarget.so.17
-/usr/local/share/gdb/python/ompd/frame_filter.py
 /usr/local/share/gdb/python/ompd/__init__.py
+/usr/local/share/gdb/python/ompd/frame_filter.py
+/usr/local/share/gdb/python/ompd/ompd.py
+/usr/local/share/gdb/python/ompd/ompdModule.so
 /usr/local/share/gdb/python/ompd/ompd_address_space.py
 /usr/local/share/gdb/python/ompd/ompd_callbacks.py
 /usr/local/share/gdb/python/ompd/ompd_handles.py
-/usr/local/share/gdb/python/ompd/ompdModule.so
-/usr/local/share/gdb/python/ompd/ompd.py

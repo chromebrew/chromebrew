@@ -1,8 +1,8 @@
 /usr/local/include/libmediaart-2.0/libmediaart/cache.h
-/usr/local/include/libmediaart-2.0/libmediaart/extractgeneric.h
 /usr/local/include/libmediaart-2.0/libmediaart/extract.h
-/usr/local/include/libmediaart-2.0/libmediaart/mediaart.h
+/usr/local/include/libmediaart-2.0/libmediaart/extractgeneric.h
 /usr/local/include/libmediaart-2.0/libmediaart/mediaart-macros.h
+/usr/local/include/libmediaart-2.0/libmediaart/mediaart.h
 /usr/local/lib/girepository-1.0/MediaArt-2.0.typelib
 /usr/local/lib/libmediaart-2.0.so
 /usr/local/lib/libmediaart-2.0.so.0
