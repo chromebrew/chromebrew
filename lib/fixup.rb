@@ -136,6 +136,11 @@ pkg_update_arr.each do |pkg|
   end
 end
 
+# Remove directorylist files as they are no longer used
+Dir.glob("#{CREW_META_PATH}/*.directorylist").each do |filename|
+  FileUtils.rm_f filename
+end
+
 # Restart crew update if the git commit of const.rb loaded in const.rb
 # is different from the git commit of the potentially updated const.rb
 # loaded here after a git pull.

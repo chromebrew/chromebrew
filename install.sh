@@ -237,7 +237,6 @@ function extract_install () {
 
     echo_intra "Installing ${1} ..."
     tar cpf - ./*/* | (cd /; tar xp --keep-directory-symlink -m -f -)
-    mv ./dlist "${CREW_CONFIG_PATH}/meta/${1}.directorylist"
     mv ./filelist "${CREW_CONFIG_PATH}/meta/${1}.filelist"
 }
 

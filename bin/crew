@@ -253,8 +253,8 @@ def list_installed
     end
     print "\n"
   else
-    Dir["#{CREW_META_PATH}/*.directorylist"].map do |f|
-      File.basename(f, '.directorylist').lightgreen
+    @device[:installed_packages].each do |package|
+      puts package[:name].lightgreen
     end
   end
 end
@@ -1001,12 +1001,6 @@ def prepare_package(destdir)
 
     # Make sure the package file has runtime dependencies added properly.
     system "#{CREW_LIB_PATH}/tools/getrealdeps.rb --use-crew-dest-dir #{@pkg.name}", exception: true unless @pkg.no_compile_needed?
-    # create directory list
-    # Remove CREW_PREFIX and HOME from the generated directorylist.
-    crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
-    home_escaped = HOME.gsub('/', '\/')
-    system "find .#{CREW_PREFIX} -type d | cut -c2- | sed '0,/#{crew_prefix_escaped}/{/#{crew_prefix_escaped}/d}'| LC_ALL=C sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_PREFIX)
-    system "find .#{HOME} -type d | cut -c2- | sed '0,/#{home_escaped}/{/#{home_escaped}/d}' | LC_ALL=C sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_HOME)
 
     strip_dir destdir
 
@@ -1218,10 +1212,9 @@ end
 
 def install_package(pkgdir)
   Dir.chdir pkgdir do
-    # install filelist, dlist and binary files
+    # install filelist and binary files
     puts 'Performing install...'
 
-    FileUtils.mv 'dlist', File.join(CREW_META_PATH, "#{@pkg.name}.directorylist"), verbose: @fileutils_verbose
     FileUtils.mv 'filelist', File.join(CREW_META_PATH, "#{@pkg.name}.filelist"), verbose: @fileutils_verbose
 
     unless CREW_NOT_LINKS || @pkg.no_links?
@@ -1391,7 +1384,7 @@ def install
       # CREW_DEST_DIR contains usr/local/... hierarchy
       build_and_preconfigure target_dir
 
-      # prepare filelist and dlist at CREW_DEST_DIR
+      # prepare filelist at CREW_DEST_DIR
       prepare_package CREW_DEST_DIR
 
       # use CREW_DEST_DIR
@@ -1483,10 +1476,10 @@ def build_package(crew_archive_dest)
     end
   end
 
-  # prepare filelist and dlist at CREW_DEST_DIR
+  # prepare filelist at CREW_DEST_DIR
   prepare_package CREW_DEST_DIR
 
-  # build package from filelist, dlist and binary files in CREW_DEST_DIR
+  # build package from filelist and binary files in CREW_DEST_DIR
   puts 'Archiving...'
   archive_package crew_archive_dest
 end
@@ -1567,7 +1560,10 @@ def remove(pkg_name)
   if File.file?(File.join(CREW_META_PATH, "#{pkg_name}.filelist"))
     Dir.chdir CREW_CONFIG_PATH do
       # remove all files installed by the package
+      filepaths = []
       File.foreach("meta/#{pkg_name}.filelist", chomp: true) do |line|
+        filepath = File.directory?(line) ? line : File.dirname(line)
+        filepaths << filepath
         # Do not remove essential files which crew (and dependencies)
         # rely on, especially during package upgrades or reinstalls.
         # These essential files are enumerated in const.rb as
@@ -1587,8 +1583,20 @@ def remove(pkg_name)
         end
       end
 
+      # Iterate over each filepath, extracting every level of parent directories
+      directories = []
+      filepaths.uniq.each do |directory|
+        current_directory = directory
+        loop do
+          directories << current_directory
+          break if current_directory == CREW_PREFIX
+          current_directory = File.dirname(current_directory)
+        end
+      end
+      directories.uniq!.map!(&:to_s)
+
       # remove all directories installed by the package
-      File.foreach("meta/#{pkg_name}.directorylist", chomp: true) do |line|
+      directories.each do |line|
         puts "directorylist contains #{line}".lightred if @opt_verbose && !line.include?(CREW_PREFIX)
         next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
 
@@ -1597,7 +1605,7 @@ def remove(pkg_name)
       end
 
       # remove the file and directory list
-      FileUtils.rm_f Dir["meta/#{pkg_name}.{file,directory}list"]
+      FileUtils.rm_f "meta/#{pkg_name}.filelist"
     end
   end
 
@@ -1989,7 +1997,7 @@ def list_command(args)
   if args['available']
     list_available
   elsif args['installed']
-    puts list_installed
+    list_installed
   elsif args['compatible']
     list_compatible true
   elsif args['incompatible']
