@@ -1,6 +1,6 @@
 /usr/local/share/musl/include/sasl/hmac-md5.h
-/usr/local/share/musl/include/sasl/md5global.h
 /usr/local/share/musl/include/sasl/md5.h
+/usr/local/share/musl/include/sasl/md5global.h
 /usr/local/share/musl/include/sasl/prop.h
 /usr/local/share/musl/include/sasl/sasl.h
 /usr/local/share/musl/include/sasl/saslplug.h

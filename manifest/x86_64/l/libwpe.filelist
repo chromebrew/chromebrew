@@ -1,7 +1,7 @@
 /usr/local/include/wpe-1.0/wpe/export.h
 /usr/local/include/wpe-1.0/wpe/gamepad.h
-/usr/local/include/wpe-1.0/wpe/input.h
 /usr/local/include/wpe-1.0/wpe/input-xkb.h
+/usr/local/include/wpe-1.0/wpe/input.h
 /usr/local/include/wpe-1.0/wpe/keysyms.h
 /usr/local/include/wpe-1.0/wpe/libwpe-version.h
 /usr/local/include/wpe-1.0/wpe/loader.h

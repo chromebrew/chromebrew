@@ -62,14 +62,14 @@
 /usr/local/share/locale/or/LC_MESSAGES/folks.mo
 /usr/local/share/locale/pa/LC_MESSAGES/folks.mo
 /usr/local/share/locale/pl/LC_MESSAGES/folks.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/folks.mo
 /usr/local/share/locale/pt/LC_MESSAGES/folks.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ro/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ru/LC_MESSAGES/folks.mo
 /usr/local/share/locale/sk/LC_MESSAGES/folks.mo
 /usr/local/share/locale/sl/LC_MESSAGES/folks.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/folks.mo
 /usr/local/share/locale/sr/LC_MESSAGES/folks.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/folks.mo
 /usr/local/share/locale/sv/LC_MESSAGES/folks.mo
 /usr/local/share/locale/ta/LC_MESSAGES/folks.mo
 /usr/local/share/locale/te/LC_MESSAGES/folks.mo
@@ -81,7 +81,7 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/folks.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/folks.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/folks.mo
-/usr/local/share/vala/vapi/folks.deps
 /usr/local/share/vala/vapi/folks-dummy.deps
 /usr/local/share/vala/vapi/folks-dummy.vapi
+/usr/local/share/vala/vapi/folks.deps
 /usr/local/share/vala/vapi/folks.vapi

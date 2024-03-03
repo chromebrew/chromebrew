@@ -1,8 +1,8 @@
 /usr/local/bin/bd_info
 /usr/local/bin/bd_list_titles
 /usr/local/bin/bd_splice
-/usr/local/include/libbluray/bluray.h
 /usr/local/include/libbluray/bluray-version.h
+/usr/local/include/libbluray/bluray.h
 /usr/local/include/libbluray/clpi_data.h
 /usr/local/include/libbluray/filesystem.h
 /usr/local/include/libbluray/keys.h

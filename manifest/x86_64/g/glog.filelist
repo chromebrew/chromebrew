@@ -1,5 +1,5 @@
-/usr/local/include/glog/logging.h
 /usr/local/include/glog/log_severity.h
+/usr/local/include/glog/logging.h
 /usr/local/include/glog/raw_logging.h
 /usr/local/include/glog/stl_logging.h
 /usr/local/include/glog/vlog_is_on.h
@@ -10,11 +10,11 @@
 /usr/local/lib64/libglog.so.0.0.0
 /usr/local/lib64/pkgconfig/libglog.pc
 /usr/local/share/doc/glog-0.3.5/AUTHORS
-/usr/local/share/doc/glog-0.3.5/ChangeLog
 /usr/local/share/doc/glog-0.3.5/COPYING
-/usr/local/share/doc/glog-0.3.5/designstyle.css
-/usr/local/share/doc/glog-0.3.5/glog.html
+/usr/local/share/doc/glog-0.3.5/ChangeLog
 /usr/local/share/doc/glog-0.3.5/INSTALL
 /usr/local/share/doc/glog-0.3.5/NEWS
 /usr/local/share/doc/glog-0.3.5/README
 /usr/local/share/doc/glog-0.3.5/README.windows
+/usr/local/share/doc/glog-0.3.5/designstyle.css
+/usr/local/share/doc/glog-0.3.5/glog.html

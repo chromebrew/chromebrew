@@ -19,7 +19,6 @@
 /usr/local/share/doc/calcurse/de/goto.txt
 /usr/local/share/doc/calcurse/de/import.txt
 /usr/local/share/doc/calcurse/de/intro.txt
-/usr/local/share/doc/calcurse/delete.txt
 /usr/local/share/doc/calcurse/de/other.txt
 /usr/local/share/doc/calcurse/de/pipe.txt
 /usr/local/share/doc/calcurse/de/priority.txt
@@ -28,6 +27,7 @@
 /usr/local/share/doc/calcurse/de/tab.txt
 /usr/local/share/doc/calcurse/de/view.txt
 /usr/local/share/doc/calcurse/de/vnote.txt
+/usr/local/share/doc/calcurse/delete.txt
 /usr/local/share/doc/calcurse/displacement.txt
 /usr/local/share/doc/calcurse/edit.txt
 /usr/local/share/doc/calcurse/enote.txt

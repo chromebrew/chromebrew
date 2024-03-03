@@ -3,6 +3,9 @@
 /usr/local/share/man/man3/RlwrapFilter.3pm.gz
 /usr/local/share/rlwrap/completions/coqtop
 /usr/local/share/rlwrap/completions/testclient
+/usr/local/share/rlwrap/filters/README
+/usr/local/share/rlwrap/filters/RlwrapFilter.3pm
+/usr/local/share/rlwrap/filters/RlwrapFilter.pm
 /usr/local/share/rlwrap/filters/censor_passwords
 /usr/local/share/rlwrap/filters/censor_passwords.py
 /usr/local/share/rlwrap/filters/count_in_prompt
@@ -22,9 +25,6 @@
 /usr/local/share/rlwrap/filters/pipeline
 /usr/local/share/rlwrap/filters/pipeto
 /usr/local/share/rlwrap/filters/pipeto.py
-/usr/local/share/rlwrap/filters/README
-/usr/local/share/rlwrap/filters/RlwrapFilter.3pm
-/usr/local/share/rlwrap/filters/RlwrapFilter.pm
 /usr/local/share/rlwrap/filters/rlwrapfilter.py
 /usr/local/share/rlwrap/filters/scrub_prompt
 /usr/local/share/rlwrap/filters/simple_macro

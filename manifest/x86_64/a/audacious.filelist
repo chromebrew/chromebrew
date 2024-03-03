@@ -25,8 +25,8 @@
 /usr/local/include/libaudcore/templates.h
 /usr/local/include/libaudcore/tinylock.h
 /usr/local/include/libaudcore/tuple.h
-/usr/local/include/libaudcore/vfs_async.h
 /usr/local/include/libaudcore/vfs.h
+/usr/local/include/libaudcore/vfs_async.h
 /usr/local/include/libaudcore/visualizer.h
 /usr/local/include/libaudgui/libaudgui-gtk.h
 /usr/local/include/libaudgui/libaudgui.h
@@ -65,8 +65,8 @@
 /usr/local/share/locale/de/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/el/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/audacious.mo
-/usr/local/share/locale/es_AR/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/es/LC_MESSAGES/audacious.mo
+/usr/local/share/locale/es_AR/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/es_MX/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/et/LC_MESSAGES/audacious.mo
 /usr/local/share/locale/eu/LC_MESSAGES/audacious.mo

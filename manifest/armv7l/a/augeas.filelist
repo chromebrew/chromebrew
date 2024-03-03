@@ -23,11 +23,11 @@
 /usr/local/share/augeas/lenses/dist/anaconda.aug
 /usr/local/share/augeas/lenses/dist/anacron.aug
 /usr/local/share/augeas/lenses/dist/approx.aug
+/usr/local/share/augeas/lenses/dist/apt_update_manager.aug
 /usr/local/share/augeas/lenses/dist/aptcacherngsecurity.aug
 /usr/local/share/augeas/lenses/dist/aptconf.aug
 /usr/local/share/augeas/lenses/dist/aptpreferences.aug
 /usr/local/share/augeas/lenses/dist/aptsources.aug
-/usr/local/share/augeas/lenses/dist/apt_update_manager.aug
 /usr/local/share/augeas/lenses/dist/authorized_keys.aug
 /usr/local/share/augeas/lenses/dist/automaster.aug
 /usr/local/share/augeas/lenses/dist/automounter.aug
@@ -61,8 +61,8 @@
 /usr/local/share/augeas/lenses/dist/device_map.aug
 /usr/local/share/augeas/lenses/dist/dhclient.aug
 /usr/local/share/augeas/lenses/dist/dhcpd.aug
-/usr/local/share/augeas/lenses/dist/dnsmasq.aug
 /usr/local/share/augeas/lenses/dist/dns_zone.aug
+/usr/local/share/augeas/lenses/dist/dnsmasq.aug
 /usr/local/share/augeas/lenses/dist/dovecot.aug
 /usr/local/share/augeas/lenses/dist/dpkg.aug
 /usr/local/share/augeas/lenses/dist/dput.aug
@@ -82,8 +82,8 @@
 /usr/local/share/augeas/lenses/dist/gtkbookmarks.aug
 /usr/local/share/augeas/lenses/dist/host_conf.aug
 /usr/local/share/augeas/lenses/dist/hostname.aug
-/usr/local/share/augeas/lenses/dist/hosts_access.aug
 /usr/local/share/augeas/lenses/dist/hosts.aug
+/usr/local/share/augeas/lenses/dist/hosts_access.aug
 /usr/local/share/augeas/lenses/dist/htpasswd.aug
 /usr/local/share/augeas/lenses/dist/httpd.aug
 /usr/local/share/augeas/lenses/dist/inetd.aug
@@ -150,8 +150,8 @@
 /usr/local/share/augeas/lenses/dist/pamconf.aug
 /usr/local/share/augeas/lenses/dist/passwd.aug
 /usr/local/share/augeas/lenses/dist/pbuilder.aug
-/usr/local/share/augeas/lenses/dist/pgbouncer.aug
 /usr/local/share/augeas/lenses/dist/pg_hba.aug
+/usr/local/share/augeas/lenses/dist/pgbouncer.aug
 /usr/local/share/augeas/lenses/dist/php.aug
 /usr/local/share/augeas/lenses/dist/phpvars.aug
 /usr/local/share/augeas/lenses/dist/postfix_access.aug
@@ -226,11 +226,11 @@
 /usr/local/share/augeas/lenses/dist/tests/test_anaconda.aug
 /usr/local/share/augeas/lenses/dist/tests/test_anacron.aug
 /usr/local/share/augeas/lenses/dist/tests/test_approx.aug
+/usr/local/share/augeas/lenses/dist/tests/test_apt_update_manager.aug
 /usr/local/share/augeas/lenses/dist/tests/test_aptcacherngsecurity.aug
 /usr/local/share/augeas/lenses/dist/tests/test_aptconf.aug
 /usr/local/share/augeas/lenses/dist/tests/test_aptpreferences.aug
 /usr/local/share/augeas/lenses/dist/tests/test_aptsources.aug
-/usr/local/share/augeas/lenses/dist/tests/test_apt_update_manager.aug
 /usr/local/share/augeas/lenses/dist/tests/test_authorized_keys.aug
 /usr/local/share/augeas/lenses/dist/tests/test_automaster.aug
 /usr/local/share/augeas/lenses/dist/tests/test_automounter.aug
@@ -264,8 +264,8 @@
 /usr/local/share/augeas/lenses/dist/tests/test_device_map.aug
 /usr/local/share/augeas/lenses/dist/tests/test_dhclient.aug
 /usr/local/share/augeas/lenses/dist/tests/test_dhcpd.aug
-/usr/local/share/augeas/lenses/dist/tests/test_dnsmasq.aug
 /usr/local/share/augeas/lenses/dist/tests/test_dns_zone.aug
+/usr/local/share/augeas/lenses/dist/tests/test_dnsmasq.aug
 /usr/local/share/augeas/lenses/dist/tests/test_dovecot.aug
 /usr/local/share/augeas/lenses/dist/tests/test_dpkg.aug
 /usr/local/share/augeas/lenses/dist/tests/test_dput.aug
@@ -285,8 +285,8 @@
 /usr/local/share/augeas/lenses/dist/tests/test_gtkbookmarks.aug
 /usr/local/share/augeas/lenses/dist/tests/test_host_conf.aug
 /usr/local/share/augeas/lenses/dist/tests/test_hostname.aug
-/usr/local/share/augeas/lenses/dist/tests/test_hosts_access.aug
 /usr/local/share/augeas/lenses/dist/tests/test_hosts.aug
+/usr/local/share/augeas/lenses/dist/tests/test_hosts_access.aug
 /usr/local/share/augeas/lenses/dist/tests/test_htpasswd.aug
 /usr/local/share/augeas/lenses/dist/tests/test_httpd.aug
 /usr/local/share/augeas/lenses/dist/tests/test_inetd.aug
@@ -354,8 +354,8 @@
 /usr/local/share/augeas/lenses/dist/tests/test_pamconf.aug
 /usr/local/share/augeas/lenses/dist/tests/test_passwd.aug
 /usr/local/share/augeas/lenses/dist/tests/test_pbuilder.aug
-/usr/local/share/augeas/lenses/dist/tests/test_pgbouncer.aug
 /usr/local/share/augeas/lenses/dist/tests/test_pg_hba.aug
+/usr/local/share/augeas/lenses/dist/tests/test_pgbouncer.aug
 /usr/local/share/augeas/lenses/dist/tests/test_php.aug
 /usr/local/share/augeas/lenses/dist/tests/test_phpvars.aug
 /usr/local/share/augeas/lenses/dist/tests/test_postfix_access.aug
@@ -438,8 +438,8 @@
 /usr/local/share/augeas/lenses/dist/tests/test_xinetd.aug
 /usr/local/share/augeas/lenses/dist/tests/test_xml.aug
 /usr/local/share/augeas/lenses/dist/tests/test_xorg.aug
-/usr/local/share/augeas/lenses/dist/tests/test_xymon_alerting.aug
 /usr/local/share/augeas/lenses/dist/tests/test_xymon.aug
+/usr/local/share/augeas/lenses/dist/tests/test_xymon_alerting.aug
 /usr/local/share/augeas/lenses/dist/tests/test_yaml.aug
 /usr/local/share/augeas/lenses/dist/tests/test_yum.aug
 /usr/local/share/augeas/lenses/dist/thttpd.aug
@@ -459,8 +459,8 @@
 /usr/local/share/augeas/lenses/dist/xinetd.aug
 /usr/local/share/augeas/lenses/dist/xml.aug
 /usr/local/share/augeas/lenses/dist/xorg.aug
-/usr/local/share/augeas/lenses/dist/xymon_alerting.aug
 /usr/local/share/augeas/lenses/dist/xymon.aug
+/usr/local/share/augeas/lenses/dist/xymon_alerting.aug
 /usr/local/share/augeas/lenses/dist/yaml.aug
 /usr/local/share/augeas/lenses/dist/yum.aug
 /usr/local/share/man/man1/augmatch.1.gz

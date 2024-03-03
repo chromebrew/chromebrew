@@ -764,7 +764,7 @@ def unpack(meta)
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
       # Need to reset @extract_dir to the extracted cached build
       # directory.
-      @extract_dir = `tar -Izstd --exclude='./*/*' -tf #{build_cachefile} | cut -d '/' -f 1 | sort -u`.chomp
+      @extract_dir = `tar -Izstd --exclude='./*/*' -tf #{build_cachefile} | cut -d '/' -f 1 | LC_ALL=C sort -u`.chomp
     else
       @pkg.cached_build = false
       case File.basename meta[:filename]
@@ -958,8 +958,8 @@ def prepare_package(destdir)
     @pkg.postbuild
 
     # create file list
-    system "find .#{CREW_PREFIX} -type f,l | cut -c2- | sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_PREFIX)
-    system "find .#{HOME} -type f,l | cut -c2- | sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_HOME)
+    system "find .#{CREW_PREFIX} -type f,l | cut -c2- | LC_ALL=C sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_PREFIX)
+    system "find .#{HOME} -type f,l | cut -c2- | LC_ALL=C sort", out: %w[filelist a] if Dir.exist?(CREW_DEST_HOME)
 
     if Dir.exist?("#{CREW_LOCAL_REPO_ROOT}/manifest") && File.writable?("#{CREW_LOCAL_REPO_ROOT}/manifest")
       FileUtils.mkdir_p "#{CREW_LOCAL_REPO_ROOT}/manifest/#{ARCH}/#{@pkg.name.chr.downcase}"
@@ -1005,8 +1005,8 @@ def prepare_package(destdir)
     # Remove CREW_PREFIX and HOME from the generated directorylist.
     crew_prefix_escaped = CREW_PREFIX.gsub('/', '\/')
     home_escaped = HOME.gsub('/', '\/')
-    system "find .#{CREW_PREFIX} -type d | cut -c2- | sed '0,/#{crew_prefix_escaped}/{/#{crew_prefix_escaped}/d}'| sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_PREFIX)
-    system "find .#{HOME} -type d | cut -c2- | sed '0,/#{home_escaped}/{/#{home_escaped}/d}' | sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_HOME)
+    system "find .#{CREW_PREFIX} -type d | cut -c2- | sed '0,/#{crew_prefix_escaped}/{/#{crew_prefix_escaped}/d}'| LC_ALL=C sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_PREFIX)
+    system "find .#{HOME} -type d | cut -c2- | sed '0,/#{home_escaped}/{/#{home_escaped}/d}' | LC_ALL=C sort", out: %w[dlist a] if Dir.exist?(CREW_DEST_HOME)
 
     strip_dir destdir
 
@@ -1699,7 +1699,7 @@ def upload(pkg_name = nil)
 
   if pkg_name.nil?
     %w[.tar.xz .tar.zst].each do |ext|
-      packages += `find #{CREW_LOCAL_REPO_ROOT}/release/*/*#{ext} -exec basename -s #{ext} {} + | cut -d- -f1 | sort | uniq | xargs`
+      packages += `find #{CREW_LOCAL_REPO_ROOT}/release/*/*#{ext} -exec basename -s #{ext} {} + | cut -d- -f1 | LC_ALL=C sort | uniq | xargs`
       packages += ' '
     end
     abort 'No package binaries found.'.lightred if packages.empty?

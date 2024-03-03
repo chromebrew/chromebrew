@@ -24,9 +24,9 @@
 /usr/local/include/elfutils/elf-knowledge.h
 /usr/local/include/elfutils/known-dwarf.h
 /usr/local/include/elfutils/libasm.h
+/usr/local/include/elfutils/libdw.h
 /usr/local/include/elfutils/libdwelf.h
 /usr/local/include/elfutils/libdwfl.h
-/usr/local/include/elfutils/libdw.h
 /usr/local/include/elfutils/version.h
 /usr/local/include/gelf.h
 /usr/local/include/libelf.h

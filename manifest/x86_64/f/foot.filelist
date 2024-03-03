@@ -1,13 +1,13 @@
 /usr/local/bin/foot
 /usr/local/bin/footclient
 /usr/local/etc/xdg/foot/foot.ini
-/usr/local/share/applications/org.codeberg.dnkl.footclient.desktop
-/usr/local/share/applications/org.codeberg.dnkl.foot.desktop
 /usr/local/share/applications/org.codeberg.dnkl.foot-server.desktop
+/usr/local/share/applications/org.codeberg.dnkl.foot.desktop
+/usr/local/share/applications/org.codeberg.dnkl.footclient.desktop
 /usr/local/share/bash-completion/completions/foot
 /usr/local/share/bash-completion/completions/footclient
-/usr/local/share/fish/vendor_completions.d/footclient.fish
 /usr/local/share/fish/vendor_completions.d/foot.fish
+/usr/local/share/fish/vendor_completions.d/footclient.fish
 /usr/local/share/foot/themes/aeroroot
 /usr/local/share/foot/themes/apprentice
 /usr/local/share/foot/themes/ayu-mirage

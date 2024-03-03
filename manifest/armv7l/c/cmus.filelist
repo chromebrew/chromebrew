@@ -6,8 +6,8 @@
 /usr/local/lib/cmus/ip/modplug.so
 /usr/local/lib/cmus/ip/opus.so
 /usr/local/lib/cmus/ip/vorbis.so
-/usr/local/lib/cmus/ip/wavpack.so
 /usr/local/lib/cmus/ip/wav.so
+/usr/local/lib/cmus/ip/wavpack.so
 /usr/local/lib/cmus/op/alsa.so
 /usr/local/lib/cmus/op/jack.so
 /usr/local/lib/cmus/op/oss.so
@@ -20,8 +20,8 @@
 /usr/local/share/cmus/green-mono-88.theme
 /usr/local/share/cmus/green.theme
 /usr/local/share/cmus/gruvbox-alt.theme
-/usr/local/share/cmus/gruvbox.theme
 /usr/local/share/cmus/gruvbox-warm.theme
+/usr/local/share/cmus/gruvbox.theme
 /usr/local/share/cmus/jellybeans.theme
 /usr/local/share/cmus/night.theme
 /usr/local/share/cmus/rc
@@ -31,6 +31,6 @@
 /usr/local/share/cmus/xterm-white.theme
 /usr/local/share/cmus/zenburn.theme
 /usr/local/share/doc/cmus/examples/cmus-status-display
-/usr/local/share/man/man1/cmus.1.zst
 /usr/local/share/man/man1/cmus-remote.1.zst
+/usr/local/share/man/man1/cmus.1.zst
 /usr/local/share/man/man7/cmus-tutorial.7.zst

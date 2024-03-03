@@ -11,6 +11,7 @@
 /usr/local/bin/svnversion
 /usr/local/include/subversion-1/mod_authz_svn.h
 /usr/local/include/subversion-1/mod_dav_svn.h
+/usr/local/include/subversion-1/svn-revision.txt
 /usr/local/include/subversion-1/svn_auth.h
 /usr/local/include/subversion-1/svn_base64.h
 /usr/local/include/subversion-1/svn_cache_config.h
@@ -25,8 +26,8 @@
 /usr/local/include/subversion-1/svn_diff.h
 /usr/local/include/subversion-1/svn_dirent_uri.h
 /usr/local/include/subversion-1/svn_dso.h
-/usr/local/include/subversion-1/svn_error_codes.h
 /usr/local/include/subversion-1/svn_error.h
+/usr/local/include/subversion-1/svn_error_codes.h
 /usr/local/include/subversion-1/svn_fs.h
 /usr/local/include/subversion-1/svn_hash.h
 /usr/local/include/subversion-1/svn_io.h
@@ -42,7 +43,6 @@
 /usr/local/include/subversion-1/svn_ra.h
 /usr/local/include/subversion-1/svn_ra_svn.h
 /usr/local/include/subversion-1/svn_repos.h
-/usr/local/include/subversion-1/svn-revision.txt
 /usr/local/include/subversion-1/svn_sorts.h
 /usr/local/include/subversion-1/svn_string.h
 /usr/local/include/subversion-1/svn_subst.h
@@ -135,12 +135,12 @@
 /usr/local/share/pkgconfig/libsvn_client.pc
 /usr/local/share/pkgconfig/libsvn_delta.pc
 /usr/local/share/pkgconfig/libsvn_diff.pc
-/usr/local/share/pkgconfig/libsvn_fs_fs.pc
 /usr/local/share/pkgconfig/libsvn_fs.pc
+/usr/local/share/pkgconfig/libsvn_fs_fs.pc
 /usr/local/share/pkgconfig/libsvn_fs_util.pc
 /usr/local/share/pkgconfig/libsvn_fs_x.pc
-/usr/local/share/pkgconfig/libsvn_ra_local.pc
 /usr/local/share/pkgconfig/libsvn_ra.pc
+/usr/local/share/pkgconfig/libsvn_ra_local.pc
 /usr/local/share/pkgconfig/libsvn_ra_serf.pc
 /usr/local/share/pkgconfig/libsvn_ra_svn.pc
 /usr/local/share/pkgconfig/libsvn_repos.pc

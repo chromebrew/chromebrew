@@ -4,8 +4,8 @@
 /usr/local/bin/ldbmodify
 /usr/local/bin/ldbrename
 /usr/local/bin/ldbsearch
-/usr/local/include/ldb_errors.h
 /usr/local/include/ldb.h
+/usr/local/include/ldb_errors.h
 /usr/local/include/ldb_handlers.h
 /usr/local/include/ldb_module.h
 /usr/local/include/ldb_version.h
@@ -31,8 +31,8 @@
 /usr/local/lib/libpyldb-util.cpython-312-arm-linux-gnueabihf.so.2.8.0
 /usr/local/lib/pkgconfig/ldb.pc
 /usr/local/lib/pkgconfig/pyldb-util.cpython-312-arm-linux-gnueabihf.pc
-/usr/local/lib/python3.12/site-packages/ldb.cpython-312-arm-linux-gnueabihf.so
 /usr/local/lib/python3.12/site-packages/_ldb_text.py
+/usr/local/lib/python3.12/site-packages/ldb.cpython-312-arm-linux-gnueabihf.so
 /usr/local/share/man/man1/ldbadd.1.zst
 /usr/local/share/man/man1/ldbdel.1.zst
 /usr/local/share/man/man1/ldbedit.1.zst

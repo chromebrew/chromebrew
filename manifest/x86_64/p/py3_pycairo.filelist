@@ -1,13 +1,13 @@
 /usr/local/include/pycairo/py3cairo.h
 /usr/local/lib64/pkgconfig/py3cairo.pc
-/usr/local/lib64/python3.12/site-packages/cairo/_cairo.cpython-312-x86_64-linux-gnu.so
-/usr/local/lib64/python3.12/site-packages/cairo/include/py3cairo.h
 /usr/local/lib64/python3.12/site-packages/cairo/__init__.py
 /usr/local/lib64/python3.12/site-packages/cairo/__init__.pyi
 /usr/local/lib64/python3.12/site-packages/cairo/__pycache__/__init__.cpython-312.opt-2.pyc
 /usr/local/lib64/python3.12/site-packages/cairo/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib64/python3.12/site-packages/cairo/_cairo.cpython-312-x86_64-linux-gnu.so
+/usr/local/lib64/python3.12/site-packages/cairo/include/py3cairo.h
 /usr/local/lib64/python3.12/site-packages/cairo/py.typed
-/usr/local/lib64/python3.12/site-packages/pycairo-1.25.0-py3.12.egg-info/dependency_links.txt
 /usr/local/lib64/python3.12/site-packages/pycairo-1.25.0-py3.12.egg-info/PKG-INFO
 /usr/local/lib64/python3.12/site-packages/pycairo-1.25.0-py3.12.egg-info/SOURCES.txt
+/usr/local/lib64/python3.12/site-packages/pycairo-1.25.0-py3.12.egg-info/dependency_links.txt
 /usr/local/lib64/python3.12/site-packages/pycairo-1.25.0-py3.12.egg-info/top_level.txt

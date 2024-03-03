@@ -15,9 +15,9 @@
 /usr/local/share/doc/iconv.1.html
 /usr/local/share/doc/iconv.3.html
 /usr/local/share/doc/iconv_close.3.html
-/usr/local/share/doc/iconvctl.3.html
 /usr/local/share/doc/iconv_open.3.html
 /usr/local/share/doc/iconv_open_into.3.html
+/usr/local/share/doc/iconvctl.3.html
 /usr/local/share/locale/af/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/bg/LC_MESSAGES/libiconv.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libiconv.mo
@@ -60,5 +60,5 @@
 /usr/local/share/man/man3/gnu-libiconv-iconv.3.gz
 /usr/local/share/man/man3/gnu-libiconv-iconv_close.3.gz
 /usr/local/share/man/man3/gnu-libiconv-iconv_open.3.gz
-/usr/local/share/man/man3/iconvctl.3.gz
 /usr/local/share/man/man3/iconv_open_into.3.gz
+/usr/local/share/man/man3/iconvctl.3.gz

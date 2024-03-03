@@ -1,9 +1,9 @@
 /usr/local/bin/proxy
 /usr/local/include/libproxy/proxy.h
 /usr/local/lib/girepository-1.0/Libproxy-1.0.typelib
-/usr/local/lib/libproxy/libpxbackend-1.0.so
 /usr/local/lib/libproxy.so
 /usr/local/lib/libproxy.so.1
+/usr/local/lib/libproxy/libpxbackend-1.0.so
 /usr/local/lib/pkgconfig/libproxy-1.0.pc
 /usr/local/share/gir-1.0/Libproxy-1.0.gir
 /usr/local/share/man/man8/proxy.8.zst

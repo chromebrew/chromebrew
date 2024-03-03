@@ -16,7 +16,6 @@
 /usr/local/include/jasper/jas_log.h
 /usr/local/include/jasper/jas_malloc.h
 /usr/local/include/jasper/jas_math.h
-/usr/local/include/jasper/jasper.h
 /usr/local/include/jasper/jas_seq.h
 /usr/local/include/jasper/jas_stream.h
 /usr/local/include/jasper/jas_string.h
@@ -25,6 +24,7 @@
 /usr/local/include/jasper/jas_tvp.h
 /usr/local/include/jasper/jas_types.h
 /usr/local/include/jasper/jas_version.h
+/usr/local/include/jasper/jasper.h
 /usr/local/lib/libjasper.so
 /usr/local/lib/libjasper.so.6
 /usr/local/lib/libjasper.so.6.0.0

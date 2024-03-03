@@ -3,8 +3,8 @@
 /usr/local/etc/init.d/fuse3
 /usr/local/etc/udev/rules.d/99-fuse3.rules
 /usr/local/include/fuse3/cuse_lowlevel.h
-/usr/local/include/fuse3/fuse_common.h
 /usr/local/include/fuse3/fuse.h
+/usr/local/include/fuse3/fuse_common.h
 /usr/local/include/fuse3/fuse_log.h
 /usr/local/include/fuse3/fuse_lowlevel.h
 /usr/local/include/fuse3/fuse_opt.h

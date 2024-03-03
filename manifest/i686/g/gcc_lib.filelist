@@ -1,5 +1,4 @@
 /usr/local/lib/bfd-plugins/liblto_plugin.so
-/usr/local/libexec/gcc/i686-cros-linux-gnu/13/liblto_plugin.so
 /usr/local/lib/gcc/i686-cros-linux-gnu/13/plugin/libcc1plugin.so
 /usr/local/lib/gcc/i686-cros-linux-gnu/13/plugin/libcc1plugin.so.0
 /usr/local/lib/gcc/i686-cros-linux-gnu/13/plugin/libcc1plugin.so.0.0.0
@@ -38,4 +37,5 @@
 /usr/local/lib/libubsan.so
 /usr/local/lib/libubsan.so.1
 /usr/local/lib/libubsan.so.1.0.0
+/usr/local/libexec/gcc/i686-cros-linux-gnu/13/liblto_plugin.so
 /usr/local/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.32-gdb.py

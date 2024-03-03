@@ -1,5 +1,5 @@
-/usr/local/bin/ghb
 /usr/local/bin/HandBrakeCLI
+/usr/local/bin/ghb
 /usr/local/etc/env.d/10-handbrake
 /usr/local/share/applications/fr.handbrake.ghb.desktop
 /usr/local/share/icons/hicolor/scalable/apps/fr.handbrake.ghb.svg
@@ -23,8 +23,8 @@
 /usr/local/share/locale/nl/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/no/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/pl/LC_MESSAGES/ghb.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/pt/LC_MESSAGES/ghb.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/ro/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/ru/LC_MESSAGES/ghb.mo
 /usr/local/share/locale/si/LC_MESSAGES/ghb.mo

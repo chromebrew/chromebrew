@@ -160,7 +160,6 @@
 /usr/local/share/scrollz/help/cscan
 /usr/local/share/scrollz/help/ctcp/action
 /usr/local/share/scrollz/help/ctcp/clientinfo
-/usr/local/share/scrollz/help/ctcpcloak
 /usr/local/share/scrollz/help/ctcp/ctcp
 /usr/local/share/scrollz/help/ctcp/echo
 /usr/local/share/scrollz/help/ctcp/finger
@@ -169,6 +168,7 @@
 /usr/local/share/scrollz/help/ctcp/userinfo
 /usr/local/share/scrollz/help/ctcp/utc
 /usr/local/share/scrollz/help/ctcp/version
+/usr/local/share/scrollz/help/ctcpcloak
 /usr/local/share/scrollz/help/cycle
 /usr/local/share/scrollz/help/date
 /usr/local/share/scrollz/help/dcc/chat
@@ -324,7 +324,6 @@
 /usr/local/share/scrollz/help/note/ls
 /usr/local/share/scrollz/help/note/news
 /usr/local/share/scrollz/help/note/note
-/usr/local/share/scrollz/help/notepad
 /usr/local/share/scrollz/help/note/rm
 /usr/local/share/scrollz/help/note/save
 /usr/local/share/scrollz/help/note/send
@@ -336,6 +335,7 @@
 /usr/local/share/scrollz/help/note/waitfor
 /usr/local/share/scrollz/help/note/wall
 /usr/local/share/scrollz/help/note/wallops
+/usr/local/share/scrollz/help/notepad
 /usr/local/share/scrollz/help/notice
 /usr/local/share/scrollz/help/notify
 /usr/local/share/scrollz/help/nprot
@@ -459,9 +459,7 @@
 /usr/local/share/scrollz/help/set/auto_reconnect_channels
 /usr/local/share/scrollz/help/set/auto_unmark_away
 /usr/local/share/scrollz/help/set/auto_whowas
-/usr/local/share/scrollz/help/setaway
 /usr/local/share/scrollz/help/set/away_file
-/usr/local/share/scrollz/help/setback
 /usr/local/share/scrollz/help/set/background_colour
 /usr/local/share/scrollz/help/set/beep
 /usr/local/share/scrollz/help/set/beep_max
@@ -604,19 +602,21 @@
 /usr/local/share/scrollz/help/set/status_window
 /usr/local/share/scrollz/help/set/suppress_server_motd
 /usr/local/share/scrollz/help/set/tab_max
-/usr/local/share/scrollz/help/settings
 /usr/local/share/scrollz/help/set/trace
 /usr/local/share/scrollz/help/set/truncate_public_channel
 /usr/local/share/scrollz/help/set/underline_video
 /usr/local/share/scrollz/help/set/url_buffer_size
 /usr/local/share/scrollz/help/set/user_information
-/usr/local/share/scrollz/help/set/username
 /usr/local/share/scrollz/help/set/user_wallops
+/usr/local/share/scrollz/help/set/username
 /usr/local/share/scrollz/help/set/verbose_ctcp
 /usr/local/share/scrollz/help/set/warn_of_ignores
 /usr/local/share/scrollz/help/set/xterm_geomoptstr
 /usr/local/share/scrollz/help/set/xterm_options
 /usr/local/share/scrollz/help/set/xterm_path
+/usr/local/share/scrollz/help/setaway
+/usr/local/share/scrollz/help/setback
+/usr/local/share/scrollz/help/settings
 /usr/local/share/scrollz/help/showaway
 /usr/local/share/scrollz/help/showchan
 /usr/local/share/scrollz/help/showidle

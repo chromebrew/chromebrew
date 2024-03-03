@@ -24,7 +24,7 @@
 /usr/local/share/locale/uk/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/vi/LC_MESSAGES/cryptsetup.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/cryptsetup.mo
-/usr/local/share/man/man8/cryptsetup.8.gz
 /usr/local/share/man/man8/cryptsetup-reencrypt.8.gz
+/usr/local/share/man/man8/cryptsetup.8.gz
 /usr/local/share/man/man8/integritysetup.8.gz
 /usr/local/share/man/man8/veritysetup.8.gz

@@ -1,10 +1,8 @@
 /usr/local/bin/shtool
-/usr/local/man/man1/shtool.1.gz
 /usr/local/man/man1/shtool-arx.1.gz
 /usr/local/man/man1/shtool-echo.1.gz
 /usr/local/man/man1/shtool-fixperm.1.gz
 /usr/local/man/man1/shtool-install.1.gz
-/usr/local/man/man1/shtoolize.1.gz
 /usr/local/man/man1/shtool-mdate.1.gz
 /usr/local/man/man1/shtool-mkdir.1.gz
 /usr/local/man/man1/shtool-mkln.1.gz
@@ -20,3 +18,5 @@
 /usr/local/man/man1/shtool-table.1.gz
 /usr/local/man/man1/shtool-tarball.1.gz
 /usr/local/man/man1/shtool-version.1.gz
+/usr/local/man/man1/shtool.1.gz
+/usr/local/man/man1/shtoolize.1.gz

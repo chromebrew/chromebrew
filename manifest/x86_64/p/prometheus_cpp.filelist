@@ -22,8 +22,8 @@
 /usr/local/include/prometheus/summary.h
 /usr/local/include/prometheus/text_serializer.h
 /usr/local/lib64/cmake/prometheus-cpp/prometheus-cpp-config.cmake
-/usr/local/lib64/cmake/prometheus-cpp/prometheus-cpp-targets.cmake
 /usr/local/lib64/cmake/prometheus-cpp/prometheus-cpp-targets-release.cmake
+/usr/local/lib64/cmake/prometheus-cpp/prometheus-cpp-targets.cmake
 /usr/local/lib64/libprometheus-cpp-core.so
 /usr/local/lib64/libprometheus-cpp-core.so.0.12
 /usr/local/lib64/libprometheus-cpp-core.so.0.12.1

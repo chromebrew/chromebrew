@@ -1,11 +1,11 @@
 /usr/local/bin/keychain
-/usr/local/share/keychain/ChangeLog
 /usr/local/share/keychain/COPYING.txt
+/usr/local/share/keychain/ChangeLog
+/usr/local/share/keychain/README.md
+/usr/local/share/keychain/VERSION
 /usr/local/share/keychain/img/keychain-1.png
 /usr/local/share/keychain/img/keychain-2.png
 /usr/local/share/keychain/keychain.sh
 /usr/local/share/keychain/keychain.txt
 /usr/local/share/keychain/misc/macos-security.sh
-/usr/local/share/keychain/README.md
-/usr/local/share/keychain/VERSION
 /usr/local/share/man/man1/keychain.1.gz

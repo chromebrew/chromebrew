@@ -5,7 +5,6 @@
 /usr/local/lib64/libXrandr.so.2
 /usr/local/lib64/libXrandr.so.2.2.0
 /usr/local/lib64/pkgconfig/xrandr.pc
-/usr/local/share/man/man3/Xrandr.3.gz
 /usr/local/share/man/man3/XRRConfigCurrentConfiguration.3.gz
 /usr/local/share/man/man3/XRRConfigCurrentRate.3.gz
 /usr/local/share/man/man3/XRRConfigRates.3.gz
@@ -20,3 +19,4 @@
 /usr/local/share/man/man3/XRRSelectInput.3.gz
 /usr/local/share/man/man3/XRRSetScreenConfig.3.gz
 /usr/local/share/man/man3/XRRSetScreenConfigAndRate.3.gz
+/usr/local/share/man/man3/Xrandr.3.gz

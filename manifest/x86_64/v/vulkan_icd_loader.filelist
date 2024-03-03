@@ -1,5 +1,5 @@
-/usr/local/lib64/cmake/VulkanLoader/VulkanLoaderConfig.cmake
 /usr/local/lib64/cmake/VulkanLoader/VulkanLoaderConfig-release.cmake
+/usr/local/lib64/cmake/VulkanLoader/VulkanLoaderConfig.cmake
 /usr/local/lib64/cmake/VulkanLoader/VulkanLoaderConfigVersion.cmake
 /usr/local/lib64/libvulkan.so
 /usr/local/lib64/libvulkan.so.1

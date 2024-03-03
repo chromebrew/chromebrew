@@ -4,8 +4,8 @@
 /usr/local/include/editorconfig/editorconfig_handle.h
 /usr/local/lib/cmake/EditorConfig/EditorConfigConfig.cmake
 /usr/local/lib/cmake/EditorConfig/EditorConfigConfigVersion.cmake
-/usr/local/lib/cmake/EditorConfig/EditorConfigTargets.cmake
 /usr/local/lib/cmake/EditorConfig/EditorConfigTargets-release.cmake
+/usr/local/lib/cmake/EditorConfig/EditorConfigTargets.cmake
 /usr/local/lib/libeditorconfig.so
 /usr/local/lib/libeditorconfig.so.0
 /usr/local/lib/libeditorconfig.so.0.12.6

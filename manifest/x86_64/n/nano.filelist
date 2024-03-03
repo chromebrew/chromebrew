@@ -30,8 +30,8 @@
 /usr/local/share/locale/nb/LC_MESSAGES/nano.mo
 /usr/local/share/locale/nl/LC_MESSAGES/nano.mo
 /usr/local/share/locale/pl/LC_MESSAGES/nano.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/nano.mo
 /usr/local/share/locale/pt/LC_MESSAGES/nano.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/nano.mo
 /usr/local/share/locale/ro/LC_MESSAGES/nano.mo
 /usr/local/share/locale/ru/LC_MESSAGES/nano.mo
 /usr/local/share/locale/sk/LC_MESSAGES/nano.mo
@@ -50,9 +50,9 @@
 /usr/local/share/nano/asm.nanorc
 /usr/local/share/nano/autoconf.nanorc
 /usr/local/share/nano/awk.nanorc
+/usr/local/share/nano/c.nanorc
 /usr/local/share/nano/changelog.nanorc
 /usr/local/share/nano/cmake.nanorc
-/usr/local/share/nano/c.nanorc
 /usr/local/share/nano/css.nanorc
 /usr/local/share/nano/default.nanorc
 /usr/local/share/nano/elisp.nanorc
@@ -88,7 +88,7 @@
 /usr/local/share/nano/sh.nanorc
 /usr/local/share/nano/sql.nanorc
 /usr/local/share/nano/tcl.nanorc
-/usr/local/share/nano/texinfo.nanorc
 /usr/local/share/nano/tex.nanorc
+/usr/local/share/nano/texinfo.nanorc
 /usr/local/share/nano/xml.nanorc
 /usr/local/share/nano/yaml.nanorc

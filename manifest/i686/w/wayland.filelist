@@ -1,15 +1,15 @@
 /usr/local/bin/wayland-scanner
 /usr/local/etc/env.d/wayland
 /usr/local/include/wayland-client-core.h
-/usr/local/include/wayland-client.h
 /usr/local/include/wayland-client-protocol.h
+/usr/local/include/wayland-client.h
 /usr/local/include/wayland-cursor.h
 /usr/local/include/wayland-egl-backend.h
 /usr/local/include/wayland-egl-core.h
 /usr/local/include/wayland-egl.h
 /usr/local/include/wayland-server-core.h
-/usr/local/include/wayland-server.h
 /usr/local/include/wayland-server-protocol.h
+/usr/local/include/wayland-server.h
 /usr/local/include/wayland-util.h
 /usr/local/include/wayland-version.h
 /usr/local/lib/libwayland-client.so
@@ -31,6 +31,6 @@
 /usr/local/lib/pkgconfig/wayland-scanner.pc
 /usr/local/lib/pkgconfig/wayland-server.pc
 /usr/local/share/aclocal/wayland-scanner.m4
-/usr/local/share/wayland/wayland.dtd
 /usr/local/share/wayland/wayland-scanner.mk
+/usr/local/share/wayland/wayland.dtd
 /usr/local/share/wayland/wayland.xml

@@ -1,3 +1,5 @@
+/usr/local/include/champlain-0.12/champlain-gtk/champlain-gtk.h
+/usr/local/include/champlain-0.12/champlain-gtk/gtk-champlain-embed.h
 /usr/local/include/champlain-0.12/champlain/champlain-adjustment.h
 /usr/local/include/champlain-0.12/champlain/champlain-bounding-box.h
 /usr/local/include/champlain-0.12/champlain/champlain-coordinate.h
@@ -9,7 +11,6 @@
 /usr/local/include/champlain-0.12/champlain/champlain-features.h
 /usr/local/include/champlain-0.12/champlain/champlain-file-cache.h
 /usr/local/include/champlain-0.12/champlain/champlain-file-tile-source.h
-/usr/local/include/champlain-0.12/champlain/champlain.h
 /usr/local/include/champlain-0.12/champlain/champlain-image-renderer.h
 /usr/local/include/champlain-0.12/champlain/champlain-kinetic-scroll-view.h
 /usr/local/include/champlain-0.12/champlain/champlain-label.h
@@ -20,8 +21,8 @@
 /usr/local/include/champlain-0.12/champlain/champlain-map-source-desc.h
 /usr/local/include/champlain-0.12/champlain/champlain-map-source-factory.h
 /usr/local/include/champlain-0.12/champlain/champlain-map-source.h
-/usr/local/include/champlain-0.12/champlain/champlain-marker.h
 /usr/local/include/champlain-0.12/champlain/champlain-marker-layer.h
+/usr/local/include/champlain-0.12/champlain/champlain-marker.h
 /usr/local/include/champlain-0.12/champlain/champlain-memory-cache.h
 /usr/local/include/champlain-0.12/champlain/champlain-network-bbox-tile-source.h
 /usr/local/include/champlain-0.12/champlain/champlain-network-tile-source.h
@@ -31,13 +32,12 @@
 /usr/local/include/champlain-0.12/champlain/champlain-renderer.h
 /usr/local/include/champlain-0.12/champlain/champlain-scale.h
 /usr/local/include/champlain-0.12/champlain/champlain-tile-cache.h
-/usr/local/include/champlain-0.12/champlain/champlain-tile.h
 /usr/local/include/champlain-0.12/champlain/champlain-tile-source.h
+/usr/local/include/champlain-0.12/champlain/champlain-tile.h
 /usr/local/include/champlain-0.12/champlain/champlain-version.h
 /usr/local/include/champlain-0.12/champlain/champlain-view.h
 /usr/local/include/champlain-0.12/champlain/champlain-viewport.h
-/usr/local/include/champlain-0.12/champlain-gtk/champlain-gtk.h
-/usr/local/include/champlain-0.12/champlain-gtk/gtk-champlain-embed.h
+/usr/local/include/champlain-0.12/champlain/champlain.h
 /usr/local/lib64/girepository-1.0/Champlain-0.12.typelib
 /usr/local/lib64/girepository-1.0/GtkChamplain-0.12.typelib
 /usr/local/lib64/libchamplain-0.12.so

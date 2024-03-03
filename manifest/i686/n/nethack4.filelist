@@ -2,8 +2,8 @@
 /usr/local/lib/libjansson.so
 /usr/local/lib/libjansson.so.4
 /usr/local/lib/libjansson.so.4.2.1
-/usr/local/lib/libnethack_client.so
 /usr/local/lib/libnethack.so
+/usr/local/lib/libnethack_client.so
 /usr/local/lib/libuncursed.so
 /usr/local/lib/libuncursed.so.1
 /usr/local/lib/libuncursed.so.1.0.2
@@ -20,8 +20,8 @@
 /usr/local/share/icons/hicolor/32x32/apps/nethack4.png
 /usr/local/share/icons/hicolor/64x64/apps/nethack4.png
 /usr/local/share/man/man6/nethack4.6.gz
+/usr/local/var/games/nethack4/README
 /usr/local/var/games/nethack4/logfile
 /usr/local/var/games/nethack4/paniclog
-/usr/local/var/games/nethack4/README
 /usr/local/var/games/nethack4/record
 /usr/local/var/games/nethack4/xlogfile

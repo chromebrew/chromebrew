@@ -1,7 +1,7 @@
-/usr/local/lib64/cmake/lapack-3.11.0/lapack-config.cmake
 /usr/local/lib64/cmake/lapack-3.11.0/lapack-config-version.cmake
-/usr/local/lib64/cmake/lapack-3.11.0/lapack-targets.cmake
+/usr/local/lib64/cmake/lapack-3.11.0/lapack-config.cmake
 /usr/local/lib64/cmake/lapack-3.11.0/lapack-targets-release.cmake
+/usr/local/lib64/cmake/lapack-3.11.0/lapack-targets.cmake
 /usr/local/lib64/libblas.so
 /usr/local/lib64/libblas.so.3
 /usr/local/lib64/libblas.so.3.11.0

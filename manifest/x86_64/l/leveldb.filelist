@@ -1,5 +1,5 @@
-/usr/local/include/leveldb/cache.h
 /usr/local/include/leveldb/c.h
+/usr/local/include/leveldb/cache.h
 /usr/local/include/leveldb/comparator.h
 /usr/local/include/leveldb/db.h
 /usr/local/include/leveldb/dumpfile.h
@@ -10,13 +10,13 @@
 /usr/local/include/leveldb/options.h
 /usr/local/include/leveldb/slice.h
 /usr/local/include/leveldb/status.h
-/usr/local/include/leveldb/table_builder.h
 /usr/local/include/leveldb/table.h
+/usr/local/include/leveldb/table_builder.h
 /usr/local/include/leveldb/write_batch.h
 /usr/local/lib64/cmake/leveldb/leveldbConfig.cmake
 /usr/local/lib64/cmake/leveldb/leveldbConfigVersion.cmake
-/usr/local/lib64/cmake/leveldb/leveldbTargets.cmake
 /usr/local/lib64/cmake/leveldb/leveldbTargets-release.cmake
+/usr/local/lib64/cmake/leveldb/leveldbTargets.cmake
 /usr/local/lib64/libleveldb.so
 /usr/local/lib64/libleveldb.so.1
 /usr/local/lib64/libleveldb.so.1.22.0

@@ -2,8 +2,8 @@
 /usr/local/include/xfce4/xfconf-0/xfconf/xfconf-binding.h
 /usr/local/include/xfce4/xfconf-0/xfconf/xfconf-channel.h
 /usr/local/include/xfce4/xfconf-0/xfconf/xfconf-errors.h
-/usr/local/include/xfce4/xfconf-0/xfconf/xfconf.h
 /usr/local/include/xfce4/xfconf-0/xfconf/xfconf-types.h
+/usr/local/include/xfce4/xfconf-0/xfconf/xfconf.h
 /usr/local/lib/gio/modules/libxfconfgsettingsbackend.la
 /usr/local/lib/gio/modules/libxfconfgsettingsbackend.so
 /usr/local/lib/girepository-1.0/Xfconf-0.typelib
@@ -28,13 +28,13 @@
 /usr/local/share/gtk-doc/html/xfconf/style.css
 /usr/local/share/gtk-doc/html/xfconf/up-insensitive.png
 /usr/local/share/gtk-doc/html/xfconf/up.png
-/usr/local/share/gtk-doc/html/xfconf/xfconf.devhelp2
 /usr/local/share/gtk-doc/html/xfconf/xfconf-Error-Reporting.html
 /usr/local/share/gtk-doc/html/xfconf/xfconf-Xfconf-Backend.html
 /usr/local/share/gtk-doc/html/xfconf/xfconf-Xfconf-Channel.html
 /usr/local/share/gtk-doc/html/xfconf/xfconf-Xfconf-GObject-Binding.html
 /usr/local/share/gtk-doc/html/xfconf/xfconf-Xfconf-Library-Core.html
 /usr/local/share/gtk-doc/html/xfconf/xfconf-Xfconf-Types.html
+/usr/local/share/gtk-doc/html/xfconf/xfconf.devhelp2
 /usr/local/share/locale/ar/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/ast/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/be/LC_MESSAGES/xfconf.mo
@@ -72,8 +72,8 @@
 /usr/local/share/locale/oc/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/pa/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/pl/LC_MESSAGES/xfconf.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/pt/LC_MESSAGES/xfconf.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/ro/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/ru/LC_MESSAGES/xfconf.mo
 /usr/local/share/locale/si/LC_MESSAGES/xfconf.mo

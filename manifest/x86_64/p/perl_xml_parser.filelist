@@ -1,4 +1,6 @@
-/usr/local/lib64/perl5/5.38.2/site_perl/auto/XML/Parser/Expat/Expat.so
+/usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser.pm
+/usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/Japanese_Encodings.msg
+/usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/README
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/big5.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/euc-kr.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/ibm866.enc
@@ -10,9 +12,7 @@
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/iso-8859-7.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/iso-8859-8.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/iso-8859-9.enc
-/usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/Japanese_Encodings.msg
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/koi8-r.enc
-/usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/README
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/windows-1250.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/windows-1251.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/windows-1252.enc
@@ -25,12 +25,12 @@
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Encodings/x-sjis-unicode.enc
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Expat.pm
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/LWPExternEnt.pl
-/usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser.pm
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Style/Debug.pm
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Style/Objects.pm
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Style/Stream.pm
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Style/Subs.pm
 /usr/local/lib64/perl5/5.38.2/site_perl/XML/Parser/Style/Tree.pm
+/usr/local/lib64/perl5/5.38.2/site_perl/auto/XML/Parser/Expat/Expat.so
 /usr/local/share/man/man3/XML::Parser.3.zst
 /usr/local/share/man/man3/XML::Parser::Expat.3.zst
 /usr/local/share/man/man3/XML::Parser::Style::Debug.3.zst

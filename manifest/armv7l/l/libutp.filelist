@@ -1,8 +1,8 @@
 /usr/local/bin/ucat
 /usr/local/bin/ucat-static
 /usr/local/include/utp/libutp_inet_ntop.h
-/usr/local/include/utp/utp_callbacks.h
 /usr/local/include/utp/utp.h
+/usr/local/include/utp/utp_callbacks.h
 /usr/local/include/utp/utp_hash.h
 /usr/local/include/utp/utp_internal.h
 /usr/local/include/utp/utp_packedsockaddr.h

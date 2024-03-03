@@ -9,8 +9,8 @@
 /usr/local/include/double-conversion/utils.h
 /usr/local/lib/cmake/double-conversion/double-conversionConfig.cmake
 /usr/local/lib/cmake/double-conversion/double-conversionConfigVersion.cmake
-/usr/local/lib/cmake/double-conversion/double-conversionTargets.cmake
 /usr/local/lib/cmake/double-conversion/double-conversionTargets-release.cmake
+/usr/local/lib/cmake/double-conversion/double-conversionTargets.cmake
 /usr/local/lib/libdouble-conversion.so
 /usr/local/lib/libdouble-conversion.so.3
 /usr/local/lib/libdouble-conversion.so.3.1.5

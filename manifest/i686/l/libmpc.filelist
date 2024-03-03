@@ -5,9 +5,9 @@
 /usr/local/bin/wavcmp
 /usr/local/include/mpc/datatypes.h
 /usr/local/include/mpc/minimax.h
+/usr/local/include/mpc/mpc_types.h
 /usr/local/include/mpc/mpcdec.h
 /usr/local/include/mpc/mpcmath.h
-/usr/local/include/mpc/mpc_types.h
 /usr/local/include/mpc/reader.h
 /usr/local/include/mpc/streaminfo.h
 /usr/local/lib/libmpcdec.a

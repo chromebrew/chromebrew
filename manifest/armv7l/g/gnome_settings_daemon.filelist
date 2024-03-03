@@ -1,3 +1,4 @@
+/usr/local/etc/xdg/Xwayland-session.d/00-xrdb
 /usr/local/etc/xdg/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
 /usr/local/etc/xdg/autostart/org.gnome.SettingsDaemon.Color.desktop
 /usr/local/etc/xdg/autostart/org.gnome.SettingsDaemon.Datetime.desktop
@@ -15,8 +16,10 @@
 /usr/local/etc/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 /usr/local/etc/xdg/autostart/org.gnome.SettingsDaemon.Wwan.desktop
 /usr/local/etc/xdg/autostart/org.gnome.SettingsDaemon.XSettings.desktop
-/usr/local/etc/xdg/Xwayland-session.d/00-xrdb
 /usr/local/include/gnome-settings-daemon-43/gnome-settings-daemon/gsd-enums.h
+/usr/local/lib/gnome-settings-daemon-43/libgsd.so
+/usr/local/lib/pkgconfig/gnome-settings-daemon.pc
+/usr/local/lib/udev/rules.d/61-gnome-settings-daemon-rfkill.rules
 /usr/local/libexec/gsd-a11y-settings
 /usr/local/libexec/gsd-backlight-helper
 /usr/local/libexec/gsd-datetime
@@ -24,8 +27,8 @@
 /usr/local/libexec/gsd-keyboard
 /usr/local/libexec/gsd-media-keys
 /usr/local/libexec/gsd-power
-/usr/local/libexec/gsd-printer
 /usr/local/libexec/gsd-print-notifications
+/usr/local/libexec/gsd-printer
 /usr/local/libexec/gsd-rfkill
 /usr/local/libexec/gsd-screensaver-proxy
 /usr/local/libexec/gsd-sharing
@@ -36,9 +39,6 @@
 /usr/local/libexec/gsd-wacom-oled-helper
 /usr/local/libexec/gsd-wwan
 /usr/local/libexec/gsd-xsettings
-/usr/local/lib/gnome-settings-daemon-43/libgsd.so
-/usr/local/lib/pkgconfig/gnome-settings-daemon.pc
-/usr/local/lib/udev/rules.d/61-gnome-settings-daemon-rfkill.rules
 /usr/local/share/GConf/gsettings/gnome-settings-daemon.convert
 /usr/local/share/glib-2.0/schemas/org.gnome.settings-daemon.enums.xml
 /usr/local/share/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.gschema.xml
@@ -59,11 +59,11 @@
 /usr/local/share/locale/as/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/ast/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/az/LC_MESSAGES/gnome-settings-daemon.mo
-/usr/local/share/locale/be@latin/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/be/LC_MESSAGES/gnome-settings-daemon.mo
+/usr/local/share/locale/be@latin/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/bg/LC_MESSAGES/gnome-settings-daemon.mo
-/usr/local/share/locale/bn_IN/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/bn/LC_MESSAGES/gnome-settings-daemon.mo
+/usr/local/share/locale/bn_IN/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/br/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/bs/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/ca/LC_MESSAGES/gnome-settings-daemon.mo
@@ -76,9 +76,9 @@
 /usr/local/share/locale/de/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/dz/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/el/LC_MESSAGES/gnome-settings-daemon.mo
+/usr/local/share/locale/en@shaw/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/en_CA/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/gnome-settings-daemon.mo
-/usr/local/share/locale/en@shaw/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/eo/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/es/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/et/LC_MESSAGES/gnome-settings-daemon.mo
@@ -124,8 +124,8 @@
 /usr/local/share/locale/or/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/pa/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gnome-settings-daemon.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gnome-settings-daemon.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/ro/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/ru/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/rw/LC_MESSAGES/gnome-settings-daemon.mo
@@ -133,8 +133,8 @@
 /usr/local/share/locale/sk/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/sl/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/sq/LC_MESSAGES/gnome-settings-daemon.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/sr/LC_MESSAGES/gnome-settings-daemon.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/sv/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/ta/LC_MESSAGES/gnome-settings-daemon.mo
 /usr/local/share/locale/te/LC_MESSAGES/gnome-settings-daemon.mo

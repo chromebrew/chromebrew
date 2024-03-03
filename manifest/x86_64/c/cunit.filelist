@@ -1,10 +1,10 @@
 /usr/local/include/CUnit/Automated.h
 /usr/local/include/CUnit/Basic.h
-/usr/local/include/CUnit/Console.h
 /usr/local/include/CUnit/CUCurses.h
 /usr/local/include/CUnit/CUError.h
 /usr/local/include/CUnit/CUnit.h
 /usr/local/include/CUnit/CUnit_intl.h
+/usr/local/include/CUnit/Console.h
 /usr/local/include/CUnit/MyMem.h
 /usr/local/include/CUnit/TestDB.h
 /usr/local/include/CUnit/TestRun.h
@@ -26,11 +26,11 @@
 /usr/local/share/doc/CUnit/fdl.html
 /usr/local/share/doc/CUnit/headers/Automated.h
 /usr/local/share/doc/CUnit/headers/Basic.h
-/usr/local/share/doc/CUnit/headers/Console.h
 /usr/local/share/doc/CUnit/headers/CUCurses.h
 /usr/local/share/doc/CUnit/headers/CUError.h
 /usr/local/share/doc/CUnit/headers/CUnit.h
 /usr/local/share/doc/CUnit/headers/CUnit_intl.h
+/usr/local/share/doc/CUnit/headers/Console.h
 /usr/local/share/doc/CUnit/headers/MyMem.h
 /usr/local/share/doc/CUnit/headers/TestDB.h
 /usr/local/share/doc/CUnit/headers/TestRun.h

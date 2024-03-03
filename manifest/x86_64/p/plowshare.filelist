@@ -10,8 +10,8 @@
 /usr/local/share/bash-completion/completions/plowlist
 /usr/local/share/bash-completion/completions/plowprobe
 /usr/local/share/bash-completion/completions/plowup
-/usr/local/share/doc/plowshare/plowshare.conf.sample
 /usr/local/share/doc/plowshare/README.md
+/usr/local/share/doc/plowshare/plowshare.conf.sample
 /usr/local/share/man/man1/plowdel.1.gz
 /usr/local/share/man/man1/plowdown.1.gz
 /usr/local/share/man/man1/plowlist.1.gz

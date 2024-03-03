@@ -5,12 +5,12 @@
 /usr/local/share/musl/bin/zstdless
 /usr/local/share/musl/bin/zstdmt
 /usr/local/share/musl/include/zdict.h
-/usr/local/share/musl/include/zstd_errors.h
 /usr/local/share/musl/include/zstd.h
+/usr/local/share/musl/include/zstd_errors.h
 /usr/local/share/musl/lib/cmake/zstd/zstdConfig.cmake
 /usr/local/share/musl/lib/cmake/zstd/zstdConfigVersion.cmake
-/usr/local/share/musl/lib/cmake/zstd/zstdTargets.cmake
 /usr/local/share/musl/lib/cmake/zstd/zstdTargets-release.cmake
+/usr/local/share/musl/lib/cmake/zstd/zstdTargets.cmake
 /usr/local/share/musl/lib/libc.so
 /usr/local/share/musl/lib/libzstd.a
 /usr/local/share/musl/lib/libzstd.so
