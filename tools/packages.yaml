@@ -8271,6 +8271,11 @@ url: http://www.ibiblio.org/pub/Linux/libs/graphics/
 activity: none
 ---
 kind: url
+name: tabby
+url: https://github.com/Eugeny/tabby/releases
+activity: low
+---
+kind: url
 name: tack
 url: https://ftpmirror.gnu.org/ncurses/
 activity: low
