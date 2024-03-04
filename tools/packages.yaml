@@ -1206,8 +1206,8 @@ activity: low
 ---
 kind: url
 name: ctags
-url: https://sourceforge.net/projects/ctags/files/ctags/
-activity: none
+url: https://github.com/universal-ctags/ctags/releases
+activity: low
 ---
 kind: url
 name: ctorrent
