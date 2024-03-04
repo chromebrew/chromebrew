@@ -14,10 +14,10 @@ class Source_highlight < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c69bf620d5d9b59a871da92d9ce34d42d8dc02a94b99ddc02cfcbc5c3a7a457d',
-     armv7l: 'c69bf620d5d9b59a871da92d9ce34d42d8dc02a94b99ddc02cfcbc5c3a7a457d',
-       i686: '30942176c3fc26ee0159b526d937694fa2e1087676ffec828e25fdcef2bd5cf8',
-     x86_64: 'c286b1c7a1000b678e14cbd4127bd0290384a4e3a36f3b228e642691c116cda1'
+    aarch64: 'c678485029181a81af5ff753941d377969c4a48faff13ae9b18b265cbab8bc46',
+     armv7l: 'c678485029181a81af5ff753941d377969c4a48faff13ae9b18b265cbab8bc46',
+       i686: 'f8e0891842693e1b20195661229e6003496cc6786a26c2c983c202ebcff375d2',
+     x86_64: '7097637eea28626fdb0d0925f6e82298df51a17e8a1373d3169895c8a9c6df9b'
   })
 
   depends_on 'boost' # R
