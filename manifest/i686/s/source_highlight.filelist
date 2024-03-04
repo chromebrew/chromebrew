@@ -95,8 +95,8 @@
 /usr/local/lib/libsource-highlight.a
 /usr/local/lib/libsource-highlight.la
 /usr/local/lib/libsource-highlight.so
-/usr/local/lib/libsource-highlight.so.4
-/usr/local/lib/libsource-highlight.so.4.0.1
+/usr/local/lib/libsource-highlight.so.5
+/usr/local/lib/libsource-highlight.so.5.0.1
 /usr/local/lib/pkgconfig/source-highlight.pc
 /usr/local/share/bash-completion/completions/source-highlight
 /usr/local/share/doc/source-highlight/COPYING
