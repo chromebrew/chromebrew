@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pangomm_2_48 < Package
+class Pangomm_2_48 < Meson
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
   version '2.50.2'
@@ -26,16 +26,6 @@ class Pangomm_2_48 < Package
   depends_on 'mm_common' => :build
   depends_on 'pango' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dmaintainer-mode=true \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options 'Dmaintainer-mode=true \
+    -Dbuild-documentation=false'
 end

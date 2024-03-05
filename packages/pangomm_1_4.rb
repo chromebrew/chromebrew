@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Pangomm_1_4 < Package
+class Pangomm_1_4 < Meson
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
   version '2.46.4'

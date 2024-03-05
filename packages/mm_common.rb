@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Mm_common < Package
+class Mm_common < Meson
   description 'Common build files of the C++ bindings'
   homepage 'http://www.gtkmm.org/'
   version '1.0.6'
