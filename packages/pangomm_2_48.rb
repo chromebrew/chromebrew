@@ -26,6 +26,6 @@ class Pangomm_2_48 < Meson
   depends_on 'mm_common' => :build
   depends_on 'pango' # R
 
-  meson_options 'Dmaintainer-mode=true \
+  meson_options '-Dmaintainer-mode=true \
     -Dbuild-documentation=false'
 end
