@@ -84,17 +84,18 @@ class Gtk4 < Package
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
+      -Dbuild-demos=false \
       -Dbuild-examples=false \
       -Dbuild-tests=false \
       -Dbuild-testsuite=false \
-      -Dbuild-demos=false \
-      -Dintrospection=enabled \
-      -Dgraphene:default_library=both \
-      -Dlibsass:default_library=both \
-      -Dmutest:default_library=both \
       -Dcloudproviders=enabled \
-      -Dvulkan=enabled \
+      -Dgraphene:default_library=both \
+      -Dintrospection=enabled \
+      -Dlibsass:default_library=both \
+      -Dmedia-gstreamer=disabled \
+      -Dmutest:default_library=both \
       -Dprint-cups=auto \
+      -Dvulkan=enabled \
       builddir"
     system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
