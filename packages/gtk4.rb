@@ -11,9 +11,9 @@ class Gtk4 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57fe6e15199af3567dae37dc5b175f0a2f779c0d38832b68e5961433604f8c6f',
-     armv7l: '57fe6e15199af3567dae37dc5b175f0a2f779c0d38832b68e5961433604f8c6f',
-     x86_64: 'a7e04af865767a8ae2fc5b1f6896847f3c2504d28249a7ccdfaf8c77b812c3bd'
+    aarch64: 'da0d607520bae5eb23a646d2004f3ad18fe19382438aedde41c8c28b7ac6ffa5',
+     armv7l: 'da0d607520bae5eb23a646d2004f3ad18fe19382438aedde41c8c28b7ac6ffa5',
+     x86_64: '65a96c32b9d47ea2517f4d9e2b6255ddddb2fd03cef23598bc18ca1b4e2041ec'
   })
 
   # L = Logical Dependency, R = Runtime Dependency

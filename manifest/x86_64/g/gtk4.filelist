@@ -111,6 +111,8 @@
 /usr/local/include/gtk-4.0/gsk/gskstroke.h
 /usr/local/include/gtk-4.0/gsk/gsktransform.h
 /usr/local/include/gtk-4.0/gsk/gsktypes.h
+/usr/local/include/gtk-4.0/gtk/a11y/gtkatspi.h
+/usr/local/include/gtk-4.0/gtk/a11y/gtkatspisocket.h
 /usr/local/include/gtk-4.0/gtk/css/gtkcss.h
 /usr/local/include/gtk-4.0/gtk/css/gtkcssenums.h
 /usr/local/include/gtk-4.0/gtk/css/gtkcssenumtypes.h
@@ -177,6 +179,7 @@
 /usr/local/include/gtk-4.0/gtk/gtkaccelgroup.h
 /usr/local/include/gtk-4.0/gtk/gtkaccessible.h
 /usr/local/include/gtk-4.0/gtk/gtkaccessiblerange.h
+/usr/local/include/gtk-4.0/gtk/gtkaccessibletext.h
 /usr/local/include/gtk-4.0/gtk/gtkactionable.h
 /usr/local/include/gtk-4.0/gtk/gtkactionbar.h
 /usr/local/include/gtk-4.0/gtk/gtkadjustment.h
@@ -209,6 +212,7 @@
 /usr/local/include/gtk-4.0/gtk/gtkcolumnviewcolumn.h
 /usr/local/include/gtk-4.0/gtk/gtkcolumnviewrow.h
 /usr/local/include/gtk-4.0/gtk/gtkcolumnviewsorter.h
+/usr/local/include/gtk-4.0/gtk/gtkconfig.h
 /usr/local/include/gtk-4.0/gtk/gtkconstraint.h
 /usr/local/include/gtk-4.0/gtk/gtkconstraintguide.h
 /usr/local/include/gtk-4.0/gtk/gtkconstraintlayout.h
@@ -403,12 +407,12 @@
 /usr/local/lib64/girepository-1.0/GdkX11-4.0.typelib
 /usr/local/lib64/girepository-1.0/Gsk-4.0.typelib
 /usr/local/lib64/girepository-1.0/Gtk-4.0.typelib
-/usr/local/lib64/gtk-4.0/4.0.0/media/libmedia-gstreamer.so
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-cups.so
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.1305.0
+/usr/local/lib64/libgtk-4.so.1.1309.0
+/usr/local/lib64/pkgconfig/gtk4-atspi.pc
 /usr/local/lib64/pkgconfig/gtk4-broadway.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc
 /usr/local/lib64/pkgconfig/gtk4-wayland.pc
