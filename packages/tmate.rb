@@ -20,17 +20,7 @@ class Tmate < Autotools
      x86_64: '52c51e577c993bb4dcee5f1191bc73e442ffe27fc2ba83b4674bda1f4936bbcb'
   })
 
-  depends_on 'libevent' => :build
-  depends_on 'libssh' => :build
-  depends_on 'libutempter' => :build
-  depends_on 'msgpack_c' => :build
-  depends_on 'ncurses' => :build
   depends_on 'glibc' # R
-  depends_on 'libevent' # R
-  depends_on 'libssh' # R
-  depends_on 'libutempter' # R
-  depends_on 'msgpack_c' # R
-  depends_on 'ncurses' # R
   depends_on 'libevent' # R
   depends_on 'libssh' # R
   depends_on 'libutempter' # R
@@ -38,7 +28,7 @@ class Tmate < Autotools
   depends_on 'ncurses' # R
 
   def self.patch
-    # Patch for msgevent_c 6.x
+    # Patch for msgpack_c 6.x
     downloader 'https://github.com/tmate-io/tmate/pull/281.patch', '9f4f315a92b959606d42d672cf8c7312afaf4a93fba6c0e21bfee0b84e2d4667'
     system 'patch -p1 -i 281.patch'
   end
