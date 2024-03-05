@@ -3,9 +3,9 @@ require 'package'
 class Pangomm_2_48 < Package
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
-  version '2.50.1'
+  version '2.50.2'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Pangomm_2_48 < Package
   binary_sha256({
     aarch64: '217a0cdd025020aefaa9c8a07366e72ac564d7d8fbdb3c45bfd4e29ae1c69204',
      armv7l: '217a0cdd025020aefaa9c8a07366e72ac564d7d8fbdb3c45bfd4e29ae1c69204',
-       i686: '8a9b560961d6f11166fd47bfcefbecd11b0196f979e33433c321305dece1bb94',
      x86_64: '385ac710ce7ae48615305920bdb3c1284211799f9db312aaba9805232c40c02a'
   })
 

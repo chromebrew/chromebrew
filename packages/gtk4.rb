@@ -3,7 +3,7 @@ require 'package'
 class Gtk4 < Package
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.13.5'
+  version '4.13.9'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -33,7 +33,7 @@ class Gtk4 < Package
   # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  depends_on 'gstreamer' # R
+  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
@@ -87,7 +87,7 @@ class Gtk4 < Package
       -Dbuild-examples=false \
       -Dbuild-tests=false \
       -Dbuild-testsuite=false \
-      -Ddemos=false \
+      -Dbuild-demos=false \
       -Dintrospection=enabled \
       -Dgraphene:default_library=both \
       -Dlibsass:default_library=both \

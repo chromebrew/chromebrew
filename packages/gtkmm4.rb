@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Gtkmm4 < Meson
   description 'The Gtkmm4 package provides a C++ interface to GTK+ 4.'
   homepage 'https://www.gtkmm.org/'
-  version '4.0.2'
+  version '4.13.3'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gnome.org/sources/gtkmm/4.0/gtkmm-4.0.2.tar.xz'
-  source_sha256 '0c836e8daffd836ef469499b7a733afda3a5260ea0e4d81c552f688ae384bd97'
+  source_url 'https://gitlab.gnome.org/GNOME/gtkmm.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -16,10 +16,10 @@ class Gtkmm4 < Meson
      x86_64: 'cb5053d74804b963f9fab9e9f97b336776cad30d6b38df277386e800b755c6b3'
   })
 
-  depends_on 'atkmm'
-  depends_on 'gtk4'
-  depends_on 'pangomm'
-  depends_on 'cairomm'
-  depends_on 'vulkan_headers'
-  depends_on 'gobject_introspection'
+  depends_on 'atkmm' => :build
+  depends_on 'gtk4' => :build
+  depends_on 'pangomm' => :build
+  depends_on 'cairomm' => :build
+  depends_on 'vulkan_headers' => :build
+  depends_on 'gobject_introspection' => :build
 end

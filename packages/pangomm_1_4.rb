@@ -3,9 +3,9 @@ require 'package'
 class Pangomm_1_4 < Package
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
-  version '2.46.3'
+  version '2.46.4'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Pangomm_1_4 < Package
   binary_sha256({
     aarch64: 'aebb5450624f733edb35c4397445b2992996f29820e9d13880ce348ad38d1498',
      armv7l: 'aebb5450624f733edb35c4397445b2992996f29820e9d13880ce348ad38d1498',
-       i686: '525c1b73617d88faf5df331af60ba13c93ad4da7bce9bdb849017dd57dbc5f0b',
      x86_64: 'bbad260e15756dcbb0f0faa65de5c95a3ab00ee8a41481d348db19cb842fe6ab'
   })
 
@@ -27,16 +26,5 @@ class Pangomm_1_4 < Package
   depends_on 'mm_common' => :build
   depends_on 'pango' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dmaintainer-mode=true \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

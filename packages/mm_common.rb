@@ -3,7 +3,7 @@ require 'package'
 class Mm_common < Package
   description 'Common build files of the C++ bindings'
   homepage 'http://www.gtkmm.org/'
-  version '1.0.5'
+  version '1.0.6'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/mm-common.git'
@@ -17,15 +17,5 @@ class Mm_common < Package
      x86_64: '33eed58c4c387e25ee5d70a9b0c64525db105553918b03819a7ed27959c11553'
   })
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Duse-network=true \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Duse-network=true'
 end

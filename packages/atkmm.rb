@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Atkmm < Package
+class Atkmm < Meson
   description 'Atkmm is the official C++ interface for the ATK accessibility toolkit library.'
   homepage 'https://www.gtkmm.org/'
-  version '2.36.2'
+  version '2.36.3'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/atkmm.git'
@@ -24,15 +24,5 @@ class Atkmm < Package
   depends_on 'glib' # R
   depends_on 'libsigcplusplus3' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

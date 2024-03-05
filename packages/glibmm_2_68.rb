@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glibmm_2_68 < Package
+class Glibmm_2_68 < Meson
   description 'C++ bindings for GLib api version 2.68'
   homepage 'https://www.gtkmm.org'
-  version '2.78.0'
+  version '2.78.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/glibmm.git'
@@ -23,15 +23,5 @@ class Glibmm_2_68 < Package
   depends_on 'libsigcplusplus3' # R
   depends_on 'mm_common' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end
