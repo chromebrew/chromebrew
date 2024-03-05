@@ -11,15 +11,26 @@ class Gtkmm4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9769d2f5e99b80ee126723b0614a2a5cad5298a6c14176644c9d7c7408fceb43',
-     armv7l: '9769d2f5e99b80ee126723b0614a2a5cad5298a6c14176644c9d7c7408fceb43',
-     x86_64: 'cb5053d74804b963f9fab9e9f97b336776cad30d6b38df277386e800b755c6b3'
+    aarch64: '181cd9d9c4dca2a443121ed4fd82e9f5ba249423e1777f8842700dbe1afefe8e',
+     armv7l: '181cd9d9c4dca2a443121ed4fd82e9f5ba249423e1777f8842700dbe1afefe8e',
+     x86_64: 'eb407224748eef793e5bed1271239d23520e50f7e1112c1b5a429a81c6ad0af0'
   })
 
   depends_on 'atkmm' => :build
-  depends_on 'gtk4' => :build
-  depends_on 'pangomm' => :build
+  depends_on 'cairomm_1_16' # R
   depends_on 'cairomm' => :build
-  depends_on 'vulkan_headers' => :build
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glibmm_2_68' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
+  depends_on 'graphene' # R
+  depends_on 'gtk4' => :build
+  depends_on 'gtk4' # R
+  depends_on 'libsigcplusplus3' # R
+  depends_on 'pangomm_2_48' # R
+  depends_on 'pangomm' => :build
+  depends_on 'vulkan_headers' => :build
 end
