@@ -11,9 +11,9 @@ class Pangomm_2_48 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '217a0cdd025020aefaa9c8a07366e72ac564d7d8fbdb3c45bfd4e29ae1c69204',
-     armv7l: '217a0cdd025020aefaa9c8a07366e72ac564d7d8fbdb3c45bfd4e29ae1c69204',
-     x86_64: '385ac710ce7ae48615305920bdb3c1284211799f9db312aaba9805232c40c02a'
+    aarch64: '687e1ed522d7e9a5b1c57ace6367f750809deda529df3e6b563d8671a20847e5',
+     armv7l: '687e1ed522d7e9a5b1c57ace6367f750809deda529df3e6b563d8671a20847e5',
+     x86_64: 'de91d82689ed64fd86b08a79af6e8e3adadc2815f67646899247c58ca4c0d45d'
   })
 
   depends_on 'cairomm_1_16' # R
