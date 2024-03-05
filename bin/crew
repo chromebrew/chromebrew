@@ -1523,14 +1523,12 @@ def archive_package(crew_archive_dest)
     puts "The package file for #{@pkg_name} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
     if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
       puts "#{@pkg_name} will now be upgraded...".lightgreen
-      search @pkg_name
       @pkg.in_upgrade = true
       @pkg.build_from_source = false
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     else
       puts "#{@pkg_name} will now be installed...".lightgreen
-      search @pkg_name
       @pkg.build_from_source = false
       resolve_dependencies_and_install
     end
