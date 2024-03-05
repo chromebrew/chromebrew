@@ -25,6 +25,8 @@ class Gstreamer < Meson
   depends_on 'chromaprint' # R
   depends_on 'curl' # R
   depends_on 'elfutils' # R
+  depends_on 'faac' # R
+  depends_on 'faad2' # R
   depends_on 'ffmpeg' # R
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
@@ -89,16 +91,20 @@ class Gstreamer < Meson
   depends_on 'neon' # R
   depends_on 'nettle' # R
   depends_on 'openal' # R
+  depends_on 'openexr' # R
+  depends_on 'openh264' # R
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
-  depends_on 'opus' # R
   depends_on 'opusfile' => :build
+  depends_on 'opus' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
+  depends_on 'py3_setuptools' => :build
   depends_on 'pygobject' # R
   depends_on 'python3' # R
-  depends_on 'py3_setuptools' => :build
+  depends_on 'qt5_base' => :build # otherwise this becomes circular
+  depends_on 'qt5_declarative' => :build # otherwise this becomes circular
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
   depends_on 'serd' # R
@@ -113,12 +119,6 @@ class Gstreamer < Meson
   depends_on 'webrtc_audio_processing' # R
   depends_on 'zlibpkg' # R
   depends_on 'zvbi' # R
-  depends_on 'faac' # R
-  depends_on 'faad2' # R
-  depends_on 'openexr' # R
-  depends_on 'openh264' # R
-  depends_on 'qt5_base' => :build # otherwise this becomes circular
-  depends_on 'qt5_declarative' => :build # otherwise this becomes circular
 
   no_lto
 

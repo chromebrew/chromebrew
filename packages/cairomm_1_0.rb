@@ -11,10 +11,9 @@ class Cairomm_1_0 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '476734904312bcf2ab5f68b6e01c21d9cec2ce8a193bb72460a5ff4b6963d2f6',
-     armv7l: '476734904312bcf2ab5f68b6e01c21d9cec2ce8a193bb72460a5ff4b6963d2f6',
-       i686: '012bc214aeabf2221851723ffff25cbe9d3cb325cb44d954e4ce5e63f961458a',
-     x86_64: '55cce265874cfb769db0f0c7583d6aaef29eb4919431c10d8db4adaacf94b289'
+    aarch64: 'd5929e8b0df2c1043728370afcf8bc33fcda134dec6f2fafa0d99d9f4bf36521',
+     armv7l: 'd5929e8b0df2c1043728370afcf8bc33fcda134dec6f2fafa0d99d9f4bf36521',
+     x86_64: 'a12939138f8ace49eaaa0188b39157f2e0619b17e67d4101411c7f3209a6a0a6'
   })
 
   depends_on 'cairo' # R

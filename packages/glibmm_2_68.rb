@@ -11,9 +11,9 @@ class Glibmm_2_68 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd101b082fdbd28e16fed1ad66a3042a58f4d4d5575e5a5b9de59552ac8402964',
-     armv7l: 'd101b082fdbd28e16fed1ad66a3042a58f4d4d5575e5a5b9de59552ac8402964',
-     x86_64: '115a613e6a6f7dcc3faa0f4bbc5eecadb068951a3c9e1bf0a9f90102702db5a0'
+    aarch64: '5555ac0644dc4f44b8274d043a0570bee91ebf66a1876b15929aa70ac80f6638',
+     armv7l: '5555ac0644dc4f44b8274d043a0570bee91ebf66a1876b15929aa70ac80f6638',
+     x86_64: 'ae75d777e3f5421db84617bf29bb04dc86583d64a292c991dff3ef7fe7ed44ad'
   })
 
   depends_on 'gcc_lib' # R
