@@ -14,8 +14,8 @@ class Spirv_llvm_translator < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5bb717d271da412ceb388a669fdef3633404e0c44308458498b9e9a3a6a1b2c0',
-     armv7l: '5bb717d271da412ceb388a669fdef3633404e0c44308458498b9e9a3a6a1b2c0',
+    aarch64: '9f46463c79de5a225f6ce1710fb2d63ec9abd99139478b244d84864965727596',
+     armv7l: '9f46463c79de5a225f6ce1710fb2d63ec9abd99139478b244d84864965727596',
      x86_64: 'eb16a55db7aa5d9e080c1915f9f27db5cc66041f0ab67ce595461f1caf11cc0b'
   })
 
