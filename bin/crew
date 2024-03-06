@@ -1904,7 +1904,7 @@ def build_command(args)
     # Process preflight block to see if package should be built
     pre_flight
 
-    if !@pkg.is_fake? && @pkg.compatible? && @pkg.source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP' && !@pkg.no_compile_needed?
+    if !@pkg.is_fake? && @pkg.compatible? && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
