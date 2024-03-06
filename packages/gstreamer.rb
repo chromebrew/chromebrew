@@ -119,6 +119,8 @@ class Gstreamer < Meson
   depends_on 'webrtc_audio_processing' # R
   depends_on 'zlibpkg' # R
   depends_on 'zvbi' # R
+  depends_on 'glibc_lib' # R
+  depends_on 'libxtst' # R
 
   no_lto
 

@@ -11,13 +11,15 @@ class Transmission < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e798d83974522956c59950d3d8c2e9aa394483ba69df6bb91900fe37c2decc16',
-     armv7l: 'e798d83974522956c59950d3d8c2e9aa394483ba69df6bb91900fe37c2decc16',
-     x86_64: '23633d290a1a9428a7361ae50079b9e254dee2053ddc6cbbc5befefd7dadb3e5'
+    aarch64: '50ece0c1242810e225e81ba3d25191d139fa4870271b6cb6b9030e0d58033bbd',
+     armv7l: '50ece0c1242810e225e81ba3d25191d139fa4870271b6cb6b9030e0d58033bbd',
+     x86_64: 'f61812f7df704895bf13b4b405afb155af5da0b2351e5ef84657b04422b7666e'
   })
 
   depends_on 'at_spi2_core' => :build
   depends_on 'cairomm_1_16' # R
+  depends_on 'cairo' # R
+  depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
@@ -29,7 +31,6 @@ class Transmission < Package
   depends_on 'gtkmm4' # R
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
-  depends_on 'curl' # R
   depends_on 'libdeflate' # R
   depends_on 'libevent' # R
   depends_on 'libpsl' # R
@@ -38,11 +39,11 @@ class Transmission < Package
   depends_on 'miniupnpc' # R
   depends_on 'openssl' # R
   depends_on 'pangomm_2_48' # R
+  depends_on 'pango' # R
   depends_on 'shared_mime_info'
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'xdg_base' # L
-  depends_on 'pango' # R
 
   print_source_bashrc
 
