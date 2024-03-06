@@ -31,6 +31,7 @@ class Gstreamer < Meson
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gmp' # R
@@ -85,6 +86,7 @@ class Gstreamer < Meson
   depends_on 'libxfixes' # R
   depends_on 'libxi' # R
   depends_on 'libxml2' # R
+  depends_on 'libxtst' # R
   depends_on 'libxv' # R
   depends_on 'lilv' # R
   depends_on 'mesa' # R
@@ -119,8 +121,6 @@ class Gstreamer < Meson
   depends_on 'webrtc_audio_processing' # R
   depends_on 'zlibpkg' # R
   depends_on 'zvbi' # R
-  depends_on 'glibc_lib' # R
-  depends_on 'libxtst' # R
 
   no_lto
 
