@@ -2,18 +2,18 @@
 # https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
 
 require 'package'
-require_relative 'llvm17_build'
+require_relative 'llvm18_build'
 
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '17.0.6'
+  version '18.1.0'
   # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
-  puts "#{self} version differs from llvm version #{Llvm17_build.version}".orange if version != Llvm17_build.version
+  puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
-  git_hashtag Llvm17_build.git_hashtag.to_s
+  git_hashtag Llvm18_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -26,8 +26,8 @@ class Openmp < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libffi' # R
-  depends_on 'llvm17_dev' => :build
-  depends_on 'llvm17_lib' # R
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R
   depends_on 'python3' # R
 
   no_env_options
