@@ -24,7 +24,7 @@ class Llvm18_build < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'llvm18_dev' => :build
+  # depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
@@ -83,7 +83,7 @@ class Llvm18_build < Package
     # This patch should be in 18.0.1.
     downloader 'https://patch-diff.githubusercontent.com/raw/llvm/llvm-project/pull/84230.patch', '3a97108033890957acf0cce214a6366b77b61caf5a4aa5a5e75d384da7f2dde1'
     system 'patch -p1 -i 84230.patch'
-    
+
     return unless ARCH == 'i686'
 
     # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
