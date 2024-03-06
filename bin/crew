@@ -4,6 +4,7 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require 'tmpdir'
+require_relative '../commands/const'
 require_relative '../commands/help'
 require_relative '../lib/docopt'
 require_relative '../lib/color'
@@ -360,24 +361,6 @@ def cache_build
   else
     puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
     puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
-  end
-end
-
-def const(var = nil)
-  if var
-    value = Object.const_get(var.to_sym)
-    puts "#{var}=#{value}"
-  else
-    # Get all constants defined by const.rb
-    constants = Object.constants.select do |const|
-      Object.const_source_location(const)[0] == File.join(CREW_LIB_PATH, 'lib/const.rb')
-    end.sort
-
-    # Print a sorted list of the remaining constants used by crew.
-    constants.each do |var|
-      value = Object.const_get(var.to_sym)
-      puts "#{var}=#{value}"
-    end
   end
 end
 
@@ -1917,13 +1900,9 @@ def build_command(args)
 end
 
 def const_command(args)
-  if args['<name>'].empty?
-    const
-  else
-    args['<name>'].each do |name|
-      const name
-    end
-  end
+  args['<name>'].each do |name|
+    Command.const(name)
+  end.empty? && Command.const(nil)
 end
 
 def deps_command(args)
