@@ -16,7 +16,7 @@ class Llvm18_lib < Package
     aarch64: '31de5ed353ea8896253d04b80d457246c6e92c180dbfbb931bc20d0090e14202',
      armv7l: '31de5ed353ea8896253d04b80d457246c6e92c180dbfbb931bc20d0090e14202',
        i686: '135249c911ae26d32704d053088e8890056c6d206259b3a655ba831da5ab66e7',
-     x86_64: '044eda04df56f53738d5dbd22aadbc4d22d2d06e3efa0dea6bb86e1887a913b5'
+     x86_64: '53cedc2f7dacd5f8ae039c8e0465948c80ef5e45c152838f1dc0e7a82e123c65'
   })
 
   depends_on 'gcc_lib' # R
@@ -28,8 +28,6 @@ class Llvm18_lib < Package
   depends_on 'ncurses' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'llvm18_build' # R
-  depends_on 'llvm18_build' # R
 
   no_shrink
   no_source_build

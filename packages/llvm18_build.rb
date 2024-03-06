@@ -14,7 +14,7 @@ class Llvm18_build < Package
     aarch64: 'dbef1e8636a05e0a4e70bd9001ad146990bfbba84bb9e880422f82a9b94a0f57',
      armv7l: 'dbef1e8636a05e0a4e70bd9001ad146990bfbba84bb9e880422f82a9b94a0f57',
        i686: 'eaf270acd14036f9cfa6b26b97370f7344f5b074f3f00bb4cc6311d8974c09b9',
-     x86_64: 'd87bbcdd4569e6dc2b840b2399d7d30338c3f57bf366216da6875bc202ab7827'
+     x86_64: '2d18c251fa5499b78994af35cc22a282d00475dfc148c06e61eb71fbd31669d0'
   })
 
   depends_on 'ccache' => :build
@@ -80,6 +80,10 @@ class Llvm18_build < Package
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
 
   def self.patch
+    # This patch should be in 18.0.1.
+    downloader 'https://patch-diff.githubusercontent.com/raw/llvm/llvm-project/pull/84230.patch', '3a97108033890957acf0cce214a6366b77b61caf5a4aa5a5e75d384da7f2dde1'
+    system 'patch -p1 -i 84230.patch'
+    
     return unless ARCH == 'i686'
 
     # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851

@@ -16,7 +16,7 @@ class Llvm18_dev < Package
     aarch64: '7020cfb6e92b07aab80fc0f0c46dd2029a290dcd8b2b243856d84139fa618791',
      armv7l: '7020cfb6e92b07aab80fc0f0c46dd2029a290dcd8b2b243856d84139fa618791',
        i686: '654ba62628ac30390922448d03c0ea9d9ae9adb362aaa7301549e05554239052',
-     x86_64: 'b290a8656cbbe76c6519f09d8d557910c0d8e7ddcbbdbba4092d871975562909'
+     x86_64: '638ca10023277ae176b82bdc1135464760f4fdec78f96924c7b941a2db3779b6'
   })
 
   depends_on 'gcc_dev' # R
@@ -31,8 +31,6 @@ class Llvm18_dev < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'llvm18_build' # R
-  depends_on 'llvm18_build' # R
 
   no_shrink
   no_source_build

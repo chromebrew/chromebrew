@@ -29,6 +29,7 @@ class Openmp < Package
   depends_on 'llvm18_dev' => :build
   depends_on 'llvm18_lib' # R
   depends_on 'python3' # R
+  depends_on 'llvm18_build' # R
 
   no_env_options
 
