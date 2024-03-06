@@ -31,7 +31,6 @@ class Msgpack_c < CMake
 
   cmake_options "-DCMAKE_C_STANDARD='17' \
       -DBUILD_SHARED_LIBS=ON \
-      -DMSGPACK_32BIT=#{ARCH == 'i686' ? 'ON' : 'OFF'} \
       -DMSGPACK_ENABLE_STATIC=OFF \
       -DMSGPACK_BUILD_EXAMPLES=OFF \
       -DMSGPACK_BUILD_TESTS=OFF"
