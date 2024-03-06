@@ -16,7 +16,6 @@ class Gtkmm4 < Meson
      x86_64: 'eb407224748eef793e5bed1271239d23520e50f7e1112c1b5a429a81c6ad0af0'
   })
 
-  depends_on 'atkmm' => :build
   depends_on 'cairomm_1_16' # R
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
@@ -30,4 +29,6 @@ class Gtkmm4 < Meson
   depends_on 'libsigcplusplus3' # R
   depends_on 'pangomm_2_48' # R
   depends_on 'vulkan_headers' => :build
+
+  meson_options '-Dbuild-documentation=false'
 end
