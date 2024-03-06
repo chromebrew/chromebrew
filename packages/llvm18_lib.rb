@@ -13,9 +13,9 @@ class Llvm18_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1b851977336e8c48ca985aad78b3e71d514d6eef75195da0bd1eae614678655e',
-     armv7l: '1b851977336e8c48ca985aad78b3e71d514d6eef75195da0bd1eae614678655e',
-       i686: 'f47a87bcc8a967588ac58f3a1cb8dd04cf99a87609c25f89b37c36e175d88935',
+    aarch64: '31de5ed353ea8896253d04b80d457246c6e92c180dbfbb931bc20d0090e14202',
+     armv7l: '31de5ed353ea8896253d04b80d457246c6e92c180dbfbb931bc20d0090e14202',
+       i686: '135249c911ae26d32704d053088e8890056c6d206259b3a655ba831da5ab66e7',
      x86_64: '044eda04df56f53738d5dbd22aadbc4d22d2d06e3efa0dea6bb86e1887a913b5'
   })
 
@@ -28,8 +28,11 @@ class Llvm18_lib < Package
   depends_on 'ncurses' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'llvm18_build' # R
+  depends_on 'llvm18_build' # R
 
   no_shrink
+  no_source_build
   no_strip
 
   def self.install

@@ -2,6 +2,7 @@
 /usr/local/include/omp.h
 /usr/local/include/ompt-multiplex.h
 /usr/local/include/ompt.h
+/usr/local/include/ompx.h
 /usr/local/lib/cmake/openmp/FindOpenMPTarget.cmake
 /usr/local/lib/libarcher.so
 /usr/local/lib/libarcher_static.a

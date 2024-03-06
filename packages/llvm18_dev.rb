@@ -13,9 +13,9 @@ class Llvm18_dev < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '617d966e31c3300adfd2c8ca5ddbc2446a69a853eb2f60727d54359241844b38',
-     armv7l: '617d966e31c3300adfd2c8ca5ddbc2446a69a853eb2f60727d54359241844b38',
-       i686: 'ef650542e7a559299822a365ef229eabd282bd704d1d3b9d3fd7939ae9827238',
+    aarch64: '7020cfb6e92b07aab80fc0f0c46dd2029a290dcd8b2b243856d84139fa618791',
+     armv7l: '7020cfb6e92b07aab80fc0f0c46dd2029a290dcd8b2b243856d84139fa618791',
+       i686: '654ba62628ac30390922448d03c0ea9d9ae9adb362aaa7301549e05554239052',
      x86_64: 'b290a8656cbbe76c6519f09d8d557910c0d8e7ddcbbdbba4092d871975562909'
   })
 
@@ -31,8 +31,11 @@ class Llvm18_dev < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'llvm18_build' # R
+  depends_on 'llvm18_build' # R
 
   no_shrink
+  no_source_build
   no_strip
 
   def self.install

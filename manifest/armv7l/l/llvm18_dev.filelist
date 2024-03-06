@@ -115,7 +115,6 @@
 /usr/local/bin/llvm-split
 /usr/local/bin/llvm-stress
 /usr/local/bin/llvm-strings
-/usr/local/bin/llvm-strip
 /usr/local/bin/llvm-symbolizer
 /usr/local/bin/llvm-tblgen
 /usr/local/bin/llvm-tli-checker
@@ -4165,10 +4164,15 @@
 /usr/local/lib/clang/18/include/xsaveoptintrin.h
 /usr/local/lib/clang/18/include/xsavesintrin.h
 /usr/local/lib/clang/18/include/xtestintrin.h
-/usr/local/lib/clang/18/lib/i686-cros-linux-gnu/clang_rt.crtbegin.o
-/usr/local/lib/clang/18/lib/i686-cros-linux-gnu/clang_rt.crtend.o
-/usr/local/lib/clang/18/lib/i686-cros-linux-gnu/libclang_rt.builtins.a
-/usr/local/lib/clang/18/lib/i686-cros-linux-gnu/libclang_rt.profile.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/clang_rt.crtbegin.o
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/clang_rt.crtend.o
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/libclang_rt.builtins.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/libclang_rt.profile.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/libclang_rt.xray-basic.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/libclang_rt.xray-fdr.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/libclang_rt.xray-profiling.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/libclang_rt.xray.a
+/usr/local/lib/clang/18/lib/armv7l-cros-linux-gnueabihf/liborc_rt.a
 /usr/local/lib/cmake/ParallelSTL/ParallelSTLConfig.cmake
 /usr/local/lib/cmake/ParallelSTL/ParallelSTLConfigVersion.cmake
 /usr/local/lib/cmake/ParallelSTL/ParallelSTLTargets.cmake
@@ -4223,9 +4227,6 @@
 /usr/local/lib/cmake/polly/PollyConfig.cmake
 /usr/local/lib/cmake/polly/PollyConfigVersion.cmake
 /usr/local/lib/cmake/polly/PollyExports-all.cmake
-/usr/local/lib/libLLVM-18rc.so
-/usr/local/lib/libLLVM.so
-/usr/local/lib/libLLVM.so.18.1rc
 /usr/local/lib/libLLVMAArch64AsmParser.a
 /usr/local/lib/libLLVMAArch64CodeGen.a
 /usr/local/lib/libLLVMAArch64Desc.a

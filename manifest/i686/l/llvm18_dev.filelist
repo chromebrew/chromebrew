@@ -115,7 +115,6 @@
 /usr/local/bin/llvm-split
 /usr/local/bin/llvm-stress
 /usr/local/bin/llvm-strings
-/usr/local/bin/llvm-strip
 /usr/local/bin/llvm-symbolizer
 /usr/local/bin/llvm-tblgen
 /usr/local/bin/llvm-tli-checker
@@ -4223,9 +4222,6 @@
 /usr/local/lib/cmake/polly/PollyConfig.cmake
 /usr/local/lib/cmake/polly/PollyConfigVersion.cmake
 /usr/local/lib/cmake/polly/PollyExports-all.cmake
-/usr/local/lib/libLLVM-18rc.so
-/usr/local/lib/libLLVM.so
-/usr/local/lib/libLLVM.so.18.1rc
 /usr/local/lib/libLLVMAArch64AsmParser.a
 /usr/local/lib/libLLVMAArch64CodeGen.a
 /usr/local/lib/libLLVMAArch64Desc.a
