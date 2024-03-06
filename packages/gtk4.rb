@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk4 < Package
+class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
   version '4.13.9'
@@ -87,7 +87,6 @@ class Gtk4 < Package
       -Dbroadway-backend=true \
       -Dbuild-demos=false \
       -Dbuild-examples=false \
-      -Dbuild-tests=false \
       -Dbuild-testsuite=false \
       -Dcloudproviders=enabled \
       -Dgraphene:default_library=both \

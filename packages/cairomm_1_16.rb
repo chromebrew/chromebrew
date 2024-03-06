@@ -25,6 +25,5 @@ class Cairomm_1_16 < Meson
   depends_on 'libxxf86vm' => :build
 
   meson_options '-Dbuild-documentation=false \
-    -Dbuild-examples=false \
-    -Dbuild-tests=false'
+    -Dbuild-examples=false'
 end

@@ -133,6 +133,5 @@ class Gstreamer < Meson
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
     -Ddoc=disabled \
     -Dgpl=enabled \
-    -Dgtk_doc=disabled \
-    -Dtests=disabled"
+    -Dgtk_doc=disabled"
 end
