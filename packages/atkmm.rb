@@ -5,7 +5,7 @@ class Atkmm < Meson
   homepage 'https://www.gtkmm.org/'
   version '2.36.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/atkmm.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Atkmm < Meson
   binary_sha256({
     aarch64: '9224b82b6db207ebcb652edeb5403eec1be918f7b395d449c2b4a6bd04298a37',
      armv7l: '9224b82b6db207ebcb652edeb5403eec1be918f7b395d449c2b4a6bd04298a37',
-       i686: '4ceaac05ebc9ae13009b10103249356131e260b7ce8ed3a3e57ad91f73f174e2',
      x86_64: 'a31362204e6e24f6f808389b62868f690b9377185c979dcbdadf737293d4c306'
   })
 
