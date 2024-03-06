@@ -18,7 +18,6 @@ class Gtkmm4 < Meson
 
   depends_on 'atkmm' => :build
   depends_on 'cairomm_1_16' # R
-  depends_on 'cairomm' => :build
   depends_on 'cairo' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
@@ -27,10 +26,8 @@ class Gtkmm4 < Meson
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  depends_on 'gtk4' => :build
   depends_on 'gtk4' # R
   depends_on 'libsigcplusplus3' # R
   depends_on 'pangomm_2_48' # R
-  depends_on 'pangomm' => :build
   depends_on 'vulkan_headers' => :build
 end
