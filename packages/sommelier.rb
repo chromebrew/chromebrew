@@ -3,11 +3,11 @@ require 'package'
 class Sommelier < Package
   description 'Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.'
   homepage 'https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/'
-  version '20230912-llvm17'
+  version '20240227-llvm18'
   license 'BSD-Google'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://chromium.googlesource.com/chromiumos/platform2.git'
-  git_hashtag 'f699391c122d6afde169347083655f740d14c850'
+  git_hashtag 'c1a84cbd8770520ac0418f9a8d4f5fb185ca156f'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -24,7 +24,8 @@ class Sommelier < Package
   depends_on 'libxcvt'
   depends_on 'libxfixes' => :build
   depends_on 'libxkbcommon' # R
-  depends_on 'llvm17_lib' # R Note that this may need rebuilds for newer llvm versions.
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R Note that this may need rebuilds for newer llvm versions.
   depends_on 'mesa' # R
   depends_on 'pixman' # R
   depends_on 'procps' # for pgrep in wrapper script

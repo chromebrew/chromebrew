@@ -4,7 +4,7 @@ class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
   @_ver = '24.0.2'
-  version "#{@_ver}-llvm17"
+  version "#{@_ver}-llvm18"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -43,8 +43,8 @@ class Mesa < Package
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm17_dev' => :build
-  depends_on 'llvm17_lib' # R
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'valgrind' => :build

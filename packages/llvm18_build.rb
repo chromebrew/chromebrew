@@ -3,7 +3,7 @@ require 'package'
 class Llvm18_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '18.1.0-rc4'
+  version '18.1.0'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -24,7 +24,7 @@ class Llvm18_build < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'llvm17_dev' => :build
+  # depends_on 'llvm17_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
