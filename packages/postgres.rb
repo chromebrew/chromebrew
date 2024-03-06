@@ -26,7 +26,7 @@ class Postgres < Package
   depends_on 'libcyrussasl' => :build
   depends_on 'libxml2' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm17_dev' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'llvm17_lib' # R
   depends_on 'lz4' # R
   depends_on 'openldap' # R

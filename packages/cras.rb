@@ -23,7 +23,7 @@ class Cras < Package
   depends_on 'gtest' => :build
   depends_on 'iniparser' # R
   depends_on 'ladspa'
-  depends_on 'llvm17_dev' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'rust' => :build
   depends_on 'sbc' # R
   depends_on 'speexdsp' # R

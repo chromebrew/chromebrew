@@ -6,7 +6,7 @@ require 'buildsystems/cmake'
 class Spirv_llvm_translator < CMake
   description 'Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
   homepage 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
-  version '17.0.0'
+  version '18.1.0'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git'
@@ -21,8 +21,8 @@ class Spirv_llvm_translator < CMake
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'llvm17_dev' => :build
-  depends_on 'llvm17_lib' # R
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R
   depends_on 'spirv_headers' => :build
   depends_on 'spirv_tools' # R
 end
