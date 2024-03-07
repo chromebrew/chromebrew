@@ -13,8 +13,8 @@ class Llvm18_dev < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3311d1a9c617207fa553e1b287ef2f60868cd84d80bab903409493a9f24d2b6d',
-     armv7l: '3311d1a9c617207fa553e1b287ef2f60868cd84d80bab903409493a9f24d2b6d',
+    aarch64: 'c239a12d6436cc66e6ef32f5e0b2584ca80aaf94fdfd2bea4adfdecc72554fd6',
+     armv7l: 'c239a12d6436cc66e6ef32f5e0b2584ca80aaf94fdfd2bea4adfdecc72554fd6',
        i686: 'bc91fd5124194a36ee0076e1205e9c80b0fbb15466c12842bf499d16d9b00e8c',
      x86_64: 'ce86f315fbab69c4bf3bcd67981fec1f6380e3650ee8e8c259fef7a49b2014e2'
   })
