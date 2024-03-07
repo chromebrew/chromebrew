@@ -177,6 +177,7 @@
 /usr/local/share/doc/libvdpau/html/struct_vdp_color.html
 /usr/local/share/doc/libvdpau/html/struct_vdp_layer.html
 /usr/local/share/doc/libvdpau/html/struct_vdp_output_surface_render_blend_state.html
+/usr/local/share/doc/libvdpau/html/struct_vdp_picture_info_a_v1.html
 /usr/local/share/doc/libvdpau/html/struct_vdp_picture_info_h264.html
 /usr/local/share/doc/libvdpau/html/struct_vdp_picture_info_h264_predictive.html
 /usr/local/share/doc/libvdpau/html/struct_vdp_picture_info_h_e_v_c.html
