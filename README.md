@@ -93,6 +93,7 @@ Where available commands are:
 | remove       | remove package(s) |
 | search       | look for package(s) |
 | sysinfo      | show system information in markdown style |
+| test         | test crew command(s) |
 | update       | update crew itself |
 | upgrade      | update all or specific package(s) |
 | upload       | upload binaries for all or specific package(s) |

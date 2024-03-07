@@ -106,6 +106,14 @@ class Command
         Usage: crew sysinfo
         If `-v` or `--verbose` is present, show system information with raw markdown.
       EOT
+    when 'test'
+      puts <<~EOT
+        Test crew command(s).
+        Usage: crew test [<command1> <command2> ...]
+        The crew command and associated test must exist.
+        If no commands are provided, all commands will be tested.
+        To list all commands, simply type 'crew'.
+      EOT
     when 'update'
       puts <<~EOT
         Update crew.

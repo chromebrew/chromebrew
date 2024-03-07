@@ -54,6 +54,7 @@ DOC = <<~DOCOPT
     crew remove [options] <name> ...
     crew search [options] [<name> ...]
     crew sysinfo [options]
+    crew test [<name> ...]
     crew update [options] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--source] [<name> ...]
     crew upload [options] [<name> ...]
@@ -2059,6 +2060,30 @@ def sysinfo_command(_args)
     puts sysinfo_markdown_header, sysinfo_markdown_body, sysinfo_markdown_footer
   else
     puts sysinfo_markdown_body.tr('`', '')
+  end
+end
+
+def test_command(args)
+  test_commands_path = "#{CREW_LIB_PATH}/tests/commands"
+  if args['<name>'].empty?
+    Dir["#{test_commands_path}/*.rb"].each do |name|
+      basename = File.basename(name, '.rb')
+      puts "Testing #{basename} command ...".yellow
+      system("ruby #{name}")
+    end
+  else
+    args['<name>'].each do |name|
+      basename = File.basename(name, '.rb')
+      name = basename if basename != name
+      if File.file?("#{test_commands_path}/#{name}.rb")
+        Dir.chdir(test_commands_path) do
+          puts "Testing #{name} command ...".yellow
+          system("ruby #{name}.rb")
+        end
+      else
+        puts "The #{name} command or test does not exist. Test skipped.".orange
+      end
+    end
   end
 end
 
