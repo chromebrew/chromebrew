@@ -28,6 +28,7 @@ class Gtkmm4 < Meson
   depends_on 'gtk4' # R
   depends_on 'libsigcplusplus3' # R
   depends_on 'pangomm_2_48' # R
+  depends_on 'mm_common' => :build
   depends_on 'vulkan_headers' => :build
 
   meson_options '-Dbuild-documentation=false'
