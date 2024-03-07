@@ -7,7 +7,7 @@ class Msgpack_c < CMake
   description 'An efficient object serialization library'
   homepage 'https://msgpack.org/'
   version '6.0.0'
-  license 'custom:Boost'
+  license 'BSL-1.0'
   compatibility 'all'
   source_url 'https://github.com/msgpack/msgpack-c/releases/download/c-6.0.0/msgpack-c-6.0.0.tar.gz'
   source_sha256 '3654f5e2c652dc52e0a993e270bb57d5702b262703f03771c152bba51602aeba'
