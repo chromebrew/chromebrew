@@ -8491,6 +8491,11 @@ url: https://codeberg.org/dnkl/tllist/tags
 activity: medium
 ---
 kind: url
+name: tmate
+url: https://github.com/tmate-io/tmate/releases
+activity: low
+---
+kind: url
 name: tmux
 url: https://github.com/tmux/tmux/releases
 activity: low

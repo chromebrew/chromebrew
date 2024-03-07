@@ -67,6 +67,8 @@
 /usr/local/share/doc/transmission/news/news-4.0.1.md
 /usr/local/share/doc/transmission/news/news-4.0.2.md
 /usr/local/share/doc/transmission/news/news-4.0.3.md
+/usr/local/share/doc/transmission/news/news-4.0.4.md
+/usr/local/share/doc/transmission/news/news-4.0.5.md
 /usr/local/share/doc/transmission/rpc-spec.md
 /usr/local/share/doc/transmission/send-email-when-torrent-done.sh
 /usr/local/share/icons/hicolor/scalable/apps/transmission-devel.svg
@@ -170,5 +172,6 @@
 /usr/local/share/transmission/public_html/images/favicon.png
 /usr/local/share/transmission/public_html/images/webclip-icon.png
 /usr/local/share/transmission/public_html/index.html
+/usr/local/share/transmission/public_html/transmission-app.css
 /usr/local/share/transmission/public_html/transmission-app.js
-/usr/local/share/transmission/public_html/transmission-app.js.LICENSE.txt
+/usr/local/share/transmission/public_html/transmission-app.js.LEGAL.txt

@@ -1,20 +1,19 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Cairomm_1_16 < Package
+class Cairomm_1_16 < Meson
   description 'The Cairomm package provides a C++ interface to Cairo.'
   homepage 'https://www.cairographics.org/'
-  version '1.16.2'
+  version '1.18.0'
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/cairo/cairomm.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f762614a3a14af45a249fb9c218864f90fc5f17c76e162b1ebac72a3f50ff8d6',
-     armv7l: 'f762614a3a14af45a249fb9c218864f90fc5f17c76e162b1ebac72a3f50ff8d6',
-       i686: '69c11234edaa48db3e9f916a66566eea806f451c48d787174a015c9d905607d3',
-     x86_64: '98b889a6b0e94f60e931471faead51a176f1efd88bf17221c04ac1a13b2f195e'
+    aarch64: '91b832dbe79850875f8552e1f314eeaf78c01b4fa1371e9374a55001d0169ec9',
+     armv7l: '91b832dbe79850875f8552e1f314eeaf78c01b4fa1371e9374a55001d0169ec9',
+     x86_64: '73bc75296cdc4d6af8c005de02b4a843099c9758181111d7866cc0e701420085'
   })
 
   depends_on 'cairo' # R
@@ -25,17 +24,6 @@ class Cairomm_1_16 < Package
   depends_on 'libxrender' => :build
   depends_on 'libxxf86vm' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbuild-documentation=false \
-    -Dbuild-examples=false \
-    -Dbuild-tests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false \
+    -Dbuild-examples=false'
 end

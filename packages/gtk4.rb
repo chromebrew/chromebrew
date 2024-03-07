@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk4 < Package
+class Gtk4 < Meson
   description 'GTK+ is a multi-platform toolkit for creating graphical user interfaces.'
   homepage 'https://developer.gnome.org/gtk4/'
-  version '4.13.5'
+  version '4.13.9'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk.git'
@@ -11,9 +11,9 @@ class Gtk4 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57fe6e15199af3567dae37dc5b175f0a2f779c0d38832b68e5961433604f8c6f',
-     armv7l: '57fe6e15199af3567dae37dc5b175f0a2f779c0d38832b68e5961433604f8c6f',
-     x86_64: 'a7e04af865767a8ae2fc5b1f6896847f3c2504d28249a7ccdfaf8c77b812c3bd'
+    aarch64: 'da0d607520bae5eb23a646d2004f3ad18fe19382438aedde41c8c28b7ac6ffa5',
+     armv7l: 'da0d607520bae5eb23a646d2004f3ad18fe19382438aedde41c8c28b7ac6ffa5',
+     x86_64: '65a96c32b9d47ea2517f4d9e2b6255ddddb2fd03cef23598bc18ca1b4e2041ec'
   })
 
   # L = Logical Dependency, R = Runtime Dependency
@@ -30,10 +30,11 @@ class Gtk4 < Package
   depends_on 'ghostscript' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'glslang' => :build
   # depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' => :build
   depends_on 'graphene' # R
-  depends_on 'gstreamer' # R
+  # depends_on 'gstreamer' # R Let's avoid the glibc 2.29 dep.
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' # L
   depends_on 'intel_media_sdk' => :build if ARCH.eql?('x86_64')
@@ -84,17 +85,17 @@ class Gtk4 < Package
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
       -Dbroadway-backend=true \
+      -Dbuild-demos=false \
       -Dbuild-examples=false \
-      -Dbuild-tests=false \
       -Dbuild-testsuite=false \
-      -Ddemos=false \
-      -Dintrospection=enabled \
-      -Dgraphene:default_library=both \
-      -Dlibsass:default_library=both \
-      -Dmutest:default_library=both \
       -Dcloudproviders=enabled \
-      -Dvulkan=enabled \
+      -Dgraphene:default_library=both \
+      -Dintrospection=enabled \
+      -Dlibsass:default_library=both \
+      -Dmedia-gstreamer=disabled \
+      -Dmutest:default_library=both \
       -Dprint-cups=auto \
+      -Dvulkan=enabled \
       builddir"
     system 'meson configure --no-pager builddir'
     system "#{CREW_NINJA} -C builddir"
