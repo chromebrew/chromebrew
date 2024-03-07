@@ -17,9 +17,9 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4c091abda2f57e6a8e796766975fa8b07543726654dffede4cca9f857c97740',
-     armv7l: 'f4c091abda2f57e6a8e796766975fa8b07543726654dffede4cca9f857c97740',
-       i686: 'ac96c0a742931e39e00de0be5784d4b4fee2baa5bee276f01bb362aa18d85b84',
+    aarch64: 'b57430e0139ba519227f3948f6fab4209f49c1de73c3d83fddff2887e76dea75',
+     armv7l: 'b57430e0139ba519227f3948f6fab4209f49c1de73c3d83fddff2887e76dea75',
+       i686: '6b20b3c46751677f4b51aa1bb60adbd1c6ea41cb3bf1601f1042381b21391f3f',
      x86_64: '5eff8d2213125373162d0600496657edf79b2a17e55d232bd337734a15dd9129'
   })
 
@@ -29,7 +29,6 @@ class Openmp < Package
   depends_on 'llvm18_dev' => :build
   depends_on 'llvm18_lib' # R
   depends_on 'python3' # R
-  depends_on 'llvm18_build' # R
 
   no_env_options
 
