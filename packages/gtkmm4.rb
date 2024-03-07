@@ -11,9 +11,9 @@ class Gtkmm4 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '181cd9d9c4dca2a443121ed4fd82e9f5ba249423e1777f8842700dbe1afefe8e',
-     armv7l: '181cd9d9c4dca2a443121ed4fd82e9f5ba249423e1777f8842700dbe1afefe8e',
-     x86_64: 'eb407224748eef793e5bed1271239d23520e50f7e1112c1b5a429a81c6ad0af0'
+    aarch64: 'e434093b7c637f2eb345a040fc96e963d50c4a6dae4f9880cc07c693b892b668',
+     armv7l: 'e434093b7c637f2eb345a040fc96e963d50c4a6dae4f9880cc07c693b892b668',
+     x86_64: 'f28c87e6d05d687f3c8f354ed7dca65d4bbfaf98fc45136b054e5bee47871ef3'
   })
 
   depends_on 'cairomm_1_16' # R
