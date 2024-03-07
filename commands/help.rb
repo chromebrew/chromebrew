@@ -187,6 +187,8 @@ def help_prop(property)
       puts "Use the 'no_patchelf' property to bypass patchelf execution."
     when 'no_shrink'
       puts "Use the 'no_shrink' property to bypass upx binary compression."
+    when 'no_source_build'
+      puts "Use the 'no_source_build' property to build even if source is unspecified or unavailable."
     when 'no_strip'
       puts "Use the 'no_strip' property to bypass strip execution."
     when 'no_lto'
