@@ -5,7 +5,7 @@ class Vkd3d < Autotools
   homepage 'https://wiki.winehq.org/Vkd3d/'
   version '1.11'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64'
   source_url 'https://gitlab.winehq.org/wine/vkd3d.git'
   git_hashtag "vkd3d-#{version}"
   binary_compression 'tar.zst'

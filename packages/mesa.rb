@@ -48,7 +48,6 @@ class Mesa < Package
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'valgrind' => :build
-  depends_on 'vkd3d' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland_protocols' => :build
