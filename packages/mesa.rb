@@ -12,8 +12,8 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11c6a13cee1810f4961ae603e955a3bb6cd1a8cdcd121bfb9cca20452bb76fe0',
-     armv7l: '11c6a13cee1810f4961ae603e955a3bb6cd1a8cdcd121bfb9cca20452bb76fe0',
+    aarch64: '5f27a8e4a5793becc36c7dc4283976d90ab1f0837838d8a06a0e308c3da9f705',
+     armv7l: '5f27a8e4a5793becc36c7dc4283976d90ab1f0837838d8a06a0e308c3da9f705',
      x86_64: '057c85aeab36301d68887fc15930deb7b19485af173c8587925e8696149d6026'
   })
 

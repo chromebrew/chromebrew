@@ -11,8 +11,8 @@ class Sommelier < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f5c6293a3b924dd1b7010ecd9e723045465e82c4aae21473f447585a064b6988',
-     armv7l: 'f5c6293a3b924dd1b7010ecd9e723045465e82c4aae21473f447585a064b6988',
+    aarch64: 'c2a5453a12d3c2f54c545b696d484bfa5bf2e51c910290e6f1fb90b54920a366',
+     armv7l: 'c2a5453a12d3c2f54c545b696d484bfa5bf2e51c910290e6f1fb90b54920a366',
      x86_64: '659e85fac574b7dcf6608ac07b3ed331d1bd157e49c6f143d82be963dfdcd18e'
   })
 
@@ -53,20 +53,20 @@ class Sommelier < Package
     # This patch fixes:
     #   wl_registry@2: error 0: invalid version for global xdg_wm_base (41): have 1, wanted 3
     #   sommelier.elf: ../sommelier-window.cc:412: void sl_window_update(struct sl_window *): Assertion `ctx->xdg_shell' failed.
-    sommelier_patch = <<~SOMMELIER_PATCH_EOF
+    sommelier_patch = <<~'SOMMELIER_PATCH_EOF'
       diff -Npaur a/sommelier.cc b/sommelier.cc
-      --- a/sommelier.cc	2023-09-20 19:46:09.295859977 +0000
-      +++ b/sommelier.cc	2023-09-20 19:47:31.591275800 +0000
-      @@ -96,6 +96,8 @@ struct sl_data_source {
-       #define MIN_AURA_SHELL_VERSION 6
-       #define MAX_AURA_SHELL_VERSION 38
+      --- a/sommelier.cc	2024-03-07 16:44:13.513582795 -0500
+      +++ b/sommelier.cc	2024-03-07 16:46:42.699788185 -0500
+      @@ -108,6 +108,8 @@ struct sl_data_source {
+
+       static const char STEAM_APP_CLASS_PREFIX[] = "steam_app_";
 
       +char xdg_shell_interface[20] = "xdg_wm_base";
       +
        int sl_open_wayland_socket(const char* socket_name,
                                   struct sockaddr_un* addr,
                                   int* lock_fd,
-      @@ -619,7 +621,7 @@ void sl_registry_handler(void* data,
+      @@ -592,7 +594,7 @@ void sl_registry_handler(void* data,
              data_device_manager->host_global =
                  sl_data_device_manager_global_create(ctx);
            }
@@ -75,7 +75,7 @@ class Sommelier < Package
            struct sl_xdg_shell* xdg_shell =
                static_cast<sl_xdg_shell*>(malloc(sizeof(struct sl_xdg_shell)));
            assert(xdg_shell);
-      @@ -3871,6 +3873,8 @@ int real_main(int argc, char** argv) {
+      @@ -4014,6 +4016,8 @@ int real_main(int argc, char** argv) {
              ctx.use_virtgpu_channel = true;
            } else if (strstr(arg, "--noop-driver") == arg) {
              noop_driver = true;
@@ -83,19 +83,18 @@ class Sommelier < Package
       +      strcpy(xdg_shell_interface, "zxdg_shell_v6");
            } else if (strstr(arg, "--stable-scaling") == arg) {
              ctx.stable_scaling = true;
-       #ifdef PERFETTO_TRACING
-      diff -Nur a/sommelier.h b/sommelier.h
-      --- a/sommelier.h       2023-02-17 20:55:44.591868511 +0800
-      +++ b/sommelier.h       2023-02-17 22:20:37.052140477 +0800
-      @@ -21,8 +21,8 @@
-       #include "weak-resource-ptr.h"  // NOLINT(build/include_directory)
+           } else if (strstr(arg, "--viewport-resize") == arg) {
+      diff -Npaur a/sommelier.h b/sommelier.h
+      --- a/sommelier.h	2024-03-07 16:44:17.017540640 -0500
+      +++ b/sommelier.h	2024-03-07 16:48:46.286301715 -0500
+      @@ -22,7 +22,8 @@
+       #include "weak-resource-ptr.h"          // NOLINT(build/include_directory)
 
        #define SOMMELIER_VERSION "0.20"
-      -#define XDG_SHELL_VERSION 3u
       -#define APPLICATION_ID_FORMAT_PREFIX "org.chromium.guest_os.%s"
       +#define XDG_SHELL_VERSION 1u
       +#define APPLICATION_ID_FORMAT_PREFIX "org.chromebrew.%s"
-       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \\
+       #define NATIVE_WAYLAND_APPLICATION_ID_FORMAT \
          APPLICATION_ID_FORMAT_PREFIX ".wayland.%s"
     SOMMELIER_PATCH_EOF
 
