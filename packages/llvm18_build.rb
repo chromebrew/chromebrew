@@ -14,7 +14,7 @@ class Llvm18_build < Package
     aarch64: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
      armv7l: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
        i686: 'cf96cf88a9328370050c6b4bc91c2590086598133e562d8bb45eed0a69483929',
-     x86_64: '5fc7ca8eb4bc2cf015114677b25bda358dd4514b781dfaf9b0308fae975ab0b0'
+     x86_64: '502d8904eeaff5f0e1e7a510803cad4ce92580cc3613e7c929f8ff87921f150a'
   })
 
   depends_on 'ccache' => :build
