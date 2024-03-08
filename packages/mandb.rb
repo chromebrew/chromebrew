@@ -66,7 +66,7 @@ class Mandb < Package
     puts '(Errors from this can either be ignored or reported upstream to the relevant package maintainers.)'.yellow
     # See https://gitlab.com/man-db/man-db/-/issues/4
     # Also https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1003089
-    FileUtils.mkdir_p #{CREW_PREFIX}/var/log"
+    FileUtils.mkdir_p "#{CREW_PREFIX}/var/log"
     system "MANPATH='' MAN_DISABLE_SECCOMP=1 nice -n 20 mandb -C #{CREW_PREFIX}/etc/man_db.conf -psc &> #{CREW_PREFIX}/var/log/man-db-rebuild.log &"
   end
 end
