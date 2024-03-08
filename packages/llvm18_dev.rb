@@ -15,7 +15,7 @@ class Llvm18_dev < Package
   binary_sha256({
     aarch64: 'c239a12d6436cc66e6ef32f5e0b2584ca80aaf94fdfd2bea4adfdecc72554fd6',
      armv7l: 'c239a12d6436cc66e6ef32f5e0b2584ca80aaf94fdfd2bea4adfdecc72554fd6',
-       i686: 'bc91fd5124194a36ee0076e1205e9c80b0fbb15466c12842bf499d16d9b00e8c',
+       i686: '846ced24b054d23942d054193ba1cfc7cd4b9a6710bf9559f611a73e60d04e17',
      x86_64: 'ff61954333d270c18d83210478c10559886c5f217097cdb930cf2bd82f9ef6da'
   })
 
