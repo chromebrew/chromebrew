@@ -287,7 +287,6 @@ crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
 # We need these to install core.
-yes | crew install pixz
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
@@ -317,8 +316,16 @@ else
   git checkout -f "${BRANCH}"
 
   # Set sparse-checkout folders.
-  git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
+  set +H
+  git sparse-checkout set --no-cone "/*" packages "/manifest/${ARCH}/*" lib commands bin crew tests tools
+  # shellcheck disable=SC2010
+  # Note that extglob doesn't work here for some reason.
+  for i in $(ls manifest| grep -v "${ARCH}") ; do git sparse-checkout add "!/manifest/${i}/" ; done
+  set -H
+
   git reset --hard origin/"${BRANCH}"
+  git sparse-checkout reapply
+  crew update
 fi
 echo -e "${RESET}"
 

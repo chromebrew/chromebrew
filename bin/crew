@@ -434,9 +434,14 @@ def update
   abort "'crew update' is used to update crew itself. Use 'crew upgrade <package1> [<package2> ...]' to update specific packages.".orange if @pkg_name
 
   # update package lists
+  @other_arches = %w[i686 x86_64 armv7l]
+  @other_arches.reject! { |n| n == ARCH }
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system "git sparse-checkout set packages manifest/#{ARCH} lib commands bin crew tests tools"
+    system "git sparse-checkout set --no-cone \"/*\" packages \"/manifest/#{ARCH}/*\" lib commands bin crew tests tools"
+    @other_arches.each do |other_arch|
+      system "git sparse-checkout add \"!/manifest/#{other_arch}/\""
+    end
     system 'git sparse-checkout reapply'
 
     system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
