@@ -2,6 +2,7 @@
 /usr/local/include/omp.h
 /usr/local/include/ompt-multiplex.h
 /usr/local/include/ompt.h
+/usr/local/include/ompx.h
 /usr/local/lib64/cmake/openmp/FindOpenMPTarget.cmake
 /usr/local/lib64/libarcher.so
 /usr/local/lib64/libarcher_static.a
@@ -32,6 +33,8 @@
 /usr/local/lib64/libomptarget-amdgpu-gfx90a.bc
 /usr/local/lib64/libomptarget-amdgpu-gfx90c.bc
 /usr/local/lib64/libomptarget-amdgpu-gfx940.bc
+/usr/local/lib64/libomptarget-amdgpu-gfx941.bc
+/usr/local/lib64/libomptarget-amdgpu-gfx942.bc
 /usr/local/lib64/libomptarget-nvptx-sm_35.bc
 /usr/local/lib64/libomptarget-nvptx-sm_37.bc
 /usr/local/lib64/libomptarget-nvptx-sm_50.bc
@@ -50,13 +53,13 @@
 /usr/local/lib64/libomptarget-nvptx-sm_90.bc
 /usr/local/lib64/libomptarget.devicertl.a
 /usr/local/lib64/libomptarget.rtl.amdgpu.so
-/usr/local/lib64/libomptarget.rtl.amdgpu.so.17
+/usr/local/lib64/libomptarget.rtl.amdgpu.so.18.1
 /usr/local/lib64/libomptarget.rtl.cuda.so
-/usr/local/lib64/libomptarget.rtl.cuda.so.17
+/usr/local/lib64/libomptarget.rtl.cuda.so.18.1
 /usr/local/lib64/libomptarget.rtl.x86_64.so
-/usr/local/lib64/libomptarget.rtl.x86_64.so.17
+/usr/local/lib64/libomptarget.rtl.x86_64.so.18.1
 /usr/local/lib64/libomptarget.so
-/usr/local/lib64/libomptarget.so.17
+/usr/local/lib64/libomptarget.so.18.1
 /usr/local/share/gdb/python/ompd/__init__.py
 /usr/local/share/gdb/python/ompd/frame_filter.py
 /usr/local/share/gdb/python/ompd/ompd.py

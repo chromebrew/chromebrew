@@ -19,7 +19,7 @@ class Fish < CMake
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'llvm17_dev' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'pcre2' # R
 

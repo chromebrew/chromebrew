@@ -19,7 +19,7 @@ class Vc_intrinsics < CMake
      x86_64: 'f5609153af13fe159c6aa7bf1fa2bcdaebbe9e7fa63de0ee93252a8433db0c21'
   })
 
-  depends_on 'llvm17_dev' => :build
+  depends_on 'llvm18_dev' => :build
 
   cmake_options "-DLLVM_DIR=#{CREW_LIB_PREFIX}/cmake/llvm"
 end

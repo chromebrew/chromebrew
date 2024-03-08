@@ -1,9 +1,9 @@
 require 'package'
 
-class Llvm17_build < Package
+class Llvm18_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '17.0.6'
+  version '18.1.0'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -11,10 +11,10 @@ class Llvm17_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
-     armv7l: '2ca2cbd1f3c6c9dd061cbc395cbade365efcb0ac67baaa01e3caa6fb1fd82748',
-       i686: 'ac38487519bf7b3646e4da173cab22d1a8a3966f66a2a4ab20ab00230a1ddd2c',
-     x86_64: 'b7e8797a0d0b7003c6a14749b83e339a92d58aaa66bb120e7b211d9bb03dfa59'
+    aarch64: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
+     armv7l: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
+       i686: 'f68d85c167ad644911e67569e3252d971eb3c7eadfccbed4eca0f5df094081f9',
+     x86_64: '502d8904eeaff5f0e1e7a510803cad4ce92580cc3613e7c929f8ff87921f150a'
   })
 
   depends_on 'ccache' => :build
@@ -80,6 +80,18 @@ class Llvm17_build < Package
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
 
   def self.patch
+    # This patch should be in 18.0.1.
+    # https://github.com/llvm/llvm-project/pull/84230
+    downloader 'https://github.com/llvm/llvm-project/commit/bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch', '3a97108033890957acf0cce214a6366b77b61caf5a4aa5a5e75d384da7f2dde1'
+    system 'patch -F3 -p1 -i bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch'
+
+    # llvm 18.x backport.
+    downloader 'https://github.com/llvm/llvm-project/pull/84290.patch', 'a54bedaa078a2bf1778e66195e016f6794a431e8622a45ee7a49bc0ca898b82b'
+    system 'patch -F3 -p1 -i 84290.patch'
+
+    # Remove rc suffix on final release.
+    system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
+
     return unless ARCH == 'i686'
 
     # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
@@ -133,6 +145,7 @@ class Llvm17_build < Package
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS='#{@ARCH_CXX_LTO_FLAGS}' \
             -DCMAKE_EXE_LINKER_FLAGS='#{@ARCH_LTO_LDFLAGS}' \
+            -DCMAKE_INSTALL_LIBDIR=#{ARCH_LIB} \
             -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
             -DCMAKE_LINKER=$(which ld.lld) \
             -D_CMAKE_TOOLCHAIN_PREFIX=llvm- \
