@@ -14,7 +14,7 @@ class Mesa < Package
   binary_sha256({
     aarch64: '5f27a8e4a5793becc36c7dc4283976d90ab1f0837838d8a06a0e308c3da9f705',
      armv7l: '5f27a8e4a5793becc36c7dc4283976d90ab1f0837838d8a06a0e308c3da9f705',
-     x86_64: '057c85aeab36301d68887fc15930deb7b19485af173c8587925e8696149d6026'
+     x86_64: '3cf14fc8db0590c8f976ea26a1aefb7c138985de54cb06bfd4e52cb7e174b799'
   })
 
   depends_on 'elfutils' # R
