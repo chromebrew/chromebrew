@@ -438,7 +438,7 @@ def update
   @other_arches.reject! { |n| n == ARCH }
   Dir.chdir(CREW_LIB_PATH) do
     # Set sparse-checkout folders.
-    system "git sparse-checkout set --no-cone \"/*\" packages \"/manifest/#{ARCH}/*\" lib commands bin crew tests tools"
+    system "git sparse-checkout set --no-cone \"/*\" bin commands crew lib \"/manifest/#{ARCH}/*\" packages tests tools"
     @other_arches.each do |other_arch|
       system "git sparse-checkout add \"!/manifest/#{other_arch}/\""
     end

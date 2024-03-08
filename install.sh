@@ -317,7 +317,7 @@ else
 
   # Set sparse-checkout folders.
   set +H
-  git sparse-checkout set --no-cone "/*" packages "/manifest/${ARCH}/*" lib commands bin crew tests tools
+  git sparse-checkout set --no-cone "/*" bin commands crew lib "/manifest/${ARCH}/*" packages tests tools
   # shellcheck disable=SC2010
   # Note that extglob doesn't work here for some reason.
   for i in $(ls manifest| grep -v "${ARCH}") ; do git sparse-checkout add "!/manifest/${i}/" ; done
