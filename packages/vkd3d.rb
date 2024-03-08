@@ -11,9 +11,7 @@ class Vkd3d < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '022d7e9e7e15a2546b462f46b2c79b477b46581204b80ea81ef8e1317b145320',
-     armv7l: '022d7e9e7e15a2546b462f46b2c79b477b46581204b80ea81ef8e1317b145320',
-     x86_64: '6ea8560991499d40a425e4f5a64a4c61fdd26c68256eb6d30c168211519f84ef'
+     x86_64: '1bd0f096ce477dbc75ba59d09d8b368382047f4a789ba02699b22176119b7157'
   })
 
   depends_on 'glibc' # R
