@@ -24,7 +24,7 @@ class Llvm18_build < Package
   depends_on 'libedit' # R
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  # depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'ocaml' => :build
   depends_on 'py3_pygments' => :build
