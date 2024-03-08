@@ -14,10 +14,15 @@
 /usr/local/include/glslang/SPIRV/disassemble.h
 /usr/local/include/glslang/SPIRV/spirv.hpp
 /usr/local/include/glslang/build_info.h
+/usr/local/lib/cmake/SPIRVTargets.cmake
+/usr/local/lib/cmake/SPVRemapperTargets.cmake
+/usr/local/lib/cmake/glslang-default-resource-limitsTargets.cmake
+/usr/local/lib/cmake/glslang-standaloneTargets.cmake
 /usr/local/lib/cmake/glslang/glslang-config-version.cmake
 /usr/local/lib/cmake/glslang/glslang-config.cmake
 /usr/local/lib/cmake/glslang/glslang-targets-release.cmake
 /usr/local/lib/cmake/glslang/glslang-targets.cmake
+/usr/local/lib/cmake/spirv-remapTargets.cmake
 /usr/local/lib/libSPIRV.so
 /usr/local/lib/libSPIRV.so.14
 /usr/local/lib/libSPIRV.so.14.0.0
