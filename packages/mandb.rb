@@ -62,10 +62,11 @@ class Mandb < Package
   end
 
   def self.postinstall
-    puts 'Starting backgrounded mandb cache rebuild. This will be logged to /tmp/man-db-rebuild.log.'.yellow
+    puts "Starting backgrounded mandb cache rebuild. This will be logged to #{CREW_PREFIX}/var/log/man-db-rebuild.log.'.yellow
     puts '(Errors from this can either be ignored or reported upstream to the relevant package maintainers.)'.yellow
     # See https://gitlab.com/man-db/man-db/-/issues/4
     # Also https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1003089
-    system "MANPATH='' MAN_DISABLE_SECCOMP=1 nice -n 20 mandb -C #{CREW_PREFIX}/etc/man_db.conf -psc &>/tmp/man-db-rebuild.log &"
+    FileUtils.mkdir_p #{CREW_PREFIX}/var/log"
+    system "MANPATH='' MAN_DISABLE_SECCOMP=1 nice -n 20 mandb -C #{CREW_PREFIX}/etc/man_db.conf -psc &> #{CREW_PREFIX}/var/log/man-db-rebuild.log &"
   end
 end
