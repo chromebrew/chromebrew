@@ -40,7 +40,7 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # This helps with virtualized builds on aarch64 machines which report armv8l when linux32 is run.
 # We also report aarch64 machines as armv7l for now, as we treat them as if they were armv7l.
 # When we have proper aarch64 support, remove this.
-ARCH = ENV.fetch('ARCH', %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH)
+ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : ENV.fetch('ARCH', KERN_ARCH)
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
