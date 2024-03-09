@@ -5,7 +5,7 @@ class Clutter < Package
   homepage 'https://www.clutter-project.org'
   version '1.26.4'
   license 'LGPL-2.1+ and FDL-1.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/clutter/1.26/clutter-1.26.4.tar.xz'
   source_sha256 '8b48fac159843f556d0a6be3dbfc6b083fc6d9c58a20a49a6b4919ab4263c4e6'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Clutter < Package
   binary_sha256({
     aarch64: 'a4d7168cb8e718e98ea86fe78993270536b07dd5c362de4961e16161ca61d3ea',
      armv7l: 'a4d7168cb8e718e98ea86fe78993270536b07dd5c362de4961e16161ca61d3ea',
-       i686: '60f46fbd2e51468ae866556d61fa6779308b55b19063931ce2f5dc590c370eda',
      x86_64: '1fc7d581d9c66bf0d415cddf76e561428d8610513d41c89ed130a84e3acc605c'
   })
 

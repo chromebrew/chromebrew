@@ -5,7 +5,7 @@ class Libgdiplus < Package
   homepage 'https://www.mono-project.com/docs/gui/libgdiplus/'
   version '6.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/mono/libgdiplus.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libgdiplus < Package
   binary_sha256({
     aarch64: '23101c669d315dc3bfd3b7cbc95791ff47920a906a77f4f7004d0402175cc12a',
      armv7l: '23101c669d315dc3bfd3b7cbc95791ff47920a906a77f4f7004d0402175cc12a',
-       i686: 'ebb81e6a1da9c4ec60d892782807a028e2502f638ee8f66a6bc3460d1360f931',
      x86_64: '944f8319acc34f45ad2aa718a343cc4b9481784424fa7e529eec930d663167c4'
   })
 

@@ -5,7 +5,7 @@ class Mapserver < Package
   homepage 'http://mapserver.org/'
   version '8.0.0'
   license 'Boost-1.0, BSD-2, ISC, MIT and tcltk'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://download.osgeo.org/mapserver/mapserver-8.0.0.tar.gz'
   source_sha256 'bb7ee625eb6fdce9bd9851f83664442845d70d041e449449e88ac855e97d773c'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Mapserver < Package
   binary_sha256({
     aarch64: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
      armv7l: '1369f2cc35af3f53ae7c3514b592b9b7dd3e6552b13f0951dbc1fb5d5d70d7c8',
-       i686: '75a46fd6e07754aa98c83df934e1db568049254c44d40e7749755e7ed10b8bbf',
      x86_64: '803eb10f06933eff71eea4138ad9bd81a3abb8c81d707e9df268abe12f8842f3'
   })
 

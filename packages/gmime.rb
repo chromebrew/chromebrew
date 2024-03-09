@@ -5,7 +5,7 @@ class Gmime < Package
   homepage 'https://developer.gnome.org/gmime/'
   version '3.2.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/jstedfast/gmime/archive/3.2.3.tar.gz'
   source_sha256 '5190dd45e297e2bdeca4b14b7055d37ec07b0fa1fe936159bdb69ddb7c91dd53'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Gmime < Package
   binary_sha256({
     aarch64: 'aba50d887f3654b629d771b3a2a8545a88fd88b115b85b36c4c0ca851094628f',
      armv7l: 'aba50d887f3654b629d771b3a2a8545a88fd88b115b85b36c4c0ca851094628f',
-       i686: '7d88fded92d616d666548a60b655626d80b1a5edaa53726e26d71e407673b3a6',
      x86_64: '221c5d7bcb23ea1a985eb6cbf1834e1d3438f481ae3b1a33cc3a7069a8c06378'
   })
 

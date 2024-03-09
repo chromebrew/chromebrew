@@ -8,7 +8,7 @@ class Xdotool < Package
   homepage 'https://www.semicomplete.com/projects/xdotool'
   version '3.20160805.1'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/jordansissel/xdotool/releases/download/v3.20160805.1/xdotool-3.20160805.1.tar.gz'
   source_sha256 '35be5ff6edf0c620a0e16f09ea5e101d5173280161772fca18657d83f20fcca8'
   binary_compression 'tar.xz'
@@ -16,7 +16,6 @@ class Xdotool < Package
   binary_sha256({
     aarch64: '37b9d630ca048ed377c184d44cbbc261022fabe6bec143abc0c066563f913bc4',
      armv7l: '37b9d630ca048ed377c184d44cbbc261022fabe6bec143abc0c066563f913bc4',
-       i686: '0e10fee31413a879f22f1cf91983db10b3878d456c77168e492dff13d9bc3453',
      x86_64: '4ed5c2e4c5b4dfde83c94c017ef7f37e601dc0252ad67341252b38b1a7b47cc2'
   })
 

@@ -8,7 +8,7 @@ class Spice_gtk < Package
   homepage 'https://www.spice-space.org/'
   version '0.41'
   license 'LGPL2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.spice-space.org/download/gtk/spice-gtk-0.41.tar.xz'
   source_sha256 'd8f8b5cbea9184702eeb8cc276a67d72acdb6e36e7c73349fb8445e5bca0969f'
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Spice_gtk < Package
   binary_sha256({
     aarch64: '39ef18a10e919005f06f06b45954c0c2fefe4418a93ffe2a5e4391a1b89d1f46',
      armv7l: '39ef18a10e919005f06f06b45954c0c2fefe4418a93ffe2a5e4391a1b89d1f46',
-       i686: '1da2f0ee2d0e8070e1bdaafa0ddda94da3af4136ac19be6fb4132be809e51efd',
      x86_64: 'dda0b408267eee7047e5916f8ba3a14663d0dd1f0b1f1330c674208a970034fe'
   })
 

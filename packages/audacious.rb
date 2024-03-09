@@ -5,7 +5,7 @@ class Audacious < Package
   homepage 'https://audacious-media-player.org/'
   version '3.10.1'
   license 'BSD-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://distfiles.audacious-media-player.org/audacious-3.10.1.tar.bz2'
   source_sha256 '8366e840bb3c9448c2cf0cf9a0800155b0bd7cc212a28ba44990c3d2289c6b93'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Audacious < Package
   binary_sha256({
     aarch64: '6597ca2c03a630bc4da5ff6f0543e2dc5a4d7621b9bcdb2828fe49fc3889df9d',
      armv7l: '6597ca2c03a630bc4da5ff6f0543e2dc5a4d7621b9bcdb2828fe49fc3889df9d',
-       i686: '7176161f5e71887d35338b7e18bc5524b907d9c334454ea6409e043eb5527806',
      x86_64: '5660d4bbee7230c4b2698973b2a82a45e20461dba246fb22fcdbf91be74b9793'
   })
 

@@ -5,7 +5,7 @@ class Gjs < Package
   homepage 'https://gitlab.gnome.org/GNOME/gjs/'
   version '1.74.0'
   license 'MIT and MPL-1.1, LGPL-2+ or GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gjs.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gjs < Package
   binary_sha256({
     aarch64: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
      armv7l: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
-       i686: 'c1b996c78fd6ab6ca1419101d1e63cff1726c458275bac1e2084ae40f3a7dfad',
      x86_64: 'decdaf546dac3ccee260617d756619892cd443f6b42c19b56318feae913cc31e'
   })
 

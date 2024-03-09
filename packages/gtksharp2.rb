@@ -5,7 +5,7 @@ class Gtksharp2 < Package
   homepage 'https://www.mono-project.com/GtkSharp'
   version '2.12.45'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.45.tar.gz'
   source_sha256 '02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Gtksharp2 < Package
   binary_sha256({
     aarch64: 'f7b0e0626a8561f4a24297d97322c2f4b280644e9b6015e03ce0d8a198bc2cfb',
      armv7l: 'f7b0e0626a8561f4a24297d97322c2f4b280644e9b6015e03ce0d8a198bc2cfb',
-       i686: '8d3ee4c1e2fc91f85dbefae6ab26910e53ff5f57cbb9554489f6052c64160030',
      x86_64: '5215930d8372096829d725e24a500a3eb97387e390e621d145e05194c2570b5f'
   })
 

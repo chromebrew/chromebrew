@@ -5,7 +5,7 @@ class Libwnck < Package
   homepage 'http://www.gnome.org/'
   version '3.32.0'
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/libwnck/3.32/libwnck-3.32.0.tar.xz'
   source_sha256 '9595835cf28d0fc6af5526a18f77f2fcf3ca8c09e36741bb33915b6e69b8e3ca'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Libwnck < Package
   binary_sha256({
     aarch64: '50d51f55bb6f0866732dfaf94ea2cc05dbb66651831642ffeaaed25675e758a3',
      armv7l: '50d51f55bb6f0866732dfaf94ea2cc05dbb66651831642ffeaaed25675e758a3',
-       i686: 'd297914639e3b7e4bfa8bdc3cb11b58f9c786eefe480c06d5dd4b6143dd2f0e3',
      x86_64: '2551d4d2c782f4e5958e0f21c0f38ff8a36ddbecca142f81d34b26969a0e1bce'
   })
 

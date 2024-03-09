@@ -5,7 +5,7 @@ class Libpeas < Package
   homepage 'https://wiki.gnome.org/Projects/Libpeas'
   version '1.34.0'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/GNOME/libpeas/archive/libpeas-1.34.0.tar.gz'
   source_sha256 '514b0576d9a56460915490bdb61dcb88634fdacfb2801e28dcbb9a730348858f'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libpeas < Package
   binary_sha256({
     aarch64: '78ceca9000c59442db18d1b1702822f479296bff42b047019dea40fae8e314d0',
      armv7l: '78ceca9000c59442db18d1b1702822f479296bff42b047019dea40fae8e314d0',
-       i686: '06afcd1793b448959dbb5e8e60fa66c84ac0078da216267acc12b522f41d8af7',
      x86_64: '44fbfaef5fdbc51964688bc0971ce65aa5424db58615a1a688b872f0f4755625'
   })
 

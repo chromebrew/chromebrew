@@ -5,7 +5,7 @@ class Openconnect < Package
   description 'OpenConnect is an SSL VPN client initially created to support Cisco\'s AnyConnect SSL VPN.'
   homepage 'http://www.infradead.org/openconnect/'
   license 'LGPL-2.1 and GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.infradead.org/openconnect/download/openconnect-8.20.tar.gz'
   source_sha256 'c1452384c6f796baee45d4e919ae1bfc281d6c88862e1f646a2cc513fc44e58b'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Openconnect < Package
   binary_sha256({
     aarch64: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
      armv7l: '7b9c045bd2b24a6a1aacefa110c4271c22429eedf7eec1cebf057fa2898f4876',
-       i686: 'db5f8d1cc5ec07af4ce4dccd22e319beaf100a1bea4dde73eacc36d73fb685cc',
      x86_64: '6f25b14be33eca8f53eb142dbda5b6df2db7c6b1dd6e5d000740e69979c7df10'
   })
 

@@ -5,7 +5,7 @@ class Flatseal < Package
   homepage 'https://github.com/tchx84/Flatseal/'
   version '1.7.5'
   license 'GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/tchx84/Flatseal.git'
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
@@ -13,7 +13,6 @@ class Flatseal < Package
   binary_sha256({
     aarch64: 'fea48523a45f8cec6dae017c180aefabe2d2ffca20068f10d472638fefc81aaa',
      armv7l: 'fea48523a45f8cec6dae017c180aefabe2d2ffca20068f10d472638fefc81aaa',
-       i686: 'c54b53817617660c46c4386635cbf94309c45c76cac25e86d75a63d294788cf4',
      x86_64: '649ba5f9085199a3e2ec7e30bd1db27a07d17a6c25202da8c3a54b948e00fd2c'
   })
 

@@ -5,7 +5,7 @@ class Gtksourceview_5 < Package
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '5.6.1'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtksourceview.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gtksourceview_5 < Package
   binary_sha256({
     aarch64: '0f8d59796235811fe0293bc1b812a4bb65a717c4ba05a6accd7cd850d1b55208',
      armv7l: '0f8d59796235811fe0293bc1b812a4bb65a717c4ba05a6accd7cd850d1b55208',
-       i686: '3a73f4077faa01955a55027b4161def3775b7e3eeb8e11b79fa33d44be8f8b1e',
      x86_64: '025bfd8d5b98858324e8590e0f3fb813b5f7464e63bfe2e346f9925fe153ef69'
   })
 

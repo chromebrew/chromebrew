@@ -5,7 +5,7 @@ class Shrinkpdf < Package
   homepage 'http://alfredklomp.com/programming/shrinkpdf/'
   version '2014'
   license 'BSD-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://alfredklomp.com/programming/shrinkpdf/index.html'
   source_sha256 'cdc74b28d8ad757fa2cc9d8782031fe2325a17d3f4fd6080c05ca62790e5c690'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Shrinkpdf < Package
   binary_sha256({
     aarch64: '19c53e4be836957a64613eb60e329506cfafde2891c54155b99ba16de0855ba6',
      armv7l: '19c53e4be836957a64613eb60e329506cfafde2891c54155b99ba16de0855ba6',
-       i686: '5c55f81e2de4bcc954504506f11744b7f4ba177e45a0666be19b32de0a9cb6bf',
      x86_64: '92e7bddf8ead1324927547c1591e7f6192c2b195a8137a3365597c08d802f950'
   })
 

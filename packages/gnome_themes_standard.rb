@@ -5,7 +5,7 @@ class Gnome_themes_standard < Package
   homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
   version '3.27.92-0'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/GNOME/gnome-themes-extra/archive/3.27.92.tar.gz'
   source_sha256 'c2c2b02e6826d51de4e6e53afffbdb0ec301ef776df91944574fdc42b558cecb'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Gnome_themes_standard < Package
   binary_sha256({
     aarch64: '6c77323e31792cbf70f48a109280b9e1a8a225b1deade3de620a0624a372dc43',
      armv7l: '6c77323e31792cbf70f48a109280b9e1a8a225b1deade3de620a0624a372dc43',
-       i686: '92611d2b331fc3862cf7bec369dfcd1854fa25335b36b75c54965cdaa55997cf',
      x86_64: 'd9771b38d88749626f0a7da9d66a43bd5c8e71df6eac868e90343f2bc994c22d'
   })
 

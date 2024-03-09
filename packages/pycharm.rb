@@ -5,7 +5,7 @@ class Pycharm < Package
   homepage 'https://www.jetbrains.com/pycharm/'
   version '2022.2'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.jetbrains.com/python/pycharm-community-2022.2.tar.gz'
   source_sha256 '07023b299ed317cbcf34ba89f1e9385281ff971e85407c6f8a0d17447ca74fce'
 

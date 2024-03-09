@@ -6,7 +6,7 @@ class Ragel < Package
   homepage 'https://www.colm.net/open-source/ragel/'
   version Harfbuzz.version
   license 'MIT' # Previously was GPL-2
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
 
   is_fake
 

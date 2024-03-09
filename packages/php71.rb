@@ -6,7 +6,7 @@ class Php71 < Package
   @_ver = '7.1.33'
   version "#{@_ver}-3"
   license 'PHP-3.01'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://php.net/distributions/php-7.1.33.tar.xz'
   source_sha256 'bd7c0a9bd5433289ee01fd440af3715309faf583f75832b64fe169c100d52968'
   binary_compression 'tar.xz'
@@ -14,7 +14,6 @@ class Php71 < Package
   binary_sha256({
     aarch64: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
      armv7l: '04261aa8c2f2244c429d45456c83bfc10f4beb2e634a6c7db4da044097a260d5',
-       i686: '2a103889c234601b47489808de43e01d96be4bfe002653acc8c08c6f2c770770',
      x86_64: '2d354302e1cc625a6f12af2da718c41068eabe5b63175803875d37a1c4224f57'
   })
 

@@ -5,14 +5,13 @@ class Hplip < Package
   homepage 'https://developers.hp.com/hp-linux-imaging-and-printing/'
   version '3.23.12'
   license 'GPL-2'
-  compatibility 'i686,x86_64'
+  compatibility 'x86_64'
   source_url 'https://sourceforge.net/projects/hplip/files/hplip/3.23.12/hplip-3.23.12.tar.gz'
   source_sha256 'a76c2ac8deb31ddb5f0da31398d25ac57440928a0692dcb060a48daa718e69ed'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: '6776701484130b500892959a852ce9a8c8ea8054974d64ce4539c00af64d645f',
-      i686: '21e9b1238a06179554894a61c8a0e7505e25d4259d798160a500c92c37661c95'
+    x86_64: '6776701484130b500892959a852ce9a8c8ea8054974d64ce4539c00af64d645f'
   })
 
   depends_on 'cups'

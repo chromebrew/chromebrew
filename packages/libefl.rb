@@ -7,7 +7,7 @@ class Libefl < Package
   homepage 'https://enlightenment.org'
   version '1.26.3'
   license 'BSD, BSD-2, BSD-3, LGPL-2.1, GPL-2, freetype, MIT, Apache-2.0' # Needs verifiying
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.enlightenment.org/rel/libs/efl/efl-1.26.3.tar.xz'
   source_sha256 'd9f83aa0fd9334f44deeb4e4952dc0e5144683afac786feebce6030951617d15'
   binary_compression 'tar.zst'
@@ -15,7 +15,6 @@ class Libefl < Package
   binary_sha256({
     aarch64: 'f1bf40ac1f75c23e2eccc2b1aae3e8df459ed3a7155fffae17a89bd6f082d277',
      armv7l: 'f1bf40ac1f75c23e2eccc2b1aae3e8df459ed3a7155fffae17a89bd6f082d277',
-       i686: 'e0f1ddc89d693ecbb627f957c56e5764eaf471acd8ab17f51d001112e5db79e1',
      x86_64: 'c1761b15c8a7910deff5fd58282197b91609db928b4ed880a210827c46fba301'
   })
 

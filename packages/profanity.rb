@@ -5,7 +5,7 @@ class Profanity < Package
   homepage 'https://profanity-im.github.io/'
   version '0.6.0'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://profanity-im.github.io/profanity-0.6.0.tar.gz'
   source_sha256 'f1b2773b79eb294297686f3913e9489c20effae5e3a335c8956db18f6ee2f660'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Profanity < Package
   binary_sha256({
     aarch64: '59229f908a8f21765e77aaa1a491ae23155452f013e9cc992f365bd66293f795',
      armv7l: '59229f908a8f21765e77aaa1a491ae23155452f013e9cc992f365bd66293f795',
-       i686: '3d5c96c99a811d0a86b89ab88bb42fb5d277fc97a8f29a54b8985172ec7736ff',
      x86_64: 'ead2d0a06e37c622913b76941c292a3b10ad500a1f75ebab45e2b08779f007bd'
   })
 

@@ -5,7 +5,7 @@ class Libxkbfile < Package
   homepage 'https://x.org'
   version '1.1.1'
   license 'MIT and custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/archive/individual/lib/libxkbfile-1.1.1.tar.xz'
   source_sha256 '8623dc26e7aac3c5ad8a25e57b566f4324f5619e5db38457f0804ee4ed953443'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxkbfile < Package
   binary_sha256({
     aarch64: '9eafce6985d4c43e7ddef7fb0eb0cfd2f85fb8c2eac0adc78da0099cc5f3093e',
      armv7l: '9eafce6985d4c43e7ddef7fb0eb0cfd2f85fb8c2eac0adc78da0099cc5f3093e',
-       i686: '99ebc3d37a50c542f4d14b5743d3b36301daa6f88bb46b1cb14173ffccae80e8',
      x86_64: 'fb124a25ad31cc261459b5e33b2e8aa0d6afc15dc3a1ee29452bd82acfefffed'
   })
 

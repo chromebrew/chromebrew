@@ -4,7 +4,7 @@ class Pcsc_lite < Package
   description 'PCSC is middleware to access a smart card using SCard API (PC/SC).'
   homepage 'https://pcsclite.apdu.fr/'
   version '1.9.5'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   license 'BSD, ISC, MIT, GPL-3+ and GPL-2'
   source_url 'https://salsa.debian.org/debian/pcsc-lite.git'
   git_hashtag "debian/#{version}-1"
@@ -13,7 +13,6 @@ class Pcsc_lite < Package
   binary_sha256({
     aarch64: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',
       armv7l: '7b33707baf6fbbebbd4cdbf53d0f4ced3db4175101ae48794d229e946a37d355',
-        i686: '42e9c59f6081e156b59b355f4c5e852e79e904600668c2064377b5853ba1eb7a',
       x86_64: '356190c9a9118bb46981627a2d132d8209a035fe5003000584789e41f305e796'
   })
 

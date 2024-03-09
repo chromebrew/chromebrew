@@ -5,7 +5,7 @@ class Rest < Package
   homepage 'https://wiki.gnome.org/Projects/Librest'
   version '0.9.1'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/librest/-/archive/#{version}/librest-#{version}.tar.bz2"
   source_sha256 '5c39f6696b271194546880e0f360e21496b2882f72e4bb85433125de98fce03a'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Rest < Package
   binary_sha256({
     aarch64: '519192ae5947606899084ab33c89aeffc03e6a21602742a155405dc61bb00c2a',
      armv7l: '519192ae5947606899084ab33c89aeffc03e6a21602742a155405dc61bb00c2a',
-       i686: '9ed1544bbbd58684711f310dfa7b3621bc1a518161de770d690b00193120e10b',
      x86_64: 'dcb417551add89f25c24a9f3cdcd3f43c4fa0ac78606775fe252dd6662d3056c'
   })
 

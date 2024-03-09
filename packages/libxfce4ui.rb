@@ -5,7 +5,7 @@ class Libxfce4ui < Package
   homepage 'https://xfce.org/'
   version '4.16.0'
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://archive.xfce.org/src/xfce/libxfce4ui/4.16/libxfce4ui-4.16.0.tar.bz2'
   source_sha256 '8b06c9e94f4be88a9d87c47592411b6cbc32073e7af9cbd64c7b2924ec90ceaa'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Libxfce4ui < Package
   binary_sha256({
     aarch64: '2c97cfdf36b164b7c798dc42d16b0e4abd6777b4ab4dd6c115f4b43359afa4ad',
      armv7l: '2c97cfdf36b164b7c798dc42d16b0e4abd6777b4ab4dd6c115f4b43359afa4ad',
-       i686: 'aec6b72ae1c3405524e8f823746e18139f4c5a8e3855322c4a128f5d29a29186',
      x86_64: '109195c13796a024b26c3d58773555cc62bb9b373fbcb8a511816dbe63bdd043'
   })
 

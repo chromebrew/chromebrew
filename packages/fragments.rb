@@ -5,7 +5,7 @@ class Fragments < Package
   homepage 'https://gitlab.gnome.org/World/Fragments'
   version '2.1'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/World/Fragments.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Fragments < Package
   binary_sha256({
     aarch64: '27daf87476325d131cd74a2dff2b15cdd6e39f041f8f2233e6dc9c8c3a589121',
      armv7l: '27daf87476325d131cd74a2dff2b15cdd6e39f041f8f2233e6dc9c8c3a589121',
-       i686: '12ddea3159207d9403c152979fc46a485399ac9790c7d83e2d327257a434c150',
      x86_64: 'a6d40669d6abea2b3da664675c713eaf53ce2d9ba335c75d2c3e777346425ba0'
   })
 

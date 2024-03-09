@@ -5,7 +5,7 @@ class Umockdev < Package
   homepage 'https://github.com/martinpitt/umockdev/'
   version '0.9.4'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/martinpitt/umockdev/archive/0.9.4.tar.gz'
   source_sha256 '9f13e8a836ef36158e2cc2b679cb99639e1f68a430b04fbe4dd07d3cb2b32a75'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Umockdev < Package
   binary_sha256({
     aarch64: '62d6ad9b0cbcbd6c50634e7ee0e77365b810b3a0be57fb61fbde768018428e92',
      armv7l: '62d6ad9b0cbcbd6c50634e7ee0e77365b810b3a0be57fb61fbde768018428e92',
-       i686: '69a3a9f89569b72bf0c61aaf46ee045d02ef5de23e8cca169a207c4ac89bfd80',
      x86_64: '95fd0e8eeacb4d95051cf80a1d6a44e4882c51f4be477f100c1d69e43f61fbd4'
   })
 

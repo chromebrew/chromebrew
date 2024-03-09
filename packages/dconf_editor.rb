@@ -5,7 +5,7 @@ class Dconf_editor < Package
   homepage 'https://wiki.gnome.org/Apps/DconfEditor'
   version '43.0'
   license 'GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/dconf-editor/-/archive/#{version}/dconf-editor-#{version}.tar.bz2"
   source_sha256 'e7b127b865f56c00b31759461d239af9f7b8098e715dcde3e06896cd84b544ad'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Dconf_editor < Package
   binary_sha256({
     aarch64: '50ff5adc092e785f07f089818a7c0fd1fd6229ea1b0e07e978f45b2f92ecd99c',
      armv7l: '50ff5adc092e785f07f089818a7c0fd1fd6229ea1b0e07e978f45b2f92ecd99c',
-       i686: 'c49c6e7c477ab29922c8f240892a008725ae16adc81c4626a86e5955763cc6d1',
      x86_64: 'f4b41bd1febd465c57b534a8d04346e83a61b52904f0c9f8fbe7b88b28ace047'
   })
 

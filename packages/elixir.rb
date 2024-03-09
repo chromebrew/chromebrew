@@ -5,7 +5,7 @@ class Elixir < Package
   homepage 'https://elixir-lang.org/'
   version '1.13.4'
   license 'Apache-2.0 and ErlPL-1.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/elixir-lang/elixir/releases/download/v1.13.4/Precompiled.zip'
   source_sha256 'e74eee9d4e1c64e7add0e2b4e2fb41aaaa7450522f46f8e922b9bf6a27587606'
 

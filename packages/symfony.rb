@@ -5,17 +5,15 @@ class Symfony < Package
   homepage 'https://symfony.com/'
   version '5.7.5'
   license 'AGPL-3.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url({
     aarch64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_armv6.tar.gz',
      armv7l: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_armv6.tar.gz',
-       i686: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_386.tar.gz',
      x86_64: 'https://github.com/symfony-cli/symfony-cli/releases/download/v5.7.5/symfony-cli_linux_amd64.tar.gz'
   })
   source_sha256({
     aarch64: '00221a0045dfbc980a18bead0c174041f8cbc4f63e4ff3c81d8cf391f353e510',
      armv7l: '00221a0045dfbc980a18bead0c174041f8cbc4f63e4ff3c81d8cf391f353e510',
-       i686: '79cf4af35cd1da15834b99924f9868ef5d2a27b4749d6c1253d67c5188de540c',
      x86_64: '584e69add9bcb3bbf0c82c4da626c52924428181c85820a20c7f355e427eccac'
   })
 

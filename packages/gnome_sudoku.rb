@@ -6,7 +6,7 @@ class Gnome_sudoku < Package
   @_ver = '3.38.0'
   version "#{@_ver}-1"
   license 'GPL-3+ and CC-BY-SA-3.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://download.gnome.org/sources/gnome-sudoku/#{@_ver.rpartition('.')[0]}/gnome-sudoku-#{@_ver}.tar.xz"
   source_sha256 '38731d0cc6d56a21dbdc89409cc5bb3d08e1c02cd9009f4d57f5b34887e9fd32'
 

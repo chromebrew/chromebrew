@@ -8,7 +8,7 @@ class Fcft < Package
   homepage 'https://codeberg.org/dnkl/fcft'
   version '2.5.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://codeberg.org/dnkl/fcft.git'
   git_hashtag version
   binary_compression 'tpxz'
@@ -16,7 +16,6 @@ class Fcft < Package
   binary_sha256({
     aarch64: '28f1176a8cece2b6e7464020871a1f543a01b387b107f7ff8eaec0bb525a2745',
      armv7l: '28f1176a8cece2b6e7464020871a1f543a01b387b107f7ff8eaec0bb525a2745',
-       i686: '4cfd8382c087dba1f6fa1c1a1eb4f9c1afb925be0176b648f1dec512dc130f79',
      x86_64: '4d5d098327ea62f4f4c9ea534e8f79346602f54acca4af2dc18e03be3b64c224'
   })
 

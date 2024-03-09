@@ -5,7 +5,7 @@ class Tika < Package
   homepage 'https://tika.apache.org/'
   version '2.9.0'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://dlcdn.apache.org/tika/2.9.0/tika-app-2.9.0.jar'
   source_sha256 '390382b0ad31a7da55d83cce58538f4b59988eda6ebdf259459d4ef109df1b06'
 

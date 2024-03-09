@@ -5,7 +5,7 @@ class Gtk2 < Package
   homepage 'https://www.gtk.org/'
   version '2.24.33-3'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz'
   source_sha256 'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gtk2 < Package
   binary_sha256({
     aarch64: '3bbbe59aee297b198c45249a258ddac0f6a2216dee383bb9d699ceabc6983913',
      armv7l: '3bbbe59aee297b198c45249a258ddac0f6a2216dee383bb9d699ceabc6983913',
-       i686: '2a53fc41ecf1ecbe083fc2be47ddf0396dc15f8b0d1e36f4a3b4d5891e98aabf',
      x86_64: '8bddd0719e044e3440c028bf86b16f60229d61c80dcfe29a2b88055fc1d0bbe0'
   })
 

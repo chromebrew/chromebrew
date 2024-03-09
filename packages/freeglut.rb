@@ -5,7 +5,7 @@ class Freeglut < Package
   homepage 'http://freeglut.sourceforge.net/'
   version '3.2.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/freeglut/freeglut/3.2.1/freeglut-3.2.1.tar.gz'
   source_sha256 'd4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Freeglut < Package
   binary_sha256({
     aarch64: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
      armv7l: '49c22c36b1c02bd9ea8b439e05ce83d25ff2b0bec96da91366f57500abaafc57',
-       i686: '7df49b8ae79cbb1db19a01ba656c652d04a19a236f749ef1246190e8c1b04a68',
      x86_64: 'f834844fb8a0afb528d602513bef51306afcba74f8361707f28d052d8e28d4d7'
   })
 

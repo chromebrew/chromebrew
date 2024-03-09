@@ -5,7 +5,7 @@ class Xfce4_terminal < Package
   homepage 'https://xfce.org/'
   version '0.8.10'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://archive.xfce.org/src/apps/xfce4-terminal/0.8/xfce4-terminal-#{version}.tar.bz2"
   source_sha256 '7a3337c198e01262a0412384823185753ac8a0345be1d6776a7e9bbbcbf33dc7'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Xfce4_terminal < Package
   binary_sha256({
     aarch64: 'b11aa2b481bf89d83e2d1e8086f8a38947c6f1b1e5ec7b3db2e4a9a71b192aa1',
      armv7l: 'b11aa2b481bf89d83e2d1e8086f8a38947c6f1b1e5ec7b3db2e4a9a71b192aa1',
-       i686: 'bc19f058e7e0fd3b50b8838668f151db825172a3e5ef64736d40f916ea02a817',
      x86_64: 'dfa50e1a41870d5e63316a95fccd57a51e420045c8fd583a9bcc18ead9ddaa71'
   })
 

@@ -5,7 +5,7 @@ class Libxv < Package
   homepage 'https://www.x.org'
   version '1.0.12'
   license 'X11'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxv.git'
   git_hashtag "libXv-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxv < Package
   binary_sha256({
     aarch64: '4e5f88214475460f9bd909012086c1a57b833168aca923fbab396abaf0589be4',
      armv7l: '4e5f88214475460f9bd909012086c1a57b833168aca923fbab396abaf0589be4',
-       i686: 'dd6099a25f76a939900986088134d79bd052f8cf5606a4bd2830cc2cf89b5fe5',
      x86_64: 'cddf3a775a03649be663cd00d605461f4d7eb4975630cf4cebee4d65b7828b06'
   })
 

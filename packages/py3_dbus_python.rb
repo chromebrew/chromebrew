@@ -6,7 +6,7 @@ class Py3_dbus_python < Pip
   @_ver = '1.2.18'
   version "#{@_ver}-py3.12"
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
   depends_on 'autoconf_archive' => :build

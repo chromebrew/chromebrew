@@ -5,7 +5,7 @@ class Vala < Package
   homepage 'https://wiki.gnome.org/Projects/Vala'
   version '0.56.7'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Vala < Package
   binary_sha256({
     aarch64: '4987cd9bdffb4056e046e81e11600bd7eb38085ce76fc87822b20be2b31aeba6',
      armv7l: '4987cd9bdffb4056e046e81e11600bd7eb38085ce76fc87822b20be2b31aeba6',
-       i686: '794bcb3f8b6d1f2e6cbb6b4ad0029dfabbc00a2c830df13c5939d06c6afb93ab',
      x86_64: '55f786136cccd4bc28ed2f28056a09c143fe5acd2d1af6d08fe80bd228e725a2'
   })
 

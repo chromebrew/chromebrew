@@ -5,7 +5,7 @@ class V4l_utils < Package
   homepage 'https://www.linuxtv.org/wiki/index.php/V4l-utils'
   version '1.22.1'
   license 'GPL-2+ and LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://linuxtv.org/downloads/v4l-utils/v4l-utils-#{version}.tar.bz2"
   source_sha256 '65c6fbe830a44ca105c443b027182c1b2c9053a91d1e72ad849dfab388b94e31'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class V4l_utils < Package
   binary_sha256({
     aarch64: '99bfc727cc7dc8669f57e981f8659e8278007e61c9425101f5ea6d27e3d9c2b1',
      armv7l: '99bfc727cc7dc8669f57e981f8659e8278007e61c9425101f5ea6d27e3d9c2b1',
-       i686: '6eae363af21be86b15581d1e95bac828c2007e0786aadba6aedd9ebaea318543',
      x86_64: '10c0384638fef3657f01129ce225a640ac182823f472d35aa48bfc3a39da7a5f'
   })
 

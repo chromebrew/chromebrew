@@ -5,7 +5,7 @@ class Logisim < Package
   homepage 'https://sourceforge.net/projects/circuit/'
   version '2.7.1'
   license 'GPLv2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://downloads.sourceforge.net/project/circuit/2.7.x/#{version}/logisim-generic-#{version}.jar"
   source_sha256 '362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
 

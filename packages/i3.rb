@@ -5,7 +5,7 @@ class I3 < Package
   homepage 'https://i3wm.org/'
   version '4.18.3'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://i3wm.org/downloads/i3-4.18.3.tar.bz2'
   source_sha256 '53ae7903fad6eea830d58e949698e4a502c432c0d0a582659a0a59b1b995b10d'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class I3 < Package
   binary_sha256({
     aarch64: 'f29889c961b37e86483c66e442ba8db653d1da7b0a3f4ab9d461f9acc7f75fb1',
      armv7l: 'f29889c961b37e86483c66e442ba8db653d1da7b0a3f4ab9d461f9acc7f75fb1',
-       i686: '7583a48fa03974296c0c27a25b44ec2b1fe6aebdce42f98918e3a9981fb5f24c',
      x86_64: '4af8555c05da78e9c24e81475b411c6397fc3afbca733016d422dc00dfc0402e'
   })
 

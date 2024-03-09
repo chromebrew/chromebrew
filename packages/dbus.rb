@@ -5,7 +5,7 @@ class Dbus < Package
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
   version '1.15.4'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus.git'
   git_hashtag "dbus-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Dbus < Package
   binary_sha256({
     aarch64: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
      armv7l: '3e8cb13e7c1e6bb23067f0def5eb33c1fb042b99eac3654a2a02a64cd52d5f59',
-       i686: 'd48d4149c92bef9981515ce47a4491123013b855147290f358126e18d1e5d4b7',
      x86_64: 'fc1c818d773ece8193082dca1203878e8382a3fb17d7c6cd32a1f29d9f4788e4'
   })
 

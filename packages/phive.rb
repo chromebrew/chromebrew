@@ -5,7 +5,7 @@ class Phive < Package
   homepage 'https://phar.io/'
   version '0.15.2'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/phar-io/phive/releases/download/#{version}/phive-#{version}.phar"
   source_sha256 '2bb076753ec5d672f5e2f96a97a0fe7e8e9ec24a439eed00fd29ef942c7905f9'
 

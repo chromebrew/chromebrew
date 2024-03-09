@@ -6,7 +6,7 @@ class Gdk_pixbuf < Package
   @_ver = '2.42.10'
   version "#{@_ver}-1"
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gdk-pixbuf.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'
@@ -14,7 +14,6 @@ class Gdk_pixbuf < Package
   binary_sha256({
     aarch64: '8d79852a5069b1c1e5a6834648c32f346ad407e894be2ecc75a66f69cf42160c',
      armv7l: '8d79852a5069b1c1e5a6834648c32f346ad407e894be2ecc75a66f69cf42160c',
-       i686: '948434f4e7e58091e04a9a7918f08fe52db255bc1dc5dbacb8a59c58cf99cd93',
      x86_64: '65eb125c9b4a15ba85b5f3d95f7e5a66d1024154ed34cf807d8fa651800e259d'
   })
 

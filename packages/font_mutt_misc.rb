@@ -5,7 +5,7 @@ class Font_mutt_misc < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.3'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/font/font-mutt-misc-1.0.3.tar.bz2'
   source_sha256 'bd5f7adb34367c197773a9801df5bce7b019664941900b2a31fbfe1ff2830f8f'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Font_mutt_misc < Package
   binary_sha256({
     aarch64: '5a0bcf47ee4af1c9f15feb3e463f37558240558fc145e046f23c6ada4acb4a9b',
      armv7l: '5a0bcf47ee4af1c9f15feb3e463f37558240558fc145e046f23c6ada4acb4a9b',
-       i686: 'be6200054fec1e6b75960c09258a33ae949a7dfdcbd159213bc6b0ddb85a92d4',
      x86_64: '318656cca427983462ba4777ce2f7104bbe843a58c2d5610888f33e462f0eda9'
   })
 

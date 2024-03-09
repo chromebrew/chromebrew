@@ -5,7 +5,7 @@ class Tepl_6 < Package
   homepage 'https://wiki.gnome.org/Projects/Tepl'
   version '6.0.0.0'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/Archive/tepl.git'
   git_hashtag version
   binary_compression 'tpxz'

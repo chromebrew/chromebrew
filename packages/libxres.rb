@@ -5,7 +5,7 @@ class Libxres < Package
   homepage 'https://www.x.org'
   version '1.2.2'
   license 'X11'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libxres.git'
   git_hashtag "libXres-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxres < Package
   binary_sha256({
     aarch64: '85692a6d926c0b22a9253c1bf2c3b58d95a6b522a910879bfe77244499888aa7',
      armv7l: '85692a6d926c0b22a9253c1bf2c3b58d95a6b522a910879bfe77244499888aa7',
-       i686: 'd887585c751c8ccbb51bb8b3d5a721ed4f977710e01fef8fe2e2968035c93fac',
      x86_64: '85c68ffd68dd2dbc642d555f68cd2513e94cb7888ca25f248b49bcfad71651f5'
   })
 

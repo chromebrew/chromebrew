@@ -5,7 +5,7 @@ class Php74 < Package
   homepage 'http://www.php.net/'
   version '7.4.33'
   license 'PHP-3.01'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://www.php.net/distributions/php-#{version}.tar.xz"
   source_sha256 '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Php74 < Package
   binary_sha256({
     aarch64: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
      armv7l: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
-       i686: '23befbba1e8bd4f9c1474800e0c86e374d1a064499bce3fb8f411e7a12e9043e',
      x86_64: 'c2b9090e7bf7db7de90134333597283974b52ec400e642224fec64e081d35813'
   })
 

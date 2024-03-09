@@ -5,7 +5,7 @@ class Yelp < Package
   homepage 'https://wiki.gnome.org/Apps/Yelp'
   version '40.0'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/yelp/-/archive/#{version}/yelp-#{version}.tar.bz2"
   source_sha256 'ec640d7a56970ab3ac6283d6c3a90ae45b7676c739671b303cbfb2f4323bf7af'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Yelp < Package
   binary_sha256({
     aarch64: '021a5a25255e9bd5c5f44fe170abc70bb18ecd6b72a5a312da295c1c2831420b',
      armv7l: '021a5a25255e9bd5c5f44fe170abc70bb18ecd6b72a5a312da295c1c2831420b',
-       i686: '7425444ffefcb107ac34fb8d8bb12d0a3117e7aaae83f44f938ba37a732e7a8d',
      x86_64: '33ef261b6056265b6fa65b81c3fef50f8c5792f7e70ace0639d65f453a7f2f69'
   })
 

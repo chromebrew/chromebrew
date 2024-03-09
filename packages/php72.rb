@@ -6,7 +6,7 @@ class Php72 < Package
   @_ver = '7.2.34'
   version "#{@_ver}-2"
   license 'PHP-3.01'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-7.2.34.tar.xz'
   source_sha256 '409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903'
   binary_compression 'tar.xz'
@@ -14,7 +14,6 @@ class Php72 < Package
   binary_sha256({
     aarch64: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
      armv7l: 'aa82eeacd83183c4efe99abb1f3b75601dba24eecea68a57a8a37613a3dc2614',
-       i686: '5d0770534aff60ecb57d99b1ed8ecf2b13058a06f7056162541c1e370dbb1334',
      x86_64: '40c16a7e5635c5c2a9bd6f41b9db894237147c02d6c5b8d7175c0a97639eea5c'
   })
 

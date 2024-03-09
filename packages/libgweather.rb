@@ -5,7 +5,7 @@ class Libgweather < Package
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
   version '4.2.0'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libgweather/-/archive/4.2.0/libgweather-4.2.0.tar.bz2'
   source_sha256 '028cdca5005a17d88e78461e72c6b5c519e2df33f2e456075aeea9dc455aca20'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libgweather < Package
   binary_sha256({
     aarch64: '40a0fe50c8ec6ac566a278531b27633a226d7aab695b91fb90b97a039775be47',
      armv7l: '40a0fe50c8ec6ac566a278531b27633a226d7aab695b91fb90b97a039775be47',
-       i686: '86a11111e713a7e1ff3fe4c59edbc8ab0395d31864735fa9fc6a29282ec3dd3f',
      x86_64: '3977878b91e477fcb590870b8595daf53e6a032bcf8a793da5bf6d1285b3ffe7'
   })
 

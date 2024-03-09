@@ -5,7 +5,7 @@ class Gnome_session < Package
   homepage 'https://gitlab.gnome.org/GNOME/gnome-session'
   version '43.0'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/gnome-session/-/archive/#{version}/gnome-session-#{version}.tar.bz2"
   source_sha256 'a56b5a4179e4e567fb360e98ae1a1b8b8e3deed8fb0ff66d3f343e4623f59f3c'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gnome_session < Package
   binary_sha256({
     aarch64: 'f15e68a01de854d8d373b4632ccc2ff4c928288b3945cbc804972fb54e0f6d9f',
      armv7l: 'f15e68a01de854d8d373b4632ccc2ff4c928288b3945cbc804972fb54e0f6d9f',
-       i686: '7604da967a83dcd89a6c5a125ea0ef4863e17e6c6d09461e32890dcd54f63049',
      x86_64: 'f4ed165ccdfc333ea3caf0d21ff8ab7610860af818b7bd4b6eac105f6dc97766'
   })
 

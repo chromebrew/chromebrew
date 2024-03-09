@@ -5,7 +5,7 @@ class Gtk_vnc < Package
   homepage 'https://wiki.gnome.org/Projects/gtk-vnc'
   version '1.3.1'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gtk-vnc.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gtk_vnc < Package
   binary_sha256({
     aarch64: '40f49371a8483626e1c080435e4bf7afaf3f9908e6722558d394f65dff9e7874',
      armv7l: '40f49371a8483626e1c080435e4bf7afaf3f9908e6722558d394f65dff9e7874',
-       i686: '3936d69bd7fa0a3a742d3836e2bf27f53670218195bc396663c74a682f1ab219',
      x86_64: 'd135ac0a8ab47f12e4104eabbd36036c3519c1e38722a6e4aae25c0b35a5aac7'
   })
 

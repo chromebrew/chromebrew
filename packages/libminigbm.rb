@@ -9,14 +9,13 @@ class Libminigbm < Package
   git_hashtag '407eb0ebf3ce52fd4b3d79712d1b86d7b021c29b'
   version git_hashtag[0, 7]
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://chromium.googlesource.com/chromiumos/platform/minigbm.git'
   binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: 'a9d6aa263bdf80940c653730e45f969938a91f5a96c96d33fbd48df960b9f2a5',
      armv7l: 'a9d6aa263bdf80940c653730e45f969938a91f5a96c96d33fbd48df960b9f2a5',
-       i686: 'f6390ce12b6a1b423de7b563ecd0a32156441e7002d1a28319902325f4cfd8b5',
      x86_64: '46f7449d05b06c5ce7bfeee667ea611e5f87b75d0033911b7c698b2709de3a1c'
   })
 

@@ -5,7 +5,7 @@ class Libportal < Package
   homepage 'https://github.com/flatpak/libportal'
   version '0.6-1'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/flatpak/libportal/archive/refs/tags/0.6.tar.gz'
   source_sha256 '8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libportal < Package
   binary_sha256({
     aarch64: 'e36d5b19b14145ca110f55da37402b3898677e01b86a3e77401f1687e280d00a',
      armv7l: 'e36d5b19b14145ca110f55da37402b3898677e01b86a3e77401f1687e280d00a',
-       i686: 'dfda763649d95d880aa83a853203488afc6f423970f3707d26bf2c89456ff284',
      x86_64: 'ff87e704a0402c8aba6ddf27a5d3bc5e4289251cd2fc80478f70254ece4c37c4'
   })
 

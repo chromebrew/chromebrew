@@ -5,7 +5,7 @@ class Geocode_glib2 < Package
   homepage 'https://gitlab.gnome.org/GNOME/geocode-glib'
   version '3.26.4'
   license 'LGPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/3.26.4/geocode-glib-3.26.4.tar.bz2'
   source_sha256 'b94b7cc015825b4ad64d293093f9881f1bab6837dd2500a88d12869264332e41'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Geocode_glib2 < Package
   binary_sha256({
     aarch64: 'cb9343b3fdd5be728e673e91d6cf3f91e25418fd32aad29a92334df2ef69e3fc',
      armv7l: 'cb9343b3fdd5be728e673e91d6cf3f91e25418fd32aad29a92334df2ef69e3fc',
-       i686: '9aa73a48a884e62ea5c1428670bcaa7564a192f7f5d40142d89a51694348d1ff',
      x86_64: '391362270a3104e5cfbc1a7fc96d8faada59d4d262f1d6dcc74c034136465456'
   })
 

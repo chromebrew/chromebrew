@@ -5,7 +5,7 @@ class Broadway < Package
   homepage 'https://developer.gnome.org/gtk3/stable/gtk-broadway.html'
   version 'gtk3.22-3'
   license 'GPL-3+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
   no_compile_needed

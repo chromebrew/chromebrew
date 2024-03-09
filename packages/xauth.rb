@@ -5,7 +5,7 @@ class Xauth < Package
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xauth.1.html'
   version '1.1.2'
   license 'MIT-with-advertising'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/app/xauth-1.1.2.tar.xz'
   source_sha256 '78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Xauth < Package
   binary_sha256({
     aarch64: '45f2927b7cdcb468a7b1bfa5a686033152c82102761556a21c54ad4cca1f7496',
      armv7l: '45f2927b7cdcb468a7b1bfa5a686033152c82102761556a21c54ad4cca1f7496',
-       i686: '566c588ce5f08dad340253972072f6e11a4afb613e3cbf802219748e3f507a7d',
      x86_64: 'ff7990530301e1a63dd79a7ef7d67c152acbce582204f77eb2c29bb0bc8b53c7'
   })
 

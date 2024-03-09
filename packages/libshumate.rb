@@ -8,7 +8,7 @@ class Libshumate < Package
   homepage 'https://wiki.gnome.org/Projects/libshumate'
   version '1.0.1'
   license 'LGPL'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libshumate/-/archive/1.0.1/libshumate-1.0.1.tar.bz2'
   source_sha256 '004188509189eab352b8f86701cec223c15c8fa52b1e0cf5379877725a1e9014'
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Libshumate < Package
   binary_sha256({
     aarch64: 'f52fac3cb098d9048580df930016a6fa597e29140eb1680c34d38b98bfd74fb2',
      armv7l: 'f52fac3cb098d9048580df930016a6fa597e29140eb1680c34d38b98bfd74fb2',
-       i686: '070e45c5b594a7c8f1e68e4100a456a61301d06781946c96b9fccb1be4851c9f',
      x86_64: '47f61acf76edf10e4e127efe5ba0b3b40781540ce14b5df35a0b28e0d514254d'
   })
 

@@ -5,7 +5,7 @@ class Gnome_keyring < Package
   homepage 'https://www.gnome.org'
   version '3.36.0-1'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/3.36/gnome-keyring-3.36.0.tar.xz'
   source_sha256 'a264b57a8d1a71fdf0d66e8cd6033d013fb828be279c35766545eb9bb3734f87'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Gnome_keyring < Package
   binary_sha256({
     aarch64: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
       armv7l: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
-        i686: 'bde76d374b5f47c798115a8e6f4fff5a6b31224c9b8f18caacf4a07b831b94ac',
       x86_64: '9fddad7d70acf21d5a6a2700400762e5b46ebd43413be6cd2db96eba2f9c8048'
   })
 
