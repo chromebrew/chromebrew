@@ -5,14 +5,12 @@ class Folks < Package
   homepage 'https://wiki.gnome.org/Projects/Folks'
   version '0.15.5'
   license 'LGPL-2.1'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'x86_64'
   source_url "https://gitlab.gnome.org/GNOME/folks/-/archive/#{version}/folks-#{version}.tar.bz2"
   source_sha256 'f79952f6b0c8f6c0fa2efefbcfc4d4875a2ee5e4518f7d4bf520b62b5c89568c'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2999307030aa76fb2e9ee4aaf52d83ae0835829d8d14c16af03f88efab8bda16',
-     armv7l: '2999307030aa76fb2e9ee4aaf52d83ae0835829d8d14c16af03f88efab8bda16',
      x86_64: '8d5447fdd889e1f45f4f7178db791b0ff5fd7c5d7eac854872b43de36e44df4f'
   })
 
