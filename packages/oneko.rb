@@ -22,7 +22,7 @@ class Oneko < Package
   depends_on 'sommelier'
   depends_on 'imake' => :build
   depends_on 'xorg_cf_files' => :build
-  depends_on 'gcc_libmakedep' => :build
+  depends_on 'gccmakedep' => :build
 
   def self.patch
     # Download extra sources
