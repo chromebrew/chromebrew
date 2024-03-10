@@ -6,6 +6,7 @@ require 'fileutils'
 require 'tmpdir'
 require_relative '../commands/const'
 require_relative '../commands/help'
+require_relative '../commands/list'
 require_relative '../lib/docopt'
 require_relative '../lib/color'
 require_relative '../lib/const'
@@ -219,62 +220,6 @@ end
 def list_packages
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     print_package filename
-  end
-end
-
-def list_available
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    pkg_name     = File.basename(filename, '.rb')
-    filelist     = File.join(CREW_META_PATH, "#{pkg_name}.filelist")
-    not_installed = !File.file?(filelist)
-
-    next unless not_installed
-
-    begin
-      set_package pkg_name, filename
-    rescue StandardError => e
-      puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
-    end
-    puts pkg_name if @pkg.compatible?
-  end
-end
-
-def list_installed
-  if @opt_verbose
-    installed_packages = []
-    @device[:installed_packages].each do |package|
-      search package[:name], true
-      installed_packages.append("#{package[:name]} #{package[:version]}")
-    end
-    sorted_installed_packages = installed_packages.sort
-    sorted_installed_packages.unshift('======= =======')
-    sorted_installed_packages.unshift('Package Version')
-    first_col_width = sorted_installed_packages.map(&:split).map(&:first).max_by(&:size).size + 2
-    sorted_installed_packages.map(&:strip).each do |line|
-      puts "%-#{first_col_width}s%s".lightgreen % line.split
-    end
-    print "\n"
-  else
-    Dir["#{CREW_META_PATH}/*.directorylist"].map do |f|
-      File.basename(f, '.directorylist').lightgreen
-    end
-  end
-end
-
-def list_compatible(compat = true)
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    pkg_name = File.basename filename, '.rb'
-    if @device[:compatible_packages].any? { |elem| elem[:name] == pkg_name }
-      if compat
-        if File.file? "#{CREW_META_PATH}/#{pkg_name}.filelist"
-          puts pkg_name.lightgreen
-        else
-          puts pkg_name
-        end
-      end
-    elsif !compat
-      puts pkg_name.lightred
-    end
   end
 end
 
@@ -1964,15 +1909,7 @@ def install_command(args)
 end
 
 def list_command(args)
-  if args['available']
-    list_available
-  elsif args['installed']
-    puts list_installed
-  elsif args['compatible']
-    list_compatible true
-  elsif args['incompatible']
-    list_compatible false
-  end
+  Command.list(args['available'], args['installed'], args['compatible'], args['incompatible'], @opt_verbose)
 end
 
 def postinstall_command(args)
