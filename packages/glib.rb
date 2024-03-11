@@ -21,7 +21,6 @@ class Glib < Meson
   depends_on 'gcc_lib' # R
   depends_on 'libffi' # R
   depends_on 'pcre2' # R
-  depends_on 'pcre' # R
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'util_linux' # R
