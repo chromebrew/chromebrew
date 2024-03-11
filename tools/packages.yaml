@@ -2385,6 +2385,11 @@ url: https://github.com/git-lfs/git-lfs/releases
 activity: medium
 ---
 kind: url
+name: git_mestrelion_tools
+url: https://github.com/MestreLion/git-tools/releases
+activity: low
+---
+kind: url
 name: git_prompt
 url: https://github.com/git/git/releases
 activity: high

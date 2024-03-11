@@ -1,0 +1,12 @@
+/usr/local/bin/git-branches-rename
+/usr/local/bin/git-clone-subset
+/usr/local/bin/git-find-uncommitted-repos
+/usr/local/bin/git-rebase-theirs
+/usr/local/bin/git-restore-mtime
+/usr/local/bin/git-strip-merge
+/usr/local/share/man/man1/git-branches-rename.1.zst
+/usr/local/share/man/man1/git-clone-subset.1.zst
+/usr/local/share/man/man1/git-find-uncommitted-repos.1.zst
+/usr/local/share/man/man1/git-rebase-theirs.1.zst
+/usr/local/share/man/man1/git-restore-mtime.1.zst
+/usr/local/share/man/man1/git-strip-merge.1.zst
