@@ -1774,13 +1774,13 @@ def copy_package(pkg_name, prompt_msg = '')
 end
 
 def check_package(pkg_name)
-  next_pkg = nil
+  return unless Dir.exist? CREW_LOCAL_REPO_ROOT
   return copy_package(pkg_name) if @opt_force
 
   # Prompt to copy the local repo package to crew if the package is not found.
   if !File.file?("#{CREW_PACKAGES_PATH}/#{pkg_name}.rb") && File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb")
-    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated but the crew package is not found."
-    next_pkg = copy_package(pkg_name, prompt_msg)
+    prompt_msg = "\nThe crew package #{pkg_name} does not exist."
+    return copy_package(pkg_name, prompt_msg)
   end
 
   # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the operation.
@@ -1794,13 +1794,12 @@ def check_package(pkg_name)
   end
   if local_package_updated != '' && crew_package_updated == ''
     prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated but the crew package is unchanged."
-    next_pkg = copy_package(pkg_name, prompt_msg)
+    return copy_package(pkg_name, prompt_msg)
   end
   if local_package_updated != '' && crew_package_updated != '' && local_package_updated != crew_package_updated
     prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated and does not match the crew updated package."
-    next_pkg = copy_package(pkg_name, prompt_msg)
+    return copy_package(pkg_name, prompt_msg)
   end
-  return next_pkg
 end
 
 def build_command(args)
@@ -1823,12 +1822,11 @@ def build_command(args)
     else
       @pkg_name = name
     end
+    next if check_package(@pkg_name)
 
     search @pkg_name
     print_current_package @opt_verbose
     next unless @pkg_name
-
-    next if check_package(@pkg_name)
 
     # Process preflight block to see if package should be built
     pre_flight
@@ -1894,13 +1892,13 @@ end
 def install_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
+    next if check_package(@pkg_name)
     search @pkg_name
     print_current_package true
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkg_name
 
     if @pkg.compatible?
-      next if CREW_LOCAL_REPO_ROOT.length.positive? && check_package(@pkg_name)
       resolve_dependencies_and_install
     else
       puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred
@@ -1931,6 +1929,7 @@ end
 def reinstall_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
+    next if check_package(@pkg_name)
     search @pkg_name
     print_current_package
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
@@ -1938,7 +1937,6 @@ def reinstall_command(args)
 
     if @pkg.compatible?
       @pkg.in_upgrade = true
-      next if CREW_LOCAL_REPO_ROOT.length.positive? && check_package(@pkg_name)
       resolve_dependencies_and_install
       @pkg.in_upgrade = false
     else
