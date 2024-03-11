@@ -2385,14 +2385,14 @@ url: https://github.com/git-lfs/git-lfs/releases
 activity: medium
 ---
 kind: url
-name: git_restore_mtime
-url: https://github.com/MestreLion/git-tools/releases
-activity: low
----
-kind: url
 name: git_prompt
 url: https://github.com/git/git/releases
 activity: high
+---
+kind: url
+name: git_restore_mtime
+url: https://github.com/MestreLion/git-tools/releases
+activity: low
 ---
 kind: url
 name: github_cli
