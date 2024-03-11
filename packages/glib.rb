@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glib < Package
+class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
   homepage 'https://developer.gnome.org/glib'
-  version '2.79.2'
+  version '2.80.0'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/glib.git'
@@ -11,34 +11,28 @@ class Glib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b12dd9982db97233dbc305b9f39f4e50e141be6888a94a5746cf8c48b533629a',
-     armv7l: 'b12dd9982db97233dbc305b9f39f4e50e141be6888a94a5746cf8c48b533629a',
-       i686: '44d3afc9f320cdd912537c2a63b5b15208237b604843384f98611d2b5e5324a5',
-     x86_64: 'acd4d3d7132b1fd92c6bd67261a46927c16b7af8ee14e2c6eae9e8f798bd6023'
+    aarch64: '51156b4b2f9528ac1214cab16363af56db9f3889b0d468705329f4502985b71e',
+     armv7l: '51156b4b2f9528ac1214cab16363af56db9f3889b0d468705329f4502985b71e',
+       i686: '8d5c84282eb479f7afeb1e312866fcc6eca37ee2a1aba578d8a554e66cf6a3e2',
+     x86_64: '01138ea4b0ca4d1693135a7f066406b8c9eedd686cdf9e6aa566601502bc89a9'
   })
 
   depends_on 'elfutils' # R
+  depends_on 'gcc_lib' # R
   depends_on 'libffi' # R
+  depends_on 'pcre2' # R
   depends_on 'pcre' # R
   depends_on 'py3_pygments' => :build
   depends_on 'shared_mime_info' # L
   depends_on 'util_linux' # R
   depends_on 'zlibpkg' # R
-  depends_on 'pcre2' # R
-  depends_on 'gcc_lib' # R
 
   no_strip if %w[aarch64 armv7l].include? ARCH
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('strip=true', 'strip=false')} \
-    -Dselinux=disabled \
+  meson_options '-Dselinux=disabled \
     -Dsysprof=disabled \
     -Dman-pages=disabled \
-    -Dtests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+    -Dtests=false'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

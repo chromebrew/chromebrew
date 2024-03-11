@@ -2895,6 +2895,11 @@ url: https://download.gnome.org/sources/gtk/
 activity: medium
 ---
 kind: url
+name: gtk_layer_shell
+url: https://github.com/wmww/gtk-layer-shell/releases
+activity: low
+---
+kind: url
 name: gtkdialog
 url: https://code.google.com/archive/p/gtkdialog/downloads
 activity: none
