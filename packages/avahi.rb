@@ -5,7 +5,7 @@ class Avahi < Package
   homepage 'http://www.avahi.org/'
   version '0.8-4'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz'
   source_sha256 '060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Avahi < Package
   binary_sha256({
     aarch64: '44967482fa6955e784d164cbfa534d54c3498705c71a12748fdfc4dc865ea8b6',
      armv7l: '44967482fa6955e784d164cbfa534d54c3498705c71a12748fdfc4dc865ea8b6',
-       i686: '913d8179d378520eea8b1788d5261cd6fc9f31936dc4f123a3212e6fba7dc1fb',
      x86_64: '7eebce85f0689787cbc42121b9f0052a7b9153f92a8cbbba233badf6dba9a839'
   })
 

@@ -5,7 +5,7 @@ class Pygobject2 < Package
   homepage 'https://pygobject.readthedocs.io/'
   version '2.28.7'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.7.tar.xz'
   source_sha256 'bb9d25a3442ca7511385a7c01b057492095c263784ef31231ffe589d83a96a5a'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Pygobject2 < Package
   binary_sha256({
     aarch64: '3debe985d9c09730ec6e882a781cd02982a63bff5a9c709f306c6c93d0db30fd',
      armv7l: '3debe985d9c09730ec6e882a781cd02982a63bff5a9c709f306c6c93d0db30fd',
-       i686: '85c71d60e1bcdbc3b78781e117d6843b5035b1c3545ffee4eb6e061d49cf87df',
      x86_64: 'f8770f45903fe780f4e91f97e14616bbaf4d895ab924feae1b892529a98aa121'
   })
 

@@ -5,7 +5,7 @@ class Gnome_docking_library < Package
   homepage 'https://www.gnome.org/'
   version '3.28.0-0'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/GNOME/gdl/archive/GDL_3_28_0.tar.gz'
   source_sha256 '14e4691026eb459ce1f65addce706eed1b2f61ef48fd6e59d72509337e87d14b'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Gnome_docking_library < Package
   binary_sha256({
     aarch64: '666e943121c47a202f5de8800c00226b917dbbbe75d0ba8b9dacba68f0f9ad41',
      armv7l: '666e943121c47a202f5de8800c00226b917dbbbe75d0ba8b9dacba68f0f9ad41',
-       i686: 'e6156b06ba347cd9c956554194bad924edc558e6385191b1e8d867eb8cf8a959',
      x86_64: '94341d3b3ea28e34a48e0610996901a9c1905f98b7fa0063c0f4938b27c337ed'
   })
 

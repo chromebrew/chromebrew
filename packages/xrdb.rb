@@ -5,7 +5,7 @@ class Xrdb < Package
   homepage 'https://x.org'
   version '1.2.1'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xrdb.git'
   git_hashtag "xrdb-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Xrdb < Package
   binary_sha256({
     aarch64: '547cb971355f8c3a3b4550fde0268150c1ab45cb818c42f21ad3d5bbb93329f8',
      armv7l: '547cb971355f8c3a3b4550fde0268150c1ab45cb818c42f21ad3d5bbb93329f8',
-       i686: '5751bc4b403de795dc53c34a0aef60714bb6c45a318032510e791b3c37622af2',
      x86_64: '5725f1b269c6ec44f0c975bed5575299f7896105637a7e34cd4f967cee808207'
   })
 

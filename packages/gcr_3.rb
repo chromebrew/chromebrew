@@ -5,7 +5,7 @@ class Gcr_3 < Package
   homepage 'https://www.gnome.org'
   version '3.41.1'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{version}/gcr-#{version}.tar.bz2"
   source_sha256 '7e06e86e12aadaac6a72f2ee7eeaaaa6228a0ba3b92cadd50b45c0f05f0d91c6'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gcr_3 < Package
   binary_sha256({
     aarch64: '6b2d4cffaf3de2994d1a8f5f7a3b466dc723ef2236761f2753c1e2feeb3fc671',
      armv7l: '6b2d4cffaf3de2994d1a8f5f7a3b466dc723ef2236761f2753c1e2feeb3fc671',
-       i686: '21a4bdffdf2b27460cf353e48a2fbbfb1936f1fff333cb7d131c9f4ac28391dd',
      x86_64: '8af250461b9f5ea95b3198ffb6cb1474b2e0fd7c9571e84420548dd5b10ed7c3'
   })
 

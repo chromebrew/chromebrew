@@ -5,7 +5,7 @@ class Gnome_calculator < Package
   homepage 'https://wiki.gnome.org/Apps/Calculator'
   version '43.0.1'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-calculator.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gnome_calculator < Package
   binary_sha256({
     aarch64: 'a6e5f0667f8ab02634ee3ff321155dc92dac7a974f9e20c4e9aa3c2c34dd1994',
      armv7l: 'a6e5f0667f8ab02634ee3ff321155dc92dac7a974f9e20c4e9aa3c2c34dd1994',
-       i686: '33987c06251197bdb3e4cfc66fea2db9da26bb2726ee1dee299b296f15cc85a3',
      x86_64: '414afd75da3ffda9b37f3eddfc892686461ea174cce752017113700bdd76ec33'
   })
 

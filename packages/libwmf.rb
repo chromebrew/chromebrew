@@ -5,7 +5,7 @@ class Libwmf < Package
   homepage 'https://github.com/caolanm/libwmf'
   version '0.2.12-ad365e1'
   license 'LGPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/caolanm/libwmf.git'
   git_hashtag 'ad365e1df356d6371daabf426bd39a5f9721160a'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libwmf < Package
   binary_sha256({
     aarch64: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
      armv7l: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
-       i686: '46c87dd5675bdae11cb48e0ae1a0b6092adbf926193b4c2822e3274b0078e8ab',
      x86_64: '001151fb0dab422ecfc300fefe3793d2b0e85b4c9d3cc43a7eb2841a325d221e'
   })
 

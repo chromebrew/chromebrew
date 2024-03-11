@@ -5,7 +5,7 @@ class Gnome_shell < Package
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
   version '41.0'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-shell.git'
   git_hashtag version
   binary_compression 'tpxz'

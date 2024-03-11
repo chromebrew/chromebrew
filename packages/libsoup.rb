@@ -5,7 +5,7 @@ class Libsoup < Package
   homepage 'https://wiki.gnome.org/Projects/libsoup'
   version '3.4.1'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libsoup.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libsoup < Package
   binary_sha256({
     aarch64: 'cc98bf1ea4739fde2b7fdf2c9d90c8d072294955907354a518456c22968da689',
      armv7l: 'cc98bf1ea4739fde2b7fdf2c9d90c8d072294955907354a518456c22968da689',
-       i686: '61a01150af6fd7d6a1343f94b50237dba373ef80a7c0661651930e01f66a5191',
      x86_64: '8279f8edabc965a590b260fcc34543b0f25b66a4746e3dd89befcd4b0046b91b'
   })
 

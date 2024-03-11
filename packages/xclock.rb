@@ -5,7 +5,7 @@ class Xclock < Package
   homepage 'https://www.x.org/archive/X11R6.8.1/doc/xclock.1.html'
   version '1.1.1'
   license 'MIT-with-advertising'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xclock.git'
   git_hashtag "xclock-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Xclock < Package
   binary_sha256({
     aarch64: 'b35b8f4abbab0da7b6f8c04f7eabd4bddefb2b0ca56de1cbd94975c9119c5aae',
      armv7l: 'b35b8f4abbab0da7b6f8c04f7eabd4bddefb2b0ca56de1cbd94975c9119c5aae',
-       i686: '6011367b96a13f19900fb84ebea21af2e955ecba1235525a00d60a6d47f8cfae',
      x86_64: '388bff5a287f56d332c7f2cf8f0e7a8915fb6723e0b1dcdac826c4e966658c47'
   })
 

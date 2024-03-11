@@ -5,7 +5,7 @@ class Libotf < Package
   homepage 'https://www.nongnu.org/m17n/'
   version '0.9.16'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://download.savannah.gnu.org/releases/m17n/libotf-#{version}.tar.gz"
   source_sha256 '68db0ca3cda2d46a663a92ec26e6eb5adc392ea5191bcda74268f0aefa78066b'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Libotf < Package
   binary_sha256({
     aarch64: '48ea420876299f2de783c250b6def3c2a87e7bf8c16695a63b7561efbb9594f8',
      armv7l: '48ea420876299f2de783c250b6def3c2a87e7bf8c16695a63b7561efbb9594f8',
-       i686: '487c98f04bdc12c06a2afd32087222150ee652d9fc3c6233daee341c41718406',
      x86_64: '8ec1c9f4e8b99482323e3bf444cca95b5e3d0abb90b8ea278d1461b29470e340'
   })
 

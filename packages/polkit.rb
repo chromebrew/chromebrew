@@ -5,7 +5,7 @@ class Polkit < Package
   homepage 'https://www.freedesktop.org/wiki/Software/polkit/'
   version '0.120-a2bf5c'
   license 'LGPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/polkit/polkit.git'
   git_hashtag 'a2bf5c9c83b6ae46cbd5c779d3055bff81ded683'
   binary_compression 'tpxz'
@@ -13,7 +13,6 @@ class Polkit < Package
   binary_sha256({
     aarch64: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
      armv7l: '64f33f2ac0ab70d6aef5e1678bd83a5dbd9487ae50641402ffc5bd049409b4bf',
-       i686: 'd36368005afc56910018fbba79b8292aed5802db7fc8d9e6f593a3b81988292e',
      x86_64: '7b775cbb16b44bde17a539955b33e14f97146ba10237ebeb01ec2ea700acafc7'
   })
 

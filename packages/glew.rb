@@ -5,7 +5,7 @@ class Glew < Package
   homepage 'http://glew.sourceforge.net/'
   version '2.2.0'
   license 'BSD and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://sourceforge.net/projects/glew/files/glew/2.2.0/glew-2.2.0.tgz/download'
   source_sha256 'd4fc82893cfb00109578d0a1a2337fb8ca335b3ceccf97b97e5cc7f08e4353e1'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Glew < Package
   binary_sha256({
     aarch64: '20c0ed7ae6a12d3a3b852d7d3b9f27bb9bcc9eeb13843767a599b055cde8f77e',
      armv7l: '20c0ed7ae6a12d3a3b852d7d3b9f27bb9bcc9eeb13843767a599b055cde8f77e',
-       i686: '645d6b9697d3543d819cc9fc3b6877f4d849707fcaa11c79a2f77656a6958b42',
      x86_64: '4ac9705c4f6836b04286e85d8e0da547c59de28c98119e3654358f27c1b387a3'
   })
 

@@ -6,7 +6,7 @@ class Py3_pillow < Pip
   @_ver = '9.2.0'
   version "#{@_ver}-py3.12"
   license 'HPND'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
   depends_on 'freetype' # R

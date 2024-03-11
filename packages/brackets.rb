@@ -5,13 +5,12 @@ class Brackets < Package
   homepage 'http://brackets.io/'
   version '1.14.1'
   license 'MPL-2.0'
-  compatibility 'i686,x86_64'
+  compatibility 'x86_64'
   source_url 'https://github.com/adobe/brackets/archive/release-1.14.1.tar.gz'
   source_sha256 '9a07fc80a155d2490be4eff77a2622539012325cef18e89305b8bc45c4c3833d'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: '815c23b388b937fbfeb8bb109297c597dcebe3b031ad3e1a718463f5a38cb67e',
     x86_64: 'ddcef49b895b1d132ceef90406044ce7699cc21dfa1d048e059bafa2945399bc'
   })
 

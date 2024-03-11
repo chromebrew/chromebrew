@@ -5,7 +5,7 @@ class At_spi2_core < Package
   homepage 'http://www.freedesktop.org/'
   version '2.48.0'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/at-spi2-core.git'
   git_hashtag "AT_SPI2_CORE_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class At_spi2_core < Package
   binary_sha256({
     aarch64: '8b43962dd48f8cedaa964eb5598e32ef05b7a929c09917cbc3e06e204da059de',
      armv7l: '8b43962dd48f8cedaa964eb5598e32ef05b7a929c09917cbc3e06e204da059de',
-       i686: 'ce843f4c9b133c03a79f6aa627e33931ad3578c11ed3f7c60d6c87346e3c79da',
      x86_64: '618d2c9f7bd2216ac20411ae750a324de992d60dc3ecab519ad247a2a82af344'
   })
 

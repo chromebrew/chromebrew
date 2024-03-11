@@ -5,7 +5,7 @@ class Oci_cli < Package
   homepage 'https://github.com/oracle/oci-cli/'
   version '3.1.2'
   license 'UPL-1.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/oracle/oci-cli.git'
   git_hashtag "v#{version}"
   binary_compression 'tpxz'
@@ -13,7 +13,6 @@ class Oci_cli < Package
   binary_sha256({
     aarch64: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',
      armv7l: 'e34f28f7fd938279f2c4b4d2ea3089c1080f3f17960de056ccaba8e358a623c3',
-       i686: '6ef0ff1cbe571c15ead08e00f08c52bfd85cb6d2271a0b7ff76a8603fd98da73',
      x86_64: '409198208cd2dab9b6f66bed27413dca7e443b1917fca3d5158ae5a304905567'
   })
 

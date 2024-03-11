@@ -5,7 +5,7 @@ class Libxfont2 < Package
   homepage 'http://www.x.org'
   version '2.0.6'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/archive/individual/lib/libXfont2-2.0.6.tar.xz'
   source_sha256 '74ca20017eb0fb3f56d8d5e60685f560fc85e5ff3d84c61c4cb891e40c27aef4'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxfont2 < Package
   binary_sha256({
     aarch64: 'ab1e630f1c5a7a5917620dfb5bd34feeea7fdc002f73166d2ef8ed7674a1c537',
      armv7l: 'ab1e630f1c5a7a5917620dfb5bd34feeea7fdc002f73166d2ef8ed7674a1c537',
-       i686: '24fb09e7a20f00a144c3c96b329243c0ea7c0d6eaa365d1025a9c29e9a6a5152',
      x86_64: '4a72ab2f2da91acfff1ff03d0b7c47ac37ad9d0d3c5adc1d6ad1e98448f24200'
   })
 

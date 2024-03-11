@@ -5,7 +5,7 @@ class Xfce4_panel < Package
   homepage 'https://xfce.org/'
   version '4.16.3'
   license 'GPL-2+ and LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://archive.xfce.org/src/xfce/xfce4-panel/4.16/xfce4-panel-4.16.3.tar.bz2'
   source_sha256 '5934eaed8a76da52c29b734ccd79600255420333dd6ebd8fd9f066379af1e092'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Xfce4_panel < Package
   binary_sha256({
     aarch64: 'be479ecd57ca0a60f2ca69ea39f4a65d240dae52f72f36da7e7280dbe007768c',
      armv7l: 'be479ecd57ca0a60f2ca69ea39f4a65d240dae52f72f36da7e7280dbe007768c',
-       i686: '34d5df943fb926b7a0a87f222163cd532f320da80e74dda59131cbd8835bd8c7',
      x86_64: 'fb4ddea55c05ed590a0c0b5d6bf383197182af9be828f9324279f3d3c9c8d694'
   })
 

@@ -5,13 +5,12 @@ class Libva_intel_driver_hybrid < Package
   homepage 'https://github.com/intel/intel-vaapi-driver'
   version '2.4.1-1'
   license 'MIT'
-  compatibility 'i686 x86_64'
+  compatibility 'x86_64'
   source_url 'https://github.com/intel/intel-vaapi-driver/archive/2.4.1.tar.gz'
   source_sha256 '03cd7e16acc94f828b6e7f3087863d8ca06e99ffa3385588005b1984bdd56157'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'ff155f22b24b2c58a434e3b866f47f367b92817835d15f62034311ee607dc289',
     x86_64: 'e9c740a0bd917ecbb69b822ce9df1609f415776ab5a5e553eb0a83bc93a35f90'
   })
 

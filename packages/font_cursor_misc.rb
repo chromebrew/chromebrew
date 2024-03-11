@@ -5,7 +5,7 @@ class Font_cursor_misc < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.3'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/font/font-cursor-misc-1.0.3.tar.bz2'
   source_sha256 '17363eb35eece2e08144da5f060c70103b59d0972b4f4d77fd84c9a7a2dba635'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Font_cursor_misc < Package
   binary_sha256({
     aarch64: '8259c1415c5c26cd3acfe4b4e285ee51e359e3a9e293ad5ee1e323b183e29447',
      armv7l: '8259c1415c5c26cd3acfe4b4e285ee51e359e3a9e293ad5ee1e323b183e29447',
-       i686: 'b4ed16c23140f1937e1f1db8a50be8c3f092b5213bee32f5e02225413035876d',
      x86_64: 'de3f59c6773fbb5ac70367e766d82156b2174e6ee70fe05e2f5b49508459264a'
   })
 

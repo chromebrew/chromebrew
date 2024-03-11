@@ -6,7 +6,7 @@ class Wmctrl < Package
   @_ver = '1.07'
   version "#{@_ver}-1"
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "http://tripie.sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
   source_sha256 'd78a1efdb62f18674298ad039c5cbdb1edb6e8e149bb3a8e3a01a4750aa3cca9'
   binary_compression 'tar.xz'
@@ -14,7 +14,6 @@ class Wmctrl < Package
   binary_sha256({
     aarch64: '97f0bfc34405935c50b960f58b277560fc6cd866a8d56aedde7d963ff3e888e4',
      armv7l: '97f0bfc34405935c50b960f58b277560fc6cd866a8d56aedde7d963ff3e888e4',
-       i686: '457c74eed5b513a70046d1f2c63bc8ae925c46b67df8c811ae115e7b7177a1b7',
      x86_64: '3087608f812c2888edaa264885bc1efb3044e958bdfaadc609e375b1a7172eb8'
   })
 

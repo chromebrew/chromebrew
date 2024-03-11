@@ -3,7 +3,7 @@ require 'package'
 class Libxinerama < Package
   description 'Xorg library, Xinerama is an X11 extension which provides support for extending a desktop across multiple displays.'
   homepage 'https://www.x.org/'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   license 'MIT'
   version '1.1.4'
   source_url 'https://www.x.org/archive/individual/lib/libXinerama-1.1.4.tar.bz2'
@@ -13,7 +13,6 @@ class Libxinerama < Package
   binary_sha256({
     aarch64: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
      armv7l: '81226a97841812aa627e05e987a06156d84ba790813c13edefe4bbcb9d615e2a',
-       i686: 'd57dce7574fe2ec96177a011a863d13626772255c6d6e23fbf03632ec848b697',
      x86_64: 'f8f11b3529ecba47aba8b2055b6bba3fa57f155d5fc4882322cf4595bb5e64cd'
   })
 

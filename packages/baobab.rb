@@ -5,7 +5,7 @@ class Baobab < Package
   homepage 'https://wiki.gnome.org/Apps/DiskUsageAnalyzer'
   version '43.0'
   license 'GPL-2+ and FDL-1.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/baobab/-/archive/43.0/baobab-43.0.tar.bz2'
   source_sha256 'dd1e2c65d4cee3d904d1c127ef700d07b8011a689cde2c3f9de04cdaa1f1df6c'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Baobab < Package
   binary_sha256({
     aarch64: 'bd42ba8dd8345a57b294eed20b6eed797c1a2c75fe87d86640548c8879fef8f2',
      armv7l: 'bd42ba8dd8345a57b294eed20b6eed797c1a2c75fe87d86640548c8879fef8f2',
-       i686: 'f08fbace4f42d03a16f32260f654d37e363a77e85959dc9d6aa33fe13b8a451a',
      x86_64: 'ee45c716382ad00b465ee704f10f266712239d7426098cdeb780f7a48a57b5e8'
   })
 

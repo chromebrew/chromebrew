@@ -5,7 +5,7 @@ class Electric < Package
   homepage 'https://www.staticfreesoft.com/'
   version '9.07'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://ftpmirror.gnu.org/electric/electricBinary-9.07.jar'
   source_sha256 '3e383f673183265700e0c13a5f7b1d3348247465c3d8817c845d62e4c92d86ce'
 

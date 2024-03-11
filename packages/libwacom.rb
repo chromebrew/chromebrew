@@ -5,7 +5,7 @@ class Libwacom < Package
   homepage 'https://github.com/linuxwacom/libwacom'
   version '1.12'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/linuxwacom/libwacom.git'
   git_hashtag "libwacom-#{version}"
   binary_compression 'tpxz'
@@ -13,7 +13,6 @@ class Libwacom < Package
   binary_sha256({
     aarch64: 'f7c3aa3b6f959b942e83ac4906ec57e70d1af52db9d9896684a3be2451353f65',
      armv7l: 'f7c3aa3b6f959b942e83ac4906ec57e70d1af52db9d9896684a3be2451353f65',
-       i686: '65dd0a7f8e2c9b69db108e1681441612435f48f7b90f7723d9d03dbeaf1fccec',
      x86_64: '4ea8c93a5be266921a869d1aa39600bf19aec35a2481ed71415ee2c74ba8840a'
   })
 

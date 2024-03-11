@@ -5,7 +5,7 @@ class Bleachbit < Package
   homepage 'https://www.bleachbit.org/'
   version '4.4.2'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.bleachbit.org/bleachbit-4.4.2.tar.lzma'
   source_sha256 '113686f537be4a9fcfeb99fd2e976a33fb8eeb208fb69c571ec7acd96d7fb21b'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Bleachbit < Package
   binary_sha256({
     aarch64: '93058ccca4af018b26df9878ba6898a3cb1d7cd7c26cb9617a4bea1173b97697',
      armv7l: '93058ccca4af018b26df9878ba6898a3cb1d7cd7c26cb9617a4bea1173b97697',
-       i686: '3757fad8813dc6ad6f6122993336de0c00e9e6cec0583a3c010cdcb179279e5c',
      x86_64: '9fce1a604d77059c43980dae5cbe13c3779b88e9e58ab164e49223ec3901c7cf'
   })
 

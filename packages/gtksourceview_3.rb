@@ -5,7 +5,7 @@ class Gtksourceview_3 < Package
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '3.24.11'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz'
   source_sha256 '691b074a37b2a307f7f48edc5b8c7afa7301709be56378ccf9cc9735909077fd'
   binary_compression 'tar.xz'

@@ -4,7 +4,7 @@ class Libdc1394 < Package
   description 'libdc1394 is a library that provides a complete high level application programming interface (API) for developers who wish to control IEEE 1394 based cameras.'
   homepage 'https://damien.douxchamps.net/ieee1394/libdc1394/'
   version '2.2.6'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   license 'LGPL-2.1'
   source_url 'https://sourceforge.net/projects/libdc1394/files/libdc1394-2/2.2.6/libdc1394-2.2.6.tar.gz'
   source_sha256 '2b905fc9aa4eec6bdcf6a2ae5f5ba021232739f5be047dec8fe8dd6049c10fed'
@@ -13,7 +13,6 @@ class Libdc1394 < Package
   binary_sha256({
     aarch64: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
       armv7l: '0b694d5edbf189c0570a497999da69a8d11429f8204ac013d9280a92d1701bcf',
-        i686: '9cbbb6aa09c17bf7e68d6638e4121a1d8df5a28bbc28a180f9ca27bef8b84b45',
       x86_64: '778cdfbf6102517458e8c7c5873fb89cf8b13c00ab65ae23cd50de9a1a232adf'
   })
 

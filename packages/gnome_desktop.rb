@@ -5,7 +5,7 @@ class Gnome_desktop < Package
   homepage 'https://gitlab.gnome.org/GNOME/gnome-desktop'
   version '43'
   license 'GPL-2+, LGPL-2+ and FDL-1.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-desktop.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Gnome_desktop < Package
   binary_sha256({
     aarch64: 'a74b7c69028d47aaf02549264b22818423cec6fef60b40ef3a25f188f5337ede',
      armv7l: 'a74b7c69028d47aaf02549264b22818423cec6fef60b40ef3a25f188f5337ede',
-       i686: '4f1c5e72754b21fca772b944fa72c6e7f1b29525e9d2424bbc6f8ec6c5679f80',
      x86_64: '759b39213e12c916986ba8c7913f25f7a38cba961d8b85241ba80e4aa59d8a86'
   })
 

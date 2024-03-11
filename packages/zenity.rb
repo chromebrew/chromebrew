@@ -5,7 +5,7 @@ class Zenity < Package
   homepage 'https://wiki.gnome.org/Projects/Zenity'
   version '3.32.0'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://deb.debian.org/debian/pool/main/z/zenity/zenity_3.32.0.orig.tar.xz'
   source_sha256 'e786e733569c97372c3ef1776e71be7e7599ebe87e11e8ad67dcc2e63a82cd95'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Zenity < Package
   binary_sha256({
     aarch64: 'ad62a47795d7d1c530f9237dd64d33e773d347723d808dee489636652612b944',
      armv7l: 'ad62a47795d7d1c530f9237dd64d33e773d347723d808dee489636652612b944',
-       i686: 'ad9451bd9af323550daf73de6017c8e7d274d19b3025b3b6ea666d9898ea44bb',
      x86_64: '4903f1cc1859b0df09348dcf920b6f8eae84e66151f4463e23ccd4a07b73d3c9'
   })
 

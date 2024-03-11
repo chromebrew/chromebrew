@@ -5,7 +5,7 @@ class Imlib2 < Package
   homepage 'https://sourceforge.net/projects/enlightenment/'
   version '1.9.1'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://downloads.sourceforge.net/enlightenment/imlib2-#{version}.tar.xz"
   source_sha256 '4a224038bfffbe5d4d250c44e05f4ee5ae24dcfef8395b1677c715c58f764d43'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Imlib2 < Package
   binary_sha256({
     aarch64: '3975a861cde1bc361f8045e80b580e92585308856cdf64fb419b97be43e50e4c',
      armv7l: '3975a861cde1bc361f8045e80b580e92585308856cdf64fb419b97be43e50e4c',
-       i686: '63fbeec96d32ec29a0ab422a41f5b2f71f5429bf2440bb342d60e575f5b50d07',
      x86_64: '5a301b10f322d868e0d1a2e13b9190c95064e4f50bc7654b12e7650f9f2812ef'
   })
 

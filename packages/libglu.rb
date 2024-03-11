@@ -5,7 +5,7 @@ class Libglu < Package
   homepage 'https://www.mesa3d.org/'
   version '9.0.2'
   license 'SGI-B-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/glu.git'
   git_hashtag "glu-#{version}"
   binary_compression 'tar.zst'

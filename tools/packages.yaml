@@ -4366,11 +4366,6 @@ url: https://launchpad.net/libmetalink/+download
 activity: none
 ---
 kind: url
-name: libmfx
-url: https://github.com/lu-zero/mfx_dispatch/releases
-activity: low
----
-kind: url
 name: libmicrodns
 url: https://github.com/videolabs/libmicrodns/releases
 activity: none

@@ -6,7 +6,7 @@ class Tepl_5 < Package
   @_ver = '5.0.1'
   version "#{@_ver}-1"
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/Archive/tepl.git'
   git_hashtag @_ver
   binary_compression 'tpxz'

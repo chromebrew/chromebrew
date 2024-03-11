@@ -5,7 +5,7 @@ class Php5 < Package
   homepage 'http://www.php.net/'
   version '5.6.40-2'
   license 'PHP-3.01'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://php.net/distributions/php-5.6.40.tar.xz'
   source_sha256 '1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Php5 < Package
   binary_sha256({
     aarch64: '0fb88410bfb778e2f6df96cf4c5170574ad04c154cc8fa540018db91b8355cbd',
      armv7l: '0fb88410bfb778e2f6df96cf4c5170574ad04c154cc8fa540018db91b8355cbd',
-       i686: '1677dad1444d2c09d55fb454471c82783ff002c3f177bd0f0b837e77c7cc179f',
      x86_64: 'a99fc4179bee6668150af496370dc6b6c824feed125c5e16ae9fe1938a41a5a5'
   })
 

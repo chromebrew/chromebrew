@@ -5,7 +5,7 @@ class Devil < Package
   homepage 'http://openil.sourceforge.net/'
   version '1.8.0-6f3d5e9'
   license 'LGPL-2.1'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/DentonW/DevIL.git'
   git_hashtag '6f3d5e9bc5d173f56060fc8e14bed35c8edcfdcc'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Devil < Package
   binary_sha256({
     aarch64: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
      armv7l: 'd14bd70a075ad1602a3850451a91c15f91346f5af5fd99bf4f0054c24595498a',
-       i686: '893a086ba8c9d0bb286bc1ee024f30e8b3dd851dd64053ab2aba744d6585f51e',
      x86_64: '494336d49fee91201c74574356a2bf5c1e5bdc6e5d15bcc03decb99210286664'
   })
 

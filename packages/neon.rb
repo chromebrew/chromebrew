@@ -5,7 +5,7 @@ class Neon < Package
   homepage 'http://www.webdav.org/neon/'
   version '0.32.5'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/notroj/neon.git'
   git_hashtag version
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Neon < Package
   binary_sha256({
     aarch64: '0444e7c0c3b6ae6b97b355a802491cae583bfd534af2024f64470e87a348cc47',
      armv7l: '0444e7c0c3b6ae6b97b355a802491cae583bfd534af2024f64470e87a348cc47',
-       i686: '45fa4c37e2a64bfbd332a924cacbf5772520b58fd751601aaf984a9ff4e31bfb',
      x86_64: '16f0fdbfd3768f2860a252853731d125cffc0051aa64a5e108b9b758059eeeb6'
   })
 

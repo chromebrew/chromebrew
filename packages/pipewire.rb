@@ -10,7 +10,7 @@ class Pipewire < Meson
   else
     version '1.0.3'
   end
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   license 'LGPL-2.1+'
   source_url 'https://gitlab.freedesktop.org/pipewire/pipewire.git'
   git_hashtag version

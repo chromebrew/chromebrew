@@ -46,7 +46,6 @@ class Ffmpeg < Package
   depends_on 'libiec61883' # R
   depends_on 'libjpeg' # R
   depends_on 'libjxl' # R
-  depends_on 'libmfx' if ARCH == 'i686' && CREW_IS_INTEL # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R
   depends_on 'libopencoreamr' # R
@@ -110,29 +109,18 @@ class Ffmpeg < Package
 
   def self.build
     case ARCH
-    when 'i686'
-      @mfx = '--enable-libmfx'
-      @lto = ''
-      @enablelto = ''
-      @arch_cflags = ''
     when 'x86_64'
-      @mfx = '--enable-libmfx'
-      @lto = '-flto=auto'
-      @enablelto = '--enable-lto'
       @arch_cflags = ''
     when 'aarch64', 'armv7l'
-      @mfx = ''
-      @lto = '-flto=auto'
-      @enablelto = '--enable-lto'
       @arch_cflags = '-mfloat-abi=hard -mthumb -mfpu=neon -march=armv7-a+fp'
     end
 
     # ChromeOS awk employs sandbox redirection protections which screw
     # up configure script generation, so use mawk.
     system "sed -i 's/awk/mawk/g' configure"
-    system "CFLAGS='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
-      CXXFLAGS='#{CREW_ENV_OPTIONS_HASH['CXXFLAGS']} #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
-      LDFLAGS='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} #{@lto}' \
+    system "CFLAGS='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} -flto=auto -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+      CXXFLAGS='#{CREW_ENV_OPTIONS_HASH['CXXFLAGS']} -flto=auto -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+      LDFLAGS='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} -flto=auto' \
         ./configure \
         --arch=#{ARCH} \
         --disable-debug \
@@ -190,7 +178,7 @@ class Ffmpeg < Package
         --enable-libzimg \
         --enable-libzmq \
         --enable-libzvbi \
-        #{@enablelto} \
+        --enable-lto \
         --enable-lv2 \
         --enable-lzma \
         --enable-nonfree \
@@ -199,9 +187,8 @@ class Ffmpeg < Package
         --enable-pthreads \
         --enable-shared \
         --enable-version3 \
-        #{@mfx}  \
-        --host-cflags='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} #{@lto} -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
-        --host-ldflags='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} #{@lto}' \
+        --host-cflags='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} -flto=auto -fuse-ld=#{CREW_LINKER} #{@arch_cflags}' \
+        --host-ldflags='#{CREW_ENV_OPTIONS_HASH['LDFLAGS']} -flto=auto' \
         #{CREW_OPTIONS.sub(/--build=.*/, '').gsub('vfpv3-d16', 'neon').gsub('--disable-dependency-tracking', '')}"
     system "env PATH=#{CREW_LIB_PREFIX}/ccache/bin:#{CREW_PREFIX}/bin:/usr/bin:/bin \
         make -j#{CREW_NPROC}"

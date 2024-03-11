@@ -6,7 +6,7 @@ class Elogind < Package
   @_ver = '246.10'
   version "#{@_ver}-1"
   license 'CC0-1.0, LGPL-2.1+ and public-domain'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/elogind/elogind/archive/v#{@_ver}.tar.gz"
   source_sha256 'c490dc158c8f5bca8d00ecfcc7ad5af24d1c7b9e59990a0b3b1323996221a922'
   binary_compression 'tar.xz'
@@ -14,7 +14,6 @@ class Elogind < Package
   binary_sha256({
     aarch64: '7bf79ff8159f5d90f36c8680f70bb4ad8b36276c0600e4aac664ce79b8808b6e',
      armv7l: '7bf79ff8159f5d90f36c8680f70bb4ad8b36276c0600e4aac664ce79b8808b6e',
-       i686: '2a4c82de76b21a2fd0ea1e2b53c96ea5e90650d012fe5509e48f837258771648',
      x86_64: 'a12c145e41d5f8691731bf29a3d832f7974fea3e887677b649dbc43ea5888a9a'
   })
 

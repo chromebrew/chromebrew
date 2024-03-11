@@ -5,7 +5,7 @@ class Libxcursor < Package
   homepage 'http://www.x.org'
   version '1.2.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://www.x.org/archive/individual/lib/libXcursor-#{version}.tar.gz"
   source_sha256 '77f96b9ad0a3c422cfa826afabaf1e02b9bfbfc8908c5fa1a45094faad074b98'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxcursor < Package
   binary_sha256({
     aarch64: 'a97308abd1cfddffb54a08bbfd1018ec8d33a139e1cace109815a0056889369a',
      armv7l: 'a97308abd1cfddffb54a08bbfd1018ec8d33a139e1cace109815a0056889369a',
-       i686: 'd6bd0e572055c716285f5eb5e1ba4726526424dccf18dfe16a285157fe170f7c',
      x86_64: 'c107c34d8e95d54f6552dd17c105f062a1d27016421db5628298c118bf992708'
   })
 

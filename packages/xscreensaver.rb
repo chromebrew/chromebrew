@@ -5,7 +5,7 @@ class Xscreensaver < Package
   homepage 'https://www.jwz.org/xscreensaver/download.html'
   version '5.44'
   license 'BSD'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.jwz.org/xscreensaver/xscreensaver-5.44.tar.gz'
   source_sha256 '73d8089cfc7d7363b5dac99b5b01dffb3429d0a855e6af16ce9a4b7777017b95'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Xscreensaver < Package
   binary_sha256({
     aarch64: '6e6fe321404454f174492ed9b116ed339b7b3053c86d6af7b463d266b4558feb',
      armv7l: '6e6fe321404454f174492ed9b116ed339b7b3053c86d6af7b463d266b4558feb',
-       i686: '601c1c6c14e128d6ec5bd69949cd7f25e50c7cd29b57cc2faf075ae0c36e0f60',
      x86_64: '9f318d5f089884acfcef0ccfd0147535a44b38957f94338ff2f97e1cec27f3c0'
   })
 

@@ -8,7 +8,7 @@ class Xorg_xset < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.2.5'
   license 'X11'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/app/xset.git'
   git_hashtag "xset-#{version}"
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Xorg_xset < Package
   binary_sha256({
     aarch64: '263227acbc9ac98ea273553ef221ae516375f5e410ef87bd435862ce735faf3f',
      armv7l: '263227acbc9ac98ea273553ef221ae516375f5e410ef87bd435862ce735faf3f',
-       i686: 'c1c7684981b1b425742c5a7c72d9b9a973904c246409504116af804339395579',
      x86_64: '52dfdb502a8a52a570e0e54a2a8fe6e2adba0366cdba14474eda26c3a98b626a'
   })
 

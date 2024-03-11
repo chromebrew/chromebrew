@@ -5,7 +5,7 @@ class Gedit < Package
   homepage 'https://wiki.gnome.org/Apps/Gedit'
   version '40.1'
   license 'GPL-2+ CC-BY-SA-3.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gedit.git'
   git_hashtag version
   binary_compression 'tpxz'
@@ -13,7 +13,6 @@ class Gedit < Package
   binary_sha256({
     aarch64: 'd00004e8fe0b7f2f9c1884f4f7657b208ac504cf9b19ef033f58559b4683588f',
      armv7l: 'd00004e8fe0b7f2f9c1884f4f7657b208ac504cf9b19ef033f58559b4683588f',
-       i686: '415aa41a13957b20b7d420df9337e6344ce0668b29a43ae8913000fdbc5b5ed5',
      x86_64: 'dc1aee9657dfa305d79fd9f4c582515886aeb6254d06794271997385d5f3060d'
   })
 
