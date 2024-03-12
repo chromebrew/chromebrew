@@ -286,7 +286,6 @@ echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
-# We need these to install core.
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
