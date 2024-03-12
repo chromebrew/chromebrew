@@ -15,10 +15,10 @@ class Git_mestrelion_tools < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e008b4240a6ff1580dcb0786cc687454608d2a3dd3351da9bb7aa0a17a44cfa7',
-     armv7l: 'e008b4240a6ff1580dcb0786cc687454608d2a3dd3351da9bb7aa0a17a44cfa7',
-       i686: 'ccb3144001c111b47c4851e6b670090e8cfccee02d1a19624865dfdbdeafc47a',
-     x86_64: '9cc57f97e060f2604f8a0e1710ac118869bc27f7487017d8dd58652398fe1346'
+    aarch64: '2098e6f26114e57c9a2e84e0f423e0e017a0c1d4f6429eae43b51f66d48990ca',
+     armv7l: '2098e6f26114e57c9a2e84e0f423e0e017a0c1d4f6429eae43b51f66d48990ca',
+       i686: '8496e6d04cc4d6a49315b5e887185cc975fcea5c207bbf5c2c108feb6ca4e053',
+     x86_64: '25f152b9490a5f06d3545f40033e25433360d28befc86992099409ab14670850'
   })
 
   depends_on 'git' # L
@@ -28,7 +28,7 @@ class Git_mestrelion_tools < Package
     @post_merge_hook = <<~POST_MERGE_HOOK_EOF
       #!/bin/sh
       # This is installed in the git_mestrelion_tools package.
-      exec git-restore-mtime -s
+      exec git-restore-mtime -sq 2>/dev/null
     POST_MERGE_HOOK_EOF
     File.write('post-merge', @post_merge_hook)
   end
@@ -45,8 +45,9 @@ class Git_mestrelion_tools < Package
   end
 
   def self.postinstall
+    # restore mtime after install.
     Dir.chdir(CREW_LIB_PATH) do
-      system 'git-restore-mtime -s'
+      system 'git-restore-mtime -s 2>/dev/null'
     end
   end
 end

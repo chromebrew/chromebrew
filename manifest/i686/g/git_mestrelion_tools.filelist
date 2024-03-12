@@ -4,6 +4,7 @@
 /usr/local/bin/git-rebase-theirs
 /usr/local/bin/git-restore-mtime
 /usr/local/bin/git-strip-merge
+/usr/local/lib/crew/.git/hooks/post-merge
 /usr/local/share/man/man1/git-branches-rename.1.zst
 /usr/local/share/man/man1/git-clone-subset.1.zst
 /usr/local/share/man/man1/git-find-uncommitted-repos.1.zst
