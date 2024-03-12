@@ -386,6 +386,7 @@ def update
 
     system "git fetch #{CREW_REPO} #{CREW_BRANCH}", exception: true
     system 'git reset --hard FETCH_HEAD', exception: true
+    system 'git-restore-mtime -sq 2>/dev/null', exception: true if File.file?("#{CREW_PREFIX}/bin/git-restore-mtime")
   end
 
   puts 'Package lists, crew, and library updated.'
