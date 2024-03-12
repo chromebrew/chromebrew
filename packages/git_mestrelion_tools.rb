@@ -6,11 +6,12 @@ require 'package'
 class Git_mestrelion_tools < Package
   description 'Assorted git tools, including git-restore-mtime'
   homepage 'https://github.com/MestreLion/git-tools'
-  version '2022.12'
+  @_ver = '2022.12'
+  version "#{@_ver}-1"
   license 'GPL3'
   compatibility 'all'
   source_url 'https://github.com/MestreLion/git-tools.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,12 +24,29 @@ class Git_mestrelion_tools < Package
   depends_on 'git' # L
   depends_on 'python3' # R
 
+  def self.build
+    @post_merge_hook = <<~POST_MERGE_HOOK_EOF
+      #!/bin/sh
+      # This is installed in the git_mestrelion_tools package.
+      exec git-restore-mtime -s
+    POST_MERGE_HOOK_EOF
+    File.write('post-merge', @post_merge_hook)
+  end
+
   def self.install
     Dir.glob('man1/*.1') do |man|
       FileUtils.install man, "#{CREW_DEST_MAN_PREFIX}/#{man}", mode: 0o644
     end
     Dir.glob('git-*') do |app|
       FileUtils.install app, "#{CREW_DEST_PREFIX}/bin/#{app}", mode: 0o755
+    end
+    @crew_dest_lib_path = File.join(CREW_DEST_DIR, CREW_LIB_PATH)
+    FileUtils.install 'post-merge', File.join(@crew_dest_lib_path, '.git/hooks/post-merge'), mode: 0o755
+  end
+
+  def self.postinstall
+    Dir.chdir(CREW_LIB_PATH) do
+      system 'git-restore-mtime -s'
     end
   end
 end
