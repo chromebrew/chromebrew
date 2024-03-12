@@ -78,19 +78,21 @@ class Crew_profile_base < Package
     ]
 
     @pager_default = Selector.new(@pager_options).show_prompt
-    File.write 'pagerenv', <<~PAGER_ENV_EOF
-      # The user's preferred pager is set here by the crew_profile_base
-      # postinstall.
+    Dir.chdir CREW_DEST_DIR do
+      File.write 'pagerenv', <<~PAGER_ENV_EOF
+        # The user's preferred pager is set here by the crew_profile_base
+        # postinstall.
 
-      # PAGER from container PAGER variable is passed through into the
-      # CONTAINER_PAGER variable.
-      if [ -z "$CONTAINER_PAGER" ]; then
-        PAGER="#{@pager_default}"
-      else
-        PAGER="$CONTAINER_PAGER"
-      fi
-    PAGER_ENV_EOF
-    FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+        # PAGER from container PAGER variable is passed through into the
+        # CONTAINER_PAGER variable.
+        if [ -z "$CONTAINER_PAGER" ]; then
+          PAGER="#{@pager_default}"
+        else
+          PAGER="$CONTAINER_PAGER"
+        fi
+      PAGER_ENV_EOF
+      FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+    end
     puts "The default PAGER has been set to #{@pager_default}.".lightblue
   end
 end

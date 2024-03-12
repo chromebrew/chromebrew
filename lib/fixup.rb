@@ -154,3 +154,5 @@ unless @new_const_git_commit == CREW_CONST_GIT_COMMIT
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
 
+# Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
+FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")
