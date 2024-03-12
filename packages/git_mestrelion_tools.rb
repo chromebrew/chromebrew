@@ -15,10 +15,10 @@ class Git_mestrelion_tools < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2098e6f26114e57c9a2e84e0f423e0e017a0c1d4f6429eae43b51f66d48990ca',
-     armv7l: '2098e6f26114e57c9a2e84e0f423e0e017a0c1d4f6429eae43b51f66d48990ca',
-       i686: '8496e6d04cc4d6a49315b5e887185cc975fcea5c207bbf5c2c108feb6ca4e053',
-     x86_64: '25f152b9490a5f06d3545f40033e25433360d28befc86992099409ab14670850'
+    aarch64: 'e9cd005b5739d50dcc7fe4e50d38c1b51e372ebc0bbf03ee36d3dbf042011db8',
+     armv7l: 'e9cd005b5739d50dcc7fe4e50d38c1b51e372ebc0bbf03ee36d3dbf042011db8',
+       i686: '79f534b94ff2c6b80aaf8eb829d3d9717f4a94c61fe3253f63bd64baa71a117f',
+     x86_64: '704dee30d25eda119b3f816f9b407f02dca6f7ee385d8ee173f2419abe7f2ba6'
   })
 
   depends_on 'git' # L
@@ -27,7 +27,7 @@ class Git_mestrelion_tools < Package
   def self.build
     @post_merge_hook = <<~POST_MERGE_HOOK_EOF
       #!/bin/sh
-      # This is installed in the git_mestrelion_tools package.
+      # This is from the git_mestrelion_tools package.
       exec git-restore-mtime -sq 2>/dev/null
     POST_MERGE_HOOK_EOF
     File.write('post-merge', @post_merge_hook)
