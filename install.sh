@@ -286,8 +286,6 @@ echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
-# We need these to install core.
-yes | crew install pixz
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
@@ -319,6 +317,9 @@ else
   # Set sparse-checkout folders.
   git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
   git reset --hard origin/"${BRANCH}"
+
+  # Set mtimes of files to when the file was committed.
+  git-restore-mtime -sq 2>/dev/null
 fi
 echo -e "${RESET}"
 
