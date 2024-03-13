@@ -1,14 +1,14 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Amtk < Package
+class Libgedit_amtk < Meson
   description 'Actions, Menus and Toolbars Kit for GTK+ applications'
-  homepage 'https://wiki.gnome.org/Projects/Amtk'
-  version '5.2.0-33ec-1'
+  homepage 'https://gedit-technology.github.io'
+  version '5.8.0'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/GNOME/amtk/archive/33ec171156ebc49d6dad568e6ba39470edb272e1.zip'
-  source_sha256 'fc9bad18bbd5421da52e0548f9e91eda180539bb568d1e7116ca65f4f73f4b67'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/gedit-technology/libgedit-amtk.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '6d3c8ac190895b8065f94c54baa32c3407c474204a58ded15aa850a5a177a176',
@@ -16,20 +16,11 @@ class Amtk < Package
       x86_64: '6528fb4e8fc817d21ae245563631eec51954a1b3f75cc5513accca67732452d1'
   })
 
-  depends_on 'gtk3'
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
-  depends_on 'llvm16_lib' => :build
+  depends_on 'gtk3' # R
+  depends_on 'llvm18_lib' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
-    -Dc_args='-fuse-ld=lld' \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

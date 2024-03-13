@@ -25,10 +25,11 @@ class Gedit < Meson
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
-  depends_on 'gtksourceview_4' # R
   depends_on 'libgedit_amtk' # R
+  depends_on 'libgedit_gtksourceview' # R
   depends_on 'libpeas' # R
   depends_on 'pango' # R
+  depends_on 'py3_lxml' => :build
   depends_on 'pygobject' => :build
   depends_on 'tepl_6' # R
   depends_on 'vala' => :build

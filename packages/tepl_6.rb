@@ -1,14 +1,13 @@
-require 'package'
-
-class Tepl_6 < Package
+require 'packagebuildsystems/meson'
+class Tepl_6 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
   homepage 'https://wiki.gnome.org/Projects/Tepl'
   version '6.0.0.0'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://gitlab.gnome.org/Archive/tepl.git'
+  source_url 'https://gitlab.gnome.org/swilmet/tepl.git'
   git_hashtag version
-  binary_compression 'tpxz'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     i686: 'f98b0034642f3433f036107d710f7c466701f94cea809e83908ada8c98305bc2',
@@ -17,22 +16,13 @@ class Tepl_6 < Package
      x86_64: 'cb6aa557f538e25b3b9dff15ec7b02699b8efc13e76749d4b262406b541b577d'
   })
 
-  depends_on 'amtk'
-  depends_on 'cairo'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'gtksourceview'
+  depends_on 'amtk' => :build
+  depends_on 'cairo' => :build
+  depends_on 'glib' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'libgedit_gtksourceview' => :build
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk_doc' => :build
   depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

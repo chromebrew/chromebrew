@@ -140,11 +140,6 @@ url: ftp://ftp.alsa-project.org/pub/plugins
 activity: medium
 ---
 kind: url
-name: amtk
-url: https://github.com/GNOME/amtk/releases
-activity: medium
----
-kind: url
 name: android_sdk_tools
 url: https://developer.android.com/studio
 activity: low
@@ -4131,6 +4126,16 @@ url: https://github.com/mono/libgdiplus/releases
 activity: low
 ---
 kind: url
+name: libgedit_amtk
+url: https://github.com/gedit-technology/libgedit-amtk/releases
+activity: medium
+---
+kind: url
+name: libgedit_gtksourceview
+url: https://github.com/gedit-technology/libgedit-gtksourceview/releases
+activity: medium
+---
+kind: url
 name: libgee
 url: https://download.gnome.org/sources/libgee/
 activity: medium
@@ -7179,6 +7184,11 @@ kind: url
 name: py3_hatchling
 url: https://github.com/pypa/hatch/releases
 activity: medium
+---
+kind: url
+name: py3_lxml
+url: https://github.com/lxml/lxml/releases
+activity: high
 ---
 kind: url
 name: py3_mercurial
