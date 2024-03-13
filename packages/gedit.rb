@@ -19,7 +19,6 @@ class Gedit < Meson
   depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'gdk_pixbuf' # R
-  depends_on 'gedit_amtk' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R
   depends_on 'gsettings_desktop_schemas' # L
@@ -27,6 +26,7 @@ class Gedit < Meson
   depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
   depends_on 'gtksourceview_4' # R
+  depends_on 'libgedit_amtk' # R
   depends_on 'libpeas' # R
   depends_on 'pango' # R
   depends_on 'pygobject' => :build
