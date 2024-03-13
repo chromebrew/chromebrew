@@ -1,8 +1,9 @@
-require 'packagebuildsystems/meson'
+require 'buildsystems/meson'
+
 class Tepl_6 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
-  homepage 'https://wiki.gnome.org/Projects/Tepl'
-  version '6.0.0.0'
+  homepage 'https://gitlab.gnome.org/swilmet/tepl'
+  version '6.8.0'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/swilmet/tepl.git'
@@ -16,12 +17,13 @@ class Tepl_6 < Meson
      x86_64: 'cb6aa557f538e25b3b9dff15ec7b02699b8efc13e76749d4b262406b541b577d'
   })
 
-  depends_on 'amtk' => :build
   depends_on 'cairo' => :build
   depends_on 'glib' => :build
-  depends_on 'gtk3' => :build
-  depends_on 'libgedit_gtksourceview' => :build
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'icu4c' => :build
+  depends_on 'libgedit_amtk' => :build
+  depends_on 'libgedit_gtksourceview' => :build
   depends_on 'vala' => :build
 
   meson_options '-Dgtk_doc=false'

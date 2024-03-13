@@ -3,11 +3,11 @@ require 'package'
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
   homepage 'http://site.icu-project.org/'
-  version '73.2'
+  version '74.2'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz'
-  source_sha256 '818a80712ed3caacd9b652305e01afc7fa167e6f2e94996da44b90c2ab604ce1'
+  source_url 'https://github.com/unicode-org/icu/releases/download/release-74-2/icu4c-74_2-src.tgz'
+  source_sha256 '68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -64,7 +64,7 @@ class Icu4c < Package
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[72 72.1]
+      @oldicuver = %w[73.2 72 72.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
         @file_array = []
