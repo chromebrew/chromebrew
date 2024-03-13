@@ -13,5 +13,14 @@ class Libgedit_gtksourceview < Meson
   git_hashtag version
   binary_compression 'tar.zst'
 
+  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gtk3' # R
+  depends_on 'libxml2' # R
+  depends_on 'pango' # R
+
   meson_options '-Dgtk_doc=false'
 end

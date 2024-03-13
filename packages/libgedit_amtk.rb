@@ -11,9 +11,9 @@ class Libgedit_amtk < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d3c8ac190895b8065f94c54baa32c3407c474204a58ded15aa850a5a177a176',
-      armv7l: '6d3c8ac190895b8065f94c54baa32c3407c474204a58ded15aa850a5a177a176',
-      x86_64: '6528fb4e8fc817d21ae245563631eec51954a1b3f75cc5513accca67732452d1'
+    aarch64: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
+      armv7l: 'e1311b5685cc0137cac447e126344664bae26c23d36ba85c28ee69c16527b572',
+      x86_64: '6bbeb30d50b1f2d254056db4fb86e6b74bb75359f7d4bba1d6142dda92f24bcb'
   })
 
   depends_on 'glibc' # R
