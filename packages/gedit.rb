@@ -27,6 +27,7 @@ class Gedit < Meson
   depends_on 'gspell' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
+  depends_on 'hunspell' # R
   depends_on 'libgedit_amtk' # R
   depends_on 'libgedit_gtksourceview' # R
   depends_on 'libpeas' # R
