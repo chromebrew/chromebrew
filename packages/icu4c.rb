@@ -20,14 +20,17 @@ class Icu4c < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
+  def self.patch
+    # case ARCH
+    # when 'aarch64', 'armv7l'
+      # # Armhf requires sane ELF headers rather than other architectures as
+      # # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
+      # system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i source/config/mh-linux"
+    # end
+  end
+
   def self.build
-    FileUtils.cd('source') do
-      case ARCH
-      when 'aarch64', 'armv7l'
-        # Armhf requires sane ELF headers rather than other architectures as
-        # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
-        system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i config/mh-linux"
-      end
+    Dir.chdir 'source' do
       system "mold -run ./configure \
         #{CREW_OPTIONS} \
         --enable-static \
@@ -38,11 +41,11 @@ class Icu4c < Package
     end
   end
 
-  @icuver = '73'
-  @oldicuver = %w[73.1]
+  @icuver = '74.2'
+  @oldicuver = %w[73.2]
 
   def self.install
-    FileUtils.cd('source') do
+    Dir.chdir 'source' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
     Dir.chdir CREW_DEST_LIB_PREFIX do
