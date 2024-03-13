@@ -11,19 +11,22 @@ class Tepl_6 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    i686: 'f98b0034642f3433f036107d710f7c466701f94cea809e83908ada8c98305bc2',
-    aarch64: '91d6926ec63368229ac7526d719d15d1e2ae9b5cdb4e6046519792a7ce8f5a8a',
-     armv7l: '91d6926ec63368229ac7526d719d15d1e2ae9b5cdb4e6046519792a7ce8f5a8a',
-     x86_64: 'cb6aa557f538e25b3b9dff15ec7b02699b8efc13e76749d4b262406b541b577d'
+    aarch64: '80740c34d9709d82a5a77a9d2c55e99b38d4bab611d7ffb0fd6147cfcc1c5401',
+     armv7l: '80740c34d9709d82a5a77a9d2c55e99b38d4bab611d7ffb0fd6147cfcc1c5401',
+     x86_64: '3ae27a5c42cd3095d98ad84bbee34834fbe167335b7684d2120850c11b4a7844'
   })
 
-  depends_on 'cairo' => :build
-  depends_on 'glib' => :build
+  depends_on 'cairo' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'gtk3' => :build
-  depends_on 'icu4c' => :build
-  depends_on 'libgedit_amtk' => :build
-  depends_on 'libgedit_gtksourceview' => :build
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'libgedit_amtk' # R
+  depends_on 'libgedit_gtksourceview' # R
+  depends_on 'pango' # R
   depends_on 'vala' => :build
 
   meson_options '-Dgtk_doc=false'

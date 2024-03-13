@@ -11,23 +11,14 @@ class Icu4c < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ba5ef6142433e681a2e3b2c03b1e6cf5c3a685e065a1013e45ec2853ebc87c99',
-     armv7l: 'ba5ef6142433e681a2e3b2c03b1e6cf5c3a685e065a1013e45ec2853ebc87c99',
-       i686: '94fd8261f60025bc3666f3636678d094dd36a78fc3380bfae17d07b289ebcd0b',
-     x86_64: '2c3cc278326f762e965c9d34f51fff11be983d3b4c3af526f79b726d55d25804'
+    aarch64: 'fe4fdd869d949f3caf863b543dd2f8b189e34b14e9c498c00f92979f8ddc0e9c',
+     armv7l: 'fe4fdd869d949f3caf863b543dd2f8b189e34b14e9c498c00f92979f8ddc0e9c',
+       i686: 'c7a47779435d14a382281dbd3208913f4cbe5ef54f391f729f74d1037942238a',
+     x86_64: 'd982bd98cb626a29bff9c6bb4a155610cad0a4239aadbdfe1e16e0acbec76b75'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-
-  def self.patch
-    # case ARCH
-    # when 'aarch64', 'armv7l'
-      # # Armhf requires sane ELF headers rather than other architectures as
-      # # discussed in https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=653457
-      # system "sed -e '/LDFLAGSICUDT=/cLDFLAGSICUDT=' -i source/config/mh-linux"
-    # end
-  end
 
   def self.build
     Dir.chdir 'source' do
@@ -42,7 +33,7 @@ class Icu4c < Package
   end
 
   @icuver = '74.2'
-  @oldicuver = %w[73.2]
+  @oldicuver = %w[73]
 
   def self.install
     Dir.chdir 'source' do
@@ -67,7 +58,7 @@ class Icu4c < Package
     return if CREW_IN_CONTAINER
 
     Dir.chdir CREW_LIB_PREFIX do
-      @oldicuver = %w[73.2 72 72.1]
+      @oldicuver = %w[73.2 73 72 72.1]
       @oldicuver.each do |oldver|
         puts "Finding Packages expecting icu4c version #{oldver} that may need updating:".lightgreen
         @file_array = []
