@@ -47,6 +47,8 @@ class Linuxheaders < Package
     })
   end
 
+  depends_on 'rsync' => :build
+
   no_env_options
   no_fhs
 
