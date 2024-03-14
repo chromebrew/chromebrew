@@ -13,7 +13,7 @@ class Libpng < Package
   binary_sha256({
     aarch64: 'ea5f9f73bd232972fdbf3c6d3d14da99c03af1b6d4e547e6faf59ad7ad73c3e2',
      armv7l: 'ea5f9f73bd232972fdbf3c6d3d14da99c03af1b6d4e547e6faf59ad7ad73c3e2',
-       i686: 'd4516093258bc90eecb4cc4bfd16cd5540a6e056806df37b43695b8b9137982a',
+       i686: '209b1a2196ce57bf7d6fffc53ddb30825ec80278e105e07d09cc19c1ad0f6571',
      x86_64: 'cc55bf8441e29ac7bcfb0b80d7903cbb5816df85ffd052376de6396b18c80cf5'
   })
 
