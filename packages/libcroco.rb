@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libcroco < Package
+class Libcroco < Autotools
   description 'Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit.'
   homepage 'https://git.gnome.org/browse/libcroco/'
   version '0.6.13'
@@ -20,16 +20,5 @@ class Libcroco < Package
   depends_on 'gtk_doc'
   depends_on 'py3_six' => :build
 
-  def self.build
-    system 'sh autogen.sh'
-    system "env CFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      CXXFLAGS='-pipe -fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      LDFLAGS='-fno-stack-protector -U_FORTIFY_SOURCE -flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

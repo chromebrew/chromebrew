@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Cogl < Package
+class Cogl < Autotools
   description 'Library for using 3D graphics hardware for rendering'
   homepage 'https://www.clutter-project.org'
   version '1.22.8'
@@ -26,12 +26,13 @@ class Cogl < Package
   depends_on 'glib'
   depends_on 'gobject_introspection'
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --enable-cairo=yes --enable-cogl-pango=yes --enable-gdk-pixbuf=yes --enable-cogl-gst=yes  --enable-kms-egl-platform --enable-wayland-egl-platform --enable-wayland-egl-server"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  configure_options '--enable-cairo=yes \
+  --enable-cogl-pango=yes \
+  --enable-gdk-pixbuf=yes \
+  --enable-cogl-gst=yes  \
+  --enable-kms-egl-platform \
+  --enable-wayland-egl-platform \
+  --enable-wayland-egl-server'
 end

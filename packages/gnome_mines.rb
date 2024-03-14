@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_mines < Package
+class Gnome_mines < Meson
   description 'GNOME Mines (formerly known as Gnomine) is minesweeper clone for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Mines'
   @_ver = '3.36.1'
@@ -16,13 +16,6 @@ class Gnome_mines < Package
   depends_on 'libgnome_games_support'
   depends_on 'wayland'
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
+  no_lto
 end

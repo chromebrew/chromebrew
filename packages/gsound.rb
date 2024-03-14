@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gsound < Package
+class Gsound < Autotools
   description 'GSound is a small library for playing system sounds.'
   homepage 'https://wiki.gnome.org/Projects/GSound'
   version '1.0.2'
@@ -19,17 +19,5 @@ class Gsound < Package
   depends_on 'gobject_introspection'
   depends_on 'libcanberra'
 
-  def self.build
-    system './autogen.sh' if File.exist?('autogen.sh')
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
-
-  def self.check
-    system 'make check'
-  end
+  gnome
 end

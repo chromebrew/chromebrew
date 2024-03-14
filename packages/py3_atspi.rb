@@ -1,9 +1,9 @@
 # Adapted from Arch Linux pyatspi PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/pyatspi/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Py3_atspi < Package
+class Py3_atspi < Autotools
   description 'Python bindings for D-Bus AT-SPI'
   homepage 'https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus'
   version '2.46.0'
@@ -23,14 +23,4 @@ class Py3_atspi < Package
   depends_on 'pygobject'
   depends_on 'at_spi2_core'
   depends_on 'python3' => :build
-
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
 end

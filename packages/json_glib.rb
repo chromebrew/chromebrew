@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Json_glib < Package
+class Json_glib < Meson
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://wiki.gnome.org/Projects/JsonGlib'
   version '1.6.6'
@@ -21,18 +21,5 @@ class Json_glib < Package
   depends_on 'glib'
   depends_on 'gobject_introspection'
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.check
-    system 'ninja test -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

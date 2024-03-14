@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_docking_library < Package
+class Gnome_docking_library < Autotools
   description 'GUsb is a GObject wrapper for libusb1'
   homepage 'https://www.gnome.org/'
   version '3.28.0-0'
@@ -21,12 +21,5 @@ class Gnome_docking_library < Package
   depends_on 'libxml2'
   depends_on 'gnome_common'
 
-  def self.build
-    system "./autogen.sh --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

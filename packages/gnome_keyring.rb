@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_keyring < Package
+class Gnome_keyring < Autotools
   description 'GNOME password and secret manager'
   homepage 'https://www.gnome.org'
   version '3.36.0-1'
@@ -27,16 +27,9 @@ class Gnome_keyring < Package
   depends_on 'libxslt'
   depends_on 'openssh'
 
-  def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS} \
-    --with-pam-dir=#{CREW_PREFIX}/lib/security \
+  gnome
+
+  configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
     --disable-schemas-compile \
     --disable-doc" # Docs cannot be used due to #4275
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
 end

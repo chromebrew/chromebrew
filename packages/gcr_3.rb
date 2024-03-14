@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gcr_3 < Package
+class Gcr_3 < Meson
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
   version '3.41.1'
@@ -38,16 +38,7 @@ class Gcr_3 < Package
   depends_on 'harfbuzz' # R
 
   conflicts_ok # expected conflicts with gcr_4
+  gnome
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dgtk_doc=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

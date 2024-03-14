@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rhythmbox < Package
+class Rhythmbox < Autotools
   description 'Rhythmbox is a music playing application for GNOME.'
   homepage 'https://wiki.gnome.org/Apps/Rhythmbox'
   version '3.4.4'
@@ -22,14 +22,7 @@ class Rhythmbox < Package
   depends_on 'totem_pl_parser'
   depends_on 'sommelier'
 
-  def self.build
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 
   def self.postinstall
     puts "\nType 'rhythmbox' to get started.\n".lightblue

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gmime < Package
+class Gmime < Autotools
   description 'GMime is a powerful MIME (Multipurpose Internet Mail Extension) utility library. It is meant for creating, editing, and parsing MIME messages and structures.'
   homepage 'https://developer.gnome.org/gmime/'
   version '3.2.3'
@@ -20,15 +20,5 @@ class Gmime < Package
   depends_on 'gpgme'
   depends_on 'vala'
 
-  def self.build
-    system './autogen.sh',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

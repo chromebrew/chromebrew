@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libnotify < Package
+class Libnotify < Meson
   description 'A library for sending desktop notifications.'
   homepage 'https://git.gnome.org/browse/libnotify'
   version '0.8.1'
@@ -19,18 +19,10 @@ class Libnotify < Package
   depends_on 'gdk_pixbuf' # R
   depends_on 'glib' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dman=false \
+  gnome
+
+  meson_options '-Dman=false \
     -Ddocbook_docs=disabled \
     -Dtests=false \
-    -Dgtk_doc=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dgtk_doc=false'
 end

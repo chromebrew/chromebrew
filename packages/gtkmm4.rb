@@ -31,5 +31,7 @@ class Gtkmm4 < Meson
   depends_on 'mm_common' => :build
   depends_on 'vulkan_headers' => :build
 
+  gnome
+
   meson_options '-Dbuild-documentation=false'
 end

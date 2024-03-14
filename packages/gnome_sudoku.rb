@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_sudoku < Package
+class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
   @_ver = '3.38.0'
@@ -16,13 +16,5 @@ class Gnome_sudoku < Package
   depends_on 'qqwing'
   depends_on 'sommelier'
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

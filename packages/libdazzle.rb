@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libdazzle < Package
+class Libdazzle < Meson
   description 'The libdazzle library is a companion library to GObject and Gtk+.'
   homepage 'https://gitlab.gnome.org/GNOME/libdazzle/'
   version '3.44.0'
@@ -25,14 +25,5 @@ class Libdazzle < Package
   depends_on 'glibc' # R
   depends_on 'harfbuzz' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

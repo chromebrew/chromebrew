@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_terminal < Package
+class Gnome_terminal < Meson
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
   version '3.48.0'
@@ -33,22 +33,15 @@ class Gnome_terminal < Package
   depends_on 'vte' # R
   depends_on 'yelp_tools' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
-    --default-library=both \
+  gnome
+  no_lto
+
+  meson_options "--default-library=both \
     -Ddocs=false \
     -Dsearch_provider=false \
     -Dnautilus_extension=false \
     -Dlocalstatedir=#{CREW_PREFIX}/var/local \
-    -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib"
 
   def self.postinstall
     puts 'gnome-terminal should be launched using "dbus-launch gnome-terminal"'.lightblue

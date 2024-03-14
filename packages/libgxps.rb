@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libgxps PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libgxps/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libgxps < Package
+class Libgxps < Meson
   description 'XPS Documents library'
   homepage 'https://wiki.gnome.org/Projects/libgxps'
   @_ver = '0.3.2'
@@ -38,14 +38,5 @@ class Libgxps < Package
   depends_on 'harfbuzz' # R
   depends_on 'gcc_lib' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

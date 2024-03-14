@@ -16,5 +16,7 @@ class Mm_common < Meson
      x86_64: 'e9d214226761bd729f5a26d875c217973c53336f48c9028d962bfff5e79845fe'
   })
 
+  gnome
+
   meson_options '-Duse-network=true'
 end

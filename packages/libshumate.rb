@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libshumate PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libshumate
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libshumate < Package
+class Libshumate < Meson
   description 'GTK toolkit providing widgets for embedded maps'
   homepage 'https://wiki.gnome.org/Projects/libshumate'
   version '1.0.1'
@@ -33,14 +33,5 @@ class Libshumate < Package
   depends_on 'libsoup' # R
   depends_on 'sqlite' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

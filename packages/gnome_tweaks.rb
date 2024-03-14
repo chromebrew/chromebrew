@@ -23,4 +23,6 @@ class Gnome_tweaks < Meson
   depends_on 'python3'
   depends_on 'libhandy'
   depends_on 'libnotify'
+
+  gnome
 end

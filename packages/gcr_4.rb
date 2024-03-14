@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gcr_4 < Package
+class Gcr_4 < Meson
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
   version '4.0.0'
@@ -36,15 +36,7 @@ class Gcr_4 < Package
   depends_on 'p11kit' # R
   depends_on 'gcc_lib' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dgtk_doc=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

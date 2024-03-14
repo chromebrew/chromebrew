@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_common < Package
+class Gnome_common < Autotools
   description 'Common files for development of Gnome packages.'
   homepage 'https://git.gnome.org/browse/gnome-common'
   version '3.18.0'
@@ -17,13 +17,5 @@ class Gnome_common < Package
      x86_64: 'c04053bbe47296b90c22a3d5767d54645f819ef73ee362a60e1e179a8ce836cd'
   })
 
-  def self.build
-    system 'sh autogen.sh'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install' # the steps required to install the package
-  end
+  gnome
 end

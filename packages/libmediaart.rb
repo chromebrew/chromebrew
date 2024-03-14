@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libmediaart PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libmediaart/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libmediaart < Package
+class Libmediaart < Meson
   description 'Library tasked with managing, extracting and handling media art caches'
   homepage 'https://git.gnome.org/browse/libmediaart'
   version '1.9.6'
@@ -26,18 +26,9 @@ class Libmediaart < Package
   depends_on 'gtk_doc' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
+  
+  gnome
 
-  def self.build
-    system "meson \
-      #{CREW_MESON_OPTIONS} \
-      -Dimage_library=gdk-pixbuf \
-      -Dtests=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dimage_library=gdk-pixbuf \
+      -Dtests=false'
 end

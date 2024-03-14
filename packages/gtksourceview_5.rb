@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtksourceview_5 < Package
+class Gtksourceview_5 < Meson
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '5.6.1'
@@ -36,19 +36,11 @@ class Gtksourceview_5 < Package
   depends_on 'libxml2' # R
   depends_on 'pcre2' # R
 
+  gnome
+
   def self.patch
     system "sed -i 's/-fstack-protector-strong/-flto=auto/g' meson.build"
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Db_asneeded=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  meson_options '-Db_asneeded=false'
 end

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libhandy < Package
+class Libhandy < Meson
   description 'The aim of the handy library is to help with developing UI for mobile devices using GTK/GNOME.'
   homepage 'https://gitlab.gnome.org/GNOME/libhandy/'
   version '1.8.2'
@@ -29,14 +29,5 @@ class Libhandy < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  gnome
 end

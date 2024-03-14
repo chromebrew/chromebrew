@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_online_accounts < Package
+class Gnome_online_accounts < Meson
   description 'Single sign-on framework for GNOME'
   homepage 'https://wiki.gnome.org/Projects/GnomeOnlineAccounts'
   version '3.39.92'
@@ -26,15 +26,7 @@ class Gnome_online_accounts < Package
   depends_on 'gtk_doc' => :build
   depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dgtk_doc=true \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=true'
 end

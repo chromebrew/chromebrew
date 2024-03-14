@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk_doc < Package
+class Gtk_doc < Meson
   description 'Documentation tool for public library API'
   homepage 'https://www.gtk.org/gtk-doc/'
   version '1.33.2-1'
@@ -23,13 +23,5 @@ class Gtk_doc < Package
   depends_on 'libxslt'
   depends_on 'py3_pygments' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

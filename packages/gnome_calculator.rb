@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_calculator < Package
+class Gnome_calculator < Meson
   description 'GNOME desktop calculator'
   homepage 'https://wiki.gnome.org/Apps/Calculator'
   version '43.0.1'
@@ -35,15 +35,7 @@ class Gnome_calculator < Package
   depends_on 'mpfr' # R
   depends_on 'gcc_lib' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  gnome
 
   def self.postinstall
     puts <<~EOT.lightblue

@@ -23,6 +23,8 @@ class Meld < Meson
   depends_on 'py3_libxml2' # L
   depends_on 'py3_pycairo' # L
   depends_on 'python3' # L
+  
+  gnome
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

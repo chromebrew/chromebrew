@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libpanel PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=libpanel
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libpanel < Package
+class Libpanel < Meson
   description 'A dock/panel library for GTK 4'
   homepage 'https://gitlab.gnome.org/GNOME/libpanel'
   version '1.0.1'
@@ -25,14 +25,5 @@ class Libpanel < Package
   depends_on 'py3_smartypants' => :build
   depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  gnome
 end

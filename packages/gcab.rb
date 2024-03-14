@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gcab < Package
+class Gcab < Meson
   description 'A GObject library to create cabinet files'
   homepage 'https://gitlab.gnome.org/GNOME/gcab'
   version '1.5-ad0baea'
@@ -22,21 +22,13 @@ class Gcab < Package
   depends_on 'glibc' # R
   depends_on 'zlibpkg' # R
 
-  def self.prebuild
+  gnome
+
+  def self.patch
     system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Ddocs=false \
+  meson_options '-Ddocs=false \
       -Dtests=false \
-      -Dvapi=false \
-       builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+      -Dvapi=false'
 end

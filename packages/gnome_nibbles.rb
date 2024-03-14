@@ -23,4 +23,6 @@ class Gnome_nibbles < Meson
   depends_on 'librsvg'
   depends_on 'vala' => :build
   depends_on 'wayland'
+
+  gnome
 end

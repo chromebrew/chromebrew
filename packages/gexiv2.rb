@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gexiv2 < Package
+class Gexiv2 < Meson
   description 'gexiv2 is a GObject wrapper around the Exiv2 photo metadata library.'
   homepage 'https://wiki.gnome.org/Projects/gexiv2/'
   version '0.14.0'
@@ -23,14 +23,5 @@ class Gexiv2 < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

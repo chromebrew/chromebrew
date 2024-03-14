@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgsf < Package
+class Libgsf < Autotools
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
   version '1.14.50'
@@ -26,16 +26,9 @@ class Libgsf < Package
   depends_on 'libxml2' # R
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
-      --enable-shared=yes \
-      --disable-maintainer-mode \
-      --enable-introspection"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-shared=yes \
+      --disable-maintainer-mode \
+      --enable-introspection'
 end

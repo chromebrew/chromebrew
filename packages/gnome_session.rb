@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_session < Package
+class Gnome_session < Meson
   description 'The GNOME Session Handler'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-session'
   version '43.0'
@@ -37,17 +37,9 @@ class Gnome_session < Package
   depends_on 'libxcomposite' # R
   depends_on 'mesa' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS}\
-      -Dsystemd=false \
-      -Dsystemd_session=disable \
-      -Dsystemd_journal=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dsystemd=false \
+      -Dsystemd_session=disable \
+      -Dsystemd_journal=false'
 end

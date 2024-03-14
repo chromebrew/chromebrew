@@ -1,9 +1,9 @@
 # Adapted from Arch Linux gnome-console PKGBUILD at:
 # https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=gnome-console
 
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_console < Package
+class Gnome_console < Meson
   description 'A simple user-friendly terminal emulator for the GNOME desktop'
   homepage 'https://gitlab.gnome.org/GNOME/console'
   @_ver = '44.0'
@@ -38,14 +38,5 @@ class Gnome_console < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  gnome
 end

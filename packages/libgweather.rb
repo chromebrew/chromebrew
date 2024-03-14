@@ -31,15 +31,7 @@ class Libgweather < Package
   depends_on 'py3_smartypants' => :build
   depends_on 'json_glib' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsoup2=true \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dsoup2=true'
 end

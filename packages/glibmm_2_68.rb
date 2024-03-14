@@ -23,5 +23,7 @@ class Glibmm_2_68 < Meson
   depends_on 'libsigcplusplus3' # R
   depends_on 'mm_common' => :build
 
+  gnome
+
   meson_options '-Dbuild-documentation=false'
 end

@@ -1,9 +1,9 @@
 # Adapted from Arch Linux evince PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/evince/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Evince < Package
+class Evince < Meson
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
   version '44.rc'
@@ -47,18 +47,10 @@ class Evince < Package
   depends_on 'valgrind' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dgtk_doc=false \
+  gnome
+
+  meson_options '-Dgtk_doc=false \
       -Dnautilus=false \
       -Dps=enabled \
-      -Dsystemduserunitdir=no \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dsystemduserunitdir=no'
 end

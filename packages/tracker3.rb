@@ -38,6 +38,8 @@ class Tracker3 < Meson
   depends_on 'sqlite' # R
   depends_on 'util_linux' => :build
   depends_on 'vala' => :build
+  
+  gnome
 
   meson_options "-Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
       -Ddocs=false \

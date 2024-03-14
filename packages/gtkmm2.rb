@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gtkmm2 < Package
+class Gtkmm2 < Autotools
   description 'The Gtkmm2 package provides a C++ interface to GTK+ 2.'
   homepage 'https://www.gtkmm.org/'
   version '2.24.5'
@@ -20,15 +20,11 @@ class Gtkmm2 < Package
   depends_on 'gtk2'
   depends_on 'pangomm'
 
-  def self.build
+  gnome
+
+  def self.patch
     # fix the documents directory name
     system "sed -e '/^libdocdir =/ s/$(book_name)/gtkmm-2.24.5/' \
     -i docs/Makefile.in"
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end

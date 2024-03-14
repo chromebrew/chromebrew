@@ -1,9 +1,9 @@
 # Adapted from Arch Linux jsonrpc-glib PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/jsonrpc-glib/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Jsonrpc_glib < Package
+class Jsonrpc_glib < Meson
   description 'A JSON-RPC library for GLib'
   homepage 'https://gitlab.gnome.org/GNOME/jsonrpc-glib'
   version '3.42.0'
@@ -27,18 +27,5 @@ class Jsonrpc_glib < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.check
-    system 'ninja test -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

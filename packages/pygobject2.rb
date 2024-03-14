@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Pygobject2 < Package
+class Pygobject2 < Autotools
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
   homepage 'https://pygobject.readthedocs.io/'
   version '2.28.7'
@@ -20,12 +20,5 @@ class Pygobject2 < Package
   depends_on 'gobject_introspection'
   depends_on 'py3_pycairo'
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

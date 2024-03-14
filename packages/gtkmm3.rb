@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtkmm3 < Package
+class Gtkmm3 < Meson
   description 'The Gtkmm3 package provides a C++ interface to GTK+ 3.'
   homepage 'https://www.gtkmm.org/'
   version '3.24.7'
@@ -27,18 +27,10 @@ class Gtkmm3 < Package
   depends_on 'libsigcplusplus' # R
   depends_on 'pangomm_1_4' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    --default-library=both \
+  gnome
+
+  meson_options '--default-library=both \
     -Dbuild-documentation=false \
     -Dbuild-demos=false \
-    -Dbuild-tests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dbuild-tests=false'
 end

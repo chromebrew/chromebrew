@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Folks < Package
+class Folks < Meson
   description 'Library to aggregates people into metacontacts'
   homepage 'https://wiki.gnome.org/Projects/Folks'
   version '0.15.5'
@@ -24,21 +24,13 @@ class Folks < Package
   depends_on 'libxml2' # R
   depends_on 'readline' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbluez_backend=false \
+  gnome
+
+  meson_options '-Dbluez_backend=false \
     -Ddocs=false \
     -Deds_backend=false \
     -Dinstalled_tests=false \
     -Dofono_backend=false \
     -Dtelepathy_backend=false \
-    -Dtests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dtests=false'
 end

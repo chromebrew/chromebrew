@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libsoup < Package
+class Libsoup < Meson
   description 'libsoup is an HTTP client/server library for GNOME.'
   homepage 'https://wiki.gnome.org/Projects/libsoup'
   version '3.4.1'
@@ -32,17 +32,9 @@ class Libsoup < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dtests=false \
-      -Dsysprof=disabled \
-      -Dintrospection=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dtests=false \
+      -Dsysprof=disabled \
+      -Dintrospection=enabled'
 end

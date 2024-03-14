@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gfbgraph < Package
+class Gfbgraph < Autotools
   description 'GLib/GObject wrapper for the Facebook Graph API'
   homepage 'https://wiki.gnome.org/Projects/GFBGraph'
   version '0.2.4'
@@ -22,16 +22,10 @@ class Gfbgraph < Package
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system './configure --help'
-    system "env CFLAGS='-pipe -flto=auto' \
-    CXXFLAGS='-pipe -flto=auto' LDFLAGS='-flto=auto' \
-    ./configure #{CREW_OPTIONS} \
-    --enable-gtk-doc \
-    --enable-introspection"
-    system 'make'
-  end
+  gnome
+
+  configure_options '--enable-gtk-doc \
+    --enable-introspection'
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} install \

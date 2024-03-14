@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libglade < Package
+class Libglade < Autotools
   description 'Libglade is a library that performs a similar job to the C source output routines in the GLADE user interface builder.'
   homepage 'http://www.jamesh.id.au/software/libglade/'
   version '2.6.4-1'
@@ -26,18 +26,6 @@ class Libglade < Package
   depends_on 'gtk3'
   depends_on 'pango'
 
-  def self.build
-    # flto breaks compile
-    system "./configure \
-      #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.check
-    # system 'make', 'check'
-  end
+  gnome
+  no_lto
 end

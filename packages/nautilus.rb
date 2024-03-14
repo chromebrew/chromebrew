@@ -1,9 +1,9 @@
 # Adapted from Arch Linux nautilus PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/nautilus/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Nautilus < Package
+class Nautilus < Meson
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
   version '44.2'
@@ -51,19 +51,11 @@ class Nautilus < Package
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Ddocs=false \
-    -Dpackagekit=false \
-    -Dtests=headless \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Ddocs=false \
+    -Dpackagekit=false \
+    -Dtests=headless'
 
   def self.postinstall
     FileUtils.touch "#{HOME}/.gtk-bookmarks"

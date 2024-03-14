@@ -47,6 +47,8 @@ class Evolution_data_server < CMake
   depends_on 'webkit2gtk_4_1' # R
   depends_on 'webkitgtk_6' # R
 
+  gnome
+
   cmake_options "-DLIB_SUFFIX=64 \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DENABLE_CANBERRA=OFF \

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_weather < Package
+class Gnome_weather < Meson
   description 'Access current weather conditions and forecasts'
   homepage 'https://wiki.gnome.org/Apps/Weather'
   version '40.0'
@@ -25,15 +25,7 @@ class Gnome_weather < Package
   depends_on 'appstream_glib' => :build
   depends_on 'libhandy'
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsystemd=disabled \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dsystemd=disabled'
 end

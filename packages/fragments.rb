@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Fragments < Package
+class Fragments < Meson
   description 'Fragments is an easy to use BitTorrent client for the GNOME desktop environment.'
   homepage 'https://gitlab.gnome.org/World/Fragments'
   version '2.1'
@@ -32,17 +32,5 @@ class Fragments < Package
   depends_on 'transmission' # L
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.check
-    system "#{CREW_NINJA} -C builddir test || true"
-  end
+  gnome
 end

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glade < Package
+class Glade < Meson
   description 'User Interface Builder for GTK+ applications'
   homepage 'https://wiki.gnome.org/Apps/Glade'
   version '3.38.2'
@@ -22,15 +22,8 @@ class Glade < Package
   depends_on 'pygobject'
   depends_on 'graphite'
 
-  def self.build
-    ENV['CFLAGS'] = '-fuse-ld=lld'
-    ENV['CXXFLAGS'] = '-fuse-ld=lld'
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} -Dgtk_doc=false -Dman=false build"
-    system 'meson configure build'
-    system 'ninja -C build'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C build install"
-  end
+  pre_meson_options "CFLAGS='-fuse-ld=lld' CXXFLAGS='-fuse-ld=lld'"
+  meson_options'-Dgtk_doc=false -Dman=false build'
 end

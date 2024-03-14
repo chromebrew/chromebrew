@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_settings_daemon < Package
+class Gnome_settings_daemon < Meson
   description 'GNOME Settings Daemon'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
   version '43.0'
@@ -55,16 +55,8 @@ class Gnome_settings_daemon < Package
   depends_on 'pulseaudio' # R
   depends_on 'wayland' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsystemd=false \
-    -Dcolord=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dsystemd=false \
+    -Dcolord=false'
 end

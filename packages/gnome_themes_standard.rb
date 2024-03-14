@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_themes_standard < Package
+class Gnome_themes_standard < Autotools
   description 'Standard Themes for GNOME Applications.'
   homepage 'https://git.gnome.org/browse/gnome-themes-standard/'
   version '3.27.92-0'
@@ -22,13 +22,5 @@ class Gnome_themes_standard < Package
   depends_on 'gdk_pixbuf'
   depends_on 'gnome_common'
 
-  def self.build
-    system 'sh autogen.sh'
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Dconf_editor < Package
+class Dconf_editor < Meson
   description 'A graphical viewer and editor of applications internal settings.'
   homepage 'https://wiki.gnome.org/Apps/DconfEditor'
   version '43.0'
@@ -23,17 +23,5 @@ class Dconf_editor < Package
   depends_on 'glibc' # R
   depends_on 'libhandy' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-            builddir"
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
-
-  def self.check
-    system 'ninja -C builddir test'
-  end
+  gnome
 end

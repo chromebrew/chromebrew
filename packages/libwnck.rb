@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libwnck < Package
+class Libwnck < Meson
   description 'Library for layout and rendering of text'
   homepage 'http://www.gnome.org/'
   version '3.32.0'
@@ -20,15 +20,5 @@ class Libwnck < Package
   depends_on 'pygtk'
   depends_on 'libxres'
 
-  def self.build
-    system 'meson',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '_build'
-    system 'ninja -v -C _build'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C _build install"
-  end
+  gnome
 end

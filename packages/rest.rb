@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Rest < Package
+class Rest < Meson
   description 'Helper library for RESTful services'
   homepage 'https://wiki.gnome.org/Projects/Librest'
   version '0.9.1'
@@ -37,19 +37,6 @@ class Rest < Package
   depends_on 'libxml2' # R
   depends_on 'pango' # R
   depends_on 'vulkan_icd_loader' # R
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.check
-    system 'ninja test -C builddir || true'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  
+  gnome
 end

@@ -29,5 +29,7 @@ class Tepl_6 < Meson
   depends_on 'pango' # R
   depends_on 'vala' => :build
 
+  gnome
+
   meson_options '-Dgtk_doc=false'
 end

@@ -23,5 +23,7 @@ class Atkmm < Meson
   depends_on 'glib' # R
   depends_on 'libsigcplusplus3' # R
 
+  gnome
+
   meson_options '-Dbuild-documentation=false'
 end

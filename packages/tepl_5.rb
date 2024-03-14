@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Tepl_5 < Package
+class Tepl_5 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
   homepage 'https://wiki.gnome.org/Projects/Tepl'
   @_ver = '5.0.1'
@@ -27,13 +27,5 @@ class Tepl_5 < Package
   depends_on 'gtk_doc' => :build
   depends_on 'vala' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

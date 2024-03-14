@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glibmm_2_4 < Package
+class Glibmm_2_4 < Meson
   description 'C++ bindings for GLib'
   homepage 'https://www.gtkmm.org'
   version '2.66.5'
@@ -19,19 +19,10 @@ class Glibmm_2_4 < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'libsigcplusplus'
   depends_on 'libsigcplusplus' # R
   depends_on 'mm_common' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+  gnome
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

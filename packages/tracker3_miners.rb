@@ -43,6 +43,8 @@ class Tracker3_miners < Meson
   depends_on 'util_linux' # R
   depends_on 'vala' => :build
 
+  gnome
+
   meson_options "-Ddbus_services_dir=#{CREW_PREFIX}/share/dbus-1/services/ \
       -Dbattery_detection=none \
       -Dman=false \

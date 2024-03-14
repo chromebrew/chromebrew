@@ -19,6 +19,8 @@ class Gucharmap < Package
   depends_on 'desktop_file_utilities'
   depends_on 'itstool'
   depends_on 'vala'
+  
+  gnome
 
   def self.build
     system './configure',

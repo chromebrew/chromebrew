@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgconf < Package
+class Libgconf < Autotools
   description 'GConf is a system for storing application preferences.'
   homepage 'https://projects-old.gnome.org/gconf/'
   version '3.2.6'
@@ -22,12 +22,7 @@ class Libgconf < Package
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --disable-orbit"
-    system 'make'
-  end
+ gnome
 
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+ configure_options '--disable-orbit'
 end

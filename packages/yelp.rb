@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Yelp < Package
+class Yelp < Autotools
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
   version '40.0'
@@ -32,17 +32,9 @@ class Yelp < Package
   depends_on 'itstool' => :build
   depends_on 'xorg_server' => :build
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS} \
-    --enable-compile-warnings=minimum \
-    --enable-debug=no \
-    --disable-dependency-tracking"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  configure_options '--enable-compile-warnings=minimum \
+    --enable-debug=no \
+    --disable-dependency-tracking'
 end

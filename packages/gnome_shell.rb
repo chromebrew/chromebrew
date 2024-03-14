@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_shell < Package
+class Gnome_shell < Meson
   description 'Next generation desktop shell'
   homepage 'https://wiki.gnome.org/Projects/GnomeShell'
   version '41.0'
@@ -34,18 +34,10 @@ class Gnome_shell < Package
   depends_on 'py3_pygments' => :build
   depends_on 'vulkan_icd_loader' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dgtk_doc=true \
+  gnome
+
+  meson_options '-Dgtk_doc=true \
     -Dsystemd=false \
     -Dnetworkmanager=false \
-    -Dtests=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dtests=false'
 end

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_maps < Package
+class Gnome_maps < Meson
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
   version '43.0'
@@ -35,18 +35,9 @@ class Gnome_maps < Package
   depends_on 'libxml2' # R
   depends_on 'rest' # R
 
+  gnome
+
   def self.patch
     system "sed -i 's/geocode-glib-2.0/geocode-glib-1.0/g' meson.build"
-  end
-
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
   end
 end

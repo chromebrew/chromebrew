@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Adwaita_icon_theme < Meson
   description 'Theme consisting of a set of icons for GTK+'
   homepage 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme'
-  version '45.0'
+  version '46.rc'
   license 'LGPL-3 and CC-BY-SA-4.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git'
@@ -23,9 +23,9 @@ class Adwaita_icon_theme < Meson
   depends_on 'vala' => :build
   depends_on 'xdg_base'
 
+  gnome
+
   def self.postinstall
-    # Update mime database.
-    system "update-mime-database #{CREW_PREFIX}/share/mime"
     # This is skipped when DESTDIR is set during build.
     system "gtk-update-icon-cache -qtf #{CREW_PREFIX}/share/icons/Adwaita" if File.file?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
   end

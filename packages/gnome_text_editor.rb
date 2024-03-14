@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_text_editor < Package
+class Gnome_text_editor < Meson
   description 'GNOME Text Editor'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-text-editor'
   version '44.0'
@@ -41,14 +41,5 @@ class Gnome_text_editor < Package
   depends_on 'vulkan_icd_loader' # R
   depends_on 'yelp_tools' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-            builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  gnome
 end
