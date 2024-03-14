@@ -11,9 +11,9 @@ class Gedit < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a1f180e43690a54b65de8606bf4098c190f8e51a0ffccd357af25308adf4173c',
-     armv7l: 'a1f180e43690a54b65de8606bf4098c190f8e51a0ffccd357af25308adf4173c',
-     x86_64: '8258cfcc36d014370730b4c5c9285ddbbfbe276dc6b8d7e958ee001dfd4519b7'
+    aarch64: '835806e05b5fb7054ca5bb06119aa013d556fe2d908bbb64ffb0230e223f45ed',
+     armv7l: '835806e05b5fb7054ca5bb06119aa013d556fe2d908bbb64ffb0230e223f45ed',
+     x86_64: '823f618c39d999744c11b10de1bf4499e4d130ba29a51f93f922c833b8849d8a'
   })
 
   depends_on 'cairo' # R
@@ -37,12 +37,9 @@ class Gedit < Meson
   depends_on 'tepl_6' # R
   depends_on 'vala' => :build
   depends_on 'yelp_tools' => :build
+  gnome
 
   meson_options '-Drequire_all_tests=false \
     -Dgtk_doc=false \
     -Duser_documentation=true'
-
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
 end

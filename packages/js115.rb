@@ -13,6 +13,12 @@ class Js115 < Package
   source_sha256 'af8086f23efc8492d286671f6035b1a915de6f4ed5c7897e40be0e1cb6b895ea'
   binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: 'a45ee8e0d9e22bc758ba6743649b392a4b16445c60d01576f5f1d7e12f64ce3d',
+     armv7l: 'a45ee8e0d9e22bc758ba6743649b392a4b16445c60d01576f5f1d7e12f64ce3d',
+     x86_64: '818511592eb8bcb646b905dd7fdfcfe1a5f3530f0c9f7ec9ae5693af82085a84'
+  })
+
   depends_on 'autoconf213' => :build
   depends_on 'ccache' => :build
   depends_on 'gcc_lib' # R

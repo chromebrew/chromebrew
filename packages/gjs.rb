@@ -11,9 +11,9 @@ class Gjs < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
-     armv7l: '06cec6c34dc4656735a526af6d74d02452dd34de1654c46efd327a5c80932982',
-     x86_64: 'decdaf546dac3ccee260617d756619892cd443f6b42c19b56318feae913cc31e'
+    aarch64: '4ddcbf2cd059a44a886900bd364e569cb749ef5554f415be86c6d276b55a0e5b',
+     armv7l: '4ddcbf2cd059a44a886900bd364e569cb749ef5554f415be86c6d276b55a0e5b',
+     x86_64: 'fd47d6cbf0e9f4cbf41eae0cd5e3c4fa3a7336ea91636c1616947b1dfae825ea'
   })
 
   depends_on 'cairo' # R
@@ -24,9 +24,10 @@ class Gjs < Meson
   depends_on 'glib' # R
   depends_on 'gobject_introspection' # R
   depends_on 'harfbuzz' # R
-  depends_on 'js115' => :build
+  depends_on 'js115' # R
   depends_on 'libffi' # R
   depends_on 'libx11' # R
+  gnome
 
   meson_options '-Dinstalled_tests=false \
     -Dskip_dbus_tests=true \

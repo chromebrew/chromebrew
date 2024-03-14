@@ -1,35 +1,32 @@
 require 'buildsystems/meson'
 
-class Libpeas < Meson
+class Libpeas2 < Meson
   description 'A GObject plugins library'
   homepage 'https://gitlab.gnome.org/GNOME/libpeas'
-  version '1.36.0'
+  version '2.0.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libpeas.git'
-  git_hashtag "libpeas-#{version}"
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2a3c23c38fbf26fee2163da96a67377bd8b1cd4c93d3ece0f29a8d85de9f75e',
-     armv7l: 'a2a3c23c38fbf26fee2163da96a67377bd8b1cd4c93d3ece0f29a8d85de9f75e',
-     x86_64: 'ee094d10ed5ce027d6ae6858b7a19978463b0c37386ac2c07b6b019f394272ea'
+    aarch64: '214bf9f554c736aafc293b2d9bd79e0a3e90e355b660f7aedff8434970c062cb',
+     armv7l: '214bf9f554c736aafc293b2d9bd79e0a3e90e355b660f7aedff8434970c062cb',
+     x86_64: 'f8c5e4fa0cb1f524273b566c1572f0af6cdc930af85eecd88773d2d7383d7071'
   })
 
-  depends_on 'gcc_lib' => :build
-  depends_on 'gjs' => :build
-  depends_on 'glade' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'gjs' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gobject_introspection' # R
-  depends_on 'gtk3' # R
+  depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'luajit' => :build
+  depends_on 'js115' # R
   depends_on 'luajit_lgi' => :build
   depends_on 'luajit' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'pygobject' => :build
-  depends_on 'python3' => :build
   depends_on 'python3' # R
   depends_on 'vala' => :build
 
