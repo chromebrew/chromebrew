@@ -3485,6 +3485,11 @@ url: https://archive.mozilla.org/pub/firefox/releases/
 activity: high
 ---
 kind: url
+name: js115
+url: https://archive.mozilla.org/pub/firefox/releases/
+activity: high
+---
+kind: url
 name: json_glib
 url: https://download.gnome.org/sources/json-glib/
 activity: low
@@ -4587,6 +4592,11 @@ activity: none
 ---
 kind: url
 name: libpeas
+url: https://gitlab.gnome.org/GNOME/libpeas/tags
+activity: low
+---
+kind: url
+name: libpeas2
 url: https://gitlab.gnome.org/GNOME/libpeas/tags
 activity: low
 ---
