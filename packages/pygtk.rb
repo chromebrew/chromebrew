@@ -18,7 +18,7 @@ class Pygtk < Package
 
   depends_on 'libglade'
   depends_on 'pygobject2'
-  
+
   gnome
 
   def self.build

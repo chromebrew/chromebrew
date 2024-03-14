@@ -37,6 +37,6 @@ class Rest < Meson
   depends_on 'libxml2' # R
   depends_on 'pango' # R
   depends_on 'vulkan_icd_loader' # R
-  
+
   gnome
 end
