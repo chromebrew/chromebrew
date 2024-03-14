@@ -1,13 +1,13 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libwmf < Package
+class Libwmf < Autotools
   description 'libwmf is a library for reading vector images in Microsoft\'s native Windows Metafile Format (WMF)'
   homepage 'https://github.com/caolanm/libwmf'
-  version '0.2.12-ad365e1'
+  version '0.2.13'
   license 'LGPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/caolanm/libwmf.git'
-  git_hashtag 'ad365e1df356d6371daabf426bd39a5f9721160a'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -34,22 +34,5 @@ class Libwmf < Package
   depends_on 'xwayland' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system 'autoreconf -fiv'
-    system "./configure \
-      #{CREW_OPTIONS} \
-      --disable-maintainer-mode"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
-  end
+  gnome
 end

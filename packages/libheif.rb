@@ -3,11 +3,11 @@ require 'package'
 class Libheif < Package
   description 'libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.'
   homepage 'https://github.com/strukturag/libheif'
-  version '1.16.2-c679a76'
+  version '1.17.6'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/strukturag/libheif.git'
-  git_hashtag 'c679a764761ef4056bb43d2e514a607174b45bd6'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -32,6 +32,8 @@ class Libheif < Package
   depends_on 'svt_av1' # R
   depends_on 'zlibpkg' # R
 
+  gnome
+
   def self.build
     system "cmake -B builddir \
         -G Ninja \
@@ -42,12 +44,5 @@ class Libheif < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
   end
 end

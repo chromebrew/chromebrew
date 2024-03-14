@@ -3,7 +3,7 @@ require 'package'
 class Libpng < Package
   description 'libpng is the official PNG reference library.'
   homepage 'http://libpng.org/pub/png/libpng.html'
-  version '1.6.39'
+  version '1.6.43'
   license 'libpng2'
   compatibility 'all'
   source_url 'https://git.code.sf.net/p/libpng/code.git'
@@ -19,6 +19,8 @@ class Libpng < Package
 
   depends_on 'zlibpkg'
   depends_on 'glibc' # R
+
+  gnome
 
   def self.build
     system "cmake \
@@ -87,12 +89,5 @@ class Libpng < Package
       libdir='#{CREW_LIB_PREFIX}'
     LIBTOOLEOF
     File.write("#{CREW_DEST_LIB_PREFIX}/#{@libname}.la", @libtool_file)
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
   end
 end

@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Libavif < CMake
   description 'Library for encoding and decoding .avif files'
   homepage 'https://github.com/AOMediaCodec/libavif'
-  version '1.0.1'
+  version '1.0.4'
   license 'BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/AOMediaCodec/libavif.git'
@@ -34,6 +34,8 @@ class Libavif < CMake
   depends_on 'svt_av1' # R
   depends_on 'zlibpkg' # R
 
+  gnome
+
   cmake_options '-DAVIF_BUILD_APPS=ON \
       -DAVIF_CODEC_AOM=ON \
       -DAVIF_CODEC_DAV1D=ON \
@@ -41,11 +43,4 @@ class Libavif < CMake
       -DAVIF_CODEC_SVT=ON \
       -DAVIF_BUILD_GDK_PIXBUF=ON \
       -DAVIF_BUILD_MAN_PAGES=ON'
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
-  end
 end
