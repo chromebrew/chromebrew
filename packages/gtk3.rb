@@ -67,6 +67,7 @@ class Gtk3 < Meson
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 
+  gnome
   no_fhs
 
   def self.patch

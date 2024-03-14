@@ -73,6 +73,7 @@ class Gtk4 < Meson
   depends_on 'xdg_base' # L
   depends_on 'zlibpkg' # R
 
+  gnome
   no_fhs
 
   def self.patch
