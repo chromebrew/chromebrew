@@ -24,6 +24,8 @@ class Libxml2 < Autotools
   depends_on 'readline' # R
   depends_on 'zlibpkg' # R
 
+  gnome
+
   def self.patch
     # Fix encoding.c:1961:31: error: ‘TRUE’ undeclared (first use in this function)
     system "for f in $(grep -rl 'TRUE)'); do sed -i 's,TRUE),true),g' $f; done"
