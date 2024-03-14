@@ -10,7 +10,6 @@ class Inkscape < CMake
   source_sha256 'dbd1844dc443fe5e10d3e9a887144e5fb7223852fff191cfb5ef7adeab0e086b'
   binary_compression 'tar.zst'
 
-
   depends_on 'atkmm16' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bdwgc' # R
@@ -75,5 +74,4 @@ class Inkscape < CMake
     downloader 'https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch', 'edc55ad0771b604c63737524fc5928a35334db04d6479e395801635d5f6dfc1f'
     system 'patch -p1 -i 6089.patch'
   end
-
 end
