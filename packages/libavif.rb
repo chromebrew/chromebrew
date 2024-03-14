@@ -11,14 +11,15 @@ class Libavif < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dfb81842a7e868e84642c7c5d10be49ace73a1861bbc327794b1397eaac9fdab',
-     armv7l: 'dfb81842a7e868e84642c7c5d10be49ace73a1861bbc327794b1397eaac9fdab',
-     x86_64: 'ca497d1da070101a5b2090c2e7edae41644ad9b8c31132fa00e6c7bbe4215921'
+    aarch64: '0133f0f922637cd9f96c4d3e70273968fdc648dc3f71d3e60345900677baf16a',
+     armv7l: '0133f0f922637cd9f96c4d3e70273968fdc648dc3f71d3e60345900677baf16a',
+     x86_64: '5e5997cc07cbeb557237aa597888b3f7d52e129481b30aea4b08dfa364db7911'
   })
 
   depends_on 'dav1d' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'libaom' # R

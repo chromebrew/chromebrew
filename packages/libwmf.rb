@@ -11,9 +11,9 @@ class Libwmf < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
-     armv7l: '59618537f064e8fe8138bb64549e373acb4daafc5a7810958c68af2debe8204d',
-     x86_64: '001151fb0dab422ecfc300fefe3793d2b0e85b4c9d3cc43a7eb2841a325d221e'
+    aarch64: 'c51c1e8e723a5a8b8182a4880b2258976358c82002ff20b59e114368099a019a',
+     armv7l: 'c51c1e8e723a5a8b8182a4880b2258976358c82002ff20b59e114368099a019a',
+     x86_64: 'd394a1abc6bf1e1b2cb0484d39133500044c0a46523837093cda7733edb35bdd'
   })
 
   depends_on 'expat' # R
@@ -21,7 +21,6 @@ class Libwmf < Autotools
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gtk2' => :build
   depends_on 'libbsd' # R
   depends_on 'libgd' => :build
   depends_on 'libjpeg' # R
@@ -35,4 +34,7 @@ class Libwmf < Autotools
   depends_on 'zlibpkg' # R
 
   gnome
+
+  pre_configure_options "CFLAGS=-I#{CREW_PREFIX}/include/freetype2/"
+  configure_options "--with-x --with-freetype=#{CREW_PREFIX}/include/freetype2"
 end

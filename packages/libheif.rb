@@ -11,16 +11,18 @@ class Libheif < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '153437667ebd49391e11d549fcb771c9f15fbba8baa361fdaded872ee5206e01',
-     armv7l: '153437667ebd49391e11d549fcb771c9f15fbba8baa361fdaded872ee5206e01',
-     x86_64: 'ec98371ae67cc1c03f79638f7df0490d094c56eb3514576d2c0b53da8400b7cc'
+    aarch64: '9c116b6ac1b5da63aa2917a80a7b76c30b6409a32c77644271bc1b038dfa1842',
+     armv7l: '9c116b6ac1b5da63aa2917a80a7b76c30b6409a32c77644271bc1b038dfa1842',
+     x86_64: '6993cb1d221656dfce127fb0de2d1dceb27815f46f20a33abdc4b72e03f6bc56'
   })
 
   depends_on 'dav1d' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'graphviz' => :build # Only needed for dot.
   depends_on 'libaom' # R
   depends_on 'libde265' # R
   depends_on 'libjpeg' # R

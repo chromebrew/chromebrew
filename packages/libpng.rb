@@ -11,14 +11,15 @@ class Libpng < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '54bea8afba78bd2388704137d49b5151a9d0f8dcaafacff02436ec510e2ae627',
-     armv7l: '54bea8afba78bd2388704137d49b5151a9d0f8dcaafacff02436ec510e2ae627',
+    aarch64: 'ea5f9f73bd232972fdbf3c6d3d14da99c03af1b6d4e547e6faf59ad7ad73c3e2',
+     armv7l: 'ea5f9f73bd232972fdbf3c6d3d14da99c03af1b6d4e547e6faf59ad7ad73c3e2',
        i686: 'd4516093258bc90eecb4cc4bfd16cd5540a6e056806df37b43695b8b9137982a',
-     x86_64: '6f7c139fc86ec24c0dce766b43a940441a0ab4b29f685f1110adcf03bad5d5d9'
+     x86_64: 'cc55bf8441e29ac7bcfb0b80d7903cbb5816df85ffd052376de6396b18c80cf5'
   })
 
   depends_on 'zlibpkg'
   depends_on 'glibc' # R
+  depends_on 'glibc_lib' # R
 
   gnome
 

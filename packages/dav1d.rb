@@ -13,7 +13,7 @@ class Dav1d < Package
   binary_sha256({
     aarch64: '29d4434e8d6185fa8b4e4ec6b458ba830582210dca6022486f29649bdfee21a9',
      armv7l: '29d4434e8d6185fa8b4e4ec6b458ba830582210dca6022486f29649bdfee21a9',
-     x86_64: 'ec08ca4e413d63815a2ccbebf77590241116897135b62c0963cb7f98ab3e9ffa'
+     x86_64: '9011d38fc35cbb4ab87896db45fe91d23c6e9c5034c2b64a85704c741ce96949'
   })
 
   depends_on 'gcc_lib' # R
