@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Librsvg < Autotools
   description 'SVG library for GNOME'
   homepage 'https://wiki.gnome.org/Projects/LibRsvg'
-  version '2.57.0'
+  version '2.57.2'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/librsvg.git'
@@ -38,6 +38,8 @@ class Librsvg < Autotools
   depends_on 'rust' => :build
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
+
+  gnome
 
   configure_options '--enable-introspection=yes \
       --enable-vala=yes \
