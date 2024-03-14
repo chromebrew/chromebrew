@@ -27,6 +27,7 @@ class Gjs < Meson
   depends_on 'js115' # R
   depends_on 'libffi' # R
   depends_on 'libx11' # R
+
   gnome
 
   meson_options '-Dinstalled_tests=false \

@@ -38,4 +38,6 @@ class Gspell < CMake
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
+
+  gnome
 end

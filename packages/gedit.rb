@@ -37,6 +37,7 @@ class Gedit < Meson
   depends_on 'tepl_6' # R
   depends_on 'vala' => :build
   depends_on 'yelp_tools' => :build
+
   gnome
 
   meson_options '-Drequire_all_tests=false \

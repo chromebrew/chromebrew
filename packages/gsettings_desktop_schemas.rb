@@ -18,4 +18,6 @@ class Gsettings_desktop_schemas < Meson
 
   depends_on 'glib' => :build
   depends_on 'gobject_introspection' => :build
+
+  gnome
 end
