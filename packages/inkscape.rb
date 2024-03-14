@@ -10,6 +10,12 @@ class Inkscape < CMake
   source_sha256 'dbd1844dc443fe5e10d3e9a887144e5fb7223852fff191cfb5ef7adeab0e086b'
   binary_compression 'tar.zst'
 
+  binary_sha256({
+    aarch64: '66c2c48729a8dce69f8842ef98ea13d9b647ec73023ebafbc1123d53248ac325',
+     armv7l: '66c2c48729a8dce69f8842ef98ea13d9b647ec73023ebafbc1123d53248ac325',
+     x86_64: '1c28df91667910fd81fad3c2849fe6edef318a49ca8188e8c743780bdc2e211c'
+  })
+
   depends_on 'atkmm16' # R
   depends_on 'at_spi2_core' # R
   depends_on 'bdwgc' # R
@@ -61,6 +67,9 @@ class Inkscape < CMake
   depends_on 'readline' # R
   depends_on 'xdg_base' # R
   depends_on 'zlibpkg' # R
+
+  gnome
+  print_source_bashrc
 
   cmake_options '-DWITH_IMAGE_MAGICK=OFF \
             -DWITH_INTERNAL_2GEOM=ON \

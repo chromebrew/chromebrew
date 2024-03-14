@@ -95,7 +95,7 @@
 /usr/local/lib/cmake/2Geom/2GeomTargets-release.cmake
 /usr/local/lib/cmake/2Geom/2GeomTargets.cmake
 /usr/local/lib/inkscape/libinkscape_base.so
-/usr/local/lib/inkscape/libinkscape_base.so.1.3.0.0
+/usr/local/lib/inkscape/libinkscape_base.so.1.3.2.0
 /usr/local/lib/lib2geom.so
 /usr/local/lib/lib2geom.so.1.3.0
 /usr/local/lib/pkgconfig/2geom.pc
@@ -700,6 +700,8 @@
 /usr/local/share/inkscape/extensions/other/extension-xaml/inkxaml/xaml2svg/shapes.xsl
 /usr/local/share/inkscape/extensions/other/extension-xaml/inkxaml/xaml2svg/transform.xsl
 /usr/local/share/inkscape/extensions/other/extension-xaml/inkxaml/xamlobjects.py
+/usr/local/share/inkscape/extensions/other/extension-xaml/poetry.lock
+/usr/local/share/inkscape/extensions/other/extension-xaml/pyproject.toml
 /usr/local/share/inkscape/extensions/other/extension-xaml/readme.md
 /usr/local/share/inkscape/extensions/other/extension-xaml/tox.ini
 /usr/local/share/inkscape/extensions/other/gcodetools/.darglint
@@ -3941,6 +3943,7 @@
 /usr/local/share/man/es/man1/inkview.1.zst
 /usr/local/share/man/fr/man1/inkscape.1.zst
 /usr/local/share/man/fr/man1/inkview.1.zst
+/usr/local/share/man/hr/man1/inkscape.1.zst
 /usr/local/share/man/hr/man1/inkview.1.zst
 /usr/local/share/man/hu/man1/inkscape.1.zst
 /usr/local/share/man/hu/man1/inkview.1.zst
