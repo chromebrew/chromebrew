@@ -33,6 +33,12 @@ class Linuxheaders < Package
        armv7l: 'b790edcfe5bcad8fc7e7b873a6ba8f9ad147b00849db2afead5f51e19f699df7',
        x86_64: 'e6ea539149f4333518787eb1e0fa436d0914990fd2899011c277ab418a9b78ba'
     })
+  when '5.10'
+    binary_sha256({
+      aarch64: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
+       armv7l: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
+       x86_64: '797e7a8369f613b50b049b2352f82d5842a2c9ae766d6d5b1165b90a528ac139'
+    })
   when '5.15'
     binary_sha256({
       aarch64: 'f777a2fa6f124a808f32dc3dea4d71d939bd6b1237d6eff6bd61e53a21d60707',
@@ -44,12 +50,6 @@ class Linuxheaders < Package
       aarch64: '424399cfc8e7f1372003e9766fde2006c4597a70253069a4a3c4a4254a94c7d8',
        armv7l: '424399cfc8e7f1372003e9766fde2006c4597a70253069a4a3c4a4254a94c7d8',
        x86_64: '9b3cd996703add46eaf40b8e18b0cfa8a11cf9387f106434d6bfd4e1958b85c0'
-    })
-  else
-    binary_sha256({
-      aarch64: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
-       armv7l: '23b6f70dad19663d42a1bb8707e66eb1b35c4934ef051577701397b4708e8cff',
-       x86_64: '797e7a8369f613b50b049b2352f82d5842a2c9ae766d6d5b1165b90a528ac139'
     })
   end
 
@@ -76,13 +76,5 @@ class Linuxheaders < Package
                 rm ${file};
               done"
     end
-  end
-
-  def self.postinstall
-    return unless %w[3.8 4.14 5.4 5.10 5.15 6.1].include? CREW_KERNEL_VERSION
-
-    puts 'The installed kernel headers do NOT match the current kernel version.'.orange
-    puts 'Please build and install the appropriate kernel headers with:'.orange
-    puts 'crew reinstall -s linuxheaders'.lightblue
   end
 end
