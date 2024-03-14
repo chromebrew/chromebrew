@@ -155,7 +155,33 @@ class ExitMessage
   end
 end
 
+class GnomePostinstall
+  @count = []
+
+  def self.add
+    # Use the print_last option to allow important messages (like sommelier) to print at the bottom
+    # Usage:
+    # ExitMessage.add 'Last Message', print_last: true
+    @count += 1
+  end
+
+  def self.run
+    if @count >= 1
+      puts 'Running Gnome post_installs...'.orange
+      system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas" if File.file?("#{CREW_PREFIX}/bin/glib-compile-schemas")
+      system "gio-querymodules #{CREW_LIB_PREFIX}/gio/modules" if File.file?("#{CREW_PREFIX}/bin/gio-querymodules")
+      system "gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*", exception: false if File.file?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
+      system "update-mime-database #{CREW_PREFIX}/share/mime" if File.file?("#{CREW_PREFIX}/bin/update-mime-database")
+      return unless File.file?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
+
+      system 'gdk-pixbuf-query-loaders',
+             '--update-cache'
+    end
+  end
+end
+
 at_exit do
+  GnomePostinstall.run
   # Print exit messages.
   ExitMessage.print
 end
@@ -795,15 +821,18 @@ def pre_install(dest_dir)
 end
 
 def post_install
-  if @pkg.print_source_bashrc?
+  if @pkg.print_source_bashrc? || @pkg.gnome?
     ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
       To finish the installation, please execute the following:
       source ~/.bashrc
     PRINT_SOURCE_BASHRC_EOT
   end
+
+  GnomePostinstall.add if @pkg.gnome?
+
   # return unless the postinstall function was defined by the package recipe
-  return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb") || @pkg.method(:postinstall).source_location[0].include?('buildsystems')
+  return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")
 
   Dir.mktmpdir do |post_install_tempdir|
     Dir.chdir post_install_tempdir do

@@ -69,7 +69,6 @@ class Inkscape < CMake
   depends_on 'zlibpkg' # R
 
   gnome
-  print_source_bashrc
 
   cmake_options '-DWITH_IMAGE_MAGICK=OFF \
             -DWITH_INTERNAL_2GEOM=ON \
