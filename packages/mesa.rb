@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.0.2'
+  @_ver = '24.0.3'
   version "#{@_ver}-llvm18"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
