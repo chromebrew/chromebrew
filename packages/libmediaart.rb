@@ -26,7 +26,7 @@ class Libmediaart < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  
+
   gnome
 
   meson_options '-Dimage_library=gdk-pixbuf \

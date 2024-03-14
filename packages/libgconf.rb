@@ -22,7 +22,7 @@ class Libgconf < Autotools
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
 
- gnome
+  gnome
 
- configure_options '--disable-orbit'
+  configure_options '--disable-orbit'
 end
