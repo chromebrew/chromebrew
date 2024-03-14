@@ -21,5 +21,5 @@ class Libgudev < Meson
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
 
-  meson
+  gnome
 end

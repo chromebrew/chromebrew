@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libgweather < Package
+class Libgweather < Meson
   description 'Location and timezone database and weather-lookup library'
   homepage 'https://wiki.gnome.org/Projects/LibGWeather'
   version '4.2.0'
