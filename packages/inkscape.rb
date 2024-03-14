@@ -3,18 +3,13 @@ require 'buildsystems/cmake'
 class Inkscape < CMake
   description 'Inkscape is a professional vector graphics editor for Windows, Mac OS X and Linux.'
   homepage 'https://inkscape.org/'
-  version '1.3.1'
+  version '1.3.2'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://inkscape.org/gallery/item/44467/inkscape-1.3.1.tar.xz'
-  source_sha256 '421e0035fe5b3b054a0865dc8235be3f9e6e2dea54190d926b880a4ce05b00d8'
+  source_url 'https://media.inkscape.org/dl/resources/file/inkscape-1.3.2.tar.xz'
+  source_sha256 'dbd1844dc443fe5e10d3e9a887144e5fb7223852fff191cfb5ef7adeab0e086b'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
-     armv7l: '2fa1d4d51162d63e63059e85dc769ad4e561170cc683d61de39903504e8e0ce7',
-     x86_64: 'c2bcaa2c535c20efacfa5974808012696f15d90a74298e82936a0e5b5e8994ef'
-  })
 
   depends_on 'atkmm16' # R
   depends_on 'at_spi2_core' # R
@@ -72,4 +67,13 @@ class Inkscape < CMake
             -DWITH_INTERNAL_2GEOM=ON \
             -DWITH_MANPAGE_COMPRESSION=OFF \
             -DWITH_X11=ON'
+
+  def self.patch
+    downloader 'https://gitlab.archlinux.org/archlinux/packaging/packages/inkscape/-/raw/main/inkscape-1.3.2-poppler-24.03.patch?ref_type=heads&inline=false', '499bc0bd0d8600b597220f463034d5e132e69c7833108d6b766445e70e9c82ed', 'poppler.patch'
+    system 'patch -p1 -i poppler.patch'
+    # libxml compatibility patch
+    downloader 'https://gitlab.com/inkscape/inkscape/-/merge_requests/6089.patch', 'edc55ad0771b604c63737524fc5928a35334db04d6479e395801635d5f6dfc1f'
+    system 'patch -p1 -i 6089.patch'
+  end
+
 end
