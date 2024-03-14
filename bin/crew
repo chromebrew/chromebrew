@@ -7,14 +7,15 @@ require 'tmpdir'
 require_relative '../commands/const'
 require_relative '../commands/help'
 require_relative '../commands/list'
-require_relative '../lib/docopt'
 require_relative '../lib/color'
 require_relative '../lib/const'
-require_relative '../lib/util'
 require_relative '../lib/convert_size'
-require_relative '../lib/downloader'
 require_relative '../lib/deb_utils'
+require_relative '../lib/docopt'
+require_relative '../lib/downloader'
+require_relative '../lib/gnome'
 require_relative '../lib/package'
+require_relative '../lib/util'
 
 CREW_LICENSE = <<~LICENSESTRING
   Copyright (C) 2013-2022 Chromebrew Authors
@@ -152,31 +153,6 @@ class ExitMessage
     # &:last represent to print_last
     handle_messages(@messages.reject(&:last).map(&:first).first) until @messages.reject(&:last).map(&:first).empty?
     handle_messages(@messages.select(&:last).map(&:first).first) until @messages.select(&:last).map(&:first).empty?
-  end
-end
-
-class GnomePostinstall
-  @gnome_postinstall_count = 0
-
-  def self.add
-    # Use the print_last option to allow important messages (like sommelier) to print at the bottom
-    # Usage:
-    # ExitMessage.add 'Last Message', print_last: true
-    @gnome_postinstall_count += 1
-  end
-
-  def self.run
-    if @gnome_postinstall_count >= 1
-      puts 'Running Gnome post_installs...'.orange
-      system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas" if File.file?("#{CREW_PREFIX}/bin/glib-compile-schemas")
-      system "gio-querymodules #{CREW_LIB_PREFIX}/gio/modules" if File.file?("#{CREW_PREFIX}/bin/gio-querymodules")
-      system "gtk-update-icon-cache -ft #{CREW_PREFIX}/share/icons/*", exception: false if File.file?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
-      system "update-mime-database #{CREW_PREFIX}/share/mime" if File.file?("#{CREW_PREFIX}/bin/update-mime-database")
-      return unless File.file?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-      system 'gdk-pixbuf-query-loaders',
-             '--update-cache'
-    end
   end
 end
 
