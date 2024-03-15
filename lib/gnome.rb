@@ -2,9 +2,6 @@ class GnomePostinstall
   @gnome_postinstall_count = 0
 
   def self.add
-    # Use the print_last option to allow important messages (like sommelier) to print at the bottom
-    # Usage:
-    # ExitMessage.add 'Last Message', print_last: true
     @gnome_postinstall_count += 1
   end
 
