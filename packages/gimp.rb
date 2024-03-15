@@ -84,6 +84,8 @@ class Gimp < Meson
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
 
+  gnome
+
   meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
 
   def self.install
