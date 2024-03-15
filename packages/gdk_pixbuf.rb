@@ -22,7 +22,7 @@ class Gdk_pixbuf < Package
   depends_on 'harfbuzz' # R
   depends_on 'libjpeg' # R
   depends_on 'libtiff' # R
-  depends_on 'libwebp' unless ARCH.eql?('i686')
+  depends_on 'libwebp' # R
   depends_on 'pango' => :build
   depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
