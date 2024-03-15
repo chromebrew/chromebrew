@@ -17,5 +17,8 @@ class Libgee < Autotools
      x86_64: '6fbb91042ade5d1fe01e47e87599a883e75f7b7d26304b0e4788684de47f8993'
   })
 
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+
   gnome
 end
