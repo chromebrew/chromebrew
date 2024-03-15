@@ -24,9 +24,4 @@ class Adwaita_icon_theme < Meson
   depends_on 'xdg_base'
 
   gnome
-
-  def self.postinstall
-    # This is skipped when DESTDIR is set during build.
-    system "gtk-update-icon-cache -qtf #{CREW_PREFIX}/share/icons/Adwaita" if File.file?("#{CREW_PREFIX}/bin/gtk-update-icon-cache")
-  end
 end

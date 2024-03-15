@@ -16,26 +16,19 @@ class Baobab < Meson
      x86_64: '0e1c62920726909f86756309f9a1a2efc7a520eaa78c63d88678bdbd4ea11e67'
   })
 
+  depends_on 'cairo' # R
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gtk3' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
   depends_on 'itstool' => :build
+  depends_on 'libadwaita' # R
+  depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'glib' => :build
-  depends_on 'glibc' => :build
-  depends_on 'harfbuzz' => :build
-  depends_on 'pango' => :build
-  depends_on 'gtk4' => :build
-  depends_on 'libadwaita' => :build
-  depends_on 'cairo' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk4' # R
-  depends_on 'libadwaita' # R
-  depends_on 'pango' # R
 
   gnome
 end
