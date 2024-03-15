@@ -76,5 +76,5 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/dconf-editor.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/dconf-editor.mo
-/usr/local/share/man/man1/dconf-editor.1.gz
+/usr/local/share/man/man1/dconf-editor.1.zst
 /usr/local/share/metainfo/ca.desrt.dconf-editor.appdata.xml

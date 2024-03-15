@@ -32,11 +32,11 @@
 /usr/local/lib/girepository-1.0/Gck-2.typelib
 /usr/local/lib/girepository-1.0/Gcr-4.typelib
 /usr/local/lib/libgck-2.so
-/usr/local/lib/libgck-2.so.0.0.0
-/usr/local/lib/libgck-2.so.2.0.0
+/usr/local/lib/libgck-2.so.2
+/usr/local/lib/libgck-2.so.2.2.1
 /usr/local/lib/libgcr-4.so
-/usr/local/lib/libgcr-4.so.0.0.0
-/usr/local/lib/libgcr-4.so.4.0.0
+/usr/local/lib/libgcr-4.so.4
+/usr/local/lib/libgcr-4.so.4.2.1
 /usr/local/lib/pkgconfig/gck-2.pc
 /usr/local/lib/pkgconfig/gcr-4.pc
 /usr/local/libexec/gcr-ssh-agent
@@ -83,6 +83,8 @@
 /usr/local/share/locale/hr/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/hu/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/id/LC_MESSAGES/gcr-4.mo
+/usr/local/share/locale/ie/LC_MESSAGES/gcr-4.mo
+/usr/local/share/locale/is/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/it/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gcr-4.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gcr-4.mo

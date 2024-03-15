@@ -3,19 +3,18 @@ require 'buildsystems/meson'
 class Gobject_introspection < Meson
   description 'GObject introspection is a middleware layer between C libraries (using GObject) and language bindings.'
   homepage 'https://wiki.gnome.org/action/show/Projects/GObjectIntrospection'
-  @_ver = '1.78.1'
+  @_ver = '1.80.0'
   version "#{@_ver}-py3.12"
   license 'LGPL-2+ and GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gobject-introspection.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7df9732cf230e4d4a399e17fc3606405455fc080d1ac9b0e6be2d29049586699',
-     armv7l: '7df9732cf230e4d4a399e17fc3606405455fc080d1ac9b0e6be2d29049586699',
-       i686: '40ed883c484a17dbe74951ccf779c9dc6a5d3f32c15651b0e6846abcbdb77563',
-     x86_64: 'e6b87bce9515b14229711bcd351e98a0b972c42c31fbce7e639303da082aba36'
+    aarch64: '0922ab24d17e086daf1078aba52e8437f192baeb203643912bb7832c67d6eb8d',
+     armv7l: '0922ab24d17e086daf1078aba52e8437f192baeb203643912bb7832c67d6eb8d',
+     x86_64: '8686243750b6c522da0a5540b81c1ccfb616118c4a141d25b58e79ecdf7cd03d'
   })
 
   depends_on 'gcc_lib' # R

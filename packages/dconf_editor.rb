@@ -6,22 +6,25 @@ class Dconf_editor < Meson
   version '45.0.1'
   license 'GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/dconf-editor.git"
+  source_url 'https://gitlab.gnome.org/GNOME/dconf-editor.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '50ff5adc092e785f07f089818a7c0fd1fd6229ea1b0e07e978f45b2f92ecd99c',
-     armv7l: '50ff5adc092e785f07f089818a7c0fd1fd6229ea1b0e07e978f45b2f92ecd99c',
-     x86_64: 'f4b41bd1febd465c57b534a8d04346e83a61b52904f0c9f8fbe7b88b28ace047'
+    aarch64: 'c86a83d7f2c3466cc6004be1c5476610a039a60ec9cd3067b33a47ee051ad0a7',
+     armv7l: 'c86a83d7f2c3466cc6004be1c5476610a039a60ec9cd3067b33a47ee051ad0a7',
+     x86_64: '85203822f7be8a89fedeb479e2cdd9617910032474dc4324a49475ca63d9cc87'
   })
 
   depends_on 'dconf' => :build
-  depends_on 'gtk3' => :build
-  depends_on 'vala' => :build
-  depends_on 'glib' # R
+  depends_on 'desktop_file_utils' => :build
   depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' => :build
   depends_on 'libhandy' # R
+  depends_on 'vala' => :build
+  depends_on 'dconf' # R
+  depends_on 'gtk3' # R
 
   gnome
 end
