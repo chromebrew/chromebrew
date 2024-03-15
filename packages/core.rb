@@ -8,7 +8,18 @@ class Core < Package
   compatibility 'all'
 
   is_fake
-
+  depends_on 'gtk3'
+  depends_on 'freetype'
+  depends_on 'cairo'
+  depends_on 'xzutils'
+  depends_on 'libnotify'
+  depends_on 'nspr'
+  depends_on 'libgconf'
+  depends_on 'libxss'
+  depends_on 'libcom_err'
+  depends_on 'gsettings_desktop_schemas'
+  depends_on 'xhost'
+  depends_on 'sommelier'
   depends_on 'brotli'
   depends_on 'bzip2'
   depends_on 'c_ares'
