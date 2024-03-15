@@ -31,7 +31,7 @@ class Gnome_console < Meson
   depends_on 'libhandy' => :build
   depends_on 'nautilus' => :build
   depends_on 'pango' # R
-  depends_on 'pcre2'  => :build
+  depends_on 'pcre2' => :build
   depends_on 'sassc' => :build
   depends_on 'vte' # R
   depends_on 'vulkan_headers' => :build
