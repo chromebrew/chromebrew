@@ -40,8 +40,6 @@ class Blender < Package
   end
 
   def self.postinstall
-    puts
-    puts "Type 'blender' to get started.".lightblue
-    puts
+    ExitMessage.add "Type 'blender' to get started.".lightblue
   end
 end
