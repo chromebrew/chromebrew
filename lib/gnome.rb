@@ -1,8 +1,8 @@
 class GnomePostinstall
-  @gnome_packages = Array.new
+  @gnome_packages = []
 
-  def self.gnome_packages
-    @gnome_packages
+  class << self
+    attr_reader :gnome_packages
   end
 
   def self.add(package)
