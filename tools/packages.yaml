@@ -7656,6 +7656,11 @@ url: http://www.ruby-lang.org/en/downloads/
 activity: medium
 ---
 kind: url
+name: ruby_activesupport
+url: https://rubygems.org/gems/activesupport/versions/
+activity: medium
+---
+kind: url
 name: ruby_asciidoctor
 url: https://github.com/asciidoctor/asciidoctor/releases
 activity: medium

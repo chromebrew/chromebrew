@@ -157,7 +157,15 @@ class ExitMessage
 end
 
 at_exit do
-  GnomePostinstall.run
+  begin
+    gem 'activesupport'
+  rescue Gem::LoadError
+    puts ' -> install gem activesupport'
+    Gem.install('activesupport')
+    gem 'activesupport'
+  end
+  require 'active_support/core_ext/object/blank'
+  GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
   # Print exit messages.
   ExitMessage.print
 end
@@ -805,7 +813,9 @@ def post_install
     PRINT_SOURCE_BASHRC_EOT
   end
 
-  GnomePostinstall.activate if @pkg.gnome?
+  if @pkg.gnome?
+    GnomePostinstall.add @pkg.name
+  end
 
   # return unless the postinstall function was defined by the package recipe
   return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")
@@ -1901,6 +1911,12 @@ end
 def install_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
+    # Exit early if package is already installed. This prevents the
+    # postinstall from being run for an already installed package.
+    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
+      puts "Package #{@pkg_name} already installed, skipping...".lightgreen
+      next
+    end
     next if check_package(@pkg_name)
     search @pkg_name
     print_current_package true

@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.0'
+  version '2.1'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -72,6 +72,7 @@ class Core < Package
   depends_on 'readline'
   depends_on 'rtmpdump'
   depends_on 'ruby'
+  depends_on 'ruby_activesupport'
   depends_on 'slang'
   depends_on 'sqlite'
   depends_on 'uchardet'
