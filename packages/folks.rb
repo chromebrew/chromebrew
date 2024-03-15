@@ -11,10 +11,11 @@ class Folks < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: '04b037c6f131277cf5b006d6c5ced26d0f7b055831c1f7fc63b3ff2a65df0ea2'
+    aarch64: '52979c485f2f9a6dc783f9a335e19c664d0d18ea9bf0423c561697138840bb91',
+     armv7l: '52979c485f2f9a6dc783f9a335e19c664d0d18ea9bf0423c561697138840bb91',
+     x86_64: 'a855bb36d96c03536fabf1069acda9347df3c7aa83c34dcbe7baad74c2edfb81'
   })
 
-  depends_on 'evolution_data_server' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build

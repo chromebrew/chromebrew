@@ -11,26 +11,28 @@ class Fragments < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '27daf87476325d131cd74a2dff2b15cdd6e39f041f8f2233e6dc9c8c3a589121',
-     armv7l: '27daf87476325d131cd74a2dff2b15cdd6e39f041f8f2233e6dc9c8c3a589121',
-     x86_64: 'a6d40669d6abea2b3da664675c713eaf53ce2d9ba335c75d2c3e777346425ba0'
+    aarch64: '33e98a3b0d123ceca18cd75b6dbff51d2954d68e4dbc22f58bb029db2ad47d8b',
+     armv7l: '33e98a3b0d123ceca18cd75b6dbff51d2954d68e4dbc22f58bb029db2ad47d8b',
+     x86_64: 'c6f41d839e093bb7a70c23d2cce442814aed0d31b5468b7032b00b2fc93bb39e'
   })
 
+  depends_on 'appstream' => :build
+  depends_on 'cairo' # R
   depends_on 'dbus' => :build
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gcc_lib' => :build
-  depends_on 'gdk_pixbuf' => :build
-  depends_on 'glibc' => :build
-  depends_on 'glib' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'graphene' => :build
-  depends_on 'gtk4' => :build
-  depends_on 'harfbuzz' => :build
-  depends_on 'libadwaita' => :build
-  depends_on 'openssl' => :build
-  depends_on 'pango' => :build
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libadwaita' # R
+  depends_on 'openssl' # R
+  depends_on 'pango' # R
   depends_on 'rust' => :build
   depends_on 'transmission' # L
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlibpkg' # R
 
   gnome
 end
