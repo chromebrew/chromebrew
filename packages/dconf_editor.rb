@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Dconf_editor < Meson
   description 'A graphical viewer and editor of applications internal settings.'
   homepage 'https://wiki.gnome.org/Apps/DconfEditor'
-  version '43.0'
+  version '45.0.1'
   license 'GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/dconf-editor/-/archive/#{version}/dconf-editor-#{version}.tar.bz2"
-  source_sha256 'e7b127b865f56c00b31759461d239af9f7b8098e715dcde3e06896cd84b544ad'
+  source_url "https://gitlab.gnome.org/GNOME/dconf-editor.git"
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -16,8 +16,8 @@ class Dconf_editor < Meson
      x86_64: 'f4b41bd1febd465c57b534a8d04346e83a61b52904f0c9f8fbe7b88b28ace047'
   })
 
-  depends_on 'dconf'
-  depends_on 'gtk3'
+  depends_on 'dconf' => :build
+  depends_on 'gtk3' => :build
   depends_on 'vala' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
