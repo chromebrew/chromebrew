@@ -805,7 +805,7 @@ def post_install
     PRINT_SOURCE_BASHRC_EOT
   end
 
-  GnomePostinstall.add if @pkg.gnome?
+  GnomePostinstall.activate if @pkg.gnome?
 
   # return unless the postinstall function was defined by the package recipe
   return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")

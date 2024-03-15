@@ -1,12 +1,12 @@
 class GnomePostinstall
-  @gnome_postinstall_count = 0
+  @gnome_postinstall = false
 
-  def self.add
-    @gnome_postinstall_count += 1
+  def self.activate
+    @gnome_postinstall = true
   end
 
   def self.run
-    if @gnome_postinstall_count >= 1
+    if @gnome_postinstall
       puts 'Running Gnome post_installs...'.orange
       system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas" if File.file?("#{CREW_PREFIX}/bin/glib-compile-schemas")
       system "gio-querymodules #{CREW_LIB_PREFIX}/gio/modules" if File.file?("#{CREW_PREFIX}/bin/gio-querymodules")
