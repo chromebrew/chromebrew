@@ -25,5 +25,5 @@ class Glade < Meson
   gnome
 
   pre_meson_options "CFLAGS='-fuse-ld=lld' CXXFLAGS='-fuse-ld=lld'"
-  meson_options '-Dgtk_doc=false -Dman=false build'
+  meson_options '-Dgtk_doc=false -Dman=false'
 end
