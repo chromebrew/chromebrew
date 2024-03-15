@@ -22,7 +22,9 @@ class Gcc_lib < Package
 
   depends_on 'gcc_build' => :build
   depends_on 'glibc' # R
+
   no_shrink
+  no_source_build
   no_strip
 
   def self.install
