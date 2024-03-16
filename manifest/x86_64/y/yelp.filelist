@@ -29,6 +29,7 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.yelp.gschema.xml
 /usr/local/share/icons/hicolor/scalable/apps/org.gnome.Yelp.svg
 /usr/local/share/icons/hicolor/symbolic/apps/org.gnome.Yelp-symbolic.svg
+/usr/local/share/locale/ab/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/af/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/am/LC_MESSAGES/yelp.mo
 /usr/local/share/locale/an/LC_MESSAGES/yelp.mo
@@ -349,6 +350,7 @@
 /usr/local/share/yelp/mathjax/jax/output/NativeMML/jax.js
 /usr/local/share/yelp/xslt/db2html.xsl
 /usr/local/share/yelp/xslt/info2html.xsl
+/usr/local/share/yelp/xslt/links2html.xsl
 /usr/local/share/yelp/xslt/mal2html.xsl
 /usr/local/share/yelp/xslt/man2html.xsl
 /usr/local/share/yelp/xslt/yelp-common.xsl

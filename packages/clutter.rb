@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Clutter < Package
+class Clutter < Autotools
   description 'OpenGL based interactive canvas library'
   homepage 'https://www.clutter-project.org'
   version '1.26.4'
@@ -32,17 +32,14 @@ class Clutter < Package
   depends_on 'xdg_base'
 
   def self.patch
-    system 'curl --ssl --progress-bar -o clutter-x11-startup-error.patch -L https://git.io/JU0yS'
-    abort 'Checksum mismatch. :/ Try again.'.lightred unless Digest::SHA256.hexdigest(File.read('clutter-x11-startup-error.patch')) == '8370bf0cf624c638edbd309d7dfc3922d726242312d7f217facff69135f56187'
-    system 'patch -Np0 < clutter-x11-startup-error.patch'
+    downloader 'https://raw.githubusercontent.com/void-linux/void-packages/master/srcpkgs/clutter/patches/clutter-x11-startup-error.patch', '8370bf0cf624c638edbd309d7dfc3922d726242312d7f217facff69135f56187'
+    system 'patch -Np1 -i clutter-x11-startup-error.patch'
   end
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --enable-evdev --enable-evdev-input --enable-wayland-backend --enable-egl-backend --enable-wayland-compositor --enable-gdk-backend"
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
+  configure_options '--enable-evdev \
+    --enable-evdev-input \
+    --enable-wayland-backend \
+    --enable-egl-backend \
+    --enable-wayland-compositor \
+    --enable-gdk-backend'
 end

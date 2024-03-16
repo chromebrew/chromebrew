@@ -19,13 +19,16 @@
 /usr/local/lib64/girepository-1.0/PeasGtk-1.0.typelib
 /usr/local/lib64/libpeas-1.0.so
 /usr/local/lib64/libpeas-1.0.so.0
-/usr/local/lib64/libpeas-1.0.so.0.3400.0
+/usr/local/lib64/libpeas-1.0.so.0.3600.0
+/usr/local/lib64/libpeas-1.0/loaders/liblua51loader.so
 /usr/local/lib64/libpeas-1.0/loaders/libpython3loader.so
 /usr/local/lib64/libpeas-gtk-1.0.so
 /usr/local/lib64/libpeas-gtk-1.0.so.0
-/usr/local/lib64/libpeas-gtk-1.0.so.0.3400.0
+/usr/local/lib64/libpeas-gtk-1.0.so.0.3600.0
 /usr/local/lib64/peas-demo/plugins/helloworld/helloworld.plugin
 /usr/local/lib64/peas-demo/plugins/helloworld/libhelloworld.so
+/usr/local/lib64/peas-demo/plugins/luahello/luahello.lua
+/usr/local/lib64/peas-demo/plugins/luahello/luahello.plugin
 /usr/local/lib64/peas-demo/plugins/pythonhello/pythonhello.plugin
 /usr/local/lib64/peas-demo/plugins/pythonhello/pythonhello.py
 /usr/local/lib64/peas-demo/plugins/secondtime/libsecondtime.so
@@ -70,6 +73,7 @@
 /usr/local/share/locale/hr/LC_MESSAGES/libpeas-1.0.mo
 /usr/local/share/locale/hu/LC_MESSAGES/libpeas-1.0.mo
 /usr/local/share/locale/id/LC_MESSAGES/libpeas-1.0.mo
+/usr/local/share/locale/ie/LC_MESSAGES/libpeas-1.0.mo
 /usr/local/share/locale/is/LC_MESSAGES/libpeas-1.0.mo
 /usr/local/share/locale/it/LC_MESSAGES/libpeas-1.0.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libpeas-1.0.mo

@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gvfs < Package
+class Gvfs < Meson
   description 'Virtual filesystem implementation for GIO'
   homepage 'https://wiki.gnome.org/Projects/gvfs'
   version '1.50.4'
@@ -44,21 +44,13 @@ class Gvfs < Package
   depends_on 'polkit' # R
   depends_on 'smbclient' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dfuse=true \
+  gnome
+
+  meson_options '-Dfuse=true \
     -Dgoa=false \
     -Dgoogle=false \
     -Dmtp=false \
     -Dsystemduserunitdir=no \
     -Dtmpfilesdir=no \
-    -Dudisks2=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+    -Dudisks2=false'
 end

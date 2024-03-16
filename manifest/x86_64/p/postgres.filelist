@@ -584,6 +584,7 @@
 /usr/local/include/postgresql/server/pgtar.h
 /usr/local/include/postgresql/server/pgtime.h
 /usr/local/include/postgresql/server/plperl.h
+/usr/local/include/postgresql/server/plperl_system.h
 /usr/local/include/postgresql/server/plpgsql.h
 /usr/local/include/postgresql/server/plpy_cursorobject.h
 /usr/local/include/postgresql/server/plpy_elog.h
@@ -598,6 +599,7 @@
 /usr/local/include/postgresql/server/plpy_typeio.h
 /usr/local/include/postgresql/server/plpy_util.h
 /usr/local/include/postgresql/server/plpython.h
+/usr/local/include/postgresql/server/plpython_system.h
 /usr/local/include/postgresql/server/port.h
 /usr/local/include/postgresql/server/port/aix.h
 /usr/local/include/postgresql/server/port/atomics.h
@@ -2713,6 +2715,7 @@
 /usr/local/share/doc/postgresql/html/regress-variant.html
 /usr/local/share/doc/postgresql/html/regress.html
 /usr/local/share/doc/postgresql/html/release-16-1.html
+/usr/local/share/doc/postgresql/html/release-16-2.html
 /usr/local/share/doc/postgresql/html/release-16.html
 /usr/local/share/doc/postgresql/html/release-prior.html
 /usr/local/share/doc/postgresql/html/release.html

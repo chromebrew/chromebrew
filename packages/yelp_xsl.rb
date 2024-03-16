@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Yelp_xsl < Package
+class Yelp_xsl < Autotools
   description 'yelp-xsl is a collection of programs and data files to help you build, maintain, and distribute documentation'
   homepage 'https://github.com/GNOME/yelp-xsl'
   version '42.1'
@@ -19,13 +19,5 @@ class Yelp_xsl < Package
 
   depends_on 'itstool'
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
-    system 'mold -run make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

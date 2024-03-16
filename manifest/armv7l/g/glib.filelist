@@ -321,6 +321,13 @@
 /usr/local/include/glib-2.0/gobject/gvaluearray.h
 /usr/local/include/glib-2.0/gobject/gvaluecollector.h
 /usr/local/include/glib-2.0/gobject/gvaluetypes.h
+/usr/local/lib/girepository-1.0/GIRepository-3.0.typelib
+/usr/local/lib/girepository-1.0/GLib-2.0.typelib
+/usr/local/lib/girepository-1.0/GLibUnix-2.0.typelib
+/usr/local/lib/girepository-1.0/GModule-2.0.typelib
+/usr/local/lib/girepository-1.0/GObject-2.0.typelib
+/usr/local/lib/girepository-1.0/Gio-2.0.typelib
+/usr/local/lib/girepository-1.0/GioUnix-2.0.typelib
 /usr/local/lib/glib-2.0/include/glibconfig.h
 /usr/local/lib/libgio-2.0.so
 /usr/local/lib/libgio-2.0.so.0
@@ -363,6 +370,13 @@
 /usr/local/share/gdb/auto-load/usr/local/lib/libgobject-2.0.so.0.8000.0-gdb.py
 /usr/local/share/gettext/its/gschema.its
 /usr/local/share/gettext/its/gschema.loc
+/usr/local/share/gir-1.0/GIRepository-3.0.gir
+/usr/local/share/gir-1.0/GLib-2.0.gir
+/usr/local/share/gir-1.0/GLibUnix-2.0.gir
+/usr/local/share/gir-1.0/GModule-2.0.gir
+/usr/local/share/gir-1.0/GObject-2.0.gir
+/usr/local/share/gir-1.0/Gio-2.0.gir
+/usr/local/share/gir-1.0/GioUnix-2.0.gir
 /usr/local/share/glib-2.0/codegen/__init__.py
 /usr/local/share/glib-2.0/codegen/codegen.py
 /usr/local/share/glib-2.0/codegen/codegen_docbook.py

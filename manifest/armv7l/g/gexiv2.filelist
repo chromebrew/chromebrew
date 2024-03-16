@@ -10,9 +10,10 @@
 /usr/local/lib/girepository-1.0/GExiv2-0.10.typelib
 /usr/local/lib/libgexiv2.so
 /usr/local/lib/libgexiv2.so.2
-/usr/local/lib/libgexiv2.so.2.14.0
+/usr/local/lib/libgexiv2.so.2.14.2
 /usr/local/lib/pkgconfig/gexiv2.pc
-/usr/local/lib/python3.10/site-packages/gi/overrides/GExiv2.py
+/usr/local/lib/python3.12/site-packages/gi/overrides/GExiv2.py
+/usr/local/lib/python3.12/site-packages/gi/overrides/__pycache__/GExiv2.cpython-312.pyc
 /usr/local/share/gir-1.0/GExiv2-0.10.gir
 /usr/local/share/vala/vapi/gexiv2.deps
 /usr/local/share/vala/vapi/gexiv2.vapi

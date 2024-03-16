@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_terminal < Package
+class Gnome_terminal < Meson
   description 'The GNOME Terminal Emulator'
   homepage 'https://wiki.gnome.org/Apps/Terminal'
-  version '3.48.0'
+  version '3.51.91'
   license 'GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-terminal.git'
@@ -11,12 +11,12 @@ class Gnome_terminal < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0f2aaae2cb3b2bcfcc00df7e03213a079a74b3cd9e1f6c26507fde0ef2a209b3',
-     armv7l: '0f2aaae2cb3b2bcfcc00df7e03213a079a74b3cd9e1f6c26507fde0ef2a209b3',
-     x86_64: '5b1844c860a4b5b05da151525d045b22b8668c9150fac8c854e538d46604182e'
+    aarch64: '508069bccbc1e289c1c875c4366833681ff28326554675dfe5a7402a898fc0c9',
+     armv7l: '508069bccbc1e289c1c875c4366833681ff28326554675dfe5a7402a898fc0c9',
+     x86_64: '7845852c6237e388142b2bfd8e5f62a12f1b6852c7bc98883bb5eaf384cd954e'
   })
 
-  depends_on 'adobe_source_code_pro_fonts' # (Needed for monospace fonts)
+  depends_on 'adobe_source_code_pro_fonts' # L (Needed for monospace fonts)
   depends_on 'at_spi2_core' # R
   depends_on 'dbus' # L
   depends_on 'dconf' => :build
@@ -24,33 +24,25 @@ class Gnome_terminal < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gsettings_desktop_schemas'
+  depends_on 'gsettings_desktop_schemas' => :build
   depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
+  depends_on 'libhandy' # R
   depends_on 'libx11' # R
   depends_on 'pango' # R
   depends_on 'util_linux' # R
   depends_on 'vte' # R
   depends_on 'yelp_tools' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
-    --default-library=both \
+  gnome
+  no_lto
+
+  meson_options '--default-library=both \
     -Ddocs=false \
     -Dsearch_provider=false \
-    -Dnautilus_extension=false \
-    -Dlocalstatedir=#{CREW_PREFIX}/var/local \
-    -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dnautilus_extension=false'
 
   def self.postinstall
-    puts 'gnome-terminal should be launched using "dbus-launch gnome-terminal"'.lightblue
+    ExitMessage.add 'gnome-terminal should be launched using "dbus-launch gnome-terminal"'.lightblue
   end
 end

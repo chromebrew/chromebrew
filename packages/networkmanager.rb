@@ -28,7 +28,8 @@ class Networkmanager < Meson
   depends_on 'elogind'
   depends_on 'libnewt'
   depends_on 'mobile_broadband_provider_info'
-  # depends_on 'ccache' => :build
+
+  gnome
 
   meson_options "--default-library=both \
     -Ddbus_conf_dir=#{CREW_PREFIX}/share/dbus-1/system.d \

@@ -30,6 +30,8 @@ class Mutter < Meson
   depends_on 'xorg_server' => :build
   depends_on 'xwayland'
 
+  gnome
+
   meson_options "-Dtests=false \
     -Dprofiler=false \
     -Dopengl=true \

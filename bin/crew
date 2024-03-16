@@ -7,17 +7,18 @@ require 'tmpdir'
 require_relative '../commands/const'
 require_relative '../commands/help'
 require_relative '../commands/list'
-require_relative '../lib/docopt'
 require_relative '../lib/color'
 require_relative '../lib/const'
-require_relative '../lib/util'
 require_relative '../lib/convert_size'
-require_relative '../lib/downloader'
 require_relative '../lib/deb_utils'
+require_relative '../lib/docopt'
+require_relative '../lib/downloader'
+require_relative '../lib/gnome'
 require_relative '../lib/package'
+require_relative '../lib/util'
 
 CREW_LICENSE = <<~LICENSESTRING
-  Copyright (C) 2013-2022 Chromebrew Authors
+  Copyright (C) 2013-2024 Chromebrew Authors
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -156,6 +157,15 @@ class ExitMessage
 end
 
 at_exit do
+  begin
+    gem 'activesupport'
+  rescue Gem::LoadError
+    puts ' -> install gem activesupport'
+    Gem.install('activesupport')
+    gem 'activesupport'
+  end
+  require 'active_support/core_ext/object/blank'
+  GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
   # Print exit messages.
   ExitMessage.print
 end
@@ -795,13 +805,16 @@ def pre_install(dest_dir)
 end
 
 def post_install
-  if @pkg.print_source_bashrc?
+  if @pkg.print_source_bashrc? || @pkg.gnome?
     ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
       To finish the installation, please execute the following:
       source ~/.bashrc
     PRINT_SOURCE_BASHRC_EOT
   end
+
+  GnomePostinstall.add @pkg.name if @pkg.gnome?
+
   # return unless the postinstall function was defined by the package recipe
   return unless @pkg.method(:postinstall).source_location[0].include?("#{@pkg.name}.rb")
 
@@ -1896,6 +1909,12 @@ end
 def install_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
+    # Exit early if package is already installed. This prevents the
+    # postinstall from being run for an already installed package.
+    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg_name }
+      puts "Package #{@pkg_name} already installed, skipping...".lightgreen
+      next
+    end
     next if check_package(@pkg_name)
     search @pkg_name
     print_current_package true

@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libgtop PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libgtop/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgtop < Package
+class Libgtop < Autotools
   description 'A library for collecting system monitoring data'
   homepage 'https://gitlab.gnome.org/GNOME/libgtop'
   version '2.40.0-507809b'
@@ -26,13 +26,5 @@ class Libgtop < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  gnome
 end

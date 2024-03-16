@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gtk_vnc < Package
+class Gtk_vnc < Meson
   description 'VNC viewer widget for GTK'
   homepage 'https://wiki.gnome.org/Projects/gtk-vnc'
   version '1.3.1'
@@ -31,15 +31,5 @@ class Gtk_vnc < Package
   depends_on 'zlibpkg' # R
   depends_on 'gcc_lib' # R
 
-  def self.build
-    system "meson \
-      #{CREW_MESON_OPTIONS} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

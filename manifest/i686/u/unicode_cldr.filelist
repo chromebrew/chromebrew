@@ -6,6 +6,7 @@
 /usr/local/share/unicode/cldr/common/annotations/ast.xml
 /usr/local/share/unicode/cldr/common/annotations/az.xml
 /usr/local/share/unicode/cldr/common/annotations/be.xml
+/usr/local/share/unicode/cldr/common/annotations/bew.xml
 /usr/local/share/unicode/cldr/common/annotations/bg.xml
 /usr/local/share/unicode/cldr/common/annotations/bgn.xml
 /usr/local/share/unicode/cldr/common/annotations/bn.xml
@@ -17,6 +18,7 @@
 /usr/local/share/unicode/cldr/common/annotations/chr.xml
 /usr/local/share/unicode/cldr/common/annotations/ckb.xml
 /usr/local/share/unicode/cldr/common/annotations/cs.xml
+/usr/local/share/unicode/cldr/common/annotations/cv.xml
 /usr/local/share/unicode/cldr/common/annotations/cy.xml
 /usr/local/share/unicode/cldr/common/annotations/da.xml
 /usr/local/share/unicode/cldr/common/annotations/de.xml
@@ -106,6 +108,7 @@
 /usr/local/share/unicode/cldr/common/annotations/pt_PT.xml
 /usr/local/share/unicode/cldr/common/annotations/qu.xml
 /usr/local/share/unicode/cldr/common/annotations/quc.xml
+/usr/local/share/unicode/cldr/common/annotations/rhg.xml
 /usr/local/share/unicode/cldr/common/annotations/rm.xml
 /usr/local/share/unicode/cldr/common/annotations/ro.xml
 /usr/local/share/unicode/cldr/common/annotations/root.xml
@@ -162,6 +165,7 @@
 /usr/local/share/unicode/cldr/common/annotationsDerived/ast.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/az.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/be.xml
+/usr/local/share/unicode/cldr/common/annotationsDerived/bew.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/bg.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/bgn.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/bn.xml
@@ -173,6 +177,7 @@
 /usr/local/share/unicode/cldr/common/annotationsDerived/chr.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/ckb.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/cs.xml
+/usr/local/share/unicode/cldr/common/annotationsDerived/cv.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/cy.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/da.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/de.xml
@@ -184,6 +189,7 @@
 /usr/local/share/unicode/cldr/common/annotationsDerived/en_001.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/en_AU.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/en_CA.xml
+/usr/local/share/unicode/cldr/common/annotationsDerived/en_GB.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/en_IN.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/es.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/es_419.xml
@@ -226,6 +232,7 @@
 /usr/local/share/unicode/cldr/common/annotationsDerived/kn.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/ko.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/kok.xml
+/usr/local/share/unicode/cldr/common/annotationsDerived/ku.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/ky.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/lb.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/lij.xml
@@ -258,6 +265,7 @@
 /usr/local/share/unicode/cldr/common/annotationsDerived/pt_PT.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/qu.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/quc.xml
+/usr/local/share/unicode/cldr/common/annotationsDerived/rhg.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/rm.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/ro.xml
 /usr/local/share/unicode/cldr/common/annotationsDerived/root.xml
@@ -706,11 +714,15 @@
 /usr/local/share/unicode/cldr/common/collation/zu.xml
 /usr/local/share/unicode/cldr/common/dtd/cldrTest.dtd
 /usr/local/share/unicode/cldr/common/dtd/ldml.dtd
+/usr/local/share/unicode/cldr/common/dtd/ldml.xsd
 /usr/local/share/unicode/cldr/common/dtd/ldmlBCP47.dtd
+/usr/local/share/unicode/cldr/common/dtd/ldmlBCP47.xsd
 /usr/local/share/unicode/cldr/common/dtd/ldmlICIR.dtd
 /usr/local/share/unicode/cldr/common/dtd/ldmlICU.dtd
 /usr/local/share/unicode/cldr/common/dtd/ldmlOpenOffice.dtd
 /usr/local/share/unicode/cldr/common/dtd/ldmlSupplemental.dtd
+/usr/local/share/unicode/cldr/common/dtd/ldmlSupplemental.xsd
+/usr/local/share/unicode/cldr/common/dtd/xml.xsd
 /usr/local/share/unicode/cldr/common/main/aa.xml
 /usr/local/share/unicode/cldr/common/main/aa_DJ.xml
 /usr/local/share/unicode/cldr/common/main/aa_ER.xml
@@ -792,6 +804,8 @@
 /usr/local/share/unicode/cldr/common/main/be_TARASK.xml
 /usr/local/share/unicode/cldr/common/main/bem.xml
 /usr/local/share/unicode/cldr/common/main/bem_ZM.xml
+/usr/local/share/unicode/cldr/common/main/bew.xml
+/usr/local/share/unicode/cldr/common/main/bew_ID.xml
 /usr/local/share/unicode/cldr/common/main/bez.xml
 /usr/local/share/unicode/cldr/common/main/bez_TZ.xml
 /usr/local/share/unicode/cldr/common/main/bg.xml
@@ -806,6 +820,8 @@
 /usr/local/share/unicode/cldr/common/main/bgn_PK.xml
 /usr/local/share/unicode/cldr/common/main/bho.xml
 /usr/local/share/unicode/cldr/common/main/bho_IN.xml
+/usr/local/share/unicode/cldr/common/main/blo.xml
+/usr/local/share/unicode/cldr/common/main/blo_BJ.xml
 /usr/local/share/unicode/cldr/common/main/blt.xml
 /usr/local/share/unicode/cldr/common/main/blt_VN.xml
 /usr/local/share/unicode/cldr/common/main/bm.xml
@@ -863,6 +879,8 @@
 /usr/local/share/unicode/cldr/common/main/co_FR.xml
 /usr/local/share/unicode/cldr/common/main/cs.xml
 /usr/local/share/unicode/cldr/common/main/cs_CZ.xml
+/usr/local/share/unicode/cldr/common/main/csw.xml
+/usr/local/share/unicode/cldr/common/main/csw_CA.xml
 /usr/local/share/unicode/cldr/common/main/cu.xml
 /usr/local/share/unicode/cldr/common/main/cu_RU.xml
 /usr/local/share/unicode/cldr/common/main/cv.xml
@@ -948,6 +966,7 @@
 /usr/local/share/unicode/cldr/common/main/en_GU.xml
 /usr/local/share/unicode/cldr/common/main/en_GY.xml
 /usr/local/share/unicode/cldr/common/main/en_HK.xml
+/usr/local/share/unicode/cldr/common/main/en_ID.xml
 /usr/local/share/unicode/cldr/common/main/en_IE.xml
 /usr/local/share/unicode/cldr/common/main/en_IL.xml
 /usr/local/share/unicode/cldr/common/main/en_IM.xml
@@ -1199,6 +1218,8 @@
 /usr/local/share/unicode/cldr/common/main/ia_001.xml
 /usr/local/share/unicode/cldr/common/main/id.xml
 /usr/local/share/unicode/cldr/common/main/id_ID.xml
+/usr/local/share/unicode/cldr/common/main/ie.xml
+/usr/local/share/unicode/cldr/common/main/ie_EE.xml
 /usr/local/share/unicode/cldr/common/main/ig.xml
 /usr/local/share/unicode/cldr/common/main/ig_NG.xml
 /usr/local/share/unicode/cldr/common/main/ii.xml
@@ -1261,6 +1282,7 @@
 /usr/local/share/unicode/cldr/common/main/kn.xml
 /usr/local/share/unicode/cldr/common/main/kn_IN.xml
 /usr/local/share/unicode/cldr/common/main/ko.xml
+/usr/local/share/unicode/cldr/common/main/ko_CN.xml
 /usr/local/share/unicode/cldr/common/main/ko_KP.xml
 /usr/local/share/unicode/cldr/common/main/ko_KR.xml
 /usr/local/share/unicode/cldr/common/main/kok.xml
@@ -1283,6 +1305,15 @@
 /usr/local/share/unicode/cldr/common/main/ku_TR.xml
 /usr/local/share/unicode/cldr/common/main/kw.xml
 /usr/local/share/unicode/cldr/common/main/kw_GB.xml
+/usr/local/share/unicode/cldr/common/main/kxv.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Deva.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Deva_IN.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Latn.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Latn_IN.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Orya.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Orya_IN.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Telu.xml
+/usr/local/share/unicode/cldr/common/main/kxv_Telu_IN.xml
 /usr/local/share/unicode/cldr/common/main/ky.xml
 /usr/local/share/unicode/cldr/common/main/ky_KG.xml
 /usr/local/share/unicode/cldr/common/main/la.xml
@@ -1338,6 +1369,8 @@
 /usr/local/share/unicode/cldr/common/main/mgo_CM.xml
 /usr/local/share/unicode/cldr/common/main/mi.xml
 /usr/local/share/unicode/cldr/common/main/mi_NZ.xml
+/usr/local/share/unicode/cldr/common/main/mic.xml
+/usr/local/share/unicode/cldr/common/main/mic_CA.xml
 /usr/local/share/unicode/cldr/common/main/mk.xml
 /usr/local/share/unicode/cldr/common/main/mk_MK.xml
 /usr/local/share/unicode/cldr/common/main/ml.xml
@@ -1446,7 +1479,7 @@
 /usr/local/share/unicode/cldr/common/main/pl.xml
 /usr/local/share/unicode/cldr/common/main/pl_PL.xml
 /usr/local/share/unicode/cldr/common/main/prg.xml
-/usr/local/share/unicode/cldr/common/main/prg_001.xml
+/usr/local/share/unicode/cldr/common/main/prg_PL.xml
 /usr/local/share/unicode/cldr/common/main/ps.xml
 /usr/local/share/unicode/cldr/common/main/ps_AF.xml
 /usr/local/share/unicode/cldr/common/main/ps_PK.xml
@@ -1547,6 +1580,8 @@
 /usr/local/share/unicode/cldr/common/main/sid_ET.xml
 /usr/local/share/unicode/cldr/common/main/sk.xml
 /usr/local/share/unicode/cldr/common/main/sk_SK.xml
+/usr/local/share/unicode/cldr/common/main/skr.xml
+/usr/local/share/unicode/cldr/common/main/skr_PK.xml
 /usr/local/share/unicode/cldr/common/main/sl.xml
 /usr/local/share/unicode/cldr/common/main/sl_SI.xml
 /usr/local/share/unicode/cldr/common/main/sma.xml
@@ -1649,6 +1684,8 @@
 /usr/local/share/unicode/cldr/common/main/tt_RU.xml
 /usr/local/share/unicode/cldr/common/main/twq.xml
 /usr/local/share/unicode/cldr/common/main/twq_NE.xml
+/usr/local/share/unicode/cldr/common/main/tyv.xml
+/usr/local/share/unicode/cldr/common/main/tyv_RU.xml
 /usr/local/share/unicode/cldr/common/main/tzm.xml
 /usr/local/share/unicode/cldr/common/main/tzm_MA.xml
 /usr/local/share/unicode/cldr/common/main/ug.xml
@@ -1676,6 +1713,8 @@
 /usr/local/share/unicode/cldr/common/main/vec_IT.xml
 /usr/local/share/unicode/cldr/common/main/vi.xml
 /usr/local/share/unicode/cldr/common/main/vi_VN.xml
+/usr/local/share/unicode/cldr/common/main/vmw.xml
+/usr/local/share/unicode/cldr/common/main/vmw_MZ.xml
 /usr/local/share/unicode/cldr/common/main/vo.xml
 /usr/local/share/unicode/cldr/common/main/vo_001.xml
 /usr/local/share/unicode/cldr/common/main/vun.xml
@@ -1692,12 +1731,14 @@
 /usr/local/share/unicode/cldr/common/main/wo_SN.xml
 /usr/local/share/unicode/cldr/common/main/xh.xml
 /usr/local/share/unicode/cldr/common/main/xh_ZA.xml
+/usr/local/share/unicode/cldr/common/main/xnr.xml
+/usr/local/share/unicode/cldr/common/main/xnr_IN.xml
 /usr/local/share/unicode/cldr/common/main/xog.xml
 /usr/local/share/unicode/cldr/common/main/xog_UG.xml
 /usr/local/share/unicode/cldr/common/main/yav.xml
 /usr/local/share/unicode/cldr/common/main/yav_CM.xml
 /usr/local/share/unicode/cldr/common/main/yi.xml
-/usr/local/share/unicode/cldr/common/main/yi_001.xml
+/usr/local/share/unicode/cldr/common/main/yi_UA.xml
 /usr/local/share/unicode/cldr/common/main/yo.xml
 /usr/local/share/unicode/cldr/common/main/yo_BJ.xml
 /usr/local/share/unicode/cldr/common/main/yo_NG.xml
@@ -1710,6 +1751,8 @@
 /usr/local/share/unicode/cldr/common/main/yue_Hans_CN.xml
 /usr/local/share/unicode/cldr/common/main/yue_Hant.xml
 /usr/local/share/unicode/cldr/common/main/yue_Hant_HK.xml
+/usr/local/share/unicode/cldr/common/main/za.xml
+/usr/local/share/unicode/cldr/common/main/za_CN.xml
 /usr/local/share/unicode/cldr/common/main/zgh.xml
 /usr/local/share/unicode/cldr/common/main/zgh_MA.xml
 /usr/local/share/unicode/cldr/common/main/zh.xml
@@ -1961,8 +2004,11 @@
 /usr/local/share/unicode/cldr/common/supplemental/windowsZones.xml
 /usr/local/share/unicode/cldr/common/testData/_readme.txt
 /usr/local/share/unicode/cldr/common/testData/localeIdentifiers/_readme.txt
+/usr/local/share/unicode/cldr/common/testData/localeIdentifiers/likelySubtags.txt
 /usr/local/share/unicode/cldr/common/testData/localeIdentifiers/localeCanonicalization.txt
 /usr/local/share/unicode/cldr/common/testData/localeIdentifiers/localeDisplayName.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/_header.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/_readme.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/af.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/am.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ar.txt
@@ -1971,10 +2017,9 @@
 /usr/local/share/unicode/cldr/common/testData/personNameTest/be.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/bg.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/bn.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/br.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/brx.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/bs.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ca.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/chr.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/cs.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/cy.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/da.txt
@@ -1999,7 +2044,6 @@
 /usr/local/share/unicode/cldr/common/testData/personNameTest/fr.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/fr_CA.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ga.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/gaa.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/gd.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/gl.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/gu.txt
@@ -2024,9 +2068,7 @@
 /usr/local/share/unicode/cldr/common/testData/personNameTest/kn.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ko.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/kok.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/ks_Deva.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ky.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/lij.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/lo.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/lt.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/lv.txt
@@ -2042,7 +2084,6 @@
 /usr/local/share/unicode/cldr/common/testData/personNameTest/no.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/or.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/pa.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/pcm.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/pl.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ps.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/pt.txt
@@ -2050,7 +2091,6 @@
 /usr/local/share/unicode/cldr/common/testData/personNameTest/qu.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ro.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ru.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/sat.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/sc.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/sd.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/si.txt
@@ -2064,19 +2104,19 @@
 /usr/local/share/unicode/cldr/common/testData/personNameTest/sr_Latn_BA.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/sv.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/sw.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/syr.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/sw_KE.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ta.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/te.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/tg.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/th.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/ti.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/tk.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/to.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/tr.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/tt.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/uk.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/ur.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/uz.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/vi.txt
-/usr/local/share/unicode/cldr/common/testData/personNameTest/xh.txt
+/usr/local/share/unicode/cldr/common/testData/personNameTest/wo.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/yo.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/yo_BJ.txt
 /usr/local/share/unicode/cldr/common/testData/personNameTest/yue.txt
@@ -2361,9 +2401,9 @@
 /usr/local/share/unicode/cldr/common/testData/transforms/und-Telu-t-und-taml.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/und-fonipa-t-und-fonxsamp.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/und-fonxsamp-t-und-fonipa.txt
-/usr/local/share/unicode/cldr/common/testData/transforms/und-t-d0-ascii.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/und-t-d0-publish.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/und-t-s0-publish.txt
+/usr/local/share/unicode/cldr/common/testData/transforms/und-t-und-latn-d0-ascii.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/ur-t-und-beng.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/ur-t-und-deva.txt
 /usr/local/share/unicode/cldr/common/testData/transforms/ur-t-und-gujr.txt

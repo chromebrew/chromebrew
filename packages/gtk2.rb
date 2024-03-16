@@ -47,6 +47,8 @@ class Gtk2 < Package
   depends_on 'libxdmcp' # R
   depends_on 'sommelier' unless ARCH == 'i686' # L
 
+  gnome
+
   def self.build
     system "#{CREW_ENV_OPTIONS} \
       ./configure #{CREW_OPTIONS} --with-gdktarget=x11"

@@ -1,5 +1,5 @@
-/usr/local/bin/gdialog
 /usr/local/bin/zenity
+/usr/local/share/applications/org.gnome.Zenity.desktop
 /usr/local/share/help/C/zenity/calendar.page
 /usr/local/share/help/C/zenity/color-selection.page
 /usr/local/share/help/C/zenity/entry.page
@@ -828,6 +828,8 @@
 /usr/local/share/help/zh_CN/zenity/text.page
 /usr/local/share/help/zh_CN/zenity/usage.page
 /usr/local/share/help/zh_CN/zenity/warning.page
+/usr/local/share/icons/hicolor/48x48/apps/zenity.png
+/usr/local/share/locale/ab/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/af/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/am/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/ar/LC_MESSAGES/zenity.mo
@@ -918,19 +920,4 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/zenity.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/zenity.mo
-/usr/local/share/man/man1/zenity.1.gz
-/usr/local/share/zenity/clothes/gnome-tshirt.png
-/usr/local/share/zenity/clothes/hawaii-shirt.png
-/usr/local/share/zenity/clothes/monk.png
-/usr/local/share/zenity/clothes/sunglasses.png
-/usr/local/share/zenity/clothes/surfboard.png
-/usr/local/share/zenity/zenity-calendar.png
-/usr/local/share/zenity/zenity-entry.png
-/usr/local/share/zenity/zenity-file.png
-/usr/local/share/zenity/zenity-list.png
-/usr/local/share/zenity/zenity-notification.png
-/usr/local/share/zenity/zenity-progress.png
-/usr/local/share/zenity/zenity-scale.png
-/usr/local/share/zenity/zenity-text.png
-/usr/local/share/zenity/zenity.png
-/usr/local/share/zenity/zenity.ui
+/usr/local/share/man/man1/zenity.1.zst

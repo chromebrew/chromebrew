@@ -1,28 +1,36 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_sudoku < Package
+class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
-  @_ver = '3.38.0'
-  version "#{@_ver}-1"
+  version '46.0'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://download.gnome.org/sources/gnome-sudoku/#{@_ver.rpartition('.')[0]}/gnome-sudoku-#{@_ver}.tar.xz"
-  source_sha256 '38731d0cc6d56a21dbdc89409cc5bb3d08e1c02cd9009f4d57f5b34887e9fd32'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  depends_on 'clutter_gtk'
-  depends_on 'gsound'
-  depends_on 'librsvg'
-  depends_on 'qqwing'
-  depends_on 'sommelier'
+  binary_sha256({
+    aarch64: '312d7f69c755412d68c0996bd3b165714f6140a03e0085d7ee07db72d5481864',
+     armv7l: '312d7f69c755412d68c0996bd3b165714f6140a03e0085d7ee07db72d5481864',
+     x86_64: 'cf7973ad00562200aeb5527ce60cd4747fd737b6a9bc71b03a3e9b687e713ee5'
+  })
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  depends_on 'cairo' # R
+  depends_on 'clutter_gtk' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'graphene' # R
+  depends_on 'gsound' => :build
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'json_glib' # R
+  depends_on 'libadwaita' # R
+  depends_on 'libgee' # R
+  depends_on 'librsvg' => :build
+  depends_on 'pango' # R
+  depends_on 'qqwing' # R
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

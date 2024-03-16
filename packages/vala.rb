@@ -3,7 +3,7 @@ require 'package'
 class Vala < Package
   description 'Vala is a programming language that aims to bring modern programming language features to GNOME developers.'
   homepage 'https://wiki.gnome.org/Projects/Vala'
-  version '0.56.7'
+  version '0.56.16'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vala.git'
@@ -11,20 +11,22 @@ class Vala < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4987cd9bdffb4056e046e81e11600bd7eb38085ce76fc87822b20be2b31aeba6',
-     armv7l: '4987cd9bdffb4056e046e81e11600bd7eb38085ce76fc87822b20be2b31aeba6',
-     x86_64: '55f786136cccd4bc28ed2f28056a09c143fe5acd2d1af6d08fe80bd228e725a2'
+    aarch64: 'b0780c098de6f9a613c2c963e390bcebb5bea73222c345874e62fb4f761bafad',
+     armv7l: 'b0780c098de6f9a613c2c963e390bcebb5bea73222c345874e62fb4f761bafad',
+     x86_64: '58f591a559ad11aa772e3107191136c6c4895ca9372fb917a0f22536acd45401'
   })
 
   depends_on 'autoconf_archive' => :build
   depends_on 'autoconf213' => :build
-  depends_on 'graphviz' unless ARCH.eql?('i686')
-  depends_on 'libxslt'
-  depends_on 'glib'
-  depends_on 'dbus'
+  depends_on 'graphviz' => :build
+  depends_on 'libxslt' => :build
+  depends_on 'glib' => :build
+  depends_on 'dbus' => :build
   depends_on 'glibc' # R
+  depends_on 'glib' # R
 
   git_fetchtags
+  gnome
 
   def self.build
     # Bootstrap vala

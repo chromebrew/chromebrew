@@ -21,6 +21,8 @@ class Cantarell_fonts < Package
   depends_on 'fontconfig' => :build
   depends_on 'graphite' => :build
 
+  gnome
+
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS} \
       -Duseprebuilt=true \

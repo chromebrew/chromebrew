@@ -43,6 +43,7 @@ class Gtk4 < Meson
   depends_on 'libepoxy' # R
   depends_on 'libjpeg' # R
   depends_on 'libpng' # R
+  depends_on 'librsvg' # L
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'libtiff' # R
@@ -72,6 +73,7 @@ class Gtk4 < Meson
   depends_on 'xdg_base' # L
   depends_on 'zlibpkg' # R
 
+  gnome
   no_fhs
 
   def self.patch

@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libcloudproviders PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libcloudproviders/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Libcloudproviders < Package
+class Libcloudproviders < Meson
   description 'DBus API that allows cloud storage sync clients to expose their services'
   homepage 'https://gitlab.gnome.org/World/libcloudproviders'
   version '0.3.1'
@@ -26,14 +26,5 @@ class Libcloudproviders < Package
   depends_on 'glib' # R
   depends_on 'glibc' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

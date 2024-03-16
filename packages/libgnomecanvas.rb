@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgnomecanvas < Package
+class Libgnomecanvas < Autotools
   description 'The GnomeCanvas widget provides a flexible widget for creating interactive structured graphics.'
   homepage 'https://developer.gnome.org/libgnomecanvas/'
   version '2.30.3'
@@ -19,15 +19,7 @@ class Libgnomecanvas < Package
   depends_on 'libart'
   depends_on 'libglade'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--enable-glade'
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-glade'
 end

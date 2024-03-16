@@ -1,9 +1,9 @@
 # Adapted from Arch Linux libgrss PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/libgrss/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgrss < Package
+class Libgrss < Autotools
   description 'Glib-based library to manage RSS and Atom feeds'
   homepage 'https://wiki.gnome.org/Projects/Libgrss'
   version '0.7.0-ce58'
@@ -24,16 +24,5 @@ class Libgrss < Package
   depends_on 'gtk_doc' => :build
   depends_on 'libsoup'
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  gnome
 end

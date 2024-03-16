@@ -1,22 +1,19 @@
-# Not supported on 32-bit architectures.
-
 require 'package'
 
 class Svt_av1 < Package
   description 'Scalable Video Technology AV1 encoder and decoder'
   homepage 'https://gitlab.com/AOMediaCodec/SVT-AV1'
-  version '1.3.0'
+  version '2.0.0'
   license 'BSD-2, Apache-2.0, BSD, ISC, MIT and LGPG-2.1+'
-  compatibility 'all'
-  source_url "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v#{version}/SVT-AV1-v#{version}.tar.bz2"
-  source_sha256 'f85fd13ef16880550e425797bdfdf1b0ba310c21d6b343f74ea79dd2fbb2336e'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.com/AOMediaCodec/SVT-AV1.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7c6836c93f395230a1c24f6c609088a1170f6b24de4290a77c2990813e989ebf',
-     armv7l: '7c6836c93f395230a1c24f6c609088a1170f6b24de4290a77c2990813e989ebf',
-       i686: '9ef3163f101f69f43483a96f885165eb4ab90f163b61de103e0b209b48eac52b',
-     x86_64: '5fd98c6acf559d5abb827610d4b0d212a8f8d0ee518ebe97877bab06e6222ac0'
+    aarch64: '6252e978f095cd4657727731e8223ccef315a5eec8926b9f748eaa34fd41cabc',
+     armv7l: '6252e978f095cd4657727731e8223ccef315a5eec8926b9f748eaa34fd41cabc',
+     x86_64: 'c0e20fc16251760a043b98967055dcaad9088bcb979f73602750913b7f321c43'
   })
 
   depends_on 'nasm' => :build

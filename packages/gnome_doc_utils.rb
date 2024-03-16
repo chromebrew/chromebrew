@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_doc_utils < Package
+class Gnome_doc_utils < Autotools
   description 'Gnome Documentation Utilities'
   homepage 'https://github.com/GNOME/gnome-doc-utils'
   version '0.20.10'
@@ -19,12 +19,5 @@ class Gnome_doc_utils < Package
 
   depends_on 'rarian'
 
-  def self.build
-    system "./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

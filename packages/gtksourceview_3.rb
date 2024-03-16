@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gtksourceview_3 < Package
+class Gtksourceview_3 < Autotools
   description 'Source code editing widget'
   homepage 'https://wiki.gnome.org/Projects/GtkSourceView'
   version '3.24.11'
@@ -38,12 +38,7 @@ class Gtksourceview_3 < Package
   depends_on 'vulkan_icd_loader' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} --enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html'
 end

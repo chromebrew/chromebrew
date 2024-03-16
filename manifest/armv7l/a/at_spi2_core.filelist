@@ -30,6 +30,7 @@
 /usr/local/include/at-spi-2.0/atspi/atspi-text.h
 /usr/local/include/at-spi-2.0/atspi/atspi-types.h
 /usr/local/include/at-spi-2.0/atspi/atspi-value.h
+/usr/local/include/at-spi-2.0/atspi/atspi-version.h
 /usr/local/include/at-spi-2.0/atspi/atspi.h
 /usr/local/include/at-spi2-atk/2.0/atk-bridge.h
 /usr/local/include/atk-1.0/atk/atk-autocleanups.h
@@ -73,7 +74,7 @@
 /usr/local/lib/gtk-2.0/modules/libatk-bridge.so
 /usr/local/lib/libatk-1.0.so
 /usr/local/lib/libatk-1.0.so.0
-/usr/local/lib/libatk-1.0.so.0.24809.1
+/usr/local/lib/libatk-1.0.so.0.25200.1
 /usr/local/lib/libatk-bridge-2.0.so
 /usr/local/lib/libatk-bridge-2.0.so.0
 /usr/local/lib/libatk-bridge-2.0.so.0.0.0

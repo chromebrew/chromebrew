@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Geocode_glib2 < Package
+class Geocode_glib2 < Meson
   description 'Helper library for geocoding services'
   homepage 'https://gitlab.gnome.org/GNOME/geocode-glib'
   version '3.26.4'
@@ -25,17 +25,13 @@ class Geocode_glib2 < Package
   depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
 
+  gnome
+
   def self.patch
     system "sed -i 's/gnome/Adwaita/' icons/meson.build"
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dsoup2=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  meson_options '-Dsoup2=false'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"

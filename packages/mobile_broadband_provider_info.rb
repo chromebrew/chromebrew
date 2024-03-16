@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Mobile_broadband_provider_info < Package
+class Mobile_broadband_provider_info < Autotools
   description 'Network Management daemon'
   homepage 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info'
   version '20201225'
@@ -19,15 +19,5 @@ class Mobile_broadband_provider_info < Package
 
   depends_on 'libxslt'
 
-  def self.build
-    system 'NOCONFIGURE=1 ./autogen.sh'
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-flto=auto' LDFLAGS='-flto=auto' \
-      ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  gnome
 end

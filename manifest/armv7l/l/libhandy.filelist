@@ -1,4 +1,3 @@
-/usr/local/bin/handy-1-demo
 /usr/local/include/libhandy-1/handy.h
 /usr/local/include/libhandy-1/hdy-action-row.h
 /usr/local/include/libhandy-1/hdy-animation.h
@@ -43,10 +42,12 @@
 /usr/local/include/libhandy-1/hdy-window-handle.h
 /usr/local/include/libhandy-1/hdy-window.h
 /usr/local/lib/girepository-1.0/Handy-1.typelib
+/usr/local/lib/glade/modules/libglade-handy-1.so
 /usr/local/lib/libhandy-1.so
 /usr/local/lib/libhandy-1.so.0
 /usr/local/lib/pkgconfig/libhandy-1.pc
 /usr/local/share/gir-1.0/Handy-1.gir
+/usr/local/share/glade/catalogs/libhandy-1.xml
 /usr/local/share/locale/ca/LC_MESSAGES/libhandy.mo
 /usr/local/share/locale/cs/LC_MESSAGES/libhandy.mo
 /usr/local/share/locale/de/LC_MESSAGES/libhandy.mo

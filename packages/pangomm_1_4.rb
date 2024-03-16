@@ -26,5 +26,7 @@ class Pangomm_1_4 < Meson
   depends_on 'mm_common' => :build
   depends_on 'pango' # R
 
+  gnome
+
   meson_options '-Dbuild-documentation=false'
 end

@@ -7,7 +7,7 @@
 /usr/local/lib/girepository-1.0/GCab-1.0.typelib
 /usr/local/lib/libgcab-1.0.so
 /usr/local/lib/libgcab-1.0.so.0
-/usr/local/lib/libgcab-1.0.so.0.2.0
+/usr/local/lib/libgcab-1.0.so.0.3.0
 /usr/local/lib/pkgconfig/libgcab-1.0.pc
 /usr/local/share/gir-1.0/GCab-1.0.gir
 /usr/local/share/locale/bs/LC_MESSAGES/gcab.mo
@@ -45,4 +45,4 @@
 /usr/local/share/locale/tr/LC_MESSAGES/gcab.mo
 /usr/local/share/locale/uk/LC_MESSAGES/gcab.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/gcab.mo
-/usr/local/share/man/man1/gcab.1.gz
+/usr/local/share/man/man1/gcab.1.zst

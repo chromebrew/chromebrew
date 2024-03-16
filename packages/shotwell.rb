@@ -14,8 +14,6 @@ class Shotwell < Meson
     x86_64: '264115379b4912399f66a9ee732c9cfabb682bb9d762c73e129add22f26d5146'
   })
 
-  print_source_bashrc
-
   depends_on 'vala' => :build
   depends_on 'cairo' # R
   depends_on 'gcr' # R
@@ -38,4 +36,6 @@ class Shotwell < Meson
   depends_on 'py3_libxml2' # R
   depends_on 'sqlite' # R
   depends_on 'webkit2gtk' # R
+
+  gnome
 end

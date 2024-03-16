@@ -22,4 +22,6 @@ class Glib_networking < Meson
   depends_on 'gnutls' # R
   depends_on 'gsettings_desktop_schemas'
   depends_on 'libproxy'
+
+  gnome
 end

@@ -37,11 +37,12 @@
 /usr/local/include/libgladeui-2.0/gladeui/glade-xml-utils.h
 /usr/local/include/libgladeui-2.0/gladeui/glade.h
 /usr/local/lib/girepository-1.0/Gladeui-2.0.typelib
+/usr/local/lib/glade/modules/libgladegjs.so
 /usr/local/lib/glade/modules/libgladegtk.so
 /usr/local/lib/glade/modules/libgladepython.so
 /usr/local/lib/libgladeui-2.so
 /usr/local/lib/libgladeui-2.so.13
-/usr/local/lib/libgladeui-2.so.13.0.2
+/usr/local/lib/libgladeui-2.so.13.1.0
 /usr/local/lib/pkgconfig/gladeui-2.0.pc
 /usr/local/share/applications/org.gnome.Glade.desktop
 /usr/local/share/gettext/its/glade-catalog.its
@@ -443,6 +444,7 @@
 /usr/local/share/icons/hicolor/scalable/apps/org.gnome.Glade.svg
 /usr/local/share/icons/hicolor/symbolic/apps/glade-brand-symbolic.svg
 /usr/local/share/icons/hicolor/symbolic/apps/org.gnome.Glade-symbolic.svg
+/usr/local/share/locale/ab/LC_MESSAGES/glade.mo
 /usr/local/share/locale/ar/LC_MESSAGES/glade.mo
 /usr/local/share/locale/ast/LC_MESSAGES/glade.mo
 /usr/local/share/locale/az/LC_MESSAGES/glade.mo
@@ -475,6 +477,7 @@
 /usr/local/share/locale/id/LC_MESSAGES/glade.mo
 /usr/local/share/locale/it/LC_MESSAGES/glade.mo
 /usr/local/share/locale/ja/LC_MESSAGES/glade.mo
+/usr/local/share/locale/ka/LC_MESSAGES/glade.mo
 /usr/local/share/locale/kk/LC_MESSAGES/glade.mo
 /usr/local/share/locale/km/LC_MESSAGES/glade.mo
 /usr/local/share/locale/ko/LC_MESSAGES/glade.mo

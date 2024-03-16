@@ -28,6 +28,7 @@ class Balena_etcher < Package
   depends_on 'xhost'
   depends_on 'sommelier'
 
+  gnome
   no_compile_needed
   no_shrink
 

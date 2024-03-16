@@ -39,19 +39,7 @@ class Dia < Meson
   depends_on 'swig1' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
-    system "#{@mold_linker_prefix_cmd} meson setup -Ddoc=false #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    @counter = 1
-    @counter_max = 20
-    loop do
-      break if Kernel.system "ninja -C builddir -j #{CREW_NPROC}"
+  gnome
 
-      puts "Make iteration #{@counter} of #{@counter_max}...".orange
-
-      @counter += 1
-      break if @counter > @counter_max
-    end
-  end
+  meson_options '-Ddoc=false'
 end

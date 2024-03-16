@@ -53,9 +53,8 @@ class Caja < Autotools
   depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
 
+  gnome
+
   configure_options '--enable-wayland'
 
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
 end

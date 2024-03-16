@@ -150,7 +150,7 @@
 /usr/local/share/locale/zh_HK/LC_MESSAGES/nautilus.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/nautilus.mo
 /usr/local/share/locale/zu/LC_MESSAGES/nautilus.mo
-/usr/local/share/metainfo/org.gnome.Nautilus.appdata.xml
+/usr/local/share/metainfo/org.gnome.Nautilus.metainfo.xml
 /usr/local/share/nautilus/ontology/nautilus.description
 /usr/local/share/nautilus/ontology/nautilus.ontology
 /usr/local/share/tracker3/domain-ontologies/org.gnome.Nautilus.domain.rule

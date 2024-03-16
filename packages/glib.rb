@@ -11,14 +11,15 @@ class Glib < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '51156b4b2f9528ac1214cab16363af56db9f3889b0d468705329f4502985b71e',
-     armv7l: '51156b4b2f9528ac1214cab16363af56db9f3889b0d468705329f4502985b71e',
+    aarch64: '873ece37b177e99afc33e0aeb078f84753194a055330ea6db3f7d45720cf705f',
+     armv7l: '873ece37b177e99afc33e0aeb078f84753194a055330ea6db3f7d45720cf705f',
        i686: '8d5c84282eb479f7afeb1e312866fcc6eca37ee2a1aba578d8a554e66cf6a3e2',
-     x86_64: '01138ea4b0ca4d1693135a7f066406b8c9eedd686cdf9e6aa566601502bc89a9'
+     x86_64: '69ccb81979e4d8837289f11d2142878c9823b4386128c78ef5f251284b20954e'
   })
 
   depends_on 'elfutils' # R
   depends_on 'gcc_lib' # R
+  depends_on 'gobject_introspection' unless ARCH == 'i686' # L
   depends_on 'libffi' # R
   depends_on 'pcre2' # R
   depends_on 'py3_pygments' => :build
@@ -26,6 +27,7 @@ class Glib < Meson
   depends_on 'util_linux' # R
   depends_on 'zlibpkg' # R
 
+  gnome
   no_strip if %w[aarch64 armv7l].include? ARCH
 
   meson_options '-Dselinux=disabled \

@@ -22,7 +22,7 @@ class Gdk_pixbuf < Package
   depends_on 'harfbuzz' # R
   depends_on 'libjpeg' # R
   depends_on 'libtiff' # R
-  depends_on 'libwebp' unless ARCH.eql?('i686')
+  depends_on 'libwebp' # R
   depends_on 'pango' => :build
   depends_on 'py3_docutils' => :build
   depends_on 'py3_gi_docgen' => :build
@@ -35,6 +35,8 @@ class Gdk_pixbuf < Package
   depends_on 'glibc' # R
   depends_on 'libpng' # R
   depends_on 'zlibpkg' # R
+
+  gnome
 
   def self.build
     system "mold -run meson setup #{CREW_MESON_OPTIONS} \
@@ -62,11 +64,5 @@ class Gdk_pixbuf < Package
       export GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache
     GDK_PIXBUF_ENV_EOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/gdk_pixbuf", @gdk_pixbuf_env)
-  end
-
-  def self.postinstall
-    system "env GDK_PIXBUF_MODULEDIR=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders \
-      GDK_PIXBUF_MODULE_FILE=#{CREW_LIB_PREFIX}/gdk-pixbuf-2.0/2.10.0/loaders.cache \
-      LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} gdk-pixbuf-query-loaders --update-cache"
   end
 end

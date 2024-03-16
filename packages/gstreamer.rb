@@ -122,6 +122,7 @@ class Gstreamer < Meson
   depends_on 'zlibpkg' # R
   depends_on 'zvbi' # R
 
+  gnome
   no_lto
 
   # conflicts_ok # conflicts with orc, gst_plugins_{base,bad}

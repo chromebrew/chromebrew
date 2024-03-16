@@ -1,32 +1,34 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_docking_library < Package
+class Gnome_docking_library < Autotools
   description 'GUsb is a GObject wrapper for libusb1'
   homepage 'https://www.gnome.org/'
-  version '3.28.0-0'
+  version '3.40.0'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/GNOME/gdl/archive/GDL_3_28_0.tar.gz'
-  source_sha256 '14e4691026eb459ce1f65addce706eed1b2f61ef48fd6e59d72509337e87d14b'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.gnome.org/GNOME/gdl.git'
+  git_hashtag "GDL_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '666e943121c47a202f5de8800c00226b917dbbbe75d0ba8b9dacba68f0f9ad41',
-     armv7l: '666e943121c47a202f5de8800c00226b917dbbbe75d0ba8b9dacba68f0f9ad41',
-     x86_64: '94341d3b3ea28e34a48e0610996901a9c1905f98b7fa0063c0f4938b27c337ed'
+    aarch64: '7db8bf37bb50aad29887aa5193c57877cc891fc9ae97db16c58413b95831379a',
+     armv7l: '7db8bf37bb50aad29887aa5193c57877cc891fc9ae97db16c58413b95831379a',
+     x86_64: 'ed0585ee570743d2a03f347cd164dca608cf52b257d4c13c5d68512b5b6dc2b6'
   })
 
-  depends_on 'gtk_doc'
-  depends_on 'gtk3'
-  depends_on 'libxml2'
-  depends_on 'gnome_common'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnome_common' => :build
+  depends_on 'gtk3' # R
+  depends_on 'gtk_doc' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
+  depends_on 'libxml2' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
-  def self.build
-    system "./autogen.sh --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  gnome
 end

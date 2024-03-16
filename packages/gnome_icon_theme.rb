@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_icon_theme < Package
+class Gnome_icon_theme < Autotools
   description 'GNOME Icon Theme'
   homepage 'https://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme/'
   version '3.12.0-1'
@@ -20,14 +20,7 @@ class Gnome_icon_theme < Package
   depends_on 'gtk2' => :build
   depends_on 'icon_naming_utils'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           '--enable-icon-mapping'
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--enable-icon-mapping'
 end
