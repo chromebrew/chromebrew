@@ -20,6 +20,7 @@
 /usr/local/include/tepl-5/tepl/tepl-metadata.h
 /usr/local/include/tepl-5/tepl/tepl-notebook.h
 /usr/local/include/tepl-5/tepl/tepl-panel.h
+/usr/local/include/tepl-5/tepl/tepl-space-drawer-prefs.h
 /usr/local/include/tepl-5/tepl/tepl-statusbar.h
 /usr/local/include/tepl-5/tepl/tepl-style-scheme-chooser-widget.h
 /usr/local/include/tepl-5/tepl/tepl-tab-group.h
