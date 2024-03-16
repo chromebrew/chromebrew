@@ -14,9 +14,9 @@ class GnomePostinstall
   def self.run
     @gnome_packages.sort!.uniq!
     if @gnome_packages.size < 2
-      puts "Running Gnome post_installs for #{@gnome_packages.join(', ')} .".orange
+      puts "Running Gnome post_installs for #{@gnome_packages.join(', ')}.".orange
     else
-      puts "Running Gnome post_installs for #{@gnome_packages.take(@gnome_packages.size - 1).join(', ')}, and #{@gnome_packages.last.join(', ')} .".orange
+      puts "Running Gnome post_installs for #{@gnome_packages.take(@gnome_packages.size - 1).join(', ')}, and #{@gnome_packages.last.join(', ')}.".orange
     end
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas" if File.file?("#{CREW_PREFIX}/bin/glib-compile-schemas")
     system "gio-querymodules #{CREW_LIB_PREFIX}/gio/modules" if File.file?("#{CREW_PREFIX}/bin/gio-querymodules")
