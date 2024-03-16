@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_settings_daemon < Meson
   description 'GNOME Settings Daemon'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
-  version '43.0'
+  version '46.rc'
   license 'GPL-2+ and LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l' # not compatible with i686 upstream
   source_url 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon.git'
@@ -16,47 +16,52 @@ class Gnome_settings_daemon < Meson
      x86_64: '97ba6e1783736d5ea0046ea1e4a2e441a91c2921ba87d2ab11727d3bdb0ad1ef'
   })
 
-  depends_on 'colord'
-  depends_on 'dconf'
-  depends_on 'gnome_desktop'
-  depends_on 'gsettings_desktop_schemas'
-  depends_on 'libcanberra'
-  depends_on 'libnotify'
+  depends_on 'colord' => :build
+  depends_on 'dconf' => :build
+  depends_on 'gnome_desktop' => :build
+  depends_on 'gsettings_desktop_schemas' => :build
+  depends_on 'libcanberra' => :build
+  depends_on 'libnotify' => :build
   depends_on 'libxfixes' # R
   depends_on 'libxslt' => :build
   depends_on 'networkmanager' => :build
   depends_on 'nss' => :build
   depends_on 'docbook_xsl' => :build
-  depends_on 'geocode_glib'
-  depends_on 'polkit'
-  depends_on 'upower'
-  depends_on 'libgweather'
-  depends_on 'elogind'
-  depends_on 'geoclue'
-  depends_on 'gcr'
-  depends_on 'upower' # R
-  depends_on 'alsa_lib' # R
-  depends_on 'cups' # R
-  depends_on 'gcr_4' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'glib' # R
-  depends_on 'glibc' # R
-  depends_on 'gtk3' # R
-  depends_on 'harfbuzz' # R
-  depends_on 'libgudev' # R
-  depends_on 'libwacom' # R
-  depends_on 'libx11' # R
-  depends_on 'libxext' # R
-  depends_on 'libxi' # R
-  depends_on 'modemmanager' # R
-  depends_on 'networkmanager' # R
-  depends_on 'nss' # R
-  depends_on 'pango' # R
-  depends_on 'pulseaudio' # R
-  depends_on 'wayland' # R
+  depends_on 'geocode_glib' => :build
+  depends_on 'polkit' => :build
+  depends_on 'upower' => :build
+  depends_on 'libgweather' => :build
+  depends_on 'elogind' => :build
+  depends_on 'geoclue' => :build
+  depends_on 'gcr' => :build
+  depends_on 'upower' => :build
+  depends_on 'alsa_lib' => :build
+  depends_on 'cups' => :build
+  depends_on 'gcr_4' => :build
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'glib' => :build
+  depends_on 'glibc' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'harfbuzz' => :build
+  depends_on 'libgudev' => :build
+  depends_on 'libwacom' => :build
+  depends_on 'libx11' => :build
+  depends_on 'libxext' => :build
+  depends_on 'libxi' => :build
+  depends_on 'modemmanager' => :build
+  depends_on 'networkmanager' => :build
+  depends_on 'nss' => :build
+  depends_on 'pango' => :build
+  depends_on 'pulseaudio' => :build
+  depends_on 'wayland' => :build
 
   gnome
 
   meson_options '-Dsystemd=false \
     -Dcolord=false'
+    
+  def self.patch
+    system "sed -i '/libsystemd_dep/d' meson.build"
+    system "sed -i '/libsystemd_dep/d' plugins/sharing/meson.build"
+  end
 end
