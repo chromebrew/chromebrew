@@ -11,25 +11,37 @@ class Gnome_keyring < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
-      armv7l: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
-      x86_64: '9fddad7d70acf21d5a6a2700400762e5b46ebd43413be6cd2db96eba2f9c8048'
+    aarch64: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
+      armv7l: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
+      x86_64: 'ea6a16c27a7b38a967e2ea62ecb72a5b597460234b98a14581db62357ca60df9'
   })
 
-  depends_on 'gcr' => :build
-  depends_on 'libcap' => :build
-  depends_on 'libcap_ng' => :build
-  depends_on 'linux_pam' => :build
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'dconf' => :build
-  depends_on 'gcr' => :build
   depends_on 'docbook_xsl' => :build
-  depends_on 'glib' => :build
+  depends_on 'gcr_3' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libcap' => :build
+  depends_on 'libcap_ng' # R
+  depends_on 'libeconf' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
   depends_on 'libxslt' => :build
+  depends_on 'linux_pam' # R
   depends_on 'openssh' => :build
+  depends_on 'p11kit' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
   gnome
 
   configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
+    --disable-selinux \
     --disable-schemas-compile \
     --disable-doc" # Docs cannot be used due to #4275
 end

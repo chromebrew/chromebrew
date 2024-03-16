@@ -11,23 +11,22 @@ class Gnome_calculator < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a6e5f0667f8ab02634ee3ff321155dc92dac7a974f9e20c4e9aa3c2c34dd1994',
-     armv7l: 'a6e5f0667f8ab02634ee3ff321155dc92dac7a974f9e20c4e9aa3c2c34dd1994',
-     x86_64: '414afd75da3ffda9b37f3eddfc892686461ea174cce752017113700bdd76ec33'
+    aarch64: '82d67a2384b1e6765c69f5bd745059ee875a0e379789939e11a58c0233531bdc',
+     armv7l: '82d67a2384b1e6765c69f5bd745059ee875a0e379789939e11a58c0233531bdc',
+     x86_64: '38498259c4dd6b93519602c295304c110d01b8317bb6ad4f69c8ec40c180bc3e'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gtk3' => :build
+  depends_on 'gnome_text_editor' # R
   depends_on 'gtk4' # R
   depends_on 'gtksourceview_5' # R
-  depends_on 'gtksourceview' => :build
   depends_on 'itstool' => :build
   depends_on 'libadwaita' # R
-  depends_on 'libgee' => :build
+  depends_on 'libgee' # R
   depends_on 'libhandy' => :build
-  depends_on 'libsoup' => :build
+  depends_on 'libsoup' # R
   depends_on 'libxml2' # R
   depends_on 'mpc' # R
   depends_on 'mpfr' # R

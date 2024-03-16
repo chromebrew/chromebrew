@@ -16,11 +16,11 @@ class Glade < Meson
      x86_64: 'dbcb4a1241c37e8b0efeee2df19e3beb4e7f4ff8e980ba05ee5dbd1f4cd7d282'
   })
 
-  depends_on 'gtk3'
-  depends_on 'libxml2'
-  depends_on 'gobject_introspection'
-  depends_on 'pygobject'
-  depends_on 'graphite'
+  depends_on 'gtk3' => :build
+  depends_on 'libxml2' => :build
+  depends_on 'gobject_introspection' => :build
+  depends_on 'pygobject' => :build
+  depends_on 'graphite' => :build
 
   gnome
 
