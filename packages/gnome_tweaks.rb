@@ -10,6 +10,8 @@ class Gnome_tweaks < Meson
   source_url 'https://gitlab.gnome.org/GNOME/gnome-tweaks.git'
   git_hashtag @_ver
   binary_compression 'tar.zst'
+  
+  deprecated
 
   binary_sha256({
     aarch64: '5c5e766fab885a047e4b5bc91b72da3d84844584935e19197ff2da4ac1320e69',
