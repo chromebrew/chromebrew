@@ -11,9 +11,9 @@ class Gnome_weather < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f90c5fb9bb00e103e66017515f5b0206dc1baeb2650e329c16f4a20bde827ab5',
-     armv7l: 'f90c5fb9bb00e103e66017515f5b0206dc1baeb2650e329c16f4a20bde827ab5',
-     x86_64: '6c388c10b42fdf5e9e59cdf373b9aa0340bd991107886543c873f7d6a8b281d9'
+    aarch64: '666624e236a5bdeb5cf5babd00e521a8e647158bf97d3d83e5ccae37e40bf23c',
+     armv7l: '666624e236a5bdeb5cf5babd00e521a8e647158bf97d3d83e5ccae37e40bf23c',
+     x86_64: '5a4811dfc9fcdfc77908302ddab627d153873780296f3d51e534f739198c74c0'
   })
 
   depends_on 'gtk3' => :build
@@ -26,6 +26,4 @@ class Gnome_weather < Meson
   depends_on 'libhandy' => :build
 
   gnome
-
-  meson_options '-Dsystemd=disabled'
 end
