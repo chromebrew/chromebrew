@@ -3,12 +3,12 @@ require 'buildsystems/meson'
 class Glade < Meson
   description 'User Interface Builder for GTK+ applications'
   homepage 'https://wiki.gnome.org/Apps/Glade'
-  version '3.38.2'
+  version '3.40.0'
   license 'GPL-2+ and LDF-1.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.gnome.org/sources/glade/3.38/glade-3.38.2.tar.xz'
-  source_sha256 '98fc87647d88505c97dd2f30f2db2d3e9527515b3af11694787d62a8d28fbab7'
-  binary_compression 'tar.xz'
+  source_url 'https://gitlab.gnome.org/GNOME/glade.git'
+  git_hashtag "GLADE_#{version.gsub('.', '_')}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '2cd59ac4b9b4fc83e227471d8134cf16953b910d54741469a35c8633e015c76e',

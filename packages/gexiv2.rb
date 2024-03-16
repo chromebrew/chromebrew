@@ -6,8 +6,8 @@ class Gexiv2 < Meson
   version '0.14.0'
   license 'LGPL-2.1+ and GPL-2'
   compatibility 'all'
-  source_url "https://download.gnome.org/sources/gexiv2/#{version.rpartition('.')[0]}/gexiv2-#{version}.tar.xz"
-  source_sha256 'e58279a6ff20b6f64fa499615da5e9b57cf65ba7850b72fafdf17221a9d6d69e'
+  source_url 'https://gitlab.gnome.org/GNOME/gexiv2.git'
+  git_hashtag "gexiv2-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -17,8 +17,8 @@ class Gexiv2 < Meson
      x86_64: '1a1f1d403dd3f65e8d84001a8cefb35ec7ab42fcf1dc865181221d8dacaa3c76'
   })
 
-  depends_on 'libexiv2'
-  depends_on 'gobject_introspection'
+  depends_on 'libexiv2' => :build
+  depends_on 'gobject_introspection' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
   depends_on 'glibc' # R
