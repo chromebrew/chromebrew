@@ -20,10 +20,11 @@ class Gfbgraph < Autotools
   depends_on 'rest' => :build
   depends_on 'json_glib' => :build
   depends_on 'gobject_introspection' => :build
+  depends_on 'gtk_doc' => :build
 
   gnome
 
-  configure_options '--disable-gtk-doc \
+  configure_options '--enable-gtk-doc \
     --enable-introspection'
 
   def self.install

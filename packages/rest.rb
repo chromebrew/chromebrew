@@ -6,8 +6,8 @@ class Rest < Meson
   version '0.9.1'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/librest/-/archive/#{version}/librest-#{version}.tar.bz2"
-  source_sha256 '5c39f6696b271194546880e0f360e21496b2882f72e4bb85433125de98fce03a'
+  source_url "https://gitlab.gnome.org/GNOME/librest.git"
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({

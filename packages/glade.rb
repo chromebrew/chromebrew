@@ -11,16 +11,24 @@ class Glade < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2cd59ac4b9b4fc83e227471d8134cf16953b910d54741469a35c8633e015c76e',
-     armv7l: '2cd59ac4b9b4fc83e227471d8134cf16953b910d54741469a35c8633e015c76e',
-     x86_64: 'dbcb4a1241c37e8b0efeee2df19e3beb4e7f4ff8e980ba05ee5dbd1f4cd7d282'
+    aarch64: '6244532cb9c96dab0ef73f4fc45b5e94a45662759c5afb2b85ea4e0a8e2d56fb',
+     armv7l: '6244532cb9c96dab0ef73f4fc45b5e94a45662759c5afb2b85ea4e0a8e2d56fb',
+     x86_64: '5c6932296deea1924fb65aeaf475e68df020df6484cc42371627491e4c47bc16'
   })
 
-  depends_on 'gtk3' => :build
-  depends_on 'libxml2' => :build
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'gjs' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'pygobject' => :build
   depends_on 'graphite' => :build
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libxml2' # R
+  depends_on 'pango' # R
+  depends_on 'pygobject' => :build
+  depends_on 'python3' # R
 
   gnome
 
