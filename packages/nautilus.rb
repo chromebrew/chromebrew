@@ -56,7 +56,6 @@ class Nautilus < Meson
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
 
-
   gnome
 
   meson_options '-Ddocs=false \
