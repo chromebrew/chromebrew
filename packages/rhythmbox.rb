@@ -16,15 +16,15 @@ class Rhythmbox < Autotools
      x86_64: '36c0657e604a4692c3a5a672e4f45b64ce3b275a58116e72269f68cb68677b63'
   })
 
-  depends_on 'gtk3'
-  depends_on 'gst_plugins_base'
-  depends_on 'libpeas'
-  depends_on 'totem_pl_parser'
-  depends_on 'sommelier'
+  depends_on 'gtk3' => :build
+  depends_on 'gst_plugins_base' => :build
+  depends_on 'libpeas' => :build
+  depends_on 'totem_pl_parser' => :build
+  depends_on 'sommelier' => :build
 
   gnome
 
   def self.postinstall
-    puts "\nType 'rhythmbox' to get started.\n".lightblue
+    ExitMessage.add "Type 'rhythmbox' to get started.".lightblue
   end
 end

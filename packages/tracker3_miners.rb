@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Tracker3_miners < Meson
   description 'Collection of data extractors for Tracker/Nepomuk'
   homepage 'https://wiki.gnome.org/Projects/Tracker'
-  version '3.6.1'
+  version '3.6.2'
   license 'GPLv2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/tracker-miners.git'
@@ -21,14 +21,14 @@ class Tracker3_miners < Meson
 
   depends_on 'asciidoc' => :build
   depends_on 'exempi' # R
-  depends_on 'gcc_lib' # R
+  depends_on 'gcc_lib' => :build
+  depends_on 'gexiv2' # R
   depends_on 'giflib' # R
-  depends_on 'glibc_lib' # R
+  depends_on 'glibc_lib' => :build
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R
   depends_on 'icu4c' # R
-  depends_on 'libcue' => :build
   depends_on 'libcue' # R
   depends_on 'libexif' # R
   depends_on 'libgrss' # R

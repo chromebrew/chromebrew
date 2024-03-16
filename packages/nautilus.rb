@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Nautilus < Meson
   description 'Default file manager for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Files'
-  version '44.2'
+  version '46.rc'
   license 'GPLv3'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/nautilus.git'
@@ -20,36 +20,38 @@ class Nautilus < Meson
   })
 
   depends_on 'appstream_glib' => :build
-  depends_on 'at_spi2_core' # R
-  depends_on 'cairo' # R
+  depends_on 'at_spi2_core' => :build
+  depends_on 'cairo' => :build
   depends_on 'dconf' => :build
-  depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' # R
-  depends_on 'gexiv2' # R
-  depends_on 'glibc' # R
-  depends_on 'glib' # R
-  depends_on 'gnome_autoar' # R
-  depends_on 'gnome_desktop' # R
+  depends_on 'desktop_file_utils' => :build
+  depends_on 'gcc_lib' => :build
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'gexiv2' => :build
+  depends_on 'glibc' => :build
+  depends_on 'glib' => :build
+  depends_on 'gnome_autoar' => :build
+  depends_on 'gnome_desktop' => :build
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene' # R
-  depends_on 'gstreamer' # R
-  depends_on 'gtk3' # R
-  depends_on 'gtk4' # R
+  depends_on 'graphene' => :build
+  depends_on 'gstreamer' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'gtk4' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'gvfs' => :build
-  depends_on 'harfbuzz' # R
-  depends_on 'libadwaita' # R
-  depends_on 'libarchive' # R
-  depends_on 'libcloudproviders' # R
-  depends_on 'libhandy' # R
+  depends_on 'harfbuzz' => :build
+  depends_on 'iso_codes' => :build
+  depends_on 'libadwaita' => :build
+  depends_on 'libarchive' => :build
+  depends_on 'libcloudproviders' => :build
+  depends_on 'libhandy' => :build
   depends_on 'libjpeg' => :build
-  depends_on 'libportal' # R
-  depends_on 'libxml2' # R
-  depends_on 'pango' # R
-  depends_on 'tracker3_miners'
-  depends_on 'tracker3' # R
+  depends_on 'libportal' => :build
+  depends_on 'libxml2' => :build
+  depends_on 'pango' => :build
+  depends_on 'tracker3_miners' => :build
+  depends_on 'tracker3' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
+  depends_on 'vulkan_icd_loader' => :build
 
   gnome
 

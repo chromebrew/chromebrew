@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gexiv2 < Meson
   description 'gexiv2 is a GObject wrapper around the Exiv2 photo metadata library.'
   homepage 'https://wiki.gnome.org/Projects/gexiv2/'
-  version '0.14.0'
+  version '0.14.2'
   license 'LGPL-2.1+ and GPL-2'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/gexiv2.git'
