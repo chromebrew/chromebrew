@@ -10,6 +10,8 @@ class Gnome_settings_daemon < Package
   git_hashtag version
   binary_compression 'tar.zst'
 
+  deprecated
+
   binary_sha256({
     aarch64: 'deaf3ac2235aa02689caeb7bc4ff86d341e37101da32f9714af0e54049ebb22d',
      armv7l: 'deaf3ac2235aa02689caeb7bc4ff86d341e37101da32f9714af0e54049ebb22d',
