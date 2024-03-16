@@ -14,9 +14,9 @@ class Tracker3_miners < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '804efabc8139f777cd44c4fe5c61d33da4e9db56c81123119adf18e7c7455dd3',
-     armv7l: '804efabc8139f777cd44c4fe5c61d33da4e9db56c81123119adf18e7c7455dd3',
-     x86_64: '808e021c1c9c8fdd11792505ac551da9ffbfcb4dd632af4a8f03e4ea86817c90'
+    aarch64: 'fdc3d16188f3438d9af21fe4b321caa44143530ef775a655754f55e39940f989',
+     armv7l: 'fdc3d16188f3438d9af21fe4b321caa44143530ef775a655754f55e39940f989',
+     x86_64: '1486965568cb0e533eb87078efc3e6621b8553b8823ac054dd05f8d051bd0baa'
   })
 
   depends_on 'asciidoc' => :build

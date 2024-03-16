@@ -11,10 +11,10 @@ class Gexiv2 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'ab994a2e5b9354599f4603e16091b4503ea375bb805f25edc5bee32fa3655c43',
-     armv7l: 'ab994a2e5b9354599f4603e16091b4503ea375bb805f25edc5bee32fa3655c43',
+    aarch64: 'a4ac4c82e1abb0286af73a5d68e60e670ffa3782e136744d8c8336c7a89e22e1',
+     armv7l: 'a4ac4c82e1abb0286af73a5d68e60e670ffa3782e136744d8c8336c7a89e22e1',
        i686: 'f30043519e9bfd162de74b32c1b788d7876eaf9a03b3dfdcd384fda40455ea84',
-     x86_64: '7f2799dabed00079324a63eaed08490316922ec4af3336035fb2c0caa102a785'
+     x86_64: 'e6acc6a7708ebbc023db7c40605ac361dce7c9b50a56cb611cc2317168540bab'
   })
 
   depends_on 'gcc_lib' # R
