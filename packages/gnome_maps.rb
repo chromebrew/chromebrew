@@ -3,29 +3,29 @@ require 'buildsystems/meson'
 class Gnome_maps < Meson
   description 'A simple GNOME maps application'
   homepage 'https://wiki.gnome.org/Apps/Maps'
-  version '43.0'
+  version '46.rc'
   license 'GPL-2+, LGPL-2+, MIT, CC-BY-3.0 and CC-BY-SA-3.0'
-  compatibility 'x86_64'
-  source_url "https://gitlab.gnome.org/GNOME/gnome-maps/-/archive/v#{version}/gnome-maps-v#{version}.tar.bz2"
-  source_sha256 '5e580c23a86f6b63d7c923aac7e6351e7b6765c74298f6a811d5a398a378db12'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-maps.git'
+  git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
      x86_64: 'f2f638b2c045495f20509ef548617f273f79116a5fd0705e7842e33f4e9ad06c'
   })
 
-  depends_on 'geocode_glib'
-  depends_on 'geocode_glib2'
-  depends_on 'geoclue'
-  depends_on 'gjs'
-  depends_on 'gtk3'
-  depends_on 'gtk4'
-  depends_on 'libchamplain'
-  depends_on 'libgee'
-  depends_on 'libhandy'
-  depends_on 'libshumate'
-  depends_on 'folks'
-  depends_on 'gfbgraph'
+  depends_on 'geocode_glib' => :build
+  depends_on 'geocode_glib2' => :build
+  depends_on 'geoclue' => :build
+  depends_on 'gjs' => :build
+  depends_on 'gtk3' => :build
+  depends_on 'gtk4' => :build
+  depends_on 'libchamplain' => :build
+  depends_on 'libgee' => :build
+  depends_on 'libhandy' => :build
+  depends_on 'libshumate' => :build
+  depends_on 'folks' => :build
+  depends_on 'gfbgraph' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader'

@@ -3,18 +3,17 @@ require 'buildsystems/meson'
 class Gnome_sudoku < Meson
   description 'Sudoku puzzle game for GNOME'
   homepage 'https://wiki.gnome.org/Apps/Sudoku'
-  @_ver = '3.38.0'
-  version "#{@_ver}-1"
+  version '46.0'
   license 'GPL-3+ and CC-BY-SA-3.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://download.gnome.org/sources/gnome-sudoku/#{@_ver.rpartition('.')[0]}/gnome-sudoku-#{@_ver}.tar.xz"
-  source_sha256 '38731d0cc6d56a21dbdc89409cc5bb3d08e1c02cd9009f4d57f5b34887e9fd32'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-sudoku.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
-  depends_on 'clutter_gtk'
-  depends_on 'gsound'
-  depends_on 'librsvg'
-  depends_on 'qqwing'
-  depends_on 'sommelier'
+  depends_on 'clutter_gtk' => :build
+  depends_on 'gsound' => :build
+  depends_on 'librsvg' => :build
+  depends_on 'qqwing' => :build
 
   gnome
 end

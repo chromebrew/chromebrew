@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gnome_nibbles < Meson
   description 'snake game, up to four players'
   homepage 'https://wiki.gnome.org/Apps/Nibbles'
-  version '3.38.3'
+  version '4.0.3'
   license 'GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gnome-nibbles.git'
@@ -16,13 +16,13 @@ class Gnome_nibbles < Meson
      x86_64: '7439e1154d540af84ee1d755a672b790b0000e8158cdc16df618c72be4f61e2e'
   })
 
-  depends_on 'clutter_gtk'
+  depends_on 'clutter_gtk' => :build
   depends_on 'desktop_file_utils' => :build
-  depends_on 'gsound'
-  depends_on 'libgnome_games_support'
-  depends_on 'librsvg'
+  depends_on 'gsound' => :build
+  depends_on 'libgnome_games_support' => :build
+  depends_on 'librsvg' => :build
   depends_on 'vala' => :build
-  depends_on 'wayland'
+  depends_on 'wayland' => :build
 
   gnome
 end

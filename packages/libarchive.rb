@@ -1,26 +1,26 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libarchive < Package
+class Libarchive < Autotools
   description 'Multi-format archive and compression library.'
   homepage 'https://www.libarchive.org/'
-  @_ver = '3.6.2'
-  version "#{@_ver}-2"
+  version '3.7.2'
   license 'BSD, BSD-2, BSD-4 and public-domain'
   compatibility 'all'
-  source_url "https://www.libarchive.org/downloads/libarchive-#{@_ver}.tar.xz"
-  source_sha256 '9e2c1b80d5fbe59b61308fdfab6c79b5021d7ff4ff2489fb12daf0a96a83551d'
+  source_url "https://www.libarchive.org/downloads/libarchive-#{version}.tar.xz"
+  source_sha256 '04357661e6717b6941682cde02ad741ae4819c67a260593dfb2431861b251acb'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '083845ff184ba1f7a302a0ff726ccf32353c5c91a5d2df3b92d3c732c16d2a14',
-     armv7l: '083845ff184ba1f7a302a0ff726ccf32353c5c91a5d2df3b92d3c732c16d2a14',
-       i686: '733706856e6127ff3513f4c88927adf07a8ad7d27dbb8afe17dbe21096ec5fe7',
-     x86_64: '148a1207346590f14a7243552f5620cf3c928fd50726e3d2349ede7acf7c21be'
+    aarch64: '27d7882d8f01b817ea8f2089fbbed808518135e16b8b9d1841db25d78b56888a',
+     armv7l: '27d7882d8f01b817ea8f2089fbbed808518135e16b8b9d1841db25d78b56888a',
+       i686: '476f5b9467a28fa8814efae881dbd7b1dc5ba77e011dade4cda532c775aa61e9',
+     x86_64: '5a002f95983f1e11efc15f0b9b0d2a9fb2081895080b918f5944808a99cbb195'
   })
 
   depends_on 'acl' # R
   depends_on 'attr' # R
   depends_on 'bzip2' # R
+  depends_on 'gcc_lib' => :build
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R
@@ -29,16 +29,6 @@ class Libarchive < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'gcc_lib' # R
-
-  def self.build
-    system "mold -run ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
-
-  def self.check
-    system 'make', 'check'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
