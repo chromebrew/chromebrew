@@ -6,7 +6,7 @@ class Gfbgraph < Autotools
   version '0.2.5'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/libgfbgraph.git"
+  source_url 'https://gitlab.gnome.org/GNOME/libgfbgraph.git'
   git_hashtag "v_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 

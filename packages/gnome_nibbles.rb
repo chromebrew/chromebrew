@@ -11,18 +11,28 @@ class Gnome_nibbles < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '28a33cbfd5d4be568785cddbe7e6ea145d202911fb7c94803ca7098f7691cc55',
-     armv7l: '28a33cbfd5d4be568785cddbe7e6ea145d202911fb7c94803ca7098f7691cc55',
-     x86_64: '7439e1154d540af84ee1d755a672b790b0000e8158cdc16df618c72be4f61e2e'
+    aarch64: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
+     armv7l: 'fd2904863d68384f2ba9b0b91b4ca3b973fd641a153dc942a9678565d1c56f21',
+     x86_64: '3b68f82b64471b8fd51fe3cd744f7b9e6102ad993fc4bccb45416fb3f1be2ca2'
   })
 
   depends_on 'clutter_gtk' => :build
   depends_on 'desktop_file_utils' => :build
   depends_on 'gsound' => :build
-  depends_on 'libgnome_games_support' => :build
+  depends_on 'libgnome_games_support2' => :build
   depends_on 'librsvg' => :build
   depends_on 'vala' => :build
   depends_on 'wayland' => :build
+  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glib' # R
+  depends_on 'glibc' # R
+  depends_on 'gsound' # R
+  depends_on 'gtk4' # R
+  depends_on 'libgee' # R
+  depends_on 'libgnome_games_support2' # R
+  depends_on 'pango' # R
 
   gnome
 end

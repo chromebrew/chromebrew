@@ -34,6 +34,13 @@ class Gnome_maps < Meson
   depends_on 'glibc' # R
   depends_on 'libxml2' # R
   depends_on 'rest' # R
+  depends_on 'cairo' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'gtk4' # R
+  depends_on 'json_glib' # R
+  depends_on 'librsvg' # R
+  depends_on 'libshumate' # R
+  depends_on 'pango' # R
 
   gnome
 
