@@ -6,7 +6,7 @@ class Rest < Meson
   version '0.9.1'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.gnome.org/GNOME/librest.git"
+  source_url 'https://gitlab.gnome.org/GNOME/librest.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
