@@ -19,6 +19,7 @@ class Nautilus < Meson
      x86_64: '8bad0c1b95bd31109c9df5811aeeda5a15d18e2b2756523136b9e072fca53af0'
   })
 
+  depends_on 'appstream' => :build
   depends_on 'appstream_glib' => :build
   depends_on 'at_spi2_core' => :build
   depends_on 'cairo' => :build

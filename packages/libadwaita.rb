@@ -16,6 +16,7 @@ class Libadwaita < Meson
      x86_64: '8016af17106412697616c1af4159be10c66ff0b4d15bc303048bbc4f3a1885eb'
   })
 
+  depends_on 'appstream' # R
   depends_on 'cairo' => :build
   depends_on 'curl' # R
   depends_on 'fribidi' # R
