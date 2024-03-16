@@ -160,7 +160,7 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
+BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates libyaml openssl"
 
 # Older i686 systems.
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
@@ -264,6 +264,11 @@ for package in $BOOTSTRAP_PACKAGES; do
   extract_install "${package}" "${tarfile}"
   update_device_json "${package}" "${version}" "${sha256}"
 done
+
+# Install activesupport gem for ruby
+gem update -N --system
+gem install -N activesupport --conservative
+gem install -N concurrent-ruby --conservative
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
