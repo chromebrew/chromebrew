@@ -23,6 +23,7 @@
 /usr/local/include/libnm/nm-device-dummy.h
 /usr/local/include/libnm/nm-device-ethernet.h
 /usr/local/include/libnm/nm-device-generic.h
+/usr/local/include/libnm/nm-device-hsr.h
 /usr/local/include/libnm/nm-device-infiniband.h
 /usr/local/include/libnm/nm-device-ip-tunnel.h
 /usr/local/include/libnm/nm-device-loopback.h
@@ -71,6 +72,7 @@
 /usr/local/include/libnm/nm-setting-generic.h
 /usr/local/include/libnm/nm-setting-gsm.h
 /usr/local/include/libnm/nm-setting-hostname.h
+/usr/local/include/libnm/nm-setting-hsr.h
 /usr/local/include/libnm/nm-setting-infiniband.h
 /usr/local/include/libnm/nm-setting-ip-config.h
 /usr/local/include/libnm/nm-setting-ip-tunnel.h
@@ -129,12 +131,12 @@
 /usr/local/lib/udev/rules.d/84-nm-drivers.rules
 /usr/local/lib/udev/rules.d/85-nm-unmanaged.rules
 /usr/local/lib/udev/rules.d/90-nm-thunderbolt.rules
-/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-adsl.so
-/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-bluetooth.so
-/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-ovs.so
-/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-wifi.so
-/usr/local/lib64/NetworkManager/1.44.2/libnm-device-plugin-wwan.so
-/usr/local/lib64/NetworkManager/1.44.2/libnm-wwan.so
+/usr/local/lib64/NetworkManager/1.46.0/libnm-device-plugin-adsl.so
+/usr/local/lib64/NetworkManager/1.46.0/libnm-device-plugin-bluetooth.so
+/usr/local/lib64/NetworkManager/1.46.0/libnm-device-plugin-ovs.so
+/usr/local/lib64/NetworkManager/1.46.0/libnm-device-plugin-wifi.so
+/usr/local/lib64/NetworkManager/1.46.0/libnm-device-plugin-wwan.so
+/usr/local/lib64/NetworkManager/1.46.0/libnm-wwan.so
 /usr/local/lib64/girepository-1.0/NM-1.0.typelib
 /usr/local/lib64/libnm.so
 /usr/local/lib64/libnm.so.0
@@ -160,6 +162,7 @@
 /usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.Bridge.xml
 /usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.Dummy.xml
 /usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.Generic.xml
+/usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.Hsr.xml
 /usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.IPTunnel.xml
 /usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.Infiniband.xml
 /usr/local/share/dbus-1/interfaces/org.freedesktop.NetworkManager.Device.Loopback.xml

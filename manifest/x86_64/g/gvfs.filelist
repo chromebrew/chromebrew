@@ -30,6 +30,7 @@
 /usr/local/libexec/gvfsd-smb
 /usr/local/libexec/gvfsd-smb-browse
 /usr/local/libexec/gvfsd-trash
+/usr/local/libexec/gvfsd-wsdd
 /usr/local/share/GConf/gsettings/gvfs-dns-sd.convert
 /usr/local/share/GConf/gsettings/gvfs-smb.convert
 /usr/local/share/dbus-1/services/org.gtk.vfs.AfcVolumeMonitor.service
@@ -39,6 +40,7 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.system.dns_sd.gschema.xml
 /usr/local/share/glib-2.0/schemas/org.gnome.system.gvfs.enums.xml
 /usr/local/share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
+/usr/local/share/glib-2.0/schemas/org.gnome.system.wsdd.gschema.xml
 /usr/local/share/gvfs/mounts/admin.mount
 /usr/local/share/gvfs/mounts/afc.mount
 /usr/local/share/gvfs/mounts/afp-browse.mount
@@ -63,6 +65,7 @@
 /usr/local/share/gvfs/mounts/smb-browse.mount
 /usr/local/share/gvfs/mounts/smb.mount
 /usr/local/share/gvfs/mounts/trash.mount
+/usr/local/share/gvfs/mounts/wsdd.mount
 /usr/local/share/gvfs/remote-volume-monitors/afc.monitor
 /usr/local/share/gvfs/remote-volume-monitors/gphoto2.monitor
 /usr/local/share/locale/ab/LC_MESSAGES/gvfs.mo

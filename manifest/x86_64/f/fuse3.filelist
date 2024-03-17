@@ -11,7 +11,7 @@
 /usr/local/include/fuse3/libfuse_config.h
 /usr/local/lib64/libfuse3.so
 /usr/local/lib64/libfuse3.so.3
-/usr/local/lib64/libfuse3.so.3.14.0
+/usr/local/lib64/libfuse3.so.3.16.2
 /usr/local/lib64/pkgconfig/fuse3.pc
 /usr/local/sbin/fusermount3
 /usr/local/sbin/mount.fuse3
