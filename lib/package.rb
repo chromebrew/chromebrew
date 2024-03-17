@@ -9,10 +9,10 @@ class Package
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag, :min_glibc
 
-  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
+  boolean_property :arch_flags_override, :conflicts_ok, :deprecated , :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
                    :no_links, :no_lto, :no_patchelf, :no_shrink, :no_source_build, :no_strip, :no_zstd, :patchelf,
-                   :print_source_bashrc, :run_tests, :deprecated
+                   :print_source_bashrc, :run_tests
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
