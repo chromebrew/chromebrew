@@ -3,12 +3,12 @@ require 'buildsystems/meson'
 class Json_glib < Meson
   description 'JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.'
   homepage 'https://wiki.gnome.org/Projects/JsonGlib'
-  version '1.6.6'
+  version '1.8.0'
   license 'LGPL-2.1+'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/json-glib.git'
-  git_hashtag version
-  binary_compression 'tpxz'
+  git_hashtag '1.8.0-actual'
+  binary_compression 'tar.zst'
 
   binary_sha256({
     aarch64: '37724d89adff90c65166c4f9f908bd1f4184ed5422caea9ec31fab941abbc947',
@@ -17,9 +17,9 @@ class Json_glib < Meson
      x86_64: '40a0670356d43d4154b89ea2d0543b9db01b5920bc04b8d144d56a1de78d418c'
   })
 
-  depends_on 'gtk_doc'
-  depends_on 'glib'
-  depends_on 'gobject_introspection'
+  depends_on 'gtk_doc' => :build
+  depends_on 'glib' => :build
+  depends_on 'gobject_introspection' => :build
 
   gnome
 end

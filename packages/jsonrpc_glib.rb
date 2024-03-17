@@ -6,7 +6,7 @@ require 'buildsystems/meson'
 class Jsonrpc_glib < Meson
   description 'A JSON-RPC library for GLib'
   homepage 'https://gitlab.gnome.org/GNOME/jsonrpc-glib'
-  version '3.42.0'
+  version '3.44.0'
   license 'LGPL'
   compatibility 'all'
   source_url 'https://gitlab.gnome.org/GNOME/jsonrpc-glib.git'
@@ -20,7 +20,7 @@ class Jsonrpc_glib < Meson
      x86_64: '19964bdf5d11e2c40c9cd1d09107045b28259e9d657df1bdd6ec31f28b847d86'
   })
 
-  depends_on 'json_glib'
+  depends_on 'json_glib' => :build
   depends_on 'vala' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'py3_gi_docgen' => :build

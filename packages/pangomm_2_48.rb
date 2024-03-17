@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Pangomm_2_48 < Meson
   description 'pangomm is the official C++ interface for the Pango font layout library.'
   homepage 'https://developer.gnome.org/pangomm/stable/'
-  version '2.50.2'
+  version '2.52.0'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/pangomm.git'
@@ -11,9 +11,9 @@ class Pangomm_2_48 < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '687e1ed522d7e9a5b1c57ace6367f750809deda529df3e6b563d8671a20847e5',
-     armv7l: '687e1ed522d7e9a5b1c57ace6367f750809deda529df3e6b563d8671a20847e5',
-     x86_64: 'de91d82689ed64fd86b08a79af6e8e3adadc2815f67646899247c58ca4c0d45d'
+    aarch64: '4e1335db7e751445a22f73360025a1b1209a97f84624b82337bb47576b4d5cbd',
+     armv7l: '4e1335db7e751445a22f73360025a1b1209a97f84624b82337bb47576b4d5cbd',
+     x86_64: '7e13562938b068a914ad41b14a10f037b2b1053030b381b6b5901d829fb6f019'
   })
 
   depends_on 'cairomm_1_16' # R

@@ -16,9 +16,9 @@ class Libwnck < Meson
      x86_64: '2551d4d2c782f4e5958e0f21c0f38ff8a36ddbecca142f81d34b26969a0e1bce'
   })
 
-  depends_on 'startup_notification'
-  depends_on 'pygtk'
-  depends_on 'libxres'
+  depends_on 'startup_notification' => :build
+  depends_on 'pygtk' => :build
+  depends_on 'libxres' => :build
 
   gnome
 end
