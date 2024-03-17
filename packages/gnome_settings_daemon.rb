@@ -1,3 +1,5 @@
+# Deprecated: Newer versions are no longer compatible with Chromebrew due to dependence on systemd.
+
 require 'package'
 
 class Gnome_settings_daemon < Package
