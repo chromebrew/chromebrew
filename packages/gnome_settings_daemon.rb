@@ -60,8 +60,4 @@ class Gnome_settings_daemon < Meson
   depends_on 'wayland' # R
 
   meson_options '-Dsystemd=false -Dcolord=false'
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
 end
