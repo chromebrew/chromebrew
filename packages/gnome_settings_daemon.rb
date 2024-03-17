@@ -59,14 +59,7 @@ class Gnome_settings_daemon < Meson
   depends_on 'pulseaudio' # R
   depends_on 'wayland' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dsystemd=false \
-    -Dcolord=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  meson_options '-Dsystemd=false -Dcolord=false'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
