@@ -1,12 +1,11 @@
 #!/usr/bin/env ruby
 
-# Add >LOCAL< lib to LOAD_PATH so that packages can be loaded
-$LOAD_PATH.unshift '../lib'
-
-require 'fileutils'
 require_relative '../lib/const'
 require_relative '../lib/color'
 require_relative '../lib/package'
+
+# Add >LOCAL< lib to LOAD_PATH so that packages can be loaded
+$LOAD_PATH.unshift File.join(CREW_LIB_PATH, 'lib')
 
 tofail = 0
 
