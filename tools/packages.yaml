@@ -8151,6 +8151,11 @@ url: http://files.squeak.org/
 activity: medium
 ---
 kind: url
+name: squid
+url: https://github.com/squid-cache/squid
+activity: medium
+---
+kind: url
 name: sratom
 url: https://github.com/lv2/sratom/tags
 activity: none
