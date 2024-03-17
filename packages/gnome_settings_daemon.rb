@@ -1,8 +1,8 @@
 # Deprecated: Newer versions are no longer compatible with Chromebrew due to dependence on systemd.
 
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_settings_daemon < Package
+class Gnome_settings_daemon < Meson
   description 'GNOME Settings Daemon'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-settings-daemon'
   version '43.0'
