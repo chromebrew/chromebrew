@@ -16,9 +16,9 @@ class Libchamplain < Meson
      x86_64: 'd351e1dbd9d2dcf6632b6e7f4aca245e60a21ed96968f15a1a49bbe77cd4b9ad'
   })
 
-  depends_on 'clutter_gtk'
-  depends_on 'libsoup'
-  depends_on 'cairo'
+  depends_on 'clutter_gtk' => :build
+  depends_on 'libsoup' => :build
+  depends_on 'cairo' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'vala' => :build

@@ -16,8 +16,8 @@ class Libgsf < Autotools
      x86_64: '291211e57a54c7618c563eb0d94c8940117a498fcdc7f5520e880cf45ce230bb'
   })
 
-  depends_on 'gdk_pixbuf'
-  depends_on 'gtk_doc'
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'gtk_doc' => :build
   depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R

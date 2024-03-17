@@ -20,7 +20,7 @@ class Libgtop < Autotools
      x86_64: '259446e4819d162fd7963535ae7a52ba2bc868e4b8939fe00dc27baf54e69a23'
   })
 
-  depends_on 'libxau'
+  depends_on 'libxau' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
   depends_on 'glib' # R

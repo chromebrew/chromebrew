@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gucharmap < Package
+class Gucharmap < Autotools
   description 'GNOME Character Map, based on the Unicode Character Database.'
   homepage 'https://wiki.gnome.org/Apps/Gucharmap'
   version '10.0.4'
@@ -16,9 +16,9 @@ class Gucharmap < Package
      x86_64: 'ea67e70f52dd53fc6ab9e04c019ae60519a334eb89e077efff201a29d872ca3f'
   })
 
-  depends_on 'desktop_file_utilities'
-  depends_on 'itstool'
-  depends_on 'vala'
+  depends_on 'desktop_file_utilities' => :build
+  depends_on 'itstool' => :build
+  depends_on 'vala' => :build
 
   gnome
 
@@ -29,9 +29,5 @@ class Gucharmap < Package
            '--with-unicode-data=download',
            '--disable-maintainer-mode'
     system "make LIBS='-ldl'"
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
   end
 end
