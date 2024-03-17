@@ -6,18 +6,17 @@ require 'buildsystems/meson'
 class Libcloudproviders < Meson
   description 'DBus API that allows cloud storage sync clients to expose their services'
   homepage 'https://gitlab.gnome.org/World/libcloudproviders'
-  version '0.3.1'
+  version '0.3.5'
   license 'LGPL3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/World/libcloudproviders.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '66bdf01e15334ebf3116560bfe420c135c88985c9aec1b9681e723a85f1d7643',
-     armv7l: '66bdf01e15334ebf3116560bfe420c135c88985c9aec1b9681e723a85f1d7643',
-       i686: 'e82c90e2d4b30c72c236ac229f7897a5fffc7b0f642928645b6137517d46d414',
-     x86_64: 'c09ca53402d15711f03131517aadeb610bac7ae3a4269ec30ac9e9719ecf5fae'
+    aarch64: 'd9a4ff7d6ace1b54ade9ebe356a05db1ac254500b846b5347bc1753b97118d99',
+     armv7l: 'd9a4ff7d6ace1b54ade9ebe356a05db1ac254500b846b5347bc1753b97118d99',
+     x86_64: '0b14369dd46f6997e12692da3305f384b187622a4b5ce4a9eaa407513f8bd5a0'
   })
 
   depends_on 'gobject_introspection' => :build

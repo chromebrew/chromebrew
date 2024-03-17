@@ -55,7 +55,7 @@
 /usr/local/lib/libgsf-1.la
 /usr/local/lib/libgsf-1.so
 /usr/local/lib/libgsf-1.so.114
-/usr/local/lib/libgsf-1.so.114.0.50
+/usr/local/lib/libgsf-1.so.114.0.52
 /usr/local/lib/pkgconfig/libgsf-1.pc
 /usr/local/share/gir-1.0/Gsf-1.gir
 /usr/local/share/locale/as/LC_MESSAGES/libgsf.mo
@@ -74,10 +74,12 @@
 /usr/local/share/locale/fr/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/gl/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/he/LC_MESSAGES/libgsf.mo
+/usr/local/share/locale/hr/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/hu/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/id/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/it/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/ja/LC_MESSAGES/libgsf.mo
+/usr/local/share/locale/ka/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/ko/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/lt/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/lv/LC_MESSAGES/libgsf.mo
@@ -105,7 +107,7 @@
 /usr/local/share/locale/zh_CN/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/zh_HK/LC_MESSAGES/libgsf.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/libgsf.mo
-/usr/local/share/man/man1/gsf-office-thumbnailer.1.gz
-/usr/local/share/man/man1/gsf-vba-dump.1.gz
-/usr/local/share/man/man1/gsf.1.gz
+/usr/local/share/man/man1/gsf-office-thumbnailer.1.zst
+/usr/local/share/man/man1/gsf-vba-dump.1.zst
+/usr/local/share/man/man1/gsf.1.zst
 /usr/local/share/thumbnailers/gsf-office.thumbnailer

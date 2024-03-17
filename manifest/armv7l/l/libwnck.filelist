@@ -12,6 +12,7 @@
 /usr/local/include/libwnck-3.0/libwnck/window-action-menu.h
 /usr/local/include/libwnck-3.0/libwnck/window.h
 /usr/local/include/libwnck-3.0/libwnck/wnck-enum-types.h
+/usr/local/include/libwnck-3.0/libwnck/wnck-handle.h
 /usr/local/include/libwnck-3.0/libwnck/workspace.h
 /usr/local/lib/girepository-1.0/Wnck-3.0.typelib
 /usr/local/lib/libwnck-3.so
@@ -33,6 +34,7 @@
 /usr/local/share/locale/bs/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ca/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/ca@valencia/LC_MESSAGES/libwnck-3.0.mo
+/usr/local/share/locale/ckb/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/crh/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/cs/LC_MESSAGES/libwnck-3.0.mo
 /usr/local/share/locale/cy/LC_MESSAGES/libwnck-3.0.mo

@@ -51,7 +51,7 @@
 /usr/local/libexec/libgtop_daemon2
 /usr/local/libexec/libgtop_server2
 /usr/local/share/gir-1.0/GTop-2.0.gir
-/usr/local/share/info/libgtop2.info.gz
+/usr/local/share/info/libgtop2.info.zst
 /usr/local/share/locale/ab/LC_MESSAGES/libgtop.mo
 /usr/local/share/locale/am/LC_MESSAGES/libgtop.mo
 /usr/local/share/locale/ar/LC_MESSAGES/libgtop.mo

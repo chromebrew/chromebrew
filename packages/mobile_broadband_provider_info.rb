@@ -1,23 +1,22 @@
-require 'buildsystems/autotools'
+require 'buildsystems/meson'
 
-class Mobile_broadband_provider_info < Autotools
+class Mobile_broadband_provider_info < Meson
   description 'Network Management daemon'
   homepage 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info'
-  version '20201225'
+  version '20240316'
   license 'CC-PD'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/#{version}/mobile-broadband-provider-info-#{version}.tar.bz2"
-  source_sha256 '0616b3d0580575741d4319ac71ca67c9a378879943d32a67ac0460615767bcdf'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info.git'
+  git_hashtag 'df3c25cf6f8257805e77effdcbdaea10adc9419f'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bcd1950197cad4165f2ae459e479a33ffdf923f8ba15825bf1a7b98759c2ae6e',
-     armv7l: 'bcd1950197cad4165f2ae459e479a33ffdf923f8ba15825bf1a7b98759c2ae6e',
-       i686: 'ef85604f9bd2d1094e3a36191c2f30d3e94d75b060e78a85c2a1d42819f8d453',
-     x86_64: '38026295f81010e8e1a311d5f0c28322b4059213bf012a9897b9b8a8a2a43335'
+    aarch64: '44259ceaf722de3e14fe73303d5518309d3252e9dac2df2a8dd005c2de5ec845',
+     armv7l: '44259ceaf722de3e14fe73303d5518309d3252e9dac2df2a8dd005c2de5ec845',
+     x86_64: 'ba3e807317fa0f2bf2cf593fa927dff33eb383d9fe4152ee5ee3fcdd35f5f25c'
   })
 
-  depends_on 'libxslt'
+  depends_on 'libxslt' => :build
 
   gnome
 end

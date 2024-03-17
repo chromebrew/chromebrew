@@ -3,11 +3,11 @@ require 'buildsystems/meson'
 class Networkmanager < Meson
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  version '1.44.2'
+  version '1.46.0'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{version}/NetworkManager#{version}.tar.bz2"
-  source_sha256 '8dccf93214de0723f7f961f002f9d82428ddaee4604c524fbda883ce4992e660'
+  source_url 'https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -16,18 +16,16 @@ class Networkmanager < Meson
      x86_64: '0ec3bb100f5e28b62f80272c2fb50d2ad75107370b372f4e6ea9e2af2c28809b'
   })
 
-  depends_on 'gobject_introspection'
-  depends_on 'gtk_doc'
+  depends_on 'elogind' => :build
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'modemmanager'
-  depends_on 'libndp'
-  depends_on 'jansson'
-  depends_on 'nss'
-  depends_on 'vala'
-  depends_on 'elogind'
-  depends_on 'libnewt'
-  depends_on 'mobile_broadband_provider_info'
+  depends_on 'jansson' => :build
+  depends_on 'libndp' => :build
+  depends_on 'libnewt' => :build
+  depends_on 'mobile_broadband_provider_info' => :build
+  depends_on 'modemmanager' => :build
+  depends_on 'nss' => :build
+  depends_on 'vala' => :build
 
   gnome
 
