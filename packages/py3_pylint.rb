@@ -10,7 +10,6 @@ class Py3_pylint < Pip
   license 'GPL'
   compatibility 'all'
   source_url 'SKIP'
-  binary_compression 'tar.zst'
 
   depends_on 'python3' # R
 
