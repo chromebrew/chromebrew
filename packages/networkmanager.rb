@@ -11,20 +11,27 @@ class Networkmanager < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59f9d7dc41ad58396ae07cd39c71b2c232cfac55ce795f57b214c7e6044087b8',
-     armv7l: '59f9d7dc41ad58396ae07cd39c71b2c232cfac55ce795f57b214c7e6044087b8',
-     x86_64: '0ec3bb100f5e28b62f80272c2fb50d2ad75107370b372f4e6ea9e2af2c28809b'
+    aarch64: '15cab36411c547cb2e57d1349926ad63c937b48e7f74f35de4b36902f85ae6db',
+     armv7l: '15cab36411c547cb2e57d1349926ad63c937b48e7f74f35de4b36902f85ae6db',
+     x86_64: '497b1f4cc7d66917d96ec174f4ab5c9d25eb922607eb97a7a19f068a3b30475f'
   })
 
-  depends_on 'elogind' => :build
+  depends_on 'curl' # R
+  depends_on 'elogind' # R
+  depends_on 'eudev' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'jansson' => :build
-  depends_on 'libndp' => :build
-  depends_on 'libnewt' => :build
+  depends_on 'jansson' # R
+  depends_on 'libndp' # R
+  depends_on 'libnewt' # R
+  depends_on 'libpsl' # R
   depends_on 'mobile_broadband_provider_info' => :build
-  depends_on 'modemmanager' => :build
-  depends_on 'nss' => :build
+  depends_on 'modemmanager' # R
+  depends_on 'nss' # R
+  depends_on 'readline' # R
   depends_on 'vala' => :build
 
   gnome
