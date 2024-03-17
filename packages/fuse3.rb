@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Fuse3 < Package
+class Fuse3 < Meson
   description 'The reference implementation of the Linux FUSE (Filesystem in Userspace) interface.'
   homepage 'https://github.com/libfuse/libfuse/'
-  version '3.14.0'
+  version '3.16.2'
   license 'GPL-2+'
   compatibility 'all'
   source_url 'https://github.com/libfuse/libfuse.git'
@@ -11,26 +11,20 @@ class Fuse3 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f4b9c7ae2b8f94e0e9e745beb28d44ab2eacc0780eafb39f5bbfc6698498736',
-     armv7l: '5f4b9c7ae2b8f94e0e9e745beb28d44ab2eacc0780eafb39f5bbfc6698498736',
-       i686: '7a123c98ec3ca9d47692119ed47aa573ebc10e553edfac86f38e258357bd2d7b',
-     x86_64: '342b9a27abb38fff56ddc6f99635849d1eba12ff241ad8514125a418f470b61b'
+    aarch64: '7596282fa27cbe6683c81cb3158159421b3a21834db71f4130fbea2d7d8ca59a',
+     armv7l: '7596282fa27cbe6683c81cb3158159421b3a21834db71f4130fbea2d7d8ca59a',
+       i686: 'b6197530830442cb1225334e9fa29d00a113ded9a4ff7e072c335e91e468244e',
+     x86_64: '14b191a1e6b19c58f9e45861fae0be8b50a10803dab46b98ac82a3c6f906c60b'
   })
 
-  depends_on 'py3_pytest' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'py3_pytest' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Ddisable-mtab=true \
+  meson_options "-Ddisable-mtab=true \
       -Dudevrulesdir=#{CREW_PREFIX}/etc/udev/rules.d/ \
       -Dexamples=true \
-      -Duseroot=false \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+      -Duseroot=false"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

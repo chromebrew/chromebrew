@@ -16,34 +16,33 @@ class Gvfs < Meson
      x86_64: '02138741190ca5e80f5283a1f4e7d57a44e5e1222f33c14a04abdc8f5333e54b'
   })
 
-  depends_on 'avahi' => :build
+  depends_on 'avahi' # R
   depends_on 'dbus' => :build
   depends_on 'dconf' => :build
   depends_on 'docbook_xsl' => :build
   depends_on 'elogind' => :build
-  depends_on 'fuse3' => :build
+  depends_on 'fuse3' # R
   depends_on 'gcc_lib' => :build
-  depends_on 'gcr_3' => :build
-  depends_on 'gcr' => :build
-  depends_on 'glibc' => :build
-  depends_on 'glib' => :build
+  depends_on 'gcr_4' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gtk3' => :build
-  depends_on 'libarchive' => :build
+  depends_on 'libarchive' # R
   depends_on 'libcdio' => :build
-  depends_on 'libcdio_paranoia' => :build
-  depends_on 'libcdio' => :build
-  depends_on 'libgcrypt' => :build
-  depends_on 'libgphoto' => :build
-  depends_on 'libgudev' => :build
-  depends_on 'libimobiledevice' => :build
-  depends_on 'libnfs' => :build
-  depends_on 'libplist' => :build
-  depends_on 'libsecret' => :build
+  depends_on 'libcdio_paranoia' # R
+  depends_on 'libcdio' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgphoto' # R
+  depends_on 'libgudev' # R
+  depends_on 'libimobiledevice' # R
+  depends_on 'libnfs' # R
+  depends_on 'libplist' # R
+  depends_on 'libsecret' # R
   depends_on 'libsoup2' => :build
-  depends_on 'libsoup' => :build
-  depends_on 'libxml2' => :build
-  depends_on 'polkit' => :build
-  depends_on 'smbclient' => :build
+  depends_on 'libsoup' # R
+  depends_on 'libxml2' # R
+  depends_on 'polkit' # R
+  depends_on 'smbclient' # R
 
   gnome
 
@@ -51,6 +50,7 @@ class Gvfs < Meson
     -Dgoa=false \
     -Dgoogle=false \
     -Dmtp=false \
+    -Donedrive=false \
     -Dsystemduserunitdir=no \
     -Dtmpfilesdir=no \
     -Dudisks2=false'
