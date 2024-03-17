@@ -1328,6 +1328,14 @@ def install
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
+    
+  if @pkg.deprecated?
+    puts "Package #{@pkg.name} is deprecated".orange
+    if @pkg.in_upgrade
+       puts "\b, skipping...".orange
+       return
+    end
+  end
 
   unless @pkg.is_fake?
     meta = download
