@@ -37,6 +37,7 @@ class Gtksourceview_4 < Meson
   depends_on 'zlibpkg' # R
 
   gnome
+  no_upstream_update
 
   def self.patch
     system "sed -i 's/-fstack-protector-strong/-flto=auto/g' meson.build"

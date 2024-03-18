@@ -22,6 +22,8 @@ class Docbook_xml50 < Package
   depends_on 'libxml2'
   depends_on 'xmlcatmgr'
 
+  no_upstream_update
+
   def self.install
     system "xmlcatalog --noout --create docbook-#{@_ver}.xml"
     # DTD

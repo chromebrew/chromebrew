@@ -23,6 +23,7 @@ class Glibmm_2_4 < Meson
   depends_on 'mm_common' => :build
 
   gnome
+  no_upstream_update
 
   meson_options '-Dbuild-documentation=false'
 end

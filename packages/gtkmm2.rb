@@ -21,6 +21,7 @@ class Gtkmm2 < Autotools
   depends_on 'pangomm'
 
   gnome
+  no_upstream_update
 
   def self.patch
     # fix the documents directory name

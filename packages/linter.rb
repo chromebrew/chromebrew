@@ -9,6 +9,7 @@ class Linter < Package
   source_url 'SKIP'
 
   no_compile_needed
+  no_upstream_update
 
   depends_on 'py3_codespell'
   depends_on 'ruby_mdl'

@@ -43,6 +43,7 @@ DOC = <<~DOCOPT
 
   Usage:
     crew build [options] [-k|--keep] <name> ...
+    crew check [-V|--version] [-v|--verbose] <name> ...
     crew const [options] [<name> ...]
     crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] <name> ...
     crew download [options] [-s|--source] <name> ...
@@ -54,7 +55,7 @@ DOC = <<~DOCOPT
     crew prop
     crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] <name> ...
     crew remove [options] <name> ...
-    crew search [options] [<name> ...]
+    crew search [options] [-v|--verbose] [<name> ...]
     crew sysinfo [options]
     crew test [<name> ...]
     crew update [options] [<compatible>]
@@ -102,15 +103,19 @@ rescue Docopt::Exit => e
       exit 0
     end
     unless %w[-h --help].include?(ARGV[0])
-      puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
-      # Looking for similar commands
-      unless @cmds.include?(ARGV[0])
-        similar = @cmds.select { |word| edit_distance(ARGV[0], word) < 4 }
-        unless similar.empty?
-          abort <<~EOT
-            Did you mean?
-              #{similar.join("\n  ")}
-          EOT
+      if DOC.include?("crew #{ARGV[0]} ")
+        puts 'Missing or invalid argument(s).'.lightred
+      else
+        puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
+        # Looking for similar commands
+        unless @cmds.include?(ARGV[0])
+          similar = @cmds.select { |word| edit_distance(ARGV[0], word) < 4 }
+          unless similar.empty?
+            abort <<~EOT
+              Did you mean?
+                #{similar.join("\n  ")}
+            EOT
+          end
         end
       end
     end
@@ -126,6 +131,7 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_verbose   = args['--verbose']
 @opt_source    = args['--source']
 @opt_recursive = args['--recursive-build']
+@opt_version   = args['--version']
 
 # Verbose options
 @fileutils_verbose = @opt_verbose
@@ -1858,6 +1864,21 @@ def build_command(args)
     end
   end
   puts "Builds are located in #{CREW_LOCAL_BUILD_DIR}.".yellow
+end
+
+def check_command(args)
+  args['<name>'].each do |name|
+    search name
+    if @opt_version
+      Dir.chdir CREW_PACKAGES_PATH do
+        system "../tools/version.rb #{name} #{@short_verbose}"
+      end
+    else
+      Dir.chdir CREW_PACKAGES_PATH do
+        system "../tests/prop_test #{name}"
+      end
+    end
+  end
 end
 
 def const_command(args)

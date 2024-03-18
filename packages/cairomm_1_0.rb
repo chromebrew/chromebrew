@@ -24,6 +24,8 @@ class Cairomm_1_0 < Meson
   depends_on 'libxrender' => :build
   depends_on 'libxxf86vm' => :build
 
+  no_upstream_update
+
   meson_options '-Dbuild-documentation=false \
     -Dbuild-examples=false'
 end

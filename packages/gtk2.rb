@@ -48,6 +48,7 @@ class Gtk2 < Package
   depends_on 'sommelier' unless ARCH == 'i686' # L
 
   gnome
+  no_upstream_update
 
   def self.build
     system "#{CREW_ENV_OPTIONS} \

@@ -30,6 +30,8 @@ class Js102 < Package
   depends_on 'rust' => :build
   depends_on 'zlibpkg' # R
 
+  no_upstream_update
+
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'
                          'armv7-unknown-linux-gnueabihf'

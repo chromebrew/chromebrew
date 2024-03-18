@@ -80,6 +80,7 @@ Where available commands are:
 | Command      | Description |
 |:------------:|:------------|
 | build        | build package(s) from source and store the archive and checksum in the current working directory |
+| check        | check packages(s) |
 | const        | display constant(s) |
 | deps         | display dependencies of package(s) |
 | download     | download package(s) to CREW_BREW_DIR (/usr/local/tmp/crew by default), but don't install |
