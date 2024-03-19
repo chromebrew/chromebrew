@@ -208,6 +208,7 @@ class Package
 
   def self.get_binary_url(architecture)
     architecture = 'armv7l' if architecture == 'aarch64'
+    binary_compression = 'tar.zst' if binary_compression.nil?
     return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{architecture}/#{name}-#{version}-chromeos-#{architecture}.#{binary_compression}"
   end
 

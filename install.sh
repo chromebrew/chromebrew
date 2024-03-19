@@ -254,6 +254,9 @@ for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
   version=$(sed -n "s/.*version '\([^']*\)'.*/\1/p" "${package}.rb")
   binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
+  if [[ -z "$binary_compression" ]];
+    binary_compression='tar.zst'
+  fi
 
   url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
   tarfile=$(basename "${url}")
