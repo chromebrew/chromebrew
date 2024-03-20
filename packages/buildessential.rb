@@ -90,9 +90,6 @@ class Buildessential < Package
   # depends_on 'openjdk11'
   # depends_on 'openjdk17'
 
-  # Linter
-  depends_on 'linter'
-
   # Lisp
   # depends_on 'ccl'
   # depends_on 'clisp'
