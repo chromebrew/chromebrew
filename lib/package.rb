@@ -208,7 +208,9 @@ class Package
 
   def self.get_binary_url(architecture)
     architecture = 'armv7l' if architecture == 'aarch64'
-    return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{architecture}/#{name}-#{version}-chromeos-#{architecture}.#{binary_compression}"
+    binary_compress_ext = binary_compression.nil? ? 'tar.zst' : binary_compression
+    puts "binary_compress_ext is #{binary_compress_ext} and binary_compression is #{binary_compression}" if @opt_verbose
+    return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{architecture}/#{name}-#{version}-chromeos-#{architecture}.#{binary_compress_ext}"
   end
 
   def self.get_source_url(architecture) = @source_url.key?(architecture) ? @source_url[architecture] : nil
