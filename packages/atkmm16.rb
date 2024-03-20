@@ -24,6 +24,7 @@ class Atkmm16 < Meson
   depends_on 'libsigcplusplus' # R
 
   gnome
+  no_upstream_update
 
   meson_options '-Dbuild-documentation=false'
 end

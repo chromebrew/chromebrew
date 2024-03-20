@@ -28,6 +28,7 @@ class Gtkmm3 < Meson
   depends_on 'pangomm_1_4' # R
 
   gnome
+  no_upstream_update
 
   meson_options '--default-library=both \
     -Dbuild-documentation=false \

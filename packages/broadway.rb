@@ -8,9 +8,10 @@ class Broadway < Package
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
-  no_compile_needed
-
   depends_on 'gtk3'
+
+  no_compile_needed
+  no_upstream_update
 
   def self.build
     @broadwayenv = <<~BROADWAYENVEOF

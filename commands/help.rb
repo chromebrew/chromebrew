@@ -12,6 +12,13 @@ class Command
         If `-k` or `--keep` is present, the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory will remain.
         If `-v` or `--verbose` is present, extra information will be displayed.
       EOT
+    when 'check'
+      puts <<~EOT
+        Check package(s) for syntax errors and upstream updates.
+        Usage: crew check [-V|--version] [-v|--verbose] <package1> [<package2> ...]
+        If `-V` or `--version` is present, it will search for an upstream update.
+        If `-v` or `--verbose` is present, up to date packages will be displayed.
+      EOT
     when 'const'
       puts <<~EOT
         Display constant(s).
@@ -154,7 +161,7 @@ class Command
     else
       puts <<~EOT
         Usage: crew help <command>
-        Available commands: build, const, deps, download, files, help, install, list, postinstall, prop, reinstall, remove, search, sysinfo, update, upgrade, upload, whatprovides, license, version
+        Available commands: build, check, const, deps, download, files, help, install, license, list, postinstall, prop, reinstall, remove, search, sysinfo, test, update, upgrade, upload, version, whatprovides
       EOT
     end
   end

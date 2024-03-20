@@ -19,6 +19,8 @@ class Glibc_dev235 < Package
   depends_on 'glibc_build235' => :build
   depends_on 'glibc_lib235' # R
 
+  no_upstream_update
+
   def self.preflight
     abort 'Glibc_lib requires glibc = 2.35.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.35')
   end

@@ -32,6 +32,7 @@ class Gtkmm4 < Meson
   depends_on 'vulkan_headers' => :build
 
   gnome
+  no_upstream_update
 
   meson_options '-Dbuild-documentation=false'
 end

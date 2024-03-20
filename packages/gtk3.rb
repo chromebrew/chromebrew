@@ -69,6 +69,7 @@ class Gtk3 < Meson
 
   gnome
   no_fhs
+  no_upstream_update
 
   def self.patch
     # Use locally build subprojects

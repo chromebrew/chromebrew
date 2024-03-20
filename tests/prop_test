@@ -7,22 +7,49 @@ require_relative '../lib/package'
 # Add >LOCAL< lib to LOAD_PATH so that packages can be loaded
 $LOAD_PATH.unshift File.join(CREW_LIB_PATH, 'lib')
 
-tofail = 0
-
-Dir.glob('../packages/*.rb').each do |filename|
-  pkg = Package.load_package(filename)
-  name = File.basename(filename, '.rb').gsub('_', '-')
-  puts "#{name} is missing a description." if pkg.description.to_s.empty?
-  puts "#{name} is missing a homepage." if pkg.homepage.to_s.empty?
-  puts "#{name} is missing a version." if pkg.version.to_s.empty?
-  puts "#{name} is missing a license." if pkg.license.to_s.empty?
-  puts "#{name} is missing a compatibility property." if pkg.compatibility.to_s.empty?
-  tofail += 1 if pkg.description.to_s.empty? || pkg.homepage.to_s.empty? || pkg.version.to_s.empty? || pkg.license.to_s.empty? || pkg.compatibility.to_s.empty?
+def check_properties(name)
+  puts "Checking #{name} package ...".yellow
+  puts "#{name} is missing a description.".lightred if @pkg.description.to_s.empty?
+  puts "#{name} is missing a homepage.".lightred if @pkg.homepage.to_s.empty?
+  puts "#{name} is missing a version.".lightred if @pkg.version.to_s.empty?
+  puts "#{name} is missing a license.".lightred if @pkg.license.to_s.empty?
+  puts "#{name} is missing a compatibility.".lightred if @pkg.compatibility.to_s.empty?
+  if @pkg.description.to_s.empty? || @pkg.homepage.to_s.empty? || @pkg.version.to_s.empty? || @pkg.license.to_s.empty? || @pkg.compatibility.to_s.empty?
+    puts "Property tests for #{name} failed.".lightred
+    @tofail += 1
+  else
+    puts "Property tests for #{name} passed.".lightgreen
+  end
 end
 
-if tofail.positive?
-  puts "\n#{tofail} failing packages."
-  exit(1) if tofail.positive?
+@tofail = 0
+
+warn_level = $VERBOSE
+$VERBOSE = nil
+
+if ARGV[0]
+  ARGV.each do |arg|
+    next if %w[-V --version].include?(arg)
+    if File.file? "../packages/#{arg}.rb"
+      @pkg = Package.load_package("../packages/#{arg}.rb")
+      check_properties(arg)
+    else
+      puts "Package #{arg} not found.".lightred
+    end
+  end
 else
-  puts "\nAll property tests successful.".lightgreen
+  Dir['../packages/*.rb'].each do |filename|
+    @pkg = Package.load_package(filename)
+    name = File.basename(filename, '.rb').gsub('_', '-')
+    check_properties(name)
+  end
+
+  if @tofail.positive?
+    puts "\n#{@tofail} packages failed property tests.".lightred
+    exit(1)
+  else
+    puts "\nAll packages passed property tests.".lightgreen
+  end
 end
+
+$VERBOSE = warn_level

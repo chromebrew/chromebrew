@@ -36,6 +36,8 @@ class Imagemagick6 < Autotools
   depends_on 'zstd'
   depends_on 'sommelier'
 
+  no_upstream_update
+
   def self.preinstall
     imver = `stream -version 2> /dev/null | head -1 | cut -d' ' -f3`.chomp
     abort "ImageMagick version #{imver} already installed.".lightgreen unless imver.to_s == ''

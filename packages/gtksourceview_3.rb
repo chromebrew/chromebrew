@@ -39,6 +39,7 @@ class Gtksourceview_3 < Autotools
   depends_on 'zlibpkg' # R
 
   gnome
+  no_upstream_update
 
   configure_options '--enable-glade-catalog --enable-gtk-doc --disable-gtk-doc-html'
 end

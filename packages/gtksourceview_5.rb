@@ -37,6 +37,7 @@ class Gtksourceview_5 < Meson
   depends_on 'pcre2' # R
 
   gnome
+  no_upstream_update
 
   def self.patch
     system "sed -i 's/-fstack-protector-strong/-flto=auto/g' meson.build"
