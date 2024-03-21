@@ -18,17 +18,15 @@ class Avahi < Autotools
   })
 
   depends_on 'dbus' unless ARCH == 'i686' # R
+  depends_on 'expat' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'libcap' => :build
+  depends_on 'libcap' # R
   depends_on 'libdaemon' # R
   depends_on 'libevent' # R
-  depends_on 'xmltoman' => :build
-  depends_on 'expat' # R
-  depends_on 'glibc' # R
-  depends_on 'libcap' # R
   depends_on 'libssp' # R
-  depends_on 'gdbm' # R
-  depends_on 'libcap' # R
+  depends_on 'xmltoman' => :build
 
   configure_options "#{ARCH == 'i686' ? '--disable-dbus' : "--with-dbus-sys=#{CREW_PREFIX}/share/dbus-1"} \
       --disable-gtk \
