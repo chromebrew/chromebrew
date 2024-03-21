@@ -130,6 +130,8 @@ at_exit do
 
   # Print exit messages.
   ExitMessage.print
+  # Replace the currently running Ruby process with a new instance of the parent shell (thus sourcing the relevant configuration)
+  exec(`ps -p #{Process.ppid} -o comm=`.chomp) unless CREW_SCRIPTING
 end
 
 def load_json

@@ -13,19 +13,20 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Unit Tests
         run: |
-            sudo docker run -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
-            echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
-            echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
-            CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
-            yes | crew upgrade && \
-            yes | crew install vim && \
-            yes | crew remove vim && \
-            ruby ../tests/prop_test && \
-            ruby ../tests/buildsystem_test && \
-            ruby ../tests/commands/const.rb && \
-            ruby ../tests/commands/help.rb && \
-            ruby ../tests/commands/prop.rb && \
-            cd ~ && \
-            git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
-            cd build_test && \
-            yes | CREW_CACHE_ENABLED=1 crew build -f packages/hello_world_chromebrew.rb"
+            tee unit_test.sh <<EOF
+            crew update
+            yes | crew upgrade
+            yes | crew install vim
+            yes | crew remove vim
+            ruby ../tests/prop_test
+            ruby ../tests/buildsystem_test
+            ruby ../tests/commands/const.rb
+            ruby ../tests/commands/help.rb
+            ruby ../tests/commands/prop.rb
+            cd ~
+            git clone --depth=1 https://github.com/chromebrew/chromebrew.git
+            cd chromebrew
+            yes | crew build -f packages/hello_world_chromebrew.rb
+            EOF
+            chmod +x ./unit_test.sh
+            sudo docker run -v $(pwd)/unit_test.sh:/usr/local/lib/crew/packages/unit_test.sh -e CREW_REPO=${{ github.event.pull_request.head.repo.clone_url}} -e CREW_BRANCH=${{ github.head_ref }} -e CREW_SCRIPTING=1 -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash unit_test.sh
