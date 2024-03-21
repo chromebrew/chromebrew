@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5718e3cb4cc427169ccf8d401e826b564fea761b3d6e51aa85bc729466833d5f',
-     armv7l: '5718e3cb4cc427169ccf8d401e826b564fea761b3d6e51aa85bc729466833d5f',
-       i686: '261c061612aafc9c26008755350dab031400045f5a664f10831fec78d03c8007',
-     x86_64: '31b389b3ba947d1d0cb7ce4a915211d9e6322bfe6b509cca3bf6969914d13cc3'
+    aarch64: 'd6536cd3c5b1bc719a7ea4d25fa4d9661fd2c07b98d04d49ad16bdff65f2eed7',
+     armv7l: 'd6536cd3c5b1bc719a7ea4d25fa4d9661fd2c07b98d04d49ad16bdff65f2eed7',
+       i686: '96f31b378fb85f77ec39f5ca6428e7779eec43a3f482255880ca56700183eda2',
+     x86_64: '560ae9b802df702290e4cf3fc3c218dac7a447dea9e5d4f9769a05af10bdec60'
   })
 
   depends_on 'avahi' # R
@@ -79,11 +79,11 @@ class Distcc < Autotools
       done
       DISTCC_ARGS+="-N 20 ‐‐allow‐private ‐‐zeroconf --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
-      #{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &
+      (#{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
     START_DISTCCDEOF
     FileUtils.install 'startdistccd', "#{CREW_DEST_PREFIX}/bin/startdistccd", mode: 0o755
     File.write 'stopdistccd', <<~STOP_DISTCCDEOF
-      #!/bin/bash -a
+      #!/bin/bash
       killall -9 distccd
     STOP_DISTCCDEOF
     FileUtils.install 'stopdistccd', "#{CREW_DEST_PREFIX}/bin/stopdistccd", mode: 0o755
