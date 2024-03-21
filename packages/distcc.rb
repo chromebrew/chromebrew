@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b13fe326d37cea2d67ab019b8f39e2c5ee908bc0350ac94bef00665c24c0322f',
-     armv7l: 'b13fe326d37cea2d67ab019b8f39e2c5ee908bc0350ac94bef00665c24c0322f',
-       i686: '51dfc7d315d95e0a39854ea81b1162acd0a82b3789d90f9b8f97d99135ee1dea',
-     x86_64: '0e5fc7b49b98fae285e93f5329c4a3aaa395b9216a3c80dab6c3044ddd79e1ab'
+    aarch64: 'f2326c93edcf2e321b937dcb87cd2b1a6f0868151f23516892528f550590e471',
+     armv7l: 'f2326c93edcf2e321b937dcb87cd2b1a6f0868151f23516892528f550590e471',
+       i686: '1f9b8a58d4417e2df3b5fc1c40e29a565b00f8ed5120f895958c417b97233bc5',
+     x86_64: 'e66eb0a3eb76b47dbf786bf3ed215cccc51c26d32a877bfce1b24ec11e48e72e'
   })
 
   depends_on 'avahi' # R
@@ -65,7 +65,8 @@ class Distcc < Autotools
       #!/bin/bash -a
       if [ -z ${START_DISTCCD+x} ]; then
         # Set env variable START_DISTCCD to enable distccd
-        exit 0
+        # Return or exit depending upon whether script was sourced.
+        (return 0 2>/dev/null) && return 0 || exit 0
       fi
       DISTCC_ARGS=
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
@@ -76,7 +77,13 @@ class Distcc < Autotools
       done
       DISTCC_ARGS+="-N 20 ‐‐allow‐private ‐‐zeroconf --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
-      #{CREW_PREFIX}/bin/distccd --no-detach --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &
+      if [[ $(pgrep -wc distccd) > 0 ]]; then
+        # distccd is already running.
+        # Return or exit depending upon whether script was sourced.
+        (return 0 2>/dev/null) && return 0 || exit 0
+      else
+        #{CREW_PREFIX}/bin/distccd --no-detach --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &
+      fi
     START_DISTCCDEOF
     FileUtils.install 'startdistccd', "#{CREW_DEST_PREFIX}/bin/startdistccd", mode: 0o755
     File.write 'stopdistccd', <<~STOP_DISTCCDEOF
@@ -86,7 +93,7 @@ class Distcc < Autotools
     FileUtils.install 'stopdistccd', "#{CREW_DEST_PREFIX}/bin/stopdistccd", mode: 0o755
     # start distccd from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
     File.write 'bash.d_distccd', <<~BASHDDISTCCD_EOF
-      source #{CREW_PREFIX}/bin/startdistccd
+      [[ $(pgrep -wc distccd) > 0 ]] || source #{CREW_PREFIX}/bin/startdistccd
     BASHDDISTCCD_EOF
     FileUtils.install 'bash.d_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
@@ -96,6 +103,6 @@ class Distcc < Autotools
   end
 
   def self.postinstall
-    ExitMessage.add "Set the env variable START_DISTCCD with \"echo 'export START_DISTCCD=1' >> ~/.bashrc\" \nand run 'startdistccd' to enable distccd."
+    ExitMessage.add "Set the env variable START_DISTCCD with \"echo -e '\\nexport START_DISTCCD=1' >> ~/.bashrc\" \nand run 'source ~/.bashrc ; startdistccd' to start distccd."
   end
 end
