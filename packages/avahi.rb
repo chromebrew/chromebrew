@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '9d676e30ef2a4086479ef269c3430e2619114a8ddadd1809941edcaf815afead',
-    aarch64: '73dc564fe8de40bfdb67d44fe02152896cd7fdb3251bac125db96552dc0fac58',
-     armv7l: '73dc564fe8de40bfdb67d44fe02152896cd7fdb3251bac125db96552dc0fac58',
-     x86_64: '2b4c8f3324e2130b5e28417c54e8b4a082abbeac55287ecc4ec24dfb1c3dc7ed'
+       i686: '6b0d2bd1622249bd295b28348edb2e6c0d6e66415cf5b01c9894c8aa6cb8458b',
+    aarch64: 'a7952468b6d0019932aa9944a514e0892a0006a16dbfe2106a37635e86461a76',
+     armv7l: 'a7952468b6d0019932aa9944a514e0892a0006a16dbfe2106a37635e86461a76',
+     x86_64: '05edbae509033df5cef5615969754f504cec959c932232f0324be06b94c4557f'
   })
 
   depends_on 'dbus' unless ARCH == 'i686' # R
