@@ -28,7 +28,7 @@ class Avahi < Autotools
   depends_on 'libssp' # R
   depends_on 'xmltoman' => :build
 
-  configure_options "#{ARCH == 'i686' ? '--disable-dbus' : "--with-dbus-sys=#{CREW_PREFIX}/share/dbus-1"} \
+  configure_options "--disable-dbus \
       --disable-gtk \
       --disable-gtk3 \
       --disable-libsystemd \
