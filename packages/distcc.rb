@@ -96,6 +96,6 @@ class Distcc < Autotools
   end
 
   def self.postinstall
-    ExitMessage.add 'Set the env variable START_DISTCCD=1 and reopen bash to start distccd.'
+    ExitMessage.add "Set the env variable START_DISTCCD with \"echo 'export START_DISTCCD=1' >> ~/.bashrc\" \nand run 'startdistccd' to enable distccd."
   end
 end
