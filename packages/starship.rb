@@ -21,7 +21,6 @@ class Starship < Package
   })
 
   no_compile_needed
-  print_source_bashrc
 
   def self.install
     FileUtils.install 'starship', "#{CREW_DEST_PREFIX}/bin/starship", mode: 0o755

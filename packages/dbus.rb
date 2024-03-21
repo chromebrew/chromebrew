@@ -21,8 +21,6 @@ class Dbus < Meson
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 
-  print_source_bashrc
-
   meson_options "-Dapparmor=disabled \
       -Ddbus_session_bus_listen_address='unix:path=/var/run/dbus/system_bus_socket' \
       -Ddoxygen_docs=disabled \

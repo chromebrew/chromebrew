@@ -28,7 +28,6 @@ class Mold < Package
   depends_on 'zstd' # R
 
   no_env_options
-  print_source_bashrc
 
   def self.build
     # TBB build option due to

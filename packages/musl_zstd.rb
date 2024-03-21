@@ -23,7 +23,6 @@ class Musl_zstd < Package
   is_musl
   no_zstd
   patchelf
-  print_source_bashrc
 
   def self.build
     FileUtils.mkdir('build/cmake/builddir')

@@ -15,7 +15,6 @@ class Scbi < Package
 
   no_compile_needed
   no_fhs
-  print_source_bashrc
 
   def self.patch
     # Set up destination locations.

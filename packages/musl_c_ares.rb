@@ -27,7 +27,6 @@ class Musl_c_ares < Package
   depends_on 'patchelf' => :build
 
   is_static
-  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"
