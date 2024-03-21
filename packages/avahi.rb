@@ -17,7 +17,6 @@ class Avahi < Autotools
      x86_64: '05edbae509033df5cef5615969754f504cec959c932232f0324be06b94c4557f'
   })
 
-  depends_on 'dbus' unless ARCH == 'i686' # R
   depends_on 'expat' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
