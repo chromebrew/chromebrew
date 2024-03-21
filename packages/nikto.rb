@@ -37,7 +37,6 @@ class Nikto < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the installation, execute 'source #{HOME}/.bashrc'".lightblue
     puts "\nThe configuration file is located at #{HOME}/nikto.conf.".lightblue
     puts "\nExample: nikto -host https://chromebrew.github.io/\n".lightblue
   end
