@@ -7,6 +7,7 @@ require 'tmpdir'
 require_relative '../commands/const'
 require_relative '../commands/help'
 require_relative '../commands/list'
+require_relative '../commands/prop'
 require_relative '../commands/sysinfo'
 require_relative '../lib/color'
 require_relative '../lib/const'
@@ -53,7 +54,7 @@ DOC = <<~DOCOPT
     crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew list [options] [-v|--verbose] (available|installed|compatible|incompatible)
     crew postinstall [options] [-v|--verbose] <name> ...
-    crew prop [-v|--verbose]
+    crew prop [<property>]
     crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew remove [options] [-v|--verbose] <name> ...
     crew search [options] [-v|--verbose] [<name> ...]
@@ -357,16 +358,6 @@ def files(pkg_name)
     Total found: #{lines}
     Disk usage: #{human_size(size)}
   EOT
-end
-
-def prop(silent = false)
-  props = Package.print_boolean_properties
-  if silent
-    return props
-  else
-    puts props
-    puts "For more information, type 'crew help prop <property>' where <property> is one of the above properties.".lightblue
-  end
 end
 
 def whatprovides(regex_pat)
@@ -1921,7 +1912,7 @@ def files_command(args)
 end
 
 def help_command(args)
-  Command.help(args['<command>'], args['<subcommand>'])
+  Command.help(args['<command>'])
 end
 
 def install_command(args)
@@ -1963,8 +1954,8 @@ def postinstall_command(args)
   end
 end
 
-def prop_command(_)
-  prop
+def prop_command(args)
+  Command.prop(args['<property>'])
 end
 
 def reinstall_command(args)
