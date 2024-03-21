@@ -40,13 +40,15 @@ class Distcc < Autotools
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} INCLUDESERVER_PYTHON=#{CREW_PREFIX}/bin/python3 install"
-    # Package symlinks
-    FileUtils.mkdir_p "#{CREW_DEST_LIB_PREFIX}/distcc/bin"
+    # Package symlinks into lib/distcc, not ARCH_LIB/distcc, since that
+    # is where distcc looks.
+    @distcc_destbin_path = File.join(CREW_DEST_PREFIX, 'lib/distcc/bin')
+    FileUtils.mkdir_p @distcc_destbin_path
     distcc_targets = %W[c++ c89 c99 cc clang clang++ cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-$(gcc -dumpversion)]
     distcc_targets.each do |bin|
       if File.file?("#{CREW_PREFIX}/bin/#{bin}")
         puts "Creating distcc symlink for #{CREW_PREFIX}/bin/#{bin} .".orange
-        FileUtils.ln_s "#{CREW_PREFIX}/bin/#{bin}", "#{CREW_DEST_LIB_PREFIX}/distcc/bin/#{bin}"
+        FileUtils.ln_s "#{CREW_PREFIX}/bin/#{bin}", File.join(@distcc_destbin_path, bin).to_s
       end
     end
     File.write 'distccd.conf.d', <<~DISTCCD_CONF_D_EOF
