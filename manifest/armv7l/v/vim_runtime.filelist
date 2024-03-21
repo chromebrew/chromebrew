@@ -25,6 +25,7 @@
 /usr/local/share/vim/vim91/autoload/haskellcomplete.vim
 /usr/local/share/vim/vim91/autoload/htmlcomplete.vim
 /usr/local/share/vim/vim91/autoload/javascriptcomplete.vim
+/usr/local/share/vim/vim91/autoload/modula2.vim
 /usr/local/share/vim/vim91/autoload/netrw.vim
 /usr/local/share/vim/vim91/autoload/netrwFileHandlers.vim
 /usr/local/share/vim/vim91/autoload/netrwSettings.vim
@@ -129,6 +130,7 @@
 /usr/local/share/vim/vim91/compiler/gfortran.vim
 /usr/local/share/vim/vim91/compiler/ghc.vim
 /usr/local/share/vim/vim91/compiler/gjs.vim
+/usr/local/share/vim/vim91/compiler/gm2.vim
 /usr/local/share/vim/vim91/compiler/gnat.vim
 /usr/local/share/vim/vim91/compiler/go.vim
 /usr/local/share/vim/vim91/compiler/haml.vim
@@ -373,6 +375,7 @@
 /usr/local/share/vim/vim91/ftplugin/apache.vim
 /usr/local/share/vim/vim91/ftplugin/arch.vim
 /usr/local/share/vim/vim91/ftplugin/art.vim
+/usr/local/share/vim/vim91/ftplugin/asciidoc.vim
 /usr/local/share/vim/vim91/ftplugin/asm.vim
 /usr/local/share/vim/vim91/ftplugin/aspvbs.vim
 /usr/local/share/vim/vim91/ftplugin/automake.vim
@@ -474,6 +477,7 @@
 /usr/local/share/vim/vim91/ftplugin/hostsaccess.vim
 /usr/local/share/vim/vim91/ftplugin/html.vim
 /usr/local/share/vim/vim91/ftplugin/htmldjango.vim
+/usr/local/share/vim/vim91/ftplugin/hurl.vim
 /usr/local/share/vim/vim91/ftplugin/i3config.vim
 /usr/local/share/vim/vim91/ftplugin/icon.vim
 /usr/local/share/vim/vim91/ftplugin/indent.vim
@@ -547,6 +551,7 @@
 /usr/local/share/vim/vim91/ftplugin/ocaml.vim
 /usr/local/share/vim/vim91/ftplugin/occam.vim
 /usr/local/share/vim/vim91/ftplugin/octave.vim
+/usr/local/share/vim/vim91/ftplugin/odin.vim
 /usr/local/share/vim/vim91/ftplugin/openvpn.vim
 /usr/local/share/vim/vim91/ftplugin/pamconf.vim
 /usr/local/share/vim/vim91/ftplugin/pascal.vim
@@ -768,6 +773,7 @@
 /usr/local/share/vim/vim91/indent/obse.vim
 /usr/local/share/vim/vim91/indent/ocaml.vim
 /usr/local/share/vim/vim91/indent/occam.vim
+/usr/local/share/vim/vim91/indent/odin.vim
 /usr/local/share/vim/vim91/indent/pascal.vim
 /usr/local/share/vim/vim91/indent/perl.vim
 /usr/local/share/vim/vim91/indent/php.vim
@@ -1034,6 +1040,7 @@
 /usr/local/share/vim/vim91/syntax/chicken.vim
 /usr/local/share/vim/vim91/syntax/chill.vim
 /usr/local/share/vim/vim91/syntax/chordpro.vim
+/usr/local/share/vim/vim91/syntax/chuck.vim
 /usr/local/share/vim/vim91/syntax/cl.vim
 /usr/local/share/vim/vim91/syntax/clean.vim
 /usr/local/share/vim/vim91/syntax/clipper.vim
@@ -1314,6 +1321,9 @@
 /usr/local/share/vim/vim91/syntax/model.vim
 /usr/local/share/vim/vim91/syntax/modsim3.vim
 /usr/local/share/vim/vim91/syntax/modula2.vim
+/usr/local/share/vim/vim91/syntax/modula2/opt/iso.vim
+/usr/local/share/vim/vim91/syntax/modula2/opt/pim.vim
+/usr/local/share/vim/vim91/syntax/modula2/opt/r10.vim
 /usr/local/share/vim/vim91/syntax/modula3.vim
 /usr/local/share/vim/vim91/syntax/mojo.vim
 /usr/local/share/vim/vim91/syntax/monk.vim
@@ -1352,6 +1362,7 @@
 /usr/local/share/vim/vim91/syntax/obse.vim
 /usr/local/share/vim/vim91/syntax/ocaml.vim
 /usr/local/share/vim/vim91/syntax/occam.vim
+/usr/local/share/vim/vim91/syntax/odin.vim
 /usr/local/share/vim/vim91/syntax/omnimark.vim
 /usr/local/share/vim/vim91/syntax/opam.vim
 /usr/local/share/vim/vim91/syntax/openroad.vim
@@ -1720,6 +1731,7 @@
 /usr/local/share/vim/vim91/tutor/tutor.ko
 /usr/local/share/vim/vim91/tutor/tutor.ko.euc
 /usr/local/share/vim/vim91/tutor/tutor.ko.utf-8
+/usr/local/share/vim/vim91/tutor/tutor.lt.utf-8
 /usr/local/share/vim/vim91/tutor/tutor.lv.utf-8
 /usr/local/share/vim/vim91/tutor/tutor.nb
 /usr/local/share/vim/vim91/tutor/tutor.nb.utf-8
