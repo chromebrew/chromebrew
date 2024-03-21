@@ -1400,6 +1400,11 @@ url: https://sourceforge.net/projects/disktype/files/disktype/
 activity: none
 ---
 kind: url
+name: distcc
+url: https://github.com/distcc/distcc/releases
+activity: low
+---
+kind: url
 name: diy
 url: https://github.com/diatomic/diy/releases
 activity: none
