@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd6536cd3c5b1bc719a7ea4d25fa4d9661fd2c07b98d04d49ad16bdff65f2eed7',
-     armv7l: 'd6536cd3c5b1bc719a7ea4d25fa4d9661fd2c07b98d04d49ad16bdff65f2eed7',
-       i686: '96f31b378fb85f77ec39f5ca6428e7779eec43a3f482255880ca56700183eda2',
-     x86_64: '560ae9b802df702290e4cf3fc3c218dac7a447dea9e5d4f9769a05af10bdec60'
+    aarch64: 'e25ab1ac188436d31d2346a5ef6376294d591a045e71538e29ac333acfd834a7',
+     armv7l: 'e25ab1ac188436d31d2346a5ef6376294d591a045e71538e29ac333acfd834a7',
+       i686: '580c9442891f2460b0ac375586ff9c8193f7230f94a98777e99ddf35fbd77033',
+     x86_64: '0c8f42159ec36100edf91d22126b19fa29e7a876440cea42b5c591fb2b7b16dd'
   })
 
   depends_on 'avahi' # R
@@ -93,7 +93,7 @@ class Distcc < Autotools
     BASHDDISTCCD_EOF
     FileUtils.install 'bash.d_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
-      PATH=#{CREW_LIB_PREFIX}/distcc/bin:$PATH
+      PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
   end
