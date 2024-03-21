@@ -7,6 +7,7 @@ require 'tmpdir'
 require_relative '../commands/const'
 require_relative '../commands/help'
 require_relative '../commands/list'
+require_relative '../commands/sysinfo'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/convert_size'
@@ -56,7 +57,7 @@ DOC = <<~DOCOPT
     crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew remove [options] [-v|--verbose] <name> ...
     crew search [options] [-v|--verbose] [<name> ...]
-    crew sysinfo [-v|--verbose] [options]
+    crew sysinfo [-v|--verbose]
     crew test [-v|--verbose] [<name> ...]
     crew update [options] [-v|--verbose] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
@@ -2000,46 +2001,7 @@ def search_command(args)
 end
 
 def sysinfo_command(_args)
-  # newer version of Chrome OS exports info to env by default
-  lsb_release = if File.file?('/etc/lsb-release')
-                  File.read('/etc/lsb-release').scan(/^(.+?)=(.+)$/).to_h
-                else
-                  # newer version of Chrome OS exports info to env by default
-                  ENV
-                end
-
-  git_commit_message_format = '%h `%s (%cr)`'
-
-  sysinfo_markdown_header = <<~MDHEADER
-    <details><summary>Expand</summary>
-
-  MDHEADER
-  sysinfo_markdown_body = <<~MDBODY
-    - Architecture: `#{KERN_ARCH}` (`#{ARCH}`)
-    - Processor vendor: `#{CPUINFO['vendor_id'] || 'ARM'}`
-    - User space: `#{Dir.exist?('/lib64') ? '64' : '32'}-bit`
-    - Chromebrew Kernel version: `#{CREW_KERNEL_VERSION}`
-    - Chromebrew Running in Container: `#{CREW_IN_CONTAINER}`
-
-    - Chromebrew version: `#{CREW_VERSION}`
-    - Chromebrew prefix: `#{CREW_PREFIX}`
-    - Chromebrew libdir: `#{CREW_LIB_PREFIX}`
-
-    - Last update in local repository: #{`git -C '#{CREW_LIB_PATH}' show -s --format='#{git_commit_message_format}'`.chomp}
-
-    - OS variant: `#{lsb_release['CHROMEOS_RELEASE_NAME']}`
-    - OS version: `#{lsb_release['CHROMEOS_RELEASE_BUILDER_PATH']}`
-    - OS channel: `#{lsb_release['CHROMEOS_RELEASE_TRACK']}`
-  MDBODY
-  sysinfo_markdown_footer = <<~MDFOOTER
-
-    </details>
-  MDFOOTER
-  if @opt_verbose
-    puts sysinfo_markdown_header, sysinfo_markdown_body, sysinfo_markdown_footer
-  else
-    puts sysinfo_markdown_body.tr('`', '')
-  end
+  Command.sysinfo(@opt_verbose)
 end
 
 def test_command(args)

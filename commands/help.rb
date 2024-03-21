@@ -110,7 +110,7 @@ class Command
     when 'sysinfo'
       puts <<~EOT
         Show system information.
-        Usage: crew sysinfo
+        Usage: crew sysinfo [-v|--verbose]
         If `-v` or `--verbose` is present, show system information with raw markdown.
       EOT
     when 'test'
