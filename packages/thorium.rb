@@ -15,7 +15,6 @@ class Thorium < Package
 
   no_compile_needed
   no_shrink
-  print_source_bashrc
 
   def self.build
     @thoriumenv = <<~EOF

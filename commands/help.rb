@@ -212,8 +212,6 @@ def help_prop(property)
       puts "Use the 'no_zstd' property for the alternate xz compression algorithm."
     when 'patchelf'
       puts "Use the 'patchelf' property for patchelf execution."
-    when 'print_source_bashrc'
-      puts "Prints 'source ~/.bashrc' message at end of install."
     when 'run_tests'
       puts "Use the 'run_tests' property to execute make check tests."
     else

@@ -22,7 +22,6 @@ class Musl_perl < Package
   depends_on 'musl_native_toolchain'
   depends_on 'musl_zlib' => :build
   depends_on 'musl_bz2' => :build
-  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

@@ -23,7 +23,6 @@ class Musl_libunbound < Package
 
   is_musl
   is_static
-  print_source_bashrc
 
   def self.patch
     system 'filefix'

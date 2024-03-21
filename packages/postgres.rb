@@ -37,8 +37,6 @@ class Postgres < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  print_source_bashrc
-
   PGDATA = "#{CREW_PREFIX}/share/pgsql/data".freeze
 
   def self.patch
