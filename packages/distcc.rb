@@ -17,7 +17,7 @@ class Distcc < Autotools
     aarch64: 'b13fe326d37cea2d67ab019b8f39e2c5ee908bc0350ac94bef00665c24c0322f',
      armv7l: 'b13fe326d37cea2d67ab019b8f39e2c5ee908bc0350ac94bef00665c24c0322f',
        i686: '51dfc7d315d95e0a39854ea81b1162acd0a82b3789d90f9b8f97d99135ee1dea',
-     x86_64: '170232c391629626fa8452589d966c9d73b14030d01def9965c5218555abda9b'
+     x86_64: '0e5fc7b49b98fae285e93f5329c4a3aaa395b9216a3c80dab6c3044ddd79e1ab'
   })
 
   depends_on 'avahi' # R
