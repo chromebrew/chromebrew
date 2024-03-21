@@ -1,15 +1,17 @@
 /usr/local/bin/distcc
 /usr/local/bin/distccd
-/usr/local/bin/distccmon-gnome
 /usr/local/bin/distccmon-text
 /usr/local/bin/lsdistcc
 /usr/local/bin/pump
 /usr/local/bin/startdistccd
 /usr/local/bin/stopdistccd
+/usr/local/etc/bash.d/distccd
+/usr/local/etc/conf.d/distccd.default
 /usr/local/etc/default/distcc
 /usr/local/etc/distcc/clients.allow
 /usr/local/etc/distcc/commands.allow.sh
 /usr/local/etc/distcc/hosts
+/usr/local/etc/env.d/distccd
 /usr/local/lib/distcc/bin/armv7l-cros-linux-gnueabihf-g++
 /usr/local/lib/distcc/bin/armv7l-cros-linux-gnueabihf-gcc
 /usr/local/lib/distcc/bin/c++
@@ -73,7 +75,6 @@
 /usr/local/lib/python3.12/site-packages/include_server/setup.py
 /usr/local/lib/python3.12/site-packages/include_server/statistics.py
 /usr/local/sbin/update-distcc-symlinks
-/usr/local/share/applications/distccmon-gnome.desktop
 /usr/local/share/doc/distcc/AUTHORS
 /usr/local/share/doc/distcc/COPYING
 /usr/local/share/doc/distcc/INSTALL
@@ -103,4 +104,3 @@
 /usr/local/share/man/man1/include_server.1.zst
 /usr/local/share/man/man1/lsdistcc.1.zst
 /usr/local/share/man/man1/pump.1.zst
-/usr/local/share/pixmaps/distccmon-gnome.png

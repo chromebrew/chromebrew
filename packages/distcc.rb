@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Distcc < Autotools
   description 'Distributed compilation service for C, C++ and Objective-C'
   homepage 'https://github.com/distcc/distcc'
-  version '3.4-b83dd2e'
+  version '3.4-b83dd2e-py3.12'
   license 'GPL'
   compatibility 'all'
   source_url 'https://github.com/distcc/distcc.git'
@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f548803c17cc75f3dafcb3391f301d4b8670ec32b525448b0dcba749933d9472',
-     armv7l: 'f548803c17cc75f3dafcb3391f301d4b8670ec32b525448b0dcba749933d9472',
-       i686: '84df4f92ac843f21c40f3c543ea185f5eca70b175e69ed2b12229103bf20fc4f',
-     x86_64: '1e3048dc2a6fa0b8bb8f65b98a23e9edadf28a60c9328359408d9b85e32563ea'
+    aarch64: '21e2efad03d6627ed75ddcd7eac298dff9f924669441f37033ac7c78ed6c91a4',
+     armv7l: '21e2efad03d6627ed75ddcd7eac298dff9f924669441f37033ac7c78ed6c91a4',
+       i686: '8dbfb2af63f699c83ad37cdf37058170ecb600a77ac5d34f2faf43b4d5d7b113',
+     x86_64: '462723dfeb4e7d2df6591d237b3f6832ffc9d475b8b742af501342468da1370b'
   })
 
   depends_on 'avahi' # R
@@ -58,7 +58,7 @@ class Distcc < Autotools
       #
       #DISTCC_ARGS="--allow 192.168.0.0/24 --log-level error --log-file /tmp/distccd.log"
     DISTCCD_CONF_D_EOF
-    FileUtils.install 'distccd.conf.d', "#{CREW_PREFIX}/etc/conf.d/distccd.default", mode: 0o644
+    FileUtils.install 'distccd.conf.d', "#{CREW_DEST_PREFIX}/etc/conf.d/distccd.default", mode: 0o644
     File.write 'startdistccd', <<~START_DISTCCDEOF
       #!/bin/bash -a
       if [ -z ${START_DISTCCD+x} ]; then
@@ -86,11 +86,11 @@ class Distcc < Autotools
     File.write 'bash.d_distccd', <<~BASHDDISTCCD_EOF
       source #{CREW_PREFIX}/bin/startdistccd
     BASHDDISTCCD_EOF
-    FileUtils.install 'bash.d_distccd', "#{CREW_PREFIX}/etc/bash.d/distccd", mode: 0o644
+    FileUtils.install 'bash.d_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
       [[ -n ${START_DISTCCD} ]] && PATH=#{CREW_LIB_PREFIX}/distcc/bin:$PATH
     ENVDDISTCCD_EOF
-    FileUtils.install 'env.d_distccd', "#{CREW_PREFIX}/etc/env.d/distccd", mode: 0o644
+    FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
   end
 
   def self.postinstall

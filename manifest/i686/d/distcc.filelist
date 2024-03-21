@@ -5,10 +5,13 @@
 /usr/local/bin/pump
 /usr/local/bin/startdistccd
 /usr/local/bin/stopdistccd
+/usr/local/etc/bash.d/distccd
+/usr/local/etc/conf.d/distccd.default
 /usr/local/etc/default/distcc
 /usr/local/etc/distcc/clients.allow
 /usr/local/etc/distcc/commands.allow.sh
 /usr/local/etc/distcc/hosts
+/usr/local/etc/env.d/distccd
 /usr/local/lib/distcc/bin/c++
 /usr/local/lib/distcc/bin/c89
 /usr/local/lib/distcc/bin/c99
