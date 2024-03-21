@@ -20,19 +20,13 @@ class Distcc < Autotools
      x86_64: '1e3048dc2a6fa0b8bb8f65b98a23e9edadf28a60c9328359408d9b85e32563ea'
   })
 
-  depends_on 'at_spi2_core' unless ARCH == 'i686' # R
   depends_on 'avahi' # R
-  depends_on 'cairo' unless ARCH == 'i686' # R
   depends_on 'gcc_dev' # L
   depends_on 'gcc_lib' # R
-  depends_on 'gdk_pixbuf' unless ARCH == 'i686' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
-  depends_on 'gtk3' unless ARCH == 'i686' # R
-  depends_on 'harfbuzz' unless ARCH == 'i686' # R
   depends_on 'llvm18_dev' # L
   depends_on 'llvm18_lib' # R
-  depends_on 'pango' unless ARCH == 'i686' # R
   depends_on 'popt' # R
   depends_on 'python3' => :build
   depends_on 'zlibpkg' # R
@@ -42,7 +36,7 @@ class Distcc < Autotools
   end
 
   pre_configure_options "CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon' NATIVE_COMPILER_TRIPLE='#{CREW_TGT}' INCLUDESERVER_PYTHON='#{CREW_PREFIX}/bin/python3'"
-  configure_options "--enable-rfc2553 --disable-Werror --with-python-sys-prefix #{ARCH == 'i686' ? '' : '--with-gtk'}"
+  configure_options "--enable-rfc2553 --disable-Werror --with-python-sys-prefix"
 
   def self.install
     system "make DESTDIR=#{CREW_DEST_DIR} INCLUDESERVER_PYTHON=#{CREW_PREFIX}/bin/python3 install"
