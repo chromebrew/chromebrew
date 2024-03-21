@@ -63,8 +63,8 @@ class Distcc < Autotools
     FileUtils.install 'distccd.conf.d', "#{CREW_DEST_PREFIX}/etc/conf.d/distccd.default", mode: 0o644
     File.write 'startdistccd', <<~START_DISTCCDEOF
       #!/bin/bash -a
-      if [ -z ${START_DISTCCD+x} ]; then
-        # Set env variable START_DISTCCD to enable distccd
+      if [[ $(pgrep -wc distccd) > 0 ]]; then
+        # distccd is already running.
         # Return or exit depending upon whether script was sourced.
         (return 0 2>/dev/null) && return 0 || exit 0
       fi
@@ -77,13 +77,7 @@ class Distcc < Autotools
       done
       DISTCC_ARGS+="-N 20 ‐‐allow‐private ‐‐zeroconf --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
-      if [[ $(pgrep -wc distccd) > 0 ]]; then
-        # distccd is already running.
-        # Return or exit depending upon whether script was sourced.
-        (return 0 2>/dev/null) && return 0 || exit 0
-      else
-        #{CREW_PREFIX}/bin/distccd --no-detach --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &
-      fi
+      #{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &
     START_DISTCCDEOF
     FileUtils.install 'startdistccd', "#{CREW_DEST_PREFIX}/bin/startdistccd", mode: 0o755
     File.write 'stopdistccd', <<~STOP_DISTCCDEOF
@@ -97,12 +91,12 @@ class Distcc < Autotools
     BASHDDISTCCD_EOF
     FileUtils.install 'bash.d_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
-      [[ -n ${START_DISTCCD} ]] && PATH=#{CREW_LIB_PREFIX}/distcc/bin:$PATH
+      PATH=#{CREW_LIB_PREFIX}/distcc/bin:$PATH
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
   end
 
   def self.postinstall
-    ExitMessage.add "Set the env variable START_DISTCCD with \"echo -e '\\nexport START_DISTCCD=1' >> ~/.bashrc\" \nand run 'source ~/.bashrc ; startdistccd' to start distccd."
+    ExitMessage.add "Run 'source ~/.bashrc ; startdistccd' to start distccd."
   end
 end
