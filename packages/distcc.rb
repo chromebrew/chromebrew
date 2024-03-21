@@ -31,6 +31,8 @@ class Distcc < Autotools
   depends_on 'python3' => :build
   depends_on 'zlibpkg' # R
 
+  print_source_bashrc
+
   def self.patch
     system "sed -i 's/ install-gnome-data//g' Makefile.in"
   end
@@ -94,9 +96,5 @@ class Distcc < Autotools
       PATH=#{CREW_LIB_PREFIX}/distcc/bin:$PATH
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
-  end
-
-  def self.postinstall
-    ExitMessage.add "Run 'source ~/.bashrc ; startdistccd' to start distccd."
   end
 end
