@@ -57,7 +57,7 @@ class Gcloud < Package
 
   def self.postinstall
     puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source ~/.bashrc && gcloud init\n".lightblue
+    puts "gcloud init\n".lightblue
   end
 
   def self.remove

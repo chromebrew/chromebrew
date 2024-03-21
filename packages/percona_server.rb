@@ -89,7 +89,6 @@ class Percona_server < Package
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startmysql ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startmysql' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
     puts
     puts 'To completely remove MySQL and all databases, perform the following:'.lightblue
     puts 'crew remove percona_server'.lightblue

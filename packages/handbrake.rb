@@ -106,8 +106,5 @@ class Handbrake < Package
     puts
     puts "Type 'HandBrakeCLI' for the command line.".lightblue
     puts
-    puts 'Please run the following to finish the install:'.orange
-    puts "source #{CREW_PREFIX}/etc/env.d/10-handbrake".lightblue
-    puts
   end
 end

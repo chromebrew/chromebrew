@@ -31,11 +31,4 @@ class Cros_adapta < Package
     FileUtils.mv Dir['gtk*/'], @_dest_dir
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/cros_adapta", @_env
   end
-
-  def self.postinstall
-    puts nil, <<~EOT.lightblue
-      To complete the installation, execute the following:
-      source #{CREW_PREFIX}/etc/profile
-    EOT
-  end
 end
