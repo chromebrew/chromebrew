@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a5eafd32cf67ed1bbdc42eeecb2273eb3ccdab5fa3a58c312ddeb7c9aba9cb6',
-     armv7l: '4a5eafd32cf67ed1bbdc42eeecb2273eb3ccdab5fa3a58c312ddeb7c9aba9cb6',
-       i686: 'a1f2b3e0f7b092457ddfbbbf06eec135aa0178c3e1ee33503c8570a7d3321370',
-     x86_64: 'dcc12253b8444b2a7b24688a7072d84f9c4e216bcec538e69e1e16c55557c283'
+    aarch64: '3d968e6644d0ee64d74ad1978f583e12351f1a033a1804b531dedb3991af621c',
+     armv7l: '3d968e6644d0ee64d74ad1978f583e12351f1a033a1804b531dedb3991af621c',
+       i686: '06c2e9e275df2ac43b765816b6e7bf896f22ebdd4450c1534335b76607337c5c',
+     x86_64: '93269ee15ec6130573a933a5b470971b5affaa00850d16770f3bb12e88d6b58b'
   })
 
   depends_on 'avahi' # R
@@ -68,8 +68,8 @@ class Distcc < Autotools
     end
     File.write 'clang', <<~CLC_EOF
       #!/bin/bash
-      machine=$(gcc -dumpmachine)
-      version=$(gcc -dumpversion)
+      machine=$(#{CREW_PREFIX}/bin/gcc -dumpmachine)
+      version=$(#{CREW_PREFIX}/bin/gcc -dumpversion)
       gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
       exec distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} -L ${gnuc_lib} "$@"
     CLC_EOF
@@ -77,12 +77,12 @@ class Distcc < Autotools
     FileUtils.install 'clang', "#{@distcc_destbin_path}/clang-#{@clang_version}", mode: 0o755
     File.write 'clang++', <<~CLCPLUSPLUS_EOF
       #!/bin/bash
-      machine=$(gcc -dumpmachine)
-      version=$(gcc -dumpversion)
+      machine=$(#{CREW_PREFIX}/bin/gcc -dumpmachine)
+      version=$(#{CREW_PREFIX}/bin/gcc -dumpversion)
       cxx_sys=#{CREW_PREFIX}/include/c++/${version}
       cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
       gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-      exec distcc #{CREW_PREFIX}/bin/clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+      exec distcc #{CREW_PREFIX}/bin/clang++ -fPIC -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
     CLCPLUSPLUS_EOF
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++", mode: 0o755
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++-#{@clang_version}", mode: 0o755

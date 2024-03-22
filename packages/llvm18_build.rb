@@ -128,7 +128,7 @@ class Llvm18_build < Package
         cxx_sys=#{CREW_PREFIX}/include/c++/${version}
         cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
         gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-        clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+        clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "mold -run cmake -B builddir -G Ninja llvm \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
