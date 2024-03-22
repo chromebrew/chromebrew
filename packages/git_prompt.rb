@@ -11,8 +11,6 @@ class Git_prompt < Package
   compatibility 'all'
   source_url 'SKIP'
 
-  print_source_bashrc
-
   def self.build
     downloader "https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh",
                'f1eafdac2be85158de4cd62bca5b4404e3fc3b4f3604ab6e00e1dc44efe315cd'

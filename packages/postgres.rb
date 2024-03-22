@@ -37,8 +37,6 @@ class Postgres < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  print_source_bashrc
-
   PGDATA = "#{CREW_PREFIX}/share/pgsql/data".freeze
 
   def self.patch
@@ -90,7 +88,6 @@ class Postgres < Package
     system "initdb -D #{PGDATA}" unless File.exist? "#{PGDATA}/PG_VERSION"
     puts
     puts 'To complete the installation, execute the following:'.lightblue
-    puts 'source ~/.bashrc'.lightblue
     puts
     puts 'To start postgres: pg_ctl -l logfile start'.lightblue
     puts 'To stop postgres: pg_ctl stop'.lightblue

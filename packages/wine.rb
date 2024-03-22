@@ -52,7 +52,6 @@ class Wine < Package
   depends_on 'xdg_base' => :build
 
   no_lto
-  print_source_bashrc
 
   def self.build
     FileUtils.mkdir_p 'wine64-build'

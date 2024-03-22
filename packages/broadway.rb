@@ -68,7 +68,6 @@ class Broadway < Package
     puts "echo '# See https://developer.gnome.org/gtk3/stable/gtk-broadway.html' >> ~/.bashrc".lightblue
     puts "echo 'alias startbroadway=\"set -a && source ~/.broadway.env && set +a && initbroadway\"' >> ~/.bashrc".lightblue
     puts "echo 'startbroadway' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
     puts
     puts "To start the broadwayd daemon, run 'startbroadway'".lightblue
     puts "To stop the broadwayd daemon, run 'stopbroadway'".lightblue

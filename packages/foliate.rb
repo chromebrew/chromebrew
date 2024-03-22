@@ -38,7 +38,6 @@ class Foliate < Package
     system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
     # update mime database
     system "update-mime-database #{CREW_PREFIX}/share/mime"
-    puts "\nExecute `source #{CREW_PREFIX}/etc/env.d/09-gdk_base` to finish the installation.".lightblue
-    puts "\nAfter the above, type 'foliate' to get started.\n".lightblue
+    puts "\nType 'foliate' to get started.\n".lightblue
   end
 end

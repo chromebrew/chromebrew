@@ -18,8 +18,6 @@ class Nodebrew < Package
      x86_64: '2845cc94c9d7507dff3270640178852e1552f3523bbb13634cc836b430cb03db'
   })
 
-  print_source_bashrc
-
   def self.patch
     downloader 'https://patch-diff.githubusercontent.com/raw/hokaccha/nodebrew/pull/75.patch', '80f3e43cb92cdf1ea71db675c34987fcd059fc3af3d45094573c3a7d33759213'
     system 'patch -p1 -i 75.patch'

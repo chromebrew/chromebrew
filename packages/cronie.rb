@@ -89,7 +89,6 @@ class Cronie < Package
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startcrond ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startcrond' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
     puts
   end
 end

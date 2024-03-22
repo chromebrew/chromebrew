@@ -30,8 +30,6 @@ class Android_studio < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the installation, execute the following:".lightblue
-    puts "source #{HOME}/.bashrc".lightblue
     puts "\nTo start using Android Studio, type `studio`.\n".lightblue
   end
 

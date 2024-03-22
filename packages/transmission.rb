@@ -45,8 +45,6 @@ class Transmission < Package
   depends_on 'vulkan_icd_loader' # R
   depends_on 'xdg_base' # L
 
-  print_source_bashrc
-
   def self.build
     system "cmake -B builddir -G Ninja \
       #{CREW_CMAKE_OPTIONS} \

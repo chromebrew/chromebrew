@@ -26,7 +26,6 @@ class Musl_cyrus_sasl < Package
   depends_on 'musl_krb5' => :build
 
   is_static
-  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

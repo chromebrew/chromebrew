@@ -13,7 +13,6 @@ class Composer < Package
   depends_on 'xdg_base'
 
   no_compile_needed
-  print_source_bashrc
 
   def self.preinstall
     if Dir.exist?("#{HOME}/.config") && !File.symlink?("#{HOME}/.config")

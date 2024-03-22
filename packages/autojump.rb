@@ -12,7 +12,6 @@ class Autojump < Package
   depends_on 'python3'
 
   no_compile_needed
-  print_source_bashrc
 
   def self.build
     File.write 'autojump.sh', <<~EOF
