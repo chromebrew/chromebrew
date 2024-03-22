@@ -18,11 +18,14 @@
 /usr/local/lib/distcc/bin/cc
 /usr/local/lib/distcc/bin/clang
 /usr/local/lib/distcc/bin/clang++
+/usr/local/lib/distcc/bin/clang-wrapper
 /usr/local/lib/distcc/bin/cpp
 /usr/local/lib/distcc/bin/g++
 /usr/local/lib/distcc/bin/gcc
+/usr/local/lib/distcc/bin/gcc-wrapper
 /usr/local/lib/distcc/bin/x86_64-cros-linux-gnu-g++
 /usr/local/lib/distcc/bin/x86_64-cros-linux-gnu-gcc
+/usr/local/lib/distcc/bin/x86_64-cros-linux-gnu-gcc-13
 /usr/local/lib64/python3.12/site-packages/include_server-3.4-py3.12.egg-info/PKG-INFO
 /usr/local/lib64/python3.12/site-packages/include_server-3.4-py3.12.egg-info/SOURCES.txt
 /usr/local/lib64/python3.12/site-packages/include_server-3.4-py3.12.egg-info/dependency_links.txt

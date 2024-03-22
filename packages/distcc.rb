@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e25ab1ac188436d31d2346a5ef6376294d591a045e71538e29ac333acfd834a7',
-     armv7l: 'e25ab1ac188436d31d2346a5ef6376294d591a045e71538e29ac333acfd834a7',
-       i686: '580c9442891f2460b0ac375586ff9c8193f7230f94a98777e99ddf35fbd77033',
-     x86_64: '0c8f42159ec36100edf91d22126b19fa29e7a876440cea42b5c591fb2b7b16dd'
+    aarch64: '6cdb8940610bb299b2ee35573bd35f8f9ca13ec66a3ec77602501ddcc732a4ac',
+     armv7l: '6cdb8940610bb299b2ee35573bd35f8f9ca13ec66a3ec77602501ddcc732a4ac',
+       i686: '359ff7cbecb8ea3ba6ee98d2e5af2a9e09ae99791291fedba3e5199a0883d075',
+     x86_64: 'ce162e775ce020dc74e0b00ba4616de3ae57f2f31448632b0106178e1168df72'
   })
 
   depends_on 'avahi' # R
@@ -46,11 +46,38 @@ class Distcc < Autotools
     # is where distcc looks.
     @distcc_destbin_path = File.join(CREW_DEST_PREFIX, 'lib/distcc/bin')
     FileUtils.mkdir_p @distcc_destbin_path
-    distcc_targets = %W[c++ c89 c99 cc clang clang++ cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-$(gcc -dumpversion)]
-    distcc_targets.each do |bin|
-      if File.file?("#{CREW_PREFIX}/bin/#{bin}")
-        puts "Creating distcc symlink for #{CREW_PREFIX}/bin/#{bin} .".orange
-        FileUtils.ln_s "#{CREW_PREFIX}/bin/#{bin}", File.join(@distcc_destbin_path, bin).to_s
+    @gcc_version = `gcc -dumpversion`.chomp
+    distcc_gcc_targets = %W[c++ c89 c99 cc clang clang++ cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-#{@gcc_version}]
+    distcc_clang_targets = %w[clang clang++]
+    File.write 'gcc-wrapper', <<~GCC_WRAPPEREOF
+      #!/bin/bash
+      exec #{CREW_TGT}-g${0:$[-2]} "$@"
+    GCC_WRAPPEREOF
+    FileUtils.install 'gcc-wrapper', "#{@distcc_destbin_path}/gcc-wrapper", mode: 0o755
+    File.write 'clang-wrapper', <<~CLANG_WRAPPEREOF
+      #!/bin/bash
+      exec #{CREW_TGT}-$(basename ${0}) "$@"
+    CLANG_WRAPPEREOF
+    FileUtils.install 'clang-wrapper', "#{@distcc_destbin_path}/clang-wrapper", mode: 0o755
+    distcc_clang_targets.each do |bin|
+      Dir.chdir @distcc_destbin_path do
+        FileUtils.rm bin if File.file?(bin)
+      end
+    end
+    File.write 'clang', <<~CLC_EOF
+      #!/bin/bash
+      exec clc "$@"
+    CLC_EOF
+    FileUtils.install 'clang', "#{@distcc_destbin_path}/clang", mode: 0o755
+    File.write 'clang++', <<~CLCPLUSPLUS_EOF
+      #!/bin/bash
+      exec clc++ "$@"
+    CLCPLUSPLUS_EOF
+    FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++", mode: 0o755
+    distcc_gcc_targets.each do |bin|
+      Dir.chdir @distcc_destbin_path do
+        FileUtils.rm bin if File.file?(bin)
+        FileUtils.ln_s 'gcc-wrapper', bin
       end
     end
     File.write 'distccd.conf.d', <<~DISTCCD_CONF_D_EOF
@@ -94,6 +121,8 @@ class Distcc < Autotools
     FileUtils.install 'bash.d_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
+      DISTCC_VERBOSE=1
+      DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc/
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
   end
