@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6cdb8940610bb299b2ee35573bd35f8f9ca13ec66a3ec77602501ddcc732a4ac',
-     armv7l: '6cdb8940610bb299b2ee35573bd35f8f9ca13ec66a3ec77602501ddcc732a4ac',
-       i686: '359ff7cbecb8ea3ba6ee98d2e5af2a9e09ae99791291fedba3e5199a0883d075',
-     x86_64: 'ce162e775ce020dc74e0b00ba4616de3ae57f2f31448632b0106178e1168df72'
+    aarch64: 'fb8acf725b677568a9d125dd44061d12de64574666e68aef2fb89a96d9904e2b',
+     armv7l: 'fb8acf725b677568a9d125dd44061d12de64574666e68aef2fb89a96d9904e2b',
+       i686: '240a63048219601f58db18b2963c1fb03b600c99b2a19e09a1088f7b84d3fb5e',
+     x86_64: 'fbd15556215f02f41f1357fb993d3f42ddb617bb581fb098d383bd8766d797cb'
   })
 
   depends_on 'avahi' # R
@@ -47,7 +47,7 @@ class Distcc < Autotools
     @distcc_destbin_path = File.join(CREW_DEST_PREFIX, 'lib/distcc/bin')
     FileUtils.mkdir_p @distcc_destbin_path
     @gcc_version = `gcc -dumpversion`.chomp
-    distcc_gcc_targets = %W[c++ c89 c99 cc clang clang++ cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-#{@gcc_version}]
+    distcc_gcc_targets = %W[c++ c89 c99 cc cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-#{@gcc_version}]
     distcc_clang_targets = %w[clang clang++]
     File.write 'gcc-wrapper', <<~GCC_WRAPPEREOF
       #!/bin/bash
