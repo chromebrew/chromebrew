@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3d968e6644d0ee64d74ad1978f583e12351f1a033a1804b531dedb3991af621c',
-     armv7l: '3d968e6644d0ee64d74ad1978f583e12351f1a033a1804b531dedb3991af621c',
-       i686: '06c2e9e275df2ac43b765816b6e7bf896f22ebdd4450c1534335b76607337c5c',
-     x86_64: '93269ee15ec6130573a933a5b470971b5affaa00850d16770f3bb12e88d6b58b'
+    aarch64: '95a1906c4c838a0c7ddf1826036f49ce8eb1d4c9f8af8dc2022f7cac28e1123a',
+     armv7l: '95a1906c4c838a0c7ddf1826036f49ce8eb1d4c9f8af8dc2022f7cac28e1123a',
+       i686: 'df9179837d2aa948fef7c00d02a2d137f5a33166ddbea6358f79de7050314ae2',
+     x86_64: '898eaec9153fd02c015db0a487a1780bff090d779c3fa7427d9e5dc41ce6e2dc'
   })
 
   depends_on 'avahi' # R
@@ -71,7 +71,7 @@ class Distcc < Autotools
       machine=$(#{CREW_PREFIX}/bin/gcc -dumpmachine)
       version=$(#{CREW_PREFIX}/bin/gcc -dumpversion)
       gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-      exec distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+      exec distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} "$@"
     CLC_EOF
     FileUtils.install 'clang', "#{@distcc_destbin_path}/clang", mode: 0o755
     FileUtils.install 'clang', "#{@distcc_destbin_path}/clang-#{@clang_version}", mode: 0o755
@@ -82,7 +82,7 @@ class Distcc < Autotools
       cxx_sys=#{CREW_PREFIX}/include/c++/${version}
       cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
       gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-      exec distcc #{CREW_PREFIX}/bin/clang++ -fPIC -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+      exec distcc #{CREW_PREFIX}/bin/clang++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} "$@"
     CLCPLUSPLUS_EOF
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++", mode: 0o755
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++-#{@clang_version}", mode: 0o755
@@ -134,7 +134,7 @@ class Distcc < Autotools
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
       DISTCC_VERBOSE=1
-      DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc/
+      DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
   end
