@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '95a1906c4c838a0c7ddf1826036f49ce8eb1d4c9f8af8dc2022f7cac28e1123a',
-     armv7l: '95a1906c4c838a0c7ddf1826036f49ce8eb1d4c9f8af8dc2022f7cac28e1123a',
-       i686: 'df9179837d2aa948fef7c00d02a2d137f5a33166ddbea6358f79de7050314ae2',
-     x86_64: '898eaec9153fd02c015db0a487a1780bff090d779c3fa7427d9e5dc41ce6e2dc'
+    aarch64: '0bee70d8120d73184ef870f5ffb983d5907c749cca2c1aa9bfd9e84921cf6dad',
+     armv7l: '0bee70d8120d73184ef870f5ffb983d5907c749cca2c1aa9bfd9e84921cf6dad',
+       i686: '71a43c248ea16c7f00f20001b7023820dfa781576a72aebd57cbac96dda26b7d',
+     x86_64: 'd521ed3553de0c17da1311d71101377d719796ed80f1e4b9d642bd41dc237469'
   })
 
   depends_on 'avahi' # R
@@ -135,6 +135,8 @@ class Distcc < Autotools
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
       DISTCC_VERBOSE=1
       DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
+      mkdir -p $DISTCC_DIR
+      DISTCC_HOSTS='+zeroconf'
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
   end
