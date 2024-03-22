@@ -360,17 +360,11 @@ def files(pkg_name)
 end
 
 def prop(silent = false)
-  props = []
-  pkg = Package.new
-  excluded_methods = %w[compatible binary source json_creatable autoload include const_defined class_variable_defined singleton_class method_defined public_method_defined private_method_defined protected_method_defined instance_variable_defined instance_of kind_of is_a frozen nil eql respond_to equal]
-  all_methods = pkg.class.methods.grep(/\?$/).to_s.gsub(/([?:,\[\]])/, '').split
-  all_methods.each do |method|
-    props.push(method) unless excluded_methods.include?(method)
-  end
+  props = Package.print_boolean_properties
   if silent
     return props
   else
-    puts props.sort
+    puts props
     puts "For more information, type 'crew help prop <property>' where <property> is one of the above properties.".lightblue
   end
 end
