@@ -21,7 +21,8 @@
 /usr/local/lib/distcc/bin/cc
 /usr/local/lib/distcc/bin/clang
 /usr/local/lib/distcc/bin/clang++
-/usr/local/lib/distcc/bin/clang-wrapper
+/usr/local/lib/distcc/bin/clang++-18
+/usr/local/lib/distcc/bin/clang-18
 /usr/local/lib/distcc/bin/cpp
 /usr/local/lib/distcc/bin/g++
 /usr/local/lib/distcc/bin/gcc
