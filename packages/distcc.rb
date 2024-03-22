@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fb8acf725b677568a9d125dd44061d12de64574666e68aef2fb89a96d9904e2b',
-     armv7l: 'fb8acf725b677568a9d125dd44061d12de64574666e68aef2fb89a96d9904e2b',
-       i686: '240a63048219601f58db18b2963c1fb03b600c99b2a19e09a1088f7b84d3fb5e',
-     x86_64: 'fbd15556215f02f41f1357fb993d3f42ddb617bb581fb098d383bd8766d797cb'
+    aarch64: '4a5eafd32cf67ed1bbdc42eeecb2273eb3ccdab5fa3a58c312ddeb7c9aba9cb6',
+     armv7l: '4a5eafd32cf67ed1bbdc42eeecb2273eb3ccdab5fa3a58c312ddeb7c9aba9cb6',
+       i686: 'a1f2b3e0f7b092457ddfbbbf06eec135aa0178c3e1ee33503c8570a7d3321370',
+     x86_64: 'dcc12253b8444b2a7b24688a7072d84f9c4e216bcec538e69e1e16c55557c283'
   })
 
   depends_on 'avahi' # R
@@ -45,20 +45,22 @@ class Distcc < Autotools
     # Package symlinks into lib/distcc, not ARCH_LIB/distcc, since that
     # is where distcc looks.
     @distcc_destbin_path = File.join(CREW_DEST_PREFIX, 'lib/distcc/bin')
+    puts "@distcc_destbin_path is #{@distcc_destbin_path}"
     FileUtils.mkdir_p @distcc_destbin_path
     @gcc_version = `gcc -dumpversion`.chomp
+    @clang_version = `clang --version|grep version|cut -d " " -f3|cut -d'.' -f1`.chomp
     distcc_gcc_targets = %W[c++ c89 c99 cc cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-#{@gcc_version}]
-    distcc_clang_targets = %w[clang clang++]
+    distcc_clang_targets = %W[clang clang++ clang-#{@clang_version} clang++-#{@clang_version}]
     File.write 'gcc-wrapper', <<~GCC_WRAPPEREOF
       #!/bin/bash
-      exec #{CREW_TGT}-g${0:$[-2]} "$@"
+      exec distcc #{CREW_TGT}-g${0:$[-2]} "$@"
     GCC_WRAPPEREOF
     FileUtils.install 'gcc-wrapper', "#{@distcc_destbin_path}/gcc-wrapper", mode: 0o755
-    File.write 'clang-wrapper', <<~CLANG_WRAPPEREOF
-      #!/bin/bash
-      exec #{CREW_TGT}-$(basename ${0}) "$@"
-    CLANG_WRAPPEREOF
-    FileUtils.install 'clang-wrapper', "#{@distcc_destbin_path}/clang-wrapper", mode: 0o755
+    # File.write 'clang-wrapper', <<~CLANG_WRAPPEREOF
+    #  #!/bin/bash
+    #  exec #{CREW_TGT}-$(basename ${0}) "$@"
+    # CLANG_WRAPPEREOF
+    # FileUtils.install 'clang-wrapper', "#{@distcc_destbin_path}/clang-wrapper", mode: 0o755
     distcc_clang_targets.each do |bin|
       Dir.chdir @distcc_destbin_path do
         FileUtils.rm bin if File.file?(bin)
@@ -66,14 +68,24 @@ class Distcc < Autotools
     end
     File.write 'clang', <<~CLC_EOF
       #!/bin/bash
-      exec clc "$@"
+      machine=$(gcc -dumpmachine)
+      version=$(gcc -dumpversion)
+      gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+      exec distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} -L ${gnuc_lib} "$@"
     CLC_EOF
     FileUtils.install 'clang', "#{@distcc_destbin_path}/clang", mode: 0o755
+    FileUtils.install 'clang', "#{@distcc_destbin_path}/clang-#{@clang_version}", mode: 0o755
     File.write 'clang++', <<~CLCPLUSPLUS_EOF
       #!/bin/bash
-      exec clc++ "$@"
+      machine=$(gcc -dumpmachine)
+      version=$(gcc -dumpversion)
+      cxx_sys=#{CREW_PREFIX}/include/c++/${version}
+      cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
+      gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
+      exec distcc #{CREW_PREFIX}/bin/clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
     CLCPLUSPLUS_EOF
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++", mode: 0o755
+    FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++-#{@clang_version}", mode: 0o755
     distcc_gcc_targets.each do |bin|
       Dir.chdir @distcc_destbin_path do
         FileUtils.rm bin if File.file?(bin)
