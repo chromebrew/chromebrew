@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/color'
+require_relative '../lib/package'
+
+property_line = `grep -n "case property" ../commands/help.rb | cut -d: -f1`.to_i
+help_lines = `cat ../commands/help.rb | wc -l`.to_i
+tail_lines = help_lines - property_line
+help_properties = `tail -#{tail_lines} ../commands/help.rb | grep "  when '" | cut -d"'" -f2`.split("\n")
+package_properties = Package.print_boolean_properties.split(', ')
+if (package_properties.length - help_properties.length).positive?
+  puts 'Help test failed.'.lightred
+  puts 'Help is missing for the properties in commands/help.rb below:'.yellow
+  missing_properties = package_properties - help_properties
+  missing_properties.each do |property|
+    puts property.yellow
+  end
+else
+  puts 'Help test passed.'.lightgreen
+end
