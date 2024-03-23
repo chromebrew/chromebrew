@@ -785,6 +785,11 @@ url: https://download.gnome.org/sources/cantarell-fonts/
 activity: low
 ---
 kind: url
+name: caprine
+url: https://github.com/sindresorhus/caprine/releases
+activity: low
+---
+kind: url
 name: cargo_c
 url: https://github.com/lu-zero/cargo-c/releases
 activity: high
