@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/color'
+
+def get_buildsystems(file, field)
+  return `grep ^class #{file} | cut -d' ' -f#{field} | xargs`.chomp
+end
+
+def check_buildsystem(name)
+  puts "Checking #{name} package ...".yellow
+  buildsystem = get_buildsystems("../packages/#{name}.rb", 4)
+  if @buildsystems.include?(buildsystem)
+    puts "Buildsystem test for #{name} passed.".lightgreen
+  else
+    puts "#{buildsystem} is an invalid buildsystem. Valid buildsystems include #{@buildsystems.sort.join(', ')}.".lightred
+    puts "Buildsystem test for #{name} failed.".lightred
+    @tofail += 1
+  end
+end
+
+@tofail = 0
+@buildsystems = "Package #{get_buildsystems('../lib/buildsystems/*.rb', 2)}".split
+
+if ARGV[0]
+  ARGV.each do |arg|
+    if File.file? "../packages/#{arg}.rb"
+      check_buildsystem(arg)
+    else
+      puts "Package #{arg} not found.".lightred
+    end
+  end
+else
+  Dir['../packages/*.rb'].each do |filename|
+    name = File.basename(filename, '.rb')
+    check_buildsystem(name)
+  end
+
+  if @tofail.positive?
+    puts "\n#{@tofail} packages failed buildsystem tests.".lightred
+    exit(1)
+  else
+    puts "\nAll packages passed buildsystem tests.".lightgreen
+  end
+end

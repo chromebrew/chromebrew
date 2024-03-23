@@ -1863,6 +1863,7 @@ end
 
 def check_command(args)
   args['<name>'].each do |name|
+    check_package(name)
     search name
     if @opt_version
       Dir.chdir CREW_PACKAGES_PATH do
@@ -1871,6 +1872,7 @@ def check_command(args)
     else
       Dir.chdir CREW_PACKAGES_PATH do
         system "../tests/prop_test #{name}"
+        system "../tests/buildsystem_test #{name}"
       end
     end
   end
