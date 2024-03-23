@@ -6,7 +6,7 @@ require_relative '../lib/package'
 
 class Command
   def self.list(available, installed, compatible, incompatible, verbose)
-    device_json = JSON.load_file('/usr/local/etc/crew/device.json', symbolize_names: true)
+    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'), symbolize_names: true)
     installed_packages = {}
     device_json[:installed_packages].each do |package|
       installed_packages[package[:name]] = package[:version]
