@@ -128,14 +128,7 @@ pkg_update_arr.each do |pkg|
   print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
   case $stdin.gets.chomp.downcase
   when 'y', 'yes'
-    @in_fixup = true
-    begin
-      remove pkg[:pkg_name]
-    rescue NoMethodError # This won't work the first time crew update happens, since this requires an update to crew.
-      puts "Please rerun 'crew update' to allow for removal of #{pkg[:pkg_name].capitalize}.".orange
-      puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
-    end
-    @in_fixup = false
+    system("crew remove #{pkg[:pkg_name]}")
   else
     puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
   end
