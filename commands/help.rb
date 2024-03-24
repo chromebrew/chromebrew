@@ -146,11 +146,9 @@ class Command
     when 'upload'
       puts <<~EOT
         Upload binaries.
-        Usage: crew upload [<package1> <package2> ...]
+        Usage: crew upload <package1> [<package2> ... ]
         This will update the binary_sha256 hashes in each package and upload binaries to GitLab.
         The GITLAB_TOKEN environment variable must be set to access the upstream repository.
-        If no package(s) are provided, all binaries in `#{CREW_LOCAL_REPO_ROOT}/release/<arch>` will be uploaded.
-        If `-v` or `--verbose` is present, additional debug information will be displayed.
       EOT
     when 'version'
       puts <<~EOT

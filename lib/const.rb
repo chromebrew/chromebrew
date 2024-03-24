@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.1'
+CREW_VERSION = '1.49.2'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -345,7 +345,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew test [-v|--verbose] [<name> ...]
     crew update [options] [-v|--verbose] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
-    crew upload [options] [-v|--verbose] [<name> ...]
+    crew upload <name> ...
     crew whatprovides <pattern> ...
 
     -b --include-build-deps  Include build dependencies in output.
