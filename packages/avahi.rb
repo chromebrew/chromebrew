@@ -27,7 +27,8 @@ class Avahi < Autotools
   depends_on 'libssp' # R
   depends_on 'xmltoman' => :build
 
-  configure_options "--disable-dbus \
+  configure_options "--enable-compat-libdns_sd \
+      --disable-dbus \
       --disable-gtk \
       --disable-gtk3 \
       --disable-libsystemd \
@@ -37,5 +38,36 @@ class Avahi < Autotools
       --disable-qt3 \
       --disable-qt4 \
       --disable-qt5 \
+      --with-avahi-user=chronos \
+      --with-avahi-group=chronos \
+      --with-autoipd-group=chronos \
+      --with-autoipd-user=chronos \
+      --with-avahi-priv-access-group=chronos-access \
       --with-distro=none"
+
+  def self.install
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/avahi-daemon.conf", "#{CREW_DEST_PREFIX}/etc/avahi/avahi-daemon.conf.default"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/hosts", "#{CREW_DEST_PREFIX}/etc/avahi/hosts.default"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/services/sftp-ssh.service", "#{CREW_DEST_PREFIX}/etc/avahi/services/sftp-ssh.service.disabled"
+    FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/services/ssh.service", "#{CREW_DEST_PREFIX}/etc/avahi/services/ssh.service.disabled"
+    File.write 'bashd_avahi', <<~BASHDAVAHI_EOF
+      hostname="$(hostname)"
+      cp #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf.default #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+      cp #{CREW_PREFIX}/etc/avahi/hosts.default #{CREW_PREFIX}/etc/avahi/hosts
+
+      sed -i "s/#host-name=foo/host-name=$hostname/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+      sed -i "s/#domain-name=local/domain-name=local/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
+
+      for netaddress in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
+      do
+        address="${netaddress%/*}"
+        echo -e "\n${address} ${hostname}.local" >> #{CREW_PREFIX}/etc/avahi/hosts
+        echo "Enabling Avahi mDNS/DNS-SD daemon for address $address ..."
+      done
+      mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/avahi.log
+      (#{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
+    BASHDAVAHI_EOF
+    FileUtils.install 'bashd_avahi', "#{CREW_DEST_PREFIX}/etc/bash.d/avahi", mode: 0o644
+  end
 end
