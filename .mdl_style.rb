@@ -5,6 +5,8 @@ rule 'MD029', style: :ordered
 exclude_rule 'MD002' # We use HTML <h1> tag as the top level header
 exclude_rule 'MD013' # Ignore 80 character line length limit.
 exclude_rule 'MD022' # Ignore headers should be surrounded by blank lines
+exclude_rule 'MD026' # Ignore trailing punctuation in header
+exclude_rule 'MD028' # Ignore blank line inside blockquote
 exclude_rule 'MD031' # Ignore code blocks should be surrounded by blank lines
 exclude_rule 'MD032' # Ignore lists should be surrounded by blank lines
 exclude_rule 'MD033' # We need HTML to center logo, which is not possible in pure Markdown
