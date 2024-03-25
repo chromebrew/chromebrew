@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: 'db16f2492265fdf0c0b49f7fedaa5db3e359160ffbf5f5d3563b267d6d3bb519',
-    aarch64: '683106ea3481621c8e208fafe46e2a28691373026f64d29391a954269ef7da9a',
-     armv7l: '683106ea3481621c8e208fafe46e2a28691373026f64d29391a954269ef7da9a',
-     x86_64: '9c6af0c0880b971057aac17d8f7d460b07ba09a3e8b41d4a279154c4abc16658'
+       i686: '90587cf12e622b911268d1719b24dd5639baa4083d8280d5c09a3808a4956453',
+    aarch64: '2a8b304b475be7f48e1cf09393bb3bd3c2941648bdc0f2f82b929f32ebd9e2d7',
+     armv7l: '2a8b304b475be7f48e1cf09393bb3bd3c2941648bdc0f2f82b929f32ebd9e2d7',
+     x86_64: '0e66a2302ed5bd2d777ca2f8b428704f0c05e53177a8a99d4599dac4df27f50f'
   })
 
   depends_on 'expat' # R
@@ -66,7 +66,7 @@ class Avahi < Autotools
         echo "Enabling Avahi mDNS/DNS-SD daemon for address $address ..."
       done
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/avahi.log
-      (#{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
+      (sudo #{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
     BASHDAVAHI_EOF
     FileUtils.install 'bashd_avahi', "#{CREW_DEST_PREFIX}/etc/bash.d/avahi", mode: 0o644
   end
