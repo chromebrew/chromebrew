@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.45.9'
+CREW_VERSION = '1.45.10'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -308,3 +308,68 @@ PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecod
 CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{CREW_PREFIX}/bin/ruby`.scan(/\t([^ ]+)/).flatten +
                        %w[libzstd.so.1 libstdc++.so.6]
 CREW_ESSENTIAL_FILES.uniq!
+
+CREW_LICENSE = <<~LICENSESTRING
+  Copyright (C) 2013-2024 Chromebrew Authors
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see https://www.gnu.org/licenses/gpl-3.0.html.
+
+  Chromebrew embeds lib/docopt.rb from another project under the MIT License.
+  You should have received a copy of the license along with this program.
+  If not, see https://github.com/docopt/docopt.rb/blob/master/LICENSE
+LICENSESTRING
+
+CREW_DOCOPT = <<~DOCOPT
+  Chromebrew - Package manager for Chrome OS https://chromebrew.github.io
+
+  Usage:
+    crew build [options] [-k|--keep] [-v|--verbose] <name> ...
+    crew check [-V|--version] [-v|--verbose] <name> ...
+    crew const [options] [-v|--verbose] [<name> ...]
+    crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
+    crew download [options] [-s|--source] [-v|--verbose] <name> ...
+    crew files [options] [-v|--verbose] <name> ...
+    crew help [<command>] [-v|--verbose] [<subcommand>]
+    crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew list [options] [-v|--verbose] (available|installed|compatible|incompatible)
+    crew postinstall [options] [-v|--verbose] <name> ...
+    crew prop [-v|--verbose]
+    crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew remove [options] [-v|--verbose] <name> ...
+    crew search [options] [-v|--verbose] [<name> ...]
+    crew sysinfo [-v|--verbose]
+    crew test [-v|--verbose] [<name> ...]
+    crew update [options] [-v|--verbose] [<compatible>]
+    crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
+    crew upload [options] [-v|--verbose] [<name> ...]
+    crew whatprovides [options] [-v|--verbose] <pattern> ...
+
+    -b --include-build-deps  Include build dependencies in output.
+    -t --tree                Print dependencies in a tree-structure format.
+    -c --color               Use colors even if standard out is not a tty.
+    -d --no-color            Disable colors even if standard out is a tty.
+    -f --force               Force where relevant.
+    -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+    -L --license             Display the crew license.
+    -s --source              Build or download from source even if pre-compiled binary exists.
+    -S --recursive-build     Build from source, including all dependencies, even if pre-compiled binaries exist.
+    -v --verbose             Show extra information.
+    -V --version             Display the crew version.
+    -h --help                Show this screen.
+
+  version #{CREW_VERSION}
+DOCOPT
+
+# All available crew commands.
+CREW_COMMANDS = CREW_DOCOPT.scan(/crew ([^\s]+)/).flatten.join(',').gsub('.', '').split(',').sort
