@@ -1,9 +1,10 @@
 /usr/local/etc/avahi/avahi-autoipd.action
-/usr/local/etc/avahi/avahi-daemon.conf
+/usr/local/etc/avahi/avahi-daemon.conf.default
 /usr/local/etc/avahi/avahi-dnsconfd.action
-/usr/local/etc/avahi/hosts
-/usr/local/etc/avahi/services/sftp-ssh.service
-/usr/local/etc/avahi/services/ssh.service
+/usr/local/etc/avahi/hosts.default
+/usr/local/etc/avahi/services/sftp-ssh.service.disabled
+/usr/local/etc/avahi/services/ssh.service.disabled
+/usr/local/etc/bash.d/avahi
 /usr/local/include/avahi-common/address.h
 /usr/local/include/avahi-common/alternative.h
 /usr/local/include/avahi-common/cdecl.h

@@ -82,8 +82,8 @@ class Llvm18_build < Package
   def self.patch
     # This patch should be in 18.0.1.
     # https://github.com/llvm/llvm-project/pull/84230
-    downloader 'https://github.com/llvm/llvm-project/commit/bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch', '3a97108033890957acf0cce214a6366b77b61caf5a4aa5a5e75d384da7f2dde1'
-    system 'patch -F3 -p1 -i bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch'
+    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'SKIP'
+    system 'patch -Np1 -i 8606.patch'
 
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
