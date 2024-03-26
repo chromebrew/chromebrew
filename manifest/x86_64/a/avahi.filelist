@@ -1,3 +1,5 @@
+/usr/local/bin/startavahi
+/usr/local/bin/stopavahi
 /usr/local/etc/avahi/avahi-autoipd.action
 /usr/local/etc/avahi/avahi-daemon.conf.default
 /usr/local/etc/avahi/avahi-dnsconfd.action

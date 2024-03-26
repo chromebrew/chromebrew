@@ -5,6 +5,7 @@
 /usr/local/bin/pump
 /usr/local/bin/startdistccd
 /usr/local/bin/stopdistccd
+/usr/local/etc/avahi/services/distcc.service
 /usr/local/etc/bash.d/distccd
 /usr/local/etc/conf.d/distccd.default
 /usr/local/etc/default/distcc

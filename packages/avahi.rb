@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '90587cf12e622b911268d1719b24dd5639baa4083d8280d5c09a3808a4956453',
-    aarch64: '2a8b304b475be7f48e1cf09393bb3bd3c2941648bdc0f2f82b929f32ebd9e2d7',
-     armv7l: '2a8b304b475be7f48e1cf09393bb3bd3c2941648bdc0f2f82b929f32ebd9e2d7',
-     x86_64: '0e66a2302ed5bd2d777ca2f8b428704f0c05e53177a8a99d4599dac4df27f50f'
+       i686: '2b2877cd51f371021961ce9b461175788eb8bc5b9fb526d2985156d78817f02b',
+    aarch64: '55a7a9c8e8e80a953b1d76baa11f3be6de995a967d2b767d35d2e2c9283070f2',
+     armv7l: '55a7a9c8e8e80a953b1d76baa11f3be6de995a967d2b767d35d2e2c9283070f2',
+     x86_64: '49d0133ff649c3ec5d8673c7ec0cbd0c1b0ab31c49d43712d2dd3dbe92a948f5'
   })
 
   depends_on 'expat' # R
@@ -51,7 +51,17 @@ class Avahi < Autotools
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/hosts", "#{CREW_DEST_PREFIX}/etc/avahi/hosts.default"
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/services/sftp-ssh.service", "#{CREW_DEST_PREFIX}/etc/avahi/services/sftp-ssh.service.disabled"
     FileUtils.mv "#{CREW_DEST_PREFIX}/etc/avahi/services/ssh.service", "#{CREW_DEST_PREFIX}/etc/avahi/services/ssh.service.disabled"
+    # start avahi-daemon from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
     File.write 'bashd_avahi', <<~BASHDAVAHI_EOF
+      [[ $(pgrep -wc avahi-daemon) > 0 ]] || source #{CREW_PREFIX}/bin/startavahi
+    BASHDAVAHI_EOF
+    FileUtils.install 'bashd_avahi', "#{CREW_DEST_PREFIX}/etc/bash.d/avahi", mode: 0o644
+    File.write 'start_avahi', <<~STARTAVAHI_EOF
+      if [[ $(pgrep -wc avahi-daemon) > 0 ]]; then
+        # distccd is already running.
+        # Return or exit depending upon whether script was sourced.
+        (return 0 2>/dev/null) && return 0 || exit 0
+      fi
       hostname="$(hostname)"
       cp #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf.default #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
       cp #{CREW_PREFIX}/etc/avahi/hosts.default #{CREW_PREFIX}/etc/avahi/hosts
@@ -67,7 +77,12 @@ class Avahi < Autotools
       done
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/avahi.log
       (sudo #{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
-    BASHDAVAHI_EOF
-    FileUtils.install 'bashd_avahi', "#{CREW_DEST_PREFIX}/etc/bash.d/avahi", mode: 0o644
+    STARTAVAHI_EOF
+    FileUtils.install 'start_avahi', "#{CREW_DEST_PREFIX}/bin/startavahi", mode: 0o755
+    File.write 'stop_avahi', <<~STOP_AVAHI_EOF
+      #!/bin/bash
+      killall -9 avahi-daemon
+    STOP_AVAHI_EOF
+    FileUtils.install 'stop_avahi', "#{CREW_DEST_PREFIX}/bin/stopavahi", mode: 0o755
   end
 end
