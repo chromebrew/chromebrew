@@ -53,7 +53,7 @@ class Distcc < Autotools
     distcc_clang_targets = %W[clang clang++ clang-#{@clang_version} clang++-#{@clang_version}]
     File.write 'gcc-wrapper', <<~GCC_WRAPPEREOF
       #!/bin/bash
-      exec distcc #{CREW_TGT}-g${0:$[-2]} "$@"
+      exec distcc #{CREW_PREFIX}/bin/#{CREW_TGT}-g${0:$[-2]} "$@"
     GCC_WRAPPEREOF
     FileUtils.install 'gcc-wrapper', "#{@distcc_destbin_path}/gcc-wrapper", mode: 0o755
     # File.write 'clang-wrapper', <<~CLANG_WRAPPEREOF
@@ -102,7 +102,7 @@ class Distcc < Autotools
       #DISTCC_ARGS="--allow 192.168.0.0/24 --log-level error --log-file /tmp/distccd.log"
     DISTCCD_CONF_D_EOF
     FileUtils.install 'distccd.conf.d', "#{CREW_DEST_PREFIX}/etc/conf.d/distccd.default", mode: 0o644
-    File.write 'startdistccd', <<~START_DISTCCDEOF
+    File.write 'start_distccd', <<~START_DISTCCDEOF
       #!/bin/bash -a
       if [[ $(pgrep -wc distccd) > 0 ]]; then
         # distccd is already running.
@@ -120,17 +120,17 @@ class Distcc < Autotools
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
       (#{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
     START_DISTCCDEOF
-    FileUtils.install 'startdistccd', "#{CREW_DEST_PREFIX}/bin/startdistccd", mode: 0o755
-    File.write 'stopdistccd', <<~STOP_DISTCCDEOF
+    FileUtils.install 'start_distccd', "#{CREW_DEST_PREFIX}/bin/startdistccd", mode: 0o755
+    File.write 'stop_distccd', <<~STOP_DISTCCDEOF
       #!/bin/bash
       killall -9 distccd
     STOP_DISTCCDEOF
-    FileUtils.install 'stopdistccd', "#{CREW_DEST_PREFIX}/bin/stopdistccd", mode: 0o755
+    FileUtils.install 'stop_distccd', "#{CREW_DEST_PREFIX}/bin/stopdistccd", mode: 0o755
     # start distccd from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
-    File.write 'bash.d_distccd', <<~BASHDDISTCCD_EOF
+    File.write 'bashd_distccd', <<~BASHDDISTCCD_EOF
       [[ $(pgrep -wc distccd) > 0 ]] || source #{CREW_PREFIX}/bin/startdistccd
     BASHDDISTCCD_EOF
-    FileUtils.install 'bash.d_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
+    FileUtils.install 'bashd_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
       DISTCC_VERBOSE=1
@@ -139,6 +139,18 @@ class Distcc < Autotools
       DISTCC_HOSTS='+zeroconf'
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
+    File.write 'distcc_avahi_service', <<~DISTCC_AVAHI_EOF
+      <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+      <service-group>
+        <name replace-wildcards="yes">Distcc on %h</name>
+        <service>
+          <type>_distcc._tcp</type>
+          <port>3632</port>
+        </service>
+      </service-group>
+    DISTCC_AVAHI_EOF
+    FileUtils.install 'distcc_avahi_service', "#{CREW_DEST_PREFIX}/etc/avahi/services/distcc.service", mode: 0o644
   end
 
   def self.postinstall
