@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '751326fa04495bb2b799b6ecdc126b969275f769fd03606d1380ae871ca90949',
-     armv7l: '751326fa04495bb2b799b6ecdc126b969275f769fd03606d1380ae871ca90949',
-       i686: '9dbffd34bb5953076c8d92486d07a4367da507b553e90c2ca21309d8cfe252a5',
-     x86_64: '7957592c6f48c49f92f67fbb2e80dfd226957bbbd45507cc5dca70a9b6e2b7b9'
+    aarch64: '4368b09f4af5baa4a425064e3655b763d7cc01b29c8f11049b605050c1f40097',
+     armv7l: '4368b09f4af5baa4a425064e3655b763d7cc01b29c8f11049b605050c1f40097',
+       i686: '8be5fdf372b1357cbae31a3ed3d26ab0de054f5a7537157425d719824b08c7a5',
+     x86_64: 'ec0ca5ac2ee174faaafbf09f9392490364424f848b4f242ac9c11a1488447a9a'
   })
 
   depends_on 'avahi' # R
@@ -112,7 +112,7 @@ class Distcc < Autotools
       fi
       ALLOWEDNETS=
       DISTCC_ARGS=
-      DISTCC_HOSTS='+zeroconf'
+      DISTCC_HOSTS='+zeroconf localhost'
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
       for subnet in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
@@ -120,7 +120,7 @@ class Distcc < Autotools
         ALLOWEDNETS+=" $subnet "
         echo "Enabling distccd on subnet $subnet ..."
       done
-      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fe80::/16 ‐‐zeroconf --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
+      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fd00::/8 ‐‐zeroconf --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
       (#{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
       echo "Distcc hosts:"
