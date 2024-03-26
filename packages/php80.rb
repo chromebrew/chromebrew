@@ -54,7 +54,6 @@ class Php80 < Package
   depends_on 'ncurses' # R
   depends_on 'oniguruma'
   depends_on 'openldap' # R
-  depends_on 'openssl111' => :build
   depends_on 'openssl111' # R
   depends_on 'openssl' # R
   depends_on 'py3_pygments'
