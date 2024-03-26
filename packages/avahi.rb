@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: 'b207067b30d39869233aff00c1a62c0f23952af6de2ec51df034cad771e6022e',
-    aarch64: '50bf4e3b5bf036d079f4c9ddce554fe859185723d92203215a20c1bd8ef291d5',
-     armv7l: '50bf4e3b5bf036d079f4c9ddce554fe859185723d92203215a20c1bd8ef291d5',
-     x86_64: 'f8f3b498800dbc36390bb853c1a023a1c264e79aa2b637b45e729d0b0d7c9c8b'
+       i686: 'aaa8cfb84523626a5c145e1ed1e25df3eb3d47d18f3bc0606844fdbab5778e64',
+    aarch64: 'd4949bfc83230be46ba34f154a86ea508819a9c674ca951337a8aa500d227132',
+     armv7l: 'd4949bfc83230be46ba34f154a86ea508819a9c674ca951337a8aa500d227132',
+     x86_64: '4cdbd5f5b5ba4616a65ded4e7e67cc260ad0f98cc80b71d86254e76c5e1f0e16'
   })
 
   depends_on 'dbus' # R (needed to enable avahi-client)
@@ -76,7 +76,7 @@ class Avahi < Autotools
         echo "Enabling Avahi mDNS/DNS-SD daemon for address $address ..."
       done
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/avahi.log
-      (sudo #{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
+      (sudo LD_LIBRARY_PATH="$LD_LIBRARY_PATH" #{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
     STARTAVAHI_EOF
     FileUtils.install 'start_avahi', "#{CREW_DEST_PREFIX}/bin/startavahi", mode: 0o755
     File.write 'stop_avahi', <<~STOP_AVAHI_EOF

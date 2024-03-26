@@ -11,10 +11,10 @@ class Dbus < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '0ddb3133900cdb865f04c7895c27d805b8688be91b7ba6f947a4c4bc52ec6b7f',
-    aarch64: '749147a92583548722756739f7896397113e35ec3b32bd5d1bf4542e2bf3472a',
-     armv7l: '749147a92583548722756739f7896397113e35ec3b32bd5d1bf4542e2bf3472a',
-     x86_64: 'a69470cf5e74f2cba431697a821b902c0fddf6b9b5e1e4a192d00b773a5dc1e6'
+       i686: '65eedead3be809ec5a90dde5455cbee98efe660348497c8595a1d113abbf4c38',
+    aarch64: '1f0825d04afb193dc722ce475918764f670148d19dea7b9f6e74a19b8f3f8194',
+     armv7l: '1f0825d04afb193dc722ce475918764f670148d19dea7b9f6e74a19b8f3f8194',
+     x86_64: 'aba13b6097b7921ebd02c5e9a99cbe50ce00740671f526967ae9a3264d1308e0'
   })
 
   depends_on 'expat' # R
@@ -24,13 +24,12 @@ class Dbus < Meson
   print_source_bashrc
 
   meson_options "-Dapparmor=disabled \
-      -Ddbus_session_bus_listen_address=unix:tmpdir=/tmp \
+      -Ddbus_session_bus_listen_address='unix:path=/var/run/dbus/system_bus_socket' \
       -Ddoxygen_docs=disabled \
       -Dlibaudit=disabled \
       -Dlaunchd=disabled \
       -Dxml_docs=disabled \
-      -Druntime_dir=/var \
-      -Dlocalstatedir=#{CREW_PREFIX}/var \
+      -Druntime_dir=/var/run \
       -Dsystemd=disabled \
       -Dx11_autolaunch=disabled"
 
@@ -38,6 +37,7 @@ class Dbus < Meson
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     @dbusconfigenv = <<~DBUSCONFIGEOF
       # Dbus settings
+      [[ -d '/var/run/dbus' ]] || ( sudo mkdir -p /var/run/dbus && sudo chown chronos /var/run/dbus )
       dbus-uuidgen --ensure
       DBUS_SYSTEM_BUS_ADDRESS='unix:path=/var/run/dbus/system_bus_socket'
       [[ "$DBUS_SESSION_BUS_ADDRESS"=="disabled:" ]] && unset DBUS_SESSION_BUS_ADDRESS
