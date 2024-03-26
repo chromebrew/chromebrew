@@ -11,10 +11,10 @@ class Llvm18_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
-     armv7l: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
-       i686: 'f68d85c167ad644911e67569e3252d971eb3c7eadfccbed4eca0f5df094081f9',
-     x86_64: '502d8904eeaff5f0e1e7a510803cad4ce92580cc3613e7c929f8ff87921f150a'
+    aarch64: '0b1b68e47b2f3c877046516d3666db930e62dc2b5b527c3f83abed518deee2a6',
+     armv7l: '0b1b68e47b2f3c877046516d3666db930e62dc2b5b527c3f83abed518deee2a6',
+       i686: '77242a01f59eddef71c7dd62320f509506a3653a702cbe1f6b151e2892922d9f',
+     x86_64: '3d6c3417662d4350a8f4b735767db937e230761170d5bf87ff1c30550d1d17c7'
   })
 
   depends_on 'ccache' => :build
@@ -32,6 +32,8 @@ class Llvm18_build < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+  depends_on 'llvm18_dev' # R
+  depends_on 'llvm18_lib' # R
 
   no_env_options
   conflicts_ok
@@ -80,10 +82,10 @@ class Llvm18_build < Package
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
 
   def self.patch
-    # This patch should be in 18.0.1.
+    # This patch should be in 18.1.3.
     # https://github.com/llvm/llvm-project/pull/84230
     downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'SKIP'
-    system 'patch -Np1 -i 8606.patch'
+    system 'patch -Np1 -i 86106.patch'
 
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
