@@ -85,4 +85,8 @@ class Avahi < Autotools
     STOP_AVAHI_EOF
     FileUtils.install 'stop_avahi', "#{CREW_DEST_PREFIX}/bin/stopavahi", mode: 0o755
   end
+
+  def self.postinstall
+    ExitMessage.add "The avahi daemon will be automatically started, but can be stopped with 'stopavahi' and restarted with 'startavahi'."
+  end
 end
