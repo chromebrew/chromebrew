@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93a587083fca85b13b125b7b2a61c0f05357fbf45284fe7fb35035c69eaa57fe',
-     armv7l: '93a587083fca85b13b125b7b2a61c0f05357fbf45284fe7fb35035c69eaa57fe',
-       i686: 'c8338b79c4b333c7fe89e4e5a80721876c6caa5914819e647279a251e6838871',
-     x86_64: 'dbae5e8ffbeb314c940931e4231c3cbd2d7db4f8bc626dda49ca1004e05da4c2'
+    aarch64: '41223acfb430169fcdf18975d1c41fe743a1640e4b970a2cad49288b1402ca3c',
+     armv7l: '41223acfb430169fcdf18975d1c41fe743a1640e4b970a2cad49288b1402ca3c',
+       i686: 'd38592735575e810aecef2423a914deba207f8ad15ddd510235cc8cd778b3412',
+     x86_64: '649d55d38735392bc7fc779433da3e3e2c63ee77e4d22ed2ac2560fa55f7bbe4'
   })
 
   depends_on 'avahi' # R
@@ -103,22 +103,26 @@ class Distcc < Autotools
     DISTCCD_CONF_D_EOF
     FileUtils.install 'distccd.conf.d', "#{CREW_DEST_PREFIX}/etc/conf.d/distccd.default", mode: 0o644
     File.write 'start_distccd', <<~START_DISTCCDEOF
-      #!/bin/bash -a
-      if [[ $(pgrep -wc distccd) > 0 ]]; then
+      #!/bin/bash
+      if [[ $(pgrep -wc distccd) > 1 ]]; then
         # distccd is already running.
         # Return or exit depending upon whether script was sourced.
         (return 0 2>/dev/null) && return 0 || exit 0
       fi
       DISTCC_ARGS=
+      DISTCC_HOSTS=
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
       for subnet in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
         DISTCC_ARGS+=" --allow $subnet "
+        DISTCC_HOSTS+=" $subnet "
         echo "Enabling distccd on subnet $subnet ..."
       done
-      DISTCC_ARGS+="-N 20 ‐‐allow‐private ‐‐zeroconf --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
+      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fe80::/16 ‐‐zeroconf --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
-      (#{CREW_PREFIX}/bin/distccd --zeroconf --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
+      (#{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
+      echo "Distcc hosts:"
+      distcc --show-hosts
     START_DISTCCDEOF
     FileUtils.install 'start_distccd', "#{CREW_DEST_PREFIX}/bin/startdistccd", mode: 0o755
     File.write 'stop_distccd', <<~STOP_DISTCCDEOF
@@ -128,7 +132,7 @@ class Distcc < Autotools
     FileUtils.install 'stop_distccd', "#{CREW_DEST_PREFIX}/bin/stopdistccd", mode: 0o755
     # start distccd from bash.d, which loads after all of env.d via #{CREW_PREFIX}/etc/profile
     File.write 'bashd_distccd', <<~BASHDDISTCCD_EOF
-      [[ $(pgrep -wc distccd) > 0 ]] || source #{CREW_PREFIX}/bin/startdistccd
+      [[ $(pgrep -wc distccd) > 1 ]] || source #{CREW_PREFIX}/bin/startdistccd
     BASHDDISTCCD_EOF
     FileUtils.install 'bashd_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
@@ -136,7 +140,6 @@ class Distcc < Autotools
       DISTCC_VERBOSE=1
       DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
       mkdir -p $DISTCC_DIR
-      DISTCC_HOSTS='+zeroconf'
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
     File.write 'distcc_avahi_service', <<~DISTCC_AVAHI_EOF
