@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0bee70d8120d73184ef870f5ffb983d5907c749cca2c1aa9bfd9e84921cf6dad',
-     armv7l: '0bee70d8120d73184ef870f5ffb983d5907c749cca2c1aa9bfd9e84921cf6dad',
-       i686: '71a43c248ea16c7f00f20001b7023820dfa781576a72aebd57cbac96dda26b7d',
-     x86_64: 'd521ed3553de0c17da1311d71101377d719796ed80f1e4b9d642bd41dc237469'
+    aarch64: 'c95bea9fc2e34354c1a4aaba23d737f67365b1624e61d6fa1918f42b637f57b8',
+     armv7l: 'c95bea9fc2e34354c1a4aaba23d737f67365b1624e61d6fa1918f42b637f57b8',
+       i686: '54201ee85a4bfe8cadb29bf4f5cbd2651efb75eb4807b82b276d73eecfdee1a1',
+     x86_64: 'cd64f3606d2f07fec7ef784e7c41eb895f268896978b4bc91ccfc00df3f119b7'
   })
 
   depends_on 'avahi' # R
