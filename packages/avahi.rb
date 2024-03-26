@@ -11,12 +11,13 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '2b2877cd51f371021961ce9b461175788eb8bc5b9fb526d2985156d78817f02b',
-    aarch64: '55a7a9c8e8e80a953b1d76baa11f3be6de995a967d2b767d35d2e2c9283070f2',
-     armv7l: '55a7a9c8e8e80a953b1d76baa11f3be6de995a967d2b767d35d2e2c9283070f2',
-     x86_64: '49d0133ff649c3ec5d8673c7ec0cbd0c1b0ab31c49d43712d2dd3dbe92a948f5'
+       i686: 'b207067b30d39869233aff00c1a62c0f23952af6de2ec51df034cad771e6022e',
+    aarch64: '50bf4e3b5bf036d079f4c9ddce554fe859185723d92203215a20c1bd8ef291d5',
+     armv7l: '50bf4e3b5bf036d079f4c9ddce554fe859185723d92203215a20c1bd8ef291d5',
+     x86_64: 'f8f3b498800dbc36390bb853c1a023a1c264e79aa2b637b45e729d0b0d7c9c8b'
   })
 
+  depends_on 'dbus' # R (needed to enable avahi-client)
   depends_on 'expat' # R
   depends_on 'gdbm' # R
   depends_on 'glibc' # R
@@ -28,7 +29,6 @@ class Avahi < Autotools
   depends_on 'xmltoman' => :build
 
   configure_options "--enable-compat-libdns_sd \
-      --disable-dbus \
       --disable-gtk \
       --disable-gtk3 \
       --disable-libsystemd \
