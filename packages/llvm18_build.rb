@@ -32,8 +32,6 @@ class Llvm18_build < Package
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
-  depends_on 'llvm18_dev' # R
-  depends_on 'llvm18_lib' # R
 
   no_env_options
   conflicts_ok
