@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '41223acfb430169fcdf18975d1c41fe743a1640e4b970a2cad49288b1402ca3c',
-     armv7l: '41223acfb430169fcdf18975d1c41fe743a1640e4b970a2cad49288b1402ca3c',
-       i686: 'd38592735575e810aecef2423a914deba207f8ad15ddd510235cc8cd778b3412',
-     x86_64: '649d55d38735392bc7fc779433da3e3e2c63ee77e4d22ed2ac2560fa55f7bbe4'
+    aarch64: 'a0117c330411feac61f15e85cd85a106be53e05a4c1feaef776dd04c76c8b7d4',
+     armv7l: 'a0117c330411feac61f15e85cd85a106be53e05a4c1feaef776dd04c76c8b7d4',
+       i686: '51f0950594f20ce57b4dca959669c95bf7c06ceece6c6a74e39f8e718df38a68',
+     x86_64: 'a69c2a63099089493dba4a58372e2ceed656cce316dd6eca083345690cb860df'
   })
 
   depends_on 'avahi' # R
@@ -27,6 +27,7 @@ class Distcc < Autotools
   depends_on 'glib' # R
   depends_on 'llvm18_dev' # L
   depends_on 'llvm18_lib' # R
+  depends_on 'nss_mdns' # R
   depends_on 'popt' # R
   depends_on 'python3' => :build
   depends_on 'zlibpkg' # R
@@ -109,16 +110,17 @@ class Distcc < Autotools
         # Return or exit depending upon whether script was sourced.
         (return 0 2>/dev/null) && return 0 || exit 0
       fi
+      ALLOWEDNETS=
       DISTCC_ARGS=
-      DISTCC_HOSTS=
+      DISTCC_HOSTS='+zeroconf'
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
       for subnet in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
         DISTCC_ARGS+=" --allow $subnet "
-        DISTCC_HOSTS+=" $subnet "
+        ALLOWEDNETS+=" $subnet "
         echo "Enabling distccd on subnet $subnet ..."
       done
-      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fe80::/16 ‐‐zeroconf --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
+      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fe80::/16 ‐‐zeroconf --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
       (#{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
       echo "Distcc hosts:"
