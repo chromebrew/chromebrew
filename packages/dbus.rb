@@ -5,23 +5,21 @@ class Dbus < Meson
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
   version '1.15.8'
   license 'Apache-2.0'
-  compatibility 'x86_64 aarch64 armv7l'
+  compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus.git'
   git_hashtag "dbus-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5f1f77718901fc0d1088ab0c4640b7cbef43b7c86608738cb0516ab7ba6ad9a9',
-     armv7l: '5f1f77718901fc0d1088ab0c4640b7cbef43b7c86608738cb0516ab7ba6ad9a9',
-     x86_64: '2d3738efe15084a4c5b212deefc8fe6d961f69842b4e1efdaf1c0ac3613fda17'
+       i686: '0ddb3133900cdb865f04c7895c27d805b8688be91b7ba6f947a4c4bc52ec6b7f',
+    aarch64: '749147a92583548722756739f7896397113e35ec3b32bd5d1bf4542e2bf3472a',
+     armv7l: '749147a92583548722756739f7896397113e35ec3b32bd5d1bf4542e2bf3472a',
+     x86_64: 'a69470cf5e74f2cba431697a821b902c0fddf6b9b5e1e4a192d00b773a5dc1e6'
   })
 
-  depends_on 'libice' => :build
-  depends_on 'libsm' => :build
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libx11' # R
 
   print_source_bashrc
 
@@ -34,7 +32,7 @@ class Dbus < Meson
       -Druntime_dir=/var \
       -Dlocalstatedir=#{CREW_PREFIX}/var \
       -Dsystemd=disabled \
-      -Dx11_autolaunch=enabled"
+      -Dx11_autolaunch=disabled"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
