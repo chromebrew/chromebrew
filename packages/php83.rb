@@ -11,8 +11,8 @@ class Php83 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8f1b6f913984df061510e51ec9c84eac32298a3659ce998584c6f9dfdf0bd0f3',
-     armv7l: '8f1b6f913984df061510e51ec9c84eac32298a3659ce998584c6f9dfdf0bd0f3',
+    aarch64: '4d698508386b5c515ee126bf3a6768ab0504e1877bcd03f5114c4dee1e676c2f',
+     armv7l: '4d698508386b5c515ee126bf3a6768ab0504e1877bcd03f5114c4dee1e676c2f',
      x86_64: 'e22ef1aa9eb291de6b478a281ea2cc1200eb757a0009e7c2054481709ced6eda'
   })
 
