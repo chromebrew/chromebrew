@@ -137,7 +137,7 @@ class Distcc < Autotools
       for netaddress in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
         address="${netaddress%/*}"
-        LISTENER+=" $netaddress "
+        LISTENER+=" $address "
       done
       DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fd00::/8 ‐‐zeroconf --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
