@@ -11,30 +11,58 @@ class Php80 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e74f69975fbf7e8cbe55b6548993909c80aeb49181cb22c3175cba0de5ef5d3d',
-     armv7l: 'e74f69975fbf7e8cbe55b6548993909c80aeb49181cb22c3175cba0de5ef5d3d',
-     x86_64: '5ec87254132c6ef08e1349cd1ea454c90e2862d5cd8ba76fcc441c442ae817a2'
+    aarch64: '717c0f9b62d8595ac26209550d6853e2b6aeaa809ff590ed8f95a1ab2a4e1b48',
+     armv7l: '717c0f9b62d8595ac26209550d6853e2b6aeaa809ff590ed8f95a1ab2a4e1b48',
+     x86_64: '4d9aefd3ae620d976b959d4fa30f2935140d203393818dcd6fa66c3c3676c3b4'
   })
 
   depends_on 'aspell_en'
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
   depends_on 'curl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
   depends_on 'freetype'
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt'
+  depends_on 'libgpgerror' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg'
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng'
+  depends_on 'libpsl' # R
+  depends_on 'libsodium'
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt'
+  depends_on 'libzip'
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma'
+  depends_on 'openldap' # R
+  depends_on 'openssl111' # R
+  depends_on 'openssl' # R
+  depends_on 'py3_pygments'
   depends_on 're2c'
+  depends_on 'sqlite' # R
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'oniguruma'
-  depends_on 'py3_pygments'
-  depends_on 'openssl111' => :build
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   no_fhs
 

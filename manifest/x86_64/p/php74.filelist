@@ -145,6 +145,7 @@
 /usr/local/include/php/ext/iconv/php_php_iconv_impl.h
 /usr/local/include/php/ext/json/php_json.h
 /usr/local/include/php/ext/json/php_json_parser.h
+/usr/local/include/php/ext/json/php_json_scanner.h
 /usr/local/include/php/ext/libxml/php_libxml.h
 /usr/local/include/php/ext/mbstring/libmbfl/config.h
 /usr/local/include/php/ext/mbstring/libmbfl/mbfl/eaw_table.h
@@ -505,11 +506,11 @@
 /usr/local/lib64/php/test/XML_Util/tests/ReplaceEntitiesTests.php
 /usr/local/lib64/php/test/XML_Util/tests/ReverseEntitiesTests.php
 /usr/local/lib64/php/test/XML_Util/tests/SplitQualifiedNameTests.php
-/usr/local/share/man/man1/phar.1.gz
-/usr/local/share/man/man1/phar.phar.1.gz
-/usr/local/share/man/man1/php-cgi.1.gz
-/usr/local/share/man/man1/php-config.1.gz
-/usr/local/share/man/man1/php.1.gz
-/usr/local/share/man/man1/phpdbg.1.gz
-/usr/local/share/man/man1/phpize.1.gz
-/usr/local/share/man/man8/php-fpm.8.gz
+/usr/local/share/man/man1/phar.1.zst
+/usr/local/share/man/man1/phar.phar.1.zst
+/usr/local/share/man/man1/php-cgi.1.zst
+/usr/local/share/man/man1/php-config.1.zst
+/usr/local/share/man/man1/php.1.zst
+/usr/local/share/man/man1/phpdbg.1.zst
+/usr/local/share/man/man1/phpize.1.zst
+/usr/local/share/man/man8/php-fpm.8.zst
