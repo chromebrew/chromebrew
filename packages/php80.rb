@@ -13,7 +13,7 @@ class Php80 < Package
   binary_sha256({
     aarch64: '717c0f9b62d8595ac26209550d6853e2b6aeaa809ff590ed8f95a1ab2a4e1b48',
      armv7l: '717c0f9b62d8595ac26209550d6853e2b6aeaa809ff590ed8f95a1ab2a4e1b48',
-     x86_64: '5ec87254132c6ef08e1349cd1ea454c90e2862d5cd8ba76fcc441c442ae817a2'
+     x86_64: '4d9aefd3ae620d976b959d4fa30f2935140d203393818dcd6fa66c3c3676c3b4'
   })
 
   depends_on 'aspell_en'
