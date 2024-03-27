@@ -14,13 +14,14 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4368b09f4af5baa4a425064e3655b763d7cc01b29c8f11049b605050c1f40097',
-     armv7l: '4368b09f4af5baa4a425064e3655b763d7cc01b29c8f11049b605050c1f40097',
-       i686: '8be5fdf372b1357cbae31a3ed3d26ab0de054f5a7537157425d719824b08c7a5',
-     x86_64: 'ec0ca5ac2ee174faaafbf09f9392490364424f848b4f242ac9c11a1488447a9a'
+    aarch64: '27c922a29fd13049768c2316e7c0dc28c97d36bf6227283473efdc0a8717a558',
+     armv7l: '27c922a29fd13049768c2316e7c0dc28c97d36bf6227283473efdc0a8717a558',
+       i686: '4df6d09812656607aed408506a4c73f407e810c166c9ee6555618f95ae77596d',
+     x86_64: 'd731bb64a6581bb7f175b1eabcd69ae083866b20de6e98cd329ba6e2bec7a0cd'
   })
 
   depends_on 'avahi' # R
+  depends_on 'ccache' # L
   depends_on 'gcc_dev' # L
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -54,7 +55,11 @@ class Distcc < Autotools
     distcc_clang_targets = %W[clang clang++ clang-#{@clang_version} clang++-#{@clang_version}]
     File.write 'gcc-wrapper', <<~GCC_WRAPPEREOF
       #!/bin/bash
-      exec distcc #{CREW_PREFIX}/bin/#{CREW_TGT}-g${0:$[-2]} "$@"
+      if `which ccache &>/dev/null` ; then#{' '}
+        exec ccache distcc #{CREW_PREFIX}/bin/#{CREW_TGT}-g${0:$[-2]} "$@"
+      else
+        exec distcc #{CREW_PREFIX}/bin/#{CREW_TGT}-g${0:$[-2]} "$@"
+      fi
     GCC_WRAPPEREOF
     FileUtils.install 'gcc-wrapper', "#{@distcc_destbin_path}/gcc-wrapper", mode: 0o755
     # File.write 'clang-wrapper', <<~CLANG_WRAPPEREOF
@@ -72,7 +77,11 @@ class Distcc < Autotools
       machine=$(#{CREW_PREFIX}/bin/gcc -dumpmachine)
       version=$(#{CREW_PREFIX}/bin/gcc -dumpversion)
       gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-      exec distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} "$@"
+      if `which ccache &>/dev/null` ; then
+        exec ccache distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} "$@"
+      else
+        exec distcc #{CREW_PREFIX}/bin/clang -B ${gnuc_lib} "$@"
+      fi
     CLC_EOF
     FileUtils.install 'clang', "#{@distcc_destbin_path}/clang", mode: 0o755
     FileUtils.install 'clang', "#{@distcc_destbin_path}/clang-#{@clang_version}", mode: 0o755
@@ -83,7 +92,11 @@ class Distcc < Autotools
       cxx_sys=#{CREW_PREFIX}/include/c++/${version}
       cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
       gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-      exec distcc #{CREW_PREFIX}/bin/clang++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} "$@"
+      if `which ccache &>/dev/null` ; then
+        exec ccache distcc #{CREW_PREFIX}/bin/clang++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} "$@"
+      else
+        exec distcc #{CREW_PREFIX}/bin/clang++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} "$@"
+      fi
     CLCPLUSPLUS_EOF
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++", mode: 0o755
     FileUtils.install 'clang++', "#{@distcc_destbin_path}/clang++-#{@clang_version}", mode: 0o755
@@ -112,13 +125,19 @@ class Distcc < Autotools
       fi
       ALLOWEDNETS=
       DISTCC_ARGS=
-      DISTCC_HOSTS='+zeroconf localhost'
+      DISTCC_HOSTS='localhost +zeroconf'
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
       for subnet in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
         DISTCC_ARGS+=" --allow $subnet "
         ALLOWEDNETS+=" $subnet "
         echo "Enabling distccd on subnet $subnet ..."
+      done
+      LISTENER="127.0.0.1"
+      for netaddress in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
+      do
+        address="${netaddress%/*}"
+        LISTENER+=" $netaddress "
       done
       DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fd00::/8 ‐‐zeroconf --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
@@ -139,9 +158,13 @@ class Distcc < Autotools
     FileUtils.install 'bashd_distccd', "#{CREW_DEST_PREFIX}/etc/bash.d/distccd", mode: 0o644
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
+      ALLOWEDNETS='127.0.0.1/8'
+      CCACHE_PREFIX='distcc'
       DISTCC_VERBOSE=1
+      # DISTCC_JOBS=`distcc -j`
       DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
       mkdir -p $DISTCC_DIR
+      STARTDISTCC='true'
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
     File.write 'distcc_avahi_service', <<~DISTCC_AVAHI_EOF
