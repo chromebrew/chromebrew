@@ -11,30 +11,58 @@ class Php74 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
-     armv7l: '265fe699e77f303e1c57fd71ea592c3b2d91390c3b0863849965341dd11f3e86',
+    aarch64: 'c6d0341c39053efa64ebb9b0056ed5c8c066f827fe854fb6b3164f978208d42c',
+     armv7l: 'c6d0341c39053efa64ebb9b0056ed5c8c066f827fe854fb6b3164f978208d42c',
      x86_64: '3556beb44da6b3c292425c0f06c2fb2cf55b60880e752bf2f7a46f333c789b83'
   })
 
   depends_on 'aspell_en'
+  depends_on 'aspell' # R
+  depends_on 'brotli' # R
+  depends_on 'bzip2' # R
+  depends_on 'c_ares' # R
   depends_on 'curl'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libpng'
-  depends_on 'libsodium'
-  depends_on 'libxpm'
-  depends_on 'libxslt'
-  depends_on 'libzip'
+  depends_on 'e2fsprogs' # R
   depends_on 'exif'
   depends_on 'freetds'
   depends_on 'freetype'
+  depends_on 'gcc_lib' # R
+  depends_on 'gdbm' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'graphite'
+  depends_on 'icu4c' # R
+  depends_on 'krb5' # R
+  depends_on 'libcyrussasl' # R
+  depends_on 'libedit' # R
+  depends_on 'libffi' # R
+  depends_on 'libgcrypt'
+  depends_on 'libgpgerror' # R
+  depends_on 'libidn2' # R
+  depends_on 'libjpeg'
+  depends_on 'libnghttp2' # R
+  depends_on 'libpng'
+  depends_on 'libpsl' # R
+  depends_on 'libsodium'
+  depends_on 'libssh' # R
+  depends_on 'libtool' # R
+  depends_on 'libunistring' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxpm'
+  depends_on 'libxslt'
+  depends_on 'libzip'
+  depends_on 'ncurses' # R
+  depends_on 'oniguruma'
+  depends_on 'openldap' # R
+  depends_on 'openssl111'
+  depends_on 'openssl' # R
+  depends_on 'py3_pygments'
   depends_on 're2c'
+  depends_on 'sqlite' # R
   depends_on 'tidy'
   depends_on 'unixodbc'
-  depends_on 'oniguruma'
-  depends_on 'openssl111'
-  depends_on 'py3_pygments'
+  depends_on 'zlibpkg' # R
+  depends_on 'zstd' # R
 
   no_fhs
 
