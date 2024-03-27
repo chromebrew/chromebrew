@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Neovim < Package
+class Neovim < CMake
   description 'Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which itself derives from Stevie).'
   homepage 'https://neovim.io/'
-  version '0.8.2'
+  version '0.9.5'
   license 'Apache-2.0 and vim'
   compatibility 'all'
   source_url 'https://github.com/neovim/neovim.git'
@@ -27,23 +27,10 @@ class Neovim < Package
   depends_on 'luajit_mpack' => :build
   depends_on 'luajit' # R
   depends_on 'msgpack_c' # R
-  # depends_on 'perl_app_cpanminus' # L
+  depends_on 'perl_app_cpanminus' # L
   depends_on 'tree_sitter' # R
   depends_on 'unibilium' => :build
-  depends_on 'xdg_base'
-
-  def self.build
-    FileUtils.mkdir('builddir')
-    Dir.chdir('builddir') do
-      system "cmake #{CREW_CMAKE_OPTIONS} \
-        ../ -G Ninja"
-    end
-    system 'samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
-  end
+  depends_on 'xdg_base' # L
 
   def self.postinstall
     # Set nvim to be the default vi if there is no vi or if a default
