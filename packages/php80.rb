@@ -3,7 +3,7 @@ require 'package'
 class Php80 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.0.30'
+  version '8.0.30-1'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.php.net/distributions/php-8.0.30.tar.xz'
