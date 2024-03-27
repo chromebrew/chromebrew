@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: 'aaa8cfb84523626a5c145e1ed1e25df3eb3d47d18f3bc0606844fdbab5778e64',
-    aarch64: 'd4949bfc83230be46ba34f154a86ea508819a9c674ca951337a8aa500d227132',
-     armv7l: 'd4949bfc83230be46ba34f154a86ea508819a9c674ca951337a8aa500d227132',
-     x86_64: '4cdbd5f5b5ba4616a65ded4e7e67cc260ad0f98cc80b71d86254e76c5e1f0e16'
+       i686: '9947fcc523e2536adfb99461f5a29d77be0219f2fbf0cb4575da5afc334723ff',
+    aarch64: '9329f7f826b27de5c7a8ad143c55773eb76c919a06d10ab2ccb350d3b2a3b515',
+     armv7l: '9329f7f826b27de5c7a8ad143c55773eb76c919a06d10ab2ccb350d3b2a3b515',
+     x86_64: '5a8ddb44adfae21de6476c49e6d3d98e6e910d0a894d4b085a5fa7876b08996f'
   })
 
   depends_on 'dbus' # R (needed to enable avahi-client)
@@ -25,6 +25,7 @@ class Avahi < Autotools
   depends_on 'libcap' # R
   depends_on 'libdaemon' # R
   depends_on 'libevent' # R
+  depends_on 'nss_mdns' # L
   depends_on 'libssp' # R
   depends_on 'xmltoman' => :build
 
