@@ -11,10 +11,10 @@ class Neovim < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8e5bcc8ada8eedcd5603c7061860dd56aef16171667fc97d6279d6c17bf25385',
-     armv7l: '8e5bcc8ada8eedcd5603c7061860dd56aef16171667fc97d6279d6c17bf25385',
-       i686: '4fff03cc692bc7875f5c25d6a108a12226b7cc4df17a685ed79661aaa1578f08',
-     x86_64: '111ec2f1175b8074b48d6cf6b0720ab657ffc3e27d83166400d11cd8e506d2eb'
+    aarch64: 'efc5b03dbb0e6f0292030dea2ec89294690e6bca471b6a559329d13cc92ea13a',
+     armv7l: 'efc5b03dbb0e6f0292030dea2ec89294690e6bca471b6a559329d13cc92ea13a',
+       i686: 'f5e44f127df3329a837cb56fa70f547cdeda8fc3ea7d873dbc7c9a5a6e7b6d45',
+     x86_64: '97a127932ead9fdf64640c582205f9efe94f384b9803cf122553c84ce19a1d3b'
   })
 
   depends_on 'glibc' # R
@@ -27,7 +27,7 @@ class Neovim < CMake
   depends_on 'luajit_mpack' => :build
   depends_on 'luajit' # R
   depends_on 'msgpack_c' # R
-  depends_on 'perl_app_cpanminus' # L
+  # depends_on 'perl_app_cpanminus' # L
   depends_on 'tree_sitter' # R
   depends_on 'unibilium' => :build
   depends_on 'xdg_base' # L
