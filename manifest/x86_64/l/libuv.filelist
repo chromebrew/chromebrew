@@ -6,7 +6,6 @@
 /usr/local/include/uv/linux.h
 /usr/local/include/uv/os390.h
 /usr/local/include/uv/posix.h
-/usr/local/include/uv/stdint-msvc2008.h
 /usr/local/include/uv/sunos.h
 /usr/local/include/uv/threadpool.h
 /usr/local/include/uv/tree.h
@@ -15,10 +14,11 @@
 /usr/local/include/uv/win.h
 /usr/local/lib64/cmake/libuv/libuvConfig-release.cmake
 /usr/local/lib64/cmake/libuv/libuvConfig.cmake
+/usr/local/lib64/libuv.a
 /usr/local/lib64/libuv.so
 /usr/local/lib64/libuv.so.1
 /usr/local/lib64/libuv.so.1.0.0
-/usr/local/lib64/libuv_a.a
 /usr/local/lib64/pkgconfig/libuv-static.pc
 /usr/local/lib64/pkgconfig/libuv.pc
 /usr/local/share/doc/libuv/LICENSE
+/usr/local/share/doc/libuv/LICENSE-extra
