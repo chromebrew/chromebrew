@@ -21,7 +21,7 @@ class Distcc < Autotools
   })
 
   depends_on 'avahi' # R
-  depends_on 'ccache' # L
+  # depends_on 'ccache' # L
   depends_on 'gcc_dev' # L
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
