@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e8a210fd64ca86ed2d7291211ac29bf387462f64357332fbb1d71bc4e3c94cda',
-     armv7l: 'e8a210fd64ca86ed2d7291211ac29bf387462f64357332fbb1d71bc4e3c94cda',
-       i686: 'be0910743c6303e503b55bb02455ca0236e7865e68479b5d96e0134e5d2870b9',
-     x86_64: 'b62b1fab4a708834f9d6a016d6d8330fa62e9a628dc475e6c26a762502d87bdb'
+    aarch64: '780193b14b43cdd3a237b3bab1502594b775b5b68730b0b5bd2f72faca23e0d4',
+     armv7l: '780193b14b43cdd3a237b3bab1502594b775b5b68730b0b5bd2f72faca23e0d4',
+       i686: '95f6ec2a6334aa7e6017c50c32ab26cb9adfebdff02dcac4419543169beb8aaf',
+     x86_64: '0445d6d16d5a62f1802fd58e008ed27258e1e1b3484b7bba1c01f67c5148e8a6'
   })
 
   depends_on 'avahi' # R
@@ -133,6 +133,7 @@ class Distcc < Autotools
         echo "Enabling distccd on subnet $subnet ..."
       done
       LISTENER="127.0.0.1"
+      DISTCC_ARGS+=" --listen 127.0.0.1 "
       LOCALIP="$(ip route get 1 | awk '{print $7;exit}')"
       LISTENER+=" $LOCALIP "
       DISTCC_ARGS+=" --listen $LOCALIP "
@@ -162,7 +163,7 @@ class Distcc < Autotools
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
       ALLOWEDNETS='127.0.0.1/8'
       # DISTCC_VERBOSE=1
-      # DISTCC_JOBS=`distcc -j`
+      DISTCC_JOBS=`distcc -j`
       DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
       mkdir -p $DISTCC_DIR
       STARTDISTCC='true'
