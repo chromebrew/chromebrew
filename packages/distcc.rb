@@ -21,7 +21,7 @@ class Distcc < Autotools
   })
 
   depends_on 'avahi' # R
-  # depends_on 'ccache' # L
+  depends_on 'ccache' # L
   depends_on 'gcc_dev' # L
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -162,7 +162,6 @@ class Distcc < Autotools
     File.write 'env.d_distccd', <<~ENVDDISTCCD_EOF
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
       ALLOWEDNETS='127.0.0.1/8'
-      CCACHE_PREFIX='distcc'
       # DISTCC_VERBOSE=1
       # DISTCC_JOBS=`distcc -j`
       DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
