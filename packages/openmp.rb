@@ -7,7 +7,7 @@ require_relative 'llvm18_build'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '18.1.0'
+  version '18.1.2'
   # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,8 +17,8 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8062c69c3bc0e54db68ebdf019e9e2f192d6eda130710e67fc751edfcae13feb',
-     armv7l: '8062c69c3bc0e54db68ebdf019e9e2f192d6eda130710e67fc751edfcae13feb',
+    aarch64: '62b3e4f1dd51758f36f22e25c7fdb58879d59a6e60c687fd15d4fb4aca8b60d0',
+     armv7l: '62b3e4f1dd51758f36f22e25c7fdb58879d59a6e60c687fd15d4fb4aca8b60d0',
        i686: '9ef0a14a9fbc76ffc4b7598b7bc8e2ea63df0c35634e31a6e52f8476598987f9',
      x86_64: 'a4cf64ad9ec2738d0afdb55ca14cf904623d34bf116a3ebeaa4a24b2e2aa1503'
   })
@@ -33,21 +33,33 @@ class Openmp < Package
   no_env_options
 
   def self.patch
-    # This patch should be in 18.0.1.
-    downloader 'https://github.com/llvm/llvm-project/commit/bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch', '3a97108033890957acf0cce214a6366b77b61caf5a4aa5a5e75d384da7f2dde1'
-    system 'patch -F3 -p1 -i bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch'
-
-    # llvm 18.x backport.
-    downloader 'https://github.com/llvm/llvm-project/pull/84290.patch', 'a54bedaa078a2bf1778e66195e016f6794a431e8622a45ee7a49bc0ca898b82b'
-    system 'patch -F3 -p1 -i 84290.patch'
+    # This patch should be in 18.1.3.
+    # https://github.com/llvm/llvm-project/pull/86106
+    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'e27dcdc571f67605cff7346d919f18a2ac4ec1efaa1f4b4c35d03fecd2140204'
+    system 'patch -Np1 -i 86106.patch'
 
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
+
+    # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
+    File.write 'llvm_i686.patch', <<~LLVM_PATCH_EOF
+      --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
+      +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
+      @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
+             D.getVFS().exists(D.Dir + "/../lib/libc++.so"))
+           addPathIfExists(D, D.Dir + "/../lib", Paths);
+
+      +  addPathIfExists(D, concat(SysRoot, "#{CREW_LIB_PREFIX}"), Paths);
+         addPathIfExists(D, concat(SysRoot, "/lib"), Paths);
+         addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
+       }
+    LLVM_PATCH_EOF
+    system 'patch -Np1 -i llvm_i686.patch'
   end
 
   def self.build
     system "cmake -B builddir -G Ninja openmp \
-      #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-fno-lto', '').gsub('-ffat-lto-objects', '')} \
+      #{CREW_CMAKE_OPTIONS} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \

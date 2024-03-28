@@ -81,8 +81,8 @@ class Llvm18_build < Package
 
   def self.patch
     # This patch should be in 18.1.3.
-    # https://github.com/llvm/llvm-project/pull/84230
-    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'SKIP'
+    # https://github.com/llvm/llvm-project/pull/86106
+    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'e27dcdc571f67605cff7346d919f18a2ac4ec1efaa1f4b4c35d03fecd2140204'
     system 'patch -Np1 -i 86106.patch'
 
     # Remove rc suffix on final release.
