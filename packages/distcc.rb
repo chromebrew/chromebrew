@@ -125,7 +125,7 @@ class Distcc < Autotools
       fi
       ALLOWEDNETS=
       DISTCC_ARGS=
-      DISTCC_HOSTS='localhost +zeroconf'
+      DISTCC_HOSTS='localhost'
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
       for subnet in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
@@ -134,12 +134,15 @@ class Distcc < Autotools
         echo "Enabling distccd on subnet $subnet ..."
       done
       LISTENER="127.0.0.1"
+      LOCALIP="$(ip route get 1 | awk '{print $7;exit}')"
+      LISTENER+=" $LOCALIP "
+      DISTCC_ARGS+=" --listen $LOCALIP "
       for netaddress in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
         address="${netaddress%/*}"
         LISTENER+=" $address "
       done
-      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fd00::/8 ‐‐zeroconf --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
+      DISTCC_ARGS+="-N 20 ‐‐allow‐private --allow fd00::/8 --enable-tcp-insecure --log-level error --log-file #{CREW_PREFIX}/var/log/distccd.log"
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/distccd.log
       (#{CREW_PREFIX}/bin/distccd --daemon $DISTCC_ARGS &> #{CREW_PREFIX}/var/log/distccd.log &)
       echo "Distcc hosts:"
@@ -160,25 +163,13 @@ class Distcc < Autotools
       PATH=#{CREW_PREFIX}/lib/distcc/bin:$PATH
       ALLOWEDNETS='127.0.0.1/8'
       CCACHE_PREFIX='distcc'
-      DISTCC_VERBOSE=1
+      # DISTCC_VERBOSE=1
       # DISTCC_JOBS=`distcc -j`
       DISTCC_DIR=#{CREW_PREFIX}/tmp/.distcc
       mkdir -p $DISTCC_DIR
       STARTDISTCC='true'
     ENVDDISTCCD_EOF
     FileUtils.install 'env.d_distccd', "#{CREW_DEST_PREFIX}/etc/env.d/distccd", mode: 0o644
-    File.write 'distcc_avahi_service', <<~DISTCC_AVAHI_EOF
-      <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
-      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
-      <service-group>
-        <name replace-wildcards="yes">Distcc on %h</name>
-        <service>
-          <type>_distcc._tcp</type>
-          <port>3632</port>
-        </service>
-      </service-group>
-    DISTCC_AVAHI_EOF
-    FileUtils.install 'distcc_avahi_service', "#{CREW_DEST_PREFIX}/etc/avahi/services/distcc.service", mode: 0o644
   end
 
   def self.postinstall

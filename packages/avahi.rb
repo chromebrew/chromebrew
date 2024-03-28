@@ -11,10 +11,10 @@ class Avahi < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '9947fcc523e2536adfb99461f5a29d77be0219f2fbf0cb4575da5afc334723ff',
-    aarch64: '9329f7f826b27de5c7a8ad143c55773eb76c919a06d10ab2ccb350d3b2a3b515',
-     armv7l: '9329f7f826b27de5c7a8ad143c55773eb76c919a06d10ab2ccb350d3b2a3b515',
-     x86_64: '5a8ddb44adfae21de6476c49e6d3d98e6e910d0a894d4b085a5fa7876b08996f'
+       i686: 'b589977a70fdb9bb32887425ee855d50f369345f3b2520c9db3dd56bd32fc819',
+    aarch64: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
+     armv7l: 'c34e8d66c23cc56cffd351e1c760eb352b73900f1943fb135774f4cd5093699d',
+     x86_64: '0939b420dceeccf39b7afe71b562ef9f85087913b5191d43357b51e3e1a1d955'
   })
 
   depends_on 'dbus' # R (needed to enable avahi-client)
@@ -62,20 +62,22 @@ class Avahi < Autotools
         # distccd is already running.
         # Return or exit depending upon whether script was sourced.
         (return 0 2>/dev/null) && return 0 || exit 0
+      elif [[ -f '/.dockerenv' ]]; then
+        echo "In container. Avahi daemon will not be started."
+        (return 0 2>/dev/null) && return 0 || exit 0
       fi
       hostname="$(hostname)"
+      primaryinterface="$(ip route get 1 | awk '{print $5;exit}')"
+      localip="$(ip route get 1 | awk '{print $7;exit}')"
       cp #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf.default #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
       cp #{CREW_PREFIX}/etc/avahi/hosts.default #{CREW_PREFIX}/etc/avahi/hosts
 
+      sed -i "s/#allow-interfaces=eth0/allow-interfaces=$primaryinterface/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
       sed -i "s/#host-name=foo/host-name=$hostname/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
       sed -i "s/#domain-name=local/domain-name=local/" #{CREW_PREFIX}/etc/avahi/avahi-daemon.conf
 
-      for netaddress in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
-      do
-        address="${netaddress%/*}"
-        echo -e "\n${address} ${hostname}.local" >> #{CREW_PREFIX}/etc/avahi/hosts
-        echo "Enabling Avahi mDNS/DNS-SD daemon for address $address ..."
-      done
+      echo -e "\n${localip} ${hostname}.local" >> #{CREW_PREFIX}/etc/avahi/hosts
+      echo "Enabling Avahi mDNS/DNS-SD daemon for address $localip ..."
       mkdir -p #{CREW_PREFIX}/var/log && touch #{CREW_PREFIX}/var/log/avahi.log
       (sudo LD_LIBRARY_PATH="$LD_LIBRARY_PATH" #{CREW_PREFIX}/sbin/avahi-daemon &> #{CREW_PREFIX}/var/log/avahi.log &)
     STARTAVAHI_EOF

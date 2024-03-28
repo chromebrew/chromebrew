@@ -5,7 +5,6 @@
 /usr/local/bin/pump
 /usr/local/bin/startdistccd
 /usr/local/bin/stopdistccd
-/usr/local/etc/avahi/services/distcc.service
 /usr/local/etc/bash.d/distccd
 /usr/local/etc/conf.d/distccd.default
 /usr/local/etc/default/distcc
@@ -15,15 +14,15 @@
 /usr/local/etc/env.d/distccd
 /usr/local/lib/distcc/bin/armv7l-cros-linux-gnueabihf-g++
 /usr/local/lib/distcc/bin/armv7l-cros-linux-gnueabihf-gcc
-/usr/local/lib/distcc/bin/armv7l-cros-linux-gnueabihf-gcc-13
+/usr/local/lib/distcc/bin/armv7l-cros-linux-gnueabihf-gcc-
 /usr/local/lib/distcc/bin/c++
 /usr/local/lib/distcc/bin/c89
 /usr/local/lib/distcc/bin/c99
 /usr/local/lib/distcc/bin/cc
 /usr/local/lib/distcc/bin/clang
 /usr/local/lib/distcc/bin/clang++
-/usr/local/lib/distcc/bin/clang++-18
-/usr/local/lib/distcc/bin/clang-18
+/usr/local/lib/distcc/bin/clang++-
+/usr/local/lib/distcc/bin/clang-
 /usr/local/lib/distcc/bin/cpp
 /usr/local/lib/distcc/bin/g++
 /usr/local/lib/distcc/bin/gcc
