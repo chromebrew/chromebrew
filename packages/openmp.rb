@@ -17,9 +17,9 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '62b3e4f1dd51758f36f22e25c7fdb58879d59a6e60c687fd15d4fb4aca8b60d0',
-     armv7l: '62b3e4f1dd51758f36f22e25c7fdb58879d59a6e60c687fd15d4fb4aca8b60d0',
-       i686: '9ef0a14a9fbc76ffc4b7598b7bc8e2ea63df0c35634e31a6e52f8476598987f9',
+    aarch64: '67aa6450afeb98a16f80888ff0358160447261bea3699406f1dfa438f062c77a',
+     armv7l: '67aa6450afeb98a16f80888ff0358160447261bea3699406f1dfa438f062c77a',
+       i686: '8bbf14efa0adf7d7211d3912520f8b73fd42d1e0193464333ebd82fbd6a0fc58',
      x86_64: 'a4cf64ad9ec2738d0afdb55ca14cf904623d34bf116a3ebeaa4a24b2e2aa1503'
   })
 
@@ -41,7 +41,7 @@ class Openmp < Package
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
 
-    # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
+    # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_i686.patch', <<~LLVM_PATCH_EOF
       --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
       +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
@@ -58,8 +58,14 @@ class Openmp < Package
   end
 
   def self.build
+    @cmake_options = case ARCH
+                     when 'i686', 'x86_64'
+                       CREW_CMAKE_FNO_LTO_OPTIONS.gsub('-fno-lto', '')
+                     else
+                       CREW_CMAKE_OPTIONS
+                     end
     system "cmake -B builddir -G Ninja openmp \
-      #{CREW_CMAKE_OPTIONS} \
+      #{@cmake_options} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \

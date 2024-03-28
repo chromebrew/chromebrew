@@ -88,7 +88,7 @@ class Llvm18_build < Package
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
 
-    # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
+    # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_i686.patch', <<~LLVM_PATCH_EOF
       --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
       +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
