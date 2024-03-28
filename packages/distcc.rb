@@ -14,10 +14,10 @@ class Distcc < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '53e8878a80ee357b344cd1502bed52c68071e5a8c20386a4257be1e99c476478',
-     armv7l: '53e8878a80ee357b344cd1502bed52c68071e5a8c20386a4257be1e99c476478',
-       i686: '79c8e65c0f2e6e90a98a9d5175700ceaa29c45aa01d1714506489df12a863773',
-     x86_64: '3a01c7a83beb6bb8b07b8c26a74c788e01e6e75b8a94df356959364bc58e86cf'
+    aarch64: 'e8a210fd64ca86ed2d7291211ac29bf387462f64357332fbb1d71bc4e3c94cda',
+     armv7l: 'e8a210fd64ca86ed2d7291211ac29bf387462f64357332fbb1d71bc4e3c94cda',
+       i686: 'be0910743c6303e503b55bb02455ca0236e7865e68479b5d96e0134e5d2870b9',
+     x86_64: 'b62b1fab4a708834f9d6a016d6d8330fa62e9a628dc475e6c26a762502d87bdb'
   })
 
   depends_on 'avahi' # R
@@ -125,7 +125,6 @@ class Distcc < Autotools
       fi
       ALLOWEDNETS=
       DISTCC_ARGS=
-      DISTCC_HOSTS='localhost'
       source "#{CREW_PREFIX}/etc/conf.d/distccd.default"
       for subnet in $(ip -o -f inet addr show | awk '/scope global/ {print $4}')
       do
@@ -172,6 +171,6 @@ class Distcc < Autotools
   end
 
   def self.postinstall
-    ExitMessage.add "The distcc daemon will be automatically started, but can be stopped with 'stopdistccd' and restarted with 'startdistccd'."
+    ExitMessage.add "The distcc daemon will be automatically started, but can be stopped with 'stopdistccd' and restarted with 'startdistccd'. Distcc build server IPs should be added to: #{CREW_PREFIX}/etc/distcc/hosts"
   end
 end
