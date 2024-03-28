@@ -4,7 +4,7 @@ require_relative 'llvm18_build'
 class Llvm18_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm18_build.homepage
-  version '18.1.0'
+  version '18.1.2'
   # When upgrading llvm_build*, be sure to upgrade llvm_lib* and llvm_dev* in tandem.
   puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
   license Llvm18_build.license
@@ -13,10 +13,10 @@ class Llvm18_lib < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '44abb4dbc82c8ed453fa506fdf8969a438786ddbaee57f4989d8804d3042379b',
-     armv7l: '44abb4dbc82c8ed453fa506fdf8969a438786ddbaee57f4989d8804d3042379b',
-       i686: 'b595b470ba6264b65f18294b2de10a4abf27948381ea72f6004c3e976327dd8d',
-     x86_64: '545927a82a3c7a47236b03ca0d8573c495c05f9542b9f015ef0b5c8e264de9b9'
+    aarch64: '6b2dcb7102ff12bcf1b412665a6d6377efcddc6d240091344df58693524bfe09',
+     armv7l: '6b2dcb7102ff12bcf1b412665a6d6377efcddc6d240091344df58693524bfe09',
+       i686: 'bd5d0d431f79c5986bf319f6c88faa3073c2bc361cd1aa1e399d0a1a71c5f06e',
+     x86_64: 'ff206fd8cc93fe99c5be427b310aed32ed2b283d3704ff1dd052b20e21335175'
   })
 
   depends_on 'gcc_lib' # R
