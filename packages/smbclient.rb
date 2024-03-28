@@ -14,7 +14,7 @@ class Smbclient < Package
        i686: '2c3eb6d6b7a08694f304d325e615a4f748118e31bb02a63bd4ec1461ac16b2e8',
     aarch64: '22e79e32614baa61de25559a853fca2aa499dccb45f45d94fd6f07f9c4ffdee4',
      armv7l: '22e79e32614baa61de25559a853fca2aa499dccb45f45d94fd6f07f9c4ffdee4',
-     x86_64: '95c4638c81ec65bcac478a16d6581d80f154b1e718541b7b14c80d73113af668'
+     x86_64: '6946b1b22ba515afb48846add8c8bdfb5b2adfc9aac69a6680adbf2868c3453d'
   })
 
   depends_on 'acl' # R
