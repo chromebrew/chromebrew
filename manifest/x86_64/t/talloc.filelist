@@ -2,12 +2,12 @@
 /usr/local/include/talloc.h
 /usr/local/lib64/libpytalloc-util.cpython-312-x86-64-linux-gnu.so
 /usr/local/lib64/libpytalloc-util.cpython-312-x86-64-linux-gnu.so.2
-/usr/local/lib64/libpytalloc-util.cpython-312-x86-64-linux-gnu.so.2.4.1
-/usr/local/lib64/libtalloc-compat1-2.4.1.so
+/usr/local/lib64/libpytalloc-util.cpython-312-x86-64-linux-gnu.so.2.4.2
+/usr/local/lib64/libtalloc-compat1-2.4.2.so
 /usr/local/lib64/libtalloc.so
 /usr/local/lib64/libtalloc.so.1
 /usr/local/lib64/libtalloc.so.2
-/usr/local/lib64/libtalloc.so.2.4.1
+/usr/local/lib64/libtalloc.so.2.4.2
 /usr/local/lib64/pkgconfig/pytalloc-util.cpython-312-x86_64-linux-gnu.pc
 /usr/local/lib64/pkgconfig/talloc.pc
 /usr/local/lib64/python3.12/site-packages/talloc.cpython-312-x86_64-linux-gnu.so

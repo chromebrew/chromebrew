@@ -32,7 +32,7 @@
 /usr/local/lib/dbus-1.0/include/dbus/dbus-arch-deps.h
 /usr/local/lib/libdbus-1.so
 /usr/local/lib/libdbus-1.so.3
-/usr/local/lib/libdbus-1.so.3.36.0
+/usr/local/lib/libdbus-1.so.3.38.0
 /usr/local/lib/pkgconfig/dbus-1.pc
 /usr/local/libexec/dbus-daemon-launch-helper
 /usr/local/share/dbus-1/session.conf

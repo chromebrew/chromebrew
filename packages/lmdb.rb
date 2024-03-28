@@ -6,18 +6,18 @@ require 'package'
 class Lmdb < Package
   description 'Symas Lightning Memory-Mapped Database'
   homepage 'https://symas.com/mdb'
-  version '0.9.31'
+  version '0.9.32'
   license 'OpenLDAP Public License'
   compatibility 'all'
   source_url "https://git.openldap.org/openldap/openldap/-/archive/LMDB_#{version}/openldap-LMDB_#{version}.tar.gz"
-  source_sha256 'd35d4f6f46313d62fd342c9dcbf574432919ce5e802d2b6cbe2ebd549821e5c4'
+  source_sha256 '70d553f80968f5117f2f3d4d7f0b89cb8fb69dadc35131263a2499bb58f7d015'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4a8b49cf540611175663e4a47f5cb6a7422453737d46fd9cb719a5405c810a66',
-     armv7l: '4a8b49cf540611175663e4a47f5cb6a7422453737d46fd9cb719a5405c810a66',
-       i686: 'f1fbdc2025a46ab1792331948cabacf6aa3d9e98cd9beba1f253e79871f5932d',
-     x86_64: 'bfa7fb9b53043b3294ea1ca4d1556470d1dcde611acfefb8c49b8d6919f433c7'
+    aarch64: '321830d5af7e98f3f302a915866dd81183102c7b7c911298e32c82aebedaa00b',
+     armv7l: '321830d5af7e98f3f302a915866dd81183102c7b7c911298e32c82aebedaa00b',
+       i686: '81275127275f8d4faa718dc28d4f2fd894394d94005f99474699bd49c3f81aac',
+     x86_64: '4c23c5666baf7c2c488d1eb5f50dcaaa1eb137b5dd394778d1eaf44c714dfd90'
   })
 
   depends_on 'glibc' # R

@@ -25,10 +25,10 @@
 /usr/local/lib/ldb/modules/ldb/tdb.so
 /usr/local/lib/libldb.so
 /usr/local/lib/libldb.so.2
-/usr/local/lib/libldb.so.2.8.0
+/usr/local/lib/libldb.so.2.9.0
 /usr/local/lib/libpyldb-util.cpython-312-i386-linux-gnu.so
 /usr/local/lib/libpyldb-util.cpython-312-i386-linux-gnu.so.2
-/usr/local/lib/libpyldb-util.cpython-312-i386-linux-gnu.so.2.8.0
+/usr/local/lib/libpyldb-util.cpython-312-i386-linux-gnu.so.2.9.0
 /usr/local/lib/pkgconfig/ldb.pc
 /usr/local/lib/pkgconfig/pyldb-util.cpython-312-i386-linux-gnu.pc
 /usr/local/lib/python3.12/site-packages/_ldb_text.py

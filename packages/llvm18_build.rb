@@ -3,7 +3,7 @@ require 'package'
 class Llvm18_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '18.1.0'
+  version '18.1.2'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -11,10 +11,10 @@ class Llvm18_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
-     armv7l: 'f548be260db7eb878403b78b1dedff69504326b67bb52a5cc4d7e3ca6f0ea6fe',
-       i686: 'f68d85c167ad644911e67569e3252d971eb3c7eadfccbed4eca0f5df094081f9',
-     x86_64: '502d8904eeaff5f0e1e7a510803cad4ce92580cc3613e7c929f8ff87921f150a'
+    aarch64: '0b1b68e47b2f3c877046516d3666db930e62dc2b5b527c3f83abed518deee2a6',
+     armv7l: '0b1b68e47b2f3c877046516d3666db930e62dc2b5b527c3f83abed518deee2a6',
+       i686: '77242a01f59eddef71c7dd62320f509506a3653a702cbe1f6b151e2892922d9f',
+     x86_64: '3d6c3417662d4350a8f4b735767db937e230761170d5bf87ff1c30550d1d17c7'
   })
 
   depends_on 'ccache' => :build
@@ -80,21 +80,15 @@ class Llvm18_build < Package
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
 
   def self.patch
-    # This patch should be in 18.0.1.
-    # https://github.com/llvm/llvm-project/pull/84230
-    downloader 'https://github.com/llvm/llvm-project/commit/bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch', '3a97108033890957acf0cce214a6366b77b61caf5a4aa5a5e75d384da7f2dde1'
-    system 'patch -F3 -p1 -i bb22eccc90d0e8cb02be5d4c47a08a17baf4d242.patch'
-
-    # llvm 18.x backport.
-    downloader 'https://github.com/llvm/llvm-project/pull/84290.patch', 'a54bedaa078a2bf1778e66195e016f6794a431e8622a45ee7a49bc0ca898b82b'
-    system 'patch -F3 -p1 -i 84290.patch'
+    # This patch should be in 18.1.3.
+    # https://github.com/llvm/llvm-project/pull/86106
+    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'e27dcdc571f67605cff7346d919f18a2ac4ec1efaa1f4b4c35d03fecd2140204'
+    system 'patch -Np1 -i 86106.patch'
 
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
 
-    return unless ARCH == 'i686'
-
-    # Patch for LLVM 15 because of https://github.com/llvm/llvm-project/issues/58851
+    # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
     File.write 'llvm_i686.patch', <<~LLVM_PATCH_EOF
       --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
       +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
@@ -132,7 +126,7 @@ class Llvm18_build < Package
         cxx_sys=#{CREW_PREFIX}/include/c++/${version}
         cxx_inc=#{CREW_PREFIX}/include/c++/${version}/${machine}
         gnuc_lib=#{CREW_LIB_PREFIX}/gcc/${machine}/${version}
-        clang++ -fPIC  -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
+        clang++ -fPIC -rtlib=compiler-rt -stdlib=libc++ -cxx-isystem ${cxx_sys} -I ${cxx_inc} -B ${gnuc_lib} -L ${gnuc_lib} "$@"
       CLCPLUSPLUS_EOF
       system "mold -run cmake -B builddir -G Ninja llvm \
             -DCMAKE_ASM_COMPILER_TARGET=#{CREW_BUILD} \
