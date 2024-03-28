@@ -268,11 +268,6 @@ for package in $BOOTSTRAP_PACKAGES; do
   update_device_json "${package}" "${version}" "${sha256}"
 done
 
-# Install activesupport gem for ruby
-gem update -N --system
-gem install -N activesupport --conservative
-gem install -N concurrent-ruby --conservative
-
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
 # shellcheck disable=SC2024
 sudo ldconfig &> /tmp/crew_ldconfig || true
