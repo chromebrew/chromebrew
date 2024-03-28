@@ -20,7 +20,7 @@ class Openmp < Package
     aarch64: '67aa6450afeb98a16f80888ff0358160447261bea3699406f1dfa438f062c77a',
      armv7l: '67aa6450afeb98a16f80888ff0358160447261bea3699406f1dfa438f062c77a',
        i686: '8bbf14efa0adf7d7211d3912520f8b73fd42d1e0193464333ebd82fbd6a0fc58',
-     x86_64: 'a4cf64ad9ec2738d0afdb55ca14cf904623d34bf116a3ebeaa4a24b2e2aa1503'
+     x86_64: '9d44b7b4f736bc909c5a63e112e38b34b500ffa6b2dc92bbc202ed0cfb27fffc'
   })
 
   depends_on 'gcc_lib' # R
