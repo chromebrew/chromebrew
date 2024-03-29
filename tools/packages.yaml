@@ -5361,6 +5361,11 @@ url: https://github.com/lm-sensors/lm-sensors/releases
 activity: none
 ---
 kind: url
+name: lmstudio
+url: https://lmstudio.ai/
+activity: medium
+---
+kind: url
 name: lmdb
 url: https://git.openldap.org/openldap/openldap/-/tags
 activity: high
