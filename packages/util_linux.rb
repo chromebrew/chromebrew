@@ -1,22 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Util_linux < Package
+class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version '2.39.3-py3.12'
+  version '2.40-py3.12'
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz'
-  source_sha256 '7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f'
+  source_url 'https://github.com/util-linux/util-linux.git'
+  git_hashtag "v#{version[/^.*?(?=-)/]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
-     armv7l: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
+    aarch64: 'df71ebcfffc64a80e2fb2956c8a834f7da22393ddafd1f12425952d5a66e0675',
+     armv7l: 'df71ebcfffc64a80e2fb2956c8a834f7da22393ddafd1f12425952d5a66e0675',
        i686: '082eca25c5a7c714bdfbb906952ecf948458ce1a93edc47a140b6ca9024e4304',
-     x86_64: '23c2ea99c198e5bc5af485b4f090f1257355df07a2e5f32858250c45b7af76e3'
+     x86_64: '23ee3e2a1d1d702a1b3b0e65a22fd0e7589825dc77585e4c3a6006193df9976e'
   })
 
+  depends_on 'bash_completion' # R
   depends_on 'bzip2' # R
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
@@ -28,33 +29,53 @@ class Util_linux < Package
   depends_on 'ncurses' # R
   depends_on 'pcre2' => :build
   depends_on 'readline' # R
+  depends_on 'ruby_asciidoctor' => :build
+  depends_on 'sqlite' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  no_env_options
+  year2038 = ARCH == 'x86_64' ? '' : '-Dallow-32bit-time=true'
+  # Needs bpf, which isn't available on i686.
+  lsfd = ARCH == 'i686' ? '-Dbuild-lsfd=disabled' : ''
+  # Kill conflicts with coreutils.
+  meson_options "-Dbuild-kill=disabled #{year2038} #{lsfd}"
 
   def self.patch
-    # Fix sys-utils/setarch.c:90:7: error: PER_LINUX_FDPIC undeclared here
-    system "sed -i 's,PER_LINUX_FDPIC,PER_LINUX_32BIT,' sys-utils/setarch.c" if ARCH == 'i686'
-  end
+    File.write 'lsfd.patch', <<~LSFD_PATCHEOF
+      diff -Npaur a/meson.build b/meson.build
+      --- a/meson.build	2024-03-28 23:37:49.623330230 -0400
+      +++ b/meson.build	2024-03-28 23:39:08.982615866 -0400
+      @@ -2703,6 +2703,7 @@ endif
+       mq_libs = []
+       mq_libs += cc.find_library('rt', required : true)
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --with-python=3 \
-      --enable-fs-paths-extra=#{CREW_PREFIX}/sbin \
-      --without-systemd \
-      --with-econf \
-      --with-ncursesw \
-      --without-cryptsetup"
-    system "sed -i -e '/chgrp/d' -e '/chown/d' Makefile"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # conflict with coreutils
-    FileUtils.rm "#{CREW_DEST_PREFIX}/share/man/man1/kill.1"
-    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/kill"
+      +opt = not get_option('build-lsfd').disabled()
+       exe = executable(
+         'lsfd',
+         lsfd_sources,
+      @@ -2712,7 +2713,7 @@ exe = executable(
+         dependencies : mq_libs,
+         install_dir : usrbin_exec_dir,
+         install : true)
+      -if not is_disabler(exe)
+      +if opt and not is_disabler(exe)
+         exes += exe
+         manadocs += ['misc-utils/lsfd.1.adoc']
+       endif
+      diff -Npaur a/meson_options.txt b/meson_options.txt
+      --- a/meson_options.txt	2024-03-28 23:39:28.782438124 -0400
+      +++ b/meson_options.txt	2024-03-28 23:40:38.789810977 -0400
+      @@ -53,6 +53,8 @@ option('build-fdisks', type : 'feature',
+              description : 'build fdisk(8), sfdisk(8) and cfdisk(8)')
+       option('build-mount', type : 'feature',
+              description : 'build mount(8) and umount(8)')
+      +option('build-lsfd', type : 'feature',
+      +       description : 'build lsfd')
+       option('build-losetup', type : 'feature',
+              description : 'build losetup')
+       option('build-zramctl', type : 'feature',
+    LSFD_PATCHEOF
+    system 'patch -Np1 -i lsfd.patch'
   end
 end
