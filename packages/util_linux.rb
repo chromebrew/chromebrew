@@ -43,7 +43,7 @@ class Util_linux < Meson
   meson_options "-Dbuild-kill=disabled #{year2038} #{lsfd}"
 
   def self.patch
-    return unles ARCH == 'i686'
+    return unless ARCH == 'i686'
 
     # 2.40 needs bpf, which isn't available on i686.
     # See https://github.com/util-linux/util-linux/issues/2874
