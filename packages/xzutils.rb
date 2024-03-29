@@ -6,19 +6,19 @@ class Xzutils < CMake
   version '5.6.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://github.com/tukaani-project/xz/releases/download/v5.6.1/xz-5.6.1.tar.xz'
+  source_url 'https://github.com/tukaani-project/xz.git'
+  git_hashtag "v#{version}"
   source_sha256 'f334777310ca3ae9ba07206d78ed286a655aa3f44eec27854f740c26b2cd2ed0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3f0f0a9ae25fa21008a30f7de4fedfa3e3f2a56b390b4a6b8d42563b4cff8d71',
-     armv7l: '3f0f0a9ae25fa21008a30f7de4fedfa3e3f2a56b390b4a6b8d42563b4cff8d71',
-       i686: '8f18cc8c977455ffa5761fa46b121e6491d513b5a1dd172b52c8b45ff2d8153c',
-     x86_64: '9387bd15ec6d123f6fff74795b26889410f7d58c06b89d9d58c93a2fd195085a'
+    aarch64: 'eef32693337bd3345001a1cd8d49b96940d5f9100916080a352abfe1a09de99f',
+     armv7l: 'eef32693337bd3345001a1cd8d49b96940d5f9100916080a352abfe1a09de99f',
+       i686: 'f9aaefa142d5c826e862b4a2ce627c9b5795a3fc744a58b01172416e0f1405e3',
+     x86_64: 'c3fed03eafd462bd132bb945ae83adda4fada304654d971f3428943556fe3c23'
   })
 
   depends_on 'glibc' # R
 
-  cmake_options '-DBUILD_SHARED_LIBS=ON \
-                 -DENABLE_SANDBOX=OFF'
+  cmake_options '-DBUILD_SHARED_LIBS=ON'
 end
