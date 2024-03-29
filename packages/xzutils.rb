@@ -8,7 +8,6 @@ class Xzutils < CMake
   compatibility 'all'
   source_url 'https://github.com/tukaani-project/xz.git'
   git_hashtag "v#{version}"
-  source_sha256 'f334777310ca3ae9ba07206d78ed286a655aa3f44eec27854f740c26b2cd2ed0'
   binary_compression 'tar.zst'
 
   binary_sha256({
