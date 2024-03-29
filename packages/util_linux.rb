@@ -12,10 +12,10 @@ class Util_linux < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'df71ebcfffc64a80e2fb2956c8a834f7da22393ddafd1f12425952d5a66e0675',
-     armv7l: 'df71ebcfffc64a80e2fb2956c8a834f7da22393ddafd1f12425952d5a66e0675',
+    aarch64: 'dce99bef03d7d431d5fa6535f6266c6ed00e1d7fde578116d369e559cab8b3cb',
+     armv7l: 'dce99bef03d7d431d5fa6535f6266c6ed00e1d7fde578116d369e559cab8b3cb',
        i686: 'a117bc46b9ead409f5de3070a4a4634b14127b63bc909c3e34362113c02c4140',
-     x86_64: '23ee3e2a1d1d702a1b3b0e65a22fd0e7589825dc77585e4c3a6006193df9976e'
+     x86_64: '97fa74dc9cb10aaf6818eba7342f69dc34fa144d1add60c433fb20a9eb4962fd'
   })
 
   depends_on 'bash_completion' # R
@@ -43,9 +43,11 @@ class Util_linux < Meson
   meson_options "-Dbuild-kill=disabled #{year2038} #{lsfd}"
 
   def self.patch
+    return unles ARCH == 'i686'
+
     # 2.40 needs bpf, which isn't available on i686.
     # See https://github.com/util-linux/util-linux/issues/2874
     downloader 'https://github.com/util-linux/util-linux/pull/2879.patch', '531a8c0904d6b86c0c9adc2a41d657ce1d75cb63e2a408a51cb14fe3d9ffa4dc'
-    system 'patch -Np1 -i 2879.patch' if ARCH == 'i686'
+    system 'patch -Np1 -i 2879.patch'
   end
 end
