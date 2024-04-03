@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require_relative '../../commands/help'
+require_relative '../../lib/package'
 
 class HelpCommandTest < Minitest::Test
   def test_no_arguments
@@ -8,7 +9,18 @@ class HelpCommandTest < Minitest::Test
       Available commands: build, check, const, deps, download, files, help, install, license, list, postinstall, prop, reinstall, remove, search, sysinfo, test, update, upgrade, upload, version, whatprovides
     EOT
     assert_output expected_output, nil do
-      Command.help(nil, nil)
+      Command.help(nil)
+    end
+  end
+
+  def test_prop_command
+    expected_output = <<~EOT
+      Explain the purpose of various package boolean properties.
+      Usage: crew prop <property>
+      Available properties: #{Package.print_boolean_properties}
+    EOT
+    assert_output expected_output, nil do
+      Command.help('prop')
     end
   end
 
@@ -19,14 +31,7 @@ class HelpCommandTest < Minitest::Test
       If no constants are provided, all constants will be displayed.
     EOT
     assert_output expected_output, nil do
-      Command.help('const', nil)
-    end
-  end
-
-  def test_prop_command
-    expected_output = "Use the 'is_static' property for packages which do not require shared dependencies.\n"
-    assert_output expected_output, nil do
-      Command.help('prop', 'is_static')
+      Command.help('const')
     end
   end
 end
