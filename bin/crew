@@ -1722,29 +1722,18 @@ end
 
 def check_package(pkg_name)
   return unless Dir.exist? CREW_LOCAL_REPO_ROOT
+  return unless File.file? "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
   return copy_package(pkg_name) if @opt_force
 
   # Prompt to copy the local repo package to crew if the package is not found.
-  if !File.file?("#{CREW_PACKAGES_PATH}/#{pkg_name}.rb") && File.file?("#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb")
+  unless File.file? "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"
     prompt_msg = "\nThe crew package #{pkg_name} does not exist."
     return copy_package(pkg_name, prompt_msg)
   end
 
   # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the operation.
-  crew_package_updated = ''
-  Dir.chdir CREW_PACKAGES_PATH do
-    crew_package_updated = `git diff #{CREW_PACKAGES_PATH}/#{pkg_name}.rb`.chomp
-  end
-  local_package_updated = ''
-  Dir.chdir CREW_LOCAL_REPO_ROOT do
-    local_package_updated = `git diff #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb`.chomp
-  end
-  if local_package_updated != '' && crew_package_updated == ''
-    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated but the crew package is unchanged."
-    return copy_package(pkg_name, prompt_msg)
-  end
-  if local_package_updated != '' && crew_package_updated != '' && local_package_updated != crew_package_updated
-    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb has been updated and does not match the crew updated package."
+  unless FileUtils.identical? "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"
+    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb does not match the crew package."
     return copy_package(pkg_name, prompt_msg)
   end
 end
