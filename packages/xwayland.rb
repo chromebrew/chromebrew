@@ -3,7 +3,7 @@ require 'package'
 class Xwayland < Package
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  version '23.2.4'
+  version '23.2.5'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xwayland < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '39adea468f9f4d7574e95f7beab1b111307ea0a343be01e456e33a6a74bf5ea0',
-     armv7l: '39adea468f9f4d7574e95f7beab1b111307ea0a343be01e456e33a6a74bf5ea0',
-     x86_64: '9c1177d82c90051f3123bdababe9b119452062b072bf0f68e63a4d8c2605a906'
+    aarch64: '81c092319ac37014b936317da203caf996c6493cf7d85c1f13c4cc2773c2c9d5',
+     armv7l: '81c092319ac37014b936317da203caf996c6493cf7d85c1f13c4cc2773c2c9d5',
+     x86_64: '2215ac59ae1b2740d673b42a2726a8c62a65bb742df1750602eff96f383b80ba'
   })
 
   no_env_options
