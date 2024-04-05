@@ -5,6 +5,7 @@ require 'json'
 require 'fileutils'
 require 'tmpdir'
 require_relative '../commands/const'
+require_relative '../commands/files'
 require_relative '../commands/help'
 require_relative '../commands/list'
 require_relative '../commands/prop'
@@ -12,7 +13,6 @@ require_relative '../commands/remove'
 require_relative '../commands/sysinfo'
 require_relative '../lib/color'
 require_relative '../lib/const'
-require_relative '../lib/convert_size'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
 require_relative '../lib/downloader'
@@ -262,38 +262,6 @@ def cache_build
     puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
     puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
   end
-end
-
-def files(pkg_name)
-  local_filelist    = File.join(CREW_META_PATH, "#{pkg_name}.filelist")
-  manifest_filelist = File.join(CREW_LIB_PATH, "manifest/#{ARCH}/#{pkg_name[0]}/#{pkg_name}.filelist")
-
-  if File.exist?(local_filelist)
-    # search for local filelist first
-    filelist_path = local_filelist
-  elsif File.exist?(manifest_filelist)
-    # search for manifest directory if not installed
-    filelist_path = manifest_filelist
-  else
-    # package does not have any filelist available
-    warn "Package #{pkg_name} is not installed. :(".lightred
-    return false
-  end
-
-  filelist = File.readlines(filelist_path, chomp: true).sort
-  lines = filelist.size
-  size = 0
-
-  filelist.each do |filename|
-    # ignore symlinks to prevent duplicating calculation
-    size += File.size(filename) if File.file?(filename) && !File.symlink?(filename)
-  end
-
-  puts filelist, <<~EOT.lightgreen
-
-    Total found: #{lines}
-    Disk usage: #{human_size(size)}
-  EOT
 end
 
 def whatprovides(regex_pat)
@@ -1755,10 +1723,8 @@ end
 
 def files_command(args)
   args['<name>'].each do |name|
-    @pkg_name = name
-    search @pkg_name
-    print_current_package
-    files name
+    search name
+    Command.files(@pkg)
   end
 end
 

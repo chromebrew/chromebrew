@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.46.3'
+CREW_VERSION = '1.46.4'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -337,7 +337,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew const [-v|--verbose] [<name> ...]
     crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
-    crew files [options] [-v|--verbose] <name> ...
+    crew files <name> ...
     crew help [<command>] [-v|--verbose] [<subcommand>]
     crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
     crew list [options] [-v|--verbose] (available|installed|compatible|incompatible)
