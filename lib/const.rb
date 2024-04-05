@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.46.4'
+CREW_VERSION = '1.46.5'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -370,4 +370,4 @@ CREW_DOCOPT = <<~DOCOPT
 DOCOPT
 
 # All available crew commands.
-CREW_COMMANDS = CREW_DOCOPT.scan(/crew ([^\s]+)/).flatten.join(',').gsub('.', '').split(',').sort
+CREW_COMMANDS = CREW_DOCOPT.scan(/crew ([^\s]+)/).flatten.sort.join(', ').gsub('.', '')
