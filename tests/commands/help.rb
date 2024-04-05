@@ -6,7 +6,7 @@ class HelpCommandTest < Minitest::Test
   def test_no_arguments
     expected_output = <<~EOT
       Usage: crew help <command>
-      Available commands: build, check, const, deps, download, files, help, install, license, list, postinstall, prop, reinstall, remove, search, sysinfo, test, update, upgrade, upload, version, whatprovides
+      Available commands: #{CREW_COMMANDS}
     EOT
     assert_output expected_output, nil do
       Command.help(nil)

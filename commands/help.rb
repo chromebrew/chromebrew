@@ -166,7 +166,7 @@ class Command
     else
       puts <<~EOT
         Usage: crew help <command>
-        Available commands: build, check, const, deps, download, files, help, install, license, list, postinstall, prop, reinstall, remove, search, sysinfo, test, update, upgrade, upload, version, whatprovides
+        Available commands: #{CREW_COMMANDS}
       EOT
     end
   end
