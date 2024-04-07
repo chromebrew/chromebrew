@@ -114,6 +114,7 @@
 /usr/local/share/bash-completion/completions/_repomanage
 /usr/local/share/bash-completion/completions/_reptyr
 /usr/local/share/bash-completion/completions/_rfkill
+/usr/local/share/bash-completion/completions/_rg
 /usr/local/share/bash-completion/completions/_rtcwake
 /usr/local/share/bash-completion/completions/_ruff
 /usr/local/share/bash-completion/completions/_runuser
