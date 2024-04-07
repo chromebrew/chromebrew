@@ -8941,6 +8941,11 @@ url: https://github.com/KhronosGroup/Vulkan-Tools/tags
 activity: high
 ---
 kind: url
+name: vulkansdk
+url: https://vulkan.lunarg.com/sdk/home
+activity: medium
+---
+kind: url
 name: vuze
 url: https://sourceforge.net/projects/azureus/files/vuze/
 activity: none
