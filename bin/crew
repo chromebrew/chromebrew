@@ -18,6 +18,7 @@ require_relative '../lib/docopt'
 require_relative '../lib/downloader'
 require_relative '../lib/gnome'
 require_relative '../lib/package'
+require_relative '../lib/package_utils'
 require_relative '../lib/util'
 
 # Disallow sudo
@@ -134,9 +135,9 @@ def print_package(pkg_path, extra = false)
 end
 
 def print_current_package(extra = false)
-  status = if @device[:installed_packages].any? { |elem| elem[:name] == @pkg.name }
+  status = if PackageUtils.installed?(@pkg.name)
              :installed
-           elsif !@pkg.compatible?
+           elsif !PackageUtils.compatible?(@pkg)
              :incompatible
            else
              :available
@@ -188,7 +189,7 @@ def generate_compatible
       puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
     puts "Checking #{pkg_name} for compatibility.".orange if @opt_verbose
-    if @pkg.compatible?
+    if PackageUtils.compatible?(@pkg)
       # add to compatible packages
       puts "Adding #{pkg_name} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
       @device[:compatible_packages].push(name: @pkg.name)
@@ -313,8 +314,8 @@ def update
       next
     end
     different_version = (package[:version] != @pkg.version)
-    has_sha = !(@pkg.get_binary_sha256(@device[:architecture]).to_s.empty? || package[:binary_sha256].to_s.empty?)
-    different_sha = has_sha && package[:binary_sha256] != @pkg.get_binary_sha256(@device[:architecture])
+    has_sha = !(PackageUtils.get_sha256(@pkg).to_s.empty? || package[:sha256].to_s.empty?)
+    different_sha = has_sha && package[:sha256] != PackageUtils.get_sha256(@pkg)
 
     can_be_updated += 1 if different_version || different_sha
 
@@ -346,17 +347,18 @@ def upgrade(*pkgs, build_from_source: false)
     end
 
     pkgs.each do
-      unless @device[:installed_packages].any? { |package| package[:name] == pkg_name }
+      unless PackageUtils.installed?(pkg_name)
         puts 'Package '.lightred + pkg_name.orange + ' is not installed. 😔 You may try this: '.lightred + "crew install #{pkg_name}".lightblue
         return false
       end
     end
+
     pkg_ver_latest     = Package.load_package(pkg_file, pkg_name).version
     pkg_ver_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:version]
-    pkg_hash_latest    = Package.load_package(pkg_file, pkg_name).get_binary_sha256(@device[:architecture])
-    pkg_hash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:binary_sha256]
+    pkg_hash_latest    = PackageUtils.get_sha256(Package.load_package(pkg_file, pkg_name))
+    pkg_hash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:sha256]
 
-    return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest == ''
+    return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest.to_s.empty? || Package.load_package(pkg_file, pkg_name).is_fake
     return pkg_ver_latest != pkg_ver_installed
   end
 
@@ -423,13 +425,13 @@ def upgrade(*pkgs, build_from_source: false)
 end
 
 def download
-  url = @pkg.get_url(@device[:architecture])
+  url = PackageUtils.get_url(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
   source = @pkg.source?(@device[:architecture])
 
   uri = URI.parse url
   filename = File.basename(uri.path)
-  sha256sum = @pkg.get_sha256(@device[:architecture])
-  @extract_dir = @pkg.get_extract_dir
+  sha256sum = PackageUtils.get_sha256(@pkg, build_from_source: @opt_source || @pkg.build_from_source)
+  @extract_dir = "#{@pkg.name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
   return { source:, filename: } if CREW_CACHE_BUILD && File.file?(build_cachefile)
@@ -1164,7 +1166,7 @@ def resolve_dependencies
   @dependencies.map!(&:keys).flatten!
 
   # abort if we have incompatible dependencies
-  abort "Some dependencies are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred if @dependencies.any? { |dep| !Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb").compatible? }
+  abort "Some dependencies are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred if @dependencies.any? { |dep| !PackageUtils.compatible?(Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb")) }
 
   # leave only not installed packages in dependencies
   @dependencies.reject! { |dep_name| @device[:installed_packages].any? { |pkg| pkg[:name] == dep_name } }
@@ -1220,7 +1222,7 @@ def resolve_dependencies
 end
 
 def install
-  if !@pkg.in_upgrade && @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
+  if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name)
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
@@ -1270,7 +1272,7 @@ def install
   end
 
   # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, binary_sha256: @pkg.get_binary_sha256(@device[:architecture]))
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
@@ -1363,7 +1365,7 @@ def archive_package(crew_archive_dest)
   if @opt_force
     FileUtils.cp "#{CREW_PACKAGES_PATH}/#{@pkg_name}.rb", "#{CREW_LOCAL_REPO_ROOT}/packages/"
     puts "The package file for #{@pkg_name} used has been copied to #{CREW_LOCAL_REPO_ROOT}/packages/".lightblue
-    if @device[:installed_packages].any? { |pkg| pkg[:name] == @pkg.name }
+    if PackageUtils.installed?(@pkg.name)
       puts "#{@pkg_name} will now be upgraded...".lightgreen
       @pkg.in_upgrade = true
       @pkg.build_from_source = false
@@ -1659,11 +1661,11 @@ def build_command(args)
     # Process preflight block to see if package should be built
     pre_flight
 
-    if !@pkg.is_fake? && @pkg.compatible? && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
+    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
-      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless @pkg.compatible?
+      puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping build.".lightred unless PackageUtils.compatible?(@pkg)
       puts 'Unable to build without source. Skipping build.'.lightred unless @pkg.source?(ARCH) && @pkg.source_url.to_s.upcase != 'SKIP'
       puts 'Compile not needed. Skipping build.'.lightred if @pkg.no_compile_needed?
     end
@@ -1747,7 +1749,7 @@ def install_command(args)
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkg_name
 
-    if @pkg.compatible?
+    if PackageUtils.compatible?(@pkg)
       resolve_dependencies_and_install
     else
       puts "Package #{@pkg.name} is not compatible with your device architecture (#{ARCH}). Skipping install.".lightred
@@ -1784,7 +1786,7 @@ def reinstall_command(args)
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
     next unless @pkg_name
 
-    if @pkg.compatible?
+    if PackageUtils.compatible?(@pkg)
       @pkg.in_upgrade = true
       resolve_dependencies_and_install
       @pkg.in_upgrade = false

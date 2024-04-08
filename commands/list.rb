@@ -3,6 +3,7 @@ require 'json'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/package'
+require_relative '../lib/package_utils'
 
 class Command
   def self.list(available, installed, compatible, incompatible, verbose)
@@ -17,7 +18,7 @@ class Command
         pkg_name = File.basename(filename, '.rb')
         next if installed_packages.key?(pkg_name)
         pkg = Package.load_package(filename)
-        puts pkg_name if pkg.compatible?
+        puts pkg_name if PackageUtils.compatible?(pkg)
       end
     elsif installed
       if verbose
@@ -36,14 +37,14 @@ class Command
       Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
         pkg_name = File.basename(filename, '.rb')
         pkg = Package.load_package(filename)
-        puts pkg_name.lightgreen if pkg.compatible? && installed_packages.key?(pkg_name)
-        puts pkg_name if pkg.compatible?
+        puts pkg_name.lightgreen if PackageUtils.compatible?(pkg) && installed_packages.key?(pkg_name)
+        puts pkg_name if PackageUtils.compatible?(pkg)
       end
     elsif incompatible
       Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
         pkg_name = File.basename(filename, '.rb')
         pkg = Package.load_package(filename)
-        puts pkg_name.lightred unless pkg.compatible?
+        puts pkg_name.lightred unless PackageUtils.compatible?(pkg)
       end
     end
   end
