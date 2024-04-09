@@ -1,20 +1,20 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Cryptsetup < Package
+class Cryptsetup < Autotools
   description 'The cryptsetup utility is used to conveniently setup disk en-/decryption based on DMCrypt kernel module.'
   homepage 'https://gitlab.com/cryptsetup/cryptsetup'
-  version '2.0.3'
+  version '2.7.2'
   license 'GPL-2+'
   compatibility 'all'
-  source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.3.tar.xz'
-  source_sha256 '4d6cca04c1f5ff4a68d045d190efb2623087eda0274ded92f92a4b6911e501d4'
-  binary_compression 'tar.xz'
+  source_url 'https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-2.7.2.tar.xz'
+  source_sha256 '219ebf74e8eddf96624a0376477e5a6f8f350a67aaf36e7dadb114d94b3afef4'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '336db165a18055d522037b89e90dc97a2c967e3c4c14a84b77a2effb2b6f8618',
-     armv7l: '336db165a18055d522037b89e90dc97a2c967e3c4c14a84b77a2effb2b6f8618',
-       i686: 'ba83377debf5b8716b568b594d60546fa6fd0987241409592cc2a4e8bb659503',
-     x86_64: '38500360185a743c7421c19863b902917445da3e7fb5cff2001fbffc16d58e70'
+    aarch64: 'af2704c4aa03ab19b341dea6df7153ab39520faa9aca32d0f87bf03edd63f98b',
+     armv7l: 'af2704c4aa03ab19b341dea6df7153ab39520faa9aca32d0f87bf03edd63f98b',
+       i686: 'b617e0e29799b80335a169f38ec8100d7e2d38506f031e510e0ab776dd16482c',
+     x86_64: 'cc366cd896898841a29ec7d326e0c00616fb6b09761397b18422d9e323b3c9aa'
   })
 
   depends_on 'util_linux'
@@ -23,15 +23,5 @@ class Cryptsetup < Package
   depends_on 'libgcrypt'
   depends_on 'popt'
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-static'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options '--disable-asciidoc'
 end
