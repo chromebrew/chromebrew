@@ -2785,6 +2785,11 @@ url: https://github.com/telmich/gpm/releases
 activity: none
 ---
 kind: url
+name: gpt4all
+url: https://github.com/nomic-ai/gpt4all/releases
+activity: medium
+---
+kind: url
 name: gptfdisk
 url: https://sourceforge.net/projects/gptfdisk/files/gptfdisk/
 activity: low
