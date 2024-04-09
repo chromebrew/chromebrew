@@ -4533,7 +4533,7 @@ activity: none
 kind: url
 name: libnsl
 url: https://github.com/thkukuk/libnsl/releases
-activity: none
+activity: low
 ---
 kind: url
 name: libnsutils
