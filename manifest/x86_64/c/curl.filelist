@@ -62,6 +62,7 @@
 /usr/local/share/man/man3/CURLINFO_PROXYAUTH_AVAIL.3.zst
 /usr/local/share/man/man3/CURLINFO_PROXY_ERROR.3.zst
 /usr/local/share/man/man3/CURLINFO_PROXY_SSL_VERIFYRESULT.3.zst
+/usr/local/share/man/man3/CURLINFO_QUEUE_TIME_T.3.zst
 /usr/local/share/man/man3/CURLINFO_REDIRECT_COUNT.3.zst
 /usr/local/share/man/man3/CURLINFO_REDIRECT_TIME.3.zst
 /usr/local/share/man/man3/CURLINFO_REDIRECT_TIME_T.3.zst
@@ -91,6 +92,7 @@
 /usr/local/share/man/man3/CURLINFO_TLS_SSL_PTR.3.zst
 /usr/local/share/man/man3/CURLINFO_TOTAL_TIME.3.zst
 /usr/local/share/man/man3/CURLINFO_TOTAL_TIME_T.3.zst
+/usr/local/share/man/man3/CURLINFO_USED_PROXY.3.zst
 /usr/local/share/man/man3/CURLINFO_XFER_ID.3.zst
 /usr/local/share/man/man3/CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE.3.zst
 /usr/local/share/man/man3/CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE.3.zst
@@ -329,6 +331,7 @@
 /usr/local/share/man/man3/CURLOPT_SEEKDATA.3.zst
 /usr/local/share/man/man3/CURLOPT_SEEKFUNCTION.3.zst
 /usr/local/share/man/man3/CURLOPT_SERVER_RESPONSE_TIMEOUT.3.zst
+/usr/local/share/man/man3/CURLOPT_SERVER_RESPONSE_TIMEOUT_MS.3.zst
 /usr/local/share/man/man3/CURLOPT_SERVICE_NAME.3.zst
 /usr/local/share/man/man3/CURLOPT_SHARE.3.zst
 /usr/local/share/man/man3/CURLOPT_SOCKOPTDATA.3.zst
