@@ -13,10 +13,10 @@ class Bash < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '491cec8a98cdaf51555e132501a12aefb747b1055af4d4ca79571c441978bb55',
-     armv7l: '491cec8a98cdaf51555e132501a12aefb747b1055af4d4ca79571c441978bb55',
-       i686: 'ed8867045a27edb51582bf20fee3060fc75fc3f2d49237b9a729084793400829',
-     x86_64: 'a0aec6a5f64365b174f8d6834a7dfbb50073bed90da42ded7e0bfb4cb843522d'
+    aarch64: 'a53c3392a334427b0381236789387217d8731e07f966d64b967ddf63cb60ba94',
+     armv7l: 'a53c3392a334427b0381236789387217d8731e07f966d64b967ddf63cb60ba94',
+       i686: 'ab4ccf3dbdea01b6cecbb5e28696f518e48a0bc38730060afad7b8e2d9724ce9',
+     x86_64: '6c77b4a7cee18276a1b41807bfb6763626ac92bbfd6594422a4a9c3e3d9102c7'
   })
 
   depends_on 'gcc_lib' # R
@@ -28,11 +28,13 @@ class Bash < Autotools
     (1..@_patchlevel).each do |patch|
       patchfile = "bash52-#{patch.to_s.rjust(3, '0')}"
       downloader "https://mirrors.kernel.org/gnu/bash/bash-5.2-patches/#{patchfile}", 'SKIP'
+      puts "Applying bash #{@_ver} patch #{patch}...".orange
       system "patch -Np0 -i #{patchfile}"
     end
   end
 
   configure_options '--with-curses \
+    --enable-extended-glob-default \
     --enable-readline \
     --without-bash-malloc \
     --with-installed-readline'
