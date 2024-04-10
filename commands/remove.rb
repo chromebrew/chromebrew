@@ -36,7 +36,7 @@ class Command
           puts "#{line} is in another package. It will not be removed during the removal of #{pkg.name}.".orange
         else
           puts "Removing file #{line}".yellow if verbose
-          FileUtils.remove_file line
+          FileUtils.remove_file line, exception: false
         end
       end
 
@@ -44,7 +44,7 @@ class Command
       File.foreach(File.join(CREW_META_PATH, "#{pkg.name}.directorylist"), chomp: true) do |line|
         next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
         puts "Removing directory #{line}".yellow if verbose
-        Dir.rmdir line
+        Dir.rmdir line, exception: false
       end
 
       # Remove the file and directory lists.
