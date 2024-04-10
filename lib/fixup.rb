@@ -16,6 +16,9 @@ Dir.chdir CREW_LIB_PATH do
   system 'git sparse-checkout reapply'
 end
 
+# Rename the binary_sha256 variable to sha256 in the device.json file
+system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
+
 # Check for renamed and deprecated packages, and handle them.
 
 pkg_update_arr = [

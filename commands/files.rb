@@ -1,12 +1,11 @@
-require 'json'
 require_relative '../lib/const'
 require_relative '../lib/convert_size'
+require_relative '../lib/package_utils'
 
 class Command
   def self.files(pkg)
     # Check if the package is even installed first, as this is the most likely reason we cannot find a filelist.
-    device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-    if device_json['installed_packages'].none? { |entry| entry['name'] == pkg.name }
+    unless PackageUtils.installed?(pkg.name)
       puts "Package #{pkg.name} is not installed.".lightred
       return
     end

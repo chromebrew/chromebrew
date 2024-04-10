@@ -1,13 +1,14 @@
 require 'fileutils'
 require 'json'
 require_relative '../lib/const'
+require_relative '../lib/package_utils'
 
 class Command
   def self.remove(pkg, verbose)
     device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
 
     # Make sure the package is actually installed before we attempt to remove it.
-    if device_json['installed_packages'].none? { |entry| entry['name'] == pkg.name }
+    unless PackageUtils.installed?(pkg.name)
       puts "Package #{pkg.name} isn't installed.".lightred
       return
     end
