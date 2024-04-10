@@ -5,6 +5,7 @@ require 'json'
 require 'fileutils'
 require 'tmpdir'
 require_relative '../commands/const'
+require_relative '../commands/create'
 require_relative '../commands/files'
 require_relative '../commands/help'
 require_relative '../commands/list'
@@ -1732,6 +1733,10 @@ def const_command(args)
   args['<name>'].each do |name|
     Command.const(name)
   end.empty? && Command.const(nil)
+end
+
+def create_command(_args)
+  Command.create
 end
 
 def deps_command(args)
