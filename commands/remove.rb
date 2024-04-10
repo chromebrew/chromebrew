@@ -44,7 +44,7 @@ class Command
       File.foreach(File.join(CREW_META_PATH, "#{pkg.name}.directorylist"), chomp: true) do |line|
         next unless Dir.exist?(line) && Dir.empty?(line) && line.include?(CREW_PREFIX)
         puts "Removing directory #{line}".yellow if verbose
-        Dir.rmdir line, exception: false
+        FileUtils.remove_dir line, exception: false
       end
 
       # Remove the file and directory lists.
