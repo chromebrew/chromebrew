@@ -16,4 +16,6 @@ class Bash_completion < Autotools
        i686: 'b687949c680d08cddd59c7e01d882db0f8006800dd01dcf38948d78fb9e30f25',
      x86_64: 'c8794d54d7e2d25c987cc1b5a50957eedac78a65965d0270e6d8aabadd61a710'
   })
+
+  depends_on 'bash' # L
 end

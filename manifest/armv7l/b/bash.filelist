@@ -110,7 +110,7 @@
 /usr/local/share/doc/bash/README
 /usr/local/share/doc/bash/bash.html
 /usr/local/share/doc/bash/bashref.html
-/usr/local/share/info/bash.info.gz
+/usr/local/share/info/bash.info.zst
 /usr/local/share/locale/af/LC_MESSAGES/bash.mo
 /usr/local/share/locale/bg/LC_MESSAGES/bash.mo
 /usr/local/share/locale/ca/LC_MESSAGES/bash.mo
@@ -150,5 +150,5 @@
 /usr/local/share/locale/vi/LC_MESSAGES/bash.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/bash.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/bash.mo
-/usr/local/share/man/man1/bash.1.gz
-/usr/local/share/man/man1/bashbug.1.gz
+/usr/local/share/man/man1/bash.1.zst
+/usr/local/share/man/man1/bashbug.1.zst

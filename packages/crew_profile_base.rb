@@ -3,11 +3,11 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  version '0.0.13'
+  version '0.0.15'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 'fb87692443eab131688ee900a803db326105857f5caff89d1a3fc35d361f8f67'
+  source_sha256 'a50ac3a6daa494bbfcae041d79e44c186078ff27c27a62bc0ac0aa7ae4fd64a8'
 
   no_compile_needed
   print_source_bashrc
