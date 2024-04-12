@@ -115,11 +115,6 @@ at_exit do
   ExitMessage.print
 end
 
-def crewlog
-  str = "#{@pkg.name} is_fake property:  #{@pkg.is_fake?}, no_source_build:  #{@pkg.no_source_build?}."
-  caller_locations(1, 1).first.tap {|loc| puts "#{loc.path}:#{loc.lineno}:#{caller_locations(3).first.label}:#{str}".lightpurple if @opt_verbose}
-end
-
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
@@ -408,7 +403,6 @@ def upgrade(*pkgs, build_from_source: false)
   # install new dependencies (if any)
   to_be_upgraded.each do |pkg_name|
     search(pkg_name)
-    crewlog
     resolve_dependencies
   end
 
@@ -417,7 +411,6 @@ def upgrade(*pkgs, build_from_source: false)
   # upgrade packages
   to_be_upgraded.each do |pkg_name|
     search(pkg_name)
-    crewlog
     print_current_package
     @pkg.build_from_source = (build_from_source || CREW_BUILD_FROM_SOURCE)
 
@@ -1229,13 +1222,11 @@ def resolve_dependencies
 end
 
 def install
-  crewlog
   if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name)
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
   end
 
-  crewlog
   unless @pkg.is_fake?
     meta = download
     target_dir = unpack meta
@@ -1254,7 +1245,6 @@ def install
       dest_dir = target_dir
     end
   end
-  crewlog
 
   # Make backup of installed packages json file.
   # If this fails, the install should fail before we create any
@@ -1265,12 +1255,10 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
-    crewlog
     Command.remove(@pkg, @opt_verbose)
   end
-  crewlog
+
   if @pkg.is_fake?
-    crewlog
     puts "Install will be skipped since #{@pkg.name} is a fake package.".orange if @opt_verbose
   else
     # perform pre-install process
@@ -1674,7 +1662,6 @@ def build_command(args)
 
     # Process preflight block to see if package should be built
     pre_flight
-    crewlog
     if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
