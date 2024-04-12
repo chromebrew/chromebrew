@@ -11,6 +11,7 @@
 /usr/local/bin/eu-ranlib
 /usr/local/bin/eu-readelf
 /usr/local/bin/eu-size
+/usr/local/bin/eu-srcfiles
 /usr/local/bin/eu-stack
 /usr/local/bin/eu-strings
 /usr/local/bin/eu-strip
@@ -26,15 +27,15 @@
 /usr/local/include/gelf.h
 /usr/local/include/libelf.h
 /usr/local/include/nlist.h
-/usr/local/lib/libasm-0.188.so
+/usr/local/lib/libasm-0.191.so
 /usr/local/lib/libasm.a
 /usr/local/lib/libasm.so
 /usr/local/lib/libasm.so.1
-/usr/local/lib/libdw-0.188.so
+/usr/local/lib/libdw-0.191.so
 /usr/local/lib/libdw.a
 /usr/local/lib/libdw.so
 /usr/local/lib/libdw.so.1
-/usr/local/lib/libelf-0.188.so
+/usr/local/lib/libelf-0.191.so
 /usr/local/lib/libelf.a
 /usr/local/lib/libelf.so
 /usr/local/lib/libelf.so.1
@@ -49,6 +50,7 @@
 /usr/local/share/locale/uk/LC_MESSAGES/elfutils.mo
 /usr/local/share/man/man1/eu-elfclassify.1.zst
 /usr/local/share/man/man1/eu-readelf.1.zst
+/usr/local/share/man/man1/eu-srcfiles.1.zst
 /usr/local/share/man/man3/elf_begin.3.zst
 /usr/local/share/man/man3/elf_clone.3.zst
 /usr/local/share/man/man3/elf_getdata.3.zst
