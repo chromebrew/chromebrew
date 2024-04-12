@@ -1235,7 +1235,7 @@ def install
     return
   end
 
-  puts "The #{@pkg.name} is_fake property is #{@pkg.is_fake}.".orange if @opt_verbose
+  crewlog
   unless @pkg.is_fake?
     meta = download
     target_dir = unpack meta
@@ -1254,7 +1254,7 @@ def install
       dest_dir = target_dir
     end
   end
-  puts "The #{@pkg.name} is_fake property is #{@pkg.is_fake}.".orange if @opt_verbose
+  crewlog
 
   # Make backup of installed packages json file.
   # If this fails, the install should fail before we create any
