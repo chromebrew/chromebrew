@@ -3,44 +3,43 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.0' # Do not use @_ver here, it will break the installer.
+  version '3.3.0-2f65458' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
-  source_url 'https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz'
-  source_sha256 '96518814d9832bece92a85415a819d4893b307db5921ae1f0f751a9a89a56b7d'
+  source_url 'https://github.com/ruby/ruby.git'
+  git_hashtag '2f654588d9e0cefff1c23529d2f2672029e1bd21'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c26e8e64fdbb62c5a728582b957cc78ff64a7bc00bec978c3dede8b7a8a329f7',
-     armv7l: 'c26e8e64fdbb62c5a728582b957cc78ff64a7bc00bec978c3dede8b7a8a329f7',
-       i686: 'a97a17336b4d233129fb5a55c82d32b38b981d017cda70ba3cbb51012bc129ca',
-     x86_64: '8df1eee697c2561529e4c3c0b6c16c4d9a99922b1764a7c515473cf9b45d27ef'
+    aarch64: '9929e3372a566e241e20cd2c263f2e401a9de09cf55d17f719abd1f5fe9601d7',
+     armv7l: '9929e3372a566e241e20cd2c263f2e401a9de09cf55d17f719abd1f5fe9601d7',
+       i686: 'c554a429edbc1d104be2f7a149f91b3892e81605dc550f26a918c2f8bb749c22',
+     x86_64: '9b87b663e42fb53f4591caa30f8cb47214dbca23b6246ea42639f9e6b9d05448'
   })
 
-  depends_on 'zlibpkg' # R
-  depends_on 'glibc' # R
+  depends_on 'ca_certificates' # L
   depends_on 'filecmd' # L (This is to enable file command use in package files.)
-  depends_on 'gmp' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'gmp' # R
   depends_on 'libffi' # R
-  depends_on 'openssl' # R
   depends_on 'libyaml' # R
-  depends_on 'readline' # R
+  depends_on 'openssl' # R
   depends_on 'rust' => :build
-  depends_on 'ca_certificates'
-  depends_on 'libyaml' # This is needed to install gems
+  depends_on 'zlibpkg' # R
+
+  conflicts_ok
 
   # at run-time, system's gmp, openssl, readline and zlibpkg can be used
 
   def self.build
-    @yjit = ARCH == 'x86_64' ? '--enable-yjit' : ''
     system '[ -x configure ] || autoreconf -fiv'
     system "RUBY_TRY_CFLAGS='stack_protector=no' \
       RUBY_TRY_LDFLAGS='stack_protector=no' \
       optflags='-flto=auto -fuse-ld=#{CREW_LINKER}' \
       mold -run ./configure #{CREW_OPTIONS} \
       --enable-shared \
-      #{@yjit} \
+      #{ARCH == 'x86_64' ? '--enable-yjit' : ''} \
       --disable-fortify-source"
     system "MAKEFLAGS='--jobs #{CREW_NPROC}' make"
   end
