@@ -1258,9 +1258,9 @@ def install
     Command.remove(@pkg, @opt_verbose)
   end
 
-  puts "#{@pkg.name} reports @pkg.is_fake? is true".orange if @opt_verbose && @pkg.is_fake?
-
-  unless @pkg.is_fake?
+  if @pkg.is_fake?
+    puts "#{@pkg.name} reports @pkg.is_fake? is true. File installs will be skipped.".orange if @opt_verbose
+  else
     # perform pre-install process
     pre_install dest_dir
 
