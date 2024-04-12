@@ -116,7 +116,7 @@ at_exit do
 end
 
 def crewlog
-  str = "The #{@pkg.name} is_fake property is #{@pkg.is_fake?}."
+  str = "#{@pkg.name} is_fake property:  #{@pkg.is_fake?}, no_source_build:  #{@pkg.no_source_build?}."
   caller_locations(1, 1).first.tap {|loc| puts "#{loc.path}:#{loc.lineno}:#{caller_locations(3).first.label}:#{str}".lightpurple if @opt_verbose}
 end
 
@@ -1270,7 +1270,7 @@ def install
   end
 
   if @pkg.is_fake
-    put "Install will be skipped since #{@pkg.name} is a fake package.".orange if @opt_verbose
+    puts "Install will be skipped since #{@pkg.name} is a fake package.".orange if @opt_verbose
   else
     # perform pre-install process
     pre_install dest_dir
@@ -1673,7 +1673,7 @@ def build_command(args)
 
     # Process preflight block to see if package should be built
     pre_flight
-
+    crewlog
     if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
