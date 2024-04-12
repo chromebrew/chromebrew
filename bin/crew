@@ -407,7 +407,6 @@ def upgrade(*pkgs, build_from_source: false)
 
   # install new dependencies (if any)
   to_be_upgraded.each do |pkg_name|
-    crewlog
     search(pkg_name)
     crewlog
     resolve_dependencies
