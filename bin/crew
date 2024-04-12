@@ -1259,9 +1259,7 @@ def install
   end
 
   if @pkg.is_fake?
-    pkg_file = "#{CREW_LOCAL_REPO_ROOT}/packages/#{@pkg.name}.rb"
-    puts "Package.load_package(#{pkg_file}, #{@pkg.name}).is_fake is #{Package.load_package(pkg_file, @pkg.name).is_fake}".orange if @opt_verbose
-    puts "#{@pkg.name} reports @pkg.is_fake? is true. File installs will be skipped.".orange if @opt_verbose
+    puts "The #{@pkg.name} is_fake property is true. File installs will be skipped.".orange if @opt_verbose
   else
     # perform pre-install process
     pre_install dest_dir
