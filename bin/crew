@@ -1227,6 +1227,7 @@ def install
     return
   end
 
+  puts "The #{@pkg.name} is_fake property is #{@pkg.is_fake}.".orange if @opt_verbose
   unless @pkg.is_fake?
     meta = download
     target_dir = unpack meta
@@ -1245,6 +1246,7 @@ def install
       dest_dir = target_dir
     end
   end
+  puts "The #{@pkg.name} is_fake property is #{@pkg.is_fake}.".orange if @opt_verbose
 
   # Make backup of installed packages json file.
   # If this fails, the install should fail before we create any
@@ -1255,6 +1257,7 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
+    puts "The #{@pkg.name} is_fake property is #{@pkg.is_fake}.".orange if @opt_verbose
     Command.remove(@pkg, @opt_verbose)
   end
 
