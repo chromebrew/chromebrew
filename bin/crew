@@ -1662,6 +1662,7 @@ def build_command(args)
 
     # Process preflight block to see if package should be built
     pre_flight
+
     if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
