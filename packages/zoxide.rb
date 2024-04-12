@@ -3,18 +3,18 @@ require 'package'
 class Zoxide < Package
   description 'zoxide is a smarter cd command, inspired by z and autojump.'
   homepage 'https://github.com/ajeetdsouza/zoxide'
-  version '0.9.2'
+  version '0.9.4'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url({
-    aarch64: 'https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.2/zoxide-0.9.2-armv7-unknown-linux-musleabihf.tar.gz',
-     armv7l: 'https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.2/zoxide-0.9.2-armv7-unknown-linux-musleabihf.tar.gz',
-     x86_64: 'https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.2/zoxide-0.9.2-x86_64-unknown-linux-musl.tar.gz'
+    aarch64: 'https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.4/zoxide-0.9.4-armv7-unknown-linux-musleabihf.tar.gz',
+     armv7l: 'https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.4/zoxide-0.9.4-armv7-unknown-linux-musleabihf.tar.gz',
+     x86_64: 'https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.4/zoxide-0.9.4-x86_64-unknown-linux-musl.tar.gz'
   })
   source_sha256({
-    aarch64: '050e6e8e14479b916e9715ccf76f66ab308cef197d9745bca4b6dfbeb70cea39',
-     armv7l: '050e6e8e14479b916e9715ccf76f66ab308cef197d9745bca4b6dfbeb70cea39',
-     x86_64: 'd5598a321eb9ba0bf4c8c54f991fe4be69a65a6a81094c586539225c47ef2c7b'
+    aarch64: 'ebdd745313dd8d9b9aa36b408eea1720ec2caf310262f15c74c47b37e41702ab',
+     armv7l: 'ebdd745313dd8d9b9aa36b408eea1720ec2caf310262f15c74c47b37e41702ab',
+     x86_64: 'fbc22c115a252f9a5c73301e35ed695810d020126b126c3d0e47f0b31f2255a0'
   })
 
   depends_on 'fzf'
