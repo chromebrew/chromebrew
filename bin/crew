@@ -115,6 +115,11 @@ at_exit do
   ExitMessage.print
 end
 
+def crewlog
+  str = "The #{@pkg.name} is_fake property is #{@pkg.is_fake}."
+  caller_locations(1, 1).first.tap {|loc| puts "#{loc.path}:#{loc.lineno}:#{caller_locations(3).first.label}:#{str}".lightpurple if @opt_verbose}
+end
+
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
@@ -402,7 +407,9 @@ def upgrade(*pkgs, build_from_source: false)
 
   # install new dependencies (if any)
   to_be_upgraded.each do |pkg_name|
+    crewlog
     search(pkg_name)
+    crewlog
     resolve_dependencies
   end
 
@@ -411,6 +418,7 @@ def upgrade(*pkgs, build_from_source: false)
   # upgrade packages
   to_be_upgraded.each do |pkg_name|
     search(pkg_name)
+    crewlog
     print_current_package
     @pkg.build_from_source = (build_from_source || CREW_BUILD_FROM_SOURCE)
 
@@ -1222,6 +1230,7 @@ def resolve_dependencies
 end
 
 def install
+  crewlog
   if !@pkg.in_upgrade && PackageUtils.installed?(@pkg.name)
     puts "Package #{@pkg.name} already installed, skipping...".lightgreen
     return
@@ -1257,12 +1266,12 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
-    puts "The #{@pkg.name} is_fake property is #{@pkg.is_fake}.".orange if @opt_verbose
+    crewlog
     Command.remove(@pkg, @opt_verbose)
   end
 
-  if @pkg.is_fake?
-    puts "The #{@pkg.name} is_fake property is true. File installs will be skipped.".orange if @opt_verbose
+  if @pkg.is_fake
+    put "Install will be skipped since #{@pkg.name} is a fake package.".orange if @opt_verbose
   else
     # perform pre-install process
     pre_install dest_dir
