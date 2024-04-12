@@ -1,45 +1,49 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Elfutils < Package
+class Elfutils < Autotools
   description 'elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.'
   homepage 'https://sourceware.org/elfutils/'
-  version '0.188'
+  version '0.191'
   license 'GPL-2+ or LGPL-3+'
   compatibility 'all'
-  source_url "https://sourceware.org/elfutils/ftp/#{version}/elfutils-#{version}.tar.bz2"
-  source_sha256 'fb8b0e8d0802005b9a309c60c1d8de32dd2951b56f0c3a3cb56d21ce01595dff'
+  source_url 'https://sourceware.org/git/elfutils.git'
+  git_hashtag "elfutils-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'da8ce7537065401f2e4bcfbc2a1d2984892957cb611783b539bb805d72db15e3',
-     armv7l: 'da8ce7537065401f2e4bcfbc2a1d2984892957cb611783b539bb805d72db15e3',
-       i686: 'cbe8e8134256de0d2b0d28f01012f74cc6cf2313340214909f9a7fddd5ee93f8',
-     x86_64: '9952fb6d9c22cde9ac9ceb45363d8bd5f8cca2a7ee61a66ccfb063e9e4dca32e'
+    aarch64: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
+     armv7l: '818e00b257bc8aecc944da511ca0ce159d5d9836be118a813078a9ceff58bd1b',
+       i686: '1e5061a8f1448225d91546f5428fdf9e5d01966074512e16cce3fd6f3214046a',
+     x86_64: '5090210bdc4f451e69c994b9d6e5a23241f4cce6a38870a27f0cc66c82fe8213'
   })
 
   depends_on 'bzip2' # R
+  depends_on 'curl' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libarchive' # R
-  depends_on 'curl' # R
   depends_on 'libmicrohttpd' # R
   depends_on 'sqlite' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  def self.build
-    # If debuginfod is disabled, gdb is broken.
-    if ARCH == 'i686'
-      system "./configure #{CREW_OPTIONS} --program-prefix='eu-' \
-        --disable-libdebuginfod --disable-debuginfod"
-    else
-      system "./configure #{CREW_OPTIONS} --program-prefix='eu-'"
-    end
-    system 'make'
+  pre_configure_options "CFLAGS+=' -Wno-error ' CXXFLAGS+=' -Wno-error '"
+  configure_options "#{ARCH == 'i686' ? '--disable-libdebuginfod --disable-debuginfod' : ''} --enable-maintainer-mode --program-prefix='eu-'"
+
+  def self.patch
+    return unless ARCH == 'i686'
+
+    # https://sourceware.org/git/?p=glibc.git;a=commit;h=0be74c5c7cb239e4884d1ee0fd48c746a0bd1a65
+    FileUtils.install "#{CREW_PREFIX}/include/fts.h", 'src/fts.h', mode: 0o644
+    system "sed -i 's/__REDIRECT (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set) __THROW;/__REDIRECT_NTH (fts_set, (FTS \\*, FTSENT \\*, int), fts64_set);/' src/fts.h"
+    system "sed -i 's,#include <fts.h>,#include \"fts.h\",' src/srcfiles.cxx"
   end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
+    # These files cause a fork bomb when they are invoked from /usr/local/etc/profile
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/etc/profile.d/debuginfod.csh"
+    FileUtils.rm_f "#{CREW_DEST_PREFIX}/etc/profile.d/debuginfod.sh"
   end
 end
