@@ -123,6 +123,10 @@ class Ca_certificates < Package
   # This isn't run from install.sh, but that's ok. This is for cleanup if updated after an install.
   def self.postinstall
     # Do not call system update-ca-certificates as that tries to update certs in /etc .
-    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
+    if File.file?("#{CREW_PREFIX}/bin/update-ca-certificates")
+      system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
+    else
+      puts "#{CREW_PREFIX}/bin/update-ca-certificates is missing!".lightred
+    end
   end
 end
