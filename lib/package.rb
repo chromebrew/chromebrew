@@ -193,6 +193,16 @@ class Package
     @dependencies.store(dep_name, [dep_tags, ver_check])
   end
 
+  def self.get_sha256(architecture)
+    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
+      return @binary_sha256[architecture]
+    elsif @source_sha256.respond_to?(:has_key?)
+      return @source_sha256.key?(architecture) ? @source_sha256[architecture] : nil
+    else
+      return @source_sha256
+    end
+  end
+
   def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
   def self.source?(architecture) = !(binary?(architecture) || is_fake?)
 
