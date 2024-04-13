@@ -63,7 +63,7 @@ class Command
     puts 'after remove json change'
     system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp"
     # Copy over original if the write to the tmp file succeeds.
-    FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json') && FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
+    FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
 
     # Perform any operations required after package removal.
     pkg.remove
