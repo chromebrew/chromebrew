@@ -115,6 +115,10 @@ at_exit do
   ExitMessage.print
 end
 
+def crewlog(str)
+  caller_locations(1, 1).first.tap {|loc| puts "#{loc.path}:#{loc.lineno}:#{caller_locations(3).first.label}:#{str}".lightpurple if @opt_verbose}
+end
+
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
@@ -126,6 +130,7 @@ def load_json
 end
 
 def save_json(json_object)
+  crewlog 'Saving device.json...'
   File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
 
   # Copy over original if the write to the tmp file succeeds.
@@ -432,8 +437,6 @@ def upgrade(*pkgs, build_from_source: false)
   puts 'Packages have been updated.'.lightgreen unless rerun_upgrade
   if rerun_upgrade
     at_exit do
-      puts 'at exit...'.orange
-      system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json"
       puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
       exec 'crew upgrade'
     end
@@ -1278,9 +1281,11 @@ def install
     puts 'Removing since upgrade or reinstall...'
     Command.remove(@pkg, @opt_verbose)
 
-    # Clean out package from json before adding, especially if package may be in CREW_ESSENTIAL_PACKAGES.
-    @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
-    save_json(@device_json)
+    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name)
+      crewlog "Removing package #{pkg.name} from device.json"
+      @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
+      save_json(@device_json)
+    end
   end
 
   if @pkg.is_fake?

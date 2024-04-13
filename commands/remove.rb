@@ -59,11 +59,7 @@ class Command
 
     # Update device.json with our changes.
     File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
-    # Debug code...
-    puts 'after remove json change'
-    system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp"
-    # Copy over original if the write to the tmp file succeeds.
-    FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
+    save_json(device_json)
 
     # Perform any operations required after package removal.
     pkg.remove
