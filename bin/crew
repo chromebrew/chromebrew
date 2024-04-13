@@ -424,7 +424,7 @@ def upgrade(*pkgs, build_from_source: false)
   if rerun_upgrade
     at_exit do
       puts 'at exit...'.orange
-      system "jq --arg key ruby -e '.installed_packages[] | select(.name == $key )' /usr/local/etc/crew/device.json".orange
+      system "jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json".orange
       puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
       exec 'crew upgrade'
     end
@@ -1282,7 +1282,7 @@ def install
 
   # Debug code...
   puts 'before json change'
-  system "jq --arg key ruby -e '.installed_packages[] | select(.name == $key )' /usr/local/etc/crew/device.json".orange
+  system "jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json".orange
   # add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: @pkg.get_sha256(@device[:architecture]))
   # @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
@@ -1292,7 +1292,7 @@ def install
   end
   # Debug code...
   puts 'after json change'.orange
-  system "jq --arg key ruby -e '.installed_packages[] | select(.name == $key )' /usr/local/etc/crew/device.json.tmp".orange
+  system "jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp".orange
   # Copy over original if the write to the tmp file succeeds.
   FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
   FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
