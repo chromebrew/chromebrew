@@ -424,7 +424,7 @@ def upgrade(*pkgs, build_from_source: false)
   if rerun_upgrade
     at_exit do
       puts 'at exit...'.orange
-      system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json".
+      system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json"
       puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
       exec 'crew upgrade'
     end
@@ -1282,7 +1282,7 @@ def install
 
   # Debug code...
   puts 'before json change'
-  system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json".
+  system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json"
   # add to installed packages
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: @pkg.get_sha256(@device[:architecture]))
   # @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
