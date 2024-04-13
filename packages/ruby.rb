@@ -28,9 +28,7 @@ class Ruby < Package
   depends_on 'rust' => :build
   depends_on 'zlibpkg' # R
 
-  conflicts_ok
-
-  # at run-time, system's gmp, openssl, readline and zlibpkg can be used
+  # at run-time, system's gmp, openssl, and zlibpkg can be used
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
