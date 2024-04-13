@@ -358,7 +358,7 @@ def upgrade(*pkgs, build_from_source: false)
     pkg_hash_latest    = PackageUtils.get_sha256(Package.load_package(pkg_file, pkg_name))
     pkg_hash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:sha256]
 
-    return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest.to_s.empty? || Package.load_package(pkg_file, pkg_name).is_fake
+    return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest.to_s.empty? || Package.load_package(pkg_file, pkg_name).is_fake?
     return pkg_ver_latest != pkg_ver_installed
   end
 
@@ -1258,7 +1258,9 @@ def install
     Command.remove(@pkg, @opt_verbose)
   end
 
-  unless @pkg.is_fake?
+  if @pkg.is_fake?
+    puts "Install will be skipped since #{@pkg.name} is a fake package.".orange if @opt_verbose
+  else
     # perform pre-install process
     pre_install dest_dir
 
