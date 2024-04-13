@@ -117,8 +117,12 @@ CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache"
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
 
-# Set CREW_NPROC from environment variable or `nproc`
-CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
+# Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
+if File.file?("CREW_PREFIX/bin/distcc")
+  CREW_NPROC = ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
+else
+  CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
+end
 
 # Set following as boolean if environment variables exist.
 CREW_CACHE_ENABLED                   = ENV.fetch('CREW_CACHE_ENABLED', '0').eql?('1')
