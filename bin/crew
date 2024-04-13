@@ -1285,12 +1285,6 @@ def install
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
     Command.remove(@pkg, @opt_verbose)
-
-    if CREW_ESSENTIAL_PACKAGES.include?(@pkg.name)
-      crewlog "Removing package #{@pkg.name} from device.json"
-      @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
-      save_json(@device_json)
-    end
   end
 
   if @pkg.is_fake?
@@ -1308,7 +1302,12 @@ def install
     end
   end
 
-  # add to installed packages
+  # Add to installed packages list in devices.json, but remove first if it is already there.
+  if PackageUtils.installed?(@pkg.name)
+    crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
+    @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
+  end
+  crewlog "Adding package #{@pkg.name} to device.json."
   @device_json['installed_packages'].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   save_json(@device_json)
 end
