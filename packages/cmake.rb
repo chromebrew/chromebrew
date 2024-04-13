@@ -11,8 +11,8 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '06d2f226d1eff483d29ec8d861fb2c47a0200f82d30f121d872f89975ff70c2f',
-     armv7l: '06d2f226d1eff483d29ec8d861fb2c47a0200f82d30f121d872f89975ff70c2f',
+    aarch64: 'f0d83dcc6e9aad60e1c6d1b902034a60e0653a31109fcb2fc0e24b58427b4090',
+     armv7l: 'f0d83dcc6e9aad60e1c6d1b902034a60e0653a31109fcb2fc0e24b58427b4090',
        i686: 'c4715d535d0637d37f4c5c7d7ae4a9f903baea88d8221848f9cc8ae9625781af',
      x86_64: '5ad0c9ee32f7c058a6e31954b74d47cfa339f3c1184f00e68a9fa1100f1254af'
   })
