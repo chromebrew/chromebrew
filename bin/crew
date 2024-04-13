@@ -1283,15 +1283,18 @@ def install
   # Debug code...
   puts 'before json change'
   system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json"
+
+  # Clean out package from json before adding, especially if package may be in CREW_ESSENTIAL_PACKAGES.
+  @device[:installed_packages].delete_if { |entry| entry['name'] == @pkg.name }
+
   # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: @pkg.get_sha256(@device[:architecture]))
-  # @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
   # Debug code...
-  puts 'after json change'
+  puts 'after upgrade json change'
   system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp"
   # Copy over original if the write to the tmp file succeeds.
   FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')

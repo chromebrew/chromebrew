@@ -14,7 +14,7 @@ class Command
     end
 
     # Don't remove any of the packages ruby (and thus crew) needs to run.
-    if %w[gcc_lib glibc gmp ruby zlibpkg zstd].include?(pkg.name)
+    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name)
       puts "Refusing to remove essential package #{pkg.name}.".lightred
       return
     end
@@ -58,7 +58,12 @@ class Command
     device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
 
     # Update device.json with our changes.
-    File.write File.join(CREW_CONFIG_PATH, 'device.json'), JSON.pretty_generate(JSON.parse(device_json.to_json))
+    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json))
+    # Debug code...
+    puts 'after remove json change'
+    system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp"
+    # Copy over original if the write to the tmp file succeeds.
+    FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json') && FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
 
     # Perform any operations required after package removal.
     pkg.remove

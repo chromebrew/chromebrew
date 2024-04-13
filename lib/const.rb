@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.46.8'
+CREW_VERSION = '1.46.9'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -153,6 +153,8 @@ CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
+
+CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlibpkg zstd]
 # show download progress bar or not (only applied when using the default ruby downloader)
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 
