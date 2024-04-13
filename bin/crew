@@ -113,10 +113,6 @@ at_exit do
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
   # Print exit messages.
   ExitMessage.print
-  if rerun_upgrade
-    puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
-    exec 'crew upgrade'
-  end
 end
 
 def load_json
@@ -425,6 +421,12 @@ def upgrade(*pkgs, build_from_source: false)
   end
 
   puts 'Packages have been updated.'.lightgreen unless rerun_upgrade
+  if rerun_upgrade
+    at_exit do
+      puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
+      exec 'crew upgrade'
+    end
+  end
 end
 
 def download
