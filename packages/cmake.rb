@@ -20,7 +20,6 @@ class Cmake < CMake
   depends_on 'bzip2' => :build
   depends_on 'cppdap' # R
   depends_on 'curl' # R
-  depends_on 'distcc' => :build
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
@@ -45,9 +44,10 @@ class Cmake < CMake
   # CMakeLib.testDebuggerNamedPipe-Script (armv7l,i686,x86_64)
   # RunCMake.CMakeRelease (armv7l,i686,x86_64)
   def self.check
-    Dir.chdir 'builddir/Tests' do
-      system 'CTEST_PARALLEL_LEVEL=`distcc -j` LC_ALL=en_US.UTF-8 ../bin/ctest || true'
-    end
+    @current_installed_cmake = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp
+    return if @current_installed_cmake == version
+
+    system "#{CREW_NINJA} -C builddir test || true"
   end
 
   def self.install
