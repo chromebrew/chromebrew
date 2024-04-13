@@ -1281,8 +1281,8 @@ def install
     puts 'Removing since upgrade or reinstall...'
     Command.remove(@pkg, @opt_verbose)
 
-    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name)
-      crewlog "Removing package #{pkg.name} from device.json"
+    if CREW_ESSENTIAL_PACKAGES.include?(@pkg.name)
+      crewlog "Removing package #{@pkg.name} from device.json"
       @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
       save_json(@device_json)
     end
