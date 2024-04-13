@@ -1266,7 +1266,12 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  abort 'Error writing installed packages json file backup!' unless FileUtils.cp(File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp")
+  begin
+    FileUtils.cp(File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp")
+  rescue StandardError
+    puts 'Error writing installed packages json file backup!'.lightred
+    abort
+  end
 
   # remove it just before the file copy
   if @pkg.in_upgrade
