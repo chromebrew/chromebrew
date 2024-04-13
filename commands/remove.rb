@@ -33,7 +33,7 @@ class Command
       # Remove all files installed by the package.
       File.foreach(File.join(CREW_META_PATH, "#{pkg.name}.filelist"), chomp: true) do |line|
         next unless line.start_with?(CREW_PREFIX)
-        if system("grep --exclude #{pkg.name}.filelist -Fxq #{line} ./meta/*.filelist")
+        if system("grep --exclude #{pkg.name}.filelist -Fxq '#{line}' ./meta/*.filelist")
           puts "#{line} is in another package. It will not be removed during the removal of #{pkg.name}.".orange
         else
           puts "Removing file #{line}".yellow if verbose
