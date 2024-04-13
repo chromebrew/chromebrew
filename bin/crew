@@ -119,9 +119,18 @@ def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
   @device   = JSON.load_file(json_path, symbolize_names: true)
+  @device_json = JSON.load_file(json_path)
 
   # symbolize also values
   @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+end
+
+def save_json(json_object)
+  File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
+
+  # Copy over original if the write to the tmp file succeeds.
+  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
+  load_json
 end
 
 def print_package(pkg_path, extra = false)
@@ -1257,12 +1266,16 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp"
+  abort 'Error writing installed packages json file backup!' unless FileUtils.cp(File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp")
 
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
     Command.remove(@pkg, @opt_verbose)
+
+    # Clean out package from json before adding, especially if package may be in CREW_ESSENTIAL_PACKAGES.
+    @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
+    save_json(@device_json)
   end
 
   if @pkg.is_fake?
@@ -1280,30 +1293,9 @@ def install
     end
   end
 
-  # Clean out package from json before adding, especially if package may be in CREW_ESSENTIAL_PACKAGES.
-  device_json = JSON.load_file(File.join(CREW_CONFIG_PATH, 'device.json'))
-  device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
-  File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
-
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
-
-  load_json
-
   # add to installed packages
-  #@device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  device_json['installed_packages'].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  #File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
-    #output = JSON.parse @device.to_json
-    #file.write JSON.pretty_generate(output)
-  #end
-  File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(device_json.to_json))
-
-  # Debug code...
-  puts 'after upgrade json change'
-  system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp"
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
+  @device_json['installed_packages'].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  save_json(@device_json)
 end
 
 def resolve_dependencies_and_build
