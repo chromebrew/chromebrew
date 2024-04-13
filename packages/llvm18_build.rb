@@ -3,7 +3,7 @@ require 'package'
 class Llvm18_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '18.1.2'
+  version '18.1.3'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -11,10 +11,10 @@ class Llvm18_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0b1b68e47b2f3c877046516d3666db930e62dc2b5b527c3f83abed518deee2a6',
-     armv7l: '0b1b68e47b2f3c877046516d3666db930e62dc2b5b527c3f83abed518deee2a6',
-       i686: '77242a01f59eddef71c7dd62320f509506a3653a702cbe1f6b151e2892922d9f',
-     x86_64: '3d6c3417662d4350a8f4b735767db937e230761170d5bf87ff1c30550d1d17c7'
+    aarch64: 'c26bd8bb873469e5fd96617de8e63621662089d0bcb4ea7b9d740fe0ceb1b051',
+     armv7l: 'c26bd8bb873469e5fd96617de8e63621662089d0bcb4ea7b9d740fe0ceb1b051',
+       i686: '6d15930acd6df4fc78e8573c8b40847d874e59645852b65823998d2c4113b32b',
+     x86_64: '4bb714ea26be5d8789686bee92e557619e6f8095ea189ea967eb5c3c01b84f4a'
   })
 
   depends_on 'ccache' => :build
@@ -80,16 +80,11 @@ class Llvm18_build < Package
   LLVM_TARGETS_TO_BUILD = 'all'.freeze
 
   def self.patch
-    # This patch should be in 18.1.3.
-    # https://github.com/llvm/llvm-project/pull/86106
-    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'e27dcdc571f67605cff7346d919f18a2ac4ec1efaa1f4b4c35d03fecd2140204'
-    system 'patch -Np1 -i 86106.patch'
-
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
-    File.write 'llvm_i686.patch', <<~LLVM_PATCH_EOF
+    File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
       --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
       +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
       @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
@@ -101,7 +96,7 @@ class Llvm18_build < Package
          addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
        }
     LLVM_PATCH_EOF
-    system 'patch -Np1 -i llvm_i686.patch'
+    system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
   end
 
   def self.build

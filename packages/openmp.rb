@@ -7,7 +7,7 @@ require_relative 'llvm18_build'
 class Openmp < Package
   description 'LLVM OpenMP Runtime Library'
   homepage 'https://openmp.llvm.org/'
-  version '18.1.2'
+  version '18.1.3'
   # When upgrading llvm_build*, be sure to upgrade openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
@@ -17,10 +17,10 @@ class Openmp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '67aa6450afeb98a16f80888ff0358160447261bea3699406f1dfa438f062c77a',
-     armv7l: '67aa6450afeb98a16f80888ff0358160447261bea3699406f1dfa438f062c77a',
-       i686: '8bbf14efa0adf7d7211d3912520f8b73fd42d1e0193464333ebd82fbd6a0fc58',
-     x86_64: '226f7e50b866a02fdc4d5a455f17b4e3bc57a4002aab07bb9aca2617489509e8'
+    aarch64: 'e689971dd05124b3b96d12458acf186ecca4b43c479746121f575cbf4d192253',
+     armv7l: 'e689971dd05124b3b96d12458acf186ecca4b43c479746121f575cbf4d192253',
+       i686: '9142ec4e8f2cd86e09e83b41d82844a189840421e62803096087bc7c0bc2a6c0',
+     x86_64: 'e78f3760ac45689dfb605dbd45e13142a9a2d345e3a89ffa320ded1acd9eb32f'
   })
 
   depends_on 'gcc_lib' # R
@@ -33,16 +33,11 @@ class Openmp < Package
   no_env_options
 
   def self.patch
-    # This patch should be in 18.1.3.
-    # https://github.com/llvm/llvm-project/pull/86106
-    downloader 'https://github.com/llvm/llvm-project/pull/86106.patch', 'e27dcdc571f67605cff7346d919f18a2ac4ec1efaa1f4b4c35d03fecd2140204'
-    system 'patch -Np1 -i 86106.patch'
-
     # Remove rc suffix on final release.
     system "sed -i 's,set(LLVM_VERSION_SUFFIX rc),,' llvm/CMakeLists.txt"
 
     # Patch for LLVM 15+ because of https://github.com/llvm/llvm-project/issues/58851
-    File.write 'llvm_i686.patch', <<~LLVM_PATCH_EOF
+    File.write 'llvm_crew_lib_prefix.patch', <<~LLVM_PATCH_EOF
       --- a/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:50:36.777754608 -0500
       +++ b/clang/lib/Driver/ToolChains/Linux.cpp	2022-11-30 15:51:57.004417484 -0500
       @@ -314,6 +314,7 @@ Linux::Linux(const Driver &D, const llvm
@@ -54,7 +49,7 @@ class Openmp < Package
          addPathIfExists(D, concat(SysRoot, "/usr/lib"), Paths);
        }
     LLVM_PATCH_EOF
-    system 'patch -Np1 -i llvm_i686.patch'
+    system 'patch -Np1 -i llvm_crew_lib_prefix.patch'
   end
 
   def self.build
