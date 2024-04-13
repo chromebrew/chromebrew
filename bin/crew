@@ -1291,8 +1291,8 @@ def install
     file.write JSON.pretty_generate(output)
   end
   # Debug code...
-  puts 'after json change'.orange
-  system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp".orange
+  puts 'after json change'
+  system "/usr/bin/jq --arg key ruby -e '.installed_packages[] | select(.name == \$key )' /usr/local/etc/crew/device.json.tmp"
   # Copy over original if the write to the tmp file succeeds.
   FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
   FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
