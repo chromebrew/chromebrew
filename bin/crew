@@ -438,12 +438,13 @@ def upgrade(*pkgs, build_from_source: false)
     resolve_dependencies_and_install
   end
 
-  puts 'Packages have been updated.'.lightgreen unless rerun_upgrade
   if rerun_upgrade
     at_exit do
       puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
       exec 'crew upgrade'
     end
+  else
+    puts 'Packages have been updated.'.lightgreen
   end
 end
 
