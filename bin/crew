@@ -728,11 +728,14 @@ end
 
 def post_install
   if @pkg.print_source_bashrc? || @pkg.gnome?
-    ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
+    #ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
-      To finish the installation, please execute the following:
-      source ~/.bashrc
-    PRINT_SOURCE_BASHRC_EOT
+      #To finish the installation, please execute the following:
+      #source ~/.bashrc
+    #PRINT_SOURCE_BASHRC_EOT
+    at_exit do
+      Process.kill('USR1', Process.ppid)
+    end
   end
 
   GnomePostinstall.add @pkg.name if @pkg.gnome?
