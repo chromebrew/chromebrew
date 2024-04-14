@@ -731,7 +731,7 @@ def post_install
     crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
     # Check to see if the env variable was set, because without the trap
     # set, USR1 will kill crosh.
-    if CREW_SOURCE_BASHRC_ENABLED
+    if CREW_SOURCE_BASHRC_ACTIVATED
       Process.kill('USR1', Process.ppid)
       crewlog '~/.bashrc was automatically sourced.'
     else
