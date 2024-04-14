@@ -728,15 +728,12 @@ end
 
 def post_install
   if @pkg.print_source_bashrc? || @pkg.gnome?
-    ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
-      ~/.bashrc was automatically sourced.
-    PRINT_SOURCE_BASHRC_EOT
-      #To finish the installation, please execute the following:
-      #source ~/.bashrc
     crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
+    # Check to see if the env variable was set, because without the trap
+    # set, USR1 will kill crosh.
     if CREW_SOURCE_BASHRC_ENABLED
       Process.kill('USR1', Process.ppid)
-      puts '~/.bashrc was automatically sourced.'.lightblue
+      crewlog '~/.bashrc was automatically sourced.'
     else
       at_exit do
         exec 'bash'
