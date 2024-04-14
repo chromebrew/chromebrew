@@ -733,6 +733,7 @@ def post_install
     PRINT_SOURCE_BASHRC_EOT
       #To finish the installation, please execute the following:
       #source ~/.bashrc
+    crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
     if CREW_SOURCE_BASHRC_ENABLED
       Process.kill('USR1', Process.ppid)
       puts '~/.bashrc was automatically sourced.'.lightblue
