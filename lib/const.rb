@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.46.8'
+CREW_VERSION = '1.46.9'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -60,6 +60,8 @@ else
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
 
+CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlibpkg zstd]
+
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
 CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
@@ -115,8 +117,12 @@ CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache"
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
 
-# Set CREW_NPROC from environment variable or `nproc`
-CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
+# Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
+CREW_NPROC = if File.file?("#{CREW_PREFIX}/bin/distcc")
+               ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
+             else
+               ENV.fetch('CREW_NPROC', `nproc`.chomp)
+             end
 
 # Set following as boolean if environment variables exist.
 CREW_CACHE_ENABLED                   = ENV.fetch('CREW_CACHE_ENABLED', '0').eql?('1')
@@ -153,6 +159,7 @@ CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
+
 # show download progress bar or not (only applied when using the default ruby downloader)
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 

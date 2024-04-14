@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.29.0'
+  version '3.29.2'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
@@ -11,10 +11,10 @@ class Cmake < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dbbbb44e2651a607c690b545b91c3749fd5395fb7a53657c6d0703f6133d55b1',
-     armv7l: 'dbbbb44e2651a607c690b545b91c3749fd5395fb7a53657c6d0703f6133d55b1',
-       i686: '1473e3e8f16ea34a841ec585ad31cf3987d0a38e1cbfe5c250ef689667f30df5',
-     x86_64: '723369fb9a2d4758d61ac98a7aad87c7ae0e3028df531d789a5284a12973d060'
+    aarch64: 'f0d83dcc6e9aad60e1c6d1b902034a60e0653a31109fcb2fc0e24b58427b4090',
+     armv7l: 'f0d83dcc6e9aad60e1c6d1b902034a60e0653a31109fcb2fc0e24b58427b4090',
+       i686: 'c4715d535d0637d37f4c5c7d7ae4a9f903baea88d8221848f9cc8ae9625781af',
+     x86_64: '5ad0c9ee32f7c058a6e31954b74d47cfa339f3c1184f00e68a9fa1100f1254af'
   })
 
   depends_on 'bzip2' => :build
@@ -44,6 +44,9 @@ class Cmake < CMake
   # CMakeLib.testDebuggerNamedPipe-Script (armv7l,i686,x86_64)
   # RunCMake.CMakeRelease (armv7l,i686,x86_64)
   def self.check
+    @current_installed_cmake = `cmake --version | head -n 1 | awk '{print \$3}'`.chomp
+    return if @current_installed_cmake == version
+
     system "#{CREW_NINJA} -C builddir test || true"
   end
 

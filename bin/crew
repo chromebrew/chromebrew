@@ -115,6 +115,10 @@ at_exit do
   ExitMessage.print
 end
 
+def crewlog(str)
+  caller_locations(1, 1).first.tap {|loc| puts "#{loc.path}:#{loc.lineno}:#{caller_locations(3).first.label}:#{str}".lightpurple if @opt_verbose}
+end
+
 def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
@@ -122,6 +126,20 @@ def load_json
 
   # symbolize also values
   @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+end
+
+def save_json(json_object)
+  crewlog 'Saving device.json...'
+  begin
+    File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
+  rescue StandardError
+    puts 'Error writing updated packages json file!'.lightred
+    abort
+  end
+
+  # Copy over original if the write to the tmp file succeeds.
+  FileUtils.cp("#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')) && FileUtils.rm("#{CREW_CONFIG_PATH}/device.json.tmp")
+  load_json
 end
 
 def print_package(pkg_path, extra = false)
@@ -420,8 +438,14 @@ def upgrade(*pkgs, build_from_source: false)
     resolve_dependencies_and_install
   end
 
-  puts 'Packages have been updated.'.lightgreen unless rerun_upgrade
-  puts "Ruby was upgraded. Please run 'crew upgrade' again to make sure upgrades are complete.".lightblue if rerun_upgrade
+  if rerun_upgrade
+    at_exit do
+      puts "Ruby was upgraded. Rerunning 'crew upgrade' to make sure upgrades are complete.".lightblue
+      exec 'crew upgrade'
+    end
+  else
+    puts 'Packages have been updated.'.lightgreen
+  end
 end
 
 def download
@@ -1250,7 +1274,12 @@ def install
   # If this fails, the install should fail before we create any
   # damage, and we should roughly be at maximal disk space usage at this
   # point anyways.
-  FileUtils.cp File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp"
+  begin
+    FileUtils.cp(File.join(CREW_CONFIG_PATH, 'device.json'), "#{CREW_CONFIG_PATH}/device.json.tmp")
+  rescue StandardError
+    puts 'Error writing installed packages json file backup!'.lightred
+    abort
+  end
 
   # remove it just before the file copy
   if @pkg.in_upgrade
@@ -1273,15 +1302,14 @@ def install
     end
   end
 
-  # add to installed packages
-  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  File.open("#{CREW_CONFIG_PATH}/device.json.tmp", 'w') do |file|
-    output = JSON.parse @device.to_json
-    file.write JSON.pretty_generate(output)
+  # Add to installed packages list in devices.json, but remove first if it is already there.
+  if PackageUtils.installed?(@pkg.name)
+    crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
+    @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name }
   end
-  # Copy over original if the write to the tmp file succeeds.
-  FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.tmp", File.join(CREW_CONFIG_PATH, 'device.json')
-  FileUtils.rm "#{CREW_CONFIG_PATH}/device.json.tmp"
+  crewlog "Adding package #{@pkg.name} to device.json."
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  save_json(@device)
 end
 
 def resolve_dependencies_and_build
