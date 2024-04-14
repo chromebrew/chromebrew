@@ -123,7 +123,6 @@ def load_json
   # load_json(): (re)load device.json
   json_path = File.join(CREW_CONFIG_PATH, 'device.json')
   @device   = JSON.load_file(json_path, symbolize_names: true)
-  @device_json = JSON.load_file(json_path)
 
   # symbolize also values
   @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
@@ -1305,11 +1304,11 @@ def install
   # Add to installed packages list in devices.json, but remove first if it is already there.
   if PackageUtils.installed?(@pkg.name)
     crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
-    @device_json['installed_packages'].delete_if { |entry| entry['name'] == @pkg.name }
+    @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name }
   end
   crewlog "Adding package #{@pkg.name} to device.json."
-  @device_json['installed_packages'].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
-  save_json(@device_json)
+  @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
+  save_json(@device)
 end
 
 def resolve_dependencies_and_build
