@@ -729,13 +729,17 @@ end
 def post_install
   if @pkg.print_source_bashrc? || @pkg.gnome?
     ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
-    ~/.bashrc will automatically be sourced.
+      ~/.bashrc was automatically sourced.
     PRINT_SOURCE_BASHRC_EOT
       #To finish the installation, please execute the following:
       #source ~/.bashrc
-
-    at_exit do
+    if CREW_SOURCE_BASHRC_ENABLED
       Process.kill('USR1', Process.ppid)
+      puts '~/.bashrc was automatically sourced.'.lightblue
+    else
+      at_exit do
+        exec 'bash'
+      end
     end
   end
 
