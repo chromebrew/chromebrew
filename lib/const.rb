@@ -116,6 +116,7 @@ CREW_DEST_HOME          = File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
+CREW_SOURCE_BASHRC_ENABLED = ENV.fetch('CREW_SOURCE_BASHRC_ENABLED', '0').eql?('1')
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 CREW_NPROC = if File.file?("#{CREW_PREFIX}/bin/distcc")
@@ -133,7 +134,6 @@ CREW_NOT_COMPRESS                    = ENV.fetch('CREW_NOT_COMPRESS', '0').eql?(
 CREW_NOT_LINKS                       = ENV.fetch('CREW_NOT_LINKS', '0').eql?('1')                       # or use no_links
 CREW_NOT_STRIP                       = ENV.fetch('CREW_NOT_STRIP', '0').eql?('1')                       # or use no_strip
 CREW_NOT_SHRINK_ARCHIVE              = ENV.fetch('CREW_NOT_SHRINK_ARCHIVE', '0').eql?('1')              # or use no_shrink
-CREW_SOURCE_BASHRC_ENABLED           = ENV.fetch('CREW_SOURCE_BASHRC_ENABLED', '0').eql?('1')
 
 # Allow git constants to be set from environment variables (for testing)
 CREW_REPO   = ENV.fetch('CREW_REPO', 'https://github.com/chromebrew/chromebrew.git')
