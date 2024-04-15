@@ -25,8 +25,8 @@
 /usr/local/include/dom/events/document_event.h
 /usr/local/include/dom/events/event.h
 /usr/local/include/dom/events/event_listener.h
-/usr/local/include/dom/events/events.h
 /usr/local/include/dom/events/event_target.h
+/usr/local/include/dom/events/events.h
 /usr/local/include/dom/events/keyboard_event.h
 /usr/local/include/dom/events/mouse_event.h
 /usr/local/include/dom/events/mouse_multi_wheel_event.h
@@ -85,10 +85,10 @@
 /usr/local/include/dom/html/html_script_element.h
 /usr/local/include/dom/html/html_select_element.h
 /usr/local/include/dom/html/html_style_element.h
+/usr/local/include/dom/html/html_table_element.h
 /usr/local/include/dom/html/html_tablecaption_element.h
 /usr/local/include/dom/html/html_tablecell_element.h
 /usr/local/include/dom/html/html_tablecol_element.h
-/usr/local/include/dom/html/html_table_element.h
 /usr/local/include/dom/html/html_tablerow_element.h
 /usr/local/include/dom/html/html_tablesection_element.h
 /usr/local/include/dom/html/html_text_area_element.h

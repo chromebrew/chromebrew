@@ -5,7 +5,7 @@ class Foliate < Package
   homepage 'https://johnfactotum.github.io/foliate/'
   version '2.6.4'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/johnfactotum/foliate/archive/2.6.4.tar.gz'
   source_sha256 '4a4381bff6e398f6734e1695da23f1c593ba2a67e463e07021a089ffd0741776'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Foliate < Package
   binary_sha256({
     aarch64: '0a3f9b647599d14c483be05cc2cc4cba6e14e0cb73bd65ffed1635968c7e67e4',
      armv7l: '0a3f9b647599d14c483be05cc2cc4cba6e14e0cb73bd65ffed1635968c7e67e4',
-       i686: 'c8a0273e75ecd0675a7e7230c5f75294bc73ec28aa1db180055c6ea3b9cfd1ed',
      x86_64: 'd1107a7a7eded897f4b19f2f3c0fc34b83720bf2caac5be77865c223b670ccde'
   })
 

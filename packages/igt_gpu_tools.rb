@@ -6,13 +6,12 @@ class Igt_gpu_tools < Package
   @_ver = '1.25'
   version "#{@_ver}-1"
   license 'MIT'
-  compatibility 'x86_64 i686'
+  compatibility 'x86_64'
   source_url "https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-#{@_ver}.tar.xz"
   source_sha256 '40454d8f0484ea2477862007398a08eef78a6c252c4defce1c934548593fdd11'
   binary_compression 'tar.xz'
 
   binary_sha256({
-    i686: 'eabf18c03916648a85b9f6211a197738ad51ad92900949cb257aeedc4e2bb2e3',
     x86_64: '72bfc16dbd9532d049a67a8a8c328b50d8f5764f6922445bfe9899129735fcd1'
   })
 

@@ -3,17 +3,17 @@ require 'package'
 class Php81 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
   homepage 'http://www.php.net/'
-  version '8.1.27'
+  version '8.1.28'
   license 'PHP-3.01'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://www.php.net/distributions/php-8.1.27.tar.xz'
-  source_sha256 '479e65c3f05714d4aace1370e617d78e49e996ec7a7579a5be47535be61f0658'
+  source_url 'https://www.php.net/distributions/php-8.1.28.tar.xz'
+  source_sha256 '95d0b2e9466108fd750dab5c30a09e5c67f5ad2cb3b1ffb3625a038a755ad080'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
-     armv7l: 'b322a2fb57afd4e1d13973936fdd34de4152edfa6a2ee30db39f355a8c3f9bf2',
-     x86_64: '6d7654ea3352c8335a0ac02d80b732dabcdcb4abd33686887c5b7017f9644945'
+    aarch64: 'b9d166b9421fd9d2ad20db9089727e223c7ee29bbf2713359016debd2fa20c56',
+     armv7l: 'b9d166b9421fd9d2ad20db9089727e223c7ee29bbf2713359016debd2fa20c56',
+     x86_64: '1eebcfec831ead5b3c6f43c3712c3c001d6c9601ef7ba6f2e2da1be64585fcc4'
   })
 
   depends_on 'aspell_en' => :build

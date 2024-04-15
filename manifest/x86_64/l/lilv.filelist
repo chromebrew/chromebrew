@@ -5,12 +5,12 @@
 /usr/local/etc/bash_completion.d/lilv
 /usr/local/include/lilv-0/lilv/lilv.h
 /usr/local/include/lilv-0/lilv/lilvmm.hpp
+/usr/local/lib/python3.12/site-packages/__pycache__/lilv.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/lilv.py
 /usr/local/lib64/liblilv-0.so
 /usr/local/lib64/liblilv-0.so.0
 /usr/local/lib64/liblilv-0.so.0.24.20
 /usr/local/lib64/pkgconfig/lilv-0.pc
-/usr/local/lib/python3.12/site-packages/lilv.py
-/usr/local/lib/python3.12/site-packages/__pycache__/lilv.cpython-312.pyc
 /usr/local/share/man/man1/lv2apply.1.zst
 /usr/local/share/man/man1/lv2bench.1.zst
 /usr/local/share/man/man1/lv2info.1.zst

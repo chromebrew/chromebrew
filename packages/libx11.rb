@@ -5,7 +5,7 @@ class Libx11 < Autotools
   homepage 'https://x.org'
   version '1.8.7'
   license 'X11'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/lib/libx11.git'
   git_hashtag "libX11-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libx11 < Autotools
   binary_sha256({
     aarch64: 'a5e7b10f0a4931a057e6583e254a58abf3230bab91f39d5b64fd027d1d102639',
      armv7l: 'a5e7b10f0a4931a057e6583e254a58abf3230bab91f39d5b64fd027d1d102639',
-       i686: '1df504e7da745c5165cc4db258fff8c5719a98aeef403d950f84febb48cd462f',
      x86_64: 'c089d6bf6eb3715240f02aacb87064f85aa2c03448dc9e34c18495f62ccd5e9a'
   })
 
@@ -24,6 +23,6 @@ class Libx11 < Autotools
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'libxtrans' => :build
-  depends_on 'llvm17_lib' => :build
+  depends_on 'llvm18_lib' => :build
   depends_on 'xorg_proto' => :build
 end

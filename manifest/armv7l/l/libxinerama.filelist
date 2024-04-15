@@ -1,5 +1,5 @@
-/usr/local/include/X11/extensions/panoramiXext.h
 /usr/local/include/X11/extensions/Xinerama.h
+/usr/local/include/X11/extensions/panoramiXext.h
 /usr/local/lib/libXinerama.a
 /usr/local/lib/libXinerama.la
 /usr/local/lib/libXinerama.so

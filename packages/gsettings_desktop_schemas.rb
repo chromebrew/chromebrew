@@ -1,34 +1,23 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gsettings_desktop_schemas < Package
+class Gsettings_desktop_schemas < Meson
   description 'Collection of GSettings schemas for GNOME desktop.'
   homepage 'https://git.gnome.org/browse/gsettings-desktop-schemas'
-  version '44.0'
+  version '46.rc'
   license 'LGPL-2.1+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '284c6121143978682e9907c5320afa6ad92fa2993359f79866fbbab283725072',
-     armv7l: '284c6121143978682e9907c5320afa6ad92fa2993359f79866fbbab283725072',
-       i686: '97291b9bc0a8debb7eae98439ffa31b610112889ab0b0610eca57dd44c107aef',
-     x86_64: 'c2078cb7017606a95b92f0a7cec3fad17ed4fa8b2071b687d5293660ee40bec9'
+    aarch64: '503ad8e48cc72c97beb135b2e9b27b01a90ff18a10cef4c9d05f2c8c1f2feb04',
+     armv7l: '503ad8e48cc72c97beb135b2e9b27b01a90ff18a10cef4c9d05f2c8c1f2feb04',
+     x86_64: '4aee4c66f8b9db262fe88d105ea5d07d007e83c5439ffc1e66a387a279f97058'
   })
 
-  # depends_on 'gnome_common'
   depends_on 'glib' => :build
   depends_on 'gobject_introspection' => :build
-  # depends_on 'gtk4'
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  gnome
 end

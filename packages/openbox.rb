@@ -5,7 +5,7 @@ class Openbox < Package
   homepage 'http://openbox.org/'
   version '3.6.1'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'http://openbox.org/dist/openbox/openbox-3.6.1.tar.xz'
   source_sha256 'abe75855cc5616554ffd47134ad15291fe37ebbebf1a80b69cbde9d670f0e26d'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Openbox < Package
   binary_sha256({
     aarch64: '0bf8f99523d3194bd04c4ae49dc6b1f01b93852d141117aae56a0c7a8f946201',
      armv7l: '0bf8f99523d3194bd04c4ae49dc6b1f01b93852d141117aae56a0c7a8f946201',
-       i686: 'e58f0787ecef84e8f87389c9aca8b5a35e0846a0a6b8223c01cf4ea447ac6ac6',
      x86_64: 'f6f6b3a0fcab357ce8f7dce834e119dd87ad7770412e83890c141dfb7979e59e'
   })
 

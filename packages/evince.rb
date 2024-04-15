@@ -1,12 +1,12 @@
 # Adapted from Arch Linux evince PKGBUILD at:
 # https://github.com/archlinux/svntogit-packages/raw/packages/evince/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Evince < Package
+class Evince < Meson
   description 'Document viewer PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt'
   homepage 'https://wiki.gnome.org/Apps/Evince'
-  version '44.rc'
+  version '45.0'
   license 'GPL'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/evince.git'
@@ -14,9 +14,9 @@ class Evince < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7817e8a1cea35f9c82bbf282cfe108354161ec37a709d03007bae083dbebd61',
-     armv7l: 'a7817e8a1cea35f9c82bbf282cfe108354161ec37a709d03007bae083dbebd61',
-     x86_64: 'a790320dfaf80b7b55caf2aad5f2fc757d59abe379776ec7f771e8fd7c85b298'
+    aarch64: '25eb43693a5ca3fc77814f63d91a5dd07382f9e73f4bd10d689751485395519d',
+     armv7l: '25eb43693a5ca3fc77814f63d91a5dd07382f9e73f4bd10d689751485395519d',
+     x86_64: 'b18d1011d5dcf0718034146d0f93ede644b15111e005167391c7c52e057d5288'
   })
 
   depends_on 'at_spi2_core' # R
@@ -28,7 +28,6 @@ class Evince < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gnome_desktop' # R
-  depends_on 'gobject_introspection' => :build
   depends_on 'gstreamer' # R
   depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
@@ -40,25 +39,18 @@ class Evince < Package
   depends_on 'libspectre' # R
   depends_on 'libtiff' # R
   depends_on 'libxml2' # R
-  depends_on 'nautilus' # R
+  depends_on 'nautilus' => :build
   depends_on 'pango' # R
   depends_on 'poppler' # R
   depends_on 'py3_gi_docgen' => :build
   depends_on 'valgrind' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      -Dgtk_doc=false \
+  gnome
+
+  meson_options '-Dgtk_doc=false \
+      -Dintrospection=false \
       -Dnautilus=false \
       -Dps=enabled \
-      -Dsystemduserunitdir=no \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dsystemduserunitdir=no'
 end

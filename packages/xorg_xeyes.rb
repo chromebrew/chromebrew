@@ -8,7 +8,7 @@ class Xorg_xeyes < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.2.0'
   license 'X11'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://xorg.freedesktop.org/archive/individual/app/xeyes-1.2.0.tar.bz2'
   source_sha256 'f8a17e23146bef1ab345a1e303c6749e42aaa7bcf4f25428afad41770721b6db'
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Xorg_xeyes < Package
   binary_sha256({
     aarch64: 'e4e33bea55f33b1267d36f289b596c2c0bdb6562b26efaf14fcf5791469941e7',
      armv7l: 'e4e33bea55f33b1267d36f289b596c2c0bdb6562b26efaf14fcf5791469941e7',
-       i686: '6c173c828328c95be613e58a0a1d242083f723a15a79cf73657966a5d11c121c',
      x86_64: 'd900a6ae3a92f0d5e157138ba3c6bbf8337d8e53132f6a2e4475f4cdd20b8bf8'
   })
 

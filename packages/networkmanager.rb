@@ -3,32 +3,38 @@ require 'buildsystems/meson'
 class Networkmanager < Meson
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  version '1.44.2'
+  version '1.46.0'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/#{version}/NetworkManager#{version}.tar.bz2"
-  source_sha256 '8dccf93214de0723f7f961f002f9d82428ddaee4604c524fbda883ce4992e660'
+  source_url 'https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '59f9d7dc41ad58396ae07cd39c71b2c232cfac55ce795f57b214c7e6044087b8',
-     armv7l: '59f9d7dc41ad58396ae07cd39c71b2c232cfac55ce795f57b214c7e6044087b8',
-     x86_64: '0ec3bb100f5e28b62f80272c2fb50d2ad75107370b372f4e6ea9e2af2c28809b'
+    aarch64: '15cab36411c547cb2e57d1349926ad63c937b48e7f74f35de4b36902f85ae6db',
+     armv7l: '15cab36411c547cb2e57d1349926ad63c937b48e7f74f35de4b36902f85ae6db',
+     x86_64: '497b1f4cc7d66917d96ec174f4ab5c9d25eb922607eb97a7a19f068a3b30475f'
   })
 
-  depends_on 'gobject_introspection'
-  depends_on 'gtk_doc'
+  depends_on 'curl' # R
+  depends_on 'elogind' # R
+  depends_on 'eudev' # R
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'gtk_doc' => :build
-  depends_on 'modemmanager'
-  depends_on 'libndp'
-  depends_on 'jansson'
-  depends_on 'nss'
-  depends_on 'vala'
-  depends_on 'elogind'
-  depends_on 'libnewt'
-  depends_on 'mobile_broadband_provider_info'
-  # depends_on 'ccache' => :build
+  depends_on 'jansson' # R
+  depends_on 'libndp' # R
+  depends_on 'libnewt' # R
+  depends_on 'libpsl' # R
+  depends_on 'mobile_broadband_provider_info' => :build
+  depends_on 'modemmanager' # R
+  depends_on 'nss' # R
+  depends_on 'readline' # R
+  depends_on 'vala' => :build
+
+  gnome
 
   meson_options "--default-library=both \
     -Ddbus_conf_dir=#{CREW_PREFIX}/share/dbus-1/system.d \

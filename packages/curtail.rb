@@ -5,7 +5,7 @@ class Curtail < Package
   homepage 'https://github.com/Huluti/Curtail'
   version '1.3.0'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/Huluti/Curtail/archive/1.3.0.tar.gz'
   source_sha256 '56859211b1b147aec677a00295e524b6beabcdf415938db1bd8ca4dae79409cf'
   binary_compression 'tar.zst'

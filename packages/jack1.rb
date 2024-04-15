@@ -5,7 +5,7 @@ class Jack1 < Package
   homepage 'https://jackaudio.org/'
   version 'b04083'
   license 'GPL-3 and LGPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/jackaudio/jack1/archive/b04083761496410a52126cdbcd35c557ee82f2e5.tar.gz'
   source_sha256 '376f2cd292ec285e53dbd5fe30a151d8a45dd7be5034a5b05dbb7e8a4735d7b1'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Jack1 < Package
   binary_sha256({
     aarch64: 'a14ae812ae5d89c0ca4a3922d7706fdc3ef1c5f2898a230aebd84246a2988464',
      armv7l: 'a14ae812ae5d89c0ca4a3922d7706fdc3ef1c5f2898a230aebd84246a2988464',
-       i686: '475b1a17382257853fe753b27f3a7cfd6fd0d53bbf1b3a8f6d0cb0cdf7edff32',
      x86_64: 'e212d48b752a9d3e73ba430e5c1275ca8208f9bd2452f1b1024f4198f163e623'
   })
 

@@ -2,5 +2,5 @@
 /usr/local/lib64/pkgconfig/xorg-evdev.pc
 /usr/local/lib64/xorg/modules/input/evdev_drv.la
 /usr/local/lib64/xorg/modules/input/evdev_drv.so
-/usr/local/share/man/man4/evdev.4.gz
 /usr/local/share/X11/xorg.conf.d/10-evdev.conf
+/usr/local/share/man/man4/evdev.4.gz

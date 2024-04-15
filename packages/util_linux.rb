@@ -1,25 +1,28 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Util_linux < Package
+class Util_linux < Meson
   description 'essential linux tools'
   homepage 'https://www.kernel.org/pub/linux/utils/util-linux/'
-  version '2.39.3-py3.12'
+  version '2.40-py3.12'
   license 'GPL-2, LGPL-2.1, BSD-4, MIT and public-domain'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.3.tar.xz'
-  source_sha256 '7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f'
+  source_url 'https://github.com/util-linux/util-linux.git'
+  git_hashtag '6ff6f5b6ffd9323cc568def2169225dd84bc3a0c'
+  # git_hashtag "v#{version[/^.*?(?=-)/]}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
-     armv7l: 'b5e262a746e45839e15095615d46ca019ec1c1aa8d5dd25b50a02f15ac34441f',
-       i686: '082eca25c5a7c714bdfbb906952ecf948458ce1a93edc47a140b6ca9024e4304',
-     x86_64: '23c2ea99c198e5bc5af485b4f090f1257355df07a2e5f32858250c45b7af76e3'
+    aarch64: 'dce99bef03d7d431d5fa6535f6266c6ed00e1d7fde578116d369e559cab8b3cb',
+     armv7l: 'dce99bef03d7d431d5fa6535f6266c6ed00e1d7fde578116d369e559cab8b3cb',
+       i686: 'a117bc46b9ead409f5de3070a4a4634b14127b63bc909c3e34362113c02c4140',
+     x86_64: '97fa74dc9cb10aaf6818eba7342f69dc34fa144d1add60c433fb20a9eb4962fd'
   })
 
+  depends_on 'bash_completion' # R
   depends_on 'bzip2' # R
   depends_on 'eudev' if ARCH == 'x86_64' # (for libudev.h)
   depends_on 'filecmd' # R
+  depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libcap_ng' # R
   depends_on 'libeconf' # R
@@ -28,33 +31,23 @@ class Util_linux < Package
   depends_on 'ncurses' # R
   depends_on 'pcre2' => :build
   depends_on 'readline' # R
+  depends_on 'ruby_asciidoctor' => :build
+  depends_on 'sqlite' # R
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  no_env_options
+  year2038 = ARCH == 'x86_64' ? '' : '-Dallow-32bit-time=true'
+  lsfd = ARCH == 'i686' ? '-Dbuild-lsfd=disabled' : ''
+  # Kill conflicts with coreutils.
+  meson_options "-Dbuild-kill=disabled #{year2038} #{lsfd}"
 
   def self.patch
-    # Fix sys-utils/setarch.c:90:7: error: PER_LINUX_FDPIC undeclared here
-    system "sed -i 's,PER_LINUX_FDPIC,PER_LINUX_32BIT,' sys-utils/setarch.c" if ARCH == 'i686'
-  end
+    return unless ARCH == 'i686'
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-      --with-python=3 \
-      --enable-fs-paths-extra=#{CREW_PREFIX}/sbin \
-      --without-systemd \
-      --with-econf \
-      --with-ncursesw \
-      --without-cryptsetup"
-    system "sed -i -e '/chgrp/d' -e '/chown/d' Makefile"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    # conflict with coreutils
-    FileUtils.rm "#{CREW_DEST_PREFIX}/share/man/man1/kill.1"
-    FileUtils.rm "#{CREW_DEST_PREFIX}/bin/kill"
+    # 2.40 needs bpf, which isn't available on i686.
+    # See https://github.com/util-linux/util-linux/issues/2874
+    downloader 'https://github.com/util-linux/util-linux/pull/2879.patch', '531a8c0904d6b86c0c9adc2a41d657ce1d75cb63e2a408a51cb14fe3d9ffa4dc'
+    system 'patch -Np1 -i 2879.patch'
   end
 end

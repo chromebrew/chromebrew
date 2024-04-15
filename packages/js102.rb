@@ -22,13 +22,15 @@ class Js102 < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libnotify' => :build
-  depends_on 'llvm17_dev' => :build
+  depends_on 'llvm18_dev' => :build
   depends_on 'ncurses' # R
   depends_on 'nspr'
   depends_on 'nss' # R
   depends_on 'readline' # R
   depends_on 'rust' => :build
   depends_on 'zlibpkg' # R
+
+  no_upstream_update
 
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'

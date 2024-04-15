@@ -24,6 +24,8 @@ class Meld < Meson
   depends_on 'py3_pycairo' # L
   depends_on 'python3' # L
 
+  gnome
+
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     system "sed -i 's:#!/usr/bin/python3:#!/usr/bin/env python3:' #{CREW_DEST_PREFIX}/bin/meld"

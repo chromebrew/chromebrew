@@ -1,11 +1,11 @@
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-bar.h
-/usr/local/include/libgdl-3.0/gdl/gdl-dock.h
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-item-grip.h
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-item.h
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-layout.h
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-master.h
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-object.h
 /usr/local/include/libgdl-3.0/gdl/gdl-dock-placeholder.h
+/usr/local/include/libgdl-3.0/gdl/gdl-dock.h
 /usr/local/include/libgdl-3.0/gdl/gdl.h
 /usr/local/include/libgdl-3.0/gdl/libgdltypebuiltins.h
 /usr/local/lib/girepository-1.0/Gdl-3.typelib
@@ -31,9 +31,9 @@
 /usr/local/share/locale/de/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/dz/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/el/LC_MESSAGES/gdl-3.mo
+/usr/local/share/locale/en@shaw/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/en_CA/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/gdl-3.mo
-/usr/local/share/locale/en@shaw/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/eo/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/es/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/et/LC_MESSAGES/gdl-3.mo
@@ -68,8 +68,8 @@
 /usr/local/share/locale/pa/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/pl/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/ps/LC_MESSAGES/gdl-3.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/pt/LC_MESSAGES/gdl-3.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/ro/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/ru/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/rw/LC_MESSAGES/gdl-3.mo
@@ -77,8 +77,8 @@
 /usr/local/share/locale/sk/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/sl/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/sq/LC_MESSAGES/gdl-3.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/sr/LC_MESSAGES/gdl-3.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/sv/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/te/LC_MESSAGES/gdl-3.mo
 /usr/local/share/locale/tg/LC_MESSAGES/gdl-3.mo

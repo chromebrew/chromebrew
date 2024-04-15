@@ -3,23 +3,23 @@ require 'package'
 class Dav1d < Package
   description '**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
-  version '1.3.0'
+  version '1.4.0'
   license 'BSD-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://code.videolan.org/videolan/dav1d.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7656d57ea668cfc33a424aa369f4761f6c11c85fefc19451c92e250f14e365e8',
-     armv7l: '7656d57ea668cfc33a424aa369f4761f6c11c85fefc19451c92e250f14e365e8',
-       i686: '97cd95dd217fa9a6c259835cb8afa74e66b38426ad005e2e760532750ce01865',
-     x86_64: '87a070dc273dbb63346e7199b4ca95edfeb79d4a0bbf0ee764562c5f9de1170a'
+    aarch64: '29d4434e8d6185fa8b4e4ec6b458ba830582210dca6022486f29649bdfee21a9',
+     armv7l: '29d4434e8d6185fa8b4e4ec6b458ba830582210dca6022486f29649bdfee21a9',
+     x86_64: '9011d38fc35cbb4ab87896db45fe91d23c6e9c5034c2b64a85704c741ce96949'
   })
 
-  depends_on 'nasm' => :build
-  depends_on 'glibc' # R
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'nasm' => :build
 
   def self.build
     system "meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \

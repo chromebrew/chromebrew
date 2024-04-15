@@ -1,6 +1,6 @@
 /usr/local/bin/g++-6
 /usr/local/bin/libudev_test
-/usr/local/lib/libudev.so.1
 /usr/local/lib/libudev-stub.so
 /usr/local/lib/libudev-stub.so.1
 /usr/local/lib/libudev-stub.so.1.6.4
+/usr/local/lib/libudev.so.1

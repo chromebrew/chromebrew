@@ -3,10 +3,10 @@
 /usr/local/bin/ncdump
 /usr/local/bin/ncgen
 /usr/local/bin/ncgen3
+/usr/local/include/netcdf.h
 /usr/local/include/netcdf_aux.h
 /usr/local/include/netcdf_dispatch.h
 /usr/local/include/netcdf_filter.h
-/usr/local/include/netcdf.h
 /usr/local/include/netcdf_mem.h
 /usr/local/include/netcdf_meta.h
 /usr/local/lib/libh5bzip2.la

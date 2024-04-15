@@ -7,8 +7,8 @@
 /usr/local/share/biew/skn/light.skn
 /usr/local/share/biew/skn/standard.skn
 /usr/local/share/biew/syntax/awk.stx
-/usr/local/share/biew/syntax/cpp.stx
 /usr/local/share/biew/syntax/c.stx
+/usr/local/share/biew/syntax/cpp.stx
 /usr/local/share/biew/syntax/cxx.stx
 /usr/local/share/biew/syntax/diff.stx
 /usr/local/share/biew/syntax/fortran.stx

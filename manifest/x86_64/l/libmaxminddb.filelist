@@ -1,7 +1,7 @@
 /usr/local/bin/mmdblookup
-/usr/local/include/maxminddb_config.h
 /usr/local/include/maxminddb.h
-/usr/local/lib64/cmake/maxminddb/maxminddb-config.cmake
+/usr/local/include/maxminddb_config.h
 /usr/local/lib64/cmake/maxminddb/maxminddb-config-release.cmake
+/usr/local/lib64/cmake/maxminddb/maxminddb-config.cmake
 /usr/local/lib64/libmaxminddb.so
 /usr/local/lib64/libmaxminddb.so.0.0.7

@@ -1,8 +1,8 @@
 /usr/local/include/json-c/arraylist.h
 /usr/local/include/json-c/debug.h
-/usr/local/include/json-c/json_config.h
-/usr/local/include/json-c/json_c_version.h
 /usr/local/include/json-c/json.h
+/usr/local/include/json-c/json_c_version.h
+/usr/local/include/json-c/json_config.h
 /usr/local/include/json-c/json_inttypes.h
 /usr/local/include/json-c/json_object.h
 /usr/local/include/json-c/json_object_iterator.h
@@ -15,8 +15,8 @@
 /usr/local/include/json-c/linkhash.h
 /usr/local/include/json-c/printbuf.h
 /usr/local/lib64/cmake/json-c/json-c-config.cmake
-/usr/local/lib64/cmake/json-c/json-c-targets.cmake
 /usr/local/lib64/cmake/json-c/json-c-targets-release.cmake
+/usr/local/lib64/cmake/json-c/json-c-targets.cmake
 /usr/local/lib64/libjson-c.a
 /usr/local/lib64/libjson-c.so
 /usr/local/lib64/libjson-c.so.3

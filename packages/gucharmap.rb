@@ -1,36 +1,44 @@
-require 'package'
+require 'buildsystems/meson'
+require_relative 'unicode_character_database'
 
-class Gucharmap < Package
+class Gucharmap < Meson
   description 'GNOME Character Map, based on the Unicode Character Database.'
   homepage 'https://wiki.gnome.org/Apps/Gucharmap'
-  version '10.0.4'
+  version '15.1.3'
   license 'GPL-3+'
-  compatibility 'all'
-  source_url 'https://download.gnome.org/sources/gucharmap/10.0/gucharmap-10.0.4.tar.xz'
-  source_sha256 'bb266899266b2f2dcdbaf9f45cafd74c6f4e540132d3f0b068d37343291df001'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gucharmap.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '074dfb52ebdf428a1f88b12d45902ec1622222ee834eb301858728e06bf36bec',
-     armv7l: '074dfb52ebdf428a1f88b12d45902ec1622222ee834eb301858728e06bf36bec',
-       i686: '7fb24b94a6c2c7ea4c91ffbe4e1d52124102bb8131932c7a085de9cd1458e35f',
-     x86_64: 'ea67e70f52dd53fc6ab9e04c019ae60519a334eb89e077efff201a29d872ca3f'
+    aarch64: 'be784ad5b741add6b1a8737ad6bedba3efb1e9e8e52096059da92e8097c684e2',
+     armv7l: 'be784ad5b741add6b1a8737ad6bedba3efb1e9e8e52096059da92e8097c684e2',
+     x86_64: '7079aa5b75e62232163b513c8825f988cd4b397a7e3d23aa687c3066377fd3e6'
   })
 
-  depends_on 'desktop_file_utilities'
-  depends_on 'itstool'
-  depends_on 'vala'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'desktop_file_utilities' => :build
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'itstool' => :build
+  depends_on 'pango' # R
+  depends_on 'pcre2' # R
+  depends_on 'vala' => :build
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--with-unicode-data=download',
-           '--disable-maintainer-mode'
-    system "make LIBS='-ldl'"
+  gnome
+  no_lto
+
+  def self.prebuild
+    downloader "https://www.unicode.org/Public/zipped/#{Unicode_character_database.version}/Unihan.zip", 'SKIP', '/tmp/Unihan.zip'
+    downloader "https://www.unicode.org/Public/zipped/#{Unicode_character_database.version}/UCD.zip", 'SKIP', '/tmp/UCD.zip'
+    Dir.chdir '/tmp' do
+      system 'unzip UCD.zip'
+    end
   end
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  meson_options '-Ddocs=false -Ducd_path=/tmp/'
 end

@@ -1,24 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Libgsf < Package
+class Libgsf < Autotools
   description 'The G Structured File Library'
   homepage 'https://gitlab.gnome.org/GNOME/libgsf'
-  version '1.14.50'
+  version '1.14.52'
   license 'GPL-2 and LGPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/libgsf.git'
   git_hashtag "LIBGSF_#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3387aaef57bb436bc10337b988cb27a519a7c0625bd4d7922b392bd3bc995dc2',
-     armv7l: '3387aaef57bb436bc10337b988cb27a519a7c0625bd4d7922b392bd3bc995dc2',
-       i686: '17bb9b80ab65ceeac352c6c614fa2def76da03ea0545d12a55fd7cb6ffef28f1',
-     x86_64: '291211e57a54c7618c563eb0d94c8940117a498fcdc7f5520e880cf45ce230bb'
+    aarch64: '3ec63a99914ca5a6f52e5c6d7f7a7d2cd7c3a4468276aae62caa11e5b889aa61',
+     armv7l: '3ec63a99914ca5a6f52e5c6d7f7a7d2cd7c3a4468276aae62caa11e5b889aa61',
+     x86_64: 'a50aaef9c124b5e0b3448d819c21731c05566d0c56a3d9fc29f1bbfd4a7fb74c'
   })
 
-  depends_on 'gdk_pixbuf'
-  depends_on 'gtk_doc'
+  depends_on 'gdk_pixbuf' => :build
+  depends_on 'gtk_doc' => :build
   depends_on 'bzip2' # R
   depends_on 'gcc_lib' # R
   depends_on 'glib' # R
@@ -26,17 +25,11 @@ class Libgsf < Package
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R
   depends_on 'zlibpkg' # R
+  depends_on 'gdk_pixbuf' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "./configure #{CREW_OPTIONS} \
-      --enable-shared=yes \
+  gnome
+
+  configure_options '--enable-shared=yes \
       --disable-maintainer-mode \
-      --enable-introspection"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+      --enable-introspection'
 end

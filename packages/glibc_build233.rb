@@ -13,8 +13,9 @@ class Glibc_build233 < Package
   depends_on 'texinfo' => :build
   depends_on 'hashpipe' => :build
 
-  no_env_options
   conflicts_ok
+  no_env_options
+  no_upstream_update
 
   @libc_version = LIBC_VERSION
   version '2.33-3'

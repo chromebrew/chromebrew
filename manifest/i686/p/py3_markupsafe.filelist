@@ -3,13 +3,13 @@
 /usr/local/lib/python3.12/site-packages/MarkupSafe-2.1.5.dist-info/METADATA
 /usr/local/lib/python3.12/site-packages/MarkupSafe-2.1.5.dist-info/RECORD
 /usr/local/lib/python3.12/site-packages/MarkupSafe-2.1.5.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/MarkupSafe-2.1.5.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/MarkupSafe-2.1.5.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/MarkupSafe-2.1.5.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/markupsafe/__init__.py
-/usr/local/lib/python3.12/site-packages/markupsafe/_native.py
 /usr/local/lib/python3.12/site-packages/markupsafe/__pycache__/__init__.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/markupsafe/__pycache__/_native.cpython-312.pyc
-/usr/local/lib/python3.12/site-packages/markupsafe/py.typed
+/usr/local/lib/python3.12/site-packages/markupsafe/_native.py
 /usr/local/lib/python3.12/site-packages/markupsafe/_speedups.c
 /usr/local/lib/python3.12/site-packages/markupsafe/_speedups.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/site-packages/markupsafe/_speedups.pyi
+/usr/local/lib/python3.12/site-packages/markupsafe/py.typed

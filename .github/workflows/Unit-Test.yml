@@ -20,9 +20,11 @@ jobs:
             yes | crew upgrade && \
             yes | crew install vim && \
             yes | crew remove vim && \
-            cd ../tests && \
-            ./prop_test && \
-            ruby commands/* && \
+            ruby ../tests/prop_test && \
+            ruby ../tests/buildsystem_test && \
+            ruby ../tests/commands/const.rb && \
+            ruby ../tests/commands/help.rb && \
+            ruby ../tests/commands/prop.rb && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \

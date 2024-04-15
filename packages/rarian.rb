@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Rarian < Package
+class Rarian < Autotools
   description 'Documentation metadata library based on the proposed Freedesktop.org spec.'
   homepage 'https://rarian.freedesktop.org/'
   version '0.8.1'
@@ -16,16 +16,4 @@ class Rarian < Package
        i686: 'f8feef1bf91eb6fc6c503f8b088dcb23da53de683809d941e793fbeaaf87bb00',
      x86_64: '3ececd8ac3dce371c40d1b32c10b538821a2b74edff336d9c041f8fcab4ac09c'
   })
-
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

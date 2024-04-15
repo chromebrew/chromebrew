@@ -1,10 +1,10 @@
 /usr/local/bin/gapi2-codegen
 /usr/local/bin/gapi2-fixup
 /usr/local/bin/gapi2-parser
-/usr/local/lib/gtk-sharp-2.0/gapi2xml.pl
-/usr/local/lib/gtk-sharp-2.0/gapi_codegen.exe
 /usr/local/lib/gtk-sharp-2.0/gapi-fixup.exe
 /usr/local/lib/gtk-sharp-2.0/gapi-parser.exe
+/usr/local/lib/gtk-sharp-2.0/gapi2xml.pl
+/usr/local/lib/gtk-sharp-2.0/gapi_codegen.exe
 /usr/local/lib/gtk-sharp-2.0/gapi_pp.pl
 /usr/local/lib/libatksharpglue-2.a
 /usr/local/lib/libatksharpglue-2.la
@@ -24,9 +24,6 @@
 /usr/local/lib/libpangosharpglue-2.a
 /usr/local/lib/libpangosharpglue-2.la
 /usr/local/lib/libpangosharpglue-2.so
-/usr/local/lib/monodoc/sources/gtk-sharp-docs.source
-/usr/local/lib/monodoc/sources/gtk-sharp-docs.tree
-/usr/local/lib/monodoc/sources/gtk-sharp-docs.zip
 /usr/local/lib/mono/gac/atk-sharp/2.12.0.0__35e10195dab3c99f/atk-sharp.dll
 /usr/local/lib/mono/gac/atk-sharp/2.12.0.0__35e10195dab3c99f/atk-sharp.dll.config
 /usr/local/lib/mono/gac/gdk-sharp/2.12.0.0__35e10195dab3c99f/gdk-sharp.dll
@@ -132,6 +129,9 @@
 /usr/local/lib/mono/gtk-sharp-2.0/policy.2.8.gtk-dotnet.dll
 /usr/local/lib/mono/gtk-sharp-2.0/policy.2.8.gtk-sharp.dll
 /usr/local/lib/mono/gtk-sharp-2.0/policy.2.8.pango-sharp.dll
+/usr/local/lib/monodoc/sources/gtk-sharp-docs.source
+/usr/local/lib/monodoc/sources/gtk-sharp-docs.tree
+/usr/local/lib/monodoc/sources/gtk-sharp-docs.zip
 /usr/local/lib/pkgconfig/gapi-2.0.pc
 /usr/local/lib/pkgconfig/glade-sharp-2.0.pc
 /usr/local/lib/pkgconfig/glib-sharp-2.0.pc

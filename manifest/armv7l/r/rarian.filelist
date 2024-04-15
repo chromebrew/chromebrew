@@ -25,11 +25,11 @@
 /usr/local/bin/scrollkeeper-rebuilddb
 /usr/local/bin/scrollkeeper-uninstall
 /usr/local/bin/scrollkeeper-update
-/usr/local/include/rarian/rarian.h
 /usr/local/include/rarian/rarian-info.h
 /usr/local/include/rarian/rarian-main.h
 /usr/local/include/rarian/rarian-man.h
 /usr/local/include/rarian/rarian-reg-utils.h
+/usr/local/include/rarian/rarian.h
 /usr/local/lib/librarian.a
 /usr/local/lib/librarian.la
 /usr/local/lib/librarian.so
@@ -37,10 +37,10 @@
 /usr/local/lib/librarian.so.0.0.0
 /usr/local/lib/pkgconfig/rarian.pc
 /usr/local/share/help/rarian.document
+/usr/local/share/librarian/Templates/C/scrollkeeper_cl.xml
 /usr/local/share/librarian/manual/help-spec-0.2.xml
 /usr/local/share/librarian/manual/index.xhtml
 /usr/local/share/librarian/manual/rar-lib.xhtml
 /usr/local/share/librarian/manual/rar-mdf.xhtml
 /usr/local/share/librarian/manual/rar-skcompat.xhtml
 /usr/local/share/librarian/rarian-sk-cl.xml
-/usr/local/share/librarian/Templates/C/scrollkeeper_cl.xml

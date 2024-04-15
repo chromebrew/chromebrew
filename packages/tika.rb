@@ -3,11 +3,11 @@ require 'package'
 class Tika < Package
   description 'The Apache Tika™ toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF).'
   homepage 'https://tika.apache.org/'
-  version '2.9.0'
+  version '2.9.2'
   license 'Apache-2.0'
-  compatibility 'all'
-  source_url 'https://dlcdn.apache.org/tika/2.9.0/tika-app-2.9.0.jar'
-  source_sha256 '390382b0ad31a7da55d83cce58538f4b59988eda6ebdf259459d4ef109df1b06'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://dlcdn.apache.org/tika/2.9.2/tika-app-2.9.2.jar'
+  source_sha256 '87e06f88c801fcb2beae5f15e707241edb14da468a154ad78be4e31ff982c3da'
 
   depends_on 'openjdk8'
   depends_on 'libx11'
@@ -18,11 +18,10 @@ class Tika < Package
   no_compile_needed
 
   def self.build
-    tika = <<~EOF
+    File.write 'tika.sh', <<~EOF
       #!/bin/bash
       java -jar #{CREW_PREFIX}/share/tika/tika-app-#{version}.jar
     EOF
-    File.write('tika.sh', tika)
   end
 
   def self.install
@@ -31,6 +30,6 @@ class Tika < Package
   end
 
   def self.postinstall
-    puts "\nType 'tika' to get started.\n".lightblue
+    ExitMessage.add "\nType 'tika' to get started.\n".lightblue
   end
 end

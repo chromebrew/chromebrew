@@ -1,49 +1,49 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Yelp < Package
+class Yelp < Autotools
   description 'Get help with GNOME'
   homepage 'https://wiki.gnome.org/Apps/Yelp'
-  version '40.0'
+  version '42.2'
   license 'GPL-2+'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/yelp/-/archive/#{version}/yelp-#{version}.tar.bz2"
-  source_sha256 'ec640d7a56970ab3ac6283d6c3a90ae45b7676c739671b303cbfb2f4323bf7af'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/yelp.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '021a5a25255e9bd5c5f44fe170abc70bb18ecd6b72a5a312da295c1c2831420b',
-     armv7l: '021a5a25255e9bd5c5f44fe170abc70bb18ecd6b72a5a312da295c1c2831420b',
-       i686: '7425444ffefcb107ac34fb8d8bb12d0a3117e7aaae83f44f938ba37a732e7a8d',
-     x86_64: '33ef261b6056265b6fa65b81c3fef50f8c5792f7e70ace0639d65f453a7f2f69'
+    aarch64: 'c8da5f26d6abe29c64093dc18a9a218e1e8b7a3b3b9ea31a4195d7493f1d1508',
+     armv7l: 'c8da5f26d6abe29c64093dc18a9a218e1e8b7a3b3b9ea31a4195d7493f1d1508',
+     x86_64: 'bdbd52b3ca8c5e795fdc0943c002beab2032bde20e9a4ebf1372dbb5fbf88481'
   })
 
-  depends_on 'appstream_glib'
-  depends_on 'at_spi2_core'
-  depends_on 'cairo'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gtk3'
-  depends_on 'harfbuzz'
-  depends_on 'libsoup2'
-  depends_on 'libxslt'
-  depends_on 'pango'
-  depends_on 'webkit2gtk'
-  depends_on 'yelp_xsl'
+  depends_on 'appstream_glib' => :build
+  depends_on 'at_spi2_core' # R
+  depends_on 'bzip2' # R
+  depends_on 'cairo' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
   depends_on 'gtk_doc' => :build
+  depends_on 'harfbuzz' # R
+  depends_on 'icu4c' # R
   depends_on 'itstool' => :build
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libhandy' # R
+  depends_on 'libsoup' # R
+  depends_on 'libxml2' # R
+  depends_on 'libxslt' # R
+  depends_on 'pango' # R
+  depends_on 'sqlite' # R
+  depends_on 'webkit2gtk_4_1' # R
   depends_on 'xorg_server' => :build
+  depends_on 'xzutils' # R
+  depends_on 'yelp_xsl' => :build
+  depends_on 'zlibpkg' # R
 
-  def self.build
-    system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS} \
-    --enable-compile-warnings=minimum \
-    --enable-debug=no \
-    --disable-dependency-tracking"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
+  configure_options '--enable-compile-warnings=minimum \
+    --enable-debug=no'
 end

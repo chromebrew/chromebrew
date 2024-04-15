@@ -58,6 +58,7 @@
 /usr/local/lib/libchicken.so.11
 /usr/local/share/chicken/doc/DEPRECATED
 /usr/local/share/chicken/doc/LICENSE
+/usr/local/share/chicken/doc/README
 /usr/local/share/chicken/doc/manual/Accessing external objects.html
 /usr/local/share/chicken/doc/manual/Acknowledgements.html
 /usr/local/share/chicken/doc/manual/Bibliography.html
@@ -71,14 +72,13 @@
 /usr/local/share/chicken/doc/manual/Deviations from the standard.html
 /usr/local/share/chicken/doc/manual/Egg specification format.html
 /usr/local/share/chicken/doc/manual/Embedding.html
-/usr/local/share/chicken/doc/manual/Extensions.html
-/usr/local/share/chicken/doc/manual/Extensions to the standard.html
 /usr/local/share/chicken/doc/manual/Extension tools.html
+/usr/local/share/chicken/doc/manual/Extensions to the standard.html
+/usr/local/share/chicken/doc/manual/Extensions.html
 /usr/local/share/chicken/doc/manual/Foreign type specifiers.html
 /usr/local/share/chicken/doc/manual/Getting started.html
 /usr/local/share/chicken/doc/manual/Included modules.html
 /usr/local/share/chicken/doc/manual/Interface to external functions and variables.html
-/usr/local/share/chicken/doc/manual/manual.css
 /usr/local/share/chicken/doc/manual/Module (chicken base).html
 /usr/local/share/chicken/doc/manual/Module (chicken bitwise).html
 /usr/local/share/chicken/doc/manual/Module (chicken blob).html
@@ -87,8 +87,8 @@
 /usr/local/share/chicken/doc/manual/Module (chicken csi).html
 /usr/local/share/chicken/doc/manual/Module (chicken errno).html
 /usr/local/share/chicken/doc/manual/Module (chicken eval).html
-/usr/local/share/chicken/doc/manual/Module (chicken file).html
 /usr/local/share/chicken/doc/manual/Module (chicken file posix).html
+/usr/local/share/chicken/doc/manual/Module (chicken file).html
 /usr/local/share/chicken/doc/manual/Module (chicken fixnum).html
 /usr/local/share/chicken/doc/manual/Module (chicken flonum).html
 /usr/local/share/chicken/doc/manual/Module (chicken foreign).html
@@ -99,18 +99,18 @@
 /usr/local/share/chicken/doc/manual/Module (chicken keyword).html
 /usr/local/share/chicken/doc/manual/Module (chicken load).html
 /usr/local/share/chicken/doc/manual/Module (chicken locative).html
-/usr/local/share/chicken/doc/manual/Module (chicken memory).html
 /usr/local/share/chicken/doc/manual/Module (chicken memory representation).html
+/usr/local/share/chicken/doc/manual/Module (chicken memory).html
 /usr/local/share/chicken/doc/manual/Module (chicken module).html
 /usr/local/share/chicken/doc/manual/Module (chicken pathname).html
 /usr/local/share/chicken/doc/manual/Module (chicken platform).html
 /usr/local/share/chicken/doc/manual/Module (chicken plist).html
 /usr/local/share/chicken/doc/manual/Module (chicken port).html
 /usr/local/share/chicken/doc/manual/Module (chicken pretty-print).html
-/usr/local/share/chicken/doc/manual/Module (chicken process-context).html
-/usr/local/share/chicken/doc/manual/Module (chicken process-context posix).html
-/usr/local/share/chicken/doc/manual/Module (chicken process).html
 /usr/local/share/chicken/doc/manual/Module (chicken process signal).html
+/usr/local/share/chicken/doc/manual/Module (chicken process).html
+/usr/local/share/chicken/doc/manual/Module (chicken process-context posix).html
+/usr/local/share/chicken/doc/manual/Module (chicken process-context).html
 /usr/local/share/chicken/doc/manual/Module (chicken random).html
 /usr/local/share/chicken/doc/manual/Module (chicken read-syntax).html
 /usr/local/share/chicken/doc/manual/Module (chicken repl).html
@@ -118,28 +118,28 @@
 /usr/local/share/chicken/doc/manual/Module (chicken string).html
 /usr/local/share/chicken/doc/manual/Module (chicken syntax).html
 /usr/local/share/chicken/doc/manual/Module (chicken tcp).html
-/usr/local/share/chicken/doc/manual/Module (chicken time).html
 /usr/local/share/chicken/doc/manual/Module (chicken time posix).html
+/usr/local/share/chicken/doc/manual/Module (chicken time).html
 /usr/local/share/chicken/doc/manual/Module (chicken type).html
 /usr/local/share/chicken/doc/manual/Module r4rs.html
 /usr/local/share/chicken/doc/manual/Module r5rs.html
 /usr/local/share/chicken/doc/manual/Module scheme.html
-/usr/local/share/chicken/doc/manual/Modules.html
 /usr/local/share/chicken/doc/manual/Module srfi-4.html
+/usr/local/share/chicken/doc/manual/Modules.html
 /usr/local/share/chicken/doc/manual/The User's Manual.html
 /usr/local/share/chicken/doc/manual/Types.html
 /usr/local/share/chicken/doc/manual/Units and linking model.html
 /usr/local/share/chicken/doc/manual/Using the compiler.html
 /usr/local/share/chicken/doc/manual/Using the interpreter.html
-/usr/local/share/chicken/doc/README
+/usr/local/share/chicken/doc/manual/manual.css
 /usr/local/share/chicken/feathers.tcl
 /usr/local/share/chicken/setup.defaults
-/usr/local/share/man/man1/chicken.1.gz
 /usr/local/share/man/man1/chicken-do.1.gz
 /usr/local/share/man/man1/chicken-install.1.gz
 /usr/local/share/man/man1/chicken-profile.1.gz
 /usr/local/share/man/man1/chicken-status.1.gz
 /usr/local/share/man/man1/chicken-uninstall.1.gz
+/usr/local/share/man/man1/chicken.1.gz
 /usr/local/share/man/man1/csc.1.gz
 /usr/local/share/man/man1/csi.1.gz
 /usr/local/share/man/man1/feathers.1.gz

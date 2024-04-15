@@ -5,7 +5,7 @@ class Mupdf < Package
   homepage 'https://mupdf.com/'
   version '1.20.3'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://mupdf.com/downloads/archive/mupdf-1.20.3-source.tar.lz'
   source_sha256 '6f73f63ef8aa81991dfd023d4426a548827d1d74e0bfcf2a013acad63b651868'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Mupdf < Package
   binary_sha256({
     aarch64: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
      armv7l: '5f4c38504fe42b4ec81e1f30954a5fe10acd5ab4c9f8ffaacd308f881cca11eb',
-       i686: '76189a9e7138b4380a24470ce7010f95d50db15be74f980294d5b8d33c95010d',
      x86_64: '4ce6bdbb132b435eadc824639e460b159e753b8d40c79a4815aa6b7299dfcf04'
   })
 

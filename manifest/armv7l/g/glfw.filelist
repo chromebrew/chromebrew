@@ -2,8 +2,8 @@
 /usr/local/include/GLFW/glfw3native.h
 /usr/local/lib/cmake/glfw3/glfw3Config.cmake
 /usr/local/lib/cmake/glfw3/glfw3ConfigVersion.cmake
-/usr/local/lib/cmake/glfw3/glfw3Targets.cmake
 /usr/local/lib/cmake/glfw3/glfw3Targets-release.cmake
+/usr/local/lib/cmake/glfw3/glfw3Targets.cmake
 /usr/local/lib/libglfw.so
 /usr/local/lib/libglfw.so.3
 /usr/local/lib/libglfw.so.3.4

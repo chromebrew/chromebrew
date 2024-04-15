@@ -2,11 +2,11 @@
 /usr/local/lib/python3.12/site-packages/zipp-3.17.0.dist-info/LICENSE
 /usr/local/lib/python3.12/site-packages/zipp-3.17.0.dist-info/METADATA
 /usr/local/lib/python3.12/site-packages/zipp-3.17.0.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/zipp-3.17.0.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/zipp-3.17.0.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/zipp/glob.py
+/usr/local/lib/python3.12/site-packages/zipp-3.17.0.dist-info/top_level.txt
 /usr/local/lib/python3.12/site-packages/zipp/__init__.py
-/usr/local/lib/python3.12/site-packages/zipp/py310compat.py
-/usr/local/lib/python3.12/site-packages/zipp/__pycache__/glob.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/zipp/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/zipp/__pycache__/glob.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/zipp/__pycache__/py310compat.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/zipp/glob.py
+/usr/local/lib/python3.12/site-packages/zipp/py310compat.py

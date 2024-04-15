@@ -1,11 +1,11 @@
 /usr/local/bin/dec265
 /usr/local/bin/enc265
 /usr/local/bin/hdrcopy
-/usr/local/include/libde265/de265.h
 /usr/local/include/libde265/de265-version.h
+/usr/local/include/libde265/de265.h
 /usr/local/include/libde265/en265.h
-/usr/local/lib64/cmake/libde265/libde265Config.cmake
 /usr/local/lib64/cmake/libde265/libde265Config-release.cmake
+/usr/local/lib64/cmake/libde265/libde265Config.cmake
 /usr/local/lib64/cmake/libde265/libde265ConfigVersion.cmake
 /usr/local/lib64/libde265.so
 /usr/local/lib64/pkgconfig/libde265.pc

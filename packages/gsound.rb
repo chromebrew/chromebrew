@@ -1,36 +1,27 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gsound < Package
+class Gsound < Meson
   description 'GSound is a small library for playing system sounds.'
   homepage 'https://wiki.gnome.org/Projects/GSound'
-  version '1.0.2'
+  version '1.0.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url "https://download.gnome.org/sources/gsound/#{version.rpartition('.')[0]}/gsound-#{version}.tar.xz"
-  source_sha256 'bba8ff30eea815037e53bee727bbd5f0b6a2e74d452a7711b819a7c444e78e53'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gsound.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '01781a6b9044780e7e4401e16fa6ba3a3491cff618e640828445937dcce90155',
-     armv7l: '01781a6b9044780e7e4401e16fa6ba3a3491cff618e640828445937dcce90155',
-       i686: '468fe3ee02fd4899516fc7144b1454a0b7ee5296832f7983e5cd92c547f949e8',
-     x86_64: '65a98713abd0ad892ba0f65a823d51c5aa1b9fd14751d998211f762724a2c444'
+    aarch64: 'bdc85dfd9d5dc8c9338ad38250ad2997f04693e8b8fb2577cbe2702a2a0c7358',
+     armv7l: 'bdc85dfd9d5dc8c9338ad38250ad2997f04693e8b8fb2577cbe2702a2a0c7358',
+     x86_64: 'a5493ea8afbe4b7e869731e221dc29aba02752f72aeb6db60ffc2a64560b5d7f'
   })
 
-  depends_on 'gobject_introspection'
-  depends_on 'libcanberra'
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
+  depends_on 'libcanberra' # R
 
-  def self.build
-    system './autogen.sh' if File.exist?('autogen.sh')
-    system "#{CREW_ENV_OPTIONS} ./configure #{CREW_OPTIONS}"
-    system 'make'
-  end
+  gnome
 
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
-  end
-
-  def self.check
-    system 'make check'
-  end
+  meson_options '-Dgtk_doc=false'
 end

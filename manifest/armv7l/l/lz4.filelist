@@ -2,9 +2,9 @@
 /usr/local/bin/lz4c
 /usr/local/bin/lz4cat
 /usr/local/bin/unlz4
+/usr/local/include/lz4.h
 /usr/local/include/lz4frame.h
 /usr/local/include/lz4frame_static.h
-/usr/local/include/lz4.h
 /usr/local/include/lz4hc.h
 /usr/local/lib/liblz4.a
 /usr/local/lib/liblz4.so

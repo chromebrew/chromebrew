@@ -160,10 +160,10 @@ find "${CREW_LIB_PATH}" -mindepth 1 -delete
 # Download the chromebrew repository.
 curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
-BOOTSTRAP_PACKAGES="zstd crew_mvdir ruby git ca_certificates openssl"
+BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
 # Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=" gcc_lib"
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlibpkg gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]] && (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
   # Append the correct packages for systems running v113 onwards.
@@ -254,6 +254,9 @@ for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
   version=$(sed -n "s/.*version '\([^']*\)'.*/\1/p" "${package}.rb")
   binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
+  if [[ -z "$binary_compression" ]]; then
+    binary_compression='tar.zst'
+  fi
 
   url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
   tarfile=$(basename "${url}")
@@ -282,12 +285,16 @@ export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
 
 echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
+# Install activesupport gem for ruby
+echo_info 'Installing essential ruby gems.'
+gem update -N --system
+gem install -N activesupport --conservative
+gem install -N concurrent-ruby --conservative
+
 # Since we downloaded the package repo, just update package compatibility information.
 crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
-# We need these to install core.
-yes | crew install pixz
 yes | crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
@@ -319,6 +326,9 @@ else
   # Set sparse-checkout folders.
   git sparse-checkout set packages "manifest/${ARCH}" lib commands bin crew tests tools
   git reset --hard origin/"${BRANCH}"
+
+  # Set mtimes of files to when the file was committed.
+  git-restore-mtime -sq 2>/dev/null
 fi
 echo -e "${RESET}"
 

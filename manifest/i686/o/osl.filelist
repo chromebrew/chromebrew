@@ -13,8 +13,8 @@
 /usr/local/include/osl/extensions/symbols.h
 /usr/local/include/osl/extensions/textual.h
 /usr/local/include/osl/generic.h
-/usr/local/include/osl/interface.h
 /usr/local/include/osl/int.h
+/usr/local/include/osl/interface.h
 /usr/local/include/osl/macros.h
 /usr/local/include/osl/names.h
 /usr/local/include/osl/osl.h

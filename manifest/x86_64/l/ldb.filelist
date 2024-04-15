@@ -4,8 +4,8 @@
 /usr/local/bin/ldbmodify
 /usr/local/bin/ldbrename
 /usr/local/bin/ldbsearch
-/usr/local/include/ldb_errors.h
 /usr/local/include/ldb.h
+/usr/local/include/ldb_errors.h
 /usr/local/include/ldb_handlers.h
 /usr/local/include/ldb_module.h
 /usr/local/include/ldb_version.h
@@ -27,14 +27,14 @@
 /usr/local/lib64/ldb/modules/ldb/tdb.so
 /usr/local/lib64/libldb.so
 /usr/local/lib64/libldb.so.2
-/usr/local/lib64/libldb.so.2.8.0
+/usr/local/lib64/libldb.so.2.9.0
 /usr/local/lib64/libpyldb-util.cpython-312-x86-64-linux-gnu.so
 /usr/local/lib64/libpyldb-util.cpython-312-x86-64-linux-gnu.so.2
-/usr/local/lib64/libpyldb-util.cpython-312-x86-64-linux-gnu.so.2.8.0
+/usr/local/lib64/libpyldb-util.cpython-312-x86-64-linux-gnu.so.2.9.0
 /usr/local/lib64/pkgconfig/ldb.pc
 /usr/local/lib64/pkgconfig/pyldb-util.cpython-312-x86_64-linux-gnu.pc
-/usr/local/lib64/python3.12/site-packages/ldb.cpython-312-x86_64-linux-gnu.so
 /usr/local/lib64/python3.12/site-packages/_ldb_text.py
+/usr/local/lib64/python3.12/site-packages/ldb.cpython-312-x86_64-linux-gnu.so
 /usr/local/share/man/man1/ldbadd.1.zst
 /usr/local/share/man/man1/ldbdel.1.zst
 /usr/local/share/man/man1/ldbedit.1.zst

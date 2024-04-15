@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Vte < Package
+class Vte < Meson
   description 'Virtual Terminal Emulator widget for use with GTK'
   homepage 'https://wiki.gnome.org/Apps/Terminal/VTE'
-  version '0.72.2'
+  version '0.75.92'
   license 'LGPL-2+ and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/vte.git'
@@ -11,9 +11,9 @@ class Vte < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e90bfce1c8449ef74c9acf5a3eeb4f365ffa39c008fe398ff3c6b7042dfc3520',
-     armv7l: 'e90bfce1c8449ef74c9acf5a3eeb4f365ffa39c008fe398ff3c6b7042dfc3520',
-     x86_64: '1c86607d53f6a6f1738770c14b06df6e5cc95f43ce9e6d54a00a1f4ec97f3017'
+    aarch64: 'f2f391b5c913253e1f7f54647e2e410347ea12cc5cfb6b76e83c167ec8247f37',
+     armv7l: 'f2f391b5c913253e1f7f54647e2e410347ea12cc5cfb6b76e83c167ec8247f37',
+     x86_64: 'f7038e85f3b0ac3f50db80bca4ec6ea705b1ec9c666a74615bc0f94eb9467c56'
   })
 
   depends_on 'at_spi2_core' # R
@@ -25,33 +25,25 @@ class Vte < Package
   depends_on 'glib' # R
   depends_on 'gnutls' # R
   depends_on 'gobject_introspection' => :build
-  depends_on 'graphene' # R
+  depends_on 'graphene' => :build
   depends_on 'gtk3' # R
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
+  depends_on 'lz4' # R
   depends_on 'pango' # R
   depends_on 'pcre2' # R
   depends_on 'vulkan_headers' => :build
-  depends_on 'vulkan_icd_loader' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'vulkan_icd_loader' => :build
+  depends_on 'zlibpkg' => :build
 
+  gnome
   no_lto
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
-      -D_systemd=false \
+  meson_options '-D_systemd=false \
       -Dfribidi=true \
       -Dgtk3=true \
       -Dgtk4=true \
       -Dgir=false \
-      -Dvapi=false
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+      -Dvapi=false'
 end

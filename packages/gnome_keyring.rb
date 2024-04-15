@@ -1,43 +1,47 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gnome_keyring < Package
+class Gnome_keyring < Autotools
   description 'GNOME password and secret manager'
   homepage 'https://www.gnome.org'
-  version '3.36.0-1'
+  version '46.1'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
-  source_url 'https://ftp.gnome.org/pub/GNOME/sources/gnome-keyring/3.36/gnome-keyring-3.36.0.tar.xz'
-  source_sha256 'a264b57a8d1a71fdf0d66e8cd6033d013fb828be279c35766545eb9bb3734f87'
-  binary_compression 'tar.xz'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gnome-keyring.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
-      armv7l: '6d59224375f9d0706112746e1769575009ac2c58d663aa9d92eeb32752aa6d98',
-        i686: 'bde76d374b5f47c798115a8e6f4fff5a6b31224c9b8f18caacf4a07b831b94ac',
-      x86_64: '9fddad7d70acf21d5a6a2700400762e5b46ebd43413be6cd2db96eba2f9c8048'
+    aarch64: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
+      armv7l: '76e86060eceecc2f75f2a1f6c25f903e395fcb998dc5db8b7221ac98cdf94ae8',
+      x86_64: 'ea6a16c27a7b38a967e2ea62ecb72a5b597460234b98a14581db62357ca60df9'
   })
 
-  depends_on 'gcr'
-  depends_on 'libcap'
-  depends_on 'libcap_ng'
-  depends_on 'linux_pam'
-  depends_on 'dconf'
-  depends_on 'gcr'
-  depends_on 'docbook_xsl'
-  depends_on 'glib'
-  depends_on 'libxslt'
-  depends_on 'openssh'
+  depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
+  depends_on 'dconf' => :build
+  depends_on 'docbook_xsl' => :build
+  depends_on 'gcr_3' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gtk3' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'libcap' => :build
+  depends_on 'libcap_ng' # R
+  depends_on 'libeconf' # R
+  depends_on 'libgcrypt' # R
+  depends_on 'libgpgerror' # R
+  depends_on 'libxslt' => :build
+  depends_on 'linux_pam' # R
+  depends_on 'openssh' => :build
+  depends_on 'p11kit' # R
+  depends_on 'pango' # R
+  depends_on 'zlibpkg' # R
 
-  def self.build
-    system "env #{CREW_ENV_OPTIONS} \
-    ./configure #{CREW_OPTIONS} \
-    --with-pam-dir=#{CREW_PREFIX}/lib/security \
+  gnome
+
+  configure_options "--with-pam-dir=#{CREW_PREFIX}/lib/security \
+    --disable-selinux \
     --disable-schemas-compile \
     --disable-doc" # Docs cannot be used due to #4275
-    system 'make'
-  end
-
-  def self.install
-    system "make install DESTDIR=#{CREW_DEST_DIR}"
-  end
 end

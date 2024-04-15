@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Gstreamer < Meson
   description 'GStreamer is a library for constructing graphs of media-handling components.'
   homepage 'https://gstreamer.freedesktop.org/'
-  version '1.22.9'
+  version '1.24.0'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.29'
@@ -12,9 +12,9 @@ class Gstreamer < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '841f44904517264f2d55b1ae43e8ef796f408935185fb9c799f978320045e5cc',
-     armv7l: '841f44904517264f2d55b1ae43e8ef796f408935185fb9c799f978320045e5cc',
-     x86_64: '825ce17458892ce8073fbb57f1d278cc70672bdad56302eb347856e6ae0f5e50'
+    aarch64: '3343cac9678845e33a906ab4fc71ca419486092af5bc428293564611affd6cca',
+     armv7l: '3343cac9678845e33a906ab4fc71ca419486092af5bc428293564611affd6cca',
+     x86_64: '514ecd7a6eda71a69853fb291215f73424fc4570a5e979d3fb913796233ceaa5'
   })
 
   depends_on 'alsa_lib' # R
@@ -25,10 +25,13 @@ class Gstreamer < Meson
   depends_on 'chromaprint' # R
   depends_on 'curl' # R
   depends_on 'elfutils' # R
+  depends_on 'faac' # R
+  depends_on 'faad2' # R
   depends_on 'ffmpeg' # R
   depends_on 'flac' # R
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gmp' # R
@@ -83,22 +86,27 @@ class Gstreamer < Meson
   depends_on 'libxfixes' # R
   depends_on 'libxi' # R
   depends_on 'libxml2' # R
+  depends_on 'libxtst' # R
   depends_on 'libxv' # R
   depends_on 'lilv' # R
   depends_on 'mesa' # R
   depends_on 'neon' # R
   depends_on 'nettle' # R
   depends_on 'openal' # R
+  depends_on 'openexr' # R
+  depends_on 'openh264' # R
   depends_on 'openjpeg' # R
   depends_on 'openssl' # R
-  depends_on 'opus' # R
   depends_on 'opusfile' => :build
+  depends_on 'opus' # R
   depends_on 'pango' # R
   depends_on 'pipewire' # R
   depends_on 'pulseaudio' # R
+  depends_on 'py3_setuptools' => :build
   depends_on 'pygobject' # R
   depends_on 'python3' # R
-  depends_on 'py3_setuptools' => :build
+  depends_on 'qt5_base' => :build # otherwise this becomes circular
+  depends_on 'qt5_declarative' => :build # otherwise this becomes circular
   depends_on 'rtmpdump' # R
   depends_on 'sbc' # R
   depends_on 'serd' # R
@@ -113,13 +121,8 @@ class Gstreamer < Meson
   depends_on 'webrtc_audio_processing' # R
   depends_on 'zlibpkg' # R
   depends_on 'zvbi' # R
-  depends_on 'faac' # R
-  depends_on 'faad2' # R
-  depends_on 'openexr' # R
-  depends_on 'openh264' # R
-  depends_on 'qt5_base' => :build # otherwise this becomes circular
-  depends_on 'qt5_declarative' => :build # otherwise this becomes circular
 
+  gnome
   no_lto
 
   # conflicts_ok # conflicts with orc, gst_plugins_{base,bad}
@@ -129,6 +132,7 @@ class Gstreamer < Meson
   end
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    -Ddoc=disabled \
     -Dgpl=enabled \
-    -Dtests=disabled"
+    -Dgtk_doc=disabled"
 end

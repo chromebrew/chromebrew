@@ -5,7 +5,7 @@ class Idea < Package
   homepage 'https://www.jetbrains.com/idea/'
   version '2022.3'
   license 'Apache-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://download.jetbrains.com/idea/ideaIC-2022.3.tar.gz'
   source_sha256 'a3f53de8293b55739d916868d732bde521e33e59a5181e758d6f1691d479da9e'
 

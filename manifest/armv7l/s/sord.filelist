@@ -1,5 +1,5 @@
-/usr/local/bin/sordi
 /usr/local/bin/sord_validate
+/usr/local/bin/sordi
 /usr/local/include/sord-0/sord/sord.h
 /usr/local/include/sord-0/sord/sordmm.hpp
 /usr/local/lib/libsord-0.so

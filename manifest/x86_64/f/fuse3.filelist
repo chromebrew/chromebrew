@@ -3,15 +3,15 @@
 /usr/local/etc/init.d/fuse3
 /usr/local/etc/udev/rules.d/99-fuse3.rules
 /usr/local/include/fuse3/cuse_lowlevel.h
-/usr/local/include/fuse3/fuse_common.h
 /usr/local/include/fuse3/fuse.h
+/usr/local/include/fuse3/fuse_common.h
 /usr/local/include/fuse3/fuse_log.h
 /usr/local/include/fuse3/fuse_lowlevel.h
 /usr/local/include/fuse3/fuse_opt.h
 /usr/local/include/fuse3/libfuse_config.h
 /usr/local/lib64/libfuse3.so
 /usr/local/lib64/libfuse3.so.3
-/usr/local/lib64/libfuse3.so.3.14.0
+/usr/local/lib64/libfuse3.so.3.16.2
 /usr/local/lib64/pkgconfig/fuse3.pc
 /usr/local/sbin/fusermount3
 /usr/local/sbin/mount.fuse3

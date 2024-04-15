@@ -9,11 +9,11 @@
 /usr/local/lib64/moc/decoder_plugins/libspeex_decoder.so
 /usr/local/lib64/moc/decoder_plugins/libvorbis_decoder.la
 /usr/local/lib64/moc/decoder_plugins/libvorbis_decoder.so
-/usr/local/share/doc/moc/config.example
-/usr/local/share/doc/moc/keymap.example
 /usr/local/share/doc/moc/README
 /usr/local/share/doc/moc/README_equalizer
 /usr/local/share/doc/moc/THANKS
+/usr/local/share/doc/moc/config.example
+/usr/local/share/doc/moc/keymap.example
 /usr/local/share/man/man1/mocp.1.gz
 /usr/local/share/moc/themes/black_theme
 /usr/local/share/moc/themes/darkdot_theme

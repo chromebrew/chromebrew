@@ -4,13 +4,13 @@
 /usr/local/include/log4cplus/callbackappender.h
 /usr/local/include/log4cplus/clfsappender.h
 /usr/local/include/log4cplus/clogger.h
-/usr/local/include/log4cplus/config/defines.hxx
 /usr/local/include/log4cplus/config.hxx
+/usr/local/include/log4cplus/config/defines.hxx
 /usr/local/include/log4cplus/config/macosx.h
-/usr/local/include/log4cplus/configurator.h
 /usr/local/include/log4cplus/config/win32.h
 /usr/local/include/log4cplus/config/windowsh-inc-full.h
 /usr/local/include/log4cplus/config/windowsh-inc.h
+/usr/local/include/log4cplus/configurator.h
 /usr/local/include/log4cplus/consoleappender.h
 /usr/local/include/log4cplus/fileappender.h
 /usr/local/include/log4cplus/fstreams.h
@@ -23,8 +23,8 @@
 /usr/local/include/log4cplus/helpers/property.h
 /usr/local/include/log4cplus/helpers/queue.h
 /usr/local/include/log4cplus/helpers/snprintf.h
-/usr/local/include/log4cplus/helpers/socketbuffer.h
 /usr/local/include/log4cplus/helpers/socket.h
+/usr/local/include/log4cplus/helpers/socketbuffer.h
 /usr/local/include/log4cplus/helpers/stringhelper.h
 /usr/local/include/log4cplus/helpers/thread-config.h
 /usr/local/include/log4cplus/helpers/timehelper.h
@@ -66,8 +66,8 @@
 /usr/local/include/log4cplus/thread/impl/syncprims-pmsm.h
 /usr/local/include/log4cplus/thread/impl/threads-impl.h
 /usr/local/include/log4cplus/thread/impl/tls.h
-/usr/local/include/log4cplus/thread/syncprims.h
 /usr/local/include/log4cplus/thread/syncprims-pub-impl.h
+/usr/local/include/log4cplus/thread/syncprims.h
 /usr/local/include/log4cplus/thread/threads.h
 /usr/local/include/log4cplus/tracelogger.h
 /usr/local/include/log4cplus/tstring.h

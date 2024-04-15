@@ -17,6 +17,7 @@ class Gimp < Meson
   })
 
   depends_on 'aalib' # R
+  depends_on 'adwaita_icon_theme' # L
   depends_on 'alsa_lib' # R
   depends_on 'appstream_glib' # R
   depends_on 'at_spi2_core' => :build
@@ -36,6 +37,7 @@ class Gimp < Meson
   depends_on 'glibc' # R
   depends_on 'glib_networking'
   depends_on 'glib' # R
+  depends_on 'gnome_icon_theme' # L
   depends_on 'gobject_introspection' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
@@ -83,6 +85,8 @@ class Gimp < Meson
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
   depends_on 'zlibpkg' # R
+
+  gnome
 
   meson_options '-Dbug-report-url=https://github.com/chromebrew/chromebrew/issues'
 

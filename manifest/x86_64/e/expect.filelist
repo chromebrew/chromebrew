@@ -20,8 +20,8 @@
 /usr/local/bin/weather
 /usr/local/bin/xkibitz
 /usr/local/bin/xpstat
-/usr/local/include/expect_comm.h
 /usr/local/include/expect.h
+/usr/local/include/expect_comm.h
 /usr/local/include/expect_tcl.h
 /usr/local/include/tcldbg.h
 /usr/local/lib64/expect5.45.4/libexpect5.45.4.so

@@ -6,7 +6,7 @@ class Py3_pptx < Pip
   @_ver = '0.6.21'
   version "#{@_ver}-py3.12"
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
 
   depends_on 'py3_lxml'

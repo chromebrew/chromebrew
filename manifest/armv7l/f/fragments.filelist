@@ -22,16 +22,18 @@
 /usr/local/share/locale/hr/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/hu/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/id/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/ie/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/is/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/it/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/ja/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/ka/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/ko/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/nb/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/nl/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/oc/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/pl/LC_MESSAGES/fragments.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/pt/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/ro/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/ru/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/sk/LC_MESSAGES/fragments.mo
@@ -42,4 +44,5 @@
 /usr/local/share/locale/uk/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/vi/LC_MESSAGES/fragments.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/fragments.mo
+/usr/local/share/locale/zh_TW/LC_MESSAGES/fragments.mo
 /usr/local/share/metainfo/de.haeckerfelix.Fragments.metainfo.xml

@@ -5,7 +5,7 @@ class Far < Package
   homepage 'http://findandreplace.sourceforge.net'
   version '2.0.3'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://downloads.sourceforge.net/project/findandreplace/findandreplace/2.0.3/FAR-2.0.3-x.tar.gz'
   source_sha256 'd0e8406b08833be398476e3482a657998cd89e429025989f87cd35added5bedf'
 

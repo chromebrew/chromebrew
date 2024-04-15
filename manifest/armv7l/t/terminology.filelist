@@ -27,8 +27,8 @@
 /usr/local/share/locale/sr/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/tr/LC_MESSAGES/terminology.mo
 /usr/local/share/locale/vi/LC_MESSAGES/terminology.mo
-/usr/local/share/man/man1/terminology.1.gz
 /usr/local/share/man/man1/terminology-helpers.1.gz
+/usr/local/share/man/man1/terminology.1.gz
 /usr/local/share/man/man1/tyalpha.1.gz
 /usr/local/share/man/man1/tybg.1.gz
 /usr/local/share/man/man1/tycat.1.gz
@@ -51,6 +51,8 @@
 /usr/local/share/terminology/fonts/8x13.pcf
 /usr/local/share/terminology/fonts/9x15.pcf
 /usr/local/share/terminology/fonts/9x18.pcf
+/usr/local/share/terminology/fonts/TERMINUS.txt
+/usr/local/share/terminology/fonts/XFONT.txt
 /usr/local/share/terminology/fonts/nexus.pcf
 /usr/local/share/terminology/fonts/terminus-12.pcf
 /usr/local/share/terminology/fonts/terminus-14-bold.pcf
@@ -61,8 +63,6 @@
 /usr/local/share/terminology/fonts/terminus-18.pcf
 /usr/local/share/terminology/fonts/terminus-20-bold.pcf
 /usr/local/share/terminology/fonts/terminus-20.pcf
-/usr/local/share/terminology/fonts/TERMINUS.txt
-/usr/local/share/terminology/fonts/XFONT.txt
 /usr/local/share/terminology/images/terminology.png
 /usr/local/share/terminology/themes/base16_ocean_dark.edj
 /usr/local/share/terminology/themes/black.edj

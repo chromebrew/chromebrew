@@ -9,9 +9,9 @@
 /usr/local/include/blockdev/dm.h
 /usr/local/include/blockdev/exec.h
 /usr/local/include/blockdev/extra_arg.h
+/usr/local/include/blockdev/fs.h
 /usr/local/include/blockdev/fs/ext.h
 /usr/local/include/blockdev/fs/generic.h
-/usr/local/include/blockdev/fs.h
 /usr/local/include/blockdev/fs/mount.h
 /usr/local/include/blockdev/fs/ntfs.h
 /usr/local/include/blockdev/fs/vfat.h
@@ -29,6 +29,7 @@
 /usr/local/include/blockdev/swap.h
 /usr/local/include/blockdev/utils.h
 /usr/local/include/blockdev/vdo.h
+/usr/local/lib/python2.7/site-packages/gi/overrides/BlockDev.py
 /usr/local/lib64/girepository-1.0/BlockDev-2.0.typelib
 /usr/local/lib64/libbd_btrfs.la
 /usr/local/lib64/libbd_btrfs.so
@@ -74,14 +75,14 @@
 /usr/local/lib64/libbd_nvdimm.so
 /usr/local/lib64/libbd_nvdimm.so.2
 /usr/local/lib64/libbd_nvdimm.so.2.0.0
-/usr/local/lib64/libbd_part_err.la
-/usr/local/lib64/libbd_part_err.so
-/usr/local/lib64/libbd_part_err.so.2
-/usr/local/lib64/libbd_part_err.so.2.0.0
 /usr/local/lib64/libbd_part.la
 /usr/local/lib64/libbd_part.so
 /usr/local/lib64/libbd_part.so.2
 /usr/local/lib64/libbd_part.so.2.0.0
+/usr/local/lib64/libbd_part_err.la
+/usr/local/lib64/libbd_part_err.so
+/usr/local/lib64/libbd_part_err.so.2
+/usr/local/lib64/libbd_part_err.so.2.0.0
 /usr/local/lib64/libbd_swap.la
 /usr/local/lib64/libbd_swap.so
 /usr/local/lib64/libbd_swap.so.2
@@ -98,8 +99,7 @@
 /usr/local/lib64/libblockdev.so
 /usr/local/lib64/libblockdev.so.2
 /usr/local/lib64/libblockdev.so.2.0.0
-/usr/local/lib64/pkgconfig/blockdev.pc
 /usr/local/lib64/pkgconfig/blockdev-utils.pc
+/usr/local/lib64/pkgconfig/blockdev.pc
 /usr/local/lib64/python3.10/site-packages/gi/overrides/BlockDev.py
-/usr/local/lib/python2.7/site-packages/gi/overrides/BlockDev.py
 /usr/local/share/gir-1.0/BlockDev-2.0.gir

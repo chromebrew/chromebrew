@@ -1,7 +1,7 @@
 /usr/local/bin/tcc
 /usr/local/include/libtcc.h
-/usr/local/lib/libtcc1.a
 /usr/local/lib/libtcc.so
+/usr/local/lib/libtcc1.a
 /usr/local/lib/tcc/include/float.h
 /usr/local/lib/tcc/include/stdarg.h
 /usr/local/lib/tcc/include/stdbool.h

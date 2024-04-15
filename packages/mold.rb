@@ -6,7 +6,7 @@ require 'package'
 class Mold < Package
   description 'A Modern Linker'
   homepage 'https://github.com/rui314/mold'
-  version '2.4.1'
+  version '2.30.0'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rui314/mold.git'
@@ -14,10 +14,10 @@ class Mold < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6218eb28e9889dd10ce3e72c4b029da649ee2f2a493d721e9ddadb7001bc6843',
-     armv7l: '6218eb28e9889dd10ce3e72c4b029da649ee2f2a493d721e9ddadb7001bc6843',
-       i686: 'cf20c7dc47667a6eb097d0d49c6c059c0a1b4ee57839b75f485c890b46d9a304',
-     x86_64: '1389eed2f70381bf957a31417ea86fbad7238f1e9de8ec1bc573c385e1f4d343'
+    aarch64: '942a89f67dbb241a5f4e7efa653bdb878bdb688751fcab3e4cf67ccdcb8cb8b3',
+     armv7l: '942a89f67dbb241a5f4e7efa653bdb878bdb688751fcab3e4cf67ccdcb8cb8b3',
+       i686: '161fda131e71d01d56c28476cb69af62c2a430c894a698d33ace4a42eeb11be1',
+     x86_64: '3c11532a888303364a7bfab1e5017921ff40412121e7352c93eca90700630f93'
   })
 
   depends_on 'gcc_lib' # R

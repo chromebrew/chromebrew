@@ -10,10 +10,10 @@
 /usr/local/include/nanomsg/survey.h
 /usr/local/include/nanomsg/tcp.h
 /usr/local/include/nanomsg/ws.h
-/usr/local/lib/cmake/nanomsg-1.1.5/nanomsg-config.cmake
 /usr/local/lib/cmake/nanomsg-1.1.5/nanomsg-config-version.cmake
-/usr/local/lib/cmake/nanomsg-1.1.5/nanomsg-target.cmake
+/usr/local/lib/cmake/nanomsg-1.1.5/nanomsg-config.cmake
 /usr/local/lib/cmake/nanomsg-1.1.5/nanomsg-target-noconfig.cmake
+/usr/local/lib/cmake/nanomsg-1.1.5/nanomsg-target.cmake
 /usr/local/lib/libnanomsg.so
 /usr/local/lib/libnanomsg.so.5
 /usr/local/lib/libnanomsg.so.5.1.0

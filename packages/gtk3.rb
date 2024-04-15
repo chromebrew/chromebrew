@@ -42,7 +42,7 @@ class Gtk3 < Meson
   depends_on 'libdeflate' => :build # Do we need this?
   depends_on 'libepoxy' # R
   depends_on 'libjpeg' => :build # Do we need this?
-  depends_on 'librsvg' => :build
+  depends_on 'librsvg' # L
   depends_on 'libsass' => :build
   depends_on 'libspectre' => :build
   depends_on 'libx11' # R
@@ -67,7 +67,9 @@ class Gtk3 < Meson
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
 
+  gnome
   no_fhs
+  no_upstream_update
 
   def self.patch
     # Use locally build subprojects

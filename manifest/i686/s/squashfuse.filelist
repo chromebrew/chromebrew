@@ -10,8 +10,8 @@
 /usr/local/include/squashfuse/fuseprivate.h
 /usr/local/include/squashfuse/hash.h
 /usr/local/include/squashfuse/ll.h
-/usr/local/include/squashfuse/nonstd.h
 /usr/local/include/squashfuse/nonstd-internal.h
+/usr/local/include/squashfuse/nonstd.h
 /usr/local/include/squashfuse/squashfs_fs.h
 /usr/local/include/squashfuse/squashfuse.h
 /usr/local/include/squashfuse/stack.h

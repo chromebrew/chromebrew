@@ -5,7 +5,7 @@ class Font_misc_misc < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.1.2'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/font/font-misc-misc-1.1.2.tar.bz2'
   source_sha256 'b8e77940e4e1769dc47ef1805918d8c9be37c708735832a07204258bacc11794'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Font_misc_misc < Package
   binary_sha256({
     aarch64: 'c7e78e79c50785db5262467c17dcfbff493624f91d61753741c3818d5a6b4542',
      armv7l: 'c7e78e79c50785db5262467c17dcfbff493624f91d61753741c3818d5a6b4542',
-       i686: '806f3173793f6373f7d360c8544700e7a36a040b28cf8fb5e95cc6c07066bdb6',
      x86_64: '12a176ada97f23ed38e1186741d40908f703383cecc913b99dc032360e226000'
   })
 

@@ -9,10 +9,10 @@
 /usr/local/share/kak/colors/lucius.kak
 /usr/local/share/kak/colors/red-phoenix.kak
 /usr/local/share/kak/colors/reeder.kak
-/usr/local/share/kak/colors/solarized-dark.kak
 /usr/local/share/kak/colors/solarized-dark-termcolors.kak
-/usr/local/share/kak/colors/solarized-light.kak
+/usr/local/share/kak/colors/solarized-dark.kak
 /usr/local/share/kak/colors/solarized-light-termcolors.kak
+/usr/local/share/kak/colors/solarized-light.kak
 /usr/local/share/kak/colors/tomorrow-night.kak
 /usr/local/share/kak/colors/zenburn.kak
 /usr/local/share/kak/doc/buffers.asciidoc
@@ -78,8 +78,8 @@
 /usr/local/share/kak/rc/core/formatter.kak
 /usr/local/share/kak/rc/core/grep.kak
 /usr/local/share/kak/rc/core/kakrc.kak
-/usr/local/share/kak/rc/core/makefile.kak
 /usr/local/share/kak/rc/core/make.kak
+/usr/local/share/kak/rc/core/makefile.kak
 /usr/local/share/kak/rc/core/man.kak
 /usr/local/share/kak/rc/core/python.kak
 /usr/local/share/kak/rc/core/sh.kak

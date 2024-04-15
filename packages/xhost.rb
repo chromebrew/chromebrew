@@ -5,7 +5,7 @@ class Xhost < Package
   homepage 'https://github.com/freedesktop/xorg-xhost'
   version '1.0.8'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/app/xhost-1.0.8.tar.bz2'
   source_sha256 'a2dc3c579e13674947395ef8ccc1b3763f89012a216c2cc6277096489aadc396'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Xhost < Package
   binary_sha256({
     aarch64: '314e4cf5b09e6e4517639c6904efd5e7cb1336536524f102c210e9e5c4388b5b',
      armv7l: '314e4cf5b09e6e4517639c6904efd5e7cb1336536524f102c210e9e5c4388b5b',
-       i686: 'd2fb32097557b95a2c824a1c5cdd3b3fd515ef99c5294350e6c6443ee0190cb0',
      x86_64: '8e108d51711153c01c45343af91d6b1c7bd493e4da823ebe85209eb5278ee25a'
   })
 

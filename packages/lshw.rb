@@ -5,7 +5,7 @@ class Lshw < Package
   homepage 'https://ezix.org/project/wiki/HardwareLiSter'
   version 'B.02.19.2-5840f20'
   license 'GPL'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   # Use patched much more recent debian source, as primary source has
   # not been updated for years.
   source_url 'https://salsa.debian.org/openstack-team/third-party/lshw.git'
@@ -15,7 +15,6 @@ class Lshw < Package
   binary_sha256({
     aarch64: '340c681ccf3ec89b89a8587b2d646454b289b7a91780c77e01dfc758668f64f5',
      armv7l: '340c681ccf3ec89b89a8587b2d646454b289b7a91780c77e01dfc758668f64f5',
-       i686: '23db0e32239b32e32d6f83eface0436de25de3d03e166b21638ba8ba49a59742',
      x86_64: 'ae50b29d704bfbffb72c166b9b30e37516e83bebe385c223252cd8f4be6c9ed8'
   })
 

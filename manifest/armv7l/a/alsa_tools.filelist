@@ -2,9 +2,9 @@
 /usr/local/bin/cspctl
 /usr/local/bin/echomixer
 /usr/local/bin/envy24control
+/usr/local/bin/hda-verb
 /usr/local/bin/hdajackretask
 /usr/local/bin/hdajacksensetest
-/usr/local/bin/hda-verb
 /usr/local/bin/hdspconf
 /usr/local/bin/hdsploader
 /usr/local/bin/hwmixvolume

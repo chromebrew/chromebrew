@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.44.5'
+CREW_VERSION = '1.46.10'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -41,7 +41,7 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # This helps with virtualized builds on aarch64 machines which report armv8l when linux32 is run.
 # We also report aarch64 machines as armv7l for now, as we treat them as if they were armv7l.
 # When we have proper aarch64 support, remove this.
-ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : KERN_ARCH
+ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : ENV.fetch('ARCH', KERN_ARCH)
 
 # This helps determine if there is a difference between kernel and user space
 USER_SPACE_ARCH = RUBY_DESCRIPTION[/\[(.+?)-linux-gnu/, 1]
@@ -63,6 +63,8 @@ else
   CREW_BUILD_FROM_SOURCE = true
   HOME = File.join(CREW_PREFIX, Dir.home)
 end
+
+CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlibpkg zstd]
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
@@ -119,8 +121,12 @@ CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache"
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
 
-# Set CREW_NPROC from environment variable or `nproc`
-CREW_NPROC = ENV.fetch('CREW_NPROC', `nproc`.chomp)
+# Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
+CREW_NPROC = if File.file?("#{CREW_PREFIX}/bin/distcc")
+               ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
+             else
+               ENV.fetch('CREW_NPROC', `nproc`.chomp)
+             end
 
 # Set following as boolean if environment variables exist.
 CREW_CACHE_ENABLED                   = ENV.fetch('CREW_CACHE_ENABLED', '0').eql?('1')
@@ -159,6 +165,7 @@ CREW_DOWNLOADER = ENV.fetch('CREW_DOWNLOADER', nil)
 
 # Downloader maximum retry count
 CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
+
 # show download progress bar or not (only applied when using the default ruby downloader)
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 
@@ -281,9 +288,10 @@ CREW_NINJA = ENV.fetch('CREW_NINJA', 'ninja')
 CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-  -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS}' \
-  -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS}' \
+  -DCMAKE_C_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
+  -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_EXE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
+  -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
   -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_STATIC_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
@@ -293,9 +301,10 @@ OPT
 CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT.chomp
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-  -DCMAKE_C_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
-  -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS}' \
+  -DCMAKE_C_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
+  -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
   -DCMAKE_EXE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
+  -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
   -DCMAKE_SHARED_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_STATIC_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_MODULE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
@@ -311,4 +320,67 @@ PY_SETUP_INSTALL_OPTIONS         = "#{PY_SETUP_INSTALL_OPTIONS_NO_SVEM} --single
 PY3_BUILD_OPTIONS                = '--wheel --no-isolation'
 PY3_INSTALLER_OPTIONS            = "--destdir=#{CREW_DEST_DIR} --compile-bytecode 2 dist/*.whl"
 
-CREW_ESSENTIAL_FILES = `LD_TRACE_LOADED_OBJECTS=1 #{File.realpath('/proc/self/exe')}`.scan(/\t([^ ]+)/).flatten
+CREW_LICENSE = <<~LICENSESTRING
+  Copyright (C) 2013-2024 Chromebrew Authors
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see https://www.gnu.org/licenses/gpl-3.0.html.
+
+  Chromebrew embeds lib/docopt.rb from another project under the MIT License.
+  You should have received a copy of the license along with this program.
+  If not, see https://github.com/docopt/docopt.rb/blob/master/LICENSE
+LICENSESTRING
+
+CREW_DOCOPT = <<~DOCOPT
+  Chromebrew - Package manager for Chrome OS https://chromebrew.github.io
+
+  Usage:
+    crew build [options] [-k|--keep] [-v|--verbose] <name> ...
+    crew check [-V|--version] [-v|--verbose] <name> ...
+    crew const [-v|--verbose] [<name> ...]
+    crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
+    crew download [options] [-s|--source] [-v|--verbose] <name> ...
+    crew files <name> ...
+    crew help [<command>] [-v|--verbose] [<subcommand>]
+    crew install [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew list [options] [-v|--verbose] (available|installed|compatible|incompatible)
+    crew postinstall [options] [-v|--verbose] <name> ...
+    crew prop [<property>]
+    crew reinstall [options] [-k|--keep] [-s|--source] [-S|--recursive-build] [-v|--verbose] <name> ...
+    crew remove [-v|--verbose] <name> ...
+    crew search [options] [-v|--verbose] [<name> ...]
+    crew sysinfo [-v|--verbose]
+    crew test [-v|--verbose] [<name> ...]
+    crew update [options] [-v|--verbose] [<compatible>]
+    crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
+    crew upload [options] [-v|--verbose] [<name> ...]
+    crew whatprovides [options] [-v|--verbose] <pattern> ...
+
+    -b --include-build-deps  Include build dependencies in output.
+    -t --tree                Print dependencies in a tree-structure format.
+    -c --color               Use colors even if standard out is not a tty.
+    -d --no-color            Disable colors even if standard out is a tty.
+    -f --force               Force where relevant.
+    -k --keep                Keep the `CREW_BREW_DIR` (#{CREW_BREW_DIR}) directory.
+    -L --license             Display the crew license.
+    -s --source              Build or download from source even if pre-compiled binary exists.
+    -S --recursive-build     Build from source, including all dependencies, even if pre-compiled binaries exist.
+    -v --verbose             Show extra information.
+    -V --version             Display the crew version.
+    -h --help                Show this screen.
+
+  version #{CREW_VERSION}
+DOCOPT
+
+# All available crew commands.
+CREW_COMMANDS = CREW_DOCOPT.scan(/crew ([^\s]+)/).flatten.sort.join(', ').gsub('.', '')

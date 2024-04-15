@@ -1,6 +1,6 @@
 /usr/local/bin/x264
-/usr/local/include/x264_config.h
 /usr/local/include/x264.h
+/usr/local/include/x264_config.h
 /usr/local/lib64/libx264.a
 /usr/local/lib64/libx264.so
 /usr/local/lib64/libx264.so.164

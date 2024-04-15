@@ -8,7 +8,7 @@ class Alacritty < Package
   homepage 'https://github.com/alacritty/alacritty'
   version '0.11.0'
   license 'Apache'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/alacritty/alacritty.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Alacritty < Package
   binary_sha256({
     aarch64: '24f808cdec4ef1a520d7b2526f3359324900656e4bea5b9fee9c77efc6e9ef63',
      armv7l: '24f808cdec4ef1a520d7b2526f3359324900656e4bea5b9fee9c77efc6e9ef63',
-       i686: 'b5f25ca181942410eb5c74cecd7aaf1c31d2c10293817f3c5833bdc331c795ec',
      x86_64: 'dd593610cbc27b8b1cece7dca3b73bb1194ae4b04a215eef85a229354fb6c62f'
   })
 

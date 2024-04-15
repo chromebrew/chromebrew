@@ -5,7 +5,7 @@ class Bacula < Package
   homepage 'https://www.bacula.org/'
   version '9.4.2'
   license 'AGPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.bacula.org/download/7471/bacula-9.4.2.tar.gz'
   source_sha256 'a40d04d2c48135972cecb6578405e835c4b9d798c0950017de0fad40ca94e8a0'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Bacula < Package
   binary_sha256({
     aarch64: '1a0a0c032e40a648e9e9492aa428e9c674b1baa7ee76f5254f070f385be31263',
      armv7l: '1a0a0c032e40a648e9e9492aa428e9c674b1baa7ee76f5254f070f385be31263',
-       i686: 'adf9481e8804d07ae4dfa80dab24bd6646feda2465dbf773fd21fa30a75d46bb',
      x86_64: '1fccff1952a812660fa134102e8afe8b3faae7d61aa12f587dca9d00d14a4b53'
   })
 

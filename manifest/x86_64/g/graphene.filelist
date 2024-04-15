@@ -2,12 +2,11 @@
 /usr/local/include/graphene-1.0/graphene-euler.h
 /usr/local/include/graphene-1.0/graphene-frustum.h
 /usr/local/include/graphene-1.0/graphene-gobject.h
-/usr/local/include/graphene-1.0/graphene.h
 /usr/local/include/graphene-1.0/graphene-macros.h
 /usr/local/include/graphene-1.0/graphene-matrix.h
 /usr/local/include/graphene-1.0/graphene-plane.h
-/usr/local/include/graphene-1.0/graphene-point3d.h
 /usr/local/include/graphene-1.0/graphene-point.h
+/usr/local/include/graphene-1.0/graphene-point3d.h
 /usr/local/include/graphene-1.0/graphene-quad.h
 /usr/local/include/graphene-1.0/graphene-quaternion.h
 /usr/local/include/graphene-1.0/graphene-ray.h
@@ -21,8 +20,9 @@
 /usr/local/include/graphene-1.0/graphene-vec2.h
 /usr/local/include/graphene-1.0/graphene-vec3.h
 /usr/local/include/graphene-1.0/graphene-vec4.h
-/usr/local/include/graphene-1.0/graphene-version.h
 /usr/local/include/graphene-1.0/graphene-version-macros.h
+/usr/local/include/graphene-1.0/graphene-version.h
+/usr/local/include/graphene-1.0/graphene.h
 /usr/local/lib64/girepository-1.0/Graphene-1.0.typelib
 /usr/local/lib64/graphene-1.0/include/graphene-config.h
 /usr/local/lib64/libgraphene-1.0.so

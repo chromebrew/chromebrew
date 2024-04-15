@@ -5,7 +5,7 @@ class Font_bh_type1 < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.3'
   license 'bh-luxi'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/font/font-bh-type1-1.0.3.tar.bz2'
   source_sha256 '761455a297486f3927a85d919b5c948d1d324181d4bea6c95d542504b68a63c1'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Font_bh_type1 < Package
   binary_sha256({
     aarch64: '5d8fdfff994102c3a4a801112f7dd9d6e310f604c477d1b2cb17ecde1e42a0ab',
      armv7l: '5d8fdfff994102c3a4a801112f7dd9d6e310f604c477d1b2cb17ecde1e42a0ab',
-       i686: '2235b52c55a958b30126bc5318f32386d684e957a332a4e0f424eb8da2ff0c21',
      x86_64: '7cb22c07fb43982d548a0fd3801f426e8cbbb4f5cdd037c213060a58295ec512'
   })
 

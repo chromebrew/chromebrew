@@ -4,7 +4,7 @@ class Nodebrew < Package
   description 'Node.js version manager'
   homepage 'https://github.com/hokaccha/nodebrew'
   @_ver = '1.2.0'
-  version "#{@_ver}-2"
+  version "#{@_ver}-3"
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/hokaccha/nodebrew/archive/v#{@_ver}.tar.gz"
@@ -12,13 +12,18 @@ class Nodebrew < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '2d66f5d8c02b4eb1709837d8a1271988441507f58ee3e05a4db99861cb01f229',
-     armv7l: '2d66f5d8c02b4eb1709837d8a1271988441507f58ee3e05a4db99861cb01f229',
-       i686: '1b9e9e93a6c8cdffbb47bc09ac84b8ca2e40536c903f79be55927a8a694aefd3',
-     x86_64: '1756ea6eb396fd0e448b7dfbf9c7d37e95fb22b616c03ffc833a219777a275f9'
+    aarch64: '3380b54a63dcb41668a5e2d3342052278dc3c9356b8436b29bc791b1083b79cc',
+     armv7l: '3380b54a63dcb41668a5e2d3342052278dc3c9356b8436b29bc791b1083b79cc',
+       i686: '62b3e1fa67d1bd03e43b3db86acb63456fb49c60acdeddd11ce9bcd5d4f66e41',
+     x86_64: '2845cc94c9d7507dff3270640178852e1552f3523bbb13634cc836b430cb03db'
   })
 
   print_source_bashrc
+
+  def self.patch
+    downloader 'https://patch-diff.githubusercontent.com/raw/hokaccha/nodebrew/pull/75.patch', '80f3e43cb92cdf1ea71db675c34987fcd059fc3af3d45094573c3a7d33759213'
+    system 'patch -p1 -i 75.patch'
+  end
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/nodebrew/default"
@@ -31,16 +36,14 @@ class Nodebrew < Package
       # Handle x86 binaries no longer showing up on the official build server.
       system "sed -i 's,nodejs.org/dist,unofficial-builds.nodejs.org/download/release,g' #{CREW_DEST_PREFIX}/share/nodebrew/nodebrew"
     end
-    # Download fails unless this directory is created.
-    FileUtils.mkdir_p "#{CREW_DEST_HOME}/.nodebrew/src"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
+    FileUtils.rm "#{CREW_DEST_PREFIX}/share/nodebrew/current"
+    FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/default", "#{CREW_DEST_PREFIX}/share/nodebrew/current"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/nodebrew", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/current/bin/node", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/current/bin/npm", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/current/bin/npx", "#{CREW_DEST_PREFIX}/bin/"
     FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew/current/bin/node", "#{CREW_DEST_PREFIX}/bin/nodejs"
-    FileUtils.ln_s "#{CREW_PREFIX}/share/nodebrew", "#{CREW_DEST_HOME}/.nodebrew"
-    FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew", "#{HOME}/.nodebrew"
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/bash.d/"
     @bashd = <<~NODEBREWCOMPLETIONEOF
@@ -51,15 +54,14 @@ class Nodebrew < Package
 
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @env = <<~NODEBREWENVEOF
+      NODEBREW_ROOT=#{CREW_PREFIX}/share/nodebrew
       # nodebrew configuration
-      export PATH="$PATH:$HOME/.nodebrew/current/bin"
+      PATH="$PATH:#{CREW_PREFIX}/share/nodebrew/current/bin"
     NODEBREWENVEOF
     File.write("#{CREW_DEST_PREFIX}/etc/env.d/nodebrew", @env)
   end
 
   def self.postinstall
-    FileUtils.ln_sf "#{CREW_PREFIX}/share/nodebrew/default", "#{CREW_PREFIX}/share/nodebrew/current"
-    FileUtils.mkdir_p "#{HOME}/.nodebrew/src"
     puts
     if ARCH == 'i686'
       puts 'FYI: v17.9.1 is the last version compatible with i686.'.orange

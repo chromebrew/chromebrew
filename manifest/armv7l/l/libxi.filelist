@@ -1,5 +1,5 @@
-/usr/local/include/X11/extensions/XInput2.h
 /usr/local/include/X11/extensions/XInput.h
+/usr/local/include/X11/extensions/XInput2.h
 /usr/local/lib/libXi.a
 /usr/local/lib/libXi.la
 /usr/local/lib/libXi.so

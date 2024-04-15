@@ -5,7 +5,7 @@ class Mono < Package
   homepage 'http://www.mono-project.com/'
   version '6.12.0.122'
   license 'MIT, LGPL-2.1, GPL-2, BSD-4, NPL-1.1, Ms-PL, GPL-3-with-linking-exception and IDPL'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://download.mono-project.com/sources/mono/mono-#{version}.tar.xz"
   source_sha256 '29c277660fc5e7513107aee1cbf8c5057c9370a4cdfeda2fc781be6986d89d23'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Mono < Package
   binary_sha256({
     aarch64: '78cb6f2adb3dde24509316cc5e7e351a5ece0fbf2dbeae8d8b6c9f88a9381be9',
      armv7l: '78cb6f2adb3dde24509316cc5e7e351a5ece0fbf2dbeae8d8b6c9f88a9381be9',
-       i686: '53e9e0e6b21dc469a1e70df8e15ee9755b384d5ae4e2c7bd8199d23e265c6004',
      x86_64: '35ec73376194b71d40ab8e57e01bffb0ec29c43ac66be3a995b03e522abbf017'
   })
 

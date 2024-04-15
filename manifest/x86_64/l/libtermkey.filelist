@@ -9,8 +9,8 @@
 /usr/local/share/man/man3/termkey_canonicalise.3.gz
 /usr/local/share/man/man3/termkey_get_buffer_remaining.3.gz
 /usr/local/share/man/man3/termkey_get_fd.3.gz
-/usr/local/share/man/man3/termkey_getkey.3.gz
 /usr/local/share/man/man3/termkey_get_keyname.3.gz
+/usr/local/share/man/man3/termkey_getkey.3.gz
 /usr/local/share/man/man3/termkey_interpret_csi.3.gz
 /usr/local/share/man/man3/termkey_interpret_modereport.3.gz
 /usr/local/share/man/man3/termkey_interpret_mouse.3.gz

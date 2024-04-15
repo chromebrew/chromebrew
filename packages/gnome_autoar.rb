@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gnome_autoar < Package
+class Gnome_autoar < Meson
   description 'Automatic archives creating and extracting library'
   homepage 'https://gitlab.gnome.org/GNOME/gnome-autoar'
   version '0.4.4'
@@ -32,14 +32,5 @@ class Gnome_autoar < Package
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  gnome
 end

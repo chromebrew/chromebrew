@@ -3,11 +3,11 @@ require 'package'
 class Crew_profile_base < Package
   description 'Crew-profile-base sets up Chromebrew\'s environment capabilities.'
   homepage 'https://github.com/chromebrew/crew-profile-base'
-  version '0.0.12'
+  version '0.0.15'
   license 'GPL-3+'
   compatibility 'all'
   source_url "https://github.com/chromebrew/crew-profile-base/archive/refs/tags/#{version}.tar.gz"
-  source_sha256 '7236cfa4fba6557a6215c1d23ac3d8057490a021a45fdc3e40217d1fe30fe68e'
+  source_sha256 'a50ac3a6daa494bbfcae041d79e44c186078ff27c27a62bc0ac0aa7ae4fd64a8'
 
   no_compile_needed
   print_source_bashrc
@@ -78,19 +78,21 @@ class Crew_profile_base < Package
     ]
 
     @pager_default = Selector.new(@pager_options).show_prompt
-    File.write 'pagerenv', <<~PAGER_ENV_EOF
-      # The user's preferred pager is set here by the crew_profile_base
-      # postinstall.
+    Dir.chdir CREW_DEST_DIR do
+      File.write 'pagerenv', <<~PAGER_ENV_EOF
+        # The user's preferred pager is set here by the crew_profile_base
+        # postinstall.
 
-      # PAGER from container PAGER variable is passed through into the
-      # CONTAINER_PAGER variable.
-      if [ -z "$CONTAINER_PAGER" ]; then
-        PAGER="#{@pager_default}"
-      else
-        PAGER="$CONTAINER_PAGER"
-      fi
-    PAGER_ENV_EOF
-    FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+        # PAGER from container PAGER variable is passed through into the
+        # CONTAINER_PAGER variable.
+        if [ -z "$CONTAINER_PAGER" ]; then
+          PAGER="#{@pager_default}"
+        else
+          PAGER="$CONTAINER_PAGER"
+        fi
+      PAGER_ENV_EOF
+      FileUtils.install 'pagerenv', "#{CREW_PREFIX}/etc/env.d/03-pager", mode: 0o644
+    end
     puts "The default PAGER has been set to #{@pager_default}.".lightblue
   end
 end

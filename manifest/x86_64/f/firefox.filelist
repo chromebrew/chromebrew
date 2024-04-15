@@ -1,4 +1,5 @@
 /usr/local/bin/firefox
+/usr/local/firefox/Throbber-small.gif
 /usr/local/firefox/application.ini
 /usr/local/firefox/browser/chrome/icons/default/default128.png
 /usr/local/firefox/browser/chrome/icons/default/default16.png
@@ -9,8 +10,8 @@
 /usr/local/firefox/browser/features/formautofill@mozilla.org.xpi
 /usr/local/firefox/browser/features/pictureinpicture@mozilla.org.xpi
 /usr/local/firefox/browser/features/screenshots@mozilla.org.xpi
-/usr/local/firefox/browser/features/webcompat@mozilla.org.xpi
 /usr/local/firefox/browser/features/webcompat-reporter@mozilla.org.xpi
+/usr/local/firefox/browser/features/webcompat@mozilla.org.xpi
 /usr/local/firefox/browser/omni.ja
 /usr/local/firefox/crashreporter
 /usr/local/firefox/crashreporter.ini
@@ -19,9 +20,9 @@
 /usr/local/firefox/firefox
 /usr/local/firefox/firefox-bin
 /usr/local/firefox/firefox-bin.sig
+/usr/local/firefox/firefox.sig
 /usr/local/firefox/firefox_desktop
 /usr/local/firefox/firefox_sh
-/usr/local/firefox/firefox.sig
 /usr/local/firefox/fonts/TwemojiMozilla.ttf
 /usr/local/firefox/glxtest
 /usr/local/firefox/gmp-clearkey/0.1/libclearkey.so
@@ -55,10 +56,9 @@
 /usr/local/firefox/platform.ini
 /usr/local/firefox/precomplete
 /usr/local/firefox/removed-files
-/usr/local/firefox/Throbber-small.gif
+/usr/local/firefox/update-settings.ini
 /usr/local/firefox/updater
 /usr/local/firefox/updater.ini
-/usr/local/firefox/update-settings.ini
 /usr/local/firefox/vaapitest
 /usr/local/share/applications/firefox.desktop
 /usr/local/share/icons/hicolor/128x128/apps/firefox.png

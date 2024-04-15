@@ -12,8 +12,8 @@
 /usr/local/include/lttng/action/start-session.h
 /usr/local/include/lttng/action/stop-session.h
 /usr/local/include/lttng/channel.h
-/usr/local/include/lttng/clear.h
 /usr/local/include/lttng/clear-handle.h
+/usr/local/include/lttng/clear.h
 /usr/local/include/lttng/condition/buffer-usage.h
 /usr/local/include/lttng/condition/condition.h
 /usr/local/include/lttng/condition/evaluation.h
@@ -27,7 +27,6 @@
 /usr/local/include/lttng/error-query.h
 /usr/local/include/lttng/event-expr.h
 /usr/local/include/lttng/event-field-value.h
-/usr/local/include/lttng/event.h
 /usr/local/include/lttng/event-rule/event-rule.h
 /usr/local/include/lttng/event-rule/jul-logging.h
 /usr/local/include/lttng/event-rule/kernel-kprobe.h
@@ -37,6 +36,7 @@
 /usr/local/include/lttng/event-rule/log4j-logging.h
 /usr/local/include/lttng/event-rule/python-logging.h
 /usr/local/include/lttng/event-rule/user-tracepoint.h
+/usr/local/include/lttng/event.h
 /usr/local/include/lttng/handle.h
 /usr/local/include/lttng/health.h
 /usr/local/include/lttng/kernel-probe.h
@@ -64,15 +64,14 @@
 /usr/local/lib/pkgconfig/lttng-ctl.pc
 /usr/local/share/doc/lttng-tools/ChangeLog
 /usr/local/share/doc/lttng-tools/LICENSE
+/usr/local/share/doc/lttng-tools/README.adoc
 /usr/local/share/doc/lttng-tools/live-reading-howto.txt
 /usr/local/share/doc/lttng-tools/live-reading-protocol.txt
 /usr/local/share/doc/lttng-tools/python-howto.txt
 /usr/local/share/doc/lttng-tools/quickstart.txt
-/usr/local/share/doc/lttng-tools/README.adoc
 /usr/local/share/doc/lttng-tools/snapshot-howto.txt
 /usr/local/share/doc/lttng-tools/streaming-howto.txt
 /usr/local/share/doc/lttng-tools/valgrind-howto.txt
-/usr/local/share/man/man1/lttng.1.zst
 /usr/local/share/man/man1/lttng-add-context.1.zst
 /usr/local/share/man/man1/lttng-add-trigger.1.zst
 /usr/local/share/man/man1/lttng-clear.1.zst
@@ -86,8 +85,8 @@
 /usr/local/share/man/man1/lttng-enable-event.1.zst
 /usr/local/share/man/man1/lttng-enable-rotation.1.zst
 /usr/local/share/man/man1/lttng-help.1.zst
-/usr/local/share/man/man1/lttng-list.1.zst
 /usr/local/share/man/man1/lttng-list-triggers.1.zst
+/usr/local/share/man/man1/lttng-list.1.zst
 /usr/local/share/man/man1/lttng-load.1.zst
 /usr/local/share/man/man1/lttng-metadata.1.zst
 /usr/local/share/man/man1/lttng-regenerate.1.zst
@@ -103,6 +102,7 @@
 /usr/local/share/man/man1/lttng-untrack.1.zst
 /usr/local/share/man/man1/lttng-version.1.zst
 /usr/local/share/man/man1/lttng-view.1.zst
+/usr/local/share/man/man1/lttng.1.zst
 /usr/local/share/man/man3/lttng-health-check.3.zst
 /usr/local/share/man/man7/lttng-concepts.7.zst
 /usr/local/share/man/man7/lttng-event-rule.7.zst

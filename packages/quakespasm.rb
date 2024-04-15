@@ -5,7 +5,7 @@ class Quakespasm < Package
   homepage 'http://quakespasm.sourceforge.net'
   version '0.93.1-1'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.93.1.tgz'
   source_sha256 'ed3ee6ba7e3d9454c7620757cc166e13d892f1167c7b74bef4f067e350d835ae'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Quakespasm < Package
   binary_sha256({
     aarch64: 'a75901d94ad4475d297ddd09ec4f32b75c7b6d1120f5fdfb5d18e068d7517824',
      armv7l: 'a75901d94ad4475d297ddd09ec4f32b75c7b6d1120f5fdfb5d18e068d7517824',
-       i686: '4f475052feca47e669afbd81d11882ca54143c2bffcd1765a8ab1c46b2a3f8ef',
      x86_64: '16afe97af889bd2c5c4f8e4c835fd044c3313f76e91bb584f27a44740c454e17'
   })
 

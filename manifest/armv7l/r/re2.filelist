@@ -4,8 +4,8 @@
 /usr/local/include/re2/stringpiece.h
 /usr/local/lib/cmake/re2/re2Config.cmake
 /usr/local/lib/cmake/re2/re2ConfigVersion.cmake
-/usr/local/lib/cmake/re2/re2Targets.cmake
 /usr/local/lib/cmake/re2/re2Targets-release.cmake
+/usr/local/lib/cmake/re2/re2Targets.cmake
 /usr/local/lib/libre2.so
 /usr/local/lib/libre2.so.11
 /usr/local/lib/libre2.so.11.0.0

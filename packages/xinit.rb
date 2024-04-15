@@ -5,7 +5,7 @@ class Xinit < Package
   homepage 'https://www.x.org'
   version '1.4.2'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/archive/individual/app/xinit-1.4.2.tar.gz'
   source_sha256 '9121c9162f6dedab1229a8c4ed4021c4d605699cb0da580ac2ee1b0c96b3f60e'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Xinit < Package
   binary_sha256({
     aarch64: '23c169a3f7662628d1ee072ddb5e9275705d4625f7a32dc97addea86d2221140',
      armv7l: '23c169a3f7662628d1ee072ddb5e9275705d4625f7a32dc97addea86d2221140',
-       i686: '49ac02da27403934e28dff71b7cb3d4a6784f3bd2759b7585bd34588f0307e00',
      x86_64: '39b6cdc11b9bbef6850969fa9f9d1e445b5eee7f377658927818b371d4928dc0'
   })
 

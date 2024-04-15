@@ -22,6 +22,8 @@ class Js78 < Package
   depends_on 'llvm16_dev' => :build
   depends_on 'nspr'
 
+  no_upstream_update
+
   @rust_default_host = case ARCH
                        when 'aarch64', 'armv7l'
                          'armv7-unknown-linux-gnueabihf'

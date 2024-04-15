@@ -6,20 +6,20 @@ require 'buildsystems/autotools'
 class Caja < Autotools
   description 'Caja file manager for the MATE desktop'
   homepage 'https://mate-desktop.org'
-  version '1.27.2'
+  version '1.28.0'
   license 'GPL-2+ LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://pub.mate-desktop.org/releases/#{version.rpartition('.')[0]}/caja-#{version}.tar.xz"
-  source_sha256 '646ae6aa5174a765f2a4a6bc4ad4efd6b801f475f0aa7c2fd7e71bd84b5632bb'
+  source_sha256 '1e3014ce1455817ec2ef74d09efdfb6835d8a372ed9a16efb5919ef7b821957a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '568e4400b459e79c878bfd9fd5031e13d813ff5667e2d60cec9654195da42c6a',
-     armv7l: '568e4400b459e79c878bfd9fd5031e13d813ff5667e2d60cec9654195da42c6a',
-     x86_64: 'b93b435a3d42a9ff39185912077549f9dec0132998506eae04f632c0ba096064'
+    aarch64: '0b9f66473078dd9f81b039fe44b5547f66f2404f0858e09cc46d5e1127f8a25d',
+     armv7l: '0b9f66473078dd9f81b039fe44b5547f66f2404f0858e09cc46d5e1127f8a25d',
+     x86_64: '74eff4aaec8f5d73efb4f4e8f25f8cfb9b3b2dcb919c2a3f1e6034868cca9708'
   })
 
-  depends_on 'at_spi2_core' # R                                                                                                                                                                                 depends_on 'cairo' # R                                                                                                                                                                                        depends_on 'dconf' # R                                                                                                                                                                                        depends_on 'exempi' # R                                                                                                                                                                                       depends_on 'expat' # R                                                                                                                                                                                        depends_on 'gcc_lib' # R                                                                                                                                                                                      depends_on 'gdk_pixbuf' # R                                                                                                                                                                                   depends_on 'glib' # R
+  depends_on 'at_spi2_core' # R
   depends_on 'cairo' # R
   depends_on 'dconf' # R
   depends_on 'exempi' # R
@@ -29,6 +29,7 @@ class Caja < Autotools
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gtk3' # R
+  depends_on 'gtk_layer_shell' # R
   depends_on 'gvfs' => :build
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
@@ -49,9 +50,11 @@ class Caja < Autotools
   depends_on 'mate_desktop' # R
   depends_on 'pango' # R
   depends_on 'util_linux' # R
+  depends_on 'wayland' # R
   depends_on 'zlibpkg' # R
 
-  def self.postinstall
-    system "glib-compile-schemas #{CREW_PREFIX}/share/glib-2.0/schemas"
-  end
+  gnome
+
+  configure_options '--enable-wayland'
+
 end

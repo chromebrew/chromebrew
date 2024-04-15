@@ -5,14 +5,15 @@ require_relative 'package_helpers'
 require_relative 'selector'
 
 class Package
+  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
+                   :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
+                   :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :print_source_bashrc, :run_tests
+
+  @boolean_properties = methods(false).join(',').gsub('?', '').split(',').sort.uniq.join(', ')
+
   property :description, :homepage, :version, :license, :compatibility,
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag, :min_glibc
-
-  boolean_property :arch_flags_override, :conflicts_ok, :git_clone_deep, :git_fetchtags, :gnome, :is_fake, :is_musl, :is_static,
-                   :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules,
-                   :no_links, :no_lto, :no_patchelf, :no_shrink, :no_strip, :no_zstd, :patchelf,
-                   :print_source_bashrc, :run_tests
 
   create_placeholder :preflight,   # Function for checks to see if install should occur.
                      :patch,       # Function to perform patch operations prior to build from source.
@@ -25,6 +26,10 @@ class Package
                      :postinstall, # Function to perform post-install for both source build and binary distribution.
                      :preremove,   # Function to perform prior to package removal.
                      :remove       # Function to perform after package removal.
+
+  def self.print_boolean_properties
+    return @boolean_properties
+  end
 
   class << self
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
@@ -145,15 +150,6 @@ class Package
     end
   end
 
-  def self.compatible?
-    if @compatibility
-      return @compatibility.casecmp?('all') || @compatibility.include?(ARCH)
-    else
-      warn "#{name}: Missing `compatibility` field.".lightred
-      return false
-    end
-  end
-
   def self.depends_on(dependency, ver_range = nil)
     @dependencies ||= {}
     ver_check = nil
@@ -196,36 +192,6 @@ class Package
 
     @dependencies.store(dep_name, [dep_tags, ver_check])
   end
-
-  def self.get_url(architecture)
-    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-      return get_binary_url(architecture)
-    elsif @source_url.respond_to?(:has_key?)
-      return @source_url.key?(architecture) ? @source_url[architecture] : nil
-    else
-      return @source_url
-    end
-  end
-
-  def self.get_binary_url(architecture)
-    architecture = 'armv7l' if architecture == 'aarch64'
-    return "https://gitlab.com/api/v4/projects/26210301/packages/generic/#{name}/#{version}_#{architecture}/#{name}-#{version}-chromeos-#{architecture}.#{binary_compression}"
-  end
-
-  def self.get_source_url(architecture) = @source_url.key?(architecture) ? @source_url[architecture] : nil
-
-  def self.get_sha256(architecture)
-    if !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
-      return @binary_sha256[architecture]
-    elsif @source_sha256.respond_to?(:has_key?)
-      return @source_sha256.key?(architecture) ? @source_sha256[architecture] : nil
-    else
-      return @source_sha256
-    end
-  end
-
-  def self.get_binary_sha256(architecture) = @binary_sha256&.key?(architecture) ? @binary_sha256[architecture] : ''
-  def self.get_extract_dir = "#{name}.#{Time.now.utc.strftime('%Y%m%d%H%M%S')}.dir"
 
   def self.binary?(architecture) = !@build_from_source && @binary_sha256 && @binary_sha256.key?(architecture)
   def self.source?(architecture) = !(binary?(architecture) || is_fake?)

@@ -8,7 +8,7 @@ class Glmark2 < Package
   homepage 'https://github.com/glmark2/glmark2'
   version '2021.12-9057c05'
   license 'GPL-3'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/glmark2/glmark2/archive/9057c056b6e72d156c0bc7e4b52658e155760222.zip'
   source_sha256 'fd37e6360f03f8ffcd236eb39ee1cb42c487edd0418441c22e375ec5e499297d'
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Glmark2 < Package
   binary_sha256({
     aarch64: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
      armv7l: '6faaae26b628926374967d5a9b77e0e137af8403608c3a2eb191807b140a2418',
-       i686: 'e1104ae684d7257691eb2c19e556e2547edd8ba464e58634105aeb62a35cb57c',
      x86_64: '8343d0404f69f2b1e064fdd7d8c4675bd2600b8d30cbb6cdaae99f207a6594e3'
   })
 

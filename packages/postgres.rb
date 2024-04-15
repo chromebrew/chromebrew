@@ -3,18 +3,17 @@ require 'package'
 class Postgres < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
   homepage 'https://www.postgresql.org/'
-  version '16.1'
+  version '16.2'
   license 'PostgreSQL and GPL-2'
-  compatibility 'all'
-  source_url 'https://ftp.postgresql.org/pub/source/v16.1/postgresql-16.1.tar.bz2'
-  source_sha256 'ce3c4d85d19b0121fe0d3f8ef1fa601f71989e86f8a66f7dc3ad546dd5564fec'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://ftp.postgresql.org/pub/source/v16.2/postgresql-16.2.tar.bz2'
+  source_sha256 '446e88294dbc2c9085ab4b7061a646fa604b4bec03521d5ea671c2e5ad9b2952'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b4b1f8792cbf30805033648567e0a4a873a1ab14fa32260466e714b11e12d72e',
-     armv7l: 'b4b1f8792cbf30805033648567e0a4a873a1ab14fa32260466e714b11e12d72e',
-       i686: '501a3a528759ce1a8ed341f9e8099ca26c591274cb7764907dbb5ba04cb629dd',
-     x86_64: '65d915bea48812de8ae2f5aa16bb280b34edd082e60478a34ad8eddb80a29b6a'
+    aarch64: '14db30417e4b2ce3ccdef5ab1db9cab35ea40ef791b2e7f8d4c0f606b927a5c2',
+     armv7l: '14db30417e4b2ce3ccdef5ab1db9cab35ea40ef791b2e7f8d4c0f606b927a5c2',
+     x86_64: '7e61c80eeea5c1a7367d46ec04bfad0f91ee8e122931317b2c7c88d75358c14b'
   })
 
   depends_on 'brotli' => :build
@@ -26,8 +25,8 @@ class Postgres < Package
   depends_on 'libcyrussasl' => :build
   depends_on 'libxml2' # R
   depends_on 'linux_pam' # R
-  depends_on 'llvm17_dev' => :build
-  depends_on 'llvm17_lib' # R
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R
   depends_on 'lz4' # R
   depends_on 'openldap' # R
   depends_on 'openssl' # R

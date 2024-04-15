@@ -1,7 +1,7 @@
 /usr/local/include/EGL/eglext_angle.h
 /usr/local/include/EGL/eglmesaext.h
-/usr/local/include/gbm.h
 /usr/local/include/GL/internal/dri_interface.h
+/usr/local/include/gbm.h
 /usr/local/include/xa_composite.h
 /usr/local/include/xa_context.h
 /usr/local/include/xa_tracker.h
@@ -58,15 +58,15 @@
 /usr/local/lib/libEGL_mesa.so
 /usr/local/lib/libEGL_mesa.so.0
 /usr/local/lib/libEGL_mesa.so.0.0.0
+/usr/local/lib/libGLX_mesa.so
+/usr/local/lib/libGLX_mesa.so.0
+/usr/local/lib/libGLX_mesa.so.0.0.0
 /usr/local/lib/libgbm.so
 /usr/local/lib/libgbm.so.1
 /usr/local/lib/libgbm.so.1.0.0
 /usr/local/lib/libglapi.so
 /usr/local/lib/libglapi.so.0
 /usr/local/lib/libglapi.so.0.0.0
-/usr/local/lib/libGLX_mesa.so
-/usr/local/lib/libGLX_mesa.so.0
-/usr/local/lib/libGLX_mesa.so.0.0.0
 /usr/local/lib/liblua.so
 /usr/local/lib/liblua.so.5.4
 /usr/local/lib/liblua.so.5.4.6

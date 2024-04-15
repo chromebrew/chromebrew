@@ -1,54 +1,44 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gcr_3 < Package
+class Gcr_3 < Meson
   description 'GNOME crypto package'
   homepage 'https://www.gnome.org'
-  version '3.41.1'
+  version '3.41.2'
   license 'GPL-2+ and LGPL-2+'
-  compatibility 'all'
-  source_url "https://gitlab.gnome.org/GNOME/gcr/-/archive/#{version}/gcr-#{version}.tar.bz2"
-  source_sha256 '7e06e86e12aadaac6a72f2ee7eeaaaa6228a0ba3b92cadd50b45c0f05f0d91c6'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://gitlab.gnome.org/GNOME/gcr.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6b2d4cffaf3de2994d1a8f5f7a3b466dc723ef2236761f2753c1e2feeb3fc671',
-     armv7l: '6b2d4cffaf3de2994d1a8f5f7a3b466dc723ef2236761f2753c1e2feeb3fc671',
-       i686: '21a4bdffdf2b27460cf353e48a2fbbfb1936f1fff333cb7d131c9f4ac28391dd',
-     x86_64: '8af250461b9f5ea95b3198ffb6cb1474b2e0fd7c9571e84420548dd5b10ed7c3'
+    aarch64: 'f6b12260cf56027ae63abbc3bef251b856a86225dfa0201fc000447a5d630e6d',
+     armv7l: 'f6b12260cf56027ae63abbc3bef251b856a86225dfa0201fc000447a5d630e6d',
+     x86_64: '4b4ee7084cea205e445117d7dd673f1552b03b33ee95012f566d0920c0ca9216'
   })
 
-  depends_on 'cairo'
-  depends_on 'desktop_file_utilities'
-  depends_on 'gdk_pixbuf'
-  depends_on 'glib'
-  depends_on 'gnupg'
-  depends_on 'graphite'
-  depends_on 'gtk3'
-  depends_on 'hicolor_icon_theme'
-  depends_on 'libgcrypt'
-  depends_on 'libjpeg'
-  depends_on 'libsecret'
-  depends_on 'libxslt'
-  depends_on 'pango'
+  depends_on 'cairo' # R
+  depends_on 'desktop_file_utilities' => :build
+  depends_on 'gcc_lib' # R
+  depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
+  depends_on 'glib' # R
+  depends_on 'gnupg' => :build
+  depends_on 'graphite' => :build
+  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
+  depends_on 'harfbuzz' # R
+  depends_on 'hicolor_icon_theme' => :build
+  depends_on 'libgcrypt' # R
+  depends_on 'libjpeg' => :build
+  depends_on 'libsecret' # R
+  depends_on 'libxslt' => :build
+  depends_on 'p11kit' # R
+  depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'vulkan_headers' => :build
-  depends_on 'glibc' # R
-  depends_on 'gtk4' # R
-  depends_on 'p11kit' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'harfbuzz' # R
 
   conflicts_ok # expected conflicts with gcr_4
+  gnome
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dgtk_doc=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Dgtk_doc=false'
 end

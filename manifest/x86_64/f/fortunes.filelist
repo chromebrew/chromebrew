@@ -1,3 +1,4 @@
+/usr/local/share/games/fortunes/Makefile
 /usr/local/share/games/fortunes/art
 /usr/local/share/games/fortunes/ascii-art
 /usr/local/share/games/fortunes/computers
@@ -20,7 +21,6 @@
 /usr/local/share/games/fortunes/literature
 /usr/local/share/games/fortunes/love
 /usr/local/share/games/fortunes/magic
-/usr/local/share/games/fortunes/Makefile
 /usr/local/share/games/fortunes/medicine
 /usr/local/share/games/fortunes/men-women
 /usr/local/share/games/fortunes/miscellaneous

@@ -21,8 +21,6 @@ class Pkgconfig < Package
   depends_on 'glibc' # R
 
   def self.build
-    raise StandardError, 'Please remove libiconv before building.' if File.exist?("#{CREW_LIB_PREFIX}/libcharset.so")
-
     # As per https://gitlab.gnome.org/GNOME/glib/-/issues/1159
     # To fix broken check-print-options test
     system "sed -i '/glib-gettext.m4/d' glib/acinclude.m4"

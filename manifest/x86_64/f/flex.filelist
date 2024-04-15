@@ -5,7 +5,6 @@
 /usr/local/lib64/libfl.so
 /usr/local/lib64/libfl.so.2
 /usr/local/lib64/libfl.so.2.0.0
-/usr/local/lib64/pkgconfig/libfl.pc
 /usr/local/share/doc/flex/AUTHORS
 /usr/local/share/doc/flex/COPYING
 /usr/local/share/doc/flex/NEWS
@@ -14,7 +13,6 @@
 /usr/local/share/info/flex.info-1.zst
 /usr/local/share/info/flex.info-2.zst
 /usr/local/share/info/flex.info.zst
-/usr/local/share/locale/bg/LC_MESSAGES/flex.mo
 /usr/local/share/locale/ca/LC_MESSAGES/flex.mo
 /usr/local/share/locale/da/LC_MESSAGES/flex.mo
 /usr/local/share/locale/de/LC_MESSAGES/flex.mo
@@ -30,13 +28,11 @@
 /usr/local/share/locale/nl/LC_MESSAGES/flex.mo
 /usr/local/share/locale/pl/LC_MESSAGES/flex.mo
 /usr/local/share/locale/pt_BR/LC_MESSAGES/flex.mo
-/usr/local/share/locale/pt/LC_MESSAGES/flex.mo
 /usr/local/share/locale/ro/LC_MESSAGES/flex.mo
 /usr/local/share/locale/ru/LC_MESSAGES/flex.mo
 /usr/local/share/locale/sr/LC_MESSAGES/flex.mo
 /usr/local/share/locale/sv/LC_MESSAGES/flex.mo
 /usr/local/share/locale/tr/LC_MESSAGES/flex.mo
-/usr/local/share/locale/uk/LC_MESSAGES/flex.mo
 /usr/local/share/locale/vi/LC_MESSAGES/flex.mo
 /usr/local/share/locale/zh_CN/LC_MESSAGES/flex.mo
 /usr/local/share/locale/zh_TW/LC_MESSAGES/flex.mo

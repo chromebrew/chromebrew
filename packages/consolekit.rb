@@ -5,7 +5,7 @@ class Consolekit < Package
   homepage 'https://github.com/ConsoleKit2/ConsoleKit2'
   version '1.2.2'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/ConsoleKit2/ConsoleKit2/archive/#{version}.tar.gz"
   source_sha256 '104fd9f41c2d572ad62f4032de46c4c384c3522602b0ad953cf55759c6c64c1d'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Consolekit < Package
   binary_sha256({
     aarch64: '4b9173ec6798adc23824c4189a050744b888de6b58d60442d1ec89bf0df81443',
      armv7l: '4b9173ec6798adc23824c4189a050744b888de6b58d60442d1ec89bf0df81443',
-       i686: '2c4ab4d6ff0790b619db2c7093712a0100c5bdb9f3e43c50877b9781215faeb4',
      x86_64: '61b5b664b28cc6f5ce61d4065849ff8ebf1ac612140686c9178ef9b915fb3372'
   })
 

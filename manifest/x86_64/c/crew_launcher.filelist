@@ -1,5 +1,6 @@
 /usr/local/bin/crew-launcher
 /usr/local/etc/env.d/crew_launcher
+/usr/local/share/crew-launcher/README.md
 /usr/local/share/crew-launcher/icon/brew.png
 /usr/local/share/crew-launcher/lib/color.rb
 /usr/local/share/crew-launcher/lib/const.rb
@@ -13,7 +14,6 @@
 /usr/local/share/crew-launcher/pwa/installer.js
 /usr/local/share/crew-launcher/pwa/style.js
 /usr/local/share/crew-launcher/pwa/sw.js
-/usr/local/share/crew-launcher/README.md
+/usr/local/share/crew-launcher/screenshot/README.md
 /usr/local/share/crew-launcher/screenshot/dock.png
 /usr/local/share/crew-launcher/screenshot/launcher.png
-/usr/local/share/crew-launcher/screenshot/README.md

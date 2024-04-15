@@ -5,7 +5,7 @@ class Jasper < Package
   homepage 'https://www.ece.uvic.ca/~frodo/jasper/'
   version '3.0.6'
   license 'JasPer-2.0'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/jasper-software/jasper.git'
   git_hashtag "version-#{version}"
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Jasper < Package
   binary_sha256({
     aarch64: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
      armv7l: '7869ef04d5dab7ba48e2c240fa04cb74ea7a2408e0d33a5330ba65b606d519f7',
-       i686: '99b928de2e3b4132d8c5a28dc80fd10db79fe32d3710a013e2b504238b39a10a',
      x86_64: 'f7037e21cbcabd82eca2c8382fff9af133db731de5e31b8739eddae727fbfa89'
   })
 

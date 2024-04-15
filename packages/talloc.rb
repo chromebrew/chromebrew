@@ -6,19 +6,19 @@ require 'package'
 class Talloc < Package
   description 'Hierarchical pool based memory allocator with destructors'
   homepage 'https://talloc.samba.org/'
-  @_ver = '2.4.1'
+  @_ver = '2.4.2'
   version "#{@_ver}-py3.12"
   license 'LGPL'
   compatibility 'all'
   source_url "https://www.samba.org/ftp/talloc/talloc-#{@_ver}.tar.gz"
-  source_sha256 '410a547f08557007be0e88194f218868358edc0ab98c98ba8c167930db3d33f9'
+  source_sha256 '85ecf9e465e20f98f9950a52e9a411e14320bc555fa257d87697b7e7a9b1d8a6'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a529ad100187f9ec5d7646d18dfb6ea8232748399007f84a053651443063c35d',
-     armv7l: 'a529ad100187f9ec5d7646d18dfb6ea8232748399007f84a053651443063c35d',
-       i686: '0f5fce2f0c8c5e4109241ae40b73312dd9995888a200a44c7ce04bfb10096974',
-     x86_64: '2c549eaadd8029a4ad1a715ac0fae3ede35ed41f3ed7447094237fcb2c01a75d'
+    aarch64: '5ee5aeb4503273f040e9eafaed78c165483104bb4094388bbb30c73f81ed1aac',
+     armv7l: '5ee5aeb4503273f040e9eafaed78c165483104bb4094388bbb30c73f81ed1aac',
+       i686: 'd8c78c96bbf613563a33e67c9c596ab7dd52d6674f637a011d5eaa990928bcda',
+     x86_64: 'b5a52d24807c58504aca03626a5d2964ef4834250b0b7ad817997b88214e1376'
   })
 
   depends_on 'docbook_xsl' => :build

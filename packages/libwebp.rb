@@ -38,6 +38,8 @@ class Libwebp < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
+  gnome
+
   def self.build
     system "cmake \
       -B builddir -G Ninja \
@@ -49,12 +51,5 @@ class Libwebp < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
   end
 end

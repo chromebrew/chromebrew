@@ -37,10 +37,10 @@
 /usr/local/share/man/man3/mnl_attr_put_u8.3.zst
 /usr/local/share/man/man3/mnl_attr_put_u8_check.3.zst
 /usr/local/share/man/man3/mnl_attr_type_valid.3.zst
-/usr/local/share/man/man3/mnl_attr_validate2.3.zst
 /usr/local/share/man/man3/mnl_attr_validate.3.zst
-/usr/local/share/man/man3/mnl_cb_run2.3.zst
+/usr/local/share/man/man3/mnl_attr_validate2.3.zst
 /usr/local/share/man/man3/mnl_cb_run.3.zst
+/usr/local/share/man/man3/mnl_cb_run2.3.zst
 /usr/local/share/man/man3/mnl_nlmsg_batch_current.3.zst
 /usr/local/share/man/man3/mnl_nlmsg_batch_head.3.zst
 /usr/local/share/man/man3/mnl_nlmsg_batch_is_empty.3.zst
@@ -67,8 +67,8 @@
 /usr/local/share/man/man3/mnl_socket_get_fd.3.zst
 /usr/local/share/man/man3/mnl_socket_get_portid.3.zst
 /usr/local/share/man/man3/mnl_socket_getsockopt.3.zst
-/usr/local/share/man/man3/mnl_socket_open2.3.zst
 /usr/local/share/man/man3/mnl_socket_open.3.zst
+/usr/local/share/man/man3/mnl_socket_open2.3.zst
 /usr/local/share/man/man3/mnl_socket_recvfrom.3.zst
 /usr/local/share/man/man3/mnl_socket_sendto.3.zst
 /usr/local/share/man/man3/mnl_socket_setsockopt.3.zst

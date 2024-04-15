@@ -1,7 +1,7 @@
 /usr/local/bin/mtdev-test
-/usr/local/include/mtdev.h
 /usr/local/include/mtdev-mapping.h
 /usr/local/include/mtdev-plumbing.h
+/usr/local/include/mtdev.h
 /usr/local/lib/libmtdev.la
 /usr/local/lib/libmtdev.so
 /usr/local/lib/libmtdev.so.1

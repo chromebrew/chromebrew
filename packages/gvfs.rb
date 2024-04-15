@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Gvfs < Package
+class Gvfs < Meson
   description 'Virtual filesystem implementation for GIO'
   homepage 'https://wiki.gnome.org/Projects/gvfs'
-  version '1.50.4'
+  version '1.54.0'
   license 'GPLv2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/gvfs.git'
@@ -11,9 +11,9 @@ class Gvfs < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '4fb1df08690c8023ef4c8e5394256173398024567bc00d926dce0440d39539b0',
-     armv7l: '4fb1df08690c8023ef4c8e5394256173398024567bc00d926dce0440d39539b0',
-     x86_64: '02138741190ca5e80f5283a1f4e7d57a44e5e1222f33c14a04abdc8f5333e54b'
+    aarch64: '4d61f624b27f9ae4ba91296fbe6646f7a076fd1e6a19ae7104e3fadff5afe491',
+     armv7l: '4d61f624b27f9ae4ba91296fbe6646f7a076fd1e6a19ae7104e3fadff5afe491',
+     x86_64: 'f744e878e93ef167663a59f2bed8c69dc77544ba35fe3b32d33752ff623417d8'
   })
 
   depends_on 'avahi' # R
@@ -22,8 +22,8 @@ class Gvfs < Package
   depends_on 'docbook_xsl' => :build
   depends_on 'elogind' => :build
   depends_on 'fuse3' # R
-  depends_on 'gcc_lib' # R
-  depends_on 'gcr_3' # R
+  depends_on 'gcc_lib' => :build
+  depends_on 'gcr_4' # R
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gtk3' => :build
@@ -38,27 +38,20 @@ class Gvfs < Package
   depends_on 'libnfs' # R
   depends_on 'libplist' # R
   depends_on 'libsecret' # R
-  depends_on 'libsoup2' # R
+  depends_on 'libsoup2' => :build
   depends_on 'libsoup' # R
   depends_on 'libxml2' # R
   depends_on 'polkit' # R
   depends_on 'smbclient' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dfuse=true \
+  gnome
+
+  meson_options '-Dfuse=true \
     -Dgoa=false \
     -Dgoogle=false \
     -Dmtp=false \
+    -Donedrive=false \
     -Dsystemduserunitdir=no \
     -Dtmpfilesdir=no \
-    -Dudisks2=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+    -Dudisks2=false'
 end

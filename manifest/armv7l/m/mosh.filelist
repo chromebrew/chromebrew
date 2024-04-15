@@ -1,6 +1,6 @@
 /usr/local/bin/mosh
 /usr/local/bin/mosh-client
 /usr/local/bin/mosh-server
-/usr/local/share/man/man1/mosh.1.gz
 /usr/local/share/man/man1/mosh-client.1.gz
 /usr/local/share/man/man1/mosh-server.1.gz
+/usr/local/share/man/man1/mosh.1.gz

@@ -16,6 +16,9 @@ Dir.chdir CREW_LIB_PATH do
   system 'git sparse-checkout reapply'
 end
 
+# Rename the binary_sha256 variable to sha256 in the device.json file
+system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device.json')}")
+
 # Check for renamed and deprecated packages, and handle them.
 
 pkg_update_arr = [
@@ -26,9 +29,14 @@ pkg_update_arr = [
   { pkg_name: 'bz2', pkg_rename: 'bzip2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'bz3', pkg_rename: 'bzip3', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
   { pkg_name: 'codium', pkg_rename: 'vscodium', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
+  { pkg_name: 'gnome_session', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
+  { pkg_name: 'gnome_settings_daemon', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
+  { pkg_name: 'gnome_shell', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
+  { pkg_name: 'gnome_tweaks', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.' },
   { pkg_name: 'ilmbase', pkg_rename: nil, pkg_deprecated: true, comments: 'Included in openexr.' },
   { pkg_name: 'js91', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by newer versions of js.' },
   { pkg_name: 'libcurl', pkg_rename: 'curl', pkg_deprecated: nil, comments: nil },
+  { pkg_name: 'libmfx', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture' },
   { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', pkg_deprecated: nil, comments: 'Renamed to match other pip packages.' },
   { pkg_name: 'meson', pkg_rename: 'mesonbuild', pkg_deprecated: nil, comments: 'Renamed to avoid conflict with buildsystems/meson.' },
   { pkg_name: 'qtbase', pkg_rename: 'qt5_base', pkg_deprecated: nil, comments: 'Qt packages renamed to qt5_*' },
@@ -123,14 +131,14 @@ pkg_update_arr.each do |pkg|
   print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
   case $stdin.gets.chomp.downcase
   when 'y', 'yes'
-    @in_fixup = true
-    begin
-      remove pkg[:pkg_name]
-    rescue NoMethodError # This won't work the first time crew update happens, since this requires an update to crew.
-      puts "Please rerun 'crew update' to allow for removal of #{pkg[:pkg_name].capitalize}.".orange
-      puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
+    # Create a minimal Package object and pass it to Command.remove
+    pkg_object = Package
+    pkg_object.instance_eval do
+      self.name = pkg[:pkg_name]
+      def self.preremove; end
+      def self.remove; end
     end
-    @in_fixup = false
+    Command.remove(pkg_object, @opt_verbose)
   else
     puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
   end
@@ -153,3 +161,5 @@ unless @new_const_git_commit == CREW_CONST_GIT_COMMIT
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
 
+# Remove pagerenv tmp file in CREW_PACKAGES_PATH if it exists
+FileUtils.rm "#{CREW_PACKAGES_PATH}/pagerenv" if File.file?("#{CREW_PACKAGES_PATH}/pagerenv")

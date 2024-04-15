@@ -1,3 +1,4 @@
+/usr/local/bin/idevice_id
 /usr/local/bin/idevicebackup
 /usr/local/bin/idevicebackup2
 /usr/local/bin/idevicecrashreport
@@ -6,7 +7,6 @@
 /usr/local/bin/idevicedebugserverproxy
 /usr/local/bin/idevicediagnostics
 /usr/local/bin/ideviceenterrecovery
-/usr/local/bin/idevice_id
 /usr/local/bin/ideviceimagemounter
 /usr/local/bin/ideviceinfo
 /usr/local/bin/idevicename
@@ -27,10 +27,10 @@
 /usr/local/include/libimobiledevice/libimobiledevice.h
 /usr/local/include/libimobiledevice/lockdown.h
 /usr/local/include/libimobiledevice/misagent.h
-/usr/local/include/libimobiledevice/mobileactivation.h
-/usr/local/include/libimobiledevice/mobilebackup2.h
-/usr/local/include/libimobiledevice/mobilebackup.h
 /usr/local/include/libimobiledevice/mobile_image_mounter.h
+/usr/local/include/libimobiledevice/mobileactivation.h
+/usr/local/include/libimobiledevice/mobilebackup.h
+/usr/local/include/libimobiledevice/mobilebackup2.h
 /usr/local/include/libimobiledevice/mobilesync.h
 /usr/local/include/libimobiledevice/notification_proxy.h
 /usr/local/include/libimobiledevice/preboard.h
@@ -47,6 +47,7 @@
 /usr/local/lib/libimobiledevice-1.0.so.6
 /usr/local/lib/libimobiledevice-1.0.so.6.0.0
 /usr/local/lib/pkgconfig/libimobiledevice-1.0.pc
+/usr/local/share/man/man1/idevice_id.1.gz
 /usr/local/share/man/man1/idevicebackup.1.gz
 /usr/local/share/man/man1/idevicebackup2.1.gz
 /usr/local/share/man/man1/idevicecrashreport.1.gz
@@ -55,7 +56,6 @@
 /usr/local/share/man/man1/idevicedebugserverproxy.1.gz
 /usr/local/share/man/man1/idevicediagnostics.1.gz
 /usr/local/share/man/man1/ideviceenterrecovery.1.gz
-/usr/local/share/man/man1/idevice_id.1.gz
 /usr/local/share/man/man1/ideviceimagemounter.1.gz
 /usr/local/share/man/man1/ideviceinfo.1.gz
 /usr/local/share/man/man1/idevicename.1.gz

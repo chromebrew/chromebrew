@@ -3,7 +3,7 @@ require 'package'
 class Buildessential < Package
   description 'A collection of tools essential to compile and build software.'
   homepage 'SKIP'
-  version '1.30'
+  version '1.32'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -103,8 +103,8 @@ class Buildessential < Package
 
   # LLVM
   # This can be pulled in on a per-package basis...
-  # depends_on 'llvm17_dev'
-  depends_on 'llvm17_lib' # This provides llvm-strip
+  # depends_on 'llvm18_dev'
+  depends_on 'llvm18_lib' # This provides llvm-strip
 
   # Meson build system
   depends_on 'mesonbuild'
@@ -174,4 +174,7 @@ class Buildessential < Package
   depends_on 'ruby_rubocop'
   # Add ruby_concurrent_ruby
   depends_on 'ruby_concurrent_ruby'
+
+  # Add bash to stop bash_completion from complaining
+  depends_on 'bash'
 end

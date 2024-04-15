@@ -5,7 +5,7 @@ class Libxvmc < Package
   homepage 'https://www.x.org'
   version '1.0.13'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://gitlab.freedesktop.org/xorg/lib/libxvmc/-/archive/libXvMC-#{version}/libxvmc-libXvMC-#{version}.tar.gz"
   source_sha256 '58a1766176947ec41cf44c917d831db5d619fec11f99637d6deca45458e9829b'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxvmc < Package
   binary_sha256({
     aarch64: 'fd33a7a2d68eeb1526c3d7e69f57d003f8d94fd0ac4b48e8cf842ec65961e70c',
      armv7l: 'fd33a7a2d68eeb1526c3d7e69f57d003f8d94fd0ac4b48e8cf842ec65961e70c',
-       i686: '4495ace012bc8611229c72ea0c0dbf49b7888cfecadd37dfbd7517cb12bf890f',
      x86_64: '47ce9336e23acf5f44f06501a411a8e79a853b41c746f2fc368f55b0903130fc'
   })
 

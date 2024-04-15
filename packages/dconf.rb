@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Dconf < Package
+class Dconf < Meson
   description 'The DConf package contains a low-level configuration system.'
   homepage 'https://wiki.gnome.org/Projects/dconf'
   version '0.40.0'
@@ -23,14 +23,5 @@ class Dconf < Package
   depends_on 'vala' => :build
   depends_on 'bash_completion' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  gnome
 end

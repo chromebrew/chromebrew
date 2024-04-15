@@ -5,7 +5,7 @@ class Font_adobe_utopia_75dpi < Package
   homepage 'https://xorg.freedesktop.org/'
   version '1.0.4'
   license 'custom'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/font/font-adobe-utopia-75dpi-1.0.4.tar.bz2'
   source_sha256 '8732719c61f3661c8bad63804ebfd54fc7de21ab848e9a26a19b1778ef8b5c94'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Font_adobe_utopia_75dpi < Package
   binary_sha256({
     aarch64: 'ee884c5a84f8ac67386a692ea8b67066d89474c11f856332c8d35b7a82d7a237',
      armv7l: 'ee884c5a84f8ac67386a692ea8b67066d89474c11f856332c8d35b7a82d7a237',
-       i686: '0c5cd71a68340ed2adc6632c36f5b856ca83b71a818f67495142da39abd1c84a',
      x86_64: '8a3b3ac148eb5ebb421602ac50532db7969de14969cf0bd30c0714f30bcc0213'
   })
 

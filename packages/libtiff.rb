@@ -37,6 +37,7 @@ class Libtiff < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
+  gnome
   no_env_options
 
   def self.build
@@ -59,12 +60,5 @@ class Libtiff < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     # Remove static library.
     FileUtils.rm "#{CREW_DEST_LIB_PREFIX}/libtiff.a"
-  end
-
-  def self.postinstall
-    return unless File.exist?("#{CREW_PREFIX}/bin/gdk-pixbuf-query-loaders")
-
-    system 'gdk-pixbuf-query-loaders',
-           '--update-cache'
   end
 end

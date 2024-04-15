@@ -1,7 +1,7 @@
 /usr/local/include/totem-pl-parser/1/plparser/totem-pl-parser-builtins.h
 /usr/local/include/totem-pl-parser/1/plparser/totem-pl-parser-features.h
-/usr/local/include/totem-pl-parser/1/plparser/totem-pl-parser.h
 /usr/local/include/totem-pl-parser/1/plparser/totem-pl-parser-mini.h
+/usr/local/include/totem-pl-parser/1/plparser/totem-pl-parser.h
 /usr/local/include/totem-pl-parser/1/plparser/totem-pl-playlist.h
 /usr/local/lib64/girepository-1.0/TotemPlParser-1.0.typelib
 /usr/local/lib64/libtotem-plparser-mini.so
@@ -21,11 +21,11 @@
 /usr/local/share/locale/as/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ast/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/az/LC_MESSAGES/totem-pl-parser.mo
-/usr/local/share/locale/be@latin/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/be/LC_MESSAGES/totem-pl-parser.mo
+/usr/local/share/locale/be@latin/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/bg/LC_MESSAGES/totem-pl-parser.mo
-/usr/local/share/locale/bn_IN/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/bn/LC_MESSAGES/totem-pl-parser.mo
+/usr/local/share/locale/bn_IN/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/bs/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ca/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ca@valencia/LC_MESSAGES/totem-pl-parser.mo
@@ -36,9 +36,9 @@
 /usr/local/share/locale/de/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/dz/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/el/LC_MESSAGES/totem-pl-parser.mo
+/usr/local/share/locale/en@shaw/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/en_CA/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/en_GB/LC_MESSAGES/totem-pl-parser.mo
-/usr/local/share/locale/en@shaw/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/eo/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/es/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/et/LC_MESSAGES/totem-pl-parser.mo
@@ -85,8 +85,8 @@
 /usr/local/share/locale/pa/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/pl/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ps/LC_MESSAGES/totem-pl-parser.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/pt/LC_MESSAGES/totem-pl-parser.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ro/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ru/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/rw/LC_MESSAGES/totem-pl-parser.mo
@@ -94,8 +94,8 @@
 /usr/local/share/locale/sk/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/sl/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/sq/LC_MESSAGES/totem-pl-parser.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/sr/LC_MESSAGES/totem-pl-parser.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/sv/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/ta/LC_MESSAGES/totem-pl-parser.mo
 /usr/local/share/locale/te/LC_MESSAGES/totem-pl-parser.mo

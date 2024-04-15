@@ -30,7 +30,9 @@ class Gcc_dev < Package
   depends_on 'mpfr' # R
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
+
   no_shrink
+  no_source_build
   no_strip
 
   def self.install

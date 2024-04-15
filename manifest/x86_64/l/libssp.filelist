@@ -4,8 +4,8 @@
 /usr/local/lib64/gcc/x86_64-cros-linux-gnu/13/include/ssp/unistd.h
 /usr/local/lib64/libssp.a
 /usr/local/lib64/libssp.la
-/usr/local/lib64/libssp_nonshared.a
-/usr/local/lib64/libssp_nonshared.la
 /usr/local/lib64/libssp.so
 /usr/local/lib64/libssp.so.0
 /usr/local/lib64/libssp.so.0.0.0
+/usr/local/lib64/libssp_nonshared.a
+/usr/local/lib64/libssp_nonshared.la

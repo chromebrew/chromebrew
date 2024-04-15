@@ -5,7 +5,7 @@ class Libxpresent < Package
   homepage 'https://cgit.freedesktop.org/xorg/lib/libXpresent/'
   version '1.0.1'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://www.x.org/releases/individual/lib/libXpresent-1.0.1.tar.xz'
   source_sha256 'b964df9e5a066daa5e08d2dc82692c57ca27d00b8cc257e8e960c9f1cf26231b'
   binary_compression 'tar.zst'
@@ -13,7 +13,6 @@ class Libxpresent < Package
   binary_sha256({
     aarch64: 'cdda664576c7628d3bdae2d374ba46492c9cd9f5aadfcefa0c84592439c59cbc',
      armv7l: 'cdda664576c7628d3bdae2d374ba46492c9cd9f5aadfcefa0c84592439c59cbc',
-       i686: '6c1983ef7376e615e2ceda7983f8f97c973653375d16ab484168066f3529f7dc',
      x86_64: '71ae88c52f3316a543ec7c6a77958151c77f0aea4020a976468a60be305670a9'
   })
 

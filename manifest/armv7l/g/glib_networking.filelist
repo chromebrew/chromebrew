@@ -1,8 +1,8 @@
-/usr/local/libexec/glib-pacrunner
 /usr/local/lib/gio/modules/libgiognomeproxy.so
 /usr/local/lib/gio/modules/libgiognutls.so
 /usr/local/lib/gio/modules/libgiolibproxy.so
 /usr/local/lib/systemd/user/glib-pacrunner.service
+/usr/local/libexec/glib-pacrunner
 /usr/local/share/dbus-1/services/org.gtk.GLib.PACRunner.service
 /usr/local/share/locale/ab/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/an/LC_MESSAGES/glib-networking.mo
@@ -55,14 +55,14 @@
 /usr/local/share/locale/or/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/pa/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/pl/LC_MESSAGES/glib-networking.mo
-/usr/local/share/locale/pt_BR/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/pt/LC_MESSAGES/glib-networking.mo
+/usr/local/share/locale/pt_BR/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ro/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ru/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/sk/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/sl/LC_MESSAGES/glib-networking.mo
-/usr/local/share/locale/sr@latin/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/sr/LC_MESSAGES/glib-networking.mo
+/usr/local/share/locale/sr@latin/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/sv/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/ta/LC_MESSAGES/glib-networking.mo
 /usr/local/share/locale/te/LC_MESSAGES/glib-networking.mo

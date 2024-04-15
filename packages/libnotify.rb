@@ -1,37 +1,30 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Libnotify < Package
+class Libnotify < Meson
   description 'A library for sending desktop notifications.'
   homepage 'https://git.gnome.org/browse/libnotify'
-  version '0.8.1'
+  version '0.8.3'
   license 'LGPL-2.1+'
-  compatibility 'all'
-  source_url "https://github.com/GNOME/libnotify/archive/#{version}.tar.gz"
-  source_sha256 '7c0b252edecbf08db50d775f9e720ecc03c742fb97c25f3966a8b7a4bedf8133'
+  compatibility 'x86_64 aarch64 armv7l'
+  source_url 'https://github.com/GNOME/libnotify.git'
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bff49fc3b4241e28454b3b2de0a5fc0a63eeda9d7b33211e14e6edf1d4ee81e4',
-     armv7l: 'bff49fc3b4241e28454b3b2de0a5fc0a63eeda9d7b33211e14e6edf1d4ee81e4',
-       i686: 'b2d008a6f2953b66605d75b55c688b0c80bab3c53f89fab8cc64f35fa8866153',
-     x86_64: '87df4130086c957b893d67dc6833efdb37d8b8c7470dc0e26c3f70657d2e37b4'
+    aarch64: '35a9e95ee6a51d9558976463f93a6914ba41068ad6c9e1227d2f391ae9856039',
+     armv7l: '35a9e95ee6a51d9558976463f93a6914ba41068ad6c9e1227d2f391ae9856039',
+     x86_64: '5ae60181f7b6635d92cca1096faa9ac99b7c8ffd9aaacf56e05fe703366427ba'
   })
 
   depends_on 'gdk_pixbuf' # R
+  depends_on 'glibc' # R
   depends_on 'glib' # R
+  depends_on 'gobject_introspection' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dman=false \
+  gnome
+
+  meson_options '-Dman=false \
     -Ddocbook_docs=disabled \
     -Dtests=false \
-    -Dgtk_doc=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system 'mold -run samu -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+    -Dgtk_doc=false'
 end

@@ -3,8 +3,8 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.0.2'
-  version "#{@_ver}-llvm17"
+  @_ver = '24.0.5'
+  version "#{@_ver}-llvm18"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -12,9 +12,9 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '11c6a13cee1810f4961ae603e955a3bb6cd1a8cdcd121bfb9cca20452bb76fe0',
-     armv7l: '11c6a13cee1810f4961ae603e955a3bb6cd1a8cdcd121bfb9cca20452bb76fe0',
-     x86_64: '057c85aeab36301d68887fc15930deb7b19485af173c8587925e8696149d6026'
+    aarch64: '8721991b320017f21524597463bb71635b326cdbc0a78901308dc4ed1ac263c2',
+     armv7l: '8721991b320017f21524597463bb71635b326cdbc0a78901308dc4ed1ac263c2',
+     x86_64: '1756f561caf3bd73c176d0c193ab117f7a8b5bc0fcbf5b83f269c74d2fe2c2a3'
   })
 
   depends_on 'elfutils' # R
@@ -43,8 +43,8 @@ class Mesa < Package
   depends_on 'libxvmc' # R
   depends_on 'libxv' # R
   depends_on 'libxxf86vm' # R
-  depends_on 'llvm17_dev' => :build
-  depends_on 'llvm17_lib' # R
+  depends_on 'llvm18_dev' => :build
+  depends_on 'llvm18_lib' # R
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'valgrind' => :build

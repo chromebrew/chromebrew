@@ -45,8 +45,8 @@
 /usr/local/share/man/man3/ub_strerror.3.zst
 /usr/local/share/man/man3/ub_wait.3.zst
 /usr/local/share/man/man5/unbound.conf.5.zst
-/usr/local/share/man/man8/unbound.8.zst
 /usr/local/share/man/man8/unbound-anchor.8.zst
 /usr/local/share/man/man8/unbound-checkconf.8.zst
-/usr/local/share/man/man8/unbound-control.8.zst
 /usr/local/share/man/man8/unbound-control-setup.8.zst
+/usr/local/share/man/man8/unbound-control.8.zst
+/usr/local/share/man/man8/unbound.8.zst

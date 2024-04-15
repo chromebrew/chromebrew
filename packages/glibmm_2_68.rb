@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Glibmm_2_68 < Package
+class Glibmm_2_68 < Meson
   description 'C++ bindings for GLib api version 2.68'
   homepage 'https://www.gtkmm.org'
-  version '2.78.0'
+  version '2.78.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.gnome.org/GNOME/glibmm.git'
@@ -11,9 +11,9 @@ class Glibmm_2_68 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd101b082fdbd28e16fed1ad66a3042a58f4d4d5575e5a5b9de59552ac8402964',
-     armv7l: 'd101b082fdbd28e16fed1ad66a3042a58f4d4d5575e5a5b9de59552ac8402964',
-     x86_64: '115a613e6a6f7dcc3faa0f4bbc5eecadb068951a3c9e1bf0a9f90102702db5a0'
+    aarch64: '5555ac0644dc4f44b8274d043a0570bee91ebf66a1876b15929aa70ac80f6638',
+     armv7l: '5555ac0644dc4f44b8274d043a0570bee91ebf66a1876b15929aa70ac80f6638',
+     x86_64: 'ae75d777e3f5421db84617bf29bb04dc86583d64a292c991dff3ef7fe7ed44ad'
   })
 
   depends_on 'gcc_lib' # R
@@ -23,15 +23,8 @@ class Glibmm_2_68 < Package
   depends_on 'libsigcplusplus3' # R
   depends_on 'mm_common' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-    -Dbuild-documentation=false \
-    builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+  gnome
+  no_upstream_update
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options '-Dbuild-documentation=false'
 end

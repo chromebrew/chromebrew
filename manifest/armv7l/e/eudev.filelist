@@ -1,9 +1,9 @@
 /usr/local/bin/udevadm
+/usr/local/etc/udev/hwdb.d/20-OUI.hwdb
 /usr/local/etc/udev/hwdb.d/20-acpi-vendor.hwdb
 /usr/local/etc/udev/hwdb.d/20-bluetooth-vendor-product.hwdb
 /usr/local/etc/udev/hwdb.d/20-dmi-id.hwdb
 /usr/local/etc/udev/hwdb.d/20-net-ifname.hwdb
-/usr/local/etc/udev/hwdb.d/20-OUI.hwdb
 /usr/local/etc/udev/hwdb.d/20-pci-classes.hwdb
 /usr/local/etc/udev/hwdb.d/20-pci-vendor-model.hwdb
 /usr/local/etc/udev/hwdb.d/20-sdio-classes.hwdb
@@ -53,8 +53,8 @@
 /usr/local/lib/udev/rules.d/60-input-id.rules
 /usr/local/lib/udev/rules.d/60-persistent-alsa.rules
 /usr/local/lib/udev/rules.d/60-persistent-input.rules
-/usr/local/lib/udev/rules.d/60-persistent-storage.rules
 /usr/local/lib/udev/rules.d/60-persistent-storage-tape.rules
+/usr/local/lib/udev/rules.d/60-persistent-storage.rules
 /usr/local/lib/udev/rules.d/60-persistent-v4l.rules
 /usr/local/lib/udev/rules.d/60-sensor.rules
 /usr/local/lib/udev/rules.d/60-serial.rules

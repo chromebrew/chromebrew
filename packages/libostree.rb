@@ -5,7 +5,7 @@ class Libostree < Package
   homepage 'https://ostreedev.github.io/ostree/'
   version '2020.8'
   license 'LGPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/ostreedev/ostree/releases/download/v#{version}/libostree-#{version}.tar.xz"
   source_sha256 'fdaa5992d0a6f62157152355449ac8476c50df6602be398e9ad10438cc1e679b'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Libostree < Package
   binary_sha256({
     aarch64: '4e4ffd30a74ea73c60f7b0c9a0064a50dacf31ad0d8011f95deb35fab596878d',
      armv7l: '4e4ffd30a74ea73c60f7b0c9a0064a50dacf31ad0d8011f95deb35fab596878d',
-       i686: '11a240d4f4ecaf37865a1c29c457d8eda6973082babea87f6d9cc7580579c930',
      x86_64: '9dade5c1d720715fdb3f6841093db55b1a6c57b10694acd61c1ab306c74047cc'
   })
 

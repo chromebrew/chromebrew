@@ -5,7 +5,7 @@ class Tilp2 < Package
   homepage 'http://lpg.ticalc.org/prj_tilp/'
   version '1.18'
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://sourceforge.net/projects/tilp/files/tilp2-linux/tilp2-1.18/tilp2-1.18.tar.bz2'
   source_sha256 '7b3ab363eeb52504d6ef5811c5d264f8016060bb7bd427be5a064c2ed7384e47'
   binary_compression 'tar.xz'
@@ -13,7 +13,6 @@ class Tilp2 < Package
   binary_sha256({
     aarch64: '201dc44208b9be80c48f7c490db5278734451890fbeb2d2a5d14453edd1fbf38',
      armv7l: '201dc44208b9be80c48f7c490db5278734451890fbeb2d2a5d14453edd1fbf38',
-       i686: 'ab237640a29d6b6f5270958be66a85bc149c1e33b3bdffac6cc10e33e5de39b1',
      x86_64: '6299305628afe6455a951234e91a1ee6dc501b48d0f47b1739963080be416536'
   })
 

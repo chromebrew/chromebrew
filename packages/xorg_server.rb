@@ -3,7 +3,7 @@ require 'package'
 class Xorg_server < Package
   description 'The Xorg Server is the core of the X Window system.'
   homepage 'https://www.x.org'
-  version '21.1.11'
+  version '21.1.12'
   license 'BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xorg_server < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a862462a659a28b8ab13eb6a3e799f338517b1bb0fbd5c83e326a66e42125a16',
-     armv7l: 'a862462a659a28b8ab13eb6a3e799f338517b1bb0fbd5c83e326a66e42125a16',
-     x86_64: '2a583a60d704338b12d9d3149b7b59553157655bcddcb056600c107b65b8a3e5'
+    aarch64: 'df55489c47e3ab85f8253ea1114530cdd49fcff45a68c70fe8ad63e76c787e40',
+     armv7l: 'df55489c47e3ab85f8253ea1114530cdd49fcff45a68c70fe8ad63e76c787e40',
+     x86_64: 'f1aa3b47ed6933b023a75ab53e9daee937047282cc7802c0f8c7bcbb6a8ef086'
   })
 
   depends_on 'dbus' # R
@@ -38,7 +38,6 @@ class Xorg_server < Package
   depends_on 'libxdmcp' # R
   depends_on 'libxext' # R
   depends_on 'libxfont2' # R
-  depends_on 'libxfont' => :build
   depends_on 'libxfont' # R
   depends_on 'libxkbcommon' => :build
   depends_on 'libxkbfile' # R

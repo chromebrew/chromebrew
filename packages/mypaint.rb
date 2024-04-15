@@ -6,7 +6,7 @@ class Mypaint < Package
   @_ver = '2.0.1'
   version "#{@_ver}-1"
   license 'GPL-2'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/mypaint/mypaint.git'
   git_hashtag "v#{@_ver}"
   binary_compression 'tpxz'
@@ -14,7 +14,6 @@ class Mypaint < Package
   binary_sha256({
     aarch64: '65b8fcea7a9864553887c42490bdc1743a7bbb55f5e84766b805423d10912ef0',
      armv7l: '65b8fcea7a9864553887c42490bdc1743a7bbb55f5e84766b805423d10912ef0',
-       i686: '033e80ce9b49bff9a25200a3e3d20204d388cd0b98cb5164a65debb0591d8624',
      x86_64: 'e5145a805c4748821e181e15347d55ac2d4d98b0ae95a146b121f06790f62768'
   })
 

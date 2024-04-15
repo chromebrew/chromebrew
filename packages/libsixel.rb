@@ -8,7 +8,7 @@ class Libsixel < Package
   homepage 'https://github.com/libsixel/libsixel'
   version '1.10.3'
   license 'MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/libsixel/libsixel/archive/v1.10.3.tar.gz'
   source_sha256 '028552eb8f2a37c6effda88ee5e8f6d87b5d9601182ddec784a9728865f821e0'
   binary_compression 'tar.zst'
@@ -16,7 +16,6 @@ class Libsixel < Package
   binary_sha256({
     aarch64: 'e6908061d6984a1ba7dcbe41eadeec82a71bf61bd7046a2f18123be69c8a675a',
      armv7l: 'e6908061d6984a1ba7dcbe41eadeec82a71bf61bd7046a2f18123be69c8a675a',
-       i686: '14b320168e6068a82613f5efc498d201020421b2c1681823e5d7653bd62f8f60',
      x86_64: '16d7382c5229870d3954338748174d402db8542408b33bea49e6c3066a9c942a'
   })
 
