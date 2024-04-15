@@ -1,6 +1,7 @@
 # selector.rb: Prompt user to choose an option in a list of options
 # See packages/hunspell.rb for example usage
 require_relative 'color'
+require_relative 'crewlog'
 require 'io/console'
 
 class Selector

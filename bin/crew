@@ -13,6 +13,7 @@ require_relative '../commands/remove'
 require_relative '../commands/sysinfo'
 require_relative '../lib/color'
 require_relative '../lib/const'
+require_relative '../lib/crewlog'
 require_relative '../lib/deb_utils'
 require_relative '../lib/docopt'
 require_relative '../lib/downloader'
@@ -130,10 +131,6 @@ at_exit do
 
   # Print exit messages.
   ExitMessage.print
-end
-
-def crewlog(str)
-  caller_locations(1, 1).first.tap {|loc| puts "#{loc.path}:#{loc.lineno}:#{caller_locations(3).first.label}:#{str}".lightpurple if @opt_verbose}
 end
 
 def load_json
