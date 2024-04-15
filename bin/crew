@@ -111,23 +111,26 @@ at_exit do
   end
   require 'active_support/core_ext/object/blank'
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
-  # Print exit messages.
-  ExitMessage.print
 
   if @pkg.print_source_bashrc? || @pkg.gnome?
     crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
     # Check to see if the trap was set, because otherwise, USR1 will
     # kill crosh.
-    if CREW_SOURCE_BASHRC_ACTIVATED
+    # check if /tmp/.crew-autosource is opened in the parent shell as file descriptor 20
+    if File.readlink("/proc/#{Process.ppid}/fd/20") == '/tmp/.crew-autosource'
       crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
       Process.kill('USR1', Process.ppid)
     else
-      at_exit do
-        crewlog 'USR1 trap does not exist. Spawning shell to source ~/.bashrc .'
-        exec 'bash'
-      end
+      ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
+
+        To finish the installation, please execute the following:
+        source ~/.bashrc
+      PRINT_SOURCE_BASHRC_EOT
     end
   end
+
+  # Print exit messages.
+  ExitMessage.print
 end
 
 def crewlog(str)
