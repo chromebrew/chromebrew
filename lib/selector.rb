@@ -13,7 +13,11 @@ class Selector
     @options = options
     # Set timeout to zero if a non-interactive console.
     # Check noninteractive usage with `setsid command`.
-    @timeout = IO.console&.console_mode ? timeout : 0
+    @timeout = if !IO.console&.console_mode || IO.console&.winsize == [0, 0]
+                 0
+               else
+                 timeout
+               end
 
     # substitute expressions in the message ("%{variable}")
     @prompt = prompt.transform_values {|p| format(p, { total_opts: @options.size, default: @options[0][:value] }) }
