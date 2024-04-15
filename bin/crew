@@ -68,15 +68,14 @@ String.use_color = args['--color'] || !args['--no-color']
 
 @opt_force     = args['--force']
 @opt_keep      = args['--keep']
-@opt_verbose   = args['--verbose']
 @opt_source    = args['--source']
 @opt_recursive = args['--recursive-build']
 @opt_version   = args['--version']
 
 # Verbose options
-@fileutils_verbose = @opt_verbose
-@verbose           = @opt_verbose ? 'v' : ''
-@short_verbose     = @opt_verbose ? '-v' : ''
+@fileutils_verbose = CREW_VERBOSE
+@verbose           = CREW_VERBOSE ? 'v' : ''
+@short_verbose     = CREW_VERBOSE ? '-v' : ''
 
 class ExitMessage
   @messages = []
@@ -211,7 +210,7 @@ def list_packages
 end
 
 def generate_compatible
-  puts 'Generating compatible packages...'.orange if @opt_verbose
+  puts 'Generating compatible packages...'.orange if CREW_VERBOSE
   @device[:compatible_packages] = []
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkg_name = File.basename filename, '.rb'
@@ -220,12 +219,12 @@ def generate_compatible
     rescue StandardError => e
       puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
-    puts "Checking #{pkg_name} for compatibility.".orange if @opt_verbose
+    puts "Checking #{pkg_name} for compatibility.".orange if CREW_VERBOSE
     if PackageUtils.compatible?(@pkg)
       # add to compatible packages
-      puts "Adding #{pkg_name} #{@pkg.version} to compatible packages.".lightgreen if @opt_verbose
+      puts "Adding #{pkg_name} #{@pkg.version} to compatible packages.".lightgreen if CREW_VERBOSE
       @device[:compatible_packages].push(name: @pkg.name)
-    elsif @opt_verbose
+    elsif CREW_VERBOSE
       puts "#{pkg_name} is not a compatible package.".lightred
     end
   end
@@ -233,7 +232,7 @@ def generate_compatible
     output = JSON.parse @device.to_json
     file.write JSON.pretty_generate(output)
   end
-  puts 'Generating compatible packages done.'.orange if @opt_verbose
+  puts 'Generating compatible packages done.'.orange if CREW_VERBOSE
 end
 
 def search(pkg_name, silent = false)
@@ -254,7 +253,7 @@ def regexp_search(pkg_pat)
   re = Regexp.new(pkg_pat, true)
   results = Dir["#{CREW_PACKAGES_PATH}/*.rb"] \
             .select  { |f| File.basename(f, '.rb') =~ re } \
-            .each    { |f| print_package(f, @opt_verbose) }
+            .each    { |f| print_package(f, CREW_VERBOSE) }
   if results.empty?
     Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |package_path|
       package_name = File.basename package_path, '.rb'
@@ -264,7 +263,7 @@ def regexp_search(pkg_pat)
         puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
       end
       if @pkg.description =~ /#{pkg_pat}/i
-        print_current_package @opt_verbose
+        print_current_package CREW_VERBOSE
         results.push(package_name)
       end
     end
@@ -342,7 +341,7 @@ def update
   @device[:installed_packages].each do |package|
     search package[:name], true
     unless @pkg
-      puts "Package file for #{package[:name]} not found. :(".lightred if @opt_verbose
+      puts "Package file for #{package[:name]} not found. :(".lightred if CREW_VERBOSE
       next
     end
     different_version = (package[:version] != @pkg.version)
@@ -446,7 +445,7 @@ def upgrade(*pkgs, build_from_source: false)
     print_current_package
     @pkg.build_from_source = (build_from_source || CREW_BUILD_FROM_SOURCE)
 
-    puts "Updating #{@pkg.name}..." if @opt_verbose
+    puts "Updating #{@pkg.name}..." if CREW_VERBOSE
 
     @pkg.in_upgrade = true
     resolve_dependencies_and_install
@@ -494,24 +493,24 @@ def download
     when /\.zip$/i, /\.(tar(\.(gz|bz2|xz|lzma|lz|zst))?|tgz|tbz|tpxz|txz)$/i, /\.deb$/i, /\.AppImage$/i
       # Recall file from cache if requested
       if CREW_CACHE_ENABLED
-        puts "Looking for #{@pkg.name} archive in cache".orange if @opt_verbose
+        puts "Looking for #{@pkg.name} archive in cache".orange if CREW_VERBOSE
         # Privilege CREW_LOCAL_BUILD_DIR over CREW_CACHE_DIR.
         local_build_cachefile = File.join(CREW_LOCAL_BUILD_DIR, filename)
         crew_cache_dir_cachefile = File.join(CREW_CACHE_DIR, filename)
         cachefile = File.file?(local_build_cachefile) ? local_build_cachefile : crew_cache_dir_cachefile
         puts "Using #{@pkg.name} archive from the build cache at #{cachefile}; The checksum will not be checked against the package file.".orange if cachefile.include?(CREW_LOCAL_BUILD_DIR)
         if File.file?(cachefile)
-          puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if @opt_verbose
+          puts "#{@pkg.name.capitalize} archive file exists in cache".lightgreen if CREW_VERBOSE
           # Don't check checksum if file is in the build cache.
           if Digest::SHA256.hexdigest(File.read(cachefile)) == sha256sum || sha256sum =~ /^SKIP$/i || cachefile.include?(CREW_LOCAL_BUILD_DIR)
             begin
               # Hard link cached file if possible.
               FileUtils.ln cachefile, CREW_BREW_DIR, force: true, verbose: @fileutils_verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
-              puts 'Archive hard linked from cache'.green if @opt_verbose
+              puts 'Archive hard linked from cache'.green if CREW_VERBOSE
             rescue StandardError
               # Copy cached file if hard link fails.
               FileUtils.cp cachefile, CREW_BREW_DIR, verbose: @fileutils_verbose unless File.identical?(cachefile, "#{CREW_BREW_DIR}/#{filename}")
-              puts 'Archive copied from cache'.green if @opt_verbose
+              puts 'Archive copied from cache'.green if CREW_VERBOSE
             end
             puts 'Archive found in cache'.lightgreen
             return { source:, filename: }
@@ -525,7 +524,7 @@ def download
         end
       end
       # Download file if not cached.
-      downloader url, sha256sum, filename, @opt_verbose
+      downloader url, sha256sum, filename, CREW_VERBOSE
 
       puts "#{@pkg.name.capitalize} archive downloaded.".lightgreen
       # Stow file in cache if requested, if file is not from cache,
@@ -534,11 +533,11 @@ def download
         begin
           # Hard link to cache if possible.
           FileUtils.ln filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
-          puts 'Archive hard linked to cache'.green if @opt_verbose
+          puts 'Archive hard linked to cache'.green if CREW_VERBOSE
         rescue StandardError
           # Copy to cache if hard link fails.
           FileUtils.cp filename, CREW_CACHE_DIR, verbose: @fileutils_verbose
-          puts 'Archive copied to cache'.green if @opt_verbose
+          puts 'Archive copied to cache'.green if CREW_VERBOSE
         end
       end
       return { source:, filename: }
@@ -549,7 +548,7 @@ def download
       git = true
     else
       Dir.mkdir @extract_dir
-      downloader url, sha256sum, filename, @opt_verbose
+      downloader url, sha256sum, filename, CREW_VERBOSE
 
       puts "#{filename}: File downloaded.".lightgreen
 
@@ -572,7 +571,7 @@ def download
           # Use to the day granularity for a branch timestamp with no specific commit specified.
           cachefile = File.join(CREW_CACHE_DIR, "#{filename}#{@pkg.git_branch.gsub(/[^0-9A-Za-z.-]/, '_')}#{Time.now.strftime('%m%d%Y')}.tar.zst")
         end
-        puts "Git cachefile is #{cachefile}".orange if @opt_verbose
+        puts "Git cachefile is #{cachefile}".orange if CREW_VERBOSE
         if File.file?(cachefile) && File.file?("#{cachefile}.sha256")
           if Dir.chdir CREW_CACHE_DIR do
                system "sha256sum -c #{cachefile}.sha256"
@@ -646,7 +645,7 @@ def unpack(meta)
       case File.basename meta[:filename]
       when /\.zip$/i
         puts "Unpacking archive using 'unzip', this may take a while..."
-        system 'unzip', (@opt_verbose ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
+        system 'unzip', (CREW_VERBOSE ? '-v' : '-qq'), '-d', @extract_dir, meta[:filename], exception: true
       when /\.(tar(\.(gz|bz2|xz|lzma|lz))?|tgz|tbz|txz|tpxz)$/i
         puts "Unpacking archive using 'tar', this may take a while..."
         system 'tar', "-x#{@verbose}f", meta[:filename], '-C', @extract_dir, exception: true
@@ -667,7 +666,7 @@ def unpack(meta)
       # Check the number of directories in the archive
       entries = Dir["#{@extract_dir}/*"]
 
-      if entries.empty? && @opt_verbose
+      if entries.empty? && CREW_VERBOSE
         # This will happen with SKIP packages.
         puts "Empty archive: #{meta[:filename]}".orange
       end
@@ -906,9 +905,9 @@ def patchelf_set_need_paths(dir)
     return if execfiles.empty?
 
     patchelf_lib_prefix = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib" : CREW_LIB_PREFIX
-    puts "patchelf_lib_prefix is #{patchelf_lib_prefix}" if @opt_verbose
+    puts "patchelf_lib_prefix is #{patchelf_lib_prefix}" if CREW_VERBOSE
     patchelf_interpreter = @pkg.is_musl? ? "#{CREW_MUSL_PREFIX}/lib/libc.so" : 'CREW_LIB_PREFIX/libc.so.6'
-    puts "patchelf_interpreter is #{patchelf_interpreter}" if @opt_verbose
+    puts "patchelf_interpreter is #{patchelf_interpreter}" if CREW_VERBOSE
 
     puts 'Running patchelf to patch binaries for library paths'.lightblue
     execfiles.each_line(chomp: true) do |execfiletopatch|
@@ -935,7 +934,7 @@ def patchelf_set_need_paths(dir)
         # hierarchy for neededlib_basename if the intent is to allow
         # using a different CREW_PREFIX during package installs.
         if File.file?(neededlibspatchednamepath) || File.file?(Dir.pwd + neededlibspatchednamepath)
-          puts "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}" if @opt_verbose
+          puts "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}" if CREW_VERBOSE
           system "patchelf --replace-needed #{neededlibspatch} #{neededlibspatchednamepath} #{execfiletopatch}"
         else
           puts "#{execfiletopatch} needed library #{neededlib_basename} not found in #{patchelf_lib_prefix} or #{Dir.pwd + neededlibspatchednamepath}.".lightred
@@ -958,7 +957,7 @@ def strip_find_files(find_cmd, strip_option = '')
 
   # Run find_cmd and strip only files with ar or elf magic headers.
   system "#{find_cmd} | xargs -r chmod u+w"
-  strip_verbose = @opt_verbose ? 'echo "Stripping ${0:1}" &&' : ''
+  strip_verbose = CREW_VERBOSE ? 'echo "Stripping ${0:1}" &&' : ''
   # The craziness here is from having to escape the special characters
   # in the magic headers for these files.
   system "#{find_cmd} | xargs -P#{CREW_NPROC} -n1 -r bash -c 'header=$(head -c4 ${0}); elfheader='$(printf '\\\177ELF')' ; arheader=\\!\\<ar ; case $header in $elfheader|$arheader) #{strip_verbose} llvm-strip #{strip_option} ${0} ;; esac'"
@@ -1038,11 +1037,11 @@ def shrink_dir(dir)
               puts "Attempting to compress #{execfile} ...".orange
               # Make tmp file for compression
               unless system "upx --lzma #{execfile}-crewupxtmp"
-                puts "Compression of #{execfile} failed...".orange if @opt_verbose
+                puts "Compression of #{execfile} failed...".orange if CREW_VERBOSE
                 FileUtils.rm_f "#{execfile}-crewupxtmp"
               end
               if File.file?("#{execfile}-crewupxtmp")
-                puts "Testing compressed #{execfile}...".lightblue if @opt_verbose
+                puts "Testing compressed #{execfile}...".lightblue if CREW_VERBOSE
                 if system 'upx', '-t', "#{execfile}-crewupxtmp"
                   puts "#{execfile} successfully compressed...".lightgreen
                   FileUtils.cp "#{execfile}-crewupxtmp", execfile
@@ -1098,16 +1097,16 @@ def install_package(pkgdir)
     unless CREW_NOT_LINKS || @pkg.no_links?
       brokensymlinks = `find . -type l -exec test ! -e {} \\; -print`.chomp
       unless brokensymlinks.to_s.empty?
-        puts 'There are broken symlinks. Will try to fix.'.orange if @opt_verbose
+        puts 'There are broken symlinks. Will try to fix.'.orange if CREW_VERBOSE
         brokensymlinks.each_line(chomp: true) do |fixlink|
           brokentarget = `readlink -n #{fixlink}`.chomp
-          puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{brokentarget}".orange if @opt_verbose
+          puts "Attempting fix of: #{fixlink.delete_prefix('.')} -> #{brokentarget}".orange if CREW_VERBOSE
           fixedtarget = brokentarget.delete_prefix(CREW_DEST_DIR)
           fixedlink_loc = File.join(pkgdir, fixlink.delete_prefix('.'))
           # If no changes were made, don't replace symlink
           unless fixedtarget == brokentarget
             FileUtils.ln_sf fixedtarget, fixedlink_loc
-            puts "Fixed: #{fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if @opt_verbose
+            puts "Fixed: #{fixedtarget} -> #{fixlink.delete_prefix('.')}".orange if CREW_VERBOSE
           end
         end
       end
@@ -1290,11 +1289,11 @@ def install
   # remove it just before the file copy
   if @pkg.in_upgrade
     puts 'Removing since upgrade or reinstall...'
-    Command.remove(@pkg, @opt_verbose)
+    Command.remove(@pkg, CREW_VERBOSE)
   end
 
   if @pkg.is_fake?
-    puts "Install will be skipped since #{@pkg.name} is a fake package.".orange if @opt_verbose
+    puts "Install will be skipped since #{@pkg.name} is a fake package.".orange if CREW_VERBOSE
   else
     # perform pre-install process
     pre_install dest_dir
@@ -1391,7 +1390,7 @@ def archive_package(crew_archive_dest)
       # See https://lists.archlinux.org/pipermail/arch-dev-public/2019-March/029542.html
       # Use nice so that user can (possibly) do other things during compression.
       if crew_prefix_zstd_available
-        puts 'Using standard zstd'.lightblue if @opt_verbose
+        puts 'Using standard zstd'.lightblue if CREW_VERBOSE
         system "tar c#{@verbose} * | nice -n 20 #{CREW_PREFIX}/bin/zstd -c -T0 --ultra -20 - > #{crew_archive_dest}/#{pkg_name}"
       end
     end
@@ -1522,13 +1521,13 @@ def upload(pkg_name = nil)
         puts "Setting binary compression in #{pkg_file}..."
         # Add binary compression setting, and add the line if it doesn't exist.
         if File.read(pkg_file).include?('binary_compression')
-          puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if @opt_verbose
+          puts "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}" if CREW_VERBOSE
           system "sed -i \"s/binary_compression.*/binary_compression 'tar#{ext}'/\" #{pkg_file}"
         elsif File.read(pkg_file).include?('source_sha256')
-          puts "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
+          puts "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
           system "sed -i \"/source_sha256/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
         elsif File.read(pkg_file).include?('git_hashtag')
-          puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if @opt_verbose
+          puts "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}" if CREW_VERBOSE
           system "sed -i \"/git_hashtag/a \\\ \\\ binary_compression 'tar#{ext}'\" #{pkg_file}"
         else
           puts "Unable to tell where to add \"binary_compression 'tar#{ext}'\" to #{pkg_file}. Please add it and manually.".lightblue
@@ -1543,15 +1542,15 @@ def upload(pkg_name = nil)
       new_version = noname.split('-chromeos').first
       new_url = "#{base_url}/#{package}/#{new_version}_#{arch}/#{new_tarfile}".gsub("#{release_dir}/", '')
       token_label = gitlab_token.split('-').first == 'glpat' ? 'PRIVATE-TOKEN' : 'DEPLOY-TOKEN'
-      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if @opt_verbose
+      puts "curl -# --header \"#{token_label}: #{gitlab_token}\" --upload-file \"#{new_tarfile}\" \"#{new_url}\" | cat" if CREW_VERBOSE
       output = `curl -# --header "#{token_label}: #{gitlab_token}" --upload-file "#{new_tarfile}" "#{new_url}" | cat`.chomp
       if output.include?('201 Created')
-        puts "curl -Ls #{new_url} | sha256sum" if @opt_verbose
+        puts "curl -Ls #{new_url} | sha256sum" if CREW_VERBOSE
         upstream_sha256 = `curl -Ls #{new_url} | sha256sum`.chomp.split.first
         if upstream_sha256 == new_sha256
           puts output.lightgreen
         else
-          if @opt_verbose
+          if CREW_VERBOSE
             puts "expected sha256 hash=#{new_sha256}"
             puts "upstream sha256 hash=#{upstream_sha256}"
           end
@@ -1566,7 +1565,7 @@ def upload(pkg_name = nil)
       old_sha256 = `grep -m 1 #{arch}: #{pkg_file} 2> /dev/null`.chomp
       if old_sha256.empty?
         unless File.readlines(pkg_file).grep(/binary_sha256/).any?
-          if @opt_verbose
+          if CREW_VERBOSE
             puts "sed -e '/binary_compression/ a\\
 \\
 \\ \\ binary_sha256({' -i #{pkg_file}"
@@ -1589,7 +1588,7 @@ def upload(pkg_name = nil)
           puts "Updating binary_sha256 in #{pkg_file}..."
           puts "from: #{arch}: '#{old_sha256}'"
           puts "  to: #{arch}: '#{new_sha256}'"
-          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if @opt_verbose
+          puts "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}" if CREW_VERBOSE
           system "sed -i 's/#{old_sha256}/#{new_sha256}/g' #{pkg_file}"
         end
       end
@@ -1615,10 +1614,10 @@ def update_sha256(package, key, value)
   end
   comma = key == 'x86_64' ? '\\n\\ \\ })' : ','
   if File.readlines(package).grep(/#{key}:/).any?
-    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if @opt_verbose
+    puts "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
     system "sed -e \"/#{key}:.*['\"][0-9a-f]*['\"]/c#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
   else
-    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if @opt_verbose
+    puts "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}" if CREW_VERBOSE
     system "sed -e \"/binary_sha256.*({/a#{leading_space}#{key}: '#{value}'#{comma}\" -i #{package}"
   end
 end
@@ -1691,7 +1690,7 @@ def build_command(args)
     next if check_package(@pkg_name)
 
     search @pkg_name
-    print_current_package @opt_verbose
+    print_current_package CREW_VERBOSE
     next unless @pkg_name
 
     # Process preflight block to see if package should be built
@@ -1754,7 +1753,7 @@ def download_command(args)
     @pkg_name = name
     search @pkg_name
     @pkg.build_from_source = true if @opt_source
-    print_current_package @opt_verbose
+    print_current_package CREW_VERBOSE
     download
   end
 end
@@ -1794,7 +1793,7 @@ def install_command(args)
 end
 
 def list_command(args)
-  Command.list(args['available'], args['installed'], args['compatible'], args['incompatible'], @opt_verbose)
+  Command.list(args['available'], args['installed'], args['compatible'], args['incompatible'], CREW_VERBOSE)
 end
 
 def postinstall_command(args)
@@ -1835,7 +1834,7 @@ end
 def remove_command(args)
   args['<name>'].each do |name|
     search name
-    Command.remove(@pkg, @opt_verbose)
+    Command.remove(@pkg, CREW_VERBOSE)
   end
 end
 
@@ -1846,7 +1845,7 @@ def search_command(args)
 end
 
 def sysinfo_command(_args)
-  Command.sysinfo(@opt_verbose)
+  Command.sysinfo(CREW_VERBOSE)
 end
 
 def test_command(args)
