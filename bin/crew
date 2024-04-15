@@ -112,7 +112,7 @@ at_exit do
   require 'active_support/core_ext/object/blank'
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
 
-  if @pkg.print_source_bashrc? || @pkg.gnome?
+  if @pkg&.print_source_bashrc? || @pkg&.gnome?
     crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
     # Check to see if the trap was set, because otherwise, USR1 will
     # kill crosh.
