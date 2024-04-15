@@ -14,25 +14,26 @@ CPUINFO = File.read('/proc/cpuinfo') \
               .transform_keys(&:downcase)
 
 # get architectures supported by the processor natively
-CPU_SUPPORTED_ARCH = if CPUINFO.key?('flags')
-                       # x86-based processor stores supported instructions in 'flags' field
-                       if CPUINFO['flags'].include?(' lm ')
-                         # if the processor supports long mode, then it is 64-bit
-                         %w[i686 x86_64]
-                       else
-                         # legacy x86 processor
-                         %w[i686]
-                       end
-                     elsif CPUINFO.key?('features')
-                       # ARM-based processor stores supported instructions in 'features' field
-                       if CPUINFO['cpu architecture'].to_i >= 8
-                         # if the processor is ARMv8+, then it is 64-bit
-                         %w[aarch64 armv7l armv8l]
-                       else
-                         # ARMv7 processor
-                         %w[armv7l]
-                       end
-                     end
+CPU_SUPPORTED_ARCH = \
+  if CPUINFO.key?('flags')
+    # x86-based processor stores supported instructions in 'flags' field
+    if CPUINFO['flags'].include?(' lm ')
+      # if the processor supports long mode, then it is 64-bit
+      %w[i686 x86_64]
+    else
+      # legacy x86 processor
+      %w[i686]
+    end
+  elsif CPUINFO.key?('features')
+    # ARM-based processor stores supported instructions in 'features' field
+    if CPUINFO['cpu architecture'].to_i >= 8
+      # if the processor is ARMv8+, then it is 64-bit
+      %w[aarch64 armv7l armv8l]
+    else
+      # ARMv7 processor
+      %w[armv7l]
+    end
+  end
 
 # we are running under user-mode qemu if the processor
 # does not compatible with the kernel architecture natively
@@ -76,16 +77,11 @@ CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].inclu
 
 # Use sane minimal defaults if in container and no override specified.
 CREW_KERNEL_VERSION = \
-    if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
-      case ARCH
-      when 'i686'
-        '3.8'
-      else
-        CREW_KERNEL_VERSION = '5.10'
-      end
-    else
-      CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
-    end
+  if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
+    ARCH.eql?('i686') ? '3.8' : '5.10'
+  else
+    ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
+  end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man')
@@ -120,11 +116,12 @@ CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
-CREW_NPROC = if File.file?("#{CREW_PREFIX}/bin/distcc")
-               ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
-             else
-               ENV.fetch('CREW_NPROC', `nproc`.chomp)
-             end
+CREW_NPROC = \
+  if File.file?("#{CREW_PREFIX}/bin/distcc")
+    ENV.fetch('CREW_NPROC', `distcc -j`.chomp)
+  else
+    ENV.fetch('CREW_NPROC', `nproc`.chomp)
+  end
 
 # Set following as boolean if environment variables exist.
 CREW_CACHE_ENABLED                   = ENV.fetch('CREW_CACHE_ENABLED', '0').eql?('1')
@@ -143,12 +140,12 @@ CREW_BRANCH = ENV.fetch('CREW_BRANCH', 'master')
 USER = Etc.getlogin
 
 CHROMEOS_RELEASE = \
-    if File.exist?('/etc/lsb-release')
-      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
-    else
-      # newer version of Chrome OS exports info to env by default
-      ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
-    end
+  if File.exist?('/etc/lsb-release')
+    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+  else
+    # newer version of Chrome OS exports info to env by default
+    ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
+  end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
@@ -168,22 +165,22 @@ CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 
 # set certificate file location for lib/downloader.rb
 SSL_CERT_FILE = \
-    if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
-      ENV['SSL_CERT_FILE']
-    elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
-      "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-    else
-      '/etc/ssl/certs/ca-certificates.crt'
-    end
+  if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
+    ENV['SSL_CERT_FILE']
+  elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
+    "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+  else
+    '/etc/ssl/certs/ca-certificates.crt'
+  end
 
 SSL_CERT_DIR = \
-    if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
-      ENV['SSL_CERT_DIR']
-    elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
-      "#{CREW_PREFIX}/etc/ssl/certs"
-    else
-      '/etc/ssl/certs'
-    end
+  if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
+    ENV['SSL_CERT_DIR']
+  elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
+    "#{CREW_PREFIX}/etc/ssl/certs"
+  else
+    '/etc/ssl/certs'
+  end
 
 CREW_ARCH_FLAGS_OVERRIDE = ENV.fetch('CREW_ARCH_FLAGS_OVERRIDE', '')
 case ARCH
@@ -212,18 +209,20 @@ CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
 CREW_LDFLAGS              = "-flto=auto #{CREW_LINKER_FLAGS}"
 CREW_FNO_LTO_LDFLAGS      = '-fno-lto'
 
-CREW_ENV_OPTIONS_HASH = if CREW_DISABLE_ENV_OPTIONS
-                          { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
-                        else
-                          {
-                            'CFLAGS'          => CREW_COMMON_FLAGS,
-                            'CXXFLAGS'        => CREW_COMMON_FLAGS,
-                            'FCFLAGS'         => CREW_COMMON_FLAGS,
-                            'FFLAGS'          => CREW_COMMON_FLAGS,
-                            'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
-                            'LDFLAGS'         => CREW_LDFLAGS
-                          }
-                        end
+CREW_ENV_OPTIONS_HASH = \
+  if CREW_DISABLE_ENV_OPTIONS
+    { 'CREW_DISABLE_ENV_OPTIONS' => '1' }
+  else
+    {
+      'CFLAGS'          => CREW_COMMON_FLAGS,
+      'CXXFLAGS'        => CREW_COMMON_FLAGS,
+      'FCFLAGS'         => CREW_COMMON_FLAGS,
+      'FFLAGS'          => CREW_COMMON_FLAGS,
+      'LD_LIBRARY_PATH' => CREW_LIB_PREFIX,
+      'LDFLAGS'         => CREW_LDFLAGS
+    }
+  end
+
 # parse from hash to shell readable string
 CREW_ENV_OPTIONS = CREW_ENV_OPTIONS_HASH.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
 
