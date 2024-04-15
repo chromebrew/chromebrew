@@ -1,7 +1,7 @@
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
 
-require_relative 'const'
+CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
 
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
