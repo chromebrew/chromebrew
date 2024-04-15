@@ -114,8 +114,8 @@ at_exit do
 
   if @pkg&.print_source_bashrc? || @pkg&.gnome?
     crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
-    # Check to see if the trap was set, because otherwise, USR1 will
-    # kill crosh.
+    # Check to see if the trap was set in #{CREW_PREFIX}/etc/profile
+    # from crew_profile_base, because otherwise, USR1 will kill crosh.
     if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
       crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
       Process.kill('USR1', Process.ppid)
