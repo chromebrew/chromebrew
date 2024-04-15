@@ -1,8 +1,7 @@
 #!/bin/bash
-# shellcheck disable=SC2164
 
 # Exit on fail.
-set -E
+set -eE
 
 RESET='\e[0m'
 
