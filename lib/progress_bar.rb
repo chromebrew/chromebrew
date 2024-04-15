@@ -28,18 +28,20 @@ class ProgressBar
     trap('WINCH') do
       # reset width settings after terminal resized
       # get terminal size, calculate the width of progress bar based on it
-      @terminal_h, @terminal_w = IO.console&.console_mode ? IO.console&.winsize : [25, 80]
+      @zero_terminal = [0, 0]
+      @terminal_h, @terminal_w = IO.console&.winsize&.include?(@zero_terminal) ? [25, 80] : IO.console&.winsize
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
-      if @bar_width.negative?
-        puts "IO.console&.winsize reports #{IO.console&.winsize}"
-        puts "@terminal_h is #{@terminal_h}"
-        puts "@terminal_w is #{@terminal_w}"
-        puts "@bar_width is #{@bar_width}"
-        puts "@info_before_bar.merge(@info_after_bar).values.sum is #{@info_before_bar.merge(@info_after_bar).values.sum}"
-        puts "(@info_before_bar.merge(@info_after_bar).length * 2) is #{@info_before_bar.merge(@info_after_bar).length * 2}"
-      end
+      # if @bar_width.negative?
+      puts "IO.console&.console_mode is #{IO.console&.console_mode}"
+      puts "IO.console&.winsize reports #{IO.console&.winsize}"
+      puts "@terminal_h is #{@terminal_h}"
+      puts "@terminal_w is #{@terminal_w}"
+      puts "@bar_width is #{@bar_width}"
+      puts "@info_before_bar.merge(@info_after_bar).values.sum is #{@info_before_bar.merge(@info_after_bar).values.sum}"
+      puts "(@info_before_bar.merge(@info_after_bar).length * 2) is #{@info_before_bar.merge(@info_after_bar).length * 2}"
+      # end
     end
 
     Process.kill('WINCH', 0) # trigger the trap above
