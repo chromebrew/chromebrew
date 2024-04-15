@@ -86,9 +86,13 @@ class ProgressBar
         sleep 0.15 # update progress bar after each 0.15 seconds
 
         completed_length = (@bar_width * (@percentage / 100)).to_i
-        puts "completed_length: #{completed_length}"
         uncompleted_length = @bar_width - completed_length
-        puts "uncompleted_length: #{uncompleted_length}"
+        if completed_length.negative? || uncompleted_length.negative?
+          puts "@bar_width is #{@bar_width}"
+          puts "@percentage is #{@percentage}"
+          puts "completed_length: #{completed_length}"
+          puts "uncompleted_length: #{uncompleted_length}"
+        end
 
         # print info and progress bar
         @info_before_bar.each_pair do |var_name, width|
