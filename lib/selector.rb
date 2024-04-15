@@ -17,7 +17,7 @@ class Selector
     if !IO.console&.console_mode || IO.console&.winsize == [0, 0]
       crewlog "IO.console&.console_mode is #{IO.console&.console_mode}"
       crewlog "IO.console&.winsize is #{IO.console&.winsize}"
-      @timeout = 0
+      @timeout = 1
     else
       @timeout = timeout
     end
