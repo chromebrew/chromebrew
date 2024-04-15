@@ -33,6 +33,8 @@ class ProgressBar
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
       if @bar_width.negative?
+        puts "IO.console&.winsize reports #{IO.console&.winsize}"
+        puts "@terminal_h is #{@terminal_h}"
         puts "@terminal_w is #{@terminal_w}"
         puts "@bar_width is #{@bar_width}"
         puts "@info_before_bar.merge(@info_after_bar).values.sum is #{@info_before_bar.merge(@info_after_bar).values.sum}"
