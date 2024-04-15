@@ -32,15 +32,6 @@ class ProgressBar
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
-      if @bar_width.negative?
-        puts "IO.console&.console_mode is #{IO.console&.console_mode}"
-        puts "IO.console&.winsize reports #{IO.console&.winsize}"
-        puts "@terminal_h is #{@terminal_h}"
-        puts "@terminal_w is #{@terminal_w}"
-        puts "@bar_width is #{@bar_width}"
-        puts "@info_before_bar.merge(@info_after_bar).values.sum is #{@info_before_bar.merge(@info_after_bar).values.sum}"
-        puts "(@info_before_bar.merge(@info_after_bar).length * 2) is #{@info_before_bar.merge(@info_after_bar).length * 2}"
-      end
     end
 
     Process.kill('WINCH', 0) # trigger the trap above
@@ -96,12 +87,6 @@ class ProgressBar
 
         completed_length = (@bar_width * (@percentage / 100)).to_i
         uncompleted_length = @bar_width - completed_length
-        if completed_length.negative? || uncompleted_length.negative?
-          puts "@bar_width is #{@bar_width}"
-          puts "@percentage is #{@percentage}"
-          puts "completed_length: #{completed_length}"
-          puts "uncompleted_length: #{uncompleted_length}"
-        end
 
         # print info and progress bar
         @info_before_bar.each_pair do |var_name, width|
