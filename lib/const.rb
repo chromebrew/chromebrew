@@ -138,12 +138,14 @@ CREW_BRANCH = ENV.fetch('CREW_BRANCH', 'master')
 
 USER = Etc.getlogin
 
-CHROMEOS_RELEASE = if File.exist?('/etc/lsb-release')
-                     File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
-                   else
-                     # newer version of Chrome OS exports info to env by default
-                     ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
-                   end
+CHROMEOS_RELEASE = begin
+  if File.exist?('/etc/lsb-release')
+    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+  else
+    # newer version of Chrome OS exports info to env by default
+    ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
+  end
+end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
