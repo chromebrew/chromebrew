@@ -364,8 +364,6 @@ echo "  ___ _                               _
  \___/|   |_/   |_/\__/  |  |  |_/|__/\__/   |_/|__/  \_/ \_/
 "
 
-echo_info "Please run 'source ~/.bashrc' to set up the profile environment."
-
 echo_intra "
 Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
 most is used by default
