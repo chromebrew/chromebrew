@@ -731,15 +731,14 @@ def post_install
     crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
     # Check to see if the trap was set, because otherwise, USR1 will
     # kill crosh.
-    if `bash --noprofile --norc -c 'trap -p USR1|grep -v "source ~/.bashrc"'`.chomp
-      # trap not set. Just spawn a new shell at exit.
+    if CREW_SOURCE_BASHRC_ACTIVATED
+      crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
+      Process.kill('USR1', Process.ppid)
+    else
       at_exit do
         crewlog 'USR1 trap does not exist. Spawning shell to source ~/.bashrc .'
         exec 'bash'
       end
-    else
-      crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
-      Process.kill('USR1', Process.ppid)
     end
   end
 
