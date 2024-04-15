@@ -117,7 +117,7 @@ at_exit do
     # Check to see if the trap was set, because otherwise, USR1 will
     # kill crosh.
     # check if /tmp/.crew-autosource is opened in the parent shell as file descriptor 20
-    if File.readlink("/proc/#{Process.ppid}/fd/20") == '/tmp/.crew-autosource'
+    if File.file?("/proc/#{Process.ppid}/fd/20") && File.readlink("/proc/#{Process.ppid}/fd/20") == '/tmp/.crew-autosource'
       crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
       Process.kill('USR1', Process.ppid)
     else
