@@ -43,9 +43,6 @@ QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
 # When we have proper aarch64 support, remove this.
 ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : ENV.fetch('ARCH', KERN_ARCH)
 
-# This helps determine if there is a difference between kernel and user space
-USER_SPACE_ARCH = RUBY_DESCRIPTION[/\[(.+?)-linux-gnu/, 1]
-
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
 CREW_LIB_SUFFIX = ARCH.eql?('x86_64') && Dir.exist?('/lib64') ? '64' : ''
@@ -78,16 +75,17 @@ CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
 CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 
 # Use sane minimal defaults if in container and no override specified.
-if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
-  case ARCH
-  when 'i686'
-    CREW_KERNEL_VERSION = '3.8'
-  else
-    CREW_KERNEL_VERSION = '5.10'
-  end
-else
-  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
-end
+CREW_KERNEL_VERSION = \
+    if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].nil?
+      case ARCH
+      when 'i686'
+        '3.8'
+      else
+        CREW_KERNEL_VERSION = '5.10'
+      end
+    else
+      CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', Etc.uname[:release].rpartition('.').first)
+    end
 
 CREW_LIB_PREFIX       = File.join(CREW_PREFIX, ARCH_LIB)
 CREW_MAN_PREFIX       = File.join(CREW_PREFIX, 'share/man')
@@ -144,14 +142,13 @@ CREW_BRANCH = ENV.fetch('CREW_BRANCH', 'master')
 
 USER = Etc.getlogin
 
-CHROMEOS_RELEASE = begin
-  if File.exist?('/etc/lsb-release')
-    File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
-  else
-    # newer version of Chrome OS exports info to env by default
-    ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
-  end
-end
+CHROMEOS_RELEASE = \
+    if File.exist?('/etc/lsb-release')
+      File.read('/etc/lsb-release')[/CHROMEOS_RELEASE_CHROME_MILESTONE=(.+)/, 1]
+    else
+      # newer version of Chrome OS exports info to env by default
+      ENV.fetch('CHROMEOS_RELEASE_CHROME_MILESTONE', nil)
+    end
 
 # If CREW_DISABLE_MVDIR environment variable exists and is equal to 1 use rsync/tar to install files in lieu of crew-mvdir.
 CREW_DISABLE_MVDIR = ENV.fetch('CREW_DISABLE_MVDIR', '0').eql?('1')
@@ -170,20 +167,23 @@ CREW_DOWNLOADER_RETRY = ENV.fetch('CREW_DOWNLOADER_RETRY', 3).to_i
 CREW_HIDE_PROGBAR = ENV.fetch('CREW_HIDE_PROGBAR', '0').eql?('1')
 
 # set certificate file location for lib/downloader.rb
-SSL_CERT_FILE = if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
-                  ENV['SSL_CERT_FILE']
-                elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
-                  "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
-                else
-                  '/etc/ssl/certs/ca-certificates.crt'
-                end
-SSL_CERT_DIR = if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
-                 ENV['SSL_CERT_DIR']
-               elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
-                 "#{CREW_PREFIX}/etc/ssl/certs"
-               else
-                 '/etc/ssl/certs'
-               end
+SSL_CERT_FILE = \
+    if ENV['SSL_CERT_FILE'] && File.exist?(ENV['SSL_CERT_FILE'])
+      ENV['SSL_CERT_FILE']
+    elsif File.exist?("#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt")
+      "#{CREW_PREFIX}/etc/ssl/certs/ca-certificates.crt"
+    else
+      '/etc/ssl/certs/ca-certificates.crt'
+    end
+
+SSL_CERT_DIR = \
+    if ENV['SSL_CERT_DIR'] && Dir.exist?(ENV['SSL_CERT_DIR'])
+      ENV['SSL_CERT_DIR']
+    elsif Dir.exist?("#{CREW_PREFIX}/etc/ssl/certs")
+      "#{CREW_PREFIX}/etc/ssl/certs"
+    else
+      '/etc/ssl/certs'
+    end
 
 CREW_ARCH_FLAGS_OVERRIDE = ENV.fetch('CREW_ARCH_FLAGS_OVERRIDE', '')
 case ARCH
