@@ -29,7 +29,7 @@ class ProgressBar
       # reset width settings after terminal resized
       # get terminal size, calculate the width of progress bar based on it
       @zero_terminal = [0, 0]
-      @terminal_h, @terminal_w = IO.console&.winsize&.include?(@zero_terminal) ? [25, 80] : IO.console&.winsize
+      @terminal_h, @terminal_w = IO.console&.winsize == @zero_terminal ? [25, 80] : IO.console&.winsize
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
