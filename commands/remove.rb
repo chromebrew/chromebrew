@@ -14,7 +14,7 @@ class Command
     end
 
     # Don't remove any of the packages ruby (and thus crew) needs to run.
-    if %w[gcc_lib glibc gmp ruby zlibpkg zstd].include?(pkg.name)
+    if CREW_ESSENTIAL_PACKAGES.include?(pkg.name)
       puts "Refusing to remove essential package #{pkg.name}.".lightred
       return
     end
@@ -33,7 +33,7 @@ class Command
       # Remove all files installed by the package.
       File.foreach(File.join(CREW_META_PATH, "#{pkg.name}.filelist"), chomp: true) do |line|
         next unless line.start_with?(CREW_PREFIX)
-        if system("grep --exclude #{pkg.name}.filelist -Fxq #{line} ./meta/*.filelist")
+        if system("grep --exclude #{pkg.name}.filelist -Fxq '#{line}' ./meta/*.filelist")
           puts "#{line} is in another package. It will not be removed during the removal of #{pkg.name}.".orange
         else
           puts "Removing file #{line}".yellow if verbose
@@ -54,11 +54,11 @@ class Command
     end
 
     # Remove the package from the list of installed packages in device.json.
-    puts "Removing package #{pkg_name} from device.json".yellow if verbose
+    puts "Removing package #{pkg.name} from device.json".yellow if verbose
     device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
 
     # Update device.json with our changes.
-    File.write File.join(CREW_CONFIG_PATH, 'device.json'), JSON.pretty_generate(JSON.parse(device_json.to_json))
+    save_json(device_json)
 
     # Perform any operations required after package removal.
     pkg.remove

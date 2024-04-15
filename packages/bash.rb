@@ -1,9 +1,11 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Bash < Package
+class Bash < Autotools
   description 'The GNU Bourne Again SHell is a Bourne-compatible shell with useful csh and ksh features.'
   homepage 'https://www.gnu.org/software/bash/'
-  version '5.2-2'
+  @_ver = '5.2'
+  @_patchlevel = 26
+  version "#{@_ver}-#{@_patchlevel}"
   license 'GPL-3'
   compatibility 'all'
   source_url 'https://ftpmirror.gnu.org/bash/bash-5.2.tar.gz'
@@ -11,49 +13,31 @@ class Bash < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5167feed4d0bfc86b1b13ea87eadf4167bdd879122ad1c113002fc367a5db57e',
-     armv7l: '5167feed4d0bfc86b1b13ea87eadf4167bdd879122ad1c113002fc367a5db57e',
-       i686: '9454bcfda1d88307a80c00f68e9a5294c29331ffdf3c6f951385faef3cd5ffb5',
-     x86_64: 'a777bad1a9ce382c07e73e192c48063baa481c53ef78bf5e74c32aeb60b9eefd'
+    aarch64: 'a53c3392a334427b0381236789387217d8731e07f966d64b967ddf63cb60ba94',
+     armv7l: 'a53c3392a334427b0381236789387217d8731e07f966d64b967ddf63cb60ba94',
+       i686: 'ab4ccf3dbdea01b6cecbb5e28696f518e48a0bc38730060afad7b8e2d9724ce9',
+     x86_64: '6c77b4a7cee18276a1b41807bfb6763626ac92bbfd6594422a4a9c3e3d9102c7'
   })
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'ncurses' # R
+  depends_on 'readline' # R
 
-  def self.build
-    system "./configure #{CREW_OPTIONS} \
-        --enable-alias\
-        --enable-arith-for-command \
-        --enable-array-variables \
-        --enable-bang-history \
-        --enable-brace-expansion \
-        --enable-casemod-attributes \
-        --enable-casemod-expansions \
-        --enable-command-timing \
-        --enable-cond-command \
-        --enable-cond-regexp \
-        --enable-coprocesses \
-        --enable-directory-stack \
-        --enable-dparen-arithmetic \
-        --enable-help-builtin \
-        --enable-history \
-        --enable-job-control \
-        --enable-mem-scramble \
-        --enable-multibyte \
-        --enable-net-redirections \
-        --enable-process-substitution \
-        --enable-progcomp \
-        --enable-readline \
-        --enable-restricted \
-        --enable-select \
-        --enable-single-help-strings \
-        --enable-usg-echo-default \
-        --with-bash-malloc \
-        --with-curses"
-
-    system 'make'
+  def self.patch
+    (1..@_patchlevel).each do |patch|
+      patchfile = "bash52-#{patch.to_s.rjust(3, '0')}"
+      downloader "https://mirrors.kernel.org/gnu/bash/bash-5.2-patches/#{patchfile}", 'SKIP'
+      puts "Applying bash #{@_ver} patch #{patch}...".orange
+      system "patch -Np0 -i #{patchfile}"
+    end
   end
+
+  configure_options '--with-curses \
+    --enable-extended-glob-default \
+    --enable-readline \
+    --without-bash-malloc \
+    --with-installed-readline'
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

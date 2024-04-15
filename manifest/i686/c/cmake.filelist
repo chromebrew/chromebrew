@@ -3033,6 +3033,7 @@
 /usr/local/share/cmake-3.29/Modules/Platform/Haiku-Initialize.cmake
 /usr/local/share/cmake-3.29/Modules/Platform/Haiku.cmake
 /usr/local/share/cmake-3.29/Modules/Platform/Linux-Absoft-Fortran.cmake
+/usr/local/share/cmake-3.29/Modules/Platform/Linux-Apple-Swift.cmake
 /usr/local/share/cmake-3.29/Modules/Platform/Linux-CCur-Fortran.cmake
 /usr/local/share/cmake-3.29/Modules/Platform/Linux-Clang-C.cmake
 /usr/local/share/cmake-3.29/Modules/Platform/Linux-Clang-CUDA.cmake

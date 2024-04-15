@@ -3,18 +3,18 @@ require 'package'
 class Ca_certificates < Package
   description 'Common CA Certificates PEM files'
   homepage 'https://salsa.debian.org/debian/ca-certificates'
-  version '20230311' # Do not replace version with @_ver, the install will break.
+  version '20240204' # Do not replace version with @_ver, the install will break.
   license 'MPL-1.1'
   compatibility 'all'
   source_url 'https://salsa.debian.org/debian/ca-certificates.git'
-  git_hashtag '2c507f8c5aac8b50e35291739ffd40676ab08993'
+  git_hashtag 'ee6e0484031314090a11c04ee82689acb73d7ad8'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd2bdc9b48ea268489f2c3ef9ec7a1e2bdca4af60c355463a83bd66714d6cba72',
-     armv7l: 'd2bdc9b48ea268489f2c3ef9ec7a1e2bdca4af60c355463a83bd66714d6cba72',
-       i686: '7c8814ec22eef600c82ef5247df63d3d3a488976c9d7fbeed18bdbe287423079',
-     x86_64: 'ef0260e6c237ee2e23d1571973026a39f37aefb342fa68653777ca97466629e6'
+    aarch64: 'e4f0fa748b7cb6731294ed1f077648e6169bd7147a74962e3778947f5ccd50a9',
+     armv7l: 'e4f0fa748b7cb6731294ed1f077648e6169bd7147a74962e3778947f5ccd50a9',
+       i686: '506dd6d8c7950436669af4c7b763facd884e451f3ce4e17385276f181a5d5965',
+     x86_64: '89a649ea49d4cfddcf0a7e906f6420b959ccd2f686312dfb105b7021c1ff5ea9'
   })
 
   depends_on 'py3_cryptography' => :build
@@ -123,6 +123,10 @@ class Ca_certificates < Package
   # This isn't run from install.sh, but that's ok. This is for cleanup if updated after an install.
   def self.postinstall
     # Do not call system update-ca-certificates as that tries to update certs in /etc .
-    system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
+    if File.file?("#{CREW_PREFIX}/bin/update-ca-certificates")
+      system "#{CREW_PREFIX}/bin/update-ca-certificates --fresh --certsconf #{CREW_PREFIX}/etc/ca-certificates.conf"
+    else
+      puts "#{CREW_PREFIX}/bin/update-ca-certificates is missing!".lightred
+    end
   end
 end
