@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2164
 
 # Exit on fail.
 set -E
