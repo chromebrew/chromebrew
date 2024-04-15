@@ -32,6 +32,11 @@ class ProgressBar
       @bar_width = @terminal_w -
                    @info_before_bar.merge(@info_after_bar).values.sum - # space that all info blocks takes
                    (@info_before_bar.merge(@info_after_bar).length * 2) # space for separator (whitespaces) between each info
+      if @bar_width.negative?
+        puts "@bar_width is #{@bar_width}"
+        puts "@info_before_bar.merge(@info_after_bar).values.sum is #{@info_before_bar.merge(@info_after_bar).values.sum}"
+        puts "(@info_before_bar.merge(@info_after_bar).length * 2) is #{@info_before_bar.merge(@info_after_bar).length * 2}"
+      end
     end
 
     Process.kill('WINCH', 0) # trigger the trap above
