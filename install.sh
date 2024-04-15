@@ -370,5 +370,3 @@ You may wish to edit the ${CREW_PREFIX}/etc/env.d/02-editor file for an editor d
 Chromebrew provides nano, vim and emacs as default TUI editor options."
 
 echo_success "Chromebrew installed successfully and package lists updated."
-# Exit into a new shell so that the source_bashrc trap in ${CREW_PREFIX}/etc/profile is loaded.
-exec "${CREW_PREFIX}/bin/bash"
