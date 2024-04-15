@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on fail.
-set -e
+set -E
 
 RESET='\e[0m'
 
@@ -11,6 +11,9 @@ echo_info() { echo -e "\e[1;33m${*}${RESET}" >&1; } # Use Yellow for information
 echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success messages.
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
+
+# Print a message before exit on error
+trap "echo_error 'An error occured during the installation :/'" ERR
 
 # Check if the script is being run as root.
 if [ "${EUID}" == "0" ]; then

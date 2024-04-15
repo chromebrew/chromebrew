@@ -57,10 +57,10 @@ You will need a Chromebook with developer mode enabled. To do so, select your de
 
 Open a VT-2 terminal session with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>-></kbd> and login with the `chronos` user and password if set [above](#set_passwd). *(if you are unable to do this, please have a second look at the prerequisites and make sure your Chromebook is in developer mode)*
 
-Then run the installation script below:
+Then download and run the installation script:
 
 ```bash
-exec bash --init-file <(curl -Ls git.io/vddgY)
+bash <(curl -L git.io/vddgY) && . ~/.bashrc
 ```
 
 ## Help
