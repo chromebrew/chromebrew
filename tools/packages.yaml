@@ -2750,6 +2750,11 @@ url: https://webdesigner.withgoogle.com/
 activity: high
 ---
 kind: url
+name: gopeed
+url: https://github.com/GopeedLab/gopeed/releases
+activity: medium
+---
+kind: url
 name: gox
 url: https://github.com/mitchellh/gox/releases
 activity: low
