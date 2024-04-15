@@ -86,6 +86,7 @@ class ProgressBar
         sleep 0.15 # update progress bar after each 0.15 seconds
 
         completed_length = (@bar_width * (@percentage / 100)).to_i
+        puts "completed_length: #{completed_length}"
         uncompleted_length = @bar_width - completed_length
 
         # print info and progress bar
