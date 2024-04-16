@@ -19,7 +19,7 @@ class Glibc_lib < Package
   when '2.37'
     version Glibc_build237.version
     compatibility Glibc_build237.compatibility
-    depends_on 'glibc_lib237'
+    depends_on 'glibc_build237'
   else
     version Glibc.version
     compatibility Glibc.compatibility

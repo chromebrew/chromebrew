@@ -17,8 +17,11 @@ class Glibc_dev237 < Package
   })
 
   depends_on 'glibc_build237' => :build
-  depends_on 'glibc_lib237' # R
+  #depends_on 'glibc_lib237' # R
 
+  conflicts_ok
+  no_shrink
+  no_source_build
   no_upstream_update
 
   # def self.preflight

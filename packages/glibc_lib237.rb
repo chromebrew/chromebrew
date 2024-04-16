@@ -21,12 +21,13 @@ class Glibc_lib237 < Package
   # depends_on 'glibc_lib' # R
 
   conflicts_ok
+  no_shrink
   no_source_build
   no_upstream_update
 
-  # def self.preflight
-   #  abort 'Glibc_lib requires glibc = 2.37.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.37')
-  # end
+  def self.preflight
+   abort 'Glibc_lib requires glibc = 2.37.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.37')
+  end
 
   def self.install
     puts 'Installing Glibc_build237 to pull files for build...'.lightblue

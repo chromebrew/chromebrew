@@ -25,8 +25,8 @@ class Glibc_build237 < Package
   git_hashtag 'glibc-2.37'
 
   binary_sha256({
-    aarch64: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
-     armv7l: '928b60200126cb0d69401bc5124a9a4e7b2294b54a1046c6f88caa45d7be32b9',
+    aarch64: 'd9cac82b17d463b98caf5c29e143775d3aeed29df3851207ad930d9c5b4c391b',
+     armv7l: 'd9cac82b17d463b98caf5c29e143775d3aeed29df3851207ad930d9c5b4c391b',
      x86_64: 'e7977a6ad811776fbb8c3d54e11e408a5f9ffeee8b3d8bb666255695b3fc20d6'
   })
 
@@ -45,11 +45,11 @@ class Glibc_build237 < Package
     @googlesource_branch = 'release-R123-15786.B'
     system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
     # Remove conflicting patches.
-    FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.37/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch'
-    # Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.37/*.patch').each do |patch|
-     # 	 puts "patch -Np1 < #{patch} || true" if @opt_verbose
-     #  system "patch -Np1 -F 10 -i #{patch} || true"
-    # end
+    # FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.37/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch'
+    Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.37/*.patch').each do |patch|
+      puts "patch -Np1 < #{patch} || true" if @opt_verbose
+      system "patch -Np1 -F 10 -i #{patch} || true"
+    end
   end
 
   def self.build
@@ -59,7 +59,8 @@ class Glibc_build237 < Package
         # Optimization flags from https://github.com/InBetweenNames/gentooLTO
         case ARCH
         when 'armv7l', 'aarch64'
-          system "CFLAGS='-fuse-ld=mold -pipe -O2 -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans' \
+          system "CFLAGS='-fuse-ld=mold -pipe -O2 -fipa-pta \
+          -fno-semantic-interposition -fdevirtualize-at-ltrans' \
              ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
@@ -105,7 +106,9 @@ class Glibc_build237 < Package
           system "sed -i 's,symbolic-link-prog := $(elf-objpfx)sln,symbolic-link-prog := /bin/true,g' ../Makerules"
         when 'x86_64'
           File.write('configparms', "slibdir=#{CREW_LIB_PREFIX}", mode: 'a+')
-          system "CFLAGS='-fuse-ld=mold -pipe -O2 -fipa-pta -fno-semantic-interposition -falign-functions=32 -fdevirtualize-at-ltrans' \
+          system "CFLAGS='-fuse-ld=mold -pipe -O2 -fipa-pta \
+          -fno-semantic-interposition -falign-functions=32 \
+          -fdevirtualize-at-ltrans' \
             ../configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX} \
@@ -171,7 +174,7 @@ class Glibc_build237 < Package
       when 'aarch64', 'armv7l'
         system "make -j1 DESTDIR=#{CREW_DEST_DIR} install || true" # "sln elf/symlink.list" fails on armv7l
       when 'i686', 'x86_64'
-        system "make -j1 DESTDIR=#{CREW_DEST_DIR} install"
+        system "make -j1 DESTDIR=#{CREW_DEST_DIR} install || make -j1 DESTDIR=#{CREW_DEST_DIR} install || true"
       end
       if @libc_version.to_f >= 2.32
         system "install -Dt #{CREW_DEST_PREFIX}/bin -m755 build-locale-archive"
@@ -307,7 +310,7 @@ class Glibc_build237 < Package
     # This is the array of locales to save:
     @locales = %w[C cs_CZ de_DE en es_MX fa_IR fr_FR it_IT ja_JP ru_RU tr_TR zh]
     @localedirs = %W[#{CREW_PREFIX}/share/locale #{CREW_PREFIX}/share/i18n/locales]
-    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build235.filelist")
+    @filelist = File.readlines("#{CREW_META_PATH}/glibc_build237.filelist")
     @localedirs.each do |localedir|
       Dir.chdir localedir do
         Dir['*'].each do |f|
@@ -320,7 +323,7 @@ class Glibc_build237 < Package
       end
     end
     puts 'Updating glibc package filelist...'.lightblue
-    File.open("#{CREW_META_PATH}/glibc_build235.filelist", 'w+') do |f|
+    File.open("#{CREW_META_PATH}/glibc_build237.filelist", 'w+') do |f|
       f.puts(@filelist)
     end
   end

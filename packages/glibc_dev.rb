@@ -1,6 +1,7 @@
 require 'package'
 require_relative 'glibc'
 require_relative 'glibc_build235'
+require_relative 'glibc_build237'
 
 class Glibc_dev < Package
   description 'glibc: everything except what is in glibc_lib'
@@ -15,6 +16,10 @@ class Glibc_dev < Package
     version Glibc_build235.version
     compatibility Glibc_build235.compatibility
     depends_on 'glibc_dev235'
+  when '2.37'
+    version Glibc_build235.version
+    compatibility Glibc_build235.compatibility
+    depends_on 'glibc_build237'
   else
     version Glibc.version
     compatibility Glibc.compatibility
