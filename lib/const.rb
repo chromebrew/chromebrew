@@ -1,7 +1,7 @@
 # lib/const.rb
 # Defines common constants used in different parts of crew
 
-CREW_VERSION = '1.46.9'
+CREW_VERSION = '1.47.0'
 
 # kernel architecture
 KERN_ARCH = `uname -m`.chomp
@@ -116,6 +116,8 @@ CREW_DEST_HOME          = File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
+
+CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose])
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 CREW_NPROC = if File.file?("#{CREW_PREFIX}/bin/distcc")

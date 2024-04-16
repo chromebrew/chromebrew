@@ -1,6 +1,8 @@
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
 
+CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
 
@@ -138,7 +140,7 @@ pkg_update_arr.each do |pkg|
       def self.preremove; end
       def self.remove; end
     end
-    Command.remove(pkg_object, @opt_verbose)
+    Command.remove(pkg_object, CREW_VERBOSE)
   else
     puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
   end
@@ -157,7 +159,7 @@ end
 
 unless @new_const_git_commit == CREW_CONST_GIT_COMMIT
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
-  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if @opt_verbose
+  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
 

@@ -24,6 +24,8 @@ class Ccache < CMake
   depends_on 'xdg_base'
   depends_on 'zstd' # R
 
+  print_source_bashrc
+
   cmake_options "-DCMAKE_INSTALL_SYSCONFDIR=#{CREW_PREFIX}/etc \
       -DENABLE_IPO=ON \
       -DENABLE_TESTING=OFF \

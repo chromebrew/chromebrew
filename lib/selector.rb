@@ -1,6 +1,8 @@
 # selector.rb: Prompt user to choose an option in a list of options
 # See packages/hunspell.rb for example usage
 require_relative 'color'
+require_relative 'crewlog'
+require 'io/console'
 
 class Selector
   @@default_prompt = {
@@ -10,7 +12,13 @@ class Selector
 
   def initialize(options, prompt = @@default_prompt, timeout = 10)
     @options = options
-    @timeout = timeout
+    # Set timeout to zero if a non-interactive console.
+    # Check noninteractive usage with `setsid command`.
+    @timeout = if !IO.console&.console_mode || IO.console&.winsize == [0, 0]
+                 1
+               else
+                 timeout
+               end
 
     # substitute expressions in the message ("%{variable}")
     @prompt = prompt.transform_values {|p| format(p, { total_opts: @options.size, default: @options[0][:value] }) }
