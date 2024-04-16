@@ -113,7 +113,7 @@ at_exit do
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
 
   if @pkg&.print_source_bashrc? || @pkg&.gnome?
-    # crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
+    crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
     # Check to see if the trap was set in #{CREW_PREFIX}/etc/profile
     # from crew_profile_base, because otherwise, USR1 will kill crosh.
     if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
@@ -142,7 +142,7 @@ def load_json
 end
 
 def save_json(json_object)
-  # crewlog 'Saving device.json...'
+  crewlog 'Saving device.json...'
   begin
     File.write File.join(CREW_CONFIG_PATH, 'device.json.tmp'), JSON.pretty_generate(JSON.parse(json_object.to_json))
   rescue StandardError
@@ -1309,10 +1309,10 @@ def install
 
   # Add to installed packages list in devices.json, but remove first if it is already there.
   if PackageUtils.installed?(@pkg.name)
-    # crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
+    crewlog "Removing package #{@pkg.name} from device.json since a version is already marked as installed."
     @device[:installed_packages].delete_if { |entry| entry[:name] == @pkg.name }
   end
-  # crewlog "Adding package #{@pkg.name} to device.json."
+  crewlog "Adding package #{@pkg.name} to device.json."
   @device[:installed_packages].push(name: @pkg.name, version: @pkg.version, sha256: PackageUtils.get_sha256(@pkg, build_from_source: @opt_source))
   save_json(@device)
 end
