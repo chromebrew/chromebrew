@@ -49,7 +49,7 @@ rescue Docopt::Exit => e
         puts "Could not understand \"crew #{ARGV.join(' ')}\".".lightred
         # Looking for similar commands
         unless CREW_COMMANDS.include?(ARGV[0])
-          similar = CREW_COMMANDS.select { |word| edit_distance(ARGV[0], word) < 4 }
+          similar = CREW_COMMANDS.split.select { |word| edit_distance(ARGV[0], word) < 4 }
           unless similar.empty?
             abort <<~EOT
               Did you mean?
