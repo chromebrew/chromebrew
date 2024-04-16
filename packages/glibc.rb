@@ -4,12 +4,12 @@ require_relative 'glibc_build227'
 require_relative 'glibc_build232'
 require_relative 'glibc_build233'
 require_relative 'glibc_build235'
+require_relative 'glibc_build237'
 
 class Glibc < Package
   description 'The GNU C Library project provides the core libraries for GNU/Linux systems.'
-  homepage Glibc_build235.homepage
-  license Glibc_build235.license
-  compatibility Glibc_build235.compatibility
+  homepage Glibc_build237.homepage
+  license Glibc_build237.license
 
   is_fake
 
@@ -34,5 +34,9 @@ class Glibc < Package
     version Glibc_build235.version
     compatibility Glibc_build235.compatibility
     depends_on 'glibc_lib235'
+  when '2.37'
+    version Glibc_build237.version
+    compatibility Glibc_build237.compatibility
+    depends_on 'glibc_lib237'
   end
 end
