@@ -16,7 +16,7 @@ class Binutils < Package
     aarch64: 'b688741aec17c9bc006b9767265b266a1422ff03664541db64dd4e26308b664d',
      armv7l: 'b688741aec17c9bc006b9767265b266a1422ff03664541db64dd4e26308b664d',
        i686: '94b5f0aba999a5a7858a5a0a33b76b5bd2e6fbb651f73d6b0d2ac8f1572c1083',
-     x86_64: '2c096f4fcd258dd989ce73d1939dfcd025372ae1505e5d23989044b5dd4b7df9'
+     x86_64: '59b5edbada9bbfd6485e1bc20cea5aa243a6a5a9ca05b142be31713becd37a25'
   })
   binary_compression 'tar.zst'
 
