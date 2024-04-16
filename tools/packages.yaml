@@ -6166,11 +6166,6 @@ url: https://github.com/hokaccha/nodebrew/releases
 activity: low
 ---
 kind: url
-name: nping
-url: https://nmap.org/dist/
-activity: low
----
-kind: url
 name: npth
 url: https://www.gnupg.org/ftp/gcrypt/npth
 activity: medium
