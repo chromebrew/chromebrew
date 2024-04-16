@@ -15,8 +15,6 @@ class Selector
     # Set timeout to zero if a non-interactive console.
     # Check noninteractive usage with `setsid command`.
     @timeout = if !IO.console&.console_mode || IO.console&.winsize == [0, 0]
-      # crewlog "IO.console&.console_mode is #{IO.console&.console_mode}"
-      # crewlog "IO.console&.winsize is #{IO.console&.winsize}"
                  1
                else
                  timeout
