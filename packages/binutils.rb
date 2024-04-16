@@ -13,10 +13,10 @@ class Binutils < Package
   source_sha256 'aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12'
 
   binary_sha256({
-    aarch64: '18cab64dbb525b4ae98a6c05ddea5d32029f86f90de51ea16b53f68ed38b73d8',
-     armv7l: '18cab64dbb525b4ae98a6c05ddea5d32029f86f90de51ea16b53f68ed38b73d8',
-       i686: '9fa43b03e93d1bfcb311bf7e263f71a9e30dd022090e325cf783ce594eca6716',
-     x86_64: '029c70874c1a17c3ff6f341e4cd76a92f1ffe2b764716936932a3e951bfd2020'
+    aarch64: 'b688741aec17c9bc006b9767265b266a1422ff03664541db64dd4e26308b664d',
+     armv7l: 'b688741aec17c9bc006b9767265b266a1422ff03664541db64dd4e26308b664d',
+       i686: '94b5f0aba999a5a7858a5a0a33b76b5bd2e6fbb651f73d6b0d2ac8f1572c1083',
+     x86_64: '2c096f4fcd258dd989ce73d1939dfcd025372ae1505e5d23989044b5dd4b7df9'
   })
   binary_compression 'tar.zst'
 
@@ -43,26 +43,26 @@ class Binutils < Package
   def self.build
     # gprofng is broken on i686 in binutils 2.40
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30006
-    @gprofng = ARCH == 'i686' || ARCH == 'x86_64' ? '--disable-gprofng' : ''
     Dir.mkdir 'build'
     Dir.chdir 'build' do
       system "../configure #{CREW_OPTIONS} \
+        --disable-bootstrap \
         --disable-gdb \
         --disable-gdbserver \
-        --disable-bootstrap \
         --disable-maintainer-mode \
-        #{@gprofng} \
         --enable-64-bit-bfd \
         --enable-colored-disassembly \
-        --enable-gold=default \
+        --enable-gold \
         --enable-install-libiberty \
         --enable-ld \
+        --enable-ld=default \
         --enable-lto \
         --enable-plugins \
         --enable-relro \
         --enable-shared \
         --enable-threads \
         --enable-vtable-verify \
+        #{ARCH == 'i686' || ARCH == 'x86_64' ? '--disable-gprofng' : ''} \
         --with-bugurl=https://github.com/chromebrew/chromebrew/issues/new \
         --with-lib-path=#{CREW_LIB_PREFIX} \
         --with-pic \
