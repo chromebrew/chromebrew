@@ -27,7 +27,7 @@ class Glibc_build237 < Package
   binary_sha256({
     aarch64: 'd9cac82b17d463b98caf5c29e143775d3aeed29df3851207ad930d9c5b4c391b',
      armv7l: 'd9cac82b17d463b98caf5c29e143775d3aeed29df3851207ad930d9c5b4c391b',
-     x86_64: 'e7977a6ad811776fbb8c3d54e11e408a5f9ffeee8b3d8bb666255695b3fc20d6'
+     x86_64: '07754223434ad59930ebca10f0adbd390700ebd93a43853b183ed30f0a0a33ca'
   })
 
   def self.patch
