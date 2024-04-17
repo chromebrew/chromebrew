@@ -60,7 +60,7 @@ Open a VT-2 terminal session with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>-></kbd> a
 Then run the installation script below:
 
 ```bash
-exec bash --init-file <(curl -Ls git.io/vddgY)
+bash <(curl -L git.io/vddgY) && . ~/.bashrc
 ```
 
 ## Help

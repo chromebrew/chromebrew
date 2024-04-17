@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on fail.
-set -e
+set -eE
 
 RESET='\e[0m'
 
@@ -11,6 +11,9 @@ echo_info() { echo -e "\e[1;33m${*}${RESET}" >&1; } # Use Yellow for information
 echo_success() { echo -e "\e[1;32m${*}${RESET}" >&1; } # Use Green for success messages.
 echo_intra() { echo -e "\e[1;34m${*}${RESET}" >&1; } # Use Blue for intrafunction messages.
 echo_out() { echo -e "\e[0;37m${*}${RESET}" >&1; } # Use Gray for program output.
+
+# Print a message before exit on error
+trap "echo_error 'An error occured during the installation :/'" ERR
 
 # Check if the script is being run as root.
 if [ "${EUID}" == "0" ]; then
@@ -367,8 +370,6 @@ echo "  ___ _                               _
 |     |/  |  /  |  /  \/ |/ |/ |  |_/ |  \/  |  |_/ /|   |   |\_
  \___/|   |_/   |_/\__/  |  |  |_/|__/\__/   |_/|__/  \_/ \_/
 "
-
-echo_info "Please run 'source ~/.bashrc' to set up the profile environment."
 
 echo_intra "
 Edit ${CREW_PREFIX}/etc/env.d/03-pager to change the default PAGER.
