@@ -26,7 +26,7 @@ class Glibc_lib237 < Package
   no_upstream_update
 
   def self.preflight
-   abort 'Glibc_lib requires glibc = 2.37.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.37')
+    abort 'Glibc_lib requires glibc = 2.37.' unless Gem::Version.new(LIBC_VERSION.to_s) == Gem::Version.new('2.37')
   end
 
   def self.install
