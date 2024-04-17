@@ -11,8 +11,8 @@ class Glibc_dev237 < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '18779266ab02bc47f080a3d12d710f6fca9539ce9d7d96d824bbb8d51294d530',
-     armv7l: '18779266ab02bc47f080a3d12d710f6fca9539ce9d7d96d824bbb8d51294d530',
+    aarch64: '7e4412de614113de0cfac4f7e6a82a5b9bc7007907457c4d36cfc7675e6464dd',
+     armv7l: '7e4412de614113de0cfac4f7e6a82a5b9bc7007907457c4d36cfc7675e6464dd',
      x86_64: '79fecb7302d1e7e1da24f6ddec16c672cc3d21e93c549930e48c5290f5a31939'
   })
 
