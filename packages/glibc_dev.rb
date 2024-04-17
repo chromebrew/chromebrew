@@ -17,9 +17,9 @@ class Glibc_dev < Package
     compatibility Glibc_build235.compatibility
     depends_on 'glibc_dev235'
   when '2.37'
-    version Glibc_build235.version
-    compatibility Glibc_build235.compatibility
-    depends_on 'glibc_build237'
+    version Glibc_build237.version
+    compatibility Glibc_build237.compatibility
+    depends_on 'glibc_dev237'
   else
     version Glibc.version
     compatibility Glibc.compatibility

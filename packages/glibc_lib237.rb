@@ -1,24 +1,22 @@
 require 'package'
-require_relative 'glibc_build235'
+require_relative 'glibc_build237'
 
 class Glibc_lib237 < Package
   description 'glibc libraries'
-  homepage Glibc_build235.homepage
+  homepage Glibc_build237.homepage
   version '2.37' # Do not use @_ver here, it will break the installer.
-  license Glibc_build235.license
+  license Glibc_build237.license
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bf8923dc078bac5eb3a507589efa451e777d150d1306f6017be233f72edfaaae',
-     armv7l: 'bf8923dc078bac5eb3a507589efa451e777d150d1306f6017be233f72edfaaae',
-     x86_64: 'bbb'
+    aarch64: '8e8ea16654e689209ebf82c01cc86808e991ac9b45819c3c6eea993a69967ac1',
+     armv7l: '8e8ea16654e689209ebf82c01cc86808e991ac9b45819c3c6eea993a69967ac1',
+     x86_64: '56b8c62ab11bc5e1a95bec2ad7e1e64ce7ee07aff7560a720c9a2d937ef42c5e'
   })
 
   depends_on 'glibc_build237' => :build
-  # depends_on 'glibc' # R
-  # depends_on 'glibc_lib' # R
 
   conflicts_ok
   no_shrink
