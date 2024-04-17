@@ -176,20 +176,19 @@ class Glibc_build237 < Package
       Dir.chdir CREW_DEST_LIB_PREFIX do
         puts "System glibc version is #{LIBC_VERSION}.".lightblue
         puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
-        @crew_libc_version = @libc_version
         case ARCH
         when 'aarch64', 'armv7l'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-armhf.so.3'
+          FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-armhf.so.3'
         when 'i686'
-          FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+          FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
         when 'x86_64'
-          FileUtils.ln_sf "/lib64/ld-#{@crew_libc_version}.so", 'ld-linux-x86-64.so.2'
+          FileUtils.ln_sf "/lib64/ld-#{@libc_version}.so", 'ld-linux-x86-64.so.2'
         end
         @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                         libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                         libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                         libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-        @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
+        @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
         @libraries.each do |lib|
           # Reject entries which aren't libraries ending in .so, and which aren't files.
           Dir["/#{ARCH_LIB}/#{lib}.so*"].reject { |f| File.directory?(f) }.each do |f|
@@ -234,24 +233,24 @@ class Glibc_build237 < Package
   def self.postinstall
     if File.exist?("#{CREW_LIB_PREFIX}/libc.so.6")
       @crew_libcvertokens = `#{CREW_LIB_PREFIX}/libc.so.6`.lines.first.chomp.split(/\s/)
-      @crew_libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
-      puts "Package glibc version is #{@crew_libc_version}.".lightblue
+      @libc_version = @crew_libcvertokens[@crew_libcvertokens.find_index('version') + 1].sub!(/[[:punct:]]?$/, '')
+      puts "Package glibc version is #{@libc_version}.".lightblue
     else
-      @crew_libc_version = LIBC_VERSION
+      @libc_version = LIBC_VERSION
     end
     @libraries = %w[ld libBrokenLocale libSegFault libanl libc libcrypt
                     libdl libm libmemusage libmvec libnsl libnss_compat libnss_db
                     libnss_dns libnss_files libnss_hesiod libpcprofile libpthread
                     libthread_db libresolv librlv librt libthread_db-1.0 libutil]
-    @libraries -= ['libpthread'] if @crew_libc_version.to_f >= 2.35
+    @libraries -= ['libpthread'] if @libc_version.to_f >= 2.35
     Dir.chdir CREW_LIB_PREFIX do
-      puts "System glibc version is #{@crew_libc_version}.".lightblue
+      puts "System glibc version is #{@libc_version}.".lightblue
       puts 'Creating symlinks to system glibc version to prevent breakage.'.lightblue
       case ARCH
       when 'aarch64', 'armv7l'
         FileUtils.ln_sf '/lib/ld-linux-armhf.so.3', 'ld-linux-armhf.so.3'
       when 'i686'
-        FileUtils.ln_sf "/lib/ld-#{@crew_libc_version}.so", 'ld-linux-i686.so.2'
+        FileUtils.ln_sf "/lib/ld-#{@libc_version}.so", 'ld-linux-i686.so.2'
       when 'x86_64'
         FileUtils.ln_sf '/lib64/ld-linux-x86-64.so.2', 'ld-linux-x86-64.so.2'
       end
@@ -286,10 +285,10 @@ class Glibc_build237 < Package
            exception: false
     FileUtils.mv "#{CREW_LIB_PREFIX}/locale/locale-archive", "#{CREW_LIB_PREFIX}/locale/locale-archive.tmpl"
     unless File.file?('')
-      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@crew_libc_version}/master/intl/locale.alias",
+      downloader "https://raw.githubusercontent.com/bminor/glibc/release/#{@libc_version}/master/intl/locale.alias",
                  'SKIP', "#{CREW_PREFIX}/share/locale/locale.alias"
     end
-    if @opt_verbose
+    if CREW_VERBOSE
       system 'build-locale-archive'
     else
       system 'build-locale-archive', %i[out err] => File::NULL
