@@ -6,21 +6,8 @@ class Glibc_build237 < Package
   license 'LGPL-2.1+, BSD, HPND, ISC, inner-net, rc, and PCRE'
   compatibility 'all'
   binary_compression 'tar.zst'
-
-  depends_on 'gawk' => :build
-  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
-  depends_on 'libidn2' => :build
-  depends_on 'texinfo' => :build
-  depends_on 'hashpipe' => :build
-
-  conflicts_ok
-  no_env_options
-  no_upstream_update
-
-  @libc_version = 2.37
-  # @libc_version = LIBC_VERSION
+  @libc_version = LIBC_VERSION
   version '2.37'
-  # Commit from https://github.com/bminor/glibc/commits/release/2.37/master/
   source_url 'https://github.com/bminor/glibc.git'
   git_hashtag 'glibc-2.37'
 
@@ -30,22 +17,28 @@ class Glibc_build237 < Package
      x86_64: '07754223434ad59930ebca10f0adbd390700ebd93a43853b183ed30f0a0a33ca'
   })
 
+  depends_on 'gawk' => :build
+  depends_on 'filecmd' # L Fixes creating symlinks on a fresh install.
+  depends_on 'libidn2' => :build
+  depends_on 'texinfo' => :build
+
+  conflicts_ok
+  no_env_options
+  no_upstream_update
+
   def self.patch
     FileUtils.mkdir 'fedora'
     # Patch to enable build-local-archive
-    system 'curl -Ls https://src.fedoraproject.org/rpms/glibc/raw/f30/f/glibc-fedora-locarchive.patch | \
-    hashpipe sha256 0acccf57d8c6e7de82871c61ccb845f7a1ae13ae1fbc65995d347de8367c7bb1 | \
-    patch -Np1 --binary'
-    system 'curl -Ls https://src.fedoraproject.org/rpms/glibc/raw/f30/f/build-locale-archive.c | \
-    hashpipe sha256 6834e8b8f2a987bf8adfd265c0e01665f102c7115db94b99ec36376b68e9d3fa > fedora/build-locale-archive.c'
+    downloader 'https://src.fedoraproject.org/rpms/glibc/raw/f30/f/glibc-fedora-locarchive.patch', '0acccf57d8c6e7de82871c61ccb845f7a1ae13ae1fbc65995d347de8367c7bb1'
+    system 'patch -Np1 -i glibc-fedora-locarchive.patch'
+    downloader 'https://src.fedoraproject.org/rpms/glibc/raw/f30/f/build-locale-archive.c', '6834e8b8f2a987bf8adfd265c0e01665f102c7115db94b99ec36376b68e9d3fa', 'fedora/build-locale-archive.c'
     system "sed -i 's,/lib/locale,/lib#{CREW_LIB_SUFFIX}/locale,g' fedora/build-locale-archive.c"
     system "sed -i 's,/usr/sbin/tzdata-update,/bin/true,g' fedora/build-locale-archive.c"
     system "sed -i 's,verbose,locale_verbose,g' fedora/build-locale-archive.c"
     system "sed -i 's,be_quiet,locale_be_quiet,g' fedora/build-locale-archive.c"
+
     @googlesource_branch = 'release-R123-15786.B'
     system "git clone --depth=1 -b  #{@googlesource_branch} https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay googlesource"
-    # Remove conflicting patches.
-    # FileUtils.rm 'googlesource/sys-libs/glibc/files/local/glibc-2.37/0009-Revert-Add-GLIBC_ABI_DT_RELR-for-DT_RELR-support.patch'
     Dir.glob('googlesource/sys-libs/glibc/files/local/glibc-2.37/*.patch').each do |patch|
       puts "patch -Np1 < #{patch} || true" if @opt_verbose
       system "patch -Np1 -F 10 -i #{patch} || true"
