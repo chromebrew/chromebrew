@@ -174,14 +174,10 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
     [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
   fi
 
-  if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" < "123" )); then
-    # Append the correct packages for systems running M122 and lower.
-    BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
-  elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
-    # Append the correct packages for systems running M123 onwards.
-    BOOTSTRAP_PACKAGES+=' glibc_lib237 zlibpkg gmp'
-  fi
+
+    BOOTSTRAP_PACKAGES+='libpkg gmp'
 fi
+sudo cp /lib64/libc.so* /usr/local/lib64 || sudo cp /lib/libc.so* /usr/local/lib;
 
 # Create the device.json file.
 cd "${CREW_CONFIG_PATH}"
