@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.46.10'
+CREW_VERSION = '1.47.2'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -114,6 +114,8 @@ CREW_DEST_HOME          = File.join(CREW_DEST_DIR, HOME)
 CREW_CACHE_DIR          = ENV.fetch('CREW_CACHE_DIR', "#{HOME}/.cache/crewcache")
 CREW_CACHE_BUILD        = ENV.fetch('CREW_CACHE_BUILD', '0').eql?('1')
 CREW_CACHE_FAILED_BUILD = ENV.fetch('CREW_CACHE_FAILED_BUILD', '0').eql?('1')
+
+CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose])
 
 # Set CREW_NPROC from environment variable, `distcc -j`, or `nproc`.
 CREW_NPROC = \

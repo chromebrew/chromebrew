@@ -1,6 +1,8 @@
 # lib/fixup.rb
 # Add fixups to be run during crew update here.
 
+CREW_VERBOSE = ARGV.intersect?(%w[-v --verbose]) unless defined?(CREW_VERBOSE)
+
 # remove deprecated directory
 FileUtils.rm_rf "#{HOME}/.cache/crewcache/manifest"
 
@@ -39,6 +41,7 @@ pkg_update_arr = [
   { pkg_name: 'libmfx', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture' },
   { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', pkg_deprecated: nil, comments: 'Renamed to match other pip packages.' },
   { pkg_name: 'meson', pkg_rename: 'mesonbuild', pkg_deprecated: nil, comments: 'Renamed to avoid conflict with buildsystems/meson.' },
+  { pkg_name: 'nping', pkg_rename: nil, pkg_deprecated: true, comments: 'Removed to avoid conflict with nmap.' },
   { pkg_name: 'qtbase', pkg_rename: 'qt5_base', pkg_deprecated: nil, comments: 'Qt packages renamed to qt5_*' },
   { pkg_name: 'qtcharts', pkg_rename: 'qt5_charts', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer Qt versions." },
@@ -138,7 +141,7 @@ pkg_update_arr.each do |pkg|
       def self.preremove; end
       def self.remove; end
     end
-    Command.remove(pkg_object, @opt_verbose)
+    Command.remove(pkg_object, CREW_VERBOSE)
   else
     puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
   end
@@ -157,7 +160,7 @@ end
 
 unless @new_const_git_commit == CREW_CONST_GIT_COMMIT
   puts 'Restarting crew update since there is an updated crew version.'.lightcyan
-  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if @opt_verbose
+  puts "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update".orange if CREW_VERBOSE
   exec "CREW_REPO=#{CREW_REPO} CREW_BRANCH=#{CREW_BRANCH} crew update"
 end
 

@@ -162,7 +162,10 @@ def external_downloader(uri, filename = File.basename(url), verbose = false)
   #      %<retry>: Will be substitute to #{CREW_DOWNLOADER_RETRY}
   #       %<url>s: Will be substitute to #{url}
   #    %<output>s: Will be substitute to #{filename}
-  curl_cmdline = 'curl %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s'
+  # i686 curl throws a "SSL certificate problem: self signed certificate in certificate chain" error.
+  # Only bypass this when we are using the system curl early in install.
+  @default_curl = `which curl`.chomp
+  curl_cmdline = ARCH == 'i686' && @default_curl == '/usr/bin/curl' ? 'curl %<verbose>s -kL -# --retry %<retry>s %<url>s -o %<output>s' : 'curl %<verbose>s -L -# --retry %<retry>s %<url>s -o %<output>s'
 
   # use CREW_DOWNLOADER if specified, use curl by default
   downloader_cmdline = CREW_DOWNLOADER || curl_cmdline

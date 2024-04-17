@@ -2,15 +2,16 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 require 'json'
 require 'package'
+require_relative '../const'
 
 class Pip < Package
   property :pip_install_extras, :pre_configure_options
 
   def self.install
-    puts 'Checking for pip updates'.orange if @opt_verbose
+    puts 'Checking for pip updates'.orange if CREW_VERBOSE
     system "python3 -s -m pip install -U pip | grep -v 'Requirement already satisfied'", exception: false
     @py_pkg = name.gsub('py3_', '')
-    puts "Checking for #{@py_pkg} python dependencies...".orange if @opt_verbose
+    puts "Checking for #{@py_pkg} python dependencies...".orange if CREW_VERBOSE
     @py_pkg_pypi = `curl -Ls https://pypi.org/pypi/#{@py_pkg}/json`.chomp
     @py_pkg_pypi_hash = JSON.parse(@py_pkg_pypi)
     @py_pkg_version = @py_pkg_pypi_hash['info']['version']
