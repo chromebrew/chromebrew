@@ -42,7 +42,6 @@ class Lmstudio < Package
 
   no_shrink
   no_compile_needed
-  print_source_bashrc
 
   def self.build
     File.write 'lmstudio.sh', <<~EOF

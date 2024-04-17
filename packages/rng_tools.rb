@@ -74,7 +74,6 @@ class Rng_tools < Package
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/startrngd ]; then' >> ~/.bashrc".lightblue
     puts "echo '  #{CREW_PREFIX}/bin/startrngd' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
     puts
   end
 end

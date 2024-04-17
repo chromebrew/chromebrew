@@ -21,7 +21,6 @@ class Musl_brotli < Package
 
   is_musl
   is_static
-  print_source_bashrc
 
   def self.build
     load "#{CREW_LIB_PATH}/lib/musl.rb"

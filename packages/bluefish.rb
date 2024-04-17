@@ -29,8 +29,6 @@ class Bluefish < Package
   depends_on 'mesa'
   depends_on 'xcb_util'
 
-  print_source_bashrc
-
   def self.build
     system 'filefix'
     system "./configure #{CREW_OPTIONS}"

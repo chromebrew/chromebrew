@@ -22,7 +22,6 @@ class Musl_zlib < Package
   is_musl
   is_static
   patchelf
-  print_source_bashrc
 
   def self.build
     system "#{MUSL_ENV_OPTIONS} ./configure --prefix=#{CREW_MUSL_PREFIX} \

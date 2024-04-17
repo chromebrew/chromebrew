@@ -29,7 +29,6 @@ class Musl_linuxheaders < Package
 
   no_env_options
   no_fhs
-  print_source_bashrc
 
   def self.install
     # make fails if it detects gold linker.

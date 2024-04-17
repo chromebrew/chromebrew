@@ -24,8 +24,6 @@ class Musl_cc_toolchain < Package
      x86_64: 'ca388d227d187db9b60c53aa191803882a9ac21bcb6c0d1d2815ea2bb8725023'
   })
 
-  print_source_bashrc
-
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_MUSL_PREFIX}/lib"
     FileUtils.cp_r '.', "#{CREW_DEST_MUSL_PREFIX}/", verbose: true

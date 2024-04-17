@@ -21,9 +21,4 @@ class Pdm < Package
       system "sed -i 's,#{CREW_DEST_DIR},,g' #{bin}"
     end
   end
-
-  def self.postinstall
-    puts "\nTo complete the installation, execute the following:".lightblue
-    puts "source #{HOME}/.bashrc\n".lightblue
-  end
 end

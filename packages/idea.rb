@@ -30,8 +30,6 @@ class Idea < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the install, execute the following:".lightblue
-    puts "source #{CREW_PREFIX}/etc/env.d/09-gdk_base".lightblue
     puts "\nTo get started, type 'idea'.\n".lightblue
   end
 

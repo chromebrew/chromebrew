@@ -23,7 +23,6 @@ class Rust < Package
 
   no_strip
   no_shrink
-  print_source_bashrc
 
   def self.install
     ENV['RUSTUP_PERMIT_COPY_RENAME'] = 'unstable'

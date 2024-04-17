@@ -22,7 +22,6 @@ class Musl_expat < Package
   is_musl
   is_static
   patchelf
-  print_source_bashrc
 
   def self.patch
     system 'filefix'

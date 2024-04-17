@@ -14,7 +14,6 @@ class Ldc < Package
   depends_on 'zlibpkg'
 
   no_compile_needed
-  print_source_bashrc
 
   def self.install
     FileUtils.mkdir_p CREW_DEST_LIB_PREFIX

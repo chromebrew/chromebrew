@@ -69,11 +69,4 @@ class Jellyfin_media_player < Package
     JELLYFIN_ENVD_EOF
     FileUtils.install 'jellyfinmediaplayer_env.d', "#{CREW_DEST_PREFIX}/etc/env.d/10-jellyfinmediaplayer", mode: 0o644
   end
-
-  def self.postinstall
-    puts
-    puts 'Please run the following to finish the install:'.orange
-    puts "source #{CREW_PREFIX}/etc/env.d/10-jellyfinmediaplayer".lightblue
-    puts
-  end
 end

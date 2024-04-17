@@ -52,7 +52,6 @@ class Httpd < Package
     puts "echo 'if [ -f #{CREW_PREFIX}/bin/apachectl ]; then' >> ~/.bashrc".lightblue
     puts "echo '  sudo #{CREW_PREFIX}/bin/apachectl start' >> ~/.bashrc".lightblue
     puts "echo 'fi' >> ~/.bashrc".lightblue
-    puts 'source ~/.bashrc'.lightblue
     puts
     puts 'To completely remove httpd, perform the following:'.lightblue
     puts 'crew remove httpd'.lightblue

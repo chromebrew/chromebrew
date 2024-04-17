@@ -340,6 +340,7 @@ else
   # Set mtimes of files to when the file was committed.
   git-restore-mtime -sq 2>/dev/null
 fi
+
 echo -e "${RESET}"
 
 echo "                       . .

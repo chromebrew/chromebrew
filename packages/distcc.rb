@@ -33,8 +33,6 @@ class Distcc < Autotools
   depends_on 'python3' => :build
   depends_on 'zlibpkg' # R
 
-  print_source_bashrc
-
   def self.patch
     system "sed -i 's/ install-gnome-data//g' Makefile.in"
   end
