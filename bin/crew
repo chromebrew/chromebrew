@@ -347,6 +347,7 @@ def update
     different_version = (package[:version] != @pkg.version)
     has_sha = !(PackageUtils.get_sha256(@pkg).to_s.empty? || package[:sha256].to_s.empty?)
     different_sha = has_sha && package[:sha256] != PackageUtils.get_sha256(@pkg)
+
     can_be_updated += 1 if different_version || different_sha
 
     if different_version && !different_sha && has_sha
