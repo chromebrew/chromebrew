@@ -351,8 +351,10 @@ def update
     can_be_updated += 1 if different_version || different_sha
 
     if different_version && !different_sha && has_sha
-      can_be_updated -= 1
-      puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
+      unless @pkg.no_compile_needed?
+        can_be_updated -= 1
+        puts "#{@pkg.name} has a version change but does not have updated binaries".yellow
+      end
     elsif different_version
       puts "#{@pkg.name} could be updated from #{package[:version]} to #{@pkg.version}"
     elsif !different_version && different_sha
