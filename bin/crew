@@ -347,10 +347,8 @@ def update
     different_version = (package[:version] != @pkg.version)
     has_sha = !(PackageUtils.get_sha256(@pkg).to_s.empty? || package[:sha256].to_s.empty?)
     different_sha = has_sha && package[:sha256] != PackageUtils.get_sha256(@pkg)
-    crewlog "#{@pkg.name}: different_version: #{different_version}, has_sha: #{has_sha}, different_sha: #{different_sha}, @pkg.no_compile_needed, #{@pkg.no_compile_needed?}"
     
     can_be_updated += 1 if different_version || different_sha
-    crewlog "#{@pkg.name}: different_version: #{different_version}, has_sha: #{has_sha}, different_sha: #{different_sha}, @pkg.no_compile_needed, #{@pkg.no_compile_needed?}" if different_version || different_sha
 
     if different_version && !different_sha && has_sha
       unless @pkg.no_compile_needed?
@@ -363,7 +361,6 @@ def update
       puts "#{@pkg.name} could be updated (rebuild)"
     end
   end
-  crewlog "can_be_updated: #{can_be_updated}"
 
   if can_be_updated.positive?
     puts "\n#{can_be_updated} packages can be updated."
