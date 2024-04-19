@@ -3,18 +3,18 @@ require 'buildsystems/meson'
 class Mpv < Meson
   description 'Video player based on MPlayer/mplayer2'
   homepage 'https://mpv.io/'
-  version '0.37.0'
+  version '0.38.0'
   license 'LGPL-2.1+, GPL-2+, BSD, ISC and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.34'
+  min_glibc '2.36'
   source_url 'https://github.com/mpv-player/mpv.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'cb53dfd91a02b33c74b66b336b394aeb04452338db8ac1cfe6b6a2ce7f0cc5a0',
-     armv7l: 'cb53dfd91a02b33c74b66b336b394aeb04452338db8ac1cfe6b6a2ce7f0cc5a0',
-     x86_64: '312bfa593d69e06fe97aad9bd3ea044f629c762b4403c304285483eec7cd17a1'
+    aarch64: '0d086ff079b65d9ee74829a6b5aad33c7165fe79a7ad5faca010dacc827452dd',
+     armv7l: '0d086ff079b65d9ee74829a6b5aad33c7165fe79a7ad5faca010dacc827452dd',
+     x86_64: 'fdfadb11bfe7f46aaee9c0dd0ba2d291b5f943d86974082d641bf2a6fc21a78a'
   })
 
   depends_on 'alsa_lib' # R
