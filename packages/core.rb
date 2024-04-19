@@ -3,12 +3,14 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.2'
+  version '2.3'
   license 'GPL-3+'
   compatibility 'all'
 
   is_fake
 
+  depends_on 'bash'
+  depends_on 'bash_completion'
   depends_on 'brotli'
   depends_on 'bzip2'
   depends_on 'c_ares'
@@ -40,6 +42,7 @@ class Core < Package
   depends_on 'libidn2'
   depends_on 'libmetalink'
   depends_on 'libnghttp2'
+  depends_on 'libnsl'
   depends_on 'libpipeline'
   depends_on 'libpsl'
   depends_on 'libseccomp'
