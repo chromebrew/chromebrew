@@ -98,7 +98,7 @@ CREW_DEST_WINE_PREFIX = File.join(CREW_DEST_PREFIX, CREW_WINE_PREFIX)
 CREW_DEST_MAN_PREFIX  = File.join(CREW_DEST_DIR, CREW_MAN_PREFIX)
 
 # Local constants for contributors.
-CREW_LOCAL_REPO_ROOT = Dir.exist?('.git') ? `git rev-parse --show-toplevel`.chomp : ''
+CREW_LOCAL_REPO_ROOT = `git rev-parse --show-toplevel 2> /dev/null`.chomp
 CREW_LOCAL_BUILD_DIR = "#{CREW_LOCAL_REPO_ROOT}/release/#{ARCH}"
 
 # The following is used in fixup.rb to determine if crew update needs to
