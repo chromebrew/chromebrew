@@ -3,20 +3,20 @@ require 'package'
 class Mutagen < Package
   description 'Mutagen provides real-time file synchronization and flexible network forwarding, extending the reach of your existing development tools to cloud-based containers and infrastructure.'
   homepage 'https://mutagen.io/'
-  version '0.17.2'
+  version '0.17.5'
   license 'GPL-2'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.2/mutagen_linux_arm_v0.17.2.tar.gz',
-     armv7l: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.2/mutagen_linux_arm_v0.17.2.tar.gz',
-       i686: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.2/mutagen_linux_386_v0.17.2.tar.gz',
-     x86_64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.2/mutagen_linux_amd64_v0.17.2.tar.gz'
+    aarch64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_arm_v0.17.5.tar.gz',
+     armv7l: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_arm_v0.17.5.tar.gz',
+       i686: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_386_v0.17.5.tar.gz',
+     x86_64: 'https://github.com/mutagen-io/mutagen/releases/download/v0.17.5/mutagen_linux_amd64_v0.17.5.tar.gz'
   })
   source_sha256({
-    aarch64: 'fc6475d5c0a275491a7a5228d03b41b7fb2a46dc054395c4b8003af9bd49e3a1',
-     armv7l: 'fc6475d5c0a275491a7a5228d03b41b7fb2a46dc054395c4b8003af9bd49e3a1',
-       i686: 'e9657d23a2b1ea7cb753fdbbb5c82063efceec1619bd516f4014018aa1e96bd6',
-     x86_64: '85d967462ade994d37fc8d4906579d33b6fbb1744bab4a7cceb0c12424fb0f1d'
+    aarch64: '96b0aac073d0ea902c1b8040ae88005dd1255bdefec01ee5a18003be7a30174c',
+     armv7l: '96b0aac073d0ea902c1b8040ae88005dd1255bdefec01ee5a18003be7a30174c',
+       i686: '0b98ef515688693c421e3794f9a767604b6868b6bcb6379b8bae70c651c9fd00',
+     x86_64: 'cabee0af590faf822cb5542437e254406b0f037df43781c02bf6eeac267911f6'
   })
 
   def self.install
@@ -34,6 +34,6 @@ class Mutagen < Package
   end
 
   def self.postinstall
-    puts "\nType 'mutagen' to get started.\n".lightblue
+    ExitMessage.add "\nType 'mutagen' to get started.\n".lightblue
   end
 end
