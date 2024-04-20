@@ -6906,6 +6906,11 @@ url: https://github.com/nbs-system/php-malware-finder
 activity: low
 ---
 kind: url
+name: phpbrew
+url: https://github.com/phpbrew/phpbrew/releases
+activity: low
+---
+kind: url
 name: phpsysinfo
 url: https://sourceforge.net/projects/phpsysinfo/files/phpsysinfo/
 activity: low
