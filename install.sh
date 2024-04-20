@@ -169,9 +169,9 @@ BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlibpkg gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
-  sudo cp /lib$LIB_SUFFIX/libc.so* /usr/local/
-  sudo chown chronos /usr/local/lib$LIB_SUFFIX/libc.so*
-  sudo chmod 777 /usr/local/lib$LIB_SUFFIX/libc.so*
+  sudo cp /lib$LIB_SUFFIX/libc.so* $CREW_PREFIX/lib$LIB_SUFFIX
+  sudo chown chronos $CREW_PREFIX/lib$LIB_SUFFIX/libc.so*
+  sudo chmod 777 $CREW_PREFIX/lib$LIB_SUFFIX/libc.so*
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
     [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
