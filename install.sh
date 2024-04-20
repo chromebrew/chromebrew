@@ -151,7 +151,7 @@ function curl () {
 }
 
 # This will create the directories.
-crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
+crew_folders="lib64 bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX libexec man sbin share var etc/crew/meta etc/env.d tmp/crew/dest"
 # shellcheck disable=SC2086
 # Quoting crew_folders leads to breakage.
 (cd "${CREW_PREFIX}" && mkdir -p ${crew_folders})
@@ -169,6 +169,9 @@ BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlibpkg gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
+  sudo cp /lib64/libc.so* /usr/local/
+  sudo chown chronos /usr/local/lib64/libc.so*
+  sudo chmod 777 /usr/local/lib64/libc.so*
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
     # Recent Arm systems have a cut down system.
     [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
