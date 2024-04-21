@@ -169,7 +169,7 @@ BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 [[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlibpkg gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
-  mkdir -p "$CREW_PREFIX/lib$LIB_SUFFIX/"
+  # shellcheck disable=SC2231
   for i in /lib$LIB_SUFFIX/libc.so*
   do
     sudo cp "$i" "$CREW_PREFIX/lib$LIB_SUFFIX/"
