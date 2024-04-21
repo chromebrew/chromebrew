@@ -35,9 +35,10 @@ class Package
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
   end
 
-  def self.load_package(pkg_file, pkg_name = File.basename(pkg_file, '.rb'))
+  def self.load_package(pkg_file)
     # self.load_package: load a package under 'Package' class scope
     #
+    pkg_name = File.basename(pkg_file, '.rb')
     class_name = pkg_name.capitalize
 
     # read and eval package script under 'Package' class
@@ -83,7 +84,7 @@ class Package
     # add current package to @checked_list for preventing extra checks
     @checked_list.merge!({ pkg_name => pkg_tags })
 
-    pkg_obj = load_package("#{CREW_PACKAGES_PATH}/#{pkg_name}.rb")
+    pkg_obj = load_package(File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"))
     is_source = pkg_obj.source?(ARCH.to_sym) or pkg_obj.build_from_source
     deps = pkg_obj.dependencies
 

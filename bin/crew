@@ -158,7 +158,7 @@ end
 def print_package(pkg_path, extra = false)
   pkg_name = File.basename pkg_path, '.rb'
   begin
-    set_package pkg_name, pkg_path
+    set_package pkg_path
   rescue StandardError => e
     warn "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
   end
@@ -193,9 +193,9 @@ def print_current_package(extra = false)
   puts ''
 end
 
-def set_package(pkg_name, pkg_path)
+def set_package(pkg_path)
   begin
-    @pkg = Package.load_package(pkg_path, pkg_name)
+    @pkg = Package.load_package(pkg_path)
   rescue SyntaxError => e
     warn "#{e.class}: #{e.message}".red
   end
@@ -215,7 +215,7 @@ def generate_compatible
   Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
     pkg_name = File.basename filename, '.rb'
     begin
-      set_package pkg_name, filename
+      set_package filename
     rescue StandardError => e
       puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
     end
@@ -235,10 +235,9 @@ def generate_compatible
   puts 'Generating compatible packages done.'.orange if CREW_VERBOSE
 end
 
-def search(pkg_name, silent = false)
-  pkg_path = File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb")
+def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
   begin
-    return set_package(pkg_name, pkg_path) if File.file?(pkg_path)
+    return set_package(pkg_path) if File.file?(pkg_path)
   rescue StandardError => e
     puts "Error with #{pkg_name}.rb: #{e}".lightred unless e.to_s.include?('uninitialized constant')
   end
@@ -258,7 +257,7 @@ def regexp_search(pkg_pat)
     Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |package_path|
       package_name = File.basename package_path, '.rb'
       begin
-        set_package package_name, package_path
+        set_package package_path
       rescue StandardError => e
         puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
       end
@@ -339,7 +338,7 @@ def update
 
   can_be_updated = 0
   @device[:installed_packages].each do |package|
-    search package[:name], true
+    search package[:name], silent: true
     unless @pkg
       puts "Package file for #{package[:name]} not found. :(".lightred if CREW_VERBOSE
       next
@@ -386,12 +385,12 @@ def upgrade(*pkgs, build_from_source: false)
       end
     end
 
-    pkg_ver_latest     = Package.load_package(pkg_file, pkg_name).version
+    pkg_ver_latest     = Package.load_package(pkg_file).version
     pkg_ver_installed  = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:version]
-    pkg_hash_latest    = PackageUtils.get_sha256(Package.load_package(pkg_file, pkg_name))
+    pkg_hash_latest    = PackageUtils.get_sha256(Package.load_package(pkg_file))
     pkg_hash_installed = @device[:installed_packages].select { |pkg| pkg[:name] == pkg_name } [0][:sha256]
 
-    return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest.to_s.empty? || Package.load_package(pkg_file, pkg_name).is_fake?
+    return pkg_hash_latest != pkg_hash_installed unless !pkg_hash_installed || pkg_hash_latest.to_s.empty? || Package.load_package(pkg_file).is_fake?
     return pkg_ver_latest != pkg_ver_installed
   end
 
@@ -1136,7 +1135,7 @@ def resolve_dependencies_and_install
     @to_postinstall = []
     resolve_dependencies
 
-    search origin, true
+    search origin, silent: true
     install
     @to_postinstall.append(@pkg.name)
     @to_postinstall.each do |dep|
@@ -1204,8 +1203,7 @@ def resolve_dependencies
 
   # run preflight check for dependencies
   @dependencies.each do |dep_name|
-    dep_pkg_path = File.join(CREW_PACKAGES_PATH, "#{dep_name}.rb")
-    Package.load_package(dep_pkg_path, dep_name).preflight
+    Package.load_package(File.join(CREW_PACKAGES_PATH, "#{dep_name}.rb")).preflight
   end
 
   return if @dependencies.empty?
@@ -1333,7 +1331,7 @@ def resolve_dependencies_and_build
       search dep
       post_install
     end
-    search origin, true
+    search origin, silent: true
     build_package CREW_LOCAL_BUILD_DIR
   rescue InstallError => e
     abort "#{@pkg.name} failed to build: #{e}".lightred
@@ -1595,7 +1593,7 @@ def upload(pkg_name = nil)
         end
       end
       # Use rubocop to sanitize package file, and let errors get flagged.
-      if @device[:installed_packages].any? { |elem| elem[:name] == 'ruby_rubocop' }
+      if PackageUtils.installed?('ruby_rubocop')
         puts "Using rubocop to sanitize #{pkg_file} .".orange
         system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
       else
@@ -1625,10 +1623,18 @@ def update_sha256(package, key, value)
 end
 
 def copy_package(pkg_name, prompt_msg = '')
+  pkg_file = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{pkg_name}.rb")
+  # Use rubocop to sanitize package file, and let errors get flagged.
+  if @device[:installed_packages].any? { |elem| elem[:name] == 'ruby_rubocop' }
+    puts "Using rubocop to sanitize #{pkg_file} .".orange
+    system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
+  else
+    puts 'Package '.lightred + 'ruby_rubocop'.orange + " is not installed. Rubocop will not be used to sanitize  #{pkg_file} . 😔 You may try this: ".lightred + 'crew install ruby_rubocop'.lightblue
+  end
   next_pkg = nil
   if @opt_force
-    FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-    puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+    FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
+    puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
   else
     # This pulls the operation from the calling function
     operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
@@ -1640,8 +1646,8 @@ def copy_package(pkg_name, prompt_msg = '')
       puts "#{operation.capitalize} skipped."
       next_pkg = true
     when '', 'y', 'yes'
-      FileUtils.cp "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/"
-      puts "\nCopied #{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb to #{CREW_PACKAGES_PATH}.\n".lightgreen
+      FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
+      puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
     else
       puts "I don't understand `#{response}`. :(".lightred
       puts "#{operation.capitalize} skipped."
@@ -1801,7 +1807,7 @@ end
 def postinstall_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
-    search @pkg_name, true
+    search @pkg_name, silent: true
     if @device[:installed_packages].any? { |elem| elem[:name] == @pkg_name }
       @pkg.postinstall
     else
