@@ -5671,6 +5671,11 @@ url: https://github.com/troglobit/mg/releases/
 activity: medium
 ---
 kind: url
+name: mhash
+url: https://sourceforge.net/projects/mhash/files/mhash/
+activity: none
+---
+kind: url
 name: micro
 url: https://github.com/zyedidia/micro/releases
 activity: high
