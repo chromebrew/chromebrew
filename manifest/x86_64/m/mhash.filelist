@@ -1,0 +1,13 @@
+/usr/local/include/mhash.h
+/usr/local/include/mutils/mglobal.h
+/usr/local/include/mutils/mhash.h
+/usr/local/include/mutils/mhash_config.h
+/usr/local/include/mutils/mincludes.h
+/usr/local/include/mutils/mtypes.h
+/usr/local/include/mutils/mutils.h
+/usr/local/lib64/libmhash.a
+/usr/local/lib64/libmhash.la
+/usr/local/lib64/libmhash.so
+/usr/local/lib64/libmhash.so.2
+/usr/local/lib64/libmhash.so.2.0.1
+/usr/local/share/man/man3/mhash.3.zst
