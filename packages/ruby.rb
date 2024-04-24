@@ -3,18 +3,18 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.0-2f65458' # Do not use @_ver here, it will break the installer.
+  version '3.3.1' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag '2f654588d9e0cefff1c23529d2f2672029e1bd21'
+  git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9929e3372a566e241e20cd2c263f2e401a9de09cf55d17f719abd1f5fe9601d7',
-     armv7l: '9929e3372a566e241e20cd2c263f2e401a9de09cf55d17f719abd1f5fe9601d7',
-       i686: 'c554a429edbc1d104be2f7a149f91b3892e81605dc550f26a918c2f8bb749c22',
-     x86_64: '9b87b663e42fb53f4591caa30f8cb47214dbca23b6246ea42639f9e6b9d05448'
+    aarch64: '84c69d34332e4da513506851d5ea50f64dfd1305800c606ebcd8e40af7f06055',
+     armv7l: '84c69d34332e4da513506851d5ea50f64dfd1305800c606ebcd8e40af7f06055',
+       i686: '1040ac0f437f16a2d4d6dacd46b72283fd9906bbd30eb1a0ea7d10b9f96bc9fa',
+     x86_64: 'c93d7e60c907c445cdd47fd0f485c28364317c5aa363b84f03793cd72f7f1a34'
   })
 
   depends_on 'ca_certificates' # L
@@ -27,6 +27,8 @@ class Ruby < Package
   depends_on 'openssl' # R
   depends_on 'rust' => :build
   depends_on 'zlibpkg' # R
+
+  conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlibpkg can be used
 
