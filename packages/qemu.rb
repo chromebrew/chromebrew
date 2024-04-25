@@ -51,6 +51,7 @@ class Qemu < Package
   depends_on 'libx11' # R
   depends_on 'libxkbcommon' # R
   depends_on 'linux_pam' # R
+  depends_on 'lzfse' => :build
   depends_on 'lzo' # R
   depends_on 'mesa' # R
   depends_on 'ncurses' # R
@@ -78,6 +79,7 @@ class Qemu < Package
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
       system "mold -run ../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
+        --enable-kvm \
         --enable-lto"
       @counter = 1
       @counter_max = 20

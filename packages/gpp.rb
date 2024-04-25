@@ -5,6 +5,7 @@ require 'buildsystems/autotools'
 
 class Gpp < Autotools
   description 'A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks'
+  homepage 'https://github.com/logological/gpp'
   version '2.28'
   license 'LGPL2.1'
   compatibility 'all'

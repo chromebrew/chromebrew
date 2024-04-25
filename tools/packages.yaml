@@ -5506,6 +5506,11 @@ url: https://github.com/lz4/lz4/releases
 activity: medium
 ---
 kind: url
+name: lzfse
+url: https://github.com/lzfse/lzfse/releases
+activity: none
+---
+kind: url
 name: lzip
 url: http://download.savannah.gnu.org/releases/lzip
 activity: low
