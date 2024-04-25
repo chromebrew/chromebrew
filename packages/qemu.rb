@@ -12,9 +12,9 @@ class Qemu < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a456ec0c880af058c52af09c79f194fd649f2ae085f47063c6e84df17474e685',
-     armv7l: 'a456ec0c880af058c52af09c79f194fd649f2ae085f47063c6e84df17474e685',
-     x86_64: '087f8260d4986ba07502045a01e772b7eb98e6b95838002024b36869307c3435'
+    aarch64: 'b3d3bf80bfc47a8c3c207491ae550772b7dc59c3c97a2dbf72cec5a340689575',
+     armv7l: 'b3d3bf80bfc47a8c3c207491ae550772b7dc59c3c97a2dbf72cec5a340689575',
+     x86_64: 'fa0ff88c69b94de74613314eae40edf6b15979fa16aa595060a72a2d73898ef7'
   })
 
   depends_on 'alsa_lib' # R
@@ -51,7 +51,7 @@ class Qemu < Package
   depends_on 'libx11' # R
   depends_on 'libxkbcommon' # R
   depends_on 'linux_pam' # R
-  depends_on 'lzfse' => :build
+  depends_on 'lzfse' # R
   depends_on 'lzo' # R
   depends_on 'mesa' # R
   depends_on 'ncurses' # R

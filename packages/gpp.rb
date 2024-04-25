@@ -14,16 +14,11 @@ class Gpp < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '250d4545d879fb41bcacd52fbb2ba52b3a5d2ca2b7517f3e539e518a447d3706',
-     armv7l: '250d4545d879fb41bcacd52fbb2ba52b3a5d2ca2b7517f3e539e518a447d3706',
-     i686: '1be2619edcb83802790428e1663cd2317436d667ac5e416ce2401a7f1a6a437f',
-     x86_64: '6b373f11e39a740775caacaf6d7affaadd9327a33d791a636ac5a26b7f38ccea'
+    aarch64: '5ceba12373c704072aef012bd21eade007d18684189c9502237787a812275b66',
+     armv7l: '5ceba12373c704072aef012bd21eade007d18684189c9502237787a812275b66',
+     i686: '260086851f61b4a1ddf8b23006f1c8b54d8e5a865f476a0d0e7767fc9a9a88d1',
+     x86_64: '8cd458b699e28dbf250fb0bf39fbeef47748c1d6738894a0b3957b5bc66981db'
   })
 
   depends_on 'glibc' # R
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    FileUtils.ln_s "#{CREW_PREFIX}/bin/gpp", "#{CREW_DEST_PREFIX}/bin/#{CREW_TGT}-gpp"
-  end
 end
