@@ -71,9 +71,9 @@
 /usr/local/share/vivaldi/locales/jbo.pak
 /usr/local/share/vivaldi/locales/ka.pak
 /usr/local/share/vivaldi/locales/kab.pak
+/usr/local/share/vivaldi/locales/kmr.pak
 /usr/local/share/vivaldi/locales/kn.pak
 /usr/local/share/vivaldi/locales/ko.pak
-/usr/local/share/vivaldi/locales/ku.pak
 /usr/local/share/vivaldi/locales/lt.pak
 /usr/local/share/vivaldi/locales/lv.pak
 /usr/local/share/vivaldi/locales/mk.pak
@@ -107,7 +107,6 @@
 /usr/local/share/vivaldi/locales/zh-CN.pak
 /usr/local/share/vivaldi/locales/zh-TW.pak
 /usr/local/share/vivaldi/product_logo_32.xpm
-/usr/local/share/vivaldi/relayproxy-linux
 /usr/local/share/vivaldi/resources.pak
 /usr/local/share/vivaldi/resources/vivaldi/_locales/af/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/am/messages.json
@@ -162,9 +161,9 @@
 /usr/local/share/vivaldi/resources/vivaldi/_locales/jbo/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ka/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/kab/messages.json
+/usr/local/share/vivaldi/resources/vivaldi/_locales/kmr/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/kn/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ko/messages.json
-/usr/local/share/vivaldi/resources/vivaldi/_locales/ku/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/ln/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/lt/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/lv/messages.json
@@ -206,7 +205,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-f503b16cd317995eb28402d43ce83ee5.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-ebc3d9ff6a1c731eb154a7b4eec8db13.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -335,6 +334,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/gmail.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/google-16x16.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/google.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/goonline.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/habr_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/hbo_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/hk01_com.png
@@ -709,6 +709,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/startup-static.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/startup.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/support_tony.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/symbol-reload.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/tony_thanks.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/unknown_file.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/unsynced_file.png
@@ -717,6 +718,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_chat_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_mail_default.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/vivaldi_rss_default.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-arc.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-brave.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-chrome.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-chromium.svg
@@ -727,6 +729,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-html-document.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-opera-12.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-opera.svg
+/usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-operagx.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-safari.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-vivaldi.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/welcomepage-yandex.svg
