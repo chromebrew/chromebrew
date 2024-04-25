@@ -29,6 +29,7 @@ class Audacity < Package
 
   def self.install
     FileUtils.rm_rf 'usr/share/glib-2.0'
+    FileUtils.mkdir_p CREW_DEST_PREFIX.to_s
     FileUtils.mv 'usr/share', CREW_DEST_PREFIX.to_s
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/audacity"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/applications"
