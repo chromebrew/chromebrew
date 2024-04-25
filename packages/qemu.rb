@@ -3,18 +3,18 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '8.2.1'
+  version '9.0.0'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.35'
+  min_glibc '2.36'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'aba64a65dffc4ae46ac5df5f0bae3fcc761dd6b9ddd04ffc6a749f02d8661300',
-     armv7l: 'aba64a65dffc4ae46ac5df5f0bae3fcc761dd6b9ddd04ffc6a749f02d8661300',
-     x86_64: 'b269c5e0ea7f3836bd9b9aa09cea7330432c7d615eeeb04195a6dcb0394cd838'
+    aarch64: 'b3d3bf80bfc47a8c3c207491ae550772b7dc59c3c97a2dbf72cec5a340689575',
+     armv7l: 'b3d3bf80bfc47a8c3c207491ae550772b7dc59c3c97a2dbf72cec5a340689575',
+     x86_64: 'fa0ff88c69b94de74613314eae40edf6b15979fa16aa595060a72a2d73898ef7'
   })
 
   depends_on 'alsa_lib' # R
@@ -51,6 +51,7 @@ class Qemu < Package
   depends_on 'libx11' # R
   depends_on 'libxkbcommon' # R
   depends_on 'linux_pam' # R
+  depends_on 'lzfse' # R
   depends_on 'lzo' # R
   depends_on 'mesa' # R
   depends_on 'ncurses' # R
@@ -78,6 +79,7 @@ class Qemu < Package
     FileUtils.mkdir_p 'build'
     Dir.chdir 'build' do
       system "mold -run ../configure #{CREW_OPTIONS.sub(/--target.*/, '')} \
+        --enable-kvm \
         --enable-lto"
       @counter = 1
       @counter_max = 20

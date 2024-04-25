@@ -73,12 +73,7 @@
 /usr/local/bin/qemu-x86_64
 /usr/local/bin/qemu-xtensa
 /usr/local/bin/qemu-xtensaeb
-/usr/local/include/fdt.h
-/usr/local/include/libfdt.h
-/usr/local/include/libfdt_env.h
 /usr/local/include/qemu-plugin.h
-/usr/local/lib/libfdt.a
-/usr/local/lib/pkgconfig/libfdt.pc
 /usr/local/libexec/qemu-bridge-helper
 /usr/local/libexec/virtfs-proxy-helper
 /usr/local/share/applications/qemu.desktop
@@ -140,6 +135,7 @@
 /usr/local/share/doc/qemu/devel/conflict-resolution.html
 /usr/local/share/doc/qemu/devel/control-flow-integrity.html
 /usr/local/share/doc/qemu/devel/decodetree.html
+/usr/local/share/doc/qemu/devel/docs.html
 /usr/local/share/doc/qemu/devel/ebpf_rss.html
 /usr/local/share/doc/qemu/devel/fuzzing.html
 /usr/local/share/doc/qemu/devel/index-api.html
@@ -152,7 +148,17 @@
 /usr/local/share/doc/qemu/devel/loads-stores.html
 /usr/local/share/doc/qemu/devel/maintainers.html
 /usr/local/share/doc/qemu/devel/memory.html
-/usr/local/share/doc/qemu/devel/migration.html
+/usr/local/share/doc/qemu/devel/migration/CPR.html
+/usr/local/share/doc/qemu/devel/migration/best-practices.html
+/usr/local/share/doc/qemu/devel/migration/compatibility.html
+/usr/local/share/doc/qemu/devel/migration/dirty-limit.html
+/usr/local/share/doc/qemu/devel/migration/features.html
+/usr/local/share/doc/qemu/devel/migration/index.html
+/usr/local/share/doc/qemu/devel/migration/main.html
+/usr/local/share/doc/qemu/devel/migration/mapped-ram.html
+/usr/local/share/doc/qemu/devel/migration/postcopy.html
+/usr/local/share/doc/qemu/devel/migration/vfio.html
+/usr/local/share/doc/qemu/devel/migration/virtio.html
 /usr/local/share/doc/qemu/devel/modules.html
 /usr/local/share/doc/qemu/devel/multi-process.html
 /usr/local/share/doc/qemu/devel/multi-thread-tcg.html
@@ -180,7 +186,7 @@
 /usr/local/share/doc/qemu/devel/tracing.html
 /usr/local/share/doc/qemu/devel/trivial-patches.html
 /usr/local/share/doc/qemu/devel/ui.html
-/usr/local/share/doc/qemu/devel/vfio-migration.html
+/usr/local/share/doc/qemu/devel/vfio-iommufd.html
 /usr/local/share/doc/qemu/devel/virtio-backends.html
 /usr/local/share/doc/qemu/devel/writing-monitor-commands.html
 /usr/local/share/doc/qemu/devel/zoned-storage.html
@@ -215,6 +221,7 @@
 /usr/local/share/doc/qemu/specs/acpi_nvdimm.html
 /usr/local/share/doc/qemu/specs/acpi_pci_hotplug.html
 /usr/local/share/doc/qemu/specs/edu.html
+/usr/local/share/doc/qemu/specs/fsi.html
 /usr/local/share/doc/qemu/specs/fw_cfg.html
 /usr/local/share/doc/qemu/specs/index.html
 /usr/local/share/doc/qemu/specs/ivshmem-spec.html
@@ -236,6 +243,7 @@
 /usr/local/share/doc/qemu/specs/vmgenid.html
 /usr/local/share/doc/qemu/specs/vmw_pvscsi-spec.html
 /usr/local/share/doc/qemu/system/arm/aspeed.html
+/usr/local/share/doc/qemu/system/arm/b-l475e-iot01a.html
 /usr/local/share/doc/qemu/system/arm/bananapi_m2u.html
 /usr/local/share/doc/qemu/system/arm/collie.html
 /usr/local/share/doc/qemu/system/arm/cpu-features.html
@@ -287,6 +295,7 @@
 /usr/local/share/doc/qemu/system/devices/nvme.html
 /usr/local/share/doc/qemu/system/devices/usb-u2f.html
 /usr/local/share/doc/qemu/system/devices/usb.html
+/usr/local/share/doc/qemu/system/devices/vhost-user-input.html
 /usr/local/share/doc/qemu/system/devices/vhost-user-rng.html
 /usr/local/share/doc/qemu/system/devices/vhost-user.html
 /usr/local/share/doc/qemu/system/devices/virtio-gpu.html
@@ -318,6 +327,7 @@
 /usr/local/share/doc/qemu/system/openrisc/emulation.html
 /usr/local/share/doc/qemu/system/openrisc/or1k-sim.html
 /usr/local/share/doc/qemu/system/openrisc/virt.html
+/usr/local/share/doc/qemu/system/ppc/amigang.html
 /usr/local/share/doc/qemu/system/ppc/embedded.html
 /usr/local/share/doc/qemu/system/ppc/powermac.html
 /usr/local/share/doc/qemu/system/ppc/powernv.html
@@ -432,6 +442,7 @@
 /usr/local/share/qemu/firmware/60-edk2-i386.json
 /usr/local/share/qemu/firmware/60-edk2-x86_64.json
 /usr/local/share/qemu/hppa-firmware.img
+/usr/local/share/qemu/hppa-firmware64.img
 /usr/local/share/qemu/keymaps/ar
 /usr/local/share/qemu/keymaps/bepo
 /usr/local/share/qemu/keymaps/cz

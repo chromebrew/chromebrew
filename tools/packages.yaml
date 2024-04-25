@@ -2790,6 +2790,11 @@ url: https://github.com/telmich/gpm/releases
 activity: none
 ---
 kind: url
+name: gpp
+url: https://github.com/logological/gpp/releases
+activity: low
+---
+kind: url
 name: gpt4all
 url: https://github.com/nomic-ai/gpt4all/releases
 activity: medium
@@ -5499,6 +5504,11 @@ kind: url
 name: lz4
 url: https://github.com/lz4/lz4/releases
 activity: medium
+---
+kind: url
+name: lzfse
+url: https://github.com/lzfse/lzfse/releases
+activity: none
 ---
 kind: url
 name: lzip
