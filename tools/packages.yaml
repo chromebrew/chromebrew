@@ -3931,6 +3931,11 @@ url: http://0pointer.de/lennart/projects/libdaemon/
 activity: none
 ---
 kind: url
+name: libdatrie
+url: https://github.com/tlwg/libdatrie/releases
+activity: none
+---
+kind: url
 name: libdazzle
 url: https://gitlab.gnome.org/GNOME/libdazzle/-/tags
 activity: medium
@@ -4918,6 +4923,11 @@ activity: none
 kind: url
 name: libtinfo
 url: http://downloads.sourceforge.net/project/karthas/release/
+activity: none
+---
+kind: url
+name: libthai
+url: https://github.com/tlwg/libthai/releases
 activity: none
 ---
 kind: url
