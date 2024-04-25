@@ -10,7 +10,7 @@ class Lzfse < CMake
   license 'BSD'
   compatibility 'all'
   source_url 'https://github.com/lzfse/lzfse.git'
-  git_hashtag 'lzfse-1.0'
+  git_hashtag "lzfse-#{version}"?
   binary_compression 'tar.zst'
 
   binary_sha256({
