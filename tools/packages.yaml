@@ -8021,6 +8021,11 @@ url: https://github.com/mtoyoda/sl/releases
 activity: none
 ---
 kind: url
+name: slack_cli
+url: https://api.slack.com/automation/cli/install-mac-linux
+activity: low
+---
+kind: url
 name: slang
 url: http://www.jedsoft.org/releases/slang
 activity: medium
