@@ -3,7 +3,7 @@ require 'package'
 class Terraform < Package
   description 'Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.'
   homepage 'https://www.terraform.io/'
-  version '1.8.1'
+  version '1.8.2'
   license 'Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode'
   compatibility 'all'
   source_url({
@@ -13,10 +13,10 @@ class Terraform < Package
      x86_64: "https://releases.hashicorp.com/terraform/#{version}/terraform_#{version}_linux_amd64.zip"
   })
   source_sha256({
-    aarch64: 'c2812f60b6cde793c12b83d0adfe94491b0b51cd85c020ae307d149b2b5e6d96',
-     armv7l: 'c2812f60b6cde793c12b83d0adfe94491b0b51cd85c020ae307d149b2b5e6d96',
-       i686: 'b93314e7883ce6b36f7f50e5736280291bf9c907a6cb3a64fa0045bfa2d89887',
-     x86_64: 'c3cb6c7cefef4cc3f8f4c4a2f574a8a00ff3996aca01a0724759375696552e24'
+    aarch64: 'defee79880898de86ea2dae8612f8a39d97bc5ab0bfe3c99773d3843f902e6de',
+     armv7l: 'defee79880898de86ea2dae8612f8a39d97bc5ab0bfe3c99773d3843f902e6de',
+       i686: 'b6cdf973c21e768c210102b8f65eb2717f082aced40e322574185f32d1918236',
+     x86_64: '3b5da3f4666bb77f9a0856bec2912e002e4c9937e22199c2dde358f0c1467888'
   })
 
   def self.install
