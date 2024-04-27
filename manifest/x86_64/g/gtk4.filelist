@@ -411,7 +411,7 @@
 /usr/local/lib64/gtk-4.0/4.0.0/printbackends/libprintbackend-file.so
 /usr/local/lib64/libgtk-4.so
 /usr/local/lib64/libgtk-4.so.1
-/usr/local/lib64/libgtk-4.so.1.1309.0
+/usr/local/lib64/libgtk-4.so.1.1500.0
 /usr/local/lib64/pkgconfig/gtk4-atspi.pc
 /usr/local/lib64/pkgconfig/gtk4-broadway.pc
 /usr/local/lib64/pkgconfig/gtk4-unix-print.pc
@@ -509,6 +509,7 @@
 /usr/local/share/locale/it/LC_MESSAGES/gtk40.mo
 /usr/local/share/locale/ja/LC_MESSAGES/gtk40.mo
 /usr/local/share/locale/ka/LC_MESSAGES/gtk40.mo
+/usr/local/share/locale/kab/LC_MESSAGES/gtk40.mo
 /usr/local/share/locale/kg/LC_MESSAGES/gtk40.mo
 /usr/local/share/locale/kk/LC_MESSAGES/gtk40.mo
 /usr/local/share/locale/km/LC_MESSAGES/gtk40.mo
