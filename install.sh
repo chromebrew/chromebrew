@@ -333,7 +333,7 @@ else
   git config --global init.defaultBranch main
 
   # Setup the folder with git information.
-  git init
+  git init --ref-format=reftable
   git remote add origin "https://github.com/${OWNER}/${REPO}"
 
   # Checkout, overwriting local files.
