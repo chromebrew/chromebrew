@@ -1,3 +1,5 @@
+# When upgrading git, be sure to update git_prompt binaries in tandem.
+
 require 'package'
 
 class Git < Package

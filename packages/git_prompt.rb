@@ -5,12 +5,20 @@ class Git_prompt < Package
   description 'Display the git branch and status in the command prompt'
   homepage 'https://github.com/git/git'
   version Git.version
-  # When upgrading git_prompt, be sure to upgrade git in tandem.
-  # puts "#{self} version differs from Git version #{Git.version}".orange if version != Git.version
   license 'GPL-2'
   compatibility 'all'
   source_url Git.source_url
   source_sha256 Git.source_sha256
+  binary_compression 'tar.zst'
+
+  binary_sha256({
+    aarch64: '1541e237594840c458b5a234278cb2150dc1f01d5e7d0c7932a8397e598a6837',
+     armv7l: '1541e237594840c458b5a234278cb2150dc1f01d5e7d0c7932a8397e598a6837',
+       i686: 'caa10c0cfa40b0c20454151433599482eee9a431a06856eeea1d4c0d455caa33',
+     x86_64: 'dab1b1d174feb393035fb6e3ba38cb53282ec827916580e46f43b2eaaff83554'
+  })
+
+  depends_on 'git' # L
 
   print_source_bashrc
 
