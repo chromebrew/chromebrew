@@ -4,18 +4,19 @@ require_relative 'git'
 class Git_prompt < Package
   description 'Display the git branch and status in the command prompt'
   homepage 'https://github.com/git/git'
-  version '2.44.0'
-  # When upgrading git_prompt, be sure to upgrade git in tandem.
-  puts "#{self} version differs from Git version #{Git.version}".orange if version != Git.version
+  version Git.version
   license 'GPL-2'
   compatibility 'all'
-  source_url 'SKIP'
+  source_url Git.source_url
+  source_sha256 Git.source_sha256
+  binary_compression 'tar.zst'
 
+  depends_on 'git' # L
+
+  no_compile_needed
   print_source_bashrc
 
   def self.build
-    downloader "https://raw.githubusercontent.com/git/git/v#{version}/contrib/completion/git-prompt.sh",
-               'f1eafdac2be85158de4cd62bca5b4404e3fc3b4f3604ab6e00e1dc44efe315cd'
     git_env = <<~EOF
 
       GIT_PS1_SHOWDIRTYSTATE=yes
@@ -27,11 +28,11 @@ class Git_prompt < Package
 
       PS1='\\[\\033[1;34m\\]\\u@\\H \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
     EOF
-    File.write('git-prompt.sh', git_env, mode: 'a')
+    File.write('contrib/completion/git-prompt.sh', git_env, mode: 'a')
   end
 
   def self.install
-    FileUtils.install 'git-prompt.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/git-prompt.sh", mode: 0o644
+    FileUtils.install 'contrib/completion/git-prompt.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/git-prompt.sh", mode: 0o644
   end
 
   def self.postinstall
