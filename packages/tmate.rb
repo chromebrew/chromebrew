@@ -14,10 +14,10 @@ class Tmate < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9484bfb931621e2b63c1d5b6401ba47336df5b0fb363020918749439b00cba2c',
-     armv7l: '9484bfb931621e2b63c1d5b6401ba47336df5b0fb363020918749439b00cba2c',
-       i686: '12821785cd37aee98841d606fc68cb7958454f3e0a9aedce8d795c3176e13218',
-     x86_64: '52c51e577c993bb4dcee5f1191bc73e442ffe27fc2ba83b4674bda1f4936bbcb'
+    aarch64: '53ca884b461b0e34612171b60c28b6838c9dc33ecb36c2d6da8befef1fba605b',
+     armv7l: '53ca884b461b0e34612171b60c28b6838c9dc33ecb36c2d6da8befef1fba605b',
+       i686: '5928cc1a9f8d2b2535f785f76e1547caf8991299aeeb847e7bd521aa973eea3e',
+     x86_64: 'dc79411626db463321de78c38d06e9183bd1aea714082a944c4bc298aeb3146d'
   })
 
   depends_on 'glibc' # R

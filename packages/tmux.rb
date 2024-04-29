@@ -1,30 +1,23 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Tmux < Package
+class Tmux < Autotools
   description 'tmux is a terminal multiplexer'
   homepage 'https://tmux.github.io/'
-  version '2.9'
+  version '3.4'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://github.com/tmux/tmux/releases/download/2.9/tmux-2.9.tar.gz'
-  source_sha256 '34901232f486fd99f3a39e864575e658b5d49f43289ccc6ee57c365f2e2c2980'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/tmux/tmux.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '99938a59550bdbc0354332c6960a8648fc5096d611ae0b595c1b806d6fbe9064',
-     armv7l: '99938a59550bdbc0354332c6960a8648fc5096d611ae0b595c1b806d6fbe9064',
-       i686: 'b8266f980bb84415518a129aa816486e76a518fe52766fbb683d2c3144ef106b',
-     x86_64: 'd16ffdb0c0cc7378587e43a06823404061e7db65a4fcbcaf7f59548c3eb3646f'
+    aarch64: 'dfe0099a97b2fa8d59d1a75adbc51583236f76c499cae9cd91e984884b157f77',
+     armv7l: 'dfe0099a97b2fa8d59d1a75adbc51583236f76c499cae9cd91e984884b157f77',
+       i686: '64623bec015fb85c9c3fc1c942f40fdcdaad6cdf137aecf56ca9ba3a32293e34',
+     x86_64: '7cff38ef399a12659899b5c40701ba9e17350838013d1ed90890af6cfcf7473a'
   })
 
-  depends_on 'libevent'
-
-  def self.build
-    system "CPPFLAGS=-I#{CREW_PREFIX}/include/ncurses ./configure --prefix=#{CREW_PREFIX}"
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  depends_on 'glibc' # R
+  depends_on 'libevent' # R
+  depends_on 'ncurses' # R
 end
