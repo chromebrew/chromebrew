@@ -3,18 +3,18 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '13.2.0' # Do not use @_ver here, it will break the installer.
+  version '14.0.1-7a00c45' # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'releases/gcc-13.2.0'
+  git_hashtag '7a00c459cbb913ac165a39d344a48fc27800bb0a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '13e3e7591636c84bf37875cddb67c012e7b4e8c39e26d069a2cf513718087bd5',
-     armv7l: '13e3e7591636c84bf37875cddb67c012e7b4e8c39e26d069a2cf513718087bd5',
-       i686: '1fb82c8c2466f405ad7839b3fc2bbfb43eaed8f0db97a6b2bb6b822a17b60759',
-     x86_64: '005bb11a10baef3970641c1ce243deb0d2ece1212a854cf592c1f7ab5428660f'
+    aarch64: '91aa6d6388d06d2abaf9e5f731fb4bfb78424bd3ad810c22b86aee9a79d065dd',
+     armv7l: '91aa6d6388d06d2abaf9e5f731fb4bfb78424bd3ad810c22b86aee9a79d065dd',
+       i686: '2418820b674b5b8df30f51221fda88ff578b6147e27a1b4f925d311a1c6ac113',
+     x86_64: '64d8b04b9a03342df7bedde7db03073330e45ac1a60d2f3442dd7766e5fd6138'
   })
 
   depends_on 'binutils' => :build
@@ -156,7 +156,7 @@ class Gcc_build < Package
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), 'make || make -j1')
+      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "make -j #{CREW_NPROC} || make -j1")
     end
   end
 
@@ -270,7 +270,8 @@ class Gcc_build < Package
       system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
 
       # install the libstdc++ man pages
-      system make_env, "make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
+      # This is broken in 14.0.1
+      # system make_env, "make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"
