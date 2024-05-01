@@ -6,19 +6,22 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    container: satmandu/crewbuild:amd64
     steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.1'
+      - name: Configure git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Generate boards.json
+        env:
+          CREW_KERNEL_VERSION: 5.1
+        run: |
+          ruby -Ctools json.rb
       - name: Generate JSON
         run: |
-          git config --global safe.directory /usr/local/lib/crew
-          git pull
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global credential.helper store
-          echo 'https://token:${{ secrets.GITHUB_TOKEN }}@github.com' > ~/.git-credentials
-          cd /usr/local/lib/crew/tools
-          ruby json.rb
-          # We only need to add repology.json for the first run of the script
-          git add repology.json
-          git commit -o repology.json -m "Update Repology JSON"
+          # The || true here means that empty commits fail, so we don't pollute the repo history.
+          git commit -o tools/repology.json -m "Update Repology JSON" || true
           git push
