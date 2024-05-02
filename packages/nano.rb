@@ -3,18 +3,18 @@ require 'package'
 class Nano < Package
   description 'Nano\'s ANOther editor, an enhanced free Pico clone.'
   homepage 'https://www.nano-editor.org/'
-  version '7.2'
+  version '8.0'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://nano-editor.org/dist/v7/nano-7.2.tar.xz'
-  source_sha256 '86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526'
+  source_url 'https://nano-editor.org/dist/v8/nano-8.0.tar.xz'
+  source_sha256 'c17f43fc0e37336b33ee50a209c701d5beb808adc2d9f089ca831b40539c9ac4'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
-     armv7l: '8e2fb30ca3fb61a64aae2e93d7320e07feb3b38838e39e3a2b5ffa5462034002',
-       i686: '32aee8fa703ffe9b01e53f2ba1c839bef2b7cefdeacf3471475afa27b7d5003d',
-     x86_64: 'fddc8a4be84f736f549bf480c84ee8259e4b00e2a88913ca1fe36c404d613a3e'
+    aarch64: '2a5e21ec14fa0151f56d95c341390887b003d4cf7e1ddd5eb4a739e62206e2ab',
+     armv7l: '2a5e21ec14fa0151f56d95c341390887b003d4cf7e1ddd5eb4a739e62206e2ab',
+       i686: '0a4b528065e6883276502a76a7e7302af72a2067883883d78f927f9cbf7e1a5b',
+     x86_64: '45833a83b98bddd0a8831fb9d4a5d6ae90d94d1e0c170d6acd3b57fd4cf55d5e'
   })
 
   depends_on 'filecmd' # R
@@ -68,8 +68,6 @@ class Nano < Package
   end
 
   def self.postinstall
-    puts
-    puts 'Personal configuration file is located in $HOME/.nanorc'.lightblue
-    puts
+    ExitMessage.add "\nPersonal configuration file is located in #{HOME}/.nanorc.\n".lightblue
   end
 end
