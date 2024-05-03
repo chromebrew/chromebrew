@@ -3,23 +3,26 @@ require 'buildsystems/meson'
 class Dbus < Meson
   description 'D-Bus is a message bus system, a simple way for applications to talk to one another.'
   homepage 'https://www.freedesktop.org/wiki/Software/dbus/'
-  version '1.15.8'
+  version '1.15.9-e277bf9'
   license 'Apache-2.0'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/dbus/dbus.git'
-  git_hashtag "dbus-#{version}"
+  git_hashtag 'e277bf9070fa76712c6f113fbccc7c3b107297dd'
   binary_compression 'tar.zst'
 
   binary_sha256({
-       i686: '65eedead3be809ec5a90dde5455cbee98efe660348497c8595a1d113abbf4c38',
-    aarch64: '1f0825d04afb193dc722ce475918764f670148d19dea7b9f6e74a19b8f3f8194',
-     armv7l: '1f0825d04afb193dc722ce475918764f670148d19dea7b9f6e74a19b8f3f8194',
-     x86_64: 'aba13b6097b7921ebd02c5e9a99cbe50ce00740671f526967ae9a3264d1308e0'
+       i686: '64873de4af66f26fc9be1afc93d38e8c725f7e12bf6ee80c81b9ad508f527303',
+    aarch64: 'c471c04d20149c1c32c98de34f30960c3e924a2bec35010b954bd15a10d08306',
+     armv7l: 'c471c04d20149c1c32c98de34f30960c3e924a2bec35010b954bd15a10d08306',
+     x86_64: '252cf6fc37542d9f956f72109e546002e3729cc3c60428114d02b66354e89b55'
   })
 
   depends_on 'expat' # R
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  depends_on 'libice' => :build unless ARCH == 'i686'
+  depends_on 'libsm' => :build unless ARCH == 'i686'
+  depends_on 'libx11' unless ARCH == 'i686' # R
 
   print_source_bashrc
 
@@ -31,7 +34,7 @@ class Dbus < Meson
       -Dxml_docs=disabled \
       -Druntime_dir=/var/run \
       -Dsystemd=disabled \
-      -Dx11_autolaunch=disabled"
+      -Dx11_autolaunch=#{ARCH == 'i686' ? 'disabled' : 'enabled'}"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

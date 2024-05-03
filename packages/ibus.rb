@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Ibus < Autotools
   description 'Next Generation Input Bus for Linux'
   homepage 'https://github.com/ibus/ibus/wiki'
-  version '1.5.30-rc1'
+  version '1.5.30'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ibus/ibus.git'
@@ -11,9 +11,9 @@ class Ibus < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'bb9f81191d52c9b1980f1a9a2eb6d6802aaea488815d327a89eff72b02a3fff8',
-     armv7l: 'bb9f81191d52c9b1980f1a9a2eb6d6802aaea488815d327a89eff72b02a3fff8',
-     x86_64: 'd16c5dc798a4faa30e9dc3d0aad65127cbe01ef0639df54d6ab1786600619609'
+    aarch64: 'f6ff0b2ddfdb2745f81392bebb0e8c17ed4cd2125fe9de5a6a7cdbcc3896fa2f',
+     armv7l: 'f6ff0b2ddfdb2745f81392bebb0e8c17ed4cd2125fe9de5a6a7cdbcc3896fa2f',
+     x86_64: '61e86129203821d91959f3b01f4b0020efea0e4f8d542755bf0317b6469f66d9'
   })
 
   depends_on 'at_spi2_core' # R
@@ -35,6 +35,7 @@ class Ibus < Autotools
   depends_on 'hicolor_icon_theme' => :build
   depends_on 'iso_codes' => :build
   depends_on 'libbsd' # R
+  depends_on 'libdbusmenu_gtk3' # R
   depends_on 'libnotify' # R
   depends_on 'libx11' # R
   depends_on 'libxau' # R
