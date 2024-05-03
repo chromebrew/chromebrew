@@ -3,7 +3,7 @@ require 'package'
 class Llvm18_build < Package
   description 'The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.'
   homepage 'http://llvm.org/'
-  version '18.1.4'
+  version '18.1.5'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
   compatibility 'all'
   source_url 'https://github.com/llvm/llvm-project.git'
@@ -11,10 +11,10 @@ class Llvm18_build < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '57e4b0b2f90ac2ea3d770c71ad87654cab9e3ae608af26c0601ae7989c9d6c04',
-     armv7l: '57e4b0b2f90ac2ea3d770c71ad87654cab9e3ae608af26c0601ae7989c9d6c04',
-       i686: 'db03e90e4976ff09a1b77a1d9b119d5fff5e6e5d40a821e7be36026298c1b4df',
-     x86_64: '021ce33ea1baa4ebff7af990fd5391e0170c802d263177474c925a45db9283fe'
+    aarch64: '8a82d2f8c525712d1a2a73e3ce1250f6d37e1d1d9bf88c238f5a180e95a05801',
+     armv7l: '8a82d2f8c525712d1a2a73e3ce1250f6d37e1d1d9bf88c238f5a180e95a05801',
+       i686: 'e2aaa26500811ae934604ead9323008de129cb057fcc86769affb55171f233a3',
+     x86_64: 'ccce0605b99c1f90c74ae0e0d16cc864544ec4a7277ecef7c24fbe34a84c2a86'
   })
 
   depends_on 'ccache' => :build
