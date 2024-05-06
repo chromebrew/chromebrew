@@ -11,10 +11,10 @@ class Wayland_info < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '3828d0f89df0ddb1de8d38bb2c28fc51d771bed76d202a5b14810565d7ae55f0',
-     armv7l: '3828d0f89df0ddb1de8d38bb2c28fc51d771bed76d202a5b14810565d7ae55f0',
-       i686: '939c0eaeeec9fcfdf7e54bc1d288ccd3ec23734500c9b2e201039115b00ef3d0',
-     x86_64: 'fa833e8a3e633eb6530674fc7a74abe73148f30a98df10991add2b5491c7e9d4'
+    aarch64: '2e9a0b23b60ad89d46a579661f88e92de74d23f0400b7b89c0873088255c64ba',
+     armv7l: '2e9a0b23b60ad89d46a579661f88e92de74d23f0400b7b89c0873088255c64ba',
+       i686: '8700677d65661f0c0264a628edf3b7d549973fea47a09ef079c6ccc9f1baacf7',
+     x86_64: '3dd8ce56664f9affa0d56bf7c3a36f6d99b6f7a723edbc4694540b4df5624281'
   })
 
   depends_on 'glibc' # R
