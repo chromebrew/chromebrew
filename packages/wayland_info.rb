@@ -1,7 +1,7 @@
 require 'buildsystems/meson'
 
-class Wayland_utils < Meson
-  description 'wayland-info is a utility for displaying information about the Wayland protocols supported by a Wayland compositor.'
+class Wayland_info < Meson
+  description 'Provides wayland-info, a standalone version of the weston-info utility for displaying information about the Wayland protocols supported by a Wayland compositor.'
   homepage 'https://gitlab.freedesktop.org/wayland/wayland-utils'
   version '1.2.0'
   license 'MIT/Expat'

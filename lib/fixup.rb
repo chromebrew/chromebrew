@@ -61,7 +61,6 @@ pkg_update_arr = [
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
-  { pkg_name: 'wayland_info', pkg_rename: 'wayland_utils', pkg_deprecated: nil, comments: 'Renamed upstream.' },
   { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
 ]
 
