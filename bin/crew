@@ -112,22 +112,6 @@ at_exit do
   require 'active_support/core_ext/object/blank'
   GnomePostinstall.run unless GnomePostinstall.gnome_packages.blank?
 
-  if @pkg&.print_source_bashrc? || @pkg&.gnome?
-    crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
-    # Check to see if the trap was set in #{CREW_PREFIX}/etc/profile
-    # from crew_profile_base, because otherwise, USR1 will kill crosh.
-    if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
-      crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
-      Process.kill('USR1', Process.ppid)
-    else
-      ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
-
-        To finish the installation, please execute the following:
-        source ~/.bashrc
-      PRINT_SOURCE_BASHRC_EOT
-    end
-  end
-
   # Print exit messages.
   ExitMessage.print
 end
@@ -1167,7 +1151,24 @@ def resolve_dependencies_and_install
     (2) Execute `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` to disable ASLR.
     Warning: Disabling ASLR may create security issues, use it at your own risk!
   EOT
+  # Run reload bashrc hook only for installs and reinstalls.
+  at_exit do
+    if @pkg&.print_source_bashrc? || @pkg&.gnome?
+      crewlog "@pkg.print_source_bashrc?:#{@pkg.print_source_bashrc?} @pkg.gnome?:#{@pkg.gnome?}"
+      # Check to see if the trap was set in #{CREW_PREFIX}/etc/profile
+      # from crew_profile_base, because otherwise, USR1 will kill crosh.
+      if File.read("/proc/#{Process.ppid}/comm").include?('[trap set]')
+        crewlog 'USR1 trap exists. Sourcing ~/.bashrc .'
+        Process.kill('USR1', Process.ppid)
+      else
+        ExitMessage.add <<~PRINT_SOURCE_BASHRC_EOT.lightblue, print_last: true
 
+          To finish the installation, please execute the following:
+          source ~/.bashrc
+        PRINT_SOURCE_BASHRC_EOT
+      end
+    end
+  end
   puts "#{@pkg.name.capitalize} installed!".lightgreen
   @resolve_dependencies_and_install = 0
 end
