@@ -32,7 +32,7 @@ class Sommelier < Package
   depends_on 'psmisc' # L
   depends_on 'py3_jinja2' => :build
   depends_on 'wayland' # R
-  depends_on 'wayland_info' # L
+  depends_on 'wayland_utils' # L
   depends_on 'xauth' # L
   depends_on 'xhost' # for xhost in sommelierd script
   depends_on 'xkbcomp' # The sommelier log complains if this isn't installed.

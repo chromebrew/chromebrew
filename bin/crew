@@ -1195,9 +1195,10 @@ def resolve_dependencies
   # leave only dependency names (remove all package attributes returned by @pkg.get_deps_list)
   @dependencies.map!(&:keys).flatten!
 
-  # abort if we have incompatible dependencies
-  abort "Some dependencies are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred if @dependencies.any? { |dep| !PackageUtils.compatible?(Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb")) }
-
+  # abort & identify incompatible dependencies.
+  @dependencies.each do |dep|
+    abort "Some dependencies e.g., #{dep}, are not compatible with your device architecture (#{ARCH}). Unable to continue.".lightred unless PackageUtils.compatible?(Package.load_package("#{CREW_PACKAGES_PATH}/#{dep}.rb"))
+  end
   # leave only not installed packages in dependencies
   @dependencies.reject! { |dep_name| @device[:installed_packages].any? { |pkg| pkg[:name] == dep_name } }
 

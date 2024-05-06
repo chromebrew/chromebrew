@@ -1,21 +1,20 @@
 require 'buildsystems/meson'
 
-class Wayland_info < Meson
+class Wayland_utils < Meson
   description 'wayland-info is a utility for displaying information about the Wayland protocols supported by a Wayland compositor.'
   homepage 'https://gitlab.freedesktop.org/wayland/wayland-utils'
   version '1.2.0'
   license 'MIT/Expat'
   compatibility 'all'
-  min_glibc '2.34'
   source_url 'https://gitlab.freedesktop.org/wayland/wayland-utils.git'
   git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fe9c7444babd95c443f4807a08a5f5441d7c0827f53e5c2a4a38fd083e6edec1',
-     armv7l: 'fe9c7444babd95c443f4807a08a5f5441d7c0827f53e5c2a4a38fd083e6edec1',
-       i686: '93adf54ced18ea647a10be36a96c1e2b369149d5d6a584b55d30818ab88ab479',
-     x86_64: '74ab29066adc68ed529bee0f1e57314a9244b5d9bb2109c193c52ebf5a709851'
+    aarch64: '3828d0f89df0ddb1de8d38bb2c28fc51d771bed76d202a5b14810565d7ae55f0',
+     armv7l: '3828d0f89df0ddb1de8d38bb2c28fc51d771bed76d202a5b14810565d7ae55f0',
+       i686: '939c0eaeeec9fcfdf7e54bc1d288ccd3ec23734500c9b2e201039115b00ef3d0',
+     x86_64: 'fa833e8a3e633eb6530674fc7a74abe73148f30a98df10991add2b5491c7e9d4'
   })
 
   depends_on 'glibc' # R
