@@ -19,12 +19,6 @@ class Command
       return
     end
 
-    # We can't remove a package if we don't have the filelist.
-    unless File.file?(File.join(CREW_META_PATH, "#{pkg.name}.filelist"))
-      puts "Unable to remove package #{pkg.name} as it does not have a filelist.".lightred
-      return
-    end
-
     # Perform any operations required prior to package removal.
     pkg.preremove
 
