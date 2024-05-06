@@ -9023,7 +9023,7 @@ activity: high
 kind: url
 name: wayland_info
 url: https://gitlab.freedesktop.org/wayland/wayland-utils/-/tags
-activity: medium
+activity: low
 ---
 kind: url
 name: wayland_protocols
