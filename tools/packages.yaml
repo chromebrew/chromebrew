@@ -4982,8 +4982,8 @@ activity: medium
 ---
 kind: url
 name: libunwind
-url: http://download.savannah.gnu.org/releases/libunwind
-activity: none
+url: https://github.com/libunwind/libunwind/releases
+activity: medium
 ---
 kind: url
 name: liburcu
