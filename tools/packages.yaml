@@ -9016,6 +9016,11 @@ url: https://wayland.freedesktop.org/releases.html
 activity: high
 ---
 kind: url
+name: wayland_info
+url: https://gitlab.freedesktop.org/wayland/wayland-utils/-/tags
+activity: low
+---
+kind: url
 name: wayland_protocols
 url: https://wayland.freedesktop.org/releases.html
 activity: high
@@ -9024,11 +9029,6 @@ kind: url
 name: wayland_proxy_virtwl
 url: https://github.com/talex5/wayland-proxy-virtwl
 activity: none
----
-kind: url
-name: wayland_utils
-url: https://gitlab.freedesktop.org/wayland/wayland-utils/-/tags
-activity: low
 ---
 kind: url
 name: waypipe
