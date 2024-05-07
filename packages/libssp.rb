@@ -18,6 +18,12 @@ class Libssp < Package
     binary_sha256({
          i686: 'f1e548a41f577f4865675e8b280fb949c7a10459980b652d24b80d7f86e673a5'
     })
+  when '2.27'
+    binary_sha256({
+      aarch64: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
+       armv7l: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
+       x86_64: '2471f3db91744ff93b97fae23e11167ef7f6bc88b51c0fad35c548e76175dbba'
+    })
   when '2.37'
     binary_sha256({
       aarch64: 'abe1a6d16f4915676186a0bebb009d55ca5ac9e1bb59eb3c9e33e40bd13f10c1',
