@@ -3,19 +3,25 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '14.0.1-7a00c45' # Do not use @_ver here, it will break the installer.
+  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag '7a00c459cbb913ac165a39d344a48fc27800bb0a'
+  git_hashtag 'releases/gcc-14.1.0'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '91aa6d6388d06d2abaf9e5f731fb4bfb78424bd3ad810c22b86aee9a79d065dd',
-     armv7l: '91aa6d6388d06d2abaf9e5f731fb4bfb78424bd3ad810c22b86aee9a79d065dd',
-       i686: '2418820b674b5b8df30f51221fda88ff578b6147e27a1b4f925d311a1c6ac113',
-     x86_64: '64d8b04b9a03342df7bedde7db03073330e45ac1a60d2f3442dd7766e5fd6138'
-  })
+  case LIBC_VERSION
+  when '2.23'
+    binary_sha256({
+         i686: '0850517263680419c1ae4152ba8237a5ee1d40651b31832f211ed450df94999c'
+    })
+  when '2.37'
+    binary_sha256({
+      aarch64: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
+       armv7l: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
+       x86_64: '88aa03f986b1c3528ae155b0b5e886437b526a04e070fcd0dbf43a2684db01ac'
+    })
+  end
 
   depends_on 'binutils' => :build
   depends_on 'ccache' => :build
