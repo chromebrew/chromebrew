@@ -4,7 +4,7 @@ require_relative 'gcc_build'
 class Gcc_lib < Package
   description 'GCC shared libs except libgccjit'
   homepage Gcc_build.homepage
-  version '13.2.0' # Do not use @_ver here, it will break the installer.
+  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license Gcc_build.license
   # When upgrading gcc_build, be sure to upgrade gcc_lib, gcc_dev, and libssp in tandem.
   puts "#{self} version differs from gcc version #{Gcc_build.version}".orange if version.to_s.gsub(/-.*/,
@@ -13,12 +13,18 @@ class Gcc_lib < Package
   source_url 'SKIP'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '04c6f1af5d8b005dcea7d0050f7ea52d8c4a37def289287e590000056d707e67',
-     armv7l: '04c6f1af5d8b005dcea7d0050f7ea52d8c4a37def289287e590000056d707e67',
-       i686: 'b0aeb79cfc7df8b46b41f36902350ac94e9a7e0f04678f85c0fbb01a24f86235',
-     x86_64: '386695ced2bc2aeb93fc96b2176f3638a3ac0271667bdd9b058ff14bf0e97256'
-  })
+  case LIBC_VERSION
+  when '2.23'
+    binary_sha256({
+         i686: '192f52beaa24ebbf3e1ae1787c9f12c75ad59e7f7885729d90b7c40b1177d796'
+    })
+  when '2.37'
+    binary_sha256({
+      aarch64: 'aede35bafb5eec105327e8663c06b409e4f13ad662e8e6e472f35fe715dda49c',
+       armv7l: 'aede35bafb5eec105327e8663c06b409e4f13ad662e8e6e472f35fe715dda49c',
+       x86_64: '0ecf2f8513b209d2f0ee098a3c9dba904d697e23b497e28fef90d07e9ba94277'
+    })
+  end
 
   depends_on 'gcc_build' => :build
   depends_on 'glibc' # R

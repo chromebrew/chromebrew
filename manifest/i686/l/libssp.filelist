@@ -1,7 +1,7 @@
-/usr/local/lib/gcc/i686-cros-linux-gnu/13/include/ssp/ssp.h
-/usr/local/lib/gcc/i686-cros-linux-gnu/13/include/ssp/stdio.h
-/usr/local/lib/gcc/i686-cros-linux-gnu/13/include/ssp/string.h
-/usr/local/lib/gcc/i686-cros-linux-gnu/13/include/ssp/unistd.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/14/include/ssp/ssp.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/14/include/ssp/stdio.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/14/include/ssp/string.h
+/usr/local/lib/gcc/i686-cros-linux-gnu/14/include/ssp/unistd.h
 /usr/local/lib/libssp.a
 /usr/local/lib/libssp.la
 /usr/local/lib/libssp.so
