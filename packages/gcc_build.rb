@@ -15,6 +15,12 @@ class Gcc_build < Package
     binary_sha256({
          i686: '0850517263680419c1ae4152ba8237a5ee1d40651b31832f211ed450df94999c'
     })
+  when '2.27'
+    binary_sha256({
+      aarch64: 'c53f34ca91bf3eee1ac207b4054c41928da311bf4fa55f8595cc21f1285d398d',
+       armv7l: 'c53f34ca91bf3eee1ac207b4054c41928da311bf4fa55f8595cc21f1285d398d',
+       x86_64: '387c1b91fb0fa7d939744a42bbf836ea8e47b005a325e7012a937c8f0fb9ec7f'
+    })
   when '2.37'
     binary_sha256({
       aarch64: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
