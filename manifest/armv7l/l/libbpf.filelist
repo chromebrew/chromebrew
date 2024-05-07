@@ -14,5 +14,5 @@
 /usr/local/lib/libbpf.a
 /usr/local/lib/libbpf.so
 /usr/local/lib/libbpf.so.1
-/usr/local/lib/libbpf.so.1.1.0
+/usr/local/lib/libbpf.so.1.4.1
 /usr/local/lib/pkgconfig/libbpf.pc

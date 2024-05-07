@@ -6,7 +6,7 @@ require 'package'
 class Libbpf < Package
   description 'Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
   homepage 'https://github.com/libbpf/libbpf'
-  version '1.1.0'
+  version '1.4.1'
   license 'LGPL2.1'
   compatibility 'aarch64 armv7l x86_64'
   source_url 'https://github.com/libbpf/libbpf.git'
@@ -14,9 +14,9 @@ class Libbpf < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7cc452dff12174b961543b3553395eb7f1cdaf0447a3adcb65d250a25a94571a',
-     armv7l: '7cc452dff12174b961543b3553395eb7f1cdaf0447a3adcb65d250a25a94571a',
-     x86_64: '2c42149ed642aca1295c9b2fe288fdaa012b190d9f77dc6e0e4bbd027c2959ff'
+    aarch64: 'e6f41a3983e9ccea020f38d9c99e2d36fd5c0190114ffbfeb1cd22574b8ae9b5',
+     armv7l: 'e6f41a3983e9ccea020f38d9c99e2d36fd5c0190114ffbfeb1cd22574b8ae9b5',
+     x86_64: '706a0a3e8b7cb2bd1bd7916a9d89c5964ee12215a34725f1e6a500b8c9caaa3d'
   })
 
   depends_on 'elfutils' # R
