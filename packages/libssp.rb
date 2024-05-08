@@ -18,7 +18,7 @@ class Libssp < Package
     binary_sha256({
          i686: 'f1e548a41f577f4865675e8b280fb949c7a10459980b652d24b80d7f86e673a5'
     })
-  when '2.27'
+  when '2.27', '2.35'
     binary_sha256({
       aarch64: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
        armv7l: '2b8d8b39ae8ad8e4ec938279b4a23468e7dc7f56c8c3f692f700a0d49f557855',
