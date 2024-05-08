@@ -23,7 +23,7 @@ class Command
     pkg.preremove
 
     # Remove the files and directories installed by the package.
-    unless pkg.is_fake
+    unless pkg.is_fake?
       Dir.chdir CREW_CONFIG_PATH do
         # Remove all files installed by the package.
         File.foreach(File.join(CREW_META_PATH, "#{pkg.name}.filelist"), chomp: true) do |line|
