@@ -3,19 +3,31 @@ require 'package'
 class Gcc_build < Package
   description 'The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go.'
   homepage 'https://www.gnu.org/software/gcc/'
-  version '13.2.0' # Do not use @_ver here, it will break the installer.
+  version "14.1.0-glibc#{LIBC_VERSION}" # Do not use @_ver here, it will break the installer.
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'releases/gcc-13.2.0'
+  git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: '13e3e7591636c84bf37875cddb67c012e7b4e8c39e26d069a2cf513718087bd5',
-     armv7l: '13e3e7591636c84bf37875cddb67c012e7b4e8c39e26d069a2cf513718087bd5',
-       i686: '1fb82c8c2466f405ad7839b3fc2bbfb43eaed8f0db97a6b2bb6b822a17b60759',
-     x86_64: '005bb11a10baef3970641c1ce243deb0d2ece1212a854cf592c1f7ab5428660f'
-  })
+  case LIBC_VERSION
+  when '2.23'
+    binary_sha256({
+         i686: '0850517263680419c1ae4152ba8237a5ee1d40651b31832f211ed450df94999c'
+    })
+  when '2.27', '2.35'
+    binary_sha256({
+      aarch64: 'c53f34ca91bf3eee1ac207b4054c41928da311bf4fa55f8595cc21f1285d398d',
+       armv7l: 'c53f34ca91bf3eee1ac207b4054c41928da311bf4fa55f8595cc21f1285d398d',
+       x86_64: '387c1b91fb0fa7d939744a42bbf836ea8e47b005a325e7012a937c8f0fb9ec7f'
+    })
+  when '2.37'
+    binary_sha256({
+      aarch64: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
+       armv7l: '1a84028dcfc7b5a6e5a281a6684470ca9d6cb8fd83688d59505464f80d4f7180',
+       x86_64: '88aa03f986b1c3528ae155b0b5e886437b526a04e070fcd0dbf43a2684db01ac'
+    })
+  end
 
   depends_on 'binutils' => :build
   depends_on 'ccache' => :build
@@ -156,7 +168,7 @@ class Gcc_build < Package
       # LIBRARY_PATH=#{CREW_LIB_PREFIX} needed for x86_64 to avoid:
       # /usr/local/bin/ld: cannot find crti.o: No such file or directory
       # /usr/local/bin/ld: cannot find /usr/lib64/libc_nonshared.a
-      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), 'make || make -j1')
+      system({ LIBRARY_PATH: CREW_LIB_PREFIX, PATH: @path }.transform_keys(&:to_s), "make -j #{CREW_NPROC} || make -j1")
     end
   end
 
@@ -270,7 +282,8 @@ class Gcc_build < Package
       system make_env, "make -C gcc DESTDIR=#{CREW_DEST_DIR} install-po"
 
       # install the libstdc++ man pages
-      system make_env, "make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
+      # This is broken in 14.0.1
+      # system make_env, "make -C #{CREW_TGT}/libstdc++-v3/doc DESTDIR=#{CREW_DEST_DIR} doc-install-man"
 
       # byte-compile python libraries
       system "python -m compileall #{CREW_DEST_PREFIX}/share/gcc-#{@gcc_version}/"

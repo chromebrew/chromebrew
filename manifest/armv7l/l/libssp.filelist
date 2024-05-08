@@ -1,7 +1,7 @@
-/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/13/include/ssp/ssp.h
-/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/13/include/ssp/stdio.h
-/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/13/include/ssp/string.h
-/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/13/include/ssp/unistd.h
+/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/14/include/ssp/ssp.h
+/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/14/include/ssp/stdio.h
+/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/14/include/ssp/string.h
+/usr/local/lib/gcc/armv7l-cros-linux-gnueabihf/14/include/ssp/unistd.h
 /usr/local/lib/libssp.a
 /usr/local/lib/libssp.la
 /usr/local/lib/libssp.so
