@@ -3,7 +3,7 @@ require 'package'
 class Mesa < Package
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.0.6'
+  @_ver = '24.0.7'
   version "#{@_ver}-llvm18"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -12,9 +12,9 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7cf64aaee2f0d3b206345b3933f6d9e92ef167a62570527dd4973b92e6a7baf2',
-     armv7l: '7cf64aaee2f0d3b206345b3933f6d9e92ef167a62570527dd4973b92e6a7baf2',
-     x86_64: 'eca4f5c91a6e488087d601235e61b0592ba05a870e22ad4729ca68f434adf16d'
+    aarch64: '329c900254038c9f9281d9e04dcd7e3df646ebe998b1b4273844b51521bc94c8',
+     armv7l: '329c900254038c9f9281d9e04dcd7e3df646ebe998b1b4273844b51521bc94c8',
+     x86_64: '0d226d1f5a6983cab3133434c928b3c44f94bc20bc5e9ee34c9625593561344b'
   })
 
   depends_on 'elfutils' # R
