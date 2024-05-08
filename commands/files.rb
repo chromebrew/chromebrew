@@ -10,6 +10,12 @@ class Command
       return
     end
 
+    # Fake packages do not have any files.
+    if pkg.is_fake?
+      puts "Package #{pkg.name} is fake and has no files.".lightred
+      return
+    end
+
     # We can't do anything if we don't have the filelist.
     unless File.file?(filelist_path = File.join(CREW_META_PATH, "#{pkg.name}.filelist"))
       puts "Package #{pkg.name} does not have a filelist :(".lightred
