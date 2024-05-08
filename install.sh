@@ -104,6 +104,9 @@ if [[ "$ARCH" == "x86_64" ]]; then
   LIB_SUFFIX='64'
 fi
 
+# Package version string may include LIBC_VERSION.
+LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
+
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
 # instruction, as it was first introduced in Bulldozer and later dropped in Zen.
@@ -271,8 +274,6 @@ function update_device_json () {
 echo_info "Downloading Bootstrap packages...\n"
 
 # Extract, install and register packages.
-# Package version string may include LIBC_VERSION.
-LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
 for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
   version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | awk '{print substr($2,2,length($2)-2)}')
