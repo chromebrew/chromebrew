@@ -3,7 +3,7 @@ require 'buildsystems/cmake'
 class Cmake < CMake
   description 'CMake is an open-source, cross-platform family of tools designed to build, test and package software.'
   homepage 'https://cmake.org/'
-  version '3.29.2'
+  version '3.29.3'
   license 'CMake'
   compatibility 'all'
   source_url 'https://github.com/Kitware/CMake.git'
