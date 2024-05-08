@@ -17,7 +17,7 @@ class Gcc_dev < Package
     binary_sha256({
          i686: '68823c2d372559b5ba9e304529bd01f24ccf7c0a71a14824d048b2d323643257'
     })
-  when '2.27'
+  when '2.27', '2.35'
     binary_sha256({
       aarch64: 'f649c41a0d2fbfb5077068319d6dd8cca84b4047d409213b8f32623dff4e2bbd',
        armv7l: 'f649c41a0d2fbfb5077068319d6dd8cca84b4047d409213b8f32623dff4e2bbd',
