@@ -223,18 +223,21 @@ function download_check () {
 
     # Verify
     echo_intra "Verifying ${1}..."
-    echo_success "$(echo "${4}" "${3}" | sha256sum -c -)"
-    case "${?}" in
-    0)
+    if echo "${4}" "${3}" | sha256sum -c - ; then
       if [ -n "$CREW_CACHE_ENABLED" ] ; then
         cp "${3}" "$CREW_CACHE_DIR/${3}" || true
       fi
-      return
-      ;;
-    *)
-      echo_error "Verification failed, something may be wrong with the download."
-      exit 1;;
-    esac
+      echo_success "Verification of ${1} succeeded."
+      return 0
+    else
+      if [[ ${5} -lt 2 ]]; then
+        echo_error "Verification of ${1} failed, something may be wrong with the download."
+        exit 1
+      else
+        echo_info "Verification of ${1} failed. Will try another sha256 hash if available."
+        return 1
+      fi
+    fi
 }
 
 function extract_install () {
@@ -266,10 +269,13 @@ function update_device_json () {
 }
 
 echo_info "Downloading Bootstrap packages...\n"
+
 # Extract, install and register packages.
+# Package version string may include LIBC_VERSION.
+LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
 for package in $BOOTSTRAP_PACKAGES; do
   cd "${CREW_LIB_PATH}/packages"
-  version=$(sed -n "s/.*version '\([^']*\)'.*/\1/p" "${package}.rb")
+  version=$(grep "\ \ version" "${package}.rb" | head -n 1 | sed "s/#{LIBC_VERSION}/$LIBC_VERSION/g" | awk '{print substr($2,2,length($2)-2)}')
   binary_compression=$(sed -n "s/.*binary_compression '\([^']*\)'.*/\1/p" "${package}.rb")
   if [[ -z "$binary_compression" ]]; then
     binary_compression='tar.zst'
@@ -279,10 +285,14 @@ for package in $BOOTSTRAP_PACKAGES; do
   tarfile=$(basename "${url}")
 
   sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
-
-  download_check "${package}" "${url}" "${tarfile}" "${sha256}"
-  extract_install "${package}" "${tarfile}"
-  update_device_json "${package}" "${version}" "${sha256}"
+  shacount=$(echo "$sha256" | wc -w)
+  for sha in $sha256
+  do
+    if download_check "${package}" "${url}" "${tarfile}" "${sha}" "${shacount}"; then
+      extract_install "${package}" "${tarfile}"
+      update_device_json "${package}" "${version}" "${sha}"
+    fi
+  done
 done
 
 # Work around https://github.com/chromebrew/chromebrew/issues/3305.
