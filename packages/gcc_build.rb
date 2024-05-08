@@ -7,7 +7,7 @@ class Gcc_build < Package
   license 'GPL-3, LGPL-3, libgcc, FDL-1.2'
   compatibility 'all'
   source_url 'https://github.com/gcc-mirror/gcc.git'
-  git_hashtag 'releases/gcc-14.1.0'
+  git_hashtag "releases/gcc-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   case LIBC_VERSION
