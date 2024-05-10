@@ -58,7 +58,7 @@ class Command
     device_json['installed_packages'].delete_if { |entry| entry['name'] == pkg.name }
 
     # Update device.json with our changes.
-    save_json(device_json)
+    File.write File.join(CREW_CONFIG_PATH, 'device.json'), JSON.pretty_generate(device_json)
 
     # Perform any operations required after package removal.
     pkg.remove

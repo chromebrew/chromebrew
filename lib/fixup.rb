@@ -23,142 +23,139 @@ system(" sed -i 's/binary_sha256/sha256/g' #{File.join(CREW_CONFIG_PATH, 'device
 
 # Check for renamed and deprecated packages, and handle them.
 
-pkg_update_arr = [
-  { pkg_name: 'acli', pkg_rename: 'acquia_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'agrind', pkg_rename: 'angle_grinder', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'apriconv', pkg_rename: 'apr_iconv', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'aprutil', pkg_rename: 'apr_util', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'arpscan', pkg_rename: 'arp_scan', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'aws', pkg_rename: 'aws_cli', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'btrfsprogs', pkg_rename: 'btrfs_progs', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'bz2', pkg_rename: 'bzip2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'bz3', pkg_rename: 'bzip3', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'codium', pkg_rename: 'vscodium', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'ffcall', pkg_rename: 'libffcall', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'git_prompt', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into git package.' },
-  { pkg_name: 'gnome_session', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
-  { pkg_name: 'gnome_settings_daemon', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
-  { pkg_name: 'gnome_shell', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd.' },
-  { pkg_name: 'gnome_tweaks', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.' },
-  { pkg_name: 'ilmbase', pkg_rename: nil, pkg_deprecated: true, comments: 'Included in openexr.' },
-  { pkg_name: 'js91', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced by newer versions of js.' },
-  { pkg_name: 'jsonc', pkg_rename: 'json_c', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'libcurl', pkg_rename: 'curl', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'libjpeg', pkg_rename: 'libjpeg_turbo', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'libmfx', pkg_rename: nil, pkg_deprecated: true, comments: 'No longer compatible with any architecture' },
-  { pkg_name: 'linter', pkg_rename: nil, pkg_deprecated: true, comments: 'Replaced with py3_pre_commit.' },
-  { pkg_name: 'mandb', pkg_rename: 'man_db', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'mercurial', pkg_rename: 'py3_mercurial', pkg_deprecated: nil, comments: 'Renamed to match other pip packages.' },
-  { pkg_name: 'meson', pkg_rename: 'mesonbuild', pkg_deprecated: nil, comments: 'Renamed to avoid conflict with buildsystems/meson.' },
-  { pkg_name: 'moonbuggy', pkg_rename: 'moon_buggy', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'nping', pkg_rename: nil, pkg_deprecated: true, comments: 'Removed to avoid conflict with nmap.' },
-  { pkg_name: 'pkgconfig', pkg_rename: 'pkg_config', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'postgres', pkg_rename: 'postgresql', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'proj4', pkg_rename: 'proj', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'qtbase', pkg_rename: 'qt5_base', pkg_deprecated: nil, comments: 'Qt packages renamed to qt5_*' },
-  { pkg_name: 'qtcharts', pkg_rename: 'qt5_charts', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtchooser', pkg_rename: nil, pkg_deprecated: true, comments: "Doesn't work for newer Qt versions." },
-  { pkg_name: 'qtdeclarative', pkg_rename: 'qt5_declarative', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtimageformats', pkg_rename: 'qt5_imageformats', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtlocation', pkg_rename: 'qt5_location', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtmultimedia', pkg_rename: 'qt5_multimedia', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtquickcontrols', pkg_rename: 'qt5_quickcontrols', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtscript', pkg_rename: 'qt5_script', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtserialport', pkg_rename: 'qt5_serialport', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtsvg', pkg_rename: 'qt5_svg', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qttools', pkg_rename: 'qt5_tools', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtwayland', pkg_rename: 'qt5_wayland', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtwebchannel', pkg_rename: 'qt5_webchannel', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtwebengine', pkg_rename: 'qt5_webengine', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtwebglplugin', pkg_rename: 'qt5_webglplugin', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
-  { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
-  { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
-]
-
-pkg_update_arr.each do |pkg|
-  next unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_name] }
-
-  puts "\n#{pkg[:pkg_name].capitalize} found in package fixup list".lightcyan
-
-  # Package rename.
-  unless pkg[:pkg_rename].to_s.empty?
-    puts "#{pkg[:pkg_name].capitalize} has been renamed to #{pkg[:pkg_rename].capitalize}".lightpurple
-    puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
-
-    old_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.filelist")
-    new_filelist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.filelist")
-    old_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_name]}.directorylist")
-    new_directorylist = File.join(CREW_META_PATH, "#{pkg[:pkg_rename]}.directorylist")
-    # Handle case of new package already installed.
-    if @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
-      puts "Renamed #{pkg[:pkg_rename].capitalize} is already installed. Deleting old package (#{pkg[:pkg_rename].capitalize}) information...".lightblue
-      FileUtils.rm_f old_filelist
-      FileUtils.rm_f old_directorylist
-      @device[:installed_packages].delete_if { |elem| elem[:name] == pkg[:pkg_name] }
-      File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
-      next
-    end
-    # Handle case of package needing to be replaced.
-    if File.file?(new_filelist)
-      puts "new filelist for #{pkg[:pkg_rename].capitalize} already exists!"
-      next
-    end
-    if File.file?(new_directorylist)
-      puts "new directorylist for #{pkg[:pkg_rename].capitalize} already exists!"
-      next
-    end
-    # If new filelist or directorylist do not exist and new package is not
-    # marked as installed in device.json then rename and edit device.json .
-    begin
-      FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
-      FileUtils.mv old_filelist, new_filelist
-      FileUtils.mv old_directorylist, new_directorylist
-      @device[:installed_packages].map do |x|
-        x[:name] = pkg[:pkg_rename] if x[:name] == pkg[:pkg_name]
-        next x
-      end
-      File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
-      @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json.new", symbolize_names: true)
-      @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-      raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
-      # Ok to write working device.json
-      File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
-      puts "#{pkg[:pkg_name].capitalize} renamed to #{pkg[:pkg_rename].capitalize}".lightgreen
-    rescue StandardError
-      puts 'Restoring old filelist, directorylist, and device.json...'.lightred
-      FileUtils.mv new_filelist, old_filelist
-      FileUtils.mv new_directorylist, old_directorylist
-      FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.bak", "#{CREW_CONFIG_PATH}/device.json"
-    end
-    # Reload json file.
-    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
-    @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
-    # Ok to remove backup and temporary json files.
-    FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.bak"
-    FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.new"
-  end
-
-  # Deprecated package deletion.
-  next if pkg[:pkg_deprecated].to_s.empty?
-  puts "#{pkg[:pkg_name].capitalize} is deprecated and should be removed.".lightpurple
-  puts "#{pkg[:pkg_name].capitalize}: #{pkg[:comments]}".lightpurple unless pkg[:comments].to_s.empty?
-  print "\nWould you like to remove deprecated package #{pkg[:pkg_name].capitalize}? [y/N] "
+def pkg_deprecated(name, comments: nil)
+  return unless PackageUtils.installed?(name)
+  puts "\n#{name} found in package fixup list".lightcyan
+  puts "#{name} is deprecated and should be removed.".lightpurple
+  puts "#{name}: #{comments}".lightpurple unless comments.to_s.empty?
+  print "\nWould you like to remove deprecated package #{name}? [y/N] "
   case $stdin.gets.chomp.downcase
   when 'y', 'yes'
     # Create a minimal Package object and pass it to Command.remove
     pkg_object = Package
     pkg_object.instance_eval do
-      self.name = pkg[:pkg_name]
+      self.name = name
       def self.preremove; end
       def self.remove; end
     end
     Command.remove(pkg_object, CREW_VERBOSE)
   else
-    puts "#{pkg[:pkg_name].capitalize} not removed.".lightblue
+    puts "#{name} not removed.".lightblue
   end
 end
+
+def pkg_rename(name, new_name, comments: nil)
+  return unless PackageUtils.installed?(name)
+  # Package rename.
+  puts "\n#{name} found in package fixup list".lightcyan
+  puts "#{name} has been renamed to #{new_name}".lightpurple
+  puts "#{name}: #{comments}".lightpurple unless comments.to_s.empty?
+
+  old_filelist = File.join(CREW_META_PATH, "#{name}.filelist")
+  new_filelist = File.join(CREW_META_PATH, "#{new_name}.filelist")
+  old_directorylist = File.join(CREW_META_PATH, "#{name}.directorylist")
+  new_directorylist = File.join(CREW_META_PATH, "#{new_name}.directorylist")
+  # Handle case of new package already installed.
+  if PackageUtils.installed?(new_name)
+    puts "Renamed #{new_name} is already installed. Deleting old package (#{new_name}) information...".lightblue
+    FileUtils.rm_f old_filelist
+    FileUtils.rm_f old_directorylist
+    @device[:installed_packages].delete_if { |elem| elem[:name] == name }
+    File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+    return
+  end
+  # Handle case of package needing to be replaced.
+  if File.file?(new_filelist)
+    puts "new filelist for #{new_name} already exists!"
+    return
+  end
+  if File.file?(new_directorylist)
+    puts "new directorylist for #{new_name} already exists!"
+    return
+  end
+  # If new filelist or directorylist do not exist and new package is not
+  # marked as installed in device.json then rename and edit device.json .
+  begin
+    FileUtils.cp "#{CREW_CONFIG_PATH}/device.json", "#{CREW_CONFIG_PATH}/device.json.bak"
+    FileUtils.mv old_filelist, new_filelist
+    FileUtils.mv old_directorylist, new_directorylist
+    @device[:installed_packages].map do |x|
+      x[:name] = new_name if x[:name] == name
+      next x
+    end
+    File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
+    @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json.new", symbolize_names: true)
+    @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+    raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == new_name }
+    # Ok to write working device.json
+    File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
+    puts "#{name} renamed to #{new_name}".lightgreen
+  rescue StandardError
+    puts 'Restoring old filelist, directorylist, and device.json...'.lightred
+    FileUtils.mv new_filelist, old_filelist
+    FileUtils.mv new_directorylist, old_directorylist
+    FileUtils.cp "#{CREW_CONFIG_PATH}/device.json.bak", "#{CREW_CONFIG_PATH}/device.json"
+  end
+  # Reload json file.
+  @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
+  @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
+  # Ok to remove backup and temporary json files.
+  FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.bak"
+  FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.new"
+end
+
+pkg_deprecated('git_prompt', comments: 'Integrated into git package.')
+pkg_deprecated('gnome_session', comments: 'No longer compatible with any architecture, requires systemd.')
+pkg_deprecated('gnome_settings_daemon', comments: 'No longer compatible with any architecture, requires systemd.')
+pkg_deprecated('gnome_shell', comments: 'No longer compatible with any architecture, requires systemd.')
+pkg_deprecated('gnome_tweaks', comments: 'No longer compatible with any architecture, requires systemd in dep package gnome_settings_daemon.')
+pkg_deprecated('ilmbase', comments: 'Included in openexr.')
+pkg_deprecated('js91', comments: 'Replaced by newer versions of js.')
+pkg_deprecated('libmfx', comments: 'No longer compatible with any architecture')
+pkg_deprecated('linter', comments: 'Replaced with py3_pre_commit.')
+pkg_deprecated('nping', comments: 'Removed to avoid conflict with nmap.')
+pkg_deprecated('qtchooser', comments: "Doesn't work for newer Qt versions.")
+
+pkg_deprecated('ruby_debug', comments: 'Integrated into ruby package.')
+pkg_rename('acli', 'acquia_cli', comments: 'Renamed to better match upstream.')
+pkg_rename('agrind', 'angle_grinder', comments: 'Renamed to better match upstream.')
+pkg_rename('apriconv', 'apr_iconv', comments: 'Renamed to better match upstream.')
+pkg_rename('aprutil', 'apr_util', comments: 'Renamed to better match upstream.')
+pkg_rename('arpscan', 'arp_scan', comments: 'Renamed to better match upstream.')
+pkg_rename('aws', 'aws_cli', comments: 'Renamed to better match upstream.')
+pkg_rename('btrfsprogs', 'btrfs_progs', comments: 'Renamed to better match upstream.')
+pkg_rename('bz2', 'bzip2', comments: 'Renamed to better match upstream.')
+pkg_rename('bz3', 'bzip3', comments: 'Renamed to better match upstream.')
+pkg_rename('codium', 'vscodium', comments: 'Renamed to better match upstream.')
+pkg_rename('ffcall', 'libffcall', comments: 'Renamed to better match upstream.')
+pkg_rename('jsonc', 'json_c', comments: 'Renamed to better match upstream.')
+pkg_rename('libcurl', 'curl')
+pkg_rename('libjpeg', 'libjpeg_turbo', comments: 'Renamed to better match upstream.')
+pkg_rename('mandb', 'man_db', comments: 'Renamed to better match upstream.')
+pkg_rename('mercurial', 'py3_mercurial', comments: 'Renamed to match other pip packages.')
+pkg_rename('meson', 'mesonbuild', comments: 'Renamed to avoid conflict with buildsystems/meson.')
+pkg_rename('moonbuggy', 'moon_buggy', comments: 'Renamed to better match upstream.')
+pkg_rename('pkgconfig', 'pkg_config', comments: 'Renamed to better match upstream.')
+pkg_rename('postgres', 'postgresql', comments: 'Renamed to better match upstream.')
+pkg_rename('proj4', 'proj', comments: 'Renamed to better match upstream.')
+pkg_rename('qtbase', 'qt5_base', comments: 'Qt packages renamed to qt5_*')
+pkg_rename('qtcharts', 'qt5_charts')
+pkg_rename('qtdeclarative', 'qt5_declarative')
+pkg_rename('qtimageformats', 'qt5_imageformats')
+pkg_rename('qtlocation', 'qt5_location')
+pkg_rename('qtmultimedia', 'qt5_multimedia')
+pkg_rename('qtquickcontrols', 'qt5_quickcontrols')
+pkg_rename('qtscript', 'qt5_script')
+pkg_rename('qtserialport', 'qt5_serialport')
+pkg_rename('qtsvg', 'qt5_svg')
+pkg_rename('qttools', 'qt5_tools')
+pkg_rename('qtwayland', 'qt5_wayland')
+pkg_rename('qtwebchannel', 'qt5_webchannel')
+pkg_rename('qtwebengine', 'qt5_webengine')
+pkg_rename('qtwebglplugin', 'qt5_webglplugin')
+pkg_rename('qtwebsockets', 'qt5_websockets')
+pkg_rename('qtx11extras', 'qt5_x11extras')
+pkg_rename('wget', 'wget2', comments: 'Renamed to better match upstream.')
 
 # Restart crew update if the git commit of const.rb loaded in const.rb
 # is different from the git commit of the potentially updated const.rb
