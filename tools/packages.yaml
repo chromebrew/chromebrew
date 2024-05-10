@@ -9138,7 +9138,7 @@ activity: high
 kind: url
 name: wkhtmltox
 url: https://github.com/wkhtmltopdf/wkhtmltopdf/releases
-activity: low
+activity: none
 ---
 kind: url
 name: wl_clipboard
