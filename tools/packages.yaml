@@ -9136,6 +9136,11 @@ url: https://github.com/charmbracelet/wishlist/releases
 activity: high
 ---
 kind: url
+name: wkhtmltox
+url: https://github.com/wkhtmltopdf/wkhtmltopdf/releases
+activity: low
+---
+kind: url
 name: wl_clipboard
 url: https://github.com/bugaevc/wl-clipboard/releases/
 activity: medium

@@ -61,8 +61,7 @@ pkg_update_arr = [
   { pkg_name: 'qtwebsockets', pkg_rename: 'qt5_websockets', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'qtx11extras', pkg_rename: 'qt5_x11extras', pkg_deprecated: nil, comments: nil },
   { pkg_name: 'ruby_debug', pkg_rename: nil, pkg_deprecated: true, comments: 'Integrated into ruby package.' },
-  { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' },
-  { pkg_name: 'wkhtmltox', pkg_rename: nil, pkg_deprecated: true, comments: 'Deprecated upstream with unpatched CVE-2022-35583.' }
+  { pkg_name: 'wget', pkg_rename: 'wget2', pkg_deprecated: nil, comments: 'Renamed to better match upstream.' }
 ]
 
 pkg_update_arr.each do |pkg|
