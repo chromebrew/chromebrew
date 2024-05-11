@@ -1,37 +1,27 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Liburing < Package
+class Liburing < Autotools
   description 'liburing provides helpers to setup and teardown io_uring instances.'
   homepage 'https://github.com/axboe/liburing/'
-  version '2.0'
+  version '2.6'
   license 'MIT'
   compatibility 'all'
   source_url "https://github.com/axboe/liburing/archive/refs/tags/liburing-#{version}.tar.gz"
-  source_sha256 'ca069ecc4aa1baf1031bd772e4e97f7e26dfb6bb733d79f70159589b22ab4dc0'
-  binary_compression 'tar.xz'
+  source_sha256 '682f06733e6db6402c1f904cbbe12b94942a49effc872c9e01db3d7b180917cc'
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '25bda02208eb872e11c8434523056bb3591996aa6aec935171c5ce81bcb39225',
-     armv7l: '25bda02208eb872e11c8434523056bb3591996aa6aec935171c5ce81bcb39225',
-       i686: 'd6cdacf0351d2d301d5827b8413768489d2dd6d53fe8d94978ba2d1f1af9ac29',
-     x86_64: '960697d65213698aaff0457b536a5ef6d8f45a5614fb3752c0fb572fded4077c'
+    aarch64: '2e2138ccaa2ff821f507991b73c549c7c55e55818641970cd5576de4f4be9216',
+     armv7l: '2e2138ccaa2ff821f507991b73c549c7c55e55818641970cd5576de4f4be9216',
+       i686: 'bc5f3ea29be3864de7e1a7c93b7f81744c39296b3513ea45d37b1e9a79581949',
+     x86_64: '0ae8f0068aae43c33cb71cc7a8e3c7080979fd2b980e4a689a67b728317010e0'
   })
 
-  def self.patch
-    # system "sed -i '/<unistd.h>/a #include <asm/unistd.h>' test/fc2a85cb02ef-test.c"
-    # system "sed -i '/<unistd.h>/a #include <asm/unistd.h>' test/double-poll-crash.c"
-  end
+  depends_on 'glibc_lib' # R
 
+  # liburing has a configure script that mimics an autotools one, but we can still treat it mostly like normal.
+  # It doesn't have any other build system anyways, so this is the best we've got.
   def self.build
-    system "env CFLAGS='-flto=auto' \
-      CXXFLAGS='-pipe -flto=auto' \
-      LDFLAGS='-flto=auto' \
-      ./configure \
-      #{CREW_OPTIONS.sub(/--build=.*/, '')}"
-    system 'make -C src'
-  end
-
-  def self.install
-    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system "./configure --prefix=#{CREW_PREFIX} --libdir=#{CREW_LIB_PREFIX} --mandir=#{CREW_MAN_PREFIX}"
   end
 end
