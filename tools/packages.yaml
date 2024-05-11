@@ -8941,6 +8941,11 @@ url: https://dl.winehq.org/vkd3d/source/
 activity: medium
 ---
 kind: url
+name: vlock
+url: https://repo.or.cz/vlock
+activity: none
+---
+kind: url
 name: vmaf
 url: https://github.com/Netflix/vmaf/releases
 activity: low
