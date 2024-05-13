@@ -197,7 +197,6 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/git/resources/icons/light/status-untracked.svg
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/README.md
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/dist/extension.js
-/usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/dist/extension.js.LICENSE.txt
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/images/icon.png
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/media/auth.css
 /usr/local/VSCodium-linux-x64/resources/app/extensions/github-authentication/media/favicon.ico
@@ -491,10 +490,11 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/README.md
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/ThirdPartyNotices.txt
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/ci.yml
-/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/84b6bc62673660f3ffa2.module.wasm
-/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/9.extension.web.js
-/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/94625be35e004f01f9d5.module.wasm
+/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/425.heapsnapshotWorker.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/848.extension.web.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/a443ca1a33b96237dd48.module.wasm
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/cpu-client.bundle.js
+/usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/dbd61d846b1102299709.module.wasm
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/extension.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/extension.web.js
 /usr/local/VSCodium-linux-x64/resources/app/extensions/ms-vscode.vscode-js-profile-table/out/heap-client.bundle.js
@@ -514,6 +514,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.decorators.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.decorators.legacy.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.dom.asynciterable.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.dom.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.dom.iterable.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2015.collection.d.ts
@@ -529,6 +530,7 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.array.include.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.full.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2016.intl.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.date.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2017.full.d.ts
@@ -582,12 +584,16 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es2023.full.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.es6.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.collection.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.decorators.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.disposable.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.full.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.intl.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.object.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.esnext.promise.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.scripthost.d.ts
+/usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.webworker.asynciterable.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.webworker.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
 /usr/local/VSCodium-linux-x64/resources/app/extensions/node_modules/typescript/lib/lib.webworker.iterable.d.ts
@@ -788,7 +794,6 @@
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-basics/syntaxes/jsdoc.ts.injection.tmLanguage.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-language-features/README.md
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-language-features/dist/extension.js
-/usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-language-features/dist/extension.js.LICENSE.txt
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-language-features/media/icon.png
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-language-features/package.json
 /usr/local/VSCodium-linux-x64/resources/app/extensions/typescript-language-features/package.nls.json
@@ -875,7 +880,6 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/loader.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/break.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatRequestSent.mp3
-/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatResponsePending.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatResponseReceived1.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatResponseReceived2.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/chatResponseReceived3.mp3
@@ -887,11 +891,14 @@
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/error.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/foldedAreas.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/format.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/progress.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/quickFixes.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/save.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/taskCompleted.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/taskFailed.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/terminalBell.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/voiceRecordingStarted.mp3
+/usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/voiceRecordingStopped.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/accessibilitySignal/browser/media/warning.mp3
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/files/node/watcher/watcherMain.js
 /usr/local/VSCodium-linux-x64/resources/app/out/vs/platform/files/node/watcher/watcherMain.nls.js
