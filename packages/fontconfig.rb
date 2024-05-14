@@ -1,21 +1,20 @@
-require 'package'
+require 'buildsystems/meson'
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Fontconfig < Package
+class Fontconfig < Meson
   description 'Fontconfig is a library for configuring and customizing font access.'
   homepage 'https://www.freedesktop.org/wiki/Software/fontconfig/'
-  @_ver = '2.14.2'
-  version "#{@_ver}-1"
+  version '2.15.0'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/fontconfig/fontconfig.git'
-  git_hashtag @_ver
+  git_hashtag version
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
-     armv7l: '9be6e2ad2bae395de354b1a1daad812a60bf0706fe429aa6eb3c50ac16de4001',
-     x86_64: '312be51a3f24e688489a30efaf61027d257998814be2fd670d403b0a88d5e818'
+    aarch64: 'f5af985710bd151112adb8eb55ed194aee1e6ed1226479e0d0bb5bd6fb9849ef',
+     armv7l: 'f5af985710bd151112adb8eb55ed194aee1e6ed1226479e0d0bb5bd6fb9849ef',
+     x86_64: '0be5e2b39cb0b9aba7255f05c76fd38b2b43e6ebad5176b748fea953d8dad4ac'
   })
 
   depends_on 'expat' # R
@@ -31,15 +30,9 @@ class Fontconfig < Package
 
   no_fhs
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      --wrap-mode=default \
+  meson_options "--wrap-mode=default \
       -Dlocalstatedir=#{CREW_PREFIX}/cache \
-      -Dtests=disabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
+      -Dtests=disabled"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

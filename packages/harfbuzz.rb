@@ -1,11 +1,13 @@
-require 'package'
+require 'buildsystems/meson'
+require_relative 'cairo'
+require_relative 'fontconfig'
 require_relative 'freetype'
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Harfbuzz < Package
+class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
   homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
-  version '7.3.0'
+  version '8.5.0'
   license 'Old-MIT, ISC and icu'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/harfbuzz/harfbuzz.git'
@@ -13,9 +15,9 @@ class Harfbuzz < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '8eae2341b560a92f4e214b369e670e9d1cb195cbcc60489d9718fb7bfec615b0',
-     armv7l: '8eae2341b560a92f4e214b369e670e9d1cb195cbcc60489d9718fb7bfec615b0',
-     x86_64: '4bd7fadc454ddc205e67884bef2c926399174344ee70c1cbcb0d59828933d044'
+    aarch64: '448ad35c9e90e8c5cbcdef4440061f83041446c98e069a937f9048cd5e24d703',
+     armv7l: '448ad35c9e90e8c5cbcdef4440061f83041446c98e069a937f9048cd5e24d703',
+     x86_64: 'a987092cf2e77d5620d3a412979ca4d6708a26afb0e1ae7478ce36e184b8f193'
   })
 
   depends_on 'brotli' # R
@@ -31,6 +33,7 @@ class Harfbuzz < Package
   depends_on 'gperf' => :build
   depends_on 'graphite' # R
   depends_on 'icu4c' # R
+  depends_on 'jsonc' => :build
   depends_on 'libffi' => :build
   depends_on 'libpng' # R
   depends_on 'libx11' # R
@@ -45,12 +48,24 @@ class Harfbuzz < Package
 
   # provides freetype (sans harfbuzz), ragel, and a non-x11 cairo stub
 
+  meson_options '--wrap-mode=default \
+      --default-library=both \
+      -Dbenchmark=disabled \
+      -Dcairo=enabled \
+      -Ddocs=disabled \
+      -Dfreetype=enabled \
+      -Dgraphite2=enabled \
+      -Dintrospection=enabled \
+      -Dragel_subproject=true \
+      -Dtests=disabled'
+
   def self.prebuild
     %w[fontconfig freetype].each do |build_exclusion|
       next unless File.exist? "#{CREW_PREFIX}/etc/crew/meta/#{build_exclusion}.filelist"
 
       puts "#{build_exclusion} needs to be uninstalled before this build.".lightred
     end
+    system 'update-ca-certificates --fresh'
   end
 
   def self.patch
@@ -65,24 +80,45 @@ class Harfbuzz < Package
       freetype2 = freetype_dep
       freetype = freetype_dep
     FREETYPE2_WRAP_EOF
-  end
 
-  def self.build
-    system 'update-ca-certificates --fresh'
-    system "mold -run meson setup #{CREW_MESON_OPTIONS} \
-      --wrap-mode=default \
-      --default-library=both \
-      -Dbenchmark=disabled \
-      -Dcairo=enabled \
-      -Ddocs=disabled \
-      -Dfreetype=enabled \
-      -Dgraphite2=enabled \
-      -Dintrospection=enabled \
-      -Dragel_subproject=true \
-      -Dtests=disabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
+    File.write 'subprojects/cairo.wrap', <<~CAIRO_WRAP_EOF
+      [wrap-git]
+      directory = cairo
+      url=https://gitlab.freedesktop.org/cairo/cairo.git
+      revision=#{Cairo.git_hashtag}
+      depth=1
+
+      [provide]
+      dependency_names = cairo
+    CAIRO_WRAP_EOF
+
+    FileUtils.mkdir_p 'subprojects/packagefiles'
+    File.write 'subprojects/packagefiles/fontconfig.diff', <<~FCSTDINT_WRAP_EOF
+      diff -Npaur a/src/fcstdint.h b/src/fcstdint.h
+      --- a/src/fcstdint.h	1969-12-31 19:00:00.000000000 -0500
+      +++ b/src/fcstdint.h	2024-05-14 13:58:12.402498838 -0400
+      @@ -0,0 +1,8 @@
+      +#ifndef _FONTCONFIG_SRC_FCSTDINT_H
+      +#define _FONTCONFIG_SRC_FCSTDINT_H 1
+      +#ifndef _GENERATED_STDINT_H
+      +#define _GENERATED_STDINT_H "fontconfig #{Fontconfig.version}"
+      +#define _STDINT_HAVE_STDINT_H 1
+      +#include <stdint.h>
+      +#endif
+      +#endif
+    FCSTDINT_WRAP_EOF
+
+    File.write 'subprojects/fontconfig.wrap', <<~FONTCONFIG_WRAP_EOF
+      [wrap-git]
+      directory = fontconfig
+      url=https://gitlab.freedesktop.org/fontconfig/fontconfig.git
+      revision=#{Fontconfig.git_hashtag}
+      depth=1
+      diff_files = fontconfig.diff
+
+      [provide]
+      dependency_names = fontconfig
+    FONTCONFIG_WRAP_EOF
   end
 
   def self.install

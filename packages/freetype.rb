@@ -1,10 +1,10 @@
-require 'package'
+require 'buildsystems/meson'
 # build order: harfbuzz => freetype => fontconfig => cairo => pango
 
-class Freetype < Package
+class Freetype < Meson
   description 'FreeType is a freely available software library to render fonts.'
   homepage 'https://www.freetype.org/'
-  version '2.13.1' # Update freetype in harfbuzz when updating freetype
+  version '2.13.2' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/freetype/freetype.git'
@@ -12,9 +12,9 @@ class Freetype < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '32d644934a6727c0ea8a0e8e13ed70de49e9c0337651818566dbd91d4cd52fd7',
-     armv7l: '32d644934a6727c0ea8a0e8e13ed70de49e9c0337651818566dbd91d4cd52fd7',
-     x86_64: '7f137b4b0bdcf332afe470d32c2cfb8b1a3464ed66cc9d7d1a20fe925ddca1f8'
+    aarch64: '1910229405d27c90a8dabeba5be6ea3884bdf5bfe48a6a1978a7a40af7879246',
+     armv7l: '1910229405d27c90a8dabeba5be6ea3884bdf5bfe48a6a1978a7a40af7879246',
+     x86_64: '8136147b106facdb16d82bdf3683615d68da9fd8735cab9d8a47e7c564520eae'
   })
 
   depends_on 'brotli' # R
@@ -30,13 +30,7 @@ class Freetype < Package
   depends_on 'py3_docwriter' => :build
   depends_on 'zlibpkg' # R
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS} \
-      -Dharfbuzz=enabled \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system 'samu -C builddir'
-  end
+  meson_options '-Dharfbuzz=enabled'
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} samu -C builddir install"
