@@ -3,7 +3,7 @@ require 'package'
 class Flutter < Package
   description "Flutter is Google's UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
   homepage 'https://flutter.dev/'
-  version '3.16.7'
+  version '3.22.0'
   license 'BSD-3'
   compatibility 'x86_64'
   source_url 'https://github.com/flutter/flutter.git'
