@@ -3,18 +3,18 @@ require 'package'
 class Git < Package
   description 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'
   homepage 'https://git-scm.com/'
-  version '2.45.0' # Do not use @_ver here, it will break the installer.
+  version '2.45.1' # Do not use @_ver here, it will break the installer.
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.0.tar.xz'
-  source_sha256 '0aac200bd06476e7df1ff026eb123c6827bc10fe69d2823b4bf2ebebe5953429'
+  source_url 'https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.1.tar.xz'
+  source_sha256 'e64d340a8e627ae22cfb8bcc651cca0b497cf1e9fdf523735544ff4a732f12bf'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f0902dcb8cacc57f8db2cc3eb85b072ce9d87340b8e45b09092facfc8b914882',
-     armv7l: 'f0902dcb8cacc57f8db2cc3eb85b072ce9d87340b8e45b09092facfc8b914882',
-       i686: '8e85f2e504ace822949738dcc7dabdeb79ba80ed0f4ad93860d1ac2806ddc93c',
-     x86_64: 'b51a7f7af519964f569b88b625a94becfa119e1ede82e5bdd65a6218dc301e76'
+    aarch64: 'e17dd815988fcc2e167d89388a47d2343b3e81107c46cc3965862081866c1072',
+     armv7l: 'e17dd815988fcc2e167d89388a47d2343b3e81107c46cc3965862081866c1072',
+       i686: '6644790c28b160eb2babf9f1efc443f299c082fb217ffcd437eec8b9c2609df0',
+     x86_64: 'dc38993548026103ea9ae0b667ee38c462f4c8137948ff08d4d0a186225bfeae'
   })
 
   depends_on 'ca_certificates' => :build
@@ -24,6 +24,8 @@ class Git < Package
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
   depends_on 'zlibpkg' # R
+
+  print_source_bashrc
 
   def self.patch
     # Patch to prevent error function conflict with libidn2
@@ -56,6 +58,18 @@ class Git < Package
         -G Ninja \
         contrib/buildsystems"
     system "#{CREW_NINJA} -C builddir"
+    git_env = <<~EOF
+
+      GIT_PS1_SHOWDIRTYSTATE=yes
+      GIT_PS1_SHOWSTASHSTATE=yes
+      GIT_PS1_SHOWUNTRACKEDFILES=yes
+      GIT_PS1_SHOWUPSTREAM=auto
+      GIT_PS1_DESCRIBE_STYLE=default
+      GIT_PS1_SHOWCOLORHINTS=yes
+
+      PS1='\\[\\033[1;34m\\]\\u@\\H \\[\\033[1;33m\\]\\w \\[\\033[1;31m\\]$(__git_ps1 "(%s)")\\[\\033[0m\\]\\$ '
+    EOF
+    File.write('contrib/completion/git-prompt.sh', git_env, mode: 'a')
   end
 
   def self.install
@@ -68,6 +82,7 @@ class Git < Package
       source #{CREW_PREFIX}/share/git-completion/git-completion.bash
     GIT_BASHD_EOF
     FileUtils.install 'git_bashd_env', "#{CREW_DEST_PREFIX}/etc/bash.d/git", mode: 0o644
+    FileUtils.install 'contrib/completion/git-prompt.sh', "#{CREW_DEST_PREFIX}/etc/bash.d/git-prompt.sh", mode: 0o644
   end
 
   def self.check
@@ -80,6 +95,7 @@ class Git < Package
   end
 
   def self.postinstall
+    ExitMessage.add "\ncd /path/to/git/repo and you should see the branch displayed in the prompt.\n".lightblue
     return unless File.directory?("#{CREW_PREFIX}/lib/crew/.git")
 
     puts 'Running git garbage collection...'.lightblue

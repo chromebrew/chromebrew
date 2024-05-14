@@ -6,6 +6,7 @@
 /usr/local/bin/git-upload-pack
 /usr/local/bin/scalar
 /usr/local/etc/bash.d/git
+/usr/local/etc/bash.d/git-prompt.sh
 /usr/local/libexec/git-core/git
 /usr/local/libexec/git-core/git-add
 /usr/local/libexec/git-core/git-am
