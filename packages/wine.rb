@@ -62,6 +62,7 @@ class Wine < Package
           --enable-win64 \
           --disable-maintainer-mode \
           --with-gstreamer \
+          --enable-archs=i386,x86_64 \
           --with-x"
       end
       system 'make || make'
