@@ -1,12 +1,10 @@
 /usr/local/bin/firefox
-/usr/local/firefox/Throbber-small.gif
 /usr/local/firefox/application.ini
 /usr/local/firefox/browser/chrome/icons/default/default128.png
 /usr/local/firefox/browser/chrome/icons/default/default16.png
 /usr/local/firefox/browser/chrome/icons/default/default32.png
 /usr/local/firefox/browser/chrome/icons/default/default48.png
 /usr/local/firefox/browser/chrome/icons/default/default64.png
-/usr/local/firefox/browser/crashreporter-override.ini
 /usr/local/firefox/browser/features/formautofill@mozilla.org.xpi
 /usr/local/firefox/browser/features/pictureinpicture@mozilla.org.xpi
 /usr/local/firefox/browser/features/screenshots@mozilla.org.xpi
@@ -14,7 +12,6 @@
 /usr/local/firefox/browser/features/webcompat@mozilla.org.xpi
 /usr/local/firefox/browser/omni.ja
 /usr/local/firefox/crashreporter
-/usr/local/firefox/crashreporter.ini
 /usr/local/firefox/defaults/pref/channel-prefs.js
 /usr/local/firefox/dependentlibs.list
 /usr/local/firefox/firefox
