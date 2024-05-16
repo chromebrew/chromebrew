@@ -2295,6 +2295,11 @@ url: https://download.geany.org/
 activity: medium
 ---
 kind: url
+name: geary
+url: https://gitlab.gnome.org/GNOME/geary
+activity: low
+---
+kind: url
 name: gedit
 url: https://download.gnome.org/sources/gedit/
 activity: medium
