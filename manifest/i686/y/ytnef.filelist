@@ -1,0 +1,15 @@
+/usr/local/bin/ytnef
+/usr/local/bin/ytnefprint
+/usr/local/bin/ytnefprocess
+/usr/local/include/mapi.h
+/usr/local/include/mapidefs.h
+/usr/local/include/mapitags.h
+/usr/local/include/tnef-errors.h
+/usr/local/include/tnef-types.h
+/usr/local/include/ytnef.h
+/usr/local/lib/libytnef.a
+/usr/local/lib/libytnef.la
+/usr/local/lib/libytnef.so
+/usr/local/lib/libytnef.so.0
+/usr/local/lib/libytnef.so.0.0.0
+/usr/local/lib/pkgconfig/libytnef.pc
