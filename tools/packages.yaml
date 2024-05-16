@@ -6352,12 +6352,17 @@ activity: medium
 ---
 kind: url
 name: openjdk17
-url: https://www.azul.com/downloads/?version=java-17-lts&os=linux&package=jdk
+url: https://www.azul.com/downloads/?version=java-17-lts&package=jdk#zulu
 activity: medium
 ---
 kind: url
 name: openjdk21
-url: https://www.azul.com/downloads/?version=java-21-lts&os=linux&package=jdk
+url: https://www.azul.com/downloads/?version=java-21-lts&package=jdk#zulu
+activity: medium
+---
+kind: url
+name: openjdk22
+url: https://www.azul.com/downloads/?package=jdk#zulu
 activity: medium
 ---
 kind: url
