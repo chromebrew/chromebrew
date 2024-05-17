@@ -2,11 +2,11 @@ require 'package'
 
 class Libatasmart < Package
   description 'LIBATASMART ATA S.M.A.R.T. Reading and Parsing Library'
-  homepage 'http://git.0pointer.net/libatasmart.git/'
+  homepage 'https://git.0pointer.net/libatasmart.git'
   version '0.19'
   license 'LGPL-2.1+'
   compatibility 'all'
-  source_url 'http://git.0pointer.net/libatasmart.git'
+  source_url 'https://git.0pointer.net/clone/libatasmart.git'
   git_hashtag "v#{version}"
   git_branch 'master'
   binary_compression 'tar.zst'
