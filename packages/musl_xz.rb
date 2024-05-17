@@ -6,7 +6,7 @@ class Musl_xz < Package
   version '5.2.5-e7da-1'
   license 'public-domain, LGPL-2.1+ and GPL-2+'
   compatibility 'all'
-  source_url 'https://github.com/xz-mirror/xz.git'
+  source_url 'https://github.com/tukaani-project/xz.git'
   git_hashtag 'e7da44d5151e21f153925781ad29334ae0786101'
   binary_compression 'tpxz'
 
