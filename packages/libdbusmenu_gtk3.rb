@@ -9,7 +9,7 @@ class Libdbusmenu_gtk3 < Package
   version '16.04.0'
   license 'GPL3 LGPL2.1 LGPL3'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'git://git.launchpad.net/ubuntu/+source/libdbusmenu'
+  source_url 'https://git.launchpad.net/ubuntu/+source/libdbusmenu'
   git_hashtag 'a3658f1208c31b1fb03b71af6e49c01119ba52fd'
   binary_compression 'tpxz'
 
