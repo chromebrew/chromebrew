@@ -9576,6 +9576,11 @@ url: https://github.com/yt-dlp/yt-dlp/releases
 activity: high
 ---
 kind: url
+name: ytnef
+url: https://github.com/Yeraze/ytnef/releases
+activity: low
+---
+kind: url
 name: ytree
 url: https://www.han.de/~werner/ytree.html
 activity: high
