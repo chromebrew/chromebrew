@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Xwayland < Package
+class Xwayland < Meson
   description 'X server configured to work with weston or sommelier'
   homepage 'https://x.org'
-  version '23.2.5'
+  version '24.1.0'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/xorg/xserver.git'
@@ -11,9 +11,9 @@ class Xwayland < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '81c092319ac37014b936317da203caf996c6493cf7d85c1f13c4cc2773c2c9d5',
-     armv7l: '81c092319ac37014b936317da203caf996c6493cf7d85c1f13c4cc2773c2c9d5',
-     x86_64: '2215ac59ae1b2740d673b42a2726a8c62a65bb742df1750602eff96f383b80ba'
+    aarch64: 'de42846f823a9774acb9ec70c763471b6b3da55f3231bcbc8b0848b443bb5207',
+     armv7l: 'de42846f823a9774acb9ec70c763471b6b3da55f3231bcbc8b0848b443bb5207',
+     x86_64: 'd7d45282f308e558df074965d2e477b90fa0b4740ec49f270a3ab9954b1e7c52'
   })
 
   no_env_options
@@ -24,7 +24,7 @@ class Xwayland < Package
   depends_on 'font_util' => :build
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glproto' => :build
+  # depends_on 'glproto' => :build Conflict with xorg_proto
   depends_on 'graphite' => :build
   depends_on 'libbsd' # R
   depends_on 'libdrm' # R
@@ -47,21 +47,16 @@ class Xwayland < Package
   depends_on 'rendercheck' # R
   depends_on 'wayland' # R
   depends_on 'xkbcomp' => :build
+  depends_on 'xorg_proto' => :build
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.sub(/(-Dcpp_args='*)(.*)(')/, '')} \
-              -Db_asneeded=false \
+  meson_options '-Db_asneeded=false \
               -Dipv6=true \
               -Dxvfb=true \
               -Dxcsecurity=true \
-              -Dglamor=true \
-              build"
-    system 'meson configure build'
-    system "#{CREW_NINJA} -C build"
-  end
+              -Dglamor=true'
 
   def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C build install"
+    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
     # Get these from xorg_server package
     @deletefiles = %W[#{CREW_DEST_PREFIX}/bin/X #{CREW_DEST_MAN_PREFIX}/man1/Xserver.1]
     @deletefiles.each do |f|

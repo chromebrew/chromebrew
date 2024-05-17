@@ -3,17 +3,19 @@ require 'buildsystems/meson'
 class Xorg_proto < Meson
   description 'The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.'
   homepage 'https://www.x.org/'
-  version '2023.2'
+  version '2024.1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://gitlab.freedesktop.org/xorg/proto/xorgproto.git'
   git_hashtag "xorgproto-#{version}"
   binary_compression 'tar.zst'
 
+  conflicts_ok # conflicts with glproto
+
   binary_sha256({
-    aarch64: '135abd63058e542920a2125ff3d12f59f1f15b4e2ffd8051603e1d8d070aaafc',
-     armv7l: '135abd63058e542920a2125ff3d12f59f1f15b4e2ffd8051603e1d8d070aaafc',
-       i686: '58a8c851b381479f30e6cb24d3a0402d3990791dd823c297ab3de830e35302a5',
-     x86_64: '218d61ce750ba8f793e2f924baec49e65bd111fe9519a5b995dfb839f6f85501'
+    aarch64: '5a3f2d896b21282b35e80fe8c04cced52a3c6767ed2b7f6c1dd507ddb59f94a9',
+     armv7l: '5a3f2d896b21282b35e80fe8c04cced52a3c6767ed2b7f6c1dd507ddb59f94a9',
+       i686: 'c4f617dd65aeb7853a7c3fb44641ed443255b33e1f5416ca7acf180b3659aa57',
+     x86_64: '4691a9ad052fa497074ddad44efb96d4cd8e1c1e10dc41be2820ac53c210899c'
   })
 end
