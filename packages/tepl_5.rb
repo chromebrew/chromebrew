@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Tepl_5 < Meson
   description 'Library that eases the development of GtkSourceView-based text editors and IDEs'
-  homepage 'https://wiki.gnome.org/Projects/Tepl'
+  homepage 'https://gitlab.gnome.org/Archive/tepl'
   version '5.1.1'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'

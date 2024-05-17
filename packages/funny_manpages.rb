@@ -7,7 +7,7 @@ class Funny_manpages < Package
   version "#{@_ver}-1"
   license 'custom'
   compatibility 'all'
-  source_url 'https:///github.com/ltworf/funny-manpages.git'
+  source_url 'https://github.com/ltworf/funny-manpages.git'
   git_hashtag @_ver
 
   depends_on 'mandb'
