@@ -3,19 +3,23 @@ require 'package'
 class Libmediainfo < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
   homepage 'http://mediaarea.net/en/MediaInfo'
-  version '23.11'
+  version '24.04'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'https://mediaarea.net/download/binary/libmediainfo0/23.11/MediaInfo_DLL_23.11_GNU_FromSource.tar.xz'
-  source_sha256 '7ffa6728840dd022af261b665dbf0c3cd8419b8001abcdc507801944bcaaa7a6'
+  source_url 'https://mediaarea.net/download/binary/libmediainfo0/24.04/MediaInfo_DLL_24.04_GNU_FromSource.tar.xz'
+  source_sha256 'ad93d20aa87f5e45415a2e1b70725006d97d9ca560b84175056809be73a4469d'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a897d1fc07ea2de848275dadfca354e786809c5e3d0155fed556c0eb0649956c',
-     armv7l: 'a897d1fc07ea2de848275dadfca354e786809c5e3d0155fed556c0eb0649956c',
-       i686: '981a710eff8bd7c45bdb73ba46589e875f6cfbb731274e6baae9c606054bdffa',
-     x86_64: 'ce74c4ff5b7d4e0957858313aadfbe9c0aadd6bb67c13b8424d10323d408a031'
+    aarch64: 'b4465fc64fa432ffdd890dd8b4ebd048d84e806c75f30e215d3bd08aa045aaa2',
+     armv7l: 'b4465fc64fa432ffdd890dd8b4ebd048d84e806c75f30e215d3bd08aa045aaa2',
+       i686: '4e95604cafcdd336dbd11ec5e07c31661f55e1e2197331261f211cbb9b87046d',
+     x86_64: 'b2daaf6c3077d6a3686ad912182174bc31f8eaec18cde8e6e9bf4453fadf49c5'
   })
+
+  depends_on 'gcc_lib' # R
+  depends_on 'glibc' # R
+  depends_on 'zlibpkg' # R
 
   def self.patch
     # Fix /usr/bin/file: No such file or directory
