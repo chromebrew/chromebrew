@@ -4456,7 +4456,7 @@
 /usr/local/lib64/libclang-cpp.so.18.1
 /usr/local/lib64/libclang.so
 /usr/local/lib64/libclang.so.18.1
-/usr/local/lib64/libclang.so.18.1.5
+/usr/local/lib64/libclang.so.18.1.6
 /usr/local/lib64/libclangAPINotes.a
 /usr/local/lib64/libclangARCMigrate.a
 /usr/local/lib64/libclangAST.a
@@ -4557,7 +4557,7 @@
 /usr/local/lib64/liblldWasm.a
 /usr/local/lib64/liblldb.so
 /usr/local/lib64/liblldb.so.18.1
-/usr/local/lib64/liblldb.so.18.1.5
+/usr/local/lib64/liblldb.so.18.1.6
 /usr/local/lib64/liblldbIntelFeatures.so
 /usr/local/lib64/liblldbIntelFeatures.so.18.1
 /usr/local/lib64/libscanbuild/__init__.py

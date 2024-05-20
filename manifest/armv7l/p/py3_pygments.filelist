@@ -1,12 +1,12 @@
 /usr/local/bin/pygmentize
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/INSTALLER
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/METADATA
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/RECORD
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/REQUESTED
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/WHEEL
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/entry_points.txt
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/licenses/AUTHORS
-/usr/local/lib/python3.12/site-packages/pygments-2.17.2.dist-info/licenses/LICENSE
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/INSTALLER
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/METADATA
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/RECORD
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/REQUESTED
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/WHEEL
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/entry_points.txt
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/licenses/AUTHORS
+/usr/local/lib/python3.12/site-packages/pygments-2.18.0.dist-info/licenses/LICENSE
 /usr/local/lib/python3.12/site-packages/pygments/__init__.py
 /usr/local/lib/python3.12/site-packages/pygments/__main__.py
 /usr/local/lib/python3.12/site-packages/pygments/__pycache__/__init__.cpython-312.pyc
@@ -72,6 +72,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_lasso_builtins.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_lilypond_builtins.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_lua_builtins.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_luau_builtins.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_mapping.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_mql_builtins.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/_mysql_builtins.cpython-312.pyc
@@ -205,6 +206,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/ml.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/modeling.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/modula2.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/mojo.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/monte.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/mosel.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/ncl.cpython-312.pyc
@@ -259,6 +261,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/smv.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/snobol.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/solidity.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/soong.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/sophia.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/special.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/spice.cpython-312.pyc
@@ -266,6 +269,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/srcinfo.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/stata.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/supercollider.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/tact.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/tal.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/tcl.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/teal.cpython-312.pyc
@@ -282,6 +286,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/tnt.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/trafficscript.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/typoscript.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/typst.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/ul4.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/unicon.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/lexers/__pycache__/urbi.cpython-312.pyc
@@ -314,6 +319,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/_lasso_builtins.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/_lilypond_builtins.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/_lua_builtins.py
+/usr/local/lib/python3.12/site-packages/pygments/lexers/_luau_builtins.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/_mapping.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/_mql_builtins.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/_mysql_builtins.py
@@ -447,6 +453,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/ml.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/modeling.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/modula2.py
+/usr/local/lib/python3.12/site-packages/pygments/lexers/mojo.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/monte.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/mosel.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/ncl.py
@@ -501,6 +508,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/smv.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/snobol.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/solidity.py
+/usr/local/lib/python3.12/site-packages/pygments/lexers/soong.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/sophia.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/special.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/spice.py
@@ -508,6 +516,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/srcinfo.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/stata.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/supercollider.py
+/usr/local/lib/python3.12/site-packages/pygments/lexers/tact.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/tal.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/tcl.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/teal.py
@@ -524,6 +533,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/lexers/tnt.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/trafficscript.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/typoscript.py
+/usr/local/lib/python3.12/site-packages/pygments/lexers/typst.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/ul4.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/unicon.py
 /usr/local/lib/python3.12/site-packages/pygments/lexers/urbi.py
@@ -562,6 +572,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/autumn.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/borland.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/bw.cpython-312.pyc
+/usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/coffee.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/colorful.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/default.cpython-312.pyc
 /usr/local/lib/python3.12/site-packages/pygments/styles/__pycache__/dracula.cpython-312.pyc
@@ -608,6 +619,7 @@
 /usr/local/lib/python3.12/site-packages/pygments/styles/autumn.py
 /usr/local/lib/python3.12/site-packages/pygments/styles/borland.py
 /usr/local/lib/python3.12/site-packages/pygments/styles/bw.py
+/usr/local/lib/python3.12/site-packages/pygments/styles/coffee.py
 /usr/local/lib/python3.12/site-packages/pygments/styles/colorful.py
 /usr/local/lib/python3.12/site-packages/pygments/styles/default.py
 /usr/local/lib/python3.12/site-packages/pygments/styles/dracula.py
