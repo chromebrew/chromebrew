@@ -3,18 +3,18 @@ require 'package'
 class Mandb < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
-  version '2.12.0'
+  version '2.12.1'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.12.0.tar.xz'
-  source_sha256 '415a6284a22764ad22ff0f66710d853be7790dd451cd71436e3d25c74d996a95'
+  source_url 'https://download.savannah.gnu.org/releases/man-db/man-db-2.12.1.tar.xz'
+  source_sha256 'ddee249daeb78cf92bab794ccd069cc8b575992265ea20e239e887156e880265'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0a555f1b940b9404ac8116f01f247fe0f6740348e472912ce93353eb82541da3',
-     armv7l: '0a555f1b940b9404ac8116f01f247fe0f6740348e472912ce93353eb82541da3',
-       i686: 'a73a6859c6b32385258366403ecd1636275f25ff4fd20189ea9aa8d8142b607f',
-     x86_64: '80d5f7e3547493821433c073ff03588e147cf2275f6cb7e8274980caf7c3c7a6'
+    aarch64: '007b6aa82ac63e00c9f576b570cb40cc217c3817d50355de1f414a4db199878b',
+     armv7l: '007b6aa82ac63e00c9f576b570cb40cc217c3817d50355de1f414a4db199878b',
+       i686: '8b679dfe0a15583ccb3ef19377f8fb79b27aa8ae31d9e6bb5aaa9088cd3384c8',
+     x86_64: 'e6e9d36cb3dcc908ee3f4574cda85aac6980428f2ac7e11954a4186355431a4a'
   })
 
   no_fhs
