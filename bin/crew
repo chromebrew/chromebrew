@@ -11,6 +11,7 @@ require_relative '../commands/list'
 require_relative '../commands/prop'
 require_relative '../commands/remove'
 require_relative '../commands/sysinfo'
+require_relative '../commands/whatprovides'
 require_relative '../lib/color'
 require_relative '../lib/const'
 require_relative '../lib/crewlog'
@@ -277,23 +278,6 @@ def cache_build
     puts 'CREW_CACHE_ENABLED is not set.'.orange unless CREW_CACHE_ENABLED
     puts 'CREW_CACHE_DIR is not writable.'.lightred unless File.writable?(CREW_CACHE_DIR)
   end
-end
-
-def whatprovides(regex_pat)
-  matched_list = `grep -R "#{regex_pat}" #{CREW_LIB_PATH}/manifest/#{ARCH}`.lines(chomp: true).flat_map do |result|
-    filelist, matched_file = result.split(':', 2)
-    pkg_name = File.basename(filelist, '.filelist')
-    pkg_name_status = pkg_name
-    if @device[:compatible_packages].any? { |elem| elem[:name] == pkg_name }
-      pkg_name_status = pkg_name.lightgreen if File.file? "#{CREW_META_PATH}/#{pkg_name}.filelist"
-    else
-      pkg_name_status = pkg_name.lightred
-    end
-
-    "#{pkg_name_status}: #{matched_file}"
-  end.sort
-
-  puts matched_list, "\nTotal found: #{matched_list.length}".lightgreen if matched_list.any?
 end
 
 def update
@@ -1894,8 +1878,8 @@ def upload_command(args)
 end
 
 def whatprovides_command(args)
-  args['<pattern>'].each do |name|
-    whatprovides name
+  args['<pattern>'].each do |regex|
+    Command.whatprovides(regex)
   end
 end
 
