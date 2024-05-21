@@ -3,14 +3,14 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '23.3.4'
+  version '24.0.5'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url({
-    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/23.3.4/dbeaver-ce-23.3.4-linux.gtk.x86_64.tar.gz'
+    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/24.0.5/dbeaver-ce-24.0.5-linux.gtk.x86_64.tar.gz'
   })
   source_sha256({
-    x86_64: 'd545b1121621e18f0f0f527f9524052c1b67d903bad229ea562f64bfd5a4da24'
+    x86_64: '57c2a2254187bb8996837c3444a4d4b501b4460243e0053e4cbbe9a93f2dfc32'
   })
 
   depends_on 'gtk3'
@@ -47,7 +47,7 @@ class Dbeaver < Package
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
         puts "#{config_dir} saved.".lightgreen
       end
