@@ -10,6 +10,7 @@ require_relative '../commands/help'
 require_relative '../commands/list'
 require_relative '../commands/prop'
 require_relative '../commands/remove'
+require_relative '../commands/search'
 require_relative '../commands/sysinfo'
 require_relative '../commands/whatprovides'
 require_relative '../lib/color'
@@ -140,16 +141,6 @@ def save_json(json_object)
   load_json
 end
 
-def print_package(pkg_path, extra = false)
-  pkg_name = File.basename pkg_path, '.rb'
-  begin
-    set_package pkg_path
-  rescue StandardError => e
-    warn "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
-  end
-  print_current_package extra
-end
-
 def print_current_package(extra = false)
   status = if PackageUtils.installed?(@pkg.name)
              :installed
@@ -186,12 +177,6 @@ def set_package(pkg_path)
   end
 
   @pkg.build_from_source = true if @opt_recursive
-end
-
-def list_packages
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    print_package filename
-  end
 end
 
 def generate_compatible
@@ -231,28 +216,6 @@ def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), 
     abort "Package #{pkg_name} not found. 😞".lightred unless silent
     return
   end
-end
-
-def regexp_search(pkg_pat)
-  re = Regexp.new(pkg_pat, true)
-  results = Dir["#{CREW_PACKAGES_PATH}/*.rb"] \
-            .select  { |f| File.basename(f, '.rb') =~ re } \
-            .each    { |f| print_package(f, CREW_VERBOSE) }
-  if results.empty?
-    Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |package_path|
-      package_name = File.basename package_path, '.rb'
-      begin
-        set_package package_path
-      rescue StandardError => e
-        puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
-      end
-      if @pkg.description =~ /#{pkg_pat}/i
-        print_current_package CREW_VERBOSE
-        results.push(package_name)
-      end
-    end
-  end
-  abort "Package #{pkg_pat} not found. :(".lightred if results.empty?
 end
 
 def cache_build
@@ -1827,8 +1790,8 @@ end
 
 def search_command(args)
   args['<name>'].each do |name|
-    regexp_search name
-  end.empty? && list_packages
+    Command.search(name, CREW_VERBOSE)
+  end
 end
 
 def sysinfo_command(_args)
