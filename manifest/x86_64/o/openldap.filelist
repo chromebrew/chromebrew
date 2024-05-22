@@ -263,6 +263,7 @@
 /usr/local/share/man/man5/slapo-dynlist.5.zst
 /usr/local/share/man/man5/slapo-homedir.5.zst
 /usr/local/share/man/man5/slapo-memberof.5.zst
+/usr/local/share/man/man5/slapo-nestgroup.5.zst
 /usr/local/share/man/man5/slapo-otp.5.zst
 /usr/local/share/man/man5/slapo-pbind.5.zst
 /usr/local/share/man/man5/slapo-pcache.5.zst
