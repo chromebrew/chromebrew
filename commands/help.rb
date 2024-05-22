@@ -26,6 +26,11 @@ class Command
         Usage: crew const [<const1> <const2> ...]
         If no constants are provided, all constants will be displayed.
       EOT
+    when 'create'
+      puts <<~EOT
+        Create a template package file.
+        Usage: crew create
+      EOT
     when 'deps'
       puts <<~EOT
         Display dependencies of package(s).
