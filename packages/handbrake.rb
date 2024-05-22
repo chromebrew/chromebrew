@@ -3,7 +3,7 @@ require 'package'
 class Handbrake < Package
   description 'HandBrake is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.'
   homepage 'https://handbrake.fr/'
-  version '1.7.0'
+  version '1.8.0'
   license 'GPL-2'
   compatibility 'x86_64'
   source_url 'https://github.com/HandBrake/HandBrake.git'
@@ -11,7 +11,7 @@ class Handbrake < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-     x86_64: 'ea62798482bd654274a9bbefc22f3f1bb7daab72021a552625ae3b3f7ec010b6'
+    x86_64: '8d64386da999ddee0aac087d2b7275062e59cc37acb06a8504ab0290492eb46b'
   })
 
   depends_on 'at_spi2_core' # R
@@ -27,7 +27,7 @@ class Handbrake < Package
   depends_on 'glibc' # R
   depends_on 'glib' # R
   depends_on 'gstreamer' # R
-  depends_on 'gtk3' # R
+  depends_on 'gtk4' # R
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'intel_media_sdk'
@@ -94,20 +94,15 @@ class Handbrake < Package
     Dir.chdir 'x86_64-cros-linux-gnu' do
       system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     end
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d"
+    FileUtils.ln_s "#{CREW_PREFIX}/bin/HandBrakeCLI", "#{CREW_DEST_PREFIX}/bin/hb"
     File.write "#{CREW_DEST_PREFIX}/etc/env.d/10-handbrake", <<~HANDBRAKE_ENVD_EOF
       alias ghb="GDK_BACKEND=wayland ghb"
     HANDBRAKE_ENVD_EOF
   end
 
   def self.postinstall
-    puts
-    puts "To get started, type 'ghb'.".lightblue
-    puts
-    puts "Type 'HandBrakeCLI' for the command line.".lightblue
-    puts
-    puts 'Please run the following to finish the install:'.orange
-    puts "source #{CREW_PREFIX}/etc/env.d/10-handbrake".lightblue
-    puts
+    ExitMessage.add "\nTo get started, type 'ghb'.\n\nType 'hb' for the command line.\n".lightblue
   end
 end
