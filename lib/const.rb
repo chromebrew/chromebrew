@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.48.4'
+CREW_VERSION = '1.48.5'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -362,7 +362,7 @@ CREW_DOCOPT = <<~DOCOPT
     crew search [-v|--verbose] <name> ...
     crew sysinfo [-v|--verbose]
     crew test [-v|--verbose] [<name> ...]
-    crew update [options] [-v|--verbose] [<compatible>]
+    crew update
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-v|--verbose] [<name> ...]
     crew whatprovides <pattern> ...
