@@ -194,33 +194,6 @@ def set_package(pkg_path)
   @pkg.build_from_source = true if @opt_recursive
 end
 
-def generate_compatible
-  puts 'Determining package compatibility...'.orange if CREW_VERBOSE
-  @device[:compatible_packages] = []
-  Dir["#{CREW_PACKAGES_PATH}/*.rb"].each do |filename|
-    pkg_name = File.basename filename, '.rb'
-    begin
-      set_package filename
-    rescue StandardError => e
-      puts "Error with #{pkg_name}.rb: #{e}".red unless e.to_s.include?('uninitialized constant')
-    end
-    puts "Checking #{pkg_name} for compatibility.".orange if CREW_VERBOSE
-    if PackageUtils.compatible?(@pkg)
-      # add to compatible packages
-      puts "Adding #{pkg_name} #{@pkg.version} to compatible packages.".lightgreen if CREW_VERBOSE
-      @device[:compatible_packages].push(name: @pkg.name)
-    elsif CREW_VERBOSE
-      puts "#{pkg_name} is not a compatible package.".lightred
-    end
-  end
-  puts 'Determining essential dependencies from CREW_ESSENTIAL_PACKAGES...'.orange if CREW_VERBOSE
-  @device[:essential_deps] = []
-  @device[:essential_deps].concat(CREW_ESSENTIAL_PACKAGES.flat_map { |i| Package.load_package("#{i}.rb").get_deps_list }.push(*CREW_ESSENTIAL_PACKAGES).uniq.sort)
-  crewlog "Essential packages: #{@device[:essential_deps]}"
-  ConvenienceFunctions.save_json(@device)
-  puts 'Determined compatibility & which packages are essential.'.orange if CREW_VERBOSE
-end
-
 def search(pkg_name, pkg_path: File.join(CREW_PACKAGES_PATH, "#{pkg_name}.rb"), silent: false)
   begin
     return set_package(pkg_path) if File.file?(pkg_path)
@@ -311,8 +284,6 @@ def update
     load "#{CREW_LIB_PATH}/lib/fixup.rb"
   end
 
-  # update compatible packages
-  generate_compatible
   # check for outdated installed packages
   puts 'Checking for package updates...' unless CREW_UNATTENDED
 
@@ -1906,12 +1877,8 @@ def sysinfo_command(_args)
   Command.sysinfo(CREW_VERBOSE)
 end
 
-def update_command(args)
-  if args['<compatible>']
-    generate_compatible
-  else
-    update
-  end
+def update_command(_args)
+  update
 end
 
 def upgrade_command(args) = upgrade(*args['<name>'], build_from_source: @opt_source)

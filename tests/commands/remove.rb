@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require_relative '../../commands/remove'
 require_relative '../../lib/const'
-require_relative '../../lib/convenience_functions'
 require_relative '../../lib/package_utils'
 
 # Add lib to LOAD_PATH
@@ -12,11 +11,10 @@ String.use_color = false
 
 class RemoveCommandTest < Minitest::Test
   def setup
-    essential_deps = ConvenienceFunctions.load_symbolized_json[:essential_deps]
-    @random_essential_package_name = essential_deps[rand(0...(essential_deps.length - 1))]
+    @random_essential_package_name = CREW_ESSENTIAL_PACKAGES.sample
     puts <<~ESSENTIAL_PACKAGE_REMOVAL_TEST_EOF
 
-      Testing the removal of essential package #{@random_essential_package_name}, which was picked at random from one the essential packages: #{essential_deps.join(', ')}
+      Testing the removal of essential package #{@random_essential_package_name}, which was picked at random from one the essential packages: #{CREW_ESSENTIAL_PACKAGES.join(', ')}
       (This should fail.)
 
     ESSENTIAL_PACKAGE_REMOVAL_TEST_EOF
@@ -56,7 +54,7 @@ class RemoveCommandTest < Minitest::Test
   def test_remove_package_with_essential_file
     assert_output(true) do
       until PackageUtils.installed?(@package_with_essential_file)
-        system "crew install -d #{@package_with_essential_file}", %i[out err] => File::NULL
+        system "yes | crew install -d #{@package_with_essential_file}", %i[out err] => File::NULL
         sleep 2
       end
       system "crew remove -d #{@package_with_essential_file}", %i[out err] => File::NULL
@@ -70,7 +68,7 @@ class RemoveCommandTest < Minitest::Test
     EOT
     assert_output(/^#{Regexp.escape(expected_output.chomp)}!/, nil) do
       until PackageUtils.installed?(@normal_package_name)
-        system "crew install -d #{@normal_package_name}", %i[out err] => File::NULL
+        system "yes | crew install -d #{@normal_package_name}", %i[out err] => File::NULL
         sleep 2
       end
       Command.remove(@normal_pkg, true)
