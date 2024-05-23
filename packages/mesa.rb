@@ -12,9 +12,9 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '329c900254038c9f9281d9e04dcd7e3df646ebe998b1b4273844b51521bc94c8',
-     armv7l: '329c900254038c9f9281d9e04dcd7e3df646ebe998b1b4273844b51521bc94c8',
-     x86_64: '0d226d1f5a6983cab3133434c928b3c44f94bc20bc5e9ee34c9625593561344b'
+    aarch64: 'd54185457b5a24031970fe814972b9acadffed5e089e273d97629f44d65138da',
+     armv7l: 'd54185457b5a24031970fe814972b9acadffed5e089e273d97629f44d65138da',
+     x86_64: '5956d81ea0d8c3b944cfe1af095a7fce7de55bf17ea8545614bbec856537b98b'
   })
 
   depends_on 'elfutils' # R
