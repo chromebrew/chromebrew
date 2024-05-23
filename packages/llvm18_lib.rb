@@ -5,7 +5,7 @@ class Llvm18_lib < Package
   description 'LibLLVM and llvm-strip'
   homepage Llvm18_build.homepage
   version '18.1.6'
-  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, and openmp in tandem.
+  # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
   license Llvm18_build.license
   compatibility 'all'

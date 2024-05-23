@@ -36,10 +36,13 @@
 /usr/local/lib/dri/nouveau_drv_video.so
 /usr/local/lib/dri/panel-mipi-dbi_dri.so
 /usr/local/lib/dri/panfrost_dri.so
+/usr/local/lib/dri/panthor_dri.so
 /usr/local/lib/dri/pl111_dri.so
 /usr/local/lib/dri/rcar-du_dri.so
 /usr/local/lib/dri/repaper_dri.so
 /usr/local/lib/dri/rockchip_dri.so
+/usr/local/lib/dri/rzg2l-du_dri.so
+/usr/local/lib/dri/ssd130x_dri.so
 /usr/local/lib/dri/st7586_dri.so
 /usr/local/lib/dri/st7735r_dri.so
 /usr/local/lib/dri/sti_dri.so
@@ -54,6 +57,7 @@
 /usr/local/lib/dri/virtio_gpu_drv_video.so
 /usr/local/lib/dri/vmwgfx_dri.so
 /usr/local/lib/dri/zink_dri.so
+/usr/local/lib/dri/zynqmp-dpsub_dri.so
 /usr/local/lib/gbm/tls/pvr_gbm.so
 /usr/local/lib/libEGL_mesa.so
 /usr/local/lib/libEGL_mesa.so.0

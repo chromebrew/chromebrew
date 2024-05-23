@@ -6,17 +6,18 @@ require 'buildsystems/cmake'
 class Spirv_llvm_translator < CMake
   description 'Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
   homepage 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator'
-  version '18.1.0'
+  @_ver = '18.1.0'
+  version "#{@_ver}-gcc14"
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git'
-  git_hashtag "v#{version}"
+  git_hashtag "v#{@_ver}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '09ffe51c28f2839522c74bc1180d7a8b6862f3e360ae1736ddb4f8601311f5e5',
-     armv7l: '09ffe51c28f2839522c74bc1180d7a8b6862f3e360ae1736ddb4f8601311f5e5',
-     x86_64: '89bfa4e3cbb0fc50aba0024932ce6345b08e57b5dc90fd9b85d9e0c3dc172648'
+    aarch64: '314bbf245fb76336bb506e23a5f7dfa7a605d2f346e1e578d24c0946a0571538',
+     armv7l: '314bbf245fb76336bb506e23a5f7dfa7a605d2f346e1e578d24c0946a0571538',
+     x86_64: '595cbecb0276f45f4f45e9a8cf33d48f5dc272ecf05b80a636feccdfaea4d444'
   })
 
   depends_on 'gcc_lib' # R

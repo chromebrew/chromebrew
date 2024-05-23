@@ -1,34 +1,30 @@
-# Adapted from Arch Linux openmp PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/openmp/trunk/PKGBUILD
+# Adapted from Arch Linux libclc PKGBUILD at:
+# https://github.com/archlinux/svntogit-packages/raw/packages/libclc/trunk/PKGBUILD
 
 require 'package'
 require_relative 'llvm18_build'
 
-class Openmp < Package
-  description 'LLVM OpenMP Runtime Library'
-  homepage 'https://openmp.llvm.org/'
+class Libclc < Package
+  description 'Library requirements of the OpenCL C programming language'
+  homepage 'https://libclc.llvm.org/'
   version '18.1.6'
-  # When upgrading llvm_build*, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
+  # When upgrading llvm*_build, be sure to upgrade llvm_lib*, llvm_dev*, libclc, and openmp in tandem.
   puts "#{self} version differs from llvm version #{Llvm18_build.version}".orange if version != Llvm18_build.version
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/llvm/llvm-project.git'
   git_hashtag Llvm18_build.git_hashtag.to_s
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7cfd65bc254aa07b7bd67f088399c3df7451ec02520823df9a36c382f90cd5ed',
-     armv7l: '7cfd65bc254aa07b7bd67f088399c3df7451ec02520823df9a36c382f90cd5ed',
-       i686: '0dc4d73a38eec1f80e51783f72468a5475d03ad7c483474eee301db1f17a8b81',
-     x86_64: '4c4df4fb6e525986942c8ea11da4c44b70c5e0779772fc8bbaf1dd3589e9f623'
+    aarch64: 'b7bb07e22b678fcb9beea584fc96fbb678ded81511cd0ec9effeff164853eb1f',
+     armv7l: 'b7bb07e22b678fcb9beea584fc96fbb678ded81511cd0ec9effeff164853eb1f',
+     x86_64: '83327f04fb235241f9f1a016fa16f47ffef8f5d38da480ac454ddbe1658ca11c'
   })
 
-  depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
-  depends_on 'libffi' # R
   depends_on 'llvm18_dev' => :build
-  depends_on 'llvm18_lib' # R
-  depends_on 'python3' # R
+  depends_on 'python3' => :build
+  depends_on 'spirv_llvm_translator' => :build
 
   no_env_options
 
@@ -59,8 +55,8 @@ class Openmp < Package
                      else
                        CREW_CMAKE_OPTIONS
                      end
-    system "cmake -B builddir -G Ninja openmp \
-      #{@cmake_options} \
+    system "cmake -B builddir -G Ninja libclc \
+      #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
       -DCMAKE_C_COMPILER=$(which clang) \
       -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
@@ -73,7 +69,7 @@ class Openmp < Package
       -DOPENMP_LIBDIR_SUFFIX=#{CREW_LIB_SUFFIX} \
       -DPYTHON_EXECUTABLE=$(which python3) \
       -Wno-dev"
-    system "mold -run #{CREW_NINJA} -C builddir"
+    system "#{CREW_NINJA} -C builddir"
   end
 
   def self.install
