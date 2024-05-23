@@ -3800,6 +3800,11 @@ url: https://github.com/libb64/libb64/releases
 activity: none
 ---
 kind: url
+name: libbacktrace
+url: https://github.com/ianlancetaylor/libbacktrace/releases
+activity: none
+---
+kind: url
 name: libblockdev
 url: https://github.com/storaged-project/libblockdev/releases
 activity: low
