@@ -3,11 +3,11 @@ require 'package'
 class Webkit2gtk_4_1 < Package
   description 'Web content engine for GTK'
   homepage 'https://webkitgtk.org'
-  version '2.42.1'
+  version '2.44.2'
   license 'LGPL-2+ and BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://webkitgtk.org/releases/webkitgtk-2.42.1.tar.xz'
-  source_sha256 '6f41fac9989d3ee51c08c48de1d439cdeddecbc757e34b6180987d99b16d2499'
+  source_url 'https://webkitgtk.org/releases/webkitgtk-2.44.2.tar.xz'
+  source_sha256 '523f42c8ff24832add17631f6eaafe8f9303afe316ef1a7e1844b952a7f7521b'
   binary_compression 'tar.zst'
 
   binary_sha256({
@@ -23,7 +23,6 @@ class Webkit2gtk_4_1 < Package
   depends_on 'enchant' # R
   depends_on 'fontconfig'
   depends_on 'freetype' # R
-  depends_on 'gcc10' => :build
   depends_on 'gcc_lib' # R
   depends_on 'gdk_pixbuf' # R
   depends_on 'glibc' # R
@@ -38,6 +37,7 @@ class Webkit2gtk_4_1 < Package
   depends_on 'lcms' # R
   depends_on 'libavif' => :build
   depends_on 'libavif' # R
+  depends_on 'libbacktrace' => :build
   depends_on 'libdrm' # R
   depends_on 'libepoxy' # R
   depends_on 'libgcrypt' # R
@@ -119,20 +119,6 @@ class Webkit2gtk_4_1 < Package
       # @arch_flags = '-mtune=cortex-a15 -mfloat-abi=hard -mfpu=neon -mtls-dialect=gnu -marm -mlibarch=armv8-a+crc+simd -march=armv8-a+crc+simd'
       @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
     end
-    @gcc_ver = '-10'
-    @new_gcc = <<~NEW_GCCEOF
-      #!/bin/bash
-      gcc#{@gcc_ver} #{@arch_flags} $@
-    NEW_GCCEOF
-    @new_gpp = <<~NEW_GPPEOF
-      #!/bin/bash
-      g++#{@gcc_ver} #{@arch_flags} $@
-    NEW_GPPEOF
-    FileUtils.mkdir_p 'bin'
-    File.write('bin/gcc', @new_gcc)
-    FileUtils.chmod 0o755, 'bin/gcc'
-    File.write('bin/g++', @new_gpp)
-    FileUtils.chmod 0o755, 'bin/g++'
   end
 
   def self.build
@@ -143,7 +129,7 @@ class Webkit2gtk_4_1 < Package
     # LDFLAGS from debian: -Wl,--no-keep-memory
     unless File.file?('build.ninja')
       @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
-      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
+      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' \
           cmake -B builddir -G Ninja \
           #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
