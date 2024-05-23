@@ -3886,6 +3886,11 @@ url: https://gitlab.gnome.org/GNOME/libchamplain/-/tags
 activity: low
 ---
 kind: url
+name: libclc
+url: https://github.com/llvm/llvm-project/releases
+activity: medium
+---
+kind: url
 name: libcheck
 url: https://github.com/libcheck/check/releases
 activity: low
@@ -5382,8 +5387,8 @@ activity: high
 ---
 kind: url
 name: llvm
-url: https://releases.llvm.org/
-activity: low
+url: https://github.com/llvm/llvm-project/releases
+activity: medium
 ---
 kind: url
 name: llvm_stage1
