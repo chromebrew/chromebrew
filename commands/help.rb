@@ -102,15 +102,15 @@ class Command
         Look for package(s).
         Usage: crew search [-v|--verbose] [<pattern> ...]
         Both the name and description of packages will be searched.
-        If the package color is " + "green".lightgreen + ", it means the package is installed.
-        If the package color is " + "red".lightred + ", it means the architecture is not supported.
-        If the package color is " + "blue".lightblue + ", it means the architecture is supported but the package is not installed.
+        If the package color is #{'green'.lightgreen}, it means the package is installed.
+        If the package color is #{'red'.lightred}, it means the architecture is not supported.
+        If the package color is #{'blue'.lightblue}, it means the architecture is supported but the package is not installed.
         The <pattern> string can also contain regular expressions.
         If `-v` or `--verbose` is present, the homepage, version and license of found packages will be displayed.
         Examples:
-          crew search ^lib".lightblue + " will display all packages with a name or description that starts with `lib`.
-          crew search audio".lightblue + " will display all packages with `audio` in the name or description.
-          crew search -v git".lightblue + " will display all packages with `git` in the name or description along with homepage, version and license.
+          #{'crew search ^lib'.lightblue} will display all packages with a name or description that starts with `lib`.
+          #{'crew search audio'.lightblue} will display all packages with `audio` in the name or description.
+          #{'crew search -v git'.lightblue} will display all packages with `git` in the name or description along with homepage, version and license.
       EOT
     when 'sysinfo'
       puts <<~EOT
