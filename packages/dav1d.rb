@@ -3,7 +3,7 @@ require 'package'
 class Dav1d < Package
   description '**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
-  version '1.4.0'
+  version '1.4.1'
   license 'BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://code.videolan.org/videolan/dav1d.git'
@@ -11,9 +11,9 @@ class Dav1d < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '29d4434e8d6185fa8b4e4ec6b458ba830582210dca6022486f29649bdfee21a9',
-     armv7l: '29d4434e8d6185fa8b4e4ec6b458ba830582210dca6022486f29649bdfee21a9',
-     x86_64: '9011d38fc35cbb4ab87896db45fe91d23c6e9c5034c2b64a85704c741ce96949'
+    aarch64: '04095a79a6f15e15760b6d355a8f8a3b3e6ff1a402b688f96990d9463ddc4f0e',
+     armv7l: '04095a79a6f15e15760b6d355a8f8a3b3e6ff1a402b688f96990d9463ddc4f0e',
+     x86_64: 'b298fcec9adb0a2afe25418225e3cb88e8839d042185c43a5966e35ae98cef28'
   })
 
   depends_on 'gcc_lib' # R
