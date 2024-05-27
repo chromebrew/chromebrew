@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Gsl < Package
+class Gsl < Autotools
   description 'The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers.'
   homepage 'https://www.gnu.org/software/gsl/'
   version '2.8'
@@ -17,15 +17,5 @@ class Gsl < Package
      x86_64: '77040ff7e8b9da1e95c93fed6d6f8e8942c3e64ef790a0775303906f82322aed'
   })
 
-  def self.build
-    system './configure',
-           "--prefix=#{CREW_PREFIX}",
-           "--libdir=#{CREW_LIB_PREFIX}",
-           '--disable-maintainer-mode'
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  run_tests
 end
