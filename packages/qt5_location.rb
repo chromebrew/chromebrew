@@ -22,5 +22,5 @@ class Qt5_location < Qmake
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
   depends_on 'qt5_declarative' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

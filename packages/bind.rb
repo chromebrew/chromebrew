@@ -34,7 +34,7 @@ class Bind < Autotools
   depends_on 'ncurses' => :build
   depends_on 'openssl' # R
   depends_on 'py3_ply' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   pre_configure_options "CFLAGS='#{CREW_ENV_OPTIONS_HASH['CFLAGS']} -DDIG_SIGCHASE'"
   configure_options '--enable-fixed-rrset \

@@ -46,7 +46,7 @@ class Blender < CMake
   depends_on 'py3_requests'
   depends_on 'python3'
   depends_on 'tbb' # R
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd'
 
   def self.patch

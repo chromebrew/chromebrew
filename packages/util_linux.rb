@@ -33,7 +33,7 @@ class Util_linux < Meson
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'sqlite' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   conflicts_ok

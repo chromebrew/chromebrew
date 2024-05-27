@@ -21,7 +21,7 @@ class Libssh < CMake
   depends_on 'krb5'
   depends_on 'libgcrypt'
   depends_on 'py3_abimap' => :build
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'glibc' # R
   depends_on 'openssl' # R
 

@@ -56,7 +56,7 @@ class Mesa < Meson
   depends_on 'wayland_protocols' => :build
   depends_on 'wayland' # R
   depends_on 'xcb_util_keysyms' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \

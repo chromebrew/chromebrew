@@ -72,7 +72,7 @@ class Webkit2gtk_4_1 < Package
   depends_on 'wayland' # R
   depends_on 'woff2' # R
   depends_on 'wpebackend_fdo' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 

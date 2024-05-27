@@ -61,7 +61,7 @@ class Php82 < Package
   depends_on 'sqlite' # R
   depends_on 'tidy' # R
   depends_on 'unixodbc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_fhs

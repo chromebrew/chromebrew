@@ -23,7 +23,7 @@ class Boost < Package
   depends_on 'icu4c' # R
   depends_on 'python3' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.build

@@ -32,7 +32,7 @@ class Fragments < Meson
   depends_on 'pango' # R
   depends_on 'rust' => :build
   depends_on 'transmission' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 end

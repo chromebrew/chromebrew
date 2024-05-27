@@ -21,7 +21,7 @@ class Libunwind < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   configure_options '--enable-ptrace'
 end

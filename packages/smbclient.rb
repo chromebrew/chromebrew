@@ -48,7 +48,7 @@ class Smbclient < Package
   depends_on 'talloc' # R
   depends_on 'tdb' # R
   depends_on 'tevent' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   @samba4_idmap_modules = 'idmap_ad,idmap_rid,idmap_adex,idmap_hash,idmap_tdb2'
   @samba4_pdb_modules = 'pdb_tdbsam,pdb_ldap,pdb_ads,pdb_smbpasswd,pdb_wbc_sam,pdb_samba4'

@@ -23,7 +23,7 @@ class Libbpf < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'rsync' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's,PREFIX ?= /usr,PREFIX ?= #{CREW_PREFIX},g' src/Makefile"

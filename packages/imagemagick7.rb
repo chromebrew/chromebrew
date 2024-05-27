@@ -62,7 +62,7 @@ class Imagemagick7 < Autotools
   depends_on 'pango' # R
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_upstream_update

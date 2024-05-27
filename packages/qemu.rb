@@ -64,7 +64,7 @@ class Qemu < Package
   depends_on 'snappy' # R
   depends_on 'sphinx' => :build
   depends_on 'vte' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.patch

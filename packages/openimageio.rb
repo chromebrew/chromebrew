@@ -28,7 +28,7 @@ class Openimageio < CMake
   depends_on 'openexr'
   depends_on 'pugixml'
   depends_on 'py3_pybind11'
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   # The setup for finding pybind11 is custom, so it's hard to tell where exactly it breaks to fix it properly.
   cmake_options "-Dpybind11_ROOT=#{CREW_PREFIX}/lib/python#{version.split('y').last}/site-packages/pybind11 -DOIIO_BUILD_TESTS=OFF"

@@ -169,7 +169,7 @@ curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH
 BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
 # Older i686 systems.
-[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlibpkg gcc_lib'
+[[ "${ARCH}" == "i686" ]] && BOOTSTRAP_PACKAGES+=' zlib gcc_lib'
 
 if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   # shellcheck disable=SC2231
@@ -185,10 +185,10 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
     [[ "${ARCH}" == "armv7l" ]] && BOOTSTRAP_PACKAGES+=' bzip2 ncurses readline pcre2 gcc_lib'
     if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" < "123" )); then
       # Append the correct packages for systems running M122 and lower.
-      BOOTSTRAP_PACKAGES+=' glibc_lib235 zlibpkg gmp'
+      BOOTSTRAP_PACKAGES+=' glibc_lib235 zlib gmp'
     elif (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "122" )); then
       # Append the correct packages for systems running M123 onwards.
-      BOOTSTRAP_PACKAGES+=' glibc_lib237 zlibpkg gmp'
+      BOOTSTRAP_PACKAGES+=' glibc_lib237 zlib gmp'
     fi
   fi
 fi

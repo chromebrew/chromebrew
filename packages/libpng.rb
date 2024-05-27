@@ -17,7 +17,7 @@ class Libpng < Package
      x86_64: 'cc55bf8441e29ac7bcfb0b80d7903cbb5816df85ffd052376de6396b18c80cf5'
   })
 
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'glibc' # R
   depends_on 'glibc_lib' # R
 

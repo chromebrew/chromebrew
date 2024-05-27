@@ -37,5 +37,5 @@ class Geany_plugins < Autotools
   depends_on 'valgrind' => :build
   depends_on 'vte' # R
   depends_on 'webkit2gtk_4' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end
