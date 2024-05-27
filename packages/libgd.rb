@@ -2,7 +2,7 @@ require 'package'
 
 class Libgd < Package
   description 'GD is an open source code library for the dynamic creation of images by programmers.'
-  homepage 'https://libgd.org/'
+  homepage 'https://libgd.github.io/'
   version '2.3.3'
   license 'custom'
   compatibility 'all'
