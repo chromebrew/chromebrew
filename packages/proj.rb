@@ -1,8 +1,8 @@
 require 'package'
 
-class Proj4 < Package
-  description 'proj.4 is a standard Unix filter function which converts geographic longitude and latitude coordinates into cartesian coordinates (and vice versa), and it is a C API for software developers to include coordinate transformation in their own software.'
-  homepage 'https://proj4.org/'
+class Proj < Package
+  description 'PROJ is a generic coordinate transformation software that transforms geospatial coordinates from one coordinate reference system (CRS) to another.'
+  homepage 'https://proj.org'
   version '6.3.2'
   license 'MIT'
   compatibility 'all'

@@ -39,7 +39,7 @@ class Gdal < CMake
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
   depends_on 'poppler' # R
-  depends_on 'proj4' # R
+  depends_on 'proj' # R
   depends_on 'py3_numpy' => :build
   depends_on 'qhull' # R
   depends_on 'sqlite' # R

@@ -20,7 +20,7 @@ class Libgeotiff < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libtiff' # R
-  depends_on 'proj4' # R
+  depends_on 'proj' # R
 
   def self.build
     system "cmake -B builddir -G Ninja \
