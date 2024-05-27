@@ -20,7 +20,7 @@ class Gdk_pixbuf < Package
   depends_on 'glib' # R
   depends_on 'gobject_introspection' => :build
   depends_on 'harfbuzz' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'pango' => :build

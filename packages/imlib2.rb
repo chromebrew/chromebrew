@@ -21,7 +21,7 @@ class Imlib2 < Package
   depends_on 'giflib'
   depends_on 'libid3tag'
   depends_on 'libheif'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libjxl'
   depends_on 'libtiff'
   depends_on 'libx11'

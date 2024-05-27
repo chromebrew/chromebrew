@@ -33,7 +33,7 @@ class Tracker3_miners < Meson
   depends_on 'libexif' # R
   depends_on 'libgrss' # R
   depends_on 'libgsf' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libseccomp' # R
   depends_on 'libtiff' # R

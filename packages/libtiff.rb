@@ -26,7 +26,7 @@ class Libtiff < Package
   depends_on 'libglu' unless ARCH == 'i686' # R
   depends_on 'libglvnd' unless ARCH == 'i686' # R
   depends_on 'libice' unless ARCH == 'i686' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libsm' unless ARCH == 'i686' # R
   depends_on 'libwebp' unless ARCH == 'i686' # R
   depends_on 'libx11' unless ARCH == 'i686' # R

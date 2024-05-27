@@ -21,7 +21,7 @@ class Spice_gtk < Package
 
   depends_on 'gtk3'
   depends_on 'libcacard'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'opus'
   depends_on 'usbredir'
   depends_on 'gstreamer'

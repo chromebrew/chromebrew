@@ -25,7 +25,7 @@ class Libheif < Package
   depends_on 'graphviz' => :build # Only needed for dot.
   depends_on 'libaom' # R
   depends_on 'libde265' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # L
   depends_on 'libwebp' # R

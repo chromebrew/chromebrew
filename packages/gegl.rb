@@ -31,7 +31,7 @@ class Gegl < Meson
   depends_on 'jasper' # R
   depends_on 'json_glib' # R
   depends_on 'lcms' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R
   depends_on 'libsdl2' # R

@@ -19,7 +19,7 @@ class V4l_utils < Package
   depends_on 'alsa_lib'
   depends_on 'eudev'
   depends_on 'libglu'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'mesa' unless ARCH == 'i686'
   depends_on 'qt5_base' unless ARCH == 'i686'
   depends_on 'sdl2_image'

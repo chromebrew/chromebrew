@@ -32,7 +32,7 @@ class Ghostscript < Package
   depends_on 'lcms' # R
   depends_on 'libarchive' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpaper' # R
   depends_on 'libpng' # R
   depends_on 'libsm' # R

@@ -29,7 +29,7 @@ class Libadwaita < Meson
   depends_on 'graphene' # R
   depends_on 'gtk4' # R
   depends_on 'harfbuzz' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libsass' => :build
   depends_on 'libxml2' # R
   depends_on 'libyaml' # R

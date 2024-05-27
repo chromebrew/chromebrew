@@ -22,7 +22,7 @@ class Libvncserver < Package
   depends_on 'gtk2' => :build
   depends_on 'libcyrussasl' # R
   depends_on 'libgcrypt' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'lzo' # R
   depends_on 'openssl' # R

@@ -25,7 +25,7 @@ class Libgdiplus < Package
   depends_on 'graphite'
   depends_on 'imake' => :build
   depends_on 'libexif'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libwebp'

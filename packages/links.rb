@@ -21,7 +21,7 @@ class Links < Package
   depends_on 'bzip2'
   depends_on 'glibc' # R
   depends_on 'libbsd' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'lzma'
   depends_on 'openssl'

@@ -17,7 +17,7 @@ class Libspectre < Package
   })
 
   depends_on 'ghostscript' # = libgs
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
 

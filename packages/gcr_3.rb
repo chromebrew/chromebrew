@@ -29,7 +29,7 @@ class Gcr_3 < Meson
   depends_on 'harfbuzz' # R
   depends_on 'hicolor_icon_theme' => :build
   depends_on 'libgcrypt' # R
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libsecret' # R
   depends_on 'libxslt' => :build
   depends_on 'p11kit' # R

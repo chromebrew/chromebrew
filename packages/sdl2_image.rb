@@ -19,7 +19,7 @@ class Sdl2_image < Autotools
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libavif' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libpng' => :build
   depends_on 'libsdl2' # R
   depends_on 'libtiff' => :build

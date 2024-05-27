@@ -26,7 +26,7 @@ class Wine < Package
   depends_on 'libfaudio' => :build
   depends_on 'libglu' => :build
   depends_on 'libgphoto' # R
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libpcap' # R
   depends_on 'libpng' => :build
   depends_on 'libsm' => :build

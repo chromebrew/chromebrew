@@ -16,7 +16,7 @@ class Hplip < Package
 
   depends_on 'cups'
   depends_on 'dbus'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'sane_backends'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R

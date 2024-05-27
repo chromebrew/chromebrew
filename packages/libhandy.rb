@@ -26,7 +26,7 @@ class Libhandy < Meson
   depends_on 'glib' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'zlibpkg' => :build

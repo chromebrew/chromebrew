@@ -19,7 +19,7 @@ class Php72 < Package
 
   depends_on 'libgcrypt'
   depends_on 'libiconv'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libxslt'
   depends_on 'libzip'
   depends_on 'curl'

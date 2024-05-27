@@ -18,7 +18,7 @@ class Php73 < Package
 
   depends_on 'curl'
   depends_on 'libgcrypt'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libxpm'
   depends_on 'libxslt'

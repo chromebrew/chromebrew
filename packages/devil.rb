@@ -21,7 +21,7 @@ class Devil < Package
   depends_on 'jasper'
   depends_on 'lcms'
   depends_on 'libglu'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libtiff'
   depends_on 'libxi'

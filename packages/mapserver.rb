@@ -24,7 +24,7 @@ class Mapserver < Package
   depends_on 'geos'
   depends_on 'glib'
   depends_on 'harfbuzz'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'proj4'
   depends_on 'freetype' # R
   depends_on 'gcc_lib' # R

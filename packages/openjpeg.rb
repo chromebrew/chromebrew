@@ -19,7 +19,7 @@ class Openjpeg < CMake
   depends_on 'glibc' # R
   depends_on 'jbigkit' # R
   depends_on 'libdeflate' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R

@@ -41,7 +41,7 @@ class Gtk4 < Meson
   depends_on 'iso_codes' => :build
   depends_on 'libcloudproviders' # R
   depends_on 'libepoxy' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # L
   depends_on 'libsass' => :build

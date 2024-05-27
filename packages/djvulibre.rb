@@ -21,7 +21,7 @@ class Djvulibre < Package
      x86_64: '2d7e552fb69f2f0065b149be8046aaed7e6db3094b1f827fdd24454c2d5ddc9a'
   })
 
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libtiff'
   depends_on 'librsvg' => :build
   depends_on 'gcc_lib' # R
