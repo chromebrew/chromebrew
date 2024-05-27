@@ -1,8 +1,8 @@
 require 'package'
 
-class Pkgconfig < Package
+class Pkg_config < Package
   description 'pkg-config is a helper tool used when compiling applications and libraries.'
-  homepage 'https://gitlab.freedesktop.org/pkg-config/pkg-config'
+  homepage 'https://www.freedesktop.org/wiki/Software/pkg-config/'
   version '0.29.2-d97d'
   license 'GPL-2'
   compatibility 'all'

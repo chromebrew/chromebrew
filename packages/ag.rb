@@ -19,7 +19,7 @@ class Ag < Package
 
   depends_on 'autoconf' => :build
   depends_on 'automake' => :build
-  depends_on 'pkgconfig' => :build
+  depends_on 'pkg_config' => :build
   depends_on 'pcre'
   depends_on 'xzutils'
   depends_on 'zlibpkg'

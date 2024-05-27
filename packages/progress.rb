@@ -17,7 +17,7 @@ class Progress < Package
      x86_64: 'e3e4b39e3be040d3d1ce716b253a625d0aa77839cdc7e22d479649748bbfa403'
   })
 
-  depends_on 'pkgconfig' => :build
+  depends_on 'pkg_config' => :build
   depends_on 'ncurses'
 
   def self.build
