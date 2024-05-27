@@ -26,7 +26,7 @@ class Poppler < Package
   depends_on 'glib' # R
   depends_on 'harfbuzz' # R
   depends_on 'lcms' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libtiff' # R
   depends_on 'nspr' => :build

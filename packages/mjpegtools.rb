@@ -17,7 +17,7 @@ class Mjpegtools < Package
   })
 
   depends_on 'libdv'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libsdl'
   depends_on 'libsdl2'

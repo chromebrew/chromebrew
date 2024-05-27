@@ -19,7 +19,7 @@ class Libyuv < CMake
   depends_on 'gcc_lib' # R
   depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
 
   def self.patch
     system "sed -i 's,DESTINATION lib,DESTINATION lib#{CREW_LIB_SUFFIX},g' CMakeLists.txt"

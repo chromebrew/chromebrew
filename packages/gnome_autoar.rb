@@ -27,7 +27,7 @@ class Gnome_autoar < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'libarchive' # R
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'pango' # R
   depends_on 'vala' => :build
   depends_on 'zlibpkg' # R

@@ -2,7 +2,7 @@ require 'package'
 
 class Mpc < Package
   description 'Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.'
-  homepage 'http://www.multiprecision.org/'
+  homepage 'https://www.multiprecision.org'
   version '1.2.1'
   license 'LGPL-2.1'
   compatibility 'all'

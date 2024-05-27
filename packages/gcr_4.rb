@@ -28,7 +28,7 @@ class Gcr_4 < Meson
   depends_on 'gtk4' => :build
   depends_on 'hicolor_icon_theme' => :build
   depends_on 'libgcrypt' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libsecret' => :build
   depends_on 'libxslt' => :build
   depends_on 'p11kit' => :build

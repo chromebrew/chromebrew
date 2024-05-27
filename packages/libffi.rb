@@ -2,7 +2,7 @@ require 'package'
 
 class Libffi < Package
   description 'The libffi library provides a portable, high level programming interface to various calling conventions.'
-  homepage 'https://github.com/libffi/libffi/'
+  homepage 'https://sourceware.org/libffi/'
   version '3.4.4'
   license 'MIT'
   compatibility 'all'

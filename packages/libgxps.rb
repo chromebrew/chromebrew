@@ -29,7 +29,7 @@ class Libgxps < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'lcms'
   depends_on 'libarchive'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpaper'
   depends_on 'libpng'
   depends_on 'libtiff'

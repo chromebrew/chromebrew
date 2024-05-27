@@ -17,7 +17,7 @@ class Jpegoptim < Package
      x86_64: '0954751ef6aada53613c24fba136c5a2257c64338ad972e6bc07597041d0bddc'
   })
 
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
 
   def self.build
     system "./configure #{CREW_OPTIONS}"

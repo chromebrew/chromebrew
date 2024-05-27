@@ -22,7 +22,7 @@ class Glmark2 < Package
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'libdrm'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'libx11'
   depends_on 'libxcb'

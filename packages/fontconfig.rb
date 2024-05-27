@@ -24,7 +24,7 @@ class Fontconfig < Meson
   depends_on 'gperf' => :build
   depends_on 'graphite' => :build
   depends_on 'harfbuzz' # R
-  depends_on 'jsonc' => :build
+  depends_on 'json_c' => :build
   depends_on 'libpng' => :build
   depends_on 'util_linux' => :build
 

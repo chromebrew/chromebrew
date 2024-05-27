@@ -19,7 +19,7 @@ class Libsixel < Package
      x86_64: '16d7382c5229870d3954338748174d402db8542408b33bea49e6c3066a9c942a'
   })
 
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libpng' => :build
   depends_on 'python3' => :build
   depends_on 'gdk_pixbuf' => :build

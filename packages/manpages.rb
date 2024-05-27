@@ -17,7 +17,7 @@ class Manpages < Package
      x86_64: '812d7acf982fd98946aba5132a08685a950d7e6bddfd8ba9e4b45b4ed3b38b29'
   })
 
-  depends_on 'mandb'
+  depends_on 'man_db'
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", "prefix=#{CREW_PREFIX}", 'install'

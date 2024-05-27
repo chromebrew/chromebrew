@@ -2,7 +2,7 @@ require 'package'
 
 class Netcat < Package
   description 'Netcat is a featured networking utility which reads and writes data across network connections, using the TCP/IP protocol.'
-  homepage 'http://netcat.sourceforge.net/'
+  homepage 'https://netcat.sourceforge.net'
   version '0.7.1'
   license 'netcat'
   compatibility 'all'

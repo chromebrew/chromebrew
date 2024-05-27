@@ -17,7 +17,7 @@ class Qpdf < Package
      x86_64: '36dde4a77f5bbad284e02f9ca7d684a36d6b03c97addfe7a7667711feb5fdecd'
   })
 
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
   depends_on 'gnutls' # R

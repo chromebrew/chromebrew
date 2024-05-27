@@ -46,7 +46,7 @@ class Nautilus < Meson
   depends_on 'libarchive' => :build
   depends_on 'libcloudproviders' # R
   depends_on 'libhandy' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libportal' # R
   depends_on 'libxml2' => :build
   depends_on 'pango' => :build

@@ -2,7 +2,7 @@ require 'package'
 
 class Libpng < Package
   description 'libpng is the official PNG reference library.'
-  homepage 'http://libpng.org/pub/png/libpng.html'
+  homepage 'http://www.libpng.org/pub/png/libpng.html'
   version '1.6.43'
   license 'libpng2'
   compatibility 'all'

@@ -22,7 +22,7 @@ class Newsboat < Package
   depends_on 'curl'
   depends_on 'libxml2'
   depends_on 'libstfl'
-  depends_on 'jsonc'
+  depends_on 'json_c'
   depends_on 'openssl'
   depends_on 'ruby_asciidoctor' => :build
   depends_on 'rust' => :build

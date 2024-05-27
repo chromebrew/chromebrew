@@ -22,7 +22,7 @@ class Libefl < Package
   depends_on 'libusb'
   depends_on 'fontconfig'
   depends_on 'fribidi'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'giflib'
   depends_on 'libtiff'

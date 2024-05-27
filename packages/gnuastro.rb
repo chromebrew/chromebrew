@@ -23,7 +23,7 @@ class Gnuastro < Autotools
   depends_on 'glibc'
   depends_on 'gsl'
   depends_on 'libgit2'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libtiff'
   depends_on 'wcslib'
   depends_on 'xzutils'

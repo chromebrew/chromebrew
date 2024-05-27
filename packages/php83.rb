@@ -40,7 +40,7 @@ class Php83 < Package
   depends_on 'libgd' # R
   depends_on 'libgpgerror' # R
   depends_on 'libidn2' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' # R
   depends_on 'libpng' # R
   depends_on 'libpsl' # R

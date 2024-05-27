@@ -1,6 +1,6 @@
 require 'package'
 
-class Mandb < Package
+class Man_db < Package
   description 'mandb is used to initialize or manually update index database caches that are usually maintained by man.'
   homepage 'https://man-db.nongnu.org/'
   version '2.12.1'

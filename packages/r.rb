@@ -24,7 +24,7 @@ class R < Autotools
   depends_on 'icu4c' # R
   depends_on 'lapack' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libsm' # R
   depends_on 'libtiff' # R

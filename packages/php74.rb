@@ -39,7 +39,7 @@ class Php74 < Package
   depends_on 'libgcrypt'
   depends_on 'libgpgerror' # R
   depends_on 'libidn2' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libnghttp2' # R
   depends_on 'libpng'
   depends_on 'libpsl' # R

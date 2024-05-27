@@ -25,7 +25,7 @@ class Darktable < Package
   depends_on 'gtk3'
   depends_on 'imagemagick7'
   depends_on 'lcms'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'librsvg'
   depends_on 'libsecret'

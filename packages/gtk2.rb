@@ -25,7 +25,7 @@ class Gtk2 < Package
   depends_on 'glib'
   depends_on 'gtk_doc'
   depends_on 'harfbuzz'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libx11'
   depends_on 'libxcomposite'
   depends_on 'libxcursor'

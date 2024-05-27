@@ -2,7 +2,7 @@ require 'package'
 
 class Go < Package
   description 'Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.'
-  homepage 'https://golang.org/'
+  homepage 'https://go.dev'
   version '1.22.3'
   license 'BSD'
   compatibility 'all'

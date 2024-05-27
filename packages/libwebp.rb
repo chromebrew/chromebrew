@@ -25,7 +25,7 @@ class Libwebp < Package
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libsdl' => :build
   depends_on 'libsm' # R

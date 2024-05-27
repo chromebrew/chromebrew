@@ -15,7 +15,7 @@ class Clisp < Package
     x86_64: '7d64a5724ef656764f35ce48dca877a9f9e75842a1a420fde21d12c8bf2f5489'
   })
 
-  depends_on 'ffcall'
+  depends_on 'libffcall'
 
   def self.build
     system './configure',

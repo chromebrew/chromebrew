@@ -44,7 +44,7 @@ class Ffmpeg < Package
   depends_on 'libfrei0r' => :build
   depends_on 'libglvnd' # R
   depends_on 'libiec61883' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libmodplug' # R
   depends_on 'libmp3lame' # R

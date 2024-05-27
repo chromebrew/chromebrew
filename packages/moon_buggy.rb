@@ -1,8 +1,8 @@
 require 'package'
 
-class Moonbuggy < Package
+class Moon_buggy < Package
   description 'Moon-buggy is a simple character graphics game where you drive some kind of car across the moon\'s surface.'
-  homepage 'http://www.seehuhn.de/pages/moon-buggy'
+  homepage 'https://www.seehuhn.de/pages/moon-buggy.html'
   version '1.0.51'
   license 'GPL-2'
   compatibility 'all'

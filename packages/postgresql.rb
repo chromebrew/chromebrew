@@ -1,8 +1,8 @@
 require 'package'
 
-class Postgres < Package
+class Postgresql < Package
   description 'PostgreSQL is a powerful, open source object-relational database system.'
-  homepage 'https://www.postgresql.org/'
+  homepage 'https://www.postgresql.org'
   version '16.2'
   license 'PostgreSQL and GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

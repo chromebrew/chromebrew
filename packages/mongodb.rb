@@ -2,7 +2,7 @@ require 'package'
 
 class Mongodb < Package
   description 'MongoDB is the next-generation database that lets you create applications never before possible.'
-  homepage 'https://www.mongodb.com/'
+  homepage 'https://www.mongodb.com'
   # We use 3.2 branch here since:
   #  - 3.2 branch works well with gcc-4.9.4
   #  - master 3.4 branch requires gcc-5.4.0

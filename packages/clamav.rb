@@ -20,7 +20,7 @@ class Clamav < Package
   depends_on 'rust' => :build
   depends_on 'libcheck' => :build
   depends_on 'libiconv' => :build
-  depends_on 'jsonc' => :build
+  depends_on 'json_c' => :build
   depends_on 'py3_pytest' => :build
 
   def self.build

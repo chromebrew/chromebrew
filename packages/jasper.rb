@@ -18,7 +18,7 @@ class Jasper < Package
 
   depends_on 'freeglut'
   depends_on 'libglu'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'mesa'
   depends_on 'shared_mime_info'
   depends_on 'gcc_lib' # R

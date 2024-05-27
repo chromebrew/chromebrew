@@ -36,7 +36,7 @@ class Wxwidgets < Package
   depends_on 'libglu' # R
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnotify' # R
   depends_on 'libpng' # R
   depends_on 'libsdl2' # R

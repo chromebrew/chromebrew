@@ -37,7 +37,7 @@ class Gemacs < Package
   depends_on 'jansson' # R
   depends_on 'lcms' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libotf' # R
   depends_on 'libpng' # R
   depends_on 'librsvg' # R

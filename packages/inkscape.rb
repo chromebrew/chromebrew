@@ -45,7 +45,7 @@ class Inkscape < CMake
   depends_on 'libcdr' # R
   depends_on 'libepoxy' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'librevenge' # R
   depends_on 'libsigcplusplus' # R

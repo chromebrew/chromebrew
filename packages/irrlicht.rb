@@ -19,7 +19,7 @@ class Irrlicht < Package
   depends_on 'libxrandr'
   depends_on 'libglvnd'
   depends_on 'libxxf86vm'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'dos2unix' => :build
   depends_on 'bzip2' # R

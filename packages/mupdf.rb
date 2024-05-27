@@ -22,7 +22,7 @@ class Mupdf < Package
   depends_on 'glibc' # R
   depends_on 'jbigkit'
   depends_on 'curl' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'libxrandr' # R

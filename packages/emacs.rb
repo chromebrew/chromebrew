@@ -17,7 +17,7 @@ class Emacs < Package
   })
 
   depends_on 'lcms'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'acl' # R
   depends_on 'alsa_lib' # R
   depends_on 'dbus' # R

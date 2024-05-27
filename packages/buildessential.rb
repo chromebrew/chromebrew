@@ -23,7 +23,7 @@ class Buildessential < Package
   depends_on 'libyaml'
   depends_on 'linuxheaders'
   depends_on 'make'
-  depends_on 'pkgconfig'
+  depends_on 'pkg_config'
   depends_on 'binutils'
 
   # Linkers

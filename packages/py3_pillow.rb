@@ -12,7 +12,7 @@ class Py3_pillow < Pip
   depends_on 'freetype' # R
   depends_on 'glibc' # R
   depends_on 'lcms' # R
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'libxcb'

@@ -33,7 +33,7 @@ class Graphicsmagick < Package
   depends_on 'libdeflate' # R
   depends_on 'libheif' # R
   depends_on 'libice' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libmd' # R
   depends_on 'libpng' # R

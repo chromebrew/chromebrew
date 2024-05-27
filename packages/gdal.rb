@@ -24,11 +24,11 @@ class Gdal < CMake
   depends_on 'giflib' # R
   depends_on 'glibc' # R
   depends_on 'hdf5' # R
-  depends_on 'jsonc' # R
+  depends_on 'json_c' # R
   depends_on 'libarchive' # R
   depends_on 'libdeflate' # R
   depends_on 'libheif' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libjxl' # R
   depends_on 'libpng' # R
   depends_on 'libwebp' # R
@@ -39,7 +39,7 @@ class Gdal < CMake
   depends_on 'openssl' # R
   depends_on 'pcre2' # R
   depends_on 'poppler' # R
-  depends_on 'proj4' # R
+  depends_on 'proj' # R
   depends_on 'py3_numpy' => :build
   depends_on 'qhull' # R
   depends_on 'sqlite' # R

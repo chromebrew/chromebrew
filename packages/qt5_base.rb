@@ -42,7 +42,7 @@ class Qt5_base < Package
   depends_on 'libglvnd' # R
   depends_on 'libice' # R
   depends_on 'libinput' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
   depends_on 'libsm' # R
   depends_on 'libvpx' => :build

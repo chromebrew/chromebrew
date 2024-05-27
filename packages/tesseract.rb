@@ -41,7 +41,7 @@ class Tesseract < CMake
   depends_on 'libcyrussasl' => :build
   depends_on 'libdeflate' => :build
   depends_on 'libidn2' => :build
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libnghttp2' => :build
   depends_on 'libpng' # R
   depends_on 'libpsl' => :build

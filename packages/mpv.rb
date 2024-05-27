@@ -36,7 +36,7 @@ class Mpv < Meson
   depends_on 'libdvdnav' # R
   depends_on 'libdvdread' # R
   depends_on 'libglvnd' # R
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libplacebo' # R
   depends_on 'libsdl2' # R
   depends_on 'libva' # R

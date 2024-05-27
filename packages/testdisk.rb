@@ -19,7 +19,7 @@ class Testdisk < Package
 
   depends_on 'apr_iconv'
   depends_on 'compressdoc' => :build
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'ncurses'
   depends_on 'zlibpkg'
   depends_on 'e2fsprogs' # R

@@ -29,7 +29,7 @@ class Gnome_desktop < Meson
   depends_on 'gtk_doc' => :build
   depends_on 'harfbuzz' # R
   depends_on 'iso_codes' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libseccomp' # R
   depends_on 'libxkbcommon' # R
   depends_on 'libxkbfile' => :build

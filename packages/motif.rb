@@ -18,7 +18,7 @@ class Motif < Package
 
   depends_on 'fontconfig'
   depends_on 'freetype'
-  depends_on 'libjpeg'
+  depends_on 'libjpeg_turbo'
   depends_on 'libpng'
   depends_on 'sommelier'
   depends_on 'expat' # R

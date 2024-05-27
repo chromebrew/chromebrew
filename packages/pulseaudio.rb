@@ -32,7 +32,7 @@ class Pulseaudio < Meson
   # depends_on 'gsettings_desktop_schemas' # L
   depends_on 'gstreamer' # R
   depends_on 'jack' # R
-  depends_on 'jsonc' => :build
+  depends_on 'json_c' => :build
   depends_on 'libcap' # R
   depends_on 'libgconf' => :build
   depends_on 'libice' # R

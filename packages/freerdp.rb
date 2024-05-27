@@ -33,7 +33,7 @@ class Freerdp < Package
   depends_on 'icu4c' # R
   depends_on 'krb5' # R
   depends_on 'libfdk_aac' => :build
-  depends_on 'libjpeg' # R
+  depends_on 'libjpeg_turbo' # R
   depends_on 'libmp3lame' # R
   depends_on 'libsdl2' # R
   depends_on 'libsoxr' # R

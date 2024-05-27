@@ -1,6 +1,6 @@
 require 'package'
 
-class Libjpeg < Package
+class Libjpeg_turbo < Package
   description 'Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.'
   homepage 'https://libjpeg-turbo.org'
   version '3.0.1'

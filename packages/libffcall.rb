@@ -1,6 +1,6 @@
 require 'package'
 
-class Ffcall < Package
+class Libffcall < Package
   description 'GNU libffcall is a library which can be used to build foreign function call interfaces in embedded interpreters.'
   homepage 'https://www.gnu.org/software/libffcall/'
   version '2.0'

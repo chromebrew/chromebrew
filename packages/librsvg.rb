@@ -29,7 +29,7 @@ class Librsvg < Autotools
   depends_on 'harfbuzz' # R
   depends_on 'icu4c' # R
   depends_on 'libcroco' => :build
-  depends_on 'libjpeg' => :build
+  depends_on 'libjpeg_turbo' => :build
   depends_on 'libpng' # R
   depends_on 'libxml2' # R
   depends_on 'pango' # R

@@ -2,7 +2,7 @@ require 'package'
 
 class Weather < Package
   description 'This command-line utility is intended to provide quick access to current weather conditions and forecasts.'
-  homepage 'http://fungi.yuggoth.org/weather/'
+  homepage 'https://fungi.yuggoth.org/weather/'
   version '2.3'
   license 'ISC'
   compatibility 'all'
