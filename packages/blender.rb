@@ -29,7 +29,7 @@ class Blender < Package
   depends_on 'libxxf86vm' # R
   depends_on 'mesa' # R
   depends_on 'ncurses' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   def self.install

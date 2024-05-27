@@ -33,7 +33,7 @@ class Ettercap < Package
   depends_on 'ncurses' # R
   depends_on 'openssl' # R
   depends_on 'pcre' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "cmake -B builddir #{CREW_CMAKE_OPTIONS} \

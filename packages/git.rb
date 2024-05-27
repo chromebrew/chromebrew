@@ -23,7 +23,7 @@ class Git < Package
   depends_on 'glibc' # R
   depends_on 'libunistring' # R
   depends_on 'pcre2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 

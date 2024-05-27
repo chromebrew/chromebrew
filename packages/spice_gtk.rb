@@ -45,7 +45,7 @@ class Spice_gtk < Package
   depends_on 'openssl' # R
   depends_on 'pixman' # R
   depends_on 'wayland' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "meson \

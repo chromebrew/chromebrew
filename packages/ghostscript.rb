@@ -44,7 +44,7 @@ class Ghostscript < Package
   depends_on 'neon' # R
   depends_on 'openjpeg' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_lto
 

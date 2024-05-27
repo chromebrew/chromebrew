@@ -51,7 +51,7 @@ class Wireshark < CMake
   depends_on 'sbc' # R
   depends_on 'snappy' # R
   depends_on 'speexdsp' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   git_fetchtags

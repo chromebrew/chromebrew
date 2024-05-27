@@ -25,7 +25,7 @@ class Elfutils < Autotools
   depends_on 'libmicrohttpd' # R
   depends_on 'sqlite' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   pre_configure_options "CFLAGS+=' -Wno-error ' CXXFLAGS+=' -Wno-error '"

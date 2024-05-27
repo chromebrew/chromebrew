@@ -18,7 +18,7 @@ class Potrace < Package
   })
 
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} --with-libpotrace"

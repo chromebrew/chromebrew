@@ -20,7 +20,7 @@ class Gcab < Meson
   depends_on 'gobject_introspection' => :build
   depends_on 'glib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

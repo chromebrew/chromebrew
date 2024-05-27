@@ -19,7 +19,7 @@ class Rust < Package
 
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_strip
   no_shrink

@@ -24,7 +24,7 @@ class Podofo < Package
   depends_on 'libtiff'
   depends_on 'libxml2'
   depends_on 'openssl'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system "cmake -G 'Unix Makefiles' \

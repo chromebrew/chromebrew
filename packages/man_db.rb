@@ -24,7 +24,7 @@ class Man_db < Package
   depends_on 'groff' # L
   depends_on 'libpipeline' # R
   depends_on 'libseccomp' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "for f in $(grep -lr '/usr/local' | xargs); do sed -i 's,/usr/local,#{CREW_PREFIX},g' $f; done"

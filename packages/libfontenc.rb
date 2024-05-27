@@ -19,7 +19,7 @@ class Libfontenc < Package
 
   depends_on 'xorg_proto'
   depends_on 'glibc' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

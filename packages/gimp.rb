@@ -84,7 +84,7 @@ class Gimp < Meson
   depends_on 'vala' => :build
   depends_on 'xdg_base' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

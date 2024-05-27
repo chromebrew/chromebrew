@@ -34,7 +34,7 @@ class Poppler < Package
   depends_on 'openjpeg' # R
   depends_on 'poppler_data' => :build
   depends_on 'qt5_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \

@@ -31,7 +31,7 @@ class Distcc < Autotools
   depends_on 'nss_mdns' # R
   depends_on 'popt' # R
   depends_on 'python3' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   print_source_bashrc
 

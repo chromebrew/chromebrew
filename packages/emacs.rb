@@ -28,7 +28,7 @@ class Emacs < Package
   depends_on 'jansson' # R
   depends_on 'libxml2' # R
   depends_on 'ncurses' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'sqlite' # R
 
   def self.build

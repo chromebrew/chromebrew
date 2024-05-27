@@ -24,7 +24,7 @@ class Btrfs_progs < Autotools
   depends_on 'libgcrypt' # R
   depends_on 'lzo' # R
   depends_on 'util_linux' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   configure_options '--disable-documentation \

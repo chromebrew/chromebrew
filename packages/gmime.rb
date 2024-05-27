@@ -24,7 +24,7 @@ class Gmime < Autotools
   depends_on 'libidn2' # R
   depends_on 'libunistring' # R
   depends_on 'vala' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 end

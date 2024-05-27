@@ -43,7 +43,7 @@ class Gegl < Meson
   depends_on 'poppler' # R
   depends_on 'source_highlight' => :build
   depends_on 'vala' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   meson_options '-Dlibjpeg=enabled \
       -Dlibpng=enabled'

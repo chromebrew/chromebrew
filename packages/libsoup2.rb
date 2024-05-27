@@ -27,7 +27,7 @@ class Libsoup2 < Package
   # depends_on 'qt5_base' => :build
   depends_on 'sqlite' # R
   depends_on 'vala' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

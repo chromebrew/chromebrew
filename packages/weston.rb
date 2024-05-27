@@ -57,7 +57,7 @@ class Weston < Meson
   depends_on 'wayland' # R
   depends_on 'xcb_util_cursor' => :build
   depends_on 'xdg_base' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   meson_options "-Dbackend-default=wayland \
         -Dbackend-drm=true \

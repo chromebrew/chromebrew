@@ -20,7 +20,7 @@ class Sqlite < Autotools
   depends_on 'glibc' # R
   depends_on 'libedit' # R
   depends_on 'readline' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'ncurses' # R
 
   configure_options '--enable-shared \

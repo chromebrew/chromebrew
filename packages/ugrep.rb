@@ -19,6 +19,6 @@ class Ugrep < Autotools
   depends_on 'lz4'
   depends_on 'pcre2'
   depends_on 'xzutils'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd'
 end

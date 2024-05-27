@@ -32,7 +32,7 @@ class Libheif < Package
   depends_on 'libx265' # R
   depends_on 'rav1e' # R
   depends_on 'svt_av1' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

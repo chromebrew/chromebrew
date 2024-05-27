@@ -32,7 +32,7 @@ class Curl < Autotools
   depends_on 'python3' => :build
   depends_on 'rust' => :build
   depends_on 'valgrind' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   configure_options "--disable-maintainer-mode \

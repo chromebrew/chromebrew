@@ -21,7 +21,7 @@ class Testdisk < Package
   depends_on 'compressdoc' => :build
   depends_on 'libjpeg_turbo'
   depends_on 'ncurses'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'e2fsprogs' # R
   depends_on 'glibc' # R
   depends_on 'util_linux' # R

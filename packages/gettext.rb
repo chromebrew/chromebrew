@@ -25,7 +25,7 @@ class Gettext < Autotools
   depends_on 'libunistring' # R
   depends_on 'libxml2' # R
   depends_on 'openjdk8' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_env_options
 

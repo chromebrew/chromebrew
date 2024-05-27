@@ -52,7 +52,7 @@ class Wxwidgets31 < Package
   depends_on 'pango' # R
   depends_on 'wayland' # R
   depends_on 'webkit2gtk_4' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.preflight
     %w[wxwidgets wxwidgets30].each do |wxw|

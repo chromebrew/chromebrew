@@ -23,7 +23,7 @@ class Wayland < Meson
   depends_on 'icu4c' => :build
   depends_on 'libffi' # R
   depends_on 'libxml2' # R
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlib' => :build
 
   meson_options '-Ddocumentation=false'
 

@@ -23,7 +23,7 @@ class Nss < Package
   depends_on 'glibc' # R
   depends_on 'gyp_next' => :build
   depends_on 'sqlite' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     @build_64 = ARCH == 'x86_64' ? '1' : '0'

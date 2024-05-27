@@ -26,7 +26,7 @@ class Python2 < Package
   depends_on 'openssl' # R
   depends_on 'readline' # R
   depends_on 'sqlite' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   #  def self.patch
   #    system "sed -i -e 's:#{CREW_LIB_PREFIX}:$(get_libdir):g' \

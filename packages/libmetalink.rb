@@ -20,7 +20,7 @@ class Libmetalink < Package
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     downloader 'https://launchpadlibrarian.net/380798344/0001-fix-covscan-issues.patch',

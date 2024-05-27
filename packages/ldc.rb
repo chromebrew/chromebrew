@@ -11,7 +11,7 @@ class Ldc < Package
 
   depends_on 'curl'
   depends_on 'ncurses'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   no_compile_needed
   print_source_bashrc

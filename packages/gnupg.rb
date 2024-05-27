@@ -32,7 +32,7 @@ class Gnupg < Autotools
   depends_on 'potrace' => :build
   depends_on 'readline' # R
   depends_on 'sqlite' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   configure_options '--with-zlib \
     --with-bzip2 \

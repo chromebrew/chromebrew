@@ -26,7 +26,7 @@ class Leptonica < Package
   depends_on 'libwebp' # R
   depends_on 'openjpeg' # R
   depends_on 'xzutils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
   def self.patch

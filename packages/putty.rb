@@ -28,5 +28,5 @@ class Putty < CMake
   depends_on 'libx11' # R
   depends_on 'libxext' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

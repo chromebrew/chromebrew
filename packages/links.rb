@@ -26,7 +26,7 @@ class Links < Package
   depends_on 'lzma'
   depends_on 'openssl'
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
   depends_on 'zstd' # R
 
   def self.build

@@ -38,7 +38,7 @@ class Motif < Package
   depends_on 'libxrender' # R
   depends_on 'libxt' # R
   depends_on 'util_linux' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "./configure #{CREW_OPTIONS} \
