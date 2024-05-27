@@ -1,6 +1,6 @@
 require 'package'
 
-class Aws < Package
+class Aws_cli < Package
   description 'Universal Command Line Interface for Amazon Web Services'
   homepage 'https://github.com/aws/aws-cli'
   version '1.19.53'
