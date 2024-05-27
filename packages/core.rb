@@ -57,7 +57,7 @@ class Core < Package
   depends_on 'lz4'
   depends_on 'lzip'
   depends_on 'm4'
-  depends_on 'mandb'
+  depends_on 'man_db'
   depends_on 'manpages'
   depends_on 'mawk'
   depends_on 'most'
