@@ -2,7 +2,7 @@ require 'package'
 
 class Bacon < Package
   description 'BaCon is a free BASIC to C translator for Unix-based systems.'
-  homepage 'http://www.basic-converter.org/'
+  homepage 'https://chiselapp.com/user/bacon/repository/bacon/home'
   version '3.9.3'
   license 'MIT'
   compatibility 'all'
