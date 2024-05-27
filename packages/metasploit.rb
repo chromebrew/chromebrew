@@ -15,7 +15,7 @@ class Metasploit < Package
   depends_on 'readline'
   depends_on 'openssl'
   depends_on 'libpcap'
-  depends_on 'postgres'
+  depends_on 'postgresql'
   depends_on 'sqlite'
   depends_on 'libxslt'
   depends_on 'libxml2'
