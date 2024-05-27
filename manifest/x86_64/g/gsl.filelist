@@ -155,6 +155,7 @@
 /usr/local/include/gsl/gsl_rstat.h
 /usr/local/include/gsl/gsl_sf.h
 /usr/local/include/gsl/gsl_sf_airy.h
+/usr/local/include/gsl/gsl_sf_alf.h
 /usr/local/include/gsl/gsl_sf_bessel.h
 /usr/local/include/gsl/gsl_sf_clausen.h
 /usr/local/include/gsl/gsl_sf_coulomb.h
@@ -266,11 +267,12 @@
 /usr/local/include/gsl/gsl_version.h
 /usr/local/include/gsl/gsl_wavelet.h
 /usr/local/include/gsl/gsl_wavelet2d.h
+/usr/local/include/gsl/test_source.c
 /usr/local/lib64/libgsl.a
 /usr/local/lib64/libgsl.la
 /usr/local/lib64/libgsl.so
-/usr/local/lib64/libgsl.so.25
-/usr/local/lib64/libgsl.so.25.0.0
+/usr/local/lib64/libgsl.so.28
+/usr/local/lib64/libgsl.so.28.0.0
 /usr/local/lib64/libgslcblas.a
 /usr/local/lib64/libgslcblas.la
 /usr/local/lib64/libgslcblas.so
@@ -278,8 +280,8 @@
 /usr/local/lib64/libgslcblas.so.0.0.0
 /usr/local/lib64/pkgconfig/gsl.pc
 /usr/local/share/aclocal/gsl.m4
-/usr/local/share/info/gsl-ref.info.gz
-/usr/local/share/man/man1/gsl-config.1.gz
-/usr/local/share/man/man1/gsl-histogram.1.gz
-/usr/local/share/man/man1/gsl-randist.1.gz
-/usr/local/share/man/man3/gsl.3.gz
+/usr/local/share/info/gsl-ref.info.zst
+/usr/local/share/man/man1/gsl-config.1.zst
+/usr/local/share/man/man1/gsl-histogram.1.zst
+/usr/local/share/man/man1/gsl-randist.1.zst
+/usr/local/share/man/man3/gsl.3.zst
