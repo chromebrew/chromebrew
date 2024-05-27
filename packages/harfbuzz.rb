@@ -33,7 +33,7 @@ class Harfbuzz < Meson
   depends_on 'gperf' => :build
   depends_on 'graphite' # R
   depends_on 'icu4c' # R
-  depends_on 'jsonc' => :build
+  depends_on 'json_c' => :build
   depends_on 'libffi' => :build
   depends_on 'libpng' # R
   depends_on 'libx11' # R

@@ -24,7 +24,7 @@ class Gdal < CMake
   depends_on 'giflib' # R
   depends_on 'glibc' # R
   depends_on 'hdf5' # R
-  depends_on 'jsonc' # R
+  depends_on 'json_c' # R
   depends_on 'libarchive' # R
   depends_on 'libdeflate' # R
   depends_on 'libheif' # R

@@ -17,7 +17,7 @@ class Health_check < Package
      x86_64: '7cbdce7237b0d8a6dcfeabf7cc143c08111af98875e83cb441346769cdbfa033'
   })
 
-  depends_on 'jsonc'
+  depends_on 'json_c'
 
   def self.build
     system 'make'

@@ -19,7 +19,7 @@ class Cryptsetup < Autotools
 
   depends_on 'util_linux'
   depends_on 'lvm2'
-  depends_on 'jsonc'
+  depends_on 'json_c'
   depends_on 'libgcrypt'
   depends_on 'popt'
 

@@ -21,7 +21,7 @@ class Bind < Autotools
   depends_on 'glibc' # R
   depends_on 'icu4c' => :build
   depends_on 'jemalloc' # R
-  depends_on 'jsonc' # R
+  depends_on 'json_c' # R
   depends_on 'krb5' # R
   depends_on 'libcap' # R
   depends_on 'libedit' # R

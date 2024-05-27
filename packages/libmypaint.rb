@@ -18,7 +18,7 @@ class Libmypaint < Package
   })
 
   depends_on 'gegl'
-  depends_on 'jsonc'
+  depends_on 'json_c'
   depends_on 'openmp'
   depends_on 'babl' # R
   depends_on 'gcc_lib' # R
