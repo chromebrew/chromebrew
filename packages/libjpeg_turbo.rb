@@ -3,7 +3,7 @@ require 'package'
 class Libjpeg_turbo < Package
   description 'Libjpeg-turbo implements both the traditional libjpeg API as well as the less powerful but more straightforward TurboJPEG API.'
   homepage 'https://libjpeg-turbo.org'
-  version '3.0.1'
+  version '3.0.3'
   license 'IJG License'
   compatibility 'all'
   source_url 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
@@ -11,10 +11,10 @@ class Libjpeg_turbo < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a7fe8b57a528867d5ad68d931434881f2ac6fd2a3ab25f83c2ec2ca90f3d7fa9',
-     armv7l: 'a7fe8b57a528867d5ad68d931434881f2ac6fd2a3ab25f83c2ec2ca90f3d7fa9',
-       i686: '7864edd0f3a0fdaa898d396959b5f6f84a7a95036aa525c40886eee15fcce1dc',
-     x86_64: 'f14efb6cd521be8799327fda823175f2edd2eaa42b0be05bd8b2f0c2d698cf4e'
+    aarch64: 'a310b3d08d0ab8c669a4131c2a0d585c3c72bf4a483d198b78f77e7690320a34',
+     armv7l: 'a310b3d08d0ab8c669a4131c2a0d585c3c72bf4a483d198b78f77e7690320a34',
+       i686: 'c950ec0f49c9963ee2f3fb360ca114eac28a0cc2b08de015091ef06f7156502d',
+     x86_64: '0bf918eaaf48bf316ab223740bb7e036552b422872e907d40c48b3ef44ed9963'
   })
 
   depends_on 'yasm' => :build
