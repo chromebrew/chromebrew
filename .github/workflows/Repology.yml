@@ -20,8 +20,12 @@ jobs:
           CREW_KERNEL_VERSION: 5.1
         run: |
           ruby -Ctools json.rb
-      - name: Generate JSON
-        run: |
-          # The || true here means that empty commits fail, so we don't pollute the repo history.
-          git commit -o tools/repology.json -m "Update Repology JSON" || true
-          git push
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: "tools/repology.json"
+          title: "Update Repology JSON"
+          body: "Automatic PR to update tools/repology.json"
+          author: "github-actions[bot]"
+          commit-message: "Update Repology JSON"
+          delete-branch: true
