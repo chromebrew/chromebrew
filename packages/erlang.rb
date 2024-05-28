@@ -1,30 +1,25 @@
-require 'package'
+require 'buildsystems/autotools'
 
-class Erlang < Package
+class Erlang < Autotools
   description 'Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.'
   homepage 'https://www.erlang.org/'
-  version '25.1.2'
+  version '27.0'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://github.com/erlang/otp/releases/download/OTP-25.1.2/otp_src_25.1.2.tar.gz'
-  source_sha256 '5442dea694e7555d479d80bc81f1428020639c258f8e40b2052732d1cc95cca5'
+  source_url 'https://github.com/erlang/otp.git'
+  git_hashtag "OTP-#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5d11d08a183a483705243ac119c22c5beda2198a379680c70cadb6fab5e178bb',
-     armv7l: '5d11d08a183a483705243ac119c22c5beda2198a379680c70cadb6fab5e178bb',
-     x86_64: '22d0017e5f52884785b60ee4b866ef357b54e416e2162f7747b82778a0aa703a'
+    aarch64: '0df239e644449e6611cac6b31411b70018633682f314991179db6addcb4407d5',
+     armv7l: '0df239e644449e6611cac6b31411b70018633682f314991179db6addcb4407d5',
+     x86_64: '3cf4d3e96f1acc8a067792c3f8b016a919c0636c7c52a0db873fd19a8f0e6ffb'
   })
 
   depends_on 'openjdk8'
   depends_on 'wxwidgets'
 
-  def self.build
-    ENV['ERL_OTP'] = Dir.pwd
-    system "./configure #{CREW_OPTIONS} && make"
-  end
+  year2038 = ARCH == 'x86_64' ? '' : '--disable-year2038'
 
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  configure_options "ERL_OTP=#{Dir.pwd} #{year2038}"
 end
