@@ -3,7 +3,7 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.1' # Do not use @_ver here, it will break the installer.
+  version '3.3.2' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
@@ -31,6 +31,16 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlibpkg can be used
+
+  def self.patch
+    return if ARCH == 'x86_64'
+
+    # Address 32-bit compatibility issue as per
+    # https://bugs.ruby-lang.org/issues/20447
+    # and also https://bugs.gentoo.org/932841
+    downloader 'https://github.com/ruby/ruby/pull/10332.patch', '293d89bb274407ad825941d8f4ea4bce81bace93281e1e069f0a715607ecd405'
+    system 'patch -Np1 -i 10332.patch'
+  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
