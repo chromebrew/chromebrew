@@ -11,9 +11,9 @@ class Glfw < CMake
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '375586eebe407a72dd6e819c236c75d45cdb6af2fb284452d92767ec0586a031',
-     armv7l: '375586eebe407a72dd6e819c236c75d45cdb6af2fb284452d92767ec0586a031',
-     x86_64: '270e70447b7d59eb1db3ed2224f2542e45b864d6d56152236dcc22ea6a85cd1d'
+    aarch64: '8de720d38097b58425eaa06ff7cc5a94efd02f03d8d999b830249da45c27da0f',
+     armv7l: '8de720d38097b58425eaa06ff7cc5a94efd02f03d8d999b830249da45c27da0f',
+     x86_64: '3fdf11c469c2113c7e34d11b1f3c132f49ca0653904076590f3fb8b989d932bf'
   })
 
   depends_on 'glibc' # R
