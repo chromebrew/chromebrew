@@ -319,9 +319,6 @@ gem update -N --system
 gem install -N activesupport --conservative
 gem install -N concurrent-ruby --conservative
 
-# Since we downloaded the package repo, just update package compatibility information.
-crew update compatible
-
 echo_info "Installing core Chromebrew packages...\n"
 yes | crew install core
 
