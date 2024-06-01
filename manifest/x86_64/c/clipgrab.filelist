@@ -1,6 +1,8 @@
 /usr/local/bin/clipgrab
+/usr/local/etc/env.d/clipgrab
 /usr/local/share/clipgrab/AppRun
 /usr/local/share/clipgrab/clipgrab.desktop
+/usr/local/share/clipgrab/clipgrab.env
 /usr/local/share/clipgrab/clipgrab.png
 /usr/local/share/clipgrab/clipgrab.sh
 /usr/local/share/clipgrab/usr/bin/clipgrab
