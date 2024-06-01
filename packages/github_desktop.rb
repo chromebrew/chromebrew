@@ -3,19 +3,19 @@ require 'package'
 class Github_desktop < Package
   description 'GitHub Desktop is an open source Electron-based GitHub app'
   homepage 'https://desktop.github.com/'
-  version '3.3.6-RC2'
+  version '3.3.12-RC2'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   min_glibc '2.29'
   source_url({
-    aarch64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-armv7l-3.3.6-linux2.AppImage',
-     armv7l: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-armv7l-3.3.6-linux2.AppImage',
-     x86_64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux2/GitHubDesktop-linux-x86_64-3.3.6-linux2.AppImage'
+    aarch64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.12-linux2/GitHubDesktop-linux-armv7l-3.3.12-linux2.AppImage',
+     armv7l: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.12-linux2/GitHubDesktop-linux-armv7l-3.3.12-linux2.AppImage',
+     x86_64: 'https://github.com/shiftkey/desktop/releases/download/release-3.3.12-linux2/GitHubDesktop-linux-x86_64-3.3.12-linux2.AppImage'
   })
   source_sha256({
-    aarch64: '4508fcbc680408a183fbd00f172e5beccad414e503cefd77163bffff0bd1a31c',
-     armv7l: '4508fcbc680408a183fbd00f172e5beccad414e503cefd77163bffff0bd1a31c',
-     x86_64: 'fe0e8689886939247819dc0ae3d1f242ade555e4990c3ede045ba3493514d250'
+    aarch64: 'a24c9adaca3ea2298489bb86a6b763a3b167d67cb76e626cd7d220b078cc4a09',
+     armv7l: 'a24c9adaca3ea2298489bb86a6b763a3b167d67cb76e626cd7d220b078cc4a09',
+     x86_64: 'f093bf1768b53fb03edafd1731ff6ca5a88254ba32c35b5992d4d63b634572de'
   })
 
   depends_on 'at_spi2_core'
@@ -38,25 +38,25 @@ class Github_desktop < Package
   end
 
   def self.install
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/github_desktop"
     FileUtils.install 'github-desktop.sh', "#{CREW_DEST_PREFIX}/bin/github-desktop", mode: 0o755
     FileUtils.mv Dir['*'], "#{CREW_DEST_PREFIX}/share/github_desktop"
   end
 
   def self.postinstall
-    ExitMessage.add "Type 'github-desktop' to get started.".lightblue
+    ExitMessage.add "\nType 'github-desktop' to get started.\n".lightblue
   end
 
   def self.remove
     config_dir = "#{CREW_PREFIX}/.config/GitHub\ Desktop"
     if Dir.exist? config_dir.to_s
-      system "echo '#{config_dir}'; ls '#{config_dir}'"
+      puts config_dir
+      system "ls '#{config_dir}'"
       print "\nWould you like to remove the config directories above? [y/N] "
       case $stdin.gets.chomp.downcase
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "'#{config_dir}' removed.".lightred
+        puts "'#{config_dir}' removed.".lightgreen
       else
         puts "'#{config_dir}' saved.".lightgreen
       end

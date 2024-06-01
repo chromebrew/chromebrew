@@ -957,14 +957,12 @@
 /usr/local/share/github_desktop/resources/app/git/bin/scalar
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-add
-/usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-add--interactive
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-am
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-annotate
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-apply
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-archimport
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-archive
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-bisect
-/usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-bisect--helper
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-blame
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-branch
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-bugreport
@@ -1003,7 +1001,6 @@
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-diff-tree
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-difftool
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-difftool--helper
-/usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-env--helper
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-fast-export
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-fast-import
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-fetch
@@ -1129,6 +1126,7 @@
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-checkout.1.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-clean.1.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-clone.1.html
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-completion.1.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-config.5.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-dedup.1.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-env.1.html
@@ -1164,6 +1162,7 @@
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-checkout.1
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-clean.1
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-clone.1
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-completion.1
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-dedup.1
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-env.1
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/man1/git-lfs-ext.1
@@ -1233,6 +1232,7 @@
 /usr/local/share/github_desktop/resources/app/git/share/git-core/templates/hooks/pre-receive.sample
 /usr/local/share/github_desktop/resources/app/git/share/git-core/templates/hooks/prepare-commit-msg.sample
 /usr/local/share/github_desktop/resources/app/git/share/git-core/templates/hooks/push-to-checkout.sample
+/usr/local/share/github_desktop/resources/app/git/share/git-core/templates/hooks/sendemail-validate.sample
 /usr/local/share/github_desktop/resources/app/git/share/git-core/templates/hooks/update.sample
 /usr/local/share/github_desktop/resources/app/git/share/git-core/templates/info/exclude
 /usr/local/share/github_desktop/resources/app/git/share/gitweb/gitweb.cgi
@@ -1255,6 +1255,7 @@
 /usr/local/share/github_desktop/resources/app/git/share/locale/ru/LC_MESSAGES/git.mo
 /usr/local/share/github_desktop/resources/app/git/share/locale/sv/LC_MESSAGES/git.mo
 /usr/local/share/github_desktop/resources/app/git/share/locale/tr/LC_MESSAGES/git.mo
+/usr/local/share/github_desktop/resources/app/git/share/locale/uk/LC_MESSAGES/git.mo
 /usr/local/share/github_desktop/resources/app/git/share/locale/vi/LC_MESSAGES/git.mo
 /usr/local/share/github_desktop/resources/app/git/share/locale/zh_CN/LC_MESSAGES/git.mo
 /usr/local/share/github_desktop/resources/app/git/share/locale/zh_TW/LC_MESSAGES/git.mo
@@ -1290,6 +1291,8 @@
 /usr/local/share/github_desktop/resources/app/highlighter/mode/clike.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/clojure.js
 /usr/local/share/github_desktop/resources/app/highlighter/mode/clojure.js.map
+/usr/local/share/github_desktop/resources/app/highlighter/mode/cmake.js
+/usr/local/share/github_desktop/resources/app/highlighter/mode/cmake.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/coffeescript.js
 /usr/local/share/github_desktop/resources/app/highlighter/mode/coffeescript.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/crystal.js
