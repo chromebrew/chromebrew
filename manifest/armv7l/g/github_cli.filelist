@@ -178,6 +178,7 @@
 /usr/local/share/man/man1/gh-ssh-key.1.zst
 /usr/local/share/man/man1/gh-status.1.zst
 /usr/local/share/man/man1/gh-variable-delete.1.zst
+/usr/local/share/man/man1/gh-variable-get.1.zst
 /usr/local/share/man/man1/gh-variable-list.1.zst
 /usr/local/share/man/man1/gh-variable-set.1.zst
 /usr/local/share/man/man1/gh-variable.1.zst

@@ -5,6 +5,9 @@
 /usr/local/share/man/man1/gh-alias-set.1.zst
 /usr/local/share/man/man1/gh-alias.1.zst
 /usr/local/share/man/man1/gh-api.1.zst
+/usr/local/share/man/man1/gh-attestation-download.1.zst
+/usr/local/share/man/man1/gh-attestation-verify.1.zst
+/usr/local/share/man/man1/gh-attestation.1.zst
 /usr/local/share/man/man1/gh-auth-login.1.zst
 /usr/local/share/man/man1/gh-auth-logout.1.zst
 /usr/local/share/man/man1/gh-auth-refresh.1.zst
@@ -115,8 +118,10 @@
 /usr/local/share/man/man1/gh-project-item-delete.1.zst
 /usr/local/share/man/man1/gh-project-item-edit.1.zst
 /usr/local/share/man/man1/gh-project-item-list.1.zst
+/usr/local/share/man/man1/gh-project-link.1.zst
 /usr/local/share/man/man1/gh-project-list.1.zst
 /usr/local/share/man/man1/gh-project-mark-template.1.zst
+/usr/local/share/man/man1/gh-project-unlink.1.zst
 /usr/local/share/man/man1/gh-project-view.1.zst
 /usr/local/share/man/man1/gh-project.1.zst
 /usr/local/share/man/man1/gh-release-create.1.zst
@@ -173,6 +178,7 @@
 /usr/local/share/man/man1/gh-ssh-key.1.zst
 /usr/local/share/man/man1/gh-status.1.zst
 /usr/local/share/man/man1/gh-variable-delete.1.zst
+/usr/local/share/man/man1/gh-variable-get.1.zst
 /usr/local/share/man/man1/gh-variable-list.1.zst
 /usr/local/share/man/man1/gh-variable-set.1.zst
 /usr/local/share/man/man1/gh-variable.1.zst
