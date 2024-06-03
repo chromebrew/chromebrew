@@ -60,6 +60,11 @@ url: https://github.com/adobe-fonts/source-code-pro/releases
 activity: low
 ---
 kind: url
+name: advanced_rest_client
+url: https://github.com/advanced-rest-client/arc-electron/releases
+activity: low
+---
+kind: url
 name: adwaita_icon_theme
 url: https://ftp.gnome.org/pub/GNOME/sources/adwaita-icon-theme/
 activity: medium
