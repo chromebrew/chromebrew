@@ -2,6 +2,7 @@
 /usr/local/bin/ug+
 /usr/local/bin/ugrep
 /usr/local/bin/ugrep+
+/usr/local/bin/ugrep-indexer
 /usr/local/share/bash-completion/completions/ug
 /usr/local/share/bash-completion/completions/ug+
 /usr/local/share/bash-completion/completions/ugrep
@@ -11,6 +12,7 @@
 /usr/local/share/fish/vendor_completions.d/ugrep+.fish
 /usr/local/share/fish/vendor_completions.d/ugrep.fish
 /usr/local/share/man/man1/ug.1.zst
+/usr/local/share/man/man1/ugrep-indexer.1.zst
 /usr/local/share/man/man1/ugrep.1.zst
 /usr/local/share/ugrep/patterns/README.md
 /usr/local/share/ugrep/patterns/c++/README.md
