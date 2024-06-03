@@ -705,6 +705,11 @@ url: https://github.com/bulletphysics/bullet3/releases
 activity: low
 ---
 kind: url
+name: bun
+url: https://github.com/oven-sh/bun/releases
+activity: high
+---
+kind: url
 name: busybox
 url: https://busybox.net/downloads/
 activity: medium
