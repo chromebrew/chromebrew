@@ -3,16 +3,16 @@ require 'package'
 class Shotcut < Package
   description 'Shotcut is a free, open source, cross-platform video editor.'
   homepage 'https://www.shotcut.org/'
-  version '23.11.29'
+  version '24.04.28'
   license 'GPL-3+'
   compatibility 'x86_64'
   min_glibc '2.30'
-  source_url 'https://github.com/mltframework/shotcut/releases/download/v23.11.29/shotcut-linux-x86_64-231129.txz'
-  source_sha256 'df34a68bf37ec3295745287f375b6ca82ec3f4f16eb09416a508d31c6b40fc77'
+  source_url 'https://github.com/mltframework/shotcut/releases/download/v24.04.28/shotcut-linux-x86_64-240428.txz'
+  source_sha256 'eaf2aadc646fdf34fb5b2b0e3eef200a95aab72d23d2b7210849f43249c8d2ce'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    x86_64: 'af6029fe8f0c6bf78a04402982c0d58b240ecabe7a88ea3f0572d6f4e641a21b'
+    x86_64: '0394e872c8c1302ebd28f740087bdde1fbf74cc11fb89c5a7f2680f49c36dabb'
   })
 
   depends_on 'acl' # R
@@ -100,23 +100,23 @@ class Shotcut < Package
       #!/bin/sh
       # Set up environment
       # Run this instead of trying to run bin/shotcut. It runs shotcut with the correct environment.
-      CURRENT_DIR=$(readlink -f \"$0\")
+      CURRENT_DIR=$(readlink -f "$0")
       INSTALL_DIR=#{CREW_PREFIX}/share/shotcut
-      export LD_LIBRARY_PATH=\"$INSTALL_DIR/lib\":$LD_LIBRARY_PATH
-      export MLT_REPOSITORY=\"$INSTALL_DIR/lib/mlt\"
-      export MLT_DATA=\"$INSTALL_DIR/share/mlt\"
-      export MLT_PROFILES_PATH=\"$INSTALL_DIR/share/mlt/profiles\"
-      export MLT_MOVIT_PATH=\"$INSTALL_DIR/share/movit\"
-      export FREI0R_PATH=\"$INSTALL_DIR/lib/frei0r-1\"
+      export LD_LIBRARY_PATH="$INSTALL_DIR/lib":$LD_LIBRARY_PATH
+      export MLT_REPOSITORY="$INSTALL_DIR/lib/mlt"
+      export MLT_DATA="$INSTALL_DIR/share/mlt"
+      export MLT_PROFILES_PATH="$INSTALL_DIR/share/mlt/profiles"
+      export MLT_MOVIT_PATH="$INSTALL_DIR/share/movit"
+      export FREI0R_PATH="$INSTALL_DIR/lib/frei0r-1"
       # Temporarily ignore user and default path because csladspa bug is crashing with
       # LADSPA_PATH set, and Shotcut only needs the supplied SWH plugins.
-      # export LADSPA_PATH=\"$LADSPA_PATH:/usr/local/lib/ladspa:/usr/lib/ladspa:/usr/lib64/ladspa:$INSTALL_DIR/lib/ladspa\"
-      export LADSPA_PATH=\"$INSTALL_DIR/lib/ladspa\"
-      export LIBVA_DRIVERS_PATH=\"$INSTALL_DIR/lib/va\"
-      cd \"$INSTALL_DIR\"
-      export QT_PLUGIN_PATH=\"lib/qt5\"
-      export QML2_IMPORT_PATH=\"lib/qml\"
-      bin/shotcut \"$@\"
+      # export LADSPA_PATH="$LADSPA_PATH:/usr/local/lib/ladspa:/usr/lib/ladspa:/usr/lib64/ladspa:$INSTALL_DIR/lib/ladspa"
+      export LADSPA_PATH="$INSTALL_DIR/lib/ladspa"
+      export LIBVA_DRIVERS_PATH="$INSTALL_DIR/lib/va"
+      cd "$INSTALL_DIR"
+      export QT_PLUGIN_PATH="lib/qt5"
+      export QML2_IMPORT_PATH="lib/qml"
+      bin/shotcut "$@"
     EOF
   end
 
@@ -125,9 +125,10 @@ class Shotcut < Package
       FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/share/shotcut"
       FileUtils.mv 'bin', "#{CREW_DEST_PREFIX}/share/shotcut"
       FileUtils.mv 'lib', "#{CREW_DEST_PREFIX}/share/shotcut"
+      FileUtils.mv 'share/applications', "#{CREW_DEST_PREFIX}/share"
+      FileUtils.mv 'share/icons', "#{CREW_DEST_PREFIX}/share"
       FileUtils.mv 'share', "#{CREW_DEST_PREFIX}/share/shotcut"
     end
     FileUtils.install 'shotcut', "#{CREW_DEST_PREFIX}/bin/shotcut", mode: 0o755
-    FileUtils.install 'Shotcut.desktop', "#{CREW_DEST_PREFIX}/share/applications/Shotcut.desktop", mode: 0o644
   end
 end
