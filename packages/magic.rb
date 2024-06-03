@@ -3,11 +3,11 @@ require 'package'
 class Magic < Package
   description 'Magic is a venerable VLSI layout tool'
   homepage 'http://opencircuitdesign.com/magic/'
-  version '8.3.454'
+  version '8.3.485'
   license 'Copyright (C) 1985, 1990 Regents of the University of California'
   compatibility 'x86_64'
-  source_url 'https://github.com/RTimothyEdwards/magic/releases/download/8.3.454/Magic-8.3.454-x86_64.AppImage'
-  source_sha256 'b277d9ee93710cd3abaa55eb5248727429f6af65ced408e7a3f9534112b99f7a'
+  source_url 'https://github.com/RTimothyEdwards/magic/releases/download/8.3.485/Magic-8.3.485-x86_64.AppImage'
+  source_sha256 '4eec89f36fc4415d2b56687fd5408817769cc383a7278fc40af7b9d764e994fc'
 
   no_compile_needed
 
@@ -31,6 +31,6 @@ class Magic < Package
   end
 
   def self.postinstall
-    ExitMessage.add "Type 'magic' to get started.".lightblue
+    ExitMessage.add "\nType 'magic' to get started.\n".lightblue
   end
 end
