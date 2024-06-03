@@ -3,11 +3,11 @@ require 'package'
 class Lmstudio < Package
   description 'Discover, download, and run local LLMs'
   homepage 'https://lmstudio.ai/'
-  version '0.2.17-preview-6'
+  version '0.2.24'
   license 'MIT'
   compatibility 'x86_64'
-  source_url 'https://releases.lmstudio.ai/linux/0.2.17/test/LM_Studio-0.2.17-preview-6.AppImage'
-  source_sha256 '6da83495bfb64d46f317512cbe430e71b8119daaf6ffd0329b649d7098dad5ba'
+  source_url 'https://releases.lmstudio.ai/linux/0.2.24/beta/LM_Studio-0.2.24.AppImage'
+  source_sha256 'd5a84f45181c61f5bd783d38c9e1787edfb22e7f7e9c83ce579564bfbacc893f'
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
@@ -65,7 +65,7 @@ class Lmstudio < Package
   end
 
   def self.postinstall
-    puts "\nType 'lmstudio' to get started.\n".lightblue
+    ExitMessage.add "\nType 'lmstudio' to get started.\n".lightblue
   end
 
   def self.remove
