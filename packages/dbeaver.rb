@@ -3,14 +3,14 @@ require 'package'
 class Dbeaver < Package
   description 'Free Universal Database Tool'
   homepage 'https://dbeaver.io'
-  version '24.0.5'
+  version '24.1.0'
   license 'Apache-2.0'
   compatibility 'x86_64'
   source_url({
-    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/24.0.5/dbeaver-ce-24.0.5-linux.gtk.x86_64.tar.gz'
+    x86_64: 'https://github.com/dbeaver/dbeaver/releases/download/24.1.0/dbeaver-ce-24.1.0-linux.gtk.x86_64.tar.gz'
   })
   source_sha256({
-    x86_64: '57c2a2254187bb8996837c3444a4d4b501b4460243e0053e4cbbe9a93f2dfc32'
+    x86_64: 'c5018c3e2b3f746c5d5f04886431c653fc8569bde4417ceff3122e46c9f7cd1e'
   })
 
   depends_on 'gtk3'
