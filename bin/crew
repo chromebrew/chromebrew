@@ -4,7 +4,14 @@ require 'digest/sha2'
 require 'json'
 require 'fileutils'
 require 'tmpdir'
-require_relative '../commands/const'
+begin
+  require_relative '../commands/const'
+rescue LoadError
+  # Older crew installs won't have the commands dir in the sparse checkout,
+  # so disable sparse checkout if those files are missing.
+  system 'git sparse-checkout disable'
+  require_relative '../commands/const'
+end
 require_relative '../commands/files'
 require_relative '../commands/help'
 require_relative '../commands/list'
