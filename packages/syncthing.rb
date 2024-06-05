@@ -3,18 +3,18 @@ require 'package'
 class Syncthing < Package
   description 'An application that lets you synchronize your files across multiple devices'
   homepage 'https://github.com/syncthing/syncthing'
-  version '0.14.41'
+  version '1.27.8'
   license 'Apache-2.0, BSD, BSD-2, ISC, MIT, MPL-2.0 and Unlicense'
   compatibility 'all'
-  source_url 'https://github.com/syncthing/syncthing/archive/v0.14.41.tar.gz'
-  source_sha256 '9c406897443465e03d3259df1dda10bd86e49ae4286f8c855d9f35e47026af2f'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/syncthing/syncthing.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',
-     armv7l: '49a1232c9bb8889c28b47e6663a93392a0e97f5501e37ec5725b0e2a94945eee',
-       i686: 'a7cce6d9cf389f991a29ead1212c11c77ae78b9f7093e739c56b19c5ef0d6d9b',
-     x86_64: '60c9415478f1f640043ca18cfce40afa60c623d734e80df191620e1e2b935379'
+    aarch64: '1865ca5f24ce62e6383b1c07092948770808b7649d2cb32dc1b58c3d037f49e7',
+     armv7l: '1865ca5f24ce62e6383b1c07092948770808b7649d2cb32dc1b58c3d037f49e7',
+       i686: 'a7c249d41db77937937f0b54cc5d4fe8b9479d42ed3d3d0036befc4082649c5a',
+     x86_64: '80a0daafb672e7f98987e1c18c2d4f7886e08d00e994fd12196833179e829143'
   })
 
   depends_on 'go' => :build
