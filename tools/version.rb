@@ -9,6 +9,7 @@ end
 
 require 'json'
 require 'net/http'
+require 'ruby_libversion'
 
 # Add >LOCAL< lib to LOAD_PATH
 $LOAD_PATH.unshift '../lib'
@@ -19,11 +20,10 @@ require_relative '../lib/package'
 def get_version(name, homepage)
   anitya_id = get_anitya_id(name, homepage)
   # If we weren't able to get an Anitya ID, return early here to save time and headaches
-  return '' if anitya_id.nil?
+  return nil if anitya_id.nil?
   # Get the latest version of the package
   json = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/versions/?project_id=#{anitya_id}")))
-  return '' if json['latest_version'].nil?
-  return json['latest_version'].chomp
+  return json['latest_version']
 end
 
 def get_anitya_id(name, homepage)
@@ -35,12 +35,12 @@ def get_anitya_id(name, homepage)
     return json['items'][0]['id']
   elsif number_of_packages.zero? # Anitya either doesn't have this package, or has it under a different name.
     # If it has it under a different name, check if it has the name used by Chromebrew.
-    json2 = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/packages/?name=#{name}")))
+    json2 = JSON.parse(Net::HTTP.get(URI("https://release-monitoring.org/api/v2/packages/?name=#{name.tr('-', '_')}")))
     return if (json2['total_items']).zero?
 
     (0..json2['total_items'] - 1).each do |i|
       next unless json2['items'][i]['distribution'] == 'Chromebrew'
-      return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name
+      return get_anitya_id(json2['items'][i]['project'], homepage) if json2['items'][i]['name'] == name.tr('-', '_')
     end
   else # Anitya has more than one package with this exact name.
     candidates = []
@@ -76,12 +76,6 @@ def get_anitya_id(name, homepage)
   end
 end
 
-# Check for valid semantic version.
-def valid_semantic_version?(version)
-  valid = (version =~ /^[0-9a-zA-Z\.\-]*$/)
-  return valid
-end
-
 filelist = []
 verbose = ARGV.include?('-v') || ARGV.include?('--verbose')
 if ARGV.length.positive? && !(ARGV.length == 1 && verbose)
@@ -107,45 +101,37 @@ if filelist.length.positive?
   puts "#{'-------'.ljust(35)}#{'------'.ljust(20)}#{'-------'.ljust(20)}--------"
   filelist.each do |filename|
     pkg = Package.load_package(filename)
-    # Instead of typing out the name of every python package, we just use a regex here
-    if pkg.name.match?(/py3\S+/)
+    # Instead of typing out the name of every python package, we just use a regex here.
+    # Also, we annotate some packages to let us know that they won't work here.
+    if pkg.name.match?(/py3\S+/) || pkg.no_upstream_update?
       puts pkg.name.ljust(35) + 'noupdate'.lightred if verbose
       next
     end
-    # Package is fake
+    # We skip fake packages.
     if pkg.is_fake?
       puts pkg.name.ljust(35) + 'fake'.lightred if verbose
       next
     end
-    # No upstream update available
-    if pkg.no_upstream_update?
-      puts pkg.name.ljust(35) + 'noupdate'.lightred if verbose
-      next
-    end
-    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives
+
+    # Get the upstream version.
     upstream_version = get_version(pkg.name.tr('_', '-'), pkg.homepage)
+    # Some packages don't work with this yet, so gracefully exit now rather than throwing false positives.
     if upstream_version.nil?
       puts pkg.name.ljust(35) + 'notfound'.lightred if verbose
       next
     end
 
-    status = if upstream_version == pkg.version
-               'uptodate'.ljust(20).lightgreen
-             elsif upstream_version.empty? || pkg.version.empty?
-               'notfound'.ljust(20).lightred
-             elsif valid_semantic_version?(upstream_version) && valid_semantic_version?(pkg.version)
-               if Gem::Version.correct?(upstream_version) && Gem::Version.correct?(pkg.version)
-                 if Gem::Version.new(upstream_version) > Gem::Version.new(pkg.version)
-                   'outdated'.ljust(20).yellow
-                 else
-                   'mismatch'.ljust(20).orange
-                 end
-               else
-                 'notvalid'.ljust(20).lightred
-               end
-             else
-               'notvalid'.ljust(20).lightred
-             end
-    puts pkg.name.ljust(35) + status + pkg.version.ljust(20) + upstream_version unless !verbose && status == 'uptodate'.ljust(20).lightgreen
+    # Bail out if we arent verbose and so dont want to print packages that are up to date.
+    next if Libversion.version_compare2(pkg.version, upstream_version) >= 0 && !verbose
+    # Print the package name.
+    print pkg.name.ljust(35)
+    # Print the package update status.
+    if Libversion.version_compare2(pkg.version, upstream_version) >= 0
+      print 'uptodate'.ljust(20).lightgreen
+    elsif Libversion.version_compare2(pkg.version, upstream_version) == -1
+      print 'outdated'.ljust(20).yellow
+    end
+    # Print the package versions.
+    puts pkg.version.ljust(20) + upstream_version
   end
 end
