@@ -161,6 +161,7 @@
 /usr/local/share/go/src/archive/zip/reader_test.go
 /usr/local/share/go/src/archive/zip/register.go
 /usr/local/share/go/src/archive/zip/struct.go
+/usr/local/share/go/src/archive/zip/testdata/comment-truncated.zip
 /usr/local/share/go/src/archive/zip/testdata/crc32-not-streamed.zip
 /usr/local/share/go/src/archive/zip/testdata/dd.zip
 /usr/local/share/go/src/archive/zip/testdata/dupdir.zip
@@ -2199,6 +2200,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/gopath_vendor_dup_err.txt
 /usr/local/share/go/src/cmd/go/testdata/script/goroot_executable.txt
 /usr/local/share/go/src/cmd/go/testdata/script/goroot_executable_trimpath.txt
+/usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_issue66175.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_local.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_loop.txt
 /usr/local/share/go/src/cmd/go/testdata/script/gotoolchain_modcmds.txt
@@ -4633,7 +4635,6 @@
 /usr/local/share/go/src/crypto/x509/root_aix.go
 /usr/local/share/go/src/crypto/x509/root_bsd.go
 /usr/local/share/go/src/crypto/x509/root_darwin.go
-/usr/local/share/go/src/crypto/x509/root_darwin_test.go
 /usr/local/share/go/src/crypto/x509/root_linux.go
 /usr/local/share/go/src/crypto/x509/root_plan9.go
 /usr/local/share/go/src/crypto/x509/root_solaris.go
@@ -4642,7 +4643,6 @@
 /usr/local/share/go/src/crypto/x509/root_unix_test.go
 /usr/local/share/go/src/crypto/x509/root_wasm.go
 /usr/local/share/go/src/crypto/x509/root_windows.go
-/usr/local/share/go/src/crypto/x509/root_windows_test.go
 /usr/local/share/go/src/crypto/x509/sec1.go
 /usr/local/share/go/src/crypto/x509/sec1_test.go
 /usr/local/share/go/src/crypto/x509/test-file.crt
@@ -11938,6 +11938,9 @@
 /usr/local/share/go/test/fixedbugs/issue6703x.go
 /usr/local/share/go/test/fixedbugs/issue6703y.go
 /usr/local/share/go/test/fixedbugs/issue6703z.go
+/usr/local/share/go/test/fixedbugs/issue67141.go
+/usr/local/share/go/test/fixedbugs/issue67160.go
+/usr/local/share/go/test/fixedbugs/issue67255.go
 /usr/local/share/go/test/fixedbugs/issue6750.go
 /usr/local/share/go/test/fixedbugs/issue6772.go
 /usr/local/share/go/test/fixedbugs/issue6789.dir/a.go
