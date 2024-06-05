@@ -366,7 +366,11 @@ def upgrade(*pkgs, build_from_source: false)
   # package upgrades may break until crew is rerun with the new
   # version of ruby.
   if to_be_upgraded.include?('ruby')
-    to_be_upgraded = ['ruby']
+    if to_be_upgraded.include?('openssl')
+      to_be_upgraded.delete('ruby')
+    else
+      to_be_upgraded = ['ruby']
+    end
     rerun_upgrade = true
   end
 
