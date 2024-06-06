@@ -2,7 +2,7 @@ require 'package'
 
 class Aview < Package
   description 'aview is an high quality ascii-art image(pnm) browser and animation(fli/flc) player useful especially with lynx browser.'
-  homepage 'http://aa-project.sourceforge.net/aview/'
+  homepage 'https://aa-project.sourceforge.net/aview/'
   version '1.3.0rc1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
