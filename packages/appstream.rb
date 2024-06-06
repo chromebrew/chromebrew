@@ -5,7 +5,7 @@ require 'buildsystems/meson'
 
 class Appstream < Meson
   description 'Provides a standard for creating app stores across distributions'
-  homepage 'https://distributions.freedesktop.org/wiki/AppStream'
+  homepage 'https://www.freedesktop.org/wiki/Distributions/AppStream/'
   version '1.0.2'
   license 'GPL'
   compatibility 'x86_64 aarch64 armv7l'
