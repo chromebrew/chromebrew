@@ -1,6 +1,6 @@
 require 'buildsystems/autotools'
 
-class Arpscan < Autotools
+class Arp_scan < Autotools
   description 'Arp-scan is an ARP (Address Resolution Protocol) scanning and fingerprinting tool.'
   homepage 'https://github.com/royhills/arp-scan'
   version '1.10.0'
