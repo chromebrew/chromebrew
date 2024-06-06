@@ -2,7 +2,7 @@ require 'package'
 
 class Broadway < Package
   description 'Run GTK applications in a browser window.'
-  homepage 'https://developer.gnome.org/gtk3/stable/gtk-broadway.html'
+  homepage 'https://docs.gtk.org/gtk3/broadway.html'
   version 'gtk3.22-3'
   license 'GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
@@ -65,7 +65,7 @@ class Broadway < Package
     puts
     puts 'To complete the installation, execute the following:'.lightblue
     puts "echo '# Broadway environment variables + daemon' >> ~/.bashrc".lightblue
-    puts "echo '# See https://developer.gnome.org/gtk3/stable/gtk-broadway.html' >> ~/.bashrc".lightblue
+    puts "echo '# See https://docs.gtk.org/gtk3/broadway.html' >> ~/.bashrc".lightblue
     puts "echo 'alias startbroadway=\"set -a && source ~/.broadway.env && set +a && initbroadway\"' >> ~/.bashrc".lightblue
     puts "echo 'startbroadway' >> ~/.bashrc".lightblue
     puts 'source ~/.bashrc'.lightblue
