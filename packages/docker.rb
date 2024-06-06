@@ -20,7 +20,7 @@ class Docker < Package
   })
 
   depends_on 'bridge_utils' # L
-  depends_on 'btrfsprogs' => :build
+  depends_on 'btrfs_progs' => :build
   depends_on 'containerd' # L
   depends_on 'elogind' => :build
   depends_on 'eudev' => :build
