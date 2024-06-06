@@ -4,6 +4,7 @@ require 'digest/sha2'
 begin
   require 'json'
 rescue LoadError
+  # The json gem can break when upgrading from a mufh older version of ruby.
   puts ' -> install gem json'
   Gem.install('json')
   require 'json'
