@@ -39,7 +39,7 @@ class Pip < Package
       @pip_path = File.expand_path("#{@pip_files_base}#{pip_file}")
       @destpath = File.join(CREW_DEST_DIR, @pip_path)
       # Handle older FileUtils from older ruby versions.
-      FileUtils.mkdir_p File.join(CREW_DEST_DIR, @pip_files_base) if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
+      FileUtils.mkdir_p File.dirname(@destpath) if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
       FileUtils.install @pip_path, @destpath
     end
     eval @pip_install_extras if @pip_install_extras
