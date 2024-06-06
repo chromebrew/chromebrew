@@ -2,7 +2,7 @@ require 'package'
 
 class Apr_iconv < Package
   description 'a portable implementation of the iconv() library'
-  homepage 'http://apr.apache.org/'
+  homepage 'https://apr.apache.org/'
   version '1.2.2'
   license 'Apache-2.0'
   compatibility 'all'
