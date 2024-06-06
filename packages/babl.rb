@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Babl < Meson
   description 'babl is a dynamic, any to any, pixel format translation library.'
-  homepage 'http://gegl.org/babl/'
+  homepage 'https://gegl.org/babl/'
   version '0.1.108'
   license 'LGPL-3'
   compatibility 'x86_64 aarch64 armv7l'
