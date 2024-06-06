@@ -2,7 +2,7 @@ require 'package'
 
 class Appres < Package
   description 'The appres program prints the resources seen by an application (or subhierarchy of an application) with the specified class and instance names.'
-  homepage 'https://www.x.org'
+  homepage 'https://gitlab.freedesktop.org/xorg/app/appres'
   version '1.0.5'
   license 'custom'
   compatibility 'all'
