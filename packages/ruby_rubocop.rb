@@ -20,6 +20,7 @@ class Ruby_rubocop < RUBY
   no_fhs
 
   ruby_install_extras <<~EOF
+    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop/" if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
     FileUtils.install '.rubocop.yml', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml", mode: 0o644
   EOF
 
