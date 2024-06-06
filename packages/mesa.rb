@@ -22,8 +22,8 @@ class Mesa < Meson
   depends_on 'expat' # R
   depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' # R
-  depends_on 'glibc' # R
   depends_on 'glibc_lib' # R
+  depends_on 'glibc' # R
   depends_on 'glslang' => :build
   depends_on 'libclc' => :build
   depends_on 'libdrm' # R
@@ -46,11 +46,11 @@ class Mesa < Meson
   depends_on 'libxxf86vm' # R
   depends_on 'llvm18_dev' => :build
   depends_on 'llvm18_lib' # R
-  depends_on 'spirv_llvm_translator' => :build
   depends_on 'lm_sensors' # R
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
   depends_on 'py3_pycparser' => :build
+  depends_on 'spirv_llvm_translator' => :build
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
