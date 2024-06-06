@@ -2,12 +2,12 @@ require 'package'
 
 class Acpica < Package
   description 'ACPI tools, including Intel ACPI Source Language compiler'
-  homepage 'https://acpica.org/'
+  homepage 'https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html'
   version '20200925'
   license 'GPL-2'
   compatibility 'all'
-  source_url 'https://acpica.org/sites/acpica/files/acpica-unix-20200925.tar.gz'
-  source_sha256 'd44388e21e3d2e47c6d39e9c897935d3f775f04fec76271dcba072c74f834589'
+  source_url 'https://github.com/acpica/acpica.git'
+  git_hashtag 'R09_25_20'
   binary_compression 'tar.xz'
 
   binary_sha256({
