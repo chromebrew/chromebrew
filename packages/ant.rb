@@ -2,7 +2,7 @@ require 'package'
 
 class Ant < Package
   description 'Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.'
-  homepage 'http://ant.apache.org/'
+  homepage 'https://ant.apache.org/'
   version '1.10.14'
   license 'Apache-2.0'
   compatibility 'all'
