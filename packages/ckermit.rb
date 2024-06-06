@@ -2,7 +2,7 @@ require 'package'
 
 class Ckermit < Package
   description 'C-Kermit is a combined serial and network communication software package.'
-  homepage 'http://www.kermitproject.org/ck90.html'
+  homepage 'https://www.kermitproject.org/ck90.html'
   version '8.0.211-1'
   license 'Kermit'
   compatibility 'all'
