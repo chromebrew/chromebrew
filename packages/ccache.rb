@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Ccache < CMake
   description 'Compiler cache that speeds up recompilation by caching previous compilations'
-  homepage 'https://ccache.samba.org/'
+  homepage 'https://ccache.dev/'
   version '4.9.1'
   license 'GPL-3 and LGPL-3'
   compatibility 'all'
