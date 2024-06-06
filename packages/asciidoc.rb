@@ -2,7 +2,7 @@ require 'package'
 
 class Asciidoc < Package
   description 'AsciiDoc is a presentable text document format for writing articles, UNIX man pages and other small to medium sized documents.'
-  homepage 'http://asciidoc.org/'
+  homepage 'https://asciidoc.org/'
   @_ver = '10.2.0'
   version "#{@_ver}-py3.12"
   license 'GPL-2'
