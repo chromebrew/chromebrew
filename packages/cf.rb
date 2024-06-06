@@ -2,7 +2,7 @@ require 'package'
 
 class Cf < Package
   description 'The official command line client for Cloud Foundry'
-  homepage 'https://docs.cloudfoundry.org/cf-cli'
+  homepage 'https://docs.cloudfoundry.org/cf-cli/'
   version '6.53.0'
   license 'Apache-2.0'
   compatibility 'i686 x86_64'
