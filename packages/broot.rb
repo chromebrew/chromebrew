@@ -2,7 +2,7 @@ require 'package'
 
 class Broot < Package
   description 'A new way to see and navigate directory trees'
-  homepage 'https://dystroy.org/broot'
+  homepage 'https://dystroy.org/broot/'
   version '1.11.1'
   license 'MIT'
   compatibility 'all'
