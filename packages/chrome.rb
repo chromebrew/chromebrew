@@ -2,7 +2,7 @@ require 'package'
 
 class Chrome < Package
   description 'Google Chrome is a fast, easy to use, and secure web browser.'
-  homepage 'https://www.google.com/chrome'
+  homepage 'https://www.google.com/chrome/'
   version '125.0.6422.141-1'
   license 'google-chrome'
   compatibility 'x86_64'
