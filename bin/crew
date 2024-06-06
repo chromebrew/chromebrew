@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 require 'uri'
 require 'digest/sha2'
-require 'json'
+begin
+  require 'json'
+rescue LoadError
+  # The json gem can break when upgrading from a much older version of ruby.
+  puts ' -> install gem json'
+  Gem.install('json')
+  require 'json'
+end
 require 'fileutils'
 require 'tmpdir'
 begin
@@ -360,13 +367,20 @@ def upgrade(*pkgs, build_from_source: false)
   # Upgrade OpenSSL first if OpenSSL is in the upgrade list, as other
   # package upgrades, especially their postinstalls, may break until the
   # new version of OpenSSL is installed.
-  to_be_upgraded.insert(0, to_be_upgraded.delete('openssl')) if to_be_upgraded.include?('openssl')
+  if to_be_upgraded.include?('openssl')
+    to_be_upgraded.insert(0, to_be_upgraded.delete('openssl'))
+    rerun_upgrade = true
+  end
 
   # Only upgrade ruby if ruby is in the upgrade list, as other
   # package upgrades may break until crew is rerun with the new
   # version of ruby.
   if to_be_upgraded.include?('ruby')
-    to_be_upgraded = ['ruby']
+    if to_be_upgraded.include?('openssl')
+      to_be_upgraded.delete('ruby')
+    else
+      to_be_upgraded = ['ruby']
+    end
     rerun_upgrade = true
   end
 

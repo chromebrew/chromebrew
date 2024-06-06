@@ -37,7 +37,9 @@ class Pip < Package
     @pip_files_lines = @pip_files[/(?<=Files:\n)[\W|\w]*/, 0].split
     @pip_files_lines.each do |pip_file|
       @pip_path = File.expand_path("#{@pip_files_base}#{pip_file}")
-      @destpath = "#{CREW_DEST_DIR.chomp('/')}#{@pip_path}"
+      @destpath = File.join(CREW_DEST_DIR, @pip_path)
+      # Handle older FileUtils from older ruby versions.
+      FileUtils.mkdir_p File.dirname(@destpath) if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
       FileUtils.install @pip_path, @destpath
     end
     eval @pip_install_extras if @pip_install_extras
