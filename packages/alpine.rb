@@ -2,11 +2,11 @@ require 'package'
 
 class Alpine < Package
   description 'The continuation of the Alpine email client from University of Washington.'
-  homepage 'http://alpine.x10host.com/alpine'
+  homepage 'https://alpineapp.email/'
   version '2.25'
   license 'Apache-2.0'
   compatibility 'all'
-  source_url 'http://alpine.x10host.com/alpine/release/src/alpine-2.25.tar.xz'
+  source_url 'https://alpineapp.email/alpine/release/src/Old/alpine-2.25.tar.xz'
   source_sha256 '658a150982f6740bb4128e6dd81188eaa1212ca0bf689b83c2093bb518ecf776'
   binary_compression 'tar.zst'
 
