@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Mesa < Package
+class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.1.0'
+  @_ver = '24.1.1'
   version "#{@_ver}-llvm18"
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
@@ -12,9 +12,9 @@ class Mesa < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'd54185457b5a24031970fe814972b9acadffed5e089e273d97629f44d65138da',
-     armv7l: 'd54185457b5a24031970fe814972b9acadffed5e089e273d97629f44d65138da',
-     x86_64: '5956d81ea0d8c3b944cfe1af095a7fce7de55bf17ea8545614bbec856537b98b'
+    aarch64: '58ab2540498a6e28ff721597448a511e0edac6b451015e969ecf7df0a54f1e71',
+     armv7l: '58ab2540498a6e28ff721597448a511e0edac6b451015e969ecf7df0a54f1e71',
+     x86_64: 'acbd9505e6b7ed47ace31938c7105bfbc5c85176bd73bfb200d11362b71501fc'
   })
 
   depends_on 'elfutils' # R
@@ -22,8 +22,8 @@ class Mesa < Package
   depends_on 'expat' # R
   depends_on 'gcc_dev' => :build
   depends_on 'gcc_lib' # R
+  depends_on 'glibc_lib' # R
   depends_on 'glibc' # R
-  depends_on 'glibc_lib' #
   depends_on 'glslang' => :build
   depends_on 'libclc' => :build
   depends_on 'libdrm' # R
@@ -50,6 +50,7 @@ class Mesa < Package
   depends_on 'py3_mako' => :build
   depends_on 'py3_ply' => :build
   depends_on 'py3_pycparser' => :build
+  depends_on 'spirv_llvm_translator' => :build
   depends_on 'valgrind' => :build
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' # R
@@ -59,24 +60,19 @@ class Mesa < Package
   depends_on 'zlibpkg' # R
   depends_on 'zstd' # R
 
-  def self.build
-    system "mold -run meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      -Db_asneeded=false \
-      -Ddri3=enabled \
-      -Degl=enabled \
-      -Dgbm=enabled \
-      -Dgles1=disabled \
-      -Dgles2=enabled \
-      -Dglvnd=enabled \
-      -Dglx=dri \
-      -Dllvm=enabled \
-      -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,swrast,iris,zink'}' \
-      -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
-      -Dvideo-codecs='all' \
-       builddir"
-    system 'meson configure --no-pager builddir'
-    system "mold -run #{CREW_NINJA} -C builddir"
-  end
+  meson_options "#{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
+    -Db_asneeded=false \
+    -Ddri3=enabled \
+    -Degl=enabled \
+    -Dgbm=enabled \
+    -Dgles1=disabled \
+    -Dgles2=enabled \
+    -Dglvnd=enabled \
+    -Dglx=dri \
+    -Dllvm=enabled \
+    -Dgallium-drivers='#{ARCH == 'x86_64' ? 'i915,r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink' : 'v3d,freedreno,etnaviv,nouveau,svga,tegra,virgl,lima,panfrost,swrast,iris,zink'}' \
+    -Dvulkan-drivers='#{ARCH == 'x86_64' ? 'amd, intel, intel_hasvk, swrast' : 'auto'}' \
+    -Dvideo-codecs='all'"
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"

@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Dav1d < Package
+class Dav1d < Meson
   description '**dav1d** is a new **AV1** cross-platform **d**ecoder, open-source, and focused on speed and correctness.'
   homepage 'https://code.videolan.org/videolan/dav1d'
-  version '1.4.1'
+  version '1.4.2'
   license 'BSD-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://code.videolan.org/videolan/dav1d.git'
@@ -11,9 +11,9 @@ class Dav1d < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04095a79a6f15e15760b6d355a8f8a3b3e6ff1a402b688f96990d9463ddc4f0e',
-     armv7l: '04095a79a6f15e15760b6d355a8f8a3b3e6ff1a402b688f96990d9463ddc4f0e',
-     x86_64: 'b298fcec9adb0a2afe25418225e3cb88e8839d042185c43a5966e35ae98cef28'
+    aarch64: '2ad333d174a10229b8d5eadf73c82acade4604fa190aa6a181badaefb3bd11e4',
+     armv7l: '2ad333d174a10229b8d5eadf73c82acade4604fa190aa6a181badaefb3bd11e4',
+     x86_64: '7004189fafe7b555354243db1b733ffa622d802b8f0d78764ec991a1e6f417a0'
   })
 
   depends_on 'gcc_lib' # R
@@ -21,14 +21,5 @@ class Dav1d < Package
   depends_on 'glibc' # R
   depends_on 'nasm' => :build
 
-  def self.build
-    system "meson setup #{CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16')} \
-      builddir"
-    system 'meson configure --no-pager builddir'
-    system "#{CREW_NINJA} -C builddir"
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-  end
+  meson_options CREW_MESON_OPTIONS.gsub('-mfpu=vfpv3-d16', '-mfpu=neon-fp16').to_s
 end
