@@ -3,20 +3,24 @@ require 'package'
 class Zig < Package
   description 'Programming language designed for robustness, optimality, and clarity'
   homepage 'https://ziglang.org/'
-  version '0.9.1'
+  version '0.13.0'
   license 'MIT'
   compatibility 'all'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://ziglang.org/download/0.9.1/zig-linux-armv7a-0.9.1.tar.xz'
-    source_sha256 '6de64456cb4757a555816611ea697f86fba7681d8da3e1863fa726a417de49be'
-  when 'i686'
-    source_url 'https://ziglang.org/download/0.9.1/zig-linux-i386-0.9.1.tar.xz'
-    source_sha256 'e776844fecd2e62fc40d94718891057a1dbca1816ff6013369e9a38c874374ca'
-  when 'x86_64'
-    source_url 'https://ziglang.org/download/0.9.1/zig-linux-x86_64-0.9.1.tar.xz'
-    source_sha256 'be8da632c1d3273f766b69244d80669fe4f5e27798654681d77c992f17c237d7'
-  end
+  source_url({
+    aarch64: 'https://ziglang.org/builds/zig-linux-armv7a-0.13.0.tar.xz',
+     armv7l: 'https://ziglang.org/builds/zig-linux-armv7a-0.13.0.tar.xz',
+       i686: 'https://ziglang.org/builds/zig-linux-x86-0.13.0.tar.xz',
+     x86_64: 'https://ziglang.org/builds/zig-linux-x86_64-0.13.0.tar.xz'
+  })
+  source_sha256({
+    aarch64: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
+     armv7l: '4b0550239c2cd884cc03ddeb2b9934708f4b073ad59a96fccbfe09f7e4f54233',
+       i686: '876159cc1e15efb571e61843b39a2327f8925951d48b9a7a03048c36f72180f7',
+     x86_64: 'd45312e61ebcc48032b77bc4cf7fd6915c11fa16e4aad116b66c9468211230ea'
+  })
+
+  no_compile_needed
+  no_shrink
 
   def self.install
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
@@ -26,6 +30,6 @@ class Zig < Package
   end
 
   def self.postinstall
-    puts "\nType 'zig' to get started.\n".lightblue
+    ExitMessage.add "\nType 'zig' to get started.\n".lightblue
   end
 end
