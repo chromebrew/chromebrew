@@ -2,7 +2,7 @@ require 'package'
 
 class Bashdb < Package
   description 'The Bash Debugger Project is a source-code debugger for bash that follows the gdb command syntax.'
-  homepage 'http://bashdb.sourceforge.net/'
+  homepage 'https://bashdb.sourceforge.net/'
   version '5.0-1.1.2-abac'
   license 'GPL-2'
   compatibility 'all'

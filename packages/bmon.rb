@@ -2,7 +2,7 @@ require 'package'
 
 class Bmon < Package
   description 'bmon is a commandline bandwidth monitor and rate estimator.'
-  homepage 'https://www.infradead.org/~tgr/bmon/'
+  homepage 'https://github.com/tgraf/bmon/'
   version '4.0-1'
   license 'BSD-2 and MIT'
   compatibility 'all'

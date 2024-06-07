@@ -2,7 +2,7 @@ require 'package'
 
 class Bdftopcf < Package
   description 'BDF to PCF font converter for X11'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

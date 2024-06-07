@@ -2,7 +2,7 @@ require 'package'
 
 class Bitmap < Package
   description 'bitmap, bmtoa, atobm - X bitmap (XBM) editor and converter utilities'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.9'
   license 'custom'
   compatibility 'all'

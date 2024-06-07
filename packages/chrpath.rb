@@ -2,7 +2,7 @@ require 'package'
 
 class Chrpath < Package
   description 'Change or delete the rpath or runpath in ELF files'
-  homepage 'https://directory.fsf.org/project/chrpath/'
+  homepage 'https://directory.fsf.org/wiki/Chrpath'
   version '0.16'
   license 'GPL-2+'
   compatibility 'all'

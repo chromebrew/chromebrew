@@ -2,11 +2,11 @@ require 'package'
 
 class Calcurse < Package
   description 'calcurse is a calendar and scheduling application for the command line.'
-  homepage 'http://calcurse.org/'
+  homepage 'https://calcurse.org/'
   version '4.3.0'
   license 'BSD-2'
   compatibility 'all'
-  source_url 'http://calcurse.org/files/calcurse-4.3.0.tar.gz'
+  source_url 'https://calcurse.org/files/calcurse-4.3.0.tar.gz'
   source_sha256 '31ecc3dc09e1e561502b4c94f965ed6b167c03e9418438c4a7ad5bad2c785f9a'
   binary_compression 'tar.xz'
 

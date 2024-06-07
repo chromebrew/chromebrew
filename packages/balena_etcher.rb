@@ -2,7 +2,7 @@ require 'package'
 
 class Balena_etcher < Package
   description 'Flash OS images to SD cards & USB drives, safely and easily.'
-  homepage 'https://www.balena.io/etcher/'
+  homepage 'https://etcher.balena.io'
   version '1.19.21'
   license 'Apache-2.0'
   compatibility 'x86_64'

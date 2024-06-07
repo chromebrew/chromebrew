@@ -2,7 +2,7 @@ require 'package'
 
 class Aide < Package
   description 'Advanced Intrusion Detection Environment'
-  homepage 'http://aide.sourceforge.net/'
+  homepage 'https://aide.github.io'
   version '0.15.1'
   license 'GPL-2'
   compatibility 'all'

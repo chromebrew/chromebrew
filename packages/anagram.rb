@@ -4,10 +4,10 @@ class Anagram < Package
   description 'finds anagrams or permutations of words in the target phrase'
   homepage 'https://www.fourmilab.ch/anagram/'
   version '1.5'
-  license 'public-domain'
+  license 'CC0-1.0'
   compatibility 'all'
-  source_url 'https://www.fourmilab.ch/anagram/anagram-1.5.tar.gz'
-  source_sha256 '62eca59318782e889118a0e130d454e1c397aedd99fc59b2194393bf0eff5348'
+  source_url 'https://github.com/Fourmilab/anagram.git'
+  git_hashtag '5466ccd28c1b8f46bd8af420d17801bdf1da51a8'
   binary_compression 'tar.zst'
 
   binary_sha256({

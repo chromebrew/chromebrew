@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Avahi < Autotools
   description 'Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite.'
-  homepage 'http://www.avahi.org/'
+  homepage 'https://avahi.org/'
   version '0.9-rc1'
   license 'LGPL-2.1'
   compatibility 'all'

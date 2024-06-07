@@ -2,7 +2,7 @@ require 'package'
 
 class Ck4up < Package
   description 'Check for Updates, a utility to monitor web pages for updates'
-  homepage 'http://jue.li/crux/ck4up'
+  homepage 'http://jue.li/crux/ck4up/'
   version '1.4'
   license 'GPL-2+'
   compatibility 'all'

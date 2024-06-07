@@ -2,7 +2,7 @@ require 'package'
 
 class Bluefish < Package
   description 'Bluefish is a powerful editor targeted towards programmers and webdevelopers'
-  homepage 'http://bluefish.openoffice.nl/index.html'
+  homepage 'https://bluefish.openoffice.nl/index.html'
   version '2.2.13'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
