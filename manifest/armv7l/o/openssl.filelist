@@ -56,6 +56,7 @@
 /usr/local/include/openssl/dsaerr.h
 /usr/local/include/openssl/dtls1.h
 /usr/local/include/openssl/e_os2.h
+/usr/local/include/openssl/e_ostime.h
 /usr/local/include/openssl/ebcdic.h
 /usr/local/include/openssl/ec.h
 /usr/local/include/openssl/ecdh.h
@@ -73,6 +74,7 @@
 /usr/local/include/openssl/fips_names.h
 /usr/local/include/openssl/fipskey.h
 /usr/local/include/openssl/hmac.h
+/usr/local/include/openssl/hpke.h
 /usr/local/include/openssl/http.h
 /usr/local/include/openssl/httperr.h
 /usr/local/include/openssl/idea.h
@@ -105,6 +107,7 @@
 /usr/local/include/openssl/prov_ssl.h
 /usr/local/include/openssl/proverr.h
 /usr/local/include/openssl/provider.h
+/usr/local/include/openssl/quic.h
 /usr/local/include/openssl/rand.h
 /usr/local/include/openssl/randerr.h
 /usr/local/include/openssl/rc2.h
@@ -128,6 +131,7 @@
 /usr/local/include/openssl/store.h
 /usr/local/include/openssl/storeerr.h
 /usr/local/include/openssl/symhacks.h
+/usr/local/include/openssl/thread.h
 /usr/local/include/openssl/tls1.h
 /usr/local/include/openssl/trace.h
 /usr/local/include/openssl/ts.h
@@ -142,6 +146,8 @@
 /usr/local/include/openssl/x509err.h
 /usr/local/include/openssl/x509v3.h
 /usr/local/include/openssl/x509v3err.h
+/usr/local/lib/cmake/OpenSSL/OpenSSLConfig.cmake
+/usr/local/lib/cmake/OpenSSL/OpenSSLConfigVersion.cmake
 /usr/local/lib/engines-3/afalg.so
 /usr/local/lib/engines-3/capi.so
 /usr/local/lib/engines-3/loader_attic.so
