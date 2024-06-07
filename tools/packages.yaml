@@ -7921,6 +7921,11 @@ url: https://github.com/resurrecting-open-source-projects/scrot/releases
 activity: medium
 ---
 kind: url
+name: sdkman
+url: https://github.com/sdkman/sdkman-cli/releases
+activity: low
+---
+kind: url
 name: sdl2_image
 url: https://www.libsdl.org/projects/SDL_image/release/
 activity: medium
