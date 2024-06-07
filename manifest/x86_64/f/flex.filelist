@@ -1,5 +1,6 @@
 /usr/local/bin/flex
 /usr/local/bin/flex++
+/usr/local/bin/lex
 /usr/local/include/FlexLexer.h
 /usr/local/lib64/libfl.la
 /usr/local/lib64/libfl.so
