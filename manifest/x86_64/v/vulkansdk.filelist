@@ -161,7 +161,12 @@
 /usr/local/include/spirv_cross/spirv_msl.hpp
 /usr/local/include/spirv_cross/spirv_parser.hpp
 /usr/local/include/spirv_cross/spirv_reflect.hpp
+/usr/local/include/utility/vk_concurrent_unordered_map.hpp
 /usr/local/include/utility/vk_format_utils.h
+/usr/local/include/utility/vk_safe_struct.hpp
+/usr/local/include/utility/vk_safe_struct_utils.hpp
+/usr/local/include/utility/vk_small_containers.hpp
+/usr/local/include/utility/vk_sparse_range_map.hpp
 /usr/local/include/vk_enum_string_helper.h
 /usr/local/include/vk_icd.h
 /usr/local/include/vk_layer.h
@@ -288,6 +293,7 @@
 /usr/local/lib64/libVkLayer_monitor.so
 /usr/local/lib64/libVkLayer_screenshot.so
 /usr/local/lib64/libVulkanLayerSettings.a
+/usr/local/lib64/libVulkanSafeStruct.a
 /usr/local/lib64/libclang.a
 /usr/local/lib64/libclangAST.a
 /usr/local/lib64/libclangASTMatchers.a
