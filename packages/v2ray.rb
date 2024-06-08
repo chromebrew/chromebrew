@@ -3,22 +3,21 @@ require 'package'
 class V2ray < Package
   description 'A platform for building proxies to bypass network restrictions.'
   homepage 'www.v2fly.org'
-  version 'v5.7.0'
+  version 'v5.16.1'
   license 'MIT'
   compatibility 'all'
 
   source_url({
-    aarch64: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-arm32-v7a.zip',
-     armv7l: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-arm32-v7a.zip',
-       i686: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-32.zip',
-     x86_64: 'https://github.com/v2fly/v2ray-core/releases/download/v5.7.0/v2ray-linux-64.zip'
+    aarch64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-arm32-v7a.zip",
+     armv7l: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-arm32-v7a.zip",
+       i686: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-32.zip",
+     x86_64: "https://github.com/v2fly/v2ray-core/releases/download/#{version}/v2ray-linux-64.zip"
   })
-
   source_sha256({
-    aarch64: '18fe896de67f7a351958c13f86c6b390806576e619c5e5414a6992241fedc997',
-     armv7l: '18fe896de67f7a351958c13f86c6b390806576e619c5e5414a6992241fedc997',
-       i686: 'd86adac01e7544489f2efc4c6c7d6f2ca2e0414be252fc00fbac408d6aba4221',
-     x86_64: 'a2b689865072bff4c3d5ef6ee7970628f94a0996f86ff98c06e4ac4cc8c039f8'
+    aarch64: '7d3380b9080abc42dae5efa37a15413f4df2b6b645a992c5046d7d53a16ab876',
+     armv7l: '7d3380b9080abc42dae5efa37a15413f4df2b6b645a992c5046d7d53a16ab876',
+       i686: 'efbe54462b11f27343da1a2585cc762944180b524f8f31d911b0e6bdc0cd33a8',
+     x86_64: '82a7bf0b37ce2fda36d9e0040d71a494170026841735e20d708717b99ca0fe9b'
   })
 
   no_compile_needed
@@ -32,7 +31,7 @@ class V2ray < Package
   end
 
   def self.postinstall
-    puts <<~EOT.lightblue
+    ExitMessage.add <<~EOT.lightblue
       To start using v2ray, type `v2ray`.
 
       For more information, see https://www.v2fly.org/en_US/guide/start.html#novice-guide?
