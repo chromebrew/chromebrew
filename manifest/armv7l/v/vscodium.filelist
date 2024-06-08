@@ -821,6 +821,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/extensions/yaml/syntaxes/yaml.tmLanguage.json
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node
+/usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/@vscode/policy-watcher/build/Release/vscode-policy-watcher.node
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
 /usr/local/VSCodium-linux-arm/resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node
@@ -858,11 +859,6 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/base/worker/workerMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-main/main.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-main/main.nls.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/issue/issueReporter.html
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/issue/issueReporter.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/issue/issueReporterMain.css
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/issue/issueReporterMain.js
-/usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/issue/issueReporterMain.nls.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorer.html
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorer.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/code/electron-sandbox/processExplorer/processExplorerMain.css
@@ -894,6 +890,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/progress.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/quickFixes.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/save.mp3
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/success.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/taskCompleted.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/taskFailed.mp3
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/accessibilitySignal/browser/media/terminalBell.mp3
@@ -903,6 +900,7 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/files/node/watcher/watcherMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/files/node/watcher/watcherMain.nls.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/profiling/electron-sandbox/profileAnalysisWorker.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/profiling/electron-sandbox/profileAnalysisWorker.nls.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/terminal/node/ptyHostMain.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/platform/terminal/node/ptyHostMain.nls.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/api/node/extensionHostProcess.js
@@ -925,6 +923,11 @@
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/extensions/browser/media/theme-icon.png
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/externalTerminal/node/TerminalHelper.scpt
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/externalTerminal/node/iTermHelper.scpt
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/issue/electron-sandbox/issueReporter.html
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/issue/electron-sandbox/issueReporter.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/issue/electron-sandbox/issueReporterMain.css
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/issue/electron-sandbox/issueReporterMain.js
+/usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/issue/electron-sandbox/issueReporterMain.nls.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/notebook/common/services/notebookSimpleWorker.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/notebook/common/services/notebookSimpleWorker.nls.js
 /usr/local/VSCodium-linux-arm/resources/app/out/vs/workbench/contrib/output/common/outputLinkComputer.js
