@@ -2373,8 +2373,6 @@
 /usr/local/lib/python3.12/lib-dynload/_csv.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/_ctypes.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/_ctypes_test.cpython-312-i386-linux-gnu.so
-/usr/local/lib/python3.12/lib-dynload/_curses.cpython-312-i386-linux-gnu.so
-/usr/local/lib/python3.12/lib-dynload/_curses_panel.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/_datetime.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/_dbm.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/_decimal.cpython-312-i386-linux-gnu.so
@@ -2437,9 +2435,9 @@
 /usr/local/lib/python3.12/lib-dynload/xxsubtype.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib-dynload/zlib.cpython-312-i386-linux-gnu.so
 /usr/local/lib/python3.12/lib2to3/Grammar.txt
-/usr/local/lib/python3.12/lib2to3/Grammar3.12.3.final.0.pickle
+/usr/local/lib/python3.12/lib2to3/Grammar3.12.4.final.0.pickle
 /usr/local/lib/python3.12/lib2to3/PatternGrammar.txt
-/usr/local/lib/python3.12/lib2to3/PatternGrammar3.12.3.final.0.pickle
+/usr/local/lib/python3.12/lib2to3/PatternGrammar3.12.4.final.0.pickle
 /usr/local/lib/python3.12/lib2to3/__init__.py
 /usr/local/lib/python3.12/lib2to3/__main__.py
 /usr/local/lib/python3.12/lib2to3/__pycache__/__init__.cpython-312.opt-1.pyc
@@ -5243,6 +5241,9 @@
 /usr/local/lib/python3.12/test/__pycache__/test_webbrowser.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/__pycache__/test_webbrowser.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/__pycache__/test_webbrowser.cpython-312.pyc
+/usr/local/lib/python3.12/test/__pycache__/test_winapi.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/__pycache__/test_winapi.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/__pycache__/test_winapi.cpython-312.pyc
 /usr/local/lib/python3.12/test/__pycache__/test_winconsoleio.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/__pycache__/test_winconsoleio.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/__pycache__/test_winconsoleio.cpython-312.pyc
@@ -6144,6 +6145,9 @@
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_misc.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_misc.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_misc.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_run.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_run.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_capi/__pycache__/test_run.cpython-312.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_set.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_set.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/test_capi/__pycache__/test_set.cpython-312.pyc
@@ -6175,6 +6179,7 @@
 /usr/local/lib/python3.12/test/test_capi/test_long.py
 /usr/local/lib/python3.12/test/test_capi/test_mem.py
 /usr/local/lib/python3.12/test/test_capi/test_misc.py
+/usr/local/lib/python3.12/test/test_capi/test_run.py
 /usr/local/lib/python3.12/test/test_capi/test_set.py
 /usr/local/lib/python3.12/test/test_capi/test_structmembers.py
 /usr/local/lib/python3.12/test/test_capi/test_sys.py
@@ -6948,6 +6953,22 @@
 /usr/local/lib/python3.12/test/test_import/data/package2/__pycache__/submodule2.cpython-312.pyc
 /usr/local/lib/python3.12/test/test_import/data/package2/submodule1.py
 /usr/local/lib/python3.12/test/test_import/data/package2/submodule2.py
+/usr/local/lib/python3.12/test/test_import/data/package3/__init__.py
+/usr/local/lib/python3.12/test/test_import/data/package3/__pycache__/__init__.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_import/data/package3/__pycache__/__init__.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_import/data/package3/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_import/data/package3/__pycache__/submodule.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_import/data/package3/__pycache__/submodule.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_import/data/package3/__pycache__/submodule.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_import/data/package3/submodule.py
+/usr/local/lib/python3.12/test/test_import/data/package4/__init__.py
+/usr/local/lib/python3.12/test/test_import/data/package4/__pycache__/__init__.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_import/data/package4/__pycache__/__init__.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_import/data/package4/__pycache__/__init__.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_import/data/package4/__pycache__/submodule.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/test_import/data/package4/__pycache__/submodule.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/test_import/data/package4/__pycache__/submodule.cpython-312.pyc
+/usr/local/lib/python3.12/test/test_import/data/package4/submodule.py
 /usr/local/lib/python3.12/test/test_import/data/unwritable/__init__.py
 /usr/local/lib/python3.12/test/test_import/data/unwritable/__pycache__/__init__.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/test_import/data/unwritable/__pycache__/__init__.cpython-312.opt-2.pyc
@@ -8245,6 +8266,7 @@
 /usr/local/lib/python3.12/test/test_weakref.py
 /usr/local/lib/python3.12/test/test_weakset.py
 /usr/local/lib/python3.12/test/test_webbrowser.py
+/usr/local/lib/python3.12/test/test_winapi.py
 /usr/local/lib/python3.12/test/test_winconsoleio.py
 /usr/local/lib/python3.12/test/test_winreg.py
 /usr/local/lib/python3.12/test/test_winsound.py
@@ -8388,6 +8410,9 @@
 /usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module6.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module6.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module6.cpython-312.pyc
+/usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module695.cpython-312.opt-1.pyc
+/usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module695.cpython-312.opt-2.pyc
+/usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module695.cpython-312.pyc
 /usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module7.cpython-312.opt-1.pyc
 /usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module7.cpython-312.opt-2.pyc
 /usr/local/lib/python3.12/test/typinganndata/__pycache__/ann_module7.cpython-312.pyc
@@ -8407,6 +8432,7 @@
 /usr/local/lib/python3.12/test/typinganndata/ann_module4.py
 /usr/local/lib/python3.12/test/typinganndata/ann_module5.py
 /usr/local/lib/python3.12/test/typinganndata/ann_module6.py
+/usr/local/lib/python3.12/test/typinganndata/ann_module695.py
 /usr/local/lib/python3.12/test/typinganndata/ann_module7.py
 /usr/local/lib/python3.12/test/typinganndata/ann_module8.py
 /usr/local/lib/python3.12/test/typinganndata/ann_module9.py
