@@ -508,7 +508,7 @@
 /usr/local/share/man/man3/item_term.3x.zst
 /usr/local/share/man/man3/item_userptr.3x.zst
 /usr/local/share/man/man3/item_value.3x.zst
-/usr/local/share/man/man3/item_visible.zst
+/usr/local/share/man/man3/item_visible.3x.zst
 /usr/local/share/man/man3/key_defined.3x.zst
 /usr/local/share/man/man3/key_defined_sp.3x.zst
 /usr/local/share/man/man3/key_name.3x.zst

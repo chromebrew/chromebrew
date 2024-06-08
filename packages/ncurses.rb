@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Ncurses < Autotools
   description 'The ncurses (new curses) library is a free software emulation of curses in System V Release 4.0 (SVr4), and more. — Wide character'
   homepage 'https://www.gnu.org/software/ncurses/'
-  version '6_5_20240427'
+  version '6_5_20240601'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/ThomasDickey/ncurses-snapshots.git'
@@ -14,10 +14,10 @@ class Ncurses < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '93cc87c69c7f16376522fa22ae1f9a9c0f7621c08b78c61f1065cd0e199d0b9e',
-     armv7l: '93cc87c69c7f16376522fa22ae1f9a9c0f7621c08b78c61f1065cd0e199d0b9e',
-       i686: '8946536e0fd0a3c0e78bfd8c4b63381142ea00ba501eaa453b1a48b55ff4f23b',
-     x86_64: 'a9d0625c43841f85c27d4be4a9f4e347c1b372631f52a27337b378d629a27da9'
+    aarch64: '7ac860a7fa562cd70f74bf68a39b37aef9413f86c77b26b74255771bc729f80c',
+     armv7l: '7ac860a7fa562cd70f74bf68a39b37aef9413f86c77b26b74255771bc729f80c',
+       i686: 'bcf7897ca411ef693f37623f1d7aaa16484bbc3468c3b910dbfbf3fe71849a24',
+     x86_64: '9a8e253b28f6223171621e6723e58909b6757bc9dc5eac48a2e18b2c06d18faa'
   })
 
   depends_on 'gcc_lib' # R
