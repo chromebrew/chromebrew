@@ -3,22 +3,23 @@ require 'package'
 class Vscodium < Package
   description 'VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.'
   homepage 'https://vscodium.com/'
-  version '1.89.1.24130'
+  version '1.90.0.24158'
   license 'MIT'
   compatibility 'aarch64,armv7l,x86_64'
   case ARCH
   when 'aarch64', 'armv7l'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-armhf-#{version}.tar.gz"
-    source_sha256 '6baaa3efe2d6c64e258177af22ed53509e167bd096002d34500b9ddb40d6e10e'
+    source_sha256 '4ab0243b0901eb8718fbb370657218588ab1492b5dea09cdd17b20ff7298e6a6'
     @arch = 'arm'
   when 'x86_64'
     source_url "https://github.com/VSCodium/vscodium/releases/download/#{version}/VSCodium-linux-x64-#{version}.tar.gz"
-    source_sha256 '818f6759fde29e8b188f6535b7eeec5e694a0b89871938c634964246d1e2ac35'
+    source_sha256 '6b7b7e0333b455c77adba7a6c4f7c1d1c0138d717ba65216ae4b5b0d9bdaaffe'
     @arch = 'x64'
   end
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
+  depends_on 'cairo' # R
   depends_on 'cups' # R
   depends_on 'dbus' # R
   depends_on 'expat' # R
@@ -27,6 +28,7 @@ class Vscodium < Package
   depends_on 'glib' # R
   depends_on 'gtk3' # R
   depends_on 'harfbuzz' # R
+  depends_on 'krb5' # R
   depends_on 'libdrm' # R
   depends_on 'libx11' # R
   depends_on 'libxcb' # R
