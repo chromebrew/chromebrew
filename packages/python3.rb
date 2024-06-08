@@ -3,18 +3,18 @@ require 'package'
 class Python3 < Package
   description 'Python is a programming language that lets you work quickly and integrate systems more effectively.'
   homepage 'https://www.python.org/'
-  version '3.12.3'
+  version '3.12.4'
   license 'PSF-2.0'
   compatibility 'all'
   source_url "https://www.python.org/ftp/python/#{version}/Python-#{version}.tar.xz"
-  source_sha256 '56bfef1fdfc1221ce6720e43a661e3eb41785dd914ce99698d8c7896af4bdaa1'
+  source_sha256 'f6d419a6d8743ab26700801b4908d26d97e8b986e14f95de31b32de2b0e79554'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3c358bc97f0869d247c7487629bce7c3711031dede1a130b8f65efe246137f9',
-     armv7l: 'b3c358bc97f0869d247c7487629bce7c3711031dede1a130b8f65efe246137f9',
-       i686: 'f626b534e95e18da7672e4cb7898e49d992e1ed81b5c87a1a9f34a401d4d8413',
-     x86_64: '94b8ad4a0cfd9822952d197795ba2c99b8e1230dc200211a19390a518bec24c0'
+    aarch64: 'f0bfcd80509e4033c28b3382f3a416b83dcde5efbdcbd7052ca49a7b8269bc7b',
+     armv7l: 'f0bfcd80509e4033c28b3382f3a416b83dcde5efbdcbd7052ca49a7b8269bc7b',
+       i686: '44905c28ef097fe5cbeb44410bd0d36694dbfb4f417c1ae4662d09e0f0a17bd6',
+     x86_64: 'c3c7fdb3017d800b45858863d19641e86ca608aedc3e60a45b6454b18d3f8951'
   })
 
   depends_on 'autoconf_archive' => :build
@@ -64,7 +64,6 @@ class Python3 < Package
   end
 
   def self.build
-    @cppflags = "-I#{CREW_PREFIX}/include/ncursesw"
     # Using /tmp breaks test_distutils, test_subprocess.
     # Proxy setting breaks test_httpservers, test_ssl,
     # test_urllib, test_urllib2, test_urllib2_localnet.
@@ -74,9 +73,7 @@ class Python3 < Package
 
     FileUtils.mkdir_p 'builddir'
     Dir.chdir 'builddir' do
-      system CREW_ENV_OPTIONS_HASH.transform_values { |v|
-               "#{v} #{@cppflags}"
-             }, "LD_LIBRARY_PATH=#{CREW_LIB_PREFIX} ../configure #{CREW_OPTIONS} \
+      system "../configure #{CREW_OPTIONS} \
           --with-lto \
           --with-computed-gotos \
           --enable-loadable-sqlite-extensions \
@@ -88,7 +85,7 @@ class Python3 < Package
           --with-tzpath=#{CREW_PREFIX}/share/zoneinfo \
           --with-libc= \
           --enable-shared"
-      system 'mold -run make'
+      system "MAKEFLAGS=-j#{CREW_NPROC} mold -run make"
       File.write 'python_config_env', <<~PYTHON_CONFIG_EOF
         # Force use of python3 over python2.7 in packages which check the variable to set the python used.
         PYTHON=python3

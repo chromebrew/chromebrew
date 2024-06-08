@@ -3,18 +3,19 @@ require 'package'
 class Ruby < Package
   description 'Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.'
   homepage 'https://www.ruby-lang.org/en/'
-  version '3.3.2' # Do not use @_ver here, it will break the installer.
+  version '3.3.2-d0327a7' # Do not use @_ver here, it will break the installer.
   license 'Ruby-BSD and BSD-2'
   compatibility 'all'
   source_url 'https://github.com/ruby/ruby.git'
-  git_hashtag "v#{version.gsub('.', '_')}"
+  git_hashtag 'd0327a7224d8d778a75c7554b287369895dc17be'
+  # git_hashtag "v#{version.gsub('.', '_')}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '04a4d8f4aeace76c4591f9e9938ad9cd3ef8fb4dcaacc3fefcae5b24cd58d442',
-     armv7l: '04a4d8f4aeace76c4591f9e9938ad9cd3ef8fb4dcaacc3fefcae5b24cd58d442',
-       i686: '4be5ce0267aae23064bb49e638cfd6947f6218cd4aadb95124664ac3ba39dd32',
-     x86_64: '1b2ca2376ee68605a047a0089db5933e08274920792915a82cfd034fadbac9db'
+    aarch64: '93ab7050120ce2e9ca28052c1d07ef106277f5a0761cf4e987290204e0f022bc',
+     armv7l: '93ab7050120ce2e9ca28052c1d07ef106277f5a0761cf4e987290204e0f022bc',
+       i686: 'a0d26574ae95a8eaaef82c28ae100d1e9cdc705b814fb2c46cf7531ace766c4c',
+     x86_64: '1954de382c393bf121966f1956d8b7d97bed942bfb60af88c0c4ace14f065208'
   })
 
   depends_on 'ca_certificates' # L
@@ -31,16 +32,6 @@ class Ruby < Package
   conflicts_ok # Needed for successful build.
 
   # at run-time, system's gmp, openssl, and zlibpkg can be used
-
-  def self.patch
-    return if ARCH == 'x86_64'
-
-    # Address 32-bit compatibility issue as per
-    # https://bugs.ruby-lang.org/issues/20447
-    # and also https://bugs.gentoo.org/932841
-    downloader 'https://github.com/ruby/ruby/pull/10332.patch', '293d89bb274407ad825941d8f4ea4bce81bace93281e1e069f0a715607ecd405'
-    system 'patch -Np1 -i 10332.patch'
-  end
 
   def self.build
     system '[ -x configure ] || autoreconf -fiv'
