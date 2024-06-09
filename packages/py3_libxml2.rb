@@ -4,19 +4,18 @@ require_relative 'libxml2'
 class Py3_libxml2 < Package
   description 'Libxml2-python provides access to libxml2 and libxslt in Python.'
   homepage 'https://gitlab.gnome.org/GNOME/libxml2/'
-  @_ver = '2.12.6'
-  version "#{@_ver}-py3.12"
+  version '2.12.7-py3.12'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.12.6/libxml2-v2.12.6.tar.bz2'
-  source_sha256 '69f08b81d4532d285ceea4cdb017eb2d948cb87c34c1d64248a92be90e84132d'
+  source_url 'https://gitlab.gnome.org/GNOME/libxml2.git'
+  git_hashtag "v#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '184d08edd2da472b487106c76f1d1c75dc51a86aedac96e98e1467271212586c',
-     armv7l: '184d08edd2da472b487106c76f1d1c75dc51a86aedac96e98e1467271212586c',
-       i686: 'ce58730a3847da9c47fed7c8bdb43896f37f87cc6def491bd9713e159e6a23d6',
-     x86_64: '2fa962314843cee4a38493dca25bc431b1ce53443063533a127fa7cb4a4dc536'
+    aarch64: 'a850d514b0c2174eb234e5044f715ad3c3be1ca85a64995dcb7aa5892eccfa4c',
+     armv7l: 'a850d514b0c2174eb234e5044f715ad3c3be1ca85a64995dcb7aa5892eccfa4c',
+       i686: '013ccaed40b886e054a0351180c016d8ade6dafdd572499871ba7b45075775cd',
+     x86_64: '456edd3f290f759a30b49e875e8e40bea9351702a07170c55329ed1c19cbb3f7'
   })
 
   depends_on 'glibc' # R
