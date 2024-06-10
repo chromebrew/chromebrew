@@ -125,7 +125,6 @@ fi
 echo_success "Welcome to Chromebrew!"
 
 # Prompt user to enter the sudo password if it is set.
-# If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
 if [ -f /mnt/stateful_partition/etc/devmode.passwd ]; then
   echo_intra "Please enter the developer mode password."
   # Reset sudo timeout.
