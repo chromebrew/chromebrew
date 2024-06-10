@@ -5,12 +5,19 @@ class Py3_mercurial < Pip
   homepage 'https://www.mercurial-scm.org/'
   version '6.7.3'
   license 'GPL-2+'
-  compatibility 'all'
+  compatibility 'x86_64 aarch64 armv7l'
   source_url 'SKIP'
+  binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+    aarch64: '16fd75bc6e57d5053b7d050471fdca3272c3311dfac61ae3674de6268128f7f8',
+     armv7l: '16fd75bc6e57d5053b7d050471fdca3272c3311dfac61ae3674de6268128f7f8',
+     x86_64: 'ddc550c75c3f169a4f5737b4932b1c8bf573fb19b768015609718a9fee33a07d'
+  })
 
-  depends_on 'buildessential' # R
+  no_source_build
+
+  depends_on 'buildessential' => :build
   depends_on 'glibc' # R
   depends_on 'py3_docutils' => :build
   depends_on 'python3' # L
