@@ -287,6 +287,7 @@
 /usr/local/lib/libm.so
 /usr/local/lib/libm.so.6
 /usr/local/lib/libmemusage.so
+/usr/local/lib/libmvec.so.1
 /usr/local/lib/libnsl.so.2
 /usr/local/lib/libnss_compat.so
 /usr/local/lib/libnss_compat.so.2
