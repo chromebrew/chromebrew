@@ -25,18 +25,19 @@ fi
 # Reject crostini.
 if [[ -d /opt/google/cros-containers && "${CREW_FORCE_INSTALL}" != '1' ]]; then
   echo_error "Crostini containers are not supported by Chromebrew :/"
-  echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway"
+  echo_info "Run 'CREW_FORCE_INSTALL=1 bash <(curl -L git.io/vddgY) && . ~/.bashrc' to perform install anyway"
   exit 1
 fi
 
 # Reject non-stable Chrome OS channels.
 if [ -f /etc/lsb-release ]; then
-  if [[ ! "$(< /etc/lsb-release)" =~ CHROMEOS_RELEASE_TRACK=stable-channel$'\n' && "${CREW_FORCE_INSTALL}" != '1' ]]; then
+  export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
+
+  if ! (grep -q 'CHROMEOS_RELEASE_TRACK=stable-channel' /etc/lsb-release || [[ "${CREW_FORCE_INSTALL}" == '1' ]]); then
     echo_error "The beta, dev, and canary channel are unsupported by Chromebrew."
     echo_info "Run 'CREW_FORCE_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)' to perform install anyway."
     exit 1
   fi
-  export "$(grep CHROMEOS_RELEASE_CHROME_MILESTONE /etc/lsb-release)"
 else
   echo_info "Unable to detect system information, installation will continue."
 fi
@@ -44,7 +45,7 @@ fi
 # Check if the user owns the CREW_PREFIX directory, as sudo is unnecessary if this is the case.
 # Check if the user is on ChromeOS v117+ and not in the VT-2 console, as sudo will not work.
 : "${CREW_PREFIX:=/usr/local}"
-if [[ "$(stat -c '%u' "${CREW_PREFIX}")" == "$(id -u)" ]] && sudo 2>&1 | grep -q 'no new privileges'; then
+if [ ！ -O "${CREW_PREFIX}" ] && grep -q 'NoNewPrivs:\s*1' /proc/$$/status; then
   echo_error "Please run the installer in the VT-2 shell."
   echo_info "To start the VT-2 session, type Ctrl + Alt + ->"
   exit 1
@@ -70,9 +71,9 @@ else
 fi
 
 # Do not redundantly use sudo if the user already owns the directory.
-if [ "$(stat -c '%u' "${CREW_PREFIX}")" != "$(id -u)" ]; then
+if [ ! -O "${CREW_PREFIX}" ]; then
   # This will allow things to work without sudo.
-  sudo chown "$(id -u)":"$(id -g)" "${CREW_PREFIX}"
+  sudo chown "${EUID}:${EUID}" "${CREW_PREFIX}"
 fi
 
 # Default chromebrew repo values.
@@ -96,7 +97,7 @@ CREW_DEST_DIR="${CREW_BREW_DIR}/dest"
 # For container usage, when we are emulating armv7l via linux32, where uname -m will report armv8l.
 # Additionally, if the architecture is aarch64, set it to armv7l, as we treat as if it was armv7l.
 # When we have proper support for aarch64, remove this.
-if [[ "${ARCH}" = "armv8l" ]] || [[ "${ARCH}" = "aarch64" ]]; then
+if [[ "${ARCH}" == "armv8l" || "${ARCH}" == "aarch64" ]]; then
   ARCH='armv7l'
 fi
 
@@ -105,12 +106,12 @@ if [[ "$ARCH" == "x86_64" ]]; then
 fi
 
 # Package version string may include LIBC_VERSION.
-LIBC_VERSION=$(/lib"$LIB_SUFFIX"/libc.so.6 2>/dev/null | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')
+LIBC_VERSION="$(/lib"$LIB_SUFFIX"/libc.so.6 | awk 'match($0, /Gentoo ([^-]+)/) {print substr($0, RSTART+7, RLENGTH-7)}')"
 
 # Warn users of the AMD segfault issue and allow them to work around it.
 # The easiest way to distinguish StoneyRidge platorms is to check for the FMA4
 # instruction, as it was first introduced in Bulldozer and later dropped in Zen.
-if grep -s "fma4" /proc/cpuinfo ; then
+if grep -q "fma4" /proc/cpuinfo; then
   echo_info "Notice: You are running an AMD StoneyRidge device; due to some bugs some packages may fail with a segmentation fault and need to be rebuilt."
   echo_info "If this happens, please report them to: https://github.com/chromebrew/chromebrew/issues"
   echo_info "If the install fails, try running 'CREW_AMD_INSTALL=1 exec bash --init-file <(curl -Ls git.io/vddgY)'"
@@ -125,15 +126,19 @@ echo_success "Welcome to Chromebrew!"
 
 # Prompt user to enter the sudo password if it is set.
 # If the PASSWD_FILE specified by chromeos-setdevpasswd exist, that means a sudo password is set.
-if [[ "$(< /usr/sbin/chromeos-setdevpasswd)" =~ PASSWD_FILE=\'([^\']+) ]] && [ -f "${BASH_REMATCH[1]}" ]; then
+if [ -f /mnt/stateful_partition/etc/devmode.passwd ]; then
   echo_intra "Please enter the developer mode password."
   # Reset sudo timeout.
   sudo -k
   sudo /bin/true
 fi
 
-# Force curl to use system libraries.
-function curl () {
+# Force all system binaries NOT to use chromebrew libraries to prevent any compatibility issues
+for exe in /bin/* /usr/bin/*; do
+  alias "${exe##*/}=/usr/bin/env -u LD_LIBRARY_PATH ${exe}"
+done
+
+function curl_wrapper () {
   # Retry if download failed.
   # The --retry/--retry-all-errors parameter in curl will not work with
   # the 'curl: (7) Couldn't connect to server' error, a for loop is used
@@ -164,7 +169,7 @@ crew_folders="bin cache doc docbook include lib/crew/packages lib$LIB_SUFFIX lib
 find "${CREW_LIB_PATH}" -mindepth 1 -delete
 
 # Download the chromebrew repository.
-curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
+curl_wrapper -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH}" | tar -xz --strip-components=1 -C "${CREW_LIB_PATH}"
 
 BOOTSTRAP_PACKAGES='zstd crew_mvdir ruby git ca_certificates libyaml openssl'
 
@@ -176,8 +181,8 @@ if [[ -n "${CHROMEOS_RELEASE_CHROME_MILESTONE}" ]]; then
   for i in /lib$LIB_SUFFIX/libc.so*
   do
     sudo cp "$i" "$CREW_PREFIX/lib$LIB_SUFFIX/"
-    libcname=$(basename "$i")
-    sudo chown chronos "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
+    libcname="${i##*/}"
+    sudo chown "${EUID}" "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
     sudo chmod 644 "$CREW_PREFIX/lib$LIB_SUFFIX/${libcname}"
   done
   if (( "${CHROMEOS_RELEASE_CHROME_MILESTONE}" > "112" )); then
@@ -206,7 +211,7 @@ jq --arg key0 'architecture' --arg value0 "${ARCH}" \
 function download_check () {
     cd "$CREW_BREW_DIR"
     # Use cached file if available and caching is enabled.
-    if [ -n "$CREW_CACHE_ENABLED" ] && [[ -f "$CREW_CACHE_DIR/${3}" ]] ; then
+    if [[ -n "$CREW_CACHE_ENABLED" && -f "$CREW_CACHE_DIR/${3}" ]] ; then
       mkdir -p "$CREW_CACHE_DIR"
       sudo chown -R "$(id -u)":"$(id -g)" "$CREW_CACHE_DIR" || true
       echo_intra "Verifying cached ${1}..."
@@ -222,18 +227,18 @@ function download_check () {
     fi
     # Download
     echo_intra "Downloading ${1}..."
-    curl '-#' -L "${2}" -o "${3}"
+    curl_wrapper '-#' -L "${2}" -o "${3}"
 
     # Verify
     echo_intra "Verifying ${1}..."
-    if echo "${4}" "${3}" | sha256sum -c - ; then
+    if sha256sum -c - <<< "${4} ${3}" ; then
       if [ -n "$CREW_CACHE_ENABLED" ] ; then
         cp "${3}" "$CREW_CACHE_DIR/${3}" || true
       fi
       echo_success "Verification of ${1} succeeded."
       return 0
     else
-      if [[ ${5} -lt 2 ]]; then
+      if (( ${5} < 2 )); then
         echo_error "Verification of ${1} failed, something may be wrong with the download."
         exit 1
       else
@@ -283,10 +288,10 @@ for package in $BOOTSTRAP_PACKAGES; do
   fi
 
   url="https://gitlab.com/api/v4/projects/26210301/packages/generic/${package}/${version}_${ARCH}/${package}-${version}-chromeos-${ARCH}.${binary_compression}"
-  tarfile=$(basename "${url}")
+  tarfile="${url##*/}"
 
   sha256=$(sed -n "s/.*${ARCH}: '\([^']*\)'.*/\1/p" "${package}.rb")
-  shacount=$(echo "$sha256" | wc -w)
+  shacount=$(wc -w <<< "$sha256")
   for sha in $sha256
   do
     if download_check "${package}" "${url}" "${tarfile}" "${sha}" "${shacount}"; then
@@ -304,14 +309,6 @@ echo_out "\nCreating symlink to 'crew' in ${CREW_PREFIX}/bin/"
 ln -sfv "../lib/crew/bin/crew" "${CREW_PREFIX}/bin/"
 
 echo_out "Set up and synchronize local package repo..."
-
-# Set LD_LIBRARY_PATH so crew doesn't break on i686, xz doesn't fail on
-# x86_64, and the mandb postinstall doesn't fail in newer arm
-# containers.
-echo "LD_LIBRARY_PATH=$CREW_PREFIX/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}" >> "$CREW_PREFIX"/etc/env.d/00-library
-export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}:/lib${LIB_SUFFIX}"
-
-echo "export CREW_PREFIX=${CREW_PREFIX}" >> "${CREW_PREFIX}/etc/env.d/profile"
 
 # Install activesupport gem for ruby
 echo_info 'Installing essential ruby gems.'
