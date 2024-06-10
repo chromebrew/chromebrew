@@ -134,6 +134,7 @@ if [ -f /mnt/stateful_partition/etc/devmode.passwd ]; then
 fi
 
 # Force all system binaries NOT to use chromebrew libraries to prevent any compatibility issues
+# shellcheck disable=SC2139
 for exe in /bin/* /usr/bin/*; do
   alias "${exe##*/}=/usr/bin/env -u LD_LIBRARY_PATH ${exe}"
 done
