@@ -10,6 +10,7 @@ class Py3_mercurial < Pip
 
   no_compile_needed
 
+  depends_on 'buildessential' # R
   depends_on 'glibc' # R
   depends_on 'py3_docutils' => :build
   depends_on 'python3' # L
