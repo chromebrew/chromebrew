@@ -3,18 +3,18 @@ require 'package'
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
   homepage 'http://www.qemu.org/'
-  version '9.0.0'
+  version '9.0.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  min_glibc '2.36'
+  min_glibc '2.37'
   source_url 'https://github.com/qemu/qemu.git'
   git_hashtag "v#{version}"
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b3d3bf80bfc47a8c3c207491ae550772b7dc59c3c97a2dbf72cec5a340689575',
-     armv7l: 'b3d3bf80bfc47a8c3c207491ae550772b7dc59c3c97a2dbf72cec5a340689575',
-     x86_64: 'fa0ff88c69b94de74613314eae40edf6b15979fa16aa595060a72a2d73898ef7'
+    aarch64: '6530e066035a5c4ee126d6fa551d0584b689efe66383dd65e2257e602bffbb03',
+     armv7l: '6530e066035a5c4ee126d6fa551d0584b689efe66383dd65e2257e602bffbb03',
+     x86_64: '2083f78486480bdb1d476d4a0fff0845c664abc71ccbd50e1e4847fb30300edb'
   })
 
   depends_on 'alsa_lib' # R
