@@ -26,6 +26,6 @@ jobs:
           add-paths: "tools/repology.json"
           title: "Update Repology JSON"
           body: "Automatic PR to update tools/repology.json"
-          author: "github-actions[bot]"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           commit-message: "Update Repology JSON"
           delete-branch: true
