@@ -3,7 +3,7 @@ require 'package'
 class Cups < Package
   description 'CUPS is the standards-based, open source printing system'
   homepage 'https://github.com/OpenPrinting/cups'
-  version '2.4.8'
+  version '2.4.9'
   compatibility 'all'
   license 'Apache-2.0'
   source_url 'https://github.com/OpenPrinting/cups.git'
@@ -11,10 +11,10 @@ class Cups < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f4e221fadb9634281a690bf0f11495ec40d251505750407887cfbfd624231338',
-     armv7l: 'f4e221fadb9634281a690bf0f11495ec40d251505750407887cfbfd624231338',
-       i686: 'ccc5f7e3c9441925bf37f17459992b7ac1c002d6d3e7ee9690df0133c68f905b',
-     x86_64: 'f645b78c8ad3d27f26b78bf38665f402e5dc5d5ec33517bbcf8c427b86c4c176'
+    aarch64: '7a2de6ebd31c3c07dd0313e59e8542c0e147bede5f2ebefeb6742dea2c88b156',
+     armv7l: '7a2de6ebd31c3c07dd0313e59e8542c0e147bede5f2ebefeb6742dea2c88b156',
+       i686: '9f0ea4ebd1cf252e61eddb4847ebc7d53b7f5cf939214931a28d3c740d68d25e',
+     x86_64: '3304d8da1d3d81c05c47a87e1999e6012341a4509b9f69ef820e7ccb33ed8512'
   })
 
   depends_on 'acl' # R
@@ -97,8 +97,12 @@ class Cups < Package
   end
 
   def self.postinstall
-    puts "\nTo start the cups daemon, run 'startcupsd'".lightblue
-    puts "To stop the cups daemon, run 'stopcupsd'\n".lightblue
-    puts "For more information, see https://www.cups.org/doc/admin.html.\n".lightblue
+    ExitMessage.add <<~EOM.lightblue
+
+      To start the cups daemon, run 'startcupsd'
+      To stop the cups daemon, run 'stopcupsd'
+      For more information, see https://www.cups.org/doc/admin.html.
+
+    EOM
   end
 end
