@@ -3,7 +3,7 @@ require 'package'
 class Perl_date_format < Package
   description 'Date formatting subroutines'
   homepage 'https://metacpan.org/pod/Date::Format'
-  version '2.33-perl5.38'
+  version '2.33-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.33.tar.gz'
@@ -32,6 +32,6 @@ class Perl_date_format < Package
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
 
     # Conflict with perl_xml_parser package.
-    # FileUtils.rm "#{CREW_PREFIX}/lib/perl5/site_perl/5.32.1/Date/Language/Amharic.pm"
+    # FileUtils.rm "#{CREW_PREFIX}/lib/perl5/site_perl/5.40.0/Date/Language/Amharic.pm"
   end
 end

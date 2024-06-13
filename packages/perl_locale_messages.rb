@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_locale_messages < PERL
   description 'Perl Locale::Messages - Gettext Like Message Retrieval'
   homepage 'https://metacpan.org/pod/Locale::Messages'
-  version '1.33-perl5.38.2'
+  version '1.33-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.33.tar.gz'

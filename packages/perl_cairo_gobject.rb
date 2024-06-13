@@ -3,7 +3,7 @@ require 'package'
 class Perl_cairo_gobject < Package
   description 'Integrate Cairo into the Glib type system'
   homepage 'https://metacpan.org/pod/Cairo::GObject'
-  version '1.005-perl5.38'
+  version '1.005-perl5.40'
   license 'GPL 2.1'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/Cairo-GObject-1.005.tar.gz'

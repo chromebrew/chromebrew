@@ -3,7 +3,7 @@ require 'package'
 class Perl_extutils_pkgconfig < Package
   description 'Simplistic interface to pkg-config'
   homepage 'https://metacpan.org/pod/ExtUtils::PkgConfig'
-  version '1.16-perl5.38'
+  version '1.16-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/ExtUtils-PkgConfig-1.16.tar.gz'

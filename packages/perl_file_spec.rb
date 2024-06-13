@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_file_spec < PERL
   description 'Portably perform operations on file names'
   homepage 'https://metacpan.org/pod/File::Spec'
-  version '3.75-perl5.38.2'
+  version '3.75-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XS/XSAWYERX/PathTools-3.75.tar.gz'

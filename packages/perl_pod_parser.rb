@@ -3,19 +3,12 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.66-perl5.38'
+  version '1.67-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.66.tar.gz'
-  source_sha256 '22928a7bffe61b452c05bbbb8f5216d4b9cf9fe2a849b776c25500d24d20df7c'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.67.tar.gz'
+  source_sha256 '5deccbf55d750ce65588cd211c1a03fa1ef3aaa15d1ac2b8d85383a42c1427ea'
   binary_compression 'tar.zst'
-
-  binary_sha256({
-    aarch64: 'a2d19bbbe90f2e1fc2351ea802b54280f2bddc056e82ab4053a480358fd6d94f',
-     armv7l: 'a2d19bbbe90f2e1fc2351ea802b54280f2bddc056e82ab4053a480358fd6d94f',
-       i686: '192b40849f3605f6eec343f5844b63a7e1e1d80f3f43168f9a85e07dc75a44a7',
-     x86_64: 'bb811d28f6789592e2116900f86fc23b2cda4c223e66c1b6915b4facf9a13845'
-  })
 
   def self.prebuild
     system 'perl', 'Makefile.PL'

@@ -3,19 +3,12 @@ require 'package'
 class Perl_io_file < Package
   description 'Supply object methods for filehandles'
   homepage 'https://metacpan.org/pod/IO::File'
-  version '1.51-perl5.38.2'
+  version '1.55_01-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.51.tar.gz'
-  source_sha256 '5493ea55998728cd2b7ecb8234c58fb5d5df27098d0f07addca22444d7616ce0'
+  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.55_01.tar.gz'
+  source_sha256 '6f51f8dc75c9fa42b1dcd8194575f21f7e0353136a4c9b36e27da1fbeb698074'
   binary_compression 'tar.zst'
-
-  binary_sha256({
-    aarch64: 'b79d39077e19f447cc7c0996ed050f1307c5634cceb6f99ecccccb575298715d',
-     armv7l: 'b79d39077e19f447cc7c0996ed050f1307c5634cceb6f99ecccccb575298715d',
-       i686: 'b510368393e30af7855e0e4e34ff4b973bacb308d72e6a18d38a331ed3e0020a',
-     x86_64: 'bafe351f413e47c1e877938c5679d07f46c68610868c4fb18a36337e1587d345'
-  })
 
   depends_on 'perl_file_temp' => :build
   depends_on 'glibc' # R

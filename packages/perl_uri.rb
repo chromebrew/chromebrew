@@ -3,7 +3,7 @@ require 'package'
 class Perl_uri < Package
   description 'Uniform Resource Identifiers (absolute and relative)'
   homepage 'https://metacpan.org/pod/URI'
-  version '5.19-perl5.38'
+  version '5.19-perl5.40'
   license 'GPL PerlArtistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/URI-5.19.tar.gz'

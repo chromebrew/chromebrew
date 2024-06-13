@@ -3,7 +3,7 @@ require 'package'
 class Perl_module_build < Package
   description 'Module::Build - Build and install Perl modules'
   homepage 'https://metacpan.org/pod/Module::Build'
-  version '0.4234-perl5.38'
+  version '0.4234-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4234.tar.gz'

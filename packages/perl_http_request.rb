@@ -3,19 +3,12 @@ require 'package'
 class Perl_http_request < Package
   description 'HTTP style request message'
   homepage 'https://metacpan.org/pod/HTTP::Request'
-  version '6.44-perl5.38'
+  version '6.46-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.44.tar.gz'
-  source_sha256 '398b647bf45aa972f432ec0111f6617742ba32fc773c6612d21f64ab4eacbca1'
+  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.46.tar.gz'
+  source_sha256 'e27443434150d2d1259bb1e5c964429f61559b0ae34b5713090481994936e2a5'
   binary_compression 'tar.zst'
-
-  binary_sha256({
-    aarch64: '7dcb4d1b112c26610fcacc9a2a52933218bdc7dc2b8f290d5333c25d88b7d9cc',
-     armv7l: '7dcb4d1b112c26610fcacc9a2a52933218bdc7dc2b8f290d5333c25d88b7d9cc',
-       i686: '51c88a3fa2116f56c512f7b5acf9c559e6d752fe494e7d7de9a9a42f2d7439cf',
-     x86_64: 'b3ed7c867eae791237ec3d4ab6d84591bd910a0753c9ba31821c7a6db6d45006'
-  })
 
   no_compile_needed
 
