@@ -3,19 +3,18 @@ require 'package'
 class Mysqltuner < Package
   description 'MySQLTuner is a script written in Perl that allows you to review a MySQL installation quickly and make adjustments to increase performance and stability.'
   homepage 'https://github.com/major/MySQLTuner-perl'
-  version '2.2.12'
+  version '2.5.2'
   license 'GPL-3+'
   compatibility 'all'
-  source_url 'https://github.com/major/MySQLTuner-perl/archive/v2.2.12.tar.gz'
-  source_sha256 '51d7f569ec2fde5ffbe38731e79c8b113899bbf5ea200fc407c622a359b2cca4'
+  source_url 'https://github.com/major/MySQLTuner-perl.git'
+  git_hashtag "v#{version}"
 
   depends_on 'perl'
 
   no_compile_needed
 
   def self.patch
-    system "sed -i 's,2\.2\.9,#{version},g' mysqltuner.pl"
-    system "sed -i 's,/usr/bin/env perl,#{CREW_PREFIX}/bin/perl,' mysqltuner.pl"
+    system "sed -i '1i#!#{CREW_PREFIX}/bin/perl' mysqltuner.pl"
   end
 
   def self.install
