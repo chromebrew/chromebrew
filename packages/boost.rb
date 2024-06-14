@@ -6,7 +6,7 @@ class Boost < Package
   version '1.85.0-py3.12'
   license 'Boost-1.0'
   compatibility 'all'
-  source_url "https://boostorg.jfrog.io/artifactory/main/release/#{version.scan(/.+?(?=-py3)/)}/source/boost_#{version.gsub('.', '_').scan(/.+?(?=-py3)/)}.tar.bz2"
+  source_url "https://boostorg.jfrog.io/artifactory/main/release/#{version.split('-').first}/source/boost_#{version.split('-').first.gsub('.', '_')}.tar.bz2"
   source_sha256 '7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617'
   binary_compression 'tar.zst'
 
