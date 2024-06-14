@@ -11,10 +11,10 @@ class Perl < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2c1ad4b8b0da344fff07a60f6feb58cd95756e19c5b5dbd325d4bf0ae1ea4e8',
-     armv7l: 'a2c1ad4b8b0da344fff07a60f6feb58cd95756e19c5b5dbd325d4bf0ae1ea4e8',
-       i686: 'bab6f8c7bde74661d808e7c5bc5f506d0cfbdac9d40409b86f89b58b3a0ce551',
-     x86_64: '6c376747b4c8a582694cba6cd4b45949e7d8ed492462e38bc0857a38dc3113be'
+    aarch64: '43ee11b9244dfd2885617c0ebbc273aab2dfd33cdabde7c644cdaccf92008b35',
+     armv7l: '43ee11b9244dfd2885617c0ebbc273aab2dfd33cdabde7c644cdaccf92008b35',
+       i686: 'be603fbf330914eb4bb9b70c3b6ada60345db8f6a119c4b037cf3b990ae98d71',
+     x86_64: '652e84be0c6414d018d2d3d206cdb2f62bdb183cef477a0bdc601b32e97d84d7'
   })
 
   depends_on 'gdbm' # R
@@ -56,7 +56,7 @@ class Perl < Package
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so#{version.sub(/\.\d\.\d$/, '')}" # e.g., libperl.so.5
     FileUtils.ln_sf libperl_so, "#{CREW_DEST_LIB_PREFIX}/libperl.so" # e.g., libperl.so
     # Consider adding this symlink to the glibc package
-    FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
+    # FileUtils.ln_sf "#{CREW_LIB_PREFIX}/libnsl.so.1", "#{CREW_DEST_LIB_PREFIX}/libnsl.so"
     # Avoid File conflict with tcl, ocaml
     FileUtils.mv "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3", "#{CREW_DEST_MAN_PREFIX}/man3/Thread.3perl"
   end

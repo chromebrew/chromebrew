@@ -11,10 +11,10 @@ class Perl_mozilla_ca < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'f95da4ac61edaa88016e3ce836a7fbe6bc3fac5fd266e4067840d3ae6a4fc8d7',
-     armv7l: 'f95da4ac61edaa88016e3ce836a7fbe6bc3fac5fd266e4067840d3ae6a4fc8d7',
-       i686: 'd86d9a4da3ef6f8b7174f40fb6bbf26b47bf56d89b2df095f99aa1040860dbb8',
-     x86_64: 'bea0fd141dd254022d96d8d9d3879ca3b0ab13caba91cadceed01080b8aac3ac'
+    aarch64: 'dd5e175a919101f31b59cdfe5b5a417a69ec90f932dfbda1b0bc8a34c3d8ae20',
+     armv7l: 'dd5e175a919101f31b59cdfe5b5a417a69ec90f932dfbda1b0bc8a34c3d8ae20',
+       i686: '2469e94b03a6c762ce8bf0e6a91cec12174cee0f3377dc84aca55258d4b38b19',
+     x86_64: 'f232499a01c67a5c63212e77fbad67015d9c8942337b69cd72fbf569cdef6251'
   })
 
   def self.prebuild

@@ -6,7 +6,7 @@
 /usr/local/share/doc/stow/README.md
 /usr/local/share/doc/stow/manual-single.html
 /usr/local/share/doc/stow/manual-split/Bootstrapping.html
-/usr/local/share/doc/stow/manual-split/Compile_002dtime-vs-Install_002dtime.html
+/usr/local/share/doc/stow/manual-split/Compile_002dtime-vs_002e-Install_002dtime.html
 /usr/local/share/doc/stow/manual-split/Conflicts.html
 /usr/local/share/doc/stow/manual-split/Cygnus-Software.html
 /usr/local/share/doc/stow/manual-split/Deferred-Operation.html
@@ -32,6 +32,7 @@
 /usr/local/share/doc/stow/manual-split/Tree-unfolding.html
 /usr/local/share/doc/stow/manual-split/Types-And-Syntax-Of-Ignore-Lists.html
 /usr/local/share/doc/stow/manual-split/index.html
+/usr/local/share/doc/stow/manual-split/symlink.html
 /usr/local/share/doc/stow/manual-split/tree-folding.html
 /usr/local/share/doc/stow/manual-split/tree-refolding.html
 /usr/local/share/doc/stow/manual.pdf

@@ -11,10 +11,10 @@ class Perl_sgmls < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c18668defa473525aea779db1eb182554ec26d8d2f4203c4c4cc28cc673e41c8',
-     armv7l: 'c18668defa473525aea779db1eb182554ec26d8d2f4203c4c4cc28cc673e41c8',
-       i686: '7035942646548233a1e7471f26ded22199fef4623182508d00e93683eb781f5d',
-     x86_64: '65c2d87a8ce93e0ffc0e035a7dffa474a28f3fa6ca8fac98bf1384e9252c150a'
+    aarch64: '59f819d4146063577a31cba64ce9f7586664e9eeb1ea2ff3d952b87a89f7f598',
+     armv7l: '59f819d4146063577a31cba64ce9f7586664e9eeb1ea2ff3d952b87a89f7f598',
+       i686: '62a69aeeffaafefcfbbbebe3ec65d6c64f5480cf1a4113eae31e2e3d2270acbb',
+     x86_64: '6fff085bedfd64a418e582b6de1fdea3b78eb035ca55277f6f0a67096f9bcc2c'
   })
 
   depends_on 'perl_module_build' => :build
