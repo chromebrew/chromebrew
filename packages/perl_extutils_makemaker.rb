@@ -10,7 +10,12 @@ class Perl_extutils_makemaker < PERL
   source_sha256 'f108bd46420d2f00d242825f865b0f68851084924924f92261d684c49e3e7a74'
   binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+       i686: '29fc9b1b462b80bd51924f3cebe60e023c73c2065c975fc64de185cd37eef438',
+    aarch64: '7b895fed43d1e20817dffbf5168be62b6ffdc95fbd449d709200c1aa918f82ba',
+     armv7l: '7b895fed43d1e20817dffbf5168be62b6ffdc95fbd449d709200c1aa918f82ba',
+     x86_64: 'ffd86ef556961042356bca8870e3c722f368271cb218a1a3a7a4bd2904a51603'
+  })
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

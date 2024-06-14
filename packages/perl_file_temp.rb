@@ -10,7 +10,12 @@ class Perl_file_temp < PERL
   source_sha256 '2290d61bf5c39882fc3311da9ce1c7f42dbdf825ae169e552c59fe4598b36f4a'
   binary_compression 'tar.zst'
 
-  no_compile_needed
+  binary_sha256({
+       i686: '3db8451e13f1e4fbd0edf6ba9bf97a02debe6e199d19a00ef68c42141cdcbeff',
+    aarch64: '912b9db31ed2470605623fd9594761dbe75796630df848673836ad36894119dd',
+     armv7l: '912b9db31ed2470605623fd9594761dbe75796630df848673836ad36894119dd',
+     x86_64: '15e1e6f89fce08e3fc2a30612c71a9e1cb14fa1fca616d84f03446956da58923'
+  })
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
