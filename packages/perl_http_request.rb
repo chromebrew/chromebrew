@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_http_request < Package
+class Perl_http_request < PERL
   description 'HTTP style request message'
   homepage 'https://metacpan.org/pod/HTTP::Request'
   version '6.46-perl5.40'
@@ -11,17 +11,4 @@ class Perl_http_request < Package
   binary_compression 'tar.zst'
 
   no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

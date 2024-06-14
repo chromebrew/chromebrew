@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_glib_object_introspection < Package
+class Perl_glib_object_introspection < PERL
   description 'Dynamically create Perl language bindings'
   homepage 'https://metacpan.org/pod/Glib::Object::Introspection'
   version '0.051-perl5.40'
@@ -18,16 +18,5 @@ class Perl_glib_object_introspection < Package
   depends_on 'libffi' # R
   depends_on 'gcc_lib' # R
 
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
+  no_compile_needed
 end

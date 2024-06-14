@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_cairo_gobject < Package
+class Perl_cairo_gobject < PERL
   description 'Integrate Cairo into the Glib type system'
   homepage 'https://metacpan.org/pod/Cairo::GObject'
   version '1.005-perl5.40'
@@ -25,17 +25,4 @@ class Perl_cairo_gobject < Package
   depends_on 'perl_glib' => :build
 
   no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

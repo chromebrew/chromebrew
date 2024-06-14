@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_http_date < Package
+class Perl_http_date < PERL
   description 'Date conversion routines'
   homepage 'https://metacpan.org/pod/HTTP::Date'
   version '6.06-perl5.40'
@@ -11,17 +11,4 @@ class Perl_http_date < Package
   binary_compression 'tar.zst'
 
   no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

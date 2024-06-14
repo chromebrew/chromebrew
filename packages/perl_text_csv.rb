@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_text_csv < Package
+class Perl_text_csv < PERL
   description 'Comma-separated values manipulator (using XS or PurePerl)'
   homepage 'https://metacpan.org/pod/Text::CSV'
   version '2.04-perl5.40'
@@ -11,17 +11,4 @@ class Perl_text_csv < Package
   binary_compression 'tar.zst'
 
   no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

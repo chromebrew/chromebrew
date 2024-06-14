@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_extutils_makemaker < Package
+class Perl_extutils_makemaker < PERL
   description 'Create a module Makefile'
   homepage 'https://metacpan.org/pod/ExtUtils::MakeMaker'
   version '7.70-perl5.40'
@@ -10,23 +10,7 @@ class Perl_extutils_makemaker < Package
   source_sha256 'f108bd46420d2f00d242825f865b0f68851084924924f92261d684c49e3e7a74'
   binary_compression 'tar.zst'
 
-  binary_sha256({
-    aarch64: 'e3bcf88648f20d43483f7f6c67dd4ea464720542bc6bba7e88ff24a4a2fd37d2',
-     armv7l: 'e3bcf88648f20d43483f7f6c67dd4ea464720542bc6bba7e88ff24a4a2fd37d2',
-       i686: '73b285e7ac571a71ee62603d51bfb3b96ac7d9c7edd78906681bc2067040e818',
-     x86_64: 'cee9c9accf69238e058fa279084d897756f2f290851817a6ef4715c3a99aa61c'
-  })
-
   no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

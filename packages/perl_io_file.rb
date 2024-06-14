@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_io_file < Package
+class Perl_io_file < PERL
   description 'Supply object methods for filehandles'
   homepage 'https://metacpan.org/pod/IO::File'
   version '1.55_01-perl5.40'
@@ -14,15 +14,6 @@ class Perl_io_file < Package
   depends_on 'glibc' # R
 
   no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

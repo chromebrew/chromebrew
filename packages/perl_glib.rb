@@ -14,4 +14,6 @@ class Perl_glib < PERL
   depends_on 'glib' # R
   depends_on 'perl_extutils_depends' => :build
   depends_on 'perl_extutils_pkgconfig' => :build
+
+  no_compile_needed
 end
