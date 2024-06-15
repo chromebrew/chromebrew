@@ -2,7 +2,7 @@ require 'package'
 
 class Far < Package
   description 'Search and replace operations on file content across multiple files.'
-  homepage 'http://findandreplace.sourceforge.net'
+  homepage 'https://findandreplace.sourceforge.net/'
   version '2.0.3'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
