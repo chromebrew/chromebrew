@@ -2,7 +2,7 @@ require 'package'
 
 class Datamash < Package
   description 'GNU Datamash is a command-line program which performs basic numeric, textual and statistical operations on input textual data files.'
-  homepage 'https://www.gnu.org/software/datamash'
+  homepage 'https://www.gnu.org/software/datamash/'
   version '1.8'
   license 'GPL-3'
   compatibility 'all'
