@@ -1,8 +1,8 @@
 # following https://github.com/archlinux/svntogit-packages/blob/packages/xf86-video-intel/trunk/PKGBUILD
 
-require 'package'
+require 'buildsystems/meson'
 
-class Xorg_intel_driver < Package
+class Xorg_intel_driver < Meson
   description 'The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video chips including 8xx, 9xx, Gxx, Qxx, HD, Iris, and Iris Pro graphics processors.'
   homepage 'https://01.org/linuxgraphics/'
   @_ver = '31486f40f8e8f8923ca0799aea84b58799754564'
@@ -22,18 +22,9 @@ class Xorg_intel_driver < Package
   # See https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/issues/180#note_387356
   # depends_on 'libxvmc' => :build
 
-  def self.build
-    # LTO is broken with this build.
-    # See https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/issues/28
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} \
-            -Ddefault-dri=3 \
-            -Dxvmc=false \
-            builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
+  # LTO is broken with this build.
+  # See https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/issues/28
+  no_lto
 
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options '-Ddefault-dri=3 -Dxvmc=false'
 end

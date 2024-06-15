@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.48.9'
+CREW_VERSION = '1.49.0'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -259,20 +259,6 @@ CREW_MESON_OPTIONS = <<~OPT.chomp
   -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
   -Dbuildtype=release \
   -Db_lto=true \
-  -Dstrip=true \
-  -Db_pie=true \
-  -Dcpp_args='#{CREW_CORE_FLAGS}' \
-  -Dc_args='#{CREW_CORE_FLAGS}'
-OPT
-
-CREW_MESON_FNO_LTO_OPTIONS = <<~OPT.chomp
-  -Dprefix=#{CREW_PREFIX} \
-  -Dlibdir=#{CREW_LIB_PREFIX} \
-  -Dlocalstatedir=#{CREW_PREFIX}/var/local \
-  -Dmandir=#{CREW_MAN_PREFIX} \
-  -Dsharedstatedir=#{CREW_PREFIX}/var/local/lib \
-  -Dbuildtype=release \
-  -Db_lto=false \
   -Dstrip=true \
   -Db_pie=true \
   -Dcpp_args='#{CREW_CORE_FLAGS}' \
