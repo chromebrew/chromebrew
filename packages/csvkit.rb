@@ -2,7 +2,7 @@ require 'package'
 
 class Csvkit < Package
   description 'A suite of utilities for converting to and working with CSV, the king of tabular file formats.'
-  homepage 'https://csvkit.rtfd.org/'
+  homepage 'https://csvkit.readthedocs.io/en/latest/'
   @_ver = '1.0.6'
   version "#{@_ver}-1"
   license 'MIT'
