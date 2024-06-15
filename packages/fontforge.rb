@@ -2,7 +2,7 @@ require 'package'
 
 class Fontforge < Package
   description 'Free (libre) font editor for Windows, Mac OS X and GNU+Linux'
-  homepage 'http://fontforge.github.io/'
+  homepage 'https://fontforge.org/'
   version '20170731'
   license 'BSD and GPL-3+'
   compatibility 'x86_64 aarch64 armv7l'
