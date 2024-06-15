@@ -2,7 +2,7 @@ require 'package'
 
 class Font_misc_misc < Package
   description 'Standard X11 fixed PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.1.2'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
