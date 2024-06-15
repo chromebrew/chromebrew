@@ -2,7 +2,7 @@ require 'package'
 
 class Fribidi < Package
   description 'GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi).'
-  homepage 'https://www.fribidi.org/'
+  homepage 'https://github.com/fribidi/fribidi'
   version '1.0.12'
   license 'LGPL-2.1+'
   compatibility 'all'
