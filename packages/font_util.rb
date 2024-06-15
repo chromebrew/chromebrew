@@ -2,7 +2,7 @@ require 'package'
 
 class Font_util < Package
   description 'Tools for truncating and subseting of ISO10646-1 BDF fonts'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.3.2'
   license 'custom'
   compatibility 'all'

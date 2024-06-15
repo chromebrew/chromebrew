@@ -2,7 +2,7 @@ require 'package'
 
 class Gccmakedep < Package
   description 'A utility to list the resource database of an X application.'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'MIT'
   compatibility 'all'

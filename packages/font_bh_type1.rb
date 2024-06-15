@@ -2,7 +2,7 @@ require 'package'
 
 class Font_bh_type1 < Package
   description 'Standard Bigelow and Holmes Type1 fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'bh-luxi'
   compatibility 'x86_64 aarch64 armv7l'

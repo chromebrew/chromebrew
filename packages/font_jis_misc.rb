@@ -2,7 +2,7 @@ require 'package'
 
 class Font_jis_misc < Package
   description '78dpi PCF versions of the Japanese fixed fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

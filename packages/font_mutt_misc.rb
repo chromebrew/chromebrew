@@ -2,7 +2,7 @@ require 'package'
 
 class Font_mutt_misc < Package
   description '100dpi PCF versions of the ClearlyU fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

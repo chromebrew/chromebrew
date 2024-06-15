@@ -2,7 +2,7 @@ require 'package'
 
 class Epydoc < Package
   description 'Epydoc is a tool for generating API documentation for Python modules, based on their docstrings.'
-  homepage 'http://epydoc.sourceforge.net/'
+  homepage 'https://epydoc.sourceforge.net/'
   version '3.0.1'
   license 'MIT'
   compatibility 'all'

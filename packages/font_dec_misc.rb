@@ -2,7 +2,7 @@ require 'package'
 
 class Font_dec_misc < Package
   description 'DEC cursor and session PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

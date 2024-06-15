@@ -2,7 +2,7 @@ require 'package'
 
 class Cmatrix < Package
   description "CMatrix is a program to see the cool scrolling lines from 'The Matrix' movie."
-  homepage 'http://www.asty.org/cmatrix/'
+  homepage 'https://www.asty.org/cmatrix/'
   version '1.2'
   license 'GPL-2'
   compatibility 'all'

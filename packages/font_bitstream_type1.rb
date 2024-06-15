@@ -2,7 +2,7 @@ require 'package'
 
 class Font_bitstream_type1 < Package
   description 'Standard Type1 Bitstream PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

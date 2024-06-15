@@ -2,7 +2,7 @@ require 'package'
 
 class Font_bh_100dpi < Package
   description 'Standard 100dpi Bigelow and Holmes PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'public-domain'
   compatibility 'x86_64 aarch64 armv7l'

@@ -2,7 +2,7 @@ require 'package'
 
 class Cunit < Package
   description 'CUnit is an automated testing framework for C.'
-  homepage 'http://cunit.sourceforge.net/'
+  homepage 'https://cunit.sourceforge.net/'
   version '2.1.3'
   compatibility 'all'
   license 'LGPL-2'

@@ -5,7 +5,7 @@ require 'package'
 
 class Djvulibre < Package
   description 'Suite to create, manipulate and view DjVu déjà vu documents'
-  homepage 'http://djvu.sourceforge.net/'
+  homepage 'https://djvu.sourceforge.net/'
   @_ver = '3.5.28'
   version "#{@_ver}-1"
   license 'GPL2'

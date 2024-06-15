@@ -2,7 +2,7 @@ require 'package'
 
 class Compressdoc < Package
   description 'Compress all man pages in a hierarchy and update symlinks. Supports a variety of compression algorithms.'
-  homepage 'https://github.com/saltedcoffii/compressdoc/'
+  homepage 'https://github.com/chromebrew/compressdoc'
   version '20221119'
   license 'MIT'
   compatibility 'all'

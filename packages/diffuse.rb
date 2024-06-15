@@ -2,7 +2,7 @@ require 'package'
 
 class Diffuse < Package
   description 'graphical tool for merging and comparing text files'
-  homepage 'http://diffuse.sourceforge.net/'
+  homepage 'https://diffuse.sourceforge.net/'
   version '0.4.8'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

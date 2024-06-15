@@ -5,7 +5,7 @@ require 'buildsystems/autotools'
 
 class Fig2dev < Autotools
   description 'Format conversion utility that can be used with xfig'
-  homepage 'http://mcj.sourceforge.net/'
+  homepage 'https://mcj.sourceforge.net/'
   version '3.2.9'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

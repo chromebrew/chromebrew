@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 
 class Freetype < Meson
   description 'FreeType is a freely available software library to render fonts.'
-  homepage 'https://www.freetype.org/'
+  homepage 'https://freetype.org/'
   version '2.13.2' # Update freetype in harfbuzz when updating freetype
   license 'FTL or GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'

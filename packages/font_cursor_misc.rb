@@ -2,7 +2,7 @@ require 'package'
 
 class Font_cursor_misc < Package
   description 'Standard X11 cursors in PCF format'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

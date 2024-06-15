@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Eigen < CMake
   description 'Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.'
-  homepage 'http://eigen.tuxfamily.org/'
+  homepage 'https://eigen.tuxfamily.org/index.php?title=Main_Page'
   version '3.4.0-1'
   license 'MPL-2.0'
   compatibility 'x86_64 aarch64 armv7l'

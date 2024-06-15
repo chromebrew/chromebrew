@@ -2,7 +2,7 @@ require 'package'
 
 class Freecad < Package
   description 'A free and opensource multiplatform 3D parametric modeler.'
-  homepage 'https://www.freecadweb.org/'
+  homepage 'https://www.freecad.org/'
   version '0.21.2'
   license 'GPL-2'
   compatibility 'x86_64'

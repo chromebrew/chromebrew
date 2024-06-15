@@ -2,7 +2,7 @@ require 'package'
 
 class Fossil < Package
   description 'Fossil is a simple, high-reliability, distributed software configuration management system'
-  homepage 'http://www.fossil-scm.org/index.html/doc/trunk/www/index.wiki'
+  homepage 'https://fossil-scm.org/home/doc/trunk/www/index.wiki'
   version '2.6'
   license 'BSD-2'
   compatibility 'all'

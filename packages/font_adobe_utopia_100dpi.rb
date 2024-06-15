@@ -2,7 +2,7 @@ require 'package'
 
 class Font_adobe_utopia_100dpi < Package
   description '100dpi Adobe Utopia PCF fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.4'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

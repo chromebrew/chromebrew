@@ -2,7 +2,7 @@ require 'package'
 
 class Docx2txt < Package
   description 'docx2txt is a perl based command line utility to convert Microsoft Office(Tm) Docx documents to equivalent Text documents.'
-  homepage 'http://docx2txt.sourceforge.net/'
+  homepage 'https://docx2txt.sourceforge.net/'
   version '1.4'
   license 'GPL-3'
   compatibility 'all'

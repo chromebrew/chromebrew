@@ -2,7 +2,7 @@ require 'package'
 
 class Expect < Package
   description 'Expect is a tool for automating interactive applications such as telnet, ftp, passwd, fsck, rlogin, tip, etc.'
-  homepage 'http://expect.sourceforge.net/'
+  homepage 'https://sourceforge.net/projects/expect/'
   version '5.45.4'
   license 'BSD'
   compatibility 'all'

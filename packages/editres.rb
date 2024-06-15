@@ -2,7 +2,7 @@ require 'package'
 
 class Editres < Package
   description 'Editres is a tool that allows users and application developers to view the full widget hierarchy of any Xt Toolkit application that speaks the Editres protocol.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.7'
   license 'custom'
   compatibility 'all'

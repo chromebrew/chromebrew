@@ -2,7 +2,7 @@ require 'package'
 
 class Devil < Package
   description 'Library for reading several different image formats'
-  homepage 'http://openil.sourceforge.net/'
+  homepage 'https://openil.sourceforge.net/'
   version '1.8.0-6f3d5e9'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'
