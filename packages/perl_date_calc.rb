@@ -3,7 +3,7 @@ require 'package'
 class Perl_date_calc < Package
   description 'Gregorian calendar date calculations'
   homepage 'https://metacpan.org/pod/Date::Calc'
-  version '6.4-perl5.38'
+  version '6.4-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/S/ST/STBEY/Date-Calc-6.4.tar.gz'
@@ -11,10 +11,10 @@ class Perl_date_calc < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '5a8827b635ec9b38bc91b9278257a01f88ce4f56acc2e1cecbe03e736d7f12c4',
-     armv7l: '5a8827b635ec9b38bc91b9278257a01f88ce4f56acc2e1cecbe03e736d7f12c4',
-       i686: '4bd7b36ebb15dcb49f17cb56e07dd72088029e835d4c9875d30ae3e34c07c98b',
-     x86_64: 'ef04d9b0688554831e413cf35dbb4e92f9681990d569afdbec841dc39866f252'
+    aarch64: '6d35d5dda7e12d5e45e96ae9a889879bf2b85a53036eb2a506e52572d5fcc1d0',
+     armv7l: '6d35d5dda7e12d5e45e96ae9a889879bf2b85a53036eb2a506e52572d5fcc1d0',
+       i686: '5a74df2cb3af5c839e383c79439a2a4917c4256caadcf0fdb0a414af8952c7c5',
+     x86_64: 'fef93e4586a0d47c16d30a03717e7a45b75580168337adc86a1f57906f7c0c4a'
   })
 
   def self.prebuild

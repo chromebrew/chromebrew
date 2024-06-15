@@ -1,35 +1,24 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_io_file < Package
+class Perl_io_file < PERL
   description 'Supply object methods for filehandles'
   homepage 'https://metacpan.org/pod/IO::File'
-  version '1.51-perl5.38.2'
+  version '1.55_01-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.51.tar.gz'
-  source_sha256 '5493ea55998728cd2b7ecb8234c58fb5d5df27098d0f07addca22444d7616ce0'
+  source_url 'https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-1.55_01.tar.gz'
+  source_sha256 '6f51f8dc75c9fa42b1dcd8194575f21f7e0353136a4c9b36e27da1fbeb698074'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b79d39077e19f447cc7c0996ed050f1307c5634cceb6f99ecccccb575298715d',
-     armv7l: 'b79d39077e19f447cc7c0996ed050f1307c5634cceb6f99ecccccb575298715d',
-       i686: 'b510368393e30af7855e0e4e34ff4b973bacb308d72e6a18d38a331ed3e0020a',
-     x86_64: 'bafe351f413e47c1e877938c5679d07f46c68610868c4fb18a36337e1587d345'
+       i686: 'f3b5d52e924b4956f59ef3a208ec072776fa15581318d2e3b6dba4e7173f5e35',
+    aarch64: '516c7716b17956229bd49f9ab6704f1021a25ae71b4f8769107e5db29550ccb2',
+     armv7l: '516c7716b17956229bd49f9ab6704f1021a25ae71b4f8769107e5db29550ccb2',
+     x86_64: 'df3365990bf5fcdd29e3c8b664cc04b188d66d9e6fea4693c3bd48ba4afa1a7c'
   })
 
   depends_on 'perl_file_temp' => :build
   depends_on 'glibc' # R
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'

@@ -3,18 +3,18 @@ require 'package'
 class Perl_pod_parser < Package
   description 'Perl Pod::Parser - base class for creating POD filters and translators'
   homepage 'https://metacpan.org/pod/Pod::Parser'
-  version '1.66-perl5.38'
+  version '1.67-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.66.tar.gz'
-  source_sha256 '22928a7bffe61b452c05bbbb8f5216d4b9cf9fe2a849b776c25500d24d20df7c'
+  source_url 'https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Parser-1.67.tar.gz'
+  source_sha256 '5deccbf55d750ce65588cd211c1a03fa1ef3aaa15d1ac2b8d85383a42c1427ea'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'a2d19bbbe90f2e1fc2351ea802b54280f2bddc056e82ab4053a480358fd6d94f',
-     armv7l: 'a2d19bbbe90f2e1fc2351ea802b54280f2bddc056e82ab4053a480358fd6d94f',
-       i686: '192b40849f3605f6eec343f5844b63a7e1e1d80f3f43168f9a85e07dc75a44a7',
-     x86_64: 'bb811d28f6789592e2116900f86fc23b2cda4c223e66c1b6915b4facf9a13845'
+    aarch64: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+     armv7l: '3c6f74bb9c0c26489cb439eafac7eee329d67705030602508e1b8c71772ceeb2',
+       i686: '89276cec5f6f47284346a22a284f4638d9e87cbbf70da8b86bf2c0313a3990ef',
+     x86_64: 'e1e81a36e19337176855749dd5858e2ed6c7947f3e875de16a4657806afe6dbd'
   })
 
   def self.prebuild

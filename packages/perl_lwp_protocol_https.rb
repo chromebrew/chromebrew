@@ -1,34 +1,19 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_lwp_protocol_https < Package
+class Perl_lwp_protocol_https < PERL
   description 'Provide https support for LWP::UserAgent'
   homepage 'https://metacpan.org/pod/LWP::Protocol::https'
-  version '6.10-perl5.38'
+  version '6.14-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
-  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.10.tar.gz'
-  source_sha256 'cecfc31fe2d4fc854cac47fce13d3a502e8fdfe60c5bc1c09535743185f2a86c'
+  source_url 'https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.14.tar.gz'
+  source_sha256 '59cdeabf26950d4f1bef70f096b0d77c5b1c5a7b5ad1b66d71b681ba279cbb2a'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9b9232091cc3337f593b3d568a601c4c122074669c78b85b540c48984d81cbe7',
-     armv7l: '9b9232091cc3337f593b3d568a601c4c122074669c78b85b540c48984d81cbe7',
-       i686: 'cdb8b8b7f67f1d64fff17a93df98747ca3472de3c774f7dc58d8c9cb4e9c8e7b',
-     x86_64: 'e6d9c1d85428390d57dd25a2c6698750e9d5c990dfdbaa9cffb5a541871c5efe'
+       i686: 'd90c117d9d7623f9f5dbbd771b1811c4678ff48d2a05c98638120bb569aa10dc',
+    aarch64: '2b4ce7726cdf52eb3e1b41a0dbfcf5ba4ae9fdd7e1b2f0c012d70b37fe103e70',
+     armv7l: '2b4ce7726cdf52eb3e1b41a0dbfcf5ba4ae9fdd7e1b2f0c012d70b37fe103e70',
+     x86_64: 'bfa9383ea6cd33ec7903b8197999c08ac192a54b15dfc77fed8f2b5007d8542e'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

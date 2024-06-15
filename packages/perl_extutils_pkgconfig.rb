@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_extutils_pkgconfig < Package
+class Perl_extutils_pkgconfig < PERL
   description 'Simplistic interface to pkg-config'
   homepage 'https://metacpan.org/pod/ExtUtils::PkgConfig'
-  version '1.16-perl5.38'
+  version '1.16-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/X/XA/XAOC/ExtUtils-PkgConfig-1.16.tar.gz'
@@ -11,24 +11,9 @@ class Perl_extutils_pkgconfig < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '66b3c4b9becc1e41f1264eeb3a9f67dd817143f7d2cd9476bf73abee485740b3',
-     armv7l: '66b3c4b9becc1e41f1264eeb3a9f67dd817143f7d2cd9476bf73abee485740b3',
-       i686: '6f6e2329e7befd2a7ffaafbd26864e435a75433b7a0727c935d43890b160104a',
-     x86_64: 'fa72060389eeb6b5d39d7ff1ef7207d9d68ba598184d1699986e46f191330eb2'
+       i686: '376fdd0a49a574a39887454f0755da0e914d7210ef9fa6a00bface7752645c94',
+    aarch64: '60354febd64e3544451accd949326e468fd4c095f71333e9a0e378b6fef9ee77',
+     armv7l: '60354febd64e3544451accd949326e468fd4c095f71333e9a0e378b6fef9ee77',
+     x86_64: '4a3aaa0fb624733b8d7a95ff32d3fbfc89db3505aca06add445d502949c9a6ef'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

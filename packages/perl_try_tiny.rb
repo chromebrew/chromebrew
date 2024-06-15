@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_try_tiny < Package
+class Perl_try_tiny < PERL
   description 'Minimal try/catch with proper preservation of $@'
   homepage 'https://metacpan.org/pod/Try::Tiny'
-  version '0.31-perl5.38'
+  version '0.31-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/Try-Tiny-0.31.tar.gz'
@@ -11,24 +11,9 @@ class Perl_try_tiny < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'dad95d43bf05f77e344fe8edd618e4f1b5e5cff9af4b272fc8a8d5c9463630f0',
-     armv7l: 'dad95d43bf05f77e344fe8edd618e4f1b5e5cff9af4b272fc8a8d5c9463630f0',
-       i686: '39c6954add5451c6b0f2074760091ddb14bf5ffb4027bce20a851b74d048ede1',
-     x86_64: 'eae6c6de759e2e24ea63d6052918e4c77c876e246a2a446198e88f539011e0da'
+       i686: '35b2879a17e32dd7d4168015310ba4dcc4c36db6b1eaa3828e7bc3ed4b9cf165',
+    aarch64: '37b1f32730570d4bd04c52f38055e75db384d7ef5e73af8b8bcc6324cdcf8ef0',
+     armv7l: '37b1f32730570d4bd04c52f38055e75db384d7ef5e73af8b8bcc6324cdcf8ef0',
+     x86_64: 'e920584bd8a68a5547936e314c14839908ad20ec0bdc78c5e8e2e168c8142adb'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
-
-  def self.install
-    system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-  end
 end

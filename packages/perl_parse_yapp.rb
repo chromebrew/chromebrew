@@ -3,7 +3,7 @@ require 'package'
 class Perl_parse_yapp < Package
   description 'Parse::Yapp - Perl extension for generating and using LALR parsers.'
   homepage 'https://metacpan.org/pod/Parse::Yapp'
-  version '1.21-perl5.38'
+  version '1.21-perl5.40'
   license 'GPL'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz'
@@ -11,10 +11,10 @@ class Perl_parse_yapp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '304950660fbbe7f5ec73741ad6fbde700aa3e5c12358798cd920c0c48e3368e4',
-     armv7l: '304950660fbbe7f5ec73741ad6fbde700aa3e5c12358798cd920c0c48e3368e4',
-       i686: 'f4532e4e157d589d8ebde6b9bd2754ad936f22f9c4e8255b8937fa354d10dab7',
-     x86_64: '0b16bf60787ec109f9a76ce363f86cb59d05ed4385a734d944864142f519cd69'
+    aarch64: '05f8fdc6ce72778f62b32b65b19e8b8d5c3fccaa63776505e1698c8c60ea3ef1',
+     armv7l: '05f8fdc6ce72778f62b32b65b19e8b8d5c3fccaa63776505e1698c8c60ea3ef1',
+       i686: '253b0d89b5ecd773533744574f859baa0addb38fcad2462f2d9c1749fd10a720',
+     x86_64: '89b2f9d1a1e8d06b5993829bbb9e698f1eda81957ff4f110baa0bf8351233443'
   })
 
   def self.prebuild

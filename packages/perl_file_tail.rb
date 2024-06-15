@@ -3,7 +3,7 @@ require 'package'
 class Perl_file_tail < Package
   description 'File::Tail - Perl extension for reading from continuously updated files'
   homepage 'https://metacpan.org/pod/File::Tail'
-  version '1.3-perl5.38'
+  version '1.3-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/M/MG/MGRABNAR/File-Tail-1.3.tar.gz'
@@ -11,10 +11,10 @@ class Perl_file_tail < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '1a5261cf6d91a837edcdf5fe00e16f072edbe8fd504081c4717073f8c86900a2',
-     armv7l: '1a5261cf6d91a837edcdf5fe00e16f072edbe8fd504081c4717073f8c86900a2',
-       i686: '4d33df3438bd645491d93b2d1aaeafb9faa27709268efb3a4752fe0c5a95855d',
-     x86_64: '16bcde971b49bb85f5e8802093bcd20d7cc2273d200a0bec88cd36090669fd87'
+    aarch64: '280d508b854028a07ab39a689ad7e4ee4584b8f70d627243b1120dfbbd6cc7a3',
+     armv7l: '280d508b854028a07ab39a689ad7e4ee4584b8f70d627243b1120dfbbd6cc7a3',
+       i686: '4431973033c63c66453d3363952e5878e796c1fcdfbb50e6b63fd97c2c1425f9',
+     x86_64: 'a7a3f390fc47efc72df0c8b54774dba9d0a97c22d0a19cae54bab1f3eee0158c'
   })
 
   def self.prebuild

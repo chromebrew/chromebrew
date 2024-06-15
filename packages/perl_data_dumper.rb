@@ -3,7 +3,7 @@ require 'buildsystems/perl'
 class Perl_data_dumper < PERL
   description 'Stringified perl data structures, suitable for both printing and eval'
   homepage 'https://metacpan.org/pod/Data::Dumper'
-  version '2.183-perl5.38.2'
+  version '2.183-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/N/NW/NWCLARK/Data-Dumper-2.183.tar.gz'
@@ -11,10 +11,10 @@ class Perl_data_dumper < PERL
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'fffc682fd6fffe423613a125f72886456e7e95ee9466a915812823c62acdd8b5',
-     armv7l: 'fffc682fd6fffe423613a125f72886456e7e95ee9466a915812823c62acdd8b5',
-       i686: '462194d705d9905e596fb7bc7740f89b1a8037f67f7ab823a2380db60fa11317',
-     x86_64: '15895d247fc6e60f155554323b538edce8cffbe126233a63d6c76f20688f90bf'
+    aarch64: '0f575f41b78b9d67f73d2bd11163d442c5e838db06a868b8d8e52b0942b9ec82',
+     armv7l: '0f575f41b78b9d67f73d2bd11163d442c5e838db06a868b8d8e52b0942b9ec82',
+       i686: '9d75a00164fb9dcd1dfa4502e1b4f863e339c2cea5359cdb1e81bbd25eddb59a',
+     x86_64: '84cae248b99fa81f5399483f1955aed5f5b51d939d54f8433012f6127f3e66fa'
   })
 
   depends_on 'glibc' # R

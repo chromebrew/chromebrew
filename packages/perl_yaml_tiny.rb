@@ -3,7 +3,7 @@ require 'package'
 class Perl_yaml_tiny < Package
   description 'YAML::Tiny - Read/Write YAML files with as little code as possible'
   homepage 'https://metacpan.org/pod/YAML::Tiny'
-  version '1.74-perl5.38'
+  version '1.74-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.74.tar.gz'
@@ -11,10 +11,10 @@ class Perl_yaml_tiny < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6fb7de86fffd16de1d37d9c15f4d245151b112d3be92ac7774a7d0ae50784877',
-     armv7l: '6fb7de86fffd16de1d37d9c15f4d245151b112d3be92ac7774a7d0ae50784877',
-       i686: '4eaf007e549f666c0401ac35c52e24e4e14eafe7d4270c5216bd84cb2554b3fa',
-     x86_64: 'a8d52659db50390e5358a8b38e924112b4507604b16e63d120c4ea55c594dec4'
+    aarch64: '843dcc510bfb6029e46133e4d3a5580f4a8e39ee232ff3de1ecdd59220ae505a',
+     armv7l: '843dcc510bfb6029e46133e4d3a5580f4a8e39ee232ff3de1ecdd59220ae505a',
+       i686: '1c8bfca914a68e0ea8a265d8b7c9d20e6572de269622c14a9c79290ff86acaeb',
+     x86_64: 'c8130dcd6ce06f910d28b95d9f9ef690b64d6747b23c6267e9447c43b58a02fc'
   })
 
   def self.prebuild

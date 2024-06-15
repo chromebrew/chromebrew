@@ -1,9 +1,9 @@
-require 'package'
+require 'buildsystems/perl'
 
-class Perl_file_temp < Package
+class Perl_file_temp < PERL
   description 'Return name and handle of a temporary file safely'
   homepage 'https://metacpan.org/pod/File::Temp'
-  version '0.2311-perl5.38'
+  version '0.2311-perl5.40'
   license 'GPL-1+ or Artistic'
   compatibility 'all'
   source_url 'https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Temp-0.2311.tar.gz'
@@ -11,22 +11,11 @@ class Perl_file_temp < Package
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '7e0b85f9f48a3a850dee56e5e282b8121c83e2c46498ecffc784ce12556477bd',
-     armv7l: '7e0b85f9f48a3a850dee56e5e282b8121c83e2c46498ecffc784ce12556477bd',
-       i686: 'ef0637a3bb8f99f4c013487557efd0f57d89fd55ae056556e9975e4bf53af380',
-     x86_64: '67d076fbd4a469db6259b103045dac746956084958254a8909c0c0cdbcf4ffa3'
+       i686: '3db8451e13f1e4fbd0edf6ba9bf97a02debe6e199d19a00ef68c42141cdcbeff',
+    aarch64: '912b9db31ed2470605623fd9594761dbe75796630df848673836ad36894119dd',
+     armv7l: '912b9db31ed2470605623fd9594761dbe75796630df848673836ad36894119dd',
+     x86_64: '15e1e6f89fce08e3fc2a30612c71a9e1cb14fa1fca616d84f03446956da58923'
   })
-
-  no_compile_needed
-
-  def self.prebuild
-    system 'perl', 'Makefile.PL'
-    system "sed -i 's,/usr/local,#{CREW_PREFIX},g' Makefile"
-  end
-
-  def self.build
-    system 'make'
-  end
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
