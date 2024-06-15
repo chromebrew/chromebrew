@@ -1,6 +1,6 @@
-require 'package'
+require 'buildsystems/meson'
 
-class Colord < Package
+class Colord < Meson
   description 'colord is a system service that makes it easy to manage, install and generate color profiles to accurately color manage input and output devices.'
   homepage 'https://www.freedesktop.org/software/colord/'
   version '1.4.5'
@@ -27,17 +27,11 @@ class Colord < Package
   depends_on 'polkit'
   depends_on 'vala'
 
+  no_lto
+
   def self.patch
     system "sed -i 's,-fstack-protector-strong,-fno-stack-protector,' meson.build"
   end
 
-  def self.build
-    system "meson setup #{CREW_MESON_FNO_LTO_OPTIONS} -Dsystemd=false -Ddaemon_user=#{USER} builddir"
-    system 'meson configure --no-pager builddir'
-    system 'ninja -C builddir'
-  end
-
-  def self.install
-    system "DESTDIR=#{CREW_DEST_DIR} ninja -C builddir install"
-  end
+  meson_options "-Dsystemd=false -Ddaemon_user=#{USER}"
 end

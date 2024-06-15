@@ -5,7 +5,7 @@ class Meson < Package
 
   def self.build
     puts "Additional meson_options being used: #{@pre_meson_options.nil? ? '<no pre_meson_options>' : @pre_meson_options} #{@meson_options.nil? ? '<no meson_options>' : @meson_options}".orange
-    @crew_meson_options = @no_lto ? CREW_MESON_FNO_LTO_OPTIONS : CREW_MESON_OPTIONS
+    @crew_meson_options = @no_lto ? CREW_MESON_OPTIONS.sub('-Db_lto=true', '-Db_lto=false') : CREW_MESON_OPTIONS
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
     system "#{@pre_meson_options} #{@mold_linker_prefix_cmd} meson setup #{@crew_meson_options} #{@meson_options} builddir"
     system 'meson configure --no-pager builddir'
