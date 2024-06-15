@@ -2,7 +2,7 @@ require 'package'
 
 class Freeimage < Package
   description 'FreeImage is an Open Source library project for developers who would like to support popular graphics image formats like PNG, BMP, JPEG, TIFF and others as needed by today\'s multimedia applications.'
-  homepage 'http://freeimage.sourceforge.net/'
+  homepage 'https://freeimage.sourceforge.io/'
   version '3.18.0'
   license 'GPL-2 or FIPL-1.0'
   compatibility 'all'
