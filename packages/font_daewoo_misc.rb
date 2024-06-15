@@ -2,7 +2,7 @@ require 'package'
 
 class Font_daewoo_misc < Package
   description 'Daewoo Gothic PCF format'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.3'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
