@@ -2,7 +2,7 @@ require 'package'
 
 class Collectl < Package
   description 'Collectl is a light-weight performance monitoring tool capable of reporting interactively as well as logging to disk.'
-  homepage 'http://collectl.sourceforge.net/'
+  homepage 'https://collectl.sourceforge.net/'
   version '4.3.1'
   license 'GPL-2 and Artistic'
   compatibility 'all'
