@@ -24,7 +24,7 @@ Works properly:
 - [ ] `armv7l` <!-- (reasons why it doesn't) -->
 
 ### Run the following to get this pull request's changes locally for testing.
-```
+```bash
 CREW_REPO=https://github.com/<Please_enter_the_name_of_your_repo>/chromebrew.git CREW_BRANCH=<Please_enter_the_branch_name_for_this_PR> crew update
 ```
 

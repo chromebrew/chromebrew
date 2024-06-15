@@ -10,7 +10,6 @@ class Openjdk < Package
   description 'The JDK is a development environment for building applications, applets, and components using the Java programming language.'
   homepage 'https://openjdk.org/'
   key = 1
-  versions = []
   @openjdk_versions = []
   Dir["#{CREW_PACKAGES_PATH}/openjdk*.rb"].each do |openjdk_file|
     next unless openjdk_file =~ /openjdk(\d+).rb/
@@ -20,8 +19,8 @@ class Openjdk < Package
     @openjdk_versions.push [key, openjdk_name, openjdk_ver]
     key += 1
   end
-  @openjdk_versions.each do |openjdk_ver|
-    versions.push openjdk_ver[2]
+  versions = @openjdk_versions.map do |openjdk_ver|
+    openjdk_ver[2]
   end
   versions.sort!
   version "#{versions.first}-#{versions.last}"

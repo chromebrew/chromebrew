@@ -24,7 +24,7 @@ class Gvim < Autotools
   depends_on 'glib' # R
   depends_on 'gpm' # R
   depends_on 'gtk3' # R
-  depends_on 'harfbuzz' #
+  depends_on 'harfbuzz'
   depends_on 'libice' # R
   depends_on 'libsm' # R
   depends_on 'libsodium' # R

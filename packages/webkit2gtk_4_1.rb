@@ -80,9 +80,7 @@ class Webkit2gtk_4_1 < Package
     system "sed -i 's,/usr/bin,/usr/local/bin,g' Source/JavaScriptCore/inspector/scripts/codegen/preprocess.pl"
     @arch_flags = ''
     @gcc_ver = ''
-    if ARCH == 'armv7l' || ARCH == 'aarch64'
-      @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp'
-    end
+    @arch_flags = '-mfloat-abi=hard -mtls-dialect=gnu -mthumb -mfpu=vfpv3-d16 -mlibarch=armv7-a+fp -march=armv7-a+fp' if ARCH == 'armv7l' || ARCH == 'aarch64'
   end
 
   def self.build
