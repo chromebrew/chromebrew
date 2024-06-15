@@ -172,6 +172,6 @@ class Buildessential < Package
   # Add ruby_concurrent_ruby
   depends_on 'ruby_concurrent_ruby'
 
-  # Add bash to stop bash_completion from complaining
-  depends_on 'bash'
+  # Code quality
+  depends_on 'py3_pre_commit'
 end
