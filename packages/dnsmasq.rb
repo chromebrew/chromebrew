@@ -2,7 +2,7 @@ require 'package'
 
 class Dnsmasq < Package
   description 'Lightweight, easy to configure DNS forward ,TFTP server and DHCP server'
-  homepage 'http://www.thekelleys.org.uk/dnsmasq/doc.html'
+  homepage 'https://thekelleys.org.uk/dnsmasq/doc.html'
   version '2.89'
   license 'GPL-2 or GPL-3'
   compatibility 'all'
