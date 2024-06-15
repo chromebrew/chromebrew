@@ -36,7 +36,7 @@ class Libcaca < Package
   depends_on 'python3'
   depends_on 'ruby' # R
   depends_on 'slang' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     downloader 'https://patch-diff.githubusercontent.com/raw/cacalabs/libcaca/pull/66.patch',

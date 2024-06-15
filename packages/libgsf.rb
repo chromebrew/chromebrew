@@ -24,7 +24,7 @@ class Libgsf < Autotools
   depends_on 'glibc' # R
   depends_on 'icu4c' # R
   depends_on 'libxml2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'gdk_pixbuf' # R
 
   gnome

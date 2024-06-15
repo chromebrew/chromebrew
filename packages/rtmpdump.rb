@@ -21,7 +21,7 @@ class Rtmpdump < Package
   depends_on 'gmp' # R
   depends_on 'gnutls' # R
   depends_on 'nettle' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   @make_common_opts = ['SYS=posix', "prefix=#{CREW_PREFIX}", "libdir=#{CREW_LIB_PREFIX}",
                        "mandir=#{CREW_PREFIX}/share/man", 'CRYPTO=GNUTLS']

@@ -24,7 +24,7 @@ class Tk < Package
   depends_on 'libxft' # R
   depends_on 'libxss' # R
   depends_on 'tcl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_lto
 

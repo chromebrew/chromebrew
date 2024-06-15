@@ -71,7 +71,7 @@ class Gtk4 < Meson
   depends_on 'vulkan_icd_loader' # R
   depends_on 'wayland' # R
   depends_on 'xdg_base' # L
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
   no_fhs

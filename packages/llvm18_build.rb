@@ -31,7 +31,7 @@ class Llvm18_build < Package
   depends_on 'py3_pygments' => :build
   depends_on 'py3_pyyaml' => :build
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options

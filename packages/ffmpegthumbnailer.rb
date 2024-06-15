@@ -21,7 +21,7 @@ class Ffmpegthumbnailer < Package
   depends_on 'glibc' # R
   depends_on 'libjpeg_turbo' # R
   depends_on 'libpng' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \

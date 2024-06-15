@@ -39,7 +39,7 @@ class Ettercap_gtk < Package
   depends_on 'openssl' # R
   depends_on 'pango' # R
   depends_on 'pcre' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     system "sed -i 's,list(APPEND GTK3_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIRS}),list(APPEND GTK3_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIRS} #{CREW_PREFIX}/include/harfbuzz),g' cmake/Modules/FindGTK3.cmake"

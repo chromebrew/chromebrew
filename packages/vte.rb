@@ -35,7 +35,7 @@ class Vte < Meson
   depends_on 'pcre2' # R
   depends_on 'vulkan_headers' => :build
   depends_on 'vulkan_icd_loader' => :build
-  depends_on 'zlibpkg' => :build
+  depends_on 'zlib' => :build
 
   gnome
   no_lto

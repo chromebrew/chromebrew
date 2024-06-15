@@ -31,7 +31,7 @@ class Cmake < CMake
   depends_on 'llvm18_lib' => :build
   depends_on 'ncurses' # R
   depends_on 'xzutils' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' => :build
 
   cmake_options '-DCMAKE_USE_SYSTEM_LIBRARIES=ON \

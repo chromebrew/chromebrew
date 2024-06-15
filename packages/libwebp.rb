@@ -35,7 +35,7 @@ class Libwebp < Package
   depends_on 'libxi' # R
   depends_on 'libxmu' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   gnome

@@ -47,7 +47,7 @@ class Gdal < CMake
   depends_on 'unixodbc' # R
   depends_on 'xercesc' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   cmake_options '-DGDAL_USE_TIFF_INTERNAL=ON \

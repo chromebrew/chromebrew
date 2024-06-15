@@ -19,7 +19,7 @@ class Lnav < Autotools
   depends_on 'sqlite' # R
   depends_on 'ncurses' # R
   depends_on 'readline' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'bzip2' # R
   depends_on 'libcurl' # R
   depends_on 'libarchive' # R

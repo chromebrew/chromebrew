@@ -28,7 +28,7 @@ class Freetype < Meson
   depends_on 'libpng' # R
   depends_on 'pcre' => :build
   depends_on 'py3_docwriter' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   meson_options '-Dharfbuzz=enabled'
 

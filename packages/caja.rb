@@ -51,7 +51,7 @@ class Caja < Autotools
   depends_on 'pango' # R
   depends_on 'util_linux' # R
   depends_on 'wayland' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

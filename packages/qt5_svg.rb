@@ -20,5 +20,5 @@ class Qt5_svg < Qmake
   depends_on 'glibc' # R
   depends_on 'libglvnd' # R
   depends_on 'qt5_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

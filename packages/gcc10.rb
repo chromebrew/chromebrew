@@ -25,7 +25,7 @@ class Gcc10 < Package
   depends_on 'libssp' # L
   depends_on 'mpc' # R
   depends_on 'mpfr' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
   depends_on 'gcc_lib' # R
 

@@ -29,7 +29,7 @@ class Vice < Autotools
   depends_on 'mpg123' # R
   depends_on 'pulseaudio' # R
   depends_on 'xdg_utils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   configure_options '--enable-gtk3ui \
     --enable-desktop-files \

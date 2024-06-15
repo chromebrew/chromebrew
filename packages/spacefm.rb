@@ -31,7 +31,7 @@ class Spacefm < Package
   depends_on 'libx11' # R
   depends_on 'pango' # R
   depends_on 'shared_mime_info' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     # GCC 10.1+ Fixes

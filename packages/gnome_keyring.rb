@@ -36,7 +36,7 @@ class Gnome_keyring < Autotools
   depends_on 'openssh' => :build
   depends_on 'p11kit' # R
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

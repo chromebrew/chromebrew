@@ -31,7 +31,7 @@ class Libsoup < Meson
   depends_on 'py3_smartypants' => :build
   depends_on 'sqlite' # R
   depends_on 'vala' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

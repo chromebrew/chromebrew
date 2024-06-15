@@ -66,7 +66,7 @@ class Inkscape < CMake
   depends_on 'py3_cython' => :build
   depends_on 'readline' # R
   depends_on 'xdg_base' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

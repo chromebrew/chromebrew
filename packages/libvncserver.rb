@@ -26,7 +26,7 @@ class Libvncserver < Package
   depends_on 'libpng' # R
   depends_on 'lzo' # R
   depends_on 'openssl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "mold -run cmake -B builddir #{CREW_CMAKE_OPTIONS} \

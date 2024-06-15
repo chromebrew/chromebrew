@@ -28,7 +28,7 @@ class Js102 < Package
   depends_on 'nss' # R
   depends_on 'readline' # R
   depends_on 'rust' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_upstream_update
 

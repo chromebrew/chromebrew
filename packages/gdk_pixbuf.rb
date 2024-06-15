@@ -34,7 +34,7 @@ class Gdk_pixbuf < Package
   depends_on 'py3_typogrify' => :build
   depends_on 'glibc' # R
   depends_on 'libpng' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

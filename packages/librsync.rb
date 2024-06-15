@@ -22,7 +22,7 @@ class Librsync < Package
   depends_on 'bzip2'
   depends_on 'perl'
   depends_on 'popt'
-  depends_on 'zlibpkg'
+  depends_on 'zlib'
 
   def self.build
     system "cmake -G Ninja . #{CREW_CMAKE_OPTIONS}"

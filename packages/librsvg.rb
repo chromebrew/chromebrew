@@ -37,7 +37,7 @@ class Librsvg < Autotools
   depends_on 'py3_smartypants' => :build
   depends_on 'rust' => :build
   depends_on 'vala' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

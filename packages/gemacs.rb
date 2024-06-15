@@ -62,7 +62,7 @@ class Gemacs < Package
   depends_on 'texinfo'
   depends_on 'webkit2gtk_4'
   depends_on 'xcb_util' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system '[ -x configure ] || NOCONFIGURE=1 ./autogen.sh'

@@ -20,7 +20,7 @@ class Pcre2 < Package
   depends_on 'glibc' # R
   depends_on 'readline' # R
   depends_on 'bzip2' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     system "cmake -B builddir\

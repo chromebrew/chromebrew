@@ -31,7 +31,7 @@ class Libwmf < Autotools
   depends_on 'libxcb' # R
   depends_on 'libxdmcp' # R
   depends_on 'xwayland' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   gnome
 

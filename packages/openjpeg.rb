@@ -24,7 +24,7 @@ class Openjpeg < CMake
   depends_on 'libtiff' # R
   depends_on 'libwebp' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   cmake_options "-DOPENJPEG_INSTALL_LIB_DIR='lib#{CREW_LIB_SUFFIX}'"

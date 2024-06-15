@@ -34,5 +34,5 @@ class Mate_desktop < Autotools
   depends_on 'libxrender' # R
   depends_on 'mate_common' => :build
   depends_on 'pango' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 end

@@ -28,7 +28,7 @@ class Gtk_vnc < Meson
   depends_on 'harfbuzz' # R
   depends_on 'libcyrussasl' # R
   depends_on 'libx11' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'gcc_lib' # R
 
   gnome

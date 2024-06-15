@@ -37,7 +37,7 @@ class Python3 < Package
   depends_on 'tk' => :build unless ARCH == 'i686' # Needed for tkinter support
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zoneinfo' # L
 
   no_env_options

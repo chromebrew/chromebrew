@@ -52,7 +52,7 @@ class Graphicsmagick < Package
   depends_on 'py3_docutils' => :build
   depends_on 'util_linux' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options

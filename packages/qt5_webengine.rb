@@ -72,7 +72,7 @@ class Qt5_webengine < Package
   depends_on 'qt5_webchannel' # R
   depends_on 're2' # R
   depends_on 'snappy' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.patch
     # Patches from lfs: https://www.linuxfromscratch.org/blfs/view/svn/x/qtwebengine.html

@@ -34,7 +34,7 @@ class Gdb < Autotools
   depends_on 'source_highlight' # R
   depends_on 'xxhash' # R
   depends_on 'xzutils' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   conflicts_ok # binutils conflicts

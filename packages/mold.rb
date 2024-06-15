@@ -24,7 +24,7 @@ class Mold < CMake
   depends_on 'glibc' # R
   depends_on 'openssl' # R
   depends_on 'xxhash' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
   depends_on 'zstd' # R
 
   no_env_options

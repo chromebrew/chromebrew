@@ -32,7 +32,7 @@ class Js115 < Package
   depends_on 'py3_pycairo' => :build
   depends_on 'readline' # R
   depends_on 'rust' => :build
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   no_upstream_update
 

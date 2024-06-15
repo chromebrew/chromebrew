@@ -22,7 +22,7 @@ class Qpdf < Package
   depends_on 'glibc' # R
   depends_on 'gnutls' # R
   depends_on 'openssl' # R
-  depends_on 'zlibpkg' # R
+  depends_on 'zlib' # R
 
   def self.build
     Dir.mkdir 'builddir'
