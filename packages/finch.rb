@@ -2,7 +2,7 @@ require 'package'
 
 class Finch < Package
   description 'Finch is a chat program which lets you log in to accounts on multiple chat networks simultaneously.'
-  homepage 'http://pidgin.im/'
+  homepage 'https://pidgin.im/'
   version '2.12.0-1'
   license 'GPL-2'
   compatibility 'all'
