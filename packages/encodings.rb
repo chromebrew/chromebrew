@@ -2,7 +2,7 @@ require 'package'
 
 class Encodings < Package
   description 'X11 Font Index Generator'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.5'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
