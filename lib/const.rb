@@ -175,13 +175,12 @@ when 'x86_64'
   CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
-CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')
-CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', '')
+CREW_LINKER = ENV.fetch('CREW_LINKER', 'mold')
 
-CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER}"
 CREW_COMMON_FLAGS         = "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS              = "-flto=auto #{CREW_LINKER_FLAGS}"
+CREW_LDFLAGS              = '-flto=auto'
 CREW_FNO_LTO_LDFLAGS      = '-fno-lto'
 
 CREW_ENV_OPTIONS_HASH = \
