@@ -3,23 +3,24 @@ require 'package'
 class Github_cli < Package
   description 'Official Github CLI tool'
   homepage 'https://cli.github.com/'
-  version '2.50.0'
+  version '2.51.0'
   license 'MIT'
   compatibility 'all'
   source_url({
-    aarch64: 'https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_armv6.tar.gz',
-     armv7l: 'https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_armv6.tar.gz',
-       i686: 'https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_386.tar.gz',
-     x86_64: 'https://github.com/cli/cli/releases/download/v2.50.0/gh_2.50.0_linux_amd64.tar.gz'
+    aarch64: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_armv6.tar.gz",
+     armv7l: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_armv6.tar.gz",
+       i686: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_386.tar.gz",
+     x86_64: "https://github.com/cli/cli/releases/download/v#{version}/gh_#{version}_linux_amd64.tar.gz"
   })
   source_sha256({
-    aarch64: 'adc010fdc4139d12550f692b448232556b87dc35e16dea7bace5f7b6dab458e5',
-     armv7l: 'adc010fdc4139d12550f692b448232556b87dc35e16dea7bace5f7b6dab458e5',
-       i686: '634bfb463f2f105d16b0eb3cae3eaff3ce6463d9230aeccea5305347dd32a459',
-     x86_64: '7f9795b3ce99351a1bfc6ea3b09b7363cb1eccca19978a046bcb477839efab82'
+    aarch64: 'a9943b3ea1907fc7b4d5bca4a2c2fa81722b02bbdaf11725516b2b0cfc78c449',
+     armv7l: 'a9943b3ea1907fc7b4d5bca4a2c2fa81722b02bbdaf11725516b2b0cfc78c449',
+       i686: 'dda319dc8c0c62bfbb238c61dafd3da0db2ea08a94c6ada3111099bc808ecaf5',
+     x86_64: 'd7725fb2a643ca024edf5b4e2f2cca0431a404bbc2e251086ffca2b25e37be11'
   })
 
   no_compile_needed
+  no_shrink
   no_strip # ./usr/local/bin/gh: 1: ./usr/local/bin/gh: Syntax error: redirection unexpected (expecting ")")
 
   def self.install
