@@ -126,10 +126,10 @@ def main(pkg)
   missingpkgdeps.each do |adddep|
     puts "\n Adding deps: #{adddep}"
     gawk_cmd = if File.foreach("#{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb").grep(/depends_on/).any?
-      # This files contains dependencies already, so add new deps after existing dependencies.
+                 # This files contains dependencies already, so add new deps after existing dependencies.
                  "gawk -i inplace -v dep=\"  depends_on '#{adddep}' # R\" 'FNR==NR{ if (/depends_on/) p=NR; next} 1; FNR==p{ print dep }' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
                else
-      # This files doesn't contain deps, so just add new deps.
+                 # This files doesn't contain deps, so just add new deps.
                  "gawk -i inplace -v dep=\"  depends_on '#{adddep}' # R\" 'FNR==NR{ if (/})/) p=NR; next} 1; FNR==p{ print \"\\n\" dep }' #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb #{CREW_PREFIX}/lib/crew/packages/#{pkg}.rb"
                end
     system(gawk_cmd)

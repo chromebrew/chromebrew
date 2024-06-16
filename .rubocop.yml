@@ -36,9 +36,6 @@ Layout/HashAlignment:
 
 # End temporarily disabled cops
 
-Layout/CommentIndentation:
-  Enabled: false
-
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 

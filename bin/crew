@@ -624,10 +624,10 @@ def unpack(meta)
         puts "Empty archive: #{meta[:filename]}".orange
       end
       target_dir = if entries.length == 1 && File.directory?(entries.first)
-        # Use `extract_dir/dir_in_archive` if there is only one directory.
+                     # Use `extract_dir/dir_in_archive` if there is only one directory.
                      entries.first
                    else
-        # Use `extract_dir` otherwise
+                     # Use `extract_dir` otherwise
                      @extract_dir
                    end
     else
