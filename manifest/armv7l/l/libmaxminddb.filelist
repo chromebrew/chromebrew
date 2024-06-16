@@ -5,3 +5,4 @@
 /usr/local/lib/cmake/maxminddb/maxminddb-config.cmake
 /usr/local/lib/libmaxminddb.so
 /usr/local/lib/libmaxminddb.so.0.0.7
+/usr/local/lib/pkgconfig/libmaxminddb.pc
