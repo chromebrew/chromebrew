@@ -43,9 +43,6 @@ Layout/FirstHashElementIndentation:
   Enabled: false
 # EnforcedStyle: consistent
 
-Layout/LeadingCommentSpace:
-  Enabled: false
-
 Layout/LineLength:
   Enabled: false
 
