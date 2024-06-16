@@ -64,4 +64,3 @@ class Command
     end
   end
 end
-

@@ -14,4 +14,3 @@ class Gcr < Package
   depends_on 'gcr_3'
   depends_on 'gcr_4'
 end
-
