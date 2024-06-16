@@ -106,7 +106,7 @@ class ExitMessage
   def self.handle_messages(msg)
     puts msg
     # Delete printed message from array & only print each message once.
-    @messages.reject! {|x| x.include? msg }
+    @messages.reject! { |x| x.include? msg }
   end
 
   def self.print
@@ -138,7 +138,7 @@ def load_json
   @device   = JSON.load_file(json_path, symbolize_names: true)
 
   # symbolize also values
-  @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+  @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
 end
 
 def save_json(json_object)
@@ -735,7 +735,7 @@ def determine_conflicts(dir, pkg)
     puts 'There is a conflict with the same file in another package:'.orange
     puts conflicts.to_s.orange
   end
-  conflicts.map! { |x| x.to_s.partition(':').last}
+  conflicts.map! { |x| x.to_s.partition(':').last }
   return conflicts
 end
 
@@ -1147,7 +1147,7 @@ def resolve_dependencies
   # compare dependency version with required range (if installed)
   @dependencies.each do |dep|
     dep_name = dep.keys[0]
-    dep_info = @device[:installed_packages].select {|pkg| pkg[:name] == dep_name } [0]
+    dep_info = @device[:installed_packages].select { |pkg| pkg[:name] == dep_name } [0]
 
     # skip if dependency is not installed
     next unless dep_info

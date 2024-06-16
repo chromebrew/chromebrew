@@ -46,9 +46,6 @@ Layout/FirstHashElementIndentation:
 Layout/LineLength:
   Enabled: false
 
-Layout/SpaceInsideBlockBraces:
-  Enabled: false
-
 Layout/SpaceInsideParens:
   Enabled: false
 
