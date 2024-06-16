@@ -92,7 +92,7 @@ class Webkit2gtk_4_1 < Package
     unless File.file?('build.ninja')
       system "#{"LDFLAGS='-Wl,--no-keep-memory'" if ARCH == 'x86_64'} \
           cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_FNO_LTO_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \

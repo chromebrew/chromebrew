@@ -145,7 +145,7 @@ class Webkitgtk_6 < Package
     unless File.file?('build.ninja')
       system "#{"LDFLAGS='-Wl,--no-keep-memory'" if ARCH == 'x86_64'} CC='#{@workdir}/bin/gcc' CXX='#{@workdir}/bin/g++' \
           cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_FNO_LTO_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          #{CREW_CMAKE_OPTIONS.gsub('mold', 'gold').sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
