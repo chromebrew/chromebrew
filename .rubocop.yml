@@ -46,9 +46,6 @@ Layout/FirstHashElementIndentation:
 Layout/LineLength:
   Enabled: false
 
-Layout/SpaceInsideParens:
-  Enabled: false
-
 Layout/TrailingEmptyLines:
   Enabled: false
 

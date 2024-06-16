@@ -586,7 +586,7 @@ def unpack(meta)
     FileUtils.mkdir_p @extract_dir, verbose: @fileutils_verbose
 
     build_cachefile = File.join(CREW_CACHE_DIR, "#{@pkg.name}-#{@pkg.version}-build-#{@device[:architecture]}.tar.zst")
-    if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && ( system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256" )
+    if CREW_CACHE_BUILD && File.file?(build_cachefile) && File.file?("#{build_cachefile}.sha256") && (system "cd #{CREW_CACHE_DIR} && sha256sum -c #{build_cachefile}.sha256")
       @pkg.cached_build = true
       puts "Extracting cached build directory from #{build_cachefile}".lightgreen
       system "tar -Izstd -x#{@verbose}f #{build_cachefile} -C #{CREW_BREW_DIR}", exception: true
@@ -1013,7 +1013,7 @@ def shrink_dir(dir)
   end
 end
 
-def install_files(src, dst = File.join( CREW_PREFIX, src.delete_prefix('./usr/local') ))
+def install_files(src, dst = File.join(CREW_PREFIX, src.delete_prefix('./usr/local')))
   if Dir.exist?(src)
     if File.executable?("#{CREW_PREFIX}/bin/crew-mvdir") && !CREW_DISABLE_MVDIR
       system "crew-mvdir #{@short_verbose} #{src} #{dst}", exception: true
@@ -1181,7 +1181,7 @@ def resolve_dependencies
   puts 'The following packages also need to be installed: '
 
   @dependencies.each do |dep|
-    abort "Dependency #{dep} was not found.".lightred unless File.file?( File.join(CREW_PACKAGES_PATH, "#{dep}.rb") )
+    abort "Dependency #{dep} was not found.".lightred unless File.file?(File.join(CREW_PACKAGES_PATH, "#{dep}.rb"))
   end
 
   puts @dependencies.join(' ')
@@ -1667,7 +1667,7 @@ def build_command(args)
     # Process preflight block to see if package should be built
     pre_flight
 
-    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && ( @pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP' ) && !@pkg.no_compile_needed?
+    if !@pkg.is_fake? && PackageUtils.compatible?(@pkg) && @pkg.source?(ARCH) && (@pkg.no_source_build? || @pkg.source_url.to_s.upcase != 'SKIP') && !@pkg.no_compile_needed?
       resolve_dependencies_and_build
     else
       puts 'Unable to build a fake package. Skipping build.'.lightred if @pkg.is_fake?
