@@ -38,7 +38,7 @@ class Perl < Package
       -Dsitearch=#{CREW_LIB_PREFIX}/perl5/#{version}/site_perl \
       -Dvendorlib=#{CREW_PREFIX}/share/perl5/vendor_perl \
       -Dvendorarch=#{CREW_LIB_PREFIX}/perl5/#{version}/vendor_perl \
-      -Dcc=#{CREW_TGT}-gcc \
+      -Dcc=#{CREW_TARGET}-gcc \
       -Doptimize='#{CREW_COMMON_FLAGS}' \
       -Dlldlflags='-shared #{CREW_LDFLAGS}' -Dldflags='#{CREW_LDFLAGS}' \
       -Dusethreads \

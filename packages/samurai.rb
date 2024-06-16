@@ -26,7 +26,7 @@ class Samurai < Package
   def self.build
     system "make CFLAGS='#{CREW_COMMON_FLAGS}' \
                 LDFLAGS='#{CREW_LDFLAGS}' \
-                CC='#{CREW_TGT}-gcc'"
+                CC='#{CREW_TARGET}-gcc'"
   end
 
   def self.install

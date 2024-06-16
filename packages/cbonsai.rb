@@ -23,7 +23,7 @@ class Cbonsai < Package
 
   def self.patch
     # Use correct gcc compiler
-    system "sed -i 's:= cc:= #{CREW_TGT}-gcc:' Makefile"
+    system "sed -i 's:= cc:= #{CREW_TARGET}-gcc:' Makefile"
 
     # Move the manpage from section 1 to section 6
     # (See https://gitlab.com/jallbrit/cbonsai/-/merge_requests/21 for reasoning)

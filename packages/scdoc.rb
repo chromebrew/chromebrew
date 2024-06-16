@@ -23,7 +23,7 @@ class Scdoc < Package
 
   def self.patch
     # Use correct gcc compiler
-    system "sed -i '2 s:^:CC = #{CREW_TGT}-gcc\\n:' Makefile"
+    system "sed -i '2 s:^:CC = #{CREW_TARGET}-gcc\\n:' Makefile"
 
     # Build a dynamically linked binary
     system "sed -i 's:LDFLAGS+=-static:LDFLAGS+=:' Makefile" # Compile dynamically

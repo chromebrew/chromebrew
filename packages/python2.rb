@@ -65,11 +65,11 @@ class Python2 < Package
     Dir.mkdir 'builddir'
     Dir.chdir 'builddir' do
       system "env CFLAGS=#{@py_common_flags} CXXFLAGS=#{@py_common_flags} \
-        CC='#{CREW_TGT}-gcc' \
-        CXX='#{CREW_TGT}-g++' \
+        CC='#{CREW_TARGET}-gcc' \
+        CXX='#{CREW_TARGET}-g++' \
         CPPFLAGS='#{@cppflags}' \
         LDFLAGS='#{@ldflags}' \
-      ../configure --prefix=#{CREW_PREFIX} --build=#{CREW_BUILD} --host=#{CREW_TGT} --target=#{CREW_TGT} \
+      ../configure --prefix=#{CREW_PREFIX} --build=#{CREW_TARGET} --host=#{CREW_TARGET} --target=#{CREW_TARGET} \
             --with-fpectl \
             --enable-ipv6 \
             --with-threads \

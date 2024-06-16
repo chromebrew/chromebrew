@@ -147,7 +147,7 @@ end
 
 NOTE: All rules can have exceptions, if ***REQUIRED***, exceptions to the rules should be avoided at all costs.
 
-<a name="eq">`CREW_OPTIONS`</a>: Equal to `--prefix=/usr/local --libdir=/usr/local/lib --mandir=/usr/local/share/man --build=armv7l-cros-linux-gnueabihf --host=armv7l-cros-linux-gnueabihf --target=#{CREW_BUILD}`
+<a name="eq">`CREW_OPTIONS`</a>: Equal to `--prefix=/usr/local --libdir=/usr/local/lib --mandir=/usr/local/share/man --disable-dependency-tracking --build=armv7l-cros-linux-gnueabihf --host=armv7l-cros-linux-gnueabihf --target=armv7l-cros-linux-gnueabihf --program-prefix='' --program-suffix=''`
 
 Any additionally required resources for ChromeOS or ChromeBooks can be found [here](https://github.com/chromebrew/chromebrew/wiki/Links)
 
