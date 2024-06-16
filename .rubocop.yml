@@ -64,6 +64,7 @@ Style/GuardClause:
 Style/DocumentDynamicEvalDefinition:
   Enabled: false
 
+# https://github.com/rubocop/rubocop/issues/12132
 Style/OptionalBooleanParameter:
   Enabled: false
 
