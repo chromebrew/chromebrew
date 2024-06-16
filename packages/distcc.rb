@@ -39,7 +39,7 @@ class Distcc < Autotools
     system "sed -i 's/ install-gnome-data//g' Makefile.in"
   end
 
-  pre_configure_options "CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon' NATIVE_COMPILER_TRIPLE='#{CREW_TGT}' INCLUDESERVER_PYTHON='#{CREW_PREFIX}/bin/python3'"
+  pre_configure_options "CFLAGS+=' -DPY_SSIZE_T_CLEAN -fcommon' NATIVE_COMPILER_TRIPLE='#{CREW_TARGET}' INCLUDESERVER_PYTHON='#{CREW_PREFIX}/bin/python3'"
   configure_options '--enable-rfc2553 --disable-Werror --with-python-sys-prefix'
 
   def self.install
@@ -51,20 +51,20 @@ class Distcc < Autotools
     FileUtils.mkdir_p @distcc_destbin_path
     @gcc_version = `gcc -dumpversion`.chomp
     @clang_version = `clang --version|grep version|cut -d " " -f3|cut -d'.' -f1`.chomp
-    distcc_gcc_targets = %W[c++ c89 c99 cc cpp g++ gcc #{CREW_TGT}-g++ #{CREW_TGT}-gcc #{CREW_TGT}-gcc-#{@gcc_version}]
+    distcc_gcc_targets = %W[c++ c89 c99 cc cpp g++ gcc #{CREW_TARGET}-g++ #{CREW_TARGET}-gcc #{CREW_TARGET}-gcc-#{@gcc_version}]
     distcc_clang_targets = %W[clang clang++ clang-#{@clang_version} clang++-#{@clang_version}]
     File.write 'gcc-wrapper', <<~GCC_WRAPPEREOF
       #!/bin/bash
       if `which ccache &>/dev/null` ; then#{' '}
-        exec ccache distcc #{CREW_PREFIX}/bin/#{CREW_TGT}-g${0:$[-2]} "$@"
+        exec ccache distcc #{CREW_PREFIX}/bin/#{CREW_TARGET}-g${0:$[-2]} "$@"
       else
-        exec distcc #{CREW_PREFIX}/bin/#{CREW_TGT}-g${0:$[-2]} "$@"
+        exec distcc #{CREW_PREFIX}/bin/#{CREW_TARGET}-g${0:$[-2]} "$@"
       fi
     GCC_WRAPPEREOF
     FileUtils.install 'gcc-wrapper', "#{@distcc_destbin_path}/gcc-wrapper", mode: 0o755
     # File.write 'clang-wrapper', <<~CLANG_WRAPPEREOF
     #  #!/bin/bash
-    #  exec #{CREW_TGT}-$(basename ${0}) "$@"
+    #  exec #{CREW_TARGET}-$(basename ${0}) "$@"
     # CLANG_WRAPPEREOF
     # FileUtils.install 'clang-wrapper', "#{@distcc_destbin_path}/clang-wrapper", mode: 0o755
     distcc_clang_targets.each do |bin|

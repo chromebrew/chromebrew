@@ -58,7 +58,7 @@ class Libclc < Package
     system "cmake -B builddir -G Ninja libclc \
       #{@cmake_options.gsub('-DCMAKE_LINKER_TYPE=MOLD', '')} \
       -DCMAKE_C_COMPILER=$(which clang) \
-      -DCMAKE_C_COMPILER_TARGET=#{CREW_BUILD} \
+      -DCMAKE_C_COMPILER_TARGET=#{CREW_TARGET} \
       -DCMAKE_CXX_COMPILER=$(which clang++) \
       -DCMAKE_CXX_COMPILER_AR=$(which llvm-ar) \
       -DCMAKE_CXX_COMPILER_RANLIB=$(which llvm-ranlib) \

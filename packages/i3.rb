@@ -34,7 +34,7 @@ class I3 < Package
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
     Dir.chdir "#{CREW_DEST_PREFIX}/bin" do
-      system "for f in \$(ls #{CREW_BUILD}-*); do g=\$(echo \$f | sed 's,#{CREW_BUILD}-,,'); ln -sf \$f \$g; done"
+      system "for f in \$(ls #{CREW_TARGET}-*); do g=\$(echo \$f | sed 's,#{CREW_TARGET}-,,'); ln -sf \$f \$g; done"
       File.write 'starti3', <<~EOF, perm: 0o755
         #!/bin/sh
         stopsommelier

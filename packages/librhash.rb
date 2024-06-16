@@ -25,8 +25,8 @@ class Librhash < Package
     system "mold -run ./configure \
             --prefix=#{CREW_PREFIX} \
             --libdir=#{CREW_LIB_PREFIX}\
-            --cc=#{CREW_TGT}-gcc \
-            --ar=#{CREW_TGT}-gcc-ar \
+            --cc=#{CREW_TARGET}-gcc \
+            --ar=#{CREW_TARGET}-gcc-ar \
             --enable-gettext \
             --enable-openssl \
             --extra-cflags='#{CREW_COMMON_FLAGS}'"
