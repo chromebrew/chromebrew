@@ -9,8 +9,7 @@ class Ruby_rubocop < RUBY
   version '1.63.2-ruby-3.3'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://github.com/chromebrew/chromebrew/raw/master/.rubocop.yml'
-  source_sha256 '38f6c68465c7224bdd7bcb1b37f7b49283f46def71dc56553069e749afab4b85'
+  source_url 'SKIP'
 
   depends_on 'libyaml'
   depends_on 'xdg_base'
@@ -18,14 +17,4 @@ class Ruby_rubocop < RUBY
   conflicts_ok
   no_compile_needed
   no_fhs
-
-  ruby_install_extras <<~EOF
-    FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/.config/rubocop/" if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
-    FileUtils.install '.rubocop.yml', "#{CREW_DEST_PREFIX}/.config/rubocop/config.yml", mode: 0o644
-  EOF
-
-  def self.postinstall
-    puts "Chromebrew rubocop config file was installed at #{CREW_PREFIX}/.config/rubocop/config.yml".lightblue
-    puts 'This can be overridden by a ~/.rubocop.yml'.lightblue
-  end
 end
