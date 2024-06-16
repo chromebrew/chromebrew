@@ -20,9 +20,6 @@ AllCops:
 Security/Eval:
   Enabled: false
 
-Lint/ImplicitStringConcatenation:
-  Enabled: false
-
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
