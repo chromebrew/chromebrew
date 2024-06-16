@@ -46,9 +46,6 @@ Layout/FirstHashElementIndentation:
 Layout/LineLength:
   Enabled: false
 
-Lint/LiteralAsCondition:
-  Enabled: false
-
 Style/RedundantReturn:
   Enabled: false
 
