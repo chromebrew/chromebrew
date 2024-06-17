@@ -8926,6 +8926,11 @@ url: https://github.com/intel/vc-intrinsics/releases
 activity: low
 ---
 kind: url
+name: vcpkg
+url: https://github.com/microsoft/vcpkg/releases
+activity: low
+---
+kind: url
 name: vamp_sdk
 url: https://code.soundsoftware.ac.uk/projects/vamp-plugin-sdk/files
 activity: medium
