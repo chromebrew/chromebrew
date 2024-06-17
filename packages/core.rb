@@ -3,7 +3,7 @@ require 'package'
 class Core < Package
   description 'Core Chromebrew Packages.'
   homepage 'https://github.com/chromebrew/chromebrew'
-  version '2.3'
+  version '2.4'
   license 'GPL-3+'
   compatibility 'all'
 
@@ -52,6 +52,7 @@ class Core < Package
   depends_on 'libtirpc'
   depends_on 'libunbound'
   depends_on 'libunistring'
+  depends_on 'libversion'
   depends_on 'libxml2'
   depends_on 'libyaml'
   depends_on 'lz4'
