@@ -24,7 +24,7 @@ class Command
       if verbose
         installed_packages['======='] = '======='
         installed_packages['Package'] = 'Version'
-        first_col_width = installed_packages.keys.max {|a, b| a.size <=> b.size }.size
+        first_col_width = installed_packages.keys.max { |a, b| a.size <=> b.size }.size
         installed_packages.sort.to_h.each do |package, version|
           puts "#{package.ljust(first_col_width)}  #{version}".lightgreen
         end

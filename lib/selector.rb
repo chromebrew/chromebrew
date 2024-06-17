@@ -21,7 +21,7 @@ class Selector
                end
 
     # substitute expressions in the message ("%{variable}")
-    @prompt = prompt.transform_values {|p| format(p, { total_opts: @options.size, default: @options[0][:value] }) }
+    @prompt = prompt.transform_values { |p| format(p, { total_opts: @options.size, default: @options[0][:value] }) }
   end
 
   def show_prompt

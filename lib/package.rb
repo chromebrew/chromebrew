@@ -178,7 +178,7 @@ class Package
 
       # lambda for comparing the given range with installed version
       ver_check = lambda do |installed_ver|
-        unless Gem::Version.new(installed_ver).send( operator.to_sym, Gem::Version.new(target_ver) )
+        unless Gem::Version.new(installed_ver).send(operator.to_sym, Gem::Version.new(target_ver))
           # print error if the range is not fulfilled
           warn <<~EOT.lightred
             Package #{name} depends on '#{dep_name}' (#{operator} #{target_ver}), however version '#{installed_ver}' is currently installed :/

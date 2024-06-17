@@ -32,9 +32,9 @@ class Luajit_lgi < Package
     system "make LUA_INCDIR=#{@lua_include} \
        LUA_CFLAGS=#{@lua_cflags}"
     # system "meson setup #{CREW_MESON_OPTIONS} \
-    #-Dlua-pc=luajit \
-    #-Dlua-bin=#{CREW_PREFIX}/bin/luajit \
-    #-Dtests=false \
+    # -Dlua-pc=luajit \
+    # -Dlua-bin=#{CREW_PREFIX}/bin/luajit \
+    # -Dtests=false \
     # builddir"
     # system 'meson configure --no-pager builddir'
     # system 'mold -run samu -C builddir'

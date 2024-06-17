@@ -29,8 +29,8 @@ class Glibc_build227 < Package
   })
 
   def self.patch
-      # Patch to avoid old ld issue on glibc 2.23 by using ld configure
-      # portion from https://github.com/bminor/glibc/blob/master/configure
+    # Patch to avoid old ld issue on glibc 2.23 by using ld configure
+    # portion from https://github.com/bminor/glibc/blob/master/configure
     @glibc_223_i686_patch = <<~'GLIBC_223_HEREDOC'
       --- a/configure	2021-12-22 11:42:36.689574968 -0500
       +++ b/configure	2021-12-22 11:58:43.052504544 -0500

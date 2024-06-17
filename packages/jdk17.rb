@@ -40,7 +40,7 @@ class Jdk17 < Package
       EOT
     end
 
-    return if File.exist?( URI(source_url).path )
+    return if File.exist?(URI(source_url).path)
 
     abort <<~EOT.orange
 

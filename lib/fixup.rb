@@ -121,7 +121,7 @@ pkg_update_arr.each do |pkg|
       end
       File.write "#{CREW_CONFIG_PATH}/device.json.new", JSON.pretty_generate(JSON.parse(@device.to_json))
       @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json.new", symbolize_names: true)
-      @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+      @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
       raise StandardError, 'Failed to replace pkg name...'.lightred unless @device[:installed_packages].any? { |elem| elem[:name] == pkg[:pkg_rename] }
       # Ok to write working device.json
       File.write "#{CREW_CONFIG_PATH}/device.json", JSON.pretty_generate(JSON.parse(@device.to_json))
@@ -134,7 +134,7 @@ pkg_update_arr.each do |pkg|
     end
     # Reload json file.
     @device = JSON.load_file("#{CREW_CONFIG_PATH}/device.json", symbolize_names: true)
-    @device.transform_values! {|val| val.is_a?(String) ? val.to_sym : val }
+    @device.transform_values! { |val| val.is_a?(String) ? val.to_sym : val }
     # Ok to remove backup and temporary json files.
     FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.bak"
     FileUtils.rm_f "#{CREW_CONFIG_PATH}/device.json.new"

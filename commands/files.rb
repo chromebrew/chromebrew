@@ -44,4 +44,3 @@ class Command
     puts "Disk usage: #{human_size(size)}".lightgreen
   end
 end
-
