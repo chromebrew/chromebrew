@@ -3,12 +3,12 @@ require 'package'
 class Edge < Package
   description 'Microsoft Edge is the fast and secure browser'
   homepage 'https://www.microsoft.com/en-us/edge'
-  version '126.0.2592.56-1'
+  version '126.0.2592.61-1'
   license 'MIT'
   compatibility 'x86_64'
   min_glibc '2.29'
   source_url "https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_#{version}_amd64.deb"
-  source_sha256 '3592e53c6819a3ca3319648b0f8cf31446bcbe22aad5cf16d71c963ae6918d76'
+  source_sha256 'ee0a6adf6dd341ea7570497198ab2a58fb6331c881f999c4f2cecb8d89ca9cdb'
 
   depends_on 'at_spi2_core'
   depends_on 'libcom_err'
@@ -45,6 +45,6 @@ class Edge < Package
   end
 
   def self.postinstall
-    puts "\nType 'edge' to get started.\n".lightblue
+    ExitMessage.add "\nType 'edge' to get started.\n".lightblue
   end
 end
