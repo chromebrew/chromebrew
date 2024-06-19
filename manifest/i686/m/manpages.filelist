@@ -2497,6 +2497,8 @@
 /usr/local/share/man/man3type/regex_t.3type.zst
 /usr/local/share/man/man3type/regmatch_t.3type.zst
 /usr/local/share/man/man3type/regoff_t.3type.zst
+/usr/local/share/man/man3type/rlim_t.3type.zst
+/usr/local/share/man/man3type/rlimit.3type.zst
 /usr/local/share/man/man3type/sa_family_t.3type.zst
 /usr/local/share/man/man3type/sigevent.3type.zst
 /usr/local/share/man/man3type/siginfo_t.3type.zst
