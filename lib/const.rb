@@ -2,7 +2,7 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.1'
+CREW_VERSION = '1.49.2'
 
 # kernel architecture
 KERN_ARCH = Etc.uname[:machine]
@@ -327,8 +327,8 @@ CREW_DOCOPT = <<~DOCOPT
   Chromebrew - Package manager for Chrome OS https://chromebrew.github.io
 
   Usage:
-    crew build [options] [-k|--keep] [-v|--verbose] <name> ...
-    crew check [-V|--version] [-v|--verbose] <name> ...
+    crew build [options] [-f|--force] [-k|--keep] [-v|--verbose] <name> ...
+    crew check [-f|--force] <name> ...
     crew const [-v|--verbose] [<name> ...]
     crew deps [options] [--deep] [-t|--tree] [-b|--include-build-deps] [--exclude-buildessential] [-v|--verbose] <name> ...
     crew download [options] [-s|--source] [-v|--verbose] <name> ...
@@ -342,7 +342,6 @@ CREW_DOCOPT = <<~DOCOPT
     crew remove [-v|--verbose] <name> ...
     crew search [-v|--verbose] <name> ...
     crew sysinfo [-v|--verbose]
-    crew test [-v|--verbose] [<name> ...]
     crew update [options] [-v|--verbose] [<compatible>]
     crew upgrade [options] [-k|--keep] [-s|--source] [-v|--verbose] [<name> ...]
     crew upload [options] [-v|--verbose] [<name> ...]
