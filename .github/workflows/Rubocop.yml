@@ -22,3 +22,4 @@ jobs:
           filter_mode: nofilter
           only_changed: true
           reporter: github-pr-review
+          rubocop_extensions: rubocop-chromebrew

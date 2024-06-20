@@ -4,6 +4,8 @@
 set -e
 cd /usr/local/lib/crew/packages/
 git clone --depth=1 --branch="$CREW_BRANCH" "$CREW_REPO" ~/build_test
+# Check if rubocop-chromebrew is installed and working, and if not install it.
+rubocop --require rubocop-chromebrew &>/dev/null || gem install rubocop-chromebrew
 # crew wont let you build if you're in the installation directory.
 (cd ~/build_test && yes | CREW_CACHE_ENABLED=1 crew build -vf ~/build_test/packages/hello_world_chromebrew.rb)
 yes | crew install vim
