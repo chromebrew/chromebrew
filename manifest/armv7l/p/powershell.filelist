@@ -369,10 +369,6 @@
 /usr/local/share/powershell/System.dll
 /usr/local/share/powershell/ThirdPartyNotices.txt
 /usr/local/share/powershell/WindowsBase.dll
-/usr/local/share/powershell/_manifest/spdx_2.2/bsi.json
-/usr/local/share/powershell/_manifest/spdx_2.2/manifest.cat
-/usr/local/share/powershell/_manifest/spdx_2.2/manifest.spdx.json
-/usr/local/share/powershell/_manifest/spdx_2.2/manifest.spdx.json.sha256
 /usr/local/share/powershell/createdump
 /usr/local/share/powershell/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
 /usr/local/share/powershell/cs/Microsoft.CodeAnalysis.resources.dll
