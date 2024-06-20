@@ -3,12 +3,11 @@ require 'buildsystems/meson'
 class Mesa < Meson
   description 'Open-source implementation of the OpenGL specification'
   homepage 'https://www.mesa3d.org'
-  @_ver = '24.1.2'
-  version "#{@_ver}-llvm18"
+  version '24.1.2-llvm18'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/mesa/mesa.git'
-  git_hashtag "mesa-#{@_ver}"
+  git_hashtag "mesa-#{version.split('-').first}"
   binary_compression 'tar.zst'
 
   binary_sha256({
