@@ -3,19 +3,19 @@ require 'package'
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
   homepage 'https://docs.microsoft.com/en-us/powershell/'
-  version '7.4.2'
+  version '7.4.3'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
 
   source_url({
-    aarch64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-arm32.tar.gz',
-     armv7l: 'https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-arm32.tar.gz',
-     x86_64: 'https://github.com/PowerShell/PowerShell/releases/download/v7.4.2/powershell-7.4.2-linux-x64.tar.gz'
+    aarch64: "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-linux-arm32.tar.gz",
+     armv7l: "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-linux-arm32.tar.gz",
+     x86_64: "https://github.com/PowerShell/PowerShell/releases/download/v#{version}/powershell-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: '6bf11145e6d15ea8a89d9167bdcef0d75848462e4369c837fda37a6550d2dc5f',
-     armv7l: '6bf11145e6d15ea8a89d9167bdcef0d75848462e4369c837fda37a6550d2dc5f',
-     x86_64: '36605dc37979de5af2e10783bf70c0ad8150521e81e6d7c9322036ebb897e7fe'
+    aarch64: '57713dcab628a7378e84ee3b58711767ab972549dd5545d82c750f0f43c8ac68',
+     armv7l: '57713dcab628a7378e84ee3b58711767ab972549dd5545d82c750f0f43c8ac68',
+     x86_64: '5cfcc228afd3ffce536ec4541abafe97c629afcd6dc85c9a20712894bbf65adb'
   })
 
   depends_on 'xdg_base'
@@ -26,6 +26,7 @@ class Powershell < Package
   def self.install
     FileUtils.mkdir_p %W[#{CREW_DEST_PREFIX}/bin #{CREW_DEST_PREFIX}/share/powershell]
     FileUtils.cp_r Dir['*'], "#{CREW_DEST_PREFIX}/share/powershell"
+    FileUtils.chmod 0o755, "#{CREW_DEST_PREFIX}/share/powershell/pwsh"
     FileUtils.ln_s "#{CREW_PREFIX}/share/powershell/pwsh", "#{CREW_DEST_PREFIX}/bin/pwsh"
   end
 
