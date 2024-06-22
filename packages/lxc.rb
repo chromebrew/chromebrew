@@ -28,5 +28,10 @@ class Lxc < Meson
   def self.patch
     # fix cgroup path
     system 'sed', '-i', 's/cpuset\.//g', 'src/lxc/cgroups/cgfsng.c'
+
+    # use `date` from coreutils
+    # FIXME: Remove `date` binary from `zoneinfo`
+    # meson.build:310:16: ERROR: Command `/usr/local/bin/date --utc --date=@1719046192 +%Y-%m-%d` failed with status 1.
+    system 'sed', '-i', "s,find_program('date'),'/bin/date',g", 'meson.build'
   end
 end
