@@ -15,7 +15,7 @@ def property(*properties)
   properties.each do |prop|
     class_eval <<~EOT, __FILE__, __LINE__ + 1
       def self.#{prop} (prop = nil, &block)
-        if prop.is_a?(Proc)
+        if block
           @#{prop} = block
         elsif prop
           @#{prop} = prop

@@ -17,7 +17,7 @@ class Meson < Package
 
     if @meson_install_extras.is_a?(Proc)
       @meson_install_extras.call
-    else
+    elsif @meson_install_extras
       eval @meson_install_extras
     end
   end
