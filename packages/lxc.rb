@@ -17,6 +17,7 @@ class Lxc < Meson
     -Dlocalstatedir=#{CREW_PREFIX}/var \
     -Druntime-path=#{CREW_PREFIX}/run \
     -Dinit-script=[] \
+    -Ddbus=false \
     -Dapparmor=false \
     -Dselinux=false \
     -Dexamples=false \
