@@ -21,7 +21,7 @@ class Lxc < Meson
     -Dselinux=false \
     -Dexamples=false \
     -Dtests=false \
-    -Dman=false
+    -Dman=false \\
   EOF
 
   def self.patch
