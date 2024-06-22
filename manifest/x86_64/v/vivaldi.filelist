@@ -107,8 +107,6 @@
 /usr/local/share/vivaldi/locales/zh-CN.pak
 /usr/local/share/vivaldi/locales/zh-TW.pak
 /usr/local/share/vivaldi/product_logo_32.xpm
-/usr/local/share/vivaldi/relayproxy-linux
-/usr/local/share/vivaldi/relayproxy.pem
 /usr/local/share/vivaldi/resources.pak
 /usr/local/share/vivaldi/resources/vivaldi/_locales/af/messages.json
 /usr/local/share/vivaldi/resources/vivaldi/_locales/am/messages.json
@@ -207,7 +205,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/adblocker_resources/redirectable_resources.json
 /usr/local/share/vivaldi/resources/vivaldi/background-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/background-common-bundle.js
-/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-741ddd0308abc70428abc6bd8236cf1e.js
+/usr/local/share/vivaldi/resources/vivaldi/background-service-worker-3ad021db15662be581f45f124b96a6be.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle-mailreader-worker.js
 /usr/local/share/vivaldi/resources/vivaldi/bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/components/mail/mail.html
@@ -273,6 +271,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/markdowneditor-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/menus/contextmenu.json
 /usr/local/share/vivaldi/resources/vivaldi/menus/mainmenu.json
+/usr/local/share/vivaldi/resources/vivaldi/mobile-markdown-bundle.js
 /usr/local/share/vivaldi/resources/vivaldi/prefs_definitions.json
 /usr/local/share/vivaldi/resources/vivaldi/resources/4-0-wallpaper-dark.jpg
 /usr/local/share/vivaldi/resources/vivaldi/resources/4-0-wallpaper-light.jpg
@@ -419,6 +418,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/wetter.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/wikipedia.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/wsj.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/favicons/wwwhatsnew.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/yahoo_co_jp.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/yahoo_com.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/favicons/yandex_market_ru.png
@@ -450,6 +450,12 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/picture_in_picture_exit.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/pref-lock.svg
 /usr/local/share/vivaldi/resources/vivaldi/resources/private-window-favicon.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/provider_fastmail.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/provider_gmail.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/provider_icloud.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/provider_outlook.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/provider_proton.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/provider_yahoo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_7net.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_abc.net.au.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_accuweather.png
@@ -498,6 +504,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_dk_bt.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ebay.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ee_delfi_20.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_eguide.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_el_cy_sigma.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_el_newsbomb.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_en_GB_bbc.png
@@ -552,6 +559,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_fr_shein.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ge_ambebi.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_gh_peacefm.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_gmail.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_groupon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_habr.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_habrahabr.png
@@ -603,10 +611,12 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lt_delfi.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_lu_lb.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mg_lexpress.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_microsoft365.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mk_sg_st.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_morele-net.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_mt_times.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_my_malaysiakini.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_myrenault.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nb_aftenposten.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nb_dagbladet.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nb_finn.png
@@ -622,6 +632,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_no_bonprix.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_no_cdon.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_nz_stuff.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_outlook.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_overstock.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_pan_hamari.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_ph_abs.png
@@ -705,6 +716,7 @@
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_whereby.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_wikipedia.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_worldtanks.png
+/usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_wwwhatsnew.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_yahoo.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_yandex_market.png
 /usr/local/share/vivaldi/resources/vivaldi/resources/sd_thumbnails/sd_youtube.png
