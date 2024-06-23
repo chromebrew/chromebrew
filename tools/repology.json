@@ -3,17 +3,17 @@
     "name": "a2png",
     "description": "Converts plain ASCII text into PNG bitmap images.",
     "homepage": "https://sourceforge.net/projects/a2png/",
-    "version": "0.1.5-1",
-    "license": "MIT",
+    "version": "0.1.5-2",
+    "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "a2ps",
     "description": "GNU a2ps is an Any to PostScript filter.",
     "homepage": "https://www.gnu.org/software/a2ps/",
-    "version": "4.15",
+    "version": "4.15.6",
     "license": "GPL-3",
-    "compatibility": "all"
+    "compatibility": "aarch64 armv7l x86_64"
   },
   {
     "name": "aalib",
@@ -979,7 +979,7 @@
     "name": "bitcoin-core",
     "description": "Bitcoin Core is a full Bitcoin client and builds the backbone of the network.",
     "homepage": "https://bitcoincore.org/",
-    "version": "25.1",
+    "version": "27.1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -1435,7 +1435,7 @@
     "name": "chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "126.0.6478.61-1",
+    "version": "126.0.6478.114-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -1611,7 +1611,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "3.29.5",
+    "version": "3.29.6",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -2003,7 +2003,7 @@
     "name": "cups",
     "description": "CUPS is the standards-based, open source printing system",
     "homepage": "https://github.com/OpenPrinting/cups",
-    "version": "2.4.9",
+    "version": "2.4.10",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -2523,7 +2523,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "126.0.2592.56-1",
+    "version": "126.0.2592.61-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2971,7 +2971,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "127.0",
+    "version": "127.0.1",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3891,7 +3891,7 @@
     "name": "github-cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.50.0",
+    "version": "2.51.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -5867,7 +5867,7 @@
     "name": "krita",
     "description": "A generic image manipulation/painting application in the style of Photoshop or GIMP.",
     "homepage": "https://krita.org/en",
-    "version": "5.1.4",
+    "version": "5.2.2",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -6315,7 +6315,7 @@
     "name": "libclc",
     "description": "Library requirements of the OpenCL C programming language",
     "homepage": "https://libclc.llvm.org/",
-    "version": "18.1.6",
+    "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -7137,9 +7137,9 @@
   },
   {
     "name": "libmaxminddb",
-    "description": "MaxMind GeoIP2 database - split package with library and utilities",
-    "homepage": "https://dev.maxmind.com/geoip/geoip2/downloadable/",
-    "version": "1.6.0",
+    "description": "C library for the MaxMind DB file format.",
+    "homepage": "https://maxmind.github.io/libmaxminddb/",
+    "version": "1.10.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -7489,10 +7489,10 @@
   },
   {
     "name": "libpaper",
-    "description": "Library for handling paper characteristics",
-    "homepage": "https://packages.debian.org/unstable/source/libpaper",
-    "version": "1.1.28",
-    "license": "GPL-2",
+    "description": "Library and command-line tools for configuring and getting information on paper sizes.",
+    "homepage": "https://github.com/rrthomas/libpaper",
+    "version": "2.2.5",
+    "license": "LGPL-2.1+",
     "compatibility": "all"
   },
   {
@@ -7803,7 +7803,7 @@
     "name": "libsm",
     "description": "X.org X Session Management Library",
     "homepage": "http://www.x.org",
-    "version": "1.2.4",
+    "version": "1.2.4-5edd20b",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -8174,6 +8174,14 @@
     "version": "1.5",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
+    "name": "libversion",
+    "description": "Advanced version string comparison library.",
+    "homepage": "https://github.com/repology/libversion",
+    "version": "3.0.3",
+    "license": "MIT",
+    "compatibility": "all"
   },
   {
     "name": "libvips",
@@ -8779,7 +8787,7 @@
     "name": "llvm18-build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.",
     "homepage": "http://llvm.org/",
-    "version": "18.1.6",
+    "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -8787,7 +8795,7 @@
     "name": "llvm18-dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
     "homepage": "http://llvm.org/",
-    "version": "18.1.6",
+    "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -8795,7 +8803,7 @@
     "name": "llvm18-lib",
     "description": "LibLLVM and llvm-strip",
     "homepage": "http://llvm.org/",
-    "version": "18.1.6",
+    "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -9131,7 +9139,7 @@
     "name": "manpages",
     "description": "The Linux man-pages project documents the Linux kernel and C library interfaces that are employed by user-space programs.",
     "homepage": "https://www.kernel.org/doc/man-pages/",
-    "version": "6.9",
+    "version": "6.9.1",
     "license": "man-pages, GPL-2+ and BSD",
     "compatibility": "all"
   },
@@ -9267,7 +9275,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.1.1-llvm18",
+    "version": "24.1.2-llvm18",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9594,8 +9602,8 @@
   {
     "name": "msgpack-c",
     "description": "An efficient object serialization library",
-    "homepage": "https://msgpack.org/",
-    "version": "6.0.0",
+    "homepage": "https://github.com/msgpack/msgpack-c",
+    "version": "6.0.1",
     "license": "BSL-1.0",
     "compatibility": "all"
   },
@@ -10635,7 +10643,7 @@
     "name": "openmp",
     "description": "LLVM OpenMP Runtime Library",
     "homepage": "https://openmp.llvm.org/",
-    "version": "18.1.6",
+    "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
   },
@@ -11843,7 +11851,7 @@
     "name": "powershell",
     "description": "Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes",
     "homepage": "https://docs.microsoft.com/en-us/powershell/",
-    "version": "7.4.2",
+    "version": "7.4.3",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12108,6 +12116,14 @@
     "description": "Argcomplete provides bash completion for argparse.",
     "homepage": "https://kislyuk.github.io/argcomplete/",
     "version": "3.1.2-py3.12",
+    "license": "Apache-2.0",
+    "compatibility": "all"
+  },
+  {
+    "name": "py3-argparse-manpage",
+    "description": "Automatically build man-pages for your Python project.",
+    "homepage": "https://github.com/praiskup/argparse-manpage",
+    "version": "4.5-py3.12",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -12840,6 +12856,14 @@
     "compatibility": "all"
   },
   {
+    "name": "py3-pspdfutils",
+    "description": "Utilities for manipulating PostScript documents.",
+    "homepage": "https://github.com/rrthomas/psutils",
+    "version": "3.3.2-py3.12",
+    "license": "GPL-3",
+    "compatibility": "all"
+  },
+  {
     "name": "py3-psutil",
     "description": "psutil is a cross-platform library for process and system monitoring in Python.",
     "homepage": "https://github.com/giampaolo/psutil/",
@@ -12941,6 +12965,14 @@
     "homepage": "https://github.com/pyparsing/pyparsing/",
     "version": "3.1.1-py3.12",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "py3-pypdf",
+    "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files.",
+    "homepage": "https://github.com/py-pdf/pypdf",
+    "version": "4.2.0-py3.12",
+    "license": "BSD-3-Clause",
     "compatibility": "all"
   },
   {
@@ -14619,7 +14651,7 @@
     "name": "sommelier",
     "description": "Sommelier works by redirecting X11 programs to the built-in ChromeOS Exo Wayland server.",
     "homepage": "https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/vm_tools/sommelier/",
-    "version": "20240227-llvm18",
+    "version": "20240607-llvm18",
     "license": "BSD-Google",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -15864,6 +15896,14 @@
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
+    "name": "vcpkg",
+    "description": "C++ Library Manager for Windows, Linux, and MacOS",
+    "homepage": "https://github.com/microsoft/vcpkg",
+    "version": "2024.05.24",
+    "license": "MIT",
+    "compatibility": "all"
+  },
+  {
     "name": "vdev",
     "description": "A device-file manager for *nix",
     "homepage": "https://github.com/jcnelson/vdev",
@@ -15931,7 +15971,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.7.3329.41-1",
+    "version": "6.8.3381.44-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -15987,7 +16027,7 @@
     "name": "vscodium",
     "description": "VSCodium is Open Source Software Binaries of VSCode with a community-driven default configuration.",
     "homepage": "https://vscodium.com/",
-    "version": "1.90.0.24158",
+    "version": "1.90.2.24171",
     "license": "MIT",
     "compatibility": "aarch64,armv7l,x86_64"
   },
@@ -17121,11 +17161,11 @@
   },
   {
     "name": "zvbi",
-    "description": "The Zapping VBI library, in short ZVBI, provides functions to capture and decode VBI data.",
-    "homepage": "http://zapping.sourceforge.net/ZVBI/",
-    "version": "0.2.35-2",
-    "license": "GPL-2 and LGPL-2",
-    "compatibility": "x86_64 aarch64 armv7l"
+    "description": "VBI capture and decoding library.",
+    "homepage": "https://github.com/zapping-vbi/zvbi",
+    "version": "0.2.42-ae74ae51",
+    "license": "GPL-2+",
+    "compatibility": "all"
   },
   {
     "name": "zziplib",
