@@ -920,6 +920,11 @@ url: https://github.com/reynhout/chrx
 activity: low
 ---
 kind: url
+name: ciano
+url: https://github.com/robertsanseries/ciano/releases
+activity: none
+---
+kind: url
 name: civetweb
 url: https://github.com/civetweb/civetweb/releases
 activity: low
@@ -2828,6 +2833,11 @@ kind: url
 name: gradle
 url: https://services.gradle.org/distributions/
 activity: high
+---
+kind: url
+name: granite
+url: https://github.com/elementary/granite/releases
+activity: medium
 ---
 kind: url
 name: graphene
