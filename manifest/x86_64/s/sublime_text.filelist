@@ -13,6 +13,7 @@
 /usr/local/share/sublime_text/Lib/python3/certifi/__pycache__/core.cpython-38.opt-1.pyc
 /usr/local/share/sublime_text/Lib/python3/certifi/cacert.pem
 /usr/local/share/sublime_text/Lib/python3/certifi/core.py
+/usr/local/share/sublime_text/Lib/python3/certifi/py.typed
 /usr/local/share/sublime_text/Lib/python33/sublime.py
 /usr/local/share/sublime_text/Lib/python33/sublime_plugin.py
 /usr/local/share/sublime_text/Lib/python38/sublime.py
@@ -72,8 +73,9 @@
 /usr/local/share/sublime_text/Packages/XML.sublime-package
 /usr/local/share/sublime_text/Packages/YAML.sublime-package
 /usr/local/share/sublime_text/changelog.txt
-/usr/local/share/sublime_text/crash_reporter
+/usr/local/share/sublime_text/crash_handler
 /usr/local/share/sublime_text/libcrypto.so.1.1
+/usr/local/share/sublime_text/libsqlite3.so
 /usr/local/share/sublime_text/libssl.so.1.1
 /usr/local/share/sublime_text/plugin_host-3.3
 /usr/local/share/sublime_text/plugin_host-3.8
