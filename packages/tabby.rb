@@ -3,18 +3,18 @@ require 'package'
 class Tabby < Package
   description 'Tabby is an infinitely customizable cross-platform terminal app for local shells, serial, SSH and Telnet connections.'
   homepage 'https://tabby.sh/'
-  version '1.0.206'
+  version '1.0.208'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url({
-    aarch64: 'https://github.com/Eugeny/tabby/releases/download/v1.0.206/tabby-1.0.206-linux-armv7l.tar.gz',
-     armv7l: 'https://github.com/Eugeny/tabby/releases/download/v1.0.206/tabby-1.0.206-linux-armv7l.tar.gz',
-     x86_64: 'https://github.com/Eugeny/tabby/releases/download/v1.0.206/tabby-1.0.206-linux-x64.tar.gz'
+    aarch64: "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-linux-armv7l.tar.gz",
+     armv7l: "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-linux-armv7l.tar.gz",
+     x86_64: "https://github.com/Eugeny/tabby/releases/download/v#{version}/tabby-#{version}-linux-x64.tar.gz"
   })
   source_sha256({
-    aarch64: 'cef0057e7bc1e13ef7f24c10219a49c972351f83fe6ed6b0b78af1858449faa3',
-     armv7l: 'cef0057e7bc1e13ef7f24c10219a49c972351f83fe6ed6b0b78af1858449faa3',
-     x86_64: '7dd30952a5beacab28cfaccc1f2978451622843a37fd8901f79af6b107fe234b'
+    aarch64: '475ad3658768642158c1af85f92fa45b381ade8ddfc65c4430df58dda581988a',
+     armv7l: '475ad3658768642158c1af85f92fa45b381ade8ddfc65c4430df58dda581988a',
+     x86_64: 'c30d8c0c26e8d6d9f4d173ad79668ca9e4fccd521850c0df8bfb222df65edcff'
   })
 
   depends_on 'at_spi2_core'
