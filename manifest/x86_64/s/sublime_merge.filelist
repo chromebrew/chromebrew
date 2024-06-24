@@ -57,8 +57,9 @@
 /usr/local/share/sublime_merge/Packages/Theme - Merge.sublime-package
 /usr/local/share/sublime_merge/Packages/XML.sublime-package
 /usr/local/share/sublime_merge/Packages/YAML.sublime-package
+/usr/local/share/sublime_merge/attribution.txt
 /usr/local/share/sublime_merge/changelog.txt
-/usr/local/share/sublime_merge/crash_reporter
+/usr/local/share/sublime_merge/crash_handler
 /usr/local/share/sublime_merge/git-credential-sublime
 /usr/local/share/sublime_merge/ssh-askpass-sublime
 /usr/local/share/sublime_merge/sublime_merge
