@@ -2150,6 +2150,11 @@ url: ftp://ftp.freetds.org/pub/freetds/stable/
 activity: medium
 ---
 kind: url
+name: freetube
+url: https://github.com/FreeTubeApp/FreeTube/releases
+activity: medium
+---
+kind: url
 name: freetype
 url: http://download.savannah.gnu.org/releases/freetype
 activity: medium
