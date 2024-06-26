@@ -3,7 +3,7 @@ require 'package'
 class Repo < Package
   description 'The Multiple Git Repository Tool'
   homepage 'https://gerrit.googlesource.com/git-repo/'
-  version '2.35'
+  version '2.45'
   license 'Apache 2.0'
   compatibility 'all'
   source_url 'https://gerrit.googlesource.com/git-repo.git'
