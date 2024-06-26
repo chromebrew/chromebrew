@@ -3,7 +3,7 @@ require 'buildsystems/meson'
 class Networkmanager < Meson
   description 'Network connection manager and user applications'
   homepage 'https://wiki.gnome.org/Projects/NetworkManager'
-  version '1.46.0'
+  version '1.48.2'
   license 'GPL-2+ and LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git'
@@ -11,9 +11,9 @@ class Networkmanager < Meson
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '15cab36411c547cb2e57d1349926ad63c937b48e7f74f35de4b36902f85ae6db',
-     armv7l: '15cab36411c547cb2e57d1349926ad63c937b48e7f74f35de4b36902f85ae6db',
-     x86_64: '497b1f4cc7d66917d96ec174f4ab5c9d25eb922607eb97a7a19f068a3b30475f'
+    aarch64: 'be676e425aeda5e4a57548abace507d4a14f64c402462c6f4d6a216f043e6b8b',
+     armv7l: 'be676e425aeda5e4a57548abace507d4a14f64c402462c6f4d6a216f043e6b8b',
+     x86_64: '707282a14ff7e04a90467676982d21593c6f315e428466162756d31070d97437'
   })
 
   depends_on 'curl' # R
