@@ -3,11 +3,11 @@ require 'package'
 class Slack_cli < Package
   description 'The Slack CLI allows you to interact with your workflow apps via the command line.'
   homepage 'https://api.slack.com/automation/cli/commands'
-  version '2.22.0'
+  version '2.26.0'
   license 'MIT'
   compatibility 'all'
-  source_url 'https://downloads.slack-edge.com/slack-cli/slack_cli_2.22.0_linux_64-bit.tar.gz'
-  source_sha256 '6416ca1a03c6ac161c961ead9056dbb833f6361049c7b6b12fc577983acef4fb'
+  source_url "https://downloads.slack-edge.com/slack-cli/slack_cli_#{version}_linux_64-bit.tar.gz"
+  source_sha256 '823379cec4d4210b19dcfa00167121e8eecf489ce7adbd9b87c6dc48f26dc598'
 
   depends_on 'git' # R
 
