@@ -6331,6 +6331,11 @@ url: https://github.com/kkos/oniguruma/releases
 activity: medium
 ---
 kind: url
+name: onlyoffice
+url: https://github.com/ONLYOFFICE/appimage-desktopeditors/releases
+activity: medium
+---
+kind: url
 name: opam
 url: https://github.com/ocaml/opam/releases
 activity: medium
