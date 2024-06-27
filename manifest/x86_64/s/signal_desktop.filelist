@@ -109,7 +109,7 @@
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@nodert-win10-rs4/windows.data.xml.dom/build/Release/binding.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@nodert-win10-rs4/windows.ui.notifications/build/Release/binding.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/better-sqlite3/build/Release/better_sqlite3.node
-/usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/libsignal-client/prebuilds/linux-x64/node.napi.node
+/usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/libsignal-client/prebuilds/linux-x64/@signalapp+libsignal-client.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/ringrtc/build/linux/libringrtc-x64.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/@signalapp/windows-dummy-keystroke/build/Release/NativeExtension.node
 /usr/local/share/Signal/resources/app.asar.unpacked/node_modules/fs-xattr/build/Release/xattr.node
