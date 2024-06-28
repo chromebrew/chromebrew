@@ -3,15 +3,17 @@ require 'package'
 class Platformsh < Package
   description 'The unified tool for managing your Platform.sh services from the command line.'
   homepage 'https://docs.platform.sh/overview/cli.html'
-  version '5.0.14'
+  version '5.0.15'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
   source_url "https://github.com/platformsh/cli/releases/download/#{version}/platform_#{version}_linux_amd64.tar.gz"
-  source_sha256 '8aa453be78808427af14780b9e4fe5c5c0f3c40ea251910257463ec14f1e820e'
+  source_sha256 'd21e53869f694a9d53814c8d555023b04c3e900655cdf6ec1f33cc5f38598529'
 
   depends_on 'php83' unless File.exist? "#{CREW_PREFIX}/bin/php"
 
   no_compile_needed
+  no_shrink
+  print_source_bashrc
 
   def self.install
     FileUtils.install 'platform', "#{CREW_DEST_PREFIX}/bin/platform", mode: 0o755
