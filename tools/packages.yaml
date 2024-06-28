@@ -6311,6 +6311,11 @@ url: https://github.com/CoolerVoid/0d1n/releases
 activity: low
 ---
 kind: url
+name: ollama
+url: https://github.com/ollama/ollama/releases
+activity: high
+---
+kind: url
 name: ondir
 url: https://swapoff.org/ondir.html
 activity: low
