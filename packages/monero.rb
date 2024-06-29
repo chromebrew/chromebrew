@@ -3,20 +3,21 @@ require 'package'
 class Monero < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.18.2.2'
+  version '0.18.3.3'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
-  compatibility 'all'
-  case ARCH
-  when 'aarch64', 'armv7l'
-    source_url 'https://downloads.getmonero.org/cli/monero-linux-armv7-v0.18.2.2.tar.bz2'
-    source_sha256 '11b70a9965e3749970531baaa6c9d636b631d8b0a0256ee23a8e519f13b4b300'
-  when 'i686'
-    source_url 'https://downloads.getmonero.org/cli/monero-linux-x86-v0.18.2.2.tar.bz2'
-    source_sha256 'c0999191b57156fc7b4e7e64fe50ffdf16781bae0ebc12c96c41b2c60bdee79f'
-  when 'x86_64'
-    source_url 'https://downloads.getmonero.org/cli/monero-linux-x64-v0.18.2.2.tar.bz2'
-    source_sha256 '186800de18f67cca8475ce392168aabeb5709a8f8058b0f7919d7c693786d56b'
-  end
+  compatibility 'x86_64 aarch64 armv7l'
+  min_glibc '2.27'
+
+  source_url({
+    aarch64: "https://downloads.getmonero.org/cli/monero-linux-armv7-v#{version}.tar.bz2",
+     armv7l: "https://downloads.getmonero.org/cli/monero-linux-armv7-v#{version}.tar.bz2",
+     x86_64: "https://downloads.getmonero.org/cli/monero-linux-x64-v#{version}.tar.bz2"
+  })
+  source_sha256({
+    aarch64: 'f3f982b141cb6c88939d15a83aaa26334d628c0d2766d6834371030dd00401d3',
+     armv7l: 'f3f982b141cb6c88939d15a83aaa26334d628c0d2766d6834371030dd00401d3',
+     x86_64: '47c7e6b4b88a57205800a2538065a7874174cd087eedc2526bee1ebcce0cc5e3'
+  })
 
   no_compile_needed
   no_shrink
@@ -29,6 +30,6 @@ class Monero < Package
   end
 
   def self.postinstall
-    puts "\nType 'monero-wallet-cli' to get started.\n".lightblue
+    ExitMessage.add "\nType 'monero-wallet-cli' to get started.\n".lightblue
   end
 end
