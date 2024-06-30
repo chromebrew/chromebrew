@@ -616,6 +616,14 @@
     "compatibility": "x86_64"
   },
   {
+    "name": "audaspace",
+    "description": "A high level and feature rich audio library written in C++ with language bindings.",
+    "homepage": "https://github.com/audaspace/audaspace",
+    "version": "1.5.0-4326b24",
+    "license": "Apache-2.0",
+    "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
     "name": "augeas",
     "description": "Augeas is a configuration editing tool that parses native formats and transforms them into a tree.",
     "homepage": "http://augeas.net/",
@@ -1010,9 +1018,9 @@
   {
     "name": "blender",
     "description": "Blender is the free and open source 3D creation suite.",
-    "homepage": "https://www.blender.org/",
-    "version": "4.0.2",
-    "license": "GPL-2",
+    "homepage": "https://www.blender.org",
+    "version": "4.1.1",
+    "license": "GPLv3+",
     "compatibility": "x86_64"
   },
   {
@@ -1059,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.67.115",
+    "version": "1.67.123",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1352,6 +1360,14 @@
     "compatibility": "all"
   },
   {
+    "name": "ceres-solver",
+    "description": "A large scale non-linear optimization library.",
+    "homepage": "http://ceres-solver.org/",
+    "version": "2.2.0",
+    "license": "BSD-3 Clause",
+    "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
     "name": "cf",
     "description": "The official command line client for Cloud Foundry",
     "homepage": "https://docs.cloudfoundry.org/cf-cli/",
@@ -1435,7 +1451,7 @@
     "name": "chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "126.0.6478.114-1",
+    "version": "126.0.6478.126-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -1470,6 +1486,14 @@
     "version": "3.0.2",
     "license": "unlicensed",
     "compatibility": "all"
+  },
+  {
+    "name": "ciano",
+    "description": "A multimedia file converter focused on simplicity.",
+    "homepage": "https://robertsanseries.github.io/ciano",
+    "version": "0.2.4",
+    "license": "GPL-3.0",
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "civetweb",
@@ -1723,7 +1747,7 @@
     "name": "composer",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
-    "version": "2.7.6",
+    "version": "2.7.7",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2523,7 +2547,7 @@
     "name": "edge",
     "description": "Microsoft Edge is the fast and secure browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
-    "version": "126.0.2592.61-1",
+    "version": "126.0.2592.81-1",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -2598,6 +2622,14 @@
     "version": "29.1",
     "license": "GPL-3+, FDL-1.3+, BSD, HPND, MIT, W3C, unicode, PSF-2",
     "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
+    "name": "embree",
+    "description": "Intel Embree is a high-performance ray tracing library.",
+    "homepage": "https://www.embree.org/",
+    "version": "4.3.1",
+    "license": "Apache-2.0",
+    "compatibility": "x86_64"
   },
   {
     "name": "enchant",
@@ -2913,9 +2945,9 @@
   },
   {
     "name": "fftw",
-    "description": "FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data",
-    "homepage": "http://www.fftw.org/",
-    "version": "3.3.9",
+    "description": "FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).",
+    "homepage": "https://www.fftw.org/",
+    "version": "3.3.10",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -2971,7 +3003,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "127.0.1",
+    "version": "127.0.2",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3406,6 +3438,14 @@
     "version": "1.2.18",
     "license": "GPL-2",
     "compatibility": "all"
+  },
+  {
+    "name": "freetube",
+    "description": "The Private YouTube Client",
+    "homepage": "https://freetubeapp.io/",
+    "version": "0.21.0",
+    "license": "AGPL-3.0",
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "freetype",
@@ -3891,7 +3931,7 @@
     "name": "github-cli",
     "description": "Official Github CLI tool",
     "homepage": "https://cli.github.com/",
-    "version": "2.51.0",
+    "version": "2.52.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -3947,7 +3987,7 @@
     "name": "glab",
     "description": "A GitLab CLI tool bringing GitLab to your command line",
     "homepage": "https://gitlab.com/gitlab-org/cli",
-    "version": "1.41.0",
+    "version": "1.43.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -4584,6 +4624,14 @@
     "compatibility": "all"
   },
   {
+    "name": "granite",
+    "description": "Library that extends GTK with common widgets and utilities",
+    "homepage": "https://github.com/elementary/granite",
+    "version": "6.2.0",
+    "license": "LGPL-3.0",
+    "compatibility": "x86_64 aarch64 armv7l"
+  },
+  {
     "name": "graphene",
     "description": "A thin layer of graphic data types",
     "homepage": "https://github.com/ebassi/graphene",
@@ -4731,7 +4779,7 @@
     "name": "gtk4",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
     "homepage": "https://developer.gnome.org/gtk4/",
-    "version": "4.15.0",
+    "version": "4.15.2",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -8931,7 +8979,7 @@
     "name": "lua",
     "description": "Lua is a powerful, efficient, lightweight, embeddable scripting language.",
     "homepage": "https://www.lua.org/",
-    "version": "5.4.6-1",
+    "version": "5.4.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9667,7 +9715,7 @@
     "name": "mupdf",
     "description": "MuPDF is a lightweight open source software framework for viewing and converting PDF, XPS, and E-book documents.",
     "homepage": "https://mupdf.com/",
-    "version": "1.20.3",
+    "version": "1.24.4",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9955,7 +10003,7 @@
     "name": "mysql",
     "description": "MySQL Community Edition is a freely downloadable version of the world's most popular open source database",
     "homepage": "https://www.mysql.com/",
-    "version": "8.0.34",
+    "version": "8.4.0",
     "license": "GPL-2",
     "compatibility": "x86_64"
   },
@@ -10235,7 +10283,7 @@
     "name": "networkmanager",
     "description": "Network connection manager and user applications",
     "homepage": "https://wiki.gnome.org/Projects/NetworkManager",
-    "version": "1.46.0",
+    "version": "1.48.2",
     "license": "GPL-2+ and LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10275,7 +10323,7 @@
     "name": "ngrok",
     "description": "ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.",
     "homepage": "https://ngrok.com/",
-    "version": "3.5.0",
+    "version": "3.12.0",
     "license": "Copyright (c) 2015 by Alan Shreve",
     "compatibility": "all"
   },
@@ -10379,7 +10427,7 @@
     "name": "nushell",
     "description": "A new type of shell",
     "homepage": "https://www.nushell.sh/",
-    "version": "0.94.2",
+    "version": "0.95.0",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10464,6 +10512,14 @@
     "compatibility": "all"
   },
   {
+    "name": "ollama",
+    "description": "Get up and running with large language models.",
+    "homepage": "https://ollama.com/",
+    "version": "0.1.47",
+    "license": "MIT",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "ondir",
     "description": "On Dir is a program that automatically executes scripts as you traverse directories at a terminal.",
     "homepage": "https://swapoff.org/ondir.html",
@@ -10494,6 +10550,14 @@
     "version": "6.9.7.1",
     "license": "BSD-2",
     "compatibility": "all"
+  },
+  {
+    "name": "onlyoffice",
+    "description": "The most complete office suite",
+    "homepage": "https://www.onlyoffice.com/en/",
+    "version": "8.0.1",
+    "license": "AGPL-3",
+    "compatibility": "x86_64"
   },
   {
     "name": "opam",
@@ -10574,6 +10638,14 @@
     "version": "3.2.0",
     "license": "Eclipse Public License 2.0",
     "compatibility": "x86_64"
+  },
+  {
+    "name": "openimageio",
+    "description": "OpenImageIO is a toolset for reading, writing, and manipulating image files of any image file format relevant to VFX / animation via a format-agnostic API with a feature set, scalability, and robustness needed for feature film production.",
+    "homepage": "https://github.com/AcademySoftwareFoundation/OpenImageIO",
+    "version": "2.5.12.0-py3.12",
+    "license": "Apache-2.0",
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "openjdk11",
@@ -10699,7 +10771,7 @@
     "name": "openvpn",
     "description": "OpenVPN is an open source VPN daemon",
     "homepage": "https://openvpn.net/",
-    "version": "2.6.8",
+    "version": "2.6.11",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10715,7 +10787,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "111.0.5168.25",
+    "version": "111.0.5168.43",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -10795,7 +10867,7 @@
     "name": "packer",
     "description": "Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.",
     "homepage": "https://www.packer.io/",
-    "version": "1.7.10",
+    "version": "1.11.0",
     "license": "Apache-2.0, BSD-2, BSD-4, MIT, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -10803,7 +10875,7 @@
     "name": "packer-completion",
     "description": "Add bash autocompletion for packer.",
     "homepage": "https://github.com/mrolli/packer-bash-completion",
-    "version": "1.0.0-1",
+    "version": "1.4.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -11731,7 +11803,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.0.14",
+    "version": "5.0.15",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11755,7 +11827,7 @@
     "name": "pmd",
     "description": "An extensible cross-language static code analyzer.",
     "homepage": "https://pmd.github.io/",
-    "version": "6.52.0",
+    "version": "7.2.0",
     "license": "custom",
     "compatibility": "all"
   },
@@ -12888,6 +12960,14 @@
     "compatibility": "all"
   },
   {
+    "name": "py3-pybind11",
+    "description": "Seamless operability between C++11 and Python",
+    "homepage": "https://github.com/pybind/pybind11",
+    "version": "2.12.0-py3.12",
+    "license": "BSD-3 Clause",
+    "compatibility": "all"
+  },
+  {
     "name": "py3-pycairo",
     "description": "Pycairo is a provides bindings for the cairo graphics library.",
     "homepage": "https://cairographics.org/pycairo/",
@@ -13795,7 +13875,7 @@
     "name": "rclone",
     "description": "Rclone is a command-line program to manage files on cloud storage.",
     "homepage": "https://rclone.org/",
-    "version": "1.59.2",
+    "version": "1.67.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13899,7 +13979,7 @@
     "name": "repo",
     "description": "The Multiple Git Repository Tool",
     "homepage": "https://gerrit.googlesource.com/git-repo/",
-    "version": "2.35",
+    "version": "2.45",
     "license": "Apache 2.0",
     "compatibility": "all"
   },
@@ -13955,7 +14035,7 @@
     "name": "rkhunter",
     "description": "Rootkit Hunter, security monitoring and analyzing tool for POSIX compliant systems.",
     "homepage": "http://rkhunter.sourceforge.net/",
-    "version": "1.4.6",
+    "version": "1.4.6-1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -13989,6 +14069,14 @@
     "homepage": "https://github.com/roswell/roswell",
     "version": "20.01.14.104",
     "license": "MIT",
+    "compatibility": "all"
+  },
+  {
+    "name": "rpcsvc-proto",
+    "description": "rpcsvc protocol definitions from glibc",
+    "homepage": "https://github.com/thkukuk/rpcsvc-proto",
+    "version": "1.4.4",
+    "license": "BSD-3",
     "compatibility": "all"
   },
   {
@@ -14219,7 +14307,7 @@
     "name": "scbi",
     "description": "Setup Configure Build Install - Tool to build from sources with local developers checkout support",
     "homepage": "https://github.com/TurboGit/scbi",
-    "version": "8.4",
+    "version": "9.9",
     "license": "Copyright (C) Pascal Obry",
     "compatibility": "all"
   },
@@ -14419,7 +14507,7 @@
     "name": "shellcheck",
     "description": "Static analysis tool for shell scripts",
     "homepage": "https://www.shellcheck.net/",
-    "version": "0.9.0",
+    "version": "0.10.0",
     "license": "GPL-3.0",
     "compatibility": "all"
   },
@@ -14499,7 +14587,7 @@
     "name": "signal-desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.12.0",
+    "version": "7.14.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -14523,7 +14611,7 @@
     "name": "slack-cli",
     "description": "The Slack CLI allows you to interact with your workflow apps via the command line.",
     "homepage": "https://api.slack.com/automation/cli/commands",
-    "version": "2.22.0",
+    "version": "2.26.0",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14891,7 +14979,7 @@
     "name": "stack",
     "description": "The Haskell Tool Stack - Stack is a cross-platform program for developing Haskell projects. It is aimed at Haskellers both new and experienced.",
     "homepage": "https://docs.haskellstack.org/",
-    "version": "2.15.5",
+    "version": "2.15.7",
     "license": "BSD",
     "compatibility": "x86_64"
   },
@@ -14947,7 +15035,7 @@
     "name": "sublime-merge",
     "description": "A snappy UI, three-way merge tool,side-by-side diffs, syntax highlighting, and more.",
     "homepage": "https://www.sublimemerge.com/",
-    "version": "Build 2077",
+    "version": "Build 2096",
     "license": "Copyright Sublime HQ Pty Ltd",
     "compatibility": "x86_64"
   },
@@ -14955,7 +15043,7 @@
     "name": "sublime-text",
     "description": "A sophisticated text editor for code, markup and prose.",
     "homepage": "https://www.sublimetext.com/",
-    "version": "Build 4143",
+    "version": "Build 4169",
     "license": "Copyright Sublime HQ Pty Ltd",
     "compatibility": "x86_64"
   },
@@ -15035,7 +15123,7 @@
     "name": "symfony",
     "description": "Symfony is a set of PHP Components, a Web Application framework",
     "homepage": "https://symfony.com/",
-    "version": "5.8.15",
+    "version": "5.9.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -15083,7 +15171,7 @@
     "name": "tabby",
     "description": "Tabby is an infinitely customizable cross-platform terminal app for local shells, serial, SSH and Telnet connections.",
     "homepage": "https://tabby.sh/",
-    "version": "1.0.206",
+    "version": "1.0.208",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -15187,7 +15275,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.1.2",
+    "version": "5.1.7",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -15235,7 +15323,7 @@
     "name": "terminus",
     "description": "The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform",
     "homepage": "https://github.com/pantheon-systems/terminus",
-    "version": "3.4.0",
+    "version": "3.5.1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
