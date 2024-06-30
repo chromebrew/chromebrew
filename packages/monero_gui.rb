@@ -3,11 +3,11 @@ require 'package'
 class Monero_gui < Package
   description 'Private, decentralized cryptocurrency that keeps your finances confidential and secure.'
   homepage 'https://www.getmonero.org/'
-  version '0.18.2.2'
+  version '0.18.3.3'
   license 'The Cryptonote developers,The Boolberry developers,MIT'
   compatibility 'x86_64'
-  source_url 'https://downloads.getmonero.org/gui/monero-gui-linux-x64-v0.18.2.2.tar.bz2'
-  source_sha256 '027707b0ad740908c26895e3bf569ca284a813263129fe2635049313c5129230'
+  source_url "https://downloads.getmonero.org/gui/monero-gui-linux-x64-v#{version}.tar.bz2"
+  source_sha256 '893c3986583814b048f1109ba1047c8fe2bbe5ecd7687fe767c1b70ec2571e52'
 
   depends_on 'monero'
   depends_on 'xcb_util_image'
@@ -20,11 +20,10 @@ class Monero_gui < Package
   no_shrink
 
   def self.build
-    monero = <<~EOF
+    File.write 'monero.sh', <<~EOF
       #!/bin/bash
       GDK_BACKEND=x11 #{CREW_PREFIX}/bin/monero-wallet-gui "$@"
     EOF
-    File.write('monero.sh', monero)
   end
 
   def self.install
@@ -36,8 +35,11 @@ class Monero_gui < Package
   end
 
   def self.postinstall
-    puts "\nType 'monero' to get started.".lightblue
-    puts "\nTo view the user guide, execute the following:".lightblue
-    puts "crew install zathura && zathura #{CREW_PREFIX}/share/monero/monero-gui-wallet-guide.pdf\n".lightblue
+    ExitMessage.add <<~EOF
+
+      Type 'monero' to get started.
+      To view the user guide, execute the following:
+      crew install zathura && zathura #{CREW_PREFIX}/share/monero/monero-gui-wallet-guide.pdf
+    EOF
   end
 end
