@@ -29,6 +29,7 @@
 /usr/local/include/asm-generic/stat.h
 /usr/local/include/asm-generic/statfs.h
 /usr/local/include/asm-generic/swab.h
+/usr/local/include/asm-generic/termbits-common.h
 /usr/local/include/asm-generic/termbits.h
 /usr/local/include/asm-generic/termios.h
 /usr/local/include/asm-generic/types.h
@@ -79,27 +80,23 @@
 /usr/local/include/drm/etnaviv_drm.h
 /usr/local/include/drm/evdi_drm.h
 /usr/local/include/drm/exynos_drm.h
-/usr/local/include/drm/i810_drm.h
+/usr/local/include/drm/habanalabs_accel.h
 /usr/local/include/drm/i915_drm.h
-/usr/local/include/drm/i915_drm_downstream.h
+/usr/local/include/drm/i915_drm_prelim.h
+/usr/local/include/drm/ivpu_accel.h
 /usr/local/include/drm/lima_drm.h
 /usr/local/include/drm/mediatek_drm.h
-/usr/local/include/drm/mga_drm.h
 /usr/local/include/drm/msm_drm.h
 /usr/local/include/drm/nouveau_drm.h
 /usr/local/include/drm/omap_drm.h
 /usr/local/include/drm/panfrost_drm.h
+/usr/local/include/drm/qaic_accel.h
 /usr/local/include/drm/qxl_drm.h
-/usr/local/include/drm/r128_drm.h
 /usr/local/include/drm/radeon_drm.h
-/usr/local/include/drm/rockchip_drm.h
-/usr/local/include/drm/savage_drm.h
-/usr/local/include/drm/sis_drm.h
 /usr/local/include/drm/tegra_drm.h
 /usr/local/include/drm/v3d_drm.h
 /usr/local/include/drm/vc4_drm.h
 /usr/local/include/drm/vgem_drm.h
-/usr/local/include/drm/via_drm.h
 /usr/local/include/drm/virtgpu_drm.h
 /usr/local/include/drm/vmwgfx_drm.h
 /usr/local/include/linux/acct.h
@@ -110,6 +107,7 @@
 /usr/local/include/linux/agpgart.h
 /usr/local/include/linux/aio_abi.h
 /usr/local/include/linux/am437x-vpfe.h
+/usr/local/include/linux/amt.h
 /usr/local/include/linux/android/binder.h
 /usr/local/include/linux/android/binderfs.h
 /usr/local/include/linux/apm_bios.h
@@ -117,6 +115,7 @@
 /usr/local/include/linux/arm_sdei.h
 /usr/local/include/linux/aspeed-lpc-ctrl.h
 /usr/local/include/linux/aspeed-p2a-ctrl.h
+/usr/local/include/linux/aspeed-video.h
 /usr/local/include/linux/atalk.h
 /usr/local/include/linux/atm.h
 /usr/local/include/linux/atm_eni.h
@@ -145,7 +144,6 @@
 /usr/local/include/linux/batadv_packet.h
 /usr/local/include/linux/batman_adv.h
 /usr/local/include/linux/baycom.h
-/usr/local/include/linux/bcache.h
 /usr/local/include/linux/bcm933xx_hcs.h
 /usr/local/include/linux/bfs_fs.h
 /usr/local/include/linux/binfmts.h
@@ -164,6 +162,7 @@
 /usr/local/include/linux/btrfs_tree.h
 /usr/local/include/linux/byteorder/big_endian.h
 /usr/local/include/linux/byteorder/little_endian.h
+/usr/local/include/linux/cachefiles.h
 /usr/local/include/linux/caif/caif_socket.h
 /usr/local/include/linux/caif/if_caif.h
 /usr/local/include/linux/can.h
@@ -189,13 +188,14 @@
 /usr/local/include/linux/cifs/cifs_mount.h
 /usr/local/include/linux/cifs/cifs_netlink.h
 /usr/local/include/linux/close_range.h
-/usr/local/include/linux/cm4000_cs.h
 /usr/local/include/linux/cn_proc.h
 /usr/local/include/linux/coda.h
 /usr/local/include/linux/coff.h
+/usr/local/include/linux/comedi.h
 /usr/local/include/linux/connector.h
 /usr/local/include/linux/const.h
 /usr/local/include/linux/coresight-stm.h
+/usr/local/include/linux/counter.h
 /usr/local/include/linux/cramfs_fs.h
 /usr/local/include/linux/cryptouser.h
 /usr/local/include/linux/cuda.h
@@ -207,7 +207,6 @@
 /usr/local/include/linux/devlink.h
 /usr/local/include/linux/dlm.h
 /usr/local/include/linux/dlm_device.h
-/usr/local/include/linux/dlm_netlink.h
 /usr/local/include/linux/dlm_plock.h
 /usr/local/include/linux/dlmconstants.h
 /usr/local/include/linux/dm-ioctl.h
@@ -224,6 +223,7 @@
 /usr/local/include/linux/dvb/osd.h
 /usr/local/include/linux/dvb/version.h
 /usr/local/include/linux/dvb/video.h
+/usr/local/include/linux/dw100.h
 /usr/local/include/linux/edd.h
 /usr/local/include/linux/efs_fs_sb.h
 /usr/local/include/linux/elf-em.h
@@ -234,7 +234,9 @@
 /usr/local/include/linux/erspan.h
 /usr/local/include/linux/ethtool.h
 /usr/local/include/linux/ethtool_netlink.h
+/usr/local/include/linux/eventfd.h
 /usr/local/include/linux/eventpoll.h
+/usr/local/include/linux/ext4.h
 /usr/local/include/linux/f2fs.h
 /usr/local/include/linux/fadvise.h
 /usr/local/include/linux/falloc.h
@@ -267,6 +269,7 @@
 /usr/local/include/linux/gpio.h
 /usr/local/include/linux/gsmmux.h
 /usr/local/include/linux/gtp.h
+/usr/local/include/linux/handshake.h
 /usr/local/include/linux/hash_info.h
 /usr/local/include/linux/hdlc.h
 /usr/local/include/linux/hdlc/ioctl.h
@@ -338,6 +341,7 @@
 /usr/local/include/linux/ioam6_iptunnel.h
 /usr/local/include/linux/ioctl.h
 /usr/local/include/linux/iommu.h
+/usr/local/include/linux/iommufd.h
 /usr/local/include/linux/ioprio.h
 /usr/local/include/linux/ip.h
 /usr/local/include/linux/ip6_tunnel.h
@@ -346,6 +350,7 @@
 /usr/local/include/linux/ipmi.h
 /usr/local/include/linux/ipmi_bmc.h
 /usr/local/include/linux/ipmi_msgdefs.h
+/usr/local/include/linux/ipmi_ssif_bmc.h
 /usr/local/include/linux/ipsec.h
 /usr/local/include/linux/ipu-isys.h
 /usr/local/include/linux/ipu-psys.h
@@ -385,6 +390,7 @@
 /usr/local/include/linux/lwtunnel.h
 /usr/local/include/linux/magic.h
 /usr/local/include/linux/major.h
+/usr/local/include/linux/map_to_14segment.h
 /usr/local/include/linux/map_to_7segment.h
 /usr/local/include/linux/matroxfb.h
 /usr/local/include/linux/max2175.h
@@ -393,10 +399,10 @@
 /usr/local/include/linux/media-bus-format.h
 /usr/local/include/linux/media.h
 /usr/local/include/linux/mei.h
+/usr/local/include/linux/mei_uuid.h
 /usr/local/include/linux/membarrier.h
 /usr/local/include/linux/memfd.h
 /usr/local/include/linux/mempolicy.h
-/usr/local/include/linux/meye.h
 /usr/local/include/linux/mii.h
 /usr/local/include/linux/minix_fs.h
 /usr/local/include/linux/misc/bcm_vk.h
@@ -425,6 +431,7 @@
 /usr/local/include/linux/net_namespace.h
 /usr/local/include/linux/net_tstamp.h
 /usr/local/include/linux/netconf.h
+/usr/local/include/linux/netdev.h
 /usr/local/include/linux/netdevice.h
 /usr/local/include/linux/netfilter.h
 /usr/local/include/linux/netfilter/ipset/ip_set.h
@@ -583,7 +590,6 @@
 /usr/local/include/linux/nfsd/cld.h
 /usr/local/include/linux/nfsd/debug.h
 /usr/local/include/linux/nfsd/export.h
-/usr/local/include/linux/nfsd/nfsfh.h
 /usr/local/include/linux/nfsd/stats.h
 /usr/local/include/linux/nilfs2_api.h
 /usr/local/include/linux/nilfs2_ondisk.h
@@ -609,6 +615,7 @@
 /usr/local/include/linux/perf_event.h
 /usr/local/include/linux/personality.h
 /usr/local/include/linux/pfkeyv2.h
+/usr/local/include/linux/pfrut.h
 /usr/local/include/linux/pg.h
 /usr/local/include/linux/phantom.h
 /usr/local/include/linux/phonet.h
@@ -630,6 +637,7 @@
 /usr/local/include/linux/prctl.h
 /usr/local/include/linux/psample.h
 /usr/local/include/linux/psci.h
+/usr/local/include/linux/psp-dbc.h
 /usr/local/include/linux/psp-sev.h
 /usr/local/include/linux/ptp_clock.h
 /usr/local/include/linux/ptrace.h
@@ -683,6 +691,7 @@
 /usr/local/include/linux/serial_core.h
 /usr/local/include/linux/serial_reg.h
 /usr/local/include/linux/serio.h
+/usr/local/include/linux/sev-guest.h
 /usr/local/include/linux/shm.h
 /usr/local/include/linux/signal.h
 /usr/local/include/linux/signalfd.h
@@ -741,6 +750,7 @@
 /usr/local/include/linux/tc_ematch/tc_em_text.h
 /usr/local/include/linux/tcp.h
 /usr/local/include/linux/tcp_metrics.h
+/usr/local/include/linux/tdx-guest.h
 /usr/local/include/linux/tee.h
 /usr/local/include/linux/termios.h
 /usr/local/include/linux/thermal.h
@@ -756,9 +766,11 @@
 /usr/local/include/linux/tipc_sockets_diag.h
 /usr/local/include/linux/tls.h
 /usr/local/include/linux/toshiba.h
+/usr/local/include/linux/tps6594_pfsm.h
 /usr/local/include/linux/tty.h
 /usr/local/include/linux/tty_flags.h
 /usr/local/include/linux/types.h
+/usr/local/include/linux/ublk_cmd.h
 /usr/local/include/linux/udf_fs_i.h
 /usr/local/include/linux/udmabuf.h
 /usr/local/include/linux/udp.h
@@ -788,6 +800,7 @@
 /usr/local/include/linux/usb/video.h
 /usr/local/include/linux/usbdevice_fs.h
 /usr/local/include/linux/usbip.h
+/usr/local/include/linux/user_events.h
 /usr/local/include/linux/userfaultfd.h
 /usr/local/include/linux/userio.h
 /usr/local/include/linux/utime.h
@@ -864,7 +877,6 @@
 /usr/local/include/linux/zorro_ids.h
 /usr/local/include/misc/cxl.h
 /usr/local/include/misc/fastrpc.h
-/usr/local/include/misc/habanalabs.h
 /usr/local/include/misc/ocxl.h
 /usr/local/include/misc/pvpanic.h
 /usr/local/include/misc/uacce/hisi_qm.h
@@ -878,6 +890,7 @@
 /usr/local/include/rdma/bnxt_re-abi.h
 /usr/local/include/rdma/cxgb4-abi.h
 /usr/local/include/rdma/efa-abi.h
+/usr/local/include/rdma/erdma-abi.h
 /usr/local/include/rdma/hfi/hfi1_ioctl.h
 /usr/local/include/rdma/hfi/hfi1_user.h
 /usr/local/include/rdma/hns-abi.h
@@ -887,6 +900,7 @@
 /usr/local/include/rdma/ib_user_sa.h
 /usr/local/include/rdma/ib_user_verbs.h
 /usr/local/include/rdma/irdma-abi.h
+/usr/local/include/rdma/mana-abi.h
 /usr/local/include/rdma/mlx4-abi.h
 /usr/local/include/rdma/mlx5-abi.h
 /usr/local/include/rdma/mlx5_user_ioctl_cmds.h
@@ -908,6 +922,7 @@
 /usr/local/include/scsi/fc/fc_gs.h
 /usr/local/include/scsi/fc/fc_ns.h
 /usr/local/include/scsi/scsi_bsg_fc.h
+/usr/local/include/scsi/scsi_bsg_mpi3mr.h
 /usr/local/include/scsi/scsi_bsg_ufs.h
 /usr/local/include/scsi/scsi_netlink.h
 /usr/local/include/scsi/scsi_netlink_fc.h
