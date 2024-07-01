@@ -3,11 +3,11 @@ require 'package'
 class Lmstudio < Package
   description 'Discover, download, and run local LLMs'
   homepage 'https://lmstudio.ai/'
-  version '0.2.24'
+  version '0.2.26'
   license 'MIT'
   compatibility 'x86_64'
-  source_url 'https://releases.lmstudio.ai/linux/0.2.24/beta/LM_Studio-0.2.24.AppImage'
-  source_sha256 'd5a84f45181c61f5bd783d38c9e1787edfb22e7f7e9c83ce579564bfbacc893f'
+  source_url "https://releases.lmstudio.ai/linux/x86/#{version}/beta/LM_Studio-#{version}.AppImage"
+  source_sha256 '857aa577b83e8af4182e830dc4f77482f04007ae6df52092242d5a8319868926'
 
   depends_on 'alsa_lib' # R
   depends_on 'at_spi2_core' # R
