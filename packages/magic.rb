@@ -3,11 +3,11 @@ require 'package'
 class Magic < Package
   description 'Magic is a venerable VLSI layout tool'
   homepage 'http://opencircuitdesign.com/magic/'
-  version '8.3.485'
+  version '8.3.486'
   license 'Copyright (C) 1985, 1990 Regents of the University of California'
   compatibility 'x86_64'
-  source_url 'https://github.com/RTimothyEdwards/magic/releases/download/8.3.485/Magic-8.3.485-x86_64.AppImage'
-  source_sha256 '4eec89f36fc4415d2b56687fd5408817769cc383a7278fc40af7b9d764e994fc'
+  source_url "https://github.com/RTimothyEdwards/magic/releases/download/#{version}/Magic-#{version}-x86_64.AppImage"
+  source_sha256 '6f67fff17e4a091e633d157fa4b1dec6d96f3b4dddadc5b4d825d13834257e99'
 
   no_compile_needed
 
