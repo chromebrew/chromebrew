@@ -90,10 +90,9 @@ class Webkit2gtk_4_1 < Package
     # bwrap: Can't make symlink at /var/run: File exists
     # LDFLAGS from debian: -Wl,--no-keep-memory
     unless File.file?('build.ninja')
-      @arch_linker_flags = ARCH == 'x86_64' ? '' : '-Wl,--no-keep-memory'
-      system "CREW_LINKER_FLAGS='#{@arch_linker_flags}' \
+      system "#{"LDFLAGS='-Wl,--no-keep-memory'" if ARCH == 'x86_64'} \
           cmake -B builddir -G Ninja \
-          #{CREW_CMAKE_FNO_LTO_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-fno-lto', '')} \
+          #{CREW_CMAKE_OPTIONS.sub('-pipe', '-pipe -Wno-error').gsub('-flto=auto', '').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '')} \
           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
           -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
           -DENABLE_DOCUMENTATION=OFF \
