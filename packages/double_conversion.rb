@@ -1,37 +1,22 @@
-require 'package'
+require 'buildsystems/cmake'
 
-class Double_conversion < Package
+class Double_conversion < CMake
   description 'Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.'
   homepage 'https://github.com/google/double-conversion'
-  version '3.1.5'
+  version '3.3.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://github.com/google/double-conversion/archive/v3.1.5.tar.gz'
-  source_sha256 'a63ecb93182134ba4293fd5f22d6e08ca417caafa244afaa751cbfddf6415b13'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/google/double-conversion.git'
+  git_hashtag "v#{version}"
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '30e4c14b0f6e37c9fbe05f14838e57fc9fccd9f9f79681a062012ca3114e9786',
-     armv7l: '30e4c14b0f6e37c9fbe05f14838e57fc9fccd9f9f79681a062012ca3114e9786',
-       i686: 'd378fa884903a2839320b2d45920cfb929fb4b9f3de7719f7bfb55c406e04730',
-     x86_64: 'db6e20068fb804648d04f21244a9dc9abcc4e36e9aaeb48038e39f51039f845a'
+    aarch64: 'e2a761f0d983588b469776d4b758837d8e5e94542c498c07ad3c4f7dc962857a',
+     armv7l: 'e2a761f0d983588b469776d4b758837d8e5e94542c498c07ad3c4f7dc962857a',
+       i686: '1f932f05055b69e9df5d8b2cc8bb31be242fd455cf1cd0d212ffdc471f677f9b',
+     x86_64: '4b6280849f3dc5ef670f94f7a68514b0ed77aa088b0ecb592357bdb6d9c17267'
   })
 
-  def self.build
-    Dir.mkdir 'build'
-    Dir.chdir 'build' do
-      system 'cmake',
-             '-DCMAKE_BUILD_TYPE=Release',
-             "-DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX}",
-             '-DBUILD_SHARED_LIBS=ON',
-             '..'
-      system 'make'
-    end
-  end
-
-  def self.install
-    Dir.chdir 'build' do
-      system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    end
-  end
+  cmake_options '-DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=ON'
+  run_tests
 end
