@@ -13,8 +13,16 @@ Dir.glob('../packages/*.rb').each do |filename|
   # It shouldn't be doing that, but work around it for now.
   next if filename.include?('docbook')
   pkg = Package.load_package(filename)
+  # Skip fake packages.
   next if pkg.is_fake?
-  output << { name: File.basename(filename, '.rb').gsub('_', '-'), description: pkg.description, homepage: pkg.homepage, version: pkg.version, license: pkg.license, compatibility: pkg.compatibility }
+  # Present a useful version to Repology.
+  version = pkg.version
+  # That starts by trimming off our language version tagging.
+  version.delete_suffix!('-py3.12')
+  version.delete_suffix!('-perl5.40')
+  version.delete_suffix!('-llvm18')
+  version.delete_suffix!("-glibc#{LIBC_VERSION}")
+  output << { name: File.basename(filename, '.rb'), description: pkg.description, homepage: pkg.homepage, version:, license: pkg.license, compatibility: pkg.compatibility }
 end
 
 File.write('repology.json', JSON.pretty_generate(output))
