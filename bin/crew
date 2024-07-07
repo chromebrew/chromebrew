@@ -438,7 +438,7 @@ def download
     puts 'No precompiled binary available for your platform, downloading source...'
   end
 
-  git = uri.scheme.eql?('git')
+  git = true unless @pkg.git_hashtag.to_s.empty?
 
   Dir.chdir CREW_BREW_DIR do
     case File.basename(filename)
@@ -497,15 +497,15 @@ def download
 
     when /^SKIP$/i
       Dir.mkdir @extract_dir
-    when /\.git$/i # Source URLs which end with .git are git sources.
-      git = true
     else
-      Dir.mkdir @extract_dir
-      downloader url, sha256sum, filename, CREW_VERBOSE
+      unless git # We don't want to download a git repository as a file.
+        Dir.mkdir @extract_dir
+        downloader url, sha256sum, filename, CREW_VERBOSE
 
-      puts "#{filename}: File downloaded.".lightgreen
+        puts "#{filename}: File downloaded.".lightgreen
 
-      FileUtils.mv filename, "#{@extract_dir}/#{filename}"
+        FileUtils.mv filename, "#{@extract_dir}/#{filename}"
+      end
     end
 
     # Handle git sources.
