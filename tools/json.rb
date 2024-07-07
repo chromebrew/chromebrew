@@ -16,7 +16,7 @@ Dir.glob('../packages/*.rb').each do |filename|
   # Skip fake packages.
   next if pkg.is_fake?
   # Present a useful version to Repology.
-  version = pkg.version
+  version = +pkg.version
   # That starts by trimming off our language version tagging.
   version.delete_suffix!('-py3.12')
   version.delete_suffix!('-perl5.40')
