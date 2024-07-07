@@ -6,6 +6,7 @@ class Smplayer < Package
   version '24.5.0'
   license 'GPL-2'
   compatibility 'x86_64'
+  min_glibc '2.30'
   source_url "https://github.com/smplayer-dev/smplayer/releases/download/v#{version}/SMPlayer-#{version}-x86_64.AppImage"
   source_sha256 '85fb5a2322f48a298b7784fc3516e672525593c017ca504310bff05e1330457b'
 
@@ -13,6 +14,8 @@ class Smplayer < Package
 
   depends_on 'gdk_base'
   depends_on 'gtk3'
+  depends_on 'jack'
+  depends_on 'libthai'
   depends_on 'sommelier'
 
   def self.build
