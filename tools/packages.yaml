@@ -8136,6 +8136,11 @@ url: http://kernel.ubuntu.com/~cking/tarballs/smemstat
 activity: medium
 ---
 kind: url
+name: smplayer
+url: https://github.com/smplayer-dev/smplayer/releases
+activity: medium
+---
+kind: url
 name: snappy
 url: https://github.com/google/snappy/releases
 activity: high
