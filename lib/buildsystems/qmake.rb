@@ -10,6 +10,6 @@ class Qmake < Package
 
   def self.install
     system "make INSTALL_ROOT=#{CREW_DEST_DIR} install"
-    eval @qmake_install_extras if @qmake_install_extras
+    @qmake_install_extras.call if @qmake_install_extras
   end
 end

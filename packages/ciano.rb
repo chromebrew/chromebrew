@@ -30,10 +30,10 @@ class Ciano < Meson
   depends_on 'pango' # R
   depends_on 'vala'
 
-  meson_install_extras <<~EOF
+  meson_install_extras do
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/bin"
     FileUtils.ln_s "#{CREW_PREFIX}/bin/com.github.robertsanseries.ciano", "#{CREW_DEST_PREFIX}/bin/ciano"
-  EOF
+  end
 
   def self.postinstall
     ExitMessage.add "\nType 'ciano' to get started.\n".lightblue

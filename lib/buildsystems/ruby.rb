@@ -16,6 +16,6 @@ class RUBY < Package
     @ruby_ver = version.split('-', 3).last
     system "yes | gem uninstall -a #{@gem_name}", exception: false
     system "gem install -i #{CREW_DEST_LIB_PREFIX}/ruby/gems/#{@ruby_ver}.0 -n #{CREW_DEST_PREFIX}/bin -N #{@gem_name}", exception: false
-    eval @ruby_install_extras if @ruby_install_extras
+    @ruby_install_extras.call if @ruby_install_extras
   end
 end

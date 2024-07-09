@@ -16,6 +16,6 @@ class PERL < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    eval @perl_install_extras if @perl_install_extras
+    @perl_install_extras.call if @perl_install_extras
   end
 end
