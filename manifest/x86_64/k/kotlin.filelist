@@ -46,12 +46,11 @@
 /usr/local/share/kotlin/lib/kotlin-stdlib-jdk8-sources.jar
 /usr/local/share/kotlin/lib/kotlin-stdlib-jdk8.jar
 /usr/local/share/kotlin/lib/kotlin-stdlib-js-sources.jar
-/usr/local/share/kotlin/lib/kotlin-stdlib-js.jar
 /usr/local/share/kotlin/lib/kotlin-stdlib-js.klib
 /usr/local/share/kotlin/lib/kotlin-stdlib-sources.jar
 /usr/local/share/kotlin/lib/kotlin-stdlib.jar
 /usr/local/share/kotlin/lib/kotlin-test-js-sources.jar
-/usr/local/share/kotlin/lib/kotlin-test-js.jar
+/usr/local/share/kotlin/lib/kotlin-test-js.klib
 /usr/local/share/kotlin/lib/kotlin-test-junit-sources.jar
 /usr/local/share/kotlin/lib/kotlin-test-junit.jar
 /usr/local/share/kotlin/lib/kotlin-test-junit5-sources.jar
@@ -67,6 +66,7 @@
 /usr/local/share/kotlin/lib/noarg-compiler-plugin.jar
 /usr/local/share/kotlin/lib/parcelize-compiler.jar
 /usr/local/share/kotlin/lib/parcelize-runtime.jar
+/usr/local/share/kotlin/lib/power-assert-compiler-plugin.jar
 /usr/local/share/kotlin/lib/sam-with-receiver-compiler-plugin.jar
 /usr/local/share/kotlin/lib/scripting-compiler.jar
 /usr/local/share/kotlin/lib/trove4j.jar
@@ -85,6 +85,7 @@
 /usr/local/share/kotlin/license/third_party/boost_LICENSE.txt
 /usr/local/share/kotlin/license/third_party/caffeine_LICENSE.txt
 /usr/local/share/kotlin/license/third_party/closure-compiler_LICENSE.txt
+/usr/local/share/kotlin/license/third_party/compose_license.txt
 /usr/local/share/kotlin/license/third_party/dart_LICENSE.txt
 /usr/local/share/kotlin/license/third_party/fastutil_licence
 /usr/local/share/kotlin/license/third_party/gradle-node-plugin_LICENSE.txt
@@ -101,6 +102,7 @@
 /usr/local/share/kotlin/license/third_party/maven_LICENSE.txt
 /usr/local/share/kotlin/license/third_party/mocha-teamcity-reporter_LICENSE.txt
 /usr/local/share/kotlin/license/third_party/okhttp_license.txt
+/usr/local/share/kotlin/license/third_party/power_assert_license.txt
 /usr/local/share/kotlin/license/third_party/prototype_license.txt
 /usr/local/share/kotlin/license/third_party/qunit_license.txt
 /usr/local/share/kotlin/license/third_party/rhino_LICENSE.txt
