@@ -42,6 +42,6 @@ class Pip < Package
       FileUtils.mkdir_p File.dirname(@destpath) if Gem::Version.new(RUBY_VERSION.to_s) < Gem::Version.new('3.3')
       FileUtils.install @pip_path, @destpath
     end
-    eval @pip_install_extras if @pip_install_extras
+    @pip_install_extras&.call
   end
 end
