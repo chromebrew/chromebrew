@@ -3,24 +3,25 @@ require 'package'
 class Krita < Package
   description 'A generic image manipulation/painting application in the style of Photoshop or GIMP.'
   homepage 'https://krita.org/en'
-  version '5.1.4'
+  version '5.2.3'
   license 'GPL-3'
   compatibility 'x86_64'
-  source_url 'https://download.kde.org/stable/krita/5.1.4/krita-5.1.4-x86_64.appimage'
-  source_sha256 'f6678796cb98086b1e576aae4911e3d6b133cd0a4ec61a900ff5136a9f55917d'
+  min_glibc '2.29'
+  source_url "https://download.kde.org/stable/krita/#{version}/krita-#{version}-x86_64.appimage"
+  source_sha256 'c91ce1810931171c11054e2277c21efc97cf9d73dc39da1239f6dc1462d19c8b'
 
   depends_on 'gtk3'
   depends_on 'gdk_base'
   depends_on 'sommelier'
 
   no_compile_needed
-  print_source_bashrc
+  no_shrink
 
   def self.build
     krita = <<~EOF
       #!/bin/bash
       export PYTHONHOME=#{CREW_PREFIX}/bin
-      export PYTHONPATH=#{CREW_PREFIX}/share/krita/usr/lib/python3.8:$PYTHONPATH
+      export PYTHONPATH=#{CREW_PREFIX}/share/krita/usr/lib/python3.10:$PYTHONPATH
       export LD_LIBRARY_PATH=#{CREW_PREFIX}/share/krita/usr/lib:$LD_LIBRARY_PATH
       cd #{CREW_PREFIX}/share/krita
       ./AppRun "$@"

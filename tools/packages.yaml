@@ -920,6 +920,11 @@ url: https://github.com/reynhout/chrx
 activity: low
 ---
 kind: url
+name: ciano
+url: https://github.com/robertsanseries/ciano/releases
+activity: none
+---
+kind: url
 name: civetweb
 url: https://github.com/civetweb/civetweb/releases
 activity: low
@@ -2145,6 +2150,11 @@ url: ftp://ftp.freetds.org/pub/freetds/stable/
 activity: medium
 ---
 kind: url
+name: freetube
+url: https://github.com/FreeTubeApp/FreeTube/releases
+activity: medium
+---
+kind: url
 name: freetype
 url: http://download.savannah.gnu.org/releases/freetype
 activity: medium
@@ -2828,6 +2838,11 @@ kind: url
 name: gradle
 url: https://services.gradle.org/distributions/
 activity: high
+---
+kind: url
+name: granite
+url: https://github.com/elementary/granite/releases
+activity: medium
 ---
 kind: url
 name: graphene
@@ -6296,6 +6311,11 @@ url: https://github.com/CoolerVoid/0d1n/releases
 activity: low
 ---
 kind: url
+name: ollama
+url: https://github.com/ollama/ollama/releases
+activity: high
+---
+kind: url
 name: ondir
 url: https://swapoff.org/ondir.html
 activity: low
@@ -6313,6 +6333,11 @@ activity: medium
 kind: url
 name: oniguruma
 url: https://github.com/kkos/oniguruma/releases
+activity: medium
+---
+kind: url
+name: onlyoffice
+url: https://github.com/ONLYOFFICE/appimage-desktopeditors/releases
 activity: medium
 ---
 kind: url
@@ -8108,6 +8133,11 @@ activity: none
 kind: url
 name: smemstat
 url: http://kernel.ubuntu.com/~cking/tarballs/smemstat
+activity: medium
+---
+kind: url
+name: smplayer
+url: https://github.com/smplayer-dev/smplayer/releases
 activity: medium
 ---
 kind: url

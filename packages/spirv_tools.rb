@@ -1,36 +1,33 @@
-# Adapted from Arch Linux spirv-tools PKGBUILD at:
-# https://github.com/archlinux/svntogit-packages/raw/packages/spirv-tools/trunk/PKGBUILD
 require 'buildsystems/cmake'
 
 class Spirv_tools < CMake
   homepage 'https://github.com/KhronosGroup/SPIRV-Tools'
   description 'API and commands for processing SPIR-V modules'
-  version '2023.6.rc1'
-  license 'custom'
-  compatibility 'x86_64 aarch64 armv7l'
+  version '2024.3'
+  license 'Apache-2.0'
+  compatibility 'all'
   source_url 'https://github.com/KhronosGroup/SPIRV-Tools.git'
   git_hashtag "v#{version}"
-
-  binary_sha256({
-    aarch64: 'd925a80ea99206946477c5c6223629c06bbad55981da677e2ab54bbee23d843b',
-     armv7l: 'd925a80ea99206946477c5c6223629c06bbad55981da677e2ab54bbee23d843b',
-     x86_64: '26a772a1baadd956f875e2c9db1e371b068caf8e4546e7884965294882603974'
-  })
   binary_compression 'tar.zst'
 
-  depends_on 'spirv_headers' => :build
+  binary_sha256({
+    aarch64: '3386f244e3582ba07d6d46d81f834ffa20eca9cb8b22a3dbbf3802d032398556',
+     armv7l: '3386f244e3582ba07d6d46d81f834ffa20eca9cb8b22a3dbbf3802d032398556',
+       i686: '23393d026d53fc52be7b9a02b54e37ac057662939e57c0eec9037ed38de4e28d',
+     x86_64: '0810c092de66488afe89970578b493295b00d310264a249bcf6c4641eb439f13'
+  })
+
   depends_on 'gcc_lib' # R
   depends_on 'glibc' # R
+  # depends_on 'spirv_headers' => :build
+  depends_on 'glibc_lib' # R
 
-  git_fetchtags
-  no_lto
-
+  # https://github.com/KhronosGroup/SPIRV-Tools/issues/5728
   def self.patch
     system 'utils/git-sync-deps'
   end
 
-  cmake_options '-DSPIRV_WERROR=Off \
-      -DSPIRV_TOOLS_BUILD_STATIC=OFF \
-      -DSPIRV_SKIP_TESTS=ON \
-      -DBUILD_SHARED_LIBS=ON'
+  # https://github.com/KhronosGroup/SPIRV-Tools/issues/3909
+  cmake_options '-DSPIRV_TOOLS_BUILD_STATIC=OFF -DBUILD_SHARED_LIBS=ON'
+  run_tests
 end

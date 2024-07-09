@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Openvpn < Autotools
   description 'OpenVPN is an open source VPN daemon'
   homepage 'https://openvpn.net/'
-  version '2.6.8'
+  version '2.6.11'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/OpenVPN/openvpn.git'
@@ -11,9 +11,9 @@ class Openvpn < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '71aacc0355e0449f445a2ac84c16bba406f0f5f71fa59cc74b0acaf8d17286d6',
-     armv7l: '71aacc0355e0449f445a2ac84c16bba406f0f5f71fa59cc74b0acaf8d17286d6',
-     x86_64: '1a39cb8676cc5dc683e63d3f54ed6ddf05dd2cac44ba8c386a66a6898030b93d'
+    aarch64: '1d3d0dbccdadfaf57a27eddd20cdf872c02906e5619c067943aef568bc32cb41',
+     armv7l: '1d3d0dbccdadfaf57a27eddd20cdf872c02906e5619c067943aef568bc32cb41',
+     x86_64: '445a076d36c354d72c32f3af8318f9e06f750764078e1150793e13c7f2cfe9a6'
   })
 
   depends_on 'glibc' # R

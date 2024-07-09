@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Less < Autotools
   description 'GNU less is a program similar to more, but which allows backward movement in the file as well as forward movement.'
   homepage 'https://www.gnu.org/software/less/'
-  version '643'
+  version '661'
   license 'GPL-3 or BSD-2'
   compatibility 'all'
-  source_url 'https://greenwoodsoftware.com/less/less-643.tar.gz'
-  source_sha256 '2911b5432c836fa084c8a2e68f6cd6312372c026a58faaa98862731c8b6052e8'
+  source_url "https://www.greenwoodsoftware.com/less/less-#{version}.tar.gz"
+  source_sha256 '2b5f0167216e3ef0ffcb0c31c374e287eb035e4e223d5dae315c2783b6e738ed'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '6e958b939677a30fd4347e8db4e7f46e3447ef2a2f463ebb41c52bee1928638d',
-     armv7l: '6e958b939677a30fd4347e8db4e7f46e3447ef2a2f463ebb41c52bee1928638d',
-       i686: '4de79c5cd2cb1fa4e14c6cb66773feae644304bade9116b69ade4ceac3ba9d31',
-     x86_64: '85503b71e6e29572bda314befb6c06f8ee451dd0373d28a47cbbf2773fcef3ef'
+    aarch64: 'cc47f3475913c840176e6bf4a68d67420b1cb60b346bd90c7ad01db7f9964cf9',
+     armv7l: 'cc47f3475913c840176e6bf4a68d67420b1cb60b346bd90c7ad01db7f9964cf9',
+       i686: 'd48932d5080e30c00d60ec209b3de6fb28fa97126191689ece9594bcb10b1182',
+     x86_64: 'b02b9c1fc6e87f6d78c19a0d0fc50bd905fa14dff1c78d0dc6ac4e0b00b3d2d8'
   })
 
   depends_on 'glibc' # R

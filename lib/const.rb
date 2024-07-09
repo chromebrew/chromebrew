@@ -2,47 +2,25 @@
 # Defines common constants used in different parts of crew
 require 'etc'
 
-CREW_VERSION = '1.49.2'
+CREW_VERSION = '1.49.4'
 
-# kernel architecture
+# Kernel architecture.
 KERN_ARCH = Etc.uname[:machine]
 
-# read and parse processor information from /proc/cpuinfo
-CPUINFO = File.read('/proc/cpuinfo') \
-              .partition("\n\n")[0] \
-              .scan(/^(.+?)\t*: (.+)$/).to_h \
-              .transform_keys(&:downcase)
+# Read and parse processor information from /proc/cpuinfo
+CPUINFO = File.readlines('/proc/cpuinfo').map { |line| line.chomp.split(/\t+: /) if line.include?("\t") }.compact.to_h
 
-# get architectures supported by the processor natively
-CPU_SUPPORTED_ARCH = \
-  if CPUINFO.key?('flags')
-    # x86-based processor stores supported instructions in 'flags' field
-    if CPUINFO['flags'].include?(' lm ')
-      # if the processor supports long mode, then it is 64-bit
-      %w[i686 x86_64]
-    else
-      # legacy x86 processor
-      %w[i686]
-    end
-  elsif CPUINFO.key?('features')
-    # ARM-based processor stores supported instructions in 'features' field
-    if CPUINFO['cpu architecture'].to_i >= 8
-      # if the processor is ARMv8+, then it is 64-bit
-      %w[aarch64 armv7l armv8l]
-    else
-      # ARMv7 processor
-      %w[armv7l]
-    end
-  end
-
-# we are running under user-mode qemu if the processor
-# does not compatible with the kernel architecture natively
-QEMU_EMULATED = !CPU_SUPPORTED_ARCH.include?(KERN_ARCH)
-
-# This helps with virtualized builds on aarch64 machines which report armv8l when linux32 is run.
-# We also report aarch64 machines as armv7l for now, as we treat them as if they were armv7l.
+# We report aarch64 & armv8l machines as armv7l for now, as we treat
+# them as if they were armv7l.
 # When we have proper aarch64 support, remove this.
-ARCH = %w[aarch64 armv8l].include?(KERN_ARCH) ? 'armv7l' : ENV.fetch('ARCH', KERN_ARCH)
+# Also, we allow ARCH to be changed via the ARCH environment variable.
+ARCH = ENV.fetch('ARCH') do |_name|
+  case KERN_ARCH
+  when 'aarch64', 'armv8l'
+    'armv7l'
+  else KERN_ARCH
+  end
+end
 
 # Allow for edge case of i686 install on a x86_64 host before linux32 is
 # downloaded, e.g. in a docker container.
@@ -66,12 +44,10 @@ CREW_ESSENTIAL_PACKAGES = %w[gcc_lib glibc gmp ruby zlibpkg zstd]
 
 CREW_IN_CONTAINER = File.exist?('/.dockerenv') || ENV.fetch('CREW_IN_CONTAINER', '0').eql?('1')
 
-CREW_CPU_VENDOR = CPUINFO['vendor_id'] || 'unknown'
+CREW_CPU_VENDOR = CPUINFO['vendor_id']
 # The cpuinfo vendor_id may not exist on non-x86 platforms, or when a
 # container is virtualized on non-x86 platforms. Default to
-# CREW_IS_INTEL for x86 architectures. Note that a QEMU_EMULATED check
-# is not relevant here since qemu can be configured to pass through a
-# cpuinfo vendor_id.
+# CREW_IS_INTEL for x86 architectures.
 CREW_IS_AMD   = CREW_CPU_VENDOR.eql?('AuthenticAMD')
 CREW_IS_INTEL = %w[x86_64 i686].include?(ARCH) && %w[unknown GenuineIntel].include?(CREW_CPU_VENDOR)
 

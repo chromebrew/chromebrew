@@ -1,51 +1,30 @@
-# Adapted from Arch Linux duktape PKGBUILD at:
-# https://github.com/archlinux/svntogit-community/raw/packages/duktape/trunk/PKGBUILD
-
 require 'package'
 
 class Duktape < Package
   description 'Embeddable Javascript engine'
   homepage 'https://duktape.org/'
-  version '2.7.0'
+  version '2.7.0-1'
   license 'MIT'
   compatibility 'all'
-  source_url "https://duktape.org/duktape-#{version}.tar.xz"
-  source_sha256 '90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890'
+  source_url 'https://github.com/svaarala/duktape-releases.git'
+  git_hashtag 'v2.7.0'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '9d20adb7b8948b3f8109de81c39ef477b3ec1d50fe7adde2ad6029d49f834bc7',
-     armv7l: '9d20adb7b8948b3f8109de81c39ef477b3ec1d50fe7adde2ad6029d49f834bc7',
-       i686: '30b287b4a28f993215998be0bfe145d134d60dac3656e19da78dd9ea76d1db7e',
-     x86_64: '11fa2e446783af1230ba5df5e628460a8875a35c0e542de441778fa7301d9826'
+    aarch64: 'f140a0f226f7d1c91bdf22b92a16bfecbebf401bfc79165a324191ea35b46a3a',
+     armv7l: 'f140a0f226f7d1c91bdf22b92a16bfecbebf401bfc79165a324191ea35b46a3a',
+       i686: '535d51c28caab852609ac4983cc4c4d25e15208e41851606d319f4f49edb0430',
+     x86_64: '7a39e108b1168a7ac69fe164b43a79065be5b4832ff5d4a31a6762c41a069b3c'
   })
 
-  depends_on 'setconf' => :build
   depends_on 'glibc' # R
+  depends_on 'setconf' => :build
 
   def self.build
-    FileUtils.mv 'Makefile.sharedlibrary', 'Makefile'
-    system "sed -i 's/-Wall -Wextra/$(CFLAGS) -D DUK_USE_FASTINT -w/g' Makefile"
-    system "sed -i 's,$(INSTALL_PREFIX)/lib,#{CREW_DEST_LIB_PREFIX},g' Makefile"
-    system "setconf Makefile INSTALL_PREFIX #{CREW_DEST_PREFIX}"
-    @duktapepc = <<~DUKTAPEPCEOF
-      prefix=#{CREW_PREFIX}
-      exec_prefix=${prefix}
-      libdir=#{CREW_LIB_PREFIX}
-      includedir=${prefix}/include
-
-      Name: duktape
-      Description: Embeddable Javascript engine
-      Version: #{version}
-      Libs: -L${libdir} -lduktape
-      Cflags: -I${includedir}
-    DUKTAPEPCEOF
-    File.write('duktape.pc', @duktapepc)
+    system "INSTALL_PREFIX=#{CREW_PREFIX} LIBDIR=#{CREW_LIB_PREFIX} make -f Makefile.sharedlibrary"
   end
 
   def self.install
-    FileUtils.mkdir_p %W[#{CREW_DEST_LIB_PREFIX}/pkgconfig]
-    FileUtils.install 'duktape.pc', "#{CREW_DEST_LIB_PREFIX}/pkgconfig/duktape.pc", mode: 0o644
-    system 'make install'
+    system "INSTALL_PREFIX= LIBDIR=/#{ARCH_LIB} DESTDIR=#{CREW_DEST_PREFIX} make -f Makefile.sharedlibrary install"
   end
 end

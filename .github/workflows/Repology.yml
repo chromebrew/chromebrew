@@ -10,12 +10,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.1'
+          ruby-version: '3.3.3'
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-      - name: Generate boards.json
+      - name: Generate repology.json
         env:
           CREW_KERNEL_VERSION: 5.1
         run: |
