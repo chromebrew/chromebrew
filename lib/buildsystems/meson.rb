@@ -14,7 +14,7 @@ class Meson < Package
 
   def self.install
     system "DESTDIR=#{CREW_DEST_DIR} #{CREW_NINJA} -C builddir install"
-    @meson_install_extras.call if @meson_install_extras
+    @meson_install_extras&.call
   end
 
   def self.check

@@ -31,7 +31,7 @@ class Autotools < Package
 
   def self.install
     system 'make', "DESTDIR=#{CREW_DEST_DIR}", 'install'
-    @install_extras.call if @install_extras
+    @install_extras&.call
   end
 
   def self.check

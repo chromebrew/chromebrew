@@ -17,9 +17,6 @@ AllCops:
     - 'lib/docopt.rb'
 
 # These cops have been temporarily disabled and should be reenabled asap
-Security/Eval:
-  Enabled: false
-
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
