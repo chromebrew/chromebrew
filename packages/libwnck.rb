@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Libwnck < Meson
   description 'Library for layout and rendering of text'
-  homepage 'http://www.gnome.org/'
+  homepage 'https://www.gnome.org/'
   version '43.0'
   license 'LGPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
