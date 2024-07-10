@@ -17,10 +17,12 @@ def property(*properties)
       propVarName = "@#{propName}"
 
       if block
+        # store the block if a block is provided
         instance_variable_set(propVarName, block)
       elsif propValue
         instance_variable_set(propVarName, propValue)
       else
+        # return current value if nothing is provided
         return instance_variable_get(propVarName)
       end
     end
@@ -33,17 +35,21 @@ def boolean_property(*boolean_properties)
   #   {prop_name}            # this will return #{prop_name} as true
 
   define_singleton_method(:available_boolean_properties) do
+    # available_boolean_properties: Return all available boolean properties for use in commands/{prop,help}.rb
+    # Usage:
+    #   puts Package.available_boolean_properties => [:conflicts_ok, ...]
     return boolean_properties
   end
 
   boolean_properties.each do |propName|
     propVarName = "@#{propName}"
 
+    # Adds the self.{symbol} method
     define_singleton_method(propName) do
       instance_variable_set(propVarName, true)
     end
 
-    # Adds the symbol? method
+    # Adds the self.{symbol}? method
     define_singleton_method("#{propName}?") do
       return !!instance_variable_get(propVarName)
     end
