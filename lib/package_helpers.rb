@@ -45,7 +45,7 @@ def boolean_property(*boolean_properties)
 
     # Adds the symbol? method
     define_singleton_method("#{propName}?") do
-      return !!instance_variable_get("@#{prop}")
+      return !!instance_variable_get(propVarName)
     end
   end
 end
