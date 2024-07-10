@@ -2,7 +2,7 @@ require 'package'
 
 class Ibmonitor < Package
   description 'ibmonitor is an interactive bandwidth monitor console application.'
-  homepage 'http://ibmonitor.sourceforge.net/'
+  homepage 'https://ibmonitor.sourceforge.net/'
   version '1.4'
   license 'GPL-2'
   compatibility 'all'
