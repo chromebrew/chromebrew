@@ -32,9 +32,8 @@ def boolean_property(*boolean_properties)
   # Examples:
   #   {prop_name}            # this will return #{prop_name} as true
 
-  instance_eval do
-    @available_boolean_properties = boolean_properties
-    attr_reader :available_boolean_properties
+  define_singleton_method(:available_boolean_properties) do
+    return boolean_properties
   end
 
   boolean_properties.each do |propName|
