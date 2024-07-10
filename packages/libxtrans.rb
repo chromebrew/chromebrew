@@ -2,7 +2,7 @@ require 'package'
 
 class Libxtrans < Package
   description 'transpot library for the X window system'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.4.0'
   license 'custom'
   compatibility 'all'
