@@ -17,7 +17,7 @@ class HelpCommandTest < Minitest::Test
     expected_output = <<~EOT
       Explain the purpose of various package boolean properties.
       Usage: crew prop <property>
-      Available properties: #{Package.print_boolean_properties}
+      Available properties: #{Package.available_boolean_properties.join(', ')}
     EOT
     assert_output expected_output, nil do
       Command.help('prop')

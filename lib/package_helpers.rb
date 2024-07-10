@@ -2,8 +2,8 @@ class InstallError < RuntimeError; end
 
 def create_placeholder(*functions)
   # create_placeholder: create a placeholder for functions that will be used by crew later
-  functions.each do |func|
-    class_eval("def self.#{func}; end", __FILE__, __LINE__)
+  functions.each do |func_name|
+    define_singleton_method(func_name) { true }
   end
 end
 
@@ -12,18 +12,20 @@ def property(*properties)
   # Examples:
   #   {prop_name}('example') # set {prop_name} to 'example'
   #   {prop_name}            # return the value of {prop_name}
-  properties.each do |prop|
-    class_eval <<~EOT, __FILE__, __LINE__ + 1
-      def self.#{prop} (prop = nil, &block)
-        if block
-          @#{prop} = block
-        elsif prop
-          @#{prop} = prop
-        else
-          return @#{prop}
-        end
+  properties.each do |prop_name|
+    define_singleton_method(prop_name) do |prop_value = nil, &block|
+      prop_var_name = "@#{prop_name}"
+
+      if block
+        # store the block if a block is provided
+        instance_variable_set(prop_var_name, block)
+      elsif prop_value
+        instance_variable_set(prop_var_name, prop_value)
+      else
+        # return current value if nothing is provided
+        return instance_variable_get(prop_var_name)
       end
-    EOT
+    end
   end
 end
 
@@ -31,22 +33,25 @@ def boolean_property(*boolean_properties)
   # boolean_property: if this exists in a package, it will return true
   # Examples:
   #   {prop_name}            # this will return #{prop_name} as true
-  boolean_properties.each do |prop|
-    class_eval <<~EOT, __FILE__, __LINE__ + 1
-      def self.#{prop} (#{prop} = nil)
-        @#{prop} = true if #{prop}
-        !!@#{prop}
-      end
-    EOT
-    instance_eval <<~EOY, __FILE__, __LINE__ + 1
-      def self.#{prop}
-        @#{prop} = true
-      end
-    EOY
-    # Adds the symbol? method
-    define_singleton_method("#{prop}?") do
-      @prop = instance_variable_get("@#{prop}")
-      !!@prop
+
+  define_singleton_method(:available_boolean_properties) do
+    # available_boolean_properties: Return all available boolean properties for use in commands/{prop,help}.rb
+    # Usage:
+    #   puts Package.available_boolean_properties => [:conflicts_ok, ...]
+    return boolean_properties
+  end
+
+  boolean_properties.each do |prop_name|
+    prop_var_name = "@#{prop_name}"
+
+    # Adds the self.{symbol} method
+    define_singleton_method(prop_name) do
+      instance_variable_set(prop_var_name, true)
+    end
+
+    # Adds the self.{symbol}? method
+    define_singleton_method("#{prop_name}?") do
+      return !!instance_variable_get(prop_var_name)
     end
   end
 end

@@ -79,7 +79,7 @@ class Command
       puts <<~EOT
         Explain the purpose of various package boolean properties.
         Usage: crew prop <property>
-        Available properties: #{Package.print_boolean_properties}
+        Available properties: #{Package.available_boolean_properties.join(', ')}
       EOT
     when 'reinstall'
       puts <<~EOT

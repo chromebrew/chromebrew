@@ -10,7 +10,7 @@ help_lines = `wc -l ../commands/help.rb`.to_i
 tail_lines = help_lines - property_line
 help_commands = `head -#{property_line} ../commands/help.rb | grep "  when '" | cut -d"'" -f2`.split("\n")
 help_properties = `tail -#{tail_lines} ../commands/help.rb | grep "  when '" | cut -d"'" -f2`.split("\n")
-package_properties = Package.print_boolean_properties.split(', ')
+package_properties = Package.available_boolean_properties
 if (CREW_COMMANDS.length - help_commands.length).positive?
   puts 'Help is missing for the crew commands in commands/help.rb below:'.yellow
   missing_commands = CREW_COMMANDS - help_commands
