@@ -3,7 +3,7 @@ class InstallError < RuntimeError; end
 def create_placeholder(*functions)
   # create_placeholder: create a placeholder for functions that will be used by crew later
   functions.each do |func_name|
-    define_singleton_method(func_name) { return true }
+    define_singleton_method(func_name) { true }
   end
 end
 
