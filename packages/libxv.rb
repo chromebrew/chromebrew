@@ -2,7 +2,7 @@ require 'package'
 
 class Libxv < Package
   description 'X.org X Window System video extension library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.12'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'
