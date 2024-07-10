@@ -2,7 +2,7 @@ require 'package'
 
 class Krita < Package
   description 'A generic image manipulation/painting application in the style of Photoshop or GIMP.'
-  homepage 'https://krita.org/en'
+  homepage 'https://krita.org/en/'
   version '5.2.3'
   license 'GPL-3'
   compatibility 'x86_64'
