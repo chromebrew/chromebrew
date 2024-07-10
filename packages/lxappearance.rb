@@ -2,7 +2,7 @@ require 'package'
 
 class Lxappearance < Package
   description 'LXDE Theme Switcher'
-  homepage 'http://lxde.org/'
+  homepage 'http://www.lxde.org/'
   version '0.6.3'
   license 'GPL-3'
   compatibility 'x86_64 aarch64 armv7l'
