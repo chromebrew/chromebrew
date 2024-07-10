@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Gnome_common < Autotools
   description 'Common files for development of Gnome packages.'
-  homepage 'https://git.gnome.org/browse/gnome-common'
+  homepage 'https://gitlab.gnome.org/GNOME/gnome-common'
   version '3.18.0'
   license 'GPL-3'
   compatibility 'all'
