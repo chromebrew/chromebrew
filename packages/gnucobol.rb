@@ -2,7 +2,7 @@ require 'package'
 
 class Gnucobol < Package
   description 'GnuCOBOL (formerly OpenCOBOL) is a free COBOL compiler.'
-  homepage 'https://open-cobol.sourceforge.io/'
+  homepage 'https://gnucobol.sourceforge.io/'
   version '3.0-rc1'
   license 'LGPL-2, GPL-2, GPL-3 and LGPL-3'
   compatibility 'all'
