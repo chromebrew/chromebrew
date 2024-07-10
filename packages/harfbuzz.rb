@@ -6,7 +6,7 @@ require_relative 'freetype'
 
 class Harfbuzz < Meson
   description 'HarfBuzz is an OpenType text shaping engine.'
-  homepage 'https://www.freedesktop.org/wiki/Software/HarfBuzz/'
+  homepage 'https://harfbuzz.github.io/'
   version '8.5.0'
   license 'Old-MIT, ISC and icu'
   compatibility 'x86_64 aarch64 armv7l'
