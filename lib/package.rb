@@ -9,8 +9,6 @@ class Package
                    :no_compile_needed, :no_compress, :no_env_options, :no_fhs, :no_git_submodules, :no_links, :no_lto, :no_patchelf,
                    :no_shrink, :no_source_build, :no_strip, :no_upstream_update, :no_zstd, :patchelf, :print_source_bashrc, :run_tests
 
-  @boolean_properties = methods(false).join(',').gsub('?', '').split(',').sort.uniq.join(', ')
-
   property :description, :homepage, :version, :license, :compatibility,
            :binary_compression, :binary_url, :binary_sha256, :source_url, :source_sha256,
            :git_branch, :git_hashtag, :min_glibc
@@ -26,10 +24,6 @@ class Package
                      :postinstall, # Function to perform post-install for both source build and binary distribution.
                      :preremove,   # Function to perform prior to package removal.
                      :remove       # Function to perform after package removal.
-
-  def self.print_boolean_properties
-    return @boolean_properties
-  end
 
   class << self
     attr_accessor :name, :cached_build, :in_build, :build_from_source, :in_upgrade
