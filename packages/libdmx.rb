@@ -2,7 +2,7 @@ require 'package'
 
 class Libdmx < Package
   description 'X.org X Window System DMX (Distributed Multihead X) extension library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.3-0'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
