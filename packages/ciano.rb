@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Ciano < Meson
   description 'A multimedia file converter focused on simplicity.'
-  homepage 'https://robertsanseries.github.io/ciano'
+  homepage 'https://robertsanseries.github.io/ciano/'
   version '0.2.4'
   license 'GPL-3.0'
   compatibility 'x86_64 aarch64 armv7l'
