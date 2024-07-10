@@ -2,7 +2,7 @@ require 'package'
 
 class Libmp3lame < Package
   description 'LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.'
-  homepage 'http://lame.sourceforge.net/'
+  homepage 'https://lame.sourceforge.io/'
   version '3.100'
   license 'LGPL-2.1'
   compatibility 'all'
