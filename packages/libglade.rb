@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libglade < Autotools
   description 'Libglade is a library that performs a similar job to the C source output routines in the GLADE user interface builder.'
-  homepage 'http://www.jamesh.id.au/software/libglade/'
+  homepage 'https://www.jamesh.id.au/software/libglade/'
   version '2.6.4-1'
   license 'LGPL-2'
   compatibility 'x86_64 aarch64 armv7l'
