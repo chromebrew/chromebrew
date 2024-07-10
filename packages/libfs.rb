@@ -2,7 +2,7 @@ require 'package'
 
 class Libfs < Package
   description 'X.org library interface to the X Font Server.'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   license 'custom'
   version '1.0.9'
   compatibility 'all'
