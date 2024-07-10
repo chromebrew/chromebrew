@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Itstool < Autotools
   description 'Translate XML with PO files using W3C Internationalization Tag Set rules'
-  homepage 'http://itstool.org/'
+  homepage 'https://itstool.org/'
   @_ver = '2.0.7'
   version "#{@_ver}-py3.12-1"
   license 'GPL-3+'
