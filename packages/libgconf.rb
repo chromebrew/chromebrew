@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libgconf < Autotools
   description 'GConf is a system for storing application preferences.'
-  homepage 'https://projects-old.gnome.org/gconf/'
+  homepage 'https://gitlab.gnome.org/Archive/gconf'
   version '3.2.6'
   license 'LGPL-2'
   compatibility 'x86_64 aarch64 armv7l'
