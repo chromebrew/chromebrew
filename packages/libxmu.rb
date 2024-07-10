@@ -2,7 +2,7 @@ require 'package'
 
 class Libxmu < Package
   description 'X.org X interface library for miscellaneous utilities not part of the Xlib standard'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.4'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
