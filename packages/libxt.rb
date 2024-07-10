@@ -2,7 +2,7 @@ require 'package'
 
 class Libxt < Package
   description 'X.org X Toolkit Library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.2.1'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
