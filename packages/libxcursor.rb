@@ -2,7 +2,7 @@ require 'package'
 
 class Libxcursor < Package
   description 'X.org X Cursor management library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.2.1'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
