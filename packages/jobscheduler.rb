@@ -2,7 +2,7 @@ require 'package'
 
 class Jobscheduler < Package
   description 'The JobScheduler is an Open Source solution for enterprise level workload automation.'
-  homepage 'https://www.sos-berlin.com/jobscheduler'
+  homepage 'https://www.sos-berlin.com/en/jobscheduler-features'
   version '1.12.3'
   license 'GPL-2'
   compatibility 'all'
