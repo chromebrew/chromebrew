@@ -2,7 +2,7 @@ require 'package'
 
 class Glew < Package
   description 'GLEW provides efficient run-time mechanisms for determining which OpenGL extensions are supported on the target platform'
-  homepage 'http://glew.sourceforge.net/'
+  homepage 'https://glew.sourceforge.net/'
   version '2.2.0'
   license 'BSD and MIT'
   compatibility 'x86_64 aarch64 armv7l'
