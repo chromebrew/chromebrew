@@ -2,8 +2,8 @@ class InstallError < RuntimeError; end
 
 def create_placeholder(*functions)
   # create_placeholder: create a placeholder for functions that will be used by crew later
-  functions.each do |funcName|
-    define_singleton_method(funcName) {}
+  functions.each do |func_name|
+    define_singleton_method(func_name, Proc.new)
   end
 end
 
@@ -12,18 +12,18 @@ def property(*properties)
   # Examples:
   #   {prop_name}('example') # set {prop_name} to 'example'
   #   {prop_name}            # return the value of {prop_name}
-  properties.each do |propName|
-    define_singleton_method(propName) do |propValue = nil, &block|
-      propVarName = "@#{propName}"
+  properties.each do |prop_name|
+    define_singleton_method(prop_name) do |prop_value = nil, &block|
+      prop_var_name = "@#{prop_name}"
 
       if block
         # store the block if a block is provided
-        instance_variable_set(propVarName, block)
-      elsif propValue
-        instance_variable_set(propVarName, propValue)
+        instance_variable_set(prop_var_name, block)
+      elsif prop_value
+        instance_variable_set(prop_var_name, prop_value)
       else
         # return current value if nothing is provided
-        return instance_variable_get(propVarName)
+        return instance_variable_get(prop_var_name)
       end
     end
   end
@@ -41,17 +41,17 @@ def boolean_property(*boolean_properties)
     return boolean_properties
   end
 
-  boolean_properties.each do |propName|
-    propVarName = "@#{propName}"
+  boolean_properties.each do |prop_name|
+    prop_var_name = "@#{prop_name}"
 
     # Adds the self.{symbol} method
-    define_singleton_method(propName) do
-      instance_variable_set(propVarName, true)
+    define_singleton_method(prop_name) do
+      instance_variable_set(prop_var_name, true)
     end
 
     # Adds the self.{symbol}? method
-    define_singleton_method("#{propName}?") do
-      return !!instance_variable_get(propVarName)
+    define_singleton_method("#{prop_name}?") do
+      return !!instance_variable_get(prop_var_name)
     end
   end
 end
