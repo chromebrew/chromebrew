@@ -2,7 +2,7 @@ require 'package'
 
 class Libxfont < Package
   description 'library for the X window system'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '2.0.1'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
