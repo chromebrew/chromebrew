@@ -2,7 +2,7 @@ require 'package'
 
 class Gpt4all < Package
   description 'A free-to-use, locally running, privacy-aware chatbot.'
-  homepage 'https://gpt4all.io/'
+  homepage 'https://www.nomic.ai/gpt4all'
   version '3.0.0'
   license 'Copyright 2023 Nomic, Inc., Aaron Miller'
   compatibility 'x86_64'
