@@ -2,7 +2,7 @@ require 'package'
 
 class Gwt < Package
   description 'Google Web Toolkit'
-  homepage 'http://www.gwtproject.org/'
+  homepage 'https://www.gwtproject.org/'
   version '2.8.2'
   license 'Apache-2.0'
   compatibility 'all'
