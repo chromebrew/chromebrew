@@ -2,7 +2,7 @@ require 'package'
 
 class Llvm_stage1 < Package
   description 'THIS IS NOT THE LLVM PACKAGE. This is only a Limited Stage 1 compile of LLVM.'
-  homepage 'http://llvm.org/'
+  homepage 'https://llvm.org/'
   version '13.0.0'
   license 'Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain and rc'
   compatibility 'all'
