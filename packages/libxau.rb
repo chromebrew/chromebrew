@@ -2,7 +2,7 @@ require 'package'
 
 class Libxau < Package
   description 'xau library for libX11'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.0.10'
   license 'MIT'
   compatibility 'all'
