@@ -2,7 +2,7 @@ require 'package'
 
 class Sbt < Package
   description 'A build tool for Scala, Java and more.'
-  homepage 'http://www.scala-sbt.org/'
+  homepage 'https://www.scala-sbt.org/'
   version '0.13.15'
   license 'BSD'
   compatibility 'all'
