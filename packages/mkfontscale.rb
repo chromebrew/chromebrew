@@ -2,7 +2,7 @@ require 'package'
 
 class Mkfontscale < Package
   description 'X11 Scalable Font Index Generator'
-  homepage 'https://www.x.org/wiki'
+  homepage 'https://www.x.org/wiki/'
   version '1.2.1-1'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
