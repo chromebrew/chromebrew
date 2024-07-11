@@ -36,7 +36,7 @@ jobs:
             ruby ../tests/commands/prop.rb && \
             for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
-              ruby ../tests/buildsystem_test $file && \
+              ruby ../tests/buildsystem_test $file
             done && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
@@ -59,7 +59,7 @@ jobs:
             ruby ../tests/commands/prop.rb && \
             for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
-              ruby ../tests/buildsystem_test $file && \
+              ruby ../tests/buildsystem_test $file
             done && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
