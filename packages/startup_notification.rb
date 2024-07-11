@@ -2,7 +2,7 @@ require 'package'
 
 class Startup_notification < Package
   description 'Monitor and display application startup'
-  homepage 'https://www.freedesktop.org'
+  homepage 'https://www.freedesktop.org/wiki/'
   @_ver = '0.12'
   version "#{@_ver}-2"
   license 'LGPL-2 and MIT'
