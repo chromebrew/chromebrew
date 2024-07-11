@@ -24,7 +24,7 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
       - name: Unit Tests (x86_64)
         run: |
-            sudo docker run --rm -t satmandu/crewbuild:m90-x86_64 sudo -i -u chronos /bin/bash -c "
+            sudo docker run --rm -t satmandu/crewbuild:m90-x86_64 sudo -i -u chronos /usr/local/bin/bash -c "
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
@@ -47,7 +47,7 @@ jobs:
         # This is not the best way to do things, a matrix would certainly be better.
       - name: Unit Tests (armv7l)
         run: |
-            sudo docker run --platform linux/arm/v7 --rm -t satmandu/crewbuild:m91-armv7l sudo -i -u chronos /bin/bash -c "
+            sudo docker run --platform linux/arm/v7 --rm -t satmandu/crewbuild:m91-armv7l sudo -i -u chronos /usr/local/bin/bash -c "
             echo \"CREW_REPO is ${{ github.event.pull_request.head.repo.clone_url }}\" && \
             echo \"CREW_BRANCH is ${{ github.head_ref }}\" && \
             CREW_REPO=${{ github.event.pull_request.head.repo.clone_url }} CREW_BRANCH=${{ github.head_ref }} crew update && \
