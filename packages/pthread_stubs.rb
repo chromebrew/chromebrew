@@ -2,7 +2,7 @@ require 'package'
 
 class Pthread_stubs < Package
   description 'pthread stubs to get libX11 working'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '0.4'
   license 'MIT-with-advertising'
   compatibility 'all'
