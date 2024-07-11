@@ -2,7 +2,7 @@ require 'package'
 
 class Quakespasm < Package
   description 'A modern, cross-platform Quake game engine based on FitzQuake.'
-  homepage 'http://quakespasm.sourceforge.net'
+  homepage 'https://quakespasm.sourceforge.net/'
   version '0.93.1-1'
   license 'GPL-2+'
   compatibility 'x86_64 aarch64 armv7l'
