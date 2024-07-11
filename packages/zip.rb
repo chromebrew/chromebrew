@@ -2,7 +2,7 @@ require 'package'
 
 class Zip < Package
   description 'Zip is a compression and file packaging/archive utility for archives compressed in .zip format (also called \'zipfiles\').'
-  homepage 'http://www.info-zip.org/Zip.html'
+  homepage 'https://infozip.sourceforge.net/Zip.html'
   version '3.0-11'
   license 'Info-ZIP'
   compatibility 'all'
