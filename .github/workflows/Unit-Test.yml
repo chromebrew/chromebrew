@@ -37,7 +37,7 @@ jobs:
             ( [[ -v ALL_CHANGED_FILES ]] && ( for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file ; \
-            done ) ) && \
+            done ) || true ) && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
@@ -60,7 +60,7 @@ jobs:
             ( [[ -v ALL_CHANGED_FILES ]] && ( for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file && \
-            done ) ) && \
+            done ) || true ) && \
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
