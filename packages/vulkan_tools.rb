@@ -5,7 +5,7 @@ require 'buildsystems/cmake'
 
 class Vulkan_tools < CMake
   description 'Vulkan Utilities and Tools'
-  homepage 'https://www.khronos.org/vulkan/'
+  homepage 'https://www.vulkan.org/'
   version '1.3.280.0'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'
