@@ -3,12 +3,11 @@ require 'buildsystems/meson'
 class Libpsl < Meson
   description 'C library for the Public Suffix List'
   homepage 'https://github.com/rockdaboot/libpsl'
-  @_ver = '0.21.5'
-  version "#{@_ver}-1"
+  version '0.21.5-1'
   license 'MIT'
   compatibility 'all'
   source_url 'https://github.com/rockdaboot/libpsl.git'
-  git_hashtag @_ver
+  git_hashtag version.split('-').first
   binary_compression 'tar.zst'
 
   binary_sha256({
