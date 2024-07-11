@@ -2,7 +2,7 @@ require 'package'
 
 class Makedepend < Package
   description 'Makedepend parses C sources in Makefiles to generate dependency lists'
-  homepage 'https://www.x.org/'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.6'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
