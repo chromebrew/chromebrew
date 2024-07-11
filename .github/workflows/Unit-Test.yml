@@ -34,6 +34,7 @@ jobs:
             ruby ../tests/commands/const.rb && \
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
+            echo "ALL_CHANGED_FILES=|${ALL_CHANGED_FILES}|" && \
             for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file
@@ -57,6 +58,7 @@ jobs:
             ruby ../tests/commands/const.rb && \
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
+            echo "ALL_CHANGED_FILES=|${ALL_CHANGED_FILES}|" && \
             for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file
