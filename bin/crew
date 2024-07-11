@@ -547,7 +547,7 @@ def download
           system 'git config advice.detachedHead false'
           system 'git config init.defaultBranch master'
           system "git remote add origin #{@pkg.source_url}", exception: true
-          system "git fetch --depth 1 origin #{@pkg.git_hashtag}", exception: true
+          system "git fetch #{'--depth 1' unless @pkg.git_clone_deep?} origin #{@pkg.git_hashtag}", exception: true
           system 'git checkout FETCH_HEAD'
         else
           # Leave a message because this step can be slow.
@@ -558,7 +558,6 @@ def download
         end
         system 'git submodule update --init --recursive' unless @pkg.no_git_submodules?
         system 'git fetch --tags', exception: true if @pkg.git_fetchtags?
-        system "git fetch origin #{@pkg.git_hashtag}", exception: true if @pkg.git_clone_deep?
         puts 'Repository downloaded.'.lightgreen
       end
       # Stow file in cache if requested and cache is writable.
