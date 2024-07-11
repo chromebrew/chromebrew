@@ -2,7 +2,7 @@ require 'package'
 
 class Sfk < Package
   description 'The Swiss File Knife - A Command Line Tools Collection for Windows / Linux / Mac.'
-  homepage 'http://swissfileknife.sourceforge.net/'
+  homepage 'https://swissfileknife.sourceforge.net/'
   version '1.8.7'
   license 'BSD'
   compatibility 'all'
