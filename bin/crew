@@ -12,13 +12,14 @@ end
 require 'fileutils'
 require 'tmpdir'
 begin
-  require_relative '../commands/const'
+  require_relative '../commands/check'
 rescue LoadError
   # Older crew installs won't have the commands dir in the sparse checkout,
   # so disable sparse checkout if those files are missing.
   system 'git sparse-checkout disable'
-  require_relative '../commands/const'
+  require_relative '../commands/check'
 end
+require_relative '../commands/const'
 require_relative '../commands/files'
 require_relative '../commands/help'
 require_relative '../commands/list'
@@ -86,7 +87,6 @@ String.use_color = args['--color'] || !args['--no-color']
 @opt_keep      = args['--keep']
 @opt_source    = args['--source']
 @opt_recursive = args['--recursive-build']
-@opt_version   = args['--version']
 
 # Verbose options
 @fileutils_verbose = CREW_VERBOSE
@@ -1585,59 +1585,6 @@ def update_sha256(package, key, value)
   end
 end
 
-def copy_package(pkg_name, prompt_msg = '')
-  pkg_file = File.join(CREW_LOCAL_REPO_ROOT, 'packages', "#{pkg_name}.rb")
-  # Use rubocop to sanitize package file, and let errors get flagged.
-  if PackageUtils.installed?('ruby_rubocop')
-    puts "Using rubocop to sanitize #{pkg_file} .".orange
-    system "rubocop -c #{File.join(CREW_LOCAL_REPO_ROOT, '.rubocop.yml')} -A #{pkg_file}", exception: true
-  else
-    puts 'Package '.lightred + 'ruby_rubocop'.orange + " is not installed. Rubocop will not be used to sanitize  #{pkg_file} . 😔 You may try this: ".lightred + 'crew install ruby_rubocop'.lightblue
-  end
-  next_pkg = nil
-  if @opt_force
-    FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
-    puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
-  else
-    # This pulls the operation from the calling function
-    operation = caller_locations(1, 2)[1].to_s.split[3].split('_')[0]
-    puts prompt_msg.yellow
-    print "\nWould you like to copy #{pkg_name}.rb to crew and start the #{operation}? [Y/n] ".yellow
-    response = $stdin.gets.chomp.downcase
-    case response
-    when 'n', 'no'
-      puts "#{operation.capitalize} skipped."
-      next_pkg = true
-    when '', 'y', 'yes'
-      FileUtils.cp pkg_file, "#{CREW_PACKAGES_PATH}/"
-      puts "\nCopied #{pkg_file} to #{CREW_PACKAGES_PATH}.\n".lightgreen
-    else
-      puts "I don't understand `#{response}`. :(".lightred
-      puts "#{operation.capitalize} skipped."
-      next_pkg = true
-    end
-  end
-  return next_pkg
-end
-
-def check_package(pkg_name)
-  return unless Dir.exist? CREW_LOCAL_REPO_ROOT
-  return unless File.file? "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb"
-  return copy_package(pkg_name) if @opt_force
-
-  # Prompt to copy the local repo package to crew if the package is not found.
-  unless File.file? "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"
-    prompt_msg = "\nThe crew package #{pkg_name} does not exist."
-    return copy_package(pkg_name, prompt_msg)
-  end
-
-  # Compare local repo package to the crew repo package and prompt to copy if necessary to prepare for the operation.
-  unless FileUtils.identical? "#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb", "#{CREW_PACKAGES_PATH}/#{pkg_name}.rb"
-    prompt_msg = "\n#{CREW_LOCAL_REPO_ROOT}/packages/#{pkg_name}.rb does not match the crew package."
-    return copy_package(pkg_name, prompt_msg)
-  end
-end
-
 def build_command(args)
   abort 'Unable to locate local repo root directory. Change to a local chromebrew git repo directory and try again.'.lightred unless Dir.exist? CREW_LOCAL_REPO_ROOT
   abort 'Change to a local chromebrew git repo directory and try again.'.lightred if CREW_PACKAGES_PATH.include?(CREW_LOCAL_REPO_ROOT)
@@ -1658,7 +1605,7 @@ def build_command(args)
     else
       @pkg_name = name
     end
-    next if check_package(@pkg_name)
+    next unless Command.check(name, @opt_force)
 
     search @pkg_name
     print_current_package CREW_VERBOSE
@@ -1681,18 +1628,7 @@ end
 
 def check_command(args)
   args['<name>'].each do |name|
-    check_package(name)
-    search name
-    if @opt_version
-      Dir.chdir CREW_PACKAGES_PATH do
-        system "../tools/version.rb #{name} #{@short_verbose}"
-      end
-    else
-      Dir.chdir CREW_PACKAGES_PATH do
-        system "../tests/prop_test #{name}"
-        system "../tests/buildsystem_test #{name}"
-      end
-    end
+    Command.check(name, @opt_force)
   end
 end
 
@@ -1749,7 +1685,7 @@ def install_command(args)
       puts "Package #{@pkg_name} already installed, skipping...".lightgreen
       next
     end
-    next if check_package(@pkg_name)
+    next unless Command.check(name, @opt_force)
     search @pkg_name
     print_current_package true
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
@@ -1786,7 +1722,7 @@ end
 def reinstall_command(args)
   args['<name>'].each do |name|
     @pkg_name = name
-    next if check_package(@pkg_name)
+    next unless Command.check(name, @opt_force)
     search @pkg_name
     print_current_package
     @pkg.build_from_source = true if @opt_source || @opt_recursive || CREW_BUILD_FROM_SOURCE
@@ -1817,30 +1753,6 @@ end
 
 def sysinfo_command(_args)
   Command.sysinfo(CREW_VERBOSE)
-end
-
-def test_command(args)
-  test_commands_path = "#{CREW_LIB_PATH}/tests/commands"
-  if args['<name>'].empty?
-    Dir["#{test_commands_path}/*.rb"].each do |name|
-      basename = File.basename(name, '.rb')
-      puts "Testing #{basename} command ...".yellow
-      system("ruby #{name}")
-    end
-  else
-    args['<name>'].each do |name|
-      basename = File.basename(name, '.rb')
-      name = basename if basename != name
-      if File.file?("#{test_commands_path}/#{name}.rb")
-        Dir.chdir(test_commands_path) do
-          puts "Testing #{name} command ...".yellow
-          system("ruby #{name}.rb")
-        end
-      else
-        puts "The #{name} command or test does not exist. Test skipped.".orange
-      end
-    end
-  end
 end
 
 def update_command(args)
