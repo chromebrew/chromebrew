@@ -2,7 +2,7 @@ require 'package'
 
 class Powershell < Package
   description 'Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes'
-  homepage 'https://docs.microsoft.com/en-us/powershell/'
+  homepage 'https://learn.microsoft.com/en-us/powershell/'
   version '7.4.3'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
