@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Pygobject2 < Autotools
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
-  homepage 'https://pygobject.readthedocs.io/'
+  homepage 'https://pygobject.gnome.org/'
   version '2.28.7'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'
