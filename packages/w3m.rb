@@ -2,7 +2,7 @@ require 'package'
 
 class W3m < Package
   description 'w3m is a text-based browser, pager and HTML typesetter'
-  homepage 'http://w3m.sourceforge.net/'
+  homepage 'https://w3m.sourceforge.net/'
   version '0.5.3-20220429'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'
