@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_krb5 < Package
   description 'Kerberos is a network authentication protocol.'
-  homepage 'https://web.mit.edu/kerberos'
+  homepage 'https://web.mit.edu/kerberos/'
   version '1.20-5c39'
   compatibility 'all'
   license 'openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )'
