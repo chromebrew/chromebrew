@@ -2,7 +2,7 @@ require 'package'
 
 class Libxkbfile < Package
   description 'library for the X window system'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.1.1'
   license 'MIT and custom'
   compatibility 'x86_64 aarch64 armv7l'

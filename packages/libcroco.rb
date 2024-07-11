@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Libcroco < Autotools
   description 'Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit.'
-  homepage 'https://git.gnome.org/browse/libcroco/'
+  homepage 'https://gitlab.gnome.org/Archive/libcroco'
   version '0.6.13'
   license 'LGPL-2'
   compatibility 'all'

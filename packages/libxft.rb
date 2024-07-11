@@ -2,7 +2,7 @@ require 'package'
 
 class Libxft < Package
   description 'X.org X FreeType interface library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '2.3.7'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

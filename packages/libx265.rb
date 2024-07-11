@@ -2,7 +2,7 @@ require 'package'
 
 class Libx265 < Package
   description 'x265 is a H.265 / HEVC video encoder application library.'
-  homepage 'http://x265.org/'
+  homepage 'https://www.x265.org/'
   version '3.4'
   license 'GPL-2'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libfontenc < Package
   description 'Fontenc Library from X.org'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.1.7'
   license 'MIT'
   compatibility 'all'

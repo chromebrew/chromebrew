@@ -2,7 +2,7 @@ require 'package'
 
 class Libxfont2 < Package
   description 'X.org X font library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '2.0.6'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

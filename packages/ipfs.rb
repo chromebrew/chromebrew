@@ -2,7 +2,7 @@ require 'package'
 
 class Ipfs < Package
   description 'A peer-to-peer hypermedia protocol'
-  homepage 'https://ipfs.io'
+  homepage 'https://ipfs.tech/'
   version '0.4.13'
   license 'MIT and Apache-2.0'
   compatibility 'all'

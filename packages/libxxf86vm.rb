@@ -2,7 +2,7 @@ require 'package'
 
 class Libxxf86vm < Package
   description 'X.org the client library for the XFree86-VidMode X extension.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.5'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

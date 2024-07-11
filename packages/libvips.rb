@@ -2,7 +2,7 @@ require 'package'
 
 class Libvips < Package
   description 'A fast image processing library with low memory needs'
-  homepage 'https://libvips.github.io/libvips/'
+  homepage 'https://www.libvips.org/'
   version '8.10.6-beta2'
   license 'LGPL-2.1'
   compatibility 'x86_64 aarch64 armv7l'

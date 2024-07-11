@@ -2,7 +2,7 @@ require 'package'
 
 class Libcom_err < Package
   description 'Common error description library'
-  homepage 'http://e2fsprogs.sourceforge.net/'
+  homepage 'https://e2fsprogs.sourceforge.net/'
   version '1.1'
   license 'GPL-2'
   compatibility 'all'

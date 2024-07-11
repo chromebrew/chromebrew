@@ -2,7 +2,7 @@ require 'package'
 
 class Libexiv2 < Package
   description 'Exiv2 is a Cross-platform C++ library and a command line utility to manage image metadata.'
-  homepage 'http://exiv2.org/'
+  homepage 'https://exiv2.org/'
   version '0.27.5'
   license 'GPL-2'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libxcomposite < Package
   description 'X.org X Composite Library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '0.4.6'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'

@@ -2,7 +2,7 @@ require 'package'
 
 class Lcms < Package
   description 'Little CMS intends to be an OPEN SOURCE small-footprint color management engine, with special focus on accuracy and performance.'
-  homepage 'http://www.littlecms.com/'
+  homepage 'https://www.littlecms.com/'
   version '2.12'
   license 'MIT'
   compatibility 'all'

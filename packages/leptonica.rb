@@ -2,7 +2,7 @@ require 'package'
 
 class Leptonica < Package
   description 'Software that is broadly useful for image processing and image analysis applications'
-  homepage 'http://www.leptonica.com/'
+  homepage 'http://www.leptonica.org'
   version '1.83.1'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libxp < Package
   description 'x print service extension library'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.4'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

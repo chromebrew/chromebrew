@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Lvm2 < Autotools
   description 'LVM2 refers to the userspace toolset that provide logical volume management facilities on linux.'
-  homepage 'https://sourceware.org/lvm2'
+  homepage 'https://sourceware.org/lvm2/'
   version '2.03.23'
   license 'GPL-2'
   compatibility 'all'

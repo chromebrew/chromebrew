@@ -2,7 +2,7 @@ require 'package'
 
 class Libxrandr < Package
   description 'X.org X Resize, Rotate and Reflection extension library'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   @_ver = '1.5.2'
   version "#{@_ver}-2"
   license 'MIT'

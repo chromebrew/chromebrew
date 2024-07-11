@@ -2,7 +2,7 @@ require 'package'
 
 class Lft < Package
   description "LFT, short for Layer Four Traceroute, is a sort of 'traceroute' that often works much faster (than the commonly-used Van Jacobson method) and goes through many configurations of packet-filters (firewalls)."
-  homepage 'http://pwhois.org/lft/'
+  homepage 'https://pwhois.org/lft/'
   version '3.79'
   license 'VOSTROM'
   compatibility 'all'

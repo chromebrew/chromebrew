@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Libnotify < Meson
   description 'A library for sending desktop notifications.'
-  homepage 'https://git.gnome.org/browse/libnotify'
+  homepage 'https://gitlab.gnome.org/GNOME/libnotify'
   version '0.8.3'
   license 'LGPL-2.1+'
   compatibility 'x86_64 aarch64 armv7l'

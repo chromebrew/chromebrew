@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Gnutls < Autotools
   description 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.'
-  homepage 'http://gnutls.org/'
+  homepage 'https://gnutls.org/'
   version '3.8.1-1'
   license 'GPL-3'
   compatibility 'all'
