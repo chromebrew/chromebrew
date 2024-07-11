@@ -2,7 +2,7 @@ require 'package'
 
 class Sqlmap < Package
   description 'sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.'
-  homepage 'http://sqlmap.org/'
+  homepage 'https://sqlmap.org/'
   version '1.4.2'
   license 'GPL-2'
   compatibility 'all'
