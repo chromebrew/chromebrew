@@ -2,7 +2,7 @@ require 'package'
 
 class Xorg_evdev_driver < Package
   description 'The Xorg Evdev Driver package contains a Generic Linux input driver for the Xorg X server. It handles keyboard, mouse, touchpads and wacom devices, though for touchpad and wacom advanced handling, additional drivers are required.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '2.10.5-1'
   compatibility 'all'
   license 'ISC and MIT'
