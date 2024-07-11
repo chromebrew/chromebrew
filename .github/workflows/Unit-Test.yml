@@ -11,6 +11,17 @@ jobs:
         shell: bash
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+      - name: Get all changed package files
+        id: changed-ruby-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+             packages/*.rb
+      - name: List all changed package files
+        uses: tj-actions/changed-files@v44
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-ruby-files.outputs.all_changed_files }}
       - name: Unit Tests (x86_64)
         run: |
             sudo docker run --rm -t satmandu/crewbuild:amd64 sudo -i -u chronos /bin/bash -c "
@@ -20,11 +31,13 @@ jobs:
             yes | crew upgrade && \
             yes | crew install vim && \
             yes | crew remove vim && \
-            ruby ../tests/prop_test && \
-            ruby ../tests/buildsystem_test && \
             ruby ../tests/commands/const.rb && \
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
+            for file in ${ALL_CHANGED_FILES}; do
+              ruby ../tests/prop_test $file && \
+              ruby ../tests/buildsystem_test $file && \
+            done
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
@@ -41,11 +54,13 @@ jobs:
             yes | crew upgrade && \
             yes | crew install vim && \
             yes | crew remove vim && \
-            ruby ../tests/prop_test && \
-            ruby ../tests/buildsystem_test && \
             ruby ../tests/commands/const.rb && \
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
+            for file in ${ALL_CHANGED_FILES}; do
+              ruby ../tests/prop_test $file && \
+              ruby ../tests/buildsystem_test $file && \
+            done
             cd ~ && \
             git clone --depth=1 https://github.com/chromebrew/chromebrew.git build_test && \
             cd build_test && \
