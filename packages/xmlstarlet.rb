@@ -2,7 +2,7 @@ require 'package'
 
 class Xmlstarlet < Package
   description 'XMLStarlet is a command line XML toolkit which can be used to transform, query, validate, and edit XML documents and files using simple set of shell commands in similar way it is done for plain text files using grep/sed/awk/tr/diff/patch.'
-  homepage 'http://xmlstar.sourceforge.net/'
+  homepage 'https://xmlstar.sourceforge.net/'
   version '1.6.1'
   license 'MIT'
   compatibility 'all'
