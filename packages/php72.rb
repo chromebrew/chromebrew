@@ -2,7 +2,7 @@ require 'package'
 
 class Php72 < Package
   description 'PHP is a popular general-purpose scripting language that is especially suited to web development.'
-  homepage 'http://www.php.net/'
+  homepage 'https://www.php.net/'
   @_ver = '7.2.34'
   version "#{@_ver}-2"
   license 'PHP-3.01'

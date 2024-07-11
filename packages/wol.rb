@@ -2,7 +2,7 @@ require 'package'
 
 class Wol < Package
   description 'Wake up hardware that is Magic Packet compliant'
-  homepage 'https://ahh.sourceforge.net/wol/'
+  homepage 'https://sourceforge.net/projects/wake-on-lan/'
   version '0.7.1-1'
   license 'GPL-2+'
   compatibility 'all'

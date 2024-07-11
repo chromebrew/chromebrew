@@ -5,7 +5,7 @@ require 'package'
 
 class Runc < Package
   description 'CLI tool for managing OCI compliant containers'
-  homepage 'https://runc.io/'
+  homepage 'https://github.com/opencontainers/runc'
   version '1.1.7'
   license 'Apache'
   compatibility 'x86_64 aarch64 armv7l'

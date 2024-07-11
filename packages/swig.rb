@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Swig < Autotools
   description 'Simplified Wrapper and Interface Generator'
-  homepage 'http://www.swig.org'
+  homepage 'https://www.swig.org/'
   version '4.1.1-1'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'

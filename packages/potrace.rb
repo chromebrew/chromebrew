@@ -2,7 +2,7 @@ require 'package'
 
 class Potrace < Package
   description 'Potrace(TM) is a tool for tracing a bitmap, which means, transforming a bitmap into a smooth, scalable image.'
-  homepage 'http://potrace.sourceforge.net/'
+  homepage 'https://potrace.sourceforge.net/'
   version '1.16'
   license 'GPL-2'
   compatibility 'all'

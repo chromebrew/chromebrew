@@ -2,7 +2,7 @@ require 'package'
 
 class Xbitmaps < Package
   description 'The xbitmaps package contains bitmap images used by multiple applications built in Xorg chapter.'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.1.1'
   license 'MIT'
   compatibility 'all'

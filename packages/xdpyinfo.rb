@@ -5,7 +5,7 @@ require 'package'
 
 class Xdpyinfo < Package
   description 'Display information utility for X'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.3.3'
   license 'MIT-with-advertising'
   compatibility 'x86_64 aarch64 armv7l'

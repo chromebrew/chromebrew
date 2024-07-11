@@ -2,7 +2,7 @@ require 'buildsystems/python'
 
 class Pygobject < Python
   description 'PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.'
-  homepage 'https://pygobject.readthedocs.io/'
+  homepage 'https://pygobject.gnome.org/'
   @_ver = '3.44.2'
   version "#{@_ver}-py3.12"
   license 'LGPL-2.1+'

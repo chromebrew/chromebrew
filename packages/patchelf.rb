@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Patchelf < Autotools
   description 'PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.'
-  homepage 'http://nixos.org/patchelf.html'
+  homepage 'https://github.com/NixOS/patchelf'
   version '0.18.0'
   license 'GPL-3'
   compatibility 'all'

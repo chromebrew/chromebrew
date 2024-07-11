@@ -2,7 +2,7 @@ require 'package'
 
 class Usbutils < Package
   description 'Tools for examining usb devices'
-  homepage 'http://linux-usb.sourceforge.net/'
+  homepage 'https://linux-usb.sourceforge.net/'
   version '013'
   license 'GPL-2'
   compatibility 'all'

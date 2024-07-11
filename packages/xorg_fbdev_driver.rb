@@ -2,7 +2,7 @@ require 'package'
 
 class Xorg_fbdev_driver < Package
   description 'The Xorg Fbdev Driver package contains the X.Org Video Driver for framebuffer devices. This driver is often used as fallback driver if the hardware specific and VESA drivers fail to load or are not present.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '0.4.4'
   license 'MIT-with-advertising'
   compatibility 'all'

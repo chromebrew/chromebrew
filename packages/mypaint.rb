@@ -2,7 +2,7 @@ require 'package'
 
 class Mypaint < Package
   description 'MyPaint is a simple drawing and painting program.'
-  homepage 'http://mypaint.org/'
+  homepage 'https://mypaint.app/'
   @_ver = '2.0.1'
   version "#{@_ver}-1"
   license 'GPL-2'

@@ -2,7 +2,7 @@ require 'package'
 
 class Whiptail < Package
   description 'displays dialog boxes from shell scripts.'
-  homepage 'http://www.linuxfromscratch.org/blfs/view/cvs/general/newt.html'
+  homepage 'https://www.linuxfromscratch.org/blfs/view/cvs/general/newt.html'
   version '0.52.20'
   license 'GPL-2'
   compatibility 'all'

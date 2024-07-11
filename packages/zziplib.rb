@@ -2,7 +2,7 @@ require 'package'
 
 class Zziplib < Package
   description 'The ZZIPlib provides read access on ZIP-archives and unpacked data.'
-  homepage 'http://zziplib.sourceforge.net/'
+  homepage 'https://zziplib.sourceforge.net/'
   version '0.13.72'
   license 'GPL-2'
   compatibility 'all'

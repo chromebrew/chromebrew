@@ -5,7 +5,7 @@ require 'package'
 
 class Xorg_xset < Package
   description 'User preference utility for X'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.2.5'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'

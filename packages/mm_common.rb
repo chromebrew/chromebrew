@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Mm_common < Meson
   description 'Common build files of the C++ bindings'
-  homepage 'http://www.gtkmm.org/'
+  homepage 'https://www.gtkmm.org/'
   version '1.0.6'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

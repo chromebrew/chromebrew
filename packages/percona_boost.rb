@@ -2,7 +2,7 @@ require 'package'
 
 class Percona_boost < Package
   description 'Boost provides free peer-reviewed portable C++ source libraries.'
-  homepage 'http://www.boost.org/'
+  homepage 'https://www.boost.org/'
   version '1.59.0'
   license 'Boost-1.0'
   compatibility 'all'

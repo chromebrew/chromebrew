@@ -5,7 +5,7 @@ require 'package'
 
 class Onevpl < Package
   description 'oneAPI Video Processing Library'
-  homepage 'https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
+  homepage 'https://www.intel.com/content/www/us/en/developer/tools/vpl/overview.html'
   version '2023.1.0'
   license 'MIT'
   compatibility 'x86_64'

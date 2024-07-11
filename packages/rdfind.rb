@@ -5,7 +5,7 @@ require 'package'
 
 class Rdfind < Package
   description 'Redundant data find - a program that finds duplicate files.'
-  homepage 'http://rdfind.pauldreik.se'
+  homepage 'https://rdfind.pauldreik.se/'
   version '1.6.0'
   license 'GPL2'
   compatibility 'all'

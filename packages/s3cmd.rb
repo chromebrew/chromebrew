@@ -2,7 +2,7 @@ require 'package'
 
 class S3cmd < Package
   description 'Command line tool for managing Amazon S3 and CloudFront services'
-  homepage 'http://s3tools.org/s3cmd'
+  homepage 'https://s3tools.org/s3cmd'
   version '2.2.0'
   license 'GPL-2+'
   compatibility 'all'

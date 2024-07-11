@@ -2,7 +2,7 @@ require 'package'
 
 class Xxd_standalone < Package
   description 'Hexdump utility from vim'
-  homepage 'http://www.vim.org'
+  homepage 'https://www.vim.org/'
   version '9.1.0188'
   license 'GPL-2'
   compatibility 'all'

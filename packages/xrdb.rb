@@ -2,7 +2,7 @@ require 'package'
 
 class Xrdb < Package
   description 'xrdb - X server resource database utility'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.2.1'
   license 'custom'
   compatibility 'x86_64 aarch64 armv7l'

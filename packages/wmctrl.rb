@@ -2,12 +2,12 @@ require 'package'
 
 class Wmctrl < Package
   description 'Control your EWMH compliant window manager from command line'
-  homepage 'http://tripie.sweb.cz/utils/wmctrl/'
+  homepage 'https://sweb.cz/utils/wmctrl/'
   @_ver = '1.07'
   version "#{@_ver}-1"
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url "http://tripie.sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
+  source_url "https://sweb.cz/utils/wmctrl/dist/wmctrl-#{@_ver}.tar.gz"
   source_sha256 'd78a1efdb62f18674298ad039c5cbdb1edb6e8e149bb3a8e3a01a4750aa3cca9'
   binary_compression 'tar.xz'
 

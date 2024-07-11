@@ -2,7 +2,7 @@ require 'package'
 
 class Qemu < Package
   description 'QEMU is a generic and open source machine emulator and virtualizer.'
-  homepage 'http://www.qemu.org/'
+  homepage 'https://www.qemu.org/'
   version '9.0.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

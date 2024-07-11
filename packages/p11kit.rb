@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class P11kit < Meson
   description "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable."
-  homepage 'https://p11-glue.freedesktop.org/p11-kit.html'
+  homepage 'https://p11-glue.github.io/p11-glue/p11-kit.html'
   version '0.25.3'
   license 'BSD'
   compatibility 'all'
