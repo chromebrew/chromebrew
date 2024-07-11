@@ -2,7 +2,7 @@ require 'package'
 
 class Msttcorefonts < Package
   description "An easy way to install Microsoft's TrueType core fonts on Linux"
-  homepage 'http://corefonts.sourceforge.net/'
+  homepage 'https://corefonts.sourceforge.net/'
   version '3.6'
   license 'GPL-2+'
   compatibility 'all'
