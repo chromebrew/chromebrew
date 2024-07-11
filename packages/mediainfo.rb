@@ -2,7 +2,7 @@ require 'package'
 
 class Mediainfo < Package
   description 'MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.'
-  homepage 'http://mediaarea.net/en/MediaInfo'
+  homepage 'https://mediaarea.net/en/MediaInfo'
   version '24.04'
   license 'BSD-2'
   compatibility 'all'
