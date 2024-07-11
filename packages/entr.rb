@@ -2,24 +2,24 @@ require 'package'
 
 class Entr < Package
   description 'Run arbitrary commands when files change'
-  homepage 'https://entrproject.org/'
-  version '4.0'
+  homepage 'https://eradman.com/entrproject/'
+  version '5.6'
   license 'ISC'
   compatibility 'all'
-  source_url 'https://entrproject.org/code/entr-4.0.tar.gz'
-  source_sha256 '4ad4fe9108b179199951cfc78a581a8a69602b073dae59bcae4b810f6e1f6c8b'
-  binary_compression 'tar.xz'
+  source_url 'https://github.com/eradman/entr.git'
+  git_hashtag version
+  binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0245397ddc6c63266cb85893650b4e3f30ba9ba433c3bb6ce4f1e026b31d7f41',
-     armv7l: '0245397ddc6c63266cb85893650b4e3f30ba9ba433c3bb6ce4f1e026b31d7f41',
-       i686: '74adb77a26cc198d011f0e57f8311c41cd34b91243cb3456269f71ef1e2be273',
-     x86_64: '6efb1d26f5472c55ac84d32807bae88c444df2bdb4128a9e2d6ba2349f60e591'
+    aarch64: '6d79a63e1ac8156f348d3c4c32b9c460f3f6224a5721a0a6bbd9bfe5b5e4f80a',
+     armv7l: '6d79a63e1ac8156f348d3c4c32b9c460f3f6224a5721a0a6bbd9bfe5b5e4f80a',
+       i686: 'ccf9946cf98aa951b8223c209c9deb0ab48d32d597c10a61da2387ea2497f286',
+     x86_64: 'cfc15cb06370c5fd548060fcd06b3935520fb57d89d82abfef7c4ce2c6d6d4b9'
   })
 
   def self.build
-    system 'cp Makefile.linux Makefile'
-    system 'make'
+    system './configure' # Not an autotools script, despite appearances.
+    system 'make', "PREFIX=#{CREW_PREFIX}"
   end
 
   def self.install
