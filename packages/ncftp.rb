@@ -2,7 +2,7 @@ require 'package'
 
 class Ncftp < Package
   description 'NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).'
-  homepage 'http://ncftp.com/ncftp/'
+  homepage 'https://ncftp.com/ncftp/'
   version '3.2.6'
   license 'Clarified-Artistic'
   compatibility 'all'
