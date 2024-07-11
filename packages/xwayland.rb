@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Xwayland < Meson
   description 'X server configured to work with weston or sommelier'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '24.1.0'
   license 'MIT-with-advertising, ISC, BSD-3, BSD and custom'
   compatibility 'x86_64 aarch64 armv7l'
