@@ -34,7 +34,7 @@ jobs:
             ruby ../tests/commands/const.rb && \
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
-            ( [[ -z "${ALL_CHANGED_FILES}" ]] && ( for file in ${ALL_CHANGED_FILES}; do
+            ( [[ -v ALL_CHANGED_FILES ]] && ( for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file ; \
             done ) ) && \
@@ -57,7 +57,7 @@ jobs:
             ruby ../tests/commands/const.rb && \
             ruby ../tests/commands/help.rb && \
             ruby ../tests/commands/prop.rb && \
-            ( [[ -z "${ALL_CHANGED_FILES}" ]] && ( for file in ${ALL_CHANGED_FILES}; do
+            ( [[ -v ALL_CHANGED_FILES ]] && ( for file in ${ALL_CHANGED_FILES}; do
               ruby ../tests/prop_test $file && \
               ruby ../tests/buildsystem_test $file && \
             done ) ) && \
