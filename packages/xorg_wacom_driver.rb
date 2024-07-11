@@ -2,7 +2,7 @@ require 'package'
 
 class Xorg_wacom_driver < Package
   description 'The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for Wacom and Wacom-like tablets. It is not required to use a Wacom tablet, the xf86-input-evdev driver can handle these devices without problems.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '0.36.0'
   license 'GPL-2'
   compatibility 'all'
