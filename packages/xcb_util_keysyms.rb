@@ -2,7 +2,7 @@ require 'package'
 
 class Xcb_util_keysyms < Package
   description 'The xcb-util-keysyms package contains a library for handling standard X key constants and conversion to/from keycodes.'
-  homepage 'http://xcb.freedesktop.org'
+  homepage 'https://xcb.freedesktop.org/'
   version '0.4.0-1'
   compatibility 'all'
   license 'MIT-with-advertising'
