@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_xz < Package
   description 'XZ is free general-purpose data compression software with a high compression ratio.'
-  homepage 'http://tukaani.org/xz/'
+  homepage 'https://tukaani.org/xz/'
   version '5.2.5-e7da-1'
   license 'public-domain, LGPL-2.1+ and GPL-2+'
   compatibility 'all'
