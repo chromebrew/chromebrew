@@ -2,7 +2,7 @@ require 'package'
 
 class Xdg_base < Package
   description 'XDG Base Directory Specification Configuration'
-  homepage 'https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html'
+  homepage 'https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html'
   version '0.7-7-1'
   license 'GPL-3+'
   compatibility 'all'
@@ -33,7 +33,7 @@ class Xdg_base < Package
     FileUtils.mkdir_p "#{CREW_DEST_PREFIX}/etc/env.d/"
     @xdgbaseenv = <<~XDGBASEEOF
       # Chromebrew's XDG configuration
-      # See https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+      # See https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
       # XDG Base Directory Specification Environment Variables
       export XDG_CACHE_HOME=#{CREW_PREFIX}/.cache
       export XDG_CONFIG_DIRS=#{CREW_PREFIX}/etc/xdg
