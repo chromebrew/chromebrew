@@ -2,7 +2,7 @@ require 'package'
 
 class Radare2 < Package
   description 'unix-like reverse engineering framework and commandline tools'
-  homepage 'http://www.radare.org/r/'
+  homepage 'https://www.radare.org/r/'
   version '2.4.0'
   license 'GPL-2'
   compatibility 'all'
