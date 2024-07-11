@@ -2,7 +2,7 @@ require 'package'
 
 class Mypaint_brushes_1 < Package
   description 'Brushes used by MyPaint and other software using libmypaint.'
-  homepage 'http://mypaint.org/'
+  homepage 'https://mypaint.app/'
   version '1.3.1'
   license 'CC0-1.0'
   compatibility 'x86_64 aarch64 armv7l'
