@@ -2,7 +2,7 @@ require 'package'
 
 class Qpdf < Package
   description 'QPDF is a command-line program that does structural, content-preserving transformations on PDF files.'
-  homepage 'http://qpdf.sourceforge.net/'
+  homepage 'https://qpdf.sourceforge.io/'
   version '11.1.1'
   license 'Apache-2.0 or Artistic-2'
   compatibility 'all'
