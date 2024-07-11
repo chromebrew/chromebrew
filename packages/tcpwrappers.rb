@@ -2,7 +2,7 @@ require 'package'
 
 class Tcpwrappers < Package
   description 'The tcpwrappers package provides daemon wrapper programs that report the name of the client requesting network services and the requested service.'
-  homepage 'http://www.linuxfromscratch.org/blfs/view/6.1/basicnet/tcpwrappers.html'
+  homepage 'https://www.linuxfromscratch.org/blfs/view/6.1/basicnet/tcpwrappers.html'
   version '7.6'
   license 'tcp_wrappers_license'
   compatibility 'all'
