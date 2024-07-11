@@ -2,7 +2,7 @@ require 'package'
 
 class Unrar < Package
   description 'UnRAR is a powerful archive extractor.'
-  homepage 'http://www.rarlab.com/'
+  homepage 'https://www.rarlab.com/'
   version '7.0.9'
   license 'unRAR'
   compatibility 'all'
