@@ -2,7 +2,7 @@ require 'package'
 
 class Tcpdump < Package
   description 'A powerful command-line packet analyzer.'
-  homepage 'http://www.tcpdump.org/'
+  homepage 'https://www.tcpdump.org/'
   version '4.99.4'
   license 'BSD'
   compatibility 'all'
