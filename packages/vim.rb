@@ -3,7 +3,7 @@ require 'buildsystems/autotools'
 class Vim < Autotools
   description 'Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.'
   homepage 'https://www.vim.org/'
-  version '9.1.0188'
+  version '9.1.0568'
   license 'GPL-2'
   compatibility 'all'
   source_url 'https://github.com/vim/vim.git'
@@ -11,13 +11,13 @@ class Vim < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: '0620859af4fd5394a42f92d44a6ff83a69d850fd023070ff997d588d4d7c204b',
-     armv7l: '0620859af4fd5394a42f92d44a6ff83a69d850fd023070ff997d588d4d7c204b',
-       i686: '23d2904b646a0f4b208e39d00ca334570815436e26c18d71d2cd171ed2269e2b',
-     x86_64: 'cedc0d43bfc505fa4b585628b6d835d354361732806bcbb1f4b50981bf3e1713'
+    aarch64: 'fb025f27c43b8b233bab03320089d9105fe4076a5730b4fb84dba28b635fce94',
+     armv7l: 'fb025f27c43b8b233bab03320089d9105fe4076a5730b4fb84dba28b635fce94',
+       i686: 'bdf09f1927dd5d55c3fd8d3bfc55d411448e1aaf88a02f943fe0d9dfe5372908',
+     x86_64: '577720854479531cb46650ce4d60093dc94103777a942bf1e9eb41c8e8f8427a'
   })
 
-  depends_on 'vim_runtime'
+  depends_on 'vim_runtime' # R
   depends_on 'acl' # R
   depends_on 'glibc' # R
   depends_on 'gpm' # R
