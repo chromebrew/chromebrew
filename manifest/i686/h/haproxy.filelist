@@ -4,7 +4,6 @@
 /usr/local/doc/haproxy/SPOE.txt
 /usr/local/doc/haproxy/WURFL-device-detection.txt
 /usr/local/doc/haproxy/architecture.txt
-/usr/local/doc/haproxy/close-options.txt
 /usr/local/doc/haproxy/configuration.txt
 /usr/local/doc/haproxy/cookie-options.txt
 /usr/local/doc/haproxy/intro.txt
@@ -19,4 +18,4 @@
 /usr/local/doc/haproxy/regression-testing.txt
 /usr/local/doc/haproxy/seamless_reload.txt
 /usr/local/sbin/haproxy
-/usr/local/share/man/man1/haproxy.1.gz
+/usr/local/share/man/man1/haproxy.1.zst
