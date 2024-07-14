@@ -203,7 +203,7 @@
     "name": "alsa_plugins",
     "description": "alsa-plugins contains plugins for various ALSA needs (e.g. Jack).",
     "homepage": "https://www.alsa-project.org/main/index.php/Main_Page",
-    "version": "1.2.7.1",
+    "version": "1.2.12",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -274,7 +274,7 @@
   {
     "name": "ansifilter",
     "description": "Ansifilter parses common ANSI codes to remove them or to convert them to another colored text file format (HTML, TeX, LaTeX, RTF, Pango or BBCode).",
-    "homepage": "http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php",
+    "homepage": "http://andre-simon.de/doku/ansifilter/en/ansifilter.php",
     "version": "2.10",
     "license": "GPL-3+",
     "compatibility": "all"
@@ -1315,7 +1315,7 @@
     "name": "cbonsai",
     "description": "A CLI bonsai tree generator, grow bonsai trees in our terminal",
     "homepage": "https://gitlab.com/jallbrit/cbonsai",
-    "version": "1.3.1",
+    "version": "1.3.1-4682ec7",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -1490,7 +1490,7 @@
   {
     "name": "ciano",
     "description": "A multimedia file converter focused on simplicity.",
-    "homepage": "https://robertsanseries.github.io/ciano",
+    "homepage": "https://robertsanseries.github.io/ciano/",
     "version": "0.2.4",
     "license": "GPL-3.0",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -1971,7 +1971,7 @@
     "name": "cryptsetup",
     "description": "The cryptsetup utility is used to conveniently setup disk en-/decryption based on DMCrypt kernel module.",
     "homepage": "https://gitlab.com/cryptsetup/cryptsetup",
-    "version": "2.7.2",
+    "version": "2.7.3",
     "license": "GPL-2+",
     "compatibility": "all"
   },
@@ -2059,7 +2059,7 @@
     "name": "daq",
     "description": "Data Acquisition library, for packet I/O.",
     "homepage": "https://www.snort.org",
-    "version": "2.0.7",
+    "version": "3.0.15",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -2507,7 +2507,7 @@
     "name": "duktape",
     "description": "Embeddable Javascript engine",
     "homepage": "https://duktape.org/",
-    "version": "2.7.0",
+    "version": "2.7.0-1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -2674,8 +2674,8 @@
   {
     "name": "entr",
     "description": "Run arbitrary commands when files change",
-    "homepage": "http://entrproject.org/",
-    "version": "4.0",
+    "homepage": "https://eradman.com/entrproject/",
+    "version": "5.6",
     "license": "ISC",
     "compatibility": "all"
   },
@@ -3011,7 +3011,7 @@
     "name": "firefox",
     "description": "Mozilla Firefox (or simply Firefox) is a free and open-source web browser",
     "homepage": "https://www.mozilla.org/en-US/firefox/",
-    "version": "127.0.2",
+    "version": "128.0",
     "license": "MPL-2.0, GPL-2 and LGPL-2.1",
     "compatibility": "x86_64"
   },
@@ -3882,7 +3882,7 @@
   {
     "name": "giflib",
     "description": "giflib is a library for reading and writing gif images.",
-    "homepage": "http://giflib.sourceforge.net/",
+    "homepage": "https://giflib.sourceforge.net/",
     "version": "5.2.2",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -3922,7 +3922,7 @@
   {
     "name": "git_lfs",
     "description": "Git extension for versioning large files",
-    "homepage": "https://git-lfs.github.com",
+    "homepage": "https://git-lfs.com/",
     "version": "2.13.2",
     "license": "AGPL-3",
     "compatibility": "all"
@@ -3954,7 +3954,7 @@
   {
     "name": "github_release",
     "description": "Commandline app to create and edit releases on Github (and upload artifacts)",
-    "homepage": "https://github.com/aktau/github-release",
+    "homepage": "https://github.com/github-release/github-release",
     "version": "0.7.2",
     "license": "MIT",
     "compatibility": "all"
@@ -4010,7 +4010,7 @@
   {
     "name": "glew",
     "description": "GLEW provides efficient run-time mechanisms for determining which OpenGL extensions are supported on the target platform",
-    "homepage": "http://glew.sourceforge.net/",
+    "homepage": "https://glew.sourceforge.net/",
     "version": "2.2.0",
     "license": "BSD and MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -4018,7 +4018,7 @@
   {
     "name": "glfw",
     "description": "GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.",
-    "homepage": "http://www.glfw.org/",
+    "homepage": "https://www.glfw.org/",
     "version": "3.4",
     "license": "ZLIB",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -4026,7 +4026,7 @@
   {
     "name": "glib",
     "description": "GLib provides the core application building blocks for libraries and applications written in C.",
-    "homepage": "https://developer.gnome.org/glib",
+    "homepage": "https://docs.gtk.org/glib/",
     "version": "2.80.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
@@ -4258,7 +4258,7 @@
   {
     "name": "gnome_common",
     "description": "Common files for development of Gnome packages.",
-    "homepage": "https://git.gnome.org/browse/gnome-common",
+    "homepage": "https://gitlab.gnome.org/GNOME/gnome-common",
     "version": "3.18.0",
     "license": "GPL-3",
     "compatibility": "all"
@@ -4298,7 +4298,7 @@
   {
     "name": "gnome_icon_theme",
     "description": "GNOME Icon Theme",
-    "homepage": "https://ftp.gnome.org/pub/GNOME/sources/gnome-icon-theme/",
+    "homepage": "https://download.gnome.org/sources/gnome-icon-theme/",
     "version": "3.12.0-1",
     "license": "LGPL-3 or CC-BY-SA-3.0",
     "compatibility": "all"
@@ -4418,7 +4418,7 @@
   {
     "name": "gnucobol",
     "description": "GnuCOBOL (formerly OpenCOBOL) is a free COBOL compiler.",
-    "homepage": "https://open-cobol.sourceforge.io/",
+    "homepage": "https://gnucobol.sourceforge.io/",
     "version": "3.0-rc1",
     "license": "LGPL-2, GPL-2, GPL-3 and LGPL-3",
     "compatibility": "all"
@@ -4426,7 +4426,7 @@
   {
     "name": "gnulib_git",
     "description": "GNU Portability Library",
-    "homepage": "http://www.gnu.org/software/gnulib",
+    "homepage": "http://www.gnu.org/software/gnulib/",
     "version": "v0.1-96ad66e",
     "license": "custom",
     "compatibility": "all"
@@ -4442,7 +4442,7 @@
   {
     "name": "gnuplot",
     "description": "Gnuplot is a portable command-line driven graphing utility",
-    "homepage": "http://gnuplot.sourceforge.net/",
+    "homepage": "https://gnuplot.sourceforge.net/",
     "version": "5.2.6",
     "license": "gnuplot",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -4450,7 +4450,7 @@
   {
     "name": "gnutls",
     "description": "GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.",
-    "homepage": "http://gnutls.org/",
+    "homepage": "https://gnutls.org/",
     "version": "3.8.1-1",
     "license": "GPL-3",
     "compatibility": "all"
@@ -4459,7 +4459,7 @@
     "name": "go",
     "description": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://go.dev",
-    "version": "1.22.4",
+    "version": "1.22.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -4602,8 +4602,8 @@
   {
     "name": "gpt4all",
     "description": "A free-to-use, locally running, privacy-aware chatbot.",
-    "homepage": "https://gpt4all.io/",
-    "version": "2.7.3",
+    "homepage": "https://www.nomic.ai/gpt4all",
+    "version": "3.0.0",
     "license": "Copyright 2023 Nomic, Inc., Aaron Miller",
     "compatibility": "x86_64"
   },
@@ -4627,7 +4627,7 @@
     "name": "gradle",
     "description": "From mobile apps to microservices, from small startups to big enterprises, Gradle helps teams build, automate and deliver better software, faster.",
     "homepage": "https://gradle.org/",
-    "version": "8.5",
+    "version": "8.8",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -4698,7 +4698,7 @@
   {
     "name": "gsettings_desktop_schemas",
     "description": "Collection of GSettings schemas for GNOME desktop.",
-    "homepage": "https://git.gnome.org/browse/gsettings-desktop-schemas",
+    "homepage": "https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas",
     "version": "46.rc",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -4722,7 +4722,7 @@
   {
     "name": "gsm",
     "description": "Shared libraries for GSM 06.10 lossy speech compression",
-    "homepage": "http://www.quut.com/gsm/",
+    "homepage": "https://www.quut.com/gsm/",
     "version": "1.0.19",
     "license": "gsm",
     "compatibility": "all"
@@ -4778,7 +4778,7 @@
   {
     "name": "gtk3",
     "description": "GTK+ is a multi-platform toolkit for creating graphical user interfaces.",
-    "homepage": "https://developer.gnome.org/gtk3/3.0/",
+    "homepage": "https://docs.gtk.org/gtk3/",
     "version": "3.24.41",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -4858,7 +4858,7 @@
   {
     "name": "gtksharp2",
     "description": "GTK2 bindings for mono",
-    "homepage": "https://www.mono-project.com/GtkSharp",
+    "homepage": "https://www.mono-project.com/GtkSharp/",
     "version": "2.12.45",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -4914,7 +4914,7 @@
   {
     "name": "gusb",
     "description": "LibGUsb is a GObject wrapper for libusb1",
-    "homepage": "https://www.openhub.net/p/gusb",
+    "homepage": "https://openhub.net/p/gusb",
     "version": "0.3.5",
     "license": "LGPL-2.1+",
     "compatibility": "all"
@@ -4922,7 +4922,7 @@
   {
     "name": "gutenprint",
     "description": "High quality drivers for Canon, Epson, Lexmark, Sony, Olympus, and PCL printers for use with CUPS and GIMP.",
-    "homepage": "http://gimp-print.sourceforge.net/",
+    "homepage": "https://gimp-print.sourceforge.io/",
     "version": "5.3.3",
     "license": "GPL-2",
     "compatibility": "all"
@@ -4938,15 +4938,15 @@
   {
     "name": "gvim",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (with advanced features, such as a GUI)",
-    "homepage": "http://www.vim.org/",
-    "version": "9.1.0188",
+    "homepage": "https://www.vim.org/",
+    "version": "9.1.0568",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "gwt",
     "description": "Google Web Toolkit",
-    "homepage": "http://www.gwtproject.org/",
+    "homepage": "https://www.gwtproject.org/",
     "version": "2.8.2",
     "license": "Apache-2.0",
     "compatibility": "all"
@@ -5003,14 +5003,14 @@
     "name": "haproxy",
     "description": "The Reliable, High Performance TCP/HTTP Load Balancer.",
     "homepage": "https://www.haproxy.org/",
-    "version": "2.0.5",
+    "version": "3.0.3",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
   },
   {
     "name": "harfbuzz",
     "description": "HarfBuzz is an OpenType text shaping engine.",
-    "homepage": "https://www.freedesktop.org/wiki/Software/HarfBuzz/",
+    "homepage": "https://harfbuzz.github.io/",
     "version": "8.5.0",
     "license": "Old-MIT, ISC and icu",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -5058,7 +5058,7 @@
   {
     "name": "health_check",
     "description": "The health-check tool monitors processes in various ways to help identify areas where it is consuming too many resources.",
-    "homepage": "http://kernel.ubuntu.com/~cking/health-check/",
+    "homepage": "https://kernel.ubuntu.com/~cking/health-check/",
     "version": "0.02.08",
     "license": "GPL-2",
     "compatibility": "all"
@@ -5162,7 +5162,7 @@
   {
     "name": "homebank",
     "description": "HomeBank is a free software that will assist you to manage your personal accounting.",
-    "homepage": "http://homebank.free.fr/en/index.php",
+    "homepage": "https://www.gethomebank.org/en/index.php",
     "version": "5.4.3",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -5283,14 +5283,14 @@
     "name": "i3",
     "description": "Improved tiling window manager",
     "homepage": "https://i3wm.org/",
-    "version": "4.18.3",
+    "version": "4.23",
     "license": "BSD",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "ibmonitor",
     "description": "ibmonitor is an interactive bandwidth monitor console application.",
-    "homepage": "http://ibmonitor.sourceforge.net/",
+    "homepage": "https://ibmonitor.sourceforge.net/",
     "version": "1.4",
     "license": "GPL-2",
     "compatibility": "all"
@@ -5330,7 +5330,7 @@
   {
     "name": "icu4c",
     "description": "ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.",
-    "homepage": "http://site.icu-project.org/",
+    "homepage": "https://icu.unicode.org/",
     "version": "74.2",
     "license": "BSD",
     "compatibility": "all"
@@ -5339,14 +5339,14 @@
     "name": "idea",
     "description": "Capable and Ergonomic IDE for JVM",
     "homepage": "https://www.jetbrains.com/idea/",
-    "version": "2022.3",
+    "version": "2024.1.4",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "iftop",
     "description": "iftop does for network usage what top(1) does for CPU usage.",
-    "homepage": "http://www.ex-parrot.com/pdw/iftop/",
+    "homepage": "https://pdw.ex-parrot.com/iftop/",
     "version": "0.17",
     "license": "GPL-2",
     "compatibility": "all"
@@ -5378,7 +5378,7 @@
   {
     "name": "imake",
     "description": "A build automation system written for the X Window System.",
-    "homepage": "https://xorg.freedesktop.org",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.10",
     "license": "custom",
     "compatibility": "all"
@@ -5442,7 +5442,7 @@
   {
     "name": "intel_media_sdk",
     "description": "API to access hardware-accelerated video on Intel Gen graphics hardware platforms",
-    "homepage": "https://software.intel.com/en-us/media-sdk/",
+    "homepage": "https://www.intel.com/content/www/us/en/developer/articles/tool/media-sdk.html",
     "version": "20.5.1",
     "license": "MIT",
     "compatibility": "x86_64"
@@ -5482,7 +5482,7 @@
   {
     "name": "ipfs",
     "description": "A peer-to-peer hypermedia protocol",
-    "homepage": "https://ipfs.io",
+    "homepage": "https://ipfs.tech/",
     "version": "0.4.13",
     "license": "MIT and Apache-2.0",
     "compatibility": "all"
@@ -5522,7 +5522,7 @@
   {
     "name": "irrlicht",
     "description": "An open source realtime 3D engine written in C++ — Libraries and headers",
-    "homepage": "http://irrlicht.sourceforge.net/",
+    "homepage": "https://irrlicht.sourceforge.io/",
     "version": "1.8.5",
     "license": "ZLIB",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -5530,7 +5530,7 @@
   {
     "name": "irrlicht_examples",
     "description": "An open source realtime 3D engine written in C++ — Examples",
-    "homepage": "http://irrlicht.sourceforge.net/",
+    "homepage": "https://irrlicht.sourceforge.io/",
     "version": "1.8.4",
     "license": "ZLIB",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -5538,7 +5538,7 @@
   {
     "name": "irrlicht_tools",
     "description": "An open source realtime 3D engine written in C++ — Tools",
-    "homepage": "http://irrlicht.sourceforge.net/",
+    "homepage": "https://irrlicht.sourceforge.io/",
     "version": "1.8.4",
     "license": "ZLIB",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -5570,7 +5570,7 @@
   {
     "name": "itstool",
     "description": "Translate XML with PO files using W3C Internationalization Tag Set rules",
-    "homepage": "http://itstool.org/",
+    "homepage": "https://itstool.org/",
     "version": "2.0.7-py3.12-1",
     "license": "GPL-3+",
     "compatibility": "all"
@@ -5578,7 +5578,7 @@
   {
     "name": "iw",
     "description": "iw is a new nl80211 based CLI configuration utility for wireless devices.",
-    "homepage": "https://wireless.wiki.kernel.org/en/users/documentation/iw/",
+    "homepage": "https://wireless.wiki.kernel.org/en/users/documentation/iw",
     "version": "5.19",
     "license": "ISC",
     "compatibility": "all"
@@ -5602,7 +5602,7 @@
   {
     "name": "jam",
     "description": "Jam is a software build tool that makes building simple things simple and building complicated things manageable.",
-    "homepage": "https://www.perforce.com/documentation/jam-documentation",
+    "homepage": "https://swarm.workshop.perforce.com/projects/perforce_software-jam",
     "version": "2.6",
     "license": "JAM License",
     "compatibility": "all"
@@ -5618,7 +5618,7 @@
   {
     "name": "jansson",
     "description": "Jansson is a C library for encoding, decoding and manipulating JSON data.",
-    "homepage": "http://www.digip.org/jansson/",
+    "homepage": "https://github.com/akheron/jansson",
     "version": "2.13.1",
     "license": "MIT",
     "compatibility": "all"
@@ -5690,7 +5690,7 @@
   {
     "name": "jfrog",
     "description": "JFrog CLI is a compact and smart client that provides a simple interface that automates access to Artifactory, Bintray and Mission Control through their respective REST APIs.",
-    "homepage": "https://github.com/JFrogDev/jfrog-cli-go",
+    "homepage": "https://github.com/jfrog/jfrog-cli",
     "version": "1.39.5",
     "license": "Apache-2.0, BSD, BSD-2, MIT and MPL-2.0",
     "compatibility": "all"
@@ -5699,14 +5699,14 @@
     "name": "jitsi_meet",
     "description": "Jitsi Meet video conferencing desktop application",
     "homepage": "https://jitsi.org/jitsi-meet/",
-    "version": "2024.5.0",
+    "version": "2024.6.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
   {
     "name": "jobscheduler",
     "description": "The JobScheduler is an Open Source solution for enterprise level workload automation.",
-    "homepage": "https://www.sos-berlin.com/jobscheduler",
+    "homepage": "https://www.sos-berlin.com/en/jobscheduler-features",
     "version": "1.12.3",
     "license": "GPL-2",
     "compatibility": "all"
@@ -5778,8 +5778,8 @@
   {
     "name": "json_glib",
     "description": "JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.",
-    "homepage": "https://wiki.gnome.org/Projects/JsonGlib",
-    "version": "1.8.1-b3774f5",
+    "homepage": "https://gitlab.gnome.org/GNOME/json-glib",
+    "version": "1.9.2",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5851,7 +5851,7 @@
     "name": "keepassxc",
     "description": "KeePass Cross-Platform Community Edition, the free, open source, light-weight and easy-to-use password manager.",
     "homepage": "https://keepassxc.org/",
-    "version": "2.7.8",
+    "version": "2.7.9",
     "license": "GPL-2 or GPL-3",
     "compatibility": "x86_64"
   },
@@ -5899,7 +5899,7 @@
     "name": "kotlin",
     "description": "Statically typed programming language for modern multiplatform applications",
     "homepage": "https://kotlinlang.org/",
-    "version": "1.9.24",
+    "version": "2.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -5914,7 +5914,7 @@
   {
     "name": "krb5",
     "description": "Kerberos is a network authentication protocol.",
-    "homepage": "https://web.mit.edu/kerberos",
+    "homepage": "https://web.mit.edu/kerberos/",
     "version": "1.21.2",
     "license": "openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )",
     "compatibility": "all"
@@ -5922,8 +5922,8 @@
   {
     "name": "krita",
     "description": "A generic image manipulation/painting application in the style of Photoshop or GIMP.",
-    "homepage": "https://krita.org/en",
-    "version": "5.2.2",
+    "homepage": "https://krita.org/en/",
+    "version": "5.2.3",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -5986,7 +5986,7 @@
   {
     "name": "lcms",
     "description": "Little CMS intends to be an OPEN SOURCE small-footprint color management engine, with special focus on accuracy and performance.",
-    "homepage": "http://www.littlecms.com/",
+    "homepage": "https://www.littlecms.com/",
     "version": "2.12",
     "license": "MIT",
     "compatibility": "all"
@@ -6011,14 +6011,14 @@
     "name": "ldc",
     "description": "D language compiler using LLVM.",
     "homepage": "https://github.com/ldc-developers/ldc",
-    "version": "1.31.0",
+    "version": "1.39.0",
     "license": "BSD-3, Boost-1.0, MIT, NCSA and Artistic-1.0 or GPL-2+",
     "compatibility": "x86_64"
   },
   {
     "name": "ledger",
     "description": "A double-entry accounting system with a command-line reporting interface",
-    "homepage": "https://www.ledger-cli.org/",
+    "homepage": "https://ledger-cli.org/",
     "version": "3.3.2",
     "license": "BSD",
     "compatibility": "all"
@@ -6042,7 +6042,7 @@
   {
     "name": "leptonica",
     "description": "Software that is broadly useful for image processing and image analysis applications",
-    "homepage": "http://www.leptonica.com/",
+    "homepage": "http://www.leptonica.org",
     "version": "1.83.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -6066,7 +6066,7 @@
   {
     "name": "lft",
     "description": "LFT, short for Layer Four Traceroute, is a sort of 'traceroute' that often works much faster (than the commonly-used Van Jacobson method) and goes through many configurations of packet-filters (firewalls).",
-    "homepage": "http://pwhois.org/lft/",
+    "homepage": "https://pwhois.org/lft/",
     "version": "3.79",
     "license": "VOSTROM",
     "compatibility": "all"
@@ -6090,7 +6090,7 @@
   {
     "name": "liba52",
     "description": "liba52 is a free library for decoding ATSC A/52 streams.",
-    "homepage": "http://liba52.sourceforge.net/",
+    "homepage": "https://sourceforge.net/projects/liba52/",
     "version": "0.7.4-2",
     "license": "GPL-2+",
     "compatibility": "all"
@@ -6250,7 +6250,7 @@
   {
     "name": "libbsd",
     "description": "This library provides useful functions commonly found on BSD systems, and lacking on others like GNU systems, thus making it easier to port projects with strong BSD origins, without needing to embed the same code over and over again on each project.",
-    "homepage": "https://libbsd.freedesktop.org/wiki",
+    "homepage": "https://libbsd.freedesktop.org/wiki/",
     "version": "0.11.8",
     "license": "BSD, BSD-2, BSD-4, ISC",
     "compatibility": "all"
@@ -6290,7 +6290,7 @@
   {
     "name": "libcap",
     "description": "Libcap implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels.",
-    "homepage": "https://directory.fsf.org/wiki/Libcap/",
+    "homepage": "https://directory.fsf.org/wiki/Libcap",
     "version": "2.66",
     "license": "GPL-2 or BSD",
     "compatibility": "all"
@@ -6298,7 +6298,7 @@
   {
     "name": "libcap_ng",
     "description": "The libcap-ng library is intended to make programming with posix capabilities much easier than the traditional libcap library.",
-    "homepage": "https://people.redhat.com/sgrubb/libcap-ng",
+    "homepage": "https://people.redhat.com/sgrubb/libcap-ng/",
     "version": "0.8.4",
     "license": "LGPL-2.1",
     "compatibility": "all"
@@ -6306,7 +6306,7 @@
   {
     "name": "libcddb",
     "description": "Libcddb is a C library to access data on a CDDB server (freedb.org).",
-    "homepage": "http://libcddb.sourceforge.net/",
+    "homepage": "https://libcddb.sourceforge.net/",
     "version": "1.3.2-2",
     "license": "LGPL-2",
     "compatibility": "all"
@@ -6338,7 +6338,7 @@
   {
     "name": "libcec",
     "description": "Pulse-Eights libcec for the Pulse-Eight USB-CEC adapter",
-    "homepage": "http://libcec.pulse-eight.com/",
+    "homepage": "https://libcec.pulse-eight.com/",
     "version": "6.0.2",
     "license": "GPL",
     "compatibility": "aarch64 armv7l x86_64"
@@ -6386,7 +6386,7 @@
   {
     "name": "libcom_err",
     "description": "Common error description library",
-    "homepage": "http://e2fsprogs.sourceforge.net/",
+    "homepage": "https://e2fsprogs.sourceforge.net/",
     "version": "1.1",
     "license": "GPL-2",
     "compatibility": "all"
@@ -6402,7 +6402,7 @@
   {
     "name": "libconfuse",
     "description": "Small configuration file parser library for C.",
-    "homepage": "https://github.com/martinh/libconfuse",
+    "homepage": "https://github.com/libconfuse/libconfuse",
     "version": "3.2.1",
     "license": "ISC",
     "compatibility": "all"
@@ -6410,7 +6410,7 @@
   {
     "name": "libcroco",
     "description": "Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit.",
-    "homepage": "https://git.gnome.org/browse/libcroco/",
+    "homepage": "https://gitlab.gnome.org/Archive/libcroco",
     "version": "0.6.13",
     "license": "LGPL-2",
     "compatibility": "all"
@@ -6434,7 +6434,7 @@
   {
     "name": "libcyrussasl",
     "description": "Simple Authentication and Security Layer (SASL) is a specification that describes how authentication mechanisms can be plugged into an application protocol on the wire. Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.",
-    "homepage": "https://www.cyrusimap.org/sasl",
+    "homepage": "https://www.cyrusimap.org/sasl/",
     "version": "2.1.28-2",
     "license": "custom",
     "compatibility": "all"
@@ -6522,7 +6522,7 @@
   {
     "name": "libdmraid",
     "description": "Device-Mapper Software RAID support tool",
-    "homepage": "http://people.redhat.com/~heinzm/sw/dmraid/",
+    "homepage": "https://people.redhat.com/~heinzm/sw/dmraid/",
     "version": "1.0.0.rc16-3",
     "license": "GPL-2.0",
     "compatibility": "all"
@@ -6530,7 +6530,7 @@
   {
     "name": "libdmx",
     "description": "X.org X Window System DMX (Distributed Multihead X) extension library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.3-0",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -6562,7 +6562,7 @@
   {
     "name": "libdrm",
     "description": "Cross-driver middleware for DRI protocol.",
-    "homepage": "https://dri.freedesktop.org",
+    "homepage": "https://dri.freedesktop.org/wiki/",
     "version": "2.4.120",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -6578,7 +6578,7 @@
   {
     "name": "libdv",
     "description": "The Quasar DV codec libdv is a software codec for DV video",
-    "homepage": "http://libdv.sourceforge.net/",
+    "homepage": "https://libdv.sourceforge.net/",
     "version": "1.0.0-1",
     "license": "libdv",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -6642,7 +6642,7 @@
   {
     "name": "libefl",
     "description": "Enlightenment Foundation Libraries",
-    "homepage": "https://enlightenment.org",
+    "homepage": "https://www.enlightenment.org/",
     "version": "1.26.3",
     "license": "BSD, BSD-2, BSD-3, LGPL-2.1, GPL-2, freetype, MIT, Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -6658,7 +6658,7 @@
   {
     "name": "libemf",
     "description": "libEMF is a C/C++ library which provides a drawing toolkit based on ECMA-234.",
-    "homepage": "http://libemf.sourceforge.net/",
+    "homepage": "https://libemf.sourceforge.net/",
     "version": "1.0.9",
     "license": "LGPL-2.1 and GPL-2",
     "compatibility": "all"
@@ -6682,7 +6682,7 @@
   {
     "name": "libevdev",
     "description": "libevdev is a wrapper library for evdev devices.",
-    "homepage": "https://www.freedesktop.org/wiki/Software/libevdev",
+    "homepage": "https://www.freedesktop.org/wiki/Software/libevdev/",
     "version": "1.12.1",
     "license": "MIT",
     "compatibility": "all"
@@ -6690,7 +6690,7 @@
   {
     "name": "libevent",
     "description": "The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached.",
-    "homepage": "http://libevent.org/",
+    "homepage": "https://libevent.org/",
     "version": "2.2-64decd4",
     "license": "BSD",
     "compatibility": "all"
@@ -6714,7 +6714,7 @@
   {
     "name": "libexiv2",
     "description": "Exiv2 is a Cross-platform C++ library and a command line utility to manage image metadata.",
-    "homepage": "http://exiv2.org/",
+    "homepage": "https://exiv2.org/",
     "version": "0.27.5",
     "license": "GPL-2",
     "compatibility": "all"
@@ -6770,7 +6770,7 @@
   {
     "name": "libfontenc",
     "description": "Fontenc Library from X.org",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.1.7",
     "license": "MIT",
     "compatibility": "all"
@@ -6786,7 +6786,7 @@
   {
     "name": "libfs",
     "description": "X.org library interface to the X Font Server.",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.0.9",
     "license": "custom",
     "compatibility": "all"
@@ -6802,7 +6802,7 @@
   {
     "name": "libgconf",
     "description": "GConf is a system for storing application preferences.",
-    "homepage": "https://projects-old.gnome.org/gconf/",
+    "homepage": "https://gitlab.gnome.org/Archive/gconf",
     "version": "3.2.6",
     "license": "LGPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -6874,7 +6874,7 @@
   {
     "name": "libglade",
     "description": "Libglade is a library that performs a similar job to the C source output routines in the GLADE user interface builder.",
-    "homepage": "http://www.jamesh.id.au/software/libglade/",
+    "homepage": "https://www.jamesh.id.au/software/libglade/",
     "version": "2.6.4-1",
     "license": "LGPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -7042,7 +7042,7 @@
   {
     "name": "libice",
     "description": "X.org X Inter Client Exchange Library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.0",
     "license": "X11",
     "compatibility": "all"
@@ -7122,7 +7122,7 @@
   {
     "name": "libinput",
     "description": "libinput is a library to handle input devices in Wayland compositors and to provide a generic X.Org input driver.",
-    "homepage": "https://www.freedesktop.org/wiki/Software/libinput",
+    "homepage": "https://www.freedesktop.org/wiki/Software/libinput/",
     "version": "1.21.0",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -7202,7 +7202,7 @@
   {
     "name": "libmbedtls",
     "description": "An open source, portable, easy to use, readable and flexible SSL library",
-    "homepage": "https://tls.mbed.org/",
+    "homepage": "https://www.trustedfirmware.org/projects/mbed-tls/",
     "version": "3.4.1",
     "license": "Apache-2.0",
     "compatibility": "all"
@@ -7226,7 +7226,7 @@
   {
     "name": "libmediaart",
     "description": "Library tasked with managing, extracting and handling media art caches",
-    "homepage": "https://git.gnome.org/browse/libmediaart",
+    "homepage": "https://gitlab.gnome.org/GNOME/libmediaart",
     "version": "1.9.6",
     "license": "LGPL",
     "compatibility": "all"
@@ -7234,7 +7234,7 @@
   {
     "name": "libmediainfo",
     "description": "MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.",
-    "homepage": "http://mediaarea.net/en/MediaInfo",
+    "homepage": "https://mediaarea.net/en/MediaInfo",
     "version": "24.04",
     "license": "BSD-2",
     "compatibility": "all"
@@ -7298,7 +7298,7 @@
   {
     "name": "libmodplug",
     "description": "A MOD playing library",
-    "homepage": "http://modplug-xmms.sourceforge.net/",
+    "homepage": "https://modplug-xmms.sourceforge.net/",
     "version": "0.8.9.0-1",
     "license": "public-domain",
     "compatibility": "all"
@@ -7306,7 +7306,7 @@
   {
     "name": "libmp3lame",
     "description": "LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.",
-    "homepage": "http://lame.sourceforge.net/",
+    "homepage": "https://lame.sourceforge.io/",
     "version": "3.100",
     "license": "LGPL-2.1",
     "compatibility": "all"
@@ -7354,7 +7354,7 @@
   {
     "name": "libmypaint",
     "description": "Libmypaint is MyPaint's brushstroke rendering code, in a form that can be used by other programs.",
-    "homepage": "http://mypaint.org/",
+    "homepage": "https://mypaint.app/",
     "version": "1.6.1-1",
     "license": "ISC",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -7371,7 +7371,7 @@
     "name": "libndp",
     "description": "Library for Neighbor Discovery Protocol",
     "homepage": "http://libndp.org/",
-    "version": "1.7-3fc2",
+    "version": "1.9",
     "license": "LGPL-2.1+",
     "compatibility": "all"
   },
@@ -7418,15 +7418,15 @@
   {
     "name": "libnl3",
     "description": "libnl is a library for applications dealing with netlink sockets.",
-    "homepage": "http://www.infradead.org/~tgr/libnl/",
-    "version": "3.7.0",
+    "homepage": "https://github.com/thom311/libnl",
+    "version": "3.9.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
   {
     "name": "libnotify",
     "description": "A library for sending desktop notifications.",
-    "homepage": "https://git.gnome.org/browse/libnotify",
+    "homepage": "https://gitlab.gnome.org/GNOME/libnotify",
     "version": "0.8.3",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -7482,7 +7482,7 @@
   {
     "name": "libofx",
     "description": "The LibOFX library is a parser and an API designed to allow applications to very easily support OFX command responses, usually provided by financial institutions for statement downloads.",
-    "homepage": "http://libofx.sourceforge.net/",
+    "homepage": "https://github.com/libofx/libofx",
     "version": "0.9.13",
     "license": "GPL-2",
     "compatibility": "all"
@@ -7563,14 +7563,14 @@
     "name": "libpcap",
     "description": "A portable C/C++ library for network traffic capture.",
     "homepage": "https://www.tcpdump.org/",
-    "version": "1.10.0",
+    "version": "1.10.4",
     "license": "BSD",
     "compatibility": "all"
   },
   {
     "name": "libpciaccess",
     "description": "Generic PCI access library",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "0.17",
     "license": "MIT",
     "compatibility": "all"
@@ -7610,7 +7610,7 @@
   {
     "name": "libplist",
     "description": "A library to handle Apple Property List format",
-    "homepage": "http://www.libimobiledevice.org/",
+    "homepage": "https://libimobiledevice.org/",
     "version": "2.2.0",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
@@ -7651,7 +7651,7 @@
     "name": "libpsl",
     "description": "C library for the Public Suffix List",
     "homepage": "https://github.com/rockdaboot/libpsl",
-    "version": "0.21.2",
+    "version": "0.21.5-1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -7858,7 +7858,7 @@
   {
     "name": "libsm",
     "description": "X.org X Session Management Library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.2.4-5edd20b",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -7866,7 +7866,7 @@
   {
     "name": "libsmi",
     "description": "C library allowing NM apps and MIB and PIB authoring tools to access SMI MIB info. ",
-    "homepage": "http://www.ibr.cs.tu-bs.de/projects/libsmi/",
+    "homepage": "https://www.ibr.cs.tu-bs.de/projects/libsmi/",
     "version": "0.5.0",
     "license": "Custom",
     "compatibility": "all"
@@ -7962,7 +7962,7 @@
   {
     "name": "libssh2",
     "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
-    "homepage": "https://www.libssh2.org/",
+    "homepage": "https://libssh2.org/",
     "version": "1.11.0",
     "license": "BSD",
     "compatibility": "all"
@@ -7986,7 +7986,7 @@
   {
     "name": "libstfl",
     "description": "libSTFL is a library that implements a curses-based widget set for text terminals.",
-    "homepage": "http://www.clifford.at/stfl/",
+    "homepage": "https://clifford.at/stfl",
     "version": "0.23",
     "license": "GPL-3",
     "compatibility": "all"
@@ -8082,7 +8082,7 @@
   {
     "name": "libtirpc",
     "description": "Libtirpc is a port of Suns Transport-Independent RPC library to Linux.",
-    "homepage": "https://sourceforge.net/projects/libtirpc",
+    "homepage": "https://sourceforge.net/projects/libtirpc/",
     "version": "1.3.4",
     "license": "GPL-2",
     "compatibility": "all"
@@ -8170,7 +8170,7 @@
   {
     "name": "libusbmuxd",
     "description": "USB Multiplex Daemon",
-    "homepage": "http://www.libimobiledevice.org/",
+    "homepage": "https://libimobiledevice.org/",
     "version": "2.0.2",
     "license": "GPL-2+ and LGPL-2.1+",
     "compatibility": "all"
@@ -8178,7 +8178,7 @@
   {
     "name": "libutempter",
     "description": "Interface for terminal emulators such as screen and xterm to record user sessions to utmp and wtmp files",
-    "homepage": "http://ftp.altlinux.org/pub/people/ldv/utempter",
+    "homepage": "http://ftp.altlinux.org/pub/people/ldv/utempter/",
     "version": "1.2.1",
     "license": "LGPL",
     "compatibility": "all"
@@ -8242,7 +8242,7 @@
   {
     "name": "libvips",
     "description": "A fast image processing library with low memory needs",
-    "homepage": "https://libvips.github.io/libvips/",
+    "homepage": "https://www.libvips.org/",
     "version": "8.10.6-beta2",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8298,7 +8298,7 @@
   {
     "name": "libvpx",
     "description": "VP8/VP9 Codec SDK",
-    "homepage": "http://www.webmproject.org/code/",
+    "homepage": "https://www.webmproject.org/code/",
     "version": "1.13.1",
     "license": "BSD",
     "compatibility": "all"
@@ -8346,7 +8346,7 @@
   {
     "name": "libwnck",
     "description": "Library for layout and rendering of text",
-    "homepage": "http://www.gnome.org/",
+    "homepage": "https://www.gnome.org/",
     "version": "43.0",
     "license": "LGPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8378,7 +8378,7 @@
   {
     "name": "libx11",
     "description": "C interface to the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.8.7",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8394,7 +8394,7 @@
   {
     "name": "libx265",
     "description": "x265 is a H.265 / HEVC video encoder application library.",
-    "homepage": "http://x265.org/",
+    "homepage": "https://www.x265.org/",
     "version": "3.4",
     "license": "GPL-2",
     "compatibility": "all"
@@ -8402,7 +8402,7 @@
   {
     "name": "libxau",
     "description": "xau library for libX11",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.0.10",
     "license": "MIT",
     "compatibility": "all"
@@ -8410,7 +8410,7 @@
   {
     "name": "libxaw",
     "description": "X.org X Athena Widgets Library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.0.13",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8418,7 +8418,7 @@
   {
     "name": "libxcb",
     "description": "library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.15",
     "license": "custom",
     "compatibility": "all"
@@ -8426,7 +8426,7 @@
   {
     "name": "libxcomposite",
     "description": "X.org X Composite Library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "0.4.6",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8442,7 +8442,7 @@
   {
     "name": "libxcursor",
     "description": "X.org X Cursor management library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.2.1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8458,7 +8458,7 @@
   {
     "name": "libxdamage",
     "description": "library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.1.6",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8466,7 +8466,7 @@
   {
     "name": "libxdmcp",
     "description": "The libXdmcp package contains a library implementing the X Display Manager Control Protocol.",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "4a71fdf",
     "license": "MIT",
     "compatibility": "all"
@@ -8474,7 +8474,7 @@
   {
     "name": "libxext",
     "description": "library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.3.6",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8498,7 +8498,7 @@
   {
     "name": "libxfixes",
     "description": "library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "6.0.0",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8506,7 +8506,7 @@
   {
     "name": "libxfont",
     "description": "library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "2.0.1",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8514,7 +8514,7 @@
   {
     "name": "libxfont2",
     "description": "X.org X font library",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "2.0.6",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8522,7 +8522,7 @@
   {
     "name": "libxft",
     "description": "X.org X FreeType interface library",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "2.3.7",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8530,7 +8530,7 @@
   {
     "name": "libxi",
     "description": "X.org libXi Client library for XInput",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.7.10",
     "license": "MIT and custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8538,7 +8538,7 @@
   {
     "name": "libxinerama",
     "description": "Xorg library, Xinerama is an X11 extension which provides support for extending a desktop across multiple displays.",
-    "homepage": "https://www.x.org/",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8554,7 +8554,7 @@
   {
     "name": "libxkbfile",
     "description": "library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.1.1",
     "license": "MIT and custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8578,7 +8578,7 @@
   {
     "name": "libxmu",
     "description": "X.org X interface library for miscellaneous utilities not part of the Xlib standard",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8586,7 +8586,7 @@
   {
     "name": "libxp",
     "description": "x print service extension library",
-    "homepage": "https://xorg.freedesktop.org",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8594,7 +8594,7 @@
   {
     "name": "libxpm",
     "description": "X.org X Pixmap Library",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "3.5.17",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8610,7 +8610,7 @@
   {
     "name": "libxrandr",
     "description": "X.org X Resize, Rotate and Reflection extension library",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.5.2-2",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8618,7 +8618,7 @@
   {
     "name": "libxrender",
     "description": "X Rendering Extension client library.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "0.9.11",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8626,7 +8626,7 @@
   {
     "name": "libxres",
     "description": "X.org X-Resource extension client library",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.2.2",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8642,7 +8642,7 @@
   {
     "name": "libxslt",
     "description": "Libxslt is the XSLT C library developed for the GNOME project.",
-    "homepage": "http://xmlsoft.org/libxslt/",
+    "homepage": "https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home",
     "version": "1.1.34",
     "license": "MIT",
     "compatibility": "all"
@@ -8658,7 +8658,7 @@
   {
     "name": "libxt",
     "description": "X.org X Toolkit Library",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.2.1",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8666,7 +8666,7 @@
   {
     "name": "libxtrans",
     "description": "transpot library for the X window system",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.4.0",
     "license": "custom",
     "compatibility": "all"
@@ -8682,7 +8682,7 @@
   {
     "name": "libxv",
     "description": "X.org X Window System video extension library",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.0.12",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8698,7 +8698,7 @@
   {
     "name": "libxvmc",
     "description": "X.org X-Video Motion Compensation Library",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.0.13",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8706,7 +8706,7 @@
   {
     "name": "libxxf86dga",
     "description": "X.org the client library for the XFree86-DGA extension",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.6",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8714,7 +8714,7 @@
   {
     "name": "libxxf86vm",
     "description": "X.org the client library for the XFree86-VidMode X extension.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.5",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -8779,7 +8779,7 @@
     "name": "linuxheaders",
     "description": "Linux headers for Chrome OS.",
     "homepage": "https://kernel.org/",
-    "version": "5.10",
+    "version": "5.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -8794,7 +8794,7 @@
   {
     "name": "llvm16_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "16.0.6",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8802,7 +8802,7 @@
   {
     "name": "llvm16_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "16.0.6",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8810,7 +8810,7 @@
   {
     "name": "llvm16_lib",
     "description": "LibLLVM and llvm-strip",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "16.0.6",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8818,7 +8818,7 @@
   {
     "name": "llvm17_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "17.0.6",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8826,7 +8826,7 @@
   {
     "name": "llvm17_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "17.0.6",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8834,7 +8834,7 @@
   {
     "name": "llvm17_lib",
     "description": "LibLLVM and llvm-strip",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "17.0.6",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8842,7 +8842,7 @@
   {
     "name": "llvm18_build",
     "description": "The LLVM Project is a collection of modular and reusable compiler and toolchain technologies. The optional packages clang, lld, lldb, polly, compiler-rt, libcxx, and libcxxabi are included.",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8850,7 +8850,7 @@
   {
     "name": "llvm18_dev",
     "description": "LLVM: Everything except libLLVM & llvm-strip",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8858,7 +8858,7 @@
   {
     "name": "llvm18_lib",
     "description": "LibLLVM and llvm-strip",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "18.1.8",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain, rc, Apache-2.0 and MIT",
     "compatibility": "all"
@@ -8866,7 +8866,7 @@
   {
     "name": "llvm_stage1",
     "description": "THIS IS NOT THE LLVM PACKAGE. This is only a Limited Stage 1 compile of LLVM.",
-    "homepage": "http://llvm.org/",
+    "homepage": "https://llvm.org/",
     "version": "13.0.0",
     "license": "Apache-2.0-with-LLVM-exceptions, UoI-NCSA, BSD, public-domain and rc",
     "compatibility": "all"
@@ -8882,7 +8882,7 @@
   {
     "name": "lmdb",
     "description": "Symas Lightning Memory-Mapped Database",
-    "homepage": "https://symas.com/mdb",
+    "homepage": "https://www.symas.com/mdb",
     "version": "0.9.32",
     "license": "OpenLDAP Public License",
     "compatibility": "all"
@@ -8906,7 +8906,7 @@
   {
     "name": "log4c",
     "description": "Log4c is a library of C for flexible logging to files, syslog and other destinations.",
-    "homepage": "http://log4c.sourceforge.net/",
+    "homepage": "https://log4c.sourceforge.net/",
     "version": "1.2.4",
     "license": "LGPL-2",
     "compatibility": "all"
@@ -9010,7 +9010,7 @@
   {
     "name": "luajit_lgi",
     "description": "Lua bindings for gnome/gobject using gobject-introspection library",
-    "homepage": "https://github.com/pavouk/lgi",
+    "homepage": "https://github.com/lgi-devs/lgi",
     "version": "0.9.2",
     "license": "custom:MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9018,7 +9018,7 @@
   {
     "name": "luajit_lpeg",
     "description": "Pattern-matching library for Lua 5.1",
-    "homepage": "http://www.inf.puc-rio.br/~roberto/lpeg",
+    "homepage": "https://www.inf.puc-rio.br/~roberto/lpeg/",
     "version": "1.0.2",
     "license": "MIT",
     "compatibility": "all"
@@ -9042,7 +9042,7 @@
   {
     "name": "lv2",
     "description": "Plugin standard for audio systems",
-    "homepage": "http://lv2plug.in/",
+    "homepage": "https://lv2plug.in/",
     "version": "1.18.10",
     "license": "ISC License",
     "compatibility": "all"
@@ -9050,7 +9050,7 @@
   {
     "name": "lvm2",
     "description": "LVM2 refers to the userspace toolset that provide logical volume management facilities on linux.",
-    "homepage": "https://sourceware.org/lvm2",
+    "homepage": "https://sourceware.org/lvm2/",
     "version": "2.03.23",
     "license": "GPL-2",
     "compatibility": "all"
@@ -9058,7 +9058,7 @@
   {
     "name": "lxappearance",
     "description": "LXDE Theme Switcher",
-    "homepage": "http://lxde.org/",
+    "homepage": "http://www.lxde.org/",
     "version": "0.6.3",
     "license": "GPL-3",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9074,7 +9074,7 @@
   {
     "name": "lz4",
     "description": "LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).",
-    "homepage": "https://lz4.github.io/lz4/",
+    "homepage": "https://lz4.org/",
     "version": "1.9.4",
     "license": "BSD-2 and GPL-2",
     "compatibility": "all"
@@ -9170,7 +9170,7 @@
   {
     "name": "makedepend",
     "description": "Makedepend parses C sources in Makefiles to generate dependency lists",
-    "homepage": "https://www.x.org/",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.0.6",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9202,7 +9202,7 @@
   {
     "name": "mapserver",
     "description": "MapServer is an Open Source platform for publishing spatial data and interactive mapping applications to the web.",
-    "homepage": "http://mapserver.org/",
+    "homepage": "https://mapserver.org/",
     "version": "8.0.0",
     "license": "Boost-1.0, BSD-2, ISC, MIT and tcltk",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9290,7 +9290,7 @@
   {
     "name": "mediainfo",
     "description": "MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.",
-    "homepage": "http://mediaarea.net/en/MediaInfo",
+    "homepage": "https://mediaarea.net/en/MediaInfo",
     "version": "24.04",
     "license": "BSD-2",
     "compatibility": "all"
@@ -9298,7 +9298,7 @@
   {
     "name": "mediainfo_gui",
     "description": "MediaInfo is a convenient unified display of the most relevant technical and tag data for video and audio files.",
-    "homepage": "http://mediaarea.net/en/MediaInfo",
+    "homepage": "https://mediaarea.net/en/MediaInfo",
     "version": "24.04",
     "license": "BSD-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9331,7 +9331,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.1.2",
+    "version": "24.1.3",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9347,7 +9347,7 @@
     "name": "mesonbuild",
     "description": "Meson is an open source build system meant to be both extremely fast and user friendly.",
     "homepage": "https://mesonbuild.com/",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -9458,7 +9458,7 @@
   {
     "name": "misctools",
     "description": "The misctools package is a collection of small but useful utilities.",
-    "homepage": "http://www.hyperrealm.com/oss_misctools.shtml",
+    "homepage": "https://www.hyperrealm.com/oss_misctools.shtml",
     "version": "2.6",
     "license": "GPL-2",
     "compatibility": "i686,x86_64"
@@ -9474,7 +9474,7 @@
   {
     "name": "mkfontscale",
     "description": "X11 Scalable Font Index Generator",
-    "homepage": "https://www.x.org/wiki",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.2.1-1",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9498,7 +9498,7 @@
   {
     "name": "mm_common",
     "description": "Common build files of the C++ bindings",
-    "homepage": "http://www.gtkmm.org/",
+    "homepage": "https://www.gtkmm.org/",
     "version": "1.0.6",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9562,7 +9562,7 @@
   {
     "name": "mono",
     "description": "Mono is a software platform designed to allow developers to easily create cross platform applications part of the .NET Foundation.",
-    "homepage": "http://www.mono-project.com/",
+    "homepage": "https://www.mono-project.com/",
     "version": "6.12.0.122",
     "license": "MIT, LGPL-2.1, GPL-2, BSD-4, NPL-1.1, Ms-PL, GPL-3-with-linking-exception and IDPL",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9634,7 +9634,7 @@
   {
     "name": "mpfr",
     "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding.",
-    "homepage": "http://www.mpfr.org/",
+    "homepage": "https://www.mpfr.org/",
     "version": "4.1.0",
     "license": "LGPL-2.1",
     "compatibility": "all"
@@ -9666,7 +9666,7 @@
   {
     "name": "msttcorefonts",
     "description": "An easy way to install Microsoft's TrueType core fonts on Linux",
-    "homepage": "http://corefonts.sourceforge.net/",
+    "homepage": "https://corefonts.sourceforge.net/",
     "version": "3.6",
     "license": "GPL-2+",
     "compatibility": "all"
@@ -9674,8 +9674,8 @@
   {
     "name": "mtdev",
     "description": "The mtdev is a stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol.",
-    "homepage": "http://bitmath.org/code/mtdev",
-    "version": "1.1.5-0",
+    "homepage": "https://bitmath.org/code/mtdev/",
+    "version": "1.1.7",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9714,7 +9714,7 @@
   {
     "name": "muparser",
     "description": "muParser is an extensible high performance math expression parser library written in C++.",
-    "homepage": "http://beltoforion.de/article.php?a=muparser",
+    "homepage": "https://beltoforion.de/article.php?a=muparser",
     "version": "2.2.6.1",
     "license": "BSD-2",
     "compatibility": "all"
@@ -9754,7 +9754,7 @@
   {
     "name": "musl_c_ares",
     "description": "c-ares is a C library for asynchronous DNS requests (including name resolves).",
-    "homepage": "https://c-ares.haxx.se/",
+    "homepage": "https://c-ares.org/",
     "version": "1.18.1",
     "license": "MIT",
     "compatibility": "all"
@@ -9778,7 +9778,7 @@
   {
     "name": "musl_cyrus_sasl",
     "description": "Simple Authentication and Security Layer (SASL) is a specification that describes how authentication mechanisms can be plugged into an application protocol on the wire. Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.",
-    "homepage": "https://www.cyrusimap.org/sasl",
+    "homepage": "https://www.cyrusimap.org/sasl/",
     "version": "2.1.27",
     "license": "custom",
     "compatibility": "all"
@@ -9802,7 +9802,7 @@
   {
     "name": "musl_krb5",
     "description": "Kerberos is a network authentication protocol.",
-    "homepage": "https://web.mit.edu/kerberos",
+    "homepage": "https://web.mit.edu/kerberos/",
     "version": "1.20-5c39",
     "license": "openafs-krb5-a, BSD, MIT, OPENLDAP, BSD-2, HPND, BSD-4, ISC, RSA, CC-BY-SA-3.0 and BSD-2 or GPL-2+ )",
     "compatibility": "all"
@@ -9875,14 +9875,14 @@
     "name": "musl_linuxheaders",
     "description": "Linux headers for Chrome OS, installed into MUSL_PREFIX.",
     "homepage": "https://kernel.org/",
-    "version": "5.10",
+    "version": "5.1",
     "license": "GPL-2",
     "compatibility": "all"
   },
   {
     "name": "musl_lz4",
     "description": "LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).",
-    "homepage": "https://lz4.github.io/lz4/",
+    "homepage": "https://lz4.org/",
     "version": "1.9.4",
     "license": "BSD-2 and GPL-2",
     "compatibility": "all"
@@ -9938,7 +9938,7 @@
   {
     "name": "musl_xz",
     "description": "XZ is free general-purpose data compression software with a high compression ratio.",
-    "homepage": "http://tukaani.org/xz/",
+    "homepage": "https://tukaani.org/xz/",
     "version": "5.2.5-e7da-1",
     "license": "public-domain, LGPL-2.1+ and GPL-2+",
     "compatibility": "all"
@@ -9954,7 +9954,7 @@
   {
     "name": "musl_zstd",
     "description": "Zstandard - Fast real-time compression algorithm",
-    "homepage": "http://www.zstd.net",
+    "homepage": "https://facebook.github.io/zstd/",
     "version": "1.5.4",
     "license": "BSD or GPL-2",
     "compatibility": "all"
@@ -9986,7 +9986,7 @@
   {
     "name": "mypaint",
     "description": "MyPaint is a simple drawing and painting program.",
-    "homepage": "http://mypaint.org/",
+    "homepage": "https://mypaint.app/",
     "version": "2.0.1-1",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -9994,7 +9994,7 @@
   {
     "name": "mypaint_brushes",
     "description": "Brushes used by MyPaint and other software using libmypaint.",
-    "homepage": "http://mypaint.org/",
+    "homepage": "https://mypaint.app/",
     "version": "2.0.2",
     "license": "CC0-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -10002,7 +10002,7 @@
   {
     "name": "mypaint_brushes_1",
     "description": "Brushes used by MyPaint and other software using libmypaint.",
-    "homepage": "http://mypaint.org/",
+    "homepage": "https://mypaint.app/",
     "version": "1.3.1",
     "license": "CC0-1.0",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -10074,7 +10074,7 @@
   {
     "name": "ncat",
     "description": "Ncat - Netcat for the 21st Century - a modern netcat with extra features from the makers of nmap.",
-    "homepage": "https://nmap.org/ncat",
+    "homepage": "https://nmap.org/ncat/",
     "version": "7.60",
     "license": "NPSL",
     "compatibility": "all"
@@ -10098,7 +10098,7 @@
   {
     "name": "ncftp",
     "description": "NcFTP Client (also known as just NcFTP) is a set of FREE application programs implementing the File Transfer Protocol (FTP).",
-    "homepage": "http://ncftp.com/ncftp/",
+    "homepage": "https://ncftp.com/ncftp/",
     "version": "3.2.6",
     "license": "Clarified-Artistic",
     "compatibility": "all"
@@ -10202,7 +10202,7 @@
   {
     "name": "netbeans",
     "description": "Apache NetBeans IDE is free open source software to quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.",
-    "homepage": "https://netbeans.org/",
+    "homepage": "https://netbeans.apache.org/front/main/index.html",
     "version": "22",
     "license": "Apache-2.0, custom, EPL-1.0, W3C, MIT, BSD, MPL-1.0, CC-BY-3.0, CDDL and CDDL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -10250,7 +10250,7 @@
   {
     "name": "netpbm",
     "description": "Netpbm is a toolkit for manipulation of graphic images, including conversion of images between a variety of different formats.",
-    "homepage": "http://netpbm.sourceforge.net/",
+    "homepage": "https://netpbm.sourceforge.net/",
     "version": "10.73.28",
     "license": "GPL-2",
     "compatibility": "all"
@@ -10378,7 +10378,7 @@
   {
     "name": "nmon",
     "description": "nmon is short for Nigel's performance MONitor for Linux",
-    "homepage": "http://nmon.sourceforge.net/pmwiki.php",
+    "homepage": "https://nmon.sourceforge.io/pmwiki.php",
     "version": "16g",
     "license": "GPL-3",
     "compatibility": "all"
@@ -10482,7 +10482,7 @@
   {
     "name": "ocaml",
     "description": "OCaml is an industrial strength programming language supporting functional, imperative and object-oriented styles",
-    "homepage": "http://ocaml.org/",
+    "homepage": "https://ocaml.org/",
     "version": "4.14.1",
     "license": "LGPL-2.1",
     "compatibility": "all"
@@ -10546,7 +10546,7 @@
   {
     "name": "onevpl",
     "description": "oneAPI Video Processing Library",
-    "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html",
+    "homepage": "https://www.intel.com/content/www/us/en/developer/tools/vpl/overview.html",
     "version": "2023.1.0",
     "license": "MIT",
     "compatibility": "x86_64"
@@ -10626,7 +10626,7 @@
   {
     "name": "openexr",
     "description": "OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications.",
-    "homepage": "http://www.openexr.com/",
+    "homepage": "https://openexr.com/en/latest/",
     "version": "3.2.1",
     "license": "BSD",
     "compatibility": "all"
@@ -10746,7 +10746,7 @@
   {
     "name": "opensp",
     "description": "Suite of SGML/XML processing tools",
-    "homepage": "http://openjade.sourceforge.net/",
+    "homepage": "https://openjade.sourceforge.net/",
     "version": "1.5.2",
     "license": "MIT",
     "compatibility": "all"
@@ -10795,14 +10795,14 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "111.0.5168.61",
+    "version": "112.0.5197.24",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
   {
     "name": "optipng",
     "description": "OptiPNG is a PNG optimizer that recompresses image files to a smaller size, without losing any information.",
-    "homepage": "http://optipng.sourceforge.net/",
+    "homepage": "https://optipng.sourceforge.net/",
     "version": "0.7.7",
     "license": "ZLIB",
     "compatibility": "all"
@@ -10850,7 +10850,7 @@
   {
     "name": "p11kit",
     "description": "Provides a standard configuration setup for installing PKCS#11 modules in such a way that they're discoverable.",
-    "homepage": "https://p11-glue.freedesktop.org/p11-kit.html",
+    "homepage": "https://p11-glue.github.io/p11-glue/p11-kit.html",
     "version": "0.25.3",
     "license": "BSD",
     "compatibility": "all"
@@ -10858,7 +10858,7 @@
   {
     "name": "p7zip_gui",
     "description": "Graphic user interface (alpha quality) for the 7-zip file archiver",
-    "homepage": "http://p7zip.sourceforge.net/",
+    "homepage": "https://p7zip.sourceforge.net/",
     "version": "16.02",
     "license": "LGPL-2.1 and unRAR",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -10890,7 +10890,7 @@
   {
     "name": "pacparser",
     "description": "pacparser is a library to parse proxy auto-config (PAC) files.",
-    "homepage": "http://pacparser.manugarg.com/",
+    "homepage": "https://pacparser.manugarg.com/",
     "version": "1.3.7-1",
     "license": "LGPL-3",
     "compatibility": "all"
@@ -10962,7 +10962,7 @@
   {
     "name": "parted",
     "description": "Create, destroy, resize, check, copy partitions and file systems.",
-    "homepage": "https://www.gnu.org/software/parted",
+    "homepage": "https://www.gnu.org/software/parted/",
     "version": "3.6",
     "license": "GPL-3",
     "compatibility": "all"
@@ -10978,7 +10978,7 @@
   {
     "name": "patch",
     "description": "Patch takes a patch file containing a difference listing produced by the diff program and applies those differences to one or more original files, producing patched versions.",
-    "homepage": "https://gnu.org/software/patch/",
+    "homepage": "https://www.gnu.org/software/patch/",
     "version": "2.7.6",
     "license": "GPL-3+",
     "compatibility": "all"
@@ -10986,7 +10986,7 @@
   {
     "name": "patchelf",
     "description": "PatchELF is a small utility to modify the dynamic linker and RPATH of ELF executables.",
-    "homepage": "http://nixos.org/patchelf.html",
+    "homepage": "https://github.com/NixOS/patchelf",
     "version": "0.18.0",
     "license": "GPL-3",
     "compatibility": "all"
@@ -10994,7 +10994,7 @@
   {
     "name": "patchutils",
     "description": "Patchutils is a small collection of programs that operate on patch files.",
-    "homepage": "http://cyberelk.net/tim/patchutils/",
+    "homepage": "http://cyberelk.net/tim/software/patchutils/",
     "version": "0.3.4",
     "license": "GPL-2",
     "compatibility": "all"
@@ -11074,7 +11074,7 @@
   {
     "name": "pdfcrack",
     "description": "pdfcrack is a command line, password recovery tool for PDF-files.",
-    "homepage": "https://sourceforge.net/projects/pdfcrack",
+    "homepage": "https://sourceforge.net/projects/pdfcrack/",
     "version": "0.16",
     "license": "GPL-2",
     "compatibility": "all"
@@ -11138,7 +11138,7 @@
   {
     "name": "percona_boost",
     "description": "Boost provides free peer-reviewed portable C++ source libraries.",
-    "homepage": "http://www.boost.org/",
+    "homepage": "https://www.boost.org/",
     "version": "1.59.0",
     "license": "Boost-1.0",
     "compatibility": "all"
@@ -11146,7 +11146,7 @@
   {
     "name": "percona_server",
     "description": "Percona Server for MySQL® is a free, fully compatible, enhanced, open source drop-in replacement for MySQL that provides superior performance, scalability and instrumentation.",
-    "homepage": "https://www.percona.com/software/mysql-database/percona-server",
+    "homepage": "https://www.percona.com/mysql/software/percona-server-for-mysql",
     "version": "5.7.20-19",
     "license": "GPL-2",
     "compatibility": "all"
@@ -11154,7 +11154,7 @@
   {
     "name": "percona_toolkit",
     "description": "Percona Toolkit is a collection of advanced open source command-line tools, developed and used by the Percona technical staff, that are engineered to perform a variety of MySQL®, MongoB® and system tasks that are too difficult or complex to perform manually.",
-    "homepage": "https://www.percona.com/software/database-tools/percona-toolkit",
+    "homepage": "https://www.percona.com/percona-toolkit",
     "version": "3.0.7",
     "license": "GPL-2 or Artistic",
     "compatibility": "all"
@@ -11602,7 +11602,7 @@
   {
     "name": "php5",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "5.6.40-2",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11610,7 +11610,7 @@
   {
     "name": "php71",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "7.1.33-3",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11618,7 +11618,7 @@
   {
     "name": "php72",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "7.2.34-2",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11626,7 +11626,7 @@
   {
     "name": "php73",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "7.3.33",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11634,7 +11634,7 @@
   {
     "name": "php74",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "7.4.33-1",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11642,7 +11642,7 @@
   {
     "name": "php80",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "8.0.30-1",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11650,7 +11650,7 @@
   {
     "name": "php81",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "8.1.28",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11658,7 +11658,7 @@
   {
     "name": "php82",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "8.2.20",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11666,7 +11666,7 @@
   {
     "name": "php83",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
-    "homepage": "http://www.php.net/",
+    "homepage": "https://www.php.net/",
     "version": "8.3.8",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11755,14 +11755,14 @@
     "name": "pipewire",
     "description": "PipeWire is a project that aims to greatly improve handling of audio and video under Linux.",
     "homepage": "https://pipewire.org",
-    "version": "1.0.3",
+    "version": "0.3.60",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "pixman",
     "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
-    "homepage": "http://www.pixman.org/",
+    "homepage": "https://www.pixman.org/",
     "version": "0.42.2",
     "license": "MIT",
     "compatibility": "all"
@@ -11826,7 +11826,7 @@
   {
     "name": "plplot",
     "description": "PLplot is a cross-platform software package for creating scientific plots",
-    "homepage": "http://plplot.sourceforge.net/",
+    "homepage": "https://plplot.sourceforge.net/",
     "version": "5.15.0",
     "license": "LGPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11858,7 +11858,7 @@
   {
     "name": "pocl",
     "description": "PoCL is a portable open source (MIT-licensed) implementation of the OpenCL standard.",
-    "homepage": "http://portablecl.org/",
+    "homepage": "https://portablecl.org/",
     "version": "5.0",
     "license": "MIT",
     "compatibility": "x86_64"
@@ -11874,8 +11874,8 @@
   {
     "name": "polkit",
     "description": "Application development toolkit for controlling system-wide privileges",
-    "homepage": "https://www.freedesktop.org/wiki/Software/polkit/",
-    "version": "0.120-a2bf5c",
+    "homepage": "https://github.com/polkit-org/polkit",
+    "version": "124-eafbf7d",
     "license": "LGPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11914,7 +11914,7 @@
   {
     "name": "potrace",
     "description": "Potrace(TM) is a tool for tracing a bitmap, which means, transforming a bitmap into a smooth, scalable image.",
-    "homepage": "http://potrace.sourceforge.net/",
+    "homepage": "https://potrace.sourceforge.net/",
     "version": "1.16",
     "license": "GPL-2",
     "compatibility": "all"
@@ -11930,7 +11930,7 @@
   {
     "name": "powershell",
     "description": "Powershell is a cross-platform, task-based command-line shell and scripting language that helps rapidly automate tasks that manage operating systems and processes",
-    "homepage": "https://docs.microsoft.com/en-us/powershell/",
+    "homepage": "https://learn.microsoft.com/en-us/powershell/",
     "version": "7.4.3",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -11954,7 +11954,7 @@
   {
     "name": "printproto",
     "description": "Xprint build headers",
-    "homepage": "https://xorg.freedesktop.org",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.5-1",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -12010,7 +12010,7 @@
   {
     "name": "protobuf",
     "description": "Protocol Buffers - Googles data interchange format",
-    "homepage": "https://developers.google.com/protocol-buffers/",
+    "homepage": "https://protobuf.dev",
     "version": "21.12",
     "license": "BSD",
     "compatibility": "all"
@@ -12042,7 +12042,7 @@
   {
     "name": "pthread_stubs",
     "description": "pthread stubs to get libX11 working",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "0.4",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -12427,7 +12427,7 @@
     "name": "py3_docutils",
     "description": "Docutils is an open-source text processing system for processing plaintext documentation into useful formats, such as HTML, LaTeX, man-pages, open-document or XML.",
     "homepage": "http://docutils.sourceforge.net/",
-    "version": "21.2",
+    "version": "0.21.2",
     "license": "BSD-2, GPL-3 and public-domain",
     "compatibility": "all"
   },
@@ -13538,7 +13538,7 @@
   {
     "name": "pygobject",
     "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
-    "homepage": "https://pygobject.readthedocs.io/",
+    "homepage": "https://pygobject.gnome.org/",
     "version": "3.44.2",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -13546,7 +13546,7 @@
   {
     "name": "pygobject2",
     "description": "PyGObject is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
-    "homepage": "https://pygobject.readthedocs.io/",
+    "homepage": "https://pygobject.gnome.org/",
     "version": "2.28.7",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -13554,7 +13554,7 @@
   {
     "name": "pygtk",
     "description": "PyGTK is a Python package which provides bindings for GObject based libraries such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.",
-    "homepage": "http://www.pygtk.org/",
+    "homepage": "https://pygobject.gnome.org/",
     "version": "2.24.0",
     "license": "LGPL-2.1",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -13610,7 +13610,7 @@
   {
     "name": "qemu",
     "description": "QEMU is a generic and open source machine emulator and virtualizer.",
-    "homepage": "http://www.qemu.org/",
+    "homepage": "https://www.qemu.org/",
     "version": "9.0.1",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -13626,7 +13626,7 @@
   {
     "name": "qpdf",
     "description": "QPDF is a command-line program that does structural, content-preserving transformations on PDF files.",
-    "homepage": "http://qpdf.sourceforge.net/",
+    "homepage": "https://qpdf.sourceforge.io/",
     "version": "11.1.1",
     "license": "Apache-2.0 or Artistic-2",
     "compatibility": "all"
@@ -13818,7 +13818,7 @@
   {
     "name": "quakespasm",
     "description": "A modern, cross-platform Quake game engine based on FitzQuake.",
-    "homepage": "http://quakespasm.sourceforge.net",
+    "homepage": "https://quakespasm.sourceforge.net/",
     "version": "0.93.1-1",
     "license": "GPL-2+",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -13834,7 +13834,7 @@
   {
     "name": "radare2",
     "description": "unix-like reverse engineering framework and commandline tools",
-    "homepage": "http://www.radare.org/r/",
+    "homepage": "https://www.radare.org/r/",
     "version": "2.4.0",
     "license": "GPL-2",
     "compatibility": "all"
@@ -13890,7 +13890,7 @@
   {
     "name": "rdfind",
     "description": "Redundant data find - a program that finds duplicate files.",
-    "homepage": "http://rdfind.pauldreik.se",
+    "homepage": "https://rdfind.pauldreik.se/",
     "version": "1.6.0",
     "license": "GPL2",
     "compatibility": "all"
@@ -13930,7 +13930,7 @@
   {
     "name": "recordmydesktop",
     "description": "desktop session recorder for GNU / Linux that attempts to be easy to use",
-    "homepage": "http://recordmydesktop.sourceforge.net/about.php",
+    "homepage": "https://recordmydesktop.sourceforge.net/about.php",
     "version": "0.3.8.1",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -13978,7 +13978,7 @@
   {
     "name": "rendercheck",
     "description": "rendercheck is a program to test a Render extension implementation against separate calculations of expected output.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.5",
     "license": "MIT",
     "compatibility": "all"
@@ -14010,7 +14010,7 @@
   {
     "name": "rgb",
     "description": "X color name database",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.6-1",
     "license": "custom",
     "compatibility": "all"
@@ -14042,7 +14042,7 @@
   {
     "name": "rkhunter",
     "description": "Rootkit Hunter, security monitoring and analyzing tool for POSIX compliant systems.",
-    "homepage": "http://rkhunter.sourceforge.net/",
+    "homepage": "https://rkhunter.sourceforge.net/",
     "version": "1.4.6-1",
     "license": "GPL-2",
     "compatibility": "all"
@@ -14131,7 +14131,7 @@
     "name": "ruby",
     "description": "Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.",
     "homepage": "https://www.ruby-lang.org/en/",
-    "version": "3.3.3",
+    "version": "3.3.4",
     "license": "Ruby-BSD and BSD-2",
     "compatibility": "all"
   },
@@ -14202,7 +14202,7 @@
   {
     "name": "runc",
     "description": "CLI tool for managing OCI compliant containers",
-    "homepage": "https://runc.io/",
+    "homepage": "https://github.com/opencontainers/runc",
     "version": "1.1.7",
     "license": "Apache",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -14242,7 +14242,7 @@
   {
     "name": "s3cmd",
     "description": "Command line tool for managing Amazon S3 and CloudFront services",
-    "homepage": "http://s3tools.org/s3cmd",
+    "homepage": "https://s3tools.org/s3cmd",
     "version": "2.2.0",
     "license": "GPL-2+",
     "compatibility": "all"
@@ -14290,7 +14290,7 @@
   {
     "name": "sbc",
     "description": "SBC is a digital audio encoder and decoder used to transfer data to Bluetooth audio output devices.",
-    "homepage": "http://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html",
+    "homepage": "https://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html",
     "version": "2.0",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
@@ -14306,7 +14306,7 @@
   {
     "name": "sbt",
     "description": "A build tool for Scala, Java and more.",
-    "homepage": "http://www.scala-sbt.org/",
+    "homepage": "https://www.scala-sbt.org/",
     "version": "0.13.15",
     "license": "BSD",
     "compatibility": "all"
@@ -14338,7 +14338,7 @@
   {
     "name": "scheme48",
     "description": "Scheme byte-code interpreter",
-    "homepage": "http://s48.org/",
+    "homepage": "https://www.s48.org/",
     "version": "1.9.2",
     "license": "BSD",
     "compatibility": "all"
@@ -14426,7 +14426,7 @@
   {
     "name": "sejda_console",
     "description": "Sejda SDK is an open source, task oriented Java library to edit PDF files.",
-    "homepage": "http://sejda.org/",
+    "homepage": "https://sejda.org/",
     "version": "3.2.85",
     "license": "AGPL-3",
     "compatibility": "all"
@@ -14434,7 +14434,7 @@
   {
     "name": "selenium_server_standalone",
     "description": "Selenium is a set of different software tools each with a different approach to supporting test automation.",
-    "homepage": "https://www.seleniumhq.org/",
+    "homepage": "https://www.selenium.dev/",
     "version": "3.11.0",
     "license": "Apache-2.0",
     "compatibility": "all"
@@ -14466,7 +14466,7 @@
   {
     "name": "sfk",
     "description": "The Swiss File Knife - A Command Line Tools Collection for Windows / Linux / Mac.",
-    "homepage": "http://swissfileknife.sourceforge.net/",
+    "homepage": "https://swissfileknife.sourceforge.net/",
     "version": "1.8.7",
     "license": "BSD",
     "compatibility": "all"
@@ -14688,6 +14688,14 @@
     "compatibility": "all"
   },
   {
+    "name": "smplayer",
+    "description": "SMPlayer is a free media player for Windows and Linux with built-in codecs that can play virtually all video and audio formats.",
+    "homepage": "https://www.smplayer.info/",
+    "version": "24.5.0",
+    "license": "GPL-2",
+    "compatibility": "x86_64"
+  },
+  {
     "name": "snappy",
     "description": "Snappy, a fast compressor/decompressor.",
     "homepage": "https://github.com/google/snappy",
@@ -14714,7 +14722,7 @@
   {
     "name": "snooze",
     "description": "run a command at a particular time",
-    "homepage": "https://github.com/chneukirchen/snooze/",
+    "homepage": "https://github.com/leahneukirchen/snooze",
     "version": "0.2",
     "license": "public-domain",
     "compatibility": "all"
@@ -14851,30 +14859,30 @@
     "name": "spirv_headers",
     "description": "SPIR-V Headers",
     "homepage": "https://github.com/KhronosGroup/SPIRV-Headers",
-    "version": "1.3.261.1",
+    "version": "1.3.283.0",
     "license": "MIT",
-    "compatibility": "x86_64 aarch64 armv7l"
+    "compatibility": "all"
   },
   {
     "name": "spirv_llvm_translator",
     "description": "Tool and a library for bi-directional translation between SPIR-V and LLVM IR",
     "homepage": "https://github.com/KhronosGroup/SPIRV-LLVM-Translator",
-    "version": "18.1.0-gcc14",
-    "license": "custom",
-    "compatibility": "x86_64 aarch64 armv7l"
+    "version": "18.1.2",
+    "license": "Apache-2.0 WITH LLVM-exception",
+    "compatibility": "all"
   },
   {
     "name": "spirv_tools",
     "description": "API and commands for processing SPIR-V modules",
     "homepage": "https://github.com/KhronosGroup/SPIRV-Tools",
-    "version": "2023.6.rc1",
-    "license": "custom",
-    "compatibility": "x86_64 aarch64 armv7l"
+    "version": "2024.3",
+    "license": "Apache-2.0",
+    "compatibility": "all"
   },
   {
     "name": "sqlite",
     "description": "SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.",
-    "homepage": "http://www.sqlite.org/",
+    "homepage": "https://www.sqlite.org/",
     "version": "3.46.0",
     "license": "public-domain",
     "compatibility": "all"
@@ -14890,7 +14898,7 @@
   {
     "name": "sqlmap",
     "description": "sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.",
-    "homepage": "http://sqlmap.org/",
+    "homepage": "https://sqlmap.org/",
     "version": "1.4.2",
     "license": "GPL-2",
     "compatibility": "all"
@@ -14954,7 +14962,7 @@
   {
     "name": "sshcode",
     "description": "Run VS Code on any server over SSH.",
-    "homepage": "https://github.com/cdr/sshcode",
+    "homepage": "https://github.com/coder/sshcode",
     "version": "0.8.0",
     "license": "MIT",
     "compatibility": "all"
@@ -15002,7 +15010,7 @@
   {
     "name": "startup_notification",
     "description": "Monitor and display application startup",
-    "homepage": "https://www.freedesktop.org",
+    "homepage": "https://www.freedesktop.org/wiki/",
     "version": "0.12-2",
     "license": "LGPL-2 and MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -15066,7 +15074,7 @@
   {
     "name": "suitesparse",
     "description": "A suite of sparse matrix software",
-    "homepage": "http://faculty.cse.tamu.edu/davis/suitesparse.html",
+    "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
     "version": "5.7.2",
     "license": "metapackage",
     "compatibility": "all"
@@ -15090,7 +15098,7 @@
   {
     "name": "swatchdog",
     "description": "The \"simple watchdog\" for activity monitoring log files produced by UNIX's syslog facility.",
-    "homepage": "http://swatch.sourceforge.net/",
+    "homepage": "https://swatch.sourceforge.net/",
     "version": "3.2.4-1",
     "license": "GPL-2",
     "compatibility": "all"
@@ -15106,7 +15114,7 @@
   {
     "name": "swig",
     "description": "Simplified Wrapper and Interface Generator",
-    "homepage": "http://www.swig.org",
+    "homepage": "https://www.swig.org/",
     "version": "4.1.1-1",
     "license": "GPL-3, BSD and BSD-2",
     "compatibility": "all"
@@ -15114,7 +15122,7 @@
   {
     "name": "swig1",
     "description": "Simplified Wrapper and Interface Generator",
-    "homepage": "http://www.swig.org",
+    "homepage": "https://www.swig.org/",
     "version": "1.3.40",
     "license": "GPL-3, BSD and BSD-2",
     "compatibility": "all"
@@ -15154,7 +15162,7 @@
   {
     "name": "sysfsutils",
     "description": "These are a set of utilities built upon sysfs, a new virtual filesystem in Linux kernel versions 2.5+ that exposes a system's device tree. The current version of sysfsutils includes libsysfs and systool.",
-    "homepage": "http://linux-diag.sourceforge.net/Sysfsutils.html",
+    "homepage": "https://linux-diag.sourceforge.net/Sysfsutils.html",
     "version": "2.1.0",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
@@ -15218,7 +15226,7 @@
   {
     "name": "tbb",
     "description": "High level abstract threading library",
-    "homepage": "https://www.threadingbuildingblocks.org/",
+    "homepage": "https://github.com/oneapi-src/oneTBB",
     "version": "2021.5.0",
     "license": "Apache-2.0",
     "compatibility": "all"
@@ -15234,7 +15242,7 @@
   {
     "name": "tcpdump",
     "description": "A powerful command-line packet analyzer.",
-    "homepage": "http://www.tcpdump.org/",
+    "homepage": "https://www.tcpdump.org/",
     "version": "4.99.4",
     "license": "BSD",
     "compatibility": "all"
@@ -15258,7 +15266,7 @@
   {
     "name": "tcpwrappers",
     "description": "The tcpwrappers package provides daemon wrapper programs that report the name of the client requesting network services and the requested service.",
-    "homepage": "http://www.linuxfromscratch.org/blfs/view/6.1/basicnet/tcpwrappers.html",
+    "homepage": "https://www.linuxfromscratch.org/blfs/view/6.1/basicnet/tcpwrappers.html",
     "version": "7.6",
     "license": "tcp_wrappers_license",
     "compatibility": "all"
@@ -15283,7 +15291,7 @@
     "name": "telegram",
     "description": "Telegram is a messaging app with a focus on speed and security, it's super-fast, simple and free.",
     "homepage": "https://telegram.org/",
-    "version": "5.2.1",
+    "version": "5.2.3",
     "license": "BSD, LGPL-2+ and GPL-3-with-openssl-exception",
     "compatibility": "x86_64"
   },
@@ -15339,7 +15347,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.9.0",
+    "version": "1.9.1",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -15570,7 +15578,7 @@
   {
     "name": "traceroute",
     "description": "Traceroute tracks the route packets taken from an IP network on their way to a given host.",
-    "homepage": "http://traceroute.sourceforge.net/",
+    "homepage": "https://traceroute.sourceforge.net/",
     "version": "2.1.4",
     "license": "GPL-2 and LGPL-2.1",
     "compatibility": "all"
@@ -15634,7 +15642,7 @@
   {
     "name": "trousers",
     "description": "The open-source TCG Software Stack.",
-    "homepage": "http://trousers.sourceforge.net/",
+    "homepage": "https://trousers.sourceforge.net/",
     "version": "0.3.15-2",
     "license": "CPL-1.0 and GPL-2",
     "compatibility": "all"
@@ -15642,7 +15650,7 @@
   {
     "name": "ttf2pt1",
     "description": "Converter of various scalable font formats (most notably TTF) and of the bitmapped BDF format into PostScript Type 1 fonts and metrics (.pfa, .pfb, .afm).",
-    "homepage": "http://ttf2pt1.sourceforge.net/",
+    "homepage": "https://ttf2pt1.sourceforge.net/",
     "version": "3.4.4",
     "license": "ttf2pt1",
     "compatibility": "all"
@@ -15666,7 +15674,7 @@
   {
     "name": "twm",
     "description": "The twm package contains a very minimal window manager.",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.11",
     "license": "MIT-with-advertising, MIT and ISC",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -15682,7 +15690,7 @@
   {
     "name": "txt2regex",
     "description": "Regex wizard for the terminal, written in Bash",
-    "homepage": "http://aurelio.net/projects/txt2regex/",
+    "homepage": "https://aurelio.net/projects/txt2regex/",
     "version": "0.9",
     "license": "GPL-2",
     "compatibility": "all"
@@ -15762,7 +15770,7 @@
   {
     "name": "unicode_cldr",
     "description": "Unicode Common Locale Data Repository",
-    "homepage": "http://cldr.unicode.org/",
+    "homepage": "https://cldr.unicode.org/",
     "version": "44.1",
     "license": "unicode",
     "compatibility": "all"
@@ -15794,7 +15802,7 @@
   {
     "name": "unixodbc",
     "description": "ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources.",
-    "homepage": "http://www.unixodbc.org/",
+    "homepage": "https://www.unixodbc.org/",
     "version": "2.3.9",
     "license": "LGPL-2+",
     "compatibility": "all"
@@ -15802,7 +15810,7 @@
   {
     "name": "unrar",
     "description": "UnRAR is a powerful archive extractor.",
-    "homepage": "http://www.rarlab.com/",
+    "homepage": "https://www.rarlab.com/",
     "version": "7.0.9",
     "license": "unRAR",
     "compatibility": "all"
@@ -15826,7 +15834,7 @@
   {
     "name": "unzip",
     "description": "UnZip is an extraction utility for archives compressed in .zip format (also called 'zipfiles').",
-    "homepage": "http://www.info-zip.org/UnZip.html",
+    "homepage": "https://infozip.sourceforge.net/UnZip.html",
     "version": "6.0-2",
     "license": "Info-ZIP",
     "compatibility": "all"
@@ -15834,7 +15842,7 @@
   {
     "name": "upm",
     "description": "Universal Password Manager (UPM) allows you to store usernames, passwords, URLs and generic notes in an encrypted database protected by one master password.",
-    "homepage": "http://upm.sourceforge.net/",
+    "homepage": "https://upm.sourceforge.net/",
     "version": "1.15.1",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -15874,7 +15882,7 @@
   {
     "name": "usbutils",
     "description": "Tools for examining usb devices",
-    "homepage": "http://linux-usb.sourceforge.net/",
+    "homepage": "https://linux-usb.sourceforge.net/",
     "version": "013",
     "license": "GPL-2",
     "compatibility": "all"
@@ -16042,16 +16050,16 @@
   {
     "name": "vim",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient.",
-    "homepage": "http://www.vim.org/",
-    "version": "9.1.0188",
+    "homepage": "https://www.vim.org/",
+    "version": "9.1.0568",
     "license": "GPL-2",
     "compatibility": "all"
   },
   {
     "name": "vim_runtime",
     "description": "Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. (shared runtime)",
-    "homepage": "http://www.vim.org/",
-    "version": "9.1.0188",
+    "homepage": "https://www.vim.org/",
+    "version": "9.1.0568",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -16162,7 +16170,7 @@
   {
     "name": "vulkan_tools",
     "description": "Vulkan Utilities and Tools",
-    "homepage": "https://www.khronos.org/vulkan/",
+    "homepage": "https://www.vulkan.org/",
     "version": "1.3.280.0",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16186,7 +16194,7 @@
   {
     "name": "w3m",
     "description": "w3m is a text-based browser, pager and HTML typesetter",
-    "homepage": "http://w3m.sourceforge.net/",
+    "homepage": "https://w3m.sourceforge.net/",
     "version": "0.5.3-20220429",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16210,7 +16218,7 @@
   {
     "name": "wavpack",
     "description": "WavPack is a completely open audio compression format providing lossless, high-quality lossy, and a unique hybrid compression mode.",
-    "homepage": "http://www.wavpack.com/",
+    "homepage": "https://www.wavpack.com/",
     "version": "5.1.0",
     "license": "BSD",
     "compatibility": "all"
@@ -16322,7 +16330,7 @@
   {
     "name": "weechat",
     "description": "WeeChat is a fast, light and extensible chat client.",
-    "homepage": "http://www.weechat.org/",
+    "homepage": "https://weechat.org/",
     "version": "2.1",
     "license": "GPL-3",
     "compatibility": "all"
@@ -16330,7 +16338,7 @@
   {
     "name": "weston",
     "description": "Weston is the reference implementation of a Wayland compositor, and a useful compositor in its own right.",
-    "homepage": "http://wayland.freedesktop.org",
+    "homepage": "https://wayland.freedesktop.org",
     "version": "13.0.0",
     "license": "MIT and CC-BY-SA-3.0",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16354,7 +16362,7 @@
   {
     "name": "whiptail",
     "description": "displays dialog boxes from shell scripts.",
-    "homepage": "http://www.linuxfromscratch.org/blfs/view/cvs/general/newt.html",
+    "homepage": "https://www.linuxfromscratch.org/blfs/view/cvs/general/newt.html",
     "version": "0.52.20",
     "license": "GPL-2",
     "compatibility": "all"
@@ -16442,7 +16450,7 @@
   {
     "name": "wmctrl",
     "description": "Control your EWMH compliant window manager from command line",
-    "homepage": "http://tripie.sweb.cz/utils/wmctrl/",
+    "homepage": "https://sweb.cz/utils/wmctrl/",
     "version": "1.07-1",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16458,7 +16466,7 @@
   {
     "name": "wol",
     "description": "Wake up hardware that is Magic Packet compliant",
-    "homepage": "https://ahh.sourceforge.net/wol/",
+    "homepage": "https://sourceforge.net/projects/wake-on-lan/",
     "version": "0.7.1-1",
     "license": "GPL-2+",
     "compatibility": "all"
@@ -16490,7 +16498,7 @@
   {
     "name": "wput",
     "description": "wput is a command line file upload tool, the opposite of wget",
-    "homepage": "http://wput.sourceforge.net/",
+    "homepage": "https://wput.sourceforge.net/",
     "version": "0.6.2",
     "license": "GPL-2",
     "compatibility": "all"
@@ -16546,7 +16554,7 @@
   {
     "name": "xbitmaps",
     "description": "The xbitmaps package contains bitmap images used by multiple applications built in Xorg chapter.",
-    "homepage": "http://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.1.1",
     "license": "MIT",
     "compatibility": "all"
@@ -16562,7 +16570,7 @@
   {
     "name": "xcb_util",
     "description": "The xcb-util package provides additional extensions to the XCB library.",
-    "homepage": "http://xcb.freedesktop.org",
+    "homepage": "https://xcb.freedesktop.org/",
     "version": "0.4.0-1",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -16570,7 +16578,7 @@
   {
     "name": "xcb_util_cursor",
     "description": "The xcb-util-cursor package provides a module that implements the XCB cursor library. It is a the XCB replacement for libXcursor.",
-    "homepage": "http://xcb.freedesktop.org",
+    "homepage": "https://xcb.freedesktop.org/",
     "version": "0.1.4",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -16578,7 +16586,7 @@
   {
     "name": "xcb_util_image",
     "description": "The xcb-util-image package provides additional extensions to the XCB library.",
-    "homepage": "http://xcb.freedesktop.org",
+    "homepage": "https://xcb.freedesktop.org/",
     "version": "0.4.0-1",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -16586,7 +16594,7 @@
   {
     "name": "xcb_util_keysyms",
     "description": "The xcb-util-keysyms package contains a library for handling standard X key constants and conversion to/from keycodes.",
-    "homepage": "http://xcb.freedesktop.org",
+    "homepage": "https://xcb.freedesktop.org/",
     "version": "0.4.0-1",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -16602,7 +16610,7 @@
   {
     "name": "xcb_util_wm",
     "description": "The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM.",
-    "homepage": "http://xcb.freedesktop.org",
+    "homepage": "https://xcb.freedesktop.org/",
     "version": "0.4.1-1",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -16642,7 +16650,7 @@
   {
     "name": "xdg_base",
     "description": "XDG Base Directory Specification Configuration",
-    "homepage": "https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html",
+    "homepage": "https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html",
     "version": "0.7-7-1",
     "license": "GPL-3+",
     "compatibility": "all"
@@ -16666,7 +16674,7 @@
   {
     "name": "xdotool",
     "description": "Command-line X11 automation tool",
-    "homepage": "https://www.semicomplete.com/projects/xdotool",
+    "homepage": "https://www.semicomplete.com/projects/xdotool/",
     "version": "3.20160805.1",
     "license": "BSD",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16674,7 +16682,7 @@
   {
     "name": "xdpyinfo",
     "description": "Display information utility for X",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.3.3",
     "license": "MIT-with-advertising",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16682,7 +16690,7 @@
   {
     "name": "xe",
     "description": "simple xargs and apply replacement.",
-    "homepage": "https://github.com/chneukirchen/xe/",
+    "homepage": "https://github.com/leahneukirchen/xe",
     "version": "0.11",
     "license": "public-domain",
     "compatibility": "all"
@@ -16690,7 +16698,7 @@
   {
     "name": "xercesc",
     "description": "Xerces-C++ is a validating XML parser written in a portable subset of C++.",
-    "homepage": "http://xerces.apache.org/xerces-c/",
+    "homepage": "https://xerces.apache.org/xerces-c/",
     "version": "3.2.3",
     "license": "Apache-2.0",
     "compatibility": "all"
@@ -16746,7 +16754,7 @@
   {
     "name": "xinit",
     "description": "The xinit package contains a usable script to start the xserver.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.4.2",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16754,7 +16762,7 @@
   {
     "name": "xkbcomp",
     "description": "Compile XKB keyboard",
-    "homepage": "https://xorg.freedesktop.org",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.4.4",
     "license": "ISC, MIT and custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16762,7 +16770,7 @@
   {
     "name": "xkeyboard_config",
     "description": "The non-arch keyboard configuration database for X Window.",
-    "homepage": "http://www.freedesktop.org/wiki/Software/XKeyboardConfig",
+    "homepage": "https://www.freedesktop.org/wiki/Software/XKeyboardConfig/",
     "version": "2.29",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16770,7 +16778,7 @@
   {
     "name": "xmessage",
     "description": "Xmessage displays a message or query in a window.",
-    "homepage": "https://www.x.org/",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.0.6",
     "license": "MIT-with-advertising",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16794,7 +16802,7 @@
   {
     "name": "xmlstarlet",
     "description": "XMLStarlet is a command line XML toolkit which can be used to transform, query, validate, and edit XML documents and files using simple set of shell commands in similar way it is done for plain text files using grep/sed/awk/tr/diff/patch.",
-    "homepage": "http://xmlstar.sourceforge.net/",
+    "homepage": "https://xmlstar.sourceforge.net/",
     "version": "1.6.1",
     "license": "MIT",
     "compatibility": "all"
@@ -16818,7 +16826,7 @@
   {
     "name": "xorg_cf_files",
     "description": "X.org cf files for use with imake builds.",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.0.7",
     "license": "MIT",
     "compatibility": "all"
@@ -16826,7 +16834,7 @@
   {
     "name": "xorg_evdev_driver",
     "description": "The Xorg Evdev Driver package contains a Generic Linux input driver for the Xorg X server. It handles keyboard, mouse, touchpads and wacom devices, though for touchpad and wacom advanced handling, additional drivers are required.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "2.10.5-1",
     "license": "ISC and MIT",
     "compatibility": "all"
@@ -16834,7 +16842,7 @@
   {
     "name": "xorg_fbdev_driver",
     "description": "The Xorg Fbdev Driver package contains the X.Org Video Driver for framebuffer devices. This driver is often used as fallback driver if the hardware specific and VESA drivers fail to load or are not present.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "0.4.4",
     "license": "MIT-with-advertising",
     "compatibility": "all"
@@ -16850,7 +16858,7 @@
   {
     "name": "xorg_libinput_driver",
     "description": "The X.Org Libinput Driver is a thin wrapper around libinput and allows for libinput to be used for input devices in X. This driver can be used as drop-in replacement for evdev and synaptics.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "0.27.1",
     "license": "ISC",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16866,7 +16874,7 @@
   {
     "name": "xorg_proto",
     "description": "The xorgproto package provides the header files required to build the X Window system, and to allow other applications to build against the installed X Window system.",
-    "homepage": "https://www.x.org/",
+    "homepage": "https://www.x.org/wiki/",
     "version": "2024.1",
     "license": "MIT",
     "compatibility": "all"
@@ -16874,7 +16882,7 @@
   {
     "name": "xorg_server",
     "description": "The Xorg Server is the core of the X Window system.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "21.1.12",
     "license": "BSD-3, MIT, BSD-4, MIT-with-advertising, ISC and custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16882,7 +16890,7 @@
   {
     "name": "xorg_synaptics_driver",
     "description": "The Xorg Synaptics Driver package contains the X.Org Input Driver, support programs and SDK for Synaptics touchpads.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.9.0",
     "license": "MIT",
     "compatibility": "all"
@@ -16890,7 +16898,7 @@
   {
     "name": "xorg_vmmouse_driver",
     "description": "The Xorg VMMouse Driver package contains the VMMouse input driver for the Xorg X server. The VMMouse driver enables support for the special VMMouse protocol that is provided by VMware virtual machines to give absolute pointer positioning.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "13.1.0",
     "license": "MIT-with-advertising and ISC",
     "compatibility": "i686,x86_64"
@@ -16906,7 +16914,7 @@
   {
     "name": "xorg_wacom_driver",
     "description": "The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for Wacom and Wacom-like tablets. It is not required to use a Wacom tablet, the xf86-input-evdev driver can handle these devices without problems.",
-    "homepage": "https://www.x.org",
+    "homepage": "https://www.x.org/wiki/",
     "version": "0.36.0",
     "license": "GPL-2",
     "compatibility": "all"
@@ -16914,7 +16922,7 @@
   {
     "name": "xorg_xeyes",
     "description": "Follow the mouse/SHAPE extension X demo",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.2.0",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16922,7 +16930,7 @@
   {
     "name": "xorg_xlsfonts",
     "description": "List available X fonts",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.0.7",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16930,7 +16938,7 @@
   {
     "name": "xorg_xset",
     "description": "User preference utility for X",
-    "homepage": "https://xorg.freedesktop.org/",
+    "homepage": "https://xorg.freedesktop.org/wiki/",
     "version": "1.2.5",
     "license": "X11",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16938,7 +16946,7 @@
   {
     "name": "xprop",
     "description": "Xprop is a property displayer for X.",
-    "homepage": "https://www.x.org/",
+    "homepage": "https://www.x.org/wiki/",
     "version": "1.2.6",
     "license": "MIT-with-advertising and ISC",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16946,7 +16954,7 @@
   {
     "name": "xrdb",
     "description": "xrdb - X server resource database utility",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "1.2.1",
     "license": "custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16978,7 +16986,7 @@
   {
     "name": "xwayland",
     "description": "X server configured to work with weston or sommelier",
-    "homepage": "https://x.org",
+    "homepage": "https://x.org/wiki/",
     "version": "24.1.0",
     "license": "MIT-with-advertising, ISC, BSD-3, BSD and custom",
     "compatibility": "x86_64 aarch64 armv7l"
@@ -16986,7 +16994,7 @@
   {
     "name": "xxd_standalone",
     "description": "Hexdump utility from vim",
-    "homepage": "http://www.vim.org",
+    "homepage": "https://www.vim.org/",
     "version": "9.1.0188",
     "license": "GPL-2",
     "compatibility": "all"
@@ -16994,7 +17002,7 @@
   {
     "name": "xxhash",
     "description": "xxHash is an extremely fast non-cryptographic hash algorithm, working at speeds close to RAM limits.",
-    "homepage": "https://cyan4973.github.io/xxHash/",
+    "homepage": "https://xxhash.com/",
     "version": "0.8.1",
     "license": "BSD-2 and GPL-2+",
     "compatibility": "all"
@@ -17002,7 +17010,7 @@
   {
     "name": "xz_java",
     "description": "A complete implementation of XZ data de/compression in pure Java.",
-    "homepage": "http://tukaani.org/xz/java.html",
+    "homepage": "https://tukaani.org/xz/java.html",
     "version": "1.9",
     "license": "public-domain",
     "compatibility": "all"
@@ -17186,7 +17194,7 @@
   {
     "name": "zip",
     "description": "Zip is a compression and file packaging/archive utility for archives compressed in .zip format (also called 'zipfiles').",
-    "homepage": "http://www.info-zip.org/Zip.html",
+    "homepage": "https://infozip.sourceforge.net/Zip.html",
     "version": "3.0-11",
     "license": "Info-ZIP",
     "compatibility": "all"
@@ -17234,7 +17242,7 @@
   {
     "name": "zsh",
     "description": "Zsh is a shell designed for interactive use, although it is also a powerful scripting language.",
-    "homepage": "http://zsh.sourceforge.net/",
+    "homepage": "https://zsh.sourceforge.io/",
     "version": "5.9",
     "license": "ZSH and GPL-2",
     "compatibility": "all"
@@ -17242,7 +17250,7 @@
   {
     "name": "zstd",
     "description": "Zstandard - Fast real-time compression algorithm",
-    "homepage": "http://www.zstd.net",
+    "homepage": "https://facebook.github.io/zstd/",
     "version": "1.5.6",
     "license": "BSD or GPL-2",
     "compatibility": "all"
@@ -17266,7 +17274,7 @@
   {
     "name": "zziplib",
     "description": "The ZZIPlib provides read access on ZIP-archives and unpacked data.",
-    "homepage": "http://zziplib.sourceforge.net/",
+    "homepage": "https://zziplib.sourceforge.net/",
     "version": "0.13.72",
     "license": "GPL-2",
     "compatibility": "all"
