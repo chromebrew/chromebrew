@@ -3,8 +3,8 @@
 /usr/local/bin/iex
 /usr/local/bin/mix
 /usr/local/lib64/mix.ex
+/usr/local/lib64/mix/app_loader.ex
 /usr/local/lib64/mix/cli.ex
-/usr/local/lib64/mix/compilers/application_tracer.ex
 /usr/local/lib64/mix/compilers/elixir.ex
 /usr/local/lib64/mix/compilers/erlang.ex
 /usr/local/lib64/mix/compilers/test.ex
@@ -23,7 +23,6 @@
 /usr/local/lib64/mix/local/installer.ex
 /usr/local/lib64/mix/project.ex
 /usr/local/lib64/mix/project_stack.ex
-/usr/local/lib64/mix/public_key.ex
 /usr/local/lib64/mix/rebar.ex
 /usr/local/lib64/mix/release.ex
 /usr/local/lib64/mix/remote_converger.ex
@@ -69,6 +68,7 @@
 /usr/local/lib64/mix/tasks/escript.ex
 /usr/local/lib64/mix/tasks/escript.install.ex
 /usr/local/lib64/mix/tasks/escript.uninstall.ex
+/usr/local/lib64/mix/tasks/eval.ex
 /usr/local/lib64/mix/tasks/format.ex
 /usr/local/lib64/mix/tasks/help.ex
 /usr/local/lib64/mix/tasks/iex.ex
@@ -82,6 +82,7 @@
 /usr/local/lib64/mix/tasks/profile.cprof.ex
 /usr/local/lib64/mix/tasks/profile.eprof.ex
 /usr/local/lib64/mix/tasks/profile.fprof.ex
+/usr/local/lib64/mix/tasks/profile.tprof.ex
 /usr/local/lib64/mix/tasks/release.ex
 /usr/local/lib64/mix/tasks/release.init.ex
 /usr/local/lib64/mix/tasks/run.ex
@@ -91,7 +92,5 @@
 /usr/local/lib64/mix/tasks/xref.ex
 /usr/local/lib64/mix/tasks_server.ex
 /usr/local/lib64/mix/utils.ex
-/usr/local/share/man/man1/elixir.1.zst
 /usr/local/share/man/man1/elixirc.1.zst
-/usr/local/share/man/man1/iex.1.zst
 /usr/local/share/man/man1/mix.1.zst
