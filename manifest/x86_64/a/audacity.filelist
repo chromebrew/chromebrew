@@ -103,6 +103,7 @@
 /usr/local/share/audacity/lib/lib-concurrency.so
 /usr/local/share/audacity/lib/lib-crashpad-configurer.so
 /usr/local/share/audacity/lib/lib-crypto.so
+/usr/local/share/audacity/lib/lib-dynamic-range-processor.so
 /usr/local/share/audacity/lib/lib-effects.so
 /usr/local/share/audacity/lib/lib-exceptions.so
 /usr/local/share/audacity/lib/lib-export-ui.so
@@ -124,6 +125,7 @@
 /usr/local/share/audacity/lib/lib-note-track.so
 /usr/local/share/audacity/lib/lib-numeric-formats.so
 /usr/local/share/audacity/lib/lib-playable-track.so
+/usr/local/share/audacity/lib/lib-preference-pages.so
 /usr/local/share/audacity/lib/lib-preferences.so
 /usr/local/share/audacity/lib/lib-project-file-io.so
 /usr/local/share/audacity/lib/lib-project-history.so
@@ -155,6 +157,7 @@
 /usr/local/share/audacity/lib/lib-viewport.so
 /usr/local/share/audacity/lib/lib-vst.so
 /usr/local/share/audacity/lib/lib-vst3.so
+/usr/local/share/audacity/lib/lib-wave-track-paint.so
 /usr/local/share/audacity/lib/lib-wave-track.so
 /usr/local/share/audacity/lib/lib-wx-init.so
 /usr/local/share/audacity/lib/lib-wx-wrappers.so
