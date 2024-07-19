@@ -3,12 +3,12 @@ require 'buildsystems/autotools'
 class Imagemagick7 < Autotools
   description 'Use ImageMagick to create, edit, compose, or convert bitmap images.'
   homepage 'http://www.imagemagick.org/script/index.php'
-  @_ver = '7.1.1-23'
-  version "#{@_ver}-perl5.38"
+  version '7.1.1-35-perl5.40'
   license 'imagemagick'
   compatibility 'x86_64 aarch64 armv7l'
   source_url 'https://github.com/ImageMagick/ImageMagick.git'
-  git_hashtag @_ver
+  # The imagemagick7 version always has a dash in it.
+  git_hashtag version.reverse.split('-', 2).collect(&:reverse).reverse.first
   binary_compression 'tar.zst'
 
   binary_sha256({
