@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Gdb < Autotools
   description 'The GNU Debugger'
   homepage 'https://www.gnu.org/software/gdb/'
-  version '15.1-py3.12'
+  version '15.1-gcc14-py3.12'
   license 'GPL3'
   compatibility 'all'
   source_url "https://ftpmirror.gnu.org/gnu/gdb/gdb-#{version.split('-').first}.tar.xz"
