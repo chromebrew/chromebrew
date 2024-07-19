@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Libnl3 < Autotools
   description 'libnl is a library for applications dealing with netlink sockets.'
   homepage 'https://github.com/thom311/libnl'
-  version '3.9.0'
+  version '3.9.0-5248e1a'
   license 'LGPL-2.1'
   compatibility 'all'
   source_url 'https://github.com/thom311/libnl.git'
-  git_hashtag "libnl#{version.gsub('.', '_')}"
+  git_hashtag '5248e1a45576617b349465997822cef34cbc5053'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'e78307d62f182317cfd64bc7f009d6ebee55338c25df46e2e86ed0e1289be93a',
-     armv7l: 'e78307d62f182317cfd64bc7f009d6ebee55338c25df46e2e86ed0e1289be93a',
-       i686: '8f05af9fc50c552a1e40b635336da213e948ee736fcc7b5ac9d21e67ca606baa',
-     x86_64: '84183099ad2f31076fe48d7fe6b31f82581d7d621f8b30fbf41c4350e3414e67'
+    aarch64: '83355357cf4755c47348e8db7528e345a36de0dfa3d734e1141dc632e5970973',
+     armv7l: '83355357cf4755c47348e8db7528e345a36de0dfa3d734e1141dc632e5970973',
+       i686: '8f9373822534eea9fec8cbdea8b4dac53b94920aae8abc4c9f19264fff0130a3',
+     x86_64: '455ffa9f7ba341a84989c0e36546918d671ef61013ddb171264601cc058abe1d'
   })
 
   # depends_on 'check' => :build
