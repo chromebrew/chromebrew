@@ -1,6 +1,7 @@
-/usr/local/bin/nginx
 /usr/local/bin/startnginx
 /usr/local/bin/stopnginx
+/usr/local/etc/bash.d/10-nginx
+/usr/local/sbin/nginx
 /usr/local/share/nginx/conf/fastcgi.conf
 /usr/local/share/nginx/conf/fastcgi.conf.default
 /usr/local/share/nginx/conf/fastcgi_params
