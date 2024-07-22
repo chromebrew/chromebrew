@@ -611,7 +611,7 @@
     "name": "audacity",
     "description": "Audacity is the world's most popular audio editing and recording app",
     "homepage": "https://www.audacityteam.org/",
-    "version": "3.5.1",
+    "version": "3.6.0",
     "license": "GPL-3",
     "compatibility": "x86_64"
   },
@@ -851,7 +851,7 @@
     "name": "bat",
     "description": "Clone of cat with syntax highlighting and Git integration",
     "homepage": "https://github.com/sharkdp/bat",
-    "version": "0.23.0",
+    "version": "0.24.0",
     "license": "Apache-2.0, MIT",
     "compatibility": "all"
   },
@@ -867,7 +867,7 @@
     "name": "bazel",
     "description": "a fast, scalable, multi-language and extensible build system",
     "homepage": "https://bazel.build/",
-    "version": "5.3.2",
+    "version": "7.2.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -875,7 +875,7 @@
     "name": "bazelisk",
     "description": "A user-friendly launcher for Bazel.",
     "homepage": "https://github.com/bazelbuild/bazelisk",
-    "version": "1.16.0",
+    "version": "1.20.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -971,7 +971,7 @@
     "name": "binutils",
     "description": "The GNU Binutils are a collection of binary tools.",
     "homepage": "https://www.gnu.org/software/binutils/",
-    "version": "2.42",
+    "version": "2.42-gcc14",
     "license": "GPL-3+",
     "compatibility": "all"
   },
@@ -1067,7 +1067,7 @@
     "name": "brave",
     "description": "Next generation Brave browser for macOS, Windows, Linux, Android.",
     "homepage": "https://brave.com/",
-    "version": "1.67.123",
+    "version": "1.67.134",
     "license": "MPL-2",
     "compatibility": "x86_64"
   },
@@ -1139,7 +1139,7 @@
     "name": "bun",
     "description": "Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one",
     "homepage": "https://bun.sh/",
-    "version": "1.1.12",
+    "version": "1.1.20",
     "license": "MIT",
     "compatibility": "x86_64"
   },
@@ -1451,7 +1451,7 @@
     "name": "chrome",
     "description": "Google Chrome is a fast, easy to use, and secure web browser.",
     "homepage": "https://www.google.com/chrome/",
-    "version": "126.0.6478.126-1",
+    "version": "126.0.6478.182-1",
     "license": "google-chrome",
     "compatibility": "x86_64"
   },
@@ -1635,7 +1635,7 @@
     "name": "cmake",
     "description": "CMake is an open-source, cross-platform family of tools designed to build, test and package software.",
     "homepage": "https://cmake.org/",
-    "version": "3.30.0",
+    "version": "3.30.1",
     "license": "CMake",
     "compatibility": "all"
   },
@@ -2083,7 +2083,7 @@
     "name": "dart",
     "description": "The Dart SDK is a set of tools and libraries for the Dart programming language.  You can find information about Dart online at dartlang.org.",
     "homepage": "https://dart.dev",
-    "version": "3.0.4",
+    "version": "3.4.4",
     "license": "BSD-3",
     "compatibility": "all"
   },
@@ -2115,7 +2115,7 @@
     "name": "dbeaver",
     "description": "Free Universal Database Tool",
     "homepage": "https://dbeaver.io",
-    "version": "24.1.0",
+    "version": "24.1.2",
     "license": "Apache-2.0",
     "compatibility": "x86_64"
   },
@@ -2227,7 +2227,7 @@
     "name": "dexed",
     "description": "Dexed, the D Extended EDitor, is an IDE for the D programming language, its compilers, tools and libraries.",
     "homepage": "https://gitlab.com/basile.b/dexed",
-    "version": "3.9.23",
+    "version": "3.9.26",
     "license": "Boost Software License - Version 1.0",
     "compatibility": "x86_64"
   },
@@ -2435,7 +2435,7 @@
     "name": "dotnet",
     "description": ".NET is the free, open-source, cross-platform framework for building modern apps and powerful cloud services.",
     "homepage": "https://dotnet.microsoft.com/",
-    "version": "8.0.101",
+    "version": "8.0.303",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2611,7 +2611,7 @@
     "name": "elixir",
     "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.",
     "homepage": "https://elixir-lang.org/",
-    "version": "1.13.4",
+    "version": "1.17.2",
     "license": "Apache-2.0 and ErlPL-1.1",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2699,7 +2699,7 @@
     "name": "erlang",
     "description": "Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org/",
-    "version": "27.0",
+    "version": "27.0.1",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -2803,7 +2803,7 @@
     "name": "exodus",
     "description": "Exodus is a desktop crypto wallet",
     "homepage": "https://www.exodus.com/",
-    "version": "23.6.19",
+    "version": "24.29.2",
     "license": "Freeware",
     "compatibility": "x86_64"
   },
@@ -3451,7 +3451,7 @@
     "name": "freetube",
     "description": "The Private YouTube Client",
     "homepage": "https://freetubeapp.io/",
-    "version": "0.21.0",
+    "version": "0.21.1",
     "license": "AGPL-3.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3475,7 +3475,7 @@
     "name": "frp",
     "description": "A fast reverse proxy",
     "homepage": "https://github.com/fatedier/frp",
-    "version": "0.53.0",
+    "version": "0.59.0",
     "license": "Apache-2.0",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3539,7 +3539,7 @@
     "name": "fzf",
     "description": "A command-line fuzzy finder",
     "homepage": "https://github.com/junegunn/fzf",
-    "version": "0.53.0",
+    "version": "0.54.0",
     "license": "MIT and BSD-with-disclosure",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -3627,7 +3627,7 @@
     "name": "gcloud",
     "description": "Command-line interface for Google Cloud Platform products and services",
     "homepage": "https://cloud.google.com/sdk/gcloud/",
-    "version": "463.0.0",
+    "version": "484.0.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -3659,7 +3659,7 @@
     "name": "gdb",
     "description": "The GNU Debugger",
     "homepage": "https://www.gnu.org/software/gdb/",
-    "version": "14.2",
+    "version": "15.1-gcc14",
     "license": "GPL3",
     "compatibility": "all"
   },
@@ -3947,7 +3947,7 @@
     "name": "github_desktop",
     "description": "GitHub Desktop is an open source Electron-based GitHub app",
     "homepage": "https://desktop.github.com/",
-    "version": "3.3.12-RC2",
+    "version": "3.4.2-RC1",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -4475,7 +4475,7 @@
     "name": "go_containerregistry",
     "description": "Go library and CLIs for working with container registries",
     "homepage": "https://github.com/google/go-containerregistry",
-    "version": "0.14.0",
+    "version": "0.20.0",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -5371,7 +5371,7 @@
     "name": "imagemagick7",
     "description": "Use ImageMagick to create, edit, compose, or convert bitmap images.",
     "homepage": "http://www.imagemagick.org/script/index.php",
-    "version": "7.1.1-23-perl5.38",
+    "version": "7.1.1-35",
     "license": "imagemagick",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -5779,7 +5779,7 @@
     "name": "json_glib",
     "description": "JSON-GLib implements a full suite of JSON-related tools using GLib and GObject.",
     "homepage": "https://gitlab.gnome.org/GNOME/json-glib",
-    "version": "1.9.2",
+    "version": "1.9.2-1",
     "license": "LGPL-2.1+",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -6203,7 +6203,7 @@
     "name": "libavif",
     "description": "Library for encoding and decoding .avif files",
     "homepage": "https://github.com/AOMediaCodec/libavif",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "license": "BSD-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -7403,7 +7403,7 @@
     "name": "libnftnl",
     "description": "libnftnl is a userspace library providing a low-level netlink programming interface (API) to the in-kernel nf_tables subsystem.",
     "homepage": "https://netfilter.org/projects/libnftnl/",
-    "version": "1.2.6",
+    "version": "1.2.7",
     "license": "GPL-2",
     "compatibility": "all"
   },
@@ -7419,7 +7419,7 @@
     "name": "libnl3",
     "description": "libnl is a library for applications dealing with netlink sockets.",
     "homepage": "https://github.com/thom311/libnl",
-    "version": "3.9.0",
+    "version": "3.9.0-5248e1a",
     "license": "LGPL-2.1",
     "compatibility": "all"
   },
@@ -8563,7 +8563,7 @@
     "name": "libxml2",
     "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project.",
     "homepage": "http://xmlsoft.org/",
-    "version": "2.12.7-icu74.2",
+    "version": "2.13.2-icu74.2-1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -9331,7 +9331,7 @@
     "name": "mesa",
     "description": "Open-source implementation of the OpenGL specification",
     "homepage": "https://www.mesa3d.org",
-    "version": "24.1.3",
+    "version": "24.1.4",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -9531,7 +9531,7 @@
     "name": "mold",
     "description": "A Modern Linker",
     "homepage": "https://github.com/rui314/mold",
-    "version": "2.32.0",
+    "version": "2.32.1",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -10035,7 +10035,7 @@
     "name": "nano",
     "description": "Nano's ANOther editor, an enhanced free Pico clone.",
     "homepage": "https://www.nano-editor.org/",
-    "version": "8.0",
+    "version": "8.1",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -10315,9 +10315,9 @@
     "name": "nftables",
     "description": "Netfilter tables userspace tools",
     "homepage": "https://netfilter.org/projects/nftables/",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "license": "GPL2",
-    "compatibility": "aarch64 armv7l x86_64"
+    "compatibility": "x86_64 aarch64 armv7l"
   },
   {
     "name": "nginx",
@@ -10779,7 +10779,7 @@
     "name": "openvpn",
     "description": "OpenVPN is an open source VPN daemon",
     "homepage": "https://openvpn.net/",
-    "version": "2.6.11",
+    "version": "2.6.12",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -10795,7 +10795,7 @@
     "name": "opera",
     "description": "Opera is a multi-platform web browser based on Chromium and developed by Opera Software.",
     "homepage": "https://www.opera.com/",
-    "version": "112.0.5197.24",
+    "version": "112.0.5197.30",
     "license": "OPERA-2018",
     "compatibility": "x86_64"
   },
@@ -11659,7 +11659,7 @@
     "name": "php82",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.2.20",
+    "version": "8.2.21",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11667,7 +11667,7 @@
     "name": "php83",
     "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
     "homepage": "https://www.php.net/",
-    "version": "8.3.8",
+    "version": "8.3.9",
     "license": "PHP-3.01",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -11811,7 +11811,7 @@
     "name": "platformsh",
     "description": "The unified tool for managing your Platform.sh services from the command line.",
     "homepage": "https://docs.platform.sh/overview/cli.html",
-    "version": "5.0.15",
+    "version": "5.0.16",
     "license": "MIT",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -12715,7 +12715,7 @@
     "name": "py3_libxml2",
     "description": "Libxml2-python provides access to libxml2 and libxslt in Python.",
     "homepage": "https://gitlab.gnome.org/GNOME/libxml2/",
-    "version": "2.12.7",
+    "version": "2.13.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13419,7 +13419,7 @@
     "name": "py3_urllib3",
     "description": "URLlib3 is an HTTP library with thread-safe connection pooling, file post, and more.",
     "homepage": "https://urllib3.readthedocs.io/",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -13611,7 +13611,7 @@
     "name": "qemu",
     "description": "QEMU is a generic and open source machine emulator and virtualizer.",
     "homepage": "https://www.qemu.org/",
-    "version": "9.0.1",
+    "version": "9.0.2",
     "license": "GPL-2",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -14147,7 +14147,7 @@
     "name": "ruby_asciidoctor",
     "description": "A fast text processor & publishing toolchain for converting AsciiDoc to HTML5, DocBook & more.",
     "homepage": "https://asciidoctor.org/",
-    "version": "2.0.22-ruby-3.3",
+    "version": "2.0.23-ruby-3.3",
     "license": "MIT",
     "compatibility": "all"
   },
@@ -14595,7 +14595,7 @@
     "name": "signal_desktop",
     "description": "Private Messenger for Windows, Mac, and Linux",
     "homepage": "https://signal.org/",
-    "version": "7.15.0",
+    "version": "7.16.0",
     "license": "AGPL-3.0",
     "compatibility": "x86_64"
   },
@@ -14779,7 +14779,7 @@
     "name": "source_highlight",
     "description": "Convert source code to syntax highlighted document",
     "homepage": "https://www.gnu.org/software/src-highlite/",
-    "version": "3.1.9-894cacd",
+    "version": "3.1.9-894cacd-boost1.85",
     "license": "GPL",
     "compatibility": "all"
   },
@@ -14835,7 +14835,7 @@
     "name": "sphinx",
     "description": "Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.",
     "homepage": "https://www.sphinx-doc.org/",
-    "version": "7.3.7",
+    "version": "7.4.5",
     "license": "BSD",
     "compatibility": "all"
   },
@@ -14867,7 +14867,7 @@
     "name": "spirv_llvm_translator",
     "description": "Tool and a library for bi-directional translation between SPIR-V and LLVM IR",
     "homepage": "https://github.com/KhronosGroup/SPIRV-LLVM-Translator",
-    "version": "18.1.2",
+    "version": "18.1.2-1",
     "license": "Apache-2.0 WITH LLVM-exception",
     "compatibility": "all"
   },
@@ -14875,7 +14875,7 @@
     "name": "spirv_tools",
     "description": "API and commands for processing SPIR-V modules",
     "homepage": "https://github.com/KhronosGroup/SPIRV-Tools",
-    "version": "2024.3",
+    "version": "2024.3-1",
     "license": "Apache-2.0",
     "compatibility": "all"
   },
@@ -15347,7 +15347,7 @@
     "name": "terraform",
     "description": "Terraform is a tool for building, changing, and combining infrastructure safely and efficiently.",
     "homepage": "https://www.terraform.io/",
-    "version": "1.9.1",
+    "version": "1.9.2",
     "license": "Apache-2.0, BSD-2, BSD-4, ECL-2.0, imagemagick, ISC, JSON, MIT, MIT-with-advertising, MPL-2.0 and unicode",
     "compatibility": "all"
   },
@@ -15379,7 +15379,7 @@
     "name": "texinfo",
     "description": "Texinfo is the official documentation format of the GNU project.",
     "homepage": "https://www.gnu.org/software/texinfo/",
-    "version": "7.1-perl5.38",
+    "version": "7.1.0.90",
     "license": "GPL-3",
     "compatibility": "all"
   },
@@ -15907,7 +15907,7 @@
     "name": "util_linux",
     "description": "essential linux tools",
     "homepage": "https://www.kernel.org/pub/linux/utils/util-linux/",
-    "version": "2.40.1",
+    "version": "2.40.2",
     "license": "GPL-2, LGPL-2.1, BSD-4, MIT and public-domain",
     "compatibility": "all"
   },
@@ -16075,7 +16075,7 @@
     "name": "vivaldi",
     "description": "Vivaldi is a new browser that blocks unwanted ads, protects you from trackers, and puts you in control with unique built-in features.",
     "homepage": "https://vivaldi.com/",
-    "version": "6.8.3381.44-1",
+    "version": "6.8.3381.48-1",
     "license": "Vivaldi",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -16987,7 +16987,7 @@
     "name": "xwayland",
     "description": "X server configured to work with weston or sommelier",
     "homepage": "https://x.org/wiki/",
-    "version": "24.1.0",
+    "version": "24.1.1",
     "license": "MIT-with-advertising, ISC, BSD-3, BSD and custom",
     "compatibility": "x86_64 aarch64 armv7l"
   },
@@ -17019,7 +17019,7 @@
     "name": "xzutils",
     "description": "XZ Utils is free general-purpose data compression software with a high compression ratio.",
     "homepage": "https://tukaani.org/xz/",
-    "version": "5.6.2",
+    "version": "5.6.2-1",
     "license": "GPL-3",
     "compatibility": "all"
   },
