@@ -175,13 +175,12 @@ when 'x86_64'
   CREW_ARCH_FLAGS = CREW_ARCH_FLAGS_OVERRIDE.to_s.empty? ? '' : CREW_ARCH_FLAGS_OVERRIDE
 end
 
-CREW_LINKER       = ENV.fetch('CREW_LINKER', 'mold')
-CREW_LINKER_FLAGS = ENV.fetch('CREW_LINKER_FLAGS', '')
+CREW_LINKER = ENV.fetch('CREW_LINKER', 'mold')
 
-CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER} #{CREW_LINKER_FLAGS}"
+CREW_CORE_FLAGS           = "-O2 -pipe -ffat-lto-objects -fPIC #{CREW_ARCH_FLAGS} -fuse-ld=#{CREW_LINKER}"
 CREW_COMMON_FLAGS         = "#{CREW_CORE_FLAGS} -flto=auto"
 CREW_COMMON_FNO_LTO_FLAGS = "#{CREW_CORE_FLAGS} -fno-lto"
-CREW_LDFLAGS              = "-flto=auto #{CREW_LINKER_FLAGS}"
+CREW_LDFLAGS              = '-flto=auto'
 CREW_FNO_LTO_LDFLAGS      = '-fno-lto'
 
 CREW_ENV_OPTIONS_HASH = \
@@ -244,7 +243,6 @@ CREW_NINJA = ENV.fetch('CREW_NINJA', 'ninja')
 # Cmake sometimes wants to use LIB_SUFFIX to install libs in LIB64, so specify such for x86_64
 # This is often considered deprecated. See discussio at https://gitlab.kitware.com/cmake/cmake/-/issues/18640
 # and also https://bugzilla.redhat.com/show_bug.cgi?id=1425064
-# Let's have two CREW_CMAKE_OPTIONS since this avoids the logic in the recipe file.
 CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
   -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
@@ -255,17 +253,6 @@ CREW_CMAKE_OPTIONS = <<~OPT.chomp
   -DCMAKE_SHARED_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_MODULE_LINKER_FLAGS='#{CREW_LDFLAGS}' \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE \
-  -DCMAKE_BUILD_TYPE=Release
-OPT
-CREW_CMAKE_FNO_LTO_OPTIONS = <<~OPT.chomp
-  -DCMAKE_INSTALL_PREFIX=#{CREW_PREFIX} \
-  -DCMAKE_LIBRARY_PATH=#{CREW_LIB_PREFIX} \
-  -DCMAKE_C_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
-  -DCMAKE_CXX_FLAGS='#{CREW_COMMON_FNO_LTO_FLAGS.gsub(/-fuse-ld=.{2,4}\s/, '')}' \
-  -DCMAKE_EXE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
-  -DCMAKE_LINKER_TYPE=#{CREW_LINKER.upcase} \
-  -DCMAKE_SHARED_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
-  -DCMAKE_MODULE_LINKER_FLAGS=#{CREW_FNO_LTO_LDFLAGS} \
   -DCMAKE_BUILD_TYPE=Release
 OPT
 

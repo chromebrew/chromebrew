@@ -5,7 +5,7 @@ class CMake < Package
 
   def self.build
     puts "Additional cmake_options being used: #{@pre_cmake_options.nil? ? '<no pre_cmake_options>' : @pre_cmake_options} #{@cmake_options.nil? ? '<no cmake_options>' : @cmake_options}".orange
-    @crew_cmake_options = @no_lto ? CREW_CMAKE_FNO_LTO_OPTIONS : CREW_CMAKE_OPTIONS
+    @crew_cmake_options = @no_lto ? CREW_CMAKE_OPTIONS.gsub('-flto=auto', '-fno-lto').sub('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=TRUE', '') : CREW_CMAKE_OPTIONS
     @mold_linker_prefix_cmd = CREW_LINKER == 'mold' ? 'mold -run' : ''
     system "#{@pre_cmake_options} #{@mold_linker_prefix_cmd} cmake -B builddir -G Ninja #{@crew_cmake_options} #{@cmake_options}"
     system "#{CREW_NINJA} -C builddir"
