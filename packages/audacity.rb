@@ -3,12 +3,12 @@ require 'package'
 class Audacity < Package
   description "Audacity is the world's most popular audio editing and recording app"
   homepage 'https://www.audacityteam.org/'
-  version '3.6.0'
+  version '3.6.1'
   license 'GPL-3'
   compatibility 'x86_64'
   min_glibc '2.30'
   source_url "https://github.com/audacity/audacity/releases/download/Audacity-#{version}/audacity-linux-#{version}-x64.AppImage"
-  source_sha256 'f50c7cad808652f0d4b67c680e595dc78a3a97fe645a789bbdedf70f0c0a8c62'
+  source_sha256 '6480ac08f983f992a93b6da78a19c3eacdf5982114d53cdc7524b94328261e9f'
 
   depends_on 'gtk3'
   depends_on 'libthai'
@@ -42,6 +42,6 @@ class Audacity < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'audacity' to get started.\n".lightblue
+    ExitMessage.add "\nType 'audacity' to get started.\n"
   end
 end
