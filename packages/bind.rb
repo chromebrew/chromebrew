@@ -3,18 +3,18 @@ require 'buildsystems/autotools'
 class Bind < Autotools
   description 'BIND is open source software that enables you to publish your Domain Name System (DNS) information on the Internet, and to resolve DNS queries for your users.'
   homepage 'https://www.isc.org/bind/'
-  version '9.18.21'
+  version '9.20.0'
   license 'Apache-2.0, BSD, BSD-2, GPL-2, HPND, ISC and MPL-2.0'
   compatibility 'all'
   source_url "https://ftp.isc.org/isc/bind9/#{version}/bind-#{version}.tar.xz"
-  source_sha256 'a556be22505d9ea4f9c6717aee9c549739c68498aff3ca69035787ecc648fec5'
+  source_sha256 'cc580998017b51f273964058e8cb3aa5482bc785243dea71e5556ec565a13347'
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
-     armv7l: 'b6041be3e1a2da68142d25e5322055e59776c22f3be3963bfec8f98b99ca516f',
-       i686: '899bad21b6ebc0ff3928282943cde4c7c332da860cf5e652fc0ecefb532d80ae',
-     x86_64: '2ace6554897a788547b015c55e2bdf7279c02e1cb3bbfb969c1c6f6aa6a63169'
+    aarch64: '271147a451d6a6c81231a7d1e2e74480f8e24e4cf26fc01dc9d4b40c918cf980',
+     armv7l: '271147a451d6a6c81231a7d1e2e74480f8e24e4cf26fc01dc9d4b40c918cf980',
+       i686: '8c4401d053912ccd13417d97edbaa8ba3a1c5c5bd6db0653f71d216f0d251f0b',
+     x86_64: '0e0bf08ec93ad2ca55f2e0393882eec31f70185adf0a0c1a93a641d436d95425'
   })
 
   depends_on 'e2fsprogs' # R
