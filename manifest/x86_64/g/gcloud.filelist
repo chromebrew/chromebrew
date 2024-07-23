@@ -1874,6 +1874,8 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/kube_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/membershipfeatures/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/membershipfeatures/base.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/membershipfeatures/convert.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/membershipfeatures/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/memberships/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/memberships/errors.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/container/fleet/memberships/gke_util.py
@@ -2212,6 +2214,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/local/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/run_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/secrets_config.py
+/usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/service_account_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/source_util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/util.py
 /usr/local/share/gcloud/lib/googlecloudsdk/command_lib/functions/v1/__init__.py
@@ -3368,10 +3371,12 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/core/survey/survey_check.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/transport.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/transports.py
-/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor_data/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor_data/v1/__init__.py
-/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor_data/v1/universe_descriptor_data.proto
-/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor_data/v1/universe_descriptor_data_pb2.py
+/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor/default-universe-descriptor.json
+/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor/universe_descriptor.py
+/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor/v1/universe_descriptor_data.proto
+/usr/local/share/gcloud/lib/googlecloudsdk/core/universe_descriptor/v1/universe_descriptor_data_pb2.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/__init__.cpython-311.pyc
 /usr/local/share/gcloud/lib/googlecloudsdk/core/updater/__pycache__/installers.cpython-311.pyc
@@ -4537,6 +4542,11 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/ondemandscanning/v1beta1/ondemandscanning_v1beta1_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/ondemandscanning/v1beta1/ondemandscanning_v1beta1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/ondemandscanning/v1beta1/resources.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/oracledatabase/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/oracledatabase/v1alpha/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/oracledatabase/v1alpha/oracledatabase_v1alpha_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/oracledatabase/v1alpha/oracledatabase_v1alpha_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/oracledatabase/v1alpha/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/orglifecycle/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/orglifecycle/v1/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/orglifecycle/v1/orglifecycle_v1_client.py
@@ -4645,6 +4655,10 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privateca/v1/privateca_v1_messages.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privateca/v1/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1/privilegedaccessmanager_v1_client.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1/privilegedaccessmanager_v1_messages.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1/resources.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1alpha/__init__.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1alpha/privilegedaccessmanager_v1alpha_client.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/apis/privilegedaccessmanager/v1alpha/privilegedaccessmanager_v1alpha_messages.py
@@ -5090,6 +5104,7 @@
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/services/prediction_service/transports/grpc_asyncio.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/services/prediction_service/transports/rest.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/types/__init__.py
+/usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/types/api_auth.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/types/content.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/types/explanation.py
 /usr/local/share/gcloud/lib/googlecloudsdk/generated_clients/gapic_clients/aiplatform_v1beta1/types/explanation_metadata.py
@@ -7265,6 +7280,7 @@
 /usr/local/share/gcloud/lib/surface/builds/triggers/update/pubsub.py
 /usr/local/share/gcloud/lib/surface/builds/triggers/update/webhook.py
 /usr/local/share/gcloud/lib/surface/builds/worker_pools/__init__.py
+/usr/local/share/gcloud/lib/surface/builds/worker_pools/apply.py
 /usr/local/share/gcloud/lib/surface/builds/worker_pools/create.py
 /usr/local/share/gcloud/lib/surface/builds/worker_pools/delete.py
 /usr/local/share/gcloud/lib/surface/builds/worker_pools/describe.py
@@ -10782,6 +10798,7 @@
 /usr/local/share/gcloud/lib/surface/managed_flink/jobs/delete.yaml
 /usr/local/share/gcloud/lib/surface/managed_flink/jobs/describe.yaml
 /usr/local/share/gcloud/lib/surface/managed_flink/jobs/list.yaml
+/usr/local/share/gcloud/lib/surface/managed_flink/jobs/update.yaml
 /usr/local/share/gcloud/lib/surface/managed_kafka/__init__.py
 /usr/local/share/gcloud/lib/surface/managed_kafka/clusters/__init__.py
 /usr/local/share/gcloud/lib/surface/managed_kafka/clusters/create.yaml
@@ -12259,6 +12276,8 @@
 /usr/local/share/gcloud/lib/surface/scc/findings/update_marks.py
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/create.yaml
+/usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/describe.yaml
+/usr/local/share/gcloud/lib/surface/scc/iac_validation_reports/list.yaml
 /usr/local/share/gcloud/lib/surface/scc/manage/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/manage/custom_modules/__init__.py
 /usr/local/share/gcloud/lib/surface/scc/manage/custom_modules/etd/__init__.py
