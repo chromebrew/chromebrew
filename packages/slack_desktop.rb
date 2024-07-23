@@ -1,13 +1,13 @@
 require 'package'
 
-class Slack < Package
+class Slack_desktop < Package
   description 'Slack is a messaging app for business that connects people to the information they need.'
   homepage 'https://slack.com/'
-  version '4.32.127'
+  version '4.39.88'
   license 'Proprietary'
   compatibility 'x86_64'
-  source_url 'https://downloads.slack-edge.com/releases/linux/4.32.127/prod/x64/slack-desktop-4.32.127-amd64.deb'
-  source_sha256 '8e0216aba77798b6252902a0bd6fe2286325fdf246916f5ed4cabed3e7527521'
+  source_url "https://downloads.slack-edge.com/desktop-releases/linux/x64/#{@version}/slack-desktop-#{@version}-amd64.deb"
+  source_sha256 '3ebd2b321de79ee0ff3883f7a09a14d52e9db2ecda4b342b2efeea21e93b914a'
 
   # extracted from slack-desktop .deb archive
   depends_on 'alsa_lib'             # libasound2

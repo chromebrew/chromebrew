@@ -6,7 +6,7 @@ class Discord < Package
   version '0.0.61'
   license 'Proprietary'
   compatibility 'x86_64'
-  source_url "https://dl.discordapp.net/apps/linux/#{version}/discord-#{version}.tar.gz"
+  source_url "https://dl.discordapp.net/apps/linux/#{@version}/discord-#{@version}.tar.gz"
   source_sha256 '8c96a9559ebb9ea2d2361b62ecb91fb06355dc9ce09598d0907853c09bcf3bdf'
 
   # extracted from discord .deb archive
