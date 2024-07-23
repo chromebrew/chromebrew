@@ -8,15 +8,15 @@ class Vscode < Package
   compatibility 'aarch64,armv7l,x86_64'
 
   source_url({
-    aarch64: 'https://packages.microsoft.com/repos/code/pool/main/c/code/code_1.79.1-1686587647_armhf.deb',
-    armv7l:  'https://packages.microsoft.com/repos/code/pool/main/c/code/code_1.79.1-1686587647_armhf.deb',
-    x86_64:  'https://packages.microsoft.com/repos/code/pool/main/c/code/code_1.79.1-1686587647_amd64.deb'
+    aarch64: 'https://packages.microsoft.com/repos/code/pool/main/c/code/code_1.91.1-1720562810_armhf.deb',
+    armv7l:  'https://packages.microsoft.com/repos/code/pool/main/c/code/code_1.91.1-1720562810_armhf.deb',
+    x86_64:  'https://packages.microsoft.com/repos/code/pool/main/c/code/code_1.91.1-1720564633_amd64.deb'
   })
 
   source_sha256({
-    aarch64: 'bad1f3982ce9961f31c4094f695a17a1ef010d4821726bc073eb51a76584f3cf',
-    armv7l:  'bad1f3982ce9961f31c4094f695a17a1ef010d4821726bc073eb51a76584f3cf',
-    x86_64:  '78e83ba85923600ee982092e83d48f05229b3b4f72de4e706b17a7e30dd8c926'
+    aarch64: '0d1d08639b3f04a5ead71a9784fc350f6671fbec35bf93f6df3a2133832832bc',
+    armv7l:  '0d1d08639b3f04a5ead71a9784fc350f6671fbec35bf93f6df3a2133832832bc',
+    x86_64:  '31a13c05295f3349d3dc168d9c67dda4fcf30823fe3c34f215f0324d197f5479'
   })
 
   # extracted from code .deb archive
