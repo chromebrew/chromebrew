@@ -6,7 +6,7 @@ class Libseccomp < Autotools
   version '2.5.5'
   license 'LGPL-2.1'
   compatibility 'all'
-  source_url "https://github.com/seccomp/libseccomp.git"
+  source_url 'https://github.com/seccomp/libseccomp.git'
   git_hashtag "v#{@version}"
 
   depends_on 'glibc' # R
