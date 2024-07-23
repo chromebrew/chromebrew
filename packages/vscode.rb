@@ -3,7 +3,7 @@ require 'package'
 class Vscode < Package
   description 'Visual Studio Code: Editor for building and debugging modern web and cloud applications'
   homepage 'https://code.visualstudio.com/'
-  version '1.79.1'
+  version '1.91.1'
   license 'Proprietary'
   compatibility 'aarch64,armv7l,x86_64'
 
