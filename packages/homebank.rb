@@ -2,7 +2,7 @@ require 'package'
 
 class Homebank < Package
   description 'HomeBank is a free software that will assist you to manage your personal accounting.'
-  homepage 'http://homebank.free.fr/en/index.php'
+  homepage 'https://www.gethomebank.org/en/index.php'
   version '5.4.3'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

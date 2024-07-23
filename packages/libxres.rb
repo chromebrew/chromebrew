@@ -2,7 +2,7 @@ require 'package'
 
 class Libxres < Package
   description 'X.org X-Resource extension client library'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.2.2'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'

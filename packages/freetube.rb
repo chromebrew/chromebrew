@@ -3,7 +3,7 @@ require 'package'
 class Freetube < Package
   description 'The Private YouTube Client'
   homepage 'https://freetubeapp.io/'
-  version '0.21.0'
+  version '0.21.1'
   license 'AGPL-3.0'
   compatibility 'x86_64 aarch64 armv7l'
   source_url({
@@ -12,9 +12,9 @@ class Freetube < Package
      x86_64: "https://github.com/FreeTubeApp/FreeTube/releases/download/v#{version}-beta/freetube-#{version}-linux-portable-x64.zip"
   })
   source_sha256({
-    aarch64: '4a4c2141f6a8b49fecc3eb2f1cea42738e21005c2b6a1577cdb75ae35b5c1c9a',
-     armv7l: '4a4c2141f6a8b49fecc3eb2f1cea42738e21005c2b6a1577cdb75ae35b5c1c9a',
-     x86_64: '9475e5e619f7e869a968b201e435499a3d6752d1aeacd3e11bd29173de1c43c9'
+    aarch64: '0ba80c3a9bebbeffd8993a9916e1a0c89cf204db367c07d1c71d35de009b2fae',
+     armv7l: '0ba80c3a9bebbeffd8993a9916e1a0c89cf204db367c07d1c71d35de009b2fae',
+     x86_64: '7038609feef16f68f60a7258f421f4b7e0c21825ea8beb0c0a7aa47139698f29'
   })
 
   depends_on 'gtk3'
@@ -32,6 +32,6 @@ class Freetube < Package
   end
 
   def self.postinstall
-    ExitMessage.add "\nType 'freetube' to get started.\n".lightblue
+    ExitMessage.add "\nType 'freetube' to get started.\n"
   end
 end

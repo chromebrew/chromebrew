@@ -2,7 +2,7 @@ require 'package'
 
 class Pixman < Package
   description 'Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.'
-  homepage 'http://www.pixman.org/'
+  homepage 'https://www.pixman.org/'
   version '0.42.2'
   license 'MIT'
   compatibility 'all'

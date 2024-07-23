@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Libdrm < Meson
   description 'Cross-driver middleware for DRI protocol.'
-  homepage 'https://dri.freedesktop.org'
+  homepage 'https://dri.freedesktop.org/wiki/'
   version '2.4.120'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

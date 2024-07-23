@@ -5,11 +5,11 @@ require 'package'
 
 class Luajit_lpeg < Package
   description 'Pattern-matching library for Lua 5.1'
-  homepage 'http://www.inf.puc-rio.br/~roberto/lpeg'
+  homepage 'https://www.inf.puc-rio.br/~roberto/lpeg/'
   version '1.0.2'
   license 'MIT'
   compatibility 'all'
-  source_url 'http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.2.tar.gz'
+  source_url 'https://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.2.tar.gz'
   source_sha256 '48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
   binary_compression 'tar.zst'
 

@@ -2,11 +2,11 @@ require 'package'
 
 class Unixodbc < Package
   description 'ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources.'
-  homepage 'http://www.unixodbc.org/'
+  homepage 'https://www.unixodbc.org/'
   version '2.3.9'
   license 'LGPL-2+'
   compatibility 'all'
-  source_url "http://www.unixodbc.org/unixODBC-#{version}.tar.gz"
+  source_url "https://www.unixodbc.org/unixODBC-#{version}.tar.gz"
   source_sha256 '52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207'
   binary_compression 'tar.xz'
 

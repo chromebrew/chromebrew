@@ -2,7 +2,7 @@ require 'package'
 
 class Libmodplug < Package
   description 'A MOD playing library'
-  homepage 'http://modplug-xmms.sourceforge.net/'
+  homepage 'https://modplug-xmms.sourceforge.net/'
   version '0.8.9.0-1'
   compatibility 'all'
   license 'public-domain'

@@ -5,7 +5,7 @@ require 'package'
 
 class Xdotool < Package
   description 'Command-line X11 automation tool'
-  homepage 'https://www.semicomplete.com/projects/xdotool'
+  homepage 'https://www.semicomplete.com/projects/xdotool/'
   version '3.20160805.1'
   license 'BSD'
   compatibility 'x86_64 aarch64 armv7l'

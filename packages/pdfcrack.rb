@@ -2,7 +2,7 @@ require 'package'
 
 class Pdfcrack < Package
   description 'pdfcrack is a command line, password recovery tool for PDF-files.'
-  homepage 'https://sourceforge.net/projects/pdfcrack'
+  homepage 'https://sourceforge.net/projects/pdfcrack/'
   version '0.16'
   license 'GPL-2'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Musl_lz4 < Package
   description 'LZ4 is lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle).'
-  homepage 'https://lz4.github.io/lz4/'
+  homepage 'https://lz4.org/'
   version '1.9.4'
   license 'BSD-2 and GPL-2'
   compatibility 'all'

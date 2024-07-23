@@ -2,7 +2,7 @@ require 'package'
 
 class Ncat < Package
   description 'Ncat - Netcat for the 21st Century - a modern netcat with extra features from the makers of nmap.'
-  homepage 'https://nmap.org/ncat'
+  homepage 'https://nmap.org/ncat/'
   version '7.60'
   license 'NPSL'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Imake < Autotools
   description 'A build automation system written for the X Window System.'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.10'
   license 'custom'
   compatibility 'all'

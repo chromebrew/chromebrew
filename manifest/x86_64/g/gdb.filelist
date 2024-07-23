@@ -10,11 +10,11 @@
 /usr/local/include/gdb/jit-reader.h
 /usr/local/include/plugin-api.h
 /usr/local/include/symcat.h
-/usr/local/lib64/libbfd-2.41.50.so
+/usr/local/lib64/libbfd-2.42.50.so
 /usr/local/lib64/libbfd.a
 /usr/local/lib64/libbfd.la
 /usr/local/lib64/libbfd.so
-/usr/local/lib64/libopcodes-2.41.50.so
+/usr/local/lib64/libopcodes-2.42.50.so
 /usr/local/lib64/libopcodes.a
 /usr/local/lib64/libopcodes.la
 /usr/local/lib64/libopcodes.so
@@ -24,6 +24,7 @@
 /usr/local/share/gdb/python/gdb/command/__init__.py
 /usr/local/share/gdb/python/gdb/command/explore.py
 /usr/local/share/gdb/python/gdb/command/frame_filters.py
+/usr/local/share/gdb/python/gdb/command/missing_debug.py
 /usr/local/share/gdb/python/gdb/command/pretty_printers.py
 /usr/local/share/gdb/python/gdb/command/prompt.py
 /usr/local/share/gdb/python/gdb/command/type_printers.py
@@ -57,6 +58,7 @@
 /usr/local/share/gdb/python/gdb/function/as_string.py
 /usr/local/share/gdb/python/gdb/function/caller_is.py
 /usr/local/share/gdb/python/gdb/function/strfns.py
+/usr/local/share/gdb/python/gdb/missing_debug.py
 /usr/local/share/gdb/python/gdb/printer/__init__.py
 /usr/local/share/gdb/python/gdb/printer/bound_registers.py
 /usr/local/share/gdb/python/gdb/printing.py
@@ -71,6 +73,7 @@
 /usr/local/share/gdb/syscalls/freebsd.xml
 /usr/local/share/gdb/syscalls/gdb-syscalls.dtd
 /usr/local/share/gdb/syscalls/i386-linux.xml
+/usr/local/share/gdb/syscalls/loongarch-linux.xml
 /usr/local/share/gdb/syscalls/mips-n32-linux.xml
 /usr/local/share/gdb/syscalls/mips-n64-linux.xml
 /usr/local/share/gdb/syscalls/mips-o32-linux.xml

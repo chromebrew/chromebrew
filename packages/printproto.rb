@@ -2,7 +2,7 @@ require 'package'
 
 class Printproto < Package
   description 'Xprint build headers'
-  homepage 'https://xorg.freedesktop.org'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.5-1'
   license 'MIT-with-advertising'
   compatibility 'all'

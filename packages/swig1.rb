@@ -2,7 +2,7 @@ require 'package'
 
 class Swig1 < Package
   description 'Simplified Wrapper and Interface Generator'
-  homepage 'http://www.swig.org'
+  homepage 'https://www.swig.org/'
   version '1.3.40'
   license 'GPL-3, BSD and BSD-2'
   compatibility 'all'

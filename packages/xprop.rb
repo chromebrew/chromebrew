@@ -2,7 +2,7 @@ require 'package'
 
 class Xprop < Package
   description 'Xprop is a property displayer for X.'
-  homepage 'https://www.x.org/'
+  homepage 'https://www.x.org/wiki/'
   version '1.2.6'
   license 'MIT-with-advertising and ISC'
   compatibility 'x86_64 aarch64 armv7l'

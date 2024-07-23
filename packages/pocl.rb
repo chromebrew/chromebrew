@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Pocl < CMake
   description 'PoCL is a portable open source (MIT-licensed) implementation of the OpenCL standard.'
-  homepage 'http://portablecl.org/'
+  homepage 'https://portablecl.org/'
   version '5.0'
   license 'MIT'
   compatibility 'x86_64'

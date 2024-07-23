@@ -2,7 +2,7 @@ require 'package'
 
 class Recordmydesktop < Package
   description 'desktop session recorder for GNU / Linux that attempts to be easy to use'
-  homepage 'http://recordmydesktop.sourceforge.net/about.php'
+  homepage 'https://recordmydesktop.sourceforge.net/about.php'
   version '0.3.8.1'
   license 'GPL-2'
   compatibility 'x86_64 aarch64 armv7l'

@@ -2,7 +2,7 @@ require 'package'
 
 class Twm < Package
   description 'The twm package contains a very minimal window manager.'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.11'
   license 'MIT-with-advertising, MIT and ISC'
   compatibility 'x86_64 aarch64 armv7l'

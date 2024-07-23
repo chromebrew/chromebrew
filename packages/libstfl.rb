@@ -2,11 +2,11 @@ require 'package'
 
 class Libstfl < Package
   description 'libSTFL is a library that implements a curses-based widget set for text terminals.'
-  homepage 'http://www.clifford.at/stfl/'
+  homepage 'https://clifford.at/stfl'
   version '0.23'
   license 'GPL-3'
   compatibility 'all'
-  source_url 'http://www.clifford.at/stfl/stfl-0.23.tar.gz'
+  source_url 'https://clifford.at/stflstfl-0.23.tar.gz'
   source_sha256 'e75ed8427905ad50faf43ed5fefd0cf7b16ee0c1ca87e15d33e360bb92aedfde'
   binary_compression 'tar.xz'
 

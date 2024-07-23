@@ -5,7 +5,7 @@ require 'package'
 
 class Tbb < Package
   description 'High level abstract threading library'
-  homepage 'https://www.threadingbuildingblocks.org/'
+  homepage 'https://github.com/oneapi-src/oneTBB'
   version '2021.5.0'
   license 'Apache-2.0'
   compatibility 'all'

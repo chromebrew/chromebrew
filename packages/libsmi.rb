@@ -5,7 +5,7 @@ require 'buildsystems/autotools'
 
 class Libsmi < Autotools
   description 'C library allowing NM apps and MIB and PIB authoring tools to access SMI MIB info. '
-  homepage 'http://www.ibr.cs.tu-bs.de/projects/libsmi/'
+  homepage 'https://www.ibr.cs.tu-bs.de/projects/libsmi/'
   version '0.5.0'
   license 'Custom'
   compatibility 'all'

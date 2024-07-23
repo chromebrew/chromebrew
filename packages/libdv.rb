@@ -2,7 +2,7 @@ require 'package'
 
 class Libdv < Package
   description 'The Quasar DV codec libdv is a software codec for DV video'
-  homepage 'http://libdv.sourceforge.net/'
+  homepage 'https://libdv.sourceforge.net/'
   version '1.0.0-1'
   license 'libdv'
   compatibility 'x86_64 aarch64 armv7l'

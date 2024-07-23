@@ -2,7 +2,7 @@ require 'package'
 
 class Xorg_libinput_driver < Package
   description 'The X.Org Libinput Driver is a thin wrapper around libinput and allows for libinput to be used for input devices in X. This driver can be used as drop-in replacement for evdev and synaptics.'
-  homepage 'https://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '0.27.1'
   license 'ISC'
   compatibility 'x86_64 aarch64 armv7l'

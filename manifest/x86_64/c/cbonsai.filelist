@@ -1,2 +1,3 @@
 /usr/local/bin/cbonsai
-/usr/local/share/man/man6/cbonsai.6.gz
+/usr/local/share/bash-completion/completions/cbonsai
+/usr/local/share/man/man6/cbonsai.6.zst

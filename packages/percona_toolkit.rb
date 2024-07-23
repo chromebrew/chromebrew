@@ -2,7 +2,7 @@ require 'package'
 
 class Percona_toolkit < Package
   description 'Percona Toolkit is a collection of advanced open source command-line tools, developed and used by the Percona technical staff, that are engineered to perform a variety of MySQL®, MongoB® and system tasks that are too difficult or complex to perform manually.'
-  homepage 'https://www.percona.com/software/database-tools/percona-toolkit'
+  homepage 'https://www.percona.com/percona-toolkit'
   version '3.0.7'
   license 'GPL-2 or Artistic'
   compatibility 'all'

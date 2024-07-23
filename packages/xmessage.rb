@@ -2,7 +2,7 @@ require 'package'
 
 class Xmessage < Package
   description 'Xmessage displays a message or query in a window.'
-  homepage 'https://www.x.org/'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.6'
   license 'MIT-with-advertising'
   compatibility 'x86_64 aarch64 armv7l'

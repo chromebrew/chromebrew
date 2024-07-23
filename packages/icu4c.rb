@@ -2,7 +2,7 @@ require 'package'
 
 class Icu4c < Package
   description 'ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications.'
-  homepage 'http://site.icu-project.org/'
+  homepage 'https://icu.unicode.org/'
   version '74.2'
   license 'BSD'
   compatibility 'all'

@@ -85,7 +85,7 @@
 /usr/local/share/github_desktop/resources/app/crash.js.LICENSE.txt
 /usr/local/share/github_desktop/resources/app/crash.js.map
 /usr/local/share/github_desktop/resources/app/desktop-notifications.node
-/usr/local/share/github_desktop/resources/app/desktop-trampoline/desktop-trampoline
+/usr/local/share/github_desktop/resources/app/desktop-trampoline/desktop-askpass-trampoline
 /usr/local/share/github_desktop/resources/app/emoji.json
 /usr/local/share/github_desktop/resources/app/emoji/basecamp.png
 /usr/local/share/github_desktop/resources/app/emoji/basecampy.png
@@ -955,6 +955,8 @@
 /usr/local/share/github_desktop/resources/app/fs_admin.node
 /usr/local/share/github_desktop/resources/app/git/bin/git
 /usr/local/share/github_desktop/resources/app/git/bin/scalar
+/usr/local/share/github_desktop/resources/app/git/etc/gitconfig
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/NOTICE
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-add
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-am
@@ -988,6 +990,8 @@
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-credential
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-credential-cache
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-credential-cache--daemon
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-credential-desktop
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-credential-manager
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-credential-store
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-cvsexportcommit
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-cvsimport
@@ -1078,6 +1082,7 @@
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-remote-https
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-repack
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-replace
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-replay
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-request-pull
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-rerere
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-reset
@@ -1123,6 +1128,8 @@
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-whatchanged
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-worktree
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/git-write-tree
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/libHarfBuzzSharp.so
+/usr/local/share/github_desktop/resources/app/git/libexec/git-core/libSkiaSharp.so
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-checkout.1.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-clean.1.html
 /usr/local/share/github_desktop/resources/app/git/libexec/git-core/man/html/git-lfs-clone.1.html
@@ -1285,6 +1292,8 @@
 /usr/local/share/github_desktop/resources/app/highlighter/common.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/ext/elixir.js
 /usr/local/share/github_desktop/resources/app/highlighter/ext/elixir.js.map
+/usr/local/share/github_desktop/resources/app/highlighter/ext/zig.js
+/usr/local/share/github_desktop/resources/app/highlighter/ext/zig.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/asciiarmor.js
 /usr/local/share/github_desktop/resources/app/highlighter/mode/asciiarmor.js.map
 /usr/local/share/github_desktop/resources/app/highlighter/mode/clike.js
@@ -1430,7 +1439,6 @@
 /usr/local/share/github_desktop/resources/app/static/github-for-business.svg
 /usr/local/share/github_desktop/resources/app/static/github-for-teams.svg
 /usr/local/share/github_desktop/resources/app/static/gitignore/.github/PULL_REQUEST_TEMPLATE.md
-/usr/local/share/github_desktop/resources/app/static/gitignore/.travis.yml
 /usr/local/share/github_desktop/resources/app/static/gitignore/AL.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Actionscript.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Ada.gitignore
@@ -1597,6 +1605,7 @@
 /usr/local/share/github_desktop/resources/app/static/gitignore/R.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/README.md
 /usr/local/share/github_desktop/resources/app/static/gitignore/ROS.gitignore
+/usr/local/share/github_desktop/resources/app/static/gitignore/Racket.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Rails.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Raku.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/RhodesRhomobile.gitignore
@@ -1622,7 +1631,6 @@
 /usr/local/share/github_desktop/resources/app/static/gitignore/TurboGears2.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/TwinCAT3.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Typo3.gitignore
-/usr/local/share/github_desktop/resources/app/static/gitignore/Umbraco.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Unity.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/UnrealEngine.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/VVVV.gitignore
@@ -1634,6 +1642,7 @@
 /usr/local/share/github_desktop/resources/app/static/gitignore/Yii.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/ZendFramework.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/Zephir.gitignore
+/usr/local/share/github_desktop/resources/app/static/gitignore/community/AWS/CDK.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/AWS/SAM.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/AltiumDesigner.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/AutoIt.gitignore
@@ -1642,6 +1651,8 @@
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Beef.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/DotNet/InforCMS.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/DotNet/Kentico.gitignore
+/usr/local/share/github_desktop/resources/app/static/gitignore/community/DotNet/Umbraco.gitignore
+/usr/local/share/github_desktop/resources/app/static/gitignore/community/DotNet/core.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Elixir/Phoenix.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Exercism.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/GNOME/GNOMEShellExtension.gitignore
@@ -1658,6 +1669,7 @@
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Linux/Snap.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Logtalk.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/NasaSpecsIntact.gitignore
+/usr/local/share/github_desktop/resources/app/static/gitignore/community/Nix.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/OpenSSL.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/PHP/Bitrix.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/PHP/CodeSniffer.gitignore
@@ -1676,6 +1688,7 @@
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/SPFx.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Splunk.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Strapi.gitignore
+/usr/local/share/github_desktop/resources/app/static/gitignore/community/Toit.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/V.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/Xilinx.gitignore
 /usr/local/share/github_desktop/resources/app/static/gitignore/community/embedded/AtmelStudio.gitignore

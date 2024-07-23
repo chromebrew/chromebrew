@@ -582,6 +582,7 @@
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue53989/plugin.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue62430/main.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue62430/plugin.go
+/usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/issue67976/plugin.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/mangle/plugin.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/method/main.go
 /usr/local/share/go/src/cmd/cgo/internal/testplugin/testdata/method/plugin.go
@@ -1841,6 +1842,8 @@
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_incompatible_v2.0.0+incompatible.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_missingmod_v1.0.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_missingmod_v1.9.0.txt
+/usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_newergoversion_v1.0.0.txt
+/usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_newergoversion_v1.2.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_noupgrade_v1.0.0.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_rationale_v1.0.0-block.txt
 /usr/local/share/go/src/cmd/go/testdata/mod/example.com_retract_rationale_v1.0.0-blockwithcomment.txt
@@ -2271,6 +2274,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/list_pkgconfig_error.txt
 /usr/local/share/go/src/cmd/go/testdata/script/list_replace_absolute_windows.txt
 /usr/local/share/go/src/cmd/go/testdata/script/list_reserved.txt
+/usr/local/share/go/src/cmd/go/testdata/script/list_retractions_issue66403.txt
 /usr/local/share/go/src/cmd/go/testdata/script/list_shadow.txt
 /usr/local/share/go/src/cmd/go/testdata/script/list_split_main.txt
 /usr/local/share/go/src/cmd/go/testdata/script/list_std.txt
@@ -2661,6 +2665,7 @@
 /usr/local/share/go/src/cmd/go/testdata/script/test_fullpath.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_fuzz.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_fuzz_cache.txt
+/usr/local/share/go/src/cmd/go/testdata/script/test_fuzz_cgo.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_fuzz_chatty.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_fuzz_cleanup.txt
 /usr/local/share/go/src/cmd/go/testdata/script/test_fuzz_cov.txt
@@ -11908,9 +11913,14 @@
 /usr/local/share/go/test/fixedbugs/issue6513.go
 /usr/local/share/go/test/fixedbugs/issue65593.go
 /usr/local/share/go/test/fixedbugs/issue6572.go
+/usr/local/share/go/test/fixedbugs/issue65957.dir/a.go
+/usr/local/share/go/test/fixedbugs/issue65957.dir/main.go
+/usr/local/share/go/test/fixedbugs/issue65957.go
 /usr/local/share/go/test/fixedbugs/issue66066.go
 /usr/local/share/go/test/fixedbugs/issue66066b.go
 /usr/local/share/go/test/fixedbugs/issue66096.go
+/usr/local/share/go/test/fixedbugs/issue66575.go
+/usr/local/share/go/test/fixedbugs/issue66575.out
 /usr/local/share/go/test/fixedbugs/issue6671.go
 /usr/local/share/go/test/fixedbugs/issue6703a.go
 /usr/local/share/go/test/fixedbugs/issue6703b.go

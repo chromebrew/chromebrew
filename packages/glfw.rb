@@ -2,7 +2,7 @@ require 'buildsystems/cmake'
 
 class Glfw < CMake
   description 'GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.'
-  homepage 'http://www.glfw.org/'
+  homepage 'https://www.glfw.org/'
   version '3.4'
   license 'ZLIB'
   compatibility 'x86_64 aarch64 armv7l'

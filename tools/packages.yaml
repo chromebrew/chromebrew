@@ -8326,6 +8326,11 @@ url: https://github.com/sshuttle/sshuttle/releases
 activity: low
 ---
 kind: url
+name: stacer
+url: https://github.com/oguzhaninan/Stacer/releases
+activity: none
+---
+kind: url
 name: stack
 url: https://github.com/commercialhaskell/stack/releases
 activity: medium

@@ -6,7 +6,7 @@ require 'buildsystems/autotools'
 class Source_highlight < Autotools
   description 'Convert source code to syntax highlighted document'
   homepage 'https://www.gnu.org/software/src-highlite/'
-  version '3.1.9-894cacd'
+  version '3.1.9-894cacd-boost1.85'
   license 'GPL'
   compatibility 'all'
   source_url 'https://git.savannah.gnu.org/git/src-highlite.git'
@@ -14,10 +14,10 @@ class Source_highlight < Autotools
   binary_compression 'tar.zst'
 
   binary_sha256({
-    aarch64: 'c678485029181a81af5ff753941d377969c4a48faff13ae9b18b265cbab8bc46',
-     armv7l: 'c678485029181a81af5ff753941d377969c4a48faff13ae9b18b265cbab8bc46',
-       i686: 'f8e0891842693e1b20195661229e6003496cc6786a26c2c983c202ebcff375d2',
-     x86_64: '7097637eea28626fdb0d0925f6e82298df51a17e8a1373d3169895c8a9c6df9b'
+    aarch64: '244749f21be5f01c11309e77959f4da2b47936a7cdd047321a06a066c8203a06',
+     armv7l: '244749f21be5f01c11309e77959f4da2b47936a7cdd047321a06a066c8203a06',
+       i686: '1f1ccc4f04308bb23c465b6f59e6d1f3f01baed828d3eb5847922754a56bb2b8',
+     x86_64: '7fbb5ac63a8225cf47824a54965b2faffd7059384fbd1a349fc68135f173b17e'
   })
 
   depends_on 'boost' # R

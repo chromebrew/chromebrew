@@ -2,7 +2,7 @@ require 'buildsystems/autotools'
 
 class Sbc < Autotools
   description 'SBC is a digital audio encoder and decoder used to transfer data to Bluetooth audio output devices.'
-  homepage 'http://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html'
+  homepage 'https://www.linuxfromscratch.org/blfs/view/svn/multimedia/sbc.html'
   version '2.0'
   license 'GPL-2 and LGPL-2.1'
   compatibility 'all'

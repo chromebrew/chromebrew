@@ -2,11 +2,11 @@ require 'buildsystems/autotools'
 
 class Libssh2 < Autotools
   description 'libssh2 is a client-side C library implementing the SSH2 protocol.'
-  homepage 'https://www.libssh2.org/'
+  homepage 'https://libssh2.org/'
   version '1.11.0'
   license 'BSD'
   compatibility 'all'
-  source_url 'https://www.libssh2.org/download/libssh2-1.11.0.tar.gz'
+  source_url 'https://libssh2.org/download/libssh2-1.11.0.tar.gz'
   source_sha256 '3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461'
   binary_compression 'tar.zst'
 

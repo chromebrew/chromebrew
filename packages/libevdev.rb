@@ -2,7 +2,7 @@ require 'package'
 
 class Libevdev < Package
   description 'libevdev is a wrapper library for evdev devices.'
-  homepage 'https://www.freedesktop.org/wiki/Software/libevdev'
+  homepage 'https://www.freedesktop.org/wiki/Software/libevdev/'
   version '1.12.1'
   license 'MIT'
   compatibility 'all'

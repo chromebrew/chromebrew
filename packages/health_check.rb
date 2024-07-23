@@ -2,7 +2,7 @@ require 'package'
 
 class Health_check < Package
   description 'The health-check tool monitors processes in various ways to help identify areas where it is consuming too many resources.'
-  homepage 'http://kernel.ubuntu.com/~cking/health-check/'
+  homepage 'https://kernel.ubuntu.com/~cking/health-check/'
   version '0.02.08'
   license 'GPL-2'
   compatibility 'all'

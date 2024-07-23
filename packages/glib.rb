@@ -2,7 +2,7 @@ require 'buildsystems/meson'
 
 class Glib < Meson
   description 'GLib provides the core application building blocks for libraries and applications written in C.'
-  homepage 'https://developer.gnome.org/glib'
+  homepage 'https://docs.gtk.org/glib/'
   version '2.80.0'
   license 'LGPL-2.1'
   compatibility 'all'

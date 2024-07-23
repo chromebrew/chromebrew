@@ -5,7 +5,7 @@ require 'package'
 
 class Xorg_xlsfonts < Package
   description 'List available X fonts'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.7'
   license 'X11'
   compatibility 'x86_64 aarch64 armv7l'

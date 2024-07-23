@@ -2,7 +2,7 @@ require 'package'
 
 class Sejda_console < Package
   description 'Sejda SDK is an open source, task oriented Java library to edit PDF files.'
-  homepage 'http://sejda.org/'
+  homepage 'https://sejda.org/'
   version '3.2.85'
   license 'AGPL-3'
   compatibility 'all'

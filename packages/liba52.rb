@@ -2,7 +2,7 @@ require 'package'
 
 class Liba52 < Package
   description 'liba52 is a free library for decoding ATSC A/52 streams.'
-  homepage 'http://liba52.sourceforge.net/'
+  homepage 'https://sourceforge.net/projects/liba52/'
   @_ver = '0.7.4'
   version "#{@_ver}-2"
   compatibility 'all'

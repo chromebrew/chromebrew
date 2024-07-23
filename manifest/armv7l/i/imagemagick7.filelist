@@ -146,7 +146,6 @@
 /usr/local/include/ImageMagick-7/MagickWand/compare.h
 /usr/local/include/ImageMagick-7/MagickWand/composite.h
 /usr/local/include/ImageMagick-7/MagickWand/conjure.h
-/usr/local/include/ImageMagick-7/MagickWand/convert.h
 /usr/local/include/ImageMagick-7/MagickWand/deprecate.h
 /usr/local/include/ImageMagick-7/MagickWand/display.h
 /usr/local/include/ImageMagick-7/MagickWand/drawing-wand.h
@@ -450,14 +449,14 @@
 /usr/local/lib/libMagickWand-7.Q16HDRI.so
 /usr/local/lib/libMagickWand-7.Q16HDRI.so.10
 /usr/local/lib/libMagickWand-7.Q16HDRI.so.10.0.1
-/usr/local/lib/perl5/5.38.1/core_perl/perllocal.pod
-/usr/local/lib/perl5/5.38.1/vendor_perl/Image/Magick.pm
-/usr/local/lib/perl5/5.38.1/vendor_perl/Image/Magick/Q16HDRI.pm
-/usr/local/lib/perl5/5.38.1/vendor_perl/auto/Image/Magick/.packlist
-/usr/local/lib/perl5/5.38.1/vendor_perl/auto/Image/Magick/Magick.so
-/usr/local/lib/perl5/5.38.1/vendor_perl/auto/Image/Magick/Q16HDRI/Q16HDRI.so
-/usr/local/lib/perl5/5.38.1/vendor_perl/auto/Image/Magick/Q16HDRI/autosplit.ix
-/usr/local/lib/perl5/5.38.1/vendor_perl/auto/Image/Magick/autosplit.ix
+/usr/local/lib/perl5/armv8l-linux-thread-multi/Image/Magick.pm
+/usr/local/lib/perl5/armv8l-linux-thread-multi/Image/Magick/Q16HDRI.pm
+/usr/local/lib/perl5/armv8l-linux-thread-multi/auto/Image/Magick/.packlist
+/usr/local/lib/perl5/armv8l-linux-thread-multi/auto/Image/Magick/Magick.so
+/usr/local/lib/perl5/armv8l-linux-thread-multi/auto/Image/Magick/Q16HDRI/Q16HDRI.so
+/usr/local/lib/perl5/armv8l-linux-thread-multi/auto/Image/Magick/Q16HDRI/autosplit.ix
+/usr/local/lib/perl5/armv8l-linux-thread-multi/auto/Image/Magick/autosplit.ix
+/usr/local/lib/perl5/armv8l-linux-thread-multi/perllocal.pod
 /usr/local/lib/pkgconfig/ImageMagick-7.Q16HDRI.pc
 /usr/local/lib/pkgconfig/ImageMagick.pc
 /usr/local/lib/pkgconfig/Magick++-7.Q16HDRI.pc
@@ -470,7 +469,6 @@
 /usr/local/share/ImageMagick-7/francais.xml
 /usr/local/share/ImageMagick-7/locale.xml
 /usr/local/share/doc/ImageMagick-7/LICENSE
-/usr/local/share/doc/ImageMagick-7/NEWS.txt
 /usr/local/share/doc/ImageMagick-7/images/ImageMagick.ico
 /usr/local/share/doc/ImageMagick-7/images/affine.png
 /usr/local/share/doc/ImageMagick-7/images/annotate.png
@@ -705,6 +703,7 @@
 /usr/local/share/doc/ImageMagick-7/www/api/vision.html
 /usr/local/share/doc/ImageMagick-7/www/api/wand-view.html
 /usr/local/share/doc/ImageMagick-7/www/architecture.html
+/usr/local/share/doc/ImageMagick-7/www/assets/color-modes.js
 /usr/local/share/doc/ImageMagick-7/www/assets/magick.css
 /usr/local/share/doc/ImageMagick-7/www/assets/magick.js
 /usr/local/share/doc/ImageMagick-7/www/changelog.html
@@ -765,6 +764,7 @@
 /usr/local/share/doc/ImageMagick-7/www/openmp.html
 /usr/local/share/doc/ImageMagick-7/www/perl-magick.html
 /usr/local/share/doc/ImageMagick-7/www/porting.html
+/usr/local/share/doc/ImageMagick-7/www/privacy-policy.html
 /usr/local/share/doc/ImageMagick-7/www/quantize.html
 /usr/local/share/doc/ImageMagick-7/www/resources.html
 /usr/local/share/doc/ImageMagick-7/www/search.html

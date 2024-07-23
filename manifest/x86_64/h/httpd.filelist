@@ -14,6 +14,7 @@
 /usr/local/bin/httxt2dbm
 /usr/local/bin/logresolve
 /usr/local/bin/rotatelogs
+/usr/local/etc/bash.d/10-httpd
 /usr/local/share/httpd/build/config.nice
 /usr/local/share/httpd/build/config_vars.mk
 /usr/local/share/httpd/build/instdso.sh
@@ -343,6 +344,7 @@
 /usr/local/share/httpd/include/http_main.h
 /usr/local/share/httpd/include/http_protocol.h
 /usr/local/share/httpd/include/http_request.h
+/usr/local/share/httpd/include/http_ssl.h
 /usr/local/share/httpd/include/http_vhost.h
 /usr/local/share/httpd/include/httpd.h
 /usr/local/share/httpd/include/mod_auth.h
@@ -351,6 +353,7 @@
 /usr/local/share/httpd/include/mod_core.h
 /usr/local/share/httpd/include/mod_dav.h
 /usr/local/share/httpd/include/mod_dbd.h
+/usr/local/share/httpd/include/mod_http2.h
 /usr/local/share/httpd/include/mod_include.h
 /usr/local/share/httpd/include/mod_log_config.h
 /usr/local/share/httpd/include/mod_proxy.h
@@ -493,6 +496,7 @@
 /usr/local/share/httpd/manual/getting-started.html
 /usr/local/share/httpd/manual/getting-started.html.en
 /usr/local/share/httpd/manual/getting-started.html.fr.utf8
+/usr/local/share/httpd/manual/getting-started.html.ru.utf8
 /usr/local/share/httpd/manual/glossary.html
 /usr/local/share/httpd/manual/glossary.html.de
 /usr/local/share/httpd/manual/glossary.html.en
@@ -614,6 +618,7 @@
 /usr/local/share/httpd/manual/index.html.ja.utf8
 /usr/local/share/httpd/manual/index.html.ko.euc-kr
 /usr/local/share/httpd/manual/index.html.pt-br
+/usr/local/share/httpd/manual/index.html.ru.utf8
 /usr/local/share/httpd/manual/index.html.tr.utf8
 /usr/local/share/httpd/manual/index.html.zh-cn.utf8
 /usr/local/share/httpd/manual/install.html
@@ -985,6 +990,7 @@
 /usr/local/share/httpd/manual/mod/mod_macro.html.fr.utf8
 /usr/local/share/httpd/manual/mod/mod_md.html
 /usr/local/share/httpd/manual/mod/mod_md.html.en
+/usr/local/share/httpd/manual/mod/mod_md.html.fr.utf8
 /usr/local/share/httpd/manual/mod/mod_mime.html
 /usr/local/share/httpd/manual/mod/mod_mime.html.en
 /usr/local/share/httpd/manual/mod/mod_mime.html.fr.utf8
@@ -1047,6 +1053,7 @@
 /usr/local/share/httpd/manual/mod/mod_proxy_scgi.html.fr.utf8
 /usr/local/share/httpd/manual/mod/mod_proxy_uwsgi.html
 /usr/local/share/httpd/manual/mod/mod_proxy_uwsgi.html.en
+/usr/local/share/httpd/manual/mod/mod_proxy_uwsgi.html.fr.utf8
 /usr/local/share/httpd/manual/mod/mod_proxy_wstunnel.html
 /usr/local/share/httpd/manual/mod/mod_proxy_wstunnel.html.en
 /usr/local/share/httpd/manual/mod/mod_proxy_wstunnel.html.fr.utf8
@@ -1111,6 +1118,9 @@
 /usr/local/share/httpd/manual/mod/mod_socache_memcache.html
 /usr/local/share/httpd/manual/mod/mod_socache_memcache.html.en
 /usr/local/share/httpd/manual/mod/mod_socache_memcache.html.fr.utf8
+/usr/local/share/httpd/manual/mod/mod_socache_redis.html
+/usr/local/share/httpd/manual/mod/mod_socache_redis.html.en
+/usr/local/share/httpd/manual/mod/mod_socache_redis.html.fr.utf8
 /usr/local/share/httpd/manual/mod/mod_socache_shmcb.html
 /usr/local/share/httpd/manual/mod/mod_socache_shmcb.html.en
 /usr/local/share/httpd/manual/mod/mod_socache_shmcb.html.fr.utf8
@@ -1137,6 +1147,11 @@
 /usr/local/share/httpd/manual/mod/mod_suexec.html.ja.utf8
 /usr/local/share/httpd/manual/mod/mod_suexec.html.ko.euc-kr
 /usr/local/share/httpd/manual/mod/mod_suexec.html.tr.utf8
+/usr/local/share/httpd/manual/mod/mod_systemd.html
+/usr/local/share/httpd/manual/mod/mod_systemd.html.en
+/usr/local/share/httpd/manual/mod/mod_systemd.html.fr.utf8
+/usr/local/share/httpd/manual/mod/mod_tls.html
+/usr/local/share/httpd/manual/mod/mod_tls.html.en
 /usr/local/share/httpd/manual/mod/mod_unique_id.html
 /usr/local/share/httpd/manual/mod/mod_unique_id.html.en
 /usr/local/share/httpd/manual/mod/mod_unique_id.html.fr.utf8
@@ -1195,6 +1210,7 @@
 /usr/local/share/httpd/manual/mod/mpmt_os2.html.fr.utf8
 /usr/local/share/httpd/manual/mod/overrides.html
 /usr/local/share/httpd/manual/mod/overrides.html.en
+/usr/local/share/httpd/manual/mod/overrides.html.fr.utf8
 /usr/local/share/httpd/manual/mod/prefork.html
 /usr/local/share/httpd/manual/mod/prefork.html.de
 /usr/local/share/httpd/manual/mod/prefork.html.en
@@ -1232,7 +1248,6 @@
 /usr/local/share/httpd/manual/new_features_2_0.html.ja.utf8
 /usr/local/share/httpd/manual/new_features_2_0.html.ko.euc-kr
 /usr/local/share/httpd/manual/new_features_2_0.html.pt-br
-/usr/local/share/httpd/manual/new_features_2_0.html.ru.koi8-r
 /usr/local/share/httpd/manual/new_features_2_0.html.tr.utf8
 /usr/local/share/httpd/manual/new_features_2_2.html
 /usr/local/share/httpd/manual/new_features_2_2.html.en
@@ -1549,6 +1564,7 @@
 /usr/local/share/httpd/modules/mod_authz_owner.so
 /usr/local/share/httpd/modules/mod_authz_user.so
 /usr/local/share/httpd/modules/mod_autoindex.so
+/usr/local/share/httpd/modules/mod_brotli.so
 /usr/local/share/httpd/modules/mod_buffer.so
 /usr/local/share/httpd/modules/mod_cache.so
 /usr/local/share/httpd/modules/mod_cache_disk.so
@@ -1566,6 +1582,7 @@
 /usr/local/share/httpd/modules/mod_file_cache.so
 /usr/local/share/httpd/modules/mod_filter.so
 /usr/local/share/httpd/modules/mod_headers.so
+/usr/local/share/httpd/modules/mod_http2.so
 /usr/local/share/httpd/modules/mod_include.so
 /usr/local/share/httpd/modules/mod_info.so
 /usr/local/share/httpd/modules/mod_lbmethod_bybusyness.so

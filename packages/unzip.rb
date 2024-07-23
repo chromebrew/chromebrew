@@ -2,7 +2,7 @@ require 'package'
 
 class Unzip < Package
   description 'UnZip is an extraction utility for archives compressed in .zip format (also called \'zipfiles\').'
-  homepage 'http://www.info-zip.org/UnZip.html'
+  homepage 'https://infozip.sourceforge.net/UnZip.html'
   version '6.0-2'
   license 'Info-ZIP'
   compatibility 'all'

@@ -2,7 +2,7 @@ require 'package'
 
 class Libxaw < Package
   description 'X.org X Athena Widgets Library'
-  homepage 'http://www.x.org'
+  homepage 'https://www.x.org/wiki/'
   version '1.0.13'
   license 'MIT'
   compatibility 'x86_64 aarch64 armv7l'

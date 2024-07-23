@@ -34,6 +34,7 @@
 /usr/local/bin/nl-neigh-delete
 /usr/local/bin/nl-neigh-list
 /usr/local/bin/nl-neightbl-list
+/usr/local/bin/nl-nh-list
 /usr/local/bin/nl-pktloc-lookup
 /usr/local/bin/nl-qdisc-add
 /usr/local/bin/nl-qdisc-delete
@@ -59,6 +60,7 @@
 /usr/local/include/libnl3/netlink/cli/link.h
 /usr/local/include/libnl3/netlink/cli/mdb.h
 /usr/local/include/libnl3/netlink/cli/neigh.h
+/usr/local/include/libnl3/netlink/cli/nh.h
 /usr/local/include/libnl3/netlink/cli/qdisc.h
 /usr/local/include/libnl3/netlink/cli/route.h
 /usr/local/include/libnl3/netlink/cli/rule.h
@@ -120,6 +122,7 @@
 /usr/local/include/libnl3/netlink/route/link/api.h
 /usr/local/include/libnl3/netlink/route/link/bonding.h
 /usr/local/include/libnl3/netlink/route/link/bridge.h
+/usr/local/include/libnl3/netlink/route/link/bridge_info.h
 /usr/local/include/libnl3/netlink/route/link/can.h
 /usr/local/include/libnl3/netlink/route/link/geneve.h
 /usr/local/include/libnl3/netlink/route/link/inet.h
@@ -149,6 +152,7 @@
 /usr/local/include/libnl3/netlink/route/neightbl.h
 /usr/local/include/libnl3/netlink/route/netconf.h
 /usr/local/include/libnl3/netlink/route/nexthop.h
+/usr/local/include/libnl3/netlink/route/nh.h
 /usr/local/include/libnl3/netlink/route/pktloc.h
 /usr/local/include/libnl3/netlink/route/qdisc.h
 /usr/local/include/libnl3/netlink/route/qdisc/cbq.h

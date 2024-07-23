@@ -5,7 +5,7 @@ require 'package'
 
 class Gnulib_git < Package
   description 'GNU Portability Library'
-  homepage 'http://www.gnu.org/software/gnulib'
+  homepage 'http://www.gnu.org/software/gnulib/'
   version 'v0.1-96ad66e'
   license 'custom'
   compatibility 'all'

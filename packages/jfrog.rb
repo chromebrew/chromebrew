@@ -2,7 +2,7 @@ require 'package'
 
 class Jfrog < Package
   description 'JFrog CLI is a compact and smart client that provides a simple interface that automates access to Artifactory, Bintray and Mission Control through their respective REST APIs.'
-  homepage 'https://github.com/JFrogDev/jfrog-cli-go'
+  homepage 'https://github.com/jfrog/jfrog-cli'
   version '1.39.5'
   license 'Apache-2.0, BSD, BSD-2, MIT and MPL-2.0'
   compatibility 'all'

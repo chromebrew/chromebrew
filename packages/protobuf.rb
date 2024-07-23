@@ -5,7 +5,7 @@ require 'package'
 
 class Protobuf < Package
   description 'Protocol Buffers - Googles data interchange format'
-  homepage 'https://developers.google.com/protocol-buffers/'
+  homepage 'https://protobuf.dev'
   version '21.12'
   license 'BSD'
   compatibility 'all'

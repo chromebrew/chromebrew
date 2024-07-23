@@ -2,7 +2,7 @@ require 'package'
 
 class Irrlicht < Package
   description 'An open source realtime 3D engine written in C++ — Libraries and headers'
-  homepage 'http://irrlicht.sourceforge.net/'
+  homepage 'https://irrlicht.sourceforge.io/'
   version '1.8.5'
   license 'ZLIB'
   compatibility 'x86_64 aarch64 armv7l'

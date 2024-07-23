@@ -2,7 +2,7 @@ require 'package'
 
 class Rgb < Package
   description 'X color name database'
-  homepage 'https://xorg.freedesktop.org/'
+  homepage 'https://xorg.freedesktop.org/wiki/'
   version '1.0.6-1'
   license 'custom'
   compatibility 'all'

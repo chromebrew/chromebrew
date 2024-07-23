@@ -2,7 +2,7 @@ require 'package'
 
 class Libxcb < Package
   description 'library for the X window system'
-  homepage 'https://x.org'
+  homepage 'https://x.org/wiki/'
   version '1.15'
   license 'custom'
   compatibility 'all'

@@ -3,11 +3,11 @@ require 'package'
 class Idea < Package
   description 'Capable and Ergonomic IDE for JVM'
   homepage 'https://www.jetbrains.com/idea/'
-  version '2022.3'
+  version '2024.1.4'
   license 'Apache-2.0'
   compatibility 'x86_64 aarch64 armv7l'
-  source_url 'https://download.jetbrains.com/idea/ideaIC-2022.3.tar.gz'
-  source_sha256 'a3f53de8293b55739d916868d732bde521e33e59a5181e758d6f1691d479da9e'
+  source_url "https://download.jetbrains.com/idea/ideaIU-#{version}.tar.gz"
+  source_sha256 'cda20bbbc052c2b8e87ea8607235ee0f7b5775728e8648c0a603889a3efa685f'
 
   depends_on 'openjdk8'
   depends_on 'gdk_base'
@@ -16,6 +16,7 @@ class Idea < Package
 
   no_compile_needed
   no_fhs
+  print_source_bashrc
 
   def self.install
     # Fix java.io.IOException: Cannot run program "/home/chronos/user/.IdeaIC2022.3/system/tmp/ij1055598732.tmp": error=13, Permission denied
@@ -30,9 +31,7 @@ class Idea < Package
   end
 
   def self.postinstall
-    puts "\nTo finish the install, execute the following:".lightblue
-    puts "source #{CREW_PREFIX}/etc/env.d/09-gdk_base".lightblue
-    puts "\nTo get started, type 'idea'.\n".lightblue
+    ExitMessage.add "Type 'idea' to get started."
   end
 
   def self.remove
@@ -45,7 +44,7 @@ class Idea < Package
       case response
       when 'y', 'yes'
         FileUtils.rm_rf config_dir
-        puts "#{config_dir} removed.".lightred
+        puts "#{config_dir} removed.".lightgreen
       else
         puts "#{config_dir} saved.".lightgreen
       end
