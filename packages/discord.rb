@@ -3,11 +3,11 @@ require 'package'
 class Discord < Package
   description 'Discord is a proprietary, cross-platform, all-in-one voice and text chat application.'
   homepage 'https://discord.com/'
-  version '0.0.27'
+  version '0.0.61'
   license 'Proprietary'
   compatibility 'x86_64'
-  source_url 'https://dl.discordapp.net/apps/linux/0.0.27/discord-0.0.27.tar.gz'
-  source_sha256 'e9f1da88f05cbfb4d0561f936ad20461767f2f03e69c2994fd059728581447b5'
+  source_url "https://dl.discordapp.net/apps/linux/#{version}/discord-#{version}.tar.gz"
+  source_sha256 '8c96a9559ebb9ea2d2361b62ecb91fb06355dc9ce09598d0907853c09bcf3bdf'
 
   # extracted from discord .deb archive
   depends_on 'alsa_lib'    # libasound2
